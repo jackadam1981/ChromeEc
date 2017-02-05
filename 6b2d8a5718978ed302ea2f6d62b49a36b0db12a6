@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "00f56225_051a0277",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "as discussed, the PLT_RST_L is wired to DIOM3, and the code pinmuxes it to the TPM_RST_L in the board initialization code.",
+      "parentUuid": "27e8a751_0e352394",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4aadc41_161359b4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -42,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "5ca3f47c_01242d71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "255faa78_9968cbb2",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9dd6329_c1399b17",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -53,6 +89,24 @@
       "writtenOn": "2017-02-03T20:50:56Z",
       "side": 1,
       "message": "That and you\u0027d be double interrupting in the wake from normal sleep case since you\u0027d see both events.",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b9c6be8_c4515fe4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b9dd6329_c1399b17",
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "a3adfde1_f8d8095e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "tested and added description",
+      "parentUuid": "5a525ab0_7d1779ca",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa6b42cc_c0f80b73",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -87,6 +159,24 @@
       "writtenOn": "2017-02-03T21:28:47Z",
       "side": 1,
       "message": "So the gpio interrupt is already configured. But then we\u0027re switching the gpio\u0027s pad out from under it while all those settings are alive. That seems like a bad idea in practice. Something to think about cuz it may have issues.",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d71cae85_f9972a78",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fa6b42cc_c0f80b73",
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -170,6 +260,24 @@
     },
     {
       "key": {
+        "uuid": "bbf8f492_0b2ce3fa",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "the state detection logic needs to be run time configurable because on x86 and arm use different logic to determine the AP state. (plt_rst_l vs AP UART TX), and device_state on implicitly relies on the order of interrupt definitions in gpio.inc when defining the device enum. That\u0027s really brittle too.\n\nLet\u0027s address the issue in a separate patch under 62380",
+      "parentUuid": "d539badb_bf67a462",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c3b3575_2af74e61",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -187,6 +295,24 @@
         "endLine": 569,
         "endChar": 32
       },
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9ba7301_402aa703",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "I think \u0027deferred\u0027 gives it away - we are still processing the interrupt, but on a deferred context. \n\nIf you have a preference/suggestion - this is easy to change, please let me know.",
+      "parentUuid": "9c3b3575_2af74e61",
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -264,6 +390,24 @@
     },
     {
       "key": {
+        "uuid": "8f29df71_0de448ee",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a60f0827_45e86f96",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2da68d6d_49bba7c0",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -275,6 +419,24 @@
       "writtenOn": "2017-02-03T23:58:17Z",
       "side": 1,
       "message": "Here\u0027s where I was talking about things being racy. However, I think with the current construct all device state changing is happening within the hook task context. It seems you are relying on that assumption. If so, we need to comment very heavily that any device state manipulation is being done from the hook task. That subtlety was lost on me, and I doubt it\u0027s apparent to others looking at this code.\n\nGiven that all device_state manipulations are done within the hook task that means and we\u0027re assuming all hook callbacks are not preemptible. So either we complete this function or we fail the check above because pltrst_l deassertion hook was called before this hook. So that\u0027s good provided those assumptions hold. These assumptions really need to be written down as a comment so that it\u0027s clear to all readers.\n\nThere\u0027s another issue at play, though. device_powered_on() is called from interrupt handler and a polling function from a hook callback. There\u0027s nothing protecting the device state globals from multiple writers and readers. Updating the state variable itself could be overridden. You need to proxy all of those updates through a hook call as well in order to meet your current assumptions.",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a021f4d4_ce154786",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "So, I changed it such that plt_rst_l is polled by the device state loop, debounced for 900 ms and if tpm_rst_l/AP UART TX is not deasserted during that interval, the chip goes into deep sleep, such that this polled signal is configured as a level wake source.\n\nI checked that if the chip goes in and out of deep sleep immediately in this case.",
+      "parentUuid": "2da68d6d_49bba7c0",
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -298,6 +460,24 @@
     },
     {
       "key": {
+        "uuid": "ba99f3f8_362616d1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "b7cf08fd_ba463dbd",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c90e8a22_7dc21cce",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -312,6 +492,24 @@
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a0b5dce_cdcce99b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c90e8a22_7dc21cce",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -374,6 +572,24 @@
     },
     {
       "key": {
+        "uuid": "3d653157_e046dd01",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "39c4367e_b1d0298c",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80030fe2_1a1f4a2d",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -427,6 +643,24 @@
     },
     {
       "key": {
+        "uuid": "e10fca6e_a22195bf",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "As explained in the patch description and comments, the problem with falling into deep sleep when the conditions for it are not there any more the chip resumes immediately.",
+      "parentUuid": "dd0b25de_27b13d85",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45731749_9245f77e",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -441,6 +675,24 @@
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816b11b8_406c5db7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45731749_9245f77e",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -502,6 +754,24 @@
     },
     {
       "key": {
+        "uuid": "53a382cb_98951295",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "let\u0027s discuss issues with this function and address them in a separate patch. \n\nI in fact think that there is no real problem given the use case, but might be missing something, let\u0027s postpone this a  bit.",
+      "parentUuid": "79265a8d_c6dd1b5b",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cca52956_34736bec",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -525,6 +795,24 @@
     },
     {
       "key": {
+        "uuid": "167fcdd1_269c6d39",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cca52956_34736bec",
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "636c2740_94f2c169",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -542,6 +830,24 @@
         "endLine": 800,
         "endChar": 0
       },
+      "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66cbc822_646de969",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-05T22:42:49Z",
+      "side": 1,
+      "message": "the main issue here is that h1 on x86 devices seems to be waking up from deep sleep every so often. We don\u0027t want tpm task to proceed unless AP is up.\n\nI modified the code to express this clearer.",
+      "parentUuid": "636c2740_94f2c169",
       "revId": "6b2d8a5718978ed302ea2f6d62b49a36b0db12a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
