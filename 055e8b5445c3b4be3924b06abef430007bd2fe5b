@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70d9959c_5361544a",
+        "filename": "chip/mec1322/panic_extra.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-02-06T10:05:28Z",
+      "side": 1,
+      "message": "Done. :)",
+      "parentUuid": "65e6b501_363ec231",
+      "revId": "055e8b5445c3b4be3924b06abef430007bd2fe5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11cbc4fa_4906149d",
         "filename": "chip/mec1322/panic_extra.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
         "endLine": 17,
         "endChar": 42
       },
+      "revId": "055e8b5445c3b4be3924b06abef430007bd2fe5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a69d4d58_8656e03e",
+        "filename": "chip/mec1322/panic_extra.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1119450
+      },
+      "writtenOn": "2017-02-06T10:05:28Z",
+      "side": 1,
+      "message": "I put panic_data_{backup/restore} as static inline because i wish the functions are grouped into one file. If using static function only,  i need to add __attribute__((unused)) to bypass compiler error. If removing static and inline, the build error occurs because of redefinition when including header file in different .c file.",
+      "parentUuid": "11cbc4fa_4906149d",
       "revId": "055e8b5445c3b4be3924b06abef430007bd2fe5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
