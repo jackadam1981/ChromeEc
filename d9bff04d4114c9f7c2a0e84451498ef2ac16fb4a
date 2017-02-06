@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f91eadcb_52ef0a28",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T17:48:40Z",
+      "side": 1,
+      "message": "how big is this value,  is this much room on the stack always available?",
+      "range": {
+        "startLine": 627,
+        "startChar": 16,
+        "endLine": 627,
+        "endChar": 44
+      },
+      "revId": "d9bff04d4114c9f7c2a0e84451498ef2ac16fb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc61b2e8_30082de8",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T17:48:40Z",
+      "side": 1,
+      "message": "not your change, but still odd to see a constant here.",
+      "range": {
+        "startLine": 641,
+        "startChar": 15,
+        "endLine": 641,
+        "endChar": 19
+      },
+      "revId": "d9bff04d4114c9f7c2a0e84451498ef2ac16fb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7649c60_d0d38bb1",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T17:48:40Z",
+      "side": 1,
+      "message": "maybe set it to zero here and only set it to one if the block checks out",
+      "range": {
+        "startLine": 653,
+        "startChar": 2,
+        "endLine": 653,
+        "endChar": 17
+      },
+      "revId": "d9bff04d4114c9f7c2a0e84451498ef2ac16fb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fafd3cf_662f4643",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T17:48:40Z",
+      "side": 1,
+      "message": "does this have to be done before the contents check?",
+      "range": {
+        "startLine": 663,
+        "startChar": 3,
+        "endLine": 664,
+        "endChar": 26
+      },
+      "revId": "d9bff04d4114c9f7c2a0e84451498ef2ac16fb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87a9e53b_a57bb3b1",
+        "filename": "common/spi_nor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T17:48:40Z",
+      "side": 1,
+      "message": "isn\u0027t read_size guaranteed to be divisible by 4?",
+      "range": {
+        "startLine": 681,
+        "startChar": 3,
+        "endLine": 686,
+        "endChar": 4
+      },
+      "revId": "d9bff04d4114c9f7c2a0e84451498ef2ac16fb4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
