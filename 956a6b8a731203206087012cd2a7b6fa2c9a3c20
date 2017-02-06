@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37f71985_fe33fcbf",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-06T18:08:53Z",
+      "side": 1,
+      "message": "Before deep sleep was being enabled independent of \u0027plt_rst\u0027. It\u0027s not clear why this was changed. But, probably would help to have a comment here as to why deep sleep is tied to he use of plt_rst.",
+      "range": {
+        "startLine": 869,
+        "startChar": 1,
+        "endLine": 869,
+        "endChar": 25
+      },
+      "revId": "956a6b8a731203206087012cd2a7b6fa2c9a3c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae754f68_08a61afb",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-06T18:08:53Z",
+      "side": 1,
+      "message": "Functions",
+      "range": {
+        "startLine": 407,
+        "startChar": 6,
+        "endLine": 407,
+        "endChar": 8
+      },
+      "revId": "956a6b8a731203206087012cd2a7b6fa2c9a3c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
