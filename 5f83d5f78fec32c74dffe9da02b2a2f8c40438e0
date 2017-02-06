@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7cc6eab1_af13af86",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T19:21:57Z",
+      "side": 1,
+      "message": "This happens on the way down, falling into deep sleep is guaranteed to happen at this point. It just would wake up right away in case plt_rst_l is deasserted.\n\nHence there is no impact on regular sleep, it will be reintroduced on resume from deep sleep.\n\nI\u0027ll add a comment.",
+      "parentUuid": "3df5a32f_476d1198",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b13747c9_77f007be",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
         "endLine": 439,
         "endChar": 58
       },
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8886ebdf_36c97e4f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T19:21:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b13747c9_77f007be",
       "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "d438f1c4_4d01a08b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T19:21:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d7033132_ed75c7fc",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91faf481_3ea3d74a",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -82,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "2da9b36a_fd7298d8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T19:21:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "91faf481_3ea3d74a",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d77d0de_72a1fe89",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -93,6 +165,24 @@
       "writtenOn": "2017-02-06T18:53:38Z",
       "side": 1,
       "message": "We really need to improve this device state code. We\u0027re open coding transitions and filtering in functions spread out through the code base. I really think the device_state stuff as written is just causing more confusion.",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "736285cb_d7b14ff9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T19:21:57Z",
+      "side": 1,
+      "message": "will open a bug for this.",
+      "parentUuid": "1d77d0de_72a1fe89",
       "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -122,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "cef08ab9_33bc6861",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T19:21:57Z",
+      "side": 1,
+      "message": "yes, in case of x86 it is plt_rst_l in case of ARM it is AP UART. I\u0027ll clarify the comment.",
+      "parentUuid": "a51532d9_46067b97",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f42ab5d_5246d02c",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -139,6 +247,24 @@
     },
     {
       "key": {
+        "uuid": "f829e829_f2ccd5b3",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T19:21:57Z",
+      "side": 1,
+      "message": "nothing prevents us to go back to deep sleep if this state lasts longer than polling plt_rst_l timeout.",
+      "parentUuid": "9f42ab5d_5246d02c",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98d63c9f_5a7bf3b8",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -150,6 +276,24 @@
       "writtenOn": "2017-02-06T18:53:38Z",
       "side": 1,
       "message": "Why did you pass 0 instead of -1 here?",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "201e18d9_3fdc81e8",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T19:21:57Z",
+      "side": 1,
+      "message": "this is a speculative call in case there is a pending reset request. We want to flash the event mask so that that pending reset does not trigger a reset when task  Is the comment not clear?\n\n(0) means exit immediately if there is no pending events, -1 would mean wait indefinitely, which we don\u0027t want to do here in case the reset event is not going to be generated.",
+      "parentUuid": "98d63c9f_5a7bf3b8",
       "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
