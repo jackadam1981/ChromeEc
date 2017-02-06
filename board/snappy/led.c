@@ -165,17 +165,17 @@ static void led_set_power(void)
 	else if (chipset_in_state(CHIPSET_STATE_SUSPEND |
 				  CHIPSET_STATE_STANDBY))
 		led_set_color_power(
-			(power_tick & 0x4) ? LED_WHITE : LED_OFF);
+			(power_tick % 0x4 < 0x1) ? LED_WHITE : LED_OFF);
 	else
 		led_set_color_power(LED_OFF);
 }
 
 /* Called by hook task every TICK */
-static void led_tick(void)
+static void led_second(void)
 {
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		led_set_battery();
 	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
 		led_set_power();
 }
-DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_SECOND, led_second, HOOK_PRIO_DEFAULT);
