@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "a22ef411_b95dd8e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1146415
+      },
+      "writtenOn": "2017-02-06T21:28:30Z",
+      "side": 1,
+      "message": "I Verified this on snappy. But I still see the same issue.\n\n[88.333931 I2C unwedge failed, SCL is being held low]\n[88.374727 Reset i2c 01 fail!]\n[88.375088 Unexpected i2c state machine! 1]\n[88.515562 Reset i2c 01 fail!]\n[88.520642 I2C unwedge failed, SCL is being held low]\n[88.561331 Reset i2c 01 fail!]\n[88.561692 Unexpected i2c state machine! 1]\n[88.702100 Reset i2c 01 fail!]\n[88.707221 I2C unwedge failed, SCL is being held low]\n[88.747585 Reset i2c 01 fail!]\n[88.747947 Unexpected i2c state machine! 1]\n\n\nEc version\nChip:    Nuvoton NPCX586G A.05\nBoard:   3\nRO:      snappy_v1.1.5990-874ddbd\nRW:      snappy_v1.1.5990-874ddbd\nBuild:   snappy_v1.1.5990-874ddbd\n         2017-02-06 13:11:15 ravisadineni@ravisadineni0.mtv.corp.google.com",
+      "parentUuid": "bbf9dec8_7d5866cb",
+      "revId": "46df8ad59a9eb330551621592bcfe419a7740def",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e20ba7f_9f168b5e",
         "filename": "board/snappy/board.h",
         "patchSetId": 1
