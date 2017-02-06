@@ -43,6 +43,29 @@
     },
     {
       "key": {
+        "uuid": "d0978e72_97d313a6",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2017-02-06T10:05:52Z",
+      "side": 1,
+      "message": "/*When ANX3429 need to enter ANX74XX_STANDBY_MODE, Cable det pin shall be pulled low first by ANX3429`s register, in this way, for use case of E-mark cable only, EC can found cable det pin is pulled high again.\n  0x41:bit7 \u003d 0;\n*/\ntcpc_read(port, 0x41, \u0026reg);\ntcpc_write(port, 0x41, reg | (~0x80));\ndelay_ms(2);\nanx74xx_set_power_mode(port, mode);",
+      "range": {
+        "startLine": 566,
+        "startChar": 2,
+        "endLine": 566,
+        "endChar": 37
+      },
+      "revId": "4c662d4645f7e904ee21d6d8319684c1f1432a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba7f70df_1f857498",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 15
@@ -78,6 +101,24 @@
       "side": 1,
       "message": "okay",
       "parentUuid": "ba7f70df_1f857498",
+      "revId": "4c662d4645f7e904ee21d6d8319684c1f1432a3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8da1952b_d7a1cbb1",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2017-02-06T10:05:52Z",
+      "side": 1,
+      "message": "Once the 3429 is powered down ( ANX74XX_STANDBY_MODE), all registers (both analog and digital) are cleared, they are not persistent. Whatever CC and DRP control is to be set, after entering ANX74XX_STANDBY_MODE, ANX3429`s CC shall re-auto-toggling.",
+      "parentUuid": "b61fb0f9_a93e4b24",
       "revId": "4c662d4645f7e904ee21d6d8319684c1f1432a3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
