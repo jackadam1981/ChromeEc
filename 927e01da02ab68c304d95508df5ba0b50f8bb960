@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b60bd5b_8498a9dd",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-06T21:03:32Z",
+      "side": 0,
+      "message": "Just to clarify, I do not understand why this line of code was originally added in https://chromium-review.googlesource.com/#/c/382868/, and I believe it may be a mistake. If the intent is to clear R_MODE_TRANSITION / R_LATCH_REG then the code is wrong.",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 63
+      },
+      "revId": "927e01da02ab68c304d95508df5ba0b50f8bb960",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
