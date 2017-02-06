@@ -15,17 +15,18 @@
 #define CHARGER_PROF_TEMP_C_LAST_RANGE 0xFFFF
 
 enum fast_chg_voltage_ranges {
-	VOLTAGE_RANGE_LOW,
-	VOLTAGE_RANGE_HIGH,
-	VOLTAGE_RANGE_NUM,
+	VOLTAGE_RANGE_0,
+	VOLTAGE_RANGE_1,
+	VOLTAGE_RANGE_2,
+	VOLTAGE_RANGE_3,
 };
 
 /* Charge profile override info */
 struct fast_charge_profile {
 	/* temperature in 10ths of a degree C */
-	int temp_c;
-	/* charge current at lower & higher battery voltage limit in mA */
-	int current_mA[VOLTAGE_RANGE_NUM];
+	const int temp_c;
+	/* charge current for respective battery voltage ranges in mA */
+	const int current_mA[CONFIG_CHARGER_PROFILE_VOLTAGE_RANGES + 1];
 };
 
 /* Charge profile override parameters */
@@ -34,14 +35,8 @@ struct fast_charge_params {
 	const int total_temp_ranges;
 	/* Default temperature range of the charge profile */
 	const int default_temp_range_profile;
-	/*
-	 * Lower limit of battery voltage in mV
-	 * If the battery voltage reading is bad or the battery voltage is
-	 * greater than or equal to the lower limit or the battery voltage is
-	 * not in the charger profile voltage range, consider battery has high
-	 * voltage range so that we charge at lower current limit.
-	 */
-	const int vtg_low_limit_mV;
+	/* Battery voltage ranges in mV */
+	const int voltage_mV[CONFIG_CHARGER_PROFILE_VOLTAGE_RANGES];
 	const struct fast_charge_profile *chg_profile_info;
 };
 
