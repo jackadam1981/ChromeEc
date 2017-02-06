@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe24a05c_ce1d9160",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-06T23:18:24Z",
+      "side": 1,
+      "message": "This should be GPIO_TPM_RST_L",
+      "range": {
+        "startLine": 583,
+        "startChar": 18,
+        "endLine": 583,
+        "endChar": 27
+      },
+      "revId": "79e62dd9da71968688cc6f7a4a711dd43549b164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "003b8fe7_9d2f193b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-06T23:18:24Z",
+      "side": 1,
+      "message": "I still think this is a lot more confusing than just connecting diom3 to GPIO_DETECT_AP. If you do that then you don\u0027t really need to change the detect_state logic",
+      "range": {
+        "startLine": 783,
+        "startChar": 0,
+        "endLine": 790,
+        "endChar": 2
+      },
+      "revId": "79e62dd9da71968688cc6f7a4a711dd43549b164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "584bb6f5_6c5d68f7",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-06T23:18:24Z",
+      "side": 1,
+      "message": "We should explicitly wait for TPM_EVENT_RESET then. That way if other tpm events are posted we wont exit and those events will still be posted when we actually enter the task.",
+      "range": {
+        "startLine": 794,
+        "startChar": 2,
+        "endLine": 797,
+        "endChar": 28
+      },
+      "revId": "79e62dd9da71968688cc6f7a4a711dd43549b164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
