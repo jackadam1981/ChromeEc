@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "43790b81_9efd8c69",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T20:01:15Z",
+      "side": 1,
+      "message": "Why the change to level from edge? So you don\u0027t miss that edge?",
+      "parentUuid": "7cc6eab1_af13af86",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b13747c9_77f007be",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -265,6 +283,24 @@
     },
     {
       "key": {
+        "uuid": "50d84f94_d9d46189",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T20:01:15Z",
+      "side": 1,
+      "message": "I thought we blocked deep sleep if there were outstanding timers....\n\n\u003e-------\u003e-------/* Don\u0027t enable sleep if there is about to be an event */\n\u003e-------\u003e-------next_evt_us \u003d __hw_clock_event_get() - __hw_clock_source_read();\n\n\nSo we won\u0027t be sleeping ever unless next_event_us exceeds EVENT_MIN which is 500us granularity it seems. We\u0027d be burning power in this case.",
+      "parentUuid": "f829e829_f2ccd5b3",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98d63c9f_5a7bf3b8",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -294,6 +330,24 @@
       "side": 1,
       "message": "this is a speculative call in case there is a pending reset request. We want to flash the event mask so that that pending reset does not trigger a reset when task  Is the comment not clear?\n\n(0) means exit immediately if there is no pending events, -1 would mean wait indefinitely, which we don\u0027t want to do here in case the reset event is not going to be generated.",
       "parentUuid": "98d63c9f_5a7bf3b8",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c7d90d4_07606e86",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T20:01:15Z",
+      "side": 1,
+      "message": "I don\u0027t see where 0 is handled any differently than -1.  See core/cortex-m0/task.c 0 is the same as -1 which is wait until an event comes in. \n\nPresumably we should always be here waiting for the reset. We either just had a power on reset or woke from deep sleep. All such cases the AP should be just coming out of reset itself so we should be waiting.",
+      "parentUuid": "201e18d9_3fdc81e8",
       "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
