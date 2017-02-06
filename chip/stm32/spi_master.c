@@ -18,6 +18,9 @@
 
 /* The second (and third if available) SPI port are used as master */
 static stm32_spi_regs_t *SPI_REGS[] = {
+#ifdef CONFIG_STM32_SPI1_MASTER
+	STM32_SPI1_REGS,
+#endif
 	STM32_SPI2_REGS,
 #if defined(CHIP_VARIANT_STM32F373) || defined(CHIP_FAMILY_STM32L4)
 	STM32_SPI3_REGS,
@@ -38,9 +41,21 @@ static struct mutex spi_mutex[ARRAY_SIZE(SPI_REGS)];
 
 /* Default DMA channel options */
 static const struct dma_option dma_tx_option[] = {
+#ifdef CONFIG_STM32_SPI1_MASTER
+	{
+		STM32_DMAC_SPI1_TX, (void *)&STM32_SPI1_REGS->dr,
+		STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
+#ifdef CHIP_FAMILY_STM32F4
+		| STM32_DMA_CCR_CHANNEL(STM32_SPI1_TX_REQ_CH)
+#endif
+	},
+#endif
 	{
 		STM32_DMAC_SPI2_TX, (void *)&STM32_SPI2_REGS->dr,
 		STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
+#ifdef CHIP_FAMILY_STM32F4
+		| STM32_DMA_CCR_CHANNEL(STM32_SPI2_TX_REQ_CH)
+#endif
 	},
 #if defined(CHIP_VARIANT_STM32F373) || defined(CHIP_FAMILY_STM32L4)
 	{
@@ -51,9 +66,21 @@ static const struct dma_option dma_tx_option[] = {
 };
 
 static const struct dma_option dma_rx_option[] = {
+#ifdef CONFIG_STM32_SPI1_MASTER
+	{
+		STM32_DMAC_SPI1_RX, (void *)&STM32_SPI1_REGS->dr,
+		STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
+#ifdef CHIP_FAMILY_STM32F4
+		| STM32_DMA_CCR_CHANNEL(STM32_SPI1_RX_REQ_CH)
+#endif
+	},
+#endif
 	{
 		STM32_DMAC_SPI2_RX, (void *)&STM32_SPI2_REGS->dr,
 		STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
+#ifdef CHIP_FAMILY_STM32F4
+		| STM32_DMA_CCR_CHANNEL(STM32_SPI2_RX_REQ_CH)
+#endif
 	},
 #if defined(CHIP_VARIANT_STM32F373) || defined(CHIP_FAMILY_STM32L4)
 	{
@@ -156,7 +183,7 @@ int spi_enable(int port, int enable)
 static int spi_dma_start(int port, const uint8_t *txdata,
 		uint8_t *rxdata, int len)
 {
-	stm32_dma_chan_t *txdma;
+	dma_chan_t *txdma;
 
 	/* Set up RX DMA */
 	dma_start_rx(&dma_rx_option[port], len, rxdata);
