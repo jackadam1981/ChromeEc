@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "d377b30a_089d5c80",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 3657,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-06T16:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a50a42f7_baaf56dd",
+      "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76e137eb_c65ed033",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 9
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "d5fdad2d_c739c602",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-06T16:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76e137eb_c65ed033",
+      "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "408cf860_2b5ef87e",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 9
@@ -65,6 +101,24 @@
         "endLine": 373,
         "endChar": 23
       },
+      "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "806ce6bb_18a9174f",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-06T16:38:49Z",
+      "side": 1,
+      "message": "1. I don\u0027t want to cast it to (int *). 2. I want to ensure fields with an error have 0xff.",
+      "parentUuid": "408cf860_2b5ef87e",
       "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -94,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "087f99f7_721d0848",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-06T16:38:49Z",
+      "side": 1,
+      "message": "Could you elaborate?",
+      "parentUuid": "cf467ff2_16cd0453",
+      "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1dd04f16_ed34b33e",
         "filename": "include/ec_commands.h",
         "patchSetId": 9
@@ -114,6 +186,24 @@
       "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e535bc55_9c04bd7b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4004,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-06T16:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dd04f16_ed34b33e",
+      "revId": "ed55d6c9248eba1ded3c3c2de021d6852d6122ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
