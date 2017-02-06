@@ -40,6 +40,10 @@
 #include "config-stm32l442.h"
 #elif defined(CHIP_VARIANT_STM32F446)
 #include "config-stm32f446.h"
+#elif defined(CHIP_VARIANT_STM32F412)
+#include "config-stm32f412.h"
+#elif defined(CHIP_VARIANT_STM32F401)
+#include "config-stm32f401.h"
 #elif defined(CHIP_VARIANT_STM32F373)
 #include "config-stm32f373.h"
 #elif defined(CHIP_VARIANT_STM32F09X)
@@ -67,7 +71,8 @@
 /* Program is run directly from storage */
 #define CONFIG_MAPPED_STORAGE_BASE CONFIG_PROGRAM_MEMORY_BASE
 
-#if !defined(CHIP_VARIANT_STM32F446) && !defined(CHIP_VARIANT_STM32F09X)
+#if !defined(CHIP_VARIANT_STM32F446) && !defined(CHIP_VARIANT_STM32F09X) && \
+	!defined(CHIP_VARIANT_STM32F412) && !defined(CHIP_VARIANT_STM32F401)
 /* Compute the rest of the flash params from these */
 #include "config_std_internal_flash.h"
 #endif
