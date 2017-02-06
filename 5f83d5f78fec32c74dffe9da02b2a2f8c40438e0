@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "71f71ce8_c27f4e86",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T23:05:08Z",
+      "side": 1,
+      "message": "yes, added a comment.",
+      "parentUuid": "43790b81_9efd8c69",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b13747c9_77f007be",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -207,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "8485eaf3_1e697c9f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T23:05:08Z",
+      "side": 1,
+      "message": "crosbug.com/p/62659",
+      "parentUuid": "736285cb_d7b14ff9",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a51532d9_46067b97",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -242,6 +278,24 @@
       "side": 1,
       "message": "yes, in case of x86 it is plt_rst_l in case of ARM it is AP UART. I\u0027ll clarify the comment.",
       "parentUuid": "a51532d9_46067b97",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3eb6400_be5aa8fb",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T23:05:08Z",
+      "side": 1,
+      "message": "oh, just missed it that it was of vs or, fixed.",
+      "parentUuid": "cef08ab9_33bc6861",
       "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -301,6 +355,24 @@
     },
     {
       "key": {
+        "uuid": "e29c0136_6ebc0731",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T23:05:08Z",
+      "side": 1,
+      "message": "good point. let me fix this.",
+      "parentUuid": "50d84f94_d9d46189",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98d63c9f_5a7bf3b8",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -348,6 +420,24 @@
       "side": 1,
       "message": "I don\u0027t see where 0 is handled any differently than -1.  See core/cortex-m0/task.c 0 is the same as -1 which is wait until an event comes in. \n\nPresumably we should always be here waiting for the reset. We either just had a power on reset or woke from deep sleep. All such cases the AP should be just coming out of reset itself so we should be waiting.",
       "parentUuid": "201e18d9_3fdc81e8",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c077f99_6b64b2ec",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T23:05:08Z",
+      "side": 1,
+      "message": "ah, you are right! changed.",
+      "parentUuid": "8c7d90d4_07606e86",
       "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
