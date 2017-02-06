@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3df5a32f_476d1198",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T18:53:38Z",
+      "side": 1,
+      "message": "So you\u0027re configuring these to keep wfi from entering a sleep state? Where is the sleep sequence documented for this part? It\u0027s important you comment in here that you\u0027re relying on these not just for waking but for some behavior around the idle task.\n\nHow doesn\u0027t this expected behavior *not* keep the system from regular sleeping too? What\u0027s the power impact?",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b13747c9_77f007be",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T18:53:38Z",
+      "side": 1,
+      "message": "stale comment?",
+      "range": {
+        "startLine": 439,
+        "startChar": 42,
+        "endLine": 439,
+        "endChar": 58
+      },
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7033132_ed75c7fc",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T18:53:38Z",
+      "side": 1,
+      "message": "stale comment?",
+      "range": {
+        "startLine": 452,
+        "startChar": 42,
+        "endLine": 452,
+        "endChar": 58
+      },
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91faf481_3ea3d74a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T18:53:38Z",
+      "side": 1,
+      "message": "Please comment why the deferred function is now being canceled conditionally.",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d77d0de_72a1fe89",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T18:53:38Z",
+      "side": 1,
+      "message": "We really need to improve this device state code. We\u0027re open coding transitions and filtering in functions spread out through the code base. I really think the device_state stuff as written is just causing more confusion.",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a51532d9_46067b97",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T18:53:38Z",
+      "side": 1,
+      "message": "or ?",
+      "range": {
+        "startLine": 855,
+        "startChar": 18,
+        "endLine": 855,
+        "endChar": 20
+      },
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f42ab5d_5246d02c",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T18:53:38Z",
+      "side": 1,
+      "message": "We\u0027re just going to continue waking up every 50us? Or will we ever go back to deep sleep with a timer pending with a low expiration? I\u0027m concerned about power in the face of waking from deep sleep and never going back.",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98d63c9f_5a7bf3b8",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T18:53:38Z",
+      "side": 1,
+      "message": "Why did you pass 0 instead of -1 here?",
+      "revId": "5f83d5f78fec32c74dffe9da02b2a2f8c40438e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
