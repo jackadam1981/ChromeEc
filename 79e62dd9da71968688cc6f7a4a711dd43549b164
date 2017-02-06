@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "1ced7b67_ee30dfa6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T23:35:25Z",
+      "side": 1,
+      "message": "not really, TPM_RST_L is set to 0, and we want the device AP to be brought to state \u0027ON\u0027.",
+      "parentUuid": "fe24a05c_ce1d9160",
+      "revId": "79e62dd9da71968688cc6f7a4a711dd43549b164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "003b8fe7_9d2f193b",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "9b14ff2d_edd89542",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T23:35:25Z",
+      "side": 1,
+      "message": "I don\u0027t think we can. when gpio interrupt calls device_state_on, it passed in the interrupt number.\n\nAnd TPM reset is interrupt 0, DEVICE AP is interrupt one.",
+      "parentUuid": "003b8fe7_9d2f193b",
+      "revId": "79e62dd9da71968688cc6f7a4a711dd43549b164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "584bb6f5_6c5d68f7",
         "filename": "common/tpm_registers.c",
         "patchSetId": 3
@@ -65,6 +101,24 @@
         "endLine": 797,
         "endChar": 28
       },
+      "revId": "79e62dd9da71968688cc6f7a4a711dd43549b164",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1111747d_aaa65b67",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-06T23:35:25Z",
+      "side": 1,
+      "message": "there should be no other events at this time. I would rather print an error here (and then add information about this error to the set of errors reported by TPM errors).",
+      "parentUuid": "584bb6f5_6c5d68f7",
       "revId": "79e62dd9da71968688cc6f7a4a711dd43549b164",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
