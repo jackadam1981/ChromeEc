@@ -114,6 +114,29 @@
       "revId": "5f816858c19b2877c41308669aa85dcee6e40af2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6cc0b46_489ec2ed",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1427,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-06T22:05:54Z",
+      "side": 1,
+      "message": "I think we need to change this to Rp for compatibility.\n\n- Some TCPCs don\u0027t support TYPEC_CC_OPEN.\n- Even the TCPCI spec mentions \"disconnect or don\u0027t care\" for the relevant register setting, so TCPC vendors could easily implement \"don\u0027t care\".\n\nIf we provide Rp briefly, it should guarantee that the partner port stops providing VBUS, and since we aren\u0027t providing VBUS ourselves, I think no harm will come of it.",
+      "range": {
+        "startLine": 1427,
+        "startChar": 19,
+        "endLine": 1427,
+        "endChar": 32
+      },
+      "revId": "5f816858c19b2877c41308669aa85dcee6e40af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
