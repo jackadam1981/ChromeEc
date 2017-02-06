@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3624b0_af5473b1",
+        "filename": "board/snappy/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T23:03:13Z",
+      "side": 1,
+      "message": "Please don\u0027t capitalize the \u0027x\u0027. And can we just use lower case hex digits too?",
+      "range": {
+        "startLine": 168,
+        "startChar": 26,
+        "endLine": 168,
+        "endChar": 29
+      },
+      "revId": "933169d1eaba2356524cb7f495b9d2b6ab8bd6cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
