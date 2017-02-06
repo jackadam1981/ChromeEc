@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c36f2de_85192c7d",
+        "filename": "board/snappy/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-06T21:31:25Z",
+      "side": 1,
+      "message": "What happens power_tick rolls over to negative territory? It\u0027d a long time, but I feel like you should change the type of power tick.  Yes, it would take 70 years, but I feel like we shouldn\u0027t allow that to fail.\n\nAlso, isn\u0027t this just turning on the led for 2 seconds then turning if off for 2 seconds?",
+      "revId": "838db0f738711b86577a1da19f361624032589b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
