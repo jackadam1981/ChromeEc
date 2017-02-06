@@ -16,6 +16,29 @@
       "revId": "838db0f738711b86577a1da19f361624032589b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "598ab71a_78473dda",
+        "filename": "board/snappy/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1003217
+      },
+      "writtenOn": "2017-02-06T21:50:42Z",
+      "side": 1,
+      "message": "I\u0027d suggest leaving tick at 250ms and changing this to:\n\n(power_tick | 0xF \u003e\u003d 0xC) ? LED_WHITE : LED_OFF\n\nIf you do change to led_second then battery states need to be changed accordingly",
+      "range": {
+        "startLine": 168,
+        "startChar": 4,
+        "endLine": 168,
+        "endChar": 26
+      },
+      "revId": "838db0f738711b86577a1da19f361624032589b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
