@@ -22,6 +22,30 @@
       "revId": "57a448753f95c832bc64eaa5b55646f5359a3637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4daed98c_81d217da",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-07T22:32:02Z",
+      "side": 1,
+      "message": "Yes, the idea is that the external charger will stop providing VBUS, when EC boots to RO, except for initial EC power-on (because for initial power-on, we already know the state of the external charger).",
+      "parentUuid": "746cb404_083bc46e",
+      "range": {
+        "startLine": 1441,
+        "startChar": 1,
+        "endLine": 1441,
+        "endChar": 64
+      },
+      "revId": "57a448753f95c832bc64eaa5b55646f5359a3637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
