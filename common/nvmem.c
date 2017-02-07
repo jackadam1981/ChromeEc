@@ -408,6 +408,11 @@ int nvmem_init(void)
 	nvmem_error_state = EC_SUCCESS;
 	nvmem_write_error = 0;
 
+	/*
+	 * Enable commits prior to finding partition in case no valid partitions
+	 * are found and the partitions must be setup.
+	 */
+	commits_enabled = 1;
 	ret = nvmem_find_partition();
 
 	if (ret != EC_SUCCESS) {
@@ -418,7 +423,6 @@ int nvmem_init(void)
 	}
 
 	CPRINTS("Active Nvmem partition set to %d", nvmem_act_partition);
-	commits_enabled = 1;
 
 	return EC_SUCCESS;
 }
