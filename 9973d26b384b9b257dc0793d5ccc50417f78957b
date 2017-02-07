@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56a233a1_868fcded",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-07T17:09:48Z",
+      "side": 1,
+      "message": "lossless",
+      "range": {
+        "startLine": 27,
+        "startChar": 52,
+        "endLine": 27,
+        "endChar": 59
+      },
+      "revId": "9973d26b384b9b257dc0793d5ccc50417f78957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "217e582a_8afaa3f4",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-07T17:09:48Z",
+      "side": 1,
+      "message": "I try to avoid table, as they use flash space.\nyou can ditch 12.5hz as it is close to 10Hz and then you have\n\nif (i \u003c 5)\n  return 1250 \u003c\u003c i;\nelse\n  return  25000  \u003c\u003c (i - 5)",
+      "revId": "9973d26b384b9b257dc0793d5ccc50417f78957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9c2d487_952cc266",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-07T17:09:48Z",
+      "side": 1,
+      "message": "Or use CPRINTF and enable/disable CC_ACCEL channel.",
+      "revId": "9973d26b384b9b257dc0793d5ccc50417f78957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fdaf0f2_c539b9f4",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-07T17:09:48Z",
+      "side": 1,
+      "message": "there is a gcc command for that: msb \u003d 16 - __builtin_clz(raw)",
+      "revId": "9973d26b384b9b257dc0793d5ccc50417f78957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42c5228_5b72d987",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-07T17:09:48Z",
+      "side": 1,
+      "message": "as written above, you don\u0027t need an array and loop if you simplify the choice of frequencies.",
+      "revId": "9973d26b384b9b257dc0793d5ccc50417f78957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "567c0229_dcbad694",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-07T17:09:48Z",
+      "side": 1,
+      "message": "as we chat over, when you change the rate for the prox, you may alter the ALS rate, which is forbidden by Android (https://source.android.com/devices/sensors/interaction.html) : \"\"\"Android sensors must be able to work simultaneously and independently of one another. That is, any action on one Android sensor must not impact the behavior of the other sensors. \n....\ncannot cause:\n...\nanother activated sensor to change sampling rate\n...\n\"\"\"\nThis is why I use the forced mode on Ryu. For the problem at hand, remove proximity support.",
+      "revId": "9973d26b384b9b257dc0793d5ccc50417f78957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5108cf5_bbf5fe43",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-07T17:09:48Z",
+      "side": 1,
+      "message": "you need to take rnd into account.",
+      "revId": "9973d26b384b9b257dc0793d5ccc50417f78957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49981cb4_31be4c4c",
+        "filename": "driver/als_si114x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-07T17:09:48Z",
+      "side": 1,
+      "message": "move this in a test file.",
+      "revId": "9973d26b384b9b257dc0793d5ccc50417f78957b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
