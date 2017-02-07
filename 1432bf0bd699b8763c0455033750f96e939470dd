@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1571cf15_0ab5482d",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-07T16:37:07Z",
+      "side": 1,
+      "message": "#define PROFILE_RANGE_NUM (CONFIG_CHARGER_PROFILE_RANGES + 1)\n#define VOTLAGE_MV_LAST_ENTRY (500*1000)  /* 500V arbitrarily large number we don\u0027t support */\n\nINT_MAX would probably be better, but it\u0027s not in our code base.\n\nThen you always have matching indicies between your voltages and your currents for the ranges. It does require the encoding to be done correctly in battery.c. That or I suggest you don\u0027t bake in a default values at array index + 1. Just make a default_current_mA field in that case.",
+      "revId": "1432bf0bd699b8763c0455033750f96e939470dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
