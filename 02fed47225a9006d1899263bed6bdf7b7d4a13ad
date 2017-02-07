@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "fe50edb7_68532fc9",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-07T16:54:56Z",
+      "side": 1,
+      "message": "this range is used for current_mA[] values. Should I rename it as current_range? So it wont exceed the range",
+      "parentUuid": "351824e9_4bb92c4e",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c3d0c75_04935c6f",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 1
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "It doesn\u0027t need to be +1. If you exceed the voltage range you should drop to a default value that isn\u0027t magically encoded in the array.",
       "parentUuid": "5f8bf8e1_476ea0f8",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbb1c24b_569e9158",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-07T16:54:56Z",
+      "side": 1,
+      "message": "if we make both index same values we increase the size which we can avoid",
+      "parentUuid": "001ea90f_725d08fc",
       "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -196,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "636c09c4_f1524096",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-07T16:54:56Z",
+      "side": 1,
+      "message": "it will be a unused value",
+      "parentUuid": "82c20c33_06dacf1d",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06bb8f19_b6b31842",
         "filename": "include/charger_profile_override.h",
         "patchSetId": 1
@@ -207,6 +261,24 @@
       "writtenOn": "2017-02-07T15:20:21Z",
       "side": 1,
       "message": "An ordering is implied in the code. Please document that assumption here.",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aac36e2_9b08a244",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-07T16:54:56Z",
+      "side": 1,
+      "message": "okay added",
+      "parentUuid": "06bb8f19_b6b31842",
       "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
