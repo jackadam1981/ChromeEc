@@ -69,6 +69,24 @@
       "revId": "3b211135e78ca937fe1c4d882a28b946dc8dcfe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6969090e_6c3660f9",
+        "filename": "power/mediatek.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-02-07T01:40:00Z",
+      "side": 1,
+      "message": "I think we should keep it for oak/elm/hana board. isn\u0027t it ?",
+      "parentUuid": "6c449c16_ec9bb531",
+      "revId": "3b211135e78ca937fe1c4d882a28b946dc8dcfe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
