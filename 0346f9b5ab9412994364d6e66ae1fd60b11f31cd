@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d5e7441_f08e9e42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-07T10:34:51Z",
+      "side": 1,
+      "message": "is this really the vendor ID assigned by the USB-IF to Analogix ?\nor are they stuffing fake values.",
+      "range": {
+        "startLine": 12,
+        "startChar": 11,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "0346f9b5ab9412994364d6e66ae1fd60b11f31cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06f0b43c_57af4ac1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-07T10:34:51Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of a large sleep on this path.\nMaybe we should pre-cache this value at init.",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 13
+      },
+      "revId": "0346f9b5ab9412994364d6e66ae1fd60b11f31cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28556b90_5c3b32b5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-07T10:34:51Z",
+      "side": 1,
+      "message": "this means a regular TCPCI chip would just failed here.\nmaybe better to just keep the 0xffff in this case and continue",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 33
+      },
+      "revId": "0346f9b5ab9412994364d6e66ae1fd60b11f31cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
