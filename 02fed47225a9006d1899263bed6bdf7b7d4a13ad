@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e25387a_baa20fac",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-07T15:20:21Z",
+      "side": 1,
+      "message": "This is confusing. If there\u0027s a relationship to the voltage and current we should tie them together better.",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c3d0c75_04935c6f",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-07T15:20:21Z",
+      "side": 1,
+      "message": "Why not just do a for loop?",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a70df1ae_b8aa51e5",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-07T15:20:21Z",
+      "side": 1,
+      "message": "I don\u0027t see the point of this enum any longer.",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a3e7cab_3a515038",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-07T15:20:21Z",
+      "side": 1,
+      "message": "Why is this +1 ? It\u0027s not explained. I guess that\u0027s your way of defining a default? Why not put in a default field that explicitly handles that case? It\u0027s a lot less subtle than plyaing array indexing games.",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06bb8f19_b6b31842",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-07T15:20:21Z",
+      "side": 1,
+      "message": "An ordering is implied in the code. Please document that assumption here.",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
