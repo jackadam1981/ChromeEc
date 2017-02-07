@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78326c88_3ca2f33a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-07T01:37:22Z",
+      "side": 1,
+      "message": "This isn\u0027t true any more",
+      "range": {
+        "startLine": 661,
+        "startChar": 0,
+        "endLine": 666,
+        "endChar": 51
+      },
+      "revId": "482a5c304701732b0ce1f6b5f64d08a083180aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f3da008_a0da8213",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-07T01:37:22Z",
+      "side": 1,
+      "message": "This needs to be done for GPIO_DETECT_AP no matter what now.",
+      "range": {
+        "startLine": 823,
+        "startChar": 0,
+        "endLine": 824,
+        "endChar": 3
+      },
+      "revId": "482a5c304701732b0ce1f6b5f64d08a083180aca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
