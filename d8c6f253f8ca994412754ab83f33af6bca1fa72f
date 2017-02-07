@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "361c60b2_49baf7e3",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-07T00:38:19Z",
+      "side": 1,
+      "message": "shaoliang: If I clear CABLE_DET, ANX keeps waking up even when accessory is attached in S5.\nI will be on leave Divya will help debug this.",
+      "range": {
+        "startLine": 80,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 38
+      },
+      "revId": "d8c6f253f8ca994412754ab83f33af6bca1fa72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
