@@ -161,4 +161,5 @@ SECTIONS
 
 	def_irq_low  = ABSOLUTE(default_int_handler) & 0xFFFF;
 	def_irq_high = ABSOLUTE(default_int_handler) >> 16;
+	__image_size = .;
 }
