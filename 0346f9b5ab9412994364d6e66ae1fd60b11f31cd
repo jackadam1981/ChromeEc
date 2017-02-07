@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "99ab516d_f390d9a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-07T19:35:37Z",
+      "side": 1,
+      "message": "This is actually what they stuff in the chip. It\u0027s documented in the register specification.",
+      "parentUuid": "2d5e7441_f08e9e42",
+      "revId": "0346f9b5ab9412994364d6e66ae1fd60b11f31cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06f0b43c_57af4ac1",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 10
@@ -42,6 +60,24 @@
         "endLine": 368,
         "endChar": 13
       },
+      "revId": "0346f9b5ab9412994364d6e66ae1fd60b11f31cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61169a2a_cc0f894c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-07T19:35:37Z",
+      "side": 1,
+      "message": "I changed the code to read all values at chip init and store them in cache. We have to make sure when we reset the chip, the values are read again in case a newer version is flashed.",
+      "parentUuid": "06f0b43c_57af4ac1",
       "revId": "0346f9b5ab9412994364d6e66ae1fd60b11f31cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -68,6 +104,24 @@
       "revId": "0346f9b5ab9412994364d6e66ae1fd60b11f31cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a393328_bd1d8cb5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-07T19:35:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28556b90_5c3b32b5",
+      "revId": "0346f9b5ab9412994364d6e66ae1fd60b11f31cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
