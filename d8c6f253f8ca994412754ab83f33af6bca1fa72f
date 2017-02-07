@@ -22,6 +22,24 @@
       "revId": "d8c6f253f8ca994412754ab83f33af6bca1fa72f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "018d1b1d_bace1ae7",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2017-02-07T02:42:44Z",
+      "side": 1,
+      "message": "I think \"when accessory(E-Mark cable) is still attached,\"\nCC voltage is Ra -\u003e Cable det high (ANX3429 analog control) -\u003e TCPM enter normal mode -\u003e Nothing be found by TCPM -\u003e TCPM Clear Cable Det pin (0x41:bit7 \u003d 0)-\u003e go to low power mode -\u003e CC voltage is Ra -\u003e Cable det high (ANX3429 analog control) -\u003e TCPM enter normal mode -\u003e Nothing be found by TCPM -\u003e TCPM Clear Cable Det pin (0x41:bit7 \u003d 0) -\u003e go to low power mode -\u003e CC voltage is Ra-\u003e …\nWhen only E-mark cable is attached, EC will run as the above flow to wait for something (charger/docking ...).\n\nReason: under low power mode, if CC \u003dRa, Cable det pin shall be pulled high by ANX3429.",
+      "parentUuid": "361c60b2_49baf7e3",
+      "revId": "d8c6f253f8ca994412754ab83f33af6bca1fa72f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
