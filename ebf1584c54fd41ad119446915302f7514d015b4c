@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "773db6ab_6b3c63f6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 3661,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-07T19:35:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is necessary or we can rewrite args-\u003eresponse with the pointer to the chip info cache.",
+      "range": {
+        "startLine": 3661,
+        "startChar": 1,
+        "endLine": 3661,
+        "endChar": 52
+      },
+      "revId": "ebf1584c54fd41ad119446915302f7514d015b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
