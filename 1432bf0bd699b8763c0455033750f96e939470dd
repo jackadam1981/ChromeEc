@@ -16,6 +16,24 @@
       "revId": "1432bf0bd699b8763c0455033750f96e939470dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6cb5340_0cc170f5",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-07T16:56:41Z",
+      "side": 1,
+      "message": "code looks clean but we increase the code size by doing this.",
+      "parentUuid": "1571cf15_0ab5482d",
+      "revId": "1432bf0bd699b8763c0455033750f96e939470dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
