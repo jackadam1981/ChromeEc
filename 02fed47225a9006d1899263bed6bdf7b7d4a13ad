@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "351824e9_4bb92c4e",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-07T16:31:42Z",
+      "side": 1,
+      "message": "But this index exceeds the array size. That\u0027s confusing.",
+      "parentUuid": "35b7ce82_25d930a9",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c3d0c75_04935c6f",
         "filename": "common/charger_profile_override.c",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "current_mA array size is +1 of the voltage_mV array size because the last voltage range is batt max. Hence want to explicitly check for the range even for batteries with one voltage ranges.",
       "parentUuid": "7c3d0c75_04935c6f",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "001ea90f_725d08fc",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-07T16:31:42Z",
+      "side": 1,
+      "message": "It doesn\u0027t need to be +1. If you exceed the voltage range you should drop to a default value that isn\u0027t magically encoded in the array.",
+      "parentUuid": "5f8bf8e1_476ea0f8",
       "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -136,6 +172,24 @@
       "side": 1,
       "message": "last range of voltage is battery max hence +1 here. I will add a comment",
       "parentUuid": "0a3e7cab_3a515038",
+      "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82c20c33_06dacf1d",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-07T16:31:42Z",
+      "side": 1,
+      "message": "I don\u0027t think that makes things clearer. you have a voltage ranges that are exclusive and you check v \u003c range. If we run out of ranges to check then we should just use a default value and explicitly set it in such a field. Alternatively you, always have an encompassing votlage_mv entry like the temperatures such that the last entry should always be meet v \u003c range_mv. as the last range_mv is encompasses all possible values. that way, the indexing is consistent within each array.",
+      "parentUuid": "2ab2fa87_28f17784",
       "revId": "02fed47225a9006d1899263bed6bdf7b7d4a13ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
