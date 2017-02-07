@@ -34,6 +34,24 @@
       "revId": "1432bf0bd699b8763c0455033750f96e939470dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fbe9c2e_1219cbdb",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-07T17:17:15Z",
+      "side": 1,
+      "message": "Yes. by one int per fst_charge_params structure. That\u0027s per battery iirc. so it\u0027s 5 * sizeof(int) increase, right? If you don\u0027t want to do that then stick an explicit field in fast_charge_profile for default current.",
+      "parentUuid": "d6cb5340_0cc170f5",
+      "revId": "1432bf0bd699b8763c0455033750f96e939470dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
