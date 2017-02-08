@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0a4be75_bef7a93c",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2017-02-08T23:41:27Z",
+      "side": 1,
+      "message": "wasting two gpios on this seems expensive.\n\nMaybe a better idea is to use device_state infrastructure for this. There is no need in immediate reaction to battery connect/disconnect events.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "ec4546dd8bd018daa29e3d28332349fb265d1877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
