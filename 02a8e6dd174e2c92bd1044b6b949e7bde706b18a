@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "902319ba_ade0e85c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T16:05:00Z",
+      "side": 1,
+      "message": "OK. But if DSW drops out we\u0027re at a loss in general... that ties in with my comments on the bug. Assuming EC is in DSW domain then we\u0027re likely ok since EC loses state too. But it\u0027s important to note our dependencies. Do we know that eSPI is in DSW domain too?",
+      "parentUuid": "24dc2e08_57aa56d8",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbf50d33_aa2aa8c5",
         "filename": "chip/npcx/espi.c",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "According to the spec, any unplanned reset event in host/PCH will result in an abrupt assertion of eSPI_Reset#, thus prematurely terminating any eSPI transactions that were going on. Also, the motivation behind adding a dedicated reset pin is to handle all kinds of global reset events and thus it acts as the fundamental reset to the eSPI interface.\n\nMy understanding of the spec is that no matter what component fails, eSPI_Reset# should always be asserted to the EC.",
       "parentUuid": "bbf50d33_aa2aa8c5",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb65f08_22037798",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T16:05:00Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "6f9911b6_67607db4",
       "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -136,6 +172,24 @@
       "side": 1,
       "message": "I agree it would be cleaner to kick the state machine without affecting any of its states directly. But the problem that I encountered was:\n1. This flag cannot be added as a power signal since all power signals are treated as gpios which are read to identify the value\n2. If we decide to simply add a global flag, I believe it would have to go in power/skylake.c (or to generalize in power/\u003cchipset\u003e.c) that will have to implement a function like chipset_handle_espi_reset(). For skylake, this will simply release the power button press and let the rest of state machine handle things on its own. But this chipset_handle_espi_reset will have to be provided by all chipsets that want to handle the espi_reset.\n\nDoes #2 above sound like a safer way?",
       "parentUuid": "921cc968_d1c30148",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79f33858_8b9229a6",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T16:05:00Z",
+      "side": 1,
+      "message": "I think we can do the virtual power signalling in common/power.c. By having a concept of a virtual state? It would not be a part of POWER_SIGNAL_COUNT. It would be a manipulation of in_signals. The calls can manipulate the state of the virtual signal signal by clearing/setting it in the right place. I think we could likely make it generic in some manner.\n\nIf manipulating the power signal mask is too much of a pain then you would still need the same logic for bailing out of a state. But that could be from a call to power_signal_interrupt().  Don\u0027t we just need to manipulate the state of the eSPI virtual wires and kick the chipset task? espi_vw_get_wire() needs to return asserted values for VW_SLP_S3_L and VW_SLP_S4_L. Can we not do that?",
+      "parentUuid": "8750ec7f_57750323",
       "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
