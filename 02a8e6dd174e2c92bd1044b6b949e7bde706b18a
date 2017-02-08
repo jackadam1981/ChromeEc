@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e2309b1b_5b8704ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-02-08T19:10:20Z",
+      "side": 1,
+      "message": "Yes, the EC resides in DSW domain.\n\nAbout eSPI -- all the virtual signals reside in DSW power well and are reset by DSW_PWROK. From the spec, it seems like the eSPI master controller also should be residing in DSW domain, because that is the first one to come out of reset.",
+      "parentUuid": "902319ba_ade0e85c",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bbf50d33_aa2aa8c5",
         "filename": "chip/npcx/espi.c",
         "patchSetId": 1
@@ -190,6 +208,24 @@
       "side": 1,
       "message": "I think we can do the virtual power signalling in common/power.c. By having a concept of a virtual state? It would not be a part of POWER_SIGNAL_COUNT. It would be a manipulation of in_signals. The calls can manipulate the state of the virtual signal signal by clearing/setting it in the right place. I think we could likely make it generic in some manner.\n\nIf manipulating the power signal mask is too much of a pain then you would still need the same logic for bailing out of a state. But that could be from a call to power_signal_interrupt().  Don\u0027t we just need to manipulate the state of the eSPI virtual wires and kick the chipset task? espi_vw_get_wire() needs to return asserted values for VW_SLP_S3_L and VW_SLP_S4_L. Can we not do that?",
       "parentUuid": "8750ec7f_57750323",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cffa8fdf_30e6cb61",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-02-08T19:10:20Z",
+      "side": 1,
+      "message": "So the problem here is that, when global reset event occurs, eSPI VW messages are not transmitted and so the slave does not know that the status of VW SLP_* signals has changed. espi_vw_get_wire() would still read the old values for all the SLP_* signals. However, once eSPI_Reset# is deasserted, PCH eSPI master controller sends the udpated VW SLP_* signals to the slave. This causes the slave (EC) to transition properly according to the received signals.\n\nThus, my initial thought was to just let the EC identify that there was a global reset event and take any necessary action i.e. in case of skylake release the power button that was being pressed. Once the eSPI_Reset# is de-asserted, PCH power signals would be re-sent by the master and cause appropriate transitions on the EC side.\n\nDo you think this could possess a problem if the PCH eSPI controller never gets out of reset? I am not sure how likely that condition is, because eSPI seems to come out of reset before anything else.",
+      "parentUuid": "79f33858_8b9229a6",
       "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
