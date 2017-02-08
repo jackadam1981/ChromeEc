@@ -69,6 +69,24 @@
       "revId": "52dcc7d2395b4034cbf499a27f7cf6e377c9f37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe2a61cb_70e0b78a",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T16:54:12Z",
+      "side": 1,
+      "message": "I think that was just an error of placement of \u0027commits_enabled \u003d 1;\u0027 If we disable commits here who\u0027s around to enable them again? We shouldn\u0027t be reliant on an outside module to call nvmem_enable_commits().  That seems really wrong. No where else do we disable commits in any of the error paths.",
+      "parentUuid": "a7f2a426_4267032d",
+      "revId": "52dcc7d2395b4034cbf499a27f7cf6e377c9f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
