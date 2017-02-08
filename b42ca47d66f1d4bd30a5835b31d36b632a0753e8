@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74e98dc2_d4d719ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T20:04:04Z",
+      "side": 1,
+      "message": "This is just working around the problem that powerbutton assertion is keeping the chipset from updating virtual wires?",
+      "revId": "b42ca47d66f1d4bd30a5835b31d36b632a0753e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caf9a0af_53ced0ae",
+        "filename": "power/skylake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T20:04:04Z",
+      "side": 1,
+      "message": "I was going to ask about slp_sus# assertion on warm reboot. Doc indicates eSPI reset doesn\u0027t assert in that condition so the slp_sus# is moot. espi reset\u0027s not like pltrst_l after all. From what I can tell there\u0027s quite a few corner cases of dealing with these signals., but this is probably the best work around currently.",
+      "revId": "b42ca47d66f1d4bd30a5835b31d36b632a0753e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
