@@ -22,6 +22,24 @@
       "revId": "f540833987077199d0b42e3dcb530fd7e906afa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "232a8581_2994b0de",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T20:05:07Z",
+      "side": 1,
+      "message": "We should still keep or modify line 160-161 (reg_ctrl2 \u0026 0xF) so that we are still clearing Bit7:4 for disconnection of the AUX/SBU signal mux?",
+      "parentUuid": "640eb2b6_37a5cc92",
+      "revId": "f540833987077199d0b42e3dcb530fd7e906afa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
