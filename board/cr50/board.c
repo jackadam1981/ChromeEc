@@ -35,6 +35,7 @@
 #include "usb_spi.h"
 #include "usb_i2c.h"
 #include "util.h"
+#include "wp.h"
 
 /* Define interrupt and gpio structs */
 #include "gpio_list.h"
@@ -758,6 +759,11 @@ struct device_config device_states[] = {
 		.detect = GPIO_DETECT_EC,
 		.name = "EC"
 	},
+	[DEVICE_BATTERY_PRESENT] = {
+		.deferred = NULL,
+		.detect = GPIO_BATT_PRES_L,
+		.name = "BattPrsnt"
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(device_states) == DEVICE_COUNT);
 
@@ -801,6 +807,28 @@ void device_state_on(enum gpio_signal signal)
 
 void board_update_device_state(enum device_type device)
 {
+	if (device == DEVICE_BATTERY_PRESENT) {
+		/* The battery presence pin is active low. */
+		int bp = !gpio_get_level(device_states[device].detect);
+		/* device_set_state() modifies last_known_state. */
+		int last_state = device_states[device].last_known_state;
+
+		/*
+		 * We use BATT_PRES_L as the source for write protect.  However,
+		 * since it can be overridden by a console command, only change
+		 * the write protect state when the battery presence pin has
+		 * changed.
+		 */
+		if ((device_set_state(device,
+				      bp ?
+				      DEVICE_STATE_ON : DEVICE_STATE_OFF)) &&
+		    (last_state != DEVICE_STATE_UNKNOWN)) {
+			CPRINTS("battery %spresent", bp ? "" : "NOT ");
+			set_wp_state(bp);
+		}
+		return;
+	}
+
 	if (device == DEVICE_SERVO && servo_state_unknown())
 		return;
 
