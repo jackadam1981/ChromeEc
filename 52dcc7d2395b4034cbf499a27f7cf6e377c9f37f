@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "56090932_5b1c45b1",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-08T16:38:02Z",
+      "side": 1,
+      "message": "Yes, by default commits must be enabled. But, this must happen prior to calling nvmem_find_partition so the the reinitialization path is successful. I think your wording above captures this idea.",
+      "parentUuid": "4a64e86c_ff2706c4",
+      "revId": "52dcc7d2395b4034cbf499a27f7cf6e377c9f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e8756f0_794db891",
         "filename": "common/nvmem.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-08T16:20:57Z",
       "side": 1,
       "message": "I think what you had before was fine and that we shouldn\u0027t be changing commits enabled in this path.",
+      "revId": "52dcc7d2395b4034cbf499a27f7cf6e377c9f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7f2a426_4267032d",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-08T16:38:02Z",
+      "side": 1,
+      "message": "By setting it to 0 here, in the failure case, commits will not be enabled. This would keep the overall behavior similar to what we had before with respect to the initial state of \u0027commits_enabled\u0027. Note, this error path can only happen if for some reason the flash erase/write of nvmem fails during nvmem_setup which is called when no existing valid partitions were found.",
+      "parentUuid": "7e8756f0_794db891",
       "revId": "52dcc7d2395b4034cbf499a27f7cf6e377c9f37f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
