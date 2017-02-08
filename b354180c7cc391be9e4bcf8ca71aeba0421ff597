@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "cdfbf113_56cd9a0e",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-08T19:01:01Z",
+      "side": 1,
+      "message": "Alright, I\u0027ll move them to that bank.",
+      "parentUuid": "7a526934_1d809c92",
+      "revId": "b354180c7cc391be9e4bcf8ca71aeba0421ff597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47a204ed_ab6775d9",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 4
@@ -42,6 +60,24 @@
         "endLine": 85,
         "endChar": 16
       },
+      "revId": "b354180c7cc391be9e4bcf8ca71aeba0421ff597",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3c43c0_b2b49615",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-08T19:01:01Z",
+      "side": 1,
+      "message": "Ah, that\u0027s true and saves a pin.",
+      "parentUuid": "47a204ed_ab6775d9",
       "revId": "b354180c7cc391be9e4bcf8ca71aeba0421ff597",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
