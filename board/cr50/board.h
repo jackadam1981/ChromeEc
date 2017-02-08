@@ -144,6 +144,7 @@ enum device_type {
 	DEVICE_AP = 0,
 	DEVICE_EC,
 	DEVICE_SERVO,
+	DEVICE_BATTERY_PRESENT,
 
 	DEVICE_COUNT
 };
@@ -160,6 +161,7 @@ void board_configure_deep_sleep_wakepins(void);
 void tpm_rst_deasserted(enum gpio_signal signal);
 void device_state_on(enum gpio_signal signal);
 void post_reboot_request(void);
+void batt_present_change(enum gpio_signal signal);
 
 /* Special controls over EC and AP */
 void assert_sys_rst(void);
