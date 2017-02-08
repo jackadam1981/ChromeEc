@@ -22,6 +22,24 @@
       "revId": "5520a447c5bff4ea97ce2fcf25d6d92d94dd2fad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89c37e28_35e22446",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-08T22:53:11Z",
+      "side": 1,
+      "message": "We\u0027re not that strapped for space; I think we have about 46k free. I\u0027ll change it to make it clearer.",
+      "parentUuid": "b7a02916_a226da55",
+      "revId": "5520a447c5bff4ea97ce2fcf25d6d92d94dd2fad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
