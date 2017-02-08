@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed2fe9ba_76272d4a",
+        "filename": "board/discovery_stmems/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-08T19:15:49Z",
+      "side": 1,
+      "message": "Use /* only.",
+      "revId": "96c612853c70923b707080c2c59bfaa481c05e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07539d52_294c8852",
+        "filename": "board/discovery_stmems/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-08T19:15:49Z",
+      "side": 1,
+      "message": "You may want to leave the ODR/ec_rate to 0, and enable the sensor with accel_rate.",
+      "revId": "96c612853c70923b707080c2c59bfaa481c05e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bd77a9c_9bb6d43d",
+        "filename": "board/discovery_stmems/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-08T19:15:49Z",
+      "side": 1,
+      "message": "Do not use \u0027\u003d\u003d\u003d\u0027 they make difficult to find merge conflict when rebasing/cherry-picking",
+      "revId": "96c612853c70923b707080c2c59bfaa481c05e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124e92d1_aabb9e1d",
+        "filename": "board/discovery_stmems/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-08T19:15:49Z",
+      "side": 1,
+      "message": "Remove this #if,  CONFIG_ACCEL_LIS2DH defined in the same file.",
+      "revId": "96c612853c70923b707080c2c59bfaa481c05e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df041228_5e26820c",
+        "filename": "board/discovery_stmems/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-08T19:15:49Z",
+      "side": 1,
+      "message": "Do not redfined #undef variable if already #undef in /include/config.h",
+      "revId": "96c612853c70923b707080c2c59bfaa481c05e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5e3c56f_7d4ef7bc",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-08T19:15:49Z",
+      "side": 1,
+      "message": "put this change with the driver of LIS2DH",
+      "revId": "96c612853c70923b707080c2c59bfaa481c05e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
