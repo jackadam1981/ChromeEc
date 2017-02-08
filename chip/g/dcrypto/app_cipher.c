@@ -180,6 +180,7 @@ struct ciph_stats {
 	uint16_t min_time;
 	uint16_t max_time;
 	uint32_t total_time;
+	uint32_t cycle_count;
 } __packed; /* Just in case. */
 
 /* A common structure to contain information about the test run. */
@@ -195,9 +196,11 @@ static void init_stats(struct ciph_stats *stats)
 	stats->min_time = ~0;
 	stats->max_time = 0;
 	stats->total_time = 0;
+	stats->cycle_count = 0;
 }
 
-static void update_stats(struct ciph_stats *stats, uint32_t time)
+static void update_stats(struct ciph_stats *stats, uint32_t time,
+			uint32_t cycle)
 {
 	if (time < stats->min_time)
 		stats->min_time = time;
@@ -206,13 +209,16 @@ static void update_stats(struct ciph_stats *stats, uint32_t time)
 		stats->max_time = time;
 
 	stats->total_time += time;
+	stats->cycle_count += cycle;
 }
 
 static void report_stats(const char *direction, struct ciph_stats *stats)
 {
-	ccprintf("%s results: min %d us, max %d us, average %d us\n",
-		 direction, stats->min_time, stats->max_time,
-		 stats->total_time / number_of_iterations);
+	ccprintf("%s results: min %d us, max %d us, average %d us "
+		"(%d cycles)\n",
+		direction, stats->min_time, stats->max_time,
+		stats->total_time / number_of_iterations,
+		stats->cycle_count / number_of_iterations);
 }
 
 /*
@@ -254,7 +260,7 @@ static int prepare_running(struct test_info *pinfo)
 	pinfo->test_blob_size |= 7;
 
 	ccprintf("running %d iterations\n", number_of_iterations);
-	ccprintf("blob size %d at %p\n", pinfo->test_blob_size, pinfo->p);
+	ccprintf("blob size %d bytes at %p\n", pinfo->test_blob_size, pinfo->p);
 
 	init_stats(&(pinfo->enc_stats));
 	init_stats(&(pinfo->dec_stats));
@@ -328,6 +334,7 @@ static int command_loop(struct test_info *pinfo)
 	while (iteration--) {
 		char last_byte = (char) iteration;
 		uint32_t tstamp;
+		uint32_t cycles;
 
 		*p_last_byte = last_byte;
 
@@ -335,8 +342,10 @@ static int command_loop(struct test_info *pinfo)
 			watchdog_reload();
 
 		tstamp = get_time().val;
+		cycles = REG32(GC_M3_DWT_CYCCNT_ADDR);
 		rv = DCRYPTO_app_cipher(NVMEM, sha_after, pinfo->p,
 					pinfo->p, pinfo->test_blob_size);
+		cycles = REG32(GC_M3_DWT_CYCCNT_ADDR) - cycles;
 		tstamp = get_time().val - tstamp;
 
 		if (!rv) {
@@ -347,11 +356,13 @@ static int command_loop(struct test_info *pinfo)
 			ccprintf("encryption overflowed\n");
 			return EC_ERROR_UNKNOWN;
 		}
-		update_stats(&pinfo->enc_stats, tstamp);
+		update_stats(&pinfo->enc_stats, tstamp, cycles);
 
 		tstamp = get_time().val;
+		cycles = REG32(GC_M3_DWT_CYCCNT_ADDR);
 		rv = DCRYPTO_app_cipher(NVMEM, sha_after, pinfo->p,
 					pinfo->p, pinfo->test_blob_size);
+		cycles = REG32(GC_M3_DWT_CYCCNT_ADDR) - cycles;
 		tstamp = get_time().val - tstamp;
 
 		if (!rv) {
@@ -372,7 +383,7 @@ static int command_loop(struct test_info *pinfo)
 			return EC_ERROR_UNKNOWN;
 		}
 
-		update_stats(&pinfo->dec_stats, tstamp);
+		update_stats(&pinfo->dec_stats, tstamp, cycles);
 
 		/* get a new IV */
 		DCRYPTO_SHA1_hash(sha_after, sizeof(sha), sha_after);
