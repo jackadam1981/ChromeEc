@@ -479,6 +479,10 @@ static void board_set_tablet_mode(void)
 /* Initialize board. */
 static void board_init(void)
 {
+	static int version = BOARD_VERSION_UNKNOWN;
+
+	version = system_get_board_version();
+
 	/*
 	 * Ensure tablet mode is initialized according to the hardware state
 	 * so that the cached state reflects reality.
@@ -494,12 +498,16 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 
 	/* Set the sensors in the right powermode */
-	if (system_get_board_version() <= BOARD_VERSION_3) {
+	if (version <= BOARD_VERSION_3) {
 		int i;
 
 		for (i = BASE_ACCEL; i <= BASE_MAG; ++i)
 			motion_sensors[i].active_mask = SENSOR_ACTIVE_S0;
 	}
+
+	/* New form-factor aligns w/ reef, lid accel faces to B-cover */
+	if (version >= BOARD_VERSION_6)
+		motion_sensors[LID_ACCEL].rot_standard_ref = NULL;
 }
 /* PP3300 needs to be enabled before TCPC init hooks */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
