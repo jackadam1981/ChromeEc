@@ -19,7 +19,7 @@
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_RBOX, format, ## args)
 
-static void set_wp_state(int asserted)
+void set_wp_state(int asserted)
 {
 	/* Enable writing to the long life register */
 	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
@@ -131,17 +131,17 @@ static void unlock_the_console(void)
 
 static void init_console_lock_and_wp(void)
 {
+	/* Always follow BATT_PRES_L as the source for write protect. */
+	set_wp_state(!gpio_get_level(GPIO_BATT_PRES_L));
+
 	/*
-	 * On an unexpected reboot or a system rollback reset the console and
-	 * write protect states.
+	 * On an unexpected reboot or a system rollback reset the console lock
+	 * state.
 	 */
 	if (system_rollback_detected() ||
 	    !(system_get_reset_flags() & RESET_FLAG_HIBERNATE)) {
 		/* Reset the console lock to the default value */
 		set_console_lock_state(console_restricted_state);
-
-		/* Always assert WP on H1 cold resets, reboots or fallbacks. */
-		set_wp_state(1);
 		return;
 	}
 
@@ -149,11 +149,6 @@ static void init_console_lock_and_wp(void)
 		set_console_lock_state(!LOCK_ENABLED);
 	else
 		set_console_lock_state(LOCK_ENABLED);
-
-	if (GREG32(PMU, LONG_LIFE_SCRATCH1) & BOARD_WP_ASSERTED)
-		set_wp_state(1);
-	else
-		set_wp_state(0);
 }
 DECLARE_HOOK(HOOK_INIT, init_console_lock_and_wp, HOOK_PRIO_DEFAULT);
 
