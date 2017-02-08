@@ -265,6 +265,24 @@
       "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6956c2b_a53871c2",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-02-08T20:40:17Z",
+      "side": 1,
+      "message": "\u003e But can\u0027t we override the status of the virtual wires in those registers? That\u0027s what I\u0027m suggesting. Clearing out the state in some manner such that those values reflect the condition you\u0027re trying to detect. That along with kicking the chipset task is sufficient for it to notice, no? Is it really not possible to override the signal status? \n\nFrom NPCX datasheet, it looks like the register bits for VW signal from master to slave can only be set by the master i.e. for the EC these register bits are RO. Thus, there is no way for the EC to mark the bits in the VWEVSMn register as 0. Michal/ML from Nuvoton can correct me if there is some way to do this other than setting the bits in VMEVSMn register.\n\n\u003e Any condition where the synchronous eSPI signalling is affected is potential to screw up the current state machine.\n\nThat is true. But if eSPI_Reset# is assured to be a signal which always indicates the state of eSPI communication, then EC will have to rely on that to make the right decision. Also, if eSPI_Reset# is never de-asserted then we might have bigger problems since there won\u0027t be any communication between EC and AP. Thus, it is important to make sure that EC never holds up the AP in a way that eSPI_Reset# cannot be deasserted. That would basically lead to a dead system.",
+      "parentUuid": "a6a83511_ebb26a29",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
