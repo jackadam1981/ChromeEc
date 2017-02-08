@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a38d1c5_ed4e7ab9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T02:19:16Z",
+      "side": 1,
+      "message": "How do we know what rail SLP_SUS# is powered from? I\u0027m just curious how that assertion is maintained that SLP_SUS# will stay up.",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf50d33_aa2aa8c5",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T02:19:16Z",
+      "side": 1,
+      "message": "Presumably that whatever power domain failed came back such that eSPi can communicate? Basically, do we have any recourse where eSPI communication completely fails and the EC thinks we\u0027re sitting in S0 when we aren\u0027t?",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7ed3b02_92f89edc",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T02:19:16Z",
+      "side": 1,
+      "message": "I\u0027d add some commentary here as to why we\u0027re checking this.",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "921cc968_d1c30148",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T02:19:16Z",
+      "side": 1,
+      "message": "Is there a better way to kick the state machines? Can we have a fake bit which would allow us to clear it and let the power task get kicked from the event. That way we aren\u0027t running things from different tasks -- let lone interrupt handlers.",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
