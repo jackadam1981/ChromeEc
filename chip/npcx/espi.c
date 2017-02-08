@@ -518,6 +518,8 @@ void __espi_wk2b_interrupt(void)
 }
 DECLARE_IRQ(NPCX_IRQ_WKINTB_2, __espi_wk2b_interrupt, 2);
 
+#define IN_PCH_SLP_SUS_DEASSERTED POWER_SIGNAL_MASK(X86_SLP_SUS_DEASSERTED)
+
 /* Interrupt handler for eSPI status changed */
 void espi_interrupt(void)
 {
@@ -542,6 +544,8 @@ void espi_interrupt(void)
 		} /* eSPI reset (from eSPI_rst pin) */
 		else if (IS_BIT_SET(status, NPCX_ESPISTS_ESPIRST)) {
 			CPRINTS("eSPI RST");
+			if (power_has_signals(IN_PCH_SLP_SUS_DEASSERTED))
+				power_handle_state(POWER_S5);
 			espi_reset_recovery();
 		}
 

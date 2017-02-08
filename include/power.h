@@ -65,7 +65,11 @@ uint32_t power_get_signals(void);
  *
  * @return Non-zero if all present; zero if a required signal is missing.
  */
+#ifdef HAS_TASK_CHIPSET
 int power_has_signals(uint32_t want);
+#else
+static inline int power_has_signals(uint32_t want) { return 0; }
+#endif
 
 /**
  * Wait for power input signals to be present using default timeout
