@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a64e86c_ff2706c4",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T16:20:57Z",
+      "side": 1,
+      "message": "... so that future commits are allowed regardless. \n\nOr just indicate:\n\nDefault policy is to allow all commits. This ensures reinitialization  succeeds to bootstrap the nvmem area.\n\nOr maybe my reading comprehension is off on your original comment?",
+      "revId": "52dcc7d2395b4034cbf499a27f7cf6e377c9f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e8756f0_794db891",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T16:20:57Z",
+      "side": 1,
+      "message": "I think what you had before was fine and that we shouldn\u0027t be changing commits enabled in this path.",
+      "revId": "52dcc7d2395b4034cbf499a27f7cf6e377c9f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
