@@ -60,6 +60,13 @@ GPIO_INT(DETECT_AP,       PIN(1, 1),  GPIO_INT_HIGH, device_state_on)
 GPIO_INT(DETECT_EC,       PIN(1, 2),  GPIO_INT_HIGH, device_state_on)
 GPIO_INT(DETECT_SERVO,    PIN(1, 3),  GPIO_INT_HIGH | GPIO_PULL_DOWN,
 	 device_state_on)
+/*
+ * We can't trigger on both rising and falling edge simultaneously, therefore we
+ * have 2 separate GPIOs configured for each edge.  The battery present pin is
+ * active low.
+ */
+GPIO_INT(BATT_PRES_L_RIS, PIN(1, 4), GPIO_INT_RISING, batt_present_change)
+GPIO_INT(BATT_PRES_L_FAL, PIN(1, 5), GPIO_INT_FALLING, batt_present_change)
 
 /* Pull this low to interrupt the AP */
 GPIO(INT_AP_L,        PIN(0, 0), GPIO_OUT_HIGH)
@@ -74,9 +81,6 @@ GPIO(SYS_RST_L_OUT,   PIN(0, 4), GPIO_INPUT)
 /* Indicate to EC when CCD is enabled. EC can pull this down too, to tell us if
  * it decided instead. The pullup is on the EC's side. */
 GPIO(CCD_MODE_L,      PIN(0, 5), GPIO_ODR_HIGH)
-
-/* Battery present signal is active low */
-GPIO(BATT_PRES_L,     PIN(0, 6), GPIO_INPUT)
 
 /* GPIOs used to tristate the SPI bus */
 GPIO(SPI_MOSI,        PIN(0, 7), GPIO_INPUT)
@@ -120,7 +124,8 @@ PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_INPUT)
  */
 PINMUX(GPIO(SYS_RST_L_OUT),   M0, DIO_INPUT)
 PINMUX(GPIO(CCD_MODE_L),      M1, DIO_INPUT)
-PINMUX(GPIO(BATT_PRES_L),     M2, 0)
+PINMUX(GPIO(BATT_PRES_L_RIS), M2, 0)
+PINMUX(GPIO(BATT_PRES_L_FAL), M2, 0)
 PINMUX(GPIO(I2C_SCL_INA),     B0, DIO_INPUT)
 PINMUX(GPIO(I2C_SDA_INA),     B1, DIO_INPUT)
 /* UARTs */

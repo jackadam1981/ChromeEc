@@ -19,7 +19,7 @@
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_RBOX, format, ## args)
 
-static void set_wp_state(int asserted)
+void set_wp_state(int asserted)
 {
 	/* Enable writing to the long life register */
 	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 1);
@@ -132,16 +132,16 @@ static void unlock_the_console(void)
 static void init_console_lock_and_wp(void)
 {
 	/*
-	 * On an unexpected reboot or a system rollback reset the console and
-	 * write protect states.
+	 * On an unexpected reboot or a system rollback reset the console lock
+	 * and write protect states.
 	 */
 	if (system_rollback_detected() ||
 	    !(system_get_reset_flags() & RESET_FLAG_HIBERNATE)) {
 		/* Reset the console lock to the default value */
 		set_console_lock_state(console_restricted_state);
 
-		/* Always assert WP on H1 cold resets, reboots or fallbacks. */
-		set_wp_state(1);
+		/* Use BATT_PRES_L_RIS as the source for write protect. */
+		set_wp_state(!gpio_get_level(GPIO_BATT_PRES_L_RIS));
 		return;
 	}
 
@@ -348,7 +348,7 @@ static int command_lock(int argc, char **argv)
 		/* Warn about the side effects of wiping nvmem */
 		ccputs(warning);
 
-		if (gpio_get_level(GPIO_BATT_PRES_L) == 1) {
+		if (gpio_get_level(GPIO_BATT_PRES_L_RIS) == 1) {
 			/*
 			 * If the battery cable has been disconnected, we only
 			 * need to poke the power button once to prove physical

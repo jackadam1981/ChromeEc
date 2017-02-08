@@ -35,6 +35,7 @@
 #include "usb_spi.h"
 #include "usb_i2c.h"
 #include "util.h"
+#include "wp.h"
 
 /* Define interrupt and gpio structs */
 #include "gpio_list.h"
@@ -775,6 +776,23 @@ static void servo_attached(void)
 
 	/* Disconnect i2cm interface to ina */
 	usb_i2c_board_disable();
+}
+
+static void update_wp_status_deferred(void)
+{
+	/* Inverted because active low. */
+	int asserted = !gpio_get_level(GPIO_BATT_PRES_L_RIS);
+
+	CPRINTS("battery %spresent", asserted ? "" : "NOT ");
+	set_wp_state(asserted);
+}
+DECLARE_DEFERRED(update_wp_status_deferred);
+
+/* Use the battery present pin as the write protect signal. */
+void batt_present_change(enum gpio_signal signal)
+{
+	/* Allow some time for debouncing. */
+	hook_call_deferred(&update_wp_status_deferred_data, 120 * MSEC);
 }
 
 void device_state_on(enum gpio_signal signal)
