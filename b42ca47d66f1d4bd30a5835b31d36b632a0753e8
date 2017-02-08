@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e19fe74a_f3e4931d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-02-08T20:40:17Z",
+      "side": 1,
+      "message": "Correct. Basically, we need to ensure that the EC does not hold up the AP in any way that prevents it from deasserting the eSPI_Reset#.",
+      "parentUuid": "74e98dc2_d4d719ee",
+      "revId": "b42ca47d66f1d4bd30a5835b31d36b632a0753e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "caf9a0af_53ced0ae",
         "filename": "power/skylake.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-08T20:04:04Z",
       "side": 1,
       "message": "I was going to ask about slp_sus# assertion on warm reboot. Doc indicates eSPI reset doesn\u0027t assert in that condition so the slp_sus# is moot. espi reset\u0027s not like pltrst_l after all. From what I can tell there\u0027s quite a few corner cases of dealing with these signals., but this is probably the best work around currently.",
+      "revId": "b42ca47d66f1d4bd30a5835b31d36b632a0753e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b88b86_3bf2dddd",
+        "filename": "power/skylake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-02-08T20:40:17Z",
+      "side": 1,
+      "message": "I agree. Basically, I think we need to understand can we _always_ trust eSPI_Reset# pin. If yes, we need to ensure that the EC does not do anything to force the eSPI master to be in reset.",
+      "parentUuid": "caf9a0af_53ced0ae",
       "revId": "b42ca47d66f1d4bd30a5835b31d36b632a0753e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
