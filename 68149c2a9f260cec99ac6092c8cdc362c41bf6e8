@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc32acf6_244fe965",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-08T03:35:31Z",
+      "side": 1,
+      "message": "This is a bit weird, but it\u0027s the only way I found to be able to unprotect RB while leaving RW protected.\n\nMaybe the solution would be to add yet another set of EC_FLASH_PROTECT_RW_* variables to protect RW only (without protecting all the RB region?)",
+      "revId": "68149c2a9f260cec99ac6092c8cdc362c41bf6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
