@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2646411c_ea7ad47b",
+        "filename": "board/poppy_ish/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1111274
+      },
+      "writtenOn": "2017-02-08T07:06:42Z",
+      "side": 1,
+      "message": "Do we need to define this? Is this getting used ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "2d91da0e997e3a378998a3732a3f88a7e4f01f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
