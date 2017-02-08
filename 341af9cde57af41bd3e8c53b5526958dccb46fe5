@@ -42,6 +42,52 @@
     },
     {
       "key": {
+        "uuid": "a47537c4_c49c34c5",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T19:56:24Z",
+      "side": 1,
+      "message": "This should be removed as suggested elsewhere. It was originally added for debug purpose only.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01816f85_440c8076",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T19:56:24Z",
+      "side": 1,
+      "message": "Need to remove.",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 19
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37a182ba_5246f600",
         "filename": "driver/tcpm/anx74xx_fw.c",
         "patchSetId": 2
@@ -111,6 +157,29 @@
     },
     {
       "key": {
+        "uuid": "e920d8a3_4944632a",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T19:56:24Z",
+      "side": 1,
+      "message": "Need to remove.",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f2f0f85_ed04d8c9",
         "filename": "driver/tcpm/ps8751_fw_update.c",
         "patchSetId": 2
@@ -134,6 +203,47 @@
     },
     {
       "key": {
+        "uuid": "09f49241_b0d58457",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T19:56:24Z",
+      "side": 1,
+      "message": "This can be removed; this specific add/reg check is to avoid the unnecessary error message print with the ectool method, since this is used to wake the chip and the NACK is what cause i2c_read to return error satus.",
+      "parentUuid": "3f2f0f85_ed04d8c9",
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65082837_556a5b67",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T19:56:24Z",
+      "side": 1,
+      "message": "Need to remove.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ab25a0f_ca73b713",
         "filename": "driver/tcpm/ps8751_fw_update.c",
         "patchSetId": 2
@@ -150,6 +260,29 @@
         "startChar": 27,
         "endLine": 44,
         "endChar": 28
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "566eb244_7c880679",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T19:56:24Z",
+      "side": 1,
+      "message": "This timeout can be integrated inside board_set_tcpc_power_mode. It was arbitrarily picked based on testing with the early revision of the chip, so need to check with vendor on the latest chip.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 0
       },
       "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -261,6 +394,29 @@
     },
     {
       "key": {
+        "uuid": "e325f57e_d869b229",
+        "filename": "driver/tcpm/ps8751_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T19:56:24Z",
+      "side": 1,
+      "message": "Change all ccprintf to use the standard #define CPRINTF so it can be toggled on/off.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 9
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbba998e_1a44ff84",
         "filename": "driver/tcpm/ps8751_fw_update.c",
         "patchSetId": 2
@@ -344,6 +500,29 @@
       "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5da48306_702bfed0",
+        "filename": "driver/tcpm/tcpm_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T19:56:24Z",
+      "side": 1,
+      "message": "define this is board file so it handle different hardware?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
