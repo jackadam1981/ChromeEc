@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "640eb2b6_37a5cc92",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2017-02-08T02:23:24Z",
+      "side": 1,
+      "message": "/*Removed this line.*/\n/*rv |\u003d tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg_ctrl_2 \u0026 0x09);*/",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 70
+      },
+      "revId": "f540833987077199d0b42e3dcb530fd7e906afa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
