@@ -97,6 +97,24 @@
     },
     {
       "key": {
+        "uuid": "48ac7851_518ac6ed",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T01:39:48Z",
+      "side": 1,
+      "message": "With patch #16, prev_mode is initialized to 0 (low power) via anx74xx_tcpm_init, which is called during reset. After initialization, prev_mode will be updated to 1 (normal) by anx74xx_set_power_mode.",
+      "parentUuid": "df18e789_6a4000c1",
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47ab1101_52225afa",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 13
@@ -138,6 +156,24 @@
     },
     {
       "key": {
+        "uuid": "3ad8f8cb_b4b2327c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T01:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6248a652_e36bf734",
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5d93c08_37797563",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 13
@@ -176,6 +212,24 @@
       "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02603bc3_91616184",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-08T01:39:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d867fd24_951fa58d",
+      "revId": "5a990292c4e36354b60b9631b2aeb99157dcdc53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
