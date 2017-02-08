@@ -476,7 +476,7 @@ static void board_init(void)
 
 	/* Enable CCD if type-c */
 	if (gpio_get_level(GPIO_DONGLE_DET))
-		init_ccd(CCD_ID_RPUSB);
+		init_ccd(CCD_ID_RDRD);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
