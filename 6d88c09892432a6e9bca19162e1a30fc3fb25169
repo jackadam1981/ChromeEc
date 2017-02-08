@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae59d37f_16c31a78",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T14:41:45Z",
+      "side": 1,
+      "message": "commits are already disabled? Or is this to handle the case of a re-init after commits being disabled?\n\nIf no valid partitions are found is ret !\u003d SUCCESS? If so enable commits in that path as well. Or provide a clearer explanation in the comment to indicate it\u0027s to handle both failure and success.",
+      "revId": "6d88c09892432a6e9bca19162e1a30fc3fb25169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
