@@ -225,7 +225,7 @@ static void power_button_poked(void)
 }
 DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_PWRB_IN_FED_INT, power_button_poked, 1);
 
-
+#ifdef CR50_DEV
 static void start_unlock_process(int total_poking_time, int max_poke_interval)
 {
 	unlock_in_progress = 1;
@@ -250,6 +250,7 @@ static void start_unlock_process(int total_poking_time, int max_poke_interval)
 	/* Check progress after waiting long enough for one button press */
 	hook_call_deferred(&unlock_sequence_is_over_data, unlock_beat);
 }
+#endif /* defined(CR50_DEV) */
 
 /****************************************************************************/
 /* TPM vendor-specific commands */
@@ -315,6 +316,15 @@ static const char warning[] = "\n\t!!! WARNING !!!\n\n"
 
 static int command_lock(int argc, char **argv)
 {
+#ifndef CR50_DEV
+	/* Don't allow the console to be unlocked at all for prod images. */
+	ASSERT(console_is_restricted() == 1);
+	if (argc > 1)
+		return EC_ERROR_ACCESS_DENIED;
+
+	ccprintf("The restricted console lock is enabled\n");
+	return EC_SUCCESS;
+#else
 	int enabled;
 	int i;
 
@@ -400,6 +410,7 @@ out:
 		 console_is_restricted() ? "enabled" : "disabled");
 
 	return EC_SUCCESS;
+#endif /* defined(CR50_DEV) */
 }
 DECLARE_SAFE_CONSOLE_COMMAND(lock, command_lock,
 			     "[<BOOLEAN>]",
