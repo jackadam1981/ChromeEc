@@ -247,6 +247,24 @@
       "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6a83511_ebb26a29",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-08T19:39:11Z",
+      "side": 1,
+      "message": "\u003e So the problem here is that, when global reset event occurs, eSPI VW messages are not transmitted and so the slave does not know that the status of VW SLP_* signals has changed. espi_vw_get_wire() would still read the old values for all the SLP_* signals. However, once eSPI_Reset# is deasserted, PCH eSPI master controller sends the udpated VW SLP_* signals to the slave. This causes the slave (EC) to transition properly according to the received signals.\n\u003e \n\u003e Thus, my initial thought was to just let the EC identify that there was a global reset event and take any necessary action i.e. in case of skylake release the power button that was being pressed. Once the eSPI_Reset# is de-asserted, PCH power signals would be re-sent by the master and cause appropriate transitions on the EC side.\n\nBut can\u0027t we override the status of the virtual wires in those registers? That\u0027s what I\u0027m suggesting. Clearing out the state in some manner such that those values reflect the condition you\u0027re trying to detect. That along with kicking the chipset task is sufficient for it to notice, no? Is it really not possible to override the signal status? \n\n\u003e \n\u003e Do you think this could possess a problem if the PCH eSPI controller never gets out of reset? I am not sure how likely that condition is, because eSPI seems to come out of reset before anything else.\n\nAny condition where the synchronous eSPI signalling is affected is potential to screw up the current state machine.",
+      "parentUuid": "ce84d641_4d2f9de1",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
