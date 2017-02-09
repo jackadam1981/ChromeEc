@@ -70,6 +70,24 @@
       "revId": "1432bf0bd699b8763c0455033750f96e939470dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bb8cfdd_3e770376",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-09T05:14:42Z",
+      "side": 1,
+      "message": "You made a comment about code size. I was explaining that it\u0027s actually one int per fst_charge_params structure by maintaining a voltage in the last index that is always larger than any reading we could get. It\u0027s one int per battery to go along with the per temperature current increase.\n\ndefault_current per temperature is a net increase to what you have. It\u0027s just more explicitly handled when the voltage range doesn\u0027t compare properly.",
+      "parentUuid": "014891df_a941d356",
+      "revId": "1432bf0bd699b8763c0455033750f96e939470dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
