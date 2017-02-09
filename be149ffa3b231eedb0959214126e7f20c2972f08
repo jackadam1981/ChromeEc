@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e704ffe8_6bc88bf6",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-02-09T10:59:51Z",
+      "side": 1,
+      "message": "I knew the first condition indicates host already entered polling mode. It might take a lot of time to wait for the other 8 clocks in CS\u0027s ISR. But the second condition might be inappropriate since it has the chance that VERSION byte is written by the previous transaction. (I discuss it with my colleague, Rx data won\u0027t be changed without clocks.)\n\nCould we add a software flag to indicate the first byte is already overridden? Set it in IBF ISR and clear it after glitch detection. If this flag is set and the first byte is VERSION, return 0 directly.",
+      "revId": "be149ffa3b231eedb0959214126e7f20c2972f08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
