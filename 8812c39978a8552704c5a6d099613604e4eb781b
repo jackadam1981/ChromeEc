@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f3a9e03_1f72c994",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2017-02-09T02:16:24Z",
+      "side": 1,
+      "message": "/*Mux to safe mode*/\nrv \u003d tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, \u0026reg);\n\tif (rv)\n\t\treturn EC_ERROR_UNKNOWN;\n\trv |\u003d tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg | ANX74XX_REG_MODE_TRANS);",
+      "revId": "8812c39978a8552704c5a6d099613604e4eb781b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26bdb455_005e04cf",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2017-02-09T02:16:24Z",
+      "side": 1,
+      "message": "/*Removed this line, Only USB, SBU mux should disable*/\n/*anx74xx_set_mux(port, mux_state \u0026 MUX_POLARITY_INVERTED ? 1 : 0);*/\n/*MUX to Normal Mode*/\nrv \u003d tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, \u0026reg);\nrv |\u003d tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, (reg \u0026 ~ANX74XX_REG_MODE_TRANS));",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 236,
+        "endChar": 66
+      },
+      "revId": "8812c39978a8552704c5a6d099613604e4eb781b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
