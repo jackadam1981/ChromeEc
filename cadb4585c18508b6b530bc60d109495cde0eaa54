@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c641590_b47fa2b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-09T23:15:51Z",
+      "side": 1,
+      "message": "Does this mean when a peripheral is plugged in S3 or S5, the port wakes up and starts consuming power in normal mode? The TEST\u003d line below doesn\u0027t talk about the behavior when SNK devices are attached.",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 58
+      },
+      "revId": "cadb4585c18508b6b530bc60d109495cde0eaa54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6196946_da1460f6",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-09T23:15:51Z",
+      "side": 1,
+      "message": "Can you add comment to explain what these are doing? The detasheet or register spec doesn\u0027t explain when to set or unset R_PIN_CABLE_DET.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 11
+      },
+      "revId": "cadb4585c18508b6b530bc60d109495cde0eaa54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
