@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ddae143_ee6d5319",
+        "filename": "board/eve/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-09T22:09:45Z",
+      "side": 0,
+      "message": "I copied that code from Cyan: if the EC can not play with the interrupt line then you have to drop the touchpad as a wakeup source, even when you are in clam-shell mode. \nIf you allow the interrupt line to by the EC, you can disable wakeup when we know we are in tent/tablet mode and leave the touchpad as a wakeup source.",
+      "revId": "b4561011587819b26395b6a16112b47a00f5a1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
