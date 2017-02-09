@@ -40,6 +40,29 @@
       "revId": "0ff27318f5b6d68408c379d8970d09052f39952b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9af77cb_f4c7d963",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-09T03:38:22Z",
+      "side": 1,
+      "message": "device_set_state will return 1 if the device state was changed and 0 if it wasn\u0027t, so you don\u0027t need to keep track of last_batt_pres in board.c",
+      "range": {
+        "startLine": 815,
+        "startChar": 2,
+        "endLine": 824,
+        "endChar": 3
+      },
+      "revId": "0ff27318f5b6d68408c379d8970d09052f39952b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
