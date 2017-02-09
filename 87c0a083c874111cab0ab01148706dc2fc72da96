@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2126586c_9e703b43",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-09T04:15:51Z",
+      "side": 1,
+      "message": "I actually worry about this. Ran out of time to test it out tonight though. I\u0027m pretty sure this won\u0027t work;  device_set_state() will never get called since last_known_state is initialized to DEVICE_STATE_UNKNOWN. I\u0027ll swap the order tomorrow and test.",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 824,
+        "endChar": 49
+      },
+      "revId": "87c0a083c874111cab0ab01148706dc2fc72da96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
