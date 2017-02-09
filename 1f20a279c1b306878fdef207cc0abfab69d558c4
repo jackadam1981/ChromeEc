@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d0463b0_0ae0ca5f",
+        "filename": "board/reef/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-09T09:58:45Z",
+      "side": 1,
+      "message": "no longer used ?",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 0
+      },
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65d73d37_a8848d8d",
+        "filename": "board/reef/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-09T09:58:45Z",
+      "side": 1,
+      "message": "we no longer want this hardcoded re-direction to the right chip callback ?",
+      "range": {
+        "startLine": 314,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 51
+      },
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58dc7179_1b99fe85",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 3653,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-09T09:58:45Z",
+      "side": 1,
+      "message": "now that you have a host command defined, you want it on all platforms on ToT.\nI think it would be better to remove this config option,",
+      "range": {
+        "startLine": 3653,
+        "startChar": 0,
+        "endLine": 3653,
+        "endChar": 36
+      },
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f0c92c7_0b2fac6e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-09T09:58:45Z",
+      "side": 1,
+      "message": "should no longer be in board code, since it\u0027s generic",
+      "range": {
+        "startLine": 417,
+        "startChar": 2,
+        "endLine": 417,
+        "endChar": 36
+      },
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce931434_b9f0d178",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-09T09:58:45Z",
+      "side": 1,
+      "message": "it\u0027s no longer a thing ?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 74
+      },
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f34df5_2eae88ca",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-09T09:58:45Z",
+      "side": 1,
+      "message": "no longer useful ?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
