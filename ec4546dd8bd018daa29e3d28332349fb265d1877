@@ -22,6 +22,53 @@
       "revId": "ec4546dd8bd018daa29e3d28332349fb265d1877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ddfbb5_64e9e089",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-09T00:37:27Z",
+      "side": 1,
+      "message": "Looks like device_state polls once a second.  That should be fine; it\u0027s still fast compared to physically unplugging the battery.",
+      "parentUuid": "b0a4be75_bef7a93c",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "ec4546dd8bd018daa29e3d28332349fb265d1877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da8b834b_c0852a89",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-09T00:37:27Z",
+      "side": 1,
+      "message": "I don\u0027t think we need to save WP state in the long life register at all, do we?  It should always just be reflecting the battery presence pin, which we can check whenever we need to.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "ec4546dd8bd018daa29e3d28332349fb265d1877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
