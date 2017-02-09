@@ -40,6 +40,24 @@
       "revId": "f540833987077199d0b42e3dcb530fd7e906afa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab67123_d59b27fe",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2017-02-09T02:42:40Z",
+      "side": 1,
+      "message": "I think that it should keep this (Safe mode if exiting Mux), and then in anx74xx_tcpm_mux_set() function, it should change to normal mode.  I already given comments. Please check it. Is it make sense?",
+      "parentUuid": "232a8581_2994b0de",
+      "revId": "f540833987077199d0b42e3dcb530fd7e906afa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
