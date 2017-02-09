@@ -105,6 +105,24 @@
       "revId": "ec4546dd8bd018daa29e3d28332349fb265d1877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff54039d_d0b675f6",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-09T01:24:03Z",
+      "side": 1,
+      "message": "Makes sense.  On devices where CCD can actually be enabled, this bit should survive deep sleep.",
+      "parentUuid": "fd609871_eabcd52d",
+      "revId": "ec4546dd8bd018daa29e3d28332349fb265d1877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
