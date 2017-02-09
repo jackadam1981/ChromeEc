@@ -301,6 +301,24 @@
       "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3039187c_5678ff1a",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-09T15:50:05Z",
+      "side": 1,
+      "message": "I can envision needing that very thing in the future. We\u0027re just using forcing_shutdown as a proxy for when it\u0027s appropriate to stop pressing power button. That was keeping the chipset from continuing forward and updating the virtual wires. I don\u0027t think we\u0027ll always be so lucky depending on the SoC/platform behavior.",
+      "parentUuid": "d85db284_7b15efe7",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
