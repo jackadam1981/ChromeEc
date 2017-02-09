@@ -49,6 +49,24 @@
     },
     {
       "key": {
+        "uuid": "a3be5a24_864046ab",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-09T01:06:20Z",
+      "side": 1,
+      "message": "That\u0027s a good idea; I\u0027ll pursue that.",
+      "parentUuid": "00ddfbb5_64e9e089",
+      "revId": "ec4546dd8bd018daa29e3d28332349fb265d1877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da8b834b_c0852a89",
         "filename": "board/cr50/wp.c",
         "patchSetId": 5
@@ -69,6 +87,24 @@
       "revId": "ec4546dd8bd018daa29e3d28332349fb265d1877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd609871_eabcd52d",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-09T01:06:20Z",
+      "side": 1,
+      "message": "I initially had the same thought, but then I thought about the override case + hibernate. If a user has the battery present, write protect would be enabled. They could then choose to use the `wp` console command to disable write protect. If cr50 goes into hibernate and wakes and we don\u0027t use the long life scratch registers, it would then set the write protect state to the state of the battery presence pin instead of respecting the state that the user set.",
+      "parentUuid": "da8b834b_c0852a89",
+      "revId": "ec4546dd8bd018daa29e3d28332349fb265d1877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
