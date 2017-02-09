@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8bd3b7d_88708fb1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2818,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-02-09T12:31:04Z",
+      "side": 1,
+      "message": "Why 75ms?",
+      "range": {
+        "startLine": 2818,
+        "startChar": 32,
+        "endLine": 2818,
+        "endChar": 34
+      },
+      "revId": "108ea6160f500271a7f7a6b139a5d367c4c0f23b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
