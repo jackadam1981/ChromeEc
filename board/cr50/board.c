@@ -423,6 +423,8 @@ static void init_interrupts(void)
 		if (gpio_list[i].flags & GPIO_INT_ANY)
 			gpio_enable_interrupt(i);
 }
+static void deferred_tpm_rst_isr(void);
+DECLARE_DEFERRED(deferred_tpm_rst_isr);
 
 static void configure_board_specific_gpios(void)
 {
@@ -481,6 +483,9 @@ static void configure_board_specific_gpios(void)
 		/* Enable powerdown exit on DIOM0 */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
 	}
+	/* If we missed the rising edge of TPM_RST_L alert tpm_rst_isr. */
+	if (gpio_get_level(GPIO_TPM_RST_L))
+		hook_call_deferred(&deferred_tpm_rst_isr_data, 0);
 }
 
 void decrement_retry_counter(void)
@@ -610,7 +615,6 @@ static void deferred_tpm_rst_isr(void)
 	tpm_reset_request(1, 0);
 	system_reset(SYSTEM_RESET_HARD);  /* This will never return. */
 }
-DECLARE_DEFERRED(deferred_tpm_rst_isr);
 
 /* This is the interrupt handler to react to TPM_RST_L */
 void tpm_rst_deasserted(enum gpio_signal signal)
