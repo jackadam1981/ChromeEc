@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "ddbaa3c7_0749ac3d",
+        "filename": "board/reef/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-09T17:00:43Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5d0463b0_0ae0ca5f",
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65d73d37_a8848d8d",
         "filename": "board/reef/board.c",
         "patchSetId": 18
@@ -42,6 +60,24 @@
         "endLine": 317,
         "endChar": 51
       },
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6de24b55_ef7d28c9",
+        "filename": "board/reef/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-09T17:00:43Z",
+      "side": 1,
+      "message": "This will be removed by https://chromium-review.googlesource.com/c/434911/. I tried to separate board changes from common code changes.",
+      "parentUuid": "65d73d37_a8848d8d",
       "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "010d3d60_9909ccab",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 3653,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-09T17:00:43Z",
+      "side": 1,
+      "message": "Done for the common code. The rest (board specific occurrences) will be removed by https://chromium-review.googlesource.com/c/434911/.",
+      "parentUuid": "58dc7179_1b99fe85",
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f0c92c7_0b2fac6e",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 18
@@ -91,6 +145,23 @@
       "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dc87ea3_0780efb9",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-09T17:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +188,24 @@
     },
     {
       "key": {
+        "uuid": "f3c13f52_40222136",
+        "filename": "driver/tcpm/tcpci.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-09T17:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce931434_b9f0d178",
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6f34df5_2eae88ca",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 18
@@ -137,6 +226,24 @@
       "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437a969a_c427740a",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-09T17:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6f34df5_2eae88ca",
+      "revId": "1f20a279c1b306878fdef207cc0abfab69d558c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
