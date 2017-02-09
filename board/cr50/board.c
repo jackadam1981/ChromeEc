@@ -789,10 +789,24 @@ static void servo_attached(void)
 
 void device_state_on(enum gpio_signal signal)
 {
-	gpio_disable_interrupt(signal);
+	/*
+	 * On boards with plt_rst_l the ap state is detected with tpm_rst_l.
+	 * Make sure we don't disable the tpm reset interrupt.
+	 */
+	if (signal != GPIO_TPM_RST_L)
+		gpio_disable_interrupt(signal);
 
 	switch (signal) {
-	case GPIO_DETECT_AP: /* Would happen only on non plt_rst_l devices. */
+	case GPIO_TPM_RST_L:
+		CPRINTS("%s: tpm_rst_isr hasn't the AP state to 'on'.",
+			__func__);
+		/*
+		 * On boards using GPIO_TPM_RST_L to detect the AP state the
+		 * tpm reset handler handles setting the AP state to 'on'.
+		 */
+		hook_call_deferred(&deferred_tpm_rst_isr_data, 0);
+		break;
+	case GPIO_DETECT_AP:
 		if (device_state_changed(DEVICE_AP, DEVICE_STATE_ON))
 			hook_notify(HOOK_CHIPSET_RESUME);
 		break;
