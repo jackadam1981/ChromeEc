@@ -6888,7 +6888,7 @@ int cmd_pd_chip_info(int argc, char *argv[])
 	printf("vendor_id: 0x%x\n", r.vendor_id);
 	printf("product_id: 0x%x\n", r.product_id);
 	printf("device_id: 0x%x\n", r.device_id);
-	printf("fw_version: 0x%x\n", r.fw_version);
+	printf("fw_version: 0x%x\n", r.fw_version_number);
 
 	return 0;
 }
