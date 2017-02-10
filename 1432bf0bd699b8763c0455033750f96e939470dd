@@ -88,6 +88,24 @@
       "revId": "1432bf0bd699b8763c0455033750f96e939470dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10eaf85b_c3825fe3",
+        "filename": "include/charger_profile_override.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-10T07:21:13Z",
+      "side": 1,
+      "message": "okay thank you.\nI will add a voltage last entry 0xffff (smart battery 16bit register)",
+      "parentUuid": "9bb8cfdd_3e770376",
+      "revId": "1432bf0bd699b8763c0455033750f96e939470dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
