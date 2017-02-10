@@ -34,6 +34,24 @@
       "revId": "55e96401a7560c3be9dda67341c02b4662137414",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d7b8b3_fa78552d",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-10T17:35:30Z",
+      "side": 1,
+      "message": "You\u0027re assuming someone did it correct. I\u0027m trying to protect against an uninitialized variable. Static analysis will flag this plus it provides some protection against people not putting in the tombstone entry.",
+      "parentUuid": "1c2a761e_0b67db30",
+      "revId": "55e96401a7560c3be9dda67341c02b4662137414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
