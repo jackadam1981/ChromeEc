@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce46b65a_e1a51862",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-10T01:33:03Z",
+      "side": 1,
+      "message": "If we are forcing wp then we shouldn\u0027t set the wp state based on batt_pres.",
+      "range": {
+        "startLine": 182,
+        "startChar": 15,
+        "endLine": 182,
+        "endChar": 48
+      },
+      "revId": "c9df7bf47ba261ad7e3826d777f0a89a262e1c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
