@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6399980_f894c9fd",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-10T16:29:23Z",
+      "side": 1,
+      "message": "You can leave these and the currents alone to be 2 entries where only 2 entries are need. Even though the array is sized to be 3 the CHARGER_PROF_VOLTAGE_MV_LAST_RANGE entry  should catch everything. And you don\u0027t have to duplicate values.",
+      "revId": "28a4603cd12631640a4ca3aee767dd61962ba1b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
