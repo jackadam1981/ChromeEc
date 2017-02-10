@@ -46,6 +46,30 @@
       "revId": "57a448753f95c832bc64eaa5b55646f5359a3637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6f527a4_30b4381a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-10T20:11:04Z",
+      "side": 1,
+      "message": "Could you add that as a comment?\n\nI tested this on Electro and it seems to work. I noticed that this patch somehow mitigates https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d62649. I no longer see the oem charger get upset by hard reset. It responds to soft reset and does negotiation. It seems this port reset somehow prevents the charger from going to PE_SRC_Disabled state.",
+      "parentUuid": "4daed98c_81d217da",
+      "range": {
+        "startLine": 1441,
+        "startChar": 1,
+        "endLine": 1441,
+        "endChar": 64
+      },
+      "revId": "57a448753f95c832bc64eaa5b55646f5359a3637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
