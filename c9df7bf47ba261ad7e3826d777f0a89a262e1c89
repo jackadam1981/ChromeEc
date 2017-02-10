@@ -46,6 +46,30 @@
       "revId": "c9df7bf47ba261ad7e3826d777f0a89a262e1c89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ae8506_3a4348d8",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-10T01:39:07Z",
+      "side": 1,
+      "message": "Ok. Maybe it should be set to the default value for the type of image. So for prod it should be based on batt_pres_l. For dev it should be off.",
+      "parentUuid": "dab32641_77040fff",
+      "range": {
+        "startLine": 182,
+        "startChar": 15,
+        "endLine": 182,
+        "endChar": 48
+      },
+      "revId": "c9df7bf47ba261ad7e3826d777f0a89a262e1c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
