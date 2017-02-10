@@ -325,7 +325,8 @@ void tcpci_tcpc_alert(int port)
  * will be stored in cache, which can be accessed by tcpm_get_chip_info without
  * worrying about chip states.
  */
-int tcpci_get_chip_info(int port, struct ec_response_pd_chip_info **chip_info)
+int tcpci_get_chip_info(int port, int renew,
+			struct ec_response_pd_chip_info **chip_info)
 {
 	static struct ec_response_pd_chip_info info[CONFIG_USB_PD_PORT_COUNT];
 	struct ec_response_pd_chip_info *i;
@@ -342,7 +343,8 @@ int tcpci_get_chip_info(int port, struct ec_response_pd_chip_info **chip_info)
 	if (chip_info)
 		*chip_info = i;
 
-	if (i->vendor_id)
+	/* If already populated and renewal is not asked, return cache value */
+	if (i->vendor_id && !renew)
 		return EC_SUCCESS;
 
 	i->struct_version = EC_CMD_PD_CHIP_INFO_STRUCT_VERSION;
@@ -424,7 +426,7 @@ int tcpci_tcpm_init(int port)
 		return error;
 
 	/* Read chip info here when we know the chip is awake. */
-	tcpm_get_chip_info(port, NULL);
+	tcpm_get_chip_info(port, 1, NULL);
 
 	return EC_SUCCESS;
 }
