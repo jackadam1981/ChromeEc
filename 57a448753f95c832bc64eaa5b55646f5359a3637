@@ -70,6 +70,30 @@
       "revId": "57a448753f95c832bc64eaa5b55646f5359a3637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cfe3a0b_4edb4cc3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-10T20:47:54Z",
+      "side": 1,
+      "message": "Do we need to check whether the partner is present or not and it\u0027s src or not? With this patch, hoho can\u0027t project screen if it\u0027s attached before reboot. Without this patch, hoho starts projecting screen automatically after reboot.",
+      "parentUuid": "a6f527a4_30b4381a",
+      "range": {
+        "startLine": 1441,
+        "startChar": 1,
+        "endLine": 1441,
+        "endChar": 64
+      },
+      "revId": "57a448753f95c832bc64eaa5b55646f5359a3637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
