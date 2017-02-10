@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca81ba22_3b588a7b",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-10T23:51:57Z",
+      "side": 1,
+      "message": "Technically, it hasn\u0027t been cleared until the end of this function...\n\n\"clear MKBP fifo\" would be correct, and 2 bytes smaller ;)",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 30
+      },
+      "revId": "349d84e316ea6bf1317f9ab31a773c90d2d39adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
