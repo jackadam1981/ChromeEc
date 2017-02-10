@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b25b585a_29fdc635",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-10T08:33:50Z",
+      "side": 1,
+      "message": "As the issue is happening only on Parade, we can add a second level check in board.c get the details from Parade and override the status.",
+      "range": {
+        "startLine": 904,
+        "startChar": 1,
+        "endLine": 904,
+        "endChar": 11
+      },
+      "revId": "f8eecdf6d369d90c3d156ec52cc8a244e5302476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
