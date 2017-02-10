@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2541502_062f286b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-02-10T16:28:25Z",
+      "side": 1,
+      "message": "nit, momentarily",
+      "range": {
+        "startLine": 32,
+        "startChar": 29,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "dd380d4c5bce3981f9314941237204433a1834f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bcd4a36_a3b297b6",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-02-10T16:28:25Z",
+      "side": 1,
+      "message": "why 2?  Would be good to add comment describing this hold/setup time",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "dd380d4c5bce3981f9314941237204433a1834f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
