@@ -319,6 +319,24 @@
       "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8525025f_a6dabc7f",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-02-10T01:31:38Z",
+      "side": 1,
+      "message": "That is right. Long term we might need to introduce the concept of VWs as an OR of host-sent messages and EC-defined bits. For now I will go ahead with this change as a workaround. Another thing that I found in the espi driver is that power_signal_interrupt is called directly from within this file. I believe this poses a serious race condition since any interrupt coming in could interrupt that call and have side-effects. Though there is a TODO marked there, I think it would be good to track this with a crosbug as well.",
+      "parentUuid": "3039187c_5678ff1a",
+      "revId": "02a8e6dd174e2c92bd1044b6b949e7bde706b18a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
