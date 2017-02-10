@@ -22,6 +22,30 @@
       "revId": "f8eecdf6d369d90c3d156ec52cc8a244e5302476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb4aed3f_d5053caa",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2017-02-10T19:34:41Z",
+      "side": 1,
+      "message": "We see similar issue also on Analogix for different test case:- Connect Apple HDMI dongle with HDMI cable first and then insert charger. crosbug:62270",
+      "parentUuid": "b25b585a_29fdc635",
+      "range": {
+        "startLine": 904,
+        "startChar": 1,
+        "endLine": 904,
+        "endChar": 11
+      },
+      "revId": "f8eecdf6d369d90c3d156ec52cc8a244e5302476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
