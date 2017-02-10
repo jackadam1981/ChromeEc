@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e22b0f30_9874baeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-10T02:09:07Z",
+      "side": 1,
+      "message": "Both ways, that is you can either force enable or force disable write protect. However doing so requires an unlocked console. I can add this to the description.",
+      "parentUuid": "861a2a76_63f94c50",
+      "range": {
+        "startLine": 10,
+        "startChar": 40,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "c9df7bf47ba261ad7e3826d777f0a89a262e1c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce46b65a_e1a51862",
         "filename": "board/cr50/wp.c",
         "patchSetId": 11
