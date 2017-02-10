@@ -94,6 +94,53 @@
       "revId": "57a448753f95c832bc64eaa5b55646f5359a3637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "580548f9_c804eaf3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1441,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-10T21:17:50Z",
+      "side": 1,
+      "message": "I can no longer reproduce the Hoho issue.",
+      "parentUuid": "3cfe3a0b_4edb4cc3",
+      "range": {
+        "startLine": 1441,
+        "startChar": 1,
+        "endLine": 1441,
+        "endChar": 64
+      },
+      "revId": "57a448753f95c832bc64eaa5b55646f5359a3637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4e77aa8_e2c8a9a1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-10T21:17:50Z",
+      "side": 1,
+      "message": "VBUS drop can be seen on twinkie but in my debugging this loop always exits by timeout.",
+      "range": {
+        "startLine": 1445,
+        "startChar": 8,
+        "endLine": 1445,
+        "endChar": 32
+      },
+      "revId": "57a448753f95c832bc64eaa5b55646f5359a3637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
