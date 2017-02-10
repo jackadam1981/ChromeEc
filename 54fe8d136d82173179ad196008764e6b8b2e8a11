@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a3af42e_370969f8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-10T21:16:00Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with this config. Why do we need to guard the call?",
+      "range": {
+        "startLine": 1603,
+        "startChar": 8,
+        "endLine": 1603,
+        "endChar": 26
+      },
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19258e6f_6546000e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-10T21:16:00Z",
+      "side": 1,
+      "message": "Why is this call still needed? Aren\u0027t we doing it in the tcpci module? Or is that this part doesn\u0027t use tcpci ? I think that\u0027s the case. Is there a reason this call has to be here? If so, comment as to why?",
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edce49ab_7e18a015",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-10T21:16:00Z",
+      "side": 1,
+      "message": "I take it the version number/size will vary by vendor?",
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb675609_e455f790",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-10T21:16:00Z",
+      "side": 1,
+      "message": "Where does that happen? I don\u0027t see it that value being set.",
+      "range": {
+        "startLine": 372,
+        "startChar": 41,
+        "endLine": 372,
+        "endChar": 49
+      },
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ea3e36_884fb816",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3946,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-10T21:16:00Z",
+      "side": 1,
+      "message": "It seems these constants use lower case letters for hex digits.",
+      "range": {
+        "startLine": 3946,
+        "startChar": 33,
+        "endLine": 3946,
+        "endChar": 34
+      },
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e19ebc4_89b30f81",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3956,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-10T21:16:00Z",
+      "side": 1,
+      "message": "Is 16-bit enough for fw_version? What happens if another part uses a string or something? Should we make it an array of decent size? like 8 bytes? Or if we have to extend this structure how will we do that w/o putting an version for the structure?",
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
