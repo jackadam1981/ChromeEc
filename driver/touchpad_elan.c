@@ -119,7 +119,7 @@ static int elan_tp_read_report(void)
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
 
 	if (rv) {
-		CPRINTS("read report error");
+//		CPRINTS("read report error");
 		return rv;
 	}
 
