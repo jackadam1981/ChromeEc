@@ -6870,6 +6870,13 @@ int cmd_pd_chip_info(int argc, char *argv[])
 	char *e;
 	int rv;
 
+	if (!ec_cmd_version_supported(EC_CMD_PD_CHIP_INFO,
+				      EC_VER_PD_CHIP_INFO_VERSION)) {
+		printf("EC does not support command version %d\n",
+		       EC_VER_PD_CHIP_INFO_VERSION);
+		return -1;
+	}
+
 	if (argc < 2) {
 		fprintf(stderr, "Usage: %s <port>\n", argv[0]);
 		return -1;
@@ -6888,7 +6895,7 @@ int cmd_pd_chip_info(int argc, char *argv[])
 	printf("vendor_id: 0x%x\n", r.vendor_id);
 	printf("product_id: 0x%x\n", r.product_id);
 	printf("device_id: 0x%x\n", r.device_id);
-	printf("fw_version: 0x%x\n", r.fw_version);
+	printf("fw_version: %s\n", r.fw_version);
 
 	return 0;
 }
