@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "3ecbed7a_c86d0fc9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-10T23:01:10Z",
+      "side": 1,
+      "message": "Sounds like we need a new bug for this. That\u0027ll unnecessarily consume more power in s3/s5",
+      "parentUuid": "9c27e473_289f4767",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 62
+      },
+      "revId": "dd380d4c5bce3981f9314941237204433a1834f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9bcd4a36_a3b297b6",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 19
