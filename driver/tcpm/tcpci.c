@@ -7,6 +7,7 @@
 
 #include "anx74xx.h"
 #include "ec_commands.h"
+#include "printf.h"
 #include "ps8751.h"
 #include "task.h"
 #include "tcpci.h"
@@ -327,36 +328,41 @@ void tcpci_tcpc_alert(int port)
 int tcpci_get_chip_info(int port, struct ec_response_pd_chip_info **chip_info)
 {
 	static struct ec_response_pd_chip_info info[CONFIG_USB_PD_PORT_COUNT];
+	struct ec_response_pd_chip_info *i;
 	int error;
 	int val;
 
 	if (port >= CONFIG_USB_PD_PORT_COUNT)
 		return EC_ERROR_INVAL;
 
+	i = &info[port];
+
 	/* If chip_info is NULL, chip info will be stored in cache and can be
 	 * read later by another call. */
 	if (chip_info)
-		*chip_info = &info[port];
+		*chip_info = i;
 
-	if (info[port].vendor_id)
+	if (i->vendor_id)
 		return EC_SUCCESS;
+
+	i->struct_version = EC_CMD_PD_CHIP_INFO_STRUCT_VERSION;
 
 	error = tcpc_read16(port, TCPC_REG_VENDOR_ID, &val);
 	if (error)
 		return error;
-	info[port].vendor_id = val;
+	i->vendor_id = val;
 
 	error = tcpc_read16(port, TCPC_REG_PRODUCT_ID, &val);
 	if (error)
 		return error;
-	info[port].product_id = val;
+	i->product_id = val;
 
 	error = tcpc_read16(port, TCPC_REG_BCD_DEV, &val);
 	if (error)
 		return error;
-	info[port].device_id = val;
+	i->device_id = val;
 
-	switch(info[port].vendor_id) {
+	switch(i->vendor_id) {
 #ifdef CONFIG_USB_PD_TCPM_ANX74XX
 	case ANX74XX_VENDOR_ID:
 		error = anx74xx_tcpc_get_fw_version(port, &val);
@@ -370,11 +376,13 @@ int tcpci_get_chip_info(int port, struct ec_response_pd_chip_info **chip_info)
 	default:
 		/* Even if the chip doesn't implement get_fw_version, we
 		 * return success. The version will be 0xffff. */
-		return EC_SUCCESS;
+		val = 0xffff;
+		error = EC_SUCCESS;
 	}
 	if (error)
 		return error;
-	info[port].fw_version = val;
+	/* This may vary chip to chip. For now everything fits in this format */
+	snprintf(i->fw_version, sizeof(i->fw_version) - 1, "0x%x", val);
 
 	return EC_SUCCESS;
 }

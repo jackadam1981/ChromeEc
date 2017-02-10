@@ -3995,17 +3995,21 @@ struct __ec_align1 ec_response_usb_pd_mux_info {
 	uint8_t flags; /* USB_PD_MUX_*-encoded USB mux state */
 };
 
-#define EC_CMD_PD_CHIP_INFO	0x011B
+#define EC_CMD_PD_CHIP_INFO	0x011b
+#define EC_CMD_PD_CHIP_INFO_STRUCT_VERSION	0
 
 struct __ec_align1 ec_params_pd_chip_info {
+	uint8_t struct_version;
 	uint8_t port; /* USB-C port number */
 };
 
 struct __ec_align2 ec_response_pd_chip_info {
+	uint8_t struct_version;
+	uint8_t reserved;
 	uint16_t vendor_id;
 	uint16_t product_id;
 	uint16_t device_id;
-	uint16_t fw_version;
+	uint8_t fw_version[8];
 };
 
 #endif  /* !__ACPI__ */

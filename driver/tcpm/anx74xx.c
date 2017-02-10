@@ -888,8 +888,6 @@ int anx74xx_tcpm_init(int port)
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 
-	tcpm_get_chip_info(port, NULL);
-
 	return EC_SUCCESS;
 }
 
