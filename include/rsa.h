@@ -22,6 +22,8 @@
  * plus 4 for n0inv, aligned on a multiple of 16
  * Put numerical constants here to please the linker script.
  */
+#ifndef CONFIG_RWSIG_TYPE_RWSIG
+/* vboot2 public keys are packed in a slightly different way. */
 #if CONFIG_RSA_KEY_SIZE == 2048
 #define RSA_PUBLIC_KEY_SIZE 528
 #elif CONFIG_RSA_KEY_SIZE == 4096
@@ -31,18 +33,29 @@
 #else
 #error Unsupported RSA key size
 #endif
+#endif /* ! CONFIG_RWSIG_TYPE_RWSIG */
 #endif /* CONFIG_RSA */
 
 #ifndef __ASSEMBLER__
 
 #include "common.h"
 
+#ifdef CONFIG_RWSIG_TYPE_RWSIG
+/* RSA public key definition, VBoot2 packing */
+struct rsa_public_key {
+	uint32_t size;
+	uint32_t n0inv;           /* -1 / n[0] mod 2^32 */
+	uint32_t n[RSANUMWORDS];  /* modulus as little endian array */
+	uint32_t rr[RSANUMWORDS]; /* R^2 as little endian array */
+};
+#else
 /* RSA public key definition */
 struct rsa_public_key {
 	uint32_t n[RSANUMWORDS];  /* modulus as little endian array */
 	uint32_t rr[RSANUMWORDS]; /* R^2 as little endian array */
 	uint32_t n0inv;           /* -1 / n[0] mod 2^32 */
 };
+#endif
 
 int rsa_verify(const struct rsa_public_key *key,
 	       const uint8_t *signature,
@@ -63,8 +76,15 @@ void check_rw_signature(void);
 
 /* The pubkey goes at the end of the first half of flash */
 #ifndef CONFIG_RO_PUBKEY_SIZE
+#ifdef CONFIG_RWSIG_TYPE_RWSIG
+/*
+ * rwsig type: 1024 bytes is enough to fit RSA-3072 public key.
+ */
+#define CONFIG_RO_PUBKEY_SIZE 1024
+#else
 #define CONFIG_RO_PUBKEY_SIZE RSA_PUBLIC_KEY_SIZE
 #endif
+#endif /* ! CONFIG_RO_PUBKEY_SIZE */
 #ifndef CONFIG_RO_PUBKEY_ADDR
 #define CONFIG_RO_PUBKEY_ADDR (CONFIG_PROGRAM_MEMORY_BASE	\
 			       + (CONFIG_FLASH_SIZE / 2)	\
@@ -73,8 +93,18 @@ void check_rw_signature(void);
 
 /* The signature goes at the end of the second half of flash */
 #ifndef CONFIG_RW_SIG_SIZE
+#ifdef CONFIG_RWSIG_TYPE_RWSIG
+/*
+ * rwsig type: 512 bytes is enough to fit RSA-3072 vboot2 signature.
+ *
+ * TODO(crosbug.com/690773): This actually breaks 'futility show' as it assumes
+ * offset is 1024 bytes.
+ */
+#define CONFIG_RW_SIG_SIZE 512
+#else
 #define CONFIG_RW_SIG_SIZE RSANUMBYTES
 #endif
+#endif /* ! CONFIG_RW_SIG_SIZE */
 #ifndef CONFIG_RW_SIG_ADDR
 #define CONFIG_RW_SIG_ADDR (CONFIG_PROGRAM_MEMORY_BASE	\
 			    + CONFIG_FLASH_SIZE		\
