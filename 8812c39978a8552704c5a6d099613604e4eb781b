@@ -39,6 +39,30 @@
       "revId": "8812c39978a8552704c5a6d099613604e4eb781b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14b7b495_8918ea38",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-10T20:46:56Z",
+      "side": 1,
+      "message": "What is \"SBU mux\"? What does ANX74XX_REG_MODE_TRANS actually do? When should it be set? When should it be cleared? We have gone back and forth on this question too many times, please check it closer and push your own patch.\n\nAlso you\u0027re calling anx74xx_set_mux() twice when MUX_DP_ENABLED is set, that seems like a mistake.",
+      "parentUuid": "26bdb455_005e04cf",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 236,
+        "endChar": 66
+      },
+      "revId": "8812c39978a8552704c5a6d099613604e4eb781b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
