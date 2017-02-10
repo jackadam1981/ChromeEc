@@ -6875,6 +6875,8 @@ int cmd_pd_chip_info(int argc, char *argv[])
 		return -1;
 	}
 
+	p.struct_version = EC_CMD_PD_CHIP_INFO_STRUCT_VERSION;
+
 	p.port = strtol(argv[1], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad port number.\n");
@@ -6888,7 +6890,7 @@ int cmd_pd_chip_info(int argc, char *argv[])
 	printf("vendor_id: 0x%x\n", r.vendor_id);
 	printf("product_id: 0x%x\n", r.product_id);
 	printf("device_id: 0x%x\n", r.device_id);
-	printf("fw_version: 0x%x\n", r.fw_version);
+	printf("fw_version: %s\n", r.fw_version);
 
 	return 0;
 }
