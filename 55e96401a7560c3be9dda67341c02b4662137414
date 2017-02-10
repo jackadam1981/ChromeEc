@@ -16,6 +16,24 @@
       "revId": "55e96401a7560c3be9dda67341c02b4662137414",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c2a761e_0b67db30",
+        "filename": "common/charger_profile_override.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-10T17:33:19Z",
+      "side": 1,
+      "message": "last range is always 0xFFFF so it is guaranteed that we set voltage_range .\nIf we initialize\nvoltage_range \u003d CONFIG_CHARGER_PROFILE_VOLTAGE_RANGES - 1; \nloop become like this and having last range field doesn\u0027t really mean anything\nfor (i \u003d 0; i \u003c CONFIG_CHARGER_PROFILE_VOLTAGE_RANGES-1; i++)",
+      "parentUuid": "3da307eb_df126e27",
+      "revId": "55e96401a7560c3be9dda67341c02b4662137414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
