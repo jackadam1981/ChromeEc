@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c599971f_3f7d1757",
+        "filename": "board/minnie/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-02-11T00:41:57Z",
+      "side": 1,
+      "message": "I guess in the future if we ever want to debug something i2c on minnie it might get annoying. But there should be workarounds, like doing it from the host.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "b68376ae8e95fc43c7ca5eafc5d79475751ea669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01d39197_7fa9e264",
+        "filename": "board/minnie/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-02-11T00:41:57Z",
+      "side": 1,
+      "message": "And hopefully we won\u0027t have to debug timers on minnie, one can just try jerry instead.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "b68376ae8e95fc43c7ca5eafc5d79475751ea669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
