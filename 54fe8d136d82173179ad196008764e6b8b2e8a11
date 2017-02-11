@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e32d8be_6c9a3453",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1603,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-11T00:06:36Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_TCPC is for cros ec as a pd chip. They have their own version system. I didn\u0027t implement tcpm_get_chip_info for them. tcpm.h lists whole different sets of functions for CONFIG_USB_PD_TCPC and non-CONFIG_USB_PD_TCPC.",
+      "parentUuid": "5a3af42e_370969f8",
+      "range": {
+        "startLine": 1603,
+        "startChar": 8,
+        "endLine": 1603,
+        "endChar": 26
+      },
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19258e6f_6546000e",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "463a4db0_6553f17f",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-11T00:06:36Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/441270.",
+      "parentUuid": "19258e6f_6546000e",
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "edce49ab_7e18a015",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2017-02-10T21:16:00Z",
       "side": 1,
       "message": "I take it the version number/size will vary by vendor?",
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231667ea_a32d53fa",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-11T00:06:36Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/441270.",
+      "parentUuid": "edce49ab_7e18a015",
       "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "0e9e40c4_d2ec0171",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-11T00:06:36Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/441270.",
+      "parentUuid": "cb675609_e455f790",
+      "range": {
+        "startLine": 372,
+        "startChar": 41,
+        "endLine": 372,
+        "endChar": 49
+      },
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13ea3e36_884fb816",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "d07a6cab_b0c2f2d8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3946,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-11T00:06:36Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/441270.",
+      "parentUuid": "13ea3e36_884fb816",
+      "range": {
+        "startLine": 3946,
+        "startChar": 33,
+        "endLine": 3946,
+        "endChar": 34
+      },
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e19ebc4_89b30f81",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -116,6 +224,24 @@
       "writtenOn": "2017-02-10T21:16:00Z",
       "side": 1,
       "message": "Is 16-bit enough for fw_version? What happens if another part uses a string or something? Should we make it an array of decent size? like 8 bytes? Or if we have to extend this structure how will we do that w/o putting an version for the structure?",
+      "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa19392_cbfc7dcb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3956,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-11T00:06:36Z",
+      "side": 1,
+      "message": "Done in https://chromium-review.googlesource.com/441270.",
+      "parentUuid": "1e19ebc4_89b30f81",
       "revId": "54fe8d136d82173179ad196008764e6b8b2e8a11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
