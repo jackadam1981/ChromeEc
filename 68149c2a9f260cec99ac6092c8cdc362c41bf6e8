@@ -16,6 +16,24 @@
       "revId": "68149c2a9f260cec99ac6092c8cdc362c41bf6e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2952ab2a_bd19f8e2",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-11T00:56:30Z",
+      "side": 1,
+      "message": "Yes, we should make that more explicit.  Or rename it to RORW at boot.  \"all\" should mean all.\n\nNot sure if there are any tests which rely on the string \"all\", either here or on the other side of ectool.",
+      "parentUuid": "fc32acf6_244fe965",
+      "revId": "68149c2a9f260cec99ac6092c8cdc362c41bf6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
