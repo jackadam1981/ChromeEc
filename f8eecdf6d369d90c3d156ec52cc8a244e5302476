@@ -46,6 +46,30 @@
       "revId": "f8eecdf6d369d90c3d156ec52cc8a244e5302476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0cfa711_d4bcd171",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-02-11T01:10:07Z",
+      "side": 1,
+      "message": "okay, we can add a second level check in board.c for both ports.\nread vbus from PD and override charger status",
+      "parentUuid": "fb4aed3f_d5053caa",
+      "range": {
+        "startLine": 904,
+        "startChar": 1,
+        "endLine": 904,
+        "endChar": 11
+      },
+      "revId": "f8eecdf6d369d90c3d156ec52cc8a244e5302476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
