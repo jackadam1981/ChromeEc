@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cecd33e4_cb07e243",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3999,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T11:07:57Z",
+      "side": 1,
+      "message": "this is confusing to me, how this can be useful if you put 0 inside.",
+      "range": {
+        "startLine": 3999,
+        "startChar": 0,
+        "endLine": 3999,
+        "endChar": 37
+      },
+      "revId": "762ee44ca42d57d316f814ed149c2b52b59df018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fda2b2a_10252025",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6878,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T11:07:57Z",
+      "side": 1,
+      "message": "given ectool is not too size-constraint, usually we try to support the various versions when they exist",
+      "range": {
+        "startLine": 6873,
+        "startChar": 0,
+        "endLine": 6878,
+        "endChar": 2
+      },
+      "revId": "762ee44ca42d57d316f814ed149c2b52b59df018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a2955d_8340a3ba",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6891,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T11:07:57Z",
+      "side": 1,
+      "message": "you are hardcoding 0 here and using EC_VER_PD_CHIP_INFO_VERSION above",
+      "range": {
+        "startLine": 6891,
+        "startChar": 38,
+        "endLine": 6891,
+        "endChar": 39
+      },
+      "revId": "762ee44ca42d57d316f814ed149c2b52b59df018",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
