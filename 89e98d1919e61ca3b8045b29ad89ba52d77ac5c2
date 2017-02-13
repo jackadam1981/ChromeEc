@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e20e94d5_7830b654",
+        "filename": "chip/it83xx/it83xx_fpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T14:08:25Z",
+      "side": 1,
+      "message": "you cannot pick a random register and use it, at some point, the toolchain will change and it will break.\nYou need to write something like this instead:\nasm volatile(\"mtsr %0,$dlmb\\n\\t\" : : \"r\"(0x80189)); \\",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 39
+      },
+      "revId": "89e98d1919e61ca3b8045b29ad89ba52d77ac5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f545dba7_db034bdb",
+        "filename": "chip/it83xx/it83xx_fpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T14:08:25Z",
+      "side": 1,
+      "message": "ditto\nwith asm volatile(\"mtsr %0,$dlmb\\n\\t\" : : \"r\"(0x80009));",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "89e98d1919e61ca3b8045b29ad89ba52d77ac5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "902276d1_ab98b455",
+        "filename": "chip/it83xx/it83xx_fpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T14:08:25Z",
+      "side": 1,
+      "message": "then remove this, once ENABLE/DISABLE_IT83XX_FPU are fixed",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "89e98d1919e61ca3b8045b29ad89ba52d77ac5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d7612e9_3ac5cb44",
+        "filename": "chip/it83xx/it83xx_fpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T14:08:25Z",
+      "side": 1,
+      "message": "looks wrong to me, I suspect it works by chance\n(ie you are not using %0 but the compiler to assign $r0 to a)\n\nI would like to write something like this:\nfloat __mulsf3(float a, float b)\n{\n        float ret;\n\n        ENABLE_IT83XX_FPU();\n        asm volatile (\n                /* Floating-point multiplication single-precision */\n                \"mul33 %0,%1\\n\\t\"\n                : \"\u003d\u0026r\"(a)\n                : \"r\"(b)\n        );\n        DISABLE_IT83XX_FPU();\n\n        return a;\n}\nbut strangely the assembly is correct (the ENABLE_IT83XX_FPU clobbers $r0)\nI suspect the toolchain has a bug ? (or it is confused by the \u0027float a\u0027 in an integer register)\nThe following might work:\n\n#define FPU_ON_IT_OFF 0x80189\n#define FPU_OFF_IT_ON 0x80009 \nfloat __mulsf3(float a, float b)\n{\n        /* Floating-point multiplication single-precision */\n        asm volatile (\n                \"mtsr %2,$dlmb\\n\\t\"\n                \"dsb\\n\\t\"\n                \"mul33 %0,%1\\n\\t\"\n                \"mtsr %3,$dlmb\\n\\t\"\n                \"dsb\\n\\t\"\n                : \"\u003d\u0026r\"(a) : \"r\"(b), \"r\"(FPU_ON_IT_OFF), \"r\"(FPU_OFF_IT_ON));\n    \n        return a;\n}",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "89e98d1919e61ca3b8045b29ad89ba52d77ac5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
