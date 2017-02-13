@@ -211,6 +211,30 @@
       "revId": "dd380d4c5bce3981f9314941237204433a1834f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dbabfec_80304a79",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2017-02-13T02:16:22Z",
+      "side": 1,
+      "message": "Once entering Standby mode, CABLE_DET pin will be pulled high by hardware if CC\u003d\u003d Ra || Rd || Rp. So keeping CABLE_DET pin low about 2ms, and then entering low power mode. In this way,  avoiding to miss the rising edge because the low voltage of CABLE_DET is too short.",
+      "parentUuid": "c0693718_a9fb197c",
+      "range": {
+        "startLine": 91,
+        "startChar": 1,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "dd380d4c5bce3981f9314941237204433a1834f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
