@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86503c75_749f4998",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-02-13T22:36:01Z",
+      "side": 1,
+      "message": "Add a test to verify that when battery is unplugged write protect is disabled, but we still can\u0027t unlock the console",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 71
+      },
+      "revId": "69e70a6031020685fd99d570ba6d6a32f5042007",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
