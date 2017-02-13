@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9e46d95_8601874c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-13T21:52:47Z",
+      "side": 1,
+      "message": "From the app notes, I have much lower numbers.",
+      "revId": "5db9129f299c7339282129938986bc10c8662ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5888976d_f69a2172",
+        "filename": "driver/als_si114x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-13T21:52:47Z",
+      "side": 1,
+      "message": "20ms is generous.  integration time  is a variable,  in https://www.silabs.com/Support%20Documents/TechnicalDocs/AN498.pdf, chapter 6:\n\nt(DVIS) \u003d  4 µs + 2 * ( 25.6 µs  + t(VISREC) \u003c\u003c ALS_VIS_ADC_GAIN\n\nt(VISREC) \u003d 50ns \u003c\u003c VIS_ADC_REC\n\nALS_VIS_ADC_GAIN and VIS_ADC_REC are one\u0027s compliment \nso ~ 4us + 2 * (25.6us +  50ns \u003c\u003c 7) \u003d\u003d 68us\n\nSo 100us should be enough.",
+      "revId": "5db9129f299c7339282129938986bc10c8662ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
