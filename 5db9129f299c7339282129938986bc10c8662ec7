@@ -33,6 +33,24 @@
       "revId": "5db9129f299c7339282129938986bc10c8662ec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b83e3edd_4659cfa5",
+        "filename": "driver/als_si114x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-13T22:43:06Z",
+      "side": 1,
+      "message": "I used a console command so I could adjust this value and a cprints showing IRQ_STATUS and the ALS reading.  . The 20 msec is certainly more than needed, but in my tests with the console command if I set this value to \u003c 4msec I start seeing instances of the irq_handler being called and IRQ_STATUS \u003d 0.",
+      "parentUuid": "5888976d_f69a2172",
+      "revId": "5db9129f299c7339282129938986bc10c8662ec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
