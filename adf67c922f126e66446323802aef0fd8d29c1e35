@@ -34,6 +34,47 @@
       "revId": "adf67c922f126e66446323802aef0fd8d29c1e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "565da7ea_02a7ca27",
+        "filename": "builtin/string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-02-13T22:37:29Z",
+      "side": 1,
+      "message": "They might be built-ins, but if somebody specifies \"-fno-builtin\" to the compiler, the linker will need real implementations.",
+      "parentUuid": "8f2e15f0_4dc71bac",
+      "revId": "adf67c922f126e66446323802aef0fd8d29c1e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34691b23_06ab4acc",
+        "filename": "builtin/string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-02-13T22:37:29Z",
+      "side": 1,
+      "message": "This should be \"const void *buffer\".",
+      "range": {
+        "startLine": 22,
+        "startChar": 27,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "adf67c922f126e66446323802aef0fd8d29c1e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
