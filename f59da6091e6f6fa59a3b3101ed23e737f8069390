@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6befc2d4_4c46b216",
+        "filename": "board/eve/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-13T21:21:09Z",
+      "side": 1,
+      "message": "From the schematics of the camera module, the Accelerometer interrupt is connected, not the ALS interrupt register (if it was no need of the polling code.",
+      "revId": "f59da6091e6f6fa59a3b3101ed23e737f8069390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
