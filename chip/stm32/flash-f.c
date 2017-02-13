@@ -356,6 +356,8 @@ int flash_physical_protect_at_boot(uint32_t new_flags)
 		if (block >= WP_BANK_OFFSET &&
 		    block < WP_BANK_OFFSET + WP_BANK_COUNT)
 			protect |= new_flags & EC_FLASH_PROTECT_RO_AT_BOOT;
+		else
+			protect |= new_flags & EC_FLASH_PROTECT_RW_AT_BOOT;
 
 		if (protect)
 			val[byte_off] = val[byte_off] & (~(1 << (block % 8)));
@@ -473,6 +475,13 @@ int flash_pre_init(void)
 		 * This assumes OBL_LAUNCH is used for hard reset in
 		 * chip/stm32/system.c.
 		 */
+		need_reset = 1;
+	}
+
+	if ((flash_physical_get_valid_flags() & EC_FLASH_PROTECT_RW_AT_BOOT) &&
+	    (!!(prot_flags & EC_FLASH_PROTECT_RW_AT_BOOT) !=
+	     !!(prot_flags & EC_FLASH_PROTECT_RW_NOW))) {
+		/* RW_AT_BOOT and RW_NOW do not match. */
 		need_reset = 1;
 	}
 
