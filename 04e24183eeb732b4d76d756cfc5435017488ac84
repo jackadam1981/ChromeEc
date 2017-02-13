@@ -16,6 +16,29 @@
       "revId": "04e24183eeb732b4d76d756cfc5435017488ac84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4892b5bb_57eb5381",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T18:31:52Z",
+      "side": 1,
+      "message": "snprintf writes at most \u0027size\u0027 bytes including the terminating null character.\ndo we want -1 here ?\n\nif this is to put a final \u0027\\0\u0027 (which is not guaranteed by snprintf definition but actually done by the ec implementation), actually you are not doing it.",
+      "range": {
+        "startLine": 383,
+        "startChar": 25,
+        "endLine": 383,
+        "endChar": 50
+      },
+      "revId": "04e24183eeb732b4d76d756cfc5435017488ac84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
