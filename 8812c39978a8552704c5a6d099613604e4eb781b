@@ -63,6 +63,30 @@
       "revId": "8812c39978a8552704c5a6d099613604e4eb781b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ab4492_8fb24da4",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1151724
+      },
+      "writtenOn": "2017-02-13T02:48:53Z",
+      "side": 1,
+      "message": "1.What is \"SBU mux\"?\n-\u003eSideband Use (SBU) signal pins. it is to switch SBU signal pins for DisplayPort Aux Channels polarity. (TYPE-C Spec)\n2. What does ANX74XX_REG_MODE_TRANS actually do\n-\u003eEnable Safe mode. It is to short the high speed Mux to ground. (Displayport alt mode on usb type-c spec)\n3. When should it be cleared?\n-\u003e After the high speed Mux already be configured, it shall be cleared.\n4. We have gone back and forth on this question too many times, please check it closer and push your own patch. Also you\u0027re calling anx74xx_set_mux() twice when MUX_DP_ENABLED is set, that seems like a mistake.\n-\u003e Very sorry for this. Yes, you are right, here don`t need to call it twice. I will send a mail to you for the new change in more detail to discuss with you.",
+      "parentUuid": "14b7b495_8918ea38",
+      "range": {
+        "startLine": 236,
+        "startChar": 1,
+        "endLine": 236,
+        "endChar": 66
+      },
+      "revId": "8812c39978a8552704c5a6d099613604e4eb781b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
