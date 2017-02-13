@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc71020a_74975251",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-13T18:23:44Z",
+      "side": 1,
+      "message": "The 8 byte buffer won\u0027t hold a value where each nibble has at least one bit high. 0x01234567 is 10 bytes excluding the nul terminator.",
+      "revId": "04e24183eeb732b4d76d756cfc5435017488ac84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
