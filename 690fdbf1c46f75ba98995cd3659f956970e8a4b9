@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42f1352e_8680b0c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-13T12:02:09Z",
+      "side": 1,
+      "message": "Huh, I didn\u0027t even think about that (yet) ,-) That most likely won\u0027t work as I align the signature on a 512-byte boundary (instead of 1024 as futility rwsig type normally expects, was trying to save half a kb...). Will follow instructions in crosbug.com/p/62321.\n\nAlso, the signer should also be able to replace the public key in RO, right? Or is that done before the signing stage?",
+      "parentUuid": "9dce7cf5_5e61bb4a",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "021fa618_708aac52",
         "filename": "common/firmware_image.lds.S",
         "patchSetId": 1
@@ -99,6 +123,30 @@
       "writtenOn": "2017-02-13T11:01:57Z",
       "side": 1,
       "message": "that\u0027s terribly inefficient ? at least you can align the mess on a 32-bit word (it\u0027s likely the case already) and do 4 times less loads.",
+      "range": {
+        "startLine": 116,
+        "startChar": 6,
+        "endLine": 116,
+        "endChar": 23
+      },
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b73518e_69a59457",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-13T12:02:09Z",
+      "side": 1,
+      "message": "It is, there is a note about it just above ,-) But it\u0027s such a massive improvement over actually computing the hash that I didn\u0027t bother. Will revisit.",
+      "parentUuid": "5d2c3855_b1e6db4b",
       "range": {
         "startLine": 116,
         "startChar": 6,
