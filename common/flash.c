@@ -524,7 +524,9 @@ int flash_protect_at_boot(uint32_t new_flags)
 uint32_t flash_get_protect(void)
 {
 	uint32_t flags = 0;
-	int not_protected[2] = {0};
+	/* Region protection status: 0: RW, 1: RO */
+	int not_protected[2] = {0}; /* At least one block is not protected */
+	int protected[2] = {0}; /* At least one block is protected */
 	int i;
 
 	/* Read write protect GPIO */
@@ -545,25 +547,36 @@ uint32_t flash_get_protect(void)
 
 	/* Scan flash protection */
 	for (i = 0; i < PHYSICAL_BANKS; i++) {
-		/* Is this bank part of RO */
-		int is_ro = (i >= WP_BANK_OFFSET &&
-			     i < WP_BANK_OFFSET + WP_BANK_COUNT) ? 1 : 0;
+		/* Default: RW. */
+		int region = 0;
 
-		int bank_flag = (is_ro ? EC_FLASH_PROTECT_RO_NOW :
-				EC_FLASH_PROTECT_ALL_NOW);
+		if (i >= WP_BANK_OFFSET &&
+		    i < WP_BANK_OFFSET + WP_BANK_COUNT)
+			region = 1;
 
 		if (flash_physical_get_protect(i)) {
 			/* At least one bank in the region is protected */
-			flags |= bank_flag;
-			if (not_protected[is_ro])
-				flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
+			protected[region] = 1;
 		} else {
 			/* At least one bank in the region is NOT protected */
-			not_protected[is_ro] = 1;
-			if (flags & bank_flag)
-				flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
+			not_protected[region] = 1;
 		}
 	}
+
+#ifdef CONFIG_FLASH_PROTECT_RW
+	if (protected[0])
+		flags |= EC_FLASH_PROTECT_RW_NOW;
+#endif
+
+	if (protected[1])
+		flags |= EC_FLASH_PROTECT_RO_NOW;
+
+	if (protected[0] && protected[1])
+		flags |= EC_FLASH_PROTECT_ALL_NOW;
+
+	if ((protected[0] && not_protected[0]) ||
+		(protected[1] && not_protected[1]))
+		flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
 
 	/*
 	 * If the RW banks are protected but the RO banks aren't, that's
@@ -572,8 +585,11 @@ uint32_t flash_get_protect(void)
 	 * Note that we check this before adding in the physical flags below,
 	 * since some chips can also protect ALL_NOW for the current boot by
 	 * locking up the flash program-erase registers.
+	 *
+	 * Note that flags can also be set from pstate, so we also check
+	 * if RO is protected but pstate is not.
 	 */
-	if ((flags & EC_FLASH_PROTECT_ALL_NOW) &&
+	if ((protected[0] || protected[1]) &&
 	    !(flags & EC_FLASH_PROTECT_RO_NOW))
 		flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
 
@@ -586,7 +602,8 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 	int retval = EC_SUCCESS;
 	int rv;
 	int old_flags_at_boot = flash_get_protect() &
-		(EC_FLASH_PROTECT_RO_AT_BOOT | EC_FLASH_PROTECT_ALL_AT_BOOT);
+		(EC_FLASH_PROTECT_RO_AT_BOOT | EC_FLASH_PROTECT_RW_AT_BOOT |
+			EC_FLASH_PROTECT_ALL_AT_BOOT);
 	int new_flags_at_boot = old_flags_at_boot;
 
 	/*
@@ -616,9 +633,21 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 	new_flags_at_boot &= ~(mask & EC_FLASH_PROTECT_RO_AT_BOOT);
 	new_flags_at_boot |= mask & flags & EC_FLASH_PROTECT_RO_AT_BOOT;
 
+	/* Removing ALL must also remove RW */
 	if ((mask & EC_FLASH_PROTECT_ALL_AT_BOOT) &&
-	    !(flags & EC_FLASH_PROTECT_ALL_AT_BOOT))
+	    !(flags & EC_FLASH_PROTECT_ALL_AT_BOOT)) {
 		new_flags_at_boot &= ~EC_FLASH_PROTECT_ALL_AT_BOOT;
+		new_flags_at_boot &= ~EC_FLASH_PROTECT_RW_AT_BOOT;
+	}
+
+#ifdef CONFIG_FLASH_PROTECT_RW
+	/* Removing RW must also remove ALL (otherwise nothing will happen). */
+	if ((mask & EC_FLASH_PROTECT_RW_AT_BOOT) &&
+	    !(flags & EC_FLASH_PROTECT_RW_AT_BOOT)) {
+		new_flags_at_boot &= ~EC_FLASH_PROTECT_ALL_AT_BOOT;
+		new_flags_at_boot &= ~EC_FLASH_PROTECT_RW_AT_BOOT;
+	}
+#endif
 
 	if (new_flags_at_boot != old_flags_at_boot) {
 		rv = flash_protect_at_boot(new_flags_at_boot);
@@ -636,11 +665,16 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 		return retval;
 
 	/*
-	 * The case where ALL_AT_BOOT is unset is already covered above,
+	 * The case where ALL/RW_AT_BOOT is unset is already covered above,
 	 * but this does not hurt.
 	 */
 	new_flags_at_boot &= ~(mask & EC_FLASH_PROTECT_ALL_AT_BOOT);
 	new_flags_at_boot |= mask & flags & EC_FLASH_PROTECT_ALL_AT_BOOT;
+
+#ifdef CONFIG_FLASH_PROTECT_RW
+	new_flags_at_boot &= ~(mask & EC_FLASH_PROTECT_RW_AT_BOOT);
+	new_flags_at_boot |= mask & flags & EC_FLASH_PROTECT_RW_AT_BOOT;
+#endif
 
 	if (new_flags_at_boot != old_flags_at_boot) {
 		rv = flash_protect_at_boot(new_flags_at_boot);
@@ -691,6 +725,12 @@ static int command_flash_info(int argc, char **argv)
 		ccputs(" ro_now");
 	if (i & EC_FLASH_PROTECT_ALL_NOW)
 		ccputs(" all_now");
+#ifdef CONFIG_FLASH_PROTECT_RW
+	if (i & EC_FLASH_PROTECT_RW_AT_BOOT)
+		ccputs(" rw_at_boot");
+	if (i & EC_FLASH_PROTECT_RW_NOW)
+		ccputs(" rw_now");
+#endif
 	if (i & EC_FLASH_PROTECT_ERROR_STUCK)
 		ccputs(" STUCK");
 	if (i & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
@@ -840,6 +880,14 @@ static int command_flash_wp(int argc, char **argv)
 	if (!strcasecmp(argv[1], "noall"))
 		return flash_set_protect(EC_FLASH_PROTECT_ALL_AT_BOOT, 0);
 
+#ifdef CONFIG_FLASH_PROTECT_RW
+	if (!strcasecmp(argv[1], "rw"))
+		return flash_set_protect(EC_FLASH_PROTECT_RW_AT_BOOT, -1);
+
+	if (!strcasecmp(argv[1], "norw"))
+		return flash_set_protect(EC_FLASH_PROTECT_RW_AT_BOOT, 0);
+#endif
+
 	/* Do this last, since anything starting with 'n' means "no" */
 	if (parse_bool(argv[1], &val))
 		return flash_set_protect(EC_FLASH_PROTECT_RO_AT_BOOT,
@@ -848,8 +896,11 @@ static int command_flash_wp(int argc, char **argv)
 	return EC_ERROR_PARAM1;
 }
 DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,
-			"<BOOLEAN> | now | all | noall",
-			"Modify flash write protect");
+			"<BOOLEAN> | now | all | noall"
+#ifdef CONFIG_FLASH_PROTECT_RW
+			" | rw | norw"
+#endif
+			, "Modify flash write protect");
 
 /*****************************************************************************/
 /* Host commands */
