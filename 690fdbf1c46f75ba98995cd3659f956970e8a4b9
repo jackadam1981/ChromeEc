@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "9dce7cf5_5e61bb4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T11:01:57Z",
+      "side": 1,
+      "message": "Actually you also need to verify that you can re-sign with \u0027futility\u0027 as the official signer would do,\nelse we cannot use it",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "021fa618_708aac52",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T11:01:57Z",
+      "side": 1,
+      "message": "what is this doing exactly ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1d4968e_8688e2ec",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T11:01:57Z",
+      "side": 1,
+      "message": "nit: you should put even bigger invalid-but-really-large-error-messages-about-the-signature-including-a-lot-of-signature-words. Sure somebody will remove them at some point.",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 49
+      },
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "785ffb32_2d6d3860",
         "filename": "common/rwsig.c",
         "patchSetId": 1
@@ -13,6 +82,29 @@
       "writtenOn": "2017-02-13T07:25:01Z",
       "side": 1,
       "message": "s/zeros/ones/",
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d2c3855_b1e6db4b",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-13T11:01:57Z",
+      "side": 1,
+      "message": "that\u0027s terribly inefficient ? at least you can align the mess on a 32-bit word (it\u0027s likely the case already) and do 4 times less loads.",
+      "range": {
+        "startLine": 116,
+        "startChar": 6,
+        "endLine": 116,
+        "endChar": 23
+      },
       "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
