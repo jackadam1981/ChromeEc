@@ -133,7 +133,6 @@ class Interpreter(object):
       command: A string which contains the command to be sent.
     """
     self.ec_cmd_queue.put(command)
-    self.logger.debug('Commands now in queue: %d', self.ec_cmd_queue.qsize())
 
     # Add the EC UART as an output to be serviced.
     if self.connected and self.ec_uart_pty not in self.outputs:
@@ -229,7 +228,6 @@ class Interpreter(object):
       return
 
     # Ignore any other commands while in the disconnected state.
-    self.logger.debug('command: \'%s\'', command)
     if not self.connected:
       self.logger.debug('Ignoring command because currently disconnected.')
       return
@@ -300,7 +298,6 @@ class Interpreter(object):
     # Send the command.
     self.ec_uart_pty.write(cmd)
     self.ec_uart_pty.flush()
-    self.logger.debug('Sent command to EC.')
 
     if self.enhanced_ec and cmd != EC_SYN:
       # Now, that we've sent the command, store the current command as the last
@@ -320,10 +317,8 @@ class Interpreter(object):
 
   def HandleECData(self):
     """Handle any debug prints from the EC."""
-    self.logger.debug('EC has data')
     # Read what the EC sent us.
     data = os.read(self.ec_uart_pty.fileno(), EC_MAX_READ)
-    self.logger.debug('got: \'%s\'', binascii.hexlify(data))
     if '&E' in data and self.enhanced_ec:
       # We received an error, so we should retry it if possible.
       self.logger.warning('Error string found in data.')
@@ -341,12 +336,10 @@ class Interpreter(object):
       # Done interrogating.
       self.interrogating = False
     # For now, just forward everything the EC sends us.
-    self.logger.debug('Forwarding to user...')
     self.dbg_pipe.send(data)
 
   def HandleUserData(self):
     """Handle any incoming commands from the user."""
-    self.logger.debug('Command data available.  Begin processing.')
     data = self.cmd_pipe.recv()
     # Process the command.
     self.ProcessCommand(data)
