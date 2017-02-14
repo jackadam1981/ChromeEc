@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4e8435dc_33563aa7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T02:41:01Z",
+      "side": 1,
+      "message": "Replied here: https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d62321#c4 . Doesn\u0027t seem to be fully part of the scope of this patch.",
+      "parentUuid": "aa37391a_1147acde",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 24
+      },
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "021fa618_708aac52",
         "filename": "common/firmware_image.lds.S",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "writtenOn": "2017-02-13T11:01:57Z",
       "side": 1,
       "message": "what is this doing exactly ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "717526f3_e8bc28e2",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T02:41:01Z",
+      "side": 1,
+      "message": "Nothing at all, it seems. Actually I don\u0027t think we need any of the ALIGNs in this file, as we specify all locations with absolute values...\n\nDropped.",
+      "parentUuid": "021fa618_708aac52",
       "range": {
         "startLine": 34,
         "startChar": 4,
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "94283733_398cffc7",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T02:41:01Z",
+      "side": 1,
+      "message": "shrunk",
+      "parentUuid": "e1d4968e_8688e2ec",
+      "range": {
+        "startLine": 85,
+        "startChar": 11,
+        "endLine": 85,
+        "endChar": 49
+      },
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "785ffb32_2d6d3860",
         "filename": "common/rwsig.c",
         "patchSetId": 1
@@ -133,6 +205,24 @@
       "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2a86903_1f501518",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T02:41:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "785ffb32_2d6d3860",
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -204,6 +294,30 @@
       "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "596745c6_cfc51726",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T02:41:01Z",
+      "side": 1,
+      "message": "Done, the code does not take much more space than the comment ,-)",
+      "parentUuid": "adff9fcf_036638e4",
+      "range": {
+        "startLine": 116,
+        "startChar": 6,
+        "endLine": 116,
+        "endChar": 23
+      },
+      "revId": "690fdbf1c46f75ba98995cd3659f956970e8a4b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
