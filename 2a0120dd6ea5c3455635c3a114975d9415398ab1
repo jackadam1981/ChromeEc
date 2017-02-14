@@ -22,6 +22,30 @@
       "revId": "2a0120dd6ea5c3455635c3a114975d9415398ab1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b58dd4e_1912b5c7",
+        "filename": "builtin/string.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2017-02-14T23:48:33Z",
+      "side": 1,
+      "message": "Good catch. It turns out the linker was pruning the functions (some aren\u0027t being used yet) that made the strn*() calls hence the lack of unresolved symbol errors. Implemented them in common/util.c",
+      "parentUuid": "5475bfeb_cce15862",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "2a0120dd6ea5c3455635c3a114975d9415398ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
