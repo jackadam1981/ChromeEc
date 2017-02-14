@@ -515,12 +515,6 @@ static void board_init(void)
 
 		for (i = BASE_ACCEL; i <= BASE_MAG; ++i)
 			motion_sensors[i].active_mask = SENSOR_ACTIVE_S0;
-	} else if (version >= BOARD_VERSION_6) {
-		/*
-		 * New form-factor aligns w/ electro, lid accelerometer
-		 * faces to B-cover.
-		 */
-		motion_sensors[LID_ACCEL].rot_standard_ref = NULL;
 	}
 }
 /* PP3300 needs to be enabled before TCPC init hooks */
@@ -801,6 +795,12 @@ const matrix_3x3_t base_standard_ref = {
 };
 
 const matrix_3x3_t lid_standard_ref = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+
+const matrix_3x3_t lid_switch_ref = {
 	{ FLOAT_TO_FP(1), 0,  0},
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
@@ -1101,3 +1101,16 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+static void motion_sense_update(void)
+{
+	int version = system_get_board_version();
+
+	/*
+	 * New form-factor aligns w/ electro, lid accelerometer
+	 * faces to B-cover.
+	 */
+	if (version < BOARD_VERSION_6)
+		motion_sensors[LID_ACCEL].rot_standard_ref = &lid_switch_ref;
+}
+DECLARE_HOOK(HOOK_INIT, motion_sense_update, HOOK_PRIO_INIT_ADC + 1);
