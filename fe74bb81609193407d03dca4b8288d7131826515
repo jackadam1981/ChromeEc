@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b43238a_5759b4c0",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T11:49:37Z",
+      "side": 1,
+      "message": "futility is the problem here, it should not output to stderr... I\u0027ll fix that. (we still want to see errors, if any...)",
+      "parentUuid": "bcf80b58_6d3b9b12",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 34
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e23398af_1adc8597",
         "filename": "common/firmware_image.S",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-14T08:46:53Z",
       "side": 1,
       "message": "this is likely the wrong flags (ie we never execute this section)\nshouldn\u0027t have too much impact on the current usage, but you can still fix it",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ef00599_768e2015",
+        "filename": "common/firmware_image.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T11:49:37Z",
+      "side": 1,
+      "message": "https://sourceware.org/binutils/docs/as/Section.html\n\n\"a\" seems most sensible. \"ae\" actually removes the section from the final output. \"ar\" does not work (I guess we are in ELF mode).",
+      "parentUuid": "e23398af_1adc8597",
       "range": {
         "startLine": 28,
         "startChar": 24,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a88b9651_0ca3ee30",
+        "filename": "common/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T11:49:37Z",
+      "side": 1,
+      "message": "#define FMAP_AREA_RO          (1 \u003c\u003c 2)  /* writes may fail */\n\nWhich, well, is probably true in some cases. Copied from EC_RW just above. No idea why RW_FWID does not have it...",
+      "parentUuid": "933e86d1_96560eb3",
+      "range": {
+        "startLine": 189,
+        "startChar": 36,
+        "endLine": 189,
+        "endChar": 48
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c90e2f78_6d92197c",
         "filename": "common/rwsig.c",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "99241198_366150c4",
+        "filename": "common/rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T11:49:37Z",
+      "side": 1,
+      "message": "Oh, end of RW section is already aligned! So padding also will be. https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/core/cortex-m/ec.lds.S#331",
+      "parentUuid": "c90e2f78_6d92197c",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af6399fd_b86fe971",
         "filename": "include/rsa.h",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2017-02-14T08:46:53Z",
       "side": 1,
       "message": "sure that\u0027s a positive way of saying you are wasting 252 bytes ...",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 62
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f865856_da5d91a0",
+        "filename": "include/rsa.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T11:49:37Z",
+      "side": 1,
+      "message": "I like to think positively ,-) Actually, especially after we get the FMAP/futility sign story sorted out, we could just pack the signature anywhere in the RO region. But, out of scope of this CL. I\u0027ll add a note.",
+      "parentUuid": "af6399fd_b86fe971",
       "range": {
         "startLine": 81,
         "startChar": 14,
