@@ -16,6 +16,24 @@
       "revId": "69296e4f8ae103ed22b0affbc8d45908aea274d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5a7671_6cbb02e6",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 6900,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-14T16:50:17Z",
+      "side": 1,
+      "message": "I think it\u0027s better to show a sign to urge them to add a new switch case. If vendor_id is not recognized, ec puts -1 there anyway. So, there is no useful info in hex.",
+      "parentUuid": "be6942b1_2207690c",
+      "revId": "69296e4f8ae103ed22b0affbc8d45908aea274d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
