@@ -524,11 +524,19 @@ uint32_t flash_get_protect(void)
 {
 	uint32_t flags = 0;
 	int i;
+#ifdef CONFIG_ROLLBACK
+	/* Region protection status: 0: RW, 1: RO, 2: ROLLBACK. */
+	int not_protected[3] = {0};
+	const uint32_t all_flags = EC_FLASH_PROTECT_RO_NOW |
+				   EC_FLASH_PROTECT_RW_NOW |
+				   EC_FLASH_PROTECT_ROLLBACK_NOW;
+#else
 	/* Region protection status: 0: RW, 1: RO. */
 	int not_protected[2] = {0};
 	/* Flags that must be set to set ALL_NOW flags */
 	const uint32_t all_flags = EC_FLASH_PROTECT_RO_NOW |
 				   EC_FLASH_PROTECT_RW_NOW;
+#endif
 
 	/* Read write protect GPIO */
 #ifdef CONFIG_WP_ALWAYS
@@ -554,6 +562,14 @@ uint32_t flash_get_protect(void)
 		int bank_flag = region ? EC_FLASH_PROTECT_RO_NOW :
 			EC_FLASH_PROTECT_RW_NOW;
 
+#ifdef CONFIG_ROLLBACK
+		if (i >= ROLLBACK_BANK_OFFSET &&
+		    i < ROLLBACK_BANK_OFFSET + ROLLBACK_BANK_COUNT) {
+			region = 2;
+			bank_flag = EC_FLASH_PROTECT_ROLLBACK_NOW;
+		}
+#endif
+
 		if (flash_physical_get_protect(i)) {
 			/* At least one bank in the region is protected */
 			flags |= bank_flag;
@@ -571,8 +587,8 @@ uint32_t flash_get_protect(void)
 		flags |= EC_FLASH_PROTECT_ALL_NOW;
 
 	/*
-	 * If the RW banks are protected but the RO banks aren't, that's
-	 * inconsistent.
+	 * If the RW or ROLLBACK banks are protected but the RO banks aren't,
+	 * that's inconsistent.
 	 *
 	 * Note that we check this before adding in the physical flags below,
 	 * since some chips can also protect ALL_NOW for the current boot by
@@ -595,6 +611,7 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 	int rv;
 	int old_flags_at_boot = flash_get_protect() &
 		(EC_FLASH_PROTECT_RO_AT_BOOT | EC_FLASH_PROTECT_RW_AT_BOOT |
+			EC_FLASH_PROTECT_ROLLBACK_AT_BOOT |
 			EC_FLASH_PROTECT_ALL_AT_BOOT);
 	int new_flags_at_boot = old_flags_at_boot;
 
@@ -628,12 +645,15 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 	new_flags_at_boot &= ~(mask & EC_FLASH_PROTECT_RO_AT_BOOT);
 	new_flags_at_boot |= flags & EC_FLASH_PROTECT_RO_AT_BOOT;
 
-	/* Removing ALL must also remove RW */
+	/* Removing ALL must also remove RW/ROLLBACK */
 	if ((mask & EC_FLASH_PROTECT_ALL_AT_BOOT) &&
 	    !(flags & EC_FLASH_PROTECT_ALL_AT_BOOT)) {
 		new_flags_at_boot &= ~EC_FLASH_PROTECT_ALL_AT_BOOT;
 #ifdef CONFIG_FLASH_PROTECT_RW
 		new_flags_at_boot &= ~EC_FLASH_PROTECT_RW_AT_BOOT;
+#endif
+#ifdef CONFIG_ROLLBACK
+		new_flags_at_boot &= ~EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
 #endif
 	}
 
@@ -641,8 +661,16 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 	/* Removing RW must also remove ALL (otherwise nothing will happen). */
 	if ((mask & EC_FLASH_PROTECT_RW_AT_BOOT) &&
 	    !(flags & EC_FLASH_PROTECT_RW_AT_BOOT)) {
-		new_flags_at_boot &= ~EC_FLASH_PROTECT_ALL_AT_BOOT;
 		new_flags_at_boot &= ~EC_FLASH_PROTECT_RW_AT_BOOT;
+		new_flags_at_boot &= ~EC_FLASH_PROTECT_ALL_AT_BOOT;
+	}
+#endif
+
+#ifdef CONFIG_ROLLBACK
+	if ((mask & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT) &&
+	    !(flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)) {
+		new_flags_at_boot &= ~EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
+		new_flags_at_boot &= ~EC_FLASH_PROTECT_ALL_AT_BOOT;
 	}
 #endif
 
@@ -662,13 +690,17 @@ int flash_set_protect(uint32_t mask, uint32_t flags)
 		return retval;
 
 	/*
-	 * The case where ALL/RW_AT_BOOT is unset is already covered above,
-	 * so we do not need to mask it out.
+	 * The case where ALL/RW/ROLLBACK_AT_BOOT is unset is already covered
+	 * above, so we do not need to mask it out.
 	 */
 	new_flags_at_boot |= flags & EC_FLASH_PROTECT_ALL_AT_BOOT;
 
 #ifdef CONFIG_FLASH_PROTECT_RW
 	new_flags_at_boot |= flags & EC_FLASH_PROTECT_RW_AT_BOOT;
+#endif
+
+#ifdef CONFIG_ROLLBACK
+	new_flags_at_boot |= flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
 #endif
 
 	if (new_flags_at_boot != old_flags_at_boot) {
@@ -727,6 +759,12 @@ static int command_flash_info(int argc, char **argv)
 		ccputs(" STUCK");
 	if (i & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
 		ccputs(" INCONSISTENT");
+#ifdef CONFIG_ROLLBACK
+	if (i & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)
+		ccputs(" rollback_at_boot");
+	if (i & EC_FLASH_PROTECT_ROLLBACK_NOW)
+		ccputs(" rollback_now");
+#endif
 	ccputs("\n");
 
 	ccputs("Protected now:");
@@ -880,6 +918,14 @@ static int command_flash_wp(int argc, char **argv)
 		return flash_set_protect(EC_FLASH_PROTECT_RW_AT_BOOT, 0);
 #endif
 
+#ifdef CONFIG_ROLLBACK
+	if (!strcasecmp(argv[1], "rb"))
+		return flash_set_protect(EC_FLASH_PROTECT_ROLLBACK_AT_BOOT, -1);
+
+	if (!strcasecmp(argv[1], "norb"))
+		return flash_set_protect(EC_FLASH_PROTECT_ROLLBACK_AT_BOOT, 0);
+#endif
+
 	/* Do this last, since anything starting with 'n' means "no" */
 	if (parse_bool(argv[1], &val))
 		return flash_set_protect(EC_FLASH_PROTECT_RO_AT_BOOT,
@@ -891,6 +937,9 @@ DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,
 			"<BOOLEAN> | now | all | noall"
 #ifdef CONFIG_FLASH_PROTECT_RW
 			" | rw | norw"
+#endif
+#ifdef CONFIG_ROLLBACK
+			" | rb | norb"
 #endif
 			, "Modify flash write protect");
 
