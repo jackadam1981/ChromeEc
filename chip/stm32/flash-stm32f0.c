@@ -35,10 +35,15 @@ uint32_t flash_physical_get_protect_flags(void)
 	 * ROLLBACK independently (EC_FLASH_PROTECT_RO_AT_BOOT should be set
 	 * by pstate logic).
 	 */
-#if defined(CONFIG_FLASH_PROTECT_RW)
-	/* Region protection status: 0: RW, 1: RO */
+#if defined(CONFIG_FLASH_PROTECT_RW) || defined(CONFIG_ROLLBACK)
+	/* Region protection status: 0: RW, 1: RO, 2: ROLLBACK */
 	const int mask_flags[] = { EC_FLASH_PROTECT_RW_AT_BOOT,
-				   EC_FLASH_PROTECT_RO_AT_BOOT };
+				   EC_FLASH_PROTECT_RO_AT_BOOT,
+#ifdef CONFIG_ROLLBACK
+				   EC_FLASH_PROTECT_ROLLBACK_AT_BOOT
+#endif
+		};
+
 	/*
 	 * Sets up required mask for wrp01/23 registers: for protection to be
 	 * set, values set in the mask must be zeros, values in the mask << 8
@@ -62,6 +67,11 @@ uint32_t flash_physical_get_protect_flags(void)
 		if (i >= WP_BANK_OFFSET &&
 		    i < WP_BANK_OFFSET + WP_BANK_COUNT)
 			region = 1;
+#ifdef CONFIG_ROLLBACK
+		if (i >= ROLLBACK_BANK_OFFSET &&
+		    i < ROLLBACK_BANK_OFFSET + ROLLBACK_BANK_COUNT)
+			region = 2;
+#endif
 
 		switch (i) {
 		case 8:
@@ -92,7 +102,7 @@ uint32_t flash_physical_get_protect_flags(void)
 #endif
 				flags |= mask_flags[i];
 	}
-#endif /* CONFIG_FLASH_PROTECT_RW */
+#endif /* CONFIG_FLASH_PROTECT_RW || CONFIG_ROLLBACK */
 
 	if (wrp01 == 0xff00ff00)
 #if CONFIG_FLASH_SIZE > 64 * 1024
@@ -122,6 +132,10 @@ uint32_t flash_physical_get_valid_flags(void)
 	       EC_FLASH_PROTECT_RW_AT_BOOT |
 	       EC_FLASH_PROTECT_RW_NOW |
 #endif
+#ifdef CONFIG_ROLLBACK
+	       EC_FLASH_PROTECT_ROLLBACK_AT_BOOT |
+	       EC_FLASH_PROTECT_ROLLBACK_NOW |
+#endif
 	       EC_FLASH_PROTECT_ALL_AT_BOOT |
 	       EC_FLASH_PROTECT_ALL_NOW;
 }
@@ -146,6 +160,12 @@ uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
 	if (cur_flags & (EC_FLASH_PROTECT_RW_AT_BOOT |
 			 EC_FLASH_PROTECT_GPIO_ASSERTED))
 		ret |= EC_FLASH_PROTECT_RW_AT_BOOT;
+#endif
+
+#ifdef CONFIG_ROLLBACK
+	if (cur_flags & (EC_FLASH_PROTECT_ROLLBACK_AT_BOOT |
+			 EC_FLASH_PROTECT_GPIO_ASSERTED))
+		ret |= EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
 #endif
 
 	return ret;
