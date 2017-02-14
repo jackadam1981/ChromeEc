@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37b31030_b757bb40",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-14T01:54:04Z",
+      "side": 1,
+      "message": "I changed this to 3, and the .manuf names to only use the 1st 2 characters.",
+      "parentUuid": "5411b2e3_f34bb6a3",
+      "range": {
+        "startLine": 97,
+        "startChar": 11,
+        "endLine": 97,
+        "endChar": 13
+      },
+      "revId": "6131965237670fa1e6fb7126c3c2baa40e0c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca51830b_50dbf305",
         "filename": "board/eve/battery.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-13T19:32:37Z",
       "side": 1,
       "message": "May want to double check this will work with your chosen battery disconnect method (eg. pwr + F3 + remove AC, or the disconnect host command, which can be sent through ectool).",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 27
+      },
+      "revId": "6131965237670fa1e6fb7126c3c2baa40e0c7e3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4571d4a_4f140aa2",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-14T01:54:04Z",
+      "side": 1,
+      "message": "I did test with battery disconnect. In addition I tested each unit after being fully drained and verified that both versions came back up.",
+      "parentUuid": "ca51830b_50dbf305",
       "range": {
         "startLine": 121,
         "startChar": 5,
