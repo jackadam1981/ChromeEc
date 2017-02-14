@@ -34,6 +34,24 @@
       "revId": "68149c2a9f260cec99ac6092c8cdc362c41bf6e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff2c1244_068b2a4a",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T03:51:11Z",
+      "side": 1,
+      "message": "See CL:442265.",
+      "parentUuid": "2952ab2a_bd19f8e2",
+      "revId": "68149c2a9f260cec99ac6092c8cdc362c41bf6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
