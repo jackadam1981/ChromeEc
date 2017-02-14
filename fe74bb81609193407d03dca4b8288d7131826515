@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "814225fa_4dfcb34d",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-14T12:25:16Z",
+      "side": 1,
+      "message": "Done, see also CL:442524",
+      "parentUuid": "39f163b8_e45a3819",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 34
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e23398af_1adc8597",
         "filename": "common/firmware_image.S",
         "patchSetId": 2
