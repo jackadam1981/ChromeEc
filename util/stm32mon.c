@@ -165,11 +165,10 @@ int open_serial(const char *port)
 			 * Something other than parity failed to get set, this
 			 * is an error.
 			 */
-			perror("Cannot set tty attributes");
-			close(fd);
-			return -1;
+			fprintf(stderr,
+				"Failed to set tty attributes, ignoring\n");
 		} else {
-			fprintf(stderr, "Failed to enable parity\n");
+			fprintf(stderr, "Failed to enable parity, ignoring\n");
 		}
 	}
 
