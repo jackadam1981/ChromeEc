@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebd07bd4_bdf91174",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-14T01:08:59Z",
+      "side": 1,
+      "message": "Why do we not return on failure?",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 3
+      },
+      "revId": "0e9f4de4909801f0888ad5190bda046247c5ce1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66683ff7_debde0b6",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-14T01:08:59Z",
+      "side": 1,
+      "message": "Can we make this short like line 177?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 26
+      },
+      "revId": "0e9f4de4909801f0888ad5190bda046247c5ce1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
