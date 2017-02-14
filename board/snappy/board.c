@@ -62,6 +62,9 @@
 #define IN_PGOOD_PP3300	POWER_SIGNAL_MASK(X86_PGOOD_PP3300)
 #define IN_PGOOD_PP5000	POWER_SIGNAL_MASK(X86_PGOOD_PP5000)
 
+const matrix_3x3_t lid_standard_ref;
+const matrix_3x3_t lid_switch_ref;
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
@@ -515,12 +518,6 @@ static void board_init(void)
 
 		for (i = BASE_ACCEL; i <= BASE_MAG; ++i)
 			motion_sensors[i].active_mask = SENSOR_ACTIVE_S0;
-	} else if (version >= BOARD_VERSION_6) {
-		/*
-		 * New form-factor aligns w/ electro, lid accelerometer
-		 * faces to B-cover.
-		 */
-		motion_sensors[LID_ACCEL].rot_standard_ref = NULL;
 	}
 }
 /* PP3300 needs to be enabled before TCPC init hooks */
@@ -699,6 +696,8 @@ void lid_angle_peripheral_enable(int enable)
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_startup(void)
 {
+	int version = system_get_board_version();
+
 	/* Enable USB-A port. */
 	gpio_set_level(GPIO_USB1_ENABLE, 1);
 
@@ -706,6 +705,17 @@ static void board_chipset_startup(void)
 	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, 0);
 
 	hook_call_deferred(&enable_input_devices_data, 0);
+
+	/* Set the sensors in the right powermode */
+	if (version <= BOARD_VERSION_5) {
+		motion_sensors[LID_ACCEL].rot_standard_ref = &lid_standard_ref;
+	} else if (version >= BOARD_VERSION_6) {
+		/*
+		 * New form-factor aligns w/ electro, lid accelerometer
+		 * faces to B-cover.
+		 */
+		motion_sensors[LID_ACCEL].rot_standard_ref = &lid_switch_ref;
+	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -806,6 +816,12 @@ const matrix_3x3_t lid_standard_ref = {
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
+const matrix_3x3_t lid_switch_ref = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+
 struct kionix_accel_data g_kx022_data;
 struct bmi160_drv_data_t g_bmi160_data;
 struct bmp280_drv_data_t bmp280_drv_data;
@@ -823,7 +839,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .drv_data = &g_kx022_data,
 	 .port = I2C_PORT_LID_ACCEL,
 	 .addr = KX022_ADDR1,
-	 .rot_standard_ref = &lid_standard_ref, /* Identity matrix. */
+	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 2, /* g, enough for laptop. */
 	 .config = {
 		/* AP: by default use EC settings */
