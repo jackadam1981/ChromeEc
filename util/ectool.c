@@ -277,7 +277,8 @@ int parse_bool(const char *s, int *dest)
 void print_help(const char *prog, int print_cmds)
 {
 	printf("Usage: %s [--dev=n] [--interface=dev|lpc|i2c] ", prog);
-	printf("[--name=cros_ec|cros_sh|cros_pd] <command> [params]\n\n");
+	printf("[--name=cros_ec|cros_sh|cros_pd] <command> [params]\n");
+	printf("The --name option implies --interface=dev.\n\n");
 	if (print_cmds)
 		puts(help_str);
 	else
@@ -7069,6 +7070,7 @@ int main(int argc, char *argv[])
 			break;
 		case OPT_NAME:
 			strncpy(device_name, optarg, 40);
+			interfaces = COMM_DEV;
 			break;
 		}
 	}
