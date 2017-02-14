@@ -7069,6 +7069,7 @@ int main(int argc, char *argv[])
 			break;
 		case OPT_NAME:
 			strncpy(device_name, optarg, 40);
+			interfaces = COMM_DEV;
 			break;
 		}
 	}
