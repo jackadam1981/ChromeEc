@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9a724c26_436243ec",
+        "filename": "builtin/string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2017-02-14T01:02:48Z",
+      "side": 1,
+      "message": "Actually it turns out -fno-builtin is already being passed (Makefile.toolchain). They\u0027ve been re-implemented in common/util.c. Moved the memchr() implementation there.",
+      "parentUuid": "565da7ea_02a7ca27",
+      "revId": "adf67c922f126e66446323802aef0fd8d29c1e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34691b23_06ab4acc",
         "filename": "builtin/string.h",
         "patchSetId": 1
@@ -66,6 +84,30 @@
       "writtenOn": "2017-02-13T22:37:29Z",
       "side": 1,
       "message": "This should be \"const void *buffer\".",
+      "range": {
+        "startLine": 22,
+        "startChar": 27,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "adf67c922f126e66446323802aef0fd8d29c1e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c3ef525_eb811b6a",
+        "filename": "builtin/string.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2017-02-14T01:02:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34691b23_06ab4acc",
       "range": {
         "startLine": 22,
         "startChar": 27,
