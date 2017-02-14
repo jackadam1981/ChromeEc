@@ -12,9 +12,13 @@
 #include "ec_commands.h"  /* For EC_FLASH_PROTECT_* flags */
 
 /* Number of physical flash banks */
+/*
+ * TODO(crosbug.com/p/62372): This assumes flash protection blocks are all of
+ * identical sizes, which is incorrect, for example, on STM32F091VC.
+ */
 #define PHYSICAL_BANKS (CONFIG_FLASH_SIZE / CONFIG_FLASH_BANK_SIZE)
 
-/*WP region offset and size in units of flash banks */
+/* WP region offset and size in units of flash banks */
 #define WP_BANK_OFFSET	(CONFIG_WP_STORAGE_OFF / CONFIG_FLASH_BANK_SIZE)
 #define WP_BANK_COUNT	(CONFIG_WP_STORAGE_SIZE / CONFIG_FLASH_BANK_SIZE)
 
@@ -24,6 +28,14 @@
 #define PSTATE_BANK_COUNT   (CONFIG_FW_PSTATE_SIZE / CONFIG_FLASH_BANK_SIZE)
 #else
 #define PSTATE_BANK_COUNT	0
+#endif
+
+#ifdef CONFIG_ROLLBACK
+/*
+ * ROLLBACK region offset and size in units of flash banks.
+ */
+#define ROLLBACK_BANK_OFFSET	(CONFIG_ROLLBACK_OFF / CONFIG_FLASH_BANK_SIZE)
+#define ROLLBACK_BANK_COUNT	(CONFIG_ROLLBACK_SIZE / CONFIG_FLASH_BANK_SIZE)
 #endif
 
 /*****************************************************************************/

@@ -47,9 +47,9 @@ static int flash_physical_get_protect_wrp(int block)
 uint32_t flash_physical_get_protect_flags(void)
 {
 	uint32_t flags = 0;
-	/* Region protection status: 0: RW, 1: RO */
-	int protected_at_boot[2] = {1, 1};
-	int protected_now[2] = {1, 1};
+	/* Region protection status: 0: RW, 1: RO, 2: ROLLBACK */
+	int protected_at_boot[3] = {1, 1, 1};
+	int protected_now[3] = {1, 1, 1};
 	int protected_at_boot_all = 1;
 	int protected_now_all = 1;
 	int i;
@@ -62,6 +62,11 @@ uint32_t flash_physical_get_protect_flags(void)
 		if (i >= WP_BANK_OFFSET &&
 		    i < WP_BANK_OFFSET + WP_BANK_COUNT)
 			region = 1;
+#ifdef CONFIG_ROLLBACK
+		if (i >= ROLLBACK_BANK_OFFSET &&
+		    i < ROLLBACK_BANK_OFFSET + ROLLBACK_BANK_COUNT)
+			region = 2;
+#endif
 
 		if (!flash_physical_get_protect(i)) {
 			protected_now[region] = 0;
@@ -92,6 +97,14 @@ uint32_t flash_physical_get_protect_flags(void)
 	if (protected_now[1])
 		flags |= EC_FLASH_PROTECT_RO_NOW;
 
+#ifdef CONFIG_ROLLBACK
+	if (protected_at_boot[2])
+		flags |= EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
+
+	if (protected_now[2])
+		flags |= EC_FLASH_PROTECT_ROLLBACK_NOW;
+#endif
+
 	return flags;
 }
 
@@ -110,9 +123,11 @@ uint32_t flash_physical_get_valid_flags(void)
 {
 	return EC_FLASH_PROTECT_RO_AT_BOOT |
 	       EC_FLASH_PROTECT_RW_AT_BOOT |
+	       EC_FLASH_PROTECT_ROLLBACK_AT_BOOT |
 	       EC_FLASH_PROTECT_ALL_AT_BOOT |
 	       EC_FLASH_PROTECT_RO_NOW |
 	       EC_FLASH_PROTECT_RW_NOW |
+	       EC_FLASH_PROTECT_ROLLBACK_NOW |
 	       EC_FLASH_PROTECT_ALL_NOW;
 }
 
@@ -135,6 +150,10 @@ uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
 	if (cur_flags & (EC_FLASH_PROTECT_RW_AT_BOOT |
 			 EC_FLASH_PROTECT_GPIO_ASSERTED))
 		ret |= EC_FLASH_PROTECT_RW_AT_BOOT;
+
+	if (cur_flags & (EC_FLASH_PROTECT_ROLLBACK_AT_BOOT |
+			 EC_FLASH_PROTECT_GPIO_ASSERTED))
+		ret |= EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
 
 	return ret;
 }
