@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a6be3e3c_902a2062",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-14T18:45:12Z",
+      "side": 1,
+      "message": "This doesn\u0027t do anything useful if CONFIG_LED_POLICY_STD isn\u0027t defined, we can remove it and removed related code in led_scarlet.c.",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 33
+      },
+      "revId": "73aab37b1b57135ff49c312cad6421ea0c584ec5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
