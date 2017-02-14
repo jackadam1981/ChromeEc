@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcf80b58_6d3b9b12",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-14T08:46:53Z",
+      "side": 1,
+      "message": "Hum, the quiet does not work:\n[...]\n  KEY     key.vbprik2\nwrote build/hammer/key.vbprik2\nwrote build/hammer/key.vbpubk2\n  SIGN    RW/ec.RW.flat.sig\n  CAT     ec.obj\n[...]\nyou are likely missing something like $(silent) in cmd_rsasign_rwsig",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 34
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e23398af_1adc8597",
+        "filename": "common/firmware_image.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-14T08:46:53Z",
+      "side": 1,
+      "message": "this is likely the wrong flags (ie we never execute this section)\nshouldn\u0027t have too much impact on the current usage, but you can still fix it",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 28
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "933e86d1_96560eb3",
+        "filename": "common/fmap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-14T08:46:53Z",
+      "side": 1,
+      "message": "is this true ?\n(I\u0027m not an expert in FMAP flag anyhow)",
+      "range": {
+        "startLine": 189,
+        "startChar": 36,
+        "endLine": 189,
+        "endChar": 48
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c90e2f78_6d92197c",
+        "filename": "common/rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-14T08:46:53Z",
+      "side": 1,
+      "message": "I would align both sections (signed one and padding) on a word boundary in the linker file rather than doing it this.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 2
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af6399fd_b86fe971",
+        "filename": "include/rsa.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-14T08:46:53Z",
+      "side": 1,
+      "message": "sure that\u0027s a positive way of saying you are wasting 252 bytes ...",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 62
+      },
+      "revId": "fe74bb81609193407d03dca4b8288d7131826515",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
