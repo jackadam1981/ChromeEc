@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6adeb00_bed9ab5c",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-14T18:01:18Z",
+      "side": 1,
+      "message": "This might break some scripts if a platform doesn\u0027t support cros-dev. Should we imply \"--interface\u003ddev\" for \"--name\u003dcros_sh\" or \"--name\u003dcros_pd\" only?",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 58
+      },
+      "revId": "5e2201f3d300e920cd4c31a9b35eb23383c138aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
