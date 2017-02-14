@@ -517,7 +517,6 @@ class Console(object):
       # Reset the input buffer.
       self.input_buffer = ''
       self.input_buffer_pos = 0
-      self.logger.debug('Reset input buffer.')
       return
 
     # Keep handling the ESC sequence if we're in the middle of it.
