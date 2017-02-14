@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18fa0693_cf5c05be",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-14T08:51:12Z",
+      "side": 1,
+      "message": "might not be a great default value for the final uint64_t field,\nmaybe you can put -1 in the int here",
+      "range": {
+        "startLine": 376,
+        "startChar": 2,
+        "endLine": 376,
+        "endChar": 15
+      },
+      "revId": "e06583340a0307074f13dbac4e62ae65f5f04e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "777c13b2_4d4dfc2f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4010,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-14T08:51:12Z",
+      "side": 1,
+      "message": "it\u0027s a bit difficult for ectool to decide which one to pick",
+      "range": {
+        "startLine": 4009,
+        "startChar": 0,
+        "endLine": 4010,
+        "endChar": 29
+      },
+      "revId": "e06583340a0307074f13dbac4e62ae65f5f04e80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
