@@ -154,7 +154,7 @@ SECTIONS
         __usb_desc = .;
         KEEP(*(.rodata.usb_desc_conf))
         KEEP(*(SORT(.rodata.usb_desc*)))
-        . = ALIGN(2); /* USB transfers enjoy 16-bit aligned size */
+        . = ALIGN(1); /* USB transfers enjoy 16-bit aligned size */
         __usb_desc_end = .;
         . = ALIGN(4);
         KEEP(*(.rodata.usb_ep))
