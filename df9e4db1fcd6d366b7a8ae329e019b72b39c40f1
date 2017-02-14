@@ -46,6 +46,30 @@
       "revId": "df9e4db1fcd6d366b7a8ae329e019b72b39c40f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d57b1b_9115cb23",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-02-14T23:23:27Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem to do anything. Removing the line works fine too.",
+      "parentUuid": "e4fa8a79_f1318aa2",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 14
+      },
+      "revId": "df9e4db1fcd6d366b7a8ae329e019b72b39c40f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
