@@ -164,6 +164,8 @@ DEFINE_boolean raiden "${FLAGS_FALSE}" \
 	"Use raiden_debug_spi programmer"
 DEFINE_boolean ro "${FLAGS_FALSE}" \
 	"Write only the read-only partition"
+DEFINE_boolean trace "${FLAGS_FALSE}" \
+	"Trace sent and received data when using stm32mon"
 
 # Parse command line
 FLAGS_HELP="usage: $0 [flags]"
@@ -177,6 +179,10 @@ set -e
 
 if [ -z "${FLAGS_board}" -a -z "${FLAGS_chip}" ]; then
 	die "should specify a board or a chip."
+fi
+
+if [ -n "${FLAGS_trace}" ]; then
+	TRACE=" --trace"
 fi
 
 SERVO_TYPE=servo
@@ -293,6 +299,7 @@ on_servov3() {
 
 function cr50_ifs() {
 	local ifname
+        local iffile
 	local attrs
 	local ec_if
 	local console_if
@@ -310,9 +317,13 @@ function cr50_ifs() {
 			attrs["${line%%=*}"]="${line#*=}"
 		done
 
-		ifname="$(cat /sys/${attrs[DEVPATH]}/../../../interface)"
+		iffile="/sys/${attrs[DEVPATH]}/../../../interface"
+		if [ ! -f "${iffile}" ]; then
+			continue
+		fi
 		if [ "${attrs[ID_VENDOR_ID]}" == "${cr50_vid}" ] &&
 			[ "${attrs[ID_MODEL_ID]}" == "${cr50_did}" ]; then
+			ifname="$(cat "${iffile}")"
 			case "${ifname}" in
 				(EC) ec_if="${attrs[DEVNAME]}";;
 				(Shell) console_if="${attrs[DEVNAME]}";;
@@ -616,9 +627,9 @@ function raiden_flash_stm32() {
 	echo 'gpioset EC_FLASH_SELECT 1' > "${cr50_console_tty}"
         sleep 1
 	echo 'ecrst pulse' > "${cr50_console_tty}"
-        sleep .5
+        sleep 1
 	timeout -k 10 -s 9 "${FLAGS_timeout}" \
-		"${STM32MON}" -d ${EC_UART} -U -u -e -w "${IMG}"
+		"${STM32MON}" -d ${EC_UART} ${TRACE} -U -u -e -w "${IMG}"
 
 	echo "RV is $?"
 }
@@ -653,7 +664,7 @@ function flash_stm32() {
 	fi
 	# Unprotect flash, erase, and write
 	timeout -k 10 -s 9 "${FLAGS_timeout}" \
-		${STM32MON} -d ${EC_UART} -U -u -e -w "${IMG}"
+		${STM32MON} -d ${EC_UART}  ${TRACE} -U -u -e -w "${IMG}"
 	# Remove the Application processor reset
 	# TODO(crosbug.com/p/30738): we cannot rely on servo_VARS to restore it
 	if $(servo_has_warm_reset); then

@@ -114,6 +114,48 @@ static void discard_input(int);
 
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 
+static int trace_enabled;
+static void dump_buf(const char* prefix, const void *buffer, size_t size)
+{
+	int prefix_length = strlen(prefix) + 1;
+	const unsigned char *p = buffer;
+	size_t printed;
+
+	if (!trace_enabled)
+		return;
+
+	printf("%s:", prefix);
+	while (printed < size) {
+		if (printed && !(printed % 16))
+			printf("\n%*s", prefix_length, "");
+		printf(" %2.2x", p[printed]);
+		printed++;
+	}
+	printf("\n");
+}
+
+static int write_wrapper(int fd, const void* data, size_t size)
+{
+	int count;
+
+	count = write(fd, data, size);
+	if (count > 0)
+		dump_buf("sent", data, count);
+
+	return count;
+}
+
+static int read_wrapper(int fd, void *buffer, size_t size)
+{
+	int read_bytes;
+
+	read_bytes = read(fd, buffer, size);
+	if (read_bytes > 0)
+		dump_buf("rxed", buffer, read_bytes);
+
+	return read_bytes;
+}
+
 int open_serial(const char *port)
 {
 	int fd, res;
@@ -212,8 +254,8 @@ static void discard_input(int fd)
 
 	/* eat trailing garbage */
 	do {
-		res = read(fd, buffer, sizeof(buffer));
-		if (res > 0) {
+		res = read_wrapper(fd, buffer, sizeof(buffer));
+		if ((res > 0) && !trace_enabled) {
 			printf("Recv[%d]:", res);
 			for (i = 0; i < res; i++)
 				printf("%02x ", buffer[i]);
@@ -229,7 +271,7 @@ int wait_for_ack(int fd)
 	time_t deadline = time(NULL) + DEFAULT_TIMEOUT;
 
 	while (time(NULL) < deadline) {
-		res = read(fd, &resp, 1);
+		res = read_wrapper(fd, &resp, 1);
 		if ((res < 0) && (errno != EAGAIN)) {
 			perror("Failed to read answer");
 			return -EIO;
@@ -259,7 +301,7 @@ int send_command(int fd, uint8_t cmd, payload_t *loads, int cnt,
 	uint8_t cmd_frame[] = { cmd, 0xff ^ cmd }; /* XOR checksum */
 
 	/* Send the command index */
-	res = write(fd, cmd_frame, 2);
+	res = write_wrapper(fd, cmd_frame, 2);
 	if (res <= 0) {
 		perror("Failed to write command frame");
 		return -1;
@@ -291,7 +333,7 @@ int send_command(int fd, uint8_t cmd, payload_t *loads, int cnt,
 		size++;
 		data_ptr = data;
 		while (size) {
-			res = write(fd, data_ptr, size);
+			res = write_wrapper(fd, data_ptr, size);
 			if (res < 0) {
 				perror("Failed to write command payload");
 				free(data);
@@ -313,7 +355,8 @@ int send_command(int fd, uint8_t cmd, payload_t *loads, int cnt,
 
 	/* Read the answer payload */
 	if (resp) {
-		while ((resp_size > 0) && (res = read(fd, resp, resp_size))) {
+		while ((resp_size > 0) &&
+		       (res = read_wrapper(fd, resp, resp_size))) {
 			if (res < 0) {
 				perror("Failed to read payload");
 				return -1;
@@ -377,7 +420,7 @@ int init_monitor(int fd)
 
 	while (1) {
 		/* Send the command index */
-		res = write(fd, &init, 1);
+		res = write_wrapper(fd, &init, 1);
 		if (res <= 0) {
 			perror("Failed to write command");
 			return -1;
@@ -777,6 +820,7 @@ static const struct option longopts[] = {
 	{"unprotect", 0, 0, 'u'},
 	{"baudrate", 1, 0, 'b'},
 	{"adapter", 1, 0, 'a'},
+	{"trace", 0, 0, 't'},
 	{NULL, 0, 0, 0}
 };
 
@@ -800,6 +844,7 @@ void display_usage(char *program)
 	fprintf(stderr, "--w[rite] <file|-> : read <file> or\n\t"
 			"standard input and write it to flash\n");
 	fprintf(stderr, "--g[o] : jump to execute flash entrypoint\n");
+	fprintf(stderr, "--t[race] : trace sent and received data\n");
 
 	exit(2);
 }
@@ -831,7 +876,7 @@ int parse_parameters(int argc, char **argv)
 	int opt, idx;
 	int flags = 0;
 
-	while ((opt = getopt_long(argc, argv, "a:b:d:eghr:w:uU?",
+	while ((opt = getopt_long(argc, argv, "a:b:d:eghr:w:tuU?",
 				  longopts, &idx)) != -1) {
 		switch (opt) {
 		case 'a':
@@ -864,6 +909,9 @@ int parse_parameters(int argc, char **argv)
 			break;
 		case 'U':
 			flags |= FLAG_READ_UNPROTECT;
+			break;
+		case 't':
+			trace_enabled = 1;
 			break;
 		}
 	}
