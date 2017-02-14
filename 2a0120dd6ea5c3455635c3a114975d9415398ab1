@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5475bfeb_cce15862",
+        "filename": "builtin/string.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-02-14T15:40:40Z",
+      "side": 1,
+      "message": "I can\u0027t find definitions of any of these functions in the EC codebase. Where are they coming from?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "2a0120dd6ea5c3455635c3a114975d9415398ab1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
