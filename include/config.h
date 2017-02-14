@@ -1887,6 +1887,9 @@
  * SPI master port's hardwired CS pin. */
 #undef CONFIG_SPI_MASTER_NO_CS_GPIOS
 
+/* Define the SPI port to use to access the fingerprint sensor */
+#undef CONFIG_SPI_SENSOR_PORT
+
 /* Support testing SPI slave controller driver. */
 #undef CONFIG_SPS_TEST
 
