@@ -39,6 +39,24 @@
       "revId": "04e24183eeb732b4d76d756cfc5435017488ac84",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4209f772_1e6a8873",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-14T16:34:50Z",
+      "side": 1,
+      "message": "In this version, we\u0027re handling only 1 byte version numbers. So, it\u0027s ok but I agree this is fragile and can cause a problem in the future. I changed the field to a union of integer and char array.",
+      "parentUuid": "dc71020a_74975251",
+      "revId": "04e24183eeb732b4d76d756cfc5435017488ac84",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
