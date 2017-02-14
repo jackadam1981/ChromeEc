@@ -62,6 +62,9 @@
 #define IN_PGOOD_PP3300	POWER_SIGNAL_MASK(X86_PGOOD_PP3300)
 #define IN_PGOOD_PP5000	POWER_SIGNAL_MASK(X86_PGOOD_PP5000)
 
+const matrix_3x3_t lid_standard_ref;
+const matrix_3x3_t lid_switch_ref;
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
@@ -458,6 +461,8 @@ const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 /* Called by APL power state machine when transitioning from G3 to S5 */
 static void chipset_pre_init(void)
 {
+	int version = system_get_board_version();
+
 	/*
 	 * No need to re-init PMIC since settings are sticky across sysjump.
 	 * However, be sure to check that PMIC is already enabled. If it is
@@ -482,6 +487,13 @@ static void chipset_pre_init(void)
 
 	/* Enable PMIC */
 	gpio_set_level(GPIO_PMIC_EN, 1);
+
+	/*
+	 * New form-factor aligns w/ electro, lid accelerometer
+	 * faces to B-cover.
+	 */
+	if (version < BOARD_VERSION_6)
+		motion_sensors[LID_ACCEL].rot_standard_ref = &lid_switch_ref;
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 
@@ -515,12 +527,6 @@ static void board_init(void)
 
 		for (i = BASE_ACCEL; i <= BASE_MAG; ++i)
 			motion_sensors[i].active_mask = SENSOR_ACTIVE_S0;
-	} else if (version >= BOARD_VERSION_6) {
-		/*
-		 * New form-factor aligns w/ electro, lid accelerometer
-		 * faces to B-cover.
-		 */
-		motion_sensors[LID_ACCEL].rot_standard_ref = NULL;
 	}
 }
 /* PP3300 needs to be enabled before TCPC init hooks */
@@ -801,6 +807,12 @@ const matrix_3x3_t base_standard_ref = {
 };
 
 const matrix_3x3_t lid_standard_ref = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+
+const matrix_3x3_t lid_switch_ref = {
 	{ FLOAT_TO_FP(1), 0,  0},
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
