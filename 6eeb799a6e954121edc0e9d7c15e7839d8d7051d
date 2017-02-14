@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e799e5c_bf07a0ec",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-14T18:50:33Z",
+      "side": 1,
+      "message": "You can still use the full name here, if you use strncasecmp below, or at least comment the full manuf. name. It\u0027s probably a good idea to use strncasecmp anyway, in case someone adds a longer name.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "6eeb799a6e954121edc0e9d7c15e7839d8d7051d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
