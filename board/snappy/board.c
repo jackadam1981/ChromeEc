@@ -506,14 +506,6 @@ static void board_init(void)
 
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
-
-	/* Set the sensors in the right powermode */
-	if (system_get_board_version() <= BOARD_VERSION_3) {
-		int i;
-
-		for (i = BASE_ACCEL; i <= BASE_MAG; ++i)
-			motion_sensors[i].active_mask = SENSOR_ACTIVE_S0;
-	}
 }
 /* PP3300 needs to be enabled before TCPC init hooks */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
@@ -793,6 +785,12 @@ const matrix_3x3_t base_standard_ref = {
 };
 
 const matrix_3x3_t lid_standard_ref = {
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ 0, 0, FLOAT_TO_FP(1)}
+};
+
+const matrix_3x3_t lid_switch_ref = {
 	{ FLOAT_TO_FP(1), 0,  0},
 	{ 0, FLOAT_TO_FP(-1), 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
@@ -1093,3 +1091,29 @@ const int keyboard_factory_scan_pins[][2] = {
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
+
+static void board_init_late(void)
+{
+	int version = system_get_board_version();
+
+	/* Set the sensors in the right powermode */
+	if (version <= BOARD_VERSION_4) {
+		int i;
+
+		for (i = BASE_ACCEL; i <= BASE_MAG; ++i)
+			motion_sensors[i].active_mask = SENSOR_ACTIVE_S0;
+	}
+
+	/*
+	 * New form-factor aligns w/ electro, lid accelerometer
+	 * faces to B-cover.
+	 */
+	if (version < BOARD_VERSION_6)
+		motion_sensors[LID_ACCEL].rot_standard_ref = &lid_switch_ref;
+}
+/*
+ * We need robust ADC read, that is the source of board version;
+ * in order to apply board specific tweaks, so eusure this hook
+ * comes after adc_init().
+ */
+DECLARE_HOOK(HOOK_INIT, board_init_late, HOOK_PRIO_INIT_ADC + 1);
