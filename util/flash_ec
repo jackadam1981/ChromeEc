@@ -4,6 +4,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
+shopt -s lastpipe
+
 SCRIPT="$(readlink -f "$0")"
 SCRIPT_DIR="$(dirname "$SCRIPT")"
 
@@ -14,6 +16,12 @@ fi
 
 # Loads script libraries.
 . "/usr/share/misc/shflags" || exit 1
+
+# Set this to the raiden device USB values.
+cr50_vid=
+cr50_pid=
+cr50_console_tty=
+cr50_ec_tty=
 
 # Redirects tput to stderr, and drop any error messages.
 tput2() {
@@ -132,7 +140,7 @@ BOARDS_SPI_1800MV=(
 BOARDS_RAIDEN=(
 	eve
 	gru
-	kevin
+	oak
         poppy
 	pyro
 	reef
@@ -283,17 +291,61 @@ on_servov3() {
 	grep -qs '^CHROMEOS_RELEASE_BOARD=beaglebone_servo' /etc/lsb-release
 }
 
+function cr50_ifs() {
+	local ifname
+	local attrs
+	local ec_if
+	local console_if
+
+	if [ "$(lsusb -d "${cr50_vid}:${cr50_did}" | wc -l)" != "1" ]; then
+		die "Single Suzy-Q connection is required"
+	fi
+
+	declare -A attrs
+
+	for p in /dev/ttyUSB*
+	do
+		attrs=( )
+		udevadm info --query=property -n "${p}" | while read line; do
+			attrs["${line%%=*}"]="${line#*=}"
+		done
+
+		ifname="$(cat /sys/${attrs[DEVPATH]}/../../../interface)"
+		if [ "${attrs[ID_VENDOR_ID]}" == "${cr50_vid}" ] &&
+			[ "${attrs[ID_MODEL_ID]}" == "${cr50_did}" ]; then
+			case "${ifname}" in
+				(EC) ec_if="${attrs[DEVNAME]}";;
+				(Shell) console_if="${attrs[DEVNAME]}";;
+			esac
+		fi
+	done
+	[ -n "${ec_if}" ] && [ -n "${console_if}" ] || \
+		die "could not find cr50 interfaces"
+	info "ec at ${ec_if}, console at ${console_if}"
+	cr50_ec_tty="${ec_if}"
+        cr50_console_tty="${console_if}"
+
+	return 0
+}
+
 # Returns 0 on success (if raiden should be used instead of servo)
 error_reported=  # Avoid double printing the error message.
 on_raiden() {
+	if [ -n "${cr50_vid}" ]; then
+		return 0
+	fi
 	if [ -z "${BOARD}" ]; then
 		return 0
 	fi
 	if [ "${FLAGS_raiden}" = ${FLAGS_TRUE} ]; then
 		if in_array "${BOARDS_RAIDEN[@]}" "${BOARD}"; then
+			# Determine cr50 interfaces while we are at it.
+			cr50_vid='18d1'
+			cr50_did='5014'
+			cr50_ifs
 			return 0
 		fi
-		if [ -z "${error_reported}" ]; then
+                if [ -z "${error_reported}" ]; then
 			error_reported="y"
 			die "raiden mode not supported on ${BOARD}" >&2
 		fi
@@ -307,6 +359,11 @@ cleanup() {
 	if [ -n "${save}" ]; then
 		info "Restoring servo settings..."
 		servo_restore "$save"
+	fi
+
+	if on_raiden; then
+		echo 'sysrst off' > "${cr50_console_tty}"
+		echo 'gpioset EC_FLASH_SELECT 0' > "${cr50_console_tty}"
 	fi
 
 	for pid in ${FROZEN_PIDS}; do
@@ -360,16 +417,20 @@ function ec_image() {
 DUT_CONTROL_CMD="dut-control --port=${FLAGS_port}"
 
 function dut_control() {
+	if on_raiden; then
+		die "can't use servo when using raiden"
+	fi
 	$DUT_CONTROL_CMD "$@" >/dev/null
 }
 
 # Find the EC UART on the servo v2
-function ec_uart() {
+function servo_ec_uart() {
 	SERVOD_FAIL="Cannot communicate with servo. is servod running ?"
 	($DUT_CONTROL_CMD raw_${MCU}_uart_pty || \
 	    $DUT_CONTROL_CMD ${MCU}_uart_pty || \
 	    die "${SERVOD_FAIL}") | cut -d: -f2
 }
+
 
 # Servo variables management
 case "${BOARD}" in
@@ -410,10 +471,11 @@ function claim_pty() {
 
 	# Disconnect the EC-3PO interpreter from the UART since it will
 	# interfere with flashing.
-	dut_control ${MCU}_ec3po_interp_connect:off || \
-	    warn "hdctools cannot disconnect the EC-3PO interpreter from" \
-	    "the UART."
-
+	if ! on_raiden; then
+		dut_control ${MCU}_ec3po_interp_connect:off || \
+			warn "hdctools cannot disconnect the EC-3PO " \
+			"interpreter from the UART."
+	fi
 	pids=$(lsof -FR 2>/dev/null -- $1 | tr -d 'pR')
 	FROZEN_PIDS=""
 
@@ -545,6 +607,22 @@ fi
 	save=
 }
 
+function raiden_flash_stm32() {
+	sudo chmod o+w "${cr50_console_tty}"
+	sudo chmod o+rw "${EC_UART}"
+
+	echo > "${cr50_console_tty}"
+	echo 'ccd uart enable' > "${cr50_console_tty}"
+	echo 'gpioset EC_FLASH_SELECT 1' > "${cr50_console_tty}"
+        sleep 1
+	echo 'ecrst pulse' > "${cr50_console_tty}"
+        sleep .5
+	timeout -k 10 -s 9 "${FLAGS_timeout}" \
+		"${STM32MON}" -d ${EC_UART} -U -u -e -w "${IMG}"
+
+	echo "RV is $?"
+}
+
 function flash_stm32() {
 	TOOL_PATH="${EC_DIR}/build/${BOARD}/util:$PATH"
 	STM32MON=$(PATH="${TOOL_PATH}" which stm32mon)
@@ -555,6 +633,10 @@ function flash_stm32() {
 	info "Using serial flasher : ${STM32MON}"
 	claim_pty ${EC_UART}
 
+        if on_raiden; then
+		raiden_flash_stm32
+		return
+	fi
 	if [ "${SERVO_TYPE}" = "servo" ] ; then
 		dut_control ${MCU}_uart_en:on
 	fi
@@ -672,22 +754,26 @@ function flash_mec1322() {
 	flash_flashrom
 }
 
-if dut_control boot_mode 2>/dev/null ; then
-	if [[ "${MCU}" != "ec" ]] ; then
-		die "Toad cable can't support non-ec UARTs"
+if on_raiden; then
+	EC_UART="${cr50_ec_tty}"
+else
+	if dut_control boot_mode 2>/dev/null ; then
+		if [[ "${MCU}" != "ec" ]] ; then
+			die "Toad cable can't support non-ec UARTs"
+		fi
+		SERVO_TYPE=toad
+		info "Using a dedicated debug cable"
 	fi
-	SERVO_TYPE=toad
-	info "Using a dedicated debug cable"
+	if [ "${NEED_SERVO}" != "no" ] ; then
+		EC_UART="$(servo_ec_uart)"
+		save="$(servo_save)"
+	fi
 fi
 
 IMG="$(ec_image)"
 info "Using ${MCU} image : ${IMG}"
-
-if ! on_raiden && [ "${NEED_SERVO}" != "no" ] ; then
-  EC_UART="$(ec_uart)"
-  info "${MCU} UART pty : ${EC_UART}"
-
-  save="$(servo_save)"
+if [ -n "${EC_UART}" ]; then
+	info "${MCU} UART pty : ${EC_UART}"
 fi
 
 info "Flashing chip ${CHIP}."
