@@ -22,6 +22,30 @@
       "revId": "9a819ce502a5516d5ab7e683ea97d63f864c67c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86ddbfcf_7613626a",
+        "filename": "common/rwsig.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-15T11:34:06Z",
+      "side": 1,
+      "message": "That\u0027s a very good point, thanks. Added checks, and switched rwlen to an unsigned int (as well as check_padding parameters).",
+      "parentUuid": "a3dee0ad_76fbef73",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "9a819ce502a5516d5ab7e683ea97d63f864c67c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
