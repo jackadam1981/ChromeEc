@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0d5cd57_906063f0",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-15T22:36:03Z",
+      "side": 1,
+      "message": "please update",
+      "range": {
+        "startLine": 1173,
+        "startChar": 50,
+        "endLine": 1173,
+        "endChar": 59
+      },
+      "revId": "6e5b27581289ca4917286377825e88e474544235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aba65313_2dcb8b21",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-15T22:36:03Z",
+      "side": 1,
+      "message": "Could you indent these as well?",
+      "range": {
+        "startLine": 1311,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 45
+      },
+      "revId": "6e5b27581289ca4917286377825e88e474544235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
