@@ -95,6 +95,13 @@ void system_reset(int flags)
 
 #ifdef BOARD_CR50
 	/*
+	 * Clear the retry counter on manually triggered reboots.  We were able
+	 * to process the console command, therefore we're probably okay.
+	 */
+	if (flags & SYSTEM_RESET_MANUALLY_TRIGGERED)
+		system_clear_retry_counter();
+
+	/*
 	 * On CR50 we want every reset be hard reset, causing the entire
 	 * chromebook to reboot: we don't want the TPM reset while the AP
 	 * stays up.

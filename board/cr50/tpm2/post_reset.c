@@ -16,6 +16,9 @@ void post_reset_command_handler(void *body,
 				size_t cmd_size,
 				size_t *response_size)
 {
+	/* If we can reach this code path, we're probably okay. */
+	system_clear_retry_counter();
+
 	*response_size = 1;
 	((uint8_t *)body)[0] = 0;
 	post_reboot_request();
@@ -28,6 +31,9 @@ static enum vendor_cmd_rc immediate_reset(enum vendor_cmd_cc code,
 					  size_t input_size,
 					  size_t *response_size)
 {
+	/* If we can reach this code path, we're probably okay. */
+	system_clear_retry_counter();
+
 	CPRINTS("%s: rebooting on host's request", __func__);
 	cflush(); /* Let the console drain. */
 	system_reset(SYSTEM_RESET_HARD);  /* This will never return. */
