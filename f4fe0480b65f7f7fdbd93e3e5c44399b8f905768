@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e9672c3_0f41c80f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-15T00:52:08Z",
+      "side": 1,
+      "message": "Need to update util/ectool.h print_flash_protect_flags() to print the new flags.",
+      "range": {
+        "startLine": 1212,
+        "startChar": 0,
+        "endLine": 1219,
+        "endChar": 53
+      },
+      "revId": "f4fe0480b65f7f7fdbd93e3e5c44399b8f905768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
