@@ -987,52 +987,6 @@ static void setup_connection(struct transfer_descriptor *td)
 	exit(update_error);
 }
 
-/*
- * Channel TPM extension/vendor command over USB. The payload of the USB frame
- * in this case consists of the 2 byte subcommand code concatenated with the
- * command body. The caller needs to indicate if a response is expected, and
- * if it is - of what maximum size.
- */
-static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
-			    void *cmd_body, size_t body_size,
-			    void *resp, size_t *resp_size)
-{
-	struct update_frame_header *ufh;
-	uint16_t *frame_ptr;
-	size_t usb_msg_size;
-	SHA_CTX ctx;
-	uint8_t digest[SHA_DIGEST_LENGTH];
-
-	usb_msg_size = sizeof(struct update_frame_header) +
-		sizeof(subcommand) + body_size;
-
-	ufh = malloc(usb_msg_size);
-	if (!ufh) {
-		printf("%s: failed to allocate %zd bytes\n",
-		       __func__, usb_msg_size);
-		return -1;
-	}
-
-	ufh->block_size = htobe32(usb_msg_size);
-	ufh->cmd.block_base = htobe32(CONFIG_EXTENSION_COMMAND);
-	frame_ptr = (uint16_t *)(ufh + 1);
-	*frame_ptr = htobe16(subcommand);
-
-	if (body_size)
-		memcpy(frame_ptr + 1, cmd_body, body_size);
-
-	/* Calculate the digest. */
-	SHA1_Init(&ctx);
-	SHA1_Update(&ctx, &ufh->cmd.block_base,
-		    usb_msg_size -
-		    offsetof(struct update_frame_header, cmd.block_base));
-	SHA1_Final(digest, &ctx);
-	memcpy(&ufh->cmd.block_digest, digest, sizeof(ufh->cmd.block_digest));
-	xfer(uep, ufh, usb_msg_size, resp, resp_size ? *resp_size : 0);
-
-	free(ufh);
-	return 0;
-}
 
 /*
  * Indicate to the target that update image transfer has been completed. Upon
@@ -1057,17 +1011,21 @@ static void send_done(struct usb_endpoint *uep)
 static void invalidate_inactive_rw(struct transfer_descriptor *td)
 {
 	/* Corrupt the rw image that is not running. */
+#if 0
 	uint16_t subcommand = VENDOR_CC_INVALIDATE_INACTIVE_RW;
+#endif
 
 	if (td->ep_type == usb_xfer) {
 		send_done(&td->uep);
 
+#if 0
 		if (protocol_version > 5) {
 			ext_cmd_over_usb(&td->uep, subcommand,
 					 NULL, 0,
 					 NULL, 0);
 			printf("inactive rw corrupted\n");
 		}
+#endif
 	}
 }
 
@@ -1115,6 +1073,7 @@ static int transfer_and_reboot(struct transfer_descriptor *td,
 		send_done(&td->uep);
 
 		if (protocol_version > 5) {
+#if 0
 			uint8_t response;
 			size_t response_size;
 			void *presponse;
@@ -1137,6 +1096,10 @@ static int transfer_and_reboot(struct transfer_descriptor *td,
 			ext_cmd_over_usb(&td->uep, subcommand,
 					 NULL, 0,
 					 presponse, &response_size);
+#else
+			uint16_t cmd = VENDOR_CC_IMMEDIATE_RESET;
+			xfer(&td->uep, &cmd, sizeof(cmd), 0, 0);
+#endif
 		} else {
 			/*
 			 * Send a second stop request, which should reboot

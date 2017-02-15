@@ -106,61 +106,30 @@ static int valid_transfer_start(struct consumer const *consumer, size_t count,
 			return 0;
 	return 1;
 }
-static int try_vendor_command(struct consumer const *consumer, size_t count)
+static int try_reboot_command(struct consumer const *consumer, size_t count)
 {
-	struct update_frame_header ufh;
-	struct update_frame_header *cmd_buffer;
+	uint16_t payload;
 	int rv = 0;
 
-	if (count < sizeof(ufh))
-		return 0;	/* Too short to be a valid vendor command. */
+	if (count != sizeof(payload))
+		return 0;	/* Too short to be a reboot command. */
 
 	/*
 	 * Let's copy off the queue the upgrade frame header, to see if this
 	 * is a channeled vendor command.
 	 */
-	queue_peek_units(consumer->queue, &ufh, 0, sizeof(ufh));
-	if (be32toh(ufh.cmd.block_base) != CONFIG_EXTENSION_COMMAND)
+	queue_peek_units(consumer->queue, &payload, 0, sizeof(payload));
+
+	/* Replace VENDOR_CC_IMMEDIATE_RESET with a more appropriate const */
+	if (payload != VENDOR_CC_IMMEDIATE_RESET)
 		return 0;
 
-	if (be32toh(ufh.block_size) != count) {
-		CPRINTS("%s: problem: block size and count mismatch (%d != %d)",
-			__func__, be32toh(ufh.block_size), count);
-		return 0;
-	}
+	/* Now remove if from the queue. */
+	queue_advance_head(consumer->queue, count);
 
-	if (shared_mem_acquire(count, (char **)&cmd_buffer)
-	    != EC_SUCCESS) {
-		CPRINTS("%s: problem: failed to allocate block of %d",
-			__func__, count);
-		return 0;
-	}
-
-	/* Get the entire command, don't remove it from the queue just yet. */
-	queue_peek_units(consumer->queue, cmd_buffer, 0, count);
-
-	/* Looks like this is a vendor command, let's verify it. */
-	if (usb_pdu_valid(&cmd_buffer->cmd,
-			  count - offsetof(struct update_frame_header, cmd))) {
-		uint16_t *subcommand;
-		size_t response_size;
-
-		/* looks good, let's process it. */
-		rv = 1;
-
-		/* Now remove if from the queue. */
-		queue_advance_head(consumer->queue, count);
-
-		subcommand = (uint16_t *)(cmd_buffer + 1);
-		usb_extension_route_command(be16toh(*subcommand),
-					    subcommand + 1,
-					    count -
-					    sizeof(struct update_frame_header),
-					    &response_size);
-
-		QUEUE_ADD_UNITS(&upgrade_to_usb, subcommand + 1, response_size);
-	}
-	shared_mem_release(cmd_buffer);
+	CPRINTS("%s: rebooting on host's request", __func__);
+	cflush(); /* Let the console drain. */
+	system_reset(SYSTEM_RESET_HARD);  /* This will never return. */
 
 	return rv;
 }
@@ -219,8 +188,8 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 			};
 		} u;
 
-		/* Check is this is a channeled TPM extension command. */
-		if (try_vendor_command(consumer, count))
+		/* Check is this is a reboot command. */
+		if (try_reboot_command(consumer, count))
 			return;
 
 		if (!valid_transfer_start(consumer, count, &u.upfr)) {
