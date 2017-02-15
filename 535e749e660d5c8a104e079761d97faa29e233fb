@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f3d0a67_758bebce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-15T18:08:05Z",
+      "side": 1,
+      "message": "I\u0027m struggling with the wording for this... Currently the policy for considering the image as good is when reading a PCR. That\u0027s not quite the same as being able to issue a reboot command, but I do think we should still clear the counter for the reason stated.",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "535e749e660d5c8a104e079761d97faa29e233fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2ba4ad2_3f6ae9d6",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-15T18:08:05Z",
+      "side": 1,
+      "message": "All the other chip specific system_reset() functions will currently ignore this.",
+      "revId": "535e749e660d5c8a104e079761d97faa29e233fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
