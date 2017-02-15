@@ -413,11 +413,14 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 }
 #endif
 
+/* MCHP DEBUG see chip/mec1701/system.c */
+#if 0
 void bus_fault_handler(void)
 {
 	if (!bus_fault_ignored)
 		exception_panic();
 }
+#endif
 
 void ignore_bus_fault(int ignored)
 {

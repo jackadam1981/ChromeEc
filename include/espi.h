@@ -72,4 +72,7 @@ int espi_vw_enable_wire_int(enum espi_vw_signal signal);
  */
 int espi_vw_disable_wire_int(enum espi_vw_signal signal);
 
+/* TODO MCHP */
+int espi_chan_ready(void);
+
 #endif  /* __CROS_EC_ESPI_H */

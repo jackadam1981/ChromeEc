@@ -30,7 +30,11 @@
 #endif
 
 /* Console output macros */
+#if 0 /* TODO MCHP DEBUG KBL */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
+#else
+#define CPRINTS(format, args...)
+#endif
 
 enum sys_sleep_state {
 	SYS_SLEEP_S3,
@@ -166,6 +170,7 @@ enum power_state power_chipset_init(void)
 			/* Disable idle task deep sleep when in S0. */
 			disable_sleep(SLEEP_MASK_AP_RUN);
 			CPRINTS("already in S0");
+			TRACE0(95, POWER, 0, "already in S0");
 			return POWER_S0;
 		}
 
@@ -252,6 +257,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		if (charge_want_shutdown() ||
 		    tries > CHARGER_INITIALIZED_TRIES) {
 			CPRINTS("power-up inhibited");
+			TRACE0(96, POWER, 0, "power-up inhibited");
 			chipset_force_shutdown();
 			return POWER_G3;
 		}
@@ -424,4 +430,5 @@ void common_intel_x86_handle_rsmrst(enum power_state state)
 	gpio_set_level(GPIO_PCH_RSMRST_L, rsmrst_in);
 
 	CPRINTS("Pass through GPIO_RSMRST_L_PGOOD: %d", rsmrst_in);
+	TRACE1(97, POWER, 0, "Pass through GPIO_RSMRST_L_PGOOD: %d", rsmrst_in);
 }

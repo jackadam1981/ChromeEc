@@ -38,20 +38,31 @@ static enum bd99992gw_adc_channel
 
 static int raw_read8(const int offset, int *data_ptr)
 {
+#if 0 /* TODO MCHP KBL bring up */
 	int ret;
 	ret = i2c_read8(I2C_PORT_THERMAL, BD99992GW_I2C_ADDR, offset, data_ptr);
 	if (ret != EC_SUCCESS)
 		CPRINTS("bd99992gw read fail %d\n", ret);
 	return ret;
+#else
+	*data_ptr = offset;
+	return EC_SUCCESS;
+#endif
 }
 
 static int raw_write8(const int offset, int data)
 {
+#if 0 /* TODO MCHP KBL bring up */
 	int ret;
 	ret = i2c_write8(I2C_PORT_THERMAL, BD99992GW_I2C_ADDR, offset, data);
 	if (ret != EC_SUCCESS)
 		CPRINTS("bd99992gw write fail %d\n", ret);
 	return ret;
+#else
+	(void)offset;
+	(void)data;
+	return EC_SUCCESS;
+#endif
 }
 
 static void bd99992gw_init(void)
@@ -175,6 +186,10 @@ int bd99992gw_get_val(int idx, int *temp_ptr)
 		   BD99992GW_ADC1CNTL1_ADEN | BD99992GW_ADC1CNTL1_ADSTRT);
 	if (ret)
 		return ret;
+
+#if 1	/* TODO MCHP KBL bring up */
+	*temp_ptr = 298;
+#endif
 
 	return EC_SUCCESS;
 }

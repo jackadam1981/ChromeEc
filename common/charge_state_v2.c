@@ -625,6 +625,9 @@ void charger_task(void)
 	int need_static = 1;
 	const struct charger_info * const info = charger_get_info();
 
+	/* TODO MCHP KBL hack, no battery */
+	return;
+
 	/* Get the battery-specific values */
 	batt_info = battery_get_info();
 

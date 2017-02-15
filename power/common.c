@@ -21,9 +21,15 @@
 #include "espi.h"
 
 /* Console output macros */
+#if 0 /* TODO MCHP DEBUG KBL */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SWITCH, format, ## args)
+#else
+#define CPUTS(outstr)
+#define CPRINTS(format, args...)
+#define CPRINTF(format, args...)
+#endif
 
 /*
  * Default timeout in us; if we've been waiting this long for an input
@@ -106,8 +112,10 @@ static void power_update_signals(void)
 			inew |= 1 << i;
 	}
 
-	if ((in_signals & in_debug) != (inew & in_debug))
+	if ((in_signals & in_debug) != (inew & in_debug)) {
 		CPRINTS("power in 0x%04x", inew);
+		TRACE1(84, POWER, 0, "power in 0x%04x",inew);
+	}
 
 	in_signals = inew;
 }
@@ -124,6 +132,7 @@ int power_has_signals(uint32_t want)
 
 	CPRINTS("power lost input; wanted 0x%04x, got 0x%04x",
 		want, in_signals & want);
+	TRACE2(85, POWER, 0, "power lost input: wanted 0x%04x, got 0x%04x",want, (in_signals & want));
 
 	return 0;
 }
@@ -132,9 +141,11 @@ int power_wait_signals(uint32_t want)
 {
 	int ret = power_wait_signals_timeout(want, DEFAULT_TIMEOUT);
 
-	if (ret == EC_ERROR_TIMEOUT)
+	if (ret == EC_ERROR_TIMEOUT) {
 		CPRINTS("power timeout on input; wanted 0x%04x, got 0x%04x",
 			want, in_signals & want);
+		TRACE2(86, POWER, 0, "power timeout on input; wanted 0x%04x, got 0x%04x",want, (in_signals & want));
+	}
 	return ret;
 }
 
@@ -190,7 +201,11 @@ static enum power_state power_common_state(enum power_state state)
 {
 	switch (state) {
 	case POWER_G3:
+#ifdef CONFIG_ESPI
+		if (want_g3_exit && espi_chan_ready()) {
+#else
 		if (want_g3_exit) {
+#endif
 			want_g3_exit = 0;
 			return POWER_G3S5;
 		}
@@ -215,6 +230,7 @@ static enum power_state power_common_state(enum power_state state)
 				 * asserted.
 				 */
 				CPRINTS("hibernating");
+				TRACE0(87, POWER, 0, "hibernating");
 				system_hibernate(0, 0);
 			} else {
 				uint64_t wait = target_time - time_now;
@@ -349,6 +365,8 @@ void chipset_exit_hard_off(void)
 	 * expired, set this flag can let system go to G3 and then exit G3
 	 * immediately for powering on.
 	 */
+	CPRINTS("chipset_exit_hard_off set want_g3_exit = 1");
+	TRACE0(88, POWER, 0, "chipset_exit_hard_off set want_g3_exit = 1");
 	want_g3_exit = 1;
 
 	/*
@@ -373,6 +391,10 @@ void chipset_task(void)
 	uint32_t this_in_signals;
 	static uint32_t last_in_signals;
 
+	/* TODO MCHP DEBUG */
+	CPRINTS("Start Chipset Task: Power State = %d  want_g3_exit = %d",state,want_g3_exit);
+	TRACE2(89, POWER, 0, "Start Chipset Task: Power State = %d  want_g3_exit = %d",state,want_g3_exit);
+
 	while (1) {
 		/*
 		 * In order to prevent repeated console spam, only print the
@@ -384,6 +406,10 @@ void chipset_task(void)
 		if (this_in_signals != last_in_signals || state != last_state) {
 			CPRINTS("power state %d = %s, in 0x%04x",
 				state, state_names[state], this_in_signals);
+			TRACE2(90, POWER, 0, "power state %d in 0x%04x",state,this_in_signals);
+			/* TODO MCHP DEBUG */
+			CPRINTS("Pwr %d last = 0x%08x  this = 0x%08x",state,last_in_signals,this_in_signals);
+			TRACE3(91, POWER, 0, "Pwr %d last = 0x%04x this = 0x%04x",state,last_in_signals,this_in_signals);
 			last_in_signals = this_in_signals;
 			last_state = state;
 		}
@@ -399,8 +425,12 @@ void chipset_task(void)
 			new_state = power_common_state(state);
 
 		/* Handle state changes */
-		if (new_state != state)
+		if (new_state != state) {
+			/* TODO MCHP DEBUG */
+			CPRINTS("Pwr %d to %d",state,new_state);
+			TRACE2(92, POWER, 0, "Pwr %d -> %d",state,new_state);
 			power_set_state(new_state);
+		}
 	}
 }
 
@@ -442,8 +472,10 @@ static void power_ac_change(void)
 {
 	if (extpower_is_present()) {
 		CPRINTS("AC on");
+		TRACE0(93, POWER, 0, "AC on");
 	} else {
 		CPRINTS("AC off");
+		TRACE0(94, POWER, 0, "AC off");
 
 		if (state == POWER_G3) {
 			last_shutdown_time = get_time().val;

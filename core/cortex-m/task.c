@@ -90,7 +90,10 @@ void __idle(void)
 		 * Wait for the next irq event.  This stops the CPU clock
 		 * (sleep / deep sleep, depending on chip config).
 		 */
+/* MCHP DEBUG. Some JTAG debuggers can't handle WFI 
 		asm("wfi");
+*/
+		asm("nop");
 #endif
 	}
 }
@@ -449,6 +452,7 @@ void task_enable_all_tasks(void)
 	__schedule(0, 0);
 }
 
+#if 0 /* TODO MCHP optimization */
 void task_enable_irq(int irq)
 {
 	CPU_NVIC_EN(irq / 32) = 1 << (irq % 32);
@@ -463,6 +467,23 @@ void task_clear_pending_irq(int irq)
 {
 	CPU_NVIC_UNPEND(irq / 32) = 1 << (irq % 32);
 }
+#else
+void task_enable_irq(uint32_t irq)
+{
+	CPU_NVIC_EN(irq >> 5) = 1 << (irq & 0x1f);
+}
+
+void __keep task_disable_irq(uint32_t irq)
+{
+	CPU_NVIC_DIS(irq >> 5) = 1 << (irq & 0x1f);
+}
+
+void task_clear_pending_irq(uint32_t irq)
+{
+	CPU_NVIC_UNPEND(irq >> 5) = 1 << (irq & 0x1f);
+}
+#endif
+
 
 void task_trigger_irq(int irq)
 {

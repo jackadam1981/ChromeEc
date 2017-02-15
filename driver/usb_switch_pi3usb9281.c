@@ -395,6 +395,9 @@ void usb_charger_task(void)
 	int interrupt;
 	uint32_t evt;
 
+	/* TODO MCHP DEBUG KBL bringup */
+	return;
+
 	/* Initialize chip and enable interrupts */
 	pi3usb9281_init(port);
 

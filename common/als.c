@@ -34,6 +34,9 @@ void als_task(void)
 	uint16_t *mapped = (uint16_t *)host_get_memmap(EC_MEMMAP_ALS);
 	uint16_t als_data;
 
+	/* TODO MCHP DEBUG disable ALS task */
+	return;
+
 	while (1) {
 		task_wait_event(task_timeout);
 
