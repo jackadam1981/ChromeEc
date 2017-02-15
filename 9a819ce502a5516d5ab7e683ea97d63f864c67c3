@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3dee0ad_76fbef73",
+        "filename": "common/rwsig.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-15T07:05:33Z",
+      "side": 1,
+      "message": "as we are not doing range checking on these, I have very hard time convincing myself there is no possible hole (eg having rwlen declared as \u0027int\u0027, possibly being negative here ..., the signature can be read from strange place including the current heap ...)",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "9a819ce502a5516d5ab7e683ea97d63f864c67c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
