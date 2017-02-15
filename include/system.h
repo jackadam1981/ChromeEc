@@ -221,17 +221,21 @@ const char *system_get_build_info(void);
  * Hard reset.  Cuts power to the entire system.  If not present, does a soft
  * reset which just resets the core and on-chip peripherals.
  */
-#define SYSTEM_RESET_HARD           (1 << 0)
+#define SYSTEM_RESET_HARD               (1 << 0)
 /*
  * Preserve existing reset flags.  Used by flash pre-init when it discovers it
  * needs to do a hard reset to clear write protect registers.
  */
-#define SYSTEM_RESET_PRESERVE_FLAGS (1 << 1)
+#define SYSTEM_RESET_PRESERVE_FLAGS     (1 << 1)
 /*
  * Leave AP off on next reboot, instead of powering it on to do EC software
  * sync.
  */
-#define SYSTEM_RESET_LEAVE_AP_OFF   (1 << 2)
+#define SYSTEM_RESET_LEAVE_AP_OFF       (1 << 2)
+/*
+ * Indicate that this was a manually triggered reset.
+ */
+#define SYSTEM_RESET_MANUALLY_TRIGGERED (1 << 3)
 
 /**
  * Reset the system.
@@ -490,6 +494,13 @@ int system_process_retry_counter(void);
  * sure that the new image has a chance to run.
  */
 void system_clear_retry_counter(void);
+
+/**
+ * A function provided by some platforms to decrement a retry counter.
+ *
+ * This should be used whenever a system reset is manually triggered.
+ */
+void system_decrement_retry_counter(void);
 
 /**
  * A function provided by some platforms to hint that something is going
