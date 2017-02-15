@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a224cf5_bfe0bf03",
+        "filename": "board/eve_fp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-15T18:37:47Z",
+      "side": 1,
+      "message": "It means very hight speed for pin 2 and high speed for pin 1. Shouldn\u0027t it be 0xa80?",
+      "range": {
+        "startLine": 36,
+        "startChar": 31,
+        "endLine": 36,
+        "endChar": 41
+      },
+      "revId": "454bd45236d6fb7ebb2754123dd9da0827cbd961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82161215_27f6a051",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1891,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-15T18:37:47Z",
+      "side": 1,
+      "message": "The name is very generic but it\u0027s specifically used for fingerprint sensor?",
+      "range": {
+        "startLine": 1891,
+        "startChar": 7,
+        "endLine": 1891,
+        "endChar": 29
+      },
+      "revId": "454bd45236d6fb7ebb2754123dd9da0827cbd961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
