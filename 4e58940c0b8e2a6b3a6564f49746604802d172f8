@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87be4cd4_6f348b10",
+        "filename": "board/eve_fp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-15T23:02:44Z",
+      "side": 1,
+      "message": "Since board.c is going to be mix of many modules, I think it\u0027s better not to define CPRINTS (instead use cprints directly).\n\nAlso maybe it\u0027s right time to add CC_FPS.",
+      "range": {
+        "startLine": 15,
+        "startChar": 41,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "4e58940c0b8e2a6b3a6564f49746604802d172f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74433baf_c9003687",
+        "filename": "board/eve_fp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-15T23:02:44Z",
+      "side": 1,
+      "message": "nit: I would put this at the top (and probably mark it with TODO: crosbug.com/p/xxxx)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "4e58940c0b8e2a6b3a6564f49746604802d172f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
