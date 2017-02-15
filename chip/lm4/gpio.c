@@ -254,7 +254,8 @@ void gpio_pre_init(void)
 
 #ifdef CONFIG_LOW_POWER_IDLE
 	/*
-	 * Enable KB scan row to interrupt deep sleep by providing a clock
+	 * Enable KB scan row (ksi pin) to interrupt deep sleep
+	 * by providing a clock
 	 * signal to that port in deep sleep mode.
 	 */
 	clock_enable_peripheral(CGC_OFFSET_GPIO,

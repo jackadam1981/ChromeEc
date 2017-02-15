@@ -31,8 +31,8 @@
 		old = fifo_add_count; \
 	} while (0)
 
-static uint8_t mock_state[KEYBOARD_COLS];
-static int column_driven;
+static uint8_t mock_state[KEYBOARD_KSO_PINS];
+static int kso_pin_driven;
 static int fifo_add_count;
 static int lid_open;
 #ifdef EMU_BUILD
@@ -47,24 +47,24 @@ int lid_is_open(void)
 }
 #endif
 
-void keyboard_raw_drive_column(int out)
+void keyboard_raw_drive_kso_pins(int out)
 {
-	column_driven = out;
+	kso_pin_driven = out;
 }
 
-int keyboard_raw_read_rows(void)
+int keyboard_raw_read_ksi_pins(void)
 {
 	int i;
 	int r = 0;
 
-	if (column_driven == KEYBOARD_COLUMN_NONE) {
+	if (kso_pin_driven == KEYBOARD_KSO_PINS_NONE) {
 		return 0;
-	} else if (column_driven == KEYBOARD_COLUMN_ALL) {
-		for (i = 0; i < KEYBOARD_COLS; ++i)
+	} else if (kso_pin_driven == KEYBOARD_KSO_PINS_ALL) {
+		for (i = 0; i < KEYBOARD_KSO_PINS; ++i)
 			r |= mock_state[i];
 		return r;
 	} else {
-		return mock_state[column_driven];
+		return mock_state[kso_pin_driven];
 	}
 }
 
@@ -86,8 +86,8 @@ void chipset_reset(int cold_reset)
 }
 #endif
 
-#define mock_defined_key(k, p) mock_key(KEYBOARD_ROW_ ## k, \
-					KEYBOARD_COL_ ## k, \
+#define mock_defined_key(k, p) mock_key(KEYBOARD_KSI_ ## k, \
+					KEYBOARD_KSO_ ## k, \
 					p)
 
 static void mock_key(int r, int c, int keydown)
