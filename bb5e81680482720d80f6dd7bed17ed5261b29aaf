@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34ef1473_34ce587d",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-15T06:25:37Z",
+      "side": 1,
+      "message": "My impression was that Vadim wanted to do that reset in TPM task. It should be doable by calling extension_route_command with controlled parameters?",
+      "revId": "bb5e81680482720d80f6dd7bed17ed5261b29aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6a1151_bb46f159",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-15T06:25:37Z",
+      "side": 1,
+      "message": "My concern with this is that we\u0027d end up with a lot of if\u0027s in this part of the code. I\u0027d still prefer to have a \"command\" address (EXT_CMD_2 in my design doc), and then multiplex possible commands over that address (using the payload).\n\nThat would also make it easier to reply with some NON_SUPPORTED error code, or have commands that take parameters, etc.\n\ni.e. keep EXT_CMD-like format:\n\n    4 bytes      4 bytes         4 bytes       2 bytes      variable size\n  +-----------+--------------+---------------+-----------+------~~~-------+\n  + total size| block digest |    EXT_CMD_2  |  Command  |      data      |\n  +-----------+--------------+---------------+-----------+------~~~-------+\n\nWhere command is RESET, INVALIDATE_INACTIVE_RW, etc...",
+      "revId": "bb5e81680482720d80f6dd7bed17ed5261b29aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
