@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "c4aee1c4_a12a0bb8",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-02-15T07:24:50Z",
+      "side": 0,
+      "message": "USB call is here",
+      "revId": "b22bfa6a3eb41518ff5a86f9186c3d0c28a30d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8a33ad1_d28a658f",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-02-15T07:24:50Z",
+      "side": 0,
+      "message": "TPM SPI update interface is here.",
+      "revId": "b22bfa6a3eb41518ff5a86f9186c3d0c28a30d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ac5e63d_a0288aa7",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 1
@@ -13,6 +47,24 @@
       "writtenOn": "2017-02-15T06:54:26Z",
       "side": 0,
       "message": "It looks like the fw usb receiving side does not check the command field against EXTENSION_FW_UPGRADE?  (couldn\u0027t find any references to this in chip/g).",
+      "revId": "b22bfa6a3eb41518ff5a86f9186c3d0c28a30d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cc5b913_6c10203b",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-02-15T07:24:50Z",
+      "side": 0,
+      "message": "This code is for calling the updater using tpm vendor commands, over spi/i2c, not usb. See: line 663",
+      "parentUuid": "0ac5e63d_a0288aa7",
       "revId": "b22bfa6a3eb41518ff5a86f9186c3d0c28a30d35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true

@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "73568086_9a28bedb",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-02-15T07:24:50Z",
+      "side": 1,
+      "message": "Yeah, calling extension_route_command with hardcoded params in something like board.c:reset_after_upagrade(), which could be called from here, and would make the updater board agnostic.",
+      "parentUuid": "34ef1473_34ce587d",
+      "revId": "bb5e81680482720d80f6dd7bed17ed5261b29aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be6a1151_bb46f159",
         "filename": "chip/g/usb_upgrade.c",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2017-02-15T06:54:26Z",
       "side": 1,
       "message": "Is support for EXTENSION_POST_RESET still necessary?  (if yes, the fw side needs to support this as well).",
+      "revId": "bb5e81680482720d80f6dd7bed17ed5261b29aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f9705fd_06f73924",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-02-15T07:24:50Z",
+      "side": 1,
+      "message": "Yes, maybe? This just calls post_reboot_request() though so it\u0027s pretty easy to add. \n\nIt\u0027s referenced here:\nhttps://cs.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos-base/chromeos-cr50/files/cr50-update.conf?l\u003d81",
+      "parentUuid": "14e8b015_42c48452",
       "revId": "bb5e81680482720d80f6dd7bed17ed5261b29aaf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
