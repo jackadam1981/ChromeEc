@@ -5,10 +5,12 @@
  * Raw keyboard I/O layer for STM32
  *
  * To make this code portable, we rely heavily on looping over the keyboard
- * input and output entries in the board's gpio_list[]. Each set of inputs or
- * outputs must be listed in consecutive, increasing order so that scan loops
+ * input and output entries in the board's gpio_list[].
+ * Each set of inputs(ksi pins) or
+ * outputs(kso pins) must be listed in consecutive,
+ * increasing order so that scan loops
  * can iterate beginning at KB_IN00 or KB_OUT00 for however many GPIOs are
- * utilized (KEYBOARD_ROWS or KEYBOARD_COLS).
+ * utilized (KEYBOARD_KSI_PINS or KEYBOARD_KSO_PINS).
  */
 
 #include "gpio.h"
@@ -28,7 +30,7 @@ static void set_irq_mask(void)
 {
 	int i;
 
-	for (i = GPIO_KB_IN00; i < GPIO_KB_IN00 + KEYBOARD_ROWS; i++)
+	for (i = GPIO_KB_IN00; i < GPIO_KB_IN00 + KEYBOARD_KSI_PINS; i++)
 		irq_mask |= gpio_list[i].mask;
 }
 
@@ -54,7 +56,7 @@ void keyboard_raw_task_start(void)
 	gpio_enable_interrupt(GPIO_KB_IN07);
 }
 
-test_mockable void keyboard_raw_drive_column(int out)
+test_mockable void keyboard_raw_drive_kso_pins(int kso)
 {
 	int i, done = 0;
 
@@ -66,20 +68,21 @@ test_mockable void keyboard_raw_drive_column(int out)
 			if (gpio_list[j].port != kb_out_ports[i])
 				continue;
 
-			if (out == KEYBOARD_COLUMN_ALL) {
+			if (kso == KEYBOARD_KSO_PINS_ALL) {
 				/* drive low (clear bit) */
 				bsrr |= gpio_list[j].mask << 16;
-			} else if (out == KEYBOARD_COLUMN_NONE) {
+			} else if (kso == KEYBOARD_KSO_PINS_NONE) {
 				/* put output in hi-Z state (set bit) */
 				bsrr |= gpio_list[j].mask;
-			} else if (j - GPIO_KB_OUT00 == out) {
+			} else if (j - GPIO_KB_OUT00 == kso) {
 				/*
 				 * Drive specified output low, others => hi-Z.
 				 *
 				 * To avoid conflict, tri-state all outputs
 				 * first, then assert specified output.
 				 */
-				keyboard_raw_drive_column(KEYBOARD_COLUMN_NONE);
+				keyboard_raw_drive_kso_pins(
+							KEYBOARD_KSO_PINS_NONE);
 				bsrr |= gpio_list[j].mask << 16;
 				done = 1;
 				break;
@@ -101,14 +104,14 @@ test_mockable void keyboard_raw_drive_column(int out)
 	}
 }
 
-test_mockable int keyboard_raw_read_rows(void)
+test_mockable int keyboard_raw_read_ksi_pins(void)
 {
 	int i;
 	unsigned int port, prev_port = 0;
 	int state = 0;
 	uint16_t port_val = 0;
 
-	for (i = 0; i < KEYBOARD_ROWS; i++) {
+	for (i = 0; i < KEYBOARD_KSI_PINS; i++) {
 		port = gpio_list[GPIO_KB_IN00 + i].port;
 		if (port != prev_port) {
 			port_val = STM32_GPIO_IDR(port);

@@ -1359,7 +1359,7 @@
  * the signal to be inverted so that the open-drain output from the EC isn't
  * costing power due to the pull-up resistor in the Silego.
  */
-#undef CONFIG_KEYBOARD_COL2_INVERTED
+#undef CONFIG_KEYBOARD_KSO2_INVERTED
 
 /*
  * Config KSO to start from a different KSO pin. This is to allow some chips

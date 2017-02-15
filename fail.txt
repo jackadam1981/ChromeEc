@@ -1,0 +1,575 @@
+make try_buildall
+make[1]: Entering directory '/mnt/host/source/src/platform/ec'
+======= building lucid
+make --no-print-directory BOARD=lucid V=
+======= building stm32f446e-eval
+make --no-print-directory BOARD=stm32f446e-eval V=
+======= building polyberry
+make --no-print-directory BOARD=polyberry V=
+======= building hammer
+make --no-print-directory BOARD=hammer V=
+======= building samus_pd
+make --no-print-directory BOARD=samus_pd V=
+======= building hoho
+======= building chell
+make --no-print-directory BOARD=hoho V=
+make --no-print-directory BOARD=chell V=
+======= building discovery
+======= building snoball
+make --no-print-directory BOARD=discovery V=
+make --no-print-directory BOARD=snoball V=
+======= building big
+make --no-print-directory BOARD=big V=
+======= building zinger
+======= building eve
+make --no-print-directory BOARD=zinger V=
+make --no-print-directory BOARD=eve V=
+======= building pdeval-stm32f072
+make --no-print-directory BOARD=pdeval-stm32f072 V=
+======= building auron
+make --no-print-directory BOARD=auron V=
+======= building plankton
+make --no-print-directory BOARD=plankton V=
+======= building nucleo-f072rb
+make --no-print-directory BOARD=nucleo-f072rb V=
+======= building dingdong
+make --no-print-directory BOARD=dingdong V=
+======= building gru
+======= building strago
+make --no-print-directory BOARD=strago V=
+make --no-print-directory BOARD=gru V=
+======= building stm32l476g-eval
+make --no-print-directory BOARD=stm32l476g-eval V=
+======= building minimuffin
+make --no-print-directory BOARD=minimuffin V=
+======= building oak_pd
+make --no-print-directory BOARD=oak_pd V=
+======= building oak
+make --no-print-directory BOARD=oak V=
+======= building npcx_evb
+make --no-print-directory BOARD=npcx_evb V=
+======= building honeybuns
+make --no-print-directory BOARD=honeybuns V=
+======= building chell_pd
+make --no-print-directory BOARD=chell_pd V=
+======= building npcx_evb_arm
+make --no-print-directory BOARD=npcx_evb_arm V=
+======= building pyro
+make --no-print-directory BOARD=pyro V=
+======= building sweetberry
+======= building discovery-stm32f072
+make --no-print-directory BOARD=sweetberry V=
+make --no-print-directory BOARD=discovery-stm32f072 V=
+======= building bds
+make --no-print-directory BOARD=bds V=
+======= building cr50
+make --no-print-directory BOARD=cr50 V=
+======= building wheatley
+======= building snappy
+make --no-print-directory BOARD=wheatley V=
+make --no-print-directory BOARD=snappy V=
+======= building elm
+make --no-print-directory BOARD=elm V=
+======= building glados_pd
+make --no-print-directory BOARD=glados_pd V=
+======= building samus
+make --no-print-directory BOARD=samus V=
+======= building servo_micro
+make --no-print-directory BOARD=servo_micro V=
+======= building hadoken
+make --no-print-directory BOARD=hadoken V=
+======= building glados
+make --no-print-directory BOARD=glados V=
+======= building ryu
+make --no-print-directory BOARD=ryu V=
+======= building llama
+make --no-print-directory BOARD=llama V=
+======= building servo_v4
+make --no-print-directory BOARD=servo_v4 V=
+======= building kevin
+make --no-print-directory BOARD=kevin V=
+======= building jerry
+make --no-print-directory BOARD=jerry V=
+======= building reef
+make --no-print-directory BOARD=reef V=
+======= building twinkie
+make --no-print-directory BOARD=twinkie V=
+======= building pit
+make --no-print-directory BOARD=pit V=
+======= building rambi
+make --no-print-directory BOARD=rambi V=
+======= building indus
+make --no-print-directory BOARD=indus V=
+======= building haven_dev
+make --no-print-directory BOARD=haven_dev V=
+======= building granite
+make --no-print-directory BOARD=granite V=
+======= building cr51_base
+make --no-print-directory BOARD=cr51_base V=
+======= building hotelgolf
+make --no-print-directory BOARD=hotelgolf V=
+======= building hg_evt_1_0
+make --no-print-directory BOARD=hg_evt_1_0 V=
+======= building hg_dvt
+make --no-print-directory BOARD=hg_dvt V=
+======= building proto2
+make --no-print-directory BOARD=proto2 V=
+======= building hg_evt_2_0
+make --no-print-directory BOARD=hg_evt_2_0 V=
+  OBJCOPY RO/ec.RO.flat
+  OBJCOPY RW/ec.RW.flat
+  OBJCOPY RO/ec.RO.flat
+  OBJCOPY RW/ec.RW.flat
+  OBJCOPY RO/ec.RO.flat
+  CAT     ec.obj
+  OBJCOPY RW/ec.RW.flat
+  CAT     ec.obj
+  OBJCOPY RO/ec.RO.flat
+  OBJCOPY RW/ec.RW.flat
+  CAT     ec.obj
+  OBJCOPY ec.bin
+  CAT     ec.obj
+  SIGN    ec.bin
+  CC      RO/chip/stm32/clock-stm32l.o
+  OBJCOPY RO/ec.RO.flat
+  OBJCOPY RO/ec.RO.flat
+  OBJCOPY ec.bin
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/chip/stm32/keyboard_raw.o
+  CC      RO/chip/stm32/keyboard_raw.o
+  OBJCOPY RW/ec.RW.flat
+  OBJCOPY RW/ec.RW.flat
+  OBJCOPY RO/ec.RO.flat
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/chip/stm32/pwm.o
+  CC      RO/chip/stm32/usb_hid.o
+  OBJCOPY ec.bin
+  COPY_RW ec.bin
+  CAT     ec.obj
+  CAT     ec.obj
+  CC      RO/chip/stm32/usb_hid_keyboard.o
+  COPY_RW ec.bin
+  CAT     ec.obj
+  CC      RO/chip/stm32/spi.o
+  MV      ec.bin
+  CAT     ec.obj
+  CC      RO/chip/mec1322/keyboard_raw.o
+  MV      ec.bin
+  CC      RO/chip/stm32/system.o
+  CC      RO/chip/stm32/usb_hid_touchpad.o
+  CC      RO/chip/stm32/uart.o
+  CC      RO/chip/mec1322/uart.o
+  CC      RO/chip/stm32/watchdog.o
+  OBJCOPY RO/ec.RO.flat
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/chip/stm32/watchdog.o
+  CC      RO/chip/npcx/keyboard_raw.o
+  OBJCOPY RO/ec.RO.flat
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/chip/mec1322/watchdog.o
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/common/ap_hang_detect.o
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/chip/npcx/watchdog.o
+  CC      RO/common/acpi.o
+  CC      RO/common/clz.o
+  CAT     ec.obj
+  CC      RO/common/adc.o
+  CAT     ec.obj
+  CC      RO/common/battery.o
+  CAT     ec.obj
+  CC      RO/common/adc.o
+  CC      RO/common/console.o
+  CC      RO/common/battery.o
+  CC      RO/common/charge_state_v2.o
+  OBJCOPY RO/ec.RO.flat
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/als.o
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/common/console_output.o
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/chip/lm4/keyboard_raw.o
+  CC      RO/common/charge_manager.o
+  CC      RO/common/charger.o
+  EXTR_RW ec.bin
+  CC      RO/common/battery.o
+  CC      RO/chip/mec1322/keyboard_raw.o
+  CC      RO/chip/npcx/keyboard_raw.o
+  OBJCOPY ec.bin
+  CC      RO/chip/npcx/watchdog.o
+  OBJCOPY ec.bin
+  CC      RO/common/acpi.o
+  OBJCOPY ec.bin
+  CC      RO/common/button.o
+  OBJCOPY ec.bin
+  CC      RO/common/keyboard_scan.o
+  CAT     ec.obj
+  OBJCOPY ec.bin
+  COPY_RW ec.bin
+  OBJCOPY RO/ec.RO.flat
+  CAT     ec.obj
+  CC      RO/common/acpi.o
+  COPY_RW ec.bin
+  SIGN    ec.bin
+  MV      ec.bin
+  COPY_RW ec.bin
+  COPY_RW ec.bin
+  CC      RO/common/adc.o
+  OBJCOPY ec.bin
+  MV      ec.bin
+  CC      RW/chip/mec1322/keyboard_raw.o
+  CC      RO/common/adc.o
+  CC      RO/chip/npcx/keyboard_raw.o
+  MV      ec.bin
+  MV      ec.bin
+  CC      RW/common/keyboard_scan.o
+  COPY_RW ec.bin
+  OBJCOPY RW/ec.RW.flat
+  LD      RW/chip/mec1322/lfw/ec_lfw-lfw.elf
+  OBJCOPY ec.bin
+  CC      RO/common/backlight_lid.o
+  CC      RO/common/console.o
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/acpi.o
+  MV      ec.bin
+  OBJCOPY ec.bin
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/common/console_output.o
+  MV      ec.bin
+  SIGN    ec.bin
+  CC      RO/common/adc.o
+  OBJCOPY ec.bin
+  OBJCOPY RW/ec.RW.flat
+  CAT     ec.obj
+  CC      RO/common/battery.o
+  COPY_RW ec.bin
+  CAT     ec.obj
+  SIGN    ec.bin
+  MV      ec.bin
+  CC      RO/common/als.o
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/fan.o
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/charge_state_v1.o
+  CC      RO/chip/stm32/keyboard_raw.o
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/common/flash.o
+  CC      RO/common/battery.o
+  CC      RO/common/charger.o
+  OBJCOPY RW/ec.RW.flat
+  CAT     ec.obj
+  CC      RO/common/fmap.o
+  CC      RO/chip/npcx/keyboard_raw.o
+  CC      RO/common/als.o
+  EXTR_RW ec.bin
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/gpio.o
+  CC      RO/common/adc.o
+  CAT     ec.obj
+  CC      RO/common/button.o
+  CC      RO/common/chipset.o
+  CC      RO/common/battery.o
+  CC      RO/common/console.o
+  OBJCOPY ec.bin
+  CC      RO/common/charge_manager.o
+  COPY_RW ec.bin
+  CC      RO/common/charge_state_v2.o
+  MV      ec.bin
+  CC      RO/chip/npcx/keyboard_raw.o
+  CAT     ec.obj
+  CC      RO/common/console.o
+  CC      RO/common/charge_manager.o
+  CC      RO/common/charger.o
+  CC      RO/common/acpi.o
+  CC      RO/common/gpio_commands.o
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/console_output.o
+  CC      RO/common/charge_ramp.o
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/common/adc.o
+  EXTR_RW ec.bin
+  CC      RO/common/fan.o
+  OBJCOPY ec.bin
+  EXTR_RW ec.bin
+  OBJCOPY ec.bin
+  OBJCOPY ec.bin
+  CC      RO/common/als.o
+  COPY_RW ec.bin
+  COPY_RW ec.bin
+  SIGN    ec.bin
+  CC      RO/common/backlight_lid.o
+  MV      ec.bin
+  MV      ec.bin
+  CAT     ec.obj
+  CC      RO/common/battery.o
+  OBJCOPY ec.bin
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/button.o
+  OBJCOPY ec.bin
+  OBJCOPY RW/ec.RW.flat
+  COPY_RW ec.bin
+  SIGN    ec.bin
+  CC      RO/common/charge_manager.o
+  MV      ec.bin
+  CC      RO/chip/stm32/keyboard_raw.o
+  CAT     ec.obj
+  CC      RO/common/keyboard_scan.o
+  OBJCOPY ec.bin
+  EXTR_RW ec.bin
+  COPY_RW ec.bin
+  MV      ec.bin
+  CC      RW/chip/stm32/keyboard_raw.o
+  CC      RO/chip/npcx/keyboard_raw.o
+  CC      RO/chip/stm32/keyboard_raw.o
+  CC      RW/common/keyboard_scan.o
+  CC      RO/common/battery.o
+  CC      RO/common/charge_manager.o
+  EXTR_RW ec.bin
+  CC      RO/chip/lm4/keyboard_raw.o
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/common/button.o
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/charge_state_v2.o
+  OBJCOPY ec.bin
+  OBJCOPY RO/ec.RO.flat
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/common/acpi.o
+  CC      RO/common/charge_manager.o
+  COPY_RW ec.bin
+  MV      ec.bin
+  MV      ec.bin
+  CC      RO/common/charger.o
+  CC      RO/common/adc.o
+  CC      RO/common/als.o
+  CAT     ec.obj
+  OBJCOPY RO/ec.RO.flat
+  CAT     ec.obj
+  CC      RO/chip/npcx/keyboard_raw.o
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/chipset.o
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/common/charge_state_v2.o
+  CC      RO/common/adc.o
+  OBJCOPY RW/ec.RW.flat
+  MV      ec.bin
+  MV      ec.bin
+  CC      RO/common/clz.o
+  CC      RO/common/battery.o
+  CC      RO/common/als.o
+  CC      RO/common/backlight_lid.o
+  CAT     ec.obj
+  CAT     ec.obj
+  CC      RO/common/charge_state_v2.o
+  CC      RO/common/battery.o
+  OBJCOPY ec.bin
+  CC      RO/common/charger.o
+  OBJCOPY ec.bin
+  CC      RO/common/button.o
+  COPY_RW ec.bin
+  COPY_RW ec.bin
+  CC      RO/common/charge_manager.o
+  MV      ec.bin
+  MV      ec.bin
+  OBJCOPY ec.bin
+  CC      RO/chip/stm32/keyboard_raw.o
+  CC      RO/common/keyboard_scan.o
+  COPY_RW ec.bin
+  CC      RO/chip/stm32/keyboard_raw.o
+  CC      RO/chip/npcx/keyboard_raw.o
+  MV      ec.bin
+  OBJCOPY ec.bin
+  CC      RO/common/battery.o
+  CC      RW/chip/stm32/keyboard_raw.o
+  CC      RO/common/battery.o
+  CC      RO/common/button.o
+  CC      RO/common/charge_state_v2.o
+  COPY_RW ec.bin
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/charge_ramp.o
+  OBJCOPY RW/ec.RW.flat
+  MV      ec.bin
+  CC      RO/common/charge_manager.o
+  CC      RW/common/keyboard_scan.o
+  CC      RO/common/charger.o
+  OBJCOPY RO/ec.RO.flat
+  CC      RO/common/charge_state_v2.o
+  CC      RO/common/charge_state_v2.o
+  OBJCOPY RW/ec.RW.flat
+  CC      RO/common/chipset.o
+  CAT     ec.obj
+  CC      RO/chip/mec1322/keyboard_raw.o
+  CC      RO/chip/npcx/keyboard_raw.o
+  CAT     ec.obj
+  CC      RO/common/charger.o
+  CC      RO/common/clz.o
+  CC      RO/common/keyboard_scan.o
+  CC      RO/common/fmap.o
+  CC      RO/chip/lm4/keyboard_raw.o
+  CC      RO/common/gpio.o
+  CC      RW/chip/npcx/keyboard_raw.o
+  CC      RW/common/keyboard_scan.o
+  CC      RO/common/keyboard_scan.o
+  MV      ec.bin
+  OBJCOPY ec.bin
+  CC      RO/common/gpio_commands.o
+  OBJCOPY ec.bin
+  COPY_RW ec.bin
+  CC      RO/common/hooks.o
+  MV      ec.bin
+  CC      RW/chip/lm4/keyboard_raw.o
+  COPY_RW ec.bin
+  CC      RO/common/host_command.o
+  MV      ec.bin
+  MV      ec.bin
+make obj=/mnt/host/source/src/platform/ec/build/cr50/tpm2 EMBEDDED_MODE=1 OBJ_PREFIX=Tpm2_ -C /mnt/host/source/src/third_party/tpm2
+make obj=/mnt/host/source/src/platform/ec/build/cr50/cryptoc SUPPORT_UNALIGNED=1 \
+	CONFIG_UPTO_SHA512=y -C /mnt/host/source/src/third_party/cryptoc
+make[3]: '/mnt/host/source/src/platform/ec/build/cr50/cryptoc/libcryptoc.a' is up to date.
+make[3]: '/mnt/host/source/src/platform/ec/build/cr50/tpm2/libtpm2.a' is up to date.
+  LD      RW/ec.RW.elf
+  LD      RW/ec.RW_B.elf
+make obj=/mnt/host/source/src/platform/ec/build/indus/cryptoc SUPPORT_UNALIGNED=1 \
+	CONFIG_UPTO_SHA512= -C /mnt/host/source/src/third_party/cryptoc
+make[3]: '/mnt/host/source/src/platform/ec/build/indus/cryptoc/libcryptoc.a' is up to date.
+  LD      RW/ec.RW.elf
+  LD      RW/ec.RW_B.elf
+  NM      RW/ec.RW.smap
+make obj=/mnt/host/source/src/platform/ec/build/hotelgolf/cryptoc SUPPORT_UNALIGNED=1 \
+	CONFIG_UPTO_SHA512= -C /mnt/host/source/src/third_party/cryptoc
+  NM      RW/ec.RW_B.smap
+  OBJCOPY RW/ec.RW.hex
+make[3]: '/mnt/host/source/src/platform/ec/build/hotelgolf/cryptoc/libcryptoc.a' is up to date.
+  RW_SIGN RW/ec.RW.flat
+  LD      RW/ec.RW.elf
+  LD      RW/ec.RW_B.elf
+make obj=/mnt/host/source/src/platform/ec/build/cr51_base/cryptoc SUPPORT_UNALIGNED=1 \
+	CONFIG_UPTO_SHA512= -C /mnt/host/source/src/third_party/cryptoc
+  NM      RW/ec.RW.smap
+  RW_SIGN RW/ec.RW_B.flat
+make[3]: '/mnt/host/source/src/platform/ec/build/cr51_base/cryptoc/libcryptoc.a' is up to date.
+  LD      RW/ec.RW_B.elf
+  LD      RW/ec.RW.elf
+  NM      RW/ec.RW_B.smap
+make obj=/mnt/host/source/src/platform/ec/build/hg_evt_1_0/cryptoc SUPPORT_UNALIGNED=1 \
+	CONFIG_UPTO_SHA512= -C /mnt/host/source/src/third_party/cryptoc
+make[3]: '/mnt/host/source/src/platform/ec/build/hg_evt_1_0/cryptoc/libcryptoc.a' is up to date.
+  LD      RW/ec.RW.elf
+  CAT     ec.obj
+  LD      RW/ec.RW_B.elf
+make obj=/mnt/host/source/src/platform/ec/build/hg_evt_2_0/cryptoc SUPPORT_UNALIGNED=1 \
+	CONFIG_UPTO_SHA512= -C /mnt/host/source/src/third_party/cryptoc
+  OBJCOPY RW/ec.RW.hex
+  NM      RW/ec.RW_B.smap
+make[3]: '/mnt/host/source/src/platform/ec/build/hg_evt_2_0/cryptoc/libcryptoc.a' is up to date.
+  NM      RW/ec.RW.smap
+  RW_SIGN RW/ec.RW.flat
+  LD      RW/ec.RW.elf
+  NM      RW/ec.RW_B.smap
+  RW_SIGN RW/ec.RW_B.flat
+  RW_SIGN RW/ec.RW_B.flat
+make obj=/mnt/host/source/src/platform/ec/build/hg_dvt/cryptoc SUPPORT_UNALIGNED=1 \
+	CONFIG_UPTO_SHA512= -C /mnt/host/source/src/third_party/cryptoc
+  NM      RW/ec.RW.smap
+  LD      RW/ec.RW_B.elf
+make[3]: '/mnt/host/source/src/platform/ec/build/hg_dvt/cryptoc/libcryptoc.a' is up to date.
+  OBJCOPY RW/ec.RW.hex
+  LD      RW/ec.RW.elf
+  LD      RW/ec.RW_B.elf
+  RW_SIGN RW/ec.RW.flat
+  RW_SIGN RW/ec.RW_B.flat
+  OBJCOPY ec.bin
+  CAT     ec.obj
+  NM      RW/ec.RW.smap
+  SIGN    ec.bin
+  NM      RW/ec.RW_B.smap
+  NM      RW/ec.RW_B.smap
+  CAT     ec.obj
+  NM      RW/ec.RW_B.smap
+make obj=/mnt/host/source/src/platform/ec/build/proto2/cryptoc SUPPORT_UNALIGNED=1 \
+  OBJCOPY RW/ec.RW.hex
+	CONFIG_UPTO_SHA512= -C /mnt/host/source/src/third_party/cryptoc
+  OBJCOPY RW/ec.RW.hex
+  RW_SIGN RW/ec.RW_B.flat
+  NM      RW/ec.RW.smap
+  RW_SIGN RW/ec.RW.flat
+make[3]: '/mnt/host/source/src/platform/ec/build/proto2/cryptoc/libcryptoc.a' is up to date.
+  RW_SIGN RW/ec.RW.flat
+  LD      RW/ec.RW.elf
+  LD      RW/ec.RW_B.elf
+  RW_SIGN RW/ec.RW_B.flat
+  RW_SIGN RW/ec.RW_B.flat
+  CAT     ec.obj
+  NM      RW/ec.RW.smap
+  OBJCOPY RW/ec.RW.hex
+  CAT     ec.obj
+  RW_SIGN RW/ec.RW.flat
+  OBJCOPY RW/ec.RW.hex
+  RW_SIGN RW/ec.RW.flat
+  NM      RW/ec.RW.smap
+  NM      RW/ec.RW_B.smap
+make obj=/mnt/host/source/src/platform/ec/build/haven_dev/cryptoc SUPPORT_UNALIGNED=1 \
+	CONFIG_UPTO_SHA512= -C /mnt/host/source/src/third_party/cryptoc
+make obj=/mnt/host/source/src/platform/ec/build/granite/cryptoc SUPPORT_UNALIGNED=1 \
+	CONFIG_UPTO_SHA512= -C /mnt/host/source/src/third_party/cryptoc
+  CAT     ec.obj
+  CAT     ec.obj
+make[3]: '/mnt/host/source/src/platform/ec/build/haven_dev/cryptoc/libcryptoc.a' is up to date.
+make[3]: '/mnt/host/source/src/platform/ec/build/granite/cryptoc/libcryptoc.a' is up to date.
+  OBJCOPY RW/ec.RW.hex
+  RW_SIGN RW/ec.RW.flat
+  LD      RW/ec.RW.elf
+  LD      RW/ec.RW.elf
+  RW_SIGN RW/ec.RW_B.flat
+  LD      RW/ec.RW_B.elf
+  CAT     ec.obj
+  NM      RW/ec.RW.smap
+  NM      RW/ec.RW.smap
+  NM      RW/ec.RW_B.smap
+  OBJCOPY RW/ec.RW.hex
+  OBJCOPY RW/ec.RW.hex
+  RW_SIGN RW/ec.RW.flat
+  RW_SIGN RW/ec.RW.flat
+  RW_SIGN RW/ec.RW_B.flat
+  CAT     ec.obj
+  CAT     ec.obj
+  OBJCOPY ec.bin
+  OBJCOPY ec.bin
+  OBJCOPY ec.bin
+  COPY_RW ec.bin
+  COPY_RW ec.bin
+  COPY_RW ec.bin
+  MV      ec.bin
+  MV      ec.bin
+  MV      ec.bin
+  OBJCOPY ec.hex
+  OBJCOPY ec.hex
+  OBJCOPY ec.hex
+  EXTR_RW ec.bin
+  OBJCOPY ec.bin
+  OBJCOPY ec.bin
+  COPY_RW ec.bin
+  OBJCOPY ec.bin
+  OBJCOPY ec.bin
+  OBJCOPY ec.bin
+  OBJCOPY ec.bin
+  MV      ec.bin
+  COPY_RW ec.bin
+  SIGN    ec.bin
+  COPY_RW ec.bin
+  COPY_RW ec.bin
+  COPY_RW ec.bin
+  MV      ec.bin
+  MV      ec.bin
+  OBJCOPY ec.hex
+  MV      ec.bin
+  MV      ec.bin
+  OBJCOPY ec.hex
+  OBJCOPY ec.hex
+  OBJCOPY ec.hex
+  OBJCOPY ec.hex
+  EXTR_RW ec.bin
+  MV      ec.bin
+  OBJCOPY ec.hex
+  MV      ec.bin
+  OBJCOPY ec.hex
+make[1]: Leaving directory '/mnt/host/source/src/platform/ec'

@@ -25,14 +25,14 @@ enum {
 
 /* A single entry of the key matrix */
 struct matrix_entry {
-	int row;	/* key matrix row */
-	int col;	/* key matrix column */
+	int ksi;	/* key matrix row(ksi pin) */
+	int kso;	/* key matrix column(kso pin) */
 	int keycode;	/* corresponding linux key code */
 };
 
 struct keyscan_test_item {
 	uint32_t beat;			/* Beat number */
-	uint8_t scan[KEYBOARD_COLS];	/* Scan data */
+	uint8_t scan[KEYBOARD_KSO_PINS];	/* Scan data */
 };
 
 /* A single test, consisting of a list of key scans and expected ascii input */
@@ -97,15 +97,15 @@ static int keyscan_read_fdt_matrix(struct keyscan_info *keyscan,
 		struct matrix_entry *matrix = &keyscan->matrix[upto++];
 
 		word = be32toh(word);
-		matrix->row = word >> 24;
-		matrix->col = (word >> 16) & 0xff;
+		matrix->ksi = word >> 24;
+		matrix->kso = (word >> 16) & 0xff;
 		matrix->keycode = word & 0xffff;
 
 		/* Hard-code some sanity limits for now */
-		if (matrix->row >= KEYBOARD_ROWS ||
-		    matrix->col >= KEYBOARD_COLS) {
+		if (matrix->ksi >= KEYBOARD_KSI_PINS ||
+		    matrix->kso >= KEYBOARD_KSO_PINS) {
 			fprintf(stderr, "Matrix pos out of range (%d,%d)\n",
-				matrix->row, matrix->col);
+				matrix->ksi, matrix->kso);
 			return -1;
 		}
 	}
@@ -218,10 +218,10 @@ static int keyscan_add_to_scan(struct keyscan_info *keyscan, char **keysp,
 			i++, matrix++) {
 		if (matrix->keycode == keycode) {
 #ifdef DEBUG
-			printf("%d: %d,%d\n", matrix->keycode, matrix->row,
-			       matrix->col);
+			printf("%d: %d,%d\n", matrix->keycode, matrix->ksi,
+			       matrix->kso);
 #endif
-			scan[matrix->col] |= 1 << matrix->row;
+			scan[matrix->kso] |= 1 << matrix->ksi;
 			*keysp = keys;
 			return 0;
 		}

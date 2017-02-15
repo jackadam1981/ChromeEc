@@ -63,21 +63,21 @@ void keyboard_raw_task_start(void)
 }
 
 /*
- * Drive the specified column low.
+ * Drive the specified column (kso pins) low.
  */
-test_mockable void keyboard_raw_drive_column(int col)
+test_mockable void keyboard_raw_drive_kso_pins(int kso)
 {
 	int mask;
 
 	/* Tri-state all outputs */
-	if (col == KEYBOARD_COLUMN_NONE)
+	if (kso == KEYBOARD_KSO_NONE)
 		mask = 0xffff;
 	/* Assert all outputs */
-	else if (col == KEYBOARD_COLUMN_ALL)
+	else if (kso == KEYBOARD_KSO_ALL)
 		mask = 0;
 	/* Assert a single output */
 	else
-		mask = 0xffff ^ (1 << col);
+		mask = 0xffff ^ (1 << kso);
 
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 	/* KSO[2] is inverted. */
@@ -88,10 +88,10 @@ test_mockable void keyboard_raw_drive_column(int col)
 }
 
 /*
- * Read raw row state.
+ * Read raw row (ksi pins) state.
  * Bits are 1 if signal is present, 0 if not present.
  */
-test_mockable int keyboard_raw_read_rows(void)
+test_mockable int keyboard_raw_read_ksi_pins(void)
 {
 	/* Bits are active-low, so invert returned levels */
 	return IT83XX_KBS_KSI ^ 0xff;
