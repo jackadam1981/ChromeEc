@@ -207,6 +207,9 @@ static void pd_exchange_status(uint32_t ec_state)
 
 void pd_command_task(void)
 {
+	/* TODO MCHP DEBUG KBL bring up no USB PD */
+	return;
+
 	/* On startup exchange status with the PD */
 	pd_exchange_status(0);
 

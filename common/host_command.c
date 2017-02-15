@@ -18,8 +18,13 @@
 #include "util.h"
 
 /* Console output macros */
+#if 0 /* TODO MCHP DEBUG */
 #define CPUTS(outstr) cputs(CC_HOSTCMD, outstr)
 #define CPRINTS(format, args...) cprints(CC_HOSTCMD, format, ## args)
+#else
+#define CPUTS(outstr)
+#define CPRINTS(format, args...)
+#endif
 
 #define TASK_EVENT_CMD_PENDING TASK_EVENT_CUSTOM(1)
 
@@ -560,6 +565,7 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 {
 	static int hc_prev_cmd;
 	static uint64_t hc_prev_time;
+	int i; /* TODO MCHP DEBUG */
 
 	/*
 	 * In normal output mode, skip printing repeats of the same command
@@ -578,17 +584,25 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 		hc_prev_cmd = args->command;
 	}
 
-	if (hcdebug >= HCDEBUG_PARAMS && args->params_size)
+	/* TODO MCHP DEBUG */
+	if (hcdebug >= HCDEBUG_PARAMS && args->params_size) {
 		CPRINTS("HC 0x%02x.%d:%.*h", args->command,
 			args->version, args->params_size, args->params);
-	else
+		TRACE3(103, HOST, 0, "HC 0x%02x.%d: len=%d",args->command,args->version,args->params_size);
+		for (i = 0; i < args->params_size; i++) {
+			TRACE2(104, HOST, 0, "resp[%d]=0x%02x",i,((uint8_t *)args->params)[i]);
+		}
+	} else {
 		CPRINTS("HC 0x%02x", args->command);
+		TRACE1(105, HOST, 0, "HC 0x%02x",args->command);
+	}
 }
 
 enum ec_status host_command_process(struct host_cmd_handler_args *args)
 {
 	const struct host_command *cmd;
 	int rv;
+	int i; /* TODO MCHP DEBUG */
 
 	if (hcdebug)
 		host_command_debug_request(args);
@@ -620,12 +634,20 @@ enum ec_status host_command_process(struct host_cmd_handler_args *args)
 			rv = cmd->handler(args);
 	}
 
-	if (rv != EC_RES_SUCCESS)
+	/* TODO MCHP DEBUG */
+	if (rv != EC_RES_SUCCESS) {
 		CPRINTS("HC 0x%02x err %d", args->command, rv);
+		TRACE2(106, HOST, 0, "HC 0x%02x err %d",args->command, rv);
+	}
 
-	if (hcdebug >= HCDEBUG_PARAMS && args->response_size)
+	if (hcdebug >= HCDEBUG_PARAMS && args->response_size) {
 		CPRINTS("HC resp:%.*h", args->response_size,
 			args->response);
+		TRACE1(107, HOST, 0, "HC resp len=%d 0x%08x",args->response_size);
+		for (i = 0; i < args->response_size; i++) {
+			TRACE2(108, HOST, 0, "resp[%d]=0x%02x",i,((uint8_t *)args->response)[i]);
+		}
+	}
 
 	return rv;
 }
@@ -910,10 +932,12 @@ static int command_hcdebug(int argc, char **argv)
 		if (i == HCDEBUG_MODES)
 			return EC_ERROR_PARAM1;
 	}
-
+#if 0 /* TODO MCHP DEBUG */
 	ccprintf("Host command debug mode is %s\n",
 		 hcdebug_mode_names[hcdebug]);
-
+#else
+	TRACE1(109, HOST, 0, "Host command debug mode is %c",hcdebug_mode_names[hcdebug][0]);
+#endif
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,

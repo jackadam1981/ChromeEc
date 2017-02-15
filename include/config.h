@@ -2530,6 +2530,28 @@
 /* A different config for the same update. TODO(vbendeb): dedup these */
 #undef CONFIG_USB_UPDATE
 
+/* TODO MCHP DEBUG */
+#define TRACE0(nbr,cat,b,str)
+#define TRACE1(nbr,cat,b,str,p1)
+#define TRACE2(nbr,cat,b,str,p1,p2)
+#define TRACE3(nbr,cat,b,str,p1,p2,p3)
+#define TRACE4(nbr,cat,b,str,p1,p2,p3,p4)
+#define TRACE11(nbr,cat,b,str,p1)
+#define TRACE12(nbr,cat,b,str,p1,p2)
+#define TRACE13(nbr,cat,b,str,p1,p2,p3)
+#define TRACE14(nbr,cat,b,str,p1,p2,p3,p4)
+
+#define trace0(nbr,cat,b,str)
+#define trace1(nbr,cat,b,str,p1)
+#define trace2(nbr,cat,b,str,p1,p2)
+#define trace3(nbr,cat,b,str,p1,p2,p3)
+#define trace4(nbr,cat,b,str,p1,p2,p3,p4)
+#define trace11(nbr,cat,b,str,p1)
+#define trace12(nbr,cat,b,str,p1,p2)
+#define trace13(nbr,cat,b,str,p1,p2,p3)
+#define trace14(nbr,cat,b,str,p1,p2,p3,p4)
+/* TODO MCHP DEBUG END */
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a

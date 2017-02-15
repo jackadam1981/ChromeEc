@@ -17,7 +17,11 @@
 #include "timer.h"
 
 /* Console output macros */
+#if 0 /* TODO MCHP DEBUG KBL */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
+#else
+#define CPRINTS(format, args...)
+#endif
 
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
@@ -25,6 +29,7 @@ static int forcing_shutdown;  /* Forced shutdown in progress? */
 void chipset_force_shutdown(void)
 {
 	CPRINTS("%s()", __func__);
+	TRACE0(98, POWER, 0, "chipset_force_shutdown");
 
 	/*
 	 * Force off. Sending a reset command to the PMIC will power off
@@ -47,6 +52,7 @@ __attribute__((weak)) void chipset_set_pmic_slp_sus_l(int level)
 enum power_state chipset_force_g3(void)
 {
 	CPRINTS("Forcing fake G3.");
+	TRACE0(99, POWER, 0, "Forcing fake G3");
 
 	chipset_set_pmic_slp_sus_l(0);
 
@@ -82,6 +88,38 @@ void chipset_reset(int cold_reset)
 	}
 }
 
+/*
+ * TODO MCHP KBL hack
+ */
+#if 1
+static void handle_all_sus(enum power_state state)
+{
+	int allsys_in = gpio_get_level(GPIO_ALL_SYS_PWRGD);
+	int allsys_out = gpio_get_level(GPIO_SYS_RESET_L);
+
+	if (allsys_in == allsys_out) {
+		return;
+	}
+
+	CPRINTS("ALL_SYS_PWRGD=%d  SYS_RESET_L=%d",allsys_in,allsys_out);
+	TRACE2(100, POWER, 0, "ALL_SYS_PWRGD=%d  SYS_RESET_L=%d",allsys_in,allsys_out);
+
+	/*
+	 * Wait at least 10 ms between power signals going high
+	 */
+	if (allsys_in) {
+		msleep(100); /* TODO MCHP need 100 ms for Kabylake */
+	}
+	if (!allsys_out) {
+		CPRINTS("Set SYS_RESET_L = %d",allsys_in);
+		TRACE1(101, POWER, 0, "Set SYS_RESET_L = %d",allsys_in);
+		gpio_set_level(GPIO_SYS_RESET_L, allsys_in);
+		gpio_set_level(GPIO_EC_FAN1_PWM, 1); /* Force fan on for kabylake RVP */
+	}
+
+}
+#endif
+
 static void handle_slp_sus(enum power_state state)
 {
 	/* If we're down or going down don't do anythin with SLP_SUS_L. */
@@ -113,12 +151,19 @@ enum power_state power_handle_state(enum power_state state)
 	/* Process RSMRST_L state changes. */
 	common_intel_x86_handle_rsmrst(state);
 
+#if 1 /* TODO MCHP KBL hack for ALL_SYS_PWRGD */
+	handle_all_sus(state);
+#endif
+
 	if (state == POWER_S5 && forcing_shutdown) {
 		power_button_pch_release();
 		forcing_shutdown = 0;
 	}
 
 	new_state = common_intel_x86_power_handle_state(state);
+	if (new_state != state) {
+		TRACE2(102, POWER, 0, "Skylake power state change %d -> %d",state,new_state);
+	}
 
 	/* Process SLP_SUS_L state changes after a new state is decided. */
 	handle_slp_sus(new_state);

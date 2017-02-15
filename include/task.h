@@ -216,12 +216,20 @@ void task_enable_all_tasks(void);
 /**
  * Enable an interrupt.
  */
+#if 0 /* TODO MCHP */
 void task_enable_irq(int irq);
+#else
+void task_enable_irq(uint32_t irq);
+#endif
 
 /**
  * Disable an interrupt.
  */
+#if 0 /* TODO MCHP */
 void task_disable_irq(int irq);
+#else
+void task_disable_irq(uint32_t irq);
+#endif
 
 /**
  * Software-trigger an interrupt.
@@ -237,7 +245,11 @@ void task_trigger_irq(int irq);
  * reason for the interrupt, and then the interrupt is re-enabled from a
  * different context.
  */
+#if 0 /* TODO MCHP */
 void task_clear_pending_irq(int irq);
+#else
+void task_clear_pending_irq(uint32_t irq);
+#endif
 
 struct mutex {
 	uint32_t lock;
