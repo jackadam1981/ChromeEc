@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f03406aa_f983899a",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1116895
+      },
+      "writtenOn": "2017-02-15T05:13:56Z",
+      "side": 1,
+      "message": "I\u0027d suggest you continue to debug why DVT2 read ADC error, else there comes risk when it comes to board_init().",
+      "parentUuid": "41d8300c_80d7ddd0",
+      "revId": "a3bff76821655ab7e09e17ab9770713c827c2b29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fb93a7a_ddcd380c",
         "filename": "board/snappy/board.c",
         "patchSetId": 1
