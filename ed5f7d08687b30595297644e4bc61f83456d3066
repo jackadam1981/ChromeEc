@@ -22,6 +22,30 @@
       "revId": "ed5f7d08687b30595297644e4bc61f83456d3066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "586b9c08_b3e3564b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-15T04:46:18Z",
+      "side": 1,
+      "message": "Done. tl;dr: no apparent regression on suite:faft_ec.\n\nPorted this CL to oak firmware branch (ToT seems broken on elm), CL:442946 launched a tryjob: https://uberchromegw.corp.google.com/i/chromiumos.tryserver/builders/paladin/builds/2214\n\nelm-fw-8438.67.0 (latest from builder): Total PASS: 46/52 (88%)\nelm-fw-8438.67.0-b2214: Total PASS: 48/52 (92%)\n\nThe failed tests on FW branch are (each failure is counted twice): firmware_SoftwareSync/firmware_SoftwareSync.normal, firmware_ECCharging/firmware_ECCharging, firmware_SoftwareSync.dev/firmware_SoftwareSync.dev\n\nWith my patch, for some reason firmware_ECCharging/firmware_ECCharging passed, the 2 SoftwareSync tests fail with the same error.\n\nhttps://paste.googleplex.com/4726628236132352 if anyone is interested.",
+      "parentUuid": "30b6d4bf_a9b8c1fd",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "ed5f7d08687b30595297644e4bc61f83456d3066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
