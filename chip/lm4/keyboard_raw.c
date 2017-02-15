@@ -17,8 +17,8 @@ void keyboard_raw_init(void)
 	keyboard_raw_enable_interrupt(0);
 
 	/*
-	 * Set column outputs as open-drain; we either pull them low or let
-	 * them float high.
+	 * Set column outputs (kso pins) as open-drain; we either pull them
+	 * low or let them float high.
 	 */
 	LM4_GPIO_AFSEL(LM4_GPIO_P) = 0;  /* KSO[7:0] */
 	LM4_GPIO_AFSEL(LM4_GPIO_Q) &= ~0x1f;  /* KSO[12:8] */
@@ -37,7 +37,7 @@ void keyboard_raw_init(void)
 	LM4_GPIO_ODR(LM4_GPIO_P) &= ~(1 << 2);
 #endif
 
-	/* Set row inputs with pull-up */
+	/* Set row inputs(ksi pins) with pull-up */
 	LM4_GPIO_AFSEL(KB_SCAN_ROW_GPIO) &= 0xff;
 	LM4_GPIO_DEN(KB_SCAN_ROW_GPIO) |= 0xff;
 	LM4_GPIO_DIR(KB_SCAN_ROW_GPIO) = 0;
@@ -59,16 +59,16 @@ void keyboard_raw_task_start(void)
 	task_enable_irq(KB_SCAN_ROW_IRQ);
 }
 
-test_mockable void keyboard_raw_drive_column(int col)
+test_mockable void keyboard_raw_drive_pins(int kso)
 {
 	int mask;
 
-	if (col == KEYBOARD_COLUMN_NONE)
+	if (kso == KEYBOARD_KSO_COUNT_NONE)
 		mask = 0x1fff;			/* Tri-state all outputs */
-	else if (col == KEYBOARD_COLUMN_ALL)
+	else if (kso == KEYBOARD_KSO_COUNT_ALL)
 		mask = 0;			/* Assert all outputs */
 	else
-		mask = 0x1fff ^ (1 << col);	/* Assert a single output */
+		mask = 0x1fff ^ (1 << kso);	/* Assert a single output */
 
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 	/* Invert column 2 output */
@@ -79,7 +79,7 @@ test_mockable void keyboard_raw_drive_column(int col)
 	LM4_GPIO_DATA(LM4_GPIO_Q, 0x1f) = (mask >> 8) & 0x1f;
 }
 
-test_mockable int keyboard_raw_read_rows(void)
+test_mockable int keyboard_raw_read(void)
 {
 	/* Bits are active-low, so invert returned levels */
 	return LM4_GPIO_DATA(KB_SCAN_ROW_GPIO, 0xff) ^ 0xff;
@@ -95,8 +95,8 @@ void keyboard_raw_enable_interrupt(int enable)
 		 * outputs.
 		 *
 		 * We won't lose keyboard events because the scanning task will
-		 * explicitly check the raw row state before waiting for an
-		 * interrupt.  If a key is pressed, the task won't wait.
+		 * explicitly check the raw row (KSI pin) state before waiting
+		 * for an interrupt. If a key is pressed, the task won't wait.
 		 */
 		LM4_GPIO_ICR(KB_SCAN_ROW_GPIO) = 0xff;
 		LM4_GPIO_IM(KB_SCAN_ROW_GPIO) = 0xff;
@@ -106,7 +106,7 @@ void keyboard_raw_enable_interrupt(int enable)
 }
 
 /**
- * Interrupt handler for the entire GPIO bank of keyboard rows.
+ * Interrupt handler for the entire GPIO bank of keyboard rows(ksi pins).
  */
 void keyboard_raw_interrupt(void)
 {

@@ -22,12 +22,12 @@ test_mockable void keyboard_raw_task_start(void)
 	/* Nothing */
 }
 
-test_mockable void keyboard_raw_drive_column(int out)
+test_mockable void keyboard_raw_drive_pins(int out)
 {
 	/* Nothing */
 }
 
-test_mockable int keyboard_raw_read_rows(void)
+test_mockable int keyboard_raw_read(void)
 {
 	/* Nothing pressed */
 	return 0;

@@ -41,7 +41,7 @@ struct __attribute__((__packed__)) usb_hid_keyboard_report {
 /* The standard Chrome OS keyboard matrix table. See HUT 1.12v2 Table 12 and
  * https://www.w3.org/TR/DOM-Level-3-Events-code .
  */
-const uint8_t keycodes[KEYBOARD_ROWS][KEYBOARD_COLS] = {
+const uint8_t keycodes[KEYBOARD_KSI_COUNT][KEYBOARD_KSO_COUNT] = {
 	{ 0x00, 0xe3, 0x3a, 0x05, 0x43, 0x87, 0x11, 0x00, 0x2e,
 	  0x00, 0xe6, 0x00, 0x00 },
 	{ 0x00, 0x29, 0x3d, 0x0a, 0x40, 0x00, 0x0b, 0x00, 0x34,
@@ -203,14 +203,14 @@ void keyboard_clear_buffer(void)
 	write_keyboard_report();
 }
 
-void keyboard_state_changed(int row, int col, int is_pressed)
+void keyboard_state_changed(int ksi, int kso, int is_pressed)
 {
 	int i;
 	uint8_t mask;
-	uint8_t keycode = keycodes[row][col];
+	uint8_t keycode = keycodes[ksi][kso];
 
 	if (!keycode) {
-		CPRINTF("Unknown key at %d/%d\n", row, col);
+		CPRINTF("Unknown key at %d/%d\n", ksi, kso);
 		return;
 	}
 

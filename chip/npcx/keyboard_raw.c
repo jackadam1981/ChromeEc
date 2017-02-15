@@ -71,28 +71,28 @@ void keyboard_raw_task_start(void)
 }
 
 /**
- * Drive the specified column low.
+ * Drive the specified kso low.
  */
-test_mockable void keyboard_raw_drive_column(int col)
+test_mockable void keyboard_raw_drive_pins(int kso)
 {
 	/*
 	 * Nuvoton Keyboard Scan IP supports 18x8 Matrix
 	 * It also support automatic scan functionality
 	 */
-	uint32_t mask, col_out;
+	uint32_t mask, kso_shift;
 
 	/* Add support for CONFIG_KEYBOARD_KSO_BASE shifting */
-	col_out = col + CONFIG_KEYBOARD_KSO_BASE;
+	kso_shift = kso + CONFIG_KEYBOARD_KSO_BASE;
 
 	/* Drive all lines to high */
-	if (col == KEYBOARD_COLUMN_NONE) {
-		mask = KB_COL_MASK;
+	if (kso == KEYBOARD_KSO_COUNT_NONE) {
+		mask = NPCX_KB_KSO_MASK;
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 		gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
 	}
 	/* Set KBSOUT to zero to detect key-press */
-	else if (col == KEYBOARD_COLUMN_ALL) {
+	else if (kso == KEYBOARD_KSO_COUNT_ALL) {
 		mask = 0;
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
 		gpio_set_level(GPIO_KBD_KSO2, 1);
@@ -101,12 +101,12 @@ test_mockable void keyboard_raw_drive_column(int col)
 	/* Drive one line for detection */
 	else {
 #ifdef CONFIG_KEYBOARD_COL2_INVERTED
-		if (col == 2)
+		if (kso == 2)
 			gpio_set_level(GPIO_KBD_KSO2, 1);
 		else
 			gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
-		mask = ((~(1 << col_out)) & KB_COL_MASK);
+		mask = ((~(1 << kso_shift)) & NPCX_KB_KSO_MASK);
 	}
 
 	/* Set KBSOUT */
@@ -115,13 +115,13 @@ test_mockable void keyboard_raw_drive_column(int col)
 }
 
 /**
- * Read raw row state.
+ * Read raw ksi  state.
  * Bits are 1 if signal is present, 0 if not present.
  */
-test_mockable int keyboard_raw_read_rows(void)
+test_mockable int keyboard_raw_read(void)
 {
 	/* Bits are active-low, so invert returned levels */
-	return (~NPCX_KBSIN) & KB_ROW_MASK;
+	return (~NPCX_KBSIN) & NPCX_KB_KSI_MASK;
 }
 
 /**
@@ -136,7 +136,7 @@ void keyboard_raw_enable_interrupt(int enable)
 }
 
 /*
- * Interrupt handler for the entire GPIO bank of keyboard rows.
+ * Interrupt handler for the entire GPIO bank of keyboard ksi pins.
  */
 void keyboard_raw_interrupt(void)
 {

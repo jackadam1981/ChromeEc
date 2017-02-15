@@ -85,7 +85,7 @@ static int get_data_size(enum ec_mkbp_event e)
 {
 	switch (e) {
 	case EC_MKBP_EVENT_KEY_MATRIX:
-		return KEYBOARD_COLS;
+		return KEYBOARD_KSO_COUNT;
 
 	case EC_MKBP_EVENT_HOST_EVENT:
 	case EC_MKBP_EVENT_BUTTON:
@@ -327,7 +327,7 @@ DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_SWITCH, switch_get_next_event);
 
 void keyboard_send_battery_key(void)
 {
-	uint8_t state[KEYBOARD_COLS];
+	uint8_t state[KEYBOARD_KSO_COUNT];
 
 	/* Copy debounced state and add battery pseudo-key */
 	memcpy(state, keyboard_scan_get_state(), sizeof(state));
@@ -380,8 +380,8 @@ static int mkbp_get_info(struct host_cmd_handler_args *args)
 		struct ec_response_mkbp_info *r = args->response;
 
 		/* Version 0 just returns info about the keyboard. */
-		r->rows = KEYBOARD_ROWS;
-		r->cols = KEYBOARD_COLS;
+		r->rows = KEYBOARD_KSI_COUNT;
+		r->cols = KEYBOARD_KSO_COUNT;
 		/* This used to be "switches" which was previously 0. */
 		r->reserved = 0;
 

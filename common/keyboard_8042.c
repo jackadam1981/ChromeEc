@@ -303,7 +303,7 @@ static void scancode_bytes(uint16_t make_code, int8_t pressed,
 	}
 }
 
-static enum ec_error_list matrix_callback(int8_t row, int8_t col,
+static enum ec_error_list matrix_callback(int8_t ksi, int8_t kso,
 					  int8_t pressed,
 					  enum scancode_set_list code_set,
 					  uint8_t *scan_code, int32_t *len)
@@ -313,21 +313,21 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 	ASSERT(scan_code);
 	ASSERT(len);
 
-	if (row > KEYBOARD_ROWS || col > KEYBOARD_COLS)
+	if (ksi > KEYBOARD_KSI_COUNT || kso > KEYBOARD_KSO_COUNT)
 		return EC_ERROR_INVAL;
 
 	if (pressed)
-		keyboard_special(scancode_set1[row][col]);
+		keyboard_special(scancode_set1[ksi][kso]);
 
 	code_set = acting_code_set(code_set);
 
 	switch (code_set) {
 	case SCANCODE_SET_1:
-		make_code = scancode_set1[row][col];
+		make_code = scancode_set1[ksi][kso];
 		break;
 
 	case SCANCODE_SET_2:
-		make_code = scancode_set2[row][col];
+		make_code = scancode_set2[ksi][kso];
 		break;
 
 	default:
@@ -336,7 +336,7 @@ static enum ec_error_list matrix_callback(int8_t row, int8_t col,
 	}
 
 	if (!make_code) {
-		CPRINTS("KB scancode %d:%d missing", row, col);
+		CPRINTS("KB scancode %d:%d missing", ksi, kso);
 		return EC_ERROR_UNIMPLEMENTED;
 	}
 
@@ -387,15 +387,15 @@ static void clear_typematic_key(void)
 	typematic_len = 0;
 }
 
-void keyboard_state_changed(int row, int col, int is_pressed)
+void keyboard_state_changed(int ksi, int kso, int is_pressed)
 {
 	uint8_t scan_code[MAX_SCAN_CODE_LEN];
 	int32_t len = 0;
 	enum ec_error_list ret;
 
-	CPRINTS5("KB (%d,%d)=%d", row, col, is_pressed);
+	CPRINTS5("KB (%d,%d)=%d", ksi, kso, is_pressed);
 
-	ret = matrix_callback(row, col, is_pressed, scancode_set, scan_code,
+	ret = matrix_callback(ksi, kso, is_pressed, scancode_set, scan_code,
 			      &len);
 	if (ret == EC_SUCCESS) {
 		ASSERT(len > 0);

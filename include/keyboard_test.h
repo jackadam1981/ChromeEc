@@ -19,17 +19,17 @@ struct keyscan_item {
 	timestamp_t abs_time;	/* absolute timestamp to present this item */
 	uint32_t time_us;	/* time for this item relative to test start */
 	uint8_t done;		/* 1 if we managed to present this */
-	uint8_t scan[KEYBOARD_COLS];
+	uint8_t scan[KEYBOARD_KSO_COUNT];
 };
 
 /**
  * Get the next key scan from the test sequence, if any
  *
- * @param column	Column to read (-1 to OR all columns together
+ * @param kso	Column(KSO pin) to read (-1 to OR all columns(kso pins) together
  * @param scan		Raw scan data read from GPIOs
  * @return test scan, or just 'scan' if no test is active
  */
-uint8_t keyscan_seq_get_scan(int column, uint8_t scan);
+uint8_t keyscan_seq_get_scan(int kso, uint8_t scan);
 
 /**
  * Calculate the delay until the next key scan event needs to be presented

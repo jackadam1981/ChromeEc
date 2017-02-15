@@ -66,22 +66,22 @@ static const struct keyscan_item *keyscan_seq_get(void)
 	return NULL;
 }
 
-uint8_t keyscan_seq_get_scan(int column, uint8_t scan)
+uint8_t keyscan_seq_get_scan(int kso, uint8_t scan)
 {
 	const struct keyscan_item *item;
 
 	/* Use simulated keyscan sequence instead if active */
 	item = keyscan_seq_get();
 	if (item) {
-		/* OR all columns together */
-		if (column == -1) {
+		/* OR all columns (KSO pins) together */
+		if (kso == -1) {
 			int c;
 
 			scan = 0;
-			for (c = 0; c < KEYBOARD_COLS; c++)
+			for (c = 0; c < KEYBOARD_KSO_COUNT; c++)
 				scan |= item->scan[c];
 		} else {
-			scan = item->scan[column];
+			scan = item->scan[kso];
 		}
 	}
 

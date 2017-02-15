@@ -29,34 +29,34 @@ void keyboard_raw_task_start(void)
 	task_enable_irq(MEC1322_IRQ_KSC_INT);
 }
 
-test_mockable void keyboard_raw_drive_column(int out)
+test_mockable void keyboard_raw_drive_pins(int kso)
 {
-	if (out == KEYBOARD_COLUMN_ALL) {
+	if (kso == KEYBOARD_KSO_COUNT_ALL) {
 		MEC1322_KS_KSO_SEL = 1 << 5; /* KSEN=0, KSALL=1 */
-#ifdef CONFIG_KEYBOARD_COL2_INVERTED
+#ifdef CONFIG_KEYBOARD_KSO2_INVERTED
 		gpio_set_level(GPIO_KBD_KSO2, 1);
 #endif
-	} else if (out == KEYBOARD_COLUMN_NONE) {
+	} else if (kso == KEYBOARD_KSO_COUNT_NONE) {
 		MEC1322_KS_KSO_SEL = 1 << 6; /* KSEN=1 */
-#ifdef CONFIG_KEYBOARD_COL2_INVERTED
+#ifdef CONFIG_KEYBOARD_KSO2_INVERTED
 		gpio_set_level(GPIO_KBD_KSO2, 0);
 #endif
 	} else {
-#ifdef CONFIG_KEYBOARD_COL2_INVERTED
-		if (out == 2) {
+#ifdef CONFIG_KEYBOARD_KSO2_INVERTED
+		if (kso == 2) {
 			MEC1322_KS_KSO_SEL = 1 << 6; /* KSEN=1 */
 			gpio_set_level(GPIO_KBD_KSO2, 1);
 		} else {
-			MEC1322_KS_KSO_SEL = out + CONFIG_KEYBOARD_KSO_BASE;
+			MEC1322_KS_KSO_SEL = kso + CONFIG_KEYBOARD_KSO_BASE;
 			gpio_set_level(GPIO_KBD_KSO2, 0);
 		}
 #else
-		MEC1322_KS_KSO_SEL = out + CONFIG_KEYBOARD_KSO_BASE;
+		MEC1322_KS_KSO_SEL = kso + CONFIG_KEYBOARD_KSO_BASE;
 #endif
 	}
 }
 
-test_mockable int keyboard_raw_read_rows(void)
+test_mockable int keyboard_raw_read(void)
 {
 	/* Invert it so 0=not pressed, 1=pressed */
 	return (MEC1322_KS_KSI_INPUT & 0xff) ^ 0xff;

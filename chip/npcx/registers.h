@@ -291,10 +291,12 @@
 #define NPCX_KBSCFGINDX                  0
 
 /* KBSCAN definitions */
-#define KB_ROW_NUM  8  /* Rows numbers of keyboard matrix */
-#define KB_COL_NUM  18 /* Columns numbers of keyboard matrix */
-#define KB_ROW_MASK ((1<<KB_ROW_NUM) - 1) /* Mask of rows of keyboard matrix */
-#define KB_COL_MASK ((1<<KB_COL_NUM) - 1) /* Mask of cols of keyboard matrix */
+#define NPCX_KB_KSI_NUM  8  /* Rows numbers of keyboard matrix */
+#define NPCX_KB_KSO_NUM  18 /* Columns numbers of keyboard matrix */
+/* Mask of rows of keyboard matrix */
+#define NPCX_KB_KSI_MASK ((1<<NPCX_KB_KSI_NUM) - 1)
+/* Mask of cols of keyboard matrix */
+#define NPCX_KB_KSO_MASK ((1<<NPCX_KB_KSO_NUM) - 1)
 
 /******************************************************************************/
 /* GLUE registers */

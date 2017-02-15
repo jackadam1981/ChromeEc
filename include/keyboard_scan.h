@@ -30,7 +30,7 @@ struct keyboard_scan_config {
 	/* Revert to interrupt mode after no keyboard activity for this long */
 	uint32_t poll_timeout_us;
 	/* Mask with 1 bits only for keys that actually exist */
-	uint8_t actual_key_mask[KEYBOARD_COLS];
+	uint8_t actual_key_mask[KEYBOARD_KSO_COUNT];
 };
 
 /**

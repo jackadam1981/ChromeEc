@@ -5,7 +5,7 @@
  * Raw access to keyboard GPIOs.
  *
  * The keyboard matrix is read by driving output signals on the column lines
- * and reading the row lines.
+ * (KSO pins) and reading the row lines(KSI pins).
  */
 
 #ifndef __CROS_EC_KEYBOARD_RAW_H
@@ -14,11 +14,11 @@
 #include "common.h"
 #include "gpio.h"
 
-/* Column values for keyboard_raw_drive_column() */
-enum keyboard_column_index {
-	KEYBOARD_COLUMN_ALL = -2,  /* Drive all columns */
-	KEYBOARD_COLUMN_NONE = -1, /* Drive no columns (tri-state all) */
-	/* 0 ~ KEYBOARD_COLS-1 for the corresponding column */
+/* Column values for keyboard_raw_drive_pins() */
+enum keyboard_kso_index {
+	KEYBOARD_KSO_COUNT_ALL = -2,  /* Drive all columns(KSO pins) */
+	KEYBOARD_KSO_COUNT_NONE = -1, /* Drive no columns (tri-state all) */
+	/* 0 ~ KEYBOARD_KSO_PINS-1 for the corresponding column(KSO pin) */
 };
 
 /**
@@ -36,26 +36,27 @@ void keyboard_raw_init(void);
 void keyboard_raw_task_start(void);
 
 /**
- * Drive the specified column low.
+ * Assert the specified kso pin low.
  *
- * Other columns are tristated.  See enum keyboard_column_index for special
- * values for <col>.
+ * Other columns(kso pins) are tristated. See enum keyboard_kso_index
+ * for special values for <kso>.
  */
-void keyboard_raw_drive_column(int col);
+void keyboard_raw_drive_pins(int kso);
 
 /**
- * Read raw row state.
+ * Read raw row state(ksi pin state).
  *
  * Bits are 1 if signal is present, 0 if not present.
  */
-int keyboard_raw_read_rows(void);
+int keyboard_raw_read(void);
 
 /**
  * Enable or disable keyboard interrupts.
  *
  * Enabling interrupts will clear any pending interrupt bits.  To avoid missing
  * any interrupts that occur between the end of scanning and then, you should
- * call keyboard_raw_read_rows() after this.  If it returns non-zero, disable
+ * call keyboard_raw_read_ksi_pins() after this.
+ * If it returns non-zero, disable
  * interrupts and go back to polling mode instead of waiting for an interrupt.
  */
 void keyboard_raw_enable_interrupt(int enable);
