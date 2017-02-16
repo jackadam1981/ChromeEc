@@ -249,7 +249,7 @@ const struct battery_info batt_info_panasoic = {
 	.discharging_max_c = 75,
 };
 
-static const struct fast_charge_profile fast_charge_smp_c22n1626_info[] = {
+static const struct fast_charge_profile fast_charge_c22n1626_info[] = {
 	/* < 1C */
 	[TEMP_RANGE_0] = {
 		.temp_c = TEMPC_TENTHS_OF_DEG(0),
@@ -301,54 +301,15 @@ static const struct fast_charge_profile fast_charge_smp_c22n1626_info[] = {
 	},
 };
 
-static const struct fast_charge_params fast_chg_params_smp_c22n1626 = {
-	.total_temp_ranges = ARRAY_SIZE(fast_charge_smp_c22n1626_info),
+static const struct fast_charge_params fast_chg_params_c22n1626 = {
+	.total_temp_ranges = ARRAY_SIZE(fast_charge_c22n1626_info),
 	.default_temp_range_profile = TEMP_RANGE_2,
 	.voltage_mV = {
 		[VOLTAGE_RANGE_0] = 8200,
 		[VOLTAGE_RANGE_1] = 8500,
 		[VOLTAGE_RANGE_2] = CHARGER_PROF_VOLTAGE_MV_LAST_RANGE,
 	},
-	.chg_profile_info = &fast_charge_smp_c22n1626_info[0],
-};
-
-static const struct fast_charge_profile fast_charge_cpt_c22n1626_info[] = {
-	/* < 0C */
-	[TEMP_RANGE_0] = {
-		.temp_c = TEMPC_TENTHS_OF_DEG(-1),
-		.current_mA = {
-			[VOLTAGE_RANGE_0] = 0,
-			[VOLTAGE_RANGE_1] = 0,
-		},
-	},
-
-	/* >=0C && <=60C */
-	[TEMP_RANGE_1] = {
-		.temp_c = TEMPC_TENTHS_OF_DEG(60),
-		.current_mA = {
-			[VOLTAGE_RANGE_0] = 5200,
-			[VOLTAGE_RANGE_1] = 5200,
-		},
-	},
-
-	/* >60C */
-	[TEMP_RANGE_2] = {
-		.temp_c = TEMPC_TENTHS_OF_DEG(CHARGER_PROF_TEMP_C_LAST_RANGE),
-		.current_mA = {
-			[VOLTAGE_RANGE_0] = 0,
-			[VOLTAGE_RANGE_1] = 0,
-		},
-	},
-};
-
-static const struct fast_charge_params fast_chg_params_cpt_c22n1626 = {
-	.total_temp_ranges = ARRAY_SIZE(fast_charge_cpt_c22n1626_info),
-	.default_temp_range_profile = TEMP_RANGE_1,
-	.voltage_mV = {
-		[VOLTAGE_RANGE_0] = 8000,
-		[VOLTAGE_RANGE_1] = CHARGER_PROF_VOLTAGE_MV_LAST_RANGE,
-	},
-	.chg_profile_info = &fast_charge_cpt_c22n1626_info[0],
+	.chg_profile_info = &fast_charge_c22n1626_info[0],
 };
 
 const struct battery_info batt_info_c22n1626 = {
@@ -472,7 +433,7 @@ static const struct board_batt_params info[] = {
 	[BATTERY_SMP_C22N1626] = {
 		.manuf_name = "AS1FNZD3KD",
 		.ship_mode_inf = &ship_mode_info_c22n1626,
-		.fast_chg_params = &fast_chg_params_smp_c22n1626,
+		.fast_chg_params = &fast_chg_params_c22n1626,
 		.batt_info = &batt_info_c22n1626,
 	},
 
@@ -480,7 +441,7 @@ static const struct board_batt_params info[] = {
 	[BATTERY_CPT_C22N1626] = {
 		.manuf_name = "AS1FOAD3KD",
 		.ship_mode_inf = &ship_mode_info_c22n1626,
-		.fast_chg_params = &fast_chg_params_cpt_c22n1626,
+		.fast_chg_params = &fast_chg_params_c22n1626,
 		.batt_info = &batt_info_c22n1626,
 	},
 };
