@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "d025fa13_be1193c4",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-02-16T10:08:33Z",
+      "side": 1,
+      "message": "This is dangerous. It\u0027s the handler for the TPM update path, and calling it through USB will cause the updater to be run on both hooks and tpm tasks. It must not be whitelisted.",
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2890ed48_5ca4c25f",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-02-16T10:08:33Z",
+      "side": 1,
+      "message": "Can you validate that count - sizeof(struct update_frame_header) is equal to zero (I think). Lets not accept arbitrary amounts of garbage data. None of the whitelisted commands have any extra data.",
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e18b78b_dc88f50e",
         "filename": "chip/g/usb_upgrade.c",
         "patchSetId": 2
