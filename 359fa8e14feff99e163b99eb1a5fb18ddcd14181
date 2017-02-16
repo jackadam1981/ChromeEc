@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fc9baab9_dd6bae1c",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-16T16:57:53Z",
+      "side": 1,
+      "message": "I think for clean separation what\u0027s possible over usb and what - over /dev/tpm0 there should be two wrappers around extension_route_command((), one for USB path and one for TPM path.\n\nand then each wrapper can deplty its own policy at what\u0027s allowed when, and would return error when a prohibited extension is attempted.\n\nThe rest of processing in this file would not change, so there would be no issues with forgetting to free a buffer, not returning a message to the host, etc.",
+      "range": {
+        "startLine": 119,
+        "startChar": 11,
+        "endLine": 119,
+        "endChar": 31
+      },
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d025fa13_be1193c4",
         "filename": "chip/g/usb_upgrade.c",
         "patchSetId": 2
@@ -13,6 +36,24 @@
       "writtenOn": "2017-02-16T10:08:33Z",
       "side": 1,
       "message": "This is dangerous. It\u0027s the handler for the TPM update path, and calling it through USB will cause the updater to be run on both hooks and tpm tasks. It must not be whitelisted.",
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7449466_76205f37",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-16T16:57:53Z",
+      "side": 1,
+      "message": "we do firmware updates over USB only on some platforms, this must be whitelisted.",
+      "parentUuid": "d025fa13_be1193c4",
       "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
