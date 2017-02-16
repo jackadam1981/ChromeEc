@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "845b9c36_d175d1f2",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-16T23:55:52Z",
+      "side": 1,
+      "message": "I think we should do:\nint bbram_data_read(enum bbram_data_index index, uint32_t *value) and return errors properly (instead of returning zeros).",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 71
+      },
+      "revId": "bdce5ddaef58736fefd05df5d7565d7d1f5ef861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
