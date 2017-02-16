@@ -78,6 +78,70 @@
     },
     {
       "key": {
+        "uuid": "3023df90_36df6e0c",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-16T22:06:38Z",
+      "side": 1,
+      "message": "ah, yes, this is correct, I meant that we do upload the code over usb, but not using this extension command, you are right.\n\nno need to process this over USB extension over usb.",
+      "parentUuid": "72a9e35a_a1bb42ab",
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e236b751_346c65ca",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-16T22:06:38Z",
+      "side": 1,
+      "message": "post reset should be available at all times",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 26
+      },
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc192e3_e2682845",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-16T22:06:38Z",
+      "side": 1,
+      "message": "this could be restricted to CR50_DEV images or unlocked ccd.",
+      "range": {
+        "startLine": 126,
+        "startChar": 6,
+        "endLine": 126,
+        "endChar": 31
+      },
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2890ed48_5ca4c25f",
         "filename": "chip/g/usb_upgrade.c",
         "patchSetId": 2
