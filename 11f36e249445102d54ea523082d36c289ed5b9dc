@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "07ea2fc4_28ea70e9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-16T20:22:57Z",
+      "side": 1,
+      "message": "I thought about doing that, but yes, all chips don\u0027t have this include file, and (with the one exception of config_chip.h), we aren\u0027t going this for our other *_chip.h includes (eg. adc.h / adc_chip.h, gpio.h / gpio_chip.h, etc).",
+      "parentUuid": "5e1a7721_d2a363e6",
+      "revId": "11f36e249445102d54ea523082d36c289ed5b9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddd3e0df_19b467cd",
         "filename": "chip/g/system_chip.h",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2017-02-16T19:30:39Z",
       "side": 1,
       "message": "this should match the path to the file, i.e.\n\n__CHIP_G_SYSTEM_CHIP_H_ _\n\nor some such.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 31
+      },
+      "revId": "11f36e249445102d54ea523082d36c289ed5b9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14ccd6f8_f6e3c472",
+        "filename": "chip/g/system_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-16T20:22:57Z",
+      "side": 1,
+      "message": "For these _chip.h headers, it is assumed that they will only live in the chip folder, so we\u0027re using pathless guards. See init_chip.h and system_chip.h in chip/g/ for example, and other board/*/system_chip.h files, for example.",
+      "parentUuid": "ddd3e0df_19b467cd",
       "range": {
         "startLine": 8,
         "startChar": 8,
