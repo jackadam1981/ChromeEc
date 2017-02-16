@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "7312f430_7e2dd29f",
+        "filename": "board/eve/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-16T21:14:27Z",
+      "side": 1,
+      "message": "Once the merge of ALS into motion task merge, you need to add:\n+/* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */\n+const struct motion_sensor_t *motion_als_sensors[] \u003d {\n+       \u0026motion_sensors[LID_LIGHT],\n+};\n+BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) \u003d\u003d ALS_COUNT);\n+",
+      "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01fa4e49_4b799b69",
         "filename": "board/eve/board.h",
         "patchSetId": 2
@@ -50,6 +67,23 @@
       "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "720b8476_62fae928",
+        "filename": "board/eve/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-16T21:14:27Z",
+      "side": 1,
+      "message": "Once the merge of ALS into motion task merge, you need to add: (c/424323/)\n+/*\n+ * For backward compatibility, to report ALS via ACPI,\n+ * Define the number of ALS sensors: motion_sensor copy the data to the ALS\n+ * memmap region.\n+ */\n+#define CONFIG_ALS\n+#define ALS_COUNT 1",
+      "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
