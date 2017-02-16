@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "72a9e35a_a1bb42ab",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-02-16T22:01:14Z",
+      "side": 1,
+      "message": "Vadim, this extension is not called from USB, ever, and should never be. It\u0027s the call from the TPM/SPI path to the fw_upgrade_command_handler, where the USB call is on line 410 of this file. See: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/cr50/tpm2/upgrade.c\n\nI agree that this command encapsulation is exceedingly hard to reason about.  One more reason it should not be exposed publicly on secure systems.",
+      "parentUuid": "b7449466_76205f37",
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2890ed48_5ca4c25f",
         "filename": "chip/g/usb_upgrade.c",
         "patchSetId": 2
@@ -88,6 +106,23 @@
       "writtenOn": "2017-02-16T03:27:22Z",
       "side": 1,
       "message": "I guess removing it from the queue isn\u0027t sufficient. Or maybe it\u0027s an issue with the 1B response.",
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa586ac_4a342ded",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-02-16T22:01:14Z",
+      "side": 1,
+      "message": "This is the USB dispatch to the fw_upgrade command handler.",
       "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
