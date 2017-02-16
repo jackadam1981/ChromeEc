@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d9093e8_06976a5e",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-16T03:40:08Z",
+      "side": 1,
+      "message": "no, this command is used over TPM.",
+      "parentUuid": "1b641d40_536b5c33",
+      "revId": "e4c40f4f77aa95dcc1e81ef05cc54c4ed6965596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2067e6f5_41c4aded",
         "filename": "chip/g/usb_upgrade.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-16T03:17:33Z",
       "side": 1,
       "message": "whoops, I should probably release the shared memory buffer here.",
+      "revId": "e4c40f4f77aa95dcc1e81ef05cc54c4ed6965596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2dec9f_7ad32385",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-16T03:40:08Z",
+      "side": 1,
+      "message": "you might be better off sending to the host a single byte response with value of say -1.",
+      "parentUuid": "2067e6f5_41c4aded",
       "revId": "e4c40f4f77aa95dcc1e81ef05cc54c4ed6965596",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
