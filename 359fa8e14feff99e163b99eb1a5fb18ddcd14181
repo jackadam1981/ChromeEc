@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e18b78b_dc88f50e",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-16T03:27:22Z",
+      "side": 1,
+      "message": "I guess removing it from the queue isn\u0027t sufficient. Or maybe it\u0027s an issue with the 1B response.",
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
