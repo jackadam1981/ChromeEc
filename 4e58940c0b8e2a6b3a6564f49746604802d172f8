@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b570a0cd_965f0fbf",
+        "filename": "board/eve_fp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-16T05:32:50Z",
+      "side": 1,
+      "message": "Actually the CC_FP is added in the next CL (with the actual FP support)\nand the fps_event dummy routine is removed (as the FP driver has a proper one)",
+      "parentUuid": "87be4cd4_6f348b10",
+      "range": {
+        "startLine": 15,
+        "startChar": 41,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "4e58940c0b8e2a6b3a6564f49746604802d172f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74433baf_c9003687",
         "filename": "board/eve_fp/board.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-15T23:02:44Z",
       "side": 1,
       "message": "nit: I would put this at the top (and probably mark it with TODO: crosbug.com/p/xxxx)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "4e58940c0b8e2a6b3a6564f49746604802d172f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73a555f3_5df93bc9",
+        "filename": "board/eve_fp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-16T05:32:50Z",
+      "side": 1,
+      "message": "the TODO 3 lines above is valid for all 3.\nThe SYSTEM_UNLOCKED is only really useful if the WP doesn\u0027t work/exist",
+      "parentUuid": "74433baf_c9003687",
       "range": {
         "startLine": 26,
         "startChar": 0,
