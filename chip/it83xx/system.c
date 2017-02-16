@@ -345,3 +345,26 @@ DECLARE_CONSOLE_COMMAND(rwreg, command_rw_ec_reg,
 			"addr [value (byte)]",
 			"R/W EC/PNPCFG registers."
 			" addr 0xec21xxyy for R/W PNPCFG, xx is LDN yy is IDX");
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+static struct mutex pd_bram_mutex;
+
+void system_set_pd_active(int port)
+{
+	mutex_lock(&pd_bram_mutex);
+	BRAM_PD |= (1 << port);
+	mutex_unlock(&pd_bram_mutex);
+}
+
+void system_clear_pd_active(int port)
+{
+	mutex_lock(&pd_bram_mutex);
+	BRAM_PD &= ~(1 << port);
+	mutex_unlock(&pd_bram_mutex);
+}
+
+int system_get_saved_pd_active(int port)
+{
+	return !!(BRAM_PD & (1 << port));
+}
+#endif

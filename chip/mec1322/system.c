@@ -23,7 +23,8 @@
 /* Indices for hibernate data registers (RAM backed by VBAT) */
 enum hibdata_index {
 	HIBDATA_INDEX_SCRATCHPAD = 0,    /* General-purpose scratchpad */
-	HIBDATA_INDEX_SAVED_RESET_FLAGS  /* Saved reset flags */
+	HIBDATA_INDEX_SAVED_RESET_FLAGS, /* Saved reset flags */
+	HIBDATA_INDEX_PD,                /* USB-PD saved port state */
 };
 
 static void check_reset_cause(void)
@@ -342,3 +343,20 @@ void system_set_image_copy(enum system_image_copy_t copy)
 	MEC1322_VBAT_RAM(MEC1322_IMAGETYPE_IDX) = (copy == SYSTEM_IMAGE_RW) ?
 				SYSTEM_IMAGE_RW : SYSTEM_IMAGE_RO;
 }
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+void system_set_pd_active(int port)
+{
+	atomic_or(&MEC1322_VBAT_RAM(HIBDATA_INDEX_PD), 1 << port);
+}
+
+void system_clear_pd_active(int port)
+{
+	atomic_clear(&MEC1322_VBAT_RAM(HIBDATA_INDEX_PD), 1 << port);
+}
+
+int system_get_saved_pd_active(int port)
+{
+	return !!(MEC1322_VBAT_RAM(HIBDATA_INDEX_PD) & (1 << port));
+}
+#endif

@@ -512,4 +512,26 @@ int system_rollback_detected(void);
  */
 int system_battery_cutoff_support_required(void);
 
+/**
+ * Indicate that a PD port is active in battery-backed RAM.
+ *
+ * @param port PD port number
+ */
+void system_set_pd_active(int port);
+
+/**
+ * Indicate that a PD port is inactive in battery-backed RAM.
+ *
+ * @param port PD port number
+ */
+void system_clear_pd_active(int port);
+
+/**
+ * Check the saved active state of a PD port in battery-backed RAM.
+ *
+ * @param port PD port number
+ * @return     1 if active, 0 if inactive
+ */
+int system_get_saved_pd_active(int port);
+
 #endif  /* __CROS_EC_SYSTEM_H */

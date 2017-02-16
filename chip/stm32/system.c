@@ -34,6 +34,7 @@ enum bkpdata_index {
 	BKPDATA_INDEX_SAVED_PANIC_INFO,      /* Saved panic data */
 	BKPDATA_INDEX_SAVED_PANIC_EXCEPTION, /* Saved panic exception code */
 #endif
+	BKPDATA_INDEX_PD,		     /* USB-PD saved port state */
 };
 
 /**
@@ -383,3 +384,28 @@ int system_is_reboot_warm(void)
 			== STM32_RCC_AHB1ENR_GPIOMASK);
 #endif
 }
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+static struct mutex pd_bkpdata_mutex;
+
+void system_set_pd_active(int port)
+{
+	mutex_lock(&pd_bkpdata_mutex);
+	bkpdata_write(BKPDATA_INDEX_PD,
+		      bkpdata_read(BKPDATA_INDEX_PD) | (1 << port));
+	mutex_unlock(&pd_bkpdata_mutex);
+}
+
+void system_clear_pd_active(int port)
+{
+	mutex_lock(&pd_bkpdata_mutex);
+	bkpdata_write(BKPDATA_INDEX_PD,
+		      bkpdata_read(BKPDATA_INDEX_PD) & ~(1 << port));
+	mutex_unlock(&pd_bkpdata_mutex);
+}
+
+int system_get_saved_pd_active(int port)
+{
+	return !!(bkpdata_read(BKPDATA_INDEX_PD) & (1 << port));
+}
+#endif

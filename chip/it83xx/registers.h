@@ -1078,7 +1078,10 @@ enum bram_indices {
 	BRAM_IDX_RESET_FLAGS2 = 2,
 	BRAM_IDX_RESET_FLAGS3 = 3,
 
-	/* index 4 ~ 7 are reserved */
+	/* PD state data uses 1 byte */
+	BRAM_IDX_PD =           4,
+
+	/* index 5 ~ 7 are reserved */
 
 	BRAM_IDX_SCRATCHPAD   = 8,
 	BRAM_IDX_SCRATCHPAD1  = 9,
@@ -1094,6 +1097,8 @@ enum bram_indices {
 #define BRAM_RESET_FLAGS1       IT83XX_BRAM_BANK0(BRAM_IDX_RESET_FLAGS1)
 #define BRAM_RESET_FLAGS2       IT83XX_BRAM_BANK0(BRAM_IDX_RESET_FLAGS2)
 #define BRAM_RESET_FLAGS3       IT83XX_BRAM_BANK0(BRAM_IDX_RESET_FLAGS3)
+
+#define BRAM_PD                 IT83XX_BRAM_BANK0(BRAM_IDX_PD)
 
 #define BRAM_SCRATCHPAD         IT83XX_BRAM_BANK0(BRAM_IDX_SCRATCHPAD)
 #define BRAM_SCRATCHPAD1        IT83XX_BRAM_BANK0(BRAM_IDX_SCRATCHPAD1)

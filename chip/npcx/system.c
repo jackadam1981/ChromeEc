@@ -6,21 +6,21 @@
 /* System module for Chrome EC : NPCX hardware specific implementation */
 
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
-#include "host_command.h"
-#include "registers.h"
-#include "system.h"
+#include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
+#include "hwtimer_chip.h"
+#include "registers.h"
+#include "rom_chip.h"
+#include "system.h"
+#include "system_chip.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
-#include "gpio.h"
-#include "hwtimer_chip.h"
-#include "system_chip.h"
-#include "clock_chip.h"
-#include "rom_chip.h"
 
 /* Flags for BBRM_DATA_INDEX_WAKE */
 #define HIBERNATE_WAKE_MTC        (1 << 0)  /* MTC alarm */
@@ -1061,5 +1061,30 @@ enum system_image_copy_t system_get_shrspi_image_copy(void)
 		return SYSTEM_IMAGE_RO;
 	else/* RW region FW */
 		return SYSTEM_IMAGE_RW;
+}
+#endif
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+static struct mutex pd_bbram_mutex;
+
+void system_set_pd_active(int port)
+{
+	mutex_lock(&pd_bbram_mutex);
+	bbram_data_write(BBRM_DATA_INDEX_PD,
+			 bbram_data_read(BBRM_DATA_INDEX_PD) | (1 << port));
+	mutex_unlock(&pd_bbram_mutex);
+}
+
+void system_clear_pd_active(int port)
+{
+	mutex_lock(&pd_bbram_mutex);
+	bbram_data_write(BBRM_DATA_INDEX_PD,
+			 bbram_data_read(BBRM_DATA_INDEX_PD) & ~(1 << port));
+	mutex_unlock(&pd_bbram_mutex);
+}
+
+int system_get_saved_pd_active(int port)
+{
+	return !!(bbram_data_read(BBRM_DATA_INDEX_PD) & (1 << port));
 }
 #endif

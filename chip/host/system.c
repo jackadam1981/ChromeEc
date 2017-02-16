@@ -269,3 +269,16 @@ void system_pre_init(void)
 	*(uintptr_t *)(__host_flash + CONFIG_RW_MEM_OFF + 4) =
 		(uintptr_t)__rw_jump_resetvec;
 }
+
+void system_set_pd_active(int port)
+{
+}
+
+void system_clear_pd_active(int port)
+{
+}
+
+int system_get_saved_pd_active(int port)
+{
+	return 0;
+}

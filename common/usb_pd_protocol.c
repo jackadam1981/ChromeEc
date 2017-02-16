@@ -1429,11 +1429,12 @@ static void pd_partner_port_reset(int port)
 	uint64_t timeout;
 
 	/*
-	 * If we already ran RO, then PD comms were disabled, and we are
-	 * already in a known state. Likewise, if the board is powering up,
-	 * we're also in a known state.
+	 * Check our battery-backed previous port state. If PD comms were
+	 * active, and we didn't just lose power, make sure we
+	 * don't boot into RO with a pre-existing power contract.
 	 */
-	if (system_get_image_copy() != SYSTEM_IMAGE_RO ||
+	if (!system_get_saved_pd_active(port) ||
+	   system_get_image_copy() != SYSTEM_IMAGE_RO ||
 	   system_get_reset_flags() &
 	   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))
 		return;
@@ -1444,6 +1445,7 @@ static void pd_partner_port_reset(int port)
 
 	while (get_time().val < timeout && pd_is_vbus_present(port))
 		msleep(10);
+	system_clear_pd_active(port);
 }
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
@@ -1479,6 +1481,8 @@ void pd_comm_enable(int enable)
 			set_state_timeout(i,
 					  get_time().val + PD_T_SINK_WAIT_CAP,
 					  PD_STATE_HARD_RESET_SEND);
+		if (enable)
+			system_set_pd_active(i);
 #endif
 	}
 }
@@ -1641,6 +1645,9 @@ void pd_task(void)
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	pd_partner_port_reset(port);
+
+	if (pd_comm_enabled)
+		system_set_pd_active(port);
 #endif
 
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
