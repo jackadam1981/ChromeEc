@@ -178,6 +178,10 @@
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* SPI master port (SPIP) form BMI160 */
 
+/* Scarlet is always in tablet mode. */
+#undef CONFIG_TABLET_MODE_SWITCH
+
+#define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
 /* Define the MKBP events which are allowed to wakeup AP in S3. */
 #define CONFIG_MKBP_WAKEUP_MASK \
