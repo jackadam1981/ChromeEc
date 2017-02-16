@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e1a7721_d2a363e6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-16T19:30:39Z",
+      "side": 1,
+      "message": "ideally system.h would include system_chip.h. Or do not all chips have it?",
+      "revId": "11f36e249445102d54ea523082d36c289ed5b9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddd3e0df_19b467cd",
+        "filename": "chip/g/system_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-16T19:30:39Z",
+      "side": 1,
+      "message": "this should match the path to the file, i.e.\n\n__CHIP_G_SYSTEM_CHIP_H_ _\n\nor some such.",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 31
+      },
+      "revId": "11f36e249445102d54ea523082d36c289ed5b9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
