@@ -284,6 +284,10 @@ enum system_bbram_idx {
 	 * ...
 	 */
 	SYSTEM_BBRAM_IDX_VBNVBLOCK15 = 15,
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	SYSTEM_BBRAM_IDX_PD0,
+	SYSTEM_BBRAM_IDX_PD1,
+#endif
 };
 
 /**

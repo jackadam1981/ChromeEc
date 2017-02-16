@@ -1420,6 +1420,27 @@ static int pd_is_power_swapping(int port)
 		pd[port].task_state == PD_STATE_SRC_SWAP_STANDBY;
 }
 
+static int pd_get_saved_active(int port)
+{
+	uint8_t val;
+
+	if (system_get_bbram_byte(port ? SYSTEM_BBRAM_IDX_PD0 :
+					 SYSTEM_BBRAM_IDX_PD1,
+					 &val)) {
+		CPRINTS("PD NVRAM FAIL");
+		return 0;
+	}
+	return !!val;
+}
+
+static void pd_set_saved_active(int port, int val)
+{
+	if (system_set_bbram_byte(port ? SYSTEM_BBRAM_IDX_PD0 :
+					 SYSTEM_BBRAM_IDX_PD1,
+					 val))
+		CPRINTS("PD NVRAM FAIL");
+}
+
 /*
  * Provide Rp to ensure the partner port is in a known state (eg. not
  * PD negotiated, not sourcing 20V).
@@ -1429,11 +1450,12 @@ static void pd_partner_port_reset(int port)
 	uint64_t timeout;
 
 	/*
-	 * If we already ran RO, then PD comms were disabled, and we are
-	 * already in a known state. Likewise, if the board is powering up,
-	 * we're also in a known state.
+	 * Check our battery-backed previous port state. If PD comms were
+	 * active, and we didn't just lose power, make sure we
+	 * don't boot into RO with a pre-existing power contract.
 	 */
-	if (system_get_image_copy() != SYSTEM_IMAGE_RO ||
+	if (!pd_get_saved_active(port) ||
+	   system_get_image_copy() != SYSTEM_IMAGE_RO ||
 	   system_get_reset_flags() &
 	   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))
 		return;
@@ -1444,6 +1466,7 @@ static void pd_partner_port_reset(int port)
 
 	while (get_time().val < timeout && pd_is_vbus_present(port))
 		msleep(10);
+	pd_set_saved_active(port, 0);
 }
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
@@ -1479,6 +1502,8 @@ void pd_comm_enable(int enable)
 			set_state_timeout(i,
 					  get_time().val + PD_T_SINK_WAIT_CAP,
 					  PD_STATE_HARD_RESET_SEND);
+		if (enable)
+			pd_set_saved_active(i, 1);
 #endif
 	}
 }
@@ -1641,6 +1666,9 @@ void pd_task(void)
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	pd_partner_port_reset(port);
+
+	if (pd_comm_enabled)
+		pd_set_saved_active(port, 1);
 #endif
 
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
