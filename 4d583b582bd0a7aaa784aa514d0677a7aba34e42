@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "5d70bba5_430e05b8",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-16T20:40:14Z",
+      "side": 1,
+      "message": "rename: lid_a_cover_facing_ref",
+      "revId": "4d583b582bd0a7aaa784aa514d0677a7aba34e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c4d56a_86483a83",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-16T20:40:14Z",
+      "side": 1,
+      "message": "rename : lid_b_cover_facing_ref",
+      "revId": "4d583b582bd0a7aaa784aa514d0677a7aba34e42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d084bbd0_85c5269d",
         "filename": "board/snappy/board.c",
         "patchSetId": 8
