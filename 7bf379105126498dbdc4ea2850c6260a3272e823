@@ -84,6 +84,23 @@
       "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79c63705_3c1ac01e",
+        "filename": "board/eve/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-02-16T21:23:13Z",
+      "side": 1,
+      "message": "Add lid_light has well:\nCONFIG_ACCEL_FORCE_MODE_MASK ((1 \u003c\u003c LID_ACCEL) | | (1 \u003c\u003c LID_LIGHT))",
+      "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
