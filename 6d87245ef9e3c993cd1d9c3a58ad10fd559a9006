@@ -68,6 +68,30 @@
       "revId": "6d87245ef9e3c993cd1d9c3a58ad10fd559a9006",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d7f4fe7_2a24cbaf",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-16T18:08:35Z",
+      "side": 1,
+      "message": "Also, seems a little clunky to add system functions which specifically know about pd.  Would it just be better to have:\n\nsystem_set_bbram(idx, value)\nsystem_get_bbram(idx)\n\nThose could also be used to refactor out the cr50-specific rolling reboot counter stuff, which added a bunch of functions to system.h.  I\u0027m a little concerned that system.h is becoming a catch-all for things that are only used on different subsets of the EC.",
+      "parentUuid": "f3323d0f_68ce5674",
+      "range": {
+        "startLine": 1068,
+        "startChar": 0,
+        "endLine": 1089,
+        "endChar": 1
+      },
+      "revId": "6d87245ef9e3c993cd1d9c3a58ad10fd559a9006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
