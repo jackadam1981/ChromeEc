@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "include/compile_time_macros.h"
 #include "system.h"
+#include "system_chip.h"
 #include "registers.h"
 #include "uart.h"
 
