@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46687c7a_a3fee459",
+        "filename": "chip/it83xx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-16T17:51:42Z",
+      "side": 1,
+      "message": "sadly at the end of the day,  it would be faster/lighter here to just do interrupt_disable()/interrupt_enable()",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 1
+      },
+      "revId": "6d87245ef9e3c993cd1d9c3a58ad10fd559a9006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d83b34ca_5379a430",
+        "filename": "chip/mec1322/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-16T17:51:42Z",
+      "side": 1,
+      "message": "is this exclusive access actually implemented for this RAM area ?\n(that\u0027s up to the microcontroller vendor to decide which area on the bus support this, main SRAM does, others who knows...)",
+      "range": {
+        "startLine": 350,
+        "startChar": 1,
+        "endLine": 350,
+        "endChar": 59
+      },
+      "revId": "6d87245ef9e3c993cd1d9c3a58ad10fd559a9006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3323d0f_68ce5674",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1089,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-16T17:51:42Z",
+      "side": 1,
+      "message": "a remark on the implementation: the big fat mutex is relative heavy handed approach.\nIf you",
+      "range": {
+        "startLine": 1068,
+        "startChar": 0,
+        "endLine": 1089,
+        "endChar": 1
+      },
+      "revId": "6d87245ef9e3c993cd1d9c3a58ad10fd559a9006",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
