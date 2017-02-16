@@ -34,6 +34,10 @@ enum bkpdata_index {
 	BKPDATA_INDEX_SAVED_PANIC_INFO,      /* Saved panic data */
 	BKPDATA_INDEX_SAVED_PANIC_EXCEPTION, /* Saved panic exception code */
 #endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	BKPDATA_INDEX_PD0,		     /* USB-PD saved port0 state */
+	BKPDATA_INDEX_PD1,		     /* USB-PD saved port0 state */
+#endif
 };
 
 /**
@@ -336,36 +340,53 @@ const char *system_get_chip_revision(void)
 	return "";
 }
 
-int system_get_vbnvcontext(uint8_t *block)
+static int bkpdata_index_lookup(enum system_bbram_idx idx, int *msb)
 {
-	enum bkpdata_index i;
-	uint16_t value;
+	*msb = 0;
 
-	for (i = BKPDATA_INDEX_VBNV_CONTEXT0;
-			i <= BKPDATA_INDEX_VBNV_CONTEXT7; i++) {
-		value = bkpdata_read(i);
-		*block++ = (uint8_t)(value & 0xff);
-		*block++ = (uint8_t)(value >> 8);
+	if (idx >= SYSTEM_BBRAM_IDX_VBNVBLOCK0 &&
+	    idx <= SYSTEM_BBRAM_IDX_VBNVBLOCK15) {
+		*msb = (idx - SYSTEM_BBRAM_IDX_VBNVBLOCK0) % 2;
+		return BKPDATA_INDEX_VBNV_CONTEXT0 +
+		       (idx - SYSTEM_BBRAM_IDX_VBNVBLOCK0) / 2;
 	}
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	if (idx == SYSTEM_BBRAM_IDX_PD0)
+		return BKPDATA_INDEX_PD0;
+	if (idx == SYSTEM_BBRAM_IDX_PD1)
+		return BKPDATA_INDEX_PD1;
+#endif
+	return -1;
+}
 
+int system_get_bbram(enum system_bbram_idx idx, uint8_t *value)
+{
+	int msb = 0;
+
+	int bkpdata_index = bkpdata_index_lookup(idx, &msb);
+	if (bkpdata_index < 0)
+		return EC_ERROR_INVAL;
+
+	*value = (bkpdata_read(bkpdata_index) >> (8 * msb)) & 0xff;
 	return EC_SUCCESS;
 }
 
-int system_set_vbnvcontext(const uint8_t *block)
+int system_set_bbram(enum system_bbram_idx idx, uint8_t value)
 {
-	enum bkpdata_index i;
-	uint16_t value;
-	int err;
+	uint16_t read;
+	int msb = 0;
 
-	for (i = BKPDATA_INDEX_VBNV_CONTEXT0;
-			i <= BKPDATA_INDEX_VBNV_CONTEXT7; i++) {
-		value = *block++;
-		value |= ((uint16_t)*block++) << 8;
-		err = bkpdata_write(i, value);
-		if (err)
-			return err;
-	}
+	int bkpdata_index = bkpdata_index_lookup(idx, &msb);
+	if (bkpdata_index < 0)
+		return EC_ERROR_INVAL;
 
+	read = bkpdata_read(bkpdata_index);
+	if (msb)
+		read = (read & 0xff) | (value << 8);
+	else
+		read = (read & 0xff00) | value;
+
+	bkpdata_write(bkpdata_index, read);
 	return EC_SUCCESS;
 }
 

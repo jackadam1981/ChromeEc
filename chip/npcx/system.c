@@ -6,21 +6,21 @@
 /* System module for Chrome EC : NPCX hardware specific implementation */
 
 #include "clock.h"
+#include "clock_chip.h"
 #include "common.h"
 #include "console.h"
 #include "cpu.h"
-#include "host_command.h"
-#include "registers.h"
-#include "system.h"
+#include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
+#include "hwtimer_chip.h"
+#include "registers.h"
+#include "rom_chip.h"
+#include "system.h"
+#include "system_chip.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
-#include "gpio.h"
-#include "hwtimer_chip.h"
-#include "system_chip.h"
-#include "clock_chip.h"
-#include "rom_chip.h"
 
 /* Flags for BBRM_DATA_INDEX_WAKE */
 #define HIBERNATE_WAKE_MTC        (1 << 0)  /* MTC alarm */
@@ -88,11 +88,13 @@ void system_watchdog_reset(void)
  *
  * @return The value of the register or 0 if invalid index.
  */
-static uint32_t bbram_data_read(enum bbram_data_index index)
+static uint32_t bbram_data_read(enum bbram_data_index index, int bytes)
 {
 	uint32_t value = 0;
+
+	ASSERT(bytes == 4 || bytes == 1);
 	/* Check index */
-	if (index < 0 || index >= NPCX_BBRAM_SIZE)
+	if (index < 0 || index + bytes >= NPCX_BBRAM_SIZE)
 		return 0;
 
 	/* BBRAM is valid */
@@ -100,12 +102,14 @@ static uint32_t bbram_data_read(enum bbram_data_index index)
 		return 0;
 
 	/* Read BBRAM */
-	value += NPCX_BBRAM(index + 3);
-	value = value << 8;
-	value += NPCX_BBRAM(index + 2);
-	value = value << 8;
-	value += NPCX_BBRAM(index + 1);
-	value = value << 8;
+	if (bytes == 4) {
+		value += NPCX_BBRAM(index + 3);
+		value = value << 8;
+		value += NPCX_BBRAM(index + 2);
+		value = value << 8;
+		value += NPCX_BBRAM(index + 1);
+		value = value << 8;
+	}
 	value += NPCX_BBRAM(index);
 
 	return value;
@@ -116,8 +120,10 @@ static uint32_t bbram_data_read(enum bbram_data_index index)
  *
  * @return nonzero if error.
  */
-static int bbram_data_write(enum bbram_data_index index, uint32_t value)
+static int bbram_data_write(enum bbram_data_index index,
+			    uint32_t value, int bytes)
 {
+	ASSERT(bytes == 4 || bytes == 1);
 	/* Check index */
 	if (index < 0 || index >= NPCX_BBRAM_SIZE)
 		return EC_ERROR_INVAL;
@@ -128,12 +134,48 @@ static int bbram_data_write(enum bbram_data_index index, uint32_t value)
 
 	/* Write BBRAM */
 	NPCX_BBRAM(index)     = value & 0xFF;
-	NPCX_BBRAM(index + 1) = (value >> 8)  & 0xFF;
-	NPCX_BBRAM(index + 2) = (value >> 16) & 0xFF;
-	NPCX_BBRAM(index + 3) = (value >> 24) & 0xFF;
+	if (bytes == 4) {
+		NPCX_BBRAM(index + 1) = (value >> 8)  & 0xFF;
+		NPCX_BBRAM(index + 2) = (value >> 16) & 0xFF;
+		NPCX_BBRAM(index + 3) = (value >> 24) & 0xFF;
+	}
 
 	/* Wait for write-complete */
 	return EC_SUCCESS;
+}
+
+static int bbram_idx_lookup(enum system_bbram_idx idx)
+{
+	if (idx >= SYSTEM_BBRAM_IDX_VBNVBLOCK0 &&
+	    idx <= SYSTEM_BBRAM_IDX_VBNVBLOCK15)
+		return BBRM_DATA_INDEX_VBNVCNTXT +
+		       idx - SYSTEM_BBRAM_IDX_VBNVBLOCK0;
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	if (idx == SYSTEM_BBRAM_IDX_PD0)
+		return BBRM_DATA_INDEX_PD0;
+	if (idx == SYSTEM_BBRAM_IDX_PD1)
+		return BBRM_DATA_INDEX_PD1;
+#endif
+	return -1;
+}
+
+int system_get_bbram(enum system_bbram_idx idx, uint8_t *value)
+{
+	int bbram_idx = bbram_idx_lookup(idx);
+	if (bbram_idx < 0)
+		return EC_ERROR_INVAL;
+
+	*value = bbram_data_read(bbram_idx, 1);
+	return EC_SUCCESS;
+}
+
+int system_set_bbram(enum system_bbram_idx idx, uint8_t value)
+{
+	int bbram_idx = bbram_idx_lookup(idx);
+	if (bbram_idx < 0)
+		return EC_ERROR_INVAL;
+
+	return bbram_data_write(bbram_idx, value, 1);
 }
 
 /* MTC functions */
@@ -158,19 +200,19 @@ void system_set_rtc(uint32_t seconds)
 
 void chip_save_reset_flags(int flags)
 {
-	bbram_data_write(BBRM_DATA_INDEX_SAVED_RESET_FLAGS, flags);
+	bbram_data_write(BBRM_DATA_INDEX_SAVED_RESET_FLAGS, flags, 4);
 }
 
 /* Check reset cause */
 void system_check_reset_cause(void)
 {
-	uint32_t hib_wake_flags = bbram_data_read(BBRM_DATA_INDEX_WAKE);
-	uint32_t flags = bbram_data_read(BBRM_DATA_INDEX_SAVED_RESET_FLAGS);
+	uint32_t hib_wake_flags = bbram_data_read(BBRM_DATA_INDEX_WAKE, 4);
+	uint32_t flags = bbram_data_read(BBRM_DATA_INDEX_SAVED_RESET_FLAGS, 4);
 
 	/* Clear saved reset flags in bbram */
 	chip_save_reset_flags(0);
 	/* Clear saved hibernate wake flag in bbram , too */
-	bbram_data_write(BBRM_DATA_INDEX_WAKE, 0);
+	bbram_data_write(BBRM_DATA_INDEX_WAKE, 0, 4);
 
 	/* Use scratch bit to check power on reset or VCC1_RST reset */
 	if (!IS_BIT_SET(NPCX_RSTCTL, NPCX_RSTCTL_VCC1_RST_SCRATCH)) {
@@ -679,41 +721,6 @@ const char *system_get_chip_revision(void)
 BUILD_ASSERT(BBRM_DATA_INDEX_VBNVCNTXT + EC_VBNV_BLOCK_SIZE <= NPCX_BBRAM_SIZE);
 
 /**
- * Get/Set VbNvContext in non-volatile storage.  The block should be 16 bytes
- * long, which is the current size of VbNvContext block.
- *
- * @param block		Pointer to a buffer holding VbNvContext.
- * @return 0 on success, !0 on error.
- */
-int system_get_vbnvcontext(uint8_t *block)
-{
-	int i;
-
-	if (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR)) {
-		memset(block, 0, EC_VBNV_BLOCK_SIZE);
-		return EC_SUCCESS;
-	}
-
-	for (i = 0; i < EC_VBNV_BLOCK_SIZE; ++i)
-		block[i] = NPCX_BBRAM(BBRM_DATA_INDEX_VBNVCNTXT + i);
-
-	return EC_SUCCESS;
-}
-
-int system_set_vbnvcontext(const uint8_t *block)
-{
-	int i;
-
-	if (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR))
-		return EC_ERROR_INVAL;
-
-	for (i = 0; i < EC_VBNV_BLOCK_SIZE; i++)
-		NPCX_BBRAM(BBRM_DATA_INDEX_VBNVCNTXT + i) = block[i];
-
-	return EC_SUCCESS;
-}
-
-/**
  * Set a scratchpad register to the specified value.
  *
  * The scratchpad register must maintain its contents across a
@@ -724,12 +731,12 @@ int system_set_vbnvcontext(const uint8_t *block)
  */
 int system_set_scratchpad(uint32_t value)
 {
-	return bbram_data_write(BBRM_DATA_INDEX_SCRATCHPAD, value);
+	return bbram_data_write(BBRM_DATA_INDEX_SCRATCHPAD, value, 4);
 }
 
 uint32_t system_get_scratchpad(void)
 {
-	return bbram_data_read(BBRM_DATA_INDEX_SCRATCHPAD);
+	return bbram_data_read(BBRM_DATA_INDEX_SCRATCHPAD, 4);
 }
 
 int system_is_reboot_warm(void)
