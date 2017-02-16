@@ -106,6 +106,34 @@ static int valid_transfer_start(struct consumer const *consumer, size_t count,
 			return 0;
 	return 1;
 }
+
+/**
+ * Check the whitelist for approved vendor commands.
+ *
+ * The only vendor commands we want are those relating to FW_UPGRADE and
+ * resetting the device (after the update).
+ *
+ * @param subcommand    The vendor command code to check.
+ * @return 1 if command is allowed, 0 if it's not.
+ */
+static int is_vendor_cmd_allowed(uint16_t subcommand)
+{
+	int is_allowed = 0;
+
+	switch (subcommand) {
+	case EXTENSION_FW_UPGRADE: /* Always need to be able to update. */
+	case EXTENSION_POST_RESET: /* Always need to be able to reset. */
+	case VENDOR_CC_IMMEDIATE_RESET:
+		is_allowed = 1;
+		break;
+
+	default:
+		break;
+	}
+
+	return is_allowed;
+}
+
 static int try_vendor_command(struct consumer const *consumer, size_t count)
 {
 	struct update_frame_header ufh;
@@ -145,13 +173,24 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 		uint16_t *subcommand;
 		size_t response_size;
 
+		/* The PDU looks good, so now remove it from the queue. */
+		queue_advance_head(consumer->queue, count);
+
+		/*
+		 * Before we process it, let's check our whitelist to see if
+		 * this vendor command is one that we want to process.
+		 */
+		subcommand = (uint16_t *)(cmd_buffer + 1);
+		if (!is_vendor_cmd_allowed(be16toh(*subcommand))) {
+			CPRINTS("%s: ignoring non-upgrade vendor command (%d)",
+				__func__, be16toh(*subcommand));
+			shared_mem_release(cmd_buffer);
+			return 0;
+		}
+
 		/* looks good, let's process it. */
 		rv = 1;
 
-		/* Now remove if from the queue. */
-		queue_advance_head(consumer->queue, count);
-
-		subcommand = (uint16_t *)(cmd_buffer + 1);
 		extension_route_command(be16toh(*subcommand),
 					subcommand + 1,
 					count -
