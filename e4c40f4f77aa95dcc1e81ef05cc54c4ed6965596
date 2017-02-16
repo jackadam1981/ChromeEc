@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b641d40_536b5c33",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-16T03:17:33Z",
+      "side": 1,
+      "message": "One command that I wasn\u0027t sure about is \"VENDOR_CC_INVALIDATE_INACTIVE_RW\". Does that get used over USB? I couldn\u0027t find any uses, but maybe I was looking in the wrong place.",
+      "revId": "e4c40f4f77aa95dcc1e81ef05cc54c4ed6965596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2067e6f5_41c4aded",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-16T03:17:33Z",
+      "side": 1,
+      "message": "whoops, I should probably release the shared memory buffer here.",
+      "revId": "e4c40f4f77aa95dcc1e81ef05cc54c4ed6965596",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
