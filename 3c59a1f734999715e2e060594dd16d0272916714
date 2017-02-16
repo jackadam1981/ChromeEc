@@ -16,6 +16,24 @@
       "revId": "3c59a1f734999715e2e060594dd16d0272916714",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0816311_24406ccb",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-16T09:54:30Z",
+      "side": 1,
+      "message": "Well if this is just for the enum values.\nboard_set_tcpc_power_mode(port, mode \u003d\u003d ANX74XX_NORMAL_MODE);\nVery likely generate better code and might be more readable.",
+      "parentUuid": "5020781c_e6bf66fb",
+      "revId": "3c59a1f734999715e2e060594dd16d0272916714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
