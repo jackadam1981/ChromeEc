@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f43fa14_81942049",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-16T02:01:24Z",
+      "side": 1,
+      "message": "Could you remove this while you\u0027re on this file?",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c158cb7_e66aaa9f",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-16T02:01:24Z",
+      "side": 1,
+      "message": "Should we check rv before we execute this?",
+      "range": {
+        "startLine": 186,
+        "startChar": 1,
+        "endLine": 186,
+        "endChar": 56
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c149f55_1c532621",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-16T02:01:24Z",
+      "side": 1,
+      "message": "Single line please.",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 190,
+        "endChar": 8
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3268b059_8050736f",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-16T02:01:24Z",
+      "side": 1,
+      "message": "While you\u0027re here, could you remove these?",
+      "range": {
+        "startLine": 224,
+        "startChar": 8,
+        "endLine": 224,
+        "endChar": 12
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9abe6391_49decef1",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-16T02:01:24Z",
+      "side": 1,
+      "message": "While you\u0027re here, could you move this in the prototype: (ie. anx74xx_tcpm_mux_set(int port,...)?",
+      "range": {
+        "startLine": 226,
+        "startChar": 5,
+        "endLine": 226,
+        "endChar": 9
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1537e0d2_74ca289f",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-16T02:01:24Z",
+      "side": 1,
+      "message": "We execute this even if tcpc_write above fails?",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 33
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
