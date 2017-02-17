@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3e553b5_912640d7",
+        "filename": "chip/stm32/flash-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-17T10:54:59Z",
+      "side": 1,
+      "message": "Missing ifdef",
+      "revId": "611a3dbf677921769ceaef8d1ea6bcdffe58c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcccb482_24bfa9c1",
+        "filename": "common/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-17T10:54:59Z",
+      "side": 1,
+      "message": "Missing handling of ROLLBACK",
+      "revId": "611a3dbf677921769ceaef8d1ea6bcdffe58c49f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
