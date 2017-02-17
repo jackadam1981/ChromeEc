@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf4b081f_953fec73",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1423,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-17T01:35:29Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these functions use port?",
+      "range": {
+        "startLine": 1423,
+        "startChar": 31,
+        "endLine": 1423,
+        "endChar": 39
+      },
+      "revId": "f8e9bb2f5c6b78548f9a26f10aa8b0f118760029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87383e12_142c2279",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1427,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-17T01:35:29Z",
+      "side": 1,
+      "message": "+ port?",
+      "revId": "f8e9bb2f5c6b78548f9a26f10aa8b0f118760029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
