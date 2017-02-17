@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c5b80a4_96120a1e",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-17T16:11:12Z",
+      "side": 1,
+      "message": "there is a patch in the cq which moves this chip/g stuff into own file:\n\nhttps://chromium-review.googlesource.com/c/444264/",
+      "revId": "b330034123818622faaeadb83dd614756cece5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
