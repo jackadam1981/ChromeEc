@@ -16,6 +16,24 @@
       "revId": "01738ab9ca175476900498c9b9b3a0cfa252cc50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a245e750_436af7a1",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-17T11:12:15Z",
+      "side": 1,
+      "message": "Actually, we need to be a little smarter, due to the fact RO_NOW can also come from pstate.\n\ndone",
+      "parentUuid": "ff286d20_dc059d19",
+      "revId": "01738ab9ca175476900498c9b9b3a0cfa252cc50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
