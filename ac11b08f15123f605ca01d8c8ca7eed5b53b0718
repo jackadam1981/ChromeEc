@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9a1e031_774493ab",
+        "filename": "chip/lm4/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T21:03:06Z",
+      "side": 1,
+      "message": "Wrapping.",
+      "range": {
+        "startLine": 257,
+        "startChar": 10,
+        "endLine": 258,
+        "endChar": 24
+      },
+      "revId": "ac11b08f15123f605ca01d8c8ca7eed5b53b0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe84a698_2cb40ed7",
+        "filename": "chip/lm4/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T21:03:06Z",
+      "side": 1,
+      "message": "Wrapping here.",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "ac11b08f15123f605ca01d8c8ca7eed5b53b0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2304ef5_10142f19",
+        "filename": "chip/lm4/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T21:03:06Z",
+      "side": 1,
+      "message": "Wrapping.",
+      "range": {
+        "startLine": 97,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 26
+      },
+      "revId": "ac11b08f15123f605ca01d8c8ca7eed5b53b0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28b8a2a3_c1460f1b",
+        "filename": "chip/nrf51/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T21:03:06Z",
+      "side": 1,
+      "message": "Wrapping.",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "ac11b08f15123f605ca01d8c8ca7eed5b53b0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a7c9b8d_7f4a19a2",
+        "filename": "chip/nrf51/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T21:03:06Z",
+      "side": 1,
+      "message": "This var looks undefined, should be kso_mask.",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "ac11b08f15123f605ca01d8c8ca7eed5b53b0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cbb5725b_e825e7d7",
+        "filename": "chip/stm32/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T21:03:06Z",
+      "side": 1,
+      "message": "Wrapping.",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "ac11b08f15123f605ca01d8c8ca7eed5b53b0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1da33879_edb8e9b9",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T21:03:06Z",
+      "side": 1,
+      "message": "Wrapped to soon here, use close to 80 cols.",
+      "range": {
+        "startLine": 391,
+        "startChar": 5,
+        "endLine": 392,
+        "endChar": 39
+      },
+      "revId": "ac11b08f15123f605ca01d8c8ca7eed5b53b0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5cc3b83_d6ed3ee4",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T21:03:06Z",
+      "side": 1,
+      "message": "Wrapping here.",
+      "range": {
+        "startLine": 539,
+        "startChar": 3,
+        "endLine": 541,
+        "endChar": 24
+      },
+      "revId": "ac11b08f15123f605ca01d8c8ca7eed5b53b0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80c4d406_f5539f6a",
+        "filename": "include/keyboard_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T21:03:06Z",
+      "side": 1,
+      "message": "Just use a single comment here.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "ac11b08f15123f605ca01d8c8ca7eed5b53b0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "817bb470_6d204c78",
+        "filename": "include/keyboard_raw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T21:03:06Z",
+      "side": 1,
+      "message": "Spacing here is strange, try to use close to 80 columns.",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "ac11b08f15123f605ca01d8c8ca7eed5b53b0718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
