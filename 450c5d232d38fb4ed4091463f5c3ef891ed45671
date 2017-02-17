@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a89a2a92_c2084f25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T19:04:31Z",
+      "side": 1,
+      "message": "Change this to something like \"cleanup: Use KSI/KSO verbiage consistently\".",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "450c5d232d38fb4ed4091463f5c3ef891ed45671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c32b18d_d6fcca6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T19:04:31Z",
+      "side": 1,
+      "message": "Add a few sentences below about how row / column and KSI / KSO were used, and now you\u0027re replacing everything with KSI / KSO.",
+      "revId": "450c5d232d38fb4ed4091463f5c3ef891ed45671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a62c950f_e7645d30",
+        "filename": "chip/host/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T19:04:31Z",
+      "side": 1,
+      "message": "Extra newline here.",
+      "revId": "450c5d232d38fb4ed4091463f5c3ef891ed45671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95e02e97_71958de4",
+        "filename": "fail.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-17T19:04:31Z",
+      "side": 1,
+      "message": "No need to check this file in.",
+      "revId": "450c5d232d38fb4ed4091463f5c3ef891ed45671",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
