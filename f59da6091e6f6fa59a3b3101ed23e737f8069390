@@ -52,6 +52,24 @@
       "revId": "f59da6091e6f6fa59a3b3101ed23e737f8069390",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3d31c1d_613e8a7f",
+        "filename": "board/eve/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-17T16:46:27Z",
+      "side": 1,
+      "message": "This line is connected to the KCJX9 lid gyro sensor",
+      "parentUuid": "0c3134bf_0c244a99",
+      "revId": "f59da6091e6f6fa59a3b3101ed23e737f8069390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

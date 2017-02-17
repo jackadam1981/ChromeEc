@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a53beb66_757f4d5c",
+        "filename": "board/eve/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-17T16:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7312f430_7e2dd29f",
+      "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01fa4e49_4b799b69",
         "filename": "board/eve/board.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-15T22:27:41Z",
       "side": 1,
       "message": "Remove 0x40",
+      "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adb4b548_dfd928fc",
+        "filename": "board/eve/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-17T16:46:27Z",
+      "side": 1,
+      "message": "I thought it should be set to 0x40 due to this line in als_si114x.h #define SI114X_NUM_LEDS  (CONFIG_ALS_SI114X - 0x40). My assumption was that I want the number LEDs to be 0",
+      "parentUuid": "01fa4e49_4b799b69",
       "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "92e9d468_e3e8cad4",
+        "filename": "board/eve/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-17T16:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85480078_d452e7be",
+      "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0cd4973_9831b8b3",
         "filename": "board/eve/board.h",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2017-02-15T22:27:41Z",
       "side": 1,
       "message": "Remove structure.",
+      "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0661142_73b0fe72",
+        "filename": "board/eve/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-17T16:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0cd4973_9831b8b3",
       "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "d68d8357_9737fa0d",
+        "filename": "board/eve/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-17T16:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "720b8476_62fae928",
+      "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79c63705_3c1ac01e",
         "filename": "board/eve/board.h",
         "patchSetId": 2
@@ -101,6 +191,24 @@
       "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fa0bb7c_e7ed0740",
+        "filename": "board/eve/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-17T16:46:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c63705_3c1ac01e",
+      "revId": "7bf379105126498dbdc4ea2850c6260a3272e823",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
