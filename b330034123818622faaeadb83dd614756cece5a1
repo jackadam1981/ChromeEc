@@ -16,6 +16,24 @@
       "revId": "b330034123818622faaeadb83dd614756cece5a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2675ed34_cb8e8080",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-17T16:14:54Z",
+      "side": 1,
+      "message": "Oh, I see. Let me see if I can rebase my change off of that.",
+      "parentUuid": "5c5b80a4_96120a1e",
+      "revId": "b330034123818622faaeadb83dd614756cece5a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
