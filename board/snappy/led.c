@@ -131,6 +131,8 @@ static void led_set_battery(void)
 		if (permillage < 100)
 			led_set_color_battery(
 				(battery_ticks & 0x4) ? LED_WHITE : LED_OFF);
+		else if (extpower_is_present() && permillage >= 940)
+			led_set_color_battery(LED_WHITE);
 		else
 			led_set_color_battery(LED_OFF);
 		break;
