@@ -96,6 +96,24 @@
     },
     {
       "key": {
+        "uuid": "41480c59_6b9a8fe2",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-17T01:06:13Z",
+      "side": 1,
+      "message": "I have removed it.",
+      "parentUuid": "3023df90_36df6e0c",
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e236b751_346c65ca",
         "filename": "chip/g/usb_upgrade.c",
         "patchSetId": 2
@@ -116,6 +134,30 @@
       "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73e4ce85_3900fd9d",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-17T01:06:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e236b751_346c65ca",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 26
+      },
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "46a8964f_f6c7b4e8",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-17T01:06:13Z",
+      "side": 1,
+      "message": "Done. I think I need to add a flag to usb_update to issue post_reset instead of this.",
+      "parentUuid": "fdc192e3_e2682845",
+      "range": {
+        "startLine": 126,
+        "startChar": 6,
+        "endLine": 126,
+        "endChar": 31
+      },
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2890ed48_5ca4c25f",
         "filename": "chip/g/usb_upgrade.c",
         "patchSetId": 2
@@ -153,6 +219,24 @@
       "writtenOn": "2017-02-16T10:08:33Z",
       "side": 1,
       "message": "Can you validate that count - sizeof(struct update_frame_header) is equal to zero (I think). Lets not accept arbitrary amounts of garbage data. None of the whitelisted commands have any extra data.",
+      "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c658b82_5bc20ed6",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-17T01:06:13Z",
+      "side": 1,
+      "message": "We won\u0027t use the garbage data if it\u0027s not whitelisted. Is this still necessary?",
+      "parentUuid": "2890ed48_5ca4c25f",
       "revId": "359fa8e14feff99e163b99eb1a5fb18ddcd14181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
