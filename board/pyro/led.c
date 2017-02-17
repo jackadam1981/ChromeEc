@@ -133,6 +133,12 @@ static void led_set_battery(void)
 		led_set_color_battery(permillage <
 			FULL_BATTERY_PERMILLAGE ? LED_AMBER : LED_GREEN);
 		break;
+	case PWR_STATE_DISCHARGE:
+		if (extpower_is_present() && permillage > 940)
+			led_set_color_battery(LED_GREEN);
+		else
+			led_set_color_battery(LED_OFF);
+		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
 		led_set_color_battery(LED_GREEN);
 		break;
