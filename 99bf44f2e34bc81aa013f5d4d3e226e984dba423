@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16e5a81a_922a7ef5",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1048,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-17T23:17:08Z",
+      "side": 1,
+      "message": "Much non-alphabetical sadness in this section.\n\nNot that we should fix it in this CL.",
+      "range": {
+        "startLine": 1048,
+        "startChar": 0,
+        "endLine": 1048,
+        "endChar": 35
+      },
+      "revId": "99bf44f2e34bc81aa013f5d4d3e226e984dba423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d185f3da_33e66337",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-17T23:17:08Z",
+      "side": 1,
+      "message": "If CONFIG_ROLLBACK is defined to enable the rollback protect region, CONFIG_ROLLBACK_OFF and CONFIG_ROLLBACK_SIZE must be defined too.",
+      "range": {
+        "startLine": 1095,
+        "startChar": 40,
+        "endLine": 1095,
+        "endChar": 41
+      },
+      "revId": "99bf44f2e34bc81aa013f5d4d3e226e984dba423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eed306b5_c0548ad2",
+        "filename": "include/config_std_internal_flash.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-17T23:17:08Z",
+      "side": 1,
+      "message": "Should these be defined at all if CONFIG_ROLLBACK isn\u0027t?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "99bf44f2e34bc81aa013f5d4d3e226e984dba423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
