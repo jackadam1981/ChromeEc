@@ -36,6 +36,7 @@
 
 #define FULL_BATTERY_PERMILLAGE 875
 
+extern int fully_charge_flag;
 static int led_debug;
 static int ticks;
 
@@ -132,6 +133,12 @@ static void led_set_battery(void)
 	case PWR_STATE_CHARGE:
 		led_set_color_battery(permillage <
 			FULL_BATTERY_PERMILLAGE ? LED_AMBER : LED_GREEN);
+		break;
+	case PWR_STATE_DISCHARGE:
+		if (extpower_is_present() && fully_charge_flag)
+			led_set_color_battery(LED_GREEN);
+		else
+			led_set_color_battery(LED_OFF);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
 		led_set_color_battery(LED_GREEN);

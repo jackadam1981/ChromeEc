@@ -191,8 +191,13 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
 
+int fully_charge_flag;
+
 static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 {
+	fully_charge_flag =
+		(curr->batt.status & STATUS_FULLY_CHARGED) ? 1 : 0;
+
 	/* can not discharge on AC without battery */
 	if (curr->batt.is_present != BP_YES)
 		return 0;
