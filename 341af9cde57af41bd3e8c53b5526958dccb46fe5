@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "ec5cb31f_721cd002",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2017-02-17T06:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "385f3725_117f9dc3",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a47537c4_c49c34c5",
         "filename": "driver/tcpm/anx74xx_fw.c",
         "patchSetId": 2
@@ -108,6 +132,30 @@
       "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fae067f_ecf89e67",
+        "filename": "driver/tcpm/anx74xx_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1151775
+      },
+      "writtenOn": "2017-02-17T06:00:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37a182ba_5246f600",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 44
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
