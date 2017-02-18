@@ -494,6 +494,11 @@ static int host_command_read_memmap(struct host_cmd_handler_args *args)
 	    offset + size > EC_MEMMAP_SIZE)
 		return EC_RES_INVALID_PARAM;
 
+	/* Wait for switch initialization */
+	if (offset == EC_MEMMAP_SWITCHES)
+		while (*host_get_memmap(EC_MEMMAP_SWITCHES_VERSION) == 0)
+			msleep(1);
+
 	memcpy(args->response, host_get_memmap(offset), size);
 	args->response_size = size;
 
