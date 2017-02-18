@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6ff5b11_44f7d72e",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1135534
+      },
+      "writtenOn": "2017-02-18T03:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3196338_3af9e18f",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 24
+      },
+      "revId": "e3b59a40ddebec8e685decf1e7ddda3ce0a870e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f814bb9_3e25f354",
         "filename": "board/wizpig/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-17T16:44:32Z",
       "side": 1,
       "message": "You are actually checking 1*1, not 101. And you can call system_get_board_version() for this.",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 276,
+        "endChar": 38
+      },
+      "revId": "e3b59a40ddebec8e685decf1e7ddda3ce0a870e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4d8be2d_5555a4db",
+        "filename": "board/wizpig/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1135534
+      },
+      "writtenOn": "2017-02-18T03:53:22Z",
+      "side": 1,
+      "message": "Now it uses the system_get_board_version() and defines the board id 0x5 for clamshell SKU.",
+      "parentUuid": "4f814bb9_3e25f354",
       "range": {
         "startLine": 275,
         "startChar": 1,
