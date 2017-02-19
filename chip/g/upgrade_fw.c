@@ -170,6 +170,82 @@ int usb_pdu_valid(struct upgrade_command *cmd_body,  size_t cmd_size)
 	return 1;
 }
 
+/*
+ * Check if this chunk of data is a rollback attempt, or is unaligned and
+ * overlaps RO or RW header.
+ *
+ * Return False if this is such an attempt or overlap when in prod mode,
+ * otherwise return True.
+ */
+static int contents_allowed(uint32_t block_offset,
+			    size_t body_size, void *upgrade_data)
+{
+#ifndef CR50_DEV
+	/* Pointer to RO or RW header in flash, to compare against. */
+	const struct SignedHeader *header;
+	/* Pointer to the received header. */
+	const struct SignedHeader *new_header;
+
+	if (block_offset == valid_sections.ro_base_offset) {
+		header = (const struct SignedHeader *)
+			get_program_memory_addr(system_get_ro_image_copy());
+	} else if (block_offset == valid_sections.rw_base_offset) {
+		header = (const struct SignedHeader *)
+			get_program_memory_addr(system_get_image_copy());
+	} else {
+
+		/*
+		 * The received block is not destined to a header directly,
+		 * but does it overlap with a header by any chance?
+		 */
+		int i;
+		/* Base offsets of valid headers in flash. */
+		uint32_t bases[] = { valid_sections.ro_base_offset,
+				     valid_sections.rw_base_offset };
+		/* Range of offsets this block is covering. */
+		uint32_t range[] = { block_offset, block_offset + body_size };
+
+		for (i = 0; i < ARRAY_SIZE(bases); i++) {
+			int j;
+
+			for (j = 0; j < ARRAY_SIZE(range); j++) {
+				if ((range[j] >= bases[i]) &&
+				    (range[j] <
+				     (bases[i] +
+				      sizeof(struct SignedHeader)))) {
+					CPRINTF("%s:"
+						" unaligned block overlaps\n",
+						__func__);
+					return 0;
+				}
+			}
+		}
+
+		return 1;
+	}
+
+	/* This block is a header (ro or rw) of the new image. */
+	if (body_size < sizeof(struct SignedHeader)) {
+		CPRINTF("%s: block too short\n", __func__);
+		return 0;
+	}
+
+	new_header = upgrade_data;
+
+	/*
+	 * Is the received header version older than the current header
+	 * version?
+	 */
+	if ((new_header->epoch_ < header->epoch_) ||
+	    (new_header->major_ < header->major_) ||
+	    (new_header->minor_ < header->minor_)) {
+		CPRINTF("%s: rejecting an older header.\n", __func__);
+		return 0;
+	}
+#endif
+	return 1;
+}
+
 void fw_upgrade_command_handler(void *body,
 				size_t cmd_size,
 				size_t *response_size)
@@ -253,6 +329,12 @@ void fw_upgrade_command_handler(void *body,
 		return;
 	}
 
+	upgrade_data = cmd_body + 1;
+	if (!contents_allowed(block_offset, body_size, upgrade_data)) {
+		*error_code = UPGRADE_WRITE_FAILURE;
+		return;
+	}
+
 	/* Check if the block will fit into the valid area. */
 	*error_code = check_update_chunk(block_offset, body_size);
 	if (*error_code)
@@ -260,7 +342,6 @@ void fw_upgrade_command_handler(void *body,
 
 	CPRINTF("%s: programming at address 0x%x\n", __func__,
 		block_offset + CONFIG_PROGRAM_MEMORY_BASE);
-	upgrade_data = cmd_body + 1;
 	if (flash_physical_write(block_offset, body_size, upgrade_data)
 	    != EC_SUCCESS) {
 		*error_code = UPGRADE_WRITE_FAILURE;
