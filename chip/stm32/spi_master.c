@@ -187,14 +187,23 @@ static int spi_dma_start(int port, const uint8_t *txdata,
 	dma_chan_t *txdma;
 
 	/* Set up RX DMA */
-	dma_start_rx(&dma_rx_option[port], len, rxdata);
+	if (rxdata)
+		dma_start_rx(&dma_rx_option[port], len, rxdata);
 
 	/* Set up TX DMA */
-	txdma = dma_get_channel(dma_tx_option[port].channel);
-	dma_prepare_tx(&dma_tx_option[port], len, txdata);
-	dma_go(txdma);
+	if (txdata) {
+		txdma = dma_get_channel(dma_tx_option[port].channel);
+		dma_prepare_tx(&dma_tx_option[port], len, txdata);
+		dma_go(txdma);
+	}
 
 	return EC_SUCCESS;
+}
+
+static inline int dma_is_enabled(const struct dma_option *option)
+{
+	/* dma_bytes_done() returns 0 if channel is not enabled */
+	return dma_bytes_done(dma_get_channel(option->channel), -1);
 }
 
 static int spi_dma_wait(int port)
@@ -204,32 +213,37 @@ static int spi_dma_wait(int port)
 	int rv = EC_SUCCESS;
 
 	/* Wait for DMA transmission to complete */
-	rv = dma_wait(dma_tx_option[port].channel);
-	if (rv)
-		return rv;
+	if (dma_is_enabled(&dma_tx_option[port])) {
+		rv = dma_wait(dma_tx_option[port].channel);
+		if (rv)
+			return rv;
 
-	timeout.val = get_time().val + SPI_TRANSACTION_TIMEOUT_USEC;
-	/* Wait for FIFO empty and BSY bit clear to indicate completion */
-	while ((spi->sr & STM32_SPI_SR_FTLVL) || (spi->sr & STM32_SPI_SR_BSY))
-		if (get_time().val > timeout.val)
-			return EC_ERROR_TIMEOUT;
+		timeout.val = get_time().val + SPI_TRANSACTION_TIMEOUT_USEC;
+		/* Wait for FIFO empty and BSY bit clear */
+		while ((spi->sr & STM32_SPI_SR_FTLVL) ||
+		       (spi->sr & STM32_SPI_SR_BSY))
+			if (get_time().val > timeout.val)
+				return EC_ERROR_TIMEOUT;
 
-	/* Disable TX DMA */
-	dma_disable(dma_tx_option[port].channel);
+		/* Disable TX DMA */
+		dma_disable(dma_tx_option[port].channel);
+	}
 
 	/* Wait for DMA reception to complete */
-	rv = dma_wait(dma_rx_option[port].channel);
-	if (rv)
-		return rv;
+	if (dma_is_enabled(&dma_rx_option[port])) {
+		rv = dma_wait(dma_rx_option[port].channel);
+		if (rv)
+			return rv;
 
-	timeout.val = get_time().val + SPI_TRANSACTION_TIMEOUT_USEC;
-	/* Wait for FRLVL[1:0] to indicate FIFO empty */
-	while (spi->sr & STM32_SPI_SR_FRLVL)
-		if (get_time().val > timeout.val)
-			return EC_ERROR_TIMEOUT;
+		timeout.val = get_time().val + SPI_TRANSACTION_TIMEOUT_USEC;
+		/* Wait for FRLVL[1:0] to indicate FIFO empty */
+		while (spi->sr & STM32_SPI_SR_FRLVL)
+			if (get_time().val > timeout.val)
+				return EC_ERROR_TIMEOUT;
 
-	/* Disable RX DMA */
-	dma_disable(dma_rx_option[port].channel);
+		/* Disable RX DMA */
+		dma_disable(dma_rx_option[port].channel);
+	}
 
 	return rv;
 }
@@ -243,8 +257,9 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	int full_readback = 0;
 
 	stm32_spi_regs_t *spi = SPI_REGS[port];
-	char *buf;
+	char *buf = NULL;
 
+#ifndef CONFIG_SPI_HALFDUPLEX
 	if (rxlen == SPI_READBACK_ALL) {
 		buf = rxdata;
 		full_readback = 1;
@@ -253,6 +268,7 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 		if (rv != EC_SUCCESS)
 			return rv;
 	}
+#endif
 
 	/* Drive SS low */
 	gpio_set_level(spi_device->gpio_cs, 0);
@@ -261,6 +277,10 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	while (spi->sr & STM32_SPI_SR_FRLVL)
 		(void) (uint8_t) spi->dr;
 
+#ifdef CONFIG_SPI_HALFDUPLEX
+	/* Enable bidirection mode and select output direction  */
+	spi->cr1 |= STM32_SPI_CR1_BIDIMODE | STM32_SPI_CR1_BIDIOE;
+#endif
 	rv = spi_dma_start(port, txdata, buf, txlen);
 	if (rv != EC_SUCCESS)
 		goto err_free;
@@ -273,20 +293,31 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 		goto err_free;
 
 	if (rxlen) {
+#ifdef CONFIG_SPI_HALFDUPLEX
+		/* Select input direction  */
+		spi->cr1 &= ~STM32_SPI_CR1_BIDIOE;
+#endif
 		rv = spi_dma_start(port, buf, rxdata, rxlen);
 		if (rv != EC_SUCCESS)
 			goto err_free;
 	}
 
 err_free:
+#ifndef CONFIG_SPI_HALFDUPLEX
 	if (!full_readback)
 		shared_mem_release(buf);
+#endif
 	return rv;
 }
 
 int spi_transaction_flush(const struct spi_device_t *spi_device)
 {
 	int rv = spi_dma_wait(spi_device->port);
+
+#ifdef CONFIG_SPI_HALFDUPLEX
+	/* Disable receive-only mode by turning off CR1 BIDIMODE */
+	SPI_REGS[spi_device->port]->cr1 &= ~STM32_SPI_CR1_BIDIMODE;
+#endif
 
 	/* Drive SS high */
 	gpio_set_level(spi_device->gpio_cs, 1);
