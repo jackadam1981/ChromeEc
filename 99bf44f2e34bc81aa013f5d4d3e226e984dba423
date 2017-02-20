@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "3064d7b0_de08abea",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-20T04:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d185f3da_33e66337",
+      "range": {
+        "startLine": 1095,
+        "startChar": 40,
+        "endLine": 1095,
+        "endChar": 41
+      },
+      "revId": "99bf44f2e34bc81aa013f5d4d3e226e984dba423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eed306b5_c0548ad2",
         "filename": "include/config_std_internal_flash.h",
         "patchSetId": 6
@@ -59,6 +83,30 @@
       "writtenOn": "2017-02-17T23:17:08Z",
       "side": 1,
       "message": "Should these be defined at all if CONFIG_ROLLBACK isn\u0027t?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "99bf44f2e34bc81aa013f5d4d3e226e984dba423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aa0de40_9266776c",
+        "filename": "include/config_std_internal_flash.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-20T04:44:15Z",
+      "side": 1,
+      "message": "Maybe not. And that\u0027d avoid mistakes of CONFIG_ROLLBACK is defined but the region isn\u0027t properly defined.\n\nDone.",
+      "parentUuid": "eed306b5_c0548ad2",
       "range": {
         "startLine": 46,
         "startChar": 0,
