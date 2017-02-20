@@ -6,6 +6,7 @@
  * SPI master driver.
  */
 
+#include "clock.h"
 #include "common.h"
 #include "dma.h"
 #include "gpio.h"
@@ -188,18 +189,23 @@ static int spi_dma_start(int port, const uint8_t *txdata,
 {
 	dma_chan_t *txdma;
 
-	/* Set up RX DMA */
-	dma_start_rx(&dma_rx_option[port], len, rxdata);
+	if (len) {
+		/* Set up RX DMA */
+		if (rxdata)
+			dma_start_rx(&dma_rx_option[port], len, rxdata);
 
-	/* Set up TX DMA */
-	txdma = dma_get_channel(dma_tx_option[port].channel);
-	dma_prepare_tx(&dma_tx_option[port], len, txdata);
-	dma_go(txdma);
+		/* Set up TX DMA */
+		if (txdata) {
+			txdma = dma_get_channel(dma_tx_option[port].channel);
+			dma_prepare_tx(&dma_tx_option[port], len, txdata);
+			dma_go(txdma);
+		}
+	}
 
 	return EC_SUCCESS;
 }
 
-static int spi_dma_wait(int port)
+static int spi_dma_wait_tx(int port)
 {
 	timestamp_t timeout;
 	stm32_spi_regs_t *spi = SPI_REGS[port];
@@ -219,6 +225,15 @@ static int spi_dma_wait(int port)
 	/* Disable TX DMA */
 	dma_disable(dma_tx_option[port].channel);
 
+	return rv;
+}
+
+static int spi_dma_wait_rx(int port)
+{
+	timestamp_t timeout;
+	stm32_spi_regs_t *spi = SPI_REGS[port];
+	int rv = EC_SUCCESS;
+
 	/* Wait for DMA reception to complete */
 	rv = dma_wait(dma_rx_option[port].channel);
 	if (rv)
@@ -235,6 +250,94 @@ static int spi_dma_wait(int port)
 
 	return rv;
 }
+
+static int spi_dma_wait(int port)
+{
+	int rv;
+
+	rv = spi_dma_wait_tx(port);
+	rv |= spi_dma_wait_rx(port);
+
+	return rv;
+}
+
+
+#ifdef CONFIG_SPI_HALFDUPLEX
+static int spi_busy(int port)
+{
+	stm32_spi_regs_t *spi = SPI_REGS[port];
+
+	return (spi->sr & (STM32_SPI_SR_BSY | STM32_SPI_SR_FTLVL |
+			   STM32_SPI_SR_RXNE | STM32_SPI_SR_FRLVL)) ||
+	       !(spi->sr & STM32_SPI_SR_TXE);
+}
+
+static int spi_halfduplex_flush(int port)
+{
+	timestamp_t timeout;
+	stm32_spi_regs_t *spi = SPI_REGS[port];
+	int rv = EC_SUCCESS;
+
+	/*
+	 * In halfduplex SPI receive-only mode, STM32F0 hardware won't stop
+	 * the clock until either SPI or receive-only mode disabled.
+	 */
+
+	/* Disable receive-only mode by turning off CR1 BIDIMODE */
+	spi->cr1 &= ~STM32_SPI_CR1_BIDIMODE;
+
+	/* Remove data from RX FIFO while waiting for SPI idle */
+	timeout.val = get_time().val + SPI_TRANSACTION_TIMEOUT_USEC;
+	while (spi_busy(port)) {
+		(void) (uint8_t) spi->dr;
+		if (get_time().val > timeout.val) {
+			rv = EC_ERROR_TIMEOUT;
+			break;
+		}
+	}
+
+	/* Delay 1 APB cycle then try to flush RX FIFO again */
+	clock_wait_bus_cycles(BUS_APB, 1);
+	while (spi->sr & (STM32_SPI_SR_FRLVL | STM32_SPI_SR_RXNE))
+		(void) (uint8_t) spi->dr;
+
+	return rv;
+}
+
+
+static int spi_transaction_tx(const struct spi_device_t *spi_device,
+			      const uint8_t *txdata, int txlen)
+{
+	int port = spi_device->port;
+	stm32_spi_regs_t *spi = SPI_REGS[port];
+
+	/* Drive SS low */
+	gpio_set_level(spi_device->gpio_cs, 0);
+
+	/* Clear out the FIFO. */
+	while (spi->sr & STM32_SPI_SR_FRLVL)
+		(void) (uint8_t) spi->dr;
+
+	/* Enable bidirection mode and select output direction  */
+	spi->cr1 |= STM32_SPI_CR1_BIDIMODE | STM32_SPI_CR1_BIDIOE;
+	return spi_dma_start(port, txdata, NULL, txlen);
+}
+
+static int spi_transaction_rx(const struct spi_device_t *spi_device,
+			      uint8_t *rxdata, int rxlen)
+{
+	int port = spi_device->port;
+	stm32_spi_regs_t *spi = SPI_REGS[port];
+
+	/* Drive SS low */
+	gpio_set_level(spi_device->gpio_cs, 0);
+
+	/* Select input direction  */
+	spi->cr1 &= ~STM32_SPI_CR1_BIDIOE;
+	spi->cr1 |= STM32_SPI_CR1_BIDIMODE;
+	return spi_dma_start(port, NULL, rxdata, rxlen);
+}
+#endif
 
 int spi_transaction_async(const struct spi_device_t *spi_device,
 			  const uint8_t *txdata, int txlen,
@@ -262,6 +365,9 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	/* Clear out the FIFO. */
 	while (spi->sr & STM32_SPI_SR_FRLVL)
 		(void) (uint8_t) spi->dr;
+
+	/* Disable halfduplex mode */
+	spi->cr1 &= ~(STM32_SPI_CR1_BIDIMODE | STM32_SPI_CR1_BIDIOE);
 
 	rv = spi_dma_start(port, txdata, buf, txlen);
 	if (rv != EC_SUCCESS)
@@ -309,8 +415,30 @@ int spi_transaction(const struct spi_device_t *spi_device,
 	int port = spi_device->port;
 
 	mutex_lock(spi_mutex + port);
+#ifdef CONFIG_SPI_HALFDUPLEX
+	if (txdata && txlen) {
+		rv = spi_transaction_tx(spi_device, txdata, txlen);
+		if (rv)
+			goto err_release;
+		rv = spi_dma_wait_tx(spi_device->port);
+		if (rv)
+			goto err_release;
+	}
+	if (rxdata && rxlen) {
+		rv = spi_transaction_rx(spi_device, rxdata, rxlen);
+		if (rv)
+			goto err_release;
+		rv = spi_dma_wait_rx(spi_device->port);
+	}
+
+err_release:
+	spi_halfduplex_flush(port);
+	if (gpio_get_level(spi_device->gpio_cs) == 0)
+		gpio_set_level(spi_device->gpio_cs, 1);
+#else
 	rv = spi_transaction_async(spi_device, txdata, txlen, rxdata, rxlen);
 	rv |= spi_transaction_flush(spi_device);
+#endif
 	mutex_unlock(spi_mutex + port);
 
 	return rv;
