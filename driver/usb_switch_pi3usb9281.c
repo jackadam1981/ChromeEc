@@ -146,6 +146,8 @@ void pi3usb9281_init(int port)
 	if (dev_id != PI3USB9281_DEV_ID && dev_id != PI3USB9281_DEV_ID_A)
 		CPRINTS("PI3USB9281 invalid ID 0x%02x", dev_id);
 
+	/* Set switch initial state to close */
+	pi3usb9281_set_switch_manual(port, 0);
 	pi3usb9281_set_interrupt_mask(port, 0xff);
 	pi3usb9281_enable_interrupts(port);
 }
