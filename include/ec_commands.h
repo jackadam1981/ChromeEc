@@ -1095,6 +1095,7 @@ struct __ec_align4 ec_response_get_features {
 
 /* Get flash info */
 #define EC_CMD_FLASH_INFO 0x0010
+#define EC_VER_FLASH_INFO 2
 
 /* Version 0 returns these fields */
 struct __ec_align4 ec_response_flash_info {
@@ -1128,14 +1129,20 @@ struct __ec_align4 ec_response_flash_info {
  * gcc anonymous structs don't seem to get along with the __packed directive;
  * if they did we'd define the version 0 structure as a sub-structure of this
  * one.
+ *
+ * Version 2 supports flash banks of different sizes:
+ * The caller specified the number of banks it has preallocated
+ * (num_banks_desc)
+ * The EC returns the number of banks describing the flash memory.
+ * It adds banks descriptions up to num_banks_desc.
  */
+
 struct __ec_align4 ec_response_flash_info_1 {
 	/* Version 0 fields; see above for description */
 	uint32_t flash_size;
 	uint32_t write_block_size;
 	uint32_t erase_block_size;
 	uint32_t protect_block_size;
-
 	/* Version 1 adds these fields: */
 	/*
 	 * Ideal write size in bytes.  Writes will be fastest if size is
@@ -1147,6 +1154,32 @@ struct __ec_align4 ec_response_flash_info_1 {
 
 	/* Flags; see EC_FLASH_INFO_* */
 	uint32_t flags;
+};
+
+struct __ec_align4 ec_params_flash_info_2 {
+	/* Number of banks to describe */
+	uint16_t num_banks_desc;
+	uint8_t rsvd[2];
+};
+
+struct ec_flash_bank {
+	uint16_t count;
+	uint8_t size_exp;
+	uint8_t write_size_exp;
+	uint8_t erase_size_exp;
+	uint8_t protect_size_exp;
+	uint8_t rsvd[2];
+};
+
+struct __ec_align4 ec_response_flash_info_2 {
+	uint32_t flash_size;
+	/* Flags; see EC_FLASH_INFO_* */
+	uint32_t flags;
+	uint32_t write_ideal_size;
+
+	uint16_t num_banks_total;
+	uint16_t num_banks_desc;
+	struct ec_flash_bank banks[0]; /* at least one bank expected */
 };
 
 /*
