@@ -244,6 +244,12 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 	while (spi->sr & STM32_SPI_SR_FRLVL)
 		(void) (uint8_t) spi->dr;
 
+#ifdef CONFIG_SPI_HALFDUPLEX
+	/* Enable bidirection mode and select output direction  */
+	spi->cr1 |= STM32_SPI_CR1_BIDIMODE | STM32_SPI_CR1_BIDIOE;
+#else
+	spi->cr1 &= ~(STM32_SPI_CR1_BIDIMODE | STM32_SPI_CR1_BIDIOE);
+#endif
 	rv = spi_dma_start(port, txdata, buf, txlen);
 	if (rv != EC_SUCCESS)
 		goto err_free;
@@ -253,6 +259,10 @@ int spi_transaction_async(const struct spi_device_t *spi_device,
 		goto err_free;
 
 	if (rxlen) {
+#ifdef CONFIG_SPI_HALFDUPLEX
+		/* Select input direction  */
+		spi->cr1 &= ~STM32_SPI_CR1_BIDIOE;
+#endif
 		rv = spi_dma_start(port, buf, rxdata, rxlen);
 		if (rv != EC_SUCCESS)
 			goto err_free;
