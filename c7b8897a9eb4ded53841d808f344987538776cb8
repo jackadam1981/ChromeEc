@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfae792e_ae084dbf",
+        "filename": "chip/stm32/flash-stm32f0.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-20T04:48:14Z",
+      "side": 1,
+      "message": "Should be uint32_t",
+      "revId": "c7b8897a9eb4ded53841d808f344987538776cb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
