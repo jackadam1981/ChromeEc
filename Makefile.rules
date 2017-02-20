@@ -72,6 +72,8 @@ cmd_elf = $(CC) $(objs) $(libsharedobjs_elf-y) $(LDFLAGS) \
 	-o $@ -Wl,-T,$< -Wl,-Map,$(patsubst %.elf,%.map,$@)
 cmd_exe = $(CC) $(ro-objs) $(HOST_TEST_LDFLAGS) -o $@
 cmd_c_to_o = $(CC) $(CFLAGS) -MMD -MF $@.d -c $< -o $(@D)/$(@F)
+cmd_clang_to_S = $(CLANG) $(CLANG_OPTIM_FLAGS) -MMD -MF $@.d -c $< -S -o- \
+	| sed -e $(CLANG_EABI_SED) > $(@D)/$(@F)
 cmd_c_to_build = $(BUILDCC) $(BUILD_CFLAGS) \
 	         $(sort $(foreach c,$($(*F)-objs),util/$(c:%.o=%.c)) $*.c) \
 	         $(BUILD_LDFLAGS) \
@@ -361,6 +363,9 @@ $(out)/RO/%.o:%.S
 $(out)/RW/%.o:%.S
 	$(call quiet,c_to_o,AS     )
 
+%.$(CORE)-genasm.S:%.c
+	$(call quiet,clang_to_S,CLANG  )
+
 
 # Conditionally force the rebuilding of ec_version.h only if it would be
 # changed.
@@ -412,6 +417,9 @@ $(npcx-flash-fw-bin):
 		-o $(out)/$(npcx-flash-fw).elf -Wl,-T,$(npcx-flash-fw).ld \
 		-Wl,-Map,$(out)/$(npcx-flash-fw).map
 	-@ $(OBJCOPY) -O binary $(out)/$(npcx-flash-fw).elf $@
+
+.PHONY: genopt
+genopt: $(patsubst %.o,%.$(CORE)-genasm.S,$(use_opt_asm))
 
 .PHONY: xrefs
 xrefs: $(call targ_if_prog,etags,$(out)/TAGS) \
