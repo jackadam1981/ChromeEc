@@ -46,6 +46,30 @@
       "revId": "2f8e3aac5107daa23cfaec586b0e5a36ebc3591e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "838a4863_576d72b9",
+        "filename": "include/rsa.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-20T12:43:38Z",
+      "side": 1,
+      "message": "\u003e CONFIG_FW_PSTATE_SIZE: Yes, that\u0027s the problem I\u0027m trying to \"solve\"... hoho (and other adapters like zinger) will erase the PSTATE block when enabling write protection (flashwp true), \n\nThe write-protection is enabled automatically, you never do this.\nIt was implemented there:\nhttps://chromium-review.googlesource.com/c/238893/\n\n\n\u003e and the public key with that, as it is \"accidentally\" stored in the PSTATE block now... So I can fix it by removing the ifdef and using the same code for both futility types (that way the key is _really_ stored in RO).\n\u003e \n\u003e But then, futility type usbpd1 expects images to be split in exact halves, with the public key at the end of first half... So signing won\u0027t work \n\n\u003e (I\u0027m actually not sure how it ever worked...)\n\nWhat is not working ?\n\n\u003e \n\u003e In short, I\u0027m not sure what\u0027s the point of fixing a deprecated image type (usbpd1), for adapters that probably already don\u0027t work correctly when built from master...\n\u003e \n\u003e The easiest path might be to convert the adapters to use RWSIG image type? \n\u003e (and hope they still work...)\n\nDespite all the great Koolaid about the new format, it seems to be more than 3x larger than the previous one (1kB Sign + 1kB pub key + 600bytes FMAP vs 256B Sign + 528 bytes pub key  ), so it likely won\u0027t fit in Zinger [which was the original point of the design]",
+      "parentUuid": "09187d43_8aa8751f",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 56
+      },
+      "revId": "2f8e3aac5107daa23cfaec586b0e5a36ebc3591e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
