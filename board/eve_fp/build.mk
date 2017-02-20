@@ -10,3 +10,6 @@ CHIP_FAMILY:=stm32l4
 CHIP_VARIANT:=stm32l442
 
 board-y=board.o
+
+# Generate optimized assembler version from LLVM build
+gen_opt_asm:=common/curve25519.o common/rsa.o
