@@ -28,7 +28,10 @@
 #define CONFIG_SPI
 #define CONFIG_SPI_MASTER
 #define CONFIG_STM_HWTIMER32
-
+#define CONFIG_CURVE25519
+#define CONFIG_SHA256
+#define CONFIG_RSA
+#define CONFIG_RWSIG_TYPE_RWSIG
 
 #define CONFIG_SPI_FP_PORT    1  /* SPI3: second SPI master port */
 
