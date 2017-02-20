@@ -130,12 +130,19 @@ $(eval CHIP_$(UC_CHIP)=y)
 $(eval CHIP_VARIANT_$(UC_CHIP_VARIANT)=y)
 $(eval CHIP_FAMILY_$(UC_CHIP_FAMILY)=y)
 
+# Return the specialized pre-generated assembly version if enabled
+# else the regular object for the C source file.
+# The argument is the path to the object file.
+has_opt_asm=$(if $(findstring $(1),$(use_opt_asm)), \
+		$(patsubst %.o,%.$(CORE)-genasm.o,$(1)),$(1))
+
 # Private subdirectories may call this from their build.mk
 # First arg is the path to be prepended to configured *.o files.
 # Second arg is the config variable (ie, "FOO" to select with $(FOO-$3)).
 # Third arg is the config variable value ("y" for configuration options
 #   that are set for both RO and RW, "rw" for RW-only configuration options)
-objs_from_dir_p=$(foreach obj, $($(2)-$(3)), $(1)/$(obj))
+objs_from_dir_p=$(foreach obj, $($(2)-$(3)), \
+		$(call has_opt_asm,$(1)/$(obj)))
 objs_from_dir=$(call objs_from_dir_p,$(1),$(2),y)
 
 # Get build configuration from sub-directories

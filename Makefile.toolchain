@@ -89,3 +89,17 @@ LDFLAGS=-nostdlib -Wl,-X -Wl,--gc-sections -Wl,--build-id=none $(LDFLAGS_EXTRA)
 BUILD_LDFLAGS=$(LIBFTDI_LDLIBS)
 HOST_TEST_LDFLAGS=-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
 		  $(if $(TEST_COVERAGE),-fprofile-arcs,)
+
+# LLVM C compiler (used to generate a few optimized routines)
+CROSS_LLVM?=armv7a-cros-linux-gnueabi-
+CLANG=$(CROSS_LLVM)clang
+
+# Helpers to transform the GCC command-line into some clang-acceptable version
+CLANG_UNSUPPORTED_FLAGS=-mno-sched-prolog -fno-delete-null-pointer-checks
+CLANG_UNSUPPORTED_FLAGS+=-fconserve-stack -flto
+CLANG_REMOVE_FOR_OPTIM_FLAGS=-Os -g -Werror -ffunction-sections
+CLANG_DEL_FLAGS=$(CLANG_UNSUPPORTED_FLAGS) $(CLANG_REMOVE_FOR_OPTIM_FLAGS)
+CLANG_OPTIM_FLAGS=$(filter-out $(CLANG_DEL_FLAGS),$(CFLAGS)) -O3 -fshort-enums
+# Workaround: current LLVM refuses to do soft-float configuration.
+ATTR28=$(if $(CONFIG_FPU),1,0)
+CLANG_EABI_SED="s@.eabi_attribute\t28, 1@.eabi_attribute\t28, $(ATTR28)@g"
