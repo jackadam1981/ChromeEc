@@ -13,6 +13,7 @@
 #include "registers.h"
 #include "rsa.h"
 #include "timer.h"
+#include "trng.h"
 #include "util.h"
 #include "watchdog.h"
 
@@ -141,12 +142,46 @@ static void test_sha256_speed(void)
 	ccprintf("SHA256 duration %ld us\n", t1.val - t0.val);
 }
 
+static void test_trng_unalign(uint8_t *buf, size_t off, size_t len)
+{
+	memset(buf, 0xee, 1024);
+	rand_bytes(buf+off, len);
+	ccprintf("%u+%u %02x %02x %02x %02x  %02x %02x %02x %02x  %02x\n",
+		off, len, buf[0], buf[1], buf[2], buf[3],
+		buf[4], buf[5], buf[6], buf[7], buf[8]);
+}
+
+static void test_trng_speed(void)
+{
+	timestamp_t t0, t1;
+	union {
+		uint32_t buf32[256];
+		uint8_t buf8[1024];
+	} u;
+
+	init_trng();
+	ccprintf("RNG %08x %08x %08x\n", rand(), rand(), rand());
+	t0 = get_time();
+	rand_bytes(u.buf32, sizeof(u.buf32));
+	t1 = get_time();
+	ccprintf("1KB RNG duration %ld us (%08x %08x)\n", t1.val - t0.val,
+		u.buf32[0], u.buf32[255]);
+	test_trng_unalign(u.buf8, 1, 3);
+	test_trng_unalign(u.buf8, 0, 2);
+	test_trng_unalign(u.buf8, 0, 5);
+	test_trng_unalign(u.buf8, 3, 3);
+	test_trng_unalign(u.buf8, 2, 6);
+
+	exit_trng();
+}
+
 static int command_speed_test(int argc, char **argv)
 {
 	test_diffie_hellman();
 	test_x25519_speed();
 	test_rsa_f4_speed();
 	test_sha256_speed();
+	test_trng_speed();
 
 	return EC_SUCCESS;
 }
