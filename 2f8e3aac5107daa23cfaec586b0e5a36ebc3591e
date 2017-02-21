@@ -70,6 +70,30 @@
       "revId": "2f8e3aac5107daa23cfaec586b0e5a36ebc3591e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5738c616_b8a64f15",
+        "filename": "include/rsa.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-21T01:11:05Z",
+      "side": 1,
+      "message": "\u003e The write-protection is enabled automatically, you never do this.\n\u003e It was implemented there:\n\u003e https://chromium-review.googlesource.com/c/238893/\n\nOh, I see, so it\u0027s a PSTATE that does not get erased? But then the code looks quite different right now and I\u0027m not fully convinced it still works correctly (like, flash_read_pstate returns PERSIST_FLAG_PROTECT_RO instead of EC_FLASH_PROTECT_RO_AT_BOOT as it probably should, and relies on the fact that whatever is at CONFIG_FW_PSTATE_OFF does not look like a correct pstate...)\n\n\u003e What is not working ?\n\nMaybe it\u0027s currently working and I\u0027m just extremely confused... Which is why your comment about simplifying things makes a lot of sense to me...\n\n\u003e so it likely won\u0027t fit in Zinger\n\nI think I managed to fit RWSIG in Zinger (including FMAP, but by shrinking the pubkey size to exactly what is needed (576 byte)).  It\u0027s really tight though. But again, maybe I\u0027m missing some other tricks and the resulting image won\u0027t work.",
+      "parentUuid": "838a4863_576d72b9",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 56
+      },
+      "revId": "2f8e3aac5107daa23cfaec586b0e5a36ebc3591e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
