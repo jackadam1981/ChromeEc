@@ -70,6 +70,53 @@
       "revId": "1cdfeab3a3d1567dd17d3675d8e2abcd87511dc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53fb6fe0_c4407a79",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-21T19:19:01Z",
+      "side": 1,
+      "message": "What about posting resets? Can I write flash, issue a post reset and then reset the AP to deassert TPM_RST_L, lather, rinse, repeat?\n\nIf so, could we use nvmem_vars for this? (aside: I ought to upload my nvmem_vars CLs soon)",
+      "parentUuid": "5dd6e90c_5187ac68",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 34
+      },
+      "revId": "1cdfeab3a3d1567dd17d3675d8e2abcd87511dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32b6cf01_db4f3bcb",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-21T19:19:01Z",
+      "side": 1,
+      "message": "typo: \u0027frame\u0027",
+      "range": {
+        "startLine": 144,
+        "startChar": 34,
+        "endLine": 144,
+        "endChar": 38
+      },
+      "revId": "1cdfeab3a3d1567dd17d3675d8e2abcd87511dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
