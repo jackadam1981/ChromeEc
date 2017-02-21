@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "625d192a_8f6886cf",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-21T21:40:51Z",
+      "side": 1,
+      "message": "writing to nvmem area of flash to avoid writes into another area of flash does not seem a particularly good idea.",
+      "parentUuid": "53fb6fe0_c4407a79",
+      "range": {
+        "startLine": 251,
+        "startChar": 8,
+        "endLine": 251,
+        "endChar": 34
+      },
+      "revId": "1cdfeab3a3d1567dd17d3675d8e2abcd87511dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32b6cf01_db4f3bcb",
         "filename": "chip/g/upgrade_fw.h",
         "patchSetId": 1
