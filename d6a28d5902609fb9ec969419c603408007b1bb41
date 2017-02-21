@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b34e5032_f90c1b18",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-21T15:17:46Z",
+      "side": 1,
+      "message": "Yes indeed, I will update the description",
+      "parentUuid": "4d56e72c_f9396733",
+      "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92632972_b9c05c13",
         "filename": "Makefile",
         "patchSetId": 1
@@ -125,6 +143,24 @@
       "side": 1,
       "message": "Also, why are we being so careful about LLVM here? I mean, we are always sensitive to toolchain updates, right? Or maybe we should ask the toolchain team to provide a good LLVM compiler that fits our needs?\n\nI\u0027m a bit worried about including .S files in our source tree. Seems fragile...",
       "parentUuid": "8c787a75_4b59665c",
+      "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29b501e5_81c930ce",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-21T15:17:46Z",
+      "side": 1,
+      "message": "\u003e why are we being so careful about LLVM here?\n\u003e I mean, we are always sensitive to toolchain updates, right?\n\nfirst of all, this implies adding a new toolchain triple in the toolchain.conf of *all* overlays\n(else you will have build failures for chromeos-ec), so increasing size and initial build...\n\n\u003e Or maybe we should ask the toolchain team to provide a good LLVM compiler that fits our needs?\n\nMaybe, in the past, we more and less manage by ourselves (well with Mike\u0027s help) the specific versions for the EC (arm-none-eabi and the terrible nds32 one)\n\n\u003e I\u0027m a bit worried about including .S files in our source tree. Seems fragile...\n\nActually if we submit the .S, this might be more future-proof than building a firmware with some objects from clang others from gcc and the llvm toolchain evolving.\nThe day we have switched the whole EC to LLVM build is another story (but also more work)\n\nI\u0027m still contemplating all the possible options here...",
+      "parentUuid": "2c537688_58ab5b57",
       "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
