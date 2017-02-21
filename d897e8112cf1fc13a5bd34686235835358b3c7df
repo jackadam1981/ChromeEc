@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ef602702_d2029f45",
+        "filename": "common/curve25519.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-21T07:34:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f73f55f3_face2a4b",
+      "revId": "d897e8112cf1fc13a5bd34686235835358b3c7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c338519_53a537ac",
         "filename": "common/curve25519.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-21T01:36:24Z",
       "side": 1,
       "message": "Looks like this would fit in a uint32_t... Not sure how the compiler will optimize this, so maybe it makes no difference...",
+      "revId": "d897e8112cf1fc13a5bd34686235835358b3c7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46a868ae_180c2688",
+        "filename": "common/curve25519.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-21T07:34:21Z",
+      "side": 1,
+      "message": "it still needs to zero the top 32-bit word of the u64 (before returning it).\n\nGCC does the following, it\u0027s only half-stupid :\n(it has 4 useless/no-op instructions: movs\tr3, #0 / movs\tr5, #0 / orrs\tr1, r3 / orrs\tr1, r5)\n00000000 \u003cload_3\u003e:\n   0:\tb5f0      \tpush\t{r4, r5, r6, r7, lr}\n   2:\t7846      \tldrb\tr6, [r0, #1]\n   4:\t7804      \tldrb\tr4, [r0, #0]\n   6:\t0232      \tlsls\tr2, r6, #8\n   8:\t7886      \tldrb\tr6, [r0, #2]\n   a:\t2300      \tmovs\tr3, #0\n   c:\t0430      \tlsls\tr0, r6, #16\n   e:\t2100      \tmovs\tr1, #0\n  10:\t2500      \tmovs\tr5, #0\n  12:\t4310      \torrs\tr0, r2\n  14:\t4319      \torrs\tr1, r3\n  16:\t4320      \torrs\tr0, r4\n  18:\t4329      \torrs\tr1, r5\n  1a:\tbdf0      \tpop\t{r4, r5, r6, r7, pc}\nThe more aggressive LLVM optimization works properly.\n\nThe slowdown being minimum and the goal being to keep the validated code as-is, I will probably let it this way.",
+      "parentUuid": "6c338519_53a537ac",
       "revId": "d897e8112cf1fc13a5bd34686235835358b3c7df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -64,6 +100,24 @@
       "writtenOn": "2017-02-21T01:36:24Z",
       "side": 1,
       "message": "What\u0027s the point of that one?",
+      "revId": "d897e8112cf1fc13a5bd34686235835358b3c7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "febfc576_13d04727",
+        "filename": "test/x25519.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-21T07:34:21Z",
+      "side": 1,
+      "message": "warm-up the cache (which doesn\u0027t exist on most of our platforms)",
+      "parentUuid": "84f4da6c_cb70defc",
       "revId": "d897e8112cf1fc13a5bd34686235835358b3c7df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
