@@ -141,6 +141,30 @@
       "revId": "1cdfeab3a3d1567dd17d3675d8e2abcd87511dc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b08ffd2a_1ad9bf09",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-21T21:48:26Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "32b6cf01_db4f3bcb",
+      "range": {
+        "startLine": 144,
+        "startChar": 34,
+        "endLine": 144,
+        "endChar": 38
+      },
+      "revId": "1cdfeab3a3d1567dd17d3675d8e2abcd87511dc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
