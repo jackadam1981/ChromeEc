@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4d56e72c_f9396733",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-21T09:48:15Z",
+      "side": 1,
+      "message": "Might be nice to add a line in CL message to explain that one needs to set gen_opt_asm in the board build.mk file. I obviously didn\u0027t understand that ,-)",
+      "parentUuid": "100ed7f9_0e07011a",
+      "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92632972_b9c05c13",
         "filename": "Makefile",
         "patchSetId": 1
@@ -89,6 +107,24 @@
       "side": 1,
       "message": "Yes, that\u0027s the goal of this hack:\nyou generate (with make genopt) and submit the asm files, so overlays with arm LLVM and other weirdness don\u0027t hamper the EC build\nI have updated the example CL with the generated .S files.",
       "parentUuid": "b9cbe8e8_e56102d9",
+      "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c537688_58ab5b57",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-21T09:48:15Z",
+      "side": 1,
+      "message": "Also, why are we being so careful about LLVM here? I mean, we are always sensitive to toolchain updates, right? Or maybe we should ask the toolchain team to provide a good LLVM compiler that fits our needs?\n\nI\u0027m a bit worried about including .S files in our source tree. Seems fragile...",
+      "parentUuid": "8c787a75_4b59665c",
       "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
