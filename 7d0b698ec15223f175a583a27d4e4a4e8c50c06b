@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "494fd979_5967c8e4",
+        "filename": "common/curve25519.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002270
+      },
+      "writtenOn": "2017-02-21T20:16:02Z",
+      "side": 1,
+      "message": "Please note: CRYPTO_memcmp is *not* the same as memcmp. It\u0027s a constant-time function. That\u0027s an important property here.",
+      "revId": "7d0b698ec15223f175a583a27d4e4a4e8c50c06b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
