@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6957f93_e733b20d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-21T01:44:57Z",
+      "side": 1,
+      "message": "That builds all .o files as .S, right?",
+      "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9cbe8e8_e56102d9",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-21T01:44:57Z",
+      "side": 1,
+      "message": "So... the .S files could potentially be generated at build time?",
+      "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
