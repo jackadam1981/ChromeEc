@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "100ed7f9_0e07011a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-21T07:56:21Z",
+      "side": 1,
+      "message": "Not all of them, only the subset in gen_opt_asm \nas demonstrated in board/eve_fp/build.mk in the follow-up CL\nhttps://chromium-review.googlesource.com/c/445257/1/board/eve_fp/build.mk",
+      "parentUuid": "b6957f93_e733b20d",
+      "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92632972_b9c05c13",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-21T07:56:21Z",
+      "side": 1,
+      "message": "after further thinking, should be the ones declared in \u0027gen_opt_asm\u0027 rather than all the available ones",
+      "range": {
+        "startLine": 136,
+        "startChar": 16,
+        "endLine": 136,
+        "endChar": 69
+      },
+      "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9cbe8e8_e56102d9",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -30,6 +71,24 @@
       "writtenOn": "2017-02-21T01:44:57Z",
       "side": 1,
       "message": "So... the .S files could potentially be generated at build time?",
+      "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c787a75_4b59665c",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-21T07:56:21Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the goal of this hack:\nyou generate (with make genopt) and submit the asm files, so overlays with arm LLVM and other weirdness don\u0027t hamper the EC build\nI have updated the example CL with the generated .S files.",
+      "parentUuid": "b9cbe8e8_e56102d9",
       "revId": "d6a28d5902609fb9ec969419c603408007b1bb41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
