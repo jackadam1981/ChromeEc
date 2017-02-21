@@ -222,7 +222,12 @@ DECLARE_HOOK(HOOK_INIT, mkbp_lid_change, HOOK_PRIO_INIT_LID+1);
 #ifdef CONFIG_TABLET_MODE_SWITCH
 static void mkbp_tablet_mode_change(void)
 {
+#ifdef HAS_TASK_KEYSCAN
 	mkbp_update_switches(EC_MKBP_TABLET_MODE, tablet_get_mode());
+#else
+	/* If there is no keyscan task, stay in tablet mode. */
+	mkbp_update_switches(EC_MKBP_TABLET_MODE, 1);
+#endif /* HAS_TASK_KEYSCAN */
 }
 DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, mkbp_tablet_mode_change, HOOK_PRIO_LAST);
 DECLARE_HOOK(HOOK_INIT, mkbp_tablet_mode_change, HOOK_PRIO_INIT_LID+1);
