@@ -711,7 +711,7 @@ static void reinstate_nvmem_commits(void)
 {
 	task_set_event(TASK_ID_TPM, TPM_EVENT_COMMIT, 0);
 }
-DECLARE_DEFERRED(reinstate_nvmem_commits);
+DECLARE_PRIORITY_DEFERRED(49, reinstate_nvmem_commits);
 
 static void tpm_reset_now(int wipe_first)
 {
