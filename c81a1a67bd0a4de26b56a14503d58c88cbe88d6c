@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "36629e44_b4a04110",
+        "filename": "chip/stm32/flash-stm32f0.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-22T07:13:09Z",
+      "side": 1,
+      "message": "Done. Would be good to have in flash.h, actually. Declared there.",
+      "parentUuid": "7fdfef37_cdbd053d",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "c81a1a67bd0a4de26b56a14503d58c88cbe88d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84865e3e_11996a69",
         "filename": "common/flash.c",
         "patchSetId": 5
@@ -59,6 +83,30 @@
       "writtenOn": "2017-02-22T04:23:24Z",
       "side": 1,
       "message": "(remove)",
+      "range": {
+        "startLine": 982,
+        "startChar": 26,
+        "endLine": 982,
+        "endChar": 34
+      },
+      "revId": "c81a1a67bd0a4de26b56a14503d58c88cbe88d6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "304cb5f6_93650b41",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-22T07:13:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96d97803_3f59033b",
       "range": {
         "startLine": 982,
         "startChar": 26,
