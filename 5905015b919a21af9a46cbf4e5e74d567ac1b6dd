@@ -117,6 +117,30 @@
       "revId": "5905015b919a21af9a46cbf4e5e74d567ac1b6dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d87038fe_a6f28bde",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-22T17:17:59Z",
+      "side": 1,
+      "message": "We start counting from start_t, which is set below by __hw_clock_source_set. Maybe we should reverse the order:\n\n   __hw_clock_source_set(start_t);\n   update_prescaler();",
+      "parentUuid": "d65f2fb7_e2c9af57",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 33
+      },
+      "revId": "5905015b919a21af9a46cbf4e5e74d567ac1b6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
