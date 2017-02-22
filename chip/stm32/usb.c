@@ -35,14 +35,6 @@
 #define CONFIG_USB_BCD_DEV 0x0100 /* 1.00 */
 #endif
 
-#ifndef USB_BMATTRIBUTES
-#ifdef CONFIG_USB_SELF_POWERED
-#define USB_BMATTRIBUTES 0xc0  /* Self powered. */
-#else
-#define USB_BMATTRIBUTES 0x80  /* Bus powered. */
-#endif
-#endif
-
 #ifndef CONFIG_USB_SERIALNO
 #define USB_STR_SERIALNO 0
 #else
@@ -75,7 +67,14 @@ const struct usb_config_descriptor USB_CONF_DESC(conf) = {
 	.bNumInterfaces = USB_IFACE_COUNT,
 	.bConfigurationValue = 1,
 	.iConfiguration = USB_STR_VERSION,
-	.bmAttributes = USB_BMATTRIBUTES, /* bus or self powered */
+	.bmAttributes = 0x80 /* Reserved bit */
+#ifdef CONFIG_USB_SELF_POWERED  /* bus or self powered */
+		      | 0x40
+#endif
+#ifdef CONFIG_USB_REMOTE_WAKEUP
+		      | 0x20
+#endif
+	,
 	.bMaxPower = (CONFIG_USB_MAXPOWER_MA / 2),
 };
 
@@ -333,6 +332,38 @@ static void usb_resume(void)
 
 	CPRINTF("USB resume %x\n", state);
 }
+
+#ifdef CONFIG_USB_REMOTE_WAKEUP
+void usb_wake(void)
+{
+	if (!(STM32_USB_CNTR & STM32_USB_CNTR_FSUSP)) {
+		/* USB is already woken up, nothing to do. */
+		return;
+	}
+
+	/* Set RESUME bit for 1 to 15 ms, then clear it. */
+	STM32_USB_CNTR |= STM32_USB_CNTR_RESUME;
+
+	/*
+	 * TODO(crosbug.com/p/62325): There is no guarantee that this delay is
+	 * accurate if we actually change the clock to save power.
+	 */
+	msleep(5);
+
+	/* clear RESUME bit */
+	STM32_USB_CNTR &= ~STM32_USB_CNTR_RESUME;
+}
+
+static int command_usbwake(int argc, char **argv)
+{
+	usb_wake();
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(usbwake, command_usbwake,
+	"",
+	"Wake host using USB resume blah");
+#endif
 #endif /* CONFIG_USB_SUSPEND */
 
 void usb_interrupt(void)

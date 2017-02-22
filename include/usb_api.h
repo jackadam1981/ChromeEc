@@ -42,6 +42,11 @@ void usb_disconnect(void);
  */
 void usb_release(void);
 
+/*
+ * Tell the host to wake up (requires remote wake-up capability to be enabled).
+ */
+void usb_wake(void);
+
 #ifdef CONFIG_USB_SELECT_PHY
 /* Select which PHY to use. */
 void usb_select_phy(uint32_t phy);
