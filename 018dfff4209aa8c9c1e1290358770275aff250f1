@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d41e99a_2fcc9c5c",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-22T19:03:05Z",
+      "side": 1,
+      "message": "This port meant Type-C port instead of I2C port?",
+      "range": {
+        "startLine": 285,
+        "startChar": 13,
+        "endLine": 285,
+        "endChar": 29
+      },
+      "revId": "018dfff4209aa8c9c1e1290358770275aff250f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
