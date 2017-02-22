@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "299c303a_72947aa6",
+        "filename": "chip/stm32/config-stm32f09x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-02-22T17:12:29Z",
+      "side": 1,
+      "message": "For hana and elm, 4KB padding before RW image is needed to make RW image starts at 128KB. And if we want FMAP fully compatible with previous setup, probably move PSTATE to sector 29 and change PSTATE_BANK_COUNT to 2.",
+      "range": {
+        "startLine": 40,
+        "startChar": 34,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "f44829dcfa2c5c5f59f05431c8a61f57e2881a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
