@@ -6,15 +6,22 @@
  */
 
 #include "registers.h"
+#include "system.h"
 #include "usb_api.h"
 
 void usb_connect(void)
 {
 	STM32_USB_BCDR |= (1 << 15) /* DPPU */;
+
+	/* USB is in use */
+	disable_sleep(SLEEP_MASK_USB_DEVICE);
 }
 
 void usb_disconnect(void)
 {
 	/* disable pull-up on DP to disconnect */
 	STM32_USB_BCDR &= ~(1 << 15) /* DPPU */;
+
+	/* USB is off, so sleep whenever */
+	enable_sleep(SLEEP_MASK_USB_DEVICE);
 }
