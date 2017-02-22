@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "1268bf10_6fcab09f",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2128,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-22T10:43:36Z",
+      "side": 1,
+      "message": "NACK\nL1RESUME bit is 1 \u003c\u003c 5",
+      "range": {
+        "startLine": 2127,
+        "startChar": 0,
+        "endLine": 2128,
+        "endChar": 42
+      },
+      "revId": "2c2d4bb080ef647f177769d045b657bfc63940c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe59a7e_22e2577e",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2140,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-22T10:43:36Z",
+      "side": 1,
+      "message": "even if it\u0027s long, usually we would call this with a _MASK suffix",
+      "range": {
+        "startLine": 2140,
+        "startChar": 8,
+        "endLine": 2140,
+        "endChar": 28
+      },
+      "revId": "2c2d4bb080ef647f177769d045b657bfc63940c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3f07d90_865befc2",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 1
@@ -13,6 +59,24 @@
       "writtenOn": "2017-02-22T10:30:18Z",
       "side": 1,
       "message": "We should probably handle these 2, actually... At least having the register names makes it more obvious that we might be missing something....",
+      "revId": "2c2d4bb080ef647f177769d045b657bfc63940c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41eefced_cf8365e9",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-22T10:43:36Z",
+      "side": 1,
+      "message": "Yes error handling is not 100% right .. but it\u0027s also difficult to test.",
+      "parentUuid": "b3f07d90_865befc2",
       "revId": "2c2d4bb080ef647f177769d045b657bfc63940c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
