@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dd2d4a8_d45da22b",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-22T20:48:36Z",
+      "side": 1,
+      "message": "These should stay the same as they were because they are i2c port numbers:\n\nstruct tcpc_config_t {\n\u003e-------int i2c_host_port;\n\u003e-------int i2c_slave_addr;\n\u003e-------const struct tcpm_drv *drv;\n\u003e-------enum tcpc_alert_polarity pol;\n};\n\nWhich are different from the port numbers of the USB PD devices.\n\nTo make this clearer:\n\nconst struct tcpc_config_t tcpc_conf[CONFIG_USB_USB_PD_PORT_COUNT] \u003d {\n [USB_PD_PORT_ANX74XX] \u003d {\n   .i2c_host_port \u003d NPCX_I2C_PORT0_0,\n   ...\n },\n [USB_PD_PORT_PS8751] \u003d {\n  .i2c_host_port \u003d NPCX_I2C_PORT0_1, \n},\n};",
+      "revId": "e7de91852832dfd389f0b29e5eeb6e75f545eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
