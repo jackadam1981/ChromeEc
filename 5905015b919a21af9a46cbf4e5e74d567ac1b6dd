@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9d09e7ab_96e285c3",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-22T09:31:37Z",
+      "side": 1,
+      "message": "Actually, I can do the following:\nreplace:\n        /* clear the \u0027spurious\u0027 update */\n\tSTM32_TIM_SR(TIM_CLOCK32) \u003d ~1;\nby:\nif (t)\n             STM32_TIM_SR(TIM_CLOCK32) \u003d ~1;\n\nIt\u0027s really hard to prove it\u0027s actually always correct, but it feels a bit better.",
+      "parentUuid": "f35360fa_defe47ce",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 38
+      },
+      "revId": "5905015b919a21af9a46cbf4e5e74d567ac1b6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed66141b_e52afd26",
         "filename": "chip/stm32/hwtimer32.c",
         "patchSetId": 1
