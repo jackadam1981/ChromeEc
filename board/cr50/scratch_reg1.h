@@ -27,13 +27,9 @@
 						/* sys_rst_l to monitor the */
 						/* system resets */
 
-/*
- * Bits to store console and write protect bit states across deep sleep and
- * resets.
- */
-#define BOARD_CONSOLE_UNLOCKED       (1 << 7)
-#define BOARD_WP_ASSERTED            (1 << 8)
-#define BOARD_FORCING_WP             (1 << 9)
+/* Bits to store write protect bit state across deep sleep and resets. */
+#define BOARD_WP_ASSERTED            (1 << 7)
+#define BOARD_FORCING_WP             (1 << 8)
 
 /*
  * Macro to capture all properties related to board strapping pins. This must be
