@@ -961,6 +961,8 @@
 #undef CONFIG_FLASH_ERASED_VALUE32
 #undef CONFIG_FLASH_ERASE_SIZE
 #undef CONFIG_FLASH_ROW_SIZE
+/* This indicates EC internal flash layout is not uniform */
+#undef CONFIG_NON_STD_FLASH_LAYOUT
 
 /* Base address of program memory */
 #undef CONFIG_PROGRAM_MEMORY_BASE

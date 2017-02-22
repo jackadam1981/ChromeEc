@@ -33,6 +33,9 @@
 #define CONFIG_RAM_BASE		0x20000000
 #define CONFIG_RAM_SIZE		0x00020000
 
+/* Prevent config_chip.h from including config_std_internal_flash.h */
+#define CONFIG_NON_STD_FLASH_LAYOUT
+
 #define CONFIG_RO_MEM_OFF	0
 #define CONFIG_RO_SIZE		(48 * 1024)
 #define CONFIG_RW_MEM_OFF	(64 * 1024)
