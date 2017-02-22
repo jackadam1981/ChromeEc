@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dc0af95_01804d78",
+        "filename": "common/nvmem.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T20:57:50Z",
+      "side": 0,
+      "message": "now I see where that came from, this is dead code, good you are eliminating it.",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 369,
+        "endChar": 25
+      },
+      "revId": "5fbdd1dbd710bb88c25ff9b287a8f3e24ceec516",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
