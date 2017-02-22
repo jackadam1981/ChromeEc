@@ -292,12 +292,62 @@ static void usb_reset(void)
 	CPRINTF("RST EP0 %04x\n", STM32_USB_EP(0));
 }
 
+#ifdef CONFIG_USB_SUSPEND
+/* See RM0091 Reference Manual 30.5.5 Suspend/Resume events */
+static void usb_suspend(void)
+{
+	CPRINTF("USB suspend!\n");
+
+	/* Set FSUSP bit to activate suspend mode */
+	STM32_USB_CNTR |= STM32_USB_CNTR_FSUSP;
+
+	/*
+	 * TODO(crosbug.com/p/62325): we should turn off other blocks and other
+	 * devices, maybe reduce the clock, to minimize power consumption.
+	 */
+
+	/* Set LP_MODE */
+	STM32_USB_CNTR |= STM32_USB_CNTR_LP_MODE;
+
+	/*
+	 * TODO(crosbug.com/p/62325): Optionally turn off external oscillator
+	 * and device PLL to stop any activity inside the device.
+	 */
+}
+
+static void usb_resume(void)
+{
+	int state;
+
+	/* 1. Optionally turn on external oscillator and/or device PLL. */
+
+	/* Clear FSUSP bit to exit suspend mode */
+	STM32_USB_CNTR &= ~STM32_USB_CNTR_FSUSP;
+
+	state = (STM32_USB_FNR & 0xc0) >> 14;
+
+	/*
+	 * TODO(crosbug.com/p/62325): Figure out if we want, or need, to do
+	 * something with the state value.
+	 */
+
+	CPRINTF("USB resume %x\n", state);
+}
+#endif /* CONFIG_USB_SUSPEND */
+
 void usb_interrupt(void)
 {
 	uint16_t status = STM32_USB_ISTR;
 
 	if (status & STM32_USB_ISTR_RESET)
 		usb_reset();
+
+#ifdef CONFIG_USB_SUSPEND
+	if (status & STM32_USB_ISTR_SUSP)
+		usb_suspend();
+	if (status & STM32_USB_ISTR_WKUP)
+		usb_resume();
+#endif
 
 	if (status & STM32_USB_ISTR_CTR) {
 		int ep = status & STM32_USB_ISTR_EP_ID;
@@ -350,6 +400,10 @@ void usb_init(void)
 	STM32_USB_CNTR = STM32_USB_CNTR_CTRM |
 			 STM32_USB_CNTR_PMAOVRM |
 			 STM32_USB_CNTR_ERRM |
+#ifdef CONFIG_USB_SUSPEND
+			 STM32_USB_CNTR_WKUPM |
+			 STM32_USB_CNTR_SUSPM |
+#endif
 			 STM32_USB_CNTR_RESETM;
 
 #ifdef CONFIG_USB_SERIALNO
