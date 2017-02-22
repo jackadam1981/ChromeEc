@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "a01b7785_bed01201",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-22T11:44:33Z",
+      "side": 1,
+      "message": "Datasheet says so: \"The start of a resume or reset sequence, while the USB peripheral is suspended, clears the LP_MODE bit in USB_CNTR register asynchronously. \"\n\nI can check.",
+      "parentUuid": "62cc3757_a1d0e5df",
+      "range": {
+        "startLine": 310,
+        "startChar": 19,
+        "endLine": 310,
+        "endChar": 42
+      },
+      "revId": "cc7aecec00f8a130bc10072818922709c1444156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc2c3efd_111b714d",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 1
@@ -76,6 +100,30 @@
       "writtenOn": "2017-02-22T11:22:10Z",
       "side": 1,
       "message": "if you want to implement the trm algorithm, you need to move the state reading at the beginning of the function, and just return immediately if state \u003d\u003d 2 or \u003d\u003d 3.\n\nFor the root reset case (aka state \u003d\u003d 0), we need to check whether the STM32_USB_ISTR_RESET is set in the case or we need to fall back to usb_reset()",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 4
+      },
+      "revId": "cc7aecec00f8a130bc10072818922709c1444156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f51847_7218b6c3",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-22T11:44:33Z",
+      "side": 1,
+      "message": "Huh, manual is a bit confusing, but yes, it makes sense to read state before clearing FSUSP.\n\nI think I understand the reset issue... Also there is a potential race here. I think clearing all interrupts at the end of usb_interrupt is not the right thing to do: we should do STM32_USB_ISTR \u003d ~status, which should only reset the interrupts we actually handled...",
+      "parentUuid": "34ee0d3c_3b4b7e15",
       "range": {
         "startLine": 328,
         "startChar": 0,
