@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0cd596c6_61e6d9f0",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:55:11Z",
+      "side": 1,
+      "message": "Maybe remove the #ifdef, and just note\n\n/* PD state for CONFIG_USB_PD_DUAL_ROLE uses 2 bytes */",
+      "range": {
+        "startLine": 1081,
+        "startChar": 7,
+        "endLine": 1081,
+        "endChar": 30
+      },
+      "revId": "3790cc802ed6422da280e745e8bb3fd45b8bf0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2141959_bde36f27",
         "filename": "chip/npcx/system_chip.h",
         "patchSetId": 3
