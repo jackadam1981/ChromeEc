@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0c8dee8c_b2439225",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T19:04:10Z",
+      "side": 1,
+      "message": "My rationale was that this was pretty necessary for the system operation, especially as we start to add more nvmem vars.\n\nI understand the concern about the assert though; I can remove the assertion.",
+      "parentUuid": "2fa27dbb_e9882ee4",
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2cf28efb_647e3428",
         "filename": "board/cr50/board.h",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2017-02-22T05:17:35Z",
       "side": 1,
       "message": "why does this have to move here?",
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6865c2f6_19a92f05",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T19:04:10Z",
+      "side": 1,
+      "message": "Do you mean why does \u0027NVMEM_CR50_SIZE\u0027 have to move here?\n\nall of the enabled config options belong in board.h, and CONFIG_FLASH_NVMEM_VARS_USER_SIZE needed to be defined in order to use nvmem_vars. Instead of keeping the sizes in two places (board.c and board.h), I decided to just move it here.",
+      "parentUuid": "2cf28efb_647e3428",
       "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -116,6 +152,30 @@
     },
     {
       "key": {
+        "uuid": "79199caf_cd418520",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T19:04:10Z",
+      "side": 1,
+      "message": "True, I\u0027ll remove it.",
+      "parentUuid": "44095882_9c3b2e5a",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58c53311_fd86baac",
         "filename": "board/cr50/wp.c",
         "patchSetId": 1
@@ -127,6 +187,30 @@
       "writtenOn": "2017-02-22T05:17:35Z",
       "side": 1,
       "message": "why is this necessary? The write access is supposed to wait for the lock, it should not take more than 3 seconds after tpm reset - does it not work this way?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01d5e6e6_b7793f15",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T19:04:10Z",
+      "side": 1,
+      "message": "Without this, I believe I encountered a deadlock which led to a watchdog reset.",
+      "parentUuid": "58c53311_fd86baac",
       "range": {
         "startLine": 197,
         "startChar": 0,
@@ -159,6 +243,30 @@
       "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5776135f_9c8d00b6",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T19:04:10Z",
+      "side": 1,
+      "message": "I think the comment still stands. On a resume from deep sleep or just a normal power on, we should follow the nvmem state. Anything else (an unexpected reboot or rollback), we should use the image default state.",
+      "parentUuid": "3f9da373_4ea74dc1",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 55
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {

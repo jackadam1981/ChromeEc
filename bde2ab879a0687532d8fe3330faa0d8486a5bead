@@ -16,6 +16,24 @@
       "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1ee7375_6601dfcd",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T19:04:10Z",
+      "side": 0,
+      "message": "Yeah, I was debating what to do with the gap. I missed the comment in L19. I\u0027ll leave the definitions alone and add the gap.",
+      "parentUuid": "910156ab_6e645b71",
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
