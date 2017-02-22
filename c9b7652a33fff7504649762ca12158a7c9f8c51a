@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81ed0a4a_8fd46b7a",
+        "filename": "chip/lm4/keyboard_raw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:34:22Z",
+      "side": 1,
+      "message": "KSO_NONE?",
+      "range": {
+        "startLine": 66,
+        "startChar": 21,
+        "endLine": 66,
+        "endChar": 35
+      },
+      "revId": "c9b7652a33fff7504649762ca12158a7c9f8c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "274e6984_58f3c9cc",
+        "filename": "chip/lm4/keyboard_raw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:34:22Z",
+      "side": 1,
+      "message": "KSO_ALL?",
+      "range": {
+        "startLine": 68,
+        "startChar": 26,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "c9b7652a33fff7504649762ca12158a7c9f8c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daa49b85_8181dbe0",
+        "filename": "chip/lm4/keyboard_raw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:34:22Z",
+      "side": 1,
+      "message": "pins (it\u0027s checking all of them)",
+      "range": {
+        "startLine": 98,
+        "startChar": 39,
+        "endLine": 98,
+        "endChar": 42
+      },
+      "revId": "c9b7652a33fff7504649762ca12158a7c9f8c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "725e0f20_739635b1",
+        "filename": "chip/npcx/keyboard_raw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:34:22Z",
+      "side": 1,
+      "message": "Extra space?",
+      "range": {
+        "startLine": 118,
+        "startChar": 15,
+        "endLine": 118,
+        "endChar": 16
+      },
+      "revId": "c9b7652a33fff7504649762ca12158a7c9f8c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd30b364_c38c961e",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:34:22Z",
+      "side": 1,
+      "message": "Comments in this file need updating.   For example, \"Number of keyboard input pins\"",
+      "range": {
+        "startLine": 294,
+        "startChar": 31,
+        "endLine": 294,
+        "endChar": 61
+      },
+      "revId": "c9b7652a33fff7504649762ca12158a7c9f8c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d85a419f_09b5d6a8",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:34:22Z",
+      "side": 1,
+      "message": "output pin (kso)",
+      "range": {
+        "startLine": 329,
+        "startChar": 24,
+        "endLine": 329,
+        "endChar": 27
+      },
+      "revId": "c9b7652a33fff7504649762ca12158a7c9f8c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "370f0777_ce2ac31d",
+        "filename": "include/keyboard_raw.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:34:22Z",
+      "side": 1,
+      "message": "KSO_ALL",
+      "range": {
+        "startLine": 19,
+        "startChar": 10,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "c9b7652a33fff7504649762ca12158a7c9f8c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "342709cf_f3e38802",
+        "filename": "include/keyboard_raw.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:34:22Z",
+      "side": 1,
+      "message": "KSO_NONE",
+      "range": {
+        "startLine": 20,
+        "startChar": 10,
+        "endLine": 20,
+        "endChar": 24
+      },
+      "revId": "c9b7652a33fff7504649762ca12158a7c9f8c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c81f60e8_212ea40c",
+        "filename": "include/keyboard_raw.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:34:22Z",
+      "side": 1,
+      "message": "KSO_COUNT",
+      "range": {
+        "startLine": 21,
+        "startChar": 18,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "c9b7652a33fff7504649762ca12158a7c9f8c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "737e3697_1fbec644",
+        "filename": "include/keyboard_raw.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:34:22Z",
+      "side": 1,
+      "message": "Reflow comment",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 34
+      },
+      "revId": "c9b7652a33fff7504649762ca12158a7c9f8c51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
