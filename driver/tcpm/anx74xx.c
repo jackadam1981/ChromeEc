@@ -866,6 +866,13 @@ void anx74xx_tcpc_alert(int port)
 	}
 }
 
+/*
+ * anx74xx.c mixes i2c ports and pd ports. It's working just because we happen
+ * to map i2c port 0 to pd port 0 (and i2c port 1 to pd port 1). If we ever
+ * want to use a different mapping, we need to make this mapping configurable.
+ * TODO: Add 'i2c_port' in struct anx_state and have each board set
+ * i2c_port properly. Then, i2c ports can be referred as anx[port].i2c_port.
+ */
 static int anx74xx_tcpm_init(int port)
 {
 	int rv = 0, reg;
