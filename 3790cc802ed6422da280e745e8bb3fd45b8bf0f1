@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2dfc27f7_8dbe5c94",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-22T23:56:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cd596c6_61e6d9f0",
+      "range": {
+        "startLine": 1081,
+        "startChar": 7,
+        "endLine": 1081,
+        "endChar": 30
+      },
+      "revId": "3790cc802ed6422da280e745e8bb3fd45b8bf0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2141959_bde36f27",
         "filename": "chip/npcx/system_chip.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-21T08:36:09Z",
       "side": 1,
       "message": "the ifdef here seems more harmful than useful",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "3790cc802ed6422da280e745e8bb3fd45b8bf0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8acdc661_bc3bb83d",
+        "filename": "chip/npcx/system_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-22T23:56:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2141959_bde36f27",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2b264a76_3e00134d",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-22T23:56:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d11d6c7b_8e4fbda2",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "3790cc802ed6422da280e745e8bb3fd45b8bf0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e74c8a7_e57bef3b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-02-21T08:36:09Z",
       "side": 1,
       "message": "actually we are only interesting in recording whether we had an explicit contract ?\nTrying to do the disconnect dance on legacy cable or questionable 5V-only hot VBUS charger seems useless.",
+      "range": {
+        "startLine": 1505,
+        "startChar": 0,
+        "endLine": 1506,
+        "endChar": 29
+      },
+      "revId": "3790cc802ed6422da280e745e8bb3fd45b8bf0f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f59e199_36b9f4d1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1506,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-22T23:56:41Z",
+      "side": 1,
+      "message": "Moved to receive of PS_RDY. I realize that we\u0027ll still do our reset sequence even if the contract is later broken, but I prefer that over trying to clear the active bit when the contract is broken, which would have to be in several different places.",
+      "parentUuid": "7e74c8a7_e57bef3b",
       "range": {
         "startLine": 1505,
         "startChar": 0,
