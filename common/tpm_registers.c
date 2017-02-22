@@ -24,6 +24,7 @@
 #include "tpm_registers.h"
 #include "util.h"
 #include "watchdog.h"
+#include "wp.h"
 
 /* TPM2 library includes. */
 #include "ExecCommand_fp.h"
@@ -785,6 +786,8 @@ static void tpm_reset_now(int wipe_first)
 	hook_call_deferred(&reinstate_nvmem_commits_data, 3 * SECOND);
 
 	reset_in_progress = 0;
+
+	read_fwmp();
 }
 
 void tpm_task(void)
