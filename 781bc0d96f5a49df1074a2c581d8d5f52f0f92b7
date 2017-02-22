@@ -161,6 +161,24 @@
     },
     {
       "key": {
+        "uuid": "6d7eefbf_18e67828",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-22T21:05:45Z",
+      "side": 1,
+      "message": "anx74xx.c actually uses tcpc_* routines which convert this \u0027port\u0027 to i2c_host_port in tcpc_config. So, shouldn\u0027t it be a pd port number?",
+      "parentUuid": "65971a88_9933358f",
+      "revId": "781bc0d96f5a49df1074a2c581d8d5f52f0f92b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bd877b0_9b931ad3",
         "filename": "board/reef/board.c",
         "patchSetId": 1
