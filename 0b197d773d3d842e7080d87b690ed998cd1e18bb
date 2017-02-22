@@ -223,6 +223,30 @@
     },
     {
       "key": {
+        "uuid": "a133b7ae_1a8de727",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T19:28:49Z",
+      "side": 1,
+      "message": "this is odd, there should have been no deadlock. do you understand why it is happening?",
+      "parentUuid": "01d5e6e6_b7793f15",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f9da373_4ea74dc1",
         "filename": "board/cr50/wp.c",
         "patchSetId": 1
