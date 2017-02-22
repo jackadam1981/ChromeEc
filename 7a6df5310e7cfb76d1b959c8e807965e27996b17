@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3350582e_9ac0ffbb",
+        "filename": "chip/stm32/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-22T09:12:05Z",
+      "side": 1,
+      "message": "Good point, \nI wondered what could be useful there.\nthe task ID might be the best option (as the caller might be just a \u0027generic\u0027 crypto function)\nI will update it.",
+      "parentUuid": "667adfcd_c9866f62",
+      "range": {
+        "startLine": 22,
+        "startChar": 35,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "7a6df5310e7cfb76d1b959c8e807965e27996b17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71226852_f0d69370",
         "filename": "chip/stm32/trng.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-22T01:32:28Z",
       "side": 1,
       "message": "Why use uintptr_t for this type?",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 11
+      },
+      "revId": "7a6df5310e7cfb76d1b959c8e807965e27996b17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fba55ec_bef4f03d",
+        "filename": "chip/stm32/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-22T09:12:05Z",
+      "side": 1,
+      "message": "Overall this seems to be the proper type to contain the integer value of a pointer address (buffer in this case).\nFor the EC, we usually use uint32_t according to our \u0027keep it simple\u0027 principle given we target only 32-bit CPU.",
+      "parentUuid": "71226852_f0d69370",
       "range": {
         "startLine": 33,
         "startChar": 2,
