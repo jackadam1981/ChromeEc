@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "365d7c9a_fcbfb8a2",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T18:23:55Z",
+      "side": 1,
+      "message": "No need. I\u0027ll move it to the for loop.",
+      "parentUuid": "cceb6709_1d9c0c7e",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 8
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3cc6a979_ada4ab87",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -53,6 +77,30 @@
       "writtenOn": "2017-02-22T06:05:03Z",
       "side": 1,
       "message": "why not to change the previous message to \n\n\"Erasing NVMEM Flash Partition \u003cUSER NUM\u003e\"\n\n?",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 372,
+        "endChar": 35
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45184734_922f71d1",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T18:23:55Z",
+      "side": 1,
+      "message": "Sure, I can do that. Maybe \"user: \u003cuser num\u003e\" so that it doesn\u0027t look like we\u0027re erasing the entire partition.",
+      "parentUuid": "3cc6a979_ada4ab87",
       "range": {
         "startLine": 372,
         "startChar": 1,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "c6b6996c_0069c077",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T18:23:55Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll cache the size as well.",
+      "parentUuid": "eed10c7b_4c7e5e65",
+      "range": {
+        "startLine": 377,
+        "startChar": 1,
+        "endLine": 377,
+        "endChar": 45
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11f9dd8e_ad9dbd7e",
         "filename": "common/nvmem.c",
         "patchSetId": 1
@@ -99,6 +171,30 @@
       "writtenOn": "2017-02-22T06:05:03Z",
       "side": 1,
       "message": "why does this have to be set?",
+      "range": {
+        "startLine": 379,
+        "startChar": 1,
+        "endLine": 379,
+        "endChar": 25
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49cdf54_550febd9",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T18:23:55Z",
+      "side": 1,
+      "message": "Hmm, I guess it doesn\u0027t, as long as we go through each partition.",
+      "parentUuid": "11f9dd8e_ad9dbd7e",
       "range": {
         "startLine": 379,
         "startChar": 1,
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "ed0b7ec7_7cdfe2d4",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T18:23:55Z",
+      "side": 1,
+      "message": "Just trying to understand, why would only one of the sections be erased? nvmem_save(), which nvmem_erase_user_data() uses, doesn\u0027t seem to care about whether commits are enabled or not.",
+      "parentUuid": "b2399509_6cd43fd9",
+      "range": {
+        "startLine": 754,
+        "startChar": 1,
+        "endLine": 754,
+        "endChar": 24
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48721655_9de999d9",
         "filename": "test/nvmem.c",
         "patchSetId": 1
@@ -145,6 +265,30 @@
       "writtenOn": "2017-02-22T06:05:03Z",
       "side": 1,
       "message": "you need to do this to make sure that the commit actually writes into the flash? Pretty neat.",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 18
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f8a3414_d2ba9ee2",
+        "filename": "test/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-22T18:23:55Z",
+      "side": 1,
+      "message": "Yep. The nvmem module skips writes to the backing store if the cache hasn\u0027t changed.",
+      "parentUuid": "48721655_9de999d9",
       "range": {
         "startLine": 189,
         "startChar": 2,
