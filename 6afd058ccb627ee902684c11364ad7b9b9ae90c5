@@ -22,6 +22,30 @@
       "revId": "6afd058ccb627ee902684c11364ad7b9b9ae90c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c424eb1_2f10d567",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T03:30:40Z",
+      "side": 1,
+      "message": "you are right. This is a copy and paste with a somewhat changed handling, which introduced this bug.",
+      "parentUuid": "f7a564af_054a0df8",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 45
+      },
+      "revId": "6afd058ccb627ee902684c11364ad7b9b9ae90c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
