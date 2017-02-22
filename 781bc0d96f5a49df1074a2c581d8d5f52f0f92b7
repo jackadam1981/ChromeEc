@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b2fe88a_b711b682",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-22T20:00:38Z",
+      "side": 1,
+      "message": "NPCX_I2C_PORT0_0",
+      "range": {
+        "startLine": 64,
+        "startChar": 28,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "781bc0d96f5a49df1074a2c581d8d5f52f0f92b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16e2e578_45649bb7",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-22T20:00:38Z",
+      "side": 1,
+      "message": "NPCX_I2C_PORT0_1",
+      "range": {
+        "startLine": 65,
+        "startChar": 27,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "781bc0d96f5a49df1074a2c581d8d5f52f0f92b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "527e69bb_98c8016e",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-22T20:00:38Z",
+      "side": 1,
+      "message": "This port parameter is the port number, though. I don\u0027t think we should name it with \u0027USB\u0027 alone. That makes it confusing since that function needs to know what *i2c* port number it should use to talk.",
+      "revId": "781bc0d96f5a49df1074a2c581d8d5f52f0f92b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
