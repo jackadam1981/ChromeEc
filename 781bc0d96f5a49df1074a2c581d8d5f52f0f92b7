@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "23f2b998_85a88d5e",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-22T20:30:09Z",
+      "side": 1,
+      "message": "It is? I was under the impression it was i2c... why were these i2c names to begin with? If that\u0027s the case, we definitely need different defines for USB PD port numbers and the ports they sit on.",
+      "parentUuid": "2e1ab1cd_a13235d1",
+      "revId": "781bc0d96f5a49df1074a2c581d8d5f52f0f92b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bd877b0_9b931ad3",
         "filename": "board/reef/board.c",
         "patchSetId": 1
