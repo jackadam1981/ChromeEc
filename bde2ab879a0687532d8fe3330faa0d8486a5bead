@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2a8a635_9626ebd3",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T06:05:03Z",
+      "side": 1,
+      "message": "why does this have to be renamed?",
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cceb6709_1d9c0c7e",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T06:05:03Z",
+      "side": 1,
+      "message": "why does this have to move to the function scope?",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 8
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cc6a979_ada4ab87",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T06:05:03Z",
+      "side": 1,
+      "message": "why not to change the previous message to \n\n\"Erasing NVMEM Flash Partition \u003cUSER NUM\u003e\"\n\n?",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 372,
+        "endChar": 35
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eed10c7b_4c7e5e65",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T06:05:03Z",
+      "side": 1,
+      "message": "you cache user offset here, but then access user size through the index in line 384. Why not be consistent?",
+      "range": {
+        "startLine": 377,
+        "startChar": 1,
+        "endLine": 377,
+        "endChar": 45
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11f9dd8e_ad9dbd7e",
+        "filename": "common/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T06:05:03Z",
+      "side": 1,
+      "message": "why does this have to be set?",
+      "range": {
+        "startLine": 379,
+        "startChar": 1,
+        "endLine": 379,
+        "endChar": 25
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2399509_6cd43fd9",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T06:05:03Z",
+      "side": 1,
+      "message": "should this be moved to above line 721? Otherwise only one of the two sections would be erased. \n\nThis line should have been there to start with, not sure if this is a bug or an intentional placement for some reason, please make sure it works as expected.",
+      "range": {
+        "startLine": 754,
+        "startChar": 1,
+        "endLine": 754,
+        "endChar": 24
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48721655_9de999d9",
+        "filename": "test/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T06:05:03Z",
+      "side": 1,
+      "message": "you need to do this to make sure that the commit actually writes into the flash? Pretty neat.",
+      "range": {
+        "startLine": 189,
+        "startChar": 2,
+        "endLine": 189,
+        "endChar": 18
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "676dcc2e_8d114f02",
+        "filename": "test/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T06:05:03Z",
+      "side": 1,
+      "message": "a very cool test.",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 63
+      },
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
