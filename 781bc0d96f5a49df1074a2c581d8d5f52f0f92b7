@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "22369237_1e69de91",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-22T20:26:00Z",
+      "side": 1,
+      "message": "\u003e NPCX_I2C_PORT0_1\n\nNeed to keep Type-C and I2C separate, right? Other board for example has both ANX3429 and PS8751 on the same I2C bus.",
+      "parentUuid": "16e2e578_45649bb7",
+      "range": {
+        "startLine": 65,
+        "startChar": 27,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "781bc0d96f5a49df1074a2c581d8d5f52f0f92b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "527e69bb_98c8016e",
         "filename": "board/reef/board.c",
         "patchSetId": 1
@@ -62,6 +86,47 @@
       "revId": "781bc0d96f5a49df1074a2c581d8d5f52f0f92b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e1ab1cd_a13235d1",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-22T20:26:00Z",
+      "side": 1,
+      "message": "\u003e This port parameter is the port number, though. I don\u0027t think we\n \u003e should name it with \u0027USB\u0027 alone. That makes it confusing since that\n \u003e function needs to know what *i2c* port number it should use to\n \u003e talk.\n\nThis function is taking the Type-C port number (not I2C) to determine which EC GPIOs to toggle to switch power mode.",
+      "parentUuid": "527e69bb_98c8016e",
+      "revId": "781bc0d96f5a49df1074a2c581d8d5f52f0f92b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bd877b0_9b931ad3",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-02-22T20:26:00Z",
+      "side": 1,
+      "message": "These two are I2C Port number, right?\n\nMay be do something like this?\n\n[USB_PD_PORT_ANX74xx] \u003d {\n    .i2c_host_port \u003d NPCX_I2C_PORT0_0,\n    .i2c_slave_addr \u003d 0x50,\n    ......\n},\n[USB_PD_PORT_PS8751] \u003d {......},",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 21
+      },
+      "revId": "781bc0d96f5a49df1074a2c581d8d5f52f0f92b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
