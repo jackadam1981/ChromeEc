@@ -42,6 +42,9 @@ void tpm_register_interface(interface_restart_func interface_restart);
  */
 int tpm_reset_request(int wait_until_done, int wipe_nvmem_first);
 
+/* Tell the TPM task to re-enable nvmem commits. */
+void tpm_reinstate_nvmem_commits(void);
+
 /*
  * This structure describes the header of all commands and responses sent and
  * received over TPM FIFO.
