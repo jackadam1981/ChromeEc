@@ -16,6 +16,24 @@
       "revId": "7d0b698ec15223f175a583a27d4e4a4e8c50c06b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a91c0a7a_a650b823",
+        "filename": "common/curve25519.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:24:06Z",
+      "side": 1,
+      "message": "You can steal a constant-time implementation from vboot_reference.  See vb2_safe_memcmp() in \nhttps://chromium.googlesource.com/chromiumos/platform/vboot_reference/+/master/firmware/2lib/2common.c",
+      "parentUuid": "494fd979_5967c8e4",
+      "revId": "7d0b698ec15223f175a583a27d4e4a4e8c50c06b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
