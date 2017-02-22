@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f35360fa_defe47ce",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-22T09:23:09Z",
+      "side": 1,
+      "message": "Yes, overall these  hw timers are not really designed to be re-clocked while running.\nThis was kind of a best-effort update to be wrong less 1 time of one billion rather than consistently wrong,\nwe can add even more complexity here, but the proper solution to be 100% correct is actually to update the upstream clock divider and keep the input clock frequency constant.\nAs soon as I have benchmarked the application to find which clock rates are suiting my needs, I will switch my board to such a system.\nI might just add comment here (actually none of our systems are re-clocking more than once after startup)",
+      "parentUuid": "9d524699_1e7d31e3",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 38
+      },
+      "revId": "5905015b919a21af9a46cbf4e5e74d567ac1b6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed66141b_e52afd26",
         "filename": "chip/stm32/hwtimer32.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-21T23:59:09Z",
       "side": 1,
       "message": "Can we just call update_prescaler?",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 33
+      },
+      "revId": "5905015b919a21af9a46cbf4e5e74d567ac1b6dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d65f2fb7_e2c9af57",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-22T09:23:09Z",
+      "side": 1,
+      "message": "then we would start counting from a mostly random value rather than 0",
+      "parentUuid": "ed66141b_e52afd26",
       "range": {
         "startLine": 189,
         "startChar": 0,
