@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2434eb48_4aab2574",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-22T14:32:01Z",
+      "side": 1,
+      "message": "I\u0027m curious what this change has anything to do with that bug?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "3501a02d8173f90bed71cfedf7236481e8d3a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49f1a0f1_fd4fe479",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-22T14:32:01Z",
+      "side": 1,
+      "message": "reef is using 95%. Why is 89% used?",
+      "revId": "3501a02d8173f90bed71cfedf7236481e8d3a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
