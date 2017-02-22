@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dc83a49_e541053f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T04:18:56Z",
+      "side": 1,
+      "message": "When would this be useful?\n\nWe\u0027d never prod-sign a DEV image, so wouldn\u0027t it need to be node-locked?  Or does this just produce an image that wouldn\u0027t verify on H1, but is useful for other things?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 14
+      },
+      "revId": "44b4e52f35f0eb1e4d5e579599a8b0d72d404cde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
