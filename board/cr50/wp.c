@@ -5,6 +5,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "crc8.h"
 #include "extension.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -16,6 +17,7 @@
 #include "system_chip.h"
 #include "task.h"
 #include "timer.h"
+#include "tpm_nvmem_read.h"
 #include "tpm_registers.h"
 #include "util.h"
 
@@ -246,9 +248,89 @@ static void init_console_lock_and_wp(void)
 /* This must run after initializing the NVMem partitions. */
 DECLARE_HOOK(HOOK_INIT, init_console_lock_and_wp, HOOK_PRIO_DEFAULT+1);
 
+#ifndef CR50_DEV
+/*
+ * These definitions and the structure layout were manually copied from
+ * src/platform/vboot_reference/firmware/lib/include/rollback_index.h. at
+ * git sha c7282f6.
+ */
+#define FWMP_NV_INDEX		    0x100a
+#define FWMP_HASH_SIZE		    32
+#define FWMP_DEV_DISABLE_CCD_UNLOCK (1 << 6)
+
+/* Firmware management parameters */
+struct RollbackSpaceFwmp {
+	/* CRC-8 of fields following struct_size */
+	uint8_t crc;
+	/* Structure size in bytes */
+	uint8_t struct_size;
+	/* Structure version */
+	uint8_t struct_version;
+	/* Reserved; ignored by current reader */
+	uint8_t reserved0;
+	/* Flags; see enum fwmp_flags */
+	uint32_t flags;
+	/* Hash of developer kernel key */
+	uint8_t dev_key_hash[FWMP_HASH_SIZE];
+} __attribute__((packed));
+
+static int lock_enforced(const struct RollbackSpaceFwmp *fwmp)
+{
+	uint8_t crc;
+
+	/* Let's verify that the FWMP structure makes sense. */
+	if (fwmp->struct_size != sizeof(*fwmp)) {
+		CPRINTS("%s: fwmp size mismatch (%d)\n", __func__,
+			fwmp->struct_size);
+		return 1;
+	}
+
+	crc = crc8(&fwmp->struct_size, sizeof(struct RollbackSpaceFwmp) -
+		   offsetof(struct RollbackSpaceFwmp, struct_size));
+	if (fwmp->crc != crc) {
+		CPRINTS("%s: fwmp crc mismatch\n", __func__);
+		return 1;
+	}
+
+	return !!(fwmp->flags & FWMP_DEV_DISABLE_CCD_UNLOCK);
+}
+
+static int fwmp_restricted;
+static void check_fwmp_flags(void)
+{
+	/* Let's see if FWMP disables console activation. */
+	struct RollbackSpaceFwmp fwmp;
+
+	switch (read_tpm_nvmem(FWMP_NV_INDEX,
+			       sizeof(struct RollbackSpaceFwmp), &fwmp)) {
+	default:
+		/* Something is messed up, let's not allow console unlock. */
+		fwmp_restricted = 1;
+		return;
+	case tpm_read_not_found:
+		fwmp_restricted = 0;
+		return;
+
+	case tpm_read_success:
+		fwmp_restricted = lock_enforced(&fwmp);
+		return;
+	}
+
+}
+DECLARE_DEFERRED(check_fwmp_flags);
+#endif
+
 int console_is_restricted(void)
 {
+#ifndef CR50_DEV
+	fwmp_restricted = -1;
+	hook_call_deferred(&check_fwmp_flags_data, 0);
+	while (fwmp_restricted == -1)
+		usleep(100);
+	return fwmp_restricted ? 1 : console_restricted_state;
+#else
 	return console_restricted_state;
+#endif
 }
 
 /****************************************************************************/
@@ -406,15 +488,6 @@ static int command_lock(int argc, char **argv)
 {
 	int enabled;
 	int i;
-
-#ifndef CR50_DEV
-	/* Don't allow the console to be unlocked at all for prod images. */
-	ASSERT(console_is_restricted() == 1);
-	if (argc > 1)
-		return EC_ERROR_ACCESS_DENIED;
-
-	goto out;
-#endif /* !defined(CR50_DEV) */
 
 	if (argc > 1) {
 		if (!parse_bool(argv[1], &enabled))
