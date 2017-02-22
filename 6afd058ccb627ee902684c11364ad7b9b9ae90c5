@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7a564af_054a0df8",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-22T03:17:17Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this classify 1.2.0 as older than 1.1.3?",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 45
+      },
+      "revId": "6afd058ccb627ee902684c11364ad7b9b9ae90c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
