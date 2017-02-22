@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "2fa27dbb_e9882ee4",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T05:17:35Z",
+      "side": 1,
+      "message": "I am not a fan of asserts in production code. What if this ever asserts here - you are not likely to see anything on the usb_console, it would be a completely bricked device.",
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf28efb_647e3428",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T05:17:35Z",
+      "side": 1,
+      "message": "why does this have to move here?",
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a015020_a2cde1bf",
         "filename": "board/cr50/board.h",
         "patchSetId": 1
@@ -33,6 +67,121 @@
       "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56b7bf81_8f484469",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T05:17:35Z",
+      "side": 1,
+      "message": "use sizeof(key) instead of key_len",
+      "range": {
+        "startLine": 119,
+        "startChar": 37,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44095882_9c3b2e5a",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T05:17:35Z",
+      "side": 1,
+      "message": "not sure this printout add much value - this function reports the final state and the errors, if any.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 0
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c53311_fd86baac",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T05:17:35Z",
+      "side": 1,
+      "message": "why is this necessary? The write access is supposed to wait for the lock, it should not take more than 3 seconds after tpm reset - does it not work this way?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f9da373_4ea74dc1",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T05:17:35Z",
+      "side": 1,
+      "message": "it seems to me this check does not seem to make a lot of sense any more.\n\nWhen do we not want to follow the state saved in nvmem?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 55
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c068688a_1e39acbf",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T05:17:35Z",
+      "side": 1,
+      "message": "this typecast is not necessary",
+      "range": {
+        "startLine": 239,
+        "startChar": 25,
+        "endLine": 239,
+        "endChar": 30
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {

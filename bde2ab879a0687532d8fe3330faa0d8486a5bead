@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "910156ab_6e645b71",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-22T05:17:35Z",
+      "side": 0,
+      "message": "let\u0027s not reuse the previously used bits until we have to (i.e. run out of bits) this would allow to stay backwards compatible for a quite a few versions. So, just drop the CONSOLE_UNLOCKED bit definition and edit the comment in lihe 19 to say \u0027the gaps are...\u0027",
+      "revId": "bde2ab879a0687532d8fe3330faa0d8486a5bead",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
