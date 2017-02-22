@@ -42,6 +42,12 @@ void usb_disconnect(void);
  */
 void usb_release(void);
 
+/*
+ * Tell the host to wake up. Requires CONFIG_USB_REMOTE_WAKEUP to be defined,
+ * and a chip that implements the function.
+ */
+void usb_wake(void);
+
 #ifdef CONFIG_USB_SELECT_PHY
 /* Select which PHY to use. */
 void usb_select_phy(uint32_t phy);
