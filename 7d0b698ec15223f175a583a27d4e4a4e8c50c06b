@@ -34,6 +34,24 @@
       "revId": "7d0b698ec15223f175a583a27d4e4a4e8c50c06b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "073d9c6d_59e101fc",
+        "filename": "common/curve25519.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-22T09:40:58Z",
+      "side": 1,
+      "message": "Updated using Randall\u0027s suggestion.",
+      "parentUuid": "a91c0a7a_a650b823",
+      "revId": "7d0b698ec15223f175a583a27d4e4a4e8c50c06b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
