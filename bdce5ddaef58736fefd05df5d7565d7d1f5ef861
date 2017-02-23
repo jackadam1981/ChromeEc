@@ -236,6 +236,30 @@
       "revId": "bdce5ddaef58736fefd05df5d7565d7d1f5ef861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc7c699_b870485c",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-23T18:46:49Z",
+      "side": 1,
+      "message": "For byte array access, it should be system_get_bbram(enum, uint8_t *buf, int buf_len). So, it\u0027s not completely indistinguishable, I guess.",
+      "parentUuid": "03fd4410_cfd040ea",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 20
+      },
+      "revId": "bdce5ddaef58736fefd05df5d7565d7d1f5ef861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
