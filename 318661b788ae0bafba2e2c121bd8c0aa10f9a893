@@ -70,6 +70,30 @@
       "revId": "318661b788ae0bafba2e2c121bd8c0aa10f9a893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92faa583_0373f15e",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-23T17:55:24Z",
+      "side": 1,
+      "message": "In that case, we\u0027d be calling bbram_is_byte_access() in both the callee (to check byte vs word access) and in the caller (to make sure that we actually got back a byte). Rather than doing that, it would be better to just tell the callee how many bytes to access (as we originally had) or to have the callee tell us how many bytes it is giving back to us through an extra output parameter.",
+      "parentUuid": "9ffdc9fe_e739befd",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "318661b788ae0bafba2e2c121bd8c0aa10f9a893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
