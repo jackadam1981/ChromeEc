@@ -22,6 +22,30 @@
       "revId": "8cc9a8c93a69721c3415cb811b69ba2ae3657194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b487e4e6_67c46aab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-02-23T20:34:08Z",
+      "side": 1,
+      "message": "This is the same interrupt signal from the trackpad that goes to the host, so we get interrupts on it at runtime whenever the trackpad is used.\n\nI think this results in the pending bit getting set because while the \"wake up and interrupt request\" is disabled in WKENx until explicitly enabled with gpio_enable_interrupt(), the \"wake up input enable\" in WKINENx is enabled by default for all GPIO_INT() declarations during gpio_pre_init().",
+      "parentUuid": "26ec2242_c05da295",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "8cc9a8c93a69721c3415cb811b69ba2ae3657194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
