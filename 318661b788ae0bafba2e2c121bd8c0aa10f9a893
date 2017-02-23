@@ -46,6 +46,30 @@
       "revId": "318661b788ae0bafba2e2c121bd8c0aa10f9a893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ffdc9fe_e739befd",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-23T17:38:26Z",
+      "side": 1,
+      "message": "I meant we put something like\n\nif (!bbram_is_byte_access(idx))\n    return EC_ERROR_INVAL;\n\nat line 169. This will gurantee that bbram_data_read will return a byte not uint32_t.",
+      "parentUuid": "019124f2_90b019e2",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "318661b788ae0bafba2e2c121bd8c0aa10f9a893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
