@@ -970,6 +970,13 @@ int tcpc_get_cc(int port, int *cc1, int *cc2)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_USB_PD_DTS
+int tcpc_select_rp_value(port, rp)
+{
+	return pd_set_rp_mode(port, TYPEC_CC_RP, rp);
+}
+#endif
+
 int tcpc_set_polarity(int port, int polarity)
 {
 	pd[port].polarity = polarity;

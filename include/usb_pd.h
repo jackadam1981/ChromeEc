@@ -1582,6 +1582,15 @@ void pd_prepare_reset(void);
  */
 void pd_set_new_power_request(int port);
 
+/**
+ * Set Rp value for the given port.
+ *
+ * @param port USB-C port number
+ * @param rp pull strengh USB, 1A5, or 3A0
+ * @return EC_INVAL if rp isn't a supported value, EC_SUCCESS otherwise.
+ */
+int tcpc_select_rp_value(int port, int rp);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**
