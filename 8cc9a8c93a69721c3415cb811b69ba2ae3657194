@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26ec2242_c05da295",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-23T18:15:17Z",
+      "side": 1,
+      "message": "I don\u0027t understand how the pending bit is getting set for this GPIO beforehand. Any chance you\u0027re using a level-triggered interrupt rather than edge?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "8cc9a8c93a69721c3415cb811b69ba2ae3657194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
