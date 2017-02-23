@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fa06562b_58658e15",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T07:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd84641f_1c0890d6",
+      "revId": "cc7aecec00f8a130bc10072818922709c1444156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62cc3757_a1d0e5df",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 1
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "2b13fc51_d96495ef",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T07:46:09Z",
+      "side": 1,
+      "message": "I checked, it is cleared.",
+      "parentUuid": "a01b7785_bed01201",
+      "range": {
+        "startLine": 310,
+        "startChar": 19,
+        "endLine": 310,
+        "endChar": 42
+      },
+      "revId": "cc7aecec00f8a130bc10072818922709c1444156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc2c3efd_111b714d",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 1
@@ -77,6 +119,30 @@
       "writtenOn": "2017-02-22T11:22:10Z",
       "side": 1,
       "message": "yes ... but we should not do it here.\n\nwe don\u0027t really know, who else is using the clock / what kind of clock it is (dedicated RC / PLL /  system RC48). The way how power management work, we might want to remove at this point the bit preventing the deep-sleep / clock turn down:\ne.g. enable_sleep(SLEEP_MASK_USB_DEVICE);  (and the matching disable_sleep at resume)\n[by the way, this USB driver is kind of broken right now, I\u0027m seeing 0 disable_sleep() ...]\nif we have more complex clock scheme, a clock_enable_module(MODULE_USB, 0) might be good\n(and it\u0027s mostly harmless right now since it is stubbed on F0)",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 4
+      },
+      "revId": "cc7aecec00f8a130bc10072818922709c1444156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6070e86e_9986bff8",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T07:46:09Z",
+      "side": 1,
+      "message": "Nice. Thanks for the step-by-step instructions, I think I got something that works well now ,-)",
+      "parentUuid": "cc2c3efd_111b714d",
       "range": {
         "startLine": 311,
         "startChar": 0,
@@ -157,6 +223,30 @@
       "revId": "cc7aecec00f8a130bc10072818922709c1444156",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ce0d82_893e0608",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T07:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01016deb_b604ba43",
+      "range": {
+        "startLine": 328,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 4
+      },
+      "revId": "cc7aecec00f8a130bc10072818922709c1444156",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
