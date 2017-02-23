@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "ad46dcd0_3368a7c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-23T14:58:28Z",
+      "side": 1,
+      "message": "Understood on the tolerance. But applying a large value hair cut to all values of currents to meet a specific case seems wrong. Does the tolerance fluctuate based on current load? If so, we should scale based on the load requested.\n\nI\u0027m also confused on the failure case as a whole. Is it that we\u0027re trying to supply current a level on one side and pulling too much on the other because the tolerances are different? The supplying side can only supply 94% of advertised load and the sink side can pull 95% of load? Therefore, we brown out the  supply side. So then the answer is to make a super large haircut on the sink side?",
+      "parentUuid": "5ef95e0a_6b6bc886",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "3501a02d8173f90bed71cfedf7236481e8d3a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49f1a0f1_fd4fe479",
         "filename": "board/snappy/board.c",
         "patchSetId": 2
