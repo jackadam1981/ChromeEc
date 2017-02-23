@@ -94,6 +94,30 @@
       "revId": "318661b788ae0bafba2e2c121bd8c0aa10f9a893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ea2948_7783810a",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-23T18:23:17Z",
+      "side": 1,
+      "message": "I was thinking of something like this:\n\nstatic int bbram_get_data_length(enum bbram_data_index index)\n{\n\treturn (index \u003e\u003d BBRM_DATA_INDEX_VBNVCNTXT \u0026\u0026\n\t\tindex \u003c  BBRM_DATA_INDEX_RAMLOG) ? 1 : 4;\n}\n\nstatic int bbram_data_read(enum bbram_data_index index, uint32_t *value)\n{\n\tint bytes \u003d bbram_get_data_length(index);\n\n\t/* Check index */\n\tif (index \u003c 0 || index + bytes \u003e\u003d NPCX_BBRAM_SIZE)\n\t\treturn EC_ERROR_INVAL;\n\n\t/* BBRAM is valid */\n\tif (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR)) {\n\t\t*value \u003d 0;\n\t\treturn EC_SUCCESS;\n\t}\n\n\t/* Read BBRAM */\n\tswitch (bytes) {\n\tcase 1:\n\t\t*value \u003d NPCX_BBRAM(index);\n\t\tbreak;\n\tcase 4:\n\t\tvalue +\u003d NPCX_BBRAM(index + 3);\n\t\tvalue \u003d value \u003c\u003c 8;\n\t\tvalue +\u003d NPCX_BBRAM(index + 2);\n\t\tvalue \u003d value \u003c\u003c 8;\n\t\tvalue +\u003d NPCX_BBRAM(index + 1);\n\t\tvalue \u003d value \u003c\u003c 8;\n\t\tbreak;\n\tdefault:\n                /* kind of redundant now (maybe useful in the future). */\n\t\treturn EC_ERROR_INVAL;\n\t}\n\n\treturn EC_SUCCESS;\n}\n\nint system_get_bbram(enum system_bbram_idx idx, uint8_t *value)\n{\n\tint bbram_idx \u003d bbram_idx_lookup(idx);\n\n\tif (bbram_get_data_length(bbram_idx) !\u003d sizeof(*value))\n\t\treturn EC_ERROR_INVAL;\n\n\treturn bbram_data_read(bbram_idx, value);\n}\n\nErrors are handled explicitly and I think it addresses your concerns.",
+      "parentUuid": "92faa583_0373f15e",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "318661b788ae0bafba2e2c121bd8c0aa10f9a893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
