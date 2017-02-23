@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "109d93bb_bd8297bb",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-23T17:35:03Z",
+      "side": 1,
+      "message": "I still think we should return error code. index bound check should be done by the function and the caller just checks returned error to learn a boundary error. Assuming we use the prototype I proposed, you can still do:\n\nif (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR)) {\n    *value \u003d 0;\n    return EC_SUCCESS;\n}\n\nThis makes it more explicit that this is not an error but an expected valid case. Also, this makes it consistent with bbram_data_write.",
+      "parentUuid": "fa9875ea_c056e073",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 71
+      },
+      "revId": "bdce5ddaef58736fefd05df5d7565d7d1f5ef861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8cfd372_f7a95263",
         "filename": "chip/npcx/system.c",
         "patchSetId": 1
