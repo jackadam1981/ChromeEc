@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "501e15f3_02f6a3e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000298
+      },
+      "writtenOn": "2017-02-23T05:02:11Z",
+      "side": 1,
+      "message": "In this case, it appears we are limiting current, but I think that may be appropriate. Based on Shawn\u0027s comment (https://code.google.com/p/chrome-os-partner/issues/detail?id\u003d49080#c9) from the Chell bug, this could happen at any voltage, not just the Chromebook\u0027s max power (45W).\n\nIn the case encountered in crosbug.com/p/60943, the other Chromebook was advertising 5V 3A (or 15W)., and Bruce\u0027s assertion is that Snappy overshot the 3A maximum current defined by the power delivery power contract.",
+      "parentUuid": "546250d3_5bbe76aa",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "3501a02d8173f90bed71cfedf7236481e8d3a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49f1a0f1_fd4fe479",
         "filename": "board/snappy/board.c",
         "patchSetId": 2
