@@ -84,12 +84,14 @@
 #define CONFIG_USB_PD_PORT_COUNT 2
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
+#undef CONFIG_USB_PD_PULLUP
+#define CONFIG_USB_PD_PULLUP TYPEC_RP_USB
 
 /* Override PD_ROLE_DEFAULT in usb_pd.h */
 #define PD_ROLE_DEFAULT(port) ((port) ? PD_ROLE_SOURCE : PD_ROLE_SINK)
 
 /* 3.0A Standard-current Rp */
-#define PD_SRC_VNC           PD_SRC_DEF_VNC_MV
+#define PD_SRC_VNC           PD_SRC_3_0_VNC_MV
 #define PD_SRC_RD_THRESHOLD  PD_SRC_DEF_RD_THRESH_MV
 
 /*
@@ -102,9 +104,9 @@
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
-#define PD_MAX_POWER_MW       60000
+#define PD_MAX_POWER_MW       15000
 #define PD_MAX_CURRENT_MA     3000
-#define PD_MAX_VOLTAGE_MV     20000
+#define PD_MAX_VOLTAGE_MV     5000
 
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
