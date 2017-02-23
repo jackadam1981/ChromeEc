@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "5ef95e0a_6b6bc886",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-23T13:18:29Z",
+      "side": 1,
+      "message": "The percentage on Chell is still mostly just a CYA factor.\n\n\u003e  I\u0027m curious why we\u0027re completely basing these percentages of current across the board\n\u003e -- no matter what it actually seems the max current is a function of load \n\u003e and negotiated PD settings. That hasn\u0027t been answered.\n\nthe percentage was crafted to account for the tolerance of the input current regulation.\nWhen you negotiate an explicit USB PD contract, you are supposed to consume strictly less than the negotiated value (at least that\u0027s some people interpretation) and the input charger IC usually have a 3 to 5% tolerance on how well it regulates the current it\u0027s consuming, so to avoid infringing our contract we account for this imprecision.\n\nBy the way, when people starts adding 10 to 15% margins everywhere ...",
+      "parentUuid": "501e15f3_02f6a3e7",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "3501a02d8173f90bed71cfedf7236481e8d3a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49f1a0f1_fd4fe479",
         "filename": "board/snappy/board.c",
         "patchSetId": 2
@@ -192,6 +216,24 @@
       "side": 1,
       "message": "But isn\u0027t that based on the voltage? Shouldn\u0027t we be scaling the current based on voltage in conjunction with the charge?",
       "parentUuid": "83e017ef_374b532f",
+      "revId": "3501a02d8173f90bed71cfedf7236481e8d3a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf31fc89_9bddc501",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-23T13:18:29Z",
+      "side": 1,
+      "message": "\u003e snappy spec should set max power to 40W, so set charge current to 89%.\n\nSeems to be unrelated, the max requested power is set by PD_MAX_POWER_MW",
+      "parentUuid": "b3bf2b11_3daec464",
       "revId": "3501a02d8173f90bed71cfedf7236481e8d3a2b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
