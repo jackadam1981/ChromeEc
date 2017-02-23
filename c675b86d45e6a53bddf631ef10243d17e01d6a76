@@ -22,6 +22,30 @@
       "revId": "c675b86d45e6a53bddf631ef10243d17e01d6a76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf3d2bbb_7314900e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T00:23:16Z",
+      "side": 1,
+      "message": "I did test it as part of the bigger series (maybe the pstate change wasn\u0027t tested properly actually).\n\nAnyway, tested this CL on its own for our peace of mind ,-)",
+      "parentUuid": "fdd4fa44_a653c700",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "c675b86d45e6a53bddf631ef10243d17e01d6a76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
