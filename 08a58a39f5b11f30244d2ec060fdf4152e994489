@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "076d0133_6d4889e5",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-23T12:00:25Z",
+      "side": 1,
+      "message": "if the usb_resume interrupt happens before the end of the (long) 5ms, shouldn\u0027t we exit early here ?",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 42
+      },
+      "revId": "08a58a39f5b11f30244d2ec060fdf4152e994489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1f5cd7_724ac7cc",
+        "filename": "include/usb_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-23T12:00:25Z",
+      "side": 1,
+      "message": "worth mentioning it cannot be called in interrupt context because it sleeps",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "08a58a39f5b11f30244d2ec060fdf4152e994489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
