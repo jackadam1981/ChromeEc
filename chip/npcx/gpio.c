@@ -646,11 +646,13 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 	const struct gpio_info *g     = gpio_list + signal;
 	struct gpio_wui_gpio_info wui = gpio_find_wui_from_io(g->port, g->mask);
 
-	/* Set MIWU enable bit */
-	if (wui.valid)
+	/* Clear pending interrupt and set MIWU enable bit */
+	if (wui.valid) {
+		NPCX_WKPCL(wui.table, wui.group) |= (1 << wui.bit);
 		NPCX_WKEN(wui.table, wui.group) |= (1 << wui.bit);
-	else
+	} else {
 		return EC_ERROR_PARAM1;
+	}
 
 	return EC_SUCCESS;
 }
