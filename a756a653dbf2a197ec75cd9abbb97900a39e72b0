@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abe8929c_53c5ac84",
+        "filename": "chip/stm32/usb-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-23T13:07:19Z",
+      "side": 1,
+      "message": "the order should be the other way round, in case you are preempted between the 2 operations",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "a756a653dbf2a197ec75cd9abbb97900a39e72b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
