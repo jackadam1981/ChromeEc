@@ -295,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "4a82c281_a9436187",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-23T03:36:22Z",
+      "side": 1,
+      "message": "Still don\u0027t have a 100% explanation yet, but here\u0027s what I found today.\n\nFor some reason, the call to hook_call_deferred(\u0026reinstate_nvmem_commits, ...) in tpm_registers.c::tpm_reset_now, does not result in the HOOKS task being marked as ready and therefore scheduled. I\u0027m really confused by this as my understanding is that a call to task_wake() should mark a task as ready to run. I do see that the hook_call_deferred function call is made.\n\nThere\u0027s a nvmem_read triggered by the call to getvar on L229 in this file, which is where this path gets stuck. It seems that it\u0027s trying to acquire the nvmem_cache lock, but the lock is held by the TPM task (which the call to reinstate_nvmem_commits would have caused the lock to be released).\n\nAt the point where the watchdog expires, it seems that neither the hooks task nor the TPM task has run further. There are also no timers setup by the hooks task (probably because it hasn\u0027t had a chance to run). The console is still responsive during this whole time though.",
+      "parentUuid": "facdc791_763076b1",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f9da373_4ea74dc1",
         "filename": "board/cr50/wp.c",
         "patchSetId": 1
