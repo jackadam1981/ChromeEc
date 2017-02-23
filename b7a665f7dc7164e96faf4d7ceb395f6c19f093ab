@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf494578_353dee37",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T07:48:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c9599ebe_2cf55f52",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 349,
+        "endChar": 59
+      },
+      "revId": "b7a665f7dc7164e96faf4d7ceb395f6c19f093ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae4d75fd_7a257fe4",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-02-22T10:34:51Z",
       "side": 1,
       "message": "Should probably count a couple of ESOF interrupts as recommended by the manual.",
+      "revId": "b7a665f7dc7164e96faf4d7ceb395f6c19f093ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c386fd3_7ebcab5f",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T07:48:42Z",
+      "side": 1,
+      "message": "Nope, msleep is good.",
+      "parentUuid": "ae4d75fd_7a257fe4",
       "revId": "b7a665f7dc7164e96faf4d7ceb395f6c19f093ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -56,6 +98,24 @@
       "revId": "b7a665f7dc7164e96faf4d7ceb395f6c19f093ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "287dfa12_7e1805e8",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T07:48:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f0053fa_b962c968",
+      "revId": "b7a665f7dc7164e96faf4d7ceb395f6c19f093ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
