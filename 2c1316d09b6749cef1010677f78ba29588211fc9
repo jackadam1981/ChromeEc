@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3674439c_17cae5a6",
+        "filename": "util/host_command_check.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-02-23T16:26:47Z",
+      "side": 1,
+      "message": "These are the Private Host Commands that range from 0x3E00 to 0x3FFF.\nSee include/ec_commands.h",
+      "parentUuid": "d46fc4a4_43c4b344",
+      "range": {
+        "startLine": 69,
+        "startChar": 28,
+        "endLine": 69,
+        "endChar": 42
+      },
+      "revId": "2c1316d09b6749cef1010677f78ba29588211fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3374163_fe4ff6f2",
         "filename": "util/host_command_check.sh",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a85ca9e2_fd3008cb",
+        "filename": "util/host_command_check.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-02-23T16:26:47Z",
+      "side": 1,
+      "message": "The Private Host Commands are defined in project specific files.",
+      "parentUuid": "c3374163_fe4ff6f2",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 31
+      },
+      "revId": "2c1316d09b6749cef1010677f78ba29588211fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43eb56de_0dea45ca",
         "filename": "util/host_command_check.sh",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-02-23T00:02:23Z",
       "side": 1,
       "message": "Sorry, my bash foo is quite weak. What does the `!` do? Does it mean execute the clause if check_cmd returns 0?",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 16
+      },
+      "revId": "2c1316d09b6749cef1010677f78ba29588211fc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc62fee_da36501b",
+        "filename": "util/host_command_check.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-02-23T16:26:47Z",
+      "side": 1,
+      "message": "It\u0027s actually the opposite. Execute the statement if check_cmd returns 1. check_cmd returns exit codes, so the if statement executes when the expression evaluates to 0.",
+      "parentUuid": "43eb56de_0dea45ca",
       "range": {
         "startLine": 93,
         "startChar": 0,
