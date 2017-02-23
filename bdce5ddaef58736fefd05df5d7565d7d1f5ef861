@@ -140,6 +140,30 @@
       "revId": "bdce5ddaef58736fefd05df5d7565d7d1f5ef861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04f4d085_a9d80b23",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-23T00:02:36Z",
+      "side": 1,
+      "message": "_byte just makes the function longer.\n\nget/set use uint8_t for the value, so byte is implied.",
+      "parentUuid": "0748b196_fd1ca62a",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 20
+      },
+      "revId": "bdce5ddaef58736fefd05df5d7565d7d1f5ef861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
