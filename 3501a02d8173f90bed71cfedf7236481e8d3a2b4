@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "5441409d_450cc2a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000298
+      },
+      "writtenOn": "2017-02-23T15:05:06Z",
+      "side": 1,
+      "message": "Ok. Let\u0027s wait for Bruce to prove what is going on with the failure case of two Chromebooks.",
+      "parentUuid": "ad46dcd0_3368a7c4",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "3501a02d8173f90bed71cfedf7236481e8d3a2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49f1a0f1_fd4fe479",
         "filename": "board/snappy/board.c",
         "patchSetId": 2
