@@ -22,6 +22,30 @@
       "revId": "7661151885a932f2b64bf0cfe69cbbd082f4007a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d631125_04aff99f",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T12:48:40Z",
+      "side": 1,
+      "message": "Done. A bit a code duplication though, but I don\u0027t think it\u0027s worth adding another layer of indirection with some chip_usb_connect() function...",
+      "parentUuid": "c89b4bce_8310ee01",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 0
+      },
+      "revId": "7661151885a932f2b64bf0cfe69cbbd082f4007a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
