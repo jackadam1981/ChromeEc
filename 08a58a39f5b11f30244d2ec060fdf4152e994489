@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ded20a6b_b3fc4c47",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T12:53:56Z",
+      "side": 1,
+      "message": "I\u0027ll try to trace the timing of what is going on here (and if we can clear the bit earlier).\n\nActually, this might be a problem: we could sleep much longer than 5ms if the calling task is starving... Might be better to count ESOFs, after all...",
+      "parentUuid": "076d0133_6d4889e5",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 42
+      },
+      "revId": "08a58a39f5b11f30244d2ec060fdf4152e994489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf1f5cd7_724ac7cc",
         "filename": "include/usb_api.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "08a58a39f5b11f30244d2ec060fdf4152e994489",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd8aee0_3ab0e3bc",
+        "filename": "include/usb_api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-23T12:53:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf1f5cd7_724ac7cc",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 0
+      },
+      "revId": "08a58a39f5b11f30244d2ec060fdf4152e994489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
