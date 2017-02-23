@@ -14,10 +14,13 @@
 #include "registers.h"
 #include "system.h"
 #include "task.h"
+#include "tcpm.h"
 #include "timer.h"
 #include "util.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_config.h"
+#include "usb_pd_tcpm.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -27,20 +30,162 @@
 /*#define MAX_POWER_MW       60000 */
 /*#define MAX_CURRENT_MA     3000 */
 
-#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
-			 PDO_FIXED_COMM_CAP)
+#define DUT_PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
+			     PDO_FIXED_COMM_CAP | PDO_FIXED_EXTERNAL)
 
-const uint32_t pd_src_pdo[] = {
-		PDO_FIXED(5000,   900, PDO_FIXED_FLAGS),
+#define CHG_PDO_FIXED_FLAGS (PDO_FIXED_DATA_SWAP | PDO_FIXED_COMM_CAP)
+
+/*
+ * Dynamic PDO that reflects capabilities present on the CHG port. Allow for two
+ * entries so that can offer greater than 5V charging. The 1st entry will be
+ * fixed 5V, but its current value may change based on the CHG port vbus
+ * info. The 2nd entry is used for when offering vbus greater than 5V.
+ */
+static uint32_t pd_src_chg_pdo[2];
+static uint8_t chg_pdo_cnt;
+static const uint32_t pd_src_host_pdo[] = {
+		PDO_FIXED(5000, 500, DUT_PDO_FIXED_FLAGS),
 };
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
+static const int pd_src_host_pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
 
 const uint32_t pd_snk_pdo[] = {
-		PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
+		PDO_FIXED(5000, 500, CHG_PDO_FIXED_FLAGS),
 		PDO_BATT(4750, 21000, 15000),
 		PDO_VAR(4750, 21000, 3000),
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
+
+static uint8_t vbus_en[CONFIG_USB_PD_PORT_COUNT] = {0, 0};
+static uint8_t vbus_rp = TYPEC_RP_RESERVED;
+static int chg_vbus_mv;
+static int chg_vbus_ma;
+static int chg_vbus_ma_pend;
+static int chg_vbus_mv_pend;
+
+static void board_manage_dut_port(int port)
+{
+	int rp;
+
+	/*
+	 * This function is called by the DUT port only when Vbus is being
+	 * enabled and it's called by the CHG port when the CHG port Vbus
+	 * changes state.
+	 */
+
+	/* Update the Rp value being used. Assume the default value of Rp */
+	rp = TYPEC_RP_USB;
+	if (chg_vbus_ma >= 3000)
+		/* CHG port is connected and DUt can advertise 3A */
+		rp = TYPEC_RP_3A0;
+	else if (chg_vbus_ma >= 1500)
+		rp = TYPEC_RP_1A5;
+
+	if (vbus_rp == rp) {
+		/* No change in DUT Rp value from current setting */
+		return;
+	}
+
+	/* Save new Rp value for DUT port */
+	vbus_rp = rp;
+	/* Present new Rp value */
+	tcpm_select_rp_value(DUT, rp);
+
+	/* Update PD contract to reflect new available CHG voltage/current */
+	pd_update_contract(DUT);
+}
+
+static void board_manage_chg_port(void)
+{
+	/* Update the voltage/current values for CHG port */
+	chg_vbus_mv = chg_vbus_mv_pend;
+	chg_vbus_ma = chg_vbus_ma_pend;
+	/* Set VBUS status for CHG port */
+	vbus_en[CHG] = chg_vbus_mv >= 5000 ? 1 : 0;
+
+	/*
+	 * CHG Vbus has changed states, update PDO that reflects CHG port
+	 * state
+	 */
+	if (!vbus_en[CHG]) {
+		/* CHG Vbus has dropped, so always source DUT Vbus from host */
+		gpio_set_level(GPIO_HOST_OR_CHG_CTL, 0);
+		chg_pdo_cnt = 0;
+	} else {
+		int vsafe5_ma = chg_vbus_mv > 5000 ? 500 : chg_vbus_ma;
+
+		pd_src_chg_pdo[0] = PDO_FIXED_VOLT(5000) |
+			PDO_FIXED_CURR(vsafe5_ma) | DUT_PDO_FIXED_FLAGS;
+		chg_pdo_cnt = 1;
+		if (chg_vbus_mv > 5000) {
+			/*
+			 * CHG vbus is > 5V so need an entry for vSafe5V and an
+			 * entry that reflects CHG VBUS
+			 */
+			pd_src_chg_pdo[1] = PDO_FIXED_VOLT(chg_vbus_mv) |
+				PDO_FIXED_CURR(chg_vbus_ma) |
+				DUT_PDO_FIXED_FLAGS;
+			chg_pdo_cnt = 2;
+		}
+	}
+
+	/* Call DUT port manager to update Rp and possible PD contract */
+	board_manage_dut_port(CHG);
+}
+DECLARE_DEFERRED(board_manage_chg_port);
+
+static void board_notify_chg_port(int max_ma, int vbus_mv)
+{
+
+	/* Check that VBUS isn't higher than what servo_v4 allows */
+	if (vbus_mv > PD_MAX_VOLTAGE_MV)
+		return;
+
+	/*
+	 * Determine if vbus from CHG port has changed values and if the current
+	 * state of CHG vbus is on or off. If the change is on, then schedule a
+	 * deffered callback. If the change is off, then act immediately.
+	 */
+	if (vbus_mv == chg_vbus_mv && chg_vbus_mv == chg_vbus_mv_pend)
+		/* No change in CHG VBUS detected, nothing else to do. */
+		return;
+
+	/* Save CHG port voltage and current levels */
+	chg_vbus_mv_pend = vbus_mv;
+	chg_vbus_ma_pend = max_ma;
+
+	/* Cancel any pending deferred call */
+	hook_call_deferred(&board_manage_chg_port_data, -1);
+	if (vbus_mv)
+		/* Wait enough time for PD contract to be established */
+		hook_call_deferred(&board_manage_chg_port_data,
+				  PD_T_SINK_WAIT_CAP * 3);
+	else
+		/* Update CHG port status now since vbus is off */
+		hook_call_deferred(&board_manage_chg_port_data, 0);
+}
+
+int board_select_rp_value(int port, int rp)
+{
+	return pd_set_rp_rd(port, TYPEC_CC_RP, rp);
+}
+
+int charge_manager_get_source_pdo(const uint32_t **src_pdo)
+{
+	int pdo_cnt;
+	/*
+	 * If CHG is providing VBUS, then advertise what's available on the CHG
+	 * port, otherwise used the fixed value that matches host capabilities.
+	 */
+	if (vbus_en[CHG]) {
+		*src_pdo =  pd_src_chg_pdo;
+		pdo_cnt = chg_pdo_cnt;
+	} else {
+		*src_pdo =  pd_src_host_pdo;
+		pdo_cnt = pd_src_host_pdo_cnt;
+	}
+
+	return pdo_cnt;
+}
 
 int pd_is_valid_input_voltage(int mv)
 {
@@ -51,31 +196,33 @@ int pd_is_valid_input_voltage(int mv)
 void pd_transition_voltage(int idx)
 {
 	/*
-	 * TODO(crosbug.com/p/60794): Most likely this function is a don't care
-	 * for servo_v4 since VBUS provided to the DUT port has just an on/off
-	 * control.  For now leave it as a no-op.
+	 * Up to this point, VBUS will have been supplied by host. If
+	 * vbus_en[CHG] is set, then that means the CHG port is in a steady
+	 * state condition and its voltage/current values have been communicated
+	 * to the DUT in the SRC_CAP message. If CHG vbus > 5V then 2
+	 * chg_src_pdo entries will have been sent. Only allow pass through
+	 * charging from CHG vbus if the pdo idx requested by the DUT matches
+	 * the number of chg_src_pdo entries.
+	 *
 	 */
+	if (vbus_en[CHG] && idx == chg_pdo_cnt)
+		gpio_set_level(GPIO_HOST_OR_CHG_CTL, 1);
 }
 
 int pd_set_power_supply_ready(int port)
 {
 	/* Port 0 can never provide vbus. */
-	if (!port)
+	if (port == CHG)
 		return EC_ERROR_INVAL;
 
-	/*
-	 * TODO(crosbug.com/p/60794): For now always assume VBUS is supplied by
-	 * host. No support yet for using CHG VBUS passthru mode.
-	 */
+	/* Update DUT Rp (if necessary) based on CHG port VBUS status */
+	board_manage_dut_port(port);
 
-	/*
-	 * Select Host as source for VBUS.
-	 * To select host, set GPIO_HOST_OR_CHG_CTL low. To select CHG as VBUS
-	 * source, then set GPIO_HOST_OR_CHG_CTL high.
-	 */
+	/* Only ever allow host vbus at this point */
 	gpio_set_level(GPIO_HOST_OR_CHG_CTL, 0);
 
-	/* Enable VBUS from the source selected above. */
+	/* Enable VBUS */
+	vbus_en[port] = 1;
 	gpio_set_level(GPIO_DUT_CHG_EN, 1);
 
 	return EC_SUCCESS; /* we are ready */
@@ -85,24 +232,24 @@ void pd_power_supply_reset(int port)
 {
 	/* Disable VBUS */
 	gpio_set_level(GPIO_DUT_CHG_EN, 0);
+	/* Set default VBUS source to Host */
+	gpio_set_level(GPIO_HOST_OR_CHG_CTL, 0);
+	/* Indicate that VBUS is not being supplied by this port */
+	vbus_en[port] = 0;
 }
 
 void pd_set_input_current_limit(int port, uint32_t max_ma,
 				uint32_t supply_voltage)
 {
-	/*
-	 * TODO(crosbug.com/p/60794): Placeholder for now so that can compile
-	 * with USB PD support.
-	 */
+	if (port == CHG)
+		board_notify_chg_port(max_ma, supply_voltage);
 }
 
 void typec_set_input_current_limit(int port, uint32_t max_ma,
 				   uint32_t supply_voltage)
 {
-	/*
-	 * TODO(crosbug.com/p/60794): Placeholder for now so that can compile
-	 * with USB PD support.
-	 */
+	if (port == CHG)
+		board_notify_chg_port(max_ma, supply_voltage);
 }
 
 int pd_snk_is_vbus_provided(int port)
@@ -121,8 +268,9 @@ int pd_check_power_swap(int port)
 {
 	/*
 	 * TODO(crosbug.com/p/60792): CHG port can't do a power swap as it's SNK
-	 * only. DUT port should be able to support a power role swap, but VBUS
-	 * will need to be present. For now, don't allow swaps on either port.
+	 * only. Don't allow DUT port to accept a power role swap request. More
+	 * support still needs to be added so that servo_v4 DUT port behaves
+	 * properly when acting as a SNK device.
 	 */
 	return 0;
 }
