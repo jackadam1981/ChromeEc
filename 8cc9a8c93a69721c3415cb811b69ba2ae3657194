@@ -46,6 +46,30 @@
       "revId": "8cc9a8c93a69721c3415cb811b69ba2ae3657194",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21317ba5_0fb1a511",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-02-23T20:39:54Z",
+      "side": 1,
+      "message": "Another option here might be to NOT enable the bit in WKINEN until the interrupt is enabled with gpio_enable_interrupt()\n\nI just tested that and it also works...",
+      "parentUuid": "b487e4e6_67c46aab",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "8cc9a8c93a69721c3415cb811b69ba2ae3657194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
