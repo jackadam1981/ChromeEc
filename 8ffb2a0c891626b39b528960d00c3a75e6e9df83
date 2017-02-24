@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1c46333_53839ef0",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-24T04:17:46Z",
+      "side": 1,
+      "message": "This is wrong, should be 0xc000.",
+      "revId": "8ffb2a0c891626b39b528960d00c3a75e6e9df83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
