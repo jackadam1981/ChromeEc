@@ -118,6 +118,30 @@
       "revId": "318661b788ae0bafba2e2c121bd8c0aa10f9a893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62557d9d_0d8428b5",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-24T01:52:23Z",
+      "side": 1,
+      "message": "I opened chromium:695719 for it. I have no objection to your proposed change, but it would involve changing all existing calls to bbram_data_read() which would expand the scope of this CL.",
+      "parentUuid": "39ea2948_7783810a",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "318661b788ae0bafba2e2c121bd8c0aa10f9a893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
