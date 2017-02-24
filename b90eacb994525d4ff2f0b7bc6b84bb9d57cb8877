@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a75c6bc_1ba44f87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-24T16:32:06Z",
+      "side": 1,
+      "message": "Please add more explanation as to state of the patch and also next steps.",
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64301d3a_1f2ac1f1",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-24T16:32:06Z",
+      "side": 1,
+      "message": "UNKNOWN is the yet-to-be determined battery? The CL says you are supporting 2 batteries?",
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ee29373_16904d59",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-24T16:32:06Z",
+      "side": 1,
+      "message": "line between declarations of types",
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06601b73_e678369e",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-24T16:32:06Z",
+      "side": 1,
+      "message": "Which one? the LG one, but you are handling it as a separate battery?",
+      "range": {
+        "startLine": 54,
+        "startChar": 42,
+        "endLine": 54,
+        "endChar": 53
+      },
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6cb30f8_c508dd76",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-24T16:32:06Z",
+      "side": 1,
+      "message": "You keep using this open coded constants in multiple places. Add a #define?",
+      "range": {
+        "startLine": 109,
+        "startChar": 13,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "747edde3_dc661f35",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-24T16:32:06Z",
+      "side": 1,
+      "message": "So we\u0027re going to just keep trying every time this function is called?",
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "910ec8e6_268846e4",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-24T16:32:06Z",
+      "side": 1,
+      "message": "What\u0027s w/ protecting these functions here? Isn\u0027t this option selected or not for a board? Same goes for battery_is_present().",
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
