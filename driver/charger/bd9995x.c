@@ -793,16 +793,7 @@ static void bd9995x_init(void)
 #ifdef CONFIG_CHARGER_BD9995X_CHGEN
 	reg |= BD9995X_CMD_CHGOP_SET2_CHG_EN;
 #endif
-	ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
-		       BD9995X_EXTENDED_COMMAND);
-
-	/* Disable IADP pin current limit */
-	if (ch_raw_read16(BD9995X_CMD_VM_CTRL_SET, &reg,
-			  BD9995X_EXTENDED_COMMAND))
-		return;
-	reg &= ~BD9995X_CMD_VM_CTRL_SET_EXTIADPEN;
-	ch_raw_write16(BD9995X_CMD_VM_CTRL_SET, reg,
-		       BD9995X_EXTENDED_COMMAND);
+	ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg, BD9995X_EXTENDED_COMMAND);
 
 	/* Define battery charging profile */
 	bd9995x_battery_charging_profile_settings();
