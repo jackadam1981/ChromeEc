@@ -800,7 +800,11 @@ static void bd9995x_init(void)
 	if (ch_raw_read16(BD9995X_CMD_VM_CTRL_SET, &reg,
 			  BD9995X_EXTENDED_COMMAND))
 		return;
+#ifndef CONFIG_BD9995X_IADP_EN
 	reg &= ~BD9995X_CMD_VM_CTRL_SET_EXTIADPEN;
+#else
+	reg |= BD9995X_CMD_VM_CTRL_SET_EXTIADPEN;
+#endif
 	ch_raw_write16(BD9995X_CMD_VM_CTRL_SET, reg,
 		       BD9995X_EXTENDED_COMMAND);
 

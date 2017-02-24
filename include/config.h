@@ -425,6 +425,9 @@
  */
 #undef CONFIG_CHARGER_BD9995X_CHGEN
 
+/* Enable IADP bit at address 0x40 */
+#undef CONFIG_BD9995X_IADP_EN
+
 /*
  * BD9995X PD port to charger port mapping.
  * By default VBUS is selected as primary port.
