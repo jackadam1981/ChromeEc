@@ -22,6 +22,109 @@
       "revId": "08861c47d4457e0327c15b776869355790a88aa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "949da0f9_b4debbf7",
+        "filename": "core/runtime.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-24T19:22:29Z",
+      "side": 1,
+      "message": "interrupts?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "08861c47d4457e0327c15b776869355790a88aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6024cd97_8079b4a8",
+        "filename": "core/runtime.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-24T19:22:29Z",
+      "side": 1,
+      "message": "(TODO)",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "08861c47d4457e0327c15b776869355790a88aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e83c6281_aeb6e3c6",
+        "filename": "core/runtime.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-24T19:22:29Z",
+      "side": 1,
+      "message": "are available for task-specific meanings?",
+      "range": {
+        "startLine": 79,
+        "startChar": 30,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "08861c47d4457e0327c15b776869355790a88aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b759c061_5c6209c9",
+        "filename": "core/runtime.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-24T19:22:29Z",
+      "side": 1,
+      "message": "Also be careful about long delays (\u003e? msec) in hook or deferred function handlers, since those will starve other hooks of execution time.  It is better to implement a state machine where you set up a subsequent call to a deferred function than have a long delay in your handler.",
+      "revId": "08861c47d4457e0327c15b776869355790a88aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46d94060_7b8c9296",
+        "filename": "core/runtime.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-24T19:22:29Z",
+      "side": 1,
+      "message": "TODO: Vadim recently added shmalloc() for Cr50, but I don\u0027t know if/how it\u0027s used.  And the caveats about unpredictable real-time behavior, fragmentation, leaks all apply.",
+      "revId": "08861c47d4457e0327c15b776869355790a88aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
