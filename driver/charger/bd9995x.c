@@ -796,11 +796,19 @@ static void bd9995x_init(void)
 	ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
-	/* Disable IADP pin current limit */
+	/*
+	 * This setting is the default in the charger ROM, but we've deployed
+	 * firmwware which cleared this setting. Therefore, enable IADP pin
+	 * current limit again for those existing devices.
+	 */
 	if (ch_raw_read16(BD9995X_CMD_VM_CTRL_SET, &reg,
 			  BD9995X_EXTENDED_COMMAND))
 		return;
+#ifdef CONFIG_CHARGER_BD99955
 	reg &= ~BD9995X_CMD_VM_CTRL_SET_EXTIADPEN;
+#else
+	reg |= BD9995X_CMD_VM_CTRL_SET_EXTIADPEN;
+#endif
 	ch_raw_write16(BD9995X_CMD_VM_CTRL_SET, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
