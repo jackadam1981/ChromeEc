@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ddeaca2_ef8d6e08",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-24T07:27:53Z",
+      "side": 1,
+      "message": "maybe a weak \u0027board\u0027 function would be nicer here.\ne.g.\n\nint board_select_rp_value(int port, int rp) __attribute__((weak));\n\nint tcpc_select_rp_value(port, rp)\n{\n\treturn board_select_rp_value(port);\n}\n\nor directly in tcpm_select_rp_value",
+      "range": {
+        "startLine": 972,
+        "startChar": 0,
+        "endLine": 978,
+        "endChar": 6
+      },
+      "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07c2950_07158abe",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-24T07:27:53Z",
+      "side": 1,
+      "message": "the ifdef is kind of unrelated even if it\u0027s working for your specific use case.\nI would unconditionally call tcpc_select_rp_value here (this has a minor size impact compared to current version) and use the weak function as commented in the other file",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 6
+      },
+      "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869aeafd_4db128fc",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-24T07:27:53Z",
+      "side": 1,
+      "message": "the encoding is actually one of the \u0027enum tcpc_rp_value\u0027 value, ie TYPEC_RP_USB|1A5|3A0",
+      "range": {
+        "startLine": 1589,
+        "startChar": 9,
+        "endLine": 1589,
+        "endChar": 42
+      },
+      "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1104bbc7_1f32ee0f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1590,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-24T07:27:53Z",
+      "side": 1,
+      "message": "that\u0027s EC_ERROR_INVAL",
+      "range": {
+        "startLine": 1590,
+        "startChar": 11,
+        "endLine": 1590,
+        "endChar": 19
+      },
+      "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11b9783e_bc6e832e",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-24T07:27:53Z",
+      "side": 1,
+      "message": "all the prototype of the other functions of this category are just an \u0027extern\u0027 declaration at the beginning of stub.c.\nThat\u0027s not really nice, but let\u0027s keep it this way for the last one",
+      "range": {
+        "startLine": 1592,
+        "startChar": 3,
+        "endLine": 1592,
+        "endChar": 25
+      },
+      "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
