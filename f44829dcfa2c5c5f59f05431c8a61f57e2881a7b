@@ -22,6 +22,75 @@
       "revId": "f44829dcfa2c5c5f59f05431c8a61f57e2881a7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a9408ab_f7876182",
+        "filename": "chip/stm32/config-stm32f09x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-24T21:22:13Z",
+      "side": 1,
+      "message": "Comparing these to the defaults in include/flash.h, the only deviation is PHYSICAL_BANKS, right? I guess the main assumption broken by this part is that all banks are of equal size.\n\nCan we just redefine PHYSICAL_BANKS rather than all of these properties?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 33
+      },
+      "revId": "f44829dcfa2c5c5f59f05431c8a61f57e2881a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c25078a_8e91b5d5",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-24T21:22:13Z",
+      "side": 1,
+      "message": "It\u0027s not a big deal, but I might prefer to just check for an additional family / chip here, rather than add a CONFIG that\u0027s only relevant on stm32.",
+      "range": {
+        "startLine": 70,
+        "startChar": 13,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "f44829dcfa2c5c5f59f05431c8a61f57e2881a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b672e499_5a6878ec",
+        "filename": "include/flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-24T21:22:13Z",
+      "side": 1,
+      "message": "If we only need to redefine PHYSICAL_BANKS, then we can leave this ifdef (but remove the others), and add a comment here explaining that chip-level code may define PHYSICAL_BANKS, if banks are not equally sized.",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "f44829dcfa2c5c5f59f05431c8a61f57e2881a7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
