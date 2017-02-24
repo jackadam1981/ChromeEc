@@ -142,6 +142,30 @@
       "revId": "318661b788ae0bafba2e2c121bd8c0aa10f9a893",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9583bc92_e1166507",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-24T04:09:24Z",
+      "side": 1,
+      "message": "bbram_data_read is a static function and it\u0027s only called by system_check_reset_cause. All you need is:\n\n-\tuint32_t hib_wake_flags \u003d bbram_data_read(BBRM_DATA_INDEX_WAKE);\n+\tuint32_t hib_wake_flags;\n-\tuint32_t flags \u003d bbram_data_read(BBRM_DATA_INDEX_SAVED_RESET_FLAGS);\n+\tuint32_t flags;\n\n+\tif (bbram_data_read(BBRM_DATA_INDEX_WAKE, \u0026hib_wake_flags))\n+\t\treturn;\n+\tif (bbram_data_read(BBRM_DATA_INDEX_SAVED_RESET_FLAGS, \u0026flags))\n+\t\treturn;\n\nI don\u0027t think it\u0027s worth a bug. It\u0027s a simple change.\n\nBy the way, what is really worth a bug is system_check_reset_cause not returning an error, though. It\u0027s an API so the scope is beyond this CL.",
+      "parentUuid": "62557d9d_0d8428b5",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "318661b788ae0bafba2e2c121bd8c0aa10f9a893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
