@@ -343,6 +343,30 @@
     },
     {
       "key": {
+        "uuid": "037bfdf3_cc6aed4c",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-24T02:12:01Z",
+      "side": 1,
+      "message": "why not to move this to the hook task context then? Just a thought, let me read your analysis later on.\n\nI am just uncomfortable sending this very specific hard coded event to the tpm task from a completely unrelated place.",
+      "parentUuid": "dc77d85d_1849a210",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f9da373_4ea74dc1",
         "filename": "board/cr50/wp.c",
         "patchSetId": 1
