@@ -367,6 +367,30 @@
     },
     {
       "key": {
+        "uuid": "40138177_357a8512",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-24T02:17:25Z",
+      "side": 1,
+      "message": "`unlock_the_console` already is called in the hook task context.\n\nJust trying to understand, why do nvmem commits have to be disabled after the reset?",
+      "parentUuid": "037bfdf3_cc6aed4c",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f9da373_4ea74dc1",
         "filename": "board/cr50/wp.c",
         "patchSetId": 1
