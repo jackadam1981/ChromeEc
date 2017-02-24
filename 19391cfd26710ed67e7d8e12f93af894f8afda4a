@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ea2ab12_0a4a9d87",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-24T14:59:36Z",
+      "side": 1,
+      "message": "The original change that did this is here:\nhttps://chromium-review.googlesource.com/348520\n\n\nI think we need to sort out when this should and shouldn\u0027t be set. It appears things need to be conditionalized based on current status of the battery?",
+      "revId": "19391cfd26710ed67e7d8e12f93af894f8afda4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
