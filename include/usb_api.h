@@ -47,8 +47,10 @@ void usb_release(void);
  * and a chip that implements the function.
  *
  * This function sleeps, so it must not be used in interrupt context.
+ *
+ * Returns EC_SUCCESS after USB has been successfully woken up.
  */
-void usb_wake(void);
+int usb_wake(void);
 
 #ifdef CONFIG_USB_SELECT_PHY
 /* Select which PHY to use. */
