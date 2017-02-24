@@ -16,6 +16,29 @@
       "revId": "19391cfd26710ed67e7d8e12f93af894f8afda4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41a84326_4c18798f",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 805,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-02-24T17:55:16Z",
+      "side": 1,
+      "message": "We can just delete this code (partial revert of the CL that added it) to leave the bit set according to mask ROM.",
+      "range": {
+        "startLine": 800,
+        "startChar": 1,
+        "endLine": 805,
+        "endChar": 35
+      },
+      "revId": "19391cfd26710ed67e7d8e12f93af894f8afda4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
