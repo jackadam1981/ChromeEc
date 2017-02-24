@@ -319,6 +319,30 @@
     },
     {
       "key": {
+        "uuid": "dc77d85d_1849a210",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-24T02:08:50Z",
+      "side": 1,
+      "message": "I figured it out!\n\nI think that we\u0027re blocked because we\u0027re in the hook task context. It turns out that \"unlock_sequence_is_over\" is a deferred function and therefore is run in the HOOK task.\n\nThe HOOK task issues the TPM reset request and the TPM task is immediately scheduled since it\u0027s higher priority.\n\nThe call to hook_call_deferred to reinstate our commits would have just setup the deadline for the deferred function and set a wake event for our task. However, we don\u0027t immediately switch because we\u0027re the TPM task and higher priority.\n\nThe TPM task then sleeps waiting for the next event after trying to wake the HOOK task informing that the reset is done.\n\nExecution then returns to the HOOK task. The HOOK task then tries to wait for the reset completion, but it immediately returns because the event is already posted. The call to task_wait_event_mask with a timeout causes the task timer to be cancelled for the HOOK task.\n\nExecution then continues all the way until trying to acquire the nvmem_cache lock but it\u0027s held by the TPM task. The contention on the mutex causes the HOOK task to sleep during the execution of a deferred function. And since the timer has been cancelled, the HOOK task will never wake up. This causes the deadlock as well as the essential death of the HOOK task which in turn causes the watchdog to fire in ~5 seconds. \n\nThat\u0027s why manually waking up the TPM task to re-enable commits and releasing the nvmem cache lock fixes things.",
+      "parentUuid": "4a82c281_a9436187",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "0b197d773d3d842e7080d87b690ed998cd1e18bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f9da373_4ea74dc1",
         "filename": "board/cr50/wp.c",
         "patchSetId": 1
