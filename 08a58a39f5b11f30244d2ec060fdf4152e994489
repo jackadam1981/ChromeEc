@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0ec184e9_c92a8b50",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-02-24T09:25:19Z",
+      "side": 1,
+      "message": "We do get resume interrupt very quickly after we set STM32_USB_CNTR_RESUME (few microseconds), so I don\u0027t think we  can react on that (spec says we should keep k-state for at least 1ms, so, we should)...\n\nOn the other hand, this function should probably wait for the FNR state (RXDP_RXDP) to reach 2, to confirm the device has resumed\n\nI\u0027ll commit as-is and fixup in a future commit.",
+      "parentUuid": "ded20a6b_b3fc4c47",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 42
+      },
+      "revId": "08a58a39f5b11f30244d2ec060fdf4152e994489",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf1f5cd7_724ac7cc",
         "filename": "include/usb_api.h",
         "patchSetId": 2
