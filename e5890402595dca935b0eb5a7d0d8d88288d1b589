@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e124c88_ab1d4f82",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-02-24T18:30:47Z",
+      "side": 1,
+      "message": "Please add a comment describing why we need to explicitly redefine all these.  Is this a temporary hack?  Is it a shortcoming of the other definitions?  Is there a related tracker issue with discussion that should be linked here?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "e5890402595dca935b0eb5a7d0d8d88288d1b589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
