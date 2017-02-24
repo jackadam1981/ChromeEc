@@ -114,7 +114,7 @@ SECTIONS {
 		__hooks_usb_pd_connect_end = .;
 
 		__deferred_funcs = .;
-		*(.rodata.deferred)
+		*(SORT(.rodata.deferred.*))
 		__deferred_funcs_end = .;
 
 		__test_i2c_xfer = .;

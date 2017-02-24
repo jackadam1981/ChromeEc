@@ -361,10 +361,12 @@ int hook_call_deferred(const struct deferred_data *data, int us);
  *
  * @param routine	Function pointer, with prototype void routine(void)
  */
-#define DECLARE_DEFERRED(routine)					\
-	const struct deferred_data __keep __no_sanitize_address		\
-	CONCAT2(routine, _data)						\
-	__attribute__((section(".rodata.deferred")))			\
+#define DECLARE_DEFERRED(routine) \
+	DECLARE_PRIORITY_DEFERRED(50, routine)
+#define DECLARE_PRIORITY_DEFERRED(priority, routine)			\
+	const struct deferred_data  __keep __no_sanitize_address	\
+	CONCAT2(routine, _data)	\
+	__attribute__((section(".rodata.deferred." #priority)))		\
 	     = {routine}
 #else
 /*

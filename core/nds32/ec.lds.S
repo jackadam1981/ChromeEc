@@ -186,7 +186,7 @@ SECTIONS
 		__hooks_usb_pd_connect_end = .;
 
 		__deferred_funcs = .;
-		KEEP(*(.rodata.deferred))
+		KEEP(*(SORT(.rodata.deferred.*)))
 		__deferred_funcs_end = .;
 
 		. = ALIGN(4);
