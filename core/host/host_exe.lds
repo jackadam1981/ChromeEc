@@ -94,7 +94,7 @@ SECTIONS {
     __hooks_second_end = .;
 
     __deferred_funcs = .;
-    *(.rodata.deferred)
+    *(SORT(.rodata.deferred.*))
     __deferred_funcs_end = .;
 
     __test_i2c_xfer = .;

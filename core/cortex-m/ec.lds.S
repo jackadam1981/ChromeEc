@@ -201,7 +201,7 @@ SECTIONS
         __hooks_second_end = .;
 
         __deferred_funcs = .;
-        KEEP(*(.rodata.deferred))
+        KEEP(*(SORT(.rodata.deferred.*)))
         __deferred_funcs_end = .;
 
         __usb_desc = .;
