@@ -22,6 +22,30 @@
       "revId": "4158d03a2093758ddfb8f8ba16b8672c6d247b4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b240dc93_6fee56f7",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-02-25T02:07:19Z",
+      "side": 1,
+      "message": "Yeah, hooks.h. See the child commit in this new chain. (https://chromium-review.googlesource.com/c/446785/1/include/hooks.h#273)",
+      "parentUuid": "c144715b_034d6f22",
+      "range": {
+        "startLine": 714,
+        "startChar": 0,
+        "endLine": 714,
+        "endChar": 16
+      },
+      "revId": "4158d03a2093758ddfb8f8ba16b8672c6d247b4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
