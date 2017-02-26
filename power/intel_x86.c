@@ -338,10 +338,29 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 
 #ifdef CONFIG_POWER_S0IX
 	case POWER_S0S0ix:
+		/*
+		 * Enable wake mask to handle lid close -> open
+		 * when it happens during the entering of S0ix.
+		 */
+		s0ix_lpc_enable_wake_mask_for_lid_open();
+
+		/* Wait for asserted SLP_S0_N to ensure SOC entered S0ix */
+		while (gpio_get_level(GPIO_PCH_SLP_S0_L) != 0) {
+			/*
+			 * Return to POWER_S0 to handle power signal lost
+			 * or when host command received for S0ix exit.
+			 */
+			if (!power_has_signals(IN_PGOOD_ALL_CORE) ||
+			    (power_get_host_sleep_state() !=
+			     HOST_SLEEP_EVENT_S0IX_SUSPEND)) {
+				s0ix_lpc_disable_wake_mask_for_lid_open();
+				return POWER_S0;
+			}
+			msleep(5);
+		}
+
 		/* call hooks before standby */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
-
-		s0ix_lpc_enable_wake_mask_for_lid_open();
 
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
