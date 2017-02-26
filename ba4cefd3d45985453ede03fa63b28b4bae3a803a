@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a833049c_f667eb47",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-26T17:40:00Z",
+      "side": 1,
+      "message": "Since this isn\u0027t exactly spi anymore can we change this? Are there existing scripts invoking things w/ --spi? It can certainly be done with a follow up change, but \u0027spi\u0027 is misleading now that it just deals with talking to /dev/tpm.",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 6
+      },
+      "revId": "ba4cefd3d45985453ede03fa63b28b4bae3a803a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
