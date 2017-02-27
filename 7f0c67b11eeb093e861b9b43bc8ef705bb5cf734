@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15a210be_0afc9982",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-27T20:35:08Z",
+      "side": 1,
+      "message": "please mention that both these variables are defined in board.h",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 41
+      },
+      "revId": "7f0c67b11eeb093e861b9b43bc8ef705bb5cf734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a987067_f0546e62",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-27T20:35:08Z",
+      "side": 1,
+      "message": "I am not sure if this is a formal requirement, but I think most of the code keeps local variable declarations one per line.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 0
+      },
+      "revId": "7f0c67b11eeb093e861b9b43bc8ef705bb5cf734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06551005_c2d69045",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-27T20:35:08Z",
+      "side": 1,
+      "message": "looks like val is used only inside the if scope below, it should be defined and assigned there.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 44
+      },
+      "revId": "7f0c67b11eeb093e861b9b43bc8ef705bb5cf734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c7f826c_fb8116b7",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-02-27T20:35:08Z",
+      "side": 1,
+      "message": "please add a comment to mention that this is meant to be used in exceptional cases like tpm wipeout console command and should not be used freely.",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 48
+      },
+      "revId": "7f0c67b11eeb093e861b9b43bc8ef705bb5cf734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
