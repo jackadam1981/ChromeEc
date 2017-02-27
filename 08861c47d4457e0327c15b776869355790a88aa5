@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ba92ff3a_c3bcc0e5",
+        "filename": "core/runtime.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-27T15:47:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "949da0f9_b4debbf7",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 17
+      },
+      "revId": "08861c47d4457e0327c15b776869355790a88aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6024cd97_8079b4a8",
         "filename": "core/runtime.md",
         "patchSetId": 1
@@ -59,6 +83,30 @@
       "writtenOn": "2017-02-24T19:22:29Z",
       "side": 1,
       "message": "(TODO)",
+      "range": {
+        "startLine": 61,
+        "startChar": 43,
+        "endLine": 61,
+        "endChar": 44
+      },
+      "revId": "08861c47d4457e0327c15b776869355790a88aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c8697d9_35e823d9",
+        "filename": "core/runtime.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-27T15:47:54Z",
+      "side": 1,
+      "message": "Updated, indeed I forgot about this",
+      "parentUuid": "6024cd97_8079b4a8",
       "range": {
         "startLine": 61,
         "startChar": 43,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "754aaa8a_884f3741",
+        "filename": "core/runtime.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-27T15:47:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e83c6281_aeb6e3c6",
+      "range": {
+        "startLine": 79,
+        "startChar": 30,
+        "endLine": 79,
+        "endChar": 59
+      },
+      "revId": "08861c47d4457e0327c15b776869355790a88aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b759c061_5c6209c9",
         "filename": "core/runtime.md",
         "patchSetId": 1
@@ -111,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "86739dad_ea955206",
+        "filename": "core/runtime.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-27T15:47:54Z",
+      "side": 1,
+      "message": "Added",
+      "parentUuid": "b759c061_5c6209c9",
+      "revId": "08861c47d4457e0327c15b776869355790a88aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46d94060_7b8c9296",
         "filename": "core/runtime.md",
         "patchSetId": 1
@@ -122,6 +212,24 @@
       "writtenOn": "2017-02-24T19:22:29Z",
       "side": 1,
       "message": "TODO: Vadim recently added shmalloc() for Cr50, but I don\u0027t know if/how it\u0027s used.  And the caveats about unpredictable real-time behavior, fragmentation, leaks all apply.",
+      "revId": "08861c47d4457e0327c15b776869355790a88aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b84e21e9_676a8935",
+        "filename": "core/runtime.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-27T15:47:54Z",
+      "side": 1,
+      "message": "I know about it, I did not include it on purpose.\nThe problems it solves could have been solved with other methods, that\u0027s changing nothing to the original premise.",
+      "parentUuid": "46d94060_7b8c9296",
       "revId": "08861c47d4457e0327c15b776869355790a88aa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
