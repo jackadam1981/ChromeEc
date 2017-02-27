@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e917a262_8c97381b",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-27T16:03:37Z",
+      "side": 1,
+      "message": "is this really correct for all values of Rp ?",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 52
+      },
+      "revId": "6afd4acf5d19e9ae28339276e317af67f2ce36fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cb92b98_1e6b5f75",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-02-27T16:03:37Z",
+      "side": 1,
+      "message": "you might want to do :\ngpio_set_flags(GPIO_USB_DUT_CC1_RP3A0, GPIO_OUT_LOW);\nrather than the subsequent call to gpio_set_level",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 45
+      },
+      "revId": "6afd4acf5d19e9ae28339276e317af67f2ce36fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
