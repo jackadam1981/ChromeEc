@@ -46,6 +46,30 @@
       "revId": "ba4cefd3d45985453ede03fa63b28b4bae3a803a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68bb73cb_87a1e81a",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-27T15:00:23Z",
+      "side": 1,
+      "message": "No. not off hand. But I only cared about the long form saying \u0027spi\u0027. It can be something completely different and still maintain the short form.",
+      "parentUuid": "97f353e7_a626f0a4",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 6
+      },
+      "revId": "ba4cefd3d45985453ede03fa63b28b4bae3a803a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
