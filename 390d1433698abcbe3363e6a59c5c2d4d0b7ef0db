@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bae6fbc_7d1149cd",
+        "filename": "chip/g/trng_cprng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1170554
+      },
+      "writtenOn": "2017-02-28T18:03:32Z",
+      "side": 1,
+      "message": "The function name begs the question - if it\u0027s a \"true\" random number, then why is all of the bias analysis and AES-counter logic even necessary at all?\n\nThe answer, of course, is that the \"true\" random number hardware isn\u0027t guaranteed to be truly random in a statistical sense.\n\nI\u0027d suggest naming it \"hardware_rand()\" instead.",
+      "revId": "390d1433698abcbe3363e6a59c5c2d4d0b7ef0db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42936a68_f08c141e",
+        "filename": "chip/g/trng_cprng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1170554
+      },
+      "writtenOn": "2017-02-28T18:03:32Z",
+      "side": 1,
+      "message": "The logic in lines 99-100 appears to be wasted code.  The values computed here will be discarded and recalculated in lines 106-107 the first time around the loop.  I think you can simply trim these statements down to being declarations.",
+      "revId": "390d1433698abcbe3363e6a59c5c2d4d0b7ef0db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c593d35f_9129de86",
+        "filename": "chip/g/trng_cprng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1170554
+      },
+      "writtenOn": "2017-02-28T18:03:32Z",
+      "side": 1,
+      "message": "I would strongly encourage you to document the specific purposes of each part of the global_buf - that is, which part (where and how much) is being used as the AES key, and which part (where and how much) is being used as the nonce.  The current code conflates these two uses (and perhaps others if there are any??) into a single flat array, with magic incantations like \"p+16\".\n\nI\u0027d be happier if you turned global_buf into a C union - one aspect being the array of  samples that you\u0027re filling it with, and another being a clear structure definition of the AES key and nonce.  I think the runtime code would be nearly or completely identical, and it would be much easier for a reader to understand and analyze.",
+      "revId": "390d1433698abcbe3363e6a59c5c2d4d0b7ef0db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
