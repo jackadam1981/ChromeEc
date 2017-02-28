@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e234ecd_a2c1f0e8",
+        "filename": "board/servo_v4/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-28T02:08:02Z",
+      "side": 1,
+      "message": "No, I don\u0027t think the threshold would be correct for all values of Rp. But the default value of 1600 mV is too low when Rp3A0 is selected. I thought that I should set it for the highest expected value given that only a single macro is used in the CC_NC(cc) macro. Do you think it should be changed so that the threshold can be dynamic?",
+      "parentUuid": "e917a262_8c97381b",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 95,
+        "endChar": 52
+      },
+      "revId": "6afd4acf5d19e9ae28339276e317af67f2ce36fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9cb92b98_1e6b5f75",
         "filename": "board/servo_v4/usb_pd_config.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "6afd4acf5d19e9ae28339276e317af67f2ce36fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe097e9_e664a333",
+        "filename": "board/servo_v4/usb_pd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-28T02:08:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cb92b98_1e6b5f75",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 45
+      },
+      "revId": "6afd4acf5d19e9ae28339276e317af67f2ce36fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
