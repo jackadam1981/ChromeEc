@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f770bd09_71886b44",
+        "filename": "core/runtime.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-28T20:52:13Z",
+      "side": 1,
+      "message": "What\u0027s the recommendation for sharing state larger than a word from different contexts? We need some form of critical section to ensure atomic updates.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 49
+      },
+      "revId": "58c12c0a3e52d4ce4a94471415d7aeca5c8b0b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bf8017e_26f57251",
+        "filename": "core/runtime.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-28T20:52:13Z",
+      "side": 1,
+      "message": "also have a",
+      "revId": "58c12c0a3e52d4ce4a94471415d7aeca5c8b0b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633f50d5_104e9f3d",
+        "filename": "core/runtime.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-28T20:52:13Z",
+      "side": 1,
+      "message": "In the face of this behavior how do we ensure atomic operations are actually happening when we don\u0027t provide local_irq_save()? core/cortex-m0/atomic.h is using interrupt disable and enablement to implement atmoic ops. In that situation do we just assume some piece of hardware is keeping the interrupt level state?",
+      "revId": "58c12c0a3e52d4ce4a94471415d7aeca5c8b0b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e2e70b1_6fc76bfe",
+        "filename": "core/runtime.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-28T20:52:13Z",
+      "side": 1,
+      "message": "i?",
+      "range": {
+        "startLine": 78,
+        "startChar": 26,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "58c12c0a3e52d4ce4a94471415d7aeca5c8b0b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad5b800_d69d5132",
+        "filename": "core/runtime.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-28T20:52:13Z",
+      "side": 1,
+      "message": "I don\u0027t think I saw anything in this section about hook calls being in the same context of the caller. The deferred hooks are done within the hook task proper. I think the fact that we use similar naming might cause confusion. It does for me at least. I might be alone in that, though.",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 10
+      },
+      "revId": "58c12c0a3e52d4ce4a94471415d7aeca5c8b0b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d30ef8b_03b7281c",
+        "filename": "core/runtime.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-28T20:52:13Z",
+      "side": 1,
+      "message": "Do we have any ideas on enforcing these constraints and/or warning users?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 46
+      },
+      "revId": "58c12c0a3e52d4ce4a94471415d7aeca5c8b0b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb0713c3_a2b2bd51",
+        "filename": "core/runtime.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-02-28T20:52:13Z",
+      "side": 1,
+      "message": "How do we fix that?",
+      "revId": "58c12c0a3e52d4ce4a94471415d7aeca5c8b0b27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
