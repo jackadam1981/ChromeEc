@@ -107,45 +107,69 @@ void uartn_tx_disconnect(int uart)
 	uart_select_tx(uart, 0);
 }
 
+static void enable_ccd(int enable)
+{
+	if (enable) {
+		if (ccd_is_enabled())
+			return;
+
+		/* Enable CCD */
+		ccd_set_mode(CCD_MODE_ENABLED);
+
+		enable_usb_wakeup = 1;
+
+		uartn_tx_connect(UART_AP);
+
+		/* Turn on 3.3V rail used for INAs and initialize I2CM module */
+		usb_i2c_board_enable();
+	} else {
+		/* Disconnect from AP and EC UART TX peripheral from gpios */
+		uartn_tx_disconnect(UART_EC);
+		uartn_tx_disconnect(UART_AP);
+
+		enable_usb_wakeup = 0;
+		ec_uart_enabled = 0;
+
+		/* Disable CCD */
+		ccd_set_mode(CCD_MODE_DISABLED);
+
+		/* Turn off 3.3V rail to INAs and disconnect I2CM module */
+		usb_i2c_board_disable();
+	}
+	CPRINTS("CCD is now %sabled.", enable ? "en" : "dis");
+}
+
 void rdd_attached(void)
 {
-	if (ccd_is_enabled())
-		return;
-
+	/* Change CCD_MODE_L to an output which follows the internal GPIO. */
+	GWRITE(PINMUX, DIOM1_SEL, GC_PINMUX_GPIO0_GPIO5_SEL);
 	/* Indicate case-closed debug mode (active low) */
-	gpio_set_level(GPIO_CCD_MODE_L, 0);
+	gpio_set_flags(GPIO_CCD_MODE_L, GPIO_OUT_LOW);
 
-	/* Enable CCD */
-	ccd_set_mode(CCD_MODE_ENABLED);
-
-	enable_usb_wakeup = 1;
-
-	uartn_tx_connect(UART_AP);
-
-	/* Turn on 3.3V rail used for INAs and initialize I2CM module */
-	usb_i2c_board_enable();
+	/* The device state module will handle the actual enabling of CCD. */
 }
 
 void rdd_detached(void)
 {
-	if (keep_ccd_enabled)
-		return;
-
-	/* Disconnect from AP and EC UART TX peripheral from gpios */
-	uartn_tx_disconnect(UART_EC);
-	uartn_tx_disconnect(UART_AP);
-
 	/* Done with case-closed debug mode */
 	gpio_set_level(GPIO_CCD_MODE_L, 1);
+	/* Re-setup the CCD_MODE_L pin as an input. */
+	gpio_set_flags(GPIO_CCD_MODE_L, GPIO_INPUT | GPIO_PULL_UP);
+	GWRITE(PINMUX, DIOM1_SEL, 0);
 
-	enable_usb_wakeup = 0;
-	ec_uart_enabled = 0;
+	/* The device state module will handle the disabling of CCD. */
+}
 
-	/* Disable CCD */
-	ccd_set_mode(CCD_MODE_DISABLED);
+void ccd_mode_pin_changed(void)
+{
+	/* Inverted because active low. */
+	int enable = !gpio_get_level(GPIO_CCD_MODE_L);
 
-	/* Turn off 3.3V rail to INAs and disconnect I2CM module */
-	usb_i2c_board_disable();
+	/* Keep CCD enabled if it's being forced enabled. */
+	if (!enable && keep_ccd_enabled)
+		return;
+
+	enable_ccd(enable);
 }
 
 void ccd_phy_init(int enable_ccd)

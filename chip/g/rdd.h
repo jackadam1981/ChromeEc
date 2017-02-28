@@ -13,6 +13,12 @@ void rdd_detached(void);
 void rdd_attached(void);
 
 /*
+ * Called by the device state module when the state of the CCD mode pin changes
+ * and will either enable or disable case closed debugging.
+ */
+void ccd_mode_pin_changed(void);
+
+/*
  * USB is only used for CCD, so only enable UTMI wakeups when RDD detects that
  * a debug accessory is attached and disable it as a wakeup source when the
  * cable is detached.

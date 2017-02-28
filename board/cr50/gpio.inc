@@ -60,6 +60,8 @@ GPIO_INT(DETECT_AP,       PIN(1, 1),  GPIO_INT_HIGH, device_state_on)
 GPIO_INT(DETECT_EC,       PIN(1, 2),  GPIO_INT_HIGH, device_state_on)
 GPIO_INT(DETECT_SERVO,    PIN(1, 3),  GPIO_INT_HIGH | GPIO_PULL_DOWN,
 	 device_state_on)
+/* GPIO_INT(CCD_MODE_L,      PIN(1, 4),  GPIO_INT_BOTH | GPIO_PULL_UP, */
+/* 	 ccd_mode_pin_changed) */
 
 /* Pull this low to interrupt the AP */
 GPIO(INT_AP_L,        PIN(0, 0), GPIO_OUT_HIGH)
@@ -73,7 +75,7 @@ GPIO(SYS_RST_L_OUT,   PIN(0, 4), GPIO_INPUT)
 
 /* Indicate to EC when CCD is enabled. EC can pull this down too, to tell us if
  * it decided instead. The pullup is on the EC's side. */
-GPIO(CCD_MODE_L,      PIN(0, 5), GPIO_ODR_HIGH)
+GPIO(CCD_MODE_L,      PIN(0, 5), GPIO_INPUT | GPIO_PULL_UP)
 
 /* Battery present signal is active low */
 GPIO(BATT_PRES_L,     PIN(0, 6), GPIO_INPUT)
