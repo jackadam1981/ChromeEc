@@ -3987,6 +3987,12 @@ struct __ec_align1 ec_params_pd_control {
 	uint8_t subcmd;
 };
 
+struct __ec_align1 ec_params_pd_control_v1 {
+	uint8_t chip;
+	uint8_t subcmd;
+	uint8_t port;
+};
+
 /* Get info about USB-C SS muxes */
 #define EC_CMD_USB_PD_MUX_INFO 0x011A
 

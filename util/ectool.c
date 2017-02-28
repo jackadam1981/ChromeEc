@@ -6848,31 +6848,50 @@ int cmd_pd_log(int argc, char *argv[])
 
 int cmd_pd_control(int argc, char *argv[])
 {
-	struct ec_params_pd_control p;
+	uint8_t subcmd;
+	int version = 1;
 	int rv;
 
-	if (argc < 2) {
+	if (!ec_cmd_version_supported(EC_CMD_PD_CONTROL, 1))
+		version = 0;
+
+	if (argc < (version < 1 ? 2 : 3)) {
 		fprintf(stderr, "Missing parameter\n");
 		return -1;
 	}
 
 	/* Parse command */
 	if (!strcmp(argv[1], "reset"))
-		p.subcmd = PD_RESET;
+		subcmd = PD_RESET;
 	else if (!strcmp(argv[1], "suspend"))
-		p.subcmd = PD_SUSPEND;
+		subcmd = PD_SUSPEND;
 	else if (!strcmp(argv[1], "resume"))
-		p.subcmd = PD_RESUME;
+		subcmd = PD_RESUME;
 	else if (!strcmp(argv[1], "disable"))
-		p.subcmd = PD_CONTROL_DISABLE;
+		subcmd = PD_CONTROL_DISABLE;
 	else {
 		fprintf(stderr, "Unknown command: %s\n", argv[1]);
 		return -1;
 	}
 
-	p.chip = 0;
+	if (version < 1) {
+		struct ec_params_pd_control p;
+		p.chip = 0;
+		p.subcmd = subcmd;
+		rv = ec_command(EC_CMD_PD_CONTROL, 0, &p, sizeof(p), NULL, 0);
+	} else {
+		struct ec_params_pd_control_v1 p;
+		char *e;
+		p.chip = 0;
+		p.subcmd = subcmd;
+		p.port = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad port number.\n");
+			return -1;
+		}
+		rv = ec_command(EC_CMD_PD_CONTROL, 1, &p, sizeof(p), NULL, 0);
+	}
 
-	rv = ec_command(EC_CMD_PD_CONTROL, 0, &p, sizeof(p), NULL, 0);
 	return (rv < 0 ? rv : 0);
 }
 

@@ -3804,13 +3804,26 @@ static int pd_control_disabled;
 
 static int pd_control(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_pd_control *cmd = args->params;
+	uint8_t chip, subcmd, port;
 
-	if (cmd->chip != 0)
+	if (args->version < 1) {
+		const struct ec_params_pd_control *p = args->params;
+		chip = p->chip;
+		subcmd = p->subcmd;
+		port = 0;	/* assumed by v0 */
+	} else {
+		const struct ec_params_pd_control_v1 *p = args->params;
+		chip = p->chip;
+		subcmd = p->subcmd;
+		port = p->port;
+	}
+	if (chip != 0)
+		return EC_RES_INVALID_PARAM;
+	if (port >= CONFIG_USB_PD_PORT_COUNT)
 		return EC_RES_INVALID_PARAM;
 
 	/* Always allow disable command */
-	if (cmd->subcmd == PD_CONTROL_DISABLE) {
+	if (subcmd == PD_CONTROL_DISABLE) {
 		pd_control_disabled = 1;
 		return EC_RES_SUCCESS;
 	}
@@ -3818,13 +3831,13 @@ static int pd_control(struct host_cmd_handler_args *args)
 	if (pd_control_disabled)
 		return EC_RES_ACCESS_DENIED;
 
-	if (cmd->subcmd == PD_SUSPEND) {
+	if (subcmd == PD_SUSPEND) {
 		pd_comm_enable(0);
-		pd_set_suspend(0, 1);
-	} else if (cmd->subcmd == PD_RESUME) {
+		pd_set_suspend(port, 1);
+	} else if (subcmd == PD_RESUME) {
 		pd_comm_enable(1);
-		pd_set_suspend(0, 0);
-	} else if (cmd->subcmd == PD_RESET) {
+		pd_set_suspend(port, 0);
+	} else if (subcmd == PD_RESET) {
 #ifdef HAS_TASK_PDCMD
 		board_reset_pd_mcu();
 #else
@@ -3837,7 +3850,8 @@ static int pd_control(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_PD_CONTROL, pd_control, EC_VER_MASK(0));
+DECLARE_HOST_COMMAND(EC_CMD_PD_CONTROL, pd_control,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 #endif /* CONFIG_CMD_PD_CONTROL */
 
 #endif /* CONFIG_COMMON_RUNTIME */
