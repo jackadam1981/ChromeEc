@@ -142,12 +142,19 @@ static uint8_t flash_get_status1(void)
 	if (all_protected)
 		return saved_sr1;
 
+	/* Lock physical flash operations */
+	flash_lock_mapped_storage(1);
+
 	/* Disable tri-state */
 	TRISTATE_FLASH(0);
 	/* Read status register1 */
 	flash_execute_cmd(CMD_READ_STATUS_REG, MASK_CMD_RD_1BYTE);
 	/* Enable tri-state */
 	TRISTATE_FLASH(1);
+
+	/* Unlock physical flash operations */
+	flash_lock_mapped_storage(0);
+
 	return NPCX_UMA_DB0;
 }
 
@@ -156,12 +163,19 @@ static uint8_t flash_get_status2(void)
 	if (all_protected)
 		return saved_sr2;
 
+	/* Lock physical flash operations */
+	flash_lock_mapped_storage(1);
+
 	/* Disable tri-state */
 	TRISTATE_FLASH(0);
 	/* Read status register2 */
 	flash_execute_cmd(CMD_READ_STATUS_REG2, MASK_CMD_RD_1BYTE);
 	/* Enable tri-state */
 	TRISTATE_FLASH(1);
+
+	/* Unlock physical flash operations */
+	flash_lock_mapped_storage(0);
+
 	return NPCX_UMA_DB0;
 }
 
