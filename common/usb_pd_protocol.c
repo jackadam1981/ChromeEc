@@ -3805,6 +3805,8 @@ static int pd_control_disabled;
 static int pd_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pd_control *cmd = args->params;
+	int enable;
+	int i;
 
 	if (cmd->chip != 0)
 		return EC_RES_INVALID_PARAM;
@@ -3819,11 +3821,9 @@ static int pd_control(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 
 	if (cmd->subcmd == PD_SUSPEND) {
-		pd_comm_enable(0);
-		pd_set_suspend(0, 1);
+		enable = 0;
 	} else if (cmd->subcmd == PD_RESUME) {
-		pd_comm_enable(1);
-		pd_set_suspend(0, 0);
+		enable = 1;
 	} else if (cmd->subcmd == PD_RESET) {
 #ifdef HAS_TASK_PDCMD
 		board_reset_pd_mcu();
@@ -3833,6 +3833,10 @@ static int pd_control(struct host_cmd_handler_args *args)
 	} else {
 		return EC_RES_INVALID_COMMAND;
 	}
+
+	pd_comm_enable(enable);
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+		pd_set_suspend(i, !enable);
 
 	return EC_RES_SUCCESS;
 }
