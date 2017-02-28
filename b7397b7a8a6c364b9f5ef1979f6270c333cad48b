@@ -22,6 +22,30 @@
       "revId": "b7397b7a8a6c364b9f5ef1979f6270c333cad48b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbefe3b2_5d41ac79",
+        "filename": "chip/g/trng_cprng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1126059
+      },
+      "writtenOn": "2017-02-28T22:10:40Z",
+      "side": 1,
+      "message": "I zeroed the buffer as you suggest.  It is simple to do and fast.  I do not think it is required, but I\u0027d rather not complicate the review.\n\nBut, yes, I am sure it is safe.  AES in CTR mode generates a pseudo-random stream of bytes, and XORs this over the plaintext.  If the attacker in a chosen plaintext attack can distinguish plaintext XOR CPRNG output from true random data, then they have also distinguished the CPRNG output from true random data.  The attacker can compute plaintext XOR CPRNG output on her own from just the CPRNG data, then run whatever algorithm differentiates plaintext XOR CPRNG from true random data, thus differentiating the raw CPRNG data from true random.\n\nIn any case, thanks for reigning in my tendency to prove things in my head and then simply assert that it is secure in comments :)",
+      "parentUuid": "1150967a_3c042547",
+      "range": {
+        "startLine": 233,
+        "startChar": 52,
+        "endLine": 233,
+        "endChar": 53
+      },
+      "revId": "b7397b7a8a6c364b9f5ef1979f6270c333cad48b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
