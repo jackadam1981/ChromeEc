@@ -48,20 +48,26 @@ static int command_idle(int argc, char **argv)
 			ccprintf("Console is locked, no parameters allowed\n");
 			return EC_ERROR_INVAL;
 		}
-		c = tolower(argv[1][0]);
-		for (i = 1; i < ARRAY_SIZE(idle_name); i++)
-			if (idle_name[i][0] == c) {
-				idle_action = i;
-				break;
-			}
+
+		if (!strcasecmp("reset_count", argv[1])) {
+			GREG32(PMU, PWRDN_SCRATCH19) = 0;
+		} else {
+			c = tolower(argv[1][0]);
+			for (i = 1; i < ARRAY_SIZE(idle_name); i++)
+				if (idle_name[i][0] == c) {
+					idle_action = i;
+					break;
+				}
+		}
 	}
 
 	ccprintf("idle action: %s\n", idle_name[idle_action]);
+	ccprintf("deep sleep count: %u\n", GREG32(PMU, PWRDN_SCRATCH19));
 
 	return EC_SUCCESS;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(idle, command_idle,
-			     "[w|s|d]",
+			     "[w|s|d|reset_count]",
 			     "Set or show the idle action: wfi, sleep, deep sleep");
 
 static int utmi_wakeup_is_enabled(void)
@@ -122,6 +128,11 @@ static void prepare_to_sleep(void)
 		 * reinitialized on resume.
 		 */
 		GREG32(PMU, PWRDN_SCRATCH18) = GR_USB_DCFG;
+
+		/* Increment the deep sleep count */
+		if (!console_is_restricted())
+			GREG32(PMU, PWRDN_SCRATCH19) =
+				GREG32(PMU, PWRDN_SCRATCH19) + 1;
 
 		/* Latch the pinmux values */
 		GREG32(PINMUX, HOLD) = 1;
