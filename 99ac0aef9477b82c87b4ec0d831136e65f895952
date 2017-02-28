@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "285cfe23_0aa3dcbb",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-28T22:10:31Z",
+      "side": 1,
+      "message": "This will break EC_CMD_FLASH_SPI_INFO.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "99ac0aef9477b82c87b4ec0d831136e65f895952",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
