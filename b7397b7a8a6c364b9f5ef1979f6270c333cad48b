@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1150967a_3c042547",
+        "filename": "chip/g/trng_cprng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1170554
+      },
+      "writtenOn": "2017-02-28T20:39:09Z",
+      "side": 1,
+      "message": "Are we *certain* that it doesn\u0027t matter?\n\nWhat happens if someone repeatedly calls rand_bytes() on the same buffer, thus repeatedly re-encrypting the data using new counter values and the same nonce?  Are we certain that doing so will give as statistically-random a set of values, as the normal AES-DRBG approach of encrypting a constant?  Any risk we\u0027ll introduce some subtle correlations, of the same order as the biases that this approach is seeking to eliminate?\n\nI wonder if it\u0027s a more security-conservative thing to do, to memset() the supplied buffer to zeros prior to encrypting?  That\u0027s the well-studied approach for such DRBGs, as far as I know.",
+      "range": {
+        "startLine": 233,
+        "startChar": 52,
+        "endLine": 233,
+        "endChar": 53
+      },
+      "revId": "b7397b7a8a6c364b9f5ef1979f6270c333cad48b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

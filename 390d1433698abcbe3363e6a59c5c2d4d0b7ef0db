@@ -104,6 +104,24 @@
       "revId": "390d1433698abcbe3363e6a59c5c2d4d0b7ef0db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67541439_3a764d3a",
+        "filename": "chip/g/trng_cprng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1170554
+      },
+      "writtenOn": "2017-02-28T20:39:09Z",
+      "side": 1,
+      "message": "Nicely done, thanks!",
+      "parentUuid": "9b4f4fa2_725ef0b6",
+      "revId": "390d1433698abcbe3363e6a59c5c2d4d0b7ef0db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
