@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a1260af_568192c9",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-28T02:08:12Z",
+      "side": 1,
+      "message": "I changed this to weak board function. I think having the call in usb_pd_tcpc.c makes sense because that\u0027s where all the other tcpm_ function calls exist for the boards that implement the tcpc.",
+      "parentUuid": "5ddeaca2_ef8d6e08",
+      "range": {
+        "startLine": 972,
+        "startChar": 0,
+        "endLine": 978,
+        "endChar": 6
+      },
+      "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a07c2950_07158abe",
         "filename": "driver/tcpm/stub.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cb2aa53_43007df1",
+        "filename": "driver/tcpm/stub.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-28T02:08:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a07c2950_07158abe",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 6
+      },
+      "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9fcbba79_ffc2ff95",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-28T02:08:12Z",
+      "side": 1,
+      "message": "I removed the prototype here to be consistent with the other tcpc_ functions which use the extern declarations in stub.c",
+      "parentUuid": "869aeafd_4db128fc",
+      "range": {
+        "startLine": 1589,
+        "startChar": 9,
+        "endLine": 1589,
+        "endChar": 42
+      },
+      "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1104bbc7_1f32ee0f",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "772bc5c7_02fa19d5",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1590,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-28T02:08:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1104bbc7_1f32ee0f",
+      "range": {
+        "startLine": 1590,
+        "startChar": 11,
+        "endLine": 1590,
+        "endChar": 19
+      },
+      "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11b9783e_bc6e832e",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2017-02-24T07:27:53Z",
       "side": 1,
       "message": "all the prototype of the other functions of this category are just an \u0027extern\u0027 declaration at the beginning of stub.c.\nThat\u0027s not really nice, but let\u0027s keep it this way for the last one",
+      "range": {
+        "startLine": 1592,
+        "startChar": 3,
+        "endLine": 1592,
+        "endChar": 25
+      },
+      "revId": "0b68e359a3a0decf6383d3d33a0a3abc0bb59827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b09b910f_96dbb302",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1592,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-02-28T02:08:12Z",
+      "side": 1,
+      "message": "Removed this to be consistent with the prior implementations.",
+      "parentUuid": "11b9783e_bc6e832e",
       "range": {
         "startLine": 1592,
         "startChar": 3,
