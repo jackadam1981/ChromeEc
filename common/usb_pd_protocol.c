@@ -49,22 +49,18 @@ static const int debug_level = CONFIG_USB_PD_DEBUG_LEVEL;
 static int debug_level;
 #endif
 
+#else /* CONFIG_COMMON_RUNTIME */
+#define CPRINTF(format, args...)
+#define CPRINTS(format, args...)
+static const int debug_level;
+#endif
+
 /*
  * PD communication enabled flag. When false, PD state machine still
  * detects source/sink connection and disconnection, and will still
  * provide VBUS, but never sends any PD communication.
  */
-#if !defined(CONFIG_USB_PD_COMM_ENABLED) || defined(CONFIG_USB_PD_COMM_LOCKED)
-static uint8_t pd_comm_enabled;
-#else
-static uint8_t pd_comm_enabled = 1;
-#endif
-#else /* CONFIG_COMMON_RUNTIME */
-#define CPRINTF(format, args...)
-#define CPRINTS(format, args...)
-static const int debug_level;
-static const uint8_t pd_comm_enabled = 1;
-#endif
+static uint8_t pd_comm_enabled[CONFIG_USB_PD_PORT_COUNT];
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 #define DUAL_ROLE_IF_ELSE(port, sink_clause, src_clause) \
@@ -393,7 +389,7 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 	int evt;
 
 	/* If comms are disabled, do not transmit, return error */
-	if (!pd_comm_enabled)
+	if (!pd_comm_enabled[port])
 		return -1;
 
 	tcpm_transmit(port, type, header, data);
@@ -1484,28 +1480,34 @@ int pd_get_partner_data_swap_capable(int port)
 }
 
 #ifdef CONFIG_COMMON_RUNTIME
+static void pd_comm_enable_port(int port, int enable)
+{
+	if (port >= CONFIG_USB_PD_PORT_COUNT)
+		return;
+
+	pd_comm_enabled[port] = enable;
+
+	/* If type-C connection, then update the TCPC RX enable */
+	if (pd_is_connected(port))
+		tcpm_set_rx_enable(port, enable);
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+	/*
+	 * If communications are enabled, start hard reset timer for
+	 * any port in PD_SNK_DISCOVERY.
+	 */
+	if (enable && pd[port].task_state == PD_STATE_SNK_DISCOVERY)
+		set_state_timeout(port,
+				  get_time().val + PD_T_SINK_WAIT_CAP,
+				  PD_STATE_HARD_RESET_SEND);
+#endif
+}
+
 void pd_comm_enable(int enable)
 {
 	int i;
-
-	pd_comm_enabled = enable;
-
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
-		/* If type-C connection, then update the TCPC RX enable */
-		if (pd_is_connected(i))
-			tcpm_set_rx_enable(i, enable);
-
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-		/*
-		 * If communications are enabled, start hard reset timer for
-		 * any port in PD_SNK_DISCOVERY.
-		 */
-		if (enable && pd[i].task_state == PD_STATE_SNK_DISCOVERY)
-			set_state_timeout(i,
-					  get_time().val + PD_T_SINK_WAIT_CAP,
-					  PD_STATE_HARD_RESET_SEND);
-#endif
-	}
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+		pd_comm_enable_port(i, enable);
 }
 #endif
 
@@ -1591,6 +1593,13 @@ void pd_set_new_power_request(int port)
 #error "Backwards compatible DFP does not support USB"
 #endif
 
+static void init_pd_comm_enabled(int enable)
+{
+	int i;
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+		pd_comm_enabled[i] = enable;
+}
+
 #ifdef CONFIG_COMMON_RUNTIME
 
 /* Initialize globals based on system state. */
@@ -1615,11 +1624,13 @@ static void pd_init_tasks(void)
 #if !defined(CONFIG_USB_PD_COMM_ENABLED) || defined(CONFIG_USB_PD_COMM_LOCKED)
 	/* Enable PD communication at init if we're in RW or unlocked. */
 	if (system_get_image_copy() != SYSTEM_IMAGE_RW && system_is_locked()) {
-		pd_comm_enabled = 0;
+		init_pd_comm_enabled(0);
 		ccprintf("[%T PD comm disabled]\n");
 	} else {
-		pd_comm_enabled = 1;
+		init_pd_comm_enabled(1);
 	}
+#else
+	init_pd_comm_enabled(1);
 #endif
 
 	initialized = 1;
@@ -1656,6 +1667,8 @@ void pd_task(void)
 
 #ifdef CONFIG_COMMON_RUNTIME
 	pd_init_tasks();
+#else
+	init_pd_comm_enabled(1);
 #endif
 
 	/* Ensure the power supply is in the default state */
@@ -1917,7 +1930,7 @@ void pd_task(void)
 				}
 #endif
 				/* If PD comm is enabled, enable TCPC RX */
-				if (pd_comm_enabled)
+				if (pd_comm_enabled[port])
 					tcpm_set_rx_enable(port, 1);
 
 #ifdef CONFIG_USBC_VCONN
@@ -1994,7 +2007,7 @@ void pd_task(void)
 			 * to RECEIVE_DETECT register to enable
 			 * PD message passing.
 			 */
-			if (pd_comm_enabled)
+			if (pd_comm_enabled[port])
 				tcpm_set_rx_enable(port, 1);
 #endif /* CONFIG_USB_PD_TCPM_TCPCI */
 
@@ -2418,7 +2431,7 @@ void pd_task(void)
 				port, typec_curr, TYPE_C_VOLTAGE);
 #endif
 			/* If PD comm is enabled, enable TCPC RX */
-			if (pd_comm_enabled)
+			if (pd_comm_enabled[port])
 				tcpm_set_rx_enable(port, 1);
 
 			/* DFP is attached */
@@ -2504,7 +2517,7 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 				 * to RECEIVE_MESSAGE register to enable
 				 * PD message passing.
 				 */
-				if (pd_comm_enabled)
+				if (pd_comm_enabled[port])
 					tcpm_set_rx_enable(port, 1);
 #endif /* CONFIG_USB_PD_TCPM_TCPCI */
 
@@ -2522,7 +2535,7 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 		case PD_STATE_SNK_DISCOVERY:
 			/* Wait for source cap expired only if we are enabled */
 			if ((pd[port].last_state != pd[port].task_state)
-			    && pd_comm_enabled) {
+			    && pd_comm_enabled[port]) {
 				/*
 				 * If VBUS has never been low, and we timeout
 				 * waiting for source cap, try a soft reset
@@ -3462,7 +3475,7 @@ static int command_pd(int argc, char **argv)
 		ccprintf("Port C%d CC%d, %s - Role: %s-%s%s "
 			 "State: %s, Flags: 0x%04x\n",
 			port, pd[port].polarity + 1,
-			pd_comm_enabled ? "Ena" : "Dis",
+			pd_comm_enabled[port] ? "Ena" : "Dis",
 			pd[port].power_role == PD_ROLE_SOURCE ? "SRC" : "SNK",
 			pd[port].data_role == PD_ROLE_DFP ? "DFP" : "UFP",
 			(pd[port].flags & PD_FLAGS_VCONN_ON) ? "-VC" : "",
@@ -3550,14 +3563,15 @@ static int hc_usb_pd_control(struct host_cmd_handler_args *args)
 #endif
 
 	if (args->version == 0) {
-		r->enabled = pd_comm_enabled;
+		r->enabled = pd_comm_enabled[p->port];
 		r->role = pd[p->port].power_role;
 		r->polarity = pd[p->port].polarity;
 		r->state = pd[p->port].task_state;
 		args->response_size = sizeof(*r);
 	} else {
 		r_v1->enabled =
-			(pd_comm_enabled ? PD_CTRL_RESP_ENABLED_COMMS : 0) |
+			(pd_comm_enabled[p->port] ?
+				PD_CTRL_RESP_ENABLED_COMMS : 0) |
 			(pd_is_connected(p->port) ?
 				PD_CTRL_RESP_ENABLED_CONNECTED : 0) |
 			((pd[p->port].flags & PD_FLAGS_PREVIOUS_PD_CONN) ?
@@ -3800,13 +3814,14 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_SET_AMODE,
 #endif /* HAS_TASK_HOSTCMD */
 
 #ifdef CONFIG_CMD_PD_CONTROL
-static int pd_control_disabled;
 
 static int pd_control(struct host_cmd_handler_args *args)
 {
+	static int pd_control_disabled;
 	const struct ec_params_pd_control *cmd = args->params;
+	int enable;
 
-	if (cmd->chip != 0)
+	if (cmd->chip >= CONFIG_USB_PD_PORT_COUNT)
 		return EC_RES_INVALID_PARAM;
 
 	/* Always allow disable command */
@@ -3819,11 +3834,9 @@ static int pd_control(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 
 	if (cmd->subcmd == PD_SUSPEND) {
-		pd_comm_enable(0);
-		pd_set_suspend(0, 1);
+		enable = 0;
 	} else if (cmd->subcmd == PD_RESUME) {
-		pd_comm_enable(1);
-		pd_set_suspend(0, 0);
+		enable = 1;
 	} else if (cmd->subcmd == PD_RESET) {
 #ifdef HAS_TASK_PDCMD
 		board_reset_pd_mcu();
@@ -3833,6 +3846,9 @@ static int pd_control(struct host_cmd_handler_args *args)
 	} else {
 		return EC_RES_INVALID_COMMAND;
 	}
+
+	pd_comm_enable_port(cmd->chip, enable);
+	pd_set_suspend(cmd->chip, !enable);
 
 	return EC_RES_SUCCESS;
 }
