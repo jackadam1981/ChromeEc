@@ -39,4 +39,12 @@ uint32_t rand(void);
  **/
 void rand_bytes(void *buffer, size_t len);
 
+/**
+ * Return unwhitened data from the hardware TRNG.  This can be used for health
+ * checking, or mixing into a CPRNG state.
+ *
+ * Not supported by all platforms.
+ **/
+uint32_t hardware_raw_rand(void);
+
 #endif /* __EC_INCLUDE_TRNG_H */
