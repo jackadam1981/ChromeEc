@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6fc206b2_3fe2f664",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-02-28T22:29:41Z",
+      "side": 1,
+      "message": "Could you add http://b/35848370?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 3
+      },
+      "revId": "6769665019c0cf7d5f39197d0a7b3f1b8c078cc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bba46c45_9aafadca",
         "filename": "chip/npcx/flash.c",
         "patchSetId": 1
