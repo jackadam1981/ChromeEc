@@ -537,6 +537,8 @@ static void board_init(void)
 	/* Initialize the persistent storage. */
 	initvars();
 
+	system_update_rollback_mask();
+
 	/* Indication that firmware is running, for debug purposes. */
 	GREG32(PMU, PWRDN_SCRATCH16) = 0xCAFECAFE;
 
