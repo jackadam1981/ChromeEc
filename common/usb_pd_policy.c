@@ -45,8 +45,8 @@ int pd_check_requested_voltage(uint32_t rdo)
 	const uint32_t *src_pdo;
 	const int pdo_cnt = charge_manager_get_source_pdo(&src_pdo);
 #else
-	const uint32_t *src_pdo = pd_src_pdo;
-	const int pdo_cnt = pd_src_pdo_cnt;
+	const uint32_t *src_pdo;
+	const int pdo_cnt = pd_get_src_pdo(&src_pdo);
 #endif
 
 	/* Board specific check for this request */
