@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "84dfe09f_1cc1134f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-01T23:56:09Z",
+      "side": 1,
+      "message": "yay bugs and naming -_-",
+      "revId": "297311fb3adb8edfdebfa23b5327846e1f7b95a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fe88ea8_bb9a035b",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -25,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "93f54a2d_918bc8de",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-01T23:56:09Z",
+      "side": 1,
+      "message": "What do you have in mind? These don\u0027t seem to follow the other devices.",
+      "parentUuid": "3fe88ea8_bb9a035b",
+      "range": {
+        "startLine": 870,
+        "startChar": 1,
+        "endLine": 913,
+        "endChar": 9
+      },
+      "revId": "297311fb3adb8edfdebfa23b5327846e1f7b95a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05780b8f_0c725fac",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
@@ -36,6 +77,30 @@
       "writtenOn": "2017-03-01T22:32:54Z",
       "side": 1,
       "message": "Do we have to disconnect the gpio from the pin or can we just set the gpio as an input?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 30
+      },
+      "revId": "297311fb3adb8edfdebfa23b5327846e1f7b95a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5d646a1_809dc4c7",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-01T23:56:09Z",
+      "side": 1,
+      "message": "I think leaving it connected is okay.",
+      "parentUuid": "05780b8f_0c725fac",
       "range": {
         "startLine": 159,
         "startChar": 0,
