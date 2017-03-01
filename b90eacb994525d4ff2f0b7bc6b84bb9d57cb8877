@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c186ed08_c61c360e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-01T07:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a75c6bc_1ba44f87",
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64301d3a_1f2ac1f1",
         "filename": "board/sand/battery.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-24T16:32:06Z",
       "side": 1,
       "message": "UNKNOWN is the yet-to-be determined battery? The CL says you are supporting 2 batteries?",
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54c3cf82_d1176eae",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-01T07:23:50Z",
+      "side": 1,
+      "message": "Yes. Add another one.",
+      "parentUuid": "64301d3a_1f2ac1f1",
       "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "d57258e2_0c2938da",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-01T07:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ee29373_16904d59",
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06601b73_e678369e",
         "filename": "board/sand/battery.c",
         "patchSetId": 2
@@ -64,6 +118,30 @@
       "writtenOn": "2017-02-24T16:32:06Z",
       "side": 1,
       "message": "Which one? the LG one, but you are handling it as a separate battery?",
+      "range": {
+        "startLine": 54,
+        "startChar": 42,
+        "endLine": 54,
+        "endChar": 53
+      },
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b9e765_da2b2684",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-01T07:23:50Z",
+      "side": 1,
+      "message": "if battery is dead, we\u0027re not able to know which one is inserted to system. Rename to \"the unknown battery\"",
+      "parentUuid": "06601b73_e678369e",
       "range": {
         "startLine": 54,
         "startChar": 42,
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "0bbe6f2b_88f63085",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-01T07:23:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6cb30f8_c508dd76",
+      "range": {
+        "startLine": 109,
+        "startChar": 13,
+        "endLine": 109,
+        "endChar": 14
+      },
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "747edde3_dc661f35",
         "filename": "board/sand/battery.c",
         "patchSetId": 2
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "6d0c0ba3_9ee30c95",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-01T07:23:50Z",
+      "side": 1,
+      "message": "yes, until we know which battery is inserted.\nfor example. when battery is dead, we\u0027re not sure when it will wake up. we can only keep precharging it and wait.",
+      "parentUuid": "747edde3_dc661f35",
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "910ec8e6_268846e4",
         "filename": "board/sand/battery.c",
         "patchSetId": 2
@@ -127,6 +247,24 @@
       "writtenOn": "2017-02-24T16:32:06Z",
       "side": 1,
       "message": "What\u0027s w/ protecting these functions here? Isn\u0027t this option selected or not for a board? Same goes for battery_is_present().",
+      "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "092dc6ce_5bc88013",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-01T07:23:50Z",
+      "side": 1,
+      "message": "remove CONFIG_CHARGER_PROFILE_OVERRIDE and CONFIG_BATTERY_PRESENT_CUSTOM",
+      "parentUuid": "910ec8e6_268846e4",
       "revId": "b90eacb994525d4ff2f0b7bc6b84bb9d57cb8877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
