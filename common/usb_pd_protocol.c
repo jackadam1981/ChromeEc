@@ -427,6 +427,13 @@ static int send_control(int port, int type)
 	return bit_len;
 }
 
+__attribute__((weak)) int pd_get_src_pdo(const uint32_t **src_pdo)
+{
+	*src_pdo =  pd_src_pdo;
+
+	return pd_src_pdo_cnt;
+}
+
 static int send_source_cap(int port)
 {
 	int bit_len;
@@ -435,8 +442,8 @@ static int send_source_cap(int port)
 	const uint32_t *src_pdo;
 	const int src_pdo_cnt = charge_manager_get_source_pdo(&src_pdo);
 #else
-	const uint32_t *src_pdo = pd_src_pdo;
-	const int src_pdo_cnt = pd_src_pdo_cnt;
+	const uint32_t *src_pdo;
+	const int src_pdo_cnt = pd_get_src_pdo(&src_pdo);
 #endif
 	uint16_t header;
 

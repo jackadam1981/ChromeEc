@@ -1582,6 +1582,17 @@ void pd_prepare_reset(void);
  */
 void pd_set_new_power_request(int port);
 
+/**
+ * Get PD source power data objects.
+ *
+ * This is a weak function and the default implementation simply assigns
+ * pd_src_pdo to the src_pdo pointer.
+ *
+ * @param src_pdo pointer to the src_pdo array to be used.
+ * @return number of elements in the src_pdo array.
+ */
+int pd_get_src_pdo(const uint32_t **src_pdo);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**
