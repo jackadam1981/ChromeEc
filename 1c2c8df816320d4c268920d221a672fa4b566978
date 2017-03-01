@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "68c413ac_d6a75809",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3822,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-01T22:36:54Z",
+      "side": 1,
+      "message": "Done. Made the command suspend/resume all the ports together. This will do for the purpose.",
+      "parentUuid": "494f4ebb_cf5de40a",
+      "range": {
+        "startLine": 3822,
+        "startChar": 2,
+        "endLine": 3822,
+        "endChar": 16
+      },
+      "revId": "1c2c8df816320d4c268920d221a672fa4b566978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bdef475_1f996940",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
