@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "be10ab37_5b501ae8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-01T22:01:01Z",
+      "side": 1,
+      "message": "this function should be receiving the ccd_mode value from above, to guarantee that there is no change between it was sampled in line 898 and inside the called function",
+      "range": {
+        "startLine": 906,
+        "startChar": 3,
+        "endLine": 906,
+        "endChar": 23
+      },
+      "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b083a4a_e40027e1",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
@@ -59,6 +82,52 @@
         "startChar": 46,
         "endLine": 78,
         "endChar": 58
+      },
+      "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2fc0ab_9e1f3fde",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-01T22:01:01Z",
+      "side": 1,
+      "message": "this both enables and disables ccd, this name is confusing.\n\nshould be named something line set_ccd_mode() or whatever you prefer.",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 22
+      },
+      "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3e0afca_1d779b91",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-01T22:01:01Z",
+      "side": 1,
+      "message": "is this even needed if the pin turns into an input?",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 36
       },
       "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
