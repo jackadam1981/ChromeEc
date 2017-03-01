@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e97bbbc_ef8f3a22",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-01T16:53:19Z",
+      "side": 1,
+      "message": "I\u0027m really surprised these batteries don\u0027t have similar temperate and voltage constraints w.r.t. charge threshold such that you aren\u0027t using the same scheme. What is deciding the current to charge with?",
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3463cc58_414f0958",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-01T16:53:19Z",
+      "side": 1,
+      "message": "Why not just check batt_inserted \u003d\u003d INIT to print? At this point we\u0027ll be assigning it to something not INIT.",
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf451da_f4d395fe",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-01T16:53:19Z",
+      "side": 1,
+      "message": "Why is this being casted? design_mv is already an int. \u0026design_mv would be int *.",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 35
+      },
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6065a27_9c80a77f",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-01T16:53:19Z",
+      "side": 1,
+      "message": "Same line as CPRINTS?",
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc030bb_a883412c",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-01T16:53:19Z",
+      "side": 1,
+      "message": "TODO",
+      "range": {
+        "startLine": 193,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 8
+      },
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "434c57e3_0c93260b",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-01T16:53:19Z",
+      "side": 1,
+      "message": "This is going to change, right? The GPIO is not an indication of being initialized, right?",
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
