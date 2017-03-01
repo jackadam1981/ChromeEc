@@ -8,6 +8,7 @@
 #include "cpu.h"
 #include "cpu.h"
 #include "flash.h"
+#include "flash_info.h"
 #include "printf.h"
 #include "registers.h"
 #include "signed_header.h"
@@ -512,4 +513,89 @@ const char *system_get_build_info(void)
 	}
 
 	return combined_build_info;
+}
+
+void system_update_rollback_mask(void)
+{
+#ifndef CR50_DEV
+	int updated_words_count = 0;
+	int i;
+	int write_enabled = 0;
+	uint32_t header_mask = 0;
+	const struct SignedHeader *header = (const struct SignedHeader *)
+		get_program_memory_addr(system_get_image_copy());
+
+	/*
+	 * A piece of tribal knowledge: RW infomap in flash starts at offset
+	 * INFO_MAX words into the INFO space and is of size of INFO_MAX
+	 * words.
+	 *
+	 * Make sure it is readable.
+	 */
+	if (flash_info_read_enable(INFO_MAX * 4, INFO_MAX * 4) != EC_SUCCESS) {
+		ccprintf("%s: failed to enable read access to info\n",
+			 __func__);
+		return;
+	}
+
+	/* For each bit in the header infomap field of the running image. */
+	for (i = 0; i < INFO_MAX; i++) {
+		uint32_t bit;
+		uint32_t word;
+		int byte_offset;
+
+		/* Read the next word when done with the current one. */
+		if (!(i % 32))
+			header_mask = header->infomap[i/32];
+
+		/* Get the next bit value. */
+		bit = !!(header_mask & (1 << (i % 32)));
+		if (bit) {
+			/*
+			 * By convention zeroed bits are expected to be
+			 * adjacent at the LSB of the info mask field. Stop as
+			 * soon as a non-zeroed bit is encountered.
+			 */
+			ccprintf("%s: bailing out at bit %d\n", __func__, i);
+			break;
+		}
+
+		byte_offset = (INFO_MAX + i) * sizeof(uint32_t);
+
+		if (flash_physical_info_read_word(byte_offset, &word) !=
+		    EC_SUCCESS) {
+			ccprintf("failed to read info mask word %d\n", i);
+			continue;
+		}
+
+		if (!word)
+			continue; /* This word has been zeroed already. */
+
+		if (!write_enabled) {
+			if (flash_info_write_enable(INFO_MAX * 4, INFO_MAX * 4)
+			    != EC_SUCCESS) {
+				ccprintf("%s: failed to enable write access to"
+					 " info\n", __func__);
+				return;
+			}
+			write_enabled = 1;
+		}
+
+		word = 0;
+		if (flash_info_physical_write(byte_offset,
+					      sizeof(word),
+					      (const char *) &word) !=
+		    EC_SUCCESS) {
+			ccprintf("failed to write info mask word %d\n", i);
+			continue;
+		}
+		updated_words_count++;
+
+	}
+	if (!write_enabled)
+		return;
+
+	flash_info_write_disable();
+	ccprintf("updated %d info map words\n", updated_words_count);
+#endif  /*  CR50_DEV ^^^^^^^^ NOT defined. */
 }
