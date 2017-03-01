@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b083a4a_e40027e1",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-01T03:18:35Z",
+      "side": 1,
+      "message": "Whoops, forgot to remove this...",
+      "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0af1199_5961de69",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-01T03:18:35Z",
+      "side": 1,
+      "message": "this doesn\u0027t hurt, does it? If I understand the docs correctly, the internal weak pull up is typically 50k. Does this essentially reduce the effective pull up resistance value and increase leakage current?",
+      "range": {
+        "startLine": 78,
+        "startChar": 46,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
