@@ -352,22 +352,60 @@ int flash_physical_info_read_word(int byte_offset, uint32_t *dst)
 	return EC_SUCCESS;
 }
 
-void flash_info_write_enable(void)
+/*
+ * Verify that the range's size is power of 2, the range offset is aligned by
+ * size, and the range does not cross the IFNO space boundary.
+ */
+static int valid_info_range(uint32_t offset, size_t size)
 {
-	/* Enable R/W access to INFO. */
-	GREG32(GLOBALSEC, FLASH_REGION3_BASE_ADDR) = FLASH_INFO_MEMORY_BASE +
-		FLASH_INFO_MANUFACTURE_STATE_OFFSET;
-	GREG32(GLOBALSEC, FLASH_REGION3_SIZE) =
-		FLASH_INFO_MANUFACTURE_STATE_SIZE - 1;
-	GREG32(GLOBALSEC, FLASH_REGION3_CTRL) =
-		GC_GLOBALSEC_FLASH_REGION3_CTRL_EN_MASK |
-		GC_GLOBALSEC_FLASH_REGION3_CTRL_WR_EN_MASK |
-		GC_GLOBALSEC_FLASH_REGION3_CTRL_RD_EN_MASK;
+	if (!size || (size & (size-1)))
+		return 0;
+
+	if (offset & (size - 1))
+		return 0;
+
+	if ((offset + size) > FLASH_INFO_SIZE)
+		return 0;
+
+	return 1;
+
+}
+
+int flash_info_read_enable(uint32_t offset, size_t size)
+{
+	if (!valid_info_range(offset, size))
+		return EC_ERROR_INVAL;
+
+	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) =
+		FLASH_INFO_MEMORY_BASE + offset;
+
+	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = size - 1;
+	GREG32(GLOBALSEC, FLASH_REGION6_CTRL) =
+		GC_GLOBALSEC_FLASH_REGION6_CTRL_EN_MASK |
+		GC_GLOBALSEC_FLASH_REGION6_CTRL_RD_EN_MASK;
+
+	return EC_SUCCESS;
+}
+
+int flash_info_write_enable(uint32_t offset, size_t size)
+{
+	if (!valid_info_range(offset, size))
+		return EC_ERROR_INVAL;
+
+	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) =
+		FLASH_INFO_MEMORY_BASE + offset;
+
+	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = size - 1;
+	GREG32(GLOBALSEC, FLASH_REGION6_CTRL) =
+		GC_GLOBALSEC_FLASH_REGION6_CTRL_EN_MASK |
+		GC_GLOBALSEC_FLASH_REGION6_CTRL_WR_EN_MASK;
+
+	return EC_SUCCESS;
 }
 
 void flash_info_write_disable(void)
 {
-	GREG32(GLOBALSEC, FLASH_REGION3_CTRL) = 0;
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 0);
 }
 
 int flash_info_physical_write(int byte_offset, int num_bytes, const char *data)
