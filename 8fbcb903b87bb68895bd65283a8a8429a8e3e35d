@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b2424b9_dc6217ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-01T21:23:54Z",
+      "side": 1,
+      "message": "How do you reproduce this? In my testing on Electro, I always saw charge_get-state return PWR_STATE_CHARGE_NEAR_FULL. So, I didn\u0027t handle this case (by calling extpower_is_present).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "8fbcb903b87bb68895bd65283a8a8429a8e3e35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
