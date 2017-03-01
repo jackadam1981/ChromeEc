@@ -39,6 +39,30 @@
       "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f0c00c_61520c85",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-01T15:16:39Z",
+      "side": 1,
+      "message": "That\u0027s a good question. I think you should check schematics and EC settings on this line (it should be the same across platforms).",
+      "parentUuid": "b0af1199_5961de69",
+      "range": {
+        "startLine": 78,
+        "startChar": 46,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
