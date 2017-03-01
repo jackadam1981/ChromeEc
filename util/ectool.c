@@ -540,7 +540,6 @@ int cmd_inventory(int argc, char *argv[])
 
 int cmd_cmdversions(int argc, char *argv[])
 {
-	struct ec_params_get_cmd_versions p;
 	struct ec_response_get_cmd_versions r;
 	char *e;
 	int cmd;
@@ -551,18 +550,29 @@ int cmd_cmdversions(int argc, char *argv[])
 		return -1;
 	}
 	cmd = strtol(argv[1], &e, 0);
-	if ((e && *e) || cmd < 0 || cmd > 0xff) {
+	if ((e && *e) || cmd < 0) {
 		fprintf(stderr, "Bad command number.\n");
 		return -1;
 	}
+	if (!ec_cmd_version_supported(EC_CMD_GET_CMD_VERSIONS, 1)) {
+		struct ec_params_get_cmd_versions p;
+		if (cmd > 0xff) {
+			fprintf(stderr, "Unable to query extended commands.\n");
+			return -1;
+		}
+		p.cmd = cmd;
+		rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 0, &p, sizeof(p),
+				&r, sizeof(r));
+	} else {
+		struct ec_params_get_cmd_versions_v1 p;
+		p.cmd = cmd;
+		rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 1, &p, sizeof(p),
+				&r, sizeof(r));
+	}
 
-	p.cmd = cmd;
-	rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 0, &p, sizeof(p),
-			&r, sizeof(r));
 	if (rv < 0) {
 		if (rv == -EC_RES_INVALID_PARAM)
 			printf("Command 0x%02x not supported by EC.\n", cmd);
-
 		return rv;
 	}
 
