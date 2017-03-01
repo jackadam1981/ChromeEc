@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fe88ea8_bb9a035b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 913,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-01T22:32:54Z",
+      "side": 1,
+      "message": "I am not sure if we should keep adding devices to this function like this",
+      "range": {
+        "startLine": 870,
+        "startChar": 1,
+        "endLine": 913,
+        "endChar": 9
+      },
+      "revId": "297311fb3adb8edfdebfa23b5327846e1f7b95a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05780b8f_0c725fac",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-01T22:32:54Z",
+      "side": 1,
+      "message": "Do we have to disconnect the gpio from the pin or can we just set the gpio as an input?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 30
+      },
+      "revId": "297311fb3adb8edfdebfa23b5327846e1f7b95a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
