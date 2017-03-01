@@ -172,6 +172,8 @@ static void write_keyboard_report(void)
 	/* Wake up host, if required. */
 	usb_wake();
 #endif
+
+	board_wake();
 }
 
 static void hid_keyboard_tx(void)
