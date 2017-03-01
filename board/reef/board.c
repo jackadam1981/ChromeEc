@@ -390,6 +390,9 @@ void board_tcpc_init(void)
 
 		mux->hpd_update(port, 0, 0);
 	}
+
+	/* Parade config for EQ */
+	i2c_write8(NPCX_I2C_PORT0_1, 0x16, 0xD3, 0x98);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
