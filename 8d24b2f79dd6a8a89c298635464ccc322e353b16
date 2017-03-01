@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fca67b94_97575d44",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3033,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-03-01T06:25:55Z",
+      "side": 1,
+      "message": "Can this be combined to a single variable?\n-1 \u003e\u003e\u003e No SLP_S0 check\n0 or positive value \u003e\u003e\u003e Timeout value",
+      "range": {
+        "startLine": 3032,
+        "startChar": 0,
+        "endLine": 3033,
+        "endChar": 37
+      },
+      "revId": "8d24b2f79dd6a8a89c298635464ccc322e353b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de18a20a_afece513",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-03-01T06:25:55Z",
+      "side": 1,
+      "message": "EC chipset task wake to handle S0ix should only get done when SLP_S0 is asserted after the deferred check?",
+      "range": {
+        "startLine": 493,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 36
+      },
+      "revId": "8d24b2f79dd6a8a89c298635464ccc322e353b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1024b9a_d4406534",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-03-01T06:25:55Z",
+      "side": 1,
+      "message": "Is this condition check necessary or should the defer cancellation be done always?",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 25
+      },
+      "revId": "8d24b2f79dd6a8a89c298635464ccc322e353b16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
