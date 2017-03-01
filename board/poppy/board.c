@@ -153,6 +153,7 @@ static void base_detect_deferred(void)
 		if (v >= BASE_DETECT_MIN_MV && v <= BASE_DETECT_MAX_MV) {
 			CPRINTS("Base connected\n");
 			gpio_set_level(GPIO_PP3300_DX_BASE, 1);
+			host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 		} else {
 			/*
 			 * TODO(crosbug.com/p/61098): Figure out what to do with
@@ -161,6 +162,7 @@ static void base_detect_deferred(void)
 			 */
 			CPRINTS("No base connected\n");
 			gpio_set_level(GPIO_PP3300_DX_BASE, 0);
+			host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 		}
 	} else {
 		hook_call_deferred(&base_detect_deferred_data,
