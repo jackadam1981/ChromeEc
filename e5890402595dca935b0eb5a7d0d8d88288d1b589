@@ -22,6 +22,30 @@
       "revId": "e5890402595dca935b0eb5a7d0d8d88288d1b589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ba02ace_329492fd",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-01T09:40:22Z",
+      "side": 1,
+      "message": "Done. Also removed the pstate size and offset, since we do not actually use that.\n\nWe could include the rollback logic in config_std_flash.h, but that include file is getting fairly complex, so I prefer not touching it.",
+      "parentUuid": "4e124c88_ab1d4f82",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "e5890402595dca935b0eb5a7d0d8d88288d1b589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
