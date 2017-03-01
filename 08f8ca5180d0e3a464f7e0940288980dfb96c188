@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a42634a1_2a7813f0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-01T22:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be10ab37_5b501ae8",
+      "range": {
+        "startLine": 906,
+        "startChar": 3,
+        "endLine": 906,
+        "endChar": 23
+      },
+      "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b083a4a_e40027e1",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 1
@@ -89,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "11bf2d25_0b6c785c",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-01T22:28:23Z",
+      "side": 1,
+      "message": "I\u0027ve removed the internal pull-up as I don\u0027t think it\u0027s necessary.",
+      "parentUuid": "53f0c00c_61520c85",
+      "range": {
+        "startLine": 78,
+        "startChar": 46,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fc2fc0ab_9e1f3fde",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
@@ -112,6 +160,30 @@
     },
     {
       "key": {
+        "uuid": "0cee855c_ac5318e7",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-01T22:28:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc2fc0ab_9e1f3fde",
+      "range": {
+        "startLine": 110,
+        "startChar": 12,
+        "endLine": 110,
+        "endChar": 22
+      },
+      "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3e0afca_1d779b91",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
@@ -123,6 +195,30 @@
       "writtenOn": "2017-03-01T22:01:01Z",
       "side": 1,
       "message": "is this even needed if the pin turns into an input?",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 36
+      },
+      "revId": "08f8ca5180d0e3a464f7e0940288980dfb96c188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde98a8d_c61868ed",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-01T22:28:23Z",
+      "side": 1,
+      "message": "I guess not, since the pull-up exists.",
+      "parentUuid": "a3e0afca_1d779b91",
       "range": {
         "startLine": 155,
         "startChar": 0,
