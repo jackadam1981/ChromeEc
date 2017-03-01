@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efee07a9_e364215a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3823,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-01T21:16:05Z",
+      "side": 0,
+      "message": "The first param here is port#, so the existing code is broken.",
+      "range": {
+        "startLine": 3823,
+        "startChar": 2,
+        "endLine": 3823,
+        "endChar": 16
+      },
+      "revId": "31cfc63b80ea8f5b778e6c3f568f325a6064244a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

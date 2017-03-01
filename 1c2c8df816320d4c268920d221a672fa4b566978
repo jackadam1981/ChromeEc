@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "494f4ebb_cf5de40a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3822,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-01T21:16:05Z",
+      "side": 1,
+      "message": "This applies to all ports.",
+      "range": {
+        "startLine": 3822,
+        "startChar": 2,
+        "endLine": 3822,
+        "endChar": 16
+      },
+      "revId": "1c2c8df816320d4c268920d221a672fa4b566978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bdef475_1f996940",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3986,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-01T21:16:05Z",
+      "side": 1,
+      "message": "Usually we don\u0027t change param / reply structs without rev\u0027ing the command version.",
+      "range": {
+        "startLine": 3986,
+        "startChar": 1,
+        "endLine": 3986,
+        "endChar": 36
+      },
+      "revId": "1c2c8df816320d4c268920d221a672fa4b566978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
