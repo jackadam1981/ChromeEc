@@ -373,6 +373,12 @@ static volatile int esof_count;
 /* Makes sure usb_wake is only run. */
 static volatile int usb_wake_done = 1;
 
+__attribute__((weak))
+void board_usb_wake(void)
+{
+	/* Side-band USB wake, do nothing by default. */
+}
+
 void usb_wake(void)
 {
 	/* Only allow one caller at a time. */
@@ -398,6 +404,9 @@ void usb_wake(void)
 	esof_count = 3;
 	wake_in_progress = 1;
 	STM32_USB_CNTR |= STM32_USB_CNTR_RESUME | STM32_USB_CNTR_ESOFM;
+
+	/* Try side-band wake as well. */
+	board_usb_wake();
 out:
 	usb_wake_done = 1;
 }
