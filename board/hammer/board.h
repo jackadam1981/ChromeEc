@@ -115,5 +115,7 @@ enum pwm_channel {
 	PWM_CH_COUNT
 };
 
+void board_wake(void);
+
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */

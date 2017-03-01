@@ -15,6 +15,7 @@
 #include "pwm_chip.h"
 #include "registers.h"
 #include "task.h"
+#include "timer.h"
 #include "update_fw.h"
 #include "usart-stm32f0.h"
 #include "usart_tx_dma.h"
@@ -95,4 +96,10 @@ void board_config_pre_init(void)
 	 *  Chan 5 : USART1_RX
 	 */
 	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10); /* Remap USART1 RX/TX DMA */
+}
+
+void board_wake(void) {
+	gpio_set_flags(GPIO_BASE_DET, GPIO_OUT_HIGH);
+	udelay(1000);
+	gpio_set_flags(GPIO_BASE_DET, GPIO_INPUT);
 }
