@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8e33b64_c73444f1",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-01T00:56:20Z",
+      "side": 1,
+      "message": "Do reef boards want to keep this assertion? (assuming that this change will be cherry-picked) But I guess that\u0027s up to the cherry-pick CLs...",
+      "revId": "4b034637e2c2752408b7f87efc17aea5b7c7f1ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
