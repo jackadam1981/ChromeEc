@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a12fcd0_f0b2a7f1",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-02T20:00:09Z",
+      "side": 1,
+      "message": "there is no point in continuing after this, you can return right here, then there is no need in the else case below.\n\nthis command is messed up in some ways:\n\nthe check in line 53 verifies only the first letter, case insensitive, but accepts words starting with this letter, right?\n\nYou are adding a check which is case sensitive and requires exactly one letter in the parameter.\n\nAlso this command does not report input error, just ignores it and keeps going.\n\nPlease clean this up so that it is all consistent one way or another.",
+      "revId": "b0c3281371a6fe0565e564a7a682a20b432c74f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
