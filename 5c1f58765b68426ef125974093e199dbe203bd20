@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "cc4ae978_54269025",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-02T16:20:01Z",
+      "side": 1,
+      "message": "why did you pick 19, just curious. As we discussed, there should be some common comment allocating these registers to different uses.",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 30
+      },
+      "revId": "5c1f58765b68426ef125974093e199dbe203bd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbc042f7_7d740b80",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-02T16:20:01Z",
+      "side": 1,
+      "message": "is this the best place for this?\nseems out of place to me: the rest of the options are single letters and deal with sleep modes.\n\nHow about we add an option to sysinfo command, say \u0027-v\u0027, so that it would give more information if the option is passed. We will need a place to report the rollback header and info mask contents in the near future, that would be a good place to add those too.",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "5c1f58765b68426ef125974093e199dbe203bd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6828291e_6f2be2e4",
         "filename": "chip/g/idle.c",
         "patchSetId": 1
@@ -13,6 +59,30 @@
       "writtenOn": "2017-03-02T02:50:44Z",
       "side": 1,
       "message": "Do you think the count needs to be restricted?",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "5c1f58765b68426ef125974093e199dbe203bd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3926544_1e18afd4",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-02T16:20:01Z",
+      "side": 1,
+      "message": "not really, we might want to make this counter available even in prod images one way or another.",
+      "parentUuid": "6828291e_6f2be2e4",
       "range": {
         "startLine": 133,
         "startChar": 2,
