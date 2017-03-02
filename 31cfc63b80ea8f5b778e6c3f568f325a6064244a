@@ -22,6 +22,29 @@
       "revId": "31cfc63b80ea8f5b778e6c3f568f325a6064244a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a68c4f92_63f56d5a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-02T22:55:51Z",
+      "side": 0,
+      "message": "I was forced to put this into sram.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 41
+      },
+      "revId": "31cfc63b80ea8f5b778e6c3f568f325a6064244a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
