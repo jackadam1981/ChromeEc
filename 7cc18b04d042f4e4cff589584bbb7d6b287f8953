@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dbf6b16_ab84b1e3",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-02T15:22:37Z",
+      "side": 1,
+      "message": "no ccprintf in non-interactive code.\nplease print it on the appropriate CC_CHARGER channel.",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "7cc18b04d042f4e4cff589584bbb7d6b287f8953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c01bf4ad_3cbe029f",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-02T15:22:37Z",
+      "side": 1,
+      "message": "seems to be a very bad proxy of what this function is supposed to tell us.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 41
+      },
+      "revId": "7cc18b04d042f4e4cff589584bbb7d6b287f8953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
