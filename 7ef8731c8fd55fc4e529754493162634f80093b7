@@ -16,6 +16,24 @@
       "revId": "7ef8731c8fd55fc4e529754493162634f80093b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83406e5b_a8de203c",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-02T17:03:02Z",
+      "side": 1,
+      "message": "yeah, this GPIO is a board property, not a chip property, this should be moved into the board scope function.",
+      "parentUuid": "beba5a8b_273fb463",
+      "revId": "7ef8731c8fd55fc4e529754493162634f80093b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
