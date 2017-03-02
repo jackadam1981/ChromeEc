@@ -22,6 +22,30 @@
       "revId": "8fbcb903b87bb68895bd65283a8a8429a8e3e35d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a82799_d20c762f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2017-03-02T11:12:42Z",
+      "side": 1,
+      "message": "I use base code to reproduce this case, GREEN LED will not light on when charger_should_discharge_on_ac() enable.\nAnd I check charge_get_state() is PWR_STATE_DISCHARGE.",
+      "parentUuid": "3b2424b9_dc6217ba",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "8fbcb903b87bb68895bd65283a8a8429a8e3e35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
