@@ -16,6 +16,24 @@
       "revId": "85f08c46b02cee222cca170a9a94c6b08ada533d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c912d014_471b5b77",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3811,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-02T01:52:32Z",
+      "side": 1,
+      "message": "It never had meaning, but with this change at least the function of the host command is internally consistent (performing the desired operation on all ports).\n\n\u003e Are we issuing this command for all tcpc parts even though we can only update one at a time?\n\nYes, that will be the case. Do you anticipate a problem?",
+      "parentUuid": "4488b1b5_032e4d76",
+      "revId": "85f08c46b02cee222cca170a9a94c6b08ada533d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
