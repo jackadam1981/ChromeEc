@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8aa055c_0344b383",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-02T16:29:18Z",
+      "side": 1,
+      "message": "From what I saw 16 is being used 18 is being used\n\nThe ones below 16 are locked. Im not sure that they can be unlocked.\n28,29,30, and 31 are used. So I thought I\u0027d just work up from 18...\n\nI can add a description in chip/g/init_chip. Does that sound like an ok place?",
+      "parentUuid": "cc4ae978_54269025",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 30
+      },
+      "revId": "5c1f58765b68426ef125974093e199dbe203bd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbc042f7_7d740b80",
         "filename": "chip/g/idle.c",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "side": 1,
       "message": "not really, we might want to make this counter available even in prod images one way or another.",
       "parentUuid": "6828291e_6f2be2e4",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "5c1f58765b68426ef125974093e199dbe203bd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bab3823b_818184ab",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-02T16:29:18Z",
+      "side": 1,
+      "message": "It will be available on prod images you just have to unlock the console.",
+      "parentUuid": "a3926544_1e18afd4",
       "range": {
         "startLine": 133,
         "startChar": 2,
