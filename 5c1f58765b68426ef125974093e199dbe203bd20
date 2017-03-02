@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aef2f020_cfed4f35",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-02T18:48:53Z",
+      "side": 1,
+      "message": "Moved it to 17, so there aren\u0027t as many gaps in the  used PWRDN_SCRATCH registers",
+      "parentUuid": "c8aa055c_0344b383",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 30
+      },
+      "revId": "5c1f58765b68426ef125974093e199dbe203bd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbc042f7_7d740b80",
         "filename": "chip/g/idle.c",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2017-03-02T16:20:01Z",
       "side": 1,
       "message": "is this the best place for this?\nseems out of place to me: the rest of the options are single letters and deal with sleep modes.\n\nHow about we add an option to sysinfo command, say \u0027-v\u0027, so that it would give more information if the option is passed. We will need a place to report the rollback header and info mask contents in the near future, that would be a good place to add those too.",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "5c1f58765b68426ef125974093e199dbe203bd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6887744_7346ef66",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-02T18:48:53Z",
+      "side": 1,
+      "message": "I changed it to c because it is easier to tell c stands for clear.",
+      "parentUuid": "dbc042f7_7d740b80",
       "range": {
         "startLine": 70,
         "startChar": 10,
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "It will be available on prod images you just have to unlock the console.",
       "parentUuid": "a3926544_1e18afd4",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 31
+      },
+      "revId": "5c1f58765b68426ef125974093e199dbe203bd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bde4bdb_d88bab35",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-02T18:48:53Z",
+      "side": 1,
+      "message": "I changed the count so it is no longer restricted",
+      "parentUuid": "bab3823b_818184ab",
       "range": {
         "startLine": 133,
         "startChar": 2,
