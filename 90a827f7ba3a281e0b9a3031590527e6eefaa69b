@@ -177,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "1ec0475f_a06d15c3",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-02T02:14:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fc030bb_a883412c",
+      "range": {
+        "startLine": 193,
+        "startChar": 4,
+        "endLine": 193,
+        "endChar": 8
+      },
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "434c57e3_0c93260b",
         "filename": "board/sand/battery.c",
         "patchSetId": 3
