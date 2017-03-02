@@ -34,6 +34,24 @@
       "revId": "b0c3281371a6fe0565e564a7a682a20b432c74f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84894157_be9f3d48",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-02T21:41:31Z",
+      "side": 1,
+      "message": "we know we are resetting the counter, what\u0027s the point of showing it.\n\nalso, can you please use the check of the same kind in lines 47 and 53",
+      "parentUuid": "fea7f509_756d8f5f",
+      "revId": "b0c3281371a6fe0565e564a7a682a20b432c74f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
