@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a281ff1_2a88e582",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-02T13:37:49Z",
+      "side": 1,
+      "message": "IMO this is bogus,\nboard_select_rp_value pointer will be 0 on boards not defining,\nand you will jump to 0 --\u003e reset\n\nyou probably need to test if it is not null else return not implemented.",
+      "range": {
+        "startLine": 973,
+        "startChar": 0,
+        "endLine": 977,
+        "endChar": 40
+      },
+      "revId": "d373fcc528c571cfe94eaae183073c854a287817",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
