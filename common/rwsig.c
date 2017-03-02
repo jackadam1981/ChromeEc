@@ -129,10 +129,12 @@ void check_rw_signature(void)
 	}
 
 	/* SHA-256 Hash of the RW firmware */
+	CPRINTS("SHA...");
 	SHA256_init(&ctx);
 	SHA256_update(&ctx, rwdata, rwlen);
 	hash = SHA256_final(&ctx);
 
+	CPRINTS("RSA...");
 	good = rsa_verify(key, sig, hash, rsa_workbuf);
 out:
 	if (good) {
