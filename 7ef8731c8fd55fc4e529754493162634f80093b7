@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beba5a8b_273fb463",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-02T16:53:18Z",
+      "side": 1,
+      "message": "In a future CL this should be refactored to a common function since it\u0027s the exact same sequence used in the i2c side.",
+      "revId": "7ef8731c8fd55fc4e529754493162634f80093b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
