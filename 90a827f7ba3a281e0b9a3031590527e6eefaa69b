@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "343c15ad_06485d08",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-02T02:00:28Z",
+      "side": 1,
+      "message": "we\u0027ll ask battery how many current/voltage it wants to be charged in charger_state_v2",
+      "parentUuid": "2e97bbbc_ef8f3a22",
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3463cc58_414f0958",
         "filename": "board/sand/battery.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-01T16:53:19Z",
       "side": 1,
       "message": "Why not just check batt_inserted \u003d\u003d INIT to print? At this point we\u0027ll be assigning it to something not INIT.",
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15cfa104_b043da27",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-02T02:00:28Z",
+      "side": 1,
+      "message": "if somehow I2C fail at beginning, it becomes UNKNOWN, and never print.",
+      "parentUuid": "3463cc58_414f0958",
       "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "906ce828_7ad20cb5",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-02T02:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bf451da_f4d395fe",
+      "range": {
+        "startLine": 152,
+        "startChar": 28,
+        "endLine": 152,
+        "endChar": 35
+      },
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6065a27_9c80a77f",
         "filename": "board/sand/battery.c",
         "patchSetId": 3
@@ -70,6 +130,24 @@
       "writtenOn": "2017-03-01T16:53:19Z",
       "side": 1,
       "message": "Same line as CPRINTS?",
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a39f567_cbcb9ec9",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-02T02:00:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6065a27_9c80a77f",
       "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -110,6 +188,24 @@
       "writtenOn": "2017-03-01T16:53:19Z",
       "side": 1,
       "message": "This is going to change, right? The GPIO is not an indication of being initialized, right?",
+      "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c7bc406_d19971dc",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-02T02:00:28Z",
+      "side": 1,
+      "message": "Yes, this follow battery_is_present()",
+      "parentUuid": "434c57e3_0c93260b",
       "revId": "90a827f7ba3a281e0b9a3031590527e6eefaa69b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
