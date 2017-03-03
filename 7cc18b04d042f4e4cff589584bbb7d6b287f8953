@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f31c753c_08499024",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-03T07:42:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dbf6b16_ab84b1e3",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "7cc18b04d042f4e4cff589584bbb7d6b287f8953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c01bf4ad_3cbe029f",
         "filename": "board/sand/battery.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-02T15:22:37Z",
       "side": 1,
       "message": "seems to be a very bad proxy of what this function is supposed to tell us.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 41
+      },
+      "revId": "7cc18b04d042f4e4cff589584bbb7d6b287f8953",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54bd634e_eea3c0ff",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-03T07:42:52Z",
+      "side": 1,
+      "message": "It\u0027s only used with BD9995x. But this function can combine with battery_is_present since if \"battery is inserted and not able to provide power and EC still treat battery is good for using\" happens, EC will die or reset. due to many reason.",
+      "parentUuid": "c01bf4ad_3cbe029f",
       "range": {
         "startLine": 199,
         "startChar": 0,
