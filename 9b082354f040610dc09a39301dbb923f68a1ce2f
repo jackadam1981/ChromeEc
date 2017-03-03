@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4af99f8a_39c7a4ca",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-03-03T02:18:32Z",
+      "side": 1,
+      "message": "Although the window is narrow, if there is an event which doesn\u0027t belong GPIO occurs between entering gpio_interrupt() and line 784, we will miss it since old GPIO driver clears all pending bits at the same time.",
+      "revId": "9b082354f040610dc09a39301dbb923f68a1ce2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
