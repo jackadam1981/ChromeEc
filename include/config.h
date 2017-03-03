@@ -197,6 +197,9 @@
  */
 #undef CONFIG_ARMV7M_CACHE
 
+/* Some cores provide optimized multiply-accumulate operations. */
+#undef CONFIG_ASSEMBLY_MAC32
+
 /* Allow proprietary communication protocols' extensions. */
 #undef CONFIG_EXTENSION_COMMAND
 
