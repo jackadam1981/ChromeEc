@@ -46,6 +46,29 @@
       "revId": "8fbcb903b87bb68895bd65283a8a8429a8e3e35d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26164f2e_67bb0d5b",
+        "filename": "board/pyro/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-03T17:22:07Z",
+      "side": 1,
+      "message": "Why do we not use the same logic as PWR_STATE_CHARGE_NEAR_FULL:\n\ncurr-\u003ebatt.state_of_charge \u003e\u003d BATTERY_LEVEL_NEAR_FULL\n\n?",
+      "range": {
+        "startLine": 199,
+        "startChar": 3,
+        "endLine": 199,
+        "endChar": 43
+      },
+      "revId": "8fbcb903b87bb68895bd65283a8a8429a8e3e35d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
