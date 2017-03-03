@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25159ef8_6b3997c1",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-03T22:22:54Z",
+      "side": 1,
+      "message": "Why do we stop the PHY clock here? I could very well be mistaken, but it seems that it\u0027s only re-enabled coming out of deep-sleep/init.",
+      "revId": "f3e48fe3f4f9889b258b11a9352dae0062063967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
