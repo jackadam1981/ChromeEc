@@ -22,6 +22,30 @@
       "revId": "4e906832919b5ef3c61acde3b34f96e81c989ae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cce9ce0f_f67ab630",
+        "filename": "power/common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1185511
+      },
+      "writtenOn": "2017-03-03T11:02:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aad0729f_d4190a98",
+      "range": {
+        "startLine": 736,
+        "startChar": 37,
+        "endLine": 736,
+        "endChar": 38
+      },
+      "revId": "4e906832919b5ef3c61acde3b34f96e81c989ae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
