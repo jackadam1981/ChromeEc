@@ -2461,6 +2461,21 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 					     CCD_MODE_ENABLED);
 #endif
 				set_state(port, PD_STATE_SNK_ACCESSORY);
+
+				pd[port].polarity = get_snk_polarity(cc1, cc2);
+				tcpm_set_polarity(port, pd[port].polarity);
+				/* reset message ID  on connection */
+				pd[port].msg_id = 0;
+				/* initial data role for sink is UFP */
+				pd_set_data_role(port, PD_ROLE_UFP);
+				/* If PD comm is enabled, enable TCPC RX */
+				if (pd_comm_enabled)
+					tcpm_set_rx_enable(port, 1);
+				pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
+						  PD_FLAGS_CHECK_DR_ROLE |
+						  PD_FLAGS_CHECK_IDENTITY;
+				set_state(port, PD_STATE_SNK_DISCOVERY);
+				timeout = 10*MSEC;
 			}
 			break;
 		case PD_STATE_SNK_ACCESSORY:
