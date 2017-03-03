@@ -42,6 +42,8 @@ static int ge_mod(const struct rsa_public_key *key, const uint32_t *a)
 	return 1;  /* equal */
 }
 
+uint64_t __aeabi_lmulx(uint32_t, uint32_t);
+
 /**
  * Montgomery c[] += a * b[] / R % mod
  */
@@ -52,12 +54,12 @@ static void mont_mul_add(const struct rsa_public_key *key,
 {
 	uint64_t A = (uint64_t)a * b[0] + c[0];
 	uint32_t d0 = (uint32_t)A * key->n0inv;
-	uint64_t B = (uint64_t)d0 * key->n[0] + (uint32_t)A;
+	uint64_t B = __aeabi_lmulx(d0, key->n[0]) + (uint32_t)A;
 	uint32_t i;
 
 	for (i = 1; i < RSANUMWORDS; ++i) {
-		A = (A >> 32) + (uint64_t)a * b[i] + c[i];
-		B = (B >> 32) + (uint64_t)d0 * key->n[i] + (uint32_t)A;
+		A = (A >> 32) + __aeabi_lmulx(a, b[i]) + c[i];
+		B = (B >> 32) + __aeabi_lmulx(d0, key->n[i]) + (uint32_t)A;
 		c[i - 1] = (uint32_t)B;
 	}
 
@@ -78,11 +80,11 @@ static void mont_mul_add_0(const struct rsa_public_key *key,
 			 const uint32_t *b)
 {
 	uint32_t d0 = c[0] * key->n0inv;
-	uint64_t B = (uint64_t)d0 * key->n[0] + c[0];
+	uint64_t B = __aeabi_lmulx(d0, key->n[0]) + c[0];
 	uint32_t i;
 
 	for (i = 1; i < RSANUMWORDS; ++i) {
-		B = (B >> 32) + (uint64_t)d0 * key->n[i] + c[i];
+		B = (B >> 32) + __aeabi_lmulx(d0, key->n[i]) + c[i];
 		c[i - 1] = (uint32_t)B;
 	}
 
