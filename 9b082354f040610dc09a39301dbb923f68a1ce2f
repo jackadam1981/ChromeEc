@@ -51,6 +51,24 @@
       "revId": "9b082354f040610dc09a39301dbb923f68a1ce2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "805811a0_67fe11ea",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-03T05:34:02Z",
+      "side": 1,
+      "message": "Thanks. I think I understand now (and I better understand what this patch fixes).",
+      "parentUuid": "0c2d66b2_2a8fc943",
+      "revId": "9b082354f040610dc09a39301dbb923f68a1ce2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
