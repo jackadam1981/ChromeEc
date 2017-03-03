@@ -63,3 +63,40 @@ __aeabi_lmul:
 	adds	r0, r2
 	adcs	r1, r3
 	pop	{r4, pc}
+
+@ long long __aeabi_lmulx(long r0, long r1)
+@
+@ Multiply r0 and r1 and return the product in r1:r0
+@ Can also be used for unsigned long product
+@
+	.thumb_func
+	.section .text.__aeabi_lmulx
+	.global __aeabi_lmulx
+__aeabi_lmulx:
+
+	push	{r4, lr}
+        movs	r2, r1
+
+	lsrs	r3, r0, #16
+	lsrs	r4, r2, #16
+	muls	r3, r4
+        movs	r1, r3
+
+	lsrs	r3, r0, #16
+	uxth	r0, r0
+	uxth	r2, r2
+	muls	r3, r2
+	muls	r4, r0
+	muls	r0, r2
+
+	movs	r2, #0
+	adds	r3, r4
+	adcs	r2, r2
+	lsls	r2, #16
+	adds	r1, r2
+
+	lsls	r2, r3, #16
+	lsrs	r3, #16
+	adds	r0, r2
+	adcs	r1, r3
+	pop	{r4, pc}
