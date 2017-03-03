@@ -16,6 +16,24 @@
       "revId": "1ca6ddce054cf69989f2a791e16e19908035edfc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21232771_fd9a7fd5",
+        "filename": "chip/g/init_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-03T19:55:56Z",
+      "side": 1,
+      "message": "RO uses 8-15\n\nwhere does it say that 17 is skipped? Is part of 16-27, no?",
+      "parentUuid": "17a69327_f5cb0dcb",
+      "revId": "1ca6ddce054cf69989f2a791e16e19908035edfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
