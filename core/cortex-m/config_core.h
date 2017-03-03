@@ -12,4 +12,6 @@
 
 #define CONFIG_SOFTWARE_PANIC
 
+#define CONFIG_ASSEMBLY_MAC32
+
 #endif /* __CROS_EC_CONFIG_CORE_H */
