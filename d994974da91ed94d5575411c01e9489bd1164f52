@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa64c295_c8877303",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-03T14:35:21Z",
+      "side": 1,
+      "message": "IMO either the bit is misnamed or the condition is wrong,\nif the discharge *enable* bit is set, then battery is present",
+      "range": {
+        "startLine": 206,
+        "startChar": 11,
+        "endLine": 208,
+        "endChar": 27
+      },
+      "revId": "d994974da91ed94d5575411c01e9489bd1164f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
