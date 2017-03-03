@@ -113,6 +113,12 @@ static void led_set_battery(void)
 			led_set_color_battery(LED_OFF);
 		}
 		break;
+	case PWR_STATE_DISCHARGE_FULL:
+		if (extpower_is_present())
+			led_set_color_battery(LED_BLUE);
+		else
+			led_set_color_battery(LED_OFF);
+		break;
 	case PWR_STATE_ERROR:
 		led_set_color_battery(
 			(battery_ticks % LED_TOTAL_2SECS_TICKS <
