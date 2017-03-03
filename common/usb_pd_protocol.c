@@ -1559,7 +1559,7 @@ static inline int get_snk_polarity(int cc1, int cc2)
 	return (cc2 > cc1);
 }
 
-#ifdef CONFIG_CHARGE_MANAGER
+#if defined(CONFIG_CHARGE_MANAGER) || defined(CONFIG_USB_PD_DTS)
 /**
  * Returns type C current limit (mA) based upon cc_voltage (mV).
  */
@@ -1945,10 +1945,6 @@ void pd_task(void)
 				/* Remove VBUS */
 				pd_power_supply_reset(port);
 #endif
-#ifdef CONFIG_USB_PD_DTS
-				if (new_cc_state == PD_CC_DEBUG_ACC)
-					pd_set_power_supply_ready(port);
-#endif
 				/* Set the USB muxes and the default USB role */
 				pd_set_data_role(port, CONFIG_USB_PD_DEBUG_DR);
 
@@ -1957,6 +1953,23 @@ void pd_task(void)
 					ccd_set_mode(system_is_locked() ?
 						     CCD_MODE_PARTIAL :
 						     CCD_MODE_ENABLED);
+				}
+#endif
+#ifdef CONFIG_USB_PD_DTS
+				if (new_cc_state == PD_CC_DEBUG_ACC) {
+					/* Enable Vbus */
+					pd_set_power_supply_ready(port);
+					/* Captive cable, CC1 always */
+					tcpm_set_polarity(port, 0);
+					/* initial dr for source is DFP */
+					pd_set_data_role(port, PD_ROLE_DFP);
+					/* Enable TCPC RX */
+					if (pd_comm_enabled)
+						tcpm_set_rx_enable(port, 1);
+					hard_reset_count = 0;
+					timeout = 10*MSEC;
+					set_state(port, PD_STATE_SRC_STARTUP);
+					break;
 				}
 #endif
 				set_state(port, PD_STATE_SRC_ACCESSORY);
@@ -2558,6 +2571,27 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 						  get_time().val +
 						  PD_T_NO_RESPONSE,
 						  PD_STATE_SNK_DISCONNECTED);
+#ifdef CONFIG_USB_PD_DTS
+				else
+					/*
+					 * Will reach here upon the entry into
+					 * this state after the maximum number
+					 * of hard resets have been attempted
+					 * and it's not an error recovery. When
+					 * connected to SRC device (charger)
+					 * that doesn't support PD messaging
+					 * this becomes the steady-state
+					 * condition. Call to set current limit
+					 * so the DTS device knows that it's
+					 * safe to supply VBUS from this port.
+					 */
+					typec_set_input_current_limit(
+						port,
+						get_typec_current_limit(
+							pd[port].polarity, cc1,
+							cc2),
+						TYPE_C_VOLTAGE);
+#endif
 #ifdef CONFIG_CHARGE_MANAGER
 				/*
 				 * If we didn't come from disconnected, must
@@ -2997,6 +3031,16 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 		if (pd[port].power_role == PD_ROLE_SOURCE) {
 			/* Source: detect disconnect by monitoring CC */
 			tcpm_get_cc(port, &cc1, &cc2);
+#ifdef CONFIG_USB_PD_DTS
+			/* If accessory becomes detached */
+			if (cc1 != TYPEC_CC_VOLT_RD ||
+			    cc2 != TYPEC_CC_VOLT_RD) {
+				set_state(port, PD_STATE_SRC_DISCONNECTED);
+				/* Debouncing */
+				timeout = 10*MSEC;
+				ccd_set_mode(CCD_MODE_DISABLED);
+			}
+#endif
 			if (pd[port].polarity)
 				cc1 = cc2;
 			if (cc1 == TYPEC_CC_VOLT_OPEN) {
