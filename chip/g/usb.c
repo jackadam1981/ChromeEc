@@ -1115,6 +1115,10 @@ void usb_interrupt(void)
 	 * comes along (even ERLYSUSP), we should NOT suspend. */
 	if (status & GINTSTS(USBSUSP)) {
 		print_later("usb_suspend()", 0, 0, 0, 0, 0);
+
+		/* USB is suspended. Stop the PHY clock */
+		GWRITE_FIELD(USB, PCGCCTL, STOPPCLK, 1);
+
 		enable_sleep(SLEEP_MASK_USB_DEVICE);
 	} else {
 		disable_sleep(SLEEP_MASK_USB_DEVICE);
