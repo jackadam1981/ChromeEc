@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2db1eb3d_a80beaf1",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-04T01:23:30Z",
+      "side": 1,
+      "message": "If you haven\u0027t already shipped RO FW then this should go after the system_jumped_to_image() check.",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 229,
+        "endChar": 57
+      },
+      "revId": "61aa7ab4e641023424713db8864c140895005bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
