@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "945758db_53c7286f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-04T20:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "282682a5_f0521e38",
+      "range": {
+        "startLine": 9,
+        "startChar": 62,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "a0f537dfbdd15a2efe7e125636546de9afe7a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b80ab5f_4db4ebdb",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "ah what i meant was, when Mary first enabled USB wakeup, the chip basically never went to sleep. It was because this register write was missing",
       "parentUuid": "b954742a_614f88ef",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "a0f537dfbdd15a2efe7e125636546de9afe7a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a9c2e86_bb8eb2d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-04T20:18:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8971d8d_7db071a1",
       "range": {
         "startLine": 17,
         "startChar": 21,
