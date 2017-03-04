@@ -16,6 +16,24 @@
       "revId": "a0f537dfbdd15a2efe7e125636546de9afe7a827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bfcd3c6_c86afcd3",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-04T00:57:43Z",
+      "side": 1,
+      "message": "Yes. If we never initialize USB we still want to make sure this is set before entering deep sleep.",
+      "parentUuid": "0dd2c1e8_219d46c6",
+      "revId": "a0f537dfbdd15a2efe7e125636546de9afe7a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
