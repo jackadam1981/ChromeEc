@@ -2073,6 +2073,15 @@
 #undef CONFIG_TPM_I2CS
 
 /*****************************************************************************/
+/* Tracing framework */
+
+/* Enable tracing framework to time events. */
+#undef CONFIG_TRACE
+
+/* Number of events to keep in the trace buffer. */
+#undef CONFIG_TRACE_BUFFER_SIZE
+
+/*****************************************************************************/
 /* USART stream config */
 #undef CONFIG_STREAM_USART
 
