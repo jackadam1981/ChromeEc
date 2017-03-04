@@ -827,6 +827,18 @@ void __gpio_wk0efgh_interrupt(void)
 		SET_BIT(NPCX_WKPCL(MIWU_TABLE_0, MIWU_GROUP_5), 6);
 	}
 #ifdef CONFIG_ESPI
+	/*
+	 * For eSPI, we don't perform any work when wakeup happens because of
+	 * LRESET/PLTRST interrupt. Thus, mask out the interrupt and clear the
+	 * pending bit of WUI.
+	 */
+	else if (IS_BIT_SET(NPCX_WKEN(MIWU_TABLE_0, MIWU_GROUP_5), 7) &&
+		 IS_BIT_SET(NPCX_WKPND(MIWU_TABLE_0, MIWU_GROUP_5), 7)) {
+		/* Disable wakeup on LRESET/PLTRST. */
+		CLEAR_BIT(NPCX_WKEN(MIWU_TABLE_0, MIWU_GROUP_5), 7);
+		/* Clear pending bit of WUI. */
+		SET_BIT(NPCX_WKPCL(MIWU_TABLE_0, MIWU_GROUP_5), 7);
+	}
 	else if (IS_BIT_SET(NPCX_WKEN(MIWU_TABLE_0, MIWU_GROUP_5), 5) &&
 		 IS_BIT_SET(NPCX_WKPND(MIWU_TABLE_0, MIWU_GROUP_5), 5))
 		espi_espirst_handler();
