@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b954742a_614f88ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-04T02:03:59Z",
+      "side": 1,
+      "message": "ah, in fact it is other way around, this patch is supposed to fix the case where USB comms do not wake up H1 from regular sleep. Does this make sense?",
+      "parentUuid": "557de9c4_4d7072bd",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "a0f537dfbdd15a2efe7e125636546de9afe7a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0dd2c1e8_219d46c6",
         "filename": "chip/g/idle.c",
         "patchSetId": 3
