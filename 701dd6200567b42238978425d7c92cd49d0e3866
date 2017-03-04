@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8994662c_027a6cbd",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-04T00:59:41Z",
+      "side": 1,
+      "message": "you want to always do this? I\u0027d think you first want to update to new version that does not do this yet, so that old version can still run. Then, use new version to update to same version but with only change of writing this.\nThat way you\u0027d always have to runnable RW images during the update process.",
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a8fc66d_6acf256c",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-04T00:59:41Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be 0?",
+      "range": {
+        "startLine": 535,
+        "startChar": 28,
+        "endLine": 535,
+        "endChar": 40
+      },
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33ffe405_40d47ce9",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-04T00:59:41Z",
+      "side": 1,
+      "message": "same here. Maybe i misunderstand those flash_info* functions but offset surely starts at 0?",
+      "range": {
+        "startLine": 575,
+        "startChar": 31,
+        "endLine": 575,
+        "endChar": 43
+      },
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
