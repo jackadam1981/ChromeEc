@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e776197f_f3d422ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2017-03-04T02:01:31Z",
+      "side": 1,
+      "message": "It\u0027s just the name of the interface between H1\u0027s internal logic and the usb controller.  It is admittedly..somewhat poorly named.",
+      "parentUuid": "3b80ab5f_4db4ebdb",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "a0f537dfbdd15a2efe7e125636546de9afe7a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3a741207_a129d13e",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -59,6 +83,30 @@
       "writtenOn": "2017-03-04T01:50:13Z",
       "side": 1,
       "message": "why is this necessary? just power saving, or does it break if you don\u0027t do this?",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "a0f537dfbdd15a2efe7e125636546de9afe7a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "557de9c4_4d7072bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1126264
+      },
+      "writtenOn": "2017-03-04T02:01:31Z",
+      "side": 1,
+      "message": "honestly i dont know why the controller was designed like this.  But basically, without setting this bit, the controller doesn\u0027t actually tell the system it is in suspend.  As a result, whenever we go to sleep, the chip will constantly wakeup, this was the problem Mary ran into.",
+      "parentUuid": "3a741207_a129d13e",
       "range": {
         "startLine": 17,
         "startChar": 21,
