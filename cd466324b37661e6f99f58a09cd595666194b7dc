@@ -46,6 +46,52 @@
       "revId": "cd466324b37661e6f99f58a09cd595666194b7dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b0d7322_6f7a49e0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1627,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-04T01:44:47Z",
+      "side": 1,
+      "message": "I don\u0027t think this does anything useful? We can consider removing it, and just inlining the contents of init_pd_comm_enabled() right below.",
+      "range": {
+        "startLine": 1627,
+        "startChar": 2,
+        "endLine": 1627,
+        "endChar": 22
+      },
+      "revId": "cd466324b37661e6f99f58a09cd595666194b7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d5f6eac_a5c88773",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1633,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-04T01:44:47Z",
+      "side": 1,
+      "message": "We can combine these two with strategic ifdef / else placement.",
+      "range": {
+        "startLine": 1630,
+        "startChar": 1,
+        "endLine": 1633,
+        "endChar": 25
+      },
+      "revId": "cd466324b37661e6f99f58a09cd595666194b7dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
