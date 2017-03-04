@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "378ccb43_408868a7",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-04T02:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a7130d3_d2c95529",
+      "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e287164_d9e5495e",
         "filename": "board/tigertail/board.c",
         "patchSetId": 5
@@ -65,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "17bd713a_62b2744c",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-04T02:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e287164_d9e5495e",
+      "range": {
+        "startLine": 193,
+        "startChar": 7,
+        "endLine": 193,
+        "endChar": 13
+      },
+      "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7396bbce_2bf40b8c",
         "filename": "board/tigertail/board.c",
         "patchSetId": 5
@@ -79,6 +121,24 @@
       "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6361ac5b_ee4b072c",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-04T02:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7396bbce_2bf40b8c",
+      "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "912c39a1_c5cd8f53",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-04T02:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e93c3a1_406818da",
+      "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f6f7f0b_057f5c50",
         "filename": "board/tigertail/board.c",
         "patchSetId": 5
@@ -110,6 +188,30 @@
       "writtenOn": "2017-03-03T21:28:26Z",
       "side": 1,
       "message": "typo: \u0027this\u0027.\n\nif the hooks task isn\u0027t starved, or a deferred function doesn\u0027t take too long, or if other hooks don\u0027t take too long...\n\nThis board seems pretty lightweight though, so you may be okay.",
+      "range": {
+        "startLine": 240,
+        "startChar": 30,
+        "endLine": 240,
+        "endChar": 35
+      },
+      "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c757a76c_7bca750e",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-04T02:47:09Z",
+      "side": 1,
+      "message": "This is mostly from a user point of view. it will take ~1s to start dumping uart from when a DUT is connected. I don\u0027t think plugging the tigertail in and out is a major usecase, since the lab will just leave it in all the time. Andrew confirmed he thought it seemed fine.",
+      "parentUuid": "8f6f7f0b_057f5c50",
       "range": {
         "startLine": 240,
         "startChar": 30,
@@ -139,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "4fff2831_fe3cdf4b",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-04T02:47:09Z",
+      "side": 1,
+      "message": "Yeah the lines could be low if something is transmitting, hopefully the debounce prevents this.",
+      "parentUuid": "c04732a1_0895285a",
+      "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "583d106d_97f30bd2",
         "filename": "board/tigertail/board.c",
         "patchSetId": 5
@@ -153,6 +273,24 @@
       "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11bb1d8e_be7eb9b7",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-04T02:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "583d106d_97f30bd2",
+      "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -179,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "bf0d438b_b6f9583d",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-04T02:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8e46a34_63a0ed30",
+      "range": {
+        "startLine": 267,
+        "startChar": 4,
+        "endLine": 267,
+        "endChar": 12
+      },
+      "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82a2cb3d_c28da4a9",
         "filename": "board/tigertail/gpio.inc",
         "patchSetId": 5
@@ -199,6 +361,30 @@
       "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2758eca8_955fdbd2",
+        "filename": "board/tigertail/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-04T02:47:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82a2cb3d_c28da4a9",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "7f1730ef794a5fd7c94369789d9c21d33ad8f8a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
