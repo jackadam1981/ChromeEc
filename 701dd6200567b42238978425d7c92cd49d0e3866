@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e6b1ff0c_093a6169",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-04T01:09:08Z",
+      "side": 1,
+      "message": "you mean to prevent a case when the first version doing this is not good enough for updates and all?\n\nHow would this get into prod? Two versions will have to be released? There is always a chance that someone skips an update to the previous version when a newer version is available.",
+      "parentUuid": "8994662c_027a6cbd",
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a8fc66d_6acf256c",
         "filename": "chip/g/system.c",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b1aebecf_ab63563b",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-04T01:09:08Z",
+      "side": 1,
+      "message": "I did not think so: zero is for the RO info, is it not?",
+      "parentUuid": "7a8fc66d_6acf256c",
+      "range": {
+        "startLine": 535,
+        "startChar": 28,
+        "endLine": 535,
+        "endChar": 40
+      },
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33ffe405_40d47ce9",
         "filename": "chip/g/system.c",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2017-03-04T00:59:41Z",
       "side": 1,
       "message": "same here. Maybe i misunderstand those flash_info* functions but offset surely starts at 0?",
+      "range": {
+        "startLine": 575,
+        "startChar": 31,
+        "endLine": 575,
+        "endChar": 43
+      },
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c6abc4a_cc977f23",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-04T01:09:08Z",
+      "side": 1,
+      "message": "Did I misunderstand the INFO layout? I thought first 128 words were for the rom to RO protection, the second 128 words (accessed here) were for RO to RW?",
+      "parentUuid": "33ffe405_40d47ce9",
       "range": {
         "startLine": 575,
         "startChar": 31,
