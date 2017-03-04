@@ -16,6 +16,24 @@
       "revId": "f3e48fe3f4f9889b258b11a9352dae0062063967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "170ea10b_a807a56f",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-04T00:15:59Z",
+      "side": 1,
+      "message": "Tim knows more about this. \nHe says this bit tells the controller to turn of the PHY clock when it detects a suspend. This bit doesn\u0027t directly stop the clock.",
+      "parentUuid": "25159ef8_6b3997c1",
+      "revId": "f3e48fe3f4f9889b258b11a9352dae0062063967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
