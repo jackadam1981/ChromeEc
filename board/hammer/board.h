@@ -10,6 +10,7 @@
 
 /* TODO: Remove CONFIG_SYSTEM_UNLOCKED prior to building MP FW. */
 #define CONFIG_SYSTEM_UNLOCKED
+#define CONFIG_TRACE
 
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
