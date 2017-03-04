@@ -10,6 +10,7 @@
 #include "i2c.h"
 #include "task.h"
 #include "timer.h"
+#include "trace.h"
 #include "util.h"
 #include "usb_hid_touchpad.h"
 
@@ -113,10 +114,14 @@ static int elan_tp_read_report(void)
 	uint8_t *finger = tp_buf+ETP_FINGER_DATA_OFFSET;
 	struct usb_hid_touchpad_report report;
 
+	add_trace_event(__func__, TRACE_BEGIN);
+
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
 	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
 		      NULL, 0, tp_buf, ETP_I2C_REPORT_LEN, I2C_XFER_SINGLE);
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
+
+	add_trace_event("elan_tp_read_report/i2c_done", TRACE_INSTANT);
 
 	if (rv) {
 		CPRINTS("read report error");
@@ -178,6 +183,8 @@ static int elan_tp_read_report(void)
 	report.count = ri;
 
 	set_touchpad_report(&report);
+
+	add_trace_event(__func__, TRACE_END);
 
 	return 0;
 }
@@ -251,6 +258,7 @@ out:
 
 void elan_tp_interrupt(enum gpio_signal signal)
 {
+	add_trace_event(__func__, TRACE_INSTANT);
 	task_wake(TASK_ID_TOUCHPAD);
 }
 

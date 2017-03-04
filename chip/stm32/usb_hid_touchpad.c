@@ -13,6 +13,7 @@
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
+#include "trace.h"
 #include "util.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"
@@ -316,6 +317,8 @@ void set_touchpad_report(struct usb_hid_touchpad_report *report)
 	 */
 	int timeout = 20; /* Wait up to 5 EP intervals. */
 
+	add_trace_event(__func__, TRACE_BEGIN);
+
 	while ((STM32_USB_EP(USB_EP_HID_TOUCHPAD) & EP_TX_MASK)
 			== EP_TX_VALID) {
 		msleep(DIV_ROUND_UP(HID_TOUCHPAD_EP_INTERVAL_MS, 4));
@@ -332,10 +335,13 @@ void set_touchpad_report(struct usb_hid_touchpad_report *report)
 	/* Wake up host, if required. */
 	usb_wake();
 #endif
+
+	add_trace_event(__func__, TRACE_END);
 }
 
 static void hid_touchpad_tx(void)
 {
+	add_trace_event(__func__, TRACE_INSTANT);
 	hid_tx(USB_EP_HID_TOUCHPAD);
 }
 
