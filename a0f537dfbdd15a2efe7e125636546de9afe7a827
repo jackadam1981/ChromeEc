@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "282682a5_f0521e38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-04T01:50:13Z",
+      "side": 1,
+      "message": "please be generic, this is not a particular board issue, this is about availability of the USB connection between AP and H1.",
+      "range": {
+        "startLine": 9,
+        "startChar": 62,
+        "endLine": 9,
+        "endChar": 65
+      },
+      "revId": "a0f537dfbdd15a2efe7e125636546de9afe7a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b80ab5f_4db4ebdb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-04T01:50:13Z",
+      "side": 1,
+      "message": "what\u0027s UTMI?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "a0f537dfbdd15a2efe7e125636546de9afe7a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a741207_a129d13e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-04T01:50:13Z",
+      "side": 1,
+      "message": "why is this necessary? just power saving, or does it break if you don\u0027t do this?",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "a0f537dfbdd15a2efe7e125636546de9afe7a827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0dd2c1e8_219d46c6",
         "filename": "chip/g/idle.c",
         "patchSetId": 3
