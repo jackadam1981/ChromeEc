@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e67b4233_8643f48f",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-04T03:16:58Z",
+      "side": 1,
+      "message": "Can we clear that bit earlier (or never set it), to make sure we never get that interrupt?\n\nI don\u0027t see where the bit is set though, so I\u0027m not too sure why we even get that interrupt.",
+      "revId": "313c025386ef6a9f912d86633cc42a955f49fcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
