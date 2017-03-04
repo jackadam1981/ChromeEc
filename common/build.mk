@@ -123,6 +123,7 @@ common-$(CONFIG_THROTTLE_AP)+=thermal.o throttle_ap.o
 common-$(CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT)+=throttle_ap.o
 common-$(CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE)+=throttle_ap.o
 common-$(CONFIG_TPM_I2CS)+=i2cs_tpm.o
+common-$(CONFIG_TRACE)+=trace.o
 common-$(CONFIG_U2F)+=u2f.o
 common-$(CONFIG_USB_I2C)+=usb_i2c.o
 common-$(CONFIG_USB_CHARGER)+=usb_charger.o
