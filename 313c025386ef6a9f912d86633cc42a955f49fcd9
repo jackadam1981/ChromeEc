@@ -16,6 +16,24 @@
       "revId": "313c025386ef6a9f912d86633cc42a955f49fcd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10cb0331_7c7ac4f9",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-03-04T03:32:30Z",
+      "side": 1,
+      "message": "I finally found the place where the WKEN bit is set: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/npcx/lpc.c#1106\n\nI believe we need to check for CONFIG_ESPI there and decide not to enable the wake source in that case. But let\u0027s wait for confirmation from Nuvoton.\n\ndiff --git a/chip/npcx/lpc.c b/chip/npcx/lpc.c\nindex e8b59f12d..328a5bbc1 100644\n--- a/chip/npcx/lpc.c\n+++ b/chip/npcx/lpc.c\n@@ -1103,9 +1103,11 @@ static void lpc_init(void)\n        CLEAR_BIT(NPCX_WKMOD(MIWU_TABLE_0, MIWU_GROUP_5), 7);\n        /* Handle interrupting on any edge */\n        SET_BIT(NPCX_WKAEDG(MIWU_TABLE_0, MIWU_GROUP_5), 7);\n+#ifndef CONFIG_ESPI\n        /* Enable wake-up input sources */\n        SET_BIT(NPCX_WKEN(MIWU_TABLE_0, MIWU_GROUP_5), 7);\n #endif\n+#endif\n }",
+      "parentUuid": "e67b4233_8643f48f",
+      "revId": "313c025386ef6a9f912d86633cc42a955f49fcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
