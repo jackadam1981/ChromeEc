@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "22ab659d_5e8a7f13",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-05T21:30:02Z",
+      "side": 1,
+      "message": "I had an idea: update the info only if both RW headers have zero in the appropriate bits, this scheme would automatically ensure that the older version is still viable.",
+      "parentUuid": "9d377d47_b0d5579f",
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a8fc66d_6acf256c",
         "filename": "chip/g/system.c",
         "patchSetId": 3
@@ -114,6 +132,30 @@
       "side": 1,
       "message": "I see, we\u0027re unlocking just the region at hand here.\nMaybe a bit much detail, definitely w/ the current confusing #define names.\n\nI\u0027d go w/ a plain flash_info_read_enable(), no args, that just unlocks the whole thing.",
       "parentUuid": "b1aebecf_ab63563b",
+      "range": {
+        "startLine": 535,
+        "startChar": 28,
+        "endLine": 535,
+        "endChar": 40
+      },
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4da60f8a_0b715a54",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-05T21:30:02Z",
+      "side": 1,
+      "message": "well, this ship has already sailed - the unlock granularity has been merged.\n\nand frankly, I think it does not hurt to be specific in this case, how about I add better comments.",
+      "parentUuid": "a4991ee9_021485cb",
       "range": {
         "startLine": 535,
         "startChar": 28,
