@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "47b05387_195c6b4e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-05T21:35:02Z",
+      "side": 1,
+      "message": "yeah, that\u0027d have similar effect. Might be bit difficult to ascertain that the bridge got burned, thus in urgent cases you\u0027d wind up w/ doing 2 immediate consecutive updates to trigger the burn.",
+      "parentUuid": "22ab659d_5e8a7f13",
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a8fc66d_6acf256c",
         "filename": "chip/g/system.c",
         "patchSetId": 3
@@ -156,6 +174,30 @@
       "side": 1,
       "message": "well, this ship has already sailed - the unlock granularity has been merged.\n\nand frankly, I think it does not hurt to be specific in this case, how about I add better comments.",
       "parentUuid": "a4991ee9_021485cb",
+      "range": {
+        "startLine": 535,
+        "startChar": 28,
+        "endLine": 535,
+        "endChar": 40
+      },
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e72957b9_faf12604",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-05T21:35:02Z",
+      "side": 1,
+      "message": "let\u0027s add some more defines besides INFO_MAX?\nFor instance RO_INFO_BASE, RW_INFO_BASE? Or just INFO_BASE and set it to RW\u0027s since this code is RW relevant only.\n\nAnd make that unlock API use word indexes vs. bytes so we can drop that  * 4 everywhere?",
+      "parentUuid": "4da60f8a_0b715a54",
       "range": {
         "startLine": 535,
         "startChar": 28,
