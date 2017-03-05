@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9d377d47_b0d5579f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-05T21:00:26Z",
+      "side": 1,
+      "message": "yeah, two successive updates would be safest. If someone mucks w/ the update process to skip one, more power to them.\n\nOr rely on testing confidence. And burn the bridge while driving.",
+      "parentUuid": "e6b1ff0c_093a6169",
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a8fc66d_6acf256c",
         "filename": "chip/g/system.c",
         "patchSetId": 3
@@ -84,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "a4991ee9_021485cb",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-05T21:00:26Z",
+      "side": 1,
+      "message": "I see, we\u0027re unlocking just the region at hand here.\nMaybe a bit much detail, definitely w/ the current confusing #define names.\n\nI\u0027d go w/ a plain flash_info_read_enable(), no args, that just unlocks the whole thing.",
+      "parentUuid": "b1aebecf_ab63563b",
+      "range": {
+        "startLine": 535,
+        "startChar": 28,
+        "endLine": 535,
+        "endChar": 40
+      },
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33ffe405_40d47ce9",
         "filename": "chip/g/system.c",
         "patchSetId": 3
@@ -119,6 +161,30 @@
       "side": 1,
       "message": "Did I misunderstand the INFO layout? I thought first 128 words were for the rom to RO protection, the second 128 words (accessed here) were for RO to RW?",
       "parentUuid": "33ffe405_40d47ce9",
+      "range": {
+        "startLine": 575,
+        "startChar": 31,
+        "endLine": 575,
+        "endChar": 43
+      },
+      "revId": "701dd6200567b42238978425d7c92cd49d0e3866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b087bf41_339e1f8b",
+        "filename": "chip/g/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-05T21:00:26Z",
+      "side": 1,
+      "message": "Same as above. The fine grain unlocking seems undue overhead here and confusing at best.",
+      "parentUuid": "7c6abc4a_cc977f23",
       "range": {
         "startLine": 575,
         "startChar": 31,
