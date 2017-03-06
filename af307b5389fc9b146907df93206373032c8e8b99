@@ -16,6 +16,29 @@
       "revId": "af307b5389fc9b146907df93206373032c8e8b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a92851f_987d943d",
+        "filename": "board/pyro/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-06T17:50:12Z",
+      "side": 1,
+      "message": "Where is the case for PWR_STATE_DISCHARGE? Currently, it\u0027s handled by this default, which turns off LED. Is it intended? For example, Electro shows blue in s0 and blinking amber in s3. Do you want to share the LED spec so that we can check the code matches the expected behavior?",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 8
+      },
+      "revId": "af307b5389fc9b146907df93206373032c8e8b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
