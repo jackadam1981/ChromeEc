@@ -37,7 +37,11 @@ GPIO_INT(ACCEL3_INT,        PIN(147), GPIO_INT_FALLING, bmi160_interrupt)
  * In order to not get interrupt storms there should be external logic
  * which makes this a true binary signal into the EC.
  */
+#ifdef CONFIG_POWER_S0IX
+GPIO(PCH_SLP_S0_L,          PIN(211), GPIO_INPUT)
+#else
 GPIO(PCH_SLP_S0_L,          PIN(211), GPIO_INPUT | GPIO_PULL_DOWN)
+#endif
 
 GPIO(PD_RST_L,              PIN(130), GPIO_ODR_HIGH)
 GPIO(USB2_OTG_ID,           PIN(13),  GPIO_ODR_LOW)

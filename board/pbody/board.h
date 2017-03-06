@@ -62,10 +62,11 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
 #define CONFIG_POWER_COMMON
+#define CONFIG_POWER_S0IX
 #define CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD 30
 /* All data won't fit in data RAM.  So, moving boundary slightly. */
 #undef CONFIG_RO_SIZE
-#define CONFIG_RO_SIZE (104 * 1024)
+#define CONFIG_RO_SIZE (105 * 1024)
 #define CONFIG_SCI_GPIO GPIO_PCH_SCI_L
 /* We're space constrained on PBODY, so reduce the UART TX buffer size. */
 #undef CONFIG_UART_TX_BUF_SIZE
