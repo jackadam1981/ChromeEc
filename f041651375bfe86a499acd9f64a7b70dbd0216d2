@@ -22,6 +22,30 @@
       "revId": "f041651375bfe86a499acd9f64a7b70dbd0216d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e43f5740_9b2934d9",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-06T22:43:21Z",
+      "side": 1,
+      "message": "Well, as I understand it, the pull up/pull down configuration is handled once by connect_pinmux() called by gpio_pre_init(). Setting it here would be ignored by the chip specific gpio module. I could add a comment explaining that.",
+      "parentUuid": "dc2acf4e_149a136e",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 45
+      },
+      "revId": "f041651375bfe86a499acd9f64a7b70dbd0216d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
