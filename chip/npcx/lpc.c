@@ -1098,6 +1098,7 @@ static void lpc_init(void)
 	/* initial IO port address via SIB-write modules */
 	host_register_init();
 #else
+#ifndef CONFIG_ESPI
 	/* Initialize LRESET# interrupt */
 	/* Set detection mode to edge */
 	CLEAR_BIT(NPCX_WKMOD(MIWU_TABLE_0, MIWU_GROUP_5), 7);
@@ -1105,6 +1106,7 @@ static void lpc_init(void)
 	SET_BIT(NPCX_WKAEDG(MIWU_TABLE_0, MIWU_GROUP_5), 7);
 	/* Enable wake-up input sources */
 	SET_BIT(NPCX_WKEN(MIWU_TABLE_0, MIWU_GROUP_5), 7);
+#endif
 #endif
 }
 /*
