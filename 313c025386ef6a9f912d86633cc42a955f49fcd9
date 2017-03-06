@@ -34,6 +34,24 @@
       "revId": "313c025386ef6a9f912d86633cc42a955f49fcd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dc1e5d3_38bef93d",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-03-06T02:27:40Z",
+      "side": 1,
+      "message": "We also needn\u0027t do the other initialization stuff of LRESET. Please see the following patch. I also verified it on poppy in my side.\n\ndiff --git a/chip/npcx/lpc.c b/chip/npcx/lpc.c\nindex e8b59f1..f981a39 100644\n--- a/chip/npcx/lpc.c\n+++ b/chip/npcx/lpc.c\n@@ -1098,6 +1098,7 @@ static void lpc_init(void)\n        /* initial IO port address via SIB-write modules */\n        host_register_init();\n #else\n+#ifndef CONFIG_ESPI\n        /* Initialize LRESET# interrupt */\n        /* Set detection mode to edge */\n        CLEAR_BIT(NPCX_WKMOD(MIWU_TABLE_0, MIWU_GROUP_5), 7);\n@@ -1106,6 +1107,7 @@ static void lpc_init(void)\n        /* Enable wake-up input sources */\n        SET_BIT(NPCX_WKEN(MIWU_TABLE_0, MIWU_GROUP_5), 7);\n #endif\n+#endif\n }\n /*\n  * Set prio to higher than default; this way LPC memory mapped data is ready",
+      "parentUuid": "10cb0331_7c7ac4f9",
+      "revId": "313c025386ef6a9f912d86633cc42a955f49fcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
