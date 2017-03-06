@@ -46,6 +46,30 @@
       "revId": "d994974da91ed94d5575411c01e9489bd1164f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "decf012d_c3b1ea4a",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-06T09:28:32Z",
+      "side": 1,
+      "message": "As pointed by the 2 CLs you have linked, it\u0027s a disable bit.\nSo yes SMP_DISCHARGE_DISABLE_FET_BIT would be more correct.",
+      "parentUuid": "38bae931_4b47ba42",
+      "range": {
+        "startLine": 206,
+        "startChar": 11,
+        "endLine": 208,
+        "endChar": 27
+      },
+      "revId": "d994974da91ed94d5575411c01e9489bd1164f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
