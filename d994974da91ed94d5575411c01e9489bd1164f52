@@ -22,6 +22,30 @@
       "revId": "d994974da91ed94d5575411c01e9489bd1164f52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38bae931_4b47ba42",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-06T01:32:23Z",
+      "side": 1,
+      "message": "That name comes from https://chromium-review.googlesource.com/#/c/419881/6/board/reef/battery.c@63 or https://chromium-review.googlesource.com/#/c/425616/2/board/reef/battery.c@284\nCould you name it ? Or use \"SMP_DISCHARGE_FET_BIT\" and when someone is reading this code, they can check comments to know  it should be 0 or 1 when specific battery can provide power.",
+      "parentUuid": "fa64c295_c8877303",
+      "range": {
+        "startLine": 206,
+        "startChar": 11,
+        "endLine": 208,
+        "endChar": 27
+      },
+      "revId": "d994974da91ed94d5575411c01e9489bd1164f52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
