@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccedb67f_62d00326",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1494,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-06T09:21:48Z",
+      "side": 1,
+      "message": "please no defensive programming like this if the function has no external caller.\nHere it seems to be called from 2 places where this is already guaranteed.",
+      "range": {
+        "startLine": 1493,
+        "startChar": 0,
+        "endLine": 1494,
+        "endChar": 9
+      },
+      "revId": "b34e15359c6be4a2b474d7ca9d2b2d4d4ff497c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95d6b999_f3e5bed0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1518,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-06T09:21:48Z",
+      "side": 1,
+      "message": "the last 2 users of this function are the plankton board (which has only one port)\nand the \u0027pd\u0027 console command. Maybe we can remove this.\n(fix plankton to use pd_comm_enable_port(0,) and I would move the \u0027pd enable\u0027 command to the per-port one, so we can actually use it to debug this)",
+      "range": {
+        "startLine": 1514,
+        "startChar": 0,
+        "endLine": 1518,
+        "endChar": 33
+      },
+      "revId": "b34e15359c6be4a2b474d7ca9d2b2d4d4ff497c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34eaa53e_ac4d07e6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-06T09:21:48Z",
+      "side": 1,
+      "message": "What CONFIG_USB_PD_COMM_ENABLED does is a bit surprising ?\n(btw it\u0027s only disabled on Plankton)\nbut AFAICT it\u0027s not doing what the configuration help says it does.\n(it seems it might have been broken since 08498eab https://chromium-review.googlesource.com/394809 in October, but not a good reason to keep it brokem)",
+      "range": {
+        "startLine": 1625,
+        "startChar": 0,
+        "endLine": 1635,
+        "endChar": 2
+      },
+      "revId": "b34e15359c6be4a2b474d7ca9d2b2d4d4ff497c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "466c3183_e127a3fd",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6879,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-06T09:21:48Z",
+      "side": 1,
+      "message": "printing the actual string we got (argv[2]) is somewhat useful here.",
+      "range": {
+        "startLine": 6879,
+        "startChar": 20,
+        "endLine": 6879,
+        "endChar": 39
+      },
+      "revId": "b34e15359c6be4a2b474d7ca9d2b2d4d4ff497c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
