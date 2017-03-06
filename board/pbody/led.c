@@ -194,7 +194,8 @@ static void pbody_led_set_power(void)
 
 	power_ticks++;
 
-	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND) |
+		chipset_in_state(CHIPSET_STATE_STANDBY)) {
 		if (!previous_state_suspend)
 			power_ticks = 0;
 		/* Blink once every four seconds */
