@@ -70,6 +70,24 @@
       "revId": "313c025386ef6a9f912d86633cc42a955f49fcd9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eabe9008_fd3ea27d",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-03-06T04:10:47Z",
+      "side": 1,
+      "message": "Nicolas: I don\u0027t how to add a new patch set on this CL. Do you mean create a new CL for this issue?",
+      "parentUuid": "c53bc6f0_41d8d624",
+      "revId": "313c025386ef6a9f912d86633cc42a955f49fcd9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
