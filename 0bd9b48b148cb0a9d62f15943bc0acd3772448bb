@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d5ff9b6_f932eeb1",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-06T14:49:53Z",
+      "side": 1,
+      "message": "table \u003d gpio_wui_tables[i]\n\nMaybe there is no need to keep 2 separate counters.",
+      "revId": "0bd9b48b148cb0a9d62f15943bc0acd3772448bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb939da_4bf1daa3",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-06T14:49:53Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "0bd9b48b148cb0a9d62f15943bc0acd3772448bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6af46ebe_480446b6",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-06T14:49:53Z",
+      "side": 1,
+      "message": "And ditto.",
+      "revId": "0bd9b48b148cb0a9d62f15943bc0acd3772448bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
