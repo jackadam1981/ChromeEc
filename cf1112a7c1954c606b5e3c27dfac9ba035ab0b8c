@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6ae7598_887a4d47",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-06T19:32:56Z",
+      "side": 1,
+      "message": "Maybe a better name for this would be \u0027detect_uart_idle\u0027?",
+      "revId": "cf1112a7c1954c606b5e3c27dfac9ba035ab0b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee460023_2cc5880a",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-06T19:32:56Z",
+      "side": 1,
+      "message": "Would you ever want to reset the debounce count? Here if you happen to sample when something is being transmitted over the UART, you\u0027ll disable. What if you reset the debounce count when you see that the UART is in fact idle?",
+      "revId": "cf1112a7c1954c606b5e3c27dfac9ba035ab0b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
