@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2e0dd4f_bc829a20",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1110,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-03-06T04:55:24Z",
+      "side": 1,
+      "message": "No code change from patchset #2. Just added a comment explaining the reasoning behind disabling this.",
+      "range": {
+        "startLine": 1102,
+        "startChar": 1,
+        "endLine": 1110,
+        "endChar": 4
+      },
+      "revId": "a13a022e12b92bf5f1c46a4f7b3a93aeb6b4b483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
