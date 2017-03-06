@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d3f06f0_f34c1b14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-06T17:30:17Z",
+      "side": 1,
+      "message": "Please open a crbug for tracking. Are there kernel / FW changes to go along with this CL?",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "59b186a0ea0ec5d01b87e42cc18da3234cc1cd39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10331f26_dad232f3",
+        "filename": "board/pbody/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-06T17:30:17Z",
+      "side": 1,
+      "message": "Be aware that this will make new images incompatible with previous RO.",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "59b186a0ea0ec5d01b87e42cc18da3234cc1cd39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
