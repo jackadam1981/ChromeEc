@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b6eb17eb_2f08b294",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1494,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-06T21:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61830b48_9a5daa0f",
+      "range": {
+        "startLine": 1493,
+        "startChar": 0,
+        "endLine": 1494,
+        "endChar": 9
+      },
+      "revId": "b34e15359c6be4a2b474d7ca9d2b2d4d4ff497c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95d6b999_f3e5bed0",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "this seems as broken as before for Plankton,\nplankton has likely  no write-protect locking it, so defining USB_PD_COMM_LOCKED is no-op",
       "parentUuid": "8a26bb73_e410f4b4",
+      "range": {
+        "startLine": 1625,
+        "startChar": 0,
+        "endLine": 1635,
+        "endChar": 2
+      },
+      "revId": "b34e15359c6be4a2b474d7ca9d2b2d4d4ff497c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fc0e53e_78cc2b49",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-06T21:24:26Z",
+      "side": 1,
+      "message": "So, you\u0027re saying Plankton wants to disable pd comm unconditinoally and suggesting we let *_ENABLED overrule *_LOCKED?",
+      "parentUuid": "35cf5a49_ec2509c7",
       "range": {
         "startLine": 1625,
         "startChar": 0,
