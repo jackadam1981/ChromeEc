@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efaf34f9_e08b24e6",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-06T15:40:00Z",
+      "side": 1,
+      "message": "Can you please just use c99 struct initializers? Same goes for the macros.\ni.e.:\n\n[0] \u003d {\n.gpio \u003d { \n...\n},\n .table \u003d ...,\n .group \u003d ...,\n},\n[1] \u003d { },",
+      "revId": "000ba9c76f5c078d46aec9ac18b2d658a2217d04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08adb98_9abc4b07",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-06T15:40:00Z",
+      "side": 1,
+      "message": "Might as well make this ARRAY_SIZE(wui_item-\u003egpio).",
+      "range": {
+        "startLine": 470,
+        "startChar": 19,
+        "endLine": 470,
+        "endChar": 20
+      },
+      "revId": "000ba9c76f5c078d46aec9ac18b2d658a2217d04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "655ccf99_3184cc7f",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-06T15:40:00Z",
+      "side": 1,
+      "message": "To save some horizontal space:\n\nif (!wui_mask)\n  continue;",
+      "revId": "000ba9c76f5c078d46aec9ac18b2d658a2217d04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc4c366_c254f1c6",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-06T15:40:00Z",
+      "side": 1,
+      "message": "Same as above comment on 470.",
+      "range": {
+        "startLine": 857,
+        "startChar": 23,
+        "endLine": 857,
+        "endChar": 25
+      },
+      "revId": "000ba9c76f5c078d46aec9ac18b2d658a2217d04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
