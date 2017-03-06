@@ -337,6 +337,9 @@ void pmu_wakeup_interrupt(void)
 	/* Clear pmu reset */
 	GWRITE(PMU, CLRRST, 1);
 
+	if (wakeup_src & GC_PMU_EXITPD_SRC_UTMI_SUSPEND_N_MASK)
+		disable_sleep(SLEEP_MASK_USB_DEVICE);
+
 	if (wakeup_src & GC_PMU_EXITPD_SRC_PIN_PD_EXIT_MASK) {
 		/*
 		 * If any wake pins are edge triggered, the pad logic latches
