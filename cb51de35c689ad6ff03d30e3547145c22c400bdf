@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bcea63e_aafff47d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1963,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-07T13:54:32Z",
+      "side": 1,
+      "message": "you also need to set pd[port].polarity here (as done above) ?",
+      "range": {
+        "startLine": 1963,
+        "startChar": 5,
+        "endLine": 1963,
+        "endChar": 32
+      },
+      "revId": "cb51de35c689ad6ff03d30e3547145c22c400bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24cf1e3e_43398215",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2592,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-07T13:54:32Z",
+      "side": 1,
+      "message": "why are you not using the clause below (line 2606 to 2628) which seems the slightly more correct version of this ?",
+      "range": {
+        "startLine": 2572,
+        "startChar": 0,
+        "endLine": 2592,
+        "endChar": 6
+      },
+      "revId": "cb51de35c689ad6ff03d30e3547145c22c400bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58bf31e0_b5b07c8b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3035,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-07T13:54:32Z",
+      "side": 1,
+      "message": "your other port (CHG) is not dual role ?",
+      "range": {
+        "startLine": 3033,
+        "startChar": 3,
+        "endLine": 3035,
+        "endChar": 33
+      },
+      "revId": "cb51de35c689ad6ff03d30e3547145c22c400bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
