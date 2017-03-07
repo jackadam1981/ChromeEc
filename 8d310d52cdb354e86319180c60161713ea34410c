@@ -117,6 +117,30 @@
       "revId": "8d310d52cdb354e86319180c60161713ea34410c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c34ee62_21f7aa41",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-07T17:03:06Z",
+      "side": 1,
+      "message": "I agree but I cannot test this piece of code myself, so we will go with this version, thanks for your review",
+      "parentUuid": "76de69af_d24d380b",
+      "range": {
+        "startLine": 628,
+        "startChar": 33,
+        "endLine": 628,
+        "endChar": 35
+      },
+      "revId": "8d310d52cdb354e86319180c60161713ea34410c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
