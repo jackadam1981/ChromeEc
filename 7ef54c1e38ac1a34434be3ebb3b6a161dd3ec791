@@ -22,6 +22,30 @@
       "revId": "7ef54c1e38ac1a34434be3ebb3b6a161dd3ec791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9d74452_ad36eec1",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-07T22:58:55Z",
+      "side": 1,
+      "message": "offsets are off the bank base, so the same offset of zero can be for the actual flash or for the info.\n\nhow else could we see that we are in an info?",
+      "parentUuid": "a1ed40c4_b878247d",
+      "range": {
+        "startLine": 170,
+        "startChar": 6,
+        "endLine": 170,
+        "endChar": 19
+      },
+      "revId": "7ef54c1e38ac1a34434be3ebb3b6a161dd3ec791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
