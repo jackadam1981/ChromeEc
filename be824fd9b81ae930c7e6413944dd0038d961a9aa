@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08ce2c1c_e7484553",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-07T21:33:24Z",
+      "side": 1,
+      "message": "lgtm, but this forces sync on all other fields of the manifest.\nwhy not simply have a prod- and dev-manifest and less scripting fu?",
+      "revId": "be824fd9b81ae930c7e6413944dd0038d961a9aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
