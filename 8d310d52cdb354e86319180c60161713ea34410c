@@ -93,6 +93,30 @@
       "revId": "8d310d52cdb354e86319180c60161713ea34410c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76de69af_d24d380b",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-07T16:41:05Z",
+      "side": 1,
+      "message": "Here is why I think \u0027!!\u0027 should be in the macro. data_role and power_role are supposed to be 1 or 0. No other values are allowed. It\u0027s neither enforced nor documented. We should assume this macro is going to be used by somebody else, who is not so careful, in the future.\n\nAnyway, fixing the bug is more important. So, let\u0027s move forward.",
+      "parentUuid": "5ebf637e_f0c72d59",
+      "range": {
+        "startLine": 628,
+        "startChar": 33,
+        "endLine": 628,
+        "endChar": 35
+      },
+      "revId": "8d310d52cdb354e86319180c60161713ea34410c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
