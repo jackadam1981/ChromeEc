@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c7ce15b5_e387d775",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-07T08:44:26Z",
+      "side": 1,
+      "message": "No we don\u0027t use them.",
+      "parentUuid": "bc8c8d71_8ced019d",
+      "range": {
+        "startLine": 54,
+        "startChar": 14,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "8d310d52cdb354e86319180c60161713ea34410c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86fc1922_4821d76b",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-06T20:00:00Z",
       "side": 1,
       "message": "Putting this in the macro makes it easier to use, doesn\u0027t it?",
+      "range": {
+        "startLine": 628,
+        "startChar": 33,
+        "endLine": 628,
+        "endChar": 35
+      },
+      "revId": "8d310d52cdb354e86319180c60161713ea34410c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ebf637e_f0c72d59",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-07T08:44:26Z",
+      "side": 1,
+      "message": "No it doesn\u0027t change anything",
+      "parentUuid": "86fc1922_4821d76b",
       "range": {
         "startLine": 628,
         "startChar": 33,
