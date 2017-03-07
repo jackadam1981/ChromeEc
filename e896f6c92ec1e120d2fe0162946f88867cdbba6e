@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23eb7b12_175ea2d0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-07T00:39:43Z",
+      "side": 1,
+      "message": "this is much better than the original idea of suppressing sleep for a fixed time.\n\nThe question is:should this happen here or in the USB stack domain.",
+      "revId": "e896f6c92ec1e120d2fe0162946f88867cdbba6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
