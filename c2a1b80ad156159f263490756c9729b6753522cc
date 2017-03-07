@@ -22,6 +22,30 @@
       "revId": "c2a1b80ad156159f263490756c9729b6753522cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d000b6b7_c8bbf6be",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-07T20:47:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ea757b5_26577664",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 51
+      },
+      "revId": "c2a1b80ad156159f263490756c9729b6753522cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
