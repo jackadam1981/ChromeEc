@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f6a880b1_cccf3bc7",
+        "filename": "common/trace.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-07T14:07:13Z",
+      "side": 1,
+      "message": "given you are using only in your interactive command, it should be CC_COMMAND (or just use ccprintf below)",
+      "range": {
+        "startLine": 14,
+        "startChar": 41,
+        "endLine": 14,
+        "endChar": 50
+      },
+      "revId": "22ad93dd783324f6188439df04ec1e0eae50cbde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e878659_c6a23765",
+        "filename": "common/trace.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-07T14:07:13Z",
+      "side": 1,
+      "message": "you will have atomicity issues",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 14
+      },
+      "revId": "22ad93dd783324f6188439df04ec1e0eae50cbde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58bda416_cda94d16",
         "filename": "common/trace.c",
         "patchSetId": 2
@@ -13,6 +59,29 @@
       "writtenOn": "2017-03-07T04:22:38Z",
       "side": 1,
       "message": "Any usefulness in erasing already printed trace events?",
+      "revId": "22ad93dd783324f6188439df04ec1e0eae50cbde",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc0f3d2b_fd2769bf",
+        "filename": "common/trace.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-07T14:07:13Z",
+      "side": 1,
+      "message": "I cannot really believe this would really work without triggering a watchdog for 512 stored events",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 10
+      },
       "revId": "22ad93dd783324f6188439df04ec1e0eae50cbde",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
