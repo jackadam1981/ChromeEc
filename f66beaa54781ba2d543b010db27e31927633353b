@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a99a8fb6_aeed0635",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1185574
+      },
+      "writtenOn": "2017-03-07T01:42:56Z",
+      "side": 1,
+      "message": "But for now on pbody,  chrome browser cannot filter the events from TP and KB. And this prevents keyboard and touchpad from turning on by the (faulty) lid angle calculation.",
+      "parentUuid": "33d12b06_2cf974ad",
+      "range": {
+        "startLine": 634,
+        "startChar": 17,
+        "endLine": 634,
+        "endChar": 42
+      },
+      "revId": "f66beaa54781ba2d543b010db27e31927633353b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a60dc904_6e9c7b49",
         "filename": "board/pbody/gpio.inc",
         "patchSetId": 1
