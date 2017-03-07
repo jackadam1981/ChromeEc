@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "af9ed39c_5f4771ab",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-07T21:49:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ae7598_887a4d47",
+      "revId": "cf1112a7c1954c606b5e3c27dfac9ba035ab0b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee460023_2cc5880a",
         "filename": "board/tigertail/board.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-06T19:32:56Z",
       "side": 1,
       "message": "Would you ever want to reset the debounce count? Here if you happen to sample when something is being transmitted over the UART, you\u0027ll disable. What if you reset the debounce count when you see that the UART is in fact idle?",
+      "revId": "cf1112a7c1954c606b5e3c27dfac9ba035ab0b8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081a0ce9_9d2d1cfa",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-03-07T21:49:33Z",
+      "side": 1,
+      "message": "Hmm yeah debounce is not used correctly here, fixed.",
+      "parentUuid": "ee460023_2cc5880a",
       "revId": "cf1112a7c1954c606b5e3c27dfac9ba035ab0b8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
