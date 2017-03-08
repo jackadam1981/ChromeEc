@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b023ca3_d8cb31d7",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-08T23:19:01Z",
+      "side": 1,
+      "message": "i\u0027d also have GC_GLOBALSEC_FLASH_REGION6_CTRL_RD_EN_MASK in here.\nSeems fraught w/ access peril for no reason, doing W^R here. Note R does not equate X so not much actual risk here.\n\nDoes this not interfere as is w/ your lazy write-enable but always read loop? Test multiple word striking..",
+      "revId": "885a3d61dbbb42c41d0c8e5540ec2442145a1e83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
