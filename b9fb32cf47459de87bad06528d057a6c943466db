@@ -22,6 +22,30 @@
       "revId": "b9fb32cf47459de87bad06528d057a6c943466db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "178bf851_4ce95fa6",
+        "filename": "board/pyro/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-08T17:57:41Z",
+      "side": 1,
+      "message": "Sorry, I just realized this is what i suggested. Since now you have PWR_STATE_DISCHARGE, please make it a fall-through to PWR_STATE_DISCHARGE (for the reason I wrote above):\n\n\tcase PWR_STATE_DISCHARGE_FULL:\n\t\tif (extpower_is_present()) {\n\t\t\tled_set_color_battery(LED_GREEN);\n\t\t\tbreak;\n\t\t}\n\tcase PWR_STATE_DISCHARGE:",
+      "parentUuid": "023d2257_525245b0",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 8
+      },
+      "revId": "b9fb32cf47459de87bad06528d057a6c943466db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
