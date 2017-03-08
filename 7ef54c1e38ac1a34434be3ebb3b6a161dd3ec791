@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "dd643482_1b449ce4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-03-08T18:38:49Z",
+      "side": 1,
+      "message": "I suggest referring to info1 as info globally to avoid confusion.  For all practical purposes, there is no other info space (info0 is only accessible to the bootrom).",
+      "revId": "7ef54c1e38ac1a34434be3ebb3b6a161dd3ec791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1ed40c4_b878247d",
         "filename": "chip/g/flash.c",
         "patchSetId": 2
@@ -61,6 +78,30 @@
       "side": 1,
       "message": "I dont know. Just checking",
       "parentUuid": "f9d74452_ad36eec1",
+      "range": {
+        "startLine": 170,
+        "startChar": 6,
+        "endLine": 170,
+        "endChar": 19
+      },
+      "revId": "7ef54c1e38ac1a34434be3ebb3b6a161dd3ec791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70be2772_bc9ca776",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-03-08T18:38:49Z",
+      "side": 1,
+      "message": "The encrypted endorsement seed lives (permanently) in info space.  This is why I put it in this bail-out case here.  I recommend putting in a check that only allows erasure of the rollback counter space.",
+      "parentUuid": "ea242016_3aa61f5f",
       "range": {
         "startLine": 170,
         "startChar": 6,
