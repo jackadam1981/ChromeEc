@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f84161b_107a8602",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-08T16:33:36Z",
+      "side": 1,
+      "message": "this part is lame (as is our API: most of the time, we discard the gpio number we might need later)",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 435,
+        "endChar": 2
+      },
+      "revId": "3d0d5f9c10267e7d0328a1bdd8666313b237be50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
