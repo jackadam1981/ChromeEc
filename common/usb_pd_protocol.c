@@ -1619,7 +1619,8 @@ static void pd_init_tasks(void)
 	enable = 0;
 #elif defined(CONFIG_USB_PD_COMM_LOCKED)
 	/* Disable PD communication at init if we're in RO and locked. */
-	if (system_get_image_copy() != SYSTEM_IMAGE_RW && system_is_locked())
+	if (system_get_image_copy() != SYSTEM_IMAGE_RW &&
+			(system_is_locked() || !battery_is_present()))
 		enable = 0;
 #endif
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
