@@ -22,6 +22,30 @@
       "revId": "58b584effe030c6a5223ddaac19977d5d090cb33",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3900270e_37976f4d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1623,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-08T15:46:57Z",
+      "side": 1,
+      "message": "Overall I think the original change is ok for reef, if we understand how it will work (or not) with a cut-off battery. But across all platforms, I think it\u0027s going to lead to strange behavior, so we should try to keep it in board-level code.",
+      "parentUuid": "6c70bba4_3f3c90a7",
+      "range": {
+        "startLine": 1623,
+        "startChar": 27,
+        "endLine": 1623,
+        "endChar": 45
+      },
+      "revId": "58b584effe030c6a5223ddaac19977d5d090cb33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
