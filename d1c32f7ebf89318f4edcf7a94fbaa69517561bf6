@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2f4d613_54942b6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2017-03-08T17:42:20Z",
+      "side": 1,
+      "message": "s/usb_interrupt //",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 51
+      },
+      "revId": "d1c32f7ebf89318f4edcf7a94fbaa69517561bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d68ddadb_c6c60b1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2017-03-08T17:42:20Z",
+      "side": 1,
+      "message": "s/masks/umasks/",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "d1c32f7ebf89318f4edcf7a94fbaa69517561bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79cd4a1e_a6ffb749",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2017-03-08T17:42:20Z",
+      "side": 1,
+      "message": "s/usb_iinterrupt/that USB ISR/",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "d1c32f7ebf89318f4edcf7a94fbaa69517561bf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
