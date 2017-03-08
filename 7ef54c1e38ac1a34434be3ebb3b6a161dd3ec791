@@ -111,6 +111,30 @@
       "revId": "7ef54c1e38ac1a34434be3ebb3b6a161dd3ec791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99aa5564_9f91dcd9",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2017-03-08T18:43:25Z",
+      "side": 1,
+      "message": "won\u0027t the endorsement be recreated at startup by the manufacturing check?\n\nWe can\u0027t erase info1 partially - erase granularity is 2k. We could read the rest of the info space and re-write it after erasing info mask if it is necessary, but is it?",
+      "parentUuid": "70be2772_bc9ca776",
+      "range": {
+        "startLine": 170,
+        "startChar": 6,
+        "endLine": 170,
+        "endChar": 19
+      },
+      "revId": "7ef54c1e38ac1a34434be3ebb3b6a161dd3ec791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
