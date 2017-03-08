@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3db0adb_ecb58950",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-08T23:21:34Z",
+      "side": 1,
+      "message": "Please add \u0027DP\u0027.",
+      "range": {
+        "startLine": 394,
+        "startChar": 4,
+        "endLine": 394,
+        "endChar": 24
+      },
+      "revId": "0940d884b4992ede29b3156266697253d8fce57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce3b8eb3_c03c8fff",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-08T23:21:34Z",
+      "side": 1,
+      "message": "The datasheet says this is MUX_DP_EQ_Configuration. Can you name it in ps8751.h?",
+      "range": {
+        "startLine": 395,
+        "startChar": 36,
+        "endLine": 395,
+        "endChar": 40
+      },
+      "revId": "0940d884b4992ede29b3156266697253d8fce57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1dee612_b9e53219",
+        "filename": "board/reef/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-08T23:21:34Z",
+      "side": 1,
+      "message": "Can you make it more descriptive by naming the value or adding more comment?",
+      "range": {
+        "startLine": 395,
+        "startChar": 42,
+        "endLine": 395,
+        "endChar": 46
+      },
+      "revId": "0940d884b4992ede29b3156266697253d8fce57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
