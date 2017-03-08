@@ -206,8 +206,8 @@ static const struct fast_charge_profile fast_charge_panasonic_info[] = {
 	[TEMP_RANGE_1] = {
 		.temp_c = TEMPC_TENTHS_OF_DEG(60),
 		.current_mA = {
-			[VOLTAGE_RANGE_0] = 3072,
-			[VOLTAGE_RANGE_1] = 3072,
+			[VOLTAGE_RANGE_0] = 2918,
+			[VOLTAGE_RANGE_1] = 2918,
 		},
 	},
 
