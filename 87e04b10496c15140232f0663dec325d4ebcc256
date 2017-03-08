@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "126a707c_d9c7f153",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-08T07:57:59Z",
+      "side": 1,
+      "message": "pressure \u003d DIV_ROUND_NEAREST(pressure * pressure_mult, pressure_div);",
+      "range": {
+        "startLine": 153,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 38
+      },
+      "revId": "87e04b10496c15140232f0663dec325d4ebcc256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
