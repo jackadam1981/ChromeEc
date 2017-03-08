@@ -41,8 +41,6 @@ struct anx_state {
 
 static struct anx_state anx[CONFIG_USB_PD_PORT_COUNT];
 
-static int anx74xx_set_mux(int port, int polarity);
-
 /* Save the selected rp value */
 static int selected_rp[CONFIG_USB_PD_PORT_COUNT];
 
@@ -153,54 +151,77 @@ static int anx74xx_tcpm_mux_init(int i2c_addr)
 
 static int anx74xx_tcpm_mux_exit(int port)
 {
-	int rv = EC_SUCCESS;
-	int reg = 0x0;
+	int reg;
 
-	rv = tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg);
-	if (rv)
+	if (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	rv |= tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg | ANX74XX_REG_MODE_TRANS);
+	/* Enter safe mode so aux <-> sbu can be disconnected */
+	reg |= ANX74XX_REG_MODE_TRANS;
+	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg))
+		return EC_ERROR_UNKNOWN;
+	/* Disconnect aux from sbu */
+	reg &= 0xf;
+	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg))
+		return EC_ERROR_UNKNOWN;
+	/* Exit safe mode */
+	reg &= ~ANX74XX_REG_MODE_TRANS;
+	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg))
+		return EC_ERROR_UNKNOWN;
 
 	/* Clear Bit[7:0] R_SWITCH */
-	rv |= tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_1, 0x0);
-
+	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_1, 0x0))
+		return EC_ERROR_UNKNOWN;
 	/* Clear Bit[7:4] R_SWITCH_H */
-	rv |= tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_5, &reg);
-	if (rv)
+	if (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_5, &reg))
 		return EC_ERROR_UNKNOWN;
-	rv |= tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_5, (reg & 0x0f));
-
-	rv |= tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg & 0x09);
-	if (rv)
+	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_5, reg & 0x0f))
 		return EC_ERROR_UNKNOWN;
 
-	return rv;
-
+	return EC_SUCCESS;
 }
 
 
-static int anx74xx_set_mux(int port, int polarity)
+static int anx74xx_mux_aux_to_sbu(int port, int polarity, int enabled)
 {
-	int reg, rv = EC_SUCCESS;
+	int reg;
+	int rv;
+	const int aux_mask = ANX74XX_REG_AUX_SWAP_SET_CC2 |
+		ANX74XX_REG_AUX_SWAP_SET_CC1;
 
-	rv = tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg);
-	if (rv)
+	if (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (polarity) {
-		reg |= ANX74XX_REG_AUX_SWAP_SET_CC2;
-		reg &= ~ANX74XX_REG_AUX_SWAP_SET_CC1;
-	} else {
-		reg |= ANX74XX_REG_AUX_SWAP_SET_CC1;
-		reg &= ~ANX74XX_REG_AUX_SWAP_SET_CC2;
+
+	/* Enter safe mode so DP aux <-> sbu settings can be changed. */
+	reg |= ANX74XX_REG_MODE_TRANS;
+	if (tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg))
+		return EC_ERROR_UNKNOWN;
+
+	/* Assume aux_p/n lines are not connected */
+	reg &= ~aux_mask;
+
+	if (enabled) {
+		/* If enabled, connect aux to sbu based on desired  polarity */
+		if (polarity)
+			reg |= ANX74XX_REG_AUX_SWAP_SET_CC2;
+		else
+			reg |= ANX74XX_REG_AUX_SWAP_SET_CC1;
 	}
+	/* Write new aux <-> sub settings */
 	rv = tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg);
 
-	return rv;
+	/*After configured pin assignment, the MUX shall exit Safe State*/
+	rv |= tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2,
+			 reg & ~ANX74XX_REG_MODE_TRANS);
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+
+	return EC_SUCCESS;
 }
 
 static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 {
-	int reg = 0, val = 0;
+	int reg;
+	int pin_cfg = 0;
 	int rv;
 	int port = i2c_addr;
 
@@ -217,33 +238,35 @@ static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 	if (mux_state & MUX_USB_ENABLED) {
 		/* Set pin assignment D */
 		if (mux_state & MUX_POLARITY_INVERTED) {
-			val = ANX74XX_REG_MUX_DP_MODE_BDF_CC2;
+			pin_cfg = ANX74XX_REG_MUX_DP_MODE_BDF_CC2;
 			reg |= ANX74XX_REG_MUX_SSTX_B;
 		} else {
-			val = ANX74XX_REG_MUX_DP_MODE_BDF_CC1;
+			pin_cfg = ANX74XX_REG_MUX_DP_MODE_BDF_CC1;
 			reg |= ANX74XX_REG_MUX_SSTX_A;
 		}
 	} else if (mux_state & MUX_DP_ENABLED) {
 		/* Set pin assignment C */
 		if (mux_state & MUX_POLARITY_INVERTED) {
-			val = ANX74XX_REG_MUX_DP_MODE_ACE_CC2;
+			pin_cfg = ANX74XX_REG_MUX_DP_MODE_ACE_CC2;
 			reg |= ANX74XX_REG_MUX_ML2_B;
 		} else {
-			val = ANX74XX_REG_MUX_DP_MODE_ACE_CC1;
+			pin_cfg = ANX74XX_REG_MUX_DP_MODE_ACE_CC1;
 			reg |= ANX74XX_REG_MUX_ML2_A;
 		}
-		/* FIXME: disabling DP mode should disable SBU muxes */
-		rv |= anx74xx_set_mux(port, mux_state & MUX_POLARITY_INVERTED);
 	} else if (!mux_state) {
 		return anx74xx_tcpm_mux_exit(port);
 	} else {
 		return  EC_ERROR_UNIMPLEMENTED;
 	}
 
-	rv |= tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_1, val);
+	/* Write updated pin assignment */
+	rv |= tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_1, pin_cfg);
+	/* Write Rswitch config bits */
 	rv |= tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_5, reg);
 
-	anx74xx_set_mux(port, mux_state & MUX_POLARITY_INVERTED ? 1 : 0);
+	/* Configure dp aux to sbu settings */
+	anx74xx_mux_aux_to_sbu(port, mux_state & MUX_POLARITY_INVERTED,
+			       mux_state & MUX_DP_ENABLED);
 
 	anx[port].mux_state = mux_state;
 
