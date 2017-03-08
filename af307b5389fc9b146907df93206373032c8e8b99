@@ -109,6 +109,30 @@
       "revId": "af307b5389fc9b146907df93206373032c8e8b99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53a6246a_27a2a131",
+        "filename": "board/pyro/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-08T17:53:48Z",
+      "side": 1,
+      "message": "Please remove (or fix) this comment.",
+      "parentUuid": "6354edbf_b9143713",
+      "range": {
+        "startLine": 145,
+        "startChar": 24,
+        "endLine": 145,
+        "endChar": 42
+      },
+      "revId": "af307b5389fc9b146907df93206373032c8e8b99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

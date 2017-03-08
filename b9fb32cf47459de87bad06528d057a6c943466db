@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "023d2257_525245b0",
+        "filename": "board/pyro/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-08T17:53:48Z",
+      "side": 1,
+      "message": "I kind of suggest we make it fall-through like the original reef patch. It was intended to keep the two cases in sync except when external power is present. If we ever change the behavior of _DISCHARGE, that\u0027ll be automatically reflected to DISCHARGE_FULL as well.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 8
+      },
+      "revId": "b9fb32cf47459de87bad06528d057a6c943466db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
