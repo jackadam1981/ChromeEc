@@ -24,6 +24,8 @@
 #include "usart_rx_dma.h"
 #include "usb_gpio.h"
 #include "usb_i2c.h"
+#include "usb_pd.h"
+#include "usb_pd_config.h"
 #include "usb_spi.h"
 #include "usb-stream.h"
 #include "util.h"
@@ -386,3 +388,43 @@ static void board_init(void)
 	ccd_set_mode(CCD_MODE_DISABLED);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static int command_role(int argc, char **argv)
+{
+	int role;
+	int swap_req = 0;
+
+	if (!pd_is_connected(DUT)) {
+		ccprintf("DUT port is not connected\n");
+		return EC_SUCCESS;
+	}
+
+	role = pd_get_role(DUT);
+	if (argc < 2) {
+		ccprintf("role: %s\n", role == PD_ROLE_SINK ?
+			 "SINK" : "SOURCE");
+		return EC_SUCCESS;
+	}
+
+	if (!strcasecmp(argv[1], "src")) {
+		if (role != PD_ROLE_SOURCE)
+			swap_req = 1;
+	} else if (!strcasecmp(argv[1], "snk")) {
+		if (role != PD_ROLE_SINK)
+			swap_req = 1;
+	} else {
+		return EC_ERROR_PARAM2;
+	}
+	if (swap_req) {
+		pd_request_power_swap(DUT);
+		msleep(500);
+		role = pd_get_role(DUT);
+	}
+	ccprintf("role: %s\n", role == PD_ROLE_SINK ?
+			 "SINK" : "SOURCE");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(role, command_role,
+			"src|snk",
+			"Servo_v4 TypeC power role");
