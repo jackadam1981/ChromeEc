@@ -6,11 +6,11 @@
 
 /* Declare symbolic names for all the GPIOs that we care about.
  * Note: Those with interrupt handlers must be declared first. */
-GPIO_INT(FPS_INT,  PIN(A, 1), GPIO_INT_BOTH, fps_event)
+GPIO_INT(FPS_INT,  PIN(A, 2), GPIO_INT_BOTH, fps_event)
 GPIO_INT(SPI1_NSS, PIN(A, 4), GPIO_INT_BOTH | GPIO_PULL_UP,  spi_event)
 
 /* Outputs */
-GPIO(AP_INT,     PIN(A, 2), GPIO_ODR_HIGH | GPIO_PULL_UP)
+GPIO(AP_INT,     PIN(A, 1), GPIO_ODR_HIGH | GPIO_PULL_UP)
 GPIO(FP_RST_ODL, PIN(A, 3), GPIO_ODR_HIGH)
 GPIO(SPI3_NSS,   PIN(A, 15), GPIO_OUT_HIGH)
 
