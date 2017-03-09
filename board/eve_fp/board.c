@@ -21,7 +21,6 @@ void fps_event(enum gpio_signal signal)
 {
 	/* HACK: Forward interrupt to AP */
 	gpio_set_level(GPIO_AP_INT, gpio_get_level(GPIO_FPS_INT));
-	CPRINTS("FPS %d\n", gpio_get_level(GPIO_FPS_INT));
 }
 
 /* SPI devices */
@@ -38,6 +37,18 @@ static void board_init(void)
 	STM32_GPIO_OSPEEDR(GPIO_B) |= 0x00000fc0;
 	/* Enable clocks to SPI3 module (master) */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI3;
+
+	/* configure the SPI controller (also ensure that CS_N is high) */
+	gpio_config_module(MODULE_SPI_MASTER, 1);
+	spi_enable(CONFIG_SPI_FP_PORT, 1);
+
+	/* Ensure we pulse reset low for 100us to reset the sensor */
+	gpio_set_level(GPIO_FP_RST_ODL, 0);
+	usleep(100);
+	gpio_set_level(GPIO_FP_RST_ODL, 1);
+
+	/* HACK: forward the sensor interrupts to the AP */
+	gpio_enable_interrupt(GPIO_FPS_INT);
 
 	/* we are ready for host transactions */
 	hook_notify(HOOK_CHIPSET_RESUME);
