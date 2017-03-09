@@ -34,6 +34,24 @@
       "revId": "7c7eca77c665939c492aace2aff24018e9ae483b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb7ebd3_07ca3b82",
+        "filename": "chip/npcx/gpio_wui.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-09T15:40:54Z",
+      "side": 1,
+      "message": "struct npcx_wui {\n\tuint8_t table : 2;\n\tuint8_t group : 3;\n\tuint8_t bit   : 3;\n};\n\n\nIs in the .c compilation unit. But you are creating macros which are using the type and its fields in here. Sorry, I used \u0027union\u0027 when I meant struct.",
+      "parentUuid": "5481ba92_b311cfd7",
+      "revId": "7c7eca77c665939c492aace2aff24018e9ae483b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
