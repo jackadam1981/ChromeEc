@@ -30,6 +30,8 @@
 #include "pi3usb9281.h"
 #include "power.h"
 #include "power_button.h"
+#include "pwm.h"
+#include "pwm_chip.h"
 #include "spi.h"
 #include "switch.h"
 #include "system.h"
@@ -104,6 +106,11 @@ const struct power_signal_info power_signal_list[] = {
 	{GPIO_PMIC_DPWROK,       1, "PMIC_DPWROK"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+
+const struct pwm_t pwm_channels[] = {
+	{2, 0},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /* ADC channels */
 const struct adc_t adc_channels[] = {
@@ -389,6 +396,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 static void board_chipset_resume(void)
 {
 	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
+	gpio_set_level(GPIO_KBBL_EN, 1);
 	gpio_set_level(GPIO_PP1800_DX_AUDIO_EN, 1);
 	/*
 	 * Now that we have enabled the rail to the sensors, let's give enough
@@ -409,6 +417,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume,
 static void board_chipset_suspend(void)
 {
 	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
+	gpio_set_level(GPIO_KBBL_EN, 0);
 	gpio_set_level(GPIO_PP1800_DX_AUDIO_EN, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
@@ -626,10 +635,14 @@ void lid_angle_peripheral_enable(int enable)
 	if (enable) {
 		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
 		gpio_set_level(GPIO_TRACKPAD_INT_ENABLE, 1);
+
+		if (chipset_in_s0)
+			gpio_set_level(GPIO_KBBL_EN, 1);
 	} else {
 		if (!chipset_in_s0) {
 			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
 			gpio_set_level(GPIO_TRACKPAD_INT_ENABLE, 0);
+			gpio_set_level(GPIO_KBBL_EN, 0);
 		}
 	}
 }
