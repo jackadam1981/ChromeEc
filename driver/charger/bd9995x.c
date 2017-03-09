@@ -800,7 +800,7 @@ static void bd9995x_init(void)
 	if (ch_raw_read16(BD9995X_CMD_VM_CTRL_SET, &reg,
 			  BD9995X_EXTENDED_COMMAND))
 		return;
-	reg &= ~BD9995X_CMD_VM_CTRL_SET_EXTIADPEN;
+	reg = 0x13ff;
 	ch_raw_write16(BD9995X_CMD_VM_CTRL_SET, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
