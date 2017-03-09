@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8fa44b9_f11713bc",
+        "filename": "chip/g/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-03-09T01:28:04Z",
+      "side": 1,
+      "message": "Does this implementation always NUL terminate strings?",
+      "revId": "82f4214a80def8e78b6fd4c8d74d191ca367b82c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
