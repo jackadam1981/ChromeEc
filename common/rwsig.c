@@ -9,6 +9,7 @@
 
 #include "console.h"
 #include "ec_commands.h"
+#include "rollback.h"
 #include "rsa.h"
 #include "sha256.h"
 #include "shared_mem.h"
@@ -16,6 +17,7 @@
 #include "usb_pd.h"
 #include "util.h"
 #include "vb21_struct.h"
+#include "version.h"
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
@@ -46,6 +48,29 @@ static int check_padding(const uint8_t *data,
 	return 1;
 }
 
+#ifdef CONFIG_ROLLBACK
+int check_rollback(void)
+{
+	const struct version_struct *v;
+	int rollback_min_version;
+
+	v = system_get_version_struct(SYSTEM_IMAGE_RW);
+
+	if (!v)
+		return 0;
+
+	rollback_min_version = get_rollback_minimum_version();
+
+	if (v->rollback_version < rollback_min_version) {
+		CPRINTS("Rollback error (%d < %d)", v->rollback_version,
+			rollback_min_version);
+		return 0;
+	}
+
+	return 1;
+}
+#endif
+
 void check_rw_signature(void)
 {
 	struct sha256_ctx ctx;
@@ -73,6 +98,11 @@ void check_rw_signature(void)
 		return;
 
 	CPRINTS("Verifying RW image...");
+
+#ifdef CONFIG_ROLLBACK
+	if (!check_rollback())
+		return;
+#endif
 
 	/* Large buffer for RSA computation : could be re-use afterwards... */
 	res = shared_mem_acquire(3 * RSANUMBYTES, (char **)&rsa_workbuf);

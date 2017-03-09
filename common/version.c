@@ -14,7 +14,11 @@ const struct version_struct __keep version_data
 	__attribute__((section(".rodata.ver"))) = {
 	CROS_EC_VERSION_COOKIE1,
 	CROS_EC_VERSION32,
-	CROS_EC_VERSION_COOKIE2
+	CROS_EC_VERSION_COOKIE2,
+#ifdef CONFIG_ROLLBACK
+	CONFIG_ROLLBACK_VERSION,
+	CROS_EC_VERSION_COOKIE3,
+#endif
 };
 
 const char build_info[] __keep __attribute__((section(".rodata.buildinfo"))) =
