@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "823708ca_34517406",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-09T00:13:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d12175b_88b538f3",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "11ad1395d3b8dec14ccfe7087fb6f85c024c6d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3baf6b50_a1f23eb5",
         "filename": "chip/g/system.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-08T23:19:01Z",
       "side": 1,
       "message": "How do you test this if not on a dev build? Dirty client I presume?",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 16
+      },
+      "revId": "11ad1395d3b8dec14ccfe7087fb6f85c024c6d94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48df0428_c25d5eef",
+        "filename": "chip/g/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-09T00:13:24Z",
+      "side": 1,
+      "message": "I build a normal  build with the updated manifest, boot it, then restore the manifest, build another normal build, try booting it, see that it does not boot any more.\n\nAlso use the updated sysinfo command to see the state of the flash info header.",
+      "parentUuid": "3baf6b50_a1f23eb5",
       "range": {
         "startLine": 519,
         "startChar": 0,
