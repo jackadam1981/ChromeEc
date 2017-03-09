@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ab6798b_8d9ad388",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-03-09T01:44:22Z",
+      "side": 1,
+      "message": "You may want to check the status of  locks pertaining to the writeability of the INFO region (e.g. FLASH_FSH_PROTECT_INFO1*) so as to avoid surprises in the code below sometime down the line.\n\nFor example, RO may lock writes/erase to the INFO region, in which case the flash ops below will fail.",
+      "revId": "8d7437f25327fe8b719ffb4c741306fff4191d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "500d5edb_7c61edcc",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-03-09T01:44:22Z",
+      "side": 1,
+      "message": "Please clear the buffer before releasing:\n\n#include \"cryptoc/util.h\"\nalways_memset(preserved_manufacture_state, 0, FLASH_INFO_MANUFACTURE_STATE_SIZE);",
+      "revId": "8d7437f25327fe8b719ffb4c741306fff4191d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
