@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f5244caa_9b9ead4f",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-09T02:12:48Z",
+      "side": 1,
+      "message": "I am not worried about this, this is a debug image, the operator presumably knows what he is doing :)",
+      "parentUuid": "5ab6798b_8d9ad388",
+      "revId": "8d7437f25327fe8b719ffb4c741306fff4191d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "500d5edb_7c61edcc",
         "filename": "chip/g/flash.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "8d7437f25327fe8b719ffb4c741306fff4191d7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b57e5c_f3148810",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-09T02:12:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "500d5edb_7c61edcc",
+      "revId": "8d7437f25327fe8b719ffb4c741306fff4191d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
