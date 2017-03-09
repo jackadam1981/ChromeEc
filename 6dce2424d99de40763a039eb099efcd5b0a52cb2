@@ -34,6 +34,24 @@
       "revId": "6dce2424d99de40763a039eb099efcd5b0a52cb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62fc2441_e726c369",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-09T23:50:42Z",
+      "side": 1,
+      "message": "Actually, I found the comment on line 205 says so. Never mind.",
+      "parentUuid": "d718d31e_91f312b7",
+      "revId": "6dce2424d99de40763a039eb099efcd5b0a52cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
