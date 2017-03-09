@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b5fc22b_afe9a1ff",
+        "filename": "chip/npcx/gpio_wui.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-09T15:02:54Z",
+      "side": 1,
+      "message": "I think it\u0027d be clearer if you put the union type in this header since these macros are initializing that type.",
+      "revId": "7c7eca77c665939c492aace2aff24018e9ae483b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
