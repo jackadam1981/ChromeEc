@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5743af35_cc25e6b9",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-09T14:24:39Z",
+      "side": 1,
+      "message": "Might be good to give that enum a name and use it below as parameter to base_detect_change.",
+      "revId": "16c086723ce7fd5ca9fc8c897148157e6b34eac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
