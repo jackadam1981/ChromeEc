@@ -12,11 +12,16 @@
 
 #define CROS_EC_VERSION_COOKIE1 0xce112233
 #define CROS_EC_VERSION_COOKIE2 0xce445566
+#define CROS_EC_VERSION_COOKIE3 0xce778899
 
 struct version_struct {
 	uint32_t cookie1;
 	char version[32];
 	uint32_t cookie2;
+#ifdef CONFIG_ROLLBACK
+	uint32_t rollback_version;
+	uint32_t cookie3;
+#endif
 } __packed;
 
 extern const struct version_struct version_data;

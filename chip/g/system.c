@@ -258,6 +258,13 @@ enum system_image_copy_t system_get_ro_image_copy(void)
 	return SYSTEM_IMAGE_UNKNOWN;
 }
 
+/* Unsupported */
+const struct version_struct *system_get_version_struct(
+						enum system_image_copy_t copy)
+{
+	return NULL;
+}
+
 /*
  * The RW images contain version strings. The RO images don't, so we'll make
  * some here.

@@ -614,7 +614,8 @@ int system_run_image_copy(enum system_image_copy_t copy)
 }
 
 __attribute__((weak))	   /* Weird chips may need their own implementations */
-const char *system_get_version(enum system_image_copy_t copy)
+const struct version_struct *system_get_version_struct(
+						enum system_image_copy_t copy)
 {
 	static struct version_struct v;
 
@@ -623,10 +624,10 @@ const char *system_get_version(enum system_image_copy_t copy)
 
 	/* Handle version of current image */
 	if (copy == active_copy || copy == SYSTEM_IMAGE_UNKNOWN)
-		return &version_data.version[0];
+		return &version_data;
 
 	if (active_copy == SYSTEM_IMAGE_UNKNOWN)
-		return "";
+		return NULL;
 
 	/*
 	 * The version string is always located after the reset vectors, so
@@ -651,16 +652,32 @@ const char *system_get_version(enum system_image_copy_t copy)
 #else
 	/* Read the version struct from flash into a buffer. */
 	if (flash_read(addr, sizeof(v), (char *)&v))
-		return "";
+		return NULL;
 #endif
 
 	/* Make sure the version struct cookies match before returning the
 	 * version string. */
 	if (v.cookie1 == version_data.cookie1 &&
 	    v.cookie2 == version_data.cookie2)
-		return v.version;
+#ifdef CONFIG_ROLLBACK
+		if (v.cookie3 == version_data.cookie3)
+			return &v;
+#endif
 
-	return "";
+	return NULL;
+}
+
+__attribute__((weak))	   /* Weird chips may need their own implementations */
+const char *system_get_version(enum system_image_copy_t copy)
+{
+	const struct version_struct *v;
+
+	v = system_get_version_struct(copy);
+
+	if (!v)
+		return "";
+
+	return v->version;
 }
 
 int system_get_board_version(void)
