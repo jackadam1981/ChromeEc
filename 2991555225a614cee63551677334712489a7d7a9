@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "932c86fc_e1a17caa",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-03-09T07:30:51Z",
+      "side": 1,
+      "message": "Replcae WUI marcos with npcx_wui structure",
+      "revId": "2991555225a614cee63551677334712489a7d7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdb7d601_32510f0d",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-03-09T07:30:51Z",
+      "side": 1,
+      "message": "In this CL, I remove gpio_set_flags_with_int func. We should consider GPIOs which have interrupt handler and flags contains GPIO_INT_ANY for better performance.",
+      "revId": "2991555225a614cee63551677334712489a7d7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "704ccae5_40a2e75b",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-03-09T07:30:51Z",
+      "side": 1,
+      "message": "Leave it if keyboard task exists.",
+      "revId": "2991555225a614cee63551677334712489a7d7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
