@@ -58,6 +58,18 @@ static int vbus_volt_mv[CONFIG_USB_PD_PORT_COUNT] = {0, 0};
 static int vbus_curr_ma[CONFIG_USB_PD_PORT_COUNT] = {0, 0};
 static int vbus_ma_chg;
 static int vbus_mv_chg;
+/* Voltage thresholds for no connect */
+static int pd_src_vnc[TYPEC_RP_RESERVED][2] = {
+	{PD_SRC_3_0_VNC_MV, PD_SRC_1_5_VNC_MV},
+	{PD_SRC_1_5_VNC_MV, PD_SRC_DEF_VNC_MV},
+	{PD_SRC_3_0_VNC_MV, PD_SRC_DEF_VNC_MV},
+};
+/* Voltage thresholds for Ra attach */
+static int pd_src_rd_threshold[TYPEC_RP_RESERVED][2] = {
+	{PD_SRC_3_0_RD_THRESH_MV, PD_SRC_DEF_RD_THRESH_MV},
+	{PD_SRC_1_5_RD_THRESH_MV, PD_SRC_DEF_RD_THRESH_MV},
+	{PD_SRC_3_0_RD_THRESH_MV, PD_SRC_DEF_RD_THRESH_MV},
+};
 
 static void board_manage_dut_port(int port)
 {
@@ -154,6 +166,38 @@ static void board_manage_chg_port(int port, int max_ma, int vbus_mv)
 	else
 		/* Update CHG port status now since vbus is off */
 		board_update_chg_port();
+}
+
+int pd_tcpc_cc_nc(int port, int cc_volt, int cc_sel)
+{
+	int rp_index;
+
+	/* Can never be called from CHG port as it's sink only */
+	if (port == CHG)
+		return 0;
+
+	rp_index = vbus_rp;
+	/* Ensure that rp_index doens't exceed the array size */
+	if (rp_index >= TYPEC_RP_RESERVED)
+		rp_index = 0;
+
+	return cc_volt >= pd_src_vnc[rp_index][cc_sel];
+}
+
+int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel)
+{
+	int rp_index;
+
+	/* Can never be called from CHG port as it's sink only */
+	if (port == CHG)
+		return 0;
+
+	rp_index = vbus_rp;
+	/* Ensure that rp_index doens't exceed the array size */
+	if (rp_index >= TYPEC_RP_RESERVED)
+		rp_index = 0;
+
+	return cc_volt < pd_src_rd_threshold[rp_index][cc_sel];
 }
 
 int board_select_rp_value(int port, int rp)
