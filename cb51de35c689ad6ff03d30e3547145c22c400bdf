@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "85c5af0d_41839393",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1963,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-09T04:57:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bcea63e_aafff47d",
+      "range": {
+        "startLine": 1963,
+        "startChar": 5,
+        "endLine": 1963,
+        "endChar": 32
+      },
+      "revId": "cb51de35c689ad6ff03d30e3547145c22c400bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24cf1e3e_43398215",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "782e9b82_75a7c69e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2592,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-09T04:57:54Z",
+      "side": 1,
+      "message": "I had added this here so that typec_set_input_current_limit() wouldn\u0027t get called here when the CHG port was connected to a charger that supported PD messaging. I didn\u0027t want the VBUS on indication to be available until the PS_RDY message is received. However, thinking about it more, this special consideration is not really necessary, since that can be handled in the port manager code that looks at the VBUS state from the CHG port. So I removed this block and added the CONFIG_USB_PD_DTS to the places that are setting typec_curr which allows the block below to be used as is.",
+      "parentUuid": "24cf1e3e_43398215",
+      "range": {
+        "startLine": 2572,
+        "startChar": 0,
+        "endLine": 2592,
+        "endChar": 6
+      },
+      "revId": "cb51de35c689ad6ff03d30e3547145c22c400bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58bf31e0_b5b07c8b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-03-07T13:54:32Z",
       "side": 1,
       "message": "your other port (CHG) is not dual role ?",
+      "range": {
+        "startLine": 3033,
+        "startChar": 3,
+        "endLine": 3035,
+        "endChar": 33
+      },
+      "revId": "cb51de35c689ad6ff03d30e3547145c22c400bdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79a9afc_a49fec43",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3035,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-09T04:57:54Z",
+      "side": 1,
+      "message": "The CHG port is not really dual role capable, it has Rd permanently attached to its CC lines. Initially, I had added a bit to pd[port].flags to check here, but then I noticed that this flag would only be set when CONFIG_USB_PD_DTS was defined and it attaches as a SRC_ACCESSORY so the bit seemed redundant.",
+      "parentUuid": "58bf31e0_b5b07c8b",
       "range": {
         "startLine": 3033,
         "startChar": 3,
