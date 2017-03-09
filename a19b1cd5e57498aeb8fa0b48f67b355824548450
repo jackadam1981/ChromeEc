@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "146f0593_6783f9f2",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-03-09T15:54:29Z",
+      "side": 1,
+      "message": "Probably want PWM_CONFIG_ALT_CLOCK to ensure the keyboard backlight works with low power idle.",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "a19b1cd5e57498aeb8fa0b48f67b355824548450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048579b8_eb117f29",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-03-09T15:54:29Z",
+      "side": 1,
+      "message": "The power_manager daemon in the OS already ensures the keyboard backlight is disabled when it goes to tablet mode: https://chromium.googlesource.com/chromiumos/platform2/+/master/power_manager/powerd/policy/keyboard_backlight_controller.cc#445",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 1
+      },
+      "revId": "a19b1cd5e57498aeb8fa0b48f67b355824548450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e808567e_d245428f",
+        "filename": "board/pbody/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-03-09T15:54:29Z",
+      "side": 1,
+      "message": "This looks like it needs 3 spaces to align",
+      "range": {
+        "startLine": 115,
+        "startChar": 25,
+        "endLine": 115,
+        "endChar": 32
+      },
+      "revId": "a19b1cd5e57498aeb8fa0b48f67b355824548450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b10997af_8d3e58f2",
+        "filename": "board/pbody/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-03-09T15:54:29Z",
+      "side": 1,
+      "message": "add a space before *",
+      "range": {
+        "startLine": 116,
+        "startChar": 26,
+        "endLine": 116,
+        "endChar": 27
+      },
+      "revId": "a19b1cd5e57498aeb8fa0b48f67b355824548450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b0d5654_75801ecc",
+        "filename": "board/pbody/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-03-09T15:54:29Z",
+      "side": 1,
+      "message": "Can you move this down to the section below with other alternate mode definitions?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 46
+      },
+      "revId": "a19b1cd5e57498aeb8fa0b48f67b355824548450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
