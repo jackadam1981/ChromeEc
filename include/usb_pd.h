@@ -1480,6 +1480,34 @@ void pd_hw_init(int port, int role);
  */
 void pd_hw_init_rx(int port);
 
+/**
+ * Compare cc_voltage to disconnect threshold
+ *
+ * This function can be used for boards that support variable Rp settings and
+ * require a different voltage threshold based on the Rp value attached to a
+ * given cc line.
+ *
+ * @param port USB-C port number
+ * @param cc_volt voltage measured in mV of the CC line
+ * @param cc_sel cc1 or cc2 selection
+ * @return 1 if voltage is >= threshold value for disconnect
+ */
+int pd_tcpc_cc_nc(int port, int cc_volt, int cc_sel);
+
+/**
+ * Compare cc_voltage to Ra threshold
+ *
+ * This function can be used for boards that support variable Rp settings and
+ * require a different voltage threshold based on the Rp value attached to a
+ * given cc line.
+ *
+ * @param port USB-C port number
+ * @param cc_volt voltage measured in mV of the CC line
+ * @param cc_sel cc1 or cc2 selection
+ * @return 1 if voltage is < threshold value for Ra attach
+ */
+int pd_tcpc_cc_ra(int port, int cc_volt, int cc_sel);
+
 /* --- Protocol layer functions --- */
 
 /**
