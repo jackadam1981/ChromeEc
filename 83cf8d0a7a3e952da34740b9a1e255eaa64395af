@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dd49e65_e1354233",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-09T15:48:48Z",
+      "side": 0,
+      "message": "As noted in the email thread we probably want to set it in the code since we\u0027ve already deployed the clearing to existing devices. could you please go back to patchset 1 and write a comment about why  one needs to set that field when the default is already on?",
+      "revId": "83cf8d0a7a3e952da34740b9a1e255eaa64395af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
