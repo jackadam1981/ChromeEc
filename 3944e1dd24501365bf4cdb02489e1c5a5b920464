@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca280c0b_1f4252ab",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-03-09T02:24:32Z",
+      "side": 1,
+      "message": "#ifndef CR50_DEV\nyou probably also want to write FLASH_FSH_PROTECT_INFO1_PROG_REGION0 | FLASH_FSH_PROTECT_INFO1_ERASE to FLASH_FSH_PROTECT_INFO1 at board init. At least util  we\u0027re comfortable doing that in RO instead.\n#endif",
+      "range": {
+        "startLine": 174,
+        "startChar": 6,
+        "endLine": 174,
+        "endChar": 17
+      },
+      "revId": "3944e1dd24501365bf4cdb02489e1c5a5b920464",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
