@@ -4034,6 +4034,18 @@ struct __ec_align2 ec_response_pd_chip_info {
 #define EC_CMD_CR51_LAST 0x03FF
 
 /*****************************************************************************/
+/* Fingerprint MCU commands: range 0x0400-0x040x */
+
+/* Fingerprint SPI sensor passthru command */
+#define EC_CMD_FP_PASSTHRU 0x0400
+
+struct __ec_align2 ec_params_fp_passthru {
+	uint16_t wlen;		/* Number of bytes to write */
+	uint16_t rlen;		/* Number of bytes to read */
+	uint8_t data[];		/* Data to send */
+};
+
+/*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or
  * special purpose features. These can be (re)used without updating this file.
