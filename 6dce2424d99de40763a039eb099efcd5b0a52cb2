@@ -16,6 +16,24 @@
       "revId": "6dce2424d99de40763a039eb099efcd5b0a52cb2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cf1b649_5e0a5834",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1103909
+      },
+      "writtenOn": "2017-03-09T23:49:53Z",
+      "side": 1,
+      "message": "Yes, it\u0027s actually commented on line 205 to fall-through, which should probably be at the end of the case.",
+      "parentUuid": "d718d31e_91f312b7",
+      "revId": "6dce2424d99de40763a039eb099efcd5b0a52cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
