@@ -7,7 +7,9 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "host_command.h"
 #include "spi.h"
+#include "system.h"
 #include "registers.h"
 
 #include "gpio_list.h"
@@ -41,3 +43,26 @@ static void board_init(void)
 	hook_notify(HOOK_CHIPSET_RESUME);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static int fp_command_passthru(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_passthru *params = args->params;
+	void *out = args->response;
+	int rc;
+	int ret = EC_RES_SUCCESS;
+
+	if (system_is_locked())
+		return EC_RES_ACCESS_DENIED;
+
+	rc = spi_transaction(&spi_devices[0], params->data, params->wlen,
+			     out, params->rlen);
+
+	if (rc == EC_ERROR_TIMEOUT)
+		ret = EC_RES_TIMEOUT;
+	else if (rc)
+		ret = EC_RES_ERROR;
+
+	args->response_size = params->rlen;
+	return ret;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_PASSTHRU, fp_command_passthru, EC_VER_MASK(0));
