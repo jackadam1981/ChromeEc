@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "958ea52f_b205f2da",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-09T16:34:24Z",
+      "side": 1,
+      "message": "Not a very descriptive function name. It seems this function is really being called for the TYPEC_MUX_NONE case and when a detach event occurs. Maybe \u0027off\u0027 instead of exit?",
+      "range": {
+        "startLine": 173,
+        "startChar": 24,
+        "endLine": 173,
+        "endChar": 32
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c158cb7_e66aaa9f",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 6
@@ -71,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "9c3044a4_1600ddaf",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-09T16:34:24Z",
+      "side": 1,
+      "message": "This is a poorly named function. Below the function \u0027mux_set()\u0027 calls this function \u0027set_mux()\u0027. This function should be renamed to something like \u0027set_aux_to_sbu_mux()\u0027 which reflects what the function is actually doing.",
+      "range": {
+        "startLine": 203,
+        "startChar": 11,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3268b059_8050736f",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 6
@@ -94,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "d6b99720_9ba292a0",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-09T16:34:24Z",
+      "side": 1,
+      "message": "nit: Not a very useful variable name. I believe val is being used to represent the typec pin configuration.",
+      "range": {
+        "startLine": 224,
+        "startChar": 14,
+        "endLine": 224,
+        "endChar": 17
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9abe6391_49decef1",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 6
@@ -110,6 +179,52 @@
         "startChar": 5,
         "endLine": 226,
         "endChar": 9
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb107ed3_328acf01",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-09T16:34:24Z",
+      "side": 1,
+      "message": "Is there an assumption that the case mux_state \u003d\u003d TYPEC_MUX_DOCK will never be used? If not, is what\u0027s done for MUX_USB_ENABLED always sufficient for DP mode as well?",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 32
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f57ea501_dd173a1d",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-09T16:34:24Z",
+      "side": 1,
+      "message": "So this function gets called if either MUX_USB_ENABLED or MUX_DP_ENABLED is set. The function \u0027set_mux\u0027 as currently written will always connect the aux_n/p lines to the sbu_1/2 lines. The only variable being which direction based on polarity. This absolutely breaks a desired use case of CCD mode. I believe that set_mux needs to have an additional parameter \u0027enabled\u0027 so that it can connect aux \u003c-\u003e sbu as needed in DP mode or disconnect them if only MUX_USB_ENABLED is set.",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 16
       },
       "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
