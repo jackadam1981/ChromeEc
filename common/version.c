@@ -17,6 +17,9 @@ const struct image_data __keep current_image_data
 #ifndef TEST_BUILD
 	.size = (const uintptr_t)&__image_size,
 #endif
+#ifdef CONFIG_ROLLBACK
+	.rollback_version = CONFIG_ROLLBACK_VERSION,
+#endif
 	.cookie2 = CROS_EC_IMAGE_DATA_COOKIE2,
 };
 

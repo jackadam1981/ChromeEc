@@ -571,6 +571,7 @@ static const struct image_data *system_get_image_data(
 	/* Handle version of current image */
 	if (copy == active_copy || copy == SYSTEM_IMAGE_UNKNOWN)
 		return &current_image_data;
+
 	if (active_copy == SYSTEM_IMAGE_UNKNOWN)
 		return NULL;
 
@@ -616,6 +617,15 @@ const char *system_get_version(enum system_image_copy_t copy)
 
 	return data ? data->version : "";
 }
+
+#ifdef CONFIG_ROLLBACK
+uint32_t system_get_rollback_version(enum system_image_copy_t copy)
+{
+	const struct image_data *data = system_get_image_data(copy);
+
+	return data ? data->rollback_version : 0;
+}
+#endif
 
 int system_get_image_used(enum system_image_copy_t copy)
 {
