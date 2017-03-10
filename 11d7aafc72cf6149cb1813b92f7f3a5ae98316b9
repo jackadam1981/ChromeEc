@@ -96,6 +96,29 @@
     },
     {
       "key": {
+        "uuid": "cc53f616_07e7080e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-10T20:33:01Z",
+      "side": 1,
+      "message": "const int.",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 4
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af9aff2d_bbf84757",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -160,6 +183,29 @@
         "startChar": 0,
         "endLine": 224,
         "endChar": 2
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62c06740_44e70f4a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-10T20:33:01Z",
+      "side": 1,
+      "message": "Do we need to worry about USB_PD_MUX_HPD_IRQ?",
+      "range": {
+        "startLine": 280,
+        "startChar": 22,
+        "endLine": 280,
+        "endChar": 36
       },
       "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
