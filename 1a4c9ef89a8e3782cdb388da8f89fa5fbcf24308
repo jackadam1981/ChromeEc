@@ -233,6 +233,30 @@
     },
     {
       "key": {
+        "uuid": "f9f6045b_62321e44",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2017-03-10T03:20:33Z",
+      "side": 1,
+      "message": "MUX_USB_ENABLED \u003d 2#, 4#",
+      "parentUuid": "4bbcd855_3e61c2f5",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 32
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f57ea501_dd173a1d",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 6
