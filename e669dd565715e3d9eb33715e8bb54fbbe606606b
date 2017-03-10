@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef283ebd_e512a203",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-10T19:36:18Z",
+      "side": 1,
+      "message": "do you mean we need to disable \"VSYS voltage measurement\" also?",
+      "range": {
+        "startLine": 803,
+        "startChar": 1,
+        "endLine": 803,
+        "endChar": 14
+      },
+      "revId": "e669dd565715e3d9eb33715e8bb54fbbe606606b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
