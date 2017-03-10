@@ -22,6 +22,30 @@
       "revId": "40614498378ff8baa12e7450d78027f82e58d43d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f00f8655_21c46ac2",
+        "filename": "board/eve_fp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-10T07:40:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f821c2f_1ab2bd7d",
+      "range": {
+        "startLine": 23,
+        "startChar": 24,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "40614498378ff8baa12e7450d78027f82e58d43d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
