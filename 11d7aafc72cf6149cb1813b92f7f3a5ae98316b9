@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb9edaf0_444c25cc",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2017-03-10T03:13:57Z",
+      "side": 1,
+      "message": "/*After configured pin assignment, the MUX shall exit Safe State*/\nif (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, \u0026reg))\n     return EC_ERROR_UNKNOWN;\nrv \u003d tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2,\n     reg \u0026 ~ANX74XX_REG_MODE_TRANS);\n\nanx[port].mux_state \u003d mux_state;",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 0
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
