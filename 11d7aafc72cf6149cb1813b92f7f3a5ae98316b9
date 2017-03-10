@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "8e5d1f88_8a0832d8",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-10T20:26:23Z",
+      "side": 1,
+      "message": "I understand that if enabled\u003d\u003d0, we clear mux settings.",
+      "parentUuid": "af9aff2d_bbf84757",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb9edaf0_444c25cc",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
