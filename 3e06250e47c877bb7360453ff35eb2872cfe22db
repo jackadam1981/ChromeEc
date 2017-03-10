@@ -22,6 +22,30 @@
       "revId": "3e06250e47c877bb7360453ff35eb2872cfe22db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bde8394_d0b58121",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-10T16:13:28Z",
+      "side": 1,
+      "message": "II remember doing this before, not sure why it\u0027s missing. But, in any case, I have added it now.",
+      "parentUuid": "b3ddc2c2_98d88c5b",
+      "range": {
+        "startLine": 1959,
+        "startChar": 0,
+        "endLine": 1960,
+        "endChar": 31
+      },
+      "revId": "3e06250e47c877bb7360453ff35eb2872cfe22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
