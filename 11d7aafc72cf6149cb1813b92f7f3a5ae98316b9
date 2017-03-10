@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "811b1088_093ccab0",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-10T20:31:20Z",
+      "side": 1,
+      "message": "I added this below so that safe mode is being exited.",
+      "parentUuid": "3d967f87_85f74c26",
+      "range": {
+        "startLine": 181,
+        "startChar": 10,
+        "endLine": 181,
+        "endChar": 32
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c654db53_332fe20b",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e93ab716_c9cac26b",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-10T20:31:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c654db53_332fe20b",
+      "range": {
+        "startLine": 193,
+        "startChar": 49,
+        "endLine": 193,
+        "endChar": 50
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "8e7eae1d_503a1b3c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-10T20:31:20Z",
+      "side": 1,
+      "message": "when enabled\u003d\u003d0, the 4 upper bits which are used to connected the DP aux signals to sbu are being masked so calling this function with enabled\u003d\u003d0 does disconnect aux from sbu.",
+      "parentUuid": "af9aff2d_bbf84757",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb9edaf0_444c25cc",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -106,6 +178,30 @@
       "writtenOn": "2017-03-10T03:13:57Z",
       "side": 1,
       "message": "/*After configured pin assignment, the MUX shall exit Safe State*/\nif (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_2, \u0026reg))\n     return EC_ERROR_UNKNOWN;\nrv \u003d tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2,\n     reg \u0026 ~ANX74XX_REG_MODE_TRANS);\n\nanx[port].mux_state \u003d mux_state;",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 283,
+        "endChar": 0
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e13b11e_2cdcd2b9",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-10T20:31:20Z",
+      "side": 1,
+      "message": "I put this section at the end of the anx74xx_mux_aux_to_sbu() function since that\u0027s where the safe state is being entered, so it\u0027s more clear what\u0027s happening.",
+      "parentUuid": "bb9edaf0_444c25cc",
       "range": {
         "startLine": 282,
         "startChar": 1,

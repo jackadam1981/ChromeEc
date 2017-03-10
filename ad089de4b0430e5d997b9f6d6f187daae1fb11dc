@@ -22,6 +22,30 @@
       "revId": "ad089de4b0430e5d997b9f6d6f187daae1fb11dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e638b138_37d7f2b0",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-10T20:31:20Z",
+      "side": 0,
+      "message": "I took this from the changes that had been done in https://chromium-review.googlesource.com/c/437756/ which also fixed this particular function. The two bits in question  control whether a cap is connected to each CC line \"CC1 connect to cap. 0: CC1 not connected to cap\"",
+      "parentUuid": "cbc5f230_14370bf1",
+      "range": {
+        "startLine": 192,
+        "startChar": 51,
+        "endLine": 192,
+        "endChar": 61
+      },
+      "revId": "ad089de4b0430e5d997b9f6d6f187daae1fb11dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
