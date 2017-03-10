@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bc20327_661754f8",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-10T02:04:02Z",
+      "side": 1,
+      "message": "Can we use TARGET_WITH_MARGIN(3072, 50)? It\u0027s slightly more than 2918 but gives 2880 after rounded by 64. It makes it explicit that we consider the error margin is 5%.",
+      "range": {
+        "startLine": 209,
+        "startChar": 23,
+        "endLine": 209,
+        "endChar": 27
+      },
+      "revId": "a658b513a9584cc6edf9ec051b652c491c39a258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
