@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "63b63b8c_137ac0af",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-10T16:19:11Z",
+      "side": 1,
+      "message": "Modified this so that there are still 2 entries, but the 1st is always used to advertise 5 V and the 2nd entry is used only when the CHG vbus is \u003e 5V. What was being used as an index before is now used to reflect the number of chg_src_pdo values to send.",
+      "parentUuid": "14889fb5_97773af4",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 67
+      },
+      "revId": "cf02ff06cfc04bc7790870d4f0e9430d85213ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94ac3869_77710518",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-10T08:39:12Z",
       "side": 1,
       "message": "overall you are never using half of the array (DUT port) ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 59
+      },
+      "revId": "cf02ff06cfc04bc7790870d4f0e9430d85213ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9563d997_dd23846d",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-10T16:19:11Z",
+      "side": 1,
+      "message": "Yes, these values being an array had become unnecessary. Changed these variables to not be an array and modified the name to chg_vbus_mv and chg_vbus_ma so that they are more explicit if reflecting how they are used. I also removed the \u0027port\u0027 parameter from board_notify_chg_port() function because that was similarly redundant.",
+      "parentUuid": "94ac3869_77710518",
       "range": {
         "startLine": 57,
         "startChar": 0,
