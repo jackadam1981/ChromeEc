@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1368483f_a531e012",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1185574
+      },
+      "writtenOn": "2017-03-10T02:08:53Z",
+      "side": 1,
+      "message": "It also need PWM_CONFIG_DSLEEP ? (PWM_CONFIG_ALT_CLOCK | PWM_CONFIG_DSLEEP)  to avoid KB backlight does not flicker during idle? Ref CL:340988.",
+      "parentUuid": "146f0593_6783f9f2",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "a19b1cd5e57498aeb8fa0b48f67b355824548450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "048579b8_eb117f29",
         "filename": "board/pbody/board.c",
         "patchSetId": 1
