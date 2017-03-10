@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14889fb5_97773af4",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-10T08:39:12Z",
+      "side": 1,
+      "message": "ok interesting, but overall a PDO is a single u32, access to it is kind of atomic, you don\u0027t really need to switch it.\n\nif you want support properly non-5V options, you need at least 2 PDOs (one with 5V) and maybe you should take into account the voltage drop / your own current consumption ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 67
+      },
+      "revId": "cf02ff06cfc04bc7790870d4f0e9430d85213ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ac3869_77710518",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-10T08:39:12Z",
+      "side": 1,
+      "message": "overall you are never using half of the array (DUT port) ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 59
+      },
+      "revId": "cf02ff06cfc04bc7790870d4f0e9430d85213ff2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
