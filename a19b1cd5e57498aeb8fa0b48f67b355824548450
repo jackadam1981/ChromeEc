@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "1797ec8a_2b104784",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1185574
+      },
+      "writtenOn": "2017-03-10T06:53:04Z",
+      "side": 1,
+      "message": "So EC only need to enable keyboard backlight (set KBBL_EN to high) in system state on(S0), and set it to low in system suspend(S3), no need do anything here.  And OS will enable/disable it according to the angle?  It\u0027s done.",
+      "parentUuid": "048579b8_eb117f29",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 1
+      },
+      "revId": "a19b1cd5e57498aeb8fa0b48f67b355824548450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e808567e_d245428f",
         "filename": "board/pbody/gpio.inc",
         "patchSetId": 1
