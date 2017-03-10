@@ -209,6 +209,30 @@
     },
     {
       "key": {
+        "uuid": "4bbcd855_3e61c2f5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2017-03-10T02:34:03Z",
+      "side": 1,
+      "message": "Good question! As we known, Type-C connector defines 4 supper-speed pairs. \nThe MUX of ANX3429 supports: \n(1) 4 lanes DP to 4 supper-speed pairs (type-c);\n(2) 2 lanes DP + 2 lanes USB 3.0 to 4 supper-speed pairs(type-c);\n(3) 2 lanes DP to 2 supper-speed pairs (type-c); \n(4) 2 lanes USB 3.0 to 2 supper-speed pairs (type-c);\nSo, 1# and 3#: DP only; 2#: USB 3.0 + DP, 4: USB 3.0 Only.\nHere, MUX_USB_ENABLED \u003d 2#, MUX_DP_ENABLED \u003d 1#, 2#, 3#.",
+      "parentUuid": "cb107ed3_328acf01",
+      "range": {
+        "startLine": 238,
+        "startChar": 5,
+        "endLine": 238,
+        "endChar": 32
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f57ea501_dd173a1d",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 6
@@ -220,6 +244,30 @@
       "writtenOn": "2017-03-09T16:34:24Z",
       "side": 1,
       "message": "So this function gets called if either MUX_USB_ENABLED or MUX_DP_ENABLED is set. The function \u0027set_mux\u0027 as currently written will always connect the aux_n/p lines to the sbu_1/2 lines. The only variable being which direction based on polarity. This absolutely breaks a desired use case of CCD mode. I believe that set_mux needs to have an additional parameter \u0027enabled\u0027 so that it can connect aux \u003c-\u003e sbu as needed in DP mode or disconnect them if only MUX_USB_ENABLED is set.",
+      "range": {
+        "startLine": 267,
+        "startChar": 1,
+        "endLine": 267,
+        "endChar": 16
+      },
+      "revId": "1a4c9ef89a8e3782cdb388da8f89fa5fbcf24308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dee882e_2faaa483",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2017-03-10T02:34:03Z",
+      "side": 1,
+      "message": "Yes, I think so.",
+      "parentUuid": "f57ea501_dd173a1d",
       "range": {
         "startLine": 267,
         "startChar": 1,
