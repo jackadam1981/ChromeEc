@@ -22,6 +22,30 @@
       "revId": "138a9d6f3900d19c4331d17a1fa5770b38bdad71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92c05087_23724a46",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-03-10T06:29:14Z",
+      "side": 1,
+      "message": "Corrected the wording on that. I wanted to state current assumption.",
+      "parentUuid": "e97dd0ee_8626d6de",
+      "range": {
+        "startLine": 152,
+        "startChar": 36,
+        "endLine": 152,
+        "endChar": 43
+      },
+      "revId": "138a9d6f3900d19c4331d17a1fa5770b38bdad71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
