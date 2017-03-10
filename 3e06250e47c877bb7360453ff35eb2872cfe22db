@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3ddc2c2_98d88c5b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1960,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-10T07:56:16Z",
+      "side": 1,
+      "message": "the \u0027\tpd[port].polarity \u003d 0\u0027 is still missing ?",
+      "range": {
+        "startLine": 1959,
+        "startChar": 0,
+        "endLine": 1960,
+        "endChar": 31
+      },
+      "revId": "3e06250e47c877bb7360453ff35eb2872cfe22db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
