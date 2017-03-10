@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "cc7d51a6_434732a9",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1185574
+      },
+      "writtenOn": "2017-03-10T06:48:50Z",
+      "side": 1,
+      "message": "I think The PWM_CONFIG_ALT_CLOCK is to select ths 100KHz_Clk source, or 48MHz Ring Oscillator source.  Checked the code in pwm.c (ec/chip/mec1322)",
+      "parentUuid": "c8b14bb9_2088c177",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "a19b1cd5e57498aeb8fa0b48f67b355824548450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "048579b8_eb117f29",
         "filename": "board/pbody/board.c",
         "patchSetId": 1
