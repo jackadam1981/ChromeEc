@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d410890_e70e111c",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-10T16:19:46Z",
+      "side": 1,
+      "message": "Yes it\u0027s supposed to be PD_SRC_1_5_RD_THRESH_MV. When I first made the change i thought it wasn\u0027t attaching properly and changed this to test. It was supposed to be corrected. I have fixed it now.",
+      "parentUuid": "eae18d73_3c6cdbbe",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 50
+      },
+      "revId": "42ea53dfd441fc7c6317dd4e1bcc321c8d37aeed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "feb58cf9_e7ad16b1",
         "filename": "include/usb_pd.h",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "42ea53dfd441fc7c6317dd4e1bcc321c8d37aeed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6b337ac_ab3dfab4",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-10T16:19:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feb58cf9_e7ad16b1",
+      "revId": "42ea53dfd441fc7c6317dd4e1bcc321c8d37aeed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
