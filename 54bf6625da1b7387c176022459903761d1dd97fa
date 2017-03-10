@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c764e348_a605da8c",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-10T20:04:58Z",
+      "side": 1,
+      "message": "By default EXTIADPEN \u003d1, we can add below config to retain original change.\n#ifdef CONFIG_CHARGER_BD99955\n\t/* Disable IADP pin current limit */\n\tif (ch_raw_read16(BD9995X_CMD_VM_CTRL_SET, \u0026reg,\n\t\t\t  BD9995X_EXTENDED_COMMAND))\n\t\treturn;\n\treg \u0026\u003d ~BD9995X_CMD_VM_CTRL_SET_EXTIADPEN;\n#endif",
+      "range": {
+        "startLine": 807,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 42
+      },
+      "revId": "54bf6625da1b7387c176022459903761d1dd97fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
