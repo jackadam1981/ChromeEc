@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c8b14bb9_2088c177",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-03-10T04:20:41Z",
+      "side": 1,
+      "message": "Oops yes that is the right setting for low power idle, now I\"m not sure what the ALT_CLOCK setting was for...",
+      "parentUuid": "1368483f_a531e012",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "a19b1cd5e57498aeb8fa0b48f67b355824548450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "048579b8_eb117f29",
         "filename": "board/pbody/board.c",
         "patchSetId": 1
