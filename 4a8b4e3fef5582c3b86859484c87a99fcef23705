@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7a20339_0854b002",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-10T07:47:16Z",
+      "side": 1,
+      "message": "with servo connected ?\nelse you need to ensure that you have a proper pull-down or pull-up on the serial RX line to avoid spurious wake up on the standalone product",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "4a8b4e3fef5582c3b86859484c87a99fcef23705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
