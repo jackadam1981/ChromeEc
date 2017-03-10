@@ -23,4 +23,11 @@ int get_rollback_minimum_version(void);
  */
 int update_rollback(uint32_t next_min_version);
 
+/**
+ * Lock rollback protection block, reboot if necessary.
+ *
+ * @return EC_SUCCESS if rollback was already protected.
+ */
+int lock_rollback(void);
+
 #endif

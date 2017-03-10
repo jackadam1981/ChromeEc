@@ -93,6 +93,32 @@ int get_rollback_minimum_version(void)
 	return rollback_min_version;
 }
 
+int lock_rollback(void)
+{
+	int ret;
+
+	/* Already locked */
+	if (flash_get_protect() & EC_FLASH_PROTECT_ROLLBACK_NOW)
+		return EC_SUCCESS;
+
+	ccprints("Protecting rollback");
+
+	/* This may do nothing if WP is not enabled, or RO is not protected. */
+	ret = flash_set_protect(EC_FLASH_PROTECT_ROLLBACK_AT_BOOT, -1);
+
+	if (!(flash_get_protect() & EC_FLASH_PROTECT_ROLLBACK_NOW) &&
+	      flash_get_protect() & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT) {
+		/*
+		 * If flash protection is still not enabled (some chips may
+		 * be able to enable it immediately), reboot.
+		 */
+		cflush();
+		system_reset(SYSTEM_RESET_PRESERVE_FLAGS);
+	}
+
+	return ret;
+}
+
 int update_rollback(uint32_t next_min_version)
 {
 	struct rollback_data data;

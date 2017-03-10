@@ -48,29 +48,6 @@ static int check_padding(const uint8_t *data,
 	return 1;
 }
 
-#ifdef CONFIG_ROLLBACK
-int check_rollback(void)
-{
-	const struct version_struct *v;
-	int rollback_min_version;
-
-	v = system_get_version_struct(SYSTEM_IMAGE_RW);
-
-	if (!v)
-		return 0;
-
-	rollback_min_version = get_rollback_minimum_version();
-
-	if (v->rollback_version < rollback_min_version) {
-		CPRINTS("Rollback error (%d < %d)", v->rollback_version,
-			rollback_min_version);
-		return 0;
-	}
-
-	return 1;
-}
-#endif
-
 void check_rw_signature(void)
 {
 	struct sha256_ctx ctx;
@@ -88,6 +65,10 @@ void check_rw_signature(void)
 	const struct vb21_packed_key *vb21_key;
 	const struct vb21_signature *vb21_sig;
 #endif
+#ifdef CONFIG_ROLLBACK
+	const struct version_struct *rw_version;
+	int rollback_min_version;
+#endif
 
 	/* Only the Read-Only firmware needs to do the signature check */
 	if (system_get_image_copy() != SYSTEM_IMAGE_RO)
@@ -100,8 +81,18 @@ void check_rw_signature(void)
 	CPRINTS("Verifying RW image...");
 
 #ifdef CONFIG_ROLLBACK
-	if (!check_rollback())
+	rw_version = system_get_version_struct(SYSTEM_IMAGE_RW);
+
+	if (!rw_version)
 		return;
+
+	rollback_min_version = get_rollback_minimum_version();
+
+	if (rw_version->rollback_version < rollback_min_version) {
+		CPRINTS("Rollback error (%d < %d)",
+			rw_version->rollback_version, rollback_min_version);
+		return;
+	}
 #endif
 
 	/* Large buffer for RSA computation : could be re-use afterwards... */
@@ -165,12 +156,32 @@ void check_rw_signature(void)
 
 	good = rsa_verify(key, sig, hash, rsa_workbuf);
 out:
+	CPRINTS("RW verify %s", good ? "OK" : "FAILED");
+
+#ifdef CONFIG_ROLLBACK
+	if (good && rw_version->rollback_version > rollback_min_version) {
+		/*
+		 * We should increment rollback now. This will fail if the
+		 * rollback block in protected (RW image will unprotect that
+		 * block later on).
+		 */
+		int ret = update_rollback(rw_version->rollback_version);
+		if (ret == 0) {
+			CPRINTS("Rollback updated to %d",
+				rw_version->rollback_version);
+		} else if (ret != EC_ERROR_ACCESS_DENIED) {
+			CPRINTS("Rollback update error");
+			good = 0;
+		}
+	}
+
+	lock_rollback();
+#endif
+
 	if (good) {
-		CPRINTS("RW image verified");
 		/* Jump to the RW firmware */
 		system_run_image_copy(SYSTEM_IMAGE_RW);
 	} else {
-		CPRINTS("RSA verify FAILED");
 		pd_log_event(PD_EVENT_ACC_RW_FAIL, 0, 0, NULL);
 		/* RW firmware is invalid : do not jump there */
 		if (system_is_locked())
