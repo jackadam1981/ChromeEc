@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "3d967f87_85f74c26",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-10T18:28:39Z",
+      "side": 1,
+      "message": "It seems you\u0027re assuming R_MODE_TRANSITION \u003d\u003d 0. If it happens to be 1, we won\u0027t leave safe mode. Why don\u0027t we make it explicit:\n\nreg |\u003d ANX74XX_REG_MODE_TRANS\n\n...\n\nreg \u0026\u003d ~ANX74XX_REG_MODE_TRANS.",
+      "range": {
+        "startLine": 181,
+        "startChar": 10,
+        "endLine": 181,
+        "endChar": 32
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c654db53_332fe20b",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-10T18:28:39Z",
+      "side": 1,
+      "message": "please remove.",
+      "range": {
+        "startLine": 193,
+        "startChar": 49,
+        "endLine": 193,
+        "endChar": 50
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af9aff2d_bbf84757",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-10T18:28:39Z",
+      "side": 1,
+      "message": "If enabled\u003d\u003d0, I don\u0027t see any changed made by this function except transitioning to safe mode. Is it this function for when enabled\u003d\u003d0?",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 2
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb9edaf0_444c25cc",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2

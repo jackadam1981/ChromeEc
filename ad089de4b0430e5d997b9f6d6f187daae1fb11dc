@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbc5f230_14370bf1",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-10T18:28:39Z",
+      "side": 0,
+      "message": "We\u0027re no longer setting bit 1 and 2 to zero. Is this change intended?",
+      "range": {
+        "startLine": 192,
+        "startChar": 51,
+        "endLine": 192,
+        "endChar": 61
+      },
+      "revId": "ad089de4b0430e5d997b9f6d6f187daae1fb11dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
