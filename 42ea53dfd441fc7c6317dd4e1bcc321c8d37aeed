@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eae18d73_3c6cdbbe",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-10T08:24:34Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be PD_SRC_1_5_RD_THRESH_MV ?",
+      "range": {
+        "startLine": 70,
+        "startChar": 27,
+        "endLine": 70,
+        "endChar": 50
+      },
+      "revId": "42ea53dfd441fc7c6317dd4e1bcc321c8d37aeed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feb58cf9_e7ad16b1",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-10T08:24:34Z",
+      "side": 1,
+      "message": "that\u0027s in board code, you can move this to board.h",
+      "revId": "42ea53dfd441fc7c6317dd4e1bcc321c8d37aeed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
