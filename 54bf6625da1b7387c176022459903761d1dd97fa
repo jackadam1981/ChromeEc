@@ -22,6 +22,30 @@
       "revId": "54bf6625da1b7387c176022459903761d1dd97fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d893f517_93ae857f",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1117540
+      },
+      "writtenOn": "2017-03-11T03:49:04Z",
+      "side": 1,
+      "message": "I didn\u0027t add CONFIG due to below so which one is better patch set 1 or set 2?\n-----------------------------------\nAaron Durbin\nMar 8 10:58 PM\nPatch Set 2:\nWhy did you add a config option. Shawn was indicating we don\u0027t need to manipulate this register at all anymore.",
+      "parentUuid": "c764e348_a605da8c",
+      "range": {
+        "startLine": 807,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 42
+      },
+      "revId": "54bf6625da1b7387c176022459903761d1dd97fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
