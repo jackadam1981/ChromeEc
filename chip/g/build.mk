@@ -26,6 +26,7 @@ chip-y += polling_uart.o
 else
 chip-y += uart.o
 chip-y += uartn.o
+chip-y += uart_bitbang.o
 endif
 
 chip-$(CONFIG_DCRYPTO)+= crypto_api.o
@@ -96,6 +97,7 @@ custom-ro_objs-y += chip/g/pmu.o
 custom-ro_objs-y += chip/g/system.o
 custom-ro_objs-y += chip/g/trng.o
 custom-ro_objs-y += chip/g/uart.o
+custom-ro_objs-y += chip/g/uart_bitbang.o
 custom-ro_objs-y += chip/g/uartn.o
 custom-ro_objs-y += common/printf.o
 custom-ro_objs-y += common/util.o
