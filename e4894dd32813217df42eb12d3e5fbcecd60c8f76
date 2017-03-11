@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c53649eb_4fcdac24",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-11T00:45:04Z",
+      "side": 1,
+      "message": "CROS_EC_ROLLBACK_COOKIE",
+      "revId": "e4894dd32813217df42eb12d3e5fbcecd60c8f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c213cc30_e9a28c3e",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-11T00:45:04Z",
+      "side": 1,
+      "message": "(region \u003d\u003d 0)",
+      "revId": "e4894dd32813217df42eb12d3e5fbcecd60c8f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7339bd58_2ace9879",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-11T00:45:04Z",
+      "side": 1,
+      "message": "Should propagate the errors.",
+      "revId": "e4894dd32813217df42eb12d3e5fbcecd60c8f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb1140b7_7491821c",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-11T00:45:04Z",
+      "side": 1,
+      "message": "Most likely wrong, this is _not_ safe, not at all.",
+      "revId": "e4894dd32813217df42eb12d3e5fbcecd60c8f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
