@@ -31,6 +31,7 @@
 #include "task.h"
 #include "tpm_registers.h"
 #include "trng.h"
+#include "uart_bitbang.h"
 #include "uartn.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"
@@ -89,6 +90,18 @@ static int device_state_changed(enum device_type device,
 /*  Board specific configuration settings */
 static uint32_t board_properties;
 static uint8_t reboot_request_posted;
+
+/* Which UARTs we'd like to be able to bitbang. */
+struct uart_bitbang_properties bitbang_config[] = {
+	{
+		.uart = UART_EC,
+		.tx_gpio = GPIO_DETECT_SERVO, /* This is TX to EC console. */
+		.pinmux_reg = GBASE(PINMUX) +
+					   GOFFSET(PINMUX, DIOB5_SEL),
+		.pinmux_regval = GC_PINMUX_GPIO1_GPIO3_SEL,/* GC_PINMUX_DIOB5_SEL, */
+	},
+};
+int bitbang_uart_count = ARRAY_SIZE(bitbang_config);
 
 int board_has_ap_usb(void)
 {

@@ -26,6 +26,7 @@ chip-y += polling_uart.o
 else
 chip-y += uart.o
 chip-y += uartn.o
+chip-y += uart_bitbang.o
 endif
 
 chip-$(CONFIG_DCRYPTO)+= crypto_api.o

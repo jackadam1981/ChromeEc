@@ -10,6 +10,7 @@
 #include "system.h"
 #include "task.h"
 #include "uart.h"
+#include "uart_bitbang.h"
 #include "util.h"
 
 #define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
@@ -100,11 +101,19 @@ int uartn_rx_available(int uart)
 
 void uartn_write_char(int uart, char c)
 {
-	/* Wait for space in transmit FIFO. */
-	while (!uartn_tx_ready(uart))
-		;
+#ifndef SECTION_IS_RO
+	if (uart_bitbang_is_enabled(uart)) {
+		uart_bitbang_write_char(uart, c);
+	} else {
+#endif /* !defined(SECTION_IS_RO) */
+		/* Wait for space in transmit FIFO. */
+		while (!uartn_tx_ready(uart))
+			;
 
-	GR_UART_WDATA(uart) = c;
+		GR_UART_WDATA(uart) = c;
+#ifndef SECTION_IS_RO
+	}
+#endif /* !defined(SECTION_IS_RO) */
 }
 
 int uartn_read_char(int uart)
