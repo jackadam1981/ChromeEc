@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ea09b7c_e2f44eba",
+        "filename": "board/eve/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-13T22:35:14Z",
+      "side": 1,
+      "message": "This test is not needed given we disable interrupt when we are in tablet mode. More over, tablet_get_mode returns true only when the lid is against the base, not when lid angle is \u003e 180.",
+      "revId": "d821f0a0851ecf0b51656d59ca2df4c7d8168034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e34ff0de_b13af014",
+        "filename": "board/eve/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-13T22:35:14Z",
+      "side": 1,
+      "message": "This code (written by me) does not sound right:\nIf the lid angle move to clamshell mode (let say 120 degre) while in S3, we will still not enable keyboard scanning to wake up the device.\n\nif should be:\n\n/* For false positive around 360/0 degree */\nif (tablet_get_mode())\n  enable \u003d 0\n\nif (enable \u003d\u003d 0 \u0026\u0026 chipset_in_state(CHIPSET_STATE_ANY_OFF) {\n  // Lid angle indicates tablet and AP not powered:\n  keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);\n  trackpad_wake_enable(0);\n} else {\n  // Clamshell mode, or AP will filter:\n  keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);\n\n  // I assume that while in S5, the AP can not be woken up.\n  trackpad_wake_enable(0);\n}",
+      "revId": "d821f0a0851ecf0b51656d59ca2df4c7d8168034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "629420aa_61c0e491",
+        "filename": "board/eve/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-13T22:35:14Z",
+      "side": 1,
+      "message": "If we go in clamshell mode in S0,  we will leave the trackpad disabled. Then without changing the lid angle we go to S3, we won\u0027t be able to wake up from trackpad.",
+      "revId": "d821f0a0851ecf0b51656d59ca2df4c7d8168034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
