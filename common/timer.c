@@ -186,7 +186,7 @@ timestamp_t get_time(void)
 clock_t clock(void)
 {
 	/* __hw_clock_source_read() returns a microsecond resolution timer.*/
-	return (clock_t) __hw_clock_source_read() / 1000;
+	return (clock_t) __hw_clock_source_read() / MSEC;
 }
 
 void force_time(timestamp_t ts)
@@ -265,7 +265,7 @@ static int command_wait(int argc, char **argv)
 	if (*e)
 		return EC_ERROR_PARAM1;
 
-	udelay(i * 1000);
+	udelay(i * MSEC);
 
 	return EC_SUCCESS;
 }
@@ -304,7 +304,8 @@ DECLARE_CONSOLE_COMMAND(forcetime, command_force_time,
 static int command_get_time(int argc, char **argv)
 {
 	timestamp_t ts = get_time();
-	ccprintf("Time: 0x%016lx = %.6ld s\n", ts.val, ts.val);
+	/* %T = current time */
+	ccprintf("Time: 0x%016lx = %T s\n", ts.val);
 
 	return EC_SUCCESS;
 }

@@ -199,6 +199,10 @@ int vfnprintf(int (*addchar)(void *context, int c), void *context,
 				precision = 3;
 				v /= 1000;
 #endif
+#if defined(CONFIG_ISH_30) || defined(CONFIG_ISH_40)
+				divmod(&v, MSEC);
+				precision = 3;
+#endif
 			} else if (flags & PF_64BIT) {
 				v = va_arg(args, uint64_t);
 			} else {
