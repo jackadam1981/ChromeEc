@@ -106,8 +106,11 @@ static void print_channel(enum pwm_channel ch, int max_duty)
 		ccprintf("  %d: disabled\n", ch);
 }
 
+void pwm_set_freq(enum pwm_channel ch, uint32_t freq);
+
 static int cc_pwm_duty(int argc, char **argv)
 {
+	int frequency = 0;
 	int value = 0;
 	int max_duty = 100;
 	int ch;
@@ -131,6 +134,16 @@ static int cc_pwm_duty(int argc, char **argv)
 			/* use raw duty */
 			value = strtoi(argv[3], &e, 0);
 			max_duty = EC_PWM_MAX_DUTY;
+		} else if (!strcasecmp(raw, "fancy")) {
+			/* raw duty */
+			value = strtoi(argv[3], &e, 0);
+			max_duty = EC_PWM_MAX_DUTY;
+			if (*e || value > max_duty) return EC_ERROR_PARAM2;
+
+			/* frequency, Hz */
+			frequency = strtoi(argv[4], &e, 0);
+			if (*e) return EC_ERROR_PARAM3;
+			pwm_set_freq(ch,frequency);
 		} else {
 			/* use percent duty */
 			value = strtoi(argv[2], &e, 0);

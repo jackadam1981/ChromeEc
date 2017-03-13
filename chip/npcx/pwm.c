@@ -55,7 +55,7 @@ enum npcx_pwm_heartbeat_mode {
  * @param   freq    desired PWM frequency
  * @notes   changed when initialization
  */
-static void pwm_set_freq(enum pwm_channel ch, uint32_t freq)
+void pwm_set_freq(enum pwm_channel ch, uint32_t freq)
 {
 	int mdl = pwm_channels[ch].channel;
 	uint32_t clock;
