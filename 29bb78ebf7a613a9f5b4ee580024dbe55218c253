@@ -22,6 +22,30 @@
       "revId": "29bb78ebf7a613a9f5b4ee580024dbe55218c253",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f350fe2_46ffa507",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-13T15:29:11Z",
+      "side": 1,
+      "message": "We don\u0027t want to write uninitialized data (or data read from another reg) into a register, so we return on read failure. Failed writes are usually less catastrophic.\n\nWe may want to clean this up, but also consider that return values are often unhanded in calling code. So since errors here are very rare, our existing code may be an ok compromise.",
+      "parentUuid": "11e170ad_3f229ad8",
+      "range": {
+        "startLine": 796,
+        "startChar": 1,
+        "endLine": 796,
+        "endChar": 15
+      },
+      "revId": "29bb78ebf7a613a9f5b4ee580024dbe55218c253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
