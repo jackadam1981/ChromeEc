@@ -2941,6 +2941,12 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 			else
 				/* Anything else, keep toggling */
 				next_state = PD_STATE_DRP_AUTO_TOGGLE;
+			if (next_state != PD_STATE_DRP_AUTO_TOGGLE) {
+				struct usb_mux *mux = &usb_muxes[port];
+				CPRINTS("TCPC p%d Exit Low Power Mode\n", port);
+				if (mux->board_init)
+					mux->board_init(mux);
+			}
 
 			if (next_state == PD_STATE_SNK_DISCONNECTED) {
 				tcpm_set_cc(port, TYPEC_CC_RD);
