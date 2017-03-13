@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "46cef931_d7ad790a",
+        "filename": "board/eve/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-03-13T23:29:05Z",
+      "side": 1,
+      "message": "Yeah I went back and forth and I could remove this.  If all the conditions are covered (and I think they are) then this should never end up being called in tablet mode while in S3.",
+      "parentUuid": "5ea09b7c_e2f44eba",
+      "revId": "d821f0a0851ecf0b51656d59ca2df4c7d8168034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e34ff0de_b13af014",
         "filename": "board/eve/board.c",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9905de2a_b5a6b39f",
+        "filename": "board/eve/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-03-13T23:29:05Z",
+      "side": 1,
+      "message": "It does get re-enabled for wake currently, in S3 the check here will be false for both tablet_get_mode() and the chipset_in_state().  (ANY_OFF is S5 or G3, but not S3)",
+      "parentUuid": "e34ff0de_b13af014",
+      "revId": "d821f0a0851ecf0b51656d59ca2df4c7d8168034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "629420aa_61c0e491",
         "filename": "board/eve/board.c",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2017-03-13T22:35:14Z",
       "side": 1,
       "message": "If we go in clamshell mode in S0,  we will leave the trackpad disabled. Then without changing the lid angle we go to S3, we won\u0027t be able to wake up from trackpad.",
+      "revId": "d821f0a0851ecf0b51656d59ca2df4c7d8168034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fad67dd_ae425a2b",
+        "filename": "board/eve/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-03-13T23:29:05Z",
+      "side": 1,
+      "message": "there are hooks for suspend/resume that also take care of enabling the wake event.",
+      "parentUuid": "629420aa_61c0e491",
       "revId": "d821f0a0851ecf0b51656d59ca2df4c7d8168034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
