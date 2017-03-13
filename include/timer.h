@@ -11,11 +11,28 @@
 #include "common.h"
 #include "task_id.h"
 
-/* Time units in microseconds */
-#define MSEC         1000
-#define SECOND    1000000
-#define MINUTE   60000000
-#define HOUR   3600000000ull  /* Too big to fit in a signed int */
+#if defined CONFIG_ISH_30
+	/* 12Mhz clock */
+	/* Time units in microseconds */
+	#define MSEC        12000
+	#define SECOND   12000000
+	#define MINUTE  720000000
+	#define HOUR   4320000000ull  /* Too big to fit in a signed int */
+#elif defined CONFIG_ISH_40
+	/* 32Khz clock */
+	/* Time units in microseconds */
+	#define MSEC           32
+	#define SECOND      32000
+	#define MINUTE    1920000
+	#define HOUR   1152000000  /* Too big to fit in a signed int */
+#else
+	/* 1Mhz clock */
+	/* Time units in microseconds */
+	#define MSEC         1000
+	#define SECOND    1000000
+	#define MINUTE   60000000
+	#define HOUR   3600000000ull  /* Too big to fit in a signed int */
+#endif
 
 /* Microsecond timestamp. */
 typedef union {

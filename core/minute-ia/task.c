@@ -253,8 +253,9 @@ uint32_t switch_handler(int desched, task_id_t resched)
 	/*
 	 * Bill the current task for time between the end of the last interrupt
 	 * and the start of this one.
+	 * ISH HPET main counter is a up tick counter.
 	 */
-	current->runtime += (exc_start_time - exc_end_time);
+	current->runtime += (exc_end_time - exc_start_time);
 	exc_end_time = t;
 #else
 	/*
