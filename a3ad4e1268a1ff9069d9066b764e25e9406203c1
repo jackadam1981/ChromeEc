@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e5ebd24_f50a7d9d",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-13T23:40:48Z",
+      "side": 1,
+      "message": "I suppose these two writes can be done in a single write: \n\nreg \u0026\u003d 0xf;\nreg \u0026\u003d ~ANX74XX_REG_MODE_TRANS;",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 26
+      },
+      "revId": "a3ad4e1268a1ff9069d9066b764e25e9406203c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
