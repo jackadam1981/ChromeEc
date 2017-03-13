@@ -203,6 +203,7 @@ uint32_t switch_handler(int desched, task_id_t resched)
 #ifdef CONFIG_TASK_PROFILING
 	int exc = get_interrupt_context();
 	uint64_t t;
+	exc_start_time = get_time().val;
 #endif
 
 
@@ -525,6 +526,7 @@ void mutex_unlock(struct mutex *mtx)
 void task_print_list(void)
 {
 	int i;
+	uint64_t task_run_t;
 
 	ccputs("Task Ready Name         Events      Time (s)  StkUsed\n");
 
@@ -533,15 +535,17 @@ void task_print_list(void)
 		uint32_t *sp;
 
 		int stackused = tasks_init[i].stack_size;
+		task_run_t = tasks[i].runtime;
+		uint64divmod(&task_run_t, MSEC);
 
 		for (sp = tasks[i].stack;
 		     sp < (uint32_t *)tasks[i].sp && *sp == STACK_UNUSED_VALUE;
 		     sp++)
 			stackused -= sizeof(uint32_t);
 
-		ccprintf("%4d %c %-16s %08x %11.6ld  %3d/%3d\n", i, is_ready,
-			 task_names[i], tasks[i].events, tasks[i].runtime,
-			 stackused, tasks_init[i].stack_size);
+		ccprintf("%4d %c %-16s %08x   %.3ld   %3d/%3d\n", i, is_ready,
+			 task_names[i], tasks[i].events, task_run_t, stackused,
+			 tasks_init[i].stack_size);
 		cflush();
 	}
 }
@@ -551,6 +555,9 @@ int command_task_info(int argc, char **argv)
 #ifdef CONFIG_TASK_PROFILING
 	int total = 0;
 	int i;
+	uint64_t start_t;
+	uint64_t exc_total_t;
+	uint64_t time_in_task;
 #endif
 
 	task_print_list();
@@ -564,13 +571,22 @@ int command_task_info(int argc, char **argv)
 			total += irq_dist[i];
 		}
 	}
+	/* task start time */
+	start_t = task_start_time;
+	uint64divmod(&start_t, MSEC);
+	/* task in time */
+	time_in_task = (get_time().val - task_start_time);
+	uint64divmod(&time_in_task, MSEC);
+	/* Time in exceptions */
+	exc_total_t = exc_total_time;
+	uint64divmod(&exc_total_t, MSEC);
+
 	ccprintf("Service calls:          %11d\n", svc_calls);
 	ccprintf("Total exceptions:       %11d\n", total + svc_calls);
 	ccprintf("Task switches:          %11d\n", task_switches);
-	ccprintf("Task switching started: %11.6ld s\n", task_start_time);
-	ccprintf("Time in tasks:          %11.6ld s\n",
-		 get_time().val - task_start_time);
-	ccprintf("Time in exceptions:     %11.6ld s\n", exc_total_time);
+	ccprintf("Task switching started: %.3ld s\n", start_t);
+	ccprintf("Time in tasks:          %.3ld s\n", time_in_task);
+	ccprintf("Time in exceptions:     %.3ld s\n", exc_total_t);
 #endif
 
 	return EC_SUCCESS;
