@@ -13,6 +13,8 @@
 #include "accelgyro.h"
 #include "console.h"
 #include "i2c.h"
+#include "driver/mag_lis2mdl.h"
+#include "driver/accelgyro_lsm6dsm.h"
 
 /* Common debug funcions */
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format "\n", ## args)
@@ -21,7 +23,7 @@
 #define OUT_XYZ_SIZE			6
 
 #ifdef CONFIG_ACCEL_FIFO
-#define FIFO_BUFFER_NUM_PATTERN		16
+#define FIFO_BUFFER_NUM_PATTERN		32
 /* Define number of data to be read from FIFO each time
  * It must be a multiple of OUT_XYZ_SIZE.
  * In case of LSM6DSM FIFO contains pattern depending ODR
@@ -45,13 +47,19 @@ extern inline int raw_write8(const int port, const int addr, const int reg,
 		      int data);
 
 /**
- * Read n bytes for read
+ * st_raw_read_n - Read n bytes for read
  */
 int st_raw_read_n(const int port, const int addr, const uint8_t reg,
 	       uint8_t *data_ptr, const int len);
 
+/**
+ * st_raw_read_n_noinc - Read n bytes for read (no auto inc address)
+ */
+int st_raw_read_n_noinc(const int port, const int addr, const uint8_t reg,
+	       uint8_t *data_ptr, const int len);
+
  /**
- * write_data_with_mask - Write register with mask
+ * st_write_data_with_mask - Write register with mask
  * @s: Motion sensor pointer
  * @reg: Device register
  * @mask: The mask to search
@@ -61,7 +69,7 @@ int st_write_data_with_mask(const struct motion_sensor_t *s, int reg,
 			 uint8_t mask, uint8_t data);
 
  /**
- * set_resolution - Set bit resolution
+ * st_set_resolution - Set bit resolution
  * @s: Motion sensor pointer
  * @res: Bit resolution
  * @rnd: Round bit
@@ -69,7 +77,7 @@ int st_write_data_with_mask(const struct motion_sensor_t *s, int reg,
 int st_set_resolution(const struct motion_sensor_t *s, int res, int rnd);
 
  /**
- * get_resolution - Get bit resolution
+ * st_get_resolution - Get bit resolution
  * @s: Motion sensor pointer
  *
  * TODO: must support multiple resolution
@@ -77,7 +85,7 @@ int st_set_resolution(const struct motion_sensor_t *s, int res, int rnd);
 int st_get_resolution(const struct motion_sensor_t *s);
 
 /**
- * set_offset - Set data offset
+ * st_set_offset - Set data offset
  * @s: Motion sensor pointer
  * @offset: offset vector
  * @temp: Temp
@@ -86,7 +94,7 @@ int st_set_offset(const struct motion_sensor_t *s,
 		  const int16_t *offset, int16_t temp);
 
 /**
- * get_offset - Get data offset
+ * st_get_offset - Get data offset
  * @s: Motion sensor pointer
  * @offset: offset vector
  * @temp: Temp
@@ -95,13 +103,13 @@ int st_get_offset(const struct motion_sensor_t *s,
 		  int16_t *offset, int16_t *temp);
 
 /**
- * get_data_rate - Get data rate (ODR)
+ * st_get_data_rate - Get data rate (ODR)
  * @s: Motion sensor pointer
  */
 int st_get_data_rate(const struct motion_sensor_t *s);
 
 /**
- * normalize - Apply to LSB data sensitivity and rotation
+ * st_normalize - Apply to LSB data sensitivity and rotation
  * @s: Motion sensor pointer
  * @v: vector
  * @data: LSB raw data
@@ -113,6 +121,14 @@ struct stprivate_data {
 	struct accelgyro_saved_data_t base;
 	int16_t offset[3];
 	uint8_t resol;
+#ifdef CONFIG_ACCEL_FIFO
+	int samples_in_pattern;
+	int num_pattern;
+#endif /* CONFIG_ACCEL_FIFO */
+#ifdef CONFIG_GESTURE_HOST_DETECTION
+	uint8_t	en_activities;
+	uint8_t	dis_activities;
+#endif /* CONFIG_GESTURE_HOST_DETECTION */
 };
 
 #endif /* __CROS_EC_ST_COMMONS_H */

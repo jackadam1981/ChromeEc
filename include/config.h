@@ -68,7 +68,12 @@
 #undef CONFIG_ACCELGYRO_LSM6DS0
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM
-#undef CONFIG_ACCEL_LIS2DH
+#undef CONFIG_MAG_LIS2MDL
+
+/*
+ * Use LSM6DSM FIFO to cascade mag LIS2MDL sensor
+ */
+#undef CONFIG_MAG_LSM6DSM_LIS2MDL
 
 /* Specify barometer attached */
 #undef CONFIG_BARO_BMP280
