@@ -30,10 +30,11 @@
 
 #define HPET_ENABLE_CNF			(1<<0)
 #define HPET_LEGACY_RT_CNF		(1<<1)
-#define HPET_Tn_INT_TYPE_CNF            (1<<1)
+#define HPET_Tn_INT_TYPE_CNF		(1<<1)
 #define HPET_Tn_INT_ENB_CNF		(1<<2)
 #define HPET_Tn_TYPE_CNF		(1<<3)
 #define HPET_Tn_32MODE_CNF		(1<<8)
+#define HPET_Tn_VAL_SET_CNF		(1<<6)
 #define HPET_Tn_INT_ROUTE_CNF_SHIFT	0x9
 #define HPET_Tn_INT_ROUTE_CNF_MASK	(0x1f << 9)
 #define HPET_GEN_CONF_STATUS_BIT	0x8
