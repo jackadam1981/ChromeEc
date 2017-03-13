@@ -22,6 +22,53 @@
       "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60de7f9_ad8504b5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-13T21:42:47Z",
+      "side": 1,
+      "message": "Let\u0027s assume CTRL_1/5 don\u0027t need to be protected by safe mode. This write will make the chip exit safe mode only if (reg \u0026 R_MODE_TRANSITION) \u003d\u003d 0. Is it safe to assume so? We need to control R_MODE_TRANSITION explicitly.",
+      "parentUuid": "0b5de1df_3d388e09",
+      "range": {
+        "startLine": 163,
+        "startChar": 49,
+        "endLine": 163,
+        "endChar": 58
+      },
+      "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd2091e7_7a2c4dba",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-13T21:42:47Z",
+      "side": 1,
+      "message": "Question for Analogix: Do these registers need to be protected by safe mode?",
+      "range": {
+        "startLine": 167,
+        "startChar": 22,
+        "endLine": 167,
+        "endChar": 47
+      },
+      "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
