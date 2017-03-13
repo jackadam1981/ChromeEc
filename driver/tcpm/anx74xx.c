@@ -565,8 +565,10 @@ void anx74xx_handle_power_mode(int port, int mode)
 	}
 }
 
-static int anx74xx_tcpc_drp_toggle(int port)
+static int anx74xx_tcpc_drp_toggle(int port, int enable)
 {
+	if (!enable)
+		return EC_SUCCESS;
 	anx74xx_handle_power_mode(port, ANX74XX_STANDBY_MODE);
 	return EC_SUCCESS;
 }
