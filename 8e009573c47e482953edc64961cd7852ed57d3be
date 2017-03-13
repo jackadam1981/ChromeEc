@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b5de1df_3d388e09",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-13T21:03:51Z",
+      "side": 1,
+      "message": "If R_MODE_TRANSITION \u003d\u003d 0, which is probably the case, this write will get the chip out of safe mode and the following writes won\u0027t be protected.",
+      "range": {
+        "startLine": 163,
+        "startChar": 49,
+        "endLine": 163,
+        "endChar": 58
+      },
+      "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

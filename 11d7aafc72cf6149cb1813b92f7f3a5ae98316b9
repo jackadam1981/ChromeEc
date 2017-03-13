@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2e8c0125_bece6ef3",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-13T21:03:51Z",
+      "side": 1,
+      "message": "Where do you mean \u0027below\u0027? This function can be call from anx74xx_tcpm_mux_set, then immediately return to the caller. You need to explicitly exit safe mode within this function.",
+      "parentUuid": "811b1088_093ccab0",
+      "range": {
+        "startLine": 181,
+        "startChar": 10,
+        "endLine": 181,
+        "endChar": 32
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c654db53_332fe20b",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
