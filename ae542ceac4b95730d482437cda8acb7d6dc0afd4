@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3a5ae3c_31feade3",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-13T15:14:00Z",
+      "side": 1,
+      "message": "this is now questionable for the CHG port,\nit is neither dual-role nor externally powered ?",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "ae542ceac4b95730d482437cda8acb7d6dc0afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "940db1b6_7c8f60b9",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-13T15:14:00Z",
+      "side": 1,
+      "message": "is this true ?\nif you get 9V 2A on the CHG , you can provide 5V 2A on the DUT port ?",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 31
+      },
+      "revId": "ae542ceac4b95730d482437cda8acb7d6dc0afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81c97003_7228bb80",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-13T15:14:00Z",
+      "side": 1,
+      "message": "why 5 ms later rather than now ?",
+      "range": {
+        "startLine": 162,
+        "startChar": 6,
+        "endLine": 162,
+        "endChar": 14
+      },
+      "revId": "ae542ceac4b95730d482437cda8acb7d6dc0afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
