@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0faf6139_9f07077a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-13T20:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be41a49f_d7df60ac",
+      "range": {
+        "startLine": 161,
+        "startChar": 6,
+        "endLine": 161,
+        "endChar": 16
+      },
+      "revId": "b4caea65d092c61535299c658c67abfb13a38ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6cd2d5f5_b29ace8b",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-10T20:51:32Z",
       "side": 1,
       "message": "I know they\u0027re from the original code but I think all these \u0027rv |\u003d\u0027 are nonsense.",
+      "range": {
+        "startLine": 164,
+        "startChar": 4,
+        "endLine": 164,
+        "endChar": 6
+      },
+      "revId": "b4caea65d092c61535299c658c67abfb13a38ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b40e0139_e04604dc",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-13T20:40:48Z",
+      "side": 1,
+      "message": "Removed all of the rv \u003d or rv |\u003d and just am checking each call and returning if there was an error",
+      "parentUuid": "6cd2d5f5_b29ace8b",
       "range": {
         "startLine": 164,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a2cf7e68_ad8df6ff",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-13T20:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c24fca62_114d301c",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 6
+      },
+      "revId": "b4caea65d092c61535299c658c67abfb13a38ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3c1fb76_f376d87c",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "eda8f49b_1270e752",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-13T20:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3c1fb76_f376d87c",
+      "range": {
+        "startLine": 197,
+        "startChar": 9,
+        "endLine": 197,
+        "endChar": 10
+      },
+      "revId": "b4caea65d092c61535299c658c67abfb13a38ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5d293ad_36626408",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2017-03-10T20:51:32Z",
       "side": 1,
       "message": "How do you guarantee ANX74XX_REG_MODE_TRANS bit is 0? If it\u0027s not, this write doesn\u0027t get us out of safe mode.",
+      "range": {
+        "startLine": 207,
+        "startChar": 49,
+        "endLine": 207,
+        "endChar": 52
+      },
+      "revId": "b4caea65d092c61535299c658c67abfb13a38ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bad010c5_0fbacd66",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-13T20:40:48Z",
+      "side": 1,
+      "message": "I think that this function should always put the mux in safe mode, prior to any change taking place. Since this function either disables or enables the connection, probably the best thing to do is to OR  ANX74XX_REG_ANALOG_CTRL_2 with \u0027reg\u0027 right after it\u0027s read, then always clear this bit and write the reg value back at the exit.",
+      "parentUuid": "c5d293ad_36626408",
       "range": {
         "startLine": 207,
         "startChar": 49,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "692ce94c_3ffd5fb2",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-13T20:40:48Z",
+      "side": 1,
+      "message": "Yeah, I thought about this, but I\u0027m not sure what the best action is in it\u0027s place. If this write didn\u0027t succeed, then does it make sense to do the next write that disables safe mode?",
+      "parentUuid": "493b44d4_48bded3b",
+      "range": {
+        "startLine": 208,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 8
+      },
+      "revId": "b4caea65d092c61535299c658c67abfb13a38ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "443dd0ee_e8e193ef",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 3
@@ -151,6 +295,30 @@
       "writtenOn": "2017-03-10T20:51:32Z",
       "side": 1,
       "message": "We don\u0027t always need this, right? Why don\u0027t we have \n\nint safe_mode;\n...\nsafe_mode \u003d reg \u0026 aux_mask \u0026\u0026 !enabled;\n\nat the entry to the function and do\n\nif (safe_mode) {\n   /* enable or disable safe mode */\n}\n\n?",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 67
+      },
+      "revId": "b4caea65d092c61535299c658c67abfb13a38ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "298ec81d_bb53b1ce",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-13T20:40:48Z",
+      "side": 1,
+      "message": "I think the logic above that was selecting safe mode is incomplete.  What was being checked at the top was if DP aux signals are currently connected and they are about to be disconnected. The other case of DP signals not connected, but about to be connected needs to be covered too.",
+      "parentUuid": "443dd0ee_e8e193ef",
       "range": {
         "startLine": 210,
         "startChar": 1,

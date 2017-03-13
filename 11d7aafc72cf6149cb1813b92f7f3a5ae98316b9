@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eb0f9567_f768cc60",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-13T20:40:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc53f616_07e7080e",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 4
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af9aff2d_bbf84757",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 2
@@ -201,6 +225,30 @@
       "writtenOn": "2017-03-10T20:33:01Z",
       "side": 1,
       "message": "Do we need to worry about USB_PD_MUX_HPD_IRQ?",
+      "range": {
+        "startLine": 280,
+        "startChar": 22,
+        "endLine": 280,
+        "endChar": 36
+      },
+      "revId": "11d7aafc72cf6149cb1813b92f7f3a5ae98316b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bdbfe9c_943ab93e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-13T20:40:48Z",
+      "side": 1,
+      "message": "I don\u0027t believe this bit is relevant to the mux configuration. Looks like the only place we use that bit is in the virtual_mux.c driver",
+      "parentUuid": "62c06740_44e70f4a",
       "range": {
         "startLine": 280,
         "startChar": 22,
