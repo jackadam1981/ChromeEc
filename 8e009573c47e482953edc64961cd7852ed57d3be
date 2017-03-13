@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7a11b07c_8ff7080d",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-13T21:54:39Z",
+      "side": 1,
+      "message": "It\u0027s not clear to me if the register writes to analog_ctrl_1 and analog_ctrl_5 need to be protected. The change I made here is similar to the fix implemented in the other CL  If the writes to ctrl_1 and ctrl_5 need to be protected as well, then anx74xx_tcpm_mux_set needs to be modified as well. I changed this section so that safe mode is explicitly entered, then exited after the aux \u003c-\u003esbu signals are disconnected.",
+      "parentUuid": "0b5de1df_3d388e09",
+      "range": {
+        "startLine": 163,
+        "startChar": 49,
+        "endLine": 163,
+        "endChar": 58
+      },
+      "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd2091e7_7a2c4dba",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
