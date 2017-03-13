@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20c37555_fc6cde0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-13T14:44:20Z",
+      "side": 1,
+      "message": "you mentioned we need to refresh the VM_CTRL_SET register after init",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "fc50f23e7066b12b98b013c9665259639ccca9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31bc6fb4_bbc0f8c0",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-13T14:44:20Z",
+      "side": 1,
+      "message": "you mentioned we need to refresh the VM_CTRL_SET register after init",
+      "range": {
+        "startLine": 800,
+        "startChar": 55,
+        "endLine": 802,
+        "endChar": 51
+      },
+      "revId": "fc50f23e7066b12b98b013c9665259639ccca9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
