@@ -45,6 +45,52 @@
       "revId": "fc50f23e7066b12b98b013c9665259639ccca9d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "276803c9_a1426324",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-13T15:12:45Z",
+      "side": 1,
+      "message": "Remember that this is going to master. I don\u0027t think there is deployed FW that is still built from master. We shouldn\u0027t keep around this read / mask / write on master, if it\u0027s intended to fix a problem on a few platforms using branch FW.",
+      "range": {
+        "startLine": 800,
+        "startChar": 56,
+        "endLine": 802,
+        "endChar": 51
+      },
+      "revId": "fc50f23e7066b12b98b013c9665259639ccca9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "738d2169_183cc7ec",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-13T15:12:45Z",
+      "side": 1,
+      "message": "There are no documented differences in the function of this bit between 55 and 56, and we have no boards that use CONFIG_CHARGER_BD99955 on TOT anymore. I will open a crbug to remove CONFIG_CHARGER_BD99955.",
+      "range": {
+        "startLine": 807,
+        "startChar": 7,
+        "endLine": 807,
+        "endChar": 29
+      },
+      "revId": "fc50f23e7066b12b98b013c9665259639ccca9d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
