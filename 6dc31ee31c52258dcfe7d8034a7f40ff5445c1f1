@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8581524_a245be92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-13T21:51:58Z",
+      "side": 1,
+      "message": "This should no be \u0027b\u0027. e.g.\n\nBUG\u003db:35984679",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 21
+      },
+      "revId": "6dc31ee31c52258dcfe7d8034a7f40ff5445c1f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
