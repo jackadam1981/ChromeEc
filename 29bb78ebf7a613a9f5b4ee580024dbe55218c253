@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11e170ad_3f229ad8",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-13T15:21:01Z",
+      "side": 1,
+      "message": "Does anybody know why we ignore all writes\u0027 errors (but return on reads\u0027 errors)?",
+      "range": {
+        "startLine": 796,
+        "startChar": 1,
+        "endLine": 796,
+        "endChar": 15
+      },
+      "revId": "29bb78ebf7a613a9f5b4ee580024dbe55218c253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
