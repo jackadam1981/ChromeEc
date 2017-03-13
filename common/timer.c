@@ -304,7 +304,8 @@ DECLARE_CONSOLE_COMMAND(forcetime, command_force_time,
 static int command_get_time(int argc, char **argv)
 {
 	timestamp_t ts = get_time();
-	ccprintf("Time: 0x%016lx = %.6ld s\n", ts.val, ts.val);
+	/* %T = current time */
+	ccprintf("Time: 0x%016lx = %T s\n", ts.val);
 
 	return EC_SUCCESS;
 }
