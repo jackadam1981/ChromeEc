@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "92b4bb06_6a82436e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-14T20:18:18Z",
+      "side": 1,
+      "message": "I created a fixed_flag macro for both the DUT and CHG port, so they can reflect their different capabilities.",
+      "parentUuid": "a3a5ae3c_31feade3",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 38
+      },
+      "revId": "ae542ceac4b95730d482437cda8acb7d6dc0afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "940db1b6_7c8f60b9",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fca5f300_65fe038e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-14T20:18:18Z",
+      "side": 1,
+      "message": "Changed this logic so that if 2 chg_src_pdo entries are used, the 1st entry will only offer 500mA (the vSave5V value that can be supported by the host) and the 2nd entry will reflect the current CHG vbus votage/current level. If the CHG vbus \u003d\u003d 5V, then only one entry is used and its voltage and current levels will reflect CHG vbus. This 2nd case covers when TypeC only chargers are connected to the CHG port.",
+      "parentUuid": "940db1b6_7c8f60b9",
+      "range": {
+        "startLine": 114,
+        "startChar": 3,
+        "endLine": 114,
+        "endChar": 31
+      },
+      "revId": "ae542ceac4b95730d482437cda8acb7d6dc0afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81c97003_7228bb80",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-03-13T15:14:00Z",
       "side": 1,
       "message": "why 5 ms later rather than now ?",
+      "range": {
+        "startLine": 162,
+        "startChar": 6,
+        "endLine": 162,
+        "endChar": 14
+      },
+      "revId": "ae542ceac4b95730d482437cda8acb7d6dc0afd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c42eb96b_f18c288c",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-14T20:18:18Z",
+      "side": 1,
+      "message": "I was wanting to make sure that board_manage_chg_port() was always being called from the hook task, but didn\u0027t consider the possibility of a deferred call with 0 msec delay. I changed the delay value to 0.",
+      "parentUuid": "81c97003_7228bb80",
       "range": {
         "startLine": 162,
         "startChar": 6,
