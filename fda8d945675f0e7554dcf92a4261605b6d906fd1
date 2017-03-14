@@ -70,6 +70,24 @@
       "revId": "fda8d945675f0e7554dcf92a4261605b6d906fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "526f7c03_afaf0652",
+        "filename": "board/rowan/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-14T19:44:26Z",
+      "side": 1,
+      "message": "I still don\u0027t understand. enum led_color is used only in this file, as a parameter to bat_led_set (static).\n\nAll the callers of bad_set_led explicitly set their parameters to BAT_LED_RED/BAT_LED_GREEN, so I don\u0027t understand why they have to match anything.",
+      "parentUuid": "3db85269_fc7269e7",
+      "revId": "fda8d945675f0e7554dcf92a4261605b6d906fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
