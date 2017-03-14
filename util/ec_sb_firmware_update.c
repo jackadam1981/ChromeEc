@@ -790,6 +790,17 @@ int main(int argc, char *argv[])
 			printf("AC_PRESENT\n");
 		}
 	}
+
+	if ((val & EC_BATT_FLAG_DISCHARGING) &&
+	    (val & EC_BATT_FLAG_AC_PRESENT)) {
+		/*
+		 * If battery discharge due to battery learning mode,
+		 * we can't update battery FW, because device will shutdown
+		 * during FW update.
+		 */
+		printf("Battery can't update FW in learning mode\n");
+		return S10_TERMINAL;
+	}
 	rv = ec_readmem(EC_MEMMAP_BATT_LFCC, sizeof(val), &val);
 	if (rv <= 0) {
 		printf("EC Memmap read error:%d\n", rv);
