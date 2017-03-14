@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d2747ae_4e35e0a2",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-14T21:13:03Z",
+      "side": 1,
+      "message": "We can\u0027t return early here. We\u0027re holding the gec lock.",
+      "revId": "d319e432b83fb973db5510ac0a5ae58726bdb004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
