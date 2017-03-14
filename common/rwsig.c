@@ -137,8 +137,9 @@ void check_rw_signature(void)
 out:
 	if (good) {
 		CPRINTS("RW image verified");
+		CPRINTS("but... not jumping");
 		/* Jump to the RW firmware */
-		system_run_image_copy(SYSTEM_IMAGE_RW);
+		//system_run_image_copy(SYSTEM_IMAGE_RW);
 	} else {
 		CPRINTS("RSA verify FAILED");
 		pd_log_event(PD_EVENT_ACC_RW_FAIL, 0, 0, NULL);
