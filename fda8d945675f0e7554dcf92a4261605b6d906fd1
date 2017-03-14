@@ -34,6 +34,24 @@
       "revId": "fda8d945675f0e7554dcf92a4261605b6d906fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "723c5369_fe6810ad",
+        "filename": "board/rowan/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-14T03:47:15Z",
+      "side": 1,
+      "message": "How does this code relate to ectool? AFAICT this enum is only used internally, by internal functions.",
+      "parentUuid": "4cf22926_bdfd4be8",
+      "revId": "fda8d945675f0e7554dcf92a4261605b6d906fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
