@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "85d20b52_54332014",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2017-03-14T01:47:17Z",
+      "side": 1,
+      "message": "/*Enable Safe state of MUX*/\nreg |\u003d ANX74XX_REG_MODE_TRANS\nrv |\u003d tcpc_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg);",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 39
+      },
+      "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b5de1df_3d388e09",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
@@ -84,6 +107,30 @@
       "writtenOn": "2017-03-13T21:42:47Z",
       "side": 1,
       "message": "Question for Analogix: Do these registers need to be protected by safe mode?",
+      "range": {
+        "startLine": 167,
+        "startChar": 22,
+        "endLine": 167,
+        "endChar": 47
+      },
+      "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41dbe083_164673e0",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2017-03-14T01:47:17Z",
+      "side": 1,
+      "message": "Yes, these registers need to be protected by safe mode. those are for supper-speed lines.\nUSB Type-C Specification Release 1.2: \"The USB Safe State is defined by the USB PD specification. The USB Safe State defines an electrical state for the SBU1/2 and SSTX/SSRX for DFPs, UFPs, and Active Cables when transitioning between USB and an Alternate Mode. SBU1/2 and SSTX/SSRX must transition to the USB Safe State before entering to or exiting from an Alternate Mode.\"",
+      "parentUuid": "fd2091e7_7a2c4dba",
       "range": {
         "startLine": 167,
         "startChar": 22,
