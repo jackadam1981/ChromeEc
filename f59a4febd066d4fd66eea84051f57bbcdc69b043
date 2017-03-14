@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8350e25c_8f8135a1",
+        "filename": "core/nds32/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-14T22:35:13Z",
+      "side": 1,
+      "message": "Could you add more comment indicating why, and/or reference a bug number?",
+      "range": {
+        "startLine": 217,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 33
+      },
+      "revId": "f59a4febd066d4fd66eea84051f57bbcdc69b043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
