@@ -52,6 +52,24 @@
       "revId": "fda8d945675f0e7554dcf92a4261605b6d906fd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3db85269_fc7269e7",
+        "filename": "board/rowan/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-03-14T18:57:59Z",
+      "side": 1,
+      "message": "ectool declares color name table this way:\nstatic const char * const led_color_names[] \u003d {\n        \"red\", \"green\", \"blue\", \"yellow\", \"white\", \"amber\"};\nAnd it matches the command line color name and sets the led index.",
+      "parentUuid": "723c5369_fe6810ad",
+      "revId": "fda8d945675f0e7554dcf92a4261605b6d906fd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
