@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9360c5ae_4ab472f7",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1185509
+      },
+      "writtenOn": "2017-03-14T11:09:56Z",
+      "side": 1,
+      "message": "Doesn\u0027t Pbody need PWM_CONFIG_ALT_CLOCK?\nSee https://chromium-review.googlesource.com/312509 and https://chromium-review.googlesource.com/312403.",
+      "range": {
+        "startLine": 111,
+        "startChar": 5,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "8fddcaa52d38944938fae5c2a79ce8c8439b985c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
