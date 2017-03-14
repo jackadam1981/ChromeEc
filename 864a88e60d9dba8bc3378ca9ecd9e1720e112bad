@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89899953_6e2b5dbc",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-14T16:01:55Z",
+      "side": 1,
+      "message": "Why don\u0027t we skip this write if reg \u0026 ANX74XX_REG_MODE_TRANS is true?",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 26
+      },
+      "revId": "864a88e60d9dba8bc3378ca9ecd9e1720e112bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f659b1c1_dbf570df",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-14T16:01:55Z",
+      "side": 1,
+      "message": "Same here.  Can we skip it if  reg \u0026 ANX74XX_REG_MODE_TRANS is false?",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 15
+      },
+      "revId": "864a88e60d9dba8bc3378ca9ecd9e1720e112bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f671773_bd12bf72",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-14T16:01:55Z",
+      "side": 1,
+      "message": "nit: can be a single line. I like the current version for readability but i wonder if making it a single line saves a byte or two in our tight rom space...",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 19
+      },
+      "revId": "864a88e60d9dba8bc3378ca9ecd9e1720e112bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
