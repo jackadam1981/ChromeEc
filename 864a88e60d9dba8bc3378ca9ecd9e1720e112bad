@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a7d2c5b_48fd096e",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-14T16:29:21Z",
+      "side": 1,
+      "message": "I don\u0027t think this bit should ever be true when this function is called. Even though mux_exit can be called from the \u0027mux_set\u0027 function, if the path that calls mux_exit is taken then portion of \u0027mux_set\u0027 that calls this function would not be executed. The only case I can see where this bit might be set is in some error case where an I2C write failed and I don\u0027t think that\u0027s a very likely case, or at least one to plan for.",
+      "parentUuid": "89899953_6e2b5dbc",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 26
+      },
+      "revId": "864a88e60d9dba8bc3378ca9ecd9e1720e112bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f659b1c1_dbf570df",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "840d0f3f_a1d3f601",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-14T16:29:21Z",
+      "side": 1,
+      "message": "Similar to my comment above, this function is only being called in code section where previously the \u0027enter_safe_mode\u0027 function was called so in all normal conditions we expect the safe mode to be set when this function is called.",
+      "parentUuid": "f659b1c1_dbf570df",
+      "range": {
+        "startLine": 172,
+        "startChar": 5,
+        "endLine": 172,
+        "endChar": 15
+      },
+      "revId": "864a88e60d9dba8bc3378ca9ecd9e1720e112bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f671773_bd12bf72",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-03-14T16:01:55Z",
       "side": 1,
       "message": "nit: can be a single line. I like the current version for readability but i wonder if making it a single line saves a byte or two in our tight rom space...",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 19
+      },
+      "revId": "864a88e60d9dba8bc3378ca9ecd9e1720e112bad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f0536a_6434820f",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-14T16:29:21Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure the compiler will treat this version and the single line version the same in terms of code space.",
+      "parentUuid": "7f671773_bd12bf72",
       "range": {
         "startLine": 211,
         "startChar": 0,
