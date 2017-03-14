@@ -239,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "b93fa1b4_b9dae2b9",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-14T03:53:22Z",
+      "side": 1,
+      "message": "I have followed this approach, and now there are specific functions to enter/exit safe mode so it\u0027s no longer mixed in with the other settings to these registers.",
+      "parentUuid": "0ad2fb9a_9f0e3268",
+      "range": {
+        "startLine": 167,
+        "startChar": 22,
+        "endLine": 167,
+        "endChar": 47
+      },
+      "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "319de68d_39aecde8",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
