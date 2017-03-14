@@ -708,6 +708,7 @@ enum pd_states {
 #define PD_FLAGS_TRY_SRC           (1 << 13)/* Try.SRC states are active */
 #define PD_FLAGS_PARTNER_USB_COMM  (1 << 14)/* port partner is USB comms */
 #define PD_FLAGS_UPDATE_SRC_CAPS   (1 << 15)/* send new source capabilities */
+#define PD_FLAGS_DTS_ATTACH        (1 << 16)/* attached as DTS */
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -722,7 +723,8 @@ enum pd_states {
 					   PD_FLAGS_VCONN_ON | \
 					   PD_FLAGS_TRY_SRC | \
 					   PD_FLAGS_PARTNER_USB_COMM | \
-					   PD_FLAGS_UPDATE_SRC_CAPS)
+					   PD_FLAGS_UPDATE_SRC_CAPS |  \
+					   PD_FLAGS_DTS_ATTACH)
 
 
 enum pd_cc_states {

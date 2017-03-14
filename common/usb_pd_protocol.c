@@ -108,12 +108,12 @@ static struct pd_protocol {
 	uint8_t power_role;
 	/* current port data role (DFP or UFP) */
 	uint8_t data_role;
-	/* port flags, see PD_FLAGS_* */
-	uint16_t flags;
 	/* 3-bit rolling message ID counter */
 	uint8_t msg_id;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 	uint8_t polarity;
+	/* port flags, see PD_FLAGS_* */
+	uint32_t flags;
 	/* PD state for port */
 	enum pd_states task_state;
 	/* PD state when we run state handler the last time */
@@ -1959,6 +1959,8 @@ void pd_task(void)
 					/* Captive cable, CC1 always */
 					pd[port].polarity = 0;
 					tcpm_set_polarity(port, 0);
+					/* Indicate attached as DTS */
+					pd[port].flags |= PD_FLAGS_DTS_ATTACH;
 					/* Enable TCPC RX */
 					if (pd_comm_is_enabled(port))
 						tcpm_set_rx_enable(port, 1);
@@ -3017,8 +3019,9 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 			tcpm_get_cc(port, &cc1, &cc2);
 #ifdef CONFIG_USB_PD_DTS
 			/* If accessory becomes detached */
-			if (cc1 != TYPEC_CC_VOLT_RD ||
-			    cc2 != TYPEC_CC_VOLT_RD) {
+			if ((cc1 != TYPEC_CC_VOLT_RD) ||
+			    (pd[port].flags & PD_FLAGS_DTS_ATTACH &&
+			     cc2 != TYPEC_CC_VOLT_RD)) {
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				/* Debouncing */
 				timeout = 10*MSEC;
