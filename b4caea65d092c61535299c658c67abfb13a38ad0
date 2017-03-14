@@ -328,6 +328,30 @@
       "revId": "b4caea65d092c61535299c658c67abfb13a38ad0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4436130f_a7b38ed5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2017-03-14T03:15:25Z",
+      "side": 1,
+      "message": "anx74xx_mux_aux_to_sbu() function is only for setting SBU1/2, but Safe State is for SBU1/2 and SSTX/SSRX. So, in this function Safe State was exited, does it make sense?",
+      "parentUuid": "298ec81d_bb53b1ce",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 67
+      },
+      "revId": "b4caea65d092c61535299c658c67abfb13a38ad0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "0ad2fb9a_9f0e3268",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1186019
+      },
+      "writtenOn": "2017-03-14T03:15:25Z",
+      "side": 1,
+      "message": "According to \"DisplayPort Alt Mode on USB Type-C V1.0 Spec\":\na Places signals to be re-configured into the Safe state.\nb Sends a DisplayPort Configure command to the adaptor.\nc Receives Responder ACK response.\nd Configures signals to use DisplayPort.\nSo, I suggest that \"the write to analog_ctrl_2 with the new settings for the upper bit happen, followed by another write to analog_ctrl_2 which clears the safe mode bit.\"",
+      "parentUuid": "a24a8de2_a0dea281",
+      "range": {
+        "startLine": 167,
+        "startChar": 22,
+        "endLine": 167,
+        "endChar": 47
+      },
+      "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "319de68d_39aecde8",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
