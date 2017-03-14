@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "cf8264ad_58f148c5",
+        "filename": "board/pbody/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1117006
+      },
+      "writtenOn": "2017-03-14T10:14:53Z",
+      "side": 1,
+      "message": "Hi Duncan, since Pbody uses GPIO_TABLET_MODE_L for mode detection instead of using lid angle and powerd refers to TBMD which is from GPIO_TABLET_MODE_L, the keyboard backlight will be disabled only when the lid angle is near 360 degrees. If they depend on powerd, the keyboard backlight will not be turn off when the lid angle is between 180 and 360 degrees. That\u0027s Bitland\u0027s concern.",
+      "parentUuid": "1797ec8a_2b104784",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 1
+      },
+      "revId": "a19b1cd5e57498aeb8fa0b48f67b355824548450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e808567e_d245428f",
         "filename": "board/pbody/gpio.inc",
         "patchSetId": 1
