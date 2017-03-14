@@ -188,6 +188,53 @@
       "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a24a8de2_a0dea281",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-14T02:11:51Z",
+      "side": 1,
+      "message": "Question for Analogix: If the upper 4 bits of analog_ctrl_2 are being changed, can this change happen along with setting the safe mode bit back to 0? Or should the write to analog_ctrl_2 with the new settings for the upper bit happen, followed by another write to analog_ctrl_2 which clears the safe mode bit.",
+      "parentUuid": "41dbe083_164673e0",
+      "range": {
+        "startLine": 167,
+        "startChar": 22,
+        "endLine": 167,
+        "endChar": 47
+      },
+      "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "319de68d_39aecde8",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-14T02:11:51Z",
+      "side": 1,
+      "message": "Question for Analogix: These register writes should take place only when safe mode has been entered by setting the ANX74XX_REG_MODE_TRANS bit in analog_ctrl_2, correct?",
+      "range": {
+        "startLine": 258,
+        "startChar": 24,
+        "endLine": 258,
+        "endChar": 50
+      },
+      "revId": "8e009573c47e482953edc64961cd7852ed57d3be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
