@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "05204040_41476df3",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-14T14:03:57Z",
+      "side": 1,
+      "message": "Yes, it\u0027s probably useless as I got rid of the shared_mem_acquire for this case in an earlier version and forgot to remove this.",
+      "parentUuid": "70f22a1a_19dcfbfc",
+      "range": {
+        "startLine": 222,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 15
+      },
+      "revId": "60a0022ce85ada2c9b49c8714c808d059242809f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfbd5425_1b8fa3d8",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "eebc49c2_c0e8f9a1",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-14T14:03:57Z",
+      "side": 1,
+      "message": "That\u0027s the API:\n\"\"\"\n * If SPI_READBACK_ALL is set in \u003crxlen\u003e, the received data during transmission\n * is recorded in rxdata buffer and it assumes that the real \u003crxlen\u003e is equal\n * to \u003ctxlen\u003e.\n\"\"\"",
+      "parentUuid": "dfbd5425_1b8fa3d8",
+      "range": {
+        "startLine": 237,
+        "startChar": 34,
+        "endLine": 237,
+        "endChar": 37
+      },
+      "revId": "60a0022ce85ada2c9b49c8714c808d059242809f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff541da6_2fa6c92f",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-03-14T00:45:01Z",
       "side": 1,
       "message": "Do we not need to wait for completion (by calling spi_dma_wait)? \n\nCan we skip completion on line 241 if full_feedback \u003d\u003d 1?",
+      "range": {
+        "startLine": 246,
+        "startChar": 7,
+        "endLine": 246,
+        "endChar": 20
+      },
+      "revId": "60a0022ce85ada2c9b49c8714c808d059242809f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c52851a_3d6359e0",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-14T14:03:57Z",
+      "side": 1,
+      "message": "might be an option.",
+      "parentUuid": "ff541da6_2fa6c92f",
       "range": {
         "startLine": 246,
         "startChar": 7,
