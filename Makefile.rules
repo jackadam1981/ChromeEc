@@ -82,6 +82,7 @@ cmd_cxx_to_host = $(HOSTCXX) -std=c++0x $(COMMON_WARN) $(HOST_CXXFLAGS)\
 	-I ./$($(notdir $@)_ROOT) -o $@ $(filter %.cc,$^) $($(notdir $@)_LIBS)
 cmd_host_test = ./util/run_host_test $* $(silent)
 cmd_version = ./util/getversion.sh > $@
+cmd_vif = ./util/genvif.sh "board"/$(BOARD)/"board.h" $(out)/$(VIF) $(BOARD)
 cmd_mv_from_tmp = mv $(out)/$*.bin.tmp $(out)/$*.bin
 cmd_extractrw-y = dd if=$(out)/$(PROJECT).bin.tmp of=$(out)/$(PROJECT).RW.bin \
 	       bs=1 count=$(_rw_size) skip=$(_rw_off) $(silent_err)
@@ -292,6 +293,7 @@ flat-$(CONFIG_SHAREDLIB) += $(libsharedobjs-y)
 $(out)/$(PROJECT).obj: common/firmware_image.S $(out)/firmware_image.lds \
 	$(flat-y)
 	$(call quiet,flat_to_obj,CAT    )
+	$(call quiet,vif,VIF    )
 
 $(out)/%.dis: $(out)/%.elf
 	$(call quiet,elf_to_dis,OBJDUMP)

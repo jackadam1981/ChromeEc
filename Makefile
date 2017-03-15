@@ -190,7 +190,7 @@ $(eval $(call get_sources,ro))
 dirs=core/$(CORE) chip/$(CHIP) $(BDIR) common power test cts/common cts/$(CTS_MODULE)
 dirs+= private $(PDIR)
 dirs+=$(shell find driver -type d)
-common_dirs=util
+common_dirs=util vif
 
 ifeq ($(custom-ro_objs-y),)
 ro-common-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RO/$(obj)))
@@ -243,6 +243,9 @@ libsharedobjs-$(CONFIG_SHAREDLIB) := $(out)/$(SHOBJLIB)/$(SHOBJLIB).flat
 libsharedobjs_elf-$(CONFIG_SHAREDLIB) := \
 	$(libsharedobjs-$(CONFIG_SHAREDLIB):%.flat=%.elf)
 libsharedobjs: $(libsharedobjs-y)
+
+# Vendor Information Files
+VIF := vif
 
 include Makefile.rules
 export CROSS_COMPILE CFLAGS CC CPP LD NM AR OBJCOPY OBJDUMP
