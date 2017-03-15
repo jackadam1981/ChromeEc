@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "043193ed_45320674",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-15T18:04:28Z",
+      "side": 1,
+      "message": "This is really best effort. We don\u0027t have the ability to guarantee this as of now. I think we should be more explicit that we\u0027re just hoping that we work around the existing problem  in that we wake up in time for the clocks to the gpio block are enabled to see the rising edge.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "07416d70addd0eaa7f4aad9d537456489a4be35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
