@@ -473,10 +473,10 @@ static void configure_board_specific_gpios(void)
 		/* Enbale the input */
 		GWRITE_FIELD(PINMUX, DIOM3_CTL, IE, 1);
 
-		/* Set to be edge sensitive */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM3, 1);
-		/* Select rising edge polarity */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, 0);
+		/* Set to be level sensitive */
+		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM3, 0);
+		/* Active Low */
+		GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, 1);
 		/* Enable powerdown exit on DIOM3 */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
 	} else {
