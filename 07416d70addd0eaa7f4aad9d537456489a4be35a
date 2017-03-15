@@ -94,6 +94,47 @@
       "revId": "07416d70addd0eaa7f4aad9d537456489a4be35a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0a13f0_30a90a7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-15T18:57:00Z",
+      "side": 1,
+      "message": "Can you add the timing Tim provided in the commit description here so we that we don\u0027t lose that info on the reasoning for going down this path?",
+      "parentUuid": "d4007ae1_3d8534f3",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "07416d70addd0eaa7f4aad9d537456489a4be35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59f97629_d82ba8ad",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-15T18:57:00Z",
+      "side": 1,
+      "message": "Putting a comment in here on the reasoning for this would be helpful. i.e. That in order to catch the gpio interrupt for tpm reset we need to wake up so the clocks are ticking to the gpio block. As such we wake from sleep when the signal goes low to ensure that constraint is met.",
+      "revId": "07416d70addd0eaa7f4aad9d537456489a4be35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
