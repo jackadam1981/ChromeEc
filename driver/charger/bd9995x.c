@@ -645,6 +645,9 @@ int charger_set_current(int current)
 	/* Charge current step 64 mA */
 	current &= ~0x3F;
 
+	ccprintf("%s: current=%d\n", __func__, current);
+	cflush();
+
 	if (current < BD9995X_NO_BATTERY_CHARGE_I_MIN &&
 	    (battery_is_present() != BP_YES || battery_is_cut_off()))
 		current = BD9995X_NO_BATTERY_CHARGE_I_MIN;
@@ -674,6 +677,8 @@ int charger_set_voltage(int voltage)
 	int rv;
 	int reg;
 
+	ccprintf("%s: voltage=%d\n", __func__, voltage);
+	cflush();
 	/*
 	 * Regulate the system voltage to battery max if the battery
 	 * is not present or the battery is discharging on AC.

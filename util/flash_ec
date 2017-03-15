@@ -524,7 +524,7 @@ else
 	} > $T
 fi
 	sudo timeout -k 10 -s 9 "${FLAGS_timeout}" \
-		${FLASHROM} ${FLASHROM_PARAM} ${FLASHROM_OPTIONS} -w "${T}"
+		${FLASHROM} ${FLASHROM_PARAM} ${FLASHROM_OPTIONS} -r "/tmp/ec.bin"
 
 	rm $T
 
