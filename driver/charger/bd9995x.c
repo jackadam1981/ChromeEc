@@ -89,6 +89,8 @@ static inline int ch_raw_write16(int cmd, int param,
 {
 	int rv;
 
+	ccprintf("cmd=0x%x param=0x%x map_cmd=%d\n", cmd, param, map_cmd);
+	cflush();
 	/* Map the Charge command code to appropriate region */
 	mutex_lock(&bd9995x_map_mutex);
 	if (charger_map_cmd != map_cmd) {
