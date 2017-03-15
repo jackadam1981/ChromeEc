@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a53fc952_3e6cc719",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-03-15T01:59:29Z",
+      "side": 1,
+      "message": "I will set this to SENSOR_ACTIVE_S0_S3.",
+      "parentUuid": "b3103107_60025fe1",
+      "revId": "0d50b67633f9ca506e63922c1f0b1b0945bec26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbd91ac9_4e4ca05b",
         "filename": "board/rowan/board.c",
         "patchSetId": 7
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "fd0045fe_f32a7174",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-03-15T01:59:29Z",
+      "side": 1,
+      "message": "port is only used by I2C transport.\naccelgyro_bmi160.c checks addr value to decide if it is a SPI transport or I2C transport.\nShould I remove this setting ?",
+      "parentUuid": "cbd91ac9_4e4ca05b",
+      "revId": "0d50b67633f9ca506e63922c1f0b1b0945bec26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd2d8ad3_b23f5e34",
         "filename": "board/rowan/board.c",
         "patchSetId": 7
@@ -64,6 +100,24 @@
       "writtenOn": "2017-03-14T15:15:28Z",
       "side": 1,
       "message": "angle detection is not used, set to 0.",
+      "revId": "0d50b67633f9ca506e63922c1f0b1b0945bec26a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "243748aa_1ed6b92b",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-03-15T01:59:29Z",
+      "side": 1,
+      "message": "Do you mean set both to 0?",
+      "parentUuid": "dd2d8ad3_b23f5e34",
       "revId": "0d50b67633f9ca506e63922c1f0b1b0945bec26a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
