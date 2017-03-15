@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67840059_7348aab5",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-15T19:46:50Z",
+      "side": 1,
+      "message": "You can remove this, it is always compiled in. If test fails, check ec.tasklist to be sure it matches other boards",
+      "revId": "92344ec667e156ca604819996b02cce764df9fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa493eb_eb71b25c",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-15T19:46:50Z",
+      "side": 1,
+      "message": "Given this is the same sensor as the accel, rot_standard_ref have to be identical.",
+      "revId": "92344ec667e156ca604819996b02cce764df9fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
