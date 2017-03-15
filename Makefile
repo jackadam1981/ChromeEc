@@ -190,7 +190,7 @@ $(eval $(call get_sources,ro))
 dirs=core/$(CORE) chip/$(CHIP) $(BDIR) common power test cts/common cts/$(CTS_MODULE)
 dirs+= private $(PDIR)
 dirs+=$(shell find driver -type d)
-common_dirs=util
+common_dirs=util vif
 
 ifeq ($(custom-ro_objs-y),)
 ro-common-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RO/$(obj)))
@@ -220,7 +220,7 @@ deps := $(ro-deps) $(rw-deps)
 $(config): $(out)/$(PROJECT).bin
 	@printf '%s=y\n' $(_tsk_cfg) $(_flag_cfg) > $@
 
-def_all_deps:=utils ro rw notice $(config) $(PROJECT_EXTRA)
+def_all_deps:=utils ro rw notice vif $(config) $(PROJECT_EXTRA)
 all_deps?=$(def_all_deps)
 all: $(all_deps)
 
