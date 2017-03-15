@@ -70,6 +70,30 @@
       "revId": "07416d70addd0eaa7f4aad9d537456489a4be35a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4007ae1_3d8534f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-15T18:31:47Z",
+      "side": 1,
+      "message": "ok, as explained off thread, the clocks do not have to be touched by firmware to come back from sleep, it takes 30 us to fall asleep and 90 us to wake up.\n\nSo, 1 ms pulse is not a best effort, it is a guarantee we won\u0027t miss the edge.",
+      "parentUuid": "9053036b_c861ef38",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "07416d70addd0eaa7f4aad9d537456489a4be35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
