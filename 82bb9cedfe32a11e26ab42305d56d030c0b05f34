@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b745d93_b302fe67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-15T18:34:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure why this CL is needed, can you clarify what is broken in the commit message? Many other boards seems to redefine led_color and seem to be fine with it... Or maybe other boards are broken too and should be fixed?",
+      "revId": "82bb9cedfe32a11e26ab42305d56d030c0b05f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79a5a2e_0f054fed",
+        "filename": "board/rowan/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-15T18:34:37Z",
+      "side": 1,
+      "message": "Are you sure that everything works fine if you pass an arbitrary int to bat_led_set \u003d\u003e gpio_set_level, instead of 0 or 1 only?",
+      "revId": "82bb9cedfe32a11e26ab42305d56d030c0b05f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
