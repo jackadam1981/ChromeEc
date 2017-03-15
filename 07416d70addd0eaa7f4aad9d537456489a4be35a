@@ -46,6 +46,30 @@
       "revId": "07416d70addd0eaa7f4aad9d537456489a4be35a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9053036b_c861ef38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-15T18:14:06Z",
+      "side": 1,
+      "message": "It\u0027s not just minimum wake pulse. It\u0027s actually the time from clock gating to gpio block to ungating gpio block. minimum wake pulse is a subset of that duration. Also, I\u0027d like to understand how sleep mechanism because we might be committing to the sleep state while the signal is low but won\u0027t wake until completely asleep. As such that timing would need to be included as well.",
+      "parentUuid": "dc1e474e_4adca997",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "07416d70addd0eaa7f4aad9d537456489a4be35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
