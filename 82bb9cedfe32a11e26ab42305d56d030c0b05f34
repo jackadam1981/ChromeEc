@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bf6ffe99_fdccefb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-03-15T20:27:45Z",
+      "side": 1,
+      "message": "The issue was when using ectool to turn on blue battery led, rowan lights up red. We can simply s/BLUE/RED/g and s/AMBER/ORANGE/g to fix it. But I found that remove the map makes it more clear.",
+      "parentUuid": "4b745d93_b302fe67",
+      "revId": "82bb9cedfe32a11e26ab42305d56d030c0b05f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e79a5a2e_0f054fed",
         "filename": "board/rowan/led.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-15T18:34:37Z",
       "side": 1,
       "message": "Are you sure that everything works fine if you pass an arbitrary int to bat_led_set \u003d\u003e gpio_set_level, instead of 0 or 1 only?",
+      "revId": "82bb9cedfe32a11e26ab42305d56d030c0b05f34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebb76376_1d07838c",
+        "filename": "board/rowan/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-03-15T20:27:45Z",
+      "side": 1,
+      "message": "Yes I am sure, for all known EC chips we treat it as boolean. But if this is not preferred, I can just abandon the change.",
+      "parentUuid": "e79a5a2e_0f054fed",
       "revId": "82bb9cedfe32a11e26ab42305d56d030c0b05f34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
