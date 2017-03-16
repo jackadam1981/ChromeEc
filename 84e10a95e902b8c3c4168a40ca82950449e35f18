@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3af05ad_c306b223",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2947,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-16T16:52:55Z",
+      "side": 1,
+      "message": "why do you need the ifdef ?\nare we spamming the console without it ?",
+      "range": {
+        "startLine": 2947,
+        "startChar": 0,
+        "endLine": 2947,
+        "endChar": 35
+      },
+      "revId": "84e10a95e902b8c3c4168a40ca82950449e35f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa6a26d8_d56c3178",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-16T16:52:55Z",
+      "side": 1,
+      "message": "at some point (not now), it would be nice to do the \nanx74xx_handle_power_mode(port, ANX74XX_NORMAL_MODE) here.\nmaybe open a bug for this refactoring.",
+      "range": {
+        "startLine": 569,
+        "startChar": 1,
+        "endLine": 571,
+        "endChar": 20
+      },
+      "revId": "84e10a95e902b8c3c4168a40ca82950449e35f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee113ce_fad549cd",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-16T16:52:55Z",
+      "side": 1,
+      "message": "this is only for TCPC_LOW_POWER ?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "84e10a95e902b8c3c4168a40ca82950449e35f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
