@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84bca097_7c3ecc52",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2947,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-16T17:30:48Z",
+      "side": 1,
+      "message": "This isn\u0027t floody at all. It\u0027s surrounded by the ifdef because the counterpart is surrounded, too.",
+      "parentUuid": "d3af05ad_c306b223",
+      "range": {
+        "startLine": 2947,
+        "startChar": 0,
+        "endLine": 2947,
+        "endChar": 35
+      },
+      "revId": "84e10a95e902b8c3c4168a40ca82950449e35f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa6a26d8_d56c3178",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0a74a4ee_03bc58c8",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-16T17:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa6a26d8_d56c3178",
+      "range": {
+        "startLine": 569,
+        "startChar": 1,
+        "endLine": 571,
+        "endChar": 20
+      },
+      "revId": "84e10a95e902b8c3c4168a40ca82950449e35f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ee113ce_fad549cd",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "84e10a95e902b8c3c4168a40ca82950449e35f18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed7fe597_79e85d26",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-16T17:30:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ee113ce_fad549cd",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "84e10a95e902b8c3c4168a40ca82950449e35f18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
