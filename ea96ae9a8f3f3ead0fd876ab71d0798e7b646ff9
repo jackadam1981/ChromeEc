@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4df7d955_ca01959c",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-16T11:34:47Z",
+      "side": 1,
+      "message": "I would swap this check with the previous one,\nthis would be faster for all regular GPIOs.",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 9
+      },
+      "revId": "ea96ae9a8f3f3ead0fd876ab71d0798e7b646ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7614d6_456f5cb0",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-16T11:34:47Z",
+      "side": 1,
+      "message": "my version using 1 parameter rather than 2 was better: less code/faster",
+      "range": {
+        "startLine": 572,
+        "startChar": 7,
+        "endLine": 572,
+        "endChar": 56
+      },
+      "revId": "ea96ae9a8f3f3ead0fd876ab71d0798e7b646ff9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
