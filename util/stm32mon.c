@@ -27,6 +27,7 @@
 #include <sys/ioctl.h>
 #include <sys/stat.h>
 #include <linux/i2c-dev.h>
+#include <linux/spi/spidev.h>
 #include <termios.h>
 #include <time.h>
 #include <unistd.h>
@@ -49,6 +50,9 @@
 
 #define RESP_NACK    0x1f
 #define RESP_ACK     0x79
+
+/* SPI Start of Frame */
+#define SOF          0x5A
 
 /* Extended erase special parameters */
 #define ERASE_ALL    0xffff
@@ -83,9 +87,16 @@ struct stm32_def {
 #define PAGE_SIZE 256
 #define INVALID_I2C_ADAPTER -1
 
+enum interface_mode {
+	MODE_SERIAL,
+	MODE_I2C,
+	MODE_SPI,
+} mode = MODE_SERIAL;
+
 /* store custom parameters */
 speed_t baudrate = DEFAULT_BAUDRATE;
 int i2c_adapter = INVALID_I2C_ADAPTER;
+const char *spi_adapter;
 const char *serial_port = "/dev/ttyUSB1";
 const char *input_filename;
 const char *output_filename;
@@ -202,14 +213,43 @@ int open_i2c(const int port)
 	return fd;
 }
 
+int open_spi(const char *port)
+{
+	int fd;
+	int res;
+	uint32_t mode = SPI_MODE_0;
+	uint8_t bits = 8;
+
+	fd = open(port, O_RDWR);
+	if (fd == -1) {
+		perror("Unable to open SPI controller");
+		return -1;
+	}
+
+	res = ioctl(fd, SPI_IOC_WR_MODE32, &mode);
+	if (res == -1) {
+		perror("Cannot set SPI mode");
+		close(fd);
+		return -1;
+	}
+
+	res = ioctl(fd, SPI_IOC_WR_BITS_PER_WORD, &bits);
+	if (res == -1) {
+		perror("Cannot set SPI bits per word");
+		close(fd);
+		return -1;
+	}
+
+	return fd;
+}
 
 static void discard_input(int fd)
 {
 	uint8_t buffer[64];
 	int res, i;
 
-	/* Skip in i2c mode */
-	if (i2c_adapter != INVALID_I2C_ADAPTER)
+	/* Skip in i2c and spi modes */
+	if (mode != MODE_SERIAL)
 		return;
 
 	/* eat trailing garbage */
@@ -237,14 +277,19 @@ int wait_for_ack(int fd)
 			return -EIO;
 		}
 		if (res == 1) {
-			if (resp == RESP_ACK)
+			if (resp == RESP_ACK) {
+				uint8_t ack = RESP_ACK;
+				if (mode == MODE_SPI) /* Ack the ACK */
+					write(fd, &ack, 1);
 				return 0;
-			else if (resp == RESP_NACK) {
+			} else if (resp == RESP_NACK) {
 				fprintf(stderr, "NACK\n");
 				discard_input(fd);
 				return -EINVAL;
 			} else {
-				fprintf(stderr, "Receive junk: %02x\n", resp);
+				if (mode == MODE_SERIAL)
+					fprintf(stderr, "Receive junk: %02x\n",
+						resp);
 			}
 		}
 	}
@@ -258,10 +303,12 @@ int send_command(int fd, uint8_t cmd, payload_t *loads, int cnt,
 	int res, i, c;
 	payload_t *p;
 	int readcnt = 0;
-	uint8_t cmd_frame[] = { cmd, 0xff ^ cmd }; /* XOR checksum */
+	uint8_t cmd_frame[] = { SOF, cmd, 0xff ^ cmd }; /* XOR checksum */
+	/* only the SPI mode needs the Start Of Frame byte */
+	int cmd_off = mode == MODE_SPI ? 0 : 1;
 
 	/* Send the command index */
-	res = write(fd, cmd_frame, 2);
+	res = write(fd, cmd_frame + cmd_off, sizeof(cmd_frame) - cmd_off);
 	if (res <= 0) {
 		perror("Failed to write command frame");
 		return -1;
@@ -315,6 +362,8 @@ int send_command(int fd, uint8_t cmd, payload_t *loads, int cnt,
 
 	/* Read the answer payload */
 	if (resp) {
+		if (mode == MODE_SPI) /* ignore dummy byte */
+			read(fd, resp, 1);
 		while ((resp_size > 0) && (res = read(fd, resp, resp_size))) {
 			if (res < 0) {
 				perror("Failed to read payload");
@@ -368,10 +417,10 @@ struct stm32_def *command_get_id(int fd)
 int init_monitor(int fd)
 {
 	int res;
-	uint8_t init = CMD_INIT;
+	uint8_t init = mode == MODE_SPI ? SOF : CMD_INIT;
 
 	/* Skip in i2c mode */
-	if (i2c_adapter != INVALID_I2C_ADAPTER)
+	if (mode == MODE_I2C)
 		return 0;
 
 	printf("Waiting for the monitor startup ...");
@@ -435,7 +484,7 @@ int command_get_commands(int fd, struct stm32_def *chip)
 			printf("%02x ", cmds[i]);
 		}
 
-		if (i2c_adapter != INVALID_I2C_ADAPTER)
+		if (mode == MODE_I2C)
 			erase = command_erase_i2c;
 		printf("\n");
 
@@ -779,6 +828,7 @@ static const struct option longopts[] = {
 	{"unprotect", 0, 0, 'u'},
 	{"baudrate", 1, 0, 'b'},
 	{"adapter", 1, 0, 'a'},
+	{"spi", 1, 0, 's'},
 	{NULL, 0, 0, 0}
 };
 
@@ -799,6 +849,7 @@ void display_usage(char *program)
 	fprintf(stderr, "--e[rase] : erase all the flash content\n");
 	fprintf(stderr, "--r[ead] <file> : read the flash content and "
 			"write it into <file>\n");
+	fprintf(stderr, "--s[pi] </dev/spi> : use SPI adapter on </dev>.\n");
 	fprintf(stderr, "--w[rite] <file|-> : read <file> or\n\t"
 			"standard input and write it to flash\n");
 	fprintf(stderr, "--g[o] : jump to execute flash entrypoint\n");
@@ -833,17 +884,19 @@ int parse_parameters(int argc, char **argv)
 	int opt, idx;
 	int flags = 0;
 
-	while ((opt = getopt_long(argc, argv, "a:b:d:eghr:w:uU?",
+	while ((opt = getopt_long(argc, argv, "a:b:d:eghr:s:w:uU?",
 				  longopts, &idx)) != -1) {
 		switch (opt) {
 		case 'a':
 			i2c_adapter = atoi(optarg);
+			mode = MODE_I2C;
 			break;
 		case 'b':
 			baudrate = parse_baudrate(optarg);
 			break;
 		case 'd':
 			serial_port = optarg;
+			mode = MODE_SERIAL;
 			break;
 		case 'e':
 			flags |= FLAG_ERASE;
@@ -857,6 +910,10 @@ int parse_parameters(int argc, char **argv)
 			break;
 		case 'r':
 			input_filename = optarg;
+			break;
+		case 's':
+			spi_adapter = optarg;
+			mode = MODE_SPI;
 			break;
 		case 'w':
 			output_filename = optarg;
@@ -882,11 +939,17 @@ int main(int argc, char **argv)
 	/* Parse command line options */
 	flags = parse_parameters(argc, argv);
 
-	if (i2c_adapter == INVALID_I2C_ADAPTER) {
+	switch (mode) {
+	case MODE_SPI:
+		ser = open_spi(spi_adapter);
+		break;
+	case MODE_I2C:
+		ser = open_i2c(i2c_adapter);
+		break;
+	case MODE_SERIAL:
+	default:
 		/* Open the serial port tty */
 		ser = open_serial(serial_port);
-	} else {
-		ser = open_i2c(i2c_adapter);
 	}
 	if (ser < 0)
 		return 1;
