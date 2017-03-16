@@ -22,6 +22,30 @@
       "revId": "f3f07f8e555b9b9bdccb079aa517d7a83ee491ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e974ee6b_1242f8c3",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-16T10:54:11Z",
+      "side": 1,
+      "message": "it\u0027s board specific, thus mostly done in branches.",
+      "parentUuid": "f8f53f60_1df04c30",
+      "range": {
+        "startLine": 80,
+        "startChar": 7,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "f3f07f8e555b9b9bdccb079aa517d7a83ee491ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
