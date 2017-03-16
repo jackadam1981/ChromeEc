@@ -76,10 +76,10 @@ static uint32_t block_index;
 /*
  * Verify that the contents of the USB rx queue is a valid transfer start
  * message from host, and if so - save its contents in the passed in
- * update_frame_header structure.
+ * update_pdu_header structure.
  */
 static int valid_transfer_start(struct consumer const *consumer, size_t count,
-				struct update_frame_header *pupfr)
+				struct update_pdu_header *pupdu)
 {
 	int i;
 
@@ -90,26 +90,26 @@ static int valid_transfer_start(struct consumer const *consumer, size_t count,
 	 */
 	i = count;
 	while (i > 0) {
-		QUEUE_REMOVE_UNITS(consumer->queue, pupfr,
-				   MIN(i, sizeof(*pupfr)));
-		i -= sizeof(*pupfr);
+		QUEUE_REMOVE_UNITS(consumer->queue, pupdu,
+				   MIN(i, sizeof(*pupdu)));
+		i -= sizeof(*pupdu);
 	}
 
-	if (count != sizeof(struct update_frame_header)) {
+	if (count != sizeof(struct update_pdu_header)) {
 		CPRINTS("FW update: wrong first block, size %d", count);
 		return 0;
 	}
 
-	/* In the first block the payload (pupfr->cmd) must be all zeros. */
-	for (i = 0; i < sizeof(pupfr->cmd); i++)
-		if (((uint8_t *)&pupfr->cmd)[i])
+	/* In the first block the payload (pupdu->cmd) must be all zeros. */
+	for (i = 0; i < sizeof(pupdu->cmd); i++)
+		if (((uint8_t *)&pupdu->cmd)[i])
 			return 0;
 	return 1;
 }
 static int try_vendor_command(struct consumer const *consumer, size_t count)
 {
-	struct update_frame_header ufh;
-	struct update_frame_header *cmd_buffer;
+	struct update_pdu_header ufh;
+	struct update_pdu_header *cmd_buffer;
 	int rv = 0;
 
 	if (count < sizeof(ufh))
@@ -141,7 +141,7 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 
 	/* Looks like this is a vendor command, let's verify it. */
 	if (usb_pdu_valid(&cmd_buffer->cmd,
-			  count - offsetof(struct update_frame_header, cmd))) {
+			  count - offsetof(struct update_pdu_header, cmd))) {
 		uint16_t *subcommand;
 		size_t response_size;
 
@@ -155,7 +155,7 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 		usb_extension_route_command(be16toh(*subcommand),
 					    subcommand + 1,
 					    count -
-					    sizeof(struct update_frame_header),
+					    sizeof(struct update_pdu_header),
 					    &response_size);
 
 		QUEUE_ADD_UNITS(&upgrade_to_usb, subcommand + 1, response_size);
@@ -180,7 +180,7 @@ static uint8_t  data_was_transferred;
 /* Called to deal with data from the host */
 static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 {
-	struct update_frame_header upfr;
+	struct update_pdu_header updu;
 	size_t resp_size;
 	uint8_t resp_value;
 	uint64_t delta_time;
@@ -212,7 +212,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 		 * enough room for the response in the buffer.
 		 */
 		union {
-			struct update_frame_header upfr;
+			struct update_pdu_header updu;
 			struct {
 				uint32_t unused;
 				struct first_response_pdu startup_resp;
@@ -223,21 +223,21 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 		if (try_vendor_command(consumer, count))
 			return;
 
-		if (!valid_transfer_start(consumer, count, &u.upfr)) {
+		if (!valid_transfer_start(consumer, count, &u.updu)) {
 			/*
 			 * Something is wrong, this payload is not a valid
 			 * update start PDU. Let'w indicate this by returning
 			 * a single byte error code.
 			 */
-			resp_value = UPGRADE_GEN_ERROR;
+			resp_value = UPDATE_GEN_ERROR;
 			CPRINTS("%s:%d", __FILE__, __LINE__);
 			QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value, 1);
 			return;
 		}
 
 		CPRINTS("FW update: starting...");
-		fw_upgrade_command_handler(&u.upfr.cmd, count -
-					   offsetof(struct update_frame_header,
+		fw_update_command_handler(&u.updu.cmd, count -
+					   offsetof(struct update_pdu_header,
 						    cmd),
 					   &resp_size);
 
@@ -262,11 +262,11 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 			QUEUE_REMOVE_UNITS(consumer->queue, &command,
 					   sizeof(command));
 			command = be32toh(command);
-			if (command == UPGRADE_DONE) {
+			if (command == UPDATE_DONE) {
 				CPRINTS("FW update: done");
 
 				if (data_was_transferred) {
-					fw_upgrade_complete();
+					fw_update_complete();
 					data_was_transferred = 0;
 				}
 
@@ -280,31 +280,31 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 
 		/*
 		 * At this point we expect a block start message. It is
-		 * sizeof(upfr) bytes in size, but is not the transfer start
+		 * sizeof(updu) bytes in size, but is not the transfer start
 		 * message, which also is of that size AND has the command
 		 * field of all zeros.
 		 */
-		if (valid_transfer_start(consumer, count, &upfr) ||
-		    (count != sizeof(upfr))) {
+		if (valid_transfer_start(consumer, count, &updu) ||
+		    (count != sizeof(updu))) {
 			/*
 			 * Instead of a block start message we received either
 			 * a transfer start message or a chunk. We must have
 			 * gotten out of sync with the host.
 			 */
-			resp_value = UPGRADE_GEN_ERROR;
+			resp_value = UPDATE_GEN_ERROR;
 			CPRINTS("%s:%d", __FILE__, __LINE__);
 			QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value, 1);
 			return;
 		}
 
 		/* Let's allocate a large enough buffer. */
-		block_size = be32toh(upfr.block_size) -
-			offsetof(struct update_frame_header, cmd);
+		block_size = be32toh(updu.block_size) -
+			offsetof(struct update_pdu_header, cmd);
 		if (shared_mem_acquire(block_size, (char **)&block_buffer)
 		    != EC_SUCCESS) {
 			CPRINTS("FW update: error: failed to alloc %d bytes.",
 				block_size);
-			resp_value = UPGRADE_MALLOC_ERROR;
+			resp_value = UPDATE_MALLOC_ERROR;
 			QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value, 1);
 			return;
 		}
@@ -313,9 +313,9 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 		 * Copy the rest of the message into the block buffer to pass
 		 * to the upgrader.
 		 */
-		block_index = sizeof(upfr) -
-			offsetof(struct update_frame_header, cmd);
-		memcpy(block_buffer, &upfr.cmd, block_index);
+		block_index = sizeof(updu) -
+			offsetof(struct update_pdu_header, cmd);
+		memcpy(block_buffer, &updu.cmd, block_index);
 		block_size -= block_index;
 		rx_state_ = rx_inside_block;
 		return;
@@ -327,7 +327,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 	block_size -= count;
 
 	if (block_size) {
-		if (count == sizeof(upfr)) {
+		if (count == sizeof(updu)) {
 			/*
 			 * A block header size instead of chunk size message
 			 * has been received. There must have been some packet
@@ -335,14 +335,14 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 			 *
 			 * Let's copy its contents into the header structure.
 			 */
-			memcpy(&upfr, block_buffer + block_index - count,
+			memcpy(&updu, block_buffer + block_index - count,
 			       count);
 
 
 			/* And re-allocate a large enough buffer. */
 			shared_mem_release(block_buffer);
-			block_size = be32toh(upfr.block_size) -
-				offsetof(struct update_frame_header, cmd);
+			block_size = be32toh(updu.block_size) -
+				offsetof(struct update_pdu_header, cmd);
 			if (shared_mem_acquire(block_size,
 					       (char **)&block_buffer)
 			    != EC_SUCCESS) {
@@ -356,9 +356,9 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 			 * Copy the rest of the message into the block buffer
 			 * to pass to the upgrader.
 			 */
-			block_index = sizeof(upfr) -
-				offsetof(struct update_frame_header, cmd);
-			memcpy(block_buffer, &upfr.cmd, block_index);
+			block_index = sizeof(updu) -
+				offsetof(struct update_pdu_header, cmd);
+			memcpy(block_buffer, &updu.cmd, block_index);
 			block_size -= block_index;
 		}
 		return;	/* More to come. */
@@ -368,7 +368,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 	 * Ok, the entire block has been received and reassembled, pass it to
 	 * the updater for verification and programming.
 	 */
-	fw_upgrade_command_handler(block_buffer, block_index, &resp_size);
+	fw_update_command_handler(block_buffer, block_index, &resp_size);
 
 	/*
 	 * There was at least an attempt to program the flash, set the

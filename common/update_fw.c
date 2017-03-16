@@ -15,32 +15,6 @@
 
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 
-/* Various update extension command return values. */
-enum return_value {
-	UPDATE_SUCCESS = 0,
-	UPDATE_BAD_ADDR = 1,
-	UPDATE_ERASE_FAILURE = 2,
-	UPDATE_DATA_ERROR = 3,
-	UPDATE_WRITE_FAILURE = 4,
-	UPDATE_VERIFY_ERROR = 5,
-	UPDATE_GEN_ERROR = 6,
-};
-
-/*
- * The payload of the update command. (Integer values in network byte order).
- *
- * block digest: the first four bytes of the sha1 digest of the rest of the
- *               structure.
- * block_base:  address where this block needs to be written to.
- * block_body:  variable size data to written at address 'block_base'.
- */
-struct update_command {
-	uint32_t  block_digest;
-	uint32_t  block_base;
-	uint8_t   block_body[0];
-} __packed;
-
-
 const struct section_descriptor *valid_section;
 
 /* Pick the section where updates can go to based on current code address. */

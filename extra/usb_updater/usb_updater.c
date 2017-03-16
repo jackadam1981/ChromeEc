@@ -560,13 +560,8 @@ static void usb_findit(uint16_t vid, uint16_t pid, struct usb_endpoint *uep)
 	printf("READY\n-------\n");
 }
 
-struct update_pdu {
-	uint32_t block_size; /* Total block size, include this field's size. */
-	struct upgrade_command cmd;
-	/* The actual payload goes here. */
-};
-
-static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
+static int transfer_block(struct usb_endpoint *uep,
+			  struct update_pdu_header *updu,
 			  uint8_t *transfer_data_ptr, size_t payload_size)
 {
 	size_t transfer_size;
@@ -639,12 +634,12 @@ static void transfer_section(struct transfer_descriptor *td,
 		SHA_CTX ctx;
 		uint8_t digest[SHA_DIGEST_LENGTH];
 		int max_retries;
-		struct update_pdu updu;
+		struct update_pdu_header updu;
 
 		/* prepare the header to prepend to the block. */
 		payload_size = MIN(data_len, SIGNED_TRANSFER_SIZE);
 		updu.block_size = htobe32(payload_size +
-					  sizeof(struct update_pdu));
+					  sizeof(struct update_pdu_header));
 
 		if (protocol_version <= 2)
 			updu.cmd.block_base = htobe32(section_addr +
@@ -887,7 +882,7 @@ static void setup_connection(struct transfer_descriptor *td)
 	printf("start\n");
 
 	if (td->ep_type == usb_xfer) {
-		struct update_pdu updu;
+		struct update_pdu_header updu;
 
 		memset(&updu, 0, sizeof(updu));
 		updu.block_size = htobe32(sizeof(updu));
@@ -999,25 +994,25 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 			    void *cmd_body, size_t body_size,
 			    void *resp, size_t *resp_size)
 {
-	struct update_frame_header *ufh;
+	struct update_pdu_header *updu;
 	uint16_t *frame_ptr;
 	size_t usb_msg_size;
 	SHA_CTX ctx;
 	uint8_t digest[SHA_DIGEST_LENGTH];
 
-	usb_msg_size = sizeof(struct update_frame_header) +
+	usb_msg_size = sizeof(struct update_pdu_header) +
 		sizeof(subcommand) + body_size;
 
-	ufh = malloc(usb_msg_size);
-	if (!ufh) {
+	updu = malloc(usb_msg_size);
+	if (!updu) {
 		printf("%s: failed to allocate %zd bytes\n",
 		       __func__, usb_msg_size);
 		return -1;
 	}
 
-	ufh->block_size = htobe32(usb_msg_size);
-	ufh->cmd.block_base = htobe32(CONFIG_EXTENSION_COMMAND);
-	frame_ptr = (uint16_t *)(ufh + 1);
+	updu->block_size = htobe32(usb_msg_size);
+	updu->cmd.block_base = htobe32(CONFIG_EXTENSION_COMMAND);
+	frame_ptr = (uint16_t *)(updu + 1);
 	*frame_ptr = htobe16(subcommand);
 
 	if (body_size)
@@ -1025,14 +1020,14 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 
 	/* Calculate the digest. */
 	SHA1_Init(&ctx);
-	SHA1_Update(&ctx, &ufh->cmd.block_base,
+	SHA1_Update(&ctx, &updu->cmd.block_base,
 		    usb_msg_size -
-		    offsetof(struct update_frame_header, cmd.block_base));
+		    offsetof(struct update_pdu_header, cmd.block_base));
 	SHA1_Final(digest, &ctx);
-	memcpy(&ufh->cmd.block_digest, digest, sizeof(ufh->cmd.block_digest));
-	xfer(uep, ufh, usb_msg_size, resp, resp_size ? *resp_size : 0);
+	memcpy(&updu->cmd.block_digest, digest, sizeof(updu->cmd.block_digest));
+	xfer(uep, updu, usb_msg_size, resp, resp_size ? *resp_size : 0);
 
-	free(ufh);
+	free(updu);
 	return 0;
 }
 
@@ -1047,7 +1042,7 @@ static void send_done(struct usb_endpoint *uep)
 	uint32_t out;
 
 	/* Send stop request, ignoring reply. */
-	out = htobe32(UPGRADE_DONE);
+	out = htobe32(UPDATE_DONE);
 	xfer(uep, &out, sizeof(out), &out,
 	     protocol_version < 3 ? sizeof(out) : 1);
 }

@@ -6,4 +6,4 @@
 #include "extension.h"
 #include "upgrade_fw.h"
 
-DECLARE_EXTENSION_COMMAND(EXTENSION_FW_UPGRADE, fw_upgrade_command_handler);
+DECLARE_EXTENSION_COMMAND(EXTENSION_FW_UPGRADE, fw_update_command_handler);
