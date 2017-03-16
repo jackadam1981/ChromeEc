@@ -16,6 +16,24 @@
       "revId": "8c31a9efd72a3c13fb6fde6b07d5698d507c5a75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27c17753_f3d54faf",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-16T18:05:02Z",
+      "side": 1,
+      "message": "okay sure, also I will remove CONFIG_CHARGER_BD9995X_CHGEN",
+      "parentUuid": "104bdbae_2eea621d",
+      "revId": "8c31a9efd72a3c13fb6fde6b07d5698d507c5a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
