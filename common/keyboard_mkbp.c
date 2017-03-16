@@ -258,6 +258,32 @@ void keyboard_update_button(enum keyboard_button_type button, int is_pressed)
 		      (const uint8_t *)&mkbp_button_state);
 }
 
+static void mkbp_send_sysrq(void)
+{
+	/* Press and release sysrq "button". */
+	mkbp_button_state |= (1 << EC_MKBP_SYSRQ_X);
+
+	/* Add the new state to the FIFO. */
+	mkbp_fifo_add(EC_MKBP_EVENT_BUTTON,
+		      (const uint8_t *)&mkbp_button_state);
+
+	mkbp_button_state &= ~(1 << EC_MKBP_SYSRQ_X);
+
+	/* Add the new state to the FIFO. */
+	mkbp_fifo_add(EC_MKBP_EVENT_BUTTON,
+		      (const uint8_t *)&mkbp_button_state);
+}
+
+static int console_sysrq_x(int argc, char **argv)
+{
+	mkbp_send_sysrq();
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sysrq_x, console_sysrq_x,
+			NULL,
+			"Simulate sysrq x press");
+
 #ifdef CONFIG_POWER_BUTTON
 /**
  * Handle power button changing state.
