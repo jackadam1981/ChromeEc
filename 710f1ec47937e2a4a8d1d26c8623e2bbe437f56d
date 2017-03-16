@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dcc0fd4_39100399",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-16T12:56:59Z",
+      "side": 1,
+      "message": "You likely want to put both S-o-B in the order of contribution, e.g.:\nSigned-off-by: Vincent Palatin \u003cvpalatin@chromium.org\u003e\nSigned-off-by: Mulin Chao \u003cmlchao@nuvoton.com\u003e",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 54
+      },
+      "revId": "710f1ec47937e2a4a8d1d26c8623e2bbe437f56d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
