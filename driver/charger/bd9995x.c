@@ -25,6 +25,8 @@
 
 #define BD9995X_CHARGE_PORT_COUNT 2
 
+#define BD9995X_VSYS_PRECHARGE_OFFSET_MV 200
+
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
@@ -189,7 +191,8 @@ static int bd9995x_charger_enable(int enable)
 		 * Set VSYSREG_SET > VBAT so that the charger is in Pre-Charge
 		 * state when not charging or discharging.
 		 */
-		rv = bd9995x_set_vsysreg(bi->voltage_max + 200);
+		rv = bd9995x_set_vsysreg(bi->voltage_max +
+					 BD9995X_VSYS_PRECHARGE_OFFSET_MV);
 
 		/*
 		 * Allow charger in pre-charge state for 50ms before disabling
@@ -785,6 +788,10 @@ static void bd9995x_init(void)
 	ch_raw_write16(BD9995X_CMD_CHGOP_SET1, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
+	/* Set VSYSREG_SET > VBAT so that the charger is in Pre-Charge state */
+	bd9995x_set_vsysreg(battery_get_info()->voltage_max +
+			    BD9995X_VSYS_PRECHARGE_OFFSET_MV);
+
 	/* Enable BC1.2 USB charging and DC/DC converter @ 1200KHz */
 	if (ch_raw_read16(BD9995X_CMD_CHGOP_SET2, &reg,
 			  BD9995X_EXTENDED_COMMAND))
@@ -796,6 +803,17 @@ static void bd9995x_init(void)
 	reg |= BD9995X_CMD_CHGOP_SET2_CHG_EN;
 #endif
 	ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
+		       BD9995X_EXTENDED_COMMAND);
+
+	/*
+	 * Disable the input current limit for avoiding VSYS drop when VBAT
+	 * is the dead-battery, VBAT is < VSYSREG_SET.
+	 */
+	if (ch_raw_read16(BD9995X_CMD_VIN_CTRL_SET, &reg,
+			  BD9995X_EXTENDED_COMMAND))
+		return;
+	reg |= BD9995X_CMD_VIN_CTRL_SET_VSYS_PRIORITY;
+	ch_raw_write16(BD9995X_CMD_VIN_CTRL_SET, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
 	/* Define battery charging profile */
