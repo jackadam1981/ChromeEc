@@ -223,4 +223,21 @@ static int console_command_button(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(button, console_command_button,
 			"vup|vdown msec",
 			"Simulate button press");
+
+#ifdef CONFIG_BUTTON_DEBUG_MODE
+static int console_sysrq(int argc, char **argv)
+{
+	char key = 'x';
+
+	if (argc > 1 && argv[1])
+		key = argv[1][0];
+
+	send_sysrq(key);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sysrq, console_sysrq,
+			"[key]",
+			"Simulate sysrq press (default: x)");
+#endif
 #endif

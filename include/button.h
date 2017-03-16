@@ -54,4 +54,12 @@ void button_init(void);
  */
 void button_interrupt(enum gpio_signal signal);
 
+/*
+ * Sends a sysrq to the host, used by button-based debug mode.
+ * Only implemented on top of MKBP protocol.
+ *
+ * @param key		Key to be sent (e.g. 'x')
+ */
+void send_sysrq(uint8_t key);
+
 #endif  /* __CROS_EC_BUTTON_H */

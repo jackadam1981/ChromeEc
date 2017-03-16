@@ -369,6 +369,9 @@
  */
 #undef CONFIG_BUTTON_COUNT
 
+/* Support for debug mode using volume buttons */
+#undef CONFIG_BUTTON_DEBUG_MODE
+
 /* Support for entering recovery mode using volume buttons. */
 #undef CONFIG_BUTTON_RECOVERY
 
