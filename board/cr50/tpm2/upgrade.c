@@ -147,4 +147,4 @@ static enum vendor_cmd_rc turn_update_on(enum vendor_cmd_cc code,
 DECLARE_VENDOR_COMMAND(VENDOR_CC_TURN_UPDATE_ON, turn_update_on);
 
 /* This command's implementation is shared with USB updater. */
-DECLARE_EXTENSION_COMMAND(EXTENSION_FW_UPGRADE, fw_upgrade_command_handler);
+DECLARE_EXTENSION_COMMAND(EXTENSION_FW_UPGRADE, fw_update_command_handler);
