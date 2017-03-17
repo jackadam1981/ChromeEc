@@ -136,7 +136,7 @@ enum usb_strings {
 	USB_STR_HID_KEYBOARD_NAME,
 	USB_STR_AP_NAME,
 	USB_STR_EC_NAME,
-	USB_STR_UPGRADE_NAME,
+	USB_STR_UPDATE_NAME,
 	USB_STR_SPI_NAME,
 	USB_STR_SERIALNO,
 	USB_STR_I2C_NAME,
@@ -196,7 +196,7 @@ int board_tpm_uses_spi(void);
 #define USB_IFACE_CONSOLE 0
 #define USB_IFACE_AP      1
 #define USB_IFACE_EC      2
-#define USB_IFACE_UPGRADE 3
+#define USB_IFACE_UPDATE  3
 #define USB_IFACE_SPI     4
 #define USB_IFACE_I2C     5
 #define USB_IFACE_COUNT   6
@@ -206,7 +206,7 @@ int board_tpm_uses_spi(void);
 #define USB_EP_CONSOLE   1
 #define USB_EP_AP        2
 #define USB_EP_EC        3
-#define USB_EP_UPGRADE   4
+#define USB_EP_UPDATE    4
 #define USB_EP_SPI       5
 #define USB_EP_I2C       6
 #define USB_EP_COUNT     7

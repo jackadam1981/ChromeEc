@@ -37,27 +37,27 @@
  * the reset command, and the device reboots itself.
  */
 
-struct consumer const upgrade_consumer;
-struct usb_stream_config const usb_upgrade;
+struct consumer const update_consumer;
+struct usb_stream_config const usb_update;
 
-static struct queue const upgrade_to_usb = QUEUE_DIRECT(64, uint8_t,
+static struct queue const update_to_usb = QUEUE_DIRECT(64, uint8_t,
 						     null_producer,
-						     usb_upgrade.consumer);
-static struct queue const usb_to_upgrade = QUEUE_DIRECT(64, uint8_t,
-						     usb_upgrade.producer,
-						     upgrade_consumer);
+						     usb_update.consumer);
+static struct queue const usb_to_update = QUEUE_DIRECT(64, uint8_t,
+						     usb_update.producer,
+						     update_consumer);
 
-USB_STREAM_CONFIG_FULL(usb_upgrade,
-		       USB_IFACE_UPGRADE,
+USB_STREAM_CONFIG_FULL(usb_update,
+		       USB_IFACE_UPDATE,
 		       USB_CLASS_VENDOR_SPEC,
 		       USB_SUBCLASS_GOOGLE_UPDATE,
 		       USB_PROTOCOL_GOOGLE_UPDATE,
-		       USB_STR_UPGRADE_NAME,
-		       USB_EP_UPGRADE,
+		       USB_STR_UPDATE_NAME,
+		       USB_EP_UPDATE,
 		       USB_MAX_PACKET_SIZE,
 		       USB_MAX_PACKET_SIZE,
-		       usb_to_upgrade,
-		       upgrade_to_usb)
+		       usb_to_update,
+		       update_to_usb)
 
 
 /* The receiver can be in one of the states below. */
@@ -116,7 +116,7 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 		return 0;	/* Too short to be a valid vendor command. */
 
 	/*
-	 * Let's copy off the queue the upgrade frame header, to see if this
+	 * Let's copy off the queue the update frame header, to see if this
 	 * is a channeled vendor command.
 	 */
 	queue_peek_units(consumer->queue, &ufh, 0, sizeof(ufh));
@@ -158,7 +158,7 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 					    sizeof(struct update_frame_header),
 					    &response_size);
 
-		QUEUE_ADD_UNITS(&upgrade_to_usb, subcommand + 1, response_size);
+		QUEUE_ADD_UNITS(&update_to_usb, subcommand + 1, response_size);
 	}
 	shared_mem_release(cmd_buffer);
 
@@ -178,7 +178,7 @@ static uint64_t prev_activity_timestamp;
 static uint8_t  data_was_transferred;
 
 /* Called to deal with data from the host */
-static void upgrade_out_handler(struct consumer const *consumer, size_t count)
+static void update_out_handler(struct consumer const *consumer, size_t count)
 {
 	struct update_frame_header upfr;
 	size_t resp_size;
@@ -229,14 +229,14 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 			 * update start PDU. Let'w indicate this by returning
 			 * a single byte error code.
 			 */
-			resp_value = UPGRADE_GEN_ERROR;
+			resp_value = UPDATE_GEN_ERROR;
 			CPRINTS("%s:%d", __FILE__, __LINE__);
-			QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value, 1);
+			QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
 			return;
 		}
 
 		CPRINTS("FW update: starting...");
-		fw_upgrade_command_handler(&u.upfr.cmd, count -
+		fw_update_command_handler(&u.upfr.cmd, count -
 					   offsetof(struct update_frame_header,
 						    cmd),
 					   &resp_size);
@@ -246,8 +246,8 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 			data_was_transferred = 0;   /* No data received yet. */
 		}
 
-		/* Let the host know what upgrader had to say. */
-		QUEUE_ADD_UNITS(&upgrade_to_usb, &u.startup_resp, resp_size);
+		/* Let the host know what updater had to say. */
+		QUEUE_ADD_UNITS(&update_to_usb, &u.startup_resp, resp_size);
 		return;
 	}
 
@@ -262,16 +262,16 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 			QUEUE_REMOVE_UNITS(consumer->queue, &command,
 					   sizeof(command));
 			command = be32toh(command);
-			if (command == UPGRADE_DONE) {
+			if (command == UPDATE_DONE) {
 				CPRINTS("FW update: done");
 
 				if (data_was_transferred) {
-					fw_upgrade_complete();
+					fw_update_complete();
 					data_was_transferred = 0;
 				}
 
 				resp_value = 0;
-				QUEUE_ADD_UNITS(&upgrade_to_usb,
+				QUEUE_ADD_UNITS(&update_to_usb,
 						&resp_value, 1);
 				rx_state_ = rx_idle;
 				return;
@@ -291,9 +291,9 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 			 * a transfer start message or a chunk. We must have
 			 * gotten out of sync with the host.
 			 */
-			resp_value = UPGRADE_GEN_ERROR;
+			resp_value = UPDATE_GEN_ERROR;
 			CPRINTS("%s:%d", __FILE__, __LINE__);
-			QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value, 1);
+			QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
 			return;
 		}
 
@@ -305,14 +305,14 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 		    != EC_SUCCESS) {
 			CPRINTS("FW update: error: failed to alloc %d bytes.",
 				block_size);
-			resp_value = UPGRADE_MALLOC_ERROR;
-			QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value, 1);
+			resp_value = UPDATE_MALLOC_ERROR;
+			QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
 			return;
 		}
 
 		/*
 		 * Copy the rest of the message into the block buffer to pass
-		 * to the upgrader.
+		 * to the updater.
 		 */
 		block_index = sizeof(upfr) -
 			offsetof(struct update_frame_header, cmd);
@@ -355,7 +355,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 
 			/*
 			 * Copy the rest of the message into the block buffer
-			 * to pass to the upgrader.
+			 * to pass to the updater.
 			 */
 			block_index = sizeof(upfr) -
 				offsetof(struct update_frame_header, cmd);
@@ -369,7 +369,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 	 * Ok, the entire block has been received and reassembled, pass it to
 	 * the updater for verification and programming.
 	 */
-	fw_upgrade_command_handler(block_buffer, block_index, &resp_size);
+	fw_update_command_handler(block_buffer, block_index, &resp_size);
 
 	/*
 	 * There was at least an attempt to program the flash, set the
@@ -377,20 +377,20 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 	 */
 	data_was_transferred = 1;
 	resp_value = block_buffer[0];
-	QUEUE_ADD_UNITS(&upgrade_to_usb, &resp_value, sizeof(resp_value));
+	QUEUE_ADD_UNITS(&update_to_usb, &resp_value, sizeof(resp_value));
 	rx_state_ = rx_outside_block;
 	shared_mem_release(block_buffer);
 	block_buffer = NULL;
 }
 
-static void upgrade_flush(struct consumer const *consumer)
+static void update_flush(struct consumer const *consumer)
 {
 }
 
-struct consumer const upgrade_consumer = {
-	.queue = &usb_to_upgrade,
+struct consumer const update_consumer = {
+	.queue = &usb_to_update,
 	.ops   = &((struct consumer_ops const) {
-		.written = upgrade_out_handler,
-		.flush   = upgrade_flush,
+		.written = update_out_handler,
+		.flush   = update_flush,
 	}),
 };
