@@ -194,7 +194,7 @@ static int new_is_older(const struct SignedHeader *new,
  * otherwise return True.
  */
 static int contents_allowed(uint32_t block_offset,
-			    size_t body_size, void *upgrade_data)
+			    size_t body_size, void *update_data)
 {
 	/* Pointer to RO or RW header in flash, to compare against. */
 	const struct SignedHeader *header;
@@ -243,8 +243,8 @@ static int contents_allowed(uint32_t block_offset,
 		return 0;
 	}
 
-	/* upgrade_data is the new header. */
-	if (new_is_older(upgrade_data, header)) {
+	/* update_data is the new header. */
+	if (new_is_older(update_data, header)) {
 		CPRINTF("%s: rejecting an older header.\n", __func__);
 		return 0;
 	}
@@ -287,7 +287,7 @@ static void new_chunk_written(uint32_t block_offset)
 }
 
 static int contents_allowed(uint32_t block_offset,
-			    size_t body_size, void *upgrade_data)
+			    size_t body_size, void *update_data)
 {
 	return 1;
 }
@@ -298,7 +298,7 @@ void fw_update_command_handler(void *body,
 				size_t *response_size)
 {
 	struct update_command *cmd_body = body;
-	void *upgrade_data;
+	void *update_data;
 	uint8_t *error_code = body;  /* Cache the address for code clarity. */
 	size_t body_size;
 	uint32_t block_offset;
@@ -328,7 +328,7 @@ void fw_update_command_handler(void *body,
 		rpdu->protocol_version = htobe32(UPDATE_PROTOCOL_VERSION);
 
 		/*
-		 * Determine the valid upgrade sections.
+		 * Determine the valid update sections.
 		 */
 		set_valid_sections();
 
@@ -376,8 +376,8 @@ void fw_update_command_handler(void *body,
 		return;
 	}
 
-	upgrade_data = cmd_body + 1;
-	if (!contents_allowed(block_offset, body_size, upgrade_data)) {
+	update_data = cmd_body + 1;
+	if (!contents_allowed(block_offset, body_size, update_data)) {
 		*error_code = UPDATE_ROLLBACK_ERROR;
 		return;
 	}
@@ -394,21 +394,21 @@ void fw_update_command_handler(void *body,
 
 	CPRINTF("%s: programming at address 0x%x\n", __func__,
 		block_offset + CONFIG_PROGRAM_MEMORY_BASE);
-	if (flash_physical_write(block_offset, body_size, upgrade_data)
+	if (flash_physical_write(block_offset, body_size, update_data)
 	    != EC_SUCCESS) {
 		*error_code = UPDATE_WRITE_FAILURE;
-		CPRINTF("%s:%d upgrade write error\n",	__func__, __LINE__);
+		CPRINTF("%s:%d update write error\n", __func__, __LINE__);
 		return;
 	}
 
 	new_chunk_written(block_offset);
 
 	/* Verify that data was written properly. */
-	if (memcmp(upgrade_data, (void *)
+	if (memcmp(update_data, (void *)
 		   (block_offset + CONFIG_PROGRAM_MEMORY_BASE),
 		   body_size)) {
 		*error_code = UPDATE_VERIFY_ERROR;
-		CPRINTF("%s:%d upgrade verification error\n",
+		CPRINTF("%s:%d update verification error\n",
 			__func__, __LINE__);
 		return;
 	}
