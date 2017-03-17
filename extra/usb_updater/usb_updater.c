@@ -990,7 +990,7 @@ static void send_done(struct usb_endpoint *uep)
 	uint32_t out;
 
 	/* Send stop request, ignoring reply. */
-	out = htobe32(UPGRADE_DONE);
+	out = htobe32(UPDATE_DONE);
 	xfer(uep, &out, sizeof(out), &out, 1);
 }
 
