@@ -96,11 +96,11 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 			if (flash_physical_erase(base, size) != EC_SUCCESS) {
 				CPRINTF("%s:%d erase failure of 0x%x..+0x%x\n",
 					__func__, __LINE__, base, size);
-				return UPGRADE_ERASE_FAILURE;
+				return UPDATE_ERASE_FAILURE;
 			}
 		}
 
-		return UPGRADE_SUCCESS;
+		return UPDATE_SUCCESS;
 	}
 
 	/* Is this an RO chunk? */
@@ -123,10 +123,10 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 			if (flash_physical_erase(base, size) != EC_SUCCESS) {
 				CPRINTF("%s:%d erase failure of 0x%x..+0x%x\n",
 					__func__, __LINE__, base, size);
-				return UPGRADE_ERASE_FAILURE;
+				return UPDATE_ERASE_FAILURE;
 			}
 		}
-		return UPGRADE_SUCCESS;
+		return UPDATE_SUCCESS;
 	}
 
 	CPRINTF("%s:%d %x, %d ro base %x top %x, rw base %x top %x\n",
@@ -137,14 +137,14 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 		valid_sections.rw_base_offset,
 		valid_sections.rw_top_offset);
 
-	return UPGRADE_BAD_ADDR;
+	return UPDATE_BAD_ADDR;
 }
 
-int update_pdu_valid(struct upgrade_command *cmd_body, size_t cmd_size)
+int update_pdu_valid(struct update_command *cmd_body, size_t cmd_size)
 {
 	uint8_t sha1_digest[SHA_DIGEST_SIZE];
 	/* Check everything from block_base onwards. */
-	size_t body_size = cmd_size - offsetof(struct upgrade_command,
+	size_t body_size = cmd_size - offsetof(struct update_command,
 					       block_base);
 
 	/* Check if the block was received properly. */
@@ -185,7 +185,7 @@ static int new_is_older(const struct SignedHeader *new,
  * otherwise return True.
  */
 static int contents_allowed(uint32_t block_offset,
-			    size_t body_size, void *upgrade_data)
+			    size_t body_size, void *update_data)
 {
 	/* Pointer to RO or RW header in flash, to compare against. */
 	const struct SignedHeader *header;
@@ -234,8 +234,8 @@ static int contents_allowed(uint32_t block_offset,
 		return 0;
 	}
 
-	/* upgrade_data is the new header. */
-	if (new_is_older(upgrade_data, header)) {
+	/* update_data is the new header. */
+	if (new_is_older(update_data, header)) {
 		CPRINTF("%s: rejecting an older header.\n", __func__);
 		return 0;
 	}
@@ -278,30 +278,30 @@ static void new_chunk_written(uint32_t block_offset)
 }
 
 static int contents_allowed(uint32_t block_offset,
-			    size_t body_size, void *upgrade_data)
+			    size_t body_size, void *update_data)
 {
 	return 1;
 }
 #endif
 
-void fw_upgrade_command_handler(void *body,
-				size_t cmd_size,
-				size_t *response_size)
+void fw_update_command_handler(void *body,
+			       size_t cmd_size,
+			       size_t *response_size)
 {
-	struct upgrade_command *cmd_body = body;
-	void *upgrade_data;
+	struct update_command *cmd_body = body;
+	void *update_data;
 	uint8_t *error_code = body;  /* Cache the address for code clarity. */
 	size_t body_size;
 	uint32_t block_offset;
 
 	*response_size = 1; /* One byte response unless this is a start PDU. */
 
-	if (cmd_size < sizeof(struct upgrade_command)) {
+	if (cmd_size < sizeof(struct update_command)) {
 		CPRINTF("%s:%d\n", __func__, __LINE__);
-		*error_code = UPGRADE_GEN_ERROR;
+		*error_code = UPDATE_GEN_ERROR;
 		return;
 	}
-	body_size = cmd_size - sizeof(struct upgrade_command);
+	body_size = cmd_size - sizeof(struct update_command);
 
 	if (!cmd_body->block_base && !body_size) {
 		struct first_response_pdu *rpdu = body;
@@ -316,10 +316,10 @@ void fw_upgrade_command_handler(void *body,
 		/* First, prepare the response structure. */
 		memset(rpdu, 0, sizeof(*rpdu));
 		*response_size = sizeof(*rpdu);
-		rpdu->protocol_version = htobe32(UPGRADE_PROTOCOL_VERSION);
+		rpdu->protocol_version = htobe32(UPDATE_PROTOCOL_VERSION);
 
 		/*
-		 * Determine the valid upgrade sections.
+		 * Determine the valid update sections.
 		 */
 		set_valid_sections();
 
@@ -330,7 +330,7 @@ void fw_upgrade_command_handler(void *body,
 		if (!valid_sections.ro_top_offset ||
 		    !valid_sections.rw_top_offset) {
 			CPRINTF("%s:%d\n", __func__, __LINE__);
-			rpdu->return_value = htobe32(UPGRADE_GEN_ERROR);
+			rpdu->return_value = htobe32(UPDATE_GEN_ERROR);
 			return;
 		}
 
@@ -363,13 +363,13 @@ void fw_upgrade_command_handler(void *body,
 	block_offset = be32toh(cmd_body->block_base);
 
 	if (!update_pdu_valid(cmd_body, cmd_size)) {
-		*error_code = UPGRADE_DATA_ERROR;
+		*error_code = UPDATE_DATA_ERROR;
 		return;
 	}
 
-	upgrade_data = cmd_body + 1;
-	if (!contents_allowed(block_offset, body_size, upgrade_data)) {
-		*error_code = UPGRADE_ROLLBACK_ERROR;
+	update_data = cmd_body + 1;
+	if (!contents_allowed(block_offset, body_size, update_data)) {
+		*error_code = UPDATE_ROLLBACK_ERROR;
 		return;
 	}
 
@@ -379,7 +379,7 @@ void fw_upgrade_command_handler(void *body,
 		return;
 
 	if (chunk_came_too_soon(block_offset)) {
-		*error_code = UPGRADE_RATE_LIMIT_ERROR;
+		*error_code = UPDATE_RATE_LIMIT_ERROR;
 		return;
 	}
 
@@ -391,7 +391,7 @@ void fw_upgrade_command_handler(void *body,
 		 */
 		struct SignedHeader *header;
 
-		header = (struct SignedHeader *) upgrade_data;
+		header = (struct SignedHeader *) update_data;
 
 		/*
 		 * Set the top bit of the size field. It will be impossible to
@@ -402,29 +402,29 @@ void fw_upgrade_command_handler(void *body,
 
 	CPRINTF("%s: programming at address 0x%x\n", __func__,
 		block_offset + CONFIG_PROGRAM_MEMORY_BASE);
-	if (flash_physical_write(block_offset, body_size, upgrade_data)
+	if (flash_physical_write(block_offset, body_size, update_data)
 	    != EC_SUCCESS) {
-		*error_code = UPGRADE_WRITE_FAILURE;
-		CPRINTF("%s:%d upgrade write error\n",	__func__, __LINE__);
+		*error_code = UPDATE_WRITE_FAILURE;
+		CPRINTF("%s:%d update write error\n", __func__, __LINE__);
 		return;
 	}
 
 	new_chunk_written(block_offset);
 
 	/* Verify that data was written properly. */
-	if (memcmp(upgrade_data, (void *)
+	if (memcmp(update_data, (void *)
 		   (block_offset + CONFIG_PROGRAM_MEMORY_BASE),
 		   body_size)) {
-		*error_code = UPGRADE_VERIFY_ERROR;
-		CPRINTF("%s:%d upgrade verification error\n",
+		*error_code = UPDATE_VERIFY_ERROR;
+		CPRINTF("%s:%d update verification error\n",
 			__func__, __LINE__);
 		return;
 	}
 
-	*error_code = UPGRADE_SUCCESS;
+	*error_code = UPDATE_SUCCESS;
 }
 
-void fw_upgrade_complete(void)
+void fw_update_complete(void)
 {
 	system_clear_retry_counter();
 }
