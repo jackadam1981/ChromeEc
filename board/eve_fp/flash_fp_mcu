@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# Eve configuration
+SPIDEV="/dev/spidev32765.0"
+GPIOCHIP="gpiochip360"
+GPIO_NRST=418
+GPIO_BOOT0=419
+
+if [ ! -e "/sys/class/gpio/${GPIOCHIP}" ]
+then
+	echo "Cannot find the GPIO chip. Are your running on Eve ?"
+	exit 1
+fi
+
+if [ ! -f "$1" ]
+then
+	echo "Invalid image file: $1"
+	echo "Usage: $0 ec.bin"
+	exit 1
+fi
+
+# Configure the MCU Boot0 and NRST GPIOs
+echo ${GPIO_BOOT0} > /sys/class/gpio/export
+echo "out" > /sys/class/gpio/gpio${GPIO_BOOT0}/direction
+echo ${GPIO_NRST} > /sys/class/gpio/export
+echo "out" > /sys/class/gpio/gpio${GPIO_NRST}/direction
+
+# Reset sequence to enter bootloader mode
+echo 1 > /sys/class/gpio/gpio${GPIO_BOOT0}/value
+echo 0 > /sys/class/gpio/gpio${GPIO_NRST}/value
+echo 1 > /sys/class/gpio/gpio${GPIO_NRST}/value
+
+stm32mon -s ${SPIDEV} -w $1
+
+# Go back to normal mode
+echo 0 > /sys/class/gpio/gpio${GPIO_BOOT0}/value
+echo 0 > /sys/class/gpio/gpio${GPIO_NRST}/value
+echo 1 > /sys/class/gpio/gpio${GPIO_NRST}/value
+
+# Give up GPIO control
+echo "in" > /sys/class/gpio/gpio${GPIO_BOOT0}/direction
+echo "in" > /sys/class/gpio/gpio${GPIO_NRST}/direction
