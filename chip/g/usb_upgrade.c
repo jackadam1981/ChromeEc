@@ -300,6 +300,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 		/* Let's allocate a large enough buffer. */
 		block_size = be32toh(upfr.block_size) -
 			offsetof(struct update_frame_header, cmd);
+
 		if (shared_mem_acquire(block_size, (char **)&block_buffer)
 		    != EC_SUCCESS) {
 			CPRINTS("FW update: error: failed to alloc %d bytes.",
