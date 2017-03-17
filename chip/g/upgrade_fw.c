@@ -255,7 +255,7 @@ static int chunk_came_too_soon(uint32_t block_offset)
 		return 0;
 
 	if (!prev_offset ||
-	    (block_offset >= (prev_offset + SIGNED_TRANSFER_SIZE)))
+	    (block_offset >= (prev_offset + UPDATE_PDU_SIZE)))
 		return 0;
 
 	CPRINTF("%s: rejecting a write to the same block\n", __func__);
