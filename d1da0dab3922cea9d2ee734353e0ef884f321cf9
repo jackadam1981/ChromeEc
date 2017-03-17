@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6a7b7836_6248ff2e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-17T01:14:35Z",
+      "side": 1,
+      "message": "Removed this flag as a default. It\u0027s now added to pd_src_chg_pdo when those entries are created. One effect from this change is that the DUT will always attempt to role swap to a SRC when this flag is not set in the src_pdo. To address this, I am having servo reject power swap requests on both ports now. This way servo_v4 remains a src even when the DUT doesn\u0027t try and charge it\u0027s battery.",
+      "parentUuid": "dfd2bee7_0c9b0b41",
+      "range": {
+        "startLine": 34,
+        "startChar": 29,
+        "endLine": 34,
+        "endChar": 47
+      },
+      "revId": "d1da0dab3922cea9d2ee734353e0ef884f321cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6890b66c_d5354f55",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 7
@@ -59,6 +83,30 @@
       "writtenOn": "2017-03-16T11:16:50Z",
       "side": 1,
       "message": "which means *USB* communication capable. Is it the case for this port ?",
+      "range": {
+        "startLine": 36,
+        "startChar": 51,
+        "endLine": 36,
+        "endChar": 69
+      },
+      "revId": "d1da0dab3922cea9d2ee734353e0ef884f321cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cd5055b_d8447209",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-17T01:14:35Z",
+      "side": 1,
+      "message": "No, it\u0027s not. Removed this capability.",
+      "parentUuid": "6890b66c_d5354f55",
       "range": {
         "startLine": 36,
         "startChar": 51,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "5b17aa6a_4f93f319",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-17T01:14:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea85aca5_4838c0be",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 67
+      },
+      "revId": "d1da0dab3922cea9d2ee734353e0ef884f321cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "858909ea_5a7a8d01",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 7
@@ -105,6 +177,30 @@
       "writtenOn": "2017-03-16T11:16:50Z",
       "side": 1,
       "message": "No, you can advertise RP_3A0 only if you can provide 3A @ 5V \n(here you might have 500mA @ 5V and 3A @ 12V)",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 20
+      },
+      "revId": "d1da0dab3922cea9d2ee734353e0ef884f321cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a06757f_af9dad0b",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-17T01:14:35Z",
+      "side": 1,
+      "message": "Added a check so that Rp is only set to 3A0 or 1A5 if CHG vbus \u003d\u003d 5V.",
+      "parentUuid": "858909ea_5a7a8d01",
       "range": {
         "startLine": 77,
         "startChar": 1,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "fa3e802c_13d3adbf",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-17T01:14:35Z",
+      "side": 1,
+      "message": "Modified this check so that it checks for a change in Rp and never returns here. In addition, I added a check to see if DUT vbus is different from CHG vbus to call pd_update_contract(). This should now handle either changes in CHG voltage or current.",
+      "parentUuid": "53b93346_d352ccbb",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "d1da0dab3922cea9d2ee734353e0ef884f321cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db7e3b83_36c2f217",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 7
@@ -151,6 +271,30 @@
       "writtenOn": "2017-03-16T11:16:50Z",
       "side": 1,
       "message": "why would it be ?",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 9
+      },
+      "revId": "d1da0dab3922cea9d2ee734353e0ef884f321cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f359c279_2df40afb",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-17T01:14:35Z",
+      "side": 1,
+      "message": "I removed this check. I had added it when I was first developing the feature as a \"just in case\"",
+      "parentUuid": "db7e3b83_36c2f217",
       "range": {
         "startLine": 138,
         "startChar": 0,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "64849daf_daa8ac4b",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-17T01:14:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3fb914e_2af78e40",
+      "range": {
+        "startLine": 146,
+        "startChar": 4,
+        "endLine": 146,
+        "endChar": 12
+      },
+      "revId": "d1da0dab3922cea9d2ee734353e0ef884f321cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfc022c5_f0b8126a",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 7
@@ -197,6 +365,30 @@
       "writtenOn": "2017-03-16T11:16:50Z",
       "side": 1,
       "message": "what if max_ma went from 500 to 3000 ?",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "d1da0dab3922cea9d2ee734353e0ef884f321cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4faaa75_58d4ab68",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-17T01:14:35Z",
+      "side": 1,
+      "message": "Expanded this check to include checking CHG vbus current.",
+      "parentUuid": "dfc022c5_f0b8126a",
       "range": {
         "startLine": 148,
         "startChar": 1,
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "8c0c265c_b81b0dde",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-17T01:14:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ae3c790_e43b9c3f",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 53
+      },
+      "revId": "d1da0dab3922cea9d2ee734353e0ef884f321cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2558a629_55ffba2d",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 7
@@ -243,6 +459,30 @@
       "writtenOn": "2017-03-16T11:16:50Z",
       "side": 1,
       "message": "why so late ? the DUT/SNK had already done it\u0027s first Rp detection at this point.\nboard_manage_chg_port() already called it ?",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 29
+      },
+      "revId": "d1da0dab3922cea9d2ee734353e0ef884f321cf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdbac09b_f5278f6b",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-17T01:14:35Z",
+      "side": 1,
+      "message": "I think this call can be removed altogether. The value of Rp that the DUT port presents only changes based on updates to the CHG port. This means board_manage_dut_port() is only called from CHG port, which makes sense because the actions in that function fully depend on changes to the CHG vbus state and the DUT port PD contract would never be present at the time that vbus is being enabled.",
+      "parentUuid": "2558a629_55ffba2d",
       "range": {
         "startLine": 218,
         "startChar": 0,
