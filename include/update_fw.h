@@ -122,6 +122,15 @@ enum update_return_value {
 	UPDATE_RATE_LIMIT_ERROR = 9,
 };
 
+/*
+ * This is the size of the update frame payload, unless this is the last chunk
+ * of the image.
+ *
+ * TODO(b/36375666): Some boards may not be able to allocate that much memory.
+ */
+#define UPDATE_TRANSFER_SIZE 1024
+
+
 void fw_update_command_handler(void *body,
 				size_t cmd_size,
 				size_t *response_size);

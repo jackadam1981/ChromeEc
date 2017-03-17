@@ -29,7 +29,7 @@
 #include "misc_util.h"
 #include "signed_header.h"
 #include "tpm_vendor_cmds.h"
-#include "upgrade_fw.h"
+#include "update_fw.h"
 #include "usb_descriptor.h"
 
 #ifdef DEBUG
@@ -180,7 +180,7 @@ struct upgrade_pkt {
 	char data[0];
 } __packed;
 
-#define MAX_BUF_SIZE	(SIGNED_TRANSFER_SIZE + sizeof(struct upgrade_pkt))
+#define MAX_BUF_SIZE	(UPDATE_TRANSFER_SIZE + sizeof(struct upgrade_pkt))
 
 struct usb_endpoint {
 	struct libusb_device_handle *devh;
@@ -637,7 +637,7 @@ static void transfer_section(struct transfer_descriptor *td,
 		struct update_pdu_header updu;
 
 		/* prepare the header to prepend to the block. */
-		payload_size = MIN(data_len, SIGNED_TRANSFER_SIZE);
+		payload_size = MIN(data_len, UPDATE_TRANSFER_SIZE);
 		updu.block_size = htobe32(payload_size +
 					  sizeof(struct update_pdu_header));
 

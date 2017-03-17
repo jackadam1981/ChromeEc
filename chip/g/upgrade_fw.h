@@ -41,10 +41,4 @@ void fw_update_complete(void);
 int usb_pdu_valid(struct update_command *cmd_body,
 		  size_t cmd_size);
 
-/*
- * This is the size of the update frame payload, unless this is the last chunk
- * of the image.
- */
-#define SIGNED_TRANSFER_SIZE 1024
-
 #endif  /* ! __EC_CHIP_G_UPGRADE_FW_H */
