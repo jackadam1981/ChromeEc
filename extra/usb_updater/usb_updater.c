@@ -184,7 +184,7 @@ struct upgrade_pkt {
 	char data[0];
 } __packed;
 
-#define MAX_BUF_SIZE	(SIGNED_TRANSFER_SIZE + sizeof(struct upgrade_pkt))
+#define MAX_BUF_SIZE	(UPDATE_PDU_SIZE + sizeof(struct upgrade_pkt))
 
 struct usb_endpoint {
 	struct libusb_device_handle *devh;
@@ -638,7 +638,7 @@ static void transfer_section(struct transfer_descriptor *td,
 		int max_retries;
 
 		/* prepare the header to prepend to the block. */
-		payload_size = MIN(data_len, SIGNED_TRANSFER_SIZE);
+		payload_size = MIN(data_len, UPDATE_PDU_SIZE);
 
 		block_base = htobe32(section_addr);
 
