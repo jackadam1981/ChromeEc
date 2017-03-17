@@ -181,12 +181,6 @@ struct usb_endpoint_descriptor {
 #define USB_SUBCLASS_GOOGLE_UPDATE 0x53
 #define USB_PROTOCOL_GOOGLE_UPDATE 0xff
 
-/* Double define for cr50 code freeze.
- * TODO(vbendeb): dedup this. */
-#define USB_SUBCLASS_GOOGLE_CR50   0x53
-/* We can use any protocol we want */
-#define USB_PROTOCOL_GOOGLE_CR50_NON_HC_FW_UPDATE 0xff
-
 #define USB_SUBCLASS_GOOGLE_POWER  0x54
 #define USB_PROTOCOL_GOOGLE_POWER  0x01
 
