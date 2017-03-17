@@ -32,10 +32,10 @@
  * first_response_pdu structure below.
  */
 
-#define UPGRADE_PROTOCOL_VERSION 6
+#define UPDATE_PROTOCOL_VERSION 6
 
 /* This is the format of the update PDU header. */
-struct upgrade_command {
+struct update_command {
 	uint32_t  block_digest;  /* first 4 bytes of sha1 of the rest of the
 				  * frame.
 				  */
@@ -57,7 +57,7 @@ struct update_frame_header {
 	uint32_t block_size;    /* Total size of the block, including this
 				 * field.
 				 */
-	struct upgrade_command cmd;
+	struct update_command cmd;
 };
 
 /*
@@ -76,11 +76,11 @@ struct signed_header_version {
 /*
  * Response to the connection establishment request.
  *
- * When responding to the very first packet of the upgrade sequence, the
+ * When responding to the very first packet of the update sequence, the
  * original USB update implementation was responding with a four byte value,
  * just as to any other block of the transfer sequence.
  *
- * It became clear that there is a need to be able to enhance the upgrade
+ * It became clear that there is a need to be able to enhance the update
  * protocol, while staying backwards compatible.
  *
  * All newer protocol versions (starting with version 2) respond to the very
@@ -113,30 +113,30 @@ struct first_response_pdu {
 };
 
 /* TODO: Handle this in upgrade_fw.c, not usb_upgrade.c */
-#define UPGRADE_DONE          0xB007AB1E
+#define UPDATE_DONE          0xB007AB1E
 
-void fw_upgrade_command_handler(void *body,
-				size_t cmd_size,
-				size_t *response_size);
+void fw_update_command_handler(void *body,
+			       size_t cmd_size,
+			       size_t *response_size);
 
-/* Used to tell fw upgrade the update ran successfully and is finished */
-void fw_upgrade_complete(void);
+/* Used to tell fw update the update ran successfully and is finished */
+void fw_update_complete(void);
 
 /* Verify integrity of the PDU received. */
-int update_pdu_valid(struct upgrade_command *cmd_body, size_t cmd_size);
+int update_pdu_valid(struct update_command *cmd_body, size_t cmd_size);
 
-/* Various upgrade command return values. */
+/* Various update command return values. */
 enum return_value {
-	UPGRADE_SUCCESS = 0,
-	UPGRADE_BAD_ADDR = 1,
-	UPGRADE_ERASE_FAILURE = 2,
-	UPGRADE_DATA_ERROR = 3,
-	UPGRADE_WRITE_FAILURE = 4,
-	UPGRADE_VERIFY_ERROR = 5,
-	UPGRADE_GEN_ERROR = 6,
-	UPGRADE_MALLOC_ERROR = 7,
-	UPGRADE_ROLLBACK_ERROR = 8,
-	UPGRADE_RATE_LIMIT_ERROR = 9,
+	UPDATE_SUCCESS = 0,
+	UPDATE_BAD_ADDR = 1,
+	UPDATE_ERASE_FAILURE = 2,
+	UPDATE_DATA_ERROR = 3,
+	UPDATE_WRITE_FAILURE = 4,
+	UPDATE_VERIFY_ERROR = 5,
+	UPDATE_GEN_ERROR = 6,
+	UPDATE_MALLOC_ERROR = 7,
+	UPDATE_ROLLBACK_ERROR = 8,
+	UPDATE_RATE_LIMIT_ERROR = 9,
 };
 
 /*
