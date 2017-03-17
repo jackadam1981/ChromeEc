@@ -135,7 +135,30 @@ static task_ *current_task = (task_ *)scratchpad;
  */
 static uint32_t tasks_ready = (1 << TASK_ID_HOOKS);
 
-static int start_called;  /* Has task swapping started */
+/*
+ * Track the progress of task scheduling initialization. task_scheduler_state
+ * will always transition in-order from NOT_STARTED->INIT->STARTED, without
+ * ever returning to a previous state.
+ *
+ * TASK_SCHEDULER_NOT_STARTED - Initial boot state, before task_start() has
+ *                              been called. Tasks will not be scheduled.
+ *                              Task events may not be set. Execution from
+ *                              main().
+ * TASK_SCHEDULER_INIT        - task_init() has been called and the hooks
+ *                              task has been marked ready. Only the hooks
+ *                              task and the idle task can be scheduled.
+ *                              Other task events may be set, but other tasks
+ *                              will not be scheduled at this stage, until the
+ *                              hooks task finishes calling initialization
+ *                              routines and task_enable_all_tasks() is called.
+ * TASK_SCHEDULER_STARTED     - Initialization has finished, and all tasks
+ *                              may now be scheduled.
+ */
+static enum {
+	TASK_SCHEDULER_NOT_STARTED,
+	TASK_SCHEDULER_INIT,
+	TASK_SCHEDULER_STARTED,
+} task_scheduler_state = TASK_SCHEDULER_NOT_STARTED;
 
 static inline task_ *__task_id_to_ptr(task_id_t id)
 {
@@ -184,7 +207,7 @@ uint32_t *task_get_event_bitmap(task_id_t tskid)
 
 int task_start_called(void)
 {
-	return start_called;
+	return (task_scheduler_state > TASK_SCHEDULER_NOT_STARTED);
 }
 
 /**
@@ -307,7 +330,8 @@ void task_start_irq_handler(void *excep_return)
 	 * Continue iff the tasks are ready and we are not called from another
 	 * exception (as the time accouting is done in the outer irq).
 	 */
-	if (!start_called || ((uint32_t)excep_return & 0xf) == 1)
+	if (task_scheduler_state == TASK_SCHEDULER_NOT_STARTED ||
+	   ((uint32_t)excep_return & 0xf) == 1)
 		return;
 
 	exc_start_time = t;
@@ -325,7 +349,8 @@ void task_end_irq_handler(void *excep_return)
 	 * Continue iff the tasks are ready and we are not called from another
 	 * exception (as the time accouting is done in the outer irq).
 	 */
-	if (!start_called || ((uint32_t)excep_return & 0xf) == 1)
+	if (task_scheduler_state == TASK_SCHEDULER_NOT_STARTED ||
+	   ((uint32_t)excep_return & 0xf) == 1)
 		return;
 
 	/* Track time in interrupts */
@@ -377,11 +402,20 @@ uint32_t task_set_event(task_id_t tskid, uint32_t event, int wait)
 	/* Set the event bit in the receiver message bitmap */
 	atomic_or(&receiver->events, event);
 
+	/*
+	 * During the INIT phase, only the hooks task and idle task may
+	 * be scheduled.
+	 */
+	if (task_scheduler_state == TASK_SCHEDULER_INIT &&
+	    tskid != TASK_ID_IDLE &&
+	    tskid != TASK_ID_HOOKS)
+		return 0;
+
 	/* Re-schedule if priorities have changed */
 	if (in_interrupt_context()) {
 		/* The receiver might run again */
 		atomic_or(&tasks_ready, 1 << tskid);
-		if (start_called) {
+		if (task_scheduler_state > TASK_SCHEDULER_NOT_STARTED) {
 			/*
 			 * Trigger the scheduler when there's
 			 * no other irqs happening.
@@ -442,6 +476,7 @@ uint32_t task_wait_event_mask(uint32_t event_mask, int timeout_us)
 
 void task_enable_all_tasks(void)
 {
+	task_scheduler_state = TASK_SCHEDULER_STARTED;
 	/* Mark all tasks as ready to run. */
 	tasks_ready = (1 << TASK_ID_COUNT) - 1;
 	/* Reschedule the highest priority task. */
@@ -679,5 +714,5 @@ int task_start(void)
 	task_start_time = exc_end_time = get_time().val;
 #endif
 
-	return __task_start(&start_called);
+	return __task_start((int *)&task_scheduler_state);
 }
