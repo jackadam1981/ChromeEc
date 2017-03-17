@@ -70,6 +70,24 @@
       "revId": "3c59a1f734999715e2e060594dd16d0272916714",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51b4cb81_00e7a036",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-17T01:41:25Z",
+      "side": 1,
+      "message": "Well, maybe it should be enable/disable... I don\u0027t think we want to pass ANX74XX symbols to that generic function (that could be used with other tcpcs)\n\nLuckily, 1\u003dANX74XX_NORMAL_MODE and 0\u003dANX74XX_STANDBY_MODE so things would just work...",
+      "parentUuid": "72360557_b777e3c7",
+      "revId": "3c59a1f734999715e2e060594dd16d0272916714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
