@@ -52,14 +52,16 @@ static void anx74xx_tcpm_set_auto_good_crc(int port, int enable)
 		   enable ? ANX74XX_REG_REPLY_SOP_EN : 0);
 }
 
-static void anx74xx_set_power_mode(int port, int mode)
+
+static void anx74xx_update_cable_det(int port, int mode)
 {
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	int reg;
+
+	if (tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_0, &reg))
+		return;
+
 	anx[port].prev_mode = mode;
-
-	tcpc_read(port, ANX74XX_REG_ANALOG_CTRL_0, &reg);
-
 	/*
 	 * When ANX3429 needs to enter ANX74XX_STANDBY_MODE, Cable det pin
 	 * shall be pulled low first by ANX3429`s register, in this way,
@@ -76,8 +78,29 @@ static void anx74xx_set_power_mode(int port, int mode)
 	/* Delay recommended by Analogix for CABLE_DET setup time */
 	msleep(2);
 #endif
+}
 
-	board_set_tcpc_power_mode(port, mode == ANX74XX_NORMAL_MODE);
+static void anx74xx_set_power_mode(int port, int mode)
+{
+	/*
+	 * Update PWR_EN and RESET_N signals to the correct level. High for
+	 * Normal mode and low for Standby mode. When transitioning from standby
+	 * to normal mode, must set the PWW_EN and RESET_N before attempting to
+	 * modify cable_det bit of analog_ctrl_0. If going from Normal to
+	 * Standby, updating analog_ctrl_0 must happen before setting PWR_EN and
+	 * RESET_N low.
+	 */
+	if (mode == ANX74XX_NORMAL_MODE) {
+		/* Take chip out of standby mode */
+		board_set_tcpc_power_mode(port, mode == ANX74XX_NORMAL_MODE);
+		/* Update the cable det signal */
+		anx74xx_update_cable_det(port, mode);
+	} else if (mode == ANX74XX_STANDBY_MODE) {
+		/* Update cable cable det signal */
+		anx74xx_update_cable_det(port, mode);
+		/* Put chip into standby mode */
+		board_set_tcpc_power_mode(port, mode == ANX74XX_NORMAL_MODE);
+	}
 }
 
 void anx74xx_tcpc_set_vbus(int port, int enable)
