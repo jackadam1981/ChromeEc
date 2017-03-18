@@ -16,6 +16,24 @@
       "revId": "80cb93f45d396d797a47ab478dd62f9d29be7b3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df45b301_a23dffb5",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-18T01:29:57Z",
+      "side": 0,
+      "message": "did you have a chance to see the comment header in extra/usb_updater/usb_updater.c?\n\nThis is not directly about the size, this is about the need for encapsulation.\n\nWhen PDU is sent over USB it needs to have some additional wrapper to tell the USB receiver how many bytes to expect before the received PDU can be passed up to the TPM layer.\n\nIf the PDU were guaranteed to always fit into 64 bytes then there would be no need to have this extra wrapper, as the USB receiver would know the exact size of the PDU.\n\nBut PDU size quite often exceeds 64 bytes, the USB needs to know how much total data to expect, so the PDU is wrapped in a frame, and the size information is included the frame header.\n\nIf necessary the frame is segmented on the transmitter side and reassembled on the receiver side.",
+      "parentUuid": "780d8bd3_d81528ef",
+      "revId": "80cb93f45d396d797a47ab478dd62f9d29be7b3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
