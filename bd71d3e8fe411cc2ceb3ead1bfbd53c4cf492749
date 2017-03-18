@@ -65,6 +65,46 @@
     },
     {
       "key": {
+        "uuid": "91cbab3e_c3d06d94",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-03-18T03:22:14Z",
+      "side": 1,
+      "message": "Shouldn\u0027t there be a check for mode \u003d\u003d anx[port].prev_mode and return early if that is true?",
+      "revId": "bd71d3e8fe411cc2ceb3ead1bfbd53c4cf492749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eca45733_71a6e8fc",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-03-18T03:22:14Z",
+      "side": 1,
+      "message": "PWR_EN",
+      "range": {
+        "startLine": 88,
+        "startChar": 33,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "bd71d3e8fe411cc2ceb3ead1bfbd53c4cf492749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3515c06c_92633a7a",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1
