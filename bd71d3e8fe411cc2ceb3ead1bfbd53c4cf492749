@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a97c9d37_58abe4c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-18T10:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08b3b4a4_e1543347",
+      "range": {
+        "startLine": 11,
+        "startChar": 51,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "bd71d3e8fe411cc2ceb3ead1bfbd53c4cf492749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eac45fec_efbd279c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-18T01:16:09Z",
       "side": 1,
       "message": "remove?",
+      "range": {
+        "startLine": 16,
+        "startChar": 20,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "bd71d3e8fe411cc2ceb3ead1bfbd53c4cf492749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3708efd9_8f84fbe4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-18T10:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eac45fec_efbd279c",
       "range": {
         "startLine": 16,
         "startChar": 20,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "2e955ebe_0340d929",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-18T10:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd97783_41d9d102",
+      "revId": "bd71d3e8fe411cc2ceb3ead1bfbd53c4cf492749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91cbab3e_c3d06d94",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2017-03-18T03:22:14Z",
       "side": 1,
       "message": "Shouldn\u0027t there be a check for mode \u003d\u003d anx[port].prev_mode and return early if that is true?",
+      "revId": "bd71d3e8fe411cc2ceb3ead1bfbd53c4cf492749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2e608a_73a56167",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-18T10:07:48Z",
+      "side": 1,
+      "message": "Yes there should be a check, but prev_mode only exists if CONFIG_USB_PD_TCPC_LOW_POWER is defined.  So it would need to be in the update_cable_det function because board_set_tcpc_power_mode(port, mode) still needs to get called.",
+      "parentUuid": "91cbab3e_c3d06d94",
       "revId": "bd71d3e8fe411cc2ceb3ead1bfbd53c4cf492749",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "76b9d069_bd370a2a",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-18T10:07:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca45733_71a6e8fc",
+      "range": {
+        "startLine": 88,
+        "startChar": 33,
+        "endLine": 88,
+        "endChar": 39
+      },
+      "revId": "bd71d3e8fe411cc2ceb3ead1bfbd53c4cf492749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3515c06c_92633a7a",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "fdbf0617_903f9d68",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-18T10:07:48Z",
+      "side": 1,
+      "message": "actually I can just pass \u0027mode\u0027 because it will be 1 here and 0 in the else case.",
+      "parentUuid": "3515c06c_92633a7a",
+      "range": {
+        "startLine": 95,
+        "startChar": 34,
+        "endLine": 95,
+        "endChar": 61
+      },
+      "revId": "bd71d3e8fe411cc2ceb3ead1bfbd53c4cf492749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c49442a_f234ce4a",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1
@@ -139,6 +271,30 @@
       "writtenOn": "2017-03-18T01:16:09Z",
       "side": 1,
       "message": "this was just checked too, should it just be 0?  (are there more states to worry about?)",
+      "range": {
+        "startLine": 102,
+        "startChar": 34,
+        "endLine": 102,
+        "endChar": 61
+      },
+      "revId": "bd71d3e8fe411cc2ceb3ead1bfbd53c4cf492749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9ca4285_74170d40",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-18T10:07:48Z",
+      "side": 1,
+      "message": "Changed this to mode",
+      "parentUuid": "6c49442a_f234ce4a",
       "range": {
         "startLine": 102,
         "startChar": 34,
