@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18b02958_8eae7777",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-20T17:13:07Z",
+      "side": 1,
+      "message": "I\u0027m not convinced this condition will ever be false\n(see my comment below in board_update_vbus, vbus[DUT] won\u0027t be updated)",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 66
+      },
+      "revId": "162d094128f3026f5ff6d1c7027abcfddcca3f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf04ac70_d92dd61d",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-20T17:13:07Z",
+      "side": 1,
+      "message": "it\u0027s kind of a bad name when mA \u003e 500, but whatever",
+      "range": {
+        "startLine": 119,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "162d094128f3026f5ff6d1c7027abcfddcca3f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989048e1_bf01f7d3",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-20T17:13:07Z",
+      "side": 1,
+      "message": "when you are a source, this won\u0027t be called (excepted with 0,0 at disconnection)",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 24
+      },
+      "revId": "162d094128f3026f5ff6d1c7027abcfddcca3f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
