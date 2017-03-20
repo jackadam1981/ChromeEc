@@ -22,6 +22,30 @@
       "revId": "bbd95b6454d238990d90aa428233a2243b87b56c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eaf977db_5c52c127",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2017-03-20T08:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7224e432_d101f655",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "bbd95b6454d238990d90aa428233a2243b87b56c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
