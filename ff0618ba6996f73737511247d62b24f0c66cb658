@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f740859a_00d62ce8",
+        "filename": "core/minute-ia/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-03-20T17:27:25Z",
+      "side": 1,
+      "message": "This is not necessary since related patch were reverted.\n\n11704ae6e9c35889ed1ec97bdaa9d42652397867",
+      "range": {
+        "startLine": 158,
+        "startChar": 18,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "ff0618ba6996f73737511247d62b24f0c66cb658",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
