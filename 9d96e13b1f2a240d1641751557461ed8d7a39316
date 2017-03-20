@@ -22,6 +22,30 @@
       "revId": "9d96e13b1f2a240d1641751557461ed8d7a39316",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9259cdc2_7a921a29",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-20T20:21:25Z",
+      "side": 1,
+      "message": "ah, I thought about checking stat but forgot, thank you, will do.",
+      "parentUuid": "6268f626_3e97080b",
+      "range": {
+        "startLine": 136,
+        "startChar": 14,
+        "endLine": 136,
+        "endChar": 30
+      },
+      "revId": "9d96e13b1f2a240d1641751557461ed8d7a39316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
