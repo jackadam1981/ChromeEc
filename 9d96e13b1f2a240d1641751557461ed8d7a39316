@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6268f626_3e97080b",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2017-03-20T20:14:53Z",
+      "side": 1,
+      "message": "stat -c \u0027%s\u0027 \"${RESULT_FILE}\"\nis what you really want here.",
+      "range": {
+        "startLine": 136,
+        "startChar": 14,
+        "endLine": 136,
+        "endChar": 30
+      },
+      "revId": "9d96e13b1f2a240d1641751557461ed8d7a39316",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
