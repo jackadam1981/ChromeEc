@@ -269,6 +269,7 @@ command_has_error:
 static void console_init(void)
 {
 	*input_buf = '\0';
+	cflush();
 #ifdef CONFIG_EXPERIMENTAL_CONSOLE
 	ccprintf("Enhanced Console is enabled (v1.0.0); type HELP for help.\n");
 #else
