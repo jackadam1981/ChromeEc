@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4f79fcf3_e4027217",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-20T22:00:58Z",
+      "side": 1,
+      "message": "Default value of VSYS is 8.96 V. We want to keep charger in Pre-charge state at init (VSYS \u003e VBAT) before enabling Charging.",
+      "parentUuid": "7a3b06c2_69f0b779",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1f0a227_b3181ff9",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-20T20:33:01Z",
       "side": 1,
       "message": "What determines what vsysreg should be set to? I see we\u0027re just writing values above, but why would we do that w/o understanding the state of the battery?\n\nThere\u0027s concern that this patch will just push over current conditions off to the adapter itself. Why disable input current entirely? Shouldn\u0027t we be able to boot far enough to negotiate what the real current limit should be?",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b68ec163_ab84fd8d",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-20T22:00:58Z",
+      "side": 1,
+      "message": "Battery voltage determines the value what VSYS register can be set to. At init, we want the charge state machine to be at pre-charge state. We take the battery voltage max (which is const) hence we can ignore battery state.\n\nDefault input current limit is 1.472A. We are setting correct VSYS at init hence charger can cut the power if it detects VSYS over voltage (VSYS_OVP \u003d VSYS * 1.15).\nFrom the datasheet we are disabling the input current limiting only when VBAT is dead battery.\nYes, but if we dont have enough power in the battery charger will cut the input current hence system won\u0027t boot.",
+      "parentUuid": "c1f0a227_b3181ff9",
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
