@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eacb31b8_c5a9e911",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-20T15:12:49Z",
+      "side": 1,
+      "message": "This would be cleaner if we made a mask of tasks_enabled.\n\nif (!(tasks_enabled \u0026 (1 \u003c\u003c tskid)))\n  return 0;",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 11
+      },
+      "revId": "390541f204135bd0e1218368bd424e21640858e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e56c83b5_e564421b",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-20T15:12:49Z",
+      "side": 1,
+      "message": "Add:\n\ntasks_enabled \u003d",
+      "revId": "390541f204135bd0e1218368bd424e21640858e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "149ced87_1d2b2ca4",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-20T15:12:49Z",
+      "side": 1,
+      "message": "tasks_enabled \u003d (1 \u003c\u003c TASK_ID_IDLE) | (1 \u003c\u003c TASK_ID_HOOKS);",
+      "revId": "390541f204135bd0e1218368bd424e21640858e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
