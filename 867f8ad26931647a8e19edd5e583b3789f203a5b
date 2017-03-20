@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a3b06c2_69f0b779",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-20T20:33:01Z",
+      "side": 1,
+      "message": "Why is this necessary here?",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1f0a227_b3181ff9",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-20T20:33:01Z",
+      "side": 1,
+      "message": "What determines what vsysreg should be set to? I see we\u0027re just writing values above, but why would we do that w/o understanding the state of the battery?\n\nThere\u0027s concern that this patch will just push over current conditions off to the adapter itself. Why disable input current entirely? Shouldn\u0027t we be able to boot far enough to negotiate what the real current limit should be?",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
