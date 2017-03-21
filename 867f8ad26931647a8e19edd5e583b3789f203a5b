@@ -267,6 +267,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfad9ae5_cd8883bd",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-21T22:17:26Z",
+      "side": 1,
+      "message": "Hmmm... So, at startup, the input current limit is set to 1.472A but it\u0027s overwritten by IADP? I\u0027m wondering why we can\u0027t disable IADP. Do you know why Rohm suggests enabling it?",
+      "parentUuid": "a4e4791c_49d5279f",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
