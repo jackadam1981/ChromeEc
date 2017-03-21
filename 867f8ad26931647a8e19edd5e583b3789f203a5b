@@ -213,6 +213,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b00bb0_cf6f1066",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-21T19:18:27Z",
+      "side": 1,
+      "message": "Default input current means input current at init. Later, input current is controlled by the charger \u0026 PD task. My concern is about we overloading the system power. We never exceed the power limit we have (45W for reef) set. \nCurrent limit means input current limit. \n\nwhy do we care of overloading external charger if we are supporting only standard adapters (which follow Type-C or BC1.2 spec). They should have OCP.\nIf anti-collapse occurs, input current drops to 1/2 or -N step \u0026 system doesnt have enough power to boot so power up will be inhibited. Yes it works as expected, for DCP I see input current is limited to 512mA.\nThere is no fall back mechanism. Need to use proper charger if no battery. With low battery, power btn press can boot system back once it has enough charge.\n\nokay I will update the commit message.",
+      "parentUuid": "4d4f5e04_914efa70",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
