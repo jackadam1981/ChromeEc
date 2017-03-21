@@ -231,6 +231,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b799f35e_6b113625",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-21T21:45:27Z",
+      "side": 1,
+      "message": "Where is 1.472A from? Instead of making the input current \u0027unlimited\u0027, can we make it limited to 1.472A?",
+      "parentUuid": "a4b00bb0_cf6f1066",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
