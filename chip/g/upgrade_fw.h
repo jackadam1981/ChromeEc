@@ -16,16 +16,17 @@
  * The firmware update protocol consists of two phases: connection
  * establishment and actual image transfer.
  *
- * Image transfer is done in 1K blocks. The host supplying the image
- * encapsulates blocks in frames by prepending a header including the flash
- * offset where the block is destined and its digest.
+ * Image transfer is done in 1K blocks. The host supplying the image prepends
+ * each block with a header (upgrade_command structure below) including the
+ * flash offset where the block is destined and its digest. The header+block
+ * is called a PDU.
  *
- * The CR50 device responds to each frame with a confirmation which is 1 byte
+ * The CR50 device responds to each PDU with a confirmation which is a 1 byte
  * response. Zero value means success, non zero value is the error code
  * reported by CR50.
  *
- * To establish the connection, the host sends a different frame, which
- * contains no data and is destined to offset 0. Receiving such a frame
+ * To establish the connection, the host sends a PDU without any payload,
+ * and whose header is filled with zeros. Receiving such a PDU
  * signals the CR50 that the host intends to transfer a new image.
  *
  * The connection establishment response is described by the
@@ -34,12 +35,12 @@
 
 #define UPGRADE_PROTOCOL_VERSION 6
 
-/* This is the format of the update frame header. */
+/* This is the format of the update PDU header. */
 struct upgrade_command {
 	uint32_t  block_digest;  /* first 4 bytes of sha1 of the rest of the
-				  * frame.
+				  * PDU.
 				  */
-	uint32_t  block_base;    /* Offset of this frame into the flash SPI. */
+	uint32_t  block_base;    /* Offset of this PDU into the SPI flash. */
 	/* The actual payload goes here. */
 } __packed;
 
@@ -122,9 +123,8 @@ void fw_upgrade_command_handler(void *body,
 /* Used to tell fw upgrade the update ran successfully and is finished */
 void fw_upgrade_complete(void);
 
-/* Verify integrity of the PDU received over USB. */
-int usb_pdu_valid(struct upgrade_command *cmd_body,
-		  size_t cmd_size);
+/* Verify integrity of the PDU received. */
+int update_pdu_valid(struct upgrade_command *cmd_body, size_t cmd_size);
 
 /* Various upgrade command return values. */
 enum return_value {
