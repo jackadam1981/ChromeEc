@@ -105,6 +105,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10ff0acc_33b5cd20",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-21T15:59:59Z",
+      "side": 1,
+      "message": "That means if the battery is dead, VBAT is always \u003c VSYSREG_SET. So, the ac adapter can be over loaded, right?",
+      "parentUuid": "c8e03588_3bd35f87",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
