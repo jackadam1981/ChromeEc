@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59ccfb85_d247efab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-21T19:48:02Z",
+      "side": 1,
+      "message": "Could you make it clear what it\u0027s limited by? Is it IPRECH_SET?",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "c83bce9038fa229e540b7c815df2cdaed1a2b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f4d24d4_fceae0b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-21T19:48:02Z",
+      "side": 1,
+      "message": "How did the DUT boot? Right after an ac adapter plugged in or after the power button is pressed?",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "c83bce9038fa229e540b7c815df2cdaed1a2b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
