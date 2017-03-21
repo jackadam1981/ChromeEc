@@ -195,6 +195,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4f5e04_914efa70",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-21T18:51:05Z",
+      "side": 1,
+      "message": "What \u0027default\u0027 are you talking about? Why are you talking about the default input current not a current limit?\n\nWhat happens after anti-collapse occurs? Are fall back mechanisms (1/2 or -N step back) enabled? Do they work as expected? If you tested overload cases, can you update the patch description with the details?",
+      "parentUuid": "b413c1d8_4590d7f0",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
