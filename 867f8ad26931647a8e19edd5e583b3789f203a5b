@@ -87,6 +87,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e03588_3bd35f87",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-21T01:21:41Z",
+      "side": 1,
+      "message": "This is fix for both 35648317 \u0026 35647661. Yes, we dont have to revert IADP enable fix.\nWe can keep VSYS_PRIORITY\u003d1 always, as input current limiting is disabled only when VBAT is \u003c VSYSREG_SET.",
+      "parentUuid": "d9be2b1e_1b13be1f",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
