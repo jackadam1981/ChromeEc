@@ -22,6 +22,30 @@
       "revId": "7341a3754e9e1f8e8b7aba798a63fd909d92aa89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034abf67_740039af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-21T21:59:48Z",
+      "side": 1,
+      "message": "IADP pin input current to 128mA at 0.44V is limited by \"Input current limit selector \" .",
+      "parentUuid": "26d5bf8e_88bed6f5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "7341a3754e9e1f8e8b7aba798a63fd909d92aa89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

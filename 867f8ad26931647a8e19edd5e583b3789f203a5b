@@ -249,6 +249,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e4791c_49d5279f",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-21T21:59:48Z",
+      "side": 1,
+      "message": "We are not making input current to unlimited. \n1.472A is from POR vlaue from IBUS_LIM_SET \u0026 ICC_LIM_SET.",
+      "parentUuid": "b799f35e_6b113625",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
