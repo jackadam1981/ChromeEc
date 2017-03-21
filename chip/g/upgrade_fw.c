@@ -140,16 +140,16 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 	return UPGRADE_BAD_ADDR;
 }
 
-int usb_pdu_valid(struct upgrade_command *cmd_body,  size_t cmd_size)
+int update_pdu_valid(struct upgrade_command *cmd_body, size_t cmd_size)
 {
 	uint8_t sha1_digest[SHA_DIGEST_SIZE];
-	size_t body_size = cmd_size - offsetof(struct update_frame_header,
-					       cmd.block_base);
+	/* Check everything from block_base onwards. */
+	size_t body_size = cmd_size - offsetof(struct upgrade_command,
+					       block_base);
 
 	/* Check if the block was received properly. */
 	DCRYPTO_SHA1_hash((uint8_t *)&cmd_body->block_base,
-			  body_size + sizeof(cmd_body->block_base),
-			  sha1_digest);
+			  body_size, sha1_digest);
 	if (memcmp(sha1_digest, &cmd_body->block_digest,
 		   sizeof(cmd_body->block_digest))) {
 		CPRINTF("%s:%d sha1 %x not equal received %x\n",
@@ -362,7 +362,7 @@ void fw_upgrade_command_handler(void *body,
 
 	block_offset = be32toh(cmd_body->block_base);
 
-	if (!usb_pdu_valid(cmd_body, cmd_size)) {
+	if (!update_pdu_valid(cmd_body, cmd_size)) {
 		*error_code = UPGRADE_DATA_ERROR;
 		return;
 	}

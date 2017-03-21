@@ -78,8 +78,8 @@
  *     \                                                             /
  *      +--------- USB frame, requires total size field ------------+
  *
- * The update protocol data unints (PDUs) are passed over /dev/tpm0, the
- * encapsulation includes integritiy verification and destination address of
+ * The update protocol data units (PDUs) are passed over /dev/tpm0, the
+ * encapsulation includes integrity verification and destination address of
  * the data (more of this later). /dev/tpm0 transactions pretty much do not
  * have size limits, whereas the USB data is sent in chunks of the size
  * determined when the USB connestion is set up. This is why USB requires an
@@ -143,6 +143,9 @@
  * dependent. The target tells between update PDUs and encapsulated vendor
  * subcommands by looking at the EXT_CMD value - it is set to 0xbaccd00a and
  * as such is guaranteed not to be a valid update PDU destination address.
+ *
+ * These commands cannot exceed the USB packet size (typically 64 bytes), as
+ * no reassembly is performed for such frames.
  *
  * The vendor command response size is not fixed, it is subcommand dependent.
  *
@@ -561,13 +564,8 @@ static void usb_findit(uint16_t vid, uint16_t pid, struct usb_endpoint *uep)
 	printf("READY\n-------\n");
 }
 
-struct update_pdu {
-	uint32_t block_size; /* Total block size, include this field's size. */
-	struct upgrade_command cmd;
-	/* The actual payload goes here. */
-};
-
-static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
+static int transfer_block(struct usb_endpoint *uep,
+			  struct update_frame_header *ufh,
 			  uint8_t *transfer_data_ptr, size_t payload_size)
 {
 	size_t transfer_size;
@@ -576,7 +574,7 @@ static int transfer_block(struct usb_endpoint *uep, struct update_pdu *updu,
 	int r;
 
 	/* First send the header. */
-	xfer(uep, updu, sizeof(*updu), NULL, 0);
+	xfer(uep, ufh, sizeof(*ufh), NULL, 0);
 
 	/* Now send the block, chunk by chunk. */
 	for (transfer_size = 0; transfer_size < payload_size;) {
@@ -633,31 +631,34 @@ static void transfer_section(struct transfer_descriptor *td,
 	printf("sending 0x%zx bytes to %#x\n", data_len, section_addr);
 	while (data_len) {
 		size_t payload_size;
+		uint32_t block_base;
 		SHA_CTX ctx;
 		uint8_t digest[SHA_DIGEST_LENGTH];
+		uint32_t block_digest;
 		int max_retries;
-		struct update_pdu updu;
 
 		/* prepare the header to prepend to the block. */
 		payload_size = MIN(data_len, SIGNED_TRANSFER_SIZE);
-		updu.block_size = htobe32(payload_size +
-					  sizeof(struct update_pdu));
 
-		updu.cmd.block_base = htobe32(section_addr);
+		block_base = htobe32(section_addr);
 
 		/* Calculate the digest. */
 		SHA1_Init(&ctx);
-		SHA1_Update(&ctx, &updu.cmd.block_base,
-			    sizeof(updu.cmd.block_base));
+		SHA1_Update(&ctx, &block_base, sizeof(block_base));
 		SHA1_Update(&ctx, data_ptr, payload_size);
 		SHA1_Final(digest, &ctx);
 
 		/* Copy the first few bytes. */
-		memcpy(&updu.cmd.block_digest, digest,
-		       sizeof(updu.cmd.block_digest));
+		memcpy(&block_digest, digest, sizeof(block_digest));
 		if (td->ep_type == usb_xfer) {
+			struct update_frame_header ufh;
+
+			ufh.block_size = htobe32(payload_size +
+					sizeof(struct update_frame_header));
+			ufh.cmd.block_base = block_base;
+			ufh.cmd.block_digest = block_digest;
 			for (max_retries = 10; max_retries; max_retries--)
-				if (!transfer_block(&td->uep, &updu,
+				if (!transfer_block(&td->uep, &ufh,
 						    data_ptr, payload_size))
 					break;
 
@@ -681,7 +682,7 @@ static void transfer_section(struct transfer_descriptor *td,
 			 * would indicate a synchronization problem).
 			 */
 			if (tpm_send_pkt(td->tpm_fd,
-					 updu.cmd.block_digest,
+					 block_digest,
 					 block_addr,
 					 data_ptr,
 					 payload_size, error_code,
@@ -862,11 +863,11 @@ static void setup_connection(struct transfer_descriptor *td)
 	printf("start\n");
 
 	if (td->ep_type == usb_xfer) {
-		struct update_pdu updu;
+		struct update_frame_header ufh;
 
-		memset(&updu, 0, sizeof(updu));
-		updu.block_size = htobe32(sizeof(updu));
-		do_xfer(&td->uep, &updu, sizeof(updu), &start_resp,
+		memset(&ufh, 0, sizeof(ufh));
+		ufh.block_size = htobe32(sizeof(ufh));
+		do_xfer(&td->uep, &ufh, sizeof(ufh), &start_resp,
 			sizeof(start_resp), 1, &rxed_size);
 	} else {
 		rxed_size = sizeof(start_resp);
