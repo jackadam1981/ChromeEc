@@ -69,6 +69,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9be2b1e_1b13be1f",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-21T01:07:53Z",
+      "side": 1,
+      "message": "It sounds like this is a fix for 35647661 not for 35648317. You seem to be suggesting we revert the fix for 35647661 (so we unbreak 35648317 by disabling IADP). Is it right?\n\nI think we also should clear BD9995X_CMD_VIN_CTRL_SET_VSYS_PRIORITY once we know battery voltage is high enough for vsys to drive the system. Where do we clear it?",
+      "parentUuid": "b68ec163_ab84fd8d",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
