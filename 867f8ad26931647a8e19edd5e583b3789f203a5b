@@ -303,6 +303,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e5bb79f_c2d1a16a",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-21T22:34:38Z",
+      "side": 1,
+      "message": "I\u0027m answering my question. When IADP is disabled, it\u0027s even worse. The input current limit will be set to 128mA.",
+      "parentUuid": "bfad9ae5_cd8883bd",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
