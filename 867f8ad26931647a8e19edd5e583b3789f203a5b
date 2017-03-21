@@ -141,6 +141,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e22b57_62a682d5",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-21T16:29:05Z",
+      "side": 1,
+      "message": "Also earlier we did disable IADP which means VSYS_PRIORITY is dont care in that case. I think we are okay to disable VSYS_PRIORITY",
+      "parentUuid": "ba81ef29_8ef5b762",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
