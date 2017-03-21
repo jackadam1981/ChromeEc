@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fed526df_3899fe58",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-21T07:53:58Z",
+      "side": 1,
+      "message": "is this assignment useful ?",
+      "range": {
+        "startLine": 401,
+        "startChar": 28,
+        "endLine": 401,
+        "endChar": 40
+      },
+      "revId": "c624a22feb5b1c579838374a2ffa796cf4affc57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3269545b_a80b9151",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-21T07:53:58Z",
+      "side": 1,
+      "message": "this is kind of the wrong assumption about this API:\n  the mask passed to the function might cover several gpios, and this is going to update the interrupt flags only on the first one.\nit\u0027s not common case but still wrong.",
+      "range": {
+        "startLine": 405,
+        "startChar": 3,
+        "endLine": 410,
+        "endChar": 44
+      },
+      "revId": "c624a22feb5b1c579838374a2ffa796cf4affc57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
