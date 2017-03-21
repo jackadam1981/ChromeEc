@@ -1322,17 +1322,22 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_FLASH_ACR_DCEN        (1 << 10)
 #define STM32_FLASH_PDKEYR          REG32(STM32_FLASH_REGS_BASE + 0x04)
 #define STM32_FLASH_KEYR            REG32(STM32_FLASH_REGS_BASE + 0x08)
+#define  FLASH_KEYR_KEY1            0x45670123
+#define  FLASH_KEYR_KEY2            0xCDEF89AB
 #define STM32_FLASH_OPTKEYR         REG32(STM32_FLASH_REGS_BASE + 0x0c)
+#define  FLASH_OPTKEYR_KEY1         0x08192A3B
+#define  FLASH_OPTKEYR_KEY2         0x4C5D6E7F
 #define STM32_FLASH_SR              REG32(STM32_FLASH_REGS_BASE + 0x10)
 #define  FLASH_SR_BUSY              (1 << 16)
-#define  FLASH_SR_ERR_MASK          (0xc3fb)
+#define  FLASH_SR_ERR_MASK          (0xc3fa)
 #define STM32_FLASH_CR              REG32(STM32_FLASH_REGS_BASE + 0x14)
 #define  FLASH_CR_PG                (1 << 0)
 #define  FLASH_CR_PER               (1 << 1)
 #define  FLASH_CR_STRT              (1 << 16)
+#define  FLASH_CR_OPTLOCK           (1 << 30)
 #define  FLASH_CR_LOCK              (1 << 31)
 #define  FLASH_CR_PNB(sec)          (((sec) & 0xff) << 3)
-#define  FLASH_CR_PNB_MASK          FLASH_CR_SNB(0xff)
+#define  FLASH_CR_PNB_MASK          FLASH_CR_PNB(0xff)
 #define STM32_FLASH_ECCR            REG32(STM32_FLASH_REGS_BASE + 0x18)
 #define STM32_FLASH_OPTR            REG32(STM32_FLASH_REGS_BASE + 0x20)
 #define STM32_FLASH_PCROP1SR        REG32(STM32_FLASH_REGS_BASE + 0x24)
