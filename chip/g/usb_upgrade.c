@@ -140,7 +140,7 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 	queue_peek_units(consumer->queue, cmd_buffer, 0, count);
 
 	/* Looks like this is a vendor command, let's verify it. */
-	if (usb_pdu_valid(&cmd_buffer->cmd,
+	if (update_pdu_valid(&cmd_buffer->cmd,
 			  count - offsetof(struct update_frame_header, cmd))) {
 		uint16_t *subcommand;
 		size_t response_size;
