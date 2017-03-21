@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "47ec1c05_315e0c29",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-21T19:54:40Z",
+      "side": 1,
+      "message": "okay it is limited by \"Input current limit selector\"",
+      "parentUuid": "59ccfb85_d247efab",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "c83bce9038fa229e540b7c815df2cdaed1a2b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5f4d24d4_fceae0b0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-21T19:48:02Z",
       "side": 1,
       "message": "How did the DUT boot? Right after an ac adapter plugged in or after the power button is pressed?",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 37
+      },
+      "revId": "c83bce9038fa229e540b7c815df2cdaed1a2b3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d7403cd_ca0bf8b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-21T19:54:40Z",
+      "side": 1,
+      "message": "okay. With Zinger, Right after an ac adapter plugged",
+      "parentUuid": "5f4d24d4_fceae0b0",
       "range": {
         "startLine": 17,
         "startChar": 8,
