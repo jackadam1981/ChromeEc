@@ -64,6 +64,24 @@
       "revId": "f870475b1261c51fd3eb77c2e4c4653092702ea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baea2722_0fcfee6c",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-21T08:57:51Z",
+      "side": 1,
+      "message": "See CL:456989.",
+      "parentUuid": "df45b301_a23dffb5",
+      "revId": "f870475b1261c51fd3eb77c2e4c4653092702ea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
