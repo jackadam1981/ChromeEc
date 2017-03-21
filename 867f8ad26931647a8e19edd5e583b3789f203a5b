@@ -177,6 +177,24 @@
       "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b413c1d8_4590d7f0",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-03-21T17:59:50Z",
+      "side": 1,
+      "message": "default input current is 1.472A. If external adapter (low rating) cannot support it, anti-collapse will occur. External adapter OCP circuit can protect it from damaging.",
+      "parentUuid": "e56c1f1b_c123530b",
+      "revId": "867f8ad26931647a8e19edd5e583b3789f203a5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
