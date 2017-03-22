@@ -10,6 +10,7 @@
 #include "extension.h"
 #include "queue_policies.h"
 #include "shared_mem.h"
+#include "rwsig.h"
 #include "system.h"
 #include "update_fw.h"
 #include "usb-stream.h"
@@ -109,8 +110,96 @@ static int fetch_transfer_start(struct consumer const *consumer, size_t count,
 
 static int try_vendor_command(struct consumer const *consumer, size_t count)
 {
-	/* TODO(b/36375666): Vendor commands not implemented (yet). */
-	return 0;
+	struct update_frame_header ufh;
+	struct update_frame_header *cmd_buffer;
+	int rv = 0;
+
+	if (count < sizeof(ufh))
+		return 0;	/* Too short to be a valid vendor command. */
+
+	/*
+	 * Let's copy off the queue the update frame header, to see if this
+	 * is a channeled vendor command.
+	 */
+	queue_peek_units(consumer->queue, &ufh, 0, sizeof(ufh));
+	if (be32toh(ufh.cmd.block_base) != UPDATE_EXTRA_CMD)
+		return 0;
+
+	if (be32toh(ufh.block_size) != count) {
+		CPRINTS("%s: problem: block size and count mismatch (%d != %d)",
+			__func__, be32toh(ufh.block_size), count);
+		return 0;
+	}
+
+	if (shared_mem_acquire(count, (char **)&cmd_buffer)
+	    != EC_SUCCESS) {
+		CPRINTS("%s: problem: failed to allocate block of %d",
+			__func__, count);
+		return 0;
+	}
+
+	/* Get the entire command, don't remove it from the queue just yet. */
+	queue_peek_units(consumer->queue, cmd_buffer, 0, count);
+
+	/* Looks like this is a vendor command, let's verify it. */
+	if (update_pdu_valid(&cmd_buffer->cmd,
+			  count - offsetof(struct update_frame_header, cmd))) {
+		enum update_extra_command subcommand;
+		uint16_t response;
+		size_t response_size = sizeof(response);
+
+		/* looks good, let's process it. */
+		rv = 1;
+
+		/* Now remove if from the queue. */
+		queue_advance_head(consumer->queue, count);
+
+		subcommand = be16toh(*((uint16_t *)(cmd_buffer + 1)));
+
+		switch (subcommand) {
+		case UPDATE_EXTRA_CMD_IMMEDIATE_RESET:
+			ccputs("Rebooting!\n\n\n");
+			cflush();
+			system_reset(SYSTEM_RESET_MANUALLY_TRIGGERED);
+			/* Unreachable, unless something bad happens. */
+			response = 1;
+			break;
+		case UPDATE_EXTRA_CMD_JUMP_TO_RW:
+			switch (rwsig_get_status()) {
+			case RWSIG_VALID:
+				ccputs("Jumping to RW\n\n\n");
+				cflush();
+				rwsig_jump_now();
+				/* Unreachable, unless something bad happens. */
+				response = 1;
+				break;
+			case RWSIG_IN_PROGRESS:
+				CPRINTS("RWsig in progress, we can try again...");
+				response = 2; /* FIXME: better error value. */
+				break;
+			default:
+				CPRINTS("Failed to verify (%d)...",
+					rwsig_get_status());
+				response = 1; /* FIXME: better error value. */
+			}
+			break;
+		case UPDATE_EXTRA_CMD_STAY_IN_RO:
+			rwsig_abort();
+			response = 0;
+			break;
+		case UPDATE_EXTRA_CMD_UNLOCK_RW:
+			/* FIXME */
+			response = 1;
+			break;
+		default:
+			response = 1;
+		}
+
+		QUEUE_ADD_UNITS(&update_to_usb, &response, response_size);
+	}
+	shared_mem_release(cmd_buffer);
+
+	return rv;
 }
 
 /*
