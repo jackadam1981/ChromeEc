@@ -141,6 +141,24 @@
       "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a632ddc4_ac1b767c",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-22T23:01:14Z",
+      "side": 1,
+      "message": "Say you had:\n\nuint8_t command_body[4]\n\n...\n\n} else if (targ.shv[1].minor \u003e\u003d 20) {\n\t\tsubcommand \u003d VENDOR_CC_TURN_UPDATE_ON_V2;\n\t\tcommand_body_size \u003d sizeof(command_body); /* \u003d4, this is fine for subcommand V2 */\n                command_body[0] \u003d 0;\n                command_body[1] \u003d 100;\n                command_body[2] \u003d 0xa; // Some new parameters\n                command_body[3] \u003d 0xb;\n} else if (targ.shv[1].minor \u003e\u003d 19) {\n\t\tsubcommand \u003d VENDOR_CC_TURN_UPDATE_ON_V2;\n\t\tcommand_body_size \u003d sizeof(command_body); /* This is wrong now, should be 2 */\n                command_body[0] \u003d 0;\n                command_body[1] \u003d 100;\n}",
+      "parentUuid": "5acb13bf_b9f41ed5",
+      "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
