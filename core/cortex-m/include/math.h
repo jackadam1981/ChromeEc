@@ -30,6 +30,9 @@ static inline float fabsf(float v)
 	);
 	return root;
 }
+#else
+float sqrtf(float v);
+float fabsf(float v);
 #endif  /* CONFIG_FPU */
 
 #endif  /* __CROS_EC_MATH_H */

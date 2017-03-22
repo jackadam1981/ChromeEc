@@ -15,7 +15,10 @@ CFLAGS_FPU-$(CONFIG_FPU)=-mfpu=fpv4-sp-d16 -mfloat-abi=hard
 # CPU specific compilation flags
 CFLAGS_CPU+=-mthumb -Os -mno-sched-prolog
 CFLAGS_CPU+=-mno-unaligned-access
+CFLAGS_CPU+=-mfloat-abi=soft
 CFLAGS_CPU+=$(CFLAGS_FPU-y)
+
+LDFLAGS_EXTRA+=-lm
 
 ifneq ($(CONFIG_LTO),)
 CFLAGS_CPU+=-flto
