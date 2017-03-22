@@ -37,12 +37,16 @@
 
 #define UPDATE_PROTOCOL_VERSION 6
 
-/* This is the format of the update PDU header. */
+/*
+ * This is the format of the update PDU header.
+ *
+ * block digest: the first four bytes of the sha1 digest of the rest of the
+ *               PDU (can be 0 on boards where digest is ignored).
+ * block_base:   offset of this PDU into the SPI flash.
+ */
 struct update_command {
-	uint32_t  block_digest;  /* first 4 bytes of sha1 of the rest of the
-				  * PDU.
-				  */
-	uint32_t  block_base;    /* Offset of this PDU into the SPI flash. */
+	uint32_t  block_digest;
+	uint32_t  block_base;
 	/* The actual payload goes here. */
 } __packed;
 
@@ -57,9 +61,7 @@ struct update_command {
  * cmd field below), and puts its reply into the same buffer the PDU was in.
  */
 struct update_frame_header {
-	uint32_t block_size;    /* Total size of the block, including this
-				 * field.
-				 */
+	uint32_t block_size; /* Total frame size, including this field. */
 	struct update_command cmd;
 };
 
@@ -129,7 +131,7 @@ void fw_update_complete(void);
 int update_pdu_valid(struct update_command *cmd_body, size_t cmd_size);
 
 /* Various update command return values. */
-enum return_value {
+enum {
 	UPDATE_SUCCESS = 0,
 	UPDATE_BAD_ADDR = 1,
 	UPDATE_ERASE_FAILURE = 2,

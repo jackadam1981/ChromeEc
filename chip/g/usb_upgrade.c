@@ -13,6 +13,7 @@
 #include "system.h"
 #include "upgrade_fw.h"
 #include "usb-stream.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
@@ -106,6 +107,7 @@ static int valid_transfer_start(struct consumer const *consumer, size_t count,
 			return 0;
 	return 1;
 }
+
 static int try_vendor_command(struct consumer const *consumer, size_t count)
 {
 	struct update_frame_header ufh;
