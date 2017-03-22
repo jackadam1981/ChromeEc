@@ -69,6 +69,24 @@
       "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfda6b42_1a3d8af3",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-22T04:21:26Z",
+      "side": 1,
+      "message": "Above: uint8_t command_body[2]; /* Max command body size. */\n\nIf you have _another_ command who\u0027s body is longer, you might end up writing garbage if you just use sizeof here.",
+      "parentUuid": "86379c5d_539b9072",
+      "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
