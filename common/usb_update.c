@@ -75,11 +75,11 @@ static uint32_t block_size;
 static uint32_t block_index;
 
 /*
- * Verify that the contents of the USB rx queue is a valid transfer start
- * message from host, and if so - save its contents in the passed in
- * update_frame_header structure.
+ * Fetches a transfer start frame from the queue. This can be either an update
+ * start frame (block_size = 0, all of cmd = 0), or the beginning of a frame
+ * (block_size > 0, valid block_base in cmd).
  */
-static int valid_transfer_start(struct consumer const *consumer, size_t count,
+static int fetch_transfer_start(struct consumer const *consumer, size_t count,
 				struct update_frame_header *pupfr)
 {
 	int i;
@@ -88,6 +88,9 @@ static int valid_transfer_start(struct consumer const *consumer, size_t count,
 	 * Let's just make sure we drain the queue no matter what the contents
 	 * are. This way they won't be in the way during next callback, even
 	 * if these contents are not what's expected.
+	 *
+	 * Note: If count > sizeof(*pupfr), pupfr will be corrupted. This is
+	 * ok as we will immediately fail after this.
 	 */
 	i = count;
 	while (i > 0) {
@@ -101,10 +104,6 @@ static int valid_transfer_start(struct consumer const *consumer, size_t count,
 		return 0;
 	}
 
-	/* In the first block the payload (pupfr->cmd) must be all zeros. */
-	for (i = 0; i < sizeof(pupfr->cmd); i++)
-		if (((uint8_t *)&pupfr->cmd)[i])
-			return 0;
 	return 1;
 }
 
@@ -172,7 +171,15 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 		if (try_vendor_command(consumer, count))
 			return;
 
-		if (!valid_transfer_start(consumer, count, &u.upfr)) {
+		/*
+		 * An update start PDU is a command without any payload, with
+		 * digest = 0, and base = 0.
+		 */
+		if (!fetch_transfer_start(consumer, count, &u.upfr) ||
+		    be32toh(u.upfr.block_size) !=
+					sizeof(struct update_frame_header) ||
+		    u.upfr.cmd.block_digest != 0 ||
+		    u.upfr.cmd.block_base != 0) {
 			/*
 			 * Something is wrong, this payload is not a valid
 			 * update start PDU. Let'w indicate this by returning
@@ -229,17 +236,9 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 
 		/*
 		 * At this point we expect a block start message. It is
-		 * sizeof(upfr) bytes in size, but is not the transfer start
-		 * message, which also is of that size AND has the command
-		 * field of all zeros.
+		 * sizeof(upfr) bytes in size.
 		 */
-		if (valid_transfer_start(consumer, count, &upfr) ||
-		    (count != sizeof(upfr))) {
-			/*
-			 * Instead of a block start message we received either
-			 * a transfer start message or a chunk. We must have
-			 * gotten out of sync with the host.
-			 */
+		if (!fetch_transfer_start(consumer, count, &upfr)) {
 			resp_value = UPDATE_GEN_ERROR;
 			CPRINTS("%s:%d", __FILE__, __LINE__);
 			QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
@@ -249,8 +248,21 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 		/* Let's allocate a large enough buffer. */
 		block_size = be32toh(upfr.block_size) -
 			offsetof(struct update_frame_header, cmd);
+
+		/*
+		 * Only update start PDU is allowed to have a size 0 payload.
+		 */
+		if (block_size <= sizeof(struct update_command) ||
+		    block_size > (UPDATE_PDU_SIZE +
+					sizeof(struct update_command))) {
+			resp_value = UPDATE_GEN_ERROR;
+			CPRINTS("%s:%d", __FILE__, __LINE__);
+			QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
+			return;
+		}
+
 		if (shared_mem_acquire(block_size, (char **)&block_buffer)
-		    != EC_SUCCESS) {
+				!= EC_SUCCESS) {
 			CPRINTS("FW update: error: failed to alloc %d bytes.",
 				block_size);
 			resp_value = UPDATE_MALLOC_ERROR;
