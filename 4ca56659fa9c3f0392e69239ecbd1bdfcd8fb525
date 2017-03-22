@@ -283,6 +283,30 @@
       "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5e95e9c_67947285",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-22T20:20:40Z",
+      "side": 1,
+      "message": "I think it does. But somewhere in the list of vendor commands and their format. We don\u0027t really have that currently.",
+      "parentUuid": "80b059a4_951f1ef8",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 71
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
