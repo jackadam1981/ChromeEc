@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "1e7ec404_fb5af5f3",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-22T18:39:09Z",
+      "side": 1,
+      "message": "Oh, okay.",
+      "parentUuid": "977b7ec7_567ad923",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58b0af3b_0fb47827",
         "filename": "board/cr50/tpm2/upgrade.c",
         "patchSetId": 3
@@ -187,6 +211,30 @@
       "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d33c89fa_8f9516d1",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-22T18:39:09Z",
+      "side": 1,
+      "message": "Ah, gotcha.",
+      "parentUuid": "0705c15e_1ecb81df",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 71
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
