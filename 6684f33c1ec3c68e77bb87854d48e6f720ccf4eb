@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6aa5ea20_292d4896",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-22T19:53:29Z",
+      "side": 1,
+      "message": "why is volatile being used here?",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "6684f33c1ec3c68e77bb87854d48e6f720ccf4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
