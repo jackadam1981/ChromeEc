@@ -16,6 +16,24 @@
       "revId": "84386ccdf035df4a736d0505077cb4036199781f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d227998_6aa97dfc",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T21:46:55Z",
+      "side": 1,
+      "message": "\"If one wants to manually do this w/o a restart\" - what is \"this\"  - reset the tpm?\n\nOn versions 18 and earlier there are two options: immediate reset and post reset. If post reset is requested, the actual H1 reboot happens next time a TPM reset is requested.\n\nOn version 19 there are tow options: reset through turning on the second image OR post reset.\n\nreset through  turning on the second image is an equivalent of the immediate reset from the user point of view. Post reset would not work unless the command to turn on the other image is sent first.\n\nThat is from the user point of view pre 19 and 19 and later versions will behave differently: the -p option will not guarantee switching to the new image after reset, a \u0027turn on\u0027 vendor command with a zero timeout will be required first.\n\nShould I add sending such a command here, so that usb_updater behavior does not change?",
+      "parentUuid": "0a1aa79c_dee7973a",
+      "revId": "84386ccdf035df4a736d0505077cb4036199781f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
