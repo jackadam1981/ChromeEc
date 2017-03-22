@@ -34,6 +34,24 @@
       "revId": "84386ccdf035df4a736d0505077cb4036199781f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ad14ce_baf19aa4",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-22T21:54:48Z",
+      "side": 1,
+      "message": "this \u003d\u003d fw update. If that\u0027s something someone would want to do w/o performing a reset they need to remember to pass the upstart flag. Just wanted to understand the logic.",
+      "parentUuid": "0d227998_6aa97dfc",
+      "revId": "84386ccdf035df4a736d0505077cb4036199781f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
