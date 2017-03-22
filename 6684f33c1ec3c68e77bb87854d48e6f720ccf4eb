@@ -22,6 +22,30 @@
       "revId": "6684f33c1ec3c68e77bb87854d48e6f720ccf4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5b89e2a_f3249e06",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T20:06:51Z",
+      "side": 1,
+      "message": "ah, this is a leftover of an earlier version, let me remove it.",
+      "parentUuid": "6aa5ea20_292d4896",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 9
+      },
+      "revId": "6684f33c1ec3c68e77bb87854d48e6f720ccf4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
