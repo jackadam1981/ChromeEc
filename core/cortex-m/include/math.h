@@ -30,6 +30,17 @@ static inline float fabsf(float v)
 	);
 	return root;
 }
+#else
+
+// For now just stub these out so it compiles at least
+static inline float sqrtf(float v)
+{
+	return v;
+}
+
+static inline float fabsf(float v) {
+	return v;
+}
 #endif  /* CONFIG_FPU */
 
 #endif  /* __CROS_EC_MATH_H */
