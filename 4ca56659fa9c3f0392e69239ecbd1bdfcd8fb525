@@ -235,6 +235,30 @@
       "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "176f2db6_934aa155",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-22T19:55:01Z",
+      "side": 1,
+      "message": "So the semantics are that 0 !\u003d immediate reset. It just means don\u0027t reset.",
+      "parentUuid": "d33c89fa_8f9516d1",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 71
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
