@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "01c0a518_7b3bbbc5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T18:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "220b86f1_8bbde554",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c066b400_6627337c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d245c3_ac50d774",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T18:28:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c066b400_6627337c",
+      "range": {
+        "startLine": 36,
+        "startChar": 15,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "977b7ec7_567ad923",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T18:28:05Z",
+      "side": 1,
+      "message": "this is just a stopgap check for the case when the header is not initialized and the size field is set to 0xffffffff - the top bit check would still pass, but there is no need to try to restore  it.\n\nAs the comment says, the check verifies that the size is \u0027sensible\u0027, i.e. anything exceeding the RW size would not make sense here as a valid image size.",
+      "parentUuid": "e5e280a8_80e04b7f",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58b0af3b_0fb47827",
         "filename": "board/cr50/tpm2/upgrade.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-03-22T18:07:26Z",
       "side": 1,
       "message": "What would a timeout of zero be used for?",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 71
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0705c15e_1ecb81df",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T18:28:05Z",
+      "side": 1,
+      "message": "conceivably someone wants to restore the header, but does not want to trigger a reset - this would be the way to do it.",
+      "parentUuid": "58b0af3b_0fb47827",
       "range": {
         "startLine": 99,
         "startChar": 38,
