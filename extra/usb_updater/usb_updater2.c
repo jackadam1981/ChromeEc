@@ -203,13 +203,14 @@ struct transfer_descriptor {
 
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "bd:fhu";
+static char *short_opts = "bd:fhju";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"binvers",	1,   NULL, 'b'},
 	{"device",	1,   NULL, 'd'},
 	{"fwver",	0,   NULL, 'f'},
 	{"help",	0,   NULL, 'h'},
+	{"jump_to_rw",	0,   NULL, 'j'},
 	{"upstart",	0,   NULL, 'u'},
 	{},
 };
@@ -743,12 +744,13 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 			    void *cmd_body, size_t body_size,
 			    void *resp, size_t *resp_size)
 {
-#if 0
 	struct update_frame_header *ufh;
 	uint16_t *frame_ptr;
 	size_t usb_msg_size;
+#if 0
 	SHA_CTX ctx;
-	uint8_t digest[SHA_DIGEST_LENGTH];
+#endif
+	uint8_t digest[SHA_DIGEST_LENGTH] = { 0 };
 
 	usb_msg_size = sizeof(struct update_frame_header) +
 		sizeof(subcommand) + body_size;
@@ -761,24 +763,25 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 	}
 
 	ufh->block_size = htobe32(usb_msg_size);
-	ufh->cmd.block_base = htobe32(CONFIG_EXTENSION_COMMAND);
+	ufh->cmd.block_base = htobe32(UPDATE_EXTRA_CMD);
 	frame_ptr = (uint16_t *)(ufh + 1);
 	*frame_ptr = htobe16(subcommand);
 
 	if (body_size)
 		memcpy(frame_ptr + 1, cmd_body, body_size);
 
+#if 0
 	/* Calculate the digest. */
 	SHA1_Init(&ctx);
 	SHA1_Update(&ctx, &ufh->cmd.block_base,
 		    usb_msg_size -
 		    offsetof(struct update_frame_header, cmd.block_base));
 	SHA1_Final(digest, &ctx);
+#endif
 	memcpy(&ufh->cmd.block_digest, digest, sizeof(ufh->cmd.block_digest));
 	xfer(uep, ufh, usb_msg_size, resp, resp_size ? *resp_size : 0);
 
 	free(ufh);
-#endif
 	return 0;
 }
 
@@ -795,6 +798,22 @@ static void send_done(struct usb_endpoint *uep)
 	/* Send stop request, ignoring reply. */
 	out = htobe32(UPDATE_DONE);
 	xfer(uep, &out, sizeof(out), &out, 1);
+}
+
+static void jump_to_rw(struct transfer_descriptor *td)
+{
+	uint16_t subcommand = UPDATE_EXTRA_CMD_JUMP_TO_RW;
+
+	if (td->ep_type == usb_xfer) {
+		send_done(&td->uep);
+
+		if (protocol_version > 5) {
+			ext_cmd_over_usb(&td->uep, subcommand,
+					 NULL, 0,
+					 NULL, 0);
+			printf("jumped to RW\n");
+		}
+	}
 }
 
 /* Returns number of successfully transmitted image sections. */
@@ -861,7 +880,7 @@ static void generate_reset_request(struct transfer_descriptor *td)
 	/* Most common case. */
 	command_body_size = 0;
 	response_size = 1;
-	subcommand = 0xabcd; /* FIXME */
+	subcommand = UPDATE_EXTRA_CMD_IMMEDIATE_RESET;
 	if (td->ep_type == usb_xfer) {
 		ext_cmd_over_usb(&td->uep, subcommand,
 				 command_body, command_body_size,
@@ -891,6 +910,7 @@ int main(int argc, char *argv[])
 	int transferred_sections = 0;
 	int binary_vers = 0;
 	int show_fw_ver = 0;
+	int jump_rw = 0;
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -921,6 +941,9 @@ int main(int argc, char *argv[])
 		case 'h':
 			usage(errorcnt);
 			break;
+		case 'j':
+			jump_rw = 1;
+			break;
 		case 'u':
 			td.upstart_mode = 1;
 			break;
@@ -947,7 +970,7 @@ int main(int argc, char *argv[])
 	if (errorcnt)
 		usage(errorcnt);
 
-	if (!show_fw_ver) {
+	if (!show_fw_ver && !jump_rw) {
 		if (optind >= argc) {
 			fprintf(stderr,
 				"\nERROR: Missing required <binary image>\n\n");
@@ -994,7 +1017,8 @@ int main(int argc, char *argv[])
 
 		if (transferred_sections && !td.upstart_mode)
 			generate_reset_request(&td);
-	}
+	} else if (jump_rw)
+		jump_to_rw(&td);
 
 	if (td.ep_type == usb_xfer) {
 		libusb_close(td.uep.devh);
