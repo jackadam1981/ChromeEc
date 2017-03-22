@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a269f3bb_5fe77f21",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T00:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc8229cb_a89dc9f4",
+      "revId": "77ba89af78497057ae2781dafa03d72302b23314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8326b94e_723a3049",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "77ba89af78497057ae2781dafa03d72302b23314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fcfafc1_8b95bc61",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T00:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8326b94e_723a3049",
+      "revId": "77ba89af78497057ae2781dafa03d72302b23314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
