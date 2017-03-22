@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c88dd203_2cf190c0",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-22T04:07:46Z",
+      "side": 1,
+      "message": "nit: Might want to take it as an opportunity to fix spelling to num_txed_sections.",
+      "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493ab9ac_1b066056",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-22T04:07:46Z",
+      "side": 1,
+      "message": "Hard-coding 2 sounds safer (in case you end up with a longer command in the future)",
+      "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
