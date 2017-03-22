@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "278d6848_449c5fe8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-22T20:13:02Z",
+      "side": 1,
+      "message": "Ya I think it\u0027d be helpful to the reader. We\u0027re just not honoring reboots in that situation.",
+      "parentUuid": "2e260ba3_311f5d53",
+      "revId": "2c68359333892c0aac605f56059ad72926184bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89d4ec19_d0212152",
         "filename": "chip/g/upgrade_fw.c",
         "patchSetId": 4
