@@ -105,6 +105,24 @@
       "revId": "2c68359333892c0aac605f56059ad72926184bb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb3bdaf2_5bef2080",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T22:54:02Z",
+      "side": 1,
+      "message": "the second ro\u0027s top 2K are just wasted at this time.",
+      "parentUuid": "26fc2bc5_07d39dcf",
+      "revId": "2c68359333892c0aac605f56059ad72926184bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
