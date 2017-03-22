@@ -87,6 +87,24 @@
       "revId": "2c68359333892c0aac605f56059ad72926184bb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26fc2bc5_07d39dcf",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-22T22:44:37Z",
+      "side": 1,
+      "message": "But you have potentially 2 different ROs? ro_base_offset changes.",
+      "parentUuid": "41aecaef_0b00aa08",
+      "revId": "2c68359333892c0aac605f56059ad72926184bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
