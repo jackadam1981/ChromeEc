@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2e260ba3_311f5d53",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T20:01:49Z",
+      "side": 1,
+      "message": "the new logic is that in case there is a pending RW image, the reset will happen only when  the new vendor command is received.\n\nThe new vendor command would be sent by the AP firmware on every full reboot.\n\ndo you want me to mention this somewhere?",
+      "parentUuid": "c3bb178a_1e261490",
+      "revId": "2c68359333892c0aac605f56059ad72926184bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89d4ec19_d0212152",
         "filename": "chip/g/upgrade_fw.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-22T19:18:39Z",
       "side": 1,
       "message": "Not specifically related: where do the certs get moved on an update?",
+      "revId": "2c68359333892c0aac605f56059ad72926184bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41aecaef_0b00aa08",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T20:01:49Z",
+      "side": 1,
+      "message": "the top 2k of the RO are never touched, so the certs do not  ever need to move.",
+      "parentUuid": "89d4ec19_d0212152",
       "revId": "2c68359333892c0aac605f56059ad72926184bb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
