@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "220b86f1_8bbde554",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-22T18:07:26Z",
+      "side": 1,
+      "message": "typo: \u0027there\u0027",
+      "range": {
+        "startLine": 24,
+        "startChar": 14,
+        "endLine": 24,
+        "endChar": 18
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c066b400_6627337c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-22T18:07:26Z",
+      "side": 1,
+      "message": "typo: \u0027new\u0027",
+      "range": {
+        "startLine": 36,
+        "startChar": 15,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5e280a8_80e04b7f",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-22T18:07:26Z",
+      "side": 1,
+      "message": "What about for the RO images?",
+      "range": {
+        "startLine": 52,
+        "startChar": 16,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b0af3b_0fb47827",
+        "filename": "board/cr50/tpm2/upgrade.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-22T18:07:26Z",
+      "side": 1,
+      "message": "What would a timeout of zero be used for?",
+      "range": {
+        "startLine": 99,
+        "startChar": 38,
+        "endLine": 99,
+        "endChar": 71
+      },
+      "revId": "4ca56659fa9c3f0392e69239ecbd1bdfcd8fb525",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
