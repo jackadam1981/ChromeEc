@@ -87,6 +87,24 @@
       "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d92c9742_5e9e14d2",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T18:35:01Z",
+      "side": 1,
+      "message": "I don\u0027t see this as a problem: command_body is used as the command body, its size is used as the command size.\n\nShould command_body array size increase in the future, command_body_size would also be assigned a bigger value.",
+      "parentUuid": "bfda6b42_1a3d8af3",
+      "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
