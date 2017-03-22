@@ -218,7 +218,7 @@ struct transfer_descriptor {
 
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "bcd:fhpsu";
+static char *short_opts = "bcd:fhjpsu";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"binvers",	1,   NULL, 'b'},
@@ -226,6 +226,7 @@ static const struct option long_opts[] = {
 	{"device",	1,   NULL, 'd'},
 	{"fwver",	0,   NULL, 'f'},
 	{"help",	0,   NULL, 'h'},
+	{"jump_to_rw",	0,   NULL, 'j'},
 	{"post_reset",	0,   NULL, 'p'},
 	{"systemdev",	0,   NULL, 's'},
 	{"upstart",	0,   NULL, 'u'},
@@ -641,8 +642,8 @@ static struct {
 	{"RW", CONFIG_RW_MEM_OFF, CONFIG_RW_SIZE}
 #endif
 	/* FIXME: This can come from FMAP */
-	{"RO", 0, 65536},
-	{"RW", 69632, 61440}
+	{"RO", 0, 0x10000},
+	{"RW", 0x11000, 0xf000}
 };
 
 /*
@@ -667,46 +668,6 @@ static void fetch_header_versions(const void *image)
 	}
 }
 
-
-/* Compare to signer headers and determine which one is newer. */
-static int a_newer_than_b(struct signed_header_version *a,
-			  struct signed_header_version *b)
-{
-	uint32_t fields[][3] = {
-		{a->epoch, a->major, a->minor},
-		{b->epoch, b->major, b->minor},
-	};
-	size_t i;
-
-	/*
-	 * Even though header version fields are 32 bits in size, we don't
-	 * exepect any version field ever exceed say 1000. Anything in excess
-	 * of 1000 should is considered zero.
-	 *
-	 * This would cover old images where one of the RO version fields is
-	 * the number of git patches since last tag (and is in excess of
-	 * 4000), and images where there is no code in a section (all fields
-	 * are set to 0xffffffff).
-	 */
-	for (i = 0; i < ARRAY_SIZE(fields[0]); i++) {
-		uint32_t a_value;
-		uint32_t b_value;
-
-		a_value = fields[0][i];
-		b_value = fields[1][i];
-
-		if (a_value > 4000)
-			a_value = 0;
-
-		if (b_value > 4000)
-			b_value = 0;
-
-		if (a_value != b_value)
-			return a_value > b_value;
-	}
-
-	return 0;	/* All else being equal A is no newer than B. */
-}
 /*
  * Pick sections to transfer based on information retrieved from the target,
  * the new image, and the protocol version the target is running.
@@ -717,23 +678,6 @@ static void pick_sections(struct transfer_descriptor *td)
 
 	for (i = 0; i < ARRAY_SIZE(sections); i++) {
 		uint32_t offset = sections[i].offset;
-
-		if (!strcmp(sections[i].name, "RW")) {
-			/*
-			 * Ok, this would be the RW section to transfer to the
-			 * device. Is it newer in the new image than the
-			 * running RW section on the device?
-			 *
-			 * If not in 'upstart' mode - transfer even if
-			 * versions are the same, timestamps could be
-			 * different.
-			 */
-
-			if (a_newer_than_b(&sections[i].shv, &targ.shv[1]) ||
-			    !td->upstart_mode)
-				sections[i].ustatus = needed;
-			continue;
-		}
 
 		/*
 		 * RO update not supported in versions below 3, another
@@ -753,8 +697,7 @@ static void pick_sections(struct transfer_descriptor *td)
 		 * Is it newer in the new image than the running RO section on
 		 * the device?
 		 */
-		if (a_newer_than_b(&sections[i].shv, &targ.shv[0]))
-			sections[i].ustatus = needed;
+		sections[i].ustatus = needed;
 	}
 }
 
@@ -890,12 +833,13 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 			    void *cmd_body, size_t body_size,
 			    void *resp, size_t *resp_size)
 {
-#if 0
 	struct update_frame_header *ufh;
 	uint16_t *frame_ptr;
 	size_t usb_msg_size;
+#if 0
 	SHA_CTX ctx;
-	uint8_t digest[SHA_DIGEST_LENGTH];
+#endif
+	uint8_t digest[SHA_DIGEST_LENGTH] = { 0 };
 
 	usb_msg_size = sizeof(struct update_frame_header) +
 		sizeof(subcommand) + body_size;
@@ -908,24 +852,25 @@ static int ext_cmd_over_usb(struct usb_endpoint *uep, uint16_t subcommand,
 	}
 
 	ufh->block_size = htobe32(usb_msg_size);
-	ufh->cmd.block_base = htobe32(CONFIG_EXTENSION_COMMAND);
+	ufh->cmd.block_base = htobe32(UPDATE_EXTRA_CMD);
 	frame_ptr = (uint16_t *)(ufh + 1);
 	*frame_ptr = htobe16(subcommand);
 
 	if (body_size)
 		memcpy(frame_ptr + 1, cmd_body, body_size);
 
+#if 0
 	/* Calculate the digest. */
 	SHA1_Init(&ctx);
 	SHA1_Update(&ctx, &ufh->cmd.block_base,
 		    usb_msg_size -
 		    offsetof(struct update_frame_header, cmd.block_base));
 	SHA1_Final(digest, &ctx);
+#endif
 	memcpy(&ufh->cmd.block_digest, digest, sizeof(ufh->cmd.block_digest));
 	xfer(uep, ufh, usb_msg_size, resp, resp_size ? *resp_size : 0);
 
 	free(ufh);
-#endif
 	return 0;
 }
 
@@ -966,6 +911,22 @@ static void invalidate_inactive_rw(struct transfer_descriptor *td)
 	}
 }
 
+static void jump_to_rw(struct transfer_descriptor *td)
+{
+	uint16_t subcommand = UPDATE_EXTRA_CMD_JUMP_TO_RW;
+
+	if (td->ep_type == usb_xfer) {
+		send_done(&td->uep);
+
+		if (protocol_version > 5) {
+			ext_cmd_over_usb(&td->uep, subcommand,
+					 NULL, 0,
+					 NULL, 0);
+			printf("jumped to RW\n");
+		}
+	}
+}
+
 /* Returns number of successfully transmitted image sections. */
 static int transfer_and_reboot(struct transfer_descriptor *td,
 			       uint8_t *data, size_t data_len)
@@ -973,7 +934,7 @@ static int transfer_and_reboot(struct transfer_descriptor *td,
 	size_t i;
 	int num_txed_secitons = 0;
 	/* By default target is reset immediately after update. */
-	uint16_t subcommand = VENDOR_CC_IMMEDIATE_RESET;
+	uint16_t subcommand = UPDATE_EXTRA_CMD_IMMEDIATE_RESET;
 
 	for (i = 0; i < ARRAY_SIZE(sections); i++)
 		if (sections[i].ustatus == needed) {
@@ -994,16 +955,6 @@ static int transfer_and_reboot(struct transfer_descriptor *td,
 
 	printf("-------\nupdate complete\n");
 
-	/*
-	 * In upstart mode, or in case target is running older protocol
-	 * version, or in case the user explicitly wants it, request post
-	 * reset instead of immediate reset. In this case the h1 will reset
-	 * next time the target reboots, and will consider running the
-	 * uploaded code.
-	 */
-	if (td->upstart_mode || (protocol_version <= 5) || td->post_reset)
-		subcommand = EXTENSION_POST_RESET;
-
 	if (td->ep_type == usb_xfer) {
 		uint32_t out;
 
@@ -1021,7 +972,7 @@ static int transfer_and_reboot(struct transfer_descriptor *td,
 			 *
 			 * No response is expected in case of immediate reset.
 			 */
-			if (subcommand == VENDOR_CC_IMMEDIATE_RESET) {
+			if (subcommand == UPDATE_EXTRA_CMD_IMMEDIATE_RESET) {
 				presponse = NULL;
 				response_size = 0;
 			} else {
@@ -1090,6 +1041,7 @@ int main(int argc, char *argv[])
 	int binary_vers = 0;
 	int show_fw_ver = 0;
 	int corrupt_inactive_rw = 0;
+	int jump_rw = 0;
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -1123,6 +1075,9 @@ int main(int argc, char *argv[])
 		case 'h':
 			usage(errorcnt);
 			break;
+		case 'j':
+			jump_rw = 1;
+			break;
 		case 's':
 			td.ep_type = dev_xfer;
 			break;
@@ -1155,7 +1110,7 @@ int main(int argc, char *argv[])
 	if (errorcnt)
 		usage(errorcnt);
 
-	if (!show_fw_ver && !corrupt_inactive_rw) {
+	if (!show_fw_ver && !corrupt_inactive_rw && !jump_rw) {
 		if (optind >= argc) {
 			fprintf(stderr,
 				"\nERROR: Missing required <binary image>\n\n");
@@ -1199,6 +1154,9 @@ int main(int argc, char *argv[])
 		printf("RW %d.%d.%d\n", targ.shv[1].epoch, targ.shv[1].major,
 		       targ.shv[1].minor);
 	}
+
+	if (jump_rw)
+		jump_to_rw(&td);
 
 	if (corrupt_inactive_rw)
 		invalidate_inactive_rw(&td);
