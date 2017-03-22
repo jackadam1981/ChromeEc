@@ -126,7 +126,7 @@ void fw_update_complete(void);
 int update_pdu_valid(struct update_command *cmd_body, size_t cmd_size);
 
 /* Various update command return values. */
-enum return_value {
+enum {
 	UPDATE_SUCCESS = 0,
 	UPDATE_BAD_ADDR = 1,
 	UPDATE_ERASE_FAILURE = 2,
