@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "13f8020d_00b6536a",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T04:16:03Z",
+      "side": 1,
+      "message": "sure, will do.",
+      "parentUuid": "c88dd203_2cf190c0",
+      "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "493ab9ac_1b066056",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-22T04:07:46Z",
       "side": 1,
       "message": "Hard-coding 2 sounds safer (in case you end up with a longer command in the future)",
+      "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86379c5d_539b9072",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T04:16:03Z",
+      "side": 1,
+      "message": "I don\u0027t understand - why hardcoding 2 is safer? If the command size changes in the future the sizeof() will follow, no?",
+      "parentUuid": "493ab9ac_1b066056",
       "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
