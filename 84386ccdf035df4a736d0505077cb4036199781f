@@ -52,6 +52,24 @@
       "revId": "84386ccdf035df4a736d0505077cb4036199781f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7572635f_4279baa3",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T22:03:41Z",
+      "side": 1,
+      "message": "from this point of view -this patch does not change the usb_updater logic apart from the fact that passing the \u0027-p\u0027 flag does not guarantee that the new image would kick in on the next tpm reset.",
+      "parentUuid": "24ad14ce_baf19aa4",
+      "revId": "84386ccdf035df4a736d0505077cb4036199781f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
