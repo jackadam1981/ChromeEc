@@ -123,6 +123,24 @@
       "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5acb13bf_b9f41ed5",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-22T22:56:43Z",
+      "side": 1,
+      "message": "so, if I update the array size above and define it as\n\nuint8_t command_body[4]\n\nwouldn\u0027t \"sizeof(command_body)\" become 4 also?\n\nI must be missing something...",
+      "parentUuid": "bc523093_3854d3fa",
+      "revId": "48f5bb1e26376027e9406cffd30a487904f9dcb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
