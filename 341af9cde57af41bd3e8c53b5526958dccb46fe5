@@ -574,6 +574,29 @@
     },
     {
       "key": {
+        "uuid": "c16145e3_79d95994",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3998,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-03-23T20:24:42Z",
+      "side": 1,
+      "message": "can we do a rebase here?  looks like 0x011B got used up recently.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/4ff544a573302336b1e2d8b55bfa8a32f847de4e",
+      "range": {
+        "startLine": 3998,
+        "startChar": 30,
+        "endLine": 3998,
+        "endChar": 36
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32709ff1_c284ca84",
         "filename": "util/ectool.c",
         "patchSetId": 2
