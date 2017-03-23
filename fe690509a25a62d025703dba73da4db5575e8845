@@ -22,6 +22,23 @@
       "revId": "fe690509a25a62d025703dba73da4db5575e8845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1467c5a_1de293d3",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-23T18:09:51Z",
+      "side": 1,
+      "message": "Where do we do this relative to setting an input limit?  Or does it matter?",
+      "revId": "fe690509a25a62d025703dba73da4db5575e8845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
