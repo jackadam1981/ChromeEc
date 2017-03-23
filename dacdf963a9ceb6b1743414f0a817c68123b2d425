@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb0ed956_faa9ac92",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T02:43:42Z",
+      "side": 1,
+      "message": "How does this file get picked up without a makefile change?\n\nI see:\nchip-$(CONFIG_FLASH_PHYSICAL)+\u003dflash-$(CHIP_FAMILY).o\n\nBut wouldn\u0027t that have failed to compile before this change?",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77d65c64_3d564f79",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T02:43:42Z",
+      "side": 1,
+      "message": "Not needed?",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df6dc9c0_c53619b5",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T02:43:42Z",
+      "side": 1,
+      "message": "Weird function name, you actually wait for the controller to become _not_ busy.",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a84f276_caf2e358",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T02:43:42Z",
+      "side": 1,
+      "message": "CYCLE_PER_FLASH_LOOP is supposed to be cycles, not microseconds, there\u0027s something wrong here.",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ea8040a_59164604",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T02:43:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure to understand what this does.\n\nlocks can either be FLASH_CR_LOCK or FLASH_CR_OPTLOCK.\n\nIf locks \u003d FLASH_CR_LOCK:\nSTM32_FLASH_CR ^ FLASH_CR_OPTLOCK \u0026 (FLASH_CR_LOCK | FLASH_CR_OPTLOCK)\n\nSo that\u0027ll return error if FLASH_CR_LOCK is set (makes sense: unlock failed), or if FLASH_CR_OPTLOCK is unset (why?)\n\nIf locks \u003d FLASH_CR_OPTLOCK:\nSTM32_FLASH_CR ^ FLASH_CR_OPTLOCK \u0026 FLASH_CR_OPTLOCK\n(that seems to be equivalent to !(STM32_FLASH_CR \u0026 FLASH_CR_OPTLOCK))\n\nSo that\u0027ll return error if FLASH_CR_OPTLOCK is unset (again, why?)",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "258d949f_24e29bb9",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T02:43:42Z",
+      "side": 1,
+      "message": "This can happen. (https://docs.google.com/document/d/19eQElHiPXJYXUM1yNHPP5NgN3Tc95Zfznbc3gF1MxMs/edit#heading\u003dh.lbdj1s3a6fc1)",
+      "range": {
+        "startLine": 155,
+        "startChar": 28,
+        "endLine": 156,
+        "endChar": 41
+      },
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc65465a_d7291095",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T02:43:42Z",
+      "side": 1,
+      "message": "Missing timeout/busy check?",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ae06245_aeaa625d",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T02:43:42Z",
+      "side": 1,
+      "message": "Is it ok to do this is unlock failed? (you jump here if unlock failed)",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4afadfe_0c931d17",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T02:43:42Z",
+      "side": 1,
+      "message": "You should really check start too, right?",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b55d09ad_083921e7",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T02:43:42Z",
+      "side": 1,
+      "message": "Should this be called FLASH_CR_OBL_LAUNCH like the other ones above?",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
