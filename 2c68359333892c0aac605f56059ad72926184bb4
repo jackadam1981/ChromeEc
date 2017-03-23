@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "88742f9c_88b2cabe",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-03-23T01:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "278d6848_449c5fe8",
+      "revId": "2c68359333892c0aac605f56059ad72926184bb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89d4ec19_d0212152",
         "filename": "chip/g/upgrade_fw.c",
         "patchSetId": 4
