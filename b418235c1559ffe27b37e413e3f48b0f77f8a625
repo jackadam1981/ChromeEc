@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d1fb75b0_0d35a42a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-23T09:36:24Z",
+      "side": 1,
+      "message": "Maybe it\u0027s a good idea to compile in CONFIG_CMD_FLASH and do some flashread/flashwrite with different protection levels.",
+      "revId": "b418235c1559ffe27b37e413e3f48b0f77f8a625",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93b12388_6bbff245",
         "filename": "chip/stm32/flash-stm32l4.c",
         "patchSetId": 6
