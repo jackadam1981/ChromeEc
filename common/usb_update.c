@@ -125,6 +125,17 @@ static uint64_t prev_activity_timestamp;
  */
 static uint8_t  data_was_transferred;
 
+/* Reply with an error to remote side, reset state. */
+static void send_error_reset(uint8_t resp_value)
+{
+	QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
+	rx_state_ = rx_idle;
+	if (block_buffer) {
+		shared_mem_release(block_buffer);
+		block_buffer = NULL;
+	}
+}
+
 /* Called to deal with data from the host */
 static void update_out_handler(struct consumer const *consumer, size_t count)
 {
@@ -185,9 +196,8 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 			 * update start PDU. Let'w indicate this by returning
 			 * a single byte error code.
 			 */
-			resp_value = UPDATE_GEN_ERROR;
-			CPRINTS("%s:%d", __FILE__, __LINE__);
-			QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
+			CPRINTS("FW update: invalid start.");
+			send_error_reset(UPDATE_GEN_ERROR);
 			return;
 		}
 
@@ -239,9 +249,8 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 		 * sizeof(upfr) bytes in size.
 		 */
 		if (!fetch_transfer_start(consumer, count, &upfr)) {
-			resp_value = UPDATE_GEN_ERROR;
-			CPRINTS("%s:%d", __FILE__, __LINE__);
-			QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
+			CPRINTS("Invalid block start.");
+			send_error_reset(UPDATE_GEN_ERROR);
 			return;
 		}
 
@@ -255,18 +264,15 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 		if (block_size <= sizeof(struct update_command) ||
 		    block_size > (UPDATE_PDU_SIZE +
 					sizeof(struct update_command))) {
-			resp_value = UPDATE_GEN_ERROR;
-			CPRINTS("%s:%d", __FILE__, __LINE__);
-			QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
+			CPRINTS("Invalid block size (%d).", block_size);
+			send_error_reset(UPDATE_GEN_ERROR);
 			return;
 		}
 
 		if (shared_mem_acquire(block_size, (char **)&block_buffer)
 				!= EC_SUCCESS) {
-			CPRINTS("FW update: error: failed to alloc %d bytes.",
-				block_size);
-			resp_value = UPDATE_MALLOC_ERROR;
-			QUEUE_ADD_UNITS(&update_to_usb, &resp_value, 1);
+			CPRINTS("Alloc error (%d).", block_size);
+			send_error_reset(UPDATE_MALLOC_ERROR);
 			return;
 		}
 
@@ -294,12 +300,7 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 			 * has been received, let's abort the transfer.
 			 */
 			CPRINTS("Unexpected header");
-			resp_value = UPDATE_GEN_ERROR;
-			QUEUE_ADD_UNITS(&update_to_usb,
-					&resp_value, sizeof(resp_value));
-			rx_state_ = rx_idle;
-			shared_mem_release(block_buffer);
-			block_buffer = NULL;
+			send_error_reset(UPDATE_GEN_ERROR);
 			return;
 		}
 		return;	/* More to come. */
