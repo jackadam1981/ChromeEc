@@ -288,39 +288,19 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 	block_size -= count;
 
 	if (block_size) {
-		if (count == sizeof(upfr)) {
+		if (count <= sizeof(upfr)) {
 			/*
 			 * A block header size instead of chunk size message
-			 * has been received. There must have been some packet
-			 * loss and the host is restarting this block.
-			 *
-			 * Let's copy its contents into the header structure.
+			 * has been received, let's abort the transfer.
 			 */
-			memcpy(&upfr, block_buffer + block_index - count,
-			       count);
-
-
-			/* And re-allocate a large enough buffer. */
+			CPRINTS("Unexpected header");
+			resp_value = UPDATE_GEN_ERROR;
+			QUEUE_ADD_UNITS(&update_to_usb,
+					&resp_value, sizeof(resp_value));
+			rx_state_ = rx_idle;
 			shared_mem_release(block_buffer);
-			block_size = be32toh(upfr.block_size) -
-				offsetof(struct update_frame_header, cmd);
-			if (shared_mem_acquire(block_size,
-					       (char **)&block_buffer)
-			    != EC_SUCCESS) {
-				/* TODO:(vbendeb) report out of memory here. */
-				CPRINTS("FW update: error: failed to alloc "
-					"%d bytes.", block_size);
-				return;
-			}
-
-			/*
-			 * Copy the rest of the message into the block buffer
-			 * to pass to the updater.
-			 */
-			block_index = sizeof(upfr) -
-				offsetof(struct update_frame_header, cmd);
-			memcpy(block_buffer, &upfr.cmd, block_index);
-			block_size -= block_index;
+			block_buffer = NULL;
+			return;
 		}
 		return;	/* More to come. */
 	}
