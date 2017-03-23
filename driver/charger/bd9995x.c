@@ -465,6 +465,7 @@ int charger_set_input_current(int input_current)
 
 	/* Input current step 32 mA */
 	input_current &= ~0x1F;
+	ccprintf("input_current=%d\n", input_current);
 
 	if (input_current < bd9995x_charger_info.input_current_min)
 		input_current = bd9995x_charger_info.input_current_min;
@@ -797,6 +798,16 @@ static void bd9995x_init(void)
 #endif
 	ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 		       BD9995X_EXTENDED_COMMAND);
+
+	/*
+	 * We disable IADP (here before setting IBUS_LIM_SET and ICC_LIM_SET)
+	 * to prevent voltage on IADP/RESET pin from affecting SEL_ILIM_VAL.
+	 */
+	if (ch_raw_read16(BD9995X_CMD_VM_CTRL_SET, &reg,
+			  BD9995X_EXTENDED_COMMAND))
+		return;
+	reg &= ~BD9995X_CMD_VM_CTRL_SET_EXTIADPEN;
+	ch_raw_write16(BD9995X_CMD_VM_CTRL_SET, reg, BD9995X_EXTENDED_COMMAND);
 
 	/* Define battery charging profile */
 	bd9995x_battery_charging_profile_settings();
