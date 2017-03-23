@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ef5eca3_592296b8",
+        "filename": "util/signer/bs",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2017-03-23T17:27:53Z",
+      "side": 1,
+      "message": "I would say \n\n  : ${RESULT_FILE:\u003dbuild/cr50/ec.bin}\n\nThe \"${VAR:\u003dVAL}\" syntax assigns the value if it doesn\u0027t exist. The \":\" command does nothing except expand arguments and perform redirections.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 47
+      },
+      "revId": "604de1a78cceedf7cf02a7d0f5854fa7d170b6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "906896be_7c6468f2",
+        "filename": "util/signer/bs",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2017-03-23T17:27:53Z",
+      "side": 1,
+      "message": "If you have a lot of error messages, you could use\n\n  die () {\n      echo \"ERROR: $*\" 1\u003e\u00262\n      exit 1\n  }\n\nand then just\n\n  die \"need more args\"",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 50
+      },
+      "revId": "604de1a78cceedf7cf02a7d0f5854fa7d170b6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e9db175_988c5dac",
+        "filename": "util/signer/bs",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2017-03-23T17:27:53Z",
+      "side": 1,
+      "message": "Do you need sudo here?",
+      "range": {
+        "startLine": 155,
+        "startChar": 2,
+        "endLine": 155,
+        "endChar": 6
+      },
+      "revId": "604de1a78cceedf7cf02a7d0f5854fa7d170b6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebe40438_d0808b86",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2017-03-23T17:27:53Z",
+      "side": 1,
+      "message": "Same suggestion for \"die\" command as in the previous file. Then you could just say\n\n  [ -f \"{ro_bin}\" ] || die \"${ro_bin} is not a valid file\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 10
+      },
+      "revId": "604de1a78cceedf7cf02a7d0f5854fa7d170b6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acd5fc12_2faab40f",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2017-03-23T17:27:53Z",
+      "side": 1,
+      "message": "You already have \"set -e\" at the top, so this entire conditional is redundant (unless you just want to print a nicer error message, of course).",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 4
+      },
+      "revId": "604de1a78cceedf7cf02a7d0f5854fa7d170b6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbca65ff_b924a4bf",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2017-03-23T17:27:53Z",
+      "side": 1,
+      "message": "You could also create a warn() function for things like this:\n\n  warn () {\n      echo \"WARNING: $*\" 1\u003e\u00262\n  }",
+      "range": {
+        "startLine": 101,
+        "startChar": 6,
+        "endLine": 101,
+        "endChar": 59
+      },
+      "revId": "604de1a78cceedf7cf02a7d0f5854fa7d170b6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "113b911a_d28f6d3c",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2017-03-23T17:27:53Z",
+      "side": 1,
+      "message": "You could validate all the input before creating the RESULT_FILE (or even the temp dir). Check the arg count, invoke readlink -f, make sure all the args are actual files, etc, and *then* create TMPD and so forth. Then you don\u0027t have to check args to the functions later.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 11
+      },
+      "revId": "604de1a78cceedf7cf02a7d0f5854fa7d170b6f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
