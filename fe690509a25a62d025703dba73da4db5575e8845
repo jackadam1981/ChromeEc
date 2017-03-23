@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bea59ea0_24981327",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-23T18:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3aa966c9_30b69126",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "fe690509a25a62d025703dba73da4db5575e8845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1467c5a_1de293d3",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-03-23T18:09:51Z",
       "side": 1,
       "message": "Where do we do this relative to setting an input limit?  Or does it matter?",
+      "revId": "fe690509a25a62d025703dba73da4db5575e8845",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dc65e78_bdbd6b6c",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-23T18:34:36Z",
+      "side": 1,
+      "message": "Right below in bd9995x_battery_charging_profile_settings. I think we should disable IADP before we set IBUS_LIM_SET because RESET pin noise can overwrite IBUS_LIM_SET. Added comments.",
+      "parentUuid": "a1467c5a_1de293d3",
       "revId": "fe690509a25a62d025703dba73da4db5575e8845",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
