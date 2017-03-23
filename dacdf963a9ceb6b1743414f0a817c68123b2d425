@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f7fa0c9c_d9a2e53e",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-23T09:03:58Z",
+      "side": 1,
+      "message": "The flash support was disabled for the boards using STM32L4.\nThat\u0027s the next CL for eve_fp, removing #undef CONFIG_FLASH and #undef CONFIG_FLASH_INTERNAL :\nhttps://chromium-review.googlesource.com/c/456712/4/board/eve_fp/board.h",
+      "parentUuid": "bb0ed956_faa9ac92",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77d65c64_3d564f79",
         "filename": "chip/stm32/flash-stm32l4.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-23T02:43:42Z",
       "side": 1,
       "message": "Not needed?",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c8e59ef_60455f14",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-23T09:03:58Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "77d65c64_3d564f79",
       "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "338168e1_b9e2cbeb",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-23T09:03:58Z",
+      "side": 1,
+      "message": "Actually I copied it straight from the other variants,\nI don\u0027t particularly like it.\nmay let\u0027s call it: wait_while_busy() and be done for the naming.",
+      "parentUuid": "df6dc9c0_c53619b5",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a84f276_caf2e358",
         "filename": "chip/stm32/flash-stm32l4.c",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "190b85c9_c48909d7",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-23T09:03:58Z",
+      "side": 1,
+      "message": "we have used the complicated and half-wrong pattern in the other implementations because it was supposed to run before the timer_init() call and it evolved in the weird stuff (where udelay() might even be an infinite loop ???)\nIndeed I probably need to do better for this new version,  just remove the udelay might be enough.",
+      "parentUuid": "2a84f276_caf2e358",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ea8040a_59164604",
         "filename": "chip/stm32/flash-stm32l4.c",
         "patchSetId": 4
@@ -81,6 +153,30 @@
       "writtenOn": "2017-03-23T02:43:42Z",
       "side": 1,
       "message": "I\u0027m not sure to understand what this does.\n\nlocks can either be FLASH_CR_LOCK or FLASH_CR_OPTLOCK.\n\nIf locks \u003d FLASH_CR_LOCK:\nSTM32_FLASH_CR ^ FLASH_CR_OPTLOCK \u0026 (FLASH_CR_LOCK | FLASH_CR_OPTLOCK)\n\nSo that\u0027ll return error if FLASH_CR_LOCK is set (makes sense: unlock failed), or if FLASH_CR_OPTLOCK is unset (why?)\n\nIf locks \u003d FLASH_CR_OPTLOCK:\nSTM32_FLASH_CR ^ FLASH_CR_OPTLOCK \u0026 FLASH_CR_OPTLOCK\n(that seems to be equivalent to !(STM32_FLASH_CR \u0026 FLASH_CR_OPTLOCK))\n\nSo that\u0027ll return error if FLASH_CR_OPTLOCK is unset (again, why?)",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 68,
+        "endChar": 29
+      },
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a46e23d4_e2776b32",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-23T09:03:58Z",
+      "side": 1,
+      "message": "Bad cut-n-paste, don\u0027t think about it too much...\n(amongst other things, OPTLOCK is inverted logic on other variants)",
+      "parentUuid": "8ea8040a_59164604",
       "range": {
         "startLine": 67,
         "startChar": 8,
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "6e920067_cf215371",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-23T09:03:58Z",
+      "side": 1,
+      "message": "Ok then I will implement it (it definitely feasible, this is just a simplication)",
+      "parentUuid": "258d949f_24e29bb9",
+      "range": {
+        "startLine": 155,
+        "startChar": 28,
+        "endLine": 156,
+        "endChar": 41
+      },
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc65465a_d7291095",
         "filename": "chip/stm32/flash-stm32l4.c",
         "patchSetId": 4
@@ -127,6 +247,24 @@
       "writtenOn": "2017-03-23T02:43:42Z",
       "side": 1,
       "message": "Missing timeout/busy check?",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8feb8ccc_75ad45b5",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-23T09:03:58Z",
+      "side": 1,
+      "message": "to some extend yes ...\nit will likely still exist at line 263 and fail there.\nBut let\u0027s avoid a possible fault at write and do it here",
+      "parentUuid": "bc65465a_d7291095",
       "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "c743d915_bd1eb35c",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-23T09:03:58Z",
+      "side": 1,
+      "message": "yes it is (it\u0027s doing STM32_FLASH_CR \u003d STM32_FLASH_CR which is quite harmless on this chip)\nBut I can probably return directly from the unlock error path.",
+      "parentUuid": "4ae06245_aeaa625d",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4afadfe_0c931d17",
         "filename": "chip/stm32/flash-stm32l4.c",
         "patchSetId": 4
@@ -167,6 +323,24 @@
     },
     {
       "key": {
+        "uuid": "cde343ca_1112e3cc",
+        "filename": "chip/stm32/flash-stm32l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-23T09:03:58Z",
+      "side": 1,
+      "message": "I did it on purpose (ie we never set any other combo with end \u003d\u003d 0xFF)\nbut if you admit the register might have an arbitrary value (set manually), you might not want to set the flag (to be more secure?)\nby the way, once I will have done the modification for RB unprotected / RW protected, this will be gone",
+      "parentUuid": "e4afadfe_0c931d17",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b55d09ad_083921e7",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 4
@@ -178,6 +352,24 @@
       "writtenOn": "2017-03-23T02:43:42Z",
       "side": 1,
       "message": "Should this be called FLASH_CR_OBL_LAUNCH like the other ones above?",
+      "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e328140f_072c4863",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-23T09:03:58Z",
+      "side": 1,
+      "message": "it is used by chip/stm32/system.c, so I named it the same way as the other variants.\n(now I was forced to do a special code path in system.c for this variant, it\u0027s less true)",
+      "parentUuid": "b55d09ad_083921e7",
       "revId": "dacdf963a9ceb6b1743414f0a817c68123b2d425",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
