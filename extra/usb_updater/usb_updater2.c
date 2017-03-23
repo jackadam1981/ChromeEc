@@ -777,6 +777,14 @@ static void setup_connection(struct transfer_descriptor *td)
 
 	if (td->ep_type == usb_xfer) {
 		struct update_frame_header ufh;
+		uint8_t inbuf[td->uep.chunk_len];
+		int actual = 0;
+
+		while (!libusb_bulk_transfer(td->uep.devh, td->uep.ep_num | 0x80,
+						(void *)&inbuf, td->uep.chunk_len,
+						&actual, 10)) {
+			printf("flush\n");
+		}
 
 		memset(&ufh, 0, sizeof(ufh));
 		ufh.block_size = htobe32(sizeof(ufh));
