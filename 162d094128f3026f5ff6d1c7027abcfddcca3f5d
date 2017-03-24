@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7df21ca7_f8a28590",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-24T16:06:15Z",
+      "side": 1,
+      "message": "I have modified the function as you suggested. board_update_vbus is now only called for the CHG port. Updates to vbus for DUT port are done in pd_set_power_supply_ready, pd_transition_voltage, and pd_power_supply_reset to capture the points where that is being changed.",
+      "parentUuid": "1a6baed9_cd3d3b02",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 66
+      },
+      "revId": "162d094128f3026f5ff6d1c7027abcfddcca3f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf04ac70_d92dd61d",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 8

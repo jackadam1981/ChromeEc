@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b5392031_e7d07670",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-24T16:06:15Z",
+      "side": 1,
+      "message": "I changed this function back to how I had it originally, and is now used only for CHG port. The updates to vbus[DUT].mv/ma are done explicitly in the functions that were calling this for DUT port.",
+      "parentUuid": "e56f0f8e_9ce94585",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "dd277b7ddb201a84f2b5b67ede7179ef515b0c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45209f4f_ecbc7211",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c956eadb_1009d27b",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-24T16:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45209f4f_ecbc7211",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 53
+      },
+      "revId": "dd277b7ddb201a84f2b5b67ede7179ef515b0c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db617b9d_01a6db5a",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2017-03-24T08:47:52Z",
       "side": 1,
       "message": "don\u0027t you need to reset it in the function below ?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 35
+      },
+      "revId": "dd277b7ddb201a84f2b5b67ede7179ef515b0c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79e461a_b5568b17",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-24T16:06:15Z",
+      "side": 1,
+      "message": "The reset case was being covered in the two calls to set_input_current_limit, which were called for both snk/src disconnect. But,  those paths are now removed and so setting vbus[DUT].mv/ma is now being done explicitly in pd_power_supply_reset",
+      "parentUuid": "db617b9d_01a6db5a",
       "range": {
         "startLine": 237,
         "startChar": 0,
