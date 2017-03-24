@@ -94,6 +94,53 @@
       "revId": "0a1d1bd8f3c47887f84eb9bb7204e8d276011ba7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac61ee2_acfd94a2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-24T15:05:18Z",
+      "side": 1,
+      "message": "You need to conform to the API of the EC. You\u0027ll have to scale your values within the timer code of ISH to deal with the API.",
+      "parentUuid": "b4381ee9_835a4655",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "0a1d1bd8f3c47887f84eb9bb7204e8d276011ba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f1818b9_75a5e1dd",
+        "filename": "core/minute-ia/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-24T15:05:18Z",
+      "side": 1,
+      "message": "This looks like a leaky abstraction of the underlying hardware for interrupt context?",
+      "range": {
+        "startLine": 215,
+        "startChar": 5,
+        "endLine": 215,
+        "endChar": 16
+      },
+      "revId": "0a1d1bd8f3c47887f84eb9bb7204e8d276011ba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
