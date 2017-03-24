@@ -574,6 +574,52 @@
     },
     {
       "key": {
+        "uuid": "8349fdf4_db59d30c",
+        "filename": "driver/tcpm/tcpm_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2017-03-24T02:34:03Z",
+      "side": 1,
+      "message": "prefer unsigned",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea3cdcd2_bbc3caae",
+        "filename": "driver/tcpm/tcpm_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2017-03-24T02:34:03Z",
+      "side": 1,
+      "message": "should be \u003e\u003d and you won\u0027t need the \u003c 0 test if you stay in the unsigned domain.",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c16145e3_79d95994",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -590,6 +636,52 @@
         "startChar": 30,
         "endLine": 3998,
         "endChar": 36
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6865fbd_99a6a2a9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4009,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2017-03-24T02:34:03Z",
+      "side": 1,
+      "message": "i don\u0027t know the history behind the use of __ec_align* everywhere, but if i interpret the use pattern correctly, then this should probably be __ec_align4.  .address should be the 1st member.",
+      "range": {
+        "startLine": 4009,
+        "startChar": 18,
+        "endLine": 4009,
+        "endChar": 19
+      },
+      "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa4878a_955f5c37",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4015,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2017-03-24T02:34:03Z",
+      "side": 1,
+      "message": "__ec_align1 already takes care of __packed",
+      "range": {
+        "startLine": 4015,
+        "startChar": 2,
+        "endLine": 4015,
+        "endChar": 10
       },
       "revId": "341af9cde57af41bd3e8c53b5526958dccb46fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
