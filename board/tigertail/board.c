@@ -260,7 +260,8 @@ void uart_sbu_tick(void)
 			if (debounce > 4) {
 				debounce = 0;
 				CPRINTS("UART autoenable\n");
-				set_uart_state(state);
+				uart_state = state;
+				set_uart_gpios(state);
 			}
 			return;
 		}
@@ -272,7 +273,8 @@ void uart_sbu_tick(void)
 			if (debounce > 4) {
 				debounce = 0;
 				CPRINTS("UART autodisable\n");
-				set_uart_state(UART_OFF);
+				uart_state = UART_OFF;
+				set_uart_gpios(UART_OFF);
 			}
 			return;
 		}
@@ -329,9 +331,15 @@ void set_mux_state(int state)
 	gpio_set_level(GPIO_SEL_RELAY_A, 0);
 	gpio_set_level(GPIO_SEL_RELAY_B, 0);
 
-	/* Reconnect in the requested direction. */
+	/* Let USB disconnect. */
+	msleep(100);
+
+	/* Reconnect VBUS/CC in the requested direction. */
 	gpio_set_level(GPIO_SEL_RELAY_A, !dir && enabled);
 	gpio_set_level(GPIO_SEL_RELAY_B, dir && enabled);
+
+	/* Recionnect data. */
+	msleep(10);
 
 	gpio_set_level(GPIO_USB_C_SEL_B, dir);
 	gpio_set_level(GPIO_USB_C_OE_N, !enabled);
