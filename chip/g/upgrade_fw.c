@@ -284,6 +284,55 @@ static int contents_allowed(uint32_t block_offset,
 }
 #endif
 
+/*
+ * Setup internal state (e.g. valid sections, and fill first response).
+ *
+ * Assumes rpdu is already prefilled with 0, and that version has already
+ * been set. May set a return_value != 0 on error.
+ */
+void fw_update_start(struct first_response_pdu *rpdu)
+{
+	const struct SignedHeader *header;
+
+	/*
+	 * Determine the valid update sections.
+	 */
+	set_valid_sections();
+
+	/*
+	 * If there have been any problems when determining the valid
+	 * Sections offsets/sizes - return an error code.
+	 */
+	if (!valid_sections.ro_top_offset || !valid_sections.rw_top_offset) {
+		CPRINTF("%s:%d\n", __func__, __LINE__);
+		rpdu->return_value = htobe32(UPDATE_GEN_ERROR);
+		return;
+	}
+
+	rpdu->backup_ro_offset = htobe32(valid_sections.ro_base_offset);
+
+	rpdu->backup_rw_offset = htobe32(valid_sections.rw_base_offset);
+
+	/* RO header information. */
+	header = (const struct SignedHeader *)
+		get_program_memory_addr(system_get_ro_image_copy());
+	rpdu->shv[0].minor = htobe32(header->minor_);
+	rpdu->shv[0].major = htobe32(header->major_);
+	rpdu->shv[0].epoch = htobe32(header->epoch_);
+	/* New with protocol version 5 */
+	rpdu->keyid[0] = htobe32(header->keyid);
+
+	/* RW header information. */
+	header = (const struct SignedHeader *)
+		get_program_memory_addr(system_get_image_copy());
+	rpdu->shv[1].minor = htobe32(header->minor_);
+	rpdu->shv[1].major = htobe32(header->major_);
+	rpdu->shv[1].epoch = htobe32(header->epoch_);
+	/* New with protocol version 5 */
+	rpdu->keyid[1] = htobe32(header->keyid);
+}
+
+
 void fw_update_command_handler(void *body,
 			       size_t cmd_size,
 			       size_t *response_size)
@@ -305,7 +354,6 @@ void fw_update_command_handler(void *body,
 
 	if (!cmd_body->block_base && !body_size) {
 		struct first_response_pdu *rpdu = body;
-		const struct SignedHeader *header;
 
 		/*
 		 * This is the connection establishment request, the response
@@ -318,45 +366,8 @@ void fw_update_command_handler(void *body,
 		*response_size = sizeof(*rpdu);
 		rpdu->protocol_version = htobe32(UPDATE_PROTOCOL_VERSION);
 
-		/*
-		 * Determine the valid update sections.
-		 */
-		set_valid_sections();
-
-		/*
-		 * If there have been any problems when determining the valid
-		 * Sections offsets/sizes - return an error code.
-		 */
-		if (!valid_sections.ro_top_offset ||
-		    !valid_sections.rw_top_offset) {
-			CPRINTF("%s:%d\n", __func__, __LINE__);
-			rpdu->return_value = htobe32(UPDATE_GEN_ERROR);
-			return;
-		}
-
-		rpdu->backup_ro_offset =
-			htobe32(valid_sections.ro_base_offset);
-
-		rpdu->backup_rw_offset =
-			htobe32(valid_sections.rw_base_offset);
-
-		/* RO header information. */
-		header = (const struct SignedHeader *)
-			get_program_memory_addr(system_get_ro_image_copy());
-		rpdu->shv[0].minor = htobe32(header->minor_);
-		rpdu->shv[0].major = htobe32(header->major_);
-		rpdu->shv[0].epoch = htobe32(header->epoch_);
-		/* New with protocol version 5 */
-		rpdu->keyid[0] = htobe32(header->keyid);
-
-		/* RW header information. */
-		header = (const struct SignedHeader *)
-			get_program_memory_addr(system_get_image_copy());
-		rpdu->shv[1].minor = htobe32(header->minor_);
-		rpdu->shv[1].major = htobe32(header->major_);
-		rpdu->shv[1].epoch = htobe32(header->epoch_);
-		/* New with protocol version 5 */
-		rpdu->keyid[1] = htobe32(header->keyid);
+		/* Setup internal state (e.g. valid sections, and fill rpdu) */
+		fw_update_start(rpdu);
 		return;
 	}
 
