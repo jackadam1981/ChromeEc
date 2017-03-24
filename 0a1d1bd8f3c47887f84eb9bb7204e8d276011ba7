@@ -70,6 +70,30 @@
       "revId": "0a1d1bd8f3c47887f84eb9bb7204e8d276011ba7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4381ee9_835a4655",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2017-03-24T12:04:30Z",
+      "side": 1,
+      "message": "ISH code is not broken.\nISH\u0027 HPET timer supports only 32KHz or 12MHz clock sources.\n\nCan you suggest a way to support a core which does not support 1MHz clock source?",
+      "parentUuid": "0b5af26b_22627bee",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "0a1d1bd8f3c47887f84eb9bb7204e8d276011ba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
