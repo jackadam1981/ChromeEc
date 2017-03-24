@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1a6baed9_cd3d3b02",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-24T08:47:52Z",
+      "side": 1,
+      "message": "this is not much reason to put this in board_update_vbus, since there is no common code between board_update_vbus(DUT,...) and board_update_vbus(CHG,...)",
+      "parentUuid": "45b91012_7a220a39",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 66
+      },
+      "revId": "162d094128f3026f5ff6d1c7027abcfddcca3f5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf04ac70_d92dd61d",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 8

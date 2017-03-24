@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e56f0f8e_9ce94585",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-24T08:47:52Z",
+      "side": 1,
+      "message": "overall doing both VBUS as source and VBUS as sink in this function as no added value since that\u0027s 2 totally different code path ?",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 149,
+        "endChar": 2
+      },
+      "revId": "dd277b7ddb201a84f2b5b67ede7179ef515b0c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45209f4f_ecbc7211",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-24T08:47:52Z",
+      "side": 1,
+      "message": "that\u0027s a complicated way of writing:\nvbus[DUT].ma \u003d vbus[CHG].ma;\nvbus[DUT].mv \u003d vbus[CHG].mv;",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 53
+      },
+      "revId": "dd277b7ddb201a84f2b5b67ede7179ef515b0c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db617b9d_01a6db5a",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-24T08:47:52Z",
+      "side": 1,
+      "message": "don\u0027t you need to reset it in the function below ?",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 238,
+        "endChar": 35
+      },
+      "revId": "dd277b7ddb201a84f2b5b67ede7179ef515b0c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
