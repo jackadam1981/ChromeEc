@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee5ab394_40ec550d",
+        "filename": "common/update_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-24T01:29:32Z",
+      "side": 1,
+      "message": "Add TODO to actually fill these values (or document why they are all zeros).",
+      "revId": "688456bfa2721d5012121af90d714ca215766cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9798427_ed227cec",
+        "filename": "include/update_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-24T01:29:32Z",
+      "side": 1,
+      "message": "Comment style is wrong.",
+      "revId": "688456bfa2721d5012121af90d714ca215766cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
