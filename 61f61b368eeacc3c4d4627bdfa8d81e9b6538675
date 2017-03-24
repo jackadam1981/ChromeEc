@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8666eafd_09b6a686",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-24T14:09:01Z",
+      "side": 0,
+      "message": "Is this the frequency the HPET is actually reporting in COUNTER_CLK_PERIOD?",
+      "range": {
+        "startLine": 85,
+        "startChar": 22,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "61f61b368eeacc3c4d4627bdfa8d81e9b6538675",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

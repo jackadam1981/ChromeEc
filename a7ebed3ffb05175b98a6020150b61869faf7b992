@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2804d2e7_cb339c5d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-24T14:09:01Z",
+      "side": 1,
+      "message": "ts is in microseconds from the API of the EC. Are the timers running at 1us period? Same goes for __hw_clock_event_set() above.",
+      "range": {
+        "startLine": 45,
+        "startChar": 21,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "a7ebed3ffb05175b98a6020150b61869faf7b992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2314fa65_93a46cf1",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-24T14:09:01Z",
+      "side": 1,
+      "message": "Should wait for T1 as well?\n\nHPET_CTRL_STATUS doesn\u0027t seem like a real HPET register according to the spec. That\u0027d be fore timer 3.  What\u0027s with that?",
+      "revId": "a7ebed3ffb05175b98a6020150b61869faf7b992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
