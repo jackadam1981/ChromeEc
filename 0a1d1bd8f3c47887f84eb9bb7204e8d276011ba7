@@ -22,6 +22,30 @@
       "revId": "0a1d1bd8f3c47887f84eb9bb7204e8d276011ba7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd9915a7_352a7d09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2017-03-24T11:15:57Z",
+      "side": 1,
+      "message": "Hi Vincent,\n\nWe are not changing any core flows in the common layers.\nJust adding support for other clock sources (with ISH preprocessors) and fixing few console commands.\n\nKindly review the code.",
+      "parentUuid": "65961211_f60a124a",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "0a1d1bd8f3c47887f84eb9bb7204e8d276011ba7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
