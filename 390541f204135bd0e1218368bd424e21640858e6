@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "465cfb48_0c353d5f",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-25T17:14:52Z",
+      "side": 1,
+      "message": "I\u0027d rather not keep track of both an enabled mask and our task enabled state since we really need only one. I can remove task_scheduler_state entirely and just keep your proposed tasks_enabled (will use macros like TASKS_ENABLED_NOT_STARTED \u003d 0, TASKS_ENABLED_INIT \u003d (1 \u003c\u003c ...) or I can replace the check here with a call to a routine like:\n\n+static inline int task_is_enabled(task_id_t tskid)\n+{\n+       /*\n+        * During the INIT phase, only the hooks task and idle task may\n+        * be scheduled.\n+        */\n+       switch (task_scheduler_state) {\n+       case TASK_SCHEDULER_STARTED:\n+               return 1;\n+       case TASK_SCHEDULER_INIT:\n+               return (tskid \u003d\u003d TASK_ID_HOOKS) || (tskid \u003d\u003d TASK_ID_IDLE);\n+       case TASK_SCHEDULER_NOT_STARTED:\n+       default:\n+               return 0;\n+       }\n+}\n\nWhat do you think?",
+      "parentUuid": "eacb31b8_c5a9e911",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 11
+      },
+      "revId": "390541f204135bd0e1218368bd424e21640858e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e56c83b5_e564421b",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
