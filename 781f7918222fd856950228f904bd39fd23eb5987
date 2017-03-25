@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc95f7ec_00963f38",
+        "filename": "common/usb_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-25T02:55:55Z",
+      "side": 1,
+      "message": "Should probably reset data_was_transferred to 0 too.",
+      "revId": "781f7918222fd856950228f904bd39fd23eb5987",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
