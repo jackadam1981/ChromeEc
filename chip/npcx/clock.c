@@ -21,6 +21,7 @@
 #include "uart.h"
 #include "util.h"
 #include "watchdog.h"
+#include "vboot_hash.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
@@ -118,10 +119,7 @@ void clock_disable_peripheral(uint32_t offset, uint32_t mask, uint32_t mode)
 /*****************************************************************************/
 /* IC specific low-level driver */
 
-/**
- * Set the CPU clocks and PLLs.
- */
-void clock_init(void)
+static void clock_normal(void)
 {
 	/*
 	 * Configure Frequency multiplier values according to the requested
@@ -156,7 +154,19 @@ void clock_init(void)
 #endif
 
 	freq = OSC_CLK;
+}
 
+/**
+ * Set the CPU clocks and PLLs.
+ */
+void clock_init(void)
+{
+#ifdef CONFIG_VBOOT_HASH
+	/* We are in turbo and should stay until hash is calculated */
+	freq = 50000000;
+#else
+	clock_normal();
+#endif
 	/* Notify modules of frequency change */
 	hook_notify(HOOK_FREQ_CHANGE);
 
@@ -170,6 +180,12 @@ void clock_init(void)
  */
 void clock_turbo(void)
 {
+	/*
+	 * Let APB2 divider be 2 which is the default. The resulting APB2 clock
+	 * frequency is divisible by 1 MHz.
+	 */
+	NPCX_HFCBCD |= 0x4;
+
 	/* Configure Frequency multiplier values to 50MHz */
 	NPCX_HFCGN  = 0x02;
 	NPCX_HFCGML = 0xEC;
@@ -184,13 +200,29 @@ void clock_turbo(void)
 
 	/* Keep Core CLK & FMCLK are the same if Core CLK exceed 33MHz */
 	NPCX_HFCGP = 0x00;
-
-	/*
-	 * Let APB2 equals Core CLK/2 if default APB2 clock is divisible
-	 * by 1MHz
-	 */
-	NPCX_HFCBCD = NPCX_HFCBCD & 0xF3;
 }
+
+/**
+ * Speed through boot + vboot hash calculation, dropping our processor clock
+ * only after vboot hashing is completed.
+ */
+static void clock_turbo_disable(void);
+DECLARE_DEFERRED(clock_turbo_disable);
+
+static void clock_turbo_disable(void)
+{
+#ifdef CONFIG_VBOOT_HASH
+	if (vboot_hash_in_progress())
+		hook_call_deferred(&clock_turbo_disable_data, 100 * MSEC);
+	else
+#endif
+	{
+		clock_normal();
+		/* Notify modules of frequency change */
+		hook_notify(HOOK_FREQ_CHANGE);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, clock_turbo_disable, HOOK_PRIO_INIT_VBOOT_HASH + 1);
 
 /**
  * Return the current clock frequency in Hz.

@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "lpc.h"
 #include "registers.h"
 #include "clock_chip.h"
@@ -132,6 +133,52 @@ void uart_ec_interrupt(void)
 }
 DECLARE_IRQ(NPCX_IRQ_UART, uart_ec_interrupt, 0);
 
+void uart_set_freq(void)
+{
+	int freq;
+
+	freq = clock_get_freq();
+
+	/* Fix baud rate to 115200 */
+	switch (freq) {
+	case 50000000:
+		NPCX_UPSR = 0x10;
+		NPCX_UBAUD = 0x08;
+		break;
+	case 48000000:
+		NPCX_UPSR = 0x08;
+		NPCX_UBAUD = 0x0C;
+		break;
+	case 40000000:
+		NPCX_UPSR = 0x30;
+		NPCX_UBAUD = 0x02;
+		break;
+	case 33000000: /* APB2 is the same as core clock */
+		NPCX_UPSR = 0x08;
+		NPCX_UBAUD = 0x11;
+		break;
+	case 24000000:
+		NPCX_UPSR = 0x60;
+		NPCX_UBAUD = 0x00;
+		break;
+	case 15000000: /* APB2 is the same as core clock */
+		NPCX_UPSR = 0x38;
+		NPCX_UBAUD = 0x01;
+		break;
+	case 13000000: /* APB2 is the same as core clock */
+		NPCX_UPSR = 0x30;
+		NPCX_UBAUD = 0x01;
+		break;
+	}
+
+	/*
+	 * 8-N-1, FIFO enabled.  Must be done after setting
+	 * the divisor for the new divisor to take effect.
+	 */
+	NPCX_UFRS = 0x00;
+	NPCX_UICTRL = 0x40; /* receive int enable only */
+}
+DECLARE_HOOK(HOOK_FREQ_CHANGE, uart_set_freq, HOOK_PRIO_DEFAULT);
 
 static void uart_config(void)
 {
@@ -145,32 +192,7 @@ static void uart_config(void)
 
 #endif
 
-	/* Fix baud rate to 115200 */
-#if   (OSC_CLK == 50000000)
-	NPCX_UPSR = 0x10;
-	NPCX_UBAUD = 0x08;
-#elif (OSC_CLK == 48000000)
-	NPCX_UPSR = 0x08;
-	NPCX_UBAUD = 0x0C;
-#elif (OSC_CLK == 40000000)
-	NPCX_UPSR = 0x30;
-	NPCX_UBAUD = 0x02;
-#elif (OSC_CLK == 33000000) /* APB2 is the same as core clock */
-	NPCX_UPSR = 0x08;
-	NPCX_UBAUD = 0x11;
-#elif (OSC_CLK == 24000000)
-	NPCX_UPSR = 0x60;
-	NPCX_UBAUD = 0x00;
-#elif (OSC_CLK == 15000000) /* APB2 is the same as core clock */
-	NPCX_UPSR = 0x38;
-	NPCX_UBAUD = 0x01;
-#elif (OSC_CLK == 13000000) /* APB2 is the same as core clock */
-	NPCX_UPSR = 0x30;
-	NPCX_UBAUD = 0x01;
-#else
-#error "Unsupported Core Clock Frequency"
-#endif
-
+	uart_set_freq();
 
 	/*
 	 * 8-N-1, FIFO enabled.  Must be done after setting
