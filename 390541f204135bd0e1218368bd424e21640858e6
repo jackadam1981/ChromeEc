@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d3af4edb_06589410",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-27T07:13:12Z",
+      "side": 1,
+      "message": "After playing with the code and the compiler, I would lean towards the tasks_enabled bitmap proposed by Randall.\n\nfully removing task_scheduler_state and doing 2 bitmaps tasks_ready and tasks_enabled (declared one next to the other to generate nice memory accesses) e.g.:\n-static uint32_t tasks_ready \u003d (1 \u003c\u003c TASK_ID_HOOKS);\n+static uint32_t tasks_ready \u003d (1 \u003c\u003c TASK_ID_COUNT) - 1;\n+static uint32_t tasks_enabled \u003d (1 \u003c\u003c TASK_ID_IDLE);\n\nthen only using tasks_enabled as a mask when computing the re-scheduling (this condition should be useless), e.g.:\n-       ASSERT(tasks_ready);\n-       next \u003d __task_id_to_ptr(__fls(tasks_ready));\n+       ASSERT(tasks_ready \u0026 tasks_enabled);\n+       next \u003d __task_id_to_ptr(__fls(tasks_ready \u0026 tasks_enabled));\n\nseems the simplest solution and yet generate efficient code.",
+      "parentUuid": "465cfb48_0c353d5f",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 11
+      },
+      "revId": "390541f204135bd0e1218368bd424e21640858e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e56c83b5_e564421b",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
