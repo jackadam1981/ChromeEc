@@ -334,6 +334,13 @@ SECTIONS
 	/* NOTHING MAY GO AFTER THIS! */
     } > IRAM
 
+    .end :
+    {
+        . = ALIGN(8);
+        PROVIDE ( end = .);
+        . = ALIGN(8);
+    } > IRAM
+
     /* The linker won't notice if the .data section is too big to fit,
      * apparently because we're sending it into IRAM, not FLASH. The following
      * symbol isn't used by the code, but running "objdump -t *.elf | grep hey"
@@ -365,6 +372,7 @@ SECTIONS
         *(.usb_ram.data)
     } > USB_RAM
 #endif
+
 #if !(defined(SECTION_IS_RO) && defined(CONFIG_FLASH))
     /DISCARD/ : {
               *(.google)
