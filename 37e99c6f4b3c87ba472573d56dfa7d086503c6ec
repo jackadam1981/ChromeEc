@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2048a37d_b274d8e9",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "Remove, belong to board.c file (see cl/424218)",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92d6d20a_01114b2e",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "Comments are sentence, caps at the beginning and . at the end.",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dcd6be7_522565e8",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "belongs to a different CL (not part of adding common function).",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecfe5167_419c0f31",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "s#/#or#",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa9f0fa2_b9f48825",
+        "filename": "driver/accelgyro_lsm6dsm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "Should be after line 116",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0a9fbef_ffa6def1",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "Format is for multilne comments are: \n/*\n * line 1\n * line 2\n */",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc981e19_f7e03033",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "As defined, no need to put them between #ifdef CONFIG_,,,",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4345a824_a6ea48ed",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "Use a more specifc name.",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d0bccf_52f9a654",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "Does it belong to this CL? Looks like a fix.",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "204112c0_21616b7e",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "/*\n * Sensor ....",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "527d0cf4_098f5609",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1968,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 1,
+      "message": "Reserve for later CL.",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

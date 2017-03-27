@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffc01181_da349392",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-27T16:08:28Z",
+      "side": 0,
+      "message": "why removed? All CONFIG_ must be in include/config.h and this one is used in driver/build.mk.",
+      "revId": "2ed1cb0517e62f0169e151b7721dbe5fc7246103",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
