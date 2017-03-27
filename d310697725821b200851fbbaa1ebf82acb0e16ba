@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab77f7dc_48373953",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-27T15:44:22Z",
+      "side": 1,
+      "message": "any reason to include 3 different file names then do symbolic links.\nCan we simply put a single clause here ?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "d310697725821b200851fbbaa1ebf82acb0e16ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8765582d_2c7b06dd",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-27T15:44:22Z",
+      "side": 1,
+      "message": "isn\u0027t this equal to :\n#if !defined(CHIP_FAMILY_STM32F4) \u0026\u0026 !defined(CHIP_VARIANT_STM32F09X)",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 69
+      },
+      "revId": "d310697725821b200851fbbaa1ebf82acb0e16ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
