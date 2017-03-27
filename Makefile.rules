@@ -69,10 +69,11 @@ cmd_elf_to_hex = $(OBJCOPY) -O ihex $< $@
 cmd_bin_to_hex = $(OBJCOPY) -I binary -O ihex \
 	--change-addresses $(_program_memory_base) $^ $@
 cmd_smap = $(NM) $< | sort > $@
-cmd_elf = $(CC) $(objs) $(libsharedobjs_elf-y) $(LDFLAGS) \
+cmd_elf = $(CXX) $(objs) $(libsharedobjs_elf-y) $(LDFLAGS) \
 	-o $@ -Wl,-T,$< -Wl,-Map,$(patsubst %.elf,%.map,$@)
 cmd_exe = $(CC) $(ro-objs) $(HOST_TEST_LDFLAGS) -o $@
 cmd_c_to_o = $(CC) $(CFLAGS) -MMD -MF $@.d -c $< -o $(@D)/$(@F)
+cmd_cc_to_o = mkdir -p $(@D); $(CXX) $(CXXFLAGS) -MMD -MF $@.d -c $< -o $(@D)/$(@F)
 cmd_c_to_build = $(BUILDCC) $(BUILD_CFLAGS) \
 	         $(sort $(foreach c,$($(*F)-objs),util/$(c:%.o=%.c)) $*.c) \
 	         $(BUILD_LDFLAGS) \
@@ -361,6 +362,11 @@ $(out)/RO/%.o:%.c
 	$(call quiet,c_to_o,CC     )
 $(out)/RW/%.o:%.c
 	$(call quiet,c_to_o,CC     )
+
+$(out)/RO/%.o:%.cc
+	$(call quiet,cc_to_o,CXX     )
+$(out)/RW/%.o:%.cc
+	$(call quiet,cc_to_o,CXX     )
 
 $(out)/$(SHOBJLIB)/%.o: override LATE_CFLAGS_DEFINE:=-DSHAREDLIB_IMAGE
 $(out)/$(SHOBJLIB)/%.o:%.c
