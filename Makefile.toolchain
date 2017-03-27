@@ -17,11 +17,13 @@ endif
 
 # Try not to assume too much about optional tools and prefixes
 CCACHE:=$(shell which ccache 2>/dev/null)
+CCACHE=
 ifeq ($(origin HOST_CROSS_COMPILE),undefined)
 HOST_CROSS_COMPILE:=$(if $(shell which x86_64-pc-linux-gnu-gcc 2>/dev/null),x86_64-pc-linux-gnu-,)
 endif
 
 CC=$(CCACHE) $(CROSS_COMPILE)gcc
+CXX=$(CCACHE) $(CROSS_COMPILE)g++
 CPP=$(CCACHE) $(CROSS_COMPILE)cpp
 LD=$(CROSS_COMPILE)ld
 NM=$(CROSS_COMPILE)nm
@@ -65,13 +67,15 @@ HOST_CPPFLAGS=$(CFLAGS_DEFINE) $(CFLAGS_INCLUDE) $(CFLAGS_TEST) \
 	 $(EXTRA_CFLAGS) $(CFLAGS_COVERAGE) $(LATE_CFLAGS_DEFINE) \
 	 -DSECTION_IS_$(BLD) -DSECTION=$(BLD) $(CPPFLAGS_$(BLD))
 ifneq ($(BOARD),host)
-CPPFLAGS+=-ffreestanding -fno-builtin -nostdinc -nostdlib
-CPPFLAGS+=-Ibuiltin/
+CPPFLAGS+=-ffreestanding #-fno-builtin -nostdinc -nostdlib
+#CPPFLAGS+=-Ibuiltin/
 endif
 CFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(CFLAGS_WARN) $(CFLAGS_y)
-CFLAGS+= -ffunction-sections -fshort-wchar
+CFLAGS+= -ffunction-sections
 CFLAGS+= -fno-delete-null-pointer-checks -fconserve-stack
 CFLAGS+= -DCHROMIUM_EC
+
+CXXFLAGS = $(CXXFLAGS_y) $(CXXFLAGS_WARN)
 
 FTDIVERSION=$(shell $(PKG_CONFIG) --modversion libftdi1 2>/dev/null)
 ifneq ($(FTDIVERSION),)
@@ -85,7 +89,7 @@ LIBFTDI_LDLIBS=$(shell $(PKG_CONFIG) --libs   lib${LIBFTDI_NAME})
 
 BUILD_CFLAGS= $(LIBFTDI_CFLAGS) $(BUILD_CPPFLAGS) -O3 $(CFLAGS_DEBUG) $(CFLAGS_WARN)
 HOST_CFLAGS=$(HOST_CPPFLAGS) -O3 $(CFLAGS_DEBUG) $(CFLAGS_WARN) -DHOST_TOOLS_BUILD
-LDFLAGS=-nostdlib -Wl,-X -Wl,--gc-sections -Wl,--build-id=none $(LDFLAGS_EXTRA)
+LDFLAGS=-specs=nosys.specs -specs=nano.specs -Wl,-Map=output.map -Wl,--gc-sections -lm $(LDFLAGS_EXTRA)
 BUILD_LDFLAGS=$(LIBFTDI_LDLIBS)
 HOST_TEST_LDFLAGS=-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
 		  $(if $(TEST_COVERAGE),-fprofile-arcs,)
