@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd94e151_9c99b901",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-03-28T17:12:01Z",
+      "side": 1,
+      "message": "This was changed in c/427566, where it was tested with ectool. Was the testing done incorrectly at that time?\nCan it be verify again with this CL?",
+      "revId": "458f867c0b5ecdbf107e0b69c5f0719dead32fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
