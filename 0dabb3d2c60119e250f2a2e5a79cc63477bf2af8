@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42d0f15a_863017a9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-28T20:08:31Z",
+      "side": 1,
+      "message": "How are we ensuring we don\u0027t execute all this code by the 2nd task? When you have 2 tasks the 1st will get to here and sleep. The 2nd will then get to here and sleep. Then they\u0027ll both wake up and run through the remaining code. Basically all of this code will be done twice.",
+      "revId": "0dabb3d2c60119e250f2a2e5a79cc63477bf2af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
