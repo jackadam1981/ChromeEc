@@ -9,6 +9,7 @@
 
 #include "console.h"
 #include "ec_commands.h"
+#include "hooks.h"
 #include "rollback.h"
 #include "rsa.h"
 #include "rwsig.h"
@@ -24,9 +25,32 @@
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
+enum rwsig_status rwsig_status;
+int rwsig_aborted;
+
 /* RW firmware reset vector */
 static uint32_t * const rw_rst =
 	(uint32_t *)(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF + 4);
+
+
+void rwsig_jump_now(void)
+{
+	/*
+	 * TODO(b/35587171): This should also check RW flash is protected.
+	 */
+	if (rwsig_status == RWSIG_VALID)
+		system_run_image_copy(SYSTEM_IMAGE_RW);
+}
+
+enum rwsig_status rwsig_get_status(void)
+{
+	return rwsig_status;
+}
+
+void rwsig_abort(void)
+{
+	rwsig_aborted = 1;
+}
 
 /*
  * Check that memory between rwdata[start] and rwdata[len-1] is filled
@@ -49,14 +73,14 @@ static int check_padding(const uint8_t *data,
 	return 1;
 }
 
-void check_rw_signature(void)
+int rwsig_check_signature(void)
 {
 	struct sha256_ctx ctx;
 	int res;
 	const struct rsa_public_key *key;
 	const uint8_t *sig;
 	uint8_t *hash;
-	uint32_t *rsa_workbuf;
+	uint32_t *rsa_workbuf = NULL;
 	const uint8_t *rwdata = (uint8_t *)CONFIG_PROGRAM_MEMORY_BASE
 					+ CONFIG_RW_MEM_OFF;
 	int good = 0;
@@ -71,13 +95,11 @@ void check_rw_signature(void)
 	int32_t min_rollback_version;
 #endif
 
-	/* Only the Read-Only firmware needs to do the signature check */
-	if (system_get_image_copy() != SYSTEM_IMAGE_RO)
-		return;
+	rwsig_status = RWSIG_IN_PROGRESS;
 
 	/* Check if we have a RW firmware flashed */
 	if (*rw_rst == 0xffffffff)
-		return;
+		goto out;
 
 	CPRINTS("Verifying RW image...");
 
@@ -89,7 +111,7 @@ void check_rw_signature(void)
 	    rw_rollback_version < min_rollback_version) {
 		CPRINTS("Rollback error (%d < %d)",
 			rw_rollback_version, min_rollback_version);
-		return;
+		goto out;
 	}
 #endif
 
@@ -97,7 +119,7 @@ void check_rw_signature(void)
 	res = shared_mem_acquire(3 * RSANUMBYTES, (char **)&rsa_workbuf);
 	if (res) {
 		CPRINTS("No memory for RW verification");
-		return;
+		goto out;
 	}
 
 #ifdef CONFIG_RWSIG_TYPE_USBPD1
@@ -178,13 +200,42 @@ out:
 #endif
 
 	if (good) {
-		/* Jump to the RW firmware */
-		system_run_image_copy(SYSTEM_IMAGE_RW);
+		CPRINTS("RW image verified");
+		if (rwsig_aborted) {
+			rwsig_status = RWSIG_ABORTED;
+			CPRINTS("RW verify aborted.");
+			good = 0;
+		} else {
+			rwsig_status = RWSIG_VALID;
+		}
 	} else {
 		pd_log_event(PD_EVENT_ACC_RW_FAIL, 0, 0, NULL);
 		/* RW firmware is invalid : do not jump there */
 		if (system_is_locked())
 			system_disable_jump();
+		rwsig_status = RWSIG_INVALID;
 	}
-	shared_mem_release(rsa_workbuf);
+	if (rsa_workbuf)
+		shared_mem_release(rsa_workbuf);
+
+	return good;
 }
+
+#ifdef HAS_TASK_RWSIG
+static void rwsig_jump_deferred(void)
+{
+	if (!rwsig_aborted)
+		rwsig_jump_now();
+}
+DECLARE_DEFERRED(rwsig_jump_deferred);
+
+void rwsig_task(void)
+{
+	if (system_get_image_copy() == SYSTEM_IMAGE_RO &&
+	    rwsig_check_signature()) {
+		/* Jump to RW after a timeout */
+		hook_call_deferred(&rwsig_jump_deferred_data,
+				CONFIG_RWSIG_JUMP_TIMEOUT*MSEC);
+	}
+}
+#endif
