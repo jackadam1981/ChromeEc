@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb0eb0dc_e6a6340d",
+        "filename": "common/update_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-28T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee5ab394_40ec550d",
+      "revId": "688456bfa2721d5012121af90d714ca215766cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9798427_ed227cec",
         "filename": "include/update_fw.h",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "688456bfa2721d5012121af90d714ca215766cb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bfb03ff_b5cf4864",
+        "filename": "include/update_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-28T06:22:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9798427_ed227cec",
+      "revId": "688456bfa2721d5012121af90d714ca215766cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
