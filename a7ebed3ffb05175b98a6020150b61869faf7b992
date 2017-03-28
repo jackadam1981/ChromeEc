@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e6bf363d_c5b2ed67",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2017-03-28T16:03:38Z",
+      "side": 1,
+      "message": "Is it ok to address all this in patch #453859.",
+      "parentUuid": "896c3ef0_d9bd3a2d",
+      "range": {
+        "startLine": 45,
+        "startChar": 21,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "a7ebed3ffb05175b98a6020150b61869faf7b992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2314fa65_93a46cf1",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 6
@@ -120,6 +144,24 @@
       "side": 1,
       "message": "That register itself should be commented in the header accordingly as well. It\u0027s not a spec conforming implementation. There are special registers.",
       "parentUuid": "ab53288a_74a3c202",
+      "revId": "a7ebed3ffb05175b98a6020150b61869faf7b992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42d80a15_194ac2f1",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2017-03-28T16:03:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d29b6890_a02c95c5",
       "revId": "a7ebed3ffb05175b98a6020150b61869faf7b992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
