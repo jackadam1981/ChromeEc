@@ -80,6 +80,8 @@ static const int debug_level;
 #define PD_CAPS_COUNT 50
 #define PD_SNK_CAP_RETRIES 3
 
+static struct mutex pd_task_lock;
+
 enum vdm_states {
 	VDM_STATE_ERR_BUSY = -3,
 	VDM_STATE_ERR_SEND = -2,
@@ -1586,6 +1588,7 @@ static void pd_init_tasks(void)
 	int enable = 1;
 	int i;
 
+	mutex_lock(&pd_task_lock);
 	/* Initialize globals once, for all PD tasks.  */
 	if (initialized)
 		return;
@@ -1604,14 +1607,28 @@ static void pd_init_tasks(void)
 	enable = 0;
 #elif defined(CONFIG_USB_PD_COMM_LOCKED)
 	/* Disable PD communication at init if we're in RO and locked. */
-	if (system_get_image_copy() != SYSTEM_IMAGE_RW && system_is_locked())
-		enable = 0;
+	if (system_get_image_copy() != SYSTEM_IMAGE_RW && system_is_locked()) {
+		if (battery_hw_present() == BP_YES) {
+			enable = 0;
+		} else {
+			/* cr50 may not have set WP_L yet. wait & retry */
+			uint64_t till = get_time().val + 50 * MSEC;
+			/* Ensure we don't wake up prematurely by interrupt */
+			while (get_time().val < till)
+				msleep(10);
+			if (system_is_locked()) {
+				CPRINTF("Battery removed but system locked\n");
+				enable = 0;
+			}
+		}
+	}
 #endif
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
 		pd_comm_enabled[i] = enable;
 	CPRINTS("PD comm %sabled", enable ? "en" : "dis");
 
 	initialized = 1;
+	mutex_unlock(&pd_task_lock);
 }
 #endif /* CONFIG_COMMON_RUNTIME */
 
