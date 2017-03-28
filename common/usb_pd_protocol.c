@@ -1604,8 +1604,16 @@ static void pd_init_tasks(void)
 	enable = 0;
 #elif defined(CONFIG_USB_PD_COMM_LOCKED)
 	/* Disable PD communication at init if we're in RO and locked. */
-	if (system_get_image_copy() != SYSTEM_IMAGE_RW && system_is_locked())
-		enable = 0;
+	if (system_get_image_copy() != SYSTEM_IMAGE_RW && system_is_locked()) {
+		if (battery_hw_present() == BP_YES) {
+			enable = 0;
+		} else {
+			/* cr50 may not have set WP_L yet. wait & retry */
+			msleep(50);
+			if (system_is_locked())
+				enable = 0;
+		}
+	}
 #endif
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
 		pd_comm_enabled[i] = enable;
