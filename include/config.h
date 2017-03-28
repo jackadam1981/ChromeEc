@@ -1816,6 +1816,13 @@
 #undef CONFIG_RWSIG
 
 /*
+ * When RWSIG verification is performed as a task, time in ms to wait from
+ * signature verification to an automatic jump to RW (if AP does not request
+ * the wait to be interrupted).
+ */
+#define CONFIG_RWSIG_JUMP_TIMEOUT 1000
+
+/*
  * Defines what type of futility signature type should be used.
  * RWSIG should be used for new designs.
  * Old adapters use the USBPD1 futility signature type.

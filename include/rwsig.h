@@ -10,9 +10,36 @@
 #include "rsa.h"
 
 #ifndef __ASSEMBLER__
+/*
+ * Current status of RW signature verification, these only make sense
+ * if a RWSIG task is defined.
+ */
+enum rwsig_status {
+	RWSIG_UNKNOWN = 0, /* Unknown/not started */
+	RWSIG_IN_PROGRESS,
+	RWSIG_VALID,
+	RWSIG_INVALID,
+	RWSIG_ABORTED,
+};
 
-/* Checks RW signature. */
-void check_rw_signature(void);
+/*
+ * Returns current rwsig verification status.
+ */
+enum rwsig_status rwsig_get_status(void);
+
+/*
+ * Aborts current verification, also prevents RWSIG task from automatically
+ * jumping to RW.
+ * This is used by usb_updater when a RW update is required, giving it enough
+ * time to actually perform the update.
+ */
+void rwsig_abort(void);
+
+/* Checks RW signature. Returns a boolean indicating success. */
+int rwsig_check_signature(void);
+
+/* Jumps to RW, if signature is fine, returns on error (otherwise, jumps). */
+void rwsig_jump_now(void);
 
 #endif /* !__ASSEMBLER__ */
 
