@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91951af8_9ade2bb6",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-28T09:21:59Z",
+      "side": 1,
+      "message": "let\u0027s add here:\n#ifdef CONFIG_STM32_SPI1_MASTER\n  /* SPI1 */ 1,\n#endif\nso at least the array is not badly shifted in this case.\nI will quickly test it on STM32L4",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 14
+      },
+      "revId": "babd1c9af8b9679818d861ab1b646c03f6d537c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c2f6951_9248c264",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-28T09:21:59Z",
+      "side": 1,
+      "message": "that\u0027s a lot of ifdef, maybe we should define a common macro, e.g.:\n#ifdef CHIP_FAMILY_STM32F4\n#define  F4_CHANNEL(ch)                STM32_DMA_CCR_CHANNEL(ch)\n#else\n#define  F4_CHANNEL(ch)                0        \n#endif\n\nThen just do:\n\t\t| F4_CHANNEL(STM32_SPI2_TX_REQ_CH)",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 6
+      },
+      "revId": "babd1c9af8b9679818d861ab1b646c03f6d537c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
