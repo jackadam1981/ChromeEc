@@ -4,6 +4,7 @@
  */
 
 /* System module for Chrome EC : common functions */
+#include "battery.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -154,6 +155,10 @@ int system_is_locked(void)
 	return 0;
 
 #elif defined(CONFIG_FLASH)
+	/* Unlocked if battery isn't present */
+	if (battery_hw_present() != BP_YES)
+		return 0;
+
 	/*
 	 * Unlocked if write protect pin deasserted or read-only firmware
 	 * is not protected.
