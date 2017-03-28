@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0477d0fa_2e10bb80",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-28T11:31:46Z",
+      "side": 1,
+      "message": "it\u0027s likely reading twice the SR register (which is volatile)",
+      "range": {
+        "startLine": 268,
+        "startChar": 9,
+        "endLine": 270,
+        "endChar": 38
+      },
+      "revId": "434437fca931a4eeca97a5b55686a22ba6a5e8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e036547_de73f07e",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-28T11:31:46Z",
+      "side": 1,
+      "message": "is this really useful ?\nwe are not really using this path in HALFDUPLEX mode\nand never touching touching these bits else.",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 62
+      },
+      "revId": "434437fca931a4eeca97a5b55686a22ba6a5e8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88c20d22_095961f6",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-28T11:31:46Z",
+      "side": 1,
+      "message": "it\u0027s kind of duplicated with the spi_dma_wait_rx/tx above\n(particularly because spi_transaction_rx/tx cannot actually fail and spi_dma_wait_rx/tx can only timeout",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 28
+      },
+      "revId": "434437fca931a4eeca97a5b55686a22ba6a5e8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ef637f_8b7998fd",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-28T11:31:46Z",
+      "side": 1,
+      "message": "Overall I feel we should either do a different API or use the same code path.\nI\u0027m not convinced the current half-common/half-different will be robust to future modification and readable.\n\nlooking a bit at the diff, maybe refactoring this to have more common code is feasible",
+      "range": {
+        "startLine": 408,
+        "startChar": 1,
+        "endLine": 435,
+        "endChar": 38
+      },
+      "revId": "434437fca931a4eeca97a5b55686a22ba6a5e8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
