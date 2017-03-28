@@ -80,6 +80,8 @@ static const int debug_level;
 #define PD_CAPS_COUNT 50
 #define PD_SNK_CAP_RETRIES 3
 
+static struct mutex pd_task_lock;
+
 enum vdm_states {
 	VDM_STATE_ERR_BUSY = -3,
 	VDM_STATE_ERR_SEND = -2,
@@ -1579,16 +1581,51 @@ void pd_set_new_power_request(int port)
 
 #ifdef CONFIG_COMMON_RUNTIME
 
+static int pd_is_comm_enabled(void)
+{
+#if defined(CONFIG_USB_PD_COMM_DISABLED)
+	return 0;
+#elif defined(CONFIG_USB_PD_COMM_LOCKED)
+	uint64_t till;
+
+	/* Enable PD communication if we're in RW or system is not locked. */
+	if (system_get_image_copy() == SYSTEM_IMAGE_RW || !system_is_locked())
+		return 1;
+
+	/* We're in RO and system is locked.
+	 * If battery is present, PD communication is disabled. */
+	if (battery_hw_present() == BP_YES)
+		return 0;
+
+	/* Battery is not present. cr50 may not have set WP yet. Wait & retry */
+	till = get_time().val + 50 * MSEC;
+	do {
+		msleep(10);
+		/* We dont' want to time out prematurely by interrupt */
+		if (get_time().val > till) {
+			/* Timed out before WP is deasserted. Respect cr50 */
+			CPRINTF("Battery removed but system locked\n");
+			return 0;
+		}
+	} while (system_is_locked());
+	/* cr50 finally matched the WP pin state */
+	return 1;
+#endif
+}
+
 /* Initialize globals based on system state. */
 static void pd_init_tasks(void)
 {
 	static int initialized;
-	int enable = 1;
+	int comm_enable;
 	int i;
 
+	mutex_lock(&pd_task_lock);
 	/* Initialize globals once, for all PD tasks.  */
-	if (initialized)
+	if (initialized) {
+		mutex_unlock(&pd_task_lock);
 		return;
+	}
 
 #if defined(HAS_TASK_CHIPSET) && defined(CONFIG_USB_PD_DUAL_ROLE)
 	/* Set dual-role state based on chipset power state */
@@ -1600,18 +1637,13 @@ static void pd_init_tasks(void)
 		drp_state = PD_DRP_TOGGLE_ON;
 #endif
 
-#if defined(CONFIG_USB_PD_COMM_DISABLED)
-	enable = 0;
-#elif defined(CONFIG_USB_PD_COMM_LOCKED)
-	/* Disable PD communication at init if we're in RO and locked. */
-	if (system_get_image_copy() != SYSTEM_IMAGE_RW && system_is_locked())
-		enable = 0;
-#endif
+	comm_enable = pd_is_comm_enabled();
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
-		pd_comm_enabled[i] = enable;
-	CPRINTS("PD comm %sabled", enable ? "en" : "dis");
+		pd_comm_enabled[i] = comm_enable;
+	CPRINTS("PD comm %sabled", comm_enable ? "en" : "dis");
 
 	initialized = 1;
+	mutex_unlock(&pd_task_lock);
 }
 #endif /* CONFIG_COMMON_RUNTIME */
 
