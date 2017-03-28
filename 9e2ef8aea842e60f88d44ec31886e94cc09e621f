@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaab522f_f5b44ec2",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-28T16:36:46Z",
+      "side": 1,
+      "message": "Why isn\u0027t this added in order of the existing type bits?",
+      "revId": "9e2ef8aea842e60f88d44ec31886e94cc09e621f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5815f5b3_b9f9903b",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-28T16:36:46Z",
+      "side": 1,
+      "message": "This goes with the special register that isn\u0027t a apart of the hpet spec? If so, why is it here?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "9e2ef8aea842e60f88d44ec31886e94cc09e621f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4587c5aa_b5d427bd",
+        "filename": "core/minute-ia/ec.lds.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-28T16:36:46Z",
+      "side": 1,
+      "message": "What is this about? What does that have to do with the hpet?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "9e2ef8aea842e60f88d44ec31886e94cc09e621f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
