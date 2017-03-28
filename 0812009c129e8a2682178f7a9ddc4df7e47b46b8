@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dc943bc_6f9e7104",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-28T15:12:30Z",
+      "side": 1,
+      "message": "Instead of duplicating this comment you might as well put one big one at the top indicating how this doesn\u0027t conform to EC API at all and needs to be fixed.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "0812009c129e8a2682178f7a9ddc4df7e47b46b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

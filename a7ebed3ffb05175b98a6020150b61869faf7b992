@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "896c3ef0_d9bd3a2d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-28T15:12:30Z",
+      "side": 1,
+      "message": "But it doesn\u0027t according to that patch. This timer support is busted. You need to manipulate the parameters and return values to be microsecond granularity.",
+      "parentUuid": "dbdcfa31_84dc0ffc",
+      "range": {
+        "startLine": 45,
+        "startChar": 21,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "a7ebed3ffb05175b98a6020150b61869faf7b992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2314fa65_93a46cf1",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 6
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "It is a internal status register.\nNeed this change for ISH 4.\nAdded extra comments now.",
       "parentUuid": "2314fa65_93a46cf1",
+      "revId": "a7ebed3ffb05175b98a6020150b61869faf7b992",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d29b6890_a02c95c5",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-28T15:12:30Z",
+      "side": 1,
+      "message": "That register itself should be commented in the header accordingly as well. It\u0027s not a spec conforming implementation. There are special registers.",
+      "parentUuid": "ab53288a_74a3c202",
       "revId": "a7ebed3ffb05175b98a6020150b61869faf7b992",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
