@@ -16,6 +16,24 @@
       "revId": "bbd8daec122cb985c8b1f7de49afd04d7bb9c603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e57f87b0_dd5d68d7",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2017-03-28T17:55:49Z",
+      "side": 0,
+      "message": "Needed only in the case of Timer Config \u0026 Capabilities register write.\n\nremoved here and __hw_clock_source_init fn too.",
+      "parentUuid": "e35b417e_761407bf",
+      "revId": "bbd8daec122cb985c8b1f7de49afd04d7bb9c603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

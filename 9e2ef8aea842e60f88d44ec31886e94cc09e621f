@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6d2a2722_993313eb",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2017-03-28T17:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaab522f_f5b44ec2",
+      "revId": "9e2ef8aea842e60f88d44ec31886e94cc09e621f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5815f5b3_b9f9903b",
         "filename": "chip/ish/hpet.h",
         "patchSetId": 9
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "434ba560_df23d563",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2017-03-28T17:55:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5815f5b3_b9f9903b",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "9e2ef8aea842e60f88d44ec31886e94cc09e621f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4587c5aa_b5d427bd",
         "filename": "core/minute-ia/ec.lds.S",
         "patchSetId": 9
@@ -53,6 +95,30 @@
       "writtenOn": "2017-03-28T16:36:46Z",
       "side": 1,
       "message": "What is this about? What does that have to do with the hpet?",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 19
+      },
+      "revId": "9e2ef8aea842e60f88d44ec31886e94cc09e621f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bc185cd_e8f04ba7",
+        "filename": "core/minute-ia/ec.lds.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1129721
+      },
+      "writtenOn": "2017-03-28T17:55:49Z",
+      "side": 1,
+      "message": "Recent changes in master branch, resulted in a build issue.\nWe need to implement it.\n\nWill create a separate patch for this.",
+      "parentUuid": "4587c5aa_b5d427bd",
       "range": {
         "startLine": 157,
         "startChar": 0,
