@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "cdda65bc_e949babd",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2017-03-28T12:07:31Z",
+      "side": 1,
+      "message": "A fix",
+      "parentUuid": "39d0bccf_52f9a654",
+      "revId": "37e99c6f4b3c87ba472573d56dfa7d086503c6ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "204112c0_21616b7e",
         "filename": "driver/accelgyro_lsm6dsm.h",
         "patchSetId": 4
