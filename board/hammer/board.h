@@ -112,6 +112,7 @@
 
 /* Optional features */
 #define CONFIG_BOARD_PRE_INIT
+#define CONFIG_MALLOC
 #define CONFIG_WATCHDOG_HELP
 
 /* No lid switch */
