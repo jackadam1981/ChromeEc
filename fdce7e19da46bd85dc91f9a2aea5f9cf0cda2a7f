@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d15413af_a0313ccc",
+        "filename": "board/rose/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-03-28T06:34:34Z",
+      "side": 1,
+      "message": "should be `GPIO_INT_FALLING`",
+      "range": {
+        "startLine": 12,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "fdce7e19da46bd85dc91f9a2aea5f9cf0cda2a7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
