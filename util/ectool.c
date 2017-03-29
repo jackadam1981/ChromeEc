@@ -112,6 +112,12 @@ const char help_str[] =
 	"      Reads from EC flash to a file\n"
 	"  flashwrite <offset> <infile>\n"
 	"      Writes to EC flash from a file\n"
+	"  fpconfig [auto|mark <value>]\n"
+	"      Configure the fingerprint sensor behavior\n"
+	"  fpframe\n"
+	"      Retrieve the finger image as a PGM image\n"
+	"  fpinfo\n"
+	"      Prints information about the Fingerprint sensor\n"
 	"  forcelidopen <enable>\n"
 	"      Forces the lid switch to open position\n"
 	"  gpioget <GPIO name>\n"
@@ -1017,6 +1023,95 @@ int cmd_rw_hash_pd(int argc, char *argv[])
 	rv = ec_command(EC_CMD_USB_PD_RW_HASH_ENTRY, 0, p, sizeof(*p), NULL, 0);
 
 	return rv;
+}
+
+int cmd_fp_info(int argc, char *argv[])
+{
+	struct ec_response_fp_info r;
+	int rv;
+
+	rv = ec_command(EC_CMD_FP_INFO, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	printf("Fingerprint:\n\tSize %dx%d %d bpp\n\tID %04x\n",
+	       r.width, r.height, r.bpp, r.id);
+
+	return 0;
+}
+
+int cmd_fp_config(int argc, char *argv[])
+{
+	struct ec_params_fp_config p;
+	uint32_t mode = 0;
+	int i;
+
+	for (i = 1; i < argc; i++) {
+		if (!strncmp(argv[i], "auto", 4)) {
+			mode |= FP_MODE_AUTO;
+		} else if (!strncmp(argv[i], "mark", 4)) {
+			char *e;
+			uint32_t val = 0;
+
+			if (i + 1 < argc) {
+				val = strtol(argv[i + 1], &e, 0);
+				if (e && *e)
+					return -1;
+			}
+			mode = FP_MODE_MARK_LOG(val);
+			break;
+		}
+	}
+
+	p.mode = mode;
+	return ec_command(EC_CMD_FP_CONFIG, 0, &p, sizeof(p), NULL, 0);
+}
+
+int cmd_fp_frame(int argc, char *argv[])
+{
+	struct ec_response_fp_info r;
+	struct ec_params_fp_frame p;
+	int rv = 0;
+	size_t stride, size;
+	uint8_t *buffer8 = ec_inbuf;
+
+	rv = ec_command(EC_CMD_FP_INFO, 0, NULL, 0, &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	stride = (size_t)r.width * r.bpp/8;
+	if (stride > ec_max_insize) {
+		fprintf(stderr, "Not implemented for line size %zu B "
+			"(%u pixels) > EC transfer size %d\n",
+			stride, r.width, ec_max_insize);
+		return -1;
+	}
+
+	size = stride * r.height;
+
+	/* Print 8-bpp PGM ASCII header */
+	printf("P2\n%d %d\n%d\n", r.width, r.height, (1 << r.bpp) - 1);
+
+	p.offset = 0;
+	p.size = stride;
+	while (size) {
+		int x;
+
+		rv = ec_command(EC_CMD_FP_FRAME, 0, &p, sizeof(p),
+				ec_inbuf, stride);
+		if (rv < 0)
+			return rv;
+		p.offset += stride;
+		size -= stride;
+
+		/* TODO: not implemented for bpp != 8 */
+		for (x = 0; x < stride; x++)
+			printf("%d ", buffer8[x]);
+		printf("\n");
+	}
+	printf("\n# END OF FILE\n");
+
+	return 0;
 }
 
 /**
@@ -7000,6 +7095,9 @@ const struct command commands[] = {
 	{"flashspiinfo", cmd_flash_spi_info},
 	{"flashpd", cmd_flash_pd},
 	{"forcelidopen", cmd_force_lid_open},
+	{"fpconfig", cmd_fp_config},
+	{"fpframe", cmd_fp_frame},
+	{"fpinfo", cmd_fp_info},
 	{"gpioget", cmd_gpio_get},
 	{"gpioset", cmd_gpio_set},
 	{"hangdetect", cmd_hang_detect},
