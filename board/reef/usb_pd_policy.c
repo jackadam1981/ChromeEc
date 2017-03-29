@@ -209,7 +209,9 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 void pd_check_dr_role(int port, int dr_role, int flags)
 {
 	/* If UFP, try to switch to DFP */
-	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_UFP)
+	if ((flags & PD_FLAGS_PARTNER_DR_DATA) &&
+			dr_role == PD_ROLE_UFP &&
+			system_get_image_copy() != SYSTEM_IMAGE_RO)
 		pd_request_data_swap(port);
 }
 /* ----------------- Vendor Defined Messages ------------------ */
