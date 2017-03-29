@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "bd9995x.h"
+#include "charge_ramp.h"
 #include "charge_state.h"
 #include "console.h"
 #include "ec_commands.h"
@@ -216,10 +217,25 @@ int board_battery_initialized(void)
 	return (battery_is_present() == BP_YES);
 }
 
+#define AC_MODE		0
+#define BATT_MODE	1
 int charger_profile_override(struct charge_state_data *curr)
 {
-	if (curr->batt.flags & BATT_FLAG_WANT_CHARGE)
-		charger_discharge_on_ac(0);
+	int mode = BATT_MODE;
+
+	if (battery_is_cut_off() ||
+	    (curr->batt.is_present != BP_YES) ||
+	    (curr->batt.flags & BATT_FLAG_BAD_ANY) ||
+	    (curr->batt.state_of_charge <= 2) ||
+	    ((chg_ramp_is_detected() &&
+	     (curr->batt.flags & BATT_FLAG_WANT_CHARGE) &&
+	     !(curr->batt.status & STATUS_FULLY_CHARGED))))
+		mode = AC_MODE;
+
+	charger_discharge_on_ac(mode);
+
+	if (mode == BATT_MODE)
+		curr->state = ST_DISCHARGE;
 
 	return EC_SUCCESS;
 }
