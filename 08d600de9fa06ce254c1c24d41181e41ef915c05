@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b3c95705_0a5fe779",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-29T19:03:52Z",
+      "side": 1,
+      "message": "My sentence is too complicated, I will try to re-phrase it.",
+      "parentUuid": "160cc228_620dbfa0",
+      "range": {
+        "startLine": 178,
+        "startChar": 48,
+        "endLine": 178,
+        "endChar": 51
+      },
+      "revId": "08d600de9fa06ce254c1c24d41181e41ef915c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe437ef8_ee603a62",
         "filename": "board/reef/usb_pd_policy.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-03-29T18:18:44Z",
       "side": 1,
       "message": "(system_get_image_copy() !\u003d SYSTEM_IMAGE_RO || battery_hw_present() \u003d\u003d BP_YES)\n\nOr use battery_is_present instead of battery_hw_present?",
+      "range": {
+        "startLine": 181,
+        "startChar": 8,
+        "endLine": 181,
+        "endChar": 52
+      },
+      "revId": "08d600de9fa06ce254c1c24d41181e41ef915c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72c84926_1c6fd2ef",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-03-29T19:03:52Z",
+      "side": 1,
+      "message": "No, this would break the case where the battery is drained and cut-off or make it flaky at best. \nit´s more complicated and doesn´t solve either any obvious use case.",
+      "parentUuid": "fe437ef8_ee603a62",
       "range": {
         "startLine": 181,
         "startChar": 8,
