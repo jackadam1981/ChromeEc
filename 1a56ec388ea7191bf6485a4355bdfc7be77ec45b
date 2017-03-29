@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f7710bdb_f61c267e",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-29T15:40:57Z",
+      "side": 1,
+      "message": "Is it ok if this stalls due to a lot of debug output?\n\n(I\u0027m assuming it\u0027s here because the bug you\u0027re fixing caused a brownout.)",
+      "range": {
+        "startLine": 319,
+        "startChar": 3,
+        "endLine": 319,
+        "endChar": 12
+      },
+      "revId": "1a56ec388ea7191bf6485a4355bdfc7be77ec45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "888c6093_5b117ef8",
         "filename": "common/charge_ramp.c",
         "patchSetId": 3
