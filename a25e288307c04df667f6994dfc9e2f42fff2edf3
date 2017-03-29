@@ -22,6 +22,30 @@
       "revId": "a25e288307c04df667f6994dfc9e2f42fff2edf3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55263139_17f59bb1",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-29T19:41:59Z",
+      "side": 1,
+      "message": "True, let me remove it.",
+      "parentUuid": "5c02ff5d_47f12671",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 42
+      },
+      "revId": "a25e288307c04df667f6994dfc9e2f42fff2edf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
