@@ -2179,6 +2179,8 @@ void pd_task(void)
 			break;
 		case PD_STATE_DR_SWAP:
 			if (pd[port].last_state != pd[port].task_state) {
+				if (!pd_check_data_swap(port, pd[port].data_role))
+					break;
 				res = send_control(port, PD_CTRL_DR_SWAP);
 				if (res < 0) {
 					timeout = 10*MSEC;
