@@ -22,6 +22,30 @@
       "revId": "1a56ec388ea7191bf6485a4355bdfc7be77ec45b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7709455b_80263832",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-03-29T05:02:17Z",
+      "side": 1,
+      "message": "I haven\u0027t tried that, but I think that might not be sufficient. A call from chg_ramp_charge_supplier_change() may put us into the CHARGE_DETECT_DELAY state and wake the chg_ramp task, however we don\u0027t set the ILIM until at least the OVERCURRENT_DETECT state. Therefore, the first time through (w/o this change), I think we\u0027d still set an ILIM of 0.",
+      "parentUuid": "888c6093_5b117ef8",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 35
+      },
+      "revId": "1a56ec388ea7191bf6485a4355bdfc7be77ec45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
