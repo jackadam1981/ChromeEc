@@ -4047,7 +4047,7 @@ struct __ec_align2 ec_response_pd_chip_info {
 /*****************************************************************************/
 /* Fingerprint MCU commands: range 0x0400-0x040x */
 
-/* Fingerprint SPI sensor passthru command */
+/* Fingerprint SPI sensor passthru command: for testing ONLY */
 #define EC_CMD_FP_PASSTHRU 0x0400
 
 #define EC_FP_FLAG_NOT_COMPLETE 0x1
@@ -4057,6 +4057,33 @@ struct __ec_align2 ec_params_fp_passthru {
 	uint16_t flags;		/* EC_FP_FLAG_xxx */
 	uint8_t data[];		/* Data to send */
 };
+
+/* Retrieve Fingerprint sensor information */
+#define EC_CMD_FP_INFO 0x0401
+
+struct __ec_align2 ec_response_fp_info {
+	uint16_t width;
+	uint16_t height;
+	uint16_t bpp;
+	/* TBD ... */
+	uint16_t id;
+};
+
+/* Configure the Fingerprint MCU behavior */
+#define EC_CMD_FP_CONFIG 0x0402
+
+struct __ec_align4 ec_params_fp_config {
+	uint32_t mode; //OFF, AP controller, automatic ...
+};
+
+/* Get the last captured finger frame: TODO: will be AES-encrypted */
+#define EC_CMD_FP_FRAME 0x0403
+
+struct __ec_align4 ec_params_fp_frame {
+	uint32_t offset;
+	uint32_t size;
+};
+
 
 /*****************************************************************************/
 /*

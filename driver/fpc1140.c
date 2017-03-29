@@ -84,7 +84,7 @@ static uint8_t fpc_read_int(void)
 }
 
 /* Reset and initialize the sensor IC */
-static int fpc_init(void)
+int fpc_init(void)
 {
 	/* configure the SPI controller (also ensure that CS_N is high) */
 	gpio_config_module(MODULE_SPI_MASTER, 1);
