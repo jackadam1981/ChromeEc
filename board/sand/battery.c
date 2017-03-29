@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "bd9995x.h"
+#include "charge_ramp.h"
 #include "charge_state.h"
 #include "console.h"
 #include "ec_commands.h"
@@ -216,11 +217,45 @@ int board_battery_initialized(void)
 	return (battery_is_present() == BP_YES);
 }
 
+static int charger_should_discharge_on_ac(struct charge_state_data *curr)
+{
+	/* don't discharge on AC whenever: */
+	/* 1. battery is explicitly cutoff */
+	if (battery_is_cut_off())
+		return 0;
+
+	/* 2. battery is not ready to provide power*/
+	if (curr->batt.is_present != BP_YES)
+		return 0;
+
+	/* 3. battery RSOC too low */
+	if ((curr->batt.flags & BATT_FLAG_BAD_ANY) ||
+	    (curr->batt.state_of_charge <= 2))
+		return 0;
+
+	/*
+	 * 4. To avoid inrush current from the external charger, disable
+	 * discharge on AC after the new charger is detected and charge
+	 * charge detect delay has passed and battery can be charged
+	 */
+	if (chg_ramp_is_detected() &&
+	    (curr->batt.flags & BATT_FLAG_WANT_CHARGE) &&
+	    !(curr->batt.status & STATUS_FULLY_CHARGED))
+		return 0;
+
+	return 1;
+}
+
 int charger_profile_override(struct charge_state_data *curr)
 {
-	if (curr->batt.flags & BATT_FLAG_WANT_CHARGE)
-		charger_discharge_on_ac(0);
+	int disch_on_ac = charger_should_discharge_on_ac(curr);
 
+	charger_discharge_on_ac(disch_on_ac);
+
+	if (disch_on_ac)
+		curr->state = ST_DISCHARGE;
+
+	/* no need to override charge current */
 	return EC_SUCCESS;
 }
 
