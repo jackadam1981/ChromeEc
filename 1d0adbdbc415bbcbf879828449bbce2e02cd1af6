@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924a6d0d_4c2e9d7d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-29T17:33:23Z",
+      "side": 1,
+      "message": "This leaving the mutex locked for the 2nd task. If there was ever a 3rd it\u0027d be completely deadlocked.",
+      "revId": "1d0adbdbc415bbcbf879828449bbce2e02cd1af6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
