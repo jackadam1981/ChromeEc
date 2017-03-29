@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fe559cf_f59c18c2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1625,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-29T15:37:52Z",
+      "side": 1,
+      "message": "Doesn\u0027t this always set enable\u003d0, even if !system_is_locked() now?\n\nThat is, the break on line 1621 still leads to this code path.",
+      "range": {
+        "startLine": 1625,
+        "startChar": 0,
+        "endLine": 1625,
+        "endChar": 14
+      },
+      "revId": "4e2827f092bffcf071863042543668e5f260a66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
