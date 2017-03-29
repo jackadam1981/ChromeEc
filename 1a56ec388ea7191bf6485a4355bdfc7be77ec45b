@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "888c6093_5b117ef8",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-03-29T04:42:25Z",
+      "side": 1,
+      "message": "Have you tried moving this code to the beginning of the \"while\" loop? IIUC, the issue occurs on task init, before charge_manager has done anything. It is a bug that we try to set ILIM here, before we have identified all suppliers.",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 35
+      },
+      "revId": "1a56ec388ea7191bf6485a4355bdfc7be77ec45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
