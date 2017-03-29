@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e20d75b0_5df34000",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1614,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-29T00:32:31Z",
+      "side": 1,
+      "message": "updated?",
+      "range": {
+        "startLine": 1614,
+        "startChar": 24,
+        "endLine": 1614,
+        "endChar": 27
+      },
+      "revId": "200a100e6bb24162b45ec1ce5aab567ea1d5583f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d91da7ea_001c93ec",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1622,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-03-29T00:32:31Z",
+      "side": 1,
+      "message": "Aren\u0027t we just waiting to see if Cr50 deasserts WP_L?  That is, the system still appears to be locked, but we\u0027re pretty sure it will unlock because we know there\u0027s no battery.\n\nSo:\n\nwhile(get_time().val \u003c till) {\n  msleep(10);\n  if (!system_is_locked()) {\n    enable \u003d 0;\n    break;\n  }\n}",
+      "range": {
+        "startLine": 1615,
+        "startChar": 0,
+        "endLine": 1622,
+        "endChar": 4
+      },
+      "revId": "200a100e6bb24162b45ec1ce5aab567ea1d5583f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
