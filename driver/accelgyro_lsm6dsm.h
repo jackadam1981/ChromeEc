@@ -81,7 +81,7 @@ enum lsm6dsm_odr {
 
 /* normalized ODR value from selected data rate in mHz */
 #define LSM6DSM_ODR_TO_NORMALIZE(_odr) \
-	(LSM6DSM_ODR_MIN_VAL * (_odr / LSM6DSM_ODR_MIN_VAL))
+	(LSM6DSM_ODR_MIN_VAL << (31 - __builtin_clz(_odr/LSM6DSM_ODR_MIN_VAL)))
 
 /* Full Scale range value for Accel */
 #define LSM6DSM_FS_LIST_NUM		4
