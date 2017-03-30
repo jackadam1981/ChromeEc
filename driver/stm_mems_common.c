@@ -27,10 +27,7 @@ int raw_write8(const int port, const int addr, const int reg, int data)
 }
 
 /**
- * Read n bytes for read
- * NOTE: Some chip use MSB for auto-increments in SUB address
- * MSB must be set for autoincrement in multi read when auto_inc
- * is set
+ * st_raw_read_n - Read n bytes for read
  */
 int st_raw_read_n(const int port, const int addr, const uint8_t reg,
 	       uint8_t *data_ptr, const int len)
@@ -46,8 +43,24 @@ int st_raw_read_n(const int port, const int addr, const uint8_t reg,
 	return rv;
 }
 
+/**
+ * st_raw_read_n_noinc - Read n bytes for read (no auto inc address)
+ */
+int st_raw_read_n_noinc(const int port, const int addr, const uint8_t reg,
+	       uint8_t *data_ptr, const int len)
+{
+	int rv = -EC_ERROR_PARAM1;
+
+	/* TODO: Implement SPI interface support */
+	i2c_lock(port, 1);
+	rv = i2c_xfer(port, addr, &reg, 1, data_ptr, len, I2C_XFER_SINGLE);
+	i2c_lock(port, 0);
+
+	return rv;
+}
+
  /**
- * write_data_with_mask - Write register with mask
+ * st_write_data_with_mask - Write register with mask
  * @s: Motion sensor pointer
  * @reg: Device register
  * @mask: The mask to search
@@ -73,7 +86,7 @@ int st_write_data_with_mask(const struct motion_sensor_t *s, int reg,
 }
 
  /**
- * set_resolution - Set bit resolution
+ * st_set_resolution - Set bit resolution
  * @s: Motion sensor pointer
  * @res: Bit resolution
  * @rnd: Round bit
@@ -86,7 +99,7 @@ int st_set_resolution(const struct motion_sensor_t *s, int res, int rnd)
 }
 
  /**
- * get_resolution - Get bit resolution
+ * st_get_resolution - Get bit resolution
  * @s: Motion sensor pointer
  *
  * TODO: must support multiple resolution
@@ -99,7 +112,7 @@ int st_get_resolution(const struct motion_sensor_t *s)
 }
 
 /**
- * set_offset - Set data offset
+ * st_set_offset - Set data offset
  * @s: Motion sensor pointer
  * @offset: offset vector
  * @temp: Temp
@@ -116,7 +129,7 @@ int st_set_offset(const struct motion_sensor_t *s,
 }
 
 /**
- * get_offset - Get data offset
+ * st_get_offset - Get data offset
  * @s: Motion sensor pointer
  * @offset: offset vector
  * @temp: Temp
@@ -134,7 +147,7 @@ int st_get_offset(const struct motion_sensor_t *s,
 }
 
 /**
- * get_data_rate - Get data rate (ODR)
+ * st_get_data_rate - Get data rate (ODR)
  * @s: Motion sensor pointer
  */
 int st_get_data_rate(const struct motion_sensor_t *s)
@@ -145,7 +158,7 @@ int st_get_data_rate(const struct motion_sensor_t *s)
 }
 
 /**
- * normalize - Apply LSB data sens. and rotation based on sensor resolution
+ * st_normalize - Apply LSB data sens. and rotation based on sensor resolution
  * @s: Motion sensor pointer
  * @v: output vector
  * @data: LSB raw data
