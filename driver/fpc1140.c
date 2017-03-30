@@ -9,11 +9,19 @@
 #include "ec_commands.h"
 #include "endian.h"
 #include "gpio.h"
+#include "host_command.h"
 #include "mkbp_event.h"
 #include "spi.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#ifdef HAVE_PRIVATE
+#include "fpc1140_private.h"
+#else
+#define DISCARD_ALL(args...)
+#define PRIVATE(func) DISCARD_ALL
+#endif
 
 #define CPRINTF(format, args...) cprintf(CC_FP, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_FP, format, ## args)
@@ -84,7 +92,7 @@ static uint8_t fpc_read_int(void)
 }
 
 /* Reset and initialize the sensor IC */
-static int fpc_init(void)
+int fpc_init(void)
 {
 	/* configure the SPI controller (also ensure that CS_N is high) */
 	gpio_config_module(MODULE_SPI_MASTER, 1);
@@ -130,10 +138,7 @@ void fp_task(void)
 		task_wait_event(-1);
 		evt = fpc_read_int();
 		atomic_or(&fp_events, evt);
-		CPRINTS("FPS event %02x", evt);
-
-		if (evt & FPC_INT_FINGER_DOWN)
-			CPRINTS("Finger!");
+		PRIVATE(fpc_log_event)(evt);
 
 		if (evt)
 			mkbp_send_event(EC_MKBP_EVENT_FINGERPRINT);
@@ -149,3 +154,37 @@ static int fp_get_next_event(uint8_t *out)
 	return sizeof(event_out);
 }
 DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_FINGERPRINT, fp_get_next_event);
+
+static int fp_command_passthru(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_fp_passthru *params = args->params;
+	void *out = args->response;
+	int rc;
+	int ret = EC_RES_SUCCESS;
+
+	if (system_is_locked())
+		return EC_RES_ACCESS_DENIED;
+
+	if (params->len > args->params_size +
+	    offsetof(struct ec_params_fp_passthru, data) ||
+	    params->len > args->response_max)
+		return EC_RES_INVALID_PARAM;
+
+	PRIVATE(fpc_log_xfer)(params->data, params->len, params->flags);
+	rc = spi_transaction_async(&spi_devices[0], params->data,
+				   params->len, out, SPI_READBACK_ALL);
+	if (params->flags & EC_FP_FLAG_NOT_COMPLETE)
+		rc |= spi_transaction_wait(&spi_devices[0]);
+	else
+		rc |= spi_transaction_flush(&spi_devices[0]);
+
+	PRIVATE(fpc_log_xfer_result)(out, params->len, rc);
+	if (rc == EC_ERROR_TIMEOUT)
+		ret = EC_RES_TIMEOUT;
+	else if (rc)
+		ret = EC_RES_ERROR;
+
+	args->response_size = params->len;
+	return ret;
+}
+DECLARE_HOST_COMMAND(EC_CMD_FP_PASSTHRU, fp_command_passthru, EC_VER_MASK(0));
