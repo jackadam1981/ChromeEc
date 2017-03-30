@@ -81,6 +81,24 @@
       "revId": "c3ea4f05329977daab450a261daedb4756dfda9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26a45548_13acc5c0",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-30T14:20:12Z",
+      "side": 1,
+      "message": "It makes things hard for me assess consistency between projects when the followers aren\u0027t similar to the reference code. I think Daisuke can help review as well. He might have better context.",
+      "parentUuid": "5c530bd6_f986ced8",
+      "revId": "c3ea4f05329977daab450a261daedb4756dfda9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
