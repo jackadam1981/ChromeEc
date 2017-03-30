@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9a5de0f4_42447452",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-03-30T15:23:53Z",
+      "side": 1,
+      "message": "I think it should be: \" ... avoid swapping roles so we don\u0027t jump in RW as a SNK/DFP and potentially confuse the power supply by sending a soft-reset as SNK/UFP.\"\n\nWe\u0027re trying to forbit becoming SNK/DFP in RO. RW starts always as SNK/UFP.",
+      "parentUuid": "b3c95705_0a5fe779",
+      "range": {
+        "startLine": 178,
+        "startChar": 48,
+        "endLine": 178,
+        "endChar": 51
+      },
+      "revId": "08d600de9fa06ce254c1c24d41181e41ef915c05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe437ef8_ee603a62",
         "filename": "board/reef/usb_pd_policy.c",
         "patchSetId": 1
