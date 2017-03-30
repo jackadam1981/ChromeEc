@@ -18,6 +18,9 @@
 #include "driver/accel_lis2dh.h"
 #include "driver/stm_mems_common.h"
 
+#define CPUTS(outstr) cputs(CC_ACCEL, outstr)
+#define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
+
 #ifdef CONFIG_ACCEL_FIFO
 /**
  * enable_fifo - Enable/Disable FIFO in LIS2DH
