@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46eee223_33f7d368",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2017-03-30T17:43:29Z",
+      "side": 1,
+      "message": "Umm ... did you mean sysrq + x? Or is this a warm reboot scenaio you implemented (does not go to AP) i.e. equivalent to Alt+VolUp+r on today\u0027s clamshells? If latter, may be better to call it \"r\" than \"b\".",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "32657a3b59a4a8d77f8ecfbe4a274ef85a10a6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
