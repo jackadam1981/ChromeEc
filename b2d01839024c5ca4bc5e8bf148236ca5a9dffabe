@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd9a6d20_d0ca0677",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-30T23:01:20Z",
+      "side": 1,
+      "message": "cr50: print something ...",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 5
+      },
+      "revId": "b2d01839024c5ca4bc5e8bf148236ca5a9dffabe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3deb3fa4_93f9a850",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-03-30T23:01:20Z",
+      "side": 1,
+      "message": "Add a comment that this routine is being called ever 0.5 seconds",
+      "range": {
+        "startLine": 360,
+        "startChar": 1,
+        "endLine": 360,
+        "endChar": 15
+      },
+      "revId": "b2d01839024c5ca4bc5e8bf148236ca5a9dffabe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
