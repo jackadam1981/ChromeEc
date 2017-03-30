@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1e3a8648_095ff61c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-30T02:06:24Z",
+      "side": 1,
+      "message": "these protections are not easily to meet. they just haven\u0027t met yet.",
+      "parentUuid": "21a44f51_15004523",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "c3ea4f05329977daab450a261daedb4756dfda9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "303a236d_941b2bc6",
         "filename": "board/sand/battery.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-03-29T16:06:46Z",
       "side": 1,
       "message": "This is mimicing the reef code but differently? Why?",
+      "revId": "c3ea4f05329977daab450a261daedb4756dfda9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c530bd6_f986ced8",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1168675
+      },
+      "writtenOn": "2017-03-30T02:06:24Z",
+      "side": 1,
+      "message": "Mostly because battery_is_present() are different.\nreef\u0027s three batteries are woke in two scenario with three different kinds of detection.\nFor Sand, only one scenario (by checking DFET status). Sand.battery_is_present() contains waking condition, that why there is a little bit different from Reef\u0027s.",
+      "parentUuid": "303a236d_941b2bc6",
       "revId": "c3ea4f05329977daab450a261daedb4756dfda9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
