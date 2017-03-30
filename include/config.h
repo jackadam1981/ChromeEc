@@ -1079,6 +1079,12 @@
 #undef CONFIG_FPU
 
 /*****************************************************************************/
+/* Fingerprint configuration */
+
+/* Log the requests and the events to/from the fingerprint sensor for debug. */
+#undef CONFIG_FP_LOGGING
+
+/*****************************************************************************/
 /* Firmware region configuration */
 
 #undef CONFIG_FW_PSTATE_OFF
