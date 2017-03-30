@@ -14,6 +14,8 @@
 #define CONFIG_UART_CONSOLE 1
 #define CONFIG_UART_TX_DMA_CH STM32_DMAC_USART1_TX
 #define CONFIG_UART_TX_DMA_PH 2
+#undef CONFIG_UART_TX_BUF_SIZE
+#define CONFIG_UART_TX_BUF_SIZE 2048
 
 /* Optional features */
 #define CONFIG_CMD_SPI_XFER
@@ -23,7 +25,7 @@
 #define CONFIG_SPI
 #define CONFIG_SPI_MASTER
 #define CONFIG_STM_HWTIMER32
-
+#define CONFIG_FP_LOGGING
 
 #define CONFIG_SPI_FP_PORT    1  /* SPI3: second SPI master port */
 
