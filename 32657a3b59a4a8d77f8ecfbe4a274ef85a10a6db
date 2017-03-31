@@ -70,6 +70,30 @@
       "revId": "32657a3b59a4a8d77f8ecfbe4a274ef85a10a6db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80623d2f_fb21720e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2017-03-31T00:46:10Z",
+      "side": 1,
+      "message": "I guess this comment is about where the functionality is actually implemented (rather than this CL where you are enabling the feature).",
+      "parentUuid": "788b7add_b50c125c",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "32657a3b59a4a8d77f8ecfbe4a274ef85a10a6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
