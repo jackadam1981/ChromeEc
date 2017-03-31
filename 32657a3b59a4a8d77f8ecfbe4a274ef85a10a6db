@@ -22,6 +22,30 @@
       "revId": "32657a3b59a4a8d77f8ecfbe4a274ef85a10a6db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac82fbf6_69f9e5cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-31T00:35:52Z",
+      "side": 1,
+      "message": "I mean b (see the output of h above): \"Immediately reboot the system, without unmounting or syncing filesystems\". r a.k.a. warm reset is a special Chrome OS key that\u0027ll be handled by EC and not passed as sysrq.",
+      "parentUuid": "46eee223_33f7d368",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "32657a3b59a4a8d77f8ecfbe4a274ef85a10a6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
