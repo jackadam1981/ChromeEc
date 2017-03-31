@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ec59e56_dae5bb41",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-31T01:21:38Z",
+      "side": 1,
+      "message": "should these 2 masks be #defined somewhere instead?",
+      "revId": "470db737a0903d967b824f08b2495aa04cf19a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "059ee859_8e7e80a4",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-31T01:21:38Z",
+      "side": 1,
+      "message": "anx74xx_handle_power_mode(port, enable ? ANX74XX_STANDBY_MODE : ANX74XX_NORMAL_MODE)",
+      "revId": "470db737a0903d967b824f08b2495aa04cf19a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
