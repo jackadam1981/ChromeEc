@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80389db4_088051c8",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-31T21:00:26Z",
+      "side": 0,
+      "message": "Why was this removed?\nThis breaks running usb_updater -f multiple times.\nIf you try running it twice in a row you get\n\n\nopen_device 18d1:5014\nfound interface 3 endpoint 4, chunk_len 64\nREADY\n-------\nstart\ntarget running protocol version 6\nkeyids: RO 0xaa66150f, RW 0xb93d6539\noffsets: backup RO at 0x40000, backup RW at 0x4000\nCurrent versions:\nRO 0.0.10\nRW 0.0.19\n\n\nopen_device 18d1:5014\nfound interface 3 endpoint 4, chunk_len 64\nREADY\n-------\nstart\nUnexpected response size 1:  06",
+      "range": {
+        "startLine": 1266,
+        "startChar": 0,
+        "endLine": 1267,
+        "endChar": 22
+      },
+      "revId": "dc66986d0a7fd182ddcafbee00045a25709edcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
