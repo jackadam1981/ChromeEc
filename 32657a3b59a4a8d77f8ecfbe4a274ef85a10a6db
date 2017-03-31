@@ -94,6 +94,30 @@
       "revId": "32657a3b59a4a8d77f8ecfbe4a274ef85a10a6db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab51f816_8fac93e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-03-31T00:48:07Z",
+      "side": 1,
+      "message": "b is handled by AP and is a standard sysrq combination, r is handled by EC and is _not_ standard.\n\nThey\u0027re similar in effect, but different.",
+      "parentUuid": "788b7add_b50c125c",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "32657a3b59a4a8d77f8ecfbe4a274ef85a10a6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
