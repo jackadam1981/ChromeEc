@@ -493,13 +493,32 @@ static int pd_get_saved_active(int port)
 		CPRINTS("PD NVRAM FAIL");
 		return 0;
 	}
-	return !!val;
+	return val & 1;
 }
 
 static void pd_set_saved_active(int port, int val)
 {
 	if (system_set_bbram(port ? SYSTEM_BBRAM_IDX_PD1 :
-				    SYSTEM_BBRAM_IDX_PD0, val))
+				    SYSTEM_BBRAM_IDX_PD0, val ? 1 : 0))
+		CPRINTS("PD NVRAM FAIL");
+}
+
+static int pd_get_saved_datarole(int port)
+{
+	uint8_t val;
+
+	if (system_get_bbram(port ? SYSTEM_BBRAM_IDX_PD1 :
+				    SYSTEM_BBRAM_IDX_PD0, &val)) {
+		CPRINTS("PD NVRAM FAIL");
+		return 0;
+	}
+	return val & 2;
+}
+
+static void pd_set_saved_datarole(int port, int val)
+{
+	if (system_set_bbram(port ? SYSTEM_BBRAM_IDX_PD1 :
+				    SYSTEM_BBRAM_IDX_PD0, val ? 2 : 0))
 		CPRINTS("PD NVRAM FAIL");
 }
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
@@ -1155,7 +1174,8 @@ static void handle_request(int port, uint16_t head,
 	/* dump received packet content (only dump ping at debug level 3) */
 	if ((debug_level == 2 && PD_HEADER_TYPE(head) != PD_CTRL_PING) ||
 	    debug_level >= 3) {
-		CPRINTF("RECV %04x/%d ", head, cnt);
+		CPRINTF("RECV %04x/%d %s", head, cnt,
+			(head & (1 << 5)) ? "DFP" : "UFP");
 		for (p = 0; p < cnt; p++)
 			CPRINTF("[%d]%08x ", p, payload[p]);
 		CPRINTF("\n");
@@ -2795,8 +2815,13 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 		case PD_STATE_SOFT_RESET:
 			if (pd[port].last_state != pd[port].task_state) {
+				int previous_role = pd_get_saved_datarole(port);
 				/* Message ID of soft reset is always 0 */
 				pd[port].msg_id = 0;
+				pd_set_data_role(port, previous_role);
+				/* Save the other role in case we won't come back alive */
+				pd_set_saved_datarole(port, 1 - previous_role);
+				CPRINTS("Sending soft reset as %d", pd[port].data_role);
 				res = send_control(port, PD_CTRL_SOFT_RESET);
 
 				/* if soft reset failed, try hard reset. */
@@ -2807,6 +2832,8 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 					break;
 				}
 
+				/* If we're still here, we guessed right */
+				pd_set_saved_datarole(port, 1 - previous_role);
 				set_state_timeout(
 					port,
 					get_time().val + PD_T_SENDER_RESPONSE,
