@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ca86254_6d46fb04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-03-31T22:53:43Z",
+      "side": 1,
+      "message": "This needs to be fixed in cr50 as well. There\u0027s nothing stopping an updater process to get killed or fail before this command is sent. Do you have a bug tracking this deficiency in the cr50 algorithm?",
+      "revId": "9d11177943d97bb614361507fea78899206b7154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
