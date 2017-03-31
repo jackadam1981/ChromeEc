@@ -16,6 +16,24 @@
       "revId": "9d11177943d97bb614361507fea78899206b7154",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7d31ab5_c88e7cac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-03-31T23:20:20Z",
+      "side": 1,
+      "message": "There isn\u0027t a bug. There is a timeout that will reset this on the Cr50 side. So you could wait 5 seconds between calls of usb_updater -f and it would succeed. I am not sure how much more we could do.",
+      "parentUuid": "5ca86254_6d46fb04",
+      "revId": "9d11177943d97bb614361507fea78899206b7154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
