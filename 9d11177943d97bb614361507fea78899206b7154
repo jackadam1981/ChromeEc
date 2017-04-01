@@ -34,6 +34,24 @@
       "revId": "9d11177943d97bb614361507fea78899206b7154",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2a68c89_29a64fd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-04-01T03:23:05Z",
+      "side": 1,
+      "message": "So the situation you described here is not permanent. There\u0027s already a 5 sec timeout to handle the situation? If so, can you please add the timing component to the description?",
+      "parentUuid": "e7d31ab5_c88e7cac",
+      "revId": "9d11177943d97bb614361507fea78899206b7154",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
