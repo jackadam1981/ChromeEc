@@ -99,6 +99,47 @@
       "revId": "c3ea4f05329977daab450a261daedb4756dfda9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8034db32_9a3592f9",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-03T20:51:45Z",
+      "side": 1,
+      "message": "Please address Aaron\u0027s comment first. That is, Sand should also implement charger_should_discharge_on_ac so that we can compare how policies are different.",
+      "parentUuid": "26a45548_13acc5c0",
+      "revId": "c3ea4f05329977daab450a261daedb4756dfda9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41ae74fc_d2a1f79d",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-03T20:51:45Z",
+      "side": 1,
+      "message": "nit: The function takes \u0027enable\u0027. Even though logically correct, it\u0027s better not to change the name.",
+      "range": {
+        "startLine": 235,
+        "startChar": 25,
+        "endLine": 235,
+        "endChar": 29
+      },
+      "revId": "c3ea4f05329977daab450a261daedb4756dfda9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
