@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e64c564_7ed39caf",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-04-03T20:57:10Z",
+      "side": 1,
+      "message": "Why dont we just move this to board_init?",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 325,
+        "endChar": 37
+      },
+      "revId": "973527e9be7e515206299a1d571f431c6f6512d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
