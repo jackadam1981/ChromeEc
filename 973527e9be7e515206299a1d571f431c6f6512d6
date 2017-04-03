@@ -22,6 +22,30 @@
       "revId": "973527e9be7e515206299a1d571f431c6f6512d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eba949b_e303e652",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-03T21:56:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e64c564_7ed39caf",
+      "range": {
+        "startLine": 325,
+        "startChar": 2,
+        "endLine": 325,
+        "endChar": 37
+      },
+      "revId": "973527e9be7e515206299a1d571f431c6f6512d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
