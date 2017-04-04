@@ -69,6 +69,20 @@
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM
 
+/* Specify type of Magnetometer attached. */
+#undef CONFIG_MAG_LIS2MDL
+
+/*
+ * Configure LIS2MDL magnetometer behind a LSM6DSM:
+ * - CONFIG_MAG_LIS2MDL defined and CONFIG_MAG_LSM6DSM_LIS2MDL
+ *   undefined means that LIS2MDL is stand alone device with no FIFO
+ *   support (polling mode).
+ * - CONFIG_MAG_LIS2MDL and CONFIG_MAG_LSM6DSM_LIS2MDL defined
+ *   means LIS2MDL is behind a master device interface and uses internal
+ *   LSM6DSM FIFO.
+ */
+#undef CONFIG_MAG_LSM6DSM_LIS2MDL
+
 /* Specify barometer attached */
 #undef CONFIG_BARO_BMP280
 
