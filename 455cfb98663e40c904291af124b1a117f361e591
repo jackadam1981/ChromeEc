@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20113e76_d4028615",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-04T16:57:40Z",
+      "side": 1,
+      "message": "This should be DFP. If we avoid swapping data roles, we\u0027ll stay as SNK/UFP thus jump in RW as SNK/UFP.",
+      "range": {
+        "startLine": 177,
+        "startChar": 36,
+        "endLine": 177,
+        "endChar": 39
+      },
+      "revId": "455cfb98663e40c904291af124b1a117f361e591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
