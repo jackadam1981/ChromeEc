@@ -32,6 +32,18 @@ static inline uint16_t MIN_AZ(int _a, int _b)
 #define LSM6DSM_ADDR0			LSM6DSM_I2C_ADDR(0x6a)
 #define LSM6DSM_ADDR1			LSM6DSM_I2C_ADDR(0x6b)
 
+#define LSM6DSM_FUNC_CFG_ACCESS		0x01
+#define LSM6DSM_FUNC_ENABLE_MASK		0x80
+
+/* Embedded functions registers */
+#define LSM6DSM_SLV0_ADD			0x02
+#define LSM6DSM_SLV0_SUBADD			0x03
+#define LSM6DSM_SLV0_CONFIG			0x04
+#define LSM6DSM_SLV1_CONFIG			0x07
+#define LSM6DSM_SLVCFG_WONCE_BIT	0x20
+
+#define LSM6DSM_DATA_WRITE_SUB_SLV0	0x0e
+
 /* Who Am I */
 #define LSM6DSM_WHO_AM_I_REG		0x0f
 #define LSM6DSM_WHO_AM_I		0x6a
@@ -191,6 +203,9 @@ enum fifo_mode {
 enum dev_fifo {
 	FIFO_DEV_GYRO = 0,
 	FIFO_DEV_ACCEL,
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+	FIFO_DEV_MAG,
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
 	FIFO_DEV_NUM,
 };
 
@@ -285,7 +300,7 @@ struct fstatus {
 
 /* FS register address/mask for Acc/Gyro sensors */
 #define LSM6DSM_RANGE_REG(_sensor)  (LSM6DSM_ACCEL_FS_ADDR + (_sensor))
-#define LSM6DSM_RANGE_MASK  		0x0c
+#define LSM6DSM_RANGE_MASK		0x0c
 
 /* Status register bitmask for Acc/Gyro data ready */
 enum lsm6dsm_status {
@@ -298,7 +313,7 @@ enum lsm6dsm_status {
 #define LSM6DSM_STS_GDA_MASK		0x02
 
 /* Sensor resolution in number of bits: fixed 16 bit */
-#define LSM6DSM_RESOLUTION      	16
+#define LSM6DSM_RESOLUTION		16
 
 extern const struct accelgyro_drv lsm6dsm_drv;
 
