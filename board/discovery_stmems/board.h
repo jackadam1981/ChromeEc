@@ -16,6 +16,7 @@
 #define CONFIG_MAG_LIS2MDL
 #undef CONFIG_ACCEL_LIS2DH
 #define CONFIG_MAG_LSM6DSM_LIS2MDL
+#define CONFIG_BARO_LPS22HB
 
 /* Interrupt management. */
 #define CONFIG_ACCEL_INTERRUPTS
@@ -82,13 +83,17 @@ enum sensor_id {
 	BASE_GYRO,
 #endif /* CONFIG_ACCELGYRO_LSM6DSM */
 #ifdef CONFIG_MAG_LIS2MDL
-	BASE_MAG
+	BASE_MAG,
 #endif /* CONFIG_MAG_LIS2MDL */
+#ifdef CONFIG_BARO_LPS22HB
+	BASE_BARO,
+#endif /* CONFIG_BARO_LPS22HB */
 };
 
 /* Accelerometer and Gyroscope are the same device. */
 #define I2C_PORT_GYRO				I2C_PORT_MASTER
 #define I2C_PORT_ACCEL				I2C_PORT_MASTER
+#define I2C_PORT_BARO				I2C_PORT_MASTER
 
 #include "gpio_signal.h"
 
