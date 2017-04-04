@@ -69,6 +69,26 @@
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM
 
+/* Specify type of Magnetometer attached. */
+#undef CONFIG_MAG_LIS2MDL
+
+/*
+ * Configure LIS2MDL magnetometer behind a LSM6DSM:
+ * - CONFIG_MAG_LIS2MDL defined and CONFIG_MAG_LSM6DSM_LIS2MDL
+ *   undefined means that LIS2MDL is stand alone device with no FIFO
+ *   support (polling mode).
+ * - CONFIG_MAG_LIS2MDL and CONFIG_MAG_LSM6DSM_LIS2MDL defined
+ *   means LIS2MDL is behind a master device interface and uses internal
+ *   LSM6DSM FIFO.
+ */
+#undef CONFIG_MAG_LSM6DSM_LIS2MDL
+
+/* Presence of a Bosh Sensortec BMM150 magnetometer behind a BMI160. */
+#undef CONFIG_MAG_BMI160_BMM150
+
+/* Specify barometer attached */
+#undef CONFIG_BARO_BMP280
+
 /* Support for BMI160 hardware orientation sensor */
 #undef CONFIG_BMI160_ORIENTATION_SENSOR
 
@@ -83,9 +103,6 @@
 
 /* Support the orientation gesture */
 #undef CONFIG_GESTURE_ORIENTATION
-
-/* Specify barometer attached */
-#undef CONFIG_BARO_BMP280
 
 /*
  * Use the old standard reference frame for accelerometers. The old
@@ -2000,9 +2017,6 @@
 
 /* Include code to do online compass calibration */
 #undef CONFIG_MAG_CALIBRATE
-
-/* Presence of a Bosh Sensortec BMM150 magnetometer behind a BMI160. */
-#undef CONFIG_MAG_BMI160_BMM150
 
 /* Microchip EC SRAM start address */
 #undef CONFIG_MEC_SRAM_BASE_START
