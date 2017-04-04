@@ -10,12 +10,16 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "i2c.h"
 #include "timer.h"
 
 static int debounced_extpower_presence;
 
 int extpower_is_present(void)
 {
+	if (i2c_get_line_levels(I2C_PORT_CHARGER != I2C_LINE_IDLE))
+		return 1; /* fake AC if battery is stuck */
+
 	return debounced_extpower_presence;
 }
 
