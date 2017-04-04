@@ -16,7 +16,9 @@
  * Select LSM6DSM, LIS2DH or both
  */
 #define CONFIG_ACCELGYRO_LSM6DSM
-#define CONFIG_ACCEL_LIS2DH
+#define CONFIG_MAG_LIS2MDL
+#undef CONFIG_ACCEL_LIS2DH
+#define CONFIG_MAG_LSM6DSM_LIS2MDL
 
 /* Interrupt management. */
 #define CONFIG_ACCEL_INTERRUPTS
@@ -43,7 +45,7 @@
 
 /* Custom sensor option. */
 #define CONFIG_ACCEL_LIS2DH_INT_EVENT		TASK_EVENT_CUSTOM(4)
-#define CONFIG_ACCEL_LSM6DSM_INT_EVENT		TASK_EVENT_CUSTOM(4)
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT		TASK_EVENT_CUSTOM(5)
 
 /* Optional features. */
 #undef CONFIG_LID_SWITCH
@@ -81,6 +83,9 @@ enum sensor_id {
 	BASE_ACCEL,
 	BASE_GYRO,
 #endif /* CONFIG_ACCELGYRO_LSM6DSM */
+#ifdef CONFIG_MAG_LIS2MDL
+	BASE_MAG
+#endif /* CONFIG_MAG_LIS2MDL */
 };
 
 /* Accelerometer and Gyroscope are the same device. */
