@@ -86,8 +86,9 @@
 /* Presence of a Bosh Sensortec BMM150 magnetometer behind a BMI160. */
 #undef CONFIG_MAG_BMI160_BMM150
 
-/* Specify barometer attached */
+/* Specify barometer attached. */
 #undef CONFIG_BARO_BMP280
+#undef CONFIG_BARO_LPS22HB
 
 /* Support for BMI160 hardware orientation sensor */
 #undef CONFIG_BMI160_ORIENTATION_SENSOR
