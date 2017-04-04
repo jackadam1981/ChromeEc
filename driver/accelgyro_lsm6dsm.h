@@ -10,6 +10,19 @@
 
 #include "stm_mems_common.h"
 
+/* MIN_AZ - Calculate min between two integer (zero skip) */
+static inline uint16_t MIN_AZ(int _a, int _b)
+{
+	if (_a < _b) {
+		if (_a == 0)
+			return _b;
+		return _a;
+	} else if (_b == 0)
+		return _a;
+
+	return _b;
+}
+
 #define LSM6DSM_I2C_ADDR(__x)		(__x << 1)
 
 /*
@@ -34,6 +47,9 @@
 #define LSM6DSM_BDU_ADDR		0x12
 #define LSM6DSM_BDU_MASK		0x40
 
+#define LSM6DSM_INT2_ON_INT1_ADDR	0x13
+#define LSM6DSM_INT2_ON_INT1_MASK	0x20
+
 #define LSM6DSM_GYRO_OUT_X_L_ADDR	0x22
 #define LSM6DSM_ACCEL_OUT_X_L_ADDR	0x28
 
@@ -52,7 +68,7 @@
 
 /* Common Acc/Gyro data rate */
 enum lsm6dsm_odr {
-	LSM6DSM_ODR_0HZ_VAL = 0,
+	LSM6DSM_ODR_POWER_OFF_VAL = 0,
 	LSM6DSM_ODR_13HZ_VAL,
 	LSM6DSM_ODR_26HZ_VAL,
 	LSM6DSM_ODR_52HZ_VAL,
@@ -60,6 +76,96 @@ enum lsm6dsm_odr {
 	LSM6DSM_ODR_208HZ_VAL,
 	LSM6DSM_ODR_416HZ_VAL,
 	LSM6DSM_ODR_LIST_NUM
+};
+
+/* Hardware FIFO size in byte */
+#define LSM6DSM_MAX_FIFO_SIZE		4096
+#define LSM6DSM_MAX_FIFO_LENGTH	(LSM6DSM_MAX_FIFO_SIZE / OUT_XYZ_SIZE)
+
+/* FIFO decimator registers and bitmask */
+#define LSM6DSM_FIFO_CTRL1_ADDR		0x06
+#define LSM6DSM_FIFO_CTRL2_ADDR		0x07
+
+#define LSM6DSM_FIFO_CTRL3_ADDR		0x08
+#define LSM6DSM_FIFO_CTRL3_DEC_XL_MASK	0x07
+#define LSM6DSM_FIFO_CTRL3_DEC_G_MASK	0x38
+
+#define LSM6DSM_FIFO_CTRL4_ADDR		0x09
+#define LSM6DSM_FIFO_CTRL4_DEC_M_MASK	0x07
+#define LSM6DSM_FIFO_CTRL4_DEC_4_MASK	0x38
+
+#define LSM6DSM_FIFO_DECIMATOR(_dec)\
+	(_dec < 8 ? _dec : (2 + __builtin_ctz(_dec)))
+
+#define LSM6DSM_FIFO_INT1_CTRL		0x0d
+#define LSM6DSM_FTH_INT1_MASK		0x08
+#define LSM6DSM_INT1_SIGN_MASK		0x40
+
+#define LSM6DSM_FIFO_STS1_ADDR		0x3a
+#define LSM6DSM_FIFO_STS2_ADDR		0x3b
+#define LSM6DSM_FIFO_DIFF_MASK		0x07ff
+#define LSM6DSM_FIFO_DATA_OVR		0x4000
+#define LSM6DSM_FIFO_WATERMARK		0x80
+#define LSM6DSM_FIFO_WMASK_L		0xff
+#define LSM6DSM_FIFO_WMASK_H		0x07
+#define LSM6DSM_FIFO_NODECIM		0x01
+
+/* Out data register */
+#define LSM6DSM_FIFO_DATA_ADDR		0x3e
+
+enum fifo_mode {
+/* Select FIFO supported mode:
+ * BYPASS - Bypass FIFO
+ * CONTINUOUS - FIFO older data is replaced by new data
+ * TODO: Other FIFO mode not supported
+ */
+	BYPASS = 0,
+	CONTINUOUS,
+};
+
+/* Registers value for supported FIFO mode */
+#define LSM6DSM_FIFO_MODE_BYPASS_VAL	0x00
+#define LSM6DSM_FIFO_MODE_CONTINUOUS_VAL	0x06
+
+#define LSM6DSM_FIFO_CTRL5_ADDR		0x0a
+#define LSM6DSM_FIFO_CTRL5_MODE_MASK	0x07
+#define LSM6DSM_FIFO_CTRL5_ODR_MASK	0x78
+
+/* Registers value for sensor Hub */
+#define LSM6DSM_FUNC_SRC1		0x53
+#define LSM6DSM_SENSORHUB_END_OP	0x01
+
+/* Define ODR FIFO values. Max value is max ODR for sensors
+ * Value is limited to 416 Hz
+ */
+#define LSM6DSM_FIFO_ODR_MAX_VAL	LSM6DSM_ODR_416HZ_VAL
+#define LSM6DSM_FIFO_ODR_OFF_VAL	LSM6DSM_ODR_POWER_OFF_VAL
+
+/* Define device available in FIFO pattern */
+enum dev_fifo {
+	FIFO_DEV_GYRO = 0,
+	FIFO_DEV_ACCEL,
+	FIFO_DEV_NUM,
+};
+
+/*
+ * In motion_sensor, for historical reason, the device
+ * are stored in accel, gyro, mag order.
+ */
+enum dev_offset {
+	OFFSET_DEV_ACCEL = 0,
+	OFFSET_DEV_GYRO,
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+	OFFSET_DEV_MAG,
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
+	OFFSET_DEV_NUM,
+};
+
+
+
+struct fstatus {
+	uint16_t len;
+	uint16_t pattern;
 };
 
 /* Absolute maximum rate for acc and gyro sensors */
@@ -147,5 +253,7 @@ enum lsm6dsm_status {
 #define LSM6DSM_RESOLUTION      	16
 
 extern const struct accelgyro_drv lsm6dsm_drv;
+
+void lsm6dsm_interrupt(enum gpio_signal signal);
 
 #endif /* __CROS_EC_ACCELGYRO_LSM6DSM_H */

@@ -27,8 +27,13 @@
 /*
  * Interrupt handler for external mems int1/2
  *
- * Dispatch interrupt (FIFO, gesture recognition, data ready and so on)
- * to service routine and toggle green led on discovery board
+ * Dispatch interrupt (FIFO, data ready and so on)
+ * to service routine and toggle green led on discovery
+ * board.
+ *
+ * NOTE: Interrupt handler is shared by multiple devices so
+ * need to be enable once a time (LIS2DH/LSM6DSM etc.)
+ * to be sure it works correctly.
  */
 void sensors_interrupt(enum gpio_signal signal)
 {
@@ -38,6 +43,10 @@ void sensors_interrupt(enum gpio_signal signal)
 
 #ifdef CONFIG_ACCEL_LIS2DH
 	lis2dh_interrupt(signal);
+#endif /* CONFIG_ACCEL_LIS2DH */
+
+#ifdef CONFIG_ACCELGYRO_LSM6DSM
+	lsm6dsm_interrupt(signal);
 #endif /* CONFIG_ACCEL_LIS2DH */
 
 	gpio_set_level(GPIO_LED_GREEN, ++count & 0x01);

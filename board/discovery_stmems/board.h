@@ -20,6 +20,7 @@
 
 /* Custom sensor option. */
 #define CONFIG_ACCEL_LIS2DH_INT_EVENT TASK_EVENT_CUSTOM(4)
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT TASK_EVENT_CUSTOM(5)
 
 /* Optional features. */
 #undef CONFIG_LID_SWITCH
