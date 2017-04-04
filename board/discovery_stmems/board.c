@@ -7,6 +7,7 @@
 #include "common.h"
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/accel_lis2dh.h"
+#include "driver/baro_lps22hb.h"
 #include "driver/mag_lis2mdl.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -88,6 +89,10 @@ struct stprivate_data lsm6dsm_m_data;
 struct stprivate_data lis2mdl_m_data;
 #endif /*  CONFIG_MAG_LSM6DSM_LIS2MDL */
 #endif /* CONFIG_MAG_LIS2MDL */
+
+#ifdef CONFIG_BARO_LPS22HB
+struct stprivate_data lps22bh_p_data;
+#endif /* CONFIG_BARO_LPS22HB */
 
 struct motion_sensor_t motion_sensors[] = {
 #ifdef CONFIG_ACCELGYRO_LSM6DSM
@@ -252,8 +257,44 @@ struct motion_sensor_t motion_sensors[] = {
 				.ec_rate = 0,
 			},
 		},
-	}
+	},
 #endif /* CONFIG_MAG_LIS2MDL */
+#ifdef CONFIG_BARO_LPS22HB
+	[BASE_BARO] = {
+		.name = "Base Baro",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LPS22HB,
+		.type = MOTIONSENSE_TYPE_BARO,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lps22hb_drv,
+		.drv_data = &lps22bh_p_data,
+		.port = I2C_PORT_BARO,
+		.addr = LPS22HB_ADDR0,
+		.config = {
+			/* AP: by default shutdown all sensors */
+			[SENSOR_CONFIG_AP] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* EC does not need in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* Sensor off in S3/S5 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* Sensor off in S3/S5 */
+			[SENSOR_CONFIG_EC_S5] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+		},
+	},
+
+#endif /* CONFIG_BARO_LPS22HB */
 
 };
 
