@@ -126,6 +126,7 @@
 
 /* Specify barometer attached */
 #undef CONFIG_BARO_BMP280
+#undef CONFIG_BARO_LPS22HB
 
 /* When set, it indicates a secondary sensor is attached behind a BMI160. */
 #undef CONFIG_BMI160_SEC_I2C
