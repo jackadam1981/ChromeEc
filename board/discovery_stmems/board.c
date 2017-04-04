@@ -7,6 +7,7 @@
 #include "common.h"
 #include "driver/accelgyro_lsm6dsm.h"
 #include "driver/accel_lis2dh.h"
+#include "driver/mag_lis2mdl.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -80,81 +81,89 @@ struct stprivate_data lis2dh_a_data;
 struct stprivate_data lis2dh_l_data;
 #endif /* CONFIG_ACCEL_LIS2DH */
 
+#ifdef CONFIG_MAG_LIS2MDL
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+struct stprivate_data lsm6dsm_m_data;
+#else /* CONFIG_MAG_LSM6DSM_LIS2MDL */
+struct stprivate_data lis2mdl_m_data;
+#endif /*  CONFIG_MAG_LSM6DSM_LIS2MDL */
+#endif /* CONFIG_MAG_LIS2MDL */
+
 struct motion_sensor_t motion_sensors[] = {
 #ifdef CONFIG_ACCELGYRO_LSM6DSM
 
 	[BASE_ACCEL] = {
-	 .name = "LSM6DSM ACC",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_LSM6DSM,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &lsm6dsm_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &lsm6dsm_a_data,
-	 .port = I2C_PORT_ACCEL,
-	 .addr = LSM6DSM_ADDR0,
-	 .rot_standard_ref = &base_standard_ref,
-	 .default_range = 2,
-	 .config = {
-		 /* AP: by default use EC settings */
-		 [SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* EC use accel for angle detection */
-		 [SENSOR_CONFIG_EC_S0] = {
-			.odr = 13000,
-			.ec_rate = 13 * MSEC,
-		 },
-		 /* Sensor off in S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0
-		 },
-		 /* Sensor off in S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0
-		 },
-	 },
+		.name = "LSM6DSM ACC",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LSM6DSM,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lsm6dsm_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &lsm6dsm_a_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = LSM6DSM_ADDR0,
+		.rot_standard_ref = &base_standard_ref,
+		.default_range = 2,
+		.config = {
+			/* AP: by default use EC settings */
+			[SENSOR_CONFIG_AP] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 13000,
+				.ec_rate = 13 * MSEC,
+			},
+			/* Sensor off in S5 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 0,
+				.ec_rate = 0
+			},
+			/* Sensor off in S5 */
+			[SENSOR_CONFIG_EC_S5] = {
+				.odr = 0,
+				.ec_rate = 0
+			},
+		},
 	},
 
 	[BASE_GYRO] = {
-	 .name = "LSM6DSM GYRO",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_LSM6DSM,
-	 .type = MOTIONSENSE_TYPE_GYRO,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &lsm6dsm_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &lsm6dsm_g_data,
-	 .port = I2C_PORT_GYRO,
-	 .addr = LSM6DSM_ADDR0,
-	 .default_range = 245, /* dps */
-	 .rot_standard_ref = &base_standard_ref,
-	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* EC does not need in S0 */
-		 [SENSOR_CONFIG_EC_S0] = {
-			.odr = 13000,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-	 },
+		.name = "LSM6DSM GYRO",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LSM6DSM,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lsm6dsm_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &lsm6dsm_g_data,
+		.port = I2C_PORT_GYRO,
+		.addr = LSM6DSM_ADDR0,
+		.default_range = 245, /* dps */
+		.rot_standard_ref = &base_standard_ref,
+		.config = {
+			/* AP: by default shutdown all sensors */
+			[SENSOR_CONFIG_AP] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* EC does not need in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 13000,
+				.ec_rate = 0,
+			},
+			/* Sensor off in S3/S5 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* Sensor off in S3/S5 */
+			[SENSOR_CONFIG_EC_S5] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+		},
 	},
 
 #endif /* CONFIG_ACCELGYRO_LSM6DSM */
@@ -193,10 +202,59 @@ struct motion_sensor_t motion_sensors[] = {
 			[SENSOR_CONFIG_EC_S5] = {
 				.odr = 0,
 				.ec_rate = 0
-			}
-		}
-	}
+			},
+		},
+	},
 #endif /* CONFIG_ACCEL_LIS2DH */
+
+#ifdef CONFIG_MAG_LIS2MDL
+	[BASE_MAG] = {
+		.name = "LIS2MDL MAG",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LIS2MDL,
+		.type = MOTIONSENSE_TYPE_MAG,
+		.location = MOTIONSENSE_LOC_BASE,
+
+#ifndef CONFIG_MAG_LSM6DSM_LIS2MDL
+		/* In case MAG is stand alone device. */
+		.drv = &lis2mdl_drv,
+		.drv_data = &lis2mdl_m_data,
+#else /* CONFIG_MAG_LSM6DSM_LIS2MDL */
+		/* In case MAG is managed by lsm6dsm. */
+		.drv = &lsm6dsm_drv,
+		.drv_data = &lsm6dsm_m_data,
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
+
+		.mutex = &g_base_mutex,
+		.port = I2C_PORT_ACCEL,
+		.addr = LIS2MDL_ADDR0,
+		.default_range = 1 << 11, /* 16LSB / uT, fixed */
+		.rot_standard_ref = NULL,
+		.config = {
+			/* AP: by default shutdown all sensors */
+			[SENSOR_CONFIG_AP] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* EC does not need in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 13000,
+				.ec_rate = 13 * MSEC,
+			},
+			/* Sensor off in S3/S5 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* Sensor off in S3/S5 */
+			[SENSOR_CONFIG_EC_S5] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+		},
+	}
+#endif /* CONFIG_MAG_LIS2MDL */
+
 };
 
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
