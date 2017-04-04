@@ -119,6 +119,10 @@ struct stprivate_data {
 	struct accelgyro_saved_data_t base;
 	int16_t offset[3];
 	uint8_t resol;
+#ifdef CONFIG_ACCEL_FIFO
+	int samples_in_pattern;
+	int num_pattern;
+#endif /* CONFIG_ACCEL_FIFO */
 };
 
 #endif /* __CROS_EC_ST_COMMONS_H */
