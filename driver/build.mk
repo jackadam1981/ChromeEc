@@ -33,6 +33,7 @@ driver-$(CONFIG_ALS_BH1730)+=als_bh1730.o
 
 # Barometers
 driver-$(CONFIG_BARO_BMP280)+=baro_bmp280.o
+driver-$(CONFIG_BARO_LPS22HB)+=baro_lps22hb.o stm_mems_common.o
 
 # Batteries
 driver-$(CONFIG_BATTERY_BQ20Z453)+=battery/bq20z453.o
