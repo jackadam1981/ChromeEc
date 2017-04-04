@@ -14,14 +14,459 @@
 #include "math_util.h"
 #include "task.h"
 
+#ifdef CONFIG_ACCEL_FIFO
+/* Number of data samples in FIFO pattern. */
+static int total_samples_in_pattern;
+#endif /* CONFIG_ACCEL_FIFO */
+
 /**
  * @return output base register for sensor
  */
 static inline int get_xyz_reg(enum motionsensor_type type)
 {
 	return LSM6DSM_ACCEL_OUT_X_L_ADDR -
-		(LSM6DSM_ACCEL_OUT_X_L_ADDR - LSM6DSM_GYRO_OUT_X_L_ADDR) * type;
+	       (LSM6DSM_ACCEL_OUT_X_L_ADDR - LSM6DSM_GYRO_OUT_X_L_ADDR) * type;
 }
+
+#ifdef CONFIG_ACCEL_INTERRUPTS
+
+#ifdef CONFIG_ACCEL_FIFO_THRES
+static int config_threshold(const struct motion_sensor_t *s, uint16_t thr)
+{
+	int ret;
+
+	if (thr > CONFIG_ACCEL_FIFO_THRES)
+		return EC_ERROR_INVAL;
+
+	/* Configure FIFO watermark level. Threshold is 11 bit field. */
+	ret = raw_write8(s->port, s->addr, LSM6DSM_FIFO_CTRL1_ADDR,
+			 thr & LSM6DSM_FIFO_WMASK_L);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = raw_write8(s->port, s->addr, LSM6DSM_FIFO_CTRL2_ADDR,
+			 (thr >> 8 & LSM6DSM_FIFO_WMASK_H));
+	return ret;
+}
+#endif /* CONFIG_ACCEL_FIFO */
+
+/**
+ * Configure interrupt int 1 to fire handler for:
+ *
+ * FIFO threshold on watermark
+ *
+ * @s: Motion sensor pointer
+ */
+static int config_interrupt(const struct motion_sensor_t *s)
+{
+	int ret = EC_SUCCESS;
+
+#ifdef CONFIG_ACCEL_FIFO_THRES
+	ret = config_threshold(s, CONFIG_ACCEL_FIFO_THRES);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* Enable interrupt on FIFO watermask and route to int1. */
+	ret = st_write_data_with_mask(s, LSM6DSM_FIFO_INT1_CTRL,
+				      LSM6DSM_FTH_INT1_MASK, LSM6DSM_EN_BIT);
+#endif /* CONFIG_ACCEL_FIFO */
+
+	return ret;
+}
+
+/**
+ * lsm6dsm_interrupt - interrupt from int1/2 pin of sensor
+ */
+void lsm6dsm_interrupt(enum gpio_signal signal)
+{
+	task_set_event(TASK_ID_MOTIONSENSE,
+		       CONFIG_ACCEL_LSM6DSM_INT_EVENT, 0);
+}
+
+/**
+ * irq_handler - bottom half of the interrupt stack
+ */
+static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
+{
+	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
+	    (!(*event & CONFIG_ACCEL_LSM6DSM_INT_EVENT)))
+		return EC_ERROR_NOT_HANDLED;
+
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_ACCEL_INTERRUPTS */
+
+#ifdef CONFIG_ACCEL_FIFO
+/**
+ * fifo_enable - enable/disable fifo
+ * @s: Motion sensor pointer
+ * @status: 0 disable, 1 enable
+ */
+static int fifo_enable(const struct motion_sensor_t *s, int status)
+{
+	uint8_t reg_value;
+
+	if (status)
+		reg_value = LSM6DSM_FIFO_ODR_MAX_VAL;
+	else
+		reg_value = LSM6DSM_ODR_POWER_OFF_VAL;
+
+	return st_write_data_with_mask(s, LSM6DSM_FIFO_CTRL5_ADDR,
+				       LSM6DSM_FIFO_CTRL5_ODR_MASK,
+				       reg_value);
+}
+
+/**
+ * set_fifo_mode - set fifo mode
+ * @s: Motion sensor pointer
+ * @fmode: BYPASS or CONTINUOS
+ */
+static int set_fifo_mode(const struct motion_sensor_t *s, enum fifo_mode fmode)
+{
+	int err, enable_fifo;
+	uint8_t reg_value;
+
+	switch (fmode) {
+	case BYPASS:
+		reg_value = LSM6DSM_FIFO_MODE_BYPASS_VAL;
+		enable_fifo = 0;
+		break;
+	case CONTINUOS:
+		reg_value = LSM6DSM_FIFO_MODE_CONTINUOS_VAL;
+		enable_fifo = 1;
+		break;
+	default:
+		return EC_ERROR_INVAL;
+	}
+
+	err = fifo_enable(s, enable_fifo);
+	if (err != EC_SUCCESS)
+		return err;
+
+	return st_write_data_with_mask(s, LSM6DSM_FIFO_CTRL5_ADDR,
+				       LSM6DSM_FIFO_CTRL5_MODE_MASK,
+				       reg_value);
+}
+
+/**
+ * set_fifo_params - Configure internal FIFO parameters
+ *
+ * Configure FIFO decimator to have every time the right pattern
+ * with acc/gyro
+ */
+static int set_fifo_params(struct motion_sensor_t *s)
+{
+	int err;
+	uint8_t decimator, decimator_mask;
+	unsigned int min_odr = LSM6DSM_ODR_MAX_VAL, max_odr = 0;
+	uint16_t fifo_len = LSM6DSM_MAX_FIFO_SIZE;
+	uint16_t min_num_pattern, j;
+	uint16_t max_num_pattern;
+	struct stprivate_data *drvdata;
+
+	/* Search for min and max odr values for acc, gyro. */
+	for (j = FIFO_DEV_GYRO; j < FIFO_DEV_NUM; j++) {
+		drvdata = (s + j)->drv_data;
+
+		/* Check if sensor enabled with ODR. */
+		if (drvdata->base.odr > LSM6DSM_ODR_POWER_OFF_VAL) {
+			if (min_odr > drvdata->base.odr)
+				min_odr = drvdata->base.odr;
+			if (max_odr < drvdata->base.odr)
+				max_odr = drvdata->base.odr;
+		}
+	}
+
+	/* Disable FIFO. */
+	if (max_odr == 0)
+		return 0;
+
+	/* Scan all sensors configuration to calculate FIFO decimator. */
+	total_samples_in_pattern = 0;
+	for (j = FIFO_DEV_GYRO, min_num_pattern = 0; j < FIFO_DEV_NUM; j++) {
+		drvdata = (s + j)->drv_data;
+		if (drvdata->base.odr > LSM6DSM_ODR_POWER_OFF_VAL) {
+			drvdata->samples_in_pattern =
+					drvdata->base.odr / min_odr;
+			drvdata->num_pattern = MAX(
+				fifo_len/drvdata->samples_in_pattern, 1);
+			decimator = LSM6DSM_FIFO_DECIMATOR(
+						max_odr/drvdata->base.odr);
+		} else {
+			/* Not in FIFO if sensor disabled. */
+			drvdata->samples_in_pattern = 0;
+			decimator = 0;
+		}
+
+		/* Set FIFO decimator for each sensor. */
+		switch((s + j)->type) {
+		case MOTIONSENSE_TYPE_ACCEL:
+			decimator_mask = LSM6DSM_FIFO_CTRL3_DEC_XL_MASK;
+			err = st_write_data_with_mask(s,
+						      LSM6DSM_FIFO_CTRL3_ADDR,
+						      decimator_mask, decimator);
+			if (err != EC_SUCCESS)
+				return err;
+			break;
+		case MOTIONSENSE_TYPE_GYRO:
+			decimator_mask = LSM6DSM_FIFO_CTRL3_DEC_G_MASK;
+			err = st_write_data_with_mask(s,
+						      LSM6DSM_FIFO_CTRL3_ADDR,
+						      decimator_mask, decimator);
+			if (err != EC_SUCCESS)
+				return err;
+			break;
+		default:
+			return EC_ERROR_INVAL;
+		}
+
+		min_num_pattern = MIN_AZ(
+				min_num_pattern, drvdata->num_pattern);
+		total_samples_in_pattern += drvdata->samples_in_pattern;
+	}
+
+	/* Calculate MAX pattern number in FIFO. */
+	if (total_samples_in_pattern > 0) {
+		max_num_pattern = LSM6DSM_MAX_FIFO_SIZE /
+				(total_samples_in_pattern * OUT_XYZ_SIZE);
+		if (min_num_pattern > max_num_pattern)
+			min_num_pattern = max_num_pattern;
+	}
+
+	fifo_len = total_samples_in_pattern * min_num_pattern * OUT_XYZ_SIZE;
+
+	return fifo_len;
+}
+
+/*
+ * Must order FIFO read based on ODR:
+ * Fox examples Acc @ 52 Hz, Gyro @ 26 Hz Mag @ 13 Hz in FIFO we have
+ * for each pattern this data samples:
+ *  ________ _______ _______ _______ ________ _______ _______
+ * | Gyro_0 | Acc_0 | Mag_0 | Acc_1 | Gyro_1 | Acc_2 | Acc_3 |
+ * |________|_______|_______|_______|________|_______|_______|
+ *
+ * Total samples for each pattern: 2 Gyro, 4 Acc, 1 Mag
+ */
+static int fifo_order(int id, uint8_t *samples_in_pattern,
+		      uint8_t *ratio)
+{
+	int j;
+	int ret = 1;
+	int r_jid, r_idj;
+	int tot = 0;
+
+	/* No more samples for this sensor. */
+	if (samples_in_pattern[id] == 0)
+		return 1;
+
+	for (j = FIFO_DEV_GYRO; j < FIFO_DEV_NUM; j++) {
+		if (j == id)
+			continue;
+		tot += samples_in_pattern[j];
+	}
+
+	if (tot == 0)
+		return 0;
+
+	for (j = FIFO_DEV_GYRO; j < FIFO_DEV_NUM; j++) {
+		if (j == id)
+			continue;
+
+		if (samples_in_pattern[j] == 0)
+			continue;
+
+		r_jid = ratio[j] * samples_in_pattern[id];
+		r_idj = ratio[id] * samples_in_pattern[j];
+
+		if (r_jid >= r_idj)
+			ret = 0;
+	}
+
+	return ret;
+}
+
+/**
+ * push_fifo_data - Scan data pattern and push upside
+ */
+static void push_fifo_data(struct motion_sensor_t *s, uint8_t *fifo,
+			   uint16_t flen)
+{
+	int i, j;
+	uint8_t fifo_offset = 0;
+	uint8_t total_samples;
+	uint8_t samples_in_pattern[FIFO_DEV_NUM];
+	uint8_t ratio[FIFO_DEV_NUM];
+	int *axis;
+	/* In FIFO sensors are mapped in a different way. */
+	uint8_t agm_maps[] = {
+		BASE_GYRO,
+		BASE_ACCEL,
+		};
+
+	while (fifo_offset < flen) {
+		struct stprivate_data *drvdata;
+		for (i = FIFO_DEV_GYRO, total_samples = 0;
+		     i < FIFO_DEV_NUM; i++) {
+			/* Remap index on sensor. */
+			j = agm_maps[i];
+			drvdata = (s + j)->drv_data;
+			samples_in_pattern[j] = drvdata->samples_in_pattern;
+			ratio[j] = drvdata->samples_in_pattern;
+		}
+
+		total_samples = total_samples_in_pattern;
+		do {
+			/*
+			 * Gyro samples (if any) before other by design
+			 * only @ first loop.
+			 */
+			for (j = FIFO_DEV_GYRO; j < FIFO_DEV_NUM; j++) {
+				struct ec_response_motion_sensor_data vect;
+
+				/* Remap index on sensor. */
+				i = agm_maps[j];
+
+				if (fifo_order(i, samples_in_pattern, ratio))
+					continue;
+
+				axis = (s + i)->raw_xyz;
+
+				/* Apply precision, sensitivity and rotation. */
+				st_normalize(s + i, axis, &fifo[fifo_offset]);
+				vect.data[0] = axis[0];
+				vect.data[1] = axis[1];
+				vect.data[2] = axis[2];
+
+				vect.flags = 0;
+				vect.sensor_num = (s + i - motion_sensors);
+				motion_sense_fifo_add_unit(&vect, s + i, 3);
+
+				fifo_offset += OUT_XYZ_SIZE;
+				samples_in_pattern[i]--;
+				total_samples--;
+			}
+		} while (total_samples > 0);
+	}
+}
+
+static int load_fifo(struct motion_sensor_t *s)
+{
+	int err, left;
+	uint16_t byte_in_pattern;
+	struct fstatus fsts;
+	uint8_t fifo[FIFO_READ_LEN];
+
+	if (s->type != MOTIONSENSE_TYPE_ACCEL)
+		return EC_SUCCESS;
+
+	/* Read how many data pattern on FIFO to read and pattern. */
+	err = st_raw_read_n_noinc(s->port, s->addr, LSM6DSM_FIFO_STS1_ADDR,
+				  (uint8_t *)&fsts, sizeof(struct fstatus));
+	if (err != EC_SUCCESS)
+		return err;
+
+	if (fsts.len & LSM6DSM_FIFO_DATA_OVR) {
+		CPRINTF("[%T %s FIFO Overrun]", s->name);
+		return EC_ERROR_INVAL;
+	}
+
+	/*
+	 * DIFF[9:0] are number of unread uint16 in FIFO
+	 * mask DIFF and compute total byte len to read from FIFO.
+	 */
+	fsts.len &= LSM6DSM_FIFO_DIFF_MASK;
+	fsts.len *= sizeof(uint16_t);
+	byte_in_pattern = total_samples_in_pattern * OUT_XYZ_SIZE;
+	if (byte_in_pattern == 0)
+		return EC_SUCCESS;
+
+	/* Normalize in case not multiple of byte_in_pattern. */
+	fsts.len = (fsts.len / byte_in_pattern) * byte_in_pattern;
+	if (fsts.len == 0)
+		return EC_SUCCESS;
+
+	left = fsts.len;
+
+	/* Push all data on upper side. */
+	do {
+		/* Fit len to pre-allocated static buffer. */
+		fsts.len = left;
+		if (fsts.len > FIFO_READ_LEN)
+			fsts.len = FIFO_READ_LEN;
+
+		/* Check pattern data in FIFO. */
+		if (fsts.pattern != 0) {
+			int flush = byte_in_pattern - fsts.pattern;
+			int burst = flush;
+			/*
+			 * Pattern must be always 0 anyway remove this pattern
+			 * from FIFO and calculate new data len: this pattern
+			 * is trushed and some data is lost. Some high ODR may
+			 * cause this when ODR is changed because FIFO confi-
+			 * guration change to BYPASS mode at runtime.
+			 */
+			while(flush > 0) {
+				if (burst > FIFO_READ_LEN)
+					burst = FIFO_READ_LEN;
+
+				err = st_raw_read_n_noinc(s->port, s->addr,
+					LSM6DSM_FIFO_DATA_ADDR, fifo, burst);
+				if (err != EC_SUCCESS)
+					return err;
+
+				fsts.len -= flush;
+
+				if (fsts.len == 0)
+					return EC_SUCCESS;
+
+				flush -= burst;
+				burst = flush;
+				}
+		}
+
+		/* Read data and copy in buffer. */
+		err = st_raw_read_n_noinc(s->port, s->addr,
+					  LSM6DSM_FIFO_DATA_ADDR,
+					  fifo, fsts.len);
+		if (err != EC_SUCCESS)
+			return err;
+
+		/* Manage patterns and push data. */
+		push_fifo_data(s, fifo, fsts.len);
+		left -= fsts.len;
+	} while(left > 0);
+
+	return EC_SUCCESS;
+}
+
+/**
+ * configure_fifo - update mode and ODR for FIFO decimator
+ */
+static int configure_fifo(void)
+{
+	int err, fifo_len;
+	struct motion_sensor_t *s = motion_sensors;
+
+	/* Changing in ODR must stop FIFO. */
+	err = set_fifo_mode(s, BYPASS);
+	if (err != EC_SUCCESS)
+		return err;
+
+	fifo_len = set_fifo_params(s);
+	if (fifo_len < 0)
+		return EC_ERROR_INVAL;
+
+	if (fifo_len > 0) {
+		err = set_fifo_mode(s, CONTINUOS);
+		if (err != EC_SUCCESS)
+			return err;
+	}
+
+	return err;
+}
+
+#endif /* CONFIG_ACCEL_FIFO */
 
 /**
  * set_range - set full scale range
@@ -42,6 +487,7 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 		/* Adjust and check rounded value for acc. */
 		if (rnd && (newrange < LSM6DSM_ACCEL_NORMALIZE_FS(newrange)))
 			newrange <<= 1;
+
 		if (newrange > LSM6DSM_ACCEL_FS_MAX_VAL)
 			newrange = LSM6DSM_ACCEL_FS_MAX_VAL;
 
@@ -50,6 +496,7 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 		/* Adjust and check rounded value for gyro. */
 		if (rnd && (newrange < LSM6DSM_GYRO_NORMALIZE_FS(newrange)))
 			newrange <<= 1;
+
 		if (newrange > LSM6DSM_GYRO_FS_MAX_VAL)
 			newrange = LSM6DSM_GYRO_FS_MAX_VAL;
 
@@ -57,7 +504,8 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 	}
 
 	mutex_lock(s->mutex);
-	err = st_write_data_with_mask(s, ctrl_reg, LSM6DSM_RANGE_MASK, reg_val);
+	err = st_write_data_with_mask(s, ctrl_reg,
+				      LSM6DSM_RANGE_MASK, reg_val);
 	if (err == EC_SUCCESS)
 		/* Save internally gain for speed optimization. */
 		data->base.range = (s->type == MOTIONSENSE_TYPE_ACCEL ?
@@ -94,22 +542,27 @@ static int get_range(const struct motion_sensor_t *s)
  */
 static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 {
-	int ret, normalized_rate = LSM6DSM_ODR_MIN_VAL;
+	int ret, normalized_rate;
 	struct stprivate_data *data = s->drv_data;
 	uint8_t ctrl_reg, reg_val;
 
 	ctrl_reg = LSM6DSM_ODR_REG(s->type);
 
-	if (rate == 0) {
-		/* Power off acc or gyro. */
+	if (rate == LSM6DSM_ODR_POWER_OFF_VAL) {
+		/* Power off acc/gyro. */
 		mutex_lock(s->mutex);
 
 		ret = st_write_data_with_mask(s, ctrl_reg, LSM6DSM_ODR_MASK,
-					      LSM6DSM_ODR_0HZ_VAL);
-		if (ret == EC_SUCCESS)
-			data->base.odr = LSM6DSM_ODR_0HZ_VAL;
+					      LSM6DSM_ODR_POWER_OFF_VAL);
+		if (ret == EC_SUCCESS) {
+			data->base.odr = LSM6DSM_ODR_POWER_OFF_VAL;
 
 		mutex_unlock(s->mutex);
+
+#ifdef CONFIG_ACCEL_FIFO
+		configure_fifo();
+#endif /* CONFIG_ACCEL_FIFO */
+		}
 
 		return ret;
 	}
@@ -138,6 +591,10 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 
 	mutex_unlock(s->mutex);
 
+#ifdef CONFIG_ACCEL_FIFO
+	configure_fifo();
+#endif /* CONFIG_ACCEL_FIFO */
+
 	return ret;
 }
 
@@ -152,7 +609,8 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 	}
 
 	if (MOTIONSENSE_TYPE_ACCEL == s->type)
-		*ready = (LSM6DSM_STS_XLDA_UP == (tmp & LSM6DSM_STS_XLDA_MASK));
+		*ready =
+			(LSM6DSM_STS_XLDA_UP == (tmp & LSM6DSM_STS_XLDA_MASK));
 	else
 		*ready = (LSM6DSM_STS_GDA_UP == (tmp & LSM6DSM_STS_GDA_MASK));
 
@@ -160,8 +618,6 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 }
 
 /*
- * TODO: Implement FIFO support
- *
  * Is not very efficient to collect the data in read: better have an interrupt
  * and collect the FIFO, even if it has one item: we don't have to check if the
  * sensor is ready (minimize I2C access).
@@ -230,15 +686,29 @@ static int init(const struct motion_sensor_t *s)
 
 		/* Software reset. */
 		ret = st_write_data_with_mask(s, LSM6DSM_RESET_ADDR,
-					      LSM6DSM_RESET_MASK, LSM6DSM_EN_BIT);
+					      LSM6DSM_RESET_MASK,
+					      LSM6DSM_EN_BIT);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
 		/* Output data not updated until have been read. */
 		ret = st_write_data_with_mask(s, LSM6DSM_BDU_ADDR,
-					      LSM6DSM_BDU_MASK, LSM6DSM_EN_BIT);
+					      LSM6DSM_BDU_MASK,
+					      LSM6DSM_EN_BIT);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
+
+#ifdef CONFIG_ACCEL_FIFO
+		ret = set_fifo_mode(s, BYPASS);
+		if (ret != EC_SUCCESS)
+			goto err_unlock;
+#endif /* CONFIG_ACCEL_FIFO */
+
+#ifdef CONFIG_ACCEL_INTERRUPTS
+		ret = config_interrupt(s);
+		if (ret != EC_SUCCESS)
+			goto err_unlock;
+#endif /* CONFIG_ACCEL_INTERRUPTS */
 
 		mutex_unlock(s->mutex);
 	}
@@ -247,14 +717,13 @@ static int init(const struct motion_sensor_t *s)
 
 	/* Set default resolution common to acc and gyro. */
 	data->resol = LSM6DSM_RESOLUTION;
-
-	CPRINTF("[%T %s: MS Done Init type:0x%X range:%d]",
-		s->name, s->type, get_range(s));
+	sensor_init_done(s, get_range(s));
 
 	return ret;
 
 err_unlock:
 	mutex_unlock(s->mutex);
+	CPRINTF("[%T %s: MS Init type:0x%X Error]\n", s->name, s->type);
 
 	return EC_ERROR_UNKNOWN;
 }
@@ -270,4 +739,10 @@ const struct accelgyro_drv lsm6dsm_drv = {
 	.get_data_rate = st_get_data_rate,
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
+#ifdef CONFIG_ACCEL_FIFO
+	.load_fifo = load_fifo,
+#endif /* CONFIG_ACCEL_FIFO */
+#ifdef CONFIG_ACCEL_INTERRUPTS
+	.irq_handler = irq_handler,
+#endif /* CONFIG_ACCEL_INTERRUPTS */
 };
