@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "99c44d81_48cd8eb9",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-04T15:32:26Z",
+      "side": 1,
+      "message": "you are checking if it is too big but not if it is negative.\noverall this seems to be an internal function, maybe you want neither.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1bf8bdc_a843405d",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-04T15:32:26Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this is \u0027int\u0027 while other versions are uint32_t",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d4dc5e0_1e2c5b43",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-04T15:32:26Z",
+      "side": 1,
+      "message": "just \u0027return ret;\u0027 ?",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a8e276c_eb5fd3ef",
+        "filename": "common/rwsig.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-04T15:32:26Z",
+      "side": 1,
+      "message": "this signed vs unsigned comparison for a security property is not so nice.",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 48
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c54ffe7_36ad8d25",
         "filename": "common/system.c",
         "patchSetId": 3
@@ -13,6 +105,75 @@
       "writtenOn": "2017-03-30T10:42:24Z",
       "side": 1,
       "message": "nit: Drop this change.",
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29a200c_72be617e",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-04T15:32:26Z",
+      "side": 1,
+      "message": "probably not ifdef here, if the function is not used, it will get discarded.",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 22
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c80ac942_2223766f",
+        "filename": "common/version.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-04T15:32:26Z",
+      "side": 1,
+      "message": "is the #ifdef here useful for anything ?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "561646cb_02d49167",
+        "filename": "include/rollback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-04T15:32:26Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 23,
+        "startChar": 27,
+        "endLine": 23,
+        "endChar": 34
+      },
       "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
