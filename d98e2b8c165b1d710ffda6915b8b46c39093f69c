@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bc2ad78_115daca4",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-04T20:19:38Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "29e45759_25209b0f",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 0
+      },
+      "revId": "d98e2b8c165b1d710ffda6915b8b46c39093f69c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17431f72_0d82fbba",
         "filename": "Makefile.rules",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5bd68f43_ea83418e",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-04T20:19:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17431f72_0d82fbba",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 26
+      },
+      "revId": "d98e2b8c165b1d710ffda6915b8b46c39093f69c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c17c91c_0aacd059",
         "filename": "util/genvif.sh",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-03-16T10:49:38Z",
       "side": 1,
       "message": "a random comment:\nmost of the steps here, would be easier to do with the C preprocessor rather than bash+grep.\neven crazier ... use the C compiler and build a C host program generating the file.\nAt least this would avoid most bad parsing issues here (eg supporting #undef CONFIG_foo or /*#define CONFIG_foo)",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "d98e2b8c165b1d710ffda6915b8b46c39093f69c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09697ef_63a5ad04",
+        "filename": "util/genvif.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-04T20:19:38Z",
+      "side": 1,
+      "message": "I agree. The script has been changed to look into the generated .config file instead of looking for #defines in board.h",
+      "parentUuid": "9c17c91c_0aacd059",
       "range": {
         "startLine": 1,
         "startChar": 0,
