@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5e57a68d_0f500b75",
+        "filename": "common/fmap.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-04T16:25:24Z",
+      "side": 1,
+      "message": "Please reference a bug number for this TODO",
+      "range": {
+        "startLine": 195,
+        "startChar": 6,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99c44d81_48cd8eb9",
         "filename": "common/rollback.c",
         "patchSetId": 3
@@ -48,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "2cf034d7_3af1009e",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-04T16:25:24Z",
+      "side": 1,
+      "message": "Couldn\u0027t you also check:\n\nif (next_min_version \u003d\u003d current_min_version)\n  return EC_SUCCESS;  /* Already correct value */",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d4dc5e0_1e2c5b43",
         "filename": "common/rollback.c",
         "patchSetId": 3
@@ -59,6 +105,30 @@
       "writtenOn": "2017-04-04T15:32:26Z",
       "side": 1,
       "message": "just \u0027return ret;\u0027 ?",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe9e4288_f3327740",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-04T16:25:24Z",
+      "side": 1,
+      "message": "Or combine with the previous line and just\n\nreturn flash_write(...);",
+      "parentUuid": "3d4dc5e0_1e2c5b43",
       "range": {
         "startLine": 129,
         "startChar": 0,
@@ -177,6 +247,29 @@
       "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "130de506_46286a0b",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-04T16:25:24Z",
+      "side": 1,
+      "message": "Update?",
+      "range": {
+        "startLine": 201,
+        "startChar": 11,
+        "endLine": 201,
+        "endChar": 48
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
