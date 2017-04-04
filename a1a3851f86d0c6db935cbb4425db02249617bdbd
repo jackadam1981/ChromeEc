@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3b3ae1b1_7ef1e4f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-04T16:27:48Z",
+      "side": 1,
+      "message": "Determined how?  flashinfo?",
+      "range": {
+        "startLine": 13,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "a1a3851f86d0c6db935cbb4425db02249617bdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81dfda3a_493f9e3e",
         "filename": "common/rollback.c",
         "patchSetId": 3
