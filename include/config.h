@@ -85,6 +85,7 @@
 
 /* Specify barometer attached */
 #undef CONFIG_BARO_BMP280
+#undef CONFIG_BARO_LPS22HB
 
 /*
  * Use the old standard reference frame for accelerometers. The old
