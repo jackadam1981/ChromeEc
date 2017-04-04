@@ -21,9 +21,29 @@
 /* Interrupt management. */
 #define CONFIG_ACCEL_INTERRUPTS
 
+/* Gesture Configuration. */
+#define CONFIG_GESTURE_DETECTION
+#define CONFIG_GESTURE_HOST_DETECTION
+#define CONFIG_GESTURE_SAMPLING_INTERVAL_MS	5
+
+/* First sensor is motion_sensor is used for significant motion. */
+#define CONFIG_GESTURE_SIGMO			0
+#define CONFIG_GESTURE_SIGMO_PROOF_MS		500
+#define CONFIG_GESTURE_SIGMO_SKIP_MS		3000
+#define CONFIG_GESTURE_SIGMO_THRES_MG		500
+
+#define CONFIG_GESTURE_SENSOR_BATTERY_TAP	0
+#define CONFIG_GESTURE_TAP_THRES_MG		100
+#define CONFIG_GESTURE_TAP_MAX_INTERSTICE_T	500
+#define CONFIG_GESTURE_DETECTION_MASK \
+	((1 << CONFIG_GESTURE_SIGMO) | \
+	 (1 << CONFIG_GESTURE_SENSOR_BATTERY_TAP))
+#define CONFIG_GESTURE_TAP_EVENT		TASK_EVENT_CUSTOM(1024)
+#define CONFIG_GESTURE_SIGMO_EVENT		TASK_EVENT_CUSTOM(2048)
+
 /* Custom sensor option. */
-#define CONFIG_ACCEL_LIS2DH_INT_EVENT TASK_EVENT_CUSTOM(4)
-#define CONFIG_ACCEL_LSM6DSM_INT_EVENT TASK_EVENT_CUSTOM(5)
+#define CONFIG_ACCEL_LIS2DH_INT_EVENT		TASK_EVENT_CUSTOM(4)
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT		TASK_EVENT_CUSTOM(4)
 
 /* Optional features. */
 #undef CONFIG_LID_SWITCH
@@ -33,25 +53,24 @@
 #define CONFIG_CMD_ACCEL_INFO
 
 /* FIFO Support. */
-#define CONFIG_ACCEL_FIFO 32
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 2)
+#define CONFIG_ACCEL_FIFO			32
+#define CONFIG_ACCEL_FIFO_THRES			(CONFIG_ACCEL_FIFO / 2)
 
 /* I2C master port */
 #define I2C_PORT_MASTER STM32_I2C2_PORT
 
 /*
- * Allow dangerous commands all the time, since we don't have a write protect
- * switch.
+ * Allow dangerous commands all the time, since we
+ * don't have a write protect switch.
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
-#define TIM_CLOCK_MSB 3
-#define TIM_CLOCK_LSB 4
+#define TIM_CLOCK_MSB				3
+#define TIM_CLOCK_LSB				4
 #undef  CONFIG_WATCHDOG_HELP
-
 
 /* Motion sensors. */
 enum sensor_id {
@@ -64,10 +83,9 @@ enum sensor_id {
 #endif /* CONFIG_ACCELGYRO_LSM6DSM */
 };
 
-
 /* Accelerometer and Gyroscope are the same device. */
-#define I2C_PORT_GYRO			I2C_PORT_MASTER
-#define I2C_PORT_ACCEL			I2C_PORT_MASTER
+#define I2C_PORT_GYRO				I2C_PORT_MASTER
+#define I2C_PORT_ACCEL				I2C_PORT_MASTER
 
 #include "gpio_signal.h"
 
