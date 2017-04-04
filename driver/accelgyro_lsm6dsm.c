@@ -14,6 +14,10 @@
 #include "math_util.h"
 #include "task.h"
 
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+#include "driver/mag_lis2mdl.h"
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
+
 #ifdef CONFIG_ACCEL_FIFO
 /* Number of data samples in FIFO pattern. */
 static int total_samples_in_pattern;
@@ -349,7 +353,8 @@ static int set_fifo_params(struct motion_sensor_t *s)
 			decimator_mask = LSM6DSM_FIFO_CTRL3_DEC_XL_MASK;
 			err = st_write_data_with_mask(s,
 						      LSM6DSM_FIFO_CTRL3_ADDR,
-						      decimator_mask, decimator);
+						      decimator_mask,
+						      decimator);
 			if (err != EC_SUCCESS)
 				return err;
 			break;
@@ -357,10 +362,24 @@ static int set_fifo_params(struct motion_sensor_t *s)
 			decimator_mask = LSM6DSM_FIFO_CTRL3_DEC_G_MASK;
 			err = st_write_data_with_mask(s,
 						      LSM6DSM_FIFO_CTRL3_ADDR,
-						      decimator_mask, decimator);
+						      decimator_mask,
+						      decimator);
 			if (err != EC_SUCCESS)
 				return err;
 			break;
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+		/* When mag in FIFO trigger is fired by acc. */
+		case MOTIONSENSE_TYPE_MAG:
+			drvdata = (s + j)->drv_data;
+			decimator_mask = LSM6DSM_FIFO_CTRL4_DEC_M_MASK;
+			err = st_write_data_with_mask(s,
+						      LSM6DSM_FIFO_CTRL4_ADDR,
+						      decimator_mask,
+						      decimator);
+			if (err != EC_SUCCESS)
+				return err;
+			break;
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
 		default:
 			return EC_ERROR_INVAL;
 		}
@@ -447,6 +466,9 @@ static void push_fifo_data(struct motion_sensor_t *s, uint8_t *fifo,
 	uint8_t agm_maps[] = {
 		BASE_GYRO,
 		BASE_ACCEL,
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+		BASE_MAG,
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
 		};
 
 	while (fifo_offset < flen) {
@@ -611,6 +633,198 @@ static int configure_fifo(void)
 	return err;
 }
 
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+/**
+ * Configure passthrough for I2C interface:
+ * @mode - PASSTH_DISABLE disable, PASSTH_ENABLE enable
+ */
+static const struct motion_sensor_t *get_master_sensor(void)
+{
+	int i;
+
+	/* must use LSM6DSM/L I2C address */
+	for (i = 0; i < motion_sensor_count; i++) {
+		if (motion_sensors[i].chip == MOTIONSENSE_CHIP_LSM6DSM)
+			break;
+	}
+
+	if (i == motion_sensor_count) {
+		CPRINTF("[%T No I2C Master for passthrough]");
+		return NULL;
+	}
+
+	return &motion_sensors[i];
+}
+
+/**
+ * Wait sensorHub end operation on I2C master interface:
+ * @s: Motion sensor pointer
+ * @timeout - Max wait time (ms)
+ */
+static int wait_sensor_hub_op(const struct motion_sensor_t *s, int timeout)
+{
+	int tmo = 0, tmp, ret;
+
+	do {
+		/* Wait end of operation. */
+		ret = raw_read8(s->port, s->addr, LSM6DSM_FUNC_SRC1, &tmp);
+		if (ret != EC_SUCCESS)
+			return ret;
+		if (tmp & LSM6DSM_SENSORHUB_END_OP)
+			return EC_SUCCESS;
+		msleep(5);
+		tmo += 5;
+	} while (tmo < timeout);
+
+	return EC_ERROR_TIMEOUT;
+}
+
+/**
+ * Configure lsm6dsm/l sensor hub to work with mag in FIFO
+ * @s: Motion sensor pointer
+ *
+ * Select max mag odr than use acc trigger and FIFO decimator to obtain
+ * right data rate
+ */
+static int init_lis2mdl_fifo(const struct motion_sensor_t *s)
+{
+	int ret, tmp;
+	const struct motion_sensor_t *ps;
+
+	/* Search I2C master device. */
+	ps = get_master_sensor();
+
+	if (!ps)
+		return EC_ERROR_OVERFLOW;
+
+	mutex_lock(s->mutex);
+
+	/* Save ODR for Acc. */
+	ret = raw_read8(ps->port, ps->addr, LSM6DSM_CTRL1_ADDR, &tmp);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	/* Configure Mag Cont. Mode and ODR 100 Hz. */
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_CTRL1_ADDR, 0x00);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_FUNC_CFG_ACCESS,
+			 LSM6DSM_FUNC_ENABLE_MASK);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_SLV0_ADD, s->addr);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_SLV0_SUBADD,
+			 LIS2MDL_CFG_REG_A);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_DATA_WRITE_SUB_SLV0,
+			 LIS2MDL_ODR100_HZ | LIS2MDL_CONT_MODE);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_SLV0_CONFIG, 0x10);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_SLV1_CONFIG,
+			 LSM6DSM_SLVCFG_WONCE_BIT);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_FUNC_CFG_ACCESS, 0);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_CTRL10_ADDR,
+			 LSM6DSM_FUNC_EN_MASK);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_MASTER_CONFIG,
+			 LSM6DSM_PULLUP_EN | LSM6DSM_MASTER_ENABLE);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	/* Trigger for write configuration data in mag register. */
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_CTRL1_ADDR, 0x80);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = wait_sensor_hub_op(ps, 50);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	/* configure sensor hub FIFO data read address and len */
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_CTRL10_ADDR, 0);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_MASTER_CONFIG, 0);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_CTRL1_ADDR, 0);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_FUNC_CFG_ACCESS,
+			 LSM6DSM_FUNC_ENABLE_MASK);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_SLV0_ADD, s->addr | 1);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_SLV0_SUBADD,
+			 LIS2MDL_OUT_REG);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_SLV0_CONFIG,
+			 OUT_XYZ_SIZE);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_FUNC_CFG_ACCESS, 0);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_CTRL10_ADDR,
+			 LSM6DSM_FUNC_EN_MASK);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_MASTER_CONFIG,
+			 LSM6DSM_PULLUP_EN | LSM6DSM_MASTER_ENABLE);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_CTRL1_ADDR, 0x80);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	ret = wait_sensor_hub_op(ps, 50);
+	if (ret != EC_SUCCESS)
+		goto unlock_mutex;
+
+	/* Restore ODR in Acc. */
+	ret = raw_write8(ps->port, ps->addr, LSM6DSM_CTRL1_ADDR, tmp);
+
+unlock_mutex:
+	mutex_unlock(s->mutex);
+	ret = configure_fifo();
+
+	return ret;
+}
+
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
 #endif /* CONFIG_ACCEL_FIFO */
 
 /**
@@ -626,6 +840,14 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 	uint8_t ctrl_reg, reg_val;
 	struct stprivate_data *data = s->drv_data;
 	int newrange = range;
+
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+	if (s->type == MOTIONSENSE_TYPE_MAG) {
+		/* Mag range is fixed. */
+		data->base.range = LIS2MDL_SENSITIVITY;
+		return EC_SUCCESS;
+		}
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
 
 	ctrl_reg = LSM6DSM_RANGE_REG(s->type);
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
@@ -673,6 +895,10 @@ static int get_range(const struct motion_sensor_t *s)
 
 	if (MOTIONSENSE_TYPE_ACCEL == s->type)
 		return LSM6DSM_ACCEL_GAIN_FS(data->base.range);
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+	else if (s->type == MOTIONSENSE_TYPE_MAG)
+		return LIS2MDL_RANGE;
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
 
 	return LSM6DSM_GYRO_GAIN_FS(data->base.range);
 }
@@ -687,9 +913,35 @@ static int get_range(const struct motion_sensor_t *s)
  */
 static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 {
-	int ret, normalized_rate;
+	int ret, normalized_rate = LSM6DSM_ODR_MIN_VAL;
 	struct stprivate_data *data = s->drv_data;
 	uint8_t ctrl_reg, reg_val;
+
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+	if (MOTIONSENSE_TYPE_MAG == s->type) {
+		if (rate == 0)
+			data->base.odr = 0;
+		else
+			normalized_rate = LSM6DSM_ODR_TO_NORMALIZE(rate);
+
+		if (rnd && (normalized_rate < rate))
+			normalized_rate <<= 1;
+
+		/* Adjust value for acc and gyro because ODR are shared. */
+		if (normalized_rate > LSM6DSM_ODR_MAX_VAL)
+			normalized_rate = LSM6DSM_ODR_MAX_VAL;
+		else if (normalized_rate < LSM6DSM_ODR_MIN_VAL)
+			normalized_rate = LSM6DSM_ODR_MIN_VAL;
+
+		data->base.odr = normalized_rate;
+
+#ifdef CONFIG_ACCEL_FIFO
+		configure_fifo();
+#endif /* CONFIG_ACCEL_FIFO */
+
+		return EC_SUCCESS;
+	}
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
 
 	ctrl_reg = LSM6DSM_ODR_REG(s->type);
 
@@ -774,6 +1026,12 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	int ret, i, range, tmp = 0;
 	struct stprivate_data *data = s->drv_data;
 
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+	/* Mag doesn't support read in fifo mode. */
+	if (s->type == MOTIONSENSE_TYPE_MAG)
+		return EC_ERROR_UNIMPLEMENTED;
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
+
 	ret = is_data_ready(s, &tmp);
 	if (ret != EC_SUCCESS)
 		return ret;
@@ -833,13 +1091,6 @@ static int init(const struct motion_sensor_t *s)
 	int ret = 0, tmp;
 	struct stprivate_data *data = s->drv_data;
 
-	ret = raw_read8(s->port, s->addr, LSM6DSM_WHO_AM_I_REG, &tmp);
-	if (ret != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
-
-	if (tmp != LSM6DSM_WHO_AM_I)
-		return EC_ERROR_ACCESS_DENIED;
-
 	/*
 	 * This sensor can be powered through an EC reboot, so the state of the
 	 * sensor is unknown here so reset it
@@ -848,6 +1099,13 @@ static int init(const struct motion_sensor_t *s)
 	 * Requirement: Accel need be init before gyro and mag
 	 */
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
+		ret = raw_read8(s->port, s->addr, LSM6DSM_WHO_AM_I_REG, &tmp);
+		if (ret != EC_SUCCESS)
+			return EC_ERROR_UNKNOWN;
+
+		if (tmp != LSM6DSM_WHO_AM_I)
+			return EC_ERROR_ACCESS_DENIED;
+
 		mutex_lock(s->mutex);
 
 		/* Software reset. */
@@ -882,6 +1140,11 @@ static int init(const struct motion_sensor_t *s)
 
 		mutex_unlock(s->mutex);
 	}
+
+#ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
+	if (s->type == MOTIONSENSE_TYPE_MAG)
+		ret = init_lis2mdl_fifo(s);
+#endif /* CONFIG_MAG_LSM6DSM_LIS2MDL */
 
 	ret = set_range(s, s->default_range, 1);
 
