@@ -47,6 +47,7 @@ die() {
 
 BOARDS_IT83XX=(
 	it83xx_evb
+	reef_it8320
 )
 
 BOARDS_LM4=(
@@ -615,7 +616,17 @@ function flash_it83xx() {
 	if [ ! -x "$ITEFLASH" ]; then
 		die "no iteflash util found."
 	fi
+
+	dut_control i2c_mux_en:on
+	dut_control i2c_mux:remote_adc
+
+	info "To stop servod"
+        sudo pkill servod -e
+
+	info "Run iteflash..."
 	sudo ${ITEFLASH} -w ${IMG}
+
+	info "Please do a cold reset for EC and run 'servod' manually after flashing"
 }
 
 function flash_lm4() {
