@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbdedef2_04ca6856",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-05T11:15:12Z",
+      "side": 1,
+      "message": "it\u0027s using more files than just $(config)\nand overall it\u0027s generating \u0027real\u0027 files, the phony \u0027vif\u0027 is not great.",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 26
+      },
+      "revId": "a7e6a101d29577fc57548b053c3a57ecdbeed3eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
