@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f09a8699_bd2688ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T09:18:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b3ae1b1_7ef1e4f7",
+      "range": {
+        "startLine": 13,
+        "startChar": 51,
+        "endLine": 13,
+        "endChar": 69
+      },
+      "revId": "a1a3851f86d0c6db935cbb4425db02249617bdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81dfda3a_493f9e3e",
         "filename": "common/rollback.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-04T16:27:17Z",
       "side": 1,
       "message": "Note that ccprints() should only be used as part of a console command or response.  Other uses should use cprints() and a different channel.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "a1a3851f86d0c6db935cbb4425db02249617bdbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc8a9ac1_81ca204d",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T09:18:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81dfda3a_493f9e3e",
       "range": {
         "startLine": 104,
         "startChar": 1,

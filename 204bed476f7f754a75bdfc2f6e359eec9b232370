@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff3a04d1_3697ebd8",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T09:18:00Z",
+      "side": 1,
+      "message": "That\u0027s right, in that case you have 2 reboots. After the first one the NOW/AT_BOOT protection is still not matching so flash_pre_init resets again to set the flags properly.\n\nThis is a bit like doing:\nflashwp true\nreboot\n\nThere is an extra reset to do OBL_LAUNCH. We can add SYSTEM_RESET_HARD, but that makes this code a little more stm32 specific.",
+      "parentUuid": "52ab243c_bfd7db18",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 44
+      },
+      "revId": "204bed476f7f754a75bdfc2f6e359eec9b232370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58ee3a8f_fa81dc8c",
         "filename": "common/rwsig.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-05T07:00:59Z",
       "side": 1,
       "message": "I\u0027m not sure I understand this condition.\nif system_unsafe_to_overwrite() fails, we just have to silently ignore it ?",
+      "range": {
+        "startLine": 170,
+        "startChar": 13,
+        "endLine": 170,
+        "endChar": 42
+      },
+      "revId": "204bed476f7f754a75bdfc2f6e359eec9b232370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "581b52ab_a113248d",
+        "filename": "common/rwsig.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T09:18:00Z",
+      "side": 1,
+      "message": "Actually, system_unsafe_to_overwrite is not the right thing to check, we should just check for EC_FLASH_PROTECT_ROLLBACK_NOW, fixed in this revision.\n\nThe idea is that we ignore it, then boot to RW. After some time (e.g. after receiving a signal from AP), RW will unlock ROLLBACK region, and on next reboot we can increment it (see comment above, and updated TEST\u003d line).\n\nThis should allow some sort of recovery in case we flash a bad RW with a new rollback version.",
+      "parentUuid": "58ee3a8f_fa81dc8c",
       "range": {
         "startLine": 170,
         "startChar": 13,
