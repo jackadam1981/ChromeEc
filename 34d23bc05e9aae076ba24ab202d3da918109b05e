@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "32f743a2_d64c7dea",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-05T15:49:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8473aa9_35bc5cc6",
+      "range": {
+        "startLine": 547,
+        "startChar": 0,
+        "endLine": 550,
+        "endChar": 22
+      },
+      "revId": "34d23bc05e9aae076ba24ab202d3da918109b05e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d7be7ca_e58499c7",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e4180bbe_033a4eab",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-05T15:49:38Z",
+      "side": 1,
+      "message": "This has been changed back to uint16, since I no longer have the check for both CC lines for detach.",
+      "parentUuid": "2d7be7ca_e58499c7",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 16
+      },
+      "revId": "34d23bc05e9aae076ba24ab202d3da918109b05e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc797b93_1aaeb5ab",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-04-05T11:54:17Z",
       "side": 1,
       "message": "at this point, is this really doing anything than just putting:\n#ifdef CONFIG_USB_PD_DTS\nccd_set_mode(CCD_MODE_DISABLED);\n#endif\nin the if (cc1 \u003d\u003d TYPEC_CC_VOLT_OPEN) { } clause below\nand removing the PD_FLAGS_DTS_ATTACH altogether.",
+      "range": {
+        "startLine": 3020,
+        "startChar": 0,
+        "endLine": 3030,
+        "endChar": 6
+      },
+      "revId": "34d23bc05e9aae076ba24ab202d3da918109b05e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42e0c674_7630b9a8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3030,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-05T15:49:38Z",
+      "side": 1,
+      "message": "Initially this block was added to mimic what happens in SRC_ACCESSORY state\n\t\t\t/* If accessory becomes detached */\n\t\t\tif ((pd[port].cc_state \u003d\u003d PD_CC_AUDIO_ACC \u0026\u0026\n\t\t\t     (cc1 !\u003d TYPEC_CC_VOLT_RA ||\n\t\t\t      cc2 !\u003d TYPEC_CC_VOLT_RA)) ||\n\t\t\t    (pd[port].cc_state \u003d\u003d PD_CC_DEBUG_ACC \u0026\u0026\n\t\t\t     (cc1 !\u003d TYPEC_CC_VOLT_RD ||\n\t\t\t      cc2 !\u003d TYPEC_CC_VOLT_RD))) {\n\t\t\t\tset_state(port, PD_STATE_SRC_DISCONNECTED);\n#if defined(CONFIG_CASE_CLOSED_DEBUG) || defined(CONFIG_USB_PD_DTS)\n\t\t\t\tccd_set_mode(CCD_MODE_DISABLED);\n#endif\n\t\t\t\ttimeout \u003d 10*MSEC;\n\t\t\t}\n\nIf only checking for the detach on CC1 is sufficient, then this can be removed. I moved the call to \u0027ccd_set_mode\u0027 to the if (cc1 \u003d\u003d TYPEC_CC_VOLT_OPEN) { }  section as suggested.",
+      "parentUuid": "dc797b93_1aaeb5ab",
       "range": {
         "startLine": 3020,
         "startChar": 0,
