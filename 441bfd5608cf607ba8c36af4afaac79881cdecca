@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b69cbee_4cc891b4",
+        "filename": "board/eve/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-05T16:33:38Z",
+      "side": 1,
+      "message": "this field indicates in which states the sensors gets power.\nIf it gets power in S5, .._S5 should be used.",
+      "revId": "441bfd5608cf607ba8c36af4afaac79881cdecca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
