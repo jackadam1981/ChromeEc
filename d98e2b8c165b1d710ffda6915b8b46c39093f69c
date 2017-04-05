@@ -164,6 +164,30 @@
       "revId": "d98e2b8c165b1d710ffda6915b8b46c39093f69c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d2ba2fb_16d07551",
+        "filename": "util/genvif.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-05T21:06:59Z",
+      "side": 1,
+      "message": "I agree that a C file would be better but I had problems getting all the usb_pd_policy.c files to link against my C host file.",
+      "parentUuid": "83e656b4_34446e66",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "d98e2b8c165b1d710ffda6915b8b46c39093f69c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
