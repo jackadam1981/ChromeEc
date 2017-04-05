@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52ab243c_bfd7db18",
+        "filename": "common/rollback.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-05T07:00:59Z",
+      "side": 1,
+      "message": "aren\u0027t you supposed to pass the SYSTEM_RESET_HARD flag (as done in flash_pre_init) ?\ne.g. system_reset(SYSTEM_RESET_HARD | SYSTEM_RESET_PRESERVE_FLAGS); \n\nelse in system_reset(), you are not going through the path doing the OBL_LAUNCH (and ensuring the option bytes are properly reloaded ?)",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 44
+      },
+      "revId": "204bed476f7f754a75bdfc2f6e359eec9b232370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ee3a8f_fa81dc8c",
+        "filename": "common/rwsig.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-05T07:00:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand this condition.\nif system_unsafe_to_overwrite() fails, we just have to silently ignore it ?",
+      "range": {
+        "startLine": 170,
+        "startChar": 13,
+        "endLine": 170,
+        "endChar": 42
+      },
+      "revId": "204bed476f7f754a75bdfc2f6e359eec9b232370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
