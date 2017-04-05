@@ -22,6 +22,30 @@
       "revId": "455cfb98663e40c904291af124b1a117f361e591",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dfbdc6e_10c8c2db",
+        "filename": "board/reef/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-05T09:09:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20113e76_d4028615",
+      "range": {
+        "startLine": 177,
+        "startChar": 36,
+        "endLine": 177,
+        "endChar": 39
+      },
+      "revId": "455cfb98663e40c904291af124b1a117f361e591",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
