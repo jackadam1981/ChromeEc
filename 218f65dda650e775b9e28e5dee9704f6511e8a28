@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcd64f5a_5fdd6965",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-04-05T01:25:36Z",
+      "side": 1,
+      "message": "Why does this no longer post a reset on upstart?\n\nWe use -u in cr50-update, so right now cr50-update is broken. It uses -u thinking that a reboot request will be posted and then reboots the device hoping cr50 will then reboot and the update will take effect.\n\nThat assumption is now wrong.\n\nDo I need to change usb_updater or cr50-update?",
+      "range": {
+        "startLine": 1079,
+        "startChar": 1,
+        "endLine": 1079,
+        "endChar": 21
+      },
+      "revId": "218f65dda650e775b9e28e5dee9704f6511e8a28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -22,6 +22,30 @@
       "revId": "dc66986d0a7fd182ddcafbee00045a25709edcb4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65a094d1_d45350d1",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-04-05T01:25:36Z",
+      "side": 0,
+      "message": "Fixed in https://chromium-review.googlesource.com/c/465491/",
+      "parentUuid": "80389db4_088051c8",
+      "range": {
+        "startLine": 1266,
+        "startChar": 0,
+        "endLine": 1267,
+        "endChar": 22
+      },
+      "revId": "dc66986d0a7fd182ddcafbee00045a25709edcb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
