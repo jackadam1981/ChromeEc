@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0436e8aa_ab0299f8",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T01:31:02Z",
+      "side": 1,
+      "message": "Looks like it _needs_ to be lower case: http://lxr.free-electrons.com/source/drivers/tty/sysrq.c#L489",
+      "parentUuid": "181cd847_608acef3",
+      "range": {
+        "startLine": 1115,
+        "startChar": 13,
+        "endLine": 1115,
+        "endChar": 14
+      },
+      "revId": "871bf8da2cf5fa9bcfe8771b96af4b55c2503616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d161c666_f03bd419",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "9a7bd958_52c959f6",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T01:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ec00bf7_a321f26a",
+      "range": {
+        "startLine": 925,
+        "startChar": 38,
+        "endLine": 925,
+        "endChar": 46
+      },
+      "revId": "871bf8da2cf5fa9bcfe8771b96af4b55c2503616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e277f119_f13b6f03",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T01:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d161c666_f03bd419",
+      "range": {
+        "startLine": 925,
+        "startChar": 23,
+        "endLine": 925,
+        "endChar": 31
+      },
+      "revId": "871bf8da2cf5fa9bcfe8771b96af4b55c2503616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e7fa0c7_3913a9bf",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2017-04-04T15:48:35Z",
       "side": 1,
       "message": "Might explain this a little more, since this is effectively the documentation for the interface.",
+      "range": {
+        "startLine": 2800,
+        "startChar": 4,
+        "endLine": 2800,
+        "endChar": 9
+      },
+      "revId": "871bf8da2cf5fa9bcfe8771b96af4b55c2503616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7bc6e6a_b67a9dc4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2800,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T01:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e7fa0c7_3913a9bf",
       "range": {
         "startLine": 2800,
         "startChar": 4,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9c88b483_be57c58a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2825,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T01:31:02Z",
+      "side": 1,
+      "message": "Right. On the other hand other people did a slightly better job than me at documenting the parameter in ec_mkbp_event above.",
+      "parentUuid": "e2cabc8d_b81faf0e",
+      "range": {
+        "startLine": 2810,
+        "startChar": 0,
+        "endLine": 2825,
+        "endChar": 16
+      },
+      "revId": "871bf8da2cf5fa9bcfe8771b96af4b55c2503616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58e4cb41_dbb61620",
         "filename": "include/system.h",
         "patchSetId": 4
@@ -128,6 +248,30 @@
       "writtenOn": "2017-04-04T15:48:35Z",
       "side": 1,
       "message": "This seems like the wrong header file to put this in.  \"System\" here refers to the EC\u0027s system, and sysrq is really part of host communication.\n\nMaybe better in host_command.h?",
+      "range": {
+        "startLine": 501,
+        "startChar": 1,
+        "endLine": 507,
+        "endChar": 29
+      },
+      "revId": "871bf8da2cf5fa9bcfe8771b96af4b55c2503616",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30fc2faf_a2ad69cf",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T01:31:02Z",
+      "side": 1,
+      "message": "Yes it felt wrong (but it felt even more wrong where I had it before in button.h ,-))\n\nhost_command.h sounds good, also renamed to host_send_sysrq to make it more consistent.",
+      "parentUuid": "58e4cb41_dbb61620",
       "range": {
         "startLine": 501,
         "startChar": 1,
