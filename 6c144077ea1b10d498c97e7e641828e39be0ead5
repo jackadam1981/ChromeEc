@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f8c7e603_6b702f72",
+        "filename": "common/fmap.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "This is, sadly, copy-paste from the RW_FWID block above... In this case we should be fine though, as the version is guaranteed to be at the beginning of the image.",
+      "parentUuid": "5e57a68d_0f500b75",
+      "range": {
+        "startLine": 195,
+        "startChar": 6,
+        "endLine": 195,
+        "endChar": 12
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99c44d81_48cd8eb9",
         "filename": "common/rollback.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b01c09e7_3e4859a7",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "99c44d81_48cd8eb9",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 24
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "161ab0e4_f6a5421f",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "Done, switched everything to int32_t.",
+      "parentUuid": "c1bf8bdc_a843405d",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 4
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cf034d7_3af1009e",
         "filename": "common/rollback.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-04-04T16:25:24Z",
       "side": 1,
       "message": "Couldn\u0027t you also check:\n\nif (next_min_version \u003d\u003d current_min_version)\n  return EC_SUCCESS;  /* Already correct value */",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbc84a3a_43bc8ed9",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cf034d7_3af1009e",
       "range": {
         "startLine": 110,
         "startChar": 0,
@@ -141,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "15ba1b91_efda2200",
+        "filename": "common/rollback.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe9e4288_f3327740",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a8e276c_eb5fd3ef",
         "filename": "common/rwsig.c",
         "patchSetId": 3
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "6cdf002e_55d177f1",
+        "filename": "common/rwsig.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "Agree. Changed everything to int32_t so that we can still use negative values to report errors (2^31 rollback version is still more than enough), and avoid the extra verbosity of separating return value and version information as pointer.",
+      "parentUuid": "7a8e276c_eb5fd3ef",
+      "range": {
+        "startLine": 87,
+        "startChar": 5,
+        "endLine": 87,
+        "endChar": 48
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c54ffe7_36ad8d25",
         "filename": "common/system.c",
         "patchSetId": 3
@@ -181,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "5c2932d5_6eb99070",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c54ffe7_36ad8d25",
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a29a200c_72be617e",
         "filename": "common/system.c",
         "patchSetId": 3
@@ -192,6 +354,30 @@
       "writtenOn": "2017-04-04T15:32:26Z",
       "side": 1,
       "message": "probably not ifdef here, if the function is not used, it will get discarded.",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 22
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02104ed7_64875680",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "I somewhat prefer having it as a weak sanity check...",
+      "parentUuid": "a29a200c_72be617e",
       "range": {
         "startLine": 621,
         "startChar": 0,
@@ -227,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "52061d0a_8fb0da92",
+        "filename": "common/version.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "Not really. Dropped.",
+      "parentUuid": "c80ac942_2223766f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 22
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "561646cb_02d49167",
         "filename": "include/rollback.h",
         "patchSetId": 3
@@ -250,6 +460,30 @@
     },
     {
       "key": {
+        "uuid": "a397ba64_a2175666",
+        "filename": "include/rollback.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "561646cb_02d49167",
+      "range": {
+        "startLine": 23,
+        "startChar": 27,
+        "endLine": 23,
+        "endChar": 34
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "130de506_46286a0b",
         "filename": "include/system.h",
         "patchSetId": 3
@@ -261,6 +495,30 @@
       "writtenOn": "2017-04-04T16:25:24Z",
       "side": 1,
       "message": "Update?",
+      "range": {
+        "startLine": 201,
+        "startChar": 11,
+        "endLine": 201,
+        "endChar": 48
+      },
+      "revId": "6c144077ea1b10d498c97e7e641828e39be0ead5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1aa545d_2170e426",
+        "filename": "include/system.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-05T05:49:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "130de506_46286a0b",
       "range": {
         "startLine": 201,
         "startChar": 11,
