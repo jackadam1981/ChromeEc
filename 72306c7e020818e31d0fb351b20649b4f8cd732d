@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57c55dd9_72cfb483",
+        "filename": "board/eve_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-06T07:40:54Z",
+      "side": 0,
+      "message": "this is breaking P1B (where the magic SLP_S3_L on A11 doesn\u0027t exist)\n\nAnd actually the reset model of the FP MCU is not fully decided, but if we can reset FP MCU after the AP boot (eg flashing right now), its slave SPI interface to the PCH will be broken.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 34
+      },
+      "revId": "72306c7e020818e31d0fb351b20649b4f8cd732d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
