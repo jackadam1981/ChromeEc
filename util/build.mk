@@ -22,3 +22,15 @@ ec_sb_firmware_update-objs+=powerd_lock.o
 lbplay-objs=lbplay.o $(comm-objs)
 
 ec_parse_panicinfo-objs=ec_parse_panicinfo.o ec_panicinfo.o
+
+# USB type-C Vendor Information File generation
+ifeq ($(CONFIG_USB_POWER_DELIVERY),y)
+host-util-bin+=genvif
+$(out)/util/genvif: $(out)/util/usb_pd_policy.o
+$(out)/util/genvif: HOST_LDFLAGS+=$(out)/util/usb_pd_policy.o -flto
+
+STANDALONE_FLAGS=-ffreestanding -fno-builtin -nostdinc -Ibuiltin/ -D"__keep= "
+$(out)/util/usb_pd_policy.o: board/$(BOARD)/usb_pd_policy.c
+	$(HOSTCC) $(HOST_CFLAGS) $(STANDALONE_FLAGS) -MMD -MF $@.d -c $< -flto -o $@
+deps += $(out)/util/usb_pd_policy.o.d
+endif # CONFIG_USB_POWER_DELIVERY
