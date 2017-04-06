@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "66c8b2d0_653a31e3",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-04-06T20:37:08Z",
+      "side": 1,
+      "message": "Also after 0.0.16 or something prod images start ignoring VENDOR_CC_IMMEDIATE_RESET.",
+      "parentUuid": "d93e4e85_6d10efc1",
+      "revId": "17be75f3c91e0d3e85fbe9f74728955e5cfe643c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6ec6831_26940564",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 1
