@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53f5fc74_1095475f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-06T08:41:43Z",
+      "side": 1,
+      "message": "Updated the description",
+      "parentUuid": "d4a8d375_5fbdeab5",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "c1ceadddd4710fd5f2156d45ff5fcbc49fbfe056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d752cc6_5aa1d797",
         "filename": "board/eve_fp/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-06T07:40:54Z",
       "side": 1,
       "message": "we might not want to do the notification in interrupt-context.\nWe normally don\u0027t , might work here though",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "c1ceadddd4710fd5f2156d45ff5fcbc49fbfe056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c3a34dc_f9b51e36",
+        "filename": "board/eve_fp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-06T08:41:43Z",
+      "side": 1,
+      "message": "Moved to a deferred function",
+      "parentUuid": "7d752cc6_5aa1d797",
       "range": {
         "startLine": 22,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "13e9203a_c7cae451",
+        "filename": "board/eve_fp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-06T08:41:43Z",
+      "side": 1,
+      "message": "The updated version works by pure luck ... using the fact I\u0027m reading 1 on the floating pin.\nNot sure whether we want to go for this bad trick or not",
+      "parentUuid": "35ed2e2c_9618f5a3",
+      "range": {
+        "startLine": 11,
+        "startChar": 18,
+        "endLine": 11,
+        "endChar": 30
+      },
+      "revId": "c1ceadddd4710fd5f2156d45ff5fcbc49fbfe056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f3a28853_fc7a776f",
         "filename": "board/eve_fp/gpio.inc",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "c1ceadddd4710fd5f2156d45ff5fcbc49fbfe056",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5937fa77_a673fa58",
+        "filename": "board/eve_fp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-06T08:41:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3a28853_fc7a776f",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 56
+      },
+      "revId": "c1ceadddd4710fd5f2156d45ff5fcbc49fbfe056",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
