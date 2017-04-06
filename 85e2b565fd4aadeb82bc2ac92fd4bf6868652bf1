@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4aa000ff_c4e7b2ee",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-04-06T20:59:38Z",
+      "side": 1,
+      "message": "I think we should just have a signed_header_version that we initialize to 0.0.19 and use the already provided version checks. \n\nbackground_update_supported \u003d !a_newer_than_b(\u0026ver19, \u0026targ.shv[1]);",
+      "revId": "85e2b565fd4aadeb82bc2ac92fd4bf6868652bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
