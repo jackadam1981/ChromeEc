@@ -8,6 +8,7 @@
  * Note: Those with interrupt handlers must be declared first. */
 GPIO_INT(FPS_INT,  PIN(A, 2), GPIO_INT_RISING, fps_event)
 GPIO_INT(SPI1_NSS, PIN(A, 4), GPIO_INT_BOTH | GPIO_PULL_UP,  spi_event)
+GPIO_INT(SLP_S3_L, PIN(A, 11), GPIO_INT_BOTH, slp_event)
 
 /* Outputs */
 GPIO(EC_INT_L,   PIN(A, 1), GPIO_ODR_HIGH | GPIO_PULL_UP)

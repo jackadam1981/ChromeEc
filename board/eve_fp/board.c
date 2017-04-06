@@ -12,9 +12,22 @@
 #include "system.h"
 #include "registers.h"
 
-#include "gpio_list.h"
-
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
+void slp_event(enum gpio_signal signal)
+{
+	if (gpio_get_level(GPIO_SLP_S3_L)) {
+		/* S0 */
+		gpio_set_flags(GPIO_EC_INT_L,   GPIO_ODR_HIGH | GPIO_PULL_UP);
+		hook_notify(HOOK_CHIPSET_RESUME);
+	} else {
+		/* S3 */
+		gpio_set_flags(GPIO_EC_INT_L,   GPIO_INPUT);
+		hook_notify(HOOK_CHIPSET_SUSPEND);
+	}
+}
+
+#include "gpio_list.h"
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
@@ -31,8 +44,8 @@ static void board_init(void)
 	/* Enable clocks to SPI3 module (master) */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI3;
 
-	/* we are ready for host transactions */
-	hook_notify(HOOK_CHIPSET_RESUME);
+	/* Enable interrupt on SLP_S3_L */
+	gpio_enable_interrupt(GPIO_SLP_S3_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
