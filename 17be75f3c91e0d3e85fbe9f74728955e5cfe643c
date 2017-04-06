@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "659fbac7_d821d16f",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-04-06T20:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef38fc28_56ed0ff9",
+      "revId": "17be75f3c91e0d3e85fbe9f74728955e5cfe643c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7075ce4c_6fd769e1",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-06T18:39:22Z",
       "side": 1,
       "message": "I think you need to do the immediate reset to maintain previous behavior. i.e. if (td-\u003eupstart_mode) then do VENDOR_CC_IMMEDIATE_RESET.\n\nThat\u0027s how the updates worked through .18 and probably should continue that way. The reason is that we\u0027ll be resetting the x86 systems when they go into s3 since pltrst_l will assert in s3. We don\u0027t want that.",
+      "revId": "17be75f3c91e0d3e85fbe9f74728955e5cfe643c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d93e4e85_6d10efc1",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-04-06T20:26:08Z",
+      "side": 1,
+      "message": "Up to 0.0.19 we always posted a reboot. We did not reboot immediately. We relied on cr50-result rebooting the device after cr50-update finished running.\n\nI think that we will just need to have 0.0.19 out before we try and to transition away from cr50-update. Or the new background update script should reboot after the cr50 update if it is an old image.",
+      "parentUuid": "7075ce4c_6fd769e1",
       "revId": "17be75f3c91e0d3e85fbe9f74728955e5cfe643c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "17be75f3c91e0d3e85fbe9f74728955e5cfe643c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b7f699_d986fdbc",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1269,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-04-06T20:26:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6ec6831_26940564",
+      "revId": "17be75f3c91e0d3e85fbe9f74728955e5cfe643c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
