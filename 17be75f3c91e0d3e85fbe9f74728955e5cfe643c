@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef38fc28_56ed0ff9",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-04-06T18:39:22Z",
+      "side": 1,
+      "message": "You should check major and epoch as well. Ensure it\u0027s \u003e\u003d 0.0.19. It\u0027s more correct. Otherwise we\u0027ll be hunting down issues when other versions are created.",
+      "revId": "17be75f3c91e0d3e85fbe9f74728955e5cfe643c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7075ce4c_6fd769e1",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-04-06T18:39:22Z",
+      "side": 1,
+      "message": "I think you need to do the immediate reset to maintain previous behavior. i.e. if (td-\u003eupstart_mode) then do VENDOR_CC_IMMEDIATE_RESET.\n\nThat\u0027s how the updates worked through .18 and probably should continue that way. The reason is that we\u0027ll be resetting the x86 systems when they go into s3 since pltrst_l will assert in s3. We don\u0027t want that.",
+      "revId": "17be75f3c91e0d3e85fbe9f74728955e5cfe643c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6ec6831_26940564",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1269,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-04-06T18:39:22Z",
+      "side": 1,
+      "message": "This should really be a separate change.",
+      "revId": "17be75f3c91e0d3e85fbe9f74728955e5cfe643c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
