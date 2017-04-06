@@ -212,6 +212,30 @@
       "revId": "34d23bc05e9aae076ba24ab202d3da918109b05e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c99e38f1_2383a5e8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3030,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-06T20:17:49Z",
+      "side": 1,
+      "message": "I modified the servo_v4 CC_NC and CC_RA implementations. CC_NC will return true when the current Rp setting indicates that all Rp resistor options are tri-stated. With this change in place, then the code section above and the new pd_flag that had been added can be removed.",
+      "parentUuid": "e39fd4aa_f4c87d14",
+      "range": {
+        "startLine": 3020,
+        "startChar": 0,
+        "endLine": 3030,
+        "endChar": 6
+      },
+      "revId": "34d23bc05e9aae076ba24ab202d3da918109b05e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
