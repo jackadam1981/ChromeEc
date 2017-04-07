@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d563c21_64b82c52",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-07T16:45:02Z",
+      "side": 1,
+      "message": "Reef has \"Do not discharge on AC if the battery is still waking up\". Does Sand not need it?\n\nReef enables discharge on ac to avoid audible noise. I don\u0027t see that condition here. It\u0027s easier to read Reef\u0027s code to understand what issue each enable/disable decision is related to but that\u0027s not the case in this code.\n\nMaybe you should itemize reasons why Sand can\u0027t use Reef\u0027s code as is. Then, we can talk about how to customize Reef\u0027s code for Sand.",
+      "range": {
+        "startLine": 222,
+        "startChar": 26,
+        "endLine": 222,
+        "endChar": 34
+      },
+      "revId": "2d66492f6a22f1ff62f19d980f6a9520e6075c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8acb58a3_17b4787e",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-07T16:45:02Z",
+      "side": 1,
+      "message": "Can you separate the two conditions?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 39
+      },
+      "revId": "2d66492f6a22f1ff62f19d980f6a9520e6075c01",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
