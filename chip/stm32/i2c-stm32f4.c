@@ -888,6 +888,12 @@ static void i2c_event_handler(int port)
 		if (i2c_sr2 & STM32_I2C_SR2_TRA) {
 			/* Transmitter slave */
 			i2c_sr1 |= STM32_I2C_SR1_TXE;
+#ifdef CONFIG_BOARD_I2C_SLAVE_ADDR
+			if (!rx_pending && !tx_pending) {
+				tx_pending = 1;
+				i2c_process_board_command(1, addr, 0);
+			}
+#endif
 		} else {
 			/* Receiver slave */
 			buf_idx = 0;
@@ -897,7 +903,8 @@ static void i2c_event_handler(int port)
 		/* Enable buffer interrupt to start receive/response */
 		STM32_I2C_CR2(port) |= STM32_I2C_CR2_ITBUFEN;
 		/* Clear ADDR bit */
-		STM32_I2C_SR1(port) &= ~STM32_I2C_SR1_ADDR;
+		dummy = STM32_I2C_SR1(port);
+		dummy = STM32_I2C_SR2(port);
 		/* Inhibit stop mode when addressed until STOPF flag is set */
 		disable_sleep(SLEEP_MASK_I2C_SLAVE);
 	}
