@@ -10,9 +10,11 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "hwtimer.h"
 #include "keyboard_config.h"
 #include "keyboard_protocol.h"
 #include "link_defs.h"
+#include "queue.h"
 #include "registers.h"
 #include "task.h"
 #include "timer.h"
@@ -25,6 +27,21 @@
 
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
+
+struct key_event {
+	uint32_t time;
+	uint8_t keycode;
+	uint8_t pressed;
+};
+
+/*
+ * Mutex to control write access to the to-host buffer head.  Don't need to
+ * mutex the tail because reads are only done in one place.
+ */
+static struct mutex key_queue_mutex;
+
+static struct queue const key_queue = QUEUE_NULL(16, struct key_event);
 
 struct __attribute__((__packed__)) usb_hid_keyboard_report {
 	uint8_t modifiers; /* bitmap of modifiers 224-231 */
@@ -136,14 +153,23 @@ static struct usb_hid_keyboard_report report;
 
 static void write_keyboard_report(void)
 {
+	CPRINTS("W");
+
+#ifdef CONFIG_USB_REMOTE_WAKEUP
+	/* Wake up host, if required. */
+	usb_wake();
+#endif
+
 	/* Tell the interrupt handler to send the next buffer. */
 	hid_ep_data_ready = 1;
 	if ((STM32_USB_EP(USB_EP_HID_KEYBOARD) & EP_TX_MASK) == EP_TX_VALID) {
+		CPRINTF("B");
 		/* Endpoint is busy */
 		return;
 	}
 
 	if (atomic_read_clear(&hid_ep_data_ready)) {
+		CPRINTS("K");
 		/*
 		 * Endpoint is not busy, and interrupt handler did not just
 		 * send the buffer: enable TX.
@@ -153,11 +179,6 @@ static void write_keyboard_report(void)
 				&report, sizeof(report));
 		STM32_TOGGLE_EP(USB_EP_HID_KEYBOARD, EP_TX_MASK,
 				EP_TX_VALID, 0);
-
-#ifdef CONFIG_USB_REMOTE_WAKEUP
-		/* Wake up host, if required. */
-		usb_wake();
-#endif
 	}
 }
 
@@ -191,55 +212,122 @@ USB_DECLARE_IFACE(USB_IFACE_HID_KEYBOARD, hid_keyboard_iface_request)
 
 void keyboard_clear_buffer(void)
 {
+        mutex_lock(&key_queue_mutex);
+        queue_init(&key_queue);
+        mutex_unlock(&key_queue_mutex);
+
 	memset(&report, 0, sizeof(report));
 	write_keyboard_report();
 }
 
-void keyboard_state_changed(int row, int col, int is_pressed)
+static void keyboard_process_queue(void);
+DECLARE_DEFERRED(keyboard_process_queue);
+
+static void keyboard_process_queue(void)
 {
 	int i;
 	uint8_t mask;
+	struct key_event ev;
+	int valid = 0;
+	uint32_t first_key_time;
+
+	mutex_lock(&key_queue_mutex);
+	CPRINTF("Q%d", queue_count(&key_queue));
+
+	if (hid_ep_data_ready) {
+		CPRINTF("d\n");
+		hook_call_deferred(&keyboard_process_queue_data,
+				HID_KEYBOARD_EP_INTERVAL_MS*MSEC/2);
+		mutex_unlock(&key_queue_mutex);
+		return;
+	}
+	CPRINTF("\n");
+
+	/* Time might read garbage if queue is empty, but that's ok
+	 * as we do not do anything with first_key_time then. */
+	queue_peek_units(&key_queue, &ev, 0, 1);
+	first_key_time = ev.time;
+
+	/*
+	 * Pick key events from the queue, coallescing events within EP
+	 * interval time to make sure the queue cannot grow.
+	 */
+	while (queue_count(&key_queue) > 0) {
+		queue_peek_units(&key_queue, &ev, 0, 1);
+		CPRINTF(" =%02x/%d %d\n", ev.keycode, ev.pressed,
+			ev.time-first_key_time);
+
+		if ((ev.time - first_key_time) >=
+			(HID_KEYBOARD_EP_INTERVAL_MS*MSEC+1000)) {
+			CPRINTF("skip\n");
+			break;
+		}
+
+		queue_advance_head(&key_queue, 1);
+
+		if (ev.keycode >= HID_KEYBOARD_MODIFIER_LOW &&
+		    ev.keycode <= HID_KEYBOARD_MODIFIER_HIGH) {
+			mask = 0x01 << (ev.keycode - HID_KEYBOARD_MODIFIER_LOW);
+			if (ev.pressed)
+				report.modifiers |= mask;
+			else
+				report.modifiers &= ~mask;
+			valid = 1;
+		} else if (ev.pressed) {
+			/* Add keycode to the list of keys */
+			for (i = 0; i < ARRAY_SIZE(report.keys); i++) {
+				/* Is key already pressed? */
+				if (report.keys[i] == ev.keycode)
+					break;
+				if (report.keys[i] == 0) {
+					report.keys[i] = ev.keycode;
+					valid = 1;
+					break;
+				}
+			}
+			/* Too many keys, ignoring. */
+		} else {
+			/* Remove keycode from the list of keys */
+			for (i = 0; i < ARRAY_SIZE(report.keys); i++) {
+				if (report.keys[i] == ev.keycode) {
+					report.keys[i] = 0;
+					valid = 1;
+					break;
+				}
+			}
+			/* Couldn't find the key... */
+		}
+	}
+
+	if (queue_count(&key_queue) > 0) {
+		CPRINTF("d2\n");
+		hook_call_deferred(&keyboard_process_queue_data,
+				HID_KEYBOARD_EP_INTERVAL_MS*MSEC/2);
+	}
+
+	mutex_unlock(&key_queue_mutex);
+
+	if (valid)
+		write_keyboard_report();
+}
+
+void keyboard_state_changed(int row, int col, int is_pressed)
+{
 	uint8_t keycode = keycodes[row][col];
+	struct key_event ev = {
+		.time = __hw_clock_source_read(),
+		.keycode = keycode,
+		.pressed = is_pressed,
+	};
 
 	if (!keycode) {
 		CPRINTF("Unknown key at %d/%d\n", row, col);
 		return;
 	}
 
-	if (keycode >= HID_KEYBOARD_MODIFIER_LOW &&
-	    keycode <= HID_KEYBOARD_MODIFIER_HIGH) {
-		mask = 0x01 << (keycode - HID_KEYBOARD_MODIFIER_LOW);
-		if (is_pressed)
-			report.modifiers |= mask;
-		else
-			report.modifiers &= ~mask;
+        mutex_lock(&key_queue_mutex);
+	queue_add_unit(&key_queue, &ev);
+	mutex_unlock(&key_queue_mutex);
 
-		write_keyboard_report();
-		return;
-	}
-
-	if (is_pressed) {
-		/* Add keycode to the list of keys */
-		for (i = 0; i < ARRAY_SIZE(report.keys); i++) {
-			/* Is key already pressed? */
-			if (report.keys[i] == keycode)
-				return;
-			if (report.keys[i] == 0) {
-				report.keys[i] = keycode;
-				write_keyboard_report();
-				return;
-			}
-		}
-		/* Too many keys, ignoring. */
-	} else {
-		/* Remove keycode from the list of keys */
-		for (i = 0; i < ARRAY_SIZE(report.keys); i++) {
-			if (report.keys[i] == keycode) {
-				report.keys[i] = 0;
-				write_keyboard_report();
-				return;
-			}
-		}
-		/* Couldn't find the key... */
-	}
+	keyboard_process_queue();
 }

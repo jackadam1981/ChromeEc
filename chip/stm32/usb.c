@@ -22,6 +22,7 @@
 
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
 #ifdef CONFIG_USB_BOS
 /* v2.01 (vs 2.00) BOS Descriptor provided */
@@ -341,7 +342,7 @@ static void usb_resume(void)
 	int state = (STM32_USB_FNR & STM32_USB_FNR_RXDP_RXDM_MASK)
 			>> STM32_USB_FNR_RXDP_RXDM_SHIFT;
 
-	CPRINTF("USB resume %x\n", state);
+	CPRINTS("USB resume %x", state);
 
 	/*
 	 * TODO(crosbug.com/p/63273): Reference manual suggests going back to
