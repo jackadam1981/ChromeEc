@@ -1463,7 +1463,7 @@ static void pd_partner_port_reset(int port)
 	if (!pd_get_saved_active(port) ||
 	   system_get_image_copy() != SYSTEM_IMAGE_RO ||
 	   system_get_reset_flags() &
-	   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))
+	   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON | RESET_FLAG_SYSJUMP))
 		return;
 
 	/* Provide Rp for 100 msec. or until we no longer have VBUS. */
