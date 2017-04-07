@@ -188,6 +188,30 @@
       "revId": "d98e2b8c165b1d710ffda6915b8b46c39093f69c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1dab57_7a03905d",
+        "filename": "util/genvif.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-07T06:36:51Z",
+      "side": 1,
+      "message": "Yes it\u0027s a bit tricky to build since the EC firmware code is supposed to be compiled as bare-metal.\nTook a good hour to get it to do that properly, here an example:\nhttps://chromium-review.googlesource.com/c/469729/",
+      "parentUuid": "9d2ba2fb_16d07551",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "d98e2b8c165b1d710ffda6915b8b46c39093f69c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
