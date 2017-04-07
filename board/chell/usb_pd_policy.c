@@ -286,30 +286,27 @@ static int svdm_dp_config(int port, uint32_t *payload)
 	return 2;
 };
 
+static uint64_t usb_c0_next_hpd_irq;
+static uint64_t usb_c1_next_hpd_irq;
+
 #define PORT_TO_HPD(port) ((port) ? GPIO_USB_C1_DP_HPD : GPIO_USB_C0_DP_HPD)
 static void svdm_dp_post_config(int port)
 {
+	uint64_t next_hpd_irq;
+
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
 
 	gpio_set_level(PORT_TO_HPD(port), 1);
-}
 
-static void hpd0_irq_deferred(void)
-{
-	gpio_set_level(GPIO_USB_C0_DP_HPD, 1);
+	/* set the minimum time delay (2ms) for the next HPD IRQ */
+	next_hpd_irq = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+	if (port)
+		usb_c1_next_hpd_irq = next_hpd_irq;
+	else
+		usb_c0_next_hpd_irq = next_hpd_irq;
 }
-
-static void hpd1_irq_deferred(void)
-{
-	gpio_set_level(GPIO_USB_C1_DP_HPD, 1);
-}
-
-DECLARE_DEFERRED(hpd0_irq_deferred);
-DECLARE_DEFERRED(hpd1_irq_deferred);
-#define PORT_TO_HPD_IRQ_DEFERRED(port) ((port) ? hpd1_irq_deferred : \
-					hpd0_irq_deferred)
 
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
@@ -317,6 +314,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
 	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
 	enum gpio_signal hpd = PORT_TO_HPD(port);
+	uint64_t next_hpd_irq;
 
 	cur_lvl = gpio_get_level(hpd);
 	dp_status[port] = payload[1];
@@ -329,9 +327,28 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 	}
 
 	if (irq & cur_lvl) {
+		/*
+		 * check if the minimum time delay (2ms) has
+		 * already passed since the last HPD IRQ.
+		 */
+		if (port)
+			next_hpd_irq = usb_c1_next_hpd_irq;
+		else
+			next_hpd_irq = usb_c0_next_hpd_irq;
+		if (get_time().val < next_hpd_irq)
+			usleep(next_hpd_irq - get_time().val);
+
+		/* generate HPD IRQ pulse */
 		gpio_set_level(hpd, 0);
-		hook_call_deferred(PORT_TO_HPD_IRQ_DEFERRED(port),
-				   HPD_DSTREAM_DEBOUNCE_IRQ);
+		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
+		gpio_set_level(hpd, 1);
+
+		/* set the minimum time delay (2ms) for the next HPD IRQ */
+		next_hpd_irq = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+		if (port)
+			usb_c1_next_hpd_irq = next_hpd_irq;
+		else
+			usb_c0_next_hpd_irq = next_hpd_irq;
 	} else if (irq & !cur_lvl) {
 		CPRINTF("ERR:HPD:IRQ&LOW\n");
 		return 0; /* nak */
