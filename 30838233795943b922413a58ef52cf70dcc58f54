@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "f5d0415c_d0d6f754",
+        "filename": "common/rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-07T01:12:11Z",
+      "side": 1,
+      "message": "I was considering using this function to make sure RW protection is enabled before jumping to it... but yes, right now, it does not make too much sense...",
+      "revId": "30838233795943b922413a58ef52cf70dcc58f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8fd24e53_fefbd956",
         "filename": "common/rwsig.c",
         "patchSetId": 2
@@ -36,6 +53,30 @@
       "writtenOn": "2017-04-06T06:50:46Z",
       "side": 1,
       "message": "now, this is fine if you RO use neither the SPI master nor the usb_update,\nelse they will fail ?",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 66
+      },
+      "revId": "30838233795943b922413a58ef52cf70dcc58f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfc7e64f_9d95a9aa",
+        "filename": "common/rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-07T01:12:11Z",
+      "side": 1,
+      "message": "Right, I have a CL that does:\n#define CONFIG_MALLOC\nin another branch, pushed it on top of this.",
+      "parentUuid": "8fd24e53_fefbd956",
       "range": {
         "startLine": 118,
         "startChar": 0,
@@ -71,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "4283d123_49e59718",
+        "filename": "common/rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-07T01:12:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af3d14e9_2704154d",
+      "range": {
+        "startLine": 237,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 36
+      },
+      "revId": "30838233795943b922413a58ef52cf70dcc58f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23e6720c_c30fd848",
         "filename": "include/rwsig.h",
         "patchSetId": 2
@@ -82,6 +147,30 @@
       "writtenOn": "2017-04-06T06:50:46Z",
       "side": 1,
       "message": "what are those APIs used for ?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 23
+      },
+      "revId": "30838233795943b922413a58ef52cf70dcc58f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff238de6_28d39a6f",
+        "filename": "include/rwsig.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-07T01:12:11Z",
+      "side": 1,
+      "message": "Added comments, will be used by usb_updater to tell RO to stay there (instead of jumping). I rebased my usb_updater series on top of this so that you can have a look at what I mean. See CL:458470 .",
+      "parentUuid": "23e6720c_c30fd848",
       "range": {
         "startLine": 25,
         "startChar": 0,
