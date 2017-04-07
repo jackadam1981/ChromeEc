@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a0a0903c_58e8beb0",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-07T17:58:51Z",
+      "side": 1,
+      "message": "Created macros for the masks and put them in the .h file",
+      "parentUuid": "2ec59e56_dae5bb41",
+      "revId": "470db737a0903d967b824f08b2495aa04cf19a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "059ee859_8e7e80a4",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "470db737a0903d967b824f08b2495aa04cf19a80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3465a71c_684bacee",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-07T17:58:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "059ee859_8e7e80a4",
+      "revId": "470db737a0903d967b824f08b2495aa04cf19a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
