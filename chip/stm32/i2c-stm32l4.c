@@ -187,7 +187,7 @@ static void i2c_event_handler(int port)
 	 */
 	static int rx_pending, rx_idx;
 	static int tx_pending, tx_idx, tx_end;
-	static uint8_t slave_buffer[I2C_MAX_HOST_PACKET_SIZE + 2];
+	static uint8_t slave_buffer[CONFIG_I2C_MAX_HOST_PACKET_SIZE + 2];
 	int isr = STM32_I2C_ISR(port);
 
 	/*
