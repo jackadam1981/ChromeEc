@@ -196,9 +196,9 @@ defined(CONFIG_LOW_POWER_IDLE) && \
  * and result/size on response).  After any protocol-specific headers, the
  * buffers must be 32-bit aligned.
  */
-static uint8_t host_buffer_padded[I2C_MAX_HOST_PACKET_SIZE + 4] __aligned(4);
+static uint8_t host_buffer_padded[CONFIG_I2C_MAX_HOST_PACKET_SIZE + 4] __aligned(4);
 static uint8_t * const host_buffer = host_buffer_padded + 2;
-static uint8_t params_copy[I2C_MAX_HOST_PACKET_SIZE] __aligned(4);
+static uint8_t params_copy[CONFIG_I2C_MAX_HOST_PACKET_SIZE] __aligned(4);
 static int host_i2c_resp_port;
 static int tx_pending;
 static int tx_index, tx_end;
@@ -246,7 +246,7 @@ static void i2c_process_command(void)
 	i2c_packet.request_temp = params_copy;
 	i2c_packet.request_max = sizeof(params_copy);
 	/* Don't know the request size so pass in the entire buffer */
-	i2c_packet.request_size = I2C_MAX_HOST_PACKET_SIZE;
+	i2c_packet.request_size = CONFIG_I2C_MAX_HOST_PACKET_SIZE;
 
 	/*
 	 * Stuff response at buff[2] to leave the first two bytes of
@@ -255,7 +255,7 @@ static void i2c_process_command(void)
 	 * add up to make the response buffer 32-bit aligned.
 	 */
 	i2c_packet.response = (void *)(&buff[2]);
-	i2c_packet.response_max = I2C_MAX_HOST_PACKET_SIZE;
+	i2c_packet.response_max = CONFIG_I2C_MAX_HOST_PACKET_SIZE;
 	i2c_packet.response_size = 0;
 
 	if (*buff >= EC_COMMAND_PROTOCOL_3) {

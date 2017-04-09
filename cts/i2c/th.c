@@ -14,7 +14,7 @@
 #include "uart.h"
 #include "watchdog.h"
 
-static uint8_t inbox[I2C_MAX_HOST_PACKET_SIZE + 2];
+static uint8_t inbox[CONFIG_I2C_MAX_HOST_PACKET_SIZE + 2];
 static char data_received;
 
 void i2c_data_received(int port, uint8_t *buf, int len)
