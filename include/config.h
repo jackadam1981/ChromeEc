@@ -1420,6 +1420,12 @@
  */
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
+/*
+ * Max data size for a version 3 request/response packet. This is
+ * big enough for EC_CMD_GET_VERSION plus header info.
+ */
+#define CONFIG_I2C_MAX_HOST_PACKET_SIZE 128
+
 /*****************************************************************************/
 /* Current/Power monitor */
 
