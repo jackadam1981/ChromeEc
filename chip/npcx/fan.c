@@ -244,17 +244,12 @@ static void fan_config(int ch, int enable_mft_read_rpm)
  */
 static int fan_all_disabled(void)
 {
-	int ch, all_disabled = 0;
+	int ch;
 
-	for (ch = 0; ch < CONFIG_FANS; ch++) {
-		if (fan_status[ch].auto_status == FAN_STATUS_STOPPED)
-			all_disabled++;
-	}
-
-	if (all_disabled >= CONFIG_FANS)
-		return 1;
-
-	return 0;
+	for (ch = 0; ch < CONFIG_FANS; ch++)
+		if (fan_status[ch].auto_status != FAN_STATUS_STOPPED)
+			return 0;
+	return 1;
 }
 
 /**
@@ -282,9 +277,9 @@ static void fan_adjust_duty(int ch, int rpm_diff, int duty)
 
 	/* Adjust fan duty step by step */
 	if (rpm_diff > 0)
-		duty = (duty + duty_step) < 100 ? (duty + duty_step) : 100;
+		duty = MIN(duty + duty_step, 100);
 	else
-		duty = (duty - duty_step) > 1 ? (duty - duty_step) : 1;
+		duty = MAX(duty - duty_step, 1);
 
 	fan_set_duty(ch, duty);
 
