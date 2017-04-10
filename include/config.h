@@ -1806,6 +1806,9 @@
 /* Use RSA exponent 3 instead of F4 (65537) */
 #undef CONFIG_RSA_EXPONENT_3
 
+/* Board supports a Real-Time Clock (RTC). */
+#undef CONFIG_RTC
+
 /*
  * Adjust the compiler optimization flags for the RSA code to get a speed-up
  * at the expense of a small code size delta.
