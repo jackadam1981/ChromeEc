@@ -31,6 +31,8 @@ const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(12000, 3000, PDO_FIXED_FLAGS),
 		PDO_FIXED(20000, 3000, PDO_FIXED_FLAGS),
 };
+const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
+
 static const int pd_src_pdo_cnts[3] = {
 		[SRC_CAP_5V] = 1,
 		[SRC_CAP_12V] = 2,

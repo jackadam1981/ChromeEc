@@ -40,9 +40,10 @@
  */
 static uint32_t pd_src_chg_pdo[2];
 static uint8_t chg_pdo_cnt;
-static const uint32_t pd_src_host_pdo[] = {
+const uint32_t pd_src_pdo[] = {
 		PDO_FIXED(5000, 500, DUT_PDO_FIXED_FLAGS),
 };
+const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
 const uint32_t pd_snk_pdo[] = {
 		PDO_FIXED(5000, 500, CHG_PDO_FIXED_FLAGS),
 		PDO_BATT(4750, 21000, 15000),
@@ -363,8 +364,8 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo)
 		*src_pdo =  pd_src_chg_pdo;
 		pdo_cnt = chg_pdo_cnt;
 	} else {
-		*src_pdo =  pd_src_host_pdo;
-		pdo_cnt = ARRAY_SIZE(pd_src_host_pdo);
+		*src_pdo =  pd_src_pdo;
+		pdo_cnt = ARRAY_SIZE(pd_src_pdo);
 	}
 
 	return pdo_cnt;
