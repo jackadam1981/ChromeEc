@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfa3a77e_557440e5",
+        "filename": "common/rwsig.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-10T13:46:57Z",
+      "side": 1,
+      "message": "maybe worth commenting that you might reboot here ?\nbut not for the case mentioned above (ie if we have fallen the unwritten \u0027else\u0027 clause of the above condition)",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "232f173d7ad72d20ed5f5f49f62c8d94b08c45e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef181ae_224fbcc4",
+        "filename": "common/rwsig.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-10T13:46:57Z",
+      "side": 1,
+      "message": "so I\u0027m jumping to RW if we rollback to a too-old version ie rw_rollback_version \u003c min_rollback_version ?\nI imagine we don\u0027t , I\u0027m just confused after staring for too long at this.\n\nOk it\u0027s at the beginning of this function, and the condition above is really \u0027rw_rollback_version !\u003d min_rollback_version\u0027\nmaybe worth another small comment",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 41
+      },
+      "revId": "232f173d7ad72d20ed5f5f49f62c8d94b08c45e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
