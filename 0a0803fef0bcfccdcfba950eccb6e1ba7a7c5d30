@@ -16,6 +16,29 @@
       "revId": "0a0803fef0bcfccdcfba950eccb6e1ba7a7c5d30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59fe896d_59e78a73",
+        "filename": "common/rwsig.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-10T14:02:55Z",
+      "side": 1,
+      "message": "IMO the security conditions are still not terribly readable (At least for me).\nCan we write it so it\u0027s obvious (and the code doesn\u0027t have any global state for status and aborting) ?\ne.g.\n\tif (system_get_image_copy() \u003d\u003d SYSTEM_IMAGE_RO) {\n                uint32_t evt;\n\t        int sig_good \u003d rwsig_check_signature();\n\t\t/* Jump to RW after a timeout */\n\t\ttask_wait_event(CONFIG_RWSIG_JUMP_TIMEOUT);\n\t\t/* Jump now if status is still VALID. */\n                if (sig_good \u0026\u0026 evt \u003d\u003d TASK_EVENT_TIMER)\n\t\t        rwsig_jump_now();\n\t}\n\n\nvoid rwsig_abort(void)\n{\n\ttask_wake(TASK_ID_RWSIG);\n}",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 2
+      },
+      "revId": "0a0803fef0bcfccdcfba950eccb6e1ba7a7c5d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
