@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaf8f1b2_7958bf2c",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-10T00:25:26Z",
+      "side": 1,
+      "message": "No delay in this branch (there used to be a 2ms delay. Is that intentional?",
+      "revId": "98b97708fa2cda1b20b42706879d6f143009bb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b922870_3b98d301",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-10T00:25:26Z",
+      "side": 1,
+      "message": "Previously this was a 2ms delay, not sure if it matters...",
+      "revId": "98b97708fa2cda1b20b42706879d6f143009bb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
