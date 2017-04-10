@@ -22,6 +22,30 @@
       "revId": "d4bb954a048f735e656dd2631572e5673b89bfa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5871b22f_22f65a14",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-10T20:51:11Z",
+      "side": 1,
+      "message": "How about something like:\n\n/* Wait up to a second for chipset to shut down */\nint retries \u003d 100;\nwhile (--retries) {\n  if (chipset_in_state(CHIPSET_STATE_HARD_OFF))\n    break;\n  msleep(10);\n}\nif (!retries)\n  CPRINTS(\"Hibernated before chipset shutdown\");",
+      "parentUuid": "7dade6c9_5ce76d11",
+      "range": {
+        "startLine": 417,
+        "startChar": 2,
+        "endLine": 418,
+        "endChar": 14
+      },
+      "revId": "d4bb954a048f735e656dd2631572e5673b89bfa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
