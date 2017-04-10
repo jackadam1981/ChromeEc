@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "def5b2a8_df161b87",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-10T21:16:55Z",
+      "side": 1,
+      "message": "Yes, the removal was intentional. Typically, the transition from standby to normal follows a low-\u003ehigh cable_det event. The cable detect ISR already provides a 2 msec delay in the deferred call. The required time between cable_det event and setting PWR_EN high is 1 nS.",
+      "parentUuid": "aaf8f1b2_7958bf2c",
+      "revId": "98b97708fa2cda1b20b42706879d6f143009bb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b922870_3b98d301",
         "filename": "driver/tcpm/anx74xx.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-10T00:25:26Z",
       "side": 1,
       "message": "Previously this was a 2ms delay, not sure if it matters...",
+      "revId": "98b97708fa2cda1b20b42706879d6f143009bb83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ec1363_65fce6f5",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-10T21:16:55Z",
+      "side": 1,
+      "message": "From the Anx3429 data sheet, for normal to standby transitions, the recommended time from cable_det high-\u003elow to setting RESET_N low is \u003e\u003d 1msec.",
+      "parentUuid": "3b922870_3b98d301",
       "revId": "98b97708fa2cda1b20b42706879d6f143009bb83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
