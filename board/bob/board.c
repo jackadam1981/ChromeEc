@@ -345,6 +345,9 @@ void board_hibernate(void)
 			ccprintf("Chipset refused to shutdown!\n");
 	}
 
+	/* Turn off the power LED */
+	gpio_set_level(GPIO_POWER_LED, 1);
+
 	/*
 	 * Disable the power enables for the TCPCs since we're going into
 	 * hibernate.  The charger VBUS interrupt will wake us up and reset the
