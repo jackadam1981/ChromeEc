@@ -193,3 +193,17 @@ static void led_second(void)
 }
 DECLARE_HOOK(HOOK_SECOND, led_second, HOOK_PRIO_DEFAULT);
 
+static void std_led_startup(void)
+{
+	led_auto_control(EC_LED_ID_POWER_LED, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, std_led_startup, HOOK_PRIO_DEFAULT);
+
+static void std_led_shutdown(void)
+{
+	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED)) {
+		led_auto_control(EC_LED_ID_POWER_LED, 0);
+		pwr_led_set_color(LED_OFF);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, std_led_shutdown, HOOK_PRIO_DEFAULT);
