@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c084740e_700c8465",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-11T03:24:23Z",
+      "side": 1,
+      "message": "This should need to be called at most once.  Then just need to wait for it to finish.\n\nRemove from this loop; add at line 417:\n\nif (!chipset_in_state(CHIPSET_STATE_HARD_OFF))\n\t\tchipset_force_shutdown();",
+      "range": {
+        "startLine": 421,
+        "startChar": 2,
+        "endLine": 421,
+        "endChar": 27
+      },
+      "revId": "91d291968fcdb256a3e3688063b735ffdc1925a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
