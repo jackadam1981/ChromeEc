@@ -46,6 +46,30 @@
       "revId": "b4ef7c975d913e1a6368cee3061d27f729fae029",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "280ecc16_3ffb9832",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:07:35Z",
+      "side": 1,
+      "message": "I just noticed the src pdo name changed in servo_v4. It\u0027s now called static const uint32_t pd_src_host_pdo[] \u003d {",
+      "parentUuid": "ced3b2e1_4187003d",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "b4ef7c975d913e1a6368cee3061d27f729fae029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
