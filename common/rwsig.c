@@ -190,6 +190,7 @@ int rwsig_check_signature(void)
 	rollback_lock();
 #endif
 out:
+	msleep(5000);
 	CPRINTS("RW verify %s", good ? "OK" : "FAILED");
 
 	if (!good) {
@@ -253,4 +254,24 @@ exit:
 	while (1)
 		task_wait_event(-1);
 }
+
+static int command_rwsig(int argc, char **argv)
+{
+	if (argc < 2 || argv[1][0] == 's') {
+		ccprintf("status: %d\n", rwsig_status);
+		return EC_SUCCESS;
+	}
+
+	if (argv[1][0] == 'a')
+		rwsig_abort();
+	else if (argv[1][0] == 'c')
+		rwsig_continue();
+	else
+		return EC_ERROR_PARAM1;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(rwsig, command_rwsig,
+			"[status] [abort|continue]",
+			"");
 #endif
