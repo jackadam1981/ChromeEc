@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8b9c5e40_70dce5b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beb8b39f_f58688d8",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "109ea70b_069351ba",
         "filename": "Makefile.rules",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e9360bb_6586a968",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "109ea70b_069351ba",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 5
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a9f59097_d6c4dc10",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2ac7040_6066484e",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 285,
+        "endChar": 54
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4bfdbf0_b998b1ee",
         "filename": "include/config.h",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d772fb7e_49defb43",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2372,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4bfdbf0_b998b1ee",
+      "range": {
+        "startLine": 2364,
+        "startChar": 1,
+        "endLine": 2372,
+        "endChar": 40
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "61ee2b53_7f21b760",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e9ac02d_a07c0482",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54000d81_bb5c78ff",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -137,6 +257,30 @@
       "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b37594f1_ba30a23b",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54000d81_bb5c78ff",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "37f2ff99_b6efe01b",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "163a091e_49dfa012",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7589340e_f7201af5",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -183,6 +351,30 @@
       "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e307f4_435cca73",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7589340e_f7201af5",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "2a66d49e_b43e7a1e",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "The names are not mandated. Plankton and Twinkie are not DRP but both of them have SRC and SNK PDOs. So I created a separate VIF for _src and _snk.",
+      "parentUuid": "f3f031ff_8b186b86",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c38b134d_fedcab17",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -220,6 +436,30 @@
       "writtenOn": "2017-04-11T10:03:22Z",
       "side": 1,
       "message": "why ?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 33
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d7a434d_1145746b",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "The fusb302 driver can only communicate with the other port partner.\nFrom driver/tcpm/fusb302.c\nstatic int fusb302_tcpm_transmit(int port, enum tcpm_transmit_type type,\n...\nswitch (type) {\n        case TCPC_TX_SOP:\n\nAll the other drivers can communicate with the port partner and cable.\nFrom driver/tcpm/anx74xx.c\nstatic int anx74xx_tcpm_transmit(int port, enum tcpm_transmit_type type,\n...\nswitch (type) {\n        /* ANX is aware of type */\n        case TCPC_TX_SOP:\n        case TCPC_TX_SOP_PRIME:\n        case TCPC_TX_SOP_PRIME_PRIME:",
+      "parentUuid": "c38b134d_fedcab17",
       "range": {
         "startLine": 180,
         "startChar": 0,
@@ -278,6 +518,54 @@
     },
     {
       "key": {
+        "uuid": "8687f92a_8b326083",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7e1229d_acb0c97e",
+      "range": {
+        "startLine": 307,
+        "startChar": 28,
+        "endLine": 307,
+        "endChar": 35
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20b8d3a6_90c237b1",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b800005b_2d0e6e16",
+      "range": {
+        "startLine": 307,
+        "startChar": 3,
+        "endLine": 307,
+        "endChar": 13
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea5719e0_7052a6d6",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -298,6 +586,30 @@
       "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42dbd791_634ec58b",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea5719e0_7052a6d6",
+      "range": {
+        "startLine": 336,
+        "startChar": 15,
+        "endLine": 336,
+        "endChar": 38
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "58858bc7_39a723e8",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95456180_5a971ab4",
+      "range": {
+        "startLine": 371,
+        "startChar": 16,
+        "endLine": 371,
+        "endChar": 46
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8470e869_8254f838",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "e793695d_03b214fd",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8470e869_8254f838",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 15
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e787273d_fa3b0efe",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -358,6 +718,30 @@
       "writtenOn": "2017-04-11T10:03:22Z",
       "side": 1,
       "message": "not really, see usb_pd_policy.c :  pd_check_pr_role() and  pd_check_power_swap()",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 50
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f1742b_77a7103c",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Calling pd_check_power_swap() is only useful during runtime. Calling it in this context will always return 0. So I just assumed that if the board is DRP capable, DRP will get activated and we can test it. This assumption fails for the servo_v4 board because its pd_check_pwer_swap() function always returns 0.",
+      "parentUuid": "e787273d_fa3b0efe",
       "range": {
         "startLine": 393,
         "startChar": 0,
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "923b3ac5_908a4485",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1229fc62_0931d69e",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 55
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f13f60f_51248f34",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -413,6 +821,30 @@
       "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94c1f358_473622c9",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f13f60f_51248f34",
+      "range": {
+        "startLine": 409,
+        "startChar": 30,
+        "endLine": 409,
+        "endChar": 36
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -439,6 +871,30 @@
     },
     {
       "key": {
+        "uuid": "9d312acc_a7c7b561",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1e34c33_142d4e94",
+      "range": {
+        "startLine": 418,
+        "startChar": 16,
+        "endLine": 418,
+        "endChar": 51
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03ba6563_fe9e2ac2",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -459,6 +915,30 @@
       "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b9990c_cc877c7d",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03ba6563_fe9e2ac2",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 15
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -485,6 +965,30 @@
     },
     {
       "key": {
+        "uuid": "991185a1_30d38b6c",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ed633f1_9c850995",
+      "range": {
+        "startLine": 486,
+        "startChar": 2,
+        "endLine": 486,
+        "endChar": 22
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87176ca8_300e8ae8",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -496,6 +1000,30 @@
       "writtenOn": "2017-04-11T10:03:22Z",
       "side": 1,
       "message": "usually this case is a failure (ie return !\u003d 0)",
+      "range": {
+        "startLine": 497,
+        "startChar": 3,
+        "endLine": 497,
+        "endChar": 11
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2e644b4_3fbd1e63",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "I didn\u0027t consider this a failure if the user wanted to show the help message.",
+      "parentUuid": "87176ca8_300e8ae8",
       "range": {
         "startLine": 497,
         "startChar": 3,
@@ -531,6 +1059,30 @@
     },
     {
       "key": {
+        "uuid": "5e59ce1e_f0ea631b",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b407b9_f1d3030f",
+      "range": {
+        "startLine": 521,
+        "startChar": 2,
+        "endLine": 521,
+        "endChar": 9
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c45df47_e4080fa9",
         "filename": "util/genvif.h",
         "patchSetId": 7
@@ -551,6 +1103,30 @@
       "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b5c6eed_41a6cc4b",
+        "filename": "util/genvif.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T20:22:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c45df47_e4080fa9",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
