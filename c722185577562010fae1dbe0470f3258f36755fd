@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "368d32ef_6184a22d",
+        "filename": "common/rwsig.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-11T11:22:06Z",
+      "side": 1,
+      "message": "IIUC, on \"normal\" EC, we do protect RW as part of software sync, which would call flash_command_protect (which indirectly calls flash_protect_at_boot).\n\nHere, we don\u0027t want to (and can\u0027t) rely on the host to tell us to protect the RW, so we would like to protect it ourselves before jumping to RW.",
+      "parentUuid": "8c254c60_da7023f0",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "c722185577562010fae1dbe0470f3258f36755fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "501f6fe7_88ba94e8",
         "filename": "common/rwsig.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "c722185577562010fae1dbe0470f3258f36755fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0653d710_2b57b703",
+        "filename": "common/rwsig.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-11T11:22:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "501f6fe7_88ba94e8",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 9
+      },
+      "revId": "c722185577562010fae1dbe0470f3258f36755fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
