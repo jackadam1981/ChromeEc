@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35c5b85a_606b6122",
+        "filename": "common/rwsig.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-11T03:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfa3a77e_557440e5",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 17
+      },
+      "revId": "232f173d7ad72d20ed5f5f49f62c8d94b08c45e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aef181ae_224fbcc4",
         "filename": "common/rwsig.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-10T13:46:57Z",
       "side": 1,
       "message": "so I\u0027m jumping to RW if we rollback to a too-old version ie rw_rollback_version \u003c min_rollback_version ?\nI imagine we don\u0027t , I\u0027m just confused after staring for too long at this.\n\nOk it\u0027s at the beginning of this function, and the condition above is really \u0027rw_rollback_version !\u003d min_rollback_version\u0027\nmaybe worth another small comment",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 41
+      },
+      "revId": "232f173d7ad72d20ed5f5f49f62c8d94b08c45e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "247f29d8_4aaf8de8",
+        "filename": "common/rwsig.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-11T03:45:36Z",
+      "side": 1,
+      "message": "I moved the block around, so that it\u0027s run before the out: label (we don\u0027t really need to lock rollback if RW can\u0027t be verified anyway).\n\nHopefully that adds a bit of clarity.",
+      "parentUuid": "aef181ae_224fbcc4",
       "range": {
         "startLine": 179,
         "startChar": 0,
