@@ -1,0 +1,556 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beb8b39f_f58688d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "nit: no longer a script",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "109ea70b_069351ba",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "you are creating real files, so no phony rules here.\n\nThen you can conditionally create the vif phony rule",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 5
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ac7040_6066484e",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "that\u0027s actually genvif dependencies (and they should be correct in the other Make or fix them there)\nyour only dependency here is probably $(out)/util/genvif",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 285,
+        "endChar": 54
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4bfdbf0_b998b1ee",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2372,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "this is not the up-to-date version of config.h (by several weeks)\nplease rebase your CL",
+      "range": {
+        "startLine": 2364,
+        "startChar": 1,
+        "endLine": 2372,
+        "endChar": 40
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e9ac02d_a07c0482",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "Revision 1.11 is available:\nhttp://www.usb.org/developers/tools/VendorInfoFileGeneratorRelease_1.1.1.1.zip",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 45
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54000d81_bb5c78ff",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "probably worth at least a comment since 1 means Revision 2.0\nor another define :\nPD_SPEC_REV PD_REV_2_0",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 23
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "163a091e_49dfa012",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "IMO none of them need to be global, pass them as function arguments.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 25
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7589340e_f7201af5",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "well it\u0027s not volatile.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 9
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3f031ff_8b186b86",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "are the file name mandated anywhere ?\nelse I would put just \u003cboard\u003e_vif.txt, that\u0027s simplifying a lot of the management of the file for the build (we always have the same name, not directory...)\nthe boards having both _src and _snk are probably currently a mistake, we might need to fix them however",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c38b134d_fedcab17",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "why ?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 33
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b800005b_2d0e6e16",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "nit:typo",
+      "range": {
+        "startLine": 307,
+        "startChar": 3,
+        "endLine": 307,
+        "endChar": 13
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e1229d_acb0c97e",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "Windows line ending is actually CR+LF eg \"\\r\\n\"",
+      "range": {
+        "startLine": 307,
+        "startChar": 28,
+        "endLine": 307,
+        "endChar": 35
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea5719e0_7052a6d6",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "seems wrong, most of our devices do",
+      "range": {
+        "startLine": 336,
+        "startChar": 15,
+        "endLine": 336,
+        "endChar": 38
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95456180_5a971ab4",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "I\u0027m afraid, we do actually",
+      "range": {
+        "startLine": 371,
+        "startChar": 16,
+        "endLine": 371,
+        "endChar": 46
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8470e869_8254f838",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 15
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e787273d_fa3b0efe",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "not really, see usb_pd_policy.c :  pd_check_pr_role() and  pd_check_power_swap()",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 50
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1229fc62_0931d69e",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "both are not correct for dongles",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 404,
+        "endChar": 55
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f13f60f_51248f34",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "I think we have put one on current product, btw CONFIG_USB_BCD_DEV",
+      "range": {
+        "startLine": 409,
+        "startChar": 30,
+        "endLine": 409,
+        "endChar": 36
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1e34c33_142d4e94",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "it\u0027s USB_SID_DISPLAYPORT isn\u0027t it ?",
+      "range": {
+        "startLine": 418,
+        "startChar": 16,
+        "endLine": 418,
+        "endChar": 51
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ba6563_fe9e2ac2",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "you have a bad buffer overflow depending the size of the directory name.\nEither put at least PATH_MAX or maybe better allocate it dynamically in get_vif_name",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 15
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ed633f1_9c850995",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "nit: that\u0027s about { NULL }",
+      "range": {
+        "startLine": 486,
+        "startChar": 2,
+        "endLine": 486,
+        "endChar": 22
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87176ca8_300e8ae8",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "usually this case is a failure (ie return !\u003d 0)",
+      "range": {
+        "startLine": 497,
+        "startChar": 3,
+        "endLine": 497,
+        "endChar": 11
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b407b9_f1d3030f",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "fprintf(stderr, ?",
+      "range": {
+        "startLine": 521,
+        "startChar": 2,
+        "endLine": 521,
+        "endChar": 9
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c45df47_e4080fa9",
+        "filename": "util/genvif.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T10:03:22Z",
+      "side": 1,
+      "message": "this is not really genvif \u0027API\u0027\nby the way, they are already provided by usb_pd.h header, you should be able to remove this file",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
