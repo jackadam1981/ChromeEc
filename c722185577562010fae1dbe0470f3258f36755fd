@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8c254c60_da7023f0",
+        "filename": "common/rwsig.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T07:43:38Z",
+      "side": 1,
+      "message": "I still don\u0027t fully understand why we need this here (hence the need of this new function)\nIsn\u0027t the RW flash protection handled by flash_protect_at_boot() ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "c722185577562010fae1dbe0470f3258f36755fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "501f6fe7_88ba94e8",
+        "filename": "common/rwsig.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-11T07:43:38Z",
+      "side": 1,
+      "message": "I would not advise to \u0027return\u0027 from a task, even if most implementations of the runtime have a protection for this (ie task_exit_trap)\nI would just yield here forever: task_wait_event(-1)",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 9
+      },
+      "revId": "c722185577562010fae1dbe0470f3258f36755fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a639724_a0ccce5c",
         "filename": "include/rwsig.h",
         "patchSetId": 4
