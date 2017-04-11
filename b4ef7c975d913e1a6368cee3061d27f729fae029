@@ -22,6 +22,30 @@
       "revId": "b4ef7c975d913e1a6368cee3061d27f729fae029",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced3b2e1_4187003d",
+        "filename": "board/plankton/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-11T19:38:13Z",
+      "side": 1,
+      "message": "When genvif.c is built, the compiler doesn\u0027t know the size of pd_src_pdo[]\n\nIn file included from util/genvif.c:21:0:\ninclude/compile_time_macros.h:19:30: error: invalid application of ‘sizeof’ to incomplete type ‘const uint32_t[]’\n #define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))\n                              ^\nutil/genvif.c:33:28: note: in expansion of macro ‘ARRAY_SIZE’\n const int pd_src_pdo_cnt \u003d ARRAY_SIZE(pd_src_pdo);",
+      "parentUuid": "f8fbde7c_6b113591",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 50
+      },
+      "revId": "b4ef7c975d913e1a6368cee3061d27f729fae029",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
