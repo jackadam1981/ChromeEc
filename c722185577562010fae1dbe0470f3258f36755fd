@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a639724_a0ccce5c",
+        "filename": "include/rwsig.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-11T03:52:00Z",
+      "side": 1,
+      "message": "I know ifdef aren\u0027t very useful in headers, but this makes sure we don\u0027t call these 2 functions externally, if we have a task.",
+      "revId": "c722185577562010fae1dbe0470f3258f36755fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

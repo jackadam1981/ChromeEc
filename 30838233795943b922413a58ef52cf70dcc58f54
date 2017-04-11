@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "5277186f_8028f309",
+        "filename": "common/rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-11T03:52:00Z",
+      "side": 1,
+      "message": "I think we can figure out a way to avoid using shared_mem_acquire in usb_update (after all the buffer size is known in advance so we could just statically allocate it).\n\nspi_master is trickier, but arguably we should not ever need to use it in RO (where this code runs), and only in RW.\n\nDoes that address your concern? ,-) Or I misunderstood your \"argh\"...",
+      "parentUuid": "2e862925_c4013bca",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 66
+      },
+      "revId": "30838233795943b922413a58ef52cf70dcc58f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47ba5ece_ea57bfc1",
         "filename": "common/rwsig.c",
         "patchSetId": 2
@@ -124,6 +148,30 @@
       "writtenOn": "2017-04-10T14:02:55Z",
       "side": 1,
       "message": "IMO this aborted mess has nothing to do here.\nit\u0027s either good or invalid, the caller can ignore the result if it wants.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 3
+      },
+      "revId": "30838233795943b922413a58ef52cf70dcc58f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1401a68a_36ef39b0",
+        "filename": "common/rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-11T03:52:00Z",
+      "side": 1,
+      "message": "Agree. Dropped.",
+      "parentUuid": "47ba5ece_ea57bfc1",
       "range": {
         "startLine": 203,
         "startChar": 0,

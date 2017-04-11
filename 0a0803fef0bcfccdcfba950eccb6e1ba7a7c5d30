@@ -39,6 +39,30 @@
       "revId": "0a0803fef0bcfccdcfba950eccb6e1ba7a7c5d30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3718c6a7_31a21a99",
+        "filename": "common/rwsig.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-11T03:52:00Z",
+      "side": 1,
+      "message": "Thanks, I agree it\u0027s simpler and cleaner that way. I also need a \"continue\" event, so I added that to. That way, sysjumps are only done in rwsig task (and never from another task such as usb_updater).\n\nI think I\u0027m still going to need rwsig_status from usb_updater (AP will need to know if signature is incorrect), but we can update that variable from the task instead.",
+      "parentUuid": "59fe896d_59e78a73",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 2
+      },
+      "revId": "0a0803fef0bcfccdcfba950eccb6e1ba7a7c5d30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
