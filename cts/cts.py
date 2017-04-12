@@ -24,14 +24,17 @@ import shutil
 import time
 
 
-# Host only return codes. Make sure they match values in cts.rc
-CTS_RC_DUPLICATE_RUN = -2  # The test was run multiple times.
-CTS_RC_NO_RESULT = -1  # The test did not run.
-
+CTS_RC_PREFIX = 'CTS_RC_'
 DEFAULT_TH = 'stm32l476g-eval'
 DEFAULT_DUT = 'nucleo-f072rb'
 MAX_SUITE_TIME_SEC = 5
 CTS_TEST_RESULT_DIR = '/tmp/ects'
+
+# Host only return codes. Make sure they match values in cts.rc
+CTS_RC_DID_NOT_START = -1          # test did not run.
+CTS_RC_DID_NOT_END = -2            # test did not run.
+CTS_RC_DUPLICATE_RUN = -3          # test was run multiple times.
+CTS_RC_INVALID_RETURN_CODE = -4    # failed to parse return code
 
 
 class Cts(object):
@@ -42,7 +45,7 @@ class Cts(object):
     dut: DeviceUnderTest object representing dut
     th: TestHarness object representing th
     module: Name of module to build/run tests for
-    test_names: List of strings of test names contained in given module
+    testlist: List of strings of test names contained in given module
     return_codes: Dict of strings of return codes, with a code's integer
       value being the index for the corresponding string representation
   """
@@ -68,10 +71,9 @@ class Cts(object):
     self.dut = board.DeviceUnderTest(dut, self.th, module, self.results_dir)
     cts_dir = os.path.join(self.ec_dir, 'cts')
     testlist_path = os.path.join(cts_dir, self.module, 'cts.testlist')
-    self.test_names = Cts.get_macro_args(testlist_path, 'CTS_TEST')
-
     return_codes_path = os.path.join(cts_dir, 'common', 'cts.rc')
-    self.get_return_codes(return_codes_path, 'CTS_RC_')
+    self.get_return_codes(return_codes_path)
+    self.testlist = self.get_macro_args(testlist_path, 'CTS_TEST')
 
   def build(self):
     """Build images for DUT and TH"""
@@ -104,65 +106,125 @@ class Cts(object):
     self.th.get_serial()
     self.dut.get_serial()
 
-  @staticmethod
-  def get_macro_args(filepath, macro):
+  def get_macro_args(self, filepath, macro):
     """Get list of args of a certain macro in a file when macro is used
     by itself on a line
 
     Args:
       filepath: String containing absolute path to the file
       macro: String containing text of macro to get args of
+      
+    Returns:
+      List of dictionaries where each entry is:
+        'name': Test name,
+        'th_string': Expected string from TH,
+        'dut_string': Expected string from DUT,
     """
-    args = []
+    tests = []
     with open(filepath, 'r') as f:
-      for l in f.readlines():
+      lines = f.readlines()
+      joined = ''.join(lines).replace('\\\n', '').splitlines()
+      for l in joined:
         if not l.strip().startswith(macro):
           continue
+        d = {}
         l = l.strip()[len(macro):]
-        args.append(l.strip('()').replace(',', ''))
-    return args
+        l = l.strip('()').split(',')
+        d['name'] = l[0].strip()
+        d['th_rc'] = self.get_return_code_value(l[1].strip().strip('"'))
+        d['th_string'] = l[2].strip().strip('"')
+        d['dut_rc'] = self.get_return_code_value(l[3].strip().strip('"'))
+        d['dut_string'] = l[4].strip().strip('"')
+        tests.append(d)
+    return tests
 
-  def get_return_codes(self, file, prefix):
+  def get_return_codes(self, file):
     """Extract return code names from the definition file (cts.rc)"""
     self.return_codes = {}
     val = 0
     with open(file, 'r') as f:
       for line in f.readlines():
         line = line.strip()
-        if not line.startswith(prefix):
+        if not line.startswith(CTS_RC_PREFIX):
           continue
-        line = line[len(prefix):]
         line = line.split(',')[0]
         if '=' in line:
           tokens = line.split('=')
           line = tokens[0].strip()
           val = int(tokens[1].strip())
-        self.return_codes[val] = line
+        self.return_codes[line] = val
         val += 1
 
   def parse_output(self, output):
-    results = defaultdict(lambda: CTS_RC_NO_RESULT)
+    """Parse console output from DUT or TH
+    Args:
+      output: String containing consoule output
+      
+    Returns:
+      List of dictionaries where each key and value are:
+        name = 'ects_test_x',
+        started = True/False,
+        ended = True/False,
+        rc = CTS_RC_*,
+        output = All text between 'ects_test_x start' and 'ects_test_x end'
+    """
+    results = []
+    i = 0
+    for test in self.testlist:
+      results.append({})
+      results[i]['name'] = test['name']
+      results[i]['started'] = False
+      results[i]['rc'] = CTS_RC_DID_NOT_START
+      results[i]['string'] = False
+      results[i]['output'] = []
+      i += 1
 
+    i = 0
     for ln in [ln.strip() for ln in output.split('\n')]:
+      if i + 1 > len(results):
+        break
       tokens = ln.split()
-      if len(tokens) != 2:
-        continue
-      test_name = tokens[0].strip()
-      if test_name not in self.test_names:
-        continue
-      try:
-        return_code = int(tokens[1])
-      except ValueError: # Second token is not an int
-        continue
-      if test_name in results:
-        results[test_name] = CTS_RC_DUPLICATE_RUN
-      else:
-        results[test_name] = return_code
+      if len(tokens) >= 2:
+        if tokens[0].strip() == results[i]['name']:
+          if tokens[1].strip() == 'start':
+            # start line found
+            if results[i]['started']:   # Already started
+              results[i]['rc'] = CTS_RC_DUPLICATE_RUN
+            else:
+              results[i]['rc'] = CTS_RC_DID_NOT_END
+              results[i]['started'] = True
+            continue
+          elif results[i]['started'] and tokens[1].strip() == 'end':
+            # end line found
+            results[i]['rc'] = CTS_RC_INVALID_RETURN_CODE
+            if len(tokens) == 3:
+              try:
+                results[i]['rc'] = int(tokens[2].strip())
+              except ValueError:
+                pass
+            # Since index is incremented when 'end' is encountered, we don't
+            # need to check duplicate 'end'.
+            i += 1
+            continue
+      if results[i]['started']:
+        results[i]['output'].append(ln)
 
     return results
 
-  def get_return_code_name(self, code):
-    return self.return_codes.get(code, '%d' % code)
+  def get_return_code_name(self, code, strip_prefix=False):
+    name = ''
+    for k, v in self.return_codes.iteritems():
+      if v == code:
+        if strip_prefix:
+          name = k[len(CTS_RC_PREFIX):]
+        else:
+          name = k
+    return name
+
+  def get_return_code_value(self, name):
+    if name:
+      return self.return_codes[name]
+    return  0
 
   def evaluate_run(self, dut_output, th_output):
     """Parse outputs to derive test results
@@ -171,24 +233,60 @@ class Cts(object):
       dut_output: String output of DUT
       th_output: String output of TH
     """
-    dut_results = self.parse_output(dut_output)
     th_results = self.parse_output(th_output)
+    dut_results = self.parse_output(dut_output)
 
-    len_test_name = max(len(s) for s in self.test_names)
-    len_code_name = max(len(s) for s in self.return_codes.values())
+    # Search for expected string in each output
+    for i, v in enumerate(self.testlist):
+      if v['th_string'] in th_results[i]['output'] or not v['th_string']:
+        th_results[i]['string'] = True
+      if v['dut_string'] in dut_results[i]['output'] or not v['dut_string']:
+        dut_results[i]['string'] = True
+
+    return th_results, dut_results
+
+  def print_result(self, th_results, dut_results):
+    """Print results to the screen"""
+    len_test_name = max(len(s['name']) for s in self.testlist)
+    len_code_name = max(len(self.get_return_code_name(v, True))
+                        for v in self.return_codes.values())
 
     head = '{:^' + str(len_test_name) + '} '
     head += '{:^' + str(len_code_name) + '} '
-    head += '{:^' + str(len_code_name) + '}\n'
+    head += '{:^' + str(len_code_name) + '}'
+    head += '{:^' + str(len(' TH_STR')) + '}'
+    head += '{:^' + str(len(' DUT_STR')) + '}'
+    head += '{:^' + str(len(' RESULT')) + '}\n'
     fmt = '{:' + str(len_test_name) + '} '
     fmt += '{:>' + str(len_code_name) + '} '
-    fmt += '{:>' + str(len_code_name) + '}\n'
+    fmt += '{:>' + str(len_code_name) + '}'
+    fmt += '{:>' + str(len(' TH_STR')) + '}'
+    fmt += '{:>' + str(len(' DUT_STR')) + '}'
+    fmt += '{:>' + str(len(' RESULT')) + '}\n'
 
-    self.formatted_results = head.format('test name', 'TH', 'DUT')
-    for test_name in self.test_names:
-      th_cn = self.get_return_code_name(th_results[test_name])
-      dut_cn = self.get_return_code_name(dut_results[test_name])
-      self.formatted_results += fmt.format(test_name, th_cn, dut_cn)
+    self.formatted_results = head.format(
+      'test name', 'TH_RETURN_CODE', 'DUT_RETURN_CODE',
+      ' TH_STR', ' DUT_STR', ' RESULT')
+    for i, d in enumerate(dut_results):
+      th_cn = self.get_return_code_name(th_results[i]['rc'], True)
+      dut_cn = self.get_return_code_name(dut_results[i]['rc'], True)
+      th_res = self.evaluate_result(th_results[i],
+                                    self.testlist[i]['th_rc'],
+                                    self.testlist[i]['th_string'])
+      dut_res = self.evaluate_result(dut_results[i],
+                                     self.testlist[i]['dut_rc'],
+                                     self.testlist[i]['dut_string'])
+      self.formatted_results += fmt.format(
+        d['name'], th_cn, dut_cn,
+        th_results[i]['string'], dut_results[i]['string'],
+        'PASS' if th_res and dut_res else 'FAIL')
+
+  def evaluate_result(self, result, expected_rc, expected_string):
+    if result['rc'] != expected_rc:
+      return False
+    if expected_string and expected_string not in result['output']:
+      return False
+    return True
 
   def run(self):
     """Resets boards, records test results in results dir"""
@@ -245,7 +343,10 @@ class Cts(object):
                        'again.')
 
     print 'Pursing results...'
-    self.evaluate_run(dut_output, th_output)
+    th_results, dut_results = self.evaluate_run(dut_output, th_output)
+
+    # Print out results
+    self.print_result(th_results, dut_results)
 
     # Write results
     dest = os.path.join(self.results_dir, 'results.log')
