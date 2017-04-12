@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "323f8342_9a67f9d5",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-12T15:29:33Z",
+      "side": 1,
+      "message": "rather than adding unused definitions, a better fix would be to use  charge_manager_get_source_pdo() when CONFIG_USB_PD_DYNAMIC_SRC_CAP is defined.\nIsn\u0027t it possible ?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 50
+      },
+      "revId": "7dd33cfffb8311a204605c401e6d99978fb2a2b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
