@@ -34,7 +34,8 @@ enum typec_cable {
 	TYPEC_CABLE_NONE,
 	TYPEC_CABLE_CHECK,
 	TYPEC_CABLE_SINGLE_CC,
-	TYPEC_CABLE_DOUBLE_CC
+	TYPEC_CABLE_DOUBLE_CC,
+	TYPEC_CABLE_FORCE_DOUBLE_CC
 };
 static enum typec_cable cable;
 
@@ -193,9 +194,10 @@ static void detect_cc_cable(void)
 	switch (cable) {
 	case TYPEC_CABLE_NONE:
 		/* When no cable attached, toggle active CC line */
-		if (pd_is_connected(0))
-			cable = TYPEC_CABLE_CHECK;
-		set_active_cc(!active_cc);
+		if (pd_is_connected(0)) {
+			cable = TYPEC_CABLE_DOUBLE_CC;
+			pd_comm_enable(0, 1);
+		}
 		break;
 	case TYPEC_CABLE_CHECK:
 		/* If we still have a connection, we have a double CC cable */
@@ -212,6 +214,9 @@ static void detect_cc_cable(void)
 			cable = TYPEC_CABLE_NONE;
 			pd_comm_enable(0, 0);
 		}
+		break;
+	case TYPEC_CABLE_FORCE_DOUBLE_CC:
+		/* does nothing */
 		break;
 	}
 }
@@ -334,7 +339,8 @@ static void set_usbc_action(enum usbc_action act)
 			pd_send_vdm(0, USB_VID_GOOGLE, VDO_CMD_FLIP, NULL, 0);
 			gpio_set_level(GPIO_USBC_POLARITY,
 				       !gpio_get_level(GPIO_USBC_POLARITY));
-		} else if (cable == TYPEC_CABLE_DOUBLE_CC) {
+		} else if (cable == TYPEC_CABLE_DOUBLE_CC ||
+			   cable == TYPEC_CABLE_FORCE_DOUBLE_CC) {
 			/*
 			 * Fake a disconnection for long enough to guarantee
 			 * that we disconnect.
@@ -682,7 +688,7 @@ void board_pd_set_host_mode(int enable)
 	/* if host mode changed, reset cable type */
 	if (host_mode != enable) {
 		host_mode = enable;
-		cable = TYPEC_CABLE_NONE;
+		cable = TYPEC_CABLE_FORCE_DOUBLE_CC;
 	}
 
 	if (enable) {
