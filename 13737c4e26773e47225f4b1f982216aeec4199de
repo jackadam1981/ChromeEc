@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e705d790_5cd552a5",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-12T20:19:46Z",
+      "side": 1,
+      "message": "Maybe wrap this in HAS_TASK_CHIPSET?",
+      "revId": "13737c4e26773e47225f4b1f982216aeec4199de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
