@@ -22,6 +22,30 @@
       "revId": "35103485a9fd17e4c74a3dadf1fbae174e312262",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0a66a8b_8cab8d42",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2279,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-12T21:06:37Z",
+      "side": 1,
+      "message": "Or just leave the constant named the way it is, and fix the usage as you did in the other file.",
+      "parentUuid": "89c3d3c1_d72b7b6f",
+      "range": {
+        "startLine": 2277,
+        "startChar": 0,
+        "endLine": 2279,
+        "endChar": 43
+      },
+      "revId": "35103485a9fd17e4c74a3dadf1fbae174e312262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
