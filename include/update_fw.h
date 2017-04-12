@@ -64,7 +64,7 @@ struct update_frame_header {
 
 /*
  * A convenience structure which allows to group together various revision
- * fields of the header created by the signer.
+ * fields of the header created by the signer (cr50-specific).
  *
  * These fields are compared when deciding if versions of two images are the
  * same or when deciding which one of the available images to run.
@@ -101,17 +101,37 @@ struct first_response_pdu {
 	/* The below fields are present in versions 2 and up. */
 	uint32_t protocol_version;
 
-	/* The below fields are present in versions 3 and up. */
-	uint32_t  backup_ro_offset;
-	uint32_t  backup_rw_offset;
+	/* In version 6 and up, a board-specific header follows. */
+	union {
+		struct {
+			/* Offset of the other region */
+			uint32_t offset;
 
-	/* The below fields are present in versions 4 and up. */
-	/* Versions of the currently active RO and RW sections. */
-	struct signed_header_version shv[2];
+			/* Version string of the other region */
+			char version[32];
 
-	/* The below fields are present in versions 5 and up */
-	/* keyids of the currently active RO and RW sections. */
-	uint32_t keyid[2];
+			/* Minimum rollback version that RO will accept */
+			int32_t min_rollback;
+
+			/* RO public key version */
+			uint32_t key_version;
+		} common;
+		struct {
+			/* The below fields are present in versions 3 and up. */
+			uint32_t  backup_ro_offset;
+			uint32_t  backup_rw_offset;
+
+			/* The below fields are present in versions 4 and up. */
+			/*
+			 * Versions of the currently active RO and RW sections.
+			 */
+			struct signed_header_version shv[2];
+
+			/* The below fields are present in versions 5 and up */
+			/* keyids of the currently active RO and RW sections. */
+			uint32_t keyid[2];
+		} cr50;
+	};
 };
 
 /* TODO: Handle this in update_fw.c, not usb_update.c */
