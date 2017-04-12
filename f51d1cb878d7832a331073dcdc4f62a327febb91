@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0ac9112_f548b518",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-12T21:08:35Z",
+      "side": 1,
+      "message": "Why not just \u003d 1?  This is effectively a boolean value, right?",
+      "range": {
+        "startLine": 484,
+        "startChar": 30,
+        "endLine": 484,
+        "endChar": 61
+      },
+      "revId": "f51d1cb878d7832a331073dcdc4f62a327febb91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
