@@ -449,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "89bd42a9_a57127ad",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-12T22:54:33Z",
+      "side": 1,
+      "message": "Okay. I\u0027m going to omit generating VIFs for Plankton and Twinkie. And just create one file \u003cboard\u003e_vif.txt",
+      "parentUuid": "5afbe727_dac8b435",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c38b134d_fedcab17",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -508,6 +532,30 @@
       "side": 1,
       "message": "yes but no :\n- None of the current devices send SOP\u0027 / SOP\u0027\u0027\n- our dual software TCPC doesn\u0027t implement them as far as I remember.\n-",
       "parentUuid": "2d7a434d_1145746b",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 33
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b8d7d53_34993d0e",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-12T22:54:33Z",
+      "side": 1,
+      "message": "Could you tell me if a vconn powered accessory responds to SOP or SOP\u0027/SOP\u0027\u0027? I have been confusing electronically marked cables and VCONN-powered accessories.",
+      "parentUuid": "0910c7cd_f52b1144",
       "range": {
         "startLine": 180,
         "startChar": 0,
@@ -799,6 +847,30 @@
       "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d043d2_f6072a46",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-12T22:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f1742b_77a7103c",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 50
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -1105,6 +1177,30 @@
       "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb527a77_87abc019",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-12T22:54:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "039dd0aa_7ac4eb6c",
+      "range": {
+        "startLine": 497,
+        "startChar": 3,
+        "endLine": 497,
+        "endChar": 11
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
