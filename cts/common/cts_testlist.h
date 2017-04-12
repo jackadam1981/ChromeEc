@@ -3,18 +3,24 @@
  * found in the LICENSE file.
  */
 
+/*
+ * CTS_TEST macro is used by dut.c, th.c, and cts.py. Currently, the 2nd
+ * and 3rd arguments are  only used by cts.py. They specify the expected
+ * strings output by TH and DUT, respectively.
+ */
+
 struct cts_test {
 	enum cts_rc (*run)(void);
 	char *name;
 };
 
-#define CTS_TEST(test)	{test, STRINGIFY(test)},
+#define CTS_TEST(test, th_expect, dut_expect)	{test, STRINGIFY(test)},
 struct cts_test tests[] = {
 #include "cts.testlist"
 };
 
 #undef CTS_TEST
-#define CTS_TEST(test)	CTS_TEST_ID_##test,
+#define CTS_TEST(test, th_expect, dut_expect)	CTS_TEST_ID_##test,
 enum {
 #include "cts.testlist"
 	CTS_TEST_ID_COUNT,

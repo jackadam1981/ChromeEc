@@ -75,12 +75,13 @@ void cts_task(void)
 	cflush();
 	for (i = 0; i < CTS_TEST_ID_COUNT; i++) {
 		sync();
+		CPRINTF("\n%s start\n", tests[i].name);
 		result = tests[i].run();
-		CPRINTF("\n%s %d\n", tests[i].name, result);
+		CPRINTF("\n%s end %d\n", tests[i].name, result);
 		cflush();
 	}
 
-	CPRINTS("GPIO test suite finished");
+	CPRINTS("Meta test finished");
 	cflush();
 	while (1) {
 		watchdog_reload();
