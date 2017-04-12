@@ -425,6 +425,30 @@
     },
     {
       "key": {
+        "uuid": "5afbe727_dac8b435",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-12T15:25:40Z",
+      "side": 1,
+      "message": "Plankton and Twinkie are test equipments ... IMO that\u0027s still totally artificial and really hamper the simplicity (cf my comment about the phony build rule)",
+      "parentUuid": "2a66d49e_b43e7a1e",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c38b134d_fedcab17",
         "filename": "util/genvif.c",
         "patchSetId": 7
@@ -460,6 +484,30 @@
       "side": 1,
       "message": "The fusb302 driver can only communicate with the other port partner.\nFrom driver/tcpm/fusb302.c\nstatic int fusb302_tcpm_transmit(int port, enum tcpm_transmit_type type,\n...\nswitch (type) {\n        case TCPC_TX_SOP:\n\nAll the other drivers can communicate with the port partner and cable.\nFrom driver/tcpm/anx74xx.c\nstatic int anx74xx_tcpm_transmit(int port, enum tcpm_transmit_type type,\n...\nswitch (type) {\n        /* ANX is aware of type */\n        case TCPC_TX_SOP:\n        case TCPC_TX_SOP_PRIME:\n        case TCPC_TX_SOP_PRIME_PRIME:",
       "parentUuid": "c38b134d_fedcab17",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 33
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0910c7cd_f52b1144",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-12T15:25:40Z",
+      "side": 1,
+      "message": "yes but no :\n- None of the current devices send SOP\u0027 / SOP\u0027\u0027\n- our dual software TCPC doesn\u0027t implement them as far as I remember.\n-",
+      "parentUuid": "2d7a434d_1145746b",
       "range": {
         "startLine": 180,
         "startChar": 0,
@@ -1024,6 +1072,30 @@
       "side": 1,
       "message": "I didn\u0027t consider this a failure if the user wanted to show the help message.",
       "parentUuid": "87176ca8_300e8ae8",
+      "range": {
+        "startLine": 497,
+        "startChar": 3,
+        "endLine": 497,
+        "endChar": 11
+      },
+      "revId": "13f5939bd8fbbe4fd4440308cc29d0cf3c73bc83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039dd0aa_7ac4eb6c",
+        "filename": "util/genvif.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-12T15:25:40Z",
+      "side": 1,
+      "message": "Most of the Unix world disagrees with you (ie tools print usage on stderr and use a non-zero exit code) but that\u0027s not terribly important.",
+      "parentUuid": "c2e644b4_3fbd1e63",
       "range": {
         "startLine": 497,
         "startChar": 3,

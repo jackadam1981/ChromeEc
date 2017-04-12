@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f389ffea_de66f638",
+        "filename": "Makefile.rules",
+        "patchSetId": 8
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-12T15:25:40Z",
+      "side": 1,
+      "message": "already said but\" NO! I don\u0027t want a phony rule here\nelse everytime we do a null build for each board, it\u0027s adding the genvif.c compilation and the VIF generation even if nothing has changed.\nIf  everybody add his phony rule, then the null build and buildall became insanely long.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 23
+      },
+      "revId": "f74ef120c0baee255250d5896e109582b7bda020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
