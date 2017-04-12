@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa8a52dd_4135d6d8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-12T23:32:08Z",
+      "side": 1,
+      "message": "I\u0027m still not a fan of using 0 as a flag.  Because it isn\u0027t one.\n\nThat is,\n\nif (flags \u0026 EC_POWER_BUTTON_DISABLE_SMI_PULSE)\n\nwill not do what you expect.",
+      "range": {
+        "startLine": 2277,
+        "startChar": 1,
+        "endLine": 2277,
+        "endChar": 46
+      },
+      "revId": "491d26d0b12ee31bee410884840045b956152649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
