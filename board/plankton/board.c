@@ -193,9 +193,10 @@ static void detect_cc_cable(void)
 	switch (cable) {
 	case TYPEC_CABLE_NONE:
 		/* When no cable attached, toggle active CC line */
-		if (pd_is_connected(0))
-			cable = TYPEC_CABLE_CHECK;
-		set_active_cc(!active_cc);
+		if (pd_is_connected(0)) {
+			cable = TYPEC_CABLE_DOUBLE_CC;
+			pd_comm_enable(0, 1);
+		}
 		break;
 	case TYPEC_CABLE_CHECK:
 		/* If we still have a connection, we have a double CC cable */
