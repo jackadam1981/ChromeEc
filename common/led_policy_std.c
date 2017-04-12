@@ -128,6 +128,12 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	return EC_SUCCESS;
 }
 
+static void std_led_shutdown(void)
+{
+	pwr_led_set_color(LED_OFF);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, std_led_shutdown, HOOK_PRIO_DEFAULT);
+
 static void std_led_set_power(void)
 {
 	static int power_second;
