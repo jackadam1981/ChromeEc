@@ -112,15 +112,19 @@ class Cts(object):
     Args:
       filepath: String containing absolute path to the file
       macro: String containing text of macro to get args of
+      
+    Returns:
+      Dict of argument lists. e.g. { 'test_1': [a, b], 'test_2': [c, d] }
     """
-    args = []
+    tests = {}
     with open(filepath, 'r') as f:
       for l in f.readlines():
         if not l.strip().startswith(macro):
           continue
         l = l.strip()[len(macro):]
-        args.append(l.strip('()').replace(',', ''))
-    return args
+        l = l.strip('()').split(',')
+        tests[l[0]] = l[1:]
+    return tests
 
   def get_return_codes(self, file, prefix):
     """Extract return code names from the definition file (cts.rc)"""
@@ -148,7 +152,7 @@ class Cts(object):
       if len(tokens) != 2:
         continue
       test_name = tokens[0].strip()
-      if test_name not in self.test_names:
+      if test_name not in self.test_names.keys():
         continue
       try:
         return_code = int(tokens[1])

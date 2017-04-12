@@ -8,13 +8,13 @@ struct cts_test {
 	char *name;
 };
 
-#define CTS_TEST(test)	{test, STRINGIFY(test)},
+#define CTS_TEST(test, expect)	{test, STRINGIFY(test)},
 struct cts_test tests[] = {
 #include "cts.testlist"
 };
 
 #undef CTS_TEST
-#define CTS_TEST(test)	CTS_TEST_ID_##test,
+#define CTS_TEST(test, expect)	CTS_TEST_ID_##test,
 enum {
 #include "cts.testlist"
 	CTS_TEST_ID_COUNT,
