@@ -2274,7 +2274,9 @@ struct __ec_align1 ec_params_force_lid_open {
 
 enum ec_config_power_button_flags {
 	/* Enable/Disable SMI pulses for x86 devices */
-	EC_POWER_BUTTON_ENABLE_SMI_PULSE = 1 << 0,
+	EC_POWER_BUTTON_DISABLE_SMI_PULSE = (0 << 0),
+	EC_POWER_BUTTON_ENABLE_SMI_PULSE = (1 << 0),
+	EC_POWER_BUTTON_SMI_PULSE_MASK = (1 << 0),
 };
 
 struct __ec_align1 ec_params_config_power_button {
