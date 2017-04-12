@@ -22,6 +22,29 @@
       "revId": "491d26d0b12ee31bee410884840045b956152649",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec9b5792_4251d768",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-04-12T23:39:37Z",
+      "side": 1,
+      "message": "Could you remove all the references to SMI in the comment and constant?  It really has nothing to do with SMI, that just happens to be how it gets processed by the AP at some points in boot, but it is simply a power button signal.",
+      "range": {
+        "startLine": 2277,
+        "startChar": 25,
+        "endLine": 2277,
+        "endChar": 29
+      },
+      "revId": "491d26d0b12ee31bee410884840045b956152649",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
