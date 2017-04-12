@@ -22,6 +22,30 @@
       "revId": "b68d21b4965f43c4c98f56a57d70e399f2afae06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d514d8bd_fbaa039d",
+        "filename": "board/sand/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-04-12T00:47:24Z",
+      "side": 1,
+      "message": "Modify to 0 to use default sleep time.",
+      "parentUuid": "8358d2a2_523c98c6",
+      "range": {
+        "startLine": 270,
+        "startChar": 8,
+        "endLine": 270,
+        "endChar": 18
+      },
+      "revId": "b68d21b4965f43c4c98f56a57d70e399f2afae06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
