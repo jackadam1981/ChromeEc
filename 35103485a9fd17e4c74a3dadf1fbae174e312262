@@ -46,6 +46,30 @@
       "revId": "35103485a9fd17e4c74a3dadf1fbae174e312262",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d57792_8ad71be6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2279,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-12T21:43:10Z",
+      "side": 1,
+      "message": "I was adding a disable similar to enable so that it can be used in depthcharge:\n\nhttps://chromium-review.googlesource.com/c/476050/1/src/vboot/stages.c\n\n(for consistency sake, I updated it here as well).",
+      "parentUuid": "b0a66a8b_8cab8d42",
+      "range": {
+        "startLine": 2277,
+        "startChar": 0,
+        "endLine": 2279,
+        "endChar": 43
+      },
+      "revId": "35103485a9fd17e4c74a3dadf1fbae174e312262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
