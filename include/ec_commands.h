@@ -1929,6 +1929,14 @@ enum motionsense_command {
 	 */
 	MOTIONSENSE_CMD_SPOOF = 16,
 
+	/*
+	 * Info command returns data describing the details of a given sensor,
+	 * including enum motionsensor_type, enum motionsensor_location,
+	 * enum motionsensor_chip, min and max sampling frequency, and max fifo
+	 * size in event counts.
+	 */
+	MOTIONSENSE_CMD_INFO_V2 = 17,
+
 	/* Number of motionsense sub-commands. */
 	MOTIONSENSE_NUM_CMDS
 };
@@ -2088,11 +2096,14 @@ struct __ec_todo_packed ec_params_motion_sense {
 			int16_t data;
 		} kb_wake_angle;
 
-		/* Used for MOTIONSENSE_CMD_INFO, MOTIONSENSE_CMD_DATA
-		 * and MOTIONSENSE_CMD_PERFORM_CALIB. */
+		/*
+		 * Used for MOTIONSENSE_CMD_INFO, MOTIONSENSE_CMD_INFO_V2,
+		 * MOTIONSENSE_CMD_DATA and MOTIONSENSE_CMD_PERFORM_CALIB.
+		 */
 		struct __ec_todo_unpacked {
 			uint8_t sensor_num;
-		} info, data, fifo_flush, perform_calib, list_activities;
+		} info, info_v2, data, fifo_flush, perform_calib,
+			list_activities;
 
 		/*
 		 * Used for MOTIONSENSE_CMD_EC_RATE, MOTIONSENSE_CMD_SENSOR_ODR
@@ -2211,6 +2222,27 @@ struct __ec_todo_packed ec_response_motion_sense {
 			/* Should be element of enum motionsensor_chip. */
 			uint8_t chip;
 		} info;
+
+		/* Used for MOTIONSENSE_CMD_INFO_V2. */
+		struct __ec_todo_unpacked {
+			/* Should be element of enum motionsensor_type. */
+			uint8_t type;
+
+			/* Should be element of enum motionsensor_location. */
+			uint8_t location;
+
+			/* Should be element of enum motionsensor_chip. */
+			uint8_t chip;
+
+			/* Minimum sensor sampling frequency */
+			uint32_t min_sampling_frequency;
+
+			/* Maximum sensor sampling frequency */
+			uint32_t max_sampling_frequency;
+
+			/* Max number of sensor events that could be in fifo */
+			uint32_t fifo_max_event_count;
+		} info_v2;
 
 		/* Used for MOTIONSENSE_CMD_DATA */
 		struct ec_response_motion_sensor_data data;
