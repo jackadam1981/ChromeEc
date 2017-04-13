@@ -461,6 +461,10 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = BMI160_ADDR0,
 	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 2,  /* g, enough for laptop. */
+	 .min_frequency = MOTIONSENSE_CHIP_BMI160_ACCEL_MIN_FREQ,
+	 .max_frequency = MOTIONSENSE_CHIP_BMI160_ACCEL_MAX_FREQ,
+	 .fifo_max_event_count =
+			MOTIONSENSE_CHIP_BMI160_ACCEL_MAX_FIFO_EVENT_COUNT,
 	 .config = {
 		 /* AP: by default use EC settings */
 		 [SENSOR_CONFIG_AP] = {
@@ -496,6 +500,10 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = BMI160_ADDR0,
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = NULL, /* Identity Matrix. */
+	 .min_frequency = MOTIONSENSE_CHIP_BMI160_GYRO_MIN_FREQ,
+	 .max_frequency = MOTIONSENSE_CHIP_BMI160_GYRO_MAX_FREQ,
+	 .fifo_max_event_count =
+			MOTIONSENSE_CHIP_BMI160_GYRO_MAX_FIFO_EVENT_COUNT,
 	 .config = {
 		 /* AP: by default shutdown all sensors */
 		 [SENSOR_CONFIG_AP] = {
@@ -531,6 +539,10 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = KX022_ADDR1,
 	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 2, /* g, enough for laptop. */
+	 .min_frequency = MOTIONSENSE_CHIP_KX022_ACCEL_MIN_FREQ,
+	 .max_frequency = MOTIONSENSE_CHIP_KX022_ACCEL_MAX_FREQ,
+	 .fifo_max_event_count =
+			MOTIONSENSE_CHIP_KX020_ACCEL_MAX_FIFO_EVENT_COUNT,
 	 .config = {
 		/* AP: by default use EC settings */
 		[SENSOR_CONFIG_AP] = {

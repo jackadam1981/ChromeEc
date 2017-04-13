@@ -192,6 +192,9 @@
 #undef CONFIG_PECI
 #undef CONFIG_TASK_PROFILING
 
+/* Out of space, remove non-essential commands */
+#undef CONFIG_CMD_CRASH
+
 #undef DEFERRABLE_MAX_COUNT
 #define DEFERRABLE_MAX_COUNT 17
 
