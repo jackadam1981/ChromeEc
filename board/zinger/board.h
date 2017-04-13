@@ -85,6 +85,10 @@
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
 #endif
 
+#ifdef BOARD_MINIMUFFIN
+#undef CONFIG_CMD_CRASH
+#endif
+
 #ifndef __ASSEMBLER__
 
 #include "common.h"

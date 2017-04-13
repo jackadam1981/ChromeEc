@@ -1022,6 +1022,12 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			out->info.type = sensor->type;
 		out->info.location = sensor->location;
 		out->info.chip = sensor->chip;
+		out->info.min_sampling_frequency =
+				sensor->min_sampling_frequency;
+		out->info.max_sampling_frequency =
+				sensor->max_sampling_frequency;
+		out->info.fifo_max_event_count =
+				sensor->fifo_max_event_count;
 
 		args->response_size = sizeof(out->info);
 		break;

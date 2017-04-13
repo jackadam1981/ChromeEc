@@ -2210,6 +2210,15 @@ struct __ec_todo_packed ec_response_motion_sense {
 
 			/* Should be element of enum motionsensor_chip. */
 			uint8_t chip;
+
+			/* Minimum sensor sampling frequency */
+			uint32_t min_sampling_frequency;
+
+			/* Maximum sensor sampling frequency */
+			uint32_t max_sampling_frequency;
+
+			/* Max number of sensor events that could be in fifo */
+			uint32_t fifo_max_event_count;
 		} info;
 
 		/* Used for MOTIONSENSE_CMD_DATA */

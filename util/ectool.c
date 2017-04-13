@@ -3629,6 +3629,12 @@ static int cmd_motionsense(int argc, char **argv)
 		case MOTIONSENSE_CHIP_SI1141:
 			printf("si1141\n");
 			break;
+		case MOTIONSENSE_CHIP_SI1142:
+			printf("si1142\n");
+			break;
+		case MOTIONSENSE_CHIP_SI1143:
+			printf("si1143\n");
+			break;
 		case MOTIONSENSE_CHIP_KX022:
 			printf("kx022\n");
 			break;
@@ -3648,6 +3654,12 @@ static int cmd_motionsense(int argc, char **argv)
 			printf("unknown\n");
 		}
 
+		printf("Min Sampling Frequency:     %d mHz\n",
+				resp->info.min_sampling_frequency);
+		printf("Max Sampling Frequency:     %d mHz\n",
+				resp->info.max_sampling_frequency);
+		printf("FIFO Max Event Count:       %d\n",
+				resp->info.fifo_max_event_count);
 		return 0;
 	}
 
