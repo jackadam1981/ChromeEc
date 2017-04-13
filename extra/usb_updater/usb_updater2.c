@@ -188,11 +188,9 @@ struct transfer_descriptor {
 	uint32_t upstart_mode;
 
 	/*
-	 * offsets of RO and RW sections available for update (not currently
-	 * active).
+	 * offsets of section available for update (not currently active).
 	 */
-	uint32_t ro_offset;
-	uint32_t rw_offset;
+	uint32_t offset;
 	enum transfer_type {
 		usb_xfer = 0,
 		dev_xfer = 1
@@ -200,6 +198,9 @@ struct transfer_descriptor {
 
 	struct usb_endpoint uep;
 };
+
+/* Information about the target */
+static struct first_response_pdu targ;
 
 static uint32_t protocol_version;
 static char *progname;
@@ -543,7 +544,7 @@ static void transfer_section(struct transfer_descriptor *td,
 		int max_retries;
 
 		/* prepare the header to prepend to the block. */
-		payload_size = MIN(data_len, UPDATE_PDU_SIZE);
+		payload_size = MIN(data_len, targ.common.maximum_pdu_size);
 
 		block_base = htobe32(section_addr);
 
@@ -584,9 +585,6 @@ static void transfer_section(struct transfer_descriptor *td,
 	}
 }
 
-/* Information about the target */
-static struct first_response_pdu targ;
-
 /*
  * Each RO or RW section of the new image can be in one of the following
  * states.
@@ -609,8 +607,9 @@ static struct {
 	uint32_t    offset;
 	uint32_t    size;
 	enum upgrade_status  ustatus;
-	struct signed_header_version shv;
-	uint32_t keyid;
+	char version[32];
+	int32_t rollback;
+	int32_t key_version;
 } sections[] = {
 	/* TODO(b/35587170): This can come from FMAP */
 	{"RO", 0, 0x10000},
@@ -642,7 +641,7 @@ static void pick_sections(struct transfer_descriptor *td)
 		uint32_t offset = sections[i].offset;
 
 		/* Skip currently active section. */
-		if (offset != td->ro_offset)
+		if (offset != td->offset)
 			continue;
 		/*
 		 * Ok, this would be the RO section to transfer to the device.
@@ -719,22 +718,22 @@ static void setup_connection(struct transfer_descriptor *td)
 		exit(update_error);
 	}
 
-	td->rw_offset = be32toh(start_resp.rpdu.backup_rw_offset);
-	td->ro_offset = be32toh(start_resp.rpdu.backup_ro_offset);
+	td->offset = be32toh(start_resp.rpdu.common.offset);
+	memcpy(targ.common.version, start_resp.rpdu.common.version,
+		sizeof(start_resp.rpdu.common.version));
+	targ.common.maximum_pdu_size =
+		be32toh(start_resp.rpdu.common.maximum_pdu_size);
+	targ.common.flash_protection =
+		be32toh(start_resp.rpdu.common.flash_protection);
+	targ.common.min_rollback = be32toh(start_resp.rpdu.common.min_rollback);
+	targ.common.key_version = be32toh(start_resp.rpdu.common.key_version);
 
-	/* Running header versions. */
-	for (i = 0; i < ARRAY_SIZE(targ.shv); i++) {
-		targ.shv[i].minor = be32toh(start_resp.rpdu.shv[i].minor);
-		targ.shv[i].major = be32toh(start_resp.rpdu.shv[i].major);
-		targ.shv[i].epoch = be32toh(start_resp.rpdu.shv[i].epoch);
-	}
-
-	for (i = 0; i < ARRAY_SIZE(targ.keyid); i++)
-		targ.keyid[i] = be32toh(start_resp.rpdu.keyid[i]);
-
-	printf("keyids: RO 0x%08x, RW 0x%08x\n", targ.keyid[0], targ.keyid[1]);
-	printf("offsets: backup RO at %#x, backup RW at %#x\n",
-	       td->ro_offset, td->rw_offset);
+	printf("maximum PDU size: %d\n", targ.common.maximum_pdu_size);
+	printf("Flash protection status: %04x\n", targ.common.flash_protection);
+	printf("version: %32s\n", targ.common.version);
+	printf("key_version: %d\n", targ.common.key_version);
+	printf("min_rollback: %d\n", targ.common.min_rollback);
+	printf("offset: \"RW\" at %#x\n", td->offset);
 
 	pick_sections(td);
 }
@@ -1017,10 +1016,7 @@ int main(int argc, char *argv[])
 
 	if (show_fw_ver) {
 		printf("Current versions:\n");
-		printf("RO %d.%d.%d\n", targ.shv[0].epoch, targ.shv[0].major,
-		       targ.shv[0].minor);
-		printf("RW %d.%d.%d\n", targ.shv[1].epoch, targ.shv[1].major,
-		       targ.shv[1].minor);
+		printf("\"RW\" %32s\n", targ.common.version);
 	}
 
 	if (data) {
