@@ -74,6 +74,14 @@
 #define BMM150_HALL_OVERFLOW_ADCVAL             (-16384)
 #define BMM150_OVERFLOW_OUTPUT                  (0x8000)
 
+/* Min and Max sampling frequency in mHz */
+#define BMM150_MAG_MIN_FREQ 781
+#define BMM150_MAG_MAX_FREQ 800000
+
+/* Common sensor FIFO size; use 1 as Chrome does not use fifo mode */
+#define BMM150_MAG_MAX_FIFO_EVENT_COUNT 1
+
+
 
 struct bmm150_comp_registers {
 	/* Local copy of the compensation registers. */
