@@ -137,6 +137,7 @@
 #define I2C_PORT_THERMAL I2C_PORT_PMIC
 
 /* Modules we want to exclude */
+#undef CONFIG_CMD_BATTFAKE
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_TEMP_SENSOR
 #undef CONFIG_CMD_TIMERINFO
