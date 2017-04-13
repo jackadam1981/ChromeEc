@@ -3254,7 +3254,7 @@ static const struct {
 	uint8_t insize;
 } ms_command_sizes[] = {
 	MS_DUMP_SIZE(),
-	MS_SIZES(info),
+	MS_SIZES(info_3),
 	MS_SIZES(ec_rate),
 	MS_SIZES(sensor_odr),
 	MS_SIZES(sensor_range),
@@ -3379,23 +3379,38 @@ static int cmd_motionsense(int argc, char **argv)
 	}
 
 	if (argc == 3 && !strcasecmp(argv[1], "info")) {
-		param.cmd = MOTIONSENSE_CMD_INFO;
+		struct ec_params_get_cmd_versions p;
+		struct ec_response_get_cmd_versions r;
+		int version;
 
+		param.cmd = MOTIONSENSE_CMD_INFO;
 		param.sensor_odr.sensor_num = strtol(argv[2], &e, 0);
 		if (e && *e) {
 			fprintf(stderr, "Bad %s arg.\n", argv[2]);
 			return -1;
 		}
 
-		rv = ec_command(EC_CMD_MOTION_SENSE_CMD, 1,
+		/* tool defaults to using latest version of info command */
+		p.cmd = EC_CMD_MOTION_SENSE_CMD;
+		rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 0, &p, sizeof(p),
+				&r, sizeof(r));
+		if ((rv < 0) || (r.version_mask == 0))
+			version = 0;
+		else if (r.version_mask & EC_VER_MASK(3))
+			version = 3;
+		else if (r.version_mask & EC_VER_MASK(2))
+			version = 2;
+		else
+			version = 1;
+
+		rv = ec_command(EC_CMD_MOTION_SENSE_CMD, version,
 				&param, ms_command_sizes[param.cmd].outsize,
 				resp, ms_command_sizes[param.cmd].insize);
-
 		if (rv < 0)
 			return rv;
 
 		printf("Type:     ");
-		switch (resp->info.type) {
+		switch (resp->info_3.type) {
 		case MOTIONSENSE_TYPE_ACCEL:
 			printf("accel\n");
 			break;
@@ -3444,13 +3459,33 @@ static int cmd_motionsense(int argc, char **argv)
 		case MOTIONSENSE_CHIP_SI1141:
 			printf("si1141\n");
 			break;
+		case MOTIONSENSE_CHIP_SI1142:
+			printf("si1142\n");
+			break;
+		case MOTIONSENSE_CHIP_SI1143:
+			printf("si1143\n");
+			break;
 		case MOTIONSENSE_CHIP_KX022:
 			printf("kx022\n");
+			break;
+		case MOTIONSENSE_CHIP_L3GD20H:
+			printf("l3gd20h\n");
+			break;
+		case MOTIONSENSE_CHIP_BMA255:
+			printf("bma255\n");
 			break;
 		default:
 			printf("unknown\n");
 		}
 
+		if (version >= 3) {
+			printf("Min Sampling Frequency:     %d mHz\n",
+					resp->info_3.min_sampling_frequency);
+			printf("Max Sampling Frequency:     %d mHz\n",
+					resp->info_3.max_sampling_frequency);
+			printf("FIFO Max Event Count:       %d\n",
+					resp->info_3.fifo_max_event_count);
+		}
 		return 0;
 	}
 

@@ -130,6 +130,18 @@ struct motion_sensor_t {
 	 * from sensor registers.
 	 */
 	 uint32_t last_collection;
+
+	 /*
+	  * Maximum number of this sensor's events that could exist in the
+	  * sensor's event fifo.
+	  */
+	 uint32_t fifo_max_event_count;
+
+	 /* Minimum supported sampling frequency in miliHertz for this sensor */
+	 uint32_t min_sampling_frequency;
+
+	 /* Maximum supported sampling frequency in miliHertz for this sensor */
+	 uint32_t max_sampling_frequency;
 };
 
 /* Defined at board level. */
@@ -176,5 +188,61 @@ void motion_sense_fifo_add_unit(struct ec_response_motion_sensor_data *data,
 #define MOTION_SENSE_LUX motion_sensors[CONFIG_ALS_LIGHTBAR_DIMMING].raw_xyz[0]
 #endif
 #endif
+
+/*
+ * Min and Max sampling frequencies in miliHertz for
+ * Chrome-supported motion sensor chips.
+ */
+#define MOTIONSENSE_CHIP_BMA255_ACCEL_MAX_FIFO_EVENT_COUNT  1
+#define MOTIONSENSE_CHIP_BMA255_ACCEL_MIN_FREQ              7810
+#define MOTIONSENSE_CHIP_BMA255_ACCEL_MAX_FREQ              1000000
+
+#define MOTIONSENSE_CHIP_BMI160_ACCEL_MAX_FIFO_EVENT_COUNT  1
+#define MOTIONSENSE_CHIP_BMI160_ACCEL_MIN_FREQ              781
+#define MOTIONSENSE_CHIP_BMI160_ACCEL_MAX_FREQ              1600000
+#define MOTIONSENSE_CHIP_BMI160_GYRO_MAX_FIFO_EVENT_COUNT   1
+#define MOTIONSENSE_CHIP_BMI160_GYRO_MIN_FREQ               25
+#define MOTIONSENSE_CHIP_BMI160_GYRO_MAX_FREQ               3200000
+#define MOTIONSENSE_CHIP_BMI160_MAG_MAX_FIFO_EVENT_COUNT    1
+#define MOTIONSENSE_CHIP_BMI160_MAG_MIN_FREQ                781
+#define MOTIONSENSE_CHIP_BMI160_MAG_MAX_FREQ                800000
+
+#define MOTIONSENSE_CHIP_SI1141_PROX_MAX_FIFO_EVENT_COUNT   1
+#define MOTIONSENSE_CHIP_SI1141_PROX_MIN_FREQ               504
+#define MOTIONSENSE_CHIP_SI1141_PROX_MAX_FREQ               100000
+#define MOTIONSENSE_CHIP_SI1141_LIGHT_MAX_FIFO_EVENT_COUNT  1
+#define MOTIONSENSE_CHIP_SI1141_LIGHT_MIN_FREQ              504
+#define MOTIONSENSE_CHIP_SI1141_LIGHT_MAX_FREQ              100000
+#define MOTIONSENSE_CHIP_SI1142_PROX_MAX_FIFO_EVENT_COUNT   1
+#define MOTIONSENSE_CHIP_SI1142_PROX_MIN_FREQ               504
+#define MOTIONSENSE_CHIP_SI1142_PROX_MAX_FREQ               100000
+#define MOTIONSENSE_CHIP_SI1142_LIGHT_MAX_FIFO_EVENT_COUNT  1
+#define MOTIONSENSE_CHIP_SI1142_LIGHT_MIN_FREQ              504
+#define MOTIONSENSE_CHIP_SI1142_LIGHT_MAX_FREQ              100000
+#define MOTIONSENSE_CHIP_SI1143_PROX_MAX_FIFO_EVENT_COUNT   1
+#define MOTIONSENSE_CHIP_SI1143_PROX_MIN_FREQ               504
+#define MOTIONSENSE_CHIP_SI1143_PROX_MAX_FREQ               100000
+#define MOTIONSENSE_CHIP_SI1143_LIGHT_MAX_FIFO_EVENT_COUNT  1
+#define MOTIONSENSE_CHIP_SI1143_LIGHT_MIN_FREQ              504
+#define MOTIONSENSE_CHIP_SI1143_LIGHT_MAX_FREQ              100000
+
+#define MOTIONSENSE_CHIP_KX022_ACCEL_MAX_FIFO_EVENT_COUNT   1
+#define MOTIONSENSE_CHIP_KX022_ACCEL_MIN_FREQ               781
+#define MOTIONSENSE_CHIP_KX022_ACCEL_MAX_FREQ               1600000
+
+#define MOTIONSENSE_CHIP_KXCJ9_ACCEL_MAX_FIFO_EVENT_COUNT   1
+#define MOTIONSENSE_CHIP_KXCJ9_ACCEL_MIN_FREQ               781
+#define MOTIONSENSE_CHIP_KXCJ9_ACCEL_MAX_FREQ               1600000
+
+#define MOTIONSENSE_CHIP_L3GD20H_GYRO_MAX_FIFO_EVENT_COUNT  1
+#define MOTIONSENSE_CHIP_L3GD20H_GYRO_MIN_FREQ              12500
+#define MOTIONSENSE_CHIP_L3GD20H_GYRO_MAX_FREQ              800000
+
+#define MOTIONSENSE_CHIP_LSM6DS0_ACCEL_MAX_FIFO_EVENT_COUNT 1
+#define MOTIONSENSE_CHIP_LSM6DS0_ACCEL_MIN_FREQ             14900
+#define MOTIONSENSE_CHIP_LSM6DS0_ACCEL_MAX_FREQ             952000
+#define MOTIONSENSE_CHIP_LSM6DS0_GYRO_MAX_FIFO_EVENT_COUNT  1
+#define MOTIONSENSE_CHIP_LSM6DS0_GYRO_MIN_FREQ              14900
+#define MOTIONSENSE_CHIP_LSM6DS0_GYRO_MAX_FREQ              952000
 
 #endif /* __CROS_EC_MOTION_SENSE_H */
