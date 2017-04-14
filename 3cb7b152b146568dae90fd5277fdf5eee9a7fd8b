@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b231d15_b80f8999",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-14T17:09:16Z",
+      "side": 1,
+      "message": "CPRINTS wouldn\u0027t hurt, would it?\nif (!curr.ac)\n    CPRINTS(\"No charger, No batery\");",
+      "range": {
+        "startLine": 737,
+        "startChar": 38,
+        "endLine": 737,
+        "endChar": 0
+      },
+      "revId": "3cb7b152b146568dae90fd5277fdf5eee9a7fd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
