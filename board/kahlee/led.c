@@ -17,10 +17,10 @@
 #include "util.h"
 
 #define BAT_LED_ON 0
-#define BAT_LED_OFF 1
+#define BAT_LED_OFF GPIO_ODR_HIGH
 
 #define PWR_LED_ON 0
-#define PWR_LED_OFF 1
+#define PWR_LED_OFF GPIO_ODR_HIGH
 
 #define CRITICAL_LOW_BATTERY_PERCENTAGE 3
 #define LOW_BATTERY_PERCENTAGE 10
@@ -46,15 +46,15 @@ static int led_set_color_battery(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
-		gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_OFF);
-		gpio_set_level(GPIO_BAT_LED_AMBER, BAT_LED_OFF);
+		gpio_set_flags(GPIO_BAT_LED_GREEN, BAT_LED_OFF);
+		gpio_set_flags(GPIO_BAT_LED_AMBER, BAT_LED_OFF);
 		break;
 	case LED_GREEN:
 		gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_ON);
-		gpio_set_level(GPIO_BAT_LED_AMBER, BAT_LED_OFF);
+		gpio_set_flags(GPIO_BAT_LED_AMBER, BAT_LED_OFF);
 		break;
 	case LED_AMBER:
-		gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_OFF);
+		gpio_set_flags(GPIO_BAT_LED_GREEN, BAT_LED_OFF);
 		gpio_set_level(GPIO_BAT_LED_AMBER, BAT_LED_ON);
 		break;
 	default:
@@ -67,7 +67,7 @@ static int led_set_color_power(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
-		gpio_set_level(GPIO_PWR_LED_GREEN, PWR_LED_OFF);
+		gpio_set_flags(GPIO_PWR_LED_GREEN, PWR_LED_OFF);
 		break;
 	case LED_GREEN:
 		gpio_set_level(GPIO_PWR_LED_GREEN, PWR_LED_ON);
