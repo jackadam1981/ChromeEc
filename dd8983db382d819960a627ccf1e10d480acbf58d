@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "c691f13d_57cbab87",
+        "filename": "common/usb_update.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-14T01:46:23Z",
+      "side": 1,
+      "message": "We really should be better off having a static buffer here, and report its size in the first_response_pdu (so host knows what kind of PDU size it can send). Makes the code, and error handling, easier, and would make it possible to not use CONFIG_MALLOC on most boards.\n\nI\u0027ll fix in follow-up CL.",
+      "revId": "dd8983db382d819960a627ccf1e10d480acbf58d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9f08cd9_836a0a6a",
         "filename": "include/update_fw.h",
         "patchSetId": 7
