@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bce4332_c14a8005",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-15T02:40:58Z",
+      "side": 1,
+      "message": "Oh, we missed that? You really should have it on Fizz too.",
+      "revId": "cab28fc5ed2e9369254b5475f6f0a771304c35e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fba2c4e_c8b926ae",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-15T02:40:58Z",
+      "side": 1,
+      "message": "It is from next build",
+      "revId": "cab28fc5ed2e9369254b5475f6f0a771304c35e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
