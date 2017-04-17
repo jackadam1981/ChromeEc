@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dad1b92c_30eeae8d",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-17T08:19:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3efac8f2_5ecfd377",
+      "range": {
+        "startLine": 54,
+        "startChar": 59,
+        "endLine": 54,
+        "endChar": 66
+      },
+      "revId": "ef8c6d8ab8eea26819599e444b1445a71eb836bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59caae37_965dadef",
         "filename": "common/rwsig.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-04-13T05:30:55Z",
       "side": 1,
       "message": "This seems redundant now...",
+      "revId": "ef8c6d8ab8eea26819599e444b1445a71eb836bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f1edcb9_3449d121",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-17T08:19:50Z",
+      "side": 1,
+      "message": "Fixed in follow-up CL.",
+      "parentUuid": "59caae37_965dadef",
       "revId": "ef8c6d8ab8eea26819599e444b1445a71eb836bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
