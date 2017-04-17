@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e1bfcf7_0a4422d1",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-17T17:39:35Z",
+      "side": 1,
+      "message": "Couldn\u0027t you flip the check around:\n\nif (fan_status[ch].auto_status !\u003d FAN_STATUS_STOPPED)\n  return 0;",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 18
+      },
+      "revId": "c89be59840795c18b5c8ab6598fe2d7dfee10fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54885cb4_a08463cb",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-17T17:39:35Z",
+      "side": 1,
+      "message": "Then just return 1; here.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 1
+      },
+      "revId": "c89be59840795c18b5c8ab6598fe2d7dfee10fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc982ec3_c3d9e736",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-17T17:39:35Z",
+      "side": 1,
+      "message": "duty \u003d MIN(duty + duty_step, 100);",
+      "range": {
+        "startLine": 285,
+        "startChar": 2,
+        "endLine": 285,
+        "endChar": 61
+      },
+      "revId": "c89be59840795c18b5c8ab6598fe2d7dfee10fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0727fd2_ad17849c",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-17T17:39:35Z",
+      "side": 1,
+      "message": "duty \u003d MAX(duty - duty_step, 1);",
+      "range": {
+        "startLine": 287,
+        "startChar": 2,
+        "endLine": 287,
+        "endChar": 57
+      },
+      "revId": "c89be59840795c18b5c8ab6598fe2d7dfee10fdf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
