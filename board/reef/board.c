@@ -299,6 +299,10 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	}
 };
 
+struct usb_port usb_ports[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
+	{ .enable = GPIO_USB1_ENABLE, },
+};
+
 /* called from anx74xx_set_power_mode() */
 void board_set_tcpc_power_mode(int port, int mode)
 {

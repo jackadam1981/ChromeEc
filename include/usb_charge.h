@@ -30,6 +30,12 @@ enum usb_charge_mode {
 	USB_CHARGE_MODE_COUNT
 };
 
+struct usb_port {
+	int enable;
+	uint8_t port_mode;
+	enum usb_charge_mode charge_mode;
+};
+
 /**
  * Set USB charge mode for the port.
  *

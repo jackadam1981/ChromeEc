@@ -45,6 +45,7 @@
 #include "timer.h"
 #include "thermal.h"
 #include "uart.h"
+#include "usb_charge.h"
 #include "util.h"
 
 static void pd_mcu_interrupt(enum gpio_signal signal)
@@ -266,6 +267,11 @@ void board_reset_pd_mcu(void)
 	usleep(100);
 	gpio_set_level(GPIO_USB_MCU_RST, 0);
 }
+
+struct usb_port usb_ports[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
+	{ .enable = GPIO_USB1_ENABLE, },
+	{ .enable = GPIO_USB2_ENABLE, },
+};
 
 /* Base Sensor mutex */
 static struct mutex g_base_mutex;
