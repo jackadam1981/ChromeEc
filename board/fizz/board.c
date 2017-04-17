@@ -128,6 +128,14 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	}
 };
 
+struct usb_port usb_ports[USB_PORT_COUNT] = {
+	{ .enable = GPIO_USB1_ENABLE, },
+	{ .enable = GPIO_USB2_ENABLE, },
+	{ .enable = GPIO_USB3_ENABLE, },
+	{ .enable = GPIO_USB4_ENABLE, },
+	{ .enable = GPIO_USB5_ENABLE, },
+};
+
 void board_reset_pd_mcu(void)
 {
 	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 0);
