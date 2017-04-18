@@ -28,7 +28,7 @@ endif
 #
 # Add libusb-1.0 required flags
 #
-LIBS    += $(shell $(PKG_CONFIG) --libs   libusb-1.0)
+LIBS    += $(shell $(PKG_CONFIG) --libs   libusb-1.0) -lfmap
 CFLAGS  += $(shell $(PKG_CONFIG) --cflags libusb-1.0)
 CFLAGS  += -I../../include -I../../util
 
