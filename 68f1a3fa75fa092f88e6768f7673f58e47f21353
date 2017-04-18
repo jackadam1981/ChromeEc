@@ -16,6 +16,24 @@
       "revId": "68f1a3fa75fa092f88e6768f7673f58e47f21353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa8b4df_73466c57",
+        "filename": "include/update_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-18T01:19:09Z",
+      "side": 1,
+      "message": "Yes it changes size for cr50 (response will be padded with zeros, which should be harmless AFAICT).\n\nI was wondering too about adding response type field just before the union... But then it makes backward compatibility a little trickier: care was taken to only add fields at the end of the structure, until now.",
+      "parentUuid": "2ddbf462_19b4ee60",
+      "revId": "68f1a3fa75fa092f88e6768f7673f58e47f21353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
