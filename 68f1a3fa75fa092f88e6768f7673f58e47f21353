@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddbf462_19b4ee60",
+        "filename": "include/update_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-18T01:11:11Z",
+      "side": 1,
+      "message": "Does it change the size for cr50? Also, would it be useful to have an indicator which board it is to reject improper updater/board combos?",
+      "revId": "68f1a3fa75fa092f88e6768f7673f58e47f21353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
