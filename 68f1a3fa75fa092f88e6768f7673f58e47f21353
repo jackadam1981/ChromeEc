@@ -34,6 +34,24 @@
       "revId": "68f1a3fa75fa092f88e6768f7673f58e47f21353",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfe65c9c_d76d6297",
+        "filename": "include/update_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-18T04:57:05Z",
+      "side": 1,
+      "message": "There\u0027s a easy fix to this: Let\u0027s split this field in 2 16-bit integers. That way we can keep backwards compatibility, see next revision.",
+      "parentUuid": "1fa8b4df_73466c57",
+      "revId": "68f1a3fa75fa092f88e6768f7673f58e47f21353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
