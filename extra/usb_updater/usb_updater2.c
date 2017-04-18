@@ -17,6 +17,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include <fmap.h>
 
 #ifndef __packed
 #define __packed __attribute__((packed))
@@ -24,17 +25,14 @@
 
 #include "compile_time_macros.h"
 #include "misc_util.h"
-#include "tpm_vendor_cmds.h"
 #include "usb_descriptor.h"
+#include "vb21_struct.h"
 
 #ifdef DEBUG
 #define debug printf
 #else
 #define debug(fmt, args...)
 #endif
-
-/* FIXME: Board specific stuff */
-#define CONFIG_FLASH_SIZE (128*1024)
 
 #include "update_fw.h"
 
@@ -157,7 +155,6 @@
  * Again, vendor command responses are subcommand specific.
  */
 
-/* Look for Cr50 FW update interface */
 #define VID USB_VID_GOOGLE
 #define PID 0x5022
 #define SUBCLASS USB_SUBCLASS_GOOGLE_UPDATE
@@ -178,23 +175,9 @@ struct usb_endpoint {
 
 struct transfer_descriptor {
 	/*
-	 * Set to true for use in an upstart script. Do not reboot after
-	 * transfer, and do not transfer RW if versions are the same.
-	 *
-	 * When using in development environment it is beneficial to transfer
-	 * RW images with the same version, as they get started based on the
-	 * header timestamp.
-	 */
-	uint32_t upstart_mode;
-
-	/*
 	 * offsets of section available for update (not currently active).
 	 */
 	uint32_t offset;
-	enum transfer_type {
-		usb_xfer = 0,
-		dev_xfer = 1
-	} ep_type;
 
 	struct usb_endpoint uep;
 };
@@ -238,7 +221,7 @@ static void usage(int errs)
 	       "Options:\n"
 	       "\n"
 	       "  -b,--binvers             Report versions of image's "
-				"RW and RO headers, do not update\n"
+				"RW and RO, do not update\n"
 	       "  -d,--device  VID:PID     USB device (default %04x:%04x)\n"
 	       "  -f,--fwver               Report running firmware versions.\n"
 	       "  -h,--help                Show this message\n"
@@ -540,11 +523,6 @@ static void transfer_section(struct transfer_descriptor *td,
 	while (data_len) {
 		size_t payload_size;
 		uint32_t block_base;
-#if 0
-		SHA_CTX ctx;
-#endif
-		uint8_t digest[SHA_DIGEST_LENGTH] = { 0 };
-		uint32_t block_digest;
 		int max_retries;
 
 		/* prepare the header to prepend to the block. */
@@ -552,36 +530,22 @@ static void transfer_section(struct transfer_descriptor *td,
 
 		block_base = htobe32(section_addr);
 
-		/* Calculate the digest. */
-#if 0
-		SHA1_Init(&ctx);
-		SHA1_Update(&ctx, &block_base, sizeof(block_base));
-		SHA1_Update(&ctx, data_ptr, payload_size);
-		SHA1_Final(digest, &ctx);
-#endif
+		struct update_frame_header ufh;
 
-		/* Copy the first few bytes. */
-		memcpy(&block_digest, digest, sizeof(block_digest));
-		if (td->ep_type == usb_xfer) {
-			struct update_frame_header ufh;
-
-			ufh.block_size = htobe32(payload_size +
+		ufh.block_size = htobe32(payload_size +
 					sizeof(struct update_frame_header));
-			ufh.cmd.block_base = block_base;
-			ufh.cmd.block_digest = block_digest;
-			for (max_retries = 10; max_retries; max_retries--)
-				if (!transfer_block(&td->uep, &ufh,
-						    data_ptr, payload_size))
-					break;
+		ufh.cmd.block_base = block_base;
+		ufh.cmd.block_digest = 0;
+		for (max_retries = 10; max_retries; max_retries--)
+			if (!transfer_block(&td->uep, &ufh,
+						data_ptr, payload_size))
+				break;
 
-			if (!max_retries) {
-				fprintf(stderr,
-					"Failed to transfer block, %zd to go\n",
-					data_len);
-				exit(update_error);
-			}
-		} else {
-			/* FIXME: TPM stuff dropped. */
+		if (!max_retries) {
+			fprintf(stderr,
+				"Failed to transfer block, %zd to go\n",
+				data_len);
+			exit(update_error);
 		}
 		data_len -= payload_size;
 		data_ptr += payload_size;
@@ -605,7 +569,7 @@ enum upgrade_status {
 			   */
 };
 
-/* This array describes all four sections of the new image. */
+/* This array describes all sections of the new image. */
 static struct {
 	const char *name;
 	uint32_t    offset;
@@ -613,24 +577,119 @@ static struct {
 	enum upgrade_status  ustatus;
 	char version[32];
 	int32_t rollback;
-	int32_t key_version;
+	uint32_t key_version;
 } sections[] = {
-	/* TODO(b/35587170): This can come from FMAP */
-	{"RO", 0, 0x10000},
-	{"RW", 0x11000, 0xf000}
+	{"RO"},
+	{"RW"}
 };
+
+static const struct fmap_area *fmap_find_area_or_die(const struct fmap *fmap,
+						     const char *name)
+{
+	const struct fmap_area *fmaparea;
+
+	fmaparea = fmap_find_area(fmap, name);
+	if (!fmaparea) {
+		fprintf(stderr, "Cannot find FMAP area %s\n", name);
+		exit(update_error);
+	}
+
+	return fmaparea;
+}
 
 /*
  * Scan the new image and retrieve versions of all four sections, two RO and
  * two RW.
  */
-static void fetch_header_versions(const void *image)
+static void fetch_header_versions(const uint8_t *image, size_t len)
+{
+	const struct fmap *fmap;
+	const struct fmap_area *fmaparea;
+	long int offset;
+	size_t i;
+
+	offset = fmap_find(image, len);
+	if (offset < 0) {
+		fprintf(stderr, "Cannot find FMAP in image\n");
+		exit(update_error);
+	}
+	fmap = (const struct fmap *)(image+offset);
+
+	/* FIXME: validate fmap struct more than this? */
+	if (fmap->size != len) {
+		fprintf(stderr, "Mismatch between FMAP size and image size\n");
+		exit(update_error);
+	}
+
+	for (i = 0; i < ARRAY_SIZE(sections); i++) {
+		const char *fmap_name;
+		const char *fmap_fwid_name;
+		const char *fmap_rollback_name = NULL;
+		const char *fmap_key_name = NULL;
+
+		if (!strcmp(sections[i].name, "RO")) {
+			fmap_name = "EC_RO";
+			fmap_fwid_name = "RO_FRID";
+		} else if (!strcmp(sections[i].name, "RW")) {
+			fmap_name = "EC_RW";
+			fmap_fwid_name = "RW_FWID";
+			fmap_rollback_name = "RW_RBVER";
+			/*
+			 * Key version comes from key RO (RW signature does not
+			 * contain the key version.
+			 */
+			fmap_key_name = "KEY_RO";
+		} else {
+			fprintf(stderr, "Invalid section name\n");
+			exit(update_error);
+		}
+
+		fmaparea = fmap_find_area_or_die(fmap, fmap_name);
+
+		/* FIXME: endianness? */
+		sections[i].offset = fmaparea->offset;
+		sections[i].size = fmaparea->size;
+
+		fmaparea = fmap_find_area_or_die(fmap, fmap_fwid_name);
+
+		if (fmaparea->size != sizeof(sections[i].version)) {
+			fprintf(stderr, "Invalid fwid size\n");
+			exit(update_error);
+		}
+		memcpy(sections[i].version, image+fmaparea->offset,
+			fmaparea->size);
+
+		if (fmap_rollback_name &&
+			(fmaparea = fmap_find_area(fmap, fmap_rollback_name))) {
+			sections[i].rollback =
+				*((const int32_t *)(image+fmaparea->offset));
+		} else {
+			sections[i].rollback = -1;
+		}
+
+		if (fmap_key_name &&
+			(fmaparea = fmap_find_area(fmap, fmap_key_name))) {
+			const struct vb21_packed_key *key =
+				(const void *)(image+fmaparea->offset);
+			sections[i].key_version = key->key_version;
+		} else {
+			sections[i].key_version = -1;
+		}
+
+	}
+}
+
+static int show_headers_versions(const void *image)
 {
 	size_t i;
 
 	for (i = 0; i < ARRAY_SIZE(sections); i++) {
-		/* TODO(b/35587170): See what we can do here. */
+		printf("%s off=%08x/%08x v=%.32s rb=%d kv=%d\n",
+			sections[i].name, sections[i].offset, sections[i].size,
+			sections[i].version, sections[i].rollback,
+			sections[i].key_version);
 	}
+	return 0;
 }
 
 /*
@@ -647,11 +706,7 @@ static void pick_sections(struct transfer_descriptor *td)
 		/* Skip currently active section. */
 		if (offset != td->offset)
 			continue;
-		/*
-		 * Ok, this would be the RO section to transfer to the device.
-		 * Is it newer in the new image than the running RO section on
-		 * the device?
-		 */
+
 		sections[i].ustatus = needed;
 	}
 }
@@ -674,26 +729,22 @@ static void setup_connection(struct transfer_descriptor *td)
 	/* Send start request. */
 	printf("start\n");
 
-	if (td->ep_type == usb_xfer) {
-		struct update_frame_header ufh;
-		uint8_t inbuf[td->uep.chunk_len];
-		int actual = 0;
+	struct update_frame_header ufh;
+	uint8_t inbuf[td->uep.chunk_len];
+	int actual = 0;
 
-		/* Flush all data from endpoint to recover in case of error. */
-		while (!libusb_bulk_transfer(td->uep.devh,
-					     td->uep.ep_num | 0x80,
-					     (void *)&inbuf, td->uep.chunk_len,
-					     &actual, 10)) {
-			printf("flush\n");
-		}
-
-		memset(&ufh, 0, sizeof(ufh));
-		ufh.block_size = htobe32(sizeof(ufh));
-		do_xfer(&td->uep, &ufh, sizeof(ufh), &start_resp,
-			sizeof(start_resp), 1, &rxed_size);
-	} else {
-		/* TPM code removed */
+	/* Flush all data from endpoint to recover in case of error. */
+	while (!libusb_bulk_transfer(td->uep.devh,
+					td->uep.ep_num | 0x80,
+					(void *)&inbuf, td->uep.chunk_len,
+					&actual, 10)) {
+		printf("flush\n");
 	}
+
+	memset(&ufh, 0, sizeof(ufh));
+	ufh.block_size = htobe32(sizeof(ufh));
+	do_xfer(&td->uep, &ufh, sizeof(ufh), &start_resp,
+		sizeof(start_resp), 1, &rxed_size);
 
 	/* We got something. Check for errors in response */
 	if (rxed_size < 8) {
@@ -725,8 +776,7 @@ static void setup_connection(struct transfer_descriptor *td)
 
 	if (error_code) {
 		fprintf(stderr, "Target reporting error %d\n", error_code);
-		if (td->ep_type == usb_xfer)
-			shut_down(&td->uep);
+		shut_down(&td->uep);
 		exit(update_error);
 	}
 
@@ -745,7 +795,7 @@ static void setup_connection(struct transfer_descriptor *td)
 	printf("version: %32s\n", targ.common.version);
 	printf("key_version: %d\n", targ.common.key_version);
 	printf("min_rollback: %d\n", targ.common.min_rollback);
-	printf("offset: \"RW\" at %#x\n", td->offset);
+	printf("offset: writable at %#x\n", td->offset);
 
 	pick_sections(td);
 }
@@ -818,15 +868,13 @@ static void send_done(struct usb_endpoint *uep)
 
 static void send_subcommand(struct transfer_descriptor *td, uint16_t subcommand)
 {
-	if (td->ep_type == usb_xfer) {
-		send_done(&td->uep);
+	send_done(&td->uep);
 
-		if (protocol_version > 5) {
-			ext_cmd_over_usb(&td->uep, subcommand,
-					 NULL, 0,
-					 NULL, 0);
-			printf("sent command %x\n", subcommand);
-		}
+	if (protocol_version > 5) {
+		ext_cmd_over_usb(&td->uep, subcommand,
+				NULL, 0,
+				NULL, 0);
+		printf("sent command %x\n", subcommand);
 	}
 }
 
@@ -850,8 +898,7 @@ static int transfer_image(struct transfer_descriptor *td,
 	 * Move USB receiver sate machine to idle state so that vendor
 	 * commands can be processed later, if any.
 	 */
-	if (td->ep_type == usb_xfer)
-		send_done(&td->uep);
+	send_done(&td->uep);
 
 	if (!num_txed_sections)
 		printf("nothing to do\n");
@@ -869,13 +916,11 @@ static void generate_reset_request(struct transfer_descriptor *td)
 	size_t command_body_size;
 
 	if (protocol_version < 6) {
-		if (td->ep_type == usb_xfer) {
-			/*
-			 * Send a second stop request, which should reboot
-			 * without replying.
-			 */
-			send_done(&td->uep);
-		}
+		/*
+		 * Send a second stop request, which should reboot
+		 * without replying.
+		 */
+		send_done(&td->uep);
 		/* Nothing we can do over /dev/tpm0 running versions below 6. */
 		return;
 	}
@@ -895,21 +940,11 @@ static void generate_reset_request(struct transfer_descriptor *td)
 	command_body_size = 0;
 	response_size = 1;
 	subcommand = UPDATE_EXTRA_CMD_IMMEDIATE_RESET;
-	if (td->ep_type == usb_xfer) {
-		ext_cmd_over_usb(&td->uep, subcommand,
-				 command_body, command_body_size,
-				 &response, &response_size);
-	} else {
-		/* TPM stuff removed */
-	}
+	ext_cmd_over_usb(&td->uep, subcommand,
+			command_body, command_body_size,
+			&response, &response_size);
 
 	printf("reboot not triggered\n");
-}
-
-static int show_headers_versions(const void *image)
-{
-	/* TODO(b/35587170): This should just use FMAP */
-	return 0;
 }
 
 int main(int argc, char *argv[])
@@ -934,7 +969,6 @@ int main(int argc, char *argv[])
 
 	/* Usb transfer - default mode. */
 	memset(&td, 0, sizeof(td));
-	td.ep_type = usb_xfer;
 
 	errorcnt = 0;
 	opterr = 0;				/* quiet, you */
@@ -1003,13 +1037,8 @@ int main(int argc, char *argv[])
 		data = get_file_or_die(argv[optind], &data_len);
 		printf("read %zd(%#zx) bytes from %s\n",
 		       data_len, data_len, argv[optind]);
-		if (data_len != CONFIG_FLASH_SIZE) {
-			fprintf(stderr, "Image file is not %d bytes\n",
-				CONFIG_FLASH_SIZE);
-			exit(update_error);
-		}
 
-		fetch_header_versions(data);
+		fetch_header_versions(data, data_len);
 
 		if (binary_vers)
 			exit(show_headers_versions(data));
@@ -1018,32 +1047,26 @@ int main(int argc, char *argv[])
 			printf("Ignoring binary image %s\n", argv[optind]);
 	}
 
-	if (td.ep_type == usb_xfer) {
-		usb_findit(vid, pid, &td.uep);
-	} else {
-		/* TPM stuff dropped */
-	}
+	usb_findit(vid, pid, &td.uep);
 
 	setup_connection(&td);
 
 	if (show_fw_ver) {
 		printf("Current versions:\n");
-		printf("\"RW\" %32s\n", targ.common.version);
+		printf("Writable %32s\n", targ.common.version);
 	}
 
 	if (data) {
 		transferred_sections = transfer_image(&td, data, data_len);
 		free(data);
 
-		if (transferred_sections && !td.upstart_mode)
+		if (transferred_sections)
 			generate_reset_request(&td);
 	} else if (extra_command > -1)
 		send_subcommand(&td, extra_command);
 
-	if (td.ep_type == usb_xfer) {
-		libusb_close(td.uep.devh);
-		libusb_exit(NULL);
-	}
+	libusb_close(td.uep.devh);
+	libusb_exit(NULL);
 
 	if (!transferred_sections)
 		return noop;
