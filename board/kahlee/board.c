@@ -71,6 +71,16 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
+void usb0_evt(enum gpio_signal signal)
+{
+	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
+}
+
+void usb1_evt(enum gpio_signal signal)
+{
+	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
+}
+
 #include "gpio_list.h"
 
 /* power signal list.  Must match order of enum power_signal. */
@@ -156,14 +166,15 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
+struct mutex pericom_mux_lock;
 struct pi3usb9281_config pi3usb9281_chips[] = {
 	{
 		.i2c_port = NPCX_I2C_PORT0_0,
-		.mux_lock = NULL,
+		.mux_lock = &pericom_mux_lock,
 	},
 	{
 		.i2c_port = NPCX_I2C_PORT0_1,
-		.mux_lock = NULL,
+		.mux_lock = &pericom_mux_lock,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
@@ -247,23 +258,11 @@ void board_reset_pd_mcu(void)
 
 void board_tcpc_init(void)
 {
-	int port, reg, reg2;
+	int port;
 
 	/* Only reset TCPC if not sysjump */
 	if (!system_jumped_to_this_image())
 		board_reset_pd_mcu();
-
-	/*
-	 * TODO: Remove when Kahlee is updated with PS8751 A3.
-	 *
-	 * Force PS8751 A2 to wake from low power mode.
-	 * If PS8751 remains in low power mode after sysjump,
-	 * TCPM_INIT will fail due to not able to access PS8751.
-	 *
-	 * NOTE: PS8751 A3 will wake on any I2C access.
-	 */
-	i2c_read8(NPCX_I2C_PORT0_0, 0x16, 0xA0, &reg);
-	i2c_read8(NPCX_I2C_PORT0_1, 0x36, 0xA0, &reg2);
 
 	/* Enable TCPC0 interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
@@ -293,29 +292,57 @@ DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
-
+	/* Enable pericom BC1.2 interrupts */
+	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
+	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
 
-int pd_snk_is_vbus_provided(int port)
+/*
+ * TODO:
+ * There is no VBUS dectect pin in porto phase, EC needs to
+ * get VBUS information from BC1.2 chip. HW will add VBUS
+ * detect pin in EVT phase and EC can get VBUS status from
+ * GPIO.
+*/
+int check_vbus_status(int port)
 {
-	int is_vbus = 0;
 	int reg;
 
-	switch (port) {
-	case 0:
-		i2c_read8(NPCX_I2C_PORT0_0, 0x4A, 0x1D, &reg);
-		is_vbus = ((reg & 0x02) >> 1);
-		break;
-	case 1:
+	if (port)
 		i2c_read8(NPCX_I2C_PORT0_1, 0x4A, 0x1D, &reg);
-		is_vbus = ((reg & 0x02) >> 1);
-		break;
-	default:
-		break;
-	}
+	else
+		i2c_read8(NPCX_I2C_PORT0_0, 0x4A, 0x1D, &reg);
 
-	return is_vbus;
+	return ((reg & 0x02) >> 1);
+}
+
+void update_vbus_status(void)
+{
+	uint8_t port, vbus;
+
+	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
+		vbus = check_vbus_status(port);
+		usb_charger_vbus_change(port, vbus);
+		task_wake(port ? TASK_ID_PD_C1 : TASK_ID_PD_C0);
+	}
+}
+
+/*
+ * TODO:
+ * Check VBUS status when AC change to update the charge source information.
+ * We will modify it to gpio interrupt control when HW adds vbus status pin
+ * in EVT phase.
+*/
+static void board_extpower(void)
+{
+	update_vbus_status();
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
+
+int pd_snk_is_vbus_provided(int port)
+{
+	return check_vbus_status(port);
 }
 
 /**
@@ -358,8 +385,6 @@ int board_set_active_charge_port(int charge_port)
 		gpio_set_level(GPIO_USB_C1_20V_EN, 1);
 		break;
 	case CHARGE_PORT_NONE:
-		gpio_set_level(GPIO_USB_C0_5V_EN, 0);
-		gpio_set_level(GPIO_USB_C1_5V_EN, 0);
 		gpio_set_level(GPIO_USB_C0_20V_EN, 0);
 		gpio_set_level(GPIO_USB_C1_20V_EN, 0);
 		break;
