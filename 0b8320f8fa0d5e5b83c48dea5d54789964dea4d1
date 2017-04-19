@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ceea746_d932aeb3",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-04-19T18:29:44Z",
+      "side": 1,
+      "message": "Based on scope capture, it took roughly 200ms for a back-to-back PD message, if a back-to-back HPD IRQ pulse is 2.5ms (.5 low/2 high), it will take at least 80 queue spaces to avoid any lost, but in reality the chance of this happening is small.",
+      "parentUuid": "fac6dd53_e3b49fa4",
+      "range": {
+        "startLine": 24,
+        "startChar": 48,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "0b8320f8fa0d5e5b83c48dea5d54789964dea4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6d47faf6_e01a391e",
         "filename": "board/dingdong/ec.tasklist",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-19T08:19:44Z",
       "side": 1,
       "message": "Compared to the original deferred function running in the HOOKS task, on a regular dongle with not much running in the console, the new task is mostly overhead for not much latency benefit.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "0b8320f8fa0d5e5b83c48dea5d54789964dea4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da06cdfb_2ec9d7fa",
+        "filename": "board/dingdong/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-04-19T18:29:44Z",
+      "side": 1,
+      "message": "Let me upload the original code that I have which simply used a counter variable. The ISR for HPD IRQ will increment the counter, the defer for HPD IRQ will decrement the counter.\n\nTiming is slightly better compare to using the task with the context switching as you have mentioned. \n\nOne concern is how to implement the semaphore for this counter.",
+      "parentUuid": "6d47faf6_e01a391e",
       "range": {
         "startLine": 20,
         "startChar": 0,
