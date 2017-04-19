@@ -16,6 +16,24 @@
       "revId": "3303d8640523e21b9d191172446ad76db200d943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f28650_73bd99c2",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-04-19T23:48:39Z",
+      "side": 1,
+      "message": "when hiberate, it will shudown and freeze ec. so the led_second may not get the chance to run.\n\nand if it happens to run between this new shutdown hook and chipset status update, it may turns led back on again, but it would be hard to repro.",
+      "parentUuid": "0c9cf61c_1c98485b",
+      "revId": "3303d8640523e21b9d191172446ad76db200d943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
