@@ -17,9 +17,11 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#include "queue.h"
 
 static volatile uint64_t hpd_prev_ts;
 static volatile int hpd_prev_level;
+static struct queue const hpd_queue = QUEUE_NULL(64, enum hpd_event);
 
 void hpd_event(enum gpio_signal signal);
 #include "gpio_list.h"
@@ -46,35 +48,15 @@ void hpd_event(enum gpio_signal signal);
  * x        1         0     n/a         >LVL      low
  */
 
-void hpd_irq_deferred(void)
-{
-	pd_send_hpd(0, hpd_irq);
-}
-DECLARE_DEFERRED(hpd_irq_deferred);
-
-void hpd_lvl_deferred(void)
-{
-	int level = gpio_get_level(GPIO_DP_HPD);
-
-	if (level != hpd_prev_level)
-		/* It's a glitch while in deferred or canceled action */
-		return;
-
-	pd_send_hpd(0, (level) ? hpd_high : hpd_low);
-}
-DECLARE_DEFERRED(hpd_lvl_deferred);
-
 void hpd_event(enum gpio_signal signal)
 {
 	timestamp_t now = get_time();
 	int level = gpio_get_level(signal);
 	uint64_t cur_delta = now.val - hpd_prev_ts;
+	enum hpd_event hpd_event = hpd_none;
 
 	/* store current time */
 	hpd_prev_ts = now.val;
-
-	/* All previous hpd level events need to be re-triggered */
-	hook_call_deferred(hpd_lvl_deferred, -1);
 
 	/* It's a glitch.  Previous time moves but level is the same. */
 	if (cur_delta < HPD_USTREAM_DEBOUNCE_IRQ)
@@ -83,11 +65,31 @@ void hpd_event(enum gpio_signal signal)
 	if ((!hpd_prev_level && level) &&
 	    (cur_delta < HPD_USTREAM_DEBOUNCE_LVL))
 		/* It's an irq */
-		hook_call_deferred(hpd_irq_deferred, 0);
+		hpd_event = hpd_irq;
 	else if (cur_delta >= HPD_USTREAM_DEBOUNCE_LVL)
-		hook_call_deferred(hpd_lvl_deferred, HPD_USTREAM_DEBOUNCE_LVL);
+		hpd_event = level ? hpd_high : hpd_low;
 
 	hpd_prev_level = level;
+
+	if (hpd_event != hpd_none) {
+		queue_add_unit(&hpd_queue, &hpd_event);
+		task_wake(TASK_ID_HPD);
+	}
+}
+
+void hpd_task(void)
+{
+	enum hpd_event hpd_event;
+
+	queue_init(&hpd_queue);
+
+	while (1) {
+		if (queue_is_empty(&hpd_queue))
+			task_wait_event(-1);
+
+		while (queue_remove_unit(&hpd_queue, &hpd_event))
+			pd_send_hpd(0, hpd_event);
+	}
 }
 
 /* Initialize board. */
