@@ -20,6 +20,7 @@
 
 static volatile uint64_t hpd_prev_ts;
 static volatile int hpd_prev_level;
+static volatile int hpd_irq_count;
 
 void hpd_event(enum gpio_signal signal);
 #include "gpio_list.h"
@@ -48,7 +49,10 @@ void hpd_event(enum gpio_signal signal);
 
 void hpd_irq_deferred(void)
 {
-	pd_send_hpd(0, hpd_irq);
+	while (hpd_irq_count > 0) {
+		hpd_irq_count--;
+		pd_send_hpd(0, hpd_irq);
+	}
 }
 DECLARE_DEFERRED(hpd_irq_deferred);
 
@@ -81,10 +85,11 @@ void hpd_event(enum gpio_signal signal)
 		return;
 
 	if ((!hpd_prev_level && level) &&
-	    (cur_delta < HPD_USTREAM_DEBOUNCE_LVL))
+	    (cur_delta < HPD_USTREAM_DEBOUNCE_LVL)) {
 		/* It's an irq */
+		hpd_irq_count++;
 		hook_call_deferred(hpd_irq_deferred, 0);
-	else if (cur_delta >= HPD_USTREAM_DEBOUNCE_LVL)
+	} else if (cur_delta >= HPD_USTREAM_DEBOUNCE_LVL)
 		hook_call_deferred(hpd_lvl_deferred, HPD_USTREAM_DEBOUNCE_LVL);
 
 	hpd_prev_level = level;
