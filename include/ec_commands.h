@@ -1977,6 +1977,8 @@ enum motionsensor_chip {
 	MOTIONSENSE_CHIP_LSM6DSM = 12,
 	MOTIONSENSE_CHIP_LIS2MDL = 13,
 	MOTIONSENSE_CHIP_LPS22HB = 14,
+	MOTIONSENSE_CHIP_LIS2DS = 15,
+	MOTIONSENSE_CHIP_LIS2DE = 16,
 };
 
 struct __ec_todo_packed ec_response_motion_sensor_data {
