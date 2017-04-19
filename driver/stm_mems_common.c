@@ -174,6 +174,10 @@ void st_normalize(const struct motion_sensor_t *s, vector_3_t v, uint8_t *data)
 	 */
 	for (i = 0; i < 3; i++) {
 		switch (drvdata->resol) {
+		case 8:
+			v[i] = (int16_t)((int8_t)data[i * 2 + 1]);
+			v[i] = v[i] * drvdata->base.range;
+			break;
 		case 10:
 			v[i] = ((int16_t)((data[i * 2 + 1] << 8) |
 				   data[i * 2]) >> 6);

@@ -7,7 +7,9 @@
 #include "common.h"
 #include "console.h"
 #include "driver/accelgyro_lsm6dsm.h"
+#include "driver/accel_lis2de.h"
 #include "driver/accel_lis2dh.h"
+#include "driver/accel_lis2ds.h"
 #include "driver/baro_lps22hb.h"
 #include "driver/mag_lis2mdl.h"
 #include "gpio.h"
@@ -50,6 +52,15 @@ void sensors_interrupt(enum gpio_signal signal)
 #ifdef CONFIG_ACCELGYRO_LSM6DSM
 	lsm6dsm_interrupt(signal);
 #endif /* CONFIG_ACCEL_LIS2DH */
+
+#ifdef CONFIG_ACCEL_LIS2DS
+	lis2ds_interrupt(signal);
+#endif /* CONFIG_ACCEL_LIS2DS */
+
+#ifdef CONFIG_ACCEL_LIS2DE
+	lis2de_interrupt(signal);
+#endif /* CONFIG_ACCEL_LIS2DE */
+
 
 	gpio_set_level(GPIO_LED_GREEN, ++count & 0x01);
 #endif /* CONFIG_ACCEL_INTERRUPTS */
@@ -96,8 +107,16 @@ struct stprivate_data lis2mdl_m_data;
 #endif /* CONFIG_MAG_LIS2MDL */
 
 #ifdef CONFIG_BARO_LPS22HB
-struct stprivate_data lps22bh_p_data;
+struct stprivate_data lps22hb_p_data;
 #endif /* CONFIG_BARO_LPS22HB */
+
+#ifdef CONFIG_ACCEL_LIS2DS
+struct stprivate_data lis2ds_a_data;
+#endif /* CONFIG_ACCEL_LIS2DS */
+
+#ifdef CONFIG_ACCEL_LIS2DE
+struct stprivate_data lis2de_a_data;
+#endif /* CONFIG_ACCEL_LIS2DE */
 
 struct motion_sensor_t motion_sensors[] = {
 #ifdef CONFIG_ACCELGYRO_LSM6DSM
@@ -278,9 +297,13 @@ struct motion_sensor_t motion_sensors[] = {
 		.type = MOTIONSENSE_TYPE_BARO,
 		.location = MOTIONSENSE_LOC_BASE,
 		.drv = &lps22hb_drv,
-		.drv_data = &lps22bh_p_data,
+		.drv_data = &lps22hb_p_data,
+		.mutex = &g_base_mutex,
 		.port = I2C_PORT_BARO,
 		.addr = LPS22HB_ADDR0,
+		.default_range = 1 << 18, /*  1bit = 4 Pa, 16bit ~= 2600 hPa */
+		.min_frequency = LPS22HB_MIN_ODR,
+		.max_frequency = LPS22HB_MAX_ODR,
 		.config = {
 			/* AP: by default shutdown all sensors */
 			[SENSOR_CONFIG_AP] = {
@@ -307,6 +330,125 @@ struct motion_sensor_t motion_sensors[] = {
 
 #endif /* CONFIG_BARO_LPS22HB */
 
+#ifdef CONFIG_ACCEL_LIS2DS
+	[LID_ACCEL] = {
+		.name = "LIS2DS LID",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LIS2DS,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lis2ds_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &lis2ds_a_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = LIS2DS_ADDR0,
+		.rot_standard_ref = &base_standard_ref,
+		.default_range = 2, /* g, enough for laptop. */
+		.config = {
+			/* AP: by default use EC settings */
+			[SENSOR_CONFIG_AP] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* Sensor off in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 0,
+				.ec_rate = 0
+			},
+			/* Sensor off in S5 */
+			[SENSOR_CONFIG_EC_S5] = {
+				.odr = 0,
+				.ec_rate = 0
+			},
+		},
+	},
+
+#endif /* CONFIG_ACCEL_LIS2DS */
+
+#ifdef CONFIG_ACCEL_LIS2DE
+	[BASE_ACCEL] = {
+		.name = "LIS2DE BASE",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LIS2DE,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lis2de_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &lis2de_a_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = LIS2DE_ADDR0,
+		.rot_standard_ref = &base_standard_ref,
+		.default_range = 2, /* g, enough for laptop. */
+		.config = {
+			/* AP: by default use EC settings */
+			[SENSOR_CONFIG_AP] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* Sensor off in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 0,
+				.ec_rate = 0
+			},
+			/* Sensor off in S5 */
+			[SENSOR_CONFIG_EC_S5] = {
+				.odr = 0,
+				.ec_rate = 0
+			},
+		},
+	},
+
+#endif /* CONFIG_ACCEL_LIS2DE */
+
+#ifdef CONFIG_ACCEL_LIS2DW12
+	[LID_ACCEL] = {
+		.name = "LIS2DW12 LID",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_LIS2DW12,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lis2dw12_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &lis2dw12_a_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = LIS2DW12_ADDR0,
+		.rot_standard_ref = &base_standard_ref,
+		.default_range = 2,
+		.config = {
+			/* AP: by default use EC settings */
+			[SENSOR_CONFIG_AP] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 0,
+				.ec_rate = 0,
+			},
+			/* Sensor off in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 0,
+				.ec_rate = 0
+			},
+			/* Sensor off in S5 */
+			[SENSOR_CONFIG_EC_S5] = {
+				.odr = 0,
+				.ec_rate = 0
+			},
+		},
+	},
+
+#endif /* CONFIG_ACCEL_LIS2DW12 */
 };
 
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
