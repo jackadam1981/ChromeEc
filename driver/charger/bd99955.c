@@ -584,16 +584,22 @@ int charger_get_current(int *current)
 
 int charger_set_current(int current)
 {
-	int rv;
+	int rv, reg;
 
 	/* Charge current step 64 mA */
 	current &= ~0x3F;
+
+	rv = ch_raw_read16(BD99955_CMD_CHGOP_SET2, &reg,
+		BD99955_EXTENDED_COMMAND);
+	if (rv)
+		return rv;
 
 	if (current < BD99955_NO_BATTERY_CHARGE_I_MIN &&
 	    (battery_is_present() != BP_YES || battery_is_cut_off()))
 		current = BD99955_NO_BATTERY_CHARGE_I_MIN;
 	else if (current < bd99955_charger_info.current_min &&
-		!(charge_get_flags() & CHARGE_FLAG_FORCE_IDLE))
+		(!(charge_get_flags() & CHARGE_FLAG_FORCE_IDLE) ||
+		(reg & BD99955_CMD_CHGOP_SET2_CHG_EN)))
 		current = bd99955_charger_info.current_min;
 
 	rv = ch_raw_write16(BD99955_CMD_CHG_CURRENT, current,
