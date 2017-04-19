@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c9cf61c_1c98485b",
+        "filename": "common/led_policy_std.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-04-19T22:25:47Z",
+      "side": 1,
+      "message": "I\u0027m not really sure why this is necessary, shouldn\u0027t std_led_set_power() eventually make sure the led is off?",
+      "revId": "3303d8640523e21b9d191172446ad76db200d943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
