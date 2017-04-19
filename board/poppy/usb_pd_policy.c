@@ -110,9 +110,13 @@ int pd_set_power_supply_ready(int port)
 	/* Disable charging */
 	gpio_set_level(port ? GPIO_USB_C1_CHARGE_L :
 			      GPIO_USB_C0_CHARGE_L, 1);
+
+	/* Ensure we advertise the proper available current quota */
+	charge_manager_source_port(port, 1);
+
 	/* Provide VBUS */
-	gpio_set_level(port ? GPIO_USB_C1_5V_EN :
-			      GPIO_USB_C0_5V_EN, 1);
+	vbus_en[port] = 1;
+	board_vbus_update_source_current(port);
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -122,9 +126,16 @@ int pd_set_power_supply_ready(int port)
 
 void pd_power_supply_reset(int port)
 {
+	int prev_en;
+
+	prev_en = vbus_en[port];
+
 	/* Disable VBUS */
-	gpio_set_level(port ? GPIO_USB_C1_5V_EN :
-			      GPIO_USB_C0_5V_EN, 0);
+	vbus_en[port] = 0;
+	board_vbus_update_source_current(port);
+
+	/* Give back the current quota we are no longer using */
+	charge_manager_source_port(port, 0);
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
