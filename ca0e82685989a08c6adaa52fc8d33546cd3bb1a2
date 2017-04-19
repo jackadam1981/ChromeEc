@@ -16,6 +16,24 @@
       "revId": "ca0e82685989a08c6adaa52fc8d33546cd3bb1a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65cbb7f4_f729f9ff",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-19T14:29:11Z",
+      "side": 1,
+      "message": "I wonder if we can just use unix timestamps for this, suppose that the build server is always ntp synced.",
+      "parentUuid": "07b28f79_484bfed9",
+      "revId": "ca0e82685989a08c6adaa52fc8d33546cd3bb1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
