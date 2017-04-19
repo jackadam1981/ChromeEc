@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fac6dd53_e3b49fa4",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-19T08:19:44Z",
+      "side": 1,
+      "message": "why this (large) size ?",
+      "range": {
+        "startLine": 24,
+        "startChar": 48,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "0b8320f8fa0d5e5b83c48dea5d54789964dea4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d47faf6_e01a391e",
+        "filename": "board/dingdong/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-19T08:19:44Z",
+      "side": 1,
+      "message": "Compared to the original deferred function running in the HOOKS task, on a regular dongle with not much running in the console, the new task is mostly overhead for not much latency benefit.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "0b8320f8fa0d5e5b83c48dea5d54789964dea4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
