@@ -17,6 +17,7 @@ driver-$(CONFIG_ACCELGYRO_LSM6DSM)+=accelgyro_lsm6dsm.o stm_mems_common.o
 driver-$(CONFIG_ACCEL_LIS2DH)+=accel_lis2dh.o stm_mems_common.o
 driver-$(CONFIG_MAG_LIS2MDL)+=mag_lis2mdl.o stm_mems_common.o
 driver-$(CONFIG_ACCEL_LIS2DS)+=accel_lis2ds.o stm_mems_common.o
+driver-$(CONFIG_ACCEL_LIS2DE)+=accel_lis2de.o stm_mems_common.o
 
 # Gyrometers
 driver-$(CONFIG_GYRO_L3GD20H)+=gyro_l3gd20h.o
