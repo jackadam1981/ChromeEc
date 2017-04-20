@@ -70,6 +70,24 @@
       "revId": "ca0e82685989a08c6adaa52fc8d33546cd3bb1a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6a4dcb8_c64d633f",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-20T02:35:45Z",
+      "side": 1,
+      "message": "I don\u0027t think we should always increment ROLLBACK. As I said it makes recovery to an older image harder.\n\ne.g. if you have rootfs B on dev channel, with FW b, and something does not work (e.g. new trackpad FW is broken, or rootfs is too buggy), you want to be able to downgrade to rootfs A on stable channel, and flash back FW a (so you get back the \"known good\" old FW, and in some cases it might be that fw b isn\u0027t compatible with rootfs A).\n\nROLLBACK uprev should only be used exceptionally (just like the AP FW rollback protection, we use that very rarely).",
+      "parentUuid": "e0836c5a_a80ddbef",
+      "revId": "ca0e82685989a08c6adaa52fc8d33546cd3bb1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
