@@ -34,6 +34,24 @@
       "revId": "ca0e82685989a08c6adaa52fc8d33546cd3bb1a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1c031b5_c41a6c7f",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-20T01:03:15Z",
+      "side": 1,
+      "message": "We don\u0027t necessarily need to update ROLLBACK for every release (neither should we: it makes recovery to an older image harder). The idea is only to increment it if we know a previous version is compromised.",
+      "parentUuid": "65cbb7f4_f729f9ff",
+      "revId": "ca0e82685989a08c6adaa52fc8d33546cd3bb1a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
