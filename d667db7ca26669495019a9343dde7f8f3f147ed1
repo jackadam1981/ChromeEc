@@ -22,6 +22,30 @@
       "revId": "d667db7ca26669495019a9343dde7f8f3f147ed1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9332b9c0_9ff80c19",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-20T23:53:22Z",
+      "side": 1,
+      "message": "There are two things that can be done here:\n1. Just like power_signal_interrupt, add a new interrupt handler, power_signal_update_only_interrupt, which does the task of only updating the power signal state. It does not wake chipset_task to take any action.\n\n2. Make power_signal_interrupt path robust enough so that interrupt for entering S0ix when already in S0ix state because of host command does not do anything harmful. \n\nI would go with #2 because even if we have a separate handler as in #1, chipset_task can be woken up because of any other event too and it would notice the change in power signals and try to go through the power state machine. If the state machine can handle the situation where SLP_S0 assertion/de-assertion can be safely ignored, I think that would be the best.",
+      "parentUuid": "b8742286_d309b1ff",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 6
+      },
+      "revId": "d667db7ca26669495019a9343dde7f8f3f147ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
