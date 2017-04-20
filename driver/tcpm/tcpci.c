@@ -441,6 +441,8 @@ int tcpci_tcpm_init(int port)
 	if (error)
 		return error;
 
+	board_tcpci_tcpm_post_init(port);
+
 	/* Read chip info here when we know the chip is awake. */
 	tcpm_get_chip_info(port, 1, NULL);
 
