@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8742286_d309b1ff",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-20T18:06:43Z",
+      "side": 1,
+      "message": "I don\u0027t think this will work. powerindebug command does not probe the state of power signal gpios. It simply prints out the state in in_signals. And the state of in_signals is updated _only_ by power_update_signals which is called by power_signal_interrupt. But, since GPIO_PCH_SLP_S0_L is no longer configured as an interrupt, in_signals will not be updated on entry/exit into/from S0ix.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 6
+      },
+      "revId": "d667db7ca26669495019a9343dde7f8f3f147ed1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
