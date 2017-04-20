@@ -273,4 +273,11 @@ void tcpc_alert_clear(int port);
  */
 int tcpc_run(int port, int evt);
 
+/**
+ * Initialize external GPIOs of Type-C chip
+ *
+ * @param port Type-C port number
+ */
+void board_tcpc_external_gpio_init(int port);
+
 #endif /* __CROS_EC_USB_PD_TCPM_H */

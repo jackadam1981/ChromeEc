@@ -2513,6 +2513,9 @@
 /* Use TCPC module (type-C port controller) */
 #undef CONFIG_USB_PD_TCPC
 
+/* Type-C port controller has external GPIOs */
+#undef CONFIG_USB_PD_TCPC_EXTERNAL_GPIO
+
 /* Enable TCPC to enter low power mode */
 #undef CONFIG_USB_PD_TCPC_LOW_POWER
 

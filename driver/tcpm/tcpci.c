@@ -441,6 +441,10 @@ int tcpci_tcpm_init(int port)
 	if (error)
 		return error;
 
+#ifdef CONFIG_USB_PD_TCPC_EXTERNAL_GPIO
+	board_tcpc_external_gpio_init(port);
+#endif
+
 	/* Read chip info here when we know the chip is awake. */
 	tcpm_get_chip_info(port, 1, NULL);
 
