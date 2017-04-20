@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "66d99a04_9d8f6ea3",
+        "filename": "chip/npcx/gpio_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-04-20T02:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3803d222_898e4adb",
+      "range": {
+        "startLine": 15,
+        "startChar": 49,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "a8e3eb9b92f104c68c2c98485a2e6f2a968607d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20e05628_2ce94020",
         "filename": "chip/npcx/gpio_chip.h",
         "patchSetId": 1
@@ -83,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "cf756d90_45a1410c",
+        "filename": "chip/npcx/gpio_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-04-20T02:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20e05628_2ce94020",
+      "range": {
+        "startLine": 36,
+        "startChar": 49,
+        "endLine": 36,
+        "endChar": 54
+      },
+      "revId": "a8e3eb9b92f104c68c2c98485a2e6f2a968607d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40759884_88db13f8",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 1
@@ -94,6 +142,30 @@
       "writtenOn": "2017-04-19T15:34:12Z",
       "side": 1,
       "message": "(n)\n\nAlso in lines 452, 457 for consistency",
+      "range": {
+        "startLine": 460,
+        "startChar": 39,
+        "endLine": 460,
+        "endChar": 40
+      },
+      "revId": "a8e3eb9b92f104c68c2c98485a2e6f2a968607d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "632807f3_32bd29d6",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-04-20T02:14:33Z",
+      "side": 1,
+      "message": "I\u0027ll check all \"+ n\" situations and replace them with \"+ (n)\" in next patch set.",
+      "parentUuid": "40759884_88db13f8",
       "range": {
         "startLine": 460,
         "startChar": 39,
