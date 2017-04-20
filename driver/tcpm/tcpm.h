@@ -77,7 +77,17 @@ static inline int tcpm_init(int port)
 
 static inline int tcpm_release(int port)
 {
-	return tcpc_config[port].drv->release(port);
+	int rv;
+
+	rv = tcpc_config[port].drv->release(port);
+	if (rv)
+		return rv;
+
+	/* Board specific post TCPC init */
+	if (board_tcpc_post_init)
+		rv = board_tcpc_post_init(port);
+
+	return rv;
 }
 
 static inline int tcpm_get_cc(int port, int *cc1, int *cc2)
