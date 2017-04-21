@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ee405eac_c2cb89e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-04-21T15:29:35Z",
+      "side": 1,
+      "message": "Kind of. You can\u0027t see it over suzyq, because cr50 doesn\u0027t sleep during s3. And they only print when the tpm hasn\u0027t been used for 3 seconds and you\u0027re not using the cr50 uart.\n\nIt can be made configurable.",
+      "parentUuid": "4cdde737_ca7d2726",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 64
+      },
+      "revId": "b2d01839024c5ca4bc5e8bf148236ca5a9dffabe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3deb3fa4_93f9a850",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
