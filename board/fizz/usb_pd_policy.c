@@ -112,9 +112,10 @@ void pd_power_supply_reset(int port)
 
 int pd_snk_is_vbus_provided(int port)
 {
-	/* dnojiri: On Poppy, USB_C0_VBUS_WAKE_L is not connected */
-	/* return !gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L); */
-	return 1;
+	if (port == 0)
+		return !gpio_get_level(GPIO_USB_C0_VBUS_DET_L);
+	/* Not a valid port */
+	return 0;
 }
 
 void pd_set_input_current_limit(int port, uint32_t max_ma,
