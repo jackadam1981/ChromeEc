@@ -1834,6 +1834,12 @@
 #undef CONFIG_RWSIG_TYPE_USBPD1
 
 /*
+ * Disable rwsig jump when the reset source is hard pin-reset. This only work
+ * for the case where rwsig task is not used.
+ */
+#undef CONFIG_RWSIG_DONT_JUMP_ON_PIN_RESET
+
+/*
  * By default the pubkey and sig are put at the end of the first and second
  * half of the total flash, and take up the minimum space possible. You can
  * override those defaults with these.
