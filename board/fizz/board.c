@@ -487,10 +487,17 @@ static void usb_charger_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
 
-const struct button_config recovery_button = {
-	.name = "Recovery",
-	.type = KEYBOARD_BUTTON_RECOVERY,
-	.gpio = GPIO_RECOVERY_L,
-	.debounce_us = 30 * MSEC,
-	.flags = 0,
+const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
+	[BUTTON_RECOVERY] = {
+		.name = "Recovery",
+		.type = KEYBOARD_BUTTON_RECOVERY,
+		.gpio = GPIO_RECOVERY_L,
+		.debounce_us = 30 * MSEC,
+		.flags = 0,
+	},
 };
+
+const struct button_config *recovery_buttons[] = {
+	&buttons[BUTTON_RECOVERY],
+};
+const int recovery_buttons_count = ARRAY_SIZE(recovery_buttons);
