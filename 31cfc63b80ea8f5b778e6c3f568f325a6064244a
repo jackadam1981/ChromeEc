@@ -46,6 +46,30 @@
       "revId": "31cfc63b80ea8f5b778e6c3f568f325a6064244a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d311eafc_f565f27c",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-21T17:07:35Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/465490 fixed the -b option problem",
+      "parentUuid": "30e8f6c9_e685b75b",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 28
+      },
+      "revId": "31cfc63b80ea8f5b778e6c3f568f325a6064244a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
