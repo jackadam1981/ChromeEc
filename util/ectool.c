@@ -1019,6 +1019,24 @@ int cmd_rw_hash_pd(int argc, char *argv[])
 	return rv;
 }
 
+int cmd_rwsig_status(int argc, char *argv[])
+{
+	int i, rv;
+	struct ec_response_rwsig_check_status resp;
+
+	rv = ec_command(EC_CMD_RWSIG_CHECK_STATUS, 0, NULL, 0, &resp, sizeof(resp));
+	if (rv < 0)
+		return rv;
+
+	printf("RW signature check: %s\n", resp.status ? "OK" : "FAILED");
+	printf("RW image hash: ");
+	for (i = 0; i < sizeof(resp.digest); i++)
+		printf("%02X", resp.digest[i]);
+	printf("\n");
+
+	return 0;
+}
+
 /**
  * determine if in GFU mode or not.
  *
@@ -7048,6 +7066,7 @@ const struct command commands[] = {
 	{"rtcset", cmd_rtc_set},
 	{"rtcsetalarm", cmd_rtc_set_alarm},
 	{"rwhashpd", cmd_rw_hash_pd},
+	{"rwsigstatus", cmd_rwsig_status},
 	{"sertest", cmd_serial_test},
 	{"port80flood", cmd_port_80_flood},
 	{"switches", cmd_switches},
