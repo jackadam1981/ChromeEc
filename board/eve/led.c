@@ -173,34 +173,7 @@ static void eve_led_set_power_battery(void)
 	/* Suspend or Standby state */
 	if (chipset_in_state(CHIPSET_STATE_SUSPEND) ||
 	    chipset_in_state(CHIPSET_STATE_STANDBY)) {
-		enum led_side blinkside = LED_BOTH;
-
-		if (chg_state == PWR_STATE_CHARGE_NEAR_FULL ||
-		    chg_state == PWR_STATE_IDLE) {
-			set_color(LED_GREEN, side);
-			blinkside = !side;
-		} else if (chg_state == PWR_STATE_CHARGE) {
-			set_color(LED_AMBER, side);
-			blinkside = !side;
-		} else if (chg_state == PWR_STATE_DISCHARGE_FULL &&
-			   extpower_is_present()) {
-			set_color(LED_GREEN, side);
-			blinkside = !side;
-		}
-		if (chg_state == PWR_STATE_DISCHARGE ||
-		    chg_state == PWR_STATE_DISCHARGE_FULL ||
-		    chg_state == PWR_STATE_CHARGE ||
-		    chg_state == PWR_STATE_CHARGE_NEAR_FULL ||
-		    chg_state == PWR_STATE_IDLE) {
-			/*
-			 * If in S3/S0iX and not in some error
-			 * state, then flash non-charging LEDs white.
-			 */
-			set_color(((power_ticks++ % LED_TOTAL_TICKS) <
-				   LED_ON_TICKS) ?
-				  LED_WHITE : LED_OFF, blinkside);
-			return;
-		}
+    set_color(LED_OFF, LED_BOTH);
 	}
 
 	/* CHIPSET_STATE_OFF */
