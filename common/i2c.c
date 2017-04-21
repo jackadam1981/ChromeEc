@@ -33,6 +33,8 @@
 #define I2C_CONTROLLER_COUNT I2C_PORT_COUNT
 #endif
 
+#ifdef CONFIG_I2C_MASTER
+
 static struct mutex port_mutex[I2C_CONTROLLER_COUNT];
 static uint32_t i2c_port_active_count;
 static uint8_t port_protected[I2C_CONTROLLER_COUNT];
@@ -1019,6 +1021,8 @@ DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
 			"i2ctest count|udelay|dev",
 			"I2C stress test");
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
+
+#endif /* CONFIG_I2C_MASTER */
 
 #ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
 int i2c_get_protocol_info(struct host_cmd_handler_args *args)
