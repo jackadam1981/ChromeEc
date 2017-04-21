@@ -508,3 +508,8 @@ const struct button_config recovery_button = {
 	.debounce_us = 30 * MSEC,
 	.flags = 0,
 };
+
+int is_recovery_button_pressed(void)
+{
+	return raw_button_pressed(&recovery_button);
+}
