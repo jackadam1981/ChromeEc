@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4d60de9_903461c5",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1177179
+      },
+      "writtenOn": "2017-04-21T17:52:15Z",
+      "side": 1,
+      "message": "isn\u0027t the comment misleading? This is turned on now.",
+      "range": {
+        "startLine": 530,
+        "startChar": 3,
+        "endLine": 530,
+        "endChar": 40
+      },
+      "revId": "5537ac39b04c3057fb556e78357dfd16dd176476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e461c57f_31cc67e6",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1177179
+      },
+      "writtenOn": "2017-04-21T17:52:15Z",
+      "side": 1,
+      "message": "same here, look rather like \"disable gyro\" to me.",
+      "range": {
+        "startLine": 566,
+        "startChar": 3,
+        "endLine": 566,
+        "endChar": 23
+      },
+      "revId": "5537ac39b04c3057fb556e78357dfd16dd176476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
