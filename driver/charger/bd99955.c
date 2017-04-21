@@ -112,19 +112,43 @@ bd99955_write_cleanup:
 
 /* BD99955 local interfaces */
 
+static int bd99955_is_discharging_on_ac(void)
+{
+	int reg;
+
+	if (ch_raw_read16(BD99955_CMD_CHGOP_SET2, &reg,
+				BD99955_EXTENDED_COMMAND))
+		return 0;
+
+	return !!(reg & BD99955_CMD_CHGOP_SET2_BATT_LEARN);
+}
+
 static int bd99955_charger_enable(int enable)
 {
-	int rv;
-	int reg;
+	int rv, reg;
+	int charge_current;
 
 	rv = ch_raw_read16(BD99955_CMD_CHGOP_SET2, &reg,
 				BD99955_EXTENDED_COMMAND);
 	if (rv)
 		return rv;
 
-	if (enable)
+	if (enable) {
+		/*
+		 * Make sure the charge current is at least current_min before
+		 * enabling charging.
+		 */
+		rv = charger_get_current(&charge_current);
+		if (rv)
+			return rv;
+		if (charge_current < bd99955_charger_info.current_min) {
+			rv = charger_set_current(
+				bd99955_charger_info.current_min);
+			if (rv)
+				return rv;
+		}
 		reg |= BD99955_CMD_CHGOP_SET2_CHG_EN;
-	else
+	} else
 		reg &= ~BD99955_CMD_CHGOP_SET2_CHG_EN;
 
 	return ch_raw_write16(BD99955_CMD_CHGOP_SET2, reg,
@@ -592,9 +616,13 @@ int charger_set_current(int current)
 	if (current < BD99955_NO_BATTERY_CHARGE_I_MIN &&
 	    (battery_is_present() != BP_YES || battery_is_cut_off()))
 		current = BD99955_NO_BATTERY_CHARGE_I_MIN;
-	else if (current < bd99955_charger_info.current_min &&
-		!(charge_get_flags() & CHARGE_FLAG_FORCE_IDLE))
-		current = bd99955_charger_info.current_min;
+
+	if (!current || bd99955_is_discharging_on_ac()) {
+		/* disable charger before set charge current to 0 */
+		rv = bd99955_charger_enable(0);
+		if (rv)
+			return rv;
+	}
 
 	rv = ch_raw_write16(BD99955_CMD_CHG_CURRENT, current,
 			    BD99955_BAT_CHG_COMMAND);
@@ -614,20 +642,13 @@ int charger_get_voltage(int *voltage)
 
 int charger_set_voltage(int voltage)
 {
-	int rv;
-	int reg;
 	const struct battery_info *bi = battery_get_info();
 
 	/*
 	 * Regulate the system voltage to battery max if the battery
 	 * is not present or the battery is discharging on AC.
 	 */
-	rv = ch_raw_read16(BD99955_CMD_CHGOP_SET2, &reg,
-				BD99955_EXTENDED_COMMAND);
-	if (rv)
-		return rv;
-
-	if (reg & BD99955_CMD_CHGOP_SET2_BATT_LEARN ||
+	if (bd99955_is_discharging_on_ac() ||
 		battery_is_present() != BP_YES ||
 		battery_is_cut_off())
 		voltage = bi->voltage_max;
