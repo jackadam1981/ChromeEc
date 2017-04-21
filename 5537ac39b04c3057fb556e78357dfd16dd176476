@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0038cde6_1246cef4",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2017-04-21T21:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4d60de9_903461c5",
+      "range": {
+        "startLine": 530,
+        "startChar": 3,
+        "endLine": 530,
+        "endChar": 40
+      },
+      "revId": "5537ac39b04c3057fb556e78357dfd16dd176476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e461c57f_31cc67e6",
         "filename": "board/rowan/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-21T17:52:15Z",
       "side": 1,
       "message": "same here, look rather like \"disable gyro\" to me.",
+      "range": {
+        "startLine": 566,
+        "startChar": 3,
+        "endLine": 566,
+        "endChar": 23
+      },
+      "revId": "5537ac39b04c3057fb556e78357dfd16dd176476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a117b1e_745dbb1f",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1000018
+      },
+      "writtenOn": "2017-04-21T21:59:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e461c57f_31cc67e6",
       "range": {
         "startLine": 566,
         "startChar": 3,
