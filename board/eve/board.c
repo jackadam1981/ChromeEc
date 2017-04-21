@@ -639,8 +639,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 static void board_chipset_suspend(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
-	if (!tablet_get_mode() && lid_is_open())
-		trackpad_wake_enable(1);
+	gpio_set_level(GPIO_TRACKPAD_SHDN_L, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
@@ -648,15 +647,13 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 static void board_chipset_resume(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
-	trackpad_wake_enable(0);
+	gpio_set_level(GPIO_TRACKPAD_SHDN_L, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
 /* Called on lid change */
 static void board_lid_change(void)
 {
-	if (!lid_is_open())
-		trackpad_wake_enable(0);
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, board_lid_change, HOOK_PRIO_DEFAULT);
 
