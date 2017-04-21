@@ -36,6 +36,13 @@ static uint8_t rw_hash[SHA256_DIGEST_SIZE];
 
 void rwsig_jump_now(void)
 {
+	/* If system was reset by reset-pin, do not jump and wait for command from
+	 * host */
+	if (system_get_reset_flags() == RESET_FLAG_RESET_PIN) {
+		CPRINTS("Hard pin-reset detected, disable RW jump");
+		return;
+	}
+
 	/* Protect all flash before jumping to RW. */
 
 	/*
