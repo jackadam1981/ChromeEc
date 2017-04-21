@@ -17,7 +17,8 @@
 /* EC */
 #define CONFIG_ADC
 #define CONFIG_BOARD_VERSION
-#define CONFIG_BUTTON_COUNT 2
+#define CONFIG_BUTTON_COUNT 1
+#define CONFIG_BUTTON_RECOVERY
 #define CONFIG_CASE_CLOSED_DEBUG_EXTERNAL
 #define CONFIG_DPTF
 #define CONFIG_FLASH_SIZE 0x80000
@@ -167,6 +168,11 @@ enum adc_channel {
 	ADC_VBUS,
 	ADC_AMON_BMON,
 	ADC_CH_COUNT
+};
+
+enum button {
+	BUTTON_RECOVERY = 0,
+	BUTTON_COUNT
 };
 
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */
