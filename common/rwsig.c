@@ -10,6 +10,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "flash.h"
+#include "host_command.h"
 #include "rollback.h"
 #include "rsa.h"
 #include "rwsig.h"
@@ -30,6 +31,9 @@
 static uint32_t * const rw_rst =
 	(uint32_t *)(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF + 4);
 
+
+/* Status of last ran RW signature check */
+static int rwsig_last_status = -1;
 
 void rwsig_jump_now(void)
 {
@@ -219,8 +223,23 @@ out:
 	if (rsa_workbuf)
 		shared_mem_release(rsa_workbuf);
 
+	rwsig_last_status = good;
 	return good;
 }
+
+int rwsig_cmd_check_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_rwsig_check_status *r = args->response;
+
+	memset(r, 0, sizeof(*r));
+	r->status = rwsig_last_status;
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_RWSIG_CHECK_STATUS,
+		     rwsig_cmd_check_status,
+		     EC_VER_MASK(0));
 
 #ifdef HAS_TASK_RWSIG
 #define TASK_EVENT_ABORT TASK_EVENT_CUSTOM(1)
@@ -271,4 +290,26 @@ exit:
 	while (1)
 		task_wait_event(-1);
 }
+
+int rwsig_cmd_action(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_rwsig_action *p = args->params;
+
+	switch (p->action) {
+	case RWSIG_ACTION_ABORT:
+		rwsig_abort();
+		break;
+	case RWSIG_ACTION_CONTINUE:
+		rwsig_continue();
+		break;
+	default:
+		return EC_RES_UNAVAILABLE;
+	}
+	args->response_size = 0;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_RWSIG_ACTION,
+		     rwsig_cmd_action,
+		     EC_VER_MASK(0));
 #endif
