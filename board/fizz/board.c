@@ -464,3 +464,33 @@ int board_is_consuming_full_charge(void)
 
 	return chg_perc > 2 && chg_perc < 95;
 }
+
+static void usb_charger_init(void)
+{
+	struct charge_port_info ci;
+
+	ci.voltage = 19500;
+	ci.current = 3330;
+	/* dnojiri: Detect barrel jack voltage */
+	charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY, 0, &ci);
+
+	/* Initialize all charge suppliers to 0 */
+	ci.voltage = USB_CHARGER_VOLTAGE_MV;
+	ci.current = 0;
+	charge_manager_update_charge(CHARGE_SUPPLIER_PD, 0, &ci);
+	charge_manager_update_charge(CHARGE_SUPPLIER_TYPEC, 0, &ci);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP, 0, &ci);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP, 0, &ci);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP, 0, &ci);
+	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, 0, &ci);
+	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0, &ci);
+}
+DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
+
+const struct button_config recovery_button = {
+	.name = "Recovery",
+	.type = KEYBOARD_BUTTON_RECOVERY,
+	.gpio = GPIO_RECOVERY_L,
+	.debounce_us = 30 * MSEC,
+	.flags = 0,
+};
