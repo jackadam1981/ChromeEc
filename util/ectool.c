@@ -208,6 +208,8 @@ const char help_str[] =
 	"      Set real-time clock alarm to go off in <sec> seconds\n"
 	"  rwhashpd <dev_id> <HASH[0] ... <HASH[4]>\n"
 	"      Set entry in PD MCU's device rw_hash table.\n"
+	"  rwsigstatus\n"
+	"      Return RW signature check result.\n"
 	"  sertest\n"
 	"      Serial output test for COM2\n"
 	"  switches\n"
@@ -1017,6 +1019,42 @@ int cmd_rw_hash_pd(int argc, char *argv[])
 	rv = ec_command(EC_CMD_USB_PD_RW_HASH_ENTRY, 0, p, sizeof(*p), NULL, 0);
 
 	return rv;
+}
+
+int cmd_rwsig_action(int argc, char *argv[])
+{
+	struct ec_params_rwsig_action req;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s abort | continue\n", argv[0]);
+		return -1;
+	}
+
+	if (!strcasecmp(argv[1], "abort"))
+		req.action = RWSIG_ACTION_ABORT;
+	else if (!strcasecmp(argv[1], "continue"))
+		req.action = RWSIG_ACTION_CONTINUE;
+	else
+		return -1;
+
+	return ec_command(EC_CMD_RWSIG_ACTION, 0, &req, sizeof(req), NULL, 0);
+}
+
+int cmd_rwsig_status(int argc, char *argv[])
+{
+	int rv;
+	struct ec_response_rwsig_check_status resp;
+
+	rv = ec_command(EC_CMD_RWSIG_CHECK_STATUS, 0, NULL, 0, &resp, sizeof(resp));
+	if (rv < 0)
+		return rv;
+
+	if (resp.status == -1)
+		printf("RW signature check not executed.\n");
+	else
+		printf("RW signature check: %s\n", resp.status ? "OK" : "FAILED");
+
+	return 0;
 }
 
 /**
@@ -7048,6 +7086,8 @@ const struct command commands[] = {
 	{"rtcset", cmd_rtc_set},
 	{"rtcsetalarm", cmd_rtc_set_alarm},
 	{"rwhashpd", cmd_rw_hash_pd},
+	{"rwsigaction", cmd_rwsig_action},
+	{"rwsigstatus", cmd_rwsig_status},
 	{"sertest", cmd_serial_test},
 	{"port80flood", cmd_port_80_flood},
 	{"switches", cmd_switches},
