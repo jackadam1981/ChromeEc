@@ -114,17 +114,29 @@ bd99955_write_cleanup:
 
 static int bd99955_charger_enable(int enable)
 {
-	int rv;
-	int reg;
+	int rv, reg, charge_current;
 
 	rv = ch_raw_read16(BD99955_CMD_CHGOP_SET2, &reg,
 				BD99955_EXTENDED_COMMAND);
 	if (rv)
 		return rv;
 
-	if (enable)
+	if (enable) {
+		/*
+		 * Make sure the charge current is at least current_min before
+		 * enabling charging.
+		 */
+		rv = charger_get_current(&charge_current);
+		if (rv)
+			return rv;
+		if (charge_current < bd99955_charger_info.current_min) {
+			rv = charger_set_current(
+				bd99955_charger_info.current_min);
+			if (rv)
+				return rv;
+		}
 		reg |= BD99955_CMD_CHGOP_SET2_CHG_EN;
-	else
+	} else
 		reg &= ~BD99955_CMD_CHGOP_SET2_CHG_EN;
 
 	return ch_raw_write16(BD99955_CMD_CHGOP_SET2, reg,
@@ -595,6 +607,13 @@ int charger_set_current(int current)
 	else if (current < bd99955_charger_info.current_min &&
 		!(charge_get_flags() & CHARGE_FLAG_FORCE_IDLE))
 		current = bd99955_charger_info.current_min;
+
+	if (current == 0) {
+		/* disable charger before set charge current to 0 */
+		rv = bd99955_charger_enable(0);
+		if (rv)
+			return rv;
+	}
 
 	rv = ch_raw_write16(BD99955_CMD_CHG_CURRENT, current,
 			    BD99955_BAT_CHG_COMMAND);

@@ -427,7 +427,7 @@ static int charge_request(int voltage, int current)
 	 */
 #ifdef CONFIG_CHARGER_BD99955
 	/* Charger auto exits from battery learn mode if charge inhibited */
-	if (current > 0 || chg_ctl_mode == CHARGE_CONTROL_DISCHARGE)
+	if (current > 0 && chg_ctl_mode == CHARGE_CONTROL_NORMAL)
 #else
 	if (voltage > 0 || current > 0)
 #endif
