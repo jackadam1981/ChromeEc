@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8d21d98_6263be6e",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-21T22:02:43Z",
+      "side": 1,
+      "message": "Sensor on in S0  for chrome for screen orientation.",
+      "revId": "0c2a59ed372fc5960db63db94939b3a63a84537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2125c737_b2b78d03",
+        "filename": "board/rowan/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-21T22:02:43Z",
+      "side": 1,
+      "message": "gyro is never used for angle detection.\nJust say:\n\nSensor off in S0 be default.",
+      "revId": "0c2a59ed372fc5960db63db94939b3a63a84537c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
