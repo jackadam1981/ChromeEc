@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e05261a0_0a0011ba",
+        "filename": "chip/npcx/config_chip-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-21T22:57:24Z",
+      "side": 1,
+      "message": "Is this actually configurable? If not maybe drop the \"CONFIG_\" prefix. It seems it\u0027s only used within this header file anyways.",
+      "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6507c60f_bf905170",
+        "filename": "chip/npcx/config_chip-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-21T22:57:24Z",
+      "side": 1,
+      "message": "Also here, maybe just NPCX_RAM_SIZE if you\u0027re just using it for checking memory layout.",
+      "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37161825_80a1e845",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-21T22:57:24Z",
+      "side": 1,
+      "message": "The same general questions apply here as the ones asked for config_chip-npcx5.h",
+      "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8838aaec_39af87b2",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-21T22:57:24Z",
+      "side": 1,
+      "message": "All new config options should be at least undefined in \"include/config.h\" with a brief description of what it enables/supports.\n\nAre these actually optional? Or are they mandated by the chip variant? That is could one use a NPCX7M6F without PSL mode?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 77
+      },
+      "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
