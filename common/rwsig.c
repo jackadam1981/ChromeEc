@@ -10,6 +10,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "flash.h"
+#include "host_command.h"
 #include "rollback.h"
 #include "rsa.h"
 #include "rwsig.h"
@@ -29,7 +30,6 @@
 /* RW firmware reset vector */
 static uint32_t * const rw_rst =
 	(uint32_t *)(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF + 4);
-
 
 void rwsig_jump_now(void)
 {
@@ -271,4 +271,18 @@ exit:
 	while (1)
 		task_wait_event(-1);
 }
+#else
+int rwsig_cmd_check_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_rwsig_check_status *r = args->response;
+
+	memset(r, 0, sizeof(*r));
+	r->status = rwsig_check_signature();
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_RWSIG_CHECK_STATUS,
+		     rwsig_cmd_check_status,
+		     EC_VER_MASK(0));
 #endif
