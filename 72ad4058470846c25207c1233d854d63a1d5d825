@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "926cbb47_56dd90db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-21T19:31:23Z",
+      "side": 1,
+      "message": "Instead of WIP (Work in Progress), use driver: lsm6dsm : Move common functions (not final .)\n\nAdd BRANCH\u003dnone, BUILD, TEST. (If possible, test with make -j buildall for every CL).",
+      "revId": "72ad4058470846c25207c1233d854d63a1d5d825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "575898ed_3d50eeae",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-21T19:31:23Z",
+      "side": 1,
+      "message": "split the CL, this is unrelated to moving common function.",
+      "revId": "72ad4058470846c25207c1233d854d63a1d5d825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8a7a4c_750aea08",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-21T19:31:23Z",
+      "side": 1,
+      "message": "There resgisters are used later (Add activity recognition). You can either add a CL that just add the registers definition, or put the register definition in the fist CL that use it.",
+      "revId": "72ad4058470846c25207c1233d854d63a1d5d825",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
