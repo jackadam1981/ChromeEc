@@ -170,6 +170,152 @@ done:
 	return ret;
 }
 
+/*
+ * Sends a command to the EC (protocol v3).  Returns the command status code, or
+ * -1 if other error.
+ *
+ * Returns >= 0 for success, or negative if error.
+ *
+ */
+static int ec_command_v3_i2c(int command, int version,
+			     const void *outdata, int outsize,
+			     void *indata, int insize)
+{
+	struct i2c_rdwr_ioctl_data data;
+	struct i2c_msg i2c_msg[2];
+	int ret = -1;
+
+	struct ec_host_request rq;
+	struct ec_host_response *rs;
+	char* req_buf = NULL;
+	int req_len;
+	char* resp_buf = NULL;
+	int resp_len;
+	uint8_t sum = 0;
+	const uint8_t *c;
+	uint8_t *d;
+	int i;
+	/* extra 1 byte for command code (EC_COMMAND_PROTOCOL_3) */
+	int out_header_size = 1 + sizeof(struct ec_host_request);
+	/* extra 2 bytes for return data length */
+	int in_header_size = 2 + sizeof(struct ec_host_response);
+
+	i2c_msg[0].addr = EC_I2C_ADDR;
+	i2c_msg[0].flags = 0;
+	i2c_msg[1].addr = EC_I2C_ADDR;
+	i2c_msg[1].flags = I2C_M_RD;
+	data.msgs = i2c_msg;
+	data.nmsgs = 2;
+
+	/* prepare request */
+	req_len = outsize + out_header_size;
+	req_buf = calloc(1, req_len);
+	i2c_msg[0].len = req_len;
+	i2c_msg[0].buf = (char *)req_buf;
+
+	rq.struct_version = EC_HOST_REQUEST_VERSION;
+	rq.checksum = 0;
+	rq.command = command;
+	rq.command_version = version;
+	rq.data_len = outsize;
+
+	debug("i2c req %02x:", command);
+	for (i = 0, c = (const uint8_t *)&rq; i < sizeof(rq); i++, c++) {
+		sum += *c;
+		debug(" %02x", *c);
+	}
+
+	/* copy request buffer */
+	for (i = 0, c = outdata; i < outsize; i++, c++) {
+		req_buf[out_header_size + i] = *c;
+		sum += *c;
+		debug(" %02x", *c);
+	}
+
+	debug(", sum=%02x\n", sum);
+	rq.checksum = -sum;
+
+	req_buf[0] = EC_COMMAND_PROTOCOL_3;
+	memcpy(req_buf + 1, &rq, sizeof(rq));
+
+	/* prepare response */
+	resp_len = insize + in_header_size;
+	resp_buf = calloc(1, resp_len);
+	i2c_msg[1].len = resp_len;
+	i2c_msg[1].buf = resp_buf;
+
+	/* send command to EC and read answer */
+	ret = ioctl(i2c_fd, I2C_RDWR, &data);
+	if (ret < 0) {
+		fprintf(stderr, "i2c transfer failed: %d (err: %d)\n",
+			ret, errno);
+		ret = -EC_RES_ERROR;
+		goto done;
+	}
+
+	rs = (struct ec_host_response*)(resp_buf + 2);
+	ret = rs->result;
+	resp_len = rs->data_len;
+
+	if (rs->data_len > insize) {
+		fprintf(stderr, "response size is too large %d > %d\n",
+				resp_len, insize);
+		ret = -EC_RES_ERROR;
+		goto done;
+	}
+
+	if (ret) {
+		debug("command 0x%02x returned an error %d\n",
+		      command, rs->result);
+		/* Translate ERROR to -ERROR and offset */
+		ret = -EECRESULT - ret;
+	} else if (insize) {
+		debug("i2c resp  :");
+		/* copy response packet payload and compute checksum */
+		sum = 0;
+		for (i = 0, d = (uint8_t*)rs; i < sizeof(rs); i++, d++) {
+			sum += *d;
+			debug(" %02x", *d);
+		}
+		for (i = 0, d = indata; i < rs->data_len; i++, d++) {
+			*d = resp_buf[in_header_size + i];
+			sum += *d;
+			debug(" %02x", *d);
+		}
+		debug(", sum=%02x\n", sum);
+
+		if (sum != 0) {
+			fprintf(stderr, "bad packet checksum\n");
+			ret = -EC_RES_ERROR;
+			goto done;
+		}
+
+		/* return output buffer size */
+		ret = resp_len;
+	}
+
+done:
+	if (resp_buf)
+		free(resp_buf);
+	if (req_buf)
+		free(req_buf);
+	return ret;
+}
+
+/*
+ * Determine whether or not EC is running protocol V3.
+ *
+ * Returns 1 if yes, else 0.
+ *
+ */
+static int ec_dev_is_v3(void)
+{
+	struct ec_response_get_protocol_info info;
+	/* EC_CMD_GET_PROTOCOL_INFO is only available in protocol v3. */
+	return ec_command_v3_i2c(EC_CMD_GET_PROTOCOL_INFO, 0, NULL, 0, &info,
+			         sizeof(info)) == sizeof(info);
+}
+
 int comm_init_i2c(void)
 {
 	char *file_path;
@@ -207,8 +353,13 @@ int comm_init_i2c(void)
 
 	free(file_path);
 
-	ec_command_proto = ec_command_i2c;
-	ec_max_outsize = ec_max_insize = EC_PROTO2_MAX_PARAM_SIZE;
+	if (ec_dev_is_v3()) {
+		ec_command_proto = ec_command_v3_i2c;
+		/* ec_max_outsize and ec_max_insize will later be filled in comm-host.c */
+	} else {
+		ec_command_proto = ec_command_i2c;
+		ec_max_outsize = ec_max_insize = EC_PROTO2_MAX_PARAM_SIZE;
+	}
 
 	return 0;
 }
