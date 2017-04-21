@@ -4040,6 +4040,25 @@ struct __ec_align2 ec_response_pd_chip_info {
 	};
 };
 
+/* Run RW signature verification and get status */
+#define EC_CMD_RWSIG_CHECK_STATUS	0x011C
+
+struct __ec_align4 ec_response_rwsig_check_status {
+	uint32_t status;
+};
+
+/* Alter RWSIG */
+#define EC_CMD_RWSIG_ACTION	0x011D
+
+enum rwsig_action {
+	RWSIG_ACTION_ABORT = 0,		/* Abort RWSIG and prevent jumping */
+	RWSIG_ACTION_CONTINUE = 1,	/* Jump to RW immediately */
+};
+
+struct __ec_align4 ec_params_rwsig_action {
+	uint32_t action;
+};
+
 #endif  /* !__ACPI__ */
 
 /*****************************************************************************/
