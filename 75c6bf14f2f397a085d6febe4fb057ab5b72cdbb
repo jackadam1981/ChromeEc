@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2232366e_08c3df8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-21T19:31:55Z",
+      "side": 1,
+      "message": "Remove WIP:\ndriver: lsm6dsm/lsm6dsl: Add FIFO support",
+      "revId": "75c6bf14f2f397a085d6febe4fb057ab5b72cdbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9ca464_50712753",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-21T19:31:55Z",
+      "side": 1,
+      "message": "How to do you test the fifo mode: describe ec console command used. Did you connect the discovery board to a chromebook to let the chromebbok CPU ask for FIFO data?",
+      "revId": "75c6bf14f2f397a085d6febe4fb057ab5b72cdbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "425729a9_91f21580",
+        "filename": "board/discovery_stmems/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-21T19:31:55Z",
+      "side": 1,
+      "message": "is the assumption both sensor can not be present at the same time?",
+      "revId": "75c6bf14f2f397a085d6febe4fb057ab5b72cdbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
