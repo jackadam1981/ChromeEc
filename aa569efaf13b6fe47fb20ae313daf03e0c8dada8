@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3920e550_5da7bb1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-21T00:25:41Z",
+      "side": 1,
+      "message": "Maybe \u0027bd99955: Set at least min current when charging.\u0027\n\nI think you\u0027re saying don\u0027t set 0mA if CHG_EN is set.",
+      "revId": "aa569efaf13b6fe47fb20ae313daf03e0c8dada8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf0d96b6_f45a7633",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-21T00:25:41Z",
+      "side": 1,
+      "message": "Can you explain why this behavior is changing?",
+      "revId": "aa569efaf13b6fe47fb20ae313daf03e0c8dada8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
