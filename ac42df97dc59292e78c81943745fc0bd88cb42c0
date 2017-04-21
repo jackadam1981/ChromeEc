@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8d69638_6bebcc17",
+        "filename": "builtin/stdint.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-04-21T01:27:58Z",
+      "side": 1,
+      "message": "Consider moving these definitions below the definitions of UINT64_C and INT64_C below so that you can leverage them:\n\n#define UINT64_MAX UINT64_C(18446744073709551615)",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "ac42df97dc59292e78c81943745fc0bd88cb42c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
