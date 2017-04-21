@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8af7b30e_b354b7bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-21T19:18:42Z",
+      "side": 1,
+      "message": "Remove WIP, add BUG, BRANCH, TEST section. Test how the CL affect the data quality. Check with make -j buildall nothing is broken (you have to do it when doing repo upload with the mandatory  \u0027--verify\u0027 options.",
+      "revId": "f56db543d773a554c6819b29bebf2526ca7b7dd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
