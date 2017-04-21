@@ -57,6 +57,19 @@ static int raw_button_pressed(const struct button_config *button)
 }
 
 /*
+ * Whether recovery button (or combination of equivalent buttons) is pressed
+ */
+static int is_recovery_button_pressed(void)
+{
+	int i;
+	for (i = 0; i < recovery_buttons_count; i++) {
+		if (!raw_button_pressed(recovery_buttons[i]))
+			return 0;
+	}
+	return 1;
+}
+
+/*
  * Button initialization.
  */
 void button_init(void)
@@ -74,8 +87,7 @@ void button_init(void)
 #ifdef CONFIG_BUTTON_RECOVERY
 	if (!system_jumped_to_this_image() &&
 	    (system_get_reset_flags() & RESET_FLAG_RESET_PIN) &&
-	    raw_button_pressed(&buttons[BUTTON_VOLUME_DOWN]) &&
-	    raw_button_pressed(&buttons[BUTTON_VOLUME_UP])) {
+	    is_recovery_button_pressed()) {
 		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 	}
 #endif
