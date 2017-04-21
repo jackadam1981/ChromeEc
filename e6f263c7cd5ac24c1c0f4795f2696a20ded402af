@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fe5b686_c18baa20",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-21T18:53:57Z",
+      "side": 1,
+      "message": "What about getting the currently set charge current and only modifying it if it\u0027s less than the minimum?",
+      "revId": "e6f263c7cd5ac24c1c0f4795f2696a20ded402af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e88b3ef_f5a94421",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-21T18:53:57Z",
+      "side": 1,
+      "message": "\"Make sure the charge current is at least current_min before enabling charging.\"",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 37
+      },
+      "revId": "e6f263c7cd5ac24c1c0f4795f2696a20ded402af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27816e16_aebf3cb9",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-21T18:53:57Z",
+      "side": 1,
+      "message": "\u0027charger\u0027",
+      "range": {
+        "startLine": 608,
+        "startChar": 13,
+        "endLine": 608,
+        "endChar": 19
+      },
+      "revId": "e6f263c7cd5ac24c1c0f4795f2696a20ded402af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
