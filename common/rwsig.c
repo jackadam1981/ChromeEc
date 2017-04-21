@@ -10,6 +10,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "flash.h"
+#include "host_command.h"
 #include "rollback.h"
 #include "rsa.h"
 #include "rwsig.h"
@@ -30,6 +31,8 @@
 static uint32_t * const rw_rst =
 	(uint32_t *)(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_MEM_OFF + 4);
 
+/* SHA256 hash of RW firmware */
+static uint8_t rw_hash[SHA256_DIGEST_SIZE];
 
 void rwsig_jump_now(void)
 {
@@ -176,6 +179,7 @@ int rwsig_check_signature(void)
 	SHA256_init(&ctx);
 	SHA256_update(&ctx, rwdata, rwlen);
 	hash = SHA256_final(&ctx);
+	memcpy(rw_hash, hash, SHA256_DIGEST_SIZE);
 
 	good = rsa_verify(key, sig, hash, rsa_workbuf);
 	if (!good)
@@ -221,6 +225,22 @@ out:
 
 	return good;
 }
+
+int rwsig_cmd_check_status(struct host_cmd_handler_args *args)
+{
+	struct ec_response_rwsig_check_status *r = args->response;
+
+	memset(r, 0, sizeof(*r));
+	r->status = rwsig_check_signature();
+	memcpy(r->digest, rw_hash, SHA256_DIGEST_SIZE);
+
+	args->response_size = sizeof(*r);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_RWSIG_CHECK_STATUS,
+		     rwsig_cmd_check_status,
+		     EC_VER_MASK(0));
 
 #ifdef HAS_TASK_RWSIG
 #define TASK_EVENT_ABORT TASK_EVENT_CUSTOM(1)

@@ -4040,6 +4040,14 @@ struct __ec_align2 ec_response_pd_chip_info {
 	};
 };
 
+/* Run RW signature verification and get status */
+#define EC_CMD_RWSIG_CHECK_STATUS	0x011C
+
+struct __ec_align4 ec_response_rwsig_check_status {
+	uint32_t status;
+	uint8_t digest[32];  /* SHA256_DIGEST_SIZE */
+};
+
 #endif  /* !__ACPI__ */
 
 /*****************************************************************************/
