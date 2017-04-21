@@ -63,6 +63,7 @@
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_BUTTON_X86
 #define CONFIG_POWER_COMMON
+#define CONFIG_SCI_GPIO GPIO_PCH_SCI_L
 
 /* EC */
 #define CONFIG_WP_ALWAYS
@@ -95,7 +96,6 @@
 /* EC exclude modules */
 #undef CONFIG_ADC
 #undef CONFIG_PECI
-#undef CONFIG_SWITCH
 #undef CONFIG_WATCHDOG
 
 #ifndef __ASSEMBLER__

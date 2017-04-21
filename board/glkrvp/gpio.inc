@@ -55,6 +55,9 @@ GPIO(I2C2_SDA,      PIN(9, 1), GPIO_ODR_HIGH)
 GPIO(I2C3_SCL,      PIN(D, 1), GPIO_ODR_HIGH)
 GPIO(I2C3_SDA,      PIN(D, 0), GPIO_ODR_HIGH)
 
+/* TODO: Add Write Protect interrupt */
+GPIO(WP_L,	PIN(9, 3), GPIO_INPUT)
+
 /* Unused pins 3.3V & Interruptable */
 GPIO(NC_02,	PIN(0, 2), GPIO_INPUT)
 GPIO(NC_04,	PIN(0, 4), GPIO_INPUT)
@@ -93,7 +96,6 @@ GPIO(NC_D3,	PIN(D, 3), GPIO_INPUT)
 GPIO(NC_E7,	PIN(E, 7), GPIO_INPUT)
 
 /* Unused pins: VSPI 3.3V or 1.8V & Interruptable */
-GPIO(NC_93,	PIN(9, 3), GPIO_INPUT)
 GPIO(NC_94,	PIN(9, 4), GPIO_INPUT)
 GPIO(NC_95,	PIN(9, 5), GPIO_INPUT)
 
