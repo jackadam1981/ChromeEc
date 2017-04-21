@@ -399,6 +399,12 @@ const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 			      GPIO_VOLUME_UP_L, 30 * MSEC, 0},
 };
 
+int is_recovery_button_pressed(void)
+{
+	return raw_button_pressed(&buttons[BUTTON_VOLUME_DOWN])
+			&& raw_button_pressed(&buttons[BUTTON_VOLUME_UP]);
+}
+
 static void board_pmic_init(void)
 {
 	if (system_jumped_to_this_image())

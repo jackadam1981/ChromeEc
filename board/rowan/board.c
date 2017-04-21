@@ -163,6 +163,12 @@ const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 			      GPIO_VOLUME_UP_L, 30 * MSEC, 0},
 };
 
+int is_recovery_button_pressed(void)
+{
+	return raw_button_pressed(&buttons[BUTTON_VOLUME_DOWN])
+			&& raw_button_pressed(&buttons[BUTTON_VOLUME_UP]);
+}
+
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0, /* port idx */

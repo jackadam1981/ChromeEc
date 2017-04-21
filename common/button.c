@@ -43,7 +43,7 @@ static int simulated_button_pressed(void)
 /*
  * Whether a button is currently pressed.
  */
-static int raw_button_pressed(const struct button_config *button)
+int raw_button_pressed(const struct button_config *button)
 {
 	int raw_value =
 #ifdef CONFIG_CMD_BUTTON
@@ -74,8 +74,7 @@ void button_init(void)
 #ifdef CONFIG_BUTTON_RECOVERY
 	if (!system_jumped_to_this_image() &&
 	    (system_get_reset_flags() & RESET_FLAG_RESET_PIN) &&
-	    raw_button_pressed(&buttons[BUTTON_VOLUME_DOWN]) &&
-	    raw_button_pressed(&buttons[BUTTON_VOLUME_UP])) {
+	    is_recovery_button_pressed()) {
 		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 	}
 #endif
