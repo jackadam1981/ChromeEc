@@ -72,7 +72,7 @@ USB_STREAM_CONFIG(usart1_usb,
  * Define the strings used in our USB descriptors.
  */
 const void *const usb_strings[] = {
-	[USB_STR_DESC]         = usb_string_desc,
+	[USB_STR_DESC]	 = usb_string_desc,
 	[USB_STR_VENDOR]       = USB_STRING_DESC("Google Inc."),
 	[USB_STR_PRODUCT]      = USB_STRING_DESC("Tigertail"),
 	[USB_STR_SERIALNO]     = 0,
@@ -334,14 +334,32 @@ static int command_mux(int argc, char **argv)
 	char *mux_state_str = "off";
 
 	if (argc > 1) {
-		if (!strcasecmp("off", argv[1]))
+		if (!strcasecmp("off", argv[1])) {
 			set_mux_state(MUX_OFF);
-		else if (!strcasecmp("a", argv[1]))
+			gpio_set_level(GPIO_LED_R, 0);
+			gpio_set_level(GPIO_LED_G, 1);
+			gpio_set_level(GPIO_LED_B, 1);
+			gpio_set_level(GPIO_LED2_R, 0);
+			gpio_set_level(GPIO_LED2_G, 1);
+			gpio_set_level(GPIO_LED2_B, 1);
+		} else if (!strcasecmp("a", argv[1])) {
 			set_mux_state(MUX_A);
-		else if (!strcasecmp("b", argv[1]))
+			gpio_set_level(GPIO_LED_R, 1);
+			gpio_set_level(GPIO_LED_G, 0);
+			gpio_set_level(GPIO_LED_B, 1);
+			gpio_set_level(GPIO_LED2_R, 0);
+			gpio_set_level(GPIO_LED2_G, 1);
+			gpio_set_level(GPIO_LED2_B, 1);
+		} else if (!strcasecmp("b", argv[1])) {
 			set_mux_state(MUX_B);
-		else
-			return EC_ERROR_PARAM1;
+			gpio_set_level(GPIO_LED_R, 0);
+			gpio_set_level(GPIO_LED_G, 1);
+			gpio_set_level(GPIO_LED_B, 1);
+			gpio_set_level(GPIO_LED2_R, 1);
+			gpio_set_level(GPIO_LED2_G, 0);
+			gpio_set_level(GPIO_LED2_B, 1);
+		} else
+		return EC_ERROR_PARAM1;
 	}
 
 	if (mux_state == MUX_A)
@@ -378,4 +396,3 @@ static void board_init(void)
 	ina2xx_init(4, 0x8000, INA2XX_CALIB_1MA(15 /*mOhm*/));
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
-
