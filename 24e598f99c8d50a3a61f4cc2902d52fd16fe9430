@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9ec7f7e0_5321e84f",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Straps removed.",
+      "parentUuid": "849e871b_4d806759",
+      "range": {
+        "startLine": 109,
+        "startChar": 66,
+        "endLine": 109,
+        "endChar": 67
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ef090c5_f4322348",
         "filename": "board/mn50/board.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33726ea0_4b86e517",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ef090c5_f4322348",
+      "range": {
+        "startLine": 364,
+        "startChar": 38,
+        "endLine": 364,
+        "endChar": 42
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fd0cb5c5_e35e7c44",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fead3c3_7c1e6ae9",
+      "range": {
+        "startLine": 192,
+        "startChar": 17,
+        "endLine": 192,
+        "endChar": 18
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6640041_58f3f324",
         "filename": "board/mn50/build.mk",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bea0edb_9471a7c2",
+        "filename": "board/mn50/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6640041_58f3f324",
+      "range": {
+        "startLine": 2,
+        "startChar": 16,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c7144277_b7e9895f",
+        "filename": "board/mn50/ec.tasklist",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfd56c81_03e7cd26",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4fb7625_57d58ce8",
         "filename": "board/mn50/gpio.inc",
         "patchSetId": 4
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "d3aa4c09_cb5f9225",
+        "filename": "board/mn50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4fb7625_57d58ce8",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f9e6c73_4626c4bf",
         "filename": "board/mn50/rdd.c",
         "patchSetId": 4
@@ -151,6 +295,30 @@
       "writtenOn": "2017-04-18T17:34:52Z",
       "side": 1,
       "message": "2017",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945499d7_df2066b3",
+        "filename": "board/mn50/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "deleted file",
+      "parentUuid": "5f9e6c73_4626c4bf",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "983c9c4f_8ee4910a",
+        "filename": "board/mn50/scratch_reg1.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "deleted file",
+      "parentUuid": "109e57a8_d23e3941",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "707d803b_1158a010",
         "filename": "board/mn50/usb_i2c.c",
         "patchSetId": 4
@@ -206,6 +398,30 @@
       "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d934e67f_8af87cf8",
+        "filename": "board/mn50/usb_i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "707d803b_1158a010",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "dcfc5be6_d005551b",
+        "filename": "board/mn50/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dde0747_fa85803e",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6adc546_2f9d2468",
         "filename": "board/mn50/wp.c",
         "patchSetId": 4
@@ -243,6 +483,30 @@
       "writtenOn": "2017-04-18T17:34:52Z",
       "side": 1,
       "message": "2017",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54769709_eefb296c",
+        "filename": "board/mn50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "file deleted",
+      "parentUuid": "e6adc546_2f9d2468",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -275,6 +539,30 @@
       "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1443b0d_f136ef10",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdcfb444_260b2867",
+      "range": {
+        "startLine": 2,
+        "startChar": 16,
+        "endLine": 2,
+        "endChar": 20
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "e55312e4_351f880e",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54d02f8f_8c312938",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "093ff5aa_39ff5b23",
         "filename": "chip/g/system.c",
         "patchSetId": 4
@@ -344,6 +656,30 @@
       "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5562ac21_473616dd",
+        "filename": "chip/g/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T03:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "093ff5aa_39ff5b23",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "24e598f99c8d50a3a61f4cc2902d52fd16fe9430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
