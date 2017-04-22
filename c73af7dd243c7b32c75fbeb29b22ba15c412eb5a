@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14f8c3fd_2e7d7b95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-22T01:29:07Z",
+      "side": 1,
+      "message": "\u0027needs to be broken up and encapsulated\u0027",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "399e69a5_aa175b6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-22T01:29:07Z",
+      "side": 1,
+      "message": "Should probably add a test to make sure that a g chip board can still update properly. I think you mentioned it earlier.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c855c05f_50318d6a",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-22T01:29:07Z",
+      "side": 1,
+      "message": "My understanding is that a PDU is the payload and header (struct upgrade_command). If that\u0027s correct, we should probably state that clearly.\n\n\"Image transfer is done in up to 1K sized protocol data units (PDUs)\". \"The host supplying the image encapsulates blocks with the upgrade_command header forming an update PDU.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa33c457_9ccb5a15",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-22T01:29:07Z",
+      "side": 1,
+      "message": "\u0027is a 1 byte\u0027",
+      "range": {
+        "startLine": 23,
+        "startChar": 66,
+        "endLine": 23,
+        "endChar": 75
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa10025_48173e34",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-22T01:29:07Z",
+      "side": 1,
+      "message": "remove this. I would expect that pretty much every PDU is different in terms of content. Maybe \"a PDU containing all zeros which indicates...\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 49,
+        "endLine": 27,
+        "endChar": 58
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c21b578b_a582e030",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-22T01:29:07Z",
+      "side": 1,
+      "message": "PDU?",
+      "range": {
+        "startLine": 40,
+        "startChar": 8,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3585562f_853d4637",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-22T01:29:07Z",
+      "side": 1,
+      "message": "maybe transpose these words?",
+      "range": {
+        "startLine": 42,
+        "startChar": 56,
+        "endLine": 42,
+        "endChar": 66
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c95b66_b34afe78",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-22T01:29:07Z",
+      "side": 1,
+      "message": "it would be nice to put something like this in chip/g/upgrade_fw.h to illustrate the PDU.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 74
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
