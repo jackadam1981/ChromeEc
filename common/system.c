@@ -770,6 +770,12 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_JUMP_RO:
 		return system_run_image_copy(SYSTEM_IMAGE_RO);
 	case EC_REBOOT_JUMP_RW:
+#ifdef CONFIG_RWSIG
+		if (rwsig_get_status() != RWSIG_VALID) {
+			CPRINTS("RW signature check failed, jump RW blocked");
+			return EC_ERROR_ACCESS_DENIED;
+		}
+#endif
 		return system_run_image_copy(SYSTEM_IMAGE_RW);
 	case EC_REBOOT_COLD:
 #ifdef HAS_TASK_PDCMD

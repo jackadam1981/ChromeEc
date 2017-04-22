@@ -34,6 +34,14 @@ static uint32_t * const rw_rst =
 /* SHA256 hash of RW firmware */
 static uint8_t rw_hash[SHA256_DIGEST_SIZE];
 
+/* Store the result of last check */
+static enum rwsig_status rwsig_status;
+
+enum rwsig_status rwsig_get_status(void)
+{
+	return rwsig_status;
+}
+
 void rwsig_jump_now(void)
 {
 	/* If system was reset by reset-pin, do not jump and wait for command from
@@ -230,6 +238,7 @@ out:
 	if (rsa_workbuf)
 		shared_mem_release(rsa_workbuf);
 
+	rwsig_status = good ? RWSIG_VALID : RWSIG_INVALID;
 	return good;
 }
 
@@ -252,13 +261,6 @@ DECLARE_HOST_COMMAND(EC_CMD_RWSIG_CHECK_STATUS,
 #ifdef HAS_TASK_RWSIG
 #define TASK_EVENT_ABORT TASK_EVENT_CUSTOM(1)
 #define TASK_EVENT_CONTINUE TASK_EVENT_CUSTOM(2)
-
-static enum rwsig_status rwsig_status;
-
-enum rwsig_status rwsig_get_status(void)
-{
-	return rwsig_status;
-}
 
 void rwsig_abort(void)
 {

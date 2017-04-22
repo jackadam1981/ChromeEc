@@ -10,10 +10,8 @@
 #include "rsa.h"
 
 #ifndef __ASSEMBLER__
-#ifdef HAS_TASK_RWSIG
-/* The functions below only make sense if RWSIG task is defined. */
 
-/* Current status of RW signature verification */
+/* Status of RW signature verification */
 enum rwsig_status {
 	RWSIG_UNKNOWN = 0, /* Unknown/not started */
 	RWSIG_IN_PROGRESS,
@@ -22,8 +20,11 @@ enum rwsig_status {
 	RWSIG_ABORTED,
 };
 
-/* Returns current rwsig verification status. */
+/* Returns rwsig verification status. */
 enum rwsig_status rwsig_get_status(void);
+
+#ifdef HAS_TASK_RWSIG
+/* The functions below only make sense if RWSIG task is defined. */
 
 /*
  * Aborts current verification, also prevents RWSIG task from automatically
