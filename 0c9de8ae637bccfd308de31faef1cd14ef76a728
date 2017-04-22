@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1800130f_decdf82a",
+        "filename": "chip/npcx/config_chip-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-04-22T00:37:27Z",
+      "side": 1,
+      "message": "Indeed, it\u0027s not configurable. I\u0027ll replace it with NPCX_BTRAM_SIZE.",
+      "parentUuid": "e05261a0_0a0011ba",
+      "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6507c60f_bf905170",
         "filename": "chip/npcx/config_chip-npcx5.h",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-21T22:57:24Z",
       "side": 1,
       "message": "Also here, maybe just NPCX_RAM_SIZE if you\u0027re just using it for checking memory layout.",
+      "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "352bebf8_fea40a16",
+        "filename": "chip/npcx/config_chip-npcx5.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-04-22T00:37:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6507c60f_bf905170",
       "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ec2ab69e_42c988a6",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-04-22T00:37:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37161825_80a1e845",
+      "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8838aaec_39af87b2",
         "filename": "chip/npcx/config_chip-npcx7.h",
         "patchSetId": 2
@@ -64,6 +118,30 @@
       "writtenOn": "2017-04-21T22:57:24Z",
       "side": 1,
       "message": "All new config options should be at least undefined in \"include/config.h\" with a brief description of what it enables/supports.\n\nAre these actually optional? Or are they mandated by the chip variant? That is could one use a NPCX7M6F without PSL mode?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 77
+      },
+      "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1afce0e_e8b4e341",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-04-22T00:37:27Z",
+      "side": 1,
+      "message": "Yes, they\u0027re optional and depend on the chip variant. Please notice CONFIG_NPCX_PSL_MODE is used to declare npcx7 ec support this hardware feature. If the developers want to use PSL circuit for hibernating, they need to add CONFIG_HIBERNATE_PSL in the board-level driver. (CONFIG_HIBERNATE_PSL will be introduced in the npcx7 system driver.)\n\nRegarding undefined items, these three definitions are only related to CHIP_VARIANT and cannot be modified in the board-level driver. Should we need to add undefined items in \"include/config.h\"? Or change prefix CONFIG_ to the other?",
+      "parentUuid": "8838aaec_39af87b2",
       "range": {
         "startLine": 22,
         "startChar": 0,
