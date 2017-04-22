@@ -151,6 +151,30 @@
       "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e909d964_5f832696",
+        "filename": "chip/npcx/config_chip-npcx7.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-22T01:37:04Z",
+      "side": 1,
+      "message": "Ah, okay. If they cannot be modified at the board level, we should drop the CONFIG_ prefix. Just have them defined by the variant.",
+      "parentUuid": "d1afce0e_e8b4e341",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 77
+      },
+      "revId": "0c9de8ae637bccfd308de31faef1cd14ef76a728",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
