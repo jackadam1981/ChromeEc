@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4865a8d6_d2192557",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-22T02:22:04Z",
+      "side": 1,
+      "message": "Maybe have a function set_led_a(r, g, b), and pass in \nset_led_a(1, 1, 0) inside set_mux_state?",
+      "revId": "724be9d14b67414b191299328fa37574bf64ec10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
