@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "104e9288_85324819",
+        "filename": "common/rwsig.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-23T10:31:14Z",
+      "side": 1,
+      "message": "Do we _really_ need the unsigned hash? Can we use either the signed hash or the RW FW version, so we don\u0027t need to store this in RAM?",
+      "revId": "61fd1391a2fdb3c23a3ae02b76082da3c6c133d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d5c367_68d0d049",
+        "filename": "common/rwsig.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-23T10:31:14Z",
+      "side": 1,
+      "message": "This will re-run the signature check, I don\u0027t think that\u0027s what you want to do (if you want to recheck the FW, just trigger a reset).",
+      "revId": "61fd1391a2fdb3c23a3ae02b76082da3c6c133d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
