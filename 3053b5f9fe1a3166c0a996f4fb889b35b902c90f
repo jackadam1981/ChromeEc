@@ -16,6 +16,24 @@
       "revId": "3053b5f9fe1a3166c0a996f4fb889b35b902c90f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76cfb5e0_87a751b1",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-23T11:51:47Z",
+      "side": 1,
+      "message": "shouldn\u0027t the check be ran even if RWSIG is run as a task?",
+      "parentUuid": "ec1511ad_32a9749c",
+      "revId": "3053b5f9fe1a3166c0a996f4fb889b35b902c90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
