@@ -52,6 +52,24 @@
       "revId": "3053b5f9fe1a3166c0a996f4fb889b35b902c90f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b475742_60e500b5",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T02:22:53Z",
+      "side": 1,
+      "message": "That only works for usb_update though. rose is using hostcmd to update RW. Maybe we should add another hostcmd to call rwsig_abort/rwsig_continue?",
+      "parentUuid": "831e419d_6813d671",
+      "revId": "3053b5f9fe1a3166c0a996f4fb889b35b902c90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
