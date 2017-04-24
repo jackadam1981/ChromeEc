@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1f042bf6_3eb14375",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2017-04-24T10:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe5b686_c18baa20",
+      "revId": "e6f263c7cd5ac24c1c0f4795f2696a20ded402af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e88b3ef_f5a94421",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "462e5ab3_2bdb3560",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2017-04-24T10:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e88b3ef_f5a94421",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 37
+      },
+      "revId": "e6f263c7cd5ac24c1c0f4795f2696a20ded402af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27816e16_aebf3cb9",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "e6f263c7cd5ac24c1c0f4795f2696a20ded402af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28dbc8bc_804d79ab",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2017-04-24T10:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27816e16_aebf3cb9",
+      "range": {
+        "startLine": 608,
+        "startChar": 13,
+        "endLine": 608,
+        "endChar": 19
+      },
+      "revId": "e6f263c7cd5ac24c1c0f4795f2696a20ded402af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
