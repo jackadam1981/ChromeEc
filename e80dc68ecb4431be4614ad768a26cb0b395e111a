@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b3ca858_bf0b67c2",
+        "filename": "common/rwsig.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T04:06:33Z",
+      "side": 1,
+      "message": "This should be in a ifndef HAS_TASK_RWSIG branch.",
+      "revId": "e80dc68ecb4431be4614ad768a26cb0b395e111a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df7874a9_4dd9e273",
+        "filename": "common/rwsig.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T04:06:33Z",
+      "side": 1,
+      "message": "This should be in a ifndef HAS_TASK_RWSIG branch (e.g. in a new #else branch below).",
+      "revId": "e80dc68ecb4431be4614ad768a26cb0b395e111a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ceb4c6_6e1b1c48",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4043,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T04:06:33Z",
+      "side": 1,
+      "message": "Just gets status of last signature verification run.",
+      "revId": "e80dc68ecb4431be4614ad768a26cb0b395e111a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5830f139_9b73420f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4050,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T04:06:33Z",
+      "side": 1,
+      "message": "Control RWSIG task (add a note that this only makes sense if CONFIG_RWSIG_TASK is set.",
+      "revId": "e80dc68ecb4431be4614ad768a26cb0b395e111a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
