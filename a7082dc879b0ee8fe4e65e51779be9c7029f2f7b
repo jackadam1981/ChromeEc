@@ -52,6 +52,24 @@
       "revId": "a7082dc879b0ee8fe4e65e51779be9c7029f2f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "478379a8_228ecc9b",
+        "filename": "common/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T04:03:12Z",
+      "side": 1,
+      "message": "Maybe we should instead run rwsig_check_signature in the host command? So the calculation wil be on-demand. But that also have the disadvantage of doing useless recalculation everytime the host command is issued.",
+      "parentUuid": "63e6d552_831dc11d",
+      "revId": "a7082dc879b0ee8fe4e65e51779be9c7029f2f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
