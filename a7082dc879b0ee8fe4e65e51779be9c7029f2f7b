@@ -88,6 +88,24 @@
       "revId": "a7082dc879b0ee8fe4e65e51779be9c7029f2f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c1ecb92_41d655f8",
+        "filename": "common/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T04:44:27Z",
+      "side": 1,
+      "message": "Changed the previous CL.",
+      "parentUuid": "671f095d_2fabd731",
+      "revId": "a7082dc879b0ee8fe4e65e51779be9c7029f2f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
