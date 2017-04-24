@@ -16,6 +16,24 @@
       "revId": "715fef2a2cc31f3254e8288e3dccc69282bfec49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1023be_91fbc832",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T02:35:42Z",
+      "side": 1,
+      "message": "host_command.c should only contain host_command feature itself related code I think. We may have some future i2c slave related code, so I think it make sense to leave it in i2c.c.",
+      "parentUuid": "ab0d908e_8b1a0f3a",
+      "revId": "715fef2a2cc31f3254e8288e3dccc69282bfec49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
