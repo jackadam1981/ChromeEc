@@ -226,6 +226,8 @@ const char help_str[] =
 	"      Get/set TMP006 calibration\n"
 	"  tmp006raw <tmp006_index>\n"
 	"      Get raw TMP006 data\n"
+	"  updaterw\n"
+	"      Update RW firmware.\n"
 	"  usbchargemode <port> <mode>\n"
 	"      Set USB charging mode\n"
 	"  usbmux <mux>\n"
@@ -6564,6 +6566,87 @@ int cmd_tmp006raw(int argc, char *argv[])
 	return EC_SUCCESS;
 }
 
+/**
+ * Update RW firmware with host command.
+ */
+int cmd_update_rw(int argc, char *argv[])
+{
+	struct ec_params_flash_region_info p;
+	struct ec_response_flash_region_info r;
+	struct ec_params_reboot_ec p2;
+	struct ec_response_get_version r2;
+	char* buf;
+	int size;
+	int rv = -1;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s firmware_file\n", argv[0]);
+		return -1;
+	}
+
+	/* Read the input file */
+	buf = read_file(argv[1], &size);
+	if (!buf)
+		return -1;
+
+	/* Query RW image region info */
+	p.region = EC_FLASH_REGION_RW;
+	rv = ec_command(EC_CMD_FLASH_REGION_INFO, 1, &p, sizeof(p),
+			&r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "ERROR: EC_CMD_FLASH_REGION_INFO failed: %d\n", rv);
+		goto ret;
+	}
+
+	if (size > r.size) {
+		fprintf(stderr, "ERROR: Firmware file is too large\n");
+		rv = -1;
+		goto ret;
+	}
+
+	/* Erase RW region flash */
+	printf("Erasing %d bytes at offset 0x%x...\n", r.size, r.offset);
+	rv = ec_flash_erase(r.offset, r.size);
+	if (rv < 0) {
+		fprintf(stderr, "ERROR: Flash erase failed.\n");
+		goto ret;
+	}
+
+	/* Write RW firmware to flash */
+	printf("Writing to offset 0x%x...\n", r.offset);
+
+	rv = ec_flash_write(buf, r.offset, size);
+	if (rv < 0) {
+		fprintf(stderr, "ERROR: Failed to write firmware: %d\n", rv);
+		goto ret;
+	}
+
+	/* Reboot */
+	printf("Restarting EC ...\n");
+	p2.cmd = EC_REBOOT_COLD;
+	p2.flags = 0;
+	rv = ec_command(EC_CMD_REBOOT_EC, 0, &p2, sizeof(p2), NULL, 0);
+	if (rv < 0)
+		fprintf(stderr, "ERROR: EC_CMD_REBOOT_EC failed: %d.\n", rv);
+
+	/* Wait for RWSIG check and system jump */
+	sleep(3);
+
+	/* If EC reboot and jumped to RW, it means firmware update succeed */
+	rv = ec_command(EC_CMD_GET_VERSION, 0, NULL, 0, &r2, sizeof(r2));
+	if (rv < 0) {
+		fprintf(stderr, "ERROR: EC_CMD_GET_VERSION failed: %d\n", rv);
+		return rv;
+	}
+	printf("Firmward update %s.\n",
+	       r2.current_image == EC_IMAGE_RW ? "succeed" : "failed");
+
+ret:
+	if (buf)
+		free(buf);
+	return rv;
+}
+
 static int cmd_hang_detect(int argc, char *argv[])
 {
 	struct ec_params_hang_detect req;
@@ -7076,6 +7159,7 @@ const struct command commands[] = {
 	{"thermalset", cmd_thermal_set_threshold},
 	{"tmp006cal", cmd_tmp006cal},
 	{"tmp006raw", cmd_tmp006raw},
+	{"updaterw", cmd_update_rw},
 	{"usbchargemode", cmd_usb_charge_set_mode},
 	{"usbmux", cmd_usb_mux},
 	{"usbpd", cmd_usb_pd},
