@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7042a8de_10fcb3fa",
+        "filename": "common/rwsig.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T03:32:36Z",
+      "side": 1,
+      "message": "I think using RW FW version should be fine, the we don\u0027t have to return this in the EC_CMD_RWSIG_CHECK_STATUS host command.",
+      "parentUuid": "104e9288_85324819",
+      "revId": "61fd1391a2fdb3c23a3ae02b76082da3c6c133d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07d5c367_68d0d049",
         "filename": "common/rwsig.c",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "61fd1391a2fdb3c23a3ae02b76082da3c6c133d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2f2f351_805b82f1",
+        "filename": "common/rwsig.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T03:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07d5c367_68d0d049",
+      "revId": "61fd1391a2fdb3c23a3ae02b76082da3c6c133d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
