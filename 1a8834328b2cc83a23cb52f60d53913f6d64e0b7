@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "268b341a_910d5a88",
+        "filename": "board/kahlee/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-24T15:20:52Z",
+      "side": 1,
+      "message": "Once the GPIOs are defined as open-drain in gpio.inc, gpio_set_level(gpio, 1) should make the pin high-Z and gpio_set_level(gpio, 0) should ground the pin.  So it shouldn\u0027t be necessary to change the flags to turn the pin on/off.  Does that not work?",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "1a8834328b2cc83a23cb52f60d53913f6d64e0b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
