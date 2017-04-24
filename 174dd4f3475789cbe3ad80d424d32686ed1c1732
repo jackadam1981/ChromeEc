@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77596cb3_192c99cc",
+        "filename": "common/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T05:04:03Z",
+      "side": 1,
+      "message": "Well, now it\u0027s DONT_CHECK",
+      "revId": "174dd4f3475789cbe3ad80d424d32686ed1c1732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42e03e27_a50563d7",
+        "filename": "common/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T05:04:03Z",
+      "side": 1,
+      "message": "signature check",
+      "range": {
+        "startLine": 176,
+        "startChar": 48,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "174dd4f3475789cbe3ad80d424d32686ed1c1732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
