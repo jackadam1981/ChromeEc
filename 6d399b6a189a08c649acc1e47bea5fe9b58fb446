@@ -46,6 +46,30 @@
       "revId": "6d399b6a189a08c649acc1e47bea5fe9b58fb446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b86d439c_58ef8ad4",
+        "filename": "common/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T03:42:37Z",
+      "side": 1,
+      "message": "Yeah we can always re-create i2c.c if there are some shared functions.",
+      "parentUuid": "58ea1076_858e209f",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "6d399b6a189a08c649acc1e47bea5fe9b58fb446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
