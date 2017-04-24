@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d87e4c81_32429a90",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-24T20:21:19Z",
+      "side": 1,
+      "message": "I have removed charger specific code from here.\n\nhttps://chromium-review.googlesource.com/c/481739/2/common/charge_state_v2.c#430",
+      "parentUuid": "a00de7b0_083d87e2",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 420,
+        "endChar": 32
+      },
+      "revId": "685aed64beb8e3a4c7dd5f08f13df49ba0d57edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6461dfc7_467a2a0f",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-24T20:03:28Z",
       "side": 1,
       "message": "nit: How about naming it bd9995x_is_discharge_on_ac?",
+      "range": {
+        "startLine": 152,
+        "startChar": 11,
+        "endLine": 152,
+        "endChar": 36
+      },
+      "revId": "685aed64beb8e3a4c7dd5f08f13df49ba0d57edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "323f61c4_94556d17",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-24T20:21:19Z",
+      "side": 1,
+      "message": "okay: chaging it to bd9995x_is_discharging_on_ac",
+      "parentUuid": "6461dfc7_467a2a0f",
       "range": {
         "startLine": 152,
         "startChar": 11,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "72149317_3b058a23",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-24T20:21:19Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "3a2d613b_c981d7b5",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 67
+      },
+      "revId": "685aed64beb8e3a4c7dd5f08f13df49ba0d57edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b3e8fe9_6d1b112d",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "2ef91fc4_f56180d0",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-24T20:21:19Z",
+      "side": 1,
+      "message": "can you pls give more details on why needed?",
+      "parentUuid": "2b3e8fe9_6d1b112d",
+      "range": {
+        "startLine": 166,
+        "startChar": 5,
+        "endLine": 166,
+        "endChar": 19
+      },
+      "revId": "685aed64beb8e3a4c7dd5f08f13df49ba0d57edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c10f340_53ac3cc0",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2017-04-24T20:03:28Z",
       "side": 1,
       "message": "Do you still need this?",
+      "range": {
+        "startLine": 709,
+        "startChar": 0,
+        "endLine": 712,
+        "endChar": 12
+      },
+      "revId": "685aed64beb8e3a4c7dd5f08f13df49ba0d57edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8adcfe6_3ac500e5",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-24T20:21:19Z",
+      "side": 1,
+      "message": "nice catch",
+      "parentUuid": "1c10f340_53ac3cc0",
       "range": {
         "startLine": 709,
         "startChar": 0,
