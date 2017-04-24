@@ -16,6 +16,24 @@
       "revId": "8161ef7c07e68b20e648b39df7ad35730e56e27e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aaeb70c_9352bb96",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T04:50:02Z",
+      "side": 1,
+      "message": "No, the alignment makes sense, actually.",
+      "parentUuid": "31250e84_896a75ca",
+      "revId": "8161ef7c07e68b20e648b39df7ad35730e56e27e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
