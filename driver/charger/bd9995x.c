@@ -149,9 +149,21 @@ static int bd9995x_set_vsysreg(int voltage)
 			      BD9995X_EXTENDED_COMMAND);
 }
 
+static int bd9995x_discharging_on_ac(void)
+{
+	int rv;
+	int reg;
+
+	rv = ch_raw_read16(BD9995X_CMD_CHGOP_SET2, &reg,
+				BD9995X_EXTENDED_COMMAND);
+
+	return rv ? 0 : (reg & BD9995X_CMD_CHGOP_SET2_BATT_LEARN ? 1 : 0);
+}
+
 static int bd9995x_charger_enable(int enable)
 {
 	int rv, reg;
+	int charge_current;
 	static int prev_chg_enable = -1;
 	const struct battery_info *bi = battery_get_info();
 
@@ -171,6 +183,20 @@ static int bd9995x_charger_enable(int enable)
 	prev_chg_enable = enable;
 
 	if (enable) {
+		/*
+		 * Make sure the charge current is at least current_min before
+		 * enabling charging.
+		 */
+		rv = charger_get_current(&charge_current);
+		if (rv)
+			return rv;
+		if (charge_current < bd9995x_charger_info.current_min) {
+			rv = charger_set_current(
+				bd9995x_charger_info.current_min);
+			if (rv)
+				return rv;
+		}
+
 		/*
 		 * BGATE capacitor max : 0.1uF + 20%
 		 * Charge MOSFET threshold max : 2.8V
@@ -646,9 +672,13 @@ int charger_set_current(int current)
 	if (current < BD9995X_NO_BATTERY_CHARGE_I_MIN &&
 	    (battery_is_present() != BP_YES || battery_is_cut_off()))
 		current = BD9995X_NO_BATTERY_CHARGE_I_MIN;
-	else if (current < bd9995x_charger_info.current_min &&
-		!(charge_get_flags() & CHARGE_FLAG_FORCE_IDLE))
-		current = bd9995x_charger_info.current_min;
+
+	if (!current || bd9995x_discharging_on_ac()) {
+		/* Disable charger before setting charge current to 0 */
+		rv = bd9995x_charger_enable(0);
+		if (rv)
+			return rv;
+	}
 
 	rv = ch_raw_write16(BD9995X_CMD_IPRECH_SET,
 			    MIN(current, BD9995X_IPRECH_MAX),
@@ -682,10 +712,10 @@ int charger_set_voltage(int voltage)
 		return rv;
 
 	if (voltage == 0 ||
-			reg & BD9995X_CMD_CHGOP_SET2_BATT_LEARN ||
-			battery_is_present() != BP_YES ||
-			battery_is_cut_off() ||
-			voltage > battery_voltage_max)
+		bd9995x_discharging_on_ac() ||
+		battery_is_present() != BP_YES ||
+		battery_is_cut_off() ||
+		voltage > battery_voltage_max)
 		voltage = battery_voltage_max;
 
 	/* Charge voltage step 16 mV */
