@@ -22,6 +22,30 @@
       "revId": "6d399b6a189a08c649acc1e47bea5fe9b58fb446",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ea1076_858e209f",
+        "filename": "common/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T03:41:01Z",
+      "side": 1,
+      "message": "oops, also since we are using \u0027CONFIG_I2C_MASTER\u0027 in L59, I renamed the file to i2c_master.c anyway..",
+      "parentUuid": "a9701ca5_ba5ab91c",
+      "range": {
+        "startLine": 60,
+        "startChar": 9,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "6d399b6a189a08c649acc1e47bea5fe9b58fb446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
