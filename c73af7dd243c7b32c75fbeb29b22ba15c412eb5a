@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "88fa6cc8_95bc987e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-24T18:28:32Z",
+      "side": 1,
+      "message": "I can try and test each change through the series.",
+      "parentUuid": "8cb58f0d_8ac4218c",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c855c05f_50318d6a",
         "filename": "chip/g/upgrade_fw.h",
         "patchSetId": 7
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Not quite, I think the current text is correct. _Blocks_ (aka payload/raw data) are indeed 1K long. In front of each block, there is a header (upgrade_command) to indicate the payload address. The whole thing is a PDU (so that\u0027s 1K+8 bytes long). Then the PDU can be further encapsulated/split in frames.",
       "parentUuid": "c855c05f_50318d6a",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 53
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fe9a6ab_40e3914c",
+        "filename": "chip/g/upgrade_fw.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-24T18:28:32Z",
+      "side": 1,
+      "message": "Ah, yeah, I think you\u0027re right. Can you add that description? I think calling out what exactly the PDU is, is important.",
+      "parentUuid": "b7a29f40_a1de5dad",
       "range": {
         "startLine": 19,
         "startChar": 1,
@@ -366,6 +414,30 @@
       "side": 1,
       "message": "Arguably, this whole documentation should be moved to another file (and referenced in both chip/g/upgrade_fw.h and this file).\n\nMaybe this should be moved to the chromiumos/docs folder? Or ec/docs? Any opinion?",
       "parentUuid": "33c95b66_b34afe78",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 74
+      },
+      "revId": "c73af7dd243c7b32c75fbeb29b22ba15c412eb5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d35d27f8_534d64a4",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-24T18:28:32Z",
+      "side": 1,
+      "message": "Agreed. ec/docs sounds good to me. All of this stuff resides in the EC repo.",
+      "parentUuid": "b9d5d0a4_cef17f65",
       "range": {
         "startLine": 71,
         "startChar": 1,
