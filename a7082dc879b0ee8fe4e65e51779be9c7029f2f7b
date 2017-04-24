@@ -70,6 +70,24 @@
       "revId": "a7082dc879b0ee8fe4e65e51779be9c7029f2f7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "671f095d_2fabd731",
+        "filename": "common/main.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T04:08:17Z",
+      "side": 1,
+      "message": "Yeah, now that I look at the other CL again, I somewhat prefer rerunning the verification (to avoid keeping state of the last run).",
+      "parentUuid": "478379a8_228ecc9b",
+      "revId": "a7082dc879b0ee8fe4e65e51779be9c7029f2f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
