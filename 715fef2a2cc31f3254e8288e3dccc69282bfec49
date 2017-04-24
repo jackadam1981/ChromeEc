@@ -34,6 +34,24 @@
       "revId": "715fef2a2cc31f3254e8288e3dccc69282bfec49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ecefdaa_492f4b08",
+        "filename": "common/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T02:49:35Z",
+      "side": 1,
+      "message": "well, host_command also has other things like host_command_entering_mode/host_command_get_features/host_command_read_memmap. And the function really seems to describe the host command interface...\n\nBut, fair enough, if you plan for more I2C slave specific functions, what about another C file called common/i2c-slave.c then? Arguably this file should be renamed to common/i2c-master.c, then. Or are there many functions you plan to share between I2C master and slave?",
+      "parentUuid": "8e1023be_91fbc832",
+      "revId": "715fef2a2cc31f3254e8288e3dccc69282bfec49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
