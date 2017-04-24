@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "983178b5_3692e4e4",
+        "filename": "common/rwsig.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T05:02:57Z",
+      "side": 1,
+      "message": "Add /* !HAS_TASK_RWSIG */",
+      "revId": "0dc591838f4cb05cdf94dcdbe7a50d101982f6e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b544b41_c7181cc2",
+        "filename": "util/ectool.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T05:02:57Z",
+      "side": 1,
+      "message": "Well, this can\u0027t really happen now...",
+      "revId": "0dc591838f4cb05cdf94dcdbe7a50d101982f6e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
