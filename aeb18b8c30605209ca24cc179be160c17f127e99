@@ -16,6 +16,29 @@
       "revId": "aeb18b8c30605209ca24cc179be160c17f127e99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e26c82b9_c7ccc4c5",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-24T18:37:40Z",
+      "side": 1,
+      "message": "how about we check for if battery learn mode here and change the current to min and remove the #ifdef BD99* from charge_state_v2.c",
+      "range": {
+        "startLine": 607,
+        "startChar": 0,
+        "endLine": 609,
+        "endChar": 45
+      },
+      "revId": "aeb18b8c30605209ca24cc179be160c17f127e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
