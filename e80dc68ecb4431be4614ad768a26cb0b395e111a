@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "b5349cbf_eb37dbd1",
+        "filename": "common/rwsig.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T04:18:20Z",
+      "side": 1,
+      "message": "I think we would still like this host command to be available even if rwsig is not run as task, so AP could have more information on whether the RW signature is vaild or not?",
+      "parentUuid": "df7874a9_4dd9e273",
+      "revId": "e80dc68ecb4431be4614ad768a26cb0b395e111a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1ceb4c6_6e1b1c48",
         "filename": "include/ec_commands.h",
         "patchSetId": 9
@@ -47,6 +65,24 @@
       "writtenOn": "2017-04-24T04:06:33Z",
       "side": 1,
       "message": "Just gets status of last signature verification run.",
+      "revId": "e80dc68ecb4431be4614ad768a26cb0b395e111a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29786605_e14789bd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 4043,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T04:18:20Z",
+      "side": 1,
+      "message": "I\u0027m going to keep this and make this host command triggers rwsig_check_signature() according to the discussion in the follow up CL.",
+      "parentUuid": "c1ceb4c6_6e1b1c48",
       "revId": "e80dc68ecb4431be4614ad768a26cb0b395e111a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
