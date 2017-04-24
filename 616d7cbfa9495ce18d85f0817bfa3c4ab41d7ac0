@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2457d389_829a0220",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-24T15:26:33Z",
+      "side": 1,
+      "message": "Please file a bug for this",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "616d7cbfa9495ce18d85f0817bfa3c4ab41d7ac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ea4262d_ce951e0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-04-24T15:26:33Z",
+      "side": 1,
+      "message": "Please test on an actual system to make sure port power is properly controlled and persists across a sysjump.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 18
+      },
+      "revId": "616d7cbfa9495ce18d85f0817bfa3c4ab41d7ac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
