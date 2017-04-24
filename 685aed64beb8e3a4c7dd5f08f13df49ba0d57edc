@@ -213,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7066999b_4c538bb2",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-24T21:27:43Z",
+      "side": 1,
+      "message": "Okay. Other patch is not +2 yet. I have asked James (author) about his opinion on changing the logic.",
+      "parentUuid": "dfe35c8a_91411fad",
+      "range": {
+        "startLine": 676,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 0
+      },
+      "revId": "685aed64beb8e3a4c7dd5f08f13df49ba0d57edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c10f340_53ac3cc0",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
@@ -272,6 +296,30 @@
       "side": 1,
       "message": "The logic has been changed. Before no other conditions were checked when rv!\u003d0 and the function returned. Now, other conditions are checked even if rv!\u003d0. Is this intended?",
       "parentUuid": "f8adcfe6_3ac500e5",
+      "range": {
+        "startLine": 709,
+        "startChar": 0,
+        "endLine": 712,
+        "endChar": 12
+      },
+      "revId": "685aed64beb8e3a4c7dd5f08f13df49ba0d57edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c7b5e5e_19ad5cae",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-24T21:27:43Z",
+      "side": 1,
+      "message": "This is okay here as we have already disabled charger when discharging on AC",
+      "parentUuid": "119f088d_21e2f828",
       "range": {
         "startLine": 709,
         "startChar": 0,
