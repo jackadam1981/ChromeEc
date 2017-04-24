@@ -34,6 +34,24 @@
       "revId": "3053b5f9fe1a3166c0a996f4fb889b35b902c90f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "831e419d_6813d671",
+        "filename": "common/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T02:17:18Z",
+      "side": 1,
+      "message": "Not really, where we have an RWSIG task, the EC stays in RO for long enough to receive commands (so there is no need to forcibly stay in RO for any particular reason).",
+      "parentUuid": "76cfb5e0_87a751b1",
+      "revId": "3053b5f9fe1a3166c0a996f4fb889b35b902c90f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
