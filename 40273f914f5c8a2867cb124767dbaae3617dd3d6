@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d53373a_7dde0a57",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T03:04:54Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you be testing that `info-\u003eprotocol_versions \u0026 (1 \u003c\u003c 3)` is true?",
+      "revId": "40273f914f5c8a2867cb124767dbaae3617dd3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c48477c1_f68e4632",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T03:04:54Z",
+      "side": 1,
+      "message": "Is it ok to not define these 2 variables in the v3 case?",
+      "revId": "40273f914f5c8a2867cb124767dbaae3617dd3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
