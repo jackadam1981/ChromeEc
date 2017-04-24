@@ -69,6 +69,24 @@
       "revId": "40273f914f5c8a2867cb124767dbaae3617dd3d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9921a1f_78e5c8e7",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-24T03:26:37Z",
+      "side": 1,
+      "message": "Oh, I see, so now we\u0027re redoing the same check in both comm-host and comm-i2c... I wonder if there is a cleaner way to do this (but I don\u0027t really have a solution...)\n\nAt the very least, please add a comment here.",
+      "parentUuid": "e021f382_1d203183",
+      "revId": "40273f914f5c8a2867cb124767dbaae3617dd3d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
