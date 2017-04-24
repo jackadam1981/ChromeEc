@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "92afe805_8e1af11d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T14:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06543128_70bd12bf",
+      "revId": "1cdc39c1f38dbb8ac952ff7b879c11b00d852473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d35fda1_6ce17faa",
         "filename": "common/i2c_slave.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2017-04-24T05:14:14Z",
       "side": 1,
       "message": "You can remove #ifdef here, because if the EC is connected via i2c to the AP, the AP needs this command to operate.\n\nIt was used in i2c.c to remove that code in case the EC was connected via SPI for instance.",
+      "revId": "1cdc39c1f38dbb8ac952ff7b879c11b00d852473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "948c48eb_4b3a99e9",
+        "filename": "common/i2c_slave.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-04-24T14:24:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d35fda1_6ce17faa",
       "revId": "1cdc39c1f38dbb8ac952ff7b879c11b00d852473",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
