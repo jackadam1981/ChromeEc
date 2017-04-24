@@ -91,6 +91,30 @@
       "revId": "89e98d1919e61ca3b8045b29ad89ba52d77ac5c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c897cd36_310e07d1",
+        "filename": "chip/it83xx/it83xx_fpu.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-04-24T02:36:51Z",
+      "side": 1,
+      "message": "Hi Vincent,\n\nThanks for your comments.\n\nI think let us implement these four functions in assembly.\nBecause they changed CPU\u0027s ALU, we have to make sure the flow is always we want,\nthen we can restore ALU correctly after a floating point operation.\nIf the compiler generates assembly code like following, it will cause a serious error.\nWhat do you think?\n\nsethi  $r2, 0x80\naddi   $r2, $r2, 0x189\nmtsr   $r2, $dlmb\ndsb\nadd45  $r0, $r1 (floating-point addition)\nsethi  $r3, 0x80\naddi   $r3, $r3, 0x9 (still floating-point addition)\nmtsr   $r3, $dlmb (dlmb isn\u0027t expected)",
+      "parentUuid": "4d7612e9_3ac5cb44",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 18
+      },
+      "revId": "89e98d1919e61ca3b8045b29ad89ba52d77ac5c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
