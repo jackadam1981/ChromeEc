@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a00de7b0_083d87e2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-24T20:06:09Z",
+      "side": 1,
+      "message": "The counterpart patch sets it:\n    if (current \u003e 0 \u0026\u0026 chg_ctl_mode \u003d\u003d CHARGE_CONTROL_NORMAL)\n\nWhy different?",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 420,
+        "endChar": 32
+      },
+      "revId": "685aed64beb8e3a4c7dd5f08f13df49ba0d57edc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6461dfc7_467a2a0f",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
