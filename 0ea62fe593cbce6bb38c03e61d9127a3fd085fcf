@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c86b27d_fcf61074",
+        "filename": "docs/usb_updater.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-25T16:51:19Z",
+      "side": 1,
+      "message": "to what app?",
+      "range": {
+        "startLine": 7,
+        "startChar": 67,
+        "endLine": 8,
+        "endChar": 4
+      },
+      "revId": "0ea62fe593cbce6bb38c03e61d9127a3fd085fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dd7f090_bd738c12",
+        "filename": "docs/usb_updater.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-25T16:51:19Z",
+      "side": 1,
+      "message": "maybe \"those not currently used by the device\" ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 63
+      },
+      "revId": "0ea62fe593cbce6bb38c03e61d9127a3fd085fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4886da0_b44e30ed",
+        "filename": "docs/usb_updater.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-25T16:51:19Z",
+      "side": 1,
+      "message": "either put \"dest address\" into quotes or use \u0027destination address\u0027 instead",
+      "range": {
+        "startLine": 55,
+        "startChar": 58,
+        "endLine": 55,
+        "endChar": 71
+      },
+      "revId": "0ea62fe593cbce6bb38c03e61d9127a3fd085fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8995a5d5_6f2b16b0",
+        "filename": "docs/usb_updater.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-25T16:51:19Z",
+      "side": 1,
+      "message": "should this mention that versions below 5 are not supported any more and are described here just for reference?",
+      "range": {
+        "startLine": 59,
+        "startChar": 53,
+        "endLine": 60,
+        "endChar": 0
+      },
+      "revId": "0ea62fe593cbce6bb38c03e61d9127a3fd085fcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
