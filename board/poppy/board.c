@@ -30,6 +30,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
+#include "led_common.h"
 #include "lid_switch.h"
 #include "math_util.h"
 #include "motion_lid.h"
@@ -764,3 +765,13 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+void led_recovery_hw_reinit_control(int state)
+{
+	/*
+	 * Poppy P0 had only one LED i.e. Camera LED. For now, use this to
+	 * indicate recovery with HW_REINIT.
+	 * TODO(furquan): Change this on future builds with charge LEDs.
+	 */
+	gpio_set_level(GPIO_PP3300_DX_CAM, state);
+}
