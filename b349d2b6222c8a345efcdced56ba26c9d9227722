@@ -140,6 +140,30 @@
       "revId": "b349d2b6222c8a345efcdced56ba26c9d9227722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98d4a3b8_327e2914",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-25T23:07:09Z",
+      "side": 0,
+      "message": "So it was solely the 0mA case that was the issue? Setting 64mA while the charger is enabled would be okay?",
+      "parentUuid": "6ce3923e_1d157181",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 650,
+        "endChar": 49
+      },
+      "revId": "b349d2b6222c8a345efcdced56ba26c9d9227722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
