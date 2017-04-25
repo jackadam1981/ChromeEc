@@ -1368,7 +1368,11 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_FLASH_ACR_ICEN        (1 << 9)
 #define STM32_FLASH_ACR_DCEN        (1 << 10)
 #define STM32_FLASH_KEYR            REG32(STM32_FLASH_REGS_BASE + 0x04)
+#define  FLASH_KEYR_KEY1            0x45670123
+#define  FLASH_KEYR_KEY2            0xCDEF89AB
 #define STM32_FLASH_OPTKEYR         REG32(STM32_FLASH_REGS_BASE + 0x08)
+#define  FLASH_OPTKEYR_KEY1         0x08192A3B
+#define  FLASH_OPTKEYR_KEY2         0x4C5D6E7F
 #define STM32_FLASH_SR              REG32(STM32_FLASH_REGS_BASE + 0x0c)
 #define  FLASH_SR_BUSY              (1 << 16)
 #define  FLASH_SR_ERR_MASK          (0x1f3)
@@ -1385,14 +1389,15 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define  FLASH_CR_SNB_MASK          FLASH_CR_SNB(0xf)
 
 #define STM32_FLASH_OPTCR           REG32(STM32_FLASH_REGS_BASE + 0x14)
+#define  FLASH_OPTCR_LOCK           (1 << 0)
+#define  FLASH_OPTCR_STRT           (1 << 1)
+#define STM32_FLASH_WRPR            ((STM32_FLASH_OPTCR & 0x0FFF0000) >> 16)
 
 #define STM32_OPTB_BASE             0x1FFFC000
 
 #define STM32_OPTB_RDP_OFF          0x00
 #define STM32_OPTB_USER_OFF         0x02
-#define STM32_OPTB_WRP_OFF(n)       (0x08 + (n&3) * 2)
-#define STM32_OPTB_WRP01            0x08
-#define STM32_OPTB_WRP23            0x0c
+#define STM32_OPTB_WRP_OFF          0x08
 
 #define STM32_OPTB_COMPL_SHIFT      8
 
