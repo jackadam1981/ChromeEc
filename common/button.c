@@ -12,6 +12,7 @@
 #include "host_command.h"
 #include "hooks.h"
 #include "keyboard_protocol.h"
+#include "led_common.h"
 #include "power_button.h"
 #include "system.h"
 #include "timer.h"
@@ -70,6 +71,7 @@ static int raw_button_pressed(const struct button_config *button)
 static void button_check_hw_reinit_required(void)
 {
 	timestamp_t deadline;
+	int led_state = LED_STATE_ON;
 	timestamp_t now = get_time();
 
 	deadline.val = now.val + (20 * SECOND);
@@ -89,6 +91,21 @@ static void button_check_hw_reinit_required(void)
 
 	CPRINTS("HW_REINIT requested");
 	host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT);
+
+	/* Blink LED for 3 seconds. */
+	now = get_time();
+	deadline.val = now.val + (3 * SECOND);
+
+	while (!timestamp_expired(deadline, &now)) {
+		led_control(EC_LED_ID_RECOVERY_HW_REINIT_LED, led_state);
+		led_state = !led_state;
+		watchdog_reload();
+		msleep(100);
+		now = get_time();
+	}
+
+	/* Reset LED to default state. */
+	led_control(EC_LED_ID_RECOVERY_HW_REINIT_LED, LED_STATE_RESET);
 }
 #endif
 
