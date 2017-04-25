@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8fa5029_819994ca",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-25T16:14:19Z",
+      "side": 0,
+      "message": "You\u0027re removing this and adding similar code in bd99955_charger_enable. If charging is already enabled, this code won\u0027t be executed here or in bd99955_charger_enable. Is this an intended change?",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 45
+      },
+      "revId": "b349d2b6222c8a345efcdced56ba26c9d9227722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

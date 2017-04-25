@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "122a8dc1_ae98b794",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-25T16:14:19Z",
+      "side": 1,
+      "message": "Could you reflect this to the subject line? You do set charge current to 0 even when charging. You just disable charging before setting charge current to 0, right?",
+      "range": {
+        "startLine": 16,
+        "startChar": 13,
+        "endLine": 16,
+        "endChar": 63
+      },
+      "revId": "8c1a5e562b0f021511500bb4b0e644f072acf935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
