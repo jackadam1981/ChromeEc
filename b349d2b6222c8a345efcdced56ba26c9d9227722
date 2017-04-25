@@ -22,6 +22,30 @@
       "revId": "b349d2b6222c8a345efcdced56ba26c9d9227722",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd8a08f_b2bcc76d",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-25T20:35:42Z",
+      "side": 0,
+      "message": "to avoid confusion, i will do charger enable/disable in this function",
+      "parentUuid": "b8fa5029_819994ca",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 651,
+        "endChar": 45
+      },
+      "revId": "b349d2b6222c8a345efcdced56ba26c9d9227722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
