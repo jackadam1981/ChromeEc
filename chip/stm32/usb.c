@@ -44,6 +44,8 @@
 static int usb_load_serial(void);
 #endif
 
+#define USB_RESUME_TIMEOUT 300 /* ESOF count == ms */
+
 /* USB Standard Device Descriptor */
 static const struct usb_device_descriptor dev_desc = {
 	.bLength = USB_DT_DEVICE_SIZE,
@@ -359,20 +361,62 @@ static void usb_resume(void)
 }
 
 #ifdef CONFIG_USB_REMOTE_WAKEUP
+/* 1 if usb_interrupt is counting ESOF. */
+static volatile int wake_in_progress;
+
+/*
+ * ESOF counter (incremented in interrupt), RESUME bit is cleared when
+ * this reaches 0. Also used to detect resume timeout.
+ */
+static volatile int esof_count;
+
+/* Makes sure usb_wake is only run. */
+static volatile int usb_wake_done = 1;
+
 void usb_wake(void)
 {
-	if (!remote_wakeup_enabled ||
-			!(STM32_USB_CNTR & STM32_USB_CNTR_FSUSP)) {
-		/* USB wake not enabled, or already woken up, nothing to do. */
+	/* Only allow one caller at a time. */
+	if (!atomic_read_clear(&usb_wake_done))
 		return;
+
+	if (!remote_wakeup_enabled || !(STM32_USB_CNTR & STM32_USB_CNTR_FSUSP)
+				   || wake_in_progress) {
+		/*
+		 * USB wake not enabled, or already woken up, or already waking
+		 * up,nothing to do.
+		 */
+		goto out;
 	}
 
-	/* Set RESUME bit for 1 to 15 ms, then clear it. */
-	STM32_USB_CNTR |= STM32_USB_CNTR_RESUME;
-	msleep(5);
-	STM32_USB_CNTR &= ~STM32_USB_CNTR_RESUME;
+	CPRINTF("USB wake\n");
+
+	/*
+	 * Set RESUME bit for 1 to 15 ms, then clear it. We ask the interrupt
+	 * routine to count 3 ESOF interrupts, which should take between
+	 * 2 and 3 ms.
+	 */
+	esof_count = 3;
+	wake_in_progress = 1;
+	STM32_USB_CNTR |= STM32_USB_CNTR_RESUME | STM32_USB_CNTR_ESOFM;
+out:
+	usb_wake_done = 1;
 }
 #endif
+
+int usb_is_suspended(void)
+{
+	/* Either hardware block is suspended... */
+	if (STM32_USB_CNTR & STM32_USB_CNTR_FSUSP)
+		return 1;
+
+#ifdef CONFIG_USB_REMOTE_WAKEUP
+	/* ... or we are currently waking up. */
+	if (wake_in_progress)
+		return 1;
+#endif
+
+	return 0;
+}
 #endif /* CONFIG_USB_SUSPEND */
 
 void usb_interrupt(void)
@@ -383,6 +427,40 @@ void usb_interrupt(void)
 		usb_reset();
 
 #ifdef CONFIG_USB_SUSPEND
+#ifdef CONFIG_USB_REMOTE_WAKEUP
+	/*
+	 * usb_wake is asking us to count esof_count ESOF interrupts, then
+	 * disable RESUME, then wait for resume to complete.
+	 */
+	if (status & STM32_USB_ISTR_ESOF && wake_in_progress) {
+		esof_count--;
+
+		/* Clear RESUME bit. */
+		if (esof_count == 0)
+			STM32_USB_CNTR &= ~STM32_USB_CNTR_RESUME;
+
+		/* Then count down until state is resumed. */
+		if (esof_count <= 0) {
+			int state;
+
+			state = (STM32_USB_FNR & STM32_USB_FNR_RXDP_RXDM_MASK)
+					>> STM32_USB_FNR_RXDP_RXDM_SHIFT;
+
+			/* Either: state is ready, or we timed out. */
+			if (state == 2 || state == 3 ||
+			    esof_count <= -USB_RESUME_TIMEOUT) {
+				STM32_USB_CNTR &= ~STM32_USB_CNTR_ESOFM;
+				wake_in_progress = 0;
+				if (state != 2) {
+					CPRINTF("wake error: cnt=%d state=%d\n",
+						esof_count, state);
+					usb_suspend();
+				}
+			}
+		}
+	}
+#endif
+
 	if (status & STM32_USB_ISTR_SUSP)
 		usb_suspend();
 
