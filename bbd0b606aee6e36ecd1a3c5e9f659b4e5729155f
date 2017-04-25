@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fde98e7_ca339cd4",
+        "filename": "builtin/stdint.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-25T18:25:02Z",
+      "side": 1,
+      "message": "the values look right, just curious, wouldn\u0027t it be clearer to express them as (((uint64_t)1 \u003c\u003c 64) - 1) and (~((uint64_t)0))",
+      "revId": "bbd0b606aee6e36ecd1a3c5e9f659b4e5729155f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
