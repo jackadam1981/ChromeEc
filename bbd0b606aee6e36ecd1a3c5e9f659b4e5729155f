@@ -16,6 +16,24 @@
       "revId": "bbd0b606aee6e36ecd1a3c5e9f659b4e5729155f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3fa12fa_3174421f",
+        "filename": "builtin/stdint.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1167634
+      },
+      "writtenOn": "2017-04-25T19:28:07Z",
+      "side": 1,
+      "message": "Yes, I suppose, I just figured I\u0027d be consistent with how the other UINTxx_MAXes are defined in this file.",
+      "parentUuid": "8fde98e7_ca339cd4",
+      "revId": "bbd0b606aee6e36ecd1a3c5e9f659b4e5729155f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
