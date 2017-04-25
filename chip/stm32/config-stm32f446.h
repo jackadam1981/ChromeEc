@@ -14,9 +14,11 @@
  * 8 "erase" sectors : 16KB/16KB/16KB/16KB/64KB/128KB/128KB/128KB
  * We won't use CONFIG_FLASH_ERASE_SIZE, it will be programmatically
  * set in flash-stm32f4.c. However it must be set or the common flash
- * code won't build. So we'll set it here.
+ * code won't build. So we'll set it here. Since we can't erase half
+ * of the flash, we need to set this to the larget block size so the
+ * flash common code works.
  */
-#define CONFIG_FLASH_ERASE_SIZE	(16 * 1024)
+#define CONFIG_FLASH_ERASE_SIZE	(128 * 1024)
 
 /* minimum write size for 3.3V. 1 for 1.8V */
 #define FLASH_WRITE_SIZE_1800	0x0001
