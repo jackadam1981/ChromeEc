@@ -28,9 +28,6 @@
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
-/* TODO: Add accurate timeout for detecting BC1.2 */
-#define BC12_DETECT_RETRY	10
-
 /* Charger parameters */
 static const struct charger_info bd9995x_charger_info = {
 	.name         = CHARGER_NAME,
@@ -319,38 +316,57 @@ static int bd9995x_enable_usb_switch(enum bd9995x_charge_port port,
 	return ch_raw_write16(port_reg, reg, BD9995X_EXTENDED_COMMAND);
 }
 
-static int bd9995x_bc12_detect(int port)
+static void bd9995x_bc12_detect_p0(void);
+DECLARE_DEFERRED(bd9995x_bc12_detect_p0);
+
+static void bd9995x_bc12_detect_p1(void);
+DECLARE_DEFERRED(bd9995x_bc12_detect_p1);
+
+static void bd9995x_bc12_get_type(int port)
 {
-	int i;
 	int bc12_type;
 	struct charge_port_info charge;
+	int chg_port = bd9995x_pd_port_to_chg_port(port);
+	int vbus_provided = bd9995x_is_vbus_provided(port) &&
+			    !usb_charger_port_is_sourcing_vbus(chg_port);
 
 	/*
-	 * BC1.2 detection starts 100ms after VBUS/VCC attach and typically
-	 * completes 312ms after VBUS/VCC attach.
+	 * If vbus is not longer provided, then no need to continue. This
+	 * prevents making new deferred calls when there won't be a valid
+	 * bc12_type.
 	 */
-	msleep(312);
-	for (i = 0; i < BC12_DETECT_RETRY; i++) {
-		/* get device type */
-		bc12_type = bd9995x_get_bc12_device_type(port);
+	if (!vbus_provided)
+		return;
 
-		/* Detected BC1.2 */
-		if (bc12_type != CHARGE_SUPPLIER_NONE)
-			break;
-
-		/* TODO: Add accurate timeout for detecting BC1.2 */
-		msleep(100);
-	}
+	/* get device type */
+	bc12_type = bd9995x_get_bc12_device_type(port);
 
 	/* BC1.2 device attached */
 	if (bc12_type != CHARGE_SUPPLIER_NONE) {
+		bc12_detected_type[port] = bc12_type;
 		/* Update charge manager */
 		charge.voltage = USB_CHARGER_VOLTAGE_MV;
 		charge.current = bd9995x_get_bc12_ilim(bc12_type);
 		charge_manager_update_charge(bc12_type, port, &charge);
+	} else {
+		/* bc12_type not available. Wait 100 msec more and retry */
+		if (port)
+			hook_call_deferred(&bd9995x_bc12_detect_p1_data,
+					   100 * MSEC);
+		else
+			hook_call_deferred(&bd9995x_bc12_detect_p0_data,
+					   100 * MSEC);
 	}
+}
 
-	return bc12_type;
+static void bd9995x_bc12_detect_p0(void)
+{
+	bd9995x_bc12_get_type(0);
+}
+
+static void bd9995x_bc12_detect_p1(void)
+{
+	bd9995x_bc12_get_type(1);
 }
 
 static void bd9995x_bc12_detach(int port, int type)
@@ -447,8 +463,19 @@ static void usb_charger_process(enum bd9995x_charge_port port)
 
 	/* Do BC1.2 detection */
 	if (vbus_provided) {
+		/*
+		 * BC1.2 detection starts 100ms after VBUS/VCC attach and
+		 * typically completes 312ms after VBUS/VCC attach.
+		 */
+
 		/* Charger/sink attached */
-		bc12_detected_type[port] = bd9995x_bc12_detect(port);
+		if (port)
+			hook_call_deferred(&bd9995x_bc12_detect_p1_data,
+					   312 * MSEC);
+		else
+			hook_call_deferred(&bd9995x_bc12_detect_p0_data,
+					   312 * MSEC);
+
 	} else if (bc12_detected_type[port] != CHARGE_SUPPLIER_NONE) {
 		/* Charger/sink detached */
 		bd9995x_bc12_detach(port, bc12_detected_type[port]);
