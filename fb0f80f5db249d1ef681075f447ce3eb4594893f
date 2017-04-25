@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3994711d_68674837",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1122384
+      },
+      "writtenOn": "2017-04-25T07:44:13Z",
+      "side": 1,
+      "message": "The voltage is always not 0 because bob define CONFIG_CHARGER_MAINTAIN_VBAT\nso there will always call the charger_set_mode(0).\nIn the charger_set_mode() function (bd99955), the inhibit_chg and inhibit_chg_prev are always 0\n\nSo If I use the \u0027ectool chargecontrol idle\u0027\n1) set_chg_ctrl_mode() call charge_request(0,0)\n2) in charge_request\n  1) call charger_set_current(0) and disable charging\n  2) current \u003d\u003d 0 but voltage !\u003d 0, call charger_set_mode(0)\n\nThen I use \u0027ectool chargecontrol normal\u0027\nin charge_request, call charger_set_mode(0), so the charge will not be enable when idle mode to normal mode\n\nSo I change the (voltage \u003e 0 || current \u003e 0) to (voltage \u003e 0 \u0026\u0026 current \u003e 0)\nmake sure when the charger current \u003d\u003d 0 will call the charger_set_mode(CHARGE_FLAG_INHIBIT_CHARGE)\nthen the charger current !\u003d 0, call charger_set_mode(0)\nso that the charger enable function can work normally.",
+      "range": {
+        "startLine": 428,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 32
+      },
+      "revId": "fb0f80f5db249d1ef681075f447ce3eb4594893f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
