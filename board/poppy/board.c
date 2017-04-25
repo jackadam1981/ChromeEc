@@ -160,6 +160,23 @@ static void base_detect_change(enum base_status connected)
 	tablet_set_mode(!connected);
 }
 
+static int command_atatch_base(int argc, char **argv)
+{
+        base_detect_change(BASE_CONNECTED);
+        return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(attachbase, command_atatch_base,
+                        NULL, "Simulate attach base");
+
+static int command_detach_base(int argc, char **argv)
+{
+        base_detect_change(BASE_DISCONNECTED);
+        return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(detachbase, command_detach_base,
+                        NULL, "Simulate detach base");
+
+
 static void base_detect_deferred(void)
 {
 	uint64_t time_now = get_time().val;
