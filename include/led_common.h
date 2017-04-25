@@ -67,4 +67,13 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness);
  *
  */
 void led_enable(int enable);
+
+/**
+ * Enable/Disable LED for indicating recovery with HW_REINIT.
+ *
+ * @param state	0 = disable, 1 = enable, 2 = reset
+ *
+ */
+void led_recovery_hw_reinit_control(int state);
+
 #endif /* __CROS_EC_LED_COMMON_H */
