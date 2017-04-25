@@ -22,6 +22,30 @@
       "revId": "fb0f80f5db249d1ef681075f447ce3eb4594893f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b8ea88e_6da9322b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-25T13:37:28Z",
+      "side": 1,
+      "message": "Need to remove config CONFIG_CHARGER_MAINTAIN_VBAT and add if (voltage \u003d\u003d 0 || in int charger_set_voltage(int voltage).\nPlease refer the master branch code",
+      "parentUuid": "3994711d_68674837",
+      "range": {
+        "startLine": 428,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 32
+      },
+      "revId": "fb0f80f5db249d1ef681075f447ce3eb4594893f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
