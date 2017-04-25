@@ -8,15 +8,20 @@
  * We are limiting the ec.bin size to 128k to reduce flashing time.
  */
 #define CONFIG_FLASH_SIZE		(128 * 1024)
+/*
+ * Since we have non-uniform block size, we use the smallest block size (16K)
+ * available as CONFIG_FLASH_BANK_SIZE so common code works.
+ */
 #define CONFIG_FLASH_BANK_SIZE		(16 * 1024)
 
 /*
  * 8 "erase" sectors : 16KB/16KB/16KB/16KB/64KB/128KB/128KB/128KB
- * We won't use CONFIG_FLASH_ERASE_SIZE, it will be programmatically
- * set in flash-stm32f4.c. However it must be set or the common flash
- * code won't build. So we'll set it here.
+ * We won't use CONFIG_FLASH_ERASE_SIZE, it will be programmatically set in
+ * flash-stm32f4.c. However it must work with the flash common code, so we set
+ * it here. Since we can't erase part of the sector, we need to set this to
+ * the larget sector size so the flash common code works.
  */
-#define CONFIG_FLASH_ERASE_SIZE	(16 * 1024)
+#define CONFIG_FLASH_ERASE_SIZE	(128 * 1024)
 
 /* minimum write size for 3.3V. 1 for 1.8V */
 #define FLASH_WRITE_SIZE_1800	0x0001
