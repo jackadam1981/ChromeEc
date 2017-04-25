@@ -45,15 +45,42 @@ struct flash_wp_state {
 	int entire_flash_locked;
 };
 
+struct flash_sector {
+	int base;
+	int size;
+};
+
+/* STM32F4 has non-uniform sector size with the following layout */
+static const struct flash_sector sectors[] = {
+	{(0 * 1024), (16 * 1024)},
+	{(16 * 1024), (16 * 1024)},
+	{(32 * 1024), (16 * 1024)},
+	{(48 * 1024), (16 * 1024)},
+	{(64 * 1024), (64 * 1024)},
+	{(128 * 1024), (128 * 1024)},
+	{(256 * 1024), (128 * 1024)},
+	{(384 * 1024), (128 * 1024)},
+	{(512 * 1024), (128 * 1024)},
+	{(640 * 1024), (128 * 1024)},
+	{(784 * 1024), (128 * 1024)},
+	{(912 * 1024), (128 * 1024)}
+};
+static const int num_sectors = ARRAY_SIZE(sectors);
+
+
 /*****************************************************************************/
 /* Physical layer APIs */
 
-/* Flash unlocking keys */
-#define PRG_LOCK 0
-#define KEY1    0x45670123
-#define KEY2    0xCDEF89AB
+static int wait_busy(void)
+{
+	int timeout = calculate_flash_timeout();
 
-static int unlock(void)
+	while (STM32_FLASH_SR & (1 << 0) && timeout-- > 0)
+		udelay(CYCLE_PER_FLASH_LOOP);
+	return (timeout > 0) ? EC_SUCCESS : EC_ERROR_TIMEOUT;
+}
+
+static int unlock(int locks)
 {
 	/*
 	 * We may have already locked the flash module and get a bus fault
@@ -63,26 +90,81 @@ static int unlock(void)
 
 	/* unlock CR if needed */
 	if (STM32_FLASH_CR & FLASH_CR_LOCK) {
-		STM32_FLASH_KEYR = KEY1;
-		STM32_FLASH_KEYR = KEY2;
+		STM32_FLASH_KEYR = FLASH_KEYR_KEY1;
+		STM32_FLASH_KEYR = FLASH_KEYR_KEY2;
+	}
+
+	/* unlock option memory if required */
+	if ((locks & FLASH_OPTCR_LOCK) &&
+	    (STM32_FLASH_OPTCR & FLASH_OPTCR_LOCK)) {
+		STM32_FLASH_OPTKEYR = FLASH_OPTKEYR_KEY1;
+		STM32_FLASH_OPTKEYR = FLASH_OPTKEYR_KEY2;
 	}
 
 	/* Re-enable bus fault handler */
 	ignore_bus_fault(0);
 
-	return (STM32_FLASH_CR & FLASH_CR_LOCK) ?
-			EC_ERROR_UNKNOWN : EC_SUCCESS;
+	return ((STM32_FLASH_CR & FLASH_CR_LOCK) |
+		(STM32_FLASH_OPTCR & locks)) ?  EC_ERROR_UNKNOWN : EC_SUCCESS;
 }
 
 static void lock(void)
 {
 	STM32_FLASH_CR = FLASH_CR_LOCK;
+	STM32_FLASH_OPTCR &= FLASH_OPTCR_LOCK;
 }
 
+static uint16_t read_optb_wp(void)
+{
+	return (*(uint32_t *)(STM32_OPTB_BASE + STM32_OPTB_WRP_OFF) & 0xFFF);
+}
+
+static int write_optb_wp(uint16_t value)
+{
+	volatile uint32_t *word = (uint32_t *)(STM32_OPTB_BASE +
+					       STM32_OPTB_WRP_OFF);
+	int rv;
+	uint32_t wp_mask = 0x0FFF;
+
+	rv = wait_busy();
+	if (rv)
+		return rv;
+
+	/* The target byte is the value we want to write. */
+	if ((value & wp_mask) == (*word & wp_mask))
+		return EC_SUCCESS;
+
+	rv = unlock(FLASH_OPTCR_LOCK);
+	if (rv)
+		return rv;
+
+	STM32_FLASH_OPTCR = (STM32_FLASH_OPTCR & ~0x0FFF0000) |
+			    (value & wp_mask) << 16;
+
+	/* set OPTSTRT bit */
+	STM32_FLASH_OPTCR |= FLASH_OPTCR_STRT;
+
+	rv = wait_busy();
+	if (rv)
+		return rv;
+	lock();
+
+	return EC_SUCCESS;
+}
 
 int flash_physical_get_protect(int block)
 {
-	/* TODO: not sure if write protect can be implemented like this. */
+	int offset = block * CONFIG_FLASH_BANK_SIZE;
+	uint16_t wp_val = read_optb_wp();
+	int i;
+
+	for (i = 0; i < num_sectors; i++) {
+		if (offset >= sectors[i].base &&
+		    offset < sectors[i].base + sectors[i].size) {
+			return !(wp_val & (1 << i));
+		}
+	}
+
 	return 0;
 }
 
@@ -123,6 +205,7 @@ uint32_t flash_physical_get_valid_flags(void)
 {
 	return EC_FLASH_PROTECT_RO_AT_BOOT |
 	       EC_FLASH_PROTECT_RO_NOW |
+	       EC_FLASH_PROTECT_ALL_AT_BOOT |
 	       EC_FLASH_PROTECT_ALL_NOW;
 }
 
@@ -198,7 +281,27 @@ static void clear_flash_errors(void)
 
 int flash_physical_protect_at_boot(uint32_t new_flags)
 {
-	return EC_SUCCESS;
+	uint16_t wp_val = 0xFFF;
+	int i;
+
+	unlock(FLASH_OPTCR_LOCK);
+
+	for (i = 0; i < num_sectors; i++) {
+		int protect = new_flags & EC_FLASH_PROTECT_ALL_AT_BOOT;
+
+		if (sectors[i].base >= CONFIG_FLASH_SIZE)
+			break;
+
+		if (sectors[i].base >= CONFIG_WP_STORAGE_OFF  &&
+		    sectors[i].base + sectors[i].size <=
+		    CONFIG_WP_STORAGE_OFF + CONFIG_WP_STORAGE_SIZE)
+			protect |= new_flags & EC_FLASH_PROTECT_RO_AT_BOOT;
+
+		if (protect)
+			wp_val &= ~(1 << i);
+	}
+
+	return write_optb_wp(wp_val);
 }
 
 int flash_physical_write(int offset, int size, const char *data)
@@ -206,7 +309,7 @@ int flash_physical_write(int offset, int size, const char *data)
 	uint32_t *address = (uint32_t *)(CONFIG_MAPPED_STORAGE_BASE + offset);
 	int res = EC_SUCCESS;
 
-	if (unlock() != EC_SUCCESS) {
+	if (unlock(0) != EC_SUCCESS) {
 		res = EC_ERROR_UNKNOWN;
 		goto exit_wr;
 	}
@@ -267,25 +370,6 @@ exit_wr:
 	return res;
 }
 
-
-
-/* "@Internal Flash  /0x08000000/04*016Kg,01*064Kg,03*128Kg" */
-struct flash_sector {
-	int base;
-	int size;
-};
-static const struct flash_sector sectors[] = {
-	{(0 * 1024), (16 * 1024)},
-	{(16 * 1024), (16 * 1024)},
-	{(32 * 1024), (16 * 1024)},
-	{(48 * 1024), (16 * 1024)},
-	{(64 * 1024), (64 * 1024)},
-	{(128 * 1024), (128 * 1024)},
-	{(256 * 1024), (128 * 1024)},
-	{(384 * 1024), (128 * 1024)}
-};
-static const int num_sectors = ARRAY_SIZE(sectors);
-
 int flash_physical_erase(int offset, int size)
 {
 	int res = EC_SUCCESS;
@@ -305,7 +389,7 @@ int flash_physical_erase(int offset, int size)
 	if ((start_sector >= num_sectors) || (end_sector >= num_sectors))
 		return EC_ERROR_PARAM1;
 
-	if (unlock() != EC_SUCCESS)
+	if (unlock(0) != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
 
 	res = flash_idle();
@@ -360,11 +444,110 @@ exit_er:
 	return res;
 }
 
+/**
+ * Check if write protect register state is inconsistent with RO_AT_BOOT and
+ * ALL_AT_BOOT state.
+ *
+ * @return zero if consistent, non-zero if inconsistent.
+ */
+static int registers_need_reset(void)
+{
+	uint32_t flags = flash_get_protect();
+	int wp_val = STM32_FLASH_WRPR;
+	int i;
+	int ro_at_boot = (flags & EC_FLASH_PROTECT_RO_AT_BOOT) ? 1 : 0;
+
+	for (i = 0; i < num_sectors; i++) {
+		if (sectors[i].base >= CONFIG_WP_STORAGE_OFF  &&
+		    sectors[i].base + sectors[i].size <=
+		    CONFIG_WP_STORAGE_OFF + CONFIG_WP_STORAGE_SIZE) {
+			int protect = (wp_val >> i) & 0x1 ? 0 : 1;
+			if (protect != ro_at_boot)
+				return 1;
+		}
+	}
+	return 0;
+}
+
+static void unprotect_all_blocks(void)
+{
+	write_optb_wp(0xFFF);
+}
+
 /*****************************************************************************/
 /* High-level APIs */
 
 int flash_pre_init(void)
 {
+	uint32_t reset_flags = system_get_reset_flags();
+	uint32_t prot_flags = flash_get_protect();
+	int need_reset = 0;
+
+	if (flash_physical_restore_state())
+		return EC_SUCCESS;
+
+	/*
+	 * If we have already jumped between images, an earlier image could
+	 * have applied write protection. Nothing additional needs to be done.
+	 */
+	if (reset_flags & RESET_FLAG_SYSJUMP)
+		return EC_SUCCESS;
+
+	if (prot_flags & EC_FLASH_PROTECT_GPIO_ASSERTED) {
+		if ((prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT) &&
+		    !(prot_flags & EC_FLASH_PROTECT_RO_NOW)) {
+			/*
+			 * Pstate wants RO protected at boot, but the write
+			 * protect register wasn't set to protect it.  Force an
+			 * update to the write protect register and reboot so
+			 * it takes effect.
+			 */
+			flash_physical_protect_at_boot(
+				EC_FLASH_PROTECT_RO_AT_BOOT);
+			need_reset = 1;
+		}
+
+		if (registers_need_reset()) {
+			/*
+			 * Write protect register was in an inconsistent state.
+			 * Set it back to a good state and reboot.
+			 *
+			 * TODO(crosbug.com/p/23798): this seems really similar
+			 * to the check above.  One of them should be able to
+			 * go away.
+			 */
+			flash_protect_at_boot(
+				prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT);
+			need_reset = 1;
+		}
+	} else {
+		if (prot_flags & EC_FLASH_PROTECT_RO_NOW) {
+			/*
+			 * Write protect pin unasserted but some section is
+			 * protected. Drop it and reboot.
+			 */
+			unprotect_all_blocks();
+			need_reset = 1;
+		}
+	}
+
+	if ((flash_physical_get_valid_flags() & EC_FLASH_PROTECT_ALL_AT_BOOT) &&
+	    (!!(prot_flags & EC_FLASH_PROTECT_ALL_AT_BOOT) !=
+	     !!(prot_flags & EC_FLASH_PROTECT_ALL_NOW))) {
+		/*
+		 * ALL_AT_BOOT and ALL_NOW should be both set or both unset
+		 * at boot. If they are not, it must be that the chip requires
+		 * OBL_LAUNCH to be set to reload option bytes. Let's reset
+		 * the system with OBL_LAUNCH set.
+		 * This assumes OBL_LAUNCH is used for hard reset in
+		 * chip/stm32/system.c.
+		 */
+		need_reset = 1;
+	}
+
+	if (need_reset)
+		system_reset(SYSTEM_RESET_HARD | SYSTEM_RESET_PRESERVE_FLAGS);
+
 	return EC_SUCCESS;
 }
 
