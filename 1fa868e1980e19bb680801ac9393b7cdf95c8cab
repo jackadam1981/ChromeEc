@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2883a230_101f0fde",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-25T18:13:53Z",
+      "side": 1,
+      "message": "This is quite verbose; I think that \u0027BMA255_ACCEL_MIN_FREQ\u0027 would be sufficient. Similar for the others.",
+      "range": {
+        "startLine": 504,
+        "startChar": 19,
+        "endLine": 504,
+        "endChar": 57
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f7c7fdd_b8f53cdd",
+        "filename": "board/cave/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-25T18:13:53Z",
+      "side": 1,
+      "message": "CONFIG_ACCEL_FIFO is for the entire motionsense stack and not a per-sensor FIFO, correct?",
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "347c3418_f1b27535",
+        "filename": "board/cave/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-25T18:13:53Z",
+      "side": 1,
+      "message": "IMO, this small change should be its own CL.",
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55928836_c0b0d5bc",
+        "filename": "board/cave/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-25T18:13:53Z",
+      "side": 1,
+      "message": "Stick this with the others. They were most likely removed for the same reason.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 23
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db94c9f1_69d3469c",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-25T18:13:53Z",
+      "side": 1,
+      "message": "Maybe it would be better to put this info in the driver headers.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 3
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e28a855_62fc378e",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3398,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-25T18:13:53Z",
+      "side": 1,
+      "message": "why version 0?",
+      "range": {
+        "startLine": 3398,
+        "startChar": 43,
+        "endLine": 3398,
+        "endChar": 44
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4a6512_bfdd9250",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3400,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-25T18:13:53Z",
+      "side": 1,
+      "message": "if the host command returns an error, we can\u0027t assume the version. I think we should log the error and return.",
+      "range": {
+        "startLine": 3400,
+        "startChar": 2,
+        "endLine": 3400,
+        "endChar": 14
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf4c0d54_f53af185",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3483,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-25T18:13:53Z",
+      "side": 1,
+      "message": "I also think this should be its own CL.",
+      "range": {
+        "startLine": 3469,
+        "startChar": 0,
+        "endLine": 3483,
+        "endChar": 9
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
