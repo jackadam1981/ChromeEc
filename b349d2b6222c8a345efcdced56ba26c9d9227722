@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c35fb267_799db7c8",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-25T22:41:53Z",
+      "side": 0,
+      "message": "CONFIG_CHARGER_MAINTAIN_VBAT is replaced by voltage\u003d\u003d0 in charger_set_current()\nwe control the inhibit-mode in charger_set_current() so no more needed here",
+      "parentUuid": "21d67ebb_739f84e0",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 5
+      },
+      "revId": "b349d2b6222c8a345efcdced56ba26c9d9227722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8fa5029_819994ca",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 2
@@ -83,6 +107,30 @@
       "writtenOn": "2017-04-25T20:58:43Z",
       "side": 0,
       "message": "Now, you\u0027re no longer checking for the minimum current. Is that intended?",
+      "range": {
+        "startLine": 649,
+        "startChar": 0,
+        "endLine": 650,
+        "endChar": 49
+      },
+      "revId": "b349d2b6222c8a345efcdced56ba26c9d9227722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce3923e_1d157181",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-25T22:41:53Z",
+      "side": 0,
+      "message": "yes, it is intended as we are disabling charger when its zero",
+      "parentUuid": "841af101_3ddd6dbe",
       "range": {
         "startLine": 649,
         "startChar": 0,
