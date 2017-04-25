@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "69c83bd3_b8c23b9b",
+        "filename": "chip/g/spi_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-25T20:40:25Z",
+      "side": 1,
+      "message": "Is this just for development? Maybe you should create a macro.",
+      "parentUuid": "75cd96b3_4118caee",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 5
+      },
+      "revId": "6124d22a1a008e8e778dbeccbd140ed63cbaf56a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "672b7755_416941b6",
         "filename": "chip/g/spi_master.c",
         "patchSetId": 5
