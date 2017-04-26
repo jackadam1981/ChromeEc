@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "b327c72a_e1cf9486",
+        "filename": "board/cave/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1185940
+      },
+      "writtenOn": "2017-04-26T17:25:07Z",
+      "side": 1,
+      "message": "Each chip has it\u0027s own unique fifo size (and they vary), and I had defined them all, but I\u0027ve since been told EC does not use sensor chips in their FIFO mode, so any devices that don\u0027t use CONFIG_ACCEL_FIFO will have a FIFO size of 1.  Given that, we could avoid adding this field and instead have the MOTIONSENSE_CMD_INFO command just pass back CONFIG_ACCEL_FIFO if it\u0027s defined, and 1 if not.  Note however that the current format would be easier to modify if we need to change \"sensor hub\" behavior to make Android Sensor Services happy.  Will sensors always be connected to a single EC, or could they be spread across multiple ECs?\n\nAs for the \"other patches\" (kernel patches), they\u0027re linked to this patch in \"same topic\" changes, topic set to sensor_api.",
+      "parentUuid": "1b78ad40_a804736c",
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "347c3418_f1b27535",
         "filename": "board/cave/board.h",
         "patchSetId": 2
