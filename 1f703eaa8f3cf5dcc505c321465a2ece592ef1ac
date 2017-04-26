@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d097219_40d109a2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-26T21:31:17Z",
+      "side": 1,
+      "message": "nit: the line is too long\nshould be\n#if defined(CONFIG_HIBERNATE) \u0026\u0026 \\\n    !defined(CONFIG_BATTERY_CRITICAL_SHUTDOWN_CUT_OFF)",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 85
+      },
+      "revId": "1f703eaa8f3cf5dcc505c321465a2ece592ef1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
