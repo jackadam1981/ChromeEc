@@ -16,6 +16,24 @@
       "revId": "dd4390b78afa6cd51971de9097a18d38bf793930",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc495c5d_d0d4522d",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-26T01:22:27Z",
+      "side": 1,
+      "message": "Yeah, I can get rid of that. I just put in there so that the EC logs can have this, in case any debugging support was required in the future.",
+      "parentUuid": "fe1c0f5a_b947f748",
+      "revId": "dd4390b78afa6cd51971de9097a18d38bf793930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
