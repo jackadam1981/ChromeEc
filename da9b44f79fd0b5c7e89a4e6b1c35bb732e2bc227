@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3c09070_d7ffb2e7",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-26T21:34:22Z",
+      "side": 1,
+      "message": "Can you add comment on this, please?",
+      "range": {
+        "startLine": 659,
+        "startChar": 17,
+        "endLine": 659,
+        "endChar": 45
+      },
+      "revId": "da9b44f79fd0b5c7e89a4e6b1c35bb732e2bc227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a798a642_f0252af0",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-26T21:34:22Z",
+      "side": 1,
+      "message": "This looks more complex than \"return bd9995x_charger_enable(chg_enable)\".",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 60
+      },
+      "revId": "da9b44f79fd0b5c7e89a4e6b1c35bb732e2bc227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

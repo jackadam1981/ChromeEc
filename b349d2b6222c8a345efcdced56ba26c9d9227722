@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "09463998_02720b99",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-26T21:34:22Z",
+      "side": 0,
+      "message": "I have little idea. I see no \u0027inhibit-mode\u0027 control in charger_set_current of bd9995x.c. I see no \u0027voltage\u003d\u003d0\u0027 in charger_set_current? Do you mean charger_set_voltage? Even if so, I can\u0027t make sense of what you mean.",
+      "parentUuid": "c35fb267_799db7c8",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 5
+      },
+      "revId": "b349d2b6222c8a345efcdced56ba26c9d9227722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8fa5029_819994ca",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 2
