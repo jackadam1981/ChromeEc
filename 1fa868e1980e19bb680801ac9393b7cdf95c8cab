@@ -120,6 +120,24 @@
     },
     {
       "key": {
+        "uuid": "c4d93520_75f3657a",
+        "filename": "board/cave/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-26T18:17:46Z",
+      "side": 1,
+      "message": "I see the argument of making it easier to modify going forward.  Maybe it\u0027s alright then. As far as I know, sensors are always connected to a single EC.",
+      "parentUuid": "b327c72a_e1cf9486",
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "347c3418_f1b27535",
         "filename": "board/cave/board.h",
         "patchSetId": 2
