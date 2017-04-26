@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "115a146a_4d564249",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-26T04:38:40Z",
+      "side": 0,
+      "message": "this sequence doesn\u0027t apply to BD9995X as we are doing it in charge_set_current()",
+      "parentUuid": "6b716394_059fbff2",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 12
+      },
+      "revId": "b349d2b6222c8a345efcdced56ba26c9d9227722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "841af101_3ddd6dbe",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 3
