@@ -211,6 +211,28 @@
 /* Time to wait before re-initializing the device if access is denied */
 #define SI114X_DENIED_THRESHOLD		(10 * SECOND)
 
+/* Min and Max sampling frequency in mHz */
+#define SI1141_PROX_MIN_FREQ            504
+#define SI1141_PROX_MAX_FREQ            100000
+#define SI1141_LIGHT_MIN_FREQ           504
+#define SI1141_LIGHT_MAX_FREQ           100000
+#define SI1142_PROX_MIN_FREQ            504
+#define SI1142_PROX_MAX_FREQ            100000
+#define SI1142_LIGHT_MIN_FREQ           504
+#define SI1142_LIGHT_MAX_FREQ           100000
+#define SI1143_PROX_MIN_FREQ            504
+#define SI1143_PROX_MAX_FREQ            100000
+#define SI1143_LIGHT_MIN_FREQ           504
+#define SI1143_LIGHT_MAX_FREQ           100000
+
+/* Common sensor FIFO size; use 1 as Chrome does not use fifo mode */
+#define SI1141_PROX_MAX_FIFO_EVENT_COUNT  1
+#define SI1141_LIGHT_MAX_FIFO_EVENT_COUNT 1
+#define SI1142_PROX_MAX_FIFO_EVENT_COUNT  1
+#define SI1142_LIGHT_MAX_FIFO_EVENT_COUNT 1
+#define SI1143_PROX_MAX_FIFO_EVENT_COUNT  1
+#define SI1143_LIGHT_MAX_FIFO_EVENT_COUNT 1
+
 extern const struct accelgyro_drv si114x_drv;
 
 enum si114x_state {
