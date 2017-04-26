@@ -905,6 +905,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	struct ec_response_motion_sense *out = args->response;
 	struct motion_sensor_t *sensor;
 	int i, ret = EC_RES_INVALID_PARAM, reported;
+	uint8_t sensor_type;
 
 	switch (in->cmd) {
 	case MOTIONSENSE_CMD_DUMP:
@@ -960,14 +961,32 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 		if (in->sensor_odr.sensor_num ==
 		    MOTION_SENSE_ACTIVITY_SENSOR_ID)
-			out->info.type = MOTIONSENSE_TYPE_ACTIVITY;
+			sensor_type = MOTIONSENSE_TYPE_ACTIVITY;
 		else
 #endif
-			out->info.type = sensor->type;
-		out->info.location = sensor->location;
-		out->info.chip = sensor->chip;
+			sensor_type = sensor->type;
 
-		args->response_size = sizeof(out->info);
+		if (args->version >= 3) {
+			out->info_3.type = sensor_type;
+			out->info_3.location = sensor->location;
+			out->info_3.chip = sensor->chip;
+			out->info_3.min_frequency = sensor->min_frequency;
+			/*
+			 * Make sure reported max frequency for this sensor
+			 * doesn't exceed the max sensor frequency the EC is
+			 * capable of supporting.
+			 */
+			out->info_3.max_frequency = MIN(sensor->max_frequency,
+					EC_MAX_SENSOR_FREQ_MILLIHZ);
+			out->info_3.fifo_max_event_count =
+					SENSOR_MAX_FIFO_EVENT_COUNT;
+			args->response_size = sizeof(out->info_3);
+		} else {
+			out->info.type = sensor_type;
+			out->info.location = sensor->location;
+			out->info.chip = sensor->chip;
+			args->response_size = sizeof(out->info);
+		}
 		break;
 
 	case MOTIONSENSE_CMD_EC_RATE:
@@ -1219,7 +1238,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 
 DECLARE_HOST_COMMAND(EC_CMD_MOTION_SENSE_CMD,
 		     host_cmd_motion_sense,
-		     EC_VER_MASK(1) | EC_VER_MASK(2));
+		     EC_VER_MASK(1) | EC_VER_MASK(2) | EC_VER_MASK(3));
 
 /*****************************************************************************/
 /* Console commands */
