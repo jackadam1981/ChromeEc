@@ -28,6 +28,10 @@
 #include "ps8751.h"
 #include "usb_pd.h"
 
+/* find the most significant bit. Not defined in n == 0. */
+#define __fls(n) (31 - __builtin_clz(n))
+
+
 /* Command line options */
 enum {
 	OPT_DEV = 1000,
@@ -3433,7 +3437,7 @@ static const struct {
 	uint8_t insize;
 } ms_command_sizes[] = {
 	MS_DUMP_SIZE(),
-	MS_SIZES(info),
+	MS_SIZES(info_3),
 	MS_SIZES(ec_rate),
 	MS_SIZES(sensor_odr),
 	MS_SIZES(sensor_range),
@@ -3561,23 +3565,48 @@ static int cmd_motionsense(int argc, char **argv)
 	}
 
 	if (argc == 3 && !strcasecmp(argv[1], "info")) {
-		param.cmd = MOTIONSENSE_CMD_INFO;
+		struct ec_params_get_cmd_versions p;
+		struct ec_response_get_cmd_versions r;
+		uint8_t *type_ptr = &resp->info.type;
+		uint8_t *chip_ptr = &resp->info.chip;
+		uint8_t *loc_ptr = &resp->info.location;
+		int version = 0;
 
+		param.cmd = MOTIONSENSE_CMD_INFO;
 		param.sensor_odr.sensor_num = strtol(argv[2], &e, 0);
 		if (e && *e) {
 			fprintf(stderr, "Bad %s arg.\n", argv[2]);
 			return -1;
 		}
 
-		rv = ec_command(EC_CMD_MOTION_SENSE_CMD, 1,
+		/* tool defaults to using latest version of info command */
+		p.cmd = EC_CMD_MOTION_SENSE_CMD;
+		rv = ec_command(EC_CMD_GET_CMD_VERSIONS, 0, &p, sizeof(p),
+				&r, sizeof(r));
+		if (rv < 0) {
+			if (rv == -EC_RES_INVALID_PARAM)
+				printf("Command 0x%02x not supported by EC.\n",
+						EC_CMD_GET_CMD_VERSIONS);
+			return rv;
+		}
+
+		if (r.version_mask)
+			version = __fls(r.version_mask);
+
+		if (version >= 3) {
+			chip_ptr = &resp->info_3.chip;
+			loc_ptr = &resp->info_3.location;
+			type_ptr = &resp->info_3.type;
+		}
+
+		rv = ec_command(EC_CMD_MOTION_SENSE_CMD, version,
 				&param, ms_command_sizes[param.cmd].outsize,
 				resp, ms_command_sizes[param.cmd].insize);
-
 		if (rv < 0)
 			return rv;
 
 		printf("Type:     ");
-		switch (resp->info.type) {
+		switch (*type_ptr) {
 		case MOTIONSENSE_TYPE_ACCEL:
 			printf("accel\n");
 			break;
@@ -3604,7 +3633,7 @@ static int cmd_motionsense(int argc, char **argv)
 		}
 
 		printf("Location: ");
-		switch (resp->info.location) {
+		switch (*loc_ptr) {
 		case MOTIONSENSE_LOC_BASE:
 			printf("base\n");
 			break;
@@ -3616,7 +3645,7 @@ static int cmd_motionsense(int argc, char **argv)
 		}
 
 		printf("Chip:     ");
-		switch (resp->info.chip) {
+		switch (*chip_ptr) {
 		case MOTIONSENSE_CHIP_KXCJ9:
 			printf("kxcj9\n");
 			break;
@@ -3648,6 +3677,14 @@ static int cmd_motionsense(int argc, char **argv)
 			printf("unknown\n");
 		}
 
+		if (version >= 3) {
+			printf("Min Frequency:              %d mHz\n",
+					resp->info_3.min_frequency);
+			printf("Max Frequency:              %d mHz\n",
+					resp->info_3.max_frequency);
+			printf("FIFO Max Event Count:       %d\n",
+					resp->info_3.fifo_max_event_count);
+		}
 		return 0;
 	}
 
