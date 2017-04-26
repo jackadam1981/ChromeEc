@@ -417,6 +417,17 @@ enum fifo_header {
 /* Sensor resolution in number of bits. This sensor has fixed resolution. */
 #define BMI160_RESOLUTION      16
 
+/* Min and Max sampling frequency in mHz */
+#define BMA255_ACCEL_MIN_FREQ 7810
+#define BMI160_ACCEL_MIN_FREQ 781
+#define BMI160_ACCEL_MAX_FREQ 1600000
+#define BMI160_GYRO_MIN_FREQ  25
+#define BMI160_GYRO_MAX_FREQ  3200000
+
+/* Common sensor FIFO size; use 1 as Chrome does not use fifo mode */
+#define BMI160_ACCEL_MAX_FIFO_EVENT_COUNT 1
+#define BMI160_GYRO_MAX_FIFO_EVENT_COUNT  1
+
 extern const struct accelgyro_drv bmi160_drv;
 
 enum bmi160_running_mode {

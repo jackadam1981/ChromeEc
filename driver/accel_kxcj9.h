@@ -104,4 +104,11 @@
 #define KXCJ9_OSA_1600_HZ	7
 #define KXCJ9_OSA_FIELD		0xf
 
+/* Min and Max sampling frequency in mHz */
+#define KXCJ9_ACCEL_MIN_FREQ    781
+#define KXCJ9_ACCEL_MAX_FREQ    1600000
+
+/* Common sensor FIFO size; use 1 as Chrome does not use fifo mode */
+#define KXCJ9_ACCEL_MAX_FIFO_EVENT_COUNT 1
+
 #endif /* __CROS_EC_ACCEL_KXCJ9_H */
