@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d25391e1_f7ae104e",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-26T21:53:36Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "a3c09070_d7ffb2e7",
+      "range": {
+        "startLine": 659,
+        "startChar": 17,
+        "endLine": 659,
+        "endChar": 45
+      },
+      "revId": "da9b44f79fd0b5c7e89a4e6b1c35bb732e2bc227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a798a642_f0252af0",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-26T21:34:22Z",
       "side": 1,
       "message": "This looks more complex than \"return bd9995x_charger_enable(chg_enable)\".",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 60
+      },
+      "revId": "da9b44f79fd0b5c7e89a4e6b1c35bb732e2bc227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f207b9f6_c7f7970a",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-26T21:53:36Z",
+      "side": 1,
+      "message": "its more readable with this code. Otherwise it looks like we enable / disable at the end no matter what the chg-enable is.",
+      "parentUuid": "a798a642_f0252af0",
       "range": {
         "startLine": 678,
         "startChar": 0,

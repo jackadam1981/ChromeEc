@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3bf36bc4_2a81a142",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-26T21:53:36Z",
+      "side": 0,
+      "message": "charger supports inhibit mode but its sequence is different in BD9995X.\nin charge_state_v2.c: set curr, set vtg then set chg enable/disable\nin bd9995x: set chg disable if curr\u003d0, set curr, set chg enable if curr !\u003d 0, set vtg",
+      "parentUuid": "09463998_02720b99",
+      "range": {
+        "startLine": 420,
+        "startChar": 1,
+        "endLine": 423,
+        "endChar": 5
+      },
+      "revId": "b349d2b6222c8a345efcdced56ba26c9d9227722",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8fa5029_819994ca",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 2
