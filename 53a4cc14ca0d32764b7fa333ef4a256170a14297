@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e30cec00_f8756de1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-26T15:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b58b8173_e424447d",
+      "range": {
+        "startLine": 35,
+        "startChar": 35,
+        "endLine": 35,
+        "endChar": 39
+      },
+      "revId": "53a4cc14ca0d32764b7fa333ef4a256170a14297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b241cab_0e7c2f58",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2017-04-25T23:28:36Z",
       "side": 1,
       "message": "This change is applicable to any branch that uses the bd9995x charger, right? Should add \u0027gru\u0027 as well.",
+      "revId": "53a4cc14ca0d32764b7fa333ef4a256170a14297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "870ca0d5_7bf84493",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-26T15:59:39Z",
+      "side": 1,
+      "message": "I added gru. Hopefully the gru branch and TOT are very close as I had to modify my changes from my first pass so that gru would compile in TOT. It looks to be extremely tight on code space.",
+      "parentUuid": "9b241cab_0e7c2f58",
       "revId": "53a4cc14ca0d32764b7fa333ef4a256170a14297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c62af0df_d2635e4a",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-26T15:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a907f05_290b6ad0",
+      "range": {
+        "startLine": 334,
+        "startChar": 15,
+        "endLine": 334,
+        "endChar": 18
+      },
+      "revId": "53a4cc14ca0d32764b7fa333ef4a256170a14297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87f121f3_5718196d",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2017-04-26T04:51:59Z",
       "side": 1,
       "message": "Should this be set outside the conditional?",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 39
+      },
+      "revId": "53a4cc14ca0d32764b7fa333ef4a256170a14297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a68f063_38da5524",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-04-26T15:59:39Z",
+      "side": 1,
+      "message": "The default value for this is CHARGE_SUPPLIER_NONE. It\u0027s set to that at init time and every time VBUS is removed. So it\u0027s only necessary to change it when a valid type is reported by the charger.",
+      "parentUuid": "87f121f3_5718196d",
       "range": {
         "startLine": 346,
         "startChar": 0,
