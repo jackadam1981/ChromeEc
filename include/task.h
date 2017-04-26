@@ -23,7 +23,7 @@
 				(1 << ((port) + 20))
 #define TASK_EVENT_I2C_IDLE	(TASK_EVENT_I2C_COMPLETION(0))
 #define TASK_EVENT_MAX_I2C	6
-#ifdef I2C_PORT_COUNT
+#if defined(I2C_PORT_COUNT) && defined(CHIP_STM32)
 #if (I2C_PORT_COUNT > TASK_EVENT_MAX_I2C)
 #error "Too many i2c ports for i2c events"
 #endif
