@@ -311,6 +311,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = LSM6DS0_ADDR1,
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_range = 2,  /* g, enough for laptop. */
+	 .min_frequency = LSM6DS0_ACCEL_MIN_FREQ,
+	 .max_frequency = LSM6DS0_ACCEL_MAX_FREQ,
+	 .fifo_max_event_count = LSM6DS0_ACCEL_MAX_FIFO_EVENT_COUNT,
 	 .config = {
 		 /* AP: by default shutdown all sensors */
 		 [SENSOR_CONFIG_AP] = {
@@ -346,6 +349,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = KXCJ9_ADDR0,
 	 .rot_standard_ref = &lid_standard_ref,
 	 .default_range = 2,  /* g, enough for laptop. */
+	 .min_frequency = KXCJ9_ACCEL_MIN_FREQ,
+	 .max_frequency = KXCJ9_ACCEL_MAX_FREQ,
+	 .fifo_max_event_count = KXCJ9_ACCEL_MAX_FIFO_EVENT_COUNT,
 	 .config = {
 		 /* AP: by default shutdown all sensors */
 		 [SENSOR_CONFIG_AP] = {
@@ -381,6 +387,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = LSM6DS0_ADDR1,
 	 .rot_standard_ref = NULL,
 	 .default_range = 2000,  /* g, enough for laptop. */
+	 .min_frequency = LSM6DS0_GYRO_MIN_FREQ,
+	 .max_frequency = LSM6DS0_GYRO_MAX_FREQ,
+	 .fifo_max_event_count = LSM6DS0_GYRO_MAX_FIFO_EVENT_COUNT,
 	 .config = {
 		 /* AP: by default shutdown all sensors */
 		 [SENSOR_CONFIG_AP] = {

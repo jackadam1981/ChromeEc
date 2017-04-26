@@ -537,6 +537,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = KXCJ9_ADDR1,
 	 .rot_standard_ref = NULL, /* Identity matrix. */
 	 .default_range = 2, /* g, enough for laptop. */
+	 .min_frequency = KXCJ9_ACCEL_MIN_FREQ,
+	 .max_frequency = KXCJ9_ACCEL_MAX_FREQ,
+	 .fifo_max_event_count = CONFIG_ACCEL_FIFO,
 	 .config = {
 		/* AP: by default use EC settings */
 		[SENSOR_CONFIG_AP] = {
