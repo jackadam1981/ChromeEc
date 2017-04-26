@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e1a0e19d_ceffb8dc",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-26T01:37:05Z",
+      "side": 1,
+      "message": "Constants looked like they all used \"MOTIONSENSE_*\", thought it was for namespace concerns.\nI\u0027ll gladly remove the \"MOTIONSENSE_CHIP_\" portion, will shorten it up nicely.",
+      "parentUuid": "2883a230_101f0fde",
+      "range": {
+        "startLine": 504,
+        "startChar": 19,
+        "endLine": 504,
+        "endChar": 57
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f7c7fdd_b8f53cdd",
         "filename": "board/cave/board.c",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "5ccd5fce_f4f995e1",
+        "filename": "board/cave/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-26T01:37:05Z",
+      "side": 1,
+      "message": "Correct, fifo_max_event_count represents maximum number of the sensor\u0027s events that could exist in the FIFO (if all other sensors were disabled).  By definition, fiffo_max_event_count refers to common fifo space that is potentially shared with other sensors.  Android sensor services also wants to know reserved space fifo size, if any, but the EC does not support reserved FIFOs for the sensors, so the sensor HAL will report reserved FIFO size as 0.",
+      "parentUuid": "0f7c7fdd_b8f53cdd",
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "347c3418_f1b27535",
         "filename": "board/cave/board.h",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2017-04-25T18:13:53Z",
       "side": 1,
       "message": "IMO, this small change should be its own CL.",
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b44dfdcc_f609158b",
+        "filename": "board/cave/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-26T01:37:05Z",
+      "side": 1,
+      "message": "OK, I\u0027ll make this a separate change.",
+      "parentUuid": "347c3418_f1b27535",
       "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "90815094_668ce6d7",
+        "filename": "board/cave/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-26T01:37:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55928836_c0b0d5bc",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 23
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db94c9f1_69d3469c",
         "filename": "include/motion_sense.h",
         "patchSetId": 2
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "8f9c1e00_ca17ce7f",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-26T01:37:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db94c9f1_69d3469c",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 3
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e28a855_62fc378e",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -116,6 +224,30 @@
       "writtenOn": "2017-04-25T18:13:53Z",
       "side": 1,
       "message": "why version 0?",
+      "range": {
+        "startLine": 3398,
+        "startChar": 43,
+        "endLine": 3398,
+        "endChar": 44
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef5bebac_fc584313",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3398,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-26T01:37:05Z",
+      "side": 1,
+      "message": "I followed suit with how ec_command(EC_CMD_GET_CMD_VERSIONS, ...) was used in cmd_cmdversions().  Is that not correct?",
+      "parentUuid": "4e28a855_62fc378e",
       "range": {
         "startLine": 3398,
         "startChar": 43,
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "f3e3b390_01a9e6da",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3400,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-26T01:37:05Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "eb4a6512_bfdd9250",
+      "range": {
+        "startLine": 3400,
+        "startChar": 2,
+        "endLine": 3400,
+        "endChar": 14
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf4c0d54_f53af185",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -162,6 +318,30 @@
       "writtenOn": "2017-04-25T18:13:53Z",
       "side": 1,
       "message": "I also think this should be its own CL.",
+      "range": {
+        "startLine": 3469,
+        "startChar": 0,
+        "endLine": 3483,
+        "endChar": 9
+      },
+      "revId": "1fa868e1980e19bb680801ac9393b7cdf95c8cab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bce0f352_950f8e53",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3483,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-26T01:37:05Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "cf4c0d54_f53af185",
       "range": {
         "startLine": 3469,
         "startChar": 0,
