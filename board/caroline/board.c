@@ -501,6 +501,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = BMA2x2_I2C_ADDR1,
 	 .rot_standard_ref = &lid_standard_ref,
 	 .default_range = 8, /* g, to support tablet mode */
+	 .min_frequency = BMA255_ACCEL_MIN_FREQ,
+	 .max_frequency = BMA255_ACCEL_MAX_FREQ,
+	 .fifo_max_event_count = CONFIG_ACCEL_FIFO,
 	 .config = {
 		/* AP: by default use EC settings */
 		[SENSOR_CONFIG_AP] = {
@@ -537,6 +540,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = BMI160_ADDR0,
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_range = 8, /* g, to support tablet mode  */
+	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
+	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
+	 .fifo_max_event_count = CONFIG_ACCEL_FIFO,
 	 .config = {
 		 /* AP: by default use EC settings */
 		 [SENSOR_CONFIG_AP] = {
@@ -573,6 +579,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .addr = BMI160_ADDR0,
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &base_standard_ref,
+	 .min_frequency = BMI160_GYRO_MIN_FREQ,
+	 .max_frequency = BMI160_GYRO_MAX_FREQ,
+	 .fifo_max_event_count = CONFIG_ACCEL_FIFO,
 	 .config = {
 		 /* AP: by default shutdown all sensors */
 		 [SENSOR_CONFIG_AP] = {
