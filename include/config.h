@@ -2262,4 +2262,8 @@
 #error "CONFIG_AUX_TIMER_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
 #endif
 
+/* EC capable of sensor speeds up to 200000 mHz */
+#ifndef CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ
+#define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 200000
+#endif
 #endif  /* __CROS_EC_CONFIG_H */
