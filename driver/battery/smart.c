@@ -78,6 +78,18 @@ int sb_read_string(int offset, uint8_t *data, int len)
 #endif
 }
 
+static int sb_write_block(int cmd, uint8_t *data, uint8_t len)
+{
+	return smbus_write_block(I2C_PORT_BATTERY, BATTERY_ADDR, cmd,
+				 data, len);
+}
+
+static int sb_read_block(int cmd, uint8_t *data, uint8_t *len)
+{
+	return smbus_read_block(I2C_PORT_BATTERY, BATTERY_ADDR, cmd,
+				data, len);
+}
+
 int sb_read_mfgacc(int cmd, int block, uint8_t *data, int len)
 {
 	int rv;
@@ -459,6 +471,57 @@ static int command_batt_mfg_access_read(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(battmfgacc, command_batt_mfg_access_read,
 			"cmd block | len",
 			"Read battery manufacture access data");
+
+static int command_batt_flash_data(int argc, char **argv)
+{
+	char *e;
+	uint8_t data[32];
+	uint8_t len = sizeof(data);
+	uint16_t addr, returned_addr;
+	int rv;
+	int i;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	addr = strtoi(argv[1], &e, 0);
+	if (*e || addr < 0)
+		return EC_ERROR_PARAM1;
+
+	data[0] = addr & 0xff;
+	data[1] = addr >> 8;
+	rv = sb_write_block(0x44, data, sizeof(addr));
+	if (rv)
+		return rv;
+
+	rv = sb_read_block(0x44, data, &len);
+	if (rv)
+		return rv;
+
+	returned_addr = data[0] | data[1] << 8;
+	if (returned_addr != addr) {
+		ccprintf("Returned address (0x%x) does not match (0x%x)\n",
+			 returned_addr, addr);
+		//return EC_ERROR_UNKNOWN;
+	}
+
+	ccprintf("data[LSB->MSB]=0x");
+	for (i = 0; i < len; i++) {
+		ccprintf("%02x ", data[i]);
+	}
+	ccprintf("\n");
+	ccprintf("data[MSB->LSB]=0x");
+	do {
+		len--;
+		ccprintf("%02x ", data[len]);
+	} while (len > 0);
+	ccprintf("\n");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(battfd, command_batt_flash_data,
+			"addr",
+			"Read battery falsh data");
 #endif /* CONFIG_CMD_BATT_MFG_ACCESS */
 
 /*****************************************************************************/
