@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "507489b5_2c16cbef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-26T04:26:48Z",
+      "side": 1,
+      "message": "I actually think terminology is pretty consistent the way it is: hash is the signature of the transferred PDU, this value defines the size of the signed transfer, I don\u0027t see the need in this patch.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "2d9252ba20865ed1f952ced3171ce2e7f78df0a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
