@@ -39,6 +39,52 @@
       "revId": "53a4cc14ca0d32764b7fa333ef4a256170a14297",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a907f05_290b6ad0",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-04-26T04:51:59Z",
+      "side": 1,
+      "message": "nit, no",
+      "range": {
+        "startLine": 334,
+        "startChar": 15,
+        "endLine": 334,
+        "endChar": 18
+      },
+      "revId": "53a4cc14ca0d32764b7fa333ef4a256170a14297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87f121f3_5718196d",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-04-26T04:51:59Z",
+      "side": 1,
+      "message": "Should this be set outside the conditional?",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 39
+      },
+      "revId": "53a4cc14ca0d32764b7fa333ef4a256170a14297",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
