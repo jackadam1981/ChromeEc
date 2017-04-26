@@ -329,6 +329,22 @@ void set_mux_state(int state)
 		mux_state = state;
 }
 
+/* Port A LED control. */
+void set_led_a(int r, int g, int b)
+{
+	gpio_set_level(GPIO_LED_R, r);
+	gpio_set_level(GPIO_LED_G, g);
+	gpio_set_level(GPIO_LED_B, b);
+}
+
+/* Port B LED control. */
+void set_led_b(int r, int g, int b)
+{
+	gpio_set_level(GPIO_LED2_R, r);
+	gpio_set_level(GPIO_LED2_G, g);
+	gpio_set_level(GPIO_LED2_B, b);
+}
+
 static int command_mux(int argc, char **argv)
 {
 	char *mux_state_str = "off";
@@ -336,28 +352,16 @@ static int command_mux(int argc, char **argv)
 	if (argc > 1) {
 		if (!strcasecmp("off", argv[1])) {
 			set_mux_state(MUX_OFF);
-			gpio_set_level(GPIO_LED_R, 0);
-			gpio_set_level(GPIO_LED_G, 1);
-			gpio_set_level(GPIO_LED_B, 1);
-			gpio_set_level(GPIO_LED2_R, 0);
-			gpio_set_level(GPIO_LED2_G, 1);
-			gpio_set_level(GPIO_LED2_B, 1);
+			set_led_a(0, 1, 1);
+			set_led_b(0, 1, 1);
 		} else if (!strcasecmp("a", argv[1])) {
 			set_mux_state(MUX_A);
-			gpio_set_level(GPIO_LED_R, 1);
-			gpio_set_level(GPIO_LED_G, 0);
-			gpio_set_level(GPIO_LED_B, 1);
-			gpio_set_level(GPIO_LED2_R, 0);
-			gpio_set_level(GPIO_LED2_G, 1);
-			gpio_set_level(GPIO_LED2_B, 1);
+			set_led_a(1, 0, 1);
+			set_led_b(0, 1, 1);
 		} else if (!strcasecmp("b", argv[1])) {
 			set_mux_state(MUX_B);
-			gpio_set_level(GPIO_LED_R, 0);
-			gpio_set_level(GPIO_LED_G, 1);
-			gpio_set_level(GPIO_LED_B, 1);
-			gpio_set_level(GPIO_LED2_R, 1);
-			gpio_set_level(GPIO_LED2_G, 0);
-			gpio_set_level(GPIO_LED2_B, 1);
+			set_led_a(0, 1, 1);
+			set_led_b(1, 0, 1);
 		} else
 		return EC_ERROR_PARAM1;
 	}
