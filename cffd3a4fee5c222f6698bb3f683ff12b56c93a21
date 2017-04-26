@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e43700cd_70026b4f",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-26T01:00:23Z",
+      "side": 1,
+      "message": "Instead of implementing a custom function per board, can we just implement that in common/led_common.c, and maybe blink all the supported LEDs?",
+      "revId": "cffd3a4fee5c222f6698bb3f683ff12b56c93a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51fb564_d4bd3e7b",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-26T01:00:23Z",
+      "side": 1,
+      "message": "!led_state",
+      "revId": "cffd3a4fee5c222f6698bb3f683ff12b56c93a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
