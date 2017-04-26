@@ -141,6 +141,18 @@ struct motion_sensor_t {
 	 * from sensor registers.
 	 */
 	 uint32_t last_collection;
+
+	 /*
+	  * Maximum number of this sensor's events that could exist in the
+	  * sensor's event fifo.
+	  */
+	 uint32_t fifo_max_event_count;
+
+	 /* Minimum supported sampling frequency in miliHertz for this sensor */
+	 uint32_t min_frequency;
+
+	 /* Maximum supported sampling frequency in miliHertz for this sensor */
+	 uint32_t max_frequency;
 };
 
 /* Defined at board level. */

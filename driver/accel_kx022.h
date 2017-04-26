@@ -120,4 +120,11 @@
 #define KX022_INC2_XPWUE	(1 << 4)
 #define KX022_INC2_XNWUE	(1 << 5)
 
+/* Min and Max sampling frequency in mHz */
+#define KX022_ACCEL_MIN_FREQ    781
+#define KX022_ACCEL_MAX_FREQ    1600000
+
+/* Common sensor FIFO size; use 1 as Chrome does not use fifo mode */
+#define KX022_ACCEL_MAX_FIFO_EVENT_COUNT   1
+
 #endif /* __CROS_EC_ACCEL_KX022_H */
