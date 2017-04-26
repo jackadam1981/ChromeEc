@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b541a744_b77fe669",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-26T01:01:39Z",
+      "side": 1,
+      "message": "I think you can just do:\n\nreturn bd9995x_charger_enable(chg_enable);",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 11
+      },
+      "revId": "4cfefac82608ed0c156524ddd10d37d7b0db8871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
