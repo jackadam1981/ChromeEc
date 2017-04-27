@@ -22,6 +22,30 @@
       "revId": "0e2113539187e4b3a24aee7fb4b6705462d09aaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd93751c_f5c270e7",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-04-27T00:56:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c0caeca_6a0a198a",
+      "range": {
+        "startLine": 659,
+        "startChar": 55,
+        "endLine": 660,
+        "endChar": 10
+      },
+      "revId": "0e2113539187e4b3a24aee7fb4b6705462d09aaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
