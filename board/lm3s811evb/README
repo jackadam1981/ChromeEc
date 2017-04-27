@@ -1,0 +1,8 @@
+This board is meant to run on the QEMU Emulator.
+
+Building:
+   make -j BOARD=lm3s811evb
+
+Running:
+   # execute the following outside of cros_sdk
+   arm-softmmu/qemu-system-arm -M lm3s811evb -kernel <path_to_bin>/build/lm3s811evb/ec.bin -serial stdio
