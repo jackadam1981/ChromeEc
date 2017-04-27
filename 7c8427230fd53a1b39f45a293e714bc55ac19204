@@ -1,0 +1,337 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "679bdc8f_dca25c90",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "this could be much more if you need it.",
+      "range": {
+        "startLine": 44,
+        "startChar": 24,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "335372f2_e5dcb143",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "this needs to be in sync with enum nvmem_users from board.h",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48134654_8fcfbabc",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "you should keep initvars() here if you want to store named variables in nvmem",
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83897bd3_2a4e8b64",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "just curious: what\u0027s the meaning  of port value here, why is it different from cr50?",
+      "range": {
+        "startLine": 154,
+        "startChar": 31,
+        "endLine": 154,
+        "endChar": 33
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0842d379_39632914",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "this should match the file path",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "214d7a62_4e801a13",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "does your board need nvmem tpm user?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 15
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f1da101_30400c6a",
+        "filename": "board/mn50/ec.tasklist",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "just two tasks? Does all action happen on interrupts and hooks callbacks?",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9981876e_3c8fe790",
+        "filename": "board/mn50/usb_spi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "what is this case for - do you have two spi slaves in this system?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 28
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc37af34_471f1ace",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "why does this file have to change, what is FOB used for?\n\nThis needs to be thoroughly described and tested",
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189815c6_b907e0ca",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "here and on, no need to update the year when editing existing files",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f2b3576_3e15e722",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "this could be part of the if clause inserted after line 57, would save an if statement.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f28091_e5cf761d",
+        "filename": "chip/g/spi_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "this block needs a comment",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 33
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09a6c2ac_5a4f254b",
+        "filename": "chip/g/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "nobody seems to define this.",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 28
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4265ade4_854cbc5a",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "why does this have to change to a larger signed type from a smaller unsigned? Just to be able to assign it to SPI_READBACK_ALL below?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1382b52f_e5a28f41",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-04-27T19:10:50Z",
+      "side": 1,
+      "message": "are these casts really necessary?",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
