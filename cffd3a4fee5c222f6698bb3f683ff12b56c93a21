@@ -51,6 +51,23 @@
       "revId": "cffd3a4fee5c222f6698bb3f683ff12b56c93a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c80b5c9_53429ba8",
+        "filename": "common/led_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-27T01:05:37Z",
+      "side": 1,
+      "message": "Can\u0027t you do something like this?\n\nI.e. iterate over all supported leds, set brightness to minimum then maximum?\n\nMaybe I\u0027m missing something ,-)",
+      "revId": "cffd3a4fee5c222f6698bb3f683ff12b56c93a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
