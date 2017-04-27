@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddda7c07_c4be59d2",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-27T19:14:11Z",
+      "side": 1,
+      "message": "Is USB clock changed by this?",
+      "revId": "c270c5fbee07f9ef6c962ee5672eb4b9f297f95f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0447691e_7aa73d2f",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-27T19:14:11Z",
+      "side": 1,
+      "message": "APB1 clock max is 45MHz. RM0390 p. 116",
+      "revId": "c270c5fbee07f9ef6c962ee5672eb4b9f297f95f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
