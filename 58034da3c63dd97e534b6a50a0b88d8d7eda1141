@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e6e62a9_c863e774",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-27T05:59:25Z",
+      "side": 1,
+      "message": "This will not work. PP3300_DX_CAM is powered by PP3300_A which won\u0027t be up at this point. We will have to wait for next build to enable this.",
+      "range": {
+        "startLine": 769,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 1
+      },
+      "revId": "58034da3c63dd97e534b6a50a0b88d8d7eda1141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
