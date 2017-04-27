@@ -159,10 +159,6 @@
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 50000  /* us */
 #define PD_VCONN_SWAP_DELAY 5000 /* us */
 
-#ifdef BOARD_GRU
-#define CONFIG_CMD_ALS
-#endif
-
 #define CONFIG_UART_HOST                0
 
 /* Optional feature - used by nuvoton */
@@ -202,6 +198,7 @@
 #ifdef BOARD_GRU
 #undef CONFIG_CMD_I2C_XFER
 #undef CONFIG_CMD_SHMEM
+#undef CONFIG_CMD_CRASH
 #endif
 
 /*
