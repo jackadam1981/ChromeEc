@@ -956,12 +956,12 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RCC_CR_PLLON		(1 << 24)
 #define STM32_RCC_CR_PLLRDY		(1 << 25)
 
-/* Required or recommended clocks for stm32f446 */
+/* Required or recommended clocks for stm32f446/stm32f412 */
 #define STM32F4_PLL_REQ 2000000
 #define STM32F4_RTC_REQ 1000000
-#define STM32F4_IO_CLOCK  42000000
+#define STM32F4_IO_CLOCK  48000000
 #define STM32F4_USB_REQ 48000000
-#define STM32F4_VCO_CLOCK 336000000
+#define STM32F4_VCO_CLOCK 384000000
 #define STM32F4_HSI_CLOCK 16000000
 #define STM32F4_LSI_CLOCK 32000
 
