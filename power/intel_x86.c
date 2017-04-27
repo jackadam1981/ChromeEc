@@ -293,7 +293,9 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 			return POWER_S3S5;
 		}
 
+#ifdef CONFIG_LID_SWITCH
 		gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
+#endif
 
 		/* Enable wireless */
 		wireless_set_state(WIRELESS_ON);
@@ -319,7 +321,9 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 
+#ifdef CONFIG_LID_SWITCH
 		gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
+#endif
 
 		/* Suspend wireless */
 		wireless_set_state(WIRELESS_SUSPEND);
