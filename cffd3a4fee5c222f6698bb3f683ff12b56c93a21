@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "3a98dbcf_63378e8d",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-27T06:09:23Z",
+      "side": 1,
+      "message": "Yes, I have added a generic API for led_control.",
+      "parentUuid": "58feb008_6c8a3847",
+      "revId": "cffd3a4fee5c222f6698bb3f683ff12b56c93a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e51fb564_d4bd3e7b",
         "filename": "common/button.c",
         "patchSetId": 3
