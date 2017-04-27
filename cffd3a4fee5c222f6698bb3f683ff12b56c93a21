@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d79cac99_ee14a9bf",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-27T00:50:27Z",
+      "side": 1,
+      "message": "The problem here is that there is no way for the led_common driver to know how to control the led (gpios to control, actions that need to be taken for controlling the LED, default state of the LED). But yeah, it might not make sense to have a led_* function for each type of LED. Instead I can change this to:\n\nvoid led_control(led_id, led_state)\n{\n}\n\nwhich by default does nothing, but can be implemented by board for any kind of LED.",
+      "parentUuid": "e43700cd_70026b4f",
+      "revId": "cffd3a4fee5c222f6698bb3f683ff12b56c93a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e51fb564_d4bd3e7b",
         "filename": "common/button.c",
         "patchSetId": 3
