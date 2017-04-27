@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ada637c4_c479d781",
+        "filename": "Makefile",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-27T20:30:36Z",
+      "side": 1,
+      "message": "It has been removed. The vif is stored in the board build directory.",
+      "parentUuid": "d53f4b27_456017ac",
+      "range": {
+        "startLine": 193,
+        "startChar": 16,
+        "endLine": 193,
+        "endChar": 20
+      },
+      "revId": "d55030ae1a1ed3cf0bd4930f5cf76b45a2a50cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9f6108f_ea59b84a",
         "filename": "util/genvif.c",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "d55030ae1a1ed3cf0bd4930f5cf76b45a2a50cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d840f37_82fcf6dd",
+        "filename": "util/genvif.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-27T20:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9f6108f_ea59b84a",
+      "range": {
+        "startLine": 316,
+        "startChar": 9,
+        "endLine": 316,
+        "endChar": 15
+      },
+      "revId": "d55030ae1a1ed3cf0bd4930f5cf76b45a2a50cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eb0851cd_7fd8126d",
+        "filename": "util/genvif.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-27T20:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5c6fc14_60c95136",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 8
+      },
+      "revId": "d55030ae1a1ed3cf0bd4930f5cf76b45a2a50cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a628f72_7e203fba",
         "filename": "util/genvif.c",
         "patchSetId": 9
@@ -91,6 +163,30 @@
       "revId": "d55030ae1a1ed3cf0bd4930f5cf76b45a2a50cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "604e53fb_4ffdcde6",
+        "filename": "util/genvif.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-04-27T20:30:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a628f72_7e203fba",
+      "range": {
+        "startLine": 545,
+        "startChar": 1,
+        "endLine": 545,
+        "endChar": 13
+      },
+      "revId": "d55030ae1a1ed3cf0bd4930f5cf76b45a2a50cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
