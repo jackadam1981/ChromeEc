@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "cfe2298b_ad5aac9c",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-27T21:41:29Z",
+      "side": 1,
+      "message": "This is clock divider. H1 spi slave can only accept very slow spi, much slower than spi flash parts.",
+      "parentUuid": "83897bd3_2a4e8b64",
+      "range": {
+        "startLine": 154,
+        "startChar": 31,
+        "endLine": 154,
+        "endChar": 33
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0842d379_39632914",
         "filename": "board/mn50/board.h",
         "patchSetId": 8
@@ -157,6 +181,30 @@
     },
     {
       "key": {
+        "uuid": "6fbe5bb2_beca6d43",
+        "filename": "board/mn50/ec.tasklist",
+        "patchSetId": 8
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-27T21:41:29Z",
+      "side": 1,
+      "message": "Also console control. This chip is fully controlled by CCD and console. It doesn\u0027t do anything automatic.",
+      "parentUuid": "5f1da101_30400c6a",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 24
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9981876e_3c8fe790",
         "filename": "board/mn50/usb_spi.c",
         "patchSetId": 8
@@ -191,6 +239,24 @@
       "writtenOn": "2017-04-27T19:10:50Z",
       "side": 1,
       "message": "why does this file have to change, what is FOB used for?\n\nThis needs to be thoroughly described and tested",
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "748d5735_be4cf624",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-27T21:41:29Z",
+      "side": 1,
+      "message": "This is my attempt to support node locked images within the build file. I\u0027m not expecting to check this in as is.",
+      "parentUuid": "dc37af34_471f1ace",
       "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -289,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "322a4148_511a02de",
+        "filename": "chip/g/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-27T21:41:29Z",
+      "side": 1,
+      "message": "It\u0027s magically defined by the build system, from the chip, family, board in build.mk",
+      "parentUuid": "09a6c2ac_5a4f254b",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 28
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4265ade4_854cbc5a",
         "filename": "chip/g/usb_spi.c",
         "patchSetId": 8
@@ -312,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "56e4ffd1_4b73e732",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-27T21:41:29Z",
+      "side": 1,
+      "message": "spi_transaction takes int arguments, previously there\u0027s an implicit cast from uint8_t in the spi_transaction call, which wont allow the SPI_READBACK_ALL defined value of -1.",
+      "parentUuid": "4265ade4_854cbc5a",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1382b52f_e5a28f41",
         "filename": "chip/g/usb_spi.c",
         "patchSetId": 8
@@ -323,6 +437,30 @@
       "writtenOn": "2017-04-27T19:10:50Z",
       "side": 1,
       "message": "are these casts really necessary?",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93d49f1c_0c8d142a",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-04-27T21:41:29Z",
+      "side": 1,
+      "message": "No. Will remove.",
+      "parentUuid": "1382b52f_e5a28f41",
       "range": {
         "startLine": 77,
         "startChar": 15,
