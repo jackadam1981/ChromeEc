@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "2cbfec44_7ed2c5d2",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-04-27T21:46:15Z",
+      "side": 1,
+      "message": "Why dont you do this in gpio.inc?",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48134654_8fcfbabc",
         "filename": "board/mn50/board.c",
         "patchSetId": 8
@@ -128,6 +151,29 @@
         "startChar": 8,
         "endLine": 6,
         "endChar": 25
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63f0887e_9467de69",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-04-27T21:46:15Z",
+      "side": 1,
+      "message": "chip/g/usart.c sets up the both ap and ec uart endpoints, but you only use the ap uart. Is that ok?",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 27
       },
       "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
