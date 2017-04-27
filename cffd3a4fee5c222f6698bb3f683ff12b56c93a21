@@ -68,6 +68,24 @@
       "revId": "cffd3a4fee5c222f6698bb3f683ff12b56c93a21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "853517c6_948e37ae",
+        "filename": "common/led_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-27T01:24:01Z",
+      "side": 1,
+      "message": "so, the problem I think is that each LED seems to support different colors and different brightness ranges for each supported color. I am not sure if just setting brightness to maximum on every color would be the right thing?\n\nAlso, we will have to maintain current brightness level for each color for each supported LED (which we do not maintain right now).",
+      "parentUuid": "3c80b5c9_53429ba8",
+      "revId": "cffd3a4fee5c222f6698bb3f683ff12b56c93a21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
