@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d53f4b27_456017ac",
+        "filename": "Makefile",
+        "patchSetId": 9
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-27T16:09:32Z",
+      "side": 1,
+      "message": "do we still need to subdirectory now we have only one file ?",
+      "range": {
+        "startLine": 193,
+        "startChar": 16,
+        "endLine": 193,
+        "endChar": 20
+      },
+      "revId": "d55030ae1a1ed3cf0bd4930f5cf76b45a2a50cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9f6108f_ea59b84a",
+        "filename": "util/genvif.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-27T16:09:32Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 316,
+        "startChar": 9,
+        "endLine": 316,
+        "endChar": 15
+      },
+      "revId": "d55030ae1a1ed3cf0bd4930f5cf76b45a2a50cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5c6fc14_60c95136",
+        "filename": "util/genvif.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-27T16:09:32Z",
+      "side": 1,
+      "message": "nit: that\u0027s a weird indentation and a useless block",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 8
+      },
+      "revId": "d55030ae1a1ed3cf0bd4930f5cf76b45a2a50cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a628f72_7e203fba",
+        "filename": "util/genvif.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-27T16:09:32Z",
+      "side": 1,
+      "message": "snprintf would be slightly better.\nActually we might put asprintf.",
+      "range": {
+        "startLine": 545,
+        "startChar": 1,
+        "endLine": 545,
+        "endChar": 13
+      },
+      "revId": "d55030ae1a1ed3cf0bd4930f5cf76b45a2a50cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
