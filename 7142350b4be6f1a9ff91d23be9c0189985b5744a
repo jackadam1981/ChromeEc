@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7086d370_7d3c53a9",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-28T21:25:05Z",
+      "side": 1,
+      "message": "nit: comment style: nothing on the first line in multi-line comments.",
+      "revId": "7142350b4be6f1a9ff91d23be9c0189985b5744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d62b753_31aa5177",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-28T21:25:05Z",
+      "side": 1,
+      "message": "extra indent?",
+      "range": {
+        "startLine": 1133,
+        "startChar": 4,
+        "endLine": 1133,
+        "endChar": 5
+      },
+      "revId": "7142350b4be6f1a9ff91d23be9c0189985b5744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e18a971_fe606b42",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-28T21:25:05Z",
+      "side": 1,
+      "message": "Are you concerned about doing this forever? Is there a max timeout that you could abort after? Or, do we assume that the charger will eventually figure it out?",
+      "range": {
+        "startLine": 1133,
+        "startChar": 0,
+        "endLine": 1135,
+        "endChar": 38
+      },
+      "revId": "7142350b4be6f1a9ff91d23be9c0189985b5744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
