@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c11314fa_300f4930",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-28T18:06:57Z",
+      "side": 1,
+      "message": "Why not have a single tablet_mode command with args 0/1 to disable/enable the mode?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "3fc8994c863be01d43c5160c42bf0f75c40c7687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
