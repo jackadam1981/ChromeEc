@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83cda949_cec263ca",
+        "filename": "board/cave/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-28T23:41:41Z",
+      "side": 1,
+      "message": "No need to #undef again, it is already undef in include/config.h",
+      "revId": "c34548a117f56e41646d4400c6eaca54e632a702",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
