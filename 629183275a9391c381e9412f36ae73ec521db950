@@ -16,6 +16,42 @@
       "revId": "629183275a9391c381e9412f36ae73ec521db950",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75aa0dfa_117a094e",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-28T03:29:24Z",
+      "side": 1,
+      "message": "Or we can have a table of recovery buttons defined by the board and handle the check here in button.c.\n\nEvery board using CONFIG_BUTTON_RECOVERY will have to define a table like:\nconst struct button_config *recovery_buttons[] \u003d {\n \u0026buttons[BUTTON_VOLUME_DOWN],\n \u0026buttons[BUTTON_VOLUME_UP],\n};\n\nconst uint8_t recovery_buttons_count \u003d ARRAY_SIZE(recovery_buttons);\n\nand button.c can implement something like:\n\nint is_recovery_mode_requested(void)\n{\n     uint8_t i;\n    for (i \u003d 0; i \u003c recovery_buttons_count; i++) {\n          if (!raw_button_pressed(recovery_buttons[i]))\n                 return 0;\n   }\n   return 1;\n}\n\nThat way we can allow any number of buttons to be used by the boards and have minimal overhead for checking recovery mode.\n\nThoughts?",
+      "parentUuid": "bbcec730_669708f9",
+      "revId": "629183275a9391c381e9412f36ae73ec521db950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58685fe7_f79d2293",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-04-28T03:29:24Z",
+      "side": 1,
+      "message": "Or we can have a table of recovery buttons defined by the board and handle the check here in button.c.\n\nEvery board using CONFIG_BUTTON_RECOVERY will have to define a table like:\nconst struct button_config *recovery_buttons[] \u003d {\n \u0026buttons[BUTTON_VOLUME_DOWN],\n \u0026buttons[BUTTON_VOLUME_UP],\n};\n\nconst uint8_t recovery_buttons_count \u003d ARRAY_SIZE(recovery_buttons);\n\nand button.c can implement something like:\n\nint is_recovery_mode_requested(void)\n{\n     uint8_t i;\n    for (i \u003d 0; i \u003c recovery_buttons_count; i++) {\n          if (!raw_button_pressed(recovery_buttons[i]))\n                 return 0;\n   }\n   return 1;\n}\n\nThat way we can allow any number of buttons to be used by the boards and have minimal overhead for checking recovery mode.\n\nThoughts?",
+      "parentUuid": "bbcec730_669708f9",
+      "revId": "629183275a9391c381e9412f36ae73ec521db950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
