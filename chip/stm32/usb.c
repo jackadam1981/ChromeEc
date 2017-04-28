@@ -460,7 +460,7 @@ void usb_interrupt(void)
 				if (state != 2) {
 					CPRINTF("wake error: cnt=%d state=%d\n",
 						esof_count, state);
-					usb_suspend();
+					usb_reset();
 				}
 			}
 		}
@@ -718,4 +718,22 @@ static int command_serialno(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(serialno, command_serialno,
 	"load/set [value]",
 	"Read and write USB serial number");
+#endif
+
+#ifdef CONFIG_USB_REMOTE_WAKEUP
+static int command_waketest(int argc, char **argv)
+{
+	int i;
+
+	for (i = 0; i < 30; i++) {
+		usb_wake();
+		msleep(10);
+	}
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(waketest, command_waketest,
+	NULL,
+	"waketest");
 #endif
