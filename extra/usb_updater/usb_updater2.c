@@ -871,10 +871,13 @@ static void send_subcommand(struct transfer_descriptor *td, uint16_t subcommand)
 	send_done(&td->uep);
 
 	if (protocol_version > 5) {
+		uint8_t response = -1;
+		size_t response_size = sizeof(response);
+
 		ext_cmd_over_usb(&td->uep, subcommand,
 				NULL, 0,
-				NULL, 0);
-		printf("sent command %x\n", subcommand);
+				&response, &response_size);
+		printf("sent command %x, resp %x\n", subcommand, response);
 	}
 }
 
