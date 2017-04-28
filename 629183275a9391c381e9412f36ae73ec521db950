@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbcec730_669708f9",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-28T01:38:22Z",
+      "side": 1,
+      "message": "Missing definition of this function in some header file?\n\nAlso, I wonder if we we really need a board-specific function, or if we can just use 2 different config options? AFAICT there are only 2 options here: either we do recovery by volume_up+volume_down, or we do it by a single GPIO.",
+      "revId": "629183275a9391c381e9412f36ae73ec521db950",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
