@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6caabd0_0290f6f9",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-28T00:00:45Z",
+      "side": 1,
+      "message": "Please put a proper TODO(b:1234): \n\n(fix the other ones too).",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00797bf3_f5d5ccaf",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-28T00:00:45Z",
+      "side": 1,
+      "message": "That\u0027s correct.",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac8d7b8_deb07ba0",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-28T00:00:45Z",
+      "side": 1,
+      "message": "Drop this?",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da39060e_dcff989e",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-28T00:00:45Z",
+      "side": 1,
+      "message": "Bug number. And as I said we should add this to fizz.",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f83e0be1_c655b0d7",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-28T00:00:45Z",
+      "side": 1,
+      "message": "bug. You get the idea, please fix all of them,",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa79b838_bd607968",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-28T00:00:45Z",
+      "side": 1,
+      "message": "Or is this the same as USB_C0_VBUS_WAKE_L?",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb27dc9c_187cbd58",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-28T00:00:45Z",
+      "side": 1,
+      "message": "This logic proved unreliable and we switched to using 2 pins on poppy and eve.",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31e422dd_a4e7ef52",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-04-28T00:00:45Z",
+      "side": 1,
+      "message": "bug",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
