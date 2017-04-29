@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "17df2be6_052530d8",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-04-29T08:36:26Z",
+      "side": 1,
+      "message": "Done. Restructured and merged into original API.",
+      "parentUuid": "0477d0fa_2e10bb80",
+      "range": {
+        "startLine": 268,
+        "startChar": 9,
+        "endLine": 270,
+        "endChar": 38
+      },
+      "revId": "434437fca931a4eeca97a5b55686a22ba6a5e8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e036547_de73f07e",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "434437fca931a4eeca97a5b55686a22ba6a5e8e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5afb82ef_026fc919",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-04-29T08:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e036547_de73f07e",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 62
+      },
+      "revId": "434437fca931a4eeca97a5b55686a22ba6a5e8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "899f88fa_d190e144",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-04-29T08:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c20d22_095961f6",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 28
+      },
+      "revId": "434437fca931a4eeca97a5b55686a22ba6a5e8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43ef637f_8b7998fd",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "434437fca931a4eeca97a5b55686a22ba6a5e8e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af40ca7b_7187f284",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-04-29T08:36:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ef637f_8b7998fd",
+      "range": {
+        "startLine": 408,
+        "startChar": 1,
+        "endLine": 435,
+        "endChar": 38
+      },
+      "revId": "434437fca931a4eeca97a5b55686a22ba6a5e8e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
