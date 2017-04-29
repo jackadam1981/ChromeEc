@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "287e2f33_9b068045",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-29T01:40:59Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f55d7796_674beaf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-29T01:40:59Z",
+      "side": 1,
+      "message": "why ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 14
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6471ec4d_de295ab9",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-29T01:40:59Z",
+      "side": 1,
+      "message": "this part of the condition is likely useless",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe084b6_d0aac96d",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-29T01:40:59Z",
+      "side": 1,
+      "message": "if board_hibernate() does nothing you can remove it",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 1
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0513e56_73c38dd5",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-29T01:40:59Z",
+      "side": 1,
+      "message": "isn\u0027t this stuff dead?",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 43
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4122846d_3f7eb0f8",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-04-29T01:40:59Z",
+      "side": 1,
+      "message": "all this complicated logic is to switch the port sourcing capability from 1.5A to 3A at runtime (to stay within the total power budget aka CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)\ngiven you have only one port , you can remove all this",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
