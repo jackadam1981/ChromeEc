@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6723e11f_f210f7bd",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-04-29T00:53:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c23f3fb5_b3f3a1f1",
+      "range": {
+        "startLine": 616,
+        "startChar": 0,
+        "endLine": 619,
+        "endChar": 0
+      },
+      "revId": "04c4c026339b8d0a5b5474883f0ddf94e2084434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4da460f_23821b03",
         "filename": "driver/charger/bd99955.c",
         "patchSetId": 6
