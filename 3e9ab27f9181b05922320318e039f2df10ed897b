@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1127fab8_76e84616",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-29T02:52:22Z",
+      "side": 1,
+      "message": "Just so I\u0027m clear, you\u0027re saying to remove the \"uint32_t fifo_max_event_count;\" field from the motion_sensor_t structure, and instead just set out-\u003einfo_3.fifo_max_event_count \u003d CONFIG_ACCEL_FIFO is defined, or if it\u0027s not defined, then set out-\u003einfo_3.fifo_max_event_count \u003d 1?  That would save space in the motion_sensor_t struct and get rid of all the MAX_FIFO_EVENT_COUNT defines, but would be less flexible should a new Chrome architecture not use an EC-based FIFO for sensors but instead want to use the new sensor chip\u0027s onboard FIFO to save RAM space in EC (as an example).",
+      "parentUuid": "3a6ffb90_064a2c9f",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a766c50b_f842de66",
         "filename": "driver/als_si114x.h",
         "patchSetId": 8
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "698d11d7_55c8568d",
+        "filename": "driver/als_si114x.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-29T02:52:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a766c50b_f842de66",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "793588e0_5255124f",
         "filename": "driver/mag_bmm150.h",
         "patchSetId": 8
@@ -65,6 +101,24 @@
       "writtenOn": "2017-04-29T00:51:22Z",
       "side": 1,
       "message": "I don\u0027t see why limit to 1. EC will use its own fifo to hold data. \nWhere is this defined used?",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e84734a4_3ab13607",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-29T02:52:22Z",
+      "side": 1,
+      "message": "You said that drivers do not put sensor chips into FIFO mode, so for those boards that do not support a fifo in the EC (i.e. do not have CONFIG_ACCEL_FIFO defined), the FIFO size would effectively be 1 as there\u0027s no holding FIFO on the chip or in the EC, only what\u0027s read directly from the chip, thus the \"1\" setting since setup can only hold 1 sensor event.\n\nAt the board.c layer, when setting up motion_sensor_t structures, is where decision is made on a board-by-board basis as to whether to use this MAX_FIFO_EVENT_COUNT constant or, if CONFIG_ACCEL_FIFO is defined, to use CONFIG_ACCEL_FIFO.\n\nTo answer your question, this define will be used by all boards that do not support an EC FIFO (e.g. CONFIG_ACCEL_FIFO is not defined).",
+      "parentUuid": "793588e0_5255124f",
       "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
