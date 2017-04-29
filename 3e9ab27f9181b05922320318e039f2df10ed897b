@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9b7b69f_f4ede9f8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-29T00:51:22Z",
+      "side": 1,
+      "message": "I believe we don\u0027t need fifo_max_event_count and can use CONFIG_ACCEL_FIFO.",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a766c50b_f842de66",
+        "filename": "driver/als_si114x.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-29T00:51:22Z",
+      "side": 1,
+      "message": "use SI114X as other macros.",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "793588e0_5255124f",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-29T00:51:22Z",
+      "side": 1,
+      "message": "I don\u0027t see why limit to 1. EC will use its own fifo to hold data. \nWhere is this defined used?",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6d8d8d2_0a0f3e55",
+        "filename": "util/ectool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3412,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-04-29T00:51:22Z",
+      "side": 1,
+      "message": "We can use fls()",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
