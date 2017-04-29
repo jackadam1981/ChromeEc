@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a6ffb90_064a2c9f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-29T01:37:26Z",
+      "side": 1,
+      "message": "Are you sure?  Just want to make sure before I modify all the files to remove that field and associated constants.",
+      "parentUuid": "a9b7b69f_f4ede9f8",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a766c50b_f842de66",
         "filename": "driver/als_si114x.h",
         "patchSetId": 8
@@ -64,6 +82,24 @@
       "writtenOn": "2017-04-29T00:51:22Z",
       "side": 1,
       "message": "We can use fls()",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa21fb91_259ac893",
+        "filename": "util/ectool.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 3412,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-04-29T01:37:26Z",
+      "side": 1,
+      "message": "I didn\u0027t realize fls() was supported in EC code.  I\u0027ll fix this.",
+      "parentUuid": "b6d8d8d2_0a0f3e55",
       "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
