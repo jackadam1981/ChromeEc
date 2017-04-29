@@ -30,6 +30,9 @@ static enum {
 #define EVENT_MIN 500
 
 static int idle_default;
+/* The time in the future at which sleeping will be allowed. */
+static timestamp_t next_sleep_time;
+
 
 static const char const *idle_name[] = {
 	"invalid",
@@ -39,9 +42,19 @@ static const char const *idle_name[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(idle_name) == NUM_CHOICES);
 
+static void idle_status(void)
+{
+	timestamp_t tmp = get_time();
+	uint32_t diff = (next_sleep_time.val - tmp.val) / SECOND;
+	if (diff)
+		ccprintf("sleep in: %u\n", diff);
+}
+DECLARE_HOOK(HOOK_SECOND, idle_status, HOOK_PRIO_DEFAULT);
+
 static int command_idle(int argc, char **argv)
 {
 	int i;
+	timestamp_t tmp = get_time();
 
 	if (argc > 1) {
 		if (!strncasecmp("c", argv[1], 1)) {
@@ -60,6 +73,7 @@ static int command_idle(int argc, char **argv)
 
 	ccprintf("idle action: %s\n", idle_name[idle_action]);
 	ccprintf("deep sleep count: %u\n", GREG32(PMU, PWRDN_SCRATCH17));
+	ccprintf("sleep in: %u\n", (next_sleep_time.val - tmp.val) / SECOND);
 
 	return EC_SUCCESS;
 }
@@ -159,9 +173,6 @@ static void resume_from_sleep(void)
 	interrupt_enable();
 }
 
-
-/* The time in the future at which sleeping will be allowed. */
-static timestamp_t next_sleep_time;
 
 /* Update the future sleep time. */
 void delay_sleep_by(uint32_t us)
