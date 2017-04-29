@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "fc92ca87_299afe81",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-29T00:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dac8d7b8_deb07ba0",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da39060e_dcff989e",
         "filename": "board/fizz/gpio.inc",
         "patchSetId": 10
@@ -67,6 +85,24 @@
       "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "052bd02f_f8c8b94e",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-29T00:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da39060e_dcff989e",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "6a18e549_5413bf17",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-29T00:56:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f83e0be1_c655b0d7",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa79b838_bd607968",
         "filename": "board/fizz/gpio.inc",
         "patchSetId": 10
@@ -98,6 +152,24 @@
       "writtenOn": "2017-04-28T00:00:45Z",
       "side": 1,
       "message": "Or is this the same as USB_C0_VBUS_WAKE_L?",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d661f84f_a2a4114f",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-29T00:56:11Z",
+      "side": 1,
+      "message": "yes.",
+      "parentUuid": "aa79b838_bd607968",
       "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -121,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "53c956cc_cbd376b9",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-29T00:56:11Z",
+      "side": 1,
+      "message": "Fizz doesn\u0027t support 3A source current. So, if this trick isn\u0027t working, we need to change the hardware to make it 1.5A only..",
+      "parentUuid": "eb27dc9c_187cbd58",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31e422dd_a4e7ef52",
         "filename": "board/fizz/usb_pd_policy.c",
         "patchSetId": 10
@@ -132,6 +222,24 @@
       "writtenOn": "2017-04-28T00:00:45Z",
       "side": 1,
       "message": "bug",
+      "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa127217_ce533241",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-04-29T00:56:11Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "31e422dd_a4e7ef52",
       "revId": "3a4927cf030beb06d95f7d3b4012a9cd86473283",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
