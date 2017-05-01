@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "503bf464_4b16c0bf",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-05-01T19:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7086d370_7d3c53a9",
+      "revId": "7142350b4be6f1a9ff91d23be9c0189985b5744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d62b753_31aa5177",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4f7a330f_7e7e4f2a",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-05-01T19:42:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d62b753_31aa5177",
+      "range": {
+        "startLine": 1133,
+        "startChar": 4,
+        "endLine": 1133,
+        "endChar": 5
+      },
+      "revId": "7142350b4be6f1a9ff91d23be9c0189985b5744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e18a971_fe606b42",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 4
@@ -53,6 +95,30 @@
       "writtenOn": "2017-04-28T21:25:05Z",
       "side": 1,
       "message": "Are you concerned about doing this forever? Is there a max timeout that you could abort after? Or, do we assume that the charger will eventually figure it out?",
+      "range": {
+        "startLine": 1133,
+        "startChar": 0,
+        "endLine": 1135,
+        "endChar": 38
+      },
+      "revId": "7142350b4be6f1a9ff91d23be9c0189985b5744a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93b103ea_24ce11e2",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-05-01T19:42:33Z",
+      "side": 1,
+      "message": "The current implementation has a \"max try\" count of 10. So it will try 10 times and then not try any longer, but does not include any error recovery if that limit is reached. In the proposed implementation it will stop trying if VBUS is no longer present.  I could add a similar max count, but code space is very tight on Gru in TOT (and the branch i presume). I think if VBUS is being provided then the charger should come up with some valid bc12_type.",
+      "parentUuid": "3e18a971_fe606b42",
       "range": {
         "startLine": 1133,
         "startChar": 0,
