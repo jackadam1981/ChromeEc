@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b4a6d4c_0b65710a",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-01T20:34:03Z",
+      "side": 1,
+      "message": "312 ms seems awfully specific.  How was this number determined?  The old code had a comment at line 328 that should be copied here.  Or possibly do\n\n/* (comment from line 328) */\n#define BC12_DETECT_US (312*MSEC)",
+      "range": {
+        "startLine": 1103,
+        "startChar": 24,
+        "endLine": 1103,
+        "endChar": 34
+      },
+      "revId": "11a7e403ced077efa4f6e80246bf8b6529e167ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
