@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43ffc37b_32f4af72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-01T16:02:53Z",
+      "side": 1,
+      "message": "Why did you remove the prefix?",
+      "revId": "e660ff92dc05774a283502c302b475bf60506aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7562efd7_bdef63e8",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-01T16:02:53Z",
+      "side": 1,
+      "message": "Why is this coming back? I verified that `ectool chargecontrol` worked properly in PS7.",
+      "range": {
+        "startLine": 428,
+        "startChar": 20,
+        "endLine": 428,
+        "endChar": 60
+      },
+      "revId": "e660ff92dc05774a283502c302b475bf60506aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ba0f0b_dcdfe783",
+        "filename": "driver/charger/bd99955.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-01T16:02:53Z",
+      "side": 1,
+      "message": "changing the prefix from bd99955 to bd9995x isn\u0027t a helpful change (right now) and makes it inconsistent with the rest of the file.\n\nIf at some point we wish to change the entire file from bd99955 to bd9995x, we\u0027ll do so. But, not in this change.",
+      "range": {
+        "startLine": 151,
+        "startChar": 17,
+        "endLine": 151,
+        "endChar": 18
+      },
+      "revId": "e660ff92dc05774a283502c302b475bf60506aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
