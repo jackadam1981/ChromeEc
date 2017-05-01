@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e831edea_d76581ea",
+        "filename": "driver/accel_bma2x2.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-01T18:05:57Z",
+      "side": 1,
+      "message": "Do you still need these based off of your new macro for SENSOR_MAX_FIFO_EVENT_COUNT ?",
+      "revId": "bdf9190a279e54788771bd4b1c9f66be03b4bdea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
