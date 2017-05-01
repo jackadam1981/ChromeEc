@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "31b98ec0_dc1f8421",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-01T18:25:37Z",
+      "side": 1,
+      "message": "I see your point: in case we move away for a single FIFO model and use the hardware sensor FIFO directly, the EC translating/reclocking the events from the sensor FIFO when responding to a MOTIONSENSE_CMD_FIFO_READ command.\nWe are not there yet, that would be a major redesign.",
+      "parentUuid": "1127fab8_76e84616",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a766c50b_f842de66",
         "filename": "driver/als_si114x.h",
         "patchSetId": 8
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "You said that drivers do not put sensor chips into FIFO mode, so for those boards that do not support a fifo in the EC (i.e. do not have CONFIG_ACCEL_FIFO defined), the FIFO size would effectively be 1 as there\u0027s no holding FIFO on the chip or in the EC, only what\u0027s read directly from the chip, thus the \"1\" setting since setup can only hold 1 sensor event.\n\nAt the board.c layer, when setting up motion_sensor_t structures, is where decision is made on a board-by-board basis as to whether to use this MAX_FIFO_EVENT_COUNT constant or, if CONFIG_ACCEL_FIFO is defined, to use CONFIG_ACCEL_FIFO.\n\nTo answer your question, this define will be used by all boards that do not support an EC FIFO (e.g. CONFIG_ACCEL_FIFO is not defined).",
       "parentUuid": "793588e0_5255124f",
+      "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e70db220_d8332c11",
+        "filename": "driver/mag_bmm150.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-01T18:25:37Z",
+      "side": 1,
+      "message": "This define is still not needed.\nIn common/motion_sense.c, you can have:\n#ifdef CONFIG_ACCEL_FIFO\n  out-\u003einfo_3.fifo_max_event_count \u003d CONFIG_ACCEL_FIFO;\n#else\n  out-\u003einfo_3.fifo_max_event_count \u003d 1\n#endif\n\nRemember, even if a sensor does not have its own fifo, the EC can present a FIFO to the host and will poll the fifo-less sensor as needed to fill its own FIFO (see CONFIG_ACCEL_FORCE_MODE_MASK)",
+      "parentUuid": "e84734a4_3ab13607",
       "revId": "3e9ab27f9181b05922320318e039f2df10ed897b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
