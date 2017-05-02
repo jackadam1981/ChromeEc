@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "660fb83b_dfe8927d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-02T00:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "287e2f33_9b068045",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 35
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f55d7796_674beaf8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 11
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "58f177d9_ee154e65",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-02T00:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6471ec4d_de295ab9",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 39
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abe084b6_d0aac96d",
         "filename": "board/fizz/board.c",
         "patchSetId": 11
@@ -91,6 +139,30 @@
       "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a7ee08e_eb3e207b",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-02T00:11:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abe084b6_d0aac96d",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 1
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "456b71b2_a3579085",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-02T00:11:30Z",
+      "side": 1,
+      "message": "Yes. I remove it in https://chromium-review.googlesource.com/c/491988/",
+      "parentUuid": "a0513e56_73c38dd5",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 43
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4122846d_3f7eb0f8",
         "filename": "board/fizz/usb_pd_policy.c",
         "patchSetId": 11
@@ -128,6 +224,30 @@
       "writtenOn": "2017-04-29T01:40:59Z",
       "side": 1,
       "message": "all this complicated logic is to switch the port sourcing capability from 1.5A to 3A at runtime (to stay within the total power budget aka CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT)\ngiven you have only one port , you can remove all this",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a46a015_5baf0b8c",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-02T00:11:30Z",
+      "side": 1,
+      "message": "Fizz has a barrel jack. So, the type-c port can be a source.",
+      "parentUuid": "4122846d_3f7eb0f8",
       "range": {
         "startLine": 59,
         "startChar": 0,
