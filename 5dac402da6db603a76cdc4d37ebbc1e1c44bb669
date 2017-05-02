@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "744c58f1_2008cd3f",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-02T22:21:29Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 8
+      },
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd47f0c0_d1a25a86",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-02T22:21:29Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 8
+      },
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f669a2_2c7a3aab",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-02T22:21:29Z",
+      "side": 1,
+      "message": "Should this be a key pressed event rather than a mode change?",
+      "range": {
+        "startLine": 201,
+        "startChar": 25,
+        "endLine": 201,
+        "endChar": 50
+      },
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df1e350b_08471cfb",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-02T22:21:29Z",
+      "side": 1,
+      "message": "Set pulse and pulse_start to 0 at the end?",
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "768db65a_356bb570",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-02T22:21:29Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we use a shorter delay in this case?\n\nSomething like:\n\n»       uint64_t delay \u003d BASE_DETECT_DEBOUNCE_US;\n»       uint64_t time_now \u003d get_time().val;\n\n»       if (base_detect_debounce_time \u003c\u003d time_now) {\n»       »       if (current_base_status \u003d\u003d BASE_CONNECTED \u0026\u0026\n»       »           gpio_get_level(signal)) {\n»       »       »       pulse_start \u003d time_now;\n»       »       »       pulse \u003d 0;\n»       »       »       delay \u003d 150;\n»       »       }\n»       »       hook_call_deferred(\u0026base_detect_deferred_data, delay);\n»       }\n\nIf we do that, we will have to update the logic in deferred handler to delay for BASE_DETECT_DEBOUNCE_US - 150 in case of disconnect.",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 3
+      },
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3218560b_ad7bd247",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-02T22:21:29Z",
+      "side": 1,
+      "message": "Should the deferred call be cancelled in this case? I know the deferred call would just ignore if pulse or pulse start equals 0. But we can skip the adc reading as well if we know already that deferred call is not required.",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 13
+      },
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
