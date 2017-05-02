@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67f76fc4_afa6e11e",
+        "filename": "common/button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-02T15:00:56Z",
+      "side": 1,
+      "message": "If LED_COMMON is not enabled I don\u0027t think any of this code matters, right? We\u0027d just be waiting 3 seconds reloading a watchdog.",
+      "revId": "0777287f7936cea4634ab31b0b1a46f73dc6a8f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
