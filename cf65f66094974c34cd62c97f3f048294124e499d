@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70ed49df_50d3843b",
+        "filename": "include/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-05-02T07:12:10Z",
+      "side": 1,
+      "message": "The purpose to introduce new flag, GPIO_PSL_ACTHIGH, is that we don’t know the active polarity of GPIO input from gpio.inc if the board uses PSL for hibernate functionality. \n\nFor example, LID_OPEN is one of hibernate inputs and we used to declare it as below in gpio.inc.\nGPIO_INT(LID_OPEN, PIN(A, 6), GPIO_INT_BOTH | GPIO_PULL_DOWN, lid_interrupt)\nIf the board uses PSL mode for hibernating, we need external PU/PD for PSL inputs and internal weak PU/PD are unnecessary since they will influence the impedance of external PU/PD. And we might declare it as:\nGPIO_INT(LID_OPEN, PIN(0, 1), GPIO_INT_BOTH, lid_interrupt)\n\nIn order to determine the active polarity of PSL input, adding a new GPIO_PSL_ACTHIGH flag for PSL inputs might look below:\nGPIO_INT(AC_PRESENT, PIN(D, 2), GPIO_INT_BOTH, extpower_interrupt) -\u003e high to low (falling edge) or low-level trigger.\nGPIO_INT(POWER_BUTTON_L, PIN(0, 0), GPIO_INT_BOTH, power_button_interrupt) -\u003e (falling edge) high to low or low-level trigger.\nGPIO_INT(LID_OPEN, PIN(0, 1), GPIO_INT_BOTH | GPIO_PSL_ACTHIGH, lid_interrupt) -\u003e (rasing edge) low to high or high-level trigger.\n\nAny suggestion is highly appreciated.",
+      "revId": "cf65f66094974c34cd62c97f3f048294124e499d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
