@@ -16,6 +16,24 @@
       "revId": "24fa4fa03a3faf52491680720aefaa47a8922ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147fcd5d_66c6cd25",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-02T23:15:02Z",
+      "side": 1,
+      "message": "Theoretically, there is  no need for the ec to turn on or off monitors because the os does it. EC still redoes so for safety because panels generate heat and a heated lid is harmful when the lid is closed.\n\nSo, when there is no lid, backlight toggling can be skipped.",
+      "parentUuid": "b2893bb3_8d7d6d51",
+      "revId": "24fa4fa03a3faf52491680720aefaa47a8922ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
