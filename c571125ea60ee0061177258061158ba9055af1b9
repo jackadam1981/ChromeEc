@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a91a7c3_10ac0017",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-02T01:11:27Z",
+      "side": 1,
+      "message": "Please directly wrap macro args in parens:\n\n(mdl)\n\nSame applies below, too.",
+      "range": {
+        "startLine": 102,
+        "startChar": 21,
+        "endLine": 102,
+        "endChar": 24
+      },
+      "revId": "c571125ea60ee0061177258061158ba9055af1b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c14890e3_1a853a1b",
+        "filename": "include/task.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-02T01:11:27Z",
+      "side": 1,
+      "message": "I think it would be safer to do:\n\n#ifdef CHIP_STM32\n(existing code)\n#else\n#define TASK_EVENT_I2C_IDLE (1 \u003c\u003c 20)\n#endif\n\nThat way, it ensures no one else accidentally uses TASK_EVENT_I2C_COMPLETION(port) with some large port number that overwrites one of the events below.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "c571125ea60ee0061177258061158ba9055af1b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
