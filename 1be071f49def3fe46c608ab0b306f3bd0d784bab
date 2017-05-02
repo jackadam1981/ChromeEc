@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f44e7558_58b16ec7",
+        "filename": "common/button.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-02T22:13:26Z",
+      "side": 1,
+      "message": "I recently pushed a change for checking if hwreinit is required in recovery. I believe it would be good to use is_recovery_button_pressed for that as well:\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/button.c#70",
+      "revId": "1be071f49def3fe46c608ab0b306f3bd0d784bab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
