@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a7f460e_47f784f9",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-02T19:14:37Z",
+      "side": 1,
+      "message": "I\u0027m curious. How did this compile before since gpio.inc wasn\u0027t correcT?",
+      "range": {
+        "startLine": 493,
+        "startChar": 9,
+        "endLine": 493,
+        "endChar": 24
+      },
+      "revId": "6963fd051c2b1cbb50f41821c11ecdea8747635e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7e81f8f_bfddc9f9",
+        "filename": "common/button.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-02T19:14:37Z",
+      "side": 1,
+      "message": "What CL introduces this function? I don\u0027t see it declared in the CL.",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "6963fd051c2b1cbb50f41821c11ecdea8747635e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
