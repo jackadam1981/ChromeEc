@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c77a59aa_de209573",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-02T09:51:17Z",
+      "side": 1,
+      "message": "Done. Renamed variable to TIMEOUT_MS for clarity.",
+      "parentUuid": "737376a4_032a054f",
+      "range": {
+        "startLine": 47,
+        "startChar": 34,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "694283ed8e9a357eeba2099aa4832237ccb61158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f75e253_ba4cfc1d",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5703e414_8e2caa5d",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-02T09:51:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f75e253_ba4cfc1d",
+      "range": {
+        "startLine": 373,
+        "startChar": 31,
+        "endLine": 373,
+        "endChar": 35
+      },
+      "revId": "694283ed8e9a357eeba2099aa4832237ccb61158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8dfad1b_3c518aa2",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-04-28T16:26:26Z",
       "side": 1,
       "message": "isn\u0027t this kind of redundant with wake_in_progress below ?",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 9
+      },
+      "revId": "694283ed8e9a357eeba2099aa4832237ccb61158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebd5cf35_6eb38082",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-02T09:51:17Z",
+      "side": 1,
+      "message": "Right...",
+      "parentUuid": "e8dfad1b_3c518aa2",
       "range": {
         "startLine": 379,
         "startChar": 0,
