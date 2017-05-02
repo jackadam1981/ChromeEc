@@ -613,14 +613,21 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 	return charger_get_vbus_voltage(port) < BD9995X_BC12_MIN_VOLTAGE;
 }
 
+static void trackpad_delay_enable(void)
+{
+	/* Enable Trackpad */
+	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, 0);
+}
+DECLARE_DEFERRED(trackpad_delay_enable);
+
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_startup(void)
 {
 	/* Enable USB-A port. */
 	gpio_set_level(GPIO_USB1_ENABLE, 1);
 
-	/* Enable Trackpad */
-	gpio_set_level(GPIO_EN_P3300_TRACKPAD_ODL, 0);
+	/* Enable Trackpad after 1 second */
+	hook_call_deferred(&trackpad_delay_enable_data, (1 * SECOND));
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
