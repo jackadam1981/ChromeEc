@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2893bb3_8d7d6d51",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-02T21:52:05Z",
+      "side": 1,
+      "message": "Why is the backlight conditionalized on LID_SWITCH?  Shouldn\u0027t we be turning it on and off based on the power state still? Maybe we should have a SCREEN concept?",
+      "revId": "24fa4fa03a3faf52491680720aefaa47a8922ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
