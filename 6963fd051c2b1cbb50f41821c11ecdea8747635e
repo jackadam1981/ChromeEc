@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "98597640_33f38183",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-02T23:15:46Z",
+      "side": 1,
+      "message": "It was probably not compiling. I think when I first added GPIO_EC_RECOVERY_L to gpio.inc, recovery_button didn\u0027t even exist. Then I renamed it to GPIO_RECOVERY_L. I shuffle around patches in a series. So, changes move between patches...",
+      "parentUuid": "7a7f460e_47f784f9",
+      "range": {
+        "startLine": 493,
+        "startChar": 9,
+        "endLine": 493,
+        "endChar": 24
+      },
+      "revId": "6963fd051c2b1cbb50f41821c11ecdea8747635e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e7e81f8f_bfddc9f9",
         "filename": "common/button.c",
         "patchSetId": 6
