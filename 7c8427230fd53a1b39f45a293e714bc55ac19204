@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d213623_5d5b8907",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s needed yet.",
+      "parentUuid": "679bdc8f_dca25c90",
+      "range": {
+        "startLine": 44,
+        "startChar": 24,
+        "endLine": 44,
+        "endChar": 27
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "335372f2_e5dcb143",
         "filename": "board/mn50/board.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-27T19:10:50Z",
       "side": 1,
       "message": "this needs to be in sync with enum nvmem_users from board.h",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 25
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0605b0c_49549f29",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "Thanks, Done.",
+      "parentUuid": "335372f2_e5dcb143",
       "range": {
         "startLine": 47,
         "startChar": 9,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7beec323_ca9d329f",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "Good point, done.",
+      "parentUuid": "2cbfec44_7ed2c5d2",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48134654_8fcfbabc",
         "filename": "board/mn50/board.c",
         "patchSetId": 8
@@ -82,6 +154,24 @@
       "writtenOn": "2017-04-27T19:10:50Z",
       "side": 1,
       "message": "you should keep initvars() here if you want to store named variables in nvmem",
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c51983a_4f201956",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48134654_8fcfbabc",
       "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -158,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "921ce1dc_74c3d895",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "I think board.h is a special case, this is the include guard used in all other board.h files.",
+      "parentUuid": "0842d379_39632914",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63f0887e_9467de69",
         "filename": "board/mn50/board.h",
         "patchSetId": 8
@@ -181,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "5644688b_2b260457",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "It\u0027s not optimal, but it\u0027s not harmful either. The other UART just isn\u0027t routed to any pinout. I\u0027d just as soon not make changes to chip/g/usart.c\n\nI added CONFIG_STREAM_USARTN around the uarts if you are ok with it.",
+      "parentUuid": "63f0887e_9467de69",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 27
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "214d7a62_4e801a13",
         "filename": "board/mn50/board.h",
         "patchSetId": 8
@@ -192,6 +330,30 @@
       "writtenOn": "2017-04-27T19:10:50Z",
       "side": 1,
       "message": "does your board need nvmem tpm user?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 15
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24e95a5c_ac490661",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "It does not. Done.",
+      "parentUuid": "214d7a62_4e801a13",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -274,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "2c9d7604_8190c110",
+        "filename": "board/mn50/usb_spi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "Was originally to allow different CS and read behavior on the SPI line but this can be controlled over USB now. Deleted.",
+      "parentUuid": "9981876e_3c8fe790",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 28
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc37af34_471f1ace",
         "filename": "chip/g/build.mk",
         "patchSetId": 8
@@ -332,6 +518,30 @@
     },
     {
       "key": {
+        "uuid": "ca2ac6d6_85f7e407",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "189815c6_b907e0ca",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f2b3576_3e15e722",
         "filename": "chip/g/gpio.c",
         "patchSetId": 8
@@ -355,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "117a25af_fe03b63e",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f2b3576_3e15e722",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 34
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4f28091_e5cf761d",
         "filename": "chip/g/spi_master.c",
         "patchSetId": 8
@@ -366,6 +600,30 @@
       "writtenOn": "2017-04-27T19:10:50Z",
       "side": 1,
       "message": "this block needs a comment",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 33
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "925abdb3_e5f35251",
+        "filename": "chip/g/spi_master.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "Good point. Added an explanation for posterity.",
+      "parentUuid": "c4f28091_e5cf761d",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -507,6 +765,30 @@
       "side": 1,
       "message": "No. Will remove.",
       "parentUuid": "1382b52f_e5a28f41",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 24
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e4dc9b_e9c868cf",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-02T05:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93d49f1c_0c8d142a",
       "range": {
         "startLine": 77,
         "startChar": 15,
