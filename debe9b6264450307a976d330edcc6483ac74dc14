@@ -257,6 +257,30 @@
       "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1100fb1_48cfaa31",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-02T23:53:20Z",
+      "side": 1,
+      "message": "sure but it\u0027s a single port with a fixed power limit.\nso  board_vbus_update_source_current() and this variable are useless",
+      "parentUuid": "6a46a015_5baf0b8c",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

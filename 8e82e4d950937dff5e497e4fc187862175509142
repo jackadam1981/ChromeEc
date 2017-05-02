@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72816774_02e1d897",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-02T23:53:20Z",
+      "side": 1,
+      "message": "please remove this",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 60
+      },
+      "revId": "8e82e4d950937dff5e497e4fc187862175509142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05e7cc02_3e5dca91",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-02T23:53:20Z",
+      "side": 1,
+      "message": "the whole port number check is quite useless, please remove it",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 10
+      },
+      "revId": "8e82e4d950937dff5e497e4fc187862175509142",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
