@@ -1250,8 +1250,11 @@ static int bd9995x_psys_charger_adc(void)
 	 * Calculate power in mW
 	 * PSYS = VACP×IACP+VBAT×IBAT = IPMON / GPMON
 	 */
-	return (int) ((ipmon * 1000) / ((1 << BD9995X_PSYS_GAIN_SELECT) *
-		BD9995X_PMON_IOUT_ADC_READ_COUNT));
+	ipmon *= 1000;
+	uint64divmod(&ipmon, (1 << BD9995X_PSYS_GAIN_SELECT) *
+					BD9995X_PMON_IOUT_ADC_READ_COUNT);
+
+	return (int)ipmon;
 }
 
 static int bd9995x_enable_psys(void)
