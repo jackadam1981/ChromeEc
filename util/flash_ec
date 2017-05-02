@@ -620,7 +620,22 @@ function flash_it83xx() {
 	if [ ! -x "$ITEFLASH" ]; then
 		die "no iteflash util found."
 	fi
+
+	dut_control i2c_mux_en:on
+	dut_control i2c_mux:remote_adc
+
+	# TODO(crosbug.com/p/53664)
+	info "To stop servod"
+	sudo pkill servod -e
+
+	info "Run iteflash..."
 	sudo ${ITEFLASH} -w ${IMG}
+
+	# TODO(crosbug.com/p/53664)
+	sleep 0.1
+	info "To restart servod (board=${BOARD})"
+	sudo servod --board=${BOARD} &
+	sleep 2
 }
 
 function flash_lm4() {
