@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3938c76a_d8d6eb13",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-02T16:58:07Z",
+      "side": 1,
+      "message": "Looking at the BMI160 gyro, max_frequency would be set at 3200Hz. This is meaningless for the user: when immediate answer is needed EC can not meet that speed: we need to MIN( it with motion_min_interval - BTW it looks like motion_min_interval could be a #define.\nIt is based CONFIG_MOTION_MIN_SENSE_WAIT_TIME, and should be tweak depending on the EC strength.",
+      "revId": "5bae0798bab2864b92f0d70ee0bb037b92b5ca5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
