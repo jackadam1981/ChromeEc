@@ -1579,6 +1579,11 @@ static inline int get_typec_current_limit(int polarity, int cc1, int cc2)
 	return charge;
 }
 
+int pd_is_valid_port(int port)
+{
+	return 0 <= port && port < CONFIG_USB_PD_PORT_COUNT;
+}
+
 /**
  * Signal power request to indicate a charger update that affects the port.
  */
