@@ -281,6 +281,30 @@
       "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "202128aa_2a242322",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-03T22:53:49Z",
+      "side": 1,
+      "message": "What do you think about limiting the source current to 1.5A in S0 and to 3.0A in S3/S5? We will change charge_manager_source_port so that it will call board_vbus_update_source_current with different Rp based on the power state.",
+      "parentUuid": "d1100fb1_48cfaa31",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
