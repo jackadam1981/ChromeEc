@@ -51,6 +51,41 @@
       "revId": "c270c5fbee07f9ef6c962ee5672eb4b9f297f95f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "693309cd_ce25f127",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-03T18:14:07Z",
+      "side": 1,
+      "message": "Maybe add a comment here about max APB1 clock per chip like above, with reference manual page? I probably should have done this before.",
+      "parentUuid": "079d4509_59445a1c",
+      "revId": "c270c5fbee07f9ef6c962ee5672eb4b9f297f95f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22786836_689537f0",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-03T18:14:07Z",
+      "side": 1,
+      "message": "Just ifdef this for 446/412 specifically and leave other stm32f4 family as #error \"No valid clocks defined\" so the next person will know to look at it.",
+      "revId": "c270c5fbee07f9ef6c962ee5672eb4b9f297f95f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
