@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "34021f9c_fdca8e75",
+        "filename": "board/discovery_stmems/board.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2017-05-03T09:26:10Z",
+      "side": 1,
+      "message": "Hi,\ndiscovery_stmems target board will support a lot of sensors of the same type (lis2de12, lis2ds12, lis2dh12, lsm6dsm/l)\nIt\u0027s a test board to test all ST MEMs devices, for this purpose I added this extra switch in order to use the same HW environment.",
+      "parentUuid": "7cb43210_ef26b1b4",
+      "revId": "62468744dd55696b012ef0f9d82fbd385b4d3857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "033382aa_804ddd56",
         "filename": "board/discovery_stmems/board.c",
         "patchSetId": 13
