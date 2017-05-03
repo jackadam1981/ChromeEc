@@ -178,7 +178,7 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			      int read_len,
 			      int write_len)
 {
-	int val;
+	uint16_t val;
 	/*
 	 * We cache battery operational mode locally for both read and write
 	 * commands. If MODE_CAPACITY bit is set, battery capacity will be
@@ -189,6 +189,9 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 	static uint16_t batt_mode_cache;
 	const struct batt_params *curr_batt;
 
+	/* Limit the range of memory access. */
+	if (read_len > 2)
+		read_len = 2;
 	curr_batt = charger_current_battery_params();
 	switch (*batt_cmd_head) {
 	case SB_BATTERY_MODE:
