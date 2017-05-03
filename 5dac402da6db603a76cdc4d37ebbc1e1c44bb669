@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c93d26ae_1e91f4f0",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-03T01:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "744c58f1_2008cd3f",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 8
+      },
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd47f0c0_d1a25a86",
         "filename": "board/poppy/board.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b87db668_2fc35ada",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-03T01:44:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd47f0c0_d1a25a86",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 8
+      },
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60f669a2_2c7a3aab",
         "filename": "board/poppy/board.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-02T22:21:29Z",
       "side": 1,
       "message": "Should this be a key pressed event rather than a mode change?",
+      "range": {
+        "startLine": 201,
+        "startChar": 25,
+        "endLine": 201,
+        "endChar": 50
+      },
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e636129_cc059d50",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-03T01:44:52Z",
+      "side": 1,
+      "message": "Right, KEY_PRESSED fits quite well.",
+      "parentUuid": "60f669a2_2c7a3aab",
       "range": {
         "startLine": 201,
         "startChar": 25,
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "b06ec278_d8a7e4e3",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-03T01:44:52Z",
+      "side": 1,
+      "message": "Possibly racy to do it here (probably not, but I can\u0027t really figure it out fully). Instead, set those to 0 in interrupt handler, in the last if/else branch that did not modify those.",
+      "parentUuid": "df1e350b_08471cfb",
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "768db65a_356bb570",
         "filename": "board/poppy/board.c",
         "patchSetId": 3
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "f4d00658_5162df5c",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-03T01:44:52Z",
+      "side": 1,
+      "message": "That\u0027s a good question. I think it\u0027s better to wait until the end of the debounce period, just in case there are other pulses (and the first pulse we got was actually noise). Also, I don\u0027t think delaying the wake by another 5ms is a big issue.",
+      "parentUuid": "768db65a_356bb570",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 3
+      },
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3218560b_ad7bd247",
         "filename": "board/poppy/board.c",
         "patchSetId": 3
@@ -122,6 +236,30 @@
       "writtenOn": "2017-05-02T22:21:29Z",
       "side": 1,
       "message": "Should the deferred call be cancelled in this case? I know the deferred call would just ignore if pulse or pulse start equals 0. But we can skip the adc reading as well if we know already that deferred call is not required.",
+      "range": {
+        "startLine": 238,
+        "startChar": 3,
+        "endLine": 239,
+        "endChar": 13
+      },
+      "revId": "5dac402da6db603a76cdc4d37ebbc1e1c44bb669",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8aac6f7_1afdd51c",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-03T01:44:52Z",
+      "side": 1,
+      "message": "Yes, in principle, you\u0027re right. But we\u0027d have to add some test in this else branch though, at the very least:\ncurrent_base_status \u003d\u003d BASE_CONNECTED \u0026\u0026 gpio_get_level(signal) \u003d\u003d 1\n\nSounds like a small optimization, for some added code complexity, I\u0027d rather let the debounce logic handle this the same way as it used to.",
+      "parentUuid": "3218560b_ad7bd247",
       "range": {
         "startLine": 238,
         "startChar": 3,
