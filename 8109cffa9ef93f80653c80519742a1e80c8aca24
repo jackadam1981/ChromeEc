@@ -33,6 +33,24 @@
       "revId": "8109cffa9ef93f80653c80519742a1e80c8aca24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "340e83cf_67fbe745",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2017-05-03T09:25:53Z",
+      "side": 1,
+      "message": "Yes I done\nAll CL I pushed compiles only if in include/ec_commands.h you add the define of relative CHIP enabled in board.h\n\nIn my case I have stashed all that:\n\n+       MOTIONSENSE_CHIP_LSM6DSM \u003d 11,\n+       MOTIONSENSE_CHIP_LIS2DH \u003d 12,\n+       MOTIONSENSE_CHIP_LIS2DS \u003d 13,\n+       MOTIONSENSE_CHIP_LIS2MDL \u003d 14,\n+       MOTIONSENSE_CHIP_LPS22HB \u003d 15,\n+       MOTIONSENSE_CHIP_LIS2DE \u003d 16,\n\nMaybe is better to commit  include/ec_commands.h (every time I add a MOTIONSENSE_CHIP_x ) and each time I add a sensor to board.h of discovery_stmems test board ? Is this your suggestion ? Or do you means I have to add all this info in the commit message ?",
+      "parentUuid": "d3eb2c59_eba059ea",
+      "revId": "8109cffa9ef93f80653c80519742a1e80c8aca24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
