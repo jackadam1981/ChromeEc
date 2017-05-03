@@ -1,0 +1,114 @@
+# Copyright 2017 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+"""Allows creation of an interface via stm32 usb."""
+
+import usb
+
+
+class SusbError(Exception):
+  """Class for exceptions of Susb."""
+  def __init__(self, msg, value=0):
+    """SusbError constructor.
+
+    Args:
+      msg: string, message describing error in detail
+      value: integer, value of error when non-zero status returned.  Default=0
+    """
+    super(SusbError, self).__init__(msg, value)
+    self.msg = msg
+    self.value = value
+
+
+class Susb():
+  """Provide stm32 USB functionality.
+
+  Instance Variables:
+  _read_ep: pyUSB read endpoint for this interface
+  _write_ep: pyUSB write endpoint for this interface
+  """
+  READ_ENDPOINT = 0x81
+  WRITE_ENDPOINT = 0x1
+  TIMEOUT_MS = 100
+
+  def __init__(self, vendor=0x18d1,
+               product=0x5027, interface=1, serialname=None, logger=None):
+    """Susb constructor.
+
+    Disconvers and connects to stm32 USB endpoints.
+
+    Args:
+      vendor    : usb vendor id of stm32 device
+      product   : usb product id of stm32 device
+      interface : interface number ( 1 - 4 ) of stm32 device to use
+      serialname: string of device serialname.
+
+    Raises:
+      SusbError: An error accessing Susb object
+    """
+    self._vendor = vendor
+    self._product = product
+    self._interface = interface
+    self._serialname = serialname
+    self._find_device()
+
+  def _find_device(self):
+    """Set up the usb endpoint"""
+    # Find the stm32.
+    dev_list = usb.core.find(idVendor=self._vendor, idProduct=self._product,
+                             find_all=True)
+    if not dev_list:
+      raise SusbError("USB device not found")
+
+    # Check if we have multiple stm32s and we've specified the serial.
+    dev = None
+    if self._serialname:
+      for d in dev_list:
+        dev_serial = "PyUSB doesn't have a stable interface"
+        try:
+          dev_serial = usb.util.get_string(d, 256, d.iSerialNumber)
+        except:
+          dev_serial = usb.util.get_string(d, d.iSerialNumber)
+        if dev_serial == self._serialname:
+          dev = d
+          break
+      if dev is None:
+        raise SusbError("USB device(%s) not found" % self._serialname)
+    else:
+      try:
+        dev = dev_list[0]
+      except:
+        try:
+          dev = dev_list.next()
+        except:
+          raise SusbError("USB device %04x:%04x not found" % (
+                           self._vendor, self._product))
+
+    # If we can't set configuration, it's already been set.
+    try:
+      dev.set_configuration()
+    except usb.core.USBError:
+      pass
+
+    # Get an endpoint instance.
+    cfg = dev.get_active_configuration()
+    intf = usb.util.find_descriptor(cfg, bInterfaceNumber=self._interface)
+    self._intf = intf
+    if not intf:
+      raise SusbError("Interface not found")
+
+    # Detach raiden.ko if it is loaded.
+    if dev.is_kernel_driver_active(intf.bInterfaceNumber) is True:
+            dev.detach_kernel_driver(intf.bInterfaceNumber)
+
+    read_ep_number = intf.bInterfaceNumber + self.READ_ENDPOINT
+    read_ep = usb.util.find_descriptor(intf, bEndpointAddress=read_ep_number)
+    self._read_ep = read_ep
+
+    write_ep_number = intf.bInterfaceNumber + self.WRITE_ENDPOINT
+    write_ep = usb.util.find_descriptor(intf, bEndpointAddress=write_ep_number)
+    self._write_ep = write_ep
+
+  def __del__(self):
+    """Sgpio destructor."""
