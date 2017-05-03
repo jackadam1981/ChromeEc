@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "46f440d0_07b4287b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2017-05-03T09:26:28Z",
+      "side": 1,
+      "message": "We are still waiting support from HW design to connect sensor to available chromebook. We want to add to the existing sensors our sensors (with different I2C address) and recompile chrome ec for Nuvoton NPCX5 with our driver.\nDiscovery board can\u0027t be connected to chromebook because support only SPI/I2C as Slave interface, chromebook has Low Pin Count (LPC) interface only",
+      "parentUuid": "3a9ca464_50712753",
+      "revId": "75c6bf14f2f397a085d6febe4fb057ab5b72cdbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "425729a9_91f21580",
         "filename": "board/discovery_stmems/board.h",
         "patchSetId": 3
