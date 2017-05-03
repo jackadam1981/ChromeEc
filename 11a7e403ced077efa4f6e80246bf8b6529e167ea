@@ -22,6 +22,30 @@
       "revId": "11a7e403ced077efa4f6e80246bf8b6529e167ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56832070_dbfb76bb",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-05-03T17:39:19Z",
+      "side": 1,
+      "message": "I think having it defined as a macro with the comment is a good idea. I\u0027ve made that change.",
+      "parentUuid": "1b4a6d4c_0b65710a",
+      "range": {
+        "startLine": 1103,
+        "startChar": 24,
+        "endLine": 1103,
+        "endChar": 34
+      },
+      "revId": "11a7e403ced077efa4f6e80246bf8b6529e167ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
