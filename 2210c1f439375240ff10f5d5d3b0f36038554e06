@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24835bb0_c148798c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-03T15:43:29Z",
+      "side": 1,
+      "message": "Sorry. All of this is not very clear. From what I can gather you have one pin that you are multiplexing to the ADC and the gpio logic block? And then trying to come up with a value that you\u0027ll read through the ADC to determine wake? All of which is determined by board/connector RC variance plus the timing variance of when ADC is read in a deferred call along with when the gpio interrupt fires?",
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "003f481f_a1f5e11e",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-03T15:43:29Z",
+      "side": 1,
+      "message": "Why are we supplying power in the BASE_DISCONNECTED case?",
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b976a7e_5c58646b",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-03T15:43:29Z",
+      "side": 1,
+      "message": "naming this pulse_width would provide quite a bit more clarity.",
+      "range": {
+        "startLine": 176,
+        "startChar": 16,
+        "endLine": 176,
+        "endChar": 22
+      },
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5885420_6dc4af9a",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-03T15:43:29Z",
+      "side": 1,
+      "message": "Why would we not always check pulse width? In the !\u003d BASE_CONNECTED case we trigger connected state so we should also check the pulse width. If the deferred function call is delayed we could miss a valid pulse width and never set the event.",
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90c78b47_af6c9b96",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-03T15:43:29Z",
+      "side": 1,
+      "message": "You should snapshot pulse before testing it for multiple conditions.",
+      "range": {
+        "startLine": 199,
+        "startChar": 6,
+        "endLine": 199,
+        "endChar": 11
+      },
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f8df27_7857c05f",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-03T15:43:29Z",
+      "side": 1,
+      "message": "pulse set to 0 means what? From what I can gather pulse is a duration measurement.",
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587bc8ca_d7d1d6c0",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-03T15:43:29Z",
+      "side": 1,
+      "message": "The detect is active high or low? This code would read clearer with a simple wrapper (whatever the logic is).\n\nstatic inline int detect_pin_wake_active(enum gpio_signal det_pin)\n{\n  return gpio_get_level(det_pin) \u003d\u003d 1;\n}",
+      "range": {
+        "startLine": 225,
+        "startChar": 21,
+        "endLine": 225,
+        "endChar": 27
+      },
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03773192_9361a2b5",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-03T15:43:29Z",
+      "side": 1,
+      "message": "So we\u0027re only measuring the first pulse width within the debounce period that is 1-\u003e0 ? And we have to wait for a new debounce period before any other state changes occur? i.e. no sliding window.",
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
