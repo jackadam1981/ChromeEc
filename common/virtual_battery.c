@@ -189,6 +189,13 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 	static uint16_t batt_mode_cache;
 	const struct batt_params *curr_batt;
 
+	/*
+	 * All of the smart battery reg indexes supported by this virtual
+	 * battery implementation are two bytes long. So we should limit
+	 * the range of memory access accordingly.
+	 */
+	if (read_len > 2)
+		read_len = 2;
 	curr_batt = charger_current_battery_params();
 	switch (*batt_cmd_head) {
 	case SB_BATTERY_MODE:
