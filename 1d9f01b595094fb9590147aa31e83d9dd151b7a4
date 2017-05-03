@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cecb19b3_710f06a4",
+        "filename": "driver/fpc1140.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-05-03T03:30:12Z",
+      "side": 1,
+      "message": "Any need to add\n\n  #ifndef PRIVATE_DATA\n    CPRINTS(...)\n    return\n  #endif",
+      "revId": "1d9f01b595094fb9590147aa31e83d9dd151b7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd038c93_03e19cf4",
+        "filename": "driver/fpc1140.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-05-03T03:30:12Z",
+      "side": 1,
+      "message": "nit, SPI_FPC_DEVICE for consistency",
+      "range": {
+        "startLine": 167,
+        "startChar": 27,
+        "endLine": 167,
+        "endChar": 42
+      },
+      "revId": "1d9f01b595094fb9590147aa31e83d9dd151b7a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
