@@ -385,6 +385,12 @@
 /* Compile charge manager */
 #undef CONFIG_CHARGE_MANAGER
 
+/* Number of charge ports including non-type-c ports. It's assumed type-c ports
+ * are assigned younger IDs. (e.g. Port 0 is a type-c port and port 1 is a
+ * barrel jack.) If all charge ports are type-c, this is set to
+ * CONFIG_USB_PD_PORT_COUNT. */
+#undef CONFIG_CHARGE_PORT_COUNT
+
 /* Allow charge manager to default to charging from dual-role partners */
 #undef CONFIG_CHARGE_MANAGER_DRP_CHARGING
 

@@ -20,6 +20,10 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
+#ifndef CONFIG_CHARGE_PORT_COUNT
+#define CONFIG_CHARGE_PORT_COUNT CONFIG_USB_PD_PORT_COUNT
+#endif
+
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
 #define POWER(charge_port) ((charge_port.current) * (charge_port.voltage))
@@ -43,10 +47,10 @@ BUILD_ASSERT(ARRAY_SIZE(supplier_priority) == CHARGE_SUPPLIER_COUNT);
 
 /* Keep track of available charge for each charge port. */
 static struct charge_port_info available_charge[CHARGE_SUPPLIER_COUNT]
-					       [CONFIG_USB_PD_PORT_COUNT];
+					       [CONFIG_CHARGE_PORT_COUNT];
 
 /* Keep track of when the supplier on each port is registered. */
-static timestamp_t registration_time[CONFIG_USB_PD_PORT_COUNT];
+static timestamp_t registration_time[CONFIG_CHARGE_PORT_COUNT];
 
 /*
  * Charge current ceiling (mA) for ports. This can be set to temporarily limit
@@ -54,14 +58,14 @@ static timestamp_t registration_time[CONFIG_USB_PD_PORT_COUNT];
  * The ceiling can be set independently from several requestors, with the
  * minimum ceiling taking effect.
  */
-static int charge_ceil[CONFIG_USB_PD_PORT_COUNT][CEIL_REQUESTOR_COUNT];
+static int charge_ceil[CONFIG_CHARGE_PORT_COUNT][CEIL_REQUESTOR_COUNT];
 
 /* Dual-role capability of attached partner port */
-static enum dualrole_capabilities dualrole_capability[CONFIG_USB_PD_PORT_COUNT];
+static enum dualrole_capabilities dualrole_capability[CONFIG_CHARGE_PORT_COUNT];
 
 #ifdef CONFIG_USB_PD_LOGGING
 /* Mark port as dirty when making changes, for later logging */
-static int save_log[CONFIG_USB_PD_PORT_COUNT];
+static int save_log[CONFIG_CHARGE_PORT_COUNT];
 #endif
 
 /* Store current state of port enable / charge current. */
@@ -77,8 +81,8 @@ static timestamp_t delayed_override_deadline;
 
 /* Bitmap of ports used as power source */
 static volatile uint32_t source_port_bitmap;
-BUILD_ASSERT(sizeof(source_port_bitmap)*8 >= CONFIG_USB_PD_PORT_COUNT);
-static uint8_t source_port_last_rp[CONFIG_USB_PD_PORT_COUNT];
+BUILD_ASSERT(sizeof(source_port_bitmap)*8 >= CONFIG_CHARGE_PORT_COUNT);
+static uint8_t source_port_last_rp[CONFIG_CHARGE_PORT_COUNT];
 
 enum charge_manager_change_type {
 	CHANGE_CHARGE,
@@ -117,7 +121,7 @@ static void charge_manager_init(void)
 	int i, j;
 	int spoof_capability = charge_manager_spoof_dualrole_capability();
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; ++i) {
+	for (i = 0; i < CONFIG_CHARGE_PORT_COUNT; ++i) {
 		for (j = 0; j < CHARGE_SUPPLIER_COUNT; ++j) {
 			available_charge[j][i].current =
 				CHARGE_CURRENT_UNINITIALIZED;
@@ -149,7 +153,7 @@ static int charge_manager_is_seeded(void)
 		return 1;
 
 	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-		for (j = 0; j < CONFIG_USB_PD_PORT_COUNT; ++j)
+		for (j = 0; j < CONFIG_CHARGE_PORT_COUNT; ++j)
 			if (available_charge[i][j].current ==
 			    CHARGE_CURRENT_UNINITIALIZED ||
 			    available_charge[i][j].voltage ==
@@ -213,7 +217,8 @@ static void charge_manager_fill_power_info(int port,
 	/* Fill in power role */
 	if (charge_port == port)
 		r->role = USB_PD_PORT_POWER_SINK;
-	else if (pd_is_connected(port) && pd_get_role(port) == PD_ROLE_SOURCE)
+	else if (pd_is_valid_port(port) && pd_is_connected(port) &&
+			pd_get_role(port) == PD_ROLE_SOURCE)
 		r->role = USB_PD_PORT_POWER_SOURCE;
 	else if (sup != CHARGE_SUPPLIER_NONE)
 		r->role = USB_PD_PORT_POWER_SINK_NOT_CHARGING;
@@ -422,7 +427,7 @@ static void charge_manager_get_best_charge_port(int *new_port,
 		 * so make no assumptions about its consistency.
 		 */
 		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-			for (j = 0; j < CONFIG_USB_PD_PORT_COUNT; ++j) {
+			for (j = 0; j < CONFIG_CHARGE_PORT_COUNT; ++j) {
 				/*
 				 * Skip this supplier if there is no
 				 * available charge.
@@ -640,15 +645,15 @@ static void charge_manager_refresh(void)
 	if (updated_old_port != CHARGE_PORT_NONE)
 		save_log[updated_old_port] = 1;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; ++i)
+	for (i = 0; i < CONFIG_CHARGE_PORT_COUNT; ++i)
 		if (save_log[i])
 			charge_manager_save_log(i);
 #endif
 
 	/* New power requests must be set only after updating the globals. */
-	if (updated_new_port != CHARGE_PORT_NONE)
+	if (pd_is_valid_port(updated_new_port))
 		pd_set_new_power_request(updated_new_port);
-	if (updated_old_port != CHARGE_PORT_NONE)
+	if (pd_is_valid_port(updated_old_port))
 		pd_set_new_power_request(updated_old_port);
 
 	if (power_changed)
@@ -818,7 +823,7 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 
 void charge_manager_force_ceil(int port, int ceil)
 {
-	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_COUNT);
+	ASSERT(port >= 0 && port < CONFIG_CHARGE_PORT_COUNT);
 
 	/*
 	 * Force our input current to ceil if we're exceeding it, without
@@ -922,7 +927,7 @@ void charge_manager_source_port(int port, int enable)
 		return;
 
 	/* Set port limit according to policy */
-	for (p = 0; p < CONFIG_USB_PD_PORT_COUNT; p++) {
+	for (p = 0; p < CONFIG_CHARGE_PORT_COUNT; p++) {
 		/*
 		 * if we are the only active source port or there is none,
 		 * advertise all the available power.
@@ -950,7 +955,7 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo)
 	int count = 0;
 
 	/* count the number of connected sinks */
-	for (p = 0; p < CONFIG_USB_PD_PORT_COUNT; p++)
+	for (p = 0; p < CONFIG_CHARGE_PORT_COUNT; p++)
 		if (source_port_bitmap & (1 << p))
 			count++;
 
@@ -988,7 +993,7 @@ static int hc_charge_port_override(struct host_cmd_handler_args *args)
 	const int16_t override_port = p->override_port;
 
 	if (override_port < OVERRIDE_DONT_CHARGE ||
-	    override_port >= CONFIG_USB_PD_PORT_COUNT)
+	    override_port >= CONFIG_CHARGE_PORT_COUNT)
 		return EC_RES_INVALID_PARAM;
 
 	return charge_manager_set_override(override_port) == EC_SUCCESS ?
@@ -1007,7 +1012,7 @@ static int command_charge_port_override(int argc, char **argv)
 	if (argc >= 2) {
 		port = strtoi(argv[1], &e, 0);
 		if (*e || port < OVERRIDE_DONT_CHARGE ||
-		    port >= CONFIG_USB_PD_PORT_COUNT)
+		    port >= CONFIG_CHARGE_PORT_COUNT)
 			return EC_ERROR_PARAM1;
 		ret = charge_manager_set_override(port);
 	}
@@ -1031,7 +1036,7 @@ static void charge_manager_set_external_power_limit(int current_lim,
 	if (voltage_lim == EC_POWER_LIMIT_NONE)
 		voltage_lim = PD_MAX_VOLTAGE_MV;
 
-	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; ++port) {
+	for (port = 0; port < CONFIG_CHARGE_PORT_COUNT; ++port) {
 		charge_manager_set_ceil(port, CEIL_REQUESTOR_HOST, current_lim);
 		pd_set_external_voltage_limit(port, voltage_lim);
 	}
