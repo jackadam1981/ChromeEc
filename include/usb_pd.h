@@ -1580,6 +1580,14 @@ void pd_soft_reset(void);
 void pd_prepare_reset(void);
 
 /**
+ * Check if the port is valid or not.
+ *
+ * @param port USB-C port number
+ * @return True if it's valid or false otherwise
+ */
+int pd_is_valid_port(int port);
+
+/**
  * Signal power request to indicate a charger update that affects the port.
  *
  * @param port USB-C port number
