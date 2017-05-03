@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18c1f717_12fc8d98",
+        "filename": "extra/tigertool/dfu-util",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-03T06:15:29Z",
+      "side": 1,
+      "message": "you should omit this imo.  just run it from $PATH and leave it to the user to fix their runtime env.",
+      "revId": "e39c13ecc5e864df3e62efddf71b1ae50d34efc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "919d030f_b996af37",
+        "filename": "extra/tigertool/ecusb/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-03T06:15:29Z",
+      "side": 1,
+      "message": "2017 in all new files",
+      "revId": "e39c13ecc5e864df3e62efddf71b1ae50d34efc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8afe9a8d_2dc6d8b1",
+        "filename": "extra/tigertool/ecusb/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-03T06:15:29Z",
+      "side": 1,
+      "message": "trim trailing new lines everywhere",
+      "revId": "e39c13ecc5e864df3e62efddf71b1ae50d34efc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
