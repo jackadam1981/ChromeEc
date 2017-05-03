@@ -34,6 +34,24 @@
       "revId": "24fa4fa03a3faf52491680720aefaa47a8922ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7835da94_ec498ebd",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-03T04:22:20Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s entirely true. The backlight is typically powered directly from the battery. On a tablet we shouldn\u0027t keep the backlight on in a shutdown/suspend state. It does vary from design to design, but this signal is typically the master switch for backlight power. It\u0027s not necessarily associated with a lid.",
+      "parentUuid": "147fcd5d_66c6cd25",
+      "revId": "24fa4fa03a3faf52491680720aefaa47a8922ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
