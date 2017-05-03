@@ -305,6 +305,30 @@
       "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88252a76_1c03c850",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-03T22:55:37Z",
+      "side": 1,
+      "message": "I don\u0027t know the power/thermal budget on this product.\nWe cannot do 3.0A all the time ?",
+      "parentUuid": "202128aa_2a242322",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
