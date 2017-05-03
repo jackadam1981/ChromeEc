@@ -33,6 +33,24 @@
       "revId": "c270c5fbee07f9ef6c962ee5672eb4b9f297f95f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "079d4509_59445a1c",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-03T10:46:01Z",
+      "side": 1,
+      "message": "ahh didn\u0027t notice that. For stm32f412 it\u0027s 50MHz.",
+      "parentUuid": "0447691e_7aa73d2f",
+      "revId": "c270c5fbee07f9ef6c962ee5672eb4b9f297f95f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
