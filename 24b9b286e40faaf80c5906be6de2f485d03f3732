@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2746e096_e304eb96",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-04T00:06:44Z",
+      "side": 1,
+      "message": "strtoi returns an int, but you\u0027ve now changed val to a uint16_t.",
+      "revId": "24b9b286e40faaf80c5906be6de2f485d03f3732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e42f438e_26970e6e",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-04T00:06:44Z",
+      "side": 1,
+      "message": "this member is also an int.",
+      "revId": "24b9b286e40faaf80c5906be6de2f485d03f3732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
