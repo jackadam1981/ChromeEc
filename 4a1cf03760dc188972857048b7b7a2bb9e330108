@@ -16,6 +16,24 @@
       "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9368dae_6c3fad57",
+        "filename": "include/config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-05-04T18:32:06Z",
+      "side": 1,
+      "message": "Gwendal and I talked before I made this change, decided it best to have its own define.  200Hz was chosen as the \"max freq\" that the EC can reasonably support.  If someone has a more powerful EC, they could override this value in their board.h if they wanted to.\n\nI can move the constant into motion_sense.h if that makes more sense.",
+      "parentUuid": "c3d77c2e_39a57fd2",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -16,6 +16,24 @@
       "revId": "bdf9190a279e54788771bd4b1c9f66be03b4bdea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f58d2f7_2c15b827",
+        "filename": "driver/accel_bma2x2.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-05-04T18:32:06Z",
+      "side": 1,
+      "message": "I removed them from master patch, hadn\u0027t removed them from this patch yet.  Done.",
+      "parentUuid": "e831edea_d76581ea",
+      "revId": "bdf9190a279e54788771bd4b1c9f66be03b4bdea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
