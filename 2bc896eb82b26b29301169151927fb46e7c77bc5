@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64280c2f_391c2632",
+        "filename": "board/discovery_stmems/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2017-05-04T11:01:04Z",
+      "side": 1,
+      "message": "In the driver this define is used to detect double tap event in hardware (if supported by device), than apps receive the events and managed it in the right way (Chrome Os get involved)\n\nI think line 789 of motion_sense.c should be conditioned to something like that (but I\u0027m not sure):\n\n#ifdef HAS_TASK_LIGHTBAR\nlightbar_sequence(LIGHTBAR_TAP);\n#endif /* HAS_TASK_LIGHTBAR */",
+      "parentUuid": "19371f66_20824c86",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "2bc896eb82b26b29301169151927fb46e7c77bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "408db279_0dae39a1",
         "filename": "board/discovery_stmems/board.h",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a736a999_1f5be6b5",
+        "filename": "board/discovery_stmems/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2017-05-04T11:01:04Z",
+      "side": 1,
+      "message": "Sorry, a wrong merge",
+      "parentUuid": "408db279_0dae39a1",
+      "range": {
+        "startLine": 46,
+        "startChar": 58,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "2bc896eb82b26b29301169151927fb46e7c77bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65e0a13a_e406b64b",
         "filename": "board/discovery_stmems/board.h",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-04T00:15:38Z",
       "side": 1,
       "message": "Please do not change formatting on code you haven\u0027t touched in this commit. It pollutes the diff.",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "2bc896eb82b26b29301169151927fb46e7c77bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8389a952_30c21075",
+        "filename": "board/discovery_stmems/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1173564
+      },
+      "writtenOn": "2017-05-04T11:01:04Z",
+      "side": 1,
+      "message": "Sorry, just to align the code",
+      "parentUuid": "65e0a13a_e406b64b",
       "range": {
         "startLine": 71,
         "startChar": 21,
