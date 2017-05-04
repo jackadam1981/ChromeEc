@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "408db279_0dae39a1",
+        "filename": "board/discovery_stmems/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-04T00:17:40Z",
+      "side": 1,
+      "message": "Perhaps don\u0027t change this here, so your next commit doesn\u0027t have to put it back.",
+      "range": {
+        "startLine": 46,
+        "startChar": 58,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "2bc896eb82b26b29301169151927fb46e7c77bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65e0a13a_e406b64b",
         "filename": "board/discovery_stmems/board.h",
         "patchSetId": 6
