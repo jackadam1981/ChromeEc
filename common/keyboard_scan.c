@@ -279,6 +279,7 @@ static int read_matrix(uint8_t *state)
  */
 static int check_runtime_keys(const uint8_t *state)
 {
+#ifdef CONFIG_KEYBOARD_RUNTIME_KEYS
 	int num_press = 0;
 	int c;
 
@@ -360,6 +361,7 @@ static int check_runtime_keys(const uint8_t *state)
 		system_hibernate(0, 0);
 		return 1;
 	}
+#endif /* CONFIG_KEYBOARD_RUNTIME_KEYS */
 
 	return 0;
 }
