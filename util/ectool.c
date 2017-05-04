@@ -1037,6 +1037,25 @@ int cmd_rwsig_status(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_rwsig_action(int argc, char *argv[])
+{
+	struct ec_params_rwsig_action req;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s abort | continue\n", argv[0]);
+		return -1;
+	}
+
+	if (!strcasecmp(argv[1], "abort"))
+		req.action = RWSIG_ACTION_ABORT;
+	else if (!strcasecmp(argv[1], "continue"))
+		req.action = RWSIG_ACTION_CONTINUE;
+	else
+		return -1;
+
+	return ec_command(EC_CMD_RWSIG_ACTION, 0, &req, sizeof(req), NULL, 0);
+}
+
 /**
  * determine if in GFU mode or not.
  *
@@ -7067,6 +7086,7 @@ const struct command commands[] = {
 	{"rtcsetalarm", cmd_rtc_set_alarm},
 	{"rwhashpd", cmd_rw_hash_pd},
 	{"rwsigstatus", cmd_rwsig_status},
+	{"rwsigaction", cmd_rwsig_action},
 	{"sertest", cmd_serial_test},
 	{"port80flood", cmd_port_80_flood},
 	{"switches", cmd_switches},
