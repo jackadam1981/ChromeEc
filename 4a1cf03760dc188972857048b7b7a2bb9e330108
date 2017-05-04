@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3d77c2e_39a57fd2",
+        "filename": "include/config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-04T02:31:23Z",
+      "side": 1,
+      "message": "Where does this come from?\n\nUnless this actually configures the speed(which it doesn\u0027t appear to), \"motion_sense.h\" would be a better place for it. \"config.h\" is meant for configurable options.\n\nAlthough, Gwendal pointed out CONFIG_MOTION_MIN_SENSE_WAIT_TIME. Could we use that or some form of that instead?",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
