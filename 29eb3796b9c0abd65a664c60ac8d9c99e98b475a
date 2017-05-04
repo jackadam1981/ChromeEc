@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "173e205b_78625e8c",
+        "filename": "driver/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-04T00:16:38Z",
+      "side": 1,
+      "message": "Every time you add a new CONFIG option line this, you should document it in include/config.h with an #undef and a comment.",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "29eb3796b9c0abd65a664c60ac8d9c99e98b475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
