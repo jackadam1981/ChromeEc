@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11462928_c381245f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-04T03:40:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8473294_b840a353",
+      "revId": "efcd68ca6a12ff6fa341f9b06d0f259fe751b43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a4050fb_8ffc7ca7",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-03T16:29:02Z",
       "side": 1,
       "message": "the kernel is not creating (verified)?",
+      "revId": "efcd68ca6a12ff6fa341f9b06d0f259fe751b43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76e38d4e_c21daa5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-04T03:40:33Z",
+      "side": 1,
+      "message": "Yes I verified that.",
+      "parentUuid": "7a4050fb_8ffc7ca7",
       "revId": "efcd68ca6a12ff6fa341f9b06d0f259fe751b43e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a080bfba_d02de396",
+        "filename": "common/uart_buffering.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-04T03:40:33Z",
+      "side": 1,
+      "message": "ectool is still using version 0 (ectool console), so I think it\u0027s still useful to keep version 0.",
+      "parentUuid": "628d915e_8afadae4",
+      "revId": "efcd68ca6a12ff6fa341f9b06d0f259fe751b43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a985c19c_4cf54b7c",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2017-05-03T16:29:02Z",
       "side": 1,
       "message": "kernel",
+      "revId": "efcd68ca6a12ff6fa341f9b06d0f259fe751b43e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c38e109b_f4b3a030",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-04T03:40:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a985c19c_4cf54b7c",
       "revId": "efcd68ca6a12ff6fa341f9b06d0f259fe751b43e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
