@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19371f66_20824c86",
+        "filename": "board/discovery_stmems/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-04T00:15:38Z",
+      "side": 1,
+      "message": "Something here is causing problems in motions_sense.c:\n\ncros/src/platform/ec/common/motion_sense.c:789: undefined reference to `lightbar_sequence_f\u0027\n\nNot sure if this CL is the problem or how motion_sense is architected.\n\nDo you need CONFIG_GESTURE_SENSOR_BATTERY_TAP defined? I\u0027m pretty sure that\u0027s only something that happens if you want to tap and have it display battery level on the lightbar.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 43
+      },
+      "revId": "2bc896eb82b26b29301169151927fb46e7c77bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65e0a13a_e406b64b",
+        "filename": "board/discovery_stmems/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-04T00:15:38Z",
+      "side": 1,
+      "message": "Please do not change formatting on code you haven\u0027t touched in this commit. It pollutes the diff.",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 25
+      },
+      "revId": "2bc896eb82b26b29301169151927fb46e7c77bc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
