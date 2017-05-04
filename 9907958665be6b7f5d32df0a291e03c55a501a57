@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b304e6b9_44791baf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-04T00:11:00Z",
+      "side": 1,
+      "message": "Please don\u0027t indent.\n\nThis is the same on all following CLs.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 1
+      },
+      "revId": "9907958665be6b7f5d32df0a291e03c55a501a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "546a7364_e2404a0f",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-04T00:11:00Z",
+      "side": 1,
+      "message": "Just a heads up, but probably not this CLs fault.\n\nWhen trying to compile for an stm32f0 chip (I\u0027m using the nucleo-f072 board) you\u0027ll get errors such as:\naccelgyro_lsm6dsm.c:342: undefined reference to `__ctzsi2\u0027\n\n\nI actually had to implement __ctzsi2 in common/clz.c in order to overcome this:\n/**\n * Count trailing zeros\n *\n * @param x non null integer.\n * @return the number of trailing 0-bits in x,\n * starting at the most significant bit position.\n */\nint __keep __ctzsi2(int x)\n{\n\tint r \u003d 0;\n\n\tif (!x)\n\t\treturn 32;\n\tif (!(x \u0026 0x0000ffffu)) {\n\t\tx \u003e\u003e\u003d 16;\n\t\tr +\u003d 16;\n\t}\n\tif (!(x \u0026 0x000000FFu)) {\n\t\tx \u003e\u003e\u003d 8;\n\t\tr +\u003d 8;\n\t}\n\tif (!(x \u0026 0x0000000Fu)) {\n\t\tx \u003e\u003e\u003d 4;\n\t\tr +\u003d 4;\n\t}\n\tif (!(x \u0026 0x00000003u)) {\n\t\tx \u003e\u003e\u003d 2;\n\t\tr +\u003d 2;\n\t}\n\tif (!(x \u0026 0x00000001u)) {\n\t\tx \u003e\u003e\u003d 1;\n\t\tr +\u003d 1;\n\t}\n\treturn r;\n}",
+      "range": {
+        "startLine": 84,
+        "startChar": 31,
+        "endLine": 84,
+        "endChar": 44
+      },
+      "revId": "9907958665be6b7f5d32df0a291e03c55a501a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
