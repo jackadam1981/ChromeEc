@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "222255a0_63fe33ee",
+        "filename": "extra/tigertool/dfu-util",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-04T20:47:55Z",
+      "side": 1,
+      "message": "why is that our problem ?  seems like it\u0027d be pretty obvious: \"oh it failed?  fix your $PATH, or run the tool inside the sdk.\".\n\nyou have zero guarantee that executing a dynamic program out of the chroot will work.  in fact, it\u0027s pretty likely that it\u0027ll fail horribly because our glibc version is newer than whatever distro they\u0027re running.  or the libusb version doesn\u0027t match.\n\nwe frequently have newer versions of glibc than the current Ubuntu LTS.",
+      "parentUuid": "e30bab02_2eb12fe5",
+      "revId": "e39c13ecc5e864df3e62efddf71b1ae50d34efc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "919d030f_b996af37",
         "filename": "extra/tigertool/ecusb/__init__.py",
         "patchSetId": 1
