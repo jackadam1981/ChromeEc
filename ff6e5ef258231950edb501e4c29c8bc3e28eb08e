@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98badbda_255d90c8",
+        "filename": "driver/accelgyro_lsm6dsm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-04T22:10:03Z",
+      "side": 1,
+      "message": "__fls is defined as 31 - __builtin_clz, saving some space.",
+      "revId": "ff6e5ef258231950edb501e4c29c8bc3e28eb08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
