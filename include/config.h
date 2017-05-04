@@ -1709,6 +1709,12 @@
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
 /*****************************************************************************/
+/* ISH config */
+
+/* Various ISH version */
+#undef CONFIG_ISH_30
+#undef CONFIG_ISH_40
+
 /* Current/Power monitor */
 
 /*
