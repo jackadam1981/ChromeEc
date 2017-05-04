@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e30bab02_2eb12fe5",
+        "filename": "extra/tigertool/dfu-util",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-04T20:43:37Z",
+      "side": 1,
+      "message": "Unfortunately there\u0027s a lot of users and they don\u0027t know how to fix their runtime environments, so that\u0027s not an option.",
+      "parentUuid": "18c1f717_12fc8d98",
+      "revId": "e39c13ecc5e864df3e62efddf71b1ae50d34efc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "919d030f_b996af37",
         "filename": "extra/tigertool/ecusb/__init__.py",
         "patchSetId": 1
@@ -64,6 +82,30 @@
       "writtenOn": "2017-05-04T17:45:48Z",
       "side": 1,
       "message": "Really?",
+      "range": {
+        "startLine": 113,
+        "startChar": 6,
+        "endLine": 113,
+        "endChar": 9
+      },
+      "revId": "e39c13ecc5e864df3e62efddf71b1ae50d34efc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89d68f13_29b05b62",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-04T20:43:37Z",
+      "side": 1,
+      "message": "oops!",
+      "parentUuid": "f02c711e_3ed1b9d3",
       "range": {
         "startLine": 113,
         "startChar": 6,
