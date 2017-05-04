@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a50dec6c_8704eacf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-04T02:23:36Z",
+      "side": 1,
+      "message": "Actually, this is an unrelated change (I will split it out).\n\nInterrupts trigger on wide variations (e.g. from high to almost 0V), and after debounce (5ms, should be long enough to not have too much RC effects), we use ADC to check if the connected device appears to be a base (base has a 5.1K pull-down, lid has 100K pull-up).",
+      "parentUuid": "24835bb0_c148798c",
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "003f481f_a1f5e11e",
         "filename": "board/poppy/board.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-03T15:43:29Z",
       "side": 1,
       "message": "Why are we supplying power in the BASE_DISCONNECTED case?",
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40884dfe_5a082216",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-04T02:23:36Z",
+      "side": 1,
+      "message": "Oh, good catch, didn\u0027t realize that enum base_status used to be a boolean, too...",
+      "parentUuid": "003f481f_a1f5e11e",
       "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f71793a4_264b1e8c",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-04T02:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b976a7e_5c58646b",
+      "range": {
+        "startLine": 176,
+        "startChar": 16,
+        "endLine": 176,
+        "endChar": 22
+      },
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5885420_6dc4af9a",
         "filename": "board/poppy/board.c",
         "patchSetId": 4
@@ -70,6 +130,24 @@
       "writtenOn": "2017-05-03T15:43:29Z",
       "side": 1,
       "message": "Why would we not always check pulse width? In the !\u003d BASE_CONNECTED case we trigger connected state so we should also check the pulse width. If the deferred function call is delayed we could miss a valid pulse width and never set the event.",
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55e51b5_f6248dad",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-04T02:23:36Z",
+      "side": 1,
+      "message": "In the !\u003d BASE_CONNECTED case we already wake the system anyway (wake on attach), so there is no need to check the pulse width (pulse is only used when base is already connected, to wake from deep S3).",
+      "parentUuid": "c5885420_6dc4af9a",
       "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "4c71f273_65241968",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-04T02:23:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c78b47_af6c9b96",
+      "range": {
+        "startLine": 199,
+        "startChar": 6,
+        "endLine": 199,
+        "endChar": 11
+      },
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60f8df27_7857c05f",
         "filename": "board/poppy/board.c",
         "patchSetId": 4
@@ -110,6 +212,24 @@
       "writtenOn": "2017-05-03T15:43:29Z",
       "side": 1,
       "message": "pulse set to 0 means what? From what I can gather pulse is a duration measurement.",
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d2934c_14c71f65",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-04T02:23:36Z",
+      "side": 1,
+      "message": "0 means invalid/no pulse, added comment.",
+      "parentUuid": "60f8df27_7857c05f",
       "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "aa54033a_dd6211f1",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-04T02:23:36Z",
+      "side": 1,
+      "message": "Active low (high means disconnected). Added inline function.",
+      "parentUuid": "587bc8ca_d7d1d6c0",
+      "range": {
+        "startLine": 225,
+        "startChar": 21,
+        "endLine": 225,
+        "endChar": 27
+      },
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03773192_9361a2b5",
         "filename": "board/poppy/board.c",
         "patchSetId": 4
@@ -150,6 +294,24 @@
       "writtenOn": "2017-05-03T15:43:29Z",
       "side": 1,
       "message": "So we\u0027re only measuring the first pulse width within the debounce period that is 1-\u003e0 ? And we have to wait for a new debounce period before any other state changes occur? i.e. no sliding window.",
+      "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c94ea61_dd3ed5db",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-04T02:23:36Z",
+      "side": 1,
+      "message": "That\u0027s correct. The comment above tries to describe that. Only a single pulse within a debounce period is considered a valid wake source.",
+      "parentUuid": "03773192_9361a2b5",
       "revId": "2210c1f439375240ff10f5d5d3b0f36038554e06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
