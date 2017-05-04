@@ -329,6 +329,30 @@
       "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad43f10e_a2fa5a18",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-04T00:32:36Z",
+      "side": 1,
+      "message": "We\u0027re a bit careful about power budget because Fizz doesn\u0027t have a battery. So, we need a head room to dodge spikes. I think our choice would be either all 1.5A or 1.5A/3.0A but not all 3.0A.\n\nWe prefer providing 3.0A. So, the circuit will be there. We don\u0027t have to make the decision now. If the OS is smart enough to manage power, it\u0027ll be able to send command to the ec to switch between 1.5/3.0A. If not, we\u0027ll make it 1.5A all the time.",
+      "parentUuid": "88252a76_1c03c850",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
