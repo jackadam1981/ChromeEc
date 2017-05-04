@@ -34,6 +34,58 @@
       "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b0ad4cf_53e1af64",
+        "filename": "include/config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-04T21:37:11Z",
+      "side": 1,
+      "message": "prefix with CONFIG_\n\nCONFIG_MOTION_MIN_SENSE_WAIT_TIME is absolute minimum interval before rescheduling the motion tast (3ms ~300Hz). It guarantee that other less important task will be serviced, but we can no guarantee the motion task will be scheduled every 3ms reliably.",
+      "parentUuid": "b9368dae_6c3fad57",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fa89a02_da049cb1",
+        "filename": "util/ectool.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-04T21:37:11Z",
+      "side": 1,
+      "message": "Use fsl... from #include \u003cstrings.h\u003e",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1652723b_e188706a",
+        "filename": "util/ectool.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 3413,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-04T21:37:11Z",
+      "side": 1,
+      "message": "is this needed? info and info_3 are a union, the pointer address of the upper fields should not change.",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
