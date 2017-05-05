@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "40ee1ef1_c6af4b7d",
+        "filename": "extra/tigertool/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-05T23:05:21Z",
+      "side": 1,
+      "message": "Trailing whitespace?",
+      "range": {
+        "startLine": 8,
+        "startChar": 33,
+        "endLine": 8,
+        "endChar": 35
+      },
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5299f945_4e03ca83",
         "filename": "extra/tigertool/ecusb/pty_driver.py",
         "patchSetId": 5
@@ -430,6 +453,52 @@
       "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa8b813d_01b6e3a5",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-05T23:05:21Z",
+      "side": 1,
+      "message": "Should this be moved after line 119?",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 31
+      },
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf0d959a_9ee10348",
+        "filename": "extra/tigertool/make_pkg.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-05T23:05:21Z",
+      "side": 1,
+      "message": "This makes an assumption about where we\u0027re calking make_pkg.sh from.  Is that safe / the usual design pattern?",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
