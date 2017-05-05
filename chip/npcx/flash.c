@@ -263,6 +263,16 @@ static int flash_set_status_for_prot(int reg1, int reg2)
 		flash_uma_lock(0);
 	}
 
+	/*
+	 * If WP# is active and ec doesn't protect the status registers of
+	 * internal spi-flash, protect it now before setting them.
+	 */
+#ifdef NPCX_INT_FLASH_SUPPORT
+	if (!gpio_get_level(GPIO_WP_L) &&
+			!IS_BIT_SET(NPCX_DEV_CTL4, NPCX_DEV_CTL4_WP_IF))
+		SET_BIT(NPCX_DEV_CTL4, NPCX_DEV_CTL4_WP_IF);
+#endif
+
 	/* Lock physical flash operations */
 	flash_lock_mapped_storage(1);
 
@@ -307,6 +317,16 @@ static int flash_check_prot_reg(unsigned int offset, unsigned int bytes)
 	unsigned int len;
 	uint8_t sr1, sr2;
 	int rv = EC_SUCCESS;
+
+	/*
+	 * If WP# is active and ec doesn't protect the status registers of
+	 * internal spi-flash, protect it now.
+	 */
+#ifdef NPCX_INT_FLASH_SUPPORT
+	if (!gpio_get_level(GPIO_WP_L) &&
+			!IS_BIT_SET(NPCX_DEV_CTL4, NPCX_DEV_CTL4_WP_IF))
+		SET_BIT(NPCX_DEV_CTL4, NPCX_DEV_CTL4_WP_IF);
+#endif
 
 	sr1 = flash_get_status1();
 	sr2 = flash_get_status2();
@@ -647,6 +667,15 @@ uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
 
 int flash_pre_init(void)
 {
+	/*
+	 * Protect status registers of internal spi-flash if WP# is active
+	 * during ec initialization.
+	 */
+#ifdef NPCX_INT_FLASH_SUPPORT
+	if (!gpio_get_level(GPIO_WP_L))
+		SET_BIT(NPCX_DEV_CTL4, NPCX_DEV_CTL4_WP_IF);
+#endif
+
 	/* Enable FIU interface */
 	flash_pinmux(1);
 
