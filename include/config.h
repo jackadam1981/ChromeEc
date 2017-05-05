@@ -1393,6 +1393,9 @@
 /* For ECs with multiple wakeup pins, define enabled wakeup pins */
 #undef CONFIG_HIBERNATE_WAKEUP_PINS
 
+/* Default to enable reporting of all host events */
+#define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffff
+
 /* Use a hardware specific udelay(). */
 #undef CONFIG_HW_SPECIFIC_UDELAY
 
@@ -2733,5 +2736,8 @@
 #if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS) * 2)
 #error "CONFIG_AUX_TIMER_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
 #endif
+
+/* mechanism to mask individual reporting of host events */
+#undef CONFIG_HOST_EVENT_REPORT_DISABLING
 
 #endif  /* __CROS_EC_CONFIG_H */

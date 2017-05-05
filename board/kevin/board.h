@@ -231,6 +231,22 @@
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEY_PRESSED) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC))
 
+#define CONFIG_HOST_EVENT_REPORT_DISABLING
+
+/*
+ * Define the host events events which are to be reported upstream.
+ *
+ * Linux 4.4 kernel uses EC_HOST_EVENT_PD_MCU, EC_HOST_EVENT_USB_MUX,
+ * and EC_HOST_EVENT_RTC.
+ *
+ * Linux 3.18 uses EC_HOST_EVENT_PD_MCU
+ */
+#undef CONFIG_HOST_EVENT_REPORT_MASK
+#define CONFIG_HOST_EVENT_REPORT_MASK ( \
+		EC_HOST_EVENT_MASK(EC_HOST_EVENT_PD_MCU) | \
+		EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC) | \
+		EC_HOST_EVENT_MASK(EC_HOST_EVENT_USB_MUX))
+
 #ifndef __ASSEMBLER__
 
 enum adc_channel {
