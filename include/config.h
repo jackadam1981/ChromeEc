@@ -1218,7 +1218,6 @@
 
 #undef CONFIG_GESTURE_SIGMO_EVENT
 
-
 /* Do we want to detect the lid angle? */
 #undef CONFIG_LID_ANGLE
 
@@ -1284,6 +1283,12 @@
  * of the previous command.
  */
 #undef CONFIG_HOST_COMMAND_STATUS
+
+/* mechanism to mask individual reporting of host events */
+#undef CONFIG_HOST_EVENT_REPORT_DISABLING
+
+/* Default to enable reporting of all host events */
+#define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffff
 
 /*
  * The host commands are sorted in the .rodata.hcmds section so use the binary
