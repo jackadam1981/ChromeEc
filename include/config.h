@@ -1084,6 +1084,9 @@
 #undef CONFIG_FW_PSTATE_OFF
 #undef CONFIG_FW_PSTATE_SIZE
 
+/* mechanism to mask individual reporting of host events */
+#undef CONFIG_HOST_EVENT_REPORT_DISABLING
+
 /*
  * Reuse the space that was occupied in RAM by the little firmware (LFW) loader
  * with the section ".bss.slow" instead.
@@ -1392,6 +1395,9 @@
 
 /* For ECs with multiple wakeup pins, define enabled wakeup pins */
 #undef CONFIG_HIBERNATE_WAKEUP_PINS
+
+/* Default to enable reporting of all host events */
+#define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffff
 
 /* Use a hardware specific udelay(). */
 #undef CONFIG_HW_SPECIFIC_UDELAY

@@ -40,13 +40,26 @@ uint32_t host_get_events(void)
 
 void host_set_events(uint32_t mask)
 {
+#ifdef CONFIG_HOST_EVENT_REPORT_DISABLING
+	int dont_send_event = 1;
+#endif
+
 	/* Only print if something's about to change */
-	if ((events & mask) != mask || (events_copy_b & mask) != mask)
+	if ((events & mask) != mask || (events_copy_b & mask) != mask) {
 		CPRINTS("event set 0x%08x", mask);
+#ifdef CONFIG_HOST_EVENT_REPORT_DISABLING
+		if (mask & CONFIG_HOST_EVENT_REPORT_MASK)
+			dont_send_event = 0;
+#endif
+	}
 
 	atomic_or(&events, mask);
 	atomic_or(&events_copy_b, mask);
 
+#ifdef CONFIG_HOST_EVENT_REPORT_DISABLING
+	if (dont_send_event)
+		return;
+#endif
 #ifdef CONFIG_LPC
 	lpc_set_host_event_state(events);
 #else
@@ -62,12 +75,25 @@ void host_set_events(uint32_t mask)
 
 void host_clear_events(uint32_t mask)
 {
+#ifdef CONFIG_HOST_EVENT_REPORT_DISABLING
+	int dont_send_event = 1;
+#endif
+
 	/* Only print if something's about to change */
-	if (events & mask)
+	if (events & mask) {
 		CPRINTS("event clear 0x%08x", mask);
+#ifdef CONFIG_HOST_EVENT_REPORT_DISABLING
+		if (mask & CONFIG_HOST_EVENT_REPORT_MASK)
+			dont_send_event = 0;
+#endif
+	}
 
 	atomic_clear(&events, mask);
 
+#ifdef CONFIG_HOST_EVENT_REPORT_DISABLING
+	if (dont_send_event)
+		return;
+#endif
 #ifdef CONFIG_LPC
 	lpc_set_host_event_state(events);
 #else
