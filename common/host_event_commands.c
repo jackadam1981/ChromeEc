@@ -40,9 +40,21 @@ uint32_t host_get_events(void)
 
 void host_set_events(uint32_t mask)
 {
+	/* ignore host events the rest of board doesn't care about */
+	mask &= CONFIG_HOST_EVENT_REPORT_MASK;
+
 	/* Only print if something's about to change */
-	if ((events & mask) != mask || (events_copy_b & mask) != mask)
+	if ((events & mask) != mask || (events_copy_b & mask) != mask) {
 		CPRINTS("event set 0x%08x", mask);
+	} else {
+#ifndef CONFIG_LPC
+		/* caller expects memory to be mapped upon return */
+		*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) =
+				events;
+#endif
+		/* nothing changed, so exit early */
+		return;
+	}
 
 	atomic_or(&events, mask);
 	atomic_or(&events_copy_b, mask);
@@ -51,6 +63,7 @@ void host_set_events(uint32_t mask)
 	lpc_set_host_event_state(events);
 #else
 	*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) = events;
+
 #ifdef CONFIG_MKBP_EVENT
 #ifdef CONFIG_MKBP_USE_HOST_EVENT
 #error "Config error: MKBP must not be on top of host event"
@@ -62,9 +75,20 @@ void host_set_events(uint32_t mask)
 
 void host_clear_events(uint32_t mask)
 {
+	/* ignore host events the rest of board doesn't care about */
+	mask &= CONFIG_HOST_EVENT_REPORT_MASK;
+
 	/* Only print if something's about to change */
-	if (events & mask)
+	if (events & mask) {
 		CPRINTS("event clear 0x%08x", mask);
+	} else {
+#ifndef CONFIG_LPC
+		/* caller expects memory to be mapped upon return */
+		*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) =
+				events;
+#endif
+		return;
+	}
 
 	atomic_clear(&events, mask);
 
