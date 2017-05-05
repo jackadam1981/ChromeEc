@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "f46bdfac_c53d7325",
+        "filename": "extra/tigertool/dfu-util",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "you can just tell them \"run it in the chroot\".  or you make that the error message when you attempt to run dfu-util and you get command not found -- please install dfu-util, or run it inside the Chromium OS SDK.",
+      "parentUuid": "c0edaa55_d4d92f22",
+      "revId": "e39c13ecc5e864df3e62efddf71b1ae50d34efc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "919d030f_b996af37",
         "filename": "extra/tigertool/ecusb/__init__.py",
         "patchSetId": 1

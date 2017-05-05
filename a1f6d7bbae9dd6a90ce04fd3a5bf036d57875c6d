@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5299f945_4e03ca83",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "needs a module docstring",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57100e34_18e6f781",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "you use this just once.  do you need to import it directly ?  does pexpect.fdpexpect not work ?",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24aa1040_ebd9182b",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "we prefer to avoid inline comments\n\nperiod at the end of sentences in comments",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2f6ef66_38098ee0",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "two blank lines",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d854deb2_4d4030e9",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "two blank lines",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299d0c01_e2ac24e7",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "i prefer unwrapping this:\n\n UART_PARAMS \u003d {\n     \u0027...\u0027: .....,\n }",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05ccbf8_656f185c",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "comma at the end",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bee5667b_960a533f",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "two blank lines",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128e59fd_ee11bcee",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "class ptyDriver(object):",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86a57cd3_2490d7c3",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": ".",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35e19be0_3a381ca7",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "seems like you should set CLOEXEC on this\n\n      fcntl.fcntl(self._fd, fcntl.F_SETFD,\n                  fcntl.fcntl(self._fd, fcntl.F_GETFD) | fcntl.FD_CLOEXEC)\n\nthat way it won\u0027t leak into tools you fork",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a70b04_a97a1960",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "single quotes here, and in all the other normal strings.  we use double quotes for \"\"\"triple strings\"\"\".",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d832ef_66ca65dc",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "you should avoid this legacy format.  use \"as\" instead of \",\".",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaf00660_c61f01dc",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea6d0ee2_c2859fee",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "i think the normal indent is just 4 spaces from the start of the statement\n\nhave you tried running `cros lint` on this codebase ?",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee0124c_9db05c30",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "\"for\" ?\n\nshould this just be a bool instead of an int ?  which is to say, you do bool(cmd) ?",
+      "range": {
+        "startLine": 255,
+        "startChar": 21,
+        "endLine": 255,
+        "endChar": 23
+      },
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3054a41_cf2e471f",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "you don\u0027t need this import.  see below.",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "891d405b_a90a2582",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "only one blank line between class methods",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fb86f5d_bcc7c6c6",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "this block falls thru which means it\u0027s the same as \"pass\" for all exceptions.  if your intention is only to swallow these two, then you should list those in the except block.\n\n except (OSError, usb.core.USBError):\n   pass",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3201d269_a9ecfd3e",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "docstring",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "982e5111_561cabee",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "what exception are you trying to swallow ?  OSError ?  should keep this narrow.\n\nalso, drop the \"e\"",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32e32ede_74fdb669",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "space around the \u003d",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb388785_5735c7ca",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "?",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eae4ff22_ae38bf86",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "this format isn\u0027t used",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a4c8449_3f278206",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-05T03:37:44Z",
+      "side": 1,
+      "message": "two blank lines",
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
