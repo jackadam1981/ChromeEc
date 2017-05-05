@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "041d7d12_dcae2df4",
+        "filename": "include/config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 2267,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-05-05T00:28:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b0ad4cf_53e1af64",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fa89a02_da049cb1",
         "filename": "util/ectool.c",
         "patchSetId": 16
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "bad703a8_52c1a4c4",
+        "filename": "util/ectool.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-05-05T00:28:51Z",
+      "side": 1,
+      "message": "It looks like fls is only defined in strings.h if __BSD_VISIBLE is defined, but EC does not define __BSD_VISIBLE.",
+      "parentUuid": "4fa89a02_da049cb1",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1652723b_e188706a",
         "filename": "util/ectool.c",
         "patchSetId": 16
@@ -83,6 +119,24 @@
       "writtenOn": "2017-05-04T21:37:11Z",
       "side": 1,
       "message": "is this needed? info and info_3 are a union, the pointer address of the upper fields should not change.",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4f6c3c6_a68e8609",
+        "filename": "util/ectool.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 3413,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-05-05T00:28:51Z",
+      "side": 1,
+      "message": "As a general rule, I don\u0027t like to rely on external data structure fields remaining constant in case someone changes the initial info() record and doesn\u0027t realize info_3 assumed field order of info record would never change.\n\nI read your comment as you telling me we can\u0027t afford the safer coding practice due to limited space in the EC and that I should just assume the info structure will not change, or that it\u0027s a rule that coders can\u0027t change those record structures once they\u0027ve been defined, so we don\u0027t need to worry about that / can assume they will never change.  In either case, I\u0027ll rework this to assume the info record definition will never change and save some space.",
+      "parentUuid": "1652723b_e188706a",
       "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
