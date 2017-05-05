@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89fec101_50a297db",
+        "filename": "chip/npcx/system-npcx7.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-05T22:53:22Z",
+      "side": 1,
+      "message": "this is located",
+      "range": {
+        "startLine": 171,
+        "startChar": 14,
+        "endLine": 171,
+        "endChar": 29
+      },
+      "revId": "ea11dec1fcabf01886f67655c73a91fe0b730f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "420b9065_461ef613",
+        "filename": "include/gpio.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-05T22:53:22Z",
+      "side": 1,
+      "message": "\"PSL\" is a chip-specific term.  How about:\n\nGPIO_HIB_WAKE_HIGH /* Hibernate wake on high level */",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "ea11dec1fcabf01886f67655c73a91fe0b730f5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
