@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6469dca1_5b576aa5",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-05T18:31:23Z",
+      "side": 1,
+      "message": "nit: 2017",
+      "revId": "98a19a2b30cfd16d4aff5a25bf976c47f06dde50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "555984ed_fa2ebdb5",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-05T18:31:23Z",
+      "side": 1,
+      "message": "nit: everything but cr50",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "98a19a2b30cfd16d4aff5a25bf976c47f06dde50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4488d1ba_ee21460a",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-05T18:31:23Z",
+      "side": 1,
+      "message": "nit: obsolete comment",
+      "range": {
+        "startLine": 485,
+        "startChar": 66,
+        "endLine": 485,
+        "endChar": 69
+      },
+      "revId": "98a19a2b30cfd16d4aff5a25bf976c47f06dde50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
