@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1115c484_46e06fd5",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-05T03:24:03Z",
+      "side": 1,
+      "message": "Done, also cleaned up the flags a bit and did not include lfmap in chip/g updater.",
+      "parentUuid": "8f6cd22f_466d3f5f",
+      "revId": "5ac2ead775de8d8e30c76e6a3b5fc36762f99760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc816fb3_721b8b2a",
         "filename": "extra/usb_updater/usb_updater2.c",
         "patchSetId": 11
@@ -30,6 +48,23 @@
       "writtenOn": "2017-05-05T03:20:43Z",
       "side": 1,
       "message": "Would be good to support serial number, not necessary for this cl but maybe file a bug on it.",
+      "revId": "5ac2ead775de8d8e30c76e6a3b5fc36762f99760",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38c95d1d_0932b563",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-05T03:24:03Z",
+      "side": 1,
+      "message": "https://bugs.chromium.org/p/chromium/issues/detail?id\u003d718688",
       "revId": "5ac2ead775de8d8e30c76e6a3b5fc36762f99760",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
