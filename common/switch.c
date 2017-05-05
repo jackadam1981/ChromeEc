@@ -103,6 +103,10 @@ DECLARE_HOOK(HOOK_INIT, switch_init, HOOK_PRIO_INIT_SWITCH);
 
 void switch_interrupt(enum gpio_signal signal)
 {
+	/* Protect status registers of internal flash by GPIO_WP_L's level. */
+	if (flash_protect_int_flash)
+		flash_protect_int_flash(!gpio_get_level(GPIO_WP_L));
+
 	hook_call_deferred(&switch_update_data, 0);
 }
 

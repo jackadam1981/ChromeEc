@@ -296,4 +296,13 @@ void flash_lock_mapped_storage(int lock);
 #else
 static inline void flash_lock_mapped_storage(int lock) { };
 #endif /* CONFIG_EXTERNAL_STORAGE */
+
+/**
+ * Optional flash chip specific function
+ *
+ * Protect status registers of internal spi-flash by forcing WP# level of it.
+ *
+ * @param enable        1: force WP# to low, otherwise has no effect.
+ */
+void flash_protect_int_flash(int enable) __attribute__((weak));
 #endif  /* __CROS_EC_FLASH_H */
