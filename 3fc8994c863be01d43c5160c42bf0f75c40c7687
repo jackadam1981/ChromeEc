@@ -22,6 +22,30 @@
       "revId": "3fc8994c863be01d43c5160c42bf0f75c40c7687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1cebf6_bc6b2eed",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-05-06T04:41:50Z",
+      "side": 1,
+      "message": "Good point. Will add tablet_mode command with on/off switch",
+      "parentUuid": "c11314fa_300f4930",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 33
+      },
+      "revId": "3fc8994c863be01d43c5160c42bf0f75c40c7687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
