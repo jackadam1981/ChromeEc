@@ -499,6 +499,30 @@
       "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59472da6_b3dbf42b",
+        "filename": "extra/tigertool/make_pkg.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-06T04:10:51Z",
+      "side": 1,
+      "message": "can normalize based on $0 and cd to this dir first",
+      "parentUuid": "bf0d959a_9ee10348",
+      "range": {
+        "startLine": 13,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "a1f6d7bbae9dd6a90ce04fd3a5bf036d57875c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
