@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad2a507a_465b74f8",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2017-05-06T01:41:07Z",
+      "side": 1,
+      "message": "Sorry for didn\u0027t mention in time and thanks toshak@ for point this out, the resistor in lid has been changed to 30.1k since the larger resistor saves more power.\n\nThe updated diagram is in link below.\nhttps://drive.google.com/a/google.com/file/d/0B6AhXjXKHQ8KUnBvRkkxbmNCaE0/view?usp\u003dsharing",
+      "range": {
+        "startLine": 141,
+        "startChar": 40,
+        "endLine": 141,
+        "endChar": 44
+      },
+      "revId": "db7b881214118ac6fbb457c394bab5ef87a1fd06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
