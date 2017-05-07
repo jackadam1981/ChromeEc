@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f3108409_fb8dc654",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-07T06:45:03Z",
+      "side": 1,
+      "message": "We are running vcoclock \u003d 384 MHz, USB clock can still be 48 Hz given usbdiv \u003d 8",
+      "parentUuid": "ddda7c07_c4be59d2",
+      "revId": "c270c5fbee07f9ef6c962ee5672eb4b9f297f95f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0447691e_7aa73d2f",
         "filename": "chip/stm32/clock-stm32f4.c",
         "patchSetId": 2
@@ -83,6 +101,24 @@
       "writtenOn": "2017-05-03T18:14:07Z",
       "side": 1,
       "message": "Just ifdef this for 446/412 specifically and leave other stm32f4 family as #error \"No valid clocks defined\" so the next person will know to look at it.",
+      "revId": "c270c5fbee07f9ef6c962ee5672eb4b9f297f95f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1762ccff_b0ef3d6f",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-07T06:45:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22786836_689537f0",
       "revId": "c270c5fbee07f9ef6c962ee5672eb4b9f297f95f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
