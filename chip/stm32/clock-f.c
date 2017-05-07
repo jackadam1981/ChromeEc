@@ -165,8 +165,15 @@ void clock_init(void)
 	 * put 1 Wait-State for flash access to ensure proper reads at 48Mhz
 	 * and enable prefetch buffer.
 	 */
-	/* Enable data and instruction cache. */
 	STM32_FLASH_ACR = STM32_FLASH_ACR_LATENCY | STM32_FLASH_ACR_PRFTEN;
+
+#if defined(CHIP_FAMILY_STM32F4)
+	/* Flush data and instruction cache */
+	STM32_FLASH_ACR |= STM32_FLASH_ACR_DCRST | STM32_FLASH_ACR_ICRST;
+
+	/* Enable data and instruction cache. */
+	STM32_FLASH_ACR |= STM32_FLASH_ACR_DCEN | STM32_FLASH_ACR_ICEN;
+#endif
 
 	config_hispeed_clock();
 
