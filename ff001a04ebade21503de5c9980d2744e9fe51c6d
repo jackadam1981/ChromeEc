@@ -92,6 +92,30 @@
       "revId": "ff001a04ebade21503de5c9980d2744e9fe51c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7301cad_ede22633",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-08T11:36:09Z",
+      "side": 1,
+      "message": "Ah right, L4 is not using this file at all.\nfor stm32f4, it\u0027s not enable by default.",
+      "parentUuid": "68c0d7ad_1842dad7",
+      "range": {
+        "startLine": 170,
+        "startChar": 33,
+        "endLine": 170,
+        "endChar": 64
+      },
+      "revId": "ff001a04ebade21503de5c9980d2744e9fe51c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
