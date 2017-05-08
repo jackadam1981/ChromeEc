@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1372145_6bc5c977",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-08T11:20:24Z",
+      "side": 1,
+      "message": "STM32L4 does , but afaict the code there doesn\u0027t contain this bug and this CL doesn\u0027t change the behavior there.",
+      "range": {
+        "startLine": 9,
+        "startChar": 36,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "ff001a04ebade21503de5c9980d2744e9fe51c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af6e80d6_43cc9a11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-08T11:20:24Z",
+      "side": 1,
+      "message": "the tricky part here would be to verify that you haven\u0027t introduced new caching bugs, eg missing flushes/invalidation.\n(for example when jumping from RO to RW, you might need to ensure that the caches are invalidated properly, when doing DMA transfers, you need to check that we have the proper barriers/flushes)",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "ff001a04ebade21503de5c9980d2744e9fe51c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c0d7ad_1842dad7",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-08T11:20:24Z",
+      "side": 1,
+      "message": "AFAICT this code is not compiled on STM32L4 (ie clock-stm32l4.c is used there)\nso this is slightly misleading.\n\nI do see this bug in the STM32L4 : the caching bits are enabled by default at startup in the HW and nothing seems to disable them.\n(I will check later at runtime)",
+      "range": {
+        "startLine": 170,
+        "startChar": 33,
+        "endLine": 170,
+        "endChar": 64
+      },
+      "revId": "ff001a04ebade21503de5c9980d2744e9fe51c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
