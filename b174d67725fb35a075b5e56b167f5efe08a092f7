@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4696b183_566178a0",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-08T07:03:12Z",
+      "side": 1,
+      "message": "#elseif BOARD_POPPY",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "b174d67725fb35a075b5e56b167f5efe08a092f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef0d91a6_3cc7cfb3",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-08T07:03:12Z",
+      "side": 1,
+      "message": "Should we add a \n#else\n#error \"Battery information not available for board\"",
+      "revId": "b174d67725fb35a075b5e56b167f5efe08a092f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
