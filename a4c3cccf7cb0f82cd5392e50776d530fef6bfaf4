@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38e2b555_2570623e",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-08T08:33:52Z",
+      "side": 1,
+      "message": "Here, instead of _removing_ the bytes, you could just peek at the data in the queue (look at queue_peek_units), then do the computations below. If the total data length is too short (queue_count), you\u0027ll need to wait for the next data packet to process the data.",
+      "revId": "a4c3cccf7cb0f82cd5392e50776d530fef6bfaf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c83c9b95_2bcd19f6",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-08T08:33:52Z",
+      "side": 1,
+      "message": "I don\u0027t think you need this. You can just send:\n0 | 0x32 | 70 |  4 |  60 bytes\nin first packet\nand then the leftover bytes (10 bytes), in next packet.\n\nWhat the consumer needs to do, then, is to _peek_ at the header, without removing the data, and only remove the data if the whole buffer is in the queue. Receiving side can figure out packet is incomplete.",
+      "revId": "a4c3cccf7cb0f82cd5392e50776d530fef6bfaf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a61294e6_d2fd7ce4",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-08T08:33:52Z",
+      "side": 1,
+      "message": "increase the queue size too.",
+      "range": {
+        "startLine": 154,
+        "startChar": 15,
+        "endLine": 154,
+        "endChar": 34
+      },
+      "revId": "a4c3cccf7cb0f82cd5392e50776d530fef6bfaf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
