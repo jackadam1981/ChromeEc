@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c7a0842_aa3b1ea4",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-08T19:08:46Z",
+      "side": 1,
+      "message": "Can you keep clock requirement comments here?",
+      "revId": "6138bf8cf664cb610cd5a7edcc315ce69ba4aefa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db7b3dd0_0f301a30",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-08T19:08:46Z",
+      "side": 1,
+      "message": "Can you put assert here to ensure that the value is exact? Or comment at least?",
+      "revId": "6138bf8cf664cb610cd5a7edcc315ce69ba4aefa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fad2cd5b_05d80ffa",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-08T19:08:46Z",
+      "side": 1,
+      "message": "Can you add a comment for max IO clock per chip?",
+      "revId": "6138bf8cf664cb610cd5a7edcc315ce69ba4aefa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
