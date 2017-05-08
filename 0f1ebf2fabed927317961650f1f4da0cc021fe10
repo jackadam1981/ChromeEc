@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "860c3adb_4d4da4c4",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1255,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-08T10:18:45Z",
+      "side": 1,
+      "message": "actually the original implementation looks terribly sub-optimal maybe we can just do a bit better and avoid this division alltogether :\n- ipmon is the sum of 100 (BD9995X_PMON_IOUT_ADC_READ_COUNT)  10-bit integers (from the register reading), even multiplied by 1000, this should fit in uint32_t ?\n- overall BD9995X_PMON_IOUT_ADC_READ_COUNT seems to be an arbitrary averaging value, I would try to replace it with a power of 2 (eg 128)\n\nI would just do the second item, GCC should remove the division.",
+      "range": {
+        "startLine": 1255,
+        "startChar": 5,
+        "endLine": 1255,
+        "endChar": 37
+      },
+      "revId": "0f1ebf2fabed927317961650f1f4da0cc021fe10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
