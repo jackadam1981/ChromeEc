@@ -34,6 +34,9 @@
 #define CONFIG_FPU
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#ifndef POPPY_REV0
+#define CONFIG_LED_COMMON
+#endif
 #define CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_LTO
