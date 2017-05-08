@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2fc4488a_1b260a0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-08T12:16:17Z",
+      "side": 1,
+      "message": "\u003e This is for flash controller\u0027s D-code and I-code caching, it shouldn\u0027t affect DMA at all?\n\nthe STM32F412 ref manual says that the DCEN bit for Data-cache. Reading further (or guessing a bit actually) it seems to be caching all accesses from flash, so I guess then if you DMA from flash, then you DMA your read-only structures, then you don\u0027t have coherency issue (you are unlikely to write then DMA). Probably most of the time: no I agree, you still have the update corner case.",
+      "parentUuid": "3c5809de_4094fe28",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 37
+      },
+      "revId": "ff001a04ebade21503de5c9980d2744e9fe51c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68c0d7ad_1842dad7",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 2
@@ -112,6 +136,29 @@
         "startChar": 33,
         "endLine": 170,
         "endChar": 64
+      },
+      "revId": "ff001a04ebade21503de5c9980d2744e9fe51c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0843c0_67bbaf30",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-08T12:16:17Z",
+      "side": 1,
+      "message": "thinking further here:\n  after sysjump, the cache will be disabled (without flush) at line 168, the re-enabled here. This might not be correct (the manual is a bit elusive on the topic)\nmaybe we want to fix line 168",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 19
       },
       "revId": "ff001a04ebade21503de5c9980d2744e9fe51c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
