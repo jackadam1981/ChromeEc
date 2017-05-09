@@ -34,6 +34,24 @@
       "revId": "16a1c867b665af3a8a5e778aa3fc13cab112eccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7d0fc2e_7ca4fa93",
+        "filename": "common/rwsig.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-09T08:58:54Z",
+      "side": 1,
+      "message": "Right, this protects against the case where\n\n  flash_set_protect(EC_FLASH_PROTECT_ALL_AT_BOOT, -1);\n\ndoes not actually do anything, so we don\u0027t enter a boot loop.",
+      "parentUuid": "b2d9264b_3166b1d2",
+      "revId": "16a1c867b665af3a8a5e778aa3fc13cab112eccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
