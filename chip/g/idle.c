@@ -46,9 +46,11 @@ static int command_idle(int argc, char **argv)
 	if (argc > 1) {
 		if (!strncasecmp("c", argv[1], 1)) {
 			GREG32(PMU, PWRDN_SCRATCH17) = 0;
+#ifdef CONFIG_RESTRICTED_CONSOLE_COMMANDS
 		} else if (console_is_restricted()) {
 			ccprintf("Console is locked, cannot set idle state\n");
 			return EC_ERROR_INVAL;
+#endif /* CONFIG_RESTRICTED_CONSOLE_COMMANDS */
 		} else {
 			for (i = 1; i < ARRAY_SIZE(idle_name); i++)
 				if (!strncasecmp(idle_name[i], argv[1], 1)) {
