@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af315da1_02597b14",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-09T15:58:38Z",
+      "side": 1,
+      "message": "This is not true for all boards. If you look at eve/reef, they set tablet mode without setting the host event for mode change. Maybe your initial approach about base attach/detach command was better? Just that you will have to do what this command is doing currently:\n\nbase attach:\n  - set host event\n  - set tablet mode\n\nbase detach:\n   - set host event\n   - clear tablet mode",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "d6ab953e54892ea09c025e43bffe10783c757461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
