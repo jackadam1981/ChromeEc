@@ -152,8 +152,14 @@ void button_init(void)
 	if (!system_jumped_to_this_image() &&
 	    (system_get_reset_flags() & RESET_FLAG_RESET_PIN) &&
 	    is_recovery_button_pressed()) {
-		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
-		button_check_hw_reinit_required();
+		CPRINTS("SORAKA no recovery!!!!");
+		CPRINTS("SORAKA no recovery!!!!");
+		CPRINTS("SORAKA no recovery!!!!");
+		CPRINTS("SORAKA no recovery!!!!");
+		if (0) {
+			host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
+			button_check_hw_reinit_required();
+		}
 	}
 #endif
 }
