@@ -6891,11 +6891,23 @@ int cmd_bd9995x(int argc, char *argv[])
 	if (argc < 2 || 3 < argc) {
 		fprintf(stderr, "Usage: %s <reg> [<val>]\n", argv[0]);
 		fprintf(stderr, "       %s psys\n", argv[0]);
+		fprintf(stderr, "       %s vsys <val>\n", argv[0]);
 		return -1;
 	}
 
 	if (!strcasecmp(argv[1], "psys")) {
 		p.cmd = BD9995X_CMD_PSYS;
+	} else if (!strcasecmp(argv[1], "vsys")) {
+		if (argc == 2) {
+			fprintf(stderr, "Missing value");
+			return -1;
+		}
+		p.cmd = BD9995X_CMD_VSYS;
+		p.val = strtol(argv[2], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad value\n");
+			return -1;
+		}
 	} else {
 		p.reg = strtol(argv[1], &e, 0);
 		if (e && *e) {
@@ -6905,7 +6917,7 @@ int cmd_bd9995x(int argc, char *argv[])
 		if (argc == 2) {
 			p.cmd = BD9995X_CMD_REG_READ;
 		} else {
-			p.val = strtol(argv[1], &e, 0);
+			p.val = strtol(argv[2], &e, 0);
 			if (e && *e) {
 				fprintf(stderr, "Bad value\n");
 				return -1;

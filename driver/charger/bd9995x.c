@@ -58,6 +58,18 @@ static enum usb_switch usb_switch_state[BD9995X_CHARGE_PORT_COUNT] = {
 };
 #endif
 
+static enum bd9995x_command get_cmd_map(uint8_t reg)
+{
+	const uint8_t bat_chg_regs[] = {0x14, 0x15, 0x3c, 0x3d, 0x3e, 0x3f};
+	int i;
+
+	for (i = 0; i < sizeof(bat_chg_regs); i++)
+		if (reg == bat_chg_regs[i])
+			return BD9995X_BAT_CHG_COMMAND;
+
+	return BD9995X_EXTENDED_COMMAND;
+}
+
 static inline int ch_raw_read16(int cmd, int *param,
 				enum bd9995x_command map_cmd)
 {
@@ -112,10 +124,18 @@ bd9995x_write_cleanup:
 
 /* BD9995X local interfaces */
 
+static int manual_mode;
 static int bd9995x_set_vfastchg(int voltage)
 {
-
+	static int previous;
 	int rv;
+
+	if (manual_mode)
+		return EC_SUCCESS;
+	if (voltage != previous) {
+		ccprintf("%s: voltage=%d\n", __func__, voltage);
+		previous = voltage;
+	}
 
 	/* Fast Charge Voltage Regulation Settings for fast charging. */
 	rv = ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET1,
@@ -140,15 +160,82 @@ static int bd9995x_set_vfastchg(int voltage)
 	return rv;
 }
 
+static int console_bd9995x_vfastchg(int argc, char **argv)
+{
+	int voltage;
+	char *e;
+
+	voltage = strtoi(argv[1], &e, 0);
+	if (*e || voltage < 0)
+		return EC_ERROR_PARAM1;
+
+	manual_mode = 0;
+	bd9995x_set_vfastchg(voltage & ~0x0f);
+	manual_mode = 1;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(vfastchg, console_bd9995x_vfastchg,
+			"<voltage>",
+			"Set VFASTCHG registers");
+
 static int bd9995x_set_vsysreg(int voltage)
 {
+	static int previous;
+
+	if (manual_mode)
+		return EC_SUCCESS;
+
 	/* VSYS Regulation voltage is in 64mV steps. */
 	voltage &= ~0x3F;
+
+	if (voltage != previous) {
+		ccprintf("%s: voltage=%d\n", __func__, voltage);
+		previous = voltage;
+	}
 
 	return ch_raw_write16(BD9995X_CMD_VSYSREG_SET, voltage,
 			      BD9995X_EXTENDED_COMMAND);
 }
 
+static int console_bd9995x_vsysreg(int argc, char **argv)
+{
+	int voltage;
+	char *e;
+
+	voltage = strtoi(argv[1], &e, 0);
+	if (*e || voltage < 0)
+		return EC_ERROR_PARAM1;
+
+	manual_mode = 0;
+	bd9995x_set_vsysreg(voltage);
+	manual_mode = 1;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(vsysreg, console_bd9995x_vsysreg,
+			"<voltage>",
+			"Set VSYSREG register");
+
+static int console_bd9995x_vsys(int argc, char **argv)
+{
+	int voltage;
+	char *e;
+
+	voltage = strtoi(argv[1], &e, 0);
+	if (*e || voltage < 0)
+		return EC_ERROR_PARAM1;
+
+	manual_mode = 0;
+	bd9995x_set_vfastchg(voltage);
+	bd9995x_set_vsysreg(voltage);
+	manual_mode = 1;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(vsys, console_bd9995x_vsys,
+			"<voltage>",
+			"Set VSYS");
 static int bd9995x_is_discharging_on_ac(void)
 {
 	int reg;
@@ -1267,6 +1354,14 @@ static int bd9995x_psys_charger_adc(void)
 		BD9995X_PMON_IOUT_ADC_READ_COUNT));
 }
 
+static int bd9995x_get_vsys(void)
+{
+	int val;
+	ch_raw_read16(BD9995X_CMD_VSYS_AVE_VAL, &val,
+		      get_cmd_map(BD9995X_CMD_VSYS_AVE_VAL));
+	return val;
+}
+
 static int bd9995x_enable_psys(void)
 {
 	int rv;
@@ -1292,14 +1387,17 @@ static int bd9995x_enable_psys(void)
  */
 static int console_command_psys(int argc, char **argv)
 {
+	int psys;
+	int vsys;
 	int rv;
 
 	rv = bd9995x_enable_psys();
 	if (rv)
 		return rv;
-
-	CPRINTS("PSYS from chg_adc: %d mW",
-			bd9995x_psys_charger_adc());
+	psys = bd9995x_psys_charger_adc();
+	vsys = bd9995x_get_vsys();
+	CPRINTS("PSYS: %d mW (VSYS:%d mV, ISYS:%d mA)", psys, vsys,
+		psys * 1000 / vsys);
 
 	return EC_SUCCESS;
 }
@@ -1421,18 +1519,6 @@ struct i2c_stress_test_dev bd9995x_i2c_stress_test_dev = {
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_CHARGER */
 
-static enum bd9995x_command get_cmd_map(uint8_t reg)
-{
-	const uint8_t bat_chg_regs[] = {0x14, 0x15, 0x3c, 0x3d, 0x3e, 0x3f};
-	int i;
-
-	for (i = 0; i < sizeof(bat_chg_regs); i++)
-		if (reg == bat_chg_regs[i])
-			return BD9995X_BAT_CHG_COMMAND;
-
-	return BD9995X_EXTENDED_COMMAND;
-}
-
 static int command_bd9995x(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_bd9995x *p = args->params;
@@ -1458,6 +1544,12 @@ static int command_bd9995x(struct host_cmd_handler_args *args)
 			return EC_RES_ERROR;
 		r->val = bd9995x_psys_charger_adc();
 		r->state = EC_SUCCESS;
+		break;
+	case BD9995X_CMD_VSYS:
+		manual_mode = 0;
+		bd9995x_set_vfastchg(p->val);
+		bd9995x_set_vsysreg(p->val);
+		manual_mode = 1;
 		break;
 	default:
 		return EC_RES_INVALID_PARAM;
