@@ -108,6 +108,41 @@
     },
     {
       "key": {
+        "uuid": "3c2a6db2_d8f7b7da",
+        "filename": "util/ectool.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-09T18:45:42Z",
+      "side": 1,
+      "message": "You\u0027re right.\nBut instead of redefining __fls here, move its definition from  include/util.h to include/common.h.",
+      "parentUuid": "bad703a8_52c1a4c4",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c79075dc_b15fa8b7",
+        "filename": "util/ectool.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 3260,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-09T18:45:42Z",
+      "side": 1,
+      "message": "I checked that will work with older ec, as insize is a maximal size.",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1652723b_e188706a",
         "filename": "util/ectool.c",
         "patchSetId": 16
@@ -137,6 +172,24 @@
       "side": 1,
       "message": "As a general rule, I don\u0027t like to rely on external data structure fields remaining constant in case someone changes the initial info() record and doesn\u0027t realize info_3 assumed field order of info record would never change.\n\nI read your comment as you telling me we can\u0027t afford the safer coding practice due to limited space in the EC and that I should just assume the info structure will not change, or that it\u0027s a rule that coders can\u0027t change those record structures once they\u0027ve been defined, so we don\u0027t need to worry about that / can assume they will never change.  In either case, I\u0027ll rework this to assume the info record definition will never change and save some space.",
       "parentUuid": "1652723b_e188706a",
+      "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0956011_a37550db",
+        "filename": "util/ectool.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 3413,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-09T18:45:42Z",
+      "side": 1,
+      "message": "If info changes, current ectool/kernel drivers will break, so indeed we can\u0027t afford to change it. \ninfo_3 has to be backward compatible for newer EC to work with older images.",
+      "parentUuid": "f4f6c3c6_a68e8609",
       "revId": "4a1cf03760dc188972857048b7b7a2bb9e330108",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
