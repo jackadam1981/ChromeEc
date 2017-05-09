@@ -16,6 +16,24 @@
       "revId": "8401424576d263ed4f92d95ecfd635cf31438861",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "351cbf54_4fceda2c",
+        "filename": "common/switch.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-09T15:40:06Z",
+      "side": 1,
+      "message": "I think so... I think we should assume lid-less systems want to look lid is always open.",
+      "parentUuid": "e049f3ef_ee305269",
+      "revId": "8401424576d263ed4f92d95ecfd635cf31438861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
