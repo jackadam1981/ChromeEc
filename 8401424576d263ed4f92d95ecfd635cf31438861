@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e049f3ef_ee305269",
+        "filename": "common/switch.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-09T14:30:11Z",
+      "side": 1,
+      "message": "Just curious. Do we specify lid open in the switches by default?  If not, should we in case someone is querying that state such that it indicates lid open?",
+      "revId": "8401424576d263ed4f92d95ecfd635cf31438861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
