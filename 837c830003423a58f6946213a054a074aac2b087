@@ -16,6 +16,24 @@
       "revId": "837c830003423a58f6946213a054a074aac2b087",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d133387_b85d1a18",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-09T07:08:27Z",
+      "side": 1,
+      "message": "The manual didn\u0027t mention who will clear the RST flag and how it works..",
+      "parentUuid": "39f0462e_befaa1ab",
+      "revId": "837c830003423a58f6946213a054a074aac2b087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
