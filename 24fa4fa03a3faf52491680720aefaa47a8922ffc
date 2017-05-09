@@ -52,6 +52,24 @@
       "revId": "24fa4fa03a3faf52491680720aefaa47a8922ffc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dfe6a20_2d3c6b36",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-09T00:11:23Z",
+      "side": 1,
+      "message": "I moved backlight control to HOOK_CHIPSET_RESUME/_SUSPEND implemented in each board.c. Ptal.",
+      "parentUuid": "7835da94_ec498ebd",
+      "revId": "24fa4fa03a3faf52491680720aefaa47a8922ffc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
