@@ -163,6 +163,30 @@
       "revId": "ff001a04ebade21503de5c9980d2744e9fe51c6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b58ca40_80f2ebd8",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-09T06:37:33Z",
+      "side": 1,
+      "message": "from the manual, we can flush the caches after DCEN and ICEN is disabled. I added another line to flush the caches so we won\u0027t have cache coherence problem between jumps or fw update.",
+      "parentUuid": "8d0843c0_67bbaf30",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "ff001a04ebade21503de5c9980d2744e9fe51c6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
