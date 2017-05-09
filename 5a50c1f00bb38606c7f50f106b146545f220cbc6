@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bedd9f78_478a4767",
+        "filename": "util/flash_ec",
+        "patchSetId": 8
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-09T07:39:53Z",
+      "side": 1,
+      "message": "really I don\u0027t you to kill all my servod daemons regardless to what they are connected\n(hint: some people have more than one)",
+      "range": {
+        "startLine": 629,
+        "startChar": 1,
+        "endLine": 629,
+        "endChar": 21
+      },
+      "revId": "5a50c1f00bb38606c7f50f106b146545f220cbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fcb0fb1_33588054",
+        "filename": "util/flash_ec",
+        "patchSetId": 8
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-09T07:39:53Z",
+      "side": 1,
+      "message": "... then restart a random one with the wrong parameters in the wrong context",
+      "range": {
+        "startLine": 637,
+        "startChar": 0,
+        "endLine": 637,
+        "endChar": 31
+      },
+      "revId": "5a50c1f00bb38606c7f50f106b146545f220cbc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
