@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcbc3348_5404237d",
+        "filename": "util/build.mk",
+        "patchSetId": 13
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-09T10:53:50Z",
+      "side": 1,
+      "message": "I have missed something else: this rule is noisy on regular build (without V\u003d1)\nwe need to do something similar to other rules in build.mk",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "e13695c0175dcb7854de74ed7c69e6054b0481dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
