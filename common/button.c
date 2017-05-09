@@ -141,8 +141,14 @@ void button_init(void)
 	    (system_get_reset_flags() & RESET_FLAG_RESET_PIN) &&
 	    raw_button_pressed(&buttons[BUTTON_VOLUME_DOWN]) &&
 	    raw_button_pressed(&buttons[BUTTON_VOLUME_UP])) {
-		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
-		button_check_hw_reinit_required();
+		CPRINTS("SORAKA no recovery!!!!");
+		CPRINTS("SORAKA no recovery!!!!");
+		CPRINTS("SORAKA no recovery!!!!");
+		CPRINTS("SORAKA no recovery!!!!");
+		if (0) {
+			host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
+			button_check_hw_reinit_required();
+		}
 	}
 #endif
 }
