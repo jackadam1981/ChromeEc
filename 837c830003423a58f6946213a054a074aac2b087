@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39f0462e_befaa1ab",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-09T06:53:22Z",
+      "side": 1,
+      "message": "hmm this doesn\u0027t seem right. After RST is set, the caching is not enabled.\n\n  \u003e rw 0x40023c00\n  read 0x40023c00 \u003d 0x00001f01",
+      "revId": "837c830003423a58f6946213a054a074aac2b087",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
