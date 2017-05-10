@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c1bfd69_28221993",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-10T19:28:18Z",
+      "side": 1,
+      "message": "Please note that the bug linked below in this CL does not refer to the cr50 firmware but another product.\n\nThat said if we want to be cheap, I can make the default/initialization value of the \u0027which_phy\u0027 defined at compilation time rather than hardcoded to USB_SEL_PHY1 and that\u0027s likely fitting all products needs in a foreseeable future without having to save any new bits (thus avoiding to add complexity to mitigate the other issue about wasting too many scratch register space)",
+      "parentUuid": "bbe7aefe_9ef58fce",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 63
+      },
+      "revId": "3bf4ea794d2ffc85261122daa729253fd28f6a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b1757bf_ab20eed7",
         "filename": "chip/g/init_chip.h",
         "patchSetId": 1
