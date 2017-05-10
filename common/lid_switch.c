@@ -107,6 +107,8 @@ static void lid_change_deferred(void)
 		lid_switch_open();
 	else
 		lid_switch_close();
+
+	CPRINTS("REVERSE: %d", gpio_get_level(GPIO_REVERSE_DOCK));
 }
 DECLARE_DEFERRED(lid_change_deferred);
 
