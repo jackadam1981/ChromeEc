@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f25343b_805c079f",
+        "filename": "common/switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-10T18:33:33Z",
+      "side": 1,
+      "message": "This will be checked *every* interrupt, so I think this code is in the wrong place.\n\nCan we just update the internal flash registers from the GPIO at init and in flash_check_prot_reg() / flash_physical_erase() / flash_physical_write()?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 54
+      },
+      "revId": "91be2998df9d3038ed894de381c881d468757ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
