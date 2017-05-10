@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "faf6e8ea_32686245",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-10T17:49:56Z",
+      "side": 1,
+      "message": "That won\u0027t work: EC is using the FIFO, and the fifo is disabled when polling is less than 12.5Hz (see 2.2.4 Low power mode), so we must not set the frequency too low.",
+      "revId": "890986cfafaa437c4374ca36e69c6604ea965d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cc2e2ba_afc5a95f",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-10T17:49:56Z",
+      "side": 1,
+      "message": "because of the accelerator, the chip is in normal mode as soon as it is used, so a low frequency would not impact the power consumption: I haven\u0027t test how CTS behaves when it can set the gryo frequency very low.",
+      "revId": "890986cfafaa437c4374ca36e69c6604ea965d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5697f59e_76ea8224",
+        "filename": "include/config.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 2265,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-10T17:49:56Z",
+      "side": 1,
+      "message": "Try to order alphabetically. \nRemove #ifndef, config.h is included first.",
+      "revId": "890986cfafaa437c4374ca36e69c6604ea965d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
