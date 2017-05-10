@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d8abe43_a2e0e62a",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-05-10T20:38:43Z",
+      "side": 1,
+      "message": "That\u0027s a great catch.  Should I \n1) set min to 12.5 Hz, or\n2) change the driver such that in the case where it reads the FIFO and it\u0027s invalid (i.e. accel in suspend while in low-power state), put the accel into normal mode, read the fifo, and then put it back into low-powered mode?  What I would more likely do is to check first to see if accel is in low-power mode, and if so, transition it to normal mode, then read FIFO, then transition it back to low-power mode.",
+      "parentUuid": "faf6e8ea_32686245",
+      "revId": "890986cfafaa437c4374ca36e69c6604ea965d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cc2e2ba_afc5a95f",
         "filename": "driver/accelgyro_bmi160.h",
         "patchSetId": 20
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "4e90a507_22d8506c",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-05-10T20:38:43Z",
+      "side": 1,
+      "message": "As long as the sensor stack only delivers gyro events to Android sensor services at the rate of MIN_FREQ (with proper timestamps), CTS will be happy.",
+      "parentUuid": "3cc2e2ba_afc5a95f",
+      "revId": "890986cfafaa437c4374ca36e69c6604ea965d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5697f59e_76ea8224",
         "filename": "include/config.h",
         "patchSetId": 20
@@ -47,6 +83,24 @@
       "writtenOn": "2017-05-10T17:49:56Z",
       "side": 1,
       "message": "Try to order alphabetically. \nRemove #ifndef, config.h is included first.",
+      "revId": "890986cfafaa437c4374ca36e69c6604ea965d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad251c8d_00d71420",
+        "filename": "include/config.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 2265,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-05-10T20:38:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5697f59e_76ea8224",
       "revId": "890986cfafaa437c4374ca36e69c6604ea965d27",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
