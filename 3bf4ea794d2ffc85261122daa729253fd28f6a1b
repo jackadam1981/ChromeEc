@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "bbe7aefe_9ef58fce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-10T17:32:59Z",
+      "side": 1,
+      "message": "What issue is this solving? Once background update support is in, we are going to only use one phy, so I am not sure if we should add this now. Or we should add a TODO to remove it once the phy switching is removed.\n\nhttps://buganizer.corp.google.com/issues/36488273",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 63
+      },
+      "revId": "3bf4ea794d2ffc85261122daa729253fd28f6a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b1757bf_ab20eed7",
         "filename": "chip/g/init_chip.h",
         "patchSetId": 1
