@@ -46,6 +46,30 @@
       "revId": "710ec19610c79fed782605c448cb0919a4e7fdcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cbd3b95_dfe14713",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-10T17:18:37Z",
+      "side": 1,
+      "message": "If they aren\u0027t being used then they won\u0027t be printed. The (sel \u003d\u003d 0) check in 417 does that. But if anyone connects those peripherals to pins without adding strings to print_periph then blank strings will be printed right now.",
+      "parentUuid": "c9beecaa_a3266980",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 26
+      },
+      "revId": "710ec19610c79fed782605c448cb0919a4e7fdcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
