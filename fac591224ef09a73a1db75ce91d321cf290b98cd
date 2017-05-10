@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b3a5ed2_d07b411c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-10T20:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "461f348c_b58f4d7f",
+      "range": {
+        "startLine": 787,
+        "startChar": 6,
+        "endLine": 787,
+        "endChar": 40
+      },
+      "revId": "fac591224ef09a73a1db75ce91d321cf290b98cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53f20999_d2a5f3e9",
         "filename": "common/charge_manager.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "73d508ef_728bf310",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-10T20:40:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53f20999_d2a5f3e9",
+      "range": {
+        "startLine": 870,
+        "startChar": 17,
+        "endLine": 870,
+        "endChar": 34
+      },
+      "revId": "fac591224ef09a73a1db75ce91d321cf290b98cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdfc2f78_250813f6",
         "filename": "include/charge_manager.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-10T09:05:46Z",
       "side": 1,
       "message": "I\u0027m not sure we want this in the API rather than being a nicely-optimized static function.\nIs there a (future) use-case for this ?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "fac591224ef09a73a1db75ce91d321cf290b98cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d9f2ce9_9c6d53d7",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-10T20:40:08Z",
+      "side": 1,
+      "message": "Removed. It was used by fizz/board.c but I made it no longer need to check pd port validity..",
+      "parentUuid": "bdfc2f78_250813f6",
       "range": {
         "startLine": 86,
         "startChar": 0,
