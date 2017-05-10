@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "453346c8_6411cf7b",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-10T16:47:30Z",
+      "side": 1,
+      "message": "There are 99 peripheral selectors. With this change command_pinmux will only print 0-77. There are peripherals in there like PINMUX_TEMP0_TST_ADC_CLK_SEL that I didn\u0027t define strings for. If those are set then the name will be blank, but pinmux will print  something like \"400601e8:         22  DIOA3\" for that line. Is that ok? or should I print UNDEF in print_periph if it isn\u0027t defined. And should I print all 99 peripherals instead of 77?",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 26
+      },
+      "revId": "710ec19610c79fed782605c448cb0919a4e7fdcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
