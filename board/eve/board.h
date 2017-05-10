@@ -91,7 +91,15 @@
 #define CONFIG_CHARGER_BD99956
 #define CONFIG_CHARGER_BD9995X_CHGEN
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
-#define CONFIG_CHARGER_INPUT_CURRENT 512
+/*
+ * The input current limit is used only in bd9995x_init() and will be
+ * overwritten during USB PD negotiation. Under very low battery conditions,
+ * this value must be high enough to keep PPVAR_SYS stable and provide enough
+ * power for the system and to precharge the battery until PD negotiation can
+ * progress far enough to set the desired level. 1500 matches the bd9995x OTP
+ * value.
+ */
+#define CONFIG_CHARGER_INPUT_CURRENT 1500
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT 1
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15000
 #define CONFIG_CHARGER_MAINTAIN_VBAT
