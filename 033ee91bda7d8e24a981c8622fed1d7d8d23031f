@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6919e4ea_23b629f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-10T08:17:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6da14465_f8c8fc7e",
+      "revId": "033ee91bda7d8e24a981c8622fed1d7d8d23031f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cd569a1_de158987",
         "filename": "board/poppy/build.mk",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "033ee91bda7d8e24a981c8622fed1d7d8d23031f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d880bf_25f48d29",
+        "filename": "board/poppy/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-10T08:17:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cd569a1_de158987",
+      "revId": "033ee91bda7d8e24a981c8622fed1d7d8d23031f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "4b2ce66b_2bf60563",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-10T08:17:29Z",
+      "side": 1,
+      "message": "I find POPPY_REV0 clearer, after all this is board revision specific...",
+      "parentUuid": "4c8b8428_75c75104",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 18
+      },
+      "revId": "033ee91bda7d8e24a981c8622fed1d7d8d23031f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40df933f_f3b1e97b",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 4
@@ -70,6 +130,30 @@
       "writtenOn": "2017-05-10T07:47:43Z",
       "side": 1,
       "message": "Are we planning to use the same LEDs on poppy rev1+?",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 44
+      },
+      "revId": "033ee91bda7d8e24a981c8622fed1d7d8d23031f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c775df10_efb01172",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-10T08:17:29Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "40df933f_f3b1e97b",
       "range": {
         "startLine": 115,
         "startChar": 0,
@@ -116,6 +200,30 @@
       "writtenOn": "2017-05-10T07:47:43Z",
       "side": 1,
       "message": "shouldn\u0027t this be unsigned?",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 98,
+        "endChar": 11
+      },
+      "revId": "033ee91bda7d8e24a981c8622fed1d7d8d23031f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30a634db_d706b2c3",
+        "filename": "board/poppy/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-10T08:17:29Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter (we only use bitmasks anyway).\n\nAlso, this matches what all other board/*/led.c seem to be doing.",
+      "parentUuid": "21ace95c_03a86b60",
       "range": {
         "startLine": 98,
         "startChar": 8,
