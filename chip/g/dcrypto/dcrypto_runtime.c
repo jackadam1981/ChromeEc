@@ -30,9 +30,10 @@ void dcrypto_init(void)
 	REG_WRITE_MLV(GR_PMU_RST0, GC_PMU_RST0_DCRYPTO0_MASK,
 		GC_PMU_RST0_DCRYPTO0_LSB, 0);
 
-	/* Turn off random nops (for accurate measuring here). */
-	/* TODO(ngm): enable for production. */
-	GREG32(CRYPTO, RAND_STALL_CTL) = 0;
+	/* Turn on random nops. */
+	GWRITE_FIELD(CRYPTO, RAND_STALL_CTL, STALL_EN, 1);
+	/* Set random nop percentage to 6%. */
+	GWRITE_FIELD(CRYPTO, RAND_STALL_CTL, FREQ, 3);
 
 	/* Initialize DMEM. */
 	ptr = GREG32_ADDR(CRYPTO, DMEM_DUMMY);
