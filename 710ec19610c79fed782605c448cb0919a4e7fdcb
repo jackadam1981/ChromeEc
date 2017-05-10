@@ -22,6 +22,30 @@
       "revId": "710ec19610c79fed782605c448cb0919a4e7fdcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9beecaa_a3266980",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-10T17:15:36Z",
+      "side": 1,
+      "message": "I think \u0027undef\u0027 is better than a blank string. \n\nIs there a way to eliminate (to not print) selectors which are not currently being used?",
+      "parentUuid": "453346c8_6411cf7b",
+      "range": {
+        "startLine": 442,
+        "startChar": 1,
+        "endLine": 442,
+        "endChar": 26
+      },
+      "revId": "710ec19610c79fed782605c448cb0919a4e7fdcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
