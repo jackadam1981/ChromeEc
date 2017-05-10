@@ -13,6 +13,9 @@
 
 #include "cryptoc/sha.h"
 #include "cryptoc/sha256.h"
+#include "cryptoc/sha384.h"
+#include "cryptoc/sha512.h"
+#include "cryptoc/util.h"
 
 /* Extend the MSB throughout the word. */
 static uint32_t msb_extend(uint32_t a)
@@ -98,7 +101,7 @@ static int oaep_pad(uint8_t *output, uint32_t output_len,
 	if (msg_len > output_len - 2 - 2 * hash_size)
 		return 0;       /* Input message too large for key size. */
 
-	dcrypto_memset(output, 0, output_len);
+	always_memset(output, 0, output_len);
 	for (i = 0; i < hash_size;) {
 		uint32_t r = rand();
 
@@ -274,12 +277,6 @@ static const uint8_t SHA512_DER[] = {
 	0x00, 0x04, 0x40
 };
 
-/* TODO(ngm): move these #defines to third_party/cryptoc once SHA-384
- * & 512 support is available.
- */
-#define SHA384_DIGEST_SIZE 48
-#define SHA512_DIGEST_SIZE 64
-
 static int pkcs1_get_der(enum hashing_mode hashing, const uint8_t **der,
 			uint32_t *der_size, uint32_t *hash_size)
 {
@@ -338,7 +335,7 @@ static int pkcs1_type1_pad(uint8_t *padded, uint32_t padded_len,
 
 	*(padded++) = 0;
 	*(padded++) = 1;
-	dcrypto_memset(padded, 0xFF, ps_len);
+	always_memset(padded, 0xFF, ps_len);
 	padded += ps_len;
 	*(padded++) = 0;
 	memcpy(padded, der, der_size);
@@ -550,8 +547,8 @@ int DCRYPTO_rsa_encrypt(struct RSA *rsa, uint8_t *out, uint32_t *out_len,
 	reverse((uint8_t *) encrypted.d, bn_size(&encrypted));
 	*out_len = bn_size(&encrypted);
 
-	dcrypto_memset(padded_buf, 0, sizeof(padded_buf));
-	dcrypto_memset(e_buf, 0, sizeof(e_buf));
+	always_memset(padded_buf, 0, sizeof(padded_buf));
+	always_memset(e_buf, 0, sizeof(e_buf));
 	return 1;
 }
 
@@ -609,8 +606,8 @@ int DCRYPTO_rsa_decrypt(struct RSA *rsa, uint8_t *out, uint32_t *out_len,
 		break;
 	}
 
-	dcrypto_memset(encrypted_buf, 0, sizeof(encrypted_buf));
-	dcrypto_memset(padded_buf, 0, sizeof(padded_buf));
+	always_memset(encrypted_buf, 0, sizeof(encrypted_buf));
+	always_memset(padded_buf, 0, sizeof(padded_buf));
 	return ret;
 }
 
@@ -651,7 +648,7 @@ int DCRYPTO_rsa_sign(struct RSA *rsa, uint8_t *out, uint32_t *out_len,
 	reverse((uint8_t *) signature.d, bn_size(&signature));
 	*out_len = bn_size(&rsa->N);
 
-	dcrypto_memset(padded_buf, 0, sizeof(padded_buf));
+	always_memset(padded_buf, 0, sizeof(padded_buf));
 	return 1;
 }
 
@@ -705,8 +702,8 @@ int DCRYPTO_rsa_verify(const struct RSA *rsa, const uint8_t *digest,
 		break;
 	}
 
-	dcrypto_memset(padded_buf, 0, sizeof(padded_buf));
-	dcrypto_memset(signature_buf, 0, sizeof(signature_buf));
+	always_memset(padded_buf, 0, sizeof(padded_buf));
+	always_memset(signature_buf, 0, sizeof(signature_buf));
 	return ret;
 }
 
