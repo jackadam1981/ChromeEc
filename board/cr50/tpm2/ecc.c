@@ -15,6 +15,7 @@
 
 #include "cryptoc/p256.h"
 #include "cryptoc/p256_ecdsa.h"
+#include "cryptoc/util.h"
 
 static void reverse_tpm2b(TPM2B *b)
 {
@@ -204,8 +205,8 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 			break;
 		}
 	}
-	/* TODO(ngm): implement secure memset. */
-	memset(local_seed.t.buffer, 0, local_seed.t.size);
+
+	always_memset(local_seed.t.buffer, 0, local_seed.t.size);
 
 	if (count == 0)
 		FAIL(FATAL_ERROR_INTERNAL);
