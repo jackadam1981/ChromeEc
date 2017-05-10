@@ -39,6 +39,24 @@
       "revId": "3bf4ea794d2ffc85261122daa729253fd28f6a1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6e56960_1ab10574",
+        "filename": "chip/g/init_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-10T18:08:26Z",
+      "side": 1,
+      "message": "yes, this was my thought too - this is just for storing a single bit,  OTOH these do not survive reset, so there is no need to worry about backwards compatibility, so we can compress these when needed.",
+      "parentUuid": "5b1757bf_ab20eed7",
+      "revId": "3bf4ea794d2ffc85261122daa729253fd28f6a1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
