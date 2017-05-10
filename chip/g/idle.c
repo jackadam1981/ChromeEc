@@ -126,6 +126,8 @@ static void prepare_to_sleep(void)
 		 * reinitialized on resume.
 		 */
 		GREG32(PMU, PWRDN_SCRATCH18) = GR_USB_DCFG;
+		GR_USB_GGPIO = GGPIO_READ(USB_CUSTOM_CFG_REG);
+		GREG32(PMU, PWRDN_SCRATCH19) = GR_USB_GGPIO;
 
 		/* Increment the deep sleep count */
 		GREG32(PMU, PWRDN_SCRATCH17) =

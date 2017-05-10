@@ -347,6 +347,14 @@ uint32_t usb_get_phy(void)
 	return which_phy;
 }
 
+static void usb_restore_phy(void)
+{
+	uint8_t custom_cfg = GREG32(PMU, PWRDN_SCRATCH19);
+
+	which_phy = custom_cfg & USB_SEL_PHY1;
+	GR_USB_GGPIO = GGPIO_WRITE(USB_CUSTOM_CFG_REG, custom_cfg);
+}
+
 /* Reset all this to a good starting state. */
 static void initialize_dma_buffers(void)
 {
@@ -1266,7 +1274,10 @@ void usb_init(void)
 	GWRITE_FIELD(USB, PCGCCTL, STOPPCLK, 1);
 
 	/* Select the correct PHY */
-	usb_select_phy(which_phy);
+	if (resume)
+		usb_restore_phy();
+	else
+		usb_select_phy(which_phy);
 
 	/* Full-Speed Serial PHY */
 	GR_USB_GUSBCFG = GUSBCFG_PHYSEL_FS | GUSBCFG_FSINTF_6PIN
