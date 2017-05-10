@@ -353,6 +353,30 @@
       "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4416728_0e87ff8b",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-10T14:57:53Z",
+      "side": 1,
+      "message": "The code is removed. We\u0027ll come back to this part once we decide what to do with 1.5/3.0A switching,",
+      "parentUuid": "ad43f10e_a2fa5a18",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 66
+      },
+      "revId": "debe9b6264450307a976d330edcc6483ac74dc14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
