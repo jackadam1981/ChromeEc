@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4f84702_fdee6f58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-11T08:32:09Z",
+      "side": 1,
+      "message": "you also need to verify that you are not glitching VBUS the other way round, e.g. :\n- plug a USB key on port 0\n- see it fully enumerating\n- plug another USB key on port 1\n- the device on port 0 does NOT disconnect/re-enumerate",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 68
+      },
+      "revId": "df2791de1350eac0d751d7e7d536ed1aad507749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
