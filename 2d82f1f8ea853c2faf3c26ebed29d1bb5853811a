@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe724185_ca3b1fd6",
+        "filename": "chip/npcx/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-11T16:52:55Z",
+      "side": 1,
+      "message": "Move this code to a sub-function called from each of these places, to reduce duplicated code.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 6
+      },
+      "revId": "2d82f1f8ea853c2faf3c26ebed29d1bb5853811a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
