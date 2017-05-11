@@ -60,6 +60,7 @@ GPIO_INT(DETECT_AP,       PIN(1, 1),  GPIO_INT_HIGH, device_state_on)
 GPIO_INT(DETECT_EC,       PIN(1, 2),  GPIO_INT_HIGH, device_state_on)
 GPIO_INT(DETECT_SERVO,    PIN(1, 3),  GPIO_INT_HIGH | GPIO_PULL_DOWN,
 	 device_state_on)
+GPIO_INT(EC_TX_CR50_RX,   PIN(1, 4),  GPIO_INT_FALLING, ec_tx_cr50_rx)
 
 /* Pull this low to interrupt the AP */
 GPIO(INT_AP_L,        PIN(0, 0), GPIO_OUT_HIGH)
@@ -148,6 +149,7 @@ PINMUX(FUNC(UART2_RX),        B6, DIO_INPUT)	/* EC console */
  * damage both servo and cr50.
  */
 PINMUX(GPIO(DETECT_EC),       B6, DIO_INPUT)
+PINMUX(GPIO(EC_TX_CR50_RX),   B6, DIO_INPUT)
 PINMUX(GPIO(DETECT_SERVO),    B5, DIO_INPUT)
 
 /*
