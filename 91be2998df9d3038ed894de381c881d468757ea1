@@ -22,6 +22,30 @@
       "revId": "91be2998df9d3038ed894de381c881d468757ea1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96b72e42_33e78b21",
+        "filename": "common/switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-05-11T01:58:37Z",
+      "side": 1,
+      "message": "Sure. I\u0027ll move this code from switch.c to flash utilities of npcx/flash.c in next patchset.",
+      "parentUuid": "0f25343b_805c079f",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 54
+      },
+      "revId": "91be2998df9d3038ed894de381c881d468757ea1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
