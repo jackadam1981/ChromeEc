@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8ab492c_2b62b21e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-11T22:57:30Z",
+      "side": 1,
+      "message": "This is common across all boards, so it seems like we should verify that\n\n1. Power+Refresh+Esc works on some existing system (that is, reset pin still triggers recovery)\n\n2. Do battery cutoff.  Hold down Esc while plugging in power triggers recovery (that is, POR + recovery button triggers recovery)\n\n3. Power+Refresh or battery cutoff+replug without holding down Esc does not trigger recovery.",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "e2c55850f3995735571f14634a3c3f3010edb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
