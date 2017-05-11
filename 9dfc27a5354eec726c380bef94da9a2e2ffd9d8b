@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b27bf87_b975dcc4",
+        "filename": "board/dingdong/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-11T08:40:24Z",
+      "side": 1,
+      "message": "the lack of atomicity between the increment in the high priority interrupt handler and the decrement in the low priority deferred task here will introduce a race condition, e.g.:\n\nhpd_irq_deferred  READ  hpd_irq_count [ \u003d N ]\nhpd_event             READ  hpd_irq_count [ \u003d N ]\nhpd_event             WRITE hpd_irq_count [ \u003d N + 1]\nhpd_irq_deferred  WRITE  hpd_irq_count  [ \u003d N - 1 ]    \u003c\u003c\u003c should be N\n\nyou need to declare hpd_irq_count as volatile uint32_t and use atomic_add() / atomic_sub()",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 17
+      },
+      "revId": "9dfc27a5354eec726c380bef94da9a2e2ffd9d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
