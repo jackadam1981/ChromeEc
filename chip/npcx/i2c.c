@@ -129,7 +129,7 @@ static const struct i2c_timing i2c_1m_timings[] = {
 	{33, 11, 20, 16},
 	{24, 10, 16, 12},
 	{20, 10, 14, 10},
-	{15,  9, 10, 10},};
+	{15,  7, 12, 10},};
 const unsigned int i2c_1m_timing_used = ARRAY_SIZE(i2c_1m_timings);
 
 int i2c_port_to_controller(int port)
