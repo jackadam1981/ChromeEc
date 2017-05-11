@@ -296,6 +296,30 @@
     },
     {
       "key": {
+        "uuid": "e948b6f5_c17d1c44",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-11T20:52:33Z",
+      "side": 1,
+      "message": "No, only one board.h can be included, and it\u0027s always included from config.h only so it gets included before other header files, and the configs can be correct.",
+      "parentUuid": "7a1bd86c_d6982d60",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "7c8427230fd53a1b39f45a293e714bc55ac19204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63f0887e_9467de69",
         "filename": "board/mn50/board.h",
         "patchSetId": 8

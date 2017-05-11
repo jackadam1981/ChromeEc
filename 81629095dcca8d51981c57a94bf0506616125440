@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "20b1e770_7210fedf",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-11T20:52:33Z",
+      "side": 1,
+      "message": "Always powered.",
+      "parentUuid": "a52e8e09_14ef0fea",
+      "range": {
+        "startLine": 105,
+        "startChar": 11,
+        "endLine": 105,
+        "endChar": 23
+      },
+      "revId": "81629095dcca8d51981c57a94bf0506616125440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ebbdd47_10d5dca4",
         "filename": "board/mn50/board.c",
         "patchSetId": 11
@@ -48,6 +72,47 @@
     },
     {
       "key": {
+        "uuid": "bd69d837_06a30ec7",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-11T20:52:33Z",
+      "side": 1,
+      "message": "gpio.inc defs weren\u0027t working, as I chatted you earlier about. Thanks for the help, it\u0027s fixed now.",
+      "parentUuid": "5ebbdd47_10d5dca4",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 51
+      },
+      "revId": "81629095dcca8d51981c57a94bf0506616125440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0de9da09_85e59895",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-11T20:52:33Z",
+      "side": 1,
+      "message": "Yes, will test before checking in. Need to unbrick my electro",
+      "revId": "81629095dcca8d51981c57a94bf0506616125440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90c44bf8_9d3fb606",
         "filename": "board/mn50/gpio.inc",
         "patchSetId": 11
@@ -59,6 +124,30 @@
       "writtenOn": "2017-05-10T18:20:59Z",
       "side": 1,
       "message": "I tested this. You dont need the PINMUX(GPIO definitions for the I2C pins. You just need to do DIO_INPUT | DIO_OUTPUT in the FUNC definitions.",
+      "range": {
+        "startLine": 103,
+        "startChar": 34,
+        "endLine": 103,
+        "endChar": 43
+      },
+      "revId": "81629095dcca8d51981c57a94bf0506616125440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ede5648_db5bd0e0",
+        "filename": "board/mn50/gpio.inc",
+        "patchSetId": 11
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-11T20:52:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c44bf8_9d3fb606",
       "range": {
         "startLine": 103,
         "startChar": 34,
