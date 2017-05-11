@@ -26,7 +26,10 @@ chip-y += polling_uart.o
 else
 chip-y += uart.o
 chip-y += uartn.o
-endif
+ifeq ($(CONFIG_UART_BITBANG),y)
+chip-y += uart_bitbang.o
+endif # CONFIG_UART_BITBANG
+endif # undef CONFIG_POLLING_UART
 
 chip-$(CONFIG_DCRYPTO)+= crypto_api.o
 
