@@ -231,6 +231,22 @@
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEY_PRESSED) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC))
 
+/*
+ * Define the host events which are to be reported to kernel.
+ *
+ * Lnux 4.4 kernel uses EC_HOST_EVENT_PD_MCU, EC_HOST_EVENT_USB_MUX,
+ * and EC_HOST_EVENT_RTC.
+ *
+ * Linux 3.18 kernel uses EC_HOST_EVENT_PD_MCU
+ *
+ * The kernel is also interested in its enabled wake events.
+ */
+#define CONFIG_HOST_EVENT_REPORT_MASK \
+		(CONFIG_MKBP_WAKEUP_MASK |\
+		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_PD_MCU) |\
+		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC) |\
+		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_USB_MUX))
+
 #ifndef __ASSEMBLER__
 
 enum adc_channel {
