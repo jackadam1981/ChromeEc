@@ -13,6 +13,7 @@
 #include "rdd.h"
 #include "registers.h"
 #include "system.h"
+#include "uart_bitbang.h"
 #include "uartn.h"
 #include "usb_api.h"
 #include "usb_i2c.h"
@@ -391,3 +392,90 @@ static int command_powerbtn(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn,
 			"[pulse [ms] | press | release]",
 			"get/set the state of the power button");
+
+static int command_bitbang(int argc, char **argv)
+{
+	int uart;
+	int baud_rate;
+	int parity;
+	int i;
+
+	if (argc > 1) {
+		if ((argc != 3) && (argc != 4))
+			return EC_ERROR_PARAM_COUNT;
+
+		uart = atoi(argv[1]);
+		if (argc == 3) {
+			if (!strcasecmp("disable", argv[2]))
+				return uart_bitbang_disable(uart);
+			else
+				return EC_ERROR_PARAM2;
+		}
+
+		if (argc == 4) {
+			baud_rate = atoi(argv[2]);
+			if (!strcasecmp("odd", argv[3]))
+				parity = 1;
+			else if (!strcasecmp("even", argv[3]))
+				parity = 2;
+			else if (!strcasecmp("none", argv[3]))
+				parity = 0;
+			else
+				return EC_ERROR_PARAM3;
+
+			return uart_bitbang_enable(uart, baud_rate, parity);
+		}
+	}
+
+	ccprintf("UART - baud rate - parity\n");
+	for (i = 0; i < bitbang_uart_count; i++) {
+		ccprintf("  %1d  ", bitbang_config[i].uart);
+		if (!uart_bitbang_is_enabled(bitbang_config[i].uart)) {
+			ccprintf("bit banging mode disabled.\n");
+			continue;
+		}
+
+		ccprintf("   %6d      ", bitbang_config[i].baud_rate);
+		switch (bitbang_config[i].parity) {
+		case 1:
+			ccprintf("odd\n");
+			break;
+
+		case 2:
+			ccprintf("even\n");
+			break;
+
+		case 0:
+		default:
+			ccprintf("none\n");
+			break;
+		};
+	}
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bitbang, command_bitbang,
+			"<uart> <baud_rate> <odd,even,none> | <uart> disable",
+			"set bit bang mode");
+
+int command_bitbang_test(int argc, char **argv)
+{
+	uartn_write_char(2, 'a');
+	uartn_write_char(2, 'b');
+	uartn_write_char(2, 'c');
+	uartn_write_char(2, '\n');
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bbtest, command_bitbang_test,
+			"",
+			"writes abc\\n");
+
+int command_bitbang_clock_test(int argc, char **argv)
+{
+	uartn_write_char(2, 0xAA);
+	uartn_write_char(2, 0xCC);
+	uartn_write_char(2, 0x55);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bbtest2, command_bitbang_clock_test,
+			"",
+			"writes 0xAA 0xCC 0x55");

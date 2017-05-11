@@ -175,6 +175,7 @@ void board_configure_deep_sleep_wakepins(void);
 void tpm_rst_deasserted(enum gpio_signal signal);
 void device_state_on(enum gpio_signal signal);
 void post_reboot_request(void);
+void ec_tx_cr50_rx(enum gpio_signal signal);
 
 /* Special controls over EC and AP */
 void assert_sys_rst(void);

@@ -31,6 +31,7 @@
 #include "task.h"
 #include "tpm_registers.h"
 #include "trng.h"
+#include "uart_bitbang.h"
 #include "uartn.h"
 #include "usb_descriptor.h"
 #include "usb_hid.h"
@@ -89,6 +90,30 @@ static int device_state_changed(enum device_type device,
 /*  Board specific configuration settings */
 static uint32_t board_properties;
 static uint8_t reboot_request_posted;
+
+/* Which UARTs we'd like to be able to bitbang. */
+struct uart_bitbang_properties bitbang_config[] = {
+	{
+		.uart = UART_EC,
+		.tx_gpio = GPIO_DETECT_SERVO, /* This is TX to EC console. */
+		.rx_gpio = GPIO_EC_TX_CR50_RX,
+		.tx_pinmux_reg = GBASE(PINMUX) +
+				 GOFFSET(PINMUX, DIOB5_SEL),
+		.tx_pinmux_regval = GC_PINMUX_GPIO1_GPIO3_SEL,
+		.rx_pinmux_reg = GBASE(PINMUX) +
+				 GOFFSET(PINMUX, DIOB6_SEL),
+		.rx_pinmux_regval = GC_PINMUX_GPIO1_GPIO4_SEL,
+	},
+};
+int bitbang_uart_count = ARRAY_SIZE(bitbang_config);
+
+extern struct deferred_data ec_uart_deferred__data;
+void ec_tx_cr50_rx(enum gpio_signal signal)
+{
+	uart_bitbang_receive_char(UART_EC);
+	/* Let the USART module know that there's new bits to consume. */
+	hook_call_deferred(&ec_uart_deferred__data, 0);
+}
 
 int board_has_ap_usb(void)
 {
@@ -574,7 +599,7 @@ static void board_init(void)
 	init_pmu();
 	init_interrupts();
 	init_trng();
-	init_jittery_clock(1);
+	/* init_jittery_clock(1); */
 	init_runlevel(PERMISSION_MEDIUM);
 	/* Initialize NvMem partitions */
 	nvmem_init();
@@ -589,6 +614,12 @@ static void board_init(void)
 	/* Enable battery cutoff software support on detachable devices. */
 	if (system_battery_cutoff_support_required())
 		set_up_battery_cutoff_monitor();
+
+	/*
+	 * The interrupt is enabled by default, but we only want it enabled when
+	 * bit banging mode is active.
+	 */
+	gpio_disable_interrupt(GPIO_EC_TX_CR50_RX);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -911,7 +942,8 @@ void device_state_on(enum gpio_signal signal)
 			hook_notify(HOOK_CHIPSET_RESUME);
 		break;
 	case GPIO_DETECT_EC:
-		if (device_state_changed(DEVICE_EC, DEVICE_STATE_ON))
+		if (device_state_changed(DEVICE_EC, DEVICE_STATE_ON) &&
+		    !uart_bitbang_is_enabled(UART_EC))
 			enable_uart(UART_EC);
 		break;
 	case GPIO_DETECT_SERVO:
