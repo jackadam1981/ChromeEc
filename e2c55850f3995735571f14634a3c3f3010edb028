@@ -22,6 +22,30 @@
       "revId": "e2c55850f3995735571f14634a3c3f3010edb028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb84e565_eb0b9873",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-11T23:32:48Z",
+      "side": 1,
+      "message": "Updated TEST\u003d and CL description. This affects only the boards defining CONFIG_BUTTON_RECOVERY. So, I verified your points on Poppy.",
+      "parentUuid": "b8ab492c_2b62b21e",
+      "range": {
+        "startLine": 18,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "e2c55850f3995735571f14634a3c3f3010edb028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
