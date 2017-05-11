@@ -56,7 +56,6 @@ void host_set_events(uint32_t mask)
 	lpc_set_host_event_state(events);
 #else
 	*(uint32_t *)host_get_memmap(EC_MEMMAP_HOST_EVENTS) = events;
-
 #ifdef CONFIG_MKBP_EVENT
 #ifdef CONFIG_MKBP_USE_HOST_EVENT
 #error "Config error: MKBP must not be on top of host event"
@@ -72,7 +71,7 @@ void host_clear_events(uint32_t mask)
 	mask &= CONFIG_HOST_EVENT_REPORT_MASK;
 
 	/* return early if nothing changed */
-	if (!(events & mask)) 
+	if (!(events & mask))
 		return;
 
 	CPRINTS("event clear 0x%08x", mask);
