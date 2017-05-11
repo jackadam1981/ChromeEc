@@ -16,6 +16,98 @@
       "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057f6ef6_46741919",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2017-05-11T23:20:44Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the line already be idle?",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 15
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7c49d59_e37e45cc",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2017-05-11T23:20:44Z",
+      "side": 1,
+      "message": "With the stop bit below, is this effectively adding 2 slop bits, so your data transfer will be ~10% slower than it could be? Maybe a compromise would be 1.1 or 1.5 stop bits below and take this out?",
+      "range": {
+        "startLine": 180,
+        "startChar": 9,
+        "endLine": 180,
+        "endChar": 22
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab2bed90_684ff394",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2017-05-11T23:20:44Z",
+      "side": 1,
+      "message": "Should this be after the is_enabled check?",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 20
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adde2778_90f28f8f",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2017-05-11T23:20:44Z",
+      "side": 1,
+      "message": "Potentially want to wait a little over bit_period_us to ensure when the line is sampled it has had time to transition and settle. The interrupt latency gives you some. Maybe even 1.5*bit_period_us. Also will help in the case where the transmitter clock is running a little slow (so its effective bit_period_us is longer than you expect potentially meaning that by the time you get to the end of the byte you sample early).",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 8
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
