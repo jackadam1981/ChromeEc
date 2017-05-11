@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "486b173d_17642c6d",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-11T21:54:27Z",
+      "side": 1,
+      "message": "Is there a way I can add this object file based on board? I could use config options, but IMO, config options are supposed to be generic that can be used by nearly any board?\n\nAlthough, I see CONFIG_DCRYPTO here so maybe my concerns are unnecessary.",
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
