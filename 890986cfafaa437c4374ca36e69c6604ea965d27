@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "13ea1d1d_e667e57f",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-11T17:22:45Z",
+      "side": 1,
+      "message": "1) we need it anyway for lid angle calculation. We could add support for using the chip with disabled FIFO, but IMHO that is adding code that will be seldom used.",
+      "parentUuid": "3d8abe43_a2e0e62a",
+      "revId": "890986cfafaa437c4374ca36e69c6604ea965d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3cc2e2ba_afc5a95f",
         "filename": "driver/accelgyro_bmi160.h",
         "patchSetId": 20
