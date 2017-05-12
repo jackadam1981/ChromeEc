@@ -14,6 +14,7 @@
 #include "extension.h"
 #include "flash.h"
 #include "flash_config.h"
+#include "flash_info.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -1334,6 +1335,12 @@ static const char *key_type(uint32_t key_id)
 		return "dev";
 }
 
+/* Remove flash region mapping. */
+static void flash_info_read_disable(void)
+{
+	GREG32(GLOBALSEC, FLASH_REGION7_CTRL) = 0;
+}
+
 static int command_sysinfo(int argc, char **argv)
 {
 	enum system_image_copy_t active;
@@ -1475,6 +1482,35 @@ static enum vendor_cmd_rc vc_commit_nvmem(enum vendor_cmd_cc code,
 	return VENDOR_RC_SUCCESS;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_COMMIT_NVMEM, vc_commit_nvmem);
+
+static enum vendor_cmd_rc vc_get_board_id(enum vendor_cmd_cc code,
+					  void *buf,
+					  size_t input_size,
+					  size_t *response_size)
+{
+	int i;
+	uint8_t *board_id = buf;
+
+	/* Setup flash region mapping. */
+	flash_info_read_enable(FLASH_INFO_BOARD_ID_OFFSET,
+			       FLASH_INFO_BOARD_ID_SIZE);
+
+	for (i = 0; i < FLASH_INFO_BOARD_ID_SIZE; i += sizeof(uint32_t)) {
+		uint32_t word;
+
+		if (flash_physical_info_read_word(
+			FLASH_INFO_BOARD_ID_OFFSET + i, &word) != EC_SUCCESS) {
+			memset(board_id, 0, sizeof(board_id));
+			return VENDOR_RC_READ_FLASH_FAIL;
+		}
+		memcpy(board_id + i, &word, sizeof(word));
+	}
+
+	flash_info_read_disable();
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_GET_BOARD_ID, vc_get_board_id);
 
 static int command_board_properties(int argc, char **argv)
 {
