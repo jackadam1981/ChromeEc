@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67030eb2_bc97c8a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-12T23:52:10Z",
+      "side": 1,
+      "message": "And now also added a couple of previously completely missing memsets. They seem to be perfectly correct, but would be great to run tests in addition to build in TEST.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "7bb744e66b8211a0ab59df49fbf33ad6ff4e1059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
