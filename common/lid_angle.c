@@ -115,12 +115,18 @@ void lid_angle_set_wake_angle(int ang)
 	wake_large_angle = ang;
 }
 
+/* 0: clamshell, 1: tablet */
+static int lid_range;
+
+void keyboard_state_changed(int row, int col, int is_pressed);
+
 void lid_angle_update(int lid_ang)
 {
 	static int lidangle_buffer[LID_ANGLE_BUFFER_SIZE];
 	static int index;
 	int i;
 	int accept = 1, ignore = 1;
+	int range;
 
 	/* Record most recent lid angle in circular buffer. */
 	lidangle_buffer[index] = lid_ang;
@@ -149,11 +155,26 @@ void lid_angle_update(int lid_ang)
 			ignore = 0;
 	}
 
-	/* Enable or disable peripherals as necessary. */
 	if (accept)
-		lid_angle_peripheral_enable(1);
-	else if (ignore && !accept)
-		lid_angle_peripheral_enable(0);
+		range = 0;
+	else if (ignore)
+		range = 1;
+	else
+		return;
+
+	if (range == lid_range)
+		return;
+
+	lid_range = range;
+	lid_angle_peripheral_enable(!range);
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		return;
+
+	ccprintf("Waking up by lid\n");
+	keyboard_state_changed(1, 1, 1);
 }
 
 static void enable_peripherals(void)
