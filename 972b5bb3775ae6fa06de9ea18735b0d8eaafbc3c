@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "8c2c85c3_77567e79",
+        "filename": "extra/tigertool/README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T02:56:15Z",
+      "side": 1,
+      "message": "changed to \u003cbr\u003e. Was referencing http://markdown-guide.readthedocs.io/en/latest/basics.html#line-return which apparently isn\u0027t canonical",
+      "parentUuid": "47d6b59f_ed02bfca",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ba7a6f4_3b08a45f",
         "filename": "extra/tigertool/ecusb/__init__.py",
         "patchSetId": 7
@@ -703,6 +721,24 @@
     },
     {
       "key": {
+        "uuid": "7f6565c4_9da307f8",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T02:56:15Z",
+      "side": 1,
+      "message": "Packaging pyusb with the tool solves this. removed",
+      "parentUuid": "c385936c_232642f7",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a92514c1_0ed8d09e",
         "filename": "extra/tigertool/ecusb/stm32usb.py",
         "patchSetId": 7
@@ -732,6 +768,24 @@
       "side": 1,
       "message": "Same as above. Don\u0027t have any way to test this if I change it.",
       "parentUuid": "a92514c1_0ed8d09e",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4713765_4a80d966",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T02:56:15Z",
+      "side": 1,
+      "message": "removed, as pyusb will be packaged with the tool",
+      "parentUuid": "5c5bfa47_955f91f4",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1176,6 +1230,24 @@
     },
     {
       "key": {
+        "uuid": "56061845_f9e86984",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T02:56:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0c66233_6e0a4bdd",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1eb51f1b_8380a4c8",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -1229,6 +1301,24 @@
     },
     {
       "key": {
+        "uuid": "4c953db0_a6b146ee",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T02:56:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cab5641b_f0a808e9",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c760b0e_6e5e9cff",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -1276,6 +1366,24 @@
       "side": 1,
       "message": "except you\u0027re swallowing syntax errors here and other bad exceptions that you should be failing on",
       "parentUuid": "84009450_a31c6241",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d648a052_adcae125",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T02:56:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf60447b_366da1d5",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1731,6 +1839,24 @@
       "side": 1,
       "message": "no one is asking you to support python2.6.  `python2` is reliable to exist, not `python2.7`.  it\u0027s what PEP394 covers, and it\u0027s what we do in chromite.",
       "parentUuid": "31db0094_1f11c071",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96590a0_072264f5",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T02:56:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71e2a846_64a921fc",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
