@@ -51,6 +51,7 @@ board-y += tpm2/trng.o
 board-y += tpm2/upgrade.o
 board-y += tpm_nvmem_read.o
 board-y += wp.o
+board-y += board_id.o
 
 # Build and link with an external library
 EXTLIB := $(realpath ../../third_party/tpm2)
