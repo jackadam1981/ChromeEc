@@ -23,6 +23,15 @@
 #define INFO_RW_MAP_OFFSET INFO_RO_MAP_SIZE
 #define INFO_RW_MAP_SIZE   (INFO_MAX * 4)
 
+/* Info1 space holds the Board ID */
+#define INFO_BOARD_ID_OFFSET		0x400
+#define INFO_BOARD_ID_SIZE		12
+#define INFO_BOARD_ID_PROTECT_SIZE	16  /* Must be power of 2 */
+/* Board ID has 3 words of fields - type, type (bit-inverted), and flags */
+#define INFO_BOARD_ID_TYPE_OFFSET	(INFO_BOARD_ID_OFFSET + 0)
+#define INFO_BOARD_ID_TYPE_INV_OFFSET	(INFO_BOARD_ID_OFFSET + 4)
+#define INFO_BOARD_ID_FLAGS_OFFSET	(INFO_BOARD_ID_OFFSET + 8)
+
 int flash_info_read_enable(uint32_t offset, size_t size);
 /* This in fact enables both read and write. */
 int flash_info_write_enable(uint32_t offset, size_t size);
