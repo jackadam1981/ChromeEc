@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dc757b0_5739a6f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-12T01:24:19Z",
+      "side": 1,
+      "message": "does ccd on reef work with these patches? I.e. programming of the ec and ap, access to the consoles, it would be great to check it and state it here",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "d1db2c3dbe6612788ce64b12187a93a69988ec49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca2812d7_b9425e2a",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-12T01:24:19Z",
+      "side": 1,
+      "message": "this function is used in many places, it would be better to provide an empty implementation for the case when  CONFIG_LOW_POWER_IDLE is not defined",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 15
+      },
+      "revId": "d1db2c3dbe6612788ce64b12187a93a69988ec49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
