@@ -13,6 +13,7 @@
 #include "ec_version.h"
 #include "extension.h"
 #include "flash.h"
+#include "flash_info.h"
 #include "flash_config.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -561,6 +562,172 @@ void decrement_retry_counter(void)
 	}
 }
 
+/**
+ * Return the image header for the current image copy
+ */
+const struct SignedHeader *get_current_image_header(void)
+{
+	return (const struct SignedHeader *)
+			get_program_memory_addr(system_get_image_copy());
+}
+
+/* Structure holding Board ID */
+struct board_id {
+	uint32_t type;		/* Board type */
+	uint32_t type_inv;	/* Board type (inverted) */
+	uint32_t flags;		/* Flags */
+};
+
+/**
+ * Check the current header vs. the supplied Board ID
+ *
+ * @param type		Board ID type to check
+ * @param inv		Board ID type (inverted)
+ * @param flags		Board ID flags
+ *
+ * @return 0 if no mismatch, non-zero if mismatch
+ */
+static uint32_t check_board_id_vs_header(const struct board_id *id,
+					 const struct SignedHeader *h)
+{
+	uint32_t mismatch = 0;
+
+	/* Blank Board ID matches all headers */
+	if (~(id->type & id->type_inv & id->flags) == 0)
+		return 0;
+
+	/* Skip check if image is dev-signed */
+	if ((h->keyid & (1 << 2)) == 0) {
+		CPRINTS("Skipping BoardID check on dev-signed image");
+		return 0;
+	}
+
+	/*
+	 * Masked bits in header BoardID type must match type and inverse from
+	 * flash.
+	 */
+	mismatch = 0x33333333 ^ h->board_id_type ^ id->type;
+	mismatch |= 0x33333333 ^ h->board_id_type ^ ~id->type_inv;
+	mismatch &= 0x33333333 ^ h->board_id_type_mask;
+
+	/*
+	 * All 1-bits in header BoardID flags must be present in flags from
+	 * flash
+	 */
+	mismatch |= (0x33333333 ^ h->board_id_flags) & ~id->flags;
+
+	return mismatch;
+}
+
+/**
+ * Read the current board ID
+ *
+ * @param id		Destination for Board ID
+ *
+ * @return EC_SUCCESS, or non-zero error code.
+ */
+static int read_board_id(struct board_id *id)
+{
+	int rv;
+
+	/* Zero ID in case of failure */
+	id->type = id->type_inv = id->flags = 0;
+
+	rv = flash_physical_info_read_word(INFO_BOARD_ID_TYPE_OFFSET,
+					   &id->type);
+	if (rv)
+		return rv;
+
+	rv = flash_physical_info_read_word(INFO_BOARD_ID_TYPE_INV_OFFSET,
+					   &id->type_inv);
+	if (rv)
+		return rv;
+
+	return flash_physical_info_read_word(INFO_BOARD_ID_FLAGS_OFFSET,
+					     &id->flags);
+}
+
+/**
+ * Write the board ID to INFO1
+ *
+ * @param id		Board ID to write
+ *
+ * @return EC_SUCCESS, or non-zero error code.
+ */
+static int write_board_id(const struct board_id *id)
+{
+	struct board_id id_test;
+	uint32_t rv;
+
+	/*
+	 * Make sure the current header will still validate against the
+	 * proposed values.  If it doesn't, then programming these values
+	 * would cause the next boot to fail.
+	 */
+	if (check_board_id_vs_header(id, get_current_image_header()) != 0) {
+		CPRINTS("%s: Board ID wouldn't allow current header", __func__);
+		return EC_ERROR_INVAL;
+	}
+
+	/* Make sure INFO1 board ID space is readable */
+	if (flash_info_read_enable(INFO_BOARD_ID_OFFSET,
+				   INFO_BOARD_ID_PROTECT_SIZE) != EC_SUCCESS) {
+		CPRINTS("%s: failed to enable read access to info", __func__);
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	/* Fail if Board ID is already programmed */
+	rv = read_board_id(&id_test);
+	if (rv != EC_SUCCESS) {
+		CPRINTS("%s: error reading Board ID", __func__);
+		return rv;
+	}
+	if (~(id_test.type & id_test.type_inv & id_test.flags) != 0) {
+		CPRINTS("%s: Board ID already programmed", __func__);
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	/* Enable write access */
+	if (flash_info_write_enable(INFO_BOARD_ID_OFFSET,
+				    INFO_BOARD_ID_PROTECT_SIZE) != EC_SUCCESS) {
+		CPRINTS("%s: failed to enable write access", __func__);
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	/* Write Board ID */
+	rv = flash_info_physical_write(INFO_BOARD_ID_OFFSET,
+				       sizeof(*id), (const char *)id);
+	if (rv != EC_SUCCESS)
+		CPRINTS("%s: write failed", __func__);
+
+	/* Disable write access */
+	flash_info_write_disable();
+
+	return rv;
+}
+
+/**
+ * Check BoardID locking
+ *
+ * @return EC_SUCCESS, or non-zero error code.
+ */
+static int check_board_id(void)
+{
+	struct board_id id;
+
+	if (read_board_id(&id) != EC_SUCCESS)
+		return EC_ERROR_UNKNOWN;
+
+	/* Compare with header */
+	if (check_board_id_vs_header(&id, get_current_image_header())
+	    != EC_SUCCESS) {
+		CPRINTS("Board ID check failed");
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	return EC_SUCCESS;
+}
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -576,6 +743,10 @@ static void board_init(void)
 	init_trng();
 	init_jittery_clock(1);
 	init_runlevel(PERMISSION_MEDIUM);
+
+	/* Check BoardID.  This should really be done earlier. */
+	check_board_id();
+
 	/* Initialize NvMem partitions */
 	nvmem_init();
 	/* Initialize the persistent storage. */
@@ -1341,6 +1512,7 @@ static int command_sysinfo(int argc, char **argv)
 	const struct SignedHeader *h;
 	int reset_count = GREG32(PMU, LONG_LIFE_SCRATCH0);
 	char rollback_str[15];
+	struct board_id id;
 
 	ccprintf("Reset flags: 0x%08x (", system_get_reset_flags());
 	system_print_reset_flags();
@@ -1367,6 +1539,14 @@ static int command_sysinfo(int argc, char **argv)
 
 	system_get_rollback_bits(rollback_str, sizeof(rollback_str));
 	ccprintf("Rollback:    %s\n", rollback_str);
+
+	read_board_id(&id);
+	ccprintf("Board ID:    0x%08x 0x%08x 0x%08x\n",
+		 id.type, id.type_inv, id.flags);
+	ccprintf("RW boardid:  0x%08x 0x%08x 0x%08x\n",
+		 0x33333333 ^ h->board_id_type,
+		 0x33333333 ^ h->board_id_type_mask,
+		 0x33333333 ^ h->board_id_flags);
 
 	return EC_SUCCESS;
 }
@@ -1484,3 +1664,25 @@ static int command_board_properties(int argc, char **argv)
 }
 DECLARE_SAFE_CONSOLE_COMMAND(brdprop, command_board_properties,
 			     NULL, "Display board properties");
+
+static int command_set_board_id(int argc, char **argv)
+{
+	struct board_id id;
+	char *e;
+
+	if (argc != 3) {
+		ccprintf("specify type and flags\n");
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	id.type = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+	id.type_inv = ~id.type;
+	id.flags = strtoi(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+
+	return write_board_id(&id);
+}
+DECLARE_CONSOLE_COMMAND(bidset, command_set_board_id, NULL, "Set Board ID");
