@@ -22,6 +22,30 @@
       "revId": "0d71dbcac4913e343f7e0012e392461c5b26ce88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff9b9df_436ce5d3",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-05-12T19:14:07Z",
+      "side": 0,
+      "message": "Sure, I\u0027ll split out into another CL.",
+      "parentUuid": "a9cdc55b_08ef3b19",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 0
+      },
+      "revId": "0d71dbcac4913e343f7e0012e392461c5b26ce88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
