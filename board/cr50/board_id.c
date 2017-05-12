@@ -162,6 +162,27 @@ int check_board_id(void)
 	return EC_SUCCESS;
 }
 
+static enum vendor_cmd_rc vc_set_board_id(enum vendor_cmd_cc code,
+					  void *buf,
+					  size_t input_size,
+					  size_t *response_size)
+{
+	struct board_id id;
+
+	if (input_size != sizeof(id.type) + sizeof(id.flags))
+		return VENDOR_RC_BOGUS_ARGS;
+
+	memcpy(&id.type, buf, sizeof(id.type));
+	id.type_inv = ~id.type;
+	memcpy(&id.flags, (uint8_t*)buf + sizeof(id.type), sizeof(id.flags));
+
+	if (write_board_id(&id))
+		return VENDOR_RC_WRITE_FLASH_FAIL;
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_SET_BOARD_ID, vc_set_board_id);
+
 static int command_set_board_id(int argc, char **argv)
 {
 	struct board_id id;
@@ -183,3 +204,35 @@ static int command_set_board_id(int argc, char **argv)
 	return write_board_id(&id);
 }
 DECLARE_CONSOLE_COMMAND(bidset, command_set_board_id, NULL, "Set Board ID");
+
+static enum vendor_cmd_rc vc_get_board_id(enum vendor_cmd_cc code,
+					  void *buf,
+					  size_t input_size,
+					  size_t *response_size)
+{
+	struct board_id id;
+
+	if (read_board_id(&id))
+		return VENDOR_RC_READ_FLASH_FAIL;
+
+	memcpy(buf, &id, sizeof(id));
+	*response_size = sizeof(id);
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_GET_BOARD_ID, vc_get_board_id);
+
+static int command_get_board_id(int argc, char **argv)
+{
+	struct board_id id;
+	int rv;
+
+	if (argc != 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	rv = read_board_id(&id);
+	if (rv)
+		return rv;
+	ccprintf("board id: %08x%08x%08x\n", id.type, id.type_inv, id.flags);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bidget, command_get_board_id, NULL, "Get Board ID");

@@ -15,6 +15,7 @@
 #include "extension.h"
 #include "flash.h"
 #include "flash_config.h"
+#include "flash_info.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
