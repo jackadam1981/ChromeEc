@@ -16,6 +16,24 @@
       "revId": "f1756459f8eee5028d0f5d8d60ee86a7108fb7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "894fbc60_ec481610",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1514,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-12T23:08:46Z",
+      "side": 1,
+      "message": "I added one in https://chromium-review.googlesource.com/505098\n\nThis should call write_board_id() from that CL.",
+      "parentUuid": "4fd76db9_fe6d78d4",
+      "revId": "f1756459f8eee5028d0f5d8d60ee86a7108fb7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
