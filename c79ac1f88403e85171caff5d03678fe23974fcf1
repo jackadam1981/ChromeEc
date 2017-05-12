@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82a674a2_2af99157",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-12T17:16:57Z",
+      "side": 0,
+      "message": "there is still a charger chip (the one defined below)\nwhy would we remove this ?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "c79ac1f88403e85171caff5d03678fe23974fcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "087767db_534a988d",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-12T17:16:57Z",
+      "side": 0,
+      "message": "this one is a bit surprising: if you are powered through the barrel jack, the USB-C port should probably be Try.SRC (eg charge a tablet by default)",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 29
+      },
+      "revId": "c79ac1f88403e85171caff5d03678fe23974fcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

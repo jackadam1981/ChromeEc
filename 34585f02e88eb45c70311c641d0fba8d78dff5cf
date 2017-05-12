@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a72b789_18396864",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-12T17:16:57Z",
+      "side": 1,
+      "message": "do we want to return ERROR_INVAL if we get CHARGE_PORT_NONE ?",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 24
+      },
+      "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05a3d98a_2e264397",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-12T17:16:57Z",
+      "side": 1,
+      "message": "nit: whitespace issue",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 1
+      },
+      "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "526b07fa_4be430b7",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-12T17:16:57Z",
+      "side": 1,
+      "message": "why ?\nif the user plugs a second and more powerful charger.",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 39
+      },
+      "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c9582b7_d5bc1c15",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-12T17:16:57Z",
+      "side": 1,
+      "message": "we never source current on the barrel jack ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 48
+      },
+      "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
