@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "47d6b59f_ed02bfca",
+        "filename": "extra/tigertool/README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-12T02:05:38Z",
+      "side": 1,
+      "message": "err, what ?  markdown doesn\u0027t care about trailing whitespace.  are you sure you\u0027re formatting it correctly ?\n\nif you need to force a newline, you can use \u003cbr\u003e",
+      "parentUuid": "2971f909_7ea270b4",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ba7a6f4_3b08a45f",
         "filename": "extra/tigertool/ecusb/__init__.py",
         "patchSetId": 7
@@ -667,6 +685,24 @@
     },
     {
       "key": {
+        "uuid": "c385936c_232642f7",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-12T02:05:38Z",
+      "side": 1,
+      "message": "just require a min pyusb version then.  trying to write code for a target you can\u0027t test doesn\u0027t sound useful ... you have no idea if your attempts are even working.",
+      "parentUuid": "19b1a579_43cee371",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a92514c1_0ed8d09e",
         "filename": "extra/tigertool/ecusb/stm32usb.py",
         "patchSetId": 7
@@ -1122,6 +1158,24 @@
     },
     {
       "key": {
+        "uuid": "b0c66233_6e0a4bdd",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-12T02:05:38Z",
+      "side": 1,
+      "message": "huh ?  works just fine for me:\n\n if subprocess.call([\u0027lsusb\u0027, \u0027-d\u0027, vidpid], stdout\u003dopen(\u0027/dev/null\u0027, \u0027w\u0027)):",
+      "parentUuid": "b40dafcb_6bc85d41",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1eb51f1b_8380a4c8",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -1157,6 +1211,24 @@
     },
     {
       "key": {
+        "uuid": "cab5641b_f0a808e9",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-12T02:05:38Z",
+      "side": 1,
+      "message": "you haven\u0027t really provided any backing up.  looks perfectly fine to me:\n\n output \u003d subprocess.check_output([\u0027lsusb\u0027, \u0027-v\u0027, \u0027-d\u0027, vidpid])\n m \u003d re.search(r\u0027^\\s*iSerial\\s+(.*)$\u0027, output, flags\u003dre.M)\n if m:\n   return m.group(1)",
+      "parentUuid": "e18f0dec_41c2cfc7",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c760b0e_6e5e9cff",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -1186,6 +1258,24 @@
       "side": 1,
       "message": "the split needs it, as the sn string may not be valid, or existing at all. All we care about is whether sn gets filled or not.",
       "parentUuid": "1c760b0e_6e5e9cff",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf60447b_366da1d5",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-12T02:05:38Z",
+      "side": 1,
+      "message": "except you\u0027re swallowing syntax errors here and other bad exceptions that you should be failing on",
+      "parentUuid": "84009450_a31c6241",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -1623,6 +1713,24 @@
       "side": 1,
       "message": "Not excited to support whatever garbage python someone might have on their system. python2.7 is required",
       "parentUuid": "ae0446d7_ae6e7672",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71e2a846_64a921fc",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-05-12T02:05:38Z",
+      "side": 1,
+      "message": "no one is asking you to support python2.6.  `python2` is reliable to exist, not `python2.7`.  it\u0027s what PEP394 covers, and it\u0027s what we do in chromite.",
+      "parentUuid": "31db0094_1f11c071",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
