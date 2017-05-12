@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8e25f1c7_eeff1942",
+        "filename": "extra/tigertool/README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83bade88_fcd17db5",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a054b01_1fbaa66e",
         "filename": "extra/tigertool/README.md",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "drop trailing whitespace everywhere",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2971f909_7ea270b4",
+        "filename": "extra/tigertool/README.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "This is required by the md markup you requested. I can drop the markup if you want.",
+      "parentUuid": "4a054b01_1fbaa66e",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "6e86ad68_5a2d937c",
+        "filename": "extra/tigertool/ecusb/__init__.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "6ba7a6f4_3b08a45f",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04016d81_63daf9f3",
         "filename": "extra/tigertool/ecusb/pty_driver.py",
         "patchSetId": 7
@@ -64,6 +118,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "fill out real docstrings ?",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffb60670_1dc75059",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04016d81_63daf9f3",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "fb0a7a7c_4761a8b6",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7697288e_c67d7633",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d632f997_001e6676",
         "filename": "extra/tigertool/ecusb/pty_driver.py",
         "patchSetId": 7
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "06017653_e76738a6",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d632f997_001e6676",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9a24fcc_12ca6248",
         "filename": "extra/tigertool/ecusb/pty_driver.py",
         "patchSetId": 7
@@ -115,6 +223,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "single quotes",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b63dd6d5_ee75cce5",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a24fcc_12ca6248",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -161,6 +287,24 @@
     },
     {
       "key": {
+        "uuid": "5fd525ee_65684ba2",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "33b56e80_650816ba",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53b71583_6519d253",
         "filename": "extra/tigertool/ecusb/stm32uart.py",
         "patchSetId": 7
@@ -172,6 +316,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "same here",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "219be006_4d290666",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "53b71583_6519d253",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -195,6 +357,24 @@
     },
     {
       "key": {
+        "uuid": "03f2feb8_ff2c93fe",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da10ecd3_c730da25",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6814428_a7fd8343",
         "filename": "extra/tigertool/ecusb/stm32uart.py",
         "patchSetId": 7
@@ -206,6 +386,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "i prefer to uncuddle dicts like everywhere\n\n return {\n     \u0027baudrate\u0027: .....,\n     .......,\n }",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d4d511_44ddccf2",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6814428_a7fd8343",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -229,6 +427,24 @@
     },
     {
       "key": {
+        "uuid": "967199e5_97682719",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1383a134_310a39a7",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "746568cf_abc2a9fd",
         "filename": "extra/tigertool/ecusb/stm32uart.py",
         "patchSetId": 7
@@ -240,6 +456,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "single quotes",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5f1bba7_22d271d6",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "746568cf_abc2a9fd",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -263,6 +497,24 @@
     },
     {
       "key": {
+        "uuid": "84689ddc_ed92c150",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "523451b1_7d6d0f4b",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ca95722_6f7fcca7",
         "filename": "extra/tigertool/ecusb/stm32uart.py",
         "patchSetId": 7
@@ -280,6 +532,24 @@
     },
     {
       "key": {
+        "uuid": "6e43d362_231c64f0",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ca95722_6f7fcca7",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfc2eef5_cf6d0793",
         "filename": "extra/tigertool/ecusb/stm32uart.py",
         "patchSetId": 7
@@ -291,6 +561,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "two blank lines",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a8699f3_e1a30cc7",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfc2eef5_cf6d0793",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -320,6 +608,30 @@
     },
     {
       "key": {
+        "uuid": "20f01b4a_2700be4e",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee2ea27_52fceda0",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a0ec428c_3337ea61",
         "filename": "extra/tigertool/ecusb/stm32usb.py",
         "patchSetId": 7
@@ -331,6 +643,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "you should rarely use \"Exception\"",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19b1a579_43cee371",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "This is for compatibility with the various incompatible pyusb versions. Unfortunately I don\u0027t have access to a system to test which exception this is.",
+      "parentUuid": "a0ec428c_3337ea61",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -354,6 +684,24 @@
     },
     {
       "key": {
+        "uuid": "5c5bfa47_955f91f4",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Same as above. Don\u0027t have any way to test this if I change it.",
+      "parentUuid": "a92514c1_0ed8d09e",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "988e8558_c0194abf",
         "filename": "extra/tigertool/ecusb/stm32usb.py",
         "patchSetId": 7
@@ -365,6 +713,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "single quotes\n\ninclude the vid/pid/interface details ?",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4900e0a6_3e493267",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "988e8558_c0194abf",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -388,6 +754,24 @@
     },
     {
       "key": {
+        "uuid": "70dea786_782a05f4",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e0511ed_e13a79d4",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1615c1ff_57585b37",
         "filename": "extra/tigertool/ecusb/stm32usb.py",
         "patchSetId": 7
@@ -405,6 +789,24 @@
     },
     {
       "key": {
+        "uuid": "ba7b9e1c_9b0e7657",
+        "filename": "extra/tigertool/ecusb/stm32usb.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1615c1ff_57585b37",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c1b87fc_349e2930",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -416,6 +818,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "is this module even used ?  seems like there\u0027s a lot of dead code in here",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25901f14_d2d31d80",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Yes it\u0027s used by tigertool.",
+      "parentUuid": "7c1b87fc_349e2930",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -456,6 +876,24 @@
     },
     {
       "key": {
+        "uuid": "4b465c96_b3f5154e",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e1e435b_f35c3e85",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6000de34_2dcd6eb9",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -467,6 +905,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "unused -\u003e delete",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08e159cf_21c82a00",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6000de34_2dcd6eb9",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -490,6 +946,24 @@
     },
     {
       "key": {
+        "uuid": "7c6c20ee_b8b57125",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "deleted",
+      "parentUuid": "cce52773_33601190",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0aeab53e_bca10934",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -507,6 +981,24 @@
     },
     {
       "key": {
+        "uuid": "5ad7f862_e6cef6c9",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Comment to clarify that they are set globally, since you wanted the statements removed.\n\ndeleted",
+      "parentUuid": "0aeab53e_bca10934",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f115b00f_4a9e9e37",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -518,6 +1010,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "use print_function everywhere",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c139886e_d0fd9cb6",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "deleted",
+      "parentUuid": "f115b00f_4a9e9e37",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -558,6 +1068,24 @@
     },
     {
       "key": {
+        "uuid": "b40dafcb_6bc85d41",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "output to dev null seems poorly supported in python 2.7, and readability becomes terrible.",
+      "parentUuid": "c55e5e5f_42b0c3ed",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1eb51f1b_8380a4c8",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -569,6 +1097,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "use python to do string parsing instead of grep\n\nthen drop the shell\u003dTrue",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e18f0dec_41c2cfc7",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "terrible for later comprehensibility",
+      "parentUuid": "1eb51f1b_8380a4c8",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -592,6 +1138,24 @@
     },
     {
       "key": {
+        "uuid": "84009450_a31c6241",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "the split needs it, as the sn string may not be valid, or existing at all. All we care about is whether sn gets filled or not.",
+      "parentUuid": "1c760b0e_6e5e9cff",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd28f22d_1f614d3d",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -603,6 +1167,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "please use the datetime module instead of time in order to deal with deltas",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85276072_02dd2763",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd28f22d_1f614d3d",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -626,6 +1208,24 @@
     },
     {
       "key": {
+        "uuid": "599658e2_a6c5e1ef",
+        "filename": "extra/tigertool/flash_dfu.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d65c0149_9f479385",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ff9e2f4_8dd77df7",
         "filename": "extra/tigertool/flash_dfu.sh",
         "patchSetId": 7
@@ -637,6 +1237,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "drop the ;",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f125f76_d571d12f",
+        "filename": "extra/tigertool/flash_dfu.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff9e2f4_8dd77df7",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -660,6 +1278,24 @@
     },
     {
       "key": {
+        "uuid": "5028dcde_4166c163",
+        "filename": "extra/tigertool/flash_dfu.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b028fe7_0872ec8c",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a348e515_ed97eba6",
         "filename": "extra/tigertool/flash_dfu.sh",
         "patchSetId": 7
@@ -671,6 +1307,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "use braces with ${DFU_UTIL}.  and all the other non-builtin vars below.",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd4010d2_a84e7215",
+        "filename": "extra/tigertool/flash_dfu.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a348e515_ed97eba6",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -711,6 +1365,24 @@
     },
     {
       "key": {
+        "uuid": "c6f12339_c8d3eaa2",
+        "filename": "extra/tigertool/flash_dfu.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "318169d5_f91970b7",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30b6ca33_26ee0edb",
         "filename": "extra/tigertool/flash_dfu.sh",
         "patchSetId": 7
@@ -722,6 +1394,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "use `local size`\n\nquote \"${IMG}\"",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd61bd00_d61884b4",
+        "filename": "extra/tigertool/flash_dfu.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30b6ca33_26ee0edb",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -745,6 +1435,24 @@
     },
     {
       "key": {
+        "uuid": "e5ceab7f_b834f77b",
+        "filename": "extra/tigertool/flash_dfu.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2aa29a6a_894d149a",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b78afeb_15c14d44",
         "filename": "extra/tigertool/make_pkg.sh",
         "patchSetId": 7
@@ -756,6 +1464,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "you prob want `|| exit` here",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd1c9aa9_471a7e30",
+        "filename": "extra/tigertool/make_pkg.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b78afeb_15c14d44",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -779,6 +1505,24 @@
     },
     {
       "key": {
+        "uuid": "6337d3d2_00e71961",
+        "filename": "extra/tigertool/make_pkg.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e379a2_d00dc6b3",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2633b615_ece916ae",
         "filename": "extra/tigertool/make_pkg.sh",
         "patchSetId": 7
@@ -790,6 +1534,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "use -delete instead of `| xargs rm`",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f26960_3b304cd1",
+        "filename": "extra/tigertool/make_pkg.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2633b615_ece916ae",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -813,6 +1575,24 @@
     },
     {
       "key": {
+        "uuid": "31db0094_1f11c071",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Not excited to support whatever garbage python someone might have on their system. python2.7 is required",
+      "parentUuid": "ae0446d7_ae6e7672",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38c6d6c6_c4bf6591",
         "filename": "extra/tigertool/tigertool.py",
         "patchSetId": 7
@@ -824,6 +1604,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "write this:\n\n def main(argv):",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf2841f1_0dcdd023",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38c6d6c6_c4bf6591",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -847,6 +1645,24 @@
     },
     {
       "key": {
+        "uuid": "8758bed5_154acda0",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e90eedd9_34a48ca9",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9138dded_dee42fca",
         "filename": "extra/tigertool/tigertool.py",
         "patchSetId": 7
@@ -858,6 +1674,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "pass in __doc__ here",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "850ec4d2_80ab34b9",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9138dded_dee42fca",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -881,6 +1715,24 @@
     },
     {
       "key": {
+        "uuid": "afdc55dc_c4e970f4",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22291e9a_3e10b1a2",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e9b1b50_079f3279",
         "filename": "extra/tigertool/tigertool.py",
         "patchSetId": 7
@@ -892,6 +1744,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "write:\n\n opts \u003d parser.parse_args(argv)",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "391bfe96_bf7fff96",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e9b1b50_079f3279",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -915,6 +1785,24 @@
     },
     {
       "key": {
+        "uuid": "fb2755b3_80ed9d00",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb67ecd4_6ddf3c8e",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec041d79_eae006f2",
         "filename": "extra/tigertool/tigertool.py",
         "patchSetId": 7
@@ -926,6 +1814,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "write:\n\n sys.exit(main(sys.argv[1:]))",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f964b5cc_6f2a98f2",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:44:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec041d79_eae006f2",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
