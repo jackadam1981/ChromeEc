@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a567073d_d98b3b5c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-12T23:35:17Z",
+      "side": 1,
+      "message": "maybe name it \u0027board_id_mismatch so that one can write\n\n\u0027if (check_board_id_vs_header())",
+      "range": {
+        "startLine": 590,
+        "startChar": 16,
+        "endLine": 590,
+        "endChar": 40
+      },
+      "revId": "e9faf3e1b4c18e1e5257475623f894fe6fd297df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3211a012_ea8212ca",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-12T23:35:17Z",
+      "side": 1,
+      "message": "would be great to have a macro for and use it in the rest of the code too.",
+      "range": {
+        "startLine": 600,
+        "startChar": 5,
+        "endLine": 600,
+        "endChar": 25
+      },
+      "revId": "e9faf3e1b4c18e1e5257475623f894fe6fd297df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b8a1854_cb85133f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-12T23:35:17Z",
+      "side": 1,
+      "message": "why mask with 0x3333333 ?",
+      "range": {
+        "startLine": 609,
+        "startChar": 12,
+        "endLine": 609,
+        "endChar": 22
+      },
+      "revId": "e9faf3e1b4c18e1e5257475623f894fe6fd297df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
