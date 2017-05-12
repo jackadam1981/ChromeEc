@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7a7b331e_38228066",
+        "filename": "Makefile.rules",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-05-12T02:12:34Z",
+      "side": 1,
+      "message": "This board doesn\u0027t build while run the EC unit tests with: make -j buildall.\nSome discussion on b:35572628",
+      "parentUuid": "82869d44_3fe613e5",
+      "range": {
+        "startLine": 20,
+        "startChar": 37,
+        "endLine": 20,
+        "endChar": 48
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "83bc35ac_f0d15a0e",
         "filename": "board/reef_it8320/board.c",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a7ec0e16_72821f16",
+        "filename": "board/reef_it8320/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-05-12T02:12:34Z",
+      "side": 1,
+      "message": "You can find it here: chip/it83xx",
+      "parentUuid": "83bc35ac_f0d15a0e",
+      "range": {
+        "startLine": 21,
+        "startChar": 10,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de30563f_c7b11620",
         "filename": "board/reef_it8320/board.c",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-12T00:22:05Z",
       "side": 1,
       "message": "Where is this defined?",
+      "range": {
+        "startLine": 652,
+        "startChar": 13,
+        "endLine": 652,
+        "endChar": 19
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07330891_d5a3b677",
+        "filename": "board/reef_it8320/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-05-12T02:12:34Z",
+      "side": 1,
+      "message": "chip/it83xx/ec2i_chip.h",
+      "parentUuid": "de30563f_c7b11620",
       "range": {
         "startLine": 652,
         "startChar": 13,
