@@ -859,6 +859,24 @@
     },
     {
       "key": {
+        "uuid": "8f4d2d06_eefb6fbc",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5ab8202_4bdd9acb",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e1e435b_f35c3e85",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 7
@@ -1045,6 +1063,24 @@
       "writtenOn": "2017-05-11T04:30:02Z",
       "side": 1,
       "message": "we use the style |vidpid| to refer to func args",
+      "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da1f79c3_a99c236e",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-12T00:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a6f4a72_da5a2c09",
       "revId": "972b5bb3775ae6fa06de9ea18735b0d8eaafbc3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
