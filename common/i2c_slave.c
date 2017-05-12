@@ -26,3 +26,17 @@ int i2c_get_protocol_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
 		     i2c_get_protocol_info,
 		     EC_VER_MASK(0));
+
+int i2c_get_timeout(struct host_cmd_handler_args *args)
+{
+	struct ec_response_i2c_get_timeout *r = args->response;
+
+	memset(r, 0, sizeof(*r));
+	r->timeout = CONFIG_I2C_TIMEOUT;
+	args->response_size = sizeof(*r);
+
+	return EC_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_I2C_GET_TIMEOUT,
+		     i2c_get_timeout,
+		     EC_VER_MASK(0));

@@ -1444,6 +1444,13 @@
  */
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
+/*
+ * I2C transfer timeout (ms) to set for the host driver. Some chip have larger
+ * flash sector size, which stalls CPU during flash erase. This config can be
+ * set to increase host side i2c transfer timeout value.
+ */
+#define CONFIG_I2C_TIMEOUT 1000
+
 /*****************************************************************************/
 /* Current/Power monitor */
 

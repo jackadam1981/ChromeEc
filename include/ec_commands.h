@@ -4067,6 +4067,14 @@ struct __ec_align4 ec_params_rwsig_action {
 	uint32_t action;
 };
 
+/* Get I2C transfer timeout to set for the host driver */
+#define EC_CMD_I2C_GET_TIMEOUT 0x011E
+
+struct __ec_align4 ec_response_i2c_get_timeout {
+	uint32_t timeout;
+};
+
+
 #endif  /* !__ACPI__ */
 
 /*****************************************************************************/
