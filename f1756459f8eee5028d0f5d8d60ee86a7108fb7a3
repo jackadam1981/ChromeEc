@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b0147116_2c75cd2b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-12T23:38:09Z",
+      "side": 1,
+      "message": "it would be better to keep this function in a new file, board.c is already quite long.",
+      "range": {
+        "startLine": 1486,
+        "startChar": 12,
+        "endLine": 1486,
+        "endChar": 41
+      },
+      "revId": "f1756459f8eee5028d0f5d8d60ee86a7108fb7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d148a3_7c3e4f38",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1509,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-12T23:38:09Z",
+      "side": 1,
+      "message": "this function should just restore the state, not disable this unconditionally.",
+      "range": {
+        "startLine": 1509,
+        "startChar": 1,
+        "endLine": 1509,
+        "endChar": 27
+      },
+      "revId": "f1756459f8eee5028d0f5d8d60ee86a7108fb7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fd76db9_fe6d78d4",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -34,6 +80,29 @@
       "revId": "f1756459f8eee5028d0f5d8d60ee86a7108fb7a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f97b86be_bb76a133",
+        "filename": "chip/g/flash_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-12T23:38:09Z",
+      "side": 1,
+      "message": "there should be a structure to take sizeof() of",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "f1756459f8eee5028d0f5d8d60ee86a7108fb7a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
