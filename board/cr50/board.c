@@ -5,6 +5,7 @@
 
 #include <endian.h>
 
+#include "board_id.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -576,6 +577,10 @@ static void board_init(void)
 	init_trng();
 	init_jittery_clock(1);
 	init_runlevel(PERMISSION_MEDIUM);
+
+	/* Check BoardID.  This should really be done earlier. */
+	check_board_id();
+
 	/* Initialize NvMem partitions */
 	nvmem_init();
 	/* Initialize the persistent storage. */
@@ -1341,6 +1346,7 @@ static int command_sysinfo(int argc, char **argv)
 	const struct SignedHeader *h;
 	int reset_count = GREG32(PMU, LONG_LIFE_SCRATCH0);
 	char rollback_str[15];
+	struct board_id id;
 
 	ccprintf("Reset flags: 0x%08x (", system_get_reset_flags());
 	system_print_reset_flags();
@@ -1367,6 +1373,14 @@ static int command_sysinfo(int argc, char **argv)
 
 	system_get_rollback_bits(rollback_str, sizeof(rollback_str));
 	ccprintf("Rollback:    %s\n", rollback_str);
+
+	read_board_id(&id);
+	ccprintf("Board ID:    0x%08x 0x%08x 0x%08x\n",
+		 id.type, id.type_inv, id.flags);
+	ccprintf("RW boardid:  0x%08x 0x%08x 0x%08x\n",
+		 SIGNED_HEADER_PADDING ^ h->board_id_type,
+		 SIGNED_HEADER_PADDING ^ h->board_id_type_mask,
+		 SIGNED_HEADER_PADDING ^ h->board_id_flags);
 
 	return EC_SUCCESS;
 }
