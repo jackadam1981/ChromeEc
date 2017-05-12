@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c989a5ee_64c03470",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-12T17:00:05Z",
+      "side": 1,
+      "message": "doing the 2x gpio_set_level outside the switch {} and only assigning 2 variables here, might be more efficient for the code size.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 38
+      },
+      "revId": "c79ac1f88403e85171caff5d03678fe23974fcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860ca101_3c83e030",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-12T17:00:05Z",
+      "side": 1,
+      "message": "does this parameter really exist ?",
+      "range": {
+        "startLine": 107,
+        "startChar": 24,
+        "endLine": 107,
+        "endChar": 30
+      },
+      "revId": "c79ac1f88403e85171caff5d03678fe23974fcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
