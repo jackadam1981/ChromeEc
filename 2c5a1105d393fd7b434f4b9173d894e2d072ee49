@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00f55e89_5e91f271",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-12T19:04:30Z",
+      "side": 1,
+      "message": "There are also a couple of other TODO fixes:\nSHAXXX_DIGEST_SIZE taken from crypto/shaXXX.h instead of being #defined in rsa.c.\nShould it be moved to a separate CL?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 30
+      },
+      "revId": "2c5a1105d393fd7b434f4b9173d894e2d072ee49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0839993a_fb649d4e",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-12T19:04:30Z",
+      "side": 1,
+      "message": "This is unrelated to the subj of this CL",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 27
+      },
+      "revId": "2c5a1105d393fd7b434f4b9173d894e2d072ee49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
