@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d2bbeb10_ed5e6527",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll go ahead and add that.",
+      "parentUuid": "09579486_1b449829",
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffdc2f92_2a17f84c",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 1
@@ -60,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "4169367a_b93b6215",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ffdc2f92_2a17f84c",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c28f0a19_ddf6121d",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 1
@@ -71,6 +113,30 @@
       "writtenOn": "2017-05-12T03:30:09Z",
       "side": 1,
       "message": "wouldn\u0027t 24MHz clocked timer even more accurate?",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 52
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a1e9cf4_7797c22b",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "It seems that the clock source is 24 MHz. Sure, using the full precision would be more accurate.",
+      "parentUuid": "c28f0a19_ddf6121d",
       "range": {
         "startLine": 111,
         "startChar": 4,
@@ -106,6 +172,30 @@
     },
     {
       "key": {
+        "uuid": "b99a653b_a402dba1",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "Yep, that\u0027s it. Couldn\u0027t find an existing definition, I can add one.",
+      "parentUuid": "1cbe390c_5eb4a3b0",
+      "range": {
+        "startLine": 116,
+        "startChar": 24,
+        "endLine": 116,
+        "endChar": 26
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c035df2_48a94fce",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 1
@@ -117,6 +207,30 @@
       "writtenOn": "2017-05-12T03:30:09Z",
       "side": 1,
       "message": "just curious: why is this necessary?",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 10
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d1c1c58_77221bea",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "I think this is a remnant from my earlier debug when I was hitting some exception. I can remove it.",
+      "parentUuid": "5c035df2_48a94fce",
       "range": {
         "startLine": 123,
         "startChar": 1,
@@ -152,6 +266,30 @@
     },
     {
       "key": {
+        "uuid": "d9876265_201cdc8e",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "I think this was the rise/fall time that I measured using the logic analyzer.",
+      "parentUuid": "13dd0481_d7bf1965",
+      "range": {
+        "startLine": 156,
+        "startChar": 39,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "169fbcba_40f7fed8",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 1
@@ -175,6 +313,30 @@
     },
     {
       "key": {
+        "uuid": "c23ac73f_dc39ccaa",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "Okay, let me try and do this once.",
+      "parentUuid": "169fbcba_40f7fed8",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 0
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "057f6ef6_46741919",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 1
@@ -186,6 +348,30 @@
       "writtenOn": "2017-05-11T23:20:44Z",
       "side": 1,
       "message": "Shouldn\u0027t the line already be idle?",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 15
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "580823ce_50ff9f06",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "Ah yeah, it ought to. I can remove this bit.",
+      "parentUuid": "057f6ef6_46741919",
       "range": {
         "startLine": 179,
         "startChar": 1,
@@ -244,6 +430,30 @@
     },
     {
       "key": {
+        "uuid": "f3b9cd0c_32970cc6",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "That\u0027s a good point. I\u0027ll make the adjustments.",
+      "parentUuid": "4f55a30a_c3a88fad",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 8
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab2bed90_684ff394",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 1
@@ -255,6 +465,30 @@
       "writtenOn": "2017-05-11T23:20:44Z",
       "side": 1,
       "message": "Should this be after the is_enabled check?",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 20
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ace700a9_a0f53325",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "This was for my debug. I was interested in seeing how many times this function was being dispatched. I think the bit in 242 isn\u0027t necessary as in another CL, I don\u0027t call this function unless it\u0027s enabled.",
+      "parentUuid": "ab2bed90_684ff394",
       "range": {
         "startLine": 239,
         "startChar": 1,
@@ -313,6 +547,30 @@
     },
     {
       "key": {
+        "uuid": "ac70449b_81c17c40",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "This was mainly for my debug (along with all of the other counters and statistics). Comparing my discards with what I see on the logic analyzer will help me identify issues with skew or sampling and see that I actually RX\u0027d something.\n\nI\u0027m not sure if I want to leave all the debug stuff in. What do you think?",
+      "parentUuid": "60768400_b9ea8f82",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 0
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "061b9e21_5f6d8caf",
         "filename": "chip/g/uart_bitbang.h",
         "patchSetId": 1
@@ -324,6 +582,30 @@
       "writtenOn": "2017-05-12T03:30:09Z",
       "side": 1,
       "message": "is this structure going to be allocated in .data or .bss? If so - it is better to compress it, say 16 bits for baud_rate, bitfield/bytes for parity/head/tail/uart?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b3a6905_3c4d345a",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "It\u0027ll be in the data section. Parity, head, and tail could be compressed. uart could be smaller as well.",
+      "parentUuid": "061b9e21_5f6d8caf",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -356,6 +638,30 @@
       "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95270acf_a314d128",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6374dc35_f32e78a2",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 29
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +699,30 @@
       "writtenOn": "2017-05-12T03:30:09Z",
       "side": 1,
       "message": "I wonder if these could be done using function pointers - that way you\u0027d not need to check each time, and would not need conditional compilation.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 35
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9764737f_a434e7e3",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-12T18:32:47Z",
+      "side": 1,
+      "message": "Hmm, yeah maybe.",
+      "parentUuid": "80694d34_2bc5cc1d",
       "range": {
         "startLine": 99,
         "startChar": 0,
