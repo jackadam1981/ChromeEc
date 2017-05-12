@@ -42,8 +42,12 @@ struct SignedHeader {
 	uint32_t err_response_;
 	/* action to take when expectation is violated */
 	uint32_t expect_response_;
+	/* Board ID type, mask, flags */
+	uint32_t board_id_type;
+	uint32_t board_id_type_mask;
+	uint32_t board_id_flags;
 	uint32_t _pad[256 - 1 - 96 - 1 - 7 - 1 - 96 -
-			5*1 - 4 - 4 - 9*1 - 2 - 1];
+			5*1 - 4 - 4 - 12*1 - 2 - 1];
 	uint32_t fuses_chk_;  /* top 32 bit of expected fuses hash */
 	uint32_t info_chk_;   /* top 32 bit of expected info hash */
 };
