@@ -734,6 +734,7 @@ void charger_task(void)
 			curr.state = ST_IDLE;
 			curr.batt_is_charging = 0;
 			battery_was_removed = 1;
+			need_static = 0;
 			goto wait_for_it;
 		}
 
