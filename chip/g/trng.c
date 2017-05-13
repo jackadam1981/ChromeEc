@@ -7,17 +7,23 @@
 #include "registers.h"
 #include "trng.h"
 
+#include "assert.h"
+
 void init_trng(void)
 {
 #if (!(defined(CONFIG_CUSTOMIZED_RO) && defined(SECTION_IS_RO)))
 	/*
-	 * Most of the trng initialization requires high permissions. If RO has
-	 * dropped the permission level, dont try to read or write these high
-	 * permission registers because it will cause rolling reboots. RO
-	 * should do the TRNG initialization before dropping the level.
+	 * Most of the TRNG initialization requires high permissions,
+	 * so check that permissions are appropriate here, and abort
+	 * otherwise.
 	 */
-	if (!runlevel_is_high())
-		return;
+	if (!runlevel_is_high()) {
+		/* This case should never happen, but exists as a
+		 * safety check.
+		 **/
+		/* TODO: print a useful message and abort. */
+		assert(0);
+	}
 #endif
 
 	GWRITE(TRNG, POST_PROCESSING_CTRL,
