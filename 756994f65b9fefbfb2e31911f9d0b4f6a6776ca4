@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f63c4939_a22d5ae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-13T00:15:54Z",
+      "side": 1,
+      "message": "as there is a cr50 branch now, you should be specifying BRANCH\u003dcr50. Not as important if board/chip specific files are touched by the patch, but still a good convention to follow.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 11
+      },
+      "revId": "756994f65b9fefbfb2e31911f9d0b4f6a6776ca4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
