@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7187bdd_b715d010",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-13T00:36:48Z",
+      "side": 1,
+      "message": "typo: defaults",
+      "range": {
+        "startLine": 64,
+        "startChar": 14,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00ecbf9_b1b7f784",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-13T00:36:48Z",
+      "side": 1,
+      "message": "nit: Can you add \"arg\" to the docstring to document the arguments? As well as documenting any returns or exceptions raised?\n\ne.g.\n    \ndef log(output):\n\"\"\"Print output to console\n\nArgs:\n  output: string indicating a log message.\n\"\"\"",
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ab16970_0723f9ce",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-13T00:36:48Z",
+      "side": 1,
+      "message": "These don\u0027t appear to be used?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60bdfb67_e2dedc8f",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-13T00:36:48Z",
+      "side": 1,
+      "message": "don\u0027t need this anymore?",
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d22051b_0671d7d3",
+        "filename": "extra/tigertool/flash_dfu.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-13T00:36:48Z",
+      "side": 1,
+      "message": "Do you need this if you\u0027re just unprotecting?",
+      "range": {
+        "startLine": 49,
+        "startChar": 54,
+        "endLine": 49,
+        "endChar": 65
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea7d4673_291940ed",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-13T00:36:48Z",
+      "side": 1,
+      "message": "what\u0027s with the carriage return newlines? Is this because you just want to clear the console buffer?",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39de0341_fc0e21f8",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-13T00:36:48Z",
+      "side": 1,
+      "message": "is it intended to perform all of these actions simultaneously? (that is in one invocation)",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
