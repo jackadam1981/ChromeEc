@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b67d2653_41f6cfed",
+        "filename": "extra/tigertool/ecusb/pty_driver.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-14T20:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7187bdd_b715d010",
+      "range": {
+        "startLine": 64,
+        "startChar": 14,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e00ecbf9_b1b7f784",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 11
@@ -36,6 +60,24 @@
       "writtenOn": "2017-05-13T00:36:48Z",
       "side": 1,
       "message": "nit: Can you add \"arg\" to the docstring to document the arguments? As well as documenting any returns or exceptions raised?\n\ne.g.\n    \ndef log(output):\n\"\"\"Print output to console\n\nArgs:\n  output: string indicating a log message.\n\"\"\"",
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd45726_d47cc41a",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-14T20:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e00ecbf9_b1b7f784",
       "revId": "76347d735b67f680484c8733da8423148c953df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "fb348b0e_fe7cb5c2",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-14T20:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ab16970_0723f9ce",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60bdfb67_e2dedc8f",
         "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
         "patchSetId": 11
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "264aaad9_e3306f42",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-14T20:42:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60bdfb67_e2dedc8f",
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d22051b_0671d7d3",
         "filename": "extra/tigertool/flash_dfu.sh",
         "patchSetId": 11
@@ -93,6 +177,30 @@
       "writtenOn": "2017-05-13T00:36:48Z",
       "side": 1,
       "message": "Do you need this if you\u0027re just unprotecting?",
+      "range": {
+        "startLine": 49,
+        "startChar": 54,
+        "endLine": 49,
+        "endChar": 65
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d4dded2_f94b0d1c",
+        "filename": "extra/tigertool/flash_dfu.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-14T20:42:24Z",
+      "side": 1,
+      "message": "Unclear, was there in flash_ec and I didn\u0027t experiment. Removed, will validate tomorrow.",
+      "parentUuid": "8d22051b_0671d7d3",
       "range": {
         "startLine": 49,
         "startChar": 54,
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "ad08aa2c_d163b7a3",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-14T20:42:24Z",
+      "side": 1,
+      "message": "Yep, We don\u0027t have any guarantees whether some text is on the console already. crlf guarantees our command is at the start of a line, and not appended to some other text, resulting in an invalid command.",
+      "parentUuid": "ea7d4673_291940ed",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39de0341_fc0e21f8",
         "filename": "extra/tigertool/tigertool.py",
         "patchSetId": 11
@@ -139,6 +271,30 @@
       "writtenOn": "2017-05-13T00:36:48Z",
       "side": 1,
       "message": "is it intended to perform all of these actions simultaneously? (that is in one invocation)",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "668d1a2f_c6c896ce",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-14T20:42:24Z",
+      "side": 1,
+      "message": "It\u0027s not disallowed, although practically speaking it\u0027s unlikely anyone would combine them.\n\nI can make them exclusive and add error checking to make sure not more than one is specified if you like.",
+      "parentUuid": "39de0341_fc0e21f8",
       "range": {
         "startLine": 109,
         "startChar": 0,
