@@ -22,6 +22,30 @@
       "revId": "009f4ae5fbbab35319df88bf0a3f1f8b0dbae03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7f2d8b0_698fc184",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-15T16:14:08Z",
+      "side": 1,
+      "message": "I don\u0027t think asserting here is a good idea ever, this would just create a bricked device. this function would not run  again unless power is recycled, right?",
+      "parentUuid": "29e1de19_940d42f3",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "009f4ae5fbbab35319df88bf0a3f1f8b0dbae03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
