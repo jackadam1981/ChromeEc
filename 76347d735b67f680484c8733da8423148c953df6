@@ -352,6 +352,30 @@
       "revId": "76347d735b67f680484c8733da8423148c953df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e061282b_4bbf23cb",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-15T21:57:42Z",
+      "side": 1,
+      "message": "Added argparse mutual exclusion.",
+      "parentUuid": "e6935fad_29e51957",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
