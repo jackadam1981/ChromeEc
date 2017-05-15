@@ -776,10 +776,6 @@ static void i2c_send_response_packet(struct host_packet *pkt)
 	int size = pkt->response_size;
 	uint8_t *out = host_buffer;
 
-	/* Ignore host command in-progress */
-	if (pkt->driver_result == EC_RES_IN_PROGRESS)
-		return;
-
 	/* Write result and size to first two bytes. */
 	*out++ = pkt->driver_result;
 	*out++ = size;
@@ -794,6 +790,20 @@ static void i2c_send_response_packet(struct host_packet *pkt)
 	 * doesn't need to snoop the response stream to abort transaction.
 	 */
 	STM32_I2C_CR2(host_i2c_resp_port) |= STM32_I2C_CR2_ITBUFEN;
+
+#ifdef CONFIG_HOST_COMMAND_STATUS
+	/*
+	 * Wait until EC_RES_IN_PROGRESS is finish sending. Commands
+	 * like EC_CMD_FLASH_ERASE stalls the CPU when executing, so we need
+	 * to make sure the EC_RES_IN_PROGRESS is sent to the host before the
+	 * command is executed.
+	 */
+	if (!in_interrupt_context() &&
+	    pkt->driver_result == EC_RES_IN_PROGRESS) {
+		while (STM32_I2C_SR2(I2C_PORT_EC) & STM32_I2C_SR2_BUSY)
+			msleep(10);
+	}
+#endif
 }
 
 /* Process the command in the i2c host buffer */
