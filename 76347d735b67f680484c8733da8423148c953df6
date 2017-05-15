@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0914b94a_b85abb02",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-15T20:35:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ad08aa2c_d163b7a3",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 13
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39de0341_fc0e21f8",
         "filename": "extra/tigertool/tigertool.py",
         "patchSetId": 11
@@ -295,6 +319,30 @@
       "side": 1,
       "message": "It\u0027s not disallowed, although practically speaking it\u0027s unlikely anyone would combine them.\n\nI can make them exclusive and add error checking to make sure not more than one is specified if you like.",
       "parentUuid": "39de0341_fc0e21f8",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 28
+      },
+      "revId": "76347d735b67f680484c8733da8423148c953df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6935fad_29e51957",
+        "filename": "extra/tigertool/tigertool.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-15T20:35:34Z",
+      "side": 1,
+      "message": "I think that\u0027d be good. Just wondering if someone was to set a mux position and then sysjump, would the mux position be lost.",
+      "parentUuid": "668d1a2f_c6c896ce",
       "range": {
         "startLine": 109,
         "startChar": 0,
