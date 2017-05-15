@@ -94,6 +94,30 @@
       "revId": "009f4ae5fbbab35319df88bf0a3f1f8b0dbae03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "752d3af0_3c2e00f4",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-15T16:42:01Z",
+      "side": 1,
+      "message": "This failure needs to be communicated to the AP, we have a mechanism to report TPM  errror reason, it needs to be extended to accommodate this. Check out this patch for the framework: https://chromium-review.googlesource.com/c/430952/",
+      "parentUuid": "a2681135_380794f4",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "009f4ae5fbbab35319df88bf0a3f1f8b0dbae03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
