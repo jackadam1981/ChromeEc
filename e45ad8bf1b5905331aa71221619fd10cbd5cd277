@@ -46,6 +46,30 @@
       "revId": "e45ad8bf1b5905331aa71221619fd10cbd5cd277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a0b4b2d_45f3383f",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-05-15T21:59:00Z",
+      "side": 1,
+      "message": "Is there a bug to clean the tree of the obsolete RO stuff?",
+      "parentUuid": "5a6d76d6_de1bd724",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "e45ad8bf1b5905331aa71221619fd10cbd5cd277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
