@@ -46,6 +46,30 @@
       "revId": "009f4ae5fbbab35319df88bf0a3f1f8b0dbae03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf0c744f_7d27f483",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-05-15T16:26:53Z",
+      "side": 1,
+      "message": "Running with the trng uninitialized is not a great alternative.  What do you suggest should happen here?",
+      "parentUuid": "c7f2d8b0_698fc184",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "009f4ae5fbbab35319df88bf0a3f1f8b0dbae03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
