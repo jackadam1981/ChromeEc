@@ -299,12 +299,14 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	}
 };
 
+static struct mutex pd_control_lock;
 /* called from anx74xx_set_power_mode() */
 void board_set_tcpc_power_mode(int port, int mode)
 {
 	if (port != USB_PD_PORT_ANX74XX)
 		return;
 
+	mutex_lock(&pd_control_lock);
 	switch (mode) {
 	case ANX74XX_NORMAL_MODE:
 		gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
@@ -319,6 +321,7 @@ void board_set_tcpc_power_mode(int port, int mode)
 	default:
 		break;
 	}
+	mutex_unlock(&pd_control_lock);
 }
 
 /**
