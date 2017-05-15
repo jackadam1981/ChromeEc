@@ -16,6 +16,24 @@
       "revId": "e3d7c032753057f9584d0d9a8e879a70e4a78bf0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de79045f_2a15d32f",
+        "filename": "chip/g/signed_header.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-15T23:01:28Z",
+      "side": 1,
+      "message": "I can put the board ID at the end of the padding.  That should avoid this conflict, anyway.",
+      "parentUuid": "d7ce6101_d8422b4f",
+      "revId": "e3d7c032753057f9584d0d9a8e879a70e4a78bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
