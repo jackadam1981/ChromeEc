@@ -70,6 +70,30 @@
       "revId": "009f4ae5fbbab35319df88bf0a3f1f8b0dbae03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2681135_380794f4",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-05-15T16:28:33Z",
+      "side": 1,
+      "message": "Also, note that this is a \"never happens\" situation.  If something is borked, it will be caught in development (there\u0027s no runtime dependency to get here).",
+      "parentUuid": "cf0c744f_7d27f483",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 8
+      },
+      "revId": "009f4ae5fbbab35319df88bf0a3f1f8b0dbae03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
