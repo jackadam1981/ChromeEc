@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5b358f2b_7f7b62c5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-15T22:46:21Z",
+      "side": 1,
+      "message": "Good idea.  I\u0027ll do that.",
+      "parentUuid": "a567073d_d98b3b5c",
+      "range": {
+        "startLine": 590,
+        "startChar": 16,
+        "endLine": 590,
+        "endChar": 40
+      },
+      "revId": "e9faf3e1b4c18e1e5257475623f894fe6fd297df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3211a012_ea8212ca",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1358716d_4b106481",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-15T22:46:21Z",
+      "side": 1,
+      "message": "As we discussed, I can remove this check.  Dev-signed images can just specify type_mask \u003d flags \u003d 0.",
+      "parentUuid": "3211a012_ea8212ca",
+      "range": {
+        "startLine": 600,
+        "startChar": 5,
+        "endLine": 600,
+        "endChar": 25
+      },
+      "revId": "e9faf3e1b4c18e1e5257475623f894fe6fd297df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b8a1854_cb85133f",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-12T23:35:17Z",
       "side": 1,
       "message": "why mask with 0x3333333 ?",
+      "range": {
+        "startLine": 609,
+        "startChar": 12,
+        "endLine": 609,
+        "endChar": 22
+      },
+      "revId": "e9faf3e1b4c18e1e5257475623f894fe6fd297df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e30d7bfd_618304f9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-15T22:46:21Z",
+      "side": 1,
+      "message": "Because this way, images that have the default padding value will effectively have type_mask \u003d flags \u003d 0, so will run on any board.\n\nThat is, this won\u0027t break any previously signed image.\n\nIt doesn\u0027t matter when the check is in RW, but will when it\u0027s in RO.",
+      "parentUuid": "0b8a1854_cb85133f",
       "range": {
         "startLine": 609,
         "startChar": 12,
