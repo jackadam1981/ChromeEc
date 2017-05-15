@@ -94,6 +94,30 @@
       "revId": "e45ad8bf1b5905331aa71221619fd10cbd5cd277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5461acae_e2424455",
+        "filename": "chip/g/trng.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-05-15T22:09:10Z",
+      "side": 1,
+      "message": "Yeah that confusion part is not exactly free here. As shows.\n\nSurely the build system can be taught to be smarter?",
+      "parentUuid": "a168c85e_7a0c91f1",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 35
+      },
+      "revId": "e45ad8bf1b5905331aa71221619fd10cbd5cd277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
