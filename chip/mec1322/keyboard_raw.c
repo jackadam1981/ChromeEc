@@ -33,22 +33,22 @@ test_mockable void keyboard_raw_drive_column(int out)
 {
 	if (out == KEYBOARD_COLUMN_ALL) {
 		MEC1322_KS_KSO_SEL = 1 << 5; /* KSEN=0, KSALL=1 */
-#ifdef CONFIG_KEYBOARD_COL2_INVERTED
-		gpio_set_level(GPIO_KBD_KSO2, 1);
+#ifdef CONFIG_KEYBOARD_COL_INVERTED
+		gpio_set_level(GPIO_KBD_COL_INVERTED, 1);
 #endif
 	} else if (out == KEYBOARD_COLUMN_NONE) {
 		MEC1322_KS_KSO_SEL = 1 << 6; /* KSEN=1 */
-#ifdef CONFIG_KEYBOARD_COL2_INVERTED
-		gpio_set_level(GPIO_KBD_KSO2, 0);
+#ifdef CONFIG_KEYBOARD_COL_INVERTED
+		gpio_set_level(GPIO_KBD_COL_INVERTED, 0);
 #endif
 	} else {
-#ifdef CONFIG_KEYBOARD_COL2_INVERTED
-		if (out == 2) {
+#ifdef CONFIG_KEYBOARD_COL_INVERTED
+		if (out == CONFIG_KEYBOARD_COL_INVERTED) {
 			MEC1322_KS_KSO_SEL = 1 << 6; /* KSEN=1 */
-			gpio_set_level(GPIO_KBD_KSO2, 1);
+			gpio_set_level(GPIO_KBD_COL_INVERTED, 1);
 		} else {
 			MEC1322_KS_KSO_SEL = out + CONFIG_KEYBOARD_KSO_BASE;
-			gpio_set_level(GPIO_KBD_KSO2, 0);
+			gpio_set_level(GPIO_KBD_COL_INVERTED, 0);
 		}
 #else
 		MEC1322_KS_KSO_SEL = out + CONFIG_KEYBOARD_KSO_BASE;

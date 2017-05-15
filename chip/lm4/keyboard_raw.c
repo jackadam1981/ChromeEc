@@ -29,12 +29,12 @@ void keyboard_raw_init(void)
 	LM4_GPIO_ODR(LM4_GPIO_P) = 0xff;
 	LM4_GPIO_ODR(LM4_GPIO_Q) |= 0x1f;
 
-#ifdef CONFIG_KEYBOARD_COL2_INVERTED
+#ifdef CONFIG_KEYBOARD_COL_INVERTED
 	/*
-	 * When column 2 is inverted, the Silego has a pulldown instead of a
+	 * When column is inverted, the Silego has a pulldown instead of a
 	 * pullup.  So drive it push-pull instead of open-drain.
 	 */
-	LM4_GPIO_ODR(LM4_GPIO_P) &= ~(1 << 2);
+	LM4_GPIO_ODR(LM4_GPIO_P) &= ~(1 << CONFIG_KEYBOARD_COL_INVERTED);
 #endif
 
 	/* Set row inputs with pull-up */
@@ -70,9 +70,9 @@ test_mockable void keyboard_raw_drive_column(int col)
 	else
 		mask = 0x1fff ^ (1 << col);	/* Assert a single output */
 
-#ifdef CONFIG_KEYBOARD_COL2_INVERTED
-	/* Invert column 2 output */
-	mask ^= (1 << 2);
+#ifdef CONFIG_KEYBOARD_COL_INVERTED
+	/* Invert column output */
+	mask ^= (1 << CONFIG_KEYBOARD_COL_INVERTED);
 #endif
 
 	LM4_GPIO_DATA(LM4_GPIO_P, 0xff) = mask & 0xff;

@@ -33,10 +33,10 @@ UNIMPLEMENTED(USB_PD_WAKE)
 
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
 #define GPIO_KB_OUTPUT (GPIO_ODR_HIGH)
-#define GPIO_KB_OUTPUT_COL2 (GPIO_OUT_LOW)
+#define GPIO_KB_OUTPUT_INVERT (GPIO_OUT_LOW)
 
 GPIO(NC_GPIO0,          PIN(0),  GPIO_INPUT | GPIO_PULL_UP)     /* NC */
-GPIO(KBD_KSO2,          PIN(1),  GPIO_KB_OUTPUT_COL2)           /* Negative edge triggered irq. */
+GPIO(KBD_COL_INVERTED,  PIN(1),  GPIO_KB_OUTPUT_INVERT)         /* Negative edge triggered irq. */
 
 GPIO(USB_ILIM_SEL,      PIN(13), GPIO_OUT_HIGH)                 /* USB current control */
 GPIO(I2C_PORT0_SCL,     PIN(15), GPIO_ODR_HIGH)

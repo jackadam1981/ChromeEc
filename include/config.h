@@ -1478,11 +1478,18 @@
 
 /*
  * The Silego reset chip sits in between the EC and the physical keyboard on
- * column 2.  To save power in low-power modes, some Silego variants require
+ * a column.  To save power in low-power modes, some Silego variants require
  * the signal to be inverted so that the open-drain output from the EC isn't
  * costing power due to the pull-up resistor in the Silego.
+ *
+ * This should be set to the column that should be inverted:
+ *
+ *  2 - first generation keyboard matrix with column 2 inverted which allows
+ *      the use of Refresh(F3) + Power to hard reset the system.
+ *  3 - second generation keyboard matrix, inverted column was moved to 3
+ *      in order to preserve use of Refresh(F2) key in new matrix.
  */
-#undef CONFIG_KEYBOARD_COL2_INVERTED
+#undef CONFIG_KEYBOARD_COL_INVERTED
 
 /*
  * Config KSO to start from a different KSO pin. This is to allow some chips
