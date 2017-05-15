@@ -227,6 +227,9 @@ static void set_initial_pwrbtn_state(void)
 		 */
 		CPRINTS("PB init-off");
 		power_button_pch_release();
+	} else if (reset_flags & RESET_FLAG_SOFT) {
+		CPRINTS("PB init-on");
+		pwrbtn_state = PWRBTN_STATE_INIT_ON;
 	} else if (power_button_is_pressed()) {
 		CPRINTS("PB init-on");
 		pwrbtn_state = PWRBTN_STATE_INIT_ON;
