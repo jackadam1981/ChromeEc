@@ -212,6 +212,7 @@ void system_check_reset_cause(void)
 	uint32_t hib_wake_flags = bbram_data_read(BBRM_DATA_INDEX_WAKE);
 	uint32_t flags = bbram_data_read(BBRM_DATA_INDEX_SAVED_RESET_FLAGS);
 
+	system_set_original_reset_flags(flags);
 	/* Clear saved reset flags in bbram */
 	chip_save_reset_flags(0);
 	/* Clear saved hibernate wake flag in bbram , too */
@@ -555,8 +556,12 @@ void system_reset(int flags)
 	/* Store flags to battery backed RAM. */
 	chip_save_reset_flags(save_flags);
 
-	/* Ask the watchdog to trigger a hard reboot */
+#ifdef CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET
+	/* Bring down all rails but RTC rail (including EC power). */
+	gpio_set_level(GPIO_EC_PLATFORM_RST, 1);
+#else
 	system_watchdog_reset();
+#endif
 
 	/* Spin and wait for reboot; should never return */
 	while (1)
