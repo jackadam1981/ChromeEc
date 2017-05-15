@@ -555,8 +555,13 @@ void system_reset(int flags)
 	/* Store flags to battery backed RAM. */
 	chip_save_reset_flags(save_flags);
 
+#ifdef CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET
+	/* Bring down all rails but RTC rail (including EC power). */
+	gpio_set_level(GPIO_EC_PLATFORM_RST, 1);
+#else
 	/* Ask the watchdog to trigger a hard reboot */
 	system_watchdog_reset();
+#endif
 
 	/* Spin and wait for reboot; should never return */
 	while (1)
