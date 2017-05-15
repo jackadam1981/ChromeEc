@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7ce6101_d8422b4f",
+        "filename": "chip/g/signed_header.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-05-15T21:57:02Z",
+      "side": 1,
+      "message": "There\u0027s already some usage of the pad data in upstream signed_header.h\n\n  union {\n    uint32_t\n        _pad[256 - 1 - 96 - 1 - 7 - 1 - 96 - 5 * 1 - 4 - 4 - 9 * 1 - 2 - 1 - 2];\n    struct {\n      // 2nd FIPS compliant signature.\n      uint32_t keyid;\n      uint32_t r[8];\n      uint32_t s[8];\n    } ext_sig;\n  } _pad;",
+      "revId": "e3d7c032753057f9584d0d9a8e879a70e4a78bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
