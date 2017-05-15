@@ -1,4 +1,4 @@
-#!/bin/bash
+e!/bin/bash
 
 # Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
@@ -103,6 +103,7 @@ BOARDS_NPCX_5M6G_JTAG=(
 )
 
 BOARDS_NPCX_SPI=(
+	coral
 	eve
 	fizz
 	gru
@@ -125,12 +126,14 @@ BOARDS_MEC1322=(
 )
 
 BOARDS_SPI_1800MV=(
+	coral
 	gru
 	kevin
 	reef
 )
 
 BOARDS_RAIDEN=(
+	coral
 	eve
 	fizz
 	gru
