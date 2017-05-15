@@ -307,6 +307,7 @@ void board_set_tcpc_power_mode(int port, int mode)
 
 	switch (mode) {
 	case ANX74XX_NORMAL_MODE:
+		msleep(10);
 		gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
 		msleep(10);
 		gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
