@@ -529,6 +529,12 @@ void system_pre_init(void)
 	 * and DATA RAM to prevent code execution
 	 */
 	system_mpu_config();
+
+	/*
+	 * Clear IBBR bit because it's defaut value is 1 on reset
+	 * whenever the VBAT supply is powered up.
+	 */
+	SET_BIT(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR);
 }
 
 void system_reset(int flags)
