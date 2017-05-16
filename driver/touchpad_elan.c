@@ -29,6 +29,7 @@
 #define ETP_I2C_XY_TRACENUM_CMD		0x0105
 #define ETP_I2C_MAX_X_AXIS_CMD		0x0106
 #define ETP_I2C_MAX_Y_AXIS_CMD		0x0107
+#define ETP_I2C_RESOLUTION_CMD		0x0108
 #define ETP_I2C_PRESSURE_CMD		0x010A
 #define ETP_I2C_SET_CMD			0x0300
 
@@ -190,6 +191,7 @@ static int elan_tp_init(void)
 {
 	int rv;
 	uint8_t val[2];
+	int phys_x, phys_y;
 
 	CPRINTS("%s", __func__);
 
@@ -234,10 +236,31 @@ static int elan_tp_init(void)
 		goto out;
 	elan_tp_params.pressure_adj = (val[0] & 0x10) ? 0 : ETP_PRESSURE_OFFSET;
 
-	CPRINTS("max=%d/%d width=%d/%d adj=%d",
+	rv = elan_tp_read_cmd(ETP_I2C_RESOLUTION_CMD, (uint16_t *)val);
+	if (rv)
+		goto out;
+
+	/*
+	 * Physical dimensions (tenth of mm).
+	 * dpi = [value from firmware] * 10 + 790, 254/10 mm per inch.
+	 */
+	phys_x = (254 * elan_tp_params.max_x) / (10*val[0] + 790);
+	phys_y = (254 * elan_tp_params.max_y) / (10*val[1] + 790);
+
+	CPRINTS("max=%d/%d width=%d/%d adj=%d phys=%d/%d",
 		elan_tp_params.max_x, elan_tp_params.max_y,
 		elan_tp_params.width_x, elan_tp_params.width_y,
-		elan_tp_params.pressure_adj);
+		elan_tp_params.pressure_adj, phys_x, phys_y);
+
+#ifdef CONFIG_USB_HID_TOUCHPAD
+	/* Sanity check dimensions provided at build time. */
+	if (elan_tp_params.max_x != CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X ||
+	    elan_tp_params.max_y != CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y ||
+	    phys_x != CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X ||
+	    phys_y != CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y) {
+		CPRINTS("*** WARNING: Touchpad dimension mismatch!!! ***");
+	}
+#endif
 
 	/* Switch to absolute mode */
 	rv = elan_tp_write_cmd(ETP_I2C_SET_CMD, ETP_ENABLE_ABS);
