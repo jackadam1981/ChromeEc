@@ -63,6 +63,7 @@
 #define DEBUG_CLK                        0
 #define DEBUG_LPC                        0
 #define DEBUG_ESPI                       0
+#define DEBUG_SYSTEM                     0
 
 /* Modules Map */
 #define NPCX_MDC_BASE_ADDR               0x4000C000
@@ -1124,12 +1125,12 @@ enum PM_CHANNEL_T {
 
 /******************************************************************************/
 /* Battery-Backed RAM (BBRAM) Registers */
-#define NPCX_BKUP_STS                REG8(NPCX_BBRAM_BASE_ADDR + 0x000)
-#define NPCX_BBRAM(offset)           REG8(NPCX_BBRAM_BASE_ADDR + 0x001 + offset)
+#define NPCX_BKUP_STS                REG8(NPCX_BBRAM_BASE_ADDR + 0x100)
+#define NPCX_BBRAM(offset)           REG8(NPCX_BBRAM_BASE_ADDR + offset)
 
 /* BBRAM register fields */
 #define NPCX_BKUP_STS_IBBR               7
-#define NPCX_BBRAM_SIZE                  63  /* Size of BBRAM */
+#define NPCX_BBRAM_SIZE                  64  /* Size of BBRAM */
 
 /******************************************************************************/
 /* Timer Watch Dog (TWD) Registers */
