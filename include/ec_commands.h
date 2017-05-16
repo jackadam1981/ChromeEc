@@ -4187,6 +4187,28 @@ struct __ec_align4 ec_params_fp_frame {
 };
 
 /*****************************************************************************/
+/* Touchpad MCU commands: range 0x0500-0x05FF */
+
+#define EC_CMD_TP_SELF_TEST 0x0500
+
+#define EC_CMD_TP_FRAME_INFO 0x0501
+
+struct __ec_align4 ec_response_tp_frame_info {
+	uint32_t n_frames;
+	uint32_t frame_sizes[0];
+};
+
+#define EC_CMD_TP_FRAME_SNAPSHOT 0x0502
+
+#define EC_CMD_TP_FRAME_GET 0x0503
+
+struct __ec_align4 ec_params_tp_frame_get {
+	int frame_index;
+	uint32_t offset;
+	uint32_t size;
+};
+
+/*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or
  * special purpose features. These can be (re)used without updating this file.
