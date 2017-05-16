@@ -303,12 +303,14 @@ const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
 	GPIO_USB1_ENABLE,
 };
 
+static struct mutex tcpc_control_lock;
 /* called from anx74xx_set_power_mode() */
 void board_set_tcpc_power_mode(int port, int mode)
 {
 	if (port != USB_PD_PORT_ANX74XX)
 		return;
 
+	mutex_lock(&tcpc_control_lock);
 	switch (mode) {
 	case ANX74XX_NORMAL_MODE:
 		gpio_set_level(GPIO_EN_USB_TCPC_PWR, 1);
@@ -323,6 +325,7 @@ void board_set_tcpc_power_mode(int port, int mode)
 	default:
 		break;
 	}
+	mutex_unlock(&tcpc_control_lock);
 }
 
 /**
