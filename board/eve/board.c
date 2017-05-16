@@ -371,6 +371,34 @@ static void board_set_tablet_mode(void)
 	tablet_set_mode(!gpio_get_level(GPIO_TABLET_MODE_L));
 }
 
+#ifdef CONFIG_KEYBOARD_COL_INVERTED_DYNAMIC
+int board_keyboard_column_inverted(enum gpio_signal *gpio)
+{
+	const struct gpio_info *other;
+	int col;
+
+	if (board_get_version() <= 4) {
+		*gpio = GPIO_KBD_COL2_INVERTED;
+		other = gpio_list + GPIO_KBD_COL3_INVERTED;
+		col = 2;
+	} else {
+		*gpio = GPIO_KBD_COL3_INVERTED;
+		other = gpio_list + GPIO_KBD_COL2_INVERTED;
+		col = 3;
+	}
+
+	/* Set inverted pin to GPIO output */
+	gpio_set_flags(*gpio, GPIO_KB_OUTPUT_INVERT);
+
+	/* Set non-inverted pin to keyboard module */
+	gpio_set_flags_by_mask(other->port, other->mask, GPIO_KB_OUTPUT);
+	gpio_set_alternate_function(other->port, other->mask, 0);
+
+	CPRINTS("Inverting keyboard column %d", col);
+	return col;
+}
+#endif
+
 /* Initialize board. */
 static void board_init(void)
 {

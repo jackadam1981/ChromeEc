@@ -13,6 +13,12 @@
 #include "registers.h"
 #include "task.h"
 
+#ifdef CONFIG_KEYBOARD_COL_INVERTED_DYNAMIC
+extern int board_keyboard_column_inverted(enum gpio_signal *gpio);
+enum gpio_signal col_gpio;
+int col_inverted;
+#endif
+
 /**
  * Initialize the raw keyboard interface.
  */
@@ -48,6 +54,10 @@ void keyboard_raw_init(void)
 	/* Set KBSOUT to zero to detect key-press */
 	NPCX_KBSOUT0 = 0x00;
 	NPCX_KBSOUT1 = 0x00;
+
+#ifdef CONFIG_KEYBOARD_COL_INVERTED_DYNAMIC
+	col_inverted = board_keyboard_column_inverted(&col_gpio);
+#endif
 
 	gpio_config_module(MODULE_KEYBOARD_SCAN, 1);
 
@@ -89,6 +99,11 @@ test_mockable void keyboard_raw_drive_column(int col)
 	 */
 	uint32_t mask, col_out;
 
+#ifdef CONFIG_KEYBOARD_COL_DYNAMIC
+	if (col_inverted == 0)
+		return;
+#endif
+
 	/* Add support for CONFIG_KEYBOARD_KSO_BASE shifting */
 	col_out = col + CONFIG_KEYBOARD_KSO_BASE;
 
@@ -97,6 +112,8 @@ test_mockable void keyboard_raw_drive_column(int col)
 		mask = KB_COL_MASK;
 #ifdef CONFIG_KEYBOARD_COL_INVERTED
 		gpio_set_level(GPIO_KBD_COL_INVERTED, 0);
+#elif defined(CONFIG_KEYBOARD_COL_INVERTED_DYNAMIC)
+		gpio_set_level(col_gpio, 0);
 #endif
 	}
 	/* Set KBSOUT to zero to detect key-press */
@@ -104,6 +121,8 @@ test_mockable void keyboard_raw_drive_column(int col)
 		mask = 0;
 #ifdef CONFIG_KEYBOARD_COL_INVERTED
 		gpio_set_level(GPIO_KBD_COL_INVERTED, 1);
+#elif defined(CONFIG_KEYBOARD_COL_INVERTED_DYNAMIC)
+		gpio_set_level(col_gpio, 1);
 #endif
 	}
 	/* Drive one line for detection */
@@ -113,6 +132,8 @@ test_mockable void keyboard_raw_drive_column(int col)
 			gpio_set_level(GPIO_KBD_COL_INVERTED, 1);
 		else
 			gpio_set_level(GPIO_KBD_COL_INVERTED, 0);
+#elif defined(CONFIG_KEYBOARD_COL_INVERTED_DYNAMIC)
+		gpio_set_level(col_gpio, (col == col_inverted) ? 1 : 0);
 #endif
 		mask = ((~(1 << col_out)) & KB_COL_MASK);
 	}
