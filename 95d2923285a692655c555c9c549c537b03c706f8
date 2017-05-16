@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "1483261a_6040d88b",
+        "filename": "board/reef_it8320/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-16T17:49:36Z",
+      "side": 1,
+      "message": "Not sure if it\u0027s common to list all the enum names just to get the count or can this be in ec2i_chip.h? This is identical to the one in it83xx_evt/board.h.",
+      "parentUuid": "e00ae78f_33ec1d01",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78f79483_aa9c79db",
         "filename": "board/reef_it8320/board.h",
         "patchSetId": 7
