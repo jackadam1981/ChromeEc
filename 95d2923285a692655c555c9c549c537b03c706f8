@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a913b264_0f6df827",
+        "filename": "board/reef_it8320/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-05-16T03:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c3297f_d927a50c",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 4
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25d236eb_8b2cb857",
         "filename": "board/reef_it8320/board.c",
         "patchSetId": 7
@@ -139,6 +163,30 @@
       "revId": "95d2923285a692655c555c9c549c537b03c706f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9d43da2_a67d492d",
+        "filename": "board/reef_it8320/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-05-16T03:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25d236eb_8b2cb857",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 3
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -165,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "07b837fd_eef53f0c",
+        "filename": "board/reef_it8320/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-05-16T03:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3efd87f_119f2d07",
+      "range": {
+        "startLine": 329,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 2
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d47282e0_e54575aa",
         "filename": "board/reef_it8320/board.c",
         "patchSetId": 7
@@ -176,6 +248,30 @@
       "writtenOn": "2017-05-13T01:05:08Z",
       "side": 1,
       "message": "Why do you need this?",
+      "range": {
+        "startLine": 339,
+        "startChar": 37,
+        "endLine": 339,
+        "endChar": 42
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e32ff6b0_59f682d7",
+        "filename": "board/reef_it8320/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-05-16T03:46:52Z",
+      "side": 1,
+      "message": "We will get an error message without this:\n(‘bd9995x_port’ may be used uninitialized in this function)",
+      "parentUuid": "d47282e0_e54575aa",
       "range": {
         "startLine": 339,
         "startChar": 37,
@@ -258,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "e00ae78f_33ec1d01",
+        "filename": "board/reef_it8320/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-05-16T03:46:52Z",
+      "side": 1,
+      "message": "We use EC2I_SETTING_COUNT in pnpcfg_init().\n(chip/it83xx/ec2i.c)",
+      "parentUuid": "8c7c72d6_e69907be",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78f79483_aa9c79db",
         "filename": "board/reef_it8320/board.h",
         "patchSetId": 7
@@ -278,6 +398,30 @@
       "revId": "95d2923285a692655c555c9c549c537b03c706f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6baf54f1_912d213f",
+        "filename": "board/reef_it8320/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-05-16T03:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78f79483_aa9c79db",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 60
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
