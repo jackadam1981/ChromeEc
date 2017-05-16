@@ -1124,7 +1124,7 @@ enum PM_CHANNEL_T {
 
 /******************************************************************************/
 /* Battery-Backed RAM (BBRAM) Registers */
-#define NPCX_BKUP_STS                REG8(NPCX_BBRAM_BASE_ADDR + 0x000)
+#define NPCX_BKUP_STS                REG8(NPCX_BBRAM_BASE_ADDR + 0x100)
 #define NPCX_BBRAM(offset)           REG8(NPCX_BBRAM_BASE_ADDR + 0x001 + offset)
 
 /* BBRAM register fields */
