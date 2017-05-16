@@ -230,6 +230,10 @@ const char help_str[] =
 	"      Get the threshold temperature values from the thermal engine.\n"
 	"  thermalset <platform-specific args>\n"
 	"      Set the threshold temperature values for the thermal engine.\n"
+	"  tpselftest\n"
+	"      Run touchpad self test.\n"
+	"  tpframeget\n"
+	"      Get touchpad frame data.\n"
 	"  tmp006cal <tmp006_index> [params...]\n"
 	"      Get/set TMP006 calibration\n"
 	"  tmp006raw <tmp006_index>\n"
@@ -7138,6 +7142,75 @@ int cmd_pd_write_log(int argc, char *argv[])
 	return ec_command(EC_CMD_PD_WRITE_LOG_ENTRY, 0, &p, sizeof(p), NULL, 0);
 }
 
+int cmd_tp_self_test(int argc, char* argv[])
+{
+	int rv;
+
+	rv = ec_command(EC_CMD_TP_SELF_TEST, 0, NULL, 0, NULL, 0);
+	if (rv < 0)
+		return rv;
+
+	printf("Touchpad self test: %s\n",
+	       rv == EC_RES_SUCCESS ? "passed" : "failed");
+
+	return rv;
+}
+
+int cmd_tp_frame_get(int argc, char* argv[])
+{
+	int i, j, rv;
+	uint8_t *data = (char *)ec_inbuf;
+	uint32_t remaining = 0, offset = 0;
+	struct ec_response_tp_frame_info r;
+	struct ec_params_tp_frame_get p;
+
+	rv = ec_command(EC_CMD_TP_FRAME_INFO, 0, NULL, 0, &r, ec_max_insize);
+	if (rv < 0) {
+		fprintf(stderr, "Failed to get toucpad frame info.\n");
+		return rv;
+	}
+
+	rv = ec_command(EC_CMD_TP_FRAME_SNAPSHOT, 0, NULL, 0, NULL, 0);
+	if (rv < 0) {
+		fprintf(stderr, "Failed to snapshot frame.\n");
+		return rv;
+	}
+
+	for (i = 0; i < r.n_frames; i++) {
+		p.frame_index = i;
+		offset = 0;
+		remaining = r.frame_sizes[i];
+
+		while (remaining > 0) {
+			p.offset = offset;
+			p.size = MIN(remaining, ec_max_insize);
+
+			/* Result is an array of uint16_t, so we get even
+			 * number of bytes each time */
+			if (p.size % 2)
+				p.size--;
+
+			rv = ec_command(EC_CMD_TP_FRAME_GET, 0,
+					&p, sizeof(p), ec_inbuf, p.size);
+			if (rv < 0) {
+				fprintf(stderr, "Failed to get frame data "
+						"at offset 0x%x\n", offset);
+				return rv;
+			}
+
+			for (j = 0; j < p.size; j += 2) {
+				printf("%04d ", data[j + 1] << 8 | data[j]);
+			}
+
+			offset += p.size;
+			remaining -= p.size;
+		}
+		printf("\n");
+	}
+
+	return EC_SUCCESS;
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"autofanctrl", cmd_thermal_auto_fan_ctrl},
@@ -7235,6 +7308,8 @@ const struct command commands[] = {
 	{"test", cmd_test},
 	{"thermalget", cmd_thermal_get_threshold},
 	{"thermalset", cmd_thermal_set_threshold},
+	{"tpselftest", cmd_tp_self_test},
+	{"tpframeget", cmd_tp_frame_get},
 	{"tmp006cal", cmd_tmp006cal},
 	{"tmp006raw", cmd_tmp006raw},
 	{"usbchargemode", cmd_usb_charge_set_mode},
