@@ -32,8 +32,15 @@
 #define CHIP_REV_ADDR 0x00007FFC
 
 /* Console output macros */
+#if !(DEBUG_SYSTEM)
+#define CPUTS(...)
+#define CPRINTS(...)
+#define CPRINTF(...)
+#else
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+#endif
 
 /*****************************************************************************/
 /* Internal functions */
@@ -94,12 +101,14 @@ static uint32_t bbram_data_read(enum bbram_data_index index)
 	int bytes = bbram_is_byte_access(index) ? 1 : 4;
 
 	/* Check index */
-	if (index < 0 || index + bytes >= NPCX_BBRAM_SIZE)
+	if (index < 0 || index + bytes > NPCX_BBRAM_SIZE)
 		return 0;
 
 	/* BBRAM is valid */
-	if (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR))
+	if (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR)) {
+		CPRINTF("IBBR set: BBRAM corrupted!\n");
 		return 0;
+	}
 
 	/* Read BBRAM */
 	if (bytes == 4) {
@@ -125,12 +134,14 @@ static int bbram_data_write(enum bbram_data_index index, uint32_t value)
 	int bytes = bbram_is_byte_access(index) ? 1 : 4;
 
 	/* Check index */
-	if (index < 0 || index >= NPCX_BBRAM_SIZE)
+	if (index < 0 || index + bytes > NPCX_BBRAM_SIZE)
 		return EC_ERROR_INVAL;
 
 	/* BBRAM is valid */
-	if (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR))
+	if (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR)) {
+		CPRINTF("IBBR set: BBRAM corrupted!\n");
 		return EC_ERROR_INVAL;
+	}
 
 	/* Write BBRAM */
 	NPCX_BBRAM(index) = value & 0xFF;
@@ -529,6 +540,12 @@ void system_pre_init(void)
 	 * and DATA RAM to prevent code execution
 	 */
 	system_mpu_config();
+
+	/*
+	 * Clear IBBR bit because it's defaut value is 1 on reset
+	 * whenever the VBAT supply is powered up.
+	 */
+	SET_BIT(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR);
 }
 
 void system_reset(int flags)
