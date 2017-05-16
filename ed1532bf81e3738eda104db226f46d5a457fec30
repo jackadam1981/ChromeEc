@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a393568_52edbae0",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-16T01:31:05Z",
+      "side": 0,
+      "message": "this is not used anywhere any more",
+      "range": {
+        "startLine": 217,
+        "startChar": 8,
+        "endLine": 217,
+        "endChar": 27
+      },
+      "revId": "ed1532bf81e3738eda104db226f46d5a457fec30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b52b6877_3a8a453e",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-16T01:31:05Z",
+      "side": 0,
+      "message": "this is defined by default for all boards",
+      "revId": "ed1532bf81e3738eda104db226f46d5a457fec30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
