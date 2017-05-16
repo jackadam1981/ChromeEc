@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c62191d_e71f1585",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-16T16:59:01Z",
+      "side": 0,
+      "message": "A charger chip will be removed from EVT. I\u0027ll remove charger code completely when the chip is removed.",
+      "parentUuid": "82a674a2_2af99157",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 22
+      },
+      "revId": "c79ac1f88403e85171caff5d03678fe23974fcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "087767db_534a988d",
         "filename": "board/fizz/board.h",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "c79ac1f88403e85171caff5d03678fe23974fcf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "084eb3b1_1845829d",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-16T16:59:01Z",
+      "side": 0,
+      "message": "Restored.",
+      "parentUuid": "087767db_534a988d",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 29
+      },
+      "revId": "c79ac1f88403e85171caff5d03678fe23974fcf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

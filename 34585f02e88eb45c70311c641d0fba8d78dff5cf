@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "17ce2d9d_bbc172d1",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-16T16:59:01Z",
+      "side": 1,
+      "message": "I think so because there will be no moment that available_charge[i][j] has no valid charger. charge_manager_get_best_charge_port is called before board_set_active_charge)port and charge_manager_get_best_charge_port always returns new_port\u003d0 or 1.",
+      "parentUuid": "4a72b789_18396864",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 24
+      },
+      "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05a3d98a_2e264397",
         "filename": "board/fizz/board.c",
         "patchSetId": 15
@@ -45,6 +69,30 @@
       "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3abca43_de586b6b",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-16T16:59:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05a3d98a_2e264397",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 1
+      },
+      "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "29ff2fd8_4668ab0c",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-16T16:59:01Z",
+      "side": 1,
+      "message": "Removed. We\u0027ll support switching power sources on EVT: https://b.corp.google.com/issues/38321259 It\u0027s not possible to test charger switch on the current board because there is no barrel jack detect pin.",
+      "parentUuid": "526b07fa_4be430b7",
+      "range": {
+        "startLine": 379,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 39
+      },
+      "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c9582b7_d5bc1c15",
         "filename": "board/fizz/usb_pd_policy.c",
         "patchSetId": 15
@@ -82,6 +154,30 @@
       "writtenOn": "2017-05-12T17:16:57Z",
       "side": 1,
       "message": "we never source current on the barrel jack ?",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 48
+      },
+      "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31db3cf2_317c8acc",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-16T16:59:01Z",
+      "side": 1,
+      "message": "Yes, we never will.",
+      "parentUuid": "2c9582b7_d5bc1c15",
       "range": {
         "startLine": 60,
         "startChar": 1,
