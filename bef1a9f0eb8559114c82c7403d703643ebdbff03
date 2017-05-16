@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d4e1bc8_a149e145",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-16T08:05:00Z",
+      "side": 1,
+      "message": "it\u0027s kind of wasteful to do this computation at runtime while you could do the inverse on CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X |Y at compile time ?",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 59
+      },
+      "revId": "bef1a9f0eb8559114c82c7403d703643ebdbff03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9e22ffb_7d64eb7c",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-16T08:05:00Z",
+      "side": 1,
+      "message": "what is this ifdef useful for ?",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "bef1a9f0eb8559114c82c7403d703643ebdbff03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "595cd374_01504bc5",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-16T08:05:00Z",
+      "side": 1,
+      "message": "you will miss this flash space at some point, you can likely be less verbose here.",
+      "range": {
+        "startLine": 261,
+        "startChar": 11,
+        "endLine": 261,
+        "endChar": 58
+      },
+      "revId": "bef1a9f0eb8559114c82c7403d703643ebdbff03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
