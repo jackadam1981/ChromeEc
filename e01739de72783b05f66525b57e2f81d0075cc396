@@ -91,6 +91,30 @@
       "revId": "e01739de72783b05f66525b57e2f81d0075cc396",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33e61d96_bf060320",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-17T14:41:31Z",
+      "side": 1,
+      "message": "it seems my remark is half stupid, the ordering is on the section rather than the name",
+      "parentUuid": "bca1ae1a_0509cfce",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 56
+      },
+      "revId": "e01739de72783b05f66525b57e2f81d0075cc396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
