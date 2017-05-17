@@ -470,3 +470,20 @@ enum battery_present battery_is_present(void)
 	/* The GPIO is low when the battery is present */
 	return BP_NO;
 }
+
+static void board_startup_key_combo(void)
+{
+	if (system_jumped_to_this_image())
+		return;
+
+	/*
+	 * Determine recovery mode is requested by the power and
+	 * the recovery button being pressed (while device was off).
+	 */
+	if (!gpio_get_level(GPIO_RECOVERY_L) &&
+	    power_button_signal_asserted()) {
+		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
+		CPRINTS("> RECOVERY mode");
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_startup_key_combo, HOOK_PRIO_DEFAULT);
