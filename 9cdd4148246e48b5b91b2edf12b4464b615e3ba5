@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b61b4aef_40db0957",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-17T23:10:24Z",
+      "side": 1,
+      "message": "probably should initialize \u0027ones\u0027.",
+      "revId": "9cdd4148246e48b5b91b2edf12b4464b615e3ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df507182_8aacaa59",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-17T23:10:24Z",
+      "side": 1,
+      "message": "I should probably conditionally compile the  _uart_bitbang_* functions using CONFIG_UART_BITBANG.",
+      "revId": "9cdd4148246e48b5b91b2edf12b4464b615e3ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
