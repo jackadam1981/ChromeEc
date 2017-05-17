@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08e2c54a_58a2d2fb",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-17T12:19:28Z",
+      "side": 1,
+      "message": "Are those GPIOs connected to something on POPPY_REV0 ?\nelse make this unconditional",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 34
+      },
+      "revId": "880cfc1b96270c5a1a50192557f03310d3ad7787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cf48517_9698c156",
+        "filename": "board/poppy/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-17T12:19:28Z",
+      "side": 1,
+      "message": "I suspect this is more costly (for flash space) than doing a variable assignment in the switch and the gpio_set_level()\n(said that on numerous other copies of this file)",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 9
+      },
+      "revId": "880cfc1b96270c5a1a50192557f03310d3ad7787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
