@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89e73077_38b5cafd",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-17T17:54:04Z",
+      "side": 1,
+      "message": "If tpm_read_not_found should we not allow console unlock?\n\nWhat is the case where tpm_read_not_found happens?",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 8
+      },
+      "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
