@@ -91,6 +91,29 @@
       "revId": "4590cee968f80f1660e487e439c5097230602eed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa7109a_e561682a",
+        "filename": "chip/g/signed_header.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-17T22:56:54Z",
+      "side": 1,
+      "message": "also, I took a closer look at the upstream signer, there are two more 32 bit values here right below fuses_chk_, this is how the header tail look like upstream:\n\n  uint32_t  _pad[256 - 1 - 96 - 1 - 7 - 1 - 96 - 5 * 1 - 4 - 4 - 9 * 1 - 2 - 1 - 2];\n  uint32_t dev_id0_;  // node id, if locked\n  uint32_t dev_id1_;\n  uint32_t fuses_chk_;  // top 32 bit of expected fuses hash\n  uint32_t info_chk_;   // top 32 bit of expected info hash",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "4590cee968f80f1660e487e439c5097230602eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
