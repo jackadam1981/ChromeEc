@@ -353,6 +353,7 @@ static int hid_touchpad_iface_request(usb_uint *ep0_buf_rx,
 				      usb_uint *ep0_buf_tx)
 {
 	return hid_iface_request(ep0_buf_rx, ep0_buf_tx,
-				 report_desc, sizeof(report_desc));
+				 report_desc, sizeof(report_desc),
+				 NULL);
 }
 USB_DECLARE_IFACE(USB_IFACE_HID_TOUCHPAD, hid_touchpad_iface_request)

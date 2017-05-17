@@ -26,6 +26,14 @@
 /* Console output macro */
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
 
+/*
+ * Note: This report format cannot be changed without breaking HID Boot protocol
+ * compatibility (see HID 1.11 "Appendix B: Boot Interface Descriptors").
+ *
+ * If this needs to be extended, we need to properly implement Set_Protocol
+ * and use this report in boot protocol mode, and an alternate one in report
+ * protocol mode.
+ */
 struct __attribute__((__packed__)) usb_hid_keyboard_report {
 	uint8_t modifiers; /* bitmap of modifiers 224-231 */
 	uint8_t reserved; /* 0x0 */
@@ -115,7 +123,9 @@ static const uint8_t report_desc[] = {
 	0xC0        /* End Collection */
 };
 
-const struct usb_hid_descriptor USB_CUSTOM_DESC(USB_IFACE_HID_KEYBOARD, hid) = {
+/* HID: HID Descriptor */
+const struct usb_hid_descriptor USB_CUSTOM_DESC_VAR(USB_IFACE_HID_KEYBOARD,
+						hid, hid_desc_kb) = {
 	.bLength = 9,
 	.bDescriptorType = USB_HID_DT_HID,
 	.bcdHID = 0x0100,
@@ -200,7 +210,8 @@ static int hid_keyboard_iface_request(usb_uint *ep0_buf_rx,
 				      usb_uint *ep0_buf_tx)
 {
 	return hid_iface_request(ep0_buf_rx, ep0_buf_tx,
-				 report_desc, sizeof(report_desc));
+				 report_desc, sizeof(report_desc),
+				 &hid_desc_kb);
 }
 USB_DECLARE_IFACE(USB_IFACE_HID_KEYBOARD, hid_keyboard_iface_request)
 
