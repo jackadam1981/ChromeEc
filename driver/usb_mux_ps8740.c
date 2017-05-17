@@ -112,6 +112,8 @@ int ps8740_tune_usb_eq(int i2c_addr, uint8_t tx, uint8_t rx)
 {
 	int ret = 0;
 
+
+
 	ret |= ps8740_write(i2c_addr, PS8740_REG_USB_EQ_TX, tx);
 	ret |= ps8740_write(i2c_addr, PS8740_REG_USB_EQ_RX, rx);
 
