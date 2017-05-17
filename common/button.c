@@ -97,16 +97,18 @@ static int is_recovery_button_pressed(void)
 	return 1;
 }
 
-/*
- * If the EC is reset and recovery is requested, then check if HW_REINIT is
- * requested as well. Since the EC reset occurs after volup+voldn+power buttons
- * are held down for 10 seconds, check the state of these buttons for 20 more
- * seconds. If they are still held down all this time, then set host event to
- * indicate HW_REINIT is requested. Also, make sure watchdog is reloaded in
- * order to prevent watchdog from resetting the EC.
- */
-static void button_check_hw_reinit_required(void)
+static int button_check_hw_reinit_required(void)
 {
+#ifdef CONFIG_HW_REINIT_BY_LONG_BUTTON_PRESS
+	/*
+ 	 * If the EC is reset and recovery is requested, then check if HW_REINIT
+ 	 * is requested as well. Since the EC reset occurs after volup+voldn+
+ 	 * power buttons are held down for 10 seconds, check the state of these
+ 	 * buttons for 20 more seconds. If they are still held down all this
+ 	 * time, then set host event to indicate HW_REINIT is requested. Also,
+ 	 * make sure watchdog is reloaded in order to prevent watchdog from
+ 	 * resetting the EC.
+ 	 */
 	timestamp_t deadline;
 	timestamp_t now = get_time();
 
@@ -117,18 +119,18 @@ static void button_check_hw_reinit_required(void)
 	while (!timestamp_expired(deadline, &now)) {
 		if (!is_recovery_button_pressed() ||
 		    !power_button_signal_asserted()) {
-			CPRINTS("No HW_REINIT request");
-			return;
+			return 0;
 		}
 		now = get_time();
 		watchdog_reload();
 	}
-
-	CPRINTS("HW_REINIT requested");
-	host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT);
-
-#ifdef CONFIG_LED_COMMON
-	button_blink_hw_reinit_led();
+	return 1;
+#else
+	/*
+	 * If the power button isn't pressed, recovery is requested by plugging
+	 * an AC adapter.
+	 */
+	return !power_button_signal_asserted();
 #endif
 }
 
@@ -162,8 +164,18 @@ void button_init(void)
 
 #ifdef CONFIG_BUTTON_RECOVERY
 	if (is_recovery_boot()) {
+		CPRINTS("> RECOVERY mode");
 		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
-		button_check_hw_reinit_required();
+		if (button_check_hw_reinit_required()) {
+			CPRINTS("HW_REINIT requested");
+			host_set_single_event(
+			    EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT);
+#ifdef CONFIG_LED_COMMON
+			button_blink_hw_reinit_led();
+#endif
+		} else {
+			CPRINTS("No HW_REINIT requested");
+		}
 	}
 #endif
 }

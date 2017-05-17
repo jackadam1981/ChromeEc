@@ -19,6 +19,7 @@
 /* Button */
 #define CONFIG_BUTTON_COUNT 2
 #define CONFIG_BUTTON_RECOVERY
+#define CONFIG_HW_REINIT_BY_LONG_BUTTON_PRESS
 
 /* Accelero meter and gyro sensor */
 #define CONFIG_ACCELGYRO_BMI160

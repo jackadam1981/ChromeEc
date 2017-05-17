@@ -369,6 +369,12 @@
 #undef CONFIG_BUTTON_RECOVERY
 
 /*
+ * Support for entering hardware reinitialization mode by long pressing
+ * recovery button combination.
+ */
+#undef CONFIG_HW_REINIT_BY_LONG_BUTTON_PRESS
+
+/*
  * Enable case close debug (CCD) mode in the EC.
  */
 #undef CONFIG_CASE_CLOSED_DEBUG
