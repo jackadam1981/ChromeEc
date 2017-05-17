@@ -46,6 +46,30 @@
       "revId": "d6ab953e54892ea09c025e43bffe10783c757461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a6f07c4_8cb77126",
+        "filename": "common/tablet_mode.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-05-17T08:47:19Z",
+      "side": 1,
+      "message": "make sense, generic implementation of the command makes it complicated",
+      "parentUuid": "af315da1_02597b14",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 50
+      },
+      "revId": "d6ab953e54892ea09c025e43bffe10783c757461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
