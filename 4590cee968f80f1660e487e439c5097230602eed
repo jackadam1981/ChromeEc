@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e550fd1_8c34a2c1",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-17T22:32:45Z",
+      "side": 1,
+      "message": "do you really need all these includes? What\u0027s tpm_registers.h is needed for?",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "4590cee968f80f1660e487e439c5097230602eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf994927_15b1722c",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-17T22:32:45Z",
+      "side": 1,
+      "message": "why does this have to be inverted (as opposed to comparing with 0xffffffff or ~0?",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 55
+      },
+      "revId": "4590cee968f80f1660e487e439c5097230602eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f878248f_1ca9ec92",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-17T22:32:45Z",
+      "side": 1,
+      "message": "so, this command will be available in prod images?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 23
+      },
+      "revId": "4590cee968f80f1660e487e439c5097230602eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf00c013_88f46773",
+        "filename": "chip/g/flash_info.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-17T22:32:45Z",
+      "side": 1,
+      "message": "could these two defines be spun off the board_id structure? (use sizeof and then align the size?\nat the very least there should be a compile time check that INFO_BOARD_ID_PROTECT_SIZE is no smaller than the board_id structure",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "4590cee968f80f1660e487e439c5097230602eed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
