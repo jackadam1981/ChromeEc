@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b49d215f_85f1bdcc",
+        "filename": "board/npcx7_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-05-17T01:37:58Z",
+      "side": 1,
+      "message": "Sorry. It\u0027s a typo. They should be related to pwm_channels not themselves.",
+      "parentUuid": "b8401b2e_c576438e",
+      "range": {
+        "startLine": 72,
+        "startChar": 17,
+        "endLine": 72,
+        "endChar": 63
+      },
+      "revId": "c56a72c8765f72979593455057e2a67292db5001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74f27e04_1da74992",
         "filename": "util/openocd/npcx.cfg",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-16T22:45:50Z",
       "side": 1,
       "message": "Comment out of date now?",
+      "range": {
+        "startLine": 51,
+        "startChar": 6,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "c56a72c8765f72979593455057e2a67292db5001",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8661395b_6cf48dc2",
+        "filename": "util/openocd/npcx.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-05-17T01:37:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74f27e04_1da74992",
       "range": {
         "startLine": 51,
         "startChar": 6,
