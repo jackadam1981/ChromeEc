@@ -372,6 +372,15 @@
 #undef CONFIG_BUTTON_RECOVERY
 
 /*
+ * When entering recovery mode, a user has an option to reinitialize
+ * hardware by holding the power button for 20 seconds. By enabling this switch,
+ * a user can request hardware reinitialization by powering on the system by
+ * AC adapter. To power on the system by AC adapter, the battery may have to
+ * be removed.
+ */
+#undef CONFIG_HW_REINIT_BY_AC_POWER_ON
+
+/*
  * Enable case close debug (CCD) mode in the EC.
  */
 #undef CONFIG_CASE_CLOSED_DEBUG
