@@ -22,6 +22,30 @@
       "revId": "cc0068da343b50075eefe47b8cfc74cbfda3c493",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291c4974_4c5e3408",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-05-17T10:28:46Z",
+      "side": 1,
+      "message": "Yes, agree. For a convertable design, the mode change need not to be a wake source",
+      "parentUuid": "c0b83efe_df2cdb85",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 112,
+        "endChar": 49
+      },
+      "revId": "cc0068da343b50075eefe47b8cfc74cbfda3c493",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
