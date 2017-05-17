@@ -426,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "a152fa2b_6f21ecec",
+        "filename": "board/reef_it8320/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-17T15:06:48Z",
+      "side": 1,
+      "message": "I would do the move in this CL.",
+      "parentUuid": "3cce3ab5_081f3b00",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "95d2923285a692655c555c9c549c537b03c706f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78f79483_aa9c79db",
         "filename": "board/reef_it8320/board.h",
         "patchSetId": 7
