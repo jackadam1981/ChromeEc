@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cdb24b41_7466f772",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-17T10:01:14Z",
+      "side": 1,
+      "message": "True. It\u0027s a little tricky to get it right with the rounding, but it looks like getting the dpi at runtime and comparing that with logical/physical ratio computed at compile time works fine.",
+      "parentUuid": "8d4e1bc8_a149e145",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 59
+      },
+      "revId": "bef1a9f0eb8559114c82c7403d703643ebdbff03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9e22ffb_7d64eb7c",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-16T08:05:00Z",
       "side": 1,
       "message": "what is this ifdef useful for ?",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "bef1a9f0eb8559114c82c7403d703643ebdbff03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73858406_d2ce40a1",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-17T10:01:14Z",
+      "side": 1,
+      "message": "Technically, this driver should be abstracted enough to work with other interfaces (it\u0027s the first time I use anything that is USB HID specific).\n\nNot terribly useful though, as we don\u0027t have such a case.",
+      "parentUuid": "f9e22ffb_7d64eb7c",
       "range": {
         "startLine": 255,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "bef1a9f0eb8559114c82c7403d703643ebdbff03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f780c72_7abc7188",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-17T10:01:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "595cd374_01504bc5",
+      "range": {
+        "startLine": 261,
+        "startChar": 11,
+        "endLine": 261,
+        "endChar": 58
+      },
+      "revId": "bef1a9f0eb8559114c82c7403d703643ebdbff03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
