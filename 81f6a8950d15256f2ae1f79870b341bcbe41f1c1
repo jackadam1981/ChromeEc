@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a40e4cd6_120baaf3",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-17T15:01:23Z",
+      "side": 1,
+      "message": "isn\u0027t this the spi adapter node ?",
+      "range": {
+        "startLine": 875,
+        "startChar": 35,
+        "endLine": 875,
+        "endChar": 44
+      },
+      "revId": "81f6a8950d15256f2ae1f79870b341bcbe41f1c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
