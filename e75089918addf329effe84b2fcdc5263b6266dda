@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9dd3343f_6c8f1ec7",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-17T22:58:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2bbeb10_ed5e6527",
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffdc2f92_2a17f84c",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 1
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "ffdc2f92_2a17f84c",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d765c449_d89694e4",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-17T22:58:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4169367a_b93b6215",
       "range": {
         "startLine": 65,
         "startChar": 4,
@@ -454,6 +496,30 @@
     },
     {
       "key": {
+        "uuid": "22dd727d_10913061",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-17T22:58:42Z",
+      "side": 1,
+      "message": "Per our talk offline, I\u0027ll use the fixed duration now and then improve on it later to use the deadlines.",
+      "parentUuid": "f3b9cd0c_32970cc6",
+      "range": {
+        "startLine": 182,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 8
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab2bed90_684ff394",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 1
@@ -521,6 +587,30 @@
       "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd789b19_e812ed54",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-17T22:58:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "adde2778_90f28f8f",
+      "range": {
+        "startLine": 253,
+        "startChar": 1,
+        "endLine": 253,
+        "endChar": 8
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -618,6 +708,30 @@
     },
     {
       "key": {
+        "uuid": "621cb55f_d580f753",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-17T22:58:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b3a6905_3c4d345a",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6374dc35_f32e78a2",
         "filename": "chip/g/uart_bitbang.h",
         "patchSetId": 1
@@ -685,6 +799,30 @@
       "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f511cec_a462565e",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-17T22:58:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72fb6b21_ff3bcada",
+      "range": {
+        "startLine": 69,
+        "startChar": 25,
+        "endLine": 69,
+        "endChar": 39
+      },
+      "revId": "e75089918addf329effe84b2fcdc5263b6266dda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
