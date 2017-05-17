@@ -187,6 +187,30 @@
       "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50ad684_88a9d31c",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-17T12:27:44Z",
+      "side": 1,
+      "message": "then what are you doing with vbus_source_en[1] ?\n\nand overall you no longer need this, you can probably go back to the old model where :\nvbus_source_en[0] was gpio_get_level(GPIO_USB_C0_5V_EN)",
+      "parentUuid": "31db3cf2_317c8acc",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 48
+      },
+      "revId": "34585f02e88eb45c70311c641d0fba8d78dff5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
