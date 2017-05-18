@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1e53b933_7ab9acb5",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-18T17:01:07Z",
+      "side": 1,
+      "message": "This is done in flash_physical_erase().\nflash_range_ok() mainly check for alignment (to a erase size, a uint32).\nFor STM32F4, we need to be more stringent, offset and offset+size must be at the beginning of a bank.\nGiven flash_physical_erase can be called through other path, I put the check in chip/stm32/flash-f.c.",
+      "parentUuid": "8fb5cbd2_752e0c0b",
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d7d9d54_dc614a92",
         "filename": "common/flash.c",
         "patchSetId": 8
@@ -118,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "9a2a928f_9ee1118f",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-18T17:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffafd380_3a40d981",
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e42917c7_6697e61d",
         "filename": "common/flash.c",
         "patchSetId": 8
@@ -129,6 +165,30 @@
       "writtenOn": "2017-05-18T06:17:20Z",
       "side": 1,
       "message": "rc \u003d 0\n\nor would cause compiler warning.",
+      "range": {
+        "startLine": 1187,
+        "startChar": 5,
+        "endLine": 1187,
+        "endChar": 7
+      },
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99e246d1_067b9136",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-18T17:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e42917c7_6697e61d",
       "range": {
         "startLine": 1187,
         "startChar": 5,
