@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8511c04e_5b2a0ba4",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-18T00:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b61b4aef_40db0957",
+      "revId": "9cdd4148246e48b5b91b2edf12b4464b615e3ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df507182_8aacaa59",
         "filename": "chip/g/uartn.c",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "9cdd4148246e48b5b91b2edf12b4464b615e3ba5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9857e3bb_82242321",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-18T00:17:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df507182_8aacaa59",
+      "revId": "9cdd4148246e48b5b91b2edf12b4464b615e3ba5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
