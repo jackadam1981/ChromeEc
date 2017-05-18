@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ad161d2_d5515a8c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-18T20:41:22Z",
+      "side": 1,
+      "message": "Might be better to have\n\n#define EC_CMD_FLASH_BANK_INFO 0x0019",
+      "range": {
+        "startLine": 1136,
+        "startChar": 1,
+        "endLine": 1139,
+        "endChar": 33
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "391b93cf_f1f6e063",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-18T20:41:22Z",
+      "side": 1,
+      "message": "Please comment what these fields are.\n\nnb \u003d number of banks?  bank number?\nsize in bytes?",
+      "range": {
+        "startLine": 1142,
+        "startChar": 0,
+        "endLine": 1144,
+        "endChar": 28
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa3bda27_78c3726c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-18T20:41:22Z",
+      "side": 1,
+      "message": "Can\u0027t do this.  A current version 1 reader won\u0027t know about the new flag and will treat num_banks as protect_block_size.",
+      "range": {
+        "startLine": 1152,
+        "startChar": 0,
+        "endLine": 1155,
+        "endChar": 3
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a55ede58_b629eaa0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-18T20:41:22Z",
+      "side": 1,
+      "message": "typo: erase",
+      "range": {
+        "startLine": 1224,
+        "startChar": 41,
+        "endLine": 1224,
+        "endChar": 46
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64c53210_4250e609",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-18T20:41:22Z",
+      "side": 1,
+      "message": "Is this one of the flags in uint16_t flag?",
+      "range": {
+        "startLine": 1227,
+        "startChar": 0,
+        "endLine": 1228,
+        "endChar": 38
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
