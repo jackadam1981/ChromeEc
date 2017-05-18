@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab0f2f1c_e6c7a5e7",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-18T04:46:31Z",
+      "side": 1,
+      "message": "Good point. Added TEST\u003d line.",
+      "parentUuid": "b7aac0c8_f2e43363",
+      "range": {
+        "startLine": 106,
+        "startChar": 25,
+        "endLine": 106,
+        "endChar": 26
+      },
+      "revId": "e01739de72783b05f66525b57e2f81d0075cc396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "509e121d_dc48fb15",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ad00aa92_b6c60416",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-18T04:46:31Z",
+      "side": 1,
+      "message": "Done, quite simple indeed.",
+      "parentUuid": "509e121d_dc48fb15",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 33,
+        "endChar": 75
+      },
+      "revId": "e01739de72783b05f66525b57e2f81d0075cc396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9c5df691_975c0372",
         "filename": "chip/stm32/usb_hid_touchpad.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-17T14:28:50Z",
       "side": 1,
       "message": "what are you not returning the HID descriptor if asked ?",
+      "range": {
+        "startLine": 357,
+        "startChar": 5,
+        "endLine": 357,
+        "endChar": 10
+      },
+      "revId": "e01739de72783b05f66525b57e2f81d0075cc396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2642054_94b12a1c",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-18T04:46:31Z",
+      "side": 1,
+      "message": "Fixed. Didn\u0027t seem to matter, but, yes, doesn\u0027t cost anything to do it right.",
+      "parentUuid": "9c5df691_975c0372",
       "range": {
         "startLine": 357,
         "startChar": 5,
@@ -106,6 +178,30 @@
       "side": 1,
       "message": "it seems my remark is half stupid, the ordering is on the section rather than the name",
       "parentUuid": "bca1ae1a_0509cfce",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 283,
+        "endChar": 56
+      },
+      "revId": "e01739de72783b05f66525b57e2f81d0075cc396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb31f9f8_7b0c92a9",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-18T04:46:31Z",
+      "side": 1,
+      "message": "Left as-is, let me know if you still prefer \u0026USB_CUSTOM_DESC_VAR(USB_IFACE_HID_KEYBOARD, hid) .",
+      "parentUuid": "33e61d96_bf060320",
       "range": {
         "startLine": 278,
         "startChar": 0,
