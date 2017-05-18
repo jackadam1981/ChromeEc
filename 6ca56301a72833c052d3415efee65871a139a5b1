@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8fb5cbd2_752e0c0b",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-18T06:13:27Z",
+      "side": 1,
+      "message": "We should add a similar check of multi-region flashes. Since the sector size of non-uniform, it\u0027s even more important to check if the parameter is in range.",
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d7d9d54_dc614a92",
         "filename": "common/flash.c",
         "patchSetId": 8
@@ -13,6 +30,69 @@
       "writtenOn": "2017-05-18T06:09:05Z",
       "side": 1,
       "message": "Wei-Ning suggest to use a deffered call instead.\nHowever, given they are high priority, it will make the problem worse and TASK_HOOKS will be monopolized by flash_erase_deffered for 2s, no other hooks will run, even if flash_erase() sleep from time to time.",
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ec0b252_be5cf308",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-18T06:13:27Z",
+      "side": 1,
+      "message": "Can we replace this we a deferred call? So user of this do have to add the task to ec.tasklist",
+      "range": {
+        "startLine": 784,
+        "startChar": 5,
+        "endLine": 784,
+        "endChar": 21
+      },
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffafd380_3a40d981",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-18T06:13:27Z",
+      "side": 1,
+      "message": "can we add:\n\n  ccprintf(\"Regions:\\n\");\n\nand add indent to the following output? so it look like this:\n\n\n Regions:                                                                                                                                                                                                                                                                                                                      \n   4 regions:                                                                                                                                                                                                                                                                                                                  \n     Erase:   16384 B (to 1-bits)                                                                                                                                                                                                                                                                                              \n     Size/Protect: 16384 B                                                                                                                                                                                                                                                                                                     \n   1 region:                                                                                                                                                                                                                                                                                                                   \n     Erase:   65536 B (to 1-bits)                                                                                                                                                                                                                                                                                              \n     Size/Protect: 65536 B                                                                                                                                                                                                                                                                                                     \n   3 regions:                                                                                                                                                                                                                                                                                                                  \n     Erase:   131072 B (to 1-bits)                                                                                                                                                                                                                                                                                             \n     Erase:   131072 B (to 1-bits)\n\nThis would look more clearly in the console output.",
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45e86368_cdccfda3",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-05-18T06:13:27Z",
+      "side": 1,
+      "message": "should be:\n\n EC_VER_MASK(0) | EC_VER_MASK(1)\n\n?",
+      "range": {
+        "startLine": 1248,
+        "startChar": 7,
+        "endLine": 1248,
+        "endChar": 33
+      },
       "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
