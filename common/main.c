@@ -27,6 +27,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "vboot.h"
 #include "watchdog.h"
 
 /* Console output macros */
@@ -162,6 +163,7 @@ test_mockable __keep int main(void)
 	button_init();
 #endif
 
+#ifndef CONFIG_VBOOT_EC
 #if defined(CONFIG_RWSIG) && !defined(HAS_TASK_RWSIG)
 	/*
 	 * Check the RW firmware signature and jump to it if it is good.
@@ -184,6 +186,7 @@ test_mockable __keep int main(void)
 		}
 	}
 #endif
+#endif /* !CONFIG_VBOOT_EC */
 
 	/*
 	 * Print the init time.  Not completely accurate because it can't take
