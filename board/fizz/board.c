@@ -433,12 +433,6 @@ const struct button_config *recovery_buttons[] = {
 };
 const int recovery_buttons_count = ARRAY_SIZE(recovery_buttons);
 
-enum battery_present battery_is_present(void)
-{
-	/* The GPIO is low when the battery is present */
-	return BP_NO;
-}
-
 static void board_chipset_startup(void)
 {
 	/* Set brownout flag. It's cleared when the system gracefully shuts

@@ -507,4 +507,11 @@ uintptr_t system_get_fw_reset_vector(uintptr_t base);
  */
 int system_is_reboot_warm(void);
 
+/**
+ * Check if the system is powered enough to boot AP
+ *
+ * @return true if the system is powered or false otherwise
+ */
+int system_is_powered_to_boot_ap(void);
+
 #endif  /* __CROS_EC_SYSTEM_H */

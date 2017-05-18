@@ -138,7 +138,14 @@ void battery_override_params(struct batt_params *batt);
  *
  * @return Whether there is a battery attached or not, or if we can't tell.
  */
+#ifdef CONFIG_BATTERY
 enum battery_present battery_is_present(void);
+#else
+static inline enum battery_present battery_is_present(void)
+{
+	return BP_NO;
+}
+#endif
 
 /**
  * Check for battery initialization status.
