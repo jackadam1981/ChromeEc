@@ -180,6 +180,7 @@ enum power_state power_chipset_init(void)
 
 enum power_state common_intel_x86_power_handle_state(enum power_state state)
 {
+	int percent, power;
 
 	switch (state) {
 	case POWER_G3:
@@ -276,6 +277,12 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 	case POWER_S5S3:
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away */
+			chipset_force_shutdown();
+			return POWER_S5G3;
+		}
+
+		if (!system_can_boot_ap(&percent, &power)) {
+			CPRINTS("Not enough power: %d%% %dmW", percent, power);
 			chipset_force_shutdown();
 			return POWER_S5G3;
 		}
