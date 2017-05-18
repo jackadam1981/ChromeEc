@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69976187_cf9eb8a3",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-18T16:54:08Z",
+      "side": 1,
+      "message": "should this still be (tics - X) until you change the algorithm to go by the deadline instead of fixed interval?",
+      "range": {
+        "startLine": 178,
+        "startChar": 40,
+        "endLine": 178,
+        "endChar": 45
+      },
+      "revId": "6956193dd660f10119cc4e855ca65fd2c98aa866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfef8fcc_27e6c7c4",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-18T16:54:08Z",
+      "side": 1,
+      "message": "why not to use bitfields instead?]",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "6956193dd660f10119cc4e855ca65fd2c98aa866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c561ae8c_0e5e0727",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-18T16:54:08Z",
+      "side": 1,
+      "message": "Looks like there is only one channel now, is this count still needed?",
+      "range": {
+        "startLine": 58,
+        "startChar": 15,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "6956193dd660f10119cc4e855ca65fd2c98aa866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06e97ff3_dc79e5f0",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-18T16:54:08Z",
+      "side": 1,
+      "message": "why not keep both functions in the same conditionally compiled block",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 37
+      },
+      "revId": "6956193dd660f10119cc4e855ca65fd2c98aa866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
