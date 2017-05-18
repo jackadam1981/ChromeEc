@@ -38,7 +38,9 @@ void queue_remove_direct(struct queue_policy const *policy, size_t count);
 	})
 
 #define QUEUE_DIRECT(SIZE, TYPE, PRODUCER, CONSUMER)			\
-	QUEUE(SIZE, TYPE, QUEUE_POLICY_DIRECT(PRODUCER, CONSUMER).policy)
+	QUEUE(SIZE, TYPE, QUEUE_POLICY_DIRECT(				\
+		PRODUCER, CONSUMER).policy);				\
+	BUILD_ASSERT(POWER_OF_TWO((SIZE)))
 
 /*
  * The null_producer and null_consumer are useful when constructing a queue
