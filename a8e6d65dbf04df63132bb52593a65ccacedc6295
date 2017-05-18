@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "becbe6de_bef34584",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-18T12:32:25Z",
+      "side": 1,
+      "message": "I have tried to review the various board code:\n- glados/strago/oak design+derivatives are fixed in board code.\n- coral/eve/fizz/kahlee/reef/poppy/elm/fizz/rowan are fixed in the tcpm code:\n   anx74xx_tcpc_update_hpd_status and s8751_tcpc_update_hpd_status\n   (anx7688_update_hpd seems to do it in hardware ?)\n   that said for all those boards, there was already an hardcoded msleep(1),\n   so we should be ok most of the time (unless we have backlog on messaging)\n- kevin is using the \u0027virtual_mux\u0027, should be done on kernel side\n\nRemains Samus:\n  we cannot really do this in the samus_pd code, as sleeping in priority would prevent us from GOOD_CRCing incoming packets. At the same time, the real-time issue should less acute there (as there are less CPU tasks hogging)\n  I need to do some measurements on it first.\n(also Ryu which has the same kind of more complex tradeoff, but AFAIK the feature is disabled therE)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
