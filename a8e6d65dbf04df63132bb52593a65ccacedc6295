@@ -22,6 +22,97 @@
       "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62cde9e1_ae65e518",
+        "filename": "driver/tcpm/anx74xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-05-18T19:07:24Z",
+      "side": 1,
+      "message": "Similar comment as PS8751 where hpd_deadline should be used before and after this section.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 47
+      },
+      "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "593725be_45a5d8e6",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-05-18T19:07:24Z",
+      "side": 1,
+      "message": "Some logic should be added before/after this line if hpd_lvl was changed.\n\nFor example:\nEx 1) if HPD is already low (detach), and hpd_lvl and hpd_irq are both high (attach and dongle combine the IRQ in a single PD message), then hpd_deadline need to be updated before continue on for IRQ.\n\nEx 2) it may not be physically possible, but if a quick detach and attach occur, hpd_deadline should be check before setting HPD high or low.",
+      "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "021b09d3_a395cbe0",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-05-18T19:07:24Z",
+      "side": 1,
+      "message": "I do not have a Chromebook to check, but I believe the IRQ bit is a self-clear bit, so this clearing may not be necessary.",
+      "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33e1f7b4_6c471dc8",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-05-18T19:07:24Z",
+      "side": 1,
+      "message": "If the IRQ bit is in fact self-clear, line 70 is not relevant, and this usleep is also not necessary since PS8751 will auto generate the low pulse once the IRQ bit is set by line 72.",
+      "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d12339_95265b4c",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1111479
+      },
+      "writtenOn": "2017-05-18T19:07:24Z",
+      "side": 1,
+      "message": "May not be significant, but when PS8751 auto generate the low pulse by line 72, and if assume there is no code execution latency, then get_time().val here will be the timestamp for the falling edge / the beginning of the low pulse. Will need to check the pulse width that is auto generated and add that time to hpd_deadline.",
+      "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
