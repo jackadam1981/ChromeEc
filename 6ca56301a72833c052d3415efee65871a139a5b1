@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "274d5b32_08c56fd3",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-18T07:13:10Z",
+      "side": 1,
+      "message": "Actually TASK_HOOKS is the lowest priority, so a deffered call is appropriate.",
+      "parentUuid": "1d7d9d54_dc614a92",
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ec0b252_be5cf308",
         "filename": "common/flash.c",
         "patchSetId": 8
@@ -47,6 +65,30 @@
       "writtenOn": "2017-05-18T06:13:27Z",
       "side": 1,
       "message": "Can we replace this we a deferred call? So user of this do have to add the task to ec.tasklist",
+      "range": {
+        "startLine": 784,
+        "startChar": 5,
+        "endLine": 784,
+        "endChar": 21
+      },
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f06c616_338be1ad",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-18T07:13:10Z",
+      "side": 1,
+      "message": "yes, see comment above.",
+      "parentUuid": "3ec0b252_be5cf308",
       "range": {
         "startLine": 784,
         "startChar": 5,
@@ -110,6 +152,30 @@
       "writtenOn": "2017-05-18T06:13:27Z",
       "side": 1,
       "message": "should be:\n\n EC_VER_MASK(0) | EC_VER_MASK(1)\n\n?",
+      "range": {
+        "startLine": 1248,
+        "startChar": 7,
+        "endLine": 1248,
+        "endChar": 33
+      },
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81d00441_7c1d05d8",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-18T07:13:10Z",
+      "side": 1,
+      "message": "not always: we can limit to 0 if deffered call is not needed (small erase page size)",
+      "parentUuid": "45e86368_cdccfda3",
       "range": {
         "startLine": 1248,
         "startChar": 7,
