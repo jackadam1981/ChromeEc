@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d7d9d54_dc614a92",
+        "filename": "common/flash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-18T06:09:05Z",
+      "side": 1,
+      "message": "Wei-Ning suggest to use a deffered call instead.\nHowever, given they are high priority, it will make the problem worse and TASK_HOOKS will be monopolized by flash_erase_deffered for 2s, no other hooks will run, even if flash_erase() sleep from time to time.",
+      "revId": "6ca56301a72833c052d3415efee65871a139a5b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
