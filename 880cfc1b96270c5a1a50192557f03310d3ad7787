@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a3ac8d77_5f47b394",
+        "filename": "board/poppy/board.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-18T02:31:01Z",
+      "side": 1,
+      "message": "Dropped this too.",
+      "revId": "880cfc1b96270c5a1a50192557f03310d3ad7787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08e2c54a_58a2d2fb",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 10
@@ -25,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "11ac42ca_9b5fed99",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-18T02:31:01Z",
+      "side": 1,
+      "message": "Good point. They aren\u0027t.",
+      "parentUuid": "08e2c54a_58a2d2fb",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 34
+      },
+      "revId": "880cfc1b96270c5a1a50192557f03310d3ad7787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cf48517_9698c156",
         "filename": "board/poppy/led.c",
         "patchSetId": 10
@@ -36,6 +77,30 @@
       "writtenOn": "2017-05-17T12:19:28Z",
       "side": 1,
       "message": "I suspect this is more costly (for flash space) than doing a variable assignment in the switch and the gpio_set_level()\n(said that on numerous other copies of this file)",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 9
+      },
+      "revId": "880cfc1b96270c5a1a50192557f03310d3ad7787",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a193c9c3_86883753",
+        "filename": "board/poppy/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-18T02:31:01Z",
+      "side": 1,
+      "message": "The compiler already optimizes quite a bit:\n10089e74 \u003cside_led_set_color.lto_priv.332\u003e:\n10089e74:       b510            push    {r4, lr}\n10089e76:       2800            cmp     r0, #0\n10089e78:       bf15            itete   ne\n10089e7a:       204a            movne   r0, #74 ; 0x4a\n10089e7c:       2048            moveq   r0, #72 ; 0x48\n10089e7e:       244b            movne   r4, #75 ; 0x4b\n10089e80:       2449            moveq   r4, #73 ; 0x49\n10089e82:       2901            cmp     r1, #1\n10089e84:       d00d            beq.n   10089ea2 \u003cside_led_set_color.lto_priv.332+0x2e\u003e\n10089e86:       d308            bcc.n   10089e9a \u003cside_led_set_color.lto_priv.332+0x26\u003e\n10089e88:       2902            cmp     r1, #2\n10089e8a:       d112            bne.n   10089eb2 \u003cside_led_set_color.lto_priv.332+0x3e\u003e\n10089e8c:       2100            movs    r1, #0\n10089e8e:       f7ff f86d       bl      10088f6c \u003cgpio_set_level\u003e\n10089e92:       4620            mov     r0, r4\n10089e94:       f7fe fd3e       bl      10088914 \u003cgpio_set_level.part.0.lto_priv.142\u003e\n10089e98:       e009            b.n     10089eae \u003cside_led_set_color.lto_priv.332+0x3a\u003e\n10089e9a:       2100            movs    r1, #0\n10089e9c:       f7ff f866       bl      10088f6c \u003cgpio_set_level\u003e\n10089ea0:       e001            b.n     10089ea6 \u003cside_led_set_color.lto_priv.332+0x32\u003e\n10089ea2:       f7fe fd37       bl      10088914 \u003cgpio_set_level.part.0.lto_priv.142\u003e\n10089ea6:       4620            mov     r0, r4\n10089ea8:       2100            movs    r1, #0\n10089eaa:       f7ff f85f       bl      10088f6c \u003cgpio_set_level\u003e\n10089eae:       2000            movs    r0, #0\n10089eb0:       bd10            pop     {r4, pc}\n10089eb2:       2001            movs    r0, #1\n10089eb4:       bd10            pop     {r4, pc}\n\nSo 66 bytes.\n\nTried with this:\n\n\tint yellow_state \u003d BAT_LED_OFF;\n\tint white_state \u003d BAT_LED_OFF;\n\n\tswitch (color) {\n\tcase LED_OFF:\n\t\tbreak;\n\tcase LED_AMBER:\n\t\tyellow_state \u003d BAT_LED_ON;\n\t\tbreak;\n\tcase LED_WHITE:\n\t\twhite_state \u003d BAT_LED_ON;\n\t\tbreak;\n\tdefault:\n\t\treturn EC_ERROR_UNKNOWN;\n\t}\n\n\tgpio_set_level(port ? GPIO_LED_YELLOW_C1 :\n\t\tGPIO_LED_YELLOW_C0, yellow_state);\n\tgpio_set_level(port ? GPIO_LED_WHITE_C1 :\n\t\tGPIO_LED_WHITE_C0, white_state);\n\n\treturn EC_SUCCESS;\n\n10089e74 \u003cside_led_set_color.lto_priv.332\u003e:\n10089e74:       b538            push    {r3, r4, r5, lr}\n10089e76:       2901            cmp     r1, #1\n10089e78:       4605            mov     r5, r0\n10089e7a:       d005            beq.n   10089e88 \u003cside_led_set_color.lto_priv.332+0x14\u003e\n10089e7c:       d306            bcc.n   10089e8c \u003cside_led_set_color.lto_priv.332+0x18\u003e\n10089e7e:       2902            cmp     r1, #2\n10089e80:       d115            bne.n   10089eae \u003cside_led_set_color.lto_priv.332+0x3a\u003e\n10089e82:       2401            movs    r4, #1\n10089e84:       2100            movs    r1, #0\n10089e86:       e003            b.n     10089e90 \u003cside_led_set_color.lto_priv.332+0x1c\u003e\n10089e88:       2400            movs    r4, #0\n10089e8a:       e001            b.n     10089e90 \u003cside_led_set_color.lto_priv.332+0x1c\u003e\n10089e8c:       2400            movs    r4, #0\n10089e8e:       4621            mov     r1, r4\n10089e90:       2d00            cmp     r5, #0\n10089e92:       bf0c            ite     eq\n10089e94:       2048            moveq   r0, #72 ; 0x48\n10089e96:       204a            movne   r0, #74 ; 0x4a\n10089e98:       f7ff f868       bl      10088f6c \u003cgpio_set_level\u003e\n10089e9c:       2d00            cmp     r5, #0\n10089e9e:       bf14            ite     ne\n10089ea0:       204b            movne   r0, #75 ; 0x4b\n10089ea2:       2049            moveq   r0, #73 ; 0x49\n10089ea4:       4621            mov     r1, r4\n10089ea6:       f7ff f861       bl      10088f6c \u003cgpio_set_level\u003e\n10089eaa:       2000            movs    r0, #0\n10089eac:       bd38            pop     {r3, r4, r5, pc}\n10089eae:       2001            movs    r0, #1\n10089eb0:       bd38            pop     {r3, r4, r5, pc}\n\nA little better: 62 bytes.\n\nThis one saves quite some space, at the expense of not checking for invalid color, which is fine for an internal function.\nstatic void side_led_set_color(int port, enum led_color color)\n{\n\tgpio_set_level(port ? GPIO_LED_YELLOW_C1 : GPIO_LED_YELLOW_C0,\n\t\t(color \u003d\u003d LED_AMBER) ? BAT_LED_ON : BAT_LED_OFF);\n\tgpio_set_level(port ? GPIO_LED_WHITE_C1 : GPIO_LED_WHITE_C0,\n\t\t(color \u003d\u003d LED_WHITE) ? BAT_LED_ON : BAT_LED_OFF);\n}\n\n10089e74 \u003cside_led_set_color.lto_priv.332\u003e:\n10089e74:       b538            push    {r3, r4, r5, lr}\n10089e76:       1e4b            subs    r3, r1, #1\n10089e78:       460c            mov     r4, r1\n10089e7a:       4605            mov     r5, r0\n10089e7c:       2800            cmp     r0, #0\n10089e7e:       bf0c            ite     eq\n10089e80:       2048            moveq   r0, #72 ; 0x48\n10089e82:       204a            movne   r0, #74 ; 0x4a\n10089e84:       4259            negs    r1, r3\n10089e86:       4159            adcs    r1, r3\n10089e88:       f7ff f870       bl      10088f6c \u003cgpio_set_level\u003e\n10089e8c:       2d00            cmp     r5, #0\n10089e8e:       f1a4 0202       sub.w   r2, r4, #2\n10089e92:       bf14            ite     ne\n10089e94:       204b            movne   r0, #75 ; 0x4b\n10089e96:       2049            moveq   r0, #73 ; 0x49\n10089e98:       4251            negs    r1, r2\n10089e9a:       4151            adcs    r1, r2\n10089e9c:       e8bd 4038       ldmia.w sp!, {r3, r4, r5, lr}\n10089ea0:       f7ff b864       b.w     10088f6c \u003cgpio_set_level\u003e\n\n48 bytes.",
+      "parentUuid": "0cf48517_9698c156",
       "range": {
         "startLine": 43,
         "startChar": 0,
