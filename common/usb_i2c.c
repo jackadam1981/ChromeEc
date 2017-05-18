@@ -50,13 +50,25 @@ static void usb_i2c_write_packet(struct usb_i2c_config const *config,
 	QUEUE_ADD_UNITS(config->tx_queue, config->buffer, count);
 }
 
-void usb_i2c_deferred(struct usb_i2c_config const *config)
-{
-	/*
-	 * And if there is a USB packet waiting we process it and generate a
-	 * response.
-	 */
-	uint8_t count      = usb_i2c_read_packet(config);
+static uint8_t usb_i2c_executable(struct usb_i2c_config const *config) {
+        /* 
+         * In order to support larger write payload, we need to peek
+         * the queue to see if we need to wait for more data. */
+        uint8_t write_count;
+        queue_peek_units(config->consumer.queue, &write_count, 2, 1);
+
+        if ((write_count + 4) > queue_count(config->consumer.queue)) {
+          config->buffer[0] = config->buffer[1] = 0;
+	  usb_i2c_write_packet(config, 4);
+          return 0;
+        }
+        return 1;
+}
+
+void usb_i2c_execute(struct usb_i2c_config const *config) {
+        /* Payload is ready to execute. */
+
+	uint8_t count       = usb_i2c_read_packet(config);
 	int portindex       = (config->buffer[0] >> 0) & 0xff;
 	/* Convert 7-bit slave address to chromium EC 8-bit address. */
 	uint8_t slave_addr  = (config->buffer[0] >> 7) & 0xfe;
@@ -79,15 +91,23 @@ void usb_i2c_deferred(struct usb_i2c_config const *config)
 		config->buffer[0] = USB_I2C_PORT_INVALID;
 	} else {
 		port = i2c_ports[portindex].port;
+	        i2c_lock(port, 1);
 		config->buffer[0] = usb_i2c_map_error(
 			i2c_xfer(port, slave_addr,
 				 (uint8_t *)(config->buffer + 2),
 				 write_count,
 				 (uint8_t *)(config->buffer + 2),
 				 read_count, I2C_XFER_SINGLE));
+	        i2c_lock(port, 0);
 	}
-
 	usb_i2c_write_packet(config, read_count + 4);
+}
+
+void usb_i2c_deferred(struct usb_i2c_config const *config)
+{
+  /* Check if we can proceed the queue. */
+  if (usb_i2c_executable(config))
+      usb_i2c_execute(config);
 }
 
 static void usb_i2c_written(struct consumer const *consumer, size_t count)
