@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0aeb5da8_07dd8eb4",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-19T22:41:51Z",
+      "side": 1,
+      "message": "Ah, I removed the \"-3\" because when I re-did my measurements, the rise/fall time were \u003c 1us. So, I\u0027m not sure where I got the original 3 from.",
+      "parentUuid": "69976187_cf9eb8a3",
+      "range": {
+        "startLine": 178,
+        "startChar": 40,
+        "endLine": 178,
+        "endChar": 45
+      },
+      "revId": "6956193dd660f10119cc4e855ca65fd2c98aa866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bfef8fcc_27e6c7c4",
         "filename": "chip/g/uart_bitbang.h",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a02b2816_5e0771ca",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-19T22:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfef8fcc_27e6c7c4",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 22
+      },
+      "revId": "6956193dd660f10119cc4e855ca65fd2c98aa866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c561ae8c_0e5e0727",
         "filename": "chip/g/uart_bitbang.h",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-18T16:54:08Z",
       "side": 1,
       "message": "Looks like there is only one channel now, is this count still needed?",
+      "range": {
+        "startLine": 58,
+        "startChar": 15,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "6956193dd660f10119cc4e855ca65fd2c98aa866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd3d535_6a80176c",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-19T22:41:51Z",
+      "side": 1,
+      "message": "I tried to write this to be extensible in case we would need to bitbang a different UART, but I guess we won\u0027t need to. I can remove this and assume that only one UART/channel is supported.",
+      "parentUuid": "c561ae8c_0e5e0727",
       "range": {
         "startLine": 58,
         "startChar": 15,
@@ -91,6 +163,30 @@
       "revId": "6956193dd660f10119cc4e855ca65fd2c98aa866",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f12244fc_e20b61f0",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-19T22:41:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e97ff3_dc79e5f0",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 37
+      },
+      "revId": "6956193dd660f10119cc4e855ca65fd2c98aa866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
