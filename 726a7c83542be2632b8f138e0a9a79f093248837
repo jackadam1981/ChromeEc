@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "088ec894_41d36206",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-05-19T16:29:42Z",
+      "side": 1,
+      "message": "When we have extra size, we can use more than 128 bytes for cros_ec messages.\nShould I2C_MAX_HOST_PACKET_SIZE be a CONFIG_\nand we uprade it to 255?",
+      "revId": "726a7c83542be2632b8f138e0a9a79f093248837",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
