@@ -1210,9 +1210,36 @@ struct __ec_align4 ec_params_flash_write {
 /* Erase flash */
 #define EC_CMD_FLASH_ERASE 0x0013
 
+/* v0 */
 struct __ec_align4 ec_params_flash_erase {
 	uint32_t offset;   /* Byte offset to erase */
 	uint32_t size;     /* Size to erase in bytes */
+};
+
+
+#define EC_VER_FLASH_WRITE 1
+/* v1 add async erase:
+ * subcommands can returns:
+ * EC_RES_SUCCESS : erased (see ERASE_SECTOR_ASYNC case below).
+ * EC_RES_INVALID_PARAM : offset/size are not aligned on a erase boundary.
+ * EC_RES_ERROR : other errors.
+ * EC_RES_BUSY : an existing erase operation is in progress.
+ * EC_RES_ACCESS_DENIED: Trying to erase running image.
+ *
+ * When ERASE_SECTOR_ASYNC returns EC_RES_SUCCESS, the operation is just
+ * queued. The user must call GET_RESULT subcommand to get the proper results.
+ */
+enum ec_flash_erase_cmd {
+	FLASH_ERASE_SECTOR,     /* Erase and wait for result */
+	FLASH_ERASE_SECTOR_ASYNC,  /* Erase and return immediately. */
+	FLASH_ERASE_GET_RESULT,  /* Ask for last erase result */
+};
+
+struct __ec_align4 ec_params_flash_erase_v1 {
+	uint8_t  cmd;
+	uint8_t  rsvd;
+	uint16_t flag;
+	struct ec_params_flash_erase params;
 };
 
 /*
