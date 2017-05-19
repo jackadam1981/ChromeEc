@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d29b177c_2a6431e7",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d10bb808_56d44c79",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 15
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8bd12d5_93786ac5",
         "filename": "common/flash.c",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-19T18:13:28Z",
       "side": 1,
       "message": "index?",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d62b1a80_c3db146d",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8bd12d5_93786ac5",
       "range": {
         "startLine": 133,
         "startChar": 15,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f2e8df4d_fad809bb",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2d9e22d_014fc31c",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 69
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9618aff_3e87d730",
         "filename": "common/flash.c",
         "patchSetId": 13
@@ -82,6 +154,30 @@
       "writtenOn": "2017-05-19T18:13:28Z",
       "side": 1,
       "message": "Why this change?",
+      "range": {
+        "startLine": 433,
+        "startChar": 1,
+        "endLine": 433,
+        "endChar": 53
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a7a6a58_3e1ca866",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "It looks more common, readable.",
+      "parentUuid": "e9618aff_3e87d730",
       "range": {
         "startLine": 433,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "93e77e83_d424fe54",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7941ccc8_6ad82c67",
+      "range": {
+        "startLine": 787,
+        "startChar": 0,
+        "endLine": 800,
+        "endChar": 6
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a3bafac_3869f31f",
         "filename": "common/flash.c",
         "patchSetId": 13
@@ -128,6 +248,30 @@
       "writtenOn": "2017-05-19T18:13:28Z",
       "side": 1,
       "message": "Which might be different for multiple regions?",
+      "range": {
+        "startLine": 1077,
+        "startChar": 43,
+        "endLine": 1077,
+        "endChar": 63
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c48b3117_f9dfce9f",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "It may become too advanced. We can set CONFIG_FLASH_WRITE_IDEAL_SIZE to the minimal that works for all.",
+      "parentUuid": "5a3bafac_3869f31f",
       "range": {
         "startLine": 1077,
         "startChar": 43,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "df12f000_a4b3d7ef",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54b2341b_64d7f9f3",
+      "range": {
+        "startLine": 986,
+        "startChar": 58,
+        "endLine": 986,
+        "endChar": 64
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "214b0d8d_6472c8af",
         "filename": "include/config.h",
         "patchSetId": 13
@@ -174,6 +342,30 @@
       "writtenOn": "2017-05-19T18:13:28Z",
       "side": 1,
       "message": "Do you mean CONFIG_FLASH_REGION_COUNT?",
+      "range": {
+        "startLine": 1037,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 31
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b2e6764_97226c1a",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "Each type can contian several regions: CONFIG_FLASH_REGION_TYPE_COUNT then.",
+      "parentUuid": "214b0d8d_6472c8af",
       "range": {
         "startLine": 1037,
         "startChar": 0,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "d07218ec_cf001647",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87111533_0302dff0",
+      "range": {
+        "startLine": 1134,
+        "startChar": 3,
+        "endLine": 1136,
+        "endChar": 33
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09b4a032_641979b4",
         "filename": "include/ec_commands.h",
         "patchSetId": 13
@@ -220,6 +436,30 @@
       "writtenOn": "2017-05-19T18:13:28Z",
       "side": 1,
       "message": "uint8_t should be plenty",
+      "range": {
+        "startLine": 1160,
+        "startChar": 1,
+        "endLine": 1160,
+        "endChar": 9
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b88aaa4_bc964cbf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "Actually, it is not: one board has one type of more than 256 region:\ncommon/flash.c:1068:3: error: large integer implicitly truncated to unsigned type [-Werror\u003doverflow]:\n\nnpcx eval board (npcx_evb) has 8MB of 4k page flash.\nI could improve flash.c to report several bank of the same size, but I think add 1 byte per bank is not a memory burden.\nWe will revisit when EC has more than 256MB.",
+      "parentUuid": "09b4a032_641979b4",
       "range": {
         "startLine": 1160,
         "startChar": 1,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "a4591554_48aa0de6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "isn\u0027t it the usual behavior? I remember a RFC [3270]:\n\"\"\"Any compliant sender MUST set all bits not defined and all reserved fields to zero unless specified otherwise.  Any compliant receiver MUST ignore any bit not defined and all reserved fields unless specified otherwise.\"\"\"",
+      "parentUuid": "077c6e57_055c04b5",
+      "range": {
+        "startLine": 1170,
+        "startChar": 9,
+        "endLine": 1170,
+        "endChar": 16
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e7c567e_b7df2622",
         "filename": "include/ec_commands.h",
         "patchSetId": 13
@@ -266,6 +530,30 @@
       "writtenOn": "2017-05-19T18:13:28Z",
       "side": 1,
       "message": "Couldn\u0027t this be bank-specific?",
+      "range": {
+        "startLine": 1177,
+        "startChar": 10,
+        "endLine": 1177,
+        "endChar": 26
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "672ba7c9_3ff6909e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "see flash.c",
+      "parentUuid": "8e7c567e_b7df2622",
       "range": {
         "startLine": 1177,
         "startChar": 10,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "ad73c7fd_62a94768",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "see above",
+      "parentUuid": "2c710f97_d2496bc7",
+      "range": {
+        "startLine": 1179,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 25
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d61d6eb1_d312b096",
         "filename": "include/ec_commands.h",
         "patchSetId": 13
@@ -312,6 +624,30 @@
       "writtenOn": "2017-05-19T18:13:28Z",
       "side": 1,
       "message": "reserved; /* Write 0, ignore on read */",
+      "range": {
+        "startLine": 1239,
+        "startChar": 10,
+        "endLine": 1239,
+        "endChar": 14
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53945aad_6a902b70",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "see above",
+      "parentUuid": "d61d6eb1_d312b096",
       "range": {
         "startLine": 1239,
         "startChar": 10,
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "0f491c94_a10e06a1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "In the code, I reuse v0 structure in the common code.",
+      "parentUuid": "639dc605_424dd63b",
+      "range": {
+        "startLine": 1241,
+        "startChar": 1,
+        "endLine": 1241,
+        "endChar": 37
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "188c9ff9_6cdefe5c",
         "filename": "include/flash.h",
         "patchSetId": 13
@@ -358,6 +718,30 @@
       "writtenOn": "2017-05-19T18:13:28Z",
       "side": 1,
       "message": "#error?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa11ded2_0d43ab0c",
+        "filename": "include/flash.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188c9ff9_6cdefe5c",
       "range": {
         "startLine": 45,
         "startChar": 0,

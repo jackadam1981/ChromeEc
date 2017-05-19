@@ -22,6 +22,30 @@
       "revId": "11237d5e911d769cac995e2e1ab9d16598542bc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "60ef3509_4a589cc7",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T20:59:17Z",
+      "side": 0,
+      "message": "Yes, that\u0027s my understanding: AT( addresses are well chosen.",
+      "parentUuid": "69742410_90144c4b",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "11237d5e911d769cac995e2e1ab9d16598542bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
