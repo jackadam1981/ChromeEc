@@ -22,6 +22,30 @@
       "revId": "aaf213299faa23ec36f27a3684fd0dac82d8e9ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12c6fc2f_326c1972",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-05-19T13:09:40Z",
+      "side": 1,
+      "message": "No longer used since we can ignore the busy state, mainly RXNE, after RX DMA disabled. Previously I was using these flags on clearing the RX data register. But our original flow does that before TX DMA start (line 276). So I merged there by adding RXNE flag check. The drawback is that I left the SPI hardware in a dirty state in between 2 transactions.",
+      "parentUuid": "de8e0ced_804ee8b3",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 0
+      },
+      "revId": "aaf213299faa23ec36f27a3684fd0dac82d8e9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
