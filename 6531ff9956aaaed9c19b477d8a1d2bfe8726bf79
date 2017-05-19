@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3efbc78a_17df4fe5",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-19T17:43:33Z",
+      "side": 1,
+      "message": "Also I just noticed in gpio.inc you have \n\nPINMUX(GPIO(SPI_CS_ALT_L),       A5, DIO_INPUT) \ninstead of \nPINMUX(GPIO(SPI_CS_ALT_L),       A5, DIO_OUTPUT)\n\nThat means that the spi peripheral cs signal is still connected to DIOA5 during init. Is that ok?",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 55
+      },
+      "revId": "6531ff9956aaaed9c19b477d8a1d2bfe8726bf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "191caee2_c06a14dc",
+        "filename": "board/mn50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-19T17:43:33Z",
+      "side": 1,
+      "message": "Are  GPIO_DUT_RST_L and GPIO_DUT_BOOT_CFG guaranteed to be outputs at this point?",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "6531ff9956aaaed9c19b477d8a1d2bfe8726bf79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
