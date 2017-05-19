@@ -25,6 +25,54 @@
     },
     {
       "key": {
+        "uuid": "121e9576_386f1b03",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T02:46:37Z",
+      "side": 1,
+      "message": "Remove flag BANKS_DEFINED: v2 is now completely different from v1.",
+      "parentUuid": "6ad161d2_d5515a8c",
+      "range": {
+        "startLine": 1136,
+        "startChar": 1,
+        "endLine": 1139,
+        "endChar": 33
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a53c734e_535e69f3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T02:46:37Z",
+      "side": 1,
+      "message": "Cleaned FLASH_INFO to get",
+      "parentUuid": "6ad161d2_d5515a8c",
+      "range": {
+        "startLine": 1136,
+        "startChar": 1,
+        "endLine": 1139,
+        "endChar": 33
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "391b93cf_f1f6e063",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
@@ -36,6 +84,30 @@
       "writtenOn": "2017-05-18T20:41:22Z",
       "side": 1,
       "message": "Please comment what these fields are.\n\nnb \u003d number of banks?  bank number?\nsize in bytes?",
+      "range": {
+        "startLine": 1142,
+        "startChar": 0,
+        "endLine": 1144,
+        "endChar": 28
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c0f235c_7b21a38d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T02:46:37Z",
+      "side": 1,
+      "message": "change to count below.",
+      "parentUuid": "391b93cf_f1f6e063",
       "range": {
         "startLine": 1142,
         "startChar": 0,
@@ -71,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "f3163bbe_49819a22",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T02:46:37Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "aa3bda27_78c3726c",
+      "range": {
+        "startLine": 1152,
+        "startChar": 0,
+        "endLine": 1155,
+        "endChar": 3
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a55ede58_b629eaa0",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
@@ -94,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "641dfd81_a810cf28",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T02:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a55ede58_b629eaa0",
+      "range": {
+        "startLine": 1224,
+        "startChar": 41,
+        "endLine": 1224,
+        "endChar": 46
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64c53210_4250e609",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
@@ -105,6 +225,30 @@
       "writtenOn": "2017-05-18T20:41:22Z",
       "side": 1,
       "message": "Is this one of the flags in uint16_t flag?",
+      "range": {
+        "startLine": 1227,
+        "startChar": 0,
+        "endLine": 1228,
+        "endChar": 38
+      },
+      "revId": "256177b68f436dd64d0b72a78b4fd9cb8c14ae28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e97060da_7243d889",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-19T02:46:37Z",
+      "side": 1,
+      "message": "remove, not implemented. [yes it was]",
+      "parentUuid": "64c53210_4250e609",
       "range": {
         "startLine": 1227,
         "startChar": 0,
