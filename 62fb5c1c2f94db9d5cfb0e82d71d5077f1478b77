@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d10bb808_56d44c79",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "if",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 15
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8bd12d5_93786ac5",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "index?",
+      "range": {
+        "startLine": 133,
+        "startChar": 15,
+        "endLine": 133,
+        "endChar": 21
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2d9e22d_014fc31c",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "Will return incorrect data if either call fails...",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 69
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9618aff_3e87d730",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "Why this change?",
+      "range": {
+        "startLine": 433,
+        "startChar": 1,
+        "endLine": 433,
+        "endChar": 53
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7941ccc8_6ad82c67",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "Should be two changes:\n\n1) Add deferred support\n2) Add multiple region support",
+      "range": {
+        "startLine": 787,
+        "startChar": 0,
+        "endLine": 800,
+        "endChar": 6
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a3bafac_3869f31f",
+        "filename": "common/flash.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1077,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "Which might be different for multiple regions?",
+      "range": {
+        "startLine": 1077,
+        "startChar": 43,
+        "endLine": 1077,
+        "endChar": 63
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54b2341b_64d7f9f3",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 986,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "Just make a specific config\n\n/* Allow deferred (async) flash erase */\n#undef CONFIG_FLASH_DEFERRED_ERASE",
+      "range": {
+        "startLine": 986,
+        "startChar": 58,
+        "endLine": 986,
+        "endChar": 64
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "214b0d8d_6472c8af",
+        "filename": "include/config.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "Do you mean CONFIG_FLASH_REGION_COUNT?",
+      "range": {
+        "startLine": 1037,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 31
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87111533_0302dff0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "Out of date.",
+      "range": {
+        "startLine": 1134,
+        "startChar": 3,
+        "endLine": 1136,
+        "endChar": 33
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09b4a032_641979b4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "uint8_t should be plenty",
+      "range": {
+        "startLine": 1160,
+        "startChar": 1,
+        "endLine": 1160,
+        "endChar": 9
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "077c6e57_055c04b5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "reserverd[2] /* Write 0, ignore on read */\n\nImportant to specify that it should be written 0 and ignored on read, or else we can\u0027t use it without specifying a flag or struct version somewhere else.",
+      "range": {
+        "startLine": 1170,
+        "startChar": 9,
+        "endLine": 1170,
+        "endChar": 16
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e7c567e_b7df2622",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "Couldn\u0027t this be bank-specific?",
+      "range": {
+        "startLine": 1177,
+        "startChar": 10,
+        "endLine": 1177,
+        "endChar": 26
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c710f97_d2496bc7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "uint8_t?",
+      "range": {
+        "startLine": 1179,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 25
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d61d6eb1_d312b096",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "reserved; /* Write 0, ignore on read */",
+      "range": {
+        "startLine": 1239,
+        "startChar": 10,
+        "endLine": 1239,
+        "endChar": 14
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "639dc605_424dd63b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "Is there an advantage to using the sub-struct vs. just directly specifying offset and size fields?",
+      "range": {
+        "startLine": 1241,
+        "startChar": 1,
+        "endLine": 1241,
+        "endChar": 37
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "188c9ff9_6cdefe5c",
+        "filename": "include/flash.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 1,
+      "message": "#error?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 28
+      },
+      "revId": "62fb5c1c2f94db9d5cfb0e82d71d5077f1478b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

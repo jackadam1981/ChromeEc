@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69742410_90144c4b",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 13
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-19T18:13:28Z",
+      "side": 0,
+      "message": "Is this safe to remove because all of the things below explictly specify AT()?",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "11237d5e911d769cac995e2e1ab9d16598542bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
