@@ -65,6 +65,24 @@
     },
     {
       "key": {
+        "uuid": "56bf450b_25af6647",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-19T14:15:59Z",
+      "side": 1,
+      "message": "Overall the attach has a 100-ms debouncing period.\nSo I don\u0027t think adding code/complexity will bring much to the table.",
+      "parentUuid": "593725be_45a5d8e6",
+      "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "021b09d3_a395cbe0",
         "filename": "driver/tcpm/ps8751.c",
         "patchSetId": 2
@@ -76,6 +94,24 @@
       "writtenOn": "2017-05-18T19:07:24Z",
       "side": 1,
       "message": "I do not have a Chromebook to check, but I believe the IRQ bit is a self-clear bit, so this clearing may not be necessary.",
+      "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f785223_d099b667",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-19T14:15:59Z",
+      "side": 1,
+      "message": "I don\u0027t know, maybe indeed.\nOverall I haven\u0027t changed at the behavior from the previous code.\nLooking at the history, you were believing otherwise before :\nhttps://chromium-review.googlesource.com/c/351319/",
+      "parentUuid": "021b09d3_a395cbe0",
       "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
