@@ -219,6 +219,16 @@ struct deferred_data {
  */
 int hook_call_deferred(const struct deferred_data *data, int us);
 
+/**
+ * Check if all HOOK_INIT hooks are called or not
+ *
+ * After all HOOK_INIT hooks are called, tasks start running. This can be used
+ * to check whether the RTOS is running in multiple contexts or not.
+ *
+ * @return true if HOOK_INIT hooks are called or false otherwise
+ */
+int hook_is_initalized(void);
+
 #ifdef CONFIG_COMMON_RUNTIME
 /**
  * Register a hook routine.

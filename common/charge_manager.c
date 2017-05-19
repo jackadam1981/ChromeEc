@@ -807,8 +807,15 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	 * to our charge port until we are certain we know what is
 	 * attached.
 	 */
-	if (charge_manager_is_seeded())
-		hook_call_deferred(&charge_manager_refresh_data, 0);
+
+	if (charge_manager_is_seeded()) {
+		if (hook_is_initalized())
+			hook_call_deferred(&charge_manager_refresh_data, 0);
+		else
+			/* When deferred call isn't ready, tasks are not yet
+			 * running. Thus, no need to queue refresh requests. */
+			charge_manager_refresh();
+	}
 }
 
 void charge_manager_update_charge(int supplier,

@@ -159,6 +159,11 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 	return EC_SUCCESS;
 }
 
+int hook_is_initalized(void)
+{
+	return hook_task_started > 1;
+}
+
 void hook_task(void)
 {
 	/* Periodic hooks will be called first time through the loop */
@@ -169,6 +174,9 @@ void hook_task(void)
 
 	/* Call HOOK_INIT hooks. */
 	hook_notify(HOOK_INIT);
+
+	/* All HOOK_INIT hooks are called */
+	hook_task_started++;
 
 	/* Now, enable the rest of the tasks. */
 	task_enable_all_tasks();
