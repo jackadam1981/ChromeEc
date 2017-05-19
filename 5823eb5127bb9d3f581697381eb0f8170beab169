@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6280a15_044ba63c",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-19T17:39:02Z",
+      "side": 1,
+      "message": "sorry, this slipped through the cracks. It would be great to add a comment for these arrays, explaining how they are indexed (and map into H1 internals).",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 0
+      },
+      "revId": "5823eb5127bb9d3f581697381eb0f8170beab169",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
