@@ -411,6 +411,10 @@ void system_set_rtc_alarm(uint32_t seconds, uint32_t microseconds)
 		return;
 	}
 
+	/* Disable MTC interrupt and alarm interrupt first */
+	task_disable_irq(NPCX_IRQ_MTC_WKINTAD_0);
+	CLEAR_BIT(NPCX_WTC, NPCX_WTC_WIE);
+
 	/* Get current clock */
 	cur_secs = NPCX_TTC;
 
@@ -418,35 +422,27 @@ void system_set_rtc_alarm(uint32_t seconds, uint32_t microseconds)
 	alarm_secs = cur_secs + seconds;
 	alarm_secs = alarm_secs & MTC_ALARM_MASK;
 
-	/* Reset alarm first */
-	system_reset_rtc_alarm();
+	/* Set alarm before writing PTO, use first 25 bits of clock value */
+	if (seconds == 1)
+		NPCX_WTC = MTC_ALARM_MASK; /* Set PTO as max temporarily */
+	else
+		NPCX_WTC = alarm_secs;
 
-	/* Set alarm, use first 25 bits of clock value */
-	NPCX_WTC = alarm_secs;
+	/* Clear interrupt when TTC is not equal to PTO */
+	SET_BIT(NPCX_WTC, NPCX_WTC_PTO);
 
-	/* Enable interrupt mode alarm */
-	SET_BIT(NPCX_WTC, NPCX_WTC_WIE);
-
-	/* Enable MTC interrupt */
-	task_enable_irq(NPCX_IRQ_MTC_WKINTAD_0);
+	/* Set original alarm again */
+	if (seconds == 1)
+		NPCX_WTC = alarm_secs;
 
 	/* Enable wake-up input sources & clear pending bit */
 	NPCX_WKPCL(MIWU_TABLE_0, MTC_WUI_GROUP)  |= MTC_WUI_MASK;
 	NPCX_WKINEN(MIWU_TABLE_0, MTC_WUI_GROUP) |= MTC_WUI_MASK;
 	NPCX_WKEN(MIWU_TABLE_0, MTC_WUI_GROUP)   |= MTC_WUI_MASK;
-}
 
-void system_reset_rtc_alarm(void)
-{
-	/*
-	 * Clear interrupt & Disable alarm interrupt
-	 * Update alarm value to zero
-	 */
-	CLEAR_BIT(NPCX_WTC, NPCX_WTC_WIE);
-	SET_BIT(NPCX_WTC, NPCX_WTC_PTO);
-
-	/* Disable MTC interrupt */
-	task_disable_irq(NPCX_IRQ_MTC_WKINTAD_0);
+	/* Enable MTC interrupt and alarm interrupt again */
+	SET_BIT(NPCX_WTC, NPCX_WTC_WIE);
+	task_enable_irq(NPCX_IRQ_MTC_WKINTAD_0);
 }
 
 /*
