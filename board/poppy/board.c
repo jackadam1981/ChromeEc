@@ -467,8 +467,14 @@ const int recovery_buttons_count = ARRAY_SIZE(recovery_buttons);
 
 static void board_pmic_init(void)
 {
+	int reg;
 	if (system_jumped_to_this_image())
 		return;
+
+	/* PWRSTAT1 - print and clear the power status register*/
+	i2c_read8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x16, &reg);
+	/* Write 1 to clear, writing 0 has no effect */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x16, reg);
 
 	/* DISCHGCNT3 - enable 100 ohm discharge on V1.00A */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3e, 0x04);
@@ -491,6 +497,9 @@ static void board_pmic_init(void)
 
 	/* VRMODECTRL - disable low-power mode for all rails */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3b, 0x1f);
+
+	/* Print power status register PWRSTAT1 */
+        CPRINTS("PMIC PSR1 %x \n", reg);
 }
 DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
 
