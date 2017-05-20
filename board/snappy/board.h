@@ -303,6 +303,9 @@ enum snappy_board_version {
 #define PD_MAX_CURRENT_MA     3000
 #define PD_MAX_VOLTAGE_MV     20000
 
+/* The higher the input voltage, the higher the power efficiency. */
+#define PD_PREFER_HIGH_VOLTAGE
+
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
 extern const int keyboard_factory_scan_pins[][2];
 extern const int keyboard_factory_scan_pins_used;
