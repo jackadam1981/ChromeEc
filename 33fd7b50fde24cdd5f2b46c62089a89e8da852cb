@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08e6521d_716042fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-20T01:13:23Z",
+      "side": 1,
+      "message": "The kernel is not the only consumer of host events. Does entering recovery mode via the 3 finger salute (esc+refresh+power) work with your changes? What about closing the lid at the recovery screen? Does the system turn off?",
+      "revId": "33fd7b50fde24cdd5f2b46c62089a89e8da852cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
