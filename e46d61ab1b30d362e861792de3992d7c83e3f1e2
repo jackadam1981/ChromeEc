@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0680a8e_3c47def3",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-21T06:53:21Z",
+      "side": 1,
+      "message": "Most of the stm32_dfu boards like servos, twinkie, etc, don\u0027t have servod interfaces. So maybe better to fill \"none\" as a valid servo type?\n\nnote: there is an override to DUT_CONTROL_COMMAND later in the file that seems to address this elsewhere in the code.",
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bea7b612_8023aef9",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-21T06:53:21Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 17
+      },
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d345d0dc_00aa72f3",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-21T06:53:21Z",
+      "side": 1,
+      "message": "consistent naming w/ line 309",
+      "range": {
+        "startLine": 274,
+        "startChar": 13,
+        "endLine": 274,
+        "endChar": 14
+      },
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2aadf655_0c1497db",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-21T06:53:21Z",
+      "side": 1,
+      "message": "does this need to be above the call to DUT_CONTROL_CMD in get servo type?",
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bf4ec04_42d7b769",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-21T06:53:21Z",
+      "side": 1,
+      "message": "Note servo micro is on_raiden, but still needs reset, spi1_vref and spi1_buf_en set.",
+      "range": {
+        "startLine": 513,
+        "startChar": 4,
+        "endLine": 513,
+        "endChar": 15
+      },
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0736f1a_cea81df6",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-05-21T06:53:21Z",
+      "side": 1,
+      "message": "serial is valid for both servo v2, micro, and cr50",
+      "range": {
+        "startLine": 518,
+        "startChar": 22,
+        "endLine": 518,
+        "endChar": 43
+      },
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
