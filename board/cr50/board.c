@@ -190,7 +190,7 @@ static struct board_cfg board_cfg_table[] = {
 
 	/* I2C Variants: DIOA9 = 1M PD, DIOA1 = 1M PD */
 	/* Reef/Eve: DIOA12 = 5k PD, DIOA6 = 1M PU */
-	{ 0x20, BOARD_SLAVE_CONFIG_I2C | BOARD_USB_AP | BOARD_USE_PLT_RESET },
+	{ 0x20, BOARD_SLAVE_CONFIG_I2C | BOARD_USE_PLT_RESET },
 	/* Rowan: DIOA12 = 5k PD, DIOA6 = 5k PU */
 	{ 0x30, BOARD_SLAVE_CONFIG_I2C },
 };
