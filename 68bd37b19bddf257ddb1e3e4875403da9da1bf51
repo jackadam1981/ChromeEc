@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99305f98_748c41cc",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-22T19:05:15Z",
+      "side": 1,
+      "message": "I\u0027m having a hard time understanding what this AC adapter comment means. This is only valid if a device is not using a battery? If so I feel like there should be an assertion of a config value confirming that assumption.",
+      "revId": "68bd37b19bddf257ddb1e3e4875403da9da1bf51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
