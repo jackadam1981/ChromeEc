@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa42a8f2_74938436",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-22T15:50:05Z",
+      "side": 1,
+      "message": "did you check if struct takes one byte? You might need to use __packed here if it does not.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "3d96c2fc543e543a1a619c01463120e9303c940b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5d15143_5724d922",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-22T15:50:05Z",
+      "side": 1,
+      "message": "I think this is just confusing, as the rest of the code does not allow (and is not expected to) to support multiple bitbang channels, let\u0027s just get rid of this.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 53
+      },
+      "revId": "3d96c2fc543e543a1a619c01463120e9303c940b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
