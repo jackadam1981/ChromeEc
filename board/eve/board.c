@@ -735,6 +735,27 @@ const matrix_3x3_t lid_standard_ref = {
 	{ 0,  0, FLOAT_TO_FP(1)}
 };
 
+struct si114x_drv_data_t eve_si114x_data = {
+	.state = SI114X_NOT_READY,
+	.covered = 0,
+	.type_data = {
+		/* Proximity */
+		{
+			.base_data_reg = SI114X_REG_PS1_DATA0,
+			.irq_flags = SI114X_PS_INT_FLAG,
+			.scale = 1,
+			.offset = -256,
+		},
+		/* light */
+		{
+			.base_data_reg = SI114X_REG_ALSVIS_DATA0,
+			.irq_flags = SI114X_ALS_INT_FLAG,
+			.scale = 1,
+			.offset = -81,
+		}
+	}
+};
+
 struct motion_sensor_t motion_sensors[] = {
 
 	[LID_ACCEL] = {
@@ -900,11 +921,11 @@ struct motion_sensor_t motion_sensors[] = {
 	 .location = MOTIONSENSE_LOC_LID,
 	 .drv = &si114x_drv,
 	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_si114x_data,
+	 .drv_data = &eve_si114x_data,
 	 .port = I2C_PORT_ALS,
 	 .addr = SI114X_ADDR,
 	 .rot_standard_ref = NULL,
-	 .default_range = 9000, /* 90%: int = 0 - frac = 9000/10000 */
+	 .default_range = 3100, /* 31%: int = 0 - frac = 3100/10000 */
 	 .min_frequency = SI114X_LIGHT_MIN_FREQ,
 	 .max_frequency = SI114X_LIGHT_MAX_FREQ,
 	 .config = {
