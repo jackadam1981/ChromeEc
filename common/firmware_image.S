@@ -33,7 +33,11 @@
 #ifdef CONFIG_ROLLBACK
 /* Note: matches struct rollback_data in common/rollback.c. */
 .section .image.ROLLBACK, "a"
+.long 0
 .long CONFIG_ROLLBACK_VERSION
+#ifdef CONFIG_ROLLBACK_ENTROPY_SIZE
+.space CONFIG_ROLLBACK_ENTROPY_SIZE, 0
+#endif
 .long CROS_EC_ROLLBACK_COOKIE
 #endif
 
