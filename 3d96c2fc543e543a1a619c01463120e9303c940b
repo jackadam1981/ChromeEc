@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "7114eb7c_cacabebd",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-22T17:43:24Z",
+      "side": 1,
+      "message": "Change to chip-$(CONFIG_UART_BITBANG)+\u003d uart_bitbang.o",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "3d96c2fc543e543a1a619c01463120e9303c940b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14733537_d26fc579",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-22T17:43:24Z",
+      "side": 1,
+      "message": "You need to make sure servo is not connected before enabling uart bitbang.",
+      "range": {
+        "startLine": 65,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "3d96c2fc543e543a1a619c01463120e9303c940b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa42a8f2_74938436",
         "filename": "chip/g/uart_bitbang.h",
         "patchSetId": 5
