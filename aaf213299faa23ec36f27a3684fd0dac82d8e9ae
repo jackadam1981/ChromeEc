@@ -46,6 +46,30 @@
       "revId": "aaf213299faa23ec36f27a3684fd0dac82d8e9ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "855d0cbb_23a1ab5e",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-22T09:45:49Z",
+      "side": 1,
+      "message": "Then you can remove it ?",
+      "parentUuid": "12c6fc2f_326c1972",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 0
+      },
+      "revId": "aaf213299faa23ec36f27a3684fd0dac82d8e9ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
