@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc31b007_d852e1ea",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-23T07:21:55Z",
+      "side": 1,
+      "message": "this failed by the preCQ build in ec-utils.\nit seems the ec-utils package is missing a dependency to install this header.\nPlease see https://chromium-review.googlesource.com/458468\n\nI just saw the workaround: https://chromium-review.googlesource.com/c/511522/",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "1d10236f07a453a438745e9ae541307f69df61ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
