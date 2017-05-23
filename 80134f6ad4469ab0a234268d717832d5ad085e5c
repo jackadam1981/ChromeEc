@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8022c31_4e2b4c24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-23T18:22:50Z",
+      "side": 1,
+      "message": "Yes.\nAnd it can be worse, if the CPU needs to load some code from flash, it stalls: [RM0383 Reference manual]:\n\"\"\" Any attempt to read the Flash memory on STM32F4xx while it is being written or erased, causes the bus to stall. Read operations are processed correctly once the program operation has completed. This means that code or data fetches cannot be performed while a write/erase operation is ongoing.\"\"\"\n\nBut at least, the command that timeout is FLASH_ERASE_GET_RESULT that can be retried.",
+      "parentUuid": "1aff0136_c9cde6b8",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "80134f6ad4469ab0a234268d717832d5ad085e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb7c6476_0fc905fc",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-23T15:43:24Z",
       "side": 1,
       "message": "Please add comments describing these fields.  Also, \u0027reserved\u0027 instead of \u0027rsvd\u0027",
+      "range": {
+        "startLine": 1239,
+        "startChar": 0,
+        "endLine": 1241,
+        "endChar": 15
+      },
+      "revId": "80134f6ad4469ab0a234268d717832d5ad085e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15876ba2_3cf2e538",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-23T18:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb7c6476_0fc905fc",
       "range": {
         "startLine": 1239,
         "startChar": 0,
