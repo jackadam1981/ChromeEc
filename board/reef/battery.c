@@ -35,6 +35,7 @@ enum fast_chg_voltage_ranges {
 	VOLTAGE_RANGE_0,
 	VOLTAGE_RANGE_1,
 	VOLTAGE_RANGE_2,
+	VOLTAGE_RANGE_3,
 };
 
 enum temp_range {
@@ -199,6 +200,8 @@ static const struct fast_charge_profile fast_charge_panasonic_info[] = {
 		.current_mA = {
 			[VOLTAGE_RANGE_0] = 0,
 			[VOLTAGE_RANGE_1] = 0,
+			[VOLTAGE_RANGE_2] = 0,
+			[VOLTAGE_RANGE_3] = 0,
 		},
 	},
 
@@ -207,7 +210,9 @@ static const struct fast_charge_profile fast_charge_panasonic_info[] = {
 		.temp_c = TEMPC_TENTHS_OF_DEG(60),
 		.current_mA = {
 			[VOLTAGE_RANGE_0] = 3072,
-			[VOLTAGE_RANGE_1] = 3072,
+			[VOLTAGE_RANGE_1] = 1536,
+			[VOLTAGE_RANGE_2] = 768,
+			[VOLTAGE_RANGE_3] = 256,
 		},
 	},
 
@@ -217,6 +222,8 @@ static const struct fast_charge_profile fast_charge_panasonic_info[] = {
 		.current_mA = {
 			[VOLTAGE_RANGE_0] = 0,
 			[VOLTAGE_RANGE_1] = 0,
+			[VOLTAGE_RANGE_2] = 0,
+			[VOLTAGE_RANGE_3] = 0,
 		},
 	},
 };
@@ -225,8 +232,10 @@ static const struct fast_charge_params fast_chg_params_panasonic = {
 	.total_temp_ranges = ARRAY_SIZE(fast_charge_panasonic_info),
 	.default_temp_range_profile = TEMP_RANGE_1,
 	.voltage_mV = {
-		[VOLTAGE_RANGE_0] = 8000,
-		[VOLTAGE_RANGE_1] = CHARGER_PROF_VOLTAGE_MV_LAST_RANGE,
+		[VOLTAGE_RANGE_0] = 8399,
+		[VOLTAGE_RANGE_1] = 8559,
+		[VOLTAGE_RANGE_2] = 8699,
+		[VOLTAGE_RANGE_3] = CHARGER_PROF_VOLTAGE_MV_LAST_RANGE,
 	},
 	.chg_profile_info = &fast_charge_panasonic_info[0],
 };
@@ -634,6 +643,7 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 int charger_profile_override(struct charge_state_data *curr)
 {
 	int disch_on_ac = charger_should_discharge_on_ac(curr);
+	int override_voltage = board_get_batt_params()->batt_info->voltage_max;
 
 	charger_discharge_on_ac(disch_on_ac);
 
@@ -642,10 +652,14 @@ int charger_profile_override(struct charge_state_data *curr)
 		return 0;
 	}
 
+	if ((board_battery_type == BATTERY_PANASONIC) &&
+	    (curr->batt.desired_voltage < override_voltage))
+		override_voltage = curr->batt.desired_voltage;
+
 	return charger_profile_override_common(curr,
 			board_get_batt_params()->fast_chg_params,
 			&prev_chg_profile_info,
-			board_get_batt_params()->batt_info->voltage_max);
+			override_voltage);
 }
 
 /*
