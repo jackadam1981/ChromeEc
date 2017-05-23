@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1aff0136_c9cde6b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-23T17:10:50Z",
+      "side": 1,
+      "message": "Does this mean we now can stall HOOK task for 2 seconds instead of HOSTCMD task?",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "80134f6ad4469ab0a234268d717832d5ad085e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb7c6476_0fc905fc",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
