@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4ab2f8f_2e046483",
+        "filename": "board/eve/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-23T21:49:03Z",
+      "side": 1,
+      "message": "We need to move g_si114x_data out of als_si114x.c if needed.",
+      "revId": "3cfcfa270b391d90aa8373da4eefc1d45de41eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a80221d8_1317ceea",
+        "filename": "board/eve/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-23T21:49:03Z",
+      "side": 1,
+      "message": "This is suspicious: when no light are found, the ALS will returns (256 - 81 ) * 0.31 lux \u003e 50 lux.\n\nIt should be -81 / 0.31 \u003d -261 ~ -256.\nThen you can keep using g_si114x_data...",
+      "revId": "3cfcfa270b391d90aa8373da4eefc1d45de41eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
