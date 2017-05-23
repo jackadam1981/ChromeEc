@@ -22,6 +22,30 @@
       "revId": "3d7273886eecb2f2ba0e60768940263426e365fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a33da9f_3b3310d0",
+        "filename": "board/eve/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-05-23T14:56:38Z",
+      "side": 1,
+      "message": "Yes it looks like that is necessary. (don\u0027t actually have this new keyboard to try yet)  I\u0027ll push a separate change.",
+      "parentUuid": "1549743e_10abf397",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 6
+      },
+      "revId": "3d7273886eecb2f2ba0e60768940263426e365fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
