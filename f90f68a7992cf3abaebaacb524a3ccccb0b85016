@@ -22,6 +22,29 @@
       "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91333a51_921a79ee",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-05-23T07:40:03Z",
+      "side": 1,
+      "message": "nit: It might be advisable to rename this to indicate it is actually a secret which the base holds. If that\u0027s obvious from the name, we\u0027re hopefully less likely to accidentally reveal it through unrelated code changes. Maybe \"device_secret\"? I don\u0027t feel strong on the exact name.",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
