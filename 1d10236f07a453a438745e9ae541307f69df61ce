@@ -22,6 +22,30 @@
       "revId": "1d10236f07a453a438745e9ae541307f69df61ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b368899_5d1892f3",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-23T09:12:08Z",
+      "side": 1,
+      "message": "Is this really breaking preCQ? If so we should chump the fix.\n\nI thought it was only breaking a few boards in BuildPackages (and possibly passing on retry as flashmap (which provides the header) should be on most devices)",
+      "parentUuid": "fc31b007_d852e1ea",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "1d10236f07a453a438745e9ae541307f69df61ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
