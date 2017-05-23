@@ -916,7 +916,7 @@ static void i2c_event_handler(int port)
 		STM32_I2C_CR2(port) &= ~STM32_I2C_CR2_ITBUFEN;
 
 #ifdef CONFIG_BOARD_I2C_SLAVE_ADDR
-		if (rx_pending && addr == CONFIG_BOARD_I2C_SLAVE_ADDR)
+		if (addr == CONFIG_BOARD_I2C_SLAVE_ADDR)
 			i2c_process_board_command(0, addr, buf_idx);
 #endif
 		rx_pending = 0;
