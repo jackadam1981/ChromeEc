@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e322711_346a11c7",
+        "filename": "common/flash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-23T18:22:57Z",
+      "side": 1,
+      "message": "offset and offset + size should be addresses at the beginning of bank:\n\n0                   32\n+-------------------+--------...\n|  bank 0           | bank 1 ...\n+-------------------+--------...\nIn that case, begin \u003d 0, end \u003d 1, return is 1.\n\notherwise, this is an error:\n\n0          32       64\n+----------+--------+--------...\n|  bank 0           | bank 1 ...\n+----------+--------+--------...\nbegin \u003d 0, end \u003d -1....\n\nThe idea is to prevent erasing more than you think.",
+      "parentUuid": "b6e08e09_edd28d0e",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 20
+      },
+      "revId": "cc97578137076e1ab8b05bb315188fbc3db63bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00e009a8_e1095989",
         "filename": "include/ec_commands.h",
         "patchSetId": 16
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "52674c0b_7a9b7956",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-23T18:22:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e009a8_e1095989",
+      "revId": "cc97578137076e1ab8b05bb315188fbc3db63bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2543d849_2b5ef681",
         "filename": "include/ec_commands.h",
         "patchSetId": 16
@@ -53,6 +95,30 @@
       "writtenOn": "2017-05-23T15:36:36Z",
       "side": 1,
       "message": "/* Reserved; set 0; ignore on read */",
+      "range": {
+        "startLine": 1162,
+        "startChar": 1,
+        "endLine": 1162,
+        "endChar": 17
+      },
+      "revId": "cc97578137076e1ab8b05bb315188fbc3db63bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a69303d9_ba35ae66",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-23T18:22:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2543d849_2b5ef681",
       "range": {
         "startLine": 1162,
         "startChar": 1,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "1b525310_92e2662d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-23T18:22:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ab9e6c0_9caa2c5f",
+      "range": {
+        "startLine": 1166,
+        "startChar": 0,
+        "endLine": 1171,
+        "endChar": 17
+      },
+      "revId": "cc97578137076e1ab8b05bb315188fbc3db63bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d5c5c74_d59ffbc0",
         "filename": "include/flash.h",
         "patchSetId": 16
@@ -99,6 +189,30 @@
       "writtenOn": "2017-05-23T15:36:36Z",
       "side": 1,
       "message": "These should have comments describing the interface",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "cc97578137076e1ab8b05bb315188fbc3db63bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f5d602d_cc7d4c15",
+        "filename": "include/flash.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-23T18:22:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d5c5c74_d59ffbc0",
       "range": {
         "startLine": 17,
         "startChar": 0,
