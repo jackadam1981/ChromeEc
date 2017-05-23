@@ -46,6 +46,30 @@
       "revId": "1d10236f07a453a438745e9ae541307f69df61ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e8156e_3f432672",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-23T09:14:00Z",
+      "side": 1,
+      "message": "(I meant -release builders)",
+      "parentUuid": "8b368899_5d1892f3",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "1d10236f07a453a438745e9ae541307f69df61ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
