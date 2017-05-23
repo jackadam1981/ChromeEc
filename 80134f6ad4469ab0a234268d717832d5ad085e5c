@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb7c6476_0fc905fc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-23T15:43:24Z",
+      "side": 1,
+      "message": "Please add comments describing these fields.  Also, \u0027reserved\u0027 instead of \u0027rsvd\u0027",
+      "range": {
+        "startLine": 1239,
+        "startChar": 0,
+        "endLine": 1241,
+        "endChar": 15
+      },
+      "revId": "80134f6ad4469ab0a234268d717832d5ad085e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
