@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8353effe_69aeae18",
+        "filename": "common/firmware_image.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-23T07:02:02Z",
+      "side": 1,
+      "message": "can we just make CONFIG_ROLLBACK_ENTROPY_SIZE 0 by default ? and avoid a few more #ifdef",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
