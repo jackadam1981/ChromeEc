@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cbcf416_9d65ba6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-23T14:22:07Z",
+      "side": 1,
+      "message": "smaller one what? desired vs max?\n\nThe battery has a desired voltage its exporting and it should be honored regardless? Is this the only way to accomplish that? Why is this battery different from the other ones?",
+      "range": {
+        "startLine": 15,
+        "startChar": 26,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "38679c34fe2ed48bc39d1ef159c2a4d3220fda16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ca5685_8ac9cfde",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-05-23T14:22:07Z",
+      "side": 1,
+      "message": "What happens when desired_voltage \u003d\u003d 0?",
+      "range": {
+        "startLine": 656,
+        "startChar": 17,
+        "endLine": 656,
+        "endChar": 32
+      },
+      "revId": "38679c34fe2ed48bc39d1ef159c2a4d3220fda16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
