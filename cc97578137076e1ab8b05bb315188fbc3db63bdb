@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6e08e09_edd28d0e",
+        "filename": "common/flash.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-23T15:36:36Z",
+      "side": 1,
+      "message": "So, flash_bank_count(0, 32) is 0?\nShouldn\u0027t this be end - begin + 1?",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 20
+      },
+      "revId": "cc97578137076e1ab8b05bb315188fbc3db63bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00e009a8_e1095989",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-23T15:36:36Z",
+      "side": 1,
+      "message": "Seem to have deleted a line here?",
+      "revId": "cc97578137076e1ab8b05bb315188fbc3db63bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2543d849_2b5ef681",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1162,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-23T15:36:36Z",
+      "side": 1,
+      "message": "/* Reserved; set 0; ignore on read */",
+      "range": {
+        "startLine": 1162,
+        "startChar": 1,
+        "endLine": 1162,
+        "endChar": 17
+      },
+      "revId": "cc97578137076e1ab8b05bb315188fbc3db63bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ab9e6c0_9caa2c5f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-23T15:36:36Z",
+      "side": 1,
+      "message": "Please add comments describing these fields.  This header file is the documentation for the EC host command interface...",
+      "range": {
+        "startLine": 1166,
+        "startChar": 0,
+        "endLine": 1171,
+        "endChar": 17
+      },
+      "revId": "cc97578137076e1ab8b05bb315188fbc3db63bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d5c5c74_d59ffbc0",
+        "filename": "include/flash.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-23T15:36:36Z",
+      "side": 1,
+      "message": "These should have comments describing the interface",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "cc97578137076e1ab8b05bb315188fbc3db63bdb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
