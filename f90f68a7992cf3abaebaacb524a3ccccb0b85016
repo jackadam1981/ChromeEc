@@ -45,6 +45,52 @@
       "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28682da_bbf80028",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-23T08:37:56Z",
+      "side": 1,
+      "message": "so when we update the version (as per rollback_update_version() below), we discard the entropy/secret value ?\nI\u0027m not sure I understand the design here.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 6
+      },
+      "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b251f4_5280a3d9",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-23T08:37:56Z",
+      "side": 1,
+      "message": "this is kind of painful to use, why not system_is_locked() ?",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 29
+      },
+      "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
