@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02374690_9ac0ef65",
+        "filename": "include/flash.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-23T20:36:57Z",
+      "side": 1,
+      "message": "in bytes?",
+      "revId": "14f35ee5948aa140efd9f276a64ea3388acc2633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "257bb9ad_e56ff56f",
+        "filename": "include/flash.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-23T20:36:57Z",
+      "side": 1,
+      "message": "Would help to /* defined(XXXX) */ here, since it\u0027s hard to match up with the #ifdef.",
+      "revId": "14f35ee5948aa140efd9f276a64ea3388acc2633",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
