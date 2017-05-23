@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1549743e_10abf397",
+        "filename": "board/eve/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-23T09:41:35Z",
+      "side": 1,
+      "message": "Doesn\u0027t this mask need updating too? I think 0x3c is the right value now.",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 168,
+        "endChar": 6
+      },
+      "revId": "3d7273886eecb2f2ba0e60768940263426e365fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
