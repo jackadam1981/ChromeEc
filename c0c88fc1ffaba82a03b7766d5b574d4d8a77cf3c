@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a194ce07_998161cb",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-23T06:39:55Z",
+      "side": 1,
+      "message": "even if this is working (because CONFIG_RO_MEM_OFF \u003d\u003d 0)  , substracting an offset from the size is kind of wrong .",
+      "range": {
+        "startLine": 57,
+        "startChar": 24,
+        "endLine": 57,
+        "endChar": 63
+      },
+      "revId": "c0c88fc1ffaba82a03b7766d5b574d4d8a77cf3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
