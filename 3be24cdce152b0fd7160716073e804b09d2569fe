@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4f0f8e_e049862b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-05-24T16:35:57Z",
+      "side": 1,
+      "message": "Doing this to force the type used to represent the enum to be larger than 8-bits seems a little sketchy, but if it doesn\u0027t break the world it seems like the least yucky way to address the issue.",
+      "range": {
+        "startLine": 483,
+        "startChar": 1,
+        "endLine": 483,
+        "endChar": 20
+      },
+      "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
