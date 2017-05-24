@@ -49,7 +49,7 @@ struct host_cmd_handler_args {
 	 * when sending the response back to the host if it detects an error
 	 * in the response or in its own operation.
 	 */
-	enum ec_status result;
+	uint16_t result;
 };
 
 /* Args for host packet handler */
@@ -96,7 +96,7 @@ struct host_packet {
 	 * return a properly formatted error response packet rather than
 	 * calling a command handler.
 	 */
-	enum ec_status driver_result;
+	uint16_t driver_result;
 };
 
 /* Host command */
@@ -129,7 +129,7 @@ uint8_t *host_get_memmap(int offset);
  * @param args	        Command handler args
  * @return resulting status
  */
-enum ec_status host_command_process(struct host_cmd_handler_args *args);
+uint16_t host_command_process(struct host_cmd_handler_args *args);
 
 #ifdef CONFIG_HOSTCMD_EVENTS
 /**
