@@ -218,8 +218,8 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 			/* Power down to next state */
 			return POWER_S0S3;
 #ifdef CONFIG_POWER_S0IX
-		} else if (power_get_host_sleep_state() ==
-			    HOST_SLEEP_EVENT_S0IX_SUSPEND) {
+		} else if (gpio_get_level(GPIO_PCH_SLP_S0_L) == 0 &&
+				power_get_host_sleep_state() == HOST_SLEEP_EVENT_S0IX_SUSPEND) {
 			return POWER_S0S0ix;
 #endif
 		}
@@ -228,8 +228,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 
 #ifdef CONFIG_POWER_S0IX
 	case POWER_S0ix:
-		if ((power_get_host_sleep_state() ==
-		     HOST_SLEEP_EVENT_S0IX_RESUME) &&
+		if ((gpio_get_level(GPIO_PCH_SLP_S0_L)== 1) &&
 		   (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1)) {
 			return POWER_S0ixS0;
 		} else if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
