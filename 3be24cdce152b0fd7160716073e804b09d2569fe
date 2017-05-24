@@ -93,6 +93,30 @@
       "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9df04006_8104aa16",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1167634
+      },
+      "writtenOn": "2017-05-24T18:07:20Z",
+      "side": 1,
+      "message": "Sounds good. The comment was meant to spell out the implications of removing this value. I\u0027ve made your proposed changes, so that comment isn\u0027t necessary anymore.",
+      "parentUuid": "3af4e006_626afa3c",
+      "range": {
+        "startLine": 488,
+        "startChar": 13,
+        "endLine": 488,
+        "endChar": 36
+      },
+      "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
