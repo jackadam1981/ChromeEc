@@ -141,6 +141,30 @@
       "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d0a149b_f159b031",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1167634
+      },
+      "writtenOn": "2017-05-24T18:15:37Z",
+      "side": 1,
+      "message": "Right, we don\u0027t need 2, it was just nice-to-have. I\u0027ve removed that aspect from this commit.",
+      "parentUuid": "b9ba1048_0778a428",
+      "range": {
+        "startLine": 488,
+        "startChar": 13,
+        "endLine": 488,
+        "endChar": 36
+      },
+      "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
