@@ -22,6 +22,29 @@
       "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb6c08c9_f0d96e07",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-24T17:03:10Z",
+      "side": 1,
+      "message": "ec_host_response.result is already explicitly a uint16_t for this reason.\n\nCross-platform fields must use fixed-size types and must not use enums.  For example, there\u0027s nothing which prevents the compiler from using uint32_t for \u0027enum foo\u0027.\n\nWhere is this actually causing a problem?",
+      "range": {
+        "startLine": 488,
+        "startChar": 13,
+        "endLine": 488,
+        "endChar": 36
+      },
+      "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
