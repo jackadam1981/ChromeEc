@@ -70,6 +70,24 @@
       "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7ae024e_b8743bed",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-24T04:36:42Z",
+      "side": 1,
+      "message": "But, who does the reset of the valid bit? Wouldn\u0027t we have to write to IBBR at some point so that once VBAT goes above the threshold, future write can be successful?",
+      "parentUuid": "a5b52d46_9c5bda8a",
+      "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
