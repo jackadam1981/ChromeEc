@@ -477,8 +477,18 @@ enum ec_status {
 	EC_RES_INVALID_HEADER = 12,     /* Header contains invalid data */
 	EC_RES_REQUEST_TRUNCATED = 13,  /* Didn't get the entire request */
 	EC_RES_RESPONSE_TOO_BIG = 14,   /* Response was too big to handle */
-	EC_RES_BUS_ERROR = 15,          /* Communications bus error */
-	EC_RES_BUSY = 16                /* Up but too busy.  Should retry */
+	EC_RES_BUS_ERROR = 15,		/* Communications bus error */
+	EC_RES_BUSY = 16,		/* Up but too busy.  Should retry */
+
+	EC_RES_MAX = 0xFFFF		/* EC status codes occupy a uint16_t,
+					 * and should not exceed this value.
+					 * Do not remove this value, else
+					 * compilers may optimize this enum to
+					 * only hold a single byte, preventing
+					 * the `ec_host_response.result` field
+					 * from holding any value greater than
+					 * 0xFF.
+					 */
 };
 
 /*
