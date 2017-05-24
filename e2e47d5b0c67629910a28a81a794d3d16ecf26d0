@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fae4139c_64852ed7",
+        "filename": "board/nucleo-f411re/Makefile",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-24T20:56:33Z",
+      "side": 1,
+      "message": "I think Daisuke doesn\u0027t want these Makefiles anymore. You\u0027ll note none of the other boards have it now.\n\nYou can easily do make BOARD\u003d from the root directory instead.",
+      "revId": "e2e47d5b0c67629910a28a81a794d3d16ecf26d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f813ca11_208e2856",
+        "filename": "board/nucleo-f411re/board.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-24T20:56:33Z",
+      "side": 1,
+      "message": "you mean 1g?",
+      "range": {
+        "startLine": 80,
+        "startChar": 26,
+        "endLine": 80,
+        "endChar": 27
+      },
+      "revId": "e2e47d5b0c67629910a28a81a794d3d16ecf26d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b36281c0_5663afb7",
+        "filename": "board/nucleo-f411re/gpio.inc",
+        "patchSetId": 24
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-24T20:56:33Z",
+      "side": 1,
+      "message": "Maybe align these a little more.",
+      "range": {
+        "startLine": 28,
+        "startChar": 45,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "e2e47d5b0c67629910a28a81a794d3d16ecf26d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
