@@ -16,6 +16,24 @@
       "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6f0cd3_42cf40fa",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-05-24T03:23:15Z",
+      "side": 1,
+      "message": "If IBBR is set, it means the VBAT has been dropped below the MIN operational voltage and the contents of BBRAM are corrupted.\nBecause the corruption of BBRAM content, we return the error code if IBBR is set.",
+      "parentUuid": "3619b999_231fe515",
+      "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
