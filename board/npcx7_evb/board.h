@@ -57,6 +57,7 @@
 /* New features on npcx7 ec */
 #define CONFIG_KEYBOARD_KSO_HIGH_DRIVE /* Quasi-bidirectional buf for KSOs */
 #undef CONFIG_HIBERNATE_PSL /* Use PSL (Power Switch Logic) for hibernate */
+#undef CONFIG_EXT_LFCLK /* Use external 32kHz OSC as LFCLK */
 
 /* Optional feature to configure npcx7 chip */
 #define NPCX_UART_MODULE2  0 /* 0:GPIO10/11 1:GPIO64/65 as UART */
