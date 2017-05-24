@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f6c5914_6ec28012",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-05-24T03:42:35Z",
+      "side": 1,
+      "message": "yes, smaller one between desired and max.\nBattery should give correct information. I think EC can only rely on it.\nIt\u0027s currently the only way since battery will adjust it\u0027s desired charge voltage by its internal policy, some of those are not readable via I2C.\nIt\u0027s for two batteries. I upload another patch to separate common part and panasonic part.\nhttps://chromium-review.googlesource.com/#/c/513703/",
+      "parentUuid": "9cbcf416_9d65ba6f",
+      "range": {
+        "startLine": 15,
+        "startChar": 26,
+        "endLine": 15,
+        "endChar": 44
+      },
+      "revId": "38679c34fe2ed48bc39d1ef159c2a4d3220fda16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17ca5685_8ac9cfde",
         "filename": "board/reef/battery.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-23T14:22:07Z",
       "side": 1,
       "message": "What happens when desired_voltage \u003d\u003d 0?",
+      "range": {
+        "startLine": 656,
+        "startChar": 17,
+        "endLine": 656,
+        "endChar": 32
+      },
+      "revId": "38679c34fe2ed48bc39d1ef159c2a4d3220fda16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8744617_b1bc2846",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-05-24T03:42:35Z",
+      "side": 1,
+      "message": "desired_voltage \u003d\u003d 0 will be overrided to batt_info-\u003evoltage_max in charger driver",
+      "parentUuid": "17ca5685_8ac9cfde",
       "range": {
         "startLine": 656,
         "startChar": 17,
