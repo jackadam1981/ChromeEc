@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d43ea426_bb6c69a7",
+        "filename": "common/firmware_image.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-24T06:57:02Z",
+      "side": 1,
+      "message": "Yeah, but then the assembler isn\u0027t too happy:\ncommon/firmware_image.S:38: Warning: .space repeat count is zero, ignored\n\nSo we\u0027d need to at least ifdef this one, and it\u0027d look weird to do it here but not elsewhere. WDYT?",
+      "parentUuid": "8353effe_69aeae18",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91333a51_921a79ee",
         "filename": "common/rollback.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-23T07:40:03Z",
       "side": 1,
       "message": "nit: It might be advisable to rename this to indicate it is actually a secret which the base holds. If that\u0027s obvious from the name, we\u0027re hopefully less likely to accidentally reveal it through unrelated code changes. Maybe \"device_secret\"? I don\u0027t feel strong on the exact name.",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfb83528_d5186ecf",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-24T06:57:02Z",
+      "side": 1,
+      "message": "Just used \"secret\", and changed config option name.",
+      "parentUuid": "91333a51_921a79ee",
       "range": {
         "startLine": 30,
         "startChar": 9,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "44d41d69_3977adc6",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-24T06:57:02Z",
+      "side": 1,
+      "message": "Yeah, this is confusing, we update data in place so the secret is not touched. I\u0027ll add a comment.\n\nAnd add documentation to the function.",
+      "parentUuid": "c28682da_bbf80028",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 6
+      },
+      "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16b251f4_5280a3d9",
         "filename": "common/rollback.c",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bb783aa_b6fa165c",
+        "filename": "common/rollback.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-24T06:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b251f4_5280a3d9",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 29
+      },
+      "revId": "f90f68a7992cf3abaebaacb524a3ccccb0b85016",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
