@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3619b999_231fe515",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-24T02:05:52Z",
+      "side": 1,
+      "message": "Side question, why do we have this test? Can\u0027t we write to BBRAM anyway if IBBR is set?",
+      "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
