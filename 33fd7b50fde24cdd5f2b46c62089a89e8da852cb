@@ -34,6 +34,24 @@
       "revId": "33fd7b50fde24cdd5f2b46c62089a89e8da852cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "225e120a_068d2cf2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-05-24T21:59:28Z",
+      "side": 1,
+      "message": "Yes, it does (answer to all three of your questions).  On Caroline, LID_CLOSED gets delivered via host_events.  On kevin, it gets LID_CLOSED through a cros_ec_buttons LID input event entry which is not connected to host_events notification.  Caroline will be different as it appears to get LID_CLOSED via host_events, but not for Kevin (this patch).",
+      "parentUuid": "081b5d4c_b1d0259a",
+      "revId": "33fd7b50fde24cdd5f2b46c62089a89e8da852cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
