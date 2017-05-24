@@ -34,6 +34,24 @@
       "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0baba78_ce996aa1",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-24T03:24:42Z",
+      "side": 1,
+      "message": "Yes... But, we are trying to write to bbram? Can\u0027t we always write anyway?",
+      "parentUuid": "7e6f0cd3_42cf40fa",
+      "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
