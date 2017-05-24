@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "249c7f27_0dc7c3e5",
+        "filename": "common/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-24T20:34:51Z",
+      "side": 1,
+      "message": "You should maybe describe a typical way of calling these functions.\n\nThe way I see it:\nFLASH_ERASE_SECTOR_ASYNC - flash_erase_deferred 1 starts, returns EC_RES_SUCCESS\nFLASH_ERASE_SECTOR_ASYNC - we\u0027re still busy with the first one, so we return EC_RES_BUSY, but do not start a new one\nflash_erase_deferred 1 stops with a success\noptional FLASH_ERASE_GET_RESULT, should get a EC_RES_SUCCESS back\nFLASH_ERASE_SECTOR_ASYNC - flash_erase_deferred 2 starts, returns EC_RES_SUCCESS\nflash_erase_deferred 2 with an error\nFLASH_ERASE_SECTOR_ASYNC - still returns EC_RES_BUSY, won\u0027t start a new job even though there\u0027s not one already running\nThe only way to do another job now is to call FLASH_ERASE_GET_RESULT (which will return the error) then FLASH_ERASE_SECTOR_ASYNC can be called again to successfully start a new job.",
+      "range": {
+        "startLine": 1224,
+        "startChar": 6,
+        "endLine": 1224,
+        "endChar": 30
+      },
+      "revId": "886bcdf2136d56b84e8f5c693ee3fadc80256517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26a27616_57eb7799",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
