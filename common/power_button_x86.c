@@ -235,7 +235,8 @@ static void set_initial_pwrbtn_state(void)
 
 #if defined(CONFIG_BRINGUP) || defined(CONFIG_POWER_BUTTON_INIT_IDLE)
 	if (!power_button_is_pressed() &&
-			!host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY))
+			!host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY) &&
+			!(reset_flags & RESET_FLAG_BROWNOUT))
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 #endif
 	CPRINTS("PB %s",
