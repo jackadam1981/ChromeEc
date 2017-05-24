@@ -634,6 +634,7 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 int charger_profile_override(struct charge_state_data *curr)
 {
 	int disch_on_ac = charger_should_discharge_on_ac(curr);
+	int override_voltage;
 
 	charger_discharge_on_ac(disch_on_ac);
 
@@ -642,10 +643,23 @@ int charger_profile_override(struct charge_state_data *curr)
 		return 0;
 	}
 
+	/*
+	 * These two battery have their own charge voltage algorithm for not
+	 * healthy battery. Need follow gauge provid charge voltage to charge
+	 * battery.
+	 */
+	if (((board_battery_type == BATTERY_SONY_CORP) ||
+	     (board_battery_type == BATTERY_PANASONIC)) &&
+	    (curr->batt.desired_voltage < override_voltage))
+		override_voltage = curr->batt.desired_voltage;
+	else
+		override_voltage =
+			board_get_batt_params()->batt_info->voltage_max;
+
 	return charger_profile_override_common(curr,
 			board_get_batt_params()->fast_chg_params,
 			&prev_chg_profile_info,
-			board_get_batt_params()->batt_info->voltage_max);
+			override_voltage);
 }
 
 /*
