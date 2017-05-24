@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feecbc06_399aea46",
+        "filename": "include/host_command.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-24T21:52:40Z",
+      "side": 1,
+      "message": "Could you state in the comment we\u0027re intentionally not using enum so that somebody won\u0027t \u0027fix\u0027 it?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 17
+      },
+      "revId": "3fc6065f37a3bedb041f4aaaf465cb6633f6aceb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
