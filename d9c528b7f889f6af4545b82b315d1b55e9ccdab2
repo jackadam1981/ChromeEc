@@ -22,6 +22,30 @@
       "revId": "d9c528b7f889f6af4545b82b315d1b55e9ccdab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc98c06a_167224d0",
+        "filename": "board/hammer/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-24T06:57:18Z",
+      "side": 1,
+      "message": "Well, we could use shared_mem in add_entropy, but then that\u0027d be in the common path, which we might not want (also add_entropy might run at the same time as rwsig, which does use shared_mem too...)\n\nWe are only using ~7/8kb of SRAM, out of 16kb (even with this change), so I\u0027m not overly concerned.",
+      "parentUuid": "122ad707_b1ab74d0",
+      "range": {
+        "startLine": 23,
+        "startChar": 46,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "d9c528b7f889f6af4545b82b315d1b55e9ccdab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
