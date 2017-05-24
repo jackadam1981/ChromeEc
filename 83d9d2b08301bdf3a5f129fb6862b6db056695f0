@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f76ac0d_86afdda5",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-24T20:42:10Z",
+      "side": 1,
+      "message": "You are still not using this CC_FLASH channel, see my comment from a few commits ago.",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "83d9d2b08301bdf3a5f129fb6862b6db056695f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
