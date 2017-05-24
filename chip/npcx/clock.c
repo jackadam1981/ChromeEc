@@ -88,6 +88,16 @@ void clock_disable_peripheral(uint32_t offset, uint32_t mask, uint32_t mode)
  */
 void clock_init(void)
 {
+#if defined(CONFIG_EXT_LFCLK) && defined(NPCX_EXT32K_OSC_SUPPORT)
+	/*
+	 * Make sure the external 32768 Hz of crystal oscillator is toggling
+	 * and stable, then select it as LFCLK (Low frequency clock).
+	 */
+	while (!IS_BIT_SET(NPCX_LFCGCTL, NPCX_LFCGCTL_XTCLK_VAL))
+		;
+	SET_BIT(NPCX_LFCGCTL2, NPCX_LFCGCTL2_XT_OSC_SL_EN);
+#endif
+
 	/*
 	 * Configure frequency multiplier M/N values according to
 	 * the requested OSC_CLK (Unit:Hz).
