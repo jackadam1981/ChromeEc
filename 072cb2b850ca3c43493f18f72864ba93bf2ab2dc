@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "137a38de_f12f251d",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-05-24T21:31:08Z",
+      "side": 1,
+      "message": "Should this be done before the saving of reset flags in L157? i.e. if we are not doing a reset, we won\u0027t actually have to save the AP_OFF flag to bbram here.",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 3
+      },
+      "revId": "072cb2b850ca3c43493f18f72864ba93bf2ab2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
