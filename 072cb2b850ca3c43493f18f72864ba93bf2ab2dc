@@ -22,6 +22,30 @@
       "revId": "072cb2b850ca3c43493f18f72864ba93bf2ab2dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91be860e_5ec65406",
+        "filename": "power/skylake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-05-24T21:45:54Z",
+      "side": 1,
+      "message": "Yeah that is true we don\u0027t need to save it here as it is already set in the system flags.",
+      "parentUuid": "137a38de_f12f251d",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 3
+      },
+      "revId": "072cb2b850ca3c43493f18f72864ba93bf2ab2dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
