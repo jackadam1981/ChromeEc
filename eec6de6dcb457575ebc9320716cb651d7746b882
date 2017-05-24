@@ -52,6 +52,24 @@
       "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5b52d46_9c5bda8a",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-05-24T03:47:38Z",
+      "side": 1,
+      "message": "Considering the case the VBAT drops below MIN and not go back to normal operational voltage, the writing to BBRAM will fail.\nAlso, when VBAT go up to normal, the contents of BBRAM will be reset as 0.",
+      "parentUuid": "e0baba78_ce996aa1",
+      "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
