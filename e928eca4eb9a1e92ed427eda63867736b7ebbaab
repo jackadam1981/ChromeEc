@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d147d57c_20e64917",
+        "filename": "common/flash.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-24T20:22:53Z",
+      "side": 1,
+      "message": "You\u0027re not really using this channel. I think macros like this (and the associated channel) is generally only used for async commands, like when the console user is not causing the messages to show up.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "e928eca4eb9a1e92ed427eda63867736b7ebbaab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
