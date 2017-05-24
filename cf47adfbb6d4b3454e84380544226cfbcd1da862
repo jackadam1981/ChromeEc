@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "559f0622_2eb9daad",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-24T17:01:36Z",
+      "side": 1,
+      "message": "Done. Made it positive option: CONFIG_HW_REINIT_NO_POWER_BUTTON. I don\u0027t think one board needs to support both.",
+      "parentUuid": "1f570f96_4c30b871",
+      "revId": "cf47adfbb6d4b3454e84380544226cfbcd1da862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4b36184_34de0822",
         "filename": "common/button.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2017-05-24T15:07:53Z",
       "side": 1,
       "message": "You are implicitly discussing systems without a battery installed for this path to be valid. If that\u0027s the assumption please indicate it as such.",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 133,
+        "endChar": 14
+      },
+      "revId": "cf47adfbb6d4b3454e84380544226cfbcd1da862",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5189410_f186cf32",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-24T17:01:36Z",
+      "side": 1,
+      "message": "Mentioned the battery presence in config.h.",
+      "parentUuid": "e4b36184_34de0822",
       "range": {
         "startLine": 133,
         "startChar": 4,
