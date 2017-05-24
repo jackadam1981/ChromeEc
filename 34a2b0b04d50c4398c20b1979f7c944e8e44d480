@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9b6b8d6e_0bf86ffe",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-05-24T10:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b35182c_7dbb80ff",
+      "revId": "34a2b0b04d50c4398c20b1979f7c944e8e44d480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "802b3677_2bdc3ee9",
         "filename": "common/usb_i2c.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ba9edf5f_51f9dcdc",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-05-24T10:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "802b3677_2bdc3ee9",
+      "revId": "34a2b0b04d50c4398c20b1979f7c944e8e44d480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79535cdb_26588c1f",
         "filename": "common/usb_i2c.c",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "34a2b0b04d50c4398c20b1979f7c944e8e44d480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29269928_f053594b",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-05-24T10:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79535cdb_26588c1f",
+      "revId": "34a2b0b04d50c4398c20b1979f7c944e8e44d480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "f8ee1661_e5abcee1",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-05-24T10:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe7754ed_48a8b487",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 31
+      },
+      "revId": "34a2b0b04d50c4398c20b1979f7c944e8e44d480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c19af62f_eab352d5",
         "filename": "include/usb_i2c.h",
         "patchSetId": 1
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "c5fcc18b_066bbb92",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-05-24T10:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c19af62f_eab352d5",
+      "revId": "34a2b0b04d50c4398c20b1979f7c944e8e44d480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f67f319_4af783dd",
         "filename": "include/usb_i2c.h",
         "patchSetId": 1
@@ -107,6 +203,24 @@
       "revId": "34a2b0b04d50c4398c20b1979f7c944e8e44d480",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e1e67d1_3ce22b49",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-05-24T10:08:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f67f319_4af783dd",
+      "revId": "34a2b0b04d50c4398c20b1979f7c944e8e44d480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
