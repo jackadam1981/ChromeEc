@@ -69,6 +69,30 @@
       "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3af4e006_626afa3c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-24T17:30:11Z",
+      "side": 1,
+      "message": "So, the comment is inaccurate.  It\u0027s talking about the host_cmd_handler_args.result field, not ec_host_response.result.\n\nAnd really, anyone using a result code needs to use uint16_t directly, because there\u0027s no guarantee a result code will be one of the listed codes.  We add new ones periodically.  These are just in an enum rather than separately #defined because it works nicer in debuggers.\n\nI suggest multiple fixes:\n\n1) Change the comment in line 463 to\n/* Host command response codes (16-bit) */\n\n2) You can add EC_RES_MAX, but please comment that status codes should be stored in a uint16_t rather than using enum ec_status directly.\n\n3) Change host_commnand.h to use uint16_t rather than enum ec_status.",
+      "parentUuid": "d85651f5_55bec7c1",
+      "range": {
+        "startLine": 488,
+        "startChar": 13,
+        "endLine": 488,
+        "endChar": 36
+      },
+      "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
