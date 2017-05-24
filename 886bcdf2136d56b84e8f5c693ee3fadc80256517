@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26a27616_57eb7799",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-24T17:10:53Z",
+      "side": 1,
+      "message": "/* No flags defined yet; set to 0 */\n\n(otherwise writers may not initialize it properly)",
+      "range": {
+        "startLine": 1253,
+        "startChar": 4,
+        "endLine": 1253,
+        "endChar": 10
+      },
+      "revId": "886bcdf2136d56b84e8f5c693ee3fadc80256517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
