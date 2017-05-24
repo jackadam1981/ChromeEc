@@ -45,6 +45,30 @@
       "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d85651f5_55bec7c1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1167634
+      },
+      "writtenOn": "2017-05-24T17:14:39Z",
+      "side": 1,
+      "message": "We are attempting to return a 16-bit error code from a host command handler. The specific error code looks like 0x1700. However, the moment that value is returned from a function as an enum ec_status, it is trucated to 0x00; the compiler deduced that it can get away with only using one byte to store ec_status enum values.\n\nHost command results are stored in this struct: https://chromium.googlesource.com/chromiumos/platform/ec/+/3be24cdce152b0fd7160716073e804b09d2569fe/include/host_command.h#15. Eventually the `result` field of that struct is placed in the `result` field of the ec_host_response: https://chromium.googlesource.com/chromiumos/platform/ec/+/3be24cdce152b0fd7160716073e804b09d2569fe/common/host_command.c#211\n\nSo even if we implement our host command as a function returning a uint16_t, the result will get truncated the moment it gets placed in host_cmd_handler_args.result.\n\nThis change is simply instructing the compiler that ec_status enum values really need to be able to hold *at least* two bytes of data; else that second byte in the ec_host_response.result field is unusable.",
+      "parentUuid": "bb6c08c9_f0d96e07",
+      "range": {
+        "startLine": 488,
+        "startChar": 13,
+        "endLine": 488,
+        "endChar": 36
+      },
+      "revId": "3be24cdce152b0fd7160716073e804b09d2569fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
