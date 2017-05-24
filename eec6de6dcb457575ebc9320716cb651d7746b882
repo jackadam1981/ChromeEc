@@ -88,6 +88,24 @@
       "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a3f85a7_e85b1c3a",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-05-24T05:23:52Z",
+      "side": 1,
+      "message": "Hi Nicolas and Furquan:\nBKUP_STS is powered by VBAT(VBKUP). And if VBAT is gone, reading the register of BKUP_STS  is also invalid. (Always get 0x00)\n\nThe reason we don\u0027t clear IBBR bit when the voltage of VBAT is too low is that we want to emphasize the content of BBRAM is invalid no matter reading or writing. Even BBRAM is writable since VBAT goes above the threshold, the content of it will reset to zero. That\u0027s just the preliminary idea for this issue, any comment is appreciated.",
+      "parentUuid": "d7ae024e_b8743bed",
+      "revId": "eec6de6dcb457575ebc9320716cb651d7746b882",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
