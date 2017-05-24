@@ -621,6 +621,12 @@
 /* Indicate if a clock source is connected to stm32f4's "HSE" specific input */
 #undef CONFIG_STM32_CLOCK_HSE_HZ
 
+/*
+ * Select npcx ec LFCLK source.
+ *	 define = external 32kHz crystal oscillator / undef = internal LFCLK
+ */
+#undef CONFIG_EXT_LFCLK
+
 /*****************************************************************************/
 /* Support curve25519 public key cryptography */
 #undef CONFIG_CURVE25519

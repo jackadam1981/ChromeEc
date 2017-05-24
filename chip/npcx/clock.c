@@ -83,6 +83,35 @@ void clock_disable_peripheral(uint32_t offset, uint32_t mask, uint32_t mode)
 /*****************************************************************************/
 /* IC specific low-level driver */
 
+#if defined(CONFIG_EXT_LFCLK) && defined(NPCX_EXT32K_OSC_SUPPORT)
+/* deferred function which checks ext 32kHz osc. and sets it as LFCLK source */
+static void clock_enable_ext_lfclk(void);
+DECLARE_DEFERRED(clock_enable_ext_lfclk);
+
+#define XTCLK_VAL_DELAY_US (100 * MSEC)
+static void clock_enable_ext_lfclk(void)
+{
+	/*
+	 * If external 32kHz osc. is stable, set it as LFCLK source. Else wait
+	 * for XTCLK_VAL_DELAY_US and check it again. Please refer section
+	 * 7.5.3 for more detail.
+	 */
+	if (IS_BIT_SET(NPCX_LFCGCTL, NPCX_LFCGCTL_XTCLK_VAL)) {
+		SET_BIT(NPCX_LFCGCTL2, NPCX_LFCGCTL2_XT_OSC_SL_EN);
+		CPRINTS("Switch LFCLK source to ext 32kHz osc.");
+	} else
+		hook_call_deferred(&clock_enable_ext_lfclk_data,
+				XTCLK_VAL_DELAY_US);
+}
+
+void clock_hook_init(void)
+{
+	/* Call deferred repeatedly until external 32kHz osc. is stable. */
+	hook_call_deferred(&clock_enable_ext_lfclk_data, XTCLK_VAL_DELAY_US);
+}
+DECLARE_HOOK(HOOK_INIT, clock_hook_init, HOOK_PRIO_DEFAULT);
+#endif
+
 /**
  * Set the CPU clocks and PLLs.
  */
