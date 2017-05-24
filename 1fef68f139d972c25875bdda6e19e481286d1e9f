@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18bafdfe_3258c4c9",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-24T11:23:41Z",
+      "side": 1,
+      "message": "ack",
+      "range": {
+        "startLine": 62,
+        "startChar": 47,
+        "endLine": 62,
+        "endChar": 50
+      },
+      "revId": "1fef68f139d972c25875bdda6e19e481286d1e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e50ffde_3c90cd8b",
+        "filename": "include/queue_policies.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-24T11:23:41Z",
+      "side": 1,
+      "message": "I think this is ok but this should be a separate change",
+      "revId": "1fef68f139d972c25875bdda6e19e481286d1e9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
