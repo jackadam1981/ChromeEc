@@ -438,3 +438,25 @@ enum battery_present battery_is_present(void)
 	/* The GPIO is low when the battery is present */
 	return BP_NO;
 }
+
+/* Set brownout flag. It's cleared when the system gracefully shuts down. It's
+ * checked upon reset. If it's not cleared, EC tries to boot the system. */
+static void board_chipset_startup(void)
+{
+	uint32_t reset_flag = system_get_reset_flags();
+	reset_flag |= RESET_FLAG_BROWNOUT;
+	chip_save_reset_flags(reset_flag);
+	system_set_reset_flags(RESET_FLAG_BROWNOUT);
+	CPRINTS("Set brownout flag");
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
+
+static void board_chipset_shutdown(void)
+{
+	uint32_t reset_flag = system_get_reset_flags();
+	reset_flag &= ~RESET_FLAG_BROWNOUT;
+	chip_save_reset_flags(reset_flag);
+	system_clear_reset_flags(RESET_FLAG_BROWNOUT);
+	CPRINTS("Clear brownout flag");
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
