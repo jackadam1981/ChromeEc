@@ -212,6 +212,7 @@ static void set_initial_pwrbtn_state(void)
 		} else {
 			CPRINTS("PB init-jumped");
 		}
+		return;
 	} else if ((reset_flags & RESET_FLAG_AP_OFF) ||
 		   (keyboard_scan_get_boot_keys() == BOOT_KEY_DOWN_ARROW)) {
 		/*
@@ -227,8 +228,10 @@ static void set_initial_pwrbtn_state(void)
 		 */
 		CPRINTS("PB init-off");
 		power_button_pch_release();
+		return;
 	} else if (power_button_is_pressed()) {
-		CPRINTS("PB init-on");
+		pwrbtn_state = PWRBTN_STATE_INIT_ON;
+	} else if (host_is_event_set(EC_HOST_EVENT_KEYBOARD_RECOVERY)) {
 		pwrbtn_state = PWRBTN_STATE_INIT_ON;
 	} else {
 		/*
@@ -236,13 +239,13 @@ static void set_initial_pwrbtn_state(void)
 		 * it can verify the EC.
 		 */
 #if defined(CONFIG_BRINGUP) || defined(CONFIG_POWER_BUTTON_INIT_IDLE)
-		CPRINTS("PB idle");
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 #else
-		CPRINTS("PB init-on");
 		pwrbtn_state = PWRBTN_STATE_INIT_ON;
 #endif
 	}
+	CPRINTS("PB %s",
+		pwrbtn_state == PWRBTN_STATE_INIT_ON ? "init-on" : "idle");
 }
 
 /**
