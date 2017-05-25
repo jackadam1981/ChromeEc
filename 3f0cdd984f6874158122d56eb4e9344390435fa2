@@ -22,6 +22,30 @@
       "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bde25e4_6eef49d9",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-25T16:45:14Z",
+      "side": 1,
+      "message": "this is the case of FWMP not set, which means this is not a corp enrolled device, so it can be unlocked.",
+      "parentUuid": "89e73077_38b5cafd",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 8
+      },
+      "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
