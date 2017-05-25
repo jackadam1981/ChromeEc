@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1a16aec_7103ba3d",
+        "filename": "common/usb_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-25T07:06:42Z",
+      "side": 1,
+      "message": "Yes, those 2 look a bit redundant, but UPDATE_EXTRA_PAIR_CHALLENGE will come under CONFIG_ROLLBACK_SECRET_SIZE (and probably yet another CONFIG option).",
+      "revId": "71eb8be2a1f9dda53aca8b6e569646279c49345c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
