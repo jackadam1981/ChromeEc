@@ -163,6 +163,30 @@
       "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c925ef93_93e9190b",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-25T20:14:09Z",
+      "side": 1,
+      "message": "fwmp is read only once, on tpm reset. It is too stack intensive to invoke it from here.",
+      "parentUuid": "74509468_29e5db63",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 506,
+        "endChar": 0
+      },
+      "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
