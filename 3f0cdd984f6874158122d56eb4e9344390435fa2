@@ -69,6 +69,30 @@
       "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c779a658_3cc72f7a",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-25T17:05:59Z",
+      "side": 1,
+      "message": "you mean the FWMP gets set, but the bit in the flag is not?",
+      "parentUuid": "87e7f2bf_0f3dbf29",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 58
+      },
+      "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
