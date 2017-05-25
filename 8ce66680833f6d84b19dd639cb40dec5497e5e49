@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ed0859c_8499ca29",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4200,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-25T18:19:47Z",
+      "side": 1,
+      "message": "See my comment in https://chrome-internal-review.googlesource.com/c/382608/4/board/rose/board.c#267",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b11fa772_5744f1cb",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7162,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-25T18:19:47Z",
+      "side": 1,
+      "message": "ec_inbuf is supposed to be only used by comm-host, but I see other commands using it. (It would not work using comm-i2c code).",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c329b49_9bfa6f5b",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7167,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-25T18:19:47Z",
+      "side": 1,
+      "message": "stack corruption here:\nec_response_tp_frame_info is just the header (no array), but you ask for up to ec_max_insize: we are going to write around in the the stack.",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68c61972_8f214399",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7190,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-25T18:19:47Z",
+      "side": 1,
+      "message": "if so, why data is a uint16?",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a575ddee_780c0de1",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7201,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-25T18:19:47Z",
+      "side": 1,
+      "message": "Can you decipher the raws of digits without looking at the code?\nIf it is a dump, hexa might be more appropriate. (4d will not print uin16 \u003e 9999 anyway).\nUse existing library to dump raw data or \n#define COLS 8\nfor(i \u003d 0; i \u003c len; i++) {\n  /* Print offset. */\n  if (i % COLS \u003d\u003d 0)\n    printf(\"%04x: \", i);\n  /* Print data. */\n  printf(\"%04x\", data[i]);\n  /* Print separator. */\n  if ((i % COLS \u003d\u003d COLS - 1) || i \u003d\u003d len - 1)\n    putchar(\"\\n\");\n  else\n    putchar(\" \");\n}",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
