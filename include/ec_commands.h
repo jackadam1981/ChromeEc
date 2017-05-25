@@ -2276,6 +2276,7 @@ enum motionsensor_chip {
 	MOTIONSENSE_CHIP_LPS22HB = 16,
 	MOTIONSENSE_CHIP_LIS2DS = 17,
 	MOTIONSENSE_CHIP_LIS2DE = 18,
+	MOTIONSENSE_CHIP_LIS2DW12 = 19,
 };
 
 /* List of orientation positions */
