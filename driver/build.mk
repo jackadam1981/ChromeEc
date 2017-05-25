@@ -15,6 +15,7 @@ driver-$(CONFIG_ACCELGYRO_BMI160)+=accelgyro_bmi160.o
 driver-$(CONFIG_MAG_BMI160_BMM150)+=mag_bmm150.o
 driver-$(CONFIG_ACCELGYRO_LSM6DSM)+=accelgyro_lsm6dsm.o stm_mems_common.o
 driver-$(CONFIG_ACCEL_LIS2DH)+=accel_lis2dh.o stm_mems_common.o
+driver-$(CONFIG_ACCEL_LIS2DW12)+=accel_lis2dw12.o stm_mems_common.o
 driver-$(CONFIG_MAG_LIS2MDL)+=mag_lis2mdl.o stm_mems_common.o
 driver-$(CONFIG_ACCEL_LIS2DS)+=accel_lis2ds.o stm_mems_common.o
 driver-$(CONFIG_ACCEL_LIS2DE)+=accel_lis2de.o stm_mems_common.o
