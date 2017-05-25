@@ -93,6 +93,30 @@
       "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d1146f2_987fdc95",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-25T17:09:33Z",
+      "side": 1,
+      "message": "I just enrolled a device and this is what I saw when I tried to check the firmware_management_parameters\n\ncryptohome --action\u003dget_firmware_management_parameters            \n[cryptohome.GetFirmwareManagementParametersReply.reply] {                       \n  flags: 0                                                                      \n  developer_key_hash: \"\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\"\n}                                                                               \nflags\u003d0x00000000                                                                \nhash\u003d0000000000000000000000000000000000000000000000000000000000000000           \nGetFirmwareManagementParameters success.      \n\nI am trying to figure out if maybe something is wrong with my setup, but for now I dont see what actually allowing the console to be unlocked adds. I think printing the state is just as useful at this point. We can add the unlock later once things have been verified.",
+      "parentUuid": "c779a658_3cc72f7a",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 58
+      },
+      "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
