@@ -149,6 +149,24 @@
       "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8576f365_de008f4d",
+        "filename": "driver/tcpm/ps8751.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-05-25T08:23:20Z",
+      "side": 1,
+      "message": "Would it be safe to just add HPD_DSTREAM_DEBOUNCE_IRQ then as the pulse should be at least 500us to be spec compliant",
+      "parentUuid": "f6d12339_95265b4c",
+      "revId": "a8e6d65dbf04df63132bb52593a65ccacedc6295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
