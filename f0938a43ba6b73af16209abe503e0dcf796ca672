@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "705d5af3_3dcb34fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-25T02:39:55Z",
+      "side": 1,
+      "message": "TEST\u003dkbpress 0 3 1; kbpress 0 3 0 reports KEY_LEFTMETA as expected\nTEST\u003dkbpress 0 5 1; kbpress 0 5 0 reports ?",
+      "revId": "f0938a43ba6b73af16209abe503e0dcf796ca672",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
