@@ -13,6 +13,7 @@ common-$(CONFIG_ACCELGYRO_BMA255)+=math_util.o
 common-$(CONFIG_ACCELGYRO_BMI160)+=math_util.o
 common-$(CONFIG_ACCELGYRO_LSM6DS0)+=math_util.o
 common-$(CONFIG_ACCELGYRO_LSM6DSM)+=math_util.o
+common-$(CONFIG_ACCEL_LIS2DW12)+=math_util.o
 common-$(CONFIG_ACCEL_LIS2DH)+=math_util.o
 common-$(CONFIG_ACCEL_LIS2DS)+=math_util.o
 common-$(CONFIG_ACCEL_LIS2DE)+=math_util.o

@@ -10,6 +10,7 @@
 #include "driver/accel_lis2de.h"
 #include "driver/accel_lis2dh.h"
 #include "driver/accel_lis2ds.h"
+#include "driver/accel_lis2dw12.h"
 #include "driver/baro_lps22hb.h"
 #include "driver/mag_lis2mdl.h"
 #include "gpio.h"
@@ -61,6 +62,9 @@ void sensors_interrupt(enum gpio_signal signal)
 	lis2de_interrupt(signal);
 #endif /* CONFIG_ACCEL_LIS2DE */
 
+#ifdef CONFIG_ACCEL_LIS2DW12
+	lis2dw12_interrupt(signal);
+#endif /* CONFIG_ACCEL_LIS2DE */
 
 	gpio_set_level(GPIO_LED_GREEN, ++count & 0x01);
 #endif /* CONFIG_ACCEL_INTERRUPTS */
@@ -117,6 +121,10 @@ struct stprivate_data lis2ds_a_data;
 #ifdef CONFIG_ACCEL_LIS2DE
 struct stprivate_data lis2de_a_data;
 #endif /* CONFIG_ACCEL_LIS2DE */
+
+#ifdef CONFIG_ACCEL_LIS2DW12
+struct stprivate_data lis2dw12_a_data;
+#endif /* CONFIG_ACCEL_LIS2DW12 */
 
 struct motion_sensor_t motion_sensors[] = {
 #ifdef CONFIG_ACCELGYRO_LSM6DSM
@@ -416,7 +424,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.active_mask = SENSOR_ACTIVE_S0,
 		.chip = MOTIONSENSE_CHIP_LIS2DW12,
 		.type = MOTIONSENSE_TYPE_ACCEL,
-		.location = MOTIONSENSE_LOC_BASE,
+		.location = MOTIONSENSE_LOC_LID,
 		.drv = &lis2dw12_drv,
 		.mutex = &g_base_mutex,
 		.drv_data = &lis2dw12_a_data,
@@ -467,7 +475,7 @@ void gpio_tick(void)
 }
 DECLARE_HOOK(HOOK_TICK, gpio_tick, HOOK_PRIO_DEFAULT);
 
-/* Initialize board */
+/* Initialize board. */
 static void board_init(void)
 {
 	gpio_enable_interrupt(GPIO_USER_BUTTON);
