@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "eabf12f3_dd447d23",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-25T20:01:24Z",
+      "side": 1,
+      "message": "Remove the extra linebreak",
+      "range": {
+        "startLine": 325,
+        "startChar": 34,
+        "endLine": 325,
+        "endChar": 36
+      },
+      "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87e7f2bf_0f3dbf29",
         "filename": "board/cr50/wp.c",
         "patchSetId": 4
@@ -113,6 +136,29 @@
         "startChar": 1,
         "endLine": 331,
         "endChar": 58
+      },
+      "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74509468_29e5db63",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-25T20:01:24Z",
+      "side": 1,
+      "message": "We should read the fwmp again before we try to disable the lock.",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 506,
+        "endChar": 0
       },
       "revId": "3f0cdd984f6874158122d56eb4e9344390435fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
