@@ -9,18 +9,24 @@
 #define __CROS_EC_BOARD_H
 
 /*
- * Enable Sensors:
- * Select LSM6DSM, LIS2DH, LIS2DS, LIS2DE, LPS22HB or a
- * combination of them
+ * To Enable Sensors, select:
+ *  CONFIG_MAG_LIS2MDL - Magnetometer
+ *  CONFIG_MAG_LSM6DSM_LIS2MDL - Magnetometer cascade with Accelerometer
+ *  CONFIG_ACCELGYRO_LSM6DSM - Accelerometer + Gyroscope
+ *  CONFIG_ACCEL_LIS2DH - Accelerometer
+ *  CONFIG_ACCEL_LIS2DS - Accelerometer
+ *  CONFIG_ACCEL_LIS2DE - Accelerometer
+ *  CONFIG_ACCEL_LIS2DW12 - Accelerometer
+ *  CONFIG_BARO_LPS22HB - Barometer
  */
 #undef CONFIG_ACCELGYRO_LSM6DSM
 #undef CONFIG_MAG_LIS2MDL
 #undef CONFIG_ACCEL_LIS2DH
 #undef CONFIG_MAG_LSM6DSM_LIS2MDL
 #undef CONFIG_BARO_LPS22HB
-#define  CONFIG_ACCEL_LIS2DS
-#define CONFIG_ACCEL_LIS2DE
-
+#undef  CONFIG_ACCEL_LIS2DS
+#undef CONFIG_ACCEL_LIS2DE
+#define CONFIG_ACCEL_LIS2DW12
 
 /* Interrupt management. */
 #define CONFIG_ACCEL_INTERRUPTS
@@ -50,6 +56,7 @@
 #define CONFIG_ACCEL_LSM6DSM_INT_EVENT		TASK_EVENT_CUSTOM(5)
 #define CONFIG_ACCEL_LIS2DS_INT_EVENT		TASK_EVENT_CUSTOM(6)
 #define CONFIG_ACCEL_LIS2DE_INT_EVENT		TASK_EVENT_CUSTOM(7)
+#define CONFIG_ACCEL_LIS2DW12_INT_EVENT		TASK_EVENT_CUSTOM(8)
 
 /* Optional features. */
 #undef CONFIG_LID_SWITCH
@@ -60,10 +67,10 @@
 
 /* FIFO Support. */
 #define CONFIG_ACCEL_FIFO			32
-#define CONFIG_ACCEL_FIFO_THRES			(CONFIG_ACCEL_FIFO / 2)
+#define CONFIG_ACCEL_FIFO_THRES			(CONFIG_ACCEL_FIFO - 1)
 
 /* I2C master port */
-#define I2C_PORT_MASTER STM32_I2C2_PORT
+#define I2C_PORT_MASTER				STM32_I2C2_PORT
 
 /*
  * Allow dangerous commands all the time, since we
@@ -80,17 +87,17 @@
 
 /* Motion sensors. */
 enum sensor_id {
-#ifdef CONFIG_ACCEL_LIS2DH
+/*
+ * Suppose to have:
+ *  1) Lid Accelerometer (select LIS2DH, LIS2DS, LIS2DW12 or LIS2DE
+ *  2) Base Accelerometer (LSM6DSM)
+ *  3) Magnetometer (LIS2MDL or LSM6DSM_LIS2MDL)
+ *  4) Barometer (LPS22HB)
+ */
+#if defined(CONFIG_ACCEL_LIS2DH) || defined(CONFIG_ACCEL_LIS2DS) || \
+	defined(CONFIG_ACCEL_LIS2DW12) || defined(CONFIG_ACCEL_LIS2DE)
 	LID_ACCEL,
-#endif /* CONFIG_ACCEL_LIS2DH */
-
-#ifdef CONFIG_ACCEL_LIS2DS
-	LID_ACCEL,
-#endif /* CONFIG_ACCEL_LIS2DS */
-
-#ifdef CONFIG_ACCEL_LIS2DE
-	BASE_ACCEL,
-#endif /* CONFIG_ACCEL_LIS2DE */
+#endif /* CONFIG_ACCEL_LIS2DH, CONFIG_ACCEL_LIS2DS, CONFIG_ACCEL_LIS2DW12 */
 
 #ifdef CONFIG_ACCELGYRO_LSM6DSM
 	BASE_ACCEL,
@@ -106,10 +113,11 @@ enum sensor_id {
 #endif /* CONFIG_BARO_LPS22HB */
 };
 
-/* Accelerometer and Gyroscope are the same device. */
+/* Accelerometer, Gyroscope, Mag and Barometer on the device port. */
 #define I2C_PORT_GYRO				I2C_PORT_MASTER
 #define I2C_PORT_ACCEL				I2C_PORT_MASTER
 #define I2C_PORT_BARO				I2C_PORT_MASTER
+#define I2C_PORT_MAG				I2C_PORT_MASTER
 
 #include "gpio_signal.h"
 
