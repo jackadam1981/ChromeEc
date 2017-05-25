@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "8289e998_f9412fdd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4214,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-25T18:21:04Z",
+      "side": 1,
+      "message": "What is the response format?",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b11fa772_5744f1cb",
         "filename": "util/ectool.c",
         "patchSetId": 5
