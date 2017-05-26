@@ -189,6 +189,30 @@
       "revId": "38679c34fe2ed48bc39d1ef159c2a4d3220fda16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8c38fab_9615d7db",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-26T02:54:46Z",
+      "side": 1,
+      "message": "What\u0027s the rationale for setting charge voltage to the battery\u0027s max even though desired_voltage is 0?",
+      "parentUuid": "08be9f7d_9dfdf5f8",
+      "range": {
+        "startLine": 656,
+        "startChar": 17,
+        "endLine": 656,
+        "endChar": 32
+      },
+      "revId": "38679c34fe2ed48bc39d1ef159c2a4d3220fda16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
