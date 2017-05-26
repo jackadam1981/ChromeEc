@@ -1787,6 +1787,11 @@
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
 
+/* Support for hardware orientation sensor */
+#undef CONFIG_ORIENTATION_SENSOR
+#undef CONFIG_BMI160_ORIENTATION_SENSOR
+#undef CONFIG_KX022_ORIENTATION_SENSOR
+
 /* Support PECI interface to x86 processor */
 #undef CONFIG_PECI
 
@@ -2850,6 +2855,13 @@
 /* The Matrix Keyboard Protocol depends on MKBP events. */
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
+#endif
+
+/******************************************************************************/
+/* Set generic orientation config if a specific orientation config is set. */
+#if defined(CONFIG_KX022_ORIENTATION_SENSOR) || \
+		defined(CONFIG_BMI160_ORIENTATION_SENSOR)
+#define CONFIG_ORIENTATION_SENSOR
 #endif
 
 /*****************************************************************************/

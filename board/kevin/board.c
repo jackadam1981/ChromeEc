@@ -640,6 +640,10 @@ struct motion_sensor_t motion_sensors[] = {
 			.ec_rate = 0,
 		},
 	 },
+#ifdef CONFIG_ORIENTATION_SENSOR
+	.orientation = MOTIONSENSE_ORIENTATION_UNKNOWN,
+	.last_orientation = MOTIONSENSE_ORIENTATION_UNKNOWN,
+#endif
 	},
 #else
 	[LID_ACCEL] = {
