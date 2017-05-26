@@ -738,6 +738,24 @@ int manage_activity(const struct motion_sensor_t *s,
 		break;
 	}
 #endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	case MOTIONSENSE_ACTIVITY_ORIENTATION: {
+		int tmp;
+		/* Set orientation interrupt */
+		ret = raw_read8(s->port, s->addr, BMI160_INT_EN_0, &tmp);
+		if (ret)
+			return ret;
+
+		if (enable)
+			tmp |= BMI160_INT_ORIENT_EN;
+		else
+			tmp &= ~BMI160_INT_ORIENT_EN;
+		ret = raw_write8(s->port, s->addr, BMI160_INT_EN_0, tmp);
+		if (ret)
+			ret = EC_RES_UNAVAILABLE;
+		break;
+	}
+#endif
 	default:
 		ret = EC_RES_INVALID_PARAM;
 	}
@@ -796,6 +814,16 @@ static int config_interrupt(const struct motion_sensor_t *s)
 	ret = raw_write8(s->port, s->addr, BMI160_INT_TAP_1,
 		BMI160_TAP_TH(s, CONFIG_GESTURE_TAP_THRES_MG));
 #endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	/* only use orientation sensor on the lid sensor */
+	if (s->location == MOTIONSENSE_LOC_LID) {
+		ret = raw_write8(s->port, s->addr, BMI160_INT_ORIENT_0,
+			BMI160_INT_ORIENT_0_INIT_VAL);
+		ret = raw_write8(s->port, s->addr, BMI160_INT_ORIENT_1,
+			BMI160_INT_ORIENT_1_INIT_VAL);
+	}
+#endif
+
 	/*
 	 * configure int2 as an external input.
 	 * Set a 5ms latch to be sure the EC can read the interrupt register
@@ -816,7 +844,17 @@ static int config_interrupt(const struct motion_sensor_t *s)
 #ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
 	tmp |= BMI160_INT_D_TAP;
 #endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	/* enable orientation interrupt for lid sensor only */
+	if (s->location == MOTIONSENSE_LOC_LID)
+		tmp |= BMI160_INT_ORIENT_EN;
+#endif
 	ret = raw_write8(s->port, s->addr, BMI160_INT_MAP_REG(1), tmp);
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	/* enable INT1 for activity */
+	if (s->location == MOTIONSENSE_LOC_LID)
+		ret = raw_write8(s->port, s->addr, BMI160_INT_EN_0, tmp);
+#endif
 
 #ifdef CONFIG_ACCEL_FIFO
 	/* map fifo water mark to int 1 */
@@ -848,6 +886,34 @@ static int config_interrupt(const struct motion_sensor_t *s)
  * For now, we just print out. We should set a bitmask motion sense code will
  * act upon.
  */
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+#ifdef ORIENTATION_REMAP_X_Y_AXES
+static int orient_remap(int orientation)
+{
+	int new_orientation = orientation;
+
+	switch (orientation) {
+	case CONFIG_ORIENT_PORTRAIT_EVENT:
+		new_orientation = CONFIG_ORIENT_LANDSCAPE_EVENT;
+		break;
+	case CONFIG_ORIENT_INVERT_PORTRAIT_EVENT:
+		new_orientation = CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT;
+		break;
+	case CONFIG_ORIENT_LANDSCAPE_EVENT:
+		new_orientation = CONFIG_ORIENT_PORTRAIT_EVENT;
+		break;
+	case CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT:
+		new_orientation = CONFIG_ORIENT_INVERT_PORTRAIT_EVENT;
+		break;
+	default:
+		break;
+	}
+	return new_orientation;
+}
+#endif
+#endif
+
+
 static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 {
 	int interrupt;
@@ -865,6 +931,38 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 #ifdef CONFIG_GESTURE_SIGMO
 	if (interrupt & BMI160_SIGMOT_INT)
 		*event |= CONFIG_GESTURE_SIGMO_EVENT;
+#endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	if (interrupt & BMI160_ORIENT_INT) {
+		switch (interrupt & BMI160_ORIENT_XY_MASK_32) {
+		/* Must check orientation of sensor mount and translate */
+		case BMI160_ORIENT_PORTRAIT_32:
+			*event |= orient_remap(CONFIG_ORIENT_PORTRAIT_EVENT);
+			break;
+		case BMI160_ORIENT_PORTRAIT_INVERT_32:
+			*event |=
+			    orient_remap(CONFIG_ORIENT_INVERT_PORTRAIT_EVENT);
+			break;
+		case BMI160_ORIENT_LANDSCAPE_32:
+			*event |= orient_remap(CONFIG_ORIENT_LANDSCAPE_EVENT);
+			break;
+		case BMI160_ORIENT_LANDSCAPE_INVERT_32:
+			*event |=
+			    orient_remap(CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT);
+			break;
+		default:
+			CPRINTS("unknown accel int 0x%x",
+					interrupt & BMI160_ORIENT_XY_MASK_32);
+			break;
+		}
+	} else {
+		if (s->location == MOTIONSENSE_LOC_LID) {
+			raw_read32(s->port, s->addr,
+					BMI160_INT_STATUS_3, &interrupt);
+			CPRINTS("Orient VAL: 0x%x",
+					(orientation_event(interrupt) >> 4));
+		}
+	}
 #endif
 	/*
 	 * No need to read the FIFO here, motion sense task is
@@ -1131,6 +1229,10 @@ static int init(const struct motion_sensor_t *s)
 #ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
 		data->disabled_activities |=
 			1 << MOTIONSENSE_ACTIVITY_DOUBLE_TAP;
+#endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+		data->disabled_activities |=
+			1 << MOTIONSENSE_ACTIVITY_ORIENTATION;
 #endif
 #endif
 		/* To avoid gyro wakeup */

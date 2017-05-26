@@ -10,10 +10,13 @@
 
 /* Optional modules */
 #define CONFIG_ADC
+#define CONFIG_BMI160_ORIENTATION_SENSOR 0
 #define CONFIG_CHIPSET_RK3399
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_RTC
 #define CONFIG_FPU
+#define CONFIG_GESTURE_DETECTION_MASK (1 << CONFIG_BMI160_ORIENTATION_SENSOR)
+#define CONFIG_GESTURE_HOST_DETECTION
 #define CONFIG_HOSTCMD_RTC
 #define CONFIG_HOSTCMD_SPS
 #define CONFIG_I2C
@@ -30,7 +33,19 @@
 #define CONFIG_SPI_FLASH_GD25LQ40
 #define CONFIG_SPI_FLASH_REGS
 
+/* Define for sensor tasks */
+#define CONFIG_GESTURE_SENSOR_BATTERY_TAP 0
+#define CONFIG_GESTURE_TAP_OUTER_WINDOW_T 200
+#define CONFIG_GESTURE_TAP_INNER_WINDOW_T 30
+#define CONFIG_GESTURE_TAP_MIN_INTERSTICE_T 120
+#define CONFIG_GESTURE_TAP_MAX_INTERSTICE_T 500
+#define CONFIG_GESTURE_TAP_THRES_MG 100
+/* event 2 to 9 are reserved for hardware interrupt */
+#define CONFIG_GESTURE_TAP_EVENT          TASK_EVENT_CUSTOM(8)
+
+
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
+
 
 /*
  * We are code space-constrained on scarlet, so take 10K that is normally used
@@ -79,6 +94,15 @@
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_MUX_VIRTUAL
 
+/* No hysterisis, theta block, int on slope > 0.2 or axis > 1.5, symetrical */
+#define BMI160_INT_ORIENT_0_INIT_VAL                    0x18
+
+/* don't remap axes, no int on up/down, no blocking angle */
+#define BMI160_INT_ORIENT_1_INIT_VAL                    0x00
+
+/* remap axes x to y and y to x */
+#define ORIENTATION_REMAP_X_Y_AXES
+
 /* Increase tx buffer size, as we'd like to stream EC log to AP. */
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
@@ -87,6 +111,17 @@
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
+
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+#define CONFIG_ORIENTATION_SENSOR 0
+#define CONFIG_ORIENT_PORTRAIT_EVENT            TASK_EVENT_CUSTOM(4096)
+#define CONFIG_ORIENT_INVERT_PORTRAIT_EVENT     TASK_EVENT_CUSTOM(8192)
+#define CONFIG_ORIENT_LANDSCAPE_EVENT           TASK_EVENT_CUSTOM(16384)
+#define CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT    TASK_EVENT_CUSTOM(32768)
+/* Bits 12-15 are orientation change events */
+#define orientation_event(_x)                   (_x & 0xF000)
+#endif
+
 #define CONFIG_BARO_BMP280
 /* Temp Sensors */
 #define CONFIG_TEMP_SENSOR
