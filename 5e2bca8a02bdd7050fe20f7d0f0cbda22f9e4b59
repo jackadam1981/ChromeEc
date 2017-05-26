@@ -22,6 +22,30 @@
       "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f57f67c1_c0f3db8c",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-26T17:08:57Z",
+      "side": 1,
+      "message": "I am not following: it already is initialized to false, do you mean to say that is should not be?\n\nbut in general this makes me wonder, what if the device is taken through battery disconnect and then powered up and immediately powered down agian. At that point cr50 console would be available, but reading FWMP will be not.\n\nOTOH we want to be able to use Cr50 on devices which fail to boot for whatver reason...",
+      "parentUuid": "b27e54c6_089d0cfe",
+      "range": {
+        "startLine": 303,
+        "startChar": 11,
+        "endLine": 303,
+        "endChar": 29
+      },
+      "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
