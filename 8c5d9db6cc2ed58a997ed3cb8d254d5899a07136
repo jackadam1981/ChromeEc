@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a295307a_874147f7",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-05-26T13:10:40Z",
+      "side": 1,
+      "message": "Looks like you\u0027re leaking this.",
+      "range": {
+        "startLine": 838,
+        "startChar": 1,
+        "endLine": 838,
+        "endChar": 20
+      },
+      "revId": "8c5d9db6cc2ed58a997ed3cb8d254d5899a07136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
