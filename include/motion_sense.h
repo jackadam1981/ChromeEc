@@ -51,6 +51,18 @@ enum sensor_config {
 #define MAX_FIFO_EVENT_COUNT 0
 #endif
 
+#ifdef CONFIG_KX022_ORIENTATION_SENSOR
+#define ORIENTATION_CHANGED(_sensor) kx022_orientation_needs_reporting(_sensor)
+#define GET_ORIENTATION(_sensor)     kx022_get_orientation(_sensor)
+#define SET_ORIENTATION(_sensor, _val) kx022_set_orientation(_sensor, _val)
+#define SET_ORIENTATION_UPDATED(_sensor) kx022_orientation_updated(_sensor)
+#elif defined(CONFIG_BMI160_ORIENTATION_SENSOR)
+#define ORIENTATION_CHANGED(_sensor) bmi160_orientation_needs_reporting(_sensor)
+#define GET_ORIENTATION(_sensor)	bmi160_get_orientation(_sensor)
+#define SET_ORIENTATION(_sensor, _val)	bmi160_set_orientation(_sensor, _val)
+#define SET_ORIENTATION_UPDATED(_sensor) bmi160_orientation_updated(_sensor)
+#endif
+
 struct motion_data_t {
 	/*
 	 * data rate the sensor will measure, in mHz: 0 suspended.
@@ -203,7 +215,12 @@ void sensor_init_done(const struct motion_sensor_t *sensor, int range);
  */
 void sensor_board_proc_double_tap(void);
 
-#ifdef CONFIG_GESTURE_HOST_DETECTION
+#ifdef CONFIG_ORIENTATION_REMAP
+enum motionsensor_orientation orient_remap(const struct motion_sensor_t *s,
+		enum motionsensor_orientation orientation);
+#endif
+
+#if defined(CONFIG_GESTURE_HOST_DETECTION) || defined(CONFIG_ORIENTATION_SENSOR)
 /* Add an extra sensor. We may need to add more */
 #define MOTION_SENSE_ACTIVITY_SENSOR_ID (motion_sensor_count)
 #define ALL_MOTION_SENSORS (MOTION_SENSE_ACTIVITY_SENSOR_ID + 1)

@@ -69,6 +69,24 @@
 #undef CONFIG_ACCELGYRO_BMI160
 #undef CONFIG_ACCELGYRO_LSM6DSM
 
+/* Support for BMI160 hardware orientation sensor */
+#undef CONFIG_BMI160_ORIENTATION_SENSOR
+
+/* Support for KIONIX KX022 hardware orientation sensor */
+#undef CONFIG_KX022_ORIENTATION_SENSOR
+
+/*
+ * Define if either CONFIG_BMI160_ORIENTATION_SUPPORT or
+ * CONFIG_KX022_ORIENTATION_SUPPORT is set.
+ */
+#undef CONFIG_ORIENTATION_SENSOR
+
+/* Support the orientation gesture */
+#undef CONFIG_GESTURE_ORIENTATION
+
+/* Hardware orientation events require remapping */
+#undef CONFIG_ORIENTATION_REMAP
+
 /* Specify barometer attached */
 #undef CONFIG_BARO_BMP280
 
@@ -2878,6 +2896,13 @@
 /* The Matrix Keyboard Protocol depends on MKBP events. */
 #ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
+#endif
+
+/******************************************************************************/
+/* Set generic orientation config if a specific orientation config is set. */
+#if defined(CONFIG_KX022_ORIENTATION_SENSOR) || \
+		defined(CONFIG_BMI160_ORIENTATION_SENSOR)
+#define CONFIG_ORIENTATION_SENSOR
 #endif
 
 /*****************************************************************************/
