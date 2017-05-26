@@ -22,6 +22,30 @@
       "revId": "10553577761c9e9fa06fcce79e9ca66cd03dd012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c3f9154_60eac421",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-05-26T22:13:37Z",
+      "side": 1,
+      "message": "Yes, since address and digest fields won\u0027t be used anyway.",
+      "parentUuid": "1598a19f_dcc96fd2",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 265,
+        "endChar": 47
+      },
+      "revId": "10553577761c9e9fa06fcce79e9ca66cd03dd012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
