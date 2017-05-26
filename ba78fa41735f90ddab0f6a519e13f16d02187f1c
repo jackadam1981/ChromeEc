@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "163f4594_c8f017a7",
+        "filename": "common/usb_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-05-26T10:03:17Z",
+      "side": 1,
+      "message": "nit: spaces around operators",
+      "range": {
+        "startLine": 213,
+        "startChar": 28,
+        "endLine": 213,
+        "endChar": 29
+      },
+      "revId": "ba78fa41735f90ddab0f6a519e13f16d02187f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "506af81a_d043f369",
+        "filename": "common/usb_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-05-26T10:03:17Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 223,
+        "startChar": 30,
+        "endLine": 223,
+        "endChar": 31
+      },
+      "revId": "ba78fa41735f90ddab0f6a519e13f16d02187f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90e7e1d3_90806292",
+        "filename": "include/update_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-05-26T10:03:17Z",
+      "side": 1,
+      "message": "Nit: This isn\u0027t used yet, no reason to add right now.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 37
+      },
+      "revId": "ba78fa41735f90ddab0f6a519e13f16d02187f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
