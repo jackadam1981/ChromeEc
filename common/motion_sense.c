@@ -32,6 +32,13 @@
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE, format, ## args)
 
+#ifdef CONFIG_ORIENTATION_SENSOR
+#define ORIENTATION_EVENTS_MASK (CONFIG_ORIENT_PORTRAIT_EVENT |\
+				 CONFIG_ORIENT_INVERT_PORTRAIT_EVENT |\
+				 CONFIG_ORIENT_LANDSCAPE_EVENT |\
+				 CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT)
+#endif
+
 /*
  * Sampling interval for measuring acceleration and calculating lid angle.
  */
@@ -649,6 +656,36 @@ static int motion_sense_read(struct motion_sensor_t *sensor)
 	return sensor->drv->read(sensor, sensor->raw_xyz);
 }
 
+
+#ifdef CONFIG_ORIENTATION_SENSOR
+static int32_t get_clear_orientation_event(struct motion_sensor_t *s)
+{
+	int32_t orientation_event = -1;
+
+	mutex_lock(s->mutex);
+	orientation_event = (s->events & ORIENTATION_EVENTS_MASK);
+	switch (orientation_event) {
+	case CONFIG_ORIENT_PORTRAIT_EVENT:
+		s->events &= ~CONFIG_ORIENT_PORTRAIT_EVENT;
+		break;
+	case CONFIG_ORIENT_INVERT_PORTRAIT_EVENT:
+		s->events &= ~CONFIG_ORIENT_INVERT_PORTRAIT_EVENT;
+		break;
+	case CONFIG_ORIENT_LANDSCAPE_EVENT:
+		s->events &= ~CONFIG_ORIENT_LANDSCAPE_EVENT;
+		break;
+	case CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT:
+		s->events &= ~CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT;
+		break;
+	default:
+		orientation_event = -1;
+		break;
+	}
+	mutex_unlock(s->mutex);
+	return orientation_event;
+}
+#endif
+
 static int motion_sense_process(struct motion_sensor_t *sensor,
 				uint32_t *event,
 				const timestamp_t *ts)
@@ -708,6 +745,48 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 	}
 
 #endif
+
+#ifdef CONFIG_ORIENTATION_SENSOR
+	if (ret != EC_ERROR_BUSY) {
+		struct ec_response_motion_sensor_data vector = {
+			.flags = 0,
+			.activity = MOTIONSENSE_ACTIVITY_ORIENTATION,
+			.sensor_num = MOTION_SENSE_ORIENTATION_SENSOR_ID
+		};
+		int send_event = 1;
+		int32_t orientation = get_clear_orientation_event(sensor);
+
+		if (orientation < 0)
+			return ret;
+
+		switch (orientation) {
+		case CONFIG_ORIENT_PORTRAIT_EVENT:
+			vector.state = MOTIONSENSE_ORIENTATION_PORTRAIT;
+			break;
+		case CONFIG_ORIENT_INVERT_PORTRAIT_EVENT:
+			vector.state =
+				MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_PORTRAIT;
+			break;
+		case CONFIG_ORIENT_LANDSCAPE_EVENT:
+			vector.state = MOTIONSENSE_ORIENTATION_LANDSCAPE;
+			break;
+		case CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT:
+			vector.state =
+				MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_LANDSCAPE;
+			break;
+		default:
+			/* more than one event set ? */
+			send_event = 0;
+			break;
+		}
+
+		/* Send events to the FIFO */
+		if (send_event) {
+			motion_sense_fifo_add_unit(&vector, NULL, 0);
+			CPRINTS("njv: orientation change 0x%x", orientation);
+		}
+	}
+#endif
 	return ret;
 }
 
@@ -723,8 +802,10 @@ void motion_sense_task(void)
 	int i, ret, wait_us;
 	timestamp_t ts_begin_task, ts_end_task;
 	uint32_t event = 0;
+	uint32_t *event_ptr = &event;
 	uint16_t ready_status;
 	struct motion_sensor_t *sensor;
+
 #ifdef CONFIG_LID_ANGLE
 	const uint16_t lid_angle_sensors = ((1 << CONFIG_LID_ANGLE_SENSOR_BASE)|
 					    (1 << CONFIG_LID_ANGLE_SENSOR_LID));
@@ -752,12 +833,16 @@ void motion_sense_task(void)
 
 			/* if the sensor is active in the current power state */
 			if (SENSOR_ACTIVE(sensor)) {
-				if (sensor->state != SENSOR_INITIALIZED) {
+				if (sensor->state != SENSOR_INITIALIZED)
 					continue;
-				}
 
-				ret = motion_sense_process(sensor, &event,
+#ifdef CONFIG_ORIENTATION_SENSOR
+				sensor->events = event;
+				event_ptr = &sensor->events;
+#endif
+				ret = motion_sense_process(sensor, event_ptr,
 						&ts_begin_task);
+
 				if (ret != EC_SUCCESS)
 					continue;
 				ready_status |= (1 << i);
@@ -767,10 +852,10 @@ void motion_sense_task(void)
 #ifdef CONFIG_GESTURE_DETECTION
 #ifdef CONFIG_GESTURE_SW_DETECTION
 		/* Run gesture recognition engine */
-		gesture_calc(&event);
+		gesture_calc(event_ptr);
 #endif
 #ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
-		if (event & CONFIG_GESTURE_TAP_EVENT) {
+		if (*event_ptr & CONFIG_GESTURE_TAP_EVENT) {
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 			struct ec_response_motion_sensor_data vector;
 
@@ -791,7 +876,7 @@ void motion_sense_task(void)
 		}
 #endif
 #ifdef CONFIG_GESTURE_SIGMO
-		if (event & CONFIG_GESTURE_SIGMO_EVENT) {
+		if (*event_ptr & CONFIG_GESTURE_SIGMO_EVENT) {
 			struct motion_sensor_t *activity_sensor;
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 			struct ec_response_motion_sensor_data vector;
@@ -824,7 +909,7 @@ void motion_sense_task(void)
 #endif
 #ifdef CONFIG_CMD_ACCEL_INFO
 		if (accel_disp) {
-			CPRINTF("[%T event 0x%08x ", event);
+			CPRINTF("[%T event 0x%08x ", *event_ptr);
 			for (i = 0; i < motion_sensor_count; ++i) {
 				sensor = &motion_sensors[i];
 				CPRINTF("%s=%-5d, %-5d, %-5d ", sensor->name,
@@ -851,7 +936,7 @@ void motion_sense_task(void)
 		 * - we haven't done it for a while.
 		 */
 		if (fifo_flush_needed || wake_up_needed ||
-		    event & TASK_EVENT_MOTION_ODR_CHANGE ||
+		    *event_ptr & TASK_EVENT_MOTION_ODR_CHANGE ||
 		    queue_space(&motion_sense_fifo) < CONFIG_ACCEL_FIFO_THRES ||
 		    (motion_int_interval > 0 &&
 		     time_after(ts_end_task.le.lo,

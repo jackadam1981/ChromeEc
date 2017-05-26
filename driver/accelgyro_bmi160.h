@@ -99,6 +99,12 @@
 #define BMI160_S_TAP_INT           (1 << 5)
 #define BMI160_ORIENT_INT          (1 << 6)
 #define BMI160_FLAT_INT            (1 << 7)
+#define BMI160_ORIENT_XY_MASK	   0x30
+#define BMI160_ORIENT_PORTRAIT		(0 << 4)
+#define BMI160_ORIENT_PORTRAIT_INVERT	(1 << 4)
+#define BMI160_ORIENT_LANDSCAPE		(2 << 4)
+#define BMI160_ORIENT_LANDSCAPE_INVERT	(3 << 4)
+
 
 #define BMI160_INT_STATUS_1    0x1d
 #define BMI160_HIGHG_INT           (1 << (2 + 8))
@@ -333,8 +339,32 @@ enum fifo_header {
 #define BMI160_TAP_TH(_s, _mg) \
 	 (MIN(((_mg) * 1000) / ((_s)->drv->get_range(_s) * 31250), 0x1f))
 
-#define BMI160_INT_ORIENT_0    0x65
-#define BMI160_INT_ORIENT_1    0x66
+#define BMI160_INT_ORIENT_0				0x65
+#define BMI160_INT_ORIENT_0_HYST_MASK			0xF0
+#define BMI160_INT_ORIENT_0_HYST_SHIFT			4
+#define BMI160_INT_ORIENT_0_BLOCK_MASK			0x0C
+#define BMI160_INT_ORIENT_0_BLOCK_SHIFT			2
+#define BMI160_INT_ORIENT_0_THETA_BLOCK_2_SLOPE		(2 << 2)
+#define BMI160_INT_ORIENT_0_MODE_MASK			0x03
+#define BMI160_INT_ORIENT_0_MODE_SHIFT			0
+#define BMI160_INT_ORIENT_0_MODE_SYMMETRICAL		(0 << 0)
+
+/* No hysterisis, theta block, int on slope > 0.2 or axis > 1.5, symetrical */
+#define BMI160_INT_ORIENT_0_INIT_VAL			0x08
+
+#define BMI160_INT_ORIENT_1				0x66
+#define BMI160_INT_ORIENT_1_INT_AXES_EX_MASK		0x80
+#define BMI160_INT_ORIENT_1_INT_AXES_EX_SHIFT		7
+#define BMI160_INT_ORIENT_1_INT_AXES_EX_NO_MAP		(0 << 7)
+#define BMI160_INT_ORIENT_1_INT_AXES_EX_MAP		(1 << 7)
+#define BMI160_INT_ORIENT_1_INT_ORIENT_UD_EN_MASK	0x40
+#define BMI160_INT_ORIENT_1_INT_ORIENT_UD_EN_SHIFT	6
+#define BMI160_INT_ORIENT_1_INT_ORIENT_UD_EN_IGNORE	(0 << 6)
+#define BMI160_INT_ORIENT_1_INT_ORIENT_THETA_MASK	0x3F
+#define BMI160_INT_ORIENT_1_INT_ORIENT_THETA_SHIFT	0
+
+/* no axes remap, no int on up/down, no blocking angle */
+#define BMI160_INT_ORIENT_1_INIT_VAL			0x00
 
 #define BMI160_INT_FLAT_0      0x67
 #define BMI160_INT_FLAT_1      0x68

@@ -153,6 +153,15 @@ struct motion_sensor_t {
 
 	 /* Maximum supported sampling frequency in miliHertz for this sensor */
 	 uint32_t max_frequency;
+
+#ifdef CONFIG_ORIENTATION_SENSOR
+	 /* Current orientation part of events */
+	 uint32_t events;
+
+	 /* Last reported orientation */
+	 uint8_t last_orientation;
+#endif
+
 };
 
 /* Defined at board level. */
@@ -218,5 +227,4 @@ void sensor_board_proc_double_tap(void);
 #define MOTION_SENSE_LUX motion_sensors[CONFIG_ALS_LIGHTBAR_DIMMING].raw_xyz[0]
 #endif
 #endif
-
 #endif /* __CROS_EC_MOTION_SENSE_H */
