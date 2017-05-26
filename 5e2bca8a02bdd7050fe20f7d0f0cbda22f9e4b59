@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b27e54c6_089d0cfe",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-26T16:54:22Z",
+      "side": 1,
+      "message": "should it be initialized to false?\n\nright now if somebody accesses the console before TPM2_Startup and fwmp_allows_unlock is false, it is restricted. if it\u0027s true, the restriction is based on console_restricted_state, which is LOCK_ENABLED until the console is unlocked, what shouldn\u0027t happen. so, looks like we are ok. but the logic may be reshuffled in the future. it\u0027s simpler imo just to disable it by default until we can read it from NVMEM,",
+      "range": {
+        "startLine": 303,
+        "startChar": 11,
+        "endLine": 303,
+        "endChar": 29
+      },
+      "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
