@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57fa7cee_9006e852",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-26T19:30:55Z",
+      "side": 1,
+      "message": "Should it be DECLARE_EXTENSION_COMMAND instead?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 22
+      },
+      "revId": "68c9c09e48427b4bc1a057e1e5e8d83f4eb655af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f29e19a_d032192c",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-26T19:30:55Z",
+      "side": 1,
+      "message": "Should it be DECLARE_EXTENSION_COMMAND instead?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 22
+      },
+      "revId": "68c9c09e48427b4bc1a057e1e5e8d83f4eb655af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
