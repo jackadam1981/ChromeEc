@@ -1495,6 +1495,13 @@ void pd_hw_init_rx(int port);
 int pd_analyze_rx(int port, uint32_t *payload);
 
 /**
+ * Check if PD communication is enabled at start
+ *
+ * @return true if it's enabled or false otherwise
+ */
+int pd_comm_is_enabled_at_start(void);
+
+/**
  * Get connected state
  *
  * @param port USB-C port number
