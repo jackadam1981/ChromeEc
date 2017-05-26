@@ -249,18 +249,24 @@ static int tpm_send_pkt(int fd, unsigned int digest, unsigned int addr,
 
 	debug("%s: sending to %#x %d bytes\n", __func__, addr, size);
 
-	len = size + sizeof(struct upgrade_pkt);
-
+	if (subcmd <= LAST_EXTENSION_COMMAND) {
+		out->ordinal = htobe32(CONFIG_EXTENSION_COMMAND);
+		len = size + sizeof(struct upgrade_pkt);
+		out->digest = digest;
+		out->address = htobe32(addr);
+		memcpy(out->data, data, size);
+	} else {
+		out->ordinal = htobe32(TPM_CC_VENDOR_BIT_MASK);
+		/*
+		 * Ignore the digest and address sections in the packet when
+		 * channelling TPM vendor commands.
+		 */
+		len = size + response_offset;
+		memcpy(outbuf + response_offset, data, size);
+	}
 	out->tag = htobe16(0x8001);
 	out->length = htobe32(len);
-	if (subcmd <= LAST_EXTENSION_COMMAND)
-		out->ordinal = htobe32(CONFIG_EXTENSION_COMMAND);
-	else
-		out->ordinal = htobe32(TPM_CC_VENDOR_BIT_MASK);
 	out->subcmd = htobe16(subcmd);
-	out->digest = digest;
-	out->address = htobe32(addr);
-	memcpy(out->data, data, size);
 #ifdef DEBUG
 	{
 		int i;
