@@ -708,6 +708,36 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 	}
 
 #endif
+
+#ifdef CONFIG_ORIENTATION_SENSOR
+	if ((sensor == &motion_sensor[LID_ACCEL]) &&
+	    (ret != EC_ERROR_BUSY)) {
+		struct ec_response_motion_sensor_data vector = {
+			.flags = 0,
+			.activity = MOTIONSENSE_ACTIVITY_ORIENTATION,
+			.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID,
+		};
+
+		mutex_lock(sensor->mutex);
+		if (sensor->orientation != sensor->last_orientation) {
+			switch (sensor->orientation) {
+			case MOTIONSENSE_ORIENTATION_PORTRAIT:
+			case MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_PORTRAIT:
+			case MOTIONSENSE_ORIENTATION_LANDSCAPE:
+			case MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_LANDSCAPE:
+				vector.state = sensor->orientation;
+				sensor->last_orientation = sensor->orientation;
+				motion_sense_fifo_add_unit(&vector, NULL, 0);
+				CPRINTS("orientation change 0x%x",
+						sensor->orientation);
+				break;
+			default:
+				break;
+			}
+		}
+		mutex_unlock(sensor->mutex);
+	}
+#endif
 	return ret;
 }
 

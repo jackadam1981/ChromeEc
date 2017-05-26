@@ -99,6 +99,12 @@
 #define BMI160_S_TAP_INT           (1 << 5)
 #define BMI160_ORIENT_INT          (1 << 6)
 #define BMI160_FLAT_INT            (1 << 7)
+#define BMI160_ORIENT_XY_MASK	   0x30
+#define BMI160_ORIENT_PORTRAIT		(0 << 4)
+#define BMI160_ORIENT_PORTRAIT_INVERT	(1 << 4)
+#define BMI160_ORIENT_LANDSCAPE		(2 << 4)
+#define BMI160_ORIENT_LANDSCAPE_INVERT	(3 << 4)
+
 
 #define BMI160_INT_STATUS_1    0x1d
 #define BMI160_HIGHG_INT           (1 << (2 + 8))
@@ -333,8 +339,15 @@ enum fifo_header {
 #define BMI160_TAP_TH(_s, _mg) \
 	 (MIN(((_mg) * 1000) / ((_s)->drv->get_range(_s) * 31250), 0x1f))
 
-#define BMI160_INT_ORIENT_0    0x65
-#define BMI160_INT_ORIENT_1    0x66
+#define BMI160_INT_ORIENT_0				0x65
+
+/* No hysterisis, theta block, int on slope > 0.2 or axis > 1.5, symmetrical */
+#define BMI160_INT_ORIENT_0_INIT_VAL			0x08
+
+#define BMI160_INT_ORIENT_1				0x66
+
+/* no axes remap, no int on up/down, no blocking angle */
+#define BMI160_INT_ORIENT_1_INIT_VAL			0x00
 
 #define BMI160_INT_FLAT_0      0x67
 #define BMI160_INT_FLAT_1      0x68
