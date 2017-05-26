@@ -141,6 +141,30 @@
       "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5fda5c1_f30acf2c",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-26T22:13:41Z",
+      "side": 1,
+      "message": "ah, I see, good catch! Let me add the check.",
+      "parentUuid": "62273f07_ef962cfd",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 496,
+        "endChar": 0
+      },
+      "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
