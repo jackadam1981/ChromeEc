@@ -46,6 +46,30 @@
       "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff9859ff_e95ad21d",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-26T17:15:19Z",
+      "side": 1,
+      "message": "oh, you mean initialized to 0 by default as a static var... yeah, always forget about that :(",
+      "parentUuid": "f57f67c1_c0f3db8c",
+      "range": {
+        "startLine": 303,
+        "startChar": 11,
+        "endLine": 303,
+        "endChar": 29
+      },
+      "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
