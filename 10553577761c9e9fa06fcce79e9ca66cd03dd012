@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "15d55c58_2cf4039e",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-26T22:15:14Z",
+      "side": 1,
+      "message": "These are the fields that are needed in upgrade commands, and not needed in other commands",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 16
+      },
+      "revId": "10553577761c9e9fa06fcce79e9ca66cd03dd012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1598a19f_dcc96fd2",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 1
@@ -36,6 +59,30 @@
       "writtenOn": "2017-05-26T22:13:37Z",
       "side": 1,
       "message": "Yes, since address and digest fields won\u0027t be used anyway.",
+      "parentUuid": "1598a19f_dcc96fd2",
+      "range": {
+        "startLine": 265,
+        "startChar": 2,
+        "endLine": 265,
+        "endChar": 47
+      },
+      "revId": "10553577761c9e9fa06fcce79e9ca66cd03dd012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95bc7f2f_8eb381dc",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-26T22:15:14Z",
+      "side": 1,
+      "message": "No, it\u0027s the usb_updater side that uses the same header containing upgrade-specific fields for sending all messages.\nThe difference is not EXTENSION_COMMANDs vs VENDOR_COMMANDs, though such division may work in usb_updater case 9didn\u0027t check). We do need to include those fields for commands like EXTENSION_FW_UPGRADE, and don\u0027t need for TURN_UPDATE_ON.\nI\u0027d prefer to do tit differently: extract the really common part of the header (up to and including the subcmd) and always fill it, while appending the upgrade-specific fields only for upgrade commands.",
       "parentUuid": "1598a19f_dcc96fd2",
       "range": {
         "startLine": 265,
