@@ -32,6 +32,12 @@
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE, format, ## args)
 
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+#define CONFIG_ORIENTATION_SENSOR CONFIG_BMI160_ORIENTATION_SENSOR
+#elif defined(CONFIG_KIONEX_ORIENTATION_SENSOR)
+#define CONFIG_ORIENTATION_SENSOR CONFIG_KIONEX_ORIENTATION_SENSOR
+#endif
+
 /*
  * Sampling interval for measuring acceleration and calculating lid angle.
  */
@@ -669,6 +675,77 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 	return ret;
 }
 
+#ifdef CONFIG_ORIENTATION_SENSOR
+static int command_send_tap_event(int argc, char **argv)
+{
+	struct ec_response_motion_sensor_data vector = {
+		.flags = 0,
+		.activity = MOTIONSENSE_ACTIVITY_DOUBLE_TAP,
+		.state = 1, /* triggered */
+		.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID
+	};
+
+	if (argc != 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	/*
+	 * Send events to the FIFO
+	 * AP is ignoring double tap event, do no wake up and no
+	 * automatic disable.
+	 */
+
+
+	CPRINTS("Queued up double-tap event");
+	motion_sense_fifo_add_unit(&vector, NULL, 0);
+	mkbp_send_event(EC_MKBP_EVENT_SENSOR_FIFO);
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(tap, command_send_tap_event,
+	"no parameters",
+	"Send tap event");
+
+static int command_send_orientation_event(int argc, char **argv)
+{
+	char *e;
+	int event;
+	struct ec_response_motion_sensor_data vector = {
+		.flags = 0,
+		.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID,
+		.activity = MOTIONSENSE_ACTIVITY_ORIENTATION
+	};
+
+	if (argc < 2 || argc > 4)
+		return EC_ERROR_PARAM_COUNT;
+
+	/* First argument is orientation event id to send. */
+	event = strtoi(argv[1], &e, 0);
+	if (*e || ((event < 0) || (event > 3)))
+		return EC_ERROR_PARAM1;
+
+	switch (event) {
+	case MOTIONSENSE_ORIENTATION_PORTRAIT:
+	case MOTIONSENSE_ORIENTATION_INVERTED_PORTRAIT:
+	case MOTIONSENSE_ORIENTATION_LANDSCAPE:
+	case MOTIONSENSE_ORIENTATION_INVERTED_LANDSCAPE:
+		vector.state = event;
+		break;
+	default:
+		break;
+	}
+	motion_sense_fifo_add_unit(&vector, NULL, 0);
+	CPRINTS("Queued up orientation activity #%d", vector.activity);
+	mkbp_send_event(EC_MKBP_EVENT_SENSOR_FIFO);
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(orientation, command_send_orientation_event,
+	"event",
+	"Send orientation event (Portrait=0, InvPortrait=1, Landscape=2, InvLandscape=3)");
+#endif
+
 /*
  * Motion Sense Task
  * Requirement: motion_sensors[] are defined in board.c file.
@@ -723,6 +800,48 @@ void motion_sense_task(void)
 				ready_status |= (1 << i);
 			}
 		}
+
+#ifdef CONFIG_ORIENTATION_SENSOR
+		if (orientation_event(event)) {
+			struct ec_response_motion_sensor_data vector = {
+				.flags = 0,
+				.activity = MOTIONSENSE_ACTIVITY_ORIENTATION,
+				.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID
+			};
+			int send_event = 1;
+
+			switch (orientation_event(event)) {
+			case CONFIG_ORIENT_PORTRAIT_EVENT:
+				vector.state = MOTIONSENSE_ORIENTATION_PORTRAIT;
+				break;
+			case CONFIG_ORIENT_INVERT_PORTRAIT_EVENT:
+				vector.state =
+				    MOTIONSENSE_ORIENTATION_INVERTED_PORTRAIT;
+				break;
+			case CONFIG_ORIENT_LANDSCAPE_EVENT:
+				vector.state =
+				    MOTIONSENSE_ORIENTATION_LANDSCAPE;
+				break;
+			case CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT:
+				vector.state =
+				    MOTIONSENSE_ORIENTATION_INVERTED_LANDSCAPE;
+				break;
+			default:
+				/* more than one event set ? */
+				CPRINTS("error: unknown orientation event 0x%x",
+						orientation_event(event));
+				send_event = 0;
+				break;
+			}
+
+			/* Send events to the FIFO */
+			if (send_event) {
+				motion_sense_fifo_add_unit(&vector, NULL, 0);
+				CPRINTS("orientation change 0x%x",
+						orientation_event(event));
+			}
+		}
+#endif
 
 #ifdef CONFIG_GESTURE_DETECTION
 #ifdef CONFIG_GESTURE_SW_DETECTION

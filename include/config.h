@@ -1535,6 +1535,15 @@
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
 
+/* Support hardware-based accelerometer orientation sensor */
+#undef CONFIG_ORIENTATION_SENSOR
+#undef CONFIG_BMI160_ORIENTATION_SENSOR
+#undef CONFIG_KIONEX_ORIENTATION_SENSOR
+#undef CONFIG_ORIENT_PORTRAIT_EVENT
+#undef CONFIG_ORIENT_INVERT_PORTRAIT_EVENT
+#undef CONFIG_ORIENT_LANDSCAPE_EVENT
+#undef CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT
+
 /* Support PECI interface to x86 processor */
 #undef CONFIG_PECI
 
