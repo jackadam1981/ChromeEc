@@ -796,6 +796,16 @@ static int config_interrupt(const struct motion_sensor_t *s)
 	ret = raw_write8(s->port, s->addr, BMI160_INT_TAP_1,
 		BMI160_TAP_TH(s, CONFIG_GESTURE_TAP_THRES_MG));
 #endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	/* only use orientation sensor on the lid sensor */
+	if (s->location == MOTIONSENSE_LOC_LID) {
+		ret = raw_write8(s->port, s->addr, BMI160_INT_ORIENT_0,
+			BMI160_INT_ORIENT_0_INIT_VAL);
+		ret = raw_write8(s->port, s->addr, BMI160_INT_ORIENT_1,
+			BMI160_INT_ORIENT_1_INIT_VAL);
+	}
+#endif
+
 	/*
 	 * Set a 5ms latch to be sure the EC can read the interrupt register
 	 * properly, even when it is running more slowly.
@@ -819,6 +829,11 @@ static int config_interrupt(const struct motion_sensor_t *s)
 #endif
 #ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
 	tmp |= BMI160_INT_D_TAP;
+#endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	/* enable orientation interrupt for lid sensor only */
+	if (s->location == MOTIONSENSE_LOC_LID)
+		tmp |= BMI160_INT_ORIENT;
 #endif
 	ret = raw_write8(s->port, s->addr, BMI160_INT_MAP_REG(1), tmp);
 
@@ -873,6 +888,28 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 #ifdef CONFIG_GESTURE_SIGMO
 	if (interrupt & BMI160_SIGMOT_INT)
 		*event |= CONFIG_GESTURE_SIGMO_EVENT;
+#endif
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+	if (interrupt & BMI160_ORIENT_INT) {
+		switch (interrupt & BMI160_ORIENT_XY_MASK) {
+		case BMI160_ORIENT_PORTRAIT:
+			s->orientation = MOTIONSENSE_ORIENTATION_PORTRAIT;
+			break;
+		case BMI160_ORIENT_PORTRAIT_INVERT:
+			s->orientation =
+				MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_PORTRAIT;
+			break;
+		case BMI160_ORIENT_LANDSCAPE:
+			s->orientation = MOTIONSENSE_ORIENTATION_LANDSCAPE;
+			break;
+		case BMI160_ORIENT_LANDSCAPE_INVERT:
+			s->orientation =
+				MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_LANDSCAPE;
+			break;
+		default:
+			break;
+		}
+	}
 #endif
 	/*
 	 * No need to read the FIFO here, motion sense task is
@@ -1052,7 +1089,7 @@ static int load_fifo(struct motion_sensor_t *s)
 #endif  /* CONFIG_ACCEL_FIFO */
 
 
-static int read(const struct motion_sensor_t *s, vector_3_t v)
+static int read(struct motion_sensor_t *s, vector_3_t v)
 {
 	uint8_t data[6];
 	int ret, status = 0;

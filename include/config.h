@@ -1787,6 +1787,11 @@
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
 
+/* Support for hardware orientation sensor */
+#undef CONFIG_ORIENTATION_SENSOR
+#undef CONFIG_BMI160_ORIENTATION_SENSOR
+#undef CONFIG_KX022_ORIENTATION_SENSOR
+
 /* Support PECI interface to x86 processor */
 #undef CONFIG_PECI
 
