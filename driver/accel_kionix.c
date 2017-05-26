@@ -41,6 +41,45 @@
 #define T(s_) V(s_)
 #endif /* !defined(CONFIG_ACCEL_KXCJ9) || !defined(CONFIG_ACCEL_KX022) */
 
+#ifdef CONFIG_KX022_ORIENTATION_SENSOR
+#define ORIENTATION_CHANGED(_sensor) kx022_orientation_needs_reporting(_sensor)
+#define GET_ORIENTATION(_sensor)     kx022_get_orientation(_sensor)
+#define SET_ORIENTATION(_sensor, _val) kx022_set_orientation(_sensor, _val)
+#define SET_ORIENTATION_UPDATED(_sensor) kx022_orientation_updated(_sensor)
+#endif
+
+#ifdef CONFIG_KX022_ORIENTATION_SENSOR
+inline int kx022_orientation_needs_reporting(
+		const struct motion_sensor_t *sensor)
+{
+	struct kionix_accel_data *data_ptr =
+			(struct kionix_accel_data *)(sensor->drv_data);
+
+	return (data_ptr->orientation != data_ptr->last_orientation);
+}
+
+inline enum motionsensor_orientation kx022_get_orientation(
+		const struct motion_sensor_t *sensor)
+{
+	return (((struct kionix_accel_data *)(sensor->drv_data))->orientation);
+}
+
+inline void kx022_set_orientation(const struct motion_sensor_t *sensor,
+		enum motionsensor_orientation orientation)
+{
+	((struct kionix_accel_data *)(sensor->drv_data))->orientation =
+			orientation;
+}
+
+inline void kx022_orientation_updated(const struct motion_sensor_t *sensor)
+{
+	struct kionix_accel_data *data_ptr =
+			(struct kionix_accel_data *)(sensor->drv_data);
+
+	data_ptr->last_orientation = data_ptr->orientation;
+}
+#endif
+
 /* List of range values in +/-G's and their associated register values. */
 static const struct accel_param_pair ranges[][3] = {
 #ifdef CONFIG_ACCEL_KX022
@@ -253,6 +292,12 @@ static int enable_sensor(const struct motion_sensor_t *s, int reg_val)
 		if (ret != EC_SUCCESS)
 			continue;
 
+#ifdef CONFIG_KX022_ORIENTATION_SENSOR
+		/* Enable tilt orientation mode  if lid sensor */
+		if ((s->location == MOTIONSENSE_LOC_LID) && (V(s) == 0))
+			reg_val |= KX022_CNTL1_TPE;
+#endif
+
 		/* Enable accelerometer based on reg_val value. */
 		ret = raw_write8(s->port, s->addr, reg,
 				reg_val | pc1_field);
@@ -394,6 +439,55 @@ static int get_offset(const struct motion_sensor_t *s, int16_t *offset,
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_KX022_ORIENTATION_SENSOR
+static enum motionsensor_orientation kx022_convert_orientation(
+		const struct motion_sensor_t *s,
+		int orientation)
+{
+	enum motionsensor_orientation res = MOTIONSENSE_ORIENTATION_UNKNOWN;
+
+	switch (orientation) {
+	case KX022_ORIENT_PORTRAIT:
+		res = MOTIONSENSE_ORIENTATION_PORTRAIT;
+		break;
+	case KX022_ORIENT_INVERT_PORTRAIT:
+		res = MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_PORTRAIT;
+		break;
+	case KX022_ORIENT_LANDSCAPE:
+		res = MOTIONSENSE_ORIENTATION_LANDSCAPE;
+		break;
+	case KX022_ORIENT_INVERT_LANDSCAPE:
+		res = MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_LANDSCAPE;
+		break;
+	default:
+		break;
+	}
+	res = orient_remap(s, res);
+	return res;
+}
+
+static int check_orientation_locked(const struct motion_sensor_t *s)
+{
+	struct kionix_accel_data *data = s->drv_data;
+	int orientation, raw_orientation;
+	int ret;
+
+	ret = raw_read8(s->port, s->addr,
+			KX022_TSCP, &raw_orientation);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* mask off up and down events, we don't care about those */
+	raw_orientation &= KX022_ORIENT_MASK;
+	if (raw_orientation && (raw_orientation != data->raw_orientation)) {
+		data->raw_orientation = raw_orientation;
+		orientation = kx022_convert_orientation(s, raw_orientation);
+		SET_ORIENTATION(s, orientation);
+	}
+	return ret;
+}
+#endif
+
 static int read(const struct motion_sensor_t *s, vector_3_t v)
 {
 	uint8_t acc[6];
@@ -405,6 +499,11 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	reg = KIONIX_XOUT_L(V(s));
 	mutex_lock(s->mutex);
 	ret = raw_read_multi(s->port, s->addr, reg, acc, 6);
+#ifdef CONFIG_KX022_ORIENTATION_SENSOR
+	if ((s->location == MOTIONSENSE_LOC_LID) && (V(s) == 0) &&
+			(ret == EC_SUCCESS))
+		ret = check_orientation_locked(s);
+#endif
 	mutex_unlock(s->mutex);
 
 	if (ret != EC_SUCCESS)
