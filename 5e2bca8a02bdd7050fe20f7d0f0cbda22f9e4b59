@@ -117,6 +117,30 @@
       "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62273f07_ef962cfd",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-26T22:01:08Z",
+      "side": 1,
+      "message": "I couldnt figure out what code to highlight. I guess I could have highlighted the command.....\n\n\nAnyways  console_is_restricted is only compared to enabled. \n\nIf we are trying to disable the lock and console_is_restricted is true then lock disable will run and as long as you keep pressing the power button then the console will be unlocked and nvmem will be erased so  all of the flags disabling ccd will be forgotten.",
+      "parentUuid": "ef776eb2_77210301",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 496,
+        "endChar": 0
+      },
+      "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
