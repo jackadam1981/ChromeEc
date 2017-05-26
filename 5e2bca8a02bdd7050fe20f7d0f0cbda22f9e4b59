@@ -70,6 +70,29 @@
       "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ee44b0_ec65c5d2",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-26T21:43:17Z",
+      "side": 1,
+      "message": "Can we check fwmp_allows_unlock before allowing lock disable to be run?",
+      "range": {
+        "startLine": 494,
+        "startChar": 2,
+        "endLine": 496,
+        "endChar": 0
+      },
+      "revId": "5e2bca8a02bdd7050fe20f7d0f0cbda22f9e4b59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
