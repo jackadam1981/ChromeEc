@@ -32,6 +32,7 @@
 #include "upgrade_fw.h"
 #include "usb_descriptor.h"
 
+#define DEBUG
 #ifdef DEBUG
 #define debug printf
 #else
@@ -176,8 +177,6 @@ struct upgrade_pkt {
 	__be32	length;
 	__be32	ordinal;
 	__be16	subcmd;
-	__be32	digest;
-	__be32	address;
 	char data[0];
 } __packed;
 
@@ -245,22 +244,30 @@ static int tpm_send_pkt(int fd, unsigned int digest, unsigned int addr,
 	struct upgrade_pkt *out = (struct upgrade_pkt *)outbuf;
 	/* Use the same structure, it will not be filled completely. */
 	int len, done;
-	int response_offset = offsetof(struct upgrade_pkt, digest);
+
+	addr = htobe32(addr);
 
 	debug("%s: sending to %#x %d bytes\n", __func__, addr, size);
 
 	len = size + sizeof(struct upgrade_pkt);
-
 	out->tag = htobe16(0x8001);
-	out->length = htobe32(len);
 	if (subcmd <= LAST_EXTENSION_COMMAND)
 		out->ordinal = htobe32(CONFIG_EXTENSION_COMMAND);
 	else
 		out->ordinal = htobe32(TPM_CC_VENDOR_BIT_MASK);
 	out->subcmd = htobe16(subcmd);
-	out->digest = digest;
-	out->address = htobe32(addr);
-	memcpy(out->data, data, size);
+	if (subcmd == EXTENSION_FW_UPGRADE) {
+		/*
+		 * Append the digest and address to the packet when upgrading
+		 * firmware.
+		 */
+		memcpy(out->data, &digest, sizeof(digest));
+		memcpy(out->data + sizeof(digest), &addr, sizeof(addr));
+		memcpy(out->data + sizeof(digest) + sizeof(addr), data, size);
+		len += sizeof(digest) + sizeof(addr);
+	} else
+		memcpy(out->data, data, size);
+	out->length = htobe32(len);
 #ifdef DEBUG
 	{
 		int i;
@@ -298,15 +305,15 @@ static int tpm_send_pkt(int fd, unsigned int digest, unsigned int addr,
 		debug("\n");
 	}
 #endif
-	len = len - response_offset;
+	len = len - sizeof(struct upgrade_pkt);
 	if (len < 0) {
 		fprintf(stderr, "Problems reading from TPM, got %d bytes\n",
-			len + response_offset);
+			len + (int)sizeof(struct upgrade_pkt));
 		return -1;
 	}
 
 	len = MIN(len, *response_size);
-	memcpy(response, outbuf + response_offset, len);
+	memcpy(response, out->data, len);
 	*response_size = len;
 	return 0;
 }
