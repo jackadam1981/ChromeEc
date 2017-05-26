@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2bb16df8_d78eb21b",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-26T19:33:28Z",
+      "side": 1,
+      "message": "Actually, no. _VENDOR_ is correct.",
+      "parentUuid": "57fa7cee_9006e852",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 22
+      },
+      "revId": "68c9c09e48427b4bc1a057e1e5e8d83f4eb655af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f29e19a_d032192c",
         "filename": "board/cr50/board_id.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "68c9c09e48427b4bc1a057e1e5e8d83f4eb655af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fa05141_3be9f2e8",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-05-26T19:33:28Z",
+      "side": 1,
+      "message": "Actually, no. _VENDOR_ is correct.",
+      "parentUuid": "8f29e19a_d032192c",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 22
+      },
+      "revId": "68c9c09e48427b4bc1a057e1e5e8d83f4eb655af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
