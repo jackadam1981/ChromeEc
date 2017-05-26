@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cec640e8_c04fecd6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-26T00:07:12Z",
+      "side": 1,
+      "message": "Call this several times, to increase resistance to clock glitching.",
+      "range": {
+        "startLine": 582,
+        "startChar": 1,
+        "endLine": 582,
+        "endChar": 18
+      },
+      "revId": "687dcc4839ba87a0bfc8c08f1db74266729b3da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8a385c3_e8e66589",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-26T00:07:12Z",
+      "side": 1,
+      "message": "So, maybe again here\n\n/* Check BoardID again, in case attacker clock-glitched the first check *.\ncheck_board_id()",
+      "revId": "687dcc4839ba87a0bfc8c08f1db74266729b3da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f284f17c_2c4719ca",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-26T00:07:12Z",
+      "side": 1,
+      "message": "And once more here",
+      "revId": "687dcc4839ba87a0bfc8c08f1db74266729b3da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd6ce928_17ca37a8",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-26T00:07:12Z",
+      "side": 1,
+      "message": "Interesting question: What should we do if these reads fail?  And should we try to read as much as we can?\n\nIt might be better to do something like:\n\n\trv \u003d EC_SUCCESS;\n\n\tif (flash_physical_info_read_word(INFO_BOARD_ID_TYPE_OFFSET,\n\t\t\t\t\t   \u0026id-\u003etype)) {\n\t\tid-\u003etype \u003d 0;\n\t\trv \u003d EC_ERROR_UNKNOWN;\n\n\t(same for other 2 checks)\n\n\treturn rv;",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "687dcc4839ba87a0bfc8c08f1db74266729b3da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0261f28_e8ec86b7",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-26T00:07:12Z",
+      "side": 1,
+      "message": "Then here, we can explicitly ignore failures of read_board_id(), because we know any failures will result in that field being read as 0.\n\nA header which isn\u0027t BoardID-locked should still work even if we can\u0027t read BoardID.  And any BoardID-locked header should fail if a field it cares about is 0.",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 26
+      },
+      "revId": "687dcc4839ba87a0bfc8c08f1db74266729b3da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd132db_7a0e4658",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-26T00:07:12Z",
+      "side": 1,
+      "message": "We should reboot on failed check.  Which means check_board_id() can return void, because it either succeeds or reboots.",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 32
+      },
+      "revId": "687dcc4839ba87a0bfc8c08f1db74266729b3da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7ce2552_dfdd078d",
+        "filename": "chip/g/signed_header.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-26T00:07:12Z",
+      "side": 1,
+      "message": "5",
+      "range": {
+        "startLine": 53,
+        "startChar": 36,
+        "endLine": 53,
+        "endChar": 37
+      },
+      "revId": "687dcc4839ba87a0bfc8c08f1db74266729b3da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f6a428b_e7484480",
+        "filename": "chip/g/signed_header.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-05-26T00:07:12Z",
+      "side": 1,
+      "message": "Add between board_id_flags and fuses_chk:\n\nuint32_t dev_id0_;  // node id, if locked\nuint32_t dev_id1_;\n\n(see Vadim\u0027s comment to patch set 3)",
+      "revId": "687dcc4839ba87a0bfc8c08f1db74266729b3da1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
