@@ -1600,11 +1600,23 @@ void pd_set_new_power_request(int port)
 
 #ifdef CONFIG_COMMON_RUNTIME
 
+int pd_comm_is_enabled_at_start(void)
+{
+#if defined(CONFIG_USB_PD_COMM_DISABLED)
+	return 0;
+#elif defined(CONFIG_USB_PD_COMM_LOCKED)
+	/* Disable PD communication at init if we're in RO and locked. */
+	if (system_get_image_copy() != SYSTEM_IMAGE_RW && system_is_locked())
+		return 0;
+#endif
+	return 1;
+}
+
 /* Initialize globals based on system state. */
 static void pd_init_tasks(void)
 {
 	static int initialized;
-	int enable = 1;
+	int enable;
 	int i;
 
 	/* Initialize globals once, for all PD tasks.  */
@@ -1621,13 +1633,7 @@ static void pd_init_tasks(void)
 		drp_state = PD_DRP_TOGGLE_ON;
 #endif
 
-#if defined(CONFIG_USB_PD_COMM_DISABLED)
-	enable = 0;
-#elif defined(CONFIG_USB_PD_COMM_LOCKED)
-	/* Disable PD communication at init if we're in RO and locked. */
-	if (system_get_image_copy() != SYSTEM_IMAGE_RW && system_is_locked())
-		enable = 0;
-#endif
+	enable = pd_comm_is_enabled_at_start();
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
 		pd_comm_enabled[i] = enable;
 	CPRINTS("PD comm %sabled", enable ? "en" : "dis");
