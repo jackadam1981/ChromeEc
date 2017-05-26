@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a5ad0366_11cee05a",
+        "filename": "common/usb_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-26T10:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "163f4594_c8f017a7",
+      "range": {
+        "startLine": 213,
+        "startChar": 28,
+        "endLine": 213,
+        "endChar": 29
+      },
+      "revId": "ba78fa41735f90ddab0f6a519e13f16d02187f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "506af81a_d043f369",
         "filename": "common/usb_update.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4422566a_6506e95c",
+        "filename": "common/usb_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-26T10:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506af81a_d043f369",
+      "range": {
+        "startLine": 223,
+        "startChar": 30,
+        "endLine": 223,
+        "endChar": 31
+      },
+      "revId": "ba78fa41735f90ddab0f6a519e13f16d02187f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90e7e1d3_90806292",
         "filename": "include/update_fw.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-26T10:03:17Z",
       "side": 1,
       "message": "Nit: This isn\u0027t used yet, no reason to add right now.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 37
+      },
+      "revId": "ba78fa41735f90ddab0f6a519e13f16d02187f1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abaacb46_80b6ba60",
+        "filename": "include/update_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-26T10:17:54Z",
+      "side": 1,
+      "message": "True ,-) Let\u0027s say I\u0027m reserving the cmd id ,-)",
+      "parentUuid": "90e7e1d3_90806292",
       "range": {
         "startLine": 166,
         "startChar": 0,
