@@ -58,6 +58,8 @@ extern const struct accelgyro_drv kionix_accel_drv;
 			     (v) * (KXCJ9_OSA_FIELD - KX022_OSA_FIELD))
 #define KIONIX_PC1_FIELD(v) (KX022_CNTL1_PC1 +		\
 			     (v) * (KXCJ9_CTRL1_PC1 - KX022_CNTL1_PC1))
+#define KIONIX_TPE_FIELD(v) (KX022_CNTL1_TPE +		\
+			     (v) * (KXCJ9_CTRL1_TPE - KX022_CNTL1_TPE))
 #define KIONIX_RANGE_FIELD(v) (KX022_GSEL_FIELD +	\
 			       (v) * (KXCJ9_GSEL_ALL - KX022_GSEL_FIELD))
 #define KIONIX_RES_FIELD(v) (KX022_RES_16BIT +		\

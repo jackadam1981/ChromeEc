@@ -16,6 +16,11 @@
 #include "queue.h"
 #include "timer.h"
 
+#if defined(CONFIG_KX022_ORIENTATION_SUPPORT) || \
+		defined(CONFIG_BMI160_ORIENTATION_SUPPORT)
+#define CONFIG_ORIENTATION_SUPPORT
+#endif
+
 enum sensor_state {
 	SENSOR_NOT_INITIALIZED = 0,
 	SENSOR_INITIALIZED = 1,
@@ -153,6 +158,15 @@ struct motion_sensor_t {
 
 	 /* Maximum supported sampling frequency in miliHertz for this sensor */
 	 uint32_t max_frequency;
+
+#ifdef CONFIG_ORIENTATION_SENSOR
+	 /* Current orientation */
+	 enum motionsensor_orientation orientation;
+
+	 /* Last reported orientation */
+	 enum motionsensor_orientation last_orientation;
+#endif
+
 };
 
 /* Defined at board level. */
@@ -203,7 +217,7 @@ void sensor_init_done(const struct motion_sensor_t *sensor, int range);
  */
 void sensor_board_proc_double_tap(void);
 
-#ifdef CONFIG_GESTURE_HOST_DETECTION
+#if defined(CONFIG_GESTURE_HOST_DETECTION) || defined(CONFIG_ORIENTATION_SENSOR)
 /* Add an extra sensor. We may need to add more */
 #define MOTION_SENSE_ACTIVITY_SENSOR_ID (motion_sensor_count)
 #define ALL_MOTION_SENSORS (MOTION_SENSE_ACTIVITY_SENSOR_ID + 1)
@@ -218,5 +232,4 @@ void sensor_board_proc_double_tap(void);
 #define MOTION_SENSE_LUX motion_sensors[CONFIG_ALS_LIGHTBAR_DIMMING].raw_xyz[0]
 #endif
 #endif
-
 #endif /* __CROS_EC_MOTION_SENSE_H */
