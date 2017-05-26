@@ -11,6 +11,7 @@
 #include "common.h"
 #include "driver/accel_kx022.h"
 #include "driver/accel_kxcj9.h"
+#include "motion_sense.h"
 
 /*
  * Struct for pairing an engineering value with the register value for a
@@ -30,6 +31,11 @@ struct kionix_accel_data {
 	/* Current resolution of accelerometer. */
 	int sensor_resolution;
 	int16_t offset[3];
+#ifdef CONFIG_KX022_ORIENTATION_SENSOR
+	int8_t raw_orientation;
+	enum motionsensor_orientation orientation;
+	enum motionsensor_orientation last_orientation;
+#endif
 };
 
 extern const struct accelgyro_drv kionix_accel_drv;
@@ -75,6 +81,15 @@ extern const struct accelgyro_drv kionix_accel_drv;
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ACCEL
 extern struct i2c_stress_test_dev kionix_i2c_stress_test_dev;
+#endif
+
+#ifdef CONFIG_KX022_ORIENTATION_SENSOR
+inline int kx022_orientation_needs_reporting(const struct motion_sensor_t *s);
+inline enum motionsensor_orientation kx022_get_orientation(
+		const struct motion_sensor_t *sensor);
+inline void kx022_set_orientation(const struct motion_sensor_t *sensor,
+		enum motionsensor_orientation orientation);
+inline void kx022_orientation_updated(const struct motion_sensor_t *sensor);
 #endif
 
 #endif /* __CROS_EC_ACCEL_KIONIX_H */
