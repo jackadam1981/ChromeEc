@@ -32,6 +32,13 @@
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE, format, ## args)
 
+#ifdef CONFIG_ORIENTATION_SENSOR
+#define ORIENTATION_EVENTS_MASK (CONFIG_ORIENT_PORTRAIT_EVENT |\
+				 CONFIG_ORIENT_INVERT_PORTRAIT_EVENT |\
+				 CONFIG_ORIENT_LANDSCAPE_EVENT |\
+				 CONFIG_ORIENT_INVERT_LANDSCAPE_EVENT)
+#endif
+
 /*
  * Sampling interval for measuring acceleration and calculating lid angle.
  */
@@ -649,6 +656,7 @@ static int motion_sense_read(struct motion_sensor_t *sensor)
 	return sensor->drv->read(sensor, sensor->raw_xyz);
 }
 
+
 static int motion_sense_process(struct motion_sensor_t *sensor,
 				uint32_t *event,
 				const timestamp_t *ts)
@@ -708,6 +716,42 @@ static int motion_sense_process(struct motion_sensor_t *sensor,
 	}
 
 #endif
+
+#ifdef CONFIG_ORIENTATION_SENSOR
+	if (ret != EC_ERROR_BUSY) {
+		struct ec_response_motion_sensor_data vector = {
+			.flags = 0,
+			.activity = MOTIONSENSE_ACTIVITY_ORIENTATION,
+			.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID,
+		};
+		int send_event = 1;
+
+		mutex_lock(sensor->mutex);
+		if (sensor->orientation != sensor->last_orientation) {
+			switch (sensor->orientation) {
+			case MOTIONSENSE_ORIENTATION_PORTRAIT:
+			case MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_PORTRAIT:
+			case MOTIONSENSE_ORIENTATION_LANDSCAPE:
+			case MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_LANDSCAPE:
+				vector.state = sensor->orientation;
+				break;
+			default:
+				/* more than one event set ? */
+				send_event = 0;
+				break;
+			}
+
+			/* Send events to the FIFO */
+			if (send_event) {
+				sensor->last_orientation = sensor->orientation;
+				motion_sense_fifo_add_unit(&vector, NULL, 0);
+				CPRINTS("orientation change 0x%x",
+						sensor->orientation);
+			}
+		}
+		mutex_unlock(sensor->mutex);
+	}
+#endif
 	return ret;
 }
 
@@ -725,6 +769,7 @@ void motion_sense_task(void)
 	uint32_t event = 0;
 	uint16_t ready_status;
 	struct motion_sensor_t *sensor;
+
 #ifdef CONFIG_LID_ANGLE
 	const uint16_t lid_angle_sensors = ((1 << CONFIG_LID_ANGLE_SENSOR_BASE)|
 					    (1 << CONFIG_LID_ANGLE_SENSOR_LID));
@@ -752,12 +797,12 @@ void motion_sense_task(void)
 
 			/* if the sensor is active in the current power state */
 			if (SENSOR_ACTIVE(sensor)) {
-				if (sensor->state != SENSOR_INITIALIZED) {
+				if (sensor->state != SENSOR_INITIALIZED)
 					continue;
-				}
 
 				ret = motion_sense_process(sensor, &event,
 						&ts_begin_task);
+
 				if (ret != EC_SUCCESS)
 					continue;
 				ready_status |= (1 << i);
