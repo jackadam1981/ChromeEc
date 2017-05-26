@@ -4,6 +4,8 @@
  */
 
 /* System module for Chrome EC : common functions */
+#include "battery.h"
+#include "charge_manager.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -1289,3 +1291,30 @@ int host_command_reboot(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_REBOOT_EC,
 		     host_command_reboot,
 		     EC_VER_MASK(0));
+
+int system_is_powered_to_boot_ap(void)
+{
+	/*
+	 * Check battery level. If it's more than 2%, we can boot
+	 * battery_state_of_charge should return -1 or 0 if battery isn't
+	 * present
+	 */
+#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT
+	int percent;
+	if (battery_state_of_charge_abs(&percent) && percent >
+			CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT)
+		return 1;
+#endif
+
+	/*
+	 * We found battery is low or not present.
+	 * We can still boot if charger is strong enough.
+	 */
+#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW
+	if (charge_manager_get_power_limit_uw() <
+			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000)
+		return 0;
+#endif
+
+	return 1;
+}
