@@ -203,7 +203,12 @@ void sensor_init_done(const struct motion_sensor_t *sensor, int range);
  */
 void sensor_board_proc_double_tap(void);
 
-#ifdef CONFIG_GESTURE_HOST_DETECTION
+#ifdef CONFIG_ORIENTATION_SENSOR
+enum motionsensor_orientation orient_remap(const struct motion_sensor_t *s,
+		enum motionsensor_orientation orientation);
+#endif
+
+#if defined(CONFIG_GESTURE_HOST_DETECTION) || defined(CONFIG_ORIENTATION_SENSOR)
 /* Add an extra sensor. We may need to add more */
 #define MOTION_SENSE_ACTIVITY_SENSOR_ID (motion_sensor_count)
 #define ALL_MOTION_SENSORS (MOTION_SENSE_ACTIVITY_SENSOR_ID + 1)
@@ -218,5 +223,4 @@ void sensor_board_proc_double_tap(void);
 #define MOTION_SENSE_LUX motion_sensors[CONFIG_ALS_LIGHTBAR_DIMMING].raw_xyz[0]
 #endif
 #endif
-
 #endif /* __CROS_EC_MOTION_SENSE_H */
