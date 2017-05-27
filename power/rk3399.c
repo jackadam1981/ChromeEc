@@ -268,7 +268,14 @@ enum power_state power_handle_state(enum power_state state)
 			sys_reset_asserted = 0;
 		}
 
-		if (power_wait_signals(IN_PGOOD_S0)) {
+		/*
+		 * Wait up to PGOOD_AP_DEBOUNCE_TIMEOUT for IN_PGOOD_SYS to
+		 * come back before transitioning back to S3. PGOOD_SYS can
+		 * also glitch, with a glitch duration < 1ms, so debounce
+		 * it here as well.
+		 */
+		if (power_wait_signals_timeout(IN_PGOOD_S0,
+					       PGOOD_AP_DEBOUNCE_TIMEOUT)) {
 			chipset_force_shutdown();
 			return POWER_S3S0;
 		}
