@@ -268,6 +268,15 @@ enum power_state power_handle_state(enum power_state state)
 			sys_reset_asserted = 0;
 		}
 
+		if (power_wait_signals(IN_PGOOD_S0)) {
+			CPRINTS("PGOOD lost!!!try debounce");
+			if (power_wait_signals_timeout(IN_PGOOD_S0,
+				PGOOD_AP_DEBOUNCE_TIMEOUT))
+				CPRINTS("PGOOD didn't come back");
+			chipset_force_shutdown();
+			return POWER_S3S0;
+		}
+
 		/*
 		 * Wait up to PGOOD_AP_DEBOUNCE_TIMEOUT for IN_PGOOD_SYS to
 		 * come back before transitioning back to S3. PGOOD_SYS can
