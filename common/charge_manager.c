@@ -933,6 +933,11 @@ int charge_manager_get_power_limit_uw(void)
 		return current_ma * voltage_mv;
 }
 
+int charge_manager_get_power_limit_mw(void)
+{
+	return charge_manager_get_power_limit_uw() / 1000;
+}
+
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 void charge_manager_source_port(int port, int enable)
 {
