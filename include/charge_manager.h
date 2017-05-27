@@ -133,9 +133,10 @@ int charge_manager_get_active_charge_port(void);
 /**
  * Get the power limit set by charge manager.
  *
- * @return	Power limit (uW).
+ * @return	Power limit (uW or mW).
  */
 int charge_manager_get_power_limit_uw(void);
+int charge_manager_get_power_limit_mw(void);
 
 /**
  * Get the charger current (mA) value.
