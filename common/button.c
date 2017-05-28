@@ -6,6 +6,7 @@
 /* Button module for Chrome EC */
 
 #include "button.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -175,6 +176,11 @@ void button_init(void)
 static void button_change_deferred(void);
 DECLARE_DEFERRED(button_change_deferred);
 
+#ifdef CONFIG_EMULATED_SYSRQ
+static void debug_mode_handle(void);
+DECLARE_DEFERRED(debug_mode_handle);
+#endif
+
 static void button_change_deferred(void)
 {
 	int i;
@@ -192,6 +198,9 @@ static void button_change_deferred(void)
 			new_pressed = raw_button_pressed(&buttons[i]);
 			if (state[i].debounced_pressed != new_pressed) {
 				state[i].debounced_pressed = new_pressed;
+#ifdef CONFIG_EMULATED_SYSRQ
+				hook_call_deferred(&debug_mode_handle_data, 0);
+#endif
 				CPRINTS("Button '%s' was %s",
 					buttons[i].name, new_pressed ?
 					"pressed" : "released");
@@ -311,3 +320,304 @@ DECLARE_CONSOLE_COMMAND(button, console_command_button,
 			"vup|vdown msec",
 			"Simulate button press");
 #endif
+
+#ifdef CONFIG_EMULATED_SYSRQ
+
+enum debug_state {
+	STATE_DEBUG_NONE,
+	STATE_DEBUG_CHECK,
+	STATE_STAGING,
+	STATE_DEBUG_MODE_ACTIVE,
+	STATE_SYSRQ_PATH,
+	STATE_WARM_RESET_PATH,
+	STATE_SYSRQ_EXEC,
+	STATE_WARM_RESET_EXEC,
+};
+
+#define DEBUG_BTN_POWER         (1 << 0)
+#define DEBUG_BTN_VOL_UP        (1 << 1)
+#define DEBUG_BTN_VOL_DN        (1 << 2)
+#define DEBUG_TIMEOUT           (10 * SECOND)
+
+static enum debug_state curr_debug_state = STATE_DEBUG_NONE;
+static enum debug_state next_debug_state = STATE_DEBUG_NONE;
+static int staging_key_mask;
+static timestamp_t debug_state_deadline;
+static int debug_button_hit_count;
+#ifdef CONFIG_LED_COMMON
+static int debug_mode_blink_led;
+#endif
+
+static int debug_button_mask(void)
+{
+	int mask;
+
+	/* Get power button state */
+	mask = power_button_is_pressed() ? DEBUG_BTN_POWER : 0;
+
+	/* Get volume up state */
+	mask |= state[BUTTON_VOLUME_UP].debounced_pressed ? DEBUG_BTN_VOL_UP :
+		0;
+
+	/* Get volume down state */
+	mask |= state[BUTTON_VOLUME_DOWN].debounced_pressed ? DEBUG_BTN_VOL_DN :
+		0;
+
+	return mask;
+}
+
+static int debug_button_pressed(int mask)
+{
+	return debug_button_mask() == mask;
+}
+
+static void debug_mode_input_deferred(void)
+{
+	debug_mode_handle();
+}
+DECLARE_DEFERRED(debug_mode_input_deferred);
+
+static void debug_mode_transition(enum debug_state next_state)
+{
+	timestamp_t now = get_time();
+
+	/* Cancel any deferred calls. */
+	hook_call_deferred(&debug_mode_input_deferred_data, -1);
+
+	/* Update current debug mode state. */
+	curr_debug_state = next_state;
+
+	/* Set deadline to 10seconds from current time. */
+	debug_state_deadline.val = now.val + DEBUG_TIMEOUT;
+
+	switch (curr_debug_state) {
+	case STATE_DEBUG_NONE:
+		/*
+		 * Nothing is done here since some states can transition to
+		 * STATE_DEBUG_NONE in this function. Wait until all other
+		 * states are evaluated to take the action for STATE_NONE.
+		 */
+		break;
+	case STATE_DEBUG_CHECK:
+	case STATE_STAGING:
+		/*
+		 * Schedule a deferred call after DEBUG_TIMEOUT to check for
+		 * button state if it does not change during the timeout
+		 * duration.
+		 */
+		hook_call_deferred(&debug_mode_input_deferred_data,
+					DEBUG_TIMEOUT);
+		break;
+	case STATE_DEBUG_MODE_ACTIVE:
+		debug_button_hit_count = 0;
+		break;
+	case STATE_SYSRQ_PATH:
+		/*
+		 * Increment debug_button_hit_count and ensure it does not go
+		 * past 3. If it exceeds the limit transition to STATE_NONE.
+		 */
+		debug_button_hit_count++;
+		if (debug_button_hit_count == 4)
+			curr_debug_state = STATE_DEBUG_NONE;
+		break;
+	case STATE_WARM_RESET_PATH:
+		break;
+	case STATE_SYSRQ_EXEC:
+		/*
+		 * Depending upon debug_button_hit_count, send appropriate
+		 * number of sysrq events to host and transition to STATE_NONE.
+		 */
+		while (debug_button_hit_count) {
+			host_send_sysrq('x');
+			debug_button_hit_count--;
+		}
+		curr_debug_state = STATE_DEBUG_NONE;
+		break;
+	case STATE_WARM_RESET_EXEC:
+		/* Warm reset the host and transition to STATE_NONE. */
+		chipset_reset(0);
+		curr_debug_state = STATE_DEBUG_NONE;
+		break;
+	default:
+		curr_debug_state = STATE_DEBUG_NONE;
+	}
+
+	if (curr_debug_state != STATE_DEBUG_NONE)
+		return;
+
+	/* If state machine reached initial state, reset all variables. */
+	next_debug_state = STATE_DEBUG_NONE;
+	staging_key_mask = 0;
+	debug_state_deadline.val = 0;
+	debug_button_hit_count = 0;
+#ifdef CONFIG_LED_COMMON
+	if (debug_mode_blink_led) {
+		led_control(EC_LED_ID_SYSRQ_DEBUG_LED, LED_STATE_RESET);
+		debug_mode_blink_led = 0;
+	}
+#endif
+}
+
+static int debug_mode_timeout(void)
+{
+	timestamp_t now = get_time();
+
+	return timestamp_expired(debug_state_deadline, &now);
+}
+
+static void debug_mode_handle(void)
+{
+	int mask;
+#ifdef CONFIG_LED_COMMON
+	static int led_state = LED_STATE_OFF;
+
+	if (debug_mode_blink_led) {
+		led_state = !led_state;
+		led_control(EC_LED_ID_SYSRQ_DEBUG_LED, led_state);
+	}
+#endif
+
+	switch (curr_debug_state) {
+	case STATE_DEBUG_NONE:
+		/*
+		 * If user pressed Vup+Vdn, check for next 10 seconds to see if
+		 * user keeps holding the keys.
+		 */
+		if (debug_button_pressed(DEBUG_BTN_VOL_UP | DEBUG_BTN_VOL_DN))
+			debug_mode_transition(STATE_DEBUG_CHECK);
+		break;
+	case STATE_DEBUG_CHECK:
+		/*
+		 * If no key is pressed or any key combo other than Vup+Vdn is
+		 * held, then quit debug check mode.
+		 */
+		if (!debug_button_pressed(DEBUG_BTN_VOL_UP | DEBUG_BTN_VOL_DN))
+			debug_mode_transition(STATE_DEBUG_NONE);
+		else if (debug_mode_timeout()) {
+			/*
+			 * If Vup+Vdn are held down for 10 seconds, then its
+			 * time to enter debug mode.
+			 */
+			next_debug_state = STATE_DEBUG_MODE_ACTIVE;
+			staging_key_mask = DEBUG_BTN_VOL_UP | DEBUG_BTN_VOL_DN;
+			debug_mode_transition(STATE_STAGING);
+#ifdef CONFIG_LED_COMMON
+			debug_mode_blink_led = 1;
+#endif
+		}
+		break;
+	case STATE_STAGING:
+		mask = debug_button_mask();
+
+		/* If no button is pressed, transition to next state. */
+		if (!mask) {
+			debug_mode_transition(next_debug_state);
+			return;
+		}
+
+		/* Exit debug mode if keys are stuck for > 10 seconds. */
+		if (debug_mode_timeout())
+			debug_mode_transition(STATE_DEBUG_NONE);
+		else {
+			timestamp_t now = get_time();
+
+			/*
+			 * Schedule a deferred call in case timeout hasn't
+			 * occurred yet.
+			 */
+			hook_call_deferred(&debug_mode_input_deferred_data,
+					(debug_state_deadline.val - now.val));
+		}
+
+		break;
+	case STATE_DEBUG_MODE_ACTIVE:
+		mask = debug_button_mask();
+
+		/*
+		 * Continue in this state if button is not pressed and timeout
+		 * has not occurred.
+		 */
+		if (!mask && !debug_mode_timeout())
+			return;
+
+		/* Exit debug mode if valid buttons are not pressed. */
+		if ((mask != DEBUG_BTN_VOL_UP) && (mask != DEBUG_BTN_VOL_DN)) {
+			debug_mode_transition(STATE_DEBUG_NONE);
+			return;
+		}
+
+		/*
+		 * Transition to STAGING state with next state set to:
+		 * 1. SYSRQ_PATH     : If Vup was pressed.
+		 * 2. WARM_RESET_PATH: If Vdn was pressed.
+		 */
+		if (mask == DEBUG_BTN_VOL_UP)
+			next_debug_state = STATE_SYSRQ_PATH;
+		else
+			next_debug_state = STATE_WARM_RESET_PATH;
+
+		staging_key_mask = mask;
+		debug_mode_transition(STATE_STAGING);
+		break;
+	case STATE_SYSRQ_PATH:
+		mask = debug_button_mask();
+
+		/*
+		 * Continue in this state if button is not pressed and timeout
+		 * has not occurred.
+		 */
+		if (!mask && !debug_mode_timeout())
+			return;
+
+		/* Exit debug mode if valid buttons are not pressed. */
+		if ((mask != DEBUG_BTN_VOL_UP) && (mask != DEBUG_BTN_VOL_DN)) {
+			debug_mode_transition(STATE_DEBUG_NONE);
+			return;
+		}
+
+		if (mask == DEBUG_BTN_VOL_UP) {
+			/*
+			 * Else transition to STAGING state with next state set
+			 * to SYSRQ_PATH.
+			 */
+			next_debug_state = STATE_SYSRQ_PATH;
+		} else
+			/*
+			 * Else if Vdn is pressed, transition to STAGING with
+			 * next state set to SYSRQ_EXEC.
+			 */
+			next_debug_state = STATE_SYSRQ_EXEC;
+		staging_key_mask = mask;
+		debug_mode_transition(STATE_STAGING);
+		break;
+	case STATE_WARM_RESET_PATH:
+		mask = debug_button_mask();
+
+		/*
+		 * Continue in this state if button is not pressed and timeout
+		 * has not occurred.
+		 */
+		if (!mask && !debug_mode_timeout())
+			return;
+
+		/* Exit debug mode if valid buttons are not pressed. */
+		if (mask != DEBUG_BTN_VOL_UP) {
+			debug_mode_transition(STATE_DEBUG_NONE);
+			return;
+		}
+
+		next_debug_state = STATE_WARM_RESET_EXEC;
+		staging_key_mask = DEBUG_BTN_VOL_UP;
+		debug_mode_transition(STATE_STAGING);
+		break;
+	case STATE_SYSRQ_EXEC:
+	case STATE_WARM_RESET_EXEC:
+	default:
+		debug_mode_transition(STATE_DEBUG_NONE);
+		break;
+	}
+}
+
+DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, debug_mode_handle, HOOK_PRIO_LAST);
+
+#endif /* CONFIG_EMULATED_SYSRQ */
