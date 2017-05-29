@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "445567cd_fe1fe952",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-29T08:46:52Z",
+      "side": 1,
+      "message": "so what is the goal of this added complexity ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 12,
+        "endChar": 69
+      },
+      "revId": "bad83da0767a21e882cb3c43b684e13c6723c52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64bdad7_9c0de3d9",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-29T08:46:52Z",
+      "side": 1,
+      "message": "not really, the task scheduling is started before, but only the HOOK task is in a running state first.",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 225,
+        "endChar": 61
+      },
+      "revId": "bad83da0767a21e882cb3c43b684e13c6723c52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
