@@ -20,6 +20,7 @@
 #include "system.h"
 #include "task.h"
 #include "util.h"
+#include "vboot.h"
 #include "wireless.h"
 
 /* Chipset specific header files */
@@ -180,6 +181,7 @@ enum power_state power_chipset_init(void)
 
 enum power_state common_intel_x86_power_handle_state(enum power_state state)
 {
+	int percent, power;
 
 	switch (state) {
 	case POWER_G3:
@@ -278,6 +280,21 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 			/* Required rail went away */
 			chipset_force_shutdown();
 			return POWER_S5G3;
+		}
+
+		if (!system_can_boot_ap(&percent, &power)) {
+			CPRINTS("Not enough power: %d%% %dmW", percent, power);
+			/*
+			 * This call results in one of the followings:
+			 * 1. Returns expecting PD will provide enough power
+			 * 2. Jumps to RW (no return)
+			 * 3. Returns, requesting more power
+			 * 4. Returns, requesting recovery
+			 */
+			vboot_ec();
+			while (!system_can_boot_ap(&percent, &power))
+				/* LED blinks as HOOK_TICK events trigger */
+				msleep(200);
 		}
 
 		/* Call hooks now that rails are up */
