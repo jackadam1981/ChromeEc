@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d5f40b03_ca7f8b34",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-30T23:50:02Z",
+      "side": 1,
+      "message": "If queue_peek_units returns 0, I believe write_count will contain garbage from the stack.",
+      "parentUuid": "63ff7628_ea694441",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "69e512aa0ce938230abdeb79c4f6a78131a2c22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "766373f9_f0d3bc01",
         "filename": "include/usb_i2c.h",
         "patchSetId": 3
