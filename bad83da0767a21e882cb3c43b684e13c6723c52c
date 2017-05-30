@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "13da0b30_9fa43784",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-05-30T22:14:29Z",
+      "side": 1,
+      "message": "I posted a simplified version of vboot ec: https://chromium-review.googlesource.com/c/518254/. It\u0027s not as fast as this version: https://chromium-review.googlesource.com/c/517407/ but it doesn\u0027t require additional complexity introduced by CL 517286 or CL 517273.",
+      "parentUuid": "e81451c1_1f15bd81",
+      "range": {
+        "startLine": 10,
+        "startChar": 32,
+        "endLine": 12,
+        "endChar": 69
+      },
+      "revId": "bad83da0767a21e882cb3c43b684e13c6723c52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d64bdad7_9c0de3d9",
         "filename": "include/hooks.h",
         "patchSetId": 2
