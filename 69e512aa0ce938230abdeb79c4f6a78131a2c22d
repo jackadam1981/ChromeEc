@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "63ff7628_ea694441",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-05-30T23:45:30Z",
+      "side": 1,
+      "message": "queue_peek_units\u0027 reading is checked on Line 63,\nDo you mean if the other side send garbage value of write count to us ?",
+      "parentUuid": "18bc1c1f_e49f2bef",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "69e512aa0ce938230abdeb79c4f6a78131a2c22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "766373f9_f0d3bc01",
         "filename": "include/usb_i2c.h",
         "patchSetId": 3
