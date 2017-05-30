@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ea62eaae_862c2b69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T21:04:17Z",
+      "side": 1,
+      "message": "uart_bitbang_enable() does do a uartn_tx_disconnect() after the initial property checks.\n\nAre you suggesting that I disable the UART prior to that?",
+      "parentUuid": "38ac4bde_79eff0a0",
+      "revId": "7ce3c978fe25af3937c6cb077ee4d12ec9beaa17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40bf4b29_2868f9eb",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
@@ -60,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "a56e71ab_b977c959",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T21:04:17Z",
+      "side": 1,
+      "message": "May be needed at higher baud rates, but I was able to flash successfully @ 9600 baud so I\u0027ll put it back.",
+      "parentUuid": "40bf4b29_2868f9eb",
+      "range": {
+        "startLine": 597,
+        "startChar": 1,
+        "endLine": 597,
+        "endChar": 29
+      },
+      "revId": "7ce3c978fe25af3937c6cb077ee4d12ec9beaa17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31db70e2_42513ce5",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 6
@@ -71,6 +113,30 @@
       "writtenOn": "2017-05-30T20:44:41Z",
       "side": 1,
       "message": "Maybe put a comment that DETECT_SERVO and EC_TX_CR50_RX cannot change without also changing the definition in board.c.\n\nI guess there are other pins that do a similar thing that dont have comments. Like SYS_RST_L_OUT needs to stay on PIN(0, 4). It is up to you.",
+      "range": {
+        "startLine": 63,
+        "startChar": 29,
+        "endLine": 63,
+        "endChar": 35
+      },
+      "revId": "7ce3c978fe25af3937c6cb077ee4d12ec9beaa17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0416a2e_7f08a0ae",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T21:04:17Z",
+      "side": 1,
+      "message": "I can add a comment.",
+      "parentUuid": "31db70e2_42513ce5",
       "range": {
         "startLine": 63,
         "startChar": 29,
