@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06d267ce_98df20df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T20:33:08Z",
+      "side": 1,
+      "message": "Note, this only works if the EC UART isn\u0027t already enabled. (servod seems to enable it by default)",
+      "revId": "7ce3c978fe25af3937c6cb077ee4d12ec9beaa17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
