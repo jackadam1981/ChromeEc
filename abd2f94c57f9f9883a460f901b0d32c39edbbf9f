@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f2da885_3c749c4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-30T20:52:57Z",
+      "side": 1,
+      "message": "is this all you tested? Or you mean the real test is after the rest of the patches are applied?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 21
+      },
+      "revId": "abd2f94c57f9f9883a460f901b0d32c39edbbf9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839b0f3d_623aaacf",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-30T20:52:57Z",
+      "side": 1,
+      "message": "this is a bit expensive to keep in RAM I think. We will have only one channel doing bitbang at a time, also, we could have two const structures, one pointing at regular and another one - to bitbang uart and just change one pointer for one interface.\n\nNot a big enough deal to stall this, let\u0027s just keep this in mind for future improvements.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "abd2f94c57f9f9883a460f901b0d32c39edbbf9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

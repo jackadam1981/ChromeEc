@@ -187,6 +187,30 @@
       "revId": "3d96c2fc543e543a1a619c01463120e9303c940b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "965c600a_43a756c9",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-30T20:52:57Z",
+      "side": 1,
+      "message": "ah, of course, on the first pass I thought this was a counter, and then I did not look back",
+      "parentUuid": "efee0d6d_34bbe4d4",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 53
+      },
+      "revId": "3d96c2fc543e543a1a619c01463120e9303c940b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
