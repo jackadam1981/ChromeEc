@@ -46,6 +46,30 @@
       "revId": "4c5a53bcbee64ef8fcba694e01416cc20f471081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c8ba87_cdfcc8c1",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-30T23:33:58Z",
+      "side": 1,
+      "message": "It can\u0027t be enrolled, but you can set the FWMP flag to disable ccd.",
+      "parentUuid": "c5c3ed6f_72c9366b",
+      "range": {
+        "startLine": 507,
+        "startChar": 7,
+        "endLine": 507,
+        "endChar": 25
+      },
+      "revId": "4c5a53bcbee64ef8fcba694e01416cc20f471081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
