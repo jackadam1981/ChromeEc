@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0195cb6_2e814353",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-30T23:09:19Z",
+      "side": 1,
+      "message": "This check should not happen on dev images.",
+      "range": {
+        "startLine": 507,
+        "startChar": 7,
+        "endLine": 507,
+        "endChar": 25
+      },
+      "revId": "4c5a53bcbee64ef8fcba694e01416cc20f471081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
