@@ -68,6 +68,24 @@
       "revId": "d6e8d68148e5846eda4956cab95d6f3c6486253a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7de26616_7cf97c65",
+        "filename": "board/eve/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-05-30T19:13:44Z",
+      "side": 1,
+      "message": "That turned out to be an unrelated issue due to massive leakage from the FP MCU.",
+      "parentUuid": "98fb8e90_d85cc2c3",
+      "revId": "d6e8d68148e5846eda4956cab95d6f3c6486253a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
