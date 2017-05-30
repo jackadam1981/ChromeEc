@@ -20,6 +20,7 @@
 #include "system.h"
 #include "task.h"
 #include "util.h"
+#include "vboot.h"
 #include "wireless.h"
 
 /* Chipset specific header files */
@@ -180,7 +181,6 @@ enum power_state power_chipset_init(void)
 
 enum power_state common_intel_x86_power_handle_state(enum power_state state)
 {
-
 	switch (state) {
 	case POWER_G3:
 		break;
@@ -279,6 +279,19 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 			chipset_force_shutdown();
 			return POWER_S5G3;
 		}
+
+#ifdef CONFIG_VBOOT_EC
+		{
+		int percent, power;
+		if (!system_can_boot_ap(&percent, &power)) {
+			CPRINTS("Not enough power: %d%% %dmW", percent, power);
+			vboot_ec();
+			while (!system_can_boot_ap(&percent, &power))
+				/* LED blinks as HOOK_TICK events trigger */
+				msleep(200);
+		}
+		}
+#endif
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
