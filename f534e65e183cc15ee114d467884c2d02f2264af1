@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5269ffc8_14e57e9f",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-05-30T22:51:54Z",
+      "side": 1,
+      "message": "This won\u0027t work. We need to update the servo state before we can check if it is on. \n\nI think this is more complicated then it is worth.",
+      "range": {
+        "startLine": 435,
+        "startChar": 3,
+        "endLine": 435,
+        "endChar": 59
+      },
+      "revId": "f534e65e183cc15ee114d467884c2d02f2264af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
