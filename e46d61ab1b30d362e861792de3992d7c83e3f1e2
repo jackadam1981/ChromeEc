@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5ec7bd9c_fe9e526b",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T20:33:34Z",
+      "side": 1,
+      "message": "I guess it does a similar thing. Returning none or an empty string doesn\u0027t seem to make a big difference. I\u0027ll remove the \"die\" here though.",
+      "parentUuid": "a0680a8e_3c47def3",
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bea7b612_8023aef9",
         "filename": "util/flash_ec",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2017-05-21T06:53:21Z",
       "side": 1,
       "message": "needed?",
+      "range": {
+        "startLine": 192,
+        "startChar": 1,
+        "endLine": 192,
+        "endChar": 17
+      },
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b928acdc_30e7ae95",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T20:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bea7b612_8023aef9",
       "range": {
         "startLine": 192,
         "startChar": 1,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "345178fb_9f748fba",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T20:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d345d0dc_00aa72f3",
+      "range": {
+        "startLine": 274,
+        "startChar": 13,
+        "endLine": 274,
+        "endChar": 14
+      },
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2aadf655_0c1497db",
         "filename": "util/flash_ec",
         "patchSetId": 5
@@ -76,6 +142,24 @@
       "writtenOn": "2017-05-21T06:53:21Z",
       "side": 1,
       "message": "does this need to be above the call to DUT_CONTROL_CMD in get servo type?",
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fedd8351_9bbc1fe1",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T20:33:34Z",
+      "side": 1,
+      "message": "Moved the servo_type variable to after this.",
+      "parentUuid": "2aadf655_0c1497db",
       "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "9672ddaf_2829888f",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T20:33:34Z",
+      "side": 1,
+      "message": "servo micro is \"on_raiden\" ? I didn\u0027t think so...",
+      "parentUuid": "5bf4ec04_42d7b769",
+      "range": {
+        "startLine": 513,
+        "startChar": 4,
+        "endLine": 513,
+        "endChar": 15
+      },
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0736f1a_cea81df6",
         "filename": "util/flash_ec",
         "patchSetId": 5
@@ -116,6 +224,30 @@
       "writtenOn": "2017-05-21T06:53:21Z",
       "side": 1,
       "message": "serial is valid for both servo v2, micro, and cr50",
+      "range": {
+        "startLine": 518,
+        "startChar": 22,
+        "endLine": 518,
+        "endChar": 43
+      },
+      "revId": "e46d61ab1b30d362e861792de3992d7c83e3f1e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "053b32f3_2adbdb32",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T20:33:34Z",
+      "side": 1,
+      "message": "That should be handled by the check for empty string, no?",
+      "parentUuid": "e0736f1a_cea81df6",
       "range": {
         "startLine": 518,
         "startChar": 22,
