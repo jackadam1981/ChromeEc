@@ -247,6 +247,9 @@ int DCRYPTO_bn_div(struct LITE_BIGNUM *quotient, struct LITE_BIGNUM *remainder,
  */
 int DCRYPTO_x509_verify(const uint8_t *cert, size_t len,
 			const struct RSA *ca_pub_key);
+int DCRYPTO_x509_gen_cert(const p256_int *d, const p256_int *pk_x,
+			  const p256_int *pk_y, const p256_int *serial,
+			  uint8_t *cert, const int n);
 
 /*
  * Memory related functions.
