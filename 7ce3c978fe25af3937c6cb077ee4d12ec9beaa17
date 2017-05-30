@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "37b2c19f_31c5c8fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-30T22:01:21Z",
+      "side": 1,
+      "message": "I thought about it, but I didn\u0027t think that the chip-specific code needed to be aware of board specific device state. Maybe I should move the disabling of the UART to the board specific code.\n\nIf a servoflex was attached, there\u0027d be no reason to bitbang since the FTDI chips on the servo board would be used instead.",
+      "parentUuid": "391e3af9_0409fd97",
+      "revId": "7ce3c978fe25af3937c6cb077ee4d12ec9beaa17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40bf4b29_2868f9eb",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
