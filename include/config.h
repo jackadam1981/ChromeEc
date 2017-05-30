@@ -1052,6 +1052,9 @@
 #undef CONFIG_EC_WRITABLE_STORAGE_OFF
 #undef CONFIG_EC_WRITABLE_STORAGE_SIZE
 
+/* Enable robust non-volatile counter in flash */
+#undef CONFIG_FLASH_NVCOUNTER
+
 /*****************************************************************************/
 /* NvMem Configuration */
 /* Enable NV Memory module within flash */
