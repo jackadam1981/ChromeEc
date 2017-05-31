@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf94dea4_1133f89f",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-05-31T08:39:57Z",
+      "side": 1,
+      "message": "nit: Might make sense to clarify that the entropy is pulled from /dev/random?",
+      "revId": "d6568b28c2a6f178a04ccb33ebe9541612c052d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
