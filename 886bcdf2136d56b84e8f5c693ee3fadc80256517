@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2116ad71_20c4da9b",
+        "filename": "common/flash.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-31T21:39:56Z",
+      "side": 1,
+      "message": "updated ec_commands.h",
+      "parentUuid": "249c7f27_0dc7c3e5",
+      "range": {
+        "startLine": 1224,
+        "startChar": 6,
+        "endLine": 1224,
+        "endChar": 30
+      },
+      "revId": "886bcdf2136d56b84e8f5c693ee3fadc80256517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26a27616_57eb7799",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-24T17:10:53Z",
       "side": 1,
       "message": "/* No flags defined yet; set to 0 */\n\n(otherwise writers may not initialize it properly)",
+      "range": {
+        "startLine": 1253,
+        "startChar": 4,
+        "endLine": 1253,
+        "endChar": 10
+      },
+      "revId": "886bcdf2136d56b84e8f5c693ee3fadc80256517",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29b79bd6_ac4c187d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-31T21:39:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26a27616_57eb7799",
       "range": {
         "startLine": 1253,
         "startChar": 4,
