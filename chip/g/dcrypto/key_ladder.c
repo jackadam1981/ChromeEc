@@ -2,6 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
+#include "console.h" /*TEMP DEBUG*/
 #include "dcrypto.h"
 #include "internal.h"
 #include "endian.h"
@@ -36,6 +37,7 @@ static void ladder_init(void)
 
 static int ladder_step(uint32_t cert, const uint32_t input[8])
 {
+	ccprintf("STEP %d\n", cert);
 	GREG32(KEYMGR, SHA_ITOP) = 0;  /* clear status */
 
 	GREG32(KEYMGR, SHA_USE_CERT_INDEX) =
@@ -199,6 +201,7 @@ int dcrypto_ladder_compute_usr(enum dcrypto_appid id,
 		 * artifact of slot addressing).
 		 */
 		GWRITE_FIELD(KEYMGR, SHA_CERT_OVERRIDE, DIGEST_PTR, 2 * id);
+		ccprintf("OVERRIDE %d\n", id);
 		if (ladder_step(KEYMGR_CERT_35, usr_salt))
 			break;
 
@@ -250,9 +253,11 @@ int DCRYPTO_ladder_random(void *output)
 	/* USR generation requires running the key-ladder till
 	 * the end (version 0), plus one additional iteration.
 	 */
-	for (i = 0; i < MAX_MAJOR_FW_VERSION - 0 + 1; i++)
+	for (i = 0; i < MAX_MAJOR_FW_VERSION - 0 + 1; i++) {
 		if (ladder_step(KEYMGR_CERT_25, NULL))
 			goto fail;
+		cflush();
+	}
 	if (i != MAX_MAJOR_FW_VERSION - 0 + 1)
 		goto fail;
 	if (ladder_step(KEYMGR_CERT_34, ISR_SALT))
@@ -262,6 +267,8 @@ int DCRYPTO_ladder_random(void *output)
 	error = ladder_step(27, tmp);
 	if (!error)
 		ladder_out(output);
+	else
+		ccprintf("%s: error %x\n", __func__, error);
 
 fail:
 	dcrypto_release_sha_hw();
@@ -287,8 +294,15 @@ int ladder_derive(const uint32_t salt[8], const uint32_t input[8],
 {
 	int error = 1;
 
+	cflush();
 	error = ladder_step(35, salt); /* isr2 -> usr0 */
+	if (error)
+		ccprintf("%s:0 error %x\n", __func__, error);
+	cflush();
 	error = error || ladder_step(38, input); /* hmac */
+	if (error)
+		ccprintf("%s:1 error %x/%x\n", __func__, error,
+			 GREG32(KEYMGR, HKEY_ERR_FLAGS));
 	if (!error)
 		ladder_out(output);
 

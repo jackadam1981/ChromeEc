@@ -576,6 +576,16 @@ static void board_init(void)
 	init_trng();
 	init_jittery_clock(1);
 	init_runlevel(PERMISSION_MEDIUM);
+	{ /* TEST TEST TEST: DEBUG in progress */
+		int err;
+		uint32_t tmp[8] = {
+			0x51431e93, 0x5a851c52, 0x7f23de3d, 0x45fe19e3,
+			0x0c755da0, 0x83c73654, 0x29e620ae, 0x0b3748a4};
+		err = DCRYPTO_ladder_random(tmp);
+		ccprintf("KL_RANDOM %d\n", err);
+		err = kl_derive_origin(tmp, tmp);
+		ccprintf("KL_DERIVE %d\n", err);
+	} /* END OF TEST*/
 	/* Initialize NvMem partitions */
 	nvmem_init();
 	/* Initialize the persistent storage. */
