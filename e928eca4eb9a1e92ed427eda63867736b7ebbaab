@@ -22,6 +22,30 @@
       "revId": "e928eca4eb9a1e92ed427eda63867736b7ebbaab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb6f4ed4_71649f3d",
+        "filename": "common/flash.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-31T21:40:05Z",
+      "side": 1,
+      "message": "I used this channel in previous code drop, remove it until we need it later.",
+      "parentUuid": "d147d57c_20e64917",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 0
+      },
+      "revId": "e928eca4eb9a1e92ed427eda63867736b7ebbaab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
