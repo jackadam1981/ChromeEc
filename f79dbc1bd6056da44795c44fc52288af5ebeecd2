@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9207db42_31ecc56c",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-31T01:49:34Z",
+      "side": 1,
+      "message": "So you are never writing this error response now?\n\nJust handle the error here, then return 0; I\u0027m not even sure if we need to reply with an error actually (if there is nothing in the queue, it probably means we received nothing, so I\u0027m not sure if we should reply)",
+      "revId": "f79dbc1bd6056da44795c44fc52288af5ebeecd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
