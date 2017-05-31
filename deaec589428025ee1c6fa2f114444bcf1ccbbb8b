@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbc65e1c_6a8c5847",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-31T17:37:11Z",
+      "side": 1,
+      "message": "it would be great to have some more beef to this description:\n\nwhy 4 bits are used instead of 1 for each increment?\n\nwhat happens when the counter overflows (or is this not going to happen - what\u0027s the max value?)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4959a6ea_7c3b1cd2",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-31T17:37:11Z",
+      "side": 1,
+      "message": "these configs are not in config.h, does this pass preupload check?",
+      "range": {
+        "startLine": 22,
+        "startChar": 44,
+        "endLine": 22,
+        "endChar": 69
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95fbfa66_c59497d8",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-31T17:37:11Z",
+      "side": 1,
+      "message": "should this be aligned at the page boundary?",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88240096_7fa30b33",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-31T17:37:11Z",
+      "side": 1,
+      "message": "what kind of interruption is this referring to?",
+      "range": {
+        "startLine": 85,
+        "startChar": 23,
+        "endLine": 85,
+        "endChar": 62
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6e7cd8_2fcc4b9f",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-31T17:37:11Z",
+      "side": 1,
+      "message": "what if _decode() returns error?",
+      "range": {
+        "startLine": 151,
+        "startChar": 10,
+        "endLine": 151,
+        "endChar": 12
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e28f4e6_68d73195",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-31T17:37:11Z",
+      "side": 1,
+      "message": "paragraph formatting is off here and below",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 163,
+        "endChar": 15
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb2dcc48_18585b83",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-05-31T17:37:11Z",
+      "side": 1,
+      "message": "isn\u0027t _decode() already reaffirming partially correct values?",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 18
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
