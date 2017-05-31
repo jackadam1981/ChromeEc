@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b071ff95_09a96828",
+        "filename": "test/entropy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-31T10:50:22Z",
+      "side": 1,
+      "message": "isn\u0027t this 16384 now ?",
+      "range": {
+        "startLine": 55,
+        "startChar": 42,
+        "endLine": 55,
+        "endChar": 47
+      },
+      "revId": "19634ccf7db808c86a9c301453a6c7c0df83efa0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
