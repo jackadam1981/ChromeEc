@@ -121,6 +121,24 @@
       "revId": "d5cd9b5e0b964cad941edaa9357b034a351854b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f35778d_aa4f4d76",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-05-31T06:53:11Z",
+      "side": 1,
+      "message": "That was ill-advised reverse engineered from sample certificates.\n\nTurns out you really want the issuer and the subject blob be bit identical to be a true self-signed cert.\nCurrent cr52 code has them both as ASCII too, I think.",
+      "parentUuid": "17e833d3_7aab495a",
+      "revId": "d5cd9b5e0b964cad941edaa9357b034a351854b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
