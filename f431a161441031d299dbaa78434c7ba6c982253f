@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8a4e655_db90ca0a",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-31T10:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34e8b932_7b549660",
+      "range": {
+        "startLine": 135,
+        "startChar": 26,
+        "endLine": 135,
+        "endChar": 30
+      },
+      "revId": "f431a161441031d299dbaa78434c7ba6c982253f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6818bf40_9a6ead20",
         "filename": "board/hammer/board.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "883de86b_0548150d",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-31T10:33:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6818bf40_9a6ead20",
+      "range": {
+        "startLine": 141,
+        "startChar": 32,
+        "endLine": 141,
+        "endChar": 33
+      },
+      "revId": "f431a161441031d299dbaa78434c7ba6c982253f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a2949c5_58988d35",
         "filename": "include/rollback.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-05-31T10:05:12Z",
       "side": 1,
       "message": "bikeshedding: it\u0027s not really board-dependent since this time delta is controlled by the host.\n\nby the way, why not xor the result with the chip unique id, so at least it\u0027s not too predictable by the host.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 22
+      },
+      "revId": "f431a161441031d299dbaa78434c7ba6c982253f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "426a47d5_ea32ba8a",
+        "filename": "include/rollback.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-31T10:33:48Z",
+      "side": 1,
+      "message": "\u003e bikeshedding: it\u0027s not really board-dependent since this time delta is controlled by the host.\n\nSurely the host can control the MSB, but I hope that at least some of the LSB are unpredictable and board-specific (STM32 clock jitter)\n\n\u003e by the way, why not xor the result with the chip unique id, so at least it\u0027s not too predictable by the host.\n\nWe were thinking about that originally, but we want to expose that unique id for the factory process (and RMA), so we can\u0027t really use it here...",
+      "parentUuid": "5a2949c5_58988d35",
       "range": {
         "startLine": 47,
         "startChar": 1,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4723313c_8fb5dbfc",
+        "filename": "test/entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-31T10:33:48Z",
+      "side": 1,
+      "message": "I just removed the ifdef CONFIG_ROLLBACK_SECRET_SIZE, it\u0027s probably better to not let this test build if the config option is not defined, instead of building an empty test.",
+      "parentUuid": "50c7b5b3_be6de8aa",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "f431a161441031d299dbaa78434c7ba6c982253f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e15e3cac_906f6c38",
         "filename": "test/entropy.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2017-05-31T08:23:23Z",
       "side": 1,
       "message": "can we compute the entropy estimate here and make sure it\u0027s \u003e\u003d 1?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "f431a161441031d299dbaa78434c7ba6c982253f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9d73838_fc6612a5",
+        "filename": "test/entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-05-31T10:33:48Z",
+      "side": 1,
+      "message": "Maybe... but it\u0027s really messy, we\u0027d have to compute the logarithm in fixed point... (no floating point here...)\n\nI might give it a shot later...",
+      "parentUuid": "e15e3cac_906f6c38",
       "range": {
         "startLine": 54,
         "startChar": 1,
