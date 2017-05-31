@@ -22,6 +22,30 @@
       "revId": "f534e65e183cc15ee114d467884c2d02f2264af1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9cb03d3_c0e82a24",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-31T00:28:26Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll remove it.",
+      "parentUuid": "5269ffc8_14e57e9f",
+      "range": {
+        "startLine": 435,
+        "startChar": 3,
+        "endLine": 435,
+        "endChar": 59
+      },
+      "revId": "f534e65e183cc15ee114d467884c2d02f2264af1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
