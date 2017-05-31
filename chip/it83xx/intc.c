@@ -12,6 +12,21 @@
 #include "usb_pd.h"
 
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
+static int chip_pd_phy_test_mode(enum usbpd_port port)
+{
+	uint16_t header = IT83XX_USBPD_RMH(port);
+
+	/* This isn't a data message. */
+	if (!PD_HEADER_CNT(header))
+		return 0;
+	/*
+	 * data message type is BIST and
+	 * parameter of BIST data object is BIST test data.
+	 */
+	return (PD_HEADER_TYPE(header) == PD_DATA_BIST &&
+		(IT83XX_USBPD_RDO0(port) >> 28) == 8);
+}
+
 static void chip_pd_irq(enum usbpd_port port)
 {
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
@@ -24,12 +39,21 @@ static void chip_pd_irq(enum usbpd_port port)
 			PD_EVENT_TCPC_RESET, 0);
 	} else {
 		if (USBPD_IS_RX_DONE(port)) {
-			/* mask RX done interrupt */
-			IT83XX_USBPD_IMR(port) |= USBPD_REG_MASK_MSG_RX_DONE;
-			/* clear RX done interrupt */
-			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
-			task_set_event(PD_PORT_TO_TASK_ID(port),
-				PD_EVENT_RX, 0);
+			/* in test mode */
+			if (chip_pd_phy_test_mode(port)) {
+				/* w/c rx done flag to receive next packet. */
+				IT83XX_USBPD_MRSR(port) =
+					USBPD_REG_MASK_RX_MSG_VALID;
+				/* w/c RX done interrupt status. */
+				IT83XX_USBPD_ISR(port) =
+					USBPD_REG_MASK_MSG_RX_DONE;
+			} else {
+				/* mask RX done interrupt */
+				IT83XX_USBPD_IMR(port) |=
+					USBPD_REG_MASK_MSG_RX_DONE;
+				task_set_event(PD_PORT_TO_TASK_ID(port),
+					PD_EVENT_RX, 0);
+			}
 		}
 		if (USBPD_IS_TX_DONE(port)) {
 			/* clear TX done interrupt */
