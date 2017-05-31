@@ -16,6 +16,24 @@
       "revId": "f79dbc1bd6056da44795c44fc52288af5ebeecd2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76286a7b_26aa461b",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-05-31T07:51:58Z",
+      "side": 1,
+      "message": "Yup. There are various creative way to break it : (",
+      "parentUuid": "9207db42_31ecc56c",
+      "revId": "f79dbc1bd6056da44795c44fc52288af5ebeecd2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
