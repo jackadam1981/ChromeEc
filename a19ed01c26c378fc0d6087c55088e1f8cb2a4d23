@@ -46,6 +46,30 @@
       "revId": "a19ed01c26c378fc0d6087c55088e1f8cb2a4d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7590fab_12b0b98c",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-05-31T10:37:29Z",
+      "side": 1,
+      "message": "(1) right, so how about introducing another constant specifically for that purpose and putting a comment pointing out the slowdown vs. amount of entropy trade-off?\n\n(2) fair enough - I certainly don\u0027t know firmware trade-offs and if the slight readability hit is worth saving stack bytes, I\u0027m cool with it ;-)",
+      "parentUuid": "7ee748ee_ca8161c4",
+      "range": {
+        "startLine": 152,
+        "startChar": 17,
+        "endLine": 152,
+        "endChar": 58
+      },
+      "revId": "a19ed01c26c378fc0d6087c55088e1f8cb2a4d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
