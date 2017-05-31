@@ -22,6 +22,30 @@
       "revId": "83d9d2b08301bdf3a5f129fb6862b6db056695f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b9e4ddf_64f7f295",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-31T22:45:40Z",
+      "side": 1,
+      "message": "fixed in the wrong CL, done.",
+      "parentUuid": "5f76ac0d_86afdda5",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 25
+      },
+      "revId": "83d9d2b08301bdf3a5f129fb6862b6db056695f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

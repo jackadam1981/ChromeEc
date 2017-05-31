@@ -16,6 +16,24 @@
       "revId": "1d454c8ff616619804a3172d8628df177fa6bd75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2efd700b_7ed5396d",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-31T22:45:40Z",
+      "side": 1,
+      "message": "updated the wrong CL. fixing it.",
+      "parentUuid": "e746b01f_c0e3dbb7",
+      "revId": "1d454c8ff616619804a3172d8628df177fa6bd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
