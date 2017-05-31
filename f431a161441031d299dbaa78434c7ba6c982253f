@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6818bf40_9a6ead20",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-05-31T08:23:23Z",
+      "side": 1,
+      "message": "nit: spaces around operator",
+      "range": {
+        "startLine": 141,
+        "startChar": 32,
+        "endLine": 141,
+        "endChar": 33
+      },
+      "revId": "f431a161441031d299dbaa78434c7ba6c982253f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e15e3cac_906f6c38",
+        "filename": "test/entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-05-31T08:23:23Z",
+      "side": 1,
+      "message": "can we compute the entropy estimate here and make sure it\u0027s \u003e\u003d 1?",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "f431a161441031d299dbaa78434c7ba6c982253f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
