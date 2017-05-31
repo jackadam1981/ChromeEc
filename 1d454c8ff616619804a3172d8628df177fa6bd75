@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e746b01f_c0e3dbb7",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-05-31T22:11:36Z",
+      "side": 1,
+      "message": "This will now yield an error if you try using it.\n\nYou removed CC_FLASH.\n\nNothing uses these defines though afaik.",
+      "revId": "1d454c8ff616619804a3172d8628df177fa6bd75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
