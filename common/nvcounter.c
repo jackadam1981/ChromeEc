@@ -6,8 +6,12 @@
 /* robust non-volatile incrementing counter */
 
 #include "common.h"
+#include "console.h"
 #include "flash.h"
 #include "util.h"
+
+#define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 
 #define INCORRECT_FLASH_CNT 0xdeadd0d0
 
@@ -46,6 +50,7 @@ static void _write(const uint32_t *p, size_t o, uint32_t v)
 {
 	int offset = (uintptr_t) (p + o) - CONFIG_PROGRAM_MEMORY_BASE;
 
+	CPRINTF("Writing Offset 0x%08x with value 0x%08x\n", offset, v);
 	/* TODO: return code */
 	flash_physical_write(offset, sizeof(uint32_t), (const char *)&v);
 }
@@ -54,6 +59,7 @@ static void _erase(const void *p)
 {
 	int offset = (uintptr_t) p - CONFIG_PROGRAM_MEMORY_BASE;
 
+	CPRINTF("Erasing Offset 0x%08x\n", offset);
 	/* TODO: return code */
 	flash_physical_erase(offset, CONFIG_FLASH_BANK_SIZE);
 }
@@ -241,6 +247,7 @@ uint32_t nvcounter_incr(void)
 
 	/* After current count is determined, increment as required */
 	if (lo == PAGE_WORDS) {
+		CPRINTF("Full page of LOW count has been used, %d\n", lo);
 		/* All LOW page is striken, time to advance HIGH page */
 		_write(FLASH_CNT_LO, PAGE_WORDS - 1, 0);
 
@@ -255,6 +262,14 @@ uint32_t nvcounter_incr(void)
 		_inc(FLASH_CNT_LO, lo);
 	}
 
+	CPRINTS("NVCTR %d", cnt + 1);
 	/* return the final count */
 	return cnt + 1;
 }
+
+static int command_nvctr(int argc, char *argv[])
+{
+	nvcounter_incr();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(nvctr, command_nvctr, "NVCTR",  "increment nvcounter");
