@@ -34,6 +34,24 @@
       "revId": "2d7c7e90597aff94e78a534c9f3eab4c68c4f7c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c1cea1_c35695b6",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-31T23:06:54Z",
+      "side": 1,
+      "message": "Is that a board specific thing? Or do all rk3399 devices need ~1.05s for SYS_PWR_GOOD?\n\nI think if we decide to extend the timeout, we should use the custom call of power_wait_signals_timeout().",
+      "parentUuid": "7e4dea8b_1f18dd36",
+      "revId": "2d7c7e90597aff94e78a534c9f3eab4c68c4f7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
