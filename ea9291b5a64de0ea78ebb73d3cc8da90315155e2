@@ -16,6 +16,24 @@
       "revId": "ea9291b5a64de0ea78ebb73d3cc8da90315155e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54426a4a_6bf0c92c",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-05-31T00:01:12Z",
+      "side": 1,
+      "message": "Have moved this to its own CL",
+      "parentUuid": "0010ee3a_07c12015",
+      "revId": "ea9291b5a64de0ea78ebb73d3cc8da90315155e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
