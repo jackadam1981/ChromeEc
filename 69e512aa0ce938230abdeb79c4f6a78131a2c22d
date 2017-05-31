@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "dfd826a8_97cb39ac",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-05-31T01:44:04Z",
+      "side": 1,
+      "message": "Hopefully this addressed your concerns !",
+      "parentUuid": "d5f40b03_ca7f8b34",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 17
+      },
+      "revId": "69e512aa0ce938230abdeb79c4f6a78131a2c22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "766373f9_f0d3bc01",
         "filename": "include/usb_i2c.h",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "writtenOn": "2017-05-30T22:50:06Z",
       "side": 1,
       "message": "\"Write count can be adjusted, but must be larger than 60 bytes, so that single USB packets can always be processed\"\n\nActually, is this really necessary? IMHO we could also do shorter MAX_WRITE_COUNT, if we wanted to.",
+      "range": {
+        "startLine": 68,
+        "startChar": 47,
+        "endLine": 71,
+        "endChar": 22
+      },
+      "revId": "69e512aa0ce938230abdeb79c4f6a78131a2c22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "143dd7bc_4621a89a",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-05-31T01:44:04Z",
+      "side": 1,
+      "message": "Hmm, I do hope it enlarged since if shrinking, only save ~ 32 bytes. But sure, we can do so.",
+      "parentUuid": "766373f9_f0d3bc01",
       "range": {
         "startLine": 68,
         "startChar": 47,
