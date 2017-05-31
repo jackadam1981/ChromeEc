@@ -233,7 +233,6 @@ enum power_state power_handle_state(enum power_state state)
 		msleep(2);
 		gpio_set_level(GPIO_PP3300_USB_EN_L, 0);
 		gpio_set_level(GPIO_PP5000_EN, 1);
-		gpio_set_level(GPIO_PP3300_TRACKPAD_EN_L, 0);
 		msleep(1);
 		gpio_set_level(GPIO_PP1800_LID_EN_L, 0);
 
@@ -267,6 +266,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_AP_CORE_EN, 1);
 		msleep(2);
 		gpio_set_level(GPIO_PP1800_S0_EN_L, 0);
+		gpio_set_level(GPIO_PP3300_TRACKPAD_EN_L, 0);
 		msleep(2);
 		gpio_set_level(GPIO_PP3300_S0_EN_L, 0);
 
@@ -304,6 +304,9 @@ enum power_state power_handle_state(enum power_state state)
 		MSLEEP_CHECK_ABORTED_SUSPEND(20);
 
 		gpio_set_level(GPIO_PP1800_S0_EN_L, 1);
+		MSLEEP_CHECK_ABORTED_SUSPEND(1);
+
+		gpio_set_level(GPIO_PP3300_TRACKPAD_EN_L, 1);
 		MSLEEP_CHECK_ABORTED_SUSPEND(1);
 
 		gpio_set_level(GPIO_AP_CORE_EN, 0);
@@ -344,7 +347,6 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_PP1800_SENSOR_EN_L, 1);
 		gpio_set_level(GPIO_PP1800_SIXAXIS_EN_L, 1);
 		gpio_set_level(GPIO_PP1800_LID_EN_L, 1);
-		gpio_set_level(GPIO_PP3300_TRACKPAD_EN_L, 1);
 		gpio_set_level(GPIO_PP5000_EN, 0);
 		gpio_set_level(GPIO_PP3300_USB_EN_L, 1);
 		msleep(20);
