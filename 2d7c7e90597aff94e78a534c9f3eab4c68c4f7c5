@@ -16,6 +16,24 @@
       "revId": "2d7c7e90597aff94e78a534c9f3eab4c68c4f7c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4dea8b_1f18dd36",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-05-31T23:03:51Z",
+      "side": 1,
+      "message": "ah, right, the default timeout is 1s. according to the log:\n154375.446417 power state 6 \u003d S3-\u003eS0, in 0x0009]   \u003c--- resume from S3\n[154376.459735 power timeout on input; wanted 0x0007, got 0x0005] \u003c--- lost SYS_PWR_GOOD\n...\n[154376.491997 power state 3 \u003d S0, in 0x000f] \u003c--- got SYS_PWR_GOOD\n\nit needs 1.05s, so we should extern the timeout to 1.5s or 2s? should i just modify the common default timeout?",
+      "parentUuid": "691344d9_9de19b6e",
+      "revId": "2d7c7e90597aff94e78a534c9f3eab4c68c4f7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
