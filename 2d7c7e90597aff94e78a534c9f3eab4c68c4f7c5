@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "691344d9_9de19b6e",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-05-31T22:31:53Z",
+      "side": 1,
+      "message": "This essentially shortens the timeout. I don\u0027t think that\u0027s what we want...",
+      "revId": "2d7c7e90597aff94e78a534c9f3eab4c68c4f7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
