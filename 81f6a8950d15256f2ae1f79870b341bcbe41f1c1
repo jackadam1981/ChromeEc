@@ -22,6 +22,30 @@
       "revId": "81f6a8950d15256f2ae1f79870b341bcbe41f1c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a2109a_ac4aac45",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-05-31T22:46:07Z",
+      "side": 1,
+      "message": "Fixed in the previous CL (stm32mon: Add support for STM32F411)",
+      "parentUuid": "a40e4cd6_120baaf3",
+      "range": {
+        "startLine": 875,
+        "startChar": 35,
+        "endLine": 875,
+        "endChar": 44
+      },
+      "revId": "81f6a8950d15256f2ae1f79870b341bcbe41f1c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
