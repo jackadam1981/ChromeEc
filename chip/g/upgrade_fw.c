@@ -250,9 +250,16 @@ static uint64_t prev_timestamp;
 
 static int chunk_came_too_soon(uint32_t block_offset)
 {
-	if (!prev_timestamp ||
+	int hard_reset = system_get_reset_flags() & RESET_FLAG_HARD;
+
+	if ((!prev_timestamp && !hard_reset) ||
 	    ((get_time().val - prev_timestamp) > BACKOFF_TIME))
 		return 0;
+
+	if (!prev_timestamp) {
+		CPRINTF("%s: rejecting a write after hard reset\n", __func__);
+		return 1;
+	}
 
 	if (!prev_offset ||
 	    (block_offset >= (prev_offset + SIGNED_TRANSFER_SIZE)))
