@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af4b6340_f0784cdf",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-31T10:22:35Z",
+      "side": 1,
+      "message": "isn\u0027t this a FIFO ?\n(which would return the header of the 1st unread packet rather than the last received)",
+      "range": {
+        "startLine": 17,
+        "startChar": 19,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "fda9130b832eec5bd660186d369dd7eff44e590c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cee65104_26d85463",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-31T10:22:35Z",
+      "side": 1,
+      "message": "normally the test mode flag is supposed to be latched until the next HARD_RESET",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "fda9130b832eec5bd660186d369dd7eff44e590c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de4fafc_3b92779a",
+        "filename": "chip/it83xx/intc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-05-31T10:22:35Z",
+      "side": 1,
+      "message": "you used to clear \u0027RX done\u0027  and you are no longer,\nwas the previous version a bug ?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "fda9130b832eec5bd660186d369dd7eff44e590c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
