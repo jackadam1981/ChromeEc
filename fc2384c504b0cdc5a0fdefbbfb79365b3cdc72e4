@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d1af5c96_ff745d34",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-01T18:29:32Z",
+      "side": 1,
+      "message": "Note the kl stuff in cr52 assumed a certain state of the kl after init. Reliable since no other users of kl in that scenario. Here tpm endorsement etc also tickle the kl, so the u2f usage must re-initialize it all the time.\n\nAlso not SW_WTF+3 is not a nice thing to return in the field. That said, I have no idea what the odds of interleaved operations would be either. One way out is to make all tpm sha usage be sw-only. That\u0027d make sure no hw state is assumed across tpm calls. And then in general keep w/ the mantra that all (crypto) hw state is to be released before returning to top level dispatcher.",
+      "parentUuid": "c483dd88_28e85121",
+      "revId": "fc2384c504b0cdc5a0fdefbbfb79365b3cdc72e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2991746c_719f47b1",
         "filename": "common/u2f.c",
         "patchSetId": 4
