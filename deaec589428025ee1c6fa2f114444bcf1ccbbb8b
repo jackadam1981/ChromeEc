@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33a35593_81d96598",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-01T11:43:29Z",
+      "side": 1,
+      "message": "This is Marius design and code but I will take a stab at it.\n\n\u003e why 4 bits are used instead of 1 for each increment?\n\nI don\u0027t have the definitive answer, 2 reasons I know at least:\n- it\u0027s more robust against single/double bit flips which is the usual flash flakiness (particularly if a write is interrupted)\n- at least the flash technology usually has physical limitations, we can only write a cell so many times between erases.\nHere I\u0027m reading \"A given word can only be programmed twice between erase cycles, irrespective of whether the programmed value is 0 or 1.\", which might or might not match (the word here is 32 bits not a byte I imagine).\n\n\u003e what happens when the counter overflows (or is this not going to happen - what\u0027s the max value?)\n\nwe return 0xffffffff and stays there\nsee:\n \tif (hi \u003d\u003d PAGE_WORDS \u0026\u0026 lo \u003d\u003d PAGE_WORDS) {\n\t\t/* We are exhausted, can count no more */\n\t\treturn -1;\n\t}\n\nif I\u0027m counting properly, the max value with 2kB pages should be:\n- per LO page: 2048*8/4 increments \u003d\u003d 4096 values\n- per HI page: 2048*8/(2*4) LO pages \u003d\u003d 2048 LO pages\nso a max value of 4096 * 2048 \u003d 8388608\n\nFor the U2F application, as far as I can tell, it\u0027s a 4-byte counter and the rollover behavior is not defined (but 8M authentications is a large number, ie it\u0027s 2 auth/min during the entire 6-year lifespan of the chromebook)",
+      "parentUuid": "cbc65e1c_6a8c5847",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4959a6ea_7c3b1cd2",
         "filename": "common/nvcounter.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-31T17:37:11Z",
       "side": 1,
       "message": "these configs are not in config.h, does this pass preupload check?",
+      "range": {
+        "startLine": 22,
+        "startChar": 44,
+        "endLine": 22,
+        "endChar": 69
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e931c1_4f29ee74",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-01T11:43:29Z",
+      "side": 1,
+      "message": "Interestingly, yes it did.\nAs this is surprising, I have just tried again and it still does ...\n\nAfter looking quickly at the util/config_option_check.py script, I\u0027m not convinced it works if you have more than one CL in the stack (it might have checked 6x the last CL rather than the 6 CLs for undeclared config options).\n\nbtw, I will fix this.",
+      "parentUuid": "4959a6ea_7c3b1cd2",
       "range": {
         "startLine": 22,
         "startChar": 44,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e72fe196_91648349",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-01T11:43:29Z",
+      "side": 1,
+      "message": "Yes, we also always call this function with FLASH_CNT_LO as parameter.\n\nBut at least worth putting a build assertion on CONFIG_FLASH_NVCTR_BASE_A/CONFIG_FLASH_NVCTR_BASE_B to verify their alignment.",
+      "parentUuid": "95fbfa66_c59497d8",
+      "range": {
+        "startLine": 52,
+        "startChar": 26,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "88240096_7fa30b33",
         "filename": "common/nvcounter.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-05-31T17:37:11Z",
       "side": 1,
       "message": "what kind of interruption is this referring to?",
+      "range": {
+        "startLine": 85,
+        "startChar": 23,
+        "endLine": 85,
+        "endChar": 62
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7277f8d_1b92fa7b",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-01T11:43:29Z",
+      "side": 1,
+      "message": "the ones mentioned in the comment above at line 38:\n\"power loss\n * or user intervention\"",
+      "parentUuid": "88240096_7fa30b33",
       "range": {
         "startLine": 85,
         "startChar": 23,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "440e39cc_a542df1e",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-01T11:43:29Z",
+      "side": 1,
+      "message": "so _decode() will return 0xdeadd0d0 (aka INCORRECT_FLASH_CNT)\nthen we are going to _write(p, i, _encode(0xdeadd0d0 + 1))\nwhich is written 0, so maxing this cell and likely staying monotonic.\n\nMight be the best we can do to deal with this error.",
+      "parentUuid": "fe6e7cd8_2fcc4b9f",
+      "range": {
+        "startLine": 151,
+        "startChar": 10,
+        "endLine": 151,
+        "endChar": 12
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e28f4e6_68d73195",
         "filename": "common/nvcounter.c",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0864f5c6_e19ac1f8",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-01T11:43:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e28f4e6_68d73195",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 163,
+        "endChar": 15
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb2dcc48_18585b83",
         "filename": "common/nvcounter.c",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2017-05-31T17:37:11Z",
       "side": 1,
       "message": "isn\u0027t _decode() already reaffirming partially correct values?",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 18
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9d010da_360d2ddb",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-01T11:43:29Z",
+      "side": 1,
+      "message": "as per the comment l158, I think here it\u0027s trying to put the flash in a stable state longer term\n(interrupted writes tend to change over time or return changing values) in the case where this time we read a clean 0 in _decode() (and thus didn\u0027t do the affirm stage).",
+      "parentUuid": "fb2dcc48_18585b83",
       "range": {
         "startLine": 165,
         "startChar": 2,
