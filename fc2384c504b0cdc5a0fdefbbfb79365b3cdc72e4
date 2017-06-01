@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "6dcc625b_e5b49f4f",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-01T16:22:12Z",
+      "side": 1,
+      "message": "One thing to be aware of is that the keyladder and the sha/hmac engine are the same hw block.\nThus the semaphore that gets used in cr50 to decide whether the hash engine is busy in the sha wrapper (and revert to sw impl) needs to be free before you can use the keyladder w/o disturbing whatever state there was in the other caller\u0027s use of the sha engine.\n\nIt\u0027s not clear here locally whether or top top level commands between tpm and u2f can have such state across calls and thus experience interleaved (and interfering) calls.\n\nThe u2f cmds should probably check the semaphore before continuing? This does not play in cr52 since not other crypto calling code cohabitates there.",
+      "revId": "fc2384c504b0cdc5a0fdefbbfb79365b3cdc72e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2991746c_719f47b1",
         "filename": "common/u2f.c",
         "patchSetId": 4
