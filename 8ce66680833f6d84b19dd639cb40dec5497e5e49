@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "284bbfc1_f32042fb",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7162,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-01T05:41:33Z",
+      "side": 1,
+      "message": "I thought comm-i2c is deprecated?",
+      "parentUuid": "b11fa772_5744f1cb",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c329b49_9bfa6f5b",
         "filename": "util/ectool.c",
         "patchSetId": 5
@@ -64,6 +82,24 @@
       "writtenOn": "2017-05-25T18:19:47Z",
       "side": 1,
       "message": "stack corruption here:\nec_response_tp_frame_info is just the header (no array), but you ask for up to ec_max_insize: we are going to write around in the the stack.",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aca94aaa_2a58f234",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7167,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-01T05:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c329b49_9bfa6f5b",
       "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -98,6 +134,24 @@
       "writtenOn": "2017-05-25T18:19:47Z",
       "side": 1,
       "message": "Can you decipher the raws of digits without looking at the code?\nIf it is a dump, hexa might be more appropriate. (4d will not print uin16 \u003e 9999 anyway).\nUse existing library to dump raw data or \n#define COLS 8\nfor(i \u003d 0; i \u003c len; i++) {\n  /* Print offset. */\n  if (i % COLS \u003d\u003d 0)\n    printf(\"%04x: \", i);\n  /* Print data. */\n  printf(\"%04x\", data[i]);\n  /* Print separator. */\n  if ((i % COLS \u003d\u003d COLS - 1) || i \u003d\u003d len - 1)\n    putchar(\"\\n\");\n  else\n    putchar(\" \");\n}",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46d0a839_7f7382d4",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7201,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-01T05:41:33Z",
+      "side": 1,
+      "message": "I\u0027ll just print a list of hex instead, we don\u0027t need to format it since the output is intended for factory tests.",
+      "parentUuid": "a575ddee_780c0de1",
       "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
