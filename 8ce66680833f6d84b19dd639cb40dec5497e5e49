@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "88733b5e_87f39955",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7162,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-01T05:44:54Z",
+      "side": 1,
+      "message": "I allocated my own buffer anyway.",
+      "parentUuid": "284bbfc1_f32042fb",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c329b49_9bfa6f5b",
         "filename": "util/ectool.c",
         "patchSetId": 5
@@ -117,6 +135,24 @@
       "writtenOn": "2017-05-25T18:19:47Z",
       "side": 1,
       "message": "if so, why data is a uint16?",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e55cf94_0b45aa25",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7190,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-01T05:44:54Z",
+      "side": 1,
+      "message": "ok, now we don\u0027t want to make any assumption on the raw frame format, so we don\u0027t have this constraint anymore, we are just outputing raw bytes.",
+      "parentUuid": "68c61972_8f214399",
       "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
