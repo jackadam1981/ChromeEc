@@ -22,6 +22,30 @@
       "revId": "96c95b0b693416c8adcaf5cf2223d1642e8d68a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00c9d0d9_1614d36d",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-01T02:51:09Z",
+      "side": 1,
+      "message": "Failed to get a straight A on course \"Humor 101\" ...",
+      "parentUuid": "ad042af5_b80529e8",
+      "range": {
+        "startLine": 65,
+        "startChar": 24,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "96c95b0b693416c8adcaf5cf2223d1642e8d68a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
