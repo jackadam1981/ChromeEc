@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "637a65e3_44f0371b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-01T13:56:05Z",
+      "side": 1,
+      "message": "Could we get a more explanatory reason. \u0027hence power is cut to the DUT\u0027 because current is limited by current limit selector? Why is the current limit selector bad? What value is it limiting to?",
+      "revId": "f4a87aa1acc653544b813810678a6c260b5ba8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87fa93ff_db252ab2",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-01T13:56:05Z",
+      "side": 1,
+      "message": "Why is this necessary here?",
+      "revId": "f4a87aa1acc653544b813810678a6c260b5ba8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4920b7a0_7a637af6",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-01T13:56:05Z",
+      "side": 1,
+      "message": "To confirm this is only setting up things for when such a scenario occurs above?",
+      "revId": "f4a87aa1acc653544b813810678a6c260b5ba8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
