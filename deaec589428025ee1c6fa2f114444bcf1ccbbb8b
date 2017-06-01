@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b0f91f3a_52f0bc03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-01T21:59:33Z",
+      "side": 1,
+      "message": "well, power interruption concern is a bit of an overkill for chromebooks, but I guess it won\u0027t hurt to use the same code.",
+      "parentUuid": "d0470569_0238756e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4959a6ea_7c3b1cd2",
         "filename": "common/nvcounter.c",
         "patchSetId": 2
