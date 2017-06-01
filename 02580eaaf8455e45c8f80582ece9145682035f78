@@ -22,6 +22,30 @@
       "revId": "02580eaaf8455e45c8f80582ece9145682035f78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a437300d_61948bd8",
+        "filename": "chip/npcx/shi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-01T04:22:25Z",
+      "side": 1,
+      "message": "We want 4 bytes alignment (__aligned(4) below).\nEC_SPI_FRAME_START_LENGTH \u003d 1, so\n4 * ( 1 % 4 + 1) \u003d 4 bytes.\nI did make the assumption that EC_SPI_FRAME_START_LENGTH is greater than 0, but I did not assume EC_SPI_FRAME_START_LENGTH \u003c 4.",
+      "parentUuid": "5aa20a3b_ec601a0f",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 62
+      },
+      "revId": "02580eaaf8455e45c8f80582ece9145682035f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
