@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d0470569_0238756e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-01T16:04:28Z",
+      "side": 1,
+      "message": "yep, that\u0027s it.\n\nWe can write each 32 bit word ~8 times between erases on this chip, so we can\u0027t flip individual bits. Hence i went with nibbles w/ some encoding. Remember, this counter is also to be robust when power suddenly disappears, i.e. usb tear.\n\nOnce the counter is stuck at -1, a compliant u2f server will start complaining.",
+      "parentUuid": "33a35593_81d96598",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 46
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4959a6ea_7c3b1cd2",
         "filename": "common/nvcounter.c",
         "patchSetId": 2
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "as per the comment l158, I think here it\u0027s trying to put the flash in a stable state longer term\n(interrupted writes tend to change over time or return changing values) in the case where this time we read a clean 0 in _decode() (and thus didn\u0027t do the affirm stage).",
       "parentUuid": "fb2dcc48_18585b83",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 18
+      },
+      "revId": "deaec589428025ee1c6fa2f114444bcf1ccbbb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25485a9a_fbc2d918",
+        "filename": "common/nvcounter.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-01T16:04:28Z",
+      "side": 1,
+      "message": "yep. My assumption was that interrupted writes leaves bits that were in transition from 1 to 0 in limbo. And interrupted erase leaves all bits in limbo.\n\nHence re-affirm when interruption might have occurred.",
+      "parentUuid": "b9d010da_360d2ddb",
       "range": {
         "startLine": 165,
         "startChar": 2,
