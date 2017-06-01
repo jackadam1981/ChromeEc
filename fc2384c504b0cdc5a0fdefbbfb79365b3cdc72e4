@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c483dd88_28e85121",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-01T17:27:14Z",
+      "side": 1,
+      "message": "the g2f_individual_keypair() function invokes dcrypto key ladder operations which in turn will call dcrypto_grab_sha_hw() before doing the actual operations (as other operations in chip/g/dcrypto/key_ladder.c) and bails out if not available. Thus we should end up returning SW_WTF+3 in this case.\nthe patch for the key ladder operations for this is not fully ready/cleaned as I haven\u0027t solved yet the bug where I have to call the keyladder derivation operations a \u0027dummy\u0027 time at board init else the step 38 later fails when invoked through this method.",
+      "parentUuid": "6dcc625b_e5b49f4f",
+      "revId": "fc2384c504b0cdc5a0fdefbbfb79365b3cdc72e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2991746c_719f47b1",
         "filename": "common/u2f.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-06-01T16:14:42Z",
       "side": 1,
       "message": "also clear od",
+      "revId": "fc2384c504b0cdc5a0fdefbbfb79365b3cdc72e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0d3fda5_ec125df8",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-01T17:27:14Z",
+      "side": 1,
+      "message": "Ok I will do on the next revision.",
+      "parentUuid": "2991746c_719f47b1",
       "revId": "fc2384c504b0cdc5a0fdefbbfb79365b3cdc72e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
