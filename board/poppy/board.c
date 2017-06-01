@@ -670,6 +670,67 @@ void board_hibernate(void)
         ;
 }
 
+/* Read tristate strapping: 0 => low, 1 => high, 2 => Hi-Z */
+static int gpio_get_ternary(enum gpio_signal gpio)
+{
+	int pd, pu;
+	int flags = gpio_get_default_flags(gpio);
+
+	/* Read GPIO with internal pull-down */
+	gpio_set_flags(gpio, GPIO_INPUT | GPIO_PULL_DOWN);
+	pd = gpio_get_level(gpio);
+	usleep(100);
+
+	/* Read GPIO with internal pull-up */
+	gpio_set_flags(gpio, GPIO_INPUT | GPIO_PULL_UP);
+	pu = gpio_get_level(gpio);
+	usleep(100);
+
+	/* Reset GPIO flags */
+	gpio_set_flags(gpio, flags);
+
+	/* Check PU and PD readings to determine tristate */
+	return pu && !pd ? 2 : pd;
+}
+
+int board_get_version(void)
+{
+	static int ver;
+	static int initialized;
+
+	if (!initialized) {
+		uint8_t id4;
+
+		ver = 0;
+
+		/* First 3 strappings are binary. */
+		if (gpio_get_level(GPIO_BOARD_VERSION1))
+			ver |= 0x01;
+		if (gpio_get_level(GPIO_BOARD_VERSION2))
+			ver |= 0x02;
+		if (gpio_get_level(GPIO_BOARD_VERSION3))
+			ver |= 0x04;
+
+		/*
+		 * 4th bit is using tristate strapping, ternary encoding:
+		 * Hi-Z => 0, 0 => 1, 1 => 2
+		 */
+		id4 = gpio_get_ternary(GPIO_BOARD_VERSION4);
+
+		if (id4 == 0) /* low level => 1 */
+			ver |= 1 * 0x08;
+		else if (id4 == 1) /* high level => 2 */
+			ver |= 2 * 0x08;
+		else /* High-Z => 0 */
+			ver |= 0 * 0x08;
+
+		CPRINTS("Board ID = %d", ver);
+		initialized = 1;
+	}
+
+	return ver;
+}
+
 /* Lid Sensor mutex */
 static struct mutex g_lid_mutex;
 
