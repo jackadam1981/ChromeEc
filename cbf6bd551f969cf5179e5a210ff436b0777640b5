@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9724dd81_f7436ee5",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-01T21:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c294eed_864f1720",
+      "revId": "cbf6bd551f969cf5179e5a210ff436b0777640b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3b10941_4aae47f9",
         "filename": "common/button.c",
         "patchSetId": 1
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "90013b14_0474e788",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-01T21:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b1b0a5a_27bdf316",
+      "revId": "cbf6bd551f969cf5179e5a210ff436b0777640b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1139fcd9_08bf9b77",
         "filename": "common/button.c",
         "patchSetId": 1
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "That is actually true. It would be good to do this only when button state has changed. I will update that.",
       "parentUuid": "1139fcd9_08bf9b77",
+      "revId": "cbf6bd551f969cf5179e5a210ff436b0777640b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d294fe1e_e5942fd9",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-01T21:59:13Z",
+      "side": 1,
+      "message": "Aah, now I realized why I did not go with calling this function from button_change_deferred and used the HOOK_TICK instead.\n\nConsider the case when user enters debug mode:\n1. User holding down Vup + Vdn for \u003e10 seconds\n2. After 10 seconds, EC will start flashing the LED to indicate entry into debug mode\n3. At this point user can leave the Vup + Vdn buttons\n\nNow, if we were to rely only on button_change_deferred, then this will not be triggered until user lets go of the buttons. Another way to handle it would be to schedule a deferred call from STATE_DEBUG_CHECK to ensure that we process the buttons after DEBUG_TIMEOUT to see what their current state is. I will rework that part of the code a bit.",
+      "parentUuid": "87e33a31_d9989a3d",
       "revId": "cbf6bd551f969cf5179e5a210ff436b0777640b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
