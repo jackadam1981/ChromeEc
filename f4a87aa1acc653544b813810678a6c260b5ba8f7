@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "307a5b14_a8f37b49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-06-01T16:58:11Z",
+      "side": 1,
+      "message": "There is a #define in board.h CONFIG_CHARGER_INPUT_CURRENT which looks to set to 512 mA in most every board. I assume this is to set the default value to work for all chargers (USB charger that doesn\u0027t even support BCD). If the external charger used supports either BCD or is a Type C/PD charger, then the input current limit will get set to the appropriate value for the external charger once the charger type is detected.\n\nOn Eve the problem is that when the battery is deeply discharged, it\u0027s requiring slightly more than 512 mA input current to support  both battery precharging and the power requirements for the board (without the AP booting up yet). So if the limit is set to 512, then PPVAR_VYSY collapses as soon as the input current limit is set to 512 mA which leads to PP3300_DSW drooping and the EC brownout detector forcing an EC reset.",
+      "parentUuid": "637a65e3_44f0371b",
+      "revId": "f4a87aa1acc653544b813810678a6c260b5ba8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87fa93ff_db252ab2",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a4f14219_fe58745b",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-06-01T16:58:11Z",
+      "side": 1,
+      "message": "I believe this is being done to ensure that the charger will be in the precharge state by setting VSYS \u003e Vbatt in all cases. This is the same value that Vsys gets set to when the charge state machine disables charging. The  OTP setting for this register is 6.080V. This line sets it to be 200 mV greater than what the battery reports as its Vmax. Once the charge state machine enables charging, then Vsys will be set to the battery min voltage to enable fast charging.\n\nNote that for the deeply discharged battery problem cases on Eve Vbat \u003c 6.08V so with or without setting Vsys to a higher value here the input current limit disable feature would kick in.",
+      "parentUuid": "87fa93ff_db252ab2",
+      "revId": "f4a87aa1acc653544b813810678a6c260b5ba8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4920b7a0_7a637af6",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 7
@@ -47,6 +83,24 @@
       "writtenOn": "2017-06-01T13:56:05Z",
       "side": 1,
       "message": "To confirm this is only setting up things for when such a scenario occurs above?",
+      "revId": "f4a87aa1acc653544b813810678a6c260b5ba8f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b601b0fe_1534d6b6",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-06-01T16:58:11Z",
+      "side": 1,
+      "message": "That\u0027s correct. The input current limit is only enabled for the case where Vsys \u003c Vbat. From the register spec:\n\nDisabling the input current limit for avoiding VSYS drop when VBAT is the\ndead-battery, VBAT is \u003c VSYSREG_SET. “1”: Disable the input current limit / “0”: Enable the input current limit.",
+      "parentUuid": "4920b7a0_7a637af6",
       "revId": "f4a87aa1acc653544b813810678a6c260b5ba8f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
