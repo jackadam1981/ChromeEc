@@ -16,6 +16,24 @@
       "revId": "3906b5f9c2c8935e6083a7903d7939d40f39bc82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b001c4c_ecee1b35",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-06-02T16:14:32Z",
+      "side": 1,
+      "message": "My thought was to remove the charger profile override, but leave the framework to have multiple battery types. The only battery I know specifically about at this time is the Sanyo battery that\u0027s being used for the initial build.",
+      "parentUuid": "62526962_44c3c8fd",
+      "revId": "3906b5f9c2c8935e6083a7903d7939d40f39bc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
