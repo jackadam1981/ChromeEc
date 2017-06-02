@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eda6fbdb_64f16dc8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-02T07:33:52Z",
+      "side": 1,
+      "message": "already initialized?",
+      "range": {
+        "startLine": 15,
+        "startChar": 62,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5369e6e1_e7c3acbf",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-02T07:33:52Z",
+      "side": 1,
+      "message": "nit: extra space.",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81c5e717_beb2b18c",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-02T07:33:52Z",
+      "side": 1,
+      "message": "nit: add space between Board and ID.",
+      "range": {
+        "startLine": 58,
+        "startChar": 26,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45afaa70_2dc1e3d2",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-02T07:33:52Z",
+      "side": 1,
+      "message": "nit: add space between Board and ID.",
+      "range": {
+        "startLine": 66,
+        "startChar": 25,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a08994_829b42b6",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-02T07:33:52Z",
+      "side": 1,
+      "message": "nit: extra space.",
+      "range": {
+        "startLine": 77,
+        "startChar": 10,
+        "endLine": 77,
+        "endChar": 11
+      },
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ac2b3d_f7b630b6",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-02T07:33:52Z",
+      "side": 1,
+      "message": "Any particular reason to export this?",
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c207b67_a5a3e4b6",
+        "filename": "board/cr50/board_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-02T07:33:52Z",
+      "side": 1,
+      "message": "Missing declaration for read_board_id().",
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a3b4517_2cb50626",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-02T07:33:52Z",
+      "side": 1,
+      "message": "nit: just add this with L32.",
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
