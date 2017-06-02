@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "167f67af_b5eeb0f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-02T13:51:56Z",
+      "side": 1,
+      "message": "how will this fit with the current charge_prevent_power_on() mechanism ?\nDo you have a CL wiring it ? I didn\u0027t find it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "ce3597ca612a4df0993502041e57b26c42a76f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c63db3e8_9dfdc040",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-02T13:51:56Z",
+      "side": 1,
+      "message": "the current condition in charge_prevent_power_on() looks more complicated than this.",
+      "range": {
+        "startLine": 1303,
+        "startChar": 4,
+        "endLine": 1304,
+        "endChar": 56
+      },
+      "revId": "ce3597ca612a4df0993502041e57b26c42a76f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
