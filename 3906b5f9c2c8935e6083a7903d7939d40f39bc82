@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62526962_44c3c8fd",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-02T16:02:26Z",
+      "side": 1,
+      "message": "We are going to need to support a larger number of batteries. Do you want to remove the charger_profile_override instead of just making things single entry arrays for now?",
+      "revId": "3906b5f9c2c8935e6083a7903d7939d40f39bc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
