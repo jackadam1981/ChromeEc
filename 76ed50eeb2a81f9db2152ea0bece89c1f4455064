@@ -307,6 +307,24 @@
     },
     {
       "key": {
+        "uuid": "86b8ed85_61cfccc9",
+        "filename": "board/cr50/board_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-02T18:25:05Z",
+      "side": 1,
+      "message": "I was thinking that maybe the FW would like to know what the board ID is and make other decisions based upon that. Checking the board ID and image would be separate than checking if the board ID is allowed some other features.",
+      "parentUuid": "167c9707_3fd359c4",
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a3b4517_2cb50626",
         "filename": "board/cr50/build.mk",
         "patchSetId": 1
