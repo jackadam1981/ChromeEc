@@ -22,6 +22,30 @@
       "revId": "b04aacb260a2ae139ef5ea59f1d4ad658561da62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfb6ff87_2ca9380a",
+        "filename": "chip/g/signed_header.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-02T16:20:00Z",
+      "side": 0,
+      "message": "yes, this is kinda ridiculus, (this is how still is upstream :) , let me fix this.",
+      "parentUuid": "9add07c1_9eed2871",
+      "range": {
+        "startLine": 45,
+        "startChar": 19,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "b04aacb260a2ae139ef5ea59f1d4ad658561da62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9793f68_60b9072e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-02T16:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda6fbdb_64f16dc8",
+      "range": {
+        "startLine": 15,
+        "startChar": 62,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5369e6e1_e7c3acbf",
         "filename": "board/cr50/board_id.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "434e227a_72d415dc",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-02T16:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5369e6e1_e7c3acbf",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 5
+      },
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c104e95f_3b65798d",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-02T16:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81c5e717_beb2b18c",
+      "range": {
+        "startLine": 58,
+        "startChar": 26,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45afaa70_2dc1e3d2",
         "filename": "board/cr50/board_id.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b67b1f6_86e6880f",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-02T16:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45afaa70_2dc1e3d2",
+      "range": {
+        "startLine": 66,
+        "startChar": 25,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a226886e_cbb51586",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-02T16:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3a08994_829b42b6",
+      "range": {
+        "startLine": 77,
+        "startChar": 10,
+        "endLine": 77,
+        "endChar": 11
+      },
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53ac2b3d_f7b630b6",
         "filename": "board/cr50/board_id.c",
         "patchSetId": 1
@@ -128,6 +248,24 @@
       "writtenOn": "2017-06-02T07:33:52Z",
       "side": 1,
       "message": "Any particular reason to export this?",
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b21796_df078669",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-02T16:20:00Z",
+      "side": 1,
+      "message": "good point, changed it to static",
+      "parentUuid": "53ac2b3d_f7b630b6",
       "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -151,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "167c9707_3fd359c4",
+        "filename": "board/cr50/board_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-02T16:20:00Z",
+      "side": 1,
+      "message": "come to think of it - I am sure it is necessary to be exposed. What I think we\u0027ll need is an API to check if the header and board ID match. I\u0027ll add it later.",
+      "parentUuid": "0c207b67_a5a3e4b6",
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a3b4517_2cb50626",
         "filename": "board/cr50/build.mk",
         "patchSetId": 1
@@ -165,6 +321,24 @@
       "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65953eac_22f0ea35",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-02T16:20:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a3b4517_2cb50626",
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
