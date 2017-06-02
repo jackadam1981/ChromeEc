@@ -50,7 +50,6 @@ void dcrypto_init(void)
 	GREG32(CRYPTO, INT_STATE) = -1;   /* Reset all the status bits. */
 	GREG32(CRYPTO, INT_ENABLE) = -1;  /* Enable all status bits. */
 
-	my_task_id = task_get_current();
 	task_enable_irq(GC_IRQNUM_CRYPTO0_HOST_CMD_DONE_INT);
 
 	/* Reset. */
@@ -72,6 +71,7 @@ uint32_t dcrypto_call(uint32_t adr)
 		GREG32(CRYPTO, INT_STATE) = -1;
 	} while (GREG32(CRYPTO, INT_STATE) & 3);
 
+	my_task_id = task_get_current();
 	GREG32(CRYPTO, HOST_CMD) = 0x08000000 + adr; /* Call imem:adr. */
 
 	event = task_wait_event_mask(TASK_EVENT_DCRYPTO_DONE,
