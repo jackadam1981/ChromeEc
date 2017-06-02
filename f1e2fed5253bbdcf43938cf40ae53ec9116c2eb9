@@ -45,6 +45,29 @@
       "revId": "f1e2fed5253bbdcf43938cf40ae53ec9116c2eb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b889ff_1b581b98",
+        "filename": "board/cr50/board_id.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-06-02T18:32:56Z",
+      "side": 1,
+      "message": "Why don\u0027t we always read the board id?",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 210,
+        "endChar": 17
+      },
+      "revId": "f1e2fed5253bbdcf43938cf40ae53ec9116c2eb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
