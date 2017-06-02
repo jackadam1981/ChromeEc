@@ -325,6 +325,24 @@
     },
     {
       "key": {
+        "uuid": "5cf0524e_42a2d13c",
+        "filename": "board/cr50/board_id.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-02T18:57:15Z",
+      "side": 1,
+      "message": "I am not sure about this. Let\u0027s export this function when we need it, then we can move the declaration here.",
+      "parentUuid": "86b8ed85_61cfccc9",
+      "revId": "76ed50eeb2a81f9db2152ea0bece89c1f4455064",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a3b4517_2cb50626",
         "filename": "board/cr50/build.mk",
         "patchSetId": 1
