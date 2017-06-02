@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dde9a14_1d0280d1",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-02T13:53:40Z",
+      "side": 1,
+      "message": "what is the advantage of this new API over the caller doing the division ?",
+      "range": {
+        "startLine": 928,
+        "startChar": 0,
+        "endLine": 932,
+        "endChar": 1
+      },
+      "revId": "70007ab62f58e9ebafe419f32ee8880337b5d818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
