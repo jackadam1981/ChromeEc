@@ -361,6 +361,9 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
+	/* Initialize isl9238 */
+	charger_post_init();
+
 	/* Provide AC status to the PCH */
 	board_extpower();
 
