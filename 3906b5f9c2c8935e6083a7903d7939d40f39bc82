@@ -34,6 +34,24 @@
       "revId": "3906b5f9c2c8935e6083a7903d7939d40f39bc82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6ca1e66_dfb4ed1b",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-02T16:40:07Z",
+      "side": 1,
+      "message": "Did you evaluate the charger_profile_override code? What\u0027s the reasoning for nuking it? I\u0027m curious if we\u0027ll just be re-implementing it in the long run?",
+      "parentUuid": "8b001c4c_ecee1b35",
+      "revId": "3906b5f9c2c8935e6083a7903d7939d40f39bc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
