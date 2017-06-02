@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a61a1d20_4d796011",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-06-02T18:18:48Z",
+      "side": 1,
+      "message": "This is a fair change --\n\nhowever is there a possibility of a race condition in your use case?  i.e. task B invokes dcrypto_call() while task A is waiting for completion?",
+      "revId": "d014b21624ea49f7670320755c3c14b8b34f0360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
