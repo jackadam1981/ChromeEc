@@ -11,6 +11,15 @@
 #include <stdarg.h>  /* For va_list */
 #include "common.h"
 
+/**
+ * Convert the lowest nibble of a number to hex
+ *
+ * @param c	Number to extract lowest nibble from
+ *
+ * @return The corresponding ASCII character ('0' - 'f').
+ */
+int hexdigit(int c);
+
 /*
  * Printf formatting: % [flags] [width] [.precision] [length] [type]
  *

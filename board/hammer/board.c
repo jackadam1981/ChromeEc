@@ -11,9 +11,11 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "keyboard_raw.h"
+#include "printf.h"
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "update_fw.h"
@@ -118,4 +120,27 @@ void board_usb_wake(void)
 	udelay(100);
 	gpio_set_flags(GPIO_BASE_DET, GPIO_INPUT);
 	interrupt_enable();
+}
+
+/*
+ * Generate a USB serial number from unique chip ID.
+ */
+const char *board_read_serial(void)
+{
+	static char str[USB_STRING_LEN];
+	uint8_t *id;
+	int len, i;
+
+	if (str[0] == '\0') {
+		len = system_get_chip_unique_id(&id);
+		len = MIN((sizeof(str)-1) / 2, len);
+
+		for (i = 0; i < len; i++) {
+			str[2 * i] = hexdigit(id[i]);
+			str[(2 * i) + 1] = hexdigit(id[i] >> 4);
+		}
+		str[len * 2] = '\0';
+	}
+
+	return str;
 }
