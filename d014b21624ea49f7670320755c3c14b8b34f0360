@@ -34,6 +34,24 @@
       "revId": "d014b21624ea49f7670320755c3c14b8b34f0360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d8a13a2_bbdcaf85",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-06-02T18:48:03Z",
+      "side": 1,
+      "message": "I wouldn\u0027t make any assumptions about A completing (successfully or otherwise, or even reliably providing notification) if dcrypto_call() is invoked during an existing operation.\n\nI think the choices are:\n\na) either ensure that a single task is responsible for invoking dcrypto_call(), by channeling requests from all tasks via a \"crypto task\"\nb) implement back pressure code in each of the caller tasks, i.e. wait for the engine to be available\n\nFor option a) there are no changes to be made here.\n\nFor option b) dcrypto_call() should add a try/acquire/fail clause on a lock, and all potential dcrypto \"done\" interrupt return paths should release the previously acquired lock.\n\n(If you prefer b), I can help with adding a lock here, we\u0027ll probably need this eventually anyway)",
+      "parentUuid": "ba74f4a9_41ed382f",
+      "revId": "d014b21624ea49f7670320755c3c14b8b34f0360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
