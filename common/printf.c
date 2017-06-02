@@ -29,14 +29,7 @@ static inline int divmod(uint32_t *n, int d)
 }
 #endif
 
-/**
- * Convert the lowest nibble of a number to hex
- *
- * @param c	Number to extract lowest nibble from
- *
- * @return The corresponding ASCII character ('0' - 'f').
- */
-static int hexdigit(int c)
+int hexdigit(int c)
 {
 	/* Strip off just the last nibble */
 	c &= 0x0f;
