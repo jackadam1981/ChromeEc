@@ -16,6 +16,24 @@
       "revId": "d014b21624ea49f7670320755c3c14b8b34f0360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba74f4a9_41ed382f",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-06-02T18:24:02Z",
+      "side": 1,
+      "message": "Yes, I believe there is. It really depends on how the operation started by task A reacts when the status bits of the crypto unit are reset by task B in the lines 69-72. Will that cause dcrypto_done_interrupt() be be called before this line is executed by task B? I don\u0027t know how the crypto HW works well enough to answer that questions definitively.",
+      "parentUuid": "a61a1d20_4d796011",
+      "revId": "d014b21624ea49f7670320755c3c14b8b34f0360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
