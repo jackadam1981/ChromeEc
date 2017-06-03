@@ -234,6 +234,30 @@
       "revId": "f431a161441031d299dbaa78434c7ba6c982253f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c23a2e0b_8bcfb6dd",
+        "filename": "test/entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-03T05:25:50Z",
+      "side": 1,
+      "message": "Here, that was moderately fun ,-) https://chromium-review.googlesource.com/523482",
+      "parentUuid": "d9d73838_fc6612a5",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "f431a161441031d299dbaa78434c7ba6c982253f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
