@@ -990,6 +990,19 @@ void bd9995x_set_power_save_mode(int mode)
 	ch_raw_write16(BD9995X_CMD_SMBREG, mode, BD9995X_EXTENDED_COMMAND);
 }
 
+static int console_bgate(int argc, char **argv)
+{
+	static int bgate;
+
+	bgate = 1 - bgate;
+	bd9995x_set_power_save_mode(bgate ?
+			BD9995X_PWR_SAVE_OFF : BD9995X_PWR_SAVE_MAX);
+	ccprintf("BGATE %s\n", bgate ? "on" : "off");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(bgate, console_bgate, NULL, "toggle BGATE");
+
 int bd9995x_get_battery_voltage(void)
 {
 	int vbat_val, rv;
