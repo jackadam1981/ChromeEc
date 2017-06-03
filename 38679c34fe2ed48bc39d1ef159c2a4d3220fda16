@@ -213,6 +213,30 @@
       "revId": "38679c34fe2ed48bc39d1ef159c2a4d3220fda16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bb382f2_8c39373e",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2017-06-03T00:33:19Z",
+      "side": 1,
+      "message": "we want VBAT to high for narrow VDC chargers to avoid collapse on VBATA hence setting it to bat max.\nmore info is here in Crosbug\nhttps://partnerissuetracker.corp.google.com/issues/35574118#",
+      "parentUuid": "f8c38fab_9615d7db",
+      "range": {
+        "startLine": 656,
+        "startChar": 17,
+        "endLine": 656,
+        "endChar": 32
+      },
+      "revId": "38679c34fe2ed48bc39d1ef159c2a4d3220fda16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
