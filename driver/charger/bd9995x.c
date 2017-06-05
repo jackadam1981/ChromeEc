@@ -1420,3 +1420,49 @@ struct i2c_stress_test_dev bd9995x_i2c_stress_test_dev = {
 	.i2c_write_dev = &bd9995x_i2c_write,
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_CHARGER */
+
+static enum bd9995x_command get_cmd_map(uint8_t reg)
+{
+	const uint8_t bat_chg_regs[] = {0x14, 0x15, 0x3c, 0x3d, 0x3e, 0x3f};
+	int i;
+
+	for (i = 0; i < sizeof(bat_chg_regs); i++)
+		if (reg == bat_chg_regs[i])
+			return BD9995X_BAT_CHG_COMMAND;
+
+	return BD9995X_EXTENDED_COMMAND;
+}
+
+static int command_bd9995x(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_bd9995x *p = args->params;
+	struct ec_response_bd9995x *r = args->response;
+	enum bd9995x_command cmd_map = BD9995X_EXTENDED_COMMAND;
+	int val;
+
+	args->response_size = sizeof(*r);
+
+	switch (p->cmd) {
+	case BD9995X_CMD_REG_READ:
+		cmd_map = get_cmd_map(p->reg);
+		r->state = ch_raw_read16(p->reg, &val, cmd_map);
+		r->val = val;
+		break;
+	case BD9995X_CMD_REG_WRITE:
+		cmd_map = get_cmd_map(p->reg);
+		r->state = ch_raw_write16(p->reg, p->val, cmd_map);
+		break;
+	case BD9995X_CMD_PSYS:
+		r->state = bd9995x_enable_psys();
+		if (r->state)
+			return EC_RES_ERROR;
+		r->val = bd9995x_psys_charger_adc();
+		r->state = EC_SUCCESS;
+		break;
+	default:
+		return EC_RES_INVALID_PARAM;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_BD9995X, command_bd9995x, EC_VER_MASK(0));

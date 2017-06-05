@@ -56,6 +56,8 @@ const char help_str[] =
 	"      Cut off battery output power\n"
 	"  batteryparam\n"
 	"      Read or write board-specific battery parameter\n"
+	"  bd9995x\n"
+	"      Read or write bd9995x registers\n"
 	"  boardversion\n"
 	"      Prints the board version\n"
 	"  chargecurrentlimit\n"
@@ -6879,6 +6881,50 @@ int cmd_pd_write_log(int argc, char *argv[])
 	return ec_command(EC_CMD_PD_WRITE_LOG_ENTRY, 0, &p, sizeof(p), NULL, 0);
 }
 
+int cmd_bd9995x(int argc, char *argv[])
+{
+	struct ec_params_bd9995x p;
+	struct ec_response_bd9995x r;
+	char *e;
+	int rv;
+
+	if (argc < 2 || 3 < argc) {
+		fprintf(stderr, "Usage: %s <reg> [<val>]\n", argv[0]);
+		fprintf(stderr, "       %s psys\n", argv[0]);
+		return -1;
+	}
+
+	if (!strcasecmp(argv[1], "psys")) {
+		p.cmd = BD9995X_CMD_PSYS;
+	} else {
+		p.reg = strtol(argv[1], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "Bad register number\n");
+			return -1;
+		}
+		if (argc == 2) {
+			p.cmd = BD9995X_CMD_REG_READ;
+		} else {
+			p.val = strtol(argv[1], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad value\n");
+				return -1;
+			}
+		}
+	}
+
+	rv = ec_command(EC_CMD_BD9995X, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	if (p.cmd == BD9995X_CMD_REG_WRITE)
+		printf("(status:%d)\n", r.state);
+	else
+		printf("0x%x (status:%d)\n", r.val, r.state);
+
+	return 0;
+}
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"autofanctrl", cmd_thermal_auto_fan_ctrl},
@@ -6886,6 +6932,7 @@ const struct command commands[] = {
 	{"battery", cmd_battery},
 	{"batterycutoff", cmd_battery_cut_off},
 	{"batteryparam", cmd_battery_vendor_param},
+	{"bd9995x", cmd_bd9995x},
 	{"boardversion", cmd_board_version},
 	{"chargecurrentlimit", cmd_charge_current_limit},
 	{"chargecontrol", cmd_charge_control},

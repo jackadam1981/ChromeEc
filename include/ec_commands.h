@@ -4027,4 +4027,27 @@ struct __ec_align2 ec_response_pd_chip_info {
 #define EC_LPC_ADDR_OLD_PARAM   EC_HOST_CMD_REGION1
 #define EC_OLD_PARAM_SIZE       EC_HOST_CMD_REGION_SIZE
 
+/*
+ *
+ */
+#define EC_CMD_BD9995X 0x11c
+
+struct __ec_align2 ec_params_bd9995x {
+	uint8_t reg;
+	uint8_t cmd;
+	uint16_t val;
+};
+
+struct __ec_align1 ec_response_bd9995x {
+	uint8_t state;
+	uint8_t reserved;
+	uint16_t val;
+};
+
+enum bd9995x_host_command {
+	BD9995X_CMD_REG_WRITE,
+	BD9995X_CMD_REG_READ,
+	BD9995X_CMD_PSYS,
+};
+
 #endif  /* __CROS_EC_EC_COMMANDS_H */
