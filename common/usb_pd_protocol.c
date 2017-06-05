@@ -114,6 +114,8 @@ static struct pd_protocol {
 	uint8_t msg_id;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 	uint8_t polarity;
+	/* pd_task in PD_STATE_SUSPENDED? (bool) */
+	uint8_t pd_suspended;
 	/* PD state for port */
 	enum pd_states task_state;
 	/* PD state when we run state handler the last time */
@@ -2268,9 +2270,11 @@ void pd_task(void)
 			pd_hw_release(port);
 			pd_power_supply_reset(port);
 #endif
+			pd[port].pd_suspended = 1;
 			/* Wait for resume */
 			while (pd[port].task_state == PD_STATE_SUSPENDED)
 				task_wait_event(-1);
+			pd[port].pd_suspended = 0;
 #ifdef CONFIG_USB_PD_TCPC
 			pd_hw_init(port, PD_ROLE_DEFAULT);
 #endif
@@ -3071,13 +3075,18 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dual_role_force_sink, HOOK_PRIO_DEFAULT);
 #ifdef CONFIG_COMMON_RUNTIME
 void pd_set_suspend(int port, int enable)
 {
-	int tries = 3;
+	int tries = 100;
 
-	do {
-		set_state(port, enable ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE);
+	if (enable) {
+		while (!pd[port].pd_suspended && --tries > 0) {
+			set_state(port, PD_STATE_SUSPENDED);
+			task_wake(PD_PORT_TO_TASK_ID(port));
+			msleep(1);
+		}
+	} else {
+		set_state(port, PD_DEFAULT_STATE);
 		task_wake(PD_PORT_TO_TASK_ID(port));
-	} while (enable && pd[port].task_state != PD_STATE_SUSPENDED
-			&& --tries);
+	}
 
 	if (!tries)
 		CPRINTS("TCPC p%d set_suspend failed!", port);
