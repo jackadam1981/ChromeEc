@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff240e92_da36d708",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-05T21:53:59Z",
+      "side": 1,
+      "message": "I am wondering if we should print this out even without the debug mode? That way we wouldn\u0027t need a special binary to reproduce the condition and see if BBRAM was lost.",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 42
+      },
+      "revId": "0987e6857f9b560dff598949bdae8e2697f90e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d899c899_20d9dcc3",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-05T21:53:59Z",
+      "side": 1,
+      "message": "This can actually be changed into a helper function:\n\nint bbram_valid(enum bbram_data_index index, int bytes)\n{\n      \t/* Check index */\n\tif (index \u003c 0 || index + bytes \u003e NPCX_BBRAM_SIZE)\n\t\treturn 0;\n\n\t/* Check BBRAM is valid */\n\tif (IS_BIT_SET(NPCX_BKUP_STS, NPCX_BKUP_STS_IBBR)) {\n\t\tCPRINTF(\"IBBR set: BBRAM corrupted!\\n\");\n\t\treturn 0;\n\t}\n\n        return 1;\n}\n\nand then read/write can just use the return value from validate:\n\nstatic int bbram_data_write(...)\n{\n     ...\n     if (!bbram_valid(..))\n             return EC_ERROR_INVAL;\n     ...\n}\n\nstatic int bbram_data_read(...)\n{\n     ...\n     if (!bbram_valid(...))\n              return 0;\n     ...\n}",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 2
+      },
+      "revId": "0987e6857f9b560dff598949bdae8e2697f90e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a02791_d2f05189",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-05T21:53:59Z",
+      "side": 1,
+      "message": "It might be a good idea to have bbram_data_read return error value in case of failure just like bbram_data_write. But if you do that, you will have to update all its callers to use the value correctly.",
+      "range": {
+        "startLine": 181,
+        "startChar": 10,
+        "endLine": 181,
+        "endChar": 37
+      },
+      "revId": "0987e6857f9b560dff598949bdae8e2697f90e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
