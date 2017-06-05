@@ -52,6 +52,24 @@
       "revId": "d014b21624ea49f7670320755c3c14b8b34f0360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0173f1f3_54693012",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-06-05T16:52:53Z",
+      "side": 1,
+      "message": "How does this look?",
+      "parentUuid": "6d8a13a2_bbdcaf85",
+      "revId": "d014b21624ea49f7670320755c3c14b8b34f0360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
