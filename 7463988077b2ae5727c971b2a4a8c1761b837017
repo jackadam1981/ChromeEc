@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c3eae17c_d771f0d5",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-05T20:36:40Z",
+      "side": 1,
+      "message": "Ah, I missed that part. Makes sense, thanks for the explanation.",
+      "parentUuid": "1d516017_95e49701",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "7463988077b2ae5727c971b2a4a8c1761b837017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7801a8b1_c4ab92bd",
         "filename": "include/gpio.h",
         "patchSetId": 1
