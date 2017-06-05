@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a000581_4add5075",
+        "filename": "board/eve/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-06-05T14:39:42Z",
+      "side": 1,
+      "message": "since motion_sense already prints \u0027double tap!\u0027 we probably don\u0027t need this output too",
+      "range": {
+        "startLine": 735,
+        "startChar": 1,
+        "endLine": 735,
+        "endChar": 35
+      },
+      "revId": "e95c7959a55d69c0710658e2755e48caa8ea85b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
