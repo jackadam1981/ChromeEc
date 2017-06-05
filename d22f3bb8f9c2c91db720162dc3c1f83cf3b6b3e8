@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88770391_7d9a14ff",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-05T12:27:49Z",
+      "side": 1,
+      "message": "so this is a custom snprintf ?\n\nthen you are going to loop again over the ascii string in usb_set_serial() to transform it in UTF-16.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 22
+      },
+      "revId": "d22f3bb8f9c2c91db720162dc3c1f83cf3b6b3e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
