@@ -71,6 +71,8 @@
 #define NPCX_TACH_SEL2       0 /* 0:GPIO40/A4 1:GPIO93/D3 as TACH */
 
 /* I2C ports */
+#define I2C_PORT_PCA555_PMIC		NPCX_I2C_PORT0_0
+#define I2C_ADDR_PCA555_PMIC		0x42
 
 /* EC exclude modules */
 #undef CONFIG_ADC
