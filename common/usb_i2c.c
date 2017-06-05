@@ -84,6 +84,8 @@ void usb_i2c_execute(struct usb_i2c_config const *config)
 	int read_count      = (config->buffer[1] >> 8) & 0xff;
 	int port;
 
+	CPRINTS("Executing %s, count #%d, wr:%d, rd:%d", __func__, count, write_count, read_count);
+
 	config->buffer[0] = 0;
 	config->buffer[1] = 0;
 
