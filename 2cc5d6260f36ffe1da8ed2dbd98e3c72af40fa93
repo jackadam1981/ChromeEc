@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d57f0aa_bbd90a49",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-05T15:00:30Z",
+      "side": 1,
+      "message": "Set muliple times but never used?",
+      "revId": "2cc5d6260f36ffe1da8ed2dbd98e3c72af40fa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100e2ab4_006e5969",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-05T15:00:30Z",
+      "side": 1,
+      "message": "Maybe a series of:\n\nif (statement)\n    mask |\u003d DEBUG_...\n\nis a little cleaner, and will fit in 80 chars?",
+      "revId": "2cc5d6260f36ffe1da8ed2dbd98e3c72af40fa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412d8e50_cadc75d6",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-05T15:00:30Z",
+      "side": 1,
+      "message": "Drop this function and just use timestamp_expired(debug_state_deadline, NULL)",
+      "revId": "2cc5d6260f36ffe1da8ed2dbd98e3c72af40fa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d526862_fcf1ae1d",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-05T15:00:30Z",
+      "side": 1,
+      "message": "I\u0027m not clear how often the LED blinks with this code?",
+      "revId": "2cc5d6260f36ffe1da8ed2dbd98e3c72af40fa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b92ea3_73768647",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-05T15:00:30Z",
+      "side": 1,
+      "message": "Inconsistent braces. Either use in both if/else, or neither.",
+      "revId": "2cc5d6260f36ffe1da8ed2dbd98e3c72af40fa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d8d221d_08295056",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-05T15:00:30Z",
+      "side": 1,
+      "message": "Maybe declare this right next to the DECLARED_DEFERRED, above, to make it clearer that debug_mode_handle can be called both as a defered from button presses, and from power button pressed?",
+      "revId": "2cc5d6260f36ffe1da8ed2dbd98e3c72af40fa93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
