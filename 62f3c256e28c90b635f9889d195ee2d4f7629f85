@@ -22,6 +22,23 @@
       "revId": "62f3c256e28c90b635f9889d195ee2d4f7629f85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf13c1c5_836b1fbb",
+        "filename": "board/reef/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-05T16:12:18Z",
+      "side": 1,
+      "message": "Why is this specific to these batteries and why don\u0027t we have proper voltage decisions in the code itself instead of making an exception here? I\u0027m confused.\n\nA comment would be very helpful explaining the reasoning *why* we\u0027e dong these changes.",
+      "revId": "62f3c256e28c90b635f9889d195ee2d4f7629f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
