@@ -425,9 +425,9 @@ void board_configure_deep_sleep_wakepins(void)
 	 * not being used and reenable them in their init functions on
 	 * resume.
 	 */
-	GWRITE_FIELD(PINMUX, EXITEN0, DIOA12, 0); /* SPS_CS_L */
-	GWRITE_FIELD(PINMUX, EXITEN0, DIOA1, 0);  /* I2CS_SDA */
-	GWRITE_FIELD(PINMUX, EXITEN0, DIOA9, 0);  /* I2CS_SCL */
+	gpio_set_flags(GPIO_STRAP_B1, GPIO_HIB_WAKE_DIS);  /* SPS_CS_L */
+	gpio_set_flags(GPIO_STRAP_A0, GPIO_HIB_WAKE_DIS);  /* I2CS_SDA */
+	gpio_set_flags(GPIO_STRAP_A1, GPIO_HIB_WAKE_DIS);  /* I2CS_SCL */
 
 	/* Remove the pulldown on EC uart tx and disable the input */
 	GWRITE_FIELD(PINMUX, DIOB5_CTL, PD, 0);
@@ -441,29 +441,22 @@ void board_configure_deep_sleep_wakepins(void)
 	 */
 	if (board_use_plt_rst()) {
 		/*
-		 * If the board includes plt_rst_l, configure Cr50 to resume on
-		 * the rising edge of this signal.
+		 * If the board includes plt_rst_l, configure Cr50 to resume
+		 * when this signal is high.
+		 *
+		 * Configure it to be level sensitive so that we are guaranteed
+		 * to wake up if the level turns up, no need to worry about
+		 * missing the rising edge.
 		 */
-		/* Disable plt_rst_l as a wake pin */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 0);
-		/*
-		 * Reconfigure it to be level sensitive so that we are
-		 * guaranteed to wake up if the level turns up, no need to
-		 * worry about missing the rising edge.
-		 */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM3, 0);
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, 0);  /* wake on high */
-		/* enable powerdown exit */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
+
+		gpio_set_flags(GPIO_TPM_RST_L, GPIO_HIB_WAKE_HIGH);
 	} else {
 		/*
 		 * DIOA3 is GPIO_DETECT_AP which is used to detect if the AP
 		 * is in S0. If the AP is in s0, cr50 should not be in deep
 		 * sleep so wake up.
 		 */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOA3, 0); /* level sensitive */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOA3, 0);  /* wake on high */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOA3, 1);
+		gpio_set_flags(GPIO_DETECT_AP, GPIO_HIB_WAKE_HIGH);
 
 		 /*
 		  * Configure cr50 to wake when sys_rst_l is asserted. It is
@@ -471,13 +464,7 @@ void board_configure_deep_sleep_wakepins(void)
 		  * rising edge of sys_rst_l. This will keep Cr50 awake the
 		  * entire time sys_rst_l is asserted.
 		  */
-		/* Disable sys_rst_l as a wake pin */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 0);
-		/* Reconfigure and reenable it. */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM0, 0); /* level sensitive */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM0, 1);  /* wake on low */
-		/* enable powerdown exit */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
+		gpio_set_flags(GPIO_TPM_RST_L, GPIO_HIB_WAKE_LOW);
 	}
 }
 
@@ -527,22 +514,6 @@ static void configure_board_specific_gpios(void)
 
 		/* Enbale the input */
 		GWRITE_FIELD(PINMUX, DIOM3_CTL, IE, 1);
-
-		/*
-		 * Make plt_rst_l routed to DIOM3 a low level sensitive wake
-		 * source. This way when a plt_rst_l pulse comes along while
-		 * H1 is in sleep, the H1 wakes from sleep first, enabling all
-		 * necessary clocks, and becomes ready to generate an
-		 * interrupt on the rising edge of plt_rst_l.
-		 *
-		 * It takes at most 150 us to wake up, and the pulse is at
-		 * least 1ms long.
-		 */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM3, 0);
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM3, 1);
-
-		/* Enable powerdown exit on DIOM3 */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM3, 1);
 	} else {
 		/* Use AP UART TX for device detect purposes. */
 		device_states[DEVICE_AP].detect = GPIO_DETECT_AP;
@@ -557,13 +528,18 @@ static void configure_board_specific_gpios(void)
 		/* Enbale the input */
 		GWRITE_FIELD(PINMUX, DIOA3_CTL, IE, 1);
 
-		/* Set to be level sensitive */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOM0, 0);
-		/* wake on low */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOM0, 1);
-		/* Enable powerdown exit on DIOM0 */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
 	}
+	/*
+	 * Now that TPM_RST_L has been connected to the right signal, enable it
+	 * as wake_low. This way when a tpm_rst_l pulse comes along while H1 is
+	 * in sleep, the H1 wakes from sleep first, enabling all necessary
+	 * clocks, and becomes ready to generate an interrupt on the rising edge
+	 * of tpm_rst_l.
+	 *
+	 * It takes at most 150 us to wake up, and the pulse is at
+	 * least 1ms long.
+	 */
+	gpio_set_flags(GPIO_TPM_RST_L, GPIO_HIB_WAKE_LOW);
 	/*
 	 * If the TPM_RST_L signal is already high when cr50 wakes up or
 	 * transitions to high before we are able to configure the gpio then
@@ -1349,15 +1325,10 @@ void i2cs_set_pinmux(void)
 	GWRITE_FIELD(PINMUX, DIOA1_CTL, IE, 1);	 /* I2CS_SDA */
 	GWRITE_FIELD(PINMUX, DIOA9_CTL, IE, 1);	 /* I2CS_SCL */
 
-	/* Allow I2CS_SCL to wake from sleep */
-	GWRITE_FIELD(PINMUX, EXITEDGE0, DIOA9, 1); /* edge sensitive */
-	GWRITE_FIELD(PINMUX, EXITINV0, DIOA9, 1);  /* wake on low */
-	GWRITE_FIELD(PINMUX, EXITEN0, DIOA9, 1);   /* enable powerdown exit */
-
-	/* Allow I2CS_SDA to wake from sleep */
-	GWRITE_FIELD(PINMUX, EXITEDGE0, DIOA1, 1); /* edge sensitive */
-	GWRITE_FIELD(PINMUX, EXITINV0, DIOA1, 1);  /* wake on low */
-	GWRITE_FIELD(PINMUX, EXITEN0, DIOA1, 1);   /* enable powerdown exit */
+	/* Configure the I2CS_SCL signal, DIOA9, as wake falling */
+	gpio_set_flags(GPIO_STRAP_A1, GPIO_HIB_WAKE_FALLING);
+	/* Configure the I2CS_SDA signal, DIOA1, as wake falling */
+	gpio_set_flags(GPIO_STRAP_A0, GPIO_HIB_WAKE_FALLING);
 }
 
 /* Determine key type based on the key ID. */
