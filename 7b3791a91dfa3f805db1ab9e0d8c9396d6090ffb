@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eabb220f_ea83f77a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-06T08:13:03Z",
+      "side": 1,
+      "message": "can you describe the race condition you were seeing ?\nIt\u0027s not obvious from the change you are doing.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "7b3791a91dfa3f805db1ab9e0d8c9396d6090ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "631db8ed_c4ed8812",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3078,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-06T08:13:03Z",
+      "side": 1,
+      "message": "100 ms seems too much.",
+      "range": {
+        "startLine": 3078,
+        "startChar": 4,
+        "endLine": 3078,
+        "endChar": 17
+      },
+      "revId": "7b3791a91dfa3f805db1ab9e0d8c9396d6090ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa7ac4e2_64c2089b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3084,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-06T08:13:03Z",
+      "side": 1,
+      "message": "what is this msleep supposed to do ?\nplease note that the PD task is higher priority than the HOSTCMD task which invokes this command,\nso the task_wake will yield immediatly.",
+      "range": {
+        "startLine": 3084,
+        "startChar": 3,
+        "endLine": 3084,
+        "endChar": 13
+      },
+      "revId": "7b3791a91dfa3f805db1ab9e0d8c9396d6090ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
