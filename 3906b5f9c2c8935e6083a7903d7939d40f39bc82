@@ -52,6 +52,24 @@
       "revId": "3906b5f9c2c8935e6083a7903d7939d40f39bc82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0691279_2eb96335",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-06-06T20:10:22Z",
+      "side": 1,
+      "message": "I guess it could need to be re-implemented. My reason for removing it right now is that I don\u0027t have any specific info as to what the override parameters need to be. Reef is the only board that had this capability and even some of the reef board variants didn\u0027t use it.",
+      "parentUuid": "e6ca1e66_dfb4ed1b",
+      "revId": "3906b5f9c2c8935e6083a7903d7939d40f39bc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
