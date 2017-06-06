@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dd904e4_86bc11c1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-06T19:17:34Z",
+      "side": 1,
+      "message": "there should be no extern data declarations in .c files",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 51
+      },
+      "revId": "a8802794ae003d0b643783c027c375fa2b931135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83d3634c_4ebac0f0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-06T19:17:34Z",
+      "side": 1,
+      "message": "I don\u0027t understand this: there was not bitbang mode available before, but this interrupt was enabled.\n\nWhy should it be enabled only when bitbang mode is active now?",
+      "range": {
+        "startLine": 618,
+        "startChar": 1,
+        "endLine": 621,
+        "endChar": 4
+      },
+      "revId": "a8802794ae003d0b643783c027c375fa2b931135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "091b7553_1fdaa733",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-06T19:17:34Z",
+      "side": 1,
+      "message": "here and in line 897 above, I might be very late with this comment, and we could leave it to a future patch if this makes sense: shouldn\u0027t the distinction between regular and bitbang modes be completely hidden from UART users. Why not to pick what to enable inside the enable_uart() function?",
+      "range": {
+        "startLine": 950,
+        "startChar": 4,
+        "endLine": 951,
+        "endChar": 24
+      },
+      "revId": "a8802794ae003d0b643783c027c375fa2b931135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ce7eb87_039183e6",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-06T19:17:34Z",
+      "side": 1,
+      "message": "Is there a reason to keep these bitbang related console commands in rdd.c? Why not to keep them along with bitbang code?",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 49
+      },
+      "revId": "a8802794ae003d0b643783c027c375fa2b931135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c7f08b7_84f8e39c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-06T19:17:34Z",
+      "side": 1,
+      "message": "should there be an error return in the line above 427?",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 2
+      },
+      "revId": "a8802794ae003d0b643783c027c375fa2b931135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128f56d9_051f275c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-06T19:17:34Z",
+      "side": 1,
+      "message": "not sure if we still need to see the uart number, also, this header should be printed in the else clause after line 433.",
+      "range": {
+        "startLine": 429,
+        "startChar": 1,
+        "endLine": 429,
+        "endChar": 41
+      },
+      "revId": "a8802794ae003d0b643783c027c375fa2b931135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe6b409f_a264314d",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-06T19:17:34Z",
+      "side": 1,
+      "message": "do you need to keep these in the codebase? If so - maybe these should be command line options of the bitbang command?",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 28
+      },
+      "revId": "a8802794ae003d0b643783c027c375fa2b931135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
