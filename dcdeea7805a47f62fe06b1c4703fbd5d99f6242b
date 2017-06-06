@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f65defd2_c3f71e39",
+        "filename": "chip/g/usb_upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-06T00:37:48Z",
+      "side": 1,
+      "message": "nit: Is this not the \u0027request\u0027 is too big?\n\nWhat do you think of something generic like VENDOR_RC_TOO_MUCH_DATA? That could indicate either the request was too big or the data returned would be too big.\n\nOr, I\u0027m not sure how many vendor specific response codes we\u0027ll actually use, but there could be two separate error codes for the cases I mentioned.",
+      "range": {
+        "startLine": 167,
+        "startChar": 34,
+        "endLine": 167,
+        "endChar": 50
+      },
+      "revId": "dcdeea7805a47f62fe06b1c4703fbd5d99f6242b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
