@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "11736303_3dfa7d91",
+        "filename": "board/host/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-06-06T09:40:14Z",
+      "side": 1,
+      "message": "Uh, it\u0027d be unfortunate if we someone accidentally started to rely on this ;-)\n\nCan we somehow make sure this will never be present in production builds?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 44
+      },
+      "revId": "0154945ec007415c5dddf1f48de2ac504a6e5b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f2dbd8b_6f1bb125",
         "filename": "test/entropy.c",
         "patchSetId": 1
@@ -18,6 +41,29 @@
         "startChar": 0,
         "endLine": 64,
         "endChar": 1
+      },
+      "revId": "0154945ec007415c5dddf1f48de2ac504a6e5b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37928d0a_b3557757",
+        "filename": "test/entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-06-06T09:40:14Z",
+      "side": 1,
+      "message": "Hm, I don\u0027t follow... Shouldn\u0027t this be\n\nint p \u003d buckets[j];\nentropy +\u003d p * (log2totalcount - log2(p));\n\nAnd then you\u0027d still have to compensate for using log_2 instead of log_20, i.e. divide by log_2(10)?\n\nEither way, it\u0027d probably be helpful for future readers to provide a reference (if you have one).",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 18
       },
       "revId": "0154945ec007415c5dddf1f48de2ac504a6e5b89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
