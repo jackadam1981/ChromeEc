@@ -256,6 +256,9 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 			return POWER_G3;
 		}
 
+		if (run_pmic_test && !battery_is_present())
+			pmic_stress_test();
+
 		/* Call hooks to initialize PMIC */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
@@ -268,8 +271,14 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5S3:
+		/* Where to run? It's best run when peripherals are turned off.
+		 * 1. S3->S5
+		 * 2. S5->G3 - This may be the best but not sure reboot hits it
+		 * 3. G3->S5
+		 * 4. S5->S3
 		if (run_pmic_test)
 			pmic_stress_test();
+		 */
 
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away */

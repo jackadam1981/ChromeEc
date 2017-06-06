@@ -120,9 +120,12 @@ static void led_set_battery(void)
 		}
 		break;
 	case PWR_STATE_ERROR:
-		led_set_color_battery(
-			(battery_ticks % LED_TOTAL_2SECS_TICKS <
-			 LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
+		if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+			led_set_color_battery(LED_OFF);
+		else
+			led_set_color_battery(
+				(battery_ticks % LED_TOTAL_2SECS_TICKS <
+				 LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
 		led_set_color_battery(LED_BLUE);

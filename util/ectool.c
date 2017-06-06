@@ -6892,6 +6892,7 @@ int cmd_bd9995x(int argc, char *argv[])
 		fprintf(stderr, "Usage: %s <reg> [<val>]\n", argv[0]);
 		fprintf(stderr, "       %s psys\n", argv[0]);
 		fprintf(stderr, "       %s vsys <val>\n", argv[0]);
+		fprintf(stderr, "       %s pmic\n", argv[0]);
 		return -1;
 	}
 
@@ -6907,6 +6908,16 @@ int cmd_bd9995x(int argc, char *argv[])
 		if (e && *e) {
 			fprintf(stderr, "Bad value\n");
 			return -1;
+		}
+	} else if (!strcasecmp(argv[1], "pmic")) {
+		p.cmd = BD9995X_CMD_PMIC_TEST;
+		p.reg = 0xff;
+		if (argc == 3) {
+			p.reg = strtol(argv[2], &e, 0);
+			if (e && *e) {
+				fprintf(stderr, "Bad index\n");
+				return -1;
+			}
 		}
 	} else {
 		p.reg = strtol(argv[1], &e, 0);

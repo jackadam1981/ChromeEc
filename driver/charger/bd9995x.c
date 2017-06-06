@@ -1533,6 +1533,47 @@ struct i2c_stress_test_dev bd9995x_i2c_stress_test_dev = {
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_CHARGER */
 
+static void stress_pmic(int voltage, int *psys, int *vsys)
+{
+	bd9995x_set_vsys(voltage);
+	sleep(3);
+	bd9995x_get_psys(psys, vsys);
+	CPRINTS("PMIC_TEST(%dmV) VSYS=%dmV ISYS=%dmA",
+		voltage, *vsys, *psys * 1000 / *vsys);
+}
+
+static int psys[2];
+static int vsys[2];
+
+void pmic_stress_test(void)
+{
+	int vfastchg_reg[3];
+	int vsysreg;
+	int i;
+
+	/* Save current values */
+	for (i = 0; i < 3; i++)
+		ch_raw_read16(BD9995X_CMD_VFASTCHG_REG_SET1 + i,
+			      &vfastchg_reg[i], BD9995X_EXTENDED_COMMAND);
+	ch_raw_read16(BD9995X_CMD_VSYSREG_SET, &vsysreg,
+			      BD9995X_EXTENDED_COMMAND);
+
+	/* Run the test
+	 * TODO: Store and report the results */
+	stress_pmic(7000, &psys[0], &vsys[0]);
+	stress_pmic(11000, &psys[1], &vsys[1]);
+
+	/* Restore values */
+	for (i = 0; i < 3; i++)
+		ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET1 + i,
+			       vfastchg_reg[i], BD9995X_EXTENDED_COMMAND);
+	ch_raw_write16(BD9995X_CMD_VSYSREG_SET, vsysreg,
+		       BD9995X_EXTENDED_COMMAND);
+	manual_mode = 0;
+
+	run_pmic_test = 2;
+}
+
 static int command_bd9995x(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_bd9995x *p = args->params;
@@ -1562,6 +1603,21 @@ static int command_bd9995x(struct host_cmd_handler_args *args)
 	case BD9995X_CMD_VSYS:
 		bd9995x_set_vsys(p->val);
 		break;
+	case BD9995X_CMD_PMIC_TEST:
+		r->state = EC_SUCCESS;
+		if (run_pmic_test == 2) {
+			if (p->reg < 2)
+				r->val  = psys[p->reg] * 1000 / vsys[p->reg];
+			else
+				return EC_RES_UNAVAILABLE;
+		} else {
+			if (p->reg == 0xff) {
+				run_pmic_test = 1;
+				CPRINTS("PMIC_TEST is initialized");
+			} else
+				return EC_RES_IN_PROGRESS;
+		}
+		break;
 	default:
 		return EC_RES_INVALID_PARAM;
 	}
@@ -1569,43 +1625,3 @@ static int command_bd9995x(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_BD9995X, command_bd9995x, EC_VER_MASK(0));
-
-static void stress_pmic(int voltage, int *psys, int *vsys)
-{
-	bd9995x_set_vsys(voltage);
-	sleep(3);
-	bd9995x_get_psys(psys, vsys);
-	CPRINTS("PMIC_TEST(%dmV) VSYS=%dmV ISYS=%dmA",
-		voltage, *vsys, *psys * 1000 / *vsys);
-}
-
-void pmic_stress_test(void)
-{
-	int psys[2];
-	int vsys[2];
-	int vfastchg_reg[3];
-	int vsysreg;
-	int i;
-
-	run_pmic_test = 0;
-
-	/* Save current values */
-	for (i = 0; i < 3; i++)
-		ch_raw_read16(BD9995X_CMD_VFASTCHG_REG_SET1 + i,
-			      &vfastchg_reg[i], BD9995X_EXTENDED_COMMAND);
-	ch_raw_read16(BD9995X_CMD_VSYSREG_SET, &vsysreg,
-			      BD9995X_EXTENDED_COMMAND);
-
-	/* Run the test
-	 * TODO: Store and report the results */
-	stress_pmic(7000, &psys[0], &vsys[0]);
-	stress_pmic(11000, &psys[1], &vsys[1]);
-
-	/* Restore values */
-	for (i = 0; i < 3; i++)
-		ch_raw_write16(BD9995X_CMD_VFASTCHG_REG_SET1 + i,
-			       vfastchg_reg[i], BD9995X_EXTENDED_COMMAND);
-	ch_raw_write16(BD9995X_CMD_VSYSREG_SET, vsysreg,
-		       BD9995X_EXTENDED_COMMAND);
-	manual_mode = 0;
-}

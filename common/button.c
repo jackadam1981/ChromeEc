@@ -11,7 +11,6 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_protocol.h"
-#include "system.h"
 #include "timer.h"
 #include "util.h"
 
@@ -69,9 +68,6 @@ static void button_init(void)
 		state[i].debounce_time = 0;
 		gpio_enable_interrupt(buttons[i].gpio);
 	}
-	if (state[0].debounced_pressed && !system_jumped_to_this_image())
-		run_pmic_test = 1;
-	CPRINTS("run_pmic_test=%d", run_pmic_test);
 }
 DECLARE_HOOK(HOOK_INIT, button_init, HOOK_PRIO_DEFAULT);
 
