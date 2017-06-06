@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea0716c3_210d04dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-06T15:09:55Z",
+      "side": 1,
+      "message": "typo: \u0027processing\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 45,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "75b365003786cb45aa0a808012ab3810787e7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48c5299f_542cc8a7",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-06T15:09:55Z",
+      "side": 1,
+      "message": "What about checking the return code before printing the reboot was successful?",
+      "revId": "75b365003786cb45aa0a808012ab3810787e7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
