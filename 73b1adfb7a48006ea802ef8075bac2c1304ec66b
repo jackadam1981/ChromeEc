@@ -22,6 +22,30 @@
       "revId": "73b1adfb7a48006ea802ef8075bac2c1304ec66b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da41cfad_94d0769b",
+        "filename": "common/button.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-06T17:02:05Z",
+      "side": 1,
+      "message": "One of the reasons I added a hook_call_deferred in a deferred function is not to interrupt this function from doing what it was doing. Another way to probably do this is by adding a flag here and then calling the debug_mode_handle directly at the end of this function. If that seems better I can update to using that. Thoughts?",
+      "parentUuid": "be533c6f_0b15036c",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 23
+      },
+      "revId": "73b1adfb7a48006ea802ef8075bac2c1304ec66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
