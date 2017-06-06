@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97713462_f683122c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-06T18:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea0716c3_210d04dd",
+      "range": {
+        "startLine": 7,
+        "startChar": 45,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "75b365003786cb45aa0a808012ab3810787e7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48c5299f_542cc8a7",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "75b365003786cb45aa0a808012ab3810787e7647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "614b5d53_f102e8d8",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-06T18:22:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48c5299f_542cc8a7",
+      "revId": "75b365003786cb45aa0a808012ab3810787e7647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
