@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "31c07c12_ff40cd04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000722
+      },
+      "writtenOn": "2017-06-06T19:28:34Z",
+      "side": 1,
+      "message": "Typo?  Shouldn\u0027t it be \"Power\"?",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "73b1adfb7a48006ea802ef8075bac2c1304ec66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be533c6f_0b15036c",
         "filename": "common/button.c",
         "patchSetId": 7
