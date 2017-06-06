@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f2dbd8b_6f1bb125",
+        "filename": "test/entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-06T09:02:53Z",
+      "side": 1,
+      "message": "Given log2(n) \u003d 31 - __builtin_clz(n) if n !\u003d 0, isn\u0027t this too complicated ?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "0154945ec007415c5dddf1f48de2ac504a6e5b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
