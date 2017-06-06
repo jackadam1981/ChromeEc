@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "d14b533d_1935504a",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-06T01:46:31Z",
+      "side": 1,
+      "message": "it would be great to add a comment to this respect.\n\nalso, would it be clearer if the statement was \n\nif (flags \u0026 (GPIO_INT_ANY \u0026 ~GPIO_INPUT))\n\nor am I missing the significance of XOR here?\n\nand another question: maybe just return in the if clause in line 79? We shouldn\u0027t be enabling interrupts if this is not an input, is this right?",
+      "parentUuid": "c3eae17c_d771f0d5",
+      "range": {
+        "startLine": 101,
+        "startChar": 27,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "7463988077b2ae5727c971b2a4a8c1761b837017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7801a8b1_c4ab92bd",
         "filename": "include/gpio.h",
         "patchSetId": 1
