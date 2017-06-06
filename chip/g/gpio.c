@@ -41,6 +41,32 @@ void gpio_set_level(enum gpio_signal signal, int value)
 	set_one_gpio_bit(g->port, g->mask, value);
 }
 
+static void configure_wakepin(int bitmask, uint32_t flags)
+{
+	/* not VIOn ! */
+	if (bitmask >= GC_PINMUX_EXITEN0_VIO1_MASK)
+		return;
+
+	/* Disable the wakepin before changing the flags */
+	GREG32(PINMUX, EXITEN0) &= ~bitmask;
+
+	/* level (0) or edge sensitive (1) */
+	if (flags & DIO_WAKE_EDGE0)
+		GREG32(PINMUX, EXITEDGE0) |= bitmask;
+	else
+		GREG32(PINMUX, EXITEDGE0) &= ~bitmask;
+
+	/* high/rising (0) or low/falling (1) */
+	if (flags & DIO_WAKE_INV0)
+		GREG32(PINMUX, EXITINV0) |= bitmask;
+	else
+		GREG32(PINMUX, EXITINV0) &= ~bitmask;
+
+	/* Enable the pin */
+	if (flags & DIO_WAKE_EN0)
+		GREG32(PINMUX, EXITEN0) |= bitmask;
+}
+
 int gpio_get_flags_by_mask(uint32_t port, uint32_t mask)
 {
 	uint32_t flags = 0;
@@ -68,6 +94,11 @@ int gpio_get_flags_by_mask(uint32_t port, uint32_t mask)
 
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
+	int dio_wake_flags = 0;
+	int gpio_bitnum = GPIO_MASK_TO_NUM(mask);
+	int dio_val = GET_GPIO_SEL_REG(port, gpio_bitnum);
+	int dio_mask = 1 << (GC_PINMUX_DIOM0_SEL - dio_val);
+
 	/* Only matters for outputs */
 	if (flags & GPIO_LOW)
 		set_one_gpio_bit(port, mask, 0);
@@ -98,6 +129,26 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 		GR_GPIO_SETINTPOL(port) = mask;
 	}
 	/* No way to trigger on both rising and falling edges, darn it. */
+
+	/* Can't do anything if the gpio is not connected to a pin */
+	if (!dio_val)
+		return;
+
+	/* Convert the gpio wake flags to the dio wake pin configuration */
+	if (flags & GPIO_HIB_WAKE_HIGH)
+		dio_wake_flags = DIO_WAKE_HIGH;
+	else if (flags & GPIO_HIB_WAKE_LOW)
+		dio_wake_flags = DIO_WAKE_LOW;
+
+	if (flags & GPIO_HIB_WAKE_EDGE)
+		dio_wake_flags |= DIO_WAKE_EDGE0;
+
+	if (flags & GPIO_HIB_WAKE_DIS)
+		dio_wake_flags &= ~DIO_WAKE_EN0;
+	else if (!dio_wake_flags)
+		return;
+
+	configure_wakepin(dio_mask, dio_wake_flags);
 }
 
 void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
@@ -244,21 +295,7 @@ static void connect_pinmux(struct pinmux const *p)
 	if ((p->flags & DIO_WAKE_EN0) &&
 	    (p->dio.offset <= GC_PINMUX_DIOB7_SEL_OFFSET)) { /* not VIOn ! */
 		bitmask = (1 << (p->dio.offset / 8));
-
-		/* enable pad as wake source */
-		GREG32(PINMUX, EXITEN0) |= bitmask;
-
-		/* level (0) or edge sensitive (1) */
-		if (p->flags & DIO_WAKE_EDGE0)
-			GREG32(PINMUX, EXITEDGE0) |= bitmask;
-		else
-			GREG32(PINMUX, EXITEDGE0) &= ~bitmask;
-
-		/* high/rising (0) or low/falling (1) */
-		if (p->flags & DIO_WAKE_INV0)
-			GREG32(PINMUX, EXITINV0) |= bitmask;
-		else
-			GREG32(PINMUX, EXITINV0) &= ~bitmask;
+		configure_wakepin(bitmask, p->flags);
 	}
 }
 
