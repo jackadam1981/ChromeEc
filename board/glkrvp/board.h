@@ -66,6 +66,8 @@
 #define CONFIG_SCI_GPIO GPIO_PCH_SCI_L
 
 /* EC */
+#define CONFIG_BOARD_VERSION
+#define CONFIG_BOARD_SPECIFIC_VERSION
 #define CONFIG_WP_ALWAYS
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
@@ -117,6 +119,8 @@ enum power_signal {
 enum adc_channel {
 	ADC_CH_COUNT,
 };
+
+int board_get_version(void);
 
 /* Define typical operating power and max power */
 
