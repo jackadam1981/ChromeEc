@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e34de07_a1b07229",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-06T08:52:33Z",
+      "side": 1,
+      "message": "by the time this is scheduled, VBUS_WAKE_L might have toggled.\nMaybe then it is discharging fast enough and we don\u0027t care ?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 45
+      },
+      "revId": "33d2f79067799aeabb7f5a6b73a7d4d8e8a054f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
