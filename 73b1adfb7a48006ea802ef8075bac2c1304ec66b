@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be533c6f_0b15036c",
+        "filename": "common/button.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-06T09:36:16Z",
+      "side": 1,
+      "message": "is there to do a hook_call_deferred while already in a deferred function ?\nif so you should add a comment about it",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 23
+      },
+      "revId": "73b1adfb7a48006ea802ef8075bac2c1304ec66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
