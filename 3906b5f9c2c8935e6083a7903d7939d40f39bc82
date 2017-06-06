@@ -70,6 +70,41 @@
       "revId": "3906b5f9c2c8935e6083a7903d7939d40f39bc82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f85afd9_d3a6c098",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-06T20:38:05Z",
+      "side": 1,
+      "message": "That code was added so we wouldn\u0027t be copying/pasting code over and over again. But also, you don\u0027t have the temp range -\u003e current mapping any more. I feel like we might end up re-debugging previously fixed bugs by just lifting other code again, but if that\u0027s what you want to do we can give it a go.",
+      "parentUuid": "c0691279_2eb96335",
+      "revId": "3906b5f9c2c8935e6083a7903d7939d40f39bc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f9ce68_ec9b532f",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-06T20:38:05Z",
+      "side": 1,
+      "message": "We need this macro?",
+      "revId": "3906b5f9c2c8935e6083a7903d7939d40f39bc82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
