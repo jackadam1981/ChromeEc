@@ -268,6 +268,9 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5S3:
+		if (run_pmic_test)
+			pmic_stress_test();
+
 		if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			/* Required rail went away */
 			chipset_force_shutdown();

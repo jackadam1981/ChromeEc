@@ -220,7 +220,6 @@
 /* Depends on how fast the AP boots and typical ODRs */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
 
-
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -324,6 +323,9 @@ int board_get_version(void);
 
 void board_set_tcpc_power_mode(int port, int mode);
 void board_print_tcpc_fw_version(int port);
+
+void pmic_stress_test(void);
+extern int run_pmic_test;
 
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK \
