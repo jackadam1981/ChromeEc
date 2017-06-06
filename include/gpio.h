@@ -33,6 +33,10 @@
 #define GPIO_ALTERNATE     (1 << 17) /* GPIO used for alternate function. */
 #define GPIO_LOCKED        (1 << 18) /* Lock GPIO output and configuration */
 #define GPIO_HIB_WAKE_HIGH (1 << 19) /* Hibernate wake on high level */
+#define GPIO_HIB_WAKE_LOW  (1 << 20) /* Hibernate wake on low level */
+/* Usw with hib_wake_low or high to wake on the falling or rising edge */
+#define GPIO_HIB_WAKE_EDGE (1 << 21)
+#define GPIO_HIB_WAKE_DIS  (1 << 22) /* Disable the wake pin */
 
 /* Common flag combinations */
 #define GPIO_OUT_LOW        (GPIO_OUTPUT | GPIO_LOW)
@@ -48,6 +52,8 @@
 #define GPIO_INT_LEVEL      (GPIO_INT_LOW | GPIO_INT_HIGH)
 #define GPIO_INT_ANY        (GPIO_INT_BOTH | GPIO_INT_LEVEL)
 #define GPIO_INT_BOTH_DSLEEP (GPIO_INT_BOTH | GPIO_INT_DSLEEP)
+#define GPIO_HIB_WAKE_RISING  (GPIO_HIB_WAKE_EDGE | GPIO_HIB_WAKE_HIGH)
+#define GPIO_HIB_WAKE_FALLING (GPIO_HIB_WAKE_EDGE | GPIO_HIB_WAKE_LOW)
 
 /* Convert GPIO mask to GPIO number / index. */
 #define GPIO_MASK_TO_NUM(mask) (__fls(mask))
