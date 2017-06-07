@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3228b730_584fb435",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-07T00:45:07Z",
+      "side": 1,
+      "message": "I think it\u0027s better, thanks. :)",
+      "parentUuid": "38e08967_d99da452",
+      "range": {
+        "startLine": 1256,
+        "startChar": 13,
+        "endLine": 1256,
+        "endChar": 21
+      },
+      "revId": "c0088f02ae4baefc6f7d5c22bcff68dc759b9d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5426bbe8_58c78a60",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 6
