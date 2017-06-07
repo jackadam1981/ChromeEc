@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ad09d6c_9411fca0",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-06-07T14:38:58Z",
+      "side": 1,
+      "message": "28 -\u003e KEYMGR_CERT_28\n(similar changes below)",
+      "revId": "aa7429af321dc98752c2dcad89ccc7e98c1e97de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c985bbf_3931a1bb",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-06-07T14:38:58Z",
+      "side": 1,
+      "message": "32 -\u003e sizeof(tmp)",
+      "revId": "aa7429af321dc98752c2dcad89ccc7e98c1e97de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73493e04_f93d008d",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-06-07T14:38:58Z",
+      "side": 1,
+      "message": "grab \u0026 release hw.",
+      "revId": "aa7429af321dc98752c2dcad89ccc7e98c1e97de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1666e6cf_64ebb6b5",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-06-07T14:38:58Z",
+      "side": 1,
+      "message": "Output isn\u0027t being directed to the USR registers.  Is it still necessary to set SHA_CERT_OVERRIDE?",
+      "revId": "aa7429af321dc98752c2dcad89ccc7e98c1e97de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
