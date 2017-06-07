@@ -50,8 +50,8 @@ enum touch_state pop_check_presence(int consume)
 #define FLAG_G2F_ENABLE    (1 << 1)
 #define FLAG_UNINITIALIZED (1 << 7)
 
-/* U2F is disabled by default */
-#define FLAG_DEFAULT (0)
+/* default U2F state on blank machines : Enable U2F and extensions */
+#define FLAG_DEFAULT (FLAG_U2F_ENABLE | FLAG_G2F_ENABLE)
 
 static uint32_t salt[8];
 static uint8_t flags = FLAG_UNINITIALIZED;
