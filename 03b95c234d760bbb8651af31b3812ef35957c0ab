@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2935c136_ffa3fd24",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-06-07T15:42:07Z",
+      "side": 1,
+      "message": "Not sure if there\u0027s a way to reset hmac engine state.  If there is, please add a call here.",
+      "revId": "03b95c234d760bbb8651af31b3812ef35957c0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9018b682_73e66c9f",
+        "filename": "chip/g/dcrypto/key_ladder.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1138199
+      },
+      "writtenOn": "2017-06-07T15:42:07Z",
+      "side": 1,
+      "message": "You\u0027re right.  I was hoping to rename KEYMGR_CERT_# to descriptive names (that explain what the step does), but the numbers are just easy to find as the names.",
+      "parentUuid": "42e61668_af05429e",
+      "revId": "aa7429af321dc98752c2dcad89ccc7e98c1e97de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c985bbf_3931a1bb",
         "filename": "chip/g/dcrypto/key_ladder.c",
         "patchSetId": 2
