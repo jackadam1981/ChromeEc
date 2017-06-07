@@ -153,7 +153,7 @@ for elf in ${elves[@]}; do
   fi
   signed_file="${count}.${dst_suffix}"
   sudo ${BIN_ROOT}/codesigner ${signer_command_params} \
-    -i ${elf} -o "${signed_file}"
+    --b -i ${elf} -o "${signed_file}"
   if [ ! -s "${signed_file}" ]; then
     echo "$(basename $0): error: empty signed file ${signed_file}" >&2
     exit 1
