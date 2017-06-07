@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f494137c_dcbc195b",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-06-07T11:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff240e92_da36d708",
+      "range": {
+        "startLine": 109,
+        "startChar": 3,
+        "endLine": 109,
+        "endChar": 42
+      },
+      "revId": "0987e6857f9b560dff598949bdae8e2697f90e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d899c899_20d9dcc3",
         "filename": "chip/npcx/system.c",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0b52edfb_a4a81ac4",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-06-07T11:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d899c899_20d9dcc3",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 2
+      },
+      "revId": "0987e6857f9b560dff598949bdae8e2697f90e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48a02791_d2f05189",
         "filename": "chip/npcx/system.c",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2017-06-05T21:53:59Z",
       "side": 1,
       "message": "It might be a good idea to have bbram_data_read return error value in case of failure just like bbram_data_write. But if you do that, you will have to update all its callers to use the value correctly.",
+      "range": {
+        "startLine": 181,
+        "startChar": 10,
+        "endLine": 181,
+        "endChar": 37
+      },
+      "revId": "0987e6857f9b560dff598949bdae8e2697f90e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30f6efcb_dd34a9fd",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-06-07T11:29:59Z",
+      "side": 1,
+      "message": "Yes, It will be good to have it return error code when fails. But as you say, we have to change many its callers including common layer code(Ex: command_scratchpad in common/system.c).  Lets focus on the fix of the incorrect register offset first. We may create another CL later for this.",
+      "parentUuid": "48a02791_d2f05189",
       "range": {
         "startLine": 181,
         "startChar": 10,
