@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "38e08967_d99da452",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-07T00:20:17Z",
+      "side": 1,
+      "message": "I tried, hopefully this is clearer :)",
+      "parentUuid": "a0cdfac3_c3890f24",
+      "range": {
+        "startLine": 1256,
+        "startChar": 13,
+        "endLine": 1256,
+        "endChar": 21
+      },
+      "revId": "c0088f02ae4baefc6f7d5c22bcff68dc759b9d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5426bbe8_58c78a60",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7373a3e1_eab1d583",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-07T00:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5426bbe8_58c78a60",
+      "range": {
+        "startLine": 1327,
+        "startChar": 57,
+        "endLine": 1327,
+        "endChar": 59
+      },
+      "revId": "c0088f02ae4baefc6f7d5c22bcff68dc759b9d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b201bcc0_faf04f4a",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-06-06T23:57:18Z",
       "side": 1,
       "message": "typo: \u0027while\u0027",
+      "range": {
+        "startLine": 1336,
+        "startChar": 29,
+        "endLine": 1336,
+        "endChar": 33
+      },
+      "revId": "c0088f02ae4baefc6f7d5c22bcff68dc759b9d56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dba8f999_507f6c7f",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-07T00:20:17Z",
+      "side": 1,
+      "message": "I will configure emacs to spell check comments one of these days :P",
+      "parentUuid": "b201bcc0_faf04f4a",
       "range": {
         "startLine": 1336,
         "startChar": 29,
