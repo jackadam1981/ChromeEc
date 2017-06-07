@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f2eae20f_08d714a4",
+        "filename": "test/entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-07T10:16:14Z",
+      "side": 1,
+      "message": "\u003e well, n isn\u0027t a power of 2 (log2(buckets[j])). Simply counting zeros loses too much precision (we end up underestimating the entropy by quite a bit)\n\n?? I think the formula above is correct for any integer n not only power of 2.\nIt\u0027s true though the rounding might not be optimal (it\u0027s always rounding by default), ie\nfloor(log2(n)) \u003d 31 - __builtin_clz(n)\nceil(log2(n)) \u003d 32 - __builtin_clz(n - 1) \n\nso the average of those 2 gives you the closest rounding.",
+      "parentUuid": "7f51d25c_7b6d1c7a",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "0154945ec007415c5dddf1f48de2ac504a6e5b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37928d0a_b3557757",
         "filename": "test/entropy.c",
         "patchSetId": 1
