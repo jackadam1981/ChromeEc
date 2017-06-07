@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f30de157_75954874",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4200,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-07T07:17:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ed0859c_8499ca29",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8289e998_f9412fdd",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-25T18:21:04Z",
       "side": 1,
       "message": "What is the response format?",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9887a76_49025a4c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4214,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-07T07:17:13Z",
+      "side": 1,
+      "message": "The response is raw frame data.",
+      "parentUuid": "8289e998_f9412fdd",
       "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -83,6 +119,24 @@
       "side": 1,
       "message": "I allocated my own buffer anyway.",
       "parentUuid": "284bbfc1_f32042fb",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c3fc721_e8b38dfb",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7162,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-07T07:17:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88733b5e_87f39955",
       "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -159,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "cbb83ad1_7c518ff3",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7190,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-07T07:17:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e55cf94_0b45aa25",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a575ddee_780c0de1",
         "filename": "util/ectool.c",
         "patchSetId": 5
@@ -188,6 +260,24 @@
       "side": 1,
       "message": "I\u0027ll just print a list of hex instead, we don\u0027t need to format it since the output is intended for factory tests.",
       "parentUuid": "a575ddee_780c0de1",
+      "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90f382aa_9a4e92d1",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 7201,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-07T07:17:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46d0a839_7f7382d4",
       "revId": "8ce66680833f6d84b19dd639cb40dec5497e5e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
