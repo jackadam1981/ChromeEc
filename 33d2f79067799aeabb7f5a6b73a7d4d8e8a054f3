@@ -22,6 +22,30 @@
       "revId": "33d2f79067799aeabb7f5a6b73a7d4d8e8a054f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80269a47_65e83071",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-07T01:05:58Z",
+      "side": 1,
+      "message": "The logic is to enable discharge when VBUS drops _below_ threshold, so there should not be any race (I mean, if VBUS goes back up in the mean time, then power was applied again and it\u0027s fine not to do the discharge).\n\nAlso, this does a useless discharge on the port that did not see a transition (if nothing is plugged on the other port), but TCPC should do nothing seeing that VBUS is already below Vsafe (so I did not bother splitting this into 2 deferred hooks).",
+      "parentUuid": "7e34de07_a1b07229",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 45
+      },
+      "revId": "33d2f79067799aeabb7f5a6b73a7d4d8e8a054f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
