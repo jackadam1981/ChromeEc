@@ -22,6 +22,30 @@
       "revId": "2e69a6e9bba7ae0945f5eb75af2663c84d74534d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc3b6e47_3e23157d",
+        "filename": "util/signer/bs",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-07T20:26:34Z",
+      "side": 1,
+      "message": "good idea, done. Also removed the unnecessary assignment in line 123",
+      "parentUuid": "0bec1cd2_17060bc2",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "2e69a6e9bba7ae0945f5eb75af2663c84d74534d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
