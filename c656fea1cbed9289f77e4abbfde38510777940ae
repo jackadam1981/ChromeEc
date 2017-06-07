@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "588780bf_aeb89900",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-07T21:42:07Z",
+      "side": 1,
+      "message": "please merge these as command line options for the main bitbang command, it just does not seem right to add to entries in the \u0027help\u0027 output for this little functionality.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 28
+      },
+      "revId": "c656fea1cbed9289f77e4abbfde38510777940ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
