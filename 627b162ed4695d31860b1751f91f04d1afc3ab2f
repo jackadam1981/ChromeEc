@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "a8c859e4_04696c84",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-07T09:24:47Z",
+      "side": 1,
+      "message": "Or, better, DIE",
+      "parentUuid": "e5da01bc_70a5f309",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 11
+      },
+      "revId": "627b162ed4695d31860b1751f91f04d1afc3ab2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42906f7f_0558350c",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 2
