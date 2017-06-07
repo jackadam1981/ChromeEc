@@ -2053,6 +2053,9 @@
 /* Support W25Q40 SPI flash */
 #undef CONFIG_SPI_FLASH_W25Q40
 
+/* Support W25Q80 SPI flash */
+#undef CONFIG_SPI_FLASH_W25Q80
+
 /* Support W25Q64 SPI flash */
 #undef CONFIG_SPI_FLASH_W25Q64
 
