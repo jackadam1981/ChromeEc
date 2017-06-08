@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1499739b_d7740f86",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T01:13:37Z",
+      "side": 1,
+      "message": "This isn\u0027t used anymore.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 42
+      },
+      "revId": "8eded9019ceec298bb3da3450b176f7194b929fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d8d3c78_8839669a",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T01:13:37Z",
+      "side": 1,
+      "message": "nit: blank line needed after end of function.",
+      "revId": "8eded9019ceec298bb3da3450b176f7194b929fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01024a38_bba2e456",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T01:13:37Z",
+      "side": 1,
+      "message": "parens around bbram_valid() not required",
+      "range": {
+        "startLine": 132,
+        "startChar": 6,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "8eded9019ceec298bb3da3450b176f7194b929fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bdda979_c0678440",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T01:13:37Z",
+      "side": 1,
+      "message": "same as above.",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 7
+      },
+      "revId": "8eded9019ceec298bb3da3450b176f7194b929fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
