@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "078761c3_d5bb742c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-08T22:23:47Z",
+      "side": 1,
+      "message": "can I get a +2 in the meanwhile then? :)\n\nIf it is any consolation, a bogus board ID will not be set to break the current image. But of course setting it wrong will make the H1 unavailable to any non-default images to run.",
+      "parentUuid": "66ca1db5_c2deec16",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "f909ae1a39b46e173166bdd98aa0fc794aa8fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56d94308_5aea1741",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 1
