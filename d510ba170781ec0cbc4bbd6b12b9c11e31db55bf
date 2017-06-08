@@ -22,6 +22,30 @@
       "revId": "d510ba170781ec0cbc4bbd6b12b9c11e31db55bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "445aa3ba_e58e63f8",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1165254
+      },
+      "writtenOn": "2017-06-08T20:11:41Z",
+      "side": 1,
+      "message": "I think #undef CONFIG_CLOCK_CRYSTAL has a different meaning for NPCX7.\nFor example: \nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/mec1322/clock.c#61\nThe undef refers to single ended clock source while in NPCX7 case it could be a single ended clock source but also an internal clock source. I think it is not likely that anyone will use the single ended clock source with NPCX7 so effectively it will mean external crystal vs. internal oscillator. \nI don\u0027t know if the difference in meaning justifies a new definition or not.",
+      "parentUuid": "10cc111f_105b925a",
+      "range": {
+        "startLine": 628,
+        "startChar": 7,
+        "endLine": 628,
+        "endChar": 23
+      },
+      "revId": "d510ba170781ec0cbc4bbd6b12b9c11e31db55bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
