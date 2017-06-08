@@ -93,6 +93,30 @@
       "revId": "ed8cae7c76548035050a2e788cf7674bcf99ef8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48cc242e_70039b20",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-06-08T17:59:51Z",
+      "side": 1,
+      "message": "I don\u0027t really want to check if the time has passed in two different places.",
+      "parentUuid": "50e0a4eb_d91ffa91",
+      "range": {
+        "startLine": 256,
+        "startChar": 7,
+        "endLine": 256,
+        "endChar": 21
+      },
+      "revId": "ed8cae7c76548035050a2e788cf7674bcf99ef8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
