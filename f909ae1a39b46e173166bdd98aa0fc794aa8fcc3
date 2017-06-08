@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8192d6d1_2e469d89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-08T21:58:53Z",
+      "side": 1,
+      "message": "A little scary.  If the caller does \u0027usb updater -i 0x%x:0x%x\u0027, then something like 0x42 will be interpreted as a string.\n\nFrom a security standpoint that\u0027s ok, as long as valid RLZ codes don\u0027t start with \"0x\" and don\u0027t contain \":\".  But it could still cause some confusion.\n\nIs there some other relatively painless way to differentiate strings from numeric IDs?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "f909ae1a39b46e173166bdd98aa0fc794aa8fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56d94308_5aea1741",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 1
@@ -22,6 +45,29 @@
       "revId": "f909ae1a39b46e173166bdd98aa0fc794aa8fcc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039478f9_9b8fddaf",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-08T21:58:53Z",
+      "side": 1,
+      "message": "colon?",
+      "range": {
+        "startLine": 1296,
+        "startChar": 15,
+        "endLine": 1296,
+        "endChar": 24
+      },
+      "revId": "f909ae1a39b46e173166bdd98aa0fc794aa8fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
