@@ -9,6 +9,9 @@
 common-y=util.o
 common-y+=version.o printf.o queue.o queue_policies.o
 
+
+common-$(CONFIG_BB)+=bb.o
+
 common-$(CONFIG_ACCELGYRO_BMA255)+=math_util.o
 common-$(CONFIG_ACCELGYRO_BMI160)+=math_util.o
 common-$(CONFIG_ACCELGYRO_LSM6DS0)+=math_util.o

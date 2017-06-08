@@ -128,6 +128,11 @@
 #undef CONFIG_ADC_PROFILE_FAST_CONTINUOUS
 
 /*
+ * Use runtime initialization of structures
+ */
+#undef CONFIG_BB
+
+/*
  * Some ALS modules may be connected to the EC. We need the command, and
  * specific drivers for each module.
  */
@@ -2533,6 +2538,8 @@
  * Indicates whether the UUT has a captive cable.
  */
 #undef CONFIG_VIF_CAPTIVE_CABLE
+
+#undef CONFIG_BSON
 
 /*****************************************************************************/
 

@@ -4,9 +4,9 @@
  *
  * Battery pack vendor provided charging profile
  */
-
 #include "battery.h"
 #include "battery_smart.h"
+#include "board_binary.h"
 #include "charge_state.h"
 #include "console.h"
 #include "ec_commands.h"
@@ -17,6 +17,9 @@
 #define SB_SHUTDOWN_DATA	0x0010
 
 #ifdef BOARD_KEVIN
+#ifdef CONFIG_BB
+static struct battery_info *info;
+#else
 static const struct battery_info info = {
 	.voltage_max		= 8688, /* 8700mA, round down for chg reg */
 	.voltage_normal		= 7600,
@@ -29,6 +32,7 @@ static const struct battery_info info = {
 	.discharging_min_c	= -20,
 	.discharging_max_c	= 70,
 };
+#endif
 #elif defined(BOARD_GRU)
 static const struct battery_info info = {
 	.voltage_max		= 8688, /* 8700mA, round down for chg reg */
@@ -46,7 +50,13 @@ static const struct battery_info info = {
 
 const struct battery_info *battery_get_info(void)
 {
+#ifdef CONFIG_BB
+	if (info == NULL)
+		info = (struct battery_info *)bb_lookup(BATTERY_INFO);
+	return info;
+#else
 	return &info;
+#endif
 }
 
 int board_cut_off_battery(void)

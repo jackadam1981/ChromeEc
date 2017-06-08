@@ -7,7 +7,7 @@
 #
 
 host-util-bin=ectool lbplay stm32mon ec_sb_firmware_update lbcc \
-	ec_parse_panicinfo
+	ec_parse_panicinfo dump_bb
 build-util-bin=ec_uartd iteflash
 ifeq ($(CHIP),npcx)
 build-util-bin+=ecst
@@ -36,3 +36,17 @@ $(out)/util/usb_pd_policy.o: board/$(BOARD)/usb_pd_policy.c
 	$(call quiet,c_to_vif,BUILDCC)
 deps += $(out)/util/usb_pd_policy.o.d
 endif # CONFIG_USB_POWER_DELIVERY
+
+# Board Binary
+ifeq ($(CONFIG_BB),y)
+build-util-bin+=genbb
+build-util-art+=bb.o
+$(out)/util/genbb: $(out)/util/battery.o board/$(BOARD)/board.h \
+			include/battery.h include/battery_smart.h
+$(out)/util/genbb: BUILD_LDFLAGS+=$(out)/util/battery.o -flto
+
+STANDALONE_FLAGS=-ffreestanding -fno-builtin -nostdinc -Ibuiltin/ -D"__keep= "
+$(out)/util/battery.o: board/$(BOARD)/battery.c
+	$(call quiet,c_to_bb,BUILDCC)
+deps += $(out)/util/battery.o.d
+endif # CONFIG_BB

@@ -158,6 +158,11 @@ SECTIONS
         . = ALIGN(4);
         KEEP(*(.rodata.usb_ep))
 
+#ifdef CONFIG_BB
+	 __bb = .;
+	KEEP(*(.rodata.bb))
+	__bb_end = .;
+#endif
         . = ALIGN(4);
         *(.rodata*)
 

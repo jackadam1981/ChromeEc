@@ -214,6 +214,11 @@ rw-common-objs := $(sort $(foreach obj, $(all-obj-y), $(out)/RW/$(obj)))
 rw-only-objs := $(sort $(foreach obj, $(all-obj-rw), $(out)/RW/$(obj)))
 rw-objs := $(sort $(rw-common-objs) $(rw-only-objs))
 
+ifeq ($(CONFIG_BB),y)
+ro-objs += $(out)/bb.o
+rw-objs += $(out)/bb.o
+endif
+
 # Don't include the shared objects in the RO/RW image if we're enabling
 # the shared objects library.
 ifeq ($(CONFIG_SHAREDLIB),y)
