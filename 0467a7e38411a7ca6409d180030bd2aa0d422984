@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "72712deb_399eb2cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T22:11:40Z",
+      "side": 1,
+      "message": "I believe the motivation was to put SLP_S0 signal back in powerindebug. Context here:\n\nhttps://chromium-review.googlesource.com/c/483459/1/board/poppy/board.c#208",
+      "parentUuid": "b0334ea8_5ffdbe15",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c862ec11_0ab93bbe",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 1
