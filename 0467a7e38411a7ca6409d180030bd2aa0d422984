@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ea4b8dba_c8361ae2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-08T22:36:18Z",
+      "side": 1,
+      "message": "Having a signal in powerindebug is very different than changing all the logic surrounding its usage.",
+      "parentUuid": "72712deb_399eb2cf",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c862ec11_0ab93bbe",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 1
