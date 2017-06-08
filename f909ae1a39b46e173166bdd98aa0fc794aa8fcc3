@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "66ca1db5_c2deec16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-08T22:20:44Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t have a better idea yet either.  We\u0027ll just need to make sure that the script which sets the board ID does the right thing.",
+      "parentUuid": "010bdfc8_bbd228e9",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "f909ae1a39b46e173166bdd98aa0fc794aa8fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56d94308_5aea1741",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 1
