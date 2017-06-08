@@ -284,6 +284,12 @@ static void init_uservo_port(void)
 	write_ioexpander(0, 7, 1);
 	/* Write USERVO_FASTBOOT_MUX_SEL */
 	write_ioexpander(1, 0, 0);
+	/* Write USB3.0_TYPEA_MUX_SEL */
+	write_ioexpander(0, 3, 1);
+	/* Write USB3.0_TYPEA_MUX_EN_L */
+	write_ioexpander(0, 4, 0);
+	/* Write USB3.0_TYPE_A_PWR_EN */
+	write_ioexpander(0, 5, 1);
 }
 
 /* Enable all ioexpander outputs. */
@@ -384,8 +390,8 @@ static void board_init(void)
 	usleep(1000);
 	gpio_set_flags(GPIO_DUT_HUB_USB_RESET_L, GPIO_OUT_HIGH);
 
-	/* Write USB3 Mode Enable to PS8742 USB/DP Mux. */
-	i2c_write8(1, 0x20, 0x0, 0x20);
+	/* Write USB3 Mode Disable to PS8742 USB/DP Mux. */
+	i2c_write8(1, 0x20, 0x0, 0x00);
 
 	/* Enable uservo USB by default. */
 	init_ioexpander();

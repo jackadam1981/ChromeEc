@@ -98,7 +98,7 @@ static int wait_bits(int port, int nb)
 			&& !(pd_phy[port].tim_rx->sr & 4))
 			; /* optimized for latency, not CPU usage ... */
 		if (dma_bytes_done(rx, PD_MAX_RAW_SIZE) < nb) {
-			CPRINTS("PD TMOUT RX %d/%d",
+			CPRINTS("PD TMOUT RX wait %d/%d",
 				dma_bytes_done(rx, PD_MAX_RAW_SIZE), nb);
 			return -1;
 		}
@@ -170,7 +170,7 @@ int pd_find_preamble(int port)
 				!(pd_phy[port].tim_rx->sr & 4))
 				;
 			if (pd_phy[port].tim_rx->sr & 4) {
-				CPRINTS("PD TMOUT RX %d/%d",
+				CPRINTS("PD TMOUT RX find %d/%d",
 					PD_MAX_RAW_SIZE - rx->cndtr, bit);
 				return -1;
 			}
