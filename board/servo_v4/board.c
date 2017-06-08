@@ -280,10 +280,21 @@ static int read_ioexpander_bit(int bank, int bit)
 /* Enable uservo USB. */
 static void init_uservo_port(void)
 {
+	/* Enable black USB port to HOST. */
+
 	/* Write USERVO_POWER_EN */
 	write_ioexpander(0, 7, 1);
 	/* Write USERVO_FASTBOOT_MUX_SEL */
 	write_ioexpander(1, 0, 0);
+
+	/* Enable blue USB port to DUT. */
+
+	/* Write USB3.0_TYPEA_MUX_SEL */
+	write_ioexpander(0, 3, 1);
+	/* Write USB3.0_TYPEA_MUX_EN_L */
+	write_ioexpander(0, 4, 0);
+	/* Write USB3.0_TYPE_A_PWR_EN */
+	write_ioexpander(0, 5, 1);
 }
 
 /* Enable all ioexpander outputs. */
