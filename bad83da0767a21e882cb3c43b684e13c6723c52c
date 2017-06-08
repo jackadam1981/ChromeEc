@@ -121,6 +121,29 @@
     },
     {
       "key": {
+        "uuid": "ede457c1_ab5366dd",
+        "filename": "common/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-08T16:56:41Z",
+      "side": 1,
+      "message": "If we\u0027re going to do this, maybe we should make this an enum?\n\nHOOK_TASK_NOT_STARTED \u003d 0\nHOOK_TASK_CALLING_INITS \u003d 1\nHOOK_TASK_INIT_DONE \u003d 2",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 18
+      },
+      "revId": "bad83da0767a21e882cb3c43b684e13c6723c52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d64bdad7_9c0de3d9",
         "filename": "include/hooks.h",
         "patchSetId": 2
@@ -141,6 +164,29 @@
       "revId": "bad83da0767a21e882cb3c43b684e13c6723c52c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ebe011_c36877af",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-08T16:56:41Z",
+      "side": 1,
+      "message": "typo: initialized",
+      "range": {
+        "startLine": 230,
+        "startChar": 4,
+        "endLine": 230,
+        "endChar": 22
+      },
+      "revId": "bad83da0767a21e882cb3c43b684e13c6723c52c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
