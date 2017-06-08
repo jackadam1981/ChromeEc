@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0334ea8_5ffdbe15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-08T22:05:23Z",
+      "side": 1,
+      "message": "Why? There\u0027s no explanation about the motivation for this patch.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c862ec11_0ab93bbe",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-08T22:05:23Z",
+      "side": 1,
+      "message": "There are tabs separating the interrupt handler on all the entries. Plase be consistent.",
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "316d82d1_c4557acd",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-08T22:05:23Z",
+      "side": 1,
+      "message": "So anytime we get a flutter on SLP_S0_L we wake up the system? And cycle back down this s0ix path? We could be entering and exiting the S0S0ix and S0 state repeatedly.",
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f65f1d1b_1a98b2b9",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-08T22:05:23Z",
+      "side": 1,
+      "message": "space after ) and before \u003d",
+      "range": {
+        "startLine": 231,
+        "startChar": 39,
+        "endLine": 231,
+        "endChar": 41
+      },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
