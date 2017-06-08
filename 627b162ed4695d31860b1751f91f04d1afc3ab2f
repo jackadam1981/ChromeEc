@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "64a8a003_6c7abce0",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-08T08:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7a1c473_aa60c3ea",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "627b162ed4695d31860b1751f91f04d1afc3ab2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "741ffa52_62426c72",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ee99a4b4_4c5d6554",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-08T08:14:33Z",
+      "side": 1,
+      "message": "Do you mean le16_to_cpu() ? If so, I\u0027m not using it because \n1. Kinda want the leave the buffer unchanged (yes, I should add const here :o)\n2. The types is not exactly the same (buf is uint8, and I want a uint16 returned )\n3. There is a version that directly operates on pointer ( convert uint8 pointer to uint16 pointer ), not sure if it worth, especially when this might able to be a macro.",
+      "parentUuid": "741ffa52_62426c72",
+      "range": {
+        "startLine": 34,
+        "startChar": 11,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "627b162ed4695d31860b1751f91f04d1afc3ab2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "787f0591_4b58317e",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-06-07T08:59:16Z",
       "side": 1,
       "message": "why so big?",
+      "range": {
+        "startLine": 143,
+        "startChar": 39,
+        "endLine": 143,
+        "endChar": 51
+      },
+      "revId": "627b162ed4695d31860b1751f91f04d1afc3ab2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cd87a22_4c4c6239",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-08T08:14:33Z",
+      "side": 1,
+      "message": "Hmm, this is copied. Let me reduce it.",
+      "parentUuid": "787f0591_4b58317e",
       "range": {
         "startLine": 143,
         "startChar": 39,
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "03a26240_12b1d18f",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-08T08:14:33Z",
+      "side": 1,
+      "message": "Sure, this is copied. Personally prefer DIE.",
+      "parentUuid": "a8c859e4_04696c84",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 11
+      },
+      "revId": "627b162ed4695d31860b1751f91f04d1afc3ab2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42906f7f_0558350c",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 2
@@ -138,6 +234,30 @@
       "revId": "627b162ed4695d31860b1751f91f04d1afc3ab2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b005d1a_ba2854a4",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-08T08:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42906f7f_0558350c",
+      "range": {
+        "startLine": 296,
+        "startChar": 13,
+        "endLine": 296,
+        "endChar": 17
+      },
+      "revId": "627b162ed4695d31860b1751f91f04d1afc3ab2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
