@@ -63,7 +63,7 @@ static struct vbus_prop src_pdo_charge[2];
 static int active_charge_port = CHARGE_PORT_NONE;
 static enum charge_supplier active_charge_supplier;
 static uint8_t vbus_rp = TYPEC_RP_RESERVED;
-static int disable_dts_mode;
+static int disable_dts_mode = 1;
 
 /* Voltage thresholds for no connect in DTS mode */
 static int pd_src_vnc_dts[TYPEC_RP_RESERVED][2] = {
@@ -483,9 +483,11 @@ int pd_set_power_supply_ready(int port)
 		vbus[DUT].ma = 500;
 	}
 
+#if 0
 	/* Enable CCD, if debuggable TS attached */
 	if (pd_ts_dts_plugged(DUT))
 		ccd_enable(1);
+#endif
 
 	return EC_SUCCESS; /* we are ready */
 }
@@ -560,8 +562,7 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 		return;
 
 	/* If DFP, try to switch to UFP */
-	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_DFP &&
-	    !disable_dts_mode)
+	if ((flags & PD_FLAGS_PARTNER_DR_DATA) && dr_role == PD_ROLE_DFP)
 		pd_request_data_swap(port);
 }
 

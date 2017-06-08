@@ -100,6 +100,8 @@
 #undef CONFIG_USB_PD_PULLUP
 #define CONFIG_USB_PD_PULLUP TYPEC_RP_USB
 
+#define CONFIG_USB_PD_DEBUG_LEVEL 2
+
 /* Override PD_ROLE_DEFAULT in usb_pd.h */
 #define PD_ROLE_DEFAULT(port) ((port) ? PD_ROLE_SOURCE : PD_ROLE_SINK)
 
