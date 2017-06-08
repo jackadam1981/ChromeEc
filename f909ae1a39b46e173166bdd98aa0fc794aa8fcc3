@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56d94308_5aea1741",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-06-08T21:42:54Z",
+      "side": 1,
+      "message": "Mention that it should be separated by a colon",
+      "range": {
+        "startLine": 370,
+        "startChar": 51,
+        "endLine": 370,
+        "endChar": 58
+      },
+      "revId": "f909ae1a39b46e173166bdd98aa0fc794aa8fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
