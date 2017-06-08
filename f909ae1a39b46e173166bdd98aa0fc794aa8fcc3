@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "010bdfc8_bbd228e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-08T22:06:08Z",
+      "side": 1,
+      "message": "I think this is a scary feature in general, setting a bad board ID is very hard to revers (a node locked debug image is required).\n\nOne can always specify a wrong board ID even within the restrictions.\n\nBut I am open to suggestions how to do this better if you have a strong feeling about this.",
+      "parentUuid": "8192d6d1_2e469d89",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "f909ae1a39b46e173166bdd98aa0fc794aa8fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56d94308_5aea1741",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8b74f38c_791a8f9d",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-08T22:06:08Z",
+      "side": 1,
+      "message": "the [:FLAGS in line 368 already shows that it should be separated by a colon, doesn\u0027t it?",
+      "parentUuid": "56d94308_5aea1741",
+      "range": {
+        "startLine": 370,
+        "startChar": 51,
+        "endLine": 370,
+        "endChar": 58
+      },
+      "revId": "f909ae1a39b46e173166bdd98aa0fc794aa8fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "039478f9_9b8fddaf",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-06-08T21:58:53Z",
       "side": 1,
       "message": "colon?",
+      "range": {
+        "startLine": 1296,
+        "startChar": 15,
+        "endLine": 1296,
+        "endChar": 24
+      },
+      "revId": "f909ae1a39b46e173166bdd98aa0fc794aa8fcc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb6e1f6e_ef9a3506",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-08T22:06:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "039478f9_9b8fddaf",
       "range": {
         "startLine": 1296,
         "startChar": 15,
