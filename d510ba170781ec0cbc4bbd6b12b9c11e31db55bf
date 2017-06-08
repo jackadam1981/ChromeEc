@@ -46,6 +46,30 @@
       "revId": "d510ba170781ec0cbc4bbd6b12b9c11e31db55bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a73e2b8_006f37da",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-08T21:41:40Z",
+      "side": 1,
+      "message": "How about CONFIG_CLOCK_SRC_EXTERNAL?  I\u0027d like to keep the naming generic if possible",
+      "parentUuid": "445aa3ba_e58e63f8",
+      "range": {
+        "startLine": 628,
+        "startChar": 7,
+        "endLine": 628,
+        "endChar": 23
+      },
+      "revId": "d510ba170781ec0cbc4bbd6b12b9c11e31db55bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
