@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "749006dc_cb01232b",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T05:00:27Z",
+      "side": 1,
+      "message": "What is the use of returning this value?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 24
+      },
+      "revId": "b819607de17466228550c56e00ac46de2962f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cba16b1_7d84d5dc",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T05:00:27Z",
+      "side": 1,
+      "message": "set_forced_lid_open sets forced_lid_open and you are setting forced_lid_open again? I am not sure why you are setting it twice.",
+      "range": {
+        "startLine": 157,
+        "startChar": 19,
+        "endLine": 157,
+        "endChar": 44
+      },
+      "revId": "b819607de17466228550c56e00ac46de2962f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11e2e7a8_c00edc1b",
+        "filename": "common/lid_switch.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T05:00:27Z",
+      "side": 1,
+      "message": "Why is this value being returned?",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 24
+      },
+      "revId": "b819607de17466228550c56e00ac46de2962f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8730c9_05aebf91",
+        "filename": "include/lid_switch.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T05:00:27Z",
+      "side": 1,
+      "message": "Why are there two separate functions being exposed?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "b819607de17466228550c56e00ac46de2962f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
