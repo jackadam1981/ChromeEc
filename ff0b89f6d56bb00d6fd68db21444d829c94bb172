@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "135e5026_883d221b",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T05:03:49Z",
+      "side": 1,
+      "message": "Who will clear this? I believe you are assuming that the kernel will call S0IX_RESUME after being forcefully woken up. What if AP rebooted for any reason. LID would be forced open until the next time resume is called.",
+      "range": {
+        "startLine": 745,
+        "startChar": 3,
+        "endLine": 745,
+        "endChar": 21
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbf17c65_25b840ac",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T05:03:49Z",
+      "side": 1,
+      "message": "Do I understand this correctly :\n\nThe condition that you are trying to cover here is when the kernel sends host command indicating entry to S0ix and then suspends, but SLP_S0 is actually not asserted. Then, this deferred call checks if lid is not open, then forces it to have lid open and pulses power button. In case if the lid was physically closed, then it would boot all the way to OS and OS would decide at some time that it wants to suspend again.",
+      "range": {
+        "startLine": 739,
+        "startChar": 2,
+        "endLine": 745,
+        "endChar": 21
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37e9ea1e_d0c5fb6f",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T05:03:49Z",
+      "side": 1,
+      "message": "\u003e80 characters",
+      "range": {
+        "startLine": 763,
+        "startChar": 2,
+        "endLine": 763,
+        "endChar": 80
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "618703b5_b567d142",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T05:03:49Z",
+      "side": 1,
+      "message": "\u003e80 characters",
+      "range": {
+        "startLine": 764,
+        "startChar": 2,
+        "endLine": 764,
+        "endChar": 83
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40e35b2c_fdba3600",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-08T05:03:49Z",
+      "side": 1,
+      "message": "You will also have to cancel this deferred call if AP reboots for any reason.",
+      "range": {
+        "startLine": 767,
+        "startChar": 2,
+        "endLine": 767,
+        "endChar": 20
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
