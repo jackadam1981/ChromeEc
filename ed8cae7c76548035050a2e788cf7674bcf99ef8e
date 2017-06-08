@@ -69,6 +69,30 @@
       "revId": "ed8cae7c76548035050a2e788cf7674bcf99ef8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50e0a4eb_d91ffa91",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-08T16:46:22Z",
+      "side": 1,
+      "message": "Yes, it should start from 0.",
+      "parentUuid": "e2919b12_5678773f",
+      "range": {
+        "startLine": 256,
+        "startChar": 7,
+        "endLine": 256,
+        "endChar": 21
+      },
+      "revId": "ed8cae7c76548035050a2e788cf7674bcf99ef8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
