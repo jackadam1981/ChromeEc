@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "017e61f2_1440ece7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-09T02:39:24Z",
+      "side": 1,
+      "message": "Well the context is not in this patch. It should be explained. That\u0027s expected regardless, and doubly so because BUG\u003dnone which provides 0 context.\n\nI\u0027m not understanding the issue. \"kernel is sleeping but the system hasn\u0027t entered s0ix\" --  Why not? What is keeping the hardware awake? And what signal are you referring to slp_s0 assertion? And what error conditions again? \n\nI don\u0027t understand about one needing to force the lid open before forcefully waking up the system. Are you referring to a lid event at the precise time of going to sleep because of lid open? And we miss that? Or is lid_open signal bouncing?",
+      "parentUuid": "6ae2dd3f_8043a975",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "b819607de17466228550c56e00ac46de2962f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdebe1c4_a7d49af1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
