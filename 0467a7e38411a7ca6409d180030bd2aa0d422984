@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "38585271_298cb51c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123361
+      },
+      "writtenOn": "2017-06-09T00:50:08Z",
+      "side": 1,
+      "message": "Originally the interrupt triggered the S0ix entry and exit. But during S0 idle state, the SLP_S0 signal toggles and this causes EC to go in and out of S0ix.\n\nTo avoid this, we introduced the host command where the EC sleeps when the host sleeps and EC wakes when the host wakes.\n\nThe powerindebug command was the starting motivation for a new round of changes. The larger motivation was to make EC enter S0ix when both conditions are met:\n\u003e\u003e host has slept\n\u003e\u003e SLP_S0 signal has toggled\n\nwhich means EC waits for both the host command and the signal.\n\nNow coming to exit. We can have two approaches here:\n\u003e\u003e EC exits just on the signal or \n\u003e\u003e EC exits on both the signal and the host command.\n\nWe went with the first option but we can go with the second one as well to make both entry and exit approaches consistent.\n\nThe signal detect patches are an additional option. If EC is waiting for the signal, it might as well wake up the host if the signal does not come within the specified interval. This will prevent error conditions where kernel is sleeping but the system hasn\u0027t entered S0ix yet. There is a kernel based mechanism for this from Derek as well.\n\nWhen we wake up the system on this error and lid happens to be closed (because lid close triggered the sleep chain), the system will go back to sleep. So one has to force the lid open before forcefully waking up the system.\n\nSo there are two sets of changes:\n\u003e\u003e A change to the EC S0ix transition trigger - it now will depend on both the host command and interrupt.\n\u003e\u003e An additional SLP_S0 signal assertion failure detection which will wake up the system.",
+      "parentUuid": "a68fa037_473fd910",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c862ec11_0ab93bbe",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 1
