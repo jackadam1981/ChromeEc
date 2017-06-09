@@ -143,4 +143,7 @@
 /* Number of I2C ports */
 #define I2C_PORT_COUNT 2
 
+/* Add Header Board ID settings to the version command output. */
+#define CONFIG_CHIP_VERSION_EXTENSION
+
 #endif	/* __CROS_EC_CONFIG_CHIP_H */

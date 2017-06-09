@@ -4,6 +4,7 @@
  */
 
 /* System module for Chrome EC : common functions */
+
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -960,6 +961,7 @@ static int command_version(int argc, char **argv)
 	ccprintf("RW:      %s\n", system_get_version(SYSTEM_IMAGE_RW));
 #endif
 
+	system_print_chip_version_info();
 	print_build_string();
 
 	return EC_SUCCESS;

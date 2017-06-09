@@ -2756,6 +2756,12 @@
  */
 #undef CONFIG_PWR_STATE_DISCHARGE_FULL
 
+/*
+ * Define this if a chip needs to add some information to the common 'version'
+ * command output.
+ */
+#undef CONFIG_CHIP_VERSION_EXTENSION
+
 /*****************************************************************************/
 /*
  * Include board and core configs, since those hold the CONFIG_ constants for a
