@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2cad234f_ed636016",
+        "filename": "test/entropy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-09T01:22:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ea2c2a3_b33473ca",
+      "range": {
+        "startLine": 107,
+        "startChar": 58,
+        "endLine": 107,
+        "endChar": 59
+      },
+      "revId": "2421fabde41c7a02d207d4a0d572a7dd8c564885",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2452fb15_9b3b5571",
         "filename": "test/entropy.c",
         "patchSetId": 2

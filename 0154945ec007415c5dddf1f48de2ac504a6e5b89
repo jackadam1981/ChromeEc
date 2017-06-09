@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "aeb68d45_4f4a0c4c",
+        "filename": "test/entropy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-09T01:22:40Z",
+      "side": 1,
+      "message": "Right, the above rounds to the closest half-integer for non-power of 2, which seems ok for our purpose (it does introduce a little bit of error, but that should be fine).",
+      "parentUuid": "f2eae20f_08d714a4",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 1
+      },
+      "revId": "0154945ec007415c5dddf1f48de2ac504a6e5b89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37928d0a_b3557757",
         "filename": "test/entropy.c",
         "patchSetId": 1
