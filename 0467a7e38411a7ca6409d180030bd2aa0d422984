@@ -193,6 +193,30 @@
     },
     {
       "key": {
+        "uuid": "c241210a_e33aacf3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123361
+      },
+      "writtenOn": "2017-06-09T04:08:29Z",
+      "side": 1,
+      "message": "\u003e IIUC, since lid is closed, we would want to suspend the system and save power. If for some reason entry to S0ix failed, it would be better for the system to try to suspend again in the hope that the next suspend will be successful.\n\nIf the signal again fails, it will again be woken up, it will again go back to sleep because lid is closed and it will be a loop.",
+      "parentUuid": "adb32681_d18e577d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c862ec11_0ab93bbe",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 1
