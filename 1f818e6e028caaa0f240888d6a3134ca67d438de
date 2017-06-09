@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a31fae41_dc1af9d2",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-09T14:41:46Z",
+      "side": 1,
+      "message": "These values are very much board dependent based on the speed and RC characteristics. How are you taking those into account? More than just gru is using this driver.",
+      "revId": "1f818e6e028caaa0f240888d6a3134ca67d438de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
