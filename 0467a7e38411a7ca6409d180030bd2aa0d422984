@@ -169,6 +169,30 @@
     },
     {
       "key": {
+        "uuid": "adb32681_d18e577d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-09T04:04:57Z",
+      "side": 1,
+      "message": "\u003e S0ix is enabled in the system\n\u003e Lid is closed\n\u003e System goes to sleep (S0ix)\n\u003e SLP_S0 fails to assert\n\u003e System is woken up (either by EC or by kernel mechanisms)\n\u003e System will go back to sleep since lid is closed (unless this is handled by userland)\n\nIn the last step, isn\u0027t it the right thing to do i.e. since lid is closed, system should go back to sleep. Why would we want to force lid open using a virtual switch and keep the system awake?\n\nIIUC, since lid is closed, we would want to suspend the system and save power. If for some reason entry to S0ix failed, it would be better for the system to try to suspend again in the hope that the next suspend will be successful.",
+      "parentUuid": "e0d26bf3_76b1a303",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c862ec11_0ab93bbe",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 1
