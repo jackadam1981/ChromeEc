@@ -70,6 +70,30 @@
       "revId": "d510ba170781ec0cbc4bbd6b12b9c11e31db55bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "253e1766_545c760e",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-06-09T01:05:39Z",
+      "side": 1,
+      "message": "It seems good. I\u0027ll modify it in next patch set.",
+      "parentUuid": "3a73e2b8_006f37da",
+      "range": {
+        "startLine": 628,
+        "startChar": 7,
+        "endLine": 628,
+        "endChar": 23
+      },
+      "revId": "d510ba170781ec0cbc4bbd6b12b9c11e31db55bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
