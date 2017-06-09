@@ -217,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "38e35415_f30e81be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-09T05:21:33Z",
+      "side": 1,
+      "message": "Since the lid is closed anyways, wouldn\u0027t it be better to keep trying to suspend - rather than staying up?",
+      "parentUuid": "c241210a_e33aacf3",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c862ec11_0ab93bbe",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 1
