@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "e0d26bf3_76b1a303",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1123361
+      },
+      "writtenOn": "2017-06-09T03:44:28Z",
+      "side": 1,
+      "message": "If the signal detection option in EC is not needed, then we don\u0027t have to merge patches #2 and 3. That was the reason why they were raised as separate patches.\n\nThe kernel mechanism is an out of upstream tree patch maintained only in Chromium git - the patch keeps a timer alive after the kernel sleeps to wake up and check if residency counters were incremented. EC seems easier and more straight forward - the signal is wired to the EC and EC can check if it was raised or not.\n\nComing back to forced lid open. Here is the sequence:\n\nS0ix is enabled in the system\nLid is closed\nSystem goes to sleep (S0ix)\nSLP_S0 fails to assert\nSystem is woken up (either by EC or by kernel mechanisms)\nSystem will go back to sleep since lid is closed (unless this is handled by userland)\n\nSo the lid is forced open. If userland can fix this behavior, then forcing lid open is not needed.\n\nSLP_S0 signal assertion failure is not normal. We will be debugging all known reasons for this. But in SKL, we felt we needed a mechanism to wake up the system if it ever encounters this scenario.\n\nTo summarize: there are two patchsets here.\n\n#1 to make EC depend on both host command and SLP_S0 signal for entering S0ix\n#2 an optional SLP_S0 signal assertion failure mechanism in EC.",
+      "parentUuid": "6680d456_a73e18c9",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 46
+      },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c862ec11_0ab93bbe",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 1
