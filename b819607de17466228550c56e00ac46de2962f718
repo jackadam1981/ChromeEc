@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ae2dd3f_8043a975",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123361
+      },
+      "writtenOn": "2017-06-09T00:52:52Z",
+      "side": 1,
+      "message": "It is explained as part of a larger comment in the SLP_S0 hybrid approach patch. Quoting the relevant section here.\n\nThe signal detect patches are an additional option. If EC is waiting for the signal, it might as well wake up the host if the signal does not come within the specified interval. This will prevent error conditions where kernel is sleeping but the system hasn\u0027t entered S0ix yet. There is a kernel based mechanism for this from Derek as well.\n\nWhen we wake up the system on this error and lid happens to be closed (because lid close triggered the sleep chain), the system will go back to sleep. So one has to force the lid open before forcefully waking up the system.",
+      "parentUuid": "1c6bdd56_ccbf589b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "b819607de17466228550c56e00ac46de2962f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdebe1c4_a7d49af1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
