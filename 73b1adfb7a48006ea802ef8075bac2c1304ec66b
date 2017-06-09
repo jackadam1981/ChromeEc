@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "33a34408_4eff6124",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-09T18:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45185744_c029f115",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "73b1adfb7a48006ea802ef8075bac2c1304ec66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be533c6f_0b15036c",
         "filename": "common/button.c",
         "patchSetId": 7
@@ -93,6 +117,30 @@
       "revId": "73b1adfb7a48006ea802ef8075bac2c1304ec66b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0925d968_d11e3092",
+        "filename": "common/button.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-09T18:15:53Z",
+      "side": 1,
+      "message": "Done. Added comment.",
+      "parentUuid": "da41cfad_94d0769b",
+      "range": {
+        "startLine": 203,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 23
+      },
+      "revId": "73b1adfb7a48006ea802ef8075bac2c1304ec66b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
