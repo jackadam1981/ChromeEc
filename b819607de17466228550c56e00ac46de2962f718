@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f5ae2b18_2966cd8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123361
+      },
+      "writtenOn": "2017-06-09T03:46:01Z",
+      "side": 1,
+      "message": "Agreed. We will amend the commit message to explain the context better. More explanation on the other questions in the other patches comment.",
+      "parentUuid": "017e61f2_1440ece7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 43
+      },
+      "revId": "b819607de17466228550c56e00ac46de2962f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdebe1c4_a7d49af1",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
