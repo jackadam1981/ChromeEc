@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "57a38c14_6cc0a95f",
+        "filename": "common/button.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-10T06:36:44Z",
+      "side": 1,
+      "message": "That is correct. I can get rid of this variable and just have that check in led tick function.",
+      "parentUuid": "1f8e23a2_ddcf9656",
+      "revId": "1d75b7dd14832ad8c0c61448cd836f940f4f8db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f71be136_97296bbd",
         "filename": "common/button.c",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2017-06-10T06:22:19Z",
       "side": 1,
       "message": "Why can\u0027t you use debug_mode_handle deferred directly?",
+      "revId": "1d75b7dd14832ad8c0c61448cd836f940f4f8db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "941c3b7b_0a4c8caf",
+        "filename": "common/button.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-10T06:36:44Z",
+      "side": 1,
+      "message": "Yep :). There is no need of another indirection here.",
+      "parentUuid": "f71be136_97296bbd",
       "revId": "1d75b7dd14832ad8c0c61448cd836f940f4f8db4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
