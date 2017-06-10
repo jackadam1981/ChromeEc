@@ -212,3 +212,39 @@ uint8_t *SHA256_final(struct sha256_ctx *ctx)
 
 	return ctx->buf;
 }
+
+void hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,
+		 const uint8_t *message, const int message_len) {
+	struct sha256_ctx ctx;
+	uint8_t key_pad[SHA256_BLOCK_SIZE];
+	uint8_t *tmp;
+	int i;
+
+	/* This code does not support key_len > block_size. */
+	ASSERT(key_len < sizeof(key_pad));
+
+	/* i_key_pad = key (zero-padded) ^ 0x36 */
+	memset(key_pad, 0x36, sizeof(key_pad));
+	for (i = 0; i < key_len; i++)
+		key_pad[i] ^= key[i];
+
+	/* tmp = hash(i_key_pad || message) */
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, key_pad, sizeof(key_pad));
+	SHA256_update(&ctx, message, message_len);
+	tmp = SHA256_final(&ctx);
+	/* Use output as temporary buffer */
+	memcpy(output, tmp, SHA256_DIGEST_SIZE);
+
+	/* o_key_pad = key (zero-padded) ^ 0x5c */
+	memset(key_pad, 0x5c, sizeof(key_pad));
+	for (i = 0; i < key_len; i++)
+		key_pad[i] ^= key[i];
+
+	/* output = hash(o_key_pad || tmp) */
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, key_pad, sizeof(key_pad));
+	SHA256_update(&ctx, output, SHA256_DIGEST_SIZE);
+	tmp = SHA256_final(&ctx);
+	memcpy(output, tmp, SHA256_DIGEST_SIZE);
+}
