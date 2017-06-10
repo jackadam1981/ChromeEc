@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f8e23a2_ddcf9656",
+        "filename": "common/button.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-10T06:22:19Z",
+      "side": 1,
+      "message": "I think this is the same as a test for:\ncurr_debug_state !\u003d STATE_DEBUG_NONE \u0026\u0026 curr_debug_state !\u003d STATE_DEBUG_CHECK",
+      "revId": "1d75b7dd14832ad8c0c61448cd836f940f4f8db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f71be136_97296bbd",
+        "filename": "common/button.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-10T06:22:19Z",
+      "side": 1,
+      "message": "Why can\u0027t you use debug_mode_handle deferred directly?",
+      "revId": "1d75b7dd14832ad8c0c61448cd836f940f4f8db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
