@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f98cca5_23c45872",
+        "filename": "common/button.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-10T07:16:58Z",
+      "side": 1,
+      "message": "I am using this because I am not sure if calling led_control with LED_STATE_RESET would be safe always for all boards (even if we are not exiting from DEBUG mode). It seems harmless for poppy at the moment. But if some board has more involved logic around led control, then called reset could mess up that.\n\ne.g. Vup+Vdn are pressed unintentionally and are released before 10 seconds, then there would be a transition from DEBUG_CHECK --\u003e NONE: In that case we would not want to reset the led state, since blinking was never enabled.",
+      "range": {
+        "startLine": 461,
+        "startChar": 5,
+        "endLine": 461,
+        "endChar": 21
+      },
+      "revId": "37a5f36a701527ead15c81268af30e76752c892f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
