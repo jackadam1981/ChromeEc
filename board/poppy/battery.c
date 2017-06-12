@@ -13,11 +13,10 @@
 #include "extpower.h"
 #include "util.h"
 
-/* Shutdown mode parameter to write to manufacturer access register */
-#define SB_SHIP_MODE_REG	0x3a
-#define SB_SHUTDOWN_DATA	0xC574
-
 #ifdef BOARD_SORAKA
+/* Shutdown mode parameter to write to manufacturer access register */
+#define SB_SHUTDOWN_DATA        0x0010
+
 static const struct battery_info info = {
 	.voltage_max = 8800,
 	.voltage_normal = 7700,
@@ -33,6 +32,10 @@ static const struct battery_info info = {
 	.discharging_max_c = 60,
 };
 #elif defined(BOARD_POPPY)
+/* Shutdown mode parameter to write to manufacturer access register */
+#define SB_SHIP_MODE_REG	0x3a
+#define SB_SHUTDOWN_DATA	0xC574
+
 static const struct battery_info info = {
 	.voltage_max = 13200,
 	.voltage_normal = 11550,
@@ -61,12 +64,19 @@ int board_cut_off_battery(void)
 	int rv;
 
 	/* Ship mode command must be sent twice to take effect */
+#ifdef BOARD_SORAKA
+	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+#elif defined(BOARD_POPPY)
 	rv = sb_write(SB_SHIP_MODE_REG, SB_SHUTDOWN_DATA);
-
+#endif
 	if (rv != EC_SUCCESS)
 		return rv;
 
+#ifdef BOARD_SORAKA
+	return sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+#elif defined(BOARD_POPPY)
 	return sb_write(SB_SHIP_MODE_REG, SB_SHUTDOWN_DATA);
+#endif
 }
 
 /* TODO(crosbug.com/p/61098): Verify that this applies with our battery pack */
