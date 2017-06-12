@@ -129,6 +129,30 @@
       "revId": "c38864f0c03033e96a118811158a99666f7b7bec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "772558ca_9025bb4f",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-12T03:31:15Z",
+      "side": 1,
+      "message": "2 others options (but both are potentially fragile):\n 1. Check if all registers are 0\n 2. Set an unused bit in MMFS.",
+      "parentUuid": "2e92f876_4f5fbb26",
+      "range": {
+        "startLine": 257,
+        "startChar": 57,
+        "endLine": 257,
+        "endChar": 61
+      },
+      "revId": "c38864f0c03033e96a118811158a99666f7b7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
