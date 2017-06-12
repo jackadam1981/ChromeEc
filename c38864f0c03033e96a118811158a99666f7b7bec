@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "66159581_6f08cfa3",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-12T01:54:41Z",
+      "side": 1,
+      "message": "Okay, I will get rid of this. I just thought it made reading the code easier.",
+      "parentUuid": "f6309e02_9a343dce",
+      "revId": "c38864f0c03033e96a118811158a99666f7b7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b2cabf9_d72e1945",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2017-06-12T01:27:11Z",
       "side": 1,
       "message": "What\u0027s MMFS and why is it guaranteed not to be 0?",
+      "range": {
+        "startLine": 257,
+        "startChar": 57,
+        "endLine": 257,
+        "endChar": 61
+      },
+      "revId": "c38864f0c03033e96a118811158a99666f7b7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4319f7da_d5521afb",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-12T01:54:41Z",
+      "side": 1,
+      "message": "Looking at the usage of MMFS, it seems to contain bits set for various fault status: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/core/cortex-m/panic.c#78",
+      "parentUuid": "5b2cabf9_d72e1945",
       "range": {
         "startLine": 257,
         "startChar": 57,
