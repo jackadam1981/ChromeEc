@@ -71,4 +71,7 @@
 #define GPIO_PIN(port, index) GPIO_##port, (1 << index)
 #define GPIO_PIN_MASK(port, mask) GPIO_##port, (mask)
 
+/* By default disable panic backup/restore handling. */
+#undef CONFIG_NPCX_PANIC_BACKUP
+
 #endif  /* __CROS_EC_CONFIG_CHIP_H */

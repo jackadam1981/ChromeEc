@@ -14,6 +14,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "hwtimer_chip.h"
+#include "panic_chip.h"
 #include "registers.h"
 #include "rom_chip.h"
 #include "system.h"
@@ -227,6 +228,84 @@ void system_set_rtc(uint32_t seconds)
 	NPCX_TTC = seconds;
 	udelay(MTC_TTC_LOAD_DELAY_US);
 }
+
+#ifdef CONFIG_NPCX_PANIC_BACKUP
+/* Macros to backup and restore panic data in BBRAM. */
+#define PANIC_BKUP(i, v)	bbram_data_write((i), (v))
+#define PANIC_RSTR(i)		bbram_data_read(i)
+
+/*
+ * Following information from panic data is stored in BBRAM:
+ *
+ * index     |       data
+ * ==========|=============
+ *   36      |       MMFS
+ *   40      |       BFAR
+ *   44      |       MFAR
+ *   48      |      SHCSR
+ *   52      |       HFSR
+ *   56      |       DFSR
+ *   60      |     reserved
+ */
+#define BKUP_MMFS		(BBRM_DATA_INDEX_PANIC_BKUP + 0)
+#define BKUP_BFAR		(BBRM_DATA_INDEX_PANIC_BKUP + 4)
+#define BKUP_MFAR		(BBRM_DATA_INDEX_PANIC_BKUP + 8)
+#define BKUP_SHCSR		(BBRM_DATA_INDEX_PANIC_BKUP + 12)
+#define BKUP_HFSR		(BBRM_DATA_INDEX_PANIC_BKUP + 16)
+#define BKUP_DFSR		(BBRM_DATA_INDEX_PANIC_BKUP + 20)
+
+/*
+ * If BBRAM is valid and data in first panic data index (MMFS) is 0, then it is
+ * considered that panic data is not valid in BBRAM.
+ */
+#define PANIC_DATA_INVALID	(0x0)
+
+void panic_data_backup(void)
+{
+	struct panic_data *d = panic_get_data();
+
+	if (!d)
+		return;
+
+	PANIC_BKUP(BKUP_MMFS, d->cm.mmfs);
+	PANIC_BKUP(BKUP_BFAR, d->cm.bfar);
+	PANIC_BKUP(BKUP_MFAR, d->cm.mfar);
+	PANIC_BKUP(BKUP_SHCSR, d->cm.shcsr);
+	PANIC_BKUP(BKUP_HFSR, d->cm.hfsr);
+	PANIC_BKUP(BKUP_DFSR, d->cm.dfsr);
+}
+
+void panic_data_restore(void)
+{
+	uint32_t val;
+	struct panic_data *d = PANIC_DATA_PTR;
+
+	/* Ensure BBRAM is valid. */
+	if (!bbram_valid(BKUP_MMFS, 4))
+		return;
+
+	/* Ensure MMFS has non-zero data. */
+	val = PANIC_RSTR(BKUP_MMFS);
+	if (val == PANIC_DATA_INVALID)
+		return;
+
+	memset(d, 0, sizeof(*d));
+	d->magic = PANIC_DATA_MAGIC;
+	d->struct_size = sizeof(*d);
+	d->struct_version = 2;
+	d->arch = PANIC_ARCH_CORTEX_M;
+
+	d->cm.mmfs = val;
+	d->cm.bfar = PANIC_RSTR(BKUP_BFAR);
+	d->cm.mfar = PANIC_RSTR(BKUP_MFAR);
+	d->cm.shcsr = PANIC_RSTR(BKUP_SHCSR);
+	d->cm.hfsr = PANIC_RSTR(BKUP_HFSR);
+	d->cm.dfsr = PANIC_RSTR(BKUP_DFSR);
+
+	/* Reset panic data in BBRAM. */
+	PANIC_BKUP(BKUP_MMFS, PANIC_DATA_INVALID);
+}
+#endif /* CONFIG_NPCX_PANIC_BACKUP */
 
 void chip_save_reset_flags(int flags)
 {
@@ -559,6 +638,10 @@ void system_pre_init(void)
 	 * and DATA RAM to prevent code execution
 	 */
 	system_mpu_config();
+
+#ifdef CONFIG_NPCX_PANIC_BACKUP
+	panic_data_restore();
+#endif
 }
 
 void system_reset(int flags)
