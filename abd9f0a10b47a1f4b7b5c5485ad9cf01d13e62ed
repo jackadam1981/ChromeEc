@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5682532_3b6f1b24",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-12T01:20:44Z",
+      "side": 1,
+      "message": "nit: (id4\u003d0) for consistency. same with (id4\u003d1)",
+      "range": {
+        "startLine": 712,
+        "startChar": 23,
+        "endLine": 712,
+        "endChar": 28
+      },
+      "revId": "abd9f0a10b47a1f4b7b5c5485ad9cf01d13e62ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a267b888_4947c536",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-12T01:20:44Z",
+      "side": 1,
+      "message": "In addition to board_init, this function is called from vbus discharge as well. Can it spam the console with Board ID messages?",
+      "range": {
+        "startLine": 717,
+        "startChar": 1,
+        "endLine": 717,
+        "endChar": 31
+      },
+      "revId": "abd9f0a10b47a1f4b7b5c5485ad9cf01d13e62ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
