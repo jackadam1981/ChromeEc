@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55dd259a_211302db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-12T20:30:47Z",
+      "side": 1,
+      "message": "Cr50?",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "389e73e5ef6ba59d0a01144b1afc10be59476322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba77883a_78690b62",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-12T20:30:47Z",
+      "side": 1,
+      "message": "This is confusingly named.\n\nIt does not, as the name suggests, print version information about the chip.\n\nInstead, it\u0027s a function which prints information about the current firmware, which itself depends on the board configuration, and the implementation is chip-specific.\n\nWould it be clearer to add this information to command_board_id() instead?",
+      "range": {
+        "startLine": 963,
+        "startChar": 1,
+        "endLine": 963,
+        "endChar": 34
+      },
+      "revId": "389e73e5ef6ba59d0a01144b1afc10be59476322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
