@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9edafd92_34151d74",
+        "filename": "include/panic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-12T04:02:23Z",
+      "side": 1,
+      "message": "can decide if it is safe to restore panic data during the system initialization step.",
+      "range": {
+        "startLine": 178,
+        "startChar": 66,
+        "endLine": 179,
+        "endChar": 80
+      },
+      "revId": "28bb3d924a5009f68f151d3c4c5d26eb8292e701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
