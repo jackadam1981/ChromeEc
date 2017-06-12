@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f41451f0_8aaebee9",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2017-06-12T21:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae502dc2_b690eee4",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 68,
+        "endChar": 37
+      },
+      "revId": "d97854f912e74d5f687b86a2d5982ee01b115cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4b69581_2b3afca0",
         "filename": "board/poppy/battery.c",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "d97854f912e74d5f687b86a2d5982ee01b115cdd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0380f54e_5580849f",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2017-06-12T21:13:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4b69581_2b3afca0",
+      "revId": "d97854f912e74d5f687b86a2d5982ee01b115cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
