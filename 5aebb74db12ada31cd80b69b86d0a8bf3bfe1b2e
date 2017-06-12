@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d9fae8b_ba0b874e",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-12T01:15:28Z",
+      "side": 1,
+      "message": "nit: pull-down, then pull-up",
+      "range": {
+        "startLine": 128,
+        "startChar": 50,
+        "endLine": 128,
+        "endChar": 74
+      },
+      "revId": "5aebb74db12ada31cd80b69b86d0a8bf3bfe1b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
