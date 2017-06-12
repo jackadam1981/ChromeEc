@@ -22,6 +22,30 @@
       "revId": "c10368766155ef4dd51e59cfbd64988b76c10ca3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feb8b6cf_6c9f00c4",
+        "filename": "include/panic.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-12T02:04:16Z",
+      "side": 1,
+      "message": "That also shows that _restore is used outside of chip-specific code, and might not need to be exported.\n\nI\u0027d remove it, and add properly formatted function documentation for chip_panic_data_backup",
+      "parentUuid": "e2d7c580_7e88ca3c",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 27
+      },
+      "revId": "c10368766155ef4dd51e59cfbd64988b76c10ca3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
