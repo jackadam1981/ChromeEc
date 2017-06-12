@@ -16,6 +16,10 @@
 #include "system.h"
 #include "timer.h"
 
+#ifdef CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET
+#include "panic_chip.h"
+#endif
+
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
@@ -163,7 +167,11 @@ static void chipset_handle_reboot(void)
 		chip_save_reset_flags(RESET_FLAG_AP_OFF);
 	}
 
+	/* Ensure panic data if any is backed up. */
+	panic_data_backup();
+
 	ccprintf("Restarting system with PMIC.\n");
+
 	/* Flush console */
 	cflush();
 
