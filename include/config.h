@@ -745,6 +745,9 @@
  */
 #undef CONFIG_SOFTWARE_PANIC
 
+/* Enable support for backing up/restoring panic data. */
+#undef CONFIG_CHIP_PANIC_BACKUP
+
 /*
  * Provide the default GPIO abstraction layer.
  * You want this unless you are doing a really tiny firmware.

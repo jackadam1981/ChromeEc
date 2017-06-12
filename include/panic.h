@@ -170,4 +170,8 @@ void ignore_bus_fault(int ignored);
  */
 struct panic_data *panic_get_data(void);
 
+/* Chip-specific implementations to backup/restore panic data. */
+void chip_panic_data_backup(void);
+void chip_panic_data_resume(void);
+
 #endif  /* __CROS_EC_PANIC_H */
