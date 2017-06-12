@@ -198,12 +198,9 @@
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
-#define CONFIG_MAG_BMI160_BMM150
-#define BMM150_I2C_ADDRESS BMM150_ADDR0	/* 8-bit address */
 #define CONFIG_MAG_CALIBRATE
 #define CONFIG_ACCEL_KX022
 #define CONFIG_ALS_OPT3001
-#define CONFIG_BARO_BMP280
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
@@ -275,8 +272,6 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	BASE_ACCEL,
 	BASE_GYRO,
-	BASE_MAG,
-	BASE_BARO,
 	LID_ALS,
 };
 
@@ -320,7 +315,7 @@ void board_set_tcpc_power_mode(int port, int mode);
 
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK \
-	((1 << LID_ACCEL) | (1 << BASE_BARO) | (1 << LID_ALS))
+	((1 << LID_ACCEL) | (1 << LID_ALS))
 
 #endif /* !__ASSEMBLER__ */
 
