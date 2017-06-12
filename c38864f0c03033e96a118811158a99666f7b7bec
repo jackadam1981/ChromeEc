@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6309e02_9a343dce",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-12T01:27:11Z",
+      "side": 1,
+      "message": "I don\u0027t find these macros very useful...",
+      "revId": "c38864f0c03033e96a118811158a99666f7b7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b2cabf9_d72e1945",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-12T01:27:11Z",
+      "side": 1,
+      "message": "What\u0027s MMFS and why is it guaranteed not to be 0?",
+      "range": {
+        "startLine": 257,
+        "startChar": 57,
+        "endLine": 257,
+        "endChar": 61
+      },
+      "revId": "c38864f0c03033e96a118811158a99666f7b7bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
