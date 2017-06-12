@@ -81,6 +81,7 @@ static int bbram_is_byte_access(enum bbram_data_index index)
 		|| index == BBRM_DATA_INDEX_PD0
 		|| index == BBRM_DATA_INDEX_PD1
 #endif
+		|| index == BBRM_DATA_INDEX_PANIC_FLAGS
 	;
 }
 
@@ -227,6 +228,76 @@ void system_set_rtc(uint32_t seconds)
 	NPCX_TTC = seconds;
 	udelay(MTC_TTC_LOAD_DELAY_US);
 }
+
+#ifdef CONFIG_CHIP_PANIC_BACKUP
+/*
+ * Following information from panic data is stored in BBRAM:
+ *
+ * index     |       data
+ * ==========|=============
+ *   36      |       MMFS
+ *   40      |       BFAR
+ *   44      |       MFAR
+ *   48      |      SHCSR
+ *   52      |       HFSR
+ *   56      |       DFSR
+ *   60      |     reserved
+ */
+#define BKUP_MMFS		(BBRM_DATA_INDEX_PANIC_BKUP + 0)
+#define BKUP_BFAR		(BBRM_DATA_INDEX_PANIC_BKUP + 4)
+#define BKUP_MFAR		(BBRM_DATA_INDEX_PANIC_BKUP + 8)
+#define BKUP_SHCSR		(BBRM_DATA_INDEX_PANIC_BKUP + 12)
+#define BKUP_HFSR		(BBRM_DATA_INDEX_PANIC_BKUP + 16)
+#define BKUP_DFSR		(BBRM_DATA_INDEX_PANIC_BKUP + 20)
+
+#define BKUP_PANIC_DATA_VALID	(1 << 0)
+
+void chip_panic_data_backup(void)
+{
+	struct panic_data *d = panic_get_data();
+
+	if (!d)
+		return;
+
+	bbram_data_write(BKUP_MMFS, d->cm.mmfs);
+	bbram_data_write(BKUP_BFAR, d->cm.bfar);
+	bbram_data_write(BKUP_MFAR, d->cm.mfar);
+	bbram_data_write(BKUP_SHCSR, d->cm.shcsr);
+	bbram_data_write(BKUP_HFSR, d->cm.hfsr);
+	bbram_data_write(BKUP_DFSR, d->cm.dfsr);
+	bbram_data_write(BBRM_DATA_INDEX_PANIC_FLAGS, BKUP_PANIC_DATA_VALID);
+}
+
+static void chip_panic_data_restore(void)
+{
+	struct panic_data *d = PANIC_DATA_PTR;
+
+	/* Ensure BBRAM is valid. */
+	if (!bbram_valid(BKUP_MMFS, 4))
+		return;
+
+	/* Ensure Panic data in BBRAM is valid. */
+	if (!(bbram_data_read(BBRM_DATA_INDEX_PANIC_FLAGS) &
+	      BKUP_PANIC_DATA_VALID))
+		return;
+
+	memset(d, 0, sizeof(*d));
+	d->magic = PANIC_DATA_MAGIC;
+	d->struct_size = sizeof(*d);
+	d->struct_version = 2;
+	d->arch = PANIC_ARCH_CORTEX_M;
+
+	d->cm.mmfs = bbram_data_read(BKUP_MMFS);
+	d->cm.bfar = bbram_data_read(BKUP_BFAR);
+	d->cm.mfar = bbram_data_read(BKUP_MFAR);
+	d->cm.shcsr = bbram_data_read(BKUP_SHCSR);
+	d->cm.hfsr = bbram_data_read(BKUP_HFSR);
+	d->cm.dfsr = bbram_data_read(BKUP_DFSR);
+
+	/* Reset panic data in BBRAM. */
+	bbram_data_write(BBRM_DATA_INDEX_PANIC_FLAGS, 0);
+}
+#endif /* CONFIG_CHIP_PANIC_BACKUP */
 
 void chip_save_reset_flags(int flags)
 {
@@ -559,6 +630,10 @@ void system_pre_init(void)
 	 * and DATA RAM to prevent code execution
 	 */
 	system_mpu_config();
+
+#ifdef CONFIG_CHIP_PANIC_BACKUP
+	chip_panic_data_restore();
+#endif
 }
 
 void system_reset(int flags)
