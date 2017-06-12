@@ -22,6 +22,30 @@
       "revId": "28bb3d924a5009f68f151d3c4c5d26eb8292e701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5b4582a_47ea7ec9",
+        "filename": "include/panic.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-12T04:08:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9edafd92_34151d74",
+      "range": {
+        "startLine": 178,
+        "startChar": 66,
+        "endLine": 179,
+        "endChar": 80
+      },
+      "revId": "28bb3d924a5009f68f151d3c4c5d26eb8292e701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
