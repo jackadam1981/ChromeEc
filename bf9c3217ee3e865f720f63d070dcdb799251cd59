@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "8abda838_40ef01e2",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-13T19:50:44Z",
+      "side": 1,
+      "message": "Should this be GPIO_HIB_WAKE_EDGE?",
+      "range": {
+        "startLine": 143,
+        "startChar": 13,
+        "endLine": 143,
+        "endChar": 30
+      },
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1723646c_3e24d818",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-13T19:50:44Z",
+      "side": 1,
+      "message": "typo: \u0027Use\u0027",
+      "range": {
+        "startLine": 37,
+        "startChar": 3,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12869fd4_0f5d870a",
         "filename": "include/gpio.h",
         "patchSetId": 2
@@ -43,6 +89,23 @@
         "endLine": 38,
         "endChar": 36
       },
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13255f97_69b9c8fb",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-13T19:50:44Z",
+      "side": 1,
+      "message": "Having a disable flag seems weird to me. Why can\u0027t the board just enable/disable when it wants to?",
       "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
