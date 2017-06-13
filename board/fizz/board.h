@@ -74,6 +74,11 @@
 #define CONFIG_POWER_BUTTON_INIT_IDLE
 #define CONFIG_POWER_COMMON
 #define CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD 30
+/*
+ * 95 msec is the requirement but there are things which happen before
+ * timer is initialized. So, we can subtract 20 msec and still meet 95 msec.
+ */
+#define CONFIG_DSW_PWROK_TO_PWRBTN (75 * MSEC)
 
 /* Sensor */
 #define CONFIG_TEMP_SENSOR

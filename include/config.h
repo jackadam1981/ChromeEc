@@ -1824,6 +1824,9 @@
 /* Set power button state idle at init. Implemented only for npcx. */
 #undef CONFIG_POWER_BUTTON_INIT_IDLE
 
+/* The time in msec required between DSW_PWROK and PWRBTN assertion. */
+#undef CONFIG_DSW_PWROK_TO_PWRBTN
+
 /* Compile common code for AP power state machine */
 #undef CONFIG_POWER_COMMON
 
