@@ -22,6 +22,30 @@
       "revId": "716db3e803ffc4af62e30c5f9664f0e3e288923a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d29602_6691f11d",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-13T11:59:43Z",
+      "side": 1,
+      "message": "The problem here is that we have very limited space in BBRAM (64 bytes) and a good portion of it is already used for different purpose. With this change, upper half of the BBRAM is now consumed for panic data backup purpose. I chose MMFS and DFSR since they seem to provide human readable info in case of panic. It might not be possible to dump all registers, but if you think there are some specific registers that are generally more helpful during debug, I can add those here.",
+      "parentUuid": "063d0678_e491303b",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 70
+      },
+      "revId": "716db3e803ffc4af62e30c5f9664f0e3e288923a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
