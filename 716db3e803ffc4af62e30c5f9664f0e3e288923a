@@ -46,6 +46,30 @@
       "revId": "716db3e803ffc4af62e30c5f9664f0e3e288923a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdef8917_5c3e6935",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T12:24:18Z",
+      "side": 1,
+      "message": "\u003e The problem here is that we have very limited space in BBRAM (64 bytes)\n\u003e [...]\n\nsure\n\n\u003e I chose MMFS and DFSR since they seem to provide human readable info\n\u003e in case of panic.\n\nI don\u0027t think anybody ever used the content of DFSR on a production system (or HFSR excepted the Forced bit), \n\n\u003e It might not be possible to dump all registers, but if you think there are\n\u003e some specific registers that are generally more helpful during debug,\n\u003e I can add those here.\n\nAll software panics (eg assertion , stack canary ...) will return random values which are impossible to sort apart.\nThe info is stored in r4/r5 but see panic_set_reason/panic_get_reason as used on other chips.",
+      "parentUuid": "02d29602_6691f11d",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 70
+      },
+      "revId": "716db3e803ffc4af62e30c5f9664f0e3e288923a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
