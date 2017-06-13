@@ -2269,6 +2269,9 @@ void pd_task(void)
 			pd_rx_disable_monitoring(port);
 			pd_hw_release(port);
 			pd_power_supply_reset(port);
+#else
+			if (tcpm_release(port) != 0)
+				CPRINTS("TCPC p%d release failed!", port);
 #endif
 			pd[port].pd_suspended = 1;
 			/* Wait for resume */
@@ -2277,8 +2280,16 @@ void pd_task(void)
 			pd[port].pd_suspended = 0;
 #ifdef CONFIG_USB_PD_TCPC
 			pd_hw_init(port, PD_ROLE_DEFAULT);
-#endif
 			CPRINTS("TCPC p%d resumed!", port);
+#else
+			if (tcpm_init(port) != 0) {
+				/* stay in PD_STATE_SUSPENDED */
+				CPRINTS("TCPC p%d init failed!", port);
+			} else {
+				set_state(port, PD_DEFAULT_STATE);
+				CPRINTS("TCPC p%d resumed!", port);
+			}
+#endif
 			break;
 		case PD_STATE_SNK_DISCONNECTED:
 #ifdef CONFIG_USB_PD_LOW_POWER
