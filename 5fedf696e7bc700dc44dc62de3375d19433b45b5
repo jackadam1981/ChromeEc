@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3afce248_a171c253",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T20:04:11Z",
+      "side": 1,
+      "message": "it would be great if you could add some substance to this patch description, what exactly is the contents of the vendor commands, what kind of processing is expected from the command handlers, etc.",
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "532ec5e4_60ff2d2d",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T20:04:11Z",
+      "side": 1,
+      "message": "this will be always true 10 seconds after startup. Maybe check that get_time().val  exceeds PRESENT_TIMEOUT, to be on the safe side.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fee860b_09508ec9",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T20:04:11Z",
+      "side": 1,
+      "message": "why do you keep these in the function scope, can they be const static at file scope so that they can be reused in load_state() below?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ee5a26_53db460b",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T20:04:11Z",
+      "side": 1,
+      "message": "alignment seems to be out.",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5e5613_67f5fe8d",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T20:04:11Z",
+      "side": 1,
+      "message": "I think this function belongs in chip/g/system.c, it is partially implemented there, could be refactored.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 36
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c8ed0d6_4045fb0f",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T20:04:11Z",
+      "side": 1,
+      "message": "zero is not needed here.",
+      "range": {
+        "startLine": 209,
+        "startChar": 20,
+        "endLine": 209,
+        "endChar": 21
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb18d7af_da4c5cae",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T20:04:11Z",
+      "side": 1,
+      "message": "statically allocating this seems such a waste, why not use malloc?",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 41
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cce57fc0_27d88b9d",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T20:04:11Z",
+      "side": 1,
+      "message": "could you reuse \u0027body\u0027 as the destination space by any chance?",
+      "range": {
+        "startLine": 250,
+        "startChar": 56,
+        "endLine": 250,
+        "endChar": 66
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
