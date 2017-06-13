@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "b8c93fec_335b2ed5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T02:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d560fceb_80fb5c3a",
+      "range": {
+        "startLine": 9,
+        "startChar": 43,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "389e73e5ef6ba59d0a01144b1afc10be59476322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "096f0123_8425ef6b",
         "filename": "chip/g/system.c",
         "patchSetId": 1
@@ -68,6 +92,30 @@
       "revId": "389e73e5ef6ba59d0a01144b1afc10be59476322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c97bf030_7e49d351",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T02:30:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "096f0123_8425ef6b",
+      "range": {
+        "startLine": 691,
+        "startChar": 7,
+        "endLine": 691,
+        "endChar": 36
+      },
+      "revId": "389e73e5ef6ba59d0a01144b1afc10be59476322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +189,24 @@
       "side": 1,
       "message": "Oh, that\u0027s right, it comes from the header. What about system_print_extended_version_info()? Then in the chip specific implementation, have a print_image_bid_info().",
       "parentUuid": "1277a312_f7b2f6c0",
+      "revId": "389e73e5ef6ba59d0a01144b1afc10be59476322",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b11299e3_f7615bbf",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T02:30:37Z",
+      "side": 1,
+      "message": "I changed the function name, not sure were do you mean print_image_bid_info() should be included.",
+      "parentUuid": "f6897183_9e082212",
       "revId": "389e73e5ef6ba59d0a01144b1afc10be59476322",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
