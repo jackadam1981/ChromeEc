@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7de3046_dc385577",
+        "filename": "common/sha256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T11:42:18Z",
+      "side": 1,
+      "message": "SHA256_BLOCK_SIZE ?",
+      "range": {
+        "startLine": 205,
+        "startChar": 16,
+        "endLine": 205,
+        "endChar": 22
+      },
+      "revId": "0522b7eb0fc10c11d23c485943267a48ea6b8602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3d3095d6_85638dc8",
+        "filename": "common/sha256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T11:42:18Z",
+      "side": 1,
+      "message": "\u003e This wastes 140 bytes of flash space though\n\nsure, maybe I would have done a worse hack... e.g.\n--- a/common/sha256.c\n+++ b/common/sha256.c\n@@ -165,7 +165,8 @@ void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)\n        tmp_len \u003d SHA256_BLOCK_SIZE - ctx-\u003elen;\n        rem_len \u003d len \u003c tmp_len ? len : tmp_len;\n \n-       memcpy(\u0026ctx-\u003eblock[ctx-\u003elen], data, rem_len);\n+       if (data)\n+               memcpy(\u0026ctx-\u003eblock[ctx-\u003elen], data, rem_len);\n \n        if (ctx-\u003elen + len \u003c SHA256_BLOCK_SIZE) {\n                ctx-\u003elen +\u003d len;",
+      "parentUuid": "8388522b_428eb47d",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 36
+      },
+      "revId": "215c39a73dd87dbada1b3ccc3280f33710a7c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5621f759_d8c8226e",
         "filename": "common/sha256.c",
         "patchSetId": 2
