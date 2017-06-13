@@ -22,6 +22,30 @@
       "revId": "ca3c16603439684e055b552c6b9ae5b808074376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59b5c05f_655ca602",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-13T16:10:44Z",
+      "side": 1,
+      "message": "Yes. When the system loses power at G3, AP_OFF won\u0027t be cleared (by this callback function). When power restores, the system turns on but stays in G3 as intended.\n\nHmm... but regarding NVRAM, we should read flags directly from BBRAM instead of SRAM. Code is updated.",
+      "parentUuid": "49c7bee1_96b1ef67",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "ca3c16603439684e055b552c6b9ae5b808074376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
