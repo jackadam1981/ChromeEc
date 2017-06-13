@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc6123c9_29f81ebc",
+        "filename": "common/usb_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T08:56:07Z",
+      "side": 1,
+      "message": "a bit too fancy for me.\nIt\u0027s uselessly computing strlen at runtime, a good old sizeof() (probably with a define for \"device-identity\") would make it smaller and faster",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "26ffa734f3f9d59d663bdf4c8309d185b2361dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fa8de89_1222c75a",
+        "filename": "include/update_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T08:56:07Z",
+      "side": 1,
+      "message": "why not swapping the last 2 fields, to keep this one aligned ?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 68
+      },
+      "revId": "26ffa734f3f9d59d663bdf4c8309d185b2361dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
