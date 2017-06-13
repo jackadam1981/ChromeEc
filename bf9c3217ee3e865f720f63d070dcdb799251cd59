@@ -22,6 +22,30 @@
       "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92480e0c_8067a75a",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-06-13T17:33:25Z",
+      "side": 1,
+      "message": "I figured that the common flag combinations is basically the same as using that. It makes it easier for us to parse the flags, because cr50 uses splits it into a high/low bit and a edge bit.",
+      "parentUuid": "12869fd4_0f5d870a",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
