@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84bfa8c2_6843323d",
+        "filename": "common/sha256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T09:06:45Z",
+      "side": 1,
+      "message": "stack-wise, this is kind of expensive for not much (ie being memcpy\u0027ed to ctx.data 2 lines after being initialized)\nif you are creating a dedicated function for hmac_SHA256 maybe you want to do better.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 36
+      },
+      "revId": "215c39a73dd87dbada1b3ccc3280f33710a7c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5621f759_d8c8226e",
+        "filename": "common/sha256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T09:06:45Z",
+      "side": 1,
+      "message": "you are doing twice this sequence, calling a sub-function might be smaller ?",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 26
+      },
+      "revId": "215c39a73dd87dbada1b3ccc3280f33710a7c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a1d52e6_ee25558c",
+        "filename": "test/sha256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T09:06:45Z",
+      "side": 1,
+      "message": "this is better than the current lack of test,\nbut copying a few/all of the NIST SHA256 test vectors seems even better.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "215c39a73dd87dbada1b3ccc3280f33710a7c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9536f3d_ecdd4840",
+        "filename": "test/sha256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T09:06:45Z",
+      "side": 1,
+      "message": "which is about the constant (sizeof() - 1)",
+      "range": {
+        "startLine": 35,
+        "startChar": 17,
+        "endLine": 35,
+        "endChar": 30
+      },
+      "revId": "215c39a73dd87dbada1b3ccc3280f33710a7c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
