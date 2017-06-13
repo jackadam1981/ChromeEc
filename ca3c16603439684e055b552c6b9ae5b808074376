@@ -46,6 +46,30 @@
       "revId": "ca3c16603439684e055b552c6b9ae5b808074376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f571a960_efb04ccd",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T16:13:59Z",
+      "side": 1,
+      "message": "at this point, the value in NVRAM should be either RESET_FLAG_AP_OFF or 0 ?\n(as per system_check_reset_cause)\nso no need to read/modify/write, just write ?",
+      "parentUuid": "59b5c05f_655ca602",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "ca3c16603439684e055b552c6b9ae5b808074376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
