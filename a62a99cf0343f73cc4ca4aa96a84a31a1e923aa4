@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "082b6b08_8a4621b4",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T13:29:09Z",
+      "side": 1,
+      "message": "this is kind of overengineering in board code where you know that the unique id is 96 bits...",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 2
+      },
+      "revId": "a62a99cf0343f73cc4ca4aa96a84a31a1e923aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
