@@ -242,6 +242,11 @@ static void set_initial_pwrbtn_state(void)
 		pwrbtn_state == PWRBTN_STATE_INIT_ON ? "init-on" : "idle");
 }
 
+__attribute__((weak)) timestamp_t get_time_dsw_pwrok(void)
+{
+	return (timestamp_t)0ull;
+}
+
 /**
  * Power button state machine.
  *
@@ -321,6 +326,18 @@ static void state_machine(uint64_t tnow)
 		 * battery is handled inside set_pwrbtn_to_pch().
 		 */
 		chipset_exit_hard_off();
+#ifdef CONFIG_DSW_PWROK_TO_PWRBTN
+		/*
+		 * Wait for tPCH43 (see Platform Sequencing parameters Table,
+		 * Note 28 of Kaby Lake PDG).
+		 */
+		if (get_time().val - get_time_dsw_pwrok().val <
+				CONFIG_DSW_PWROK_TO_PWRBTN) {
+			tnext_state = CONFIG_DSW_PWROK_TO_PWRBTN;
+			break;
+		}
+#endif
+
 		set_pwrbtn_to_pch(0, 1);
 		tnext_state = get_time().val + PWRBTN_INITIAL_US;
 

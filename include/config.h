@@ -1824,6 +1824,11 @@
 /* Set power button state idle at init */
 #undef CONFIG_POWER_BUTTON_INIT_IDLE
 
+/* The time in msec required between DSW_PWROK and PWRBTN assertion.
+ * Refer to the timing diagram for G3 to S0 on Sky Lake or Kaby Lake
+ * platform design guide for details. */
+#undef CONFIG_DSW_PWROK_TO_PWRBTN
+
 /* Compile common code for AP power state machine */
 #undef CONFIG_POWER_COMMON
 
