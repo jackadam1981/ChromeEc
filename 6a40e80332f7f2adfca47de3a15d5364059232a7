@@ -39,6 +39,30 @@
       "revId": "6a40e80332f7f2adfca47de3a15d5364059232a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a90a775f_68326ee4",
+        "filename": "common/rollback.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-13T09:29:41Z",
+      "side": 1,
+      "message": "well, data is on the stack, and rollback is read using flash_read (but, yes, on STM32 flash is memory-mapped, so we could use a pointer... I guess that\u0027s a problem with code being too generic...)",
+      "parentUuid": "b43eaf53_74eaddb3",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 50
+      },
+      "revId": "6a40e80332f7f2adfca47de3a15d5364059232a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
