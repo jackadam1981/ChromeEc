@@ -7,12 +7,14 @@
 #include "common.h"
 #include "console.h"
 #include "consumer.h"
+#include "curve25519.h"
 #include "extension.h"
 #include "flash.h"
 #include "queue_policies.h"
 #include "host_command.h"
 #include "rollback.h"
 #include "rwsig.h"
+#include "sha256.h"
 #include "system.h"
 #include "update_fw.h"
 #include "usb-stream.h"
@@ -77,6 +79,61 @@ static uint8_t block_buffer[sizeof(struct update_command) +
 			    CONFIG_UPDATE_PDU_SIZE];
 static uint32_t block_size;
 static uint32_t block_index;
+
+#ifdef CONFIG_USB_PAIRING
+#define KEY_CONTEXT "device-identity"
+
+static int pair_challenge(struct pair_challenge *challenge)
+{
+	uint8_t response;
+
+	/* Scratchpad for device secret and x25519 public/shared key. */
+	uint8_t tmp[32];
+	BUILD_ASSERT(sizeof(tmp) >= X25519_PUBLIC_VALUE_LEN);
+	BUILD_ASSERT(sizeof(tmp) >= X25519_PRIVATE_KEY_LEN);
+	BUILD_ASSERT(sizeof(tmp) >= CONFIG_ROLLBACK_SECRET_SIZE);
+
+	/* Scratchpad for device_private and authenticator. */
+	uint8_t tmp2[32];
+	BUILD_ASSERT(sizeof(tmp2) >= X25519_PRIVATE_KEY_LEN);
+	BUILD_ASSERT(sizeof(tmp2) >= SHA256_DIGEST_SIZE);
+
+	/* tmp = device_secret */
+	if (rollback_get_secret(tmp) != EC_SUCCESS) {
+		response = EC_RES_UNAVAILABLE;
+		QUEUE_ADD_UNITS(&update_to_usb, &response, sizeof(response));
+		return 1;
+	}
+
+	/*
+	 * Nothing can fail from now on, let's push data to the queue as soon as
+	 * possible to save some temporary variables.
+	 */
+	response = EC_RES_SUCCESS;
+	QUEUE_ADD_UNITS(&update_to_usb, &response, sizeof(response));
+
+	/*
+	 * tmp2 = device_private
+	 *      = HMAC_SHA256(device_secret, "device-identity")
+	 */
+	hmac_SHA256(tmp2, tmp, CONFIG_ROLLBACK_SECRET_SIZE,
+		    KEY_CONTEXT, sizeof(KEY_CONTEXT)-1);
+
+	/* tmp = device_public = x25519(device_private, x25519_base_point) */
+	X25519_public_from_private(tmp, tmp2);
+	QUEUE_ADD_UNITS(&update_to_usb, tmp, sizeof(tmp));
+
+	/* tmp = shared_secret = x25519(device_private, host_public) */
+	X25519(tmp, tmp2, challenge->host_public);
+
+	/* tmp2 = authenticator = HMAC_SHA256(shared_secret, nonce) */
+	hmac_SHA256(tmp2, tmp, sizeof(tmp),
+		    challenge->nonce, sizeof(challenge->nonce));
+	QUEUE_ADD_UNITS(&update_to_usb, tmp2,
+		member_size(struct pair_challenge_response, authenticator));
+	return 1;
+}
+#endif
 
 /*
  * Fetches a transfer start frame from the queue. This can be either an update
@@ -223,6 +280,22 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 			rollback_add_entropy(buffer + header_size,
 					     entropy_count);
 			break;
+		}
+#endif /* CONFIG_ROLLBACK_UPDATE */
+#ifdef CONFIG_USB_PAIRING
+		case UPDATE_EXTRA_CMD_PAIR_CHALLENGE: {
+			int header_size = sizeof(*cmd_buffer) + 2;
+			int data_count = count - header_size;
+
+			if (data_count < sizeof(struct pair_challenge)) {
+				CPRINTS("Challenge data too short");
+				response = EC_RES_INVALID_PARAM;
+				break;
+			}
+
+			/* pair_challenge takes care of answering */
+			return pair_challenge((struct pair_challenge *)
+						(buffer + header_size));
 		}
 #endif
 #endif /* CONFIG_ROLLBACK_SECRET_SIZE */
