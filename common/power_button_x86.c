@@ -21,6 +21,10 @@
 #include "timer.h"
 #include "util.h"
 
+#ifdef CONFIG_CHIPSET_SKYLAKE
+#include "skylake.h"
+#endif
+
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_SWITCH, outstr)
 #define CPRINTS(format, args...) cprints(CC_SWITCH, format, ## args)
@@ -321,6 +325,16 @@ static void state_machine(uint64_t tnow)
 		 * battery is handled inside set_pwrbtn_to_pch().
 		 */
 		chipset_exit_hard_off();
+#ifdef CONFIG_DELAY_DSW_PWROK_TO_PWRBTN
+		/* Check if power button is ready. If not, we'll come back. */
+		if (get_time().val - get_time_dsw_pwrok() <
+				DSW_PWROK_TO_PWRBTN_US) {
+			tnext_state = get_time_dsw_pwrok() +
+					DSW_PWROK_TO_PWRBTN_US;
+			break;
+		}
+#endif
+
 		set_pwrbtn_to_pch(0, 1);
 		tnext_state = get_time().val + PWRBTN_INITIAL_US;
 
