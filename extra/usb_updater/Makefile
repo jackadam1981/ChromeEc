@@ -37,7 +37,9 @@ LIBS_g  = $(shell $(PKG_CONFIG) --libs   libcrypto)
 CFLAGS_g = $(shell $(PKG_CONFIG) --cflags libcrypto)
 CFLAGS_g  += -I../../board/$(BOARD) -I ../../chip/g
 
-LIBS_common  = -lfmap
+LIBS_common  = $(shell $(PKG_CONFIG) --libs libboringcrypto)
+CFLAGS_common = $(shell $(PKG_CONFIG) --cflags libboringcrypto)
+LIBS_common  += -lfmap
 
 all: $(PROGRAMS)
 
@@ -47,7 +49,7 @@ usb_updater: usb_updater.c Makefile
 
 # common EC code USB updater
 usb_updater2: usb_updater2.c Makefile
-	$(CC) $(CFLAGS) $< $(LFLAGS) $(LIBS) $(LIBS_common) -o $@
+	$(CC) $(CFLAGS) $(CFLAGS_common) $< $(LFLAGS) $(LIBS) $(LIBS_common) -o $@
 
 .PHONY: clean
 
