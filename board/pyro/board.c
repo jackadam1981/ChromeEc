@@ -313,11 +313,14 @@ void board_reset_pd_mcu(void)
 	/* Assert reset to TCPC0 */
 	board_set_tcpc_power_mode(0, 0);
 
+	/* TCPC1 (ps8751) requires 1ms reset down assertion */
+	msleep(1);
+
 	/* Deassert reset to TCPC1 */
 	gpio_set_level(GPIO_USB_C1_PD_RST_ODL, 1);
 
 	/* TCPC0 requires 10ms reset/power down assertion */
-	msleep(10);
+	msleep(10-1);
 
 	/* Deassert reset to TCPC0 */
 	board_set_tcpc_power_mode(0, 1);
