@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12869fd4_0f5d870a",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-13T17:13:56Z",
+      "side": 1,
+      "message": "why not have two separate flags, one for wake rising and one for wake falling, and then consider the pin not a wake source if none of the 4 flags is set?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
