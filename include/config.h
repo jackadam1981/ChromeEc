@@ -2755,6 +2755,9 @@
 /* A different config for the same update. TODO(vbendeb): dedup these */
 #undef CONFIG_USB_UPDATE
 
+/* Add support for pairing over the USB update interface. */
+#undef CONFIG_USB_PAIRING
+
 /* PDU size for fw update over USB (or TPM). */
 #define CONFIG_UPDATE_PDU_SIZE 1024
 
