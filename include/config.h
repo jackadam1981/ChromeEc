@@ -1848,6 +1848,13 @@
 /* Set power button state idle at init */
 #undef CONFIG_POWER_BUTTON_INIT_IDLE
 
+/*
+ * Enable delay between DSW_PWROK and PWRBTN assertion.
+ * If enabled, DSW_PWROK_TO_PWRBTN_US and get_time_dsw_pwrok must be defined
+ * as well.
+ */
+#undef CONFIG_DELAY_DSW_PWROK_TO_PWRBTN
+
 /* Compile common code for AP power state machine */
 #undef CONFIG_POWER_COMMON
 
