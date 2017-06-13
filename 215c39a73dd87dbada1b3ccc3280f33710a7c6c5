@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8388522b_428eb47d",
+        "filename": "common/sha256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-13T10:53:42Z",
+      "side": 1,
+      "message": "Right... Created a specialized SHA256_init_1b function that removes the copy, and is more efficient at taking in the first block.\n\nThis wastes 140 bytes of flash space though:\nBase version:\n0000a52c a __hey_flash_used\n\nUsing SHA256_init_1b:\n0000a5b8 a __hey_flash_used",
+      "parentUuid": "84bfa8c2_6843323d",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 36
+      },
+      "revId": "215c39a73dd87dbada1b3ccc3280f33710a7c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5621f759_d8c8226e",
         "filename": "common/sha256.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "35b269a8_5f7effda",
+        "filename": "common/sha256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-13T10:53:42Z",
+      "side": 1,
+      "message": "Indeed, helps recover to\n0000a558 a __hey_flash_used\n\n(so 44 bytes more flash, but we saved 64 bytes of stack).",
+      "parentUuid": "5621f759_d8c8226e",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 26
+      },
+      "revId": "215c39a73dd87dbada1b3ccc3280f33710a7c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a1d52e6_ee25558c",
         "filename": "test/sha256.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-06-13T09:06:45Z",
       "side": 1,
       "message": "this is better than the current lack of test,\nbut copying a few/all of the NIST SHA256 test vectors seems even better.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 2
+      },
+      "revId": "215c39a73dd87dbada1b3ccc3280f33710a7c6c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a77a3a9a_6969d174",
+        "filename": "test/sha256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-13T10:53:42Z",
+      "side": 1,
+      "message": "Good point, NIST sounds better than Wikipedia ,-)) I copied a few selected NIST test vectors.",
+      "parentUuid": "6a1d52e6_ee25558c",
       "range": {
         "startLine": 14,
         "startChar": 0,
