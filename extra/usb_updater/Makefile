@@ -31,13 +31,14 @@ endif
 LIBS    += $(shell $(PKG_CONFIG) --libs   libusb-1.0)
 CFLAGS  += $(shell $(PKG_CONFIG) --cflags libusb-1.0)
 CFLAGS  += -I../../include -I../../util -I../../test
+LIBS_common  = $(shell $(PKG_CONFIG) --libs   openssl)
+CFLAGS_common = $(shell $(PKG_CONFIG) --cflags openssl)
+LIBS_common  += -lfmap
 
 BOARD ?= cr50
 LIBS_g  = $(shell $(PKG_CONFIG) --libs   libcrypto)
 CFLAGS_g = $(shell $(PKG_CONFIG) --cflags libcrypto)
 CFLAGS_g  += -I../../board/$(BOARD) -I ../../chip/g
-
-LIBS_common  = -lfmap
 
 all: $(PROGRAMS)
 
@@ -46,8 +47,14 @@ usb_updater: usb_updater.c Makefile
 	$(CC) $(CFLAGS) $(CFLAGS_g) $< $(LFLAGS) $(LIBS) $(LIBS_g) -o $@
 
 # common EC code USB updater
-usb_updater2: usb_updater2.c Makefile
-	$(CC) $(CFLAGS) $< $(LFLAGS) $(LIBS) $(LIBS_common) -o $@
+curve25519.o: curve25519.c Makefile
+	$(CC) $(CFLAGS) $(CFLAGS_common) -c $< $(LFLAGS) $(LIBS) $(LIBS_common) -o $@
+
+usb_updater2.o: usb_updater2.c Makefile
+	$(CC) $(CFLAGS) $(CFLAGS_common) -c $< $(LFLAGS) $(LIBS) $(LIBS_common) -o $@
+
+usb_updater2: usb_updater2.o curve25519.o Makefile
+	$(CC) $(CFLAGS) $(CFLAGS_common) usb_updater2.o curve25519.o $(LFLAGS) $(LIBS) $(LIBS_common) -o $@
 
 .PHONY: clean
 
