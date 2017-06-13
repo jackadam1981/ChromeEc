@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49c7bee1_96b1ef67",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-13T15:14:16Z",
+      "side": 1,
+      "message": "you are basically undoing what system_check_reset_cause() did below (ie erasing all other reset flags from NVRAM)\nAre both actions correct ?",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "ca3c16603439684e055b552c6b9ae5b808074376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
