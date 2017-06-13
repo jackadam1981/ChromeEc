@@ -70,6 +70,30 @@
       "revId": "716db3e803ffc4af62e30c5f9664f0e3e288923a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcc7617f_9fa0053f",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-13T21:28:09Z",
+      "side": 1,
+      "message": "Thanks for the pointer. I have updated the code to save following data:\n\nMMFS, HFSR, DFSR, LREG1(exception), LREG3(reason), LREG4(info)",
+      "parentUuid": "cdef8917_5c3e6935",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 70
+      },
+      "revId": "716db3e803ffc4af62e30c5f9664f0e3e288923a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
