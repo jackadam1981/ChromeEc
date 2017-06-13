@@ -34,6 +34,12 @@
 #define CHARGER_INITIALIZED_TRIES 40
 
 /*
+ * The time in usec required for PMC to be ready to detect power button press.
+ * Refer to the timing diagram for G3 to S0 on PDG for details.
+ */
+#define DSW_PWROK_TO_PWRBTN_US (95 * MSEC)
+
+/*
  * Board can define this function to indicate to the skylake
  * power code that it does not have working reset flags.
  */

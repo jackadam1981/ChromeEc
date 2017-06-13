@@ -9,6 +9,7 @@
 #define __CROS_EC_POWER_BUTTON_H
 
 #include "common.h"
+#include "timer.h"
 
 /**
  * Return non-zero if power button is pressed.
@@ -53,5 +54,13 @@ void power_button_pch_release(void);
  * For x86 systems, force a pulse of the power button signal to the PCH.
  */
 void power_button_pch_pulse(void);
+
+/**
+ * Returns the time when DSW_PWROK was asserted. It should be customized
+ * by each board. See CONFIG_DELAY_DSW_PWROK_TO_PWRBTN for details.
+ *
+ * @return time in usec when DSW_PWROK was asserted.
+ */
+int64_t get_time_dsw_pwrok(void);
 
 #endif  /* __CROS_EC_POWER_BUTTON_H */
