@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6a4dc55e_0b1eeaaf",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-14T22:30:21Z",
+      "side": 1,
+      "message": "get_time_dsw_pwrok should return -20 msec on Fizz because there is 20 msec lag between dsw_pwrok and the time EC\u0027s timer starts. Some boards may enable dsw_pwrok using a GPIO pin. Then the value should be positive. For Fizz, since DSW_PWROK is connected to EC\u0027s VCC1, the value is negative.\n\nShould I convert the return type to signed int? Then, we can support both cases.",
+      "parentUuid": "b7c07c25_25ded37b",
+      "revId": "df738741ff59fcce2bbbcb20969f4076efdb79ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ce4f6f7_9de3ae5b",
         "filename": "common/power_button_x86.c",
         "patchSetId": 4
