@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "da7cc74c_4c5f8f66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-14T19:46:46Z",
+      "side": 1,
+      "message": "I want to have a separate function because charge_prevent_power_on takes future power budget into account:\n\n/*\n * Allow power-on if our charger advertises more than\n * LIKELY_PD_USBC_POWER_MW since it may speak PD and provide\n * sufficient power once we enable PD communication.\n */\nif (charge_manager_get_power_limit_uw() \u003e\u003d\n\t\t    MIN(LIKELY_PD_USBC_POWER_MW * 1000,\n\t\t\tCONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000))\n\t\t\tprevent_power_on \u003d 0;\n\nwhile system_can_boot_ap needs yes or no based on the current budget. (Even so, charge_prevent_power_on looks wrong... I don\u0027t understand why the current power limit is compared against LIKELY_PD_USBC_POWER_MW, which is 15W.)",
+      "parentUuid": "167f67af_b5eeb0f5",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 60
+      },
+      "revId": "ce3597ca612a4df0993502041e57b26c42a76f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c63db3e8_9dfdc040",
         "filename": "common/system.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-02T13:51:56Z",
       "side": 1,
       "message": "the current condition in charge_prevent_power_on() looks more complicated than this.",
+      "range": {
+        "startLine": 1303,
+        "startChar": 4,
+        "endLine": 1304,
+        "endChar": 56
+      },
+      "revId": "ce3597ca612a4df0993502041e57b26c42a76f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84569133_68d0ebb5",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-14T19:46:46Z",
+      "side": 1,
+      "message": "charge_prevent_power_on tries to talk to the battery over i2c if is_present \u003d\u003d BP_NOT_SURE while system_can_boot_ap always talks to the battery.\n\ncharge_prevent_power_on checks battery presence by is_present \u003d\u003d BP_YES while system_can_boot_ap uses the return value from i2c access. \n\ncharge_prevent_power_on also checks whether power button is pressed or not and whether system is locked or not but system_can_boot_ap has to answer consistently regardless these conditions.",
+      "parentUuid": "c63db3e8_9dfdc040",
       "range": {
         "startLine": 1303,
         "startChar": 4,
@@ -68,6 +116,30 @@
       "revId": "ce3597ca612a4df0993502041e57b26c42a76f78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd553a83_bc7e0d57",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-14T19:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d54ef170_a330a06a",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 29
+      },
+      "revId": "ce3597ca612a4df0993502041e57b26c42a76f78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
