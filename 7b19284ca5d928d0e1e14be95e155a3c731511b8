@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f22f34c_e9bc840c",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-14T15:41:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "895af461_17f26ffe",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 71
+      },
+      "revId": "7b19284ca5d928d0e1e14be95e155a3c731511b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c530c422_2eac43c9",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-14T06:55:08Z",
       "side": 1,
       "message": "if you need it for all KBL, we have a config less easy to forget",
+      "range": {
+        "startLine": 1826,
+        "startChar": 0,
+        "endLine": 1828,
+        "endChar": 33
+      },
+      "revId": "7b19284ca5d928d0e1e14be95e155a3c731511b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1ecf38_10fb75ab",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1828,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-14T15:41:33Z",
+      "side": 1,
+      "message": "Which config are you talking about? This is a new config variable as far as I know... Or are you suggesting it have KBL or SKL?",
+      "parentUuid": "c530c422_2eac43c9",
       "range": {
         "startLine": 1826,
         "startChar": 0,
