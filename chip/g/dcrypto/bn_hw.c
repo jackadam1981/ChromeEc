@@ -1152,6 +1152,8 @@ void bn_mont_modexp_asm(struct LITE_BIGNUM *output,
 	memcpy(output->d, montmul->out, bn_size(output));
 
 	(void) (result == 0); /* end of errorcode propagation */
+
+	dcrypto_exit();
 }
 
 /*
@@ -1255,6 +1257,7 @@ int dcrypto_p256_ecdsa_sign(const p256_int *key, const p256_int *message,
 	cp8w(&pEcc->d, &pEcc->rnd);
 	cp8w(&pEcc->k, &pEcc->rnd);
 
+	dcrypto_exit();
 	return result == 0;
 }
 
@@ -1280,6 +1283,7 @@ int dcrypto_p256_base_point_mul(const p256_int *k, p256_int *x, p256_int *y)
 	/* Wipe d */
 	cp8w(&pEcc->d, &pEcc->rnd);
 
+	dcrypto_exit();
 	return result == 0;
 }
 
@@ -1311,6 +1315,7 @@ int dcrypto_p256_point_mul(const p256_int *k,
 	cp8w(&pEcc->x, &pEcc->rnd);
 	cp8w(&pEcc->y, &pEcc->rnd);
 
+	dcrypto_exit();
 	return result == 0;
 }
 
@@ -1336,6 +1341,7 @@ int dcrypto_p256_ecdsa_verify(const p256_int *key_x, const p256_int *key_y,
 	for (i = 0; i < 8; ++i)
 		result |= (pEcc->rnd.a[i] ^ r->a[i]);
 
+	dcrypto_exit();
 	return result == 0;
 }
 
@@ -1356,5 +1362,6 @@ int dcrypto_p256_is_valid_point(const p256_int *x, const p256_int *y)
 	for (i = 0; i < 8; ++i)
 		result |= (pEcc->r.a[i] ^ pEcc->s.a[i]);
 
+	dcrypto_exit();
 	return result == 0;
 }

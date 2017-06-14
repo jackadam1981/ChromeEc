@@ -111,8 +111,13 @@ int dcrypto_p256_is_valid_point(const p256_int *x, const p256_int *y)
 
 /*
  * Runtime.
+ *
+ * Note dcrypto_init grabs a mutex and dcrypto_exit releases it. Must pair up!
+ * Do not use dcrypto_call, dcrypto_imem_load or dcrypto_dmem_load w/o holding
+ * the mutex.
  */
 void dcrypto_init(void);
+void dcrypto_exit(void);
 uint32_t dcrypto_call(uint32_t adr) __attribute__((warn_unused_result));
 void dcrypto_imem_load(size_t offset, const uint32_t *opcodes,
 		       size_t n_opcodes);
