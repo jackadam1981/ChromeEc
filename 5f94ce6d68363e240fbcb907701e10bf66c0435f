@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e742ce5b_72e6c31c",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-06-14T03:41:05Z",
+      "side": 1,
+      "message": "Side note: This is also the \"device identifier\" we\u0027ll need to surface to Chrome.",
+      "range": {
+        "startLine": 880,
+        "startChar": 9,
+        "endLine": 880,
+        "endChar": 26
+      },
+      "revId": "5f94ce6d68363e240fbcb907701e10bf66c0435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60227805_6eab0d1a",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-06-14T03:41:05Z",
+      "side": 1,
+      "message": "make a hexdump() utility function for this?",
+      "range": {
+        "startLine": 880,
+        "startChar": 0,
+        "endLine": 886,
+        "endChar": 0
+      },
+      "revId": "5f94ce6d68363e240fbcb907701e10bf66c0435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
