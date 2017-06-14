@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "eb5c19aa_efb6868d",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-14T21:37:00Z",
+      "side": 1,
+      "message": "I think it\u0027s actually the time needed for PMC to initialize and detect power button assertion. Not that power button has to be pressed.",
+      "parentUuid": "a49c3ec5_a8931b18",
+      "revId": "0af430455fc78dbf6da736408fa2b605983d3ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3849ea09_6609e1c6",
         "filename": "common/power_button_x86.c",
         "patchSetId": 2
