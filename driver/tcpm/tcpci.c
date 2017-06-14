@@ -44,6 +44,10 @@ static int init_alert_mask(int port)
 	return tcpc_write16(port, TCPC_REG_ALERT_MASK, mask);
 }
 
+/*
+ * Disable alerts.
+ */
+
 static int clear_alert_mask(int port)
 {
 	return tcpc_write16(port, TCPC_REG_ALERT_MASK, 0);
@@ -64,9 +68,28 @@ static int init_power_status_mask(int port)
 	return rv;
 }
 
+/*
+ * Disable power status alerts.
+ */
+
 static int clear_power_status_mask(int port)
 {
 	return tcpc_write(port, TCPC_REG_POWER_STATUS_MASK , 0);
+}
+
+static int init_fault_status_mask(int port)
+{
+	/* 0x7f is the chip default */
+	return tcpc_write(port, TCPC_REG_FAULT_STATUS_MASK , 0x7f);
+}
+
+/*
+ * Disable fault status alerts.
+ */
+
+static int clear_fault_status_mask(int port)
+{
+	return tcpc_write(port, TCPC_REG_FAULT_STATUS_MASK , 0);
 }
 
 int tcpci_tcpm_get_cc(int port, int *cc1, int *cc2)
@@ -440,9 +463,12 @@ int tcpci_tcpm_init(int port)
 		msleep(10);
 	}
 
+	/* Clear pending interrupts */
 	tcpc_write16(port, TCPC_REG_ALERT, 0xffff);
 	/* Initialize power_status_mask */
 	init_power_status_mask(port);
+	/* Initialize fault_status_mask */
+	init_fault_status_mask(port);
 	/* Update VBUS status */
 	tcpc_vbus[port] = power_status &
 			TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
@@ -471,6 +497,9 @@ int tcpci_tcpm_release(int port)
 	if (error)
 		return error;
 	error = clear_power_status_mask(port);
+	if (error)
+		return error;
+	error = clear_fault_status_mask(port);
 	if (error)
 		return error;
 	/* Clear pending interrupts */
