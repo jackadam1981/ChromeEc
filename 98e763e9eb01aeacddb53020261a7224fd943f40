@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87e5ff69_9541c3e7",
+        "filename": "common/usb_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-06-14T03:29:40Z",
+      "side": 1,
+      "message": "nit: spaces around operator",
+      "range": {
+        "startLine": 120,
+        "startChar": 38,
+        "endLine": 120,
+        "endChar": 39
+      },
+      "revId": "98e763e9eb01aeacddb53020261a7224fd943f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152ed856_9b409cf9",
+        "filename": "common/usb_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-06-14T03:29:40Z",
+      "side": 1,
+      "message": "What is this magic number? The subcommand? It\u0027d probably make sense to add a local variable for data pointer and data size for clarity (in particular that this is now duplicated in two branches).",
+      "range": {
+        "startLine": 287,
+        "startChar": 43,
+        "endLine": 287,
+        "endChar": 44
+      },
+      "revId": "98e763e9eb01aeacddb53020261a7224fd943f40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
