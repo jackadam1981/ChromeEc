@@ -452,13 +452,31 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	return EC_SUCCESS;
 }
 
-static int init(const struct motion_sensor_t *s)
+static int software_reset(const struct motion_sensor_t *s)
 {
 	int ret, val, reg, reset_field;
 	uint8_t timeout;
 
+	if (!V(s)) {
+		reg = KX022_INTERNAL;
+		ret = raw_write8(s->port, s->addr, reg, 0x0);
+		if (ret != EC_SUCCESS)
+			return ret;
+
+		reg = KIONIX_CTRL2_REG(V(s));
+		ret = raw_write8(s->port, s->addr, reg, 0x0);
+		if (ret != EC_SUCCESS)
+			return ret;
+
+		reset_field = KIONIX_RESET_FIELD(V(s));
+		ret = raw_write8(s->port, s->addr, reg, reset_field);
+		if (ret != EC_SUCCESS)
+			return ret;
+
+		msleep(2);
+	}
+
 	/* The chip can take up to 10ms to boot */
-	mutex_lock(s->mutex);
 	reg = KIONIX_WHO_AM_I(V(s));
 	timeout = 0;
 	do {
@@ -474,6 +492,25 @@ static int init(const struct motion_sensor_t *s)
 			break;
 		}
 	} while (1);
+
+	if (!V(s)) {
+		reg = KX022_COTR;
+		ret = raw_read8(s->port, s->addr, reg, &val);
+		if (val != 0x55)
+			ret = EC_ERROR_HW_INTERNAL;
+	}
+
+	return ret;
+}
+
+static int init(const struct motion_sensor_t *s)
+{
+	int ret, val, reg, reset_field;
+	uint8_t timeout;
+
+	mutex_lock(s->mutex);
+	/* Issue a software reset */
+	ret = software_reset(s);
 	if (ret != EC_SUCCESS) {
 		mutex_unlock(s->mutex);
 		return ret;
