@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "44db0c44_86671289",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-14T15:40:52Z",
+      "side": 1,
+      "message": "Good point.\nParticularly with deep sleep else there is seldom request in this timeframe.\n\nActually re-shuffling the condition should do the trick ?\nint recent \u003d (get_time().val - PRESENCE_TIMEOUT) \u003c last_press.val;\n\nThere is",
+      "parentUuid": "532ec5e4_60ff2d2d",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9fee860b_09508ec9",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 11
@@ -53,6 +77,30 @@
       "writtenOn": "2017-06-13T20:04:11Z",
       "side": 1,
       "message": "why do you keep these in the function scope, can they be const static at file scope so that they can be reused in load_state() below?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 45
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2dac27c_8bc006ca",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-14T15:40:52Z",
+      "side": 1,
+      "message": "Sure, I will fix it.",
+      "parentUuid": "9fee860b_09508ec9",
       "range": {
         "startLine": 64,
         "startChar": 0,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "25c2342f_1c71cfed",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-14T15:40:52Z",
+      "side": 1,
+      "message": "will update",
+      "parentUuid": "97ee5a26_53db460b",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 23
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd5e5613_67f5fe8d",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 11
@@ -99,6 +171,30 @@
       "writtenOn": "2017-06-13T20:04:11Z",
       "side": 1,
       "message": "I think this function belongs in chip/g/system.c, it is partially implemented there, could be refactored.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 36
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90663778_fd414788",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-14T15:40:52Z",
+      "side": 1,
+      "message": "You mean building the whole serial number ? just the chip category ? just the key id ?",
+      "parentUuid": "fd5e5613_67f5fe8d",
       "range": {
         "startLine": 206,
         "startChar": 0,
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "634c3612_7fd24186",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-14T15:40:52Z",
+      "side": 1,
+      "message": "Actually it is as this is on the stack.",
+      "parentUuid": "0c8ed0d6_4045fb0f",
+      "range": {
+        "startLine": 209,
+        "startChar": 20,
+        "endLine": 209,
+        "endChar": 21
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb18d7af_da4c5cae",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 11
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "8da5d378_256dd2cc",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-14T15:40:52Z",
+      "side": 1,
+      "message": "for the same reason as other places in the EC code-base, avoid random allocation failure at runtime / verify at build-time the memory allocation.",
+      "parentUuid": "bb18d7af_da4c5cae",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 41
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cce57fc0_27d88b9d",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 11
@@ -168,6 +312,30 @@
       "writtenOn": "2017-06-13T20:04:11Z",
       "side": 1,
       "message": "could you reuse \u0027body\u0027 as the destination space by any chance?",
+      "range": {
+        "startLine": 250,
+        "startChar": 56,
+        "endLine": 250,
+        "endChar": 66
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3612bfbd_92506b9d",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-14T15:40:52Z",
+      "side": 1,
+      "message": "with the current U2F code: no as we still read the input parameters while filling the response buffer.\nI can try to move around things to allow this, I didn\u0027t do it originally because it\u0027s a bit error-prone (ie if you read the request after doing some writes, you might be confused about the content).\nMaybe this is too wasteful, I will change it.",
+      "parentUuid": "cce57fc0_27d88b9d",
       "range": {
         "startLine": 250,
         "startChar": 56,
