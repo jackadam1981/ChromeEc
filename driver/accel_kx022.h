@@ -14,6 +14,7 @@
  */
 #define KX022_ADDR0		0x3c
 #define KX022_ADDR1		0x3e
+#define KX022_WHO_AM_I_VAL	0x14
 
 /* Chip-specific registers */
 #define KX022_XHP_L		0x00
@@ -29,6 +30,8 @@
 #define KX022_ZOUT_L		0x0a
 #define KX022_ZOUT_H		0x0b
 #define KX022_COTR		0x0c
+#define KX022_COTR_VAL_COTC	0xAA
+#define KX022_COTR_VAL_DEFAULT	0x55
 #define KX022_WHOAMI		0x0f
 #define KX022_TSCP		0x10
 #define KX022_TSPP		0x11
@@ -69,6 +72,7 @@
 #define KX022_BUF_CLEAR	0x3e
 #define KX022_BUF_READ		0x3f
 #define KX022_SELF_TEST	0x60
+#define KX022_INTERNAL		0x7f
 
 
 #define KX022_CNTL1_PC1		(1 << 7)
