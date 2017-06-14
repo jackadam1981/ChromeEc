@@ -23,6 +23,8 @@ static int tcpc_vbus[CONFIG_USB_PD_PORT_COUNT];
 /* Save the selected rp value */
 static int selected_rp[CONFIG_USB_PD_PORT_COUNT];
 
+static int tcpci_initialized[CONFIG_USB_PD_PORT_COUNT];
+
 static int init_alert_mask(int port)
 {
 	uint16_t mask;
@@ -274,6 +276,14 @@ void tcpci_tcpc_alert(int port)
 {
 	int status;
 
+	if (!tcpci_initialized[port]) {
+		/*
+		 * if we have not initialized the port or we've
+		 * shut it down (PD_SUSPEND), don't access the chip
+		 */
+		return;
+	}
+
 	/* Read the Alert register from the TCPC */
 	tcpm_alert_status(port, &status);
 
@@ -443,6 +453,7 @@ int tcpci_tcpm_init(int port)
 	/* Read chip info here when we know the chip is awake. */
 	tcpm_get_chip_info(port, 1, NULL);
 
+	tcpci_initialized[port] = 1;
 	return EC_SUCCESS;
 }
 
@@ -453,6 +464,8 @@ int tcpci_tcpm_init(int port)
 int tcpci_tcpm_release(int port)
 {
 	int error;
+
+	tcpci_initialized[port] = 0;
 
 	error = clear_alert_mask(port);
 	if (error)
