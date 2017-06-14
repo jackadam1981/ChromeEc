@@ -70,6 +70,7 @@
 #define KX022_BUF_CLEAR	0x3e
 #define KX022_BUF_READ		0x3f
 #define KX022_SELF_TEST	0x60
+#define KX022_INTERNAL		0x7f
 
 
 #define KX022_CNTL1_PC1		(1 << 7)
