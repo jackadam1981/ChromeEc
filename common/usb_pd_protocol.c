@@ -114,6 +114,8 @@ static struct pd_protocol {
 	uint8_t msg_id;
 	/* Port polarity : 0 => CC1 is CC line, 1 => CC2 is CC line */
 	uint8_t polarity;
+	/* pd_task initialized? (bool) */
+	uint8_t pd_task_initialized;
 	/* pd_task in PD_STATE_SUSPENDED? (bool) */
 	uint8_t pd_suspended;
 	/* PD state for port */
@@ -1660,6 +1662,7 @@ void pd_task(void)
 #endif
 
 	CPRINTS("TCPC p%d init %s", port, res ? "failed" : "ready");
+
 	this_state = res ? PD_STATE_SUSPENDED : PD_DEFAULT_STATE;
 #ifndef CONFIG_USB_PD_TCPC
 	if (!res) {
@@ -1708,6 +1711,8 @@ void pd_task(void)
 	typec_set_input_current_limit(port, 0, 0);
 	charge_manager_update_dualrole(port, CAP_UNKNOWN);
 #endif
+
+	pd[port].pd_task_initialized = 1;
 
 	while (1) {
 		/* process VDM messages last */
@@ -3087,6 +3092,11 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dual_role_force_sink, HOOK_PRIO_DEFAULT);
 void pd_set_suspend(int port, int enable)
 {
 	int tries = 100;
+
+	while (!pd[port].pd_task_initialized && --tries > 0) {
+		task_wake(PD_PORT_TO_TASK_ID(port));
+		msleep(1);
+	}
 
 	if (enable) {
 		while (!pd[port].pd_suspended && --tries > 0) {
