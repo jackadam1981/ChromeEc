@@ -94,6 +94,30 @@
       "revId": "716db3e803ffc4af62e30c5f9664f0e3e288923a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d068631_82a96d5d",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-14T13:07:20Z",
+      "side": 1,
+      "message": "As mentioned in my previous comment, IMO DFSR is totally useless (unless you have a JTAG probe connected) while BFAR is a good hint when the clock gating is bad (or we have a messed-up pointer)",
+      "parentUuid": "fcc7617f_9fa0053f",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 70
+      },
+      "revId": "716db3e803ffc4af62e30c5f9664f0e3e288923a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
