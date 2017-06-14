@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8616163c_e558f8b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-14T23:02:20Z",
+      "side": 1,
+      "message": "Missing BRANCH\u003d / BUG\u003d / Sign-off. Did you skip the pre-commit checks?",
+      "revId": "f2de564a8440da8bed6f59a7fc73ac355176e4be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b84b75a8_a7bee423",
+        "filename": "board/nasher/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-14T23:02:20Z",
+      "side": 1,
+      "message": "This is kind of ugly, I would leave this \"9\" and expand the comment above slightly.",
+      "range": {
+        "startLine": 302,
+        "startChar": 8,
+        "endLine": 302,
+        "endChar": 12
+      },
+      "revId": "f2de564a8440da8bed6f59a7fc73ac355176e4be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
