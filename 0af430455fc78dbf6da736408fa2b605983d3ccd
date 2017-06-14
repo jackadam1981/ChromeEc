@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b91b4d68_6de9afcd",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-14T20:48:40Z",
+      "side": 1,
+      "message": "Is this 95msec timeout the pcie delay of 100ms?",
+      "revId": "0af430455fc78dbf6da736408fa2b605983d3ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3849ea09_6609e1c6",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-14T20:48:40Z",
+      "side": 1,
+      "message": "How would the board customize this when all it\u0027s doing is returning 0?",
+      "revId": "0af430455fc78dbf6da736408fa2b605983d3ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
