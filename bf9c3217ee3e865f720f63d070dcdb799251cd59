@@ -175,6 +175,24 @@
       "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e074a95a_1feb53a4",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-14T00:47:26Z",
+      "side": 1,
+      "message": "It\u0027s weird in the sense that usually boards define a list of GPIOs that are their wake pins, and then during init, configure those pins to be so. Having a flag that means \"don\u0027t enable a GPIO as wake pin\" seemed weird, as my first reaction would be to not set it up as a wake pin in the first place.\n\nI guess this is slightly different in that the cr50 board may want to change the wake pins at any time...\n\nWhat do you think about keeping the hibernate enable/disable separate from modifying the GPIO flags? That way, setting a pull up for example, won\u0027t affect the hibernate config.\n\nOr is there something that I\u0027m missing?",
+      "parentUuid": "5b8cd7c4_9288cd70",
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
