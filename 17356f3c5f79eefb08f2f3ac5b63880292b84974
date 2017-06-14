@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71c0ed06_cb8ecf70",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-14T21:07:58Z",
+      "side": 1,
+      "message": "Not sure what you want to do here for the default. You\u0027re assuming a PDO_TYPE will be matched, and that may be a safe assumption. I wouldn\u0027t have bothered with this change, except for the other problem parsing args, which is an actual bug.",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 20
+      },
+      "revId": "17356f3c5f79eefb08f2f3ac5b63880292b84974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
