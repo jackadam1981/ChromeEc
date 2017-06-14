@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "eea19c09_145aa595",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-14T21:44:52Z",
+      "side": 1,
+      "message": "Updated config.h to mention PMC.\n\nYes, it\u0027s required to be 95 msec or longer as described in the CL.",
+      "parentUuid": "eb5c19aa_efb6868d",
+      "revId": "0af430455fc78dbf6da736408fa2b605983d3ccd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3849ea09_6609e1c6",
         "filename": "common/power_button_x86.c",
         "patchSetId": 2
