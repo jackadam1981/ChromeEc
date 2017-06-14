@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "418ff6f2_951e3efb",
+        "filename": "common/usb_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-14T02:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc6123c9_29f81ebc",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 41
+      },
+      "revId": "26ffa734f3f9d59d663bdf4c8309d185b2361dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fa8de89_1222c75a",
         "filename": "include/update_fw.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-13T08:56:07Z",
       "side": 1,
       "message": "why not swapping the last 2 fields, to keep this one aligned ?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 68
+      },
+      "revId": "26ffa734f3f9d59d663bdf4c8309d185b2361dc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26886f1e_e734fd65",
+        "filename": "include/update_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-14T02:12:42Z",
+      "side": 1,
+      "message": "That\u0027s a bit tricky, because we don\u0027t use that structure in pair_challenge (to save some stack size) and sending device_public last would require one more temporary buffer.",
+      "parentUuid": "3fa8de89_1222c75a",
       "range": {
         "startLine": 183,
         "startChar": 0,
