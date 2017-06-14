@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aed5dd64_1c55ce8c",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-14T19:43:19Z",
+      "side": 1,
+      "message": "Coverity reports that this cause an overrun read if bn \u003d [0, 0..., 0], which seems to occur if n \u003d [0, 0..., 0]. Vincent, can you double check it?",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 20
+      },
+      "revId": "4e53e01c2c2a8e07184941f809e23d7330a539e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
