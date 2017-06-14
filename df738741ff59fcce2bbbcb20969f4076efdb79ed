@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f078bdb6_adef2a77",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-14T22:36:59Z",
+      "side": 1,
+      "message": "Well, presumably you\u0027d want to handle both those cases? For whatever reason the 0 return from get_time_dsw_pwrok() and the 75 * MSEC constant seem super bizarre. If your default will be 0 just stop doing the math and just use get_time().val \u003c CONFIG_DSW_PWROK_TO_PWRBTN. Then there\u0027s not double accounting. Or provide a signed value like you noted and use the 95 * MSEC as the spec says?",
+      "parentUuid": "6a4dc55e_0b1eeaaf",
+      "revId": "df738741ff59fcce2bbbcb20969f4076efdb79ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ce4f6f7_9de3ae5b",
         "filename": "common/power_button_x86.c",
         "patchSetId": 4
