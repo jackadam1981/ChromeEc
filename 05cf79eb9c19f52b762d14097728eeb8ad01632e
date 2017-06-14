@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36e6cd1b_305fc0af",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3089,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-14T22:51:15Z",
+      "side": 1,
+      "message": "I commented so on the original review (https://chromium-review.googlesource.com/#/c/347730/) and I still think the best way to handle suspend requests from outside tasks is to do it reliably / synchronously from the PD task itself, probably through a \"state change request\" that can be set by outside tasks (not by modifying the task state behind the back of the PD task). This can be done in a way that requests are completely reliable and guaranteed to be processed, so waiting / verifying the state may become unnecessary.",
+      "range": {
+        "startLine": 3078,
+        "startChar": 1,
+        "endLine": 3089,
+        "endChar": 2
+      },
+      "revId": "05cf79eb9c19f52b762d14097728eeb8ad01632e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
