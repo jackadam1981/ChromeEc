@@ -118,6 +118,30 @@
       "revId": "716db3e803ffc4af62e30c5f9664f0e3e288923a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ea6fe4_52141f7b",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-06-14T18:04:36Z",
+      "side": 1,
+      "message": "Okay. I will add BFAR instead of DFSR.",
+      "parentUuid": "0d068631_82a96d5d",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 70
+      },
+      "revId": "716db3e803ffc4af62e30c5f9664f0e3e288923a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
