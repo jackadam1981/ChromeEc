@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "30bbf622_aa269dcc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3078,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-14T21:25:01Z",
+      "side": 1,
+      "message": "looking at tcpci_tcpm_init(), this should probably be 300 :(\n\ni hate nested timeouts.",
+      "parentUuid": "631db8ed_c4ed8812",
+      "range": {
+        "startLine": 3078,
+        "startChar": 4,
+        "endLine": 3078,
+        "endChar": 17
+      },
+      "revId": "7b3791a91dfa3f805db1ab9e0d8c9396d6090ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa7ac4e2_64c2089b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -59,6 +83,30 @@
       "writtenOn": "2017-06-06T08:13:03Z",
       "side": 1,
       "message": "what is this msleep supposed to do ?\nplease note that the PD task is higher priority than the HOSTCMD task which invokes this command,\nso the task_wake will yield immediatly.",
+      "range": {
+        "startLine": 3084,
+        "startChar": 3,
+        "endLine": 3084,
+        "endChar": 13
+      },
+      "revId": "7b3791a91dfa3f805db1ab9e0d8c9396d6090ffb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1e20159_9c9aeb39",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3084,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-14T21:25:01Z",
+      "side": 1,
+      "message": "if i put an ASSERT(.pd_task_initialized) at the top,\nwe do blow up, so we definitely have an execution\norder issue here.\n\nlooking at pd_task(), it calls tcpm_init() (i.e. tcpci_tcpm_init())\nin its startup sequence - that\u0027s where it hits msleep(10) which\ndefeats any reliance on task priorities for execution order.\nthere may be other cases where we reschedule, but\nan existence proof should suffice here.\n\nneedless to say, i\u0027m really not comfortable depending on\npriorities for correctness.",
+      "parentUuid": "aa7ac4e2_64c2089b",
       "range": {
         "startLine": 3084,
         "startChar": 3,
