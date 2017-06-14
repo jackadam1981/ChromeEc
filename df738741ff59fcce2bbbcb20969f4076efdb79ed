@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7c07c25_25ded37b",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-14T22:08:28Z",
+      "side": 1,
+      "message": "If it 95ms why isn\u0027t the fizz board returning 20ms as its implementation of get_time_dsw_pwrok()? If it was having a numeric value here isn\u0027t required.",
+      "revId": "df738741ff59fcce2bbbcb20969f4076efdb79ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ce4f6f7_9de3ae5b",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-14T22:08:28Z",
+      "side": 1,
+      "message": "I\u0027m confused why we wouldn\u0027t just use the equivalent of the following:\n\nif (get_time.val() - get_time_dsw_pwrok().val \u003c 95 * MSEC) \n  tnext_state \u003d 95 * MSEC - (get_time.val() - get_time_dsw_pwrok().val);",
+      "range": {
+        "startLine": 336,
+        "startChar": 17,
+        "endLine": 336,
+        "endChar": 43
+      },
+      "revId": "df738741ff59fcce2bbbcb20969f4076efdb79ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
