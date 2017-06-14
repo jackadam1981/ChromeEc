@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b104f0d2_dfeec5af",
+        "filename": "common/sha256.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-06-14T03:19:16Z",
+      "side": 1,
+      "message": "should be key_pad",
+      "range": {
+        "startLine": 246,
+        "startChar": 15,
+        "endLine": 246,
+        "endChar": 24
+      },
+      "revId": "57c7441e95cf058dac2aa614bdc1969d8c3940c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8e83b90_5ce68d67",
+        "filename": "common/sha256.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-06-14T03:19:16Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like this comment is accurate?",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 37
+      },
+      "revId": "57c7441e95cf058dac2aa614bdc1969d8c3940c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
