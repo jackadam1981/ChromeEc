@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7d54004_9ccd507b",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-15T00:51:49Z",
+      "side": 1,
+      "message": "Does it really take multiple attempts to write the FW? Or are the block sizes predictable and you can just write in chunks of 64 bytes?",
+      "revId": "49d3d5b475e4ec34e7bf885bce5f5f4cbb5b52bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc9a3574_7a91a5e4",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-15T00:51:49Z",
+      "side": 1,
+      "message": "request_exit?",
+      "revId": "49d3d5b475e4ec34e7bf885bce5f5f4cbb5b52bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a841634b_cd9212e9",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-15T00:51:49Z",
+      "side": 1,
+      "message": "uint8_t is probably moderately preferable, and might allow the line to fit in one line.",
+      "range": {
+        "startLine": 469,
+        "startChar": 2,
+        "endLine": 469,
+        "endChar": 15
+      },
+      "revId": "49d3d5b475e4ec34e7bf885bce5f5f4cbb5b52bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
