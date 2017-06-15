@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2134927e_6e12b662",
+        "filename": "common/system.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-15T14:59:33Z",
+      "side": 1,
+      "message": "Now I\u0027m not sure about these variables. I can put -1 as a default value but I have to believe the callers will handle -1 properly.\n\nIt\u0027s for printf for debugging. Maybe I can simply printf them here.",
+      "range": {
+        "startLine": 1295,
+        "startChar": 23,
+        "endLine": 1295,
+        "endChar": 47
+      },
+      "revId": "7b07120c170953f34ece905bb9a613e5405198c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
