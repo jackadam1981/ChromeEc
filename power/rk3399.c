@@ -11,6 +11,7 @@
  * Version 0: Initial/default revision.
  * Version 1: Control signals PP900_PLL_EN and PP900_PMU_EN
  *	      are merged with PP900_USB_EN.
+ * Version 2: Simplified the power tree, fewer control signals.
  */
 
 #include "charge_state.h"
@@ -34,15 +35,26 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
 /* Input state flags */
-#define IN_PGOOD_PP5000        POWER_SIGNAL_MASK(PP5000_PWR_GOOD)
-#define IN_PGOOD_SYS           POWER_SIGNAL_MASK(SYS_PWR_GOOD)
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+	#define IN_PGOOD_PP1800      POWER_SIGNAL_MASK(PP1800_PWR_GOOD)
+	#define IN_PGOOD_PP1250_S3   POWER_SIGNAL_MASK(PP1250_S3_PWR_GOOD)
+	#define IN_PGOOD_PP900_S0    POWER_SIGNAL_MASK(PP900_S0_PWR_GOOD)
+#else
+	#define IN_PGOOD_PP5000      POWER_SIGNAL_MASK(PP5000_PWR_GOOD)
+	#define IN_PGOOD_SYS         POWER_SIGNAL_MASK(SYS_PWR_GOOD)
+#endif
+
 #define IN_PGOOD_AP            POWER_SIGNAL_MASK(AP_PWR_GOOD)
 #define IN_SUSPEND_DEASSERTED  POWER_SIGNAL_MASK(SUSPEND_DEASSERTED)
 
-/* Rails requires for S3 */
-#define IN_PGOOD_S3            (IN_PGOOD_PP5000)
-/* Rails required for S0 */
-#define IN_PGOOD_S0            (IN_PGOOD_S3 | IN_PGOOD_AP | IN_PGOOD_SYS)
+/* Rails requires for S3 and S0 */
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+	#define IN_PGOOD_S3    (IN_PGOOD_PP1800 | IN_PGOOD_PP1250_S3)
+	#define IN_PGOOD_S0    (IN_PGOOD_S3 | IN_PGOOD_PP900_S0 | IN_PGOOD_AP)
+#else
+	#define IN_PGOOD_S3    (IN_PGOOD_PP5000)
+	#define IN_PGOOD_S0    (IN_PGOOD_S3 | IN_PGOOD_AP | IN_PGOOD_SYS)
+#endif
 /* All inputs in the right state for S0 */
 #define IN_ALL_S0              (IN_PGOOD_S0 | IN_SUSPEND_DEASSERTED)
 
@@ -51,6 +63,103 @@
 
 #define CHARGER_INITIALIZED_DELAY_MS 100
 #define CHARGER_INITIALIZED_TRIES 40
+
+/* Data structure for a GPIO operation for power sequencing */
+struct power_seq_op {
+	enum gpio_signal signal;
+	int level;
+	int delay;
+};
+
+const struct power_seq_op s5s3_power_seq[] = {
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+	{ GPIO_PP900_S3_EN, 1, 2 },
+	{ GPIO_SYS_RST_L, 1, 0 },
+	{ GPIO_PP3300_S3_EN, 1, 2 },
+	{ GPIO_PP1800_S3_EN, 1, 2 },
+	{ GPIO_PP1250_S3_EN, 1, 2 },
+#else
+	{ GPIO_PPVAR_LOGIC_EN, 1, 0 },
+	{ GPIO_PP900_AP_EN, 1, 0 },
+	{ GPIO_PP900_PCIE_EN, 1, 2 },
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 0
+	{ GPIO_PP900_PMU_EN, 1, 0 },
+	{ GPIO_PP900_PLL_EN, 1, 0 },
+#endif
+	{ GPIO_PP900_USB_EN, 1, 2 },
+	{ GPIO_SYS_RST_L, 0, 0 },
+	{ GPIO_PP1800_PMU_EN_L, 0, 2 },
+	{ GPIO_LPDDR_PWR_EN, 1, 2 },
+	{ GPIO_PP1800_USB_EN_L, 0, 2 },
+	{ GPIO_PP3300_USB_EN_L, 0, 0 },
+	{ GPIO_PP5000_EN, 1, 0 },
+	{ GPIO_PP3300_TRACKPAD_EN_L, 0, 1 },
+	{ GPIO_PP1800_LID_EN_L, 0, 0 },
+	{ GPIO_PP1800_SIXAXIS_EN_L, 0, 2},
+	{ GPIO_PP1800_SENSOR_EN_L, 0, 0},
+#endif
+};
+
+const struct power_seq_op s3s0_power_seq[] = {
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+	{ GPIO_PP900_S0_EN, 1, 2 },
+	{ GPIO_PP1800_USB_EN, 1, 2 },
+	{ GPIO_PP3300_S0_EN, 1, 2 },
+	{ GPIO_AP_CORE_EN, 1, 2 },
+	{ GPIO_PP1800_S0_EN, 1, 0},
+#else
+	{ GPIO_PPVAR_CLOGIC_EN, 1, 2 },
+	{ GPIO_PP900_DDRPLL_EN, 1, 2 },
+	{ GPIO_PP1800_AP_AVDD_EN_L, 0, 2 },
+	{ GPIO_AP_CORE_EN, 1, 2 },
+	{ GPIO_PP1800_S0_EN_L, 0, 2 },
+	{ GPIO_PP3300_S0_EN_L, 0, 0 },
+#endif
+};
+
+const struct power_seq_op s0s3_power_seq[] = {
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+	{ GPIO_PP1800_S0_EN, 0, 1 },
+	{ GPIO_AP_CORE_EN, 0, 20 },
+	{ GPIO_PP3300_S0_EN, 0, 20 },
+	{ GPIO_PP1800_USB_EN, 0, 1 },
+	{ GPIO_PP900_S0_EN, 0, 1 },
+#else
+	{ GPIO_PP3300_S0_EN_L, 1, 20 },
+	{ GPIO_PP1800_S0_EN_L, 1, 1 },
+	{ GPIO_AP_CORE_EN, 0, 20 },
+	{ GPIO_PP1800_AP_AVDD_EN_L, 1, 1 },
+	{ GPIO_PP900_DDRPLL_EN, 0, 1 },
+	{ GPIO_PPVAR_CLOGIC_EN, 0, 0 },
+#endif
+};
+
+const struct power_seq_op s3s5_power_seq[] = {
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+	{ GPIO_PP1250_S3_EN, 0, 2 },
+	{ GPIO_PP1800_S3_EN, 0, 2 },
+	{ GPIO_PP3300_S3_EN, 0, 2 },
+	{ GPIO_PP900_S3_EN, 0, 0 },
+#else
+	{ GPIO_PP1800_SENSOR_EN_L, 1, 0},
+	{ GPIO_PP1800_SIXAXIS_EN_L, 1, 0},
+	{ GPIO_PP1800_LID_EN_L, 1, 0 },
+	{ GPIO_PP3300_TRACKPAD_EN_L, 1, 0 },
+	{ GPIO_PP5000_EN, 0, 0 },
+	{ GPIO_PP3300_USB_EN_L, 1, 20 },
+	{ GPIO_PP1800_USB_EN_L, 1, 10 },
+	{ GPIO_LPDDR_PWR_EN, 0, 20 },
+	{ GPIO_PP1800_PMU_EN_L, 1, 2 },
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 0
+	{ GPIO_PP900_PLL_EN, 0, 0 },
+	{ GPIO_PP900_PMU_EN, 0, 0 },
+#endif
+	{ GPIO_PP900_USB_EN, 0, 6 },
+	{ GPIO_PP900_PCIE_EN, 0, 0 },
+	{ GPIO_PP900_AP_EN, 0, 0 },
+	{ GPIO_PPVAR_LOGIC_EN, 0, 0 },
+#endif
+};
 
 static int forcing_shutdown;
 
@@ -128,10 +237,28 @@ DECLARE_DEFERRED(force_shutdown);
 			if (!forcing_shutdown && \
 			    power_get_signals() & IN_SUSPEND_DEASSERTED)  { \
 				CPRINTS("suspend aborted"); \
-				return POWER_S3S0; \
+				return 1; \
 			} \
 		} while (sleep_remain > 0); \
 	} while (0)
+
+/* Step through the power sequence table. */
+int power_seq_run(const struct power_seq_op *power_seq_ops, int op_count)
+{
+	int i;
+
+	for (i = 0; i < op_count; i++) {
+		gpio_set_level(power_seq_ops[i].signal,
+			       power_seq_ops[i].level);
+		if (!power_seq_ops[i].delay)
+			continue;
+		if (power_seq_ops == s0s3_power_seq)
+			MSLEEP_CHECK_ABORTED_SUSPEND(power_seq_ops[i].delay);
+		else
+			msleep(power_seq_ops[i].delay);
+	}
+	return 0;
+}
 
 enum power_state power_handle_state(enum power_state state)
 {
@@ -208,39 +335,13 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5S3:
-		gpio_set_level(GPIO_PPVAR_LOGIC_EN, 1);
-		gpio_set_level(GPIO_PP900_AP_EN, 1);
-		gpio_set_level(GPIO_PP900_PCIE_EN, 1);
-		msleep(2);
-#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 0
-		gpio_set_level(GPIO_PP900_PMU_EN, 1);
-		gpio_set_level(GPIO_PP900_PLL_EN, 1);
-#endif
-		gpio_set_level(GPIO_PP900_USB_EN, 1);
-		msleep(2);
+		power_seq_run(s5s3_power_seq, ARRAY_SIZE(s5s3_power_seq));
 
 		/*
 		 * Assert SYS_RST now, to be released in S3S0, to avoid
 		 * resetting the TPM soon after power-on.
 		 */
-		gpio_set_level(GPIO_SYS_RST_L, 0);
 		sys_reset_asserted = 1;
-
-		gpio_set_level(GPIO_PP1800_PMU_EN_L, 0);
-		msleep(2);
-		gpio_set_level(GPIO_LPDDR_PWR_EN, 1);
-		msleep(2);
-		gpio_set_level(GPIO_PP1800_USB_EN_L, 0);
-		msleep(2);
-		gpio_set_level(GPIO_PP3300_USB_EN_L, 0);
-		gpio_set_level(GPIO_PP5000_EN, 1);
-		gpio_set_level(GPIO_PP3300_TRACKPAD_EN_L, 0);
-		msleep(1);
-		gpio_set_level(GPIO_PP1800_LID_EN_L, 0);
-
-		gpio_set_level(GPIO_PP1800_SIXAXIS_EN_L, 0);
-		msleep(2);
-		gpio_set_level(GPIO_PP1800_SENSOR_EN_L, 0);
 
 		/*
 		 * TODO: Consider ADC_PP900_AP / ADC_PP1200_LPDDR analog
@@ -258,17 +359,8 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3S0:
-		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 1);
-		msleep(2);
-		gpio_set_level(GPIO_PP900_DDRPLL_EN, 1);
-		msleep(2);
-		gpio_set_level(GPIO_PP1800_AP_AVDD_EN_L, 0);
-		msleep(2);
-		gpio_set_level(GPIO_AP_CORE_EN, 1);
-		msleep(2);
-		gpio_set_level(GPIO_PP1800_S0_EN_L, 0);
-		msleep(2);
-		gpio_set_level(GPIO_PP3300_S0_EN_L, 0);
+		if (power_seq_run(s3s0_power_seq, ARRAY_SIZE(s3s0_power_seq)))
+			return POWER_S3S0;
 
 		/* Release SYS_RST if we came from S5 */
 		if (sys_reset_asserted) {
@@ -300,22 +392,7 @@ enum power_state power_handle_state(enum power_state state)
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 		MSLEEP_CHECK_ABORTED_SUSPEND(20);
 
-		gpio_set_level(GPIO_PP3300_S0_EN_L, 1);
-		MSLEEP_CHECK_ABORTED_SUSPEND(20);
-
-		gpio_set_level(GPIO_PP1800_S0_EN_L, 1);
-		MSLEEP_CHECK_ABORTED_SUSPEND(1);
-
-		gpio_set_level(GPIO_AP_CORE_EN, 0);
-		MSLEEP_CHECK_ABORTED_SUSPEND(20);
-
-		gpio_set_level(GPIO_PP1800_AP_AVDD_EN_L, 1);
-		MSLEEP_CHECK_ABORTED_SUSPEND(1);
-
-		gpio_set_level(GPIO_PP900_DDRPLL_EN, 0);
-		MSLEEP_CHECK_ABORTED_SUSPEND(1);
-
-		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 0);
+		power_seq_run(s0s3_power_seq, ARRAY_SIZE(s0s3_power_seq));
 
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
@@ -338,28 +415,7 @@ enum power_state power_handle_state(enum power_state state)
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
-		gpio_set_level(GPIO_PP1800_SENSOR_EN_L, 1);
-		gpio_set_level(GPIO_PP1800_SIXAXIS_EN_L, 1);
-		gpio_set_level(GPIO_PP1800_LID_EN_L, 1);
-		gpio_set_level(GPIO_PP3300_TRACKPAD_EN_L, 1);
-		gpio_set_level(GPIO_PP5000_EN, 0);
-		gpio_set_level(GPIO_PP3300_USB_EN_L, 1);
-		msleep(20);
-		gpio_set_level(GPIO_PP1800_USB_EN_L, 1);
-		msleep(10);
-		gpio_set_level(GPIO_LPDDR_PWR_EN, 0);
-		msleep(20);
-		gpio_set_level(GPIO_PP1800_PMU_EN_L, 1);
-		msleep(2);
-		gpio_set_level(GPIO_PP900_USB_EN, 0);
-#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 0
-		gpio_set_level(GPIO_PP900_PLL_EN, 0);
-		gpio_set_level(GPIO_PP900_PMU_EN, 0);
-#endif
-		msleep(6);
-		gpio_set_level(GPIO_PP900_PCIE_EN, 0);
-		gpio_set_level(GPIO_PP900_AP_EN, 0);
-		gpio_set_level(GPIO_PPVAR_LOGIC_EN, 0);
+		power_seq_run(s3s5_power_seq, ARRAY_SIZE(s3s5_power_seq));
 
 		/* Start shutting down */
 		return POWER_S5;
