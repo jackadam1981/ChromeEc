@@ -70,6 +70,30 @@
       "revId": "ca3c16603439684e055b552c6b9ae5b808074376",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d312c8e0_4d9291ce",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-15T23:21:50Z",
+      "side": 1,
+      "message": "That\u0027s true but I dared to do r/m/w because I didn\u0027t want to assume NVRAM will be either RESET_FLAG_AP_OFF or 0 for the rest of my life. Unless there is non-negligible penalty with r/m/w, I would keep it as is.",
+      "parentUuid": "f571a960_efb04ccd",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 35
+      },
+      "revId": "ca3c16603439684e055b552c6b9ae5b808074376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
