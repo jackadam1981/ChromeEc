@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caaba41c_25cf6ac8",
+        "filename": "chip/g/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-15T15:48:18Z",
+      "side": 1,
+      "message": "this should also be inside the if() scope.",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 36
+      },
+      "revId": "8701c886066c3addc00eb95bfbdcdc7c50b98f83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
