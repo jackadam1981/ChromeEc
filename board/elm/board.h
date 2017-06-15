@@ -10,6 +10,9 @@
 
 /* Accelero meter and gyro sensor */
 #define CONFIG_ACCEL_KX022
+#ifdef BOARD_HANA
+#define CONFIG_ACCEL_KX022_SW_RESET
+#endif
 #define CONFIG_ACCEL_RESET
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
