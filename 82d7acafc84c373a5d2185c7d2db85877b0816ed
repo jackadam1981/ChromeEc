@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "12884be0_38afc17c",
+        "filename": "chip/g/dcrypto/dcrypto_sha512.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-15T19:18:01Z",
+      "side": 1,
+      "message": "ah, I did not realize that the code was identical after a quick glance.\n\nI don\u0027t see anything wrong with early returns if the unlock invocation is not missing, but up to you.",
+      "parentUuid": "9fae83d9_719c4d4d",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 9
+      },
+      "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "550f28a9_0152f425",
         "filename": "chip/g/dcrypto/internal.h",
         "patchSetId": 2
