@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "646a00ce_937302c5",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-15T19:13:10Z",
+      "side": 1,
+      "message": "not this patch\u0027s problem, but what\u0027s the deal with ignoring the result value?",
+      "range": {
+        "startLine": 1154,
+        "startChar": 9,
+        "endLine": 1154,
+        "endChar": 20
+      },
+      "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d9887db_5bb9e396",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-15T19:13:10Z",
+      "side": 1,
+      "message": "I think it would be better on the reader to explicitly call dcrypto_init_and_lock() each time before dcrypto_ecc_init() or dcrypto_SHA512_setup() is called.",
+      "range": {
+        "startLine": 1234,
+        "startChar": 1,
+        "endLine": 1234,
+        "endChar": 17
+      },
+      "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ad67755c_d5e896d6",
         "filename": "chip/g/dcrypto/dcrypto_sha512.c",
         "patchSetId": 2
@@ -42,6 +88,29 @@
         "startChar": 0,
         "endLine": 556,
         "endChar": 9
+      },
+      "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "550f28a9_0152f425",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-15T19:13:10Z",
+      "side": 1,
+      "message": "please add your name here",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 8
       },
       "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
