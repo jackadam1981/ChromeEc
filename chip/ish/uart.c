@@ -58,8 +58,12 @@ int uart_init_done(void)
 void uart_tx_start(void)
 {
 #if !defined(CONFIG_POLLING_UART)
-	enum UART_PORT id = UART_PORT_1; /* UART1 for ISH */
 
+#ifdef CONFIG_ISH_UART_0
+	enum UART_PORT id = UART_PORT_0; /* UART0 for ISH */
+#else
+	enum UART_PORT id = UART_PORT_1; /* UART1 for ISH */
+#endif
 	if ( REG8(IER(id) & IER_TDRQ) )
 		return;
 
@@ -67,15 +71,23 @@ void uart_tx_start(void)
 
 	REG8(IER(id)) |= IER_TDRQ;
 
+#ifdef CONFIG_ISH_UART_0
+	task_trigger_irq(ISH_UART0_IRQ);
+#else
 	task_trigger_irq(ISH_UART1_IRQ);
+#endif
+
 #endif
 }
 
 void uart_tx_stop(void)
 {
 #if !defined(CONFIG_POLLING_UART)
+#ifdef CONFIG_ISH_UART_0
+	enum UART_PORT id = UART_PORT_0; /* UART0 for ISH */
+#else
 	enum UART_PORT id = UART_PORT_1; /* UART1 for ISH */
-
+#endif
 	REG8(IER(id)) &= ~IER_TDRQ;
 
 	/* TODO: re-enable low power mode */
@@ -85,7 +97,11 @@ void uart_tx_stop(void)
 void uart_tx_flush(void)
 {
 #if !defined(CONFIG_POLLING_UART)
+#ifdef CONFIG_ISH_UART_0
+	enum UART_PORT id = UART_PORT_0; /* UART0 for ISH */
+#else
 	enum UART_PORT id = UART_PORT_1; /* UART1 for ISH */
+#endif
 
 	while (!(REG8(LSR(id)) & LSR_TEMT) )
 		;
@@ -100,7 +116,11 @@ int uart_tx_ready(void)
 int uart_rx_available(void)
 {
 #if !defined(CONFIG_POLLING_UART)
+#ifdef CONFIG_ISH_UART_0
+	enum UART_PORT id = UART_PORT_0; /* UART0 for ISH */
+#else
 	enum UART_PORT id = UART_PORT_1; /* UART1 for ISH */
+#endif
 
 	return REG8(LSR(id)) & LSR_DR;
 #else
@@ -110,7 +130,11 @@ int uart_rx_available(void)
 
 void uart_write_char(char c)
 {
+#ifdef CONFIG_ISH_UART_0
+	enum UART_PORT id = UART_PORT_0; /* UART0 for ISH */
+#else
 	enum UART_PORT id = UART_PORT_1; /* UART1 for ISH */
+#endif
 
 	/* Wait till reciever is ready */
 	while ((REG8(LSR(id)) & LSR_TEMT) == 0)
@@ -122,7 +146,11 @@ void uart_write_char(char c)
 #if !defined(CONFIG_POLLING_UART)
 int uart_read_char(void)
 {
+#ifdef CONFIG_ISH_UART_0
+	enum UART_PORT id = UART_PORT_0; /* UART0 for ISH */
+#else
 	enum UART_PORT id = UART_PORT_1; /* UART1 for ISH */
+#endif
 
 	return REG8(RBR(id));
 }
@@ -133,7 +161,11 @@ void uart_ec_interrupt(void)
 	uart_process_input();
 	uart_process_output();
 }
+#ifdef CONFIG_ISH_UART_0
+DECLARE_IRQ(ISH_UART0_IRQ, uart_ec_interrupt); /* TODO: 'priority' */
+#else
 DECLARE_IRQ(ISH_UART1_IRQ, uart_ec_interrupt); /* TODO: 'priority' */
+#endif
 #endif /* !defined(CONFIG_POLLING_UART) */
 
 static int uart_return_baud_rate_by_id(int baud_rate_id)
@@ -285,6 +317,10 @@ void uart_init(void)
 
 	uart_drv_init();
 
+#ifdef CONFIG_ISH_UART_0
+	uart_client_init(UART_PORT_0, B115200, 0);
+#else
 	uart_client_init(UART_PORT_1, B115200, 0);
+#endif
 	init_done = 1;
 }
