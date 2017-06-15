@@ -22,6 +22,30 @@
       "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fae83d9_719c4d4d",
+        "filename": "chip/g/dcrypto/dcrypto_sha512.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-15T19:01:38Z",
+      "side": 1,
+      "message": "To make it clear that the lock and unlock pair up here.\nThat is, no early return statements inside the function.\n\nProbably a pattern all callers of dcrypto_* should try follow?",
+      "parentUuid": "ad67755c_d5e896d6",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 9
+      },
+      "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
