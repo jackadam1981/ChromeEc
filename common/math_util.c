@@ -6,8 +6,11 @@
 /* Common math functions. */
 
 #include "common.h"
+#include "console.h"
 #include "math_util.h"
+#include "math.h"
 #include "util.h"
+#include "watchdog.h"
 
 /* Some useful math functions.  Use with integers only! */
 #define SQ(x) ((x) * (x))
@@ -70,10 +73,11 @@ fp_t arc_cos(fp_t x)
 	return 0;
 }
 
+static int hw_sqrtf(fp_inter_t x);
 /**
  * Integer square root.
  */
-int int_sqrtf(fp_inter_t x)
+static int int_sqrtf(fp_inter_t x)
 {
 	int rmax = 0x7fffffff;
 	int rmin = 0;
@@ -110,6 +114,49 @@ int int_sqrtf(fp_inter_t x)
 		}
 	}
 }
+static int hw_sqrtf(fp_inter_t x)
+{
+	/*
+	 * Just binary-search.  There are better algorithms, but we call this
+	 * infrequently enough it doesn't matter.
+	 */
+	//if (x <= 0)
+	//	return 0;  /* Yeah, for imaginary numbers too */
+	return sqrtf(x);
+}
+
+static int command_sqrt_test(int argc, char **argv)
+{
+	float param;
+	uint32_t i;
+
+	union {
+		float f;
+		uint32_t i;
+	} u;
+	u.i = 0x417fffff;
+
+	ccprintf("SQRT %d %d\n", int_sqrtf(u.f), hw_sqrtf(u.f));
+	u.i = 0x41800000;
+	ccprintf("SQRT %d %d\n", int_sqrtf(u.f), hw_sqrtf(u.f));
+
+	param = strtoi(argv[1], NULL, 0);
+	for (i = 16790000; i < 0xffffffff; ++i) {
+		param = i;
+		if (int_sqrtf(param) != hw_sqrtf(param))
+			ccprintf("SQRT %d %d %d\n", i,
+				int_sqrtf(param), hw_sqrtf(param));
+		if ((i % 1000) == 0)
+			watchdog_reload();
+		if (i % 10000 == 0)
+			ccprintf("GOT %d\n", i);
+	}
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(sqtest, command_sqrt_test,
+			"",
+			"");
 
 int vector_magnitude(const vector_3_t v)
 {
