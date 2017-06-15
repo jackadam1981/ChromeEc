@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f29cd312_2cf73369",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-15T21:18:41Z",
+      "side": 1,
+      "message": "We should call this more than once, to reduce the risk of a single clock glitch bypassing the check.\n\n(Just calling it again with a comment to that effect, should be good enough.)",
+      "range": {
+        "startLine": 642,
+        "startChar": 1,
+        "endLine": 642,
+        "endChar": 27
+      },
+      "revId": "e82342c5ff866d829da3600c05b3c4b1f9e5c5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
