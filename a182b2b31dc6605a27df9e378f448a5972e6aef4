@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5689dfe5_483265bf",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-15T16:58:56Z",
+      "side": 1,
+      "message": "i\u0027d () this to avoid double take when reading the code",
+      "range": {
+        "startLine": 100,
+        "startChar": 21,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "a182b2b31dc6605a27df9e378f448a5972e6aef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
