@@ -11,6 +11,7 @@
  * Version 0: Initial/default revision.
  * Version 1: Control signals PP900_PLL_EN and PP900_PMU_EN
  *	      are merged with PP900_USB_EN.
+ * Version 2: Simplified the power tree, fewer control signals.
  */
 
 #include "charge_state.h"
@@ -34,15 +35,26 @@
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
 /* Input state flags */
-#define IN_PGOOD_PP5000        POWER_SIGNAL_MASK(PP5000_PWR_GOOD)
-#define IN_PGOOD_SYS           POWER_SIGNAL_MASK(SYS_PWR_GOOD)
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+	#define IN_PGOOD_PP1800      POWER_SIGNAL_MASK(PP1800_PWR_GOOD)
+	#define IN_PGOOD_PP1250_S3   POWER_SIGNAL_MASK(PP1250_S3_PWR_GOOD)
+	#define IN_PGOOD_PP900_S0    POWER_SIGNAL_MASK(PP900_S0_PWR_GOOD)
+#else
+	#define IN_PGOOD_PP5000      POWER_SIGNAL_MASK(PP5000_PWR_GOOD)
+	#define IN_PGOOD_SYS         POWER_SIGNAL_MASK(SYS_PWR_GOOD)
+#endif
+
 #define IN_PGOOD_AP            POWER_SIGNAL_MASK(AP_PWR_GOOD)
 #define IN_SUSPEND_DEASSERTED  POWER_SIGNAL_MASK(SUSPEND_DEASSERTED)
 
-/* Rails requires for S3 */
-#define IN_PGOOD_S3            (IN_PGOOD_PP5000)
-/* Rails required for S0 */
-#define IN_PGOOD_S0            (IN_PGOOD_S3 | IN_PGOOD_AP | IN_PGOOD_SYS)
+/* Rails requires for S3 and S0 */
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+	#define IN_PGOOD_S3    (IN_PGOOD_PP1800 | IN_PGOOD_PP1250_S3)
+	#define IN_PGOOD_S0    (IN_PGOOD_S3 | IN_PGOOD_PP900_S0 | IN_PGOOD_AP)
+#else
+	#define IN_PGOOD_S3    (IN_PGOOD_PP5000)
+	#define IN_PGOOD_S0    (IN_PGOOD_S3 | IN_PGOOD_AP | IN_PGOOD_SYS)
+#endif
 /* All inputs in the right state for S0 */
 #define IN_ALL_S0              (IN_PGOOD_S0 | IN_SUSPEND_DEASSERTED)
 
@@ -208,6 +220,15 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5S3:
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+		gpio_set_level(GPIO_PP900_S3_EN, 1);
+		msleep(2);
+		gpio_set_level(GPIO_PP3300_S3_EN, 1);
+		msleep(2);
+		gpio_set_level(GPIO_PP1800_S3_EN, 1);
+		msleep(2);
+		gpio_set_level(GPIO_PP1250_S3_EN, 1);
+#else
 		gpio_set_level(GPIO_PPVAR_LOGIC_EN, 1);
 		gpio_set_level(GPIO_PP900_AP_EN, 1);
 		gpio_set_level(GPIO_PP900_PCIE_EN, 1);
@@ -217,6 +238,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_PP900_PLL_EN, 1);
 #endif
 		gpio_set_level(GPIO_PP900_USB_EN, 1);
+#endif
 		msleep(2);
 
 		/*
@@ -226,6 +248,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_SYS_RST_L, 0);
 		sys_reset_asserted = 1;
 
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION != 2
 		gpio_set_level(GPIO_PP1800_PMU_EN_L, 0);
 		msleep(2);
 		gpio_set_level(GPIO_LPDDR_PWR_EN, 1);
@@ -241,7 +264,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_PP1800_SIXAXIS_EN_L, 0);
 		msleep(2);
 		gpio_set_level(GPIO_PP1800_SENSOR_EN_L, 0);
-
+#endif
 		/*
 		 * TODO: Consider ADC_PP900_AP / ADC_PP1200_LPDDR analog
 		 * voltage levels for state transition.
@@ -258,6 +281,17 @@ enum power_state power_handle_state(enum power_state state)
 		return POWER_S3;
 
 	case POWER_S3S0:
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+		gpio_set_level(GPIO_PP900_S0_EN, 1);
+		msleep(2);
+		gpio_set_level(GPIO_PP1800_USB_EN, 1);
+		msleep(2);
+		gpio_set_level(GPIO_PP3300_S0_EN, 1);
+		msleep(2);
+		gpio_set_level(GPIO_AP_CORE_EN, 1);
+		msleep(2);
+		gpio_set_level(GPIO_PP1800_S0_EN, 1);
+#else
 		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 1);
 		msleep(2);
 		gpio_set_level(GPIO_PP900_DDRPLL_EN, 1);
@@ -269,7 +303,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_PP1800_S0_EN_L, 0);
 		msleep(2);
 		gpio_set_level(GPIO_PP3300_S0_EN_L, 0);
-
+#endif
 		/* Release SYS_RST if we came from S5 */
 		if (sys_reset_asserted) {
 			msleep(10);
@@ -300,6 +334,23 @@ enum power_state power_handle_state(enum power_state state)
 		hook_notify(HOOK_CHIPSET_SUSPEND);
 		MSLEEP_CHECK_ABORTED_SUSPEND(20);
 
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+		gpio_set_level(GPIO_PP1800_S0_EN, 0);
+		MSLEEP_CHECK_ABORTED_SUSPEND(1);
+
+		gpio_set_level(GPIO_AP_CORE_EN, 0);
+		MSLEEP_CHECK_ABORTED_SUSPEND(20);
+
+		gpio_set_level(GPIO_PP3300_S0, 0);
+		MSLEEP_CHECK_ABORTED_SUSPEND(20);
+
+		gpio_set_level(GPIO_PP1800_USB, 0);
+		MSLEEP_CHECK_ABORTED_SUSPEND(1);
+
+		gpio_set_level(GPIO_PP900_S0, 0);
+		MSLEEP_CHECK_ABORTED_SUSPEND(1);
+
+#else
 		gpio_set_level(GPIO_PP3300_S0_EN_L, 1);
 		MSLEEP_CHECK_ABORTED_SUSPEND(20);
 
@@ -316,6 +367,7 @@ enum power_state power_handle_state(enum power_state state)
 		MSLEEP_CHECK_ABORTED_SUSPEND(1);
 
 		gpio_set_level(GPIO_PPVAR_CLOGIC_EN, 0);
+#endif
 
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
@@ -337,7 +389,20 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S3S5:
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
+#if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
+		gpio_set_level(GPIO_SYS_RST_L, 0);
+		sys_reset_asserted = 1;
 
+		msleep(2);
+		gpio_set_level(GPIO_PP1250_S3_EN_L, 1);
+		msleep(2);
+		gpio_set_level(GPIO_PP1800_S3_EN, 0);
+		msleep(2);
+		gpio_set_level(GPIO_PP3300_S3_EN, 0);
+		msleep(2);
+		gpio_set_level(GPIO_PP900_S3_EN, 0);
+		msleep(2);
+#else
 		gpio_set_level(GPIO_PP1800_SENSOR_EN_L, 1);
 		gpio_set_level(GPIO_PP1800_SIXAXIS_EN_L, 1);
 		gpio_set_level(GPIO_PP1800_LID_EN_L, 1);
@@ -360,7 +425,7 @@ enum power_state power_handle_state(enum power_state state)
 		gpio_set_level(GPIO_PP900_PCIE_EN, 0);
 		gpio_set_level(GPIO_PP900_AP_EN, 0);
 		gpio_set_level(GPIO_PPVAR_LOGIC_EN, 0);
-
+#endif
 		/* Start shutting down */
 		return POWER_S5;
 
