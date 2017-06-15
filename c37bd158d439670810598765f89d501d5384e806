@@ -46,6 +46,30 @@
       "revId": "c37bd158d439670810598765f89d501d5384e806",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fede0832_098e5eef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-15T20:13:17Z",
+      "side": 1,
+      "message": "Ah, but wait, no :)\n\nthe idea is that once we boot the recovery image we update the second half of RW and then power cycle the device so that the rollback counter is reset.\n\nI expect this condition (the current image is not right for this board and the other image is not runnable) to happen extremely rare, if ever, this is why it is OK IMO to require the user to do the power disconnect.",
+      "parentUuid": "434d0047_d47cda4f",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "c37bd158d439670810598765f89d501d5384e806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
