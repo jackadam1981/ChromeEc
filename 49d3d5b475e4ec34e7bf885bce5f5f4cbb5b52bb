@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4a3ccd09_905e3b2c",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-15T07:09:17Z",
+      "side": 1,
+      "message": "Oh sorry I did not ready carefully, you only try to write 64 bytes at a time. Makes sense then.",
+      "parentUuid": "4b5b5a57_4d7d5f56",
+      "revId": "49d3d5b475e4ec34e7bf885bce5f5f4cbb5b52bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc9a3574_7a91a5e4",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 1

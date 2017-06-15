@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba1c57ff_79d95596",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-15T07:09:17Z",
+      "side": 1,
+      "message": "I know this is \"old\" code, but do you really need global buffers? Can you allocate them as you need them instead?",
+      "revId": "93512bba0f9065646a3d078318ccd1191ac065cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cfb333d_2845fd2d",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-15T07:09:17Z",
+      "side": 1,
+      "message": "Some define use tabs, some use spaces. Either way is fine.",
+      "revId": "93512bba0f9065646a3d078318ccd1191ac065cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
