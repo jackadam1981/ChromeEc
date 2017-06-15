@@ -363,6 +363,30 @@
       "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19bf2c2b_54fe87af",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-15T16:00:21Z",
+      "side": 1,
+      "message": "very cool, we don\u0027t have a lot of room in SRAM left.",
+      "parentUuid": "3612bfbd_92506b9d",
+      "range": {
+        "startLine": 250,
+        "startChar": 56,
+        "endLine": 250,
+        "endChar": 66
+      },
+      "revId": "5fedf696e7bc700dc44dc62de3375d19433b45b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

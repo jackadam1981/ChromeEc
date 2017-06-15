@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0be5f5d2_527b0d6f",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-15T16:00:21Z",
+      "side": 1,
+      "message": "the idea is that in unsigned arithmetic this would never be true if last_press.val is zero?",
+      "range": {
+        "startLine": 37,
+        "startChar": 15,
+        "endLine": 37,
+        "endChar": 48
+      },
+      "revId": "45b490f5e8187030f4458e8fe041b3e46eef7459",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
