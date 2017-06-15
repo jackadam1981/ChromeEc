@@ -22,6 +22,30 @@
       "revId": "c37bd158d439670810598765f89d501d5384e806",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "434d0047_d47cda4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-15T20:09:25Z",
+      "side": 1,
+      "message": "ah, you are right, we do need turn_update_on available, let me add it.",
+      "parentUuid": "9aa64e72_1e417413",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 55
+      },
+      "revId": "c37bd158d439670810598765f89d501d5384e806",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
