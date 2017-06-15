@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f803d9b1_10c1caaf",
+        "filename": "chip/g/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1147840
+      },
+      "writtenOn": "2017-06-15T14:47:42Z",
+      "side": 1,
+      "message": "Could we rename this so that it matches dcrypto_exit() better to make it painfully obvious that they must be called in matching pairs? dcrypto_enter()? Or dcrypto_lock() and dcrypto_unlock()?",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "3c57e052c6ed3d2b02014026f0d748d8cc071daf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
