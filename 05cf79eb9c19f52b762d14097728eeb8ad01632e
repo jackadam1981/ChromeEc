@@ -22,6 +22,30 @@
       "revId": "05cf79eb9c19f52b762d14097728eeb8ad01632e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f9053b2_e1abd0d1",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3089,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-15T04:39:58Z",
+      "side": 1,
+      "message": "something like that - there\u0027s a fair bit of refactoring that\ncould (should?) be done here... kind of beyond the scope of what\ni\u0027m trying to accomplish right now.\n\nwe need to make pd_control() synchronous so it provides useful\nsemantics to the caller.  we also need to synchronize pd_control()\nwith the execution of pd_task() so it doesn\u0027t corrupt its state.\nthere\u0027s a follow-up CL where i basically block on a pd_task()\ninitialized flag so we don\u0027t mess with the state machine until\nit gets into its main event loop.\n\ni debated whether i should just combine the two CLs, but they\nultimately address 2 different race conditions.",
+      "parentUuid": "36e6cd1b_305fc0af",
+      "range": {
+        "startLine": 3078,
+        "startChar": 1,
+        "endLine": 3089,
+        "endChar": 2
+      },
+      "revId": "05cf79eb9c19f52b762d14097728eeb8ad01632e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
