@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23b96e5f_6d63d5c2",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-15T19:23:37Z",
+      "side": 1,
+      "message": "dcrypto_call() has attribute that make it hard to ignore the return value.\n\nBut this call structure here has no way to relay error code (and we have no errno or such, afaik?)\n\nHence some gymnastics to fool the compiler into shutting up.",
+      "parentUuid": "646a00ce_937302c5",
+      "range": {
+        "startLine": 1154,
+        "startChar": 9,
+        "endLine": 1154,
+        "endChar": 20
+      },
+      "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d9887db_5bb9e396",
         "filename": "chip/g/dcrypto/bn_hw.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2aa823a_0cffa29a",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-15T19:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d9887db_5bb9e396",
+      "range": {
+        "startLine": 1234,
+        "startChar": 1,
+        "endLine": 1234,
+        "endChar": 17
+      },
+      "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "ce1d31f4_f054ea9c",
+        "filename": "chip/g/dcrypto/dcrypto_sha512.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-15T19:23:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "12884be0_38afc17c",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 9
+      },
+      "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "550f28a9_0152f425",
         "filename": "chip/g/dcrypto/internal.h",
         "patchSetId": 2
@@ -139,6 +211,30 @@
       "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "942e9291_b4aebf04",
+        "filename": "chip/g/dcrypto/internal.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-15T19:23:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "550f28a9_0152f425",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 8
+      },
+      "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
