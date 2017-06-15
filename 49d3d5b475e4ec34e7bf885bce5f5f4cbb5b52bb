@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4b5b5a57_4d7d5f56",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-15T06:54:03Z",
+      "side": 1,
+      "message": "No sure if I followed. We don\u0027t make multiple attempts (retries).\n\nHowever, it takes multiple times to send the whole packet.\nFor this particular update, this loop is expected to run twice (4+68 bytes, 64 and 8 bytes)\nThe second packet is sent after we get the ACK of the first packet.",
+      "parentUuid": "f7d54004_9ccd507b",
+      "revId": "49d3d5b475e4ec34e7bf885bce5f5f4cbb5b52bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc9a3574_7a91a5e4",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "49d3d5b475e4ec34e7bf885bce5f5f4cbb5b52bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05370427_fd1392fb",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-15T06:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc9a3574_7a91a5e4",
+      "revId": "49d3d5b475e4ec34e7bf885bce5f5f4cbb5b52bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "49d3d5b475e4ec34e7bf885bce5f5f4cbb5b52bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf751f61_0b2ed631",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-15T06:54:03Z",
+      "side": 1,
+      "message": "Change all unsigned to moderately preferable.",
+      "parentUuid": "a841634b_cd9212e9",
+      "range": {
+        "startLine": 469,
+        "startChar": 2,
+        "endLine": 469,
+        "endChar": 15
+      },
+      "revId": "49d3d5b475e4ec34e7bf885bce5f5f4cbb5b52bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
