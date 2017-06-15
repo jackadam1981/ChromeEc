@@ -202,3 +202,19 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+#if 1
+static void ish_debug_tick(void)
+{
+	static int count;
+
+	count++;
+
+	if ((count % 240) == 0)  // every 60 sec
+	{
+		CPRINTS("#####ish debug tick!!!!!");
+		count = 0;
+	}
+}
+DECLARE_HOOK(HOOK_TICK, ish_debug_tick, HOOK_PRIO_DEFAULT);
+#endif
