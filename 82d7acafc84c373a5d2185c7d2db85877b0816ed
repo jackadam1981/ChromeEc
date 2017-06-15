@@ -191,6 +191,29 @@
     },
     {
       "key": {
+        "uuid": "38a13a1d_067d7f8f",
+        "filename": "chip/g/dcrypto/dcrypto_sha512.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1134159
+      },
+      "writtenOn": "2017-06-15T19:43:52Z",
+      "side": 1,
+      "message": "Is that safe? One of the code paths in dcrypto_SHA512_update() can end up making multiple calls to dcrypto_SHA512_Transform() which would release the lock prematurely.",
+      "range": {
+        "startLine": 581,
+        "startChar": 1,
+        "endLine": 581,
+        "endChar": 15
+      },
+      "revId": "82d7acafc84c373a5d2185c7d2db85877b0816ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "550f28a9_0152f425",
         "filename": "chip/g/dcrypto/internal.h",
         "patchSetId": 2
