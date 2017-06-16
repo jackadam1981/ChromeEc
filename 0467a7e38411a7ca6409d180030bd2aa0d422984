@@ -306,6 +306,24 @@
     },
     {
       "key": {
+        "uuid": "dcbc8a39_57ab294f",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-06-16T11:04:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c862ec11_0ab93bbe",
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "316d82d1_c4557acd",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
@@ -340,6 +358,48 @@
         "endLine": 231,
         "endChar": 41
       },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e85952_7426eac1",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-06-16T11:04:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f65f1d1b_1a98b2b9",
+      "range": {
+        "startLine": 231,
+        "startChar": 39,
+        "endLine": 231,
+        "endChar": 41
+      },
+      "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8264209_5a58fe44",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-06-16T11:04:01Z",
+      "side": 1,
+      "message": "The wake we are seeing on S0ix is in order of 8sec for energy reporting and the pulse is programmed such a way that it doesn\u0027t wake the host. In this case the system takes a S0ix-\u003eS0-\u003eS0ix transition without waking up the host. This is not a rapid pulsing and should not be an issue",
+      "parentUuid": "316d82d1_c4557acd",
       "revId": "0467a7e38411a7ca6409d180030bd2aa0d422984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
