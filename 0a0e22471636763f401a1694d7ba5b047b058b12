@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_3ced08dc",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-16T21:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b8e57b3_c659b3a7",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 35
+      },
+      "revId": "0a0e22471636763f401a1694d7ba5b047b058b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b8e57b3_06647b61",
         "filename": "cts/cts.py",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-11T03:08:37Z",
       "side": 1,
       "message": "Doesn\u0027t match args (didn\u0027t before, either, but I just noticed it...)",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 51
+      },
+      "revId": "0a0e22471636763f401a1694d7ba5b047b058b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_1cd12c0c",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-16T21:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b8e57b3_06647b61",
       "range": {
         "startLine": 60,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2b8e57b3_3cb6e8df",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-16T21:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b8e57b3_26697739",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 4
+      },
+      "revId": "0a0e22471636763f401a1694d7ba5b047b058b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b8e57b3_664b7fcc",
         "filename": "cts/cts.py",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2016-11-11T03:08:37Z",
       "side": 1,
       "message": "Nit: \"formatted\" has 2 t\u0027s",
+      "range": {
+        "startLine": 244,
+        "startChar": 20,
+        "endLine": 244,
+        "endChar": 28
+      },
+      "revId": "0a0e22471636763f401a1694d7ba5b047b058b12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b8e57b3_1caa0c6e",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-16T21:16:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b8e57b3_664b7fcc",
       "range": {
         "startLine": 244,
         "startChar": 20,
