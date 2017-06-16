@@ -37,6 +37,8 @@
 #define CROS_EC_SECTION "RO"
 #endif
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
 /******************************************************************************
  * Define the strings used in our USB descriptors.
  */
@@ -102,7 +104,19 @@ struct keyboard_scan_config keyscan_config = {
  */
 static void board_init(void)
 {
+	/* Detect keyboard backlight: pull-down means it is present */
+	int has_kb_backlight = !gpio_get_level(GPIO_KEYBOARD_BACKLIGHT);
 
+	CPRINTS("Backlight%s present", has_kb_backlight ? "" : " not");
+
+	/*
+	 * FIXME: More things need to be done based on backlight
+	 * presence/absence
+	 */
+	if (has_kb_backlight)
+		gpio_set_alternate_function(GPIO_B, 0x0200, 2);
+	else
+		;
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
