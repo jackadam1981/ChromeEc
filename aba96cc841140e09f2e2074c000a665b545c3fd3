@@ -22,6 +22,30 @@
       "revId": "aba96cc841140e09f2e2074c000a665b545c3fd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b770367_56087915",
+        "filename": "chip/g/upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-06-16T03:51:09Z",
+      "side": 1,
+      "message": "Not sure, I just moved this existing file to chip/g unchanged.\nI can try putting this in fw_upgrade.c (I think it should work fine?) in a follow on cl.",
+      "parentUuid": "ee2770ba_a590eee9",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 75
+      },
+      "revId": "aba96cc841140e09f2e2074c000a665b545c3fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
