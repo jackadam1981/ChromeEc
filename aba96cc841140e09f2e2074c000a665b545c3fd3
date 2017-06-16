@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee2770ba_a590eee9",
+        "filename": "chip/g/upgrade.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-16T03:35:45Z",
+      "side": 1,
+      "message": "why is this here and not in the file where fw_upgrade_command_handler is?!\n\nI don\u0027t remember, but there sure must have been a reason at some point",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 75
+      },
+      "revId": "aba96cc841140e09f2e2074c000a665b545c3fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
