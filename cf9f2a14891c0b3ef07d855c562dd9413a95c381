@@ -22,6 +22,30 @@
       "revId": "cf9f2a14891c0b3ef07d855c562dd9413a95c381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f23fa4a_689fed59",
+        "filename": "board/eve/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-06-16T00:38:38Z",
+      "side": 1,
+      "message": "If side !\u003d LED_BOTH, then the pattern is only applicable to the LED associated with the charging port. When an external charger is connected then the pattern is only ever SOLID_GREEN or SOLID_WHITE.",
+      "parentUuid": "6653d5e0_cff855cb",
+      "range": {
+        "startLine": 314,
+        "startChar": 2,
+        "endLine": 314,
+        "endChar": 11
+      },
+      "revId": "cf9f2a14891c0b3ef07d855c562dd9413a95c381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
