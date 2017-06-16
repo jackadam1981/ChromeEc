@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "68b2b48e_8ef05673",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-16T21:57:33Z",
+      "side": 1,
+      "message": "Done. Documented in cts.rc.",
+      "parentUuid": "2b8e57b3_06ae3b3a",
+      "range": {
+        "startLine": 133,
+        "startChar": 6,
+        "endLine": 133,
+        "endChar": 22
+      },
+      "revId": "385c432e2834aaf30d3174d367c93835595a5b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b8e57b3_063d5b23",
         "filename": "cts/cts.py",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-11T03:13:59Z",
       "side": 1,
       "message": "line?\n\n\u0027l\u0027 as a variable is awfully hard to distinguish from \u00271\u0027 in the font gerrit uses.",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "385c432e2834aaf30d3174d367c93835595a5b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaa68839_0b83014e",
+        "filename": "cts/cts.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-16T21:57:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b8e57b3_063d5b23",
       "range": {
         "startLine": 137,
         "startChar": 10,
