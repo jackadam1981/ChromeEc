@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8322ff09_56e0e182",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-16T17:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3af4edb_06589410",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 11
+      },
+      "revId": "390541f204135bd0e1218368bd424e21640858e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e56c83b5_e564421b",
         "filename": "core/cortex-m/task.c",
         "patchSetId": 2
