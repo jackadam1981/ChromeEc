@@ -211,6 +211,24 @@
       "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d71ba2e_f775d1e9",
+        "filename": "include/gpio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-19T17:01:13Z",
+      "side": 1,
+      "message": "Oh, okay. I feel like keeping the wake en/disable separate from the other GPIO settings wouldn\u0027t require the flag, but I can understand this implementation.",
+      "parentUuid": "a5181ac6_80e64235",
+      "revId": "bf9c3217ee3e865f720f63d070dcdb799251cd59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
