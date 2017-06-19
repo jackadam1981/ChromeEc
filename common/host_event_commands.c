@@ -128,6 +128,20 @@ test_mockable void host_throttle_cpu(int throttle)
 		host_set_single_event(EC_HOST_EVENT_THROTTLE_STOP);
 }
 
+#ifdef CONFIG_HOSTCMD_EVENTS
+static int keyboard_recovery_requested;
+
+void host_request_keyboard_recovery(void)
+{
+	host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
+	keyboard_recovery_requested = 1;
+}
+
+int host_keyboard_recovery_was_requested(void)
+{
+	return keyboard_recovery_requested;
+}
+#endif
 /*****************************************************************************/
 /* Console commands */
 static int command_host_event(int argc, char **argv)

@@ -236,6 +236,13 @@ static void vboot_hash_init(void)
 		data_size = tag->size;
 	} else
 #endif
+#ifdef CONFIG_HOSTCMD_EVENTS
+	/*
+	 * Don't auto-start hash computation if we've asked the host to enter
+	 * recovery mode, we probably won't need the hash anyway.
+	 */
+	if (!host_keyboard_recovery_was_requested())
+#endif
 	{
 		/* Start computing the hash of RW firmware */
 		vboot_hash_start(CONFIG_EC_WRITABLE_STORAGE_OFF +

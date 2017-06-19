@@ -163,7 +163,7 @@ void button_init(void)
 
 #ifdef CONFIG_BUTTON_RECOVERY
 	if (is_recovery_boot()) {
-		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
+		host_request_keyboard_recovery();
 		button_check_hw_reinit_required();
 	}
 #endif

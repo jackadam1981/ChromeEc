@@ -313,4 +313,15 @@ int host_get_vboot_mode(void);
  */
 void host_send_sysrq(uint8_t key);
 
+/*
+ * Request the host to go to recovery mode through the KEYBOARD_RECOVERY
+ * host event.
+ */
+void host_request_keyboard_recovery(void);
+
+/*
+ * Determine if we have requested the host to go to keyboard recovery.
+ * @return TRUE if host_request_keyboard_recovery() was previously called.
+ */
+int host_keyboard_recovery_was_requested(void);
 #endif  /* __CROS_EC_HOST_COMMAND_H */
