@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d35229eb_cc96bae1",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-19T20:26:34Z",
+      "side": 1,
+      "message": "Given it is always needed, remove this config",
+      "revId": "e1342531ff0bde33a78b7def68d355c2d5bae9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9e90500_60e0ed61",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-19T20:26:34Z",
+      "side": 1,
+      "message": "will not work if both sensors type are present.\nInstead, use if (!V(s)) { to run the code only on KX022",
+      "revId": "e1342531ff0bde33a78b7def68d355c2d5bae9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c63a2d38_0886192e",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-19T20:26:34Z",
+      "side": 1,
+      "message": "return the error reported by i2c/spi",
+      "revId": "e1342531ff0bde33a78b7def68d355c2d5bae9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c9de9a2_3c872e08",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-19T20:26:34Z",
+      "side": 1,
+      "message": "Is currently done later (line 526), code should be better integrated.",
+      "revId": "e1342531ff0bde33a78b7def68d355c2d5bae9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d44bcff_bc02d01b",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-19T20:26:34Z",
+      "side": 1,
+      "message": "looking at the AN [http://kionixfs.kionix.com/en/document/TN014%20KX022%2C%20KX023%20Accelerometer%20Power-On%20Procedure.pdf], some code is missing to know if the software reset was successful (reading COTR).",
+      "revId": "e1342531ff0bde33a78b7def68d355c2d5bae9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
