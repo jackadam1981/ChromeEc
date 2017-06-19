@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d947d956_70d33d9b",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-19T21:33:02Z",
+      "side": 1,
+      "message": "This won\u0027t be included by test binaries (e.g. pingpong, timer_dos, timer_jump, mutex, etc.) because they don\u0027t define chipset task thus config.h undefines CONFIG_CHIPSET_SKYLAKE.\n\nSo, I move it to config.h.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "ee7fbf430fe4757f9f2fcd4674e52bcb3ba7c404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
