@@ -302,6 +302,11 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		/* Enable wireless */
 		wireless_set_state(WIRELESS_ON);
 
+#ifdef POPPY_REV0
+		/* Enable Camera */
+		gpio_set_level(GPIO_PP3300_DX_CAM, 1);
+#endif
+
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_RESUME);
 
@@ -326,6 +331,11 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		/* Suspend wireless */
 		wireless_set_state(WIRELESS_SUSPEND);
 
+#ifdef POPPY_REV0
+		/* Suspend Camera */
+		gpio_set_level(GPIO_PP3300_DX_CAM, 0);
+#endif
+
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
 		 * to go into deep sleep in S3 or lower.
@@ -345,6 +355,11 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 
 		s0ix_lpc_enable_wake_mask();
 
+#ifdef POPPY_REV0
+		/* Suspend Camera */
+		gpio_set_level(GPIO_PP3300_DX_CAM, 0);
+#endif
+
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
 		 * to go into deep sleep in S0ix.
@@ -359,6 +374,11 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_RESUME);
+
+#ifdef POPPY_REV0
+		/* Enable Camera */
+		gpio_set_level(GPIO_PP3300_DX_CAM, 1);
+#endif
 
 		/*
 		 * Disable idle task deep sleep. This means that the low
