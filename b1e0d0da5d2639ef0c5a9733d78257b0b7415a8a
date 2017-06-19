@@ -22,6 +22,30 @@
       "revId": "b1e0d0da5d2639ef0c5a9733d78257b0b7415a8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "273485f9_c30faa9c",
+        "filename": "chip/stm32/clock-stm32f4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-19T10:27:46Z",
+      "side": 1,
+      "message": "The compile will fail at L182 if not defined.",
+      "parentUuid": "dec82dc9_80ffad60",
+      "range": {
+        "startLine": 114,
+        "startChar": 22,
+        "endLine": 114,
+        "endChar": 41
+      },
+      "revId": "b1e0d0da5d2639ef0c5a9733d78257b0b7415a8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
