@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1f738965_ed2ed8da",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-19T08:24:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "573d8bd5_5e037093",
+      "revId": "93512bba0f9065646a3d078318ccd1191ac065cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0cfb333d_2845fd2d",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2017-06-15T07:09:17Z",
       "side": 1,
       "message": "Some define use tabs, some use spaces. Either way is fine.",
+      "revId": "93512bba0f9065646a3d078318ccd1191ac065cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74cfc341_a375d905",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-06-19T08:24:12Z",
+      "side": 1,
+      "message": "oops. Let me align it.",
+      "parentUuid": "0cfb333d_2845fd2d",
       "revId": "93512bba0f9065646a3d078318ccd1191ac065cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
