@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "573d8bd5_5e037093",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-19T07:20:33Z",
+      "side": 1,
+      "message": "Would make libusb_single_write_and_read a little more complicated, so I guess we can leave this be for now.",
+      "parentUuid": "ba1c57ff_79d95596",
+      "revId": "93512bba0f9065646a3d078318ccd1191ac065cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0cfb333d_2845fd2d",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 2
