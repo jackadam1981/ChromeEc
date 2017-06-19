@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a7a18f4_46bfdfd2",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-19T23:34:17Z",
+      "side": 1,
+      "message": "FYI - UART is not initialized at this point, any prints in these functions will not be seen at this point.",
+      "range": {
+        "startLine": 363,
+        "startChar": 1,
+        "endLine": 364,
+        "endChar": 35
+      },
+      "revId": "e806e20c0318a0b69b45a63e226b1944a6338392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da66ab49_f96a9319",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-19T23:34:17Z",
+      "side": 1,
+      "message": "We\u0027re falling into this case repeatedly on my kevin, maybe it was unnoticed because the UART isn\u0027t initialized at gpio_pre_init().\n\nI saw the previous discussion and I still don\u0027t understand. If IBBR is set under some conditions then BBRAM was unexpectedly lost -- an error print is fine, but we need to clear IBBR and try to make things work again. Otherwise IBBR will be non-functional until we hard-power-down the EC?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "e806e20c0318a0b69b45a63e226b1944a6338392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
