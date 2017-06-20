@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ae65c76_46add551",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-20T09:28:33Z",
+      "side": 1,
+      "message": "if the new code works properly, the CONFIG_CURVE25519_CORTEXM0 is not terribly useful ?\ndo we want something like :\nifeq ($(CORE),cortex-m0)\ncommon-$(CONFIG_CURVE25519)+\u003dcurve25519-cortexm0/cortex_m0_mpy121666.o\ncommon-$(CONFIG_CURVE25519)+\u003dcurve25519-cortexm0/cortex_m0_reduce25519.o\n...\nendif",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 63
+      },
+      "revId": "a73358f5eb9de0268c9043129947e32699599eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
