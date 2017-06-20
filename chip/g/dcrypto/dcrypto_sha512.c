@@ -40,8 +40,12 @@ static uint32_t t_dcrypto;
 
 /* auto-generated from go test haven -test.run=TestSha512 -test.v */
 static const uint32_t IMEM_dcrypto[] = {
-/* @0x0: function expandw[84] { */
-#define CF_expandw_adr 0
+/* @0x0: function tag[1] { */
+#define CF_tag_adr 0
+    0xf8000003, /* sigini #3 */
+/* } */
+/* @0x1: function expandw[84] { */
+#define CF_expandw_adr 1
     0x4c3def00, /* xor r15, r15, r15 */
     0x803c0013, /* movi r15.0l, #19 */
     0x80bc0016, /* movi r15.1l, #22 */
@@ -129,8 +133,8 @@ static const uint32_t IMEM_dcrypto[] = {
     /*		   ) */
     0x0c000000, /* ret */
 /* } */
-/* @0x54: function Sha512_a[125] { */
-#define CF_Sha512_a_adr 84
+/* @0x55: function Sha512_a[125] { */
+#define CF_Sha512_a_adr 85
     0x68580c40, /* rshi r22, r12, r0 >> 64 */
     0x683c161c, /* rshi r15, r22, r0 >> 28 */
     0x68541622, /* rshi r21, r22, r0 >> 34 */
@@ -257,8 +261,8 @@ static const uint32_t IMEM_dcrypto[] = {
     0x50123400, /* add r4, r20, r17 */
     0x0c000000, /* ret */
 /* } */
-/* @0xd1: function Sha512_b[125] { */
-#define CF_Sha512_b_adr 209
+/* @0xd2: function Sha512_b[125] { */
+#define CF_Sha512_b_adr 210
     0x68588d40, /* rshi r22, r13, r4 >> 64 */
     0x683c961c, /* rshi r15, r22, r4 >> 28 */
     0x68549622, /* rshi r21, r22, r4 >> 34 */
@@ -385,8 +389,8 @@ static const uint32_t IMEM_dcrypto[] = {
     0x50023400, /* add r0, r20, r17 */
     0x0c000000, /* ret */
 /* } */
-/* @0x14e: function compress[70] { */
-#define CF_compress_adr 334
+/* @0x14f: function compress[70] { */
+#define CF_compress_adr 335
     0xfc000000, /* nop */
     0x4c7fff00, /* xor r31, r31, r31 */
     0x4c000000, /* xor r0, r0, r0 */
@@ -402,7 +406,7 @@ static const uint32_t IMEM_dcrypto[] = {
     0x953c0000, /* stdmp r15 */
     0x81bc002a, /* movi r15.3l, #42 */
     0x95800f00, /* lddmp r15 */
-    0x08000000, /* call &expandw */
+    0x08000001, /* call &expandw */
     0x84004000, /* ldi r0, [#0] */
     0x84044020, /* ldi r1, [#1] */
     0x84084040, /* ldi r2, [#2] */
@@ -427,10 +431,10 @@ static const uint32_t IMEM_dcrypto[] = {
     0x0500a007, /* loop #10 ( */
     0x8c440800, /* ldc *1, *0++ */
     0x8c081b00, /* ld *2, *3++ */
-    0x08000054, /* call &Sha512_a */
+    0x08000055, /* call &Sha512_a */
     0x8c440800, /* ldc *1, *0++ */
     0x8c081b00, /* ld *2, *3++ */
-    0x080000d1, /* call &Sha512_b */
+    0x080000d2, /* call &Sha512_b */
     0xfc000000, /* nop */
     /*		   ) */
     0x843c4000, /* ldi r15, [#0] */
@@ -459,7 +463,7 @@ static const uint32_t IMEM_dcrypto[] = {
     0x881c40e0, /* sti r7, [#7] */
     /*		   ) */
     0x0c000000, /* ret */
-		/* } */
+    /* } */
 };
 
 struct DMEM_sha512 {
