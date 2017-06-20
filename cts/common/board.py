@@ -11,7 +11,7 @@ import subprocess as sp
 import time
 
 
-OCD_SCRIPT_DIR = '/usr/local/share/openocd/scripts'
+OCD_SCRIPT_DIR = '/usr/share/openocd/scripts'
 OPENOCD_CONFIGS = {
     'stm32l476g-eval': 'board/stm32l4discovery.cfg',
     'nucleo-f072rb': 'board/st_nucleo_f0.cfg',
