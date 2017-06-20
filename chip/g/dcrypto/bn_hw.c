@@ -1047,7 +1047,8 @@ struct DMEM_montmul {
 void bn_mont_modexp_asm(struct LITE_BIGNUM *output,
 		const struct LITE_BIGNUM *input,
 		const struct LITE_BIGNUM *exp,
-		const struct LITE_BIGNUM *N) {
+		const struct LITE_BIGNUM *N,
+		uint32_t pubexp) {
 	int i, result;
 	struct DMEM_montmul *montmul;
 
