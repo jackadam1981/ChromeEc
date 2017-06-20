@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3179ef7f_3da740c9",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-06-20T04:07:36Z",
+      "side": 1,
+      "message": "Although UART is not initialized at this point, cprintf() still put the characters in the UART output buffer. Once the hardware is initialized, we still can see these messages in the console log. \n\nThe following is the console log we turn off VBAT and press reset-pin on our evb.\n\nVBAT drop!\nIBBR set: BBRAM corrupted!\nIBBR set: BBRAM corrupted!\nIBBR set: BBRAM corrupted!\nIBBR set: BBRAM corrupted!\n\n\n--- UART initialized after reboot ---\n[Reset cause: reset-pin]\n[Image: RO, npcx7_evb_v1.1.6599-1a09831 2017-06-19 15:33:13 jun@ubuntu]\n[0.003657 KB boot key mask 0]\n[0.003910 Inits done]\n[0.020506 SW 0x04]\n[0.022334 hash start 0x00040000 0x00011304]\n[0.023387 KB init state: -- -- -- -- -- -- -- -- -- -- -- -- --]\n[0.023972 KB disable_scanning_mask changed: 0x00000001]\nConsole is enabled; type HELP for help.\n\u003e [0.047463 event set 0x00002000]\n[0.047884 hostcmd init 0x2000]\n[0.504843 hash done 7bf0422965b82902be558834b30abe7a87bb19c365521a4f047e497fa525ec1d]\n[2.066642 Fan 0 stalled!]\n[2.066976 event set 0x00000400]\n[3.071261 Fan 0 stalled!]\n[4.075589 Fan 0 stalled!]",
+      "parentUuid": "8a7a18f4_46bfdfd2",
+      "range": {
+        "startLine": 363,
+        "startChar": 1,
+        "endLine": 364,
+        "endChar": 35
+      },
+      "revId": "e806e20c0318a0b69b45a63e226b1944a6338392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da66ab49_f96a9319",
         "filename": "chip/npcx/system.c",
         "patchSetId": 8
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Yeah I think it makes sense. Basically if BBRAM gets corrupt for any reason, then print out an error and reset IBBR. That way BBRAM would be functional again without need of an EC reset.",
       "parentUuid": "da66ab49_f96a9319",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "e806e20c0318a0b69b45a63e226b1944a6338392",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffd4676c_fd9f6140",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-06-20T04:07:36Z",
+      "side": 1,
+      "message": "Hi Shawn \u0026 Furquan:\nPer last discussion, we just want to emphasize VBAT power drop is a board issue must be fixed during developing. Consider what you suggested, yes, I think it\u0027s also important to avoid ec failing this case repeatedly.\n\nIf the warning message is good enough, we\u0027ll push a new CL to clear IBBR when BBRAM is corrupted.",
+      "parentUuid": "493d4091_ae6e9862",
       "range": {
         "startLine": 103,
         "startChar": 0,
