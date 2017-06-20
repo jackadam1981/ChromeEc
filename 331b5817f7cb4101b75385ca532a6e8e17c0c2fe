@@ -22,6 +22,29 @@
       "revId": "331b5817f7cb4101b75385ca532a6e8e17c0c2fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0f3a87e_b3d0d3df",
+        "filename": "common/curve25519-cortexm0/api.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-06-20T09:34:21Z",
+      "side": 1,
+      "message": "Are these defines really necessary? It seems better to use the curve25519 suffixed versions, \"crypto_scalarmult\" is pretty generic.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 78
+      },
+      "revId": "331b5817f7cb4101b75385ca532a6e8e17c0c2fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
