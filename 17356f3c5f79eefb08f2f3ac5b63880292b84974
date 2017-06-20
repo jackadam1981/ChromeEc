@@ -22,6 +22,30 @@
       "revId": "17356f3c5f79eefb08f2f3ac5b63880292b84974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65a11720_02f278ff",
+        "filename": "util/genvif.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-06-20T17:20:32Z",
+      "side": 1,
+      "message": "Maybe we should throw an error if the type resolves to an unknown PDO_TYPE.",
+      "parentUuid": "71c0ed06_cb8ecf70",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 20
+      },
+      "revId": "17356f3c5f79eefb08f2f3ac5b63880292b84974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
