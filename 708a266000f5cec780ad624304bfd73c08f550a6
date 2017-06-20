@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b79a31d_62652add",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-20T00:15:24Z",
+      "side": 1,
+      "message": "Add kevin test here also.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "708a266000f5cec780ad624304bfd73c08f550a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ca83f19_d74af6d4",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-20T00:15:24Z",
+      "side": 1,
+      "message": "Add a comment about \u0027ms\u0027 units.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 11
+      },
+      "revId": "708a266000f5cec780ad624304bfd73c08f550a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df2cc744_d87fd39a",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-20T00:15:24Z",
+      "side": 1,
+      "message": "Add a comment here explaining what these tables are, especially mention that they are handled in sequence order (and order is important).",
+      "revId": "708a266000f5cec780ad624304bfd73c08f550a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6ab44cf_81822787",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-20T00:15:24Z",
+      "side": 1,
+      "message": "This function can be static. Also comment what the return value means.",
+      "range": {
+        "startLine": 246,
+        "startChar": 4,
+        "endLine": 246,
+        "endChar": 17
+      },
+      "revId": "708a266000f5cec780ad624304bfd73c08f550a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
