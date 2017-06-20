@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "06a535d9_2838e071",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-06-20T17:43:44Z",
+      "side": 1,
+      "message": "Good catch... this should go to POWER_S0S3.",
+      "parentUuid": "5e925323_ff0e5d6e",
+      "range": {
+        "startLine": 347,
+        "startChar": 3,
+        "endLine": 347,
+        "endChar": 21
+      },
+      "revId": "8b3bcd8f8f62d65b837ecab8c5ceeca97881e095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d185a7f_3e95aebf",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -117,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "756bd30d_1f372630",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-06-20T17:43:44Z",
+      "side": 1,
+      "message": "Right, will fix it.",
+      "parentUuid": "3d185a7f_3e95aebf",
+      "range": {
+        "startLine": 377,
+        "startChar": 2,
+        "endLine": 377,
+        "endChar": 30
+      },
+      "revId": "8b3bcd8f8f62d65b837ecab8c5ceeca97881e095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "feba2772_6b2f9d41",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -128,6 +176,30 @@
       "writtenOn": "2017-06-20T16:58:08Z",
       "side": 1,
       "message": "Here you need to check the return value and possibly make a state transition, right?",
+      "range": {
+        "startLine": 379,
+        "startChar": 2,
+        "endLine": 379,
+        "endChar": 15
+      },
+      "revId": "8b3bcd8f8f62d65b837ecab8c5ceeca97881e095",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "598078fa_faa9b438",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-06-20T17:43:44Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "feba2772_6b2f9d41",
       "range": {
         "startLine": 379,
         "startChar": 2,
