@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ddde0fe_a1d570d6",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-20T19:27:53Z",
+      "side": 0,
+      "message": "the pin used to be enabled as a wake source unconditionally, now it is enabled as such only if the DIO_WAKE_EN0 flags bit is set, is this intentional?",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 37
+      },
+      "revId": "3609e935063c4095901e5271e1450eae43d08f2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a801a3ca_0091d70d",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-20T19:27:53Z",
+      "side": 1,
+      "message": "sorry, I am a bit slow with this review: why does this function have to change. It has not been used to set wake mode before, and I don\u0027t see any use changes for it in the codebase?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "a4c10cff3dcf25be4114d2b3126fc3f10dd086ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab5ac44_134a2ee0",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-20T19:27:53Z",
+      "side": 1,
+      "message": "you could move this into the if scope below line 295 while you are at it.",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 18
+      },
+      "revId": "a4c10cff3dcf25be4114d2b3126fc3f10dd086ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
