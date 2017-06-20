@@ -34,6 +34,24 @@
       "revId": "721c01fa5f552b652d659b300a70731ff7110aae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84312f55_c449c3f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-20T06:17:04Z",
+      "side": 1,
+      "message": "Not sure, apart from looking at git log | grep BRANCH... Seems like BRANCH\u003dreef is ok in this case.",
+      "parentUuid": "54214bc0_b8d28f1a",
+      "revId": "721c01fa5f552b652d659b300a70731ff7110aae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
