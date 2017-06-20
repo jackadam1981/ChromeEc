@@ -78,12 +78,9 @@ void bn_init(struct LITE_BIGNUM *bn, void *buf, size_t len);
 #define bn_bits(b) ((b)->dmax * LITE_BN_BITS2)
 int bn_eq(const struct LITE_BIGNUM *a, const struct LITE_BIGNUM *b);
 int bn_check_topbit(const struct LITE_BIGNUM *N);
-void bn_mont_modexp(struct LITE_BIGNUM *output, const struct LITE_BIGNUM *input,
-		const struct LITE_BIGNUM *exp, const struct LITE_BIGNUM *N);
-void bn_mont_modexp_asm(struct LITE_BIGNUM *output,
-			const struct LITE_BIGNUM *input,
-			const struct LITE_BIGNUM *exp,
-			const struct LITE_BIGNUM *N);
+void bn_modexp(struct LITE_BIGNUM *output, const struct LITE_BIGNUM *input,
+		const struct LITE_BIGNUM *exp, const struct LITE_BIGNUM *N,
+		uint32_t pubexp);
 uint32_t bn_add(struct LITE_BIGNUM *c, const struct LITE_BIGNUM *a);
 uint32_t bn_sub(struct LITE_BIGNUM *c, const struct LITE_BIGNUM *a);
 int bn_modinv_vartime(struct LITE_BIGNUM *r, const struct LITE_BIGNUM *e,
@@ -91,7 +88,16 @@ int bn_modinv_vartime(struct LITE_BIGNUM *r, const struct LITE_BIGNUM *e,
 int bn_is_bit_set(const struct LITE_BIGNUM *a, int n);
 
 /*
- * ECC.
+ * Accelerated bn.
+ */
+void dcrypto_modexp(struct LITE_BIGNUM *output,
+			const struct LITE_BIGNUM *input,
+			const struct LITE_BIGNUM *exp,
+			const struct LITE_BIGNUM *N,
+			uint32_t pubexp);
+
+/*
+ * Accelerated p256.
  */
 int dcrypto_p256_ecdsa_sign(const p256_int *key, const p256_int *message,
 		p256_int *r, p256_int *s)
@@ -110,7 +116,7 @@ int dcrypto_p256_is_valid_point(const p256_int *x, const p256_int *y)
 	__attribute__((warn_unused_result));
 
 /*
- * Runtime.
+ * Accelerator runtime.
  *
  * Note dcrypto_init_and_lock grabs a mutex and dcrypto_unlock releases it.
  * Do not use dcrypto_call, dcrypto_imem_load or dcrypto_dmem_load w/o holding

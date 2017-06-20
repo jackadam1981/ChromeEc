@@ -287,7 +287,7 @@ int DCRYPTO_appkey_derive(enum dcrypto_appid appid, const uint32_t input[8],
 
 /* Number of bytes in the salt object. */
 #define DCRYPTO_CIPHER_SALT_SIZE 16
-BUILD_ASSERT(DCRYPTO_CIPHER_SALT_SIZE == CIPHER_SALT_SIZE);
+//BUILD_ASSERT(DCRYPTO_CIPHER_SALT_SIZE == CIPHER_SALT_SIZE);
 
 /*
  * Encrypt/decrypt a flat blob.
