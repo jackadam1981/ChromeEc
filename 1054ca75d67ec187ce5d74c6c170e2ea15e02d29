@@ -34,6 +34,24 @@
       "revId": "1054ca75d67ec187ce5d74c6c170e2ea15e02d29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60f6cca7_3e8bcaf4",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-20T23:29:50Z",
+      "side": 1,
+      "message": "I was just thinking if a bad pointer was passed into the function that happened to point to a bunch of zeroes, we\u0027d clear out as many words as the pointer pointed to.\n\nIt would just constrain the call to either both images, or just the active image.\n\nsystem_update_rollback_mask_with_active_img();\nsystem_update_rollback_mask_with_both_imgs();\n\nKinda verbose, but pretty clear? Up for other suggestions too.",
+      "parentUuid": "7a8ed352_fdce4d2d",
+      "revId": "1054ca75d67ec187ce5d74c6c170e2ea15e02d29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
