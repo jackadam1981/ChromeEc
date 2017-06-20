@@ -565,7 +565,7 @@ const char *system_get_build_info(void)
 	return combined_build_info;
 }
 
-void system_update_rollback_mask(void)
+void system_update_rollback_mask(uintptr_t base_a, uintptr_t base_b)
 {
 #ifndef CR50_DEV
 	int updated_words_count = 0;
@@ -575,10 +575,8 @@ void system_update_rollback_mask(void)
 	const struct SignedHeader *header_a;
 	const struct SignedHeader *header_b;
 
-	header_a = (const struct SignedHeader *)
-		get_program_memory_addr(SYSTEM_IMAGE_RW);
-	header_b = (const struct SignedHeader *)
-		get_program_memory_addr(SYSTEM_IMAGE_RW_B);
+	header_a = (const struct SignedHeader *)base_a;
+	header_b = (const struct SignedHeader *)base_b;
 
 	/*
 	 * Make sure INFO1 RW map space is readable.
@@ -615,9 +613,13 @@ void system_update_rollback_mask(void)
 			 * those words in the INFO1 space which have both A
 			 * and B header's infomap bit set to zero.
 			 */
-			header_mask =
-				header_a->infomap[i/32] |
-				header_b->infomap[i/32];
+			header_mask = 0;
+
+			if (header_a)
+				header_mask |= header_a->infomap[i/32];
+
+			if (header_b)
+				header_mask |= header_b->infomap[i/32];
 		}
 
 		/* Get the next bit value. */

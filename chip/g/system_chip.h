@@ -52,10 +52,15 @@ int system_rollback_detected(void);
 int system_battery_cutoff_support_required(void);
 
 /**
- * Modify info1 RW rollback mask to match currently executing RW image's
- * header.
+ * Modify info1 RW rollback mask to match the passed in header(s).
+ *
+ * If both headers' addressses are passed in, the INFO1 rollback mask field is
+ * erased in case both headers have a zero in the appropriate bit. If only one
+ * header address is passed (the other one is set to zero), only the valid
+ * header is considered when updating INFO1.
+ *
  */
-void system_update_rollback_mask(void);
+void system_update_rollback_mask(uintptr_t base_a, uintptr_t base_b);
 
 /**
  * Scan INFO1 rollback map and infomap fields of both RW and RW_B image
