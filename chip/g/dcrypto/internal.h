@@ -79,11 +79,13 @@ void bn_init(struct LITE_BIGNUM *bn, void *buf, size_t len);
 int bn_eq(const struct LITE_BIGNUM *a, const struct LITE_BIGNUM *b);
 int bn_check_topbit(const struct LITE_BIGNUM *N);
 void bn_mont_modexp(struct LITE_BIGNUM *output, const struct LITE_BIGNUM *input,
-		const struct LITE_BIGNUM *exp, const struct LITE_BIGNUM *N);
+		const struct LITE_BIGNUM *exp, const struct LITE_BIGNUM *N,
+		uint32_t pubexp);
 void bn_mont_modexp_asm(struct LITE_BIGNUM *output,
 			const struct LITE_BIGNUM *input,
 			const struct LITE_BIGNUM *exp,
-			const struct LITE_BIGNUM *N);
+			const struct LITE_BIGNUM *N,
+			uint32_t pubexp);
 uint32_t bn_add(struct LITE_BIGNUM *c, const struct LITE_BIGNUM *a);
 uint32_t bn_sub(struct LITE_BIGNUM *c, const struct LITE_BIGNUM *a);
 int bn_modinv_vartime(struct LITE_BIGNUM *r, const struct LITE_BIGNUM *e,
