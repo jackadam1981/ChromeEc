@@ -620,14 +620,6 @@ void pmu_init(void)
 static void pmu_chipset_startup(void)
 {
 	pmu_init();
-
-#ifdef BOARD_PIT
-	/* Enable FET4 by default which allows for SD Card booting */
-	{
-		int pgood;
-		pmu_enable_fet(4, 1, &pgood);
-	}
-#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, pmu_chipset_startup, HOOK_PRIO_DEFAULT);
 
