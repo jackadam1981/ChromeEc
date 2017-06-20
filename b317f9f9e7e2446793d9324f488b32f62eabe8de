@@ -1,0 +1,146 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b4e425c_c7b52dcf",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-20T18:30:59Z",
+      "side": 1,
+      "message": "This file\u0027s change should be its own CL.",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51fb3e81_15b92cf1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-20T18:30:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure that clearing it is necessary. One could compare if the current set orientation state differs from the last reported. If they do, report it, and update last reported.",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884561cd_b60b3126",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-20T18:30:59Z",
+      "side": 1,
+      "message": "Did you forget to remove this?",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbdc22a4_848af792",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-20T18:30:59Z",
+      "side": 1,
+      "message": "Again, here, I think you may be able to set the orientation field in \u0027s\u0027 directly.",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de50f141_f3bfac1c",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-20T18:30:59Z",
+      "side": 1,
+      "message": "I think you might just be able to update the orientation member directly.",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74956a1f_07a24b6f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-20T18:30:59Z",
+      "side": 1,
+      "message": "I don\u0027t think that these should be CONFIG options.",
+      "range": {
+        "startLine": 1792,
+        "startChar": 0,
+        "endLine": 1795,
+        "endChar": 43
+      },
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4478bbe8_ddb50797",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2062,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-20T18:30:59Z",
+      "side": 1,
+      "message": "I think this should be sufficient. Maybe we could add an \"unknown\" type as the first index which we could initialize each sensor with.",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80a2caa6_382572cf",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-20T18:30:59Z",
+      "side": 1,
+      "message": "Instead of events, could we just have a \"enum motionsense_orientation\" member? It could be initialized the the \u0027unknown\u0027 value.",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
