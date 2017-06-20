@@ -12,6 +12,7 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "registers.h"
+#include "system.h"
 #include "util.h"
 
 static int using_pwm[PWM_CH_COUNT];
@@ -97,12 +98,16 @@ static void pwm_configure(enum pwm_channel ch)
 	tim->cr1 |= (1 << 7) | (1 << 0);
 
 	using_pwm[ch] = 1;
+
+	/* Prevent sleep */
+	disable_sleep(SLEEP_MASK_PWM);
 }
 
 static void pwm_disable(enum pwm_channel ch)
 {
 	const struct pwm_t *pwm = pwm_channels + ch;
 	timer_ctlr_t *tim = (timer_ctlr_t *)(pwm->tim.base);
+	int i;
 
 	if (using_pwm[ch] == 0)
 		return;
@@ -117,6 +122,14 @@ static void pwm_disable(enum pwm_channel ch)
 	__hw_timer_enable_clock(pwm->tim.id, 0);
 
 	using_pwm[ch] = 0;
+
+	for (i = 0; i < PWM_CH_COUNT; i++) {
+		if (using_pwm[i])
+			return;
+	}
+
+	/* No other PWM is active, allow sleep */
+	enable_sleep(SLEEP_MASK_PWM);
 }
 
 void pwm_enable(enum pwm_channel ch, int enabled)
