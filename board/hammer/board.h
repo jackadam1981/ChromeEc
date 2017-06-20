@@ -46,7 +46,7 @@
 
 #define CONFIG_RO_MEM_OFF	0
 #define CONFIG_RO_STORAGE_OFF	0
-#define CONFIG_RO_SIZE		(44*1024)
+#define CONFIG_RO_SIZE		(60*1024)
 
 /* EC rollback protection block */
 #define CONFIG_ROLLBACK_OFF (CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE)
