@@ -501,7 +501,6 @@ int DCRYPTO_rsa_encrypt(struct RSA *rsa, uint8_t *out, uint32_t *out_len,
 	uint32_t e_buf[LITE_BN_BYTES / sizeof(uint32_t)];
 
 	struct LITE_BIGNUM padded;
-	struct LITE_BIGNUM e;
 	struct LITE_BIGNUM encrypted;
 
 	if (!check_modulus_params(&rsa->N, sizeof(padded_buf), out_len))
@@ -509,8 +508,6 @@ int DCRYPTO_rsa_encrypt(struct RSA *rsa, uint8_t *out, uint32_t *out_len,
 
 	bn_init(&padded, padded_buf, bn_size(&rsa->N));
 	bn_init(&encrypted, out, bn_size(&rsa->N));
-	bn_init(&e, e_buf, sizeof(e_buf));
-	BN_DIGIT(&e, 0) = rsa->e;
 
 	switch (padding) {
 	case PADDING_MODE_OAEP:
@@ -533,7 +530,7 @@ int DCRYPTO_rsa_encrypt(struct RSA *rsa, uint8_t *out, uint32_t *out_len,
 		/* If in_len < bn_size(&padded), padded will
 		 * have leading zero bytes. */
 		memcpy(&p[bn_size(&padded) - in_len], in, in_len);
-		/* TODO(ngm): in may be > N, bn_mont_mod_exp() should
+		/* TODO(ngm): in may be > N, bn_mod_exp() should
 		 * handle this case. */
 		break;
 	default:
@@ -542,7 +539,7 @@ int DCRYPTO_rsa_encrypt(struct RSA *rsa, uint8_t *out, uint32_t *out_len,
 
 	/* Reverse from big-endian to little-endian notation. */
 	reverse((uint8_t *) padded.d, bn_size(&padded));
-	bn_mont_modexp(&encrypted, &padded, &e, &rsa->N);
+	bn_modexp_word(&encrypted, &padded, rsa->e, &rsa->N);
 	/* Back to big-endian notation. */
 	reverse((uint8_t *) encrypted.d, bn_size(&encrypted));
 	*out_len = bn_size(&encrypted);
@@ -576,7 +573,7 @@ int DCRYPTO_rsa_decrypt(struct RSA *rsa, uint8_t *out, uint32_t *out_len,
 
 	/* Reverse from big-endian to little-endian notation. */
 	reverse((uint8_t *) encrypted.d, encrypted.dmax * LITE_BN_BYTES);
-	bn_mont_modexp(&padded, &encrypted, &rsa->d, &rsa->N);
+	bn_modexp_blinded(&padded, &encrypted, &rsa->d, &rsa->N, rsa->e);
 	/* Back to big-endian notation. */
 	reverse((uint8_t *) padded.d, padded.dmax * LITE_BN_BYTES);
 
@@ -643,7 +640,7 @@ int DCRYPTO_rsa_sign(struct RSA *rsa, uint8_t *out, uint32_t *out_len,
 
 	/* Reverse from big-endian to little-endian notation. */
 	reverse((uint8_t *) padded.d, bn_size(&padded));
-	bn_mont_modexp(&signature, &padded, &rsa->d, &rsa->N);
+	bn_modexp_blinded(&signature, &padded, &rsa->d, &rsa->N, rsa->e);
 	/* Back to big-endian notation. */
 	reverse((uint8_t *) signature.d, bn_size(&signature));
 	*out_len = bn_size(&rsa->N);
@@ -659,11 +656,9 @@ int DCRYPTO_rsa_verify(const struct RSA *rsa, const uint8_t *digest,
 {
 	uint32_t padded_buf[RSA_WORDS_4K];
 	uint32_t signature_buf[RSA_WORDS_4K];
-	uint32_t e_buf[LITE_BN_BYTES / sizeof(uint32_t)];
 
 	struct LITE_BIGNUM padded;
 	struct LITE_BIGNUM signature;
-	struct LITE_BIGNUM e;
 	int ret = 1;
 
 	if (!check_modulus_params(&rsa->N, sizeof(padded_buf), NULL))
@@ -674,12 +669,10 @@ int DCRYPTO_rsa_verify(const struct RSA *rsa, const uint8_t *digest,
 	bn_init(&signature, signature_buf, bn_size(&rsa->N));
 	memcpy(signature_buf, sig, bn_size(&rsa->N));
 	bn_init(&padded, padded_buf, bn_size(&rsa->N));
-	bn_init(&e, e_buf, sizeof(e_buf));
-	BN_DIGIT(&e, 0) = rsa->e;
 
 	/* Reverse from big-endian to little-endian notation. */
 	reverse((uint8_t *) signature.d, bn_size(&signature));
-	bn_mont_modexp(&padded, &signature, &e, &rsa->N);
+	bn_modexp_word(&padded, &signature, rsa->e, &rsa->N);
 	/* Back to big-endian notation. */
 	reverse((uint8_t *) padded.d, bn_size(&padded));
 
