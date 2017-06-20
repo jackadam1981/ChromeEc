@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34f43fe3_b12ef815",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-20T06:40:03Z",
+      "side": 1,
+      "message": "nit: our usual style is:\n#ifdef CHIP_FAMILY_STM32F4",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 12
+      },
+      "revId": "cd201c68fb66f570851a3d59ad7b45710b5d78cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
