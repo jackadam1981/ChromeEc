@@ -65,6 +65,29 @@
     },
     {
       "key": {
+        "uuid": "bb9c6214_5e67ac2b",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-20T00:18:46Z",
+      "side": 1,
+      "message": "These structs should be static.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 40
+      },
+      "revId": "708a266000f5cec780ad624304bfd73c08f550a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6ab44cf_81822787",
         "filename": "power/rk3399.c",
         "patchSetId": 2
