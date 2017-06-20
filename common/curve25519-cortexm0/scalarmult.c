@@ -57,12 +57,13 @@
     Creative Commons CC0 1.0 Universal public domain dedication
   ============================================================================*/
 
-#include <inttypes.h>
+#include <stdint.h>
 
 // comment out this line if implementing conditional swaps by data moves
 //#define DH_SWAP_BY_POINTERS
 
 // Define the symbol to 0 in order to only use ladder steps
+#define DH_REPLACE_LAST_THREE_LADDERSTEPS_WITH_DOUBLINGS 0
 //#define DH_REPLACE_LAST_THREE_LADDERSTEPS_WITH_DOUBLINGS 1 
 
 typedef uint8_t  uint8;

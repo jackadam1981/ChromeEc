@@ -19,12 +19,13 @@
  *
  * The field functions are shared by Ed25519 and X25519 where possible. */
 
+#include "common.h"
 #include "curve25519.h"
 #include "trng.h"
 #include "util.h"
 #define CRYPTO_memcmp safe_memcmp
 
-
+#ifndef CONFIG_CURVE25519_CORTEXM0
 /*
  * fe means field element. Here the field is \Z/(2^255-19). An element t,
  * entries t[0]...t[9], represents the integer t[0]+2^26 t[1]+2^51 t[2]+2^77
@@ -827,6 +828,15 @@ static void x25519_scalar_mult(uint8_t out[32], const uint8_t scalar[32],
                                const uint8_t point[32]) {
   x25519_scalar_mult_generic(out, scalar, point);
 }
+#else /* CONFIG_CURVE25519_CORTEXM0 */
+#include "common/curve25519-cortexm0/api.h"
+
+static void x25519_scalar_mult(uint8_t out[32], const uint8_t scalar[32],
+                               const uint8_t point[32]) {
+  /* Use ARM Cortex-M0 optimized version */
+  crypto_scalarmult_curve25519(out, scalar, point);
+}
+#endif
 
 #ifdef CONFIG_RNG
 void X25519_keypair(uint8_t out_public_value[32], uint8_t out_private_key[32]) {
