@@ -45,6 +45,29 @@
       "revId": "2e24d5b2265c26c8d0f29d6f8fd6307b2b0dc12e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf3fccb5_2e2f502b",
+        "filename": "chip/stm32/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-20T16:40:30Z",
+      "side": 1,
+      "message": "You can call pwm_get_enabled() instead.",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 19
+      },
+      "revId": "2e24d5b2265c26c8d0f29d6f8fd6307b2b0dc12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
