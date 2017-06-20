@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b2b77b5_c5986862",
+        "filename": "chip/g/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-20T23:17:04Z",
+      "side": 1,
+      "message": "Can we make this static and create new wrappers for the two uses cases we have now?",
+      "revId": "1054ca75d67ec187ce5d74c6c170e2ea15e02d29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
