@@ -194,9 +194,9 @@ endef
 $(eval $(call get_sources,y))
 $(eval $(call get_sources,ro))
 
-dirs=core/$(CORE) chip/$(CHIP) $(BDIR) common power test cts/common cts/$(CTS_MODULE)
+dirs=core/$(CORE) chip/$(CHIP) $(BDIR) power test cts/common cts/$(CTS_MODULE)
 dirs+= private $(PDIR)
-dirs+=$(shell find driver -type d)
+dirs+=$(shell find common driver -type d)
 common_dirs=util
 
 ifeq ($(custom-ro_objs-y),)
