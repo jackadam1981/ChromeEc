@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "140bf274_c772021b",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-06-20T20:12:10Z",
+      "side": 1,
+      "message": "Using gpio_set_flags to configure the wake pins is more straight forward then writing each of the registers individually.\n\nWe have a bunch of places in cr50 code that enable, disable, and reconfigure wake pins. You need to do it carefully disabling the wake pin, re configuring it, and then reenabling it. We have a bug open to make this more straightforward. Using gpio_set_flags makes it easier.",
+      "parentUuid": "a801a3ca_0091d70d",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 0
+      },
+      "revId": "a4c10cff3dcf25be4114d2b3126fc3f10dd086ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aab5ac44_134a2ee0",
         "filename": "chip/g/gpio.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-20T19:27:53Z",
       "side": 1,
       "message": "you could move this into the if scope below line 295 while you are at it.",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 18
+      },
+      "revId": "a4c10cff3dcf25be4114d2b3126fc3f10dd086ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2983a27f_0ec6a499",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-06-20T20:12:10Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "aab5ac44_134a2ee0",
       "range": {
         "startLine": 261,
         "startChar": 1,
