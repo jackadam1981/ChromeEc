@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67511612_5a435fda",
+        "filename": "common/button.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-06-21T22:18:29Z",
+      "side": 1,
+      "message": "Could you please add a comment here which seems to be:\n\nbutton gets pressed. 4 second timer fires. if still pressed device is reset. Otherwise sysrq+x is set.\n\nDid I get that right?\n\nBasically, something happens no matter what once recovery button is set.",
+      "revId": "f5d10c77d0071bcbbe9294bffa2499a0550c71fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
