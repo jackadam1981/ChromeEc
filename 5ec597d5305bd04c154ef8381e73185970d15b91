@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2751c0d_f2408f55",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-21T07:56:47Z",
+      "side": 1,
+      "message": "I wonder if we can make up some format to transmit \u003e 256 bytes, while keeping compatibility.\n\nMaybe something like this: if bit 7 of rd count is set, then there is a second rd count byte right afterwards, e.g.:\n\n     +----------+-----------+---------------+---------------+----------------+\n     | port: 1B | addr: 1B  | wr count : 1B | rd count : 1B |  rd count2 : 1B |\n     +----------+-----------+---------------+---------------+----------------+\n\nAnd then the length is (rd count \u0026 0x7f) | (rd count2 \u003c\u003c 7).",
+      "revId": "5ec597d5305bd04c154ef8381e73185970d15b91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
