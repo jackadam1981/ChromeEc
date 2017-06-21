@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff4d6fdc_96876561",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-06-21T08:51:10Z",
+      "side": 1,
+      "message": "Is it a redundant unlock operation?",
+      "range": {
+        "startLine": 581,
+        "startChar": 1,
+        "endLine": 581,
+        "endChar": 24
+      },
+      "revId": "bec49ae74048365241025138a85bf717d5e1cf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
