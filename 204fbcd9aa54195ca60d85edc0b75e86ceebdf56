@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5235405d_bc2304c7",
+        "filename": "core/cortex-m0/curve25519/cortex_m0_reduce25519.s",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-21T15:53:20Z",
+      "side": 1,
+      "message": "if you have already changed the line-endings, maybe you should have cleaned the whitespace errors at the same time.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 1
+      },
+      "revId": "204fbcd9aa54195ca60d85edc0b75e86ceebdf56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
