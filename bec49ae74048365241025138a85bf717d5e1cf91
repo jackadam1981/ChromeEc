@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "0870b8e8_35509efe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-21T20:31:26Z",
+      "side": 1,
+      "message": "typo: \u0027driver\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "bec49ae74048365241025138a85bf717d5e1cf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "790559a1_a4e01c3a",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-21T20:31:26Z",
+      "side": 1,
+      "message": "The application note says that for I2C communication, you may need to write to two addresses in the event that the first address is NACK\u0027d.",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 464,
+        "endChar": 14
+      },
+      "revId": "bec49ae74048365241025138a85bf717d5e1cf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20d3570f_8977087f",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-21T20:31:26Z",
+      "side": 1,
+      "message": "I think it might be good to have a print that says the software reset failed and that it needs to be power cycled. (or maybe just that the software reset failed).\n\nWhat do you all think?",
+      "revId": "bec49ae74048365241025138a85bf717d5e1cf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47f45145_36db18e9",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-21T20:31:26Z",
+      "side": 1,
+      "message": "So now we do two software resets for the KX022? Is that necessary?",
+      "revId": "bec49ae74048365241025138a85bf717d5e1cf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff4d6fdc_96876561",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 2

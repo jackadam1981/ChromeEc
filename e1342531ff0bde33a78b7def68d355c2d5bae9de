@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7925f3fe_31c49a70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-21T20:31:26Z",
+      "side": 1,
+      "message": "presumably every branch that uses the KX022. I believe that\u0027s also glados, reef, and gru.",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "e1342531ff0bde33a78b7def68d355c2d5bae9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d35229eb_cc96bae1",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 1
