@@ -118,6 +118,8 @@ static struct pd_protocol {
 	enum pd_states task_state;
 	/* PD state when we run state handler the last time */
 	enum pd_states last_state;
+	/* requested PD state jump */
+	enum pd_states jump_req_state;
 	/* The state to go to after timeout */
 	enum pd_states timeout_state;
 	/* Timeout for the current state. Set to 0 for no timeout. */
@@ -1803,6 +1805,10 @@ void pd_task(void)
 			if (!tcpm_get_message(port, payload, &head))
 				handle_request(port, head, payload);
 		}
+
+		if (evt & PD_EVENT_JUMP_STATE)
+			pd[port].task_state = pd[port].jump_req_state;
+
 		/* if nothing to do, verify the state of the world in 500ms */
 		this_state = pd[port].task_state;
 		timeout = 500*MSEC;
@@ -3108,16 +3114,30 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dual_role_force_sink, HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 #ifdef CONFIG_COMMON_RUNTIME
+
+/*
+ * request pd_task to jump to a new state.  hang around for a while
+ * until we observe the state change.  this can take a while (like
+ * 300ms) on startup when pd_task is sleeping in tcpci_tcpm_init .
+ */
+
 void pd_set_suspend(int port, int enable)
 {
-	int tries = 3;
+	int tries = 300;
 
-	do {
-		set_state(port, enable ? PD_STATE_SUSPENDED :
-			  PD_DEFAULT_STATE(port));
+	if (enable) {
+		do {
+			pd[port].jump_req_state = PD_STATE_SUSPENDED;
+			task_set_event(PD_PORT_TO_TASK_ID(port),
+				       PD_EVENT_JUMP_STATE, 0);
+			if (pd[port].task_state == PD_STATE_SUSPENDED)
+				break;
+			msleep(1);
+		} while (--tries != 0);
+	} else {
+		set_state(port, PD_DEFAULT_STATE(port));
 		task_wake(PD_PORT_TO_TASK_ID(port));
-	} while (enable && pd[port].task_state != PD_STATE_SUSPENDED
-			&& --tries);
+	}
 
 	if (!tries)
 		CPRINTS("TCPC p%d set_suspend failed!", port);
