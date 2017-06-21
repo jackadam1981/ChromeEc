@@ -114,6 +114,24 @@
     },
     {
       "key": {
+        "uuid": "c8f73be7_735d854d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-06-21T10:30:24Z",
+      "side": 1,
+      "message": "Wake is triggered by power_button_pch_pulse() (https://chromium-review.googlesource.com/#/c/449555/3/power/common.c )\n\nForce lid open was to prevent back to back suspend entry and force wake loop. If lid is closed on force wake, system would be put back to suspend again(by powerd?) even though system failed to enter s0ix in the previous attempt. But I feel it should be up to the powerd to decide whether it should suspend again or not. So we should be able to proceed  without this  change.Will abandon this change",
+      "parentUuid": "fdebe1c4_a7d49af1",
+      "revId": "b819607de17466228550c56e00ac46de2962f718",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "749006dc_cb01232b",
         "filename": "common/lid_switch.c",
         "patchSetId": 2
