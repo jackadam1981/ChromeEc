@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "31ecfe90_4379a3d6",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-06-21T01:57:11Z",
+      "side": 1,
+      "message": "Kionix does not mention whether this reset approach could be applied to kxcj9 or not. Should we keep original init flow for kxcj9 ?\nOr can we just move the reset operation right before reading WHO_AM_I(and reading COTR) ?\n\nthe code flow might look like this\n\nif (!V(s)) {\n  // write zero to internal register and ctrl2 register\n}\n\n//Set reset field to 1 for ctrl2 regster.\n\n//reading COTR value.",
+      "parentUuid": "7c9de9a2_3c872e08",
+      "revId": "e1342531ff0bde33a78b7def68d355c2d5bae9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d44bcff_bc02d01b",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 1
