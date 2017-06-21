@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "56f5529e_e9f2081a",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-06-21T20:16:52Z",
+      "side": 1,
+      "message": "No, it needs to be assigned prior to entering the for loop below each time the while loop is executed. sleep_usec will only get changed to a positive value if a task needs to wait for bc12 detection to finish.",
+      "parentUuid": "0e338c4f_7ada878d",
+      "range": {
+        "startLine": 1115,
+        "startChar": 2,
+        "endLine": 1115,
+        "endChar": 18
+      },
+      "revId": "6e38b4d5a3efe671ff831f5f01c06109f27d06cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9b72eb2_3a7382c5",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-14T19:15:42Z",
       "side": 1,
       "message": "Coverity reports that this condition will never be evaluated, because you\u0027re assigning sleep_usec at the beginning of the loop.",
+      "range": {
+        "startLine": 1178,
+        "startChar": 8,
+        "endLine": 1178,
+        "endChar": 38
+      },
+      "revId": "6e38b4d5a3efe671ff831f5f01c06109f27d06cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "661b1328_40a93ce4",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-06-21T20:16:52Z",
+      "side": 1,
+      "message": "Coverity\u0027s comment is true for the 1st iteration of the for loop in that sleep_usec will be assigned the value of bc12_wait_usec for port 0 each time the task is run. But, if port 0 needs a wait, the sleep_usec will be a positive value (the wait time before needing to read the bc12 type). Port 1 can also request a wait and if it\u0027s shorter than what port 0 needs, this value would get assigned.",
+      "parentUuid": "c9b72eb2_3a7382c5",
       "range": {
         "startLine": 1178,
         "startChar": 8,
