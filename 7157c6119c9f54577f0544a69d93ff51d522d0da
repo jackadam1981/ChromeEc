@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2253a05_288bc99c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-21T00:17:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aaeed6b_d80cfac0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "7157c6119c9f54577f0544a69d93ff51d522d0da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23964ed5_dc9d7607",
         "filename": "chip/g/dcrypto/rsa.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-20T19:32:56Z",
       "side": 1,
       "message": "can you comment why in some cases rsa-\u003ee is used, and in others - just zero?",
+      "range": {
+        "startLine": 545,
+        "startChar": 50,
+        "endLine": 545,
+        "endChar": 52
+      },
+      "revId": "7157c6119c9f54577f0544a69d93ff51d522d0da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "629c474e_8af27fd9",
+        "filename": "chip/g/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-06-21T00:17:02Z",
+      "side": 1,
+      "message": "see updated commit message.\n\nbasically, 0 means no randomization (same as before).",
+      "parentUuid": "23964ed5_dc9d7607",
       "range": {
         "startLine": 545,
         "startChar": 50,
