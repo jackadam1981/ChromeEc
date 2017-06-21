@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "53cd1116_a7b874f6",
+        "filename": "common/curve25519-cortexm0/cortex_m0_mpy121666.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-21T02:02:04Z",
+      "side": 1,
+      "message": "I also get these warnings that I might want to fix:\n/usr/x86_64-pc-linux-gnu/arm-none-eabi/binutils-bin/2.25.51/ld.bfd.real: warning: build/hammer/RW/core/cortex-m0/curve25519/cortex_m0_mpy121666.o uses 4-byte wchar_t yet the output is to use 2-byte wchar_t; use of wchar_t values across objects may fail\n/usr/x86_64-pc-linux-gnu/arm-none-eabi/binutils-bin/2.25.51/ld.bfd.real: warning: build/hammer/RW/core/cortex-m0/curve25519/cortex_m0_reduce25519.o uses 4-byte wchar_t yet the output is to use 2-byte wchar_t; use of wchar_t values across objects may fail",
+      "revId": "a73358f5eb9de0268c9043129947e32699599eb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cade708_59de8925",
         "filename": "common/curve25519-cortexm0/cortex_m0_mpy121666.S",
         "patchSetId": 2
