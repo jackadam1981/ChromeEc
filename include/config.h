@@ -181,6 +181,9 @@
  */
 #undef CONFIG_BACKLIGHT_REQ_GPIO
 
+/* Support base32 text encoding */
+#undef CONFIG_BASE32
+
 /*****************************************************************************/
 /* Battery config */
 
@@ -744,15 +747,6 @@
  * stack overflow or assertion failure.
  */
 #undef CONFIG_SOFTWARE_PANIC
-
-/*
- * Certain platforms(e.g. eve, poppy) cannot retain panic info in data ram since
- * VCC is powered down on EC reset. On such platforms, panic data needs to be
- * saved/restored to persistent storage by using chip specific
- * implementations. This option can be enabled by those platforms that have and
- * wish to use chip-implemented panic backup/restore functions.
- */
-#undef CONFIG_CHIP_PANIC_BACKUP
 
 /*
  * Provide the default GPIO abstraction layer.
@@ -1847,20 +1841,6 @@
 
 /* Set power button state idle at init */
 #undef CONFIG_POWER_BUTTON_INIT_IDLE
-
-/*
- * Enable delay between DSW_PWROK and PWRBTN assertion.
- * If enabled, DSW_PWROK_TO_PWRBTN_US and get_time_dsw_pwrok must be defined
- * as well.
- */
-#undef CONFIG_DELAY_DSW_PWROK_TO_PWRBTN
-
-/*
- * The time in usec required for PMC to be ready to detect power button press.
- * Refer to the timing diagram for G3 to S0 on PDG for details.
- */
-#define CONFIG_DSW_PWROK_TO_PWRBTN_US (95 * MSEC)
-
 
 /* Compile common code for AP power state machine */
 #undef CONFIG_POWER_COMMON
