@@ -57,12 +57,13 @@
     Creative Commons CC0 1.0 Universal public domain dedication
   ============================================================================*/
 
-#include <inttypes.h>
+#include "curve25519.h"
 
 // comment out this line if implementing conditional swaps by data moves
 //#define DH_SWAP_BY_POINTERS
 
 // Define the symbol to 0 in order to only use ladder steps
+#define DH_REPLACE_LAST_THREE_LADDERSTEPS_WITH_DOUBLINGS 0
 //#define DH_REPLACE_LAST_THREE_LADDERSTEPS_WITH_DOUBLINGS 1 
 
 typedef uint8_t  uint8;
@@ -649,11 +650,11 @@ curve25519_doublePointP (ST_curve25519ladderstepWorkingState* pState)
 
 #endif // #ifdef DH_REPLACE_LAST_THREE_LADDERSTEPS_WITH_DOUBLINGS
 
-int
-crypto_scalarmult_curve25519(
-    unsigned char*       r,
-    const unsigned char* s,
-    const unsigned char* p
+void
+x25519_scalar_mult(
+    uint8_t r[32],
+    const uint8_t s[32],
+    const uint8_t p[32]
 )
 {
     ST_curve25519ladderstepWorkingState state;
@@ -741,21 +742,4 @@ crypto_scalarmult_curve25519(
 
     fe25519_pack (r, &state.xp);
 #endif
-
-    return 0;
-}
-
-int
-crypto_scalarmult_curve25519_base(
-    unsigned char*       q,
-    const unsigned char* n
-)
-{
-    static const uint8 base[32] =
-    {
-        9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-    };
-
-    return crypto_scalarmult_curve25519(q, n, base);
 }

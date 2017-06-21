@@ -12,19 +12,9 @@
 
 
 	.cpu cortex-m0
-	.fpu softvfp
-	.eabi_attribute 20, 1
-	.eabi_attribute 21, 1
-	.eabi_attribute 23, 3
-	.eabi_attribute 24, 1
-	.eabi_attribute 25, 1
-	.eabi_attribute 26, 1
-	.eabi_attribute 30, 2
-	.eabi_attribute 34, 0
-	.eabi_attribute 18, 4
 	.code	16
 	
-	.file	"cortex_m0_reduce25519.s"
+	.file	"cortex_m0_mpy25519.s"
 	
 	.text
 	.align	2
@@ -36,7 +26,7 @@
 
 fe25519_mpyWith121666_asm:	
     push {r4,r5,r6,r7,r14}
-    ldr r7,__label_for_immediate_56130
+    ldr r7,=56130
     ldr r2,[r1,#28]
     lsl r5,r2,#16
     lsr r6,r2,#16
@@ -191,9 +181,5 @@ fe25519_mpyWith121666_asm:
     str r6,[r0,#28]
     pop {r4,r5,r6,r7,r15}
 
-	.align	2
-__label_for_immediate_56130:
-	.word 56130
-	    			
 	.size	fe25519_mpyWith121666_asm, .-fe25519_mpyWith121666_asm
 		    	
