@@ -14,27 +14,50 @@
 #define __CROS_USB_I2C_H
 
 /*
- * Command:
- *     +----------+-----------+---------------+---------------+---------------+
- *     | port: 1B | addr: 1B  | wr count : 1B | rd count : 1B | data : <= 60B |
- *     +----------+-----------+---------------+---------------+---------------+
+ * Currently, the following form of command are supported.
+ *   - Write at most 254 bytes and read no more than 126 (0x7E) bytes. Fields
+ *     are explained later.
+ *   +------+------+----+----+-------------+
+ *   | port | addr | wc | rc |    data     |
+ *   +------+------+----+----+-------------+
+ *   |  1B  |  1B  | 1B | 1B | < 255 bytes |
+ *   +------+------+----+----+-------------+
  *
- *     port address:  1 byte, i2c interface index
+ *   - Write at most 254 bytes and read no more than 32765 (0x7FFE) bytes.
+ *     Fields are explained later. 
+ *   +------+------+----+----+-----+----------+-------------+
+ *   | port | addr | wc | rc | rc1 | reserved |     data    |
+ *   +------+------+----+----+----------------+-------------+
+ *   |  1B  |  1B  | 1B | 1B |  1B |    1B    | < 255 bytes |
+ *   +------+------+----+----+----------------+-------------+
  *
- *     slave address: 1 byte, i2c 7-bit bus address
+ *   - port: port address, 1 byte, i2c interface index.
  *
- *     write count:   1 byte, zero based count of bytes to write. If write
- *                    count exceed 60 bytes, following packets are expected
- *                    to continue the payload without header.
+ *   - addr: slave address, 1 byte, i2c 7-bit bus address.
  *
- *     read count:    1 byte, zero based count of bytes to read
+ *   - wc: write count, 1 byte, zero based count of bytes to write. If write
+ *         count exceeds 60 bytes (size of a USB packet), following packets are
+ *         expected to continue the payload without header. Be sure the
+ *         receiving side has enough buffer.
  *
- *     data:          payload of data to write.
+ *   - rc: read count: 1 byte, zero based count of bytes to read. In the
+ *         first protocol, this is limited to less than 0x80 because we use
+ *         0x80 as the indicator bits for second protocol.
+ *         
+ *   - data: payload of data to write. See wc above for more information.
+ *
+ *   - rc1: read count 1, 1 byte, an extended version to allow reading more
+ *          data. While the most significant bits is set in read count (0x80),
+ *          indicating the need of extended bits for read count, rc and rc1
+ *          will concatenate together. The final read count will be
+ *          (rc1 << 7) | (rc & 0x7F) 
+ *
+ *   - reserved: reserved byte, 1 byte.
  *
  * Response:
- *     +-------------+---+---+-----------------------+
- *     | status : 2B | 0 | 0 | read payload : <= 60B |
- *     +-------------+---+---+-----------------------+
+ *     +-------------+---+---+--------------+
+ *     | status : 2B | 0 | 0 | read payload |
+ *     +-------------+---+---+--------------+
  *
  *     status: 2 byte status
  *         0x0000: Success
@@ -43,14 +66,14 @@
  *             This can happen if someone else has acquired the shared memory
  *             buffer that the I2C driver uses as /dev/null
  *         0x0003: Write count invalid (mismatch with merged payload)
- *         0x0004: Read count invalid (> 60 bytes)
+ *         0x0004: Read count invalid (depends on the supported version)
  *         0x0005: The port specified is invalid.
  *         0x8000: Unknown error mask
  *             The bottom 15 bits will contain the bottom 15 bits from the EC
  *             error code.
  *
- *     read payload: up to 60 bytes of data read from I2C, length will match
- *                   requested read count
+ *     read payload: Depends on the buffer size and implementation. Length will
+ *             match requested read count
  */
 
 enum usb_i2c_error {
@@ -64,12 +87,11 @@ enum usb_i2c_error {
 };
 
 
-#define USB_I2C_MAX_READ_COUNT  60
 #define USB_I2C_CONFIG_BUFFER_SIZE \
-	((CONFIG_USB_I2C_MAX_WRITE_COUNT+4) > USB_MAX_PACKET_SIZE ?	\
-		(CONFIG_USB_I2C_MAX_WRITE_COUNT+4) : USB_MAX_PACKET_SIZE)
+	(CONFIG_USB_I2C_MAX_WRITE_COUNT > CONFIG_USB_I2C_MAX_READ_COUNT ?\
+		(CONFIG_USB_I2C_MAX_WRITE_COUNT+6) :                     \
+		(CONFIG_USB_I2C_MAX_READ_COUNT+4))
 
-BUILD_ASSERT(USB_MAX_PACKET_SIZE == (2 + 1 + 1 + USB_I2C_MAX_READ_COUNT));
 
 /*
  * Compile time Per-USB gpio configuration stored in flash.  Instances of this
@@ -134,7 +156,7 @@ extern struct consumer_ops const usb_i2c_consumer_ops;
 		.tx_queue = &CONCAT2(NAME, _to_usb_),			\
 	};								\
 	static struct queue const CONCAT2(NAME, _to_usb_) =		\
-		QUEUE_DIRECT(USB_MAX_PACKET_SIZE, uint8_t,		\
+		QUEUE_DIRECT(CONFIG_USB_I2C_MAX_READ_COUNT+4, uint8_t,	\
 		null_producer, CONCAT2(NAME, _usb_).consumer);		\
 	static struct queue const CONCAT3(usb_to_, NAME, _) =		\
 		QUEUE_DIRECT(CONFIG_USB_I2C_MAX_WRITE_COUNT+4, uint8_t,	\
