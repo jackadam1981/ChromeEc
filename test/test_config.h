@@ -58,6 +58,14 @@
 #define CONFIG_TABLET_MODE
 #endif
 
+#ifdef TEST_RMA_AUTH
+#define CONFIG_BASE32
+#define CONFIG_CURVE25519
+#define CONFIG_RMA_AUTH
+#define CONFIG_RNG
+#define CONFIG_SHA256
+#endif
+
 #ifdef TEST_RSA
 #define CONFIG_RSA
 #define CONFIG_RSA_KEY_SIZE 2048

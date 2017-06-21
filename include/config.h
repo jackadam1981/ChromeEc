@@ -1922,6 +1922,9 @@
 /* Support IR357x Link voltage regulator debugging / reprogramming */
 #undef CONFIG_REGULATOR_IR357X
 
+/* Support RMA auth challenge-response */
+#undef CONFIG_RMA_AUTH
+
 /* Enable hardware Random Number generator support */
 #undef CONFIG_RNG
 
