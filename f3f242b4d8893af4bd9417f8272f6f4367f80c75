@@ -68,6 +68,30 @@
       "revId": "f3f242b4d8893af4bd9417f8272f6f4367f80c75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ceab1e8_da6ac5a2",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-06-21T08:18:42Z",
+      "side": 1,
+      "message": "also EC_HOST_EVENT_LID_CLOSED",
+      "parentUuid": "a3bb1d92_6b8ff6ee",
+      "range": {
+        "startLine": 240,
+        "startChar": 8,
+        "endLine": 240,
+        "endChar": 37
+      },
+      "revId": "f3f242b4d8893af4bd9417f8272f6f4367f80c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
