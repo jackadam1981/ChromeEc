@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "a80ff76c_c8343b9c",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-06-21T10:15:28Z",
+      "side": 1,
+      "message": "power/intel_x86.c:handle_chipset_reset handles this case.",
+      "parentUuid": "135e5026_883d221b",
+      "range": {
+        "startLine": 745,
+        "startChar": 3,
+        "endLine": 745,
+        "endChar": 21
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abf607fd_05390401",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-06-21T10:15:28Z",
+      "side": 1,
+      "message": "Yes,that\u0027s right",
+      "parentUuid": "fbf17c65_25b840ac",
+      "range": {
+        "startLine": 739,
+        "startChar": 2,
+        "endLine": 745,
+        "endChar": 21
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37e9ea1e_d0c5fb6f",
         "filename": "power/common.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2017-06-08T05:03:49Z",
       "side": 1,
       "message": "\u003e80 characters",
+      "range": {
+        "startLine": 763,
+        "startChar": 2,
+        "endLine": 763,
+        "endChar": 80
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0992e978_b821cc50",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-06-21T10:15:28Z",
+      "side": 1,
+      "message": "Will fix",
+      "parentUuid": "37e9ea1e_d0c5fb6f",
       "range": {
         "startLine": 763,
         "startChar": 2,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "44b55724_9c9ffa29",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-06-21T10:15:28Z",
+      "side": 1,
+      "message": "will fix",
+      "parentUuid": "618703b5_b567d142",
+      "range": {
+        "startLine": 764,
+        "startChar": 2,
+        "endLine": 764,
+        "endChar": 83
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "40e35b2c_fdba3600",
         "filename": "power/common.c",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2017-06-08T05:03:49Z",
       "side": 1,
       "message": "You will also have to cancel this deferred call if AP reboots for any reason.",
+      "range": {
+        "startLine": 767,
+        "startChar": 2,
+        "endLine": 767,
+        "endChar": 20
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b067995d_6cafa040",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-06-21T10:15:28Z",
+      "side": 1,
+      "message": "Yes, agree, this needs to be handled in power/intel_x86.c:handle_chipset_reset",
+      "parentUuid": "40e35b2c_fdba3600",
       "range": {
         "startLine": 767,
         "startChar": 2,
