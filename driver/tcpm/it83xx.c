@@ -504,6 +504,7 @@ static int it83xx_tcpm_get_chip_info(int port, int renew,
 
 const struct tcpm_drv it83xx_tcpm_drv = {
 	.init			= &it83xx_tcpm_init,
+	.release		= &it83xx_tcpm_release,
 	.get_cc			= &it83xx_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	.get_vbus_level		= NULL,
