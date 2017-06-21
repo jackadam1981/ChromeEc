@@ -93,8 +93,6 @@ void usb_i2c_execute(struct usb_i2c_config const *config)
 	if (write_count > CONFIG_USB_I2C_MAX_WRITE_COUNT ||
 		write_count != (count - 4)) {
 		config->buffer[0] = USB_I2C_WRITE_COUNT_INVALID;
-	} else if (read_count > USB_I2C_MAX_READ_COUNT) {
-		config->buffer[0] = USB_I2C_READ_COUNT_INVALID;
 	} else if (portindex >= i2c_ports_used) {
 		config->buffer[0] = USB_I2C_PORT_INVALID;
 	} else {

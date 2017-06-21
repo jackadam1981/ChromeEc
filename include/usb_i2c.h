@@ -69,7 +69,6 @@ enum usb_i2c_error {
 	((CONFIG_USB_I2C_MAX_WRITE_COUNT+4) > USB_MAX_PACKET_SIZE ?	\
 		(CONFIG_USB_I2C_MAX_WRITE_COUNT+4) : USB_MAX_PACKET_SIZE)
 
-BUILD_ASSERT(USB_MAX_PACKET_SIZE == (2 + 1 + 1 + USB_I2C_MAX_READ_COUNT));
 
 /*
  * Compile time Per-USB gpio configuration stored in flash.  Instances of this
@@ -134,7 +133,7 @@ extern struct consumer_ops const usb_i2c_consumer_ops;
 		.tx_queue = &CONCAT2(NAME, _to_usb_),			\
 	};								\
 	static struct queue const CONCAT2(NAME, _to_usb_) =		\
-		QUEUE_DIRECT(USB_MAX_PACKET_SIZE, uint8_t,		\
+		QUEUE_DIRECT(USB_I2C_CONFIG_BUFFER_SIZE, uint8_t,	\
 		null_producer, CONCAT2(NAME, _usb_).consumer);		\
 	static struct queue const CONCAT3(usb_to_, NAME, _) =		\
 		QUEUE_DIRECT(CONFIG_USB_I2C_MAX_WRITE_COUNT+4, uint8_t,	\

@@ -276,12 +276,12 @@ static int check_read_status(int r, int expected, int actual)
 		printf("Warning: Defined error code (%d) returned.\n", r);
 	}
 
-	if (r) {
+	//if (r) {
 		printf("Dumping the receive buffer:\n");
 		printf("  Recv %d bytes from USB hosts.\n", actual);
 		for (i = 0; i < actual; ++i)
 			printf("    [%2d]bytes: 0x%0x\n", i, rx_buf[i]);
-	}
+	//}
 	return r;
 }
 
@@ -515,6 +515,13 @@ int main(int argc, char *argv[])
 	parse_cmdline(argc, argv);
 	init_with_libusb();
 	register_sigaction();
+
+	/*
+	* Trigger a I2C transaction of expecting reading > 60 bytes.
+	http://elixir.free-electrons.com/linux/latest/source/drivers/input/mouse/elan_i2c_i2c.c#L59
+	*/
+	elan_write_and_read(0x0002, rx_buf, 118, 0, 0);
+	return 0;
 
 	/*
 	 * It is possible that you are not able to get firmware info. This
