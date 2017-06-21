@@ -71,8 +71,8 @@ ifeq "$(TEST_BUILD)" "y"
 	_tsk_lst_flags:=-Itest -DTEST_BUILD -imacros $(PROJECT).tasklist
 else ifdef CTS_MODULE
 	_tsk_lst_file:=ec.tasklist
-	_tsk_lst_flags:=-I cts/$(CTS_MODULE) -Icts -DCTS_MODULE=$(CTS_MODULE) \
-			-imacros cts.tasklist
+	_tsk_lst_flags:=-I cts/$(CTS_MODULE) -Icts/common \
+			-DCTS_MODULE=$(CTS_MODULE) -imacros cts.tasklist
 else
 	_tsk_lst_file:=$(PROJECT).tasklist
 	_tsk_lst_flags:=
