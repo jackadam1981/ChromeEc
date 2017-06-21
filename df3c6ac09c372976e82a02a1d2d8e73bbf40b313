@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3153fd00_4b0c1324",
+        "filename": "core/cortex-m0/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-21T16:13:32Z",
+      "side": 1,
+      "message": "nit: maybe the prefix is no longer terribly useful (this is probably a comment for the previous CL)",
+      "range": {
+        "startLine": 25,
+        "startChar": 38,
+        "endLine": 25,
+        "endChar": 48
+      },
+      "revId": "df3c6ac09c372976e82a02a1d2d8e73bbf40b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6fa828c_6e14fafc",
+        "filename": "core/cortex-m0/curve25519/cortex_m0_mpy121666.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-21T16:13:32Z",
+      "side": 1,
+      "message": "we are already passing this to the command line",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "df3c6ac09c372976e82a02a1d2d8e73bbf40b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419a7129_3e6e2040",
+        "filename": "core/cortex-m0/curve25519/cortex_m0_mpy121666.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-21T16:13:32Z",
+      "side": 1,
+      "message": "this is used for DWARF debug information, probably a no-op here",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 29
+      },
+      "revId": "df3c6ac09c372976e82a02a1d2d8e73bbf40b313",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
