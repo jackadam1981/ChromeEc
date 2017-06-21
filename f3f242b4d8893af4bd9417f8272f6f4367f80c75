@@ -45,6 +45,29 @@
       "revId": "f3f242b4d8893af4bd9417f8272f6f4367f80c75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3bb1d92_6b8ff6ee",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-06-21T08:13:55Z",
+      "side": 1,
+      "message": "what about EC_HOST_EVENT_BATTERY_LOW/EC_HOST_EVENT_BATTERY_CRITICAL/EC_HOST_EVENT_BATTERY_SHUTDOWN?\n\nor maybe they should go into CONFIG_MKBP_WAKEUP_MASK",
+      "range": {
+        "startLine": 240,
+        "startChar": 8,
+        "endLine": 240,
+        "endChar": 37
+      },
+      "revId": "f3f242b4d8893af4bd9417f8272f6f4367f80c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
