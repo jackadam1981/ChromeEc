@@ -125,9 +125,18 @@
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_WATCHDOG_HELP
 
-/* Enlarge the allowed write count */
+/* Enlarge the allowed write / read count for trackpad debug */
 #undef CONFIG_USB_I2C_MAX_WRITE_COUNT
-#define CONFIG_USB_I2C_MAX_WRITE_COUNT 124
+#define CONFIG_USB_I2C_MAX_WRITE_COUNT (128 - 4) /* 4 is maximum header size */
+
+#undef CONFIG_USB_I2C_MAX_READ_COUNT
+#define CONFIG_USB_I2C_MAX_READ_COUNT (1024 - 6) /* 6 is maximum header size */
+
+#undef CONFIG_USB_I2C_WRITE_BUFFER
+#define CONFIG_USB_I2C_WRITE_BUFFER (CONFIG_USB_I2C_MAX_WRITE_COUNT + 4)
+
+#undef CONFIG_USB_I2C_READ_BUFFER
+#define CONFIG_USB_I2C_READ_BUFFER (CONFIG_USB_I2C_MAX_READ_COUNT + 6)
 
 /* No lid switch */
 #undef CONFIG_LID_SWITCH

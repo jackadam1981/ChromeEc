@@ -16,6 +16,7 @@
  * 'd' in an opaque parameter passed to the routine at startup
  * 's' is the stack size in bytes; must be a multiple of 8
  */
+/* TODO(itspeter): Adjust the stack size of elan_tp_task after debug */
 #define CONFIG_TASK_LIST \
 	TASK_ALWAYS_RO(RWSIG,    rwsig_task,   NULL, 1024) \
 	TASK_ALWAYS   (HOOKS,    hook_task,    NULL, 2048) \

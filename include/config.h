@@ -2704,8 +2704,18 @@
 /* USB I2C config */
 #undef CONFIG_USB_I2C
 
-/* Allowed write count for USB over I2C */
+/* Allowed read/write count for USB over I2C */
 #define CONFIG_USB_I2C_MAX_WRITE_COUNT 60
+#define CONFIG_USB_I2C_MAX_READ_COUNT 60
+
+/*
+ * In the extended I2C reading over I2C ( > 126 bytes ), the header is 6 bytes
+ * instead of 4 bytes. If you modify the CONFIG_USB_I2C_MAX_READ_COUNT to
+ * something larger than 126, the buffer need additional 6 bytes. Morepver.
+ * buffer size have to be power of two.
+ */
+#define CONFIG_USB_I2C_WRITE_BUFFER (CONFIG_USB_I2C_MAX_WRITE_COUNT + 4)
+#define CONFIG_USB_I2C_READ_BUFFER (CONFIG_USB_I2C_MAX_READ_COUNT + 4)
 
 /*****************************************************************************/
 /* USB Power monitoring interface config */
