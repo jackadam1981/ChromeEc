@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cb623aa_fed3cad2",
+        "filename": "power/rk3399.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-21T17:38:57Z",
+      "side": 1,
+      "message": "power_seq_run() will break if POWER_S3S0 \u003d\u003d 0. Maybe it\u0027s overkill, but I would add a build-time assert.",
+      "range": {
+        "startLine": 207,
+        "startChar": 11,
+        "endLine": 207,
+        "endChar": 21
+      },
+      "revId": "88f3ed637f6b593ba3519c43575eb2dade6a4735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
