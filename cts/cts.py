@@ -327,8 +327,10 @@ class Cts(object):
 
     print 'Reading DUT tty...'
     dut_output, dut_boot = self.dut.read_tty()
+    self.dut.close_tty()
     print 'Reading TH tty...'
     th_output, th_boot = self.th.read_tty()
+    self.th.close_tty()
 
     print 'Halting TH...'
     if not self.th.send_open_ocd_commands(['init', 'reset halt']):
