@@ -456,6 +456,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 		 * if we are not stopping, set RELOAD bit so that we can load
 		 * NBYTES again. if we are starting, then set START bit.
 		 */
+
 		STM32_I2C_CR2(port) =  ((out_bytes & 0xFF) << 16)
 			| slave_addr
 			| ((in_bytes == 0 && xfer_stop) ?

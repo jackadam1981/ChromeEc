@@ -140,8 +140,8 @@ static void parse_cmdline(int argc, char *argv[])
 }
 
 /* USB transfer related */
-static uint8_t rx_buf[128];
-static uint8_t tx_buf[128];
+static uint8_t rx_buf[1024];
+static uint8_t tx_buf[1024];
 
 static struct libusb_device_handle *devh;
 static struct libusb_transfer *rx_transfer;
@@ -276,7 +276,7 @@ static int check_read_status(int r, int expected, int actual)
 		printf("Warning: Defined error code (%d) returned.\n", r);
 	}
 
-	if (r) {
+	if (r || expected > 60) {
 		printf("Dumping the receive buffer:\n");
 		printf("  Recv %d bytes from USB hosts.\n", actual);
 		for (i = 0; i < actual; ++i)
@@ -286,26 +286,34 @@ static int check_read_status(int r, int expected, int actual)
 }
 
 #define MAX_USB_PACKET_SIZE		64
+#define PRIMITIVE_READING_SIZE		60
 
 static int libusb_single_write_and_read(
 		uint8_t *to_write, uint16_t write_length,
-		uint8_t *to_read, uint8_t read_length)
+		uint8_t *to_read, uint16_t read_length)
 {
 	int r;
 	int tx_ready;
 	int remains;
 	int sent_bytes = 0;
 	int actual_length = -1;
+	int offset = read_length > PRIMITIVE_READING_SIZE ? 6 : 4;
 	tx_transfer = rx_transfer = 0;
 
-	memmove(tx_buf + 4, to_write, write_length);
+	memmove(tx_buf + offset, to_write, write_length);
 	tx_buf[0] = I2C_PORT_ON_HAMMER;
 	tx_buf[1] = I2C_ADDRESS_ON_HAMMER;
 	tx_buf[2] = write_length;
-	tx_buf[3] = read_length;
+	if (read_length > PRIMITIVE_READING_SIZE) {
+		tx_buf[3] = (read_length & 0x7f) | ( 1 << 7 );
+		tx_buf[4] = read_length >> 7;
+		printf("Triggering extended reading. %x, %x\n", tx_buf[3], tx_buf[4]);
+	} else {
+		tx_buf[3] = read_length;
+	}
 
-	while (sent_bytes < (4 + write_length)) {
-		tx_ready = remains = (4 + write_length) - sent_bytes;
+	while (sent_bytes < (offset + write_length)) {
+		tx_ready = remains = (offset + write_length) - sent_bytes;
 		if (tx_ready > MAX_USB_PACKET_SIZE)
 			tx_ready = MAX_USB_PACKET_SIZE;
 
@@ -316,7 +324,8 @@ static int libusb_single_write_and_read(
 		if (r == 0 && actual_length == tx_ready) {
 			r = libusb_bulk_transfer(devh,
 					(ep_num | LIBUSB_ENDPOINT_IN),
-					rx_buf, 128, &actual_length, 0);
+					rx_buf, sizeof(rx_buf),
+					&actual_length, 0);
 		}
 		r = check_read_status(
 				r, (remains == tx_ready) ? read_length : 0,
@@ -517,10 +526,17 @@ int main(int argc, char *argv[])
 	register_sigaction();
 
 	/*
+	* Trigger a I2C transaction of expecting reading > 60 bytes.
+	http://elixir.free-electrons.com/linux/latest/source/drivers/input/mouse/elan_i2c_i2c.c#L59
+	*/
+	elan_write_and_read(0x0002, rx_buf, 118, 0, 0);
+
+	/*
 	 * It is possible that you are not able to get firmware info. This
 	 * might due to an incomplete update last time
 	 */
 	elan_get_fw_info();
+
 	/* Get the trackpad ready for receiving update */
 	elan_prepare_for_update();
 
