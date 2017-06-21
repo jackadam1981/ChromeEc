@@ -234,6 +234,30 @@
       "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee75282f_1050ff9b",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-06-21T17:54:42Z",
+      "side": 1,
+      "message": "power/intel_x86.c:handle_chipset_reset() sends HOST_SLEEP_EVENT_S0IX_RESUME. So the cancellation is already taken care",
+      "parentUuid": "b067995d_6cafa040",
+      "range": {
+        "startLine": 767,
+        "startChar": 2,
+        "endLine": 767,
+        "endChar": 20
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
