@@ -93,6 +93,30 @@
       "revId": "6e38b4d5a3efe671ff831f5f01c06109f27d06cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a89ef1b0_a8117da1",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-21T20:19:17Z",
+      "side": 1,
+      "message": "Ok understood, thanks for clearing that up. Coverity threw a bug because CONFIG_USB_PD_PORT_COUNT \u003d 1 for some particular board.",
+      "parentUuid": "661b1328_40a93ce4",
+      "range": {
+        "startLine": 1178,
+        "startChar": 8,
+        "endLine": 1178,
+        "endChar": 38
+      },
+      "revId": "6e38b4d5a3efe671ff831f5f01c06109f27d06cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
