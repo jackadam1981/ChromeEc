@@ -184,8 +184,8 @@ void cts_task(void)
 	interrupt_enable();
 	for (i = 0; i < CTS_TEST_ID_COUNT; i++) {
 		clear_state();
-		sync();
 		CPRINTF("\n%s start\n", tests[i].name);
+		sync();
 		rc = tests[i].run();
 		interrupt_enable();
 		CPRINTF("\n%s end %d\n", tests[i].name, rc);

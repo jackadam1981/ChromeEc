@@ -10,15 +10,6 @@
 #include "dut_common.h"
 #include "cts_common.h"
 
-enum cts_rc debug_test(void)
-{
-	CTS_DEBUG_PRINTF("You should see #'s 1-4 on sequential lines:");
-	CTS_DEBUG_PRINTF("1");
-	CTS_DEBUG_PRINTF("2\n3");
-	CTS_DEBUG_PRINTF("4");
-	return CTS_RC_SUCCESS;
-}
-
 enum cts_rc success_test(void)
 {
 	CTS_DEBUG_PRINTF("Expect: Success");
@@ -61,6 +52,11 @@ enum cts_rc hang_test(void)
 	return CTS_RC_SUCCESS;
 }
 
+enum cts_rc did_not_start_test(void)
+{
+	return CTS_RC_SUCCESS;
+}
+
 #include "cts_testlist.h"
 
 void cts_task(void)
@@ -70,8 +66,8 @@ void cts_task(void)
 
 	cflush();
 	for (i = 0; i < CTS_TEST_ID_COUNT; i++) {
-		sync();
 		CPRINTF("\n%s start\n", tests[i].name);
+		sync();
 		result = tests[i].run();
 		CPRINTF("\n%s end %d\n", tests[i].name, result);
 		cflush();

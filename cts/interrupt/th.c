@@ -73,8 +73,8 @@ void cts_task(void)
 	for (i = 0; i < CTS_TEST_ID_COUNT; i++) {
 		gpio_set_level(GPIO_OUTPUT_TEST, 1);
 		gpio_set_level(GPIO_CTS_IRQ2, 1);
-		sync();
 		CPRINTF("\n%s start\n", tests[i].name);
+		sync();
 		rc = tests[i].run();
 		CPRINTF("\n%s end %d\n", tests[i].name, rc);
 		cflush();

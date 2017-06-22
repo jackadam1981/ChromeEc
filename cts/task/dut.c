@@ -141,8 +141,8 @@ void cts_task(void)
 	task_wake(TASK_ID_TICK);
 
 	for (i = 0; i < CTS_TEST_ID_COUNT; i++) {
-		clear_state();
 		CPRINTF("\n%s start\n", tests[i].name);
+		clear_state();
 		rc = tests[i].run();
 		CPRINTF("\n%s end %d\n", tests[i].name, rc);
 		cflush();

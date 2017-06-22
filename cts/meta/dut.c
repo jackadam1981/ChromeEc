@@ -10,11 +10,6 @@
 #include "dut_common.h"
 #include "cts_common.h"
 
-enum cts_rc debug_test(void)
-{
-	return CTS_RC_SUCCESS;
-}
-
 enum cts_rc success_test(void)
 {
 	return CTS_RC_SUCCESS;
@@ -52,6 +47,11 @@ enum cts_rc hang_test(void)
 		sleep(1);
 	}
 
+	return CTS_RC_SUCCESS;
+}
+
+enum cts_rc did_not_start_test(void)
+{
 	return CTS_RC_SUCCESS;
 }
 
