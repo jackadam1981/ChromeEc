@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fd994c5_b7898c0f",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T00:55:26Z",
+      "side": 1,
+      "message": "is this a standard algorithm or is it something you came up with?\n\nalso, how about calculating crc8 over the unencoded stream and only including lower 5 bits in the encoded stream? This way you could use crc8?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d87f90_7aac6104",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T00:55:26Z",
+      "side": 1,
+      "message": "maybe #define SPACE_SIZE 32 and then\n\nconst char base32_map[SPACE_SIZE + 1] in line 31 and\n\ni \u003c SPACE_SIZE   in line 43?",
+      "range": {
+        "startLine": 43,
+        "startChar": 17,
+        "endLine": 43,
+        "endChar": 20
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11179e05_051257f4",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T00:55:26Z",
+      "side": 1,
+      "message": "is this check really needed, you are not going to exceed the room anyways?",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 24
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a82e27_59680d4c",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T00:55:26Z",
+      "side": 1,
+      "message": "+ 1 here would be simpler than in line 74 (I had to look for it).",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 40
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a27241a6_51023162",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T00:55:26Z",
+      "side": 1,
+      "message": "ah, this is not a requirement that the input set\u0027s bit number is divisible by 5? What happens on the decoding side, how does it know that the input set is incomplete?",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fd4ff2f_0c633fa7",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T00:55:26Z",
+      "side": 1,
+      "message": "should queue be of uint32_t type, both ensuring the size and the fact that it is unsigned?",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 10
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa6cf1a1_95d81bff",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T00:55:26Z",
+      "side": 1,
+      "message": "where would spaces come from?",
+      "range": {
+        "startLine": 128,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 12
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29330faf_bea0f0e0",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T00:55:26Z",
+      "side": 1,
+      "message": "should this not be an error condition?",
+      "range": {
+        "startLine": 152,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 9
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6ec03cf_eba987ef",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T00:55:26Z",
+      "side": 1,
+      "message": "is this all really necessary: you would never have more than one byte worth of output in queue, right?\n\nwhy not blend the bits directly into dest[], possibly going across two bytes - using an if() statement for that.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 2
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "141d6135_99a320ff",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T00:55:26Z",
+      "side": 1,
+      "message": "I don\u0027t understand this: \" if the destination is bigger than the source\" - you mean if room allocated for the destination is bigger than the room required to store decoded source?\n\nI also don\u0027t understand how the decoding side can tell if the encoder input bit number was not divisible by 5, or it was and the last bits were zeros. Maybe you can address this in the patch description.",
+      "range": {
+        "startLine": 171,
+        "startChar": 2,
+        "endLine": 175,
+        "endChar": 4
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
