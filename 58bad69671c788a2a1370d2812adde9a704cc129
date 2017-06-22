@@ -2,6 +2,97 @@
   "comments": [
     {
       "key": {
+        "uuid": "e5688dbe_5052e54c",
+        "filename": "util/run_ects.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T20:29:57Z",
+      "side": 1,
+      "message": "the actual content of the heredoc you don\u0027t want to indent ;).  just the `cat` line above.\n\nthis is why we tend to stick this in a short usage func like this to help blending in with other code.",
+      "revId": "58bad69671c788a2a1370d2812adde9a704cc129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2db2d67_5bffc767",
+        "filename": "util/run_ects.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T20:29:57Z",
+      "side": 1,
+      "message": "this should be \"$*\"",
+      "range": {
+        "startLine": 34,
+        "startChar": 51,
+        "endLine": 34,
+        "endChar": 55
+      },
+      "revId": "58bad69671c788a2a1370d2812adde9a704cc129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "876a7cc7_bba7bacb",
+        "filename": "util/run_ects.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T20:29:57Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "58bad69671c788a2a1370d2812adde9a704cc129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c878c9d6_4063e486",
+        "filename": "util/run_ects.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T20:29:57Z",
+      "side": 1,
+      "message": "needs quotes around \"$(...)\"",
+      "revId": "58bad69671c788a2a1370d2812adde9a704cc129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a770775_ebeab548",
+        "filename": "util/run_ects.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T20:29:57Z",
+      "side": 1,
+      "message": "just do:\n\n readlink -f \"$(dirname \"$0\")\"",
+      "revId": "58bad69671c788a2a1370d2812adde9a704cc129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8e136d2_7f1dc533",
         "filename": "util/run_ects.sh",
         "patchSetId": 10
@@ -19,6 +110,64 @@
         "endLine": 69,
         "endChar": 13
       },
+      "revId": "58bad69671c788a2a1370d2812adde9a704cc129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb8d1520_b2ae392f",
+        "filename": "util/run_ects.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T20:29:57Z",
+      "side": 1,
+      "message": "that\u0027s fine in this case",
+      "parentUuid": "a8e136d2_7f1dc533",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "58bad69671c788a2a1370d2812adde9a704cc129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dad29b3_4256f97a",
+        "filename": "util/run_ects.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T20:29:57Z",
+      "side": 1,
+      "message": "quote \"$(...)\"",
+      "revId": "58bad69671c788a2a1370d2812adde9a704cc129",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2089e626_be7c0e16",
+        "filename": "util/run_ects.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T20:29:57Z",
+      "side": 1,
+      "message": "drop trailing whitespace",
       "revId": "58bad69671c788a2a1370d2812adde9a704cc129",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
