@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7660944c_10e0c357",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-22T15:41:38Z",
+      "side": 1,
+      "message": "If cut-and-paste were an option, Base64 is definitely preferable (standard and 5/6 the size).\n\nBut here, the string is printed on the screen, and the RMA operator has to type it into a different machine - which may be a mobile device with virtual keyboard.  So mixed-case and typos are bigger concerns.",
+      "parentUuid": "372def10_055e1a9d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0fd994c5_b7898c0f",
         "filename": "common/base32.c",
         "patchSetId": 2
