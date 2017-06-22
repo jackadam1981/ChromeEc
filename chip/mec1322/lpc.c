@@ -29,7 +29,7 @@
 static uint8_t mem_mapped[0x200] __attribute__((section(".bss.big_align")));
 
 static uint32_t host_events;     /* Currently pending SCI/SMI events */
-static uint32_t event_mask[3];   /* Event masks for each type */
+static uint32_t event_mask[LPC_HOST_EVENT_COUNT];   /* Event masks for each type */
 static struct host_packet lpc_packet;
 static struct host_cmd_handler_args host_cmd_args;
 static uint8_t host_cmd_flags;   /* Flags from host command */

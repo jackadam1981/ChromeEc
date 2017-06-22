@@ -3026,6 +3026,7 @@ struct __ec_align4 ec_response_host_event_mask {
 #define EC_CMD_HOST_EVENT_CLEAR         0x008C
 #define EC_CMD_HOST_EVENT_SET_WAKE_MASK 0x008E
 #define EC_CMD_HOST_EVENT_CLEAR_B       0x008F
+#define EC_CMD_HOST_EVENT_SET_STOIDLE_MASK 0x0086
 
 /*****************************************************************************/
 /* Switch commands */
