@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb3eb652_f9562a81",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-22T00:24:31Z",
+      "side": 1,
+      "message": "This violates the style guide but cros_sdk fails to find the directory if I write ${HOME} or surround the strings by \"\".",
+      "range": {
+        "startLine": 54,
+        "startChar": 14,
+        "endLine": 54,
+        "endChar": 59
+      },
+      "revId": "fa5677652529a7c8e35fa557078d02a1249353a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
