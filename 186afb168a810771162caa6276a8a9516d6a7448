@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a38e522f_56036d2a",
+        "filename": "cts/common/board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-22T16:10:08Z",
+      "side": 1,
+      "message": "A little more pythonic: empty list evaluates as false\n\nif not dut:",
+      "range": {
+        "startLine": 361,
+        "startChar": 7,
+        "endLine": 361,
+        "endChar": 20
+      },
+      "revId": "186afb168a810771162caa6276a8a9516d6a7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0751d7e_b89fcd4b",
+        "filename": "cts/common/board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-22T16:10:08Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 365,
+        "startChar": 7,
+        "endLine": 365,
+        "endChar": 8
+      },
+      "revId": "186afb168a810771162caa6276a8a9516d6a7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
