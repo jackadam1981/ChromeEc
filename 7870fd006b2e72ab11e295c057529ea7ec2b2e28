@@ -1,0 +1,214 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5582a3db_b81f710a",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "needs standard copyright/licensing block",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034d5f6a_54014af6",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "quote \"$0\"",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "531a0149_8aa2e1ee",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "period at the end",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d55cf229_ca1fca36",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "mark it an array",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "372ba863_a3a609f2",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "indent by two spaces",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4db79bb0_7bebcc86",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "delete this line",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec785c0d_f4693a09",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "i don\u0027t know what this comment means.  this func should read:\n\n printf \u0027%b[eCTS] %s%b\\n\u0027 \"${RED}\" \"$*\" \"${NC}\"",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa712b2_36dfd14a",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "we usually call these `info`",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65a7e369_f24ed4e1",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "use printf as above",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bae8a5b_7a6e4c03",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "mark it local",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4258594_74529b77",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "you don\u0027t need $HOME.  use /mnt/host/source as the root.",
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f50c4eb_5e688213",
+        "filename": "cts/common/run_ects.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-06-22T03:11:18Z",
+      "side": 1,
+      "message": "this should all be in the main func",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 19
+      },
+      "revId": "7870fd006b2e72ab11e295c057529ea7ec2b2e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
