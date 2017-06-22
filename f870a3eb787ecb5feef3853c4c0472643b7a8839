@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "372def10_055e1a9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-22T12:18:26Z",
+      "side": 1,
+      "message": "other crypto-related implementations are using (a somewhat well-defined) Base64 as encoding (e.g. PEM for key and certs, S/MIME ... https://tools.ietf.org/html/rfc1421#section-4.3.2.4 ), is there a good reason not re-use it ?\n(a few more characters you can confuse but definitely cut-n-paste safe and not so hard to get right for the usual developer)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0fd994c5_b7898c0f",
         "filename": "common/base32.c",
         "patchSetId": 2
