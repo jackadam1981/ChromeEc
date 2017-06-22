@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0ab55f43_3095958b",
+        "filename": "common/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-22T01:52:09Z",
+      "side": 1,
+      "message": "would it be less efficient if we pass the encoded stream through crc8 and then plug in the 5 LSB  bits of the crc8, encoded, into the stream every so often?\n\nI am just not sure we need another function for this purpose, even though I don\u0027t doubt your ability to come up with a good scheme for crc5 :)",
+      "parentUuid": "0bf08d51_25386377",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 20
+      },
+      "revId": "f870a3eb787ecb5feef3853c4c0472643b7a8839",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53d87f90_7aac6104",
         "filename": "common/base32.c",
         "patchSetId": 2
