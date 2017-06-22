@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b762935_c2e0c851",
+        "filename": "cts/common/board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-22T17:47:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a38e522f_56036d2a",
+      "range": {
+        "startLine": 361,
+        "startChar": 7,
+        "endLine": 361,
+        "endChar": 20
+      },
+      "revId": "186afb168a810771162caa6276a8a9516d6a7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0751d7e_b89fcd4b",
         "filename": "cts/common/board.py",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-22T16:10:08Z",
       "side": 1,
       "message": "extra space",
+      "range": {
+        "startLine": 365,
+        "startChar": 7,
+        "endLine": 365,
+        "endChar": 8
+      },
+      "revId": "186afb168a810771162caa6276a8a9516d6a7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f53ec56_a3cfed06",
+        "filename": "cts/common/board.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-22T17:47:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0751d7e_b89fcd4b",
       "range": {
         "startLine": 365,
         "startChar": 7,
