@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fedfb0a1_7c9e1c31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-22T17:46:23Z",
+      "side": 1,
+      "message": "Actually, this is done already in CL:538878. CL description updated.",
+      "parentUuid": "6c5deb3f_564f6929",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 48
+      },
+      "revId": "7692818c32cd5b3e9f4366bd39592c40c5378063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "140433e8_0c417881",
         "filename": "cts/task/dut.c",
         "patchSetId": 9
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-22T16:07:02Z",
       "side": 1,
       "message": "Should we cflush()?",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 36
+      },
+      "revId": "7692818c32cd5b3e9f4366bd39592c40c5378063",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce1078fd_ff1a78a8",
+        "filename": "cts/task/dut.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-22T17:46:23Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary as CL:538878 makes each test print \u0027start\u0027 line (so that we can detect CTS_RC_DID_NOT_START). CL description updated.",
+      "parentUuid": "140433e8_0c417881",
       "range": {
         "startLine": 135,
         "startChar": 4,
