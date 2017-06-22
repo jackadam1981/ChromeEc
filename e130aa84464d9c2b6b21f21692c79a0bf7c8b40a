@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be99586e_d8aa2f4a",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-22T15:52:22Z",
+      "side": 1,
+      "message": "Note that this may persist across several host reboots, including back to normal-mode.  That\u0027s fine for its current use (deferring the hash computation), but may have unintended consequences if something else calls this function.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 1
+      },
+      "revId": "e130aa84464d9c2b6b21f21692c79a0bf7c8b40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0573d4b4_578b351d",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-22T15:52:22Z",
+      "side": 1,
+      "message": "Can you just call host_get_events() \u0026 EC_HOST_EVENT_KEYBOARD_RECOVERY\n\nThe host won\u0027t have booted yet, so the event will still be set.",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 45
+      },
+      "revId": "e130aa84464d9c2b6b21f21692c79a0bf7c8b40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
