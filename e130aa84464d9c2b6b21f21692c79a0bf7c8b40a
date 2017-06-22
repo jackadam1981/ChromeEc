@@ -45,6 +45,30 @@
       "revId": "e130aa84464d9c2b6b21f21692c79a0bf7c8b40a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23a6d4ff_012509ea",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-22T16:41:27Z",
+      "side": 1,
+      "message": "I considered it, but I thought it might be racy. Thinking about it more, it\u0027s less likely to be a problem than I thought with the recent HOOK_INIT-goes-first change. I\u0027ll change it and add a comment.",
+      "parentUuid": "0573d4b4_578b351d",
+      "range": {
+        "startLine": 244,
+        "startChar": 1,
+        "endLine": 244,
+        "endChar": 45
+      },
+      "revId": "e130aa84464d9c2b6b21f21692c79a0bf7c8b40a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
