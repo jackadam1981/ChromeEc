@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8240154a_bf28c8bb",
+        "filename": "util/run_ects.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-23T01:23:24Z",
+      "side": 1,
+      "message": "I want the script to do cros_sdk even in dry_run. It\u0027s still a no-op and somewhat more useful than just printing cros_sdk.",
+      "parentUuid": "9c1ef538_5dc18597",
+      "revId": "1464daf87198df8830bd87ec8fcf107cdec53c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de2bc01d_0c29d09b",
         "filename": "util/run_ects.sh",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2017-06-23T01:09:42Z",
       "side": 1,
       "message": "so you don\u0027t actually use this anywhere",
+      "revId": "1464daf87198df8830bd87ec8fcf107cdec53c61",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44ed4ebd_17149684",
+        "filename": "util/run_ects.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-06-23T01:23:24Z",
+      "side": 1,
+      "message": "Not yet but I\u0027m pretty sure that I will later.",
+      "parentUuid": "de2bc01d_0c29d09b",
       "revId": "1464daf87198df8830bd87ec8fcf107cdec53c61",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
