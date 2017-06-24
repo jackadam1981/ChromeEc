@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f629f606_5a465811",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2017-06-24T00:28:13Z",
+      "side": 1,
+      "message": "Why pulsing the power button, isn\u0027t sending lidopen enough to wake up the AP?",
+      "parentUuid": "abf607fd_05390401",
+      "range": {
+        "startLine": 739,
+        "startChar": 2,
+        "endLine": 745,
+        "endChar": 21
+      },
+      "revId": "ff0b89f6d56bb00d6fd68db21444d829c94bb172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "37e9ea1e_d0c5fb6f",
         "filename": "power/common.c",
         "patchSetId": 3
