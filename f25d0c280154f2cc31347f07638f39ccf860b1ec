@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe4f4bfa_b59bd123",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-26T07:04:36Z",
+      "side": 1,
+      "message": "the burning question how are we going to test the correctness ?\nThe current x25519 test might be a bit weak for various 256-b arithmetic corner cases.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 70
+      },
+      "revId": "f25d0c280154f2cc31347f07638f39ccf860b1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "590de08a_bebf21a4",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-26T07:04:36Z",
+      "side": 1,
+      "message": "I would be more in favor of putting:\ndirs-y +\u003d core/$(CORE)/x25519\nin core/cortex-m0/build.mk",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 47
+      },
+      "revId": "f25d0c280154f2cc31347f07638f39ccf860b1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a6d0fc2_c8d390c7",
+        "filename": "core/cortex-m0/curve25519/scalarmult.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-26T07:04:36Z",
+      "side": 1,
+      "message": "IMO we should just clean-up the variants we are not using.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 60
+      },
+      "revId": "f25d0c280154f2cc31347f07638f39ccf860b1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125a0d50_ce43af18",
+        "filename": "core/cortex-m0/curve25519/scalarmult.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-26T07:04:36Z",
+      "side": 1,
+      "message": "why is this ?",
+      "range": {
+        "startLine": 311,
+        "startChar": 3,
+        "endLine": 311,
+        "endChar": 12
+      },
+      "revId": "f25d0c280154f2cc31347f07638f39ccf860b1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7551c9e3_700ce47e",
+        "filename": "core/cortex-m0/curve25519/scalarmult.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-26T07:04:36Z",
+      "side": 1,
+      "message": "isn\u0027t this the slowest possible implementation ?\na memcpy might be faster,",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 5
+      },
+      "revId": "f25d0c280154f2cc31347f07638f39ccf860b1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
