@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad31ecc8_4202db85",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-26T20:47:50Z",
+      "side": 1,
+      "message": "Changed to use CONFIG option to define it.  Unit tests use a well-known key; we\u0027ll define a real one before deploying.",
+      "parentUuid": "86c5a5bf_952e77dc",
+      "range": {
+        "startLine": 24,
+        "startChar": 16,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "7a98f3d383abd5e1135bf90f0fff6476df480bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b11f5c52_b44d4210",
         "filename": "common/rma_auth.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-22T09:40:19Z",
       "side": 1,
       "message": "nit: explicitly initialize to 0 for clarity?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "7a98f3d383abd5e1135bf90f0fff6476df480bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f997e14_57d6cfea",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-26T20:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b11f5c52_b44d4210",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "If you have safe_memcmp, then let\u0027s use it.",
       "parentUuid": "58f7b01c_5ffe53cd",
+      "range": {
+        "startLine": 108,
+        "startChar": 6,
+        "endLine": 108,
+        "endChar": 13
+      },
+      "revId": "7a98f3d383abd5e1135bf90f0fff6476df480bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dccb28cc_a82e5c20",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-26T20:47:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced102d6_0d98b5a0",
       "range": {
         "startLine": 108,
         "startChar": 6,
