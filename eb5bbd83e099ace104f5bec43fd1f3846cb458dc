@@ -22,6 +22,30 @@
       "revId": "eb5bbd83e099ace104f5bec43fd1f3846cb458dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c624599_70464489",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-26T17:56:07Z",
+      "side": 1,
+      "message": "battery_get_mode() is implemented for all batteries, not just SB (although it currently returns UNIMPLEMENTED for non-SB batteries). I\u0027ll add some code to handle the UNIMPLEMENTED return value properly.\n\nFor future batteries, we can return either UNIMPLEMENTED or fake the register.",
+      "parentUuid": "d991b1fa_3820d22a",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 39
+      },
+      "revId": "eb5bbd83e099ace104f5bec43fd1f3846cb458dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
