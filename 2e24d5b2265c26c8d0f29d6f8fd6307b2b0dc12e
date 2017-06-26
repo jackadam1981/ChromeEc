@@ -92,6 +92,30 @@
       "revId": "2e24d5b2265c26c8d0f29d6f8fd6307b2b0dc12e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b91a62_1d322ffb",
+        "filename": "chip/stm32/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-26T10:00:41Z",
+      "side": 1,
+      "message": "maybe putting the enable_sleep(SLEEP_MASK_PWM) before in pwm_disable ?\neg with the bitmap:\n\nuint32_t using_pwm;\n\n\nstatic void pwm_configure(enum pwm_channel ch)\n{\n  /* [...] */\n  atomic_orr(\u0026using_pwm, 1 \u003c\u003c ch);\n  /* Prevent sleep */\n  disable_sleep(SLEEP_MASK_PWM);\n}\n\nstatic void pwm_disable(enum pwm_channel ch)\n{\n  /* [...] */\n  /* allow sleep... */\n  enable_sleep(SLEEP_MASK_PWM);\n  /* ...unless another PWM is active */\n  if (atomic_read(\u0026using_pwm))\n     disable_sleep(SLEEP_MASK_PWM);\n}\n\nIf this is correct ? this is not more efficient than your solution on Cortex-M0.",
+      "parentUuid": "7577684e_8bb3fe0f",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 19
+      },
+      "revId": "2e24d5b2265c26c8d0f29d6f8fd6307b2b0dc12e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
