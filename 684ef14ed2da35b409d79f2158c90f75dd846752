@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0ff48a2_26c5c033",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 712,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T21:31:50Z",
+      "side": 1,
+      "message": "This helps, but I was thinking something like:\n\n    if ((sensor \u003d\u003d \u0026motion_sensors[LID_ACCEL]) \u0026\u0026\n        (ret !\u003d EC_ERROR_BUSY)) {\n\nI think that should be safe. Or if it\u0027s not, maybe also check for the sensor type (i.e. accel)",
+      "revId": "684ef14ed2da35b409d79f2158c90f75dd846752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e75f60_31360e7a",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T21:31:50Z",
+      "side": 1,
+      "message": "maybe also want to add the check for \u0027V(s) \u003d\u003d 0\u0027 here as well.",
+      "revId": "684ef14ed2da35b409d79f2158c90f75dd846752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b501dd00_7ae6f3f4",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T21:31:50Z",
+      "side": 1,
+      "message": "typo: \u0027symmetrical\u0027",
+      "range": {
+        "startLine": 352,
+        "startChar": 65,
+        "endLine": 352,
+        "endChar": 75
+      },
+      "revId": "684ef14ed2da35b409d79f2158c90f75dd846752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aa6eef4_4c9dcb54",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1791,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T21:31:50Z",
+      "side": 1,
+      "message": "I think you can remove this line? I don\u0027t think the presubmit check will complain...\n\nAnd then maybe you can move this with the other accel related config options. Around L71 maybe?",
+      "revId": "684ef14ed2da35b409d79f2158c90f75dd846752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
