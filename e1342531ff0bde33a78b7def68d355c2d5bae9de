@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "705873a6_63487a3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T23:11:32Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll cherry-pick them to other branches.",
+      "parentUuid": "b3d5d32b_afaefa72",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "e1342531ff0bde33a78b7def68d355c2d5bae9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d35229eb_cc96bae1",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 1
