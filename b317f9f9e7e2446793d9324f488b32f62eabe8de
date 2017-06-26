@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d7b8fe10_b8ddd66b",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T18:18:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b4e425c_c7b52dcf",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51fb3e81_15b92cf1",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-06-20T18:30:59Z",
       "side": 1,
       "message": "I\u0027m not sure that clearing it is necessary. One could compare if the current set orientation state differs from the last reported. If they do, report it, and update last reported.",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0de67aae_96eefc46",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T18:18:48Z",
+      "side": 1,
+      "message": "Are you suggesting clearing other orientation status it when s-\u003eevents gets set?",
+      "parentUuid": "51fb3e81_15b92cf1",
       "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b4124c90_71d9bb12",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T18:18:48Z",
+      "side": 1,
+      "message": "Log was intentional, my initials were not.  Removed my initials.  Done",
+      "parentUuid": "884561cd_b60b3126",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbdc22a4_848af792",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "48d4d5d5_cc865e87",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T18:18:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbdc22a4_848af792",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de50f141_f3bfac1c",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 1
@@ -84,6 +156,24 @@
       "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de4317b7_b9268883",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T18:18:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de50f141_f3bfac1c",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "967c9203_2ed0ae5d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T18:18:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74956a1f_07a24b6f",
+      "range": {
+        "startLine": 1792,
+        "startChar": 0,
+        "endLine": 1795,
+        "endChar": 43
+      },
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4478bbe8_ddb50797",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "d99697df_0ce93a3b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2062,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T18:18:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4478bbe8_ddb50797",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80a2caa6_382572cf",
         "filename": "include/motion_sense.h",
         "patchSetId": 1
@@ -141,6 +273,24 @@
       "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6173cc8_2fdf5eb0",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T18:18:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80a2caa6_382572cf",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
