@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5fd25454_cdcba390",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-26T21:01:28Z",
+      "side": 1,
+      "message": "Or, not.  This generates a presubmit error, since globals implicitly initialize to 0.",
+      "parentUuid": "1f997e14_57d6cfea",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "7a98f3d383abd5e1135bf90f0fff6476df480bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58f7b01c_5ffe53cd",
         "filename": "common/rma_auth.c",
         "patchSetId": 2
@@ -178,6 +202,30 @@
       "writtenOn": "2017-06-22T09:40:19Z",
       "side": 1,
       "message": "None of the tests trigger version, key_id, board_id or device_id checks AFAICT.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "7a98f3d383abd5e1135bf90f0fff6476df480bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b85649d2_e9361548",
+        "filename": "test/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-26T21:01:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba10a9e4_a2ed5b55",
       "range": {
         "startLine": 71,
         "startChar": 0,
