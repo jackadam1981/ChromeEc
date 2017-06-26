@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "e97595b9_37f9fb4a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "Sorry, I think this is gone in PS2, so I\u0027m not sure what you mean. It seems that the orientation detection and reporting is done from within the process function.",
+      "parentUuid": "0de67aae_96eefc46",
+      "revId": "b317f9f9e7e2446793d9324f488b32f62eabe8de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "884561cd_b60b3126",
         "filename": "common/motion_sense.c",
         "patchSetId": 1

@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c179495_b073b2dd",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "Don\u0027t think this is needed anymore?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "988b9a57_6f9d2cbc",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "nit: an extra line was added.",
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7430c289_e092fff1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "I think it might be a bit wasteful to go thru this path for each sensor? What do you think about explicitly checking for the \u0027LID_ACCEL\u0027 sensor? As I think, that\u0027s the only sensor we care about for orientation?",
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bacc5e9e_34b88076",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "So, I guess this requires CONFIG_ACCEL_FIFO to be defined. (maybe want to add an ifdef?) How are orientation events reported if that isn\u0027t defined?",
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64ea6322_10dd8672",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "I think this can be moved up into the switch statement and then  \u0027send_event\u0027 can be removed.",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 750,
+        "endChar": 0
+      },
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa154536_8f356b82",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "nit: extra line added.",
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5fc48c6_215b429c",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "Should be \u0027landscape\u0027.",
+      "range": {
+        "startLine": 425,
+        "startChar": 44,
+        "endLine": 425,
+        "endChar": 52
+      },
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "237e98e8_3db0a074",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "You may also want to add a check for \u0027V(s) \u003d\u003d 0\u0027 as well.",
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ebd33e7_98b68c6e",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "The return value isn\u0027t being checked.",
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b87695_b2281392",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1791,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-06-26T18:34:03Z",
+      "side": 1,
+      "message": "I wonder if defining one of the following should then define CONFIG_ORIENTATION_SENSOR. Just to be safe and make sure that it\u0027s not forgotten.",
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
