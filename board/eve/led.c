@@ -23,12 +23,15 @@
 #define LED_TICKS_PER_BEAT 2
 #define NUM_PHASE 2
 #define DOUBLE_TAP_TICK_LEN (LED_TICKS_PER_BEAT * 8)
+#define LED_FRAC_BITS 4
+#define LED_STEP_MSEC 40
 
 static int led_debug;
 static int double_tap;
 static int double_tap_tick_count;
 static int led_pattern;
 static int led_ticks;
+static enum led_color led_current_color;
 
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_LEFT_LED, EC_LED_ID_RIGHT_LED};
@@ -106,8 +109,8 @@ static const uint8_t color_brightness[LED_COLOR_COUNT][PWM_CHAN_PER_LED] = {
 	[LED_GREEN] = {0, 80, 0},
 	[LED_BLUE] = {0, 0, 80},
 	[LED_WHITE]  = {100, 100, 100},
-	[LED_RED_2_3]  = {53, 0, 0},
-	[LED_RED_1_3]  = {27, 0, 0},
+	[LED_RED_2_3]  = {40, 0, 0},
+	[LED_RED_1_3]  = {20, 0, 0},
 };
 
 /*
@@ -136,13 +139,29 @@ static const struct range_map pattern_tbl[] = {
 	{100, SOLID_GREEN},
 };
 
+enum led_change {
+	led_intensity_down,
+	led_intensity_up,
+	led_done,
+};
+
+/*
+ * The PWM % on levels to transition from intensity 0 (black) to intensity 1.0
+ * (white) in the HSI color space converted back to RGB space (0 - 255) and
+ * converted to a % for PWM. This table is used for Red <--> White and Green
+ * <--> Transitions. In HSI space white = (0, 0, 1), red = (0, .5, .33), green =
+ * (120, .5, .33). For the transitions of interest only S and I are changed and
+ * they are changed linearly in HSI space.
+ */
+static const uint8_t trans_steps[] = {0, 5, 13, 22, 33, 47, 63, 80, 100};
+
 /**
  * Set LED color
  *
- * @param color	Enumerated color value
+ * @param pwm		Pointer to 3 element RGB color level (0 -> 100)
  * @param side		Left LED, Right LED, or both LEDs
  */
-static void set_color(enum led_color color, enum led_side side)
+static void set_color(const uint8_t *pwm, enum led_side side)
 {
 	int i;
 	static uint8_t saved_duty[LED_BOTH][PWM_CHAN_PER_LED];
@@ -150,12 +169,10 @@ static void set_color(enum led_color color, enum led_side side)
 	/* Set color for left LED */
 	if (side == LED_LEFT || side == LED_BOTH) {
 		for (i = 0; i < PWM_CHAN_PER_LED; i++) {
-			if (saved_duty[LED_LEFT][i] !=
-			    color_brightness[color][i]) {
+			if (saved_duty[LED_LEFT][i] != pwm[i]) {
 				pwm_set_duty(PWM_CH_LED_L_RED + i,
-					     100 - color_brightness[color][i]);
-				saved_duty[LED_LEFT][i] =
-					color_brightness[color][i];
+					     100 - pwm[i]);
+				saved_duty[LED_LEFT][i] = pwm[i];
 			}
 		}
 	}
@@ -163,12 +180,10 @@ static void set_color(enum led_color color, enum led_side side)
 	/* Set color for right LED */
 	if (side == LED_RIGHT || side == LED_BOTH) {
 		for (i = 0; i < PWM_CHAN_PER_LED; i++) {
-			if (saved_duty[LED_RIGHT][i] !=
-			    color_brightness[color][i]) {
+			if (saved_duty[LED_RIGHT][i] != pwm[i]) {
 				pwm_set_duty(PWM_CH_LED_R_RED + i,
-					     100 - color_brightness[color][i]);
-				saved_duty[LED_RIGHT][i] =
-					color_brightness[color][i];
+					     100 - pwm[i]);
+				saved_duty[LED_RIGHT][i] = pwm[i];
 			}
 		}
 	}
@@ -213,6 +228,163 @@ void led_register_double_tap(void)
 	double_tap = 1;
 }
 
+static void led_change_color(int old_idx, int new_idx, enum led_side side)
+{
+	int i;
+	int step;
+	int state;
+	uint8_t rgb_current[PWM_CHAN_PER_LED];
+	uint8_t rgb_target[PWM_CHAN_PER_LED];
+	uint8_t trans[ARRAY_SIZE(trans_steps)];
+	int rgb_mask = 0;
+
+	/*
+	 * Using the color indices, poplulate the current and target R, G, B
+	 * arrays. The arrays are indexed R = 0, G = 1, B = 2. If the target of
+	 * any of the 3 is greater than the current, then this color change is
+	 * an increase in intensity. Otherwise, it's a decrease.
+	 */
+	for (i = 0; i < PWM_CHAN_PER_LED; i++) {
+		rgb_current[i] = color_brightness[old_idx][i];
+		rgb_target[i] = color_brightness[new_idx][i];
+		if (rgb_current[i] < rgb_target[i]) {
+			/* increase in color */
+			rgb_mask |= 1;
+		}
+	}
+	/* Check to see if increasing or decreasing color */
+	if (rgb_mask) {
+		/* First entry of transition table == current level */
+		step = 1;
+		state = led_intensity_up;
+	} else {
+		/* Last entry of transition table == current level */
+		step = ARRAY_SIZE(trans_steps) - 2;
+		state = led_intensity_down;
+	}
+
+	/*
+	 * Populate transition table based on the number of R, G, B components
+	 * changing. If only 1 componenet is changing, then can just do linear
+	 * steps over the range. If more than 1 component is changing, then
+	 * this is a white <--> color transition and will use
+	 * the precomputed steps which are derived by converting to HSI space
+	 * and then linearly transitioning S and I to go from the starting color
+	 * to white and vice versa.
+	 */
+	if (old_idx == LED_WHITE || new_idx == LED_WHITE) {
+		for (i = 0; i < ARRAY_SIZE(trans_steps); i++)
+			trans[i] = trans_steps[i];
+	} else {
+		int delta_per_step;
+		int step_value;
+		int start_lvl;
+		int total_change;
+		int color_index = 0;
+
+		/*
+		 * Since the new or old color is not white, then this change
+		 * must involve only either red or green. There are no red <-->
+		 * green transitions. So only 1 color is being changed in this
+		 * case. Assume it's red (index = 0), but check if it's green
+		 * (index = 1).
+		 */
+
+		if (old_idx == LED_GREEN || new_idx == LED_GREEN)
+			color_index = 1;
+
+		/*
+		 * Determine the total change assuming current level is higher
+		 * than target level. The transitions steps are always ordered
+		 * lower to higher. The starting index is adjusted if intensity
+		 * is decreasing.
+		 */
+		total_change = rgb_current[color_index] -
+			rgb_target[color_index];
+		start_lvl = rgb_target[color_index];
+
+		if (total_change < 0) {
+			/*
+			 * Increasing in intensity, current level or R/G is
+			 * the starting level.
+			 */
+			total_change = -total_change;
+			start_lvl = rgb_current[color_index];
+		}
+		/*
+		 * Compute change per step using fractional bits. The step
+		 * change accumulates fractional bits and is truncated after
+		 * rounding before being added to the starting value.
+		 */
+		delta_per_step = (total_change << LED_FRAC_BITS)
+			/ (ARRAY_SIZE(trans_steps) - 1);
+		step_value = 0;
+		for (i = 0; i < ARRAY_SIZE(trans_steps); i++) {
+			trans[i] = start_lvl +
+				((step_value +
+				  (1 << (LED_FRAC_BITS - 1)))
+				 >> LED_FRAC_BITS);
+			step_value += delta_per_step;
+		}
+	}
+
+	/* Will loop here until the color change is complete. */
+	while (state != led_done) {
+		rgb_mask = 0;
+		if (state == led_intensity_down) {
+			/*
+			 * Colors are going from higher to lower level. If the
+			 * current level of R, G, or B is higher than both
+			 * the next step in the transition table and and the
+			 * target level, then move to the larger of the two. The
+			 * MAX is used to make sure that it doens't drop below
+			 * the target level.
+			 */
+			for (i = 0; i < PWM_CHAN_PER_LED; i++) {
+				if ((rgb_current[i] > rgb_target[i]) &&
+				    (rgb_current[i] >= trans[step])) {
+					rgb_current[i] = MAX(trans[step],
+							     rgb_target[i]);
+					rgb_mask |= 1;
+				}
+			}
+			/*
+			 * If nothing changed this iteration, or if lowest table
+			 * entry has been used, then the change is complete.
+			 */
+			if (!rgb_mask || --step < 0)
+				state = led_done;
+
+		} else if (state == led_intensity_up) {
+			/*
+			 * Colors are going from lower to higher level. If the
+			 * current level of R, G, B is lower than both the
+			 * target level and the transition table entry for a
+			 * given color, then move up to the MIN of next
+			 * transition step and target level.
+			 */
+			for (i = 0; i < PWM_CHAN_PER_LED; i++) {
+				if ((rgb_current[i] < rgb_target[i]) &&
+				    (rgb_current[i] <= trans[step])) {
+					rgb_current[i] = MIN(trans[step],
+							     rgb_target[i]);
+					rgb_mask |= 1;
+				}
+			}
+			/*
+			 * If nothing changed this iteration, or if highest
+			 * table entry has been used, then the change is
+			 * complete.
+			 */
+			if (!rgb_mask || ++step >= ARRAY_SIZE(trans_steps))
+				state = led_done;
+		}
+		/* Apply current R, G, B levels */
+		set_color(rgb_current, side);
+		msleep(LED_STEP_MSEC);
+	}
+}
+
 static void led_manage_pattern(int side)
 {
 	int color;
@@ -222,8 +394,13 @@ static void led_manage_pattern(int side)
 	phase = led_ticks < LED_TICKS_PER_BEAT * pattern[led_pattern].len[0] ?
 		0 : 1;
 	color = pattern[led_pattern].color[phase];
+	/* If color is changing, then manage the transition */
+	if (led_current_color != color) {
+		led_change_color(led_current_color, color, side);
+		led_current_color = color;
+	}
 	/* Set color for the current phase */
-	set_color(color, side);
+	set_color(color_brightness[color], side);
 
 	/*
 	 * Update led_ticks. If the len field is 0, then the pattern
@@ -313,7 +490,7 @@ static void eve_led_set_power_battery(void)
 	 * on the side with the charger is turned on.
 	 */
 	if (side != LED_BOTH)
-		set_color(LED_OFF, side ^ 1);
+		set_color(color_brightness[LED_OFF], side ^ 1);
 	/* Update LED pattern */
 	led_manage_pattern(side);
 }
@@ -334,7 +511,7 @@ static void led_init(void)
 	pwm_enable(PWM_CH_LED_R_GREEN, 1);
 	pwm_enable(PWM_CH_LED_R_BLUE, 1);
 
-	set_color(LED_OFF, LED_BOTH);
+	set_color(color_brightness[LED_OFF], LED_BOTH);
 	led_pattern = OFF;
 	led_ticks = 0;
 	double_tap_tick_count = 0;
@@ -364,6 +541,7 @@ static int command_led(int argc, char **argv)
 {
 	int side = LED_BOTH;
 	char *e;
+	int color;
 
 	if (argc > 1) {
 		if (argc > 2) {
@@ -377,19 +555,23 @@ static int command_led(int argc, char **argv)
 		if (!strcasecmp(argv[1], "debug")) {
 			led_debug ^= 1;
 			CPRINTF("led_debug = %d\n", led_debug);
-		} else if (!strcasecmp(argv[1], "off")) {
-			set_color(LED_OFF, side);
-		} else if (!strcasecmp(argv[1], "red")) {
-			set_color(LED_RED, side);
-		} else if (!strcasecmp(argv[1], "green")) {
-			set_color(LED_GREEN, side);
-		} else if (!strcasecmp(argv[1], "blue")) {
-			set_color(LED_BLUE, side);
-		} else if (!strcasecmp(argv[1], "white")) {
-			set_color(LED_WHITE, side);
-		} else {
-			return EC_ERROR_PARAM1;
+			return EC_SUCCESS;
 		}
+
+		if (!strcasecmp(argv[1], "off"))
+			color = LED_OFF;
+		else if (!strcasecmp(argv[1], "red"))
+			color = LED_RED;
+		else if (!strcasecmp(argv[1], "green"))
+			color = LED_GREEN;
+		else if (!strcasecmp(argv[1], "blue"))
+			color = LED_BLUE;
+		else if (!strcasecmp(argv[1], "white"))
+			color = LED_WHITE;
+		else
+			return EC_ERROR_PARAM1;
+
+		set_color(color_brightness[color], side);
 	}
 	return EC_SUCCESS;
 }
