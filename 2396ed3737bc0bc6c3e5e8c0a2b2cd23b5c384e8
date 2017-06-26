@@ -235,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "7834a306_98d48d12",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T19:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5fc48c6_215b429c",
+      "range": {
+        "startLine": 425,
+        "startChar": 44,
+        "endLine": 425,
+        "endChar": 52
+      },
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "237e98e8_3db0a074",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 2
@@ -269,6 +293,24 @@
     },
     {
       "key": {
+        "uuid": "ef6876cb_54e2dcec",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T19:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ebd33e7_98b68c6e",
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8b87695_b2281392",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -280,6 +322,24 @@
       "writtenOn": "2017-06-26T18:34:03Z",
       "side": 1,
       "message": "I wonder if defining one of the following should then define CONFIG_ORIENTATION_SENSOR. Just to be safe and make sure that it\u0027s not forgotten.",
+      "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af3f7bf8_b512d3f0",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1791,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-06-26T19:18:06Z",
+      "side": 1,
+      "message": "It should, but config.h is included before board.h, so we can\u0027t do that here.\n\nAt one point, I had code at top of motion_sense.c that set CONFIG_ORIENTATION_SENSOR if either of the sub-configs were set, but pulled it out in lieu of just setting it at the same time as setting CONFIG_KX022_ORIENTATION_SENSOR or CONFIG_BMI160_ORIENTATION_SENSOR.  Trying to auto-set CONFIG_ORIENTATION_SENSOR from within motion_sense.h did not work / CONFIG_ORIENTATION_SENSOR didn\u0027t get defined even though CONFIG_KX022_ORIENTATION_SENSOR is defined (include order?)",
+      "parentUuid": "f8b87695_b2281392",
       "revId": "2396ed3737bc0bc6c3e5e8c0a2b2cd23b5c384e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
