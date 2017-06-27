@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec580227_9d8bc660",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-27T20:01:43Z",
+      "side": 1,
+      "message": "Why not call set_state() here? It takes cleanup actions based on the previous state that may be important.",
+      "range": {
+        "startLine": 1810,
+        "startChar": 4,
+        "endLine": 1810,
+        "endChar": 49
+      },
+      "revId": "e5d8d4c3ad3a149d739ceb73b03582155044c2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b8185e_c5aa8613",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3119,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-27T20:01:43Z",
+      "side": 1,
+      "message": "As written, we can only request a jump into or out of the suspend state.",
+      "range": {
+        "startLine": 3119,
+        "startChar": 32,
+        "endLine": 3119,
+        "endChar": 41
+      },
+      "revId": "e5d8d4c3ad3a149d739ceb73b03582155044c2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47bf27f8_df873062",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3126,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-27T20:01:43Z",
+      "side": 1,
+      "message": "It\u0027s reasonable to wait for the PD task to enter the requested state, but why do we need to retry setting the task event? With your changes to the PD task, it should be reliable with one try.",
+      "range": {
+        "startLine": 3126,
+        "startChar": 1,
+        "endLine": 3126,
+        "endChar": 17
+      },
+      "revId": "e5d8d4c3ad3a149d739ceb73b03582155044c2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42140e13_63989a61",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3130,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-27T20:01:43Z",
+      "side": 1,
+      "message": "Is there a need to jump to other non-suspend states? If not, we can rename the host event, and remove this variable altogether.",
+      "range": {
+        "startLine": 3130,
+        "startChar": 3,
+        "endLine": 3130,
+        "endChar": 48
+      },
+      "revId": "e5d8d4c3ad3a149d739ceb73b03582155044c2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7538f994_14394c04",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3138,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-27T20:01:43Z",
+      "side": 1,
+      "message": "Might want to check the current state, and print an error of we\u0027re not in PD_STATE_SUSPENDED.",
+      "range": {
+        "startLine": 3138,
+        "startChar": 2,
+        "endLine": 3138,
+        "endChar": 42
+      },
+      "revId": "e5d8d4c3ad3a149d739ceb73b03582155044c2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
