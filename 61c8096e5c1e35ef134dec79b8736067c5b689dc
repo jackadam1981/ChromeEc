@@ -16,6 +16,24 @@
       "revId": "61c8096e5c1e35ef134dec79b8736067c5b689dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e78d964c_56e112fe",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-27T18:46:58Z",
+      "side": 0,
+      "message": "If we are going to use the method of \u0027writing invalid flash key into controller\u0027 to implement *_now, we can not protect RO only. See the implementation in flash-stm32f3.c",
+      "parentUuid": "fc0dc7a8_fd039330",
+      "revId": "61c8096e5c1e35ef134dec79b8736067c5b689dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
