@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "89e7e7fb_06925139",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-27T16:35:40Z",
+      "side": 1,
+      "message": "Not sure, but we\u0027re using the standard kernel presubmit checks.\n\nAt least the unit tests should catch this if it ever changes.",
+      "parentUuid": "cf334914_a03f2a78",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "7a98f3d383abd5e1135bf90f0fff6476df480bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58f7b01c_5ffe53cd",
         "filename": "common/rma_auth.c",
         "patchSetId": 2
