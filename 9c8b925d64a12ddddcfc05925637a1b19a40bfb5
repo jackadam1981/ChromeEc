@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "041373a7_158e4762",
+        "filename": "chip/stm32/flash-stm32f3.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-27T19:00:51Z",
+      "side": 1,
+      "message": "not necessary: reading the spec, it is set by sw and just reset by hw. It just indicate a previous lock is still active.",
+      "revId": "9c8b925d64a12ddddcfc05925637a1b19a40bfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc0e837a_c5374928",
+        "filename": "chip/stm32/flash-stm32f3.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-27T19:00:51Z",
+      "side": 1,
+      "message": "you need an else here, INVAL is not expected.",
+      "revId": "9c8b925d64a12ddddcfc05925637a1b19a40bfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
