@@ -34,6 +34,26 @@
 #define RTC_PREDIV_S (RTC_FREQ - 1)
 #define US_PER_RTC_TICK (1000000 / RTC_FREQ)
 
+/* Low power idle statistics */
+#ifdef CONFIG_LOW_POWER_IDLE
+static int idle_sleep_cnt;
+static int idle_dsleep_cnt;
+static uint64_t idle_dsleep_time_us;
+static int dsleep_recovery_margin_us = 1000000;
+
+/*
+ * minimum delay to enter stop mode
+ * STOP_MODE_LATENCY: max time to wake up from STOP mode with regulator in low
+ * power mode.
+ * SET_RTC_MATCH_DELAY: max time to set RTC match alarm. if we set the alarm
+ * in the past, it will never wake up and cause a watchdog.
+ */
+#define STOP_MODE_LATENCY 500  /* us */
+#define SET_RTC_MATCH_DELAY 200 /* us */
+
+#endif /* CONFIG_LOW_POWER_IDLE */
+
+
 int32_t rtcss_to_us(uint32_t rtcss)
 {
 	return ((RTC_PREDIV_S - rtcss) * US_PER_RTC_TICK);
@@ -177,6 +197,75 @@ void config_hispeed_clock(void)
 #endif
 }
 
+#ifdef CONFIG_LOW_POWER_IDLE
+
+void clock_refresh_console_in_use(void)
+{
+}
+
+void __idle(void)
+{
+	timestamp_t t0;
+	int next_delay, margin_us, rtc_diff;
+	uint32_t rtc0, rtc0ss, rtc1, rtc1ss;
+
+	while (1) {
+		asm volatile("cpsid i");
+
+		t0 = get_time();
+		next_delay = __hw_clock_event_get() - t0.le.lo;
+
+		if (DEEP_SLEEP_ALLOWED &&
+		    (next_delay > (STOP_MODE_LATENCY + SET_RTC_MATCH_DELAY))) {
+			/* deep-sleep in STOP mode */
+			idle_dsleep_cnt++;
+
+			/* set deep sleep bit */
+			CPU_SCB_SYSCTRL |= 0x14;
+
+			set_rtc_alarm(0, next_delay - STOP_MODE_LATENCY,
+				      &rtc0, &rtc0ss);
+			asm("wfi");
+
+			CPU_SCB_SYSCTRL &= ~0x14;
+
+			/*
+			 * By default only HSI 8MHz is enabled here. Re-enable
+			 * high-speed clock if in use.
+			 */
+			config_hispeed_clock();
+
+			/* fast forward timer according to RTC counter */
+			reset_rtc_alarm(&rtc1, &rtc1ss);
+			rtc_diff = get_rtc_diff(rtc0, rtc0ss, rtc1, rtc1ss);
+			t0.val = t0.val + rtc_diff;
+			force_time(t0);
+
+			/* Record time spent in deep sleep. */
+			idle_dsleep_time_us += rtc_diff;
+
+			/* Calculate how close we were to missing deadline */
+			margin_us = next_delay - rtc_diff;
+			if (margin_us < 0)
+				/* Use CPUTS to save stack space */
+				CPUTS("Idle overslept!\n");
+
+			/* Record the closest to missing a deadline. */
+			if (margin_us < dsleep_recovery_margin_us)
+				dsleep_recovery_margin_us = margin_us;
+		} else {
+			idle_sleep_cnt++;
+
+			/* normal idle : only CPU clock stopped */
+			asm("wfi");
+		}
+		asm volatile("cpsie i");
+	}
+}
+#endif /* CONFIG_LOW_POWER_IDLE */
+
+
+
 int clock_get_timer_freq(void)
 {
 	return STM32F4_TIMER_CLOCK;
@@ -262,3 +351,28 @@ void rtc_init(void)
 
 	rtc_lock_regs();
 }
+
+#if defined(CONFIG_LOW_POWER_IDLE) && defined(CONFIG_COMMON_RUNTIME)
+#ifdef CONFIG_CMD_IDLE_STATS
+/**
+ * Print low power idle statistics
+ */
+static int command_idle_stats(int argc, char **argv)
+{
+	timestamp_t ts = get_time();
+
+	ccprintf("Num idle calls that sleep:           %d\n", idle_sleep_cnt);
+	ccprintf("Num idle calls that deep-sleep:      %d\n", idle_dsleep_cnt);
+	ccprintf("Time spent in deep-sleep:            %.6lds\n",
+			idle_dsleep_time_us);
+	ccprintf("Total time on:                       %.6lds\n", ts.val);
+	ccprintf("Deep-sleep closest to wake deadline: %dus\n",
+			dsleep_recovery_margin_us);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
+			"",
+			"Print last idle stats");
+#endif /* CONFIG_CMD_IDLE_STATS */
+#endif
