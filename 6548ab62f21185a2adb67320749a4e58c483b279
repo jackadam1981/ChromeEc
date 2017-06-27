@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2667d99_bd40c2ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-27T23:27:36Z",
+      "side": 1,
+      "message": "Where is the symlink in this change?",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "6548ab62f21185a2adb67320749a4e58c483b279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7164d18_bbc2d4dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-27T23:27:36Z",
+      "side": 1,
+      "message": "Did you test it on ryu, or only test that it still builds?",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 63
+      },
+      "revId": "6548ab62f21185a2adb67320749a4e58c483b279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
