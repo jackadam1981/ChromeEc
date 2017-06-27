@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c5eaa4f_24073292",
+        "filename": "common/vboot.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-27T23:45:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this just set slot\u003dA, and then fall through to verifying it?",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 25
+      },
+      "revId": "898ffb40da9c88e0c11c753b87cbe31f9e7d944c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
