@@ -170,9 +170,13 @@ class Board(object):
          'tty: ' + str(self.tty) + '\n')
     return s
 
-  def reset(self):
+  def reset_halt(self):
     """Reset then halt board."""
     return self.send_open_ocd_commands(['init', 'reset halt'])
+
+  def resume(self):
+    """Resume halting board."""
+    return self.send_open_ocd_commands(['init', 'resume'])
 
   def setup_tty(self):
     """Call this before calling read_tty for the first time.
@@ -181,7 +185,7 @@ class Board(object):
     this function after serial numbers are setup
     """
     self.get_serial()
-    self.reset()
+    self.reset_halt()
     self.identify_tty_port()
 
     tty = None
