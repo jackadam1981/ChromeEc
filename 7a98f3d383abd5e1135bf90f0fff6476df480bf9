@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "cf334914_a03f2a78",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2017-06-27T08:38:14Z",
+      "side": 1,
+      "message": "Ah, too bad. What\u0027s the rationale for that presubmit check though? I am personally aware of this guaranteed to be zero, but other people might not be and in case this gets refactored to move to dynamically allocated memory things are no longer clear. Anyhow, none of this affects this CL.",
+      "parentUuid": "5fd25454_cdcba390",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 36
+      },
+      "revId": "7a98f3d383abd5e1135bf90f0fff6476df480bf9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58f7b01c_5ffe53cd",
         "filename": "common/rma_auth.c",
         "patchSetId": 2
