@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64c194fa_cfd2d80e",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-27T20:35:08Z",
+      "side": 1,
+      "message": "I think panic_printf() isn\u0027t appropriate here, I think it\u0027s simply a synchronous version of printf() that works from exception context. Is your goal to cause a system panic here? If so, just call panic(\"Message..\").",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 14
+      },
+      "revId": "52e878fe0ae00244633e8d139a829e27a1ee83cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
