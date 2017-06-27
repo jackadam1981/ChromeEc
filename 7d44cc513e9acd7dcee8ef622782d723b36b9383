@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8bc0e6b_5f0bd0a4",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-27T20:25:15Z",
+      "side": 1,
+      "message": "It\u0027s probably best to move this to the caller (pd_service_tcpc_ports()) so that it takes effect for all TCPC drivers. You can add a function like int pd_state_is_suspended(int port) { return pd[port].task_state \u003d\u003d PD_STATE_SUSPENDED; } to usb_pd_procotol.c so that you know when to skip calls to alert().",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 2
+      },
+      "revId": "7d44cc513e9acd7dcee8ef622782d723b36b9383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
