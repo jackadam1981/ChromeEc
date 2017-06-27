@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc0dc7a8_fd039330",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-06-27T17:31:22Z",
+      "side": 0,
+      "message": "This is not true, the function above is capable to write protecting RO only.",
+      "revId": "61c8096e5c1e35ef134dec79b8736067c5b689dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

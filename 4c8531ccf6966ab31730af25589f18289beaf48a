@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4d1ce35_f37d2fc5",
+        "filename": "chip/stm32/flash-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-06-27T17:31:22Z",
+      "side": 1,
+      "message": "this is a copy of flash-stm32f3.c. It would be better if the code was shared.\n\nOn f3, we are not using chip capability of write protect (WRP in OPTB region) when using ..._now routine (only for flash_physical_protect_at_boot()).\nWe could reuse the same logic for f4 and get rid of this file altogether.",
+      "revId": "4c8531ccf6966ab31730af25589f18289beaf48a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
