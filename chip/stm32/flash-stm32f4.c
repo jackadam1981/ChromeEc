@@ -44,6 +44,16 @@ struct ec_flash_bank const flash_bank_array[] = {
 	},
 };
 
+/* Flag indicating whether we have locked down entire flash */
+static int entire_flash_locked;
+
+#define FLASH_SYSJUMP_TAG 0x5750 /* "WP" - Write Protect */
+#define FLASH_HOOK_VERSION 1
+/* The previous write protect state before sys jump */
+struct flash_wp_state {
+	int entire_flash_locked;
+};
+
 /*****************************************************************************/
 /* Physical layer APIs */
 
@@ -56,7 +66,7 @@ uint32_t flash_physical_get_protect_flags(void)
 {
 	uint32_t flags = 0;
 
-	if ((STM32_OPTB_WP & STM32_OPTB_nWRP_ALL) == 0)
+	if (entire_flash_locked || (STM32_OPTB_WP & STM32_OPTB_nWRP_ALL) == 0)
 		flags |= EC_FLASH_PROTECT_ALL_NOW;
 
 	return flags;
@@ -88,7 +98,66 @@ uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
 	return ret;
 }
 
+int flash_physical_protect_now(int all)
+{
+	if (all) {
+		/*
+		 * Lock by writing a wrong key to FLASH_KEYR. This triggers a
+		 * bus fault, so we need to disable bus fault handler while
+		 * doing this.
+		 *
+		 * This incorrect key fault causes the flash to become
+		 * permanenlty locked until reset, a correct keyring write
+		 * will not unlock it. In this way we can implement system
+		 * write protect.
+		 */
+		ignore_bus_fault(1);
+		STM32_FLASH_KEYR = 0xffffffff;
+		ignore_bus_fault(0);
+
+		entire_flash_locked = 1;
+
+		/* Check if lock happened */
+		if (STM32_FLASH_CR & FLASH_CR_LOCK)
+			return EC_SUCCESS;
+	}
+
+	/* No way to protect just the RO flash until next boot */
+	return EC_ERROR_INVAL;
+}
+
 int flash_physical_restore_state(void)
 {
+	uint32_t reset_flags = system_get_reset_flags();
+	int version, size;
+	const struct flash_wp_state *prev;
+
+	/*
+	 * If we have already jumped between images, an earlier image could
+	 * have applied write protection. Nothing additional needs to be done.
+	 */
+	if (reset_flags & RESET_FLAG_SYSJUMP) {
+		prev = (const struct flash_wp_state *)system_get_jump_tag(
+				FLASH_SYSJUMP_TAG, &version, &size);
+		if (prev && version == FLASH_HOOK_VERSION &&
+				size == sizeof(*prev))
+			entire_flash_locked = prev->entire_flash_locked;
+		return 1;
+	}
+
 	return 0;
 }
+
+/*****************************************************************************/
+/* Hooks */
+
+static void flash_preserve_state(void)
+{
+	struct flash_wp_state state;
+
+	state.entire_flash_locked = entire_flash_locked;
+
+	system_add_jump_tag(FLASH_SYSJUMP_TAG, FLASH_HOOK_VERSION,
+			    sizeof(state), &state);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, flash_preserve_state, HOOK_PRIO_DEFAULT);
