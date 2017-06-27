@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "747b0ab7_210a03e1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1232,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-27T12:23:54Z",
+      "side": 1,
+      "message": "just notice this. Shoudn\u0027t this be EC_VER_FLASH_ERASE?",
+      "range": {
+        "startLine": 1232,
+        "startChar": 20,
+        "endLine": 1232,
+        "endChar": 26
+      },
+      "revId": "92ea78398bb76fa56d3ae522d52788db6bceb2b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
