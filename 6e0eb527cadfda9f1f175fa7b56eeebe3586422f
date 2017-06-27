@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b04870c2_2544b88c",
+        "filename": "board/kevin/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-27T19:44:09Z",
+      "side": 1,
+      "message": "Why were these added to the wake mask? Although it might be useful to wake from S3 so the host can power down, this will be new (probably unwanted, certainly untested) behavior.\n\nAlso I don\u0027t think the kernel uses these host events at all -\n powerd calculates battery status on its own.",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 56
+      },
+      "revId": "6e0eb527cadfda9f1f175fa7b56eeebe3586422f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
