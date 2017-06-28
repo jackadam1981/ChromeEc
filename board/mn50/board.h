@@ -79,6 +79,8 @@
 #define CONFIG_STREAM_USB
 #define CONFIG_STREAM_USART1
 
+#define CONFIG_STREAM_SIGNATURE
+
 /* Enable Case Closed Debugging */
 #define CONFIG_CASE_CLOSED_DEBUG
 
@@ -131,6 +133,7 @@ void disable_socket(void);
 void enable_socket(void);
 int is_socket_enabled(void);
 int is_socket_off(void);
+
 
 #endif /* !__ASSEMBLER__ */
 
