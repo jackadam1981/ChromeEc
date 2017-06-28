@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc600109_1536e8f2",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-28T19:36:22Z",
+      "side": 1,
+      "message": "It\u0027s already limited to EC_MEMMAP_TEXT_MAX bytes by copy_memmap_string().",
+      "parentUuid": "ebd56ba3_7ed99c71",
+      "range": {
+        "startLine": 267,
+        "startChar": 48,
+        "endLine": 267,
+        "endChar": 56
+      },
+      "revId": "d5264ad657c894d1bc2459e703f4ddb24e1cf02b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd62583a_8a64b322",
         "filename": "common/virtual_battery.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "44dc2de7_3b3fc056",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-28T19:36:22Z",
+      "side": 1,
+      "message": "It\u0027s already limited to EC_MEMMAP_TEXT_MAX bytes by copy_memmap_string().",
+      "parentUuid": "bd62583a_8a64b322",
+      "range": {
+        "startLine": 270,
+        "startChar": 49,
+        "endLine": 270,
+        "endChar": 57
+      },
+      "revId": "d5264ad657c894d1bc2459e703f4ddb24e1cf02b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd2e1c4a_38a65b16",
         "filename": "common/virtual_battery.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2017-06-28T19:12:04Z",
       "side": 1,
       "message": "How do we deal with the EC_ERROR_UNIMPLEMENTED case here?",
+      "range": {
+        "startLine": 274,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 29
+      },
+      "revId": "d5264ad657c894d1bc2459e703f4ddb24e1cf02b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b912dd94_e7dcccf8",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-28T19:36:22Z",
+      "side": 1,
+      "message": "I will initialize val \u003d 0 to make it consistent. We do want to \u0027fake\u0027 mode, because the SB driver is capable of doing A --\u003e W conversion, whether the SB mode register exists or not. These regs, on the other hand, are less important.",
+      "parentUuid": "cd2e1c4a_38a65b16",
       "range": {
         "startLine": 274,
         "startChar": 2,
