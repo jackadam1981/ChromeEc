@@ -81,6 +81,8 @@
 #define CONFIG_STREAM_USB
 #define CONFIG_STREAM_USART1
 
+#define CONFIG_STREAM_SIGNATURE
+
 /* Enable Case Closed Debugging */
 #define CONFIG_CASE_CLOSED_DEBUG
 
