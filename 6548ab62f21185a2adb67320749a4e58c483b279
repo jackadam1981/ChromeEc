@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "343a4e42_c0bc2e13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-28T03:01:24Z",
+      "side": 1,
+      "message": "It seem to be the problem of gerrit display, if you cherry-pick the change you\u0027ll see the soft link.",
+      "parentUuid": "c2667d99_bd40c2ed",
+      "range": {
+        "startLine": 18,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "6548ab62f21185a2adb67320749a4e58c483b279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7164d18_bbc2d4dd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-27T23:27:36Z",
       "side": 1,
       "message": "Did you test it on ryu, or only test that it still builds?",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 63
+      },
+      "revId": "6548ab62f21185a2adb67320749a4e58c483b279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70ac5736_e49951e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-06-28T03:01:24Z",
+      "side": 1,
+      "message": "I don\u0027t have a ryu at hand to test on. But, we didn\u0027t really touch the code of f3 (only added #define to add code for f4) in the change.",
+      "parentUuid": "d7164d18_bbc2d4dd",
       "range": {
         "startLine": 44,
         "startChar": 8,
