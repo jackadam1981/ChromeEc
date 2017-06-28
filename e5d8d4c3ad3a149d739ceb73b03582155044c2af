@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f1f906be_84a6b077",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-28T00:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec580227_9d8bc660",
+      "range": {
+        "startLine": 1810,
+        "startChar": 4,
+        "endLine": 1810,
+        "endChar": 49
+      },
+      "revId": "e5d8d4c3ad3a149d739ceb73b03582155044c2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33b8185e_c5aa8613",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-27T20:01:43Z",
       "side": 1,
       "message": "As written, we can only request a jump into or out of the suspend state.",
+      "range": {
+        "startLine": 3119,
+        "startChar": 32,
+        "endLine": 3119,
+        "endChar": 41
+      },
+      "revId": "e5d8d4c3ad3a149d739ceb73b03582155044c2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9afd16f9_cbc94b58",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3119,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-28T00:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b8185e_c5aa8613",
       "range": {
         "startLine": 3119,
         "startChar": 32,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e77e0d47_fd3beccb",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3126,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-28T00:54:45Z",
+      "side": 1,
+      "message": "i wasn\u0027t convinced that all calls to task_wait_event() actually handled the returned event mask... maybe those are all cases where it doesn\u0027t matter.  anyway, switching to using a flag variable without posting an event.",
+      "parentUuid": "47bf27f8_df873062",
+      "range": {
+        "startLine": 3126,
+        "startChar": 1,
+        "endLine": 3126,
+        "endChar": 17
+      },
+      "revId": "e5d8d4c3ad3a149d739ceb73b03582155044c2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42140e13_63989a61",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "2b4aac46_754a0e52",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3130,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-28T00:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42140e13_63989a61",
+      "range": {
+        "startLine": 3130,
+        "startChar": 3,
+        "endLine": 3130,
+        "endChar": 48
+      },
+      "revId": "e5d8d4c3ad3a149d739ceb73b03582155044c2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7538f994_14394c04",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2017-06-27T20:01:43Z",
       "side": 1,
       "message": "Might want to check the current state, and print an error of we\u0027re not in PD_STATE_SUSPENDED.",
+      "range": {
+        "startLine": 3138,
+        "startChar": 2,
+        "endLine": 3138,
+        "endChar": 42
+      },
+      "revId": "e5d8d4c3ad3a149d739ceb73b03582155044c2af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "319a62a6_ac681965",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3138,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-28T00:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7538f994_14394c04",
       "range": {
         "startLine": 3138,
         "startChar": 2,
