@@ -22,6 +22,30 @@
       "revId": "52e878fe0ae00244633e8d139a829e27a1ee83cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f9bd10e_107abc3b",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-06-28T02:23:23Z",
+      "side": 1,
+      "message": "The reason why using panic_printf() is, for example: \n\n1. VBAT unexpected drop and hence IBBR bit is set. \n2. EC soft reset.(Ex: reboot console command.)\n3. Before the reboot, the firmware will call chip_save_reset_flags() to save reset flag and write it in BBRAM. \n4. Because of 1, bbram_valid() prints the warning message.\n5. if I use printf(), the warning message have no chance to be outputted to UART by console task because the system already reset. Use panic_printf can make sure the message be printed before reboot.",
+      "parentUuid": "64c194fa_cfd2d80e",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 14
+      },
+      "revId": "52e878fe0ae00244633e8d139a829e27a1ee83cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
