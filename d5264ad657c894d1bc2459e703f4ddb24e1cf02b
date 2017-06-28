@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebd56ba3_7ed99c71",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-06-28T19:12:04Z",
+      "side": 1,
+      "message": "Maybe bound it to 8 Bytes too?",
+      "range": {
+        "startLine": 267,
+        "startChar": 48,
+        "endLine": 267,
+        "endChar": 56
+      },
+      "revId": "d5264ad657c894d1bc2459e703f4ddb24e1cf02b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd62583a_8a64b322",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-06-28T19:12:04Z",
+      "side": 1,
+      "message": "bounded_read_len, right?",
+      "range": {
+        "startLine": 270,
+        "startChar": 49,
+        "endLine": 270,
+        "endChar": 57
+      },
+      "revId": "d5264ad657c894d1bc2459e703f4ddb24e1cf02b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd2e1c4a_38a65b16",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-06-28T19:12:04Z",
+      "side": 1,
+      "message": "How do we deal with the EC_ERROR_UNIMPLEMENTED case here?",
+      "range": {
+        "startLine": 274,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 29
+      },
+      "revId": "d5264ad657c894d1bc2459e703f4ddb24e1cf02b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "256b6023_30b599c0",
+        "filename": "common/virtual_battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-06-28T19:12:04Z",
+      "side": 1,
+      "message": "Ditto L274",
+      "revId": "d5264ad657c894d1bc2459e703f4ddb24e1cf02b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
