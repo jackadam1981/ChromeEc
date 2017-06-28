@@ -14,6 +14,10 @@
 #include "usb_spi.h"
 #include "util.h"
 
+#ifdef CONFIG_STREAM_SIGNATURE
+#include "signing.h"
+#endif
+
 #define CPUTS(outstr) cputs(CC_USB, outstr)
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 
@@ -40,6 +44,10 @@ static uint16_t usb_spi_read_packet(struct usb_spi_config const *config)
 static void usb_spi_write_packet(struct usb_spi_config const *config,
 				 uint8_t count)
 {
+#ifdef CONFIG_STREAM_SIGNATURE
+	sig_append(stream_spi, config->buffer, count);
+#endif
+
 	QUEUE_ADD_UNITS(config->tx_queue, config->buffer, count);
 }
 

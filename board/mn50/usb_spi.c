@@ -7,6 +7,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "registers.h"
+#include "signing.h"
 #include "spi.h"
 #include "system.h"
 #include "timer.h"
