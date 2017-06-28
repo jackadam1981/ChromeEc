@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5b25019_6fa1fbbe",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-28T23:13:05Z",
+      "side": 1,
+      "message": "This just checks if the power button has been pressed in the last 10 seconds.  But not that the user knows they\u0027re specifically authorizing a gnubby press.  \n\nThat seems like a weaker security guarantee than current gnubbies, where you only press them when you\u0027re explicitly trying to unlock something.\n\nFor example, it seems like any gnubby check done within 10 seconds of system boot (assuming power button used to boot the system) will silently succeed.\n\nIf that\u0027s intentional and ok with the security folks, it\u0027s fine.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "5dbfd8163af3710814fd91a47b072c13572b9f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
