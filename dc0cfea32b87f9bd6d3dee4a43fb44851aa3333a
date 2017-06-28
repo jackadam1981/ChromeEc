@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "70dda3bf_491ed96f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2323,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-28T02:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "422289be_2f2f96f3",
+      "range": {
+        "startLine": 2323,
+        "startChar": 7,
+        "endLine": 2323,
+        "endChar": 16
+      },
+      "revId": "dc0cfea32b87f9bd6d3dee4a43fb44851aa3333a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0344dae5_9241f32d",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-27T20:27:59Z",
       "side": 1,
       "message": "Maybe better to return EC_ERROR_UNIMPLEMENTED here.",
+      "range": {
+        "startLine": 433,
+        "startChar": 8,
+        "endLine": 433,
+        "endChar": 18
+      },
+      "revId": "dc0cfea32b87f9bd6d3dee4a43fb44851aa3333a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb0162ac_a2012a79",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-28T02:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0344dae5_9241f32d",
       "range": {
         "startLine": 433,
         "startChar": 8,
