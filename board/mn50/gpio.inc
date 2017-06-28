@@ -95,10 +95,9 @@ PINMUX(FUNC(UART0_RX),        A1, DIO_INPUT | DIO_WAKE_LOW)
  * UART1_TX will be enabled when the socket power is enabled,
  * to prevent backpowering.
  *
+ * DUT console
  * PINMUX(FUNC(UART1_TX),        A7, DIO_OUTPUT)
  */
-
-/* DUT console */
 PINMUX(FUNC(UART1_RX),        A3, DIO_INPUT)
 
 /* I2C setup */

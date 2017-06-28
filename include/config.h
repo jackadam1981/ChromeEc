@@ -2840,6 +2840,10 @@
 /* USB Power monitoring interface config */
 #undef CONFIG_USB_POWER
 
+/*****************************************************************************/
+/* USB stream signing config */
+#undef CONFIG_STREAM_SIGNATURE
+
 
 /*****************************************************************************/
 

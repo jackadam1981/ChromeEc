@@ -8,23 +8,42 @@
 #include "uartn.h"
 #include "usart.h"
 #include "usb-stream.h"
+#ifdef CONFIG_STREAM_SIGNATURE
+#include "signing.h"
+#endif
 
 #define USE_UART_INTERRUPTS (!(defined(CONFIG_CUSTOMIZED_RO) && \
 defined(SECTION_IS_RO)))
 #define QUEUE_SIZE 64
 
+
 #ifdef CONFIG_STREAM_USART1
 struct usb_stream_config const ap_usb;
 struct usart_config const ap_uart;
 
+#ifdef CONFIG_STREAM_SIGNATURE
+struct signer_config const sig;
+static struct queue const ap_uart_to_sig =
+	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ap_uart.producer, sig.consumer);
+static struct queue const sig_to_usb =
+	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, sig.producer, ap_usb.consumer);
+
+SIGNER_CONFIG(sig, stream_uart, sig_to_usb, ap_uart_to_sig);
+#else
 static struct queue const ap_uart_to_usb =
 	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ap_uart.producer, ap_usb.consumer);
+#endif
+
 static struct queue const ap_usb_to_uart =
 	QUEUE_DIRECT(QUEUE_SIZE, uint8_t, ap_usb.producer, ap_uart.consumer);
 
 USART_CONFIG(ap_uart,
 	     UART_AP,
+#ifdef CONFIG_STREAM_SIGNATURE
+	     ap_uart_to_sig,
+#else
 	     ap_uart_to_usb,
+#endif
 	     ap_usb_to_uart);
 
 USB_STREAM_CONFIG(ap_usb,
@@ -34,7 +53,11 @@ USB_STREAM_CONFIG(ap_usb,
 		  USB_MAX_PACKET_SIZE,
 		  USB_MAX_PACKET_SIZE,
 		  ap_usb_to_uart,
+#ifdef CONFIG_STREAM_SIGNATURE
+		  sig_to_usb)
+#else
 		  ap_uart_to_usb)
+#endif
 #endif
 
 #ifdef CONFIG_STREAM_USART2
