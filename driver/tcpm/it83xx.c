@@ -23,6 +23,25 @@ const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usbpd_ctrl_regs) == USBPD_PORT_COUNT);
 
+int it83xx_rx_msg_discarded(enum usbpd_port port)
+{
+	int discarded = 0;
+	uint16_t header = IT83XX_USBPD_RMH(port);
+
+	/* This is a data message. */
+	if (PD_HEADER_CNT(header)) {
+		/*
+		 * data message type is BIST and
+		 * parameter of BIST data object is BIST test data.
+		 */
+		if (PD_HEADER_TYPE(header) == PD_DATA_BIST &&
+			(IT83XX_USBPD_RDO0(port) >> 28) == 8)
+			discarded = 1;
+	}
+
+	return discarded;
+}
+
 static enum tcpc_cc_voltage_status it83xx_get_cc(
 	enum usbpd_port port,
 	enum usbpd_cc_pin cc_pin)
@@ -95,18 +114,16 @@ static enum tcpc_cc_voltage_status it83xx_get_cc(
 
 static int it83xx_rx_data(enum usbpd_port port, int *head, uint32_t *buf)
 {
-	struct usbpd_header *p_head = (struct usbpd_header *)head;
+	int cnt = PD_HEADER_CNT(IT83XX_USBPD_RMH(port));
 
 	if (!USBPD_IS_RX_DONE(port))
 		return EC_ERROR_UNKNOWN;
 
 	/* store header */
-	*p_head = *((struct usbpd_header *)IT83XX_USBPD_RMH_BASE(port));
+	*head = IT83XX_USBPD_RMH(port);
 	/* check data message */
-	if (p_head->data_obj_num)
-		memcpy(buf,
-			(uint8_t *)IT83XX_USBPD_RDO_BASE(port),
-			p_head->data_obj_num * 4);
+	if (cnt)
+		memcpy(buf, (uint32_t *)&IT83XX_USBPD_RDO0(port), cnt * 4);
 	/*
 	 * Note: clear RX done interrupt after get the data.
 	 * If clear this bit, USBPD receives next packet
@@ -148,7 +165,7 @@ static enum tcpc_transmit_complete it83xx_tx_data(
 		/* set data length setting */
 		IT83XX_USBPD_MTSR1(port) |= length;
 		/* set data */
-		memcpy((uint8_t *)IT83XX_USBPD_TDO_BASE(port), buf, length * 4);
+		memcpy((uint32_t *)&IT83XX_USBPD_TDO(port), buf, length * 4);
 	}
 
 	for (r = 0; r <= PD_RETRY_COUNT; r++) {
