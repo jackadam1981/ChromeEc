@@ -16,6 +16,24 @@
       "revId": "70b5f0db7094cd46d27c1466992f282f277950c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94f7fdcc_a06fe647",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3168,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-06-29T23:19:44Z",
+      "side": 1,
+      "message": "most of the functions in usb_pd.h are of the form pd_\u003cverb\u003e_something().\nthen there\u0027s the pd_[rt]x_\u003cverb\u003e_something().\n\nas for the implementation of pd_is_connected() - it\u0027s\nused in so many places, it\u0027s hard to tell if that\u0027s\na really good thing or breaks a bunch of assumptions.",
+      "parentUuid": "964683e0_802988ec",
+      "revId": "70b5f0db7094cd46d27c1466992f282f277950c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
