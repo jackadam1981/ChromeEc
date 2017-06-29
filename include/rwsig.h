@@ -112,6 +112,9 @@ void rwsig_jump_now(void);
 			    + CONFIG_RW_STORAGE_OFF		\
 			    + CONFIG_RW_SIZE			\
 			    - CONFIG_RW_SIG_SIZE)
+#ifdef CONFIG_RW_B
+#define CONFIG_RW_B_SIG_ADDR (CONFIG_RW_SIG_ADDR + CONFIG_RW_SIZE)
+#endif
 #endif /* !CONFIG_RW_SIG_ADDR */
 
 #endif /* __CROS_EC_RWSIG_H */

@@ -989,6 +989,8 @@ static int command_sysjump(int argc, char **argv)
 		 * updated to use "RW".
 		 */
 		return system_run_image_copy(SYSTEM_IMAGE_RW);
+	} else if (!strcasecmp(argv[1], "B")) {
+		return system_run_image_copy(SYSTEM_IMAGE_RW_B);
 	} else if (!strcasecmp(argv[1], "disable")) {
 		system_disable_jump();
 		return EC_SUCCESS;
@@ -1009,7 +1011,7 @@ static int command_sysjump(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(sysjump, command_sysjump,
-			"[RO | RW | addr | disable]",
+			"[RO | RW | A | B | addr | disable]",
 			"Jump to a system image or address");
 #endif
 
