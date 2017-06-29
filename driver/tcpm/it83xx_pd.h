@@ -97,5 +97,6 @@ struct usbpd_ctrl_t {
 
 extern const struct usbpd_ctrl_t usbpd_ctrl_regs[];
 extern const struct tcpm_drv it83xx_tcpm_drv;
+extern int it83xx_rx_msg_discarded(enum usbpd_port port);
 
 #endif /* __CROS_EC_DRIVER_TCPM_IT83XX_H */

@@ -23,6 +23,25 @@ const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usbpd_ctrl_regs) == USBPD_PORT_COUNT);
 
+int it83xx_rx_msg_discarded(enum usbpd_port port)
+{
+	int discarded = 0;
+	uint16_t header = IT83XX_USBPD_RMH(port);
+
+	/* This is a data message. */
+	if (PD_HEADER_CNT(header)) {
+		/*
+		 * data message type is BIST and
+		 * parameter of BIST data object is BIST test data.
+		 */
+		if (PD_HEADER_TYPE(header) == PD_DATA_BIST &&
+			(IT83XX_USBPD_RDO0(port) >> 28) == 8)
+			discarded = 1;
+	}
+
+	return discarded;
+}
+
 static enum tcpc_cc_voltage_status it83xx_get_cc(
 	enum usbpd_port port,
 	enum usbpd_cc_pin cc_pin)

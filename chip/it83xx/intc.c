@@ -24,12 +24,20 @@ static void chip_pd_irq(enum usbpd_port port)
 			PD_EVENT_TCPC_RESET, 0);
 	} else {
 		if (USBPD_IS_RX_DONE(port)) {
-			/* mask RX done interrupt */
-			IT83XX_USBPD_IMR(port) |= USBPD_REG_MASK_MSG_RX_DONE;
-			/* clear RX done interrupt */
-			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
-			task_set_event(PD_PORT_TO_TASK_ID(port),
-				PD_EVENT_RX, 0);
+			/*
+			 * Just w/c rx done flag to receive next packet if
+			 * we discard this message.
+			 */
+			if (it83xx_rx_msg_discarded(port)) {
+				IT83XX_USBPD_MRSR(port) =
+					USBPD_REG_MASK_RX_MSG_VALID;
+			} else {
+				/* mask RX done interrupt */
+				IT83XX_USBPD_IMR(port) |=
+					USBPD_REG_MASK_MSG_RX_DONE;
+				task_set_event(PD_PORT_TO_TASK_ID(port),
+					PD_EVENT_RX, 0);
+			}
 		}
 		if (USBPD_IS_TX_DONE(port)) {
 			/* clear TX done interrupt */
