@@ -22,6 +22,30 @@
       "revId": "5dbfd8163af3710814fd91a47b072c13572b9f15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0915f0c8_a42b9295",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-29T07:46:30Z",
+      "side": 1,
+      "message": "the \u0027pre-touch\u0027 feature for standalone gnubbies was lengthily discussed and the UX advantage was deemed ok vs the security.\nThis code is clearly intentional, but here the UX advantage is a bit less clear (well it depends how slow is the whole system, if the UI asks for the touch too long before the presence check is sent here) compared to the cap-sensing standalone version where you peruse the side of your laptop/workstation to find it.\nIf the Chrome OS security folks have a definitive opinion about this, I\u0027m happy to listen to it.",
+      "parentUuid": "b5b25019_6fa1fbbe",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "5dbfd8163af3710814fd91a47b072c13572b9f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
