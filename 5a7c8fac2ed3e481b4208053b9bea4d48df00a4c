@@ -22,6 +22,30 @@
       "revId": "5a7c8fac2ed3e481b4208053b9bea4d48df00a4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c7512b2_c2ae277b",
+        "filename": "common/u2f.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-29T07:56:43Z",
+      "side": 1,
+      "message": "Given that for memory optimization, we are using the same buffer for request and response, we always know it is at least as the request (since we start writing the response after validating the request).\n\nImplementation-wise, the buffer here is the TPM FIFO buffer (which is currently 2KB).\n\nFor a tiny fixed size response like U2F_VERSION here, it\u0027s not really a concern, but I agree it\u0027s due to the implementation buffer size, I can add a check along with the apdu.len.\n\nFor U2F_REGISTER which can in theory returns up to 2315 bytes (if we had a very large X.509 certificate), it\u0027s more interesting but max_len is supposed to be handled correctly there ...\n\nFor U2F_AUTHENTICATE, the request payload has to be 129 bytes (so a request of at least 134 bytes), the response payload is 77 bytes (+2 bytes status \u003d\u003d 79 bytes).",
+      "parentUuid": "ac9ef200_af6b8fec",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "5a7c8fac2ed3e481b4208053b9bea4d48df00a4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
