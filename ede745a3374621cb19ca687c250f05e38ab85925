@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3461f1e5_2ec25647",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-29T23:00:15Z",
+      "side": 1,
+      "message": "Yeah.  Filed crbug.com/738215",
+      "parentUuid": "61913a3d_4c26c862",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "ede745a3374621cb19ca687c250f05e38ab85925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "231a83c0_7860a9d2",
         "filename": "common/rma_auth.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e0409b4f_27bc0404",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-29T23:00:15Z",
+      "side": 1,
+      "message": "These reset the global variables, so are done even if we refuse to make a new challenge due to rate limiting.\n\nWe could memset(c) here, I suppose; it wouldn\u0027t be harmful.  We currently do it before first use.",
+      "parentUuid": "231a83c0_7860a9d2",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "ede745a3374621cb19ca687c250f05e38ab85925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47e37b3f_c85a3a42",
         "filename": "include/rma_auth.h",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2017-06-29T02:54:51Z",
       "side": 1,
       "message": "just out of curiosity - how constant are these over time?\n\nShould they be part of the header created by signer instead so that a new image could be respun without building it from sources?",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "ede745a3374621cb19ca687c250f05e38ab85925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c677f7a_c299d0a4",
+        "filename": "include/rma_auth.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-06-29T23:00:15Z",
+      "side": 1,
+      "message": "The test keys are likely to be very constant.\n\nActual keys might need to change - for example, if the private keys are leaked from the reset auth server.\n\nrma_auth.c could fetch the (real) server public key from the header, if we want to add that to the signer.",
+      "parentUuid": "47e37b3f_c85a3a42",
       "range": {
         "startLine": 14,
         "startChar": 1,
