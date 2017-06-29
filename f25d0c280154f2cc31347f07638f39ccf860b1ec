@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "513aa616_2764c53c",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-29T04:42:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "590de08a_bebf21a4",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 47
+      },
+      "revId": "f25d0c280154f2cc31347f07638f39ccf860b1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6d0fc2_c8d390c7",
         "filename": "core/cortex-m0/curve25519/scalarmult.c",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2017-06-26T07:04:36Z",
       "side": 1,
       "message": "IMO we should just clean-up the variants we are not using.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 60
+      },
+      "revId": "f25d0c280154f2cc31347f07638f39ccf860b1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a8ce32_997153d5",
+        "filename": "core/cortex-m0/curve25519/scalarmult.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-29T04:42:35Z",
+      "side": 1,
+      "message": "Sure. I\u0027ll do that in a follow-up CL, just in case we want to revert later. Both of these options offer little time gain for a slight size increase.",
+      "parentUuid": "9a6d0fc2_c8d390c7",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "e0e08aa6_52150ae8",
+        "filename": "core/cortex-m0/curve25519/scalarmult.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-29T04:42:35Z",
+      "side": 1,
+      "message": "Right... Does not seem to make sense, removed all the volatiles.",
+      "parentUuid": "125a0d50_ce43af18",
+      "range": {
+        "startLine": 311,
+        "startChar": 3,
+        "endLine": 311,
+        "endChar": 12
+      },
+      "revId": "f25d0c280154f2cc31347f07638f39ccf860b1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7551c9e3_700ce47e",
         "filename": "core/cortex-m0/curve25519/scalarmult.c",
         "patchSetId": 4
@@ -105,6 +177,30 @@
       "writtenOn": "2017-06-26T07:04:36Z",
       "side": 1,
       "message": "isn\u0027t this the slowest possible implementation ?\na memcpy might be faster,",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 5
+      },
+      "revId": "f25d0c280154f2cc31347f07638f39ccf860b1ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3647461b_16eb5d35",
+        "filename": "core/cortex-m0/curve25519/scalarmult.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-06-29T04:42:35Z",
+      "side": 1,
+      "message": "Right. It\u0027s only used once though, so it isn\u0027t _so_ bad.\n\nFixed the other reimplementations of memcpy in other places too.",
+      "parentUuid": "7551c9e3_700ce47e",
       "range": {
         "startLine": 318,
         "startChar": 0,
