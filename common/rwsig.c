@@ -103,6 +103,7 @@ int rwsig_check_signature(void)
 	int good = 0;
 
 	unsigned int rwlen;
+	int padlen;
 #ifdef CONFIG_RWSIG_TYPE_RWSIG
 	const struct vb21_packed_key *vb21_key;
 	const struct vb21_signature *vb21_sig;
@@ -177,8 +178,12 @@ int rwsig_check_signature(void)
 	/*
 	 * Check that unverified RW region is actually filled with ones.
 	 */
-	good = check_padding(rwdata, rwlen,
-			CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE);
+	padlen = CONFIG_RW_SIZE - rwlen - CONFIG_RW_SIG_SIZE;
+	if (padlen < 0) {
+		CPRINTS("Invalid data_size.");
+		goto out;
+	}
+	good = check_padding(rwdata, rwlen, padlen);
 	if (!good) {
 		CPRINTS("Invalid padding.");
 		goto out;
