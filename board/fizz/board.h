@@ -143,6 +143,22 @@
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
+#define CONFIG_RW_B
+#define CONFIG_RW_B_MEM_OFF	CONFIG_RO_MEM_OFF
+/* Flash has to store 3 images: RO, RW_A, RW_B. So, we divide the size by 4. */
+#undef  CONFIG_RO_SIZE
+#define CONFIG_RO_SIZE		(CONFIG_FLASH_SIZE >> 2)
+#undef  CONFIG_RW_SIZE
+#define CONFIG_RW_SIZE		CONFIG_RO_SIZE
+/* CONFIG_RW_*_STORAGE_OFF and CONFIG_RW_*_SIGN_STORAGE_OFF are defined in
+ * board.h. We have no way to know whether slot B is used or not (since we
+ * CONFIG_RW_B is set in board.h, which is included after this file). */
+#define CONFIG_RW_A_STORAGE_OFF	CONFIG_RW_STORAGE_OFF
+#define CONFIG_RW_B_STORAGE_OFF	(CONFIG_RW_A_STORAGE_OFF + CONFIG_RW_SIZE)
+#define CONFIG_RW_A_SIGN_STORAGE_OFF	(CONFIG_RW_A_STORAGE_OFF + \
+					CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)
+#define CONFIG_RW_B_SIGN_STORAGE_OFF	(CONFIG_RW_B_STORAGE_OFF + \
+					CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)
 #define CONFIG_RWSIG
 #define CONFIG_RWSIG_TYPE_RWSIG
 #define CONFIG_RSA
