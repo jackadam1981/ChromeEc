@@ -49,7 +49,14 @@
 
 /* RO firmware in program memory - use all of program memory */
 #define CONFIG_RO_MEM_OFF	0
+#ifdef CONFIG_VBOOT_EC
+/*
+ * Flash has to store 3 images: RO, RW_A, RW_B.
+ */
+#define CONFIG_RO_SIZE		(CONFIG_FLASH_SIZE / 4)
+#else
 #define CONFIG_RO_SIZE		NPCX_PROGRAM_MEMORY_SIZE
+#endif
 
 /*
  * RW firmware in program memory - Identical to RO, only one image loaded at
