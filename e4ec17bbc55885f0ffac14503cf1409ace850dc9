@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "330855f3_7d997e78",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-29T16:06:48Z",
+      "side": 1,
+      "message": "this code is only valid for the kionix, where we did not enable interrupt. In case of BMI160 this is not necessary.",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3dbdc3eb_1382f7f5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-29T16:06:48Z",
+      "side": 1,
+      "message": "just update the event here, and add to the fifo later, where are already doing it for double tap. We may want to refactor to use a loop and avoid code duplication.",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "542e989b_f0668ab1",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-29T16:06:48Z",
+      "side": 1,
+      "message": "this is not true, it depends on the orientation of the sensor, given by the .rot_standard_ref.",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2541835b_d4857531",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-29T16:06:48Z",
+      "side": 1,
+      "message": "if you only modify private data, s can stay const.",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c18c0257_6ab63c20",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-29T16:06:48Z",
+      "side": 1,
+      "message": "you need to take in account the .rot_standard_ref.",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9088e27a_94b9a51f",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-06-29T16:06:48Z",
+      "side": 1,
+      "message": "this is only needed when polling.\n\nInstead, I would keep the needed information in the private sensor structure, pointed to .drv_data",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
