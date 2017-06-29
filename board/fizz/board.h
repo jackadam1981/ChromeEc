@@ -148,14 +148,14 @@
  * Flash layout. Since config_flash_layout.h is included before board.h,
  * we can only overwrite (=undef/define) these parameters here.
  *
- * Flash stores 3 images: RO, RW_A, RW_B. We divide the size by 4.
- * At the end of RO, there is a public key. At the end of RW_A and RW_B,
- * there is a signature.
+ * Flash stores 3 images: RO, RW_A, RW_B. We divide the flash by 4.
+ * A public key is stored at the end of RO. Signatures are stored at the
+ * end of RW_A and RW_B, respectively.
  */
 #define CONFIG_RW_B
-#define CONFIG_RW_B_MEM_OFF	CONFIG_RO_MEM_OFF
+#define CONFIG_RW_B_MEM_OFF		CONFIG_RO_MEM_OFF
 #undef  CONFIG_RO_SIZE
-#define CONFIG_RO_SIZE		(CONFIG_FLASH_SIZE >> 2)
+#define CONFIG_RO_SIZE			(CONFIG_FLASH_SIZE >> 2)
 #undef  CONFIG_RW_SIZE
 #define CONFIG_RW_SIZE			CONFIG_RO_SIZE
 #define CONFIG_RW_A_STORAGE_OFF		CONFIG_RW_STORAGE_OFF
