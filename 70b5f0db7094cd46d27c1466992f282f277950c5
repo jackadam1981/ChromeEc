@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "964683e0_802988ec",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 3168,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-29T21:42:38Z",
+      "side": 1,
+      "message": "Should we call this function from pd_is_connected() instead of directly checking for PD_STATE_DISABLED?\n\nAlso it\u0027s minor, but I would consider renaming this pd_port_is_enabled(), to be consistent with other functions here like pd_comm_is_enabled().",
+      "revId": "70b5f0db7094cd46d27c1466992f282f277950c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
