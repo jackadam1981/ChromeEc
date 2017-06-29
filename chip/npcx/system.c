@@ -940,6 +940,7 @@ DECLARE_HOST_COMMAND(EC_CMD_RTC_GET_ALARM,
 
 #endif /* CONFIG_HOSTCMD_RTC */
 #ifdef CONFIG_EXTERNAL_STORAGE
+
 void system_jump_to_booter(void)
 {
 	enum API_RETURN_STATUS_T status __attribute__((unused));
@@ -951,14 +952,25 @@ void system_jump_to_booter(void)
 	 * Get memory offset and size for RO/RW regions.
 	 * Both of them need 16-bytes alignment since GDMA burst mode.
 	 */
-	if (IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION)) {
+	switch (system_get_shrspi_image_copy()) {
+	case SYSTEM_IMAGE_RO_B: /* Invalid */
 		flash_offset = CONFIG_EC_PROTECTED_STORAGE_OFF +
 				CONFIG_RO_STORAGE_OFF;
 		flash_used = CONFIG_RO_SIZE;
-	} else {
+		break;
+	case SYSTEM_IMAGE_RW:
 		flash_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
-				CONFIG_RW_STORAGE_OFF;
+				CONFIG_RW_A_STORAGE_OFF;
 		flash_used = CONFIG_RW_SIZE;
+		break;
+	case SYSTEM_IMAGE_RW_B:
+		flash_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
+				CONFIG_RW_B_STORAGE_OFF;
+		flash_used = CONFIG_RW_SIZE;
+		break;
+	default:
+		/* Invalid */
+		ASSERT(0);
 	}
 
 	/* Make sure the reset vector is inside the destination image */
@@ -1001,21 +1013,48 @@ uint32_t system_get_lfw_address()
 	return jump_addr;
 }
 
+/*
+ * Set and clear image copy flags in MDC register.
+ *
+ * NPCX_FWCTRL_RO_REGION: 1 - RO, 0 - RW
+ * NPCX_FWCTRL_RW_REGION: 1 - SLOT_A, 0 - SLOT_B
+ */
 void system_set_image_copy(enum system_image_copy_t copy)
 {
-	/* Jump to RW region -- clear flag */
-	if (copy == SYSTEM_IMAGE_RW)
-		CLEAR_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
-	else /* Jump to RO region -- set flag */
+	switch (copy) {
+	case SYSTEM_IMAGE_RO:
 		SET_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
+		SET_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RW_REGION);
+		break;
+	case SYSTEM_IMAGE_RW:
+		CLEAR_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
+		SET_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RW_REGION);
+		break;
+	case SYSTEM_IMAGE_RW_B:
+		CLEAR_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION);
+		CLEAR_BIT(NPCX_FWCTRL, NPCX_FWCTRL_RW_REGION);
+		break;
+	default:
+		ASSERT(0);
+	}
 }
 
 enum system_image_copy_t system_get_shrspi_image_copy(void)
 {
-	/* RO region FW */
-	if (IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION))
-		return SYSTEM_IMAGE_RO;
-	else/* RW region FW */
+	if (IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_RO_REGION)) {
+		/* RO image */
+		if (IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_RW_REGION))
+			/* Slot A */
+			return SYSTEM_IMAGE_RO;
+		return SYSTEM_IMAGE_RO_B;
+	}
+
+	/* RW image */
+	if (IS_BIT_SET(NPCX_FWCTRL, NPCX_FWCTRL_RW_REGION))
+		/* Slot A */
 		return SYSTEM_IMAGE_RW;
+
+	return SYSTEM_IMAGE_RW_B;
 }
+
 #endif
