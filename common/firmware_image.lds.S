@@ -65,9 +65,15 @@ and RW images at different Flash offset */
     } > FLASH =0xff
 #endif
 #ifdef CONFIG_RW_B_MEM_OFF
-    .image.RW_B : AT(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_B_MEM_OFF) {
+    .image.RW_B : AT(CONFIG_PROGRAM_MEMORY_BASE + \
+                     CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_SIZE) {
         *(.image.RW_B)
     } > FLASH =0xff
+#ifdef CONFIG_RWSIG_TYPE_RWSIG
+    .image.RW_B.sign : AT(CONFIG_RW_B_SIG_ADDR) {
+        *(.image.RW_B.sign)
+    } > FLASH =0xff
+#endif
 #endif
     .padding : AT(CONFIG_PROGRAM_MEMORY_BASE + CONFIG_FLASH_SIZE - 1) {
         BYTE(0xff);
