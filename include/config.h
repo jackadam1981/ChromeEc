@@ -941,6 +941,9 @@
 
 /*****************************************************************************/
 
+/* Support events from devices attached to the EC */
+#undef CONFIG_DEVICE_EVENT
+
 /* Monitor the states of other devices */
 #undef CONFIG_DEVICE_STATE
 
