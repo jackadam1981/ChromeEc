@@ -46,6 +46,30 @@
       "revId": "5dbfd8163af3710814fd91a47b072c13572b9f15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d050a26_76f1a5c4",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-06-29T13:41:20Z",
+      "side": 1,
+      "message": "Added the check filtering out the system boot press as a starter,\nthe discussion is still on-going, we will do a follow-up CL if needed.",
+      "parentUuid": "0915f0c8_a42b9295",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "5dbfd8163af3710814fd91a47b072c13572b9f15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
