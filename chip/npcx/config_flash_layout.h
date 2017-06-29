@@ -49,7 +49,12 @@
 
 /* RO firmware in program memory - use all of program memory */
 #define CONFIG_RO_MEM_OFF	0
-#define CONFIG_RO_SIZE		NPCX_PROGRAM_MEMORY_SIZE
+/*
+ * Flash has to store 3 images: RO, RW_A, RW_B. So, we divide the size by 4.
+ * More precisely it's MIN(FLASH_SIZE/4, PROGRAM_MEMORY_SIZE) but there is
+ * no such built-in macro as MIN() in CPP.
+ */
+#define CONFIG_RO_SIZE		(CONFIG_FLASH_SIZE >> 2)
 
 /*
  * RW firmware in program memory - Identical to RO, only one image loaded at
@@ -57,10 +62,18 @@
  */
 #define CONFIG_RW_MEM_OFF	CONFIG_RO_MEM_OFF
 #define CONFIG_RW_SIZE		CONFIG_RO_SIZE
+#define CONFIG_RW_B_MEM_OFF	CONFIG_RO_MEM_OFF
 
 /* RO image resides at start of protected region, right after header */
 #define CONFIG_RO_STORAGE_OFF	CONFIG_RO_HDR_SIZE
 /* RW image resides at start of writable region */
 #define CONFIG_RW_STORAGE_OFF	0
+#define CONFIG_RW_A_STORAGE_OFF	(CONFIG_EC_WRITABLE_STORAGE_OFF + \
+				CONFIG_RW_STORAGE_OFF)
+#define CONFIG_RW_B_STORAGE_OFF	(CONFIG_RW_A_STORAGE_OFF + CONFIG_RW_SIZE)
+#define CONFIG_RW_A_SIGN_STORAGE_OFF	(CONFIG_RW_A_STORAGE_OFF + \
+					CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)
+#define CONFIG_RW_B_SIGN_STORAGE_OFF	(CONFIG_RW_B_STORAGE_OFF + \
+					CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)
 
 #endif /* __CROS_EC_CONFIG_FLASH_LAYOUT_H */

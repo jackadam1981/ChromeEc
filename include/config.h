@@ -2819,6 +2819,7 @@
 #error Include config.h instead of board.h!
 #endif
 
+/* Why? We can't customize config_chip.h because it's included before board.h */
 #include "config_chip.h"
 #include "board.h"
 
