@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb39597a_ddb34474",
+        "filename": "common/device_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-29T18:31:52Z",
+      "side": 1,
+      "message": "It\u0027s almost inevitable that someone is going to want to remove this console command to save flash space, so you can put this behind CONFIG_CMD_DEVICE_EVENT (define by default in config.h).",
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9062f76_cb1801e8",
+        "filename": "common/device_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-29T18:31:52Z",
+      "side": 1,
+      "message": "Consider returning EC_RES_INVALID_PARAM in the default case? Maybe we\u0027ll add a new param later that will be unsupported by old ECs, better not to fail silently.",
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d310b1e1_4566d2e8",
+        "filename": "include/device_event.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-29T18:31:52Z",
+      "side": 1,
+      "message": "__CROS_EC_DEVICE_EVENT_H",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b6b1381_4fbe5494",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-29T18:31:52Z",
+      "side": 1,
+      "message": "Since it\u0027s unused, do you want to put up a coreboot CL removing EC_HOST_EVENT_THERMAL_OVERLOAD from MAINBOARD_EC_SCI_EVENTS? Eg. src/mainboard/google/cyan/ec.h. Otherwise it may unexpectedly break compilation next time this header is sync\u0027d.",
+      "range": {
+        "startLine": 506,
+        "startChar": 1,
+        "endLine": 506,
+        "endChar": 21
+      },
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c98dc692_79195267",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3549,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-29T18:31:52Z",
+      "side": 1,
+      "message": "I was confused initially by this macro and the GET_MASK vs GET_EVENTS params. Eg. GET_EVENTS doesn\u0027t reply back with an \"enum ec_device_event\" (as might be expected from the naming), but rather a mask indicating the current events. And, GET_MASK replies back with a mask indicating the enabled events.\n\nDo you think it might be better to name the params something like EC_DEVICE_EVENT_PARAM_GET_CURRENT_EVENTS and EC_DEVICE_EVENT_PARAM_GET_ENABLED_EVENTS?",
+      "range": {
+        "startLine": 3549,
+        "startChar": 8,
+        "endLine": 3549,
+        "endChar": 28
+      },
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "529e0a45_c6330b70",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3553,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-06-29T18:31:52Z",
+      "side": 1,
+      "message": "Consider swapping the ordering of these two for alignment?",
+      "range": {
+        "startLine": 3552,
+        "startChar": 1,
+        "endLine": 3553,
+        "endChar": 21
+      },
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
