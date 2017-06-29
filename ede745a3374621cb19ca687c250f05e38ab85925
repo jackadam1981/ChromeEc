@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61913a3d_4c26c862",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-29T02:54:51Z",
+      "side": 1,
+      "message": "I wish common.h was included through the compiler command line like it happens in coreboot - even if just to maintain the order of includes :)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "ede745a3374621cb19ca687c250f05e38ab85925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231a83c0_7860a9d2",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-29T02:54:51Z",
+      "side": 1,
+      "message": "any particular reason these memsets are not together with the one in line 59?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 41
+      },
+      "revId": "ede745a3374621cb19ca687c250f05e38ab85925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47e37b3f_c85a3a42",
+        "filename": "include/rma_auth.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-06-29T02:54:51Z",
+      "side": 1,
+      "message": "just out of curiosity - how constant are these over time?\n\nShould they be part of the header created by signer instead so that a new image could be respun without building it from sources?",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "ede745a3374621cb19ca687c250f05e38ab85925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
