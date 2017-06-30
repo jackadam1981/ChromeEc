@@ -518,7 +518,7 @@ int DCRYPTO_x509_gen_u2f_cert(const p256_int *d, const p256_int *pk_x,
 	DCRYPTO_SHA256_init(&sha, 0);
 	HASH_update(&sha, body, (ctx.p + ctx.n) - body);
 	p256_from_bin(HASH_final(&sha), &h);
-	if (!dcrypto_p256_ecdsa_sign(d, &h, &r, &s))
+	if (!dcrypto_p256_ecdsa_sign_det(d, &h, &r, &s))
 		return 0;
 
 	/* Append X509 signature */
