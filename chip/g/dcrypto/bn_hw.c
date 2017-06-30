@@ -1223,21 +1223,19 @@ static inline void cp8w(p256_int *dst, const p256_int *src)
 	*dst = tmp;
 }
 
-int dcrypto_p256_ecdsa_sign(const p256_int *key, const p256_int *message,
-		p256_int *r, p256_int *s)
+int dcrypto_p256_ecdsa_internal(const p256_int *key, const p256_int *message,
+		p256_int *r, p256_int *s, void (*stir_k)(uint32_t *k))
 {
 	int i, result;
 	struct DMEM_ecc *pEcc =
 		(struct DMEM_ecc *)GREG32_ADDR(CRYPTO, DMEM_DUMMY);
 
-	dcrypto_init_and_lock();
 	dcrypto_ecc_init();
 	result = dcrypto_call(CF_p256init_adr);
 
 	/* Pick uniform 0 < k < R */
 	do {
-		for (i = 0; i < 8; ++i)
-			pEcc->rnd.a[i] ^= rand();
+		stir_k(pEcc->rnd.a);
 	} while (p256_cmp(&SECP256r1_nMin2, &pEcc->rnd) < 0);
 
 	p256_add_d(&pEcc->rnd, 1, &pEcc->k);
@@ -1257,8 +1255,27 @@ int dcrypto_p256_ecdsa_sign(const p256_int *key, const p256_int *message,
 	cp8w(&pEcc->d, &pEcc->rnd);
 	cp8w(&pEcc->k, &pEcc->rnd);
 
-	dcrypto_unlock();
 	return result == 0;
+}
+
+static void stir_random_k(uint32_t *k)
+{
+	int i;
+
+	for (i = 0; i < 8; ++i)
+		k[i] ^= rand();
+}
+
+int dcrypto_p256_ecdsa_sign(const p256_int *key, const p256_int *message,
+		p256_int *r, p256_int *s)
+{
+	int result;
+
+	dcrypto_init_and_lock();
+	result = dcrypto_p256_ecdsa_internal(key, message, r, s, stir_random_k);
+	dcrypto_unlock();
+
+	return result;
 }
 
 int dcrypto_p256_base_point_mul(const p256_int *k, p256_int *x, p256_int *y)

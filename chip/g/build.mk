@@ -46,6 +46,7 @@ chip-$(CONFIG_DCRYPTO)+= dcrypto/key_ladder.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/p256.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/p256_ec.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/p256_ecies.o
+chip-$(CONFIG_DCRYPTO)+= dcrypto/rfc6979.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/rsa.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha1.o
 chip-$(CONFIG_DCRYPTO)+= dcrypto/sha256.o
