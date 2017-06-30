@@ -618,6 +618,7 @@ void charger_task(void)
 {
 	int sleep_usec;
 	int need_static = 1;
+	int id;
 	const struct charger_info * const info = charger_get_info();
 
 	/* Get the battery-specific values */
@@ -638,7 +639,8 @@ void charger_task(void)
 	curr.desired_input_current = get_desired_input_current(prev_bp, info);
 
 	while (1) {
-
+		charger_device_id(&id);
+#ifndef TEST_CHARGE
 #ifdef CONFIG_SB_FIRMWARE_UPDATE
 		if (sb_fw_update_in_progress()) {
 			task_wait_event(CHARGE_MAX_SLEEP_USEC);
@@ -957,6 +959,7 @@ wait_for_it:
 
 		task_wait_event(sleep_usec);
 	}
+#endif /* TEST_CHARGE */
 }
 
 

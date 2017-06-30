@@ -66,16 +66,17 @@
 #define CONFIG_SOFTWARE_PANIC
 #define CONFIG_VBOOT_HASH
 
+#ifndef TEST_RT9466
+#define CONFIG_CHARGER_V2
+#endif
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_BD99955
+#define CONFIG_CHARGER_RT9466
 #define CONFIG_CHARGER_INPUT_CURRENT 512
 #define CONFIG_CHARGER_MAINTAIN_VBAT
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 2
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT 2
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15000
 #define CONFIG_CHARGER_PROFILE_OVERRIDE
-#define CONFIG_USB_CHARGER
 #define CONFIG_USB_MUX_VIRTUAL
 
 /* Increase tx buffer size, as we'd like to stream EC log to AP. */
@@ -141,10 +142,6 @@
 /* Optional features for test commands */
 #define CONFIG_CMD_CHARGER_PSYS
 
-/* Set PSYS gain for 50W max measurement */
-#define BD99955_PSYS_GAIN_SELECT \
-		BD99955_CMD_PMON_IOUT_CTRL_SET_PMON_GAIN_SET_08UAW
-
 #define CONFIG_UART_HOST                0
 
 /* Optional feature - used by nuvoton */
@@ -183,6 +180,10 @@
 #define I2C_PORT_THERMAL  NPCX_I2C_PORT2
 #define I2C_PORT_BATTERY  NPCX_I2C_PORT3
 #define I2C_PORT_VIRTUAL_BATTERY I2C_PORT_BATTERY
+
+#if defined(CONFIG_I2C_VIRTUAL_BATTERY) && defined(CONFIG_BATTERY_SMART)
+#define VIRTUAL_BATTERY_ADDR BATTERY_ADDR
+#endif
 
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* SPI master port (SPIP) form BMI160 */
