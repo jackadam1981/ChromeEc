@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8f6f6f49_cadf6492",
+        "filename": "common/device_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-06-30T02:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb39597a_ddb34474",
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9062f76_cb1801e8",
         "filename": "common/device_event.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8a1ab356_b1ad11ab",
+        "filename": "common/device_event.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-06-30T02:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9062f76_cb1801e8",
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d310b1e1_4566d2e8",
         "filename": "include/device_event.h",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2017-06-29T18:31:52Z",
       "side": 1,
       "message": "__CROS_EC_DEVICE_EVENT_H",
+      "range": {
+        "startLine": 44,
+        "startChar": 11,
+        "endLine": 44,
+        "endChar": 37
+      },
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a605de01_8ec202fc",
+        "filename": "include/device_event.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-06-30T02:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d310b1e1_4566d2e8",
       "range": {
         "startLine": 44,
         "startChar": 11,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "631b4ae1_5dca24f1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-06-30T02:24:22Z",
+      "side": 1,
+      "message": "Yeah I was going to land this change first and then update ec_commands in coreboot and remove all the current users.",
+      "parentUuid": "2b6b1381_4fbe5494",
+      "range": {
+        "startLine": 506,
+        "startChar": 1,
+        "endLine": 506,
+        "endChar": 21
+      },
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c98dc692_79195267",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "91a8f897_e7f8a197",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3549,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-06-30T02:24:22Z",
+      "side": 1,
+      "message": "Yes that makes sense, I will update throughout to be more clear.",
+      "parentUuid": "c98dc692_79195267",
+      "range": {
+        "startLine": 3549,
+        "startChar": 8,
+        "endLine": 3549,
+        "endChar": 28
+      },
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "529e0a45_c6330b70",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -116,6 +224,30 @@
       "writtenOn": "2017-06-29T18:31:52Z",
       "side": 1,
       "message": "Consider swapping the ordering of these two for alignment?",
+      "range": {
+        "startLine": 3552,
+        "startChar": 1,
+        "endLine": 3553,
+        "endChar": 21
+      },
+      "revId": "d85f518d5ddda7bf7887991714746076749f8017",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75d709cb_af180167",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3553,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-06-30T02:24:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "529e0a45_c6330b70",
       "range": {
         "startLine": 3552,
         "startChar": 1,
