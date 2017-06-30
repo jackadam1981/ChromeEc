@@ -10,6 +10,7 @@
 #include "charger.h"
 #include "console.h"
 #include "dptf.h"
+#include "driver/charger/isl9237.h"
 #include "driver/pmic_tps650830.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "extpower.h"
@@ -474,6 +475,11 @@ static void board_init(void)
 
 	/* Provide AC status to the PCH */
 	gpio_set_level(GPIO_PCH_ACOK, extpower_is_present());
+
+	/* crosbug# */
+	if (i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+			ISL9237_REG_PROCHOT_AC, 3200))
+		CPRINTF("Charger.Prochot init fail\n");
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
