@@ -15,7 +15,7 @@
 #include "console.h"
 #include "ec_commands.h"
 #include "driver/accelgyro_bmi160.h"
-#include "driver/charger/bd9995x.h"
+#include "driver/charger/rt946x.h"
 #include "driver/baro_bmp280.h"
 #include "driver/tcpm/fusb302.h"
 #include "driver/temp_sensor/tmp432.h"
@@ -148,7 +148,7 @@ const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 /******************************************************************************/
 /* Wake-up pins for hibernate */
 const enum gpio_signal hibernate_wake_pins[] = {
-	GPIO_POWER_BUTTON_L, GPIO_CHARGER_INT_L, GPIO_LID_OPEN
+	GPIO_POWER_BUTTON_L, GPIO_LID_OPEN
 };
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
@@ -194,82 +194,35 @@ uint16_t tcpc_get_alert_status(void)
 
 int board_set_active_charge_port(int charge_port)
 {
-	enum bd9995x_charge_port bd9995x_port;
-	int bd9995x_port_select = 1;
-	static int initialized;
 
 	/*
 	 * Reject charge port disable if our battery is critical and we
 	 * have yet to initialize a charge port - continue to charge using
 	 * charger ROM / POR settings.
 	 */
-	if (!initialized &&
-	    charge_port == CHARGE_PORT_NONE &&
-	    (charge_get_percent() < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON ||
-	    battery_get_disconnect_state() == BATTERY_DISCONNECTED)) {
-		CPRINTS("Bat critical, don't stop charging");
-		return -1;
-	}
 
-	CPRINTS("New chg p%d", charge_port);
+	//CPRINTS("TEST FOR RT946X");
+	return 0;
+}
 
-	switch (charge_port) {
-	case 0:
-		/* Don't charge from a source port */
-		if (board_vbus_source_enabled(charge_port))
-			return -1;
-		bd9995x_port = bd9995x_pd_port_to_chg_port(charge_port);
-		break;
-	case CHARGE_PORT_NONE:
-		bd9995x_port_select = 0;
-		bd9995x_port = BD9995X_CHARGE_PORT_BOTH;
-		break;
-	default:
-		panic("Invalid charge port\n");
-		break;
-	}
+int extpower_is_present(void)
+{
+	//CPRINTS("TEST FOR RT946X");
+	return 0;
+}
 
-	initialized = 1;
-	return bd9995x_select_input_port(bd9995x_port, bd9995x_port_select);
+int pd_snk_is_vbus_provided(int port)
+{
+       //CPRINTS("TEST FOR RT946X");
+       return 0;
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
-	/*
-	 * Ignore lower charge ceiling on PD transition if our battery is
-	 * critical, as we may brownout.
-	 */
-	if (supplier == CHARGE_SUPPLIER_PD &&
-	    charge_ma < 1500 &&
-	    (charge_get_percent() < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON ||
-	    battery_get_disconnect_state() == BATTERY_DISCONNECTED)) {
-		CPRINTS("Using max ilim %d", max_ma);
-		charge_ma = max_ma;
-	}
-
-	charge_set_input_current_limit(MAX(charge_ma,
-			       CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
-}
-
-int extpower_is_present(void)
-{
-	/*
-	 * The charger will indicate VBUS presence if we're sourcing 5V,
-	 * so exclude such ports.
-	 */
-	if (board_vbus_source_enabled(0))
-		return 0;
-	else
-		return bd9995x_is_vbus_provided(BD9995X_CHARGE_PORT_VBUS);
-}
-
-int pd_snk_is_vbus_provided(int port)
-{
-	if (port)
-		panic("Invalid charge port\n");
-
-	return bd9995x_is_vbus_provided(BD9995X_CHARGE_PORT_VBUS);
+#ifdef PHIL
+       CPRINTS("TEST FOR RT946X");
+#endif
 }
 
 static void board_spi_enable(void)
@@ -307,9 +260,6 @@ static void board_init(void)
 {
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
-
-	/* Enable charger interrupt for BC1.2 detection on attach / detach */
-	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
 
 	/* Enable reboot / shutdown control inputs from AP */
 	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
