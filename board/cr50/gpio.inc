@@ -106,6 +106,13 @@ GPIO(EN_PP3300_INA_L, PIN(0, 11), GPIO_ODR_HIGH)
 GPIO(I2C_SCL_INA,     PIN(0, 12), GPIO_INPUT)
 GPIO(I2C_SDA_INA,     PIN(0, 13), GPIO_INPUT)
 
+/*
+ * Use this to poll the state of the I2CS SDA line. Note that this is not
+ * necessary if SPI interface is used to communicate with the AP, if needed,
+ * this GPIO could be reclaimed in that case.
+ */
+GPIO(I2CS_SDA,        PIN(0, 14), GPIO_INPUT)
+
 /* Unimplemented signals which we need to emulate for now */
 /* TODO(wfrichar): Half the boards don't use this signal. Take it out. */
 UNIMPLEMENTED(ENTERING_RW)
@@ -195,6 +202,5 @@ PINMUX(GPIO(SPI_CLK),            A8, DIO_OUTPUT)
 PINMUX(GPIO(SPI_CS_L),          A14, DIO_OUTPUT)
 
 PINMUX(GPIO(DIOB4),              B4, DIO_INPUT)
-
 
 #undef PINMUX
