@@ -196,5 +196,11 @@ PINMUX(GPIO(SPI_CS_L),          A14, DIO_OUTPUT)
 
 PINMUX(GPIO(DIOB4),              B4, DIO_INPUT)
 
+/*
+ * Use this to poll the state of the I2CS SDA line. Note that this is not
+ * necessary if SPI interface is used to communicate with the AP, if needed,
+ * this GPIO could be reclaimed in that case.
+ */
+GPIO(I2CS_SDA,        PIN(0, 14), GPIO_INPUT)
 
 #undef PINMUX
