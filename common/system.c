@@ -989,6 +989,13 @@ static int command_sysjump(int argc, char **argv)
 		 * updated to use "RW".
 		 */
 		return system_run_image_copy(SYSTEM_IMAGE_RW);
+	} else if (!strcasecmp(argv[1], "B")) {
+#ifdef CONFIG_RW_B
+		return system_run_image_copy(SYSTEM_IMAGE_RW_B);
+#else
+		ccprintf("RW_B is not supported\n", addr);
+		return EC_ERROR_PARAM1;
+#endif
 	} else if (!strcasecmp(argv[1], "disable")) {
 		system_disable_jump();
 		return EC_SUCCESS;
@@ -1009,7 +1016,7 @@ static int command_sysjump(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(sysjump, command_sysjump,
-			"[RO | RW | addr | disable]",
+			"[RO | RW | A | B | addr | disable]",
 			"Jump to a system image or address");
 #endif
 
@@ -1315,8 +1322,7 @@ int system_can_boot_ap(void)
 	}
 #endif
 	if (!power_good)
-		CPRINTS("Not enough power to boot AP: charge=%d power=%d\n",
-			soc, pow);
+		CPRINTS("Not enough power to boot: chg=%d pwr=%d", soc, pow);
 
 	return power_good;
 }
