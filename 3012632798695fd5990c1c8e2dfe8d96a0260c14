@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb5c0789_d8297992",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-01T02:31:15Z",
+      "side": 1,
+      "message": "BBRAM is _not_ persistent: it is battery backed (and it was wired incorrectly on poppy, FYI: https://b.corp.google.com/issues/38187362)",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "3012632798695fd5990c1c8e2dfe8d96a0260c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65113530_4285f013",
+        "filename": "common/vboot.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-01T02:31:15Z",
+      "side": 1,
+      "message": "This seems to be a lot of copy-paste from rwsig.c, wondering if we can share stuff.",
+      "revId": "3012632798695fd5990c1c8e2dfe8d96a0260c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
