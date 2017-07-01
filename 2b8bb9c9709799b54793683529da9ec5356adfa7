@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4080d82a_823bea39",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-01T02:20:41Z",
+      "side": 1,
+      "message": "CONFIG_FLASH_SIZE / 4, no need to be fancy here.\n\nAlso, why are you throwing away 1/4 of the flash? I don\u0027t think you\u0027ll ever be able to recover it, even after a RW update, right?",
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8b2625_f275a5e0",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-01T02:20:41Z",
+      "side": 1,
+      "message": "Maybe NPCX_FWCTRL_RW_SLOT is a slightly better name?",
+      "range": {
+        "startLine": 255,
+        "startChar": 20,
+        "endLine": 255,
+        "endChar": 23
+      },
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "210a746b_6d0160f5",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-01T02:20:41Z",
+      "side": 1,
+      "message": "Not sure to understand this (and the \"Invalid\" comment).",
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315567c6_b05ba593",
+        "filename": "include/rwsig.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-01T02:20:41Z",
+      "side": 1,
+      "message": "This looks quite fragile, I\u0027d rather recompute the offset using a sum like CONFIG_RW_SIG_ADDR above.",
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
