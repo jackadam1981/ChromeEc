@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7114aa08_53c3b0a3",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-07-02T21:13:20Z",
+      "side": 1,
+      "message": "Done.\n\nRO and RW images are almost identical in terms of the code to be included (thus the sizes are almost the same) on Fizz. Therefore, if RO doesn\u0027t fit in 1/4, neither does RW. If we need more than 128K per copy, we\u0027ll split the flash into 3/8.",
+      "parentUuid": "4080d82a_823bea39",
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df8b2625_f275a5e0",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 9
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "dda75547_50b11313",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-07-02T21:13:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df8b2625_f275a5e0",
+      "range": {
+        "startLine": 255,
+        "startChar": 20,
+        "endLine": 255,
+        "endChar": 23
+      },
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "210a746b_6d0160f5",
         "filename": "chip/npcx/system.c",
         "patchSetId": 9
@@ -56,6 +98,24 @@
       "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05db3b4e_dafedd37",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-07-02T21:13:20Z",
+      "side": 1,
+      "message": "Done. It was meant to be SYSTEM_IMAGE_RO.",
+      "parentUuid": "210a746b_6d0160f5",
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
