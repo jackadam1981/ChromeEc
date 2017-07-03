@@ -15,6 +15,7 @@
 #include "host_command.h"
 #include "led_common.h"
 #include "util.h"
+#include "system.h"
 
 #define BAT_LED_ON 1
 #define BAT_LED_OFF 0
@@ -35,10 +36,12 @@ enum led_color {
 
 static void side_led_set_color(int port, enum led_color color)
 {
-	gpio_set_level(port ? GPIO_LED_YELLOW_C1 : GPIO_LED_YELLOW_C0,
-		(color == LED_AMBER) ? BAT_LED_ON : BAT_LED_OFF);
+        int yellow_c0 = (system_get_board_version() >= 4) ? GPIO_LED_YELLOW_C0 : GPIO_LED_YELLOW_C0_OLD;
+        gpio_set_level(port ? GPIO_LED_YELLOW_C1 : yellow_c0,
+	        (color == LED_AMBER) ? BAT_LED_ON : BAT_LED_OFF);
 	gpio_set_level(port ? GPIO_LED_WHITE_C1 : GPIO_LED_WHITE_C0,
 		(color == LED_WHITE) ? BAT_LED_ON : BAT_LED_OFF);
+
 }
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
