@@ -802,6 +802,9 @@ wait_for_it:
 			state_machine_force_idle = 1;
 			battery_seems_to_be_dead = 1;
 		}
+
+		if (manual_mode)
+			deadline.val = battery_seems_to_be_dead = 0;
 #endif
 
 #ifdef CONFIG_CHARGER_PROFILE_OVERRIDE
