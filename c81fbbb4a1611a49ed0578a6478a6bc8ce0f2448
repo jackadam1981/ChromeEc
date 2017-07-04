@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "feb4687d_860dad83",
+        "filename": "chip/stm32/pwm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-04T00:38:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e6c8344_8496f175",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "c81fbbb4a1611a49ed0578a6478a6bc8ce0f2448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6f0558e_377e9b7a",
         "filename": "chip/stm32/pwm.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9b0b1c77_1f24af69",
+        "filename": "chip/stm32/pwm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-04T00:38:28Z",
+      "side": 1,
+      "message": "I don\u0027t see an atomic_read function?",
+      "parentUuid": "c6f0558e_377e9b7a",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 26
+      },
+      "revId": "c81fbbb4a1611a49ed0578a6478a6bc8ce0f2448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3faa986d_4abe1a1c",
         "filename": "chip/stm32/pwm.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-07-03T09:24:23Z",
       "side": 1,
       "message": "nit: this part is useless ?",
+      "range": {
+        "startLine": 143,
+        "startChar": 31,
+        "endLine": 143,
+        "endChar": 44
+      },
+      "revId": "c81fbbb4a1611a49ed0578a6478a6bc8ce0f2448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "471e4bf1_57005b9b",
+        "filename": "chip/stm32/pwm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-04T00:38:28Z",
+      "side": 1,
+      "message": "Right, and the callers are well behaved an do not expect strict 0/1 values.",
+      "parentUuid": "3faa986d_4abe1a1c",
       "range": {
         "startLine": 143,
         "startChar": 31,
