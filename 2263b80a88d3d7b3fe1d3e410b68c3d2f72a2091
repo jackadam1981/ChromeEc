@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6606daab_1bef93bf",
+        "filename": "board/chell/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "other entries in this array do not use a tab here.",
+      "range": {
+        "startLine": 85,
+        "startChar": 20,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fd6b61f_780eb7a1",
+        "filename": "board/chell/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be GPIO_INT_BOTH?",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e91e4c8_644faf8b",
+        "filename": "board/chell/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "This seems to have additional spaces compared to other entries.",
+      "range": {
+        "startLine": 17,
+        "startChar": 22,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c240570_529597a2",
+        "filename": "board/chell/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "other entries do not have a tab here.",
+      "range": {
+        "startLine": 17,
+        "startChar": 53,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1ce7c6_a12e937b",
+        "filename": "board/chell/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "ifndef",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 6
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03a28ed7_41d4be83",
+        "filename": "board/coral/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "no tab in other entries.",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 128,
+        "endChar": 21
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "616ea832_632583d0",
+        "filename": "board/coral/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "GPIO_INT_BOTH",
+      "range": {
+        "startLine": 22,
+        "startChar": 47,
+        "endLine": 22,
+        "endChar": 57
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddfbad19_090e5fe5",
+        "filename": "board/coral/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "there is a tab in other entries.",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "324b6cf7_160ed0ec",
+        "filename": "board/reef/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "no tab in other entries.",
+      "range": {
+        "startLine": 129,
+        "startChar": 20,
+        "endLine": 129,
+        "endChar": 21
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aad354c_9881b7e1",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "GPIO_INT_BOTH",
+      "range": {
+        "startLine": 23,
+        "startChar": 35,
+        "endLine": 23,
+        "endChar": 45
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff5a950e_e77d3c99",
+        "filename": "board/reef/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "no tabs here in other entries.",
+      "range": {
+        "startLine": 23,
+        "startChar": 46,
+        "endLine": 23,
+        "endChar": 47
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d7c4676_965c7671",
+        "filename": "board/reef_it8320/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "no tab in other entries",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "470f9063_3781b67c",
+        "filename": "board/reef_it8320/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "no tab here.",
+      "range": {
+        "startLine": 19,
+        "startChar": 46,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f45132dc_3f322a0b",
+        "filename": "board/reef_it8320/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "GPIO_INT_BOTH",
+      "range": {
+        "startLine": 19,
+        "startChar": 35,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "635332bd_0739290a",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-04T22:56:15Z",
+      "side": 1,
+      "message": "I believe this should be power_signal_get_level and not gpio_get_level. Same with the case below.",
+      "range": {
+        "startLine": 221,
+        "startChar": 14,
+        "endLine": 221,
+        "endChar": 51
+      },
+      "revId": "2263b80a88d3d7b3fe1d3e410b68c3d2f72a2091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
