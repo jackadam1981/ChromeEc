@@ -45,6 +45,30 @@
       "revId": "e47e8aa93af06f13286186742ad674612c599f45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40681ee6_ce8a7b48",
+        "filename": "board/lars/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-07-04T04:04:06Z",
+      "side": 1,
+      "message": "Should I add this into driver within a macro or make it common ?",
+      "parentUuid": "3894973f_fb8ad94d",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 41
+      },
+      "revId": "e47e8aa93af06f13286186742ad674612c599f45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
