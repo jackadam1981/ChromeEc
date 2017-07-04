@@ -13,6 +13,8 @@
  * This file contains structures used to facilitate cr50 firmware updates,
  * which can be used on any g chip.
  *
+ * Details of the protocol can be found in docs/usb_updater.md.
+ *
  * The firmware update protocol consists of two phases: connection
  * establishment and actual image transfer.
  *
