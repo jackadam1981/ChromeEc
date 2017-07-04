@@ -1,6 +1,14 @@
 EC update over USB
 ==================
 
+chip/g (CR50) and common code (hammer, servo_micro/v4) update over USB protocols
+share a lot in terms of protocol and ideas, but use different code bases.
+
+chip/g EC-side implementation is found at `chip/g/*upgrade*`, and the userspace
+updater is found in `extra/usb_updater/usb_updater.c`, while common code
+uses implementations in `common/*update*.c` and `include/*update*.h`, and
+`extra/usb_updater/usb_updater2.c` for the userspace updater.
+
 CR50-specific notes
 -------------------
 
@@ -19,6 +27,16 @@ There are two ways to communicate with the CR50 device: USB and `/dev/tpm0`
 (when `usb_updater` is running on a chromebook with the CR50 device). Originally
 different protocols were used to communicate over different channels,
 starting with version 3 the same protocol is used.
+
+common-code notes
+-----------------
+
+For non-CR50 or chip/g devices (common code), the layout is a bit different,
+as devices usually have a single RO and a single RW, where RO is truly read-only
+in production, and verifies RW before jumping to it.
+
+For testing and development, `usb_updater2` is provided, while production code
+will use `hammerd` (in `src/platform/hammerd`) to update the device.
 
 Update protocol
 ---------------
@@ -93,7 +111,46 @@ Protocol version 6 does not change the format of the first PDU response,
 but it indicates the target's ability to channel TPM vendor commands
 through USB connection.
 
-### Vendor commands
+Common-code updater also uses protocol version 6, but have a fairly different
+`first_response_pdu` header, indicated by setting `1` in the higher 16-bit for
+the protocol version field (`header_type`). The response includes fields
+such as maximum PDU size (which is not fixed to 1KB like for cr50), flash
+protection status, version string, and a minimum rollback version.
+
+Details can be found in `include/update_fw.h`.
+
+### State machine (Update over USB)
+
+This describes the EC-side state machine for update over USB.
+
+IDLE state:
+
+* If host sends update start PDU (a command without any payload, digest = 0
+  and base = 0):
+
+  * Reply with `first_update_pdu` block. Go to OUTSIDE_BLOCK state.
+
+* If host sends a vendor command (see below), execute that, reply, and stay
+  in IDLE state. Not that vendor commands are only accepted in IDLE state.
+
+OUTSIDE_BLOCK (preparing to receive start of PDU):
+
+* If no data is received in 5 seconds, go back to IDLE state.
+* If host sends `UPDATE_DONE` command (by setting `dest address` to
+  `0xb007ab1e`), go back to IDLE state.
+* If host sends a valid block start with a valid address, copy the rest
+  of the payload and got to INSIDE_BLOCK state.
+
+INSIDE_BLOCK (in a middle of a PDU):
+
+* If no data is received in 5 seconds, go back to IDLE state.
+* Copy data to a buffer.
+
+  * If buffer is full (i.e. matches the total expected PDU size), write the
+   data and go to OUTSIDE_BLOCK.
+  * Else, stay in INSIDE_BLOCK.
+
+### Vendor commands (channeled TPM command, cr50)
 
 When channeling TPM vendor commands the USB frame looks as follows:
 
@@ -118,3 +175,25 @@ versions. Zero value means success, non zero value is the error code
 reported by CR50.
 
 Again, vendor command responses are subcommand specific.
+
+### Vendor commands (common code)
+
+Vendor commands for command code look very similar to the TPM vendor commands
+above, except that we use `UPDATE_EXTRA_CMD` (`b007ab1f`) instead of `EXT_CMD`,
+and `Vend. sub.` have a limit set of values (unless otherwise noted, commands
+take no parameter, and reply with a single 1-byte status code):
+
+* UPDATE_EXTRA_CMD_IMMEDIATE_RESET (0): Tell EC to reboot immediately.
+* UPDATE_EXTRA_CMD_JUMP_TO_RW (1): Tell EC (in RO) to jump to RW, if the
+  signature verifies.
+* UPDATE_EXTRA_CMD_STAY_IN_RO (2): Tell EC (in RO), to stay in RO, and not
+  jump to RW automatically. After this command is sent, a reset is necessary
+  for the EC to accept to jump to RW again.
+* UPDATE_EXTRA_CMD_UNLOCK_RW (3): Tell EC to unlock RW on next reset.
+* UPDATE_EXTRA_CMD_UNLOCK_ROLLBACK (4): Tell EC to unlock ROLLBACK on next reset.
+* UPDATE_EXTRA_CMD_INJECT_ENTROPY (5): Inject entropy into the device-specific
+  unique identifier (takes at least CONFIG_ROLLBACK_SECRET_SIZE=32 bytes of
+  data).
+* UPDATE_EXTRA_CMD_PAIR_CHALLENGE (6): Tell EC to answer a X25519 challenge
+  for pairing. Takes in a `struct pair_challenge` as data, answers with a
+  `struct pair_challenge_response`.
