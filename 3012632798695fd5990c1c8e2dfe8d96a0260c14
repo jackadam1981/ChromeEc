@@ -57,6 +57,24 @@
       "revId": "3012632798695fd5990c1c8e2dfe8d96a0260c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d07845d5_3acbaa64",
+        "filename": "common/vboot.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-07-05T23:57:04Z",
+      "side": 1,
+      "message": "Done. https://chromium-review.googlesource.com/c/560598/",
+      "parentUuid": "d3167221_96362b3a",
+      "revId": "3012632798695fd5990c1c8e2dfe8d96a0260c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
