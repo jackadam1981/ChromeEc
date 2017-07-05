@@ -25,7 +25,7 @@ SECTIONS
         *(.image.RO)
     } > FLASH =0xff
 
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
     .image.RO.key : AT(CONFIG_RO_PUBKEY_ADDR) {
         *(.image.RO.key)
     } > FLASH =0xff
@@ -59,7 +59,7 @@ and RW images at different Flash offset */
 #endif
         *(.image.RW)
     } > FLASH =0xff
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
     .image.RW.sign : AT(CONFIG_RW_SIG_ADDR) {
         *(.image.RW.sign)
     } > FLASH =0xff
@@ -69,7 +69,7 @@ and RW images at different Flash offset */
                      CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_SIZE) {
         *(.image.RW_B)
     } > FLASH =0xff
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
     .image.RW_B.sign : AT(CONFIG_RW_B_SIG_ADDR) {
         *(.image.RW_B.sign)
     } > FLASH =0xff

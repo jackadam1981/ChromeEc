@@ -190,7 +190,7 @@
 
 #define CONFIG_SHA256
 
-#define CONFIG_RWSIG_TYPE_RWSIG
+#define CONFIG_SIG_TYPE_VB21
 
 /*
  * Add rollback protection, and independent RW region protection.

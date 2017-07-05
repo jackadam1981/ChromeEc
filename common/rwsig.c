@@ -21,6 +21,7 @@
 #include "usb_pd.h"
 #include "util.h"
 #include "vb21_struct.h"
+#include "vboot.h"
 #include "version.h"
 
 /* Console output macros */
@@ -69,41 +70,16 @@ void rwsig_jump_now(void)
 		system_run_image_copy(SYSTEM_IMAGE_RW);
 }
 
-/*
- * Check that memory between rwdata[start] and rwdata[len-1] is filled
- * with ones. data, start and len must be aligned on 4-byte boundary.
- */
-static int check_padding(const uint8_t *data,
-			 unsigned int start, unsigned int len)
-{
-	unsigned int i;
-	const uint32_t *data32 = (const uint32_t *)data;
-
-	if ((start % 4) != 0 || (len % 4) != 0)
-		return 0;
-
-	for (i = start/4; i < len/4; i++) {
-		if (data32[i] != 0xffffffff)
-			return 0;
-	}
-
-	return 1;
-}
-
 int rwsig_check_signature(void)
 {
-	struct sha256_ctx ctx;
-	int res;
 	const struct rsa_public_key *key;
 	const uint8_t *sig;
-	uint8_t *hash;
-	uint32_t *rsa_workbuf = NULL;
 	const uint8_t *rwdata = (uint8_t *)CONFIG_PROGRAM_MEMORY_BASE
 					+ CONFIG_RW_MEM_OFF;
-	int good = 0;
+	int err = 0;
 
 	unsigned int rwlen;
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 	const struct vb21_packed_key *vb21_key;
 	const struct vb21_signature *vb21_sig;
 #endif
@@ -130,23 +106,15 @@ int rwsig_check_signature(void)
 	}
 #endif
 
-	/* Large buffer for RSA computation : could be re-use afterwards... */
-	res = shared_mem_acquire(3 * RSANUMBYTES, (char **)&rsa_workbuf);
-	if (res) {
-		CPRINTS("No memory for RW verification");
-		goto out;
-	}
-
 #ifdef CONFIG_RWSIG_TYPE_USBPD1
 	key = (const struct rsa_public_key *)CONFIG_RO_PUBKEY_ADDR;
 	sig = (const uint8_t *)CONFIG_RW_SIG_ADDR;
 	rwlen = CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE;
-#elif defined(CONFIG_RWSIG_TYPE_RWSIG)
+#elif defined(CONFIG_SIG_TYPE_VB21)
 	vb21_key = (const struct vb21_packed_key *)CONFIG_RO_PUBKEY_ADDR;
 	vb21_sig = (const struct vb21_signature *)CONFIG_RW_SIG_ADDR;
 
-	if (vb21_key->c.magic != VB21_MAGIC_PACKED_KEY ||
-	    vb21_key->key_size != sizeof(struct rsa_public_key)) {
+	if (vb21_is_packed_key_valid(vb21_key)) {
 		CPRINTS("Invalid key.");
 		goto out;
 	}
@@ -158,14 +126,7 @@ int rwsig_check_signature(void)
 	 * TODO(crbug.com/690773): We could verify other parameters such
 	 * as sig_alg/hash_alg actually matches what we build for.
 	 */
-	if (vb21_sig->c.magic != VB21_MAGIC_SIGNATURE ||
-	    vb21_sig->sig_size != RSANUMBYTES ||
-	    vb21_key->sig_alg != vb21_sig->sig_alg ||
-	    vb21_key->hash_alg != vb21_sig->hash_alg ||
-	    /* Sanity check signature offset and data size. */
-	    vb21_sig->sig_offset < sizeof(vb21_sig) ||
-	    (vb21_sig->sig_offset + RSANUMBYTES) > CONFIG_RW_SIG_SIZE ||
-	    vb21_sig->data_size > (CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)) {
+	if (vb21_is_signature_valid(vb21_sig, vb21_key)) {
 		CPRINTS("Invalid signature.");
 		goto out;
 	}
@@ -177,20 +138,15 @@ int rwsig_check_signature(void)
 	/*
 	 * Check that unverified RW region is actually filled with ones.
 	 */
-	good = check_padding(rwdata, rwlen,
-			CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE);
-	if (!good) {
+	err = vboot_is_padding_valid(rwdata, rwlen,
+				    CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE);
+	if (err) {
 		CPRINTS("Invalid padding.");
 		goto out;
 	}
 
-	/* SHA-256 Hash of the RW firmware */
-	SHA256_init(&ctx);
-	SHA256_update(&ctx, rwdata, rwlen);
-	hash = SHA256_final(&ctx);
-
-	good = rsa_verify(key, sig, hash, rsa_workbuf);
-	if (!good)
+	err = vboot_verify(rwdata, rwlen, key, sig);
+	if (err)
 		goto out;
 
 #ifdef CONFIG_ROLLBACK
@@ -215,23 +171,21 @@ int rwsig_check_signature(void)
 				rw_rollback_version);
 		} else if (ret != EC_ERROR_ACCESS_DENIED) {
 			CPRINTS("Rollback update error %d", ret);
-			good = 0;
+			err = 0;
 		}
 	}
 #endif
 out:
-	CPRINTS("RW verify %s", good ? "OK" : "FAILED");
+	CPRINTS("RW verify %s", err ? "FAILED" : "OK");
 
-	if (!good) {
+	if (err) {
 		pd_log_event(PD_EVENT_ACC_RW_FAIL, 0, 0, NULL);
 		/* RW firmware is invalid : do not jump there */
 		if (system_is_locked())
 			system_disable_jump();
 	}
-	if (rsa_workbuf)
-		shared_mem_release(rsa_workbuf);
 
-	return good;
+	return err == EC_SUCCESS;
 }
 
 #ifdef HAS_TASK_RWSIG

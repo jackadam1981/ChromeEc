@@ -62,7 +62,7 @@ struct fmap_area_header {
 	uint16_t area_flags;
 } __packed;
 
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 #define NUM_EC_FMAP_AREAS_RWSIG 2
 #else
 #define NUM_EC_FMAP_AREAS_RWSIG 0
@@ -151,7 +151,7 @@ const struct _ec_fmap {
 			.area_size = CONFIG_WP_STORAGE_SIZE,
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 		{
 			/* RO public key address, for RW verification */
 			.area_name = "KEY_RO",
@@ -206,7 +206,7 @@ const struct _ec_fmap {
 			.area_flags = FMAP_AREA_STATIC,
 		},
 #endif
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 		{
 			 /* RW image signature */
 			.area_name = "SIG_RW",
