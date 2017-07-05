@@ -1961,10 +1961,10 @@
 
 /*
  * Defines what type of futility signature type should be used.
- * RWSIG should be used for new designs.
+ * VB21 should be used for new designs.
  * Old adapters use the USBPD1 futility signature type.
  */
-#undef CONFIG_RWSIG_TYPE_RWSIG
+#undef CONFIG_SIG_TYPE_VB21
 #undef CONFIG_RWSIG_TYPE_USBPD1
 
 /*

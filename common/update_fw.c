@@ -102,7 +102,7 @@ static int contents_allowed(uint32_t block_offset,
 void fw_update_start(struct first_response_pdu *rpdu)
 {
 	const char *version;
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 	const struct vb21_packed_key *vb21_key;
 #endif
 
@@ -141,7 +141,7 @@ void fw_update_start(struct first_response_pdu *rpdu)
 	rpdu->common.min_rollback = htobe32(-1);
 #endif
 
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 	vb21_key = (const struct vb21_packed_key *)CONFIG_RO_PUBKEY_ADDR;
 	rpdu->common.key_version = htobe32(vb21_key->key_version);
 #endif
