@@ -25,7 +25,7 @@
 .incbin FW_IMAGE(RO,)
 #endif
 
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 .section .image.RO.key, "a"
 .incbin STRINGIFY(FINAL_OUTDIR/key.vbpubk2)
 #endif
@@ -51,13 +51,13 @@
 .section .image.RW, "ax"
 .incbin FW_IMAGE(RW,)
 
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 .section .image.RW.sign, "a"
 .incbin FW_IMAGE_SIGN(RW,)
 #endif
 
 #ifdef CONFIG_RW_B
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 .section .image.RW_B, "ax"
 .incbin FW_IMAGE(RW,)
 .section .image.RW_B.sign, "a"
