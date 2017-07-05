@@ -39,6 +39,24 @@
       "revId": "3012632798695fd5990c1c8e2dfe8d96a0260c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3167221_96362b3a",
+        "filename": "common/vboot.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-05T15:35:40Z",
+      "side": 1,
+      "message": "Agree.  Can we refactor this to more common shared code?",
+      "parentUuid": "65113530_4285f013",
+      "revId": "3012632798695fd5990c1c8e2dfe8d96a0260c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
