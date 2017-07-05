@@ -62,7 +62,7 @@ void rwsig_jump_now(void);
  */
 
 #ifndef CONFIG_RO_PUBKEY_SIZE
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 /*
  * rwsig type: 1024 bytes is enough to fit RSA-3072 public key.
  *
@@ -76,7 +76,7 @@ void rwsig_jump_now(void);
 #endif
 #endif /* ! CONFIG_RO_PUBKEY_SIZE */
 #ifndef CONFIG_RO_PUBKEY_ADDR
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 #define CONFIG_RO_PUBKEY_STORAGE_OFF (CONFIG_RO_STORAGE_OFF		\
 				      + CONFIG_RO_SIZE			\
 				      - CONFIG_RO_PUBKEY_SIZE)
@@ -97,7 +97,7 @@ void rwsig_jump_now(void);
 #endif /* CONFIG_RO_PUBKEY_ADDR */
 
 #ifndef CONFIG_RW_SIG_SIZE
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 /*
  * rwsig type: futility expects signature to be 1024 bytes from the end of
  * the file.

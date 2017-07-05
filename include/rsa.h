@@ -22,7 +22,7 @@
  * plus 4 for n0inv, aligned on a multiple of 16
  * Put numerical constants here to please the linker script.
  */
-#ifndef CONFIG_RWSIG_TYPE_RWSIG
+#ifndef CONFIG_SIG_TYPE_VB21
 /* vboot2 public keys are packed in a slightly different way. */
 #if CONFIG_RSA_KEY_SIZE == 2048
 #define RSA_PUBLIC_KEY_SIZE 528
@@ -33,7 +33,7 @@
 #else
 #error Unsupported RSA key size
 #endif
-#endif /* ! CONFIG_RWSIG_TYPE_RWSIG */
+#endif /* ! CONFIG_SIG_TYPE_VB21 */
 #endif /* CONFIG_RSA */
 
 #ifndef __ASSEMBLER__
@@ -41,7 +41,7 @@
 #include "common.h"
 #include "util.h"
 
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
+#ifdef CONFIG_SIG_TYPE_VB21
 /* RSA public key definition, VBoot2 packing */
 struct rsa_public_key {
 	uint32_t size;
