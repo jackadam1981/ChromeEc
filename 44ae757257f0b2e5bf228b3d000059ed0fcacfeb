@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d29427af_bac0ba67",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-05T15:25:24Z",
+      "side": 1,
+      "message": "Won\u0027t this just get stuck in a crash loop until power is removed?\n\nIt would be safer to default to RO.",
+      "range": {
+        "startLine": 970,
+        "startChar": 0,
+        "endLine": 971,
+        "endChar": 12
+      },
+      "revId": "44ae757257f0b2e5bf228b3d000059ed0fcacfeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f68cd30b_a9049833",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-05T15:25:24Z",
+      "side": 1,
+      "message": "Same here.  But here, we can likely print an error and then default to RO.",
+      "range": {
+        "startLine": 1037,
+        "startChar": 0,
+        "endLine": 1038,
+        "endChar": 12
+      },
+      "revId": "44ae757257f0b2e5bf228b3d000059ed0fcacfeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3e5c0f0_441028b1",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-05T15:25:24Z",
+      "side": 1,
+      "message": "Does RW_B imply RO_B as well?",
+      "range": {
+        "startLine": 1046,
+        "startChar": 0,
+        "endLine": 1049,
+        "endChar": 6
+      },
+      "revId": "44ae757257f0b2e5bf228b3d000059ed0fcacfeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
