@@ -33,6 +33,23 @@
       "revId": "72afc55bd9d3f12fa62609b61dfbfe300a277dd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44c5de07_34b92897",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 1341,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-06T06:55:19Z",
+      "side": 1,
+      "message": "The polarity of this define is wrong, at least on STM32F0:\n  \nBit 9 OPTWRE: Option byte write enable\n  When set, the option byte can be programmed. This bit is set on writing the correct key\n  sequence to the FLASH_OPTKEYR register.\n  This bit can be reset by software",
+      "revId": "72afc55bd9d3f12fa62609b61dfbfe300a277dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
