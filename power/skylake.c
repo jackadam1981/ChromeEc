@@ -83,6 +83,16 @@ void chipset_reset(int cold_reset)
 	}
 }
 
+__attribute__((weak)) void board_handle_all_sus(enum power_state state)
+{
+}
+
+__attribute__((weak)) enum power_state
+board_handle_state(enum power_state new_state, enum power_state state)
+{
+	return new_state;
+}
+
 static void handle_slp_sus(enum power_state state)
 {
 	/* If we're down or going down don't do anythin with SLP_SUS_L. */
@@ -115,12 +125,16 @@ enum power_state power_handle_state(enum power_state state)
 	/* Process RSMRST_L state changes. */
 	common_intel_x86_handle_rsmrst(state);
 
+	board_handle_all_sus(state);
+
 	if (state == POWER_S5 && forcing_shutdown) {
 		power_button_pch_release();
 		forcing_shutdown = 0;
 	}
 
 	new_state = common_intel_x86_power_handle_state(state);
+
+	new_state = board_handle_state(new_state, state);
 
 	/* Process SLP_SUS_L state changes after a new state is decided. */
 	handle_slp_sus(new_state);
