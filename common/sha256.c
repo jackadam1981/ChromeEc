@@ -35,8 +35,19 @@
  * SUCH DAMAGE.
  */
 
+#include "console.h"
 #include "sha256.h"
 #include "util.h"
+
+#ifdef CONFIG_SHA256_HW
+#include "sha256_chip.h"
+#endif
+
+/* Debug macros for console test command */
+#define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
+#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SWITCH, format, ## args)
+
 
 #define SHFR(x, n)    (x >> n)
 #define ROTR(x, n)   ((x >> n) | (x << ((sizeof(x) << 3) - n)))
@@ -66,6 +77,8 @@
 	}
 
 /* Macros used for loops unrolling */
+
+#ifndef CONFIG_SHA256_HW
 
 #define SHA256_SCR(i)						\
 	{							\
@@ -104,8 +117,13 @@ static const uint32_t sha256_k[64] = {
 	0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
 	0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2};
 
+#endif /* #ifndef CONFIG_SHA256_HW */
+
 void SHA256_init(struct sha256_ctx *ctx)
 {
+#ifdef CONFIG_SHA256_HW
+	chip_sha256_init(ctx);
+#else
 	int i;
 
 	for (i = 0; i < 8; i++)
@@ -113,8 +131,10 @@ void SHA256_init(struct sha256_ctx *ctx)
 
 	ctx->len = 0;
 	ctx->tot_len = 0;
+#endif /* #ifdef CONFIG_SHA256_HW */
 }
 
+#ifndef CONFIG_SHA256_HW
 static void SHA256_transform(struct sha256_ctx *ctx, const uint8_t *message,
 			     unsigned int block_nb)
 {
@@ -155,9 +175,13 @@ static void SHA256_transform(struct sha256_ctx *ctx, const uint8_t *message,
 			ctx->h[j] += wv[j];
 	}
 }
+#endif /* #ifndef CONFIG_SHA256_HW */
 
 void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
 {
+#ifdef CONFIG_SHA256_HW
+	chip_sha256_update(ctx, data, len);
+#else
 	unsigned int block_nb;
 	unsigned int new_len, rem_len, tmp_len;
 	const uint8_t *shifted_data;
@@ -186,27 +210,35 @@ void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
 
 	ctx->len = rem_len;
 	ctx->tot_len += (block_nb + 1) << 6;
+#endif
 }
 
 /*
  * Specialized SHA256_init + SHA256_update that takes the first data block of
  * size SHA256_BLOCK_SIZE as input.
  */
-static void SHA256_init_1b(struct sha256_ctx *ctx, const uint8_t *data)
+static void SHA256_init_1b(struct sha256_ctx *ctx, const uint32_t *data)
 {
+#ifdef CONFIG_SHA256_HW
+	chip_sha256_init_1b(ctx, data);
+#else
 	int i;
 
 	for (i = 0; i < 8; i++)
 		ctx->h[i] = sha256_h0[i];
 
-	SHA256_transform(ctx, data, 1);
+	SHA256_transform(ctx, (uint8_t *)data, 1);
 
 	ctx->len = 0;
 	ctx->tot_len = SHA256_BLOCK_SIZE;
+#endif
 }
 
 uint8_t *SHA256_final(struct sha256_ctx *ctx)
 {
+#ifdef CONFIG_SHA256_HW
+	return chip_sha256_final(ctx);
+#else
 	unsigned int block_nb;
 	unsigned int pm_len;
 	unsigned int len_b;
@@ -228,30 +260,30 @@ uint8_t *SHA256_final(struct sha256_ctx *ctx)
 		UNPACK32(ctx->h[i], &ctx->buf[i << 2]);
 
 	return ctx->buf;
+#endif
 }
 
 static void hmac_SHA256_step(uint8_t *output, uint8_t mask,
 			const uint8_t *key, const int key_len,
-			const uint8_t *data, const int data_len) {
+			const uint8_t *data, const int data_len)
+{
 	struct sha256_ctx ctx;
-	uint8_t *key_pad = ctx.block;
 	uint8_t *tmp;
 	int i;
 
-	/* key_pad = key (zero-padded) ^ mask */
-	memset(key_pad, mask, SHA256_BLOCK_SIZE);
+	memset(ctx.block, mask, SHA256_BLOCK_SIZE);
 	for (i = 0; i < key_len; i++)
-		key_pad[i] ^= key[i];
+		ctx.block[i] ^= key[i];
 
-	/* tmp = hash(key_pad || message) */
-	SHA256_init_1b(&ctx, key_pad);
+	SHA256_init_1b(&ctx, ctx.wblock);
 	SHA256_update(&ctx, data, data_len);
 	tmp = SHA256_final(&ctx);
 	memcpy(output, tmp, SHA256_DIGEST_SIZE);
 }
 
 void hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,
-		 const uint8_t *message, const int message_len) {
+		 const uint8_t *message, const int message_len)
+{
 	/* This code does not support key_len > block_size. */
 	ASSERT(key_len <= SHA256_BLOCK_SIZE);
 
@@ -269,3 +301,226 @@ void hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,
 	hmac_SHA256_step(output, 0x5c,
 			 key, key_len, output, SHA256_DIGEST_SIZE);
 }
+
+/*
+ * Console command test
+ */
+#ifdef CONFIG_CMD_SHA256_TEST
+
+/*
+ * 56 bytes is corner case where padding algorithm should add a second
+ * 64 byte block:
+ * [56 byte message] || 0x80 || [7 0x00 bytes]
+ * [56 bytes of 0x00] || [8 byte message bit length MSB first]
+ */
+#define SHA256_TEST_PATTERN1_LEN 56
+const uint8_t test_pattern1[SHA256_TEST_PATTERN1_LEN+1] =
+	"abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq";
+
+/*
+ * FIPS 180-4 documented result is
+ * 248D6A61 D20638B8 E5C02693 0C3E6039 A33CE459 64FF2167 F6ECEDD4 19DB06C1
+ * This is a byte stream laid out in memory low(left) to high(right)
+ */
+const uint8_t __aligned(4)
+test_pattern1_sha256[SHA256_DIGEST_SIZE] = {
+	0x24, 0x8D, 0x6A, 0x61, 0xD2, 0x06, 0x38, 0xB8,
+	0xE5, 0xC0, 0x26, 0x93, 0x0C, 0x3E, 0x60, 0x39,
+	0xA3, 0x3C, 0xE4, 0x59, 0x64, 0xFF, 0x21, 0x67,
+	0xF6, 0xEC, 0xED, 0xD4, 0x19, 0xDB, 0x06, 0xC1
+};
+
+/*
+ * openssl rand 96 > rand96.bin
+ * One block (64-bytes) plus 32 remaining bytes.
+ * [first 64 bytes of message]
+ * [remaining 32 bytes of message] || 0x80 || [(54-33)=21 0x00 bytes] ||
+ *	[8 bytes message bit length MSB first]
+ */
+#define SHA256_TEST_PATTERN2_LEN 96
+const uint8_t __aligned(4)
+test_pattern2[SHA256_TEST_PATTERN2_LEN] = {
+	0xBF, 0xA6, 0xC8, 0xF0, 0xFD, 0x5C, 0xE5, 0x4A, 0x5F, 0x67,
+	0x67, 0x35, 0x66, 0x39, 0x1E, 0x44, 0xA8, 0x92, 0x92, 0x5A,
+	0xEB, 0xAD, 0xAF, 0x6A, 0x71, 0x04, 0x58, 0x1C, 0x2E, 0xDA,
+	0xEE, 0x25, 0x92, 0x6D, 0xB8, 0x56, 0x13, 0x5B, 0xB4, 0x4E,
+	0x6B, 0x3E, 0x7E, 0x87, 0x02, 0x5F, 0xCA, 0x88, 0x50, 0x0A,
+	0xBB, 0xFA, 0x8B, 0x7A, 0xFC, 0x95, 0xEC, 0x2D, 0xB6, 0xB8,
+	0xD9, 0x16, 0x72, 0x75, 0xEB, 0x67, 0x41, 0x31, 0x98, 0x4A,
+	0x97, 0xFB, 0x5F, 0xD1, 0xBE, 0xB0, 0x70, 0xE7, 0x67, 0xC9,
+	0xEA, 0xB1, 0x3C, 0x0C, 0xB4, 0xB2, 0x26, 0x49, 0xC7, 0x26,
+	0xA7, 0xD7, 0x19, 0xF2, 0xC8, 0x8B
+};
+
+/*
+ * openssl dgst -sha256 -out hex96.txt rand96.bin
+ * 2c99b17b91cbbc4f3df6b502d6a2fd618cde5003ca97d1696962d7771e301550
+ */
+const uint8_t __aligned(4)
+test_pattern2_sha256[SHA256_DIGEST_SIZE] = {
+	0x2c, 0x99, 0xb1, 0x7b, 0x91, 0xcb, 0xbc, 0x4f,
+	0x3d, 0xf6, 0xb5, 0x02, 0xd6, 0xa2, 0xfd, 0x61,
+	0x8c, 0xde, 0x50, 0x03, 0xca, 0x97, 0xd1, 0x69,
+	0x69, 0x62, 0xd7, 0x77, 0x1e, 0x30, 0x15, 0x50
+};
+
+/*
+ * Algorithm should compute:
+ * Two 64-byte blocks (first 128 bytes of message)
+ * Third block contains:
+ *   [remaining 60 bytes of message] || 0x80 || [3 0x00 bytes]
+ * Fourth block contains:
+ *   [56 0x00 bytes] || [8 bytes message bit length MSB first]
+ */
+#define SHA256_TEST_PATTERN3_LEN 188
+const uint8_t __aligned(4)
+test_pattern3[SHA256_TEST_PATTERN3_LEN] = {
+	0x98, 0x07, 0x86, 0x20, 0x61, 0x37, 0x0A, 0xEE, 0x52, 0xC3,
+	0x01, 0x0C, 0x19, 0xB1, 0x5B, 0x83, 0x8F, 0x2B, 0x9F, 0x57,
+	0x53, 0x61, 0x3A, 0xBE, 0x15, 0xBF, 0x54, 0x48, 0xFE, 0x8D,
+	0x9A, 0x89, 0x69, 0xC9, 0x54, 0x57, 0x66, 0x4E, 0x39, 0xCE,
+	0x0C, 0x1D, 0x7A, 0x71, 0xE2, 0xF0, 0x6F, 0x36, 0xBC, 0x1E,
+	0xB4, 0xA1, 0xCF, 0xAD, 0x93, 0xAE, 0x65, 0x45, 0xC9, 0x4E,
+	0x1A, 0x66, 0x08, 0x1A, 0x78, 0x04, 0x58, 0x2A, 0xF4, 0xEA,
+	0x65, 0x28, 0xC3, 0x00, 0x77, 0x5B, 0x5B, 0x2B, 0x6A, 0x71,
+	0xB1, 0xD2, 0x0B, 0xFF, 0x81, 0xB5, 0xD9, 0xB1, 0x07, 0x0D,
+	0xE5, 0xF5, 0x9C, 0xAE, 0x91, 0x06, 0xD7, 0x43, 0x2A, 0x95,
+	0x1C, 0xD4, 0xA0, 0xDC, 0xE8, 0x7D, 0x0F, 0xD9, 0x8D, 0x83,
+	0xAA, 0x06, 0x53, 0x9F, 0x63, 0xDB, 0x0A, 0x6B, 0x4F, 0x2B,
+	0x45, 0x97, 0xC4, 0xC3, 0xE1, 0x1C, 0xAB, 0x81, 0xD1, 0x36,
+	0x41, 0x03, 0xFC, 0x00, 0x69, 0x39, 0x97, 0x56, 0x4C, 0xCA,
+	0x9E, 0xFD, 0x4A, 0xA9, 0xB2, 0x64, 0x08, 0xBB, 0x03, 0x77,
+	0x53, 0x28, 0xA1, 0xB3, 0x6A, 0x8C, 0x3C, 0x13, 0x49, 0x30,
+	0x77, 0xE9, 0x3B, 0xAC, 0xF2, 0x07, 0x9E, 0x4B, 0x7A, 0x5C,
+	0x9A, 0x0F, 0x90, 0xD8, 0xE2, 0xEB, 0xA3, 0x17, 0x32, 0x00,
+	0x08, 0x31, 0x41, 0x85, 0xB2, 0x6A, 0x1C, 0xD4
+};
+
+/*
+ * openssl rand 188 > rand188.bin
+ * openssl dgst -sha256 -out hex188.txt rand188.bin
+ * fafafd83c8221818d7fb80f5b9bf9e130fde4e83801d8b42beef4aefe0d36fcb
+ */
+const uint8_t __aligned(4)
+test_pattern3_sha256[SHA256_DIGEST_SIZE] = {
+	0xfa, 0xfa, 0xfd, 0x83, 0xc8, 0x22, 0x18, 0x18,
+	0xd7, 0xfb, 0x80, 0xf5, 0xb9, 0xbf, 0x9e, 0x13,
+	0x0f, 0xde, 0x4e, 0x83,	0x80, 0x1d, 0x8b, 0x42,
+	0xbe, 0xef, 0x4a, 0xef, 0xe0, 0xd3, 0x6f, 0xcb
+};
+
+
+static struct sha256_ctx sha256_ctx_test;
+
+
+/*
+ * from terminal sha256hw_init no parameters
+ * R0 = argc = 1
+ * R1 = **argv = 0x11bb80
+ *
+ * paramter 1 = operation
+ *   0 = power, param2 = 0(off), 1(on)
+ *   1 = check test pattern 1
+ *   2 = check test pattern 2
+ *   3 = check test pattern 3
+ *   4 = init
+ *   5 = update, param2 = num bytes, para3 = pointer to bytes
+ *   6 = final
+ *
+ */
+static int cmd_sha256_test(int argc, char **argv)
+{
+	char *e;
+	int t;
+	uint32_t i;
+	uint8_t *pdigest;
+	const uint8_t *ptest;
+	const uint8_t *pexp;
+	uint32_t msg_byte_len;
+
+	pdigest = NULL;
+	ptest = NULL;
+	pexp = NULL;
+	msg_byte_len = 0;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	t = strtoi(argv[1], &e, 0);
+	switch (t) {
+	case 0:
+		memset(&sha256_ctx_test, 0, sizeof(struct sha256_ctx));
+#ifdef CONFIG_SHA256_HW
+		chip_sha_hw_enable(1);
+		return chip_sha_hw_is_enabled();
+#endif
+		return EC_SUCCESS;
+	case 1:
+		ptest = test_pattern1;
+		pexp = test_pattern1_sha256;
+		msg_byte_len = SHA256_TEST_PATTERN1_LEN;
+		break;
+	case 2:
+		ptest = test_pattern2;
+		pexp = test_pattern2_sha256;
+		msg_byte_len = SHA256_TEST_PATTERN2_LEN;
+		break;
+	case 3:
+		ptest = test_pattern3;
+		pexp = test_pattern3_sha256;
+		msg_byte_len = SHA256_TEST_PATTERN3_LEN;
+		break;
+	case 4:
+		SHA256_init(&sha256_ctx_test);
+		SHA256_update(&sha256_ctx_test, &test_pattern1[0], 25);
+		SHA256_update(&sha256_ctx_test, &test_pattern1[25], 25);
+		SHA256_update(&sha256_ctx_test, &test_pattern1[50], 6);
+		pdigest = SHA256_final(&sha256_ctx_test);
+		if (memcmp(pdigest, test_pattern1_sha256,
+			   SHA256_DIGEST_SIZE) != 0) {
+			CPRINTF("SHA256 Test 4 FAIL - digest mismatch\n");
+			return EC_ERROR_CRC;
+		}
+		break;
+	case 5:
+		SHA256_init(&sha256_ctx_test);
+		for (i = 0; i < SHA256_TEST_PATTERN3_LEN/10; i++) {
+			SHA256_update(&sha256_ctx_test,
+				      &test_pattern3[i*10], 10);
+		}
+		ptest = test_pattern3 + SHA256_TEST_PATTERN3_LEN -
+				(SHA256_TEST_PATTERN3_LEN % 10);
+		SHA256_update(&sha256_ctx_test, ptest,
+			      (SHA256_TEST_PATTERN3_LEN % 10));
+		pdigest = SHA256_final(&sha256_ctx_test);
+		if (memcmp(pdigest, test_pattern3_sha256,
+			   SHA256_DIGEST_SIZE) != 0) {
+			CPRINTF("SHA256 Test 5 FAIL - digest mismatch\n");
+			return EC_ERROR_CRC;
+		}
+		break;
+	default:
+		return EC_ERROR_PARAM1;
+	}
+
+	if (msg_byte_len != 0) {
+		SHA256_init(&sha256_ctx_test);
+		SHA256_update(&sha256_ctx_test, ptest, msg_byte_len);
+		pdigest = SHA256_final(&sha256_ctx_test);
+		if (memcmp(pdigest, pexp, SHA256_DIGEST_SIZE) != 0) {
+			CPRINTF("SHA256 Test %d FAIL - digest mismatch\n", t);
+			return EC_ERROR_CRC;
+		}
+
+
+	}
+
+	CPRINTF("SHA256 Test %d PASS\n", t);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sha256, cmd_sha256_test,
+			"0/init 1/test1 2/test2 3/test3",
+			"SHA256 test");
+
+#endif /* #ifdef CONFIG_SHA256_TEST */
