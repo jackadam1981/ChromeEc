@@ -21,7 +21,6 @@
 #define CPRINTS(format, args...) cprints(CC_PWM, format, ## args)
 
 #define LED_TICKS_PER_BEAT 2
-#define LED_BEATS_PER_PHASE 2
 #define NUM_PHASE 2
 #define DOUBLE_TAP_TICK_LEN (LED_TICKS_PER_BEAT * 8)
 
@@ -124,7 +123,7 @@ struct range_map {
 };
 
 static const struct range_map pattern_tbl[] = {
-	{2, BLINK_RED},
+	{CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC, BLINK_RED},
 	{4, PULSE_RED_2},
 	{10, PULSE_RED_1},
 	{15, SOLID_RED},
@@ -280,7 +279,7 @@ static void eve_led_set_power_battery(void)
 		 * are relevant.
 		 */
 		for (i = 0; i < ARRAY_SIZE(pattern_tbl); i++) {
-			if (percent_chg <= pattern_tbl[i].max) {
+			if (percent_chg < pattern_tbl[i].max) {
 				pattern = pattern_tbl[i].pattern;
 				break;
 			}
