@@ -34,6 +34,10 @@
 #error "PSTATE should only be used with internal mem-mapped flash."
 #endif
 
+#if defined(CONFIG_FLASH_PROTECT_RO_MATCH_WP)
+#error "PSTATE cannot be used with CONFIG_FLASH_PROTECT_RO_MATCH_WP."
+#endif
+
 #ifdef CONFIG_FLASH_PSTATE_BANK
 /* Persistent protection state - emulates a SPI status register for flashrom */
 /* NOTE: It's not expected that RO and RW will support
@@ -602,6 +606,10 @@ uint32_t flash_get_protect(void)
 #ifdef CONFIG_FLASH_PSTATE
 	/* Read persistent state of RO-at-boot flag */
 	flags |= flash_read_pstate();
+#elif defined(CONFIG_FLASH_PROTECT_RO_MATCH_WP)
+	/* Follow whatever WP GPIO is saying. */
+	if (flags & EC_FLASH_PROTECT_GPIO_ASSERTED)
+		flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
 #endif
 
 	/* Scan flash protection */
