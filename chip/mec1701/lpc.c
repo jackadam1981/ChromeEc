@@ -330,7 +330,7 @@ static void setup_lpc(void)
 	/* Set up 8042 interface at 0x60/0x64 */
 	MEC17XX_LPC_8042_BAR = 0x00608104;	/* TODO */
 
-	/* Set up indication of Auxillary sts */
+	/* Set up indication of Auxiliary sts */
 	MEC17XX_8042_KB_CTRL |= 1 << 7;
 
 	MEC17XX_8042_ACT |= 1;

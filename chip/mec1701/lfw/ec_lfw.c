@@ -80,29 +80,7 @@ const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
  * switch away from the panic handler before rebooting, and stacks and data
  * start at the beginning of RAM.
  *
- * chip/mec1701/config_chip.h
- * #define CONFIG_RAM_SIZE 0x00008000
- * #define CONFIG_RAM_BASE 0x120000 - 0x8000 = 0x118000
- *
- *  #define PANIC_DATA_PTR ((struct panic_data *)\
- *	(CONFIG_RAM_BASE + CONFIG_RAM_SIZE - sizeof(struct panic_data)))
- *
- * If panic data is located at top of data SRAM then where can we put
- * LFW stack?
  */
-#if 0
-void __attribute__((naked)) _lfw_reset(void)
-{
-	__asm__ __volatile__ (
-		"ldr    r0, =hdr_int_vect \n"
-		"ldr    r1, =0xe000ed08 \n"
-		"str    r0, [r1] \n"
-		"ldr    sp, [r0] \n"
-	);
-
-	lfw_main();
-}
-#endif
 
 
 #ifdef USE_SHA256_CHIP
@@ -116,14 +94,16 @@ void __attribute__((naked)) _lfw_reset(void)
 
 #ifdef TEST_SHA256_CHIP
 #define SHA256_TEST_PATTERN1_LEN 56
-const uint8_t __aligned(4) test_pattern1[SHA256_TEST_PATTERN1_LEN+1] =
+const uint8_t __aligned(4)
+test_pattern1[SHA256_TEST_PATTERN1_LEN+1] =
 	"abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq";
 
 /* Documented result is
  * 248D6A61 D20638B8 E5C02693 0C3E6039 A33CE459 64FF2167 F6ECEDD4 19DB06C1
  * This is a byte stream laid out in memory low(left) to high(right)
  */
-const uint8_t __aligned(4) test_pattern1_sha256[SHA256_DIGEST_BYTELEN] = {
+const uint8_t __aligned(4)
+test_pattern1_sha256[SHA256_DIGEST_BYTELEN] = {
 	0x24, 0x8D, 0x6A, 0x61, 0xD2, 0x06, 0x38, 0xB8,
 	0xE5, 0xC0, 0x26, 0x93, 0x0C, 0x3E, 0x60, 0x39,
 	0xA3, 0x3C, 0xE4, 0x59, 0x64, 0xFF, 0x21, 0x67,
@@ -131,7 +111,8 @@ const uint8_t __aligned(4) test_pattern1_sha256[SHA256_DIGEST_BYTELEN] = {
 };
 
 #define SHA256_TEST_PATTERN2_LEN 96
-const uint8_t __aligned(4) test_pattern2[SHA256_TEST_PATTERN2_LEN] = {
+const uint8_t __aligned(4)
+test_pattern2[SHA256_TEST_PATTERN2_LEN] = {
 	0xBF, 0xA6, 0xC8, 0xF0, 0xFD, 0x5C, 0xE5, 0x4A, 0x5F, 0x67,
 	0x67, 0x35, 0x66, 0x39, 0x1E, 0x44, 0xA8, 0x92, 0x92, 0x5A,
 	0xEB, 0xAD, 0xAF, 0x6A, 0x71, 0x04, 0x58, 0x1C, 0x2E, 0xDA,
@@ -148,7 +129,8 @@ const uint8_t __aligned(4) test_pattern2[SHA256_TEST_PATTERN2_LEN] = {
  * openssl dgst -sha256 -out hex.txt rand96.bin
  * 2c99b17b91cbbc4f3df6b502d6a2fd618cde5003ca97d1696962d7771e301550
  */
-const uint8_t __aligned(4) test_pattern2_sha256[SHA256_DIGEST_BYTELEN] = {
+const uint8_t __aligned(4)
+test_pattern2_sha256[SHA256_DIGEST_BYTELEN] = {
 	0x2c, 0x99, 0xb1, 0x7b, 0x91, 0xcb, 0xbc, 0x4f,
 	0x3d, 0xf6, 0xb5, 0x02, 0xd6, 0xa2, 0xfd, 0x61,
 	0x8c, 0xde, 0x50, 0x03, 0xca, 0x97, 0xd1, 0x69,
@@ -164,14 +146,14 @@ static int hash_done(uint64_t mtimeout)
 	u2 = MEC17XX_TMR32_CNT(0);
 	while (rom_hash_busy()) {
 		u3 = MEC17XX_TMR32_CNT(0);
-		if (u3 <= u2) {
+		if (u3 <= u2)
 			m += (u2 - u3);
-		} else {
+		else
 			m += u2 + (0xfffffffful - u3);
-		}
-		if (m > mtimeout) {
+
+		if (m > mtimeout)
 			return EC_ERROR_TIMEOUT;
-		}
+
 		u2 = u3;
 	}
 
@@ -195,7 +177,8 @@ static int test_rom_sha256(uint32_t *block, uint32_t *digest,
 	rom_sha_init(MEC17XX_ROM_SHA_MODE_256, digest);
 	if ((msg_byte_len >> 6) != 0) {
 		tmout = (msg_byte_len >> 6) << 5;
-		rom_sha_update((const uint32_t *)test_msg, (msg_byte_len >> 6), 0x05);
+		rom_sha_update((const uint32_t *)test_msg,
+			(msg_byte_len >> 6), 0x05);
 		rc = hash_done(tmout);
 		if (rc != EC_SUCCESS)
 			return rc;
@@ -210,9 +193,8 @@ static int test_rom_sha256(uint32_t *block, uint32_t *digest,
 		return rc;
 	p8 = (uint8_t *)digest;
 	for (i = 0; i < SHA256_DIGEST_BYTELEN; i++) {
-		if (p8[i] != expected_digest[i]) {
+		if (p8[i] != expected_digest[i])
 			return EC_ERROR_CRC;
-		}
 	}
 
 	return EC_SUCCESS;
@@ -279,13 +261,14 @@ static int spi_flash_readloc(uint32_t *buf, uint32_t offset, uint32_t bytes,
 	u2 = MEC17XX_TMR32_CNT(0);
 	while (!rom_qmspi_is_done(&u)) {
 		u3 = MEC17XX_TMR32_CNT(0);
-		if (u3 <= u2) {
+		if (u3 <= u2)
 			m2 += (u2 - u3);
-		} else {
+		else
 			m2 += u2 + (0xfffffffful - u3);
-		}
+
 		if (m2 > m) {
-			TRACE11(1, LFW, 0, "spi_flash_readloc: timeout QMSPI.Status=0x%08x",u);
+			TRACE11(1, LFW, 0,
+				"LFW SPI timeout QMSPI.Status=0x%08x", u);
 			return EC_ERROR_TIMEOUT;
 		}
 		u2 = u3;
@@ -329,55 +312,67 @@ int spi_image_load(uint32_t offset, uint32_t *digest, uint32_t *block2)
 	uint32_t i, m, n;
 	int rc;
 
-	BUILD_ASSERT(((CONFIG_RW_MEM_OFF + CONFIG_PROGRAM_MEMORY_BASE) & 0x03) == 0);
+	BUILD_ASSERT(((CONFIG_RW_MEM_OFF +
+			CONFIG_PROGRAM_MEMORY_BASE) & 0x03) == 0);
 	BUILD_ASSERT(CONFIG_RO_SIZE == CONFIG_RW_SIZE);
 	BUILD_ASSERT(SPI_CHUNK_M64 == 0);
 	BUILD_ASSERT(SPI_AL4 == 0);
 
-	TRACE11(2, LFW, 0, "spi_load_image offset = 0x%08x",offset);
+	TRACE11(2, LFW, 0, "spi_load_image offset = 0x%08x", offset);
 
 	for (m = 0; m < 2; m++) {
 		TRACE1(3, LFW, 0, "SPI Freq = %d MHz", (24 >> m));
 		/* Why fill all but last 4-bytes? */
 		memset((void *)buf, 0xFF, (CONFIG_RO_SIZE - 4));
 		for (n = 0; n < 2; n++) {
-			TRACE11(4, LFW, 0, "SPI Read Cmd = 0x%08x", qmspi_rd_cmd_tbl[n]);
-			rom_qmspi_init(qmspi_freq_tbl[m], QMSPI_SPI_MODE0, QMSPI_IFCTRL_DFLT);
+			TRACE11(4, LFW, 0, "SPI Read Cmd = 0x%08x",
+				qmspi_rd_cmd_tbl[n]);
+			rom_qmspi_init(qmspi_freq_tbl[m],
+				QMSPI_SPI_MODE0, QMSPI_IFCTRL_DFLT);
 			for (i = 0; i < CONFIG_RO_SIZE; i += SPI_CHUNK_SIZE) {
-				rc = spi_flash_readloc(&buf[i >> 2], offset + i, SPI_CHUNK_SIZE, qmspi_rd_cmd_tbl[n]);
+				rc = spi_flash_readloc(&buf[i >> 2], offset + i,
+					SPI_CHUNK_SIZE, qmspi_rd_cmd_tbl[n]);
 				if (rc != EC_SUCCESS) {
-					TRACE12(5, LFW, 0, "spi_flash_readloc chunk %d failed: rc=%d", i, rc);
+					TRACE12(5, LFW, 0,
+						"chunk %d failed: rc=%d",
+						i, rc);
 					break;
 				}
 			}
 
 			if (rc == EC_SUCCESS) {
 				rom_sha_init(MEC17XX_ROM_SHA_MODE_256, digest);
-				rom_sha_update((const uint32_t *)buf, (CONFIG_RO_SIZE - 32) >> 6, 0x05);
+				rom_sha_update((const uint32_t *)buf,
+					(CONFIG_RO_SIZE - 32) >> 6, 0x05);
 				rc = hash_done(TMOUT_SHA256_HW_UPDATE);
 				if (rc != EC_SUCCESS) {
-					TRACE0(6, LFW, 0, "SHA256 update timeout");
+					TRACE0(6, LFW, 0,
+						"SHA256 update timeout");
 					continue;
 				}
 
 				i = ((CONFIG_RO_SIZE - 32) & ~(0x3Ful)) >> 2;
-				rom_sha_final(block2, (CONFIG_RO_SIZE - 32), (const uint8_t *)&buf[i], 0x05);
+				rom_sha_final(block2, (CONFIG_RO_SIZE - 32),
+					(const uint8_t *)&buf[i], 0x05);
 				rc = hash_done(TMOUT_SHA256_HW_FINAL);
 				if (rc != EC_SUCCESS) {
-					TRACE0(7, LFW, 0, "SHA256 finalize timeout");
+					TRACE0(7, LFW, 0,
+						"SHA256 finalize timeout");
 					continue;
 				}
 
 				i = 0;
 				while (i < 32/4) {
-					if (digest[i] != buf[(CONFIG_RO_SIZE - 32)/4 + i]) {
-						TRACE0(8, LFW, 0, "spi_load_image SHA256 mismatch");
+					if (digest[i] != buf[
+						(CONFIG_RO_SIZE - 32)/4 + i]) {
+						TRACE0(8, LFW, 0,
+						"LFW SHA256 mismatch");
 						break;
 					}
 					i++;
 				}
 				if (i == 8) {
-					TRACE0(9, LFW, 0, "spi_load_image SHA256 OK");
+					TRACE0(9, LFW, 0, "LFW SHA256 OK");
 					return EC_SUCCESS;
 				}
 			}
@@ -726,7 +721,8 @@ void lfw_main(void)
 	rom_aes_sha_power(0);
 #endif
 
-	TRACE11(19, LFW, 0, "Get EC reset handler from 0x%08x", (init_addr + 4));
+	TRACE11(19, LFW, 0, "Get EC reset handler from 0x%08x",
+		(init_addr + 4));
 	TRACE11(20, LFW, 0, "Jump to EC @ 0x%08x",
 		*((uint32_t *)(init_addr + 4)));
 	jump_to_image(*(uintptr_t *)(init_addr + 4));

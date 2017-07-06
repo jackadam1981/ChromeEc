@@ -152,7 +152,7 @@ void system_pre_init(void)
 
 	/* Deassert nSIO_RESET */
 	/*
-	 * TODO MEC17XX signal is nRESET_OUT
+	 * MEC17XX signal is nRESET_OUT
 	 * On MEC17xx this register selects the signal to generate
 	 * platform reset.
 	 * POR default is 1
@@ -164,7 +164,7 @@ void system_pre_init(void)
 	 * GPIO062 POR default = RESETO#
 	 */
 #ifdef CONFIG_ESPI
-	/* b[8]=0(eSPI PLTRST# VWire is platfrom reset), b[0]=0 VCC_PWRGD is
+	/* b[8]=0(eSPI PLTRST# VWire is platform reset), b[0]=0 VCC_PWRGD is
 	 * asserted when PLTRST# VWire is 1(inactive)
 	 */
 	MEC17XX_PCR_PWR_RST_CTL = 0;

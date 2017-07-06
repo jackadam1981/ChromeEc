@@ -209,7 +209,7 @@ int chip_sha256_init(struct sha256_ctx *ctx)
 
 /*
  * Copies up to SHA256_BLOCK_SIZE bytes from data into context block.
- * if context block length + lenght of data is less than SHA256_BLOCK_SIZE we
+ * if context block length + length of data is less than SHA256_BLOCK_SIZE we
  * can't do any computation. Therefore update context length and return.
  * else current context length plus length of data is >= SHA256_BLOCK_SIZE
  *

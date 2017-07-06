@@ -143,7 +143,7 @@ DECLARE_HOOK(HOOK_INIT, clock_turbo_disable, HOOK_PRIO_INIT_VBOOT_HASH + 1);
 static void htimer_init(void)
 {
 	MEC17XX_INT_ENABLE(MEC17XX_HTIMER_GIRQ) = MEC17XX_HTIMER_GIRQ_BIT(0);
-	MEC17XX_HTIMER_PRELOAD(0) = 0; /* disable at begining */
+	MEC17XX_HTIMER_PRELOAD(0) = 0; /* disable at beginning */
 
 	task_enable_irq(MEC17XX_IRQ_HTIMER0);
 }
