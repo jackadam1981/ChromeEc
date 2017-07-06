@@ -2051,6 +2051,9 @@
 /* Support W25X40 SPI flash */
 #undef CONFIG_SPI_FLASH_W25X40
 
+/* Support W25Q128F SPI flash */
+#undef CONFIG_SPI_FLASH_W25Q128
+
 /* Support GD25Q40 SPI flash */
 #undef CONFIG_SPI_FLASH_GD25LQ40
 
@@ -2067,7 +2070,8 @@
 #undef CONFIG_SPI_NOR
 
 /* Enable SPI_NOR debugging providing additional console output while
- * initializing Serial NOR Flash devices including SFDP discovery. */
+ * initializing Serial NOR Flash devices including SFDP discovery.
+ */
 #undef CONFIG_SPI_NOR_DEBUG
 
 /* Maximum Serial NOR flash command size, in Bytes */
@@ -2076,8 +2080,9 @@
 /* Maximum Serial NOR flash read size, in Bytes */
 #undef CONFIG_SPI_NOR_MAX_READ_SIZE
 
-/* Maximum Serial NOR flash write size, in Bytes. Note this must be a power of
- * two. */
+/* Maximum Serial NOR flash write size, in Bytes. Note this must be
+ * a power of two.
+ */
 #undef CONFIG_SPI_NOR_MAX_WRITE_SIZE
 
 /* If defined will enable block (64KiB) erase operations. */
@@ -2105,7 +2110,8 @@
 #undef CONFIG_SPI_MASTER_CONFIGURE_GPIOS
 
 /* Support SPI masters without GPIO-specified Chip Selects, instead rely on the
- * SPI master port's hardwired CS pin. */
+ * SPI master port's hardwired CS pin.
+ */
 #undef CONFIG_SPI_MASTER_NO_CS_GPIOS
 
 /* Support testing SPI slave controller driver. */
