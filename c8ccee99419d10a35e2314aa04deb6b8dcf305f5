@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d78a662_16908209",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-06T05:24:39Z",
+      "side": 1,
+      "message": "I agree it\u0027s confusing, this should probably be called \"end\".\n\nYou can then add a test in this function for start \u003c\u003d end.\n\nThat way there is no need for that intermediate padlen computation, which is then used to recompute end\u003dstart+len here?",
+      "range": {
+        "startLine": 77,
+        "startChar": 24,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "c8ccee99419d10a35e2314aa04deb6b8dcf305f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
