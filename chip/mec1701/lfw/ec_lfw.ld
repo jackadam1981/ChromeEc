@@ -1,0 +1,70 @@
+/* Copyright 2015 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * MEC1701H 256KB SRAM SoC little FW
+ *
+ */
+
+/* Memory Spaces Definitions */
+MEMORY
+{
+    VECTOR(r )  : ORIGIN =  0x0E0000, LENGTH = 24
+/*    SRAM (xrw)  : ORIGIN =  0x0E0018, LENGTH = 0xC00 - LENGTH(VECTOR) */
+    SRAM (xrw)  : ORIGIN =  0x0E0018, LENGTH = 0x1000 - LENGTH(VECTOR)
+}
+
+/*
+ * The entry point is informative, for debuggers and simulators,
+ * since the Cortex-M vector points to it anyway.
+ */
+ENTRY(lfw_main)
+
+/*
+ * MEC1701H 256KB SRAM 0xE0000 - 0x11FFFF
+ * Data Top 32KB at 0x118000 - 0x11FFFF
+ * Boot-ROM log is 0x11FF00 - 0x11FFFF
+ * Set top of LFW stack 1KB below top of SRAM
+ * because EC panic and jump data live at
+ * top of SRAM.
+ *
+ */
+PROVIDE( lfw_stack_top = 0x11F000 );
+
+/* Sections Definitions */
+
+SECTIONS
+{
+
+    /*
+     * The vector table goes first
+     */
+    .intvector :
+    {
+        . = ALIGN(4);
+        KEEP(*(.intvector))
+    } > VECTOR
+
+    /*
+     * The program code is stored in the .text section,
+     * which goes to FLASH.
+     */
+
+    .text :
+    {
+        *(.text .text.*)                        /* all remaining code */
+        *(.rodata .rodata.*)            /* read-only data (constants) */
+    } >SRAM
+
+    . = ALIGN(4);
+
+    /* Padding */
+
+    .fill : {
+        FILL(0xFF);
+        . = ORIGIN(SRAM) + LENGTH(SRAM) - 1;
+        BYTE(0xFF);   /* emit at least a byte to make linker happy */
+    }
+
+    __image_size = LOADADDR(.text) + SIZEOF(.text) - ORIGIN(VECTOR);
+}
