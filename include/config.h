@@ -784,6 +784,7 @@
 #define CONFIG_CMD_USBMUX
 #undef  CONFIG_CMD_USB_PD_PE
 #define CONFIG_CMD_WAITMS
+#undef CONFIG_CMD_SHA256_TEST
 
 /*****************************************************************************/
 
@@ -2118,6 +2119,14 @@
 
 /* Unroll some loops in SHA256_transform for better performance. */
 #undef CONFIG_SHA256_UNROLLED
+
+/* 
+ * Enable SHA256 accelerator hardware in supported EC's.
+ * Common code always uses software SHA256 due to common
+ * being built as external test code and optional shared
+ * library.
+ */
+#undef CONFIG_SHA256_HW
 
 /* Emulate the CLZ (Count Leading Zeros) in software for CPU lacking support */
 #undef CONFIG_SOFTWARE_CLZ

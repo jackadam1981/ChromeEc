@@ -66,7 +66,6 @@
 	}
 
 /* Macros used for loops unrolling */
-
 #define SHA256_SCR(i)						\
 	{							\
 		w[i] =  SHA256_F4(w[i -  2]) + w[i -  7]	\
@@ -103,6 +102,7 @@ static const uint32_t sha256_k[64] = {
 	0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
 	0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
 	0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2};
+
 
 void SHA256_init(struct sha256_ctx *ctx)
 {
@@ -218,14 +218,14 @@ void SHA256_update(struct sha256_ctx *ctx, const uint8_t *data, uint32_t len)
  * Specialized SHA256_init + SHA256_update that takes the first data block of
  * size SHA256_BLOCK_SIZE as input.
  */
-static void SHA256_init_1b(struct sha256_ctx *ctx, const uint8_t *data)
+static void SHA256_init_1b(struct sha256_ctx *ctx, const uint32_t *data)
 {
 	int i;
 
 	for (i = 0; i < 8; i++)
 		ctx->h[i] = sha256_h0[i];
 
-	SHA256_transform(ctx, data, 1);
+	SHA256_transform(ctx, (uint8_t *)data, 1);
 
 	ctx->len = 0;
 	ctx->tot_len = SHA256_BLOCK_SIZE;
@@ -258,26 +258,25 @@ uint8_t *SHA256_final(struct sha256_ctx *ctx)
 
 static void hmac_SHA256_step(uint8_t *output, uint8_t mask,
 			const uint8_t *key, const int key_len,
-			const uint8_t *data, const int data_len) {
+			const uint8_t *data, const int data_len)
+{
 	struct sha256_ctx ctx;
-	uint8_t *key_pad = ctx.block;
 	uint8_t *tmp;
 	int i;
 
-	/* key_pad = key (zero-padded) ^ mask */
-	memset(key_pad, mask, SHA256_BLOCK_SIZE);
+	memset(ctx.block, mask, SHA256_BLOCK_SIZE);
 	for (i = 0; i < key_len; i++)
-		key_pad[i] ^= key[i];
+		ctx.block[i] ^= key[i];
 
-	/* tmp = hash(key_pad || message) */
-	SHA256_init_1b(&ctx, key_pad);
+	SHA256_init_1b(&ctx, ctx.wblock);
 	SHA256_update(&ctx, data, data_len);
 	tmp = SHA256_final(&ctx);
 	memcpy(output, tmp, SHA256_DIGEST_SIZE);
 }
 
 void hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,
-		 const uint8_t *message, const int message_len) {
+		 const uint8_t *message, const int message_len)
+{
 	/* This code does not support key_len > block_size. */
 	ASSERT(key_len <= SHA256_BLOCK_SIZE);
 
@@ -295,3 +294,4 @@ void hmac_SHA256(uint8_t *output, const uint8_t *key, const int key_len,
 	hmac_SHA256_step(output, 0x5c,
 			 key, key_len, output, SHA256_DIGEST_SIZE);
 }
+
