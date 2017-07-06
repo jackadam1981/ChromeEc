@@ -46,6 +46,29 @@
       "revId": "b1eb4e65cdf2893a5dc7ee77264f3832b204f688",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0614dd13_4983629b",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-06T16:29:53Z",
+      "side": 1,
+      "message": "did you bypass \"repo upload\" - please make sure there is no pre upload warnings",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 91
+      },
+      "revId": "b1eb4e65cdf2893a5dc7ee77264f3832b204f688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
