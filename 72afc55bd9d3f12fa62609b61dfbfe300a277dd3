@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "b5ba9608_2bb79025",
+        "filename": "chip/stm32/flash-f.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-06T10:46:24Z",
+      "side": 1,
+      "message": "For some reason this is causing the second problem in https://bugs.chromium.org/p/chromium/issues/detail?id\u003d739608#c3 . Not quite sure why, I\u0027ll try to understand tomorrow...",
+      "revId": "72afc55bd9d3f12fa62609b61dfbfe300a277dd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2106c60f_160cb05f",
         "filename": "chip/stm32/flash-f.c",
         "patchSetId": 21
