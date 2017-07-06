@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93588a05_6d9ae176",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-07-06T16:06:52Z",
+      "side": 1,
+      "message": "AFAICT using .mux_lock without defining .mux_gpio is incorrect\n(and potentially useless)",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 32
+      },
+      "revId": "1161893bc223e33fa23fed1b277801957199b524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b9f9256_0e2c9caa",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-07-06T16:06:52Z",
+      "side": 1,
+      "message": "the good TODO usage is :\nTODO(b/\u003cbug number\u003e)",
+      "range": {
+        "startLine": 302,
+        "startChar": 3,
+        "endLine": 302,
+        "endChar": 7
+      },
+      "revId": "1161893bc223e33fa23fed1b277801957199b524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "629a0180_595ef1c1",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-07-06T16:06:52Z",
+      "side": 1,
+      "message": "typo: detect",
+      "range": {
+        "startLine": 303,
+        "startChar": 20,
+        "endLine": 303,
+        "endChar": 27
+      },
+      "revId": "1161893bc223e33fa23fed1b277801957199b524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64f97c41_b1c9d970",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-07-06T16:06:52Z",
+      "side": 1,
+      "message": "typo ?",
+      "range": {
+        "startLine": 303,
+        "startChar": 35,
+        "endLine": 303,
+        "endChar": 40
+      },
+      "revId": "1161893bc223e33fa23fed1b277801957199b524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09e44fad_61658ca2",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-07-06T16:06:52Z",
+      "side": 1,
+      "message": "we can do slightly better:\ni2c_read8(pi3usb9281_chips[port].i2c_port, 0x4A, PI3USB9281_REG_VBUS, \u0026reg);",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 48
+      },
+      "revId": "1161893bc223e33fa23fed1b277801957199b524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
