@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "40e5fca5_ad6e5a13",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-06T23:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "330855f3_7d997e78",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7ab4ec8_67b5d833",
         "filename": "common/motion_sense.c",
         "patchSetId": 7
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "74092b48_0ab4a0a4",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-06T23:37:39Z",
+      "side": 1,
+      "message": "Since event hasn\u0027t been reported yet, I will move this entire block (i.e. no setting event here as sensor-\u003eorientation is already set, and we\u0027ll update last_orientation as we queue the event where we do double-tap).",
+      "parentUuid": "3dbdc3eb_1382f7f5",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "542e989b_f0668ab1",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 7
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "e1b0c8b7_2c22a2e9",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-06T23:37:39Z",
+      "side": 1,
+      "message": "You\u0027re right, it\u0027s true for gru (the only KX022 lid-accel equipped device we currently have), but not necessarily in general for all potential future KX022 equipped devices.  Please see my other comment in driver/accelgyro_bmi160.c file in this CL regarding using rot_standard_ref.",
+      "parentUuid": "542e989b_f0668ab1",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d674bd7_3d50f928",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 7
@@ -81,6 +135,24 @@
       "writtenOn": "2017-07-06T19:07:48Z",
       "side": 1,
       "message": "check only is s is in the lid.",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40802903_d5a5edc1",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-06T23:37:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d674bd7_3d50f928",
       "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "18473e56_209f878b",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-06T23:37:39Z",
+      "side": 1,
+      "message": "Agreed.  While the rotation matrix can be used to determine sensor mounting position, at least one additional piece of information is needed to know how to translate orientation, that being whether the device, when in its default orientation, is in Portrait or Landscape mode (chromebooks will be in landscape mode when Y is up, devices like scarlet will be in portrait mode when Y is up).  Since we can\u0027t use rotation matrix conveniently to determine new orientation, it would be less processor-intensive if devices that want to use orientation and need to do orientation translation define a rotate_orientation() function inside their board.c file.  That would allow the orientation translation to be a simple case statement.  For scarlet (which has a BMI160), I had used a define (ORIENTATION_REMAP_X_Y_AXES) to indicate whether coordinate system needed rotation (patch in a different branch, I had not brought that change over to this patch yet), but prefer the idea of letting the board define the routine to avoid extra code.\n\nAre you ok with boards that need to do orientation translation do it via adding a rotate_orientation() function to their board.c file and defining ORIENTATION_REMAP_X_Y_AXES to indicate we need to call rotate_orientation()?  This approach would also avoid having to add a flag to indicate whether PORTRAIT or LANDSCAPE mode is the default device position.",
+      "parentUuid": "c18c0257_6ab63c20",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9088e27a_94b9a51f",
         "filename": "include/motion_sense.h",
         "patchSetId": 7
@@ -132,6 +222,24 @@
       "writtenOn": "2017-06-29T16:06:48Z",
       "side": 1,
       "message": "this is only needed when polling.\n\nInstead, I would keep the needed information in the private sensor structure, pointed to .drv_data",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a304ef1a_14340771",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-06T23:37:39Z",
+      "side": 1,
+      "message": "OK, I\u0027ll move it and define a macro in motion_sense.h like :\n\n#ifdef CONFIG_BMI160_ORIENTATION_SENSOR\n#define GET_ORIENTATION(_x) BMI160_GET_ORIENTATION(_x)\n#elif CONFIG_KX022_ORIENTATION_SENSOR\n#define GET_ORIENTATION(_x) KX022_GET_ORIENTATION(_x)\n#endif\n\nwhich will allow motion_sense.c to just use GET_ORIENTATION(struct motion_sensor_t *s) and not worry about which chip private driver structure it\u0027s dealing with.",
+      "parentUuid": "9088e27a_94b9a51f",
       "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
