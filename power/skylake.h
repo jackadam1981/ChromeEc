@@ -39,4 +39,8 @@
  */
 int board_has_working_reset_flags(void);
 
+#ifdef CONFIG_BOARD_SKL_RVP3
+void board_handle_all_sus(enum power_state state);
+#endif
+
 #endif /* __CROS_EC_SKYLAKE_H */

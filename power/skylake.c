@@ -20,6 +20,7 @@
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
+
 static int forcing_shutdown;  /* Forced shutdown in progress? */
 
 

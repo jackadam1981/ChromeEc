@@ -784,7 +784,7 @@
 #define CONFIG_CMD_USBMUX
 #undef  CONFIG_CMD_USB_PD_PE
 #define CONFIG_CMD_WAITMS
-#undef CONFIG_CMD_SHA256_TEST
+#undef CONFIG_CMD_SHA256_HW_TEST
 
 /*****************************************************************************/
 
@@ -817,6 +817,12 @@
  * field in GPIO macro it will concat 'port' and 'pin' to reduce flash size.
  */
 #undef CONFIG_COMMON_GPIO_SHORTNAMES
+
+/*
+ * EC's supporting powering down GPIO pins.
+ * Add flag GPIO_POWER_DOWN and additional API's.
+ */
+#undef CONFIG_GPIO_POWER_DOWN
 
 /*
  * Provide common runtime layer code (tasks, hooks ...)
@@ -1034,6 +1040,32 @@
 
 /* Use Virtual Wire signals instead of GPIO with eSPI interface */
 #undef CONFIG_ESPI_VW_SIGNALS
+
+/* TODO MCHP next two items are EC eSPI slave configuration */
+/* Maximum clock frequence eSPI EC slave advertises
+ * Values in MHz are 20, 25, 33, 50, and 66
+ */
+#undef CONFIG_ESPI_EC_MAX_FREQ
+
+/* EC eSPI slave advertises IO lanes
+ * 0 = Single
+ * 1 = Single and Dual
+ * 2 = Single and Quad
+ * 3 = Single, Dual, and Quad
+ */
+#undef CONFIG_ESPI_EC_MODE
+
+/* Bit map of eSPI channels EC advertises
+ * bit[0] = 1 Peripheral channel
+ * bit[1] = 1 Virtual Wire channel
+ * bit[2] = 1 OOB channel
+ * bit[3] = 1 Flash channel
+ */
+#undef CONFIG_ESPI_EC_CHAN_BITMAP
+
+/* Use Virtual Wire for Platform Reset instead of a sideband signal */
+#undef CONFIG_ESPI_PLTRST_IS_VWIRE
+
 
 /* Include code for handling external power */
 #define CONFIG_EXTPOWER
@@ -2120,11 +2152,12 @@
 /* Unroll some loops in SHA256_transform for better performance. */
 #undef CONFIG_SHA256_UNROLLED
 
-/* 
- * Enable SHA256 accelerator hardware in supported EC's.
- * Common code always uses software SHA256 due to common
- * being built as external test code and optional shared
- * library.
+/*
+ * If EC includes SHA256 hardware enable to expose a chip level
+ * API the same as the software SHA256 but prefaced with "chip_".
+ * Due to option of common being built as a shared library
+ * and used in test programs, common code will always use software
+ * SHA256.
  */
 #undef CONFIG_SHA256_HW
 
@@ -2223,6 +2256,13 @@
  */
 #undef CONFIG_SPI_MASTER_NO_CS_GPIOS
 
+/* Support MCHP MEC family GP-SPI master(s)
+ * Define to 0x01 for GPSPI0 only.
+ * Define to 0x02 for GPSPI1 only.
+ * Define to 0x03 for both controllers.
+ */
+#undef CONFIG_MCHP_GPSPI
+
 /* Support testing SPI slave controller driver. */
 #undef CONFIG_SPS_TEST
 
@@ -2264,6 +2304,11 @@
  * Add a virtual switch to indicate when we are in tablet mode.
  */
 #undef CONFIG_TABLET_MODE_SWITCH
+
+/*
+ * Microchip Trace FIFO Debug Port
+ */
+#undef CONFIG_MCHP_TFDP
 
 /*****************************************************************************/
 /* Task config */

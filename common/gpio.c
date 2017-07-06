@@ -168,4 +168,25 @@ int gpio_get_ternary(enum gpio_signal signal)
 	return pu && !pd ? 2 : pd;
 }
 
+#ifdef CONFIG_GPIO_POWER_DOWN
+int gpio_power_down_module(enum module_id id)
+{
+	const struct gpio_alt_func *af;
+	int rv = EC_ERROR_INVAL;
+
+	/* Find pins and power down */
+	for (af = gpio_alt_funcs;
+	     af < gpio_alt_funcs + ARRAY_SIZE(gpio_alt_funcs);
+	     af++) {
+		if (af->module_id != id)
+			continue;  /* Pins for some other module */
+
+		gpio_set_flags_by_mask(af->port, af->mask, GPIO_POWER_DOWN);
+		rv = EC_SUCCESS;
+	}
+
+	return rv;
+}
+#endif /* #ifdef CONFIG_GPIO_POWER_DOWN */
+
 /*****************************************************************************/
