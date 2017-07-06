@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "a7ab4ec8_67b5d833",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-06T19:07:48Z",
+      "side": 1,
+      "message": "instead of case, \nif ((sensor-\u003eorientation !\u003d sensor-\u003elast_orientation) \u0026\u0026\n    (sensor-\u003eorientation !\u003d UNKNOWN))\n   motion_sense_fifo_add_unit(..",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dbdc3eb_1382f7f5",
         "filename": "common/motion_sense.c",
         "patchSetId": 7
@@ -47,6 +64,23 @@
       "writtenOn": "2017-06-29T16:06:48Z",
       "side": 1,
       "message": "this is not true, it depends on the orientation of the sensor, given by the .rot_standard_ref.",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d674bd7_3d50f928",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-06T19:07:48Z",
+      "side": 1,
+      "message": "check only is s is in the lid.",
       "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
