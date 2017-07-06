@@ -72,6 +72,7 @@ void chipset_reset(int cold_reset)
 	gpio_set_level(GPIO_SYS_RESET_L, 1);
 }
 
+
 static void handle_slp_sus(enum power_state state)
 {
 	/* If we're down or going down don't do anythin with SLP_SUS_L. */
@@ -103,6 +104,10 @@ enum power_state power_handle_state(enum power_state state)
 
 	/* Process RSMRST_L state changes. */
 	common_intel_x86_handle_rsmrst(state);
+
+#ifdef CONFIG_BOARD_SKL_RVP3
+	board_handle_all_sus(state);
+#endif
 
 	if (state == POWER_S5 && forcing_shutdown) {
 		power_button_pch_release();

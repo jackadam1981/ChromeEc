@@ -218,6 +218,7 @@ static enum power_state power_common_state(enum power_state state)
 				system_hibernate(0, 0);
 			} else {
 				uint64_t wait = target_time - time_now;
+
 				if (wait > TASK_MAX_WAIT_US)
 					wait = TASK_MAX_WAIT_US;
 
@@ -333,6 +334,7 @@ int chipset_in_state(int state_mask)
 	/* Return non-zero if all needed bits are present */
 	return (state_mask & need_mask) == need_mask;
 }
+
 
 void chipset_exit_hard_off(void)
 {
@@ -606,6 +608,7 @@ static int command_powerindebug(int argc, char **argv)
 	/* If one arg, set the mask */
 	if (argc == 2) {
 		int m = strtoi(argv[1], &e, 0);
+
 		if (*e)
 			return EC_ERROR_PARAM1;
 
@@ -621,6 +624,7 @@ static int command_powerindebug(int argc, char **argv)
 	ccprintf("bit meanings:\n");
 	for (i = 0; i < POWER_SIGNAL_COUNT; i++, s++) {
 		int mask = 1 << i;
+
 		ccprintf("  0x%04x %d %s\n",
 			 mask, in_signals & mask ? 1 : 0, s->name);
 	}
@@ -641,6 +645,7 @@ static int command_hibernation_delay(int argc, char **argv)
 
 	if (argc >= 2) {
 		uint32_t s = strtoi(argv[1], &e, 0);
+
 		if (*e)
 			return EC_ERROR_PARAM1;
 
