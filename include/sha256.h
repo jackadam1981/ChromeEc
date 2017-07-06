@@ -13,13 +13,27 @@
 #define SHA256_DIGEST_SIZE 32
 #define SHA256_BLOCK_SIZE 64
 
-/* SHA256 context */
+/*
+ * SHA256 context
+ * Some SHA hardware accelerators require aligned data.
+ * Make sure block and buf are aligned >= 4 bytes
+ * and provide 8 and 32 bit access.
+ */
 struct sha256_ctx {
 	uint32_t h[8];
 	uint32_t tot_len;
 	uint32_t len;
-	uint8_t block[2 * SHA256_BLOCK_SIZE];
-	uint8_t buf[SHA256_DIGEST_SIZE];  /* Used to store the final digest. */
+
+	/* block and buf aligned on >= 4 byte boundary */
+	union {
+		uint8_t  block[2 * SHA256_BLOCK_SIZE];
+		uint32_t wblock[(2 * SHA256_BLOCK_SIZE) / 4];
+	};
+
+	union {
+		uint8_t  buf[SHA256_DIGEST_SIZE];
+		uint32_t wbuf[SHA256_DIGEST_SIZE / 4];
+	}; /* Used to store the final digest. */
 };
 
 void SHA256_init(struct sha256_ctx *ctx);

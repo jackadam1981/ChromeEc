@@ -740,6 +740,7 @@
 #define CONFIG_CMD_USBMUX
 #undef  CONFIG_CMD_USB_PD_PE
 #define CONFIG_CMD_WAITMS
+#undef CONFIG_CMD_SHA256_TEST
 
 /*****************************************************************************/
 
@@ -2009,6 +2010,9 @@
 
 /* Support computing of other hash sizes (without the VBOOT code) */
 #undef CONFIG_SHA256
+
+/* Support SHA256 using chip hardware accelerator */
+#undef CONFIG_SHA256_HW
 
 /* Emulate the CLZ (Count Leading Zeros) in software for CPU lacking support */
 #undef CONFIG_SOFTWARE_CLZ
