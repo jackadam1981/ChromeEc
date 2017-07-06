@@ -11,7 +11,11 @@
 #include "common.h"
 
 /* Keyboard matrix is 13 output columns x 8 input rows */
+#ifdef BOARD_KEYBOARD_COLS
+#define KEYBOARD_COLS BOARD_KEYBOARD_COLS
+#else
 #define KEYBOARD_COLS 13
+#endif
 #define KEYBOARD_ROWS 8
 
 #define KEYBOARD_ROW_TO_MASK(r) (1 << (r))
