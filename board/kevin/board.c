@@ -35,6 +35,7 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "registers.h"
+#include "sha256.h"
 #include "shi_chip.h"
 #include "spi.h"
 #include "switch.h"
@@ -772,3 +773,17 @@ int board_allow_i2c_passthru(int port)
 {
 	return (port == I2C_PORT_VIRTUAL_BATTERY);
 }
+
+static int command_romhash(int argc, char **argv)
+{
+	struct sha256_ctx ctx;
+	uint8_t *hash;
+
+	SHA256_init(&ctx);
+	SHA256_update(&ctx, (uint8_t *)0x80, 8192);
+	hash = SHA256_final(&ctx);
+	CPRINTS("hash done %.*h", SHA256_DIGEST_SIZE, hash);
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(romhash, command_romhash, "", "");
