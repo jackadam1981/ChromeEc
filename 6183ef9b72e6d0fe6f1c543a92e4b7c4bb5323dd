@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c29bbd5d_01d8b13c",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-07-07T19:05:10Z",
+      "side": 1,
+      "message": "I looked at it and saw that chip/g was not using any HOOK_PRIO_INIT and decided the ship has sailed ...\nwe might just want to do it after the HOOK_PRIO_FIRST used in the board code.",
+      "parentUuid": "699af619_afb16288",
+      "range": {
+        "startLine": 1373,
+        "startChar": 34,
+        "endLine": 1373,
+        "endChar": 51
+      },
+      "revId": "6183ef9b72e6d0fe6f1c543a92e4b7c4bb5323dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0fb1af5_0913e6a0",
         "filename": "common/main.c",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "21e9ef75_ad26e9f0",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-07-07T19:05:10Z",
+      "side": 1,
+      "message": "there is no test doing a USB suspend, and the reset cause is still displayed on a real reset.",
+      "parentUuid": "1be068aa_dc1531df",
+      "range": {
+        "startLine": 129,
+        "startChar": 18,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "6183ef9b72e6d0fe6f1c543a92e4b7c4bb5323dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ba9af03_95620671",
         "filename": "common/main.c",
         "patchSetId": 2
@@ -83,6 +131,30 @@
       "writtenOn": "2017-07-07T16:31:07Z",
       "side": 1,
       "message": "do we really care about this on Cr50? I am a little reluctant to lose this information, especially when debugging something and having UART connected.\n\nCan this be done conditional for the Gnubby board?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 2
+      },
+      "revId": "6183ef9b72e6d0fe6f1c543a92e4b7c4bb5323dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6656bc8c_2e6891ff",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-07-07T19:05:10Z",
+      "side": 1,
+      "message": "We can put a more complicated condition but I don\u0027t really see in which case you are going to lose information here.\nIt\u0027s going to be triggered only if the cr50 is booted due to USB resume,\nwhich effectively means it went to deep-sleep on a USB suspend.\nLast time I look at c50, I don\u0027t think deep-sleep was even enabled when USB is connected.",
+      "parentUuid": "6ba9af03_95620671",
       "range": {
         "startLine": 124,
         "startChar": 0,
