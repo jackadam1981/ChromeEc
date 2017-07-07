@@ -211,6 +211,24 @@
     },
     {
       "key": {
+        "uuid": "0580dd3a_950d8d2a",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-07-07T18:35:40Z",
+      "side": 1,
+      "message": "It goes beyond just remamping X and Y axis: if the sensor is \"upside down\", we will end up reporting MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_LANDSCAPE when MOTIONSENSE_ORIENTATION_LANDSCAPE is expected. \nSimilar problem when the sensor is solder on the other side of the PCB: when moving from LANDSCAPE to PORTRAIT, the sense will report LANDSCAPE to PORTRAIT_INVERTED.",
+      "parentUuid": "18473e56_209f878b",
+      "revId": "e4ec17bbc55885f0ffac14503cf1409ace850dc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9088e27a_94b9a51f",
         "filename": "include/motion_sense.h",
         "patchSetId": 7
