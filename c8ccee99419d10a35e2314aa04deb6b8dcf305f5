@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ca66686b_28e43c57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-07T14:52:01Z",
+      "side": 1,
+      "message": "This makes it sound like the padding check is incorrect. As far as I can tell it is correct (just that the function parameter name is possibly confusing).",
+      "revId": "c8ccee99419d10a35e2314aa04deb6b8dcf305f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87e7890d_93333323",
         "filename": "common/rwsig.c",
         "patchSetId": 1
