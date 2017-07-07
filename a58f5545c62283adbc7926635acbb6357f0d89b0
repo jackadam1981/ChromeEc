@@ -22,6 +22,30 @@
       "revId": "a58f5545c62283adbc7926635acbb6357f0d89b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea88b4e6_7b69acda",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-07-07T14:35:05Z",
+      "side": 0,
+      "message": "Because now build_cts depends on .failedboards.",
+      "parentUuid": "7de7e5f5_f5649f06",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 28
+      },
+      "revId": "a58f5545c62283adbc7926635acbb6357f0d89b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

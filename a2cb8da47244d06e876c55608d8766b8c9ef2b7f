@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dfe9bd0d_3b9d50e1",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-07-07T14:35:05Z",
+      "side": 1,
+      "message": "To make it consistent with the directory structure under \u0027build\u0027.",
+      "parentUuid": "33126ccc_a9f6bea0",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 16
+      },
+      "revId": "a2cb8da47244d06e876c55608d8766b8c9ef2b7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "725318c7_17fcda5d",
         "filename": "Makefile.rules",
         "patchSetId": 2
