@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "699af619_afb16288",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1373,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-07T16:41:57Z",
+      "side": 1,
+      "message": "Are there any dependencies here? See include/hooks.h, \u0027enum hook_priority\u0027. It might be cleaner to add HOOK_PRIO_INIT_USB at the proper place, if there are dependencies, or just use HOOK_PRIO_FIRST if there are no dependencies and you want it done ASAP.",
+      "range": {
+        "startLine": 1373,
+        "startChar": 34,
+        "endLine": 1373,
+        "endChar": 51
+      },
+      "revId": "6183ef9b72e6d0fe6f1c543a92e4b7c4bb5323dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0fb1af5_0913e6a0",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-07T16:41:57Z",
+      "side": 1,
+      "message": "It looks like cts depends on this string for some tests, and hdctools depends on \"Reset cause\" for certain operations. How about delaying the print until later (either with hook_call_deferred() or directly print from the hooks task after hook_notify(HOOK_INIT)) if skipped here?",
+      "range": {
+        "startLine": 129,
+        "startChar": 18,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "6183ef9b72e6d0fe6f1c543a92e4b7c4bb5323dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ba9af03_95620671",
         "filename": "common/main.c",
         "patchSetId": 2
