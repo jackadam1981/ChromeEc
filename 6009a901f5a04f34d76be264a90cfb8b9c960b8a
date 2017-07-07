@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "340a77bb_d938c2fe",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-07T09:33:11Z",
+      "side": 1,
+      "message": "Toshak: I measured with a Saleae and maybe the value is not so precise. If the speed is still too fast, try putting 0x50330609 here.",
+      "range": {
+        "startLine": 105,
+        "startChar": 28,
+        "endLine": 105,
+        "endChar": 30
+      },
+      "revId": "6009a901f5a04f34d76be264a90cfb8b9c960b8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
