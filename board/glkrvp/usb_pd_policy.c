@@ -35,6 +35,12 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
+/*
+ * timestamp of the next possible toggle to ensure the 2-ms spacing
+ * between IRQ_HPD.
+ */
+static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_COUNT];
+
 int pd_is_valid_input_voltage(int mv)
 {
 	return 1;
@@ -291,14 +297,18 @@ static void svdm_dp_post_config(int port)
 	dp_flags[port] |= DP_FLAGS_DP_ON;
 	if (!(dp_flags[port] & DP_FLAGS_HPD_HI_PENDING))
 		return;
-	/* TODO: Update HPD to host */
+
+	gpio_set_level(GPIO_USBC_DP_HPD, 1);
+
+	/* set the minimum time delay (2ms) for the next HPD IRQ */
+	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
 }
 
 static int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
-
-	/* TODO: Read HPD IRQ */
+	int irq = PD_VDO_DPSTS_HPD_IRQ(payload[1]);
+	int cur_lvl;
 
 	dp_status[port] = payload[1];
 	if (!(dp_flags[port] & DP_FLAGS_DP_ON)) {
@@ -306,7 +316,32 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 			dp_flags[port] |= DP_FLAGS_HPD_HI_PENDING;
 		return 1;
 	}
-	/* TODO: Update HPD to host */
+
+	cur_lvl = gpio_get_level(GPIO_USBC_DP_HPD);
+
+	if (irq & !cur_lvl) {
+		CPRINTF("ERR:HPD:IRQ&LOW\n");
+		return 0; /* nak */
+	}
+
+	if (irq & cur_lvl) {
+		uint64_t now = get_time().val;
+		/* wait for the minimum spacing between IRQ_HPD if needed */
+		if (now < hpd_deadline[port])
+			usleep(hpd_deadline[port] - now);
+
+		/* generate IRQ_HPD pulse */
+		gpio_set_level(GPIO_USBC_DP_HPD, 0);
+		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
+		gpio_set_level(GPIO_USBC_DP_HPD, 1);
+
+		/* set the minimum time delay (2ms) for the next HPD IRQ */
+		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+	} else {
+		gpio_set_level(GPIO_USBC_DP_HPD, lvl);
+		/* set the minimum time delay (2ms) for the next HPD IRQ */
+		hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
+	}
 
 	/* ack */
 	return 1;
@@ -315,7 +350,7 @@ static int svdm_dp_attention(int port, uint32_t *payload)
 static void svdm_exit_dp_mode(int port)
 {
 	svdm_safe_dp_mode(port);
-	/* TODO: Update HPD to host */
+	gpio_set_level(GPIO_USBC_DP_HPD, 0);
 }
 
 static int svdm_enter_gfu_mode(int port, uint32_t mode_caps)
