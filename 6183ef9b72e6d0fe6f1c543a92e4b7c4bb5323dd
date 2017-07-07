@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ba9af03_95620671",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-07T16:31:07Z",
+      "side": 1,
+      "message": "do we really care about this on Cr50? I am a little reluctant to lose this information, especially when debugging something and having UART connected.\n\nCan this be done conditional for the Gnubby board?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 2
+      },
+      "revId": "6183ef9b72e6d0fe6f1c543a92e4b7c4bb5323dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
