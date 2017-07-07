@@ -223,6 +223,24 @@
       "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c4b111_4db0e5af",
+        "filename": "include/rwsig.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-07-07T17:41:12Z",
+      "side": 1,
+      "message": "I think it\u0027s safe to assume the layouts of the two RW regions are identical and their distance will remain CONFIG_RW_SIZE. The reason I like my version is it expresses this identical-ness in the code. When you make a change to RW_A, it\u0027ll be automatically reflected on RW_B.\n\nAdded comments for clarification.",
+      "parentUuid": "475cdcc4_4177110c",
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
