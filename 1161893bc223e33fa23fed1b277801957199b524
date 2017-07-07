@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b86eef0_db7d13c5",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1109744
+      },
+      "writtenOn": "2017-07-07T03:53:58Z",
+      "side": 1,
+      "message": "Modify mux_lock setting to NULL",
+      "parentUuid": "93588a05_6d9ae176",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 32
+      },
+      "revId": "1161893bc223e33fa23fed1b277801957199b524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b9f9256_0e2c9caa",
         "filename": "board/kahlee/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-06T16:06:52Z",
       "side": 1,
       "message": "the good TODO usage is :\nTODO(b/\u003cbug number\u003e)",
+      "range": {
+        "startLine": 302,
+        "startChar": 3,
+        "endLine": 302,
+        "endChar": 7
+      },
+      "revId": "1161893bc223e33fa23fed1b277801957199b524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9251c6ae_5e1f3daf",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1109744
+      },
+      "writtenOn": "2017-07-07T03:53:58Z",
+      "side": 1,
+      "message": "We don\u0027t have permission to access kahlee issue tracker and can\u0027t create a issue number for this.",
+      "parentUuid": "8b9f9256_0e2c9caa",
       "range": {
         "startLine": 302,
         "startChar": 3,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "636c074f_da7ab16f",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1109744
+      },
+      "writtenOn": "2017-07-07T03:53:58Z",
+      "side": 1,
+      "message": "Sorry, it\u0027s typo for \"detect\" and \"proto\".",
+      "parentUuid": "64f97c41_b1c9d970",
+      "range": {
+        "startLine": 303,
+        "startChar": 35,
+        "endLine": 303,
+        "endChar": 40
+      },
+      "revId": "1161893bc223e33fa23fed1b277801957199b524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09e44fad_61658ca2",
         "filename": "board/kahlee/board.c",
         "patchSetId": 2
@@ -105,6 +177,30 @@
       "writtenOn": "2017-07-06T16:06:52Z",
       "side": 1,
       "message": "we can do slightly better:\ni2c_read8(pi3usb9281_chips[port].i2c_port, 0x4A, PI3USB9281_REG_VBUS, \u0026reg);",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 48
+      },
+      "revId": "1161893bc223e33fa23fed1b277801957199b524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23387987_a3960954",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1109744
+      },
+      "writtenOn": "2017-07-07T03:53:58Z",
+      "side": 1,
+      "message": "Update the code and test OK.",
+      "parentUuid": "09e44fad_61658ca2",
       "range": {
         "startLine": 312,
         "startChar": 0,
