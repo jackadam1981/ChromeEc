@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13cfc23c_62209a33",
+        "filename": "board/fizz/ec.tasklist",
+        "patchSetId": 17
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-07T13:52:27Z",
+      "side": 1,
+      "message": "It might be useful to switch the RSA routines to take a workbuf pointer so they can use shared_mem too, since 2048\u0027s a pretty big number and it\u0027s only needed at boot.",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 36
+      },
+      "revId": "6e88939aa29e8bcbc944cc0e6409ecc721bffa3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
