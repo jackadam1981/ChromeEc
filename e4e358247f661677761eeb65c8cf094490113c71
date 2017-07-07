@@ -22,6 +22,30 @@
       "revId": "e4e358247f661677761eeb65c8cf094490113c71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b55fbfd_eefcfd3c",
+        "filename": "board/nefario/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-07T22:14:16Z",
+      "side": 1,
+      "message": "It looks like no one found this until now:) It\u0027s in other gru boards too. Will fix it.",
+      "parentUuid": "8c8e6ed4_c039cb60",
+      "range": {
+        "startLine": 6,
+        "startChar": 21,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "e4e358247f661677761eeb65c8cf094490113c71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
