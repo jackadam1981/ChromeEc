@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "1be068aa_dc1531df",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-07T16:47:29Z",
+      "side": 1,
+      "message": "I don\u0027t think we resume on UART activity in any of those tests though.",
+      "parentUuid": "d0fb1af5_0913e6a0",
+      "range": {
+        "startLine": 129,
+        "startChar": 18,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "6183ef9b72e6d0fe6f1c543a92e4b7c4bb5323dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ba9af03_95620671",
         "filename": "common/main.c",
         "patchSetId": 2
