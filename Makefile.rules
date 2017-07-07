@@ -138,7 +138,6 @@ try_build_boards: $(foreach b, $(BOARDS), proj-$(b))
 
 .PHONY: build_boards
 build_boards: mkdir_failedboards
-	@for b in $(BOARDS); do echo 'starting' > $(FAILED_BOARDS_DIR)/$$b; done
 	$(MAKE) try_build_boards
 
 .PHONY: buildall
@@ -163,7 +162,7 @@ endif # not a TEST_BUILD
 endif # CONFIG_EXPERIMENTAL_CONSOLE=y
 
 proj-%:
-	@echo 'building' > $(FAILED_BOARDS_DIR)/$*
+	@echo $* > $(FAILED_BOARDS_DIR)/$*
 	@echo "======= building $*"
 	$(MAKE) --no-print-directory BOARD=$* V=$(V)
 	@rm $(FAILED_BOARDS_DIR)/$*
@@ -242,7 +241,7 @@ build_cts: mkdir_failedboards
 define make-cts =
 build_cts: $(1)_cts_$(2)
 $(1)_cts_$(2):
-	@echo 'Building BOARD=$(1) CTS_MODULE=$(2)' > $$(FAILED_BOARDS_DIR)/$$@
+	@echo $(1)/cts_$(2) > $$(FAILED_BOARDS_DIR)/$$@
 	$$(MAKE) BOARD=$(1) CTS_MODULE=$(2)
 	@rm $$(FAILED_BOARDS_DIR)/$$@
 # Do not remove this blank line
