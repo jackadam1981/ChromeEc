@@ -241,6 +241,24 @@
       "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2dc0392_4f76ace8",
+        "filename": "include/rwsig.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-08T00:55:26Z",
+      "side": 1,
+      "message": "These layout have been broken in the past...\n\nPlease do not assume (and do not assume that people will actually read comments), add a BUILD_ASSERT if that\u0027s really what you want.\n\nOr, you know, just do the computation correctly.",
+      "parentUuid": "03c4b111_4db0e5af",
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
