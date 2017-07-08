@@ -259,6 +259,24 @@
       "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "887d9e42_87974170",
+        "filename": "include/rwsig.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-07-08T21:01:28Z",
+      "side": 1,
+      "message": "The problem with doing computation in each copy is that you will end up with two layout definitions though we use only one. Then, you need to assume developers will update both. In that sense, it\u0027s fragile.\n\nFor example, imagine you\u0027re adding X after a signature. Then you need a similar comment to warn developers:\n\n/* When changing layout, don\u0027t forget to update CONFIG_RW_B_SIG_ADDR */\n#define CONFIG_RW_SIG_ADDR (CONFIG_PROGRAM_MEMORY_BASE\t\t\\\n\t\t\t    + CONFIG_EC_WRITABLE_STORAGE_OFF\t\\\n\t\t\t    + CONFIG_RW_STORAGE_OFF\t\t\\\n\t\t\t    + CONFIG_RW_SIZE\t\t\t\\\n\t\t\t    - CONFIG_RW_SIG_SIZE)\n\t\t\t    - CONFIG_RW_X)\n\nI thought about defining RW_SIG_OFFSET to make my point clear:\n\n/* Single definition of layout */\n#define RW_SIG_OFFSET        (CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)\n/* And use it to define sig locations in RW_A and RW_B */\n#define CONFIG_RW_SIG_ADDR   (CONFIG_RW_A_OFFSET + RW_SIG_OFFSET)\n#define CONFIG_RW_SIG_B_ADDR (CONFIG_RW_B_OFFSET + RW_SIG_OFFSET)\n\nHowever, you still need to use the fact that RW_B follows right after RW_A:\n\n#define CONFIG_RW_B_OFFSET   (CONFIG_RW_A_OFFSET + CONFIG_RW_SIZE)\n\nThis is same as how CONFIG_RW_B_SIG_ADDR is defined in my patchset. So, my version is probably still optimal especially because currently the layout is simple but if you like this version, I can implement it in another patchset.",
+      "parentUuid": "a2dc0392_4f76ace8",
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
