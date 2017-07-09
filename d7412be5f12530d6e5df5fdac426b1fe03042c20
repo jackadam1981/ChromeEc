@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb2787fe_016ae13e",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T17:05:41Z",
+      "side": 1,
+      "message": "Maybe $(CFLAGS_DEBUG_CHIP) $(CFLAGS_DEBUG_BOARD) would be safer.  Otherwise, we\u0027ll end up with chips defining flags, which will then be clobbered by some boards.\n\nIf the only use case you have now is CHIP, we can just add that one.",
+      "range": {
+        "startLine": 42,
+        "startChar": 14,
+        "endLine": 42,
+        "endChar": 35
+      },
+      "revId": "d7412be5f12530d6e5df5fdac426b1fe03042c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
