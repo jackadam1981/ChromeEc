@@ -62,6 +62,30 @@
       "revId": "c8ccee99419d10a35e2314aa04deb6b8dcf305f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dce648f3_80b21256",
+        "filename": "common/rwsig.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T16:59:28Z",
+      "side": 1,
+      "message": "Either way is fine.  The code looks a little nicer if it\u0027s end.",
+      "parentUuid": "9d78a662_16908209",
+      "range": {
+        "startLine": 77,
+        "startChar": 24,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "c8ccee99419d10a35e2314aa04deb6b8dcf305f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
