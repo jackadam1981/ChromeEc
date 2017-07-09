@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2ab80f2_5e1f9b89",
+        "filename": "driver/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T17:14:43Z",
+      "side": 1,
+      "message": "We should alphabetize these for readability.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 59
+      },
+      "revId": "b1cd91470b6891c55e485a9441b63386cadb3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27fd4f59_dbe37b41",
+        "filename": "driver/temp_sensor/adt7481.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T17:14:43Z",
+      "side": 1,
+      "message": "2017?",
+      "range": {
+        "startLine": 1,
+        "startChar": 20,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "b1cd91470b6891c55e485a9441b63386cadb3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f518dbd_9a720836",
+        "filename": "driver/temp_sensor/adt7481.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T17:14:43Z",
+      "side": 1,
+      "message": "Hmm.  The checkpatch script in \u0027repo upload\u0027 should have complained about the (c).  Current format is to leave it out.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "b1cd91470b6891c55e485a9441b63386cadb3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6287ca82_aa452d6c",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2214,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T17:14:43Z",
+      "side": 1,
+      "message": "Alphabetize",
+      "range": {
+        "startLine": 2214,
+        "startChar": 0,
+        "endLine": 2214,
+        "endChar": 35
+      },
+      "revId": "b1cd91470b6891c55e485a9441b63386cadb3b33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
