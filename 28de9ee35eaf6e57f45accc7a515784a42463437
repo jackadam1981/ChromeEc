@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7080ffe9_6c31d73d",
+        "filename": "common/sha256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T20:06:36Z",
+      "side": 1,
+      "message": "How much stuff in this file still remains if this is defined?  Would it be better just to switch between two object files, rather than have this one wrap the hardware implementation?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 24
+      },
+      "revId": "28de9ee35eaf6e57f45accc7a515784a42463437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78f82d0c_fd60d930",
+        "filename": "common/sha256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T20:06:36Z",
+      "side": 1,
+      "message": "Seems like this could be moved to a separate source file, like we do with  common/spi_commands.c",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 29
+      },
+      "revId": "28de9ee35eaf6e57f45accc7a515784a42463437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72d21c1e_df48418c",
+        "filename": "common/sha256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T20:06:36Z",
+      "side": 1,
+      "message": "Debug commands should use ccprintf().",
+      "range": {
+        "startLine": 481,
+        "startChar": 3,
+        "endLine": 481,
+        "endChar": 10
+      },
+      "revId": "28de9ee35eaf6e57f45accc7a515784a42463437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "239b583f_5a70262d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T20:06:36Z",
+      "side": 1,
+      "message": "Alphabetize",
+      "range": {
+        "startLine": 743,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 29
+      },
+      "revId": "28de9ee35eaf6e57f45accc7a515784a42463437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97358e9b_60b934b6",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-09T20:06:36Z",
+      "side": 1,
+      "message": "HARDWARE",
+      "range": {
+        "startLine": 2015,
+        "startChar": 21,
+        "endLine": 2015,
+        "endChar": 23
+      },
+      "revId": "28de9ee35eaf6e57f45accc7a515784a42463437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
