@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f3d4ea44_f5be93ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-10T15:40:09Z",
+      "side": 1,
+      "message": "If you have a test platform with the same EC part, you can try running your created image, just to make sure you don\u0027t run into any asserts / hangs pre-GPIO config.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "abf0c9d473d175f7ddfbd3adcaf8ad8be142be52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f41feed_21aa324c",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-10T15:40:09Z",
+      "side": 1,
+      "message": "Is there a minimum hold time for this signal?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 38
+      },
+      "revId": "abf0c9d473d175f7ddfbd3adcaf8ad8be142be52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b73d8ab2_aec9f324",
         "filename": "board/zoombini/board.c",
         "patchSetId": 1
