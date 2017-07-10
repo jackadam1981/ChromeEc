@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b73d8ab2_aec9f324",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-10T04:17:58Z",
+      "side": 1,
+      "message": "Seems like you could turn this into\n\ngpio_set_level(GPIO_USB_C0_CHARGE_EN_L, port!\u003d0);\ngpio_set_level(GPIO_USB_C1_CHARGE_EN_L, port!\u003d1);\ngpio_set_level(GPIO_USB_C1_CHARGE_EN_L, port!\u003d2);",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 3
+      },
+      "revId": "abf0c9d473d175f7ddfbd3adcaf8ad8be142be52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2c068f7_11b51316",
+        "filename": "board/zoombini/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-10T04:17:58Z",
+      "side": 1,
+      "message": "How custom is this for zoombini?  Should we make a not-very-custom file in common for boards that don\u0027t have specific overrides?\n\n(Really, applies to much of this file.  Maybe we should have a common file with attribute(weak) and just override the bits we actually need in each board?)",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 24
+      },
+      "revId": "abf0c9d473d175f7ddfbd3adcaf8ad8be142be52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4d5cef6_25db6d44",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2069,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-10T04:17:58Z",
+      "side": 1,
+      "message": "Seems like we could just group these the same way we do with TCPCs, rather than having a comment for each one.\n\nAnd maybe, alphabetize :)",
+      "range": {
+        "startLine": 2053,
+        "startChar": 0,
+        "endLine": 2069,
+        "endChar": 32
+      },
+      "revId": "abf0c9d473d175f7ddfbd3adcaf8ad8be142be52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
