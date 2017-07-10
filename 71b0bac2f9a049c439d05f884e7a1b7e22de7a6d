@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "446fb9f5_fb845097",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-10T23:48:23Z",
+      "side": 1,
+      "message": "This will be called whenever we attach AC. Why is the 150ms delay needed?",
+      "range": {
+        "startLine": 590,
+        "startChar": 4,
+        "endLine": 590,
+        "endChar": 21
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1c38846_dedc241e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-10T23:48:23Z",
+      "side": 1,
+      "message": "What is the meaning of \"200\" here?",
+      "range": {
+        "startLine": 653,
+        "startChar": 13,
+        "endLine": 653,
+        "endChar": 16
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bccbd91_4b6ea3c4",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-10T23:48:23Z",
+      "side": 1,
+      "message": "\"return (!rv \u0026\u0026 !val)\" is sufficient.",
+      "range": {
+        "startLine": 672,
+        "startChar": 1,
+        "endLine": 672,
+        "endChar": 30
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fbd6d00_3f169b8d",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-10T23:48:23Z",
+      "side": 1,
+      "message": "Reg might be uninitialized here.",
+      "range": {
+        "startLine": 696,
+        "startChar": 43,
+        "endLine": 696,
+        "endChar": 46
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
