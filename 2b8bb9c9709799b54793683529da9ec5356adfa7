@@ -277,6 +277,24 @@
       "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95c12ea1_701820a0",
+        "filename": "include/rwsig.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-10T00:54:00Z",
+      "side": 1,
+      "message": "\u003e The problem with doing computation in each copy is that you will end up with two layout definitions though we use only one. Then, you need to assume developers will update both. In that sense, it\u0027s fragile.\n\u003e \n\u003e For example, imagine you\u0027re adding X after a signature. Then you need a similar comment to warn developers:\n\u003e \n\u003e /* When changing layout, don\u0027t forget to update CONFIG_RW_B_SIG_ADDR */\n\u003e #define CONFIG_RW_SIG_ADDR (CONFIG_PROGRAM_MEMORY_BASE\t\t\\\n\u003e \t\t\t    + CONFIG_EC_WRITABLE_STORAGE_OFF\t\\\n\u003e \t\t\t    + CONFIG_RW_STORAGE_OFF\t\t\\\n\u003e \t\t\t    + CONFIG_RW_SIZE\t\t\t\\\n\u003e \t\t\t    - CONFIG_RW_SIG_SIZE)\n\u003e \t\t\t    - CONFIG_RW_X)\n\nI prefer this. At least the 2 changes that would need to be made are in the same file, so it\u0027s easier to avoid mistakes.\n\n(while if you change anything about RW_B offset now in some board file, you\u0027ll break rwsig silently)\n\n\u003e I thought about defining RW_SIG_OFFSET to make my point clear:\n\u003e \n\u003e /* Single definition of layout */\n\u003e #define RW_SIG_OFFSET        (CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)\n\u003e /* And use it to define sig locations in RW_A and RW_B */\n\u003e #define CONFIG_RW_SIG_ADDR   (CONFIG_RW_A_OFFSET + RW_SIG_OFFSET)\n\u003e #define CONFIG_RW_SIG_B_ADDR (CONFIG_RW_B_OFFSET + RW_SIG_OFFSET)\n\nThis sounds good and cleaner than what I had in mind.\n\n\u003e However, you still need to use the fact that RW_B follows right after RW_A:\n\u003e \n\u003e #define CONFIG_RW_B_OFFSET   (CONFIG_RW_A_OFFSET + CONFIG_RW_SIZE)\n\nThat\u0027s fine, but this assumption must not be hardcoded in rwsig.h.\n\nMy feeling is that we\u0027re missing some CONFIG_ define for the offset of RW_B in the writable region?\n\n\u003e This is same as how CONFIG_RW_B_SIG_ADDR is defined in my patchset. So, my version is probably still optimal especially because currently the layout is simple\n\nYes, currently the layout is simple, but I\u0027d prefer being safe.\n\n\u003e but if you like this version, I can implement it in another patchset.",
+      "parentUuid": "887d9e42_87974170",
+      "revId": "2b8bb9c9709799b54793683529da9ec5356adfa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
