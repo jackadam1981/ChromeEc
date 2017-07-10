@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e9981523_f3ee7512",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-10T18:26:40Z",
+      "side": 1,
+      "message": "This is a good idea. Unfortunately, I don\u0027t have a test platform, but I\u0027ll try asking around to see if anyone else does.",
+      "parentUuid": "f3d4ea44_f5be93ee",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "abf0c9d473d175f7ddfbd3adcaf8ad8be142be52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f41feed_21aa324c",
         "filename": "board/zoombini/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-10T15:40:09Z",
       "side": 1,
       "message": "Is there a minimum hold time for this signal?",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 38
+      },
+      "revId": "abf0c9d473d175f7ddfbd3adcaf8ad8be142be52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1272ebfe_5e8fa565",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-10T18:26:40Z",
+      "side": 1,
+      "message": "I was wondering the same thing, but I didn\u0027t see anything in the documentation. I\u0027ll put in a value just to be safe.",
+      "parentUuid": "0f41feed_21aa324c",
       "range": {
         "startLine": 169,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "47233a3b_a81baa95",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-10T18:26:40Z",
+      "side": 1,
+      "message": "Thanks, that cleans things up quite a bit.",
+      "parentUuid": "b73d8ab2_aec9f324",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 3
+      },
+      "revId": "abf0c9d473d175f7ddfbd3adcaf8ad8be142be52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2c068f7_11b51316",
         "filename": "board/zoombini/usb_pd_policy.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f6650ae7_17f99187",
+        "filename": "board/zoombini/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-10T18:26:40Z",
+      "side": 1,
+      "message": "The VDMs and alt modes seem to be the same across most CrOS EC boards. I filed https://crbug.com/740610 to see if we can fix this.\n\nSome of the other functions within the file are board specific as they depend on the number of ports, GPIO pins, charger being used and how to enable output etc.",
+      "parentUuid": "d2c068f7_11b51316",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 24
+      },
+      "revId": "abf0c9d473d175f7ddfbd3adcaf8ad8be142be52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4d5cef6_25db6d44",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2017-07-10T04:17:58Z",
       "side": 1,
       "message": "Seems like we could just group these the same way we do with TCPCs, rather than having a comment for each one.\n\nAnd maybe, alphabetize :)",
+      "range": {
+        "startLine": 2053,
+        "startChar": 0,
+        "endLine": 2069,
+        "endChar": 32
+      },
+      "revId": "abf0c9d473d175f7ddfbd3adcaf8ad8be142be52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff5a38a0_c615a9f0",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2069,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-10T18:26:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4d5cef6_25db6d44",
       "range": {
         "startLine": 2053,
         "startChar": 0,
