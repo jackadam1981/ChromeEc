@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4e80534_f605d5b7",
+        "filename": "board/eve/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-07-10T18:00:19Z",
+      "side": 1,
+      "message": "Nit, should probably add preproc to make sure CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC remains \u003c 4 \n\n#if (CONFIG_USB_PD_TRY_SRC_MIN_BATT_SOC \u003e\u003d 4)\n# error \"...\"\n#endif",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "71502949bde38edde52ed43c126a533ef576a8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
