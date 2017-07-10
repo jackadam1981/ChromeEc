@@ -318,7 +318,7 @@ static uint64_t prev_activity_timestamp;
  * A flag indicating that at least one valid PDU containing flash update block
  * has been received in the current transfer session.
  */
-static uint8_t  data_was_transferred;
+static uint8_t data_was_transferred;
 
 /* Reply with an error to remote side, reset state. */
 static void send_error_reset(uint8_t resp_value)
@@ -377,7 +377,7 @@ static void update_out_handler(struct consumer const *consumer, size_t count)
 				u.upfr.cmd.block_base != 0) {
 			/*
 			 * Something is wrong, this payload is not a valid
-			 * update start PDU. Let'w indicate this by returning
+			 * update start PDU. Let's indicate this by returning
 			 * a single byte error code.
 			 */
 			CPRINTS("FW update: invalid start.");

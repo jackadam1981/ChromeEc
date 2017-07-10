@@ -193,7 +193,7 @@ static uint64_t prev_activity_timestamp;
  * A flag indicating that at least one valid PDU containing flash update block
  * has been received in the current transfer session.
  */
-static uint8_t  data_was_transferred;
+static uint8_t data_was_transferred;
 
 /* Called to deal with data from the host */
 static void upgrade_out_handler(struct consumer const *consumer, size_t count)
@@ -244,7 +244,7 @@ static void upgrade_out_handler(struct consumer const *consumer, size_t count)
 		if (!valid_transfer_start(consumer, count, &u.upfr)) {
 			/*
 			 * Something is wrong, this payload is not a valid
-			 * update start PDU. Let'w indicate this by returning
+			 * update start PDU. Let's indicate this by returning
 			 * a single byte error code.
 			 */
 			resp_value = UPGRADE_GEN_ERROR;
