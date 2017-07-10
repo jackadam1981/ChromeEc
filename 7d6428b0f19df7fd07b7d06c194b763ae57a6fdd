@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "62e3d48a_4881a00f",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-10T15:52:08Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to inline the contents of these headers, leaving us only with ps8xxx.h? And we can just use generic #define names to begin with, eg. PS8751_REG_VERSION --\u003e PS8XXX_REG_VERSION (or FW_REG_VERSION), PS8751_VENDOR_ID --\u003e PS8XXX_VENDOR_ID, etc.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "7d6428b0f19df7fd07b7d06c194b763ae57a6fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f7fc88c_913738fa",
         "filename": "driver/tcpm/ps8xxx.h",
         "patchSetId": 1
