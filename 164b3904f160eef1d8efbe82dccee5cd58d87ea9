@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "592ae1cb_ccaac2d2",
+        "filename": "board/servo_micro/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-10T00:04:22Z",
+      "side": 1,
+      "message": "A bit too many parentheses, IMHO, this should be enough:\n\n (*e || (parity \u003c 0) || (parity \u003e 2))",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 151,
+        "endChar": 45
+      },
+      "revId": "164b3904f160eef1d8efbe82dccee5cd58d87ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f1911f_d451e778",
+        "filename": "chip/stm32/usart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-10T00:04:22Z",
+      "side": 1,
+      "message": "Not strictly necessary as this is an internal function and you check the parameters earlier.",
+      "revId": "164b3904f160eef1d8efbe82dccee5cd58d87ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
