@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "51856632_9786e1e4",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-10T18:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "459e443c_4d83f328",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "7d6428b0f19df7fd07b7d06c194b763ae57a6fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62e3d48a_4881a00f",
         "filename": "driver/tcpm/ps8xxx.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "faa2c9cd_fbdca4ed",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-10T18:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62e3d48a_4881a00f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "7d6428b0f19df7fd07b7d06c194b763ae57a6fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f7fc88c_913738fa",
         "filename": "driver/tcpm/ps8xxx.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-07-10T04:10:28Z",
       "side": 1,
       "message": "#else\n#error \"Unsupported PS8xxx TCPC\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 6
+      },
+      "revId": "7d6428b0f19df7fd07b7d06c194b763ae57a6fdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4123d843_fe6121af",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-10T18:24:53Z",
+      "side": 1,
+      "message": "Placed this check in the source file since this header file is included if using any TCPCI compliant TCPC.",
+      "parentUuid": "4f7fc88c_913738fa",
       "range": {
         "startLine": 27,
         "startChar": 0,
