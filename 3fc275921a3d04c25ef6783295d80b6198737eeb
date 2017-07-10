@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6fd13f05_91a68c26",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-07-10T09:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2479a04_4ef81d35",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7d8118b_b09a19a3",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9c3ac1b7_04390f1b",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-07-10T09:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d8118b_b09a19a3",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7439d967_3df987b8",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2017-07-07T23:57:06Z",
       "side": 1,
       "message": "you know V(s) \u003d\u003d 0, use KX022_CNTL2_SRST directly",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47cd8825_daf985ab",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-07-10T09:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7439d967_3df987b8",
       "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -104,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "18005e87_3ee7c794",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-07-10T09:15:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d00d3a4b_4b795f7b",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49d70255_4c8f1c20",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 4
@@ -132,6 +204,24 @@
       "writtenOn": "2017-07-07T23:57:06Z",
       "side": 1,
       "message": "you should reuse this code for KX022, remember disable_sensor at reset is only needed for KXCJ9.",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d045e0f_822ac930",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-07-10T09:15:55Z",
+      "side": 1,
+      "message": "Can you explain how to reuse this code ?\nThe original flow for both sensors: read WHO_AM_I -\u003e disable sensor -\u003e reset sensor(KIONIX_CTRL2_REG) -\u003e read SRST.\nThe software reset flow for KX022: reset sensor -\u003e read SRST(as you suggested.) -\u003e read WHO_AM_I -\u003e read COTR value.\nShould I also move \"read WHO_AM_I\" to the end of the reset flow for KXCJ9 ?",
+      "parentUuid": "3339f880_6c5b40b9",
       "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
