@@ -385,6 +385,8 @@
 #undef CONFIG_CASE_CLOSED_DEBUG
 /* The case close debug (CCD) feature is provided by an external chip. */
 #undef CONFIG_CASE_CLOSED_DEBUG_EXTERNAL
+/* Support V1 CCD configuration */
+#undef CONFIG_CASE_CLOSED_DEBUG_V1
 
 /*
  * Capsense chip has buttons, too.
