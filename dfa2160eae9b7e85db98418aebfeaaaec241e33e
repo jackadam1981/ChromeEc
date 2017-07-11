@@ -22,6 +22,30 @@
       "revId": "dfa2160eae9b7e85db98418aebfeaaaec241e33e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35f292d8_0f50dd5c",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-07-11T09:34:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b388362_cbd4647e",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 58
+      },
+      "revId": "dfa2160eae9b7e85db98418aebfeaaaec241e33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

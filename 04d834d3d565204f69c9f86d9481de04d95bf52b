@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6492da2_0022d546",
+        "filename": "driver/charger/isl9237.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-07-11T09:34:23Z",
+      "side": 1,
+      "message": "when resistor is 20m, limitation steps are 3072 or 3200.\n(128mA for register steps, actual step is 128mA)\nwhen resistor is 10m, limitation steps are 1536 or 1664.\n(128mA for register steps, actual step is 256mA)",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "04d834d3d565204f69c9f86d9481de04d95bf52b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
