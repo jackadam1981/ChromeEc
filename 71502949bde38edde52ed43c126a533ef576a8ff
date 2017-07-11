@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cae9a4dd_08956be9",
+        "filename": "board/eve/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-11T01:16:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4e80534_f605d5b7",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "71502949bde38edde52ed43c126a533ef576a8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b5b82bd_ec268929",
         "filename": "board/eve/led.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-10T18:14:04Z",
       "side": 1,
       "message": "This check now fails when battery percent charge is 100.",
+      "range": {
+        "startLine": 282,
+        "startChar": 7,
+        "endLine": 282,
+        "endChar": 39
+      },
+      "revId": "71502949bde38edde52ed43c126a533ef576a8ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0315a83_8e239bd4",
+        "filename": "board/eve/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-11T01:16:21Z",
+      "side": 1,
+      "message": "Changed this back to \u003c\u003d so that 100% still works and adjusted the other ranges by -1.",
+      "parentUuid": "3b5b82bd_ec268929",
       "range": {
         "startLine": 282,
         "startChar": 7,
