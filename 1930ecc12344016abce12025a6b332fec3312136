@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b930bbe5_bc957ed0",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-11T23:57:52Z",
+      "side": 1,
+      "message": "LGTM as long as this new calculation can\u0027t overflow its signed integer type. What is max. value of scaled_lid[i]? Maybe we should document it here.",
+      "range": {
+        "startLine": 270,
+        "startChar": 19,
+        "endLine": 270,
+        "endChar": 48
+      },
+      "revId": "1930ecc12344016abce12025a6b332fec3312136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
