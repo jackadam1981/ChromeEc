@@ -256,16 +256,20 @@ static int calculate_lid_angle(const vector_3_t base, const vector_3_t lid,
 	lid_range = accel_lid->drv->get_range(accel_lid);
 
 	for (i = X; i <= Z; i++) {
-		scaled_base[i] = base[i] * base_range * 10 / (1 << 15);
-		scaled_lid[i] = lid[i] * lid_range * 10 / (1 << 15);
+		/*
+		 * To increase precision, we'll use 8x the sensor data in the
+		 * intermediate calculation.  We would normally divide by 2^15.
+		 */
+		scaled_base[i] = base[i] * base_range * 10 >> 12;
+		scaled_lid[i] = lid[i] * lid_range * 10 >> 12;
 	}
 
-	base_magnitude2 = scaled_base[X] * scaled_base[X] +
-		scaled_base[Y] * scaled_base[Y] +
-		scaled_base[Z] * scaled_base[Z];
-	lid_magnitude2 = scaled_lid[X] * scaled_lid[X] +
-		scaled_lid[Y] * scaled_lid[Y] +
-		scaled_lid[Z] * scaled_lid[Z];
+	base_magnitude2 = (scaled_base[X] * scaled_base[X] +
+			   scaled_base[Y] * scaled_base[Y] +
+			   scaled_base[Z] * scaled_base[Z]) >> 6;
+	lid_magnitude2 = (scaled_lid[X] * scaled_lid[X] +
+			  scaled_lid[Y] * scaled_lid[Y] +
+			  scaled_lid[Z] * scaled_lid[Z]) >> 6;
 
 	/*
 	 * Check to see if they differ than more than NOISY_MAGNITUDE_DEVIATION.
