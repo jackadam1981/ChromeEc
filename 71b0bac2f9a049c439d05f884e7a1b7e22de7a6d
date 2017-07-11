@@ -2,6 +2,155 @@
   "comments": [
     {
       "key": {
+        "uuid": "d577c229_5c5cdaa9",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-11T01:33:15Z",
+      "side": 1,
+      "message": "nit: alphabetical order.",
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d248110_cc8995e0",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-11T01:33:15Z",
+      "side": 1,
+      "message": "Include \"compile_time_macros.h\".",
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "114b198d_9668b16c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-11T01:33:15Z",
+      "side": 1,
+      "message": "put on separate line.",
+      "range": {
+        "startLine": 133,
+        "startChar": 13,
+        "endLine": 133,
+        "endChar": 20
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d29b2aef_bb7ed363",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-11T01:33:15Z",
+      "side": 1,
+      "message": "put on separate line.",
+      "range": {
+        "startLine": 391,
+        "startChar": 13,
+        "endLine": 391,
+        "endChar": 21
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1073a622_d5a29cae",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-11T01:33:15Z",
+      "side": 1,
+      "message": "here too.",
+      "range": {
+        "startLine": 440,
+        "startChar": 13,
+        "endLine": 440,
+        "endChar": 21
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "311f2884_a8572062",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-11T01:33:15Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 504,
+        "startChar": 9,
+        "endLine": 504,
+        "endChar": 13
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7318c1be_aa0139db",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-11T01:33:15Z",
+      "side": 1,
+      "message": "here too",
+      "range": {
+        "startLine": 531,
+        "startChar": 13,
+        "endLine": 531,
+        "endChar": 21
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "446fb9f5_fb845097",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 2
@@ -22,6 +171,29 @@
       "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "200e254b_aa7db3c6",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-11T01:33:15Z",
+      "side": 1,
+      "message": "put on separate line.",
+      "range": {
+        "startLine": 615,
+        "startChar": 13,
+        "endLine": 615,
+        "endChar": 21
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -71,6 +243,29 @@
     },
     {
       "key": {
+        "uuid": "3a695495_afdd7809",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-11T01:33:15Z",
+      "side": 1,
+      "message": "here too.",
+      "range": {
+        "startLine": 682,
+        "startChar": 13,
+        "endLine": 682,
+        "endChar": 31
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9fbd6d00_3f169b8d",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 2
@@ -91,6 +286,29 @@
       "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b5f340b_805556bf",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-11T01:33:15Z",
+      "side": 1,
+      "message": "typo: \u0027incorrect\u0027",
+      "range": {
+        "startLine": 704,
+        "startChar": 18,
+        "endLine": 704,
+        "endChar": 27
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
