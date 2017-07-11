@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30bb7ca1_547d27c6",
+        "filename": "common/firmware_image.lds.S",
+        "patchSetId": 16
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-11T01:41:13Z",
+      "side": 1,
+      "message": "BTW, this does not look right, I think you are hardcoding the fact that NPCX_RO_HEADER is set\n(see above, image.RW has a lot of special cases).\n\nNPCX_RO_HEADER should use\nCONFIG_PROGRAM_MEMORY_BASE + CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_B_STORAGE_OFF\n\n#elif (CONFIG_RO_MEM_OFF \u003d\u003d CONFIG_RW_MEM_OFF) \u003d\u003e I\u0027m not too sure, but probably\nCONFIG_PROGRAM_MEMORY_BASE + CONFIG_RO_MEM_OFF + CONFIG_RO_SIZE + CONFIG_RW_SIZE\n\n#else \u003d\u003e CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RW_B_MEM_OFF",
+      "revId": "0272c1ef176bdeda0d8bc759e4eacb01b8ec4da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

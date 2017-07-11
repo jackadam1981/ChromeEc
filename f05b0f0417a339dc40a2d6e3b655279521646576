@@ -34,6 +34,24 @@
       "revId": "f05b0f0417a339dc40a2d6e3b655279521646576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e350c27b_ac4e70c6",
+        "filename": "include/rwsig.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-11T01:41:13Z",
+      "side": 1,
+      "message": "Sure. What makes me uncomfortable is that we hardcode some assumption about RW_B location in rwsig.h, I\u0027d prefer we keep this agnostic.\n\nActually, I think CONFIG_RW_B_STORAGE_OFF provides you with exactly what you need (offset of RW_B in the WRITABLE_STORAGE), so you can just set:\n\n#define RW_B_ADDR\t\t(CONFIG_PROGRAM_MEMORY_BASE +\t\t\\\n\t\t\t\t CONFIG_EC_WRITABLE_STORAGE_OFF +\t\\\n\t\t\t\t CONFIG_RW_B_STORAGE_OFF)\n\nDoes that make sense?",
+      "parentUuid": "ffd85ca7_44af5692",
+      "revId": "f05b0f0417a339dc40a2d6e3b655279521646576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
