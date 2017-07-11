@@ -174,6 +174,30 @@
     },
     {
       "key": {
+        "uuid": "4ac5a205_c2abda40",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-11T18:15:08Z",
+      "side": 1,
+      "message": "After we call rt946x_select_ilmt(), the input current limit would move from the default 3.25A to whatever value defined by IAICR (which is 0.5mA by default). Ricktek said there might be an in-rush current if we enable the register-defined current limit here immediately, because the chip\u0027s internal current limit adjusts slowly.",
+      "parentUuid": "446fb9f5_fb845097",
+      "range": {
+        "startLine": 590,
+        "startChar": 4,
+        "endLine": 590,
+        "endChar": 21
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "200e254b_aa7db3c6",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 2
@@ -208,6 +232,30 @@
       "writtenOn": "2017-07-10T23:48:23Z",
       "side": 1,
       "message": "What is the meaning of \"200\" here?",
+      "range": {
+        "startLine": 653,
+        "startChar": 13,
+        "endLine": 653,
+        "endChar": 16
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c94c98ba_742f0938",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-11T18:15:08Z",
+      "side": 1,
+      "message": "This is Richtek\u0027s magic number.\nThey recommend to set AICL_VTH \u003d MIVR + 200mV.\nI\u0027ll add a comment here.",
+      "parentUuid": "c1c38846_dedc241e",
       "range": {
         "startLine": 653,
         "startChar": 13,
