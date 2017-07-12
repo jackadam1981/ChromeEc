@@ -354,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "72f42672_7188a34f",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-12T00:28:02Z",
+      "side": 1,
+      "message": "Ok, but we only clear ILIMEN once, when the function is initially called after cold boot (and that seems correct). So most of the time we\u0027re waiting for no good reason -- there will be no inrush because we aren\u0027t charging yet. Right?",
+      "parentUuid": "4ac5a205_c2abda40",
+      "range": {
+        "startLine": 590,
+        "startChar": 4,
+        "endLine": 590,
+        "endChar": 21
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "200e254b_aa7db3c6",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 2
