@@ -124,6 +124,13 @@ uintptr_t get_program_memory_addr(enum system_image_copy_t copy);
 #define INVALID_ADDR ((uintptr_t)0xffffffff)
 
 /**
+ * Flags to indicate sysjump types.
+ *
+ * We may add flags to distinguish to A v.s. to B, to RO v.s. to RW and so on.
+ */
+#define SYSJUMP_BEFORE_INITS	(1 << 0)
+
+/**
  * Return non-zero if the system has switched between image copies at least
  * once since the last real boot.
  */
@@ -192,6 +199,15 @@ int system_get_image_used(enum system_image_copy_t copy);
  * Jump to the specified image copy.
  */
 int system_run_image_copy(enum system_image_copy_t copy);
+
+/**
+ * Jump to the specified image copy with flags.
+ *
+ * @param copy  Image copy to jump to.
+ * @param flags SYSJUMP_* flags.
+ * @return EC_SUCCESS on success or EC_ERROR_* on error.
+ */
+int system_jump_to_image(enum system_image_copy_t copy, uint8_t flags);
 
 /**
  * Get the rollback version for an image

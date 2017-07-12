@@ -64,7 +64,7 @@ struct jump_data {
 	 */
 
 	/* Fields from version 3 */
-	uint8_t reserved0;    /* (used in proto1 to signal recovery mode) */
+	uint8_t flags;        /* SYSJUMP_* flag */
 	int struct_size;      /* Size of struct jump_data */
 
 	/* Fields from version 2 */
@@ -92,7 +92,6 @@ static const char * const reset_flag_descs[] = {
 	"security" };
 
 static uint32_t reset_flags;
-static int jumped_to_image;
 static int disable_jump;  /* Disable ALL jumps if system is locked */
 static int force_locked;  /* Force system locked even if WP isn't enabled */
 static enum ec_reboot_cmd reboot_at_shutdown;
@@ -219,9 +218,17 @@ void system_print_reset_flags(void)
 	}
 }
 
+static int is_jumped(void)
+{
+	return (jdata->magic == JUMP_DATA_MAGIC) && jdata->version >= 1;
+}
+
 int system_jumped_to_this_image(void)
 {
-	return jumped_to_image;
+	if (is_jumped())
+		return !(jdata->flags & SYSJUMP_BEFORE_INITS);
+	else
+		return 0;
 }
 
 int system_add_jump_tag(uint16_t tag, int version, int size, const void *data)
@@ -416,8 +423,9 @@ const char *system_image_copy_t_to_string(enum system_image_copy_t copy)
  * This function does not return.
  *
  * @param init_addr	Init address of target image
+ * @param flags         SYSJUMP_* flags
  */
-static void jump_to_image(uintptr_t init_addr)
+static void jump_to_image(uintptr_t init_addr, uint8_t flags)
 {
 	void (*resetvec)(void);
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
@@ -447,7 +455,7 @@ static void jump_to_image(uintptr_t init_addr)
 	cflush();
 
 	/* Fill in preserved data between jumps */
-	jdata->reserved0 = 0;
+	jdata->flags = flags;
 	jdata->magic = JUMP_DATA_MAGIC;
 	jdata->version = JUMP_DATA_VERSION;
 	jdata->reset_flags = reset_flags;
@@ -497,6 +505,11 @@ static void jump_to_image(uintptr_t init_addr)
 }
 
 int system_run_image_copy(enum system_image_copy_t copy)
+{
+	return system_jump_to_image(copy, 0);
+}
+
+int system_jump_to_image(enum system_image_copy_t copy, uint8_t flags)
 {
 	uintptr_t base;
 	uintptr_t init_addr;
@@ -554,9 +567,11 @@ int system_run_image_copy(enum system_image_copy_t copy)
 #endif
 #endif
 
-	CPRINTS("Jumping to image %s", system_image_copy_t_to_string(copy));
+	CPRINTS("%sJump to image %s",
+		flags & SYSJUMP_BEFORE_INITS ? "Early-" : "",
+		system_image_copy_t_to_string(copy));
 
-	jump_to_image(init_addr);
+	jump_to_image(init_addr, flags);
 
 	/* Should never get here */
 	return EC_ERROR_UNKNOWN;
@@ -690,15 +705,11 @@ void system_common_pre_init(void)
 	 * as an unknown reset reason, because we jumped directly from one
 	 * image to another without actually triggering a chip reset.
 	 */
-	if (jdata->magic == JUMP_DATA_MAGIC &&
-	    jdata->version >= 1 &&
-	    reset_flags == 0) {
+	if (is_jumped()) {
 		/* Change in jump data struct size between the previous image
 		 * and this one. */
 		int delta;
 
-		/* Yes, we jumped to this image */
-		jumped_to_image = 1;
 		/* Restore the reset flags */
 		reset_flags = jdata->reset_flags | RESET_FLAG_SYSJUMP;
 
@@ -726,7 +737,7 @@ void system_common_pre_init(void)
 
 		/* Initialize fields added after version 2 */
 		if (jdata->version < 3)
-			jdata->reserved0 = 0;
+			jdata->flags = 0;
 
 		/* Struct size is now the current struct size */
 		jdata->struct_size = sizeof(struct jump_data);
@@ -801,7 +812,8 @@ static int command_sysinfo(int argc, char **argv)
 	system_print_reset_flags();
 	ccprintf(")\n");
 	ccprintf("Copy:   %s\n", system_get_image_copy_string());
-	ccprintf("Jumped: %s\n", system_jumped_to_this_image() ? "yes" : "no");
+	ccprintf("Jumped: %s%s\n", is_jumped() ? "yes" : "no",
+			jdata->flags & SYSJUMP_BEFORE_INITS ? "(early)" : "");
 
 	ccputs("Flags: ");
 	if (system_is_locked()) {
@@ -1011,7 +1023,7 @@ static int command_sysjump(int argc, char **argv)
 
 	ccprintf("Jumping to 0x%08x\n", addr);
 	cflush();
-	jump_to_image(addr);
+	jump_to_image(addr, 0);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(sysjump, command_sysjump,

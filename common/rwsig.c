@@ -67,7 +67,7 @@ void rwsig_jump_now(void)
 	/* When system is locked, only boot to RW if all flash is protected. */
 	if (!system_is_locked() ||
 	    flash_get_protect() & EC_FLASH_PROTECT_ALL_NOW)
-		system_run_image_copy(SYSTEM_IMAGE_RW);
+		system_jump_to_image(SYSTEM_IMAGE_RW, SYSJUMP_BEFORE_INITS);
 }
 
 int rwsig_check_signature(void)
