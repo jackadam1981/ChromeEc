@@ -46,6 +46,30 @@
       "revId": "04af25c2e299f18b3c56b53a5af29598f5ca55a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb22351d_d54737c3",
+        "filename": "include/rwsig.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-12T04:23:56Z",
+      "side": 1,
+      "message": "Oh, interesting. Good then.",
+      "parentUuid": "7c3eefc6_512aaa27",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "04af25c2e299f18b3c56b53a5af29598f5ca55a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
