@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69366b5c_617f1023",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-12T13:17:18Z",
+      "side": 1,
+      "message": "Wasn\u0027t there a bug about this? If not please file one.",
+      "revId": "30c65ee34651a3126204d9151d5b53046610dc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a3ee14a_3d3e7f58",
+        "filename": "board/poppy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-12T13:17:18Z",
+      "side": 1,
+      "message": "I\u0027d rather have it a few lines below (after LPC), in feels weird in the middle of 2 ESPI options.",
+      "revId": "30c65ee34651a3126204d9151d5b53046610dc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
