@@ -46,6 +46,30 @@
       "revId": "68ea39b0d8e763166d60655a17e0fea822204c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1385284d_bf4a6aa6",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-12T23:42:01Z",
+      "side": 1,
+      "message": "What you have there seems fine, clearing deadline.val in manual mode.",
+      "parentUuid": "10d6318e_3200af41",
+      "range": {
+        "startLine": 839,
+        "startChar": 1,
+        "endLine": 840,
+        "endChar": 47
+      },
+      "revId": "68ea39b0d8e763166d60655a17e0fea822204c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
