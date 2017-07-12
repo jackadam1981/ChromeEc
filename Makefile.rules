@@ -529,6 +529,25 @@ newsizes:
 			"$$((FILE_SIZE_CHANGE / FILES_CHANGED))"; \
 	fi
 
+.PHONY: analyzestack
+analyzestack:
+	@if [ "$(SECTION)" != "RO" ] && [ "$(SECTION)" != "RW" ]; then \
+		echo "Please specify SECTION=RO or RW"; \
+		exit 1; \
+	fi
+	@ELF=$(out)/$(SECTION)/ec.$(SECTION).elf; \
+	TASKLIST=$(out)/$(SECTION)/ec.$(SECTION).tasklist; \
+	if [ ! -f "$$ELF" ]; then \
+		echo "Some files are missing.  Are they built?"; \
+		exit 1; \
+	fi; \
+	$(CPP) -P -DSECTION_IS_$(SECTION) \
+		-I$(BDIR) -DBOARD_$(UC_BOARD) -D_MAKEFILE_DETAIL \
+		-imacros $(PROJECT).tasklist include/task_filter.h \
+		> "$$TASKLIST" && \
+	extra/stack_analyzer/stack_analyzer.py --objdump "$(OBJDUMP)" \
+	        --addr2line "$(ADDR2LINE)" "$$ELF" "$$TASKLIST"
+
 .SECONDARY:
 
 -include $(deps)
