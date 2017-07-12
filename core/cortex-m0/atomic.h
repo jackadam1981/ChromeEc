@@ -23,8 +23,8 @@
 			     #asm_op" %0, %0, %2\n"		\
 			     "   str  %0, [%1]\n"		\
 			     "   cpsie i\n"			\
-			     : "=&b" (reg0)			\
-			     : "b" (a), "r" (v) : "cc");	\
+			     : "=&l" (reg0)			\
+			     : "l" (a), "r" (v) : "cc");	\
 } while (0)
 
 static inline void atomic_clear(uint32_t volatile *addr, uint32_t bits)
@@ -56,8 +56,8 @@ static inline uint32_t atomic_read_clear(uint32_t volatile *addr)
 			     "   ldr     %0, [%1]\n"
 			     "   str     %2, [%1]\n"
 			     "   cpsie   i\n"
-			     : "=&b" (ret)
-			     : "b" (addr), "r" (0) : "cc");
+			     : "=&l" (ret)
+			     : "l" (addr), "r" (0) : "cc");
 
 	return ret;
 }
