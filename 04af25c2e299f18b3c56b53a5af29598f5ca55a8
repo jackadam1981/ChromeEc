@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "177ec048_9cc89944",
+        "filename": "include/rwsig.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-12T00:53:06Z",
+      "side": 1,
+      "message": "I don\u0027t think this is defined on all boards, so that\u0027s probably going to fail make buildall?",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "04af25c2e299f18b3c56b53a5af29598f5ca55a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
