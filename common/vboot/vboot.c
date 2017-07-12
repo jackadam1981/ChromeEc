@@ -11,6 +11,7 @@
 #include "charge_manager.h"
 #include "chipset.h"
 #include "console.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "rsa.h"
 #include "rwsig.h"
@@ -21,8 +22,8 @@
 #include "vboot.h"
 #include "vb21_struct.h"
 
-#define CPRINTS(format, args...) cprints(CC_VBOOT, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_VBOOT, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
 enum vboot_ec_slot {
 	VBOOT_EC_SLOT_A,
@@ -145,11 +146,13 @@ static int verify_and_jump(void)
 static void request_power(void)
 {
 	/* TODO: Blink LED */
+	CPRINTS("%s", __func__);
 }
 
 static void request_recovery(void)
 {
 	/* TODO: Blink LED */
+	CPRINTS("%s", __func__);
 }
 
 static int is_manual_recovery(void)
@@ -157,23 +160,47 @@ static int is_manual_recovery(void)
 	return host_get_events() & EC_HOST_EVENT_KEYBOARD_RECOVERY;
 }
 
-void vboot_main(void)
+static void vboot_main(void);
+DECLARE_DEFERRED(vboot_main);
+static void vboot_main(void)
 {
 	int port = charge_manager_get_active_charge_port();
 
-	if (port >= CONFIG_USB_PD_PORT_COUNT) {
-		/* AC is not type-c. No chance to boot. */
+	if (port == CHARGE_PORT_NONE) {
+		/* We loop here until charge manager is ready */
+		hook_call_deferred(&vboot_main_data, 10000);
+		return;
+	}
+
+	CPRINTS("Checking power supply");
+
+	if (system_can_boot_ap())
+		/*
+		 * We are here for the two cases:
+		 * 1. Booting on RO with a barrel jack adapter. We can continue
+		 *    to boot AP with EC-RO. We'll jump later in softsync.
+		 * 2. Booting on RW with a type-c charger. PD negotiation is
+		 *    done and we can boot AP.
+		 */
+		return;
+
+	if (system_get_image_copy() == SYSTEM_IMAGE_RO) {
+		if (!system_is_locked()) {
+			/* PD was allowed but didn't get enough power. This
+			 * happens only on developers' devices. */
+			request_power();
+			return;
+		}
+	} else {
+		/* We're in RW but PD still didn't get enough power. We can be
+		 * here prematurely: PD negotiation is still taking place. If
+		 * that's the case, we'll briefly show request power sign but
+		 * it will be immediately corrected. */
 		request_power();
 		return;
 	}
 
-	if (pd_comm_is_enabled(port))
-		/* Normal RW boot or unlocked RO boot.
-		 * Hoping enough power will be supplied after PD negotiation. */
-		return;
-
-	/* PD communication is disabled. Probably this is RO image */
-	CPRINTS("PD comm disabled");
+	CPRINTS("Booting RO on weak battery/charger");
 
 	if (is_manual_recovery()) {
 		if (battery_is_present() || has_matrix_keyboard()) {
@@ -197,3 +224,5 @@ void vboot_main(void)
 	/* Failed to jump. Need recovery. */
 	request_recovery();
 }
+
+DECLARE_HOOK(HOOK_INIT, vboot_main, HOOK_PRIO_DEFAULT);
