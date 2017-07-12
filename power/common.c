@@ -19,6 +19,7 @@
 #include "timer.h"
 #include "util.h"
 #include "espi.h"
+#include "lpc.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
@@ -729,11 +730,22 @@ DECLARE_CONSOLE_COMMAND(pause_in_s5, command_pause_in_s5,
 /* Track last reported sleep event */
 static enum host_sleep_event host_sleep_state;
 
+static void handle_host_sleep_event(enum host_sleep_event sleep_event)
+{
+	if (sleep_event == HOST_SLEEP_EVENT_S0IX_SUSPEND)
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE,
+			lpc_get_host_event_mask(LPC_HOST_EVENT_STOIDLE_WAKE));
+	else if (sleep_event == HOST_SLEEP_EVENT_S0IX_RESUME)
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
+}
+
 static int host_command_host_sleep_event(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_sleep_event *p = args->params;
 
 	host_sleep_state = p->sleep_event;
+
+	handle_host_sleep_event(host_sleep_state);
 
 	return EC_RES_SUCCESS;
 }
@@ -750,6 +762,7 @@ enum host_sleep_event power_get_host_sleep_state(void)
 void power_reset_host_sleep_state(enum host_sleep_event sleep_event)
 {
 	host_sleep_state = sleep_event;
+	handle_host_sleep_event(host_sleep_state);
 }
 #endif /* CONFIG_POWER_S0IX */
 
