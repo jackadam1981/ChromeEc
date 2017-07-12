@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4a02769e_93826769",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-12T17:18:17Z",
+      "side": 1,
+      "message": "My bad...I should\u0027ve checked.",
+      "parentUuid": "b0a88491_0f3fef1b",
+      "revId": "46b8aacf099bd3edc2414c22d1377bd36e57b487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82d7a761_4cd3e080",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2017-07-12T17:13:07Z",
       "side": 1,
       "message": "typo: \u0027incorrect\u0027. (sorry, I missed this one in the first review.)",
+      "range": {
+        "startLine": 704,
+        "startChar": 18,
+        "endLine": 704,
+        "endChar": 27
+      },
+      "revId": "46b8aacf099bd3edc2414c22d1377bd36e57b487",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87930b99_ce7217c7",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-12T17:18:17Z",
+      "side": 1,
+      "message": "Will fix.",
+      "parentUuid": "82d7a761_4cd3e080",
       "range": {
         "startLine": 704,
         "startChar": 18,
