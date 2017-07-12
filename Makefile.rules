@@ -72,7 +72,12 @@ cmd_smap = $(NM) $< | sort > $@
 cmd_elf = $(CC) $(objs) $(libsharedobjs_elf-y) $(LDFLAGS) \
 	-o $@ -Wl,-T,$< -Wl,-Map,$(patsubst %.elf,%.map,$@)
 cmd_exe = $(CC) $(ro-objs) $(HOST_TEST_LDFLAGS) -o $@
-cmd_c_to_o = $(CC) $(CFLAGS) -MMD -MF $@.d -c $< -o $(@D)/$(@F)
+clang_unsupported_flags = -mno-sched-prolog -fconserve-stack
+cmd_c_to_o = $(CC) $(CFLAGS) -MMD -MF $@.d -c $< -o $(@D)/$(@F) && \
+	clang -target arm \
+		$(filter-out $(clang_unsupported_flags),$(CFLAGS)) \
+		-Wno-error -fno-inline -c -emit-llvm $< -o $(@D)/$(@F).bc
+cmd_s_to_o = $(CC) $(CFLAGS) -MMD -MF $@.d -c $< -o $(@D)/$(@F)
 cmd_c_to_build = $(BUILDCC) $(BUILD_CFLAGS) \
 	         $(sort $(foreach c,$($(*F)-objs),util/$(c:%.o=%.c)) $*.c) \
 	         $(BUILD_LDFLAGS) \
@@ -372,9 +377,9 @@ $(out)/$(SHOBJLIB)/%.o:%.c
 	$(call quiet,c_to_o,CC     )
 
 $(out)/RO/%.o:%.S
-	$(call quiet,c_to_o,AS     )
+	$(call quiet,s_to_o,AS     )
 $(out)/RW/%.o:%.S
-	$(call quiet,c_to_o,AS     )
+	$(call quiet,s_to_o,AS     )
 
 
 # Conditionally force the rebuilding of ec_version.h only if it would be
@@ -553,9 +558,16 @@ analyzestack: $(out)/util/export_taskinfo.so
 		exit 1; \
 	fi; \
 	extra/stack_analyzer/stack_analyzer.py --objdump "$(OBJDUMP)" \
-	        --addr2line "$(ADDR2LINE)" --section "$$SECTION" \
+		--addr2line "$(ADDR2LINE)" --section "$$SECTION" \
 		$(if $(ANNOTATION),--annotation $(ANNOTATION),) \
 		--export_taskinfo "$$EXPORT_TASKINFO" "$$ELF"
+
+.PHONY: autoannotate
+autoannotate: $(rw-objs) $(libsharedobjs_elf-y)
+	@llvm-link -o $(out)/RW/ec.bc \
+		$(foreach f,$^,$(if $(wildcard $(f).bc),$(f).bc,)) && \
+	opt -O2 -disable-inlining -o $(out)/RW/ec.opt.bc $(out)/RW/ec.bc && \
+	opt -load ./extra/stack_analyzer/libLLVMAnnotator.so -annotator -o /dev/null $(out)/RW/ec.opt.bc 2>$(or $(OUTPUT),&1)
 
 .SECONDARY:
 
