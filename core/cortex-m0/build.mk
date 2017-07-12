@@ -10,7 +10,7 @@
 CROSS_COMPILE?=arm-none-eabi-
 
 # CPU specific compilation flags
-CFLAGS_CPU+=-mthumb -Os -mno-sched-prolog
+CFLAGS_CPU+=-mthumb -Os
 CFLAGS_CPU+=-mno-unaligned-access
 
 ifneq ($(CONFIG_LTO),)
