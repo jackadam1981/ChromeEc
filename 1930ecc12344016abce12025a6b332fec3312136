@@ -22,6 +22,30 @@
       "revId": "1930ecc12344016abce12025a6b332fec3312136",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3496fa94_2f04e205",
+        "filename": "common/motion_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-12T01:07:25Z",
+      "side": 1,
+      "message": "It should be okay. Assuming there was a force of 8g, I believe the max that scaled_lid[i] could be is +/-640 (and that would be at a range of 8g). Typically our range is set to 2g.\n\n640  (range \u003d 8g) \n320  (range \u003d 4g)\n160  (range \u003d 2g)\n\nI can add a brief comment explaining why it\u0027s safe.",
+      "parentUuid": "b930bbe5_bc957ed0",
+      "range": {
+        "startLine": 270,
+        "startChar": 19,
+        "endLine": 270,
+        "endChar": 48
+      },
+      "revId": "1930ecc12344016abce12025a6b332fec3312136",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
