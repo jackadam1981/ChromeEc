@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3327a1e5_b6278931",
+        "filename": "board/eve/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-12T23:12:48Z",
+      "side": 1,
+      "message": "This will block the HOOKS task for ~360ms, right? Have you considered doing this in HW? See the \"Heartbeat Operation Mode\" PWM section of the npcx datasheet.",
+      "range": {
+        "startLine": 384,
+        "startChar": 9,
+        "endLine": 384,
+        "endChar": 22
+      },
+      "revId": "300d62d3c020be0deedd78c9866e7e5997fca24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
