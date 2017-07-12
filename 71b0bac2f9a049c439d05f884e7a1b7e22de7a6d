@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "96f20cdf_66253f71",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-12T00:59:51Z",
+      "side": 1,
+      "message": "Sounds right. We should remove this delay then.",
+      "parentUuid": "72f42672_7188a34f",
+      "range": {
+        "startLine": 590,
+        "startChar": 4,
+        "endLine": 590,
+        "endChar": 21
+      },
+      "revId": "71b0bac2f9a049c439d05f884e7a1b7e22de7a6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "200e254b_aa7db3c6",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 2
