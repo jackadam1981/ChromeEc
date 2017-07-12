@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fc42f65_3fd2a25e",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-12T23:45:22Z",
+      "side": 1,
+      "message": "If this gets more complex in future changes, you might consider re-defining the table entirely for certain CONFIG_CHIPSET_POWER_SEQ_VERSION (rather than having #ifdefs within the definition). It makes it easier to see which power signals actually exist for a given version.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 5
+      },
+      "revId": "bf14a92e29b57a07cc26611ef40919f4582fa399",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
