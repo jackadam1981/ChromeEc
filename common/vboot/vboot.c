@@ -21,8 +21,8 @@
 #include "vboot.h"
 #include "vb21_struct.h"
 
-#define CPRINTS(format, args...) cprints(CC_VBOOT, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_VBOOT, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
 enum vboot_ec_slot {
 	VBOOT_EC_SLOT_A,
