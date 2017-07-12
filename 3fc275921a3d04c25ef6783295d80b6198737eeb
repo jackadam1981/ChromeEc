@@ -225,6 +225,24 @@
       "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7877fc94_18e315d0",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-12T20:50:47Z",
+      "side": 1,
+      "message": "Normally, we use the WHOAMI i2c register to be sure we are talking to the expected part.\nIn the case of KX022, since we have to have to do soft reset after power up even before we can read the WHOAMI register, we have to blindly trust that we are talking to the proper i2c device.\n\nGiven WHOAMI can/should be read at anytime. we can put whoami read after reset as well.",
+      "parentUuid": "0d045e0f_822ac930",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
