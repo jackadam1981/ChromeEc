@@ -542,7 +542,7 @@ static int cmd_sink(int argc, char **argv)
 	 * Jump to the RW section which should contain a firmware acting
 	 * as a USB PD sink
 	 */
-	system_run_image_copy(SYSTEM_IMAGE_RW);
+	system_run_image_copy(SYSTEM_IMAGE_RW, SYSJUMP_TYPE_POST_INIT);
 
 	return EC_SUCCESS;
 }

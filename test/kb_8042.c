@@ -232,7 +232,7 @@ static int test_sysjump(void)
 	set_scancode(2);
 	enable_keystroke(1);
 
-	system_run_image_copy(SYSTEM_IMAGE_RW);
+	system_run_image_copy(SYSTEM_IMAGE_RW, SYSJUMP_TYPE_POST_INIT);
 
 	/* Shouldn't reach here */
 	return EC_ERROR_UNKNOWN;

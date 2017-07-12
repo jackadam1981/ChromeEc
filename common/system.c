@@ -64,7 +64,10 @@ struct jump_data {
 	 */
 
 	/* Fields from version 3 */
-	uint8_t reserved0;    /* (used in proto1 to signal recovery mode) */
+	union {
+		uint8_t reserved0;	/* Used in v1 to signal recovery mode */
+		uint8_t flags;		/* enum sysjump_type */
+	};
 	int struct_size;      /* Size of struct jump_data */
 
 	/* Fields from version 2 */
@@ -92,7 +95,6 @@ static const char * const reset_flag_descs[] = {
 	"security" };
 
 static uint32_t reset_flags;
-static int jumped_to_image;
 static int disable_jump;  /* Disable ALL jumps if system is locked */
 static int force_locked;  /* Force system locked even if WP isn't enabled */
 static enum ec_reboot_cmd reboot_at_shutdown;
@@ -221,7 +223,7 @@ void system_print_reset_flags(void)
 
 int system_jumped_to_this_image(void)
 {
-	return jumped_to_image;
+	return jdata->flags == SYSJUMP_TYPE_POST_INIT;
 }
 
 int system_add_jump_tag(uint16_t tag, int version, int size, const void *data)
@@ -417,7 +419,7 @@ const char *system_image_copy_t_to_string(enum system_image_copy_t copy)
  *
  * @param init_addr	Init address of target image
  */
-static void jump_to_image(uintptr_t init_addr)
+static void jump_to_image(uintptr_t init_addr, enum sysjump_type type)
 {
 	void (*resetvec)(void);
 #ifdef CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
@@ -447,7 +449,7 @@ static void jump_to_image(uintptr_t init_addr)
 	cflush();
 
 	/* Fill in preserved data between jumps */
-	jdata->reserved0 = 0;
+	jdata->flags = type;
 	jdata->magic = JUMP_DATA_MAGIC;
 	jdata->version = JUMP_DATA_VERSION;
 	jdata->reset_flags = reset_flags;
@@ -496,7 +498,7 @@ static void jump_to_image(uintptr_t init_addr)
 	resetvec();
 }
 
-int system_run_image_copy(enum system_image_copy_t copy)
+int system_run_image_copy(enum system_image_copy_t copy, enum sysjump_type type)
 {
 	uintptr_t base;
 	uintptr_t init_addr;
@@ -554,9 +556,11 @@ int system_run_image_copy(enum system_image_copy_t copy)
 #endif
 #endif
 
-	CPRINTS("Jumping to image %s", system_image_copy_t_to_string(copy));
+	CPRINTS("%sJump to image %s",
+		type == SYSJUMP_TYPE_PRE_INIT ? "Early-" : "",
+		system_image_copy_t_to_string(copy));
 
-	jump_to_image(init_addr);
+	jump_to_image(init_addr, type);
 
 	/* Should never get here */
 	return EC_ERROR_UNKNOWN;
@@ -691,14 +695,11 @@ void system_common_pre_init(void)
 	 * image to another without actually triggering a chip reset.
 	 */
 	if (jdata->magic == JUMP_DATA_MAGIC &&
-	    jdata->version >= 1 &&
-	    reset_flags == 0) {
+	    jdata->version >= 1) {
 		/* Change in jump data struct size between the previous image
 		 * and this one. */
 		int delta;
 
-		/* Yes, we jumped to this image */
-		jumped_to_image = 1;
 		/* Restore the reset flags */
 		reset_flags = jdata->reset_flags | RESET_FLAG_SYSJUMP;
 
@@ -752,9 +753,11 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	case EC_REBOOT_CANCEL:
 		return EC_SUCCESS;
 	case EC_REBOOT_JUMP_RO:
-		return system_run_image_copy(SYSTEM_IMAGE_RO);
+		return system_run_image_copy(SYSTEM_IMAGE_RO,
+					     SYSJUMP_TYPE_POST_INIT);
 	case EC_REBOOT_JUMP_RW:
-		return system_run_image_copy(SYSTEM_IMAGE_RW);
+		return system_run_image_copy(SYSTEM_IMAGE_RW,
+					     SYSJUMP_TYPE_POST_INIT);
 	case EC_REBOOT_COLD:
 #ifdef HAS_TASK_PDCMD
 		/* Reboot the PD chip as well */
@@ -975,6 +978,7 @@ DECLARE_SAFE_CONSOLE_COMMAND(version, command_version,
 static int command_sysjump(int argc, char **argv)
 {
 	uint32_t addr;
+	const enum sysjump_type type = SYSJUMP_TYPE_POST_INIT;
 	char *e;
 
 	if (argc < 2)
@@ -982,16 +986,16 @@ static int command_sysjump(int argc, char **argv)
 
 	/* Handle named images */
 	if (!strcasecmp(argv[1], "RO"))
-		return system_run_image_copy(SYSTEM_IMAGE_RO);
+		return system_run_image_copy(SYSTEM_IMAGE_RO, type);
 	else if (!strcasecmp(argv[1], "RW") || !strcasecmp(argv[1], "A")) {
 		/*
 		 * TODO(crosbug.com/p/11149): remove "A" once all scripts are
 		 * updated to use "RW".
 		 */
-		return system_run_image_copy(SYSTEM_IMAGE_RW);
+		return system_run_image_copy(SYSTEM_IMAGE_RW, type);
 	} else if (!strcasecmp(argv[1], "B")) {
 #ifdef CONFIG_RW_B
-		return system_run_image_copy(SYSTEM_IMAGE_RW_B);
+		return system_run_image_copy(SYSTEM_IMAGE_RW_B, type);
 #else
 		return EC_ERROR_PARAM1;
 #endif
@@ -1011,7 +1015,7 @@ static int command_sysjump(int argc, char **argv)
 
 	ccprintf("Jumping to 0x%08x\n", addr);
 	cflush();
-	jump_to_image(addr);
+	jump_to_image(addr, type);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(sysjump, command_sysjump,
