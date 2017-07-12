@@ -22,6 +22,30 @@
       "revId": "68ea39b0d8e763166d60655a17e0fea822204c76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10d6318e_3200af41",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-07-12T02:19:25Z",
+      "side": 1,
+      "message": "It will be like, https://chromium-review.googlesource.com/#/c/567611/\n\nbecause deadline already been set and system may switch back to normal whenever it wants (eg: battery charge test). battery_seems_to_be_dead will become 1 if deadline was not cleared.",
+      "parentUuid": "bf635358_0d9e0982",
+      "range": {
+        "startLine": 839,
+        "startChar": 1,
+        "endLine": 840,
+        "endChar": 47
+      },
+      "revId": "68ea39b0d8e763166d60655a17e0fea822204c76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
