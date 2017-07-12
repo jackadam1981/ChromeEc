@@ -692,13 +692,13 @@ void system_common_pre_init(void)
 	 */
 	if (jdata->magic == JUMP_DATA_MAGIC &&
 	    jdata->version >= 1 &&
-	    reset_flags == 0) {
+	    (reset_flags & ~RESET_FLAG_AP_OFF) == 0) {
 		/* Change in jump data struct size between the previous image
 		 * and this one. */
 		int delta;
 
 		/* Yes, we jumped to this image */
-		jumped_to_image = 1;
+		//jumped_to_image = 1;
 		/* Restore the reset flags */
 		reset_flags = jdata->reset_flags | RESET_FLAG_SYSJUMP;
 
