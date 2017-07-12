@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "nvmem.h"
 #include "nvmem_vars.h"
+#include "physical_presence.h"
 #include "registers.h"
 #include "scratch_reg1.h"
 #include "system.h"
@@ -397,12 +398,16 @@ static void power_button_poked(void)
 
 static void power_button_handler(void)
 {
-	if (unlock_in_progress)
+	CPRINTS("power button pressed");
+	if (physical_detect_press() == EC_SUCCESS) {
+		/* Consumed by physical detect */
+	} else if (unlock_in_progress) {
 		power_button_poked();
 #ifdef CONFIG_U2F
-	else
+	} else {
 		power_button_record();
 #endif
+	}
 
 	GWRITE_FIELD(RBOX, INT_STATE, INTR_PWRB_IN_FED, 1);
 }
@@ -436,6 +441,15 @@ static void power_button_init(void)
 	task_enable_irq(GC_IRQNUM_RBOX0_INTR_PWRB_IN_FED_INT);
 }
 DECLARE_HOOK(HOOK_INIT, power_button_init, HOOK_PRIO_DEFAULT);
+
+void board_physical_presence_enable(int enable)
+{
+	/* Stay awake while we're doing this, just in case. */
+	if (enable)
+		disable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+	else
+		enable_sleep(SLEEP_MASK_FORCE_NO_DSLEEP);
+}
 
 /****************************************************************************/
 /* TPM vendor-specific commands */
