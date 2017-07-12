@@ -21,8 +21,8 @@
 #include "vboot.h"
 #include "vb21_struct.h"
 
-#define CPRINTS(format, args...) cprints(CC_VBOOT, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_VBOOT, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
 
 enum vboot_ec_slot {
 	VBOOT_EC_SLOT_A,
@@ -136,7 +136,8 @@ static int verify_and_jump(void)
 
 	/* 3. Jump (and reboot) */
 	system_run_image_copy(slot == VBOOT_EC_SLOT_A ?
-			SYSTEM_IMAGE_RW : SYSTEM_IMAGE_RW_B);
+			SYSTEM_IMAGE_RW : SYSTEM_IMAGE_RW_B,
+			SYSJUMP_TYPE_PRE_INIT);
 
 	return EC_ERROR_UNKNOWN;
 }

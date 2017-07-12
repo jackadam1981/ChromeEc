@@ -123,6 +123,13 @@ enum system_image_copy_t system_get_ro_image_copy(void);
 uintptr_t get_program_memory_addr(enum system_image_copy_t copy);
 #define INVALID_ADDR ((uintptr_t)0xffffffff)
 
+enum sysjump_type {
+	SYSJUMP_TYPE_NO_JUMP,
+	/* Jump after inits are done (e.g. host command) */
+	SYSJUMP_TYPE_POST_INIT,
+	/* Jump before inits are done (e.g. vboot) */
+	SYSJUMP_TYPE_PRE_INIT,
+};
 /**
  * Return non-zero if the system has switched between image copies at least
  * once since the last real boot.
@@ -191,7 +198,8 @@ int system_get_image_used(enum system_image_copy_t copy);
 /**
  * Jump to the specified image copy.
  */
-int system_run_image_copy(enum system_image_copy_t copy);
+int system_run_image_copy(enum system_image_copy_t copy,
+			  enum sysjump_type type);
 
 /**
  * Get the rollback version for an image

@@ -250,7 +250,8 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 				response = EC_RES_ERROR;
 			}
 #else
-			system_run_image_copy(SYSTEM_IMAGE_RW);
+			system_run_image_copy(SYSTEM_IMAGE_RW,
+					      SYSJUMP_TYPE_POST_INIT);
 #endif
 			break;
 #ifdef CONFIG_RWSIG

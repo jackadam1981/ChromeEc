@@ -27,6 +27,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "vboot.h"
 #include "watchdog.h"
 
 /* Console output macros */
@@ -162,7 +163,11 @@ test_mockable __keep int main(void)
 	button_init();
 #endif
 
-#ifndef CONFIG_VBOOT_EC
+#ifdef CONFIG_VBOOT_EC
+	if (system_get_image_copy() == SYSTEM_IMAGE_RO && !system_can_boot_ap())
+		/* This makes RO jump to RW immediately. */
+		vboot_main();
+#else
 #if defined(CONFIG_RWSIG) && !defined(HAS_TASK_RWSIG)
 	/*
 	 * Check the RW firmware signature and jump to it if it is good.
