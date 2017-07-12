@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8aa0336_537a38d9",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-12T16:22:19Z",
+      "side": 1,
+      "message": "It would still be good to put this as it was before:\n#ifdef CONFIG_ESPI_VW_SIGNALS\n[SYS_SLEEP_S3] \u003d VW_SLP_S3_L,\n[SYS_SLEEP_S4] \u003d ...\n#else\n[SYS_SLEEP_S3] \u003d GPIO_PCH_SLP_S3_L,\n...\n#endif\n#if CONFIG_POWER_S0IX\n[SYS_SLEEP_S0IX] \u003d GPIO_PCH_SLP_S0_L\n#endif\n\nThat makes it clearer to understand as well.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 12
+      },
+      "revId": "9a01d826b53d231a26a5ef89b30bd9ab1e783463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
