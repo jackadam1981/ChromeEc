@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "218aac5a_c09a111c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 834,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-12T23:42:17Z",
+      "side": 1,
+      "message": "No need for this condition, if manual_mode is true then this else won\u0027t be evaluated.",
+      "range": {
+        "startLine": 834,
+        "startChar": 6,
+        "endLine": 834,
+        "endChar": 20
+      },
+      "revId": "0530721c5c1001ff19a3fe18d6f4ff5bae5d48ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
