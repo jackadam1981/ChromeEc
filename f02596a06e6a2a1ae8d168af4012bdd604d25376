@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4f78bf9_c66971aa",
+        "filename": "common/physical_presence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-13T17:39:05Z",
+      "side": 1,
+      "message": "This (along with the test command) seems useful for debug, but as this is in common/, I don\u0027t think we should have board specific defines here.\n\nWhat if we changed the define to something like `CONFIG_PHYSICAL_PRESENCE_DEBUG`? Then a board could decide to select that or not. For example:\n\n    \n---8\u003c--(board.h)---    \n#ifdef CR50_DEV\n#define CONFIG_PHYSICAL_PRESENCE_DEBUG\n#endif",
+      "revId": "f02596a06e6a2a1ae8d168af4012bdd604d25376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdfe41e5_5c60448e",
+        "filename": "common/physical_presence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-13T17:39:05Z",
+      "side": 1,
+      "message": "nit: extra word?",
+      "range": {
+        "startLine": 147,
+        "startChar": 49,
+        "endLine": 147,
+        "endChar": 57
+      },
+      "revId": "f02596a06e6a2a1ae8d168af4012bdd604d25376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4b7b67d_ccfa0c9d",
+        "filename": "include/physical_presence.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-13T17:39:05Z",
+      "side": 1,
+      "message": "nit: Technically, it doesn\u0027t _have_ to be the power button, but any button the board chooses. I\u0027d drop any references to specifically the \"power\" button in the common files.",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "f02596a06e6a2a1ae8d168af4012bdd604d25376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
