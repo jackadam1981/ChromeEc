@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffbec4e4_3a1523ad",
+        "filename": "board/chell/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1134104
+      },
+      "writtenOn": "2017-07-13T08:26:50Z",
+      "side": 1,
+      "message": "care to use #if IS_ENABLED(CONFIG_POWER_S0IX) throughout?",
+      "revId": "6a36a8a3420990aeccaa34fd6610f35b36d88012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
