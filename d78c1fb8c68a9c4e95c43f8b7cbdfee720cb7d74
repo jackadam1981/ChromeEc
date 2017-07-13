@@ -16,6 +16,24 @@
       "revId": "d78c1fb8c68a9c4e95c43f8b7cbdfee720cb7d74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a42bedb5_1087d909",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-13T16:40:55Z",
+      "side": 1,
+      "message": "Any branches that have cl/482703 are affected.\nThis is not related to a GPIO change.",
+      "parentUuid": "7149e1d1_da816a9a",
+      "revId": "d78c1fb8c68a9c4e95c43f8b7cbdfee720cb7d74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
