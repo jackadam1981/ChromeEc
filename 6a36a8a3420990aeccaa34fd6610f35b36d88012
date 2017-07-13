@@ -16,6 +16,24 @@
       "revId": "6a36a8a3420990aeccaa34fd6610f35b36d88012",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62f47b0_f220ca49",
+        "filename": "board/chell/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-07-13T09:25:44Z",
+      "side": 1,
+      "message": "EC uses .h file to define the configs and by standard it used #ifdef. IS_ENABLED being adopted when  kconfig based approach is used(Coreboot)",
+      "parentUuid": "ffbec4e4_3a1523ad",
+      "revId": "6a36a8a3420990aeccaa34fd6610f35b36d88012",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
