@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a82716c8_8f8e5cf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-13T15:31:31Z",
+      "side": 1,
+      "message": "Actually, I decided to only cherry-pick this to gru. The boards built off of the eve and reef branches don\u0027t use CONFIG_LID_ANGLE_TABLET_MODE. Therefore, I think we\u0027re not concerned about \"unreliable\" lid angles causing a invalid tablet mode notification, since they use a dedicated GPIO instead.",
+      "revId": "d960c956182695b5462b14c456000de050cfafbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
