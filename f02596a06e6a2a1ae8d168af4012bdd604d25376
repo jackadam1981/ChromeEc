@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e0b42337_36d1cc78",
+        "filename": "common/physical_presence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-13T21:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4f78bf9_c66971aa",
+      "revId": "f02596a06e6a2a1ae8d168af4012bdd604d25376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bdfe41e5_5c60448e",
         "filename": "common/physical_presence.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "24d7e02a_27a68a58",
+        "filename": "common/physical_presence.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-13T21:02:42Z",
+      "side": 1,
+      "message": "done done",
+      "parentUuid": "bdfe41e5_5c60448e",
+      "range": {
+        "startLine": 147,
+        "startChar": 49,
+        "endLine": 147,
+        "endChar": 57
+      },
+      "revId": "f02596a06e6a2a1ae8d168af4012bdd604d25376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4b7b67d_ccfa0c9d",
         "filename": "include/physical_presence.h",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2017-07-13T17:39:05Z",
       "side": 1,
       "message": "nit: Technically, it doesn\u0027t _have_ to be the power button, but any button the board chooses. I\u0027d drop any references to specifically the \"power\" button in the common files.",
+      "range": {
+        "startLine": 38,
+        "startChar": 12,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "f02596a06e6a2a1ae8d168af4012bdd604d25376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9458cc63_d2627aad",
+        "filename": "include/physical_presence.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-13T21:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b7b67d_ccfa0c9d",
       "range": {
         "startLine": 38,
         "startChar": 12,
