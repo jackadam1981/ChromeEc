@@ -14,6 +14,8 @@
 #include <dirent.h>
 #include <stdint.h>
 #include <limits.h>
+#include <string.h>
+#include <stdarg.h>
 
 #include "config.h"
 #include "usb_pd.h"
@@ -482,6 +484,36 @@ static int gen_vif(const char *name, const char *board,
 	fclose(vif);
 	return 0;
 }
+
+int cprintf(enum console_channel channel, const char *format, ...)
+{
+	int rv;
+	va_list args;
+
+	va_start(args, format);
+	rv = vprintf(format, args);
+	va_end(args);
+
+	return rv;
+}
+
+int cprints(enum console_channel channel, const char *format, ...)
+{
+	int r, rv;
+	va_list args;
+
+	rv = cprintf(channel, "[ ");
+
+	va_start(args, format);
+	r = vprintf(format, args);
+	if (r)
+		rv = r;
+	va_end(args);
+
+	r = puts("]\n");
+	return r ? r : rv;
+}
+
 
 int main(int argc, char **argv)
 {
