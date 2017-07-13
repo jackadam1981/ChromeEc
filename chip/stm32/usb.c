@@ -469,8 +469,18 @@ void usb_interrupt(void)
 						esof_count, state);
 					usb_suspend();
 				} else {
+					int ep;
+
 					CPRINTF("RSMOK%d %d\n",
 						-esof_count, state);
+
+					/*
+					 * HACK: Kick all EPs TX endpoint to
+					 * tell them they can prepare to
+					 * transmit data now.
+					 */
+					for (ep = 1; ep < USB_EP_COUNT; ep++)
+						usb_ep_tx[ep]();
 				}
 			}
 		}
