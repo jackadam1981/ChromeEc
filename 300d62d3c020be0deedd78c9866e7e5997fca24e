@@ -22,6 +22,30 @@
       "revId": "300d62d3c020be0deedd78c9866e7e5997fca24e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9cd2508_5fed18b5",
+        "filename": "board/eve/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-13T00:53:42Z",
+      "side": 1,
+      "message": "I think it would be ~320 msec because it\u0027s taking 8 steps to complete. It could be shorter if the time per step is shorter. I experimented with 30, 35, and 40 msec per step. I wasn\u0027t aware of the heartbeat operation mode, but I do think it could potentially be used, but it does seem to only allow for  0 -\u003e MAX and MAX -\u003e 0 transitions. In some of the patterns used here, there are 40\u003c-\u003e80 transitions, so I\u0027m not user the heartbeat mode would provide the all the flexibility required.\n\nIf holding up the hook task for 300 msec is an issue, would moving the LED manager to its own task be an acceptable solution? The when the sleeps are ongoing nothing else would be blocked.",
+      "parentUuid": "3327a1e5_b6278931",
+      "range": {
+        "startLine": 384,
+        "startChar": 9,
+        "endLine": 384,
+        "endChar": 22
+      },
+      "revId": "300d62d3c020be0deedd78c9866e7e5997fca24e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
