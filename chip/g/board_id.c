@@ -24,7 +24,7 @@ const struct SignedHeader *get_current_image_header(void)
 }
 
 uint32_t check_board_id_vs_header(const struct board_id *id,
-				  const struct SignedHeader *h)
+				  const struct header_board_id *header_bid)
 {
 	uint32_t mismatch;
 	uint32_t header_board_id_type;
@@ -35,9 +35,12 @@ uint32_t check_board_id_vs_header(const struct board_id *id,
 	if (~(id->type & id->type_inv & id->flags) == 0)
 		return 0;
 
-	header_board_id_type = SIGNED_HEADER_PADDING ^ h->board_id_type;
-	header_board_id_mask = SIGNED_HEADER_PADDING ^ h->board_id_type_mask;
-	header_board_id_flags = SIGNED_HEADER_PADDING ^ h->board_id_flags;
+	header_board_id_type = SIGNED_HEADER_PADDING ^
+		header_bid->board_id_type;
+	header_board_id_mask = SIGNED_HEADER_PADDING ^
+		header_bid->board_id_type_mask;
+	header_board_id_flags = SIGNED_HEADER_PADDING ^
+		header_bid->board_id_flags;
 
 	/*
 	 * Masked bits in header Board ID type must match type and inverse from
@@ -106,7 +109,7 @@ uint32_t board_id_mismatch(void)
 	if (read_board_id(&id) != EC_SUCCESS)
 		return 1;
 
-	return check_board_id_vs_header(&id, sh);
+	return check_board_id_vs_header(&id, &sh->bid);
 }
 
 /**
@@ -127,7 +130,8 @@ static int write_board_id(const struct board_id *id)
 	 * proposed values.  If it doesn't, then programming these values
 	 * would cause the next boot to fail.
 	 */
-	if (check_board_id_vs_header(id, get_current_image_header()) != 0) {
+	if (check_board_id_vs_header(id, &get_current_image_header()->bid)
+	    != 0) {
 		CPRINTS("%s: Board ID wouldn't allow current header", __func__);
 		return EC_ERROR_INVAL;
 	}

@@ -31,11 +31,12 @@ struct info1_board_space {
  *
  * @param board_id	Pointer to a Board ID structure to check
  * @param h		Pointer to the currently running image's header
+ *			board ID field
  *
  * @return 0 if no mismatch, non-zero if mismatch
  */
 uint32_t check_board_id_vs_header(const struct board_id *id,
-				  const struct SignedHeader *h);
+				  const struct header_board_id *h);
 
 /**
  * Check board ID from the flash INFO1 space.

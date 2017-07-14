@@ -17,6 +17,13 @@
 /* Default value for _pad[] words */
 #define SIGNED_HEADER_PADDING 0x33333333
 
+/* Board ID type, mask, flags (stored ^SIGNED_HEADER_PADDING) */
+struct header_board_id {
+	uint32_t board_id_type;
+	uint32_t board_id_type_mask;
+	uint32_t board_id_flags;
+};
+
 struct SignedHeader {
 	uint32_t magic;       /* -1 (thanks, boot_sys!) */
 	uint32_t signature[96];
@@ -51,10 +58,7 @@ struct SignedHeader {
 	 * so don't put anything there.
 	 */
 	uint32_t _pad[24];
-	/* Board ID type, mask, flags (stored ^SIGNED_HEADER_PADDING) */
-	uint32_t board_id_type;
-	uint32_t board_id_type_mask;
-	uint32_t board_id_flags;
+	struct header_board_id bid;
 	uint32_t dev_id0_;    /* node id, if locked */
 	uint32_t dev_id1_;
 	uint32_t fuses_chk_;  /* top 32 bit of expected fuses hash */
