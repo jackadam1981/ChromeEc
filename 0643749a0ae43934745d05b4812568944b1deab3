@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "14facff0_52345b5c",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6237ec4_cc0b2843",
+      "range": {
+        "startLine": 144,
+        "startChar": 5,
+        "endLine": 144,
+        "endChar": 15
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb7183df_d5bad8e6",
         "filename": "board/eve/led.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-14T16:58:49Z",
       "side": 1,
       "message": "We usually capitalize these to distinguish that they are constants.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 10
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0687a57a_15d8197a",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb7183df_d5bad8e6",
       "range": {
         "startLine": 145,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "db448dbe_ce38779a",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "Yeah, this isn\u0027t a good name anymore. Initially, I was tracking which of the 3 colors was changing so it would OR in a bit and was a mask. Replaced this with \u0027increase\u0027 and replaced the use case in while loop with the variable \u0027change\u0027",
+      "parentUuid": "c422c804_10a0d0c5",
+      "range": {
+        "startLine": 241,
+        "startChar": 5,
+        "endLine": 241,
+        "endChar": 13
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4402dcf8_2329ab88",
         "filename": "board/eve/led.c",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2017-07-14T16:58:49Z",
       "side": 1,
       "message": "This seems to be a const, you can just use a pointer rather than re-copying each element of color_brightness.",
+      "range": {
+        "startLine": 251,
+        "startChar": 2,
+        "endLine": 251,
+        "endChar": 47
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "057820a1_b2e4659b",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4402dcf8_2329ab88",
       "range": {
         "startLine": 251,
         "startChar": 2,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4dee5f6a_e6707dba",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "I replaced this variable with \u0027increase\u0027. I prefer to assign state below in the if (increase)/else clause so it\u0027s clear that state is always being assigned before the start of the while loop.",
+      "parentUuid": "7fbd3cc2_a704f9e9",
+      "range": {
+        "startLine": 254,
+        "startChar": 3,
+        "endLine": 254,
+        "endChar": 11
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "892b8bcb_2e9bf003",
         "filename": "board/eve/led.c",
         "patchSetId": 4
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "9f3c938e_aef741ff",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "Yes because the transition table goes from the current to the target value. When it\u0027s increasing don\u0027t need the first step and when it\u0027s decreasing don\u0027t need the last step. Otherwise the first iteration of the while loop doesn\u0027t actually change anything.",
+      "parentUuid": "892b8bcb_2e9bf003",
+      "range": {
+        "startLine": 259,
+        "startChar": 2,
+        "endLine": 259,
+        "endChar": 56
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "318ff038_26a704b7",
         "filename": "board/eve/led.c",
         "patchSetId": 4
@@ -151,6 +295,30 @@
       "writtenOn": "2017-07-14T16:58:49Z",
       "side": 1,
       "message": "Add a comment indicating this is red.",
+      "range": {
+        "startLine": 285,
+        "startChar": 2,
+        "endLine": 285,
+        "endChar": 22
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "226a17ff_15057212",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "Added the comment and also changed this variable to \u0027rgb_index\u0027 so that it\u0027s more explicit that this index is for R, G, B as opposed to an index into the color_brightness table.",
+      "parentUuid": "318ff038_26a704b7",
       "range": {
         "startLine": 285,
         "startChar": 2,
@@ -302,6 +470,30 @@
     },
     {
       "key": {
+        "uuid": "327b3741_526bb3a4",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "white \u003c--\u003e red and white \u003c--\u003e green transitions are using the pre-computed table. The dynamic table handles all other transitions. Off \u003c--\u003e Red, Off \u003c--\u003e Green, Red \u003c--\u003e Red_2_3, and Red \u003c--\u003e Red_1_3. I was trying to avoid adding more tables and to avoid the logic for choosing which table to use. Right now, the only thing I have to check for is if new|old \u003d\u003d white. I would need to add 5 more tables to cover all cases. 0 -\u003e 20, 0 -\u003e 40, 0 -\u003e 80, 20 -\u003e 80, and 40 -\u003e 80. The other advantage is that this loop works regardless of what levels are chosen for the different colors.",
+      "parentUuid": "f9dbd602_32a173a4",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 3
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e8cde70_4ee732d0",
         "filename": "board/eve/led.c",
         "patchSetId": 4
@@ -313,6 +505,30 @@
       "writtenOn": "2017-07-14T16:58:49Z",
       "side": 1,
       "message": "Why wait at all? Starving other tasks shouldn\u0027t be a concern, if you exceed LED_TICK_TIME it\u0027s because this task was msleep()\u0027ing or not scheduled for most of that time.",
+      "range": {
+        "startLine": 548,
+        "startChar": 2,
+        "endLine": 549,
+        "endChar": 29
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ac01541_13fa6c48",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "I had it that way initially, changed it back.",
+      "parentUuid": "5e8cde70_4ee732d0",
       "range": {
         "startLine": 548,
         "startChar": 2,
@@ -348,6 +564,30 @@
     },
     {
       "key": {
+        "uuid": "34b21211_a6c07233",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "Changed this to usleep. I will look at adding an event so that the LED state changes are more responsive, but will do that in a subsequent CL.",
+      "parentUuid": "47e8f9c4_4f4ba797",
+      "range": {
+        "startLine": 551,
+        "startChar": 2,
+        "endLine": 551,
+        "endChar": 17
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7e86f45_99f8a0e9",
         "filename": "board/eve/led.c",
         "patchSetId": 4
@@ -359,6 +599,30 @@
       "writtenOn": "2017-07-14T16:58:49Z",
       "side": 1,
       "message": "You can use type \u0027enum led_color\u0027.",
+      "range": {
+        "startLine": 561,
+        "startChar": 1,
+        "endLine": 561,
+        "endChar": 4
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd8427f6_2105231b",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:06:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7e86f45_99f8a0e9",
       "range": {
         "startLine": 561,
         "startChar": 1,
