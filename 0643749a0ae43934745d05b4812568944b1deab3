@@ -354,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "30b28df6_a06ffc47",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:09:20Z",
+      "side": 1,
+      "message": "I want the table to always go from lowest to highest value. The decrease/increase indicates if the highest value will be in rgb_current or rgb_target.",
+      "parentUuid": "60393ade_dc5730e0",
+      "range": {
+        "startLine": 306,
+        "startChar": 2,
+        "endLine": 306,
+        "endChar": 38
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "223ee1a8_1a0a8bc6",
         "filename": "board/eve/led.c",
         "patchSetId": 4
@@ -377,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "a2e2f269_36c98b32",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:09:20Z",
+      "side": 1,
+      "message": "Changed it to check the state instead.",
+      "parentUuid": "223ee1a8_1a0a8bc6",
+      "range": {
+        "startLine": 308,
+        "startChar": 6,
+        "endLine": 308,
+        "endChar": 18
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42b419b3_ee7c1c8d",
         "filename": "board/eve/led.c",
         "patchSetId": 4
@@ -388,6 +436,30 @@
       "writtenOn": "2017-07-14T16:58:49Z",
       "side": 1,
       "message": "If we use \u0027state\u0027 for the condition, you can use ABS() in your assignment of total_change above.",
+      "range": {
+        "startLine": 313,
+        "startChar": 3,
+        "endLine": 313,
+        "endChar": 32
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "476f764f_5b24d18e",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-07-14T19:09:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42b419b3_ee7c1c8d",
       "range": {
         "startLine": 313,
         "startChar": 3,
