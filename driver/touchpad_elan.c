@@ -294,3 +294,26 @@ void elan_tp_task(void)
 		elan_tp_read_report();
 	}
 }
+
+/**
+ * Modify and print the sleep mask which controls access to deep sleep
+ * mode in the idle task.
+ */
+static int command_elansleep(int argc, char **argv)
+{
+        int v, rv;
+
+        if (argc != 2)
+		return EC_ERROR_PARAM1;
+
+	if (parse_bool(argv[1], &v))
+		rv = elan_tp_write_cmd(ETP_I2C_STAND_CMD,
+				v ? ETP_I2C_SLEEP : ETP_I2C_WAKE_UP);
+	else
+		return EC_ERROR_PARAM1;
+
+        return rv;
+}
+DECLARE_CONSOLE_COMMAND(elansleep, command_elansleep,
+                        "[ on | off]",
+                        "Display/force sleep mask");
