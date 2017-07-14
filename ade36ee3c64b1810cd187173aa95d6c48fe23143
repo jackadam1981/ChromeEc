@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a70f885_1035798e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "Is there anything significant about this duration?",
+      "revId": "ade36ee3c64b1810cd187173aa95d6c48fe23143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24e85d8_a378ab7e",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "It looks like the current state is static, and this comment is above the definition of the states. Is the comment still needed? At the very least, it should probably be moved to the current state declaration.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 3
+      },
+      "revId": "ade36ee3c64b1810cd187173aa95d6c48fe23143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f195e57_edb0f865",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "This function doesn\u0027t return anything.",
+      "revId": "ade36ee3c64b1810cd187173aa95d6c48fe23143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "537f2f31_b22a565c",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "This also doesn\u0027t return anything.",
+      "revId": "ade36ee3c64b1810cd187173aa95d6c48fe23143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d967d89_a79783ed",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "This also doesn\u0027t return anything.",
+      "revId": "ade36ee3c64b1810cd187173aa95d6c48fe23143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b257a00_ddea06b2",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "typo: \u0027our\u0027",
+      "range": {
+        "startLine": 401,
+        "startChar": 22,
+        "endLine": 401,
+        "endChar": 25
+      },
+      "revId": "ade36ee3c64b1810cd187173aa95d6c48fe23143",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc2e707b_dc9469d1",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "Stale comment?",
+      "revId": "fc6da766822e519f95853135e74e49bad274e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8659b76c_14073c34",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "nit: I\u0027d put this just before the call to `ccd_set_state`.",
+      "revId": "fc6da766822e519f95853135e74e49bad274e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45d858c2_88bcb4de",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "Maybe print a message indicating why open failed?",
+      "revId": "fc6da766822e519f95853135e74e49bad274e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0fea1ef_41ac1b4d",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "If you chose to move the print, I\u0027d move this one as well to be consistent.",
+      "revId": "fc6da766822e519f95853135e74e49bad274e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbefb69d_8335f787",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "nit: style: each declaration should be on its own line.",
+      "range": {
+        "startLine": 746,
+        "startChar": 30,
+        "endLine": 746,
+        "endChar": 36
+      },
+      "revId": "fc6da766822e519f95853135e74e49bad274e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc014f8d_e6fb8fc1",
+        "filename": "include/case_closed_debug.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-14T00:17:37Z",
+      "side": 1,
+      "message": "I thought we were supposed to leave existing files\u0027 copyright headers intact.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "fc6da766822e519f95853135e74e49bad274e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
