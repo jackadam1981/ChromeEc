@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcaaeffc_914d8467",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-14T08:12:27Z",
+      "side": 1,
+      "message": "MINIMUM_HEADER_SIZE, or maybe just HEADER_SIZE, actually (yes, it can be extended, but maybe keep it simple here)",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 25
+      },
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d42d113_40630753",
+        "filename": "board/hammer/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-14T08:12:27Z",
+      "side": 1,
+      "message": "Yeah that task stack size is too tight in the first place (even without added debugging).",
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cad985a_7c9f2f7c",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-14T08:12:27Z",
+      "side": 1,
+      "message": "That\u0027s one way do to it.\n\nThe other (more generic) way to do it is to fix i2c-stm32f0.c to be able to handle more than 255 bytes. It seems like that\u0027s what \"Bit 24 RELOAD: NBYTES reload mode\" is about.",
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a247a163_d7e400e5",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-14T08:12:27Z",
+      "side": 1,
+      "message": "2 forms of command are supported:",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f73d7b08_3f98cc4d",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-14T08:12:27Z",
+      "side": 1,
+      "message": "No need to say this.",
+      "range": {
+        "startLine": 18,
+        "startChar": 71,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e61bc1_2d5a9247",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-14T08:12:27Z",
+      "side": 1,
+      "message": "If the most significant bit is set (rc \u003e\u003d 0x80), this indicates that we want to read back more than 127 bytes, so the first byte of data contains rc1 (read count continuation), and the final read count will be (rc1 \u003c\u003c 7) | (rc \u0026 0x7F).\n\n(not fully satisfied by this text either...)",
+      "range": {
+        "startLine": 43,
+        "startChar": 66,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75abc8ac_c30a2aef",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-14T08:12:27Z",
+      "side": 1,
+      "message": "MAX(CONFIG_USB_I2C_MAX_WRITE_COUNT + 6, CONFIG_USB_I2C_MAX_READ_COUNT + 4)\n\n(need 6 extra bytes in the write case for the possibly longer header, while reply is always 4 bytes).",
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
