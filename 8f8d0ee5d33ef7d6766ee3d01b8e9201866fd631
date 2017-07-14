@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef556a3a_db8deb3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-14T00:12:30Z",
+      "side": 1,
+      "message": "Please file a bug to track.",
+      "revId": "8f8d0ee5d33ef7d6766ee3d01b8e9201866fd631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc7df585_616a8dc5",
+        "filename": "board/poppy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-14T00:12:30Z",
+      "side": 1,
+      "message": "I\u0027d define it just below CONFIG_ADC (at least keep this section in alphabetical order).",
+      "revId": "8f8d0ee5d33ef7d6766ee3d01b8e9201866fd631",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
