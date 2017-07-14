@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7a2da1cc_0861e4b3",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-14T00:43:34Z",
+      "side": 1,
+      "message": "We should probably switch to using a sleepmask specifically for physical presence stuff.",
+      "range": {
+        "startLine": 449,
+        "startChar": 16,
+        "endLine": 449,
+        "endChar": 42
+      },
+      "revId": "f02596a06e6a2a1ae8d168af4012bdd604d25376",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4f78bf9_c66971aa",
         "filename": "common/physical_presence.c",
         "patchSetId": 2
