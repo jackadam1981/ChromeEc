@@ -255,6 +255,30 @@
     },
     {
       "key": {
+        "uuid": "85510395_b6caa4ba",
+        "filename": "board/eve/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-14T17:08:49Z",
+      "side": 1,
+      "message": "Nevermind, please ignore this comment.",
+      "parentUuid": "f7602bab_f9d8f9a4",
+      "range": {
+        "startLine": 321,
+        "startChar": 1,
+        "endLine": 322,
+        "endChar": 35
+      },
+      "revId": "0643749a0ae43934745d05b4812568944b1deab3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9dbd602_32a173a4",
         "filename": "board/eve/led.c",
         "patchSetId": 4
