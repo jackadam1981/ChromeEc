@@ -11,6 +11,7 @@
  * Version 0: Initial/default revision.
  * Version 1: Control signals PP900_PLL_EN and PP900_PMU_EN
  *	      are merged with PP900_USB_EN.
+ * Version 2: Simplified power tree, fewer control signals.
  */
 
 #include "charge_state.h"
@@ -35,7 +36,6 @@
 
 /* Input state flags */
 #if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
-	#define IN_PGOOD_PP1800      POWER_SIGNAL_MASK(PP1800_PWR_GOOD)
 	#define IN_PGOOD_PP1250_S3   POWER_SIGNAL_MASK(PP1250_S3_PWR_GOOD)
 	#define IN_PGOOD_PP900_S0    POWER_SIGNAL_MASK(PP900_S0_PWR_GOOD)
 #else
@@ -48,7 +48,7 @@
 
 /* Rails requires for S3 and S0 */
 #if CONFIG_CHIPSET_POWER_SEQ_VERSION == 2
-	#define IN_PGOOD_S3    (IN_PGOOD_PP1800 | IN_PGOOD_PP1250_S3)
+	#define IN_PGOOD_S3    (IN_PGOOD_PP1250_S3)
 	#define IN_PGOOD_S0    (IN_PGOOD_S3 | IN_PGOOD_PP900_S0 | IN_PGOOD_AP)
 #else
 	#define IN_PGOOD_S3    (IN_PGOOD_PP5000)
@@ -189,9 +189,10 @@ void chipset_force_shutdown(void)
 #define SYS_RST_HOLD_US (1 * MSEC)
 void chipset_reset(int cold_reset)
 {
+#ifdef CONFIG_CMD_RTC
 	/* Print out the RTC to help correlate resets in logs. */
 	print_system_rtc(CC_CHIPSET);
-
+#endif
 	/* TODO: handle cold_reset */
 	CPRINTS("%s(%d)", __func__, cold_reset);
 
@@ -466,8 +467,13 @@ DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, power_button_changed, HOOK_PRIO_DEFAULT);
 
 static void lid_changed(void)
 {
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+#ifdef CONFIG_LID_SWITCH
 	/* Power-up from off on lid open */
-	if (lid_is_open() && chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		if (!lid_is_open())
+			return;
+#endif
 		chipset_exit_hard_off();
+	}
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, lid_changed, HOOK_PRIO_DEFAULT);
