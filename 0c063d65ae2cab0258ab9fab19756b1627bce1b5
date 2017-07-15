@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c39ef834_cb020b3c",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-15T00:11:10Z",
+      "side": 1,
+      "message": "Is flashing the ec over uart included in this?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 39
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c4d2ce5_65193937",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-15T00:11:10Z",
+      "side": 1,
+      "message": "We have that special board id mismatch case where if there is a board id mismatch, and cr50 detects that it just recovered from a rollback, Cr50 will still continue running the mismatched image, but it will disable all tpm commands.\n\nWe need to make sure in that locked down mode we still disable CCD. Should we be doing something special here for that case?",
+      "range": {
+        "startLine": 378,
+        "startChar": 12,
+        "endLine": 378,
+        "endChar": 27
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "088fb2b0_9ca2825f",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-15T00:11:10Z",
+      "side": 1,
+      "message": "Do we ever want to allow unlock without tpm wipe?",
+      "range": {
+        "startLine": 587,
+        "startChar": 6,
+        "endLine": 587,
+        "endChar": 55
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
