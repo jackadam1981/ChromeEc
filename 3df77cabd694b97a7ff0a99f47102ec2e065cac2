@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "911c1c1b_354cf4b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-16T18:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5910eb1_447550ea",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "3df77cabd694b97a7ff0a99f47102ec2e065cac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b56aceb_d7cb935f",
         "filename": "power/rk3399.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-16T16:53:38Z",
       "side": 1,
       "message": "Can this entire routine be behind CONFIG_LID_SWITCH? If we don\u0027t have a lid, HOOK_LID_CHANGE will never be called, right?",
+      "range": {
+        "startLine": 468,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 62
+      },
+      "revId": "3df77cabd694b97a7ff0a99f47102ec2e065cac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf512474_52af7a84",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-16T18:40:57Z",
+      "side": 1,
+      "message": "Right.",
+      "parentUuid": "7b56aceb_d7cb935f",
       "range": {
         "startLine": 468,
         "startChar": 0,
