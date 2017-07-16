@@ -213,6 +213,11 @@
 
 #define RT946X_MASK_BATNTC_FAULT	0x70
 
+/* ========== CHGSTATC 0x50 ============ */
+#define RT946X_SHIFT_PWR_RDY    7
+
+#define RT946X_MASK_PWR_RDY     (1 << RT946X_SHIFT_PWR_RDY)
+
 /* ========== CHGFAULT 0x51 ============ */
 #define RT946X_SHIFT_CHG_VSYSUV	4
 #define RT946X_SHIFT_CHG_VSYSOV	5
@@ -236,5 +241,16 @@
 	#define RT946X_CHIP_REV		0x05
 	#define RT946X_ADDR		(0x5B << 1)
 #endif
+
+/* RT946x specific interface functions */
+
+/* Enable/Disable rt946x (in charger or boost mode) */
+int rt946x_enable_charger_boost(int en);
+
+/*
+ * Return 1 if VBUS is ready, which means
+ * UVLO < VBUS < VOVP && VBUS > BATS + VSLP
+ */
+int rt946x_is_vbus_ready(void);
 
 #endif /* __CROS_EC_RT946X_H */
