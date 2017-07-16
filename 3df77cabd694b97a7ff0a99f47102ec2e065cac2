@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5910eb1_447550ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-16T16:53:38Z",
+      "side": 1,
+      "message": "This is not really related to stm32 directly. May want to rephrase things, \"Support new board configuration\" maybe.",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "3df77cabd694b97a7ff0a99f47102ec2e065cac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b56aceb_d7cb935f",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-16T16:53:38Z",
+      "side": 1,
+      "message": "Can this entire routine be behind CONFIG_LID_SWITCH? If we don\u0027t have a lid, HOOK_LID_CHANGE will never be called, right?",
+      "range": {
+        "startLine": 468,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 62
+      },
+      "revId": "3df77cabd694b97a7ff0a99f47102ec2e065cac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
