@@ -10,13 +10,8 @@
 #include "chipset.h"
 #include "hooks.h"
 #include "led_common.h"
-#include "lid_switch.h"
 #include "pwm.h"
 #include "util.h"
-
-/* LEDs on Scarlet are active low. */
-#define BAT_LED_ON 0
-#define BAT_LED_OFF 1
 
 const enum ec_led_id supported_led_ids[] = { EC_LED_ID_BATTERY_LED };
 
@@ -30,29 +25,18 @@ enum led_color {
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
 
-static int bat_led_set_color(enum led_color color)
+/* Color v.s. brightness */
+static const uint8_t color_brightness[LED_COLOR_COUNT][2] = {
+	[LED_OFF]   = {100, 100},
+	[LED_RED]   = {80,  100},
+	[LED_AMBER] = {80,  80},
+	[LED_GREEN] = {100, 80},
+};
+
+static void bat_led_set_color(enum led_color color)
 {
-	switch (color) {
-	case LED_OFF:
-		gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_OFF);
-		gpio_set_level(GPIO_BAT_LED_RED, BAT_LED_OFF);
-		break;
-	case LED_RED:
-		gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_OFF);
-		gpio_set_level(GPIO_BAT_LED_RED, BAT_LED_ON);
-		break;
-	case LED_AMBER:
-		gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_ON);
-		gpio_set_level(GPIO_BAT_LED_RED, BAT_LED_ON);
-		break;
-	case LED_GREEN:
-		gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_ON);
-		gpio_set_level(GPIO_BAT_LED_RED, BAT_LED_OFF);
-		break;
-	default:
-		return EC_ERROR_UNKNOWN;
-	}
-	return EC_SUCCESS;
+	pwm_set_duty(PWM_CH_LED_RED, color_brightness[color][0]);
+	pwm_set_duty(PWM_CH_LED_GREEN, color_brightness[color][1]);
 }
 
 static void scarlet_led_set_battery(void)
@@ -101,24 +85,29 @@ static void scarlet_led_set_battery(void)
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	if (led_id == EC_LED_ID_BATTERY_LED) {
-		brightness_range[EC_LED_COLOR_RED] = 1;
-		brightness_range[EC_LED_COLOR_GREEN] = 1;
+		brightness_range[EC_LED_COLOR_RED] = 100;
+		brightness_range[EC_LED_COLOR_GREEN] = 100;
 	}
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	if (led_id == EC_LED_ID_BATTERY_LED) {
-		gpio_set_level(GPIO_BAT_LED_RED,
-			       (brightness[EC_LED_COLOR_RED] != 0) ?
-				BAT_LED_ON : BAT_LED_OFF);
-		gpio_set_level(GPIO_BAT_LED_GREEN,
-			       (brightness[EC_LED_COLOR_GREEN] != 0) ?
-				BAT_LED_ON : BAT_LED_OFF);
+		pwm_set_duty(PWM_CH_LED_RED, brightness[EC_LED_COLOR_RED]);
+		pwm_set_duty(PWM_CH_LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
 		return EC_SUCCESS;
 	}
 	return EC_ERROR_UNKNOWN;
 }
+
+static void led_init(void)
+{
+	pwm_enable(PWM_CH_LED_RED, 1);
+	pwm_enable(PWM_CH_LED_GREEN, 1);
+	bat_led_set_color(LED_OFF);
+}
+/* After pwm_pin_init() */
+DECLARE_HOOK(HOOK_INIT, led_init, HOOK_PRIO_DEFAULT);
 
 /* Called by hook task every 1 sec */
 static void led_second(void)
