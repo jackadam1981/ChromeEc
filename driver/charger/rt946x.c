@@ -187,6 +187,7 @@ static inline int rt946x_enable_wdt(int en)
 		(RT946X_REG_CHGCTRL13, RT946X_MASK_WDT_EN);
 }
 
+/* Enable high-impedance mode */
 static inline int rt946x_enable_hz(int en)
 {
 	return (en ? rt946x_set_bit : rt946x_clr_bit)
@@ -713,3 +714,22 @@ static void rt946x_init(void)
 	CPRINTF("Device ID(0x%02X) initialized\n", RT946X_VENDOR_ID);
 }
 DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_LAST);
+
+/* Non-standard interface functions */
+
+int rt946x_enable_charger_boost(int en)
+{
+	return (en ? rt946x_set_bit : rt946x_clr_bit)
+		(RT946X_REG_CHGCTRL2, RT946X_MASK_CHG_EN);
+}
+
+int rt946x_is_vbus_ready(void)
+{
+	int rv;
+	int val = 0;
+
+	rv = rt946x_read8(RT946X_REG_CHGSTATC, &val);
+	val = (val & RT946X_MASK_PWR_RDY) >> RT946X_SHIFT_PWR_RDY;
+
+	return rv ? -1 : val;
+}
