@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db659739_509d43b1",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-17T17:32:35Z",
+      "side": 1,
+      "message": "scarlet?",
+      "range": {
+        "startLine": 6,
+        "startChar": 21,
+        "endLine": 6,
+        "endChar": 35
+      },
+      "revId": "01590dd03743472d6aa69f816c0bd3d9081916f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed0c7122_59c46d24",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-17T17:32:35Z",
+      "side": 1,
+      "message": "define instead?",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "01590dd03743472d6aa69f816c0bd3d9081916f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5f90cc0_54bc23ac",
+        "filename": "board/scarlet/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-17T17:32:35Z",
+      "side": 1,
+      "message": "get rid of the spaces around the assignments.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "01590dd03743472d6aa69f816c0bd3d9081916f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10a0d15f_a9025cb8",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-17T17:32:35Z",
+      "side": 1,
+      "message": "nit: add your username or a bug in parens to the the TODO.",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "01590dd03743472d6aa69f816c0bd3d9081916f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
