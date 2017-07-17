@@ -389,6 +389,8 @@ static int flash_write_pstate(uint32_t flags)
 {
 	const uint32_t new_pstate = PSTATE_MAGIC_LOCKED;
 
+	hook_notify(HOOK_FLASH_OPS);
+
 	/* Only check the flags we write to pstate */
 	flags &= EC_FLASH_PROTECT_RO_AT_BOOT;
 
@@ -461,6 +463,8 @@ int flash_read(int offset, int size, char *data)
 #ifdef CONFIG_MAPPED_STORAGE
 	const char *src;
 
+	hook_notify(HOOK_FLASH_OPS);
+
 	if (flash_dataptr(offset, size, 1, &src) < 0)
 		return EC_ERROR_INVAL;
 
@@ -469,12 +473,15 @@ int flash_read(int offset, int size, char *data)
 	flash_lock_mapped_storage(0);
 	return EC_SUCCESS;
 #else
+	hook_notify(HOOK_FLASH_OPS);
 	return flash_physical_read(offset, size, data);
 #endif
 }
 
 int flash_write(int offset, int size, const char *data)
 {
+	hook_notify(HOOK_FLASH_OPS);
+
 	if (!flash_range_ok(offset, size, CONFIG_FLASH_WRITE_SIZE))
 		return EC_ERROR_INVAL;  /* Invalid range */
 
@@ -495,6 +502,8 @@ int flash_write(int offset, int size, const char *data)
 
 int flash_erase(int offset, int size)
 {
+	hook_notify(HOOK_FLASH_OPS);
+
 #ifndef CONFIG_FLASH_MULTIPLE_REGION
 	if (!flash_range_ok(offset, size, CONFIG_FLASH_ERASE_SIZE))
 		return EC_ERROR_INVAL;  /* Invalid range */
@@ -517,6 +526,7 @@ int flash_erase(int offset, int size)
 
 const char *flash_read_serial(void)
 {
+	hook_notify(HOOK_FLASH_OPS);
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
 	return flash_read_pstate_serial();
 #else
@@ -526,6 +536,7 @@ const char *flash_read_serial(void)
 
 int flash_write_serial(const char *serialno)
 {
+	hook_notify(HOOK_FLASH_OPS);
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
 	return flash_write_pstate_serial(serialno);
 #else
@@ -1193,6 +1204,7 @@ static int flash_command_erase(struct host_cmd_handler_args *args)
 	const struct ec_params_flash_erase *p = args->params;
 	int rc = EC_RES_SUCCESS, cmd = FLASH_ERASE_SECTOR;
 	uint32_t offset;
+
 #ifdef CONFIG_FLASH_DEFERRED_ERASE
 	const struct ec_params_flash_erase_v1 *p_1 = args->params;
 
