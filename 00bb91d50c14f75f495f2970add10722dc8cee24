@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3ebef94_cf2b8d6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-07-17T19:55:40Z",
+      "side": 1,
+      "message": "This should say master if you tested/created it in master.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "00bb91d50c14f75f495f2970add10722dc8cee24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbd79c85_e44a3bac",
+        "filename": "board/scarlet/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-07-17T19:55:40Z",
+      "side": 1,
+      "message": "There should be some comments, maybe some more abstraction of what this actually is.\n\nIt took me a while to realize the pwm is active low, so 80% duty cycle means 20% brightness and 100% duty means off.\n\nAlso, why did you pick 20%?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "00bb91d50c14f75f495f2970add10722dc8cee24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
