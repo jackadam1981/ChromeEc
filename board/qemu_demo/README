@@ -1,0 +1,116 @@
+EC on QEMU
+
+CONTENTS OF THIS FILE
+---------------------
+
+ * Introduction
+ * Requirements
+ * Virtual Hardware
+ * Building
+ * Testing
+
+INTRODUCTION
+------------
+
+Using QEMU to run Embedded Controller (EC) code greatly simplifies and lowers
+the learning curve of noobies because no hardware and device programmers are
+needed. This method of running EC code is also useful to the experienced
+developer by enabling them to write code for virtual hardware and to test the
+code under different memory configurations. For example, code could be
+developed for a new EC before the EC was designed into a device.
+
+REQUIREMENTS
+------------
+
+The following are required:
+
+ * Git
+
+ * EC codebase (https://www.chromium.org/chromium-os/ec-development)
+
+VIRTUAL HARDWARE
+----------------
+
+The "QEMU" window is the user interface to the virtual hardware. It has
+a chromeos lightbar, LCD, 8-LEDs, temperature sensor, and 4-button arrow
+key pad.
+
+ * Lightbar    - typical chromeos lightbar connected to I2C
+                 There are four led segments located at the top of the window.
+
+ * LCD         - 132 x 64 Dot Matrix display connected to I2C
+		 The display is located just under the lightbar.
+		 Controller for the LCD is SSD0303
+
+ * LEDs        - 8 LEDs connected to GPIOs
+		 The LEDs are located at the bottom of the window.
+
+ * Temp Sensor - Temp Sensor connected to an ADC that returns an increasing
+		 value
+
+ * Key Pad     - 4-button arrow key pad connected to GPIO
+		 These buttons are mapped to the arrow keys on the keyboard.
+
+BUILDING
+--------
+
+Build QEMU
+ * download qemu-2.9.0.tar.xy from www.qemu.org
+
+ * tar xf qemu-2.9.0.tar.xy
+
+ * cd qemu-2.9.0
+
+ * git apply <path_to_ec>/ec/board/qemu_demo/qemu_2.9.0.patch
+
+ * ./configure --target-list=arm-softmmu
+
+ * make -j
+
+Build qemu_demo
+ * cd <path_to_ec>/ec
+
+ * make -j BOARD=qemu_demo
+
+TESTING
+-------
+
+ * go to the qemu_2.9.0 directory
+
+ * ./arm-softmmu/qemu-system-arm -M qemu_demo \
+      -kernel <path_to_ec>/ec/build/qemu_demo/ec.bin -serial stdio -show-cursor
+
+ * A window titled "QEMU" should open with "EC ON QEMU" displayed and the
+   lightbar flashing multiple colors. The console should display something
+   similar to the following:
+
+      --- UART initialized after reboot ---
+      [Reset cause: unknown]
+      [Image: RW, qemu_demo_v1.1.6600-deb50d961+ 2017-07-07 11:18:02]
+      [0.000000 Inits done]
+      [0.000000 LB task starting]
+      [0.000000 LB state initialized]
+      [0.000000 LB running cur_seq 1 S5. prev_seq 1 S5]
+      [0.000000 LB_off]
+      Console is enabled; type HELP for help.
+      > [0.000000 LB task starting]
+      [0.000000 LB state initialized]
+      [0.000000 LB running cur_seq 1 S5. prev_seq 1 S5]
+      [0.000000 LB_off]
+
+
+   To use the arrow keys, give the QEMU window focus by clicking the
+   mouse inside the window. To exit prest CTRL-ALT
+
+     Pressing the up-arrow key should toggle led0 and led1.
+     Pressing the right-arrow key should toggle led2 and led3.
+     Pressing the down-arrow key should toggle led4 and led5.
+     Pressing the left-arrow key should toggle led6 and led7.
+
+
+   At the console, type the following:
+      > lcdprint 0 This is cool
+      > lcdprint 1 Line 2 :-)
+
+   To read the increasing value from the Temp Sensor, type the following:
+      > adc
