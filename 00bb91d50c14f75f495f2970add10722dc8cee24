@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5bca3883_90c055c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-07-17T20:42:33Z",
+      "side": 1,
+      "message": "Yeah, generally BRANCH should match the actual branch you actually uploaded it as the first time. So in this case it\u0027s master.\n\nIt\u0027s used for later figuring out where the original CL was if it was cherry-picked a bunch of times.",
+      "parentUuid": "b57dd9b6_d3ff99b8",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "00bb91d50c14f75f495f2970add10722dc8cee24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbd79c85_e44a3bac",
         "filename": "board/scarlet/led.c",
         "patchSetId": 3
