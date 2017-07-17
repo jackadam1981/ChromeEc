@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2239180a_e2c65d4d",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-17T18:33:48Z",
+      "side": 1,
+      "message": "This will evaluate to true, maybe you should change it.\n\nYou can re-write this entire function to something like:\n\nint val;\n\nreturn rt946x_read8(RT946X_REG_CHGSTATC, \u0026val) ?\n          0 : !!(val \u0026 RT946X_MASK_PWR_RDY);",
+      "range": {
+        "startLine": 734,
+        "startChar": 13,
+        "endLine": 734,
+        "endChar": 15
+      },
+      "revId": "6efe9b04b4045e53013f766a84c33cfb2ed81caf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
