@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5cac52ea_005a5f0f",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-17T17:51:15Z",
+      "side": 1,
+      "message": "Then we\u0027ll need to define TIM_WATCHDOG. I can\u0027t find any 32-bit timer other than TIM2, which is already in use. Can we use 16-bit counter for watchdog?",
+      "parentUuid": "ed0c7122_59c46d24",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "01590dd03743472d6aa69f816c0bd3d9081916f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5f90cc0_54bc23ac",
         "filename": "board/scarlet/build.mk",
         "patchSetId": 4
