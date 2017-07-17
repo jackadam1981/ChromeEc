@@ -163,6 +163,13 @@ enum hook_type {
 	HOOK_BATTERY_SOC_CHANGE,
 
 	/*
+	 * Flash operations including read/write/erase is initiated.
+	 *
+	 * Hook routines are called from the board specific tasks.
+	 */
+	HOOK_FLASH_OPS,
+
+	/*
 	 * Periodic tick, every HOOK_TICK_INTERVAL.
 	 *
 	 * Hook routines will be called from the TICK task.
