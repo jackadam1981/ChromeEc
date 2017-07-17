@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3117d3ba_f36fb6e9",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-17T22:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db659739_509d43b1",
+      "range": {
+        "startLine": 6,
+        "startChar": 21,
+        "endLine": 6,
+        "endChar": 35
+      },
+      "revId": "01590dd03743472d6aa69f816c0bd3d9081916f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "658394e2_c69e50dd",
         "filename": "board/scarlet/board.h",
         "patchSetId": 4
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "f705c771_511b027e",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-17T22:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d77690c6_a834b88e",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 6
+      },
+      "revId": "01590dd03743472d6aa69f816c0bd3d9081916f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5f90cc0_54bc23ac",
         "filename": "board/scarlet/build.mk",
         "patchSetId": 4
@@ -130,6 +178,30 @@
       "writtenOn": "2017-07-17T17:32:35Z",
       "side": 1,
       "message": "get rid of the spaces around the assignments.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "01590dd03743472d6aa69f816c0bd3d9081916f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf9ca3ab_be6d61c2",
+        "filename": "board/scarlet/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-17T22:25:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5f90cc0_54bc23ac",
       "range": {
         "startLine": 10,
         "startChar": 0,
@@ -177,6 +249,30 @@
       "side": 1,
       "message": "Nevermind, I see this is removed in a later patchset.",
       "parentUuid": "10a0d15f_a9025cb8",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "01590dd03743472d6aa69f816c0bd3d9081916f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81f5531f_6d989bed",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-17T22:25:22Z",
+      "side": 1,
+      "message": "There are still other TODOs, but I fixed them.",
+      "parentUuid": "b31904b4_1cc2a3d1",
       "range": {
         "startLine": 66,
         "startChar": 4,
