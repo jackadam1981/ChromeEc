@@ -164,6 +164,30 @@
     },
     {
       "key": {
+        "uuid": "14a29446_68570a07",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2017-07-18T01:06:18Z",
+      "side": 1,
+      "message": "I don\u0027t think we have anything concrete now, since CCD isn\u0027t fully-developed. I guess we can always change this later when the need arises?",
+      "parentUuid": "d2025bbe_140b957f",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9fe0c59_1a1e53dd",
         "filename": "board/scarlet/gpio.inc",
         "patchSetId": 6
