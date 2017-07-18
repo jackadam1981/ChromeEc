@@ -11,6 +11,7 @@
 /* Optional modules */
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
+#define CONFIG_BMI160_ORIENTATION_SENSOR
 #define CONFIG_CHIPSET_RK3399
 #define CONFIG_CMD_ACCELS
 #define CONFIG_I2C
@@ -30,6 +31,13 @@
 
 #undef  CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
+
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+#define CONFIG_GESTURE_HOST_DETECTION
+#define CONFIG_GESTURE_ORIENTATION 0
+#define CONFIG_GESTURE_DETECTION_MASK \
+	(1 << CONFIG_GESTURE_ORIENTATION)
+#endif
 
 /* Region sizes are no longer a power of 2 so we can't enable MPU */
 #undef  CONFIG_MPU
