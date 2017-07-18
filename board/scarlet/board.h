@@ -10,6 +10,7 @@
 
 /* Optional modules */
 #define CONFIG_ADC
+#define CONFIG_BMI160_ORIENTATION_SENSOR
 #define CONFIG_CHIPSET_RK3399
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_RTC
@@ -30,6 +31,13 @@
 #define CONFIG_SPI_FLASH_REGS
 
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
+
+#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+#define CONFIG_GESTURE_HOST_DETECTION
+#define CONFIG_GESTURE_ORIENTATION 0
+#define CONFIG_GESTURE_DETECTION_MASK \
+	(1 << CONFIG_GESTURE_ORIENTATION)
+#endif
 
 /*
  * We are code space-constrained on scarlet, so take 10K that is normally used
