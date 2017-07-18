@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "092b1a3b_255abd2e",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-18T23:44:30Z",
+      "side": 1,
+      "message": "why not make last_password_time a uint32_t as well? (and keep its scope to this function while you are at it).",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 0
+      },
+      "revId": "174c82171fce70c39d711feafd99572c3b4d32a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
