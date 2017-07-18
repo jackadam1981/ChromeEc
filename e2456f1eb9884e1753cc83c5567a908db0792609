@@ -236,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "cb86d8ba_c1149192",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-18T22:51:59Z",
+      "side": 1,
+      "message": "Shawn, can you confirm if we need it as an interrupt?",
+      "parentUuid": "884063e7_ee7edca2",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19ac2678_bfb3e312",
         "filename": "board/scarlet/gpio.inc",
         "patchSetId": 6
