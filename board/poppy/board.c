@@ -930,6 +930,25 @@ static void board_chipset_suspend(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
+static void board_chipset_startup(void)
+{
+	/*
+	 * Enable V5A in deep sleep state:
+	 *   VREN (bit 0) : EC_DS4 enable
+	 *   V5ADS3CNT (bits 1:0) : AUTO
+	 */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x41, 0x01);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x2a, 0x02);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
+
+static void board_chipset_shutdown(void)
+{
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x41, 0x0);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x2a, 0x0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
+
 int board_has_working_reset_flags(void)
 {
 	int version = system_get_board_version();
