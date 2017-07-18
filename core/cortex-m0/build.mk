@@ -15,7 +15,7 @@ CFLAGS_CPU+=-mno-unaligned-access
 
 ifneq ($(CONFIG_LTO),)
 CFLAGS_CPU+=-flto
-LDFLAGS_EXTRA+=-flto
+LDFLAGS_EXTRA+=-flto -g
 endif
 
 core-y=cpu.o init.o thumb_case.o div.o lmul.o ldivmod.o uldivmod.o
