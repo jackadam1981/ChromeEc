@@ -11,14 +11,15 @@
 /* Optional modules */
 #define CONFIG_ADC
 #define CONFIG_CHIPSET_RK3399
-#define CONFIG_CMD_RTC
+/*#define CONFIG_CMD_RTC */
 #define CONFIG_FPU
-#define CONFIG_HOSTCMD_RTC
+/*#define CONFIG_HOSTCMD_RTC*/
 #define CONFIG_HOSTCMD_SPS
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define CONFIG_I2C_VIRTUAL_BATTERY
 #define CONFIG_I2C_PASSTHRU_RESTRICTED
+#define CONFIG_KX022_ORIENTATION_SENSOR
 #define CONFIG_LED_COMMON
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_POWER_COMMON
@@ -30,6 +31,15 @@
 #define CONFIG_SPI_FLASH_REGS
 
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
+
+#ifdef CONFIG_KX022_ORIENTATION_SENSOR
+/* gesture engine is used for orientation processing */
+#define CONFIG_GESTURE_HOST_DETECTION
+#define CONFIG_GESTURE_DETECTION
+#define CONFIG_GESTURE_ORIENTATION 0
+#define CONFIG_GESTURE_DETECTION_MASK \
+	(1 << CONFIG_GESTURE_ORIENTATION)
+#endif
 
 /*
  * We are code space-constrained on kevin, so take 10K that is normally used
@@ -205,6 +215,8 @@
 #ifdef BOARD_GRU
 #undef CONFIG_CMD_I2C_XFER
 #undef CONFIG_CMD_SHMEM
+#undef CONFIG_CMD_ACCELSPOOF
+#undef CONFIG_CMD_CRASH
 #endif
 
 /*
