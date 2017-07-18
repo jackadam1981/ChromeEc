@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8014042a_942a146a",
+        "filename": "extra/usb_updater/curve25519.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-18T08:40:44Z",
+      "side": 1,
+      "message": "I guess static function doesn\u0027t need to declare at curve25519.h file, right?",
+      "range": {
+        "startLine": 831,
+        "startChar": 0,
+        "endLine": 831,
+        "endChar": 6
+      },
+      "revId": "95288fb23e034fc5836a819d8d8ff0f4f178ce20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
