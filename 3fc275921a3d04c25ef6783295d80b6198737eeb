@@ -261,6 +261,24 @@
       "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc214b0c_07632929",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T18:59:55Z",
+      "side": 1,
+      "message": "disable_sensor also has a retry mechanism, although it need a msleep when the read fails.",
+      "parentUuid": "a3a1b2eb_656421b1",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
