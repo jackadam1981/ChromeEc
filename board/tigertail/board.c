@@ -354,6 +354,47 @@ void set_mux_state(int state)
 		set_led_b(1, 0, 0);
 }
 
+
+/* On button press, toggle between mux A, B, off. */
+static int button_debounced = 1;
+void button_interrupt_deferred(void)
+{
+	static int buttontoggle; /* = 0 */
+
+	switch (mux_state) {
+	case MUX_A:
+		set_mux_state(MUX_OFF);
+		buttontoggle = 0;
+		break;
+
+	case MUX_B:
+		set_mux_state(MUX_OFF);
+		buttontoggle = 1;
+		break;
+
+	case MUX_OFF:
+		if (buttontoggle)
+			set_mux_state(MUX_A);
+		else
+			set_mux_state(MUX_B);
+		buttontoggle = !buttontoggle;
+		break;
+	}
+
+	button_debounced = 1;
+}
+DECLARE_DEFERRED(button_interrupt_deferred);
+
+/* On button press, toggle between mux A, B, off. */
+void button_interrupt(enum gpio_signal signal)
+{
+	if (!button_debounced)
+		return;
+
+	button_debounced = 0;
+	hook_call_deferred(&button_interrupt_deferred_data, 0);
+}
+
 static int command_mux(int argc, char **argv)
 {
 	char *mux_state_str = "off";
@@ -406,5 +447,7 @@ static void board_init(void)
 	ina2xx_init(0, 0x8000, INA2XX_CALIB_1MA(15 /*mOhm*/));
 	ina2xx_init(1, 0x8000, INA2XX_CALIB_1MA(15 /*mOhm*/));
 	ina2xx_init(4, 0x8000, INA2XX_CALIB_1MA(15 /*mOhm*/));
+
+	gpio_enable_interrupt(GPIO_BUTTON_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
