@@ -140,6 +140,30 @@
     },
     {
       "key": {
+        "uuid": "d2025bbe_140b957f",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-18T00:44:34Z",
+      "side": 1,
+      "message": "I saw this has been a non-interrupt gpio_input in other projects with cr50. What do we plan to do in this interrupt handler?",
+      "parentUuid": "560cc1c6_f6cda3b9",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9fe0c59_1a1e53dd",
         "filename": "board/scarlet/gpio.inc",
         "patchSetId": 6
