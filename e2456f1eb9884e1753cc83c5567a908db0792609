@@ -254,6 +254,30 @@
       "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "843b7814_ac9bcaf6",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-18T18:32:08Z",
+      "side": 1,
+      "message": "I took cue from Ryu, which has a similar power architecture. Vincent, could you confirm if we can always return true here?",
+      "parentUuid": "3c466f43_8f43e669",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 55
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
