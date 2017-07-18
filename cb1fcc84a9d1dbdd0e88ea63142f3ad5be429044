@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d1c386b_0badc37c",
+        "filename": "common/physical_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-18T20:36:53Z",
+      "side": 1,
+      "message": "They exist to ensure a smooth transition back to the IDLE state, even if APIs are called by higher-priority tasks (console or TPM) during one of the deferred function calls.  For example:\n\n1) ccdunlock requests short sequence\n2) physical_detect_done() is about to call the callback\n3) some higher-priority task does physical_detect_abort()\n4) some higher-priority task does ccdopen, which requests a long sequence\n5) physical_detect_done() calls the callback\n\nIf aborting went directly back to IDLE, then after step 3 the state machine would be idle.  So in step 4 the ccdopen request would succeed, and would set the callback to ccdopen_done.  But then when we return to step 5 it would call ccdopen_done(), not ccdunlock_done().\n\nI don\u0027t want to hold the mutex during the entire of physical_detect_done() because then physical_detect_start() and physical_detect_abort() will block until the callback finishes, instead of being able to error out with EC_ERROR_BUSY.\n\nThere are a couple of other race conditions like this.",
+      "parentUuid": "4a456afd_c006da79",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "cb1fcc84a9d1dbdd0e88ea63142f3ad5be429044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "030e94ad_7f4ba905",
         "filename": "common/physical_presence.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-18T19:19:47Z",
       "side": 1,
       "message": "why does this have to be a deferred function? \n\ncalling deferred functions from deferred function context seems a bit too involved for this, no?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 1
+      },
+      "revId": "cb1fcc84a9d1dbdd0e88ea63142f3ad5be429044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3e546cc_e7623bd2",
+        "filename": "common/physical_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-18T20:36:53Z",
+      "side": 1,
+      "message": "In a long sequence, you have to wait 60 seconds after the last press before the next press counts.  So I defer printing the prompt until the press will actually count.",
+      "parentUuid": "030e94ad_7f4ba905",
       "range": {
         "startLine": 119,
         "startChar": 0,
