@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "8197c327_603e595c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-18T20:07:48Z",
+      "side": 1,
+      "message": "how would RMA process create these conditions?",
+      "range": {
+        "startLine": 1418,
+        "startChar": 1,
+        "endLine": 1420,
+        "endChar": 0
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83bc4811_7ffc60e6",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-18T20:07:48Z",
+      "side": 1,
+      "message": "I know EC_SUCCESS is 0, but it cleaner to explicitly compare the return value.",
+      "range": {
+        "startLine": 226,
+        "startChar": 5,
+        "endLine": 226,
+        "endChar": 21
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b071d40_d1ccbbcd",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-18T20:07:48Z",
+      "side": 1,
+      "message": "I am not sure this is the best way to do it: with this condition we\u0027d never be able to debug fwmp behavior using a DBG cr50 image.\n\nNote that transition from prod to DBG and back wipes out NVMEM anyways, so changing the image type on the cr50 will make sure that FWMP is not present.\n\nWe can always wipe out nvmem using a console command (or could add a specific command to the DBG image to erase FWMP if needed)",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 15
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c39ef834_cb020b3c",
         "filename": "common/ccd_config.c",
         "patchSetId": 5
@@ -42,6 +111,29 @@
         "startChar": 0,
         "endLine": 135,
         "endChar": 39
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e3fa9a_5350e1ff",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-18T20:07:48Z",
+      "side": 1,
+      "message": "do you really need 64 bits here. Who cares if at wrap around time one attempt would be allowed sooner than required?",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 34
       },
       "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -136,6 +228,52 @@
         "startChar": 6,
         "endLine": 587,
         "endChar": 55
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09fb20c3_d1a9d659",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-18T20:07:48Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be great if this section was generated automatically from hook_ptrs hook_list or enum hook_type  contents.",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 6
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a04a986_b6f3489a",
+        "filename": "include/case_closed_debug.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-18T20:07:48Z",
+      "side": 1,
+      "message": "why is there a distinction between \u0027temporarily\u0027 and \u0027at boot\u0027 cases and how does one tell between the two cases?",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 38
       },
       "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",

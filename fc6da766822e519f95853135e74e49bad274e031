@@ -233,6 +233,29 @@
       "revId": "fc6da766822e519f95853135e74e49bad274e031",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d9bda1b_0f4e4257",
+        "filename": "include/case_closed_debug.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-18T20:07:48Z",
+      "side": 1,
+      "message": "no need to change",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "fc6da766822e519f95853135e74e49bad274e031",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
