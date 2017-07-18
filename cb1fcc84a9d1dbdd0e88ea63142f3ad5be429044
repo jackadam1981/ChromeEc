@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a456afd_c006da79",
+        "filename": "common/physical_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-18T19:19:47Z",
+      "side": 1,
+      "message": "why are FINISHING and ABORT states needed - no one in the code seems to care?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "cb1fcc84a9d1dbdd0e88ea63142f3ad5be429044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "030e94ad_7f4ba905",
+        "filename": "common/physical_presence.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-18T19:19:47Z",
+      "side": 1,
+      "message": "why does this have to be a deferred function? \n\ncalling deferred functions from deferred function context seems a bit too involved for this, no?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 1
+      },
+      "revId": "cb1fcc84a9d1dbdd0e88ea63142f3ad5be429044",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
