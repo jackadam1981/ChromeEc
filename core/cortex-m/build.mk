@@ -19,7 +19,7 @@ CFLAGS_CPU+=$(CFLAGS_FPU-y)
 
 ifneq ($(CONFIG_LTO),)
 CFLAGS_CPU+=-flto
-LDFLAGS_EXTRA+=-flto
+LDFLAGS_EXTRA+=-flto -g
 endif
 
 core-y=cpu.o init.o ldivmod.o uldivmod.o
