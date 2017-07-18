@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2755500_539670d3",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-18T22:50:40Z",
+      "side": 1,
+      "message": "No.\nI plan to update it with a follow-up patch when a new fuel gauge is added.",
+      "parentUuid": "c59ab7aa_d9e78d54",
+      "range": {
+        "startLine": 19,
+        "startChar": 20,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "627834f9_f419b1c9",
         "filename": "board/scarlet/board.c",
         "patchSetId": 6
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "d0202136_46f413a9",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-18T22:50:40Z",
+      "side": 1,
+      "message": "I don\u0027t think so.\nI\u0027ll remove it.",
+      "parentUuid": "df9aaa11_b05eaf66",
+      "range": {
+        "startLine": 383,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 70
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "988066ee_bc5989d8",
         "filename": "board/scarlet/board.h",
         "patchSetId": 6
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "45e1bca8_7854caac",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-18T22:50:40Z",
+      "side": 1,
+      "message": "Probably not. But we don\u0027t need to fine-tune the configs in an already-bulky patch.",
+      "parentUuid": "988066ee_bc5989d8",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 29
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "071c2420_4baa0d25",
         "filename": "board/scarlet/board.h",
         "patchSetId": 6
@@ -105,6 +177,30 @@
       "writtenOn": "2017-07-18T22:27:27Z",
       "side": 1,
       "message": "This is not needed either, there is no SHI on this EC.",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 28
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5bd93d_592d35a8",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-18T22:50:40Z",
+      "side": 1,
+      "message": "Will fix it.",
+      "parentUuid": "071c2420_4baa0d25",
       "range": {
         "startLine": 153,
         "startChar": 0,
