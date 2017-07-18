@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "92b7279b_31f7be70",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-18T21:34:26Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "83bc4811_7ffc60e6",
+      "range": {
+        "startLine": 226,
+        "startChar": 5,
+        "endLine": 226,
+        "endChar": 21
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b071d40_d1ccbbcd",
         "filename": "board/cr50/wp.c",
         "patchSetId": 5
@@ -177,6 +201,30 @@
       "writtenOn": "2017-07-18T20:07:48Z",
       "side": 1,
       "message": "do you really need 64 bits here. Who cares if at wrap around time one attempt would be allowed sooner than required?",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 34
+      },
+      "revId": "0c063d65ae2cab0258ab9fab19756b1627bce1b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0436de1c_70610176",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-18T21:34:26Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "81e3fa9a_5350e1ff",
       "range": {
         "startLine": 165,
         "startChar": 0,
