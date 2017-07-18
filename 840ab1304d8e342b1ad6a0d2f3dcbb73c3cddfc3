@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfcaaaff_69c5462e",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-18T14:36:24Z",
+      "side": 1,
+      "message": "Maybe add a comment about why we can\u0027t just write the settings once and forget them?\n\nIIRC if we don\u0027t disable on shutdown V5A will stay on even in S5?",
+      "revId": "840ab1304d8e342b1ad6a0d2f3dcbb73c3cddfc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
