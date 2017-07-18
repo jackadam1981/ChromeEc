@@ -243,6 +243,24 @@
       "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3a1b2eb_656421b1",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-07-18T12:08:25Z",
+      "side": 1,
+      "message": "The original flow adds timeout to make sure that the sensor has booted.\n\nIf we remove timeout check from whoami check or put whoami read after reset,\nhow can we make sure that KXCJ9 has booted before issuing disable_sensor() ?",
+      "parentUuid": "7877fc94_18e315d0",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
