@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e48e9ec9_1607d235",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-07-18T16:21:01Z",
+      "side": 1,
+      "message": "I know you are just duplicating the logic, but why is this \u003e ? Shouldn\u0027t it be \u003e\u003d. VW_SIGNAL_BASE :\u003d GPIO_COUNT. As such GPIO_COUNT as index is never valid?",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "467600d5_ce931a0b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-07-18T16:21:01Z",
+      "side": 1,
+      "message": "Don\u0027t we want to warn when we observe SLP_S0_L \u003d\u003d 0 but power_get_host_sleep_state() !\u003d HOST_EVENT_S0IX_SUSPEND? That\u0027s an invalid combination, correct?",
+      "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14fac02f_db95777c",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-07-18T16:21:01Z",
+      "side": 1,
+      "message": "I don\u0027t understand this logic. Why does SLP_S3_L have anything to do with us transitioning? Shouldn\u0027t we always attempt a clean transition through S0ixS0 when we leave this state?",
+      "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
