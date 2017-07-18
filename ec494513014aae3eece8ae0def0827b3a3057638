@@ -1,0 +1,344 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "226603eb_af152d3e",
+        "filename": "board/kevin/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "put board.h change in separate CL, it reduces cherry-pick conflicts.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b8dff89_2583b313",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "guarantee there will be no error:\n\n[PORTRAIT_MODE] \u003d  { 0, 1, 0 },",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f9eeb56_b3acdc8e",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "2 spaces between code and comments.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bd248b3_ed967fbf",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "you can replace this loop by:\n(4 + rot..._v[0] + 2 * rot..._v[1]) % 5, assuming you choose the constant value wisely.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e6a516e_3ad0e7c6",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "put MOTIONSENSE_ORIENTATION_UNKNOWN at the end of the enum, so that you can use orientation as an array index.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c154a7a_eb58d416",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "put these CPRINT in behind _DEBUG_, as code space is usually tight.\n\nTo avoid a case, you can an array of strings and do CPRINTS(orientation_strings[GET_ORIENTATION(sensor)])",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "402dba8f_9a5dc341",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "should not happen, disable_sensor() should have been called before.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ece0c7e_6604626f",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "Could it work using __fls()?",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5352bb57_da099e14",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "cont int not needed.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "389f4f9f_8fcc7073",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "use a different variable (orientation and raw_orientation), orientation can contain raw and converted orientation.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a968950_698a8725",
+        "filename": "driver/accel_kionix.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "why inline?",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "370c6870_0b431ba0",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "Looking at other part of EC code, these function would be better defined as macros.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdd9a72e_a3edcc2b",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "could __fls work?",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62cdd534_d3b886dc",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "define all possibilities for completeness.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2efd4bc2_352d0ba5",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "define all possibilities for completeness.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72f6d296_bc48d60b",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "is there a duplicate between raw_orientation and the next 2 fields?",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57851f30_1f757688",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "remove: there is only one case out of 8 where it happens.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d48f944_f7440e12",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2904,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "other part of code use only one tab.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca45acc5_7ede48ba",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2068,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "put it at then end, you can use enum motionsensor as an array index.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbb5f5e8_8c9a1e15",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-18T22:02:23Z",
+      "side": 1,
+      "message": "don\u0027t put sensor specific code here. define ORIENTATION_CHANGED in the driver files.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
