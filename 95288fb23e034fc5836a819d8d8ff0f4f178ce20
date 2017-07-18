@@ -22,6 +22,30 @@
       "revId": "95288fb23e034fc5836a819d8d8ff0f4f178ce20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94a51fab_c15309a3",
+        "filename": "extra/usb_updater/curve25519.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-18T14:35:00Z",
+      "side": 1,
+      "message": "Right, the declaration was added by this CL https://chromium-review.googlesource.com/c/540962/.\n\n(and curve25519.c was copied before that refactoring)",
+      "parentUuid": "8014042a_942a146a",
+      "range": {
+        "startLine": 831,
+        "startChar": 0,
+        "endLine": 831,
+        "endChar": 6
+      },
+      "revId": "95288fb23e034fc5836a819d8d8ff0f4f178ce20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
