@@ -46,6 +46,23 @@
       "revId": "095d6446d5368a2bbc8e422973f2f61c997cb5a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7adb487f_8fd6403f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000030
+      },
+      "writtenOn": "2017-07-18T23:57:19Z",
+      "side": 1,
+      "message": "You probably already did, but can we verify that /dev/pstore/console-ramoops was preserved when using alt-volup-r to reboot the system?",
+      "revId": "095d6446d5368a2bbc8e422973f2f61c997cb5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
