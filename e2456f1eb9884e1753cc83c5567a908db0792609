@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "4a77a463_b2774def",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-18T23:56:11Z",
+      "side": 1,
+      "message": "Making this a non-interrupt makes EC_SWITCH_WRITE_PROTECT_DISABLED status unreliable. I don\u0027t see any code that\u0027s currently using EC_SWITCH_WRITE_PROTECT_DISABLED, and EC_CMD_FLASH_PROTECT makes it redundant. Let\u0027s open a new crbug to remove EC_SWITCH_WRITE_PROTECT_DISABLED entirely.",
+      "parentUuid": "cb86d8ba_c1149192",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19ac2678_bfb3e312",
         "filename": "board/scarlet/gpio.inc",
         "patchSetId": 6
@@ -481,6 +505,30 @@
       "side": 1,
       "message": "I took cue from Ryu, which has a similar power architecture. Vincent, could you confirm if we can always return true here?",
       "parentUuid": "3c466f43_8f43e669",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 55
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28fde6a4_3084b06e",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-18T23:56:11Z",
+      "side": 1,
+      "message": "Let\u0027s see, when could this possibly matter? If I attach a powered hub and go to S3, suppose the hub requests a VCONN swap. Will VCONN be sufficient to power the hub and a USB peripheral to possibly wake from S3 later?",
+      "parentUuid": "843b7814_ac9bcaf6",
       "range": {
         "startLine": 168,
         "startChar": 0,
