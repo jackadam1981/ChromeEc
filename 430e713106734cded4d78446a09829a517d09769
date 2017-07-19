@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57057636_ffdadc40",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T21:14:58Z",
+      "side": 1,
+      "message": "Arguably this should be declared in the if block only.",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 75
+      },
+      "revId": "430e713106734cded4d78446a09829a517d09769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be8232a6_d7576a02",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T21:14:58Z",
+      "side": 1,
+      "message": "[[ -n \"${!SERVO_VARS_NAME}\" ]] ?\n\n(or !\u003d \"\" which is used elsewhere)",
+      "revId": "430e713106734cded4d78446a09829a517d09769",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
