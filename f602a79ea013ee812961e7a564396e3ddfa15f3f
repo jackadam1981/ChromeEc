@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9ee5bb8_da5f5a2c",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-07-19T21:46:03Z",
+      "side": 1,
+      "message": "This needs to go away, we don\u0027t have an rtc on this ec.",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ff66c7_fffdd9fc",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-07-19T21:46:03Z",
+      "side": 1,
+      "message": "I think this only applies to npcx too.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ad4121_efaf8c96",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-07-19T21:46:03Z",
+      "side": 1,
+      "message": "Seems that only kevin has this enabled, no other board.\n\nWhy do we have this?",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "594d5ed8_c599ec46",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-07-19T21:46:03Z",
+      "side": 1,
+      "message": "You should look into CONFIG_LED_POLICY_STD. It might help you remove led.c",
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b89a313_76dc2d96",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-07-19T21:46:03Z",
+      "side": 1,
+      "message": "We chatted in person, this is temporary.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 73
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9daaf384_551d0b42",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-07-19T21:46:03Z",
+      "side": 1,
+      "message": "Is this true on the stm32?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
