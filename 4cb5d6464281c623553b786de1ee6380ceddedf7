@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "88417b9b_439ab121",
+        "filename": "board/hammer/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:43:59Z",
+      "side": 1,
+      "message": "Create a separate CL: https://chromium-review.googlesource.com/c/575116/",
+      "parentUuid": "8130f615_04564de2",
+      "revId": "4cb5d6464281c623553b786de1ee6380ceddedf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eff74be0_f61f0e74",
         "filename": "common/usb_i2c.c",
         "patchSetId": 3
