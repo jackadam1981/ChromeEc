@@ -22,6 +22,30 @@
       "revId": "174c82171fce70c39d711feafd99572c3b4d32a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae0f04f_c36be131",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T18:01:05Z",
+      "side": 1,
+      "message": "I did make it a uint32_t.  See line 171.",
+      "parentUuid": "092b1a3b_255abd2e",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 0
+      },
+      "revId": "174c82171fce70c39d711feafd99572c3b4d32a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
