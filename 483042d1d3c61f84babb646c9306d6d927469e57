@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3359e4d6_3fd0f11e",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-07-19T17:27:03Z",
+      "side": 1,
+      "message": "Real VW_* signals starts from VW_SIGNAL_BASE+1 and VW_SIGNAL_BASE :\u003d GPIO_COUNT is just the  base and\nnot a valid VW_* index\nenum espi_vw_signal {\n        VW_SIGNAL_BASE \u003d GPIO_COUNT,\n        VW_SLP_S3_L,\n....\n...",
+      "parentUuid": "e48e9ec9_1607d235",
+      "range": {
+        "startLine": 65,
+        "startChar": 21,
+        "endLine": 65,
+        "endChar": 23
+      },
+      "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "467600d5_ce931a0b",
         "filename": "power/intel_x86.c",
         "patchSetId": 12
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "918d256d_6fdb8dd9",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-07-19T17:27:03Z",
+      "side": 1,
+      "message": "This is a valid scenario, but prefer EC doesn\u0027t handle this.\n\nWhen system is idle, the display goes off and system enters PC10. Since peripherals are not doing anything , the system actually enters S0ix asserting SLP_S0 . The resume is pretty quick as there is no freeze/unfreezing of threads/process involved. This causes an interrupt storm since the system can enter and exit S0ix back to back resulting in SLP_S0 toggling at a higher pace \n\n(Refer:https://partnerissuetracker.corp.google.com/issues/35568877)\n\nThis is different from the echo freeze path where proper freezing of threads/process are invoked.",
+      "parentUuid": "467600d5_ce931a0b",
+      "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14fac02f_db95777c",
         "filename": "power/intel_x86.c",
         "patchSetId": 12
@@ -53,6 +95,24 @@
       "writtenOn": "2017-07-18T16:21:01Z",
       "side": 1,
       "message": "I don\u0027t understand this logic. Why does SLP_S3_L have anything to do with us transitioning? Shouldn\u0027t we always attempt a clean transition through S0ixS0 when we leave this state?",
+      "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "732b32f3_74bcf114",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-07-19T17:27:03Z",
+      "side": 1,
+      "message": "Agree to your point. But I didn\u0027t touch this portion of code, as it was there from the time the first s0ix patch was pushed(https://chromium-review.googlesource.com/#/c/307947/5). The only logic I can think of is the signal state in S0. System is in S0 only if SLP_S3\u003dSLP_S0\u003d1. If SLP_S0\u003d1 \u0026\u0026 SLP_S3\u003d0, system is actually in S3. Anyway I will try to find the rational behind the particular logic.",
+      "parentUuid": "14fac02f_db95777c",
       "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
