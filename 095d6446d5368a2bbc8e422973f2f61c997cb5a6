@@ -81,6 +81,24 @@
       "revId": "095d6446d5368a2bbc8e422973f2f61c997cb5a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f93b9284_bba03721",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-07-19T15:44:49Z",
+      "side": 1,
+      "message": "FWIW, I don\u0027t expect this change to magically fix the SoC being wedged and can\u0027t reset itself. It will provide cleaner semantics w/o a double reset when looking at EC logs. I just don\u0027t think our issues of wedging the SoC and being able to use collect the breadcrumbs with a reset request will work in those circumstances.",
+      "parentUuid": "9b9b888e_8b0b9ce5",
+      "revId": "095d6446d5368a2bbc8e422973f2f61c997cb5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
