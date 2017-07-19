@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "172ac067_a7c2e0b3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b8dff89_2583b313",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f9eeb56_b3acdc8e",
         "filename": "common/motion_sense.c",
         "patchSetId": 9
@@ -47,6 +65,24 @@
       "writtenOn": "2017-07-18T22:02:23Z",
       "side": 1,
       "message": "2 spaces between code and comments.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f098a01e_6822f30c",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "removed comments, no longer needed",
+      "parentUuid": "2f9eeb56_b3acdc8e",
       "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "fbd62d2a_f48ee9cb",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "At an earlier state, it was important for valid orientations to be non-zero, but I\u0027ve since changed that code.  Will change ordering of enum to eliminate this step.",
+      "parentUuid": "0e6a516e_3ad0e7c6",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c154a7a_eb58d416",
         "filename": "common/motion_sense.c",
         "patchSetId": 9
@@ -104,6 +158,24 @@
     },
     {
       "key": {
+        "uuid": "a840a250_f48b1ced",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c154a7a_eb58d416",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "402dba8f_9a5dc341",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 9
@@ -115,6 +187,24 @@
       "writtenOn": "2017-07-18T22:02:23Z",
       "side": 1,
       "message": "should not happen, disable_sensor() should have been called before.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c587e39c_9a8c5763",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "402dba8f_9a5dc341",
       "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -155,6 +245,24 @@
     },
     {
       "key": {
+        "uuid": "9b74f38a_40ba59c0",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5352bb57_da099e14",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "389f4f9f_8fcc7073",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 9
@@ -166,6 +274,24 @@
       "writtenOn": "2017-07-18T22:02:23Z",
       "side": 1,
       "message": "use a different variable (orientation and raw_orientation), orientation can contain raw and converted orientation.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2866ef2_cef0e240",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "389f4f9f_8fcc7073",
       "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -206,6 +332,24 @@
     },
     {
       "key": {
+        "uuid": "64f2a59e_72b26f4a",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "370c6870_0b431ba0",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdd9a72e_a3edcc2b",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 9
@@ -234,6 +378,24 @@
       "writtenOn": "2017-07-18T22:02:23Z",
       "side": 1,
       "message": "define all possibilities for completeness.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e247f91_53c51f79",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "To what degree?  All possible permutations?  I thought patch set 2 was overkill, but I could go back to that approach and build up the 0x48 using pre-defined constants.  Is that what you have in mind?",
+      "parentUuid": "62cdd534_d3b886dc",
       "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -274,6 +436,24 @@
     },
     {
       "key": {
+        "uuid": "6cd94380_47e2c58f",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "No, I don\u0027t think so.  The raw_orientation field is needed for efficiency.  It\u0027s used by the driver layer to store off the raw value read from the orientation register.  We need to do a quick check to see if orientation has changed, so adding storage space for this raw_orientaiton allows us not to have to remap an orientation just to determine if it\u0027s changed. The \"orientation\" and \"last_orientation\" fields are used by the motion_sense layer and hold post-remapped (rotated) orientation, allowing motion_sense layer to determine if orientation has changed without performing a remap/rotation operation.",
+      "parentUuid": "72f6d296_bc48d60b",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57851f30_1f757688",
         "filename": "include/config.h",
         "patchSetId": 9
@@ -285,6 +465,24 @@
       "writtenOn": "2017-07-18T22:02:23Z",
       "side": 1,
       "message": "remove: there is only one case out of 8 where it happens.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c9e78f1_90aab994",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "Are you saying to remove CONFIG_ORIENTATION_REMAP and just remap all the time as if it were set for every board?  Do we not want to allow developer/board that falls into that particular case a more efficient path, or is it not worth the \"clutter\" ?",
+      "parentUuid": "57851f30_1f757688",
       "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -308,6 +506,24 @@
     },
     {
       "key": {
+        "uuid": "6d1aaffd_a2b550e5",
+        "filename": "include/config.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2904,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d48f944_f7440e12",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca45acc5_7ede48ba",
         "filename": "include/ec_commands.h",
         "patchSetId": 9
@@ -325,6 +541,24 @@
     },
     {
       "key": {
+        "uuid": "f52c0960_d3442df8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 2068,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca45acc5_7ede48ba",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbb5f5e8_8c9a1e15",
         "filename": "include/motion_sense.h",
         "patchSetId": 9
@@ -336,6 +570,24 @@
       "writtenOn": "2017-07-18T22:02:23Z",
       "side": 1,
       "message": "don\u0027t put sensor specific code here. define ORIENTATION_CHANGED in the driver files.",
+      "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a12c821_29fd3011",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1186109
+      },
+      "writtenOn": "2017-07-19T05:20:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb5f5e8_8c9a1e15",
       "revId": "ec494513014aae3eece8ae0def0827b3a3057638",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
