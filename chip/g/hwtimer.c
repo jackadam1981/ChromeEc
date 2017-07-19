@@ -9,34 +9,50 @@
 #include "init_chip.h"
 #include "registers.h"
 #include "task.h"
+#include "timer.h"
 #include "util.h"
-
-/* The frequency of timerls is 256k so there are about 4usec/tick */
-#define USEC_PER_TICK 4
-/*
- * Scale the maximum number of ticks so that it will only count up to the
- * equivalent of 0xffffffff usecs.
- */
-#define TIMELS_MAX (0xffffffff / USEC_PER_TICK)
 
 #define SOURCE(field) TIMER0_##field
 #define EVENT(field) TIMER1_##field
 
-static inline uint32_t ticks_to_usecs(uint32_t ticks)
-{
-	return ticks * USEC_PER_TICK;
-}
+/* The frequency of timerls is 8 * 32768 Hz. */
+#define TIMER_FREQ_HZ (8 * 32768)
 
-static inline uint32_t usec_to_ticks(uint32_t next_evt_us)
-{
-	return next_evt_us / USEC_PER_TICK;
-}
+/*
+ * GCD(SECOND, TIMER_FREQ_HZ) = 64. We'll need to use reduced terms to prevent
+ * overflow of our intermediate uint32_t type in some calculations.
+ */
+#define GCD 64
+#define TIMER_FREQ_GCD (TIMER_FREQ_HZ / GCD)
+#define TIME_GCD (SECOND / GCD)
+
+/*
+ * The below calculation is lightweight and can be implemented using
+ * umull + shift on 32-bit ARM.
+ */
+#define TICKS_TO_USECS(ticks) ((uint64_t)(ticks) * SECOND / TIMER_FREQ_HZ)
+
+/*
+ * The below calulation is more tricky, this is very inefficient and requires
+ * 64-bit division:
+ * #define USECS_TO_TICKS(usecs) ((uint64_t)(usecs) * TIMER_FREQ_HZ / SECOND)
+ * Instead use 32 bit vals, divide first, and add back the loss of precision.
+ */
+#define USECS_TO_TICKS(usecs) (((usecs) / TIME_GCD) * TIMER_FREQ_GCD + \
+			       ((usecs) % TIME_GCD) * TIMER_FREQ_GCD / TIME_GCD)
+
+/*
+ * Scale the maximum number of ticks so that it will only count up to the
+ * equivalent of approximately 0xffffffff usecs. Note that we lose 3us on
+ * timer wrap due to loss of precision during division.
+ */
+#define TIMELS_MAX USECS_TO_TICKS(0xffffffff)
 
 uint32_t __hw_clock_event_get(void)
 {
 	/* At what time will the next event fire? */
 	return __hw_clock_source_read() +
-		ticks_to_usecs(GREG32(TIMELS, EVENT(VALUE)));
+		TICKS_TO_USECS(GREG32(TIMELS, EVENT(VALUE)));
 }
 
 void __hw_clock_event_clear(void)
@@ -62,8 +78,7 @@ void __hw_clock_event_set(uint32_t deadline)
 	event_time = (deadline - __hw_clock_source_read());
 
 	/* Convert event_time to ticks rounding up */
-	GREG32(TIMELS, EVENT(LOAD)) =
-		((uint64_t)(event_time + USEC_PER_TICK - 1) / USEC_PER_TICK);
+	GREG32(TIMELS, EVENT(LOAD)) = USECS_TO_TICKS(event_time) + 1;
 
 	/* Enable the timer & interrupts */
 	GWRITE(TIMELS, EVENT(IER), 1);
@@ -88,12 +103,12 @@ uint32_t __hw_clock_source_read(void)
 	 * Return the current time in usecs. Since the counter counts down,
 	 * we have to invert the value.
 	 */
-	return ticks_to_usecs(TIMELS_MAX - GREG32(TIMELS, SOURCE(VALUE)));
+	return TICKS_TO_USECS(TIMELS_MAX - GREG32(TIMELS, SOURCE(VALUE)));
 }
 
 void __hw_clock_source_set(uint32_t ts)
 {
-	GREG32(TIMELS, SOURCE(LOAD)) = (0xffffffff - ts) / USEC_PER_TICK;
+	GREG32(TIMELS, SOURCE(LOAD)) = USECS_TO_TICKS(0xffffffff - ts);
 }
 
 /* This handles rollover in the HW timer */
@@ -156,3 +171,37 @@ int __hw_clock_source_init(uint32_t start_t)
 	/* Return the Event timer IRQ number (NOT the HW timer IRQ) */
 	return GC_IRQNUM_TIMELS0_TIMINT1;
 }
+
+#ifdef CONFIG_HW_SPECIFIC_UDELAY
+/*
+ * Custom chip/g udelay(), guaranteed to delay for at least us microseconds,
+ * which adjusts for the following sources of error:
+ *
+ *   1) Timer resolution of TICKS_TO_USECS(1) (~4 us), with active timer, that
+ *      may tick immediately following initial sample.
+ *   2) us precision loss due to division in TICKS_TO_USECS().
+ *   3) Extra 1 us due to integer rounded result of TICKS_TO_US().
+ *
+ * Lost time during timer wrap is not taken into account since interrupt latency
+ * and __hw_clock_source_irq() execution time likely exceeds the lost 3us.
+ */
+void udelay(unsigned us)
+{
+	unsigned t0 = __hw_clock_source_read();
+
+	us += TICKS_TO_USECS(2) + 1;
+
+	/*
+	 * udelay() may be called with interrupts disabled, so we can't rely on
+	 * process_timers() updating the top 32 bits.  So handle wraparound
+	 * ourselves rather than calling get_time() and comparing with a
+	 * deadline.
+	 *
+	 * This may fail for delays close to 2^32 us (~4000 sec), because the
+	 * subtraction below can overflow.  That's acceptable, because the
+	 * watchdog timer would have tripped long before that anyway.
+	 */
+	while (__hw_clock_source_read() - t0 <= us)
+		;
+}
+#endif /* CONFIG_HW_SPECIFIC_UDELAY */
