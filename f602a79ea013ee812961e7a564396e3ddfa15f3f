@@ -131,6 +131,29 @@
       "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d5183f1_b416c00c",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-07-19T23:12:43Z",
+      "side": 1,
+      "message": "On the nucleo, I had an issue where it bootlooped:\n--- UART initialized after reboot --- \n[Reset cause: reset-pin soft] \n[Image: RW, scarlet_v1.1.6718-f602a79ea+ 2017-07-19 1[0.021399 event set 0x00800000] \n[0.021596 PD comm enabled] \n[0.021706 event set 0x00200000] \nConsole is enabled; type HELP for help. \n\u003e [0.033472 event set 0x00002000] \n[0.033713 hostcmd init 0xa06000] \n[0.033985 power state 0 \u003d G3, in 0x0008] \n[0.034251 power state 4 [0.176710 TCPC p0 init ready] \n[0.176867 TCPC p0 VID:0x4c0 PID:0x2000 DID:0xf1 FWV:0x13f0800013f0800] \nC0 st2 \nC0 st3 \n[0.483721 charge problem: chg params, 0x0 -\u003e 0x1f after 0.483713s] \n[0.484250 charge problem: batt params, 0x0 -\u003e 0x7fc after 0[0.568437 charge problem: static update, 0x0 -\u003e 0x4 after 0.568430s] \nC0 st2 \n\n\u003d\u003d\u003d PROCESS EXCEPTION: 03 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 01000000 \u003d\u003d\u003d \nr0 :00001c44 r1 :00020000 r2 :40002824 r3 :00000000 \nr4 :00000700 r5 :20000728 r6 :e000ed10 r7 :00000004 \nr8 :00000000 r9 :00000000 r10:00000000 r11:00000000 \nr12:00000000 sp :20000ce0 lr :08002941 pc :0800340c \n\nI tried an objdump, but I cannot see source with CONFIG_LTO enabled. When I disabled CONFIG_LTO, it doesn\u0027t bootloop anymore.\n\nRong, if you see the same thing on the real system, maybe disable this.",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 18
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
