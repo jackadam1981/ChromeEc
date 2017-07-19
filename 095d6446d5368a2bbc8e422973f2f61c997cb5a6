@@ -63,6 +63,24 @@
       "revId": "095d6446d5368a2bbc8e422973f2f61c997cb5a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b9b888e_8b0b9ce5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-19T02:36:56Z",
+      "side": 1,
+      "message": "I verified using \"apreset warm\" and \"apreset cold\" on EC console that /dev/pstore/console-ramoops is preserved. I could not verify the combo \"alt-volup-r\" since it is not present on poppy. However, it does the same thing as \"apreset warm\".",
+      "parentUuid": "7adb487f_8fd6403f",
+      "revId": "095d6446d5368a2bbc8e422973f2f61c997cb5a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
