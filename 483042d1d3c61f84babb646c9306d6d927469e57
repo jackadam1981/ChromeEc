@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "a351d4f3_9ade6089",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-07-19T17:32:58Z",
+      "side": 1,
+      "message": "But you\u0027ll still get the interrupts fluctuating, no? And we ignore it when the host sleep event isn\u0027t sent? For that matter shouldn\u0027t we query the power_get_host_sleep_state() first?\n\nI also think the scenario you describe is helpful knowledge that should be put in comments here explaining the reasoning.",
+      "parentUuid": "918d256d_6fdb8dd9",
+      "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14fac02f_db95777c",
         "filename": "power/intel_x86.c",
         "patchSetId": 12
@@ -113,6 +131,24 @@
       "side": 1,
       "message": "Agree to your point. But I didn\u0027t touch this portion of code, as it was there from the time the first s0ix patch was pushed(https://chromium-review.googlesource.com/#/c/307947/5). The only logic I can think of is the signal state in S0. System is in S0 only if SLP_S3\u003dSLP_S0\u003d1. If SLP_S0\u003d1 \u0026\u0026 SLP_S3\u003d0, system is actually in S3. Anyway I will try to find the rational behind the particular logic.",
       "parentUuid": "14fac02f_db95777c",
+      "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b12fa12c_7d853982",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-07-19T17:32:58Z",
+      "side": 1,
+      "message": "I see. If you think that\u0027s valid please add a comment as well.",
+      "parentUuid": "732b32f3_74bcf114",
       "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
