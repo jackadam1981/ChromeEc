@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dabdf18_f31b5f1e",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T18:25:27Z",
+      "side": 1,
+      "message": "Both CONFIG_USB_I2C_MAX_READ_COUNT and CONFIG_USB_I2C_READ_BUFFER are used by usb_i2c.c code, right? If so it seems to be a bad idea to have them both defined in the board file (or include/config.h).\n\nI\u0027d be fine with defining just CONFIG_USB_I2C_READ_BUFFER in this file (and computing CONFIG_USB_I2C_MAX_READ_COUNT in usb_i2c.h), or the other way around (define just CONFIG_USB_I2C_MAX_READ_COUNT here). It seems like defining just CONFIG_USB_I2C_READ_BUFFER would make your life a little easier though.\n\n(same apply for CONFIG_USB_I2C_MAX_WRITE_COUNT/CONFIG_USB_I2C_WRITE_BUFFER of course)",
+      "revId": "31bb9dabcaee868889cbdc92e47fc6be2fec0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
