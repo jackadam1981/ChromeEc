@@ -70,8 +70,10 @@ int flash_bank_size(int bank);
 /* Persistent protection state flash offset / size / bank */
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
 
+#if 0
 #ifdef CONFIG_FLASH_MULTIPLE_REGION
 #error "Not supported."
+#endif
 #endif
 
 #ifndef PSTATE_BANK
