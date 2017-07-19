@@ -46,6 +46,30 @@
       "revId": "174c82171fce70c39d711feafd99572c3b4d32a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0943f7d_4d7c3946",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-19T18:14:22Z",
+      "side": 1,
+      "message": "ah, sorry, I must have looked at the wrong version of the diffs. I was thrown off by the typecast in line 306 - why is it needed in this case?",
+      "parentUuid": "aae0f04f_c36be131",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 0
+      },
+      "revId": "174c82171fce70c39d711feafd99572c3b4d32a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
