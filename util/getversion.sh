@@ -95,6 +95,8 @@ for git_dir in ${dir_list[@]}; do
   popd > /dev/null
 done
 
+ver="tmp"
+
 # On some boards where the version number consists of multiple components we
 # want to separate the first word of the version string as the version of the
 # EC tree.
@@ -113,13 +115,15 @@ echo " * in common/version.c. */"
 echo "#define VERSION \"${ver}\""
 echo "#define BUILDER \"${USER}@`hostname`\""
 
-if [ -n "$global_dirty" ]; then
-    echo "/* Repo is dirty, using time of last compilation */"
-    echo "#define DATE \"$(date '+%F %T')\""
-else
-    echo "/* Repo is clean, use the commit date of the last commit */"
-    # If called from an ebuild we won't have a git repo, so redirect stderr
-    # to avoid annoying 'Not a git repository' errors.
-    gitdate=$(git log -1 --format='%ci' HEAD 2>/dev/null | cut -d ' ' -f '1 2')
-    echo "#define DATE \"${gitdate}\""
-fi
+echo "#define DATE \"0000\""
+
+#if [ -n "$global_dirty" ]; then
+#    echo "/* Repo is dirty, using time of last compilation */"
+#    echo "#define DATE \"$(date '+%F %T')\""
+#else
+#    echo "/* Repo is clean, use the commit date of the last commit */"
+#    # If called from an ebuild we won't have a git repo, so redirect stderr
+#    # to avoid annoying 'Not a git repository' errors.
+#    gitdate=$(git log -1 --format='%ci' HEAD 2>/dev/null | cut -d ' ' -f '1 2')
+#    echo "#define DATE \"${gitdate}\""
+#fi

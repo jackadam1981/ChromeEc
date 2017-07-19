@@ -422,7 +422,8 @@ int main(int argc, char* argv[]) {
       image.rx_max() +
       12;  // TODO: m3 instruction prefetch sets off GLOBALSEC when too tight
            //       make sure these are nops or such?
-  hdr.timestamp_ = time(NULL);
+  // hdr.timestamp_ = time(NULL);
+  hdr.timestamp_ = 1234;
 
   // Parse signing manifest.
   map<string, uint32_t> values;
