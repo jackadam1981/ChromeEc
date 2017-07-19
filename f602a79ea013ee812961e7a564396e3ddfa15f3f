@@ -189,6 +189,24 @@
       "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b6c06a9_32819994",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-19T23:22:42Z",
+      "side": 1,
+      "message": "Well, there\u0027s the host event for the power button right above it, and then the button press is actually sent over EC_MKBP_EVENT_BUTTON.",
+      "parentUuid": "be31fe2e_d1b4c4a6",
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
