@@ -324,6 +324,167 @@
     },
     {
       "key": {
+        "uuid": "0556ff0b_6fe5af1e",
+        "filename": "chip/mec1701/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T23:45:04Z",
+      "side": 1,
+      "message": "port?",
+      "range": {
+        "startLine": 135,
+        "startChar": 45,
+        "endLine": 135,
+        "endChar": 48
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72610a8c_bd2b904f",
+        "filename": "chip/mec1701/sha256_chip.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T23:45:04Z",
+      "side": 1,
+      "message": "length?",
+      "range": {
+        "startLine": 212,
+        "startChar": 29,
+        "endLine": 212,
+        "endChar": 35
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd53b79b_b90cdf1c",
+        "filename": "chip/mec1701/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T23:45:04Z",
+      "side": 1,
+      "message": "MEC17XX?\n\n(Maybe elsewhere too; grep for 1322 and fix?)",
+      "range": {
+        "startLine": 6,
+        "startChar": 25,
+        "endLine": 6,
+        "endChar": 32
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e9e9b0c_de83a297",
+        "filename": "chip/mec1701/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T23:45:04Z",
+      "side": 1,
+      "message": "Forever?  Just delete it?",
+      "range": {
+        "startLine": 137,
+        "startChar": 3,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa9b074c_f9ed3f2f",
+        "filename": "chip/mec1701/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T23:45:04Z",
+      "side": 1,
+      "message": "#if defined(CONFIG_MEC1701_GP_SPI) \u0026\u0026 !defined(LFW)",
+      "range": {
+        "startLine": 505,
+        "startChar": 1,
+        "endLine": 506,
+        "endChar": 11
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7912b59d_b661ed5a",
+        "filename": "chip/mec1701/util/ecdsa/six.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T23:45:04Z",
+      "side": 1,
+      "message": "Can we split util/ecdsa into its own patchset?  It looks like this is third-party code which can\u0027t simply be relicensed with the Chromium license, so we\u0027ll have to run it by our licensing folks.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 76
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23ace77a_cf23f32c",
+        "filename": "chip/mec1701/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T23:45:04Z",
+      "side": 1,
+      "message": "Might just be able to drop the ECDSA stuff entirely, which would simplify licensing.  Chromium EC will always use SPI write protect to protect its RO code, so we don\u0027t need to worry about signing it.",
+      "range": {
+        "startLine": 534,
+        "startChar": 12,
+        "endLine": 534,
+        "endChar": 34
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79f23658_6b2c31b0",
         "filename": "include/config.h",
         "patchSetId": 1
