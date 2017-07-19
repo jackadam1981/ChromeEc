@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "adc2ba4f_26bbc676",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-19T04:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "627834f9_f419b1c9",
+      "range": {
+        "startLine": 81,
+        "startChar": 33,
+        "endLine": 81,
+        "endChar": 36
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df9aaa11_b05eaf66",
         "filename": "board/scarlet/board.c",
         "patchSetId": 6
@@ -284,6 +308,30 @@
     },
     {
       "key": {
+        "uuid": "4b3cb23b_a6de1e6b",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-19T04:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a77a463_b2774def",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19ac2678_bfb3e312",
         "filename": "board/scarlet/gpio.inc",
         "patchSetId": 6
@@ -295,6 +343,30 @@
       "writtenOn": "2017-07-18T00:05:23Z",
       "side": 1,
       "message": "this should have a pull-up on the AP side.  the EC should not have a pull-up in S5 or S3; it should either pull down or drive low.",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 67
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3682b2c_9fb13953",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-19T04:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19ac2678_bfb3e312",
       "range": {
         "startLine": 15,
         "startChar": 55,
@@ -330,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "bf15bcf6_d55a232a",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-19T04:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2144a902_d4b36a84",
+      "range": {
+        "startLine": 66,
+        "startChar": 39,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed9f2243_6c3d8b1c",
         "filename": "board/scarlet/gpio.inc",
         "patchSetId": 6
@@ -341,6 +437,30 @@
       "writtenOn": "2017-07-18T00:05:23Z",
       "side": 1,
       "message": "should be low in S5 to avoid leakage",
+      "range": {
+        "startLine": 67,
+        "startChar": 39,
+        "endLine": 67,
+        "endChar": 52
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ae1ea8_598a42aa",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-19T04:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed9f2243_6c3d8b1c",
       "range": {
         "startLine": 67,
         "startChar": 39,
@@ -424,6 +544,30 @@
     },
     {
       "key": {
+        "uuid": "f89a5a8f_b8821f91",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-19T04:04:51Z",
+      "side": 1,
+      "message": "OK...I\u0027ll add a TODO here.",
+      "parentUuid": "14a29446_68570a07",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9fe0c59_1a1e53dd",
         "filename": "board/scarlet/gpio.inc",
         "patchSetId": 6
@@ -447,6 +591,30 @@
     },
     {
       "key": {
+        "uuid": "be7a5845_57712a74",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-19T04:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9fe0c59_1a1e53dd",
+      "range": {
+        "startLine": 76,
+        "startChar": 39,
+        "endLine": 76,
+        "endChar": 49
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "589e4c51_eb93c368",
         "filename": "board/scarlet/gpio.inc",
         "patchSetId": 6
@@ -458,6 +626,30 @@
       "writtenOn": "2017-07-18T00:05:23Z",
       "side": 1,
       "message": "needs pull-up",
+      "range": {
+        "startLine": 78,
+        "startChar": 39,
+        "endLine": 78,
+        "endChar": 49
+      },
+      "revId": "e2456f1eb9884e1753cc83c5567a908db0792609",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd20316e_6aca36eb",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-19T04:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "589e4c51_eb93c368",
       "range": {
         "startLine": 78,
         "startChar": 39,
