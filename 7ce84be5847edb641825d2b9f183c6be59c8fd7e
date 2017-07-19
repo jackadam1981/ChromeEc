@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10162263_3ba7d8cd",
+        "filename": "board/mec1701_evb/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T20:58:43Z",
+      "side": 1,
+      "message": "nit: 2017?",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e83e8b1_a377107d",
+        "filename": "board/mec1701_evb/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T20:58:43Z",
+      "side": 1,
+      "message": "Formatting nit:  should be split onto 3 lines:\n  /**\n   * Called...\n   */",
+      "range": {
+        "startLine": 167,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 4
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4f91558_d6901aef",
+        "filename": "board/mec1701_mecc/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T20:58:43Z",
+      "side": 1,
+      "message": "nit: year (probably in other new files too; grep \u0026 fix)",
+      "range": {
+        "startLine": 2,
+        "startChar": 15,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "609d8345_fd0d78f7",
+        "filename": "board/mec1701_mecc/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T20:58:43Z",
+      "side": 1,
+      "message": "Just drop the glados_ prefix for clarity?",
+      "range": {
+        "startLine": 73,
+        "startChar": 11,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79f23658_6b2c31b0",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2148,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T20:58:43Z",
+      "side": 1,
+      "message": "In general, config items should be alphabetical in the file so they\u0027re easier to find.\n\n(Yes, we have some issues with that already...)",
+      "range": {
+        "startLine": 2147,
+        "startChar": 1,
+        "endLine": 2148,
+        "endChar": 28
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "377f48d4_c0963c4d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2885,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T20:58:43Z",
+      "side": 1,
+      "message": "Should be in chip/mec170x/config_chip.h?  Definitely doesn\u0027t belong in the global list of config options.",
+      "range": {
+        "startLine": 2865,
+        "startChar": 0,
+        "endLine": 2885,
+        "endChar": 43
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
