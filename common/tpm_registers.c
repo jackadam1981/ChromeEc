@@ -17,6 +17,7 @@
 #include "nvmem.h"
 #include "printf.h"
 #include "signed_header.h"
+#include "sps.h"
 #include "system.h"
 #include "system_chip.h"
 #include "task.h"
@@ -580,6 +581,9 @@ static void tpm_init(void)
 	_TPM_Init();
 
 	if (!tpm_manufactured()) {
+		/* C0 Means successful endorsement. */
+		uint8_t underrun_char = 0xc0;
+
 		/*
 		 * If tpm has not been manufactured yet - this needs to run on
 		 * every startup. It will wipe out NV RAM, among other things.
@@ -587,7 +591,12 @@ static void tpm_init(void)
 		TPM_Manufacture(1);
 		_TPM_Init();
 		_plat__SetNvAvail();
-		tpm_endorse();
+		underrun_char |= tpm_endorse();
+		if (chip_factory_mode()) {
+			ccprintf("[%T Setting underrun code to %x]\n",
+				 underrun_char);
+			sps_tx_status(underrun_char);
+		}
 	} else {
 		_plat__SetNvAvail();
 	}
