@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d74132c_be3eab74",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-19T21:46:03Z",
+      "side": 1,
+      "message": "I wonder if you could do something like the following.\n\nAdd a NUM_MUX_STATES to your enum mux_states. Then this deferred function just becomes:\n\n    \nset_mux_state((mux_state + 1) % NUM_MUX_STATES);",
+      "revId": "aed5a138d9b024a22f731d58b2587adaf15f68d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c60b4e4_40c0bf97",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-19T21:46:03Z",
+      "side": 1,
+      "message": "missing default case.",
+      "revId": "aed5a138d9b024a22f731d58b2587adaf15f68d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "267ce01c_1e1e1e85",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-19T21:46:03Z",
+      "side": 1,
+      "message": "Would you like to actually debounce this for a little bit? a couple hundred milliseconds?",
+      "range": {
+        "startLine": 395,
+        "startChar": 53,
+        "endLine": 395,
+        "endChar": 54
+      },
+      "revId": "aed5a138d9b024a22f731d58b2587adaf15f68d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
