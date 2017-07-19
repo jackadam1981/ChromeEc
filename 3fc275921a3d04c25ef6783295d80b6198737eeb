@@ -124,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "54e77983_46cbe52b",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-07-19T02:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a0ff3c5_f228e0cf",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2f52985_4ae65261",
         "filename": "driver/accel_kionix.c",
         "patchSetId": 4
@@ -135,6 +153,24 @@
       "writtenOn": "2017-07-07T23:57:06Z",
       "side": 1,
       "message": "no need of timeout of KX022 according to the AN: for debugging purposes only, check that it is indeed true.",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d4bc22c_28dea84d",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-07-19T02:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2f52985_4ae65261",
       "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -187,6 +223,24 @@
       "writtenOn": "2017-07-07T23:57:06Z",
       "side": 1,
       "message": "this is part of software reset: not need add a software_reset function, do it all in init.",
+      "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26b5c853_0d6c72f8",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1120027
+      },
+      "writtenOn": "2017-07-19T02:54:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49d70255_4c8f1c20",
       "revId": "3fc275921a3d04c25ef6783295d80b6198737eeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
