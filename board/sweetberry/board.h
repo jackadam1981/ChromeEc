@@ -18,6 +18,8 @@
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
 
+#define CONFIG_FPU
+
 /* The UART console can be on flex USART3 (PC10/PC11) */
 /* The UART console can be on header USART4 (PA0/PA1) */
 #undef CONFIG_UART_CONSOLE
