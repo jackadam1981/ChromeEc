@@ -1,0 +1,318 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d22d088f_7f4f6808",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "Add analysis tool for firmware stack usage.",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2cd4f55_7f819c60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "extra/stack_analyzer/stack_analyzer.py ./build/elm/RW/ec.RW.elf \\\n        ./build/elm/RW/ec.RW.tasklist\n\nAlso add:\nTEST\u003dmake BOARD\u003d${BOARD} SECTION\u003d${SECTION} analyzestack",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ea8503_2463d127",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "Does this really need python 3? I think we usually \"prefer\" python 2.7 at Google.",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dc729b4_fba74273",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "stack_max_size",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 16
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5d073e_42f32cc2",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "What are O and F symbols?",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db4c0ddb_a4d29205",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "So the assembly never does anything crazy like increasing sp, right?",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dfdcce6_1379e4cb",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "Quite a bit of code duplicate between these 2 branches.\n\nMaybe something like:\n\n  is_jump_opcode \u003d self.JUMP_OPCODE_RE.match(opcode)\n  is_call_opcode \u003d self.CALL_OPCODE_RE.match(opcode)\n\n  if is_jump_opcode or is_call_opcode:\n     ...\n     callsite \u003d Callsite(address, target_address, is_jump_opcode)\n\n?",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31276125_65f606b8",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "I feel like this needs a little more explanation (why - 1 is required, too, but not in normal push opcode?).\n\nI think that\u0027s because you\u0027re counting the comma between sp! and {...}, right? If so would it be good to split operand_text to an array of parameters?",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c5e069b_cc54fcc9",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "based",
+      "range": {
+        "startLine": 289,
+        "startChar": 50,
+        "endLine": 289,
+        "endChar": 55
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1c4a693_bda2c515",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "This does not remove the comment after \";\", right? Should we?",
+      "range": {
+        "startLine": 298,
+        "startChar": 52,
+        "endLine": 298,
+        "endChar": 71
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bff36ca_45cc11e3",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "there are",
+      "range": {
+        "startLine": 355,
+        "startChar": 11,
+        "endLine": 355,
+        "endChar": 19
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56e7997_74f06b5f",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "keeping any of them is good enough.",
+      "range": {
+        "startLine": 355,
+        "startChar": 56,
+        "endLine": 355,
+        "endChar": 75
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e839861_7dd24bfd",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "updating",
+      "range": {
+        "startLine": 367,
+        "startChar": 46,
+        "endLine": 367,
+        "endChar": 52
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b14504bb_abaae03b",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "function_symbol \u003d DetectFunctionHead(line)\nif function_symbol is not None:\n  break\n\n?",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79fde301_322e381a",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "Why do you need that copy? Just use function_symbol.address below?",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85440f03_fb9f4b6f",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-19T23:45:09Z",
+      "side": 1,
+      "message": "cycles are scary and shouldn\u0027t (normally) happen, can we warn about them?",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
