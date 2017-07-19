@@ -94,6 +94,236 @@
     },
     {
       "key": {
+        "uuid": "16b91ec5_30caeb65",
+        "filename": "chip/mec1701/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T22:55:53Z",
+      "side": 1,
+      "message": "Per comment, shouldn\u0027t these be updated?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "718491dd_9a18a60b",
+        "filename": "chip/mec1701/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T22:55:53Z",
+      "side": 1,
+      "message": "ADC disabled?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "259a1703_43ec30b8",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T22:55:53Z",
+      "side": 1,
+      "message": "Might be cleaner if\n\n#define VW(name, a, b, c, d, e) {name, a, b, c, d, e, 0x00, #name}",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 66
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87f82bb1_7d6e025f",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T22:55:53Z",
+      "side": 1,
+      "message": "Comment why #if 0 ?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 5
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9211953_4ba5649d",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T22:55:53Z",
+      "side": 1,
+      "message": "Here too.  Is this module not quite done / debugged?",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 5
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1108b7b1_a1c7801f",
+        "filename": "chip/mec1701/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T22:55:53Z",
+      "side": 1,
+      "message": "Done now?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e752dd73_06e5f281",
+        "filename": "chip/mec1701/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T22:55:53Z",
+      "side": 1,
+      "message": "Yes.",
+      "range": {
+        "startLine": 227,
+        "startChar": 39,
+        "endLine": 227,
+        "endChar": 49
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62c6abfa_366a29bc",
+        "filename": "chip/mec1701/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T22:55:53Z",
+      "side": 1,
+      "message": "1701?",
+      "range": {
+        "startLine": 5,
+        "startChar": 30,
+        "endLine": 5,
+        "endChar": 37
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1344beb_651077fd",
+        "filename": "chip/mec1701/keyboard_raw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T22:55:53Z",
+      "side": 1,
+      "message": "Dead code (if you\u0027re keeping TRACE2() above)",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 51
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b13e69e8_4cb6ab95",
+        "filename": "chip/mec1701/lfw/ec_lfw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-19T22:55:53Z",
+      "side": 1,
+      "message": "That\u0027s a good question.  Code search on the rest of the ec says we\u0027re only using it for interrupts/exceptions.",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79f23658_6b2c31b0",
         "filename": "include/config.h",
         "patchSetId": 1
