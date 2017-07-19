@@ -154,6 +154,23 @@
       "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8449adff_42ecdef3",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-19T23:18:54Z",
+      "side": 1,
+      "message": "No matrix keyboard, therefore not needed.",
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
