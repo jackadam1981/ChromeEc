@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eafea5c0_15a3a9d2",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "I remove this as not able to figure a elegant approach to consider both 4 and 6 bytes header (in this file and usb_i2c.h). Define the buffer size instead. Other approaches will be appreciated.",
+      "parentUuid": "dcaaeffc_914d8467",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 25
+      },
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d42d113_40630753",
         "filename": "board/hammer/ec.tasklist",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2017-07-14T08:12:27Z",
       "side": 1,
       "message": "Yeah that task stack size is too tight in the first place (even without added debugging).",
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae82f95c_8210c339",
+        "filename": "board/hammer/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Create a separate CL: https://chromium-review.googlesource.com/c/575116/",
+      "parentUuid": "0d42d113_40630753",
       "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -56,6 +98,24 @@
       "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081fbe77_b72adf69",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2cad985a_7c9f2f7c",
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "6bf0d1dc_854e5177",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a247a163_d7e400e5",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f73d7b08_3f98cc4d",
         "filename": "include/usb_i2c.h",
         "patchSetId": 2
@@ -102,6 +186,30 @@
       "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae887d4c_b9ebb49b",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f73d7b08_3f98cc4d",
+      "range": {
+        "startLine": 18,
+        "startChar": 71,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "4f8e07e0_50845c4f",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Hmm. Do you expect to explain how rc \u0026 rc1 are concatenated twice (in rc and rc1) ?",
+      "parentUuid": "a7e61bc1_2d5a9247",
+      "range": {
+        "startLine": 43,
+        "startChar": 66,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75abc8ac_c30a2aef",
         "filename": "include/usb_i2c.h",
         "patchSetId": 2
@@ -142,6 +274,24 @@
       "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f89709d9_0df69027",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75abc8ac_c30a2aef",
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

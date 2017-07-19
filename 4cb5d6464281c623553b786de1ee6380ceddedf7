@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9fa1d3ed_740fa76a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "745bb4dd_210c3a36",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "4cb5d6464281c623553b786de1ee6380ceddedf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dc14eba_8736c28c",
         "filename": "board/hammer/board.h",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2017-07-18T18:26:26Z",
       "side": 1,
       "message": "USB_I2C_HEADER_SIZE",
+      "revId": "4cb5d6464281c623553b786de1ee6380ceddedf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "012d00ee_f7e47d2c",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "I remove this as not able to figure a elegant approach to consider both 4 and 6 bytes header (in this file and usb_i2c.h). Define the buffer size instead. Other approaches will be appreciated.",
+      "parentUuid": "0dc14eba_8736c28c",
       "revId": "4cb5d6464281c623553b786de1ee6380ceddedf7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -116,6 +158,30 @@
     },
     {
       "key": {
+        "uuid": "abb90f87_9059e7d8",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Hmm, it is a bit confusing as this is for the write count. Read payload is not defined here.",
+      "parentUuid": "b922ba69_cb0f4bd9",
+      "range": {
+        "startLine": 23,
+        "startChar": 33,
+        "endLine": 23,
+        "endChar": 36
+      },
+      "revId": "4cb5d6464281c623553b786de1ee6380ceddedf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7f9607b_ccd8989f",
         "filename": "include/usb_i2c.h",
         "patchSetId": 3
@@ -133,6 +199,24 @@
     },
     {
       "key": {
+        "uuid": "7eae8fa3_c8f9adee",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7f9607b_ccd8989f",
+      "revId": "4cb5d6464281c623553b786de1ee6380ceddedf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "620f1df9_2b98866a",
         "filename": "include/usb_i2c.h",
         "patchSetId": 3
@@ -144,6 +228,30 @@
       "writtenOn": "2017-07-18T18:26:26Z",
       "side": 1,
       "message": "Not accurate?",
+      "range": {
+        "startLine": 31,
+        "startChar": 50,
+        "endLine": 31,
+        "endChar": 53
+      },
+      "revId": "4cb5d6464281c623553b786de1ee6380ceddedf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4b39e9_0f625186",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Same as previous one. Let me change this to write payload instead of data, hope it clarifies.",
+      "parentUuid": "620f1df9_2b98866a",
       "range": {
         "startLine": 31,
         "startChar": 50,
@@ -179,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "3bb1b9bc_5a9f8be3",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Would you elaborate it further ?",
+      "parentUuid": "085731db_0e476cc0",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "4cb5d6464281c623553b786de1ee6380ceddedf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "991e0a82_aa3ecc1a",
         "filename": "include/usb_i2c.h",
         "patchSetId": 3
@@ -202,6 +334,30 @@
     },
     {
       "key": {
+        "uuid": "06b847f9_83c8f603",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Done (we might not always have 4 bytes header. try to move it to config.h see if it is better to read)",
+      "parentUuid": "991e0a82_aa3ecc1a",
+      "range": {
+        "startLine": 159,
+        "startChar": 45,
+        "endLine": 159,
+        "endChar": 46
+      },
+      "revId": "4cb5d6464281c623553b786de1ee6380ceddedf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "04641ec9_88f886eb",
         "filename": "include/usb_i2c.h",
         "patchSetId": 3
@@ -213,6 +369,30 @@
       "writtenOn": "2017-07-18T18:26:26Z",
       "side": 1,
       "message": "and this",
+      "range": {
+        "startLine": 162,
+        "startChar": 46,
+        "endLine": 162,
+        "endChar": 47
+      },
+      "revId": "4cb5d6464281c623553b786de1ee6380ceddedf7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1da06b3_486c8c4c",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-19T03:42:41Z",
+      "side": 1,
+      "message": "Done (now, we always have 4 bytes header. but move it to config.h to be better aligned)",
+      "parentUuid": "04641ec9_88f886eb",
       "range": {
         "startLine": 162,
         "startChar": 46,
