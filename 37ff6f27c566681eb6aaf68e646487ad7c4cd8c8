@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "349f4913_38800c49",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-19T22:55:13Z",
+      "side": 1,
+      "message": "missing \u0027default\u0027 case.",
+      "revId": "37ff6f27c566681eb6aaf68e646487ad7c4cd8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8750875f_d1028975",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-19T22:55:13Z",
+      "side": 1,
+      "message": "When going from 1.8V to off, should you disable the level shifter first? The comments say voltage\u003d0 : 3.3V. Or maybe you could add the case for the UART off in your switch statement?",
+      "revId": "37ff6f27c566681eb6aaf68e646487ad7c4cd8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80a33f31_ad234659",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-19T22:55:13Z",
+      "side": 1,
+      "message": "/*\n * nit: nothing on first or last line\n * in multi-line comments.\n */",
+      "revId": "37ff6f27c566681eb6aaf68e646487ad7c4cd8c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
