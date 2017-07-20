@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb193364_878b724a",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-07-20T19:39:25Z",
+      "side": 1,
+      "message": "we sure nv commit has happened by now?\nthe interplay w/ nvmem_disable_commits() isn\u0027t obvious",
+      "range": {
+        "startLine": 604,
+        "startChar": 3,
+        "endLine": 604,
+        "endChar": 16
+      },
+      "revId": "c0acd9d37f667f57d2724454f3407d7a5cfe1e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3964c9_946883c6",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-07-20T19:39:25Z",
+      "side": 1,
+      "message": "should do a sps_tx_status() here if chip_factory_mode() to be complete\n\nnote this won\u0027t happen in practice on production rig since RO should have already balked",
+      "range": {
+        "startLine": 606,
+        "startChar": 3,
+        "endLine": 606,
+        "endChar": 7
+      },
+      "revId": "c0acd9d37f667f57d2724454f3407d7a5cfe1e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2a8f236_916cb585",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-07-20T19:39:25Z",
+      "side": 1,
+      "message": "not do this if chip_factory_mode()?\n\nor how do we stop the sps_tx_status() from getting stomped on?",
+      "range": {
+        "startLine": 611,
+        "startChar": 1,
+        "endLine": 611,
+        "endChar": 11
+      },
+      "revId": "c0acd9d37f667f57d2724454f3407d7a5cfe1e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
