@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "12c9185d_a06a50fb",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-20T01:10:49Z",
+      "side": 1,
+      "message": "you mean adding something explicit like \"endorsement successful/failed\"?",
+      "parentUuid": "b3b0730d_ad0cca7d",
+      "range": {
+        "startLine": 596,
+        "startChar": 17,
+        "endLine": 596,
+        "endChar": 24
+      },
+      "revId": "859efefc950213d32e948c9110d12a452edea026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39ea2540_520b01bd",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-20T01:04:26Z",
       "side": 1,
       "message": "Can you put an underrun char here too, with \"already manufactured\" error?",
+      "range": {
+        "startLine": 600,
+        "startChar": 3,
+        "endLine": 600,
+        "endChar": 7
+      },
+      "revId": "859efefc950213d32e948c9110d12a452edea026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "767708b9_ea7861c6",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-20T01:10:49Z",
+      "side": 1,
+      "message": "sure, what would that be - it has not been defined in our spurious discussion implementation discussion.\n\nSomething like 0xe0? This needs to be accounted for on the tester side as well.",
+      "parentUuid": "39ea2540_520b01bd",
       "range": {
         "startLine": 600,
         "startChar": 3,
