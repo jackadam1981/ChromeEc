@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "53117609_bc5ff0ad",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-07-20T20:13:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3bc7b5aa_a4b13bc8",
+      "range": {
+        "startLine": 604,
+        "startChar": 3,
+        "endLine": 604,
+        "endChar": 16
+      },
+      "revId": "c0acd9d37f667f57d2724454f3407d7a5cfe1e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d3964c9_946883c6",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "what should it set sps_tx_status() to in this case in factory mode?\n\nHow would it come here in the factory mode at all - does the test rig restart the chip after programming the cert?",
       "parentUuid": "5d3964c9_946883c6",
+      "range": {
+        "startLine": 606,
+        "startChar": 3,
+        "endLine": 606,
+        "endChar": 7
+      },
+      "revId": "c0acd9d37f667f57d2724454f3407d7a5cfe1e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d931ff83_cf354c31",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-07-20T20:13:16Z",
+      "side": 1,
+      "message": "unlikely we would get here in factory mode due to RO complaining first. But belt \u0026 suspenders.\n\nerror would be 1 + largest that tmp_endorse() would return, hence a header file w/ #defines?\nit\u0027s really helpful to have unique error codes for production troubleshooting",
+      "parentUuid": "42038fdf_2b5376f1",
       "range": {
         "startLine": 606,
         "startChar": 3,
