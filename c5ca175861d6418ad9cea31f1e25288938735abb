@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "720c8dae_36885776",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-20T20:28:46Z",
+      "side": 1,
+      "message": "May need an assert that CONFIG_SERIALNO_LEN is \u003c\u003d USB_STRING_LEN",
+      "revId": "c5ca175861d6418ad9cea31f1e25288938735abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90f6d4d4_e11b2a0a",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-20T20:28:46Z",
+      "side": 1,
+      "message": "How does this get set for servo micro/v4/tigertail/sweetberry?",
+      "revId": "c5ca175861d6418ad9cea31f1e25288938735abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9f4f2b8_785b2f01",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-20T20:28:46Z",
+      "side": 1,
+      "message": "Can you put serialno stuff together, and set length based on this config?",
+      "revId": "c5ca175861d6418ad9cea31f1e25288938735abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
