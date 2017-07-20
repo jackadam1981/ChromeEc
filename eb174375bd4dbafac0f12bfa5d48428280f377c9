@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "96e9074d_08fb1f50",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T07:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d018bc7_c1bfd57c",
+      "revId": "eb174375bd4dbafac0f12bfa5d48428280f377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e13b6a81_9220ee15",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 7
@@ -66,6 +84,24 @@
       "writtenOn": "2017-07-20T03:59:11Z",
       "side": 1,
       "message": "I wonder if the code would look better without these nested loops.\n\nFor this one, you could just \"continue\" while function_symbol is None, and not call DetectFunctionHead if function_symbol is set. The second nested loop should also be removable.",
+      "revId": "eb174375bd4dbafac0f12bfa5d48428280f377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "309c5827_66fdfdee",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T07:45:47Z",
+      "side": 1,
+      "message": "To remove the both nested loops. I change the parser into a state machine version.\nNot sure if it is better.",
+      "parentUuid": "e13b6a81_9220ee15",
       "revId": "eb174375bd4dbafac0f12bfa5d48428280f377c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -86,6 +122,24 @@
       "revId": "eb174375bd4dbafac0f12bfa5d48428280f377c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba83318_6958cb7f",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T07:45:47Z",
+      "side": 1,
+      "message": "Done. Use in-memory solution.",
+      "parentUuid": "956d5a83_d65a48b2",
+      "revId": "eb174375bd4dbafac0f12bfa5d48428280f377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
