@@ -94,6 +94,30 @@
       "revId": "f2fc85f7d9b20f536966edd843b9061a26bcfa9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59d1fd78_e0f4ce09",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-07-20T23:10:26Z",
+      "side": 1,
+      "message": "external pull down works too.\ninternal pull down would be safety hedge against that external one not existing, for some reason.",
+      "parentUuid": "ea5782de_075ad5cb",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "f2fc85f7d9b20f536966edd843b9061a26bcfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
