@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d5e791c_f87dfbb5",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T04:19:48Z",
+      "side": 1,
+      "message": "I use \"split(\u0027,\u0027, 1)\", which will only split at the first \",\". So it should return\n\" {r4, r5, r6, r7, r8, r9, lr}\".\n\nThe reason I try to parse operands here case by case is because the general form of operand text is complicated (and maybe undocumented in objdump?)\nMaybe it is easier to deal these parsing problem by feeding each instruction in to capstone library and get structural result in the future.",
+      "parentUuid": "0a20a35e_92886175",
+      "revId": "eb174375bd4dbafac0f12bfa5d48428280f377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e13b6a81_9220ee15",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 7
