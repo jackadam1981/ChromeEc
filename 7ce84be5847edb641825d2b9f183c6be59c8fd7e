@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "7d893aeb_190d81a3",
+        "filename": "chip/mec1701/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-20T23:19:33Z",
+      "side": 1,
+      "message": "(These are board limitations, so put max number here and then use board I2C table to indicate which ports are actually used)",
+      "parentUuid": "16b91ec5_30caeb65",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 25
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "718491dd_9a18a60b",
         "filename": "chip/mec1701/config_chip.h",
         "patchSetId": 1
@@ -128,6 +152,30 @@
       "writtenOn": "2017-07-19T22:55:53Z",
       "side": 1,
       "message": "ADC disabled?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "7ce84be5847edb641825d2b9f183c6be59c8fd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "beecb7c9_fc670449",
+        "filename": "chip/mec1701/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-20T23:19:33Z",
+      "side": 1,
+      "message": "#define in chip config\n#undef in board",
+      "parentUuid": "718491dd_9a18a60b",
       "range": {
         "startLine": 105,
         "startChar": 0,
