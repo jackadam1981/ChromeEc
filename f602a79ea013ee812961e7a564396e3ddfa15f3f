@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "1a07a15f_9dab517b",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2017-07-20T00:21:09Z",
+      "side": 1,
+      "message": "Wait, what? The RTC is definitely on the EC; it\u0027s certainly not anywhere else.",
+      "parentUuid": "41317c5b_9be2ae7b",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4ff66c7_fffdd9fc",
         "filename": "board/scarlet/board.h",
         "patchSetId": 7
