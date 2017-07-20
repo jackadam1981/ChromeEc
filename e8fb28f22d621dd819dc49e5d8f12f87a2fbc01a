@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f9f1149_ead6c257",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-20T20:46:59Z",
+      "side": 1,
+      "message": "Right. My intent is to define the raw register values here. \nI should\u0027ve make it hex to be clear.",
+      "parentUuid": "e2421c23_f190b414",
+      "range": {
+        "startLine": 118,
+        "startChar": 35,
+        "endLine": 118,
+        "endChar": 39
+      },
+      "revId": "e8fb28f22d621dd819dc49e5d8f12f87a2fbc01a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e4610e5_a3ea5bbf",
         "filename": "board/scarlet/board.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-20T19:55:51Z",
       "side": 1,
       "message": "this is 500mA; it should be 0.02C (designcap*0.02), or 140mA -\u003e 0x1C0 (I think)",
+      "range": {
+        "startLine": 119,
+        "startChar": 35,
+        "endLine": 119,
+        "endChar": 40
+      },
+      "revId": "e8fb28f22d621dd819dc49e5d8f12f87a2fbc01a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2e6b83b_7a6225a7",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-20T20:46:59Z",
+      "side": 1,
+      "message": "Will fix it. 0x640 is just the default value of ICHGTERM.",
+      "parentUuid": "5e4610e5_a3ea5bbf",
       "range": {
         "startLine": 119,
         "startChar": 35,
