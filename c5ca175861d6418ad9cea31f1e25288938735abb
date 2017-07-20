@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2351eccf_dcbcc1e2",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-20T20:33:53Z",
+      "side": 1,
+      "message": "USB_STRING_LEN is gone.",
+      "parentUuid": "720c8dae_36885776",
+      "revId": "c5ca175861d6418ad9cea31f1e25288938735abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90f6d4d4_e11b2a0a",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d5a2b145_de8861b6",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-20T20:33:53Z",
+      "side": 1,
+      "message": "See line 2934: if we need a USB serial number, we set this variable.",
+      "parentUuid": "90f6d4d4_e11b2a0a",
+      "revId": "c5ca175861d6418ad9cea31f1e25288938735abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9f4f2b8_785b2f01",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2017-07-20T20:28:46Z",
       "side": 1,
       "message": "Can you put serialno stuff together, and set length based on this config?",
+      "revId": "c5ca175861d6418ad9cea31f1e25288938735abb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bfd237e_84f186a8",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2659,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-20T20:33:53Z",
+      "side": 1,
+      "message": "I want to differentiate between a serial number that can be used for anything (bluetooth, ethernet) and the request for USB submodule to have a serial number.\nIn flash.c and otp.c we don\u0027t care for which protocol the serial is for.",
+      "parentUuid": "e9f4f2b8_785b2f01",
       "revId": "c5ca175861d6418ad9cea31f1e25288938735abb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
