@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eb46a4c9_ba976415",
+        "filename": "chip/stm32/otp-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-20T21:24:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8935b5b1_fbdbfd23",
+      "revId": "68be14092c21b00a01b539acbb7e21c32e931979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81382ead_b8765ece",
         "filename": "chip/stm32/otp-stm32f4.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-07-20T20:15:14Z",
       "side": 1,
       "message": "Should fail on uninitialized OTP, needs enable bit or magic number.",
+      "revId": "68be14092c21b00a01b539acbb7e21c32e931979",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dfec28cc_df75b07d",
+        "filename": "chip/stm32/otp-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-20T21:24:09Z",
+      "side": 1,
+      "message": "unitialized OTP read as FFF...FFFh, I will use that as magic number.",
+      "parentUuid": "81382ead_b8765ece",
       "revId": "68be14092c21b00a01b539acbb7e21c32e931979",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
