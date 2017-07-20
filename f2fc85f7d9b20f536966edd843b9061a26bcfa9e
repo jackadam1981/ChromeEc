@@ -70,6 +70,30 @@
       "revId": "f2fc85f7d9b20f536966edd843b9061a26bcfa9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea5782de_075ad5cb",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-20T23:08:30Z",
+      "side": 1,
+      "message": "It looks like on the chromebook designs this connected to a trace with an external pulldown. IIRC it was supposed to be floating?",
+      "parentUuid": "1cc9838f_e9c2fec5",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "f2fc85f7d9b20f536966edd843b9061a26bcfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
