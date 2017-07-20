@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "41317c5b_9be2ae7b",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-20T00:15:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9ee5bb8_da5f5a2c",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4ff66c7_fffdd9fc",
         "filename": "board/scarlet/board.h",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-19T21:46:03Z",
       "side": 1,
       "message": "I think this only applies to npcx too.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0aa003_e4423cd1",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-20T00:15:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4ff66c7_fffdd9fc",
       "range": {
         "startLine": 17,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7a23ce27_d0547392",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-20T00:15:42Z",
+      "side": 1,
+      "message": "It makes no difference in proto build (system is not locked) anyway. Let\u0027s keep it for now.",
+      "parentUuid": "c1ad4121_efaf8c96",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "594d5ed8_c599ec46",
         "filename": "board/scarlet/board.h",
         "patchSetId": 7
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "de19ca5c_8e829f2e",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-20T00:15:42Z",
+      "side": 1,
+      "message": "I did the check in the last build. But we still need a customized led.c.",
+      "parentUuid": "594d5ed8_c599ec46",
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b89a313_76dc2d96",
         "filename": "board/scarlet/board.h",
         "patchSetId": 7
@@ -99,6 +189,30 @@
       "writtenOn": "2017-07-19T21:46:03Z",
       "side": 1,
       "message": "We chatted in person, this is temporary.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 73
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d7493d_b7ee0301",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-20T00:15:42Z",
+      "side": 1,
+      "message": "Yeah, let\u0027s keep it until MP.",
+      "parentUuid": "9b89a313_76dc2d96",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -145,6 +259,30 @@
       "writtenOn": "2017-07-19T23:12:43Z",
       "side": 1,
       "message": "On the nucleo, I had an issue where it bootlooped:\n--- UART initialized after reboot --- \n[Reset cause: reset-pin soft] \n[Image: RW, scarlet_v1.1.6718-f602a79ea+ 2017-07-19 1[0.021399 event set 0x00800000] \n[0.021596 PD comm enabled] \n[0.021706 event set 0x00200000] \nConsole is enabled; type HELP for help. \n\u003e [0.033472 event set 0x00002000] \n[0.033713 hostcmd init 0xa06000] \n[0.033985 power state 0 \u003d G3, in 0x0008] \n[0.034251 power state 4 [0.176710 TCPC p0 init ready] \n[0.176867 TCPC p0 VID:0x4c0 PID:0x2000 DID:0xf1 FWV:0x13f0800013f0800] \nC0 st2 \nC0 st3 \n[0.483721 charge problem: chg params, 0x0 -\u003e 0x1f after 0.483713s] \n[0.484250 charge problem: batt params, 0x0 -\u003e 0x7fc after 0[0.568437 charge problem: static update, 0x0 -\u003e 0x4 after 0.568430s] \nC0 st2 \n\n\u003d\u003d\u003d PROCESS EXCEPTION: 03 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 01000000 \u003d\u003d\u003d \nr0 :00001c44 r1 :00020000 r2 :40002824 r3 :00000000 \nr4 :00000700 r5 :20000728 r6 :e000ed10 r7 :00000004 \nr8 :00000000 r9 :00000000 r10:00000000 r11:00000000 \nr12:00000000 sp :20000ce0 lr :08002941 pc :0800340c \n\nI tried an objdump, but I cannot see source with CONFIG_LTO enabled. When I disabled CONFIG_LTO, it doesn\u0027t bootloop anymore.\n\nRong, if you see the same thing on the real system, maybe disable this.",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 18
+      },
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68a5edd1_c658f0fd",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-20T00:15:42Z",
+      "side": 1,
+      "message": "It doesn\u0027t look like a must.\nLet\u0027s un-define it for now.",
+      "parentUuid": "3d5183f1_b416c00c",
       "range": {
         "startLine": 53,
         "startChar": 8,
@@ -204,6 +342,24 @@
       "side": 1,
       "message": "Well, there\u0027s the host event for the power button right above it, and then the button press is actually sent over EC_MKBP_EVENT_BUTTON.",
       "parentUuid": "be31fe2e_d1b4c4a6",
+      "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef5fd0d_ba165281",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-20T00:15:42Z",
+      "side": 1,
+      "message": "OK. Let me remove it.",
+      "parentUuid": "2b6c06a9_32819994",
       "revId": "f602a79ea013ee812961e7a564396e3ddfa15f3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
