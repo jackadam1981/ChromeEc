@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b9eff788_8ddceb9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:31:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d22d088f_7f4f6808",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2cd4f55_7f819c60",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2017-07-19T23:45:09Z",
       "side": 1,
       "message": "extra/stack_analyzer/stack_analyzer.py ./build/elm/RW/ec.RW.elf \\\n        ./build/elm/RW/ec.RW.tasklist\n\nAlso add:\nTEST\u003dmake BOARD\u003d${BOARD} SECTION\u003d${SECTION} analyzestack",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9cf4bb5_6e6f7b2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:31:02Z",
+      "side": 1,
+      "message": "But without make analyzestack, there won\u0027t be ec.RW.tasklist.\nMaybe I should generate ec.RW.tasklist in the normal build (make BOARD\u003delm build) ?",
+      "parentUuid": "f2cd4f55_7f819c60",
       "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
