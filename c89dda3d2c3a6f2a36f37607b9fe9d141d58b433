@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "58da5e05_54339853",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-20T22:02:32Z",
+      "side": 1,
+      "message": "great, thank you for confirming.",
+      "parentUuid": "a05a71ae_67a934d8",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "c89dda3d2c3a6f2a36f37607b9fe9d141d58b433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1796c443_90079722",
         "filename": "chip/g/hwtimer.c",
         "patchSetId": 2
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Ignoring the details of the 64-bit division algorithm, your proposal does not lead to a simpler calculation than the calculation I commented above. usecs is on [0,0xffffffff], so multiplying by 1000 requires us to use a 64-bit intermediate type, followed by a 64-bit division that will require a call to __aeabi_uldivmod().\n\nRegarding macros vs functions (or inline functions), I think macros are more appropriate here and easier to understand, but I will change back to functions if you think it best.",
       "parentUuid": "1796c443_90079722",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "c89dda3d2c3a6f2a36f37607b9fe9d141d58b433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b43776_3412df64",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-20T22:02:32Z",
+      "side": 1,
+      "message": "I personally think that 4s for us timer is enough, but if others think the additional complexity is justified I\u0027m fine with that.\n\nI sure would prefer keeping functions over macros.",
+      "parentUuid": "3739c39f_864b8cef",
       "range": {
         "startLine": 41,
         "startChar": 8,
