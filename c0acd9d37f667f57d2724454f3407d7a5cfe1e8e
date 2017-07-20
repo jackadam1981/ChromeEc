@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3bc7b5aa_a4b13bc8",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-20T19:47:22Z",
+      "side": 1,
+      "message": "yes, if commit is not suppressed (and it is not in factory mode with these patches), writing to nvmem happens as soon as NvCommit() is called by endorsement functions.",
+      "parentUuid": "bb193364_878b724a",
+      "range": {
+        "startLine": 604,
+        "startChar": 3,
+        "endLine": 604,
+        "endChar": 16
+      },
+      "revId": "c0acd9d37f667f57d2724454f3407d7a5cfe1e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d3964c9_946883c6",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "42038fdf_2b5376f1",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-20T19:47:22Z",
+      "side": 1,
+      "message": "what should it set sps_tx_status() to in this case in factory mode?\n\nHow would it come here in the factory mode at all - does the test rig restart the chip after programming the cert?",
+      "parentUuid": "5d3964c9_946883c6",
+      "range": {
+        "startLine": 606,
+        "startChar": 3,
+        "endLine": 606,
+        "endChar": 7
+      },
+      "revId": "c0acd9d37f667f57d2724454f3407d7a5cfe1e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2a8f236_916cb585",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-07-20T19:39:25Z",
       "side": 1,
       "message": "not do this if chip_factory_mode()?\n\nor how do we stop the sps_tx_status() from getting stomped on?",
+      "range": {
+        "startLine": 611,
+        "startChar": 1,
+        "endLine": 611,
+        "endChar": 11
+      },
+      "revId": "c0acd9d37f667f57d2724454f3407d7a5cfe1e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1319ddee_3d95c464",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-20T19:47:22Z",
+      "side": 1,
+      "message": "ah, this is a good point, let me add this.",
+      "parentUuid": "b2a8f236_916cb585",
       "range": {
         "startLine": 611,
         "startChar": 1,
