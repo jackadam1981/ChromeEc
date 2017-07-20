@@ -16,6 +16,24 @@
       "revId": "e470a470412c5aaa119c73aa9a1d10a770946570",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4538323_c7efc17f",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-20T17:30:52Z",
+      "side": 1,
+      "message": "Right, I removed it.",
+      "parentUuid": "7b962249_215f0244",
+      "revId": "e470a470412c5aaa119c73aa9a1d10a770946570",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
