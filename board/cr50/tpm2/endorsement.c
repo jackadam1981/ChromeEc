@@ -541,7 +541,7 @@ int tpm_endorse(void)
 	const uint32_t *c = (const uint32_t *) RO_CERTS_START_ADDR;
 	const struct ro_cert *rsa_cert;
 	const struct ro_cert *ecc_cert;
-	int result = 0;
+	int result = 1;
 	uint8_t eps[PRIMARY_SEED_SIZE];
 
 	LITE_HMAC_CTX hmac;
@@ -550,11 +550,11 @@ int tpm_endorse(void)
 
 	/* First boot, certs not yet installed. */
 	if (*c == 0xFFFFFFFF)
-		return 0;
+		return 1;
 
 	if (!get_decrypted_eps(eps)) {
 		CPRINTF("%s(): failed to read eps\n", __func__);
-		return 0;
+		return 2;
 	}
 
 	/* Unpack rsa cert struct. */
@@ -562,7 +562,7 @@ int tpm_endorse(void)
 	/* Sanity check cert region contents. */
 	if ((2 * sizeof(struct ro_cert)) +
 		rsa_cert->cert_response.cert_len > RO_CERTS_REGION_SIZE)
-		return 0;
+		return 3;
 
 	/* Unpack ecc cert struct. */
 	ecc_cert = (const struct ro_cert *) (p + sizeof(struct ro_cert) +
@@ -571,16 +571,16 @@ int tpm_endorse(void)
 	if ((2 * sizeof(struct ro_cert)) +
 		rsa_cert->cert_response.cert_len +
 		ecc_cert->cert_response.cert_len > RO_CERTS_REGION_SIZE)
-		return 0;
+		return 4;
 
 	/* Verify expected component types. */
 	if (rsa_cert->cert_info.component_type !=
 		CROS_PERSO_COMPONENT_TYPE_RSA_CERT) {
-		return 0;
+		return 5;
 	}
 	if (ecc_cert->cert_info.component_type !=
 		CROS_PERSO_COMPONENT_TYPE_P256_CERT) {
-		return 0;
+		return 6;
 	}
 
 	do {
@@ -617,6 +617,7 @@ int tpm_endorse(void)
 			/* TODO(ngm): is this state considered
 			 * endorsement failure?
 			 */
+			result = 7;
 			break;
 		}
 
@@ -625,6 +626,7 @@ int tpm_endorse(void)
 				(struct cros_perso_certificate_response_v0 *)
 				&rsa_cert->cert_response, eps)) {
 			CPRINTF("%s: Failed to process RSA cert\n", __func__);
+			result = 8;
 			break;
 		}
 		CPRINTF("%s: RSA cert install success\n", __func__);
@@ -634,6 +636,7 @@ int tpm_endorse(void)
 				(struct cros_perso_certificate_response_v0 *)
 				&ecc_cert->cert_response, eps)) {
 			CPRINTF("%s: Failed to process ECC cert\n", __func__);
+			result = 9;
 			break;
 		}
 		CPRINTF("%s: ECC cert install success\n", __func__);
@@ -641,6 +644,7 @@ int tpm_endorse(void)
 		/* Copy EPS from INFO1 to flash data region. */
 		if (!store_eps(eps)) {
 			CPRINTF("%s(): eps storage failed\n", __func__);
+			result = 10;
 			break;
 		}
 
@@ -648,7 +652,7 @@ int tpm_endorse(void)
 		endorsement_complete();
 
 		/* Chip has been marked as manufactured. */
-		result = 1;
+		result = 0;
 	} while (0);
 
 	always_memset(eps, 0, sizeof(eps));
