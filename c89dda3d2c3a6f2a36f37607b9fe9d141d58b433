@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a05a71ae_67a934d8",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-20T20:59:12Z",
+      "side": 1,
+      "message": "Hand-measurement and piecing together some bits of data from docs, but let me ask someone who knows for sure to double confirm.",
+      "parentUuid": "fa7b0362_72ade93b",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "c89dda3d2c3a6f2a36f37607b9fe9d141d58b433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1796c443_90079722",
         "filename": "chip/g/hwtimer.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-20T19:37:11Z",
       "side": 1,
       "message": "oh, so with \n\n1000000/(8*32768) \u003d 3.81 \n\nthe approximation of usec_per_tick to 4 is indeed way too rough.\n\nI still don\u0027t think this complexity is required, as the number of ticks is integer.\n\nhow about ((usecs * 1000/3815) + 1)\n\nwill be a much simpler calculation with adequate accuracy.\n\nAlso, why are you replacing functions with macros? I think even \u0027inline\u0027 keyword is not required - the compiler inlines small static functions on its own.",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "c89dda3d2c3a6f2a36f37607b9fe9d141d58b433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3739c39f_864b8cef",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-20T20:59:12Z",
+      "side": 1,
+      "message": "Ignoring the details of the 64-bit division algorithm, your proposal does not lead to a simpler calculation than the calculation I commented above. usecs is on [0,0xffffffff], so multiplying by 1000 requires us to use a 64-bit intermediate type, followed by a 64-bit division that will require a call to __aeabi_uldivmod().\n\nRegarding macros vs functions (or inline functions), I think macros are more appropriate here and easier to understand, but I will change back to functions if you think it best.",
+      "parentUuid": "1796c443_90079722",
       "range": {
         "startLine": 41,
         "startChar": 8,
