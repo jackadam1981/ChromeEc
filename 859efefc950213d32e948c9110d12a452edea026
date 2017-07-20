@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3b0730d_ad0cca7d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-20T01:04:26Z",
+      "side": 1,
+      "message": "Can you add a more descriptive pass/fail console output as we\u0027ll log this in the future?",
+      "range": {
+        "startLine": 596,
+        "startChar": 17,
+        "endLine": 596,
+        "endChar": 24
+      },
+      "revId": "859efefc950213d32e948c9110d12a452edea026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39ea2540_520b01bd",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-20T01:04:26Z",
+      "side": 1,
+      "message": "Can you put an underrun char here too, with \"already manufactured\" error?",
+      "range": {
+        "startLine": 600,
+        "startChar": 3,
+        "endLine": 600,
+        "endChar": 7
+      },
+      "revId": "859efefc950213d32e948c9110d12a452edea026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
