@@ -118,6 +118,30 @@
       "revId": "f2fc85f7d9b20f536966edd843b9061a26bcfa9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8d69c1_bd156671",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-20T23:21:42Z",
+      "side": 1,
+      "message": "it is explicitly pulled down in all chrome os designs, we sure don\u0027t want the RO to be confused, right?",
+      "parentUuid": "59d1fd78_e0f4ce09",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "f2fc85f7d9b20f536966edd843b9061a26bcfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
