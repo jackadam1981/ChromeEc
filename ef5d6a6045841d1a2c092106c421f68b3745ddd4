@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "4b4d6128_f52aafdc",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Changed to python 2.7",
+      "parentUuid": "e8ea8503_2463d127",
+      "range": {
+        "startLine": 1,
+        "startChar": 15,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dc729b4_fba74273",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 5
@@ -82,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "d66269c3_854612ac",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dc729b4_fba74273",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 16
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e5d073e_42f32cc2",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 5
@@ -99,6 +147,24 @@
     },
     {
       "key": {
+        "uuid": "efdd2236_d301bb89",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e5d073e_42f32cc2",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db4c0ddb_a4d29205",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 5
@@ -110,6 +176,24 @@
       "writtenOn": "2017-07-19T23:45:09Z",
       "side": 1,
       "message": "So the assembly never does anything crazy like increasing sp, right?",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9edcaa01_4ab74c95",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Some architectures acquire stack frames by increasing SP (bottom-up).\nFor our architectures, they acquire stack frames by decreasing SP at the front of function and release by increasing at the end.",
+      "parentUuid": "db4c0ddb_a4d29205",
       "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -133,6 +217,24 @@
     },
     {
       "key": {
+        "uuid": "85c5ba84_d13a359c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dfdcce6_1379e4cb",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31276125_65f606b8",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 5
@@ -147,6 +249,24 @@
       "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04316762_ba19920b",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31276125_65f606b8",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -173,6 +293,30 @@
     },
     {
       "key": {
+        "uuid": "a89212c9_35e988fd",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c5e069b_cc54fcc9",
+      "range": {
+        "startLine": 289,
+        "startChar": 50,
+        "endLine": 289,
+        "endChar": 55
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a1c4a693_bda2c515",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 5
@@ -193,6 +337,30 @@
       "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03987092_eb489170",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Comments may have some useful information. But they are unused currently. I eliminated them in this PS.",
+      "parentUuid": "a1c4a693_bda2c515",
+      "range": {
+        "startLine": 298,
+        "startChar": 52,
+        "endLine": 298,
+        "endChar": 71
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -242,6 +410,54 @@
     },
     {
       "key": {
+        "uuid": "04473b2a_5069f2a3",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e56e7997_74f06b5f",
+      "range": {
+        "startLine": 355,
+        "startChar": 56,
+        "endLine": 355,
+        "endChar": 75
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "748cf16c_3127f583",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bff36ca_45cc11e3",
+      "range": {
+        "startLine": 355,
+        "startChar": 11,
+        "endLine": 355,
+        "endChar": 19
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e839861_7dd24bfd",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 5
@@ -265,6 +481,30 @@
     },
     {
       "key": {
+        "uuid": "65b4457b_903aea23",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e839861_7dd24bfd",
+      "range": {
+        "startLine": 367,
+        "startChar": 46,
+        "endLine": 367,
+        "endChar": 52
+      },
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b14504bb_abaae03b",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 5
@@ -276,6 +516,24 @@
       "writtenOn": "2017-07-19T23:45:09Z",
       "side": 1,
       "message": "function_symbol \u003d DetectFunctionHead(line)\nif function_symbol is not None:\n  break\n\n?",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7473bdd_e89731a4",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Found the function head, so break the searching loop. Added more comments to explain this.",
+      "parentUuid": "b14504bb_abaae03b",
       "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -299,6 +557,24 @@
     },
     {
       "key": {
+        "uuid": "56c08bb5_685a58d3",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79fde301_322e381a",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85440f03_fb9f4b6f",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 5
@@ -310,6 +586,24 @@
       "writtenOn": "2017-07-19T23:45:09Z",
       "side": 1,
       "message": "cycles are scary and shouldn\u0027t (normally) happen, can we warn about them?",
+      "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60773a36_3dc3a588",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-20T02:21:04Z",
+      "side": 1,
+      "message": "I can list all function cycles independently as a new feature. But maybe in another CL?",
+      "parentUuid": "85440f03_fb9f4b6f",
       "revId": "ef5d6a6045841d1a2c092106c421f68b3745ddd4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
