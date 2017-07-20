@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5d018bc7_c1bfd57c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-20T04:23:43Z",
+      "side": 1,
+      "message": "Oh, missed that. Sounds good then.\n\nOk about argument parsing too.",
+      "parentUuid": "2d5e791c_f87dfbb5",
+      "revId": "eb174375bd4dbafac0f12bfa5d48428280f377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e13b6a81_9220ee15",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 7
