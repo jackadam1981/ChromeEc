@@ -74,6 +74,7 @@ BOARDS_STM32=(
 	plankton
 	ryu
 	samus_pd
+	scarlet
 	snoball
 	staff
 	strago_pd
@@ -116,7 +117,6 @@ BOARDS_NPCX_SPI=(
 	kevin
 	poppy
 	reef
-	scarlet
 	soraka
 	wheatley
 	kahlee
@@ -140,7 +140,6 @@ BOARDS_SPI_1800MV=(
 	gru
 	kevin
 	reef
-	scarlet
 )
 
 BOARDS_RAIDEN=(
