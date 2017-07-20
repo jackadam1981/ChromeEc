@@ -1807,6 +1807,9 @@
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
 
+/* Support One Time Protection structure */
+#undef CONFIG_OTP
+
 /* Support PECI interface to x86 processor */
 #undef CONFIG_PECI
 
@@ -1986,6 +1989,9 @@
 #undef CONFIG_RO_PUBKEY_SIZE
 #undef CONFIG_RW_SIG_ADDR
 #undef CONFIG_RW_SIG_SIZE
+
+/* Size of the serial number if needed */
+#undef CONFIG_SERIALNO_LEN
 
 /****************************************************************************/
 /* Shared objects library. */
@@ -2923,6 +2929,10 @@
 
 #if (CONFIG_AUX_TIMER_PERIOD_MS) < ((HOOK_TICK_INTERVAL_MS) * 2)
 #error "CONFIG_AUX_TIMER_PERIOD_MS must be at least 2x HOOK_TICK_INTERVAL_MS"
+#endif
+
+#ifdef CONFIG_USB_SERIALNO
+#define CONFIG_SERIALNO_LEN 28
 #endif
 
 #endif  /* __CROS_EC_CONFIG_H */
