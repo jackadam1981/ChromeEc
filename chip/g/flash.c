@@ -49,7 +49,7 @@
 #include "timer.h"
 #include "watchdog.h"
 
-#define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ##args)
 
 int flash_pre_init(void)
 {
@@ -63,8 +63,7 @@ int flash_pre_init(void)
 
 		/* Region range */
 		reg_base = GBASE(GLOBALSEC) +
-			GOFFSET(GLOBALSEC, FLASH_REGION2_BASE_ADDR) +
-			i * 8;
+			   GOFFSET(GLOBALSEC, FLASH_REGION2_BASE_ADDR) + i * 8;
 
 		REG32(reg_base) = regions[i].reg_base;
 
@@ -76,47 +75,38 @@ int flash_pre_init(void)
 
 		/* Region permissions. */
 		reg_base = GBASE(GLOBALSEC) +
-			GOFFSET(GLOBALSEC, FLASH_REGION2_CTRL) +
-			i * 4;
+			   GOFFSET(GLOBALSEC, FLASH_REGION2_CTRL) + i * 4;
 		REG32(reg_base) = regions[i].reg_perms;
 	}
 
 	return EC_SUCCESS;
 }
 
-int flash_physical_get_protect(int bank)
-{
-	return 0;				/* Not protected */
-}
+int flash_physical_get_protect(int bank) { return 0; /* Not protected */ }
 
-uint32_t flash_physical_get_protect_flags(void)
-{
-	return 0;				/* no flags set */
-}
+uint32_t flash_physical_get_protect_flags(void) { return 0; /* no flags set */ }
 
 uint32_t flash_physical_get_valid_flags(void)
 {
 	/* These are the flags we're going to pay attention to */
-	return EC_FLASH_PROTECT_RO_AT_BOOT |
-		EC_FLASH_PROTECT_RO_NOW |
-		EC_FLASH_PROTECT_ALL_NOW;
+	return EC_FLASH_PROTECT_RO_AT_BOOT | EC_FLASH_PROTECT_RO_NOW |
+	       EC_FLASH_PROTECT_ALL_NOW;
 }
 
 uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
 {
-	return 0;				/* no flags writable */
+	return 0; /* no flags writable */
 }
 
 int flash_physical_protect_at_boot(uint32_t new_flags)
 {
-	return EC_SUCCESS;			/* yeah, I did it. */
+	return EC_SUCCESS; /* yeah, I did it. */
 }
 
 int flash_physical_protect_now(int all)
 {
-	return EC_SUCCESS;			/* yeah, I did it. */
+	return EC_SUCCESS; /* yeah, I did it. */
 }
-
 
 enum flash_op {
 	OP_ERASE_BLOCK,
@@ -124,8 +114,8 @@ enum flash_op {
 	OP_READ_BLOCK,
 };
 
-static int do_flash_op(enum flash_op op, int is_info_bank,
-		       int byte_offset, int words)
+static int do_flash_op(enum flash_op op, int is_info_bank, int byte_offset,
+		       int words)
 {
 	volatile uint32_t *fsh_pe_control;
 	uint32_t opcode, tmp, errors;
@@ -175,13 +165,13 @@ static int do_flash_op(enum flash_op op, int is_info_bank,
 			return EC_ERROR_INVAL;
 #endif
 		opcode = 0x31415927;
-		words = 0;			/* don't care, really */
+		words = 0; /* don't care, really */
 		/* This number is based on the TSMC spec Nme=Terase/Tsme */
 		max_attempts = 45;
 		break;
 	case OP_WRITE_BLOCK:
 		opcode = 0x27182818;
-		words--;		     /* count register is zero-based */
+		words--; /* count register is zero-based */
 		/* This number is based on the TSMC spec Nmp=Tprog/Tsmp */
 		max_attempts = 9;
 		break;
@@ -204,7 +194,7 @@ static int do_flash_op(enum flash_op op, int is_info_bank,
 	 * already filled before we call this function.
 	 */
 	GWRITE_FIELD(FLASH, FSH_TRANS, OFFSET,
-		     byte_offset / 4);		  /* word offset */
+		     byte_offset / 4); /* word offset */
 	GWRITE_FIELD(FLASH, FSH_TRANS, MAINB, is_info_bank ? 1 : 0);
 	GWRITE_FIELD(FLASH, FSH_TRANS, SIZE, words);
 
@@ -237,8 +227,8 @@ static int do_flash_op(enum flash_op op, int is_info_bank,
 
 		if (errors && (errors != prev_error)) {
 			prev_error = errors;
-			CPRINTF("%s:%d errors %x fsh_pe_control %p\n",
-				__func__, __LINE__, errors, fsh_pe_control);
+			CPRINTF("%s:%d errors %x fsh_pe_control %p\n", __func__,
+				__LINE__, errors, fsh_pe_control);
 		}
 		/* Error status is self-clearing. Read it until it does
 		 * (we hope).
@@ -277,8 +267,8 @@ static int do_flash_op(enum flash_op op, int is_info_bank,
 }
 
 /* Write up to CONFIG_FLASH_WRITE_IDEAL_SIZE bytes at once */
-static int write_batch(int byte_offset, int is_info_bank,
-		       int words, const uint8_t *data)
+static int write_batch(int byte_offset, int is_info_bank, int words,
+		       const uint8_t *data)
 {
 	volatile uint32_t *fsh_wr_data = GREG32_ADDR(FLASH, FSH_WR_DATA0);
 	uint32_t val;
@@ -292,8 +282,8 @@ static int write_batch(int byte_offset, int is_info_bank,
 		 * manually to avoid alignment faults. Note that we're assuming
 		 * little-endian order here.
 		 */
-		val = ((data[3] << 24) | (data[2] << 16) |
-		       (data[1] << 8) | data[0]);
+		val = ((data[3] << 24) | (data[2] << 16) | (data[1] << 8) |
+		       data[0]);
 
 		*fsh_wr_data = val;
 		data += 4;
@@ -304,7 +294,7 @@ static int write_batch(int byte_offset, int is_info_bank,
 }
 
 static int flash_physical_write_internal(int byte_offset, int is_info_bank,
-				int num_bytes, const char *data)
+					 int num_bytes, const char *data)
 {
 	int num, ret;
 
@@ -320,10 +310,9 @@ static int flash_physical_write_internal(int byte_offset, int is_info_bank,
 		 * past a CONFIG_FLASH_ROW_SIZE boundary.
 		 */
 		num = MIN(num, CONFIG_FLASH_ROW_SIZE -
-			  byte_offset % CONFIG_FLASH_ROW_SIZE);
-		ret = write_batch(byte_offset,
-				  is_info_bank,
-				  num / 4,	/* word count */
+				   byte_offset % CONFIG_FLASH_ROW_SIZE);
+		ret = write_batch(byte_offset, is_info_bank,
+				  num / 4, /* word count */
 				  (const uint8_t *)data);
 		if (ret)
 			return ret;
@@ -372,12 +361,11 @@ static int valid_info_range(uint32_t offset, size_t size)
 		return 0;
 
 	return 1;
-
 }
 
 /* Write access is a superset of read access. */
-static int flash_info_configure_access(uint32_t offset,
-				       size_t size, int write_mode)
+static int flash_info_configure_access(uint32_t offset, size_t size,
+				       int write_mode)
 {
 	int mask;
 
@@ -391,7 +379,7 @@ static int flash_info_configure_access(uint32_t offset,
 		mask |= GC_GLOBALSEC_FLASH_REGION6_CTRL_WR_EN_MASK;
 
 	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) =
-		FLASH_INFO_MEMORY_BASE + offset;
+	    FLASH_INFO_MEMORY_BASE + offset;
 
 	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = size - 1;
 	GREG32(GLOBALSEC, FLASH_REGION6_CTRL) = mask;
@@ -417,8 +405,8 @@ void flash_info_write_disable(void)
 int flash_info_physical_write(int byte_offset, int num_bytes, const char *data)
 {
 	if (byte_offset < 0 || num_bytes < 0 ||
-		byte_offset + num_bytes > FLASH_INFO_SIZE ||
-		(byte_offset | num_bytes) & (CONFIG_FLASH_WRITE_SIZE - 1))
+	    byte_offset + num_bytes > FLASH_INFO_SIZE ||
+	    (byte_offset | num_bytes) & (CONFIG_FLASH_WRITE_SIZE - 1))
 		return EC_ERROR_INVAL;
 
 	return flash_physical_write_internal(byte_offset, 1, num_bytes, data);
@@ -435,10 +423,8 @@ int flash_physical_erase(int byte_offset, int num_bytes)
 
 	while (num_bytes) {
 		/* We may be asked to erase multiple banks */
-		ret = do_flash_op(OP_ERASE_BLOCK,
-				  0,              /* not the INFO bank */
-				  byte_offset,
-				  num_bytes / 4); /* word count */
+		ret = do_flash_op(OP_ERASE_BLOCK, 0, /* not the INFO bank */
+				  byte_offset, num_bytes / 4); /* word count */
 		if (ret) {
 			CPRINTF("Failed to erase block at %x\n", byte_offset);
 			return ret;
@@ -451,12 +437,11 @@ int flash_physical_erase(int byte_offset, int num_bytes)
 	return EC_SUCCESS;
 }
 
-
 /* Enable write access to the backup RO section. */
 void flash_open_ro_window(uint32_t offset, size_t size_b)
 {
 	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) =
-		offset + CONFIG_PROGRAM_MEMORY_BASE;
+	    offset + CONFIG_PROGRAM_MEMORY_BASE;
 	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = size_b - 1;
 	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, EN, 1);
 	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, RD_EN, 1);
@@ -468,8 +453,8 @@ void flash_open_ro_window(uint32_t offset, size_t size_b)
 static int command_erase_flash_info(int argc, char **argv)
 {
 	uint32_t *preserved_manufacture_state;
-	const size_t manuf_word_count = FLASH_INFO_MANUFACTURE_STATE_SIZE /
-		sizeof(uint32_t);
+	const size_t manuf_word_count =
+	    FLASH_INFO_MANUFACTURE_STATE_SIZE / sizeof(uint32_t);
 	int i;
 	int rv = EC_ERROR_BUSY;
 
@@ -485,10 +470,10 @@ static int command_erase_flash_info(int argc, char **argv)
 
 	/* Preserve manufacturing information. */
 	for (i = 0; i < manuf_word_count; i++) {
-		if (flash_physical_info_read_word
-		    (FLASH_INFO_MANUFACTURE_STATE_OFFSET +
-		     i * sizeof(uint32_t),
-		     preserved_manufacture_state + i) != EC_SUCCESS) {
+		if (flash_physical_info_read_word(
+			FLASH_INFO_MANUFACTURE_STATE_OFFSET +
+			    i * sizeof(uint32_t),
+			preserved_manufacture_state + i) != EC_SUCCESS) {
 			ccprintf("Failed to read word %d!\n", i);
 			goto exit;
 		}
@@ -499,23 +484,115 @@ static int command_erase_flash_info(int argc, char **argv)
 		goto exit;
 	}
 
-	if (flash_info_physical_write
-	    (FLASH_INFO_MANUFACTURE_STATE_OFFSET,
-	     FLASH_INFO_MANUFACTURE_STATE_SIZE,
-	     (char *)preserved_manufacture_state) != EC_SUCCESS) {
+	if (flash_info_physical_write(FLASH_INFO_MANUFACTURE_STATE_OFFSET,
+				      FLASH_INFO_MANUFACTURE_STATE_SIZE,
+				      (char *)preserved_manufacture_state) !=
+	    EC_SUCCESS) {
 		ccprintf("Failed to restore manufacture state!\n");
 		goto exit;
 	}
 
 	rv = EC_SUCCESS;
- exit:
+exit:
 	always_memset(preserved_manufacture_state, 0,
 		      FLASH_INFO_MANUFACTURE_STATE_SIZE);
 	shared_mem_release(preserved_manufacture_state);
 	flash_info_write_disable();
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(eraseflashinfo, command_erase_flash_info,
-			"",
+DECLARE_CONSOLE_COMMAND(eraseflashinfo, command_erase_flash_info, NULL,
 			"Erase INFO1 flash space");
+
+#include "trng.h"
+/* Test commands to read and write random bits into INFO1 */
+static int command_read_factory_entropy(int argc, char **argv)
+{
+	const size_t entropy_word_count =
+	    FACTORY_ENTROPY_SIZE / sizeof(uint32_t);
+	uint32_t info_entropy[entropy_word_count];
+	int i;
+
+	flash_info_read_enable(FACTORY_ENTROPY_OFFSET, FACTORY_ENTROPY_SIZE);
+
+	/* Read and display factory-derived entropy */
+	for (i = 0; i < entropy_word_count; i++) {
+		if (flash_physical_info_read_word(
+			FACTORY_ENTROPY_OFFSET + i * sizeof(uint32_t),
+			info_entropy + i) != EC_SUCCESS)
+			CPRINTF("Failed to read entropy word %d!\n", i);
+		CPRINTF("Entropy word %d: %08x\n", i, info_entropy[i]);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(entropy_rd, command_read_factory_entropy, NULL,
+			"Read and display the raw entropy stored at factory-time in Info1");
+
+static int command_randomize_factory_entropy(int argc, char **argv)
+{
+	int erase;
+
+	const size_t entropy_word_count =
+	    FACTORY_ENTROPY_SIZE / sizeof(uint32_t);
+	uint32_t info_entropy[entropy_word_count];
+	uint32_t printable_word;
+	int i;
+
+	/* Erase required? */
+	if (argc > 1) {
+		if (!parse_bool(argv[1], &erase))
+			return EC_ERROR_PARAM1;
+	} else {
+		CPRINTF(
+		    "'t'/'f' boolean value for 'erase' argument required\n");
+		return EC_ERROR_PARAM1;
+	}
+
+	/* Fill it w/ random bits */
+	rand_bytes(info_entropy, FACTORY_ENTROPY_SIZE);
+
+	/* Have to erase the full INFO1 page */
+	flash_info_read_enable(0, 2048);
+	flash_info_write_enable(0, 2048);
+
+	/* Erase current contents */
+	if (erase)
+		if (do_flash_op(OP_ERASE_BLOCK, 1, 0, 512) != EC_SUCCESS) {
+			ccprintf("Failed to erase info space!\n");
+			return EC_ERROR_UNKNOWN;
+		}
+
+	/* Show that it's been erased */
+	for (i = 0; i < entropy_word_count; i++) {
+		if (flash_physical_info_read_word(
+			FACTORY_ENTROPY_OFFSET + i * sizeof(uint32_t),
+			&printable_word) != EC_SUCCESS)
+			CPRINTF("Failed to read entropy word %d!\n", i);
+		CPRINTF("Entropy word %d: %08x\n", i, printable_word);
+	}
+
+	/* Fill w/ new random bits */
+	if (flash_info_physical_write(FACTORY_ENTROPY_OFFSET,
+				      FACTORY_ENTROPY_SIZE,
+				      (char *)info_entropy) != EC_SUCCESS)
+		CPRINTF("Failed to write new entropy to INFO1!\n");
+	flash_info_write_disable();
+
+	/* Display new random bytes */
+	for (i = 0; i < entropy_word_count; i++) {
+		if (flash_physical_info_read_word(
+			FACTORY_ENTROPY_OFFSET + i * sizeof(uint32_t),
+			&printable_word) != EC_SUCCESS)
+			CPRINTF("Failed to read entropy word %d!\n", i);
+		CPRINTF("Entropy word %d: %08x\n", i, printable_word);
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(entropy_wr, command_randomize_factory_entropy,
+			"[<BOOLEAN>]",
+			"Erase current factory-entropy and write a new set of "
+			"random bits.\nNOTE: Will only succeed if chip is in "
+			"HIGH permission mode.");
+
 #endif

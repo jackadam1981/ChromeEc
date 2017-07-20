@@ -19,16 +19,22 @@
  * Area 2 - Board specific stuff
  * Area 3 - Crypto scratch
  */
-#define INFO_AREA_SIZE	   (INFO_MAX * 4)
-#define INFO_TOTAL_SIZE	   (INFO_AREA_SIZE * 4)
+#define INFO_AREA_SIZE (INFO_MAX * 4)
+#define INFO_TOTAL_SIZE (INFO_AREA_SIZE * 4)
 
 #define INFO_RO_MAP_OFFSET 0
-#define INFO_RO_MAP_SIZE   INFO_AREA_SIZE
+#define INFO_RO_MAP_SIZE INFO_AREA_SIZE
 
 #define INFO_RW_MAP_OFFSET (INFO_RO_MAP_OFFSET + INFO_RO_MAP_SIZE)
-#define INFO_RW_MAP_SIZE   INFO_AREA_SIZE
+#define INFO_RW_MAP_SIZE INFO_AREA_SIZE
 
 #define INFO_BOARD_SPACE_OFFSET (INFO_RW_MAP_OFFSET + INFO_RW_MAP_SIZE)
+
+/* Entropy inserted in INFO1 at the "factory" */
+#define FACTORY_ENTROPY_SIZE 64
+#define FACTORY_ENTROPY_OFFSET                 \
+	(FLASH_INFO_MANUFACTURE_STATE_OFFSET + \
+	 FLASH_INFO_MANUFACTURE_STATE_SIZE - FACTORY_ENTROPY_SIZE)  // 0x7c0
 
 int flash_info_read_enable(uint32_t offset, size_t size);
 /* This in fact enables both read and write. */
@@ -39,4 +45,4 @@ int flash_physical_info_read_word(int byte_offset, uint32_t *dst);
 
 void flash_open_ro_window(uint32_t offset, size_t size_b);
 
-#endif  /* ! __EC_CHIP_G_FLASH_INFO_H */
+#endif /* ! __EC_CHIP_G_FLASH_INFO_H */
