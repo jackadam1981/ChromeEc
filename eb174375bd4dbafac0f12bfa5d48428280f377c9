@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a20a35e_92886175",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-20T03:59:11Z",
+      "side": 1,
+      "message": "I don\u0027t think this works.\n\n  \"sp!, {r4, r5, r6, r7, r8, r9, lr}\".split(\u0027,\u0027)[1]\n  \u0027 {r4\u0027\n\nNot sure if worth it, but maybe we can do that parameter splitting in the assembly parser?",
+      "revId": "eb174375bd4dbafac0f12bfa5d48428280f377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e13b6a81_9220ee15",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-20T03:59:11Z",
+      "side": 1,
+      "message": "I wonder if the code would look better without these nested loops.\n\nFor this one, you could just \"continue\" while function_symbol is None, and not call DetectFunctionHead if function_symbol is set. The second nested loop should also be removable.",
+      "revId": "eb174375bd4dbafac0f12bfa5d48428280f377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "956d5a83_d65a48b2",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-20T03:59:11Z",
+      "side": 1,
+      "message": "I don\u0027t think you really need a temporary file. Either store whole output in memory or read line by line.",
+      "revId": "eb174375bd4dbafac0f12bfa5d48428280f377c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
