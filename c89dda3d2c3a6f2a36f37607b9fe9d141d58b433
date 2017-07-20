@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bb0ca0d3_233caf51",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-20T21:59:53Z",
+      "side": 1,
+      "message": "Confirmed as 8 * 32768 \u003d 262144 Hz, see email.",
+      "parentUuid": "a05a71ae_67a934d8",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 33
+      },
+      "revId": "c89dda3d2c3a6f2a36f37607b9fe9d141d58b433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1796c443_90079722",
         "filename": "chip/g/hwtimer.c",
         "patchSetId": 2
