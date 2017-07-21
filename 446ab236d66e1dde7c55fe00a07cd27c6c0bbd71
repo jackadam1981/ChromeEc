@@ -22,6 +22,30 @@
       "revId": "446ab236d66e1dde7c55fe00a07cd27c6c0bbd71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c88d3a3_00148c4a",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-21T15:38:41Z",
+      "side": 1,
+      "message": "usleep(4) when t0 is sampled right before a tick. In this case, the timer may immediately tick + 4us, and may tick +4us again 3.8us later (not 4us later). So we\u0027ll end our delay at t \u003d 3.8us, despite being asked to delay 4us. It can get slightly worse even with something like usleep(12), if we get consecutive 4us ticks (remember that the counter ticks in a cycle something like (4us, 4us, 4us, 4us, 3us, ... ). We can end our delay at t \u003d 11.4us.\n\nAnyway thinking about this more, we\u0027re likely to have .6us of overhead, so I will reduce this to ticks_to_usecs(1) + 1 (that\u0027s a constant 4 us).",
+      "parentUuid": "25ea86e7_7fa80201",
+      "range": {
+        "startLine": 198,
+        "startChar": 7,
+        "endLine": 198,
+        "endChar": 24
+      },
+      "revId": "446ab236d66e1dde7c55fe00a07cd27c6c0bbd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
