@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "1747b7fe_ab1ca316",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-21T21:47:52Z",
+      "side": 1,
+      "message": "Oh okay, I didn\u0027t realize that was the intended sequence.",
+      "parentUuid": "302ce46d_60b12de3",
+      "revId": "aed5a138d9b024a22f731d58b2587adaf15f68d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c60b4e4_40c0bf97",
         "filename": "board/tigertail/board.c",
         "patchSetId": 1
@@ -107,6 +125,30 @@
       "side": 1,
       "message": "it\u0027s debounced by the button_interrupt_deferred() runtime. Clarified in comments.",
       "parentUuid": "267ce01c_1e1e1e85",
+      "range": {
+        "startLine": 395,
+        "startChar": 53,
+        "endLine": 395,
+        "endChar": 54
+      },
+      "revId": "aed5a138d9b024a22f731d58b2587adaf15f68d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80c8b16_09c09eeb",
+        "filename": "board/tigertail/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-21T21:47:52Z",
+      "side": 1,
+      "message": "Thanks for the clarification.",
+      "parentUuid": "66aa8b3b_8932efbf",
       "range": {
         "startLine": 395,
         "startChar": 53,
