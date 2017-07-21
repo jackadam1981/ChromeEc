@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ffdc7562_727f62e5",
+        "filename": "Makefile.rules",
+        "patchSetId": 8
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-21T06:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e26b02ab_deaeafd7",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e08a39af_3a6c0a39",
         "filename": "Makefile.rules",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87027f4f_17dff70e",
+        "filename": "Makefile.rules",
+        "patchSetId": 8
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-21T06:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e08a39af_3a6c0a39",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "cbab5d0e_aaaf3b29",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-21T06:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8394d99c_54ff3aa2",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9daf83c6_5cdf01e2",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 8
@@ -67,6 +121,24 @@
       "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f6d0f7_e983eea6",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-21T06:07:29Z",
+      "side": 1,
+      "message": "Done. And try to make the processing simpler in this PS by assuming there is no empty function.",
+      "parentUuid": "9daf83c6_5cdf01e2",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "66060af8_16f78d13",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-21T06:07:29Z",
+      "side": 1,
+      "message": "Done, turn into a more clear computation",
+      "parentUuid": "597959d9_c8a9155b",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2329884_29f2b56b",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 8
@@ -98,6 +188,24 @@
       "writtenOn": "2017-07-21T02:14:13Z",
       "side": 1,
       "message": "So I guess the idea here is that if we have complete information (function pointers, etc), the list below should be empty?\n\nCan we add a TODO to do something about those (print a warning, and list of (at least) all the root functions in these subtrees)",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c70b787_c5bb3adb",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-21T06:07:29Z",
+      "side": 1,
+      "message": "These are the functions can\u0027t reach from task routines. But it\u0027s possible because we have interrupt handlers and some other things ?",
+      "parentUuid": "f2329884_29f2b56b",
       "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -127,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "84973409_273b52f6",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-21T06:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7d58da2_ae13b5e3",
+      "range": {
+        "startLine": 560,
+        "startChar": 41,
+        "endLine": 560,
+        "endChar": 43
+      },
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c4d380b_fa082805",
         "filename": "include/task_filter.h",
         "patchSetId": 8
@@ -147,6 +279,30 @@
       "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a94b4a98_53b27f07",
+        "filename": "include/task_filter.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-07-21T06:07:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c4d380b_fa082805",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 23
+      },
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
