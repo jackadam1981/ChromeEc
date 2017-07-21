@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "2dfe8d4a_f5d3185b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-07-21T12:03:48Z",
+      "side": 1,
+      "message": "Agreed",
+      "parentUuid": "a351d4f3_9ade6089",
+      "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "14fac02f_db95777c",
         "filename": "power/intel_x86.c",
         "patchSetId": 12
@@ -149,6 +167,24 @@
       "side": 1,
       "message": "I see. If you think that\u0027s valid please add a comment as well.",
       "parentUuid": "732b32f3_74bcf114",
+      "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25da3a14_aef9aba7",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-07-21T12:03:48Z",
+      "side": 1,
+      "message": "Agreed",
+      "parentUuid": "b12fa12c_7d853982",
       "revId": "483042d1d3c61f84babb646c9306d6d927469e57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
