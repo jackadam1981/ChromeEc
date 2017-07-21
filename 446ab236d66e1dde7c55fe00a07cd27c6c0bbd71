@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25ea86e7_7fa80201",
+        "filename": "chip/g/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-21T03:14:13Z",
+      "side": 1,
+      "message": "this seems a bit drastic to me - can cases 1) and 2) above coincide at all? Can you suggest an example?",
+      "range": {
+        "startLine": 198,
+        "startChar": 7,
+        "endLine": 198,
+        "endChar": 24
+      },
+      "revId": "446ab236d66e1dde7c55fe00a07cd27c6c0bbd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
