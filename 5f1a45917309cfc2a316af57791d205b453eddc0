@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84263d67_9298e77a",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-21T00:05:13Z",
+      "side": 1,
+      "message": "So if we rollback at any point we have to reopen the system?",
+      "range": {
+        "startLine": 649,
+        "startChar": 6,
+        "endLine": 649,
+        "endChar": 32
+      },
+      "revId": "5f1a45917309cfc2a316af57791d205b453eddc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
