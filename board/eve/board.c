@@ -674,6 +674,13 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
+	int tmp;
+
+	/* Clear power source events to prevent PROCHOT assertion in S0 */
+	i2c_read8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x04, &tmp);
+	if (tmp)
+		i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x04, tmp);
+
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
 	dsp_wake_enable(0);
 	trackpad_wake_enable(0);
