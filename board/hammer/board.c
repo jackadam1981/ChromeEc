@@ -102,7 +102,11 @@ struct keyboard_scan_config keyscan_config = {
  */
 static void board_init(void)
 {
-
+#ifdef SECTION_IS_RW
+	/* HACK: Set backlight PWM to 10% */
+	pwm_enable(PWM_CH_KBLIGHT, 1);
+	pwm_set_duty(PWM_CH_KBLIGHT, 10);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
