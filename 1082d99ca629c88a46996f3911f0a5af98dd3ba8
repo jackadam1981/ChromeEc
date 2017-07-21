@@ -22,6 +22,30 @@
       "revId": "1082d99ca629c88a46996f3911f0a5af98dd3ba8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6df7d8f9_dd276bb5",
+        "filename": "board/eve/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-21T00:40:29Z",
+      "side": 0,
+      "message": "I think that\u0027s okay. Even if the GMR sensor indicates that we\u0027re in tablet mode, we(the EC) shouldn\u0027t be disabling keyboard scanning in S0.",
+      "parentUuid": "7b326981_ab026f1e",
+      "range": {
+        "startLine": 625,
+        "startChar": 5,
+        "endLine": 625,
+        "endChar": 22
+      },
+      "revId": "1082d99ca629c88a46996f3911f0a5af98dd3ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
