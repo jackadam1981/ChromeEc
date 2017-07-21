@@ -22,6 +22,30 @@
       "revId": "5f1a45917309cfc2a316af57791d205b453eddc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "253b54d7_92009d08",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-21T15:55:34Z",
+      "side": 1,
+      "message": "Yes, via ccdopen.  But if you\u0027ve set a CCD password, you won\u0027t even need to reboot to do so.\n\n(Is this really a meaningful check?  I preserved it from the old console-unlock logic.)",
+      "parentUuid": "84263d67_9298e77a",
+      "range": {
+        "startLine": 649,
+        "startChar": 6,
+        "endLine": 649,
+        "endChar": 32
+      },
+      "revId": "5f1a45917309cfc2a316af57791d205b453eddc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
