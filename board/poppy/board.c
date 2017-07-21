@@ -260,6 +260,9 @@ static inline int detect_pin_connected(enum gpio_signal det_pin)
 
 void base_detect_interrupt(enum gpio_signal signal)
 {
+	gpio_set_level(GPIO_TP60, !detect_pin_connected(signal));
+
+	{
 	uint64_t time_now = get_time().val;
 
 	if (base_detect_debounce_time <= time_now) {
@@ -292,6 +295,7 @@ void base_detect_interrupt(enum gpio_signal signal)
 	}
 
 	base_detect_debounce_time = time_now + BASE_DETECT_DEBOUNCE_US;
+	}
 }
 
 #include "gpio_list.h"
