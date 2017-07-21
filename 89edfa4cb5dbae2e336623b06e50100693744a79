@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "e26b02ab_deaeafd7",
+        "filename": "Makefile.rules",
+        "patchSetId": 8
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-21T02:14:13Z",
+      "side": 1,
+      "message": "Add a comment why you do not want to actually depend in the elf file (as it\u0027d be rebuilt so that the date can be updated)",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e08a39af_3a6c0a39",
+        "filename": "Makefile.rules",
+        "patchSetId": 8
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-21T02:14:13Z",
+      "side": 1,
+      "message": "I guess you could generate $TASKLIST separately, as a make target?",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8394d99c_54ff3aa2",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-21T02:14:13Z",
+      "side": 1,
+      "message": "Might be worth describing a little bit more what is a tailing call (i.e. function jumps to another one instead of restoring stack).",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9daf83c6_5cdf01e2",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 8
@@ -13,6 +64,86 @@
       "writtenOn": "2017-07-21T01:46:21Z",
       "side": 1,
       "message": "That line is duplicated, which makes it a little harder to follow.\n\nI guess you can move that line to the end of the while loop, and add \"continue\" in the if block below?",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "597959d9_c8a9155b",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-21T02:14:13Z",
+      "side": 1,
+      "message": "I think this needs a bit more explanation too (I\u0027m not sure to understand the computation below)",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2329884_29f2b56b",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-21T02:14:13Z",
+      "side": 1,
+      "message": "So I guess the idea here is that if we have complete information (function pointers, etc), the list below should be empty?\n\nCan we add a TODO to do something about those (print a warning, and list of (at least) all the root functions in these subtrees)",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d58da2_ae13b5e3",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-21T02:14:13Z",
+      "side": 1,
+      "message": "This should be a constant defined on top.",
+      "range": {
+        "startLine": 560,
+        "startChar": 41,
+        "endLine": 560,
+        "endChar": 43
+      },
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4d380b_fa082805",
+        "filename": "include/task_filter.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-21T02:14:13Z",
+      "side": 1,
+      "message": "_MAKEFILE_DUMP_INFO is maybe a better name?",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 23
+      },
       "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
