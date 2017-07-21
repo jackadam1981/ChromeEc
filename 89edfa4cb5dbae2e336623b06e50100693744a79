@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9daf83c6_5cdf01e2",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-21T01:46:21Z",
+      "side": 1,
+      "message": "That line is duplicated, which makes it a little harder to follow.\n\nI guess you can move that line to the end of the while loop, and add \"continue\" in the if block below?",
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
