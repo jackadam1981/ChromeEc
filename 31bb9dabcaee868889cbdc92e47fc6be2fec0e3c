@@ -16,6 +16,121 @@
       "revId": "31bb9dabcaee868889cbdc92e47fc6be2fec0e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8008234f_beacf8d2",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-21T17:13:18Z",
+      "side": 1,
+      "message": "Can you specify there may be 60 bytes in the packet, and further packets are expected w/o header?",
+      "range": {
+        "startLine": 22,
+        "startChar": 34,
+        "endLine": 22,
+        "endChar": 37
+      },
+      "revId": "31bb9dabcaee868889cbdc92e47fc6be2fec0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c38e641e_29d44686",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-21T17:13:18Z",
+      "side": 1,
+      "message": "As above",
+      "range": {
+        "startLine": 29,
+        "startChar": 51,
+        "endLine": 29,
+        "endChar": 54
+      },
+      "revId": "31bb9dabcaee868889cbdc92e47fc6be2fec0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02e54f57_78e591df",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-21T17:13:18Z",
+      "side": 1,
+      "message": "If transaction size \u003e 64 bytes?",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "31bb9dabcaee868889cbdc92e47fc6be2fec0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f98ed49_d83ce2f3",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-21T17:13:18Z",
+      "side": 1,
+      "message": "lint",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "31bb9dabcaee868889cbdc92e47fc6be2fec0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e24e5d7_1bf28884",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-07-21T17:13:18Z",
+      "side": 1,
+      "message": "indicate following packets",
+      "range": {
+        "startLine": 59,
+        "startChar": 44,
+        "endLine": 59,
+        "endChar": 45
+      },
+      "revId": "31bb9dabcaee868889cbdc92e47fc6be2fec0e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
