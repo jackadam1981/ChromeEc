@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb55d0d3_f362fb77",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-21T21:39:49Z",
+      "side": 1,
+      "message": "Add \"Returns\" to the docstring.",
+      "revId": "a583854143dbd66abbc6adcca51c6c013793754f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bd429bb_25cf70be",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-21T21:39:49Z",
+      "side": 1,
+      "message": "typo: \u0027from the\u0027",
+      "range": {
+        "startLine": 392,
+        "startChar": 27,
+        "endLine": 392,
+        "endChar": 34
+      },
+      "revId": "a583854143dbd66abbc6adcca51c6c013793754f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ffe29bf_6cddeb28",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-21T21:39:49Z",
+      "side": 1,
+      "message": "add \"Returns:\" just before this. Not sure if you need the \"Output\" field, but up to you.",
+      "revId": "a583854143dbd66abbc6adcca51c6c013793754f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "761e7d5c_e626f8d9",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-21T21:39:49Z",
+      "side": 1,
+      "message": "Update this to \"Return: \"",
+      "revId": "a583854143dbd66abbc6adcca51c6c013793754f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "662b39bd_418694a7",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-21T21:39:49Z",
+      "side": 1,
+      "message": "Add \"Args:\".",
+      "revId": "a583854143dbd66abbc6adcca51c6c013793754f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4aa71b1_02af86f0",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-21T21:39:49Z",
+      "side": 1,
+      "message": "missing args in docstring.",
+      "range": {
+        "startLine": 533,
+        "startChar": 42,
+        "endLine": 533,
+        "endChar": 64
+      },
+      "revId": "a583854143dbd66abbc6adcca51c6c013793754f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
