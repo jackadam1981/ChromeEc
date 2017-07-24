@@ -22,6 +22,30 @@
       "revId": "71659cffebca5ad44d08b048f42b71494692858d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6222fd2e_388f0080",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-24T22:17:13Z",
+      "side": 1,
+      "message": "I think this is fine as is: this is the only place it is used in, and it is properly documented.\n\nWhen this constant needs to be used in more than one place, it would be a good time to add it to the .h file.",
+      "parentUuid": "e6a1c2f7_ee2eb69b",
+      "range": {
+        "startLine": 551,
+        "startChar": 25,
+        "endLine": 551,
+        "endChar": 29
+      },
+      "revId": "71659cffebca5ad44d08b048f42b71494692858d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
