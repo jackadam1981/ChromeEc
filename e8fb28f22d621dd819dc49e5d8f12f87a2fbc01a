@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "b912f96e_6f2f0843",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2017-07-24T18:33:30Z",
+      "side": 1,
+      "message": "Actually, I missed it before, but the battery spec spreadsheet explicitly calls out 169mA as the charge termination current.  We should use the higher number so we don\u0027t overcharge the battery.",
+      "parentUuid": "e0b613d6_dbb68961",
+      "range": {
+        "startLine": 119,
+        "startChar": 35,
+        "endLine": 119,
+        "endChar": 40
+      },
+      "revId": "e8fb28f22d621dd819dc49e5d8f12f87a2fbc01a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fc46eb0_6ad31eca",
         "filename": "board/scarlet/board.h",
         "patchSetId": 3
