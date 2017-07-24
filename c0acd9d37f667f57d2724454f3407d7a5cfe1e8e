@@ -212,6 +212,30 @@
       "revId": "c0acd9d37f667f57d2724454f3407d7a5cfe1e8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd9295e5_9a7734ae",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-07-24T21:57:09Z",
+      "side": 1,
+      "message": "gerrit is messing with you too :)\n\n\nit is there in the latest patchset.",
+      "parentUuid": "919c9f36_b843f007",
+      "range": {
+        "startLine": 611,
+        "startChar": 1,
+        "endLine": 611,
+        "endChar": 11
+      },
+      "revId": "c0acd9d37f667f57d2724454f3407d7a5cfe1e8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
