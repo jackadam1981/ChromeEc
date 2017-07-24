@@ -190,6 +190,30 @@
       "revId": "f2fc85f7d9b20f536966edd843b9061a26bcfa9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c09f7ead_5f3b3a57",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-07-24T21:49:12Z",
+      "side": 1,
+      "message": "wait, wut?\n\nReread the datasheet? That pin is not to be used in designs!! Only field fail lies that way.\n\nIf you\u0027re sure all boards will always have the required pulldown, sgtm\nI personally would add a GPIO_PULL_DOWN in line 95",
+      "parentUuid": "65cc1126_77113bf2",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "f2fc85f7d9b20f536966edd843b9061a26bcfa9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
