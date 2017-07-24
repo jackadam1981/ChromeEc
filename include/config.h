@@ -2346,6 +2346,9 @@
 /* Support for USB PD alternate mode of Downward Facing Port */
 #undef CONFIG_USB_PD_ALT_MODE_DFP
 
+/* Delay enabling RX on TCPC at boot time */
+#undef CONFIG_USB_PD_DEL_EN_RX_ATBOOT
+
 /* Check if max voltage request is allowed before each request */
 #undef CONFIG_USB_PD_CHECK_MAX_REQUEST_ALLOWED
 

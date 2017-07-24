@@ -1649,6 +1649,9 @@ void pd_task(void)
 	int cc1, cc2;
 	int res, incoming_packet = 0;
 	int hard_reset_count = 0;
+#ifdef CONFIG_USB_PD_DEL_EN_RX_ATBOOT
+	static int bootup_done;
+#endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	uint64_t next_role_swap = PD_T_DRP_SNK;
 #ifndef CONFIG_USB_PD_VBUS_DETECT_NONE
@@ -2468,8 +2471,21 @@ void pd_task(void)
 				port, typec_curr, TYPE_C_VOLTAGE);
 #endif
 			/* If PD comm is enabled, enable TCPC RX */
-			if (pd_comm_is_enabled(port))
+			if (pd_comm_is_enabled(port)) {
+#ifdef CONFIG_USB_PD_DEL_EN_RX_ATBOOT
+			/* Delay enabling RX first time at boot as EC may not
+			 * be ready to process messages through TCPC from the
+			 * port partner (SRC device).
+			 */
+				if (!bootup_done)
+					while (!(chipset_in_state(
+							CHIPSET_STATE_SUSPEND
+							| CHIPSET_STATE_ON)))
+						task_wait_event(50*MSEC);
+				bootup_done = 1;
+#endif
 				tcpm_set_rx_enable(port, 1);
+			}
 
 			/* DFP is attached */
 			if (new_cc_state == PD_CC_DFP_ATTACHED) {
