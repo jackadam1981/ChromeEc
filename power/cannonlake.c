@@ -53,26 +53,25 @@ void chipset_handle_espi_reset_assert(void)
 
 void chipset_reset(int cold_reset)
 {
-	CPRINTS("%s(%d)", __func__, cold_reset);
+	/*
+	 * The EC cannot control warm vs cold reset of the chipset using
+	 * SYS_RESET_L;  it's more of a request.
+	 */
+	CPRINTS("%s()", __func__);
 
-	if (cold_reset) {
-		if (gpio_get_level(GPIO_SYS_RESET_L) == 0)
-			return;
-		gpio_set_level(GPIO_SYS_RESET_L, 0);
-		/* Debounce time for SYS_RESET_L is 16 ms */
-		udelay(20 * MSEC);
-		gpio_set_level(GPIO_SYS_RESET_L, 1);
-	} else {
-		/* Warm reset. */
-		/*
-		 * TODO(aaboagye): something about platform reset??  But we
-		 * don't have that...
-		 */
-	}
+	if (gpio_get_level(GPIO_SYS_RESET_L) == 0)
+		return;
+
+	gpio_set_level(GPIO_SYS_RESET_L, 0);
+	/* Debounce time for SYS_RESET_L is 16 ms */
+	udelay(20 * MSEC);
+	gpio_set_level(GPIO_SYS_RESET_L, 1);
 }
 
 enum power_state chipset_force_g3(void)
 {
+	chipset_force_shutdown();
+
 	CPRINTS("Faking G3.  (NOOP for now.)");
 	/* TODO(aaboagye): Do the right thing for real. */
 	/* TODO(aaboagye): maybe turn off DSW load switch. */
