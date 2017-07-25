@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ee02000_0eb8554f",
+        "filename": "chip/g/board_id.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-25T01:33:28Z",
+      "side": 1,
+      "message": "It is weird that this talks about a feature when all it is really doing is checking that the required id matches the running id. Maybe rename board_id_matches_required_id or something.",
+      "range": {
+        "startLine": 67,
+        "startChar": 18,
+        "endLine": 67,
+        "endChar": 33
+      },
+      "revId": "27212ad1249fa8072cd08973b7f5afff14f3d50d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
