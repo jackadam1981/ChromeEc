@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1744700_143c0ebb",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-25T17:31:45Z",
+      "side": 1,
+      "message": "This might be unassigned, which will lead to undefined behavior. If BATT_FLAG_BAD_TEMPERATURE indicates that batt-\u003etemperature is not meaningful, we should initialize reg to zero at declaration",
+      "range": {
+        "startLine": 240,
+        "startChar": 38,
+        "endLine": 240,
+        "endChar": 41
+      },
+      "revId": "b97961495c3b504f4c34a07696f31e4cea09fee6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
