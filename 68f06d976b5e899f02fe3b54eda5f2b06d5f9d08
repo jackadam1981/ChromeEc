@@ -34,6 +34,24 @@
       "revId": "68f06d976b5e899f02fe3b54eda5f2b06d5f9d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "876c5c84_ca318aa0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-25T02:21:07Z",
+      "side": 0,
+      "message": "No need to set it to one here, as it is the default value (see https://cs.corp.google.com/chromeos_public/src/platform/ec/common/tablet_mode.c?rcl\u003d1a67ac2ad6a6c0eedaa672f7856e38fb5abf1ede\u0026l\u003d9)",
+      "parentUuid": "25a5e0f6_41253d0e",
+      "revId": "68f06d976b5e899f02fe3b54eda5f2b06d5f9d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
