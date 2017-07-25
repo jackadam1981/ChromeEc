@@ -5,6 +5,7 @@
 
 /* Helpers to emulate a U2F HID dongle over the TPM transport */
 
+#include "board_id.h"
 #include "console.h"
 #include "dcrypto.h"
 #include "device_state.h"
@@ -88,13 +89,18 @@ static int load_state(void)
 
 static int use_u2f(void)
 {
-	/*
-	 * TODO(b/62294740): Put board ID check here if needed
-	 * if (!board_id_we_want)
-	 *	return 0;
-	 */
-
 	if (u2f_mode == MODE_UNSET) {
+		const struct header_board_id required_id = {
+			 /* ZZAF is Eve */
+			('Z' << 24) + ('Z' << 16) + ('A' << 8) + 'F',
+			0xffffffff,  /* Exact board ID match required. */
+			0 /* Any flags will do. */
+		};
+		if (!board_id_enabled_feature(&required_id)) {
+			CPRINTS("%s: u2f not enabled on this board", __func__);
+			return 0;
+		}
+
 		if (load_state())
 			/* Start without extension enabled, host will set it */
 			u2f_mode = MODE_U2F;
