@@ -54,6 +54,8 @@ int read_board_id(struct board_id *id);
  */
 uint32_t board_id_mismatch(void);
 
+uint32_t board_id_enabled_feature(const struct header_board_id *required_id);
+
 BUILD_ASSERT((offsetof(struct info1_board_space, bid) & 3) == 0);
 BUILD_ASSERT((INFO_BOARD_ID_SIZE & 3) == 0);
 BUILD_ASSERT(sizeof(struct info1_board_space) <= INFO_BOARD_SPACE_PROTECT_SIZE);

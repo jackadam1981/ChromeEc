@@ -112,6 +112,17 @@ uint32_t board_id_mismatch(void)
 	return check_board_id_vs_header(&id, &sh->bid);
 }
 
+uint32_t board_id_enabled_feature(const struct header_board_id *required_id)
+{
+	struct board_id id;
+
+	/* Get Board ID from INFO1. */
+	if (read_board_id(&id) != EC_SUCCESS)
+		return 0;
+
+	return !check_board_id_vs_header(&id, required_id);
+}
+
 /**
  * Write board ID into the flash INFO1 space.
  *
