@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff8e3730_d2305a2e",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-25T17:05:19Z",
+      "side": 1,
+      "message": "Please declare board_flash_select() in flash.h, describing the expected board implementation (and that it\u0027s only needed if CONFIG_FLASH_SELECT_REQUIRED).",
+      "range": {
+        "startLine": 1349,
+        "startChar": 8,
+        "endLine": 1349,
+        "endChar": 26
+      },
+      "revId": "867175571dbbd7f9b50dae74fae88c992ba678b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac8dfb42_9eadc697",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-25T17:05:19Z",
+      "side": 1,
+      "message": "Just CONFIG_FLASH_SELECT_REQUIRED?",
+      "range": {
+        "startLine": 1034,
+        "startChar": 19,
+        "endLine": 1034,
+        "endChar": 24
+      },
+      "revId": "867175571dbbd7f9b50dae74fae88c992ba678b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc087053_bcf7062b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1414,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-25T17:05:19Z",
+      "side": 1,
+      "message": "1 to select flash, 0 to deselect flash?",
+      "range": {
+        "startLine": 1414,
+        "startChar": 1,
+        "endLine": 1414,
+        "endChar": 18
+      },
+      "revId": "867175571dbbd7f9b50dae74fae88c992ba678b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
