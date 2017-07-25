@@ -283,11 +283,15 @@ static int command_ccd(int argc, char **argv)
 			return EC_ERROR_PARAM1;
 	}
 
-	ccprintf("CCD:%14s\nAP UART:  %s\nEC UART:  %s\n",
+	ccprintf("CCD:%14s\n",
 		keep_ccd_enabled ? "forced enable" :
-		ccd_is_enabled() ? " enabled" : "disabled",
+		ccd_is_enabled() ? " enabled" : "disabled");
+	ccprintf("AP UART:  %s\nEC UART:  %s\n",
 		uartn_enabled(UART_AP) ? " enabled" : "disabled",
 		uartn_enabled(UART_EC) ? " enabled" : "disabled");
+	ccprintf("I2C:      %s\n",
+		 usb_i2c_board_is_enabled() ? " enabled" : "disabled");
+
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(ccd, command_ccd,
