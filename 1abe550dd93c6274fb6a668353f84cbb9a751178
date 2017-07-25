@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0b128af_c79bed71",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-07-25T04:33:27Z",
+      "side": 1,
+      "message": "This is used because current_batt_params is declared under the previous #ifdef.  A bit overloaded now..",
+      "range": {
+        "startLine": 1049,
+        "startChar": 7,
+        "endLine": 1049,
+        "endChar": 46
+      },
+      "revId": "1abe550dd93c6274fb6a668353f84cbb9a751178",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
