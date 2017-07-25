@@ -54,6 +54,18 @@ int read_board_id(struct board_id *id);
  */
 uint32_t board_id_mismatch(void);
 
+/*
+ * Check if the current board would allow executioin of the passed in header
+ * Board ID contents.
+ *
+ * This is handy when gating execution of various features, so that generic
+ * Cr50 images with no Board ID restrictions in the image header would still
+ * allow to execute board specific code only on certain boards.
+ *
+ * Returns nonzero if feature is enabled, zero otherwise.
+ */
+uint32_t board_id_enabled_feature(const struct header_board_id *required_id);
+
 BUILD_ASSERT((offsetof(struct info1_board_space, bid) & 3) == 0);
 BUILD_ASSERT((INFO_BOARD_ID_SIZE & 3) == 0);
 BUILD_ASSERT(sizeof(struct info1_board_space) <= INFO_BOARD_SPACE_PROTECT_SIZE);
