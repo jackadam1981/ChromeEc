@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ddd0d9b2_693e6b93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-25T02:23:07Z",
+      "side": 1,
+      "message": "point of view...",
+      "parentUuid": "5eb4d435_92fd33d0",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "f074a2d89a656064a454a593590b750f9287cc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1f2a7f7_5497eea0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-20T23:12:53Z",
       "side": 1,
       "message": "What is this supposed to mean?",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "f074a2d89a656064a454a593590b750f9287cc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a0705cc_d4b61dd0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-25T02:23:07Z",
+      "side": 1,
+      "message": "When the device start, keyboard will not work (chrome will disable events), screen will be in tablet mode.",
+      "parentUuid": "e1f2a7f7_5497eea0",
       "range": {
         "startLine": 10,
         "startChar": 41,
