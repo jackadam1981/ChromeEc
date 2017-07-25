@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aefb13ba_3c41269d",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-25T17:24:33Z",
+      "side": 1,
+      "message": "If we do go with this proposal, code like this will get scattered around the Cr50 source.  Seems like this should be turned into a macro so that it\u0027s less typo-prone.\n\nAnd I think we\u0027re gonna wish that we\u0027d packed the letters in the other direction, since *(uint32_t *)\"ZZAF\" is endian-swapped from what\u0027s done above.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "2838baeba39c47da30e53863a044d5e3aaf49111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
