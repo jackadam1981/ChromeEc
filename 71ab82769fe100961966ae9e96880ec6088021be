@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f38594eb_32ff04b3",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Nit: import module by dictionary order. So put \"re\" before \"subprocess\"",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 9
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d927bd9_f0fb9aac",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Seems this class only has attribute, how about using collections.namedtuple if there are all read-only attribute?\n\nref: https://docs.python.org/2/library/collections.html#collections.namedtuple",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4af0a3c7_f732dce0",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Nit: Order by the arguments of the method.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e604f3c9_5224c884",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "symtype in [\u0027O\u0027, \u0027F\u0027]",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 43
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfe60c3a_12a3b60b",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Nit: you can explain the type of the attribute because Python doesn\u0027t declare the type of variable. For example:\n\nA boolean value indicating the function callsite is a tailing call.",
+      "range": {
+        "startLine": 84,
+        "startChar": 13,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "729781fa_7868a38d",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Just leave your LDAP. For example: \n\n# TODO(cheyuw): blah blah",
+      "range": {
+        "startLine": 157,
+        "startChar": 9,
+        "endLine": 157,
+        "endChar": 26
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e54d4e7b_8c681248",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Nit: We can combine a \u003c b and a \u003e c to c \u003c a \u003c b in Python.",
+      "range": {
+        "startLine": 192,
+        "startChar": 10,
+        "endLine": 193,
+        "endChar": 75
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1821f9f_01fb0c36",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Will Callsite() return None?",
+      "range": {
+        "startLine": 210,
+        "startChar": 10,
+        "endLine": 210,
+        "endChar": 34
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04ac2466_dff58617",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "How about using partition?\nunused_sp, unused_sep, parameter_text \u003d operand_text.partition(\u0027,\u0027)",
+      "range": {
+        "startLine": 229,
+        "startChar": 27,
+        "endLine": 229,
+        "endChar": 56
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce480685_c3a87a24",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Seems you only get stdout from sub-process without any stdin, how about using subprocess.check_output?",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 44
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bca66fd_fffff8e0",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Nit: You can just return line_text.strip()",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 15
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f480e2b_bc0aa117",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "[line.strip() for line in disasm_text.splitlines()]",
+      "range": {
+        "startLine": 380,
+        "startChar": 19,
+        "endLine": 380,
+        "endChar": 74
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "751d1871_df1418e7",
+        "filename": "extra/stack_analyzer/stack_analyzer_unittest.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "You can implement __eq__() method for Callsite, then you can call self.assertEquals(callsite_a, callsite_b), maybe you can even call:\nself.assertListEqual(callsites, expect_callsites)",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 62
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58584e83_cb569e3c",
+        "filename": "extra/stack_analyzer/stack_analyzer_unittest.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Same here: implement __eq__ for Symbol class?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 52
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "496c5948_257740ec",
+        "filename": "extra/stack_analyzer/stack_analyzer_unittest.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-07-25T08:17:35Z",
+      "side": 1,
+      "message": "Same here: implement __eq__",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 68
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
