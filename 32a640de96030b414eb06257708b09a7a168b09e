@@ -22,6 +22,30 @@
       "revId": "32a640de96030b414eb06257708b09a7a168b09e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9c116bb_8f287581",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-25T20:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1383a1a_8c46b307",
+      "range": {
+        "startLine": 67,
+        "startChar": 8,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "32a640de96030b414eb06257708b09a7a168b09e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
