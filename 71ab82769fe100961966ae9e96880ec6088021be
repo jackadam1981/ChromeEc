@@ -255,6 +255,52 @@
     },
     {
       "key": {
+        "uuid": "8c852935_9bdcca6f",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T23:51:56Z",
+      "side": 1,
+      "message": "Select",
+      "range": {
+        "startLine": 291,
+        "startChar": 31,
+        "endLine": 291,
+        "endChar": 40
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a76994b6_a3f52281",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T23:51:56Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter too much but you catch the tabs in \u0027operand\u0027, e.g.:\n\n\u003e\u003e\u003e line\n\u002744d94:\\tf893 0068 \\tldrb.w\\tr0, [r3, #104]\\t; 0x68\u0027\n\u003e\u003e\u003e disasm_regex.match(line).group(\u0027operand\u0027)\n\u0027\\tr0, [r3, #104]\\t\u0027",
+      "range": {
+        "startLine": 300,
+        "startChar": 51,
+        "endLine": 300,
+        "endChar": 53
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f480e2b_bc0aa117",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 11
@@ -275,6 +321,52 @@
       "revId": "71ab82769fe100961966ae9e96880ec6088021be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80f74bfc_8e2a7b02",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T23:51:56Z",
+      "side": 1,
+      "message": "equal",
+      "range": {
+        "startLine": 477,
+        "startChar": 36,
+        "endLine": 477,
+        "endChar": 41
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706cf2b6_a3b29ef5",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T23:51:56Z",
+      "side": 1,
+      "message": "I\u0027m not too familiar with the algorithm TBH, but I looked at the Wikipedia example. Wondering if it\u0027s ok to reset the index and stack on each iteration?\n\nMore generally, why don\u0027t we just do the second for loop, since we analyse all the functions anyway?",
+      "range": {
+        "startLine": 547,
+        "startChar": 31,
+        "endLine": 547,
+        "endChar": 32
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
