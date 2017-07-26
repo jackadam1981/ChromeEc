@@ -38,7 +38,10 @@ BUILD_ASSERT(ARRAY_SIZE(cos_lut) == COSINE_LUT_SIZE);
 
 fp_t arc_cos(fp_t x)
 {
-	int i;
+	int i = 0;
+	int j = COSINE_LUT_SIZE - 1;
+	int mid;
+	fp_t interp;
 
 	/* Cap x if out of range. */
 	if (x < FLOAT_TO_FP(-1.0))
@@ -47,19 +50,27 @@ fp_t arc_cos(fp_t x)
 		x = FLOAT_TO_FP(1.0);
 
 	/*
-	 * Increment through lookup table to find index and then linearly
+	 * Do binary search in the lookup table to find index and then linearly
 	 * interpolate for precision.
 	 */
-	/* TODO(crosbug.com/p/25600): Optimize with binary search. */
-	for (i = 0; i < COSINE_LUT_SIZE-1; i++) {
-		if (x >= cos_lut[i+1]) {
-			const fp_t interp = fp_div(cos_lut[i] - x,
-						   cos_lut[i] - cos_lut[i + 1]);
 
+	while (i < j) {
+		mid = (i + j) >> 1;
+		if (x < cos_lut[mid])
+			i = mid + 1;
+		else if (x > cos_lut[mid])
+			j = mid;
+		else
 			return fp_mul(INT_TO_FP(COSINE_LUT_INCR_DEG),
-				      INT_TO_FP(i) + interp);
-		}
+				      INT_TO_FP(mid));
 	}
+
+	if (x == cos_lut[i]) /* No need for linear interpolation */
+		return fp_mul(INT_TO_FP(COSINE_LUT_INCR_DEG), INT_TO_FP(i));
+
+	interp = fp_div(cos_lut[i - 1] - x, cos_lut[i - 1] - cos_lut[i]);
+	return fp_mul(INT_TO_FP(COSINE_LUT_INCR_DEG),
+		      INT_TO_FP(i - 1) + interp);
 
 	/*
 	 * Shouldn't be possible to get here because inputs are clipped to
