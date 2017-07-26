@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4b471e8_f7cfb401",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:01:42Z",
+      "side": 1,
+      "message": "Don\u0027t do that, as that\u0027ll prevent the EC from going to deep sleep.",
+      "revId": "83e9a04d3e9cc6a28b69b1fab1b5d3e0e182c846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0053c15a_27657dc2",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:01:42Z",
+      "side": 1,
+      "message": "I\u0027m wondering about the need for this...\n\nPresumably we\u0027ll always use pwm_set_duty for this purpose, so maybe we can just get the HID code to call that directly (using PWM_CH_KBLIGHT as parameter, I guess that name is generic enougj)",
+      "revId": "83e9a04d3e9cc6a28b69b1fab1b5d3e0e182c846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf477e71_b9c1146b",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:01:42Z",
+      "side": 1,
+      "message": "Instead, do pwm_enable(PWM_CH_KBLIGHT, brightness \u003e 0) here.",
+      "revId": "83e9a04d3e9cc6a28b69b1fab1b5d3e0e182c846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
