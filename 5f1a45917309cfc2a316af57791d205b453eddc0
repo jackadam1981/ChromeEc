@@ -46,6 +46,30 @@
       "revId": "5f1a45917309cfc2a316af57791d205b453eddc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57925b12_e9e3c992",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-26T19:55:02Z",
+      "side": 1,
+      "message": "I think it would be more straight forward/useful to replace the system_rollback_detected check with a board_id_mismatched check.\n \nIn terms of the old cr50 behavior I dont think the rollback check is useful, but with that weird board id rollback state the check is. This system_rollback_detected check prevents us from setting the state to UNLOCKED when we have rolled back to a board id mismatched image. When we are in that state we dont try to jump to the other image, and we just continue booting in a locked down state, so I think ccd should not be set to UNLOCKED in that state.\n\nI assume that there will be a better check somewhere else to make sure that even if the system is UNLOCKED then nothing ccd related will actually be unlocked if there is a mismatch.\n\nSo I am not sure if you want to prevent the unlock here or not. Maybe ccd_get_state would be a good place... just always return locked if the board id is mismatched",
+      "parentUuid": "253b54d7_92009d08",
+      "range": {
+        "startLine": 649,
+        "startChar": 6,
+        "endLine": 649,
+        "endChar": 32
+      },
+      "revId": "5f1a45917309cfc2a316af57791d205b453eddc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
