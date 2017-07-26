@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb60bfbd_bc49c887",
+        "filename": "board/coral/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-26T21:32:03Z",
+      "side": 1,
+      "message": "Does this comment not apply anymore?",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "a9af487f148c496ed7efd48047ee24cf2d6708df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff11644c_d024770d",
+        "filename": "board/coral/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-26T21:32:03Z",
+      "side": 1,
+      "message": "Why not just change the GPIO names in the GPIO_INT macro and delete these defines? These aren\u0027t swapped, right?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 59
+      },
+      "revId": "a9af487f148c496ed7efd48047ee24cf2d6708df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
