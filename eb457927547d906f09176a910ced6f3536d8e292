@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0370e16b_d3486336",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:19:44Z",
+      "side": 1,
+      "message": "Since we\u0027re at it, I guess we could just do a memset?",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a686ff6_201cafa0",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:19:44Z",
+      "side": 1,
+      "message": "Why do you need to use BL_SIZE\u003d1 here?\n\nPresumably rx_len should be short enough, right? (and you can\u0027t guarantee it\u0027ll be a multiple of 32 bytes?)",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e02990d_a3246244",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:19:44Z",
+      "side": 1,
+      "message": "Anything in particular that prevents us from using control endpoints for these simple requests? We\u0027re not anywhere close the limit of number of endpoints, but it might be wise to think about it early.",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0136cbf5_ed22e848",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:19:44Z",
+      "side": 1,
+      "message": "0x02 \u003d \"Logical\"",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f20e81a8_edbb6f25",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:19:44Z",
+      "side": 1,
+      "message": "LED usage page isn\u0027t quite right, it\u0027s meant for on/off controls, see Hut_1_12v2.pdf.\n\nI\u0027d rather we use a vendor-defined range, or some other usage table (like HUTRR41, even though it\u0027s a little bit of a misnomer).",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c14c4cfc_af09413b",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:19:44Z",
+      "side": 1,
+      "message": "0x07 !\u003d 1",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 37
+      },
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42547d37_c28cf811",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:19:44Z",
+      "side": 1,
+      "message": "IIUC, you are only making one usage available, so minimum must be \u003d maximum.",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7749719_49e0dc34",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:19:44Z",
+      "side": 1,
+      "message": "I don\u0027t think Constant is correct.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 38
+      },
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1e013a_29aaf8c1",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2591,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:19:44Z",
+      "side": 1,
+      "message": "Add short comment.",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7efc7208_2226faec",
+        "filename": "include/usb_hid_keyboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-26T22:19:44Z",
+      "side": 1,
+      "message": "See other CL, not 100% sure if needed.",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
