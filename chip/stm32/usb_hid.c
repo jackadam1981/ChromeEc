@@ -28,18 +28,30 @@ void hid_tx(int ep)
 	STM32_USB_EP(ep) = (STM32_USB_EP(ep) & EP_MASK);
 }
 
-void hid_reset(int ep, usb_uint *hid_ep_buf, int len)
+void hid_reset(int ep, usb_uint *hid_ep_tx_buf, int tx_len,
+	       usb_uint *hid_ep_rx_buf, int rx_len)
 {
 	int i;
-	/* HID interrupt endpoint 1 */
-	btable_ep[ep].tx_addr = usb_sram_addr(hid_ep_buf);
-	btable_ep[ep].tx_count = len;
-	for (i = 0; i < (len+1)/2; i++)
-		hid_ep_buf[i] = 0;
+
+	btable_ep[ep].tx_addr = usb_sram_addr(hid_ep_tx_buf);
+	btable_ep[ep].tx_count = tx_len;
+
+	/* STM32 USB SRAM needs to be accessed one U16 at a time */
+	for (i = 0; i < (tx_len+1)/2; i++)
+		hid_ep_tx_buf[i] = 0;
+
 	STM32_USB_EP(ep) = (ep << 0) /* Endpoint Address */ |
 		(3 << 4) /* TX Valid */ |
 		(3 << 9) /* interrupt EP */ |
 		(0 << 12) /* RX Disabled */;
+
+	/* Enable RX for output reports */
+	if (hid_ep_rx_buf) {
+		btable_ep[ep].rx_addr = usb_sram_addr(hid_ep_rx_buf);
+		btable_ep[ep].rx_count = 0x8000 | ((rx_len / 32) << 10);
+
+		STM32_USB_EP(ep) |= (3 << 12);  /* RX Valid */
+	}
 }
 
 /*
