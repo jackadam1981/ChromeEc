@@ -45,6 +45,30 @@
       "revId": "a9af487f148c496ed7efd48047ee24cf2d6708df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7203d9e4_50b4c323",
+        "filename": "board/coral/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-07-26T21:38:33Z",
+      "side": 1,
+      "message": "Yes, please do that.",
+      "parentUuid": "ff11644c_d024770d",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 59
+      },
+      "revId": "a9af487f148c496ed7efd48047ee24cf2d6708df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
