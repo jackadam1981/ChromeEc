@@ -300,7 +300,8 @@ static void hid_touchpad_tx(void)
 
 static void hid_touchpad_reset(void)
 {
-	hid_reset(USB_EP_HID_TOUCHPAD, hid_ep_buf, HID_TOUCHPAD_REPORT_SIZE);
+	hid_reset(USB_EP_HID_TOUCHPAD, hid_ep_buf, HID_TOUCHPAD_REPORT_SIZE,
+		  NULL, 0);
 }
 
 USB_DECLARE_EP(USB_EP_HID_TOUCHPAD, hid_touchpad_tx, hid_touchpad_tx,

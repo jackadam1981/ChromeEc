@@ -5,8 +5,8 @@
  * USB HID definitions.
  */
 
-#ifndef __CROS_EC_USB_HID_KEYBOARD_H
-#define __CROS_EC_USB_HID_KEYBOARD_H
+#ifndef __CROS_EC_USB_HID_TOUCHPAD_H
+#define __CROS_EC_USB_HID_TOUCHPAD_H
 
 struct __attribute__((__packed__)) usb_hid_touchpad_report {
 	uint8_t id; /* 0x01 */
