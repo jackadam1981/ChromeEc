@@ -16,6 +16,24 @@
       "revId": "4ab9ae3d60f0a7a7807653e3259290643e6f5955",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf0d3cb_417041f2",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-27T08:22:35Z",
+      "side": 1,
+      "message": "Nope, flash usage is still the same, since the macro is just getting expanded.",
+      "parentUuid": "f7d76a41_3922964e",
+      "revId": "4ab9ae3d60f0a7a7807653e3259290643e6f5955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
