@@ -75,7 +75,7 @@ void uartn_tx_start(int uart);
 void uartn_tx_stop(int uart);
 
 /* Get UART output status */
-int uartn_enabled(int uart);
+int uart_tx_is_connected(int uart);
 
 /* Enable UART output */
 void uartn_tx_connect(int uart);
