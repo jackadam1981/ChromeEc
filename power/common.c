@@ -725,6 +725,10 @@ DECLARE_CONSOLE_COMMAND(pause_in_s5, command_pause_in_s5,
 			"Should the AP pause in S5 during shutdown?");
 #endif /* CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5 */
 
+#ifdef CONFIG_POWER_S0IX
+static uint32_t s0ix_wake_mask;
+#endif
+
 #ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 /* Track last reported sleep event */
 static enum host_sleep_event host_sleep_state;
@@ -747,6 +751,46 @@ enum host_sleep_event power_get_host_sleep_state(void)
 }
 
 #ifdef CONFIG_POWER_S0IX
+
+#define S0IX_WAKE_MASK_SYSJUMP_TAG		0x534D /* SM */
+#define S0IX_WAKE_MASK_HOOK_VERSION		1
+
+static int host_command_s0ix_wake_mask(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_s0ix_wake_mask *p = args->params;
+
+	s0ix_wake_mask = p->wake_mask;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SET_S0IX_WAKE_MASK,
+		     host_command_s0ix_wake_mask,
+		     EC_VER_MASK(0));
+
+static void s0ix_wake_mask_preserve_state(void)
+{
+	system_add_jump_tag(S0IX_WAKE_MASK_SYSJUMP_TAG,
+			    S0IX_WAKE_MASK_HOOK_VERSION,
+			    sizeof(s0ix_wake_mask),
+			    &s0ix_wake_mask);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, s0ix_wake_mask_preserve_state,
+	     HOOK_PRIO_DEFAULT);
+
+static void s0ix_wake_mask_restore_state(void)
+{
+	const int *state;
+	int version, size;
+
+	state = (const int *)system_get_jump_tag(S0IX_WAKE_MASK_SYSJUMP_TAG,
+						 &version, &size);
+
+	if (state && (version == S0IX_WAKE_MASK_HOOK_VERSION) &&
+	    (size == sizeof(s0ix_wake_mask)))
+		s0ix_wake_mask = *state;
+}
+DECLARE_HOOK(HOOK_INIT, s0ix_wake_mask_restore_state,
+	     HOOK_PRIO_INIT_CHIPSET + 1);
+
 void power_reset_host_sleep_state(enum host_sleep_event sleep_event)
 {
 	host_sleep_state = sleep_event;

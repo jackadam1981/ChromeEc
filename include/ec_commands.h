@@ -3498,7 +3498,14 @@ struct __ec_align2 ec_params_external_power_limit_v1 {
 #define EC_POWER_LIMIT_NONE 0xffff
 
 /*****************************************************************************/
-/* Hibernate/Deep Sleep Commands */
+/* Hibernate/Sleep Commands */
+
+/* Set S0iX wake mask. */
+#define EC_CMD_SET_S0IX_WAKE_MASK 0x00A7
+struct __ec_align4 ec_params_s0ix_wake_mask {
+	uint32_t wake_mask;
+};
+
 
 /* Set the delay before going into hibernation. */
 #define EC_CMD_HIBERNATION_DELAY 0x00A8
