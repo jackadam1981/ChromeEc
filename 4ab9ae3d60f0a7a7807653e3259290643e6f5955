@@ -34,6 +34,24 @@
       "revId": "4ab9ae3d60f0a7a7807653e3259290643e6f5955",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0103f245_1ff97ad1",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-27T09:22:12Z",
+      "side": 1,
+      "message": "Oh, so the TODO is to generate the desc on the fly.\nFeel so poor that our flash it that tight  💔  ...",
+      "parentUuid": "bbf0d3cb_417041f2",
+      "revId": "4ab9ae3d60f0a7a7807653e3259290643e6f5955",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
