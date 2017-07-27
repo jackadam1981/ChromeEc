@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d978136d_385fd7e9",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-27T06:31:47Z",
+      "side": 0,
+      "message": "Should we do something like the LED here:\n#ifdef BOARD_POPPY\nGPIO(PCH_RTCRST,\t\tPIN(E, 7), GPIO_OUT_LOW)\t\t\n#else\nGPIO(PCH_RTCRST,\t\tPIN(2, 7), GPIO_OUT_LOW)\n#endif",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 65
+      },
+      "revId": "74d1a312e7aecab4ffc118e2aa33596169a6269d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
