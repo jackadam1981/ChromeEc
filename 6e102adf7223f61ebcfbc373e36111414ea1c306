@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72e6b099_14be9854",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-07-27T10:05:54Z",
+      "side": 1,
+      "message": "Why do we need Usage Page switch to Digitizer here ?",
+      "revId": "6e102adf7223f61ebcfbc373e36111414ea1c306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
