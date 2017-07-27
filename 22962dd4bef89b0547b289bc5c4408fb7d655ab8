@@ -16,6 +16,24 @@
       "revId": "22962dd4bef89b0547b289bc5c4408fb7d655ab8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee6208be_c4e69acb",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-07-27T09:13:31Z",
+      "side": 1,
+      "message": "\u003e\u003eSo isn\u0027t this just overriding wake settings? We\u0027re blowing away the settings that may have been previously set, correct?\n\nYes that\u0027s correct. Each sleep state(S3/S5/S0IX) may have different wake mask. I think it may not be right to preserve previous wake mask, instead it would be better to override the existing settings. (Similar to EC_CMD_HOST_EVENT_SET_WAKE_MASK implementation: common/host_event_commands.c)\n\n\u003e\u003eThere should be a proper \u0027active\u0027 field that doesn\u0027t make the state be lost\n\nAgree, will change the implementation to use s0ix specific host command",
+      "parentUuid": "b7acaef1_c1831a2b",
+      "revId": "22962dd4bef89b0547b289bc5c4408fb7d655ab8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
