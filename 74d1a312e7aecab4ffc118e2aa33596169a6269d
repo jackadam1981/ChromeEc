@@ -69,6 +69,30 @@
       "revId": "74d1a312e7aecab4ffc118e2aa33596169a6269d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0323f6ad_6c3c6378",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-27T21:10:58Z",
+      "side": 0,
+      "message": "See bug, default should be input. We will configure E7 as input anyway when we add MIC_DSP_IRQ anyway.\n\nBut I could keep this, and drive GPIO27 instead, since that\u0027s what will be used from rev4 onwards.",
+      "parentUuid": "1622ada8_d0e5e2f3",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "74d1a312e7aecab4ffc118e2aa33596169a6269d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
