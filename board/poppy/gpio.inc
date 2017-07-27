@@ -37,7 +37,6 @@ GPIO_INT(ACCELGYRO3_INT_L,	PIN(3, 6), GPIO_INT_FALLING,			bmi160_interrupt)
 GPIO_INT(BASE_DET_A,		PIN(4, 5), GPIO_INT_BOTH,			base_detect_interrupt)
 GPIO_INT(USB_C0_CABLE_DET,      PIN(D, 2), GPIO_INT_RISING,			anx74xx_cable_det_interrupt)
 
-GPIO(PCH_RTCRST,		PIN(E, 7), GPIO_OUT_LOW)			/* RTCRST# to SOC */
 GPIO(ENABLE_BACKLIGHT,		PIN(2, 6), GPIO_OUT_LOW)			/* Enable Backlight */
 GPIO(WLAN_OFF_L,		PIN(7, 2), GPIO_OUT_LOW)			/* Disable WLAN */
 GPIO(PP3300_DX_WLAN,		PIN(A, 7), GPIO_OUT_LOW)			/* Enable WLAN 3.3V Power */
@@ -111,7 +110,11 @@ GPIO(USB2_OTG_ID,		PIN(A, 1), GPIO_ODR_LOW)			/* OTG ID */
 GPIO(USB2_OTG_VBUSSENSE,	PIN(9, 5), GPIO_OUT_LOW)			/* OTG VBUS Sense */
 
 /* LEDs (2 colors on each port) */
-GPIO(LED_YELLOW_C0,		PIN(2, 7), GPIO_OUT_LOW)			/* This is from rev4 */
+#ifdef BOARD_POPPY
+GPIO(LED_YELLOW_C0,		PIN(2, 7), GPIO_OUT_LOW)			/* This is from rev4 on poppy only */
+#else
+GPIO(LED_YELLOW_C0,		PIN(3, 2), GPIO_OUT_LOW)			/* This is from rev4 on soraka only */
+#endif
 GPIO(LED_YELLOW_C0_OLD,		PIN(3, 2), GPIO_OUT_LOW)			/* This is for rev1 to rev3 */
 GPIO(LED_WHITE_C0,		PIN(C, 6), GPIO_OUT_LOW)
 GPIO(LED_YELLOW_C1,		PIN(3, 1), GPIO_OUT_LOW)
