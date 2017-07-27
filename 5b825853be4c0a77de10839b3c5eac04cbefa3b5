@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13ae828c_18226688",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-27T23:32:39Z",
+      "side": 1,
+      "message": "nit: Would prefer this to say \u0027connected\u0027",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "5b825853be4c0a77de10839b3c5eac04cbefa3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "220d46cb_0040d8f7",
+        "filename": "chip/g/uartn.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-27T23:32:39Z",
+      "side": 1,
+      "message": "nit: Also would prefer that these comments were updated as well. s/output/\"TX connection\"/g",
+      "revId": "5b825853be4c0a77de10839b3c5eac04cbefa3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
