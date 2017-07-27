@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "701f4e6d_3edc2bc5",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-27T19:03:06Z",
+      "side": 1,
+      "message": "is it needed if you choose different vectors for orientation_modes?",
+      "revId": "d4879d8955549c1a963d41c002760ecd69df2c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d983bf07_e8d0a9db",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-27T19:03:06Z",
+      "side": 1,
+      "message": "orientation being an enum, the code could be:\nif (orientation \u003d\u003d MOTIONSENSE_ORIENTATION_UNKNOWN)\n  return MOTIONSENSE_ORIENTATION_UNKNOWN;\nesle\n  orientation_v \u003d \u0026orientation_modes[orientation];",
+      "revId": "d4879d8955549c1a963d41c002760ecd69df2c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbc29d89_4fae52db",
+        "filename": "driver/accel_kionix.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-27T19:03:06Z",
+      "side": 1,
+      "message": "why is it needed? motionsensor_orientation is in ec_commands.h.",
+      "revId": "d4879d8955549c1a963d41c002760ecd69df2c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e91d7925_93492243",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-27T19:03:06Z",
+      "side": 1,
+      "message": "Use  BMI160_GET_DATA(_s)",
+      "revId": "d4879d8955549c1a963d41c002760ecd69df2c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acb59cbe_5d3ffb26",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 902,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-27T19:03:06Z",
+      "side": 1,
+      "message": "Use  BMI160_GET_DATA(_s)",
+      "revId": "d4879d8955549c1a963d41c002760ecd69df2c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d673ae4_4332a097",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-27T19:03:06Z",
+      "side": 1,
+      "message": "already in accelgyro.h",
+      "revId": "d4879d8955549c1a963d41c002760ecd69df2c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13473d54_0b91f1e3",
+        "filename": "driver/accelgyro_bmi160.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-27T19:03:06Z",
+      "side": 1,
+      "message": "Use  BMI160_GET_DATA(_s)",
+      "revId": "d4879d8955549c1a963d41c002760ecd69df2c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ea96a6c_d2be710b",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-27T19:03:06Z",
+      "side": 1,
+      "message": "motion_sense_remap_orientation",
+      "revId": "d4879d8955549c1a963d41c002760ecd69df2c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
