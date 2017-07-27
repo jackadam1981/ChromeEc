@@ -214,7 +214,7 @@ static int host_event_get_wake_mask(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_WAKE_MASK,
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_ACTIVE_WAKE_MASK,
 		     host_event_get_wake_mask,
 		     EC_VER_MASK(0));
 
@@ -247,7 +247,7 @@ static int host_event_set_wake_mask(struct host_cmd_handler_args *args)
 	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, p->mask);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_WAKE_MASK,
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_ACTIVE_WAKE_MASK,
 		     host_event_set_wake_mask,
 		     EC_VER_MASK(0));
 

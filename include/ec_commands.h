@@ -3042,17 +3042,26 @@ struct __ec_align4 ec_response_host_event_mask {
 };
 
 /* These all use ec_response_host_event_mask */
-#define EC_CMD_HOST_EVENT_GET_B         0x0087
-#define EC_CMD_HOST_EVENT_GET_SMI_MASK  0x0088
-#define EC_CMD_HOST_EVENT_GET_SCI_MASK  0x0089
-#define EC_CMD_HOST_EVENT_GET_WAKE_MASK 0x008D
+#define EC_CMD_HOST_EVENT_GET_B                 0x0087
+#define EC_CMD_HOST_EVENT_GET_SMI_MASK          0x0088
+#define EC_CMD_HOST_EVENT_GET_SCI_MASK          0x0089
+#define EC_CMD_HOST_EVENT_GET_ACTIVE_WAKE_MASK  0x008D
 
 /* These all use ec_params_host_event_mask */
-#define EC_CMD_HOST_EVENT_SET_SMI_MASK  0x008A
-#define EC_CMD_HOST_EVENT_SET_SCI_MASK  0x008B
-#define EC_CMD_HOST_EVENT_CLEAR         0x008C
-#define EC_CMD_HOST_EVENT_SET_WAKE_MASK 0x008E
-#define EC_CMD_HOST_EVENT_CLEAR_B       0x008F
+#define EC_CMD_HOST_EVENT_SET_SMI_MASK          0x008A
+#define EC_CMD_HOST_EVENT_SET_SCI_MASK          0x008B
+#define EC_CMD_HOST_EVENT_CLEAR                 0x008C
+#define EC_CMD_HOST_EVENT_SET_ACTIVE_WAKE_MASK  0x008E
+#define EC_CMD_HOST_EVENT_CLEAR_B               0x008F
+
+/* Lazy wake masks */
+
+/*  These all use ec_response_host_event_mask */
+#define EC_CMD_GET_S3_S5_LAZY_WAKE_MASK      0x00A4
+
+/*  These all use ec_params_host_event_mask */
+#define EC_CMD_SET_S3_S5_LAZY_WAKE_MASK      0x00A6
+#define EC_CMD_SET_S0IX_LAZY_WAKE_MASK       0x00A7
 
 /*****************************************************************************/
 /* Switch commands */

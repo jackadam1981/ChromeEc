@@ -155,7 +155,7 @@ static int mkbp_get_wake_mask(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_WAKE_MASK,
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_ACTIVE_WAKE_MASK,
 		     mkbp_get_wake_mask,
 		     EC_VER_MASK(0));
 #endif

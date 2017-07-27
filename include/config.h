@@ -1929,6 +1929,11 @@
 /* Support S0ix */
 #undef CONFIG_POWER_S0IX
 
+/* Support Lazy Wake masks to configure wake masks on edge of sleep state
+ * transitions
+ */
+#undef CONFIG_LAZY_WAKE_MASK
+
 /*
  * Allow the host to self-report its sleep state, in case there is some delay
  * between the host beginning to enter the sleep state and power signals

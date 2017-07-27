@@ -4973,7 +4973,7 @@ int cmd_host_event_get_wake_mask(int argc, char *argv[])
 	struct ec_response_host_event_mask r;
 	int rv;
 
-	rv = ec_command(EC_CMD_HOST_EVENT_GET_WAKE_MASK, 0,
+	rv = ec_command(EC_CMD_HOST_EVENT_GET_ACTIVE_WAKE_MASK, 0,
 			NULL, 0, &r, sizeof(r));
 	if (rv < 0)
 		return rv;
@@ -5051,7 +5051,7 @@ int cmd_host_event_set_wake_mask(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = ec_command(EC_CMD_HOST_EVENT_SET_WAKE_MASK, 0,
+	rv = ec_command(EC_CMD_HOST_EVENT_SET_ACTIVE_WAKE_MASK, 0,
 			&p, sizeof(p), NULL, 0);
 	if (rv < 0)
 		return rv;

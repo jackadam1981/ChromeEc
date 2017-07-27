@@ -19,6 +19,7 @@
 #include "timer.h"
 #include "util.h"
 #include "espi.h"
+#include "lpc.h"
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHIPSET, outstr)
@@ -61,6 +62,14 @@ static uint32_t in_debug;     /* Signal values which print debug output */
 static enum power_state state = POWER_G3;  /* Current state */
 static int want_g3_exit;      /* Should we exit the G3 state? */
 static uint64_t last_shutdown_time; /* When did we enter G3? */
+#ifdef CONFIG_LAZY_WAKE_MASK
+static struct wake_masks {
+	uint32_t s3_s5_wake_mask;
+#ifdef CONFIG_POWER_S0IX
+	uint32_t s0ix_wake_mask;
+#endif
+} lazy_wake_masks;
+#endif
 
 #ifdef CONFIG_HIBERNATE
 /* Delay before hibernating, in seconds */
@@ -179,6 +188,43 @@ void power_set_state(enum power_state new_state)
 	if (state == POWER_S5S3)
 		want_g3_exit = 0;
 }
+
+/**
+ * Set wake mask on edge of sleep state entry
+ *
+ * @param state		New sleep state
+ */
+
+#ifdef CONFIG_LAZY_WAKE_MASK
+static void power_set_active_wake_mask(enum power_state state)
+{
+	switch (state) {
+	case POWER_S0:
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
+		break;
+	case POWER_S5:
+	case POWER_S3:
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE,
+				lazy_wake_masks.s3_s5_wake_mask);
+		break;
+#ifdef CONFIG_POWER_S0IX
+	case POWER_S0ixS0:
+		/* clear host events */
+		while (lpc_query_host_event_state() != 0)
+			;
+		break;
+	case POWER_S0ix:
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE,
+				lazy_wake_masks.s0ix_wake_mask);
+		break;
+#endif
+	default:
+		break;
+	}
+}
+#else
+static void power_set_active_wake_mask(enum power_state state) {}
+#endif
 
 /**
  * Common handler for steady states
@@ -398,8 +444,10 @@ void chipset_task(void *u)
 			new_state = power_common_state(state);
 
 		/* Handle state changes */
-		if (new_state != state)
+		if (new_state != state) {
 			power_set_state(new_state);
+			power_set_active_wake_mask(new_state);
+		}
 	}
 }
 
@@ -754,3 +802,77 @@ void power_reset_host_sleep_state(enum host_sleep_event sleep_event)
 #endif /* CONFIG_POWER_S0IX */
 
 #endif /* CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
+
+#ifdef CONFIG_LAZY_WAKE_MASK
+
+#ifdef CONFIG_POWER_S0IX
+static int set_s0ix_lazy_wake_mask(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_host_event_mask *p = args->params;
+
+	lazy_wake_masks.s0ix_wake_mask = p->mask;
+	CPRINTS("set_s0ix_lazy_wake_mask:%x", p->mask);
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SET_S0IX_LAZY_WAKE_MASK,
+		     set_s0ix_lazy_wake_mask,
+		     EC_VER_MASK(0));
+#endif /* CONFIG_POWER_S0IX */
+
+
+static int set_s3_s5_lazy_wake_mask(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_host_event_mask *p = args->params;
+
+	CPRINTS("set_s3_s5_lazy_wake_mask:%x", p->mask);
+
+	lazy_wake_masks.s3_s5_wake_mask = p->mask;
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SET_S3_S5_LAZY_WAKE_MASK,
+		     set_s3_s5_lazy_wake_mask,
+		     EC_VER_MASK(0));
+
+static int get_s3_s5_lazy_wake_mask(struct host_cmd_handler_args *args)
+{
+	struct ec_response_host_event_mask *r = args->response;
+
+	r->mask = lazy_wake_masks.s3_s5_wake_mask;
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_S3_S5_LAZY_WAKE_MASK,
+		     get_s3_s5_lazy_wake_mask,
+		     EC_VER_MASK(0));
+
+#define LAZY_WAKE_MASK_SYSJUMP_TAG		0x4C4D /* LM - Lazy Wakemask*/
+#define LAZY_WAKE_MASK_HOOK_VERSION		1
+
+static void preserve_lazy_wake_masks(void)
+{
+	system_add_jump_tag(LAZY_WAKE_MASK_SYSJUMP_TAG,
+			    LAZY_WAKE_MASK_HOOK_VERSION,
+			    sizeof(lazy_wake_masks),
+			    &lazy_wake_masks);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, preserve_lazy_wake_masks,
+	     HOOK_PRIO_DEFAULT);
+
+static void restore_lazy_wake_masks(void)
+{
+	const struct wake_masks *wm_state;
+	int version, size;
+
+	wm_state = (const struct wake_masks *)
+			system_get_jump_tag(LAZY_WAKE_MASK_SYSJUMP_TAG,
+				 &version, &size);
+
+	if (state && (version == LAZY_WAKE_MASK_HOOK_VERSION) &&
+	    (size == sizeof(lazy_wake_masks))) {
+		lazy_wake_masks = *wm_state;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, restore_lazy_wake_masks,
+	     HOOK_PRIO_INIT_CHIPSET + 1);
+#endif /* CONFIG_LAZY_WAKE_MASK */
