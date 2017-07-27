@@ -46,6 +46,29 @@
       "revId": "74d1a312e7aecab4ffc118e2aa33596169a6269d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1622ada8_d0e5e2f3",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-27T18:21:44Z",
+      "side": 0,
+      "message": "I think it would be a good idea to at least configure this as an input explicitly here?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "74d1a312e7aecab4ffc118e2aa33596169a6269d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
