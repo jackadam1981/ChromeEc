@@ -22,6 +22,30 @@
       "revId": "0cd2d2f1034c2bb8dbe2f23d5c2e8340c90cd321",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efc7b93a_2bb869a2",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-07-28T17:35:41Z",
+      "side": 1,
+      "message": "Good catch. Actually the charger doesn\u0027t work well when we tested in the factory, so there might still be other bugs in the driver. I\u0027ll fix in a follow-up patch.",
+      "parentUuid": "5866eb81_bec92875",
+      "range": {
+        "startLine": 167,
+        "startChar": 17,
+        "endLine": 167,
+        "endChar": 27
+      },
+      "revId": "0cd2d2f1034c2bb8dbe2f23d5c2e8340c90cd321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
