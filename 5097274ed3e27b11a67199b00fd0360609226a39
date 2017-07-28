@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e713390a_91b32487",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-28T18:36:28Z",
+      "side": 1,
+      "message": "Why are we checking the ccd capability here instead of the enabled_device?",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "5097274ed3e27b11a67199b00fd0360609226a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8237baa2_63fc6b35",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-28T18:36:28Z",
+      "side": 1,
+      "message": "With this you can no longer tell the difference between the EC being enabled and the AP being enabled right?",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "5097274ed3e27b11a67199b00fd0360609226a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c632984_3c375174",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-28T18:36:28Z",
+      "side": 1,
+      "message": "If the return value is error access denied should we disable usb spi?\n\nEx: \nIf someone starts flashing the AP and then aborts in the middle. Then they change the config to lockout AP flash access\n\nIf they try to flash the AP again does spi get disabled? Or do we just have to wait for cr50 to go to sleep to reset spi?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 5
+      },
+      "revId": "5097274ed3e27b11a67199b00fd0360609226a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
