@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5866eb81_bec92875",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-28T15:35:02Z",
+      "side": 1,
+      "message": "I don\u0027t think this will work as expected, the array size of your parameter (uses sizeof operator) is not known at compile time. If you inline this function (which is called only once anyway) to explicitly use rt946x_boost_current as the parameter then it\u0027s fine. Can you change it?",
+      "range": {
+        "startLine": 167,
+        "startChar": 17,
+        "endLine": 167,
+        "endChar": 27
+      },
+      "revId": "0cd2d2f1034c2bb8dbe2f23d5c2e8340c90cd321",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
