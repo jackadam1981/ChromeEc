@@ -64,6 +64,9 @@
 /* Number of IRQ vectors on the NVIC */
 #define CONFIG_IRQ_COUNT (GC_INTERRUPTS_COUNT - 15)
 
+/* Default NVIC priority level for GPIO interrupts */
+#define GPIO_IRQ_PRIORITY 1
+
 /* We'll have some special commands of our own */
 #define CONFIG_EXTENSION_COMMAND 0xbaccd00a
 

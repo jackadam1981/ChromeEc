@@ -31,23 +31,17 @@ extern int _uart_bitbang_read_char(int uart);
 extern struct uartn_function_ptrs uartn_funcs[];
 
 struct uart_bitbang_properties {
+	uint8_t uart;
 	enum gpio_signal tx_gpio;
 	enum gpio_signal rx_gpio;
 	uint32_t tx_pinmux_reg;
 	uint32_t tx_pinmux_regval;
 	uint32_t rx_pinmux_reg;
 	uint32_t rx_pinmux_regval;
-	int baud_rate;
-	uint8_t uart;
-	struct {
-		unsigned int head : 3;
-		unsigned int tail : 3;
-		unsigned int parity : 2;
-	} htp __packed;
 };
 
 /* In order to bitbang a UART, a board must define a bitbang_config. */
-extern struct uart_bitbang_properties bitbang_config;
+extern const struct uart_bitbang_properties bitbang_config;
 
 /**
  * Enable bit banging mode for a UART.

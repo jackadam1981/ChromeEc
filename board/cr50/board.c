@@ -92,7 +92,7 @@ static uint32_t board_properties; /* Mainly used as a cache for strap config. */
 static uint8_t reboot_request_posted;
 
 /* Which UARTs we'd like to be able to bitbang. */
-struct uart_bitbang_properties bitbang_config = {
+const struct uart_bitbang_properties bitbang_config = {
 	.uart = UART_EC,
 	.tx_gpio = GPIO_DETECT_SERVO, /* This is TX to EC console. */
 	.rx_gpio = GPIO_EC_TX_CR50_RX,

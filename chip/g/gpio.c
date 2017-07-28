@@ -358,8 +358,8 @@ void _irq_func(void)				\
 
 GPIO_IRQ_FUNC(_gpio0_interrupt, 0);
 GPIO_IRQ_FUNC(_gpio1_interrupt, 1);
-DECLARE_IRQ(GC_IRQNUM_GPIO0_GPIOCOMBINT, _gpio0_interrupt, 1);
-DECLARE_IRQ(GC_IRQNUM_GPIO1_GPIOCOMBINT, _gpio1_interrupt, 1);
+DECLARE_IRQ(GC_IRQNUM_GPIO0_GPIOCOMBINT, _gpio0_interrupt, GPIO_IRQ_PRIORITY);
+DECLARE_IRQ(GC_IRQNUM_GPIO1_GPIOCOMBINT, _gpio1_interrupt, GPIO_IRQ_PRIORITY);
 
 /*
  * The uart, i2c, and spi suffix arrays must match the order of the pinmux

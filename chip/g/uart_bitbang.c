@@ -9,6 +9,7 @@
 #include "gpio.h"
 #include "pmu.h"
 #include "registers.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "uart_bitbang.h"
@@ -35,10 +36,17 @@ static uint8_t bitbang_enabled;
 static int rx_buf[RX_BUF_SIZE];
 
 /* Current bitbang context */
-static int tx_pin;
-static int rx_pin;
 static uint32_t bit_period_ticks;
+static uint32_t set_baud_rate;
 static uint8_t set_parity;
+
+static volatile uint16_t *rx_gpio_reg;
+static uint16_t rx_gpio_mask;
+
+static struct {
+	uint8_t head;
+	uint8_t tail;
+} htp;
 
 #if BITBANG_DEBUG
 /* debug counters and log */
@@ -66,6 +74,8 @@ int uart_bitbang_is_enabled(int uart)
 
 int uart_bitbang_enable(int uart, int baud_rate, int parity)
 {
+	const struct gpio_info *rx_gpio = gpio_list + bitbang_config.rx_gpio;
+
 	/* We only want to bit bang 1 UART at a time. */
 	if (bitbang_enabled)
 		return EC_ERROR_BUSY;
@@ -80,7 +90,7 @@ int uart_bitbang_enable(int uart, int baud_rate, int parity)
 		CPRINTF("Err: invalid baud rate (%d)", baud_rate);
 		return EC_ERROR_INVAL;
 	}
-	bitbang_config.baud_rate = baud_rate;
+	set_baud_rate = baud_rate;
 
 	switch (parity) {
 	case 0:
@@ -92,7 +102,7 @@ int uart_bitbang_enable(int uart, int baud_rate, int parity)
 		CPRINTF("Err: invalid parity '%d'. (0:N, 1:O, 2:E)", parity);
 		return EC_ERROR_INVAL;
 	};
-	bitbang_config.htp.parity = parity;
+	set_parity = parity;
 
 	/* Select the GPIOs instead of the UART block. */
 	uartn_tx_disconnect(bitbang_config.uart);
@@ -102,6 +112,14 @@ int uart_bitbang_enable(int uart, int baud_rate, int parity)
 	REG32(bitbang_config.rx_pinmux_reg) =
 		bitbang_config.rx_pinmux_regval;
 	gpio_set_flags(bitbang_config.rx_gpio, GPIO_INPUT);
+
+	rx_gpio_reg = &GR_GPIO_DATAIN(rx_gpio->port);
+	rx_gpio_mask = rx_gpio->mask;
+
+	/* Bump GPIO IRQ priority so that it can preempt other ISRs. */
+	task_set_irq_priority(rx_gpio->port == 0 ? GC_IRQNUM_GPIO0_GPIOCOMBINT :
+						   GC_IRQNUM_GPIO1_GPIOCOMBINT,
+						   0);
 
 	/*
 	 * Ungate the microsecond timer so that we can use it.  This is needed
@@ -113,16 +131,15 @@ int uart_bitbang_enable(int uart, int baud_rate, int parity)
 	GR_TIMEUS_EN(0) = 1;
 
 	/* Save context information. */
-	tx_pin = bitbang_config.tx_gpio;
-	rx_pin = bitbang_config.rx_gpio;
-	bit_period_ticks = TIMEUS_CLK_FREQ *
-		((1 * SECOND) / bitbang_config.baud_rate);
-	set_parity = bitbang_config.htp.parity;
+	bit_period_ticks = TIMEUS_CLK_FREQ * (1 * SECOND) / set_baud_rate;
 
 	/* Register the function pointers. */
 	uartn_funcs[uart]._rx_available = _uart_bitbang_rx_available;
 	uartn_funcs[uart]._write_char = _uart_bitbang_write_char;
 	uartn_funcs[uart]._read_char = _uart_bitbang_read_char;
+
+	/* Do not allow deep sleep, wake latency may cause missed Rx bytes. */
+	disable_sleep(SLEEP_MASK_UART);
 
 	bitbang_enabled = 1;
 	gpio_enable_interrupt(bitbang_config.rx_gpio);
@@ -132,6 +149,8 @@ int uart_bitbang_enable(int uart, int baud_rate, int parity)
 
 int uart_bitbang_disable(int uart)
 {
+	const struct gpio_info *rx_gpio = gpio_list + bitbang_config.rx_gpio;
+
 	if (!uart_bitbang_is_enabled(uart))
 		return EC_SUCCESS;
 
@@ -143,6 +162,11 @@ int uart_bitbang_disable(int uart)
 	gpio_reset(bitbang_config.tx_gpio);
 	gpio_reset(bitbang_config.rx_gpio);
 
+	/* Restore IRQ priority back to default. */
+	task_set_irq_priority(rx_gpio->port == 0 ? GC_IRQNUM_GPIO0_GPIOCOMBINT :
+						   GC_IRQNUM_GPIO1_GPIOCOMBINT,
+						   GPIO_IRQ_PRIORITY);
+
 	/* Unregister the function pointers. */
 	uartn_funcs[uart]._rx_available = _uartn_rx_available;
 	uartn_funcs[uart]._write_char = _uartn_write_char;
@@ -151,16 +175,21 @@ int uart_bitbang_disable(int uart)
 	/* Gate the microsecond timer since we're done with it. */
 	pmu_clock_dis(PERIPH_TIMEUS);
 
+	/* Re-allow deep sleep. */
+	enable_sleep(SLEEP_MASK_UART);
+
 	/* Reconnect the GPIO to the UART block. */
 	gpio_disable_interrupt(bitbang_config.rx_gpio);
 	uartn_tx_connect(uart);
 	return EC_SUCCESS;
 }
 
-static void wait_ticks(uint32_t ticks)
+/*
+ * Wait for the timer reach 'ticks' after t0. To prevent overflow-related
+ * bugs, t0 must represent a time in the past.
+ */
+static void wait_deadline(uint32_t t0, uint32_t ticks)
 {
-	uint32_t t0 = GR_TIMEUS_CUR_MAJOR(0);
-
 	while ((GR_TIMEUS_CUR_MAJOR(0) - t0) < ticks)
 		;
 }
@@ -168,8 +197,9 @@ static void wait_ticks(uint32_t ticks)
 void uart_bitbang_write_char(int uart, char c)
 {
 	int val;
-	int ones;
+	int ones = 0;
 	int i;
+	uint32_t t0;
 
 	if (!uart_bitbang_is_enabled(uart))
 		return;
@@ -177,47 +207,38 @@ void uart_bitbang_write_char(int uart, char c)
 	interrupt_disable();
 
 	/* Start bit. */
-	gpio_set_level(tx_pin, 0);
-	wait_ticks(bit_period_ticks);
+	t0 = GR_TIMEUS_CUR_MAJOR(0);
+	gpio_set_level(bitbang_config.tx_gpio, 0);
 
 	/* 8 data bits. */
-	ones = 0;
 	for (i = 0; i < 8; i++) {
 		val = (c & (1 << i));
 		/* Count 1's in order to handle parity bit. */
 		if (val)
 			ones++;
-		gpio_set_level(tx_pin, val);
-		wait_ticks(bit_period_ticks);
+		wait_deadline(t0, bit_period_ticks);
+		gpio_set_level(bitbang_config.tx_gpio, val);
+		t0 += bit_period_ticks;
 	}
 
 	/* Optional parity. */
-	switch (set_parity) {
-	case 1: /* odd parity */
-		if (ones & 0x1)
-			gpio_set_level(tx_pin, 0);
-		else
-			gpio_set_level(tx_pin, 1);
-		wait_ticks(bit_period_ticks);
-		break;
-
-	case 2: /* even parity */
-		if (ones & 0x1)
-			gpio_set_level(tx_pin, 1);
-		else
-			gpio_set_level(tx_pin, 0);
-		wait_ticks(bit_period_ticks);
-		break;
-
-	case 0: /* no parity */
-	default:
-		break;
-	};
+	if (set_parity) {
+		wait_deadline(t0, bit_period_ticks);
+		gpio_set_level(bitbang_config.tx_gpio,
+			       (ones + set_parity) & 0x1);
+		t0 += bit_period_ticks;
+	}
 
 	/* 1 stop bit. */
-	gpio_set_level(tx_pin, 1);
-	wait_ticks(bit_period_ticks);
+	wait_deadline(t0, bit_period_ticks);
+	gpio_set_level(bitbang_config.tx_gpio, 1);
 	interrupt_enable();
+}
+
+/* Get logic level of Rx GPIO pin - a faster version of gpio_get_level(). */
+static inline int uart_bitbang_get_rx_level(void)
+{
+	return *rx_gpio_reg & rx_gpio_mask;
 }
 
 int uart_bitbang_receive_char(int uart)
@@ -228,60 +249,42 @@ int uart_bitbang_receive_char(int uart)
 	int ones;
 	int parity_bit;
 	int stop_bit;
-	uint8_t head;
-	uint8_t tail;
+	uint32_t t0 = GR_TIMEUS_CUR_MAJOR(0);
 
-	/* Disable interrupts so that we aren't interrupted. */
-	interrupt_disable();
 #if BITBANG_DEBUG
 	rx_buff_rx_char_cnt++;
 #endif /* BITBANG_DEBUG */
-	rv = EC_SUCCESS;
-
-	rx_char = 0;
 
 	/* Wait 1 bit period for the start bit. */
-	wait_ticks(bit_period_ticks);
+	wait_deadline(t0, bit_period_ticks);
+	t0 += (bit_period_ticks);
+
+	rv = EC_SUCCESS;
+	rx_char = 0;
+	ones = 0;
 
 	/* 8 data bits. */
-	ones = 0;
 	for (i = 0; i < 8; i++) {
-		if (gpio_get_level(rx_pin)) {
+		if (uart_bitbang_get_rx_level()) {
 			ones++;
 			rx_char |= (1 << i);
 		}
-		wait_ticks(bit_period_ticks);
+		wait_deadline(t0, bit_period_ticks);
+		t0 += bit_period_ticks;
 	}
 
 	/* optional parity or stop bit. */
-	parity_bit = gpio_get_level(rx_pin);
+	parity_bit = uart_bitbang_get_rx_level();
+
 	if (set_parity) {
-		wait_ticks(bit_period_ticks);
-		stop_bit = gpio_get_level(rx_pin);
+		wait_deadline(t0, bit_period_ticks);
+		stop_bit = uart_bitbang_get_rx_level();
+		/* Verify parity */
+		rv = (ones + parity_bit + set_parity) & 0x1 ?
+				EC_ERROR_CRC : EC_SUCCESS;
 	} else {
 		/* If there's no parity, that _was_ the stop bit. */
 		stop_bit = parity_bit;
-	}
-
-	/* Check the parity if necessary. */
-	switch (set_parity) {
-	case 2: /* even parity */
-		if (ones & 0x1)
-			rv = parity_bit ? EC_SUCCESS : EC_ERROR_CRC;
-		else
-			rv = parity_bit ? EC_ERROR_CRC : EC_SUCCESS;
-		break;
-
-	case 1: /* odd parity */
-		if (ones & 0x1)
-			rv = parity_bit ? EC_ERROR_CRC : EC_SUCCESS;
-		else
-			rv = parity_bit ? EC_SUCCESS : EC_ERROR_CRC;
-		break;
-
-	case 0:
-	default:
-		break;
 	}
 
 #if BITBANG_DEBUG
@@ -293,7 +296,7 @@ int uart_bitbang_receive_char(int uart)
 #endif /* BITBANG_DEBUG */
 
 	/* Check that the stop bit is valid. */
-	if (stop_bit != 1) {
+	if (!stop_bit) {
 		rv = EC_ERROR_CRC;
 #if BITBANG_DEBUG
 		stop_bit_err_cnt++;
@@ -302,23 +305,18 @@ int uart_bitbang_receive_char(int uart)
 #endif /* BITBANG_DEBUG */
 	}
 
-	if (rv != EC_SUCCESS) {
-		interrupt_enable();
+	if (rv != EC_SUCCESS)
 		return rv;
-	}
 
 	/* Place the received char in the RX buffer. */
-	head = bitbang_config.htp.head;
-	tail = bitbang_config.htp.tail;
-	if (BUF_NEXT(tail) != head) {
-		rx_buf[tail] = rx_char;
-		bitbang_config.htp.tail = BUF_NEXT(tail);
+	if (BUF_NEXT(htp.tail) != htp.head) {
+		rx_buf[htp.tail] = rx_char;
+		htp.tail = BUF_NEXT(htp.tail);
 #if BITBANG_DEBUG
 		rx_buff_inserted_cnt++;
 #endif /* BITBANG_DEBUG */
 	}
 
-	interrupt_enable();
 	return EC_SUCCESS;
 }
 
@@ -330,11 +328,11 @@ int uart_bitbang_read_char(int uart)
 	if (!is_uart_allowed(uart))
 		return 0;
 
-	head = bitbang_config.htp.head;
+	head = htp.head;
 	c = rx_buf[head];
 
-	if (head != bitbang_config.htp.tail)
-		bitbang_config.htp.head = BUF_NEXT(head);
+	if (head != htp.tail)
+		htp.head = BUF_NEXT(head);
 
 #if BITBANG_DEBUG
 	read_char_cnt++;
@@ -347,7 +345,7 @@ int uart_bitbang_is_char_available(int uart)
 	if (!is_uart_allowed(uart))
 		return 0;
 
-	return bitbang_config.htp.head != bitbang_config.htp.tail;
+	return htp.head != htp.tail;
 }
 
 #if BITBANG_DEBUG
@@ -424,8 +422,8 @@ static int command_bitbang(int argc, char **argv)
 		ccprintf("bit banging mode disabled.\n");
 	} else {
 		ccprintf("baud rate - parity\n");
-		ccprintf("  %6d    ", bitbang_config.baud_rate);
-		switch (bitbang_config.htp.parity) {
+		ccprintf("  %6d    ", set_baud_rate);
+		switch (set_parity) {
 		case 1:
 			ccprintf("odd\n");
 			break;
@@ -480,9 +478,7 @@ static int command_bitbang_dump_stats(int argc, char **argv)
 	for (i = 0; i < RX_BUF_SIZE; i++)
 		ccprintf(" %02x ", rx_buf[i] & 0xFF);
 	ccprintf("]\n");
-	ccprintf("head: %d\ntail: %d\n",
-		 bitbang_config.htp.head,
-		 bitbang_config.htp.tail);
+	ccprintf("head: %d\ntail: %d\n", htp.head, htp.tail);
 	ccprintf("Discards\nparity: ");
 	ccprintf("[");
 	for (i = 0; i < DISCARD_LOG; i++)
