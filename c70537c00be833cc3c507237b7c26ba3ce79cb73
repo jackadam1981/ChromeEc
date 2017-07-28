@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e4d276e_cc453f62",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-28T22:51:45Z",
+      "side": 1,
+      "message": "This is a purely a stylistic thing, but if there ever is a version 4, maybe move version 0/1 to the beginning.\n\ne.g.\n\n    \nstatic const struct power_seq_op s5s3_power_seq[] \u003d {\n#if (CONFIG_CHIPSET_POWER_SEQ_VERSION \u003d\u003d 0) || \\\n    (CONFIG_CHIPSET_POWER_SEQ_VERSION \u003d\u003d 1)\n/* Version 0 \u0026 1 stuff */\n#elif CONFIG_CHIPSET_POWER_SEQ_VERSION \u003d\u003d 2\n/* Version 2 stuff */\n.\n.\n. etc.\n#else\n#error \"Unsupported RK3399 power sequence version!\"\n};\n\nJust a suggestion.",
+      "revId": "c70537c00be833cc3c507237b7c26ba3ce79cb73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
