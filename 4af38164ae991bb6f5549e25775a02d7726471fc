@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fc0613e_9c92c456",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-28T18:34:09Z",
+      "side": 1,
+      "message": "typo: \u0027where\u0027",
+      "revId": "4af38164ae991bb6f5549e25775a02d7726471fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eff4bfe_1bc83ad9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-28T18:34:09Z",
+      "side": 1,
+      "message": "\u0027usb\u0027 ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 43,
+        "endLine": 14,
+        "endChar": 47
+      },
+      "revId": "4af38164ae991bb6f5549e25775a02d7726471fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2963349f_ca820f67",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-28T18:34:09Z",
+      "side": 1,
+      "message": "Is this case needed? I can understand disabling automatically, but I\u0027m not sure about re-enabling automatically. It doesn\u0027t hurt though...",
+      "revId": "4af38164ae991bb6f5549e25775a02d7726471fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b67e81ed_b11960ba",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-07-28T18:34:09Z",
+      "side": 1,
+      "message": "nit: Add a username, or better yet a bug number.",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 9
+      },
+      "revId": "4af38164ae991bb6f5549e25775a02d7726471fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
