@@ -16,6 +16,24 @@
       "revId": "74d1a312e7aecab4ffc118e2aa33596169a6269d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d47cf0_9d972607",
+        "filename": "board/poppy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-07-28T01:45:34Z",
+      "side": 0,
+      "message": "If it is the kernel driver, then it may still see it as LPC.",
+      "parentUuid": "cca8e0cb_0b881025",
+      "revId": "74d1a312e7aecab4ffc118e2aa33596169a6269d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
