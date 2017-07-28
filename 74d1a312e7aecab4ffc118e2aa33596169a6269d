@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cca8e0cb_0b881025",
+        "filename": "board/poppy/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-07-28T00:01:56Z",
+      "side": 0,
+      "message": "Gwendal: Actually, can you confirm we are ok with the sensors list/order below, give the statement about LPC above? (even though we use eSPI not LPC...)",
+      "revId": "74d1a312e7aecab4ffc118e2aa33596169a6269d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
