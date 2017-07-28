@@ -474,6 +474,18 @@ void task_trigger_irq(int irq)
 	CPU_NVIC_ISPR(0) = 1 << irq;
 }
 
+void task_set_irq_priority(uint8_t irq, uint8_t prio)
+{
+	uint32_t prio_shift = irq % 4 * 8 + 6;
+
+	if (prio > 0x3)
+		prio = 0x3;
+	CPU_NVIC_PRI(irq / 4) =
+		(CPU_NVIC_PRI(irq / 4) &
+		~(0x3 << prio_shift)) |
+		(prio << prio_shift);
+}
+
 /*
  * Initialize IRQs in the NVIC and set their priorities as defined by the
  * DECLARE_IRQ statements.
@@ -496,17 +508,8 @@ static void __nvic_init_irqs(void)
 	interrupt_enable();
 
 	/* Set priorities */
-	for (i = 0; i < exc_calls; i++) {
-		uint8_t irq = __irqprio[i].irq;
-		uint8_t prio = __irqprio[i].priority;
-		uint32_t prio_shift = irq % 4 * 8 + 6;
-		if (prio > 0x3)
-			prio = 0x3;
-		CPU_NVIC_PRI(irq / 4) =
-				(CPU_NVIC_PRI(irq / 4) &
-				 ~(0x3 << prio_shift)) |
-				(prio << prio_shift);
-	}
+	for (i = 0; i < exc_calls; i++)
+		task_set_irq_priority(__irqprio[i].irq, __irqprio[i].priority);
 }
 
 void mutex_lock(struct mutex *mtx)

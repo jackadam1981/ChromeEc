@@ -517,6 +517,22 @@ static void set_int_priority(uint32_t val)
 	asm volatile ("mtsr %0, $INT_PRI" : : "r"(val));
 }
 
+static uint32_t get_int_priority(void)
+{
+	uint32_t ret;
+
+	asm volatile ("mfsr %0, $INT_PRI" : "=r"(ret));
+	return ret;
+}
+
+void task_set_irq_priority(uint8_t irq, uint8_t prio)
+{
+	uint32_t prio_reg = get_int_priority();
+
+	prio_reg &= ~(0x3 << (irq * 2));
+	prio_reg |= (prio & 0x3) << (irq * 2);
+}
+
 uint32_t get_int_ctrl(void)
 {
 	uint32_t ret;

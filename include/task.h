@@ -243,6 +243,12 @@ void task_trigger_irq(int irq);
  */
 void task_clear_pending_irq(int irq);
 
+/**
+ * Set IRQ NVIC priority. Normally this is done at boot and priority is
+ * initially assigned to the `priority` parameter of the DECLARE_IRQ macro.
+ */
+void task_set_irq_priority(uint8_t irq, uint8_t priority);
+
 struct mutex {
 	uint32_t lock;
 	uint32_t waiters;
