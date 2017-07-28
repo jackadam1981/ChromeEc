@@ -341,14 +341,23 @@ static void gpio_interrupt(int port)
 	}
 }
 
-void _gpio0_interrupt(void)
-{
-	gpio_interrupt(0);
+#ifdef CONFIG_GPIO_INTERRUPT_CUSTOM
+#define GPIO_IRQ_FUNC(_irq_func, bank)		\
+void _irq_func(void)				\
+{						\
+	if (!gpio_interrupt_custom(bank))	\
+		gpio_interrupt(bank);		\
 }
-void _gpio1_interrupt(void)
-{
-	gpio_interrupt(1);
+#else
+#define GPIO_IRQ_FUNC(_irq_func, bank)		\
+void _irq_func(void)				\
+{						\
+	gpio_interrupt(bank);			\
 }
+#endif
+
+GPIO_IRQ_FUNC(_gpio0_interrupt, 0);
+GPIO_IRQ_FUNC(_gpio1_interrupt, 1);
 DECLARE_IRQ(GC_IRQNUM_GPIO0_GPIOCOMBINT, _gpio0_interrupt, 1);
 DECLARE_IRQ(GC_IRQNUM_GPIO1_GPIOCOMBINT, _gpio1_interrupt, 1);
 

@@ -2209,6 +2209,14 @@
  */
 #define CONFIG_TASK_PROFILING
 
+/*
+ * Enable custom GPIO interrupt handler.
+ *
+ * Boards / chips may define this and implement a gpio_interrupt_custom()
+ * routine for non-standard (eg. low-latency) GPIO interrupt handling.
+ */
+#undef CONFIG_GPIO_INTERRUPT_CUSTOM
+
 /*****************************************************************************/
 /* Temperature sensor config */
 

@@ -266,4 +266,17 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags);
  */
 void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func);
 
+/**
+ * Custom GPIO interrupt handler.
+ *
+ * If CONFIG_GPIO_INTERRUPT_CUSTOM is defined, this function will be called
+ * when a GPIO interrupt occurs, prior to (or instead of, depending on return
+ * value) the standard GPIO interrupt handler being called.
+ *
+ * @param gpio_port	GPIO port/bank corresponding to fired interrupt
+ * @return		Zero if the standard GPIO interrupt handler should
+ *			subsequently be called, non-zero if the standard GPIO
+ *			interrupt handler should be skipped.
+ */
+int gpio_interrupt_custom(int gpio_port);
 #endif  /* __CROS_EC_GPIO_H */
