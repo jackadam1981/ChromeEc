@@ -256,8 +256,8 @@ int uart_bitbang_receive_char(int uart)
 #endif /* BITBANG_DEBUG */
 
 	/* Wait 1 bit period for the start bit. */
-	wait_deadline(t0, bit_period_ticks);
-	t0 += (bit_period_ticks);
+	wait_deadline(t0, bit_period_ticks - 48);
+	t0 += (bit_period_ticks - 48);
 
 	rv = EC_SUCCESS;
 	rx_char = 0;
@@ -319,6 +319,35 @@ int uart_bitbang_receive_char(int uart)
 
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_GPIO_INTERRUPT_CUSTOM
+int gpio_interrupt_custom(int gpio_port)
+{
+	const struct gpio_info *g = gpio_list + bitbang_config.rx_gpio;
+	uint16_t pending;
+
+	/* If the interrupt is not from our Rx pin bank, run normal ISR */
+	if (gpio_port != g->port)
+		return 0;
+
+	/* If we don't have an Rx pin interrupt, run normal ISR */
+	pending = GR_GPIO_CLRINTSTAT(g->port);
+	if (!(pending & (g->mask)))
+		return 0;
+
+	do {
+		/* Read UART byte from Rx pin and clear interrupt status */
+		uart_bitbang_receive_char(UART_EC);
+		GR_GPIO_CLRINTSTAT(g->port) = pending;
+	/*
+	 * If our Rx pin is low, we just got a new start bit, so read
+	 * another byte.
+	 */
+	} while (!uart_bitbang_get_rx_level());
+
+	return 1;
+}
+#endif
 
 int uart_bitbang_read_char(int uart)
 {

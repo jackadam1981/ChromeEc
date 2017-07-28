@@ -115,6 +115,13 @@ void ec_tx_cr50_rx(enum gpio_signal signal)
 	hook_call_deferred(&ec_uart_deferred__data, 0);
 }
 
+void uart_input(void)
+{
+	if (uart_bitbang_is_enabled(UART_EC))
+		ec_uart_deferred__data.routine();
+}
+DECLARE_HOOK(HOOK_TICK, uart_input, HOOK_PRIO_DEFAULT);
+
 int board_has_ap_usb(void)
 {
 	return !!(board_properties & BOARD_USB_AP);

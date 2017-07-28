@@ -25,6 +25,7 @@
 #undef CONFIG_CMD_SYSINFO
 #undef CONFIG_CMD_SYSJUMP
 #undef CONFIG_CMD_SYSLOCK
+#undef CONFIG_TASK_PROFILING
 
 #ifndef CR50_DEV
 /* Disable stuff that should only be in debug builds */
@@ -119,6 +120,7 @@
 
 /* Need to be able to bitbang the EC UART for updates through CCD. */
 #define CONFIG_UART_BITBANG
+#define CONFIG_GPIO_INTERRUPT_CUSTOM
 
 /* Enable SPI Master (SPI) module */
 #define CONFIG_SPI_MASTER
