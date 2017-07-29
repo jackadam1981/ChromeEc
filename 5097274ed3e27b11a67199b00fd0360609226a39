@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "52e9c720_bca08bd7",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-29T00:43:28Z",
+      "side": 1,
+      "message": "It\u0027s what we did before via the console_is_restricted() check; this just uses the new capabilities check instead.\n\n(Might be able to use enabled_device?  Not 100% sure.  And really, this, I2C, and UART should all get refactored to have more similar APIs which support multiple ports cleanly/securely.  We can address this then.)",
+      "parentUuid": "e713390a_91b32487",
+      "range": {
+        "startLine": 57,
+        "startChar": 6,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "5097274ed3e27b11a67199b00fd0360609226a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8237baa2_63fc6b35",
         "filename": "chip/g/usb_spi.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7305f313_29cccd36",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-29T00:43:28Z",
+      "side": 1,
+      "message": "There\u0027s two pieces to SPI passthru:\n\n1) Shared lines (MOSI/MISO/CLK).  That\u0027s what this checks/enables.\n\n2) Chip select.  This is specific to AP/EC, and is what\u0027s checked in board/cr50/usb_spi.c.",
+      "parentUuid": "8237baa2_63fc6b35",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "5097274ed3e27b11a67199b00fd0360609226a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c632984_3c375174",
         "filename": "chip/g/usb_spi.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-07-28T18:36:28Z",
       "side": 1,
       "message": "If the return value is error access denied should we disable usb spi?\n\nEx: \nIf someone starts flashing the AP and then aborts in the middle. Then they change the config to lockout AP flash access\n\nIf they try to flash the AP again does spi get disabled? Or do we just have to wait for cr50 to go to sleep to reset spi?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 5
+      },
+      "revId": "5097274ed3e27b11a67199b00fd0360609226a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11f277d2_37b92209",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-07-29T00:43:28Z",
+      "side": 1,
+      "message": "We assume usb_spi_board_enable() leaves things disabled if it fails.",
+      "parentUuid": "5c632984_3c375174",
       "range": {
         "startLine": 64,
         "startChar": 3,
