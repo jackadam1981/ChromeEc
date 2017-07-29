@@ -8,6 +8,7 @@
 /* Type-C port manager for Analogix's anx74xx chips */
 
 #include "anx74xx.h"
+#include "console.h"
 #include "task.h"
 #include "tcpci.h"
 #include "tcpm.h"
@@ -1060,9 +1061,13 @@ static int anx74xx_tcpm_init(int port)
 	return EC_SUCCESS;
 }
 
+/*
+ * Dissociate from the TCPC.
+ */
+
 static int anx74xx_tcpm_release(int port)
 {
-	return EC_ERROR_UNIMPLEMENTED;
+	return EC_SUCCESS;
 }
 
 const struct tcpm_drv anx74xx_tcpm_drv = {
