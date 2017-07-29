@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebdc0879_caed0c82",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-29T15:39:13Z",
+      "side": 1,
+      "message": "We often can\u0027t regulate input current this low, I suggest to use 500mA to stay consistent with the pericom driver.",
+      "range": {
+        "startLine": 73,
+        "startChar": 42,
+        "endLine": 73,
+        "endChar": 45
+      },
+      "revId": "891150436dedb069028be647c7741eebcdcb42b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa5a6b5_1172b258",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-29T15:39:13Z",
+      "side": 1,
+      "message": "In this case, if I understand correctly, we have \"some BC1.2 charger, but we\u0027re not sure which\". I think this is ok, but we should double check with bleung@. See https://chromium-review.googlesource.com/#/c/499529/2/drivers/power/cros_usbpd-charger.c.",
+      "range": {
+        "startLine": 83,
+        "startChar": 30,
+        "endLine": 83,
+        "endChar": 51
+      },
+      "revId": "891150436dedb069028be647c7741eebcdcb42b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce7e122f_25f948ad",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-29T15:39:13Z",
+      "side": 1,
+      "message": "I don\u0027t think this will work, you need to zero out the CHARGE_SUPPLIER_*s that belong to this driver (CHARGE_SUPPLIER_OTHER in this case).",
+      "range": {
+        "startLine": 100,
+        "startChar": 30,
+        "endLine": 100,
+        "endChar": 50
+      },
+      "revId": "891150436dedb069028be647c7741eebcdcb42b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "486daf64_43f3113e",
+        "filename": "driver/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-29T15:39:13Z",
+      "side": 1,
+      "message": "pi3usb9281 probably belongs in this category also, primary purpose is bc1.2 detection. Do you want to move it?",
+      "range": {
+        "startLine": 20,
+        "startChar": 38,
+        "endLine": 20,
+        "endChar": 42
+      },
+      "revId": "891150436dedb069028be647c7741eebcdcb42b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
