@@ -71,6 +71,23 @@
     },
     {
       "key": {
+        "uuid": "2c8c6ffc_76cac320",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-29T15:41:09Z",
+      "side": 1,
+      "message": "We should do some initial detection, in case we don\u0027t get a task event on power-on.",
+      "revId": "891150436dedb069028be647c7741eebcdcb42b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "486daf64_43f3113e",
         "filename": "driver/build.mk",
         "patchSetId": 1
