@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6d96c1e_21d6cc15",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-07-30T16:42:10Z",
+      "side": 1,
+      "message": "I\u0027m surprised this works. On normal mode boot, won\u0027t VbExEcJumpToRW() return false and we\u0027ll end up in recovery mode?",
+      "range": {
+        "startLine": 1288,
+        "startChar": 0,
+        "endLine": 1295,
+        "endChar": 6
+      },
+      "revId": "9a57f700c0a406cb864213d0e6d474e01e4f01dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
