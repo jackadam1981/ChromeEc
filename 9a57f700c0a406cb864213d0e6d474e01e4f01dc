@@ -22,6 +22,30 @@
       "revId": "9a57f700c0a406cb864213d0e6d474e01e4f01dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd0f3da3_b3ee0a46",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1295,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-07-30T22:15:24Z",
+      "side": 1,
+      "message": "I\u0027m letting the previous block still return a success result code..\n\nI could pair this with a change to depthcharge to only let EC_RES_ERROR through if it also sees developer mode + WP pin deasserted.",
+      "parentUuid": "e6d96c1e_21d6cc15",
+      "range": {
+        "startLine": 1288,
+        "startChar": 0,
+        "endLine": 1295,
+        "endChar": 6
+      },
+      "revId": "9a57f700c0a406cb864213d0e6d474e01e4f01dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
