@@ -1,9 +1,11 @@
+
 /* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 /* System module for Chrome EC : common functions */
+#include "battery.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -1280,6 +1282,15 @@ int host_command_reboot(struct host_cmd_handler_args *args)
 		/* Clean busy bits on host for commands that won't return */
 		args->result = EC_RES_SUCCESS;
 		host_send_response(args);
+	}
+#endif
+
+#ifdef CONFIG_DISABLE_SYSJUMP_WITHOUT_BATTERY
+	/* Success result code returned above to prevent recovery mode */
+	if ((p.cmd == EC_REBOOT_JUMP_RW || p.cmd == EC_REBOOT_JUMP_RO) &&
+	    battery_is_present() == BP_NO && !system_is_locked()) {
+		CPRINTS("Skip sysjump without battery");
+		return EC_RES_ERROR;
 	}
 #endif
 

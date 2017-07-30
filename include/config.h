@@ -291,6 +291,12 @@
  */
 #undef CONFIG_BATTERY_LEVEL_NEAR_FULL
 
+/*
+ * Disable sysjump when running without a battery and the system is
+ * unlocked to prevent Type-C reset and AP power loss.
+ */
+#undef CONFIG_DISABLE_SYSJUMP_WITHOUT_BATTERY
+
 /* Include support for Bluetooth LE */
 #undef CONFIG_BLUETOOTH_LE
 
