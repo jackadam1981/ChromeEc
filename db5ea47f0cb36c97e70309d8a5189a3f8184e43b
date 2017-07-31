@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96b9da7e_5e2e1c8b",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-07-31T21:59:49Z",
+      "side": 1,
+      "message": "You are still overriding the settings that were saved in LPC_HOST_EVENT_WAKE. I still think we should have an \u0027active\u0027 wake mask that is supplied by the normal or the s0ix depending on sleep state. Otherwise we\u0027re just losing the other wake mask setting by writing 0 or s0ix_wake_mask.",
+      "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
