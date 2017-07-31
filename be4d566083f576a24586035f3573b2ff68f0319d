@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "323ff678_bd9a4392",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000298
+      },
+      "writtenOn": "2017-07-31T18:17:04Z",
+      "side": 1,
+      "message": "Wait, I don\u0027t think this is a safe assumption...\n\nActually, if the board doesn\u0027t support charge ramping, it could be a weak DCP that supports 500mA, or 850mA, for example.\n\nCDP is actually at the high end of what\u0027s possible with BC 1.2.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 46
+      },
+      "revId": "be4d566083f576a24586035f3573b2ff68f0319d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
