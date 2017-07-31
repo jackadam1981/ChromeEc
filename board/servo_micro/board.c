@@ -121,6 +121,46 @@ USB_STREAM_CONFIG(usart4_usb,
 	usb_to_usart4,
 	usart4_to_usb)
 
+/******************************************************************************
+ * Check parity setting on usarts.
+ */
+static int command_uart_parity(int argc, char **argv)
+{
+	int parity = 0, newparity;
+	struct usart_config const *usart;
+	char *e;
+
+	if ((argc < 2) || (argc > 3))
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "usart2"))
+		usart = &usart2;
+	else if (!strcasecmp(argv[1], "usart3"))
+		usart = &usart3;
+	else if (!strcasecmp(argv[1], "usart4"))
+		usart = &usart4;
+	else
+		return EC_ERROR_PARAM1;
+
+	if (argc == 3) {
+		parity = strtoi(argv[2], &e, 0);
+		if (*e || (parity < 0) || (parity > 2))
+			return EC_ERROR_PARAM2;
+
+		usart_set_parity(usart, parity);
+	}
+
+	newparity = usart_get_parity(usart);
+	ccprintf("Parity on %s is %d.\n", argv[1], newparity);
+
+	if ((argc == 3) && (newparity != parity))
+		return EC_ERROR_UNKNOWN;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(parity, command_uart_parity,
+			"usart[2|3|4] [0|1|2]",
+			"Set parity on uart");
 
 /******************************************************************************
  * Define the strings used in our USB descriptors.
