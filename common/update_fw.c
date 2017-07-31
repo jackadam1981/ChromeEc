@@ -11,6 +11,7 @@
 #include "include/compile_time_macros.h"
 #include "rollback.h"
 #include "rwsig.h"
+#include "sha256.h"
 #include "system.h"
 #include "uart.h"
 #include "update_fw.h"
@@ -62,6 +63,22 @@ static uint8_t check_update_chunk(uint32_t block_offset, size_t body_size)
 		return UPDATE_SUCCESS;
 	}
 
+#ifdef CONFIG_TOUCHPAD
+	/* Is this a chunk meant for the touchpad? */
+	if (update_section.base_offset != update_section.top_offset &&
+	    (block_offset >= CONFIG_TOUCHPAD_VIRTUAL_OFF) &&
+	    ((block_offset + body_size) <=
+		(CONFIG_TOUCHPAD_VIRTUAL_OFF + CONFIG_TOUCHPAD_VIRTUAL_SIZE))) {
+
+		/* If this is the first chunk, start the update. */
+		if (block_offset == CONFIG_TOUCHPAD_VIRTUAL_OFF) {
+			if (touchpad_update_start() != EC_SUCCESS)
+				return UPDATE_ERASE_FAILURE;
+		}
+		return UPDATE_SUCCESS;
+	}
+#endif
+
 	CPRINTF("%s:%d %x, %d section base %x top %x\n",
 		__func__, __LINE__,
 		block_offset, body_size,
@@ -90,6 +107,25 @@ static void new_chunk_written(uint32_t block_offset)
 static int contents_allowed(uint32_t block_offset,
 			    size_t body_size, void *update_data)
 {
+#ifdef CONFIG_TOUCHPAD
+	/* Is this a touchpad virtual address? */
+	if ((block_offset >= CONFIG_TOUCHPAD_VIRTUAL_OFF) &&
+	    ((block_offset + body_size) <=
+		(CONFIG_TOUCHPAD_VIRTUAL_OFF + CONFIG_TOUCHPAD_VIRTUAL_SIZE))) {
+		struct sha256_ctx ctx;
+		uint8_t *tmp;
+
+		SHA256_init(&ctx);
+		SHA256_update(&ctx, update_data, body_size);
+		tmp = SHA256_final(&ctx);
+		/* FIXME: Actually do something with the SHA. */
+		CPRINTF("%s: SHA %08x %02x..%02x\n", __func__,
+			block_offset - CONFIG_TOUCHPAD_VIRTUAL_OFF,
+			tmp[0], tmp[31]);
+
+		return 1;
+	}
+#endif
 	return 1;
 }
 
@@ -225,6 +261,25 @@ void fw_update_command_handler(void *body,
 	 * TODO(b/36375666): chip/g code has some cr50-specific stuff right
 	 * here, which should probably be merged into contents_allowed...
 	 */
+
+#ifdef CONFIG_TOUCHPAD
+	/* Is this a touchpad virtual address? */
+	if ((block_offset >= CONFIG_TOUCHPAD_VIRTUAL_OFF) &&
+	    ((block_offset + body_size) <=
+		(CONFIG_TOUCHPAD_VIRTUAL_OFF + CONFIG_TOUCHPAD_VIRTUAL_SIZE))) {
+		if (touchpad_update_write(
+				block_offset - CONFIG_TOUCHPAD_VIRTUAL_OFF,
+				body_size, update_data)	!= EC_SUCCESS) {
+			*error_code = UPDATE_WRITE_FAILURE;
+			CPRINTF("%s:%d update write error\n",
+				__func__, __LINE__);
+			return;
+		}
+
+		*error_code = UPDATE_SUCCESS;
+		return;
+	}
+#endif
 
 	CPRINTF("update: 0x%x\n", block_offset + CONFIG_PROGRAM_MEMORY_BASE);
 	if (flash_physical_write(block_offset, body_size, update_data)
