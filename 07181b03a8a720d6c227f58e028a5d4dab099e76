@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adcb3dfa_071e6e56",
+        "filename": "common/math_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-31T06:40:04Z",
+      "side": 1,
+      "message": "nit: / 2",
+      "revId": "07181b03a8a720d6c227f58e028a5d4dab099e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b93a4d76_e383b7b9",
+        "filename": "common/math_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-31T06:40:04Z",
+      "side": 1,
+      "message": "looking at existing implementation, it should be mid - 1.",
+      "revId": "07181b03a8a720d6c227f58e028a5d4dab099e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdc1494c_6341c08c",
+        "filename": "common/math_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-31T06:40:04Z",
+      "side": 1,
+      "message": "And it duplicate of line 64 if you do a \nwhile (i \u003c\u003d j) {",
+      "revId": "07181b03a8a720d6c227f58e028a5d4dab099e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b16f830a_bf66678f",
+        "filename": "common/math_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-07-31T06:40:04Z",
+      "side": 1,
+      "message": "remove this code, you returned line 72.",
+      "revId": "07181b03a8a720d6c227f58e028a5d4dab099e76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
