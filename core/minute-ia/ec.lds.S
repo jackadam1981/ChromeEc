@@ -155,6 +155,7 @@ SECTIONS
 		__bss_size_words = (__bss_end - __bss_start) / 4;
 	}
 
+	__image_size = .;
 	def_irq_low  = ABSOLUTE(default_int_handler) & 0xFFFF;
 	def_irq_high = ABSOLUTE(default_int_handler) >> 16;
 }
