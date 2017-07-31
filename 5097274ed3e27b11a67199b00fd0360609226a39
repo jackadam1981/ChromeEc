@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "65010e8a_e95da362",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-31T17:44:43Z",
+      "side": 1,
+      "message": "usb_spi_board_enable configures the shared lines and the chip select. \n\nWith this patch if anyone aborts an AP transaction and then tries to start an EC transaction then they will still be connected to the AP flash during the EC transaction.",
+      "parentUuid": "7305f313_29cccd36",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 17
+      },
+      "revId": "5097274ed3e27b11a67199b00fd0360609226a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c632984_3c375174",
         "filename": "chip/g/usb_spi.c",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "We assume usb_spi_board_enable() leaves things disabled if it fails.",
       "parentUuid": "5c632984_3c375174",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 5
+      },
+      "revId": "5097274ed3e27b11a67199b00fd0360609226a39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d54b143_e8af6518",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-07-31T17:44:43Z",
+      "side": 1,
+      "message": "Oh right. Missed that disable line",
+      "parentUuid": "11f277d2_37b92209",
       "range": {
         "startLine": 64,
         "startChar": 3,
