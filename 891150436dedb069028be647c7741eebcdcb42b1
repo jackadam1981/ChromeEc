@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7c227c71_c308d63a",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000298
+      },
+      "writtenOn": "2017-07-31T18:09:15Z",
+      "side": 1,
+      "message": "As we discussed, this is the best we can do, so let\u0027s go ahead and choose OTHER.",
+      "parentUuid": "e27608c7_a46f7c94",
+      "range": {
+        "startLine": 83,
+        "startChar": 30,
+        "endLine": 83,
+        "endChar": 51
+      },
+      "revId": "891150436dedb069028be647c7741eebcdcb42b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce7e122f_25f948ad",
         "filename": "driver/bc12/bq24392.c",
         "patchSetId": 1
