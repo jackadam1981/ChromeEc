@@ -96,6 +96,7 @@ const struct usb_config_descriptor USB_CONF_DESC(conf) = {
 	.bMaxPower = (CONFIG_USB_MAXPOWER_MA / 2),
 };
 
+#ifdef UNUSED_CODE
 /* Qualifier Descriptor */
 static const struct usb_qualifier_descriptor qualifier_desc = {
 	.bLength = USB_DT_QUALIFIER_SIZE,
@@ -108,6 +109,7 @@ static const struct usb_qualifier_descriptor qualifier_desc = {
 	.bNumConfigurations = 1,
 	.bReserved = 0,
 };
+#endif
 
 const uint8_t usb_string_desc[] = {
 	4,					/* Descriptor size */
