@@ -1100,6 +1100,25 @@ DECLARE_CONSOLE_COMMAND(board_id, command_board_id,
 			"<id|sku0|sku1>",
 			"Get board id or sku");
 
+int host_command_get_sku_id(struct host_cmd_handler_args *args)
+{
+	struct ec_response_sku_id *r = args->response;
+
+	uint8_t sku_id_lower = board_read_version(ADC_BOARD_SKU_0);
+	uint8_t sku_id_higher = board_read_version(ADC_BOARD_SKU_1);
+
+	assert(sku_id_lower < 16);
+	assert(sku_id_higher < 16);
+	r->sku_id = (uint32_t)((sku_id_higher << 4) | sku_id_lower);
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_SKU_ID,
+		     host_command_get_sku_id,
+		     EC_VER_MASK(0));
+
 /* Keyboard scan setting */
 struct keyboard_scan_config keyscan_config = {
 	/*
