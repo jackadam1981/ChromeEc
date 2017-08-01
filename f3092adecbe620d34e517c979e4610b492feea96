@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad276a3c_99221098",
+        "filename": "core/minute-ia/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-01T16:19:27Z",
+      "side": 1,
+      "message": "This is incorrect. \u0027.\u0027 is the current location pointer. You need to subtract CONFIG_ISH_BOOT_START at the very least because that\u0027s address things are linked at.\n\nWhat is the output of \u0027nm image.elf | sort\u0027 ?",
+      "revId": "f3092adecbe620d34e517c979e4610b492feea96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
