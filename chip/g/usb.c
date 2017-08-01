@@ -1208,7 +1208,8 @@ static void usb_softreset(void)
 		CPRINTF("USB: reset timeout\n");
 		return;
 	}
-	/* TODO: Wait 3 PHY clocks before returning */
+	/* Wait at least 3 PHY clocks before returning */
+	usleep(100);
 }
 
 void usb_connect(void)
