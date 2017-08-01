@@ -68,6 +68,30 @@
       "revId": "d709f672c2f919ff651af31f2a8f747bb37f27b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f35cd61_bac2507c",
+        "filename": "chip/stm32/usb_dwc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-01T00:38:59Z",
+      "side": 1,
+      "message": "feel free to delete",
+      "parentUuid": "96c5acac_d2302599",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 2
+      },
+      "revId": "d709f672c2f919ff651af31f2a8f747bb37f27b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
