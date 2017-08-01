@@ -22,6 +22,30 @@
       "revId": "553d00bdb4e55fdfc5cc75772f686e20cd764c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c207d8b_73c6df78",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-01T18:02:24Z",
+      "side": 0,
+      "message": "But this is board specific code.",
+      "parentUuid": "e101dcaf_080ce3f4",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 17
+      },
+      "revId": "553d00bdb4e55fdfc5cc75772f686e20cd764c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
