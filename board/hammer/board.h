@@ -167,6 +167,8 @@
 
 /* Enable control of I2C over USB */
 #define CONFIG_USB_I2C
+#define CONFIG_USB_I2C_DISABLE_WHEN_LOCKED
+
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define I2C_PORT_MASTER 0

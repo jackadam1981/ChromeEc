@@ -2731,6 +2731,9 @@
 /* Allowed write count for USB over I2C */
 #define CONFIG_USB_I2C_MAX_WRITE_COUNT 60
 
+/* Disable USB I2C passthrough then the EC is locked (WP on). */
+#undef CONFIG_USB_I2C_DISABLE_WHEN_LOCKED
+
 /*****************************************************************************/
 /* USB Power monitoring interface config */
 #undef CONFIG_USB_POWER

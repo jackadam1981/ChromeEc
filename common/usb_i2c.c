@@ -16,6 +16,7 @@
 #include "queue.h"
 #include "queue_policies.h"
 #include "producer.h"
+#include "system.h"
 #include "task.h"
 #include "usb-stream.h"
 #include "usb_i2c.h"
@@ -89,6 +90,15 @@ void usb_i2c_execute(struct usb_i2c_config const *config)
 
 	if (!count || (!read_count && !write_count))
 		return;
+
+#ifdef CONFIG_USB_I2C_DISABLE_WHEN_LOCKED
+	if (system_is_locked()) {
+		config->buffer[0] = USB_I2C_LOCKED;
+		config->buffer[1] = 0;
+		usb_i2c_write_packet(config, 4);
+		return;
+	}
+#endif
 
 	if (write_count > CONFIG_USB_I2C_MAX_WRITE_COUNT ||
 		write_count != (count - 4)) {
