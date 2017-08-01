@@ -94,6 +94,30 @@
       "revId": "553d00bdb4e55fdfc5cc75772f686e20cd764c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25520969_0f8ce6cb",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-01T19:26:58Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "e350c404_6d9c9968",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 17
+      },
+      "revId": "553d00bdb4e55fdfc5cc75772f686e20cd764c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
