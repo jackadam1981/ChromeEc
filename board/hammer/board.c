@@ -130,6 +130,7 @@ void board_config_pre_init(void)
  */
 void board_usb_wake(void)
 {
+#if 0
 	/*
 	 * Poke detection pin for about 500us, we disable interrupts
 	 * to make sure that we do not get preempted (setting GPIO high
@@ -142,6 +143,7 @@ void board_usb_wake(void)
 	udelay(500);
 	gpio_set_flags(GPIO_BASE_DET, GPIO_INPUT);
 	interrupt_enable();
+#endif
 }
 
 /*
