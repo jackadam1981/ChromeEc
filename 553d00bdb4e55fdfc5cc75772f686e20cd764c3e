@@ -46,6 +46,30 @@
       "revId": "553d00bdb4e55fdfc5cc75772f686e20cd764c3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "678a1b8f_69da7e74",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-01T18:12:43Z",
+      "side": 0,
+      "message": "I think that it is unnecessary for them to use ccd_phy_init. They can also remove that function and undefine USB_SELECT_PHY. ccd_set_mode handles usb_init.\n\nI guess the one thing their approach adds is it always makes sure ccd is initialized on the right PHY. In our code we still allow switching the PHY using a console command, so it is possible someone could use the console command to switch to phy a. Then because ccd is enabled on the wrong port you wouldn\u0027t be able to use the console command to reset the phy. You\u0027d have to wait until some cr50 reset. On boards that don\u0027t enter deep sleep this would not be reset to B until a POR since they dont enter deep sleep.\n\nSo maybe I should add usb_select_phy(USB_SEL_PHY1) in configure_ccd or we could remove the command to switch the phy if CONFIG_USB_SELECT_PHY is not defined.",
+      "parentUuid": "7c207d8b_73c6df78",
+      "range": {
+        "startLine": 181,
+        "startChar": 5,
+        "endLine": 181,
+        "endChar": 17
+      },
+      "revId": "553d00bdb4e55fdfc5cc75772f686e20cd764c3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
