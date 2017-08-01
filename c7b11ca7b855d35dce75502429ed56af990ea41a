@@ -94,6 +94,30 @@
       "revId": "c7b11ca7b855d35dce75502429ed56af990ea41a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "411cc6dc_ae23b012",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-01T23:45:07Z",
+      "side": 1,
+      "message": "But yes, this should also check ccd_get_mode() \u003d\u003d CCD_MODE_ENABLED.  I\u0027ll submit an additional patch.",
+      "parentUuid": "d817c883_3c6db840",
+      "range": {
+        "startLine": 946,
+        "startChar": 13,
+        "endLine": 946,
+        "endChar": 28
+      },
+      "revId": "c7b11ca7b855d35dce75502429ed56af990ea41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
