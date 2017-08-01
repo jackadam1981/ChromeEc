@@ -46,6 +46,30 @@
       "revId": "c7b11ca7b855d35dce75502429ed56af990ea41a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b2d1a22_9ee4b521",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-01T20:21:49Z",
+      "side": 1,
+      "message": "I just tested it and it does. When there is no debug accessory I see \n\nUartAPTX        Y 0\u003dDefault (Always)\nUartAPRX        Y 0\u003dDefault (Always)\nUartECTX        Y 0\u003dDefault (Always)\n\n\nWe should not be enabling AP and EC uart when there is no debug accessory. Different states on the UART signals can cause weird cr50 behavior like interrupt storms. And I dont think we want to introduce that into normal cr50 operation when we don\u0027t need to.",
+      "parentUuid": "25561bcf_0fcb2911",
+      "range": {
+        "startLine": 946,
+        "startChar": 13,
+        "endLine": 946,
+        "endChar": 28
+      },
+      "revId": "c7b11ca7b855d35dce75502429ed56af990ea41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
