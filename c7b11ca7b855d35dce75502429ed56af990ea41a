@@ -70,6 +70,30 @@
       "revId": "c7b11ca7b855d35dce75502429ed56af990ea41a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d817c883_3c6db840",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 946,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-01T21:27:12Z",
+      "side": 1,
+      "message": "ccdinfo only tells you if the permission is available.\n\nuse \u0027ccd\u0027 to print the actual state of the ports.",
+      "parentUuid": "9b2d1a22_9ee4b521",
+      "range": {
+        "startLine": 946,
+        "startChar": 13,
+        "endLine": 946,
+        "endChar": 28
+      },
+      "revId": "c7b11ca7b855d35dce75502429ed56af990ea41a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
