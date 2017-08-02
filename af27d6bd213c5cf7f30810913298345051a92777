@@ -22,6 +22,30 @@
       "revId": "af27d6bd213c5cf7f30810913298345051a92777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46cd54ea_5372e2a0",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-02T18:34:23Z",
+      "side": 1,
+      "message": "This is just papering over the issue. I am not sure exactly what the issue this is papering over is. I didn\u0027t know you have been looking into this.\n\nOn Eve this issue is preventing cr50 from reentering deep sleep. This means in G3 cr50 will go into deep sleep for about an hour. It will wake up after an hour to reset TIMERLS0 and then it will never reenter deep sleep. This has a huge impact on G3 power.\n\nI can change the comment or add a TODO, but I think that we should try and get a  temporary fix in for the Eve board id locked image we are about to create.",
+      "parentUuid": "faef9bbf_84e2c30e",
+      "range": {
+        "startLine": 1211,
+        "startChar": 0,
+        "endLine": 1212,
+        "endChar": 13
+      },
+      "revId": "af27d6bd213c5cf7f30810913298345051a92777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
