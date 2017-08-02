@@ -16,6 +16,24 @@
       "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55120740_513c1b17",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3504,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-02T10:00:28Z",
+      "side": 1,
+      "message": "I am not sure if firmware branch has a duplicate command or not. Any better way to confirm the same?. Do you find any issue in case if there is a duplicate entry in any of the firmware branch?\n\nThe commands are not completely sequential. Unused commands are seen in other ranges also (for eg. 0x00B8-0x00D1 unused, 0x00A3-0x00A7 unused)",
+      "parentUuid": "d8cada24_71906aaa",
+      "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
