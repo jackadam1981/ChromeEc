@@ -28,6 +28,9 @@
 
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
 
+/* Rev1/proto2 debugging */
+#define CONFIG_CHARGER_ILIM_PIN_DISABLED
+
 #undef  CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
 

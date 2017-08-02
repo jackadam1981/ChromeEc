@@ -583,6 +583,9 @@ static int rt946x_select_ilmt(enum rt946x_ilmtsel sel)
 
 	ret = rt946x_update_bits(RT946X_REG_CHGCTRL2, RT946X_MASK_ILMTSEL,
 		sel << RT946X_SHIFT_ILMTSEL);
+	/* TODO(b:64305958): Fix CHGCTRL3 register setting */
+	if (!ret)
+		ret = rt946x_write8(RT946X_REG_CHGCTRL3, 0xfc);
 
 	return ret;
 }
@@ -598,7 +601,7 @@ int charger_post_init(void)
 	if (rv)
 		return rv;
 	/* Disable ILIM pin */
-	rv = rt946x_enable_ilim(0);
+	rv = rt946x_enable_ilim_pin(0);
 	if (rv)
 		return rv;
 #endif
