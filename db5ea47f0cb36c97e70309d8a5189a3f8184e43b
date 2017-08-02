@@ -34,6 +34,24 @@
       "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1780019e_42df48d0",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-02T19:59:58Z",
+      "side": 1,
+      "message": "So you are relying on the wake mask always being set by an SMI handler? And you don\u0027t care if s0ix settings blow away previously set ones?",
+      "parentUuid": "764db433_4e2084d6",
+      "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
