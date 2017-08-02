@@ -77,6 +77,30 @@
     },
     {
       "key": {
+        "uuid": "9ab548f8_d015b4da",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-02T08:33:12Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/597037",
+      "parentUuid": "76da83e2_979e2abd",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e02990d_a3246244",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 2
