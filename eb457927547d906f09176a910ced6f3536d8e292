@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f8496166_f6ccb3a6",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-02T07:58:41Z",
+      "side": 1,
+      "message": "no, on STM32 USB SRAM needs to be accessed one U16 at a time",
+      "parentUuid": "0370e16b_d3486336",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a686ff6_201cafa0",
         "filename": "chip/stm32/usb_hid.c",
         "patchSetId": 2
@@ -30,6 +48,29 @@
       "writtenOn": "2017-07-26T22:19:44Z",
       "side": 1,
       "message": "Why do you need to use BL_SIZE\u003d1 here?\n\nPresumably rx_len should be short enough, right? (and you can\u0027t guarantee it\u0027ll be a multiple of 32 bytes?)",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76da83e2_979e2abd",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-02T07:58:41Z",
+      "side": 1,
+      "message": "EC-style is \"__packed\"\nI might have missed the one above in previous review ;-)",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 34
+      },
       "revId": "eb457927547d906f09176a910ced6f3536d8e292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -81,6 +122,24 @@
       "writtenOn": "2017-07-26T22:19:44Z",
       "side": 1,
       "message": "LED usage page isn\u0027t quite right, it\u0027s meant for on/off controls, see Hut_1_12v2.pdf.\n\nI\u0027d rather we use a vendor-defined range, or some other usage table (like HUTRR41, even though it\u0027s a little bit of a misnomer).",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "595d4630_18affe07",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-02T07:58:41Z",
+      "side": 1,
+      "message": "Yes, I would use Page 0x14 (Alphanumeric Display) ID 0x46 (Display brightness) for this.",
+      "parentUuid": "f20e81a8_edbb6f25",
       "revId": "eb457927547d906f09176a910ced6f3536d8e292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
