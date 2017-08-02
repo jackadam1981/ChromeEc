@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "527964b2_4669374e",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-02T07:31:21Z",
+      "side": 1,
+      "message": "you can put them on the same line, but whatever",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 0
+      },
+      "revId": "53e4ba4e1b5b171222a1e059c2d0c67c28b7294c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a57612b_ce5b4f34",
+        "filename": "common/pd_log.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-02T07:31:21Z",
+      "side": 1,
+      "message": "is the host command really PD log specific ?\nit should not be ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "53e4ba4e1b5b171222a1e059c2d0c67c28b7294c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8357ed84_32b7a0c0",
+        "filename": "include/event_log.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-02T07:31:21Z",
+      "side": 1,
+      "message": "I disagree here: this is the AP/EC interface.\nthis should be in ec_commands.h\n\nActually it is still with the PD_LOG prefixes ?\nstruct __ec_align4 ec_response_pd_log {\n        uint32_t timestamp; /* relative timestamp in milliseconds */\n        uint8_t type;       /* event type : see PD_EVENT_xx below */\n        uint8_t size_port;  /* [7:5] port number [4:0] payload size in bytes */\n        uint16_t data;      /* type-defined data payload */\n        uint8_t payload[0]; /* optional additional data payload: 0..16 bytes */\n};\n\n#define PD_LOG_TIMESTAMP_SHIFT 10 /* 1 LSB \u003d 1024us */\n\n#define PD_LOG_SIZE_MASK  0x1f\n#define PD_LOG_PORT_MASK  0xe0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 31
+      },
+      "revId": "53e4ba4e1b5b171222a1e059c2d0c67c28b7294c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
