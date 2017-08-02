@@ -22,6 +22,30 @@
       "revId": "e2e5e85d46a022a960d29be99019ab2f60cd22b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e35e4e6_cb20fc56",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-02T21:47:30Z",
+      "side": 1,
+      "message": "oops, done.",
+      "parentUuid": "c52da4de_61cadb1e",
+      "range": {
+        "startLine": 65,
+        "startChar": 15,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "e2e5e85d46a022a960d29be99019ab2f60cd22b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
