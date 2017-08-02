@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3cfffda_7e7fd0df",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-02T02:49:18Z",
+      "side": 1,
+      "message": "might as well show the corresponding output",
+      "revId": "49addb617df908d6a7ef32b4d4717157e5381f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e45f529_a502fc3e",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-02T02:49:18Z",
+      "side": 1,
+      "message": "not sure how much we care in this context, but\ntry avoiding pipes like this.  they just hide failures:\n\n$ v\u003d$(false | true) ; echo $?\n0\n\nprefer:\n\n$ u\u003d$(updater) || exit\n$ v\u003d$(awk ${awkward} \u003c\u003c\u003c $u)",
+      "range": {
+        "startLine": 103,
+        "startChar": 50,
+        "endLine": 103,
+        "endChar": 51
+      },
+      "revId": "49addb617df908d6a7ef32b4d4717157e5381f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "221653d1_2e770522",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-02T02:49:18Z",
+      "side": 1,
+      "message": "maybe put the awk program in a var, then invoke with awk \"${awkward}\"?",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 8
+      },
+      "revId": "49addb617df908d6a7ef32b4d4717157e5381f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05196b2_e9cc4023",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-02T02:49:18Z",
+      "side": 1,
+      "message": "based on the comment above, should this also match R[OW]_B?",
+      "range": {
+        "startLine": 106,
+        "startChar": 17,
+        "endLine": 106,
+        "endChar": 18
+      },
+      "revId": "49addb617df908d6a7ef32b4d4717157e5381f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
