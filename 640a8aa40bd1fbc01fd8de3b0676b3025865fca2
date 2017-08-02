@@ -34,6 +34,29 @@
       "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "384819ac_1b948c22",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3506,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-02T21:24:25Z",
+      "side": 1,
+      "message": "Where are the bits in this mask defined? What do they represent? Can you explain more how the EC is supposed to use this data?",
+      "range": {
+        "startLine": 3506,
+        "startChar": 10,
+        "endLine": 3506,
+        "endChar": 19
+      },
+      "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
