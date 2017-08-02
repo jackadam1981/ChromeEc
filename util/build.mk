@@ -37,3 +37,8 @@ $(out)/util/usb_pd_policy.o: board/$(BOARD)/usb_pd_policy.c
 	$(call quiet,c_to_vif,BUILDCC)
 deps += $(out)/util/usb_pd_policy.o.d
 endif # CONFIG_USB_POWER_DELIVERY
+
+ifeq ($(CONFIG_TOUCHPAD_VIRTUAL_OFF),y)
+build-util-bin+=gen_touchpad_hash
+
+endif # CONFIG_TOUCHPAD_VIRTUAL_OFF
