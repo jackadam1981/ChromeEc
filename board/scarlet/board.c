@@ -291,6 +291,12 @@ static void board_init(void)
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCEL_INT_L);
 
+	/* Enable power signals */
+	gpio_enable_interrupt(GPIO_PP1250_S3_PG);
+	gpio_enable_interrupt(GPIO_PP900_S0_PG);
+	gpio_enable_interrupt(GPIO_AP_EC_S3_S0_L);
+	gpio_enable_interrupt(GPIO_AP_CORE_PG);
+
 	/* Sensor Init */
 	if (system_jumped_to_this_image() && chipset_in_state(CHIPSET_STATE_ON))
 		board_spi_enable();
