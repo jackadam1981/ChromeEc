@@ -94,6 +94,30 @@
       "revId": "af27d6bd213c5cf7f30810913298345051a92777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba60e0c_14adca23",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-02T23:05:08Z",
+      "side": 1,
+      "message": "Nevermind. I built an image from TOT, and I was no longer seeing the eve usb suspend issue.\n\nSo something has changed in the past day. I did git bisect and found that 00ea73ab16 still had the suspend issue and c7b11ca7b8 didn\u0027t. It is not obvious how this change affected the Eve.\n\nI went back to 00ea73ab16 and tried disabling interrupts idle.c and it doesn\u0027t fix the usb suspend issue adding the delay to soft reset still does.",
+      "parentUuid": "8f10c684_4b7f35ed",
+      "range": {
+        "startLine": 1211,
+        "startChar": 0,
+        "endLine": 1212,
+        "endChar": 13
+      },
+      "revId": "af27d6bd213c5cf7f30810913298345051a92777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
