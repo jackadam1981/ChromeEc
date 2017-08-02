@@ -22,6 +22,29 @@
       "revId": "e3813fda99f554f6444f214a36644ff51c0099bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f89d5b02_deddd1b1",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-02T22:23:27Z",
+      "side": 1,
+      "message": "This should be done automatically from power_common_init(), if \u0027enum power_signal\u0027 is defined correctly.",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 40
+      },
+      "revId": "e3813fda99f554f6444f214a36644ff51c0099bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
