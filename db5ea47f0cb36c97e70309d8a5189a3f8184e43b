@@ -16,6 +16,24 @@
       "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "764db433_4e2084d6",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-02T09:33:48Z",
+      "side": 1,
+      "message": "Sorry, not sure if I got your point on \"active wake mask.\". As per the LPC_HOST_EVENT_WAKE \nimplementation, I couldn\u0027t find any active wakemask (wakemask set in S0?). \nThe wake masks are set/cleared in sleep entry/exit. For example, the hostevent\nEC_CMD_HOST_EVENT_SET_WAKE_MASK (used in S3 and S5) overrides the wake mask.\nSimilar way in case of S0ix, the wake mask is overriden. Does this clarify your concern?\n\n\nPlease find the EC_CMD_HOST_EVENT_SET_WAKE_MASK code snippet below\n\nstatic int host_event_set_wake_mask(struct host_cmd_handler_args *args)\n{\n        const struct ec_params_host_event_mask *p \u003d args-\u003eparams;\n\n        lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, p-\u003emask);\n        return EC_RES_SUCCESS;\n}\nDECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_WAKE_MASK,\n                     host_event_set_wake_mask,\n                     EC_VER_MASK(0));",
+      "parentUuid": "96b9da7e_5e2e1c8b",
+      "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
