@@ -128,12 +128,9 @@ int pd_board_checks(void)
 
 int pd_check_power_swap(int port)
 {
-	/*
-	 * Allow power swap as long as we are acting as a dual role device,
-	 * otherwise assume our role is fixed (not in S0 or console command
-	 * to fix our role).
-	 */
-	return pd_get_dual_role() == PD_DRP_TOGGLE_ON ? 1 : 0;
+	/* Reject PR swap */
+	CPRINTS("dnojiri: Rejecting PR swap");
+	return 0;
 }
 
 int pd_check_data_swap(int port, int data_role)
