@@ -310,6 +310,25 @@ int touchpad_get_info(struct touchpad_info *tp)
 
 	return sizeof(*tp);
 }
+
+int touchpad_update_write(int offset, int size, const char *data)
+{
+	CPRINTS("%s %08x %d", __func__, offset, size);
+	msleep(1);
+
+	/* FIXME: Detect start of process, disable interrupts */
+	if (0) {
+		gpio_disable_interrupt(GPIO_TOUCHPAD_INT);
+		CPRINTS("%s", __func__);
+	}
+
+	/* FIXME: Detect end of process, reset TP, and re-enable interrupts */
+	if (0) {
+		gpio_enable_interrupt(GPIO_TOUCHPAD_INT);
+		CPRINTS("%s", __func__);
+	}
+	return EC_SUCCESS;
+}
 #endif
 
 void elan_tp_interrupt(enum gpio_signal signal)
