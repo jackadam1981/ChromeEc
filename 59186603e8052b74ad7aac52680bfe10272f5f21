@@ -16,6 +16,24 @@
       "revId": "59186603e8052b74ad7aac52680bfe10272f5f21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ae8c997_ba165513",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-02T00:58:28Z",
+      "side": 1,
+      "message": "I don\u0027t think it will. If we don\u0027t get a serial number, we just won\u0027t use it.",
+      "parentUuid": "e22845b8_33014c05",
+      "revId": "59186603e8052b74ad7aac52680bfe10272f5f21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
