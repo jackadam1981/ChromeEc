@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e16f5799_7ddf4513",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3918,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-02T17:25:43Z",
+      "side": 1,
+      "message": "Is this a new CONFIG option? We should document it in include/config.h. And I suggest to give it a name related to power control, eg. CONFIG_USB_PD_POWER_CONTROL maybe. This config will tell us whether board_set_tcpc_power_mode() exists or not.",
+      "range": {
+        "startLine": 3918,
+        "startChar": 7,
+        "endLine": 3918,
+        "endChar": 33
+      },
+      "revId": "c65389e0bb6ef20b56d1c9a67c9dd82c95fa1df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d515046_1ccaf0fe",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4179,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-02T17:25:43Z",
+      "side": 1,
+      "message": "For testing, is it helpful for ectool to support this subcmd?",
+      "range": {
+        "startLine": 4179,
+        "startChar": 1,
+        "endLine": 4179,
+        "endChar": 11
+      },
+      "revId": "c65389e0bb6ef20b56d1c9a67c9dd82c95fa1df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
