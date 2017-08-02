@@ -140,17 +140,25 @@
 #define CONFIG_USB_HID_KEYBOARD
 #define CONFIG_USB_HID_TOUCHPAD
 
+/* Virtual address for touchpad FW in USB updater. */
+#define CONFIG_TOUCHPAD_VIRTUAL_OFF	0x80000000
+
+/* Include touchpad FW hashes in image */
+#define CONFIG_TOUCHPAD_HASH_FW
+
 #ifdef BOARD_STAFF
 /* TODO(b:38277869): Adjust values to match hardware. */
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3214
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1840
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 1020 /* tenth of mm */
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 584 /* tenth of mm */
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE	(56*1024)
 #elif defined(BOARD_HAMMER)
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3207
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1783
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 1018 /* tenth of mm */
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 566 /* tenth of mm */
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE	(48*1024)
 #else
 #error "No trackpad information for board."
 #endif
