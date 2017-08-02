@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "faef9bbf_84e2c30e",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-02T17:46:36Z",
+      "side": 1,
+      "message": "the delay is more than 3 orders of magnitude larger than what the comment refers to.\n\nIsn\u0027t this papering over another bug ?\n(e.g. what I\u0027m describing there : https://chromium.googlesource.com/chromiumos/platform/ec/+/9f59c3df7599d9ecaf4a335556141769c65fee9e or the other race conditions in the idle code)",
+      "range": {
+        "startLine": 1211,
+        "startChar": 0,
+        "endLine": 1212,
+        "endChar": 13
+      },
+      "revId": "af27d6bd213c5cf7f30810913298345051a92777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
