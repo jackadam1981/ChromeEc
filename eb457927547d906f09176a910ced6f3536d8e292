@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c92b97a7_306bb6a3",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-02T08:39:06Z",
+      "side": 1,
+      "message": "Argh. ok. Might be good to have a comment above to prevent people (me?) from trying to fix it then ,-)",
+      "parentUuid": "f8496166_f6ccb3a6",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a686ff6_201cafa0",
         "filename": "chip/stm32/usb_hid.c",
         "patchSetId": 2
