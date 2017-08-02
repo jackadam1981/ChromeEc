@@ -33,6 +33,24 @@
       "revId": "81668ece7ad3feccd7becd9899db630032a90c4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71228316_231e5c99",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-02T03:11:40Z",
+      "side": 1,
+      "message": "We should get the firmware checksum, which is grabbed in the factory HWID. For the IAP, I didn\u0027t see anyone is checking on that, should be fine to skip it.",
+      "parentUuid": "a828734d_0567e0f7",
+      "revId": "81668ece7ad3feccd7becd9899db630032a90c4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
