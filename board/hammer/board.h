@@ -181,6 +181,16 @@
 #define CONFIG_TOUCHPAD_I2C_PORT 0
 #define CONFIG_TOUCHPAD_I2C_ADDR (0x15 << 1)
 
+/* Virtual address for touchpad FW in USB updater. */
+#define CONFIG_TOUCHPAD_VIRTUAL_OFF	0x80000000
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE	(48*1024)
+// TODO(itspeter): Hammer and Staff are currently shares same config. However,
+//                 the virtual size is different. Few approaches should be
+//                 implemented in the future. One is change the definition of
+//                 CONFIG_TOUCHPAD_VIRTUAL_SIZE as the "largest" size. Another
+//                 is elimincate the symbolic link on hammer and staff so to
+//                 make different configuration.
+
 #define CONFIG_CURVE25519
 
 #define CONFIG_USB_PAIRING
