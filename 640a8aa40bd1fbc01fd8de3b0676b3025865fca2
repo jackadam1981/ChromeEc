@@ -57,6 +57,30 @@
       "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a94d00e4_d1b653c2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3506,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-02T21:45:33Z",
+      "side": 1,
+      "message": "Also, why can\u0027t you use EC_CMD_HOST_EVENT_SET_WAKE_MASK for this?",
+      "parentUuid": "384819ac_1b948c22",
+      "range": {
+        "startLine": 3506,
+        "startChar": 10,
+        "endLine": 3506,
+        "endChar": 19
+      },
+      "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
