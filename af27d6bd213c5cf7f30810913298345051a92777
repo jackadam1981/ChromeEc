@@ -70,6 +70,30 @@
       "revId": "af27d6bd213c5cf7f30810913298345051a92777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f10c684_4b7f35ed",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-02T20:40:48Z",
+      "side": 1,
+      "message": "It looks like adding a interrupt_disable does help. Moving the DEEP_SLEEP_ALLOWED check to the if statement in 243 also helps, but I guess that just shortens the window. \n\nDo you have any idea why we hit this condition 100% of the time entering deep sleep on Eve when we have usb enabled?",
+      "parentUuid": "c84e0f22_7dd6078b",
+      "range": {
+        "startLine": 1211,
+        "startChar": 0,
+        "endLine": 1212,
+        "endChar": 13
+      },
+      "revId": "af27d6bd213c5cf7f30810913298345051a92777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
