@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d577256_d58ac19f",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-02T22:22:43Z",
+      "side": 1,
+      "message": "Aren\u0027t they already enabled by power_common_init() in power/common.c?",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 40
+      },
+      "revId": "e3813fda99f554f6444f214a36644ff51c0099bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
