@@ -123,7 +123,7 @@ prepare_image() {
 }'
 
   raw_version="$("${USB_UPDATER}" -b "${RESULT_FILE}")" ||
-       echo "${ME}: Failed to retrieve blob version" >&2 && exit 1
+       ( echo "${ME}: Failed to retrieve blob version" >&2 && exit 1 )
 
   version="$(awk "${awk_prog}" <<< "${raw_version}" )"
   if [ -z "${dest_dir}" ]; then
