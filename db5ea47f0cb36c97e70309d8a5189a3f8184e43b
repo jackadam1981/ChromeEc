@@ -70,6 +70,24 @@
       "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60c0637_1d1e8231",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-03T15:07:18Z",
+      "side": 1,
+      "message": "That\u0027s the inconsistent part, imo.",
+      "parentUuid": "312741a5_c6bf325c",
+      "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
