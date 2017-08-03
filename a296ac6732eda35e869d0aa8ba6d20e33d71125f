@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b64ed6c0_4b00d80d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-03T06:59:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c276d22_3cc5aab2",
+      "range": {
+        "startLine": 10,
+        "startChar": 29,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "a296ac6732eda35e869d0aa8ba6d20e33d71125f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82097b15_0b0a2322",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-03T06:00:26Z",
       "side": 1,
       "message": "why ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 20,
+        "endLine": 13,
+        "endChar": 64
+      },
+      "revId": "a296ac6732eda35e869d0aa8ba6d20e33d71125f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f825ccd0_c479f0bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-03T06:59:26Z",
+      "side": 1,
+      "message": "Probably because a type-c adapter is recognized as a new power supply but it\u0027s not powerful enough to sustain the system (in the case of Pixel XL and the compliance test harness).\n\nWe decided not to switch power source once the system is up \u0026 running. Fizz checks only once at boot whether the system is powered enough or not. We\u0027ll throttle the CPU to keep the power consumption below the threshold. I think we want to simplify power management. That\u0027s why we don\u0027t want to switch to even a higher power supply.",
+      "parentUuid": "82097b15_0b0a2322",
       "range": {
         "startLine": 13,
         "startChar": 20,
@@ -68,6 +116,30 @@
       "revId": "a296ac6732eda35e869d0aa8ba6d20e33d71125f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68f475d3_48272afe",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-03T06:59:26Z",
+      "side": 1,
+      "message": "Done. Emptied pd_check_pr_role.",
+      "parentUuid": "3bd2c9b4_3c44700c",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 29
+      },
+      "revId": "a296ac6732eda35e869d0aa8ba6d20e33d71125f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
