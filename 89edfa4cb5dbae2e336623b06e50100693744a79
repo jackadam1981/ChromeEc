@@ -259,6 +259,29 @@
     },
     {
       "key": {
+        "uuid": "972fb5df_77417f42",
+        "filename": "extra/stack_analyzer/stack_analyzer_unittest.py",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-08-03T04:43:39Z",
+      "side": 1,
+      "message": "By Google style guide, we recommend to import module, not the class or function in the module. Also, it\u0027s better to split the standard module and local module. For example:\n\n\"\"\"\nfrom __future__ import print_function\n\nimport mock\nimport subprocess\nimport tempfile\nimport unittest\n\nimport stack_analyzer\n\"\"\"\n\nRef: https://google.github.io/styleguide/pyguide.html#Imports",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "89edfa4cb5dbae2e336623b06e50100693744a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c4d380b_fa082805",
         "filename": "include/task_filter.h",
         "patchSetId": 8
