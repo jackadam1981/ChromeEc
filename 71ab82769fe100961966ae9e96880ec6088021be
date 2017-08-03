@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e2b09fc9_d7c0ee58",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-03T08:28:09Z",
+      "side": 1,
+      "message": "The routine_address isn\u0027t a read only attribute. It will be modified after resolving its address.",
+      "parentUuid": "6d927bd9_f0fb9aac",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4af0a3c7_f732dce0",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 11
