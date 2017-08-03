@@ -8,8 +8,6 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "uart_bitbang.h"
-#include "uartn.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
@@ -66,10 +64,7 @@ static void ec_detect(void)
 		/* We were previously disconnected */
 		CPRINTS("EC connect");
 		state = STATE_CONNECTED;
-
-		/* Enable the EC UART, unless bit-banging is enabled */
-		if (!uart_bitbang_is_enabled(UART_EC))
-			enable_uart(UART_EC);
+		rdd_update_state();
 		return;
 	}
 
@@ -81,9 +76,7 @@ static void ec_detect(void)
 	if (state == STATE_DEBOUNCING) {
 		CPRINTS("EC disconnect");
 		state = STATE_DISCONNECTED;
-
-		/* Disable EC UART */
-		disable_uart(UART_EC);
+		rdd_update_state();
 		return;
 	}
 

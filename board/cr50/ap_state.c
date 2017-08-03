@@ -9,8 +9,6 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "system.h"
-#include "uart_bitbang.h"
-#include "uartn.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
@@ -71,7 +69,7 @@ static void ap_disconnect(void)
 	 */
 	gpio_set_flags(GPIO_INT_AP_L, GPIO_INPUT);
 
-	disable_uart(UART_AP);
+	rdd_update_state();
 
 	/*
 	 * We don't enable deep sleep on ARM devices yet, as its processing
@@ -106,7 +104,7 @@ static void ap_connect(void)
 	gpio_set_flags(GPIO_INT_AP_L, GPIO_OUT_HIGH);
 	gpio_set_level(GPIO_INT_AP_L, 1);
 
-	enable_uart(UART_AP);
+	rdd_update_state();
 
 	disable_deep_sleep();
 }
