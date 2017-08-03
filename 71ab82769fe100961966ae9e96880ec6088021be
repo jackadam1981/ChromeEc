@@ -730,6 +730,30 @@
     },
     {
       "key": {
+        "uuid": "4e1c1c00_27c5cd7a",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-03T08:11:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "531b6b36_1b6b1398",
+      "range": {
+        "startLine": 547,
+        "startChar": 31,
+        "endLine": 547,
+        "endChar": 32
+      },
+      "revId": "71ab82769fe100961966ae9e96880ec6088021be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "751d1871_df1418e7",
         "filename": "extra/stack_analyzer/stack_analyzer_unittest.py",
         "patchSetId": 11
