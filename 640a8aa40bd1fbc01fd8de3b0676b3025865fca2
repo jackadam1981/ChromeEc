@@ -129,6 +129,30 @@
       "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4237111_5190dabd",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3506,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-03T14:55:15Z",
+      "side": 1,
+      "message": "Thanks for the info. You should add this command above, with EC_CMD_HOST_EVENT_SET_WAKE_MASK and related mask SET / GET host commands. Also you can re-use the same params struct, no need for a new one.",
+      "parentUuid": "1f9ac4b2_84d57847",
+      "range": {
+        "startLine": 3506,
+        "startChar": 10,
+        "endLine": 3506,
+        "endChar": 19
+      },
+      "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
