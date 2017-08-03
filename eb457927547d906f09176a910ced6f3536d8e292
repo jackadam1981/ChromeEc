@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "09796b88_a033fd41",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-08-03T08:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c92b97a7_306bb6a3",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a686ff6_201cafa0",
         "filename": "chip/stm32/usb_hid.c",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "writtenOn": "2017-07-26T22:19:44Z",
       "side": 1,
       "message": "Why do you need to use BL_SIZE\u003d1 here?\n\nPresumably rx_len should be short enough, right? (and you can\u0027t guarantee it\u0027ll be a multiple of 32 bytes?)",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aff84b0_faa2f2a0",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-08-03T08:26:00Z",
+      "side": 1,
+      "message": "The rx_len depends on the user of usb_hid.c, they could be sending output report that requires more bytes, so use BL_SIZE\u003d1 is more flexible. Also this allocate the Tx buffer size but the received data size doesn\u0027t to be multiple of 32.",
+      "parentUuid": "6a686ff6_201cafa0",
       "revId": "eb457927547d906f09176a910ced6f3536d8e292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -119,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "5e34921c_127d5ba1",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-08-03T08:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ab548f8_d015b4da",
+      "range": {
+        "startLine": 56,
+        "startChar": 7,
+        "endLine": 56,
+        "endChar": 34
+      },
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e02990d_a3246244",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 2
@@ -150,6 +210,24 @@
       "revId": "eb457927547d906f09176a910ced6f3536d8e292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189a1264_63a18bc1",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-08-03T08:26:00Z",
+      "side": 1,
+      "message": "Ah sorry I didn\u0027t really check the output HID descriptor before I uploaded. Since we never actually use it, I\u0027ll add the HID output check in the kernel.",
+      "parentUuid": "0136cbf5_ed22e848",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -188,6 +266,24 @@
     },
     {
       "key": {
+        "uuid": "dccb1069_7586099e",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-08-03T08:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "595d4630_18affe07",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c14c4cfc_af09413b",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 2
@@ -211,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "a636cc37_66c11e5d",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-08-03T08:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c14c4cfc_af09413b",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 37
+      },
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42547d37_c28cf811",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 2
@@ -225,6 +345,24 @@
       "revId": "eb457927547d906f09176a910ced6f3536d8e292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "696d76dd_e74ced5f",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-08-03T08:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42547d37_c28cf811",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -251,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "2996c163_937f4ff6",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-08-03T08:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7749719_49e0dc34",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 38
+      },
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c1e013a_29aaf8c1",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -265,6 +427,24 @@
       "revId": "eb457927547d906f09176a910ced6f3536d8e292",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "329c1c50_179d575a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2591,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-08-03T08:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c1e013a_29aaf8c1",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
