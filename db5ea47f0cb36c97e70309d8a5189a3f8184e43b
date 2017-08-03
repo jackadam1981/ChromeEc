@@ -52,6 +52,24 @@
       "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "312741a5_c6bf325c",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-03T09:40:29Z",
+      "side": 1,
+      "message": "Yes, SMI handler sets wake mask and coreboot clears the mask on resume (/boot) with google_chromeec_set_wake_mask(0).\nSo EC always rely on the wake mask set by SMI handler (in S3/S5)",
+      "parentUuid": "1780019e_42df48d0",
+      "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
