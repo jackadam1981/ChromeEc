@@ -81,6 +81,54 @@
       "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83f64c89_6dfeffb9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3506,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-03T09:54:11Z",
+      "side": 1,
+      "message": "The masks are generic WAKE_MASKS and the usage is shown in https://chromium-review.googlesource.com/#/c/chromiumos/platform/ec/+/576048/",
+      "parentUuid": "384819ac_1b948c22",
+      "range": {
+        "startLine": 3506,
+        "startChar": 10,
+        "endLine": 3506,
+        "endChar": 19
+      },
+      "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f9ac4b2_84d57847",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3506,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-03T09:54:11Z",
+      "side": 1,
+      "message": "EC_CMD_HOST_EVENT_SET_WAKE_MASK is used by coreboot to set wake mask on S3 entry/Exit. S0ix sleep state doesn\u0027t take SMI handler flow  like S3 (no coreboot flow in S0ix entry/exit) . So coreboot cannot set WAKE mask on S0ix entry and exit. \n\nWith the new host command, on boot coreboot can notify the wake mask to EC with the EC_CMD_SET_S0IX_WAKE_MASK command and EC stores this. On S0ix entry/exit, EC configure the LPC_HOST_EVENT_WAKE mask. This helps to define the wake mask in a single place (Coreboot)",
+      "parentUuid": "a94d00e4_d1b653c2",
+      "range": {
+        "startLine": 3506,
+        "startChar": 10,
+        "endLine": 3506,
+        "endChar": 19
+      },
+      "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
