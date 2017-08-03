@@ -118,6 +118,30 @@
       "revId": "af27d6bd213c5cf7f30810913298345051a92777",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36020d2b_72f0c105",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-03T00:00:40Z",
+      "side": 1,
+      "message": "I just looked at taskinfo after c7b11ca7b8 and I see a ton of interrupts on UART1_RX and UART2_RX. I think that maybe all of these interrupts are delaying usb_init on their own.\n\n\u003e taskinfo                                                                      \nTask Ready Name         Events      Time (s)  StkUsed                           \n  0 R \u003c\u003c idle \u003e\u003e       00000000    5.729369  104/512                           \n  1 R HOOKS            20000000    0.341751  464/1024                          \n  2   TPM              00000000    0.000045  136/8192                          \n  3 R CONSOLE          00000000    0.028676  416/488                           \nIRQ counts by type:                                                             \n112        1                                                                   \n160     1441                                                                   \n174       19                                                                   \n177      189                                                                   \n181    11099                                                                   \n188    10953                                                                   \n193        2                                                                   \nService calls:                  260                                             \nTotal exceptions:             23965                                             \nTask switches:                   84                                             \nTask switching started:    0.005035 s                                           \nTime in tasks:             6.725708 s                                           \nTime in exceptions:        0.613925 s        \n\nJust to recap interrupt_disable in idle.c doesn\u0027t help. We should add this delay to usb.c. I am still not sure why exactly we need it though.",
+      "parentUuid": "bba60e0c_14adca23",
+      "range": {
+        "startLine": 1211,
+        "startChar": 0,
+        "endLine": 1212,
+        "endChar": 13
+      },
+      "revId": "af27d6bd213c5cf7f30810913298345051a92777",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
