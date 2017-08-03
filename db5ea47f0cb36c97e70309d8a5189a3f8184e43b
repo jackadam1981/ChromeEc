@@ -88,6 +88,24 @@
       "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ac4abe_851c8b07",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-08-03T18:03:04Z",
+      "side": 1,
+      "message": "I agree with Aaron. It might be better to introduce the concept of active wake mask and use that to OR during suspend and clear during resume. That way, it will only affect the bits that were explicitly provided by host for suspend/resume.",
+      "parentUuid": "b60c0637_1d1e8231",
+      "revId": "db5ea47f0cb36c97e70309d8a5189a3f8184e43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
