@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "a4b1feb9_982ec3e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-03T22:25:12Z",
+      "side": 1,
+      "message": "\u003e No, our power manager code is using the most powerful source, so it should \n\u003e not switch source or brown out in this case.\n\nI dug deeper. It browns out because PD\u0027s supplier priority is higher than BJ\u0027s priority. So, switch over happens no matter what power a type-c charger supplies (9.5W for Pixel XL).\n\nAnother thing I found is even if a new power is high (e.g. 45W), the system still browns out. I verified this using Zinger. I was talking at the project meeting that this dynamic power switch can be a feature added later by AU but it doesn\u0027t seem so. The next build will have no charger chip. So, I\u0027ll revisit this once I get the new hardware.",
+      "parentUuid": "933123c3_e042a809",
+      "range": {
+        "startLine": 13,
+        "startChar": 20,
+        "endLine": 13,
+        "endChar": 64
+      },
+      "revId": "a296ac6732eda35e869d0aa8ba6d20e33d71125f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bd2c9b4_3c44700c",
         "filename": "board/fizz/usb_pd_policy.c",
         "patchSetId": 2
