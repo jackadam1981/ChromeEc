@@ -117,7 +117,7 @@ static const struct battery_device support_batteries[BATTERY_TYPE_COUNT] = {
 	},
 	{
 		.manuf		= "LGC",
-		.device		= "Empoli",
+		.device		= "AC16B8K",
 		.design_mv	= 7600,
 		.battery_info	= &info_LG,
 	},
