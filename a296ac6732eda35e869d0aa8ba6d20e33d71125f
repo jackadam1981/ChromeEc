@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "933123c3_e042a809",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-03T12:32:26Z",
+      "side": 1,
+      "message": "\u003e Probably because a type-c adapter is recognized as a new power supply\n\u003e but it\u0027s not powerful enough to sustain the system\n\u003e (in the case of Pixel XL and the compliance test harness).\n\nNo, our power manager code is using the most powerful source, so it should not switch source or brown out in this case.\n\n\u003e \n\u003e We decided not to switch power source once the system is up \u0026 running. \n\u003e Fizz checks only once at boot whether the system is powered enough or not. \n\u003e We\u0027ll throttle the CPU to keep the power consumption below the threshold. \n\u003e I think we want to simplify power management. That\u0027s why we don\u0027t want to \n\u003e switch to even a higher power supply.\n\nThis is a terrible user experience, did the project management agree on this ?",
+      "parentUuid": "f825ccd0_c479f0bc",
+      "range": {
+        "startLine": 13,
+        "startChar": 20,
+        "endLine": 13,
+        "endChar": 64
+      },
+      "revId": "a296ac6732eda35e869d0aa8ba6d20e33d71125f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3bd2c9b4_3c44700c",
         "filename": "board/fizz/usb_pd_policy.c",
         "patchSetId": 2
