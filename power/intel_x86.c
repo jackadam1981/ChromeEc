@@ -307,6 +307,9 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 			return POWER_S5G3;
 		}
 
+		/* Enable WiFi Power Early */
+		gpio_set_level(GPIO_PP3300_DX_WLAN, 1);
+
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
 
