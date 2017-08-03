@@ -16,6 +16,29 @@
       "revId": "02086b087f13a809d540b57d067c412dfdc2a0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58d0624a_7a6894df",
+        "filename": "extra/stack_analyzer/stack_analyzer_unittest.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1123360
+      },
+      "writtenOn": "2017-08-03T09:59:03Z",
+      "side": 1,
+      "message": "Seems it\u0027s a common list of condition codes. Can you move it to stack_analyzer as a constant like\n\nCONDITION_CODES \u003d [...]\n\nand generate the regex of ArmAnalyzer with this constant?",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 64
+      },
+      "revId": "02086b087f13a809d540b57d067c412dfdc2a0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
