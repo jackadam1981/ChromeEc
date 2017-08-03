@@ -21,6 +21,7 @@
 #include "system.h"
 #include "system_chip.h"
 #include "task.h"
+#include "tpm_log.h"
 #include "tpm_manufacture.h"
 #include "tpm_registers.h"
 #include "util.h"
@@ -585,6 +586,7 @@ static void tpm_init(void)
 	 * No harm in calling it twice in that case.
 	 */
 	_TPM_Init();
+	tpm_log_event(TPM_INIT, tpm_manufactured());
 
 	if (!tpm_manufactured()) {
 		enum manufacturing_status endorse_result;

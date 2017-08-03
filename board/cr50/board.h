@@ -129,6 +129,8 @@
 #define CONFIG_SPS
 #define CONFIG_TPM_SPS
 
+#define CONFIG_TPM_LOGGING
+
 #define CONFIG_RBOX
 
 /* We don't need to send events to the AP */
