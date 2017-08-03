@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54ddd30b_7a2264df",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3918,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-03T03:37:43Z",
+      "side": 1,
+      "message": "made board_set_tcpc_power_mode a weak symbol.  less pain.",
+      "parentUuid": "e16f5799_7ddf4513",
+      "range": {
+        "startLine": 3918,
+        "startChar": 7,
+        "endLine": 3918,
+        "endChar": 33
+      },
+      "revId": "c65389e0bb6ef20b56d1c9a67c9dd82c95fa1df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d515046_1ccaf0fe",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-02T17:25:43Z",
       "side": 1,
       "message": "For testing, is it helpful for ectool to support this subcmd?",
+      "range": {
+        "startLine": 4179,
+        "startChar": 1,
+        "endLine": 4179,
+        "endChar": 11
+      },
+      "revId": "c65389e0bb6ef20b56d1c9a67c9dd82c95fa1df0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fda21d21_c520674e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4179,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-03T03:37:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d515046_1ccaf0fe",
       "range": {
         "startLine": 4179,
         "startChar": 1,
