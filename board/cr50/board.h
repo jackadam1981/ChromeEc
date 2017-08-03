@@ -193,6 +193,13 @@ void assert_ec_rst(void);
 void deassert_ec_rst(void);
 int is_ec_rst_asserted(void);
 
+/**
+ * Set up a deferred call to update RDD state.
+ *
+ * This will enable/disable UARTs, SPI, I2C, etc. as needed.
+ */
+void rdd_update_state(void);
+
 int board_has_ap_usb(void);
 int board_use_plt_rst(void);
 int board_rst_pullup_needed(void);
@@ -215,9 +222,6 @@ int servo_is_connected(void);
 void ap_connect_from_tpm_rst(void);
 int ap_is_connected(void);
 int ec_is_connected(void);
-
-void enable_uart(int uart);
-void disable_uart(int uart);
 
 /* Returns True if chip is brought up in a factory test harness. */
 int chip_factory_mode(void);

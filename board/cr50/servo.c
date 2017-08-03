@@ -92,14 +92,7 @@ static void servo_disconnect(void)
 {
 	CPRINTS("Servo disconnect");
 	state = STATE_DISCONNECTED;
-
-	/*
-	 * Reconnect the AP UART.
-	 *
-	 * Note that we should also reconnect EC UART and I2C once we
-	 * get to CCD V1.  That's coming in the next CL.
-	 */
-	uartn_tx_connect(UART_AP);
+	rdd_update_state();
 }
 
 /**
@@ -109,20 +102,7 @@ static void servo_connect(void)
 {
 	CPRINTS("Servo connect");
 	state = STATE_CONNECTED;
-
-	/*
-	 * Disable UART bit banging.  Note this must be done before
-	 * uartn_tx_disconnect() below, because this call will currently call
-	 * uartn_tx_connect()!
-	 */
-	uart_bitbang_disable(bitbang_config.uart);
-
-	/* Disconnect AP and EC UART transmit when servo is attached */
-	uartn_tx_disconnect(UART_AP);
-	uartn_tx_disconnect(UART_EC);
-
-	/* Disconnect i2c interface to ina */
-	usb_i2c_board_disable();
+	rdd_update_state();
 }
 
 /**

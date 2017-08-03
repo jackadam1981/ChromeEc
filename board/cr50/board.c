@@ -692,6 +692,9 @@ static void board_ccd_config_changed(void)
 	GREG32(PMU, LONG_LIFE_SCRATCH1) |= (ccd_get_state() << BOARD_CCD_SHIFT)
 			& BOARD_CCD_STATE;
 	GWRITE_FIELD(PMU, LONG_LIFE_SCRATCH_WR_EN, REG1, 0);
+
+	/* Update RDD state */
+	rdd_update_state();
 }
 DECLARE_HOOK(HOOK_CCD_CHANGE, board_ccd_config_changed, HOOK_PRIO_DEFAULT);
 
@@ -872,64 +875,6 @@ int is_ec_rst_asserted(void)
 {
 	return GREAD(RBOX, ASSERT_EC_RST);
 }
-
-void enable_uart(int uart)
-{
-	if (uart == UART_EC) {
-		if (!ccd_is_cap_enabled(CCD_CAP_EC_TX_CR50_RX))
-			return;
-
-		/*
-		 * For the EC UART, we can't connect the TX pin to the UART
-		 * block when it's in bit bang mode.
-		 */
-		if (uart_bitbang_is_enabled(uart))
-			return;
-	}
-
-	if (uart == UART_AP && !ccd_is_cap_enabled(CCD_CAP_AP_TX_CR50_RX))
-		return;
-
-	/* Enable RX and TX on the UART peripheral */
-	uartn_enable(uart);
-
-	/* Connect the TX pin to the UART TX Signal */
-	if (!uart_tx_is_connected(uart))
-		uartn_tx_connect(uart);
-}
-
-void disable_uart(int uart)
-{
-	/* Disable RX and TX on the UART peripheral */
-	uartn_disable(uart);
-
-	/* Disconnect the TX pin from the UART peripheral */
-	uartn_tx_disconnect(uart);
-}
-
-static void board_ccd_change_hook(void)
-{
-	if (uartn_is_enabled(UART_AP) &&
-	    !ccd_is_cap_enabled(CCD_CAP_AP_TX_CR50_RX)) {
-		/* Receiving from AP, but no longer allowed */
-		disable_uart(UART_AP);
-	} else if (!uartn_is_enabled(UART_AP) &&
-		   ccd_is_cap_enabled(CCD_CAP_AP_TX_CR50_RX)) {
-		/* Not receiving from AP, but allowed now */
-		enable_uart(UART_AP);
-	}
-
-	if (uartn_is_enabled(UART_EC) &&
-	    !ccd_is_cap_enabled(CCD_CAP_EC_TX_CR50_RX)) {
-		/* Receiving from EC, but no longer allowed */
-		disable_uart(UART_EC);
-	} else if (!uartn_is_enabled(UART_EC) &&
-		   ccd_is_cap_enabled(CCD_CAP_EC_TX_CR50_RX)) {
-		/* Not receiving from EC, but allowed now */
-		enable_uart(UART_EC);
-	}
-}
-DECLARE_HOOK(HOOK_CCD_CHANGE, board_ccd_change_hook, HOOK_PRIO_DEFAULT);
 
 /*
  * This function duplicates some of the functionality in chip/g/gpio.c in order
