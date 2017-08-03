@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cf1bda0_39bfb22f",
+        "filename": "chip/g/dcrypto/bn_hw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-03T12:25:01Z",
+      "side": 1,
+      "message": "updated with this scheme.",
+      "parentUuid": "7d544448_24b86278",
+      "range": {
+        "startLine": 1238,
+        "startChar": 2,
+        "endLine": 1238,
+        "endChar": 8
+      },
+      "revId": "cd2b9553607e581c0f8617d69dd43d5f444e1086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4bc98af2_13729c21",
         "filename": "chip/g/dcrypto/rfc6979.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-30T16:25:00Z",
       "side": 1,
       "message": "Is there a test we could add?\nSay simple console cmd with a known vector or two?",
+      "range": {
+        "startLine": 46,
+        "startChar": 36,
+        "endLine": 46,
+        "endChar": 48
+      },
+      "revId": "cd2b9553607e581c0f8617d69dd43d5f444e1086",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fb83497_42536d5e",
+        "filename": "chip/g/dcrypto/rfc6979.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-03T12:25:01Z",
+      "side": 1,
+      "message": "I have added the (only) example from RFC 6979 for curve P-256 in Annex A.2.5\n(as an \u0027optional\u0027 console command)",
+      "parentUuid": "4bc98af2_13729c21",
       "range": {
         "startLine": 46,
         "startChar": 36,
