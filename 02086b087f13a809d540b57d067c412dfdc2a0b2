@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "158398e2_59a6cbe9",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-04T12:43:13Z",
+      "side": 1,
+      "message": "My modified version of Marius C++ code was doing it ;-)\n\nThe idea is along the way of what we are doing for generating the \u0027vif\u0027 files with genvif. Rather than creating a text file as the .taskinfo then parsin it, you can build a board-specific executable able to run on the build machine and this executable dumps the interesting values (might be a shared library in your case to get it from python).",
+      "parentUuid": "16adbcdf_121ae29f",
+      "range": {
+        "startLine": 639,
+        "startChar": 46,
+        "endLine": 639,
+        "endChar": 65
+      },
+      "revId": "02086b087f13a809d540b57d067c412dfdc2a0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58d0624a_7a6894df",
         "filename": "extra/stack_analyzer/stack_analyzer_unittest.py",
         "patchSetId": 15
