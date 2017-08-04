@@ -615,6 +615,11 @@ class StackAnalyzer(object):
       function.stack_max_usage = max_stack_usage
       function.stack_successor = max_callee
 
+      # HACK: Ignore some functions.
+      if function.name in {'panic_assert_fail', 'i2c_reset', 'i2c_abort_data'}:
+        function.stack_max_usage = 0
+        function.stack_successor = None
+
     cycle_groups = []
     scc_index_counter = [0]
     scc_stack = []
