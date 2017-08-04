@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79398aa0_652227fb",
+        "filename": "board/zoombini/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-04T00:06:46Z",
+      "side": 1,
+      "message": "I feel like with some work I could make this generic enough to be used by other boards. The common std_led_policy module right now assumes GPIO controlled LEDs. Maybe we could combine them or create a separate module for PWM controlled LEDs.\n\nIdk, just a thought...",
+      "revId": "d1be4d6701917bc98b40cdc8734cceaacc8b908b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
