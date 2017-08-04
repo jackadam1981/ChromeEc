@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5c725f6_8407aca2",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-04T02:21:00Z",
+      "side": 1,
+      "message": "Add TODO to make it configurable later",
+      "parentUuid": "2401c4d7_60652e59",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 32
+      },
+      "revId": "02086b087f13a809d540b57d067c412dfdc2a0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5258ee0a_1d8d5be1",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 15
@@ -39,6 +63,24 @@
       "revId": "02086b087f13a809d540b57d067c412dfdc2a0b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "280cb918_30fda35c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-04T02:21:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5258ee0a_1d8d5be1",
+      "revId": "02086b087f13a809d540b57d067c412dfdc2a0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "16adbcdf_121ae29f",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-04T02:21:00Z",
+      "side": 1,
+      "message": "It\u0027s not easy to get real values of them. Remove them in this version",
+      "parentUuid": "106360c8_a3f16d7e",
+      "range": {
+        "startLine": 639,
+        "startChar": 46,
+        "endLine": 639,
+        "endChar": 65
+      },
+      "revId": "02086b087f13a809d540b57d067c412dfdc2a0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58d0624a_7a6894df",
         "filename": "extra/stack_analyzer/stack_analyzer_unittest.py",
         "patchSetId": 15
@@ -76,6 +142,30 @@
       "writtenOn": "2017-08-03T09:59:03Z",
       "side": 1,
       "message": "Seems it\u0027s a common list of condition codes. Can you move it to stack_analyzer as a constant like\n\nCONDITION_CODES \u003d [...]\n\nand generate the regex of ArmAnalyzer with this constant?",
+      "range": {
+        "startLine": 21,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 64
+      },
+      "revId": "02086b087f13a809d540b57d067c412dfdc2a0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56e234f5_c63f1d57",
+        "filename": "extra/stack_analyzer/stack_analyzer_unittest.py",
+        "patchSetId": 15
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-04T02:21:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58d0624a_7a6894df",
       "range": {
         "startLine": 21,
         "startChar": 22,
