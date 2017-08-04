@@ -407,11 +407,13 @@ static int transfer_block(struct usb_endpoint *uep,
  * data_ptr     - pointer at the section base in the image
  * section_addr - address of the section in the target memory space
  * data_len     - section size
+ * smart_update - non-zero to enable the smart trailing of 0xff.
  */
 static void transfer_section(struct transfer_descriptor *td,
 			     uint8_t *data_ptr,
 			     uint32_t section_addr,
-			     size_t data_len)
+			     size_t data_len,
+			     uint8_t smart_update)
 {
 	/*
 	 * Actually, we can skip trailing chunks of 0xff, as the entire
@@ -419,8 +421,9 @@ static void transfer_section(struct transfer_descriptor *td,
 	 *
 	 * FIXME: We can be smarter than this and skip blocks within the image.
 	 */
-	while (data_len && (data_ptr[data_len - 1] == 0xff))
-		data_len--;
+	if (smart_update)
+		while (data_len && (data_ptr[data_len - 1] == 0xff))
+			data_len--;
 
 	printf("sending 0x%zx bytes to %#x\n", data_len, section_addr);
 	while (data_len) {
@@ -781,7 +784,7 @@ static int transfer_image(struct transfer_descriptor *td,
 			transfer_section(td,
 					 data + sections[i].offset,
 					 sections[i].offset,
-					 sections[i].size);
+					 sections[i].size, 1);
 			num_txed_sections++;
 		}
 
@@ -1059,7 +1062,7 @@ int main(int argc, char *argv[])
 			transfer_section(&td,
 					data,
 					0x80000000,
-					data_len);
+					data_len, 0);
 			free(data);
 
 			send_done(&td.uep);
