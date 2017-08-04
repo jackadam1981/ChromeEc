@@ -586,7 +586,7 @@ int get_desired_input_current(enum battery_present batt_present,
 }
 
 /* Main loop */
-void charger_task(void)
+void charger_task(void *u)
 {
 	int sleep_usec;
 	int need_static = 1;

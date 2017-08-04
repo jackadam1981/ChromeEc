@@ -622,7 +622,7 @@ void keyboard_scan_init(void)
 		host_set_single_event(EC_HOST_EVENT_KEYBOARD_RECOVERY);
 }
 
-void keyboard_scan_task(void)
+void keyboard_scan_task(void *u)
 {
 	timestamp_t poll_deadline, start;
 	int wait_time;

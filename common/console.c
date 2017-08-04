@@ -640,7 +640,7 @@ void console_has_input(void)
 		task_wake(TASK_ID_CONSOLE);
 }
 
-void console_task(void)
+void console_task(void *u)
 {
 #ifdef CONFIG_CONSOLE_RESTRICTED_INPUT
 	/* the console is not available due to security restrictions */

@@ -1413,7 +1413,7 @@ void pd_set_new_power_request(int port)
 #error "Backwards compatible DFP does not support USB"
 #endif
 
-void pd_task(void)
+void pd_task(void *u)
 {
 	int head;
 	int port = TASK_ID_TO_PD_PORT(task_get_current());

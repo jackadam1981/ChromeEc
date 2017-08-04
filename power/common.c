@@ -335,7 +335,7 @@ void chipset_exit_hard_off(void)
 /*****************************************************************************/
 /* Task function */
 
-void chipset_task(void)
+void chipset_task(void *u)
 {
 	enum power_state new_state;
 
