@@ -43,7 +43,9 @@ static const struct bq24392_pins pin_tbl[] = {
  */
 static void bc12_detect(const int port)
 {
+#if defined(CONFIG_CHARGE_RAMP) || defined(CONFIG_CHARGE_RAMP_HW)
 	int is_high_power;
+#endif /* defined(CONFIG_CHARGE_RAMP) || defined(CONFIG_CHARGE_RAMP_HW) */
 	struct charge_port_info new_chg;
 	enum gpio_signal chip_enable;
 	enum gpio_signal chg_det;
@@ -60,6 +62,8 @@ static void bc12_detect(const int port)
 	 */
 	msleep(630);
 
+	new_chg.voltage = USB_CHARGER_VOLTAGE_MV;
+#if defined(CONFIG_CHARGE_RAMP) || defined(CONFIG_CHARGE_RAMP_HW)
 	/*
 	 * The driver assumes that CHG_AL_N and SW_OPEN are not connected,
 	 * therefore the value of CHG_DET indicates whether the source is NOT a
@@ -67,9 +71,6 @@ static void bc12_detect(const int port)
 	 * ramp the current to determine the limit.
 	 */
 	is_high_power = gpio_get_level(chg_det);
-
-	new_chg.voltage = USB_CHARGER_VOLTAGE_MV;
-#ifdef CONFIG_CHARGE_RAMP
 	new_chg.current = is_high_power ? 2400 : 500;
 #else
 	/*
@@ -78,7 +79,7 @@ static void bc12_detect(const int port)
 	 * charging port (DCP) which can only supply 500mA.
 	 */
 	new_chg.current = 500;
-#endif /* !defined(CONFIG_CHARGE_RAMP) */
+#endif /* !defined(CONFIG_CHARGE_RAMP && CONFIG_CHARGE_RAMP_HW) */
 
 	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, port, &new_chg);
 }
