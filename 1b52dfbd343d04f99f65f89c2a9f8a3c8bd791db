@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c54955db_2a1183af",
+        "filename": "builtin/stdint.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1167634
+      },
+      "writtenOn": "2017-08-04T22:10:16Z",
+      "side": 1,
+      "message": "This ordering just bothered me, everything preceding is uint* followed by int*.",
+      "range": {
+        "startLine": 25,
+        "startChar": 27,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "1b52dfbd343d04f99f65f89c2a9f8a3c8bd791db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
