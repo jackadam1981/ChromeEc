@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eba03fed_15645213",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-04T09:42:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this adds clarity, I\u0027d fold it in the code below.",
+      "revId": "35ad1797b2dbd9781d374a5ee5021aadadae9751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27923e13_ea6b1255",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-04T09:42:05Z",
+      "side": 1,
+      "message": "Only used once, maybe fold into the code.",
+      "revId": "35ad1797b2dbd9781d374a5ee5021aadadae9751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c616e9f5_e2e8483d",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-04T09:42:05Z",
+      "side": 1,
+      "message": "%04x",
+      "range": {
+        "startLine": 379,
+        "startChar": 46,
+        "endLine": 379,
+        "endChar": 50
+      },
+      "revId": "35ad1797b2dbd9781d374a5ee5021aadadae9751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ff7010c_7221917a",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-04T09:42:05Z",
+      "side": 1,
+      "message": "This needs to be a proper EC_* code.",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 12
+      },
+      "revId": "35ad1797b2dbd9781d374a5ee5021aadadae9751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "967ee80d_38fed9f5",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-04T09:42:05Z",
+      "side": 1,
+      "message": "checksum \u0026 0xff will do.",
+      "range": {
+        "startLine": 393,
+        "startChar": 36,
+        "endLine": 393,
+        "endChar": 58
+      },
+      "revId": "35ad1797b2dbd9781d374a5ee5021aadadae9751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1154f75_e00b4168",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-04T09:42:05Z",
+      "side": 1,
+      "message": "This can be a uint16_t, right?",
+      "range": {
+        "startLine": 428,
+        "startChar": 1,
+        "endLine": 428,
+        "endChar": 11
+      },
+      "revId": "35ad1797b2dbd9781d374a5ee5021aadadae9751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7087ddb_419bcded",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-04T09:42:05Z",
+      "side": 1,
+      "message": "So the passed data must be multiple of FW_PAGE_SIZE. Might be good to add a check for that in the function, and return an error.",
+      "revId": "35ad1797b2dbd9781d374a5ee5021aadadae9751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ceb080_cff6d680",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-04T09:42:05Z",
+      "side": 1,
+      "message": "This is essentially\n\n  if (offset + size \u003d\u003d FW_SIZE)\n\nright?",
+      "revId": "35ad1797b2dbd9781d374a5ee5021aadadae9751",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
