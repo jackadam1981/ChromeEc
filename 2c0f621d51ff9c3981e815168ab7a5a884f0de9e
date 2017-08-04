@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "301c1a5e_556bd851",
+        "filename": "Makefile.rules",
+        "patchSetId": 18
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-04T12:56:43Z",
+      "side": 1,
+      "message": "I would sincerely prefer having the RW selected as default (might be with the warning printed) rather than simply exiting.\nI had to re-run it nearly every single time I tried it due to this missing parameter.",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 3
+      },
+      "revId": "2c0f621d51ff9c3981e815168ab7a5a884f0de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf03fbce_876a1839",
+        "filename": "include/task_filter.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-04T12:56:43Z",
+      "side": 1,
+      "message": "do we really want this ?",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 59
+      },
+      "revId": "2c0f621d51ff9c3981e815168ab7a5a884f0de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
