@@ -34,7 +34,7 @@ struct emu_task_t {
 };
 
 struct task_args {
-	void (*routine)(void *);
+	int (*routine)(void *);
 	void *d;
 };
 
@@ -58,22 +58,23 @@ static __thread task_id_t my_task_id; /* thread local task id */
 
 static void task_enable_all_tasks_callback(void);
 
-#define TASK(n, r, d, s) void r(void *);
+#define TASK(n, r, d, s) int r(void *);
 CONFIG_TASK_LIST
 CONFIG_TEST_TASK_LIST
 CONFIG_CTS_TASK_LIST
 #undef TASK
 
 /* Idle task */
-void __idle(void *d)
+int __idle(void *d)
 {
 	while (1)
 		task_wait_event(-1);
 }
 
-void _run_test(void *d)
+int _run_test(void *d)
 {
 	run_test();
+	return 0;
 }
 
 #define TASK(n, r, d, s) {r, d},
