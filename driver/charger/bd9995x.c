@@ -743,9 +743,6 @@ static void bd9995x_battery_charging_profile_settings(void)
 	if (system_get_image_copy() != SYSTEM_IMAGE_RW)
 		charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
 
-	/* Fast-charge & Pre-charge Current Setting */
-	charger_set_current(PD_MAX_CURRENT_MA);
-
 	/* Charge Termination Current Setting */
 	ch_raw_write16(BD9995X_CMD_ITERM_SET, 0, BD9995X_EXTENDED_COMMAND);
 
