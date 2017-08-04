@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbe2c3ad_d8e45f96",
+        "filename": "chip/g/dcrypto/x509.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2017-08-04T20:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b943cbb3_68fb13a3",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 57
+      },
+      "revId": "d709f672c2f919ff651af31f2a8f747bb37f27b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdcb1267_24932be2",
         "filename": "chip/stm32/i2c-stm32f4.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-01T00:16:58Z",
       "side": 1,
       "message": "Probably better to declare with __attribute__((unused)). Maybe we\u0027ll use Tx DMA someday, so maybe it\u0027s better not to delete.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 50
+      },
+      "revId": "d709f672c2f919ff651af31f2a8f747bb37f27b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "002bf01f_775d915a",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2017-08-04T20:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdcb1267_24932be2",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "feel free to delete",
       "parentUuid": "96c5acac_d2302599",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 2
+      },
+      "revId": "d709f672c2f919ff651af31f2a8f747bb37f27b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "471efd2a_45d41fc1",
+        "filename": "chip/stm32/usb_dwc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2017-08-04T20:21:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f35cd61_bac2507c",
       "range": {
         "startLine": 100,
         "startChar": 0,
