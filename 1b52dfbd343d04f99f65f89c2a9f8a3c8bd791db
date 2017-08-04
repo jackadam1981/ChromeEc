@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "53c8ebba_102aa3c2",
+        "filename": "builtin/stdint.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-04T22:20:05Z",
+      "side": 1,
+      "message": "this is not the comment I had in mind.\n\npresumably every person involved with this codebase for years is familiar with the types defined in this file.\n\nyou are adding new types which have not been necessary in all these years, please explain their meanings.\n\nI don\u0027t think we should be adding these types to the new ec code in general, so maybe these types should be defined in a separate file, but I\u0027ll leave this to other EC stakeholders opinion.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "1b52dfbd343d04f99f65f89c2a9f8a3c8bd791db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c54955db_2a1183af",
         "filename": "builtin/stdint.h",
         "patchSetId": 2
