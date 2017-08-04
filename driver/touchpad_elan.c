@@ -56,6 +56,28 @@
 #define ETP_HOVER_INFO_OFFSET	30
 #define ETP_MAX_REPORT_LEN	34
 
+#define ETP_IAP_START_ADDR		0x0083
+
+#define ETP_I2C_IAP_RESET_CMD		0x0314
+#define ETP_I2C_IAP_RESET		0xF0F0
+#define ETP_I2C_IAP_CTRL_CMD		0x0310
+#define ETP_I2C_MAIN_MODE_ON		(1 << 9)
+#define ETP_I2C_IAP_CMD			0x0311
+#define ETP_I2C_IAP_PASSWORD		0x1EA5
+
+#define ETP_I2C_IAP_REG_L		0x01
+#define ETP_I2C_IAP_REG_H		0x06
+
+#define ETP_FW_IAP_PAGE_ERR		(1 << 5)
+#define ETP_FW_IAP_INTF_ERR		(1 << 4)
+
+#define FW_PAGE_SIZE			64
+#define FW_PAGE_COUNT			768
+#define FW_SIZE				(FW_PAGE_SIZE*FW_PAGE_COUNT)
+
+#define IN_RANGE(addr, offset, size) (offset <= addr && addr < (offset + size))
+
+
 struct {
 	/* Max X/Y position */
 	uint16_t max_x;
@@ -311,21 +333,140 @@ int touchpad_get_info(struct touchpad_info *tp)
 	return sizeof(*tp);
 }
 
-int touchpad_update_write(int offset, int size, const char *data)
+static int le_bytes_to_int(uint8_t *buf)
 {
-	CPRINTS("%s %08x %d", __func__, offset, size);
-	msleep(1);
+	return buf[0] + (int)(buf[1] << 8);
+}
 
-	/* FIXME: Detect start of process, disable interrupts */
-	if (0) {
-		gpio_disable_interrupt(GPIO_TOUCHPAD_INT);
-		CPRINTS("%s", __func__);
+static int elan_in_main_mode(void)
+{
+	uint16_t rx_buf;
+	elan_tp_read_cmd(ETP_I2C_IAP_CTRL_CMD, &rx_buf);
+	return rx_buf & ETP_I2C_MAIN_MODE_ON;
+}
+
+static int elan_prepare_for_update(void)
+{
+	uint16_t rx_buf;
+	int initial_mode;
+	initial_mode = elan_in_main_mode();
+	if (!initial_mode) {
+		CPRINTS("%s: In IAP mode, reset IC.", __func__);
+		elan_tp_write_cmd(ETP_I2C_IAP_RESET_CMD, ETP_I2C_IAP_RESET);
+		msleep(30);
+	}
+	/* Send the passphrase */
+	elan_tp_write_cmd(ETP_I2C_IAP_CMD, ETP_I2C_IAP_PASSWORD);
+	msleep(initial_mode ? 100 : 30);
+
+	/* We should be in the IAP mode now */
+	if (elan_in_main_mode()) {
+		CPRINTS("%s: Failure to enter IAP mode, still in main mode",
+			__func__);
+		return -1;
 	}
 
-	/* FIXME: Detect end of process, reset TP, and re-enable interrupts */
-	if (0) {
+	/* Send the passphrase again */
+	elan_tp_write_cmd(ETP_I2C_IAP_CMD, ETP_I2C_IAP_PASSWORD);
+	msleep(30);
+
+	/* Verify the password */
+	if (elan_tp_read_cmd(ETP_I2C_IAP_CMD, &rx_buf)) {
+		CPRINTS("%s: Cannot read iap password.", __func__);
+		return -1;
+	}
+	if (rx_buf != ETP_I2C_IAP_PASSWORD) {
+		CPRINTS("%s: Got an unexpected IAP password %4x\n", __func__,
+			rx_buf);
+		return -1;
+	}
+	return 0;
+}
+
+int touchpad_update_page(int checksum, uint8_t *data) {
+	uint8_t page_store[FW_PAGE_SIZE + 4];
+	uint16_t rx_buf;
+	int rv;
+	page_store[0] = ETP_I2C_IAP_REG_L;
+	page_store[1] = ETP_I2C_IAP_REG_H;
+	memcpy(page_store + 2, data, FW_PAGE_SIZE);
+	page_store[FW_PAGE_SIZE + 2 + 0] = (checksum >> 0) & 0xff;
+	page_store[FW_PAGE_SIZE + 2 + 1] = (checksum >> 8) & 0xff;
+
+	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
+	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
+		      page_store, sizeof(page_store), NULL, 0,
+		      I2C_XFER_SINGLE);
+	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
+	if (rv)
+		return rv;
+	msleep(20);
+
+	rv = elan_tp_read_cmd(ETP_I2C_IAP_CTRL_CMD, &rx_buf);
+	if (rv | (rx_buf & (ETP_FW_IAP_PAGE_ERR | ETP_FW_IAP_INTF_ERR))) {
+		CPRINTS("%s: IAP reports failed write : %x\n",
+			__func__, rx_buf);
+		return rv;
+	}
+	return 0;
+}
+
+
+static uint16_t calc_checksum(uint8_t *data, int length)
+{
+	uint16_t checksum = 0;
+	int i;
+	for (i = 0; i < length; i += 2)
+		checksum += ((uint16_t)(data[i+1]) << 8) | (data[i]);
+	return checksum;
+}
+
+int touchpad_update_write(int offset, int size, uint8_t *data)
+{
+	static int iap_addr = -1;
+	static int checksum = -1;
+	static int block_checksum = -1;
+	int addr, rv;
+
+	CPRINTS("%s %08x %d", __func__, offset, size);
+
+	if (offset == 0) {
+		gpio_disable_interrupt(GPIO_TOUCHPAD_INT);
+		CPRINTS("%s: prepare fw update", __func__);
+		cflush();
+		rv = elan_prepare_for_update();
+		if (rv)
+			return rv;
+		iap_addr = 0;
+		checksum = 0;
+	}
+
+	if (IN_RANGE(ETP_IAP_START_ADDR * 2, offset, size)) {
+		iap_addr = 2 * le_bytes_to_int(
+			data + ETP_IAP_START_ADDR * 2 - offset);
+		CPRINTS("%s: payload starts from %x", __func__, iap_addr);
+	} 
+
+	for (addr = (offset / FW_PAGE_SIZE) * FW_PAGE_SIZE;
+		addr < (offset + size); addr += FW_PAGE_SIZE) {
+		if (iap_addr > addr) /* Skip chunk */
+			continue;
+		block_checksum = calc_checksum(
+			data + addr - offset, FW_PAGE_SIZE);
+		rv = touchpad_update_page(block_checksum, data + addr - offset);
+		if (rv)
+			return rv;
+		checksum += block_checksum;
+		CPRINTS("%s: page %d updated. chk: %x.", __func__,
+			addr / FW_PAGE_SIZE, checksum);
+		cflush();
+	}
+
+	if (IN_RANGE(FW_SIZE - 1, offset, size)) {
+		CPRINTS("%s: End update, wait for reset", __func__);
+		msleep(600);
+		elan_tp_init();
 		gpio_enable_interrupt(GPIO_TOUCHPAD_INT);
-		CPRINTS("%s", __func__);
 	}
 	return EC_SUCCESS;
 }
