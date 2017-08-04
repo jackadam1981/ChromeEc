@@ -238,6 +238,6 @@ enum {
 int touchpad_get_info(struct touchpad_info *tp);
 
 /* Touchpad FW update: Write a FW block. */
-int touchpad_update_write(int offset, int size, const char *data);
+int touchpad_update_write(int offset, int size, const uint8_t *data);
 
 #endif  /* ! __CROS_EC_UPDATE_FW_H */
