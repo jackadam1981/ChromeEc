@@ -231,7 +231,8 @@ static int svdm_dp_status(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, USB_SID_DISPLAYPORT);
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
-			 CMD_DP_STATUS | VDO_OPOS(opos));
+			 CMD_DP_STATUS | VDO_OPOS(opos),
+			 pd_get_vdo_ver(port));
 	payload[1] = VDO_DP_STATUS(0, /* HPD IRQ  ... not applicable */
 				   0, /* HPD level ... not applicable */
 				   0, /* exit DP? ... no */
@@ -256,7 +257,8 @@ static int svdm_dp_config(int port, uint32_t *payload)
 		    USB_SWITCH_CONNECT, pd_get_polarity(port));
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
-			 CMD_DP_CONFIG | VDO_OPOS(opos));
+			 CMD_DP_CONFIG | VDO_OPOS(opos),
+			 pd_get_vdo_ver(port));
 	payload[1] = VDO_DP_CFG(pin_mode,      /* pin mode */
 				1,             /* DPv1.3 signaling */
 				2);            /* UFP connected */
