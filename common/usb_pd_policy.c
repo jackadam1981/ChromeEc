@@ -315,7 +315,8 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 
 static int dfp_discover_svids(int port, uint32_t *payload)
 {
-	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID);
+	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_SVID,
+				pd_get_vdo_ver(port));
 	return 1;
 }
 
@@ -354,7 +355,7 @@ static int dfp_discover_modes(int port, uint32_t *payload)
 	uint16_t svid = pe[port].svids[pe[port].svid_idx].svid;
 	if (pe[port].svid_idx >= pe[port].svid_cnt)
 		return 0;
-	payload[0] = VDO(svid, 1, CMD_DISCOVER_MODES);
+	payload[0] = VDO(svid, 1, CMD_DISCOVER_MODES, pd_get_vdo_ver(port));
 	return 1;
 }
 
@@ -462,7 +463,8 @@ uint32_t pd_dfp_enter_mode(int port, uint16_t svid, int opos)
 		return 0;
 
 	/* SVDM to send to UFP for mode entry */
-	return VDO(modep->fx->svid, 1, CMD_ENTER_MODE | VDO_OPOS(modep->opos));
+	return VDO(modep->fx->svid, 1, CMD_ENTER_MODE | VDO_OPOS(modep->opos),
+					pd_get_vdo_ver(port));
 }
 
 static int validate_mode_request(struct svdm_amode_data *modep,
