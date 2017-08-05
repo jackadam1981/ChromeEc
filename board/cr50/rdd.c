@@ -165,17 +165,21 @@ void rdd_detached(void)
 	/* The device state module will handle the disabling of CCD. */
 }
 
-void ccd_mode_pin_changed(int pin_level)
+static void rdd_check_pin(void)
 {
-	/* Inverted because active low. */
-	int enable = pin_level ? 0 : 1;
+	/* The CCD mode pin is active low. */
+	int enable = !gpio_get_level(GPIO_CCD_MODE_L);
 
 	/* Keep CCD enabled if it's being forced enabled. */
-	if (!enable && keep_ccd_enabled)
+	if (keep_ccd_enabled)
+		enable = 1;
+
+	if (enable == ccd_is_enabled())
 		return;
 
 	configure_ccd(enable);
 }
+DECLARE_HOOK(HOOK_SECOND, rdd_check_pin, HOOK_PRIO_DEFAULT);
 
 static void rdd_ccd_change_hook(void)
 {
