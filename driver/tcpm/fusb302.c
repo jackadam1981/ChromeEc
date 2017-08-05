@@ -601,7 +601,12 @@ static int fusb302_tcpm_set_vconn(int port, int enable)
 	return 0;
 }
 
+#ifdef CONFIG_USB_PD_REV30
+static int fusb302_tcpm_set_msg_header(int port, int power_role, int data_role,
+						int rev)
+#else
 static int fusb302_tcpm_set_msg_header(int port, int power_role, int data_role)
+#endif
 {
 	int reg;
 

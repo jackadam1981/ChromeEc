@@ -109,13 +109,20 @@ static inline int tcpm_set_vconn(int port, int enable)
 {
 	return tcpc_config[port].drv->set_vconn(port, enable);
 }
-
+#ifdef CONFIG_USB_PD_REV30
+static inline int tcpm_set_msg_header(int port, int power_role, int data_role,
+					int rev)
+{
+	return tcpc_config[port].drv->set_msg_header(port, power_role,
+						     data_role, rev);
+}
+#else
 static inline int tcpm_set_msg_header(int port, int power_role, int data_role)
 {
 	return tcpc_config[port].drv->set_msg_header(port, power_role,
 						     data_role);
 }
-
+#endif
 static inline int tcpm_set_rx_enable(int port, int enable)
 {
 	return tcpc_config[port].drv->set_rx_enable(port, enable);
@@ -256,7 +263,11 @@ int tcpm_set_vconn(int port, int enable);
  *
  * @return EC_SUCCESS or error
  */
+#ifdef CONFIG_USB_PD_REV30
+int tcpm_set_msg_header(int port, int power_role, int data_role, int rev);
+#else
 int tcpm_set_msg_header(int port, int power_role, int data_role);
+#endif
 
 /**
  * Set RX enable flag

@@ -90,8 +90,13 @@
 #define TCPC_REG_STD_OUTPUT_CAP    0x29
 
 #define TCPC_REG_MSG_HDR_INFO      0x2e
+#ifdef CONFIG_USB_PD_REV30
+#define TCPC_REG_MSG_HDR_INFO_SET(drole, prole, rev) \
+		((drole) << 3 | ((rev) << 1) | (prole))
+#else
 #define TCPC_REG_MSG_HDR_INFO_SET(drole, prole) \
 		((drole) << 3 | (PD_REV20 << 1) | (prole))
+#endif
 #define TCPC_REG_MSG_HDR_INFO_DROLE(reg) (((reg) & 0x8) >> 3)
 #define TCPC_REG_MSG_HDR_INFO_PROLE(reg) ((reg) & 0x1)
 
@@ -128,7 +133,11 @@ int tcpci_tcpm_select_rp_value(int port, int rp);
 int tcpci_tcpm_set_cc(int port, int pull);
 int tcpci_tcpm_set_polarity(int port, int polarity);
 int tcpci_tcpm_set_vconn(int port, int enable);
+#ifdef CONFIG_USB_PD_REV30
+int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role, int rev);
+#else
 int tcpci_tcpm_set_msg_header(int port, int power_role, int data_role);
+#endif
 int tcpci_tcpm_set_rx_enable(int port, int enable);
 int tcpci_tcpm_get_message(int port, uint32_t *payload, int *head);
 int tcpci_tcpm_transmit(int port, enum tcpm_transmit_type type,

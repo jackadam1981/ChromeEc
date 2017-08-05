@@ -142,10 +142,15 @@ struct tcpm_drv {
 	 * @param port Type-C port number
 	 * @param power_role Power role to use in header
 	 * @param data_role Data role to use in header
+	 * @param rev PD revision to use in header
 	 *
 	 * @return EC_SUCCESS or error
 	 */
+#ifdef CONFIG_USB_PD_REV30
+	int (*set_msg_header)(int port, int power_role, int data_role, int rev);
+#else
 	int (*set_msg_header)(int port, int power_role, int data_role);
+#endif
 
 	/**
 	 * Set RX enable flag

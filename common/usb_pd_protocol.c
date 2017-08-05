@@ -51,6 +51,17 @@ static const int debug_level = CONFIG_USB_PD_DEBUG_LEVEL;
 static int debug_level;
 #endif
 
+#ifdef CONFIG_USB_PD_REV30
+/*
+ * The spec. revision is used to index into this array.
+ *  Rev 0 (PD 1.0) - return PD_CTRL_REJECT
+ *  Rev 1 (PD 2.0) - return PD_CTRL_REJECT
+ *  Rev 2 (PD 3.0) - return PD_CTRL_NOT_SUPPORTED
+ */
+static const uint8_t refuse[] = {
+	PD_CTRL_REJECT, PD_CTRL_REJECT, PD_CTRL_NOT_SUPPORTED};
+#endif
+
 /*
  * PD communication enabled flag. When false, PD state machine still
  * detects source/sink connection and disconnection, and will still
@@ -106,6 +117,10 @@ static uint8_t pd_try_src_enable;
 #endif
 
 static struct pd_protocol {
+#ifdef CONFIG_USB_PD_REV30
+	/* protocol revision */
+	uint8_t rev;
+#endif
 	/* current port power role (SOURCE or SINK) */
 	uint8_t power_role;
 	/* current port data role (DFP or UFP) */
@@ -386,8 +401,26 @@ static void inc_id(int port)
 	pd[port].msg_id = (pd[port].msg_id + 1) & PD_MESSAGE_ID_COUNT;
 }
 
+#ifdef CONFIG_USB_PD_REV30
+static void sink_can_xmit(int port, int rp)
+{
+	tcpm_select_rp_value(port, rp);
+	tcpm_set_cc(port, TYPEC_CC_RP);
+}
+#endif
+
 void pd_transmit_complete(int port, int status)
 {
+#ifdef CONFIG_USB_PD_REV30
+	/*
+	 * If the source just completed a transmit, tell
+	 * the sink it can transmit if it wants to.
+	 */
+	if (pd[port].rev == PD_REV30 &&
+		pd[port].power_role == PD_ROLE_SOURCE &&
+		pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT)
+		sink_can_xmit(port, SINK_TX_OK);
+#endif
 	if (status == TCPC_TX_COMPLETE_SUCCESS)
 		inc_id(port);
 
@@ -403,7 +436,48 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 	/* If comms are disabled, do not transmit, return error */
 	if (!pd_comm_is_enabled(port))
 		return -1;
+#ifdef CONFIG_USB_PD_REV30
+	/* Source-coordinated collision avoidance */
+	/*
+	 * In order to avoid message collisions due to asynchronous Messaging
+	 * sent from the Sink, the Source sets Rp to SinkTxOk to indicate to
+	 * the Sink that it is ok to initiate an AMS. When the Source wishes
+	 * to initiate an AMS it sets Rp to SinkTxNG. When the Sink detects
+	 * that Rp is set to SinkTxOk it May initiate an AMS. When the Sink
+	 * detects that Rp is set to SinkTxNG it Shall Not initiate an AMS
+	 * and Shall only send Messages that are part of an AMS the Source has
+	 * initiated. Note that this restriction applies to SOP* AMS’s i.e.
+	 * for both Port to Port and Port to Cable Plug communications.
+	 *
+	 * This starts after an Explicit Contract is in place
+	 * PD R3 V1.1 Section 2.5.2.
+	 *
+	 * Note: a Sink can still send Hard Reset signaling at any time.
+	 */
+	if ((pd[port].rev == PD_REV30) &&
+		(pd[port].flags & PD_FLAGS_EXPLICIT_CONTRACT)) {
+		if (pd[port].power_role == PD_ROLE_SOURCE) {
+			sink_can_xmit(port, SINK_TX_NG);
+			/* Allow the Sink to complete its transmission */
+			usleep(PD_T_SINK_TX);
+		} else {
+			/*
+			 * A Sink can still send Hard Reset signaling at any
+			 * time.
+			 */
+			if (type != TCPC_TX_HARD_RESET) {
+				int cc1;
+				int cc2;
 
+				tcpm_get_cc(port, &cc1, &cc2);
+				if (cc1 == TYPEC_CC_VOLT_SNK_1_5 ||
+					cc2 == TYPEC_CC_VOLT_SNK_1_5) {
+					return -1;
+				}
+			}
+		}
+	}
+#endif
 	tcpm_transmit(port, type, header, data);
 
 	/* Wait until TX is complete */
@@ -419,14 +493,22 @@ static int pd_transmit(int port, enum tcpm_transmit_type type,
 static void pd_update_roles(int port)
 {
 	/* Notify TCPC of role update */
-	tcpm_set_msg_header(port, pd[port].power_role, pd[port].data_role);
+	tcpm_set_msg_header(port, pd[port].power_role, pd[port].data_role
+#ifdef CONFIG_USB_PD_REV30
+		, pd[port].rev
+#endif
+	);
 }
 
 static int send_control(int port, int type)
 {
 	int bit_len;
 	uint16_t header = PD_HEADER(type, pd[port].power_role,
-			pd[port].data_role, pd[port].msg_id, 0);
+			pd[port].data_role, pd[port].msg_id, 0
+#ifdef CONFIG_USB_PD_REV30
+			, pd[port].rev, 0
+#endif
+			);
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, NULL);
 	if (debug_level >= 2)
@@ -451,10 +533,18 @@ static int send_source_cap(int port)
 	if (src_pdo_cnt == 0)
 		/* No source capabilities defined, sink only */
 		header = PD_HEADER(PD_CTRL_REJECT, pd[port].power_role,
-			pd[port].data_role, pd[port].msg_id, 0);
+			pd[port].data_role, pd[port].msg_id, 0
+#ifdef CONFIG_USB_PD_REV30
+			, pd[port].rev, 0
+#endif
+			);
 	else
 		header = PD_HEADER(PD_DATA_SOURCE_CAP, pd[port].power_role,
-			pd[port].data_role, pd[port].msg_id, src_pdo_cnt);
+			pd[port].data_role, pd[port].msg_id, src_pdo_cnt
+#ifdef CONFIG_USB_PD_REV30
+			, pd[port].rev, 0
+#endif
+			);
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, src_pdo);
 	if (debug_level >= 2)
@@ -463,12 +553,183 @@ static int send_source_cap(int port)
 	return bit_len;
 }
 
+#ifdef CONFIG_USB_PD_REV30
+static int send_battery_cap(int port, uint32_t *payload)
+{
+	int bit_len;
+	int ret_v;
+	int ret_c;
+	int ret_f;
+	uint32_t v;
+	uint32_t c;
+	uint32_t f;
+	uint16_t msg[6] = {0, 0, 0, 0, 0, 0};
+	int bat_cap_ref;
+	uint16_t header = PD_HEADER(PD_EXT_BATTERY_CAP,
+				    pd[port].power_role,
+				    pd[port].data_role,
+				    pd[port].msg_id,
+				    3, /* Number of Data Objects */
+				    pd[port].rev,
+				    1  /* This is an exteded message */
+				   );
+
+	/* Set extended header */
+	msg[0] = PD_EXT_HEADER(0, /* Chunk Number */
+			       0, /* Request Chunk */
+			       9  /* Data Size in bytes */
+			      );
+	/* Set VID */
+	msg[1] = USB_VID_GOOGLE;
+
+	/* Set PID */
+	msg[2] = 0;
+
+	if (battery_is_present() && (payload != NULL)) {
+		/* Get Battery Cap Ref */
+		bat_cap_ref = *((uint8_t *)payload + 2);
+
+		/* We only have one fixed battery, so this should be 0 */
+		if (bat_cap_ref != 0) {
+			/* Invalid battery reference */
+			msg[5] = 1;
+		} else {
+			/* Get battery voltage (mV) */
+			ret_v = battery_design_voltage(&v);
+			/* mV -> V */
+			v = DIV_ROUND_NEAREST(v, 1000);
+
+			/*
+			 * The Battery Design Capacity field shall return the
+			 * Battery’s design capacity in tenths of WH. If the
+			 * Battery is Hot Swappable and is not present, the
+			 * Battery Design Capacity field shall be set to 0. If
+			 * the Battery is unable to report its Design Capacity,
+			 * it shall return 0xFFFF
+			 */
+			/* Get battery design capacity (mAh) */
+			ret_c = battery_design_capacity(&c);
+			/* mAh -> Ah */
+			c = DIV_ROUND_NEAREST(c, 1000);
+
+			/*
+			 * The Battery Last Full Charge Capacity field shall
+			 * return the Battery’s last full charge capacity in
+			 * tenths of WH. If the Battery is Hot Swappable and
+			 * is not present, the Battery Last Full Charge Capacity
+			 * field shall be set to 0. If the Battery is unable to
+			 * report its Design Capacity, the Battery Last Full
+			 * Charge Capacity field shall be set to 0xFFFF.
+			 */
+			/* Get battery full capacity (mAh) */
+			ret_f = battery_full_charge_capacity(&f);
+			/* mAh -> Ah */
+			f = DIV_ROUND_NEAREST(f, 1000);
+
+			/* Set Battery Design Capacity 1/10 WH */
+			if (ret_c < 0 || ret_v < 0)
+				msg[3] = 0xffff;
+			else
+				/* Wh -> 10th of a Wh */
+				msg[3] = DIV_ROUND_NEAREST((c * v), 10);
+
+			/* Set Battery Full Capacity 1/10 WH */
+			if (ret_f < 0 || ret_v < 0)
+				msg[4] = 0xffff;
+			else
+				/* Wh -> 10th of a Wh */
+				msg[4] = DIV_ROUND_NEAREST((f * v), 10);
+		}
+	}
+
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, (uint32_t *)msg);
+	if (debug_level >= 2)
+		CPRINTF("batCap>%d\n", bit_len);
+	return bit_len;
+}
+
+static int send_battery_status(int port,  uint32_t *payload)
+{
+	int bit_len;
+	int ret_v;
+	int ret_c;
+	uint32_t v;
+	uint32_t c;
+	uint32_t s;
+	uint32_t msg = 0;
+	int bat_cap_ref;
+	uint16_t header = PD_HEADER(PD_DATA_BATTERY_STATUS,
+				    pd[port].power_role,
+				    pd[port].data_role,
+				    pd[port].msg_id,
+				    1, /* Number of Data Objects */
+				    pd[port].rev,
+				    0 /* This is NOT an exteded message */
+				  );
+
+	if (battery_is_present() && (payload != NULL)) {
+		/* Get Battery Cap Ref */
+		bat_cap_ref = *((uint8_t *)payload + 2);
+
+		/* We only have one fixed battery, so this should be 0 */
+		if (bat_cap_ref != 0) {
+			/* Invalid battery reference */
+			msg |= BSDO_INVALID;
+		} else {
+			/* Get battery voltage (mV) */
+			ret_v = battery_design_voltage(&v);
+			/* mV -> V */
+			v = DIV_ROUND_NEAREST(v, 1000);
+
+			/* Get Battery capacity (mAh) */
+			ret_c = battery_remaining_capacity(&c);
+			/* mAh -> Ah */
+			c = DIV_ROUND_NEAREST(c, 1000);
+
+			/* set battery capacity 1/10 WH */
+			if (ret_v < 0 || ret_c < 0)
+				msg |= BSDO_CAP(BSDO_CAP_UNKNOWN);
+			else
+				msg |= BSDO_CAP(DIV_ROUND_NEAREST((c * v), 10));
+
+			/* Battery is present */
+			msg |= BSDO_PRESENT;
+
+			if (battery_status(&s) < 0) {
+				msg |= BSDO_IDLE; /* assume idle */
+			} else {
+				if (s & (1<<5))
+					/* Fully charged */
+					msg |= BSDO_IDLE;
+				else if (s & (1<<6))
+					/* Discharging */
+					msg |= BSDO_DISCARGING;
+				/* else battery is charging.*/
+			}
+		}
+	} else {
+		/* Battery state of charge unknown */
+		msg = BSDO_CAP(BSDO_CAP_UNKNOWN);
+	}
+
+	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &msg);
+	if (debug_level >= 2)
+		CPRINTF("batStat>%d\n", bit_len);
+
+	return bit_len;
+}
+#endif
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 static void send_sink_cap(int port)
 {
 	int bit_len;
 	uint16_t header = PD_HEADER(PD_DATA_SINK_CAP, pd[port].power_role,
-			pd[port].data_role, pd[port].msg_id, pd_snk_pdo_cnt);
+			pd[port].data_role, pd[port].msg_id, pd_snk_pdo_cnt
+#ifdef CONFIG_USB_PD_REV30
+			, pd[port].rev, 0
+#endif
+			);
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, pd_snk_pdo);
 	if (debug_level >= 2)
@@ -479,7 +740,11 @@ static int send_request(int port, uint32_t rdo)
 {
 	int bit_len;
 	uint16_t header = PD_HEADER(PD_DATA_REQUEST, pd[port].power_role,
-			pd[port].data_role, pd[port].msg_id, 1);
+			pd[port].data_role, pd[port].msg_id, 1
+#ifdef CONFIG_USB_PD_REV30
+			, pd[port].rev, 0
+#endif
+			);
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &rdo);
 	if (debug_level >= 2)
@@ -515,7 +780,11 @@ static int send_bist_cmd(int port)
 	uint32_t bdo = BDO(BDO_MODE_CARRIER2, 0);
 	int bit_len;
 	uint16_t header = PD_HEADER(PD_DATA_BIST, pd[port].power_role,
-			pd[port].data_role, pd[port].msg_id, 1);
+			pd[port].data_role, pd[port].msg_id, 1
+#ifdef CONFIG_USB_PD_REV30
+			, pd[port].rev, 0
+#endif
+			);
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, &bdo);
 	CPRINTF("BIST>%d\n", bit_len);
@@ -579,6 +848,9 @@ void pd_execute_hard_reset(int port)
 	pd_dfp_exit_mode(port, 0, 0);
 #endif
 
+#ifdef CONFIG_USB_PD_REV30
+	pd[port].rev = PD_REV30;
+#endif
 	/*
 	 * Fake set last state to hard reset to make sure that the next
 	 * state to run knows that we just did a hard reset.
@@ -774,6 +1046,9 @@ static void handle_data_request(int port, uint16_t head,
 {
 	int type = PD_HEADER_TYPE(head);
 	int cnt = PD_HEADER_CNT(head);
+#ifdef CONFIG_USB_PD_REV30
+	int snk_rev = PD_HEADER_REV(head);
+#endif
 
 	switch (type) {
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -785,6 +1060,13 @@ static void handle_data_request(int port, uint16_t head,
 			    PD_STATE_SNK_HARD_RESET_RECOVER)
 #endif
 			|| (pd[port].task_state == PD_STATE_SNK_READY)) {
+#ifdef CONFIG_USB_PD_REV30
+			/*
+			 * Only adjust sink rev if source rev is higher.
+			 */
+			if (snk_rev < pd[port].rev)
+				pd[port].rev = snk_rev;
+#endif
 			/* Port partner is now known to be PD capable */
 			pd[port].flags |= PD_FLAGS_PREVIOUS_PD_CONN;
 
@@ -801,6 +1083,13 @@ static void handle_data_request(int port, uint16_t head,
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	case PD_DATA_REQUEST:
 		if ((pd[port].power_role == PD_ROLE_SOURCE) && (cnt == 1))
+#ifdef CONFIG_USB_PD_REV30
+			/*
+			 * Adjust the rev level to what the sink supports. If
+			 * they're equal, no harm done.
+			 */
+			pd[port].rev = snk_rev;
+#endif
 			if (!pd_check_requested_voltage(payload[0])) {
 				if (send_control(port, PD_CTRL_ACCEPT) < 0)
 					/*
@@ -812,6 +1101,15 @@ static void handle_data_request(int port, uint16_t head,
 
 				/* explicit contract is now in place */
 				pd[port].flags |= PD_FLAGS_EXPLICIT_CONTRACT;
+#ifdef CONFIG_USB_PD_REV30
+				/*
+				 * Start Source-coordinated collision
+				 * avoidance
+				 */
+				if (pd[port].rev == PD_REV30 &&
+					pd[port].power_role == PD_ROLE_SOURCE)
+					sink_can_xmit(port, SINK_TX_OK);
+#endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 				pd_set_saved_active(port, 1);
 #endif
@@ -952,7 +1250,11 @@ static void handle_ctrl_request(int port, uint16_t head,
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 		send_sink_cap(port);
 #else
+#ifdef CONFIG_USB_PD_REV30
+		send_control(port, refuse[pd[port].rev]);
+#else
 		send_control(port, PD_CTRL_REJECT);
+#endif
 #endif
 		break;
 #ifdef CONFIG_USB_PD_DUAL_ROLE
@@ -1124,10 +1426,18 @@ static void handle_ctrl_request(int port, uint16_t head,
 					PD_STATE_SNK_SWAP_SNK_DISABLE,
 					PD_STATE_SRC_SWAP_SNK_DISABLE));
 		} else {
+#ifdef CONFIG_USB_PD_REV30
+			send_control(port, refuse[pd[port].rev]);
+#else
 			send_control(port, PD_CTRL_REJECT);
+#endif
 		}
 #else
+#ifdef CONFIG_USB_PD_REV30
+		send_control(port, refuse[pd[port].rev]);
+#else
 		send_control(port, PD_CTRL_REJECT);
+#endif
 #endif
 		break;
 	case PD_CTRL_DR_SWAP:
@@ -1141,7 +1451,12 @@ static void handle_ctrl_request(int port, uint16_t head,
 			if (send_control(port, PD_CTRL_ACCEPT) >= 0)
 				pd_dr_swap(port);
 		} else {
+#ifdef CONFIG_USB_PD_REV30
+			send_control(port, refuse[pd[port].rev]);
+#else
 			send_control(port, PD_CTRL_REJECT);
+#endif
+
 		}
 		break;
 	case PD_CTRL_VCONN_SWAP:
@@ -1153,17 +1468,46 @@ static void handle_ctrl_request(int port, uint16_t head,
 					set_state(port,
 						  PD_STATE_VCONN_SWAP_INIT);
 			} else {
+#ifdef CONFIG_USB_PD_REV30
+				send_control(port, refuse[pd[port].rev]);
+#else
 				send_control(port, PD_CTRL_REJECT);
+#endif
 			}
 		}
 #else
+#ifdef CONFIG_USB_PD_REV30
+		send_control(port, refuse[pd[port].rev]);
+#else
 		send_control(port, PD_CTRL_REJECT);
+#endif
 #endif
 		break;
 	default:
+#ifdef CONFIG_USB_PD_REV30
+		send_control(port, PD_CTRL_NOT_SUPPORTED);
+#endif
 		CPRINTF("Unhandled ctrl message type %d\n", type);
 	}
 }
+
+#ifdef CONFIG_USB_PD_REV30
+static void handle_ext_request(int port, uint16_t head, uint32_t *payload)
+{
+	int type = PD_HEADER_TYPE(head);
+
+	switch (type) {
+	case PD_EXT_GET_BATTERY_CAP:
+		send_battery_cap(port, payload);
+		break;
+	case PD_EXT_GET_BATTERY_STATUS:
+		send_battery_status(port, payload);
+		break;
+	default:
+		send_control(port, PD_CTRL_NOT_SUPPORTED);
+	}
+}
+#endif
 
 static void handle_request(int port, uint16_t head,
 		uint32_t *payload)
@@ -1187,6 +1531,13 @@ static void handle_request(int port, uint16_t head,
 	if (!pd_is_connected(port))
 		set_state(port, PD_STATE_HARD_RESET_SEND);
 
+#ifdef CONFIG_USB_PD_REV30
+	/* Check if this is an exteded chunked data message. */
+	if (pd[port].rev == PD_REV30 && PD_HEADER_EXT(head)) {
+		handle_ext_request(port, head, payload);
+		return;
+	}
+#endif
 	if (cnt)
 		handle_data_request(port, head, payload);
 	else
@@ -1272,7 +1623,11 @@ static void pd_vdm_send_state_machine(int port)
 		/* Prepare and send VDM */
 		header = PD_HEADER(PD_DATA_VENDOR_DEF, pd[port].power_role,
 				   pd[port].data_role, pd[port].msg_id,
-				   (int)pd[port].vdo_count);
+				   (int)pd[port].vdo_count
+#ifdef CONFIG_USB_PD_REV30
+				   , pd[port].rev, 0
+#endif
+				   );
 		res = pd_transmit(port, TCPC_TX_SOP, header,
 				  pd[port].vdo_data);
 		if (res < 0) {
@@ -1694,6 +2049,11 @@ void pd_task(void)
 	}
 #endif
 
+#ifdef CONFIG_USB_PD_REV30
+	/* Set Revision to highest */
+	pd[port].rev = PD_REV30;
+#endif
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/*
 	 * If VBUS is high, then initialize flag for VBUS has always been
@@ -1790,7 +2150,11 @@ void pd_task(void)
 			     pd[port].task_state == PD_STATE_SRC_READY))) {
 				tcpm_set_polarity(port, pd[port].polarity);
 				tcpm_set_msg_header(port, pd[port].power_role,
-						    pd[port].data_role);
+						    pd[port].data_role
+#ifdef CONFIG_USB_PD_REV30
+						    , pd[port].rev
+#endif
+						    );
 				tcpm_set_rx_enable(port, 1);
 			} else {
 				/* Ensure state variables are at default */
@@ -1821,6 +2185,12 @@ void pd_task(void)
 		case PD_STATE_SRC_DISCONNECTED:
 			timeout = 10*MSEC;
 			tcpm_get_cc(port, &cc1, &cc2);
+
+#ifdef CONFIG_USB_PD_REV30
+			/* Adjust rev to highest level */
+			pd[port].rev = PD_REV30;
+#endif
+
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 			/*
@@ -2339,6 +2709,11 @@ void pd_task(void)
 			break;
 		}
 		case PD_STATE_SNK_DISCONNECTED:
+#ifdef CONFIG_USB_PD_REV30
+			/* Adjust rev to highest level */
+			pd[port].rev = PD_REV30;
+#endif
+
 #ifdef CONFIG_USB_PD_LOW_POWER
 			timeout = drp_state != PD_DRP_TOGGLE_ON ? SECOND
 								: 10*MSEC;

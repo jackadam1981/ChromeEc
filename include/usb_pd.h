@@ -137,6 +137,11 @@ enum pd_rx_errors {
 #define SVID_DISCOVERY_MAX 16
 
 /* Timers */
+#ifdef CONFIG_USB_PD_REV30
+#define PD_T_SINK_TX               (18*MSEC) /* between 16ms and 20 */
+#define PD_T_CHUNK_SENDER_RESPONSE (24*MSEC) /* between 24ms and 30ms */
+#define PD_T_CHUNK_SENDER_REQUEST  (24*MSEC) /* between 24ms and 30ms */
+#endif /* CONFIG_USB_PD_REV30 */
 #define PD_T_SEND_SOURCE_CAP  (100*MSEC) /* between 100ms and 200ms */
 #define PD_T_SINK_WAIT_CAP    (600*MSEC) /* between 310ms and 620ms */
 #define PD_T_SINK_TRANSITION   (35*MSEC) /* between 20ms and 35ms */
@@ -267,6 +272,32 @@ struct pd_policy {
  * VDM object is minimum of VDM header + 6 additional data objects.
  */
 
+#define VDO_MAX_SIZE 7
+
+#ifdef CONFIG_USB_PD_REV30
+#define VDM_VER10 0
+#define VDM_VER20 1
+
+/*
+ * VDM header
+ * ----------
+ * <31:16>  :: SVID
+ * <15>     :: VDM type ( 1b == structured, 0b == unstructured )
+ * <14:13>  :: Structured VDM version (can only be 01 == 2.0 currently)
+ * <12:11>  :: reserved
+ * <10:8>   :: object position (1-7 valid ... used for enter/exit mode only)
+ * <7:6>    :: command type (SVDM only?)
+ * <5>      :: reserved (SVDM), command type (UVDM)
+ * <4:0>    :: command
+ */
+#define VDO(vid, type, custom) \
+(((vid) << 16) |               \
+((type) << 15) |               \
+((VDM_VER20) << 13) |          \
+((custom) & 0x7FFF))
+
+#else /* CONFIG_USB_PD_VER30 */
+
 /*
  * VDM header
  * ----------
@@ -279,11 +310,12 @@ struct pd_policy {
  * <5>      :: reserved (SVDM), command type (UVDM)
  * <4:0>    :: command
  */
-#define VDO_MAX_SIZE 7
 #define VDO(vid, type, custom)				\
 	(((vid) << 16) |				\
 	 ((type) << 15) |				\
 	 ((custom) & 0x7FFF))
+
+#endif /* CONFIG_USB_PD_VER30 */
 
 #define VDO_SVDM_TYPE     (1 << 15)
 #define VDO_SVDM_VERS(x)  (x << 13)
@@ -788,7 +820,47 @@ enum pd_ctrl_msg_type {
 	PD_CTRL_WAIT = 12,
 	PD_CTRL_SOFT_RESET = 13,
 	/* 14-15 Reserved */
+#ifdef CONFIG_USB_PD_REV30
+	PD_CTRL_NOT_SUPPORTED = 16,
+	PD_CTRL_GET_SOURCE_CAP_EXT = 17,
+	PD_CTRL_GET_STATUS = 18,
+	PD_CTRL_FR_SWAP = 19,
+	PD_CTRL_GET_PPS_STATUS = 20,
+	PD_CTRL_GET_COUNTRY_CODES = 21,
+	/* 22-31 Reserved */
+#endif /* CONFIG_USB_PD_REV30 */
 };
+
+#ifdef CONFIG_USB_PD_REV30
+
+/* Battery Status Data Object fields */
+#define BSDO_CAP_UNKNOWN 0xffff
+#define BSDO_CAP(n)      (((n) & 0xffff) << 16)
+#define BSDO_INVALID     (1 << 8)
+#define BSDO_PRESENT     (1 << 9)
+#define BSDO_DISCARGING  (1 << 10)
+#define BSDO_IDLE        (1 << 11)
+
+/* Extended message type */
+enum pd_ext_msg_type {
+	/* 0 Reserved */
+	PD_EXT_SOURCE_CAP = 1,
+	PD_EXT_STATUS = 2,
+	PD_EXT_GET_BATTERY_CAP = 3,
+	PD_EXT_GET_BATTERY_STATUS = 4,
+	PD_EXT_BATTERY_CAP = 5,
+	PD_EXT_GET_MANUFACTURER_INFO = 6,
+	PD_EXT_MANUFACTURER_INFO = 7,
+	PD_EXT_SECURITY_REQUEST = 8,
+	PD_EXT_SECURITY_RESPONSE = 9,
+	PD_EXT_FIRMWARE_UPDATE_REQUEST = 10,
+	PD_EXT_FIRMWARE_UPDATE_RESPONSE = 11,
+	PD_EXT_PPS_STATUS = 12,
+	PD_EXT_COUNTRY_INFO = 13,
+	PD_EXT_COUNTRY_CODES = 14,
+	/* 16-31 Reserved */
+};
+#endif /* CONFIG_USB_PD_REV30 */
 
 /* Data message type */
 enum pd_data_msg_type {
@@ -797,13 +869,22 @@ enum pd_data_msg_type {
 	PD_DATA_REQUEST = 2,
 	PD_DATA_BIST = 3,
 	PD_DATA_SINK_CAP = 4,
-	/* 5-14 Reserved */
+#ifdef CONFIG_USB_PD_REV30
+	PD_DATA_BATTERY_STATUS = 5,
+	PD_DATA_ALERT = 6,
+	PD_DATA_GET_COUNTRY_INFO = 7,
+	/* 8-14 Reserved for Ver 3.0 */
 	PD_DATA_VENDOR_DEF = 15,
+#else
+	/* 5-14 Reserved for Ver 2.0 */
+	PD_DATA_VENDOR_DEF = 15,
+#endif /* CONFIG_USB_PD_REV30 */
 };
 
 /* Protocol revision */
 #define PD_REV10 0
 #define PD_REV20 1
+#define PD_REV30 2
 
 /* Power role */
 #define PD_ROLE_SINK   0
@@ -814,6 +895,16 @@ enum pd_data_msg_type {
 /* Vconn role */
 #define PD_ROLE_VCONN_OFF 0
 #define PD_ROLE_VCONN_ON  1
+
+#ifdef CONFIG_USB_PD_REV30
+/* chunk is a request or response */
+#define CHUNK_RESPONSE 0
+#define CHUNK_REQUEST  1
+
+/* collision avoidance Rp values */
+#define SINK_TX_OK TYPEC_RP_3A0
+#define SINK_TX_NG TYPEC_RP_1A5
+#endif /* CONFIG_USB_PD_REV30 */
 
 /* Port role at startup */
 #ifndef PD_ROLE_DEFAULT
@@ -834,14 +925,36 @@ enum pd_data_msg_type {
 #endif
 
 /* build message header */
+#ifdef CONFIG_USB_PD_REV30
+/* All extend messages are chunked, so set bit 15 */
+#define PD_EXT_HEADER(cnum, rchk, dsize) \
+	 ((1 << 15) | ((cnum) << 11) | \
+	 ((rchk) << 10) | (dsize))
+
+#define PD_HEADER(type, prole, drole, id, cnt, rev, ext) \
+	((type) | ((rev) << 6) | \
+	((drole) << 5) | ((prole) << 8) | \
+	((id) << 9) | ((cnt) << 12) | ((ext) << 15))
+#else
 #define PD_HEADER(type, prole, drole, id, cnt) \
 	((type) | (PD_REV20 << 6) | \
 	 ((drole) << 5) | ((prole) << 8) | \
 	 ((id) << 9) | ((cnt) << 12))
+#endif /* CONFIG_USB_PD_REV30 */
 
 #define PD_HEADER_CNT(header)  (((header) >> 12) & 7)
 #define PD_HEADER_TYPE(header) ((header) & 0xF)
 #define PD_HEADER_ID(header)   (((header) >> 9) & 7)
+
+#ifdef CONFIG_USB_PD_REV30
+#define PD_HEADER_REV(header)           (((header) >> 6) & 3)
+#define PD_HEADER_EXT(header)           (((header) >> 15) & 1)
+
+#define PD_EXT_HEADER_CHUNKED(header)   (((header) >> 15) & 1)
+#define PD_EXT_HEADER_CHUNK_NUM(header) (((header) >> 11) & 0xf)
+#define PD_EXT_HEADER_REQ_CHUNK(header) (((header) >> 10) & 1)
+#define PD_EXT_HEADER_DATA_SIZE(header) ((header) & 0x1ff)
+#endif /* CONFIG_USB_PD_REV30 */
 
 /* K-codes for special symbols */
 #define PD_SYNC1 0x18

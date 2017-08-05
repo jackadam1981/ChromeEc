@@ -779,11 +779,20 @@ static int anx74xx_tcpm_set_vconn(int port, int enable)
 	return rv;
 }
 
+#ifdef CONFIG_USB_PD_REV30
+static int anx74xx_tcpm_set_msg_header(int port, int power_role, int data_role,
+						int rev)
+{
+	return tcpc_write(port, ANX74XX_REG_TX_AUTO_GOODCRC_1,
+		ANX74XX_REG_AUTO_GOODCRC_SET(!!data_role, !!power_role, rev));
+}
+#else
 static int anx74xx_tcpm_set_msg_header(int port, int power_role, int data_role)
 {
 	return tcpc_write(port, ANX74XX_REG_TX_AUTO_GOODCRC_1,
 		  ANX74XX_REG_AUTO_GOODCRC_SET(!!data_role, !!power_role));
 }
+#endif
 
 static int anx74xx_alert_status(int port, int *alert)
 {

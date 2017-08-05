@@ -20,7 +20,12 @@ extern int tcpc_set_cc(int port, int pull);
 extern int tcpc_set_polarity(int port, int polarity);
 extern int tcpc_set_power_status_mask(int port, uint8_t mask);
 extern int tcpc_set_vconn(int port, int enable);
+#ifdef CONFIG_USB_PD_REV30
+extern int tcpc_set_msg_header(int port, int power_role, int data_role,
+					int rev);
+#else
 extern int tcpc_set_msg_header(int port, int power_role, int data_role);
+#endif
 extern int tcpc_set_rx_enable(int port, int enable);
 
 extern int tcpc_get_message(int port, uint32_t *payload, int *head);
@@ -87,10 +92,18 @@ int tcpm_set_vconn(int port, int enable)
 	return tcpc_set_vconn(port, enable);
 }
 
+#ifdef CONFIG_USB_PD_REV30
+int tcpm_set_msg_header(int port, int power_role, int data_role, int rev)
+{
+	return tcpc_set_msg_header(port, power_role, data_role, rev);
+}
+#else
 int tcpm_set_msg_header(int port, int power_role, int data_role)
 {
 	return tcpc_set_msg_header(port, power_role, data_role);
 }
+#endif
+
 
 static int tcpm_alert_status(int port, int *alert)
 {

@@ -223,6 +223,10 @@ enum pd_tx_errors {
 #endif
 
 static struct pd_port_controller {
+#ifdef CONFIG_USB_PD_REV30
+	/* protocol revision */
+	uint8_t rev;
+#endif
 	/* current port power role (SOURCE or SINK) */
 	uint8_t power_role;
 	/* current port data role (DFP or UFP) */
@@ -437,7 +441,11 @@ static int send_validate_message(int port, uint16_t header,
 static void send_goodcrc(int port, int id)
 {
 	uint16_t header = PD_HEADER(PD_CTRL_GOOD_CRC, pd[port].power_role,
-			pd[port].data_role, id, 0);
+			pd[port].data_role, id, 0
+#ifdef CONFIG_USB_PD_REV30
+			, pd[port].rev, 0
+#endif
+			);
 	int bit_len = prepare_message(port, header, 0, NULL);
 
 	if (pd_start_tx(port, pd[port].polarity, bit_len) < 0)
@@ -1063,8 +1071,15 @@ int tcpc_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_USB_PD_REV30
+int tcpc_set_msg_header(int port, int power_role, int data_role, int rev)
+#else
 int tcpc_set_msg_header(int port, int power_role, int data_role)
+#endif
 {
+#ifdef CONFIG_USB_PD_REV30
+	pd[port].rev = rev;
+#endif
 	pd[port].power_role = power_role;
 	pd[port].data_role = data_role;
 
