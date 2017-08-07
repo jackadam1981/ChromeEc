@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db8d5483_e0ff8a43",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-07T20:13:40Z",
+      "side": 1,
+      "message": "this is very confusing. And the comment in the function header contradicts the comment inside the function.\n\nshould\u0027t the race be avoided in a more robust way (say, disabling device state interrupt before the user proceeds to call this function.\n\nIs there a reproducible bug this condition is fixing, so that a test can demonstrate it?",
+      "range": {
+        "startLine": 977,
+        "startChar": 0,
+        "endLine": 994,
+        "endChar": 42
+      },
+      "revId": "1097ff7eb55c78aa586b7da584ecef9f5e4a37e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

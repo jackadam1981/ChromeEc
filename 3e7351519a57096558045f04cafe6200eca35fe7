@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "e8961b1e_9acf64d8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-07T20:13:40Z",
+      "side": 1,
+      "message": "maybe \"from other than ON state\"",
+      "range": {
+        "startLine": 776,
+        "startChar": 39,
+        "endLine": 776,
+        "endChar": 53
+      },
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "005f529c_5bbcb854",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-07T20:13:40Z",
+      "side": 1,
+      "message": "this comment is not particularly useful",
+      "range": {
+        "startLine": 891,
+        "startChar": 0,
+        "endLine": 891,
+        "endChar": 23
+      },
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96b036e3_a6c18f49",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
