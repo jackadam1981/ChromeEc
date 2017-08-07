@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1aecf368_359f5736",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-07T21:29:40Z",
+      "side": 1,
+      "message": "Yes, this needs cleaning up.\n\nBut not in this CL.  I\u0027m just attempting to document what is, not what should be.  Follow-on CLs will fix things.",
+      "parentUuid": "db8d5483_e0ff8a43",
+      "range": {
+        "startLine": 977,
+        "startChar": 0,
+        "endLine": 994,
+        "endChar": 42
+      },
+      "revId": "1097ff7eb55c78aa586b7da584ecef9f5e4a37e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d5fca7f_44e2c61c",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-07T21:06:12Z",
       "side": 1,
       "message": "servo_unknown returns 1 if (uart_tx_is_connected(UART_EC) || uart_bitbang_is_enabled(UART_EC))\n\nNot if servo_state \u003d\u003d UNKNOWN\n\n\nSo you can rename servo_state_unknown to servo_state_cant_be_determined or something like that.",
+      "range": {
+        "startLine": 1034,
+        "startChar": 4,
+        "endLine": 1034,
+        "endChar": 44
+      },
+      "revId": "1097ff7eb55c78aa586b7da584ecef9f5e4a37e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826b6f62_5ee5d871",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-07T21:29:40Z",
+      "side": 1,
+      "message": "But in either of those cases, the servo state *becomes* UNKNOWN due to device_set_state().",
+      "parentUuid": "8d5fca7f_44e2c61c",
       "range": {
         "startLine": 1034,
         "startChar": 4,
