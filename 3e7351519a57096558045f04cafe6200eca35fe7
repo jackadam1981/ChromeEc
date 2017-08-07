@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96b036e3_a6c18f49",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-07T18:09:03Z",
+      "side": 1,
+      "message": "The naming of this function is kind of confusing me. I feel like it could be replaced in many places by the following:\n\n    if (board_is_driving_ec_tx())\n        device_set_state(DEVICE_SERVO, DEVICE_STATE_UNKNOWN);\n\nOr a better name that reflects that? I don\u0027t know... Maybe it\u0027s fine. It just sounds like it\u0027s a check of the servo state, but it also sets the state.",
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa0cfaa5_5ed99baa",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-07T18:09:03Z",
+      "side": 1,
+      "message": "Why is this an error? If the device is already off, should attempting to set the state to off really be an error?",
+      "range": {
+        "startLine": 1008,
+        "startChar": 9,
+        "endLine": 1008,
+        "endChar": 25
+      },
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beadaabd_b87a026f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-07T18:09:03Z",
+      "side": 1,
+      "message": "\u0027CCD mode\u0027?",
+      "range": {
+        "startLine": 1237,
+        "startChar": 30,
+        "endLine": 1237,
+        "endChar": 45
+      },
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c56ef06_c2411185",
+        "filename": "include/device_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-07T18:09:03Z",
+      "side": 1,
+      "message": "Can we include \"common.h\" to pick up the enums for gpio_signal and device_type?",
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6815562a_58117e96",
+        "filename": "include/device_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-07T18:09:03Z",
+      "side": 1,
+      "message": "typo: \u0027reconfiguration\u0027.",
+      "range": {
+        "startLine": 88,
+        "startChar": 28,
+        "endLine": 88,
+        "endChar": 44
+      },
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
