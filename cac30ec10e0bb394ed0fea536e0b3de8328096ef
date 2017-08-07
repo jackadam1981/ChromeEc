@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3577653d_618008cd",
+        "filename": "board/reef/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-07T18:46:04Z",
+      "side": 1,
+      "message": "Wouldn\u0027t we just delete the undef since the npcx parts #define CONFIG_MPU?",
+      "revId": "cac30ec10e0bb394ed0fea536e0b3de8328096ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52e6fc3d_ea79cbe4",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-07T18:46:04Z",
+      "side": 1,
+      "message": "So we lock all of DATA_RAM_SIZE which can be \u003e\u003d RAM_SIZE?",
+      "revId": "cac30ec10e0bb394ed0fea536e0b3de8328096ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26d71feb_c4615428",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1937,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-07T18:46:04Z",
+      "side": 1,
+      "message": "You should clarify further in the comments about the relationship of RAM_SIZE vs DATA_RAM_SIZE.",
+      "revId": "cac30ec10e0bb394ed0fea536e0b3de8328096ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
