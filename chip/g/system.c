@@ -755,8 +755,8 @@ void system_print_extended_version_info(void)
 
 		ccprintf("BID %c:   %08x:%08x:%08x %s\n", 'A' + i,
 			 ss->board_id_type ^ SIGNED_HEADER_PADDING,
-			 ss->board_id_type_mask ^ SIGNED_HEADER_PADDING,
 			 ss->board_id_flags ^ SIGNED_HEADER_PADDING,
+			 ss->board_id_type_mask ^ SIGNED_HEADER_PADDING,
 			 check_board_id_vs_header(&bid, ss) ? " No" : "Yes");
 	}
 }
