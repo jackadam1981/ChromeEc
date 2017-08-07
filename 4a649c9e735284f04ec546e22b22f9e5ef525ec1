@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38063f8c_e7730165",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000117
+      },
+      "writtenOn": "2017-08-07T19:22:18Z",
+      "side": 1,
+      "message": "intptr_t in case we ever run this code on a platform where sizeof(void *) !\u003d sizeof(int)?",
+      "range": {
+        "startLine": 120,
+        "startChar": 19,
+        "endLine": 120,
+        "endChar": 22
+      },
+      "revId": "4a649c9e735284f04ec546e22b22f9e5ef525ec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
