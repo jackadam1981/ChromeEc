@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ddd2b76_47a78bdd",
+        "filename": "Makefile.rules",
+        "patchSetId": 18
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-07T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "301c1a5e_556bd851",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 3
+      },
+      "revId": "2c0f621d51ff9c3981e815168ab7a5a884f0de9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf03fbce_876a1839",
         "filename": "include/task_filter.h",
         "patchSetId": 18
