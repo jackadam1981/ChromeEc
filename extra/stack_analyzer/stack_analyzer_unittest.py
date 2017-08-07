@@ -97,8 +97,8 @@ class StackAnalyzerTest(unittest.TestCase):
                sa.Symbol(0x2000, 'F', 0x51C, 'console_task'),
                sa.Symbol(0x3200, 'O', 0x124, '__just_data'),
                sa.Symbol(0x4000, 'F', 0x11C, 'touchpad_calc')]
-    tasklist = [sa.Task('HOOKS', 'hook_task', '2048', 0x1000),
-                sa.Task('CONSOLE', 'console_task', 'STACK_SIZE', 0x2000)]
+    tasklist = [sa.Task('HOOKS', 'hook_task', 2048, 0x1000),
+                sa.Task('CONSOLE', 'console_task', 460, 0x2000)]
     options = mock.MagicMock(elf_path='./ec.RW.elf',
                              taskinfo_path='./ec.RW.taskinfo',
                              objdump='objdump',
@@ -123,15 +123,15 @@ class StackAnalyzerTest(unittest.TestCase):
 
   def testParseTasklist(self):
     taskinfo_text = (
-        '("HOOKS", hook_task, 2048) '
-        '("WOOKS", hook_task, 4096) '
-        '("CONSOLE", console_task, STACK_SIZE)'
+        '"HOOKS",hook_task,2048\n'
+        '"WOOKS",hook_task,4096\n'
+        '"CONSOLE",console_task,460\n'
     )
     tasklist = sa.ParseTasklistFile(taskinfo_text, self.analyzer.symbols)
     expect_tasklist = [
-        sa.Task('HOOKS', 'hook_task', '2048', 0x1000),
-        sa.Task('WOOKS', 'hook_task', '4096', 0x1000),
-        sa.Task('CONSOLE', 'console_task', 'STACK_SIZE', 0x2000),
+        sa.Task('HOOKS', 'hook_task', 2048, 0x1000),
+        sa.Task('WOOKS', 'hook_task', 4096, 0x1000),
+        sa.Task('CONSOLE', 'console_task', 460, 0x2000),
     ]
     self.assertEqual(tasklist, expect_tasklist)
 
@@ -259,10 +259,12 @@ class StackAnalyzerTest(unittest.TestCase):
       checkoutput_mock.side_effect = [disasm_text, '?', '?', '?']
       self.analyzer.Analyze()
       print_mock.assert_has_calls([
-          mock.call('Task: HOOKS, Max size: 224 (0 + 224)'),
+          mock.call(
+              'Task: HOOKS, Max size: 224 (0 + 224), Allocated size: 2048'),
           mock.call('Call Trace:'),
           mock.call('\thook_task (0) 1000 [?]'),
-          mock.call('Task: CONSOLE, Max size: 232 (8 + 224)'),
+          mock.call(
+              'Task: CONSOLE, Max size: 232 (8 + 224), Allocated size: 460'),
           mock.call('Call Trace:'),
           mock.call('\tconsole_task (8) 2000 [?]'),
       ])

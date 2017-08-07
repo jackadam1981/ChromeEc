@@ -640,14 +640,14 @@ class StackAnalyzer(object):
     cycle_groups = self.AnalyzeCallGraph(function_map)
 
     # Print the results of task-aware stack analysis.
-    # TODO(cheyuw): Resolve and show the allocated task size.
     for task in self.tasklist:
       routine_func = function_map[task.routine_address]
-      print('Task: {}, Max size: {} ({} + {})'.format(
+      print('Task: {}, Max size: {} ({} + {}), Allocated size: {}'.format(
           task.name,
           routine_func.stack_max_usage + INTERRUPT_EXTRA_STACK_FRAME,
           routine_func.stack_max_usage,
-          INTERRUPT_EXTRA_STACK_FRAME))
+          INTERRUPT_EXTRA_STACK_FRAME,
+          task.stack_max_size))
 
       print('Call Trace:')
       curr_func = routine_func
@@ -729,10 +729,10 @@ def ParseTasklistFile(taskinfo_text, symbols):
     tasklist: Task list.
   """
   # Example: ("HOOKS",hook_task,LARGER_TASK_STACK_SIZE) ("USB_CHG_P0", ...
-  results = re.findall(r'\("([^"]+)", ([^,]+), ([^\)]+)\)', taskinfo_text)
+  results = re.findall(r'"([^"]+)",([^,]+),(\d+)', taskinfo_text, re.MULTILINE)
   tasklist = []
   for name, routine_name, stack_max_size in results:
-    tasklist.append(Task(name, routine_name, stack_max_size))
+    tasklist.append(Task(name, routine_name, int(stack_max_size)))
 
   # Resolve routine address for each task. It's more efficient to resolve all
   # routine addresses of tasks together.
