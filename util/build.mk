@@ -8,7 +8,7 @@
 
 host-util-bin=ectool lbplay stm32mon ec_sb_firmware_update lbcc \
 	ec_parse_panicinfo
-build-util-bin=ec_uartd iteflash
+build-util-bin=ec_uartd iteflash ec_dump_taskinfo
 ifeq ($(CHIP),npcx)
 build-util-bin+=ecst
 endif
@@ -37,3 +37,16 @@ $(out)/util/usb_pd_policy.o: board/$(BOARD)/usb_pd_policy.c
 	$(call quiet,c_to_vif,BUILDCC)
 deps += $(out)/util/usb_pd_policy.o.d
 endif # CONFIG_USB_POWER_DELIVERY
+
+$(out)/util/ec_dump_taskinfo: $(out)/util/export_taskinfo_ro.o \
+			$(out)/util/export_taskinfo_rw.o
+$(out)/util/ec_dump_taskinfo: BUILD_LDFLAGS += \
+			$(out)/util/export_taskinfo_ro.o \
+			$(out)/util/export_taskinfo_rw.o \
+			-flto
+
+$(out)/util/export_taskinfo_ro.o: util/export_taskinfo.c
+	$(call quiet,c_to_taskinfo,BUILDCC,RO)
+
+$(out)/util/export_taskinfo_rw.o: util/export_taskinfo.c
+	$(call quiet,c_to_taskinfo,BUILDCC,RW)
