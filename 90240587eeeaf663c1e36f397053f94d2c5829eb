@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24e9cf3f_b0ff058e",
+        "filename": "board/glkrvp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-07T18:25:11Z",
+      "side": 1,
+      "message": "Okay I will add it. Yes, it shuts down EC.",
+      "parentUuid": "9ab08a54_f118e1d0",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 38
+      },
+      "revId": "90240587eeeaf663c1e36f397053f94d2c5829eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93181cbe_d23685d8",
         "filename": "board/glkrvp/board.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "0b1e79da_4b310ccf",
+        "filename": "board/glkrvp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-07T18:25:11Z",
+      "side": 1,
+      "message": "Yes we can skip this on sysjump. I will change it.\nBy default PCA9555 port is input with high impedance and we want SOC_3P3_EN_L to be high at init hence it is needed before chipset_pre_init().",
+      "parentUuid": "93181cbe_d23685d8",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 4
+      },
+      "revId": "90240587eeeaf663c1e36f397053f94d2c5829eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be8a3f6a_1c209096",
         "filename": "board/glkrvp/board.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-08-07T17:54:54Z",
       "side": 1,
       "message": "These can go in board.c.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "90240587eeeaf663c1e36f397053f94d2c5829eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1f9cd11_87755f2b",
+        "filename": "board/glkrvp/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-07T18:25:11Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "be8a3f6a_1c209096",
       "range": {
         "startLine": 74,
         "startChar": 0,
