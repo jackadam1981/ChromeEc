@@ -173,7 +173,7 @@ fi
 
 DEFINE_string cr50_board_id "" \
   "Optional string representing Board ID field of the Cr50 RW header.
-Consists of three fields separated by colon: <RLZ>:<hex mask>:<hex flags>"
+Consists of three fields separated by colon: <RLZ>:<hex flags>:<hex mask>"
 
 # Do not put this before the DEFINE_ invocations - they routinely experience
 # error return values.

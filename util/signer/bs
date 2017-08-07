@@ -55,10 +55,10 @@ note that the lsusb reported values are in hex and need to be prefixed with
 Finally, this script also allows to specify the board ID fields of the RW
 headers. The fields come from the evironment variable CR50_BOARD_ID, which is
 required to include three colon separated fields. The first field is a four
-letter board RLZ code, the second field is board id mask in hex, no 0x prefix,
-and the third field - board ID flags, again, hex, no 0x prefix.
+letter board RLZ code, the second field is board id flags in hex, no 0x
+prefix, and the third field - board ID mask, again, hex, no 0x prefix.
 
-CR50_BOARD_ID='XXYY:12:13' ${progname} [other options, if any]
+CR50_BOARD_ID='XXYY:ff00:ffffff00' ${progname} [other options, if any]
 
 both H1_DEVIDS and CR50_BOARD_ID can be defined independently.
 
