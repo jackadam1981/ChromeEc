@@ -22,6 +22,29 @@
       "revId": "1097ff7eb55c78aa586b7da584ecef9f5e4a37e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d5fca7f_44e2c61c",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-07T21:06:12Z",
+      "side": 1,
+      "message": "servo_unknown returns 1 if (uart_tx_is_connected(UART_EC) || uart_bitbang_is_enabled(UART_EC))\n\nNot if servo_state \u003d\u003d UNKNOWN\n\n\nSo you can rename servo_state_unknown to servo_state_cant_be_determined or something like that.",
+      "range": {
+        "startLine": 1034,
+        "startChar": 4,
+        "endLine": 1034,
+        "endChar": 44
+      },
+      "revId": "1097ff7eb55c78aa586b7da584ecef9f5e4a37e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
