@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "49459a12_e1b5d6f1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-07T18:31:27Z",
+      "side": 1,
+      "message": "Yeah, like device_state_off().  I\u0027d like to tackle the code refactoring in a subsequent CL, so this one remains easier to review as just renaming/recommenting.",
+      "parentUuid": "96b036e3_a6c18f49",
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa0cfaa5_5ed99baa",
         "filename": "board/cr50/board.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2017-08-07T18:09:03Z",
       "side": 1,
       "message": "Why is this an error? If the device is already off, should attempting to set the state to off really be an error?",
+      "range": {
+        "startLine": 1008,
+        "startChar": 9,
+        "endLine": 1008,
+        "endChar": 25
+      },
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1cc24c3_70683d78",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-07T18:31:27Z",
+      "side": 1,
+      "message": "I think this function is just using error/success as a bool.  Will clean this up too.",
+      "parentUuid": "aa0cfaa5_5ed99baa",
       "range": {
         "startLine": 1008,
         "startChar": 9,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "91e22919_2552e2d0",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-07T18:31:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beadaabd_b87a026f",
+      "range": {
+        "startLine": 1237,
+        "startChar": 30,
+        "endLine": 1237,
+        "endChar": 45
+      },
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c56ef06_c2411185",
         "filename": "include/device_state.h",
         "patchSetId": 2
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "01d75f40_0d46999e",
+        "filename": "include/device_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-07T18:31:27Z",
+      "side": 1,
+      "message": "I\u0027d rather not nest includes where it\u0027s not required.  Same general logic for structs; if you only use it as a pointer, you can do \n\nstruct foo;\n\nint myfunc(struct foo *bar);",
+      "parentUuid": "5c56ef06_c2411185",
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6815562a_58117e96",
         "filename": "include/device_state.h",
         "patchSetId": 2
@@ -93,6 +177,30 @@
       "writtenOn": "2017-08-07T18:09:03Z",
       "side": 1,
       "message": "typo: \u0027reconfiguration\u0027.",
+      "range": {
+        "startLine": 88,
+        "startChar": 28,
+        "endLine": 88,
+        "endChar": 44
+      },
+      "revId": "3e7351519a57096558045f04cafe6200eca35fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55dbc3c2_2512a0fa",
+        "filename": "include/device_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-07T18:31:27Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right.  But \"Reconfigurantion\" is the proper term for complaining about where one\u0027s desk was moved.",
+      "parentUuid": "6815562a_58117e96",
       "range": {
         "startLine": 88,
         "startChar": 28,
