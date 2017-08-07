@@ -117,6 +117,30 @@
       "revId": "1097ff7eb55c78aa586b7da584ecef9f5e4a37e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96714239_0c9e674f",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1034,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-07T22:03:21Z",
+      "side": 1,
+      "message": "Ah, so if it was *already* unknown, but the reason for it becoming unknown no longer applies and we\u0027re sure it\u0027s off, then it could return EC_SUCCESS.",
+      "parentUuid": "1654c477_e27780e0",
+      "range": {
+        "startLine": 1034,
+        "startChar": 4,
+        "endLine": 1034,
+        "endChar": 44
+      },
+      "revId": "1097ff7eb55c78aa586b7da584ecef9f5e4a37e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
