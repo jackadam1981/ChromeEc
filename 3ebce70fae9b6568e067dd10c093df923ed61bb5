@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95e4107e_988f9263",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-07T06:33:31Z",
+      "side": 1,
+      "message": "Blank space after declaration.\n\nDid you skip the presubmit hooks? (Yes I know it\u0027s annoying with the other broken CLs in the way that throw tons of warnings).",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d32474f2_36c063d9",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-07T06:33:31Z",
+      "side": 1,
+      "message": "%04x",
+      "range": {
+        "startLine": 371,
+        "startChar": 46,
+        "endLine": 371,
+        "endChar": 51
+      },
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59cd8fbc_9c2783e1",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-07T06:33:31Z",
+      "side": 1,
+      "message": "No \\n at the end of CPRINTS",
+      "range": {
+        "startLine": 371,
+        "startChar": 51,
+        "endLine": 371,
+        "endChar": 53
+      },
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18c978d2_d826b5e8",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-07T06:33:31Z",
+      "side": 1,
+      "message": "blank line",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "017bfd71_0eb652de",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-07T06:33:31Z",
+      "side": 1,
+      "message": "cflush isn\u0027t really needed. (I had it in my earlier code because I was printing way too much text so data was getting dropped).",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef8998a3_9caf650e",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-07T06:33:31Z",
+      "side": 1,
+      "message": "drop blank space",
+      "range": {
+        "startLine": 436,
+        "startChar": 42,
+        "endLine": 436,
+        "endChar": 43
+      },
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2eea745_84e03364",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-07T06:33:31Z",
+      "side": 1,
+      "message": "Where do you use that checksum!?",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b5fb2d_6511ca11",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-07T06:33:31Z",
+      "side": 1,
+      "message": "No, it\u0027s probably not ok to trigger a watchdog (even though it\u0027s not actually _that_ harmful).\n\nI\u0027d use a deferred task.",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78dd0d8b_bb66e662",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-07T06:33:31Z",
+      "side": 1,
+      "message": "Should be squashed into CL:593374 .",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d2b3883_58bd9324",
+        "filename": "include/update_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-07T06:33:31Z",
+      "side": 1,
+      "message": "I can update it in my first CL instead.",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
