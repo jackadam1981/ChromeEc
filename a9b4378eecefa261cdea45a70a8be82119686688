@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b144b221_43e54002",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-07T20:31:19Z",
+      "side": 1,
+      "message": "ok, let\u0027s display them out of order, but then the command line order should also change, I just want to be consistent.",
+      "parentUuid": "f1c9c0f1_b6f269d7",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "a9b4378eecefa261cdea45a70a8be82119686688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5be8694_a3777edf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-07T20:24:09Z",
       "side": 1,
       "message": "It is confusing that usb_updater -i gets you board id info in a similar format, but it isn\u0027t actually the same information.\nboard_id:board_id_inv:flags",
+      "range": {
+        "startLine": 11,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "a9b4378eecefa261cdea45a70a8be82119686688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9958a62a_be9095c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-07T20:31:19Z",
+      "side": 1,
+      "message": "this is the contents of the IFNO1 space, not of the image header.",
+      "parentUuid": "e5be8694_a3777edf",
       "range": {
         "startLine": 11,
         "startChar": 36,
