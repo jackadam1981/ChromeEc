@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8eab8c8d_93373438",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-08T15:13:09Z",
+      "side": 1,
+      "message": "the natural alignment of the fields is now sub-optimal. it would be nicer to move it elsewhere.\n\nyou might want to declare it unconditionally too (for the same reason as my comment on set_msg_header())",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665a46ef_70f98031",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-08T15:13:09Z",
+      "side": 1,
+      "message": "force the PD task to sleep for 20ms has some drawback,\nat least this won\u0027t work at all on systems without TCPC ?",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 24
+      },
+      "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b110b3c5_01670d95",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-08T15:13:09Z",
+      "side": 1,
+      "message": "where is this used in the TCPC code ?",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 13
+      },
+      "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3baf36ea_9c83dc26",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-08T15:13:09Z",
+      "side": 1,
+      "message": "you don\u0027t need this #ifdef, just remove it",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 26
+      },
+      "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e62eafc6_90226030",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-08T15:13:09Z",
+      "side": 1,
+      "message": "while the EC codebase uses a lot of #ifdef to try to optimize size at build time, they are still a burden.\nHere having 2 different prototypes seem to add a lot of diff/churn for very little gain, I would unconditionally use the additional \u0027rev\u0027 parameter\n(LTO does optimize constant parameters too)",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 26
+      },
+      "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
