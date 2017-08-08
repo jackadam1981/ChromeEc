@@ -190,6 +190,7 @@ int comm_init_i2c(void)
 				break;
 			}
 			fclose(f);
+			free(f);
 		}
 		free(file_path);
 	}
