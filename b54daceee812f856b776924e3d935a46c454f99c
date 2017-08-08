@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c762f74b_26104d28",
+        "filename": "board/glkrvp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-08T16:34:21Z",
+      "side": 1,
+      "message": "This is confusing, I suggest to rename it I2C_PORT_PCA555 / I2C_ADDR_PCA555, and rename BATTERY_READ / WRITE also. At first glance, I thought BATTERY_READ() was doing an actual i2c read on the battery, but actually it\u0027s just reading the state of a GPIO.",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "b54daceee812f856b776924e3d935a46c454f99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
