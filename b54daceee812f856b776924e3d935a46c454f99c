@@ -22,6 +22,76 @@
       "revId": "b54daceee812f856b776924e3d935a46c454f99c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3945610b_a58c4c1f",
+        "filename": "board/glkrvp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-08T17:16:44Z",
+      "side": 1,
+      "message": "okay I will change it to I2C_PORT_PCA555_BATT_GPIO (As there are multiple PCA555 on GLKRVP).",
+      "parentUuid": "c762f74b_26104d28",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "b54daceee812f856b776924e3d935a46c454f99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec129b0f_5120308b",
+        "filename": "board/glkrvp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-08T17:16:44Z",
+      "side": 1,
+      "message": "we dont need it as POR of PCA555 is input port",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "b54daceee812f856b776924e3d935a46c454f99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b9e7f78_0c90e63b",
+        "filename": "board/glkrvp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-08T17:16:44Z",
+      "side": 1,
+      "message": "will change it to PCA555_BATT_GPIO_READ",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 20
+      },
+      "revId": "b54daceee812f856b776924e3d935a46c454f99c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
