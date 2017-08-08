@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09287e90_cc0220b1",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-08T06:12:47Z",
+      "side": 1,
+      "message": "Update the example too.",
+      "revId": "f2a3da72fa670e1d1d99872ec18d6fb147552e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b431b0c_55006188",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-08T06:12:47Z",
+      "side": 1,
+      "message": "Might be best to split taskinfo_text by line, and then do the regex? (or just another split?!)",
+      "revId": "f2a3da72fa670e1d1d99872ec18d6fb147552e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c439179_fc6ff308",
+        "filename": "util/ec_dump_taskinfo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-08T06:12:47Z",
+      "side": 1,
+      "message": "abort is a bit strong, I\u0027d just to the same as case \u0027h\u0027.",
+      "revId": "f2a3da72fa670e1d1d99872ec18d6fb147552e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b47b008c_ef88b4c1",
+        "filename": "util/export_taskinfo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-08T06:12:47Z",
+      "side": 1,
+      "message": "Those don\u0027t really need to be part of taskinfos.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 21
+      },
+      "revId": "f2a3da72fa670e1d1d99872ec18d6fb147552e7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
