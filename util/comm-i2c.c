@@ -187,6 +187,7 @@ int comm_init_i2c(void)
 			if (fgets(buffer, sizeof(buffer), f) &&
 			    !strncmp(buffer, I2C_ADAPTER_NAME, 6)) {
 				free(file_path);
+				fclose(f);
 				break;
 			}
 			fclose(f);
