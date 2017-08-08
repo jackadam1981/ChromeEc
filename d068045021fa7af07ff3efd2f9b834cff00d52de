@@ -22,6 +22,30 @@
       "revId": "d068045021fa7af07ff3efd2f9b834cff00d52de",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d8e761c_38f20e0b",
+        "filename": "board/glkrvp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-08T17:17:42Z",
+      "side": 1,
+      "message": "okay I will change it to batt_smp_cos4870_is_inititialized()",
+      "parentUuid": "63d9777c_92357ac9",
+      "range": {
+        "startLine": 169,
+        "startChar": 18,
+        "endLine": 169,
+        "endChar": 39
+      },
+      "revId": "d068045021fa7af07ff3efd2f9b834cff00d52de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
