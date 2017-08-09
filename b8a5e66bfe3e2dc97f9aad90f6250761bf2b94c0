@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b16f4d15_d69de083",
+        "filename": "common/tpm_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-09T22:45:49Z",
+      "side": 1,
+      "message": "so, log entry can be retrieved only once, do I get this right?\n\nIt would be much better to be able to retrieve the entire log each time the AP cares about it (like \u0027mosys eventlog list\u0027 does for instance).",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "b8a5e66bfe3e2dc97f9aad90f6250761bf2b94c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a9c6a19_6b458ef0",
+        "filename": "common/tpm_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-09T22:45:49Z",
+      "side": 1,
+      "message": "I don\u0027t see how ASSERT is useful on an embedded device. If you care about a possibility of size mismatch, return an error here.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "b8a5e66bfe3e2dc97f9aad90f6250761bf2b94c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
