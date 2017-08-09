@@ -76,9 +76,6 @@
 /* Allow multiple concurrent memory allocations. */
 #define CONFIG_MALLOC
 
-/* Detect the states of other devices */
-#define CONFIG_DEVICE_STATE
-
 /* Enable debug cable detection */
 #define CONFIG_RDD
 
@@ -171,13 +168,6 @@ enum usb_strings {
 	USB_STR_COUNT
 };
 
-/* Device indexes for devices that require debouncing */
-enum device_type {
-	DEVICE_SERVO = 0,
-
-	DEVICE_COUNT
-};
-
 /*
  * Device states
  *
@@ -232,13 +222,13 @@ enum nvmem_vars {
 };
 
 void board_configure_deep_sleep_wakepins(void);
-/* Interrupt handler */
-void tpm_rst_deasserted(enum gpio_signal signal);
 void ap_detect_asserted(enum gpio_signal signal);
 void ec_detect_asserted(enum gpio_signal signal);
-void device_state_on(enum gpio_signal signal);
-void post_reboot_request(void);
 void ec_tx_cr50_rx(enum gpio_signal signal);
+void servo_detect_asserted(enum gpio_signal signal);
+void tpm_rst_deasserted(enum gpio_signal signal);
+
+void post_reboot_request(void);
 
 /* Special controls over EC and AP */
 void assert_sys_rst(void);
@@ -247,6 +237,13 @@ int is_sys_rst_asserted(void);
 void assert_ec_rst(void);
 void deassert_ec_rst(void);
 int is_ec_rst_asserted(void);
+
+/**
+ * Set up a deferred call to update RDD state.
+ *
+ * This will enable/disable UARTs, SPI, I2C, etc. as needed.
+ */
+void rdd_update_state(void);
 
 int board_use_plt_rst(void);
 int board_rst_pullup_needed(void);
@@ -267,10 +264,9 @@ void board_reboot_ap(void);
 int board_wipe_tpm(void);
 int board_is_first_factory_boot(void);
 
-void enable_ccd_uart(int uart);
-void disable_ccd_uart(int uart);
-
 void init_ap_state(void);
+void init_rdd_state(void);
+void init_servo_state(void);
 
 int ap_is_on(void);
 int ec_is_on(void);
