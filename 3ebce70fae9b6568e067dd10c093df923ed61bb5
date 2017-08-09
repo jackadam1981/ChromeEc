@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "74bbe8d4_2cddaa71",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-09T04:12:57Z",
+      "side": 1,
+      "message": "Oops ... 💔",
+      "parentUuid": "95e4107e_988f9263",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d32474f2_36c063d9",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
@@ -65,6 +83,54 @@
     },
     {
       "key": {
+        "uuid": "a0bfc6b0_d347e775",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-09T04:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d32474f2_36c063d9",
+      "range": {
+        "startLine": 371,
+        "startChar": 46,
+        "endLine": 371,
+        "endChar": 51
+      },
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d4b256_efa28b86",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-09T04:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59cd8fbc_9c2783e1",
+      "range": {
+        "startLine": 371,
+        "startChar": 51,
+        "endLine": 371,
+        "endChar": 53
+      },
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18c978d2_d826b5e8",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "7c36520a_bf8653bb",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-09T04:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c978d2_d826b5e8",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "017bfd71_0eb652de",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
@@ -96,6 +180,24 @@
       "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a8453b_0ab9715e",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-09T04:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "017bfd71_0eb652de",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "3b6b75b8_7d531559",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-09T04:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef8998a3_9caf650e",
+      "range": {
+        "startLine": 436,
+        "startChar": 42,
+        "endLine": 436,
+        "endChar": 43
+      },
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2eea745_84e03364",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
@@ -136,6 +262,24 @@
       "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d26643_b1640489",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-09T04:12:57Z",
+      "side": 1,
+      "message": "Ah...good question. Just realize this checksum check might have to stay in hammerd.",
+      "parentUuid": "c2eea745_84e03364",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "a317aa6c_2f61c97f",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-09T04:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3b5fb2d_6511ca11",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78dd0d8b_bb66e662",
         "filename": "extra/usb_updater/usb_updater2.c",
         "patchSetId": 2
@@ -173,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "2523d779_21a37002",
+        "filename": "extra/usb_updater/usb_updater2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-09T04:12:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78dd0d8b_bb66e662",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d2b3883_58bd9324",
         "filename": "include/update_fw.h",
         "patchSetId": 2
@@ -187,6 +367,24 @@
       "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ec12a3c_bd4772f0",
+        "filename": "include/update_fw.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-09T04:12:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d2b3883_58bd9324",
+      "revId": "3ebce70fae9b6568e067dd10c093df923ed61bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
