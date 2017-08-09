@@ -16,9 +16,12 @@
 from __future__ import print_function
 
 import argparse
+import collections
 import ctypes
+import os
 import re
 import subprocess
+import yaml
 
 
 SECTION_RO = 'RO'
@@ -126,7 +129,7 @@ class Callsite(object):
   """Function callsite.
 
   Attributes:
-    address: Address of callsite location.
+    address: Address of callsite location. None if it is unknown.
     target: Callee address.
     is_tail: A bool indicates that it is a tailing call.
     callee: Resolved callee function. None if it hasn't been resolved.
@@ -347,17 +350,27 @@ class StackAnalyzer(object):
     Analyze: Run the stack analysis.
   """
 
-  def __init__(self, options, symbols, tasklist):
+  # Errors of annotation resolving.
+  ANNOTATION_ERROR_INVALID = 'invalid signature'
+  ANNOTATION_ERROR_NOTFOUND = 'function name is not found'
+  ANNOTATION_ERROR_AMBIGUOUS = 'there is ambiguity'
+  ANNOTATION_ERROR_NOMATCH = 'does not match to any signature'
+  ANNOTATION_ERROR_MISSING = 'the function is missing in disassembly'
+
+  def __init__(self, options, symbols, tasklist, annotation):
     """Constructor.
 
     Args:
       options: Namespace from argparse.parse_args().
       symbols: Symbol list.
       tasklist: Task list.
+      annotation: Annotation config.
     """
     self.options = options
     self.symbols = symbols
     self.tasklist = tasklist
+    self.annotation = annotation
+    self.address_to_line_cache = {}
 
   def AddressToLine(self, address):
     """Convert address to line.
@@ -371,6 +384,9 @@ class StackAnalyzer(object):
     Raises:
       StackAnalyzerError: If addr2line is failed.
     """
+    if address in self.address_to_line_cache:
+      return self.address_to_line_cache[address]
+
     try:
       line_text = subprocess.check_output([self.options.addr2line,
                                            '-e',
@@ -381,7 +397,9 @@ class StackAnalyzer(object):
     except OSError:
       raise StackAnalyzerError('Failed to run addr2line.')
 
-    return line_text.strip()
+    line_text = line_text.strip()
+    self.address_to_line_cache[address] = line_text
+    return line_text
 
   def AnalyzeDisassembly(self, disasm_text):
     """Parse the disassembly text, analyze, and build a map of all functions.
@@ -547,6 +565,148 @@ class StackAnalyzer(object):
 
     return function_map
 
+  def ResolveAnnotation(self, function_map):
+    """Resolve annotation.
+
+    Args:
+      function_map: Function map.
+
+    Returns:
+      Set of added call edges, set of invalid paths, set of annotation
+      signatures which can't be resolved.
+    """
+    C_FUNCTION_NAME = r'_A-Za-z0-9'
+    ADDRTOLINE_FAILED_SYMBOL = '??'
+    # To eliminate the suffix appended by compilers, try to extract the
+    # C function name from the prefix of symbol name.
+    # Example: SHA256_transform.constprop.28
+    prefix_name_regex = re.compile(
+        r'^(?P<name>[{0}]+)([^{0}].*)?$'.format(C_FUNCTION_NAME))
+    # Example: get_range[driver/accel_kionix.c]
+    annotation_signature_regex = re.compile(
+        r'^(?P<name>[{}]+)(\[(?P<path>.+)\])?$'.format(C_FUNCTION_NAME))
+    # Example: driver/accel_kionix.c:321 and ??:0
+    addrtoline_regex = re.compile(r'^(?P<path>.+):\d+$')
+
+    # Build the symbol map indexed by symbol names. If there are multiple
+    # symbols with the same name, add them into a set. (e.g. symbols of static
+    # function with the same name)
+    symbol_map = collections.defaultdict(set)
+    for symbol in self.symbols:
+      if symbol.symtype == 'F':
+        # Function symbol.
+        result = prefix_name_regex.match(symbol.name)
+        if result is not None:
+          symbol_map[result.group('name')].add(symbol.address)
+
+    annotation_add_map = self.annotation.get('add', {})
+    annotation_remove_list = self.annotation.get('remove', [])
+
+    # Collect all annotation signatures.
+    signature_set = set()
+    for src_sig, dst_sigs in annotation_add_map.items():
+      signature_set.add(src_sig)
+      signature_set.update(dst_sigs)
+
+    signature_set.update(annotation_remove_list)
+    signature_set = {sig.strip() for sig in signature_set}
+
+    # Build the signature map indexed by annotaion signature.
+    signature_map = {}
+    failed_sigs = set()
+    for sig in signature_set:
+      result = annotation_signature_regex.match(sig)
+      if result is None:
+        failed_sigs.add((sig, self.ANNOTATION_ERROR_INVALID))
+        continue
+
+      name = result.group('name').strip()
+      path = result.group('path')
+
+      addresses = symbol_map.get(name)
+      if addresses is None:
+        failed_sigs.add((sig, self.ANNOTATION_ERROR_NOTFOUND))
+        continue
+
+      if path is None and len(addresses) > 1:
+        # There are more than one address but the path isn't specified.
+        failed_sigs.add((sig, self.ANNOTATION_ERROR_AMBIGUOUS))
+        continue
+
+      found_address = None
+      if path is None:
+        # No path signature and there is no ambiguity.
+        assert len(addresses) == 1
+        (found_address,) = addresses
+      else:
+        # If path is not None, we need to check if it matches any path of the
+        # addresses.
+        path = os.path.realpath(path.strip())
+        for address in addresses:
+          result = addrtoline_regex.match(self.AddressToLine(address))
+          # Assume the output of addr2line is always well-formed.
+          assert result is not None
+          symbol_path = result.group('path').strip()
+          if symbol_path == ADDRTOLINE_FAILED_SYMBOL:
+            continue
+
+          if os.path.realpath(symbol_path) == path:
+            # If there are two symbols with same name and path. Assume they are
+            # the same function, keeping any of them is good enough.
+            found_address = address
+            break
+
+      if found_address is None:
+        failed_sigs.add((sig, self.ANNOTATION_ERROR_NOMATCH))
+      elif found_address not in function_map:
+        failed_sigs.add((sig, self.ANNOTATION_ERROR_MISSING))
+      else:
+        signature_map[sig] = function_map[found_address]
+
+    add_set = set()
+    remove_set = set()
+
+    for src_sig, dst_sigs in annotation_add_map.items():
+      src_func = signature_map.get(src_sig)
+      if src_func is None:
+        continue
+
+      for dst_sig in dst_sigs:
+        dst_func = signature_map.get(dst_sig)
+        if dst_func is not None:
+          add_set.add((src_func, dst_func))
+
+    for remove_sig in annotation_remove_list:
+      remove_func = signature_map.get(remove_sig)
+      if remove_func is not None:
+        remove_set.add(remove_func)
+
+    return add_set, remove_set, failed_sigs
+
+  def PreprocessCallGraph(self, function_map, add_set, remove_set):
+    """Preprocess the callgraph.
+
+    It will add the missing call edges, and remove simple invalid paths (the
+    paths only have one vertex) from the function_map.
+
+    Args:
+      function_map: Function map.
+      add_set: Set of missing call edges.
+      remove_set: Set of invalid paths.
+    """
+    for src_func, dst_func in add_set:
+      # TODO(cheyuw): Support tailing call annotation.
+      src_func.callsites.append(
+          Callsite(None, dst_func.address, False, dst_func))
+
+    for function in function_map.values():
+      cleaned_callsites = []
+      for callsite in function.callsites:
+        if callsite.callee not in remove_set:
+          cleaned_callsites.append(callsite)
+
+      function.callsites = cleaned_callsites
+
   def AnalyzeCallGraph(self, function_map):
     """Analyze call graph.
 
@@ -642,7 +802,11 @@ class StackAnalyzer(object):
     return cycle_groups
 
   def Analyze(self):
-    """Run the stack analysis."""
+    """Run the stack analysis.
+
+    Raises:
+      StackAnalyzerError: If disassembler is failed.
+    """
     # Analyze disassembly.
     try:
       disasm_text = subprocess.check_output([self.options.objdump,
@@ -654,6 +818,8 @@ class StackAnalyzer(object):
       raise StackAnalyzerError('Failed to run objdump.')
 
     function_map = self.AnalyzeDisassembly(disasm_text)
+    (add_set, remove_set, failed_sigs) = self.ResolveAnnotation(function_map)
+    self.PreprocessCallGraph(function_map, add_set, remove_set)
     cycle_groups = self.AnalyzeCallGraph(function_map)
 
     # Print the results of task-aware stack analysis.
@@ -681,6 +847,11 @@ class StackAnalyzer(object):
         print(output)
         curr_func = curr_func.stack_successor
 
+    if len(failed_sigs) > 0:
+      print('Failed to resolve some annotation signatures:')
+      for sig, error in failed_sigs:
+        print('\t{}: {}'.format(sig, error))
+
 
 def ParseArgs():
   """Parse commandline arguments.
@@ -698,6 +869,8 @@ def ParseArgs():
                       help='the path of objdump')
   parser.add_argument('--addr2line', default='addr2line',
                       help='the path of addr2line')
+  parser.add_argument('--annotation', default=None,
+                      help='the path of annotation file')
 
   # TODO(cheyuw): Add an option for dumping stack usage of all functions.
 
@@ -787,6 +960,22 @@ def main():
   try:
     options = ParseArgs()
 
+    # Load annotation config.
+    if options.annotation is None:
+      annotation = {}
+    else:
+      try:
+        with open(options.annotation, 'r') as annotation_file:
+          annotation = yaml.safe_load(annotation_file)
+
+      except yaml.YAMLError:
+        raise StackAnalyzerError('Failed to parse annotation file.')
+      except IOError:
+        raise StackAnalyzerError('Failed to open annotation file.')
+
+      if not isinstance(annotation, dict):
+        raise StackAnalyzerError('Invalid annotation file.')
+
     # Generate and parse the symbols.
     try:
       symbol_text = subprocess.check_output([options.objdump,
@@ -807,7 +996,7 @@ def main():
 
     tasklist = LoadTasklist(options.section, export_taskinfo, symbols)
 
-    analyzer = StackAnalyzer(options, symbols, tasklist)
+    analyzer = StackAnalyzer(options, symbols, tasklist, annotation)
     analyzer.Analyze()
   except StackAnalyzerError as e:
     print('Error: {}'.format(e))
