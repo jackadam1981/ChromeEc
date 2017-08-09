@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c239b15a_1f274053",
+        "filename": "board/soraka_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "6aae2fbb_ab8ff1c8",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "466310ee_b8912476",
         "filename": "board/soraka_ish/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-03T00:33:09Z",
       "side": 1,
       "message": "But this is soraka_ish.",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "285a3d4a_a4057f41",
+        "filename": "board/soraka_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "466310ee_b8912476",
       "range": {
         "startLine": 6,
         "startChar": 3,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "a82a3450_98e440e0",
+        "filename": "board/soraka_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "a54594fd_d5689eb2",
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a09cbe5_16a1d690",
         "filename": "board/soraka_ish/board.c",
         "patchSetId": 3
@@ -76,6 +142,24 @@
       "writtenOn": "2017-08-03T00:33:09Z",
       "side": 1,
       "message": "I don\u0027t think you need this?",
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd68fc4c_d43e4839",
+        "filename": "board/soraka_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "9a09cbe5_16a1d690",
       "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "9a78d5b6_4d787824",
+        "filename": "board/soraka_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "91c23938_eef18c28",
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f992b520_e95a5fa3",
         "filename": "board/soraka_ish/board.c",
         "patchSetId": 3
@@ -110,6 +212,24 @@
       "writtenOn": "2017-08-03T00:33:09Z",
       "side": 1,
       "message": "This too?",
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9b5d18a_2db6533d",
+        "filename": "board/soraka_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "f992b520_e95a5fa3",
       "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "88c2445e_3a068989",
+        "filename": "board/soraka_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "a7f267e5_4d066d37",
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "feeaa02d_752b239d",
         "filename": "board/soraka_ish/board.c",
         "patchSetId": 3
@@ -144,6 +282,30 @@
       "writtenOn": "2017-08-03T00:33:09Z",
       "side": 1,
       "message": "Magnetometer? Or maybe revise comment to say \"/* Matrices to rotate sensors into the standard reference frame. */\"",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 30
+      },
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32093170_0bf8eb05",
+        "filename": "board/soraka_ish/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "updated",
+      "parentUuid": "feeaa02d_752b239d",
       "range": {
         "startLine": 44,
         "startChar": 20,
@@ -265,6 +427,24 @@
     },
     {
       "key": {
+        "uuid": "feabc4f6_3259937b",
+        "filename": "board/soraka_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "Looked through all those options, updated.",
+      "parentUuid": "6af2db24_c8925fcf",
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aaabfaf0_6fd9a21b",
         "filename": "board/soraka_ish/board.h",
         "patchSetId": 3
@@ -282,6 +462,24 @@
     },
     {
       "key": {
+        "uuid": "75347d88_18556716",
+        "filename": "board/soraka_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "In this commit, motion sense task is not enabled. will add this later.",
+      "parentUuid": "aaabfaf0_6fd9a21b",
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a768951_0f0c27db",
         "filename": "board/soraka_ish/board.h",
         "patchSetId": 3
@@ -293,6 +491,30 @@
       "writtenOn": "2017-08-03T00:33:09Z",
       "side": 1,
       "message": "Are you space constrained?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 29
+      },
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fffa133_9c783800",
+        "filename": "board/soraka_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "No this issue. Added.",
+      "parentUuid": "5a768951_0f0c27db",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -328,6 +550,30 @@
     },
     {
       "key": {
+        "uuid": "d710f1db_863b11c3",
+        "filename": "board/soraka_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "0c1f41f3_57afc076",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e68326a8_92371060",
         "filename": "board/soraka_ish/board.h",
         "patchSetId": 3
@@ -339,6 +585,24 @@
       "writtenOn": "2017-08-03T00:33:09Z",
       "side": 1,
       "message": "This bug has been marked fixed and not sure if it still applies to your application?",
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dd250f3_5b4bec3b",
+        "filename": "board/soraka_ish/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "No, removed.",
+      "parentUuid": "e68326a8_92371060",
       "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -362,6 +626,24 @@
     },
     {
       "key": {
+        "uuid": "25f31e7b_197cc794",
+        "filename": "board/soraka_ish/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "40f3fb8d_393b120c",
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fffc1762_f101eb2e",
         "filename": "board/soraka_ish/ec.tasklist",
         "patchSetId": 3
@@ -379,6 +661,24 @@
     },
     {
       "key": {
+        "uuid": "9d6b4b6e_199bd206",
+        "filename": "board/soraka_ish/ec.tasklist",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "If there is no HAS_TASK_CHIPSET, chipset_in_state() in include/chipset.h will be used. but we need to use our own function. So there is chipset.c in soraka_ish which defines chipset_in_state().",
+      "parentUuid": "fffc1762_f101eb2e",
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36c3b5f2_de9e25a0",
         "filename": "board/soraka_ish/gpio.inc",
         "patchSetId": 3
@@ -390,6 +690,30 @@
       "writtenOn": "2017-08-03T00:33:09Z",
       "side": 1,
       "message": "Do these have to be setup for i2c use?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "da0d86da57d7591719e9506ef3f9c9c823b987a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc25099_433f0713",
+        "filename": "board/soraka_ish/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-08-09T01:32:42Z",
+      "side": 1,
+      "message": "We do use i2c, to satisfy i2c_port_t structure, GPIO_I2C0_SCL and GPIO_I2C0_SDA have to be defined though it\u0027s not used.",
+      "parentUuid": "36c3b5f2_de9e25a0",
       "range": {
         "startLine": 9,
         "startChar": 0,
