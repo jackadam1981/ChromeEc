@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "346ce48d_78cbce40",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-09T17:09:02Z",
+      "side": 1,
+      "message": "We should make this first class and put it in common/system.c like GET_BOARD_VERSION. We just defer to a board function to call in order to get it.",
+      "revId": "4d2a21bd8456c22e559eb8241ed14d4340466a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
