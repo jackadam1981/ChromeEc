@@ -38,8 +38,10 @@ static void ec_connect(void)
 		 * need to be able to use EC TX to detect servo, so if we drive
 		 * it right away that blocks us from detecting servo.
 		 */
+		// TODO: can simplify this state machine now, and put the
+		// logic in rdd_update_state?
 		CPRINTS("EC RX only");
-		uartn_enable(UART_EC);
+		rdd_update_state();
 		state = DEVICE_STATE_INIT_RX_ONLY;
 		return;
 	}
@@ -57,14 +59,15 @@ static void ec_connect(void)
 	state = DEVICE_STATE_ON;
 
 	/*
-	 * Enable UART RX if we're not bit-banging.  Note that we can't enable
-	 * transmit right away, because that will interfere with servo
-	 * detection during boot.  In the current implementation this isn't a
-	 * problem because we don't enable UART TX until an explicit console
-	 * command, but this will become an issue with CCD V1.
+	 * Update RDD state.
+	 *
+	 * TODO: Note that we can't enable transmit right away, because that
+	 * will interfere with servo detection during boot.  In the current
+	 * implementation this isn't a problem because we don't enable UART TX
+	 * until an explicit console command, but this will become an issue
+	 * with CCD V1.
 	 */
-	if (!uart_bitbang_is_enabled(UART_EC))
-		enable_uart(UART_EC);
+	rdd_update_state();
 }
 DECLARE_DEFERRED(ec_connect);
 
@@ -101,7 +104,7 @@ static void ec_detect(void)
 	    state == DEVICE_STATE_INIT_DEBOUNCING) {
 		CPRINTS("EC off");
 		state = DEVICE_STATE_OFF;
-		disable_uart(UART_EC);
+		rdd_update_state();
 		return;
 	}
 

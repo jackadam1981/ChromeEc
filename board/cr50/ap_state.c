@@ -39,7 +39,7 @@ static void ap_disconnect(void)
 	 */
 	gpio_set_flags(GPIO_INT_AP_L, GPIO_INPUT);
 
-	disable_uart(UART_AP);
+	rdd_update_state();
 
 	/*
 	 * We don't enable deep sleep on ARM devices yet, as its processing
@@ -68,7 +68,7 @@ static void ap_connect(void)
 	gpio_set_flags(GPIO_INT_AP_L, GPIO_OUT_HIGH);
 	gpio_set_level(GPIO_INT_AP_L, 1);
 
-	enable_uart(UART_AP);
+	rdd_update_state();
 
 	if (board_use_plt_rst())
 		disable_deep_sleep();
