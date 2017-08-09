@@ -118,10 +118,10 @@ static const uint32_t k_public_flags =
 
 /* List of CCD capability info; must be in same order as enum ccd_capability */
 static const struct ccd_capability_info cap_info[CCD_CAP_COUNT] = {
-	{"UartAPTX",		CCD_CAP_STATE_ALWAYS},
-	{"UartAPRX",		CCD_CAP_STATE_ALWAYS},
-	{"UartECTX",		CCD_CAP_STATE_ALWAYS},
-	{"UartECRX",		CCD_CAP_STATE_IF_OPENED},
+	{"UartRXFromAP",	CCD_CAP_STATE_ALWAYS},
+	{"UartTXToAP",		CCD_CAP_STATE_ALWAYS},
+	{"UartRXFromEC",	CCD_CAP_STATE_ALWAYS},
+	{"UartTXToEC",		CCD_CAP_STATE_IF_OPENED},
 
 	{"FlashAP",		CCD_CAP_STATE_IF_OPENED},
 	{"FlashEC",		CCD_CAP_STATE_IF_OPENED},
