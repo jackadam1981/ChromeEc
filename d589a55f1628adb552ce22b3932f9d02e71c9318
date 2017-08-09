@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f84e6e86_2c9ef45d",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T09:00:47Z",
+      "side": 1,
+      "message": "I\u0027d sort of prefer \"val\" as a variable name, as a 2 byte buffer is a bit... short ,-)",
+      "revId": "d589a55f1628adb552ce22b3932f9d02e71c9318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44526c63_164c9088",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T09:00:47Z",
+      "side": 1,
+      "message": "Shorten the strings a bit: \"%s: Failure to enter IAP mode.\"",
+      "range": {
+        "startLine": 365,
+        "startChar": 15,
+        "endLine": 365,
+        "endChar": 40
+      },
+      "revId": "d589a55f1628adb552ce22b3932f9d02e71c9318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d97862d_793432de",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T09:00:47Z",
+      "side": 1,
+      "message": "IAP",
+      "range": {
+        "startLine": 376,
+        "startChar": 27,
+        "endLine": 376,
+        "endChar": 30
+      },
+      "revId": "d589a55f1628adb552ce22b3932f9d02e71c9318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "059f374b_7bb8a299",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T09:00:47Z",
+      "side": 1,
+      "message": "period at the end of sentence (fix all the others too).",
+      "revId": "d589a55f1628adb552ce22b3932f9d02e71c9318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db232e30_ebf19df6",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T09:00:47Z",
+      "side": 1,
+      "message": "Confusing, just call it checksum.\n\nAnd keep a separate variable for rx_buf.",
+      "revId": "d589a55f1628adb552ce22b3932f9d02e71c9318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87b8f0b8_b71946be",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T09:00:47Z",
+      "side": 1,
+      "message": "||",
+      "range": {
+        "startLine": 413,
+        "startChar": 8,
+        "endLine": 413,
+        "endChar": 10
+      },
+      "revId": "d589a55f1628adb552ce22b3932f9d02e71c9318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0aa0271_a924b328",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T09:00:47Z",
+      "side": 1,
+      "message": "Declare it right after the function definition.",
+      "revId": "d589a55f1628adb552ce22b3932f9d02e71c9318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75a991ad_38dd8d9e",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T09:00:47Z",
+      "side": 1,
+      "message": "MSEC",
+      "range": {
+        "startLine": 462,
+        "startChar": 56,
+        "endLine": 462,
+        "endChar": 60
+      },
+      "revId": "d589a55f1628adb552ce22b3932f9d02e71c9318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2632fc14_57b20699",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T09:00:47Z",
+      "side": 1,
+      "message": "Maybe move this into elan_tp_init, then you don\u0027t really need a separate function for elan_tp_deferred.",
+      "revId": "d589a55f1628adb552ce22b3932f9d02e71c9318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
