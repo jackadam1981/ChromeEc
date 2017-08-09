@@ -1075,6 +1075,20 @@ int board_get_version(void)
 	return version;
 }
 
+int board_get_sku(void)
+{
+	static int sku = BOARD_VERSION_UNKNOWN;
+
+	if (sku != BOARD_VERSION_UNKNOWN)
+		return sku;
+
+	sku = board_read_version(ADC_BOARD_SKU_0) & 0xf;
+	sku |= (board_read_version(ADC_BOARD_SKU_1) & 0xf) << 8;
+
+	CPRINTS("Board SKU: %d", sku);
+	return sku;
+}
+
 static int command_board_id(int argc, char **argv)
 {
 	enum adc_channel chan;

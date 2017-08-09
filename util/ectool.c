@@ -59,6 +59,8 @@ const char help_str[] =
 	"      Read or write board-specific battery parameter\n"
 	"  boardversion\n"
 	"      Prints the board version\n"
+	"  boardsku\n"
+	"      Prints the board SKU\n"
 	"  chargecurrentlimit\n"
 	"      Set the maximum battery charging current\n"
 	"  chargecontrol\n"
@@ -6091,6 +6093,20 @@ int cmd_board_version(int argc, char *argv[])
 	return rv;
 }
 
+int cmd_board_sku(int argc, char *argv[])
+{
+	struct ec_response_board_sku response;
+	int rv;
+
+	rv = ec_command(EC_CMD_GET_BOARD_SKU, 0, NULL, 0, &response,
+			sizeof(response));
+	if (rv < 0)
+		return rv;
+
+	printf("%d\n", response.board_sku);
+	return rv;
+}
+
 int cmd_chipinfo(int argc, char *argv[])
 {
 	struct ec_response_get_chip_info info;
@@ -7228,6 +7244,7 @@ const struct command commands[] = {
 	{"batterycutoff", cmd_battery_cut_off},
 	{"batteryparam", cmd_battery_vendor_param},
 	{"boardversion", cmd_board_version},
+	{"boardsku", cmd_board_sku},
 	{"chargecurrentlimit", cmd_charge_current_limit},
 	{"chargecontrol", cmd_charge_control},
 	{"chargeoverride", cmd_charge_port_override},

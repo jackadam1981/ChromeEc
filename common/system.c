@@ -656,6 +656,13 @@ int system_get_board_version(void)
 	return v;
 }
 
+int system_get_board_sku(void)
+{
+	int v = 0;
+	v = board_get_sku();
+	return v;
+}
+
 __attribute__((weak))	   /* Weird chips may need their own implementations */
 const char *system_get_build_info(void)
 {
@@ -1213,6 +1220,20 @@ int host_command_get_board_version(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_BOARD_VERSION,
 		     host_command_get_board_version,
+		     EC_VER_MASK(0));
+
+int host_command_get_board_sku(struct host_cmd_handler_args *args)
+{
+	struct ec_response_board_version *r = args->response;
+
+	r->board_version = (uint16_t) system_get_board_sku();
+
+	args->response_size = sizeof(*r);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_BOARD_SKU,
+		     host_command_get_board_sku,
 		     EC_VER_MASK(0));
 #endif
 

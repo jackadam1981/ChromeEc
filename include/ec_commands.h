@@ -974,6 +974,12 @@ struct __ec_align4 ec_response_get_protocol_info {
 	uint32_t flags;
 };
 
+/* Get board SKU number */
+#define EC_CMD_GET_BOARD_SKU 0x000C
+
+struct __ec_align2 ec_response_board_sku {
+	uint16_t board_sku;  /* A number represent SKU. */
+};
 
 /*****************************************************************************/
 /* Get/Set miscellaneous values */

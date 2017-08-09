@@ -322,6 +322,8 @@ void board_reset_pd_mcu(void);
 
 int board_get_version(void);
 
+int board_get_sku(void);
+
 void board_set_tcpc_power_mode(int port, int mode);
 
 /* Sensors without hardware FIFO are in forced mode */
