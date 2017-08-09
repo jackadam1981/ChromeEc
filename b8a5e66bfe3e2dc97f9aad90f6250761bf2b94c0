@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "711449e8_0222e814",
+        "filename": "common/tpm_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-09T23:23:26Z",
+      "side": 1,
+      "message": "Yes, for PD logging, logs are automatically and always removed from the queue once retrieved through the host command. We can make a change here to not throw away log entries unless the queue is full. The downside is that it would make it slightly harder for the log retriever to determine whether a log entry is new or already retrieved, especially considering we\u0027re currently using relative timestamps (so timestamp matching won\u0027t work). Maybe I can add a parameter to VENDOR_CC_GET_LOG_ENTRY that selects whether to operate in \u0027pop\u0027 or \u0027get\u0027 mode?",
+      "parentUuid": "97e713d7_a1aa3f25",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "b8a5e66bfe3e2dc97f9aad90f6250761bf2b94c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a9c6a19_6b458ef0",
         "filename": "common/tpm_log.c",
         "patchSetId": 3
