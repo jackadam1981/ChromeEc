@@ -177,6 +177,54 @@
       "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6be20b6b_e37f4c56",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3506,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-09T04:59:44Z",
+      "side": 1,
+      "message": "Initial implementation (patchset 1) was to use EC_CMD_HOST_EVENT_SET_WAKE_MASK. Since this wake mask (s0ix wake mask) doesn\u0027t come active as soon as its set (like all other event masks), moved to a different host command.",
+      "parentUuid": "d4237111_5190dabd",
+      "range": {
+        "startLine": 3506,
+        "startChar": 10,
+        "endLine": 3506,
+        "endChar": 19
+      },
+      "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93aa246a_44dcbf7b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3506,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-09T04:59:44Z",
+      "side": 1,
+      "message": "Do you mean the below flow?\n-\u003e notify active wake mask on boot\n-\u003e EC sets/clear wake mask on sleep(S3/S0ix) entry/exit\n\nNo SMI way of setting/clearing wake mask required for sleep states?",
+      "parentUuid": "a27eb7a1_d25efd68",
+      "range": {
+        "startLine": 3506,
+        "startChar": 10,
+        "endLine": 3506,
+        "endChar": 19
+      },
+      "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
