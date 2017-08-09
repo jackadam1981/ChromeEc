@@ -238,6 +238,13 @@ void assert_ec_rst(void);
 void deassert_ec_rst(void);
 int is_ec_rst_asserted(void);
 
+/**
+ * Set up a deferred call to update RDD state.
+ *
+ * This will enable/disable UARTs, SPI, I2C, etc. as needed.
+ */
+void rdd_update_state(void);
+
 int board_use_plt_rst(void);
 int board_rst_pullup_needed(void);
 int board_tpm_uses_i2c(void);
@@ -257,8 +264,7 @@ void board_reboot_ap(void);
 int board_wipe_tpm(void);
 int board_is_first_factory_boot(void);
 
-void enable_ccd_uart(int uart);
-void disable_ccd_uart(int uart);
+void init_rdd_state(void);
 
 int ap_is_on(void);
 int ec_is_on(void);
