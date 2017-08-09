@@ -76,9 +76,6 @@
 /* Allow multiple concurrent memory allocations. */
 #define CONFIG_MALLOC
 
-/* Detect the states of other devices */
-#define CONFIG_DEVICE_STATE
-
 /* Enable debug cable detection */
 #define CONFIG_RDD
 
@@ -169,15 +166,6 @@ enum usb_strings {
 	USB_STR_COUNT
 };
 
-/* Device indexes for devices that require debouncing */
-enum device_type {
-	DEVICE_AP = 0,
-	DEVICE_EC,
-	DEVICE_SERVO,
-
-	DEVICE_COUNT
-};
-
 /* NVMem variables. */
 enum nvmem_vars {
 	NVMEM_VAR_CONSOLE_LOCKED = 0,
@@ -191,7 +179,9 @@ enum nvmem_vars {
 void board_configure_deep_sleep_wakepins(void);
 /* Interrupt handler */
 void tpm_rst_deasserted(enum gpio_signal signal);
-void device_state_on(enum gpio_signal signal);
+void servo_detect_asserted(enum gpio_signal signal);
+void ap_detect_asserted(enum gpio_signal signal);
+void ec_detect_asserted(enum gpio_signal signal);
 void post_reboot_request(void);
 void ec_tx_cr50_rx(enum gpio_signal signal);
 
@@ -202,6 +192,13 @@ int is_sys_rst_asserted(void);
 void assert_ec_rst(void);
 void deassert_ec_rst(void);
 int is_ec_rst_asserted(void);
+
+/**
+ * Set up a deferred call to update RDD state.
+ *
+ * This will enable/disable UARTs, SPI, I2C, etc. as needed.
+ */
+void rdd_update_state(void);
 
 int board_has_ap_usb(void);
 int board_use_plt_rst(void);
@@ -218,6 +215,56 @@ int board_fwmp_allows_unlock(void);
 void board_reboot_ap(void);
 int board_wipe_tpm(void);
 int board_is_first_factory_boot(void);
+
+void init_ap_state(void);
+void init_ec_state(void);
+void init_rdd_state(void);
+void init_servo_state(void);
+
+int ap_is_on(void);
+int ec_is_on(void);
+int rdd_is_connected(void);
+int servo_is_connected(void);
+
+void ap_connect_deferred(void);
+
+/*
+ * Device states for AP, EC, Servo.
+ *
+ * Note that not all states are used by all devices.
+ */
+enum device_state {
+	/* Initial state at boot */
+	DEVICE_STATE_INIT = 0,
+
+	/*
+	 * Detect was not asserted at boot, but we're not willing to give up on
+	 * the device right away so we're debouncing to see if it shows up.
+	 */
+	DEVICE_STATE_INIT_DEBOUNCING,
+
+	/* Disconnected or off, because detect is deasserted */
+	DEVICE_STATE_DISCONNECTED,
+	DEVICE_STATE_OFF,
+
+	/* Device state is not knowable because we're driving detect */
+	DEVICE_STATE_UNDETECTABLE,
+
+	/* Connected or on, because detect is asserted */
+	DEVICE_STATE_CONNECTED,
+	DEVICE_STATE_ON,
+
+	/*
+	 * Device was connected, but we saw detect deasserted and are
+	 * debouncing to see if it stays deasserted - at which point we'll
+	 * decide that it's disconnected.
+	 */
+	DEVICE_STATE_DEBOUNCING,
+
+	/* Some devices need to debounce two seconds */
+	DEVICE_STATE_DEBOUNCING2,
+
+};
 
 /* Returns True if chip is brought up in a factory test harness. */
 int chip_factory_mode(void);

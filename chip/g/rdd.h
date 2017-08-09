@@ -6,16 +6,21 @@
 #ifndef __CROS_RDD_H
 #define __CROS_RDD_H
 
-/* Detach from debug cable */
-void rdd_detached(void);
-
-/* Attach to debug cable */
-void rdd_attached(void);
-
-/*
- * USB is only used for CCD, so only enable UTMI wakeups when RDD detects that
- * a debug accessory is attached and disable it as a wakeup source when the
- * cable is detached.
+/**
+ * Enable/disable forcing debug accessory detection.
+ *
+ * When enabled, the RDD module will assert CCD_MODE_L even if the CC value
+ * does not indicate a debug accessory is present.
+ *
+ * @param enable	Enable (1) or disable (0) keepalive.
  */
-int is_utmi_wakeup_allowed(void);
+void force_rdd_detect(int enable);
+
+/**
+ * Check if debug accessory detection is forced.
+ *
+ * @return 1 if keepalive is enabled, 0 if disabled.
+ */
+int rdd_detect_is_forced(void);
+
 #endif  /* __CROS_RDD_H */

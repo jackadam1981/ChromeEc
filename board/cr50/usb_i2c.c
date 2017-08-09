@@ -5,7 +5,6 @@
 
 #include "case_closed_debug.h"
 #include "console.h"
-#include "device_state.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -73,13 +72,13 @@ void usb_i2c_board_disable(void)
 
 int usb_i2c_board_enable(void)
 {
-	if (device_get_state(DEVICE_SERVO) == DEVICE_STATE_ON) {
-		CPRINTS("Servo is attached I2C cannot be enabled");
+	if (servo_is_connected()) {
+		CPRINTS("Servo attached; cannot enable I2C");
 		usb_i2c_board_disable();
 		return EC_ERROR_BUSY;
 	}
 
-	if (ccd_get_mode() != CCD_MODE_ENABLED)
+	if (!rdd_is_connected())
 		return EC_ERROR_BUSY;
 
 	if (!ccd_is_cap_enabled(CCD_CAP_I2C))
@@ -90,30 +89,3 @@ int usb_i2c_board_enable(void)
 
 	return EC_SUCCESS;
 }
-
-/**
- * CCD config change hook
- */
-static void ccd_change_i2c(void)
-{
-	/*
-	 * If the capability state doesn't match the current I2C enable state,
-	 * try to make them match.
-	 */
-	if (usb_i2c_board_is_enabled() && !ccd_is_cap_enabled(CCD_CAP_I2C)) {
-		/* I2C bridge is enabled, but it's no longer allowed to be */
-		usb_i2c_board_disable();
-	} else if (!usb_i2c_board_is_enabled() &&
-		   ccd_is_cap_enabled(CCD_CAP_I2C)) {
-		/*
-		 * I2C bridge is disabled, but is allowed to be enabled.  Try
-		 * enabling it.  Note that this could fail for several reasons,
-		 * such as CCD not connected, or servo attached.  That's ok;
-		 * those things will also attempt usb_i2c_board_enable() if
-		 * their state changes later.
-		 */
-		usb_i2c_board_enable();
-	}
-}
-
-DECLARE_HOOK(HOOK_CCD_CHANGE, ccd_change_i2c, HOOK_PRIO_DEFAULT);
