@@ -5,7 +5,6 @@
 
 #include "case_closed_debug.h"
 #include "console.h"
-#include "device_state.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -24,13 +23,13 @@ static int enable_usb_wakeup;
 
 struct uart_config {
 	const char *name;
-	enum device_type device;
+	int (*device_is_connected)(void);
 	int tx_signal;
 };
 
 static struct uart_config uarts[] = {
-	[UART_AP] = {"AP", DEVICE_AP, GC_PINMUX_UART1_TX_SEL},
-	[UART_EC] = {"EC", DEVICE_EC, GC_PINMUX_UART2_TX_SEL},
+	[UART_AP] = {"AP", ap_is_connected, GC_PINMUX_UART1_TX_SEL},
+	[UART_EC] = {"EC", ec_is_connected, GC_PINMUX_UART2_TX_SEL},
 };
 
 static int ccd_is_enabled(void)
@@ -71,11 +70,6 @@ static void uart_select_tx(int uart, int signal)
 	}
 }
 
-static int servo_is_connected(void)
-{
-	return device_get_state(DEVICE_SERVO) == DEVICE_STATE_ON;
-}
-
 void uartn_tx_connect(int uart)
 {
 	if (uart == UART_AP && !ccd_is_cap_enabled(CCD_CAP_AP_RX_CR50_TX))
@@ -88,12 +82,12 @@ void uartn_tx_connect(int uart)
 		return;
 
 	if (servo_is_connected()) {
-		CPRINTS("Servo is attached cannot enable %s UART",
+		CPRINTS("Servo attached; cannot enable %s UART",
 			uarts[uart].name);
 		return;
 	}
 
-	if (device_get_state(uarts[uart].device) == DEVICE_STATE_ON)
+	if (uarts[uart].device_is_connected())
 		uart_select_tx(uart, uarts[uart].tx_signal);
 	else if (!uart_tx_is_connected(uart))
 		CPRINTS("%s is powered off", uarts[uart].name);
