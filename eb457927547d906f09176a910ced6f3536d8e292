@@ -214,6 +214,24 @@
     },
     {
       "key": {
+        "uuid": "dacf8db5_b6311dc5",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T07:18:05Z",
+      "side": 1,
+      "message": "Now that I think about it, we\u0027d like to use control endpoint requests for some of the trackpad stuff... I\u0027m not sure if we want to use yet another endpoint for that.",
+      "parentUuid": "7e02990d_a3246244",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0136cbf5_ed22e848",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 2
