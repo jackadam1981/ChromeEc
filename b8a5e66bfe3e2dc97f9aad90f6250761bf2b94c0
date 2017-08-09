@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "97e713d7_a1aa3f25",
+        "filename": "common/tpm_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-09T23:03:13Z",
+      "side": 1,
+      "message": "ah, so the log is not kept in flash (sorry I missed your previous patches), I guess it is good in a way, as we don\u0027t have much room left there.\n\nbut whatever the size of the log buffer is, it could be circular, and this command could be return all stored entries in order. This would make it easier for instance when using the tpm_send extension you suggesting in the other patch, the user would not care about accidentally wiping out the log without storing it.\n\nIs this (one entry at at time) how it is done for the PD also?",
+      "parentUuid": "578e69a1_570fe2d4",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "b8a5e66bfe3e2dc97f9aad90f6250761bf2b94c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a9c6a19_6b458ef0",
         "filename": "common/tpm_log.c",
         "patchSetId": 3
