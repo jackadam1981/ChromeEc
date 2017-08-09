@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf243d54_d8171dc4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-08-09T16:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eab8c8d_93373438",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 6
+      },
+      "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "665a46ef_70f98031",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-08T15:13:09Z",
       "side": 1,
       "message": "force the PD task to sleep for 20ms has some drawback,\nat least this won\u0027t work at all on systems without TCPC ?",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 24
+      },
+      "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ab5dd5c_5669e569",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-08-09T16:18:41Z",
+      "side": 1,
+      "message": "I agree.",
+      "parentUuid": "665a46ef_70f98031",
       "range": {
         "startLine": 462,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9b333c64_360e36f9",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-08-09T16:18:41Z",
+      "side": 1,
+      "message": "This is used in the send_goodcrc function but is not needed.\nThe 2-bit Specification Revision field of a GoodCRC Message does not carry any meaning and Shall be considered as don’t care by the recipient of the Message. The sender of a GoodCRC Message Should set the Specification Revision field to 00b.\nI\u0027ll remove this.",
+      "parentUuid": "b110b3c5_01670d95",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 13
+      },
+      "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3baf36ea_9c83dc26",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f1231ea5_726ae023",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-08-09T16:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3baf36ea_9c83dc26",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 26
+      },
+      "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e62eafc6_90226030",
         "filename": "include/usb_pd_tcpm.h",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d70a4347_db9d5600",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-08-09T16:18:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e62eafc6_90226030",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 26
+      },
+      "revId": "ed897dc7ca0a7afb9be35677e4728a6151bdfa03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
