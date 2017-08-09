@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3c2a422_fbe73737",
+        "filename": "board/glkrvp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-09T16:53:44Z",
+      "side": 1,
+      "message": "Why not add it now? switch_interrupt() is in common code.",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "58f98ad8def7fae04005079fc85bba761df30ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
