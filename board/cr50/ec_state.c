@@ -8,7 +8,6 @@
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "uart_bitbang.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
@@ -42,14 +41,15 @@ static void ec_connect(void)
 	state = DEVICE_STATE_CONNECTED;
 
 	/*
-	 * Enable UART RX if we're not bit-banging.  Note that we can't enable
-	 * transmit right away, because that will interfere with servo
-	 * detection during boot.  In the current implementation this isn't a
-	 * problem because we don't enable UART TX until an explicit console
-	 * command, but this will become an issue with CCD V1.
+	 * Update RDD state.
+	 *
+	 * TODO: Note that we can't enable transmit right away, because that
+	 * will interfere with servo detection during boot.  In the current
+	 * implementation this isn't a problem because we don't enable UART TX
+	 * until an explicit console command, but this will become an issue
+	 * with CCD V1.
 	 */
-	if (uart_bitbang_is_enabled(UART_EC))
-		enable_uart(UART_EC);
+	rdd_update_state();
 }
 DECLARE_DEFERRED(ec_connect);
 
@@ -94,7 +94,7 @@ static void ec_detect(void)
 	if (state == DEVICE_STATE_DEBOUNCING) {
 		CPRINTS("EC disconnect");
 		state = DEVICE_STATE_DISCONNECTED;
-		disable_uart(UART_EC);
+		rdd_update_state();
 		return;
 	}
 
