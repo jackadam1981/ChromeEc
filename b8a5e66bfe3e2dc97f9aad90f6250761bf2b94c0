@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "578e69a1_570fe2d4",
+        "filename": "common/tpm_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-09T22:56:42Z",
+      "side": 1,
+      "message": "Log space is limited by SRAM on the EC. When we actually implement this in production, we will fetch logs once and save them to persistent storage (similar to `PDLOG` entries in syslog, or EC console logs saved in /var/log) so nothing will be lost.",
+      "parentUuid": "b16f4d15_d69de083",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "b8a5e66bfe3e2dc97f9aad90f6250761bf2b94c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a9c6a19_6b458ef0",
         "filename": "common/tpm_log.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-09T22:45:49Z",
       "side": 1,
       "message": "I don\u0027t see how ASSERT is useful on an embedded device. If you care about a possibility of size mismatch, return an error here.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "b8a5e66bfe3e2dc97f9aad90f6250761bf2b94c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07e90a2f_9fdae8c8",
+        "filename": "common/tpm_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-09T22:56:42Z",
+      "side": 1,
+      "message": "ASSERT is useful on an embedded device as a clear sign of failure that cannot easily be ignored by the developer. If this assert were to ever fail (eg. if our logging code is somehow busted despite previous testing, or someone adds a patch to push structs of the wrong size into our log queue) it\u0027s best to find out about it sooner rather than later, and ASSERT forces it to be sooner.\n\nIn this case, I will take your suggestion and return an error.",
+      "parentUuid": "6a9c6a19_6b458ef0",
       "range": {
         "startLine": 43,
         "startChar": 1,
