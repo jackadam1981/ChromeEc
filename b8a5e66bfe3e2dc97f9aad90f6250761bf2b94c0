@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "fe65a943_7ca616ec",
+        "filename": "common/tpm_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-09T23:29:23Z",
+      "side": 1,
+      "message": "I don\u0027t want this to be different from PD logging if it does not have to.\n\nIf the tools for retrieving and keeping the TPM log locally on the AP are upcoming, this should be fine.",
+      "parentUuid": "711449e8_0222e814",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "b8a5e66bfe3e2dc97f9aad90f6250761bf2b94c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a9c6a19_6b458ef0",
         "filename": "common/tpm_log.c",
         "patchSetId": 3
