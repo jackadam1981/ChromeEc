@@ -225,6 +225,30 @@
       "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26ad4cb7_7028af15",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3506,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-09T18:33:56Z",
+      "side": 1,
+      "message": "\u003e Do you mean the below flow?\n\u003e -\u003e notify active wake mask on boot\n\u003e -\u003e EC sets/clear wake mask on sleep(S3/S0ix) entry/exit\n\u003e \n\u003e No SMI way of setting/clearing wake mask required for sleep states?\n\nWhat I\u0027m saying:\n\n1. Notion of active wake mask\n2. coreboot can set S3 and S5 wake mask during boot or SMI. This mask is separate from the *active* one.\n3. coreboot can set S0ix wake mask during boot or SMI (not that SMI path would ever be taken). This mask is separate from the *active* one.\n4. On edge of S3, S5 entry or S0ix entry set the active mask to be from #2 or #3 depending on event entry.\n\nThe downside of that proposal is that we go through S3 when going to S5 state so there\u0027s a transition period where S3 wake mask would be active prior to going to S5. If we combine S3 and S5 state like we currently have then things would still work since those masks are set by SMI handler. That would mean we have non-S0ix wake mask and s0ix wake mask. But we could still set the active mask on the edge transitions into sleep states.",
+      "parentUuid": "93aa246a_44dcbf7b",
+      "range": {
+        "startLine": 3506,
+        "startChar": 10,
+        "endLine": 3506,
+        "endChar": 19
+      },
+      "revId": "640a8aa40bd1fbc01fd8de3b0676b3025865fca2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
