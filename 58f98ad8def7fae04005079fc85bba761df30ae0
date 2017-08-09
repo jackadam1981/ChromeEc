@@ -22,6 +22,30 @@
       "revId": "58f98ad8def7fae04005079fc85bba761df30ae0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "969817e8_1813c03f",
+        "filename": "board/glkrvp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-09T18:27:50Z",
+      "side": 1,
+      "message": "On SoC side GPIO is not routed to EC_SPI yet hence added TODO.\nI will add EC code \u0026 add a crosbug for rework instructions",
+      "parentUuid": "a3c2a422_fbe73737",
+      "range": {
+        "startLine": 58,
+        "startChar": 2,
+        "endLine": 58,
+        "endChar": 36
+      },
+      "revId": "58f98ad8def7fae04005079fc85bba761df30ae0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
