@@ -38,9 +38,10 @@ static void set_ec_on(void)
 		 * need to be able to use EC TX to detect servo, so if we drive
 		 * it right away that blocks us from detecting servo.
 		 */
+		// TODO: can simplify this state machine now, and put the
+		// logic in rdd_update_state?
 		CPRINTS("EC RX only");
-		if (!uart_bitbang_is_enabled(UART_EC))
-			uartn_enable(UART_EC);
+		rdd_update_state();
 		state = DEVICE_STATE_INIT_RX_ONLY;
 		return;
 	}
@@ -57,9 +58,8 @@ static void set_ec_on(void)
 	CPRINTS("EC on");
 	state = DEVICE_STATE_ON;
 
-	/* Enable UART RX if we're not bit-banging */
-	if (!uart_bitbang_is_enabled(UART_EC))
-		enable_ccd_uart(UART_EC);
+	/* Update RDD state */
+	rdd_update_state();
 }
 DECLARE_DEFERRED(set_ec_on);
 
@@ -95,7 +95,7 @@ static void ec_detect(void)
 	    state == DEVICE_STATE_INIT_DEBOUNCING) {
 		CPRINTS("EC off");
 		state = DEVICE_STATE_OFF;
-		disable_ccd_uart(UART_EC);
+		rdd_update_state();
 		return;
 	}
 

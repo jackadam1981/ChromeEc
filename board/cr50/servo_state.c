@@ -53,9 +53,7 @@ static void servo_disconnect(void)
 {
 	CPRINTS("Servo disconnect");
 	state = DEVICE_STATE_DISCONNECTED;
-
-	/* Reconnect AP UART TX */
-	uartn_tx_connect(UART_AP);
+	rdd_update_state();
 }
 
 /**
@@ -65,20 +63,7 @@ static void servo_connect(void)
 {
 	CPRINTS("Servo connect");
 	state = DEVICE_STATE_CONNECTED;
-
-	/*
-	 * Disable UART bit banging.  Note this must be done before
-	 * uartn_tx_disconnect() below, because this call will currently call
-	 * uartn_tx_connect()!
-	 */
-	uart_bitbang_disable(bitbang_config.uart);
-
-	/* Disconnect AP and EC UART when servo is attached */
-	uartn_tx_disconnect(UART_AP);
-	uartn_tx_disconnect(UART_EC);
-
-	/* Disconnect i2cm interface to ina */
-	usb_i2c_board_disable();
+	rdd_update_state();
 }
 
 /**
