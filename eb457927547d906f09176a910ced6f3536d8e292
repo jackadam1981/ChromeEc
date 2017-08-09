@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "4bf1939b_0a8be2d2",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-09T07:11:49Z",
+      "side": 1,
+      "message": "No, the tx buffer size still has a be a multiple of 32, otherwise you may overflow hid_ep_rx_buf if more data than expected is received.\n\nAlso, the value should probably be (((rx_len / 32)-1) \u003c\u003c 10), otherwise you allocate 64 bytes for rx_len\u003d32.\n\nTBH, I\u0027d just set BL_SIZE\u003d0 and worry about it later if we ever want to use \u003e62 bytes transfers.",
+      "parentUuid": "6aff84b0_faa2f2a0",
+      "revId": "eb457927547d906f09176a910ced6f3536d8e292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76da83e2_979e2abd",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 2
