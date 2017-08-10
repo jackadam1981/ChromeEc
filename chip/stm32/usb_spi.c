@@ -124,21 +124,23 @@ void usb_spi_rx(struct usb_spi_config const *config)
 	hook_call_deferred(config->deferred, 0);
 }
 
-void usb_spi_reset(struct usb_spi_config const *config)
+void usb_spi_event(struct usb_spi_config const *config, enum usb_ep_event evt)
 {
-	int endpoint = config->endpoint;
+	if (evt == USB_EVENT_RESET) {
+		int endpoint = config->endpoint;
 
-	btable_ep[endpoint].tx_addr  = usb_sram_addr(config->tx_ram);
-	btable_ep[endpoint].tx_count = 0;
+		btable_ep[endpoint].tx_addr  = usb_sram_addr(config->tx_ram);
+		btable_ep[endpoint].tx_count = 0;
 
-	btable_ep[endpoint].rx_addr  = usb_sram_addr(config->rx_ram);
-	btable_ep[endpoint].rx_count =
-		0x8000 | ((USB_MAX_PACKET_SIZE / 32 - 1) << 10);
+		btable_ep[endpoint].rx_addr  = usb_sram_addr(config->rx_ram);
+		btable_ep[endpoint].rx_count =
+			0x8000 | ((USB_MAX_PACKET_SIZE / 32 - 1) << 10);
 
-	STM32_USB_EP(endpoint) = ((endpoint <<  0) | /* Endpoint Addr*/
-				  (2        <<  4) | /* TX NAK */
-				  (0        <<  9) | /* Bulk EP */
-				  (3        << 12)); /* RX Valid */
+		STM32_USB_EP(endpoint) = ((endpoint <<  0) | /* Endpoint Addr*/
+					 (2        <<  4) | /* TX NAK */
+					 (0        <<  9) | /* Bulk EP */
+					 (3        << 12)); /* RX Valid */
+	}
 }
 
 int usb_spi_interface(struct usb_spi_config const *config,

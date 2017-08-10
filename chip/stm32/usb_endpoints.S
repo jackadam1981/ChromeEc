@@ -66,6 +66,7 @@ endpoint 13 rx
 endpoint 14 rx
 endpoint 15 rx
 
+#if defined(CHIP_FAMILY_STM32F4)
 .global usb_ep_reset
 usb_ep_reset:
 endpoint  0 rst
@@ -84,6 +85,26 @@ endpoint 12 rst
 endpoint 13 rst
 endpoint 14 rst
 endpoint 15 rst
+#else
+.global usb_ep_event
+usb_ep_event:
+endpoint  0 evt
+endpoint  1 evt
+endpoint  2 evt
+endpoint  3 evt
+endpoint  4 evt
+endpoint  5 evt
+endpoint  6 evt
+endpoint  7 evt
+endpoint  8 evt
+endpoint  9 evt
+endpoint 10 evt
+endpoint 11 evt
+endpoint 12 evt
+endpoint 13 evt
+endpoint 14 evt
+endpoint 15 evt
+#endif
 
 .global usb_iface_request
 usb_iface_request:

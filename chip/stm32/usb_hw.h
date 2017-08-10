@@ -60,24 +60,34 @@ void *memcpy_from_usbram(void *dest, const void *src, size_t n);
 /* Compute the address inside dedicate SRAM for the USB controller */
 #define usb_sram_addr(x) ((x - __usb_ram_start) * sizeof(uint16_t))
 
+/* Event types for the endpoint event handler. */
+enum usb_ep_event {
+	USB_EVENT_RESET,
+	USB_EVENT_DEVICE_RESUME, /* Device-initiated wake completed. */
+};
+
 /* Helpers for endpoint declaration */
 #define _EP_HANDLER2(num, suffix) CONCAT3(ep_, num, suffix)
 #define _EP_TX_HANDLER(num) _EP_HANDLER2(num, _tx)
 #define _EP_RX_HANDLER(num) _EP_HANDLER2(num, _rx)
-#define _EP_RESET_HANDLER(num) _EP_HANDLER2(num, _rst)
+#define _EP_EVENT_HANDLER(num) _EP_HANDLER2(num, _evt)
+#define _EP_EVENT_HANDLER_DUMMY(num) _EP_HANDLER2(num, _evt_dummy)
 
-#define USB_DECLARE_EP(num, tx_handler, rx_handler, rst_handler)  \
+#define USB_DECLARE_EP(num, tx_handler, rx_handler, evt_handler)  \
 	void _EP_TX_HANDLER(num)(void)				  \
 		__attribute__ ((alias(STRINGIFY(tx_handler))));	  \
 	void _EP_RX_HANDLER(num)(void)                            \
 		__attribute__ ((alias(STRINGIFY(rx_handler))));	  \
-	void _EP_RESET_HANDLER(num)(void)                         \
-		__attribute__ ((alias(STRINGIFY(rst_handler))));
+	static __unused void					  \
+		(*_EP_EVENT_HANDLER_DUMMY(num))(enum usb_ep_event evt) \
+			= evt_handler;				  \
+	void _EP_EVENT_HANDLER(num)(enum usb_ep_event evt)        \
+		__attribute__ ((alias(STRINGIFY(evt_handler))));
 
 /* arrays with all endpoint callbacks */
 extern void (*usb_ep_tx[]) (void);
 extern void (*usb_ep_rx[]) (void);
-extern void (*usb_ep_reset[]) (void);
+extern void (*usb_ep_event[]) (enum usb_ep_event evt);
 /* array with interface-specific control request callbacks */
 extern int (*usb_iface_request[]) (usb_uint *ep0_buf_rx, usb_uint *ep0_buf_tx);
 

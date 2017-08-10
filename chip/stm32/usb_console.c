@@ -91,25 +91,27 @@ static void con_ep_rx(void)
 	console_has_input();
 }
 
-static void ep_reset(void)
+static void ep_event(enum usb_ep_event evt)
 {
-	btable_ep[USB_EP_CONSOLE].tx_addr  = usb_sram_addr(ep_buf_tx);
-	btable_ep[USB_EP_CONSOLE].tx_count = 0;
+	if (evt == USB_EVENT_RESET) {
+		btable_ep[USB_EP_CONSOLE].tx_addr  = usb_sram_addr(ep_buf_tx);
+		btable_ep[USB_EP_CONSOLE].tx_count = 0;
 
-	btable_ep[USB_EP_CONSOLE].rx_addr  = usb_sram_addr(ep_buf_rx);
-	btable_ep[USB_EP_CONSOLE].rx_count =
-		0x8000 | ((USB_MAX_PACKET_SIZE / 32 - 1) << 10);
+		btable_ep[USB_EP_CONSOLE].rx_addr  = usb_sram_addr(ep_buf_rx);
+		btable_ep[USB_EP_CONSOLE].rx_count =
+			0x8000 | ((USB_MAX_PACKET_SIZE / 32 - 1) << 10);
 
-	STM32_USB_EP(USB_EP_CONSOLE) = (USB_EP_CONSOLE | /* Endpoint Addr */
-					(2 << 4)       | /* TX NAK        */
-					(0 << 9)       | /* Bulk EP       */
-					(is_readonly ? EP_RX_NAK
-						     : EP_RX_VALID));
+		STM32_USB_EP(USB_EP_CONSOLE) =
+			USB_EP_CONSOLE | /* Endpoint Addr */
+			(2 << 4)       | /* TX NAK        */
+			(0 << 9)       | /* Bulk EP       */
+			(is_readonly ? EP_RX_NAK : EP_RX_VALID);
 
-	is_reset = 1;
+		is_reset = 1;
+	}
 }
 
-USB_DECLARE_EP(USB_EP_CONSOLE, con_ep_tx, con_ep_rx, ep_reset);
+USB_DECLARE_EP(USB_EP_CONSOLE, con_ep_tx, con_ep_rx, ep_event);
 
 static int __tx_char(void *context, int c)
 {

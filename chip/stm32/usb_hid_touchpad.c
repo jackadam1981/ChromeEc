@@ -188,13 +188,21 @@ static void hid_touchpad_tx(void)
 	hid_tx(USB_EP_HID_TOUCHPAD);
 }
 
-static void hid_touchpad_reset(void)
+static void hid_touchpad_event(enum usb_ep_event evt)
 {
-	hid_reset(USB_EP_HID_TOUCHPAD, hid_ep_buf, HID_TOUCHPAD_REPORT_SIZE);
+	switch (evt) {
+	case USB_EVENT_RESET:
+		hid_reset(USB_EP_HID_TOUCHPAD, hid_ep_buf,
+			  HID_TOUCHPAD_REPORT_SIZE);
+		break;
+	default:
+		break;
+	}
+
 }
 
 USB_DECLARE_EP(USB_EP_HID_TOUCHPAD, hid_touchpad_tx, hid_touchpad_tx,
-	       hid_touchpad_reset);
+	       hid_touchpad_event);
 
 static int hid_touchpad_iface_request(usb_uint *ep0_buf_rx,
 				      usb_uint *ep0_buf_tx)

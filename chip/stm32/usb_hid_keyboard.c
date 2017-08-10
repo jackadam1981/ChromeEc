@@ -228,14 +228,20 @@ static void hid_keyboard_tx(void)
 	hid_ep_data_ready = 0;
 }
 
-static void hid_keyboard_reset(void)
+static void hid_keyboard_event(enum usb_ep_event evt)
 {
-	hid_reset(USB_EP_HID_KEYBOARD, hid_ep_buf[hid_current_buf],
-		  HID_KEYBOARD_REPORT_SIZE);
+	switch (evt) {
+	case USB_EVENT_RESET:
+		hid_reset(USB_EP_HID_KEYBOARD, hid_ep_buf[hid_current_buf],
+			HID_KEYBOARD_REPORT_SIZE);
+		break;
+	default:
+		break;
+	}
 }
 
 USB_DECLARE_EP(USB_EP_HID_KEYBOARD, hid_keyboard_tx, hid_keyboard_tx,
-	       hid_keyboard_reset);
+	       hid_keyboard_event);
 
 static int hid_keyboard_iface_request(usb_uint *ep0_buf_rx,
 				      usb_uint *ep0_buf_tx)

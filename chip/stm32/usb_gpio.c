@@ -60,25 +60,27 @@ void usb_gpio_rx(struct usb_gpio_config const *config)
 	STM32_TOGGLE_EP(config->endpoint, EP_RX_MASK, EP_RX_VALID, 0);
 }
 
-void usb_gpio_reset(struct usb_gpio_config const *config)
+void usb_gpio_event(struct usb_gpio_config const *config, enum usb_ep_event evt)
 {
-	int i = config->endpoint;
+	if (evt == USB_EVENT_RESET) {
+		int i = config->endpoint;
 
-	btable_ep[i].tx_addr  = usb_sram_addr(config->tx_ram);
-	btable_ep[i].tx_count = USB_GPIO_TX_PACKET_SIZE;
+		btable_ep[i].tx_addr  = usb_sram_addr(config->tx_ram);
+		btable_ep[i].tx_count = USB_GPIO_TX_PACKET_SIZE;
 
-	btable_ep[i].rx_addr  = usb_sram_addr(config->rx_ram);
-	btable_ep[i].rx_count = ((USB_GPIO_RX_PACKET_SIZE / 2) << 10);
+		btable_ep[i].rx_addr  = usb_sram_addr(config->rx_ram);
+		btable_ep[i].rx_count = ((USB_GPIO_RX_PACKET_SIZE / 2) << 10);
 
-	/*
-	 * Initialize TX buffer with zero, the first IN transaction will fill
-	 * this in with a valid value.
-	 */
-	config->tx_ram[0] = 0;
-	config->tx_ram[1] = 0;
+		/*
+		 * Initialize TX buffer with zero, the first IN transaction will
+		 * fill this in with a valid value.
+		 */
+		config->tx_ram[0] = 0;
+		config->tx_ram[1] = 0;
 
-	STM32_USB_EP(i) = ((i <<  0) | /* Endpoint Addr*/
-			   (3 <<  4) | /* TX Valid */
-			   (0 <<  9) | /* Bulk EP */
-			   (3 << 12)); /* RX Valid */
+		STM32_USB_EP(i) = (i <<  0) | /* Endpoint Addr*/
+				  (3 <<  4) | /* TX Valid */
+				  (0 <<  9) | /* Bulk EP */
+				  (3 << 12); /* RX Valid */
+	}
 }
