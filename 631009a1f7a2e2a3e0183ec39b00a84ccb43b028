@@ -22,6 +22,30 @@
       "revId": "631009a1f7a2e2a3e0183ec39b00a84ccb43b028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1aa15693_8f90eecd",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-10T22:23:25Z",
+      "side": 1,
+      "message": "Do we need DMA2 here ?\n\nit seems this can be achieved using DMA remapping (as we do on other boards in board_preinit(), albeit stm32f098 uses a slightly different scheme with the DMA_CSELR register)",
+      "parentUuid": "63976535_404a0bbc",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 14
+      },
+      "revId": "631009a1f7a2e2a3e0183ec39b00a84ccb43b028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
