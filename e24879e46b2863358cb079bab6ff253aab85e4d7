@@ -45,6 +45,30 @@
       "revId": "e24879e46b2863358cb079bab6ff253aab85e4d7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3675bd_4c9022be",
+        "filename": "common/tpm_log.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-10T22:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2461821_ed87d18d",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 7
+      },
+      "revId": "e24879e46b2863358cb079bab6ff253aab85e4d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
