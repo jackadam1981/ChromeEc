@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cf5da54_eeb2d724",
+        "filename": "common/tpm_log.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-10T21:46:25Z",
+      "side": 1,
+      "message": "\"no more entries\" could be signaled by returning VENDOR_RC_SUCCESS and zero response size.\n\n\nalso, there should be a separate error code for the size mismatch case.",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 37
+      },
+      "revId": "f1ec9a7e6c7fa551c2df232dba93e855c6fe5678",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
