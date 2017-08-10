@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "037cc184_932400bd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2165,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-10T23:15:27Z",
+      "side": 0,
+      "message": "I\u0027m not sure what the significance of this was, but it didn\u0027t make much sense to me. We also set the flag once we get the sink caps. Am I missing something?",
+      "range": {
+        "startLine": 2165,
+        "startChar": 3,
+        "endLine": 2165,
+        "endChar": 52
+      },
+      "revId": "5db33de8468733eaf032217db3248cfc4b6e1f10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
