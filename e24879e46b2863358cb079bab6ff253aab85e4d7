@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c81dd008_fd413ecb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-10T22:10:36Z",
+      "side": 1,
+      "message": "did you re-test with trunks_send? it should have been modified to handle zero size responses.",
+      "range": {
+        "startLine": 15,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 69
+      },
+      "revId": "e24879e46b2863358cb079bab6ff253aab85e4d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2461821_ed87d18d",
+        "filename": "common/tpm_log.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-10T22:10:36Z",
+      "side": 1,
+      "message": "no need in this \u0027else\u0027",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 7
+      },
+      "revId": "e24879e46b2863358cb079bab6ff253aab85e4d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
