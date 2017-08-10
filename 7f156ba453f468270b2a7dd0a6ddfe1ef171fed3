@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f68a33c8_d1add7ed",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-10T23:29:07Z",
+      "side": 1,
+      "message": "I was wondering if perhaps pd_vdm_send_state_machine() might be a better place for this logic. (For example, what if we were a DFP in the SNK_READY state?)",
+      "range": {
+        "startLine": 2156,
+        "startChar": 0,
+        "endLine": 2162,
+        "endChar": 4
+      },
+      "revId": "7f156ba453f468270b2a7dd0a6ddfe1ef171fed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
