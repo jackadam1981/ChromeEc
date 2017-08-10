@@ -34,6 +34,24 @@
       "revId": "4d2a21bd8456c22e559eb8241ed14d4340466a5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09809a8d_8257787d",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-10T16:35:15Z",
+      "side": 1,
+      "message": "That or putting it behind a config. I was wanting to prevent the repetition of the DECLARE_HOST_COMMAND in all the boards including the handling of response formatting. CONFIG_BOARD_VERSION provides the host command as well as function for querying the board version (system_get_board_version()). All that\u0027s boilerplate and would be common to any other board using SKU_ID.",
+      "parentUuid": "a92f5147_00bed5c8",
+      "revId": "4d2a21bd8456c22e559eb8241ed14d4340466a5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
