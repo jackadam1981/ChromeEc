@@ -2130,7 +2130,7 @@ void pd_task(void *u)
 			res = send_control(port, PD_CTRL_PS_RDY);
 			if (res >= 0) {
 				timeout = 10*MSEC;
-				/* it'a time to ping regularly the sink */
+				/* it's time to ping regularly the sink */
 				set_state(port, PD_STATE_SRC_READY);
 			} else {
 				/* The sink did not ack, cut the power... */
@@ -2148,6 +2148,18 @@ void pd_task(void *u)
 			if (incoming_packet ||
 			    (pd[port].vdm_state == VDM_STATE_BUSY))
 				break;
+
+			/*
+			 * Since we have a contract, if we don't receive a
+			 * GoodCRC or a response to our VDM, issue a soft reset.
+			 */
+			if ((pd[port].vdm_state == VDM_STATE_ERR_SEND) ||
+			    ((pd[port].vdm_state == VDM_STATE_ERR_TMOUT) &&
+			     PD_VDO_SVDM(pd[port].vdo_data[0]))) {
+				set_state(port, PD_STATE_SOFT_RESET);
+				timeout = 10 * MSEC;
+				break;
+			}
 
 			/* Send updated source capabilities to our partner */
 			if (pd[port].flags & PD_FLAGS_UPDATE_SRC_CAPS) {
@@ -2859,6 +2871,12 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 				/* Message ID of soft reset is always 0 */
 				pd[port].msg_id = 0;
 				res = send_control(port, PD_CTRL_SOFT_RESET);
+
+				/*
+				 * Make sure to reset our VDM state machine as
+				 * well.
+				 */
+				pd[port].vdm_state = VDM_STATE_DONE;
 
 				/* if soft reset failed, try hard reset. */
 				if (res < 0) {
