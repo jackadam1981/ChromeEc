@@ -159,20 +159,27 @@ static usb_uint hid_ep_buf[DIV_ROUND_UP(HID_TOUCHPAD_REPORT_SIZE, 2)] __usb_ram;
 
 void set_touchpad_report(struct usb_hid_touchpad_report *report)
 {
+	static int print_drop = 1;
+	int timeout = 2 * HID_TOUCHPAD_EP_INTERVAL_MS;
+
 	/*
 	 * Endpoint is busy. This should rarely happen as we make sure that
-	 * the trackpad interrupt period >= USB interrupt period.
+	 * the trackpad interrupt period >> USB interrupt period.
 	 *
-	 * TODO(crosbug.com/p/59083): Figure out how to handle USB suspend.
+	 * TODO(b:35775048): Figure out how to best handle USB suspend.
 	 */
-	int timeout = 20; /* Wait up to 5 EP intervals. */
-
 	while ((STM32_USB_EP(USB_EP_HID_TOUCHPAD) & EP_TX_MASK)
 			== EP_TX_VALID) {
-		msleep(DIV_ROUND_UP(HID_TOUCHPAD_EP_INTERVAL_MS, 4));
-		if (!--timeout)
+		msleep(1);
+		if (!--timeout) {
+			if (print_drop)
+				CPRINTF("TP drop\n");
+			print_drop = 0;
 			return;
+		}
 	}
+
+	print_drop = 1;
 
 	memcpy_to_usbram((void *) usb_sram_addr(hid_ep_buf),
 			 report, sizeof(*report));
