@@ -418,8 +418,13 @@ static void power_common_init(void)
 	power_set_state(power_chipset_init());
 
 	/* Enable interrupts for input signals */
-	for (i = 0; i < POWER_SIGNAL_COUNT; i++, s++)
+	for (i = 0; i < POWER_SIGNAL_COUNT; i++, s++) {
+#ifdef CONFIG_POWER_SIGNAL_POLLING
+		if (power_signal_polling_mask & (1 << i))
+			continue;
+#endif
 		power_signal_enable_interrupt(s->gpio);
+	}
 
 	/*
 	 * Update input state again since there is a small window
@@ -478,8 +483,13 @@ static void siglog_deferred(void)
 	timestamp_t tdiff = {.val = 0};
 
 	/* Disable interrupts for input signals while we print stuff.*/
-	for (i = 0; i < POWER_SIGNAL_COUNT; i++)
+	for (i = 0; i < POWER_SIGNAL_COUNT; i++) {
+#ifdef CONFIG_POWER_SIGNAL_POLLING
+		if (power_signal_polling_mask & (1 << i))
+			continue;
+#endif
 		gpio_disable_interrupt(power_signal_list[i].gpio);
+	}
 
 	CPRINTF("%d signal changes:\n", siglog_entries);
 	for (i = 0; i < siglog_entries; i++) {
@@ -495,8 +505,13 @@ static void siglog_deferred(void)
 	siglog_entries = siglog_truncated = 0;
 
 	/* Okay, turn 'em on again. */
-	for (i = 0; i < POWER_SIGNAL_COUNT; i++)
+	for (i = 0; i < POWER_SIGNAL_COUNT; i++) {
+#ifdef CONFIG_POWER_SIGNAL_POLLING
+		if (power_signal_polling_mask & (1 << i))
+			continue;
+#endif
 		gpio_enable_interrupt(power_signal_list[i].gpio);
+	}
 }
 DECLARE_DEFERRED(siglog_deferred);
 
@@ -754,3 +769,29 @@ void power_reset_host_sleep_state(enum host_sleep_event sleep_event)
 #endif /* CONFIG_POWER_S0IX */
 
 #endif /* CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
+
+#ifdef CONFIG_POWER_SIGNAL_POLLING
+static void power_signals_changed(void)
+{
+	uint32_t inew = in_signals;
+	const struct power_signal_info *s = power_signal_list;
+	int i;
+
+	for (i = 0; i < POWER_SIGNAL_COUNT; i++, s++) {
+		/* Skip if this is an INT pin. */
+		if (!(power_signal_polling_mask & (1 << i)))
+			continue;
+
+		if (power_signal_get_level(s->gpio) == s->level)
+			inew |= 1 << i;
+		else
+			inew &= ~(1 << i);
+	}
+
+	if (in_signals != inew) {
+		in_signals = inew;
+		task_wake(TASK_ID_CHIPSET);
+	}
+}
+DECLARE_HOOK(HOOK_TICK, power_signals_changed, HOOK_PRIO_DEFAULT);
+#endif

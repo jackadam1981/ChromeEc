@@ -49,6 +49,14 @@ struct power_signal_info {
  */
 extern const struct power_signal_info power_signal_list[];
 
+#ifdef CONFIG_POWER_SIGNAL_POLLING
+/*
+ * Each board provides a mask to show if any power signal pins are
+ * not set as INT pins and thus need polling.
+ */
+extern const uint32_t power_signal_polling_mask;
+#endif
+
 /* Convert enum power_signal to a mask for signal functions */
 #define POWER_SIGNAL_MASK(signal) (1 << (signal))
 

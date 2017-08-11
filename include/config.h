@@ -1895,6 +1895,9 @@
 /* Support stopping in S5 on shutdown */
 #undef CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
 
+/* Enable using polling instead interrupt to update power signals */
+#undef CONFIG_POWER_SIGNAL_POLLING
+
 /*
  * Detect power signal interrupt storms, defined as more than
  * CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD occurences of a single
