@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "926110a5_dfca0b20",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2150,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-11T00:46:22Z",
+      "side": 1,
+      "message": "I agree, your change seems reasonable. Otherwise we\u0027ll skip getting the sink cap if we take this \u0027break\u0027.",
+      "range": {
+        "startLine": 2148,
+        "startChar": 3,
+        "endLine": 2150,
+        "endChar": 10
+      },
+      "revId": "a7d7e1c2a5b35318c61546063fddda36df7d3fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
