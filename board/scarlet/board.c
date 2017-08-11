@@ -92,6 +92,18 @@ const struct power_signal_info power_signal_list[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
+#ifdef CONFIG_POWER_SIGNAL_POLLING
+/*
+ * Define if any power signal pin are not set as INT pins
+ * and thus need polling to update status.
+ */
+const uint32_t power_signal_polling_mask =
+	(0 << 0) | /* GPIO_PP1250_S3_PG */
+	(0 << 1) | /* GPIO_PP900_S0_PG */
+	(1 << 2) | /* GPIO_AP_CORE_PG */
+	(0 << 3);  /* GPIO_AP_EC_S3_S0_L */
+#endif
+
 #ifdef CONFIG_TEMP_SENSOR_TMP432
 /* Temperature sensors data; must be in same order as enum temp_sensor_id. */
 const struct temp_sensor_t temp_sensors[] = {
