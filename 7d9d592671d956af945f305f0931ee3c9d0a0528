@@ -1,0 +1,441 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8f288bc_69adf2cf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "do you reset it back to the proper value on disconnection ?",
+      "range": {
+        "startLine": 403,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 31
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07d24251_c6f61347",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "this seems to be just a bad implementation of usleep(),\nthe previous version was better.",
+      "range": {
+        "startLine": 462,
+        "startChar": 3,
+        "endLine": 470,
+        "endChar": 23
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "247a8845_64dfa322",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "nit: can you put the comma at the end of the previous line ?",
+      "range": {
+        "startLine": 512,
+        "startChar": 3,
+        "endLine": 512,
+        "endChar": 4
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac83475a_796289e7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "this is using more stack than needed",
+      "range": {
+        "startLine": 558,
+        "startChar": 1,
+        "endLine": 563,
+        "endChar": 12
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57fd34ef_16358bca",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "don\u0027t declare it here since it\u0027s used only in the if clause",
+      "range": {
+        "startLine": 565,
+        "startChar": 1,
+        "endLine": 565,
+        "endChar": 17
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839d537a_36552ce3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "is this the right PID ?",
+      "range": {
+        "startLine": 583,
+        "startChar": 1,
+        "endLine": 584,
+        "endChar": 12
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00b5a24e_33cb2501",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "why would payload be NULL ?",
+      "range": {
+        "startLine": 586,
+        "startChar": 26,
+        "endLine": 586,
+        "endChar": 46
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2494ab3_70958baa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "everywhere else we use macros for this,\neg BATT_CAP_REF(payload[0])",
+      "range": {
+        "startLine": 588,
+        "startChar": 15,
+        "endLine": 588,
+        "endChar": 42
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9e1c44d_f1164573",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "nit: just use the macro directly below",
+      "range": {
+        "startLine": 1041,
+        "startChar": 0,
+        "endLine": 1043,
+        "endChar": 6
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a59250db_47684608",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1504,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 1504,
+        "startChar": 24,
+        "endLine": 1504,
+        "endChar": 31
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49675d1e_c63e9b10",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "nit: IMO using _RSP rather than _RESPONSE and _REQ rather than REQUEST is ok and keeps the name length under control.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 72
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "571e5115_ee119fbc",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "something is wrong here, either VDM_VER20 is acceptable with PD 2.0 partner and this clause is unnecessary , or we should decide at runtime once we know whether the partner is 2.0 or 3.0",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 26
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95cdef6f_831167b2",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "overall we want only 1 copy of the macro since only the version field changes",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 0
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9753ecb9_3d1e8d02",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "what are they for rev 3 since they are not used either ?",
+      "range": {
+        "startLine": 820,
+        "startChar": 4,
+        "endLine": 820,
+        "endChar": 30
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "368d539f_98daaf34",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "nit: what is 15 ?",
+      "range": {
+        "startLine": 857,
+        "startChar": 1,
+        "endLine": 857,
+        "endChar": 21
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "918057a7_1b52cc13",
+        "filename": "test/usb_pd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "remove this ifdef",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0bf8250_8f2b6d87",
+        "filename": "test/usb_pd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "nit: unrelated whitespace changes",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 47
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a586011_ee6ef933",
+        "filename": "test/usb_pd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "this initialization is useless.",
+      "range": {
+        "startLine": 226,
+        "startChar": 17,
+        "endLine": 226,
+        "endChar": 26
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b12076a_9cdc938d",
+        "filename": "test/usb_pd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T18:31:47Z",
+      "side": 1,
+      "message": "nit: the comma is at a weird place",
+      "range": {
+        "startLine": 466,
+        "startChar": 3,
+        "endLine": 466,
+        "endChar": 4
+      },
+      "revId": "7d9d592671d956af945f305f0931ee3c9d0a0528",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
