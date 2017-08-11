@@ -370,7 +370,9 @@ static void init_pmu(void)
 void pmu_wakeup_interrupt(void)
 {
 	int exiten, wakeup_src;
-	static int count;
+	static uint8_t count;
+	static uint8_t ws;
+	static const char wheel[] = { '|', '/', '-', '\\' };
 
 	delay_sleep_by(1 * MSEC);
 
@@ -383,14 +385,21 @@ void pmu_wakeup_interrupt(void)
 	GWRITE(PMU, CLRRST, 1);
 
 	/*
-	 * This will print '.' every time cr50 resumes from regular sleep.
-	 * During sleep Cr50 wakes up every half second for HOOK_TICK, so that
-	 * is around the rate cr50 will print '.' while it is idle.
+	 * This will print the next state of the "rotating wheel" every time
+	 * cr50 resumes from regular sleep (8 is the ASCII code for
+	 * 'backspace').
+	 *
+	 * In steady state when there is no other activity Cr50 wakes up every
+	 * half second for HOOK_TICK, so that is the rate the wheel will be
+	 * spinning at when device is idle.
 	 */
-	ccprintf(".");
-	if (!(count % 50))
-		ccprintf("\n");
-	count++;
+	ccprintf("%c%c", 8, wheel[count++ % sizeof(wheel)]);
+
+	/* Each time wake source changes, print its hex value.	 */
+	if (ws != wakeup_src) {
+		ws = wakeup_src;
+		ccprintf("%x ", wakeup_src);
+	}
 
 	if (wakeup_src & GC_PMU_EXITPD_SRC_PIN_PD_EXIT_MASK) {
 		/*
