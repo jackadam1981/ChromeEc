@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a94133c_1ac7910f",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 19
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-11T09:55:22Z",
+      "side": 1,
+      "message": "Since you\u0027re not using that anymore, maybe just drop the function completely, and add it back in the next CL?",
+      "revId": "0020ac4d2e05ed97358bfce45c49ff12eb718a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
