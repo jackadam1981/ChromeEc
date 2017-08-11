@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2df97ff5_94740a6b",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T17:31:20Z",
+      "side": 1,
+      "message": "I usually use directly __hw_clock_source_read() to avoid more useless operations",
+      "range": {
+        "startLine": 328,
+        "startChar": 10,
+        "endLine": 328,
+        "endChar": 27
+      },
+      "revId": "f45ca209f51b856a0f215588063a8865aba3d223",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
