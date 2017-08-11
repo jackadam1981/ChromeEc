@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "ed874769_c3cd0827",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "Why did we stop doing this using HOOK_CHIPSET_SHUTDOWN?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "977565b1_8f5f8aef",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 1
@@ -133,6 +156,29 @@
         "startChar": 0,
         "endLine": 83,
         "endChar": 0
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaca2f3d_ee118850",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "We dont",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 25
       },
       "revId": "224e7623976aef3134ff331e2977d0673f55880b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -186,6 +232,29 @@
     },
     {
       "key": {
+        "uuid": "736d7f20_e0c65f34",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "If the AP was on, but we happened to catch AP_DETECT while it was low because it was transmitting a character, then the state would go\n\nCONNECTED -\u003e DEBOUNCING -\u003e CONNECTED.\n\nDo we want to call ap_connect again here?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 15
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f60a1038_d48d9fe1",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 1
@@ -202,6 +271,75 @@
         "startChar": 0,
         "endLine": 207,
         "endChar": 26
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e622a816_66c554cd",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "Should we enable interrupts at the end of board_init?",
+      "range": {
+        "startLine": 629,
+        "startChar": 1,
+        "endLine": 629,
+        "endChar": 19
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03edf653_468028b7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "rename to init_servo_detect()?",
+      "range": {
+        "startLine": 652,
+        "startChar": 1,
+        "endLine": 652,
+        "endChar": 11
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75c9d8c_f0dbf2b2",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "why not servo_state?",
+      "range": {
+        "startLine": 32,
+        "startChar": 41,
+        "endLine": 32,
+        "endChar": 48
       },
       "revId": "224e7623976aef3134ff331e2977d0673f55880b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -279,6 +417,29 @@
     },
     {
       "key": {
+        "uuid": "a524d5aa_dbbdc350",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "Why did you switch from \u0027on\u0027 to \u0027connected\u0027?",
+      "range": {
+        "startLine": 31,
+        "startChar": 26,
+        "endLine": 31,
+        "endChar": 35
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b09f2a5_1b9240f2",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
@@ -325,6 +486,29 @@
     },
     {
       "key": {
+        "uuid": "8308fa4c_27a2f709",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "Do you need to cancel the servo_reconnect deferred function here?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e19d3a9_b35b4ae6",
         "filename": "board/cr50/servo.c",
         "patchSetId": 1
@@ -341,6 +525,98 @@
         "startChar": 4,
         "endLine": 100,
         "endChar": 49
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dc9248b_db4c3463",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "The naming here is a bit confusing.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 22
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64535764_55dd61ba",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "Can we put a higher priority on this than the ec_detect, so that check_servo happens before ec_detect.\n\nIf ec_detect enables ec uart before we get here then we wont be able to detect servo.",
+      "range": {
+        "startLine": 185,
+        "startChar": 39,
+        "endLine": 185,
+        "endChar": 56
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "202b3f8a_38c0a7fc",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "Rename to servo_detect to be consistent.",
+      "range": {
+        "startLine": 185,
+        "startChar": 26,
+        "endLine": 185,
+        "endChar": 37
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a3c5c1b_0e86c067",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T18:34:50Z",
+      "side": 1,
+      "message": "If its 0 we should reenable the gpio interrupt",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 21
       },
       "revId": "224e7623976aef3134ff331e2977d0673f55880b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
