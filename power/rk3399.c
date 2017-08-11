@@ -53,6 +53,8 @@
 	#define IN_PGOOD_S0    (IN_PGOOD_S3 | IN_PGOOD_PP900_S0 | IN_PGOOD_AP)
 	/* This board can optionally wake-on-USB in S3 */
 	#define S3_USB_WAKE
+	/* This board has non-INT power signal pins */
+	#define POWER_SIGNAL_POLLING
 #else
 	#define IN_PGOOD_S3    (IN_PGOOD_PP5000)
 	#define IN_PGOOD_S0    (IN_PGOOD_S3 | IN_PGOOD_AP | IN_PGOOD_SYS)
@@ -568,4 +570,37 @@ static void lid_changed(void)
 		chipset_exit_hard_off();
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, lid_changed, HOOK_PRIO_DEFAULT);
+#endif
+
+#ifdef POWER_SIGNAL_POLLING
+/*
+ * Polling for non-INT power signal pins.
+ * Call power_signal_interrupt() when the GPIO status of those pins changes.
+ */
+static void power_signal_changed(void)
+{
+	static uint32_t in_signals; /* Current power signal status */
+	static uint8_t in_signals_initialized;
+	uint32_t inew = in_signals;
+	const struct power_signal_info *s = power_signal_list;
+	int i;
+
+	for (i = 0; i < POWER_SIGNAL_COUNT; i++, s++) {
+		/* Skip if this is an INT pin. */
+		if (s->gpio < GPIO_IH_COUNT)
+			continue;
+
+		if (gpio_get_level(s->gpio) == s->level)
+			inew |= 1 << i;
+		else
+			inew &= ~(1 << i);
+
+		if (in_signals_initialized && ((inew ^ in_signals) & (1 << i)))
+			power_signal_interrupt(s->gpio);
+	}
+
+	in_signals_initialized = 1;
+	in_signals = inew;
+}
+DECLARE_HOOK(HOOK_TICK, power_signal_changed, HOOK_PRIO_DEFAULT);
 #endif

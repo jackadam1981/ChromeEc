@@ -418,8 +418,10 @@ static void power_common_init(void)
 	power_set_state(power_chipset_init());
 
 	/* Enable interrupts for input signals */
-	for (i = 0; i < POWER_SIGNAL_COUNT; i++, s++)
-		power_signal_enable_interrupt(s->gpio);
+	for (i = 0; i < POWER_SIGNAL_COUNT; i++, s++) {
+		if (power_signal_list[i].gpio < GPIO_IH_COUNT)
+			power_signal_enable_interrupt(s->gpio);
+	}
 
 	/*
 	 * Update input state again since there is a small window
@@ -478,8 +480,10 @@ static void siglog_deferred(void)
 	timestamp_t tdiff = {.val = 0};
 
 	/* Disable interrupts for input signals while we print stuff.*/
-	for (i = 0; i < POWER_SIGNAL_COUNT; i++)
-		gpio_disable_interrupt(power_signal_list[i].gpio);
+	for (i = 0; i < POWER_SIGNAL_COUNT; i++) {
+		if (power_signal_list[i].gpio < GPIO_IH_COUNT)
+			gpio_disable_interrupt(power_signal_list[i].gpio);
+	}
 
 	CPRINTF("%d signal changes:\n", siglog_entries);
 	for (i = 0; i < siglog_entries; i++) {
@@ -495,8 +499,10 @@ static void siglog_deferred(void)
 	siglog_entries = siglog_truncated = 0;
 
 	/* Okay, turn 'em on again. */
-	for (i = 0; i < POWER_SIGNAL_COUNT; i++)
-		gpio_enable_interrupt(power_signal_list[i].gpio);
+	for (i = 0; i < POWER_SIGNAL_COUNT; i++) {
+		if (power_signal_list[i].gpio < GPIO_IH_COUNT)
+			gpio_enable_interrupt(power_signal_list[i].gpio);
+	}
 }
 DECLARE_DEFERRED(siglog_deferred);
 
