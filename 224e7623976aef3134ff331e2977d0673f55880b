@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "ef1e4a94_48a1e4fc",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-11T18:05:40Z",
+      "side": 1,
+      "message": "typo: \u0027excessive\u0027",
+      "range": {
+        "startLine": 69,
+        "startChar": 18,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "977565b1_8f5f8aef",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 1
@@ -186,6 +209,29 @@
     },
     {
       "key": {
+        "uuid": "9515a22b_d2780a45",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-11T18:05:40Z",
+      "side": 1,
+      "message": "\u0027EC\u0027?",
+      "range": {
+        "startLine": 97,
+        "startChar": 24,
+        "endLine": 97,
+        "endChar": 26
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9288ed37_94b5d2a1",
         "filename": "board/cr50/ec_state.c",
         "patchSetId": 1
@@ -197,6 +243,30 @@
       "writtenOn": "2017-08-11T02:38:35Z",
       "side": 1,
       "message": "same question as in the ap case: why not to move to \"connected\" state if we were in \"disconnected\" when this function was called",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5a82653_60c7e316",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-11T18:05:40Z",
+      "side": 1,
+      "message": "I think because of debouncing?",
+      "parentUuid": "9288ed37_94b5d2a1",
       "range": {
         "startLine": 102,
         "startChar": 0,
