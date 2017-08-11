@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fe2f2a5b_8eb26526",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c59f9a05_efc5561c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 12
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "680dc67c_2b4ce33f",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-11T02:38:35Z",
       "side": 1,
       "message": "what does this describe?",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d87c2595_10c15500",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "This was describing the state transitions.  Somewhat redundant now that I\u0027ve coded the state machine below.",
+      "parentUuid": "680dc67c_2b4ce33f",
       "range": {
         "startLine": 21,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c4ad7b77_aaeb0c02",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e965c83_a932f87e",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba7d143a_96126955",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-11T02:38:35Z",
       "side": 1,
       "message": "this in fact is used for sync in both I2C and SPI modes",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e15f760_95d2de51",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba7d143a_96126955",
       "range": {
         "startLine": 66,
         "startChar": 27,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "af6cbff4_1ae816f0",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "excessively corrected",
+      "parentUuid": "ef1e4a94_48a1e4fc",
+      "range": {
+        "startLine": 69,
+        "startChar": 18,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed874769_c3cd0827",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2017-08-11T18:34:50Z",
       "side": 1,
       "message": "Why did we stop doing this using HOOK_CHIPSET_SHUTDOWN?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63acf2e8_398a94f1",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Nothing else triggers HOOK_CHIPSET_SHUTDOWN, does it?",
+      "parentUuid": "ed874769_c3cd0827",
       "range": {
         "startLine": 81,
         "startChar": 0,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "350c12dc_5a8e114c",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Added comment noting that.",
+      "parentUuid": "977565b1_8f5f8aef",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aaca2f3d_ee118850",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2017-08-11T18:34:50Z",
       "side": 1,
       "message": "We dont",
+      "range": {
+        "startLine": 88,
+        "startChar": 4,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a730c27_43efd50c",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaca2f3d_ee118850",
       "range": {
         "startLine": 88,
         "startChar": 4,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "1aa12a79_cc90b10d",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff433586_84fabdbc",
+      "range": {
+        "startLine": 103,
+        "startChar": 31,
+        "endLine": 103,
+        "endChar": 34
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42fa5b8d_c02338d9",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 1
@@ -220,6 +436,30 @@
       "writtenOn": "2017-08-11T02:38:35Z",
       "side": 1,
       "message": "to be symmetrical this should be conditioned on board_use_plt_rst()",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "152b829a_164e567a",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42fa5b8d_c02338d9",
       "range": {
         "startLine": 111,
         "startChar": 1,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "bca5872d_3ad16ff6",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "No, because we didn\u0027t disconnect when we went to DEBOUNCING.",
+      "parentUuid": "736d7f20_e0c65f34",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 15
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f60a1038_d48d9fe1",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 1
@@ -266,6 +530,30 @@
       "writtenOn": "2017-08-11T02:38:35Z",
       "side": 1,
       "message": "shouldn\u0027t we also move to state \u0027connected\u0027 if we were in \u0027disconnected\u0027 when the interrupt happened?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 26
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6dcb6ac_a8cb3552",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f60a1038_d48d9fe1",
       "range": {
         "startLine": 206,
         "startChar": 0,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "c4757dbd_bd701f18",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Don\u0027t know.  What would this change?",
+      "parentUuid": "e622a816_66c554cd",
+      "range": {
+        "startLine": 629,
+        "startChar": 1,
+        "endLine": 629,
+        "endChar": 19
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03edf653_468028b7",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -312,6 +624,30 @@
       "writtenOn": "2017-08-11T18:34:50Z",
       "side": 1,
       "message": "rename to init_servo_detect()?",
+      "range": {
+        "startLine": 652,
+        "startChar": 1,
+        "endLine": 652,
+        "endChar": 11
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b991aba2_45fca4e5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03edf653_468028b7",
       "range": {
         "startLine": 652,
         "startChar": 1,
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "5ff46e58_2dfdf30a",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d75c9d8c_f0dbf2b2",
+      "range": {
+        "startLine": 32,
+        "startChar": 41,
+        "endLine": 32,
+        "endChar": 48
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9515a22b_d2780a45",
         "filename": "board/cr50/ec_state.c",
         "patchSetId": 1
@@ -358,6 +718,30 @@
       "writtenOn": "2017-08-11T18:05:40Z",
       "side": 1,
       "message": "\u0027EC\u0027?",
+      "range": {
+        "startLine": 97,
+        "startChar": 24,
+        "endLine": 97,
+        "endChar": 26
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f41c1b43_93e86ebb",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9515a22b_d2780a45",
       "range": {
         "startLine": 97,
         "startChar": 24,
@@ -417,6 +801,30 @@
     },
     {
       "key": {
+        "uuid": "cffc0576_6b721a6b",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "It\u0027s safe to move to connected.",
+      "parentUuid": "c5a82653_60c7e316",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a524d5aa_dbbdc350",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
@@ -463,6 +871,30 @@
     },
     {
       "key": {
+        "uuid": "43348365_e65c6112",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b09f2a5_1b9240f2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0295bd2_4cee4299",
         "filename": "board/cr50/servo.c",
         "patchSetId": 1
@@ -474,6 +906,30 @@
       "writtenOn": "2017-08-11T02:38:35Z",
       "side": 1,
       "message": "s/ports/H1 uarts TX lines/?",
+      "range": {
+        "startLine": 64,
+        "startChar": 18,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9022527e_e0b17686",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "We also disconnect I2C and block SPI.",
+      "parentUuid": "f0295bd2_4cee4299",
       "range": {
         "startLine": 64,
         "startChar": 18,
@@ -509,6 +965,30 @@
     },
     {
       "key": {
+        "uuid": "c559fd74_9c27a737",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "No, because the deferred function only moves from DEBOUNCING -\u003e CONNECTED, and we\u0027re now DISCONNECTED.",
+      "parentUuid": "8308fa4c_27a2f709",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4e19d3a9_b35b4ae6",
         "filename": "board/cr50/servo.c",
         "patchSetId": 1
@@ -532,6 +1012,30 @@
     },
     {
       "key": {
+        "uuid": "2835c388_3caa098b",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Because I delete this block of code in the next CL, when it just becomes a call to rdd_update_state().",
+      "parentUuid": "4e19d3a9_b35b4ae6",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 49
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6dc9248b_db4c3463",
         "filename": "board/cr50/servo.c",
         "patchSetId": 1
@@ -543,6 +1047,30 @@
       "writtenOn": "2017-08-11T18:34:50Z",
       "side": 1,
       "message": "The naming here is a bit confusing.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 22
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "217d5da2_e8a5610b",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "What would be less confusing?",
+      "parentUuid": "6dc9248b_db4c3463",
       "range": {
         "startLine": 139,
         "startChar": 0,
@@ -601,6 +1129,30 @@
     },
     {
       "key": {
+        "uuid": "a53f7480_3f8a603c",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "202b3f8a_38c0a7fc",
+      "range": {
+        "startLine": 185,
+        "startChar": 26,
+        "endLine": 185,
+        "endChar": 37
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a3c5c1b_0e86c067",
         "filename": "board/cr50/servo.c",
         "patchSetId": 1
@@ -612,6 +1164,30 @@
       "writtenOn": "2017-08-11T18:34:50Z",
       "side": 1,
       "message": "If its 0 we should reenable the gpio interrupt",
+      "range": {
+        "startLine": 200,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 21
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce8917fd_6349f7e1",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-11T20:32:18Z",
+      "side": 1,
+      "message": "I can do that.  It\u0027s a change from current behavior and introduces a new state (DEBOUNCING_AND_DISCONNECTED).  I actually started with that, but tried to minimize the change from the current behavior.",
+      "parentUuid": "6a3c5c1b_0e86c067",
       "range": {
         "startLine": 200,
         "startChar": 4,
