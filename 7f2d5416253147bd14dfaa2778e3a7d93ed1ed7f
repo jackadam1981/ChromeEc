@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea7b731e_3673e513",
+        "filename": "driver/usb_mux_ps874x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-11T20:38:29Z",
+      "side": 1,
+      "message": "Previously you were checking ID1 and ID2 for both chips. Sorry, I think my previous comment confused you. What I meant was -- let\u0027s do \"\u003c\" comparison for both chips (rather than !\u003d comparison). Then, we don\u0027t need any #ifdefs at all.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "7f2d5416253147bd14dfaa2778e3a7d93ed1ed7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
