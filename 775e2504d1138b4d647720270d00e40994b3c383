@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "b9857db0_45f6b248",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-11T21:56:31Z",
+      "side": 1,
+      "message": "Is this the AP_RX capability? That is still ok if servo is connected.",
+      "range": {
+        "startLine": 190,
+        "startChar": 28,
+        "endLine": 190,
+        "endChar": 44
+      },
+      "revId": "775e2504d1138b4d647720270d00e40994b3c383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89f8d8be_0395547f",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 2
