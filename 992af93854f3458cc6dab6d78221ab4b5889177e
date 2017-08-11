@@ -16,6 +16,23 @@
       "revId": "992af93854f3458cc6dab6d78221ab4b5889177e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8647b5c6_4fc221f5",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-11T01:32:07Z",
+      "side": 1,
+      "message": "should move the whole block from above:\n\n#ifdef CONFIG_USB_REMOTE_WAKEUP\n\t/* Wake up host, if required. */\n\tusb_wake();\n#endif",
+      "revId": "992af93854f3458cc6dab6d78221ab4b5889177e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
