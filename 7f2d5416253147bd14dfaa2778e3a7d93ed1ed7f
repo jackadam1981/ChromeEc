@@ -22,6 +22,30 @@
       "revId": "7f2d5416253147bd14dfaa2778e3a7d93ed1ed7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d211f72_39bdb999",
+        "filename": "driver/usb_mux_ps874x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-11T20:47:46Z",
+      "side": 1,
+      "message": "okay changing it to\n\n        res \u003d ps874x_read(i2c_addr, PS874X_REG_REVISION_ID1, \u0026val);\n        if (res)\n                return res;\n        if (val \u003c PS874X_REVISION_ID1)\n                return EC_ERROR_UNKNOWN;\n\n        res \u003d ps874x_read(i2c_addr, PS874X_REG_REVISION_ID2, \u0026val);\n        if (res)\n                return res;\n        if (val \u003c PS874X_REVISION_ID2)\n                return EC_ERROR_UNKNOWN;",
+      "parentUuid": "ea7b731e_3673e513",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "7f2d5416253147bd14dfaa2778e3a7d93ed1ed7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
