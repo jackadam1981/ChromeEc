@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "df085281_8c06717c",
+        "filename": "board/eve/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-08-11T16:43:15Z",
+      "side": 1,
+      "message": "That\u0027s a good suggestion. In addition it works well with the check I added back to only attempt a step update when state !\u003d STATE_LED_DONE. I had removed that to remove one line of indent since it still worked.",
+      "parentUuid": "bb9fd439_33eea540",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 24
+      },
+      "revId": "5b3c0b76603a5e9b7675420d6e4bf12540121532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c9f97ec_d4227a1e",
         "filename": "board/eve/led.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "5b3c0b76603a5e9b7675420d6e4bf12540121532",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b7f546c_4a7c0e87",
+        "filename": "board/eve/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-08-11T16:43:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c9f97ec_d4227a1e",
+      "range": {
+        "startLine": 441,
+        "startChar": 3,
+        "endLine": 442,
+        "endChar": 28
+      },
+      "revId": "5b3c0b76603a5e9b7675420d6e4bf12540121532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "23b20752_a4653a70",
+        "filename": "board/eve/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-08-11T16:43:15Z",
+      "side": 1,
+      "message": "Made both instances use \u0027!tap\u0027",
+      "parentUuid": "f64dbc35_7ae242c9",
+      "range": {
+        "startLine": 552,
+        "startChar": 6,
+        "endLine": 552,
+        "endChar": 10
+      },
+      "revId": "5b3c0b76603a5e9b7675420d6e4bf12540121532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a8f6e03_c49652cb",
         "filename": "board/eve/led.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-11T16:02:15Z",
       "side": 1,
       "message": "I almost changed this earlier, but should we call led_init() from led_task() (just before the usleep(SECOND)) instead of relying on it to be executed before the task starts?",
+      "range": {
+        "startLine": 593,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 53
+      },
+      "revId": "5b3c0b76603a5e9b7675420d6e4bf12540121532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c8dcdc_4106c2f1",
+        "filename": "board/eve/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-08-11T16:43:15Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure about that when I made it a task. I think it\u0027s better to have it called here. I made this change and tested it. Is it still safe relative to the comment /* After pwm_pin_init() */ ?",
+      "parentUuid": "1a8f6e03_c49652cb",
       "range": {
         "startLine": 593,
         "startChar": 0,
