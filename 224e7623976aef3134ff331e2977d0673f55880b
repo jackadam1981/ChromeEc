@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c59f9a05_efc5561c",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "why don\u0027t you use the same enum for ap/ec/servo - even though extra states can be ignored by devices which don\u0027t use them?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 12
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "680dc67c_2b4ce33f",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "what does this describe?",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e965c83_a932f87e",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "there is no separate signal for tpm reset - platform reset is used on those platforms.",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 25
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba7d143a_96126955",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "this in fact is used for sync in both I2C and SPI modes",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "977565b1_8f5f8aef",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "I know this is not your change, but can\u0027t help it: board_use_rst() is a poor indicator of deep sleep availability.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff433586_84fabdbc",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "/SPI",
+      "range": {
+        "startLine": 103,
+        "startChar": 31,
+        "endLine": 103,
+        "endChar": 34
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42fa5b8d_c02338d9",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "to be symmetrical this should be conditioned on board_use_plt_rst()",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f60a1038_d48d9fe1",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "shouldn\u0027t we also move to state \u0027connected\u0027 if we were in \u0027disconnected\u0027 when the interrupt happened?",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 26
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9288ed37_94b5d2a1",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "same question as in the ap case: why not to move to \"connected\" state if we were in \"disconnected\" when this function was called",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b09f2a5_1b9240f2",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "looks like this structure could be moved into uartn_tx_connect() scope",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 2
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0295bd2_4cee4299",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "s/ports/H1 uarts TX lines/?",
+      "range": {
+        "startLine": 64,
+        "startChar": 18,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e19d3a9_b35b4ae6",
+        "filename": "board/cr50/servo.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-11T02:38:35Z",
+      "side": 1,
+      "message": "why not now?",
+      "range": {
+        "startLine": 99,
+        "startChar": 4,
+        "endLine": 100,
+        "endChar": 49
+      },
+      "revId": "224e7623976aef3134ff331e2977d0673f55880b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
