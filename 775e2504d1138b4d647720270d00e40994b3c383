@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00e5b5c4_0da67b36",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-11T20:27:31Z",
+      "side": 1,
+      "message": "File a bug?",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 8
+      },
+      "revId": "775e2504d1138b4d647720270d00e40994b3c383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89f8d8be_0395547f",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-11T20:27:31Z",
+      "side": 1,
+      "message": "This is pretty nice.",
+      "range": {
+        "startLine": 222,
+        "startChar": 12,
+        "endLine": 222,
+        "endChar": 27
+      },
+      "revId": "775e2504d1138b4d647720270d00e40994b3c383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74f2e470_a6ddcc46",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-11T20:27:31Z",
+      "side": 1,
+      "message": "The cr50 driver in servo will need to be updated to either check for this string, or check the output of `ccd` command.",
+      "revId": "775e2504d1138b4d647720270d00e40994b3c383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd6ee3a2_78ee1a26",
+        "filename": "chip/g/uart_bitbang.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-11T20:27:31Z",
+      "side": 1,
+      "message": "\u0027enable\u0027",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "775e2504d1138b4d647720270d00e40994b3c383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
