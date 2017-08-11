@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8f62907_fdb3a7be",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T17:28:10Z",
+      "side": 1,
+      "message": "nit: the double \u0027l\u0027 is likely a typo",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 12
+      },
+      "revId": "c74f79419d3623cf62bbbb6f0277434011ee55c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6506d7b5_02ca66ea",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-11T17:28:10Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand here,\nthe \u0027break\u0027 will exit the for() loop and also ends up here, so we unconditionally end up here ?\nat least the comment seems wrong, not sure about the behavior.\n\nSame thing for the previous clause with ev.pressed.",
+      "range": {
+        "startLine": 410,
+        "startChar": 3,
+        "endLine": 410,
+        "endChar": 33
+      },
+      "revId": "c74f79419d3623cf62bbbb6f0277434011ee55c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
