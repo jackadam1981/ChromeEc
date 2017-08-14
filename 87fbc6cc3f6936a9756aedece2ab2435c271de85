@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a19bb67_2434ee7b",
+        "filename": "util/comm-i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000116
+      },
+      "writtenOn": "2017-08-14T23:25:57Z",
+      "side": 1,
+      "message": "This seems less repetitive and less nesting:\n\n\tfor (i \u003d 0; i \u003c I2C_MAX_ADAPTER; i++) {\n\t\tif (asprintf(\u0026file_path, I2C_ADAPTER_NODE,\n\t\t\t     i, i, EC_I2C_ADDR) \u003c 0)\n\t\t\treturn -1;\n\n\t\tf \u003d fopen(file_path, \"r\");\n\t\tif (!f) {\n\t\t\tfree(file_path);\n\t\t\tcontinue;\n\t\t}\n\n\t\tchar *buff2 \u003d fgets(buffer, sizeof(buffer), f);\n\n\t\tfclose(f);\n\t\tfree(file_path);\n\t\t\n\t\tif (buff2 \u0026\u0026 !strncmp(buff2, I2C_ADAPTER_NAME, 6)) {\n\t\t\tbreak;\n\t\t}\n\t}",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 2
+      },
+      "revId": "87fbc6cc3f6936a9756aedece2ab2435c271de85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
