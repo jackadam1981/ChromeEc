@@ -284,6 +284,53 @@
       "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698b8787_5107e197",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-08-14T23:17:53Z",
+      "side": 1,
+      "message": "Not sure if I\u0027m right below, but here\u0027s some reasoning:\n\nEven at 100 kHz (we run at 400), one bit is sent every 10us. If SDA is low, in theory, after 10 bits, or 0.1ms (may be plus some internal processing delays), we should see a byte received/sent. Even with i2cs_read_irq_count incrementing after receiving the entire buffer only, the max size of that buffer is 64 bytes, if I understand the _i2cs_write_complete_int() logic correctly. We don\u0027t do any clock stretching. So, in any case we should be done after \u003c10ms, unless the host resets in the middle of transmission (and this is exactly the case we are trying to address).\n\nBtw (though not directly related), when determining if the bus is busy, the host-side i2c controller driver waits for 20ms.\n\nPolling every ~10ms does seem to be excessive, though.",
+      "parentUuid": "8b44e2a0_ecb47961",
+      "range": {
+        "startLine": 148,
+        "startChar": 17,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ceaff0_763f5a05",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-08-14T23:17:53Z",
+      "side": 1,
+      "message": "for my understanding, why receiving a single byte doesn\u0027t count?",
+      "range": {
+        "startLine": 239,
+        "startChar": 22,
+        "endLine": 239,
+        "endChar": 26
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
