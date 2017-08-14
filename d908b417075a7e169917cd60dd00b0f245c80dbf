@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "ac668ddf_e672e751",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-14T22:34:30Z",
+      "side": 1,
+      "message": "if the place where we handle mux connections needs to change, or we decide to connect this gpio to something else when in SPI mode, or whatever else.\n\nThe code dealing with board properties specific mux settings should be in one place.",
+      "parentUuid": "0bbfd6bb_bf74c560",
+      "range": {
+        "startLine": 1587,
+        "startChar": 0,
+        "endLine": 1591,
+        "endChar": 55
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2b120cb_f1c77037",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 2
