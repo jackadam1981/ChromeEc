@@ -10,6 +10,8 @@
 
 #include "common.h"
 
+#ifndef TEST_EC
+
 /**
  * Implements atomic arithmetic operations on 32-bit integers.
  *
@@ -26,6 +28,9 @@
 			     : "=&b" (reg0)			\
 			     : "b" (a), "r" (v) : "cc");	\
 } while (0)
+#else
+#define ATOMIC_OP(asm_op, a, v) do { } while (0)
+#endif /* TEST_EC */
 
 static inline void atomic_clear(uint32_t volatile *addr, uint32_t bits)
 {
@@ -61,4 +66,5 @@ static inline uint32_t atomic_read_clear(uint32_t volatile *addr)
 
 	return ret;
 }
+
 #endif  /* __CROS_EC_ATOMIC_H */
