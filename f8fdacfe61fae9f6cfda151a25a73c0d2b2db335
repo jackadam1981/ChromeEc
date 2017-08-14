@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6acb496_03321a5b",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-14T23:54:18Z",
+      "side": 1,
+      "message": "just put:\nif (evt !\u003d USB_EVENT_RESET)\n  return;\n\nrather than changing everything",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603d5a02_3b1bf5d4",
+        "filename": "chip/stm32/usb_endpoints.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-14T23:54:18Z",
+      "side": 1,
+      "message": "can we update the dwc interface too ?\n(even if the implementation just silently discards the parameter for now)",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba525ab1_3a61c1cf",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-14T23:54:18Z",
+      "side": 1,
+      "message": "the compiler used to behave badly for switch (vs if)\nbut maybe the latest is all good",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "705cd665_fa9f3cfc",
+        "filename": "chip/stm32/usb_hw.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-14T23:54:18Z",
+      "side": 1,
+      "message": "what is this for ? I\u0027m lost",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
