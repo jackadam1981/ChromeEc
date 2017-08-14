@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a3988bf5_39f628f5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-14T21:38:09Z",
+      "side": 1,
+      "message": "Why dont you just connect this in gpio.inc?",
+      "range": {
+        "startLine": 1587,
+        "startChar": 0,
+        "endLine": 1591,
+        "endChar": 55
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b120cb_f1c77037",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-14T21:38:09Z",
+      "side": 1,
+      "message": "Move this up to all of the other gpio definitiions.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 45
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "463d7ae6_0046c64e",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 2
