@@ -33,6 +33,24 @@
       "revId": "992af93854f3458cc6dab6d78221ab4b5889177e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3824c4d2_de69ac52",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-14T04:52:49Z",
+      "side": 1,
+      "message": "I just stubbed usb_wake in case CONFIG_USB_REMOTE_WAKEUP is not defined, makes it easier.",
+      "parentUuid": "8647b5c6_4fc221f5",
+      "revId": "992af93854f3458cc6dab6d78221ab4b5889177e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

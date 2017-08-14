@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d3dec19_5f6ddb86",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-14T04:52:49Z",
+      "side": 0,
+      "message": "I think this is still needed, otherwise they might be a race between written a report and the host suspending the device.",
+      "revId": "97f29cbf553c22cc94b4c7946d26c097b0e389e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
