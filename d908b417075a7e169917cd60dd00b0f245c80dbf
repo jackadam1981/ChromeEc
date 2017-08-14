@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "463d7ae6_0046c64e",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-08-14T20:47:28Z",
+      "side": 1,
+      "message": "so, the condition will be detected and addressed after 6 seconds, right?\ncan we make this interval shorter?",
+      "range": {
+        "startLine": 148,
+        "startChar": 17,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
