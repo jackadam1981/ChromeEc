@@ -22,6 +22,30 @@
       "revId": "e7b02f5ba44facc08e00e10709126685614ce076",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41cc5490_95c8ea6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-14T04:06:16Z",
+      "side": 1,
+      "message": "We just checked with Richtek. For rk9467, the latest version is 5. But for rt9466 (which is the part we used), the latest version is 4. So rev \u003d\u003d 4 is actually expected.",
+      "parentUuid": "d4443c09_9dcc47b7",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "e7b02f5ba44facc08e00e10709126685614ce076",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
