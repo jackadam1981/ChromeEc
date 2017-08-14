@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "c4046227_7b8bb9ee",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-14T22:49:18Z",
+      "side": 1,
+      "message": "We should only be muxing outputs here. Those are the only things that have to be done on a per board property basis. Each pin can be muxed to as many inputs as we want and it doesn\u0027t have any affect on the cr50 behavior. \n\nHaving the gpio definition entirely in gpio.inc means if we change I2C_SDA from (0, 14) to some other gpio we only have to change one thing. We dont need to go find where we did the gpio pinmux select.",
+      "parentUuid": "ac668ddf_e672e751",
+      "range": {
+        "startLine": 1587,
+        "startChar": 0,
+        "endLine": 1591,
+        "endChar": 55
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2b120cb_f1c77037",
         "filename": "board/cr50/gpio.inc",
         "patchSetId": 2
