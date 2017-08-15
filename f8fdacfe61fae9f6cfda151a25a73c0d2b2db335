@@ -91,6 +91,30 @@
       "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26c3accb_598d8c29",
+        "filename": "chip/stm32/usb_hw.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-15T00:04:19Z",
+      "side": 1,
+      "message": "Right, I should have a _least_ added a comment... This is a hacky type-checker...\n\n__attribute__ ((alias(..))) does not check the function types, so when I changed the function argument, the compiler didn\u0027t complain at all...",
+      "parentUuid": "705cd665_fa9f3cfc",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
