@@ -4,6 +4,7 @@
  */
 #include "config.h"
 #include "rwsig.h"
+#include "sha256.h"
 
 #define STRINGIFY0(name) #name
 #define STRINGIFY(name) STRINGIFY0(name)
@@ -157,6 +158,17 @@ SECTIONS
         __usb_desc_end = .;
         . = ALIGN(4);
         KEEP(*(.rodata.usb_ep))
+
+#ifdef CONFIG_TOUCHPAD_HASH_FW
+        __touchpad_fw_hash = .;
+        KEEP(*(.rodata.touchpad_fw_hash))
+        __touchpad_fw_hash_end = .;
+
+        ASSERT((__touchpad_fw_hash_end - __touchpad_fw_hash) ==
+                        (SHA256_DIGEST_SIZE * CONFIG_TOUCHPAD_VIRTUAL_SIZE
+                                / CONFIG_UPDATE_PDU_SIZE),
+	        "Incorrect trackpad FW hashes size") ;
+#endif
 
         . = ALIGN(4);
         *(.rodata*)
