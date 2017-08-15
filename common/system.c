@@ -1377,6 +1377,11 @@ int system_can_boot_ap(void)
 	return power_good;
 }
 
+int system_set_active_slot(enum flash_rw_slot slot)
+{
+	return system_set_bbram(SYSTEM_BBRAM_IDX_TRY_SLOT, slot);
+}
+
 #ifdef CONFIG_SERIALNO_LEN
 /* By default, read serial number from flash, can be overridden. */
 #if defined(CONFIG_FLASH_PSTATE) && defined(CONFIG_FLASH_PSTATE_BANK)
