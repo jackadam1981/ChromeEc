@@ -3831,11 +3831,15 @@ static int hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pd_chip_info *p = args->params;
 	struct ec_response_pd_chip_info *r = args->response, *info;
+	int status;
 
 	if (p->port >= CONFIG_USB_PD_PORT_COUNT)
 		return EC_RES_INVALID_PARAM;
 
-	if (tcpm_get_chip_info(p->port, p->renew, &info))
+	pd_set_suspend(p->port, 1);
+	status = tcpm_get_chip_info(p->port, p->renew, &info);
+	pd_set_suspend(p->port, 0);
+	if (status)
 		return EC_RES_ERROR;
 
 	memcpy(r, info, sizeof(*r));
