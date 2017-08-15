@@ -52,6 +52,24 @@
       "revId": "833986e7fb4b15094853685e5281ef9f26a87fbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e9df18d_d9696df1",
+        "filename": "util/export_taskinfo.so.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-15T02:03:40Z",
+      "side": 1,
+      "message": "(s/guard/#else branches with #errors/)",
+      "parentUuid": "d1fe361d_e471afc0",
+      "revId": "833986e7fb4b15094853685e5281ef9f26a87fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
