@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92801b78_69ccc50b",
+        "filename": "util/export_taskinfo.so.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-15T00:21:39Z",
+      "side": 1,
+      "message": "What exactly is pulling this .so file, where you need to build it without -DEXPORT_TASKINFO?",
+      "revId": "833986e7fb4b15094853685e5281ef9f26a87fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
