@@ -379,14 +379,19 @@ test_mockable int system_unsafe_to_overwrite(uint32_t offset, uint32_t size)
 		r_size = CONFIG_RO_SIZE;
 		break;
 	case SYSTEM_IMAGE_RW:
-		r_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
-			   CONFIG_RW_STORAGE_OFF;
+		r_offset = flash_get_rw_offset(FLASH_RW_SLOT_A);
 		r_size = CONFIG_RW_SIZE;
 #ifdef CONFIG_RWSIG
 		/* Allow RW sig to be overwritten */
 		r_size -= CONFIG_RW_SIG_SIZE;
 #endif
 		break;
+#ifdef CONFIG_VBOOT_EFS
+	case SYSTEM_IMAGE_RW_B:
+		r_offset = flash_get_rw_offset(FLASH_RW_SLOT_B);
+		r_size = CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE;
+		break;
+#endif
 	default:
 		return 0;
 	}
@@ -497,6 +502,11 @@ static void jump_to_image(uintptr_t init_addr)
 	resetvec();
 }
 
+int system_is_rw_image(enum system_image_copy_t copy)
+{
+	return copy == SYSTEM_IMAGE_RW || copy == SYSTEM_IMAGE_RW_B;
+}
+
 int system_run_image_copy(enum system_image_copy_t copy)
 {
 	uintptr_t base;
@@ -515,7 +525,7 @@ int system_run_image_copy(enum system_image_copy_t copy)
 			return EC_ERROR_ACCESS_DENIED;
 
 		/* Target image must be RW image */
-		if (copy != SYSTEM_IMAGE_RW)
+		if (!system_is_rw_image(copy))
 			return EC_ERROR_ACCESS_DENIED;
 
 		/* Jumping must still be enabled */
@@ -563,6 +573,19 @@ int system_run_image_copy(enum system_image_copy_t copy)
 	return EC_ERROR_UNKNOWN;
 }
 
+/*
+ * This is defined in system.c instead of flash.c because it's called even
+ * on the boards which don't include flash.o. (e.g. hadoken, stm32l476g-eval)
+ */
+uint32_t flash_get_rw_offset(enum flash_rw_slot slot)
+{
+#ifdef CONFIG_VBOOT_EFS
+	if (slot == FLASH_RW_SLOT_B)
+		return CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_B_STORAGE_OFF;
+#endif
+	return CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF;
+}
+
 static const struct image_data *system_get_image_data(
 					enum system_image_copy_t copy)
 {
@@ -588,9 +611,17 @@ static const struct image_data *system_get_image_data(
 	 * Read the version information from the proper location
 	 * on storage.
 	 */
-	addr += (copy == SYSTEM_IMAGE_RW) ?
-		CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF :
-		CONFIG_EC_PROTECTED_STORAGE_OFF + CONFIG_RO_STORAGE_OFF;
+	switch (copy) {
+	case SYSTEM_IMAGE_RW:
+		addr += flash_get_rw_offset(FLASH_RW_SLOT_A);
+		break;
+	case SYSTEM_IMAGE_RW_B:
+		addr += flash_get_rw_offset(FLASH_RW_SLOT_B);
+		break;
+	default:
+		addr += CONFIG_EC_PROTECTED_STORAGE_OFF + CONFIG_RO_STORAGE_OFF;
+		break;
+	}
 
 #ifdef CONFIG_MAPPED_STORAGE
 	addr += CONFIG_MAPPED_STORAGE_BASE;
@@ -1147,10 +1178,12 @@ DECLARE_CONSOLE_COMMAND(sysrq, command_sysrq,
 static int host_command_get_version(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_version *r = args->response;
+	enum flash_rw_slot active_slot = flash_get_active_slot();
 
 	strzcpy(r->version_string_ro, system_get_version(SYSTEM_IMAGE_RO),
 		sizeof(r->version_string_ro));
-	strzcpy(r->version_string_rw, system_get_version(SYSTEM_IMAGE_RW),
+	strzcpy(r->version_string_rw,
+		system_get_version(flash_slot_to_image(active_slot)),
 		sizeof(r->version_string_rw));
 
 	switch (system_get_image_copy()) {
@@ -1158,6 +1191,7 @@ static int host_command_get_version(struct host_cmd_handler_args *args)
 		r->current_image = EC_IMAGE_RO;
 		break;
 	case SYSTEM_IMAGE_RW:
+	case SYSTEM_IMAGE_RW_B:
 		r->current_image = EC_IMAGE_RW;
 		break;
 	default:

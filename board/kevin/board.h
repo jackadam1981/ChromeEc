@@ -204,6 +204,8 @@
 #ifdef BOARD_GRU
 #undef CONFIG_CMD_I2C_XFER
 #undef CONFIG_CMD_SHMEM
+#undef CONFIG_CMD_USBMUX
+#undef CONFIG_CMD_WAITMS
 #endif
 
 /*
