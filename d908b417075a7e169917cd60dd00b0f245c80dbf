@@ -359,6 +359,30 @@
     },
     {
       "key": {
+        "uuid": "938de1e2_5e714d73",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-15T01:34:25Z",
+      "side": 1,
+      "message": "I look at it slightly differently: the failure is extremely rare, one needs to run thousands of cycles of tests to trigger the failure on a subset of devices under test. \n\nWhen the failure happens, the only respite is reboot of the device, which is unacceptable, and this is what this patch is meant to assure to avoid.\n\nI.e., this patch is a fallback for this extremely rare failure case, even if a user experiences some interim issue, it is not a big deal IMO.\n\nIncreasing polling interval reduces consumed power (not sure how significantly). Let\u0027s discuss this offline.",
+      "parentUuid": "600523dc_916b7543",
+      "range": {
+        "startLine": 148,
+        "startChar": 17,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6ceaff0_763f5a05",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 2
