@@ -16,6 +16,24 @@
       "revId": "833986e7fb4b15094853685e5281ef9f26a87fbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cf03f70_069e7553",
+        "filename": "util/export_taskinfo.so.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-15T01:37:12Z",
+      "side": 1,
+      "message": "The rule of build-utils uses cmd_c_to_build to do the final compilation and linking, and the export_taskinfo.so.c is added to the arguments automatically (with the two object files built by cmd_to_taskinfo). Since the two object files already contain what we want, I leave the export_taskinfo.so.c empty in this final step by compiling without -DEXPORT_TASKINFO.\n\nIt is possible that we only use cmd_to_taskinfo to build RO part first, and use cmd_c_to_build to build RW part in the final step (then link with the RO part). But then there will be a risk that the build options of both parts become inconsistent. Also I need to make sure \"-DSECTION_IS_*\" is always appended at tail to override the same definition in $(BUILD_CFLAGS).",
+      "parentUuid": "92801b78_69ccc50b",
+      "revId": "833986e7fb4b15094853685e5281ef9f26a87fbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
