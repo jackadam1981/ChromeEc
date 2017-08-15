@@ -1089,6 +1089,8 @@ enum ec_feature_code {
 	EC_FEATURE_RWSIG = 30,
 	/* EC has device events support */
 	EC_FEATURE_DEVICE_EVENT = 31,
+	/* EC has slot RW-A and RW-B */
+	EC_FEATURE_RW_AB = 32,
 };
 
 #define EC_FEATURE_MASK_0(event_code) (1UL << (event_code % 32))
@@ -1359,6 +1361,14 @@ enum ec_flash_region {
 	EC_FLASH_REGION_RO = 0,
 	/* Region which holds rewritable EC image */
 	EC_FLASH_REGION_RW,
+	/* Region which holds updatable image */
+	EC_FLASH_REGION_UPDATE,
+	/* Same as EC_FLASH_REGION_UPDATE but includes only used portion */
+	EC_FLASH_REGION_UPDATE_USED,
+	/* Region which holds active (running) RW image */
+	EC_FLASH_REGION_ACTIVE,
+	/* Same as EC_FLASH_REGION_ACTIVE but includes only used portion */
+	EC_FLASH_REGION_ACTIVE_USED,
 	/*
 	 * Region which should be write-protected in the factory (a superset of
 	 * EC_FLASH_REGION_RO)
@@ -1921,14 +1931,6 @@ enum ec_vboot_hash_status {
 	EC_VBOOT_HASH_STATUS_DONE = 1, /* Finished computing a hash */
 	EC_VBOOT_HASH_STATUS_BUSY = 2, /* Busy computing a hash */
 };
-
-/*
- * Special values for offset for EC_VBOOT_HASH_START and EC_VBOOT_HASH_RECALC.
- * If one of these is specified, the EC will automatically update offset and
- * size to the correct values for the specified image (RO or RW).
- */
-#define EC_VBOOT_HASH_OFFSET_RO 0xfffffffe
-#define EC_VBOOT_HASH_OFFSET_RW 0xfffffffd
 
 /*****************************************************************************/
 /*
@@ -4257,6 +4259,13 @@ enum rwsig_action {
 
 struct __ec_align4 ec_params_rwsig_action {
 	uint32_t action;
+};
+
+/* Switch active slot */
+#define EC_CMD_SWITCH_SLOT 0x11E
+
+struct __ec_align1 ec_response_switch_slot {
+	uint8_t slot;	/* Activated slot */
 };
 
 /*****************************************************************************/

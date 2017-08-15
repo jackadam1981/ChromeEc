@@ -1286,6 +1286,43 @@ static int flash_command_protect(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
+enum flash_rw_slot flash_get_active_slot(void)
+{
+	enum flash_rw_slot slot;
+	if (system_get_bbram(SYSTEM_BBRAM_IDX_TRY_SLOT, &slot))
+		slot = FLASH_RW_SLOT_A;
+	return slot;
+}
+
+enum flash_rw_slot flash_get_update_slot(void)
+{
+	return 1 - flash_get_active_slot();
+}
+
+enum system_image_copy_t flash_slot_to_image(enum flash_rw_slot slot)
+{
+	return slot == FLASH_RW_SLOT_A ? SYSTEM_IMAGE_RW_A : SYSTEM_IMAGE_RW_B;
+}
+
+uint32_t flash_get_rw_offset(enum flash_rw_slot slot)
+{
+	if (slot == FLASH_RW_SLOT_A)
+		return CONFIG_EC_WRITABLE_STORAGE_OFF +
+				CONFIG_RW_A_STORAGE_OFF - EC_FLASH_REGION_START;
+	else /* FLASH_RW_SLOT_B */
+		return CONFIG_EC_WRITABLE_STORAGE_OFF +
+				CONFIG_RW_B_STORAGE_OFF - EC_FLASH_REGION_START;
+}
+
+uint32_t flash_get_rw_size(enum flash_rw_slot slot)
+{
+#ifdef CONFIG_VBOOT_EFS
+	return CONFIG_RW_SIZE;
+#else
+	return system_get_image_used(flash_slot_to_image(slot));
+#endif
+}
+
 /*
  * TODO(crbug.com/239197) : Adding both versions to the version mask is a
  * temporary workaround for a problem in the cros_ec driver. Drop
@@ -1299,6 +1336,7 @@ static int flash_command_region_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_region_info *p = args->params;
 	struct ec_response_flash_region_info *r = args->response;
+	enum flash_rw_slot slot;
 
 	switch (p->region) {
 	case EC_FLASH_REGION_RO:
@@ -1313,6 +1351,18 @@ static int flash_command_region_info(struct host_cmd_handler_args *args)
 			    EC_FLASH_REGION_START;
 		r->size = CONFIG_RW_SIZE;
 		break;
+#ifdef CONFIG_VBOOT_EFS
+	case EC_FLASH_REGION_ACTIVE:
+		slot = flash_get_active_slot();
+		r->offset = flash_get_rw_offset(slot);
+		r->size = flash_get_rw_size(slot);
+		break;
+	case EC_FLASH_REGION_UPDATE:
+		slot = flash_get_update_slot();
+		r->offset = flash_get_rw_offset(slot);
+		r->size = flash_get_rw_size(slot);
+		break;
+#endif
 	case EC_FLASH_REGION_WP_RO:
 		r->offset = CONFIG_WP_STORAGE_OFF -
 			    EC_FLASH_REGION_START;
