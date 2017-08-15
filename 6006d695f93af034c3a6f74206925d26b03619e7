@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a20b0cee_d472203d",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-15T17:33:24Z",
+      "side": 1,
+      "message": "this is error-prone, you will get random settings depending what was there before.\ngiven we do the init in a single place, put a straight equal.",
+      "range": {
+        "startLine": 307,
+        "startChar": 31,
+        "endLine": 307,
+        "endChar": 34
+      },
+      "revId": "6006d695f93af034c3a6f74206925d26b03619e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06fc8ab3_5fc81bbb",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-15T17:33:24Z",
+      "side": 1,
+      "message": "please define it in chip/stm32/registers.h",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 30
+      },
+      "revId": "6006d695f93af034c3a6f74206925d26b03619e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
