@@ -102,6 +102,61 @@ enum flash_region {
 	FLASH_REGION_COUNT
 };
 
+enum flash_rw_slot {
+	/* Must be 0 and 1 because they are converted by 1 - slot_x. */
+	FLASH_RW_SLOT_A = 0,
+	FLASH_RW_SLOT_B = 1,
+};
+
+/**
+ * Get active slot
+ *
+ * Active slot contains an image which is being executed or will be executed
+ * after sysjump.
+ *
+ * @return Active slot index
+ */
+enum flash_rw_slot flash_get_active_slot(void);
+
+/**
+ * Get updatable (non-active) slot
+ *
+ * @return Updatable slot index
+ */
+enum flash_rw_slot flash_get_update_slot(void);
+
+/**
+ * Set active slot
+ *
+ * @param slot Slot id to be activated.
+ * @return     Non-zero if error.
+ */
+int system_set_active_slot(enum flash_rw_slot slot);
+
+/**
+ * Translate slot index to image index
+ *
+ * @param slot Slot index to convert.
+ * @return     Image index converted from <slot>
+ */
+enum system_image_copy_t flash_slot_to_image(enum flash_rw_slot slot);
+
+/**
+ * Get flash offset of a flash slot
+ *
+ * @param slot Slot index to get the flash offset of.
+ * @return     Flash offset of the slot specified by <slot>
+ */
+uint32_t flash_get_rw_offset(enum flash_rw_slot slot);
+
+/**
+ * Get flash size of a RW slot
+ *
+ * @param slot Slot index to get the flash offset of.
+ * @return     Flash offset of the slot specified by <slot>
+ */
+uint32_t flash_get_rw_size(enum flash_rw_slot slot);
+
 /*****************************************************************************/
 /* Low-level methods, for use by flash_common. */
 

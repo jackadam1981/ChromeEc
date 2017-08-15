@@ -2789,6 +2789,9 @@
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
 
+/* Support early firmware selection */
+#undef CONFIG_VBOOT_EFS
+
 /* Support for secure temporary storage for verified boot */
 #undef CONFIG_VSTORE
 

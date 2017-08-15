@@ -166,7 +166,7 @@ test_mockable __keep int main(void)
 	button_init();
 #endif
 
-#ifndef CONFIG_VBOOT_EC
+#ifndef CONFIG_VBOOT_EFS
 #if defined(CONFIG_RWSIG) && !defined(HAS_TASK_RWSIG)
 	/*
 	 * Check the RW firmware signature and jump to it if it is good.
@@ -189,7 +189,7 @@ test_mockable __keep int main(void)
 		}
 	}
 #endif
-#endif /* !CONFIG_VBOOT_EC */
+#endif /* !CONFIG_VBOOT_EFS */
 
 	/*
 	 * Print the init time.  Not completely accurate because it can't take

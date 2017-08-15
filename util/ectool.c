@@ -6190,6 +6190,8 @@ int cmd_ec_hash(int argc, char *argv[])
 {
 	struct ec_params_vboot_hash p;
 	struct ec_response_vboot_hash r;
+	struct ec_params_flash_region_info reg_p;
+	struct ec_response_flash_region_info reg_r;
 	char *e;
 	int rv;
 
@@ -6227,13 +6229,20 @@ int cmd_ec_hash(int argc, char *argv[])
 		return -1;
 	}
 
+	/* TODO: Support rw_b, update, active */
 	if (!strcasecmp(argv[2], "ro")) {
-		p.offset = EC_VBOOT_HASH_OFFSET_RO;
-		p.size = 0;
+		reg_p.region = EC_FLASH_REGION_RO;
+		ec_command(EC_CMD_FLASH_REGION_INFO, EC_VER_FLASH_REGION_INFO,
+			   &reg_p, sizeof(reg_p), &reg_r, sizeof(reg_r));
+		p.offset = reg_r.offset;
+		p.size = reg_r.size;
 		printf("Hashing EC-RO...\n");
 	} else if (!strcasecmp(argv[2], "rw")) {
-		p.offset = EC_VBOOT_HASH_OFFSET_RW;
-		p.size = 0;
+		reg_p.region = EC_FLASH_REGION_RW;
+		ec_command(EC_CMD_FLASH_REGION_INFO, EC_VER_FLASH_REGION_INFO,
+			   &reg_p, sizeof(reg_p), &reg_r, sizeof(reg_r));
+		p.offset = reg_r.offset;
+		p.size = reg_r.size;
 		printf("Hashing EC-RW...\n");
 	} else if (argc < 4) {
 		fprintf(stderr, "Must specify size\n");
