@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+/* #define CONFIG_BRINGUP */
+
 /*
  * Debug on EVB with CONFIG_CHIPSET_DEBUG
  * Keep WDG disabled and JTAG enabled.

@@ -72,4 +72,12 @@ int espi_vw_enable_wire_int(enum espi_vw_signal signal);
  */
 int espi_vw_disable_wire_int(enum espi_vw_signal signal);
 
+/**
+ * Return pointer to constant eSPI virtual wire signal name
+ *
+ * @param signal vw signal needs to disable interrupt
+ * @return pointer to string or NULL if signal out of range
+ */
+const char *espi_vw_get_wire_name(enum espi_vw_signal signal);
+
 #endif  /* __CROS_EC_ESPI_H */
