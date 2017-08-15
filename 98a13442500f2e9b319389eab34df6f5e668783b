@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e8f9f553_b8a950eb",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-15T00:52:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3e4476f_c4ad191e",
+      "range": {
+        "startLine": 152,
+        "startChar": 42,
+        "endLine": 152,
+        "endChar": 53
+      },
+      "revId": "98a13442500f2e9b319389eab34df6f5e668783b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bc88ad0_da13bfc9",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-14T23:22:34Z",
       "side": 1,
       "message": "Am I following this correctly? (I\u0027m probably not) Does a 1 byte write indicates a register read? If so, should this be \u0027\u003d\u003d\u0027?",
+      "range": {
+        "startLine": 239,
+        "startChar": 6,
+        "endLine": 239,
+        "endChar": 26
+      },
+      "revId": "98a13442500f2e9b319389eab34df6f5e668783b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baedbf60_b314084e",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-15T00:52:21Z",
+      "side": 1,
+      "message": "of course, this should be \u003d\u003d.\n\nI did not catch this while testing because reads and writes are happening all the time, so the counter keeps going unless the interface is stuck.",
+      "parentUuid": "9bc88ad0_da13bfc9",
       "range": {
         "startLine": 239,
         "startChar": 6,
@@ -68,6 +116,30 @@
       "revId": "98a13442500f2e9b319389eab34df6f5e668783b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f4da900_542c619a",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-15T00:52:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d9b060b_9f446a69",
+      "range": {
+        "startLine": 344,
+        "startChar": 38,
+        "endLine": 344,
+        "endChar": 46
+      },
+      "revId": "98a13442500f2e9b319389eab34df6f5e668783b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

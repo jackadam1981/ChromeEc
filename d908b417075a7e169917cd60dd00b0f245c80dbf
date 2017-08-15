@@ -311,6 +311,30 @@
     },
     {
       "key": {
+        "uuid": "7a328f61_de1d589f",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-15T00:52:21Z",
+      "side": 1,
+      "message": "we sure don\u0027t have 3 seconds to reliably detect this condition, your calculations make sense.\n\nI just don\u0027t think we have to recover extremely quickly, few seconds seems fine to me, especially given how seldom this condition occurs.\n\nOn top of that I don\u0027t want this to be a burden on the Cr50 CPU, so this is why I picked 3 second interval, seems good enough to me, but I am open for improvement suggestions :)",
+      "parentUuid": "698b8787_5107e197",
+      "range": {
+        "startLine": 148,
+        "startChar": 17,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6ceaff0_763f5a05",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 2
@@ -322,6 +346,30 @@
       "writtenOn": "2017-08-14T23:17:53Z",
       "side": 1,
       "message": "for my understanding, why receiving a single byte doesn\u0027t count?",
+      "range": {
+        "startLine": 239,
+        "startChar": 22,
+        "endLine": 239,
+        "endChar": 26
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e94c7f9c_c1f4f853",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-15T00:52:21Z",
+      "side": 1,
+      "message": "yes, my mistake, should be \u003d\u003d, and this indicates a read request, in which case the received value is the TPM register address in the i2c scope, the size to read is implicitly determined by the register number.",
+      "parentUuid": "a6ceaff0_763f5a05",
       "range": {
         "startLine": 239,
         "startChar": 22,
