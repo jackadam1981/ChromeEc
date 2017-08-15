@@ -335,6 +335,30 @@
     },
     {
       "key": {
+        "uuid": "600523dc_916b7543",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-08-15T01:24:08Z",
+      "side": 1,
+      "message": "Absolutely agree re burden. And 10ms is unrealistic. How about 100/200/300ms instead of 3s? Is that too much?\n\nIn general, now, if we wait \u003e ~3*20 ms (3 retries for each command), sending the tpm command, if it happens at this moment, will fail at the driver level. And some upper-level logic may ignore the specifics of the error and decide that the error is unrecoverable. The consequences may vary from transparently retrying later to unexpected login failures or other weird behavior to potentially loss of data (though that should be prevented in those upper layers, if possible now). \n\nIn all cases, it is the responsibility of the callers to retry for some time before giving up in case of comm errors. But the shorter the potential wait, the better. E.g. for cases like TPM_Startup sent by f/w on resume, where we can\u0027t move forward until the command succeeds.",
+      "parentUuid": "7a328f61_de1d589f",
+      "range": {
+        "startLine": 148,
+        "startChar": 17,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "d908b417075a7e169917cd60dd00b0f245c80dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6ceaff0_763f5a05",
         "filename": "chip/g/i2cs.c",
         "patchSetId": 2
