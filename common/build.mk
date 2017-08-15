@@ -148,3 +148,20 @@ ifneq ($(CONFIG_RSA_OPTIMIZED),)
 $(out)/RW/common/rsa.o: CFLAGS+=-O3
 $(out)/RO/common/rsa.o: CFLAGS+=-O3
 endif
+
+ifneq ($(CONFIG_TOUCHPAD_HASH_FW),)
+$(out)/RO/common/update_fw.o: $(out)/touchpad_fw_hash.h
+$(out)/RW/common/update_fw.o: $(out)/touchpad_fw_hash.h
+
+$(out)/touchpad_fw_hash.h: $(out)/util/gen_touchpad_hash $(out)/.touchpad_fw
+	$(call quiet,tp_hash,TPHASH )
+
+$(out)/.touchpad_fw: $(TOUCHPAD_FW)
+	@echo $(TOUCHPAD_FW) > $@
+
+old_touchpad_fw := $(shell cat $(out)/.touchpad_fw 2> /dev/null )
+
+ifneq ($(TOUCHPAD_FW),$(old_touchpad_fw))
+.PHONY: $(out)/.touchpad_fw
+endif
+endif
