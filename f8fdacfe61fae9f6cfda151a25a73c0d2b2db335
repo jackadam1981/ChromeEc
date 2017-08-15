@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "98858eac_97a14f23",
+        "filename": "chip/stm32/usb_console.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-15T05:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6acb496_03321a5b",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 30
+      },
+      "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "603d5a02_3b1bf5d4",
         "filename": "chip/stm32/usb_endpoints.S",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-14T23:54:18Z",
       "side": 1,
       "message": "can we update the dwc interface too ?\n(even if the implementation just silently discards the parameter for now)",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 32
+      },
+      "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a0b9a32_f1745843",
+        "filename": "chip/stm32/usb_endpoints.S",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-15T05:06:53Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "603d5a02_3b1bf5d4",
       "range": {
         "startLine": 68,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c26af100_05d993c1",
+        "filename": "chip/stm32/usb_hid_touchpad.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-15T05:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba525ab1_3a61c1cf",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 2
+      },
+      "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -115,6 +187,30 @@
       "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5a5de72_6c8e7694",
+        "filename": "chip/stm32/usb_hw.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-15T05:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26c3accb_598d8c29",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "f8fdacfe61fae9f6cfda151a25a73c0d2b2db335",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
