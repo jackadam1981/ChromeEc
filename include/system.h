@@ -576,4 +576,12 @@ enum flash_rw_slot {
  */
 uint32_t flash_get_rw_offset(enum flash_rw_slot slot);
 
+/**
+ * Set active slot
+ *
+ * @param slot Slot id to be activated.
+ * @return     Non-zero if error.
+ */
+int system_set_active_slot(enum flash_rw_slot slot);
+
 #endif  /* __CROS_EC_SYSTEM_H */
