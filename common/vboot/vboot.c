@@ -11,6 +11,7 @@
 #include "charge_manager.h"
 #include "chipset.h"
 #include "console.h"
+#include "flash.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "rsa.h"
@@ -24,11 +25,6 @@
 
 #define CPRINTS(format, args...) cprints(CC_VBOOT,"VB " format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_VBOOT,"VB " format, ## args)
-
-enum vboot_ec_slot {
-	VBOOT_EC_SLOT_A,
-	VBOOT_EC_SLOT_B,
-};
 
 static int has_matrix_keyboard(void)
 {
@@ -49,7 +45,7 @@ static int is_low_power_ap_boot_supported(void)
 	return 0;
 }
 
-static int verify_slot(int slot)
+static int verify_slot(enum flash_rw_slot slot)
 {
 	const struct vb21_packed_key *vb21_key;
 	const struct vb21_signature *vb21_sig;
@@ -58,7 +54,7 @@ static int verify_slot(int slot)
 	const uint8_t *data;
 	int len;
 
-	CPRINTS("Verifying RW_%c", slot == VBOOT_EC_SLOT_A ? 'A' : 'B');
+	CPRINTS("Verifying RW_%c", slot == FLASH_RW_SLOT_A ? 'A' : 'B');
 
 	vb21_key = (const struct vb21_packed_key *)(
 			CONFIG_MAPPED_STORAGE_BASE +
@@ -71,7 +67,7 @@ static int verify_slot(int slot)
 	key = (const struct rsa_public_key *)
 		((const uint8_t *)vb21_key + vb21_key->key_offset);
 
-	if (slot == VBOOT_EC_SLOT_A) {
+	if (slot == FLASH_RW_SLOT_A) {
 		data = (const uint8_t *)(CONFIG_MAPPED_STORAGE_BASE +
 				CONFIG_EC_WRITABLE_STORAGE_OFF +
 				CONFIG_RW_A_STORAGE_OFF);
@@ -107,19 +103,18 @@ static int verify_slot(int slot)
 		return EC_ERROR_INVAL;
 	}
 
+	CPRINTS("Verified RW_%c", slot == FLASH_RW_SLOT_A ? 'A' : 'B');
+
 	return EC_SUCCESS;
 }
 
 static int verify_and_jump(void)
 {
-	uint8_t slot;
+	enum flash_rw_slot slot;
 	int rv;
 
 	/* 1. Decide which slot to try */
-	if (system_get_bbram(SYSTEM_BBRAM_IDX_TRY_SLOT, &slot)) {
-		CPRINTS("Failed to read try slot");
-		slot = VBOOT_EC_SLOT_A;
-	}
+	slot = flash_get_active_slot();
 
 	/* 2. Verify the slot */
 	rv = verify_slot(slot);
@@ -136,10 +131,11 @@ static int verify_and_jump(void)
 	}
 
 	/* 3. Jump (and reboot) */
-	system_run_image_copy(slot == VBOOT_EC_SLOT_A ?
-			SYSTEM_IMAGE_RW : SYSTEM_IMAGE_RW_B);
+	rv = system_run_image_copy(flash_slot_to_image(slot));
+	if (rv)
+		CPRINTS("Failed to jump (%d)", rv);
 
-	return EC_ERROR_UNKNOWN;
+	return rv;
 }
 
 /* Request more power: charging battery or more powerful AC adapter */

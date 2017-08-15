@@ -248,10 +248,11 @@ static void vboot_hash_init(void)
 	      EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY)))
 #endif
 	{
+		enum flash_rw_slot slot = flash_get_active_slot();
 		/* Start computing the hash of RW firmware */
-		vboot_hash_start(CONFIG_EC_WRITABLE_STORAGE_OFF +
-				 CONFIG_RW_STORAGE_OFF,
-				 system_get_image_used(SYSTEM_IMAGE_RW),
+		vboot_hash_start(flash_get_rw_offset(slot),
+				 system_get_image_used(
+						flash_slot_to_image(slot)),
 				 NULL, 0);
 	}
 }
@@ -352,27 +353,13 @@ DECLARE_CONSOLE_COMMAND(hash, command_hash,
 /****************************************************************************/
 /* Host commands */
 
-/**
- * Return the offset of the RO or RW region if the either region is specifically
- * requested otherwise return the current hash offset.
- */
-static int get_offset(int offset)
-{
-	if (offset == EC_VBOOT_HASH_OFFSET_RO)
-		return CONFIG_EC_PROTECTED_STORAGE_OFF + CONFIG_RO_STORAGE_OFF;
-	if (offset == EC_VBOOT_HASH_OFFSET_RW)
-		return CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF;
-	return data_offset;
-}
-
 /* Fill in the response with the current hash status */
 static void fill_response(struct ec_response_vboot_hash *r,
 			  int request_offset)
 {
 	if (in_progress)
 		r->status = EC_VBOOT_HASH_STATUS_BUSY;
-	else if (get_offset(request_offset) == data_offset && hash &&
-		 !want_abort) {
+	else if (request_offset == data_offset && hash && !want_abort) {
 		r->status = EC_VBOOT_HASH_STATUS_DONE;
 		r->hash_type = EC_VBOOT_HASH_TYPE_SHA256;
 		r->digest_size = SHA256_DIGEST_SIZE;
@@ -392,8 +379,6 @@ static void fill_response(struct ec_response_vboot_hash *r,
  */
 static int host_start_hash(const struct ec_params_vboot_hash *p)
 {
-	int offset = p->offset;
-	int size = p->size;
 	int rv;
 
 	/* Sanity-check input params */
@@ -402,17 +387,7 @@ static int host_start_hash(const struct ec_params_vboot_hash *p)
 	if (p->nonce_size > sizeof(p->nonce_data))
 		return EC_RES_INVALID_PARAM;
 
-	/* Handle special offset values */
-	if (offset == EC_VBOOT_HASH_OFFSET_RO) {
-		offset = CONFIG_EC_PROTECTED_STORAGE_OFF +
-			 CONFIG_RO_STORAGE_OFF;
-		size = system_get_image_used(SYSTEM_IMAGE_RO);
-	} else if (p->offset == EC_VBOOT_HASH_OFFSET_RW) {
-		offset = CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF;
-		size = system_get_image_used(SYSTEM_IMAGE_RW);
-	}
-	rv = vboot_hash_start(offset, size, p->nonce_data, p->nonce_size);
-
+	rv = vboot_hash_start(p->offset, p->size, p->nonce_data, p->nonce_size);
 	if (rv == EC_SUCCESS)
 		return EC_RES_SUCCESS;
 	else if (rv == EC_ERROR_INVAL)
