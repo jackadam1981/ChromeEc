@@ -1308,6 +1308,13 @@ int host_command_reboot(struct host_cmd_handler_args *args)
 	 */
 	memcpy(&p, args->params, sizeof(p));
 
+#ifdef CONFIG_VBOOT_EFS  /* #ifdef isn't necessary but for saving space */
+	if (p.flags & EC_REBOOT_FLAG_SWITCH_RW_SLOT) {
+		if (system_set_active_slot(flash_get_update_slot()))
+			CPRINTS("Failed to set active slot");
+	}
+#endif
+
 	if (p.cmd == EC_REBOOT_CANCEL) {
 		/* Cancel pending reboot */
 		reboot_at_shutdown = EC_REBOOT_CANCEL;
