@@ -22,6 +22,30 @@
       "revId": "19554c950e3c649ab9bd5d2b64121ee2c3a4d162",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0afc523b_4878f967",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-15T20:55:06Z",
+      "side": 1,
+      "message": "Right, will fix it.",
+      "parentUuid": "cacfd75b_026b61e2",
+      "range": {
+        "startLine": 307,
+        "startChar": 1,
+        "endLine": 307,
+        "endChar": 7
+      },
+      "revId": "19554c950e3c649ab9bd5d2b64121ee2c3a4d162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
