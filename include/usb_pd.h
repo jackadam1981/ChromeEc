@@ -1441,8 +1441,9 @@ int pd_rx_started(int port);
  * Suspend the PD task.
  * @param port USB-C port number
  * @param enable pass 0 to resume, anything else to suspend
+ * @return EC_SUCCESS, or EC_ERROR_* on failure
  */
-void pd_set_suspend(int port, int enable);
+int pd_set_suspend(int port, int enable);
 
 /**
  * Check if the port has been initialized and PD task has not been
