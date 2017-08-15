@@ -89,6 +89,10 @@ extern const void *__irqhandler[];
 /* Shared memory buffer.  Use via shared_mem.h interface. */
 extern uint8_t __shared_mem_buf[];
 
+/* Touchpad FW hashes. */
+extern uint8_t __touchpad_fw_hash[];
+extern uint8_t __touchpad_fw_hash_end[];
+
 /* Image sections used by the TPM2 library */
 extern uint8_t *__bss_libtpm2_start;
 extern uint8_t *__bss_libtpm2_end;

@@ -99,6 +99,16 @@ cmd_taskinfo = $(CPP) -P -DSECTION_IS_$(3) \
 	-imacros $(PROJECT).tasklist include/task_filter.h \
 	-o $@
 
+ifneq ($(CONFIG_TOUCHPAD_HASH_FW),)
+	ifneq ($(TOUCHPAD_FW),)
+		touchpad_fw = -f $(TOUCHPAD_FW)
+	endif
+	cmd_tp_hash = $(out)/util/gen_touchpad_hash -b $(BOARD) \
+			$(touchpad_fw) -o $@
+else
+	cmd_tp_hash =
+endif
+
 # commands for RSA signature: rwsig does not need to sign the whole image
 # (it signs the RW part separately). usbpd1 type needs to sign the final image.
 ifeq ($(CONFIG_RWSIG_TYPE_RWSIG),)
@@ -375,6 +385,14 @@ $(out)/RO/%.o:%.S
 $(out)/RW/%.o:%.S
 	$(call quiet,c_to_o,AS     )
 
+# Conditionally force the rebuilding of ec_version.h only if it would be
+# changed.
+old_version_hash := $(shell cat $(out)/ec_version.h 2> /dev/null | md5sum -)
+new_version_hash := $(shell BOARD=$(BOARD) ./util/getversion.sh | md5sum -)
+
+ifneq ($(old_version_hash),$(new_version_hash))
+.PHONY: $(out)/ec_version.h
+endif
 
 # Conditionally force the rebuilding of ec_version.h only if it would be
 # changed.
