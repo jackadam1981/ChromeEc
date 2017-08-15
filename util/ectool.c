@@ -6185,6 +6185,24 @@ static int ec_hash_print(const struct ec_response_vboot_hash *r)
 	return 0;
 }
 
+static int get_flash_region_info(uint32_t region,
+				 uint32_t *offset, uint32_t *size)
+{
+	struct ec_params_flash_region_info reg_p;
+	struct ec_response_flash_region_info reg_r;
+	int rv;
+
+	reg_p.region = region;
+	rv = ec_command(EC_CMD_FLASH_REGION_INFO,
+			EC_VER_FLASH_REGION_INFO,
+			&reg_p, sizeof(reg_p), &reg_r, sizeof(reg_r));
+	if (rv < 0) {
+		fprintf(stderr, "Failed to get flash region info (%d)\n", rv);
+		return rv;
+	}
+
+	return 0;
+}
 
 int cmd_ec_hash(int argc, char *argv[])
 {
@@ -6227,13 +6245,18 @@ int cmd_ec_hash(int argc, char *argv[])
 		return -1;
 	}
 
+	/* TODO(dnojiri): Support rw_b, update, active */
 	if (!strcasecmp(argv[2], "ro")) {
-		p.offset = EC_VBOOT_HASH_OFFSET_RO;
-		p.size = 0;
+		rv = get_flash_region_info(EC_FLASH_REGION_RO,
+					   &p.offset, &p.size);
+		if (rv)
+			return rv;
 		printf("Hashing EC-RO...\n");
 	} else if (!strcasecmp(argv[2], "rw")) {
-		p.offset = EC_VBOOT_HASH_OFFSET_RW;
-		p.size = 0;
+		rv = get_flash_region_info(EC_FLASH_REGION_RW,
+					   &p.offset, &p.size);
+		if (rv)
+			return rv;
 		printf("Hashing EC-RW...\n");
 	} else if (argc < 4) {
 		fprintf(stderr, "Must specify size\n");

@@ -42,10 +42,19 @@ enum system_image_copy_t {
 	SYSTEM_IMAGE_UNKNOWN = 0,
 	SYSTEM_IMAGE_RO,
 	SYSTEM_IMAGE_RW,
+	SYSTEM_IMAGE_RW_A = SYSTEM_IMAGE_RW,
 	/* Some systems may have these too */
 	SYSTEM_IMAGE_RO_B,
 	SYSTEM_IMAGE_RW_B,
 };
+
+/**
+ * Checks if running image is RW or not
+ *
+ * @param copy Image index to check
+ * @return     True if <copy> is a RW image or false otherwise.
+ */
+int system_is_rw_image(enum system_image_copy_t copy);
 
 /**
  * Pre-initializes the module.  This occurs before clocks or tasks are
@@ -176,17 +185,6 @@ const char *system_get_image_copy_string(void);
  * Return a text description of the passed image copy parameter.
  */
 const char *system_image_copy_t_to_string(enum system_image_copy_t copy);
-
-/**
- * Return the number of bytes used in the specified image.
- *
- * This is the actual size of code+data in the image, as opposed to the
- * amount of space reserved in flash for that image.
- *
- * @return actual image size in bytes, 0 if the image contains no content or
- * error.
- */
-int system_get_image_used(enum system_image_copy_t copy);
 
 /**
  * Jump to the specified image copy.

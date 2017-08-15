@@ -387,6 +387,13 @@ test_mockable int system_unsafe_to_overwrite(uint32_t offset, uint32_t size)
 		r_size -= CONFIG_RW_SIG_SIZE;
 #endif
 		break;
+#ifdef CONFIG_VBOOT_EFS
+	case SYSTEM_IMAGE_RW_B:
+		r_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
+			   CONFIG_RW_B_STORAGE_OFF;
+		r_size = CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE;
+		break;
+#endif
 	default:
 		return 0;
 	}
@@ -497,6 +504,11 @@ static void jump_to_image(uintptr_t init_addr)
 	resetvec();
 }
 
+int system_is_rw_image(enum system_image_copy_t copy)
+{
+	return copy == SYSTEM_IMAGE_RW || copy == SYSTEM_IMAGE_RW_B;
+}
+
 int system_run_image_copy(enum system_image_copy_t copy)
 {
 	uintptr_t base;
@@ -515,7 +527,7 @@ int system_run_image_copy(enum system_image_copy_t copy)
 			return EC_ERROR_ACCESS_DENIED;
 
 		/* Target image must be RW image */
-		if (copy != SYSTEM_IMAGE_RW)
+		if (!system_is_rw_image(copy))
 			return EC_ERROR_ACCESS_DENIED;
 
 		/* Jumping must still be enabled */
@@ -588,9 +600,20 @@ static const struct image_data *system_get_image_data(
 	 * Read the version information from the proper location
 	 * on storage.
 	 */
-	addr += (copy == SYSTEM_IMAGE_RW) ?
-		CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF :
-		CONFIG_EC_PROTECTED_STORAGE_OFF + CONFIG_RO_STORAGE_OFF;
+	switch (copy) {
+	case SYSTEM_IMAGE_RW:
+		addr += CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF;
+		break;
+#ifdef CONFIG_VBOOT_EFS
+	case SYSTEM_IMAGE_RW_B:
+		addr += CONFIG_EC_WRITABLE_STORAGE_OFF +
+				CONFIG_RW_B_STORAGE_OFF;
+		break;
+#endif
+	default:
+		addr += CONFIG_EC_PROTECTED_STORAGE_OFF + CONFIG_RO_STORAGE_OFF;
+		break;
+	}
 
 #ifdef CONFIG_MAPPED_STORAGE
 	addr += CONFIG_MAPPED_STORAGE_BASE;
@@ -628,13 +651,6 @@ int32_t system_get_rollback_version(enum system_image_copy_t copy)
 	return data ? data->rollback_version : -1;
 }
 #endif
-
-int system_get_image_used(enum system_image_copy_t copy)
-{
-	const struct image_data *data = system_get_image_data(copy);
-
-	return data ? MAX((int)data->size, 0) : 0;
-}
 
 int system_get_board_version(void)
 {
@@ -1147,10 +1163,12 @@ DECLARE_CONSOLE_COMMAND(sysrq, command_sysrq,
 static int host_command_get_version(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_version *r = args->response;
+	enum flash_rw_slot slot = flash_get_active_slot();
 
 	strzcpy(r->version_string_ro, system_get_version(SYSTEM_IMAGE_RO),
 		sizeof(r->version_string_ro));
-	strzcpy(r->version_string_rw, system_get_version(SYSTEM_IMAGE_RW),
+	strzcpy(r->version_string_rw,
+		system_get_version(flash_slot_to_image(slot)),
 		sizeof(r->version_string_rw));
 
 	switch (system_get_image_copy()) {
@@ -1158,6 +1176,7 @@ static int host_command_get_version(struct host_cmd_handler_args *args)
 		r->current_image = EC_IMAGE_RO;
 		break;
 	case SYSTEM_IMAGE_RW:
+	case SYSTEM_IMAGE_RW_B:
 		r->current_image = EC_IMAGE_RW;
 		break;
 	default:
@@ -1274,6 +1293,9 @@ int host_command_reboot(struct host_cmd_handler_args *args)
 	 */
 	memcpy(&p, args->params, sizeof(p));
 
+	if (p.flags & EC_REBOOT_FLAG_SWITCH_RW_SLOT)
+		system_set_active_slot(flash_get_update_slot());
+
 	if (p.cmd == EC_REBOOT_CANCEL) {
 		/* Cancel pending reboot */
 		reboot_at_shutdown = EC_REBOOT_CANCEL;
@@ -1336,6 +1358,11 @@ int system_can_boot_ap(void)
 		CPRINTS("Not enough power to boot: chg=%d pwr=%d", soc, pow);
 
 	return power_good;
+}
+
+int system_set_active_slot(enum flash_rw_slot slot)
+{
+	return system_set_bbram(SYSTEM_BBRAM_IDX_TRY_SLOT, slot);
 }
 
 #ifdef CONFIG_SERIALNO_LEN
