@@ -3144,7 +3144,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dual_role_force_sink, HOOK_PRIO_DEFAULT);
  * port's default state.
  */
 
-void pd_set_suspend(int port, int enable)
+int pd_set_suspend(int port, int enable)
 {
 	int tries = 300;
 
@@ -3156,15 +3156,20 @@ void pd_set_suspend(int port, int enable)
 				break;
 			msleep(1);
 		} while (--tries != 0);
-		if (!tries)
+		if (!tries) {
 			CPRINTS("TCPC p%d set_suspend failed!", port);
+			return EC_ERROR_TIMEOUT;
+		}
 	} else {
-		if (pd[port].task_state != PD_STATE_SUSPENDED)
+		if (pd[port].task_state != PD_STATE_SUSPENDED) {
 			CPRINTS("TCPC p%d suspend disable request "
 				"while not suspended!", port);
+			return EC_ERROR_INVAL;
+		}
 		set_state(port, PD_DEFAULT_STATE(port));
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	}
+	return EC_SUCCESS;
 }
 
 int pd_is_port_enabled(int port)
@@ -3831,11 +3836,17 @@ static int hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pd_chip_info *p = args->params;
 	struct ec_response_pd_chip_info *r = args->response, *info;
+	int status;
 
 	if (p->port >= CONFIG_USB_PD_PORT_COUNT)
 		return EC_RES_INVALID_PARAM;
 
-	if (tcpm_get_chip_info(p->port, p->renew, &info))
+	if (pd_set_suspend(p->port, 1) != EC_SUCCESS)
+		return EC_RES_ERROR;
+	status = tcpm_get_chip_info(p->port, p->renew, &info);
+	if (pd_set_suspend(p->port, 0) != EC_SUCCESS)
+		status = EC_RES_ERROR;
+	if (status)
 		return EC_RES_ERROR;
 
 	memcpy(r, info, sizeof(*r));
@@ -3922,7 +3933,8 @@ static int pd_control(struct host_cmd_handler_args *args)
 	}
 
 	pd_comm_enable(cmd->chip, enable);
-	pd_set_suspend(cmd->chip, !enable);
+	if (pd_set_suspend(cmd->chip, !enable) != EC_SUCCESS)
+		return EC_RES_ERROR;
 
 	return EC_RES_SUCCESS;
 }
