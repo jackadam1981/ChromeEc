@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "027a76b1_91b89640",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-15T02:40:26Z",
+      "side": 1,
+      "message": "Please update servod as well if you change control interfaces.",
+      "range": {
+        "startLine": 410,
+        "startChar": 4,
+        "endLine": 410,
+        "endChar": 16
+      },
+      "revId": "775e2504d1138b4d647720270d00e40994b3c383",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74f2e470_a6ddcc46",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 2
