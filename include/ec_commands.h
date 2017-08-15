@@ -1089,6 +1089,8 @@ enum ec_feature_code {
 	EC_FEATURE_RWSIG = 30,
 	/* EC has device events support */
 	EC_FEATURE_DEVICE_EVENT = 31,
+	/* EC has slot RW-A and RW-B */
+	EC_FEATURE_RW_AB = 32,
 };
 
 #define EC_FEATURE_MASK_0(event_code) (1UL << (event_code % 32))
@@ -1357,13 +1359,15 @@ struct __ec_align4 ec_response_flash_protect {
 enum ec_flash_region {
 	/* Region which holds read-only EC image */
 	EC_FLASH_REGION_RO = 0,
-	/* Region which holds rewritable EC image */
+	/* Region which holds active (running) RW image */
 	EC_FLASH_REGION_RW,
 	/*
 	 * Region which should be write-protected in the factory (a superset of
 	 * EC_FLASH_REGION_RO)
 	 */
 	EC_FLASH_REGION_WP_RO,
+	/* Region which holds updatable image */
+	EC_FLASH_REGION_UPDATE,
 	/* Number of regions */
 	EC_FLASH_REGION_COUNT,
 };
@@ -1923,6 +1927,9 @@ enum ec_vboot_hash_status {
 };
 
 /*
+ * DEPRECATED. Do not use these values. Hash of a region can be calculated by
+ * the actual offset & size, which can be retrieved by EC_CMD_FLASH_REGION_INFO.
+ *
  * Special values for offset for EC_VBOOT_HASH_START and EC_VBOOT_HASH_RECALC.
  * If one of these is specified, the EC will automatically update offset and
  * size to the correct values for the specified image (RO or RW).
@@ -4257,6 +4264,13 @@ enum rwsig_action {
 
 struct __ec_align4 ec_params_rwsig_action {
 	uint32_t action;
+};
+
+#define EC_CMD_SWITCH_ACTIVE_FIRMWARE_SLOT 0x11E
+
+struct __ec_align1 ec_response_switch_active_firmware_slot {
+	uint8_t slot;	/* Slot which will be tried first on the next boot.
+			 * 0: RW_A, 1:RW_B. */
 };
 
 /*****************************************************************************/
