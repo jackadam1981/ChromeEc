@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "477d33d0_35a67184",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-16T17:42:58Z",
+      "side": 1,
+      "message": "Please update the comment that this pin number cannot be changed without also changing the gpio in board.c",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 45
+      },
+      "revId": "616231fc355994b3065eafa373fe15faf14df280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4326a34f_7ad62caf",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-16T17:42:58Z",
+      "side": 1,
+      "message": "In G3 the i2cs lines are low. Does this mean that we will constantly be reinitializing the i2cs interface whenever the system is in g3? Is this an issue?",
+      "range": {
+        "startLine": 155,
+        "startChar": 12,
+        "endLine": 155,
+        "endChar": 33
+      },
+      "revId": "616231fc355994b3065eafa373fe15faf14df280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
