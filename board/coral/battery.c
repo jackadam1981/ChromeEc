@@ -21,11 +21,13 @@
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
-/* Shutdown mode parameter to write to manufacturer access register */
+#define SB_SHUTDOWN_OFFSET	0x3A
 #define SB_SHUTDOWN_DATA	0xC574
 
 enum battery_type {
 	BATTERY_SANYO,
+	BATTERY_SONY,
+	BATTERY_PANA,
 	BATTERY_TYPE_COUNT,
 };
 
@@ -56,10 +58,44 @@ static const struct battery_info batt_info_sanyo = {
 	.discharging_max_c	= 60,
 };
 
+static const struct battery_info batt_info_sony = {
+	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
+	.voltage_normal		= 11400, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 256,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= -20,
+	.discharging_max_c	= 60,
+};
+
+static const struct battery_info batt_info_pana = {
+	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
+	.voltage_normal		= 11550, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 256,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= -20,
+	.discharging_max_c	= 75,
+};
+
 static const struct board_batt_params info[] = {
 	[BATTERY_SANYO] = {
 		.manuf_name = "SANYO",
 		.batt_info = &batt_info_sanyo,
+	},
+	[BATTERY_SONY] = {
+		.manuf_name = "SONYCorp",
+		.batt_info = &batt_info_sony,
+	},
+	[BATTERY_PANA] = {
+		.manuf_name = "PANASONIC",
+		.batt_info = &batt_info_pana,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(info) == BATTERY_TYPE_COUNT);
@@ -114,11 +150,11 @@ int board_cut_off_battery(void)
 	int rv;
 
 	/* Ship mode command must be sent twice to take effect */
-	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+	rv = sb_write(SB_SHUTDOWN_OFFSET, SB_SHUTDOWN_DATA);
 	if (rv != EC_SUCCESS)
 		return EC_RES_ERROR;
 
-	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+	rv = sb_write(SB_SHUTDOWN_OFFSET, SB_SHUTDOWN_DATA);
 	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
 
@@ -243,11 +279,27 @@ static int battery_init(void)
 
 
 /*
- * Physical detection of battery.
+ * 1. Physical detection of battery.
+ * 2. Check DFET is on/off by reading battery custom register
+ *
+ *    SANYO  : SB_MANUFACTURER_ACCESS.[14] : Discharge FET
+ *           : 0b - Not allowed to discharge
+ *           : 1b - Allowed to discharge
+ *    SONY   : SB_MANUFACTURER_ACCESS.[15] : Discharge FET
+ *           : 0b - Allowed to discharge
+ *           : 1b - Not allowed to discharge
+ *    PAMA   : SB_MANUFACTURER_ACCESS.[14] : Discharge FET
+ *           : 0b - Not allowed to discharge
+ *           : 1b - Allowed to discharge
  */
+#define SANYO_DISCHARGE_FET_BIT	(1 << 14)
+#define SONY_DISCHARGE_FET_BIT	(1 << 15)
+#define PANA_DISCHARGE_FET_BIT	(1 << 14)
+
 enum battery_present battery_is_present(void)
 {
 	enum battery_present batt_pres;
+	int batt_discharge_fet = -1;
 
 	/* Get the physical hardware status */
 	batt_pres = battery_hw_present();
@@ -267,6 +319,29 @@ enum battery_present battery_is_present(void)
 	if (batt_pres == BP_YES && batt_pres_prev != batt_pres &&
 	    !battery_is_cut_off() && !battery_init()) {
 		batt_pres = BP_NO;
+	}
+
+	if (batt_pres == BP_YES) {
+		if (sb_read(SB_MANUFACTURER_ACCESS, &batt_discharge_fet))
+			batt_pres = BP_NOT_SURE;
+
+		switch(board_battery_type) {
+		case BATTERY_SANYO:
+			if ((batt_discharge_fet & SANYO_DISCHARGE_FET_BIT) == 0)
+				batt_pres = BP_NOT_SURE;
+			break;
+		case BATTERY_SONY:
+			if (batt_discharge_fet & SONY_DISCHARGE_FET_BIT)
+				batt_pres = BP_NOT_SURE;
+			break;
+		case BATTERY_PANA:
+			if ((batt_discharge_fet & PANA_DISCHARGE_FET_BIT) == 0)
+				batt_pres = BP_NOT_SURE;
+			break;
+		default:
+			batt_pres = BP_NOT_SURE;
+			break;
+		}
 	}
 
 	batt_pres_prev = batt_pres;
@@ -294,3 +369,31 @@ enum ec_status charger_profile_override_set_param(uint32_t param,
 {
 	return EC_RES_INVALID_PARAM;
 }
+
+static int command_battery_status(int argc, char **argv)
+{
+	int batt_discharge_fet = -1;
+
+	if (battery_hw_present() != BP_YES) {
+		ccprintf("battery HW is not present\n");
+		return 0;
+	}
+
+	if (battery_is_cut_off()) {
+		ccprintf("battery is cut off\n");
+		return 0;
+	}
+
+	if (sb_read(SB_MANUFACTURER_ACCESS, &batt_discharge_fet)) {
+		ccprintf("battery i2c failed\n");
+		return 0;
+	}
+
+	ccprintf("DFET= %s\n",
+		 (batt_discharge_fet & SANYO_DISCHARGE_FET_BIT) == 0 ?
+		 "off" : "on");
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(battery_status, command_battery_status,
+			"show DFET status", NULL);
