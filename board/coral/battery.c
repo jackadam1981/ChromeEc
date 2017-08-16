@@ -21,20 +21,30 @@
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
-/* Shutdown mode parameter to write to manufacturer access register */
-#define SB_SHUTDOWN_DATA	0xC574
-
 enum battery_type {
 	BATTERY_SANYO,
+	BATTERY_SONY,
+	BATTERY_PANA,
 	BATTERY_TYPE_COUNT,
+};
+
+struct ship_mode_info {
+	const int ship_mode_reg;
+	const int ship_mode_data;
+	int (*batt_init)(void);
 };
 
 struct board_batt_params {
 	const char *manuf_name;
+	const struct ship_mode_info *ship_mode_inf;
 	const struct battery_info *batt_info;
 };
 
 #define DEFAULT_BATTERY_TYPE BATTERY_SANYO
+#define SANYO_DISCHARGE_FET_BIT	(1 << 14)
+#define SONY_DISCHARGE_FET_BIT	(1 << 15)
+#define PANA_DISCHARGE_FET_BIT	(1 << 14)
+
 static enum battery_present batt_pres_prev = BP_NOT_SURE;
 static enum battery_type board_battery_type = BATTERY_TYPE_COUNT;
 
@@ -56,10 +66,107 @@ static const struct battery_info batt_info_sanyo = {
 	.discharging_max_c	= 60,
 };
 
+static int batt_sanyo_init(void)
+{
+	int batt_status;
+
+	/*
+	 * SB_MANUFACTURER_ACCESS:
+	 * [14] : Discharge FET
+	 *	: 0b - Not allowed to discharge
+	 *	: 1b - Allowed to discharge
+	 */
+	return sb_read(SB_MANUFACTURER_ACCESS, &batt_status) ? 0 :
+		!!(batt_status & SANYO_DISCHARGE_FET_BIT);
+}
+
+static const struct ship_mode_info ship_mode_info_sanyo = {
+	.ship_mode_reg = 0x3A,
+	.ship_mode_data = 0xC574,
+	.batt_init = batt_sanyo_init,
+};
+
+static const struct battery_info batt_info_sony = {
+	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
+	.voltage_normal		= 11400, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 256,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= -20,
+	.discharging_max_c	= 60,
+};
+
+static int batt_sony_init(void)
+{
+	int batt_status;
+
+	/*
+	 * SB_MANUFACTURER_ACCESS:
+	 * [15] : Discharge FET
+	 *	: 0b - Allowed to discharge
+	 *	: 1b - Not allowed to discharge
+	 */
+	return sb_read(SB_MANUFACTURER_ACCESS, &batt_status) ? 0 :
+		!(batt_status & SONY_DISCHARGE_FET_BIT);
+}
+
+static const struct ship_mode_info ship_mode_info_sony = {
+	.ship_mode_reg = 0x3A,
+	.ship_mode_data = 0xC574,
+	.batt_init = batt_sony_init,
+};
+
+static const struct battery_info batt_info_pana = {
+	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
+	.voltage_normal		= 11550, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 256,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= -20,
+	.discharging_max_c	= 75,
+};
+
+static int batt_pana_init(void)
+{
+	int batt_status;
+
+	/*
+	 * SB_MANUFACTURER_ACCESS:
+	 * [14] : Discharge FET
+	 *	: 0b - Not allowed to discharge
+	 *	: 1b - Allowed to discharge
+	 */
+	return sb_read(SB_MANUFACTURER_ACCESS, &batt_status) ? 0 :
+		!!(batt_status & PANA_DISCHARGE_FET_BIT);
+}
+
+static const struct ship_mode_info ship_mode_info_pana = {
+	.ship_mode_reg = 0x3A,
+	.ship_mode_data = 0xC574,
+	.batt_init = batt_pana_init,
+};
+
 static const struct board_batt_params info[] = {
 	[BATTERY_SANYO] = {
 		.manuf_name = "SANYO",
+		.ship_mode_inf = &ship_mode_info_sanyo,
 		.batt_info = &batt_info_sanyo,
+	},
+	[BATTERY_SONY] = {
+		.manuf_name = "SONYCorp",
+		.ship_mode_inf = &ship_mode_info_sony,
+		.batt_info = &batt_info_sony,
+	},
+	[BATTERY_PANA] = {
+		.manuf_name = "PANASONIC",
+		.ship_mode_inf = &ship_mode_info_pana,
+		.batt_info = &batt_info_pana,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(info) == BATTERY_TYPE_COUNT);
@@ -112,13 +219,18 @@ const struct battery_info *battery_get_info(void)
 int board_cut_off_battery(void)
 {
 	int rv;
+	const struct ship_mode_info *ship_mode_inf =
+				board_get_batt_params()->ship_mode_inf;
 
 	/* Ship mode command must be sent twice to take effect */
-	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+	rv = sb_write(ship_mode_inf->ship_mode_reg,
+			ship_mode_inf->ship_mode_data);
+
 	if (rv != EC_SUCCESS)
 		return EC_RES_ERROR;
 
-	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+	rv = sb_write(ship_mode_inf->ship_mode_reg,
+			ship_mode_inf->ship_mode_data);
 	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
 
@@ -243,8 +355,23 @@ static int battery_init(void)
 
 
 /*
- * Physical detection of battery.
+ * 1. Physical detection of battery.
+ * 2. Check DFET is on/off by reading battery custom register
+ *
+ *    SANYO  : SB_MANUFACTURER_ACCESS.[14] : Discharge FET
+ *           : 0b - Not allowed to discharge
+ *           : 1b - Allowed to discharge
+ *    SONY   : SB_MANUFACTURER_ACCESS.[15] : Discharge FET
+ *           : 0b - Allowed to discharge
+ *           : 1b - Not allowed to discharge
+ *    PAMA   : SB_MANUFACTURER_ACCESS.[14] : Discharge FET
+ *           : 0b - Not allowed to discharge
+ *           : 1b - Allowed to discharge
  */
+#define SANYO_DISCHARGE_FET_BIT	(1 << 14)
+#define SONY_DISCHARGE_FET_BIT	(1 << 15)
+#define PANA_DISCHARGE_FET_BIT	(1 << 14)
+
 enum battery_present battery_is_present(void)
 {
 	enum battery_present batt_pres;
@@ -267,6 +394,11 @@ enum battery_present battery_is_present(void)
 	if (batt_pres == BP_YES && batt_pres_prev != batt_pres &&
 	    !battery_is_cut_off() && !battery_init()) {
 		batt_pres = BP_NO;
+	}
+
+	if (batt_pres == BP_YES) {
+		if (!board_get_batt_params()->ship_mode_inf->batt_init())
+			batt_pres = BP_NOT_SURE;
 	}
 
 	batt_pres_prev = batt_pres;
@@ -294,3 +426,34 @@ enum ec_status charger_profile_override_set_param(uint32_t param,
 {
 	return EC_RES_INVALID_PARAM;
 }
+
+static int command_battery_status(int argc, char **argv)
+{
+	int batt_discharge_fet = -1;
+
+	if (battery_hw_present() != BP_YES) {
+		ccprintf("battery HW is not present\n");
+		return 0;
+	}
+
+	if (battery_is_cut_off()) {
+		ccprintf("battery is cut off\n");
+		return 0;
+	}
+
+	if (sb_read(SB_MANUFACTURER_ACCESS, &batt_discharge_fet)) {
+		ccprintf("battery i2c failed\n");
+		return 0;
+	}
+
+	if (board_battery_type == BATTERY_TYPE_COUNT)
+		ccprintf("Unknown battery\n");
+	else
+		ccprintf("DFET= %s\n",
+			board_get_batt_params()->ship_mode_inf->batt_init() ?
+				"on" : "off");
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(battery_status, command_battery_status,
+			"show DFET status", NULL);
