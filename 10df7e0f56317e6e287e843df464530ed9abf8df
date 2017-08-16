@@ -22,6 +22,30 @@
       "revId": "10df7e0f56317e6e287e843df464530ed9abf8df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f01540a_f135656e",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-16T23:43:17Z",
+      "side": 1,
+      "message": "Right...TEMPERATURE_CONV((int16_t)reg) is simpler and still correct. (Note that it won\u0027t suffer from overflow during calculation either.) Thanks.",
+      "parentUuid": "40884fa0_fe2f0595",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 44
+      },
+      "revId": "10df7e0f56317e6e287e843df464530ed9abf8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
