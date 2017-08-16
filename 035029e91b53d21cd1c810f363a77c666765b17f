@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b93cd479_821e648a",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-16T16:32:44Z",
+      "side": 1,
+      "message": "Extra newline here. You probably added the other newlines to pass pre-commit check? Since there are no more relevant changes in this file, we don\u0027t need to commit any changes here at all.. or just commit the newlines after variable declaration, it\u0027s up to you.",
+      "revId": "035029e91b53d21cd1c810f363a77c666765b17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "09eb2e8f_8856d4e9",
+        "filename": "power/skylake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-16T16:32:44Z",
+      "side": 1,
+      "message": "Extra newline here.",
+      "revId": "035029e91b53d21cd1c810f363a77c666765b17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54657c91_a0ce88da",
+        "filename": "power/skylake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-16T16:32:44Z",
+      "side": 1,
+      "message": "In general, we hard to not have #ifdef CONFIG_BOARD_* in code outside of board/. Where is the implementation of board_handle_all_sus()? I don\u0027t see it in any pending CLs (but maybe I missed it). Let me see what you\u0027re trying to do there, and I can suggest an alternative implementation.",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "035029e91b53d21cd1c810f363a77c666765b17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
