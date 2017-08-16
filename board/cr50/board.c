@@ -90,6 +90,7 @@ static int device_state_changed(enum device_type device,
 /*  Board specific configuration settings */
 static uint32_t board_properties; /* Mainly used as a cache for strap config. */
 static uint8_t reboot_request_posted;
+static uint8_t battery_cutoff_support;
 
 /* Which UARTs we'd like to be able to bitbang. */
 struct uart_bitbang_properties bitbang_config = {
@@ -288,7 +289,8 @@ enum {
 
 /*
  * ISR reacting to both falling and raising edges of the AC_PRESENT signal.
- * Falling edge indicates pulling out of the charger cable and vice versa.
+ * Falling edge indicates AC no longer present (pulling out of the charger
+ * cable) and vice versa.
  */
 static void ac_power_state_changed(void)
 {
@@ -298,7 +300,16 @@ static void ac_power_state_changed(void)
 	req = GREG32(RBOX, INT_STATE) & (ac_pres_red | ac_pres_fed);
 	GREG32(RBOX, INT_STATE) = req;
 
-	CPRINTS("%s: status 0x%x", __func__, req);
+	CPRINTS("AC: %c%c",
+		req & ac_pres_red ? 'R' : '-',
+		req & ac_pres_fed ? 'F' : '-');
+
+	/* Delay sleep so RDD state machines can stabilize */
+	delay_sleep_by(5 * SECOND);
+
+	/* The remaining code is only used for battery cutoff */
+	if (!battery_cutoff_support)
+		return;
 
 	/* Raising edge gets priority, stop timeout timer and go. */
 	if (req & ac_pres_red) {
@@ -324,8 +335,10 @@ DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_RED_INT, ac_power_state_changed, 1);
 DECLARE_IRQ(GC_IRQNUM_RBOX0_INTR_AC_PRESENT_FED_INT, ac_power_state_changed, 1);
 
 /* Enable interrupts on plugging in and yanking out of the charger cable. */
-static void set_up_battery_cutoff_monitor(void)
+static void init_ac_detect(void)
 {
+	battery_cutoff_support = system_battery_cutoff_support_required();
+
 	/* It is set in idle.c also. */
 	GWRITE_FIELD(RBOX, WAKEUP, ENABLE, 1);
 
@@ -693,9 +706,12 @@ static void board_init(void)
 	check_board_id_mismatch();
 	check_board_id_mismatch();
 
-	/* Enable battery cutoff software support on detachable devices. */
-	if (system_battery_cutoff_support_required())
-		set_up_battery_cutoff_monitor();
+	/*
+	 * Start monitoring AC detect to wake Cr50 from deep sleep.  This is
+	 * needed to detect RDD cable changes in deep sleep.  AC detect is also
+	 * used for battery cutoff software support on detachable devices.
+	 */
+	init_ac_detect();
 
 	/*
 	 * The interrupt is enabled by default, but we only want it enabled when
