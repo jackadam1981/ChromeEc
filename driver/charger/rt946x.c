@@ -597,8 +597,12 @@ int charger_post_init(void)
 	rv = rt946x_select_ilmt(RT946X_ILMTSEL_AICR);
 	if (rv)
 		return rv;
+	/* Disable AICR loop */
+	rv = rt946x_clr_bit(RT946X_REG_CHGCTRL3, RT946X_MASK_AICREN);
+	if (rv)
+		return rv;
 	/* Disable ILIM pin */
-	rv = rt946x_enable_ilim(0);
+	rv = rt946x_enable_ilim_pin(0);
 	if (rv)
 		return rv;
 #endif

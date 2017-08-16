@@ -182,7 +182,7 @@ int board_set_active_charge_port(int charge_port)
 	 */
 	if (!initialized &&
 	    charge_port == CHARGE_PORT_NONE &&
-	    (charge_get_percent() < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON ||
+	    (charge_get_percent() < 2 ||
 	    battery_get_disconnect_state() == BATTERY_DISCONNECTED)) {
 		CPRINTS("Bat critical, don't stop charging");
 		return -1;
@@ -218,7 +218,7 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	 */
 	if (supplier == CHARGE_SUPPLIER_PD &&
 	    charge_ma < 1500 &&
-	    (charge_get_percent() < CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON ||
+	    (charge_get_percent() < 2 ||
 	    battery_get_disconnect_state() == BATTERY_DISCONNECTED)) {
 		CPRINTS("Using max ilim %d", max_ma);
 		charge_ma = max_ma;
@@ -226,6 +226,19 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 
 	charge_set_input_current_limit(MAX(charge_ma,
 			       CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
+}
+
+int board_is_ramp_allowed(int supplier)
+{
+	return 1;
+}
+
+int board_get_ramp_current_limit(int supplier, int sup_curr)
+{
+	int input_current_lim = 0;
+
+	charger_get_input_current(&input_current_lim);
+	return input_current_lim;
 }
 
 int extpower_is_present(void)

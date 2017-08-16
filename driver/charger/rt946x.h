@@ -144,9 +144,11 @@
 
 /* ========== CHGCTRL3 0x03 ============ */
 #define RT946X_SHIFT_AICR	2
+#define RT946X_SHIFT_AICREN	1
 #define RT946X_SHIFT_ILIMEN	0
 
 #define RT946X_MASK_AICR	0xFC
+#define RT946X_MASK_AICREN	(1 << RT946X_SHIFT_AICREN)
 #define RT946X_MASK_ILIMEN	(1 << RT946X_SHIFT_ILIMEN)
 
 /* ========== CHGCTRL4 0x04 ============ */
