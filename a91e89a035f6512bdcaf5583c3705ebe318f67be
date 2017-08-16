@@ -91,6 +91,30 @@
       "revId": "a91e89a035f6512bdcaf5583c3705ebe318f67be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ee54528_eaec6ae6",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-16T17:18:58Z",
+      "side": 1,
+      "message": "Yes, that\u0027s how I started but soon I found I need the parameter for power_signal_interrupt(). If the parameter is not important, I\u0027ll just use a fake one.",
+      "parentUuid": "9e0c2467_f0616624",
+      "range": {
+        "startLine": 595,
+        "startChar": 1,
+        "endLine": 599,
+        "endChar": 35
+      },
+      "revId": "a91e89a035f6512bdcaf5583c3705ebe318f67be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
