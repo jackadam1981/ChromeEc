@@ -140,6 +140,30 @@
       "revId": "1b4248591e0a6fde634a5dcc9ade5ce5f9f1a4ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7919a979_f9f998ff",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-16T17:35:55Z",
+      "side": 1,
+      "message": "But the EC can theoretically enable ccd mode even when rdd is not connected. Why aren\u0027t we just calling this ccd_is_enabled anymore?",
+      "parentUuid": "400222bb_163413a7",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "1b4248591e0a6fde634a5dcc9ade5ce5f9f1a4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
