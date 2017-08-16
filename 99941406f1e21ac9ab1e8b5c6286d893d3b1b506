@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f28e193_39a9000b",
+        "filename": "extra/stack_analyzer/example_annotation.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-16T04:15:32Z",
+      "side": 1,
+      "message": "I\u0027m wondering if the \"add\" annotation should be more precise. Most of the time, your tool knows that there is a jump at some callsite, that you can resolve to function[file:line], so I\u0027m wondering if the annotation should be made more explicit.\n\nExample:\n\none.c:\n1: void a() {\n2:     blah-\u003einit();\n3: }\n\nWe know that a[one.c:2] calls a function pointer, but we can\u0027t resolve it (so we should throw a warning).\n\nThen, the developer will be able to annotate the callsite, and say:\n\na[one.c:2]\n - my_sensor0_init\na[one.c:2]\n - my_sensor1_init\n\nIf either of my_sensor0_init or my_sensor1_init can be called.\n\nOf course that\u0027d require updating the annotations every time the code is changed, but maybe that\u0027s ok?\n\nWDYT?",
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b23773_1484b6cf",
+        "filename": "extra/stack_analyzer/example_annotation.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-16T04:15:32Z",
+      "side": 1,
+      "message": "Would be good to have a longer example.",
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40e25e4e_9f5a8edd",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-16T04:15:32Z",
+      "side": 1,
+      "message": "Just do \"len(addresses) \u003e 1\" test here instead of double-checking things with an assertion.",
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "134e522f_e2efa7e2",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-16T04:15:32Z",
+      "side": 1,
+      "message": "addresses[0] ? But TBH I\u0027m not sure what\u0027s more pythonic...",
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cc94373_206c6ac1",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-16T04:15:32Z",
+      "side": 1,
+      "message": "Really? Wouldn\u0027t that mean something went wrong?",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 655,
+        "endChar": 68
+      },
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88264261_968bda71",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-16T04:15:32Z",
+      "side": 1,
+      "message": "If disassembly fails.",
+      "range": {
+        "startLine": 808,
+        "startChar": 26,
+        "endLine": 808,
+        "endChar": 51
+      },
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
