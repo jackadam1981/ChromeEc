@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ab41a03_08227691",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-16T05:53:07Z",
+      "side": 1,
+      "message": "What happens if this is called more than once before EC reboot?\n\nShould it always request the slot not used this boot?  Or should it toggle each call?",
+      "range": {
+        "startLine": 1369,
+        "startChar": 0,
+        "endLine": 1371,
+        "endChar": 55
+      },
+      "revId": "46b9774b67023e50959b461d0dcc1505c13ebd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99ace0dd_3f49d817",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-16T05:53:07Z",
+      "side": 1,
+      "message": "Doesn\u0027t getting here at all mean we failed to jump?",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 8
+      },
+      "revId": "46b9774b67023e50959b461d0dcc1505c13ebd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b7ae566_b1b859c5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4265,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-16T05:53:07Z",
+      "side": 1,
+      "message": "EC_CMD_SWITCH_ACTIVE_FIRMWARE_SLOT?",
+      "range": {
+        "startLine": 4264,
+        "startChar": 0,
+        "endLine": 4265,
+        "endChar": 32
+      },
+      "revId": "46b9774b67023e50959b461d0dcc1505c13ebd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88c3aa6d_d2fea128",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6234,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-16T05:53:07Z",
+      "side": 1,
+      "message": "Is this the entire region, or only the used portion?",
+      "range": {
+        "startLine": 6234,
+        "startChar": 17,
+        "endLine": 6234,
+        "endChar": 35
+      },
+      "revId": "46b9774b67023e50959b461d0dcc1505c13ebd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
