@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a0a157ad_2df9dbee",
+        "filename": "extra/stack_analyzer/example_annotation.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-16T05:45:36Z",
+      "side": 1,
+      "message": "My concern is actually about updating the annotation file every time the code is changed, because I don\u0027t know how to find and warn the users about mismatching.\n\nBut it will useful after we start to output the warnings about function pointers. At that time, if your annotation doesn\u0027t match the location of function pointer after updating, the function pointer warning will show up again to notify you (if your old annotation doesn\u0027t point to another pointer accidentally).\n\nDo you think I should add this in this CL ?",
+      "parentUuid": "0f28e193_39a9000b",
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "65b23773_1484b6cf",
         "filename": "extra/stack_analyzer/example_annotation.yaml",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f4403b_5eae700b",
+        "filename": "extra/stack_analyzer/example_annotation.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-16T05:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65b23773_1484b6cf",
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "625ebbf4_8881148d",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-16T05:45:36Z",
+      "side": 1,
+      "message": "It is actually impossible that len(addresses) !\u003d1 here and the following `(found_address,) \u003d addresses` will check this implicitly. Maybe I just remove this assertion ?",
+      "parentUuid": "40e25e4e_9f5a8edd",
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "134e522f_e2efa7e2",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "4de90dcf_ed2fc51c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-16T05:45:36Z",
+      "side": 1,
+      "message": "The `addresses` is a set, so we can\u0027t index it by [0]. Another way is `found_address \u003d addresses.pop()`. The advantage of `(found_address,) \u003d addresses` is if len(addresses) !\u003d 1, it will raise an error.",
+      "parentUuid": "134e522f_e2efa7e2",
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cc94373_206c6ac1",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 1
@@ -81,6 +153,30 @@
       "writtenOn": "2017-08-16T04:15:32Z",
       "side": 1,
       "message": "Really? Wouldn\u0027t that mean something went wrong?",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 655,
+        "endChar": 68
+      },
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19b37af9_438105ee",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-16T05:45:36Z",
+      "side": 1,
+      "message": "If a static function is defined in a header file, and the header file is included in two .c, there can be two copies of functions with same name and path in the ELF.",
+      "parentUuid": "9cc94373_206c6ac1",
       "range": {
         "startLine": 654,
         "startChar": 0,
@@ -113,6 +209,30 @@
       "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24fc3335_adaad2cd",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-16T05:45:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88264261_968bda71",
+      "range": {
+        "startLine": 808,
+        "startChar": 26,
+        "endLine": 808,
+        "endChar": 51
+      },
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
