@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30e092a7_07643e50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-16T05:34:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4512a6ab_d2678ddc",
+      "range": {
+        "startLine": 9,
+        "startChar": 21,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "1b4248591e0a6fde634a5dcc9ade5ce5f9f1a4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f86a976c_336a68dd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "7c5ceaea_16104919",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-16T05:34:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f86a976c_336a68dd",
+      "range": {
+        "startLine": 10,
+        "startChar": 25,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "1b4248591e0a6fde634a5dcc9ade5ce5f9f1a4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a4961c6_b500183d",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-08-16T01:20:18Z",
       "side": 1,
       "message": "this seems counter intuitive: CCD_MODE_ENABLED looks like a permissive option, can CCD be enabled, but RDD not connected?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "1b4248591e0a6fde634a5dcc9ade5ce5f9f1a4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400222bb_163413a7",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-16T05:34:12Z",
+      "side": 1,
+      "message": "They act the same in the current code; CCD (USB) is enabled if and only if RDD is connected.\n\nAnd yes, I agree it\u0027s counter-intuitive.",
+      "parentUuid": "7a4961c6_b500183d",
       "range": {
         "startLine": 36,
         "startChar": 1,
