@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f23c8d03_bd77e683",
+        "filename": "power/common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-16T16:54:23Z",
+      "side": 1,
+      "message": "Looking closer, we may not need these checks at all. gpio_enable_interrupt(), gpio_disable_interrupt(), etc. already do these checks. Can you double check it?",
+      "range": {
+        "startLine": 422,
+        "startChar": 2,
+        "endLine": 422,
+        "endChar": 48
+      },
+      "revId": "a91e89a035f6512bdcaf5583c3705ebe318f67be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9185ece5_f5f918cf",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-16T16:54:23Z",
+      "side": 1,
+      "message": "This can be uint8_t I think, but add BUILD_ASSERT(POWER_SIGNAL_COUNT \u003c\u003d 8)",
+      "range": {
+        "startLine": 582,
+        "startChar": 8,
+        "endLine": 582,
+        "endChar": 16
+      },
+      "revId": "a91e89a035f6512bdcaf5583c3705ebe318f67be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ec9c587_43032a6e",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-16T16:54:23Z",
+      "side": 1,
+      "message": "No need for this I think.",
+      "range": {
+        "startLine": 583,
+        "startChar": 16,
+        "endLine": 583,
+        "endChar": 38
+      },
+      "revId": "a91e89a035f6512bdcaf5583c3705ebe318f67be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e0c2467_f0616624",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-16T16:54:23Z",
+      "side": 1,
+      "message": "We can simplify this, first build an entire mask that represents the non-zero pins. At the end, compare to previous, and call power_signal_interrupt() once (parameter isn\u0027t really important, we just use it for logging) if the mask changed.",
+      "range": {
+        "startLine": 595,
+        "startChar": 1,
+        "endLine": 599,
+        "endChar": 35
+      },
+      "revId": "a91e89a035f6512bdcaf5583c3705ebe318f67be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
