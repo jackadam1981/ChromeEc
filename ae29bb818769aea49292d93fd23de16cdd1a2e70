@@ -22,6 +22,30 @@
       "revId": "ae29bb818769aea49292d93fd23de16cdd1a2e70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd3ec48b_8ddc4de0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-16T21:31:15Z",
+      "side": 1,
+      "message": "all that implement a pd_task().  when the host cmd comes down,\nthe original implementation would (potentially) directly access\nthe TCPC registers over I2C from host_command_task.\nmeanwhile, the pd_task() assumes\nit owns the device and does its own thing - in particular, it may\nstill be initializing the TCPC.\nthis is also described in the attached bug report.",
+      "parentUuid": "66fa47fd_2201c5f5",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "ae29bb818769aea49292d93fd23de16cdd1a2e70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
