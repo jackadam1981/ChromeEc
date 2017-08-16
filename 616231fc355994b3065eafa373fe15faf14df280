@@ -93,6 +93,30 @@
       "revId": "616231fc355994b3065eafa373fe15faf14df280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c376e7e4_e8081f7c",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-16T17:57:13Z",
+      "side": 1,
+      "message": "Sounds good",
+      "parentUuid": "f5fd7c4e_afe83fd5",
+      "range": {
+        "startLine": 155,
+        "startChar": 12,
+        "endLine": 155,
+        "endChar": 33
+      },
+      "revId": "616231fc355994b3065eafa373fe15faf14df280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
