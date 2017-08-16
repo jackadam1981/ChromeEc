@@ -267,6 +267,30 @@
     },
     {
       "key": {
+        "uuid": "034a9b80_fe9fe237",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-16T06:29:18Z",
+      "side": 1,
+      "message": "Oh, right. Maybe it\u0027s right to annotate all functions with same signatures ?",
+      "parentUuid": "dc939fc0_354ee732",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 655,
+        "endChar": 68
+      },
+      "revId": "99941406f1e21ac9ab1e8b5c6286d893d3b1b506",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "88264261_968bda71",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 1
