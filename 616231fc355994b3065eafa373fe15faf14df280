@@ -117,6 +117,30 @@
       "revId": "616231fc355994b3065eafa373fe15faf14df280",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ea1f48_5a6dccd0",
+        "filename": "chip/g/i2cs.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-16T18:06:33Z",
+      "side": 1,
+      "message": "You\u0027ll also want to be careful of the transition of off to on. We need to guarantee we do a read before we poll the read counts otherwise we could reinitialize the i2c interface right when the AP turns on. Would that cause any problems?\n\nWe might want to reset the counts on chipset_resume or something",
+      "parentUuid": "c376e7e4_e8081f7c",
+      "range": {
+        "startLine": 155,
+        "startChar": 12,
+        "endLine": 155,
+        "endChar": 33
+      },
+      "revId": "616231fc355994b3065eafa373fe15faf14df280",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
