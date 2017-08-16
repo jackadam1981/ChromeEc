@@ -46,6 +46,30 @@
       "revId": "29b739f1cb0e8dcd7abaf121bee5d0b22e59a965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d579bcdc_8174354a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-16T22:37:16Z",
+      "side": 1,
+      "message": "remember to add the\nif (board_tcpc_external_gpio_init)\naround the call to cover the \"undefined\" base.",
+      "parentUuid": "09171217_39c348ec",
+      "range": {
+        "startLine": 445,
+        "startChar": 1,
+        "endLine": 445,
+        "endChar": 37
+      },
+      "revId": "29b739f1cb0e8dcd7abaf121bee5d0b22e59a965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
