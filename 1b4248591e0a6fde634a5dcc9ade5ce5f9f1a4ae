@@ -22,6 +22,30 @@
       "revId": "1b4248591e0a6fde634a5dcc9ade5ce5f9f1a4ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56504512_bd1d532f",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-16T05:35:08Z",
+      "side": 0,
+      "message": "It is.  That\u0027s done directly in chip/g/idle.c now.",
+      "parentUuid": "0c7a0667_46c1be4b",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "1b4248591e0a6fde634a5dcc9ade5ce5f9f1a4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
