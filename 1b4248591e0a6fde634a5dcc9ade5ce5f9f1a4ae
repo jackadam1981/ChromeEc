@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c7a0667_46c1be4b",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000229
+      },
+      "writtenOn": "2017-08-16T01:22:55Z",
+      "side": 0,
+      "message": "shouldn\u0027t utmi wakeup be allowed when CCD is active and USB cable is plugged in?",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 1
+      },
+      "revId": "1b4248591e0a6fde634a5dcc9ade5ce5f9f1a4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
