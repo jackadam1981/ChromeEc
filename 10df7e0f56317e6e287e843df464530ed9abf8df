@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40884fa0_fe2f0595",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-16T22:21:48Z",
+      "side": 1,
+      "message": "This doesn\u0027t look right. \"/* Temperature reg value to 0.1K */\" - I don\u0027t think it\u0027s possible to have negative K temperature. Maybe you want to cast the parameter to signed int16_t (eg. batt-\u003etemperature \u003d TEMPERATURE_CONV((int16_t)reg);)",
+      "range": {
+        "startLine": 243,
+        "startChar": 2,
+        "endLine": 243,
+        "endChar": 44
+      },
+      "revId": "10df7e0f56317e6e287e843df464530ed9abf8df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
