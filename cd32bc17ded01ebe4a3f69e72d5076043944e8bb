@@ -22,6 +22,30 @@
       "revId": "cd32bc17ded01ebe4a3f69e72d5076043944e8bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2b0fe7e_ad781f29",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-16T21:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f9825b1_19aae05c",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 33
+      },
+      "revId": "cd32bc17ded01ebe4a3f69e72d5076043944e8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
