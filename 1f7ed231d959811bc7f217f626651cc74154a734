@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d70ca84_afeb976f",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-17T08:51:13Z",
+      "side": 1,
+      "message": "Can you merge this into the loop above?",
+      "revId": "1f7ed231d959811bc7f217f626651cc74154a734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0ffc623_3b516dd9",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-17T08:51:13Z",
+      "side": 1,
+      "message": "This is quite a gigantic function, are there bits that you can move to sub-functions?",
+      "revId": "1f7ed231d959811bc7f217f626651cc74154a734",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
