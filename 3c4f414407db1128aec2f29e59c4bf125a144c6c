@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7a9f5c1_b08222ca",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-17T19:55:41Z",
+      "side": 1,
+      "message": "This is very board specific. It is weird that it is in chip/g\n\nAlso since we never deselect the CCD_MODE_L gpio from DIOM1, can we just connect diom1 to ccd_mode_l in gpio.inc as a GPIO_INPUT. \n\nThen we can stick to only changing the gpio flags in rdd.c",
+      "range": {
+        "startLine": 108,
+        "startChar": 16,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "3c4f414407db1128aec2f29e59c4bf125a144c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80846ba3_99399bdd",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-17T19:55:41Z",
+      "side": 1,
+      "message": "Right now all boards using rdd use ccd, but that may not always be the case. You might want to put this behind CONFIG_CASE_CLOSED_DEBUG",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 47
+      },
+      "revId": "3c4f414407db1128aec2f29e59c4bf125a144c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3c63a70_ce2b8410",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-17T19:55:41Z",
+      "side": 1,
+      "message": "Can we only enable the interrupt if rdd is disconnected or we\u0027re debouncing.\n\nI am worried that if there is a debug accessory connected, the rdd_interrupt will be triggered whenever we enable it. So on HOOK_SECOND we enable the rdd interrupt, it triggers, rdd_interrupt delays sleep by 1 second, so another HOOK_SECOND will be called and reenable the interrupt.... then we stay awake forever.\n\nThis is mainly an issue on Eve when the EC is in hibernate.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "3c4f414407db1128aec2f29e59c4bf125a144c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
