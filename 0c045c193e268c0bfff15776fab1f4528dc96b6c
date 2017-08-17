@@ -22,6 +22,30 @@
       "revId": "0c045c193e268c0bfff15776fab1f4528dc96b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "175e6190_8255b527",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-17T02:34:10Z",
+      "side": 1,
+      "message": "No, the datasheet doesn\u0027t state the details so it\u0027s just my empirical number. I just sent an email to ask Maxim\u0027s FAE.",
+      "parentUuid": "78fb3d2f_6a6a9585",
+      "range": {
+        "startLine": 307,
+        "startChar": 16,
+        "endLine": 307,
+        "endChar": 22
+      },
+      "revId": "0c045c193e268c0bfff15776fab1f4528dc96b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
