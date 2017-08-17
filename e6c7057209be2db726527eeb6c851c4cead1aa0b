@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12d3f0fb_f83d2767",
+        "filename": "power/rk3399.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 601,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T03:02:21Z",
+      "side": 1,
+      "message": "Note that this makes power_signal_interrupt() reentrant, if an interrupt for a different power signal GPIO comes in while this routine is running.\n\nIt looks like that\u0027s ok in the *current* implementation of power_signal_interrupt().  But we may want to document this (a comment here is fine) so we have some chance of figuring this out if we later change power_signal_interrupt() to where it\u0027s a problem",
+      "range": {
+        "startLine": 600,
+        "startChar": 0,
+        "endLine": 601,
+        "endChar": 45
+      },
+      "revId": "e6c7057209be2db726527eeb6c851c4cead1aa0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
