@@ -48,6 +48,98 @@
     },
     {
       "key": {
+        "uuid": "219483dd_ce5e8817",
+        "filename": "chip/mec1701/keyboard_raw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T05:25:57Z",
+      "side": 1,
+      "message": "1701?",
+      "range": {
+        "startLine": 5,
+        "startChar": 30,
+        "endLine": 5,
+        "endChar": 37
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "786e5cfb_363cfd40",
+        "filename": "chip/mec1701/spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T05:25:57Z",
+      "side": 1,
+      "message": "Still MEC1322 here.",
+      "range": {
+        "startLine": 6,
+        "startChar": 25,
+        "endLine": 6,
+        "endChar": 32
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a20bdff_f58a2b42",
+        "filename": "chip/mec1701/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T05:25:57Z",
+      "side": 1,
+      "message": "nit: Trailing whitespace",
+      "range": {
+        "startLine": 136,
+        "startChar": 62,
+        "endLine": 136,
+        "endChar": 63
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3891990a_2041e78b",
+        "filename": "chip/mec1701/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T05:25:57Z",
+      "side": 1,
+      "message": "Could infer some of them from things like enum pwm_channel or CONFIG_FANS, but that doesn\u0027t necessarily tell you which ones are being used.\n\nProbably cleanest for individual drivers to enable their peripherals in their HOOK_INIT handlers.",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d678e85_4e7e605a",
         "filename": "power/skylake.c",
         "patchSetId": 2
