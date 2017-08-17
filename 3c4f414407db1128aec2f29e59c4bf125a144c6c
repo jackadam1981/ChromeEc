@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8c8a8691_e46b14eb",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-17T20:43:07Z",
+      "side": 1,
+      "message": "I am fine with moving it to board/cr50\n\nI still think that we should move the gpio select stuff to gpio.inc and we should stick to only messing with the gpio flags in rdd.c.",
+      "parentUuid": "426408b6_b721e1fa",
+      "range": {
+        "startLine": 108,
+        "startChar": 16,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "3c4f414407db1128aec2f29e59c4bf125a144c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80846ba3_99399bdd",
         "filename": "chip/g/rdd.c",
         "patchSetId": 2
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "Rdd module says it only generates an interrupt when the state changes.  We should verify, of course.",
       "parentUuid": "f3c63a70_ce2b8410",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "3c4f414407db1128aec2f29e59c4bf125a144c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f962fd81_4a0262b9",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-17T20:43:07Z",
+      "side": 1,
+      "message": "Ok. If you verify then I am fine with it.",
+      "parentUuid": "1fcb57eb_787d3a66",
       "range": {
         "startLine": 141,
         "startChar": 0,
