@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0e98b8b6_fdaf72aa",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-17T17:44:34Z",
+      "side": 1,
+      "message": "One option is to make the command return an error on the second call.\n\nAnother option is to extend EC_CMD_REBOOT_EC. Then we can enforce switching slot is immediately followed by cold reset.\n\nI\u0027ll go with the 1st option because it\u0027s more flexible but I\u0027m open to suggestions.",
+      "parentUuid": "4ab41a03_08227691",
+      "range": {
+        "startLine": 1369,
+        "startChar": 0,
+        "endLine": 1371,
+        "endChar": 55
+      },
+      "revId": "46b9774b67023e50959b461d0dcc1505c13ebd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99ace0dd_3f49d817",
         "filename": "common/vboot/vboot.c",
         "patchSetId": 1
@@ -82,6 +106,30 @@
       "writtenOn": "2017-08-16T05:53:07Z",
       "side": 1,
       "message": "Is this the entire region, or only the used portion?",
+      "range": {
+        "startLine": 6234,
+        "startChar": 17,
+        "endLine": 6234,
+        "endChar": 35
+      },
+      "revId": "46b9774b67023e50959b461d0dcc1505c13ebd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ed02e8d_c52e2a53",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6234,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-17T17:44:34Z",
+      "side": 1,
+      "message": "I didn\u0027t find code running ectool for \u0027echash ro/rw\u0027. So, I think we can change the meaning of these options.\n\nI\u0027m open to suggestions but here are what I think:\nro: entire RO region\nrw: entire active RW region\n\nIf we ever need to make ectool calculate the hash of an image, instead of adding ro_used or rw_used, we should add a new command \u0027ectool flash_region_info \u003cregion\u003e\u0027, which returns offset and size of a specified region. Then a user should run \u0027ectool echash \u003coffset\u003e \u003csize\u003e\u0027.\n\nIf we ever need to make ectool calculate a specific rw image, we can add:\nrw_a, rw_b, rw_update, rw_active.",
+      "parentUuid": "88c3aa6d_d2fea128",
       "range": {
         "startLine": 6234,
         "startChar": 17,
