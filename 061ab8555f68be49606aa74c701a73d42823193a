@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b235dd3_62afb031",
+        "filename": "board/mec1701_evb/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T05:11:33Z",
+      "side": 1,
+      "message": "Ha, gerrit ate the newlines in my comment.\n\nReally, you could just nuke the comment.  But see for example power/common.c line 95 for what I meant.",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 41
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d678e85_4e7e605a",
+        "filename": "power/skylake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T05:11:33Z",
+      "side": 1,
+      "message": "Extra newline?",
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
