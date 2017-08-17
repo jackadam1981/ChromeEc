@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "426408b6_b721e1fa",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T20:25:47Z",
+      "side": 1,
+      "message": "Maybe we should just move rdd.c to board/cr50?\n\nNone of the other boards enable CONFIG_RDD.\n\nAnd this module is likely to get more cr50-specific if we implement any of the workarounds for the RDCC leakage.",
+      "parentUuid": "b7a9f5c1_b08222ca",
+      "range": {
+        "startLine": 108,
+        "startChar": 16,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "3c4f414407db1128aec2f29e59c4bf125a144c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80846ba3_99399bdd",
         "filename": "chip/g/rdd.c",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2017-08-17T19:55:41Z",
       "side": 1,
       "message": "Can we only enable the interrupt if rdd is disconnected or we\u0027re debouncing.\n\nI am worried that if there is a debug accessory connected, the rdd_interrupt will be triggered whenever we enable it. So on HOOK_SECOND we enable the rdd interrupt, it triggers, rdd_interrupt delays sleep by 1 second, so another HOOK_SECOND will be called and reenable the interrupt.... then we stay awake forever.\n\nThis is mainly an issue on Eve when the EC is in hibernate.",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "3c4f414407db1128aec2f29e59c4bf125a144c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fcb57eb_787d3a66",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T20:25:47Z",
+      "side": 1,
+      "message": "Rdd module says it only generates an interrupt when the state changes.  We should verify, of course.",
+      "parentUuid": "f3c63a70_ce2b8410",
       "range": {
         "startLine": 141,
         "startChar": 0,
