@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "ec325512_565c1976",
+        "filename": "board/mec1701_mecc/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T05:12:55Z",
+      "side": 1,
+      "message": "+shawnn: board_handle_all_sus() is defined in this CL",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 25
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d678e85_4e7e605a",
         "filename": "power/skylake.c",
         "patchSetId": 2
