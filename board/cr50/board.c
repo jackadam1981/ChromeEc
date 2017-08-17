@@ -517,11 +517,6 @@ int ap_is_on(void)
 	return device_get_state(DEVICE_AP) == DEVICE_STATE_ON;
 }
 
-int ec_is_on(void)
-{
-	return device_get_state(DEVICE_EC) == DEVICE_STATE_ON;
-}
-
 static void configure_board_specific_gpios(void)
 {
 	/* Add a pullup to sys_rst_l */
@@ -700,7 +695,6 @@ static void board_init(void)
 	/* Enable GPIO interrupts for device state machines */
 	gpio_enable_interrupt(GPIO_TPM_RST_L);
 	gpio_enable_interrupt(GPIO_DETECT_AP);
-	gpio_enable_interrupt(GPIO_DETECT_EC);
 	gpio_enable_interrupt(GPIO_DETECT_SERVO);
 
 	/*
@@ -710,6 +704,9 @@ static void board_init(void)
 	 */
 	init_ac_detect();
 	init_rdd_state();
+
+	/* Initialize EC state machine */
+	init_ec_state();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -943,7 +940,7 @@ static int servo_state_unknowable(void)
 	return 0;
 }
 
-static void enable_uart(int uart)
+void enable_uart(int uart)
 {
 	if (uart == UART_EC) {
 		if (!ccd_is_cap_enabled(CCD_CAP_EC_TX_CR50_RX))
@@ -968,7 +965,7 @@ static void enable_uart(int uart)
 		uartn_tx_connect(uart);
 }
 
-static void disable_uart(int uart)
+void disable_uart(int uart)
 {
 	/* Disable RX and TX on the UART peripheral */
 	uartn_disable(uart);
@@ -1077,22 +1074,6 @@ static void ap_deferred(void)
 }
 DECLARE_DEFERRED(ap_deferred);
 
-/**
- * Deferred handler for debouncing EC presence detect falling.
- *
- * This is called if DETECT_AP has been low long enough.
- */
-static void ec_deferred(void)
-{
-	/*
-	 * If the EC was still in DEVICE_STATE_UNKNOWN, move it to
-	 * DEVICE_STATE_OFF and disable its UART.
-	 */
-	if (device_powered_off(DEVICE_EC))
-		disable_uart(UART_EC);
-}
-DECLARE_DEFERRED(ec_deferred);
-
 /* Note: this must EXACTLY match enum device_type! */
 struct device_config device_states[] = {
 	[DEVICE_SERVO] = {
@@ -1105,12 +1086,6 @@ struct device_config device_states[] = {
 		.state = DEVICE_STATE_UNKNOWN,
 		.deferred = &ap_deferred_data,
 		.name = "AP"
-	},
-	[DEVICE_EC] = {
-		.state = DEVICE_STATE_UNKNOWN,
-		.deferred = &ec_deferred_data,
-		.detect = GPIO_DETECT_EC,
-		.name = "EC"
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(device_states) == DEVICE_COUNT);
@@ -1188,15 +1163,6 @@ void device_state_on(enum gpio_signal signal)
 		 */
 		if (device_state_changed(DEVICE_AP, DEVICE_STATE_ON))
 			hook_notify(HOOK_CHIPSET_RESUME);
-		break;
-	case GPIO_DETECT_EC:
-		/*
-		 * Turn the EC device on.  If it was previously unknown or
-		 * off, enable the EC UART.
-		 */
-		if (device_state_changed(DEVICE_EC, DEVICE_STATE_ON) &&
-		    !uart_bitbang_is_enabled(UART_EC))
-			enable_uart(UART_EC);
 		break;
 	case GPIO_DETECT_SERVO:
 		servo_attached();
