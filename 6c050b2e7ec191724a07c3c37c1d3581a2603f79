@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b6e5a9d_2a0f71ad",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T19:35:01Z",
+      "side": 1,
+      "message": "Wasn\u0027t sure if that function was expensive to call.  Done.",
+      "parentUuid": "7ee6f8ba_46edfc67",
+      "range": {
+        "startLine": 93,
+        "startChar": 15,
+        "endLine": 93,
+        "endChar": 37
+      },
+      "revId": "6c050b2e7ec191724a07c3c37c1d3581a2603f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a31adc4_f3588ac4",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "401c7296_7ef977c3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T19:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a31adc4_f3588ac4",
+      "range": {
+        "startLine": 292,
+        "startChar": 48,
+        "endLine": 293,
+        "endChar": 8
+      },
+      "revId": "6c050b2e7ec191724a07c3c37c1d3581a2603f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cfd2368_bc091b6d",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-08-17T18:20:17Z",
       "side": 1,
       "message": "looks like this function does not have to change (apart from its name)",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 67
+      },
+      "revId": "6c050b2e7ec191724a07c3c37c1d3581a2603f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e33ac56b_72c3c6ed",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T19:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cfd2368_bc091b6d",
       "range": {
         "startLine": 340,
         "startChar": 1,
@@ -105,6 +177,30 @@
       "writtenOn": "2017-08-17T17:49:41Z",
       "side": 1,
       "message": "Do we need to wakeup on both rising and falling edges?",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 56
+      },
+      "revId": "6c050b2e7ec191724a07c3c37c1d3581a2603f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "914cd111_910972aa",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T19:35:01Z",
+      "side": 1,
+      "message": "Both, for battery detect.\n\nOnly rising, for deep sleep wake.  Though it\u0027s harmless to wake on both.",
+      "parentUuid": "73aa5660_f439217b",
       "range": {
         "startLine": 345,
         "startChar": 0,
