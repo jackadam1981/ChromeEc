@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b38653b_277ec770",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1215,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-08-17T00:13:31Z",
+      "side": 1,
+      "message": "can you put this behind a CONFIG, esp. given its bandaid nature?\n\nwe have no known issues w/ usb suspend/resume (finally) across the fleet and would rather not add this in the mix at this point.",
+      "range": {
+        "startLine": 1215,
+        "startChar": 46,
+        "endLine": 1215,
+        "endChar": 56
+      },
+      "revId": "8e4761a97c9ff4d16e747097b7309c1edb8b4890",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
