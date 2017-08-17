@@ -6,10 +6,21 @@
 #ifndef __CROS_RDD_H
 #define __CROS_RDD_H
 
-/* Detach from debug cable */
-void rdd_detached(void);
+/**
+ * Enable/disable forcing debug accessory detection.
+ *
+ * When enabled, the RDD module will assert CCD_MODE_L even if the CC value
+ * does not indicate a debug accessory is present.
+ *
+ * @param enable	Enable (1) or disable (0) keepalive.
+ */
+void force_rdd_detect(int enable);
 
-/* Attach to debug cable */
-void rdd_attached(void);
+/**
+ * Check if debug accessory detection is forced.
+ *
+ * @return 1 if keepalive is enabled, 0 if disabled.
+ */
+int rdd_detect_is_forced(void);
 
 #endif  /* __CROS_RDD_H */
