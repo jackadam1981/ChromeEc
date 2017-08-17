@@ -164,6 +164,30 @@
       "revId": "1b4248591e0a6fde634a5dcc9ade5ce5f9f1a4ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa13861_62bd602a",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-17T03:14:05Z",
+      "side": 1,
+      "message": "The term \"ccd\" is now overloaded to mean any debugging with the case closed - whether it\u0027s done via a USB-C debug accessory or cr50tool running from a root shell.  \"rdd\" means \"remote debug device\" - that is, a USB-C debug accessory.  Which is what CCD_MODE_L connects.\n\nI\u0027m open to suggestions for better names, but we should decide soon since we\u0027ll make Nick sad if we keep changing them...",
+      "parentUuid": "7919a979_f9f998ff",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 43
+      },
+      "revId": "1b4248591e0a6fde634a5dcc9ade5ce5f9f1a4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
