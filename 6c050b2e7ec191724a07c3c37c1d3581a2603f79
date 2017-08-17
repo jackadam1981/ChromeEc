@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb2703ca_52e534ad",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-17T17:49:41Z",
+      "side": 1,
+      "message": "I forget. Does this mean that cr50 will wakeup for all rbox interrupts that are enabled?",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 39
+      },
+      "revId": "6c050b2e7ec191724a07c3c37c1d3581a2603f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73aa5660_f439217b",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-17T17:49:41Z",
+      "side": 1,
+      "message": "Do we need to wakeup on both rising and falling edges?",
+      "range": {
+        "startLine": 345,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 56
+      },
+      "revId": "6c050b2e7ec191724a07c3c37c1d3581a2603f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
