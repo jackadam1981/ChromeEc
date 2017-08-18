@@ -375,6 +375,17 @@ void __idle(void)
 			SET_BIT(NPCX_PDOUT(0), 0);
 #endif
 			idle_sleep_cnt++;
+
+			/*
+			 * Keeping CSAE bit at 1 will stall eSPI peripheral
+			 * transaction without M4 core clocks. Waking up M4
+			 * core to prevent this symptom. Please notice it
+			 * only occurs at npcx5.
+			 */
+#if defined(CHIP_FAMILY_NPCX5)
+			/* Enable Host access wakeup */
+			SET_BIT(NPCX_WKEN(MIWU_TABLE_0, MIWU_GROUP_5), 6);
+#endif
 			/*
 			 * Normal idle : wait for interrupt
 			 * TODO (ML): Workaround method for wfi issue.
