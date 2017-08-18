@@ -49,3 +49,31 @@ find the callsite. The second callsite is at `usb_pd_protocol.c:2672`. And the
 third one is added by annotation.
 
 The unresolved indirect callsites have the similar format to the above.
+
+Annotating Indirect Call
+------------------------
+
+To annotate an indirect call like this,
+```
+Unresolved indirect callsites:
+    pd_transmit
+        -> pd_transmit [common/usb_pd_protocol.c:407] 802c9c8
+           - tcpm_transmit [driver/tcpm/tcpm.h:142]
+```
+It is an indirect call in the `tcpm_transmit`, which is inlined to the `pd_transmit`.
+
+You can add a annotation like the below to eliminate it.
+```
+add:
+  tcpm_transmit[driver/tcpm/tcpm.h:142]:
+  - anx74xx_tcpm_transmit
+```
+The source `tcpm_transmit[driver/tcpm/tcpm.h:142]` must be a full signature (function name[path:line number]).
+So the resolver can know which indirect call you want to annotate and eliminate (even if it is inlined).
+
+If your source signature is only found in the inline stacks of some indirect calls (like the above),
+but not in disassembly, there will be a warning message like
+```
+tcpm_transmit[driver/tcpm/tcpm.h:142]: function is only found in inlined indirect calls
+```
+It doesn't mean an error.
