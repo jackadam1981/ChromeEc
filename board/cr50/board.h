@@ -147,6 +147,7 @@
 #define CONFIG_HW_SPECIFIC_UDELAY
 
 #define CONFIG_TPM_LOGGING
+#define CONFIG_CMD_TPM_LOG
 
 #ifndef __ASSEMBLER__
 

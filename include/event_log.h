@@ -32,4 +32,30 @@ void log_add_event(uint8_t type, uint8_t size, uint16_t data,
  */
 int log_dequeue_event(struct event_log_entry *r);
 
+/*
+ * Peek into the log events withoug changing the log contents.
+ *
+ * The passed in pointer needs to be large enough to store the largest
+ * possible event entry, which is 24 bytes for this implementation.
+ *
+ * If the passed in entry has the timestamp field set to 0, the function
+ * returns the newest available log entry. Each following invocation with
+ * timestamp field set to a non-zero value would return the entry one before
+ * the current one, until all available entries in the log have been returned.
+ *
+ * Returns the size of the retrieved entry, or zero if no entry was found.
+ *
+ * Returning entries in the reverse chronological order allows to smoothly
+ * traverse the log.
+ *
+ * If traversal in the chronological order were attempted, there always would
+ * be a chance of the older log entries disappearing between
+ * log_peek_prev_event() invocations, resulting in inaccurate representation
+ * of the log entries sequence.
+ *
+ * Note that this function KEEPS A SINGLE CONTEXT, so if more than one thread
+ * attempt to traverse the log concurrently the result would be a corrupted
+ * sequence of log events.
+ */
+int log_peek_prev_event(struct event_log_entry *r);
 #endif /* __CROS_EC_EVENT_LOG_H */
