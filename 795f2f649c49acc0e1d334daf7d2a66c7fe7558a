@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "655bc234_da5fda25",
+        "filename": "board/cr50/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-18T23:01:50Z",
+      "side": 1,
+      "message": "Please mention that because we don\u0027t set GPIO_OUTPUT above, the pin is still tristated. Cr50 will enable the gpio output and start actively driving the signal when GPIO_OUTPUT is added as a gpio flag.",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 3
+      },
+      "revId": "795f2f649c49acc0e1d334daf7d2a66c7fe7558a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57944f36_3bb9ed2a",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-18T23:01:50Z",
+      "side": 1,
+      "message": "Please comment that the order needs to be maintained.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 61
+      },
+      "revId": "795f2f649c49acc0e1d334daf7d2a66c7fe7558a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
