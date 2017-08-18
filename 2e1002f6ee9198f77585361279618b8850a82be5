@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e4b5f4d_ae9a9acc",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-18T22:30:54Z",
+      "side": 1,
+      "message": "This is fine for now, but we\u0027ll need to change it shortly to be a function of \"state of charge\" (and maybe some other inputs).",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 58
+      },
+      "revId": "2e1002f6ee9198f77585361279618b8850a82be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
