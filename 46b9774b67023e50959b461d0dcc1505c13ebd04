@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a518957c_a0229523",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-18T23:14:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99ace0dd_3f49d817",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 8
+      },
+      "revId": "46b9774b67023e50959b461d0dcc1505c13ebd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b7ae566_b1b859c5",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2017-08-16T05:53:07Z",
       "side": 1,
       "message": "EC_CMD_SWITCH_ACTIVE_FIRMWARE_SLOT?",
+      "range": {
+        "startLine": 4264,
+        "startChar": 0,
+        "endLine": 4265,
+        "endChar": 32
+      },
+      "revId": "46b9774b67023e50959b461d0dcc1505c13ebd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6330932_053d94a2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-18T23:14:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7ae566_b1b859c5",
       "range": {
         "startLine": 4264,
         "startChar": 0,
