@@ -125,3 +125,42 @@ retry:
 
 	return total_size * UNIT_SIZE;
 }
+
+int log_peek_prev_event(struct event_log_entry *r)
+{
+	static size_t prev_peek;  /* Index of the entry returned last time. */
+
+	if (!r->timestamp)
+		prev_peek = log_tail;
+
+	prev_peek--; /* Index of the entry we will try to return now. */
+
+	if ((prev_peek >= log_head) && (prev_peek < log_tail)) {
+		size_t norm_peek;
+		unsigned int total_size;
+		unsigned int first;
+
+		/* Normalize into the index of the log array. */
+		norm_peek = prev_peek & (LOG_SIZE - 1);
+
+		total_size = ENTRY_SIZE
+			(EVENT_LOG_SIZE(log_events[norm_peek].size));
+		first = MIN(total_size, LOG_SIZE - norm_peek);
+
+		memcpy(r, log_events + norm_peek, first * UNIT_SIZE);
+		if (first < total_size)
+			memcpy(r + first, log_events,
+			       (total_size - first) * UNIT_SIZE);
+
+		/* Was the entry yanked out from underneath us? */
+		if (prev_peek >= log_head)
+			/* No, it was not. */
+			return total_size * UNIT_SIZE;
+	}
+
+	/* Nothing to return. */
+	memset(r, 0, UNIT_SIZE);
+	r->type = EVENT_LOG_NO_ENTRY;
+
+	return 0;
+}

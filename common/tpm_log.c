@@ -50,12 +50,39 @@ static enum vendor_cmd_rc vc_pop_log_entry(enum vendor_cmd_cc code,
 DECLARE_VENDOR_COMMAND(VENDOR_CC_POP_LOG_ENTRY, vc_pop_log_entry);
 
 #ifdef CONFIG_CMD_TPM_LOG
+
+static int dump_tpm_log(void)
+{
+	/*
+	 * Allocate room for an event, make sure the buffer is large enough to
+	 * to get the structure properly aligned.
+	 */
+	uint8_t event[EVENT_LOG_SIZE_MASK + sizeof(uint32_t) - 1];
+	struct event_log_entry *entry;
+
+	entry = (struct event_log_entry *)(((uintptr_t)event + sizeof(uint32_t))
+					   & ~(sizeof(uint32_t) - 1));
+
+	/* Start at the top. */
+	entry->timestamp = 0;
+	while (log_peek_prev_event(entry))
+		ccprintf("Event %d at time %d.%03d s\n",
+			 entry->type, entry->timestamp / 1000,
+			 entry->timestamp % 1000);
+
+	return EC_SUCCESS;
+}
+
 /* Store an entry in the TPM event log, for testing. */
 int command_tpm_log(int argc, char **argv)
 {
 	enum tpm_event type = 0;
 	uint16_t data = 0;
 	char *e;
+
+	if ((argc == 2) && !strncmp(argv[1], "peek", 5)) {
+		return dump_tpm_log();
+	}
 
 	if (argc >= 2) {
 		type = strtoi(argv[1], &e, 10);
@@ -74,6 +101,6 @@ int command_tpm_log(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(tpm_log,
 			command_tpm_log,
-			"<type> <data>",
-			"Write an entry to TPM log");
+			"[<type> <data>|peek]",
+			"Write an entry to TPM log or peek into the log");
 #endif /* CONFIG_CMD_TPM_LOG */
