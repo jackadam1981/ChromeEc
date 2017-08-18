@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "081dda6f_e73c258c",
+        "filename": "board/glkrvp/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-18T00:34:04Z",
+      "side": 1,
+      "message": "These comments don\u0027t match the values?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 140,
+        "endChar": 58
+      },
+      "revId": "59e617f713196119bc95382553faa930be3b143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edf17975_3d1fe662",
+        "filename": "board/glkrvp/chg_usb_pd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-18T00:34:04Z",
+      "side": 1,
+      "message": "This looks really strange, I think you should change it to \"return !!(reg \u0026 PTN5110_EXT_GPIO_EN_SRC);\". \"if PTN5110_EXT_GPIO_EN_SRC bit is set, VBUS is enabled\"",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "59e617f713196119bc95382553faa930be3b143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06c561b1_d5bedfd5",
+        "filename": "board/glkrvp/chg_usb_pd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-18T00:34:04Z",
+      "side": 1,
+      "message": "I suggest to just pass \u0027enable\u0027.",
+      "range": {
+        "startLine": 68,
+        "startChar": 38,
+        "endLine": 69,
+        "endChar": 26
+      },
+      "revId": "59e617f713196119bc95382553faa930be3b143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9647136d_b978f188",
+        "filename": "board/glkrvp/chg_usb_pd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-18T00:34:04Z",
+      "side": 1,
+      "message": "Just pass \u0027enable\u0027.",
+      "range": {
+        "startLine": 74,
+        "startChar": 38,
+        "endLine": 75,
+        "endChar": 52
+      },
+      "revId": "59e617f713196119bc95382553faa930be3b143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcc8ea41_0bf84a96",
+        "filename": "board/glkrvp/chg_usb_pd.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-18T00:34:04Z",
+      "side": 1,
+      "message": "Might want to add \"BUILD_ASSERT(CONFIG_USB_PD_PORT_COUNT \u003d\u003d 2)\" just above, in case someone carelessly copies this code.",
+      "range": {
+        "startLine": 142,
+        "startChar": 2,
+        "endLine": 142,
+        "endChar": 34
+      },
+      "revId": "59e617f713196119bc95382553faa930be3b143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "873ce6f0_82792c3e",
+        "filename": "board/glkrvp/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-18T00:34:04Z",
+      "side": 1,
+      "message": "No need for this. I do realize the code was copy + pasted.",
+      "range": {
+        "startLine": 107,
+        "startChar": 46,
+        "endLine": 107,
+        "endChar": 54
+      },
+      "revId": "59e617f713196119bc95382553faa930be3b143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e662ef49_77ce2c8f",
+        "filename": "board/glkrvp/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-18T00:34:04Z",
+      "side": 1,
+      "message": "No need for this. I do realize the code was copy + pasted.",
+      "range": {
+        "startLine": 113,
+        "startChar": 35,
+        "endLine": 113,
+        "endChar": 42
+      },
+      "revId": "59e617f713196119bc95382553faa930be3b143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04652853_4a1efb9f",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-18T00:34:04Z",
+      "side": 1,
+      "message": "Let\u0027s move these changes (and the include/usb_pd_tcpm.h changes) to a new CL. We might cherry-pick them to a branch that doesn\u0027t care about glkrvp.",
+      "revId": "59e617f713196119bc95382553faa930be3b143b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
