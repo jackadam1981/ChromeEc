@@ -32,4 +32,5 @@ void log_add_event(uint8_t type, uint8_t size, uint16_t data,
  */
 int log_dequeue_event(struct event_log_entry *r);
 
+int log_peek_event(struct event_log_entry *r);
 #endif /* __CROS_EC_EVENT_LOG_H */

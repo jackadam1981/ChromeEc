@@ -125,3 +125,60 @@ retry:
 
 	return total_size * UNIT_SIZE;
 }
+
+int log_peek_event(struct event_log_entry *r)
+{
+	size_t peek_entry;
+	int return_size = UNIT_SIZE; /* Could change. */
+	int match_found = 0;
+
+	peek_entry = log_head;
+	if (r->timestamp != 0) {
+		/*
+		 * We are looking for an entry right before a particular
+		 * entry.
+		 */
+		while (peek_entry > log_tail) {
+			struct event_log_entry *this_entry =
+				&log_events[peek_entry & (LOG_SIZE - 1)];
+
+			peek_entry -= ENTRY_SIZE(
+				EVENT_LOG_SIZE(this_entry->size));
+
+			if (this_entry->timestamp != r->timestamp)
+				continue;
+
+			match_found = 1;
+			break;
+		}
+	} else {
+		if (log_head != log_tail)
+			match_found = 1;
+	}
+
+	if (match_found) {
+		unsigned total_size = ENTRY_SIZE(
+			EVENT_LOG_SIZE(log_events[peek_entry].size));
+		unsigned first = MIN(total_size, LOG_SIZE -
+				     (peek_entry & (LOG_SIZE - 1)));
+
+		memcpy(r, log_events + peek_entry, first * UNIT_SIZE);
+		if (first < total_size)
+			memcpy(r + first, log_events,
+			       (total_size-first) * UNIT_SIZE);
+		return_size = total_size * UNIT_SIZE;
+	}
+
+	/*
+	 * Ok, we probably copied something into the output, or maybe not, or
+	 * maybe whater we copied has been wiped out from the log. Check it
+	 * and adjust.
+	 */
+	if (!match_found || (peek_entry < log_tail)) {
+		memset(r, 0, UNIT_SIZE);
+		r->type = EVENT_LOG_NO_ENTRY;
+		return_size = UNIT_SIZE;
+	}
+
+	return return_size;
+}
