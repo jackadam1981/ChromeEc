@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "356da826_6203185b",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-18T22:32:15Z",
+      "side": 1,
+      "message": "I think this should be voltage_max.",
+      "range": {
+        "startLine": 259,
+        "startChar": 45,
+        "endLine": 259,
+        "endChar": 59
+      },
+      "revId": "2e1002f6ee9198f77585361279618b8850a82be5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e4b5f4d_ae9a9acc",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 2
