@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b45e0d8b_86ef69b8",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-18T21:47:32Z",
+      "side": 1,
+      "message": "Fixed in gpio.inc",
+      "parentUuid": "8c8a8691_e46b14eb",
+      "range": {
+        "startLine": 108,
+        "startChar": 16,
+        "endLine": 108,
+        "endChar": 52
+      },
+      "revId": "3c4f414407db1128aec2f29e59c4bf125a144c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "80846ba3_99399bdd",
         "filename": "chip/g/rdd.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "writtenOn": "2017-08-17T19:55:41Z",
       "side": 1,
       "message": "Right now all boards using rdd use ccd, but that may not always be the case. You might want to put this behind CONFIG_CASE_CLOSED_DEBUG",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 47
+      },
+      "revId": "3c4f414407db1128aec2f29e59c4bf125a144c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb79176d_8ecafea1",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-18T21:47:32Z",
+      "side": 1,
+      "message": "Right now, cr50 is the only board using CONFIG_RDD.\n\nWhen we have a second board, we can either use the same GPIO name there, or do something more complex then.\n\nIf we don\u0027t set CCD_MODE_L, this module has no effect on the rest of the system.",
+      "parentUuid": "80846ba3_99399bdd",
       "range": {
         "startLine": 109,
         "startChar": 1,
@@ -155,6 +203,30 @@
       "side": 1,
       "message": "Ok. If you verify then I am fine with it.",
       "parentUuid": "1fcb57eb_787d3a66",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 21
+      },
+      "revId": "3c4f414407db1128aec2f29e59c4bf125a144c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31a368f7_928a45d0",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-18T21:47:32Z",
+      "side": 1,
+      "message": "Ah, but doing enable_interrupt(0) then enable_interrupt(1) does make extra interrupts happen.\n\nAnd just leaving the interrupt enabled causes interrupt storms.\n\nSo I\u0027ll only enable it during debouncing, the same as the other state machines.  If Cr50 is in deep sleep, it will be necessary to toggle AC detect to wake it up, at which point it\u0027ll detect cable insertion.\n\nThat\u0027s necessary on Eve anyway, because if Cr50 is in deep sleep and EC is hibernating, Cr50 thinks the cable is attached already and won\u0027t trigger on an actual insert.",
+      "parentUuid": "f962fd81_4a0262b9",
       "range": {
         "startLine": 141,
         "startChar": 0,
