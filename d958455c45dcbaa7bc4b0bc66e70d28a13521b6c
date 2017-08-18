@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "240bf172_7e725e7c",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-18T21:11:42Z",
+      "side": 1,
+      "message": "So we can set the active one still but it will get overridden by the sleep ones, right?",
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "601e31ee_4cad1a0a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3048,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-18T21:11:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure we should rename these.",
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68e9a68a_4cdece47",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3063,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-18T21:11:42Z",
+      "side": 1,
+      "message": "I feel that we should have 2 commands: get and set lazy wake mask that takes a parameter for sleep state type included with the mask.",
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d6a03d2_a0a53847",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-18T21:11:42Z",
+      "side": 1,
+      "message": "This logic is different than what as in the old way of disabling lid and mode change wakes. I\u0027m not sure why we had those special cased though.",
+      "range": {
+        "startLine": 203,
+        "startChar": 47,
+        "endLine": 203,
+        "endChar": 48
+      },
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "405333aa_e8aa5028",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-18T21:11:42Z",
+      "side": 1,
+      "message": "Having a combined s3 and s5 combined wake mask requires the SMI handler to send the appropriate mask still depending on target power state.",
+      "range": {
+        "startLine": 208,
+        "startChar": 20,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
