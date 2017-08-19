@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d8c09cc9_ab3192a7",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-19T01:35:58Z",
+      "side": 1,
+      "message": "Or define this command as \"whatever slot I\u0027m in now, boot the other one next time\".  In which case, multiple calls are a no-op, and almost certainly do the right thing.",
+      "parentUuid": "0e98b8b6_fdaf72aa",
+      "range": {
+        "startLine": 1369,
+        "startChar": 0,
+        "endLine": 1371,
+        "endChar": 55
+      },
+      "revId": "46b9774b67023e50959b461d0dcc1505c13ebd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99ace0dd_3f49d817",
         "filename": "common/vboot/vboot.c",
         "patchSetId": 1

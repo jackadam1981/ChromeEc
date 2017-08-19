@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf234569_da40fbde",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1931,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-19T01:35:58Z",
+      "side": 0,
+      "message": "Please do not remove these.  We have released EC firmware which uses these, and which does not support the new commands.  Instead, just comment that these values are deprecated in new firmware.\n\n(This file is technically the interface definition for all EC firmware we\u0027ve ever released.)",
+      "range": {
+        "startLine": 1925,
+        "startChar": 0,
+        "endLine": 1931,
+        "endChar": 42
+      },
+      "revId": "7a41d77b15830990c198b22f027bc925f7bc6382",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
