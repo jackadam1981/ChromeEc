@@ -177,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "5ad2bf2f_cd65f0d2",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-08-21T23:43:30Z",
+      "side": 1,
+      "message": "I believe it was to ensure that we do not affect the masks that were not programmed while entering S0ix. But I agree that it doesn\u0027t seem to serve much.",
+      "parentUuid": "698c9a26_53fadcb4",
+      "range": {
+        "startLine": 203,
+        "startChar": 47,
+        "endLine": 203,
+        "endChar": 48
+      },
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "405333aa_e8aa5028",
         "filename": "power/common.c",
         "patchSetId": 5
@@ -212,6 +236,30 @@
       "side": 1,
       "message": "I agree, if we define separate S3 and S5 lazy wake masks, we can safely remove wake mask programming from SMI and can completely rely on one time wake mask programming on boot. But as you pointed out in patchset#4, on S0-\u003eS5, we would endup configuring active wake masks twice (S0-\u003eS3 and S3-\u003eS5). Also we need special handling for  google_chromeec_get_wake_mask.",
       "parentUuid": "405333aa_e8aa5028",
+      "range": {
+        "startLine": 208,
+        "startChar": 20,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f3772ed_57eb5d95",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-08-21T23:43:30Z",
+      "side": 1,
+      "message": "Would that(having separate S3 and S5 wake masks) be too bad? We should be in S3 for just an instance and then drop to S5. Are we worried that the wake mask for S3 could result in false wake while the device is attempting to enter S5?",
+      "parentUuid": "16c49d5b_4679d163",
       "range": {
         "startLine": 208,
         "startChar": 20,
