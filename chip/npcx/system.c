@@ -716,16 +716,20 @@ void system_reset(int flags)
 		save_flags |= RESET_FLAG_AP_OFF;
 
 	/* Save reset flag */
-	if (flags & SYSTEM_RESET_HARD)
+	if ((flags & SYSTEM_RESET_HARD) || (flags & SYSTEM_RESET_WAIT_SERVO))
 		save_flags |= RESET_FLAG_HARD;
 	else
 		save_flags |= RESET_FLAG_SOFT;
 
+	if (flags & SYSTEM_RESET_WAIT_SERVO)
+		save_flags |= RESET_FLAG_WAIT_SERVO | RESET_FLAG_AP_OFF;
+
 	/* Store flags to battery backed RAM. */
 	chip_save_reset_flags(save_flags);
 
-	/* Ask the watchdog to trigger a hard reboot */
-	system_watchdog_reset();
+	if (!(flags & SYSTEM_RESET_WAIT_SERVO))
+		/* Ask the watchdog to trigger a hard reboot */
+		system_watchdog_reset();
 
 	/* Spin and wait for reboot; should never return */
 	while (1)
