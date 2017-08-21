@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c73ac7c1_5b45c72f",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1153039
+      },
+      "writtenOn": "2017-08-21T11:55:49Z",
+      "side": 1,
+      "message": "Ya, I will move \"fw_data check\" out of parse_cmdline",
+      "parentUuid": "b1a54f01_b78c8d9f",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "6088294ed2f04220d702f1fc3aa1516d77831c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c979dbc0_e424de9e",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "10cd493a_e6ae262d",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1153039
+      },
+      "writtenOn": "2017-08-21T11:55:49Z",
+      "side": 1,
+      "message": "request_exit() will be better, update in next repo",
+      "parentUuid": "c979dbc0_e424de9e",
+      "revId": "6088294ed2f04220d702f1fc3aa1516d77831c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3e9a90b_0fe5309c",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2017-08-21T05:33:09Z",
       "side": 1,
       "message": "You can\u0027t do that before parsing the command line.",
+      "revId": "6088294ed2f04220d702f1fc3aa1516d77831c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c032a08_3daa5564",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1153039
+      },
+      "writtenOn": "2017-08-21T11:55:49Z",
+      "side": 1,
+      "message": "my mistake, pid/vid may be changed in the command line.\nCorrect it in next repo",
+      "parentUuid": "b3e9a90b_0fe5309c",
       "revId": "6088294ed2f04220d702f1fc3aa1516d77831c96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
