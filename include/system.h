@@ -33,6 +33,7 @@
 #define RESET_FLAG_RDD         (1 << 15)  /* USB Type-C debug cable */
 #define RESET_FLAG_RBOX        (1 << 16)  /* Fixed Reset Functionality */
 #define RESET_FLAG_SECURITY    (1 << 17)  /* Security threat */
+#define RESET_FLAG_WAIT_EXT    (1 << 18)  /* Wait for EC_RST_L to driven */
 
 /* Per chip implementation to save raw RESET_FLAG_ flags. */
 void chip_save_reset_flags(int flags);
@@ -261,6 +262,10 @@ const char *system_get_build_info(void);
  * Indicate that this was a manually triggered reset.
  */
 #define SYSTEM_RESET_MANUALLY_TRIGGERED (1 << 3)
+/*
+ * Indicate that reset will be from SYS_RST_L being driven low.
+ */
+#define SYSTEM_RESET_WAIT_EXTERNAL (1 << 4)
 
 /**
  * Reset the system.

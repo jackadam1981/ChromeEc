@@ -90,7 +90,7 @@ static const char * const reset_flag_descs[] = {
 	"other", "reset-pin", "brownout", "power-on", "watchdog", "soft",
 	"hibernate", "rtc-alarm", "wake-pin", "low-battery", "sysjump",
 	"hard", "ap-off", "preserved", "usb-resume", "rdd", "rbox",
-	"security" };
+	"security", "wait-ext" };
 
 static uint32_t reset_flags;
 static int jumped_to_image;
@@ -1123,6 +1123,9 @@ static int command_reboot(int argc, char **argv)
 			return EC_SUCCESS;
 		} else if (!strcasecmp(argv[i], "preserve")) {
 			flags |= SYSTEM_RESET_PRESERVE_FLAGS;
+		} else if (!strcasecmp(argv[i], "wait-ext")) {
+			ccputs("wait-ext cmd\n");
+			flags |= SYSTEM_RESET_WAIT_EXTERNAL;
 		} else
 			return EC_ERROR_PARAM1 + i - 1;
 	}
@@ -1136,7 +1139,7 @@ static int command_reboot(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(reboot, command_reboot,
-			"[hard|soft] [preserve] [ap-off] [cancel]",
+			"[hard|soft] [preserve] [ap-off] [wait-ext] [cancel]",
 			"Reboot the EC");
 
 #ifdef CONFIG_CMD_SYSLOCK
