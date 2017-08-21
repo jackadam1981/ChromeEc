@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2bc59af_3875f351",
+        "filename": "common/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-21T22:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd51c61_6e166f59",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 53
+      },
+      "revId": "de5b4d35fe2443dd83d5e2e2c8afe02e083819ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9131401_b190f988",
         "filename": "common/vboot/vboot.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-19T01:35:58Z",
       "side": 1,
       "message": "Does that mean we can just get rid of this function?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 67
+      },
+      "revId": "de5b4d35fe2443dd83d5e2e2c8afe02e083819ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abfcfe05_d59be5de",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-21T22:40:57Z",
+      "side": 1,
+      "message": "Reverted. We\u0027ll make vboot_main a part of the unified boot flow. Then, this function should return true only if EFS is supported.",
+      "parentUuid": "e9131401_b190f988",
       "range": {
         "startLine": 36,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0ab990b2_15f9a3af",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2793,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-21T22:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "060d4ad6_bb290c25",
+      "range": {
+        "startLine": 2792,
+        "startChar": 1,
+        "endLine": 2793,
+        "endChar": 23
+      },
+      "revId": "de5b4d35fe2443dd83d5e2e2c8afe02e083819ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c88e4c1f_297d66a4",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-19T01:35:58Z",
       "side": 1,
       "message": "This must go at the end.  Putting it here changes the enum values below, so old OS + new EC or old EC + new OS will interpret the enums differently.",
+      "range": {
+        "startLine": 1364,
+        "startChar": 0,
+        "endLine": 1365,
+        "endChar": 24
+      },
+      "revId": "de5b4d35fe2443dd83d5e2e2c8afe02e083819ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa93dc9e_67842a18",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-21T22:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c88e4c1f_297d66a4",
       "range": {
         "startLine": 1364,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d0634dcc_d162299e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4261,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-21T22:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3e0177c_838e2548",
+      "range": {
+        "startLine": 4261,
+        "startChar": 18,
+        "endLine": 4261,
+        "endChar": 32
+      },
+      "revId": "de5b4d35fe2443dd83d5e2e2c8afe02e083819ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "979033f7_5bfbced3",
         "filename": "util/ectool.c",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2017-08-19T01:35:58Z",
       "side": 1,
       "message": "TODO(dnojiri) or (bug#)",
+      "range": {
+        "startLine": 6232,
+        "startChar": 4,
+        "endLine": 6232,
+        "endChar": 8
+      },
+      "revId": "de5b4d35fe2443dd83d5e2e2c8afe02e083819ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61a3fb5a_a374278f",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6232,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-21T22:40:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "979033f7_5bfbced3",
       "range": {
         "startLine": 6232,
         "startChar": 4,

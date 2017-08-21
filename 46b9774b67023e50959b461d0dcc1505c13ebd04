@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4be4f364_aa4f1ae5",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-21T22:40:57Z",
+      "side": 1,
+      "message": "I think it would be expected a switch happens if the board is rebooted manually after EC_CMD_SWITCH_SLOT.\n\nI extend the existing reboot command. If EC_REBOOT_FLAG_SWITCH_RW_SLOT is specified, reboot command switches the slot before reboot. This way, we can enforce slot switch goes through EC\u0027s reboot command and avoid reverting a switch because of the 2nd call.\n\nEC_CMD_SWITCH_SLOT is removed.",
+      "parentUuid": "d8c09cc9_ab3192a7",
+      "range": {
+        "startLine": 1369,
+        "startChar": 0,
+        "endLine": 1371,
+        "endChar": 55
+      },
+      "revId": "46b9774b67023e50959b461d0dcc1505c13ebd04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99ace0dd_3f49d817",
         "filename": "common/vboot/vboot.c",
         "patchSetId": 1
