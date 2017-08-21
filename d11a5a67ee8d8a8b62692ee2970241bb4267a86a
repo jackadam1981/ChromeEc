@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "535627bd_ded8ef29",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-21T23:51:43Z",
+      "side": 1,
+      "message": "*If* we\u0027re going to change the other vboot_hash_start() invocations then we should change these too (and get rid of system_get_image_used()).",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 25
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59cf2bd4_92ec4737",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-21T23:51:43Z",
+      "side": 1,
+      "message": "As you noted in your commit message, we\u0027re now hashing the entire region rather than just the image portion. Can you double check there are no boards that write misc. non-image data to the RW region during runtime? Eg. usb_pd_policy.c can write an RSA sig at runtime (see FW_RW_END). I guess this particular case is fine since we won\u0027t do both RSA verification and EFS on a board, but I wonder if there are other cases.",
+      "range": {
+        "startLine": 388,
+        "startChar": 23,
+        "endLine": 388,
+        "endChar": 41
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
