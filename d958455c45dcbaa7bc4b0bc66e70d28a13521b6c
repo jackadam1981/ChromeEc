@@ -107,6 +107,29 @@
     },
     {
       "key": {
+        "uuid": "b8cbf095_cfab17fb",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-21T19:54:37Z",
+      "side": 1,
+      "message": "nit: Could you try and keep these in alphabetical order? (I know that espi.h wasn\u0027t introduced with this CL.)",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 16
+      },
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d6a03d2_a0a53847",
         "filename": "power/common.c",
         "patchSetId": 5
@@ -194,6 +217,29 @@
         "startChar": 20,
         "endLine": 208,
         "endChar": 35
+      },
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ea9f23f_91afcaa7",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-21T19:54:37Z",
+      "side": 1,
+      "message": "\u0027wm_state\u0027?",
+      "range": {
+        "startLine": 871,
+        "startChar": 5,
+        "endLine": 871,
+        "endChar": 10
       },
       "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
