@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1a54f01_b78c8d9f",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-21T05:33:09Z",
+      "side": 1,
+      "message": "Arguably this should be moved out of parse_cmdline, so that we can get the IC type before reading the file.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "6088294ed2f04220d702f1fc3aa1516d77831c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c979dbc0_e424de9e",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-21T05:33:09Z",
+      "side": 1,
+      "message": "This can be a request_exit(\"...\");",
+      "revId": "6088294ed2f04220d702f1fc3aa1516d77831c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e9a90b_0fe5309c",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-21T05:33:09Z",
+      "side": 1,
+      "message": "You can\u0027t do that before parsing the command line.",
+      "revId": "6088294ed2f04220d702f1fc3aa1516d77831c96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
