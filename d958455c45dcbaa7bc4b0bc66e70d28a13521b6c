@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "af25129f_f3c19c7f",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-21T08:35:48Z",
+      "side": 1,
+      "message": "Yes, This is mainly for platforms without CONFIG_LAZY_WAKE_MASKS. For platforms with CONFIG_LAZY_WAKE_MASKS, this is really not needed. I\u0027ll warp this inside a #ifndef  ONFIG_LAZY_WAKE_MASK",
+      "parentUuid": "240bf172_7e725e7c",
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "601e31ee_4cad1a0a",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "eae49362_59c963f5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3048,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-21T08:35:48Z",
+      "side": 1,
+      "message": "OK. Agreed",
+      "parentUuid": "601e31ee_4cad1a0a",
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "68e9a68a_4cdece47",
         "filename": "include/ec_commands.h",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2017-08-18T21:11:42Z",
       "side": 1,
       "message": "I feel that we should have 2 commands: get and set lazy wake mask that takes a parameter for sleep state type included with the mask.",
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "487eee85_915281c6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3063,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-21T08:35:48Z",
+      "side": 1,
+      "message": "Ok..agreed",
+      "parentUuid": "68e9a68a_4cdece47",
       "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "698c9a26_53fadcb4",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-21T08:35:48Z",
+      "side": 1,
+      "message": "I am also not sure. But I really don\u0027t find a need to have  a ~ and AND logic as below since on exit from sleep state, wake masks can be safely set to 0.  \n\nmask \u003d lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE) \u0026\n\t\t\t~EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) \u0026\n\t\t\t~EC_HOST_EVENT_MASK(EC_HOST_EVENT_MODE_CHANGE);",
+      "parentUuid": "8d6a03d2_a0a53847",
+      "range": {
+        "startLine": 203,
+        "startChar": 47,
+        "endLine": 203,
+        "endChar": 48
+      },
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "405333aa_e8aa5028",
         "filename": "power/common.c",
         "patchSetId": 5
@@ -87,6 +165,30 @@
       "writtenOn": "2017-08-18T21:11:42Z",
       "side": 1,
       "message": "Having a combined s3 and s5 combined wake mask requires the SMI handler to send the appropriate mask still depending on target power state.",
+      "range": {
+        "startLine": 208,
+        "startChar": 20,
+        "endLine": 208,
+        "endChar": 35
+      },
+      "revId": "d958455c45dcbaa7bc4b0bc66e70d28a13521b6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c49d5b_4679d163",
+        "filename": "power/common.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-08-21T08:35:48Z",
+      "side": 1,
+      "message": "I agree, if we define separate S3 and S5 lazy wake masks, we can safely remove wake mask programming from SMI and can completely rely on one time wake mask programming on boot. But as you pointed out in patchset#4, on S0-\u003eS5, we would endup configuring active wake masks twice (S0-\u003eS3 and S3-\u003eS5). Also we need special handling for  google_chromeec_get_wake_mask.",
+      "parentUuid": "405333aa_e8aa5028",
       "range": {
         "startLine": 208,
         "startChar": 20,
