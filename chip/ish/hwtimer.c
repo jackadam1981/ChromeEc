@@ -100,8 +100,9 @@ int __hw_clock_source_init(uint32_t start_t)
 
 	/* Timer 0 - IRQ routing */
 	timer0_config &= ~HPET_Tn_INT_ROUTE_CNF_MASK;
-	timer0_config |= (ISH_HPET_TIMER0_IRQ <<
-				HPET_Tn_INT_ROUTE_CNF_SHIFT);
+	/* no need IRQ set for HPET0 */
+	/* timer0_config |= (ISH_HPET_TIMER0_IRQ <<
+				HPET_Tn_INT_ROUTE_CNF_SHIFT); */
 
 	/* Timer 1 - IRQ routing */
 	timer1_config &= ~HPET_Tn_INT_ROUTE_CNF_MASK;
@@ -131,7 +132,8 @@ int __hw_clock_source_init(uint32_t start_t)
 #endif
 
 	/* Enable HPET main counter */
-	HPET_GENERAL_CONFIG |= HPET_ENABLE_CNF;
+	/* LEGACY_RT_CNF is necessary for HPET1 interrupt routing */
+	HPET_GENERAL_CONFIG |= (HPET_ENABLE_CNF | HPET_LEGACY_RT_CNF);
 
 	return ISH_HPET_TIMER1_IRQ;
 }
