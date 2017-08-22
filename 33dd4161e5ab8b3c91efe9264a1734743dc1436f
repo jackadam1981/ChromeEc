@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55902f4d_066827cd",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T19:59:37Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "b5e157e7_e58593be",
+      "range": {
+        "startLine": 65,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "33dd4161e5ab8b3c91efe9264a1734743dc1436f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f829a0fe_a297ac07",
         "filename": "board/fizz/board.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-08-22T18:24:38Z",
       "side": 1,
       "message": "We have an interrupt enabled on this signal just to print this? What if the BJ is already plugged in and the EC is reset. Presumably we\u0027d never see the interrupt? Or will it fire if the signal is already high when the gpio is configured?",
+      "revId": "33dd4161e5ab8b3c91efe9264a1734743dc1436f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5f9d1ba_69bd3e48",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T19:59:37Z",
+      "side": 1,
+      "message": "This hook will be populated to implement power source swap: https://issuetracker.google.com/38321259. The plan is to detect BJ insert while EC is powered by a type-c charger at G3/S5.\n\nDue to a bug in the hardware, we have to wait until EVT before testing the swap. https://issuetracker.google.com/64942211.",
+      "parentUuid": "f829a0fe_a297ac07",
       "revId": "33dd4161e5ab8b3c91efe9264a1734743dc1436f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
