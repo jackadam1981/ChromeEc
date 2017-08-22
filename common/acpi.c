@@ -175,6 +175,19 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			break;
 #endif
 
+		case EC_ACPI_MEM_DEVICE_FEATURES:
+			result = 0;
+#ifdef CONFIG_PWM_KBLIGHT
+/* If the board supports the backlight as option, only add if it's
+ * detected. Otherwise, always report it as present when backlight
+ * support is compiled in.
+ */
+#ifdef CONFIG_PWM_KBLIGHT_BOARD_OPTION
+			if (board_has_kblight())
+#endif
+				result |= EC_ACPI_MEM_KEYBOARD_BACKLIGHT_EXISTS;
+#endif
+			break;
 		default:
 			result = acpi_read(acpi_addr);
 			break;

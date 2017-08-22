@@ -1953,6 +1953,9 @@
 /* Support PWM output to keyboard backlight */
 #undef CONFIG_PWM_KBLIGHT
 
+/* Support device specific enablement of keyboard backlight */
+#undef CONFIG_PWM_KBLIGHT_BOARD_OPTION
+
 /* Base address of RAM for the chip */
 #undef CONFIG_RAM_BASE
 

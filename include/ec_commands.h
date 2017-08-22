@@ -326,6 +326,16 @@
 #define EC_ACPI_MEM_DEVICE_TABLET_MODE 0x01
 
 /*
+ * Report device features that may differ within a board (eg. different SKUs)
+ *   DEVICE_FEATURES = 0xff: query not supported, therefore bit 0 must be 0:
+ *   bit 0: zero if DEVICE_FEATURES has any significance
+ *   bit 1: device has a keyboard backlight
+ */
+#define EC_ACPI_MEM_DEVICE_FEATURES 0x0a
+#define EC_ACPI_MEM_KEYBOARD_BACKLIGHT_EXISTS 0x01
+int board_has_kblight(void);
+
+/*
  * ACPI addresses 0x20 - 0xff map to EC_MEMMAP offset 0x00 - 0xdf.  This data
  * is read-only from the AP.  Added in EC_ACPI_MEM_VERSION 2.
  */

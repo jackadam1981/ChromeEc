@@ -1154,3 +1154,14 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+
+int board_has_kblight(void)
+{
+	uint32_t sku = system_get_sku_id();
+
+	// TODO: fill in the skus for devices with backlight
+	if (sku == 0)
+		return 1;
+
+	return 0;
+}
