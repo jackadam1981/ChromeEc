@@ -2,6 +2,109 @@
   "comments": [
     {
       "key": {
+        "uuid": "e0ef8ec1_be0337a3",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-22T00:10:27Z",
+      "side": 1,
+      "message": "Any particular reason why this is on a different line?",
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "821e6be2_d774aeb0",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-22T00:10:27Z",
+      "side": 1,
+      "message": "Missing \u0027break\u0027?",
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef9c15d_d2ab43d1",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-22T00:10:27Z",
+      "side": 1,
+      "message": "nit: \u003e 80 cols.",
+      "range": {
+        "startLine": 609,
+        "startChar": 66,
+        "endLine": 609,
+        "endChar": 67
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c8b37e7_29c6d874",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-22T00:10:27Z",
+      "side": 1,
+      "message": "Do we not want to distinguish between RW_A \u0026 RW_B?",
+      "range": {
+        "startLine": 1188,
+        "startChar": 21,
+        "endLine": 1188,
+        "endChar": 32
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aca80a24_0deb9a16",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-22T00:10:27Z",
+      "side": 1,
+      "message": "nit: add a bug or your username.",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 9
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "535627bd_ded8ef29",
         "filename": "common/vboot_hash.c",
         "patchSetId": 6
@@ -45,6 +148,52 @@
       "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d615571_90267480",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6235,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-22T00:10:27Z",
+      "side": 1,
+      "message": "return code checking?",
+      "range": {
+        "startLine": 6235,
+        "startChar": 2,
+        "endLine": 6235,
+        "endChar": 12
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ad0772_e539cc70",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6242,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-22T00:10:27Z",
+      "side": 1,
+      "message": "Here as well.",
+      "range": {
+        "startLine": 6242,
+        "startChar": 2,
+        "endLine": 6242,
+        "endChar": 12
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
