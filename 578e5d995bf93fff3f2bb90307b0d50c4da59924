@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ad4e3a8_835506dc",
+        "filename": "board/glkrvp/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-22T00:36:34Z",
+      "side": 1,
+      "message": "okay, I will add it",
+      "parentUuid": "5b0d3fa6_bc81b3c9",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "578e5d995bf93fff3f2bb90307b0d50c4da59924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1c809f7_3149255d",
         "filename": "board/glkrvp/gpio.inc",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-21T23:21:17Z",
       "side": 1,
       "message": "Why GPIO_INT_BOTH instead of FALLING?",
+      "range": {
+        "startLine": 23,
+        "startChar": 39,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "578e5d995bf93fff3f2bb90307b0d50c4da59924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ce97792_e6554078",
+        "filename": "board/glkrvp/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-08-22T00:36:34Z",
+      "side": 1,
+      "message": "nice catch",
+      "parentUuid": "d1c809f7_3149255d",
       "range": {
         "startLine": 23,
         "startChar": 39,
