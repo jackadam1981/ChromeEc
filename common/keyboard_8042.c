@@ -98,7 +98,12 @@ static int i8042_irq_enabled;
 
 /* i8042 global settings */
 static int keyboard_enabled;	/* default the keyboard is disabled. */
+/* TEST-ONLY */
+#ifdef INTEL_SKL_Y_RVP
+static int keystroke_enabled = 1;	/* output keystrokes */
+#else
 static int keystroke_enabled;	/* output keystrokes */
+#endif
 static uint8_t resend_command[MAX_SCAN_CODE_LEN];
 static uint8_t resend_command_len;
 static uint8_t controller_ram_address;
