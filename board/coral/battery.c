@@ -21,16 +21,41 @@
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
-/* Shutdown mode parameter to write to manufacturer access register */
-#define SB_SHUTDOWN_DATA	0xC574
+/* Number of writes needed to invoke battery cutoff command */
+#define SHIP_MODE_WRITES 2
 
 enum battery_type {
 	BATTERY_SANYO,
+	BATTERY_SONY,
+	BATTERY_PANASONIC,
+	BATTERY_CELXPERT,
+	BATTERY_LGC011,
+	BATTERY_SMP011,
+	BATTERY_LGC,
+	BATTERY_BYD,
+	BATTERY_SIMPLO,
 	BATTERY_TYPE_COUNT,
 };
 
-struct board_batt_params {
+struct ship_mode_info {
+	const uint8_t reg_addr;
+	const uint16_t reg_data[SHIP_MODE_WRITES];
+};
+
+struct fet_info {
+	const uint8_t reg_addr;
+	const uint16_t reg_mask;
+	const uint16_t disc_val;
+};
+
+struct fg_info {
 	const char *manuf_name;
+	const struct ship_mode_info *ship_mode;
+	const struct fet_info *fet;
+};
+
+struct board_batt_params {
+	const struct fg_info *fg;
 	const struct battery_info *batt_info;
 };
 
@@ -38,29 +63,350 @@ struct board_batt_params {
 static enum battery_present batt_pres_prev = BP_NOT_SURE;
 static enum battery_type board_battery_type = BATTERY_TYPE_COUNT;
 
+/* Battery may delay reporting battery present */
+static int battery_report_present = 1;
+
 /*
- * Battery info for LG A50. Note that the fields start_charging_min/max and
- * charging_min/max are not used for the Eve charger. The effective temperature
- * limits are given by discharging_min/max_c.
+ * Battery info for all Coral battery types. Note that the fields
+ * start_charging_min/max and charging_min/max are not used for the charger.
+ * The effective temperature limits are given by discharging_min/max_c.
+ *
+ * Fuel Gauge (FG) parameters which are used for determing if the battery
+ * is connected, the appropriate ship mode (battery cutoff) command, and the
+ * charge/discharge FETs status.
+ *
+ * Ship mode (battery cutoff) requires 2 writes to the appropirate smart battery
+ * register. For some batteries, the charge/discharge FET bits are set when
+ * charging/discharging is active, in other types, these bits set mean that
+ * charging/discharging is disabled. Therefore, in addition to the mask for
+ * these bits, a disconnect value must be specified. Note that for TI fuel
+ * gauge, the charge/discharge FET status is found in Operation Status (0x54),
+ * but a read of Manufacturer Access (0x00) will return the lower 16 bits of
+ * Operation status which contains the FET status bits.
+ *
+ * The assumption for battery types supported is that the charge/discharge FET
+ * status can be read with a sb_read() command and therefore, only the regsister
+ * address, mask, and disconnect value need to be provided.
  */
+
+/* SANYO AC15A3J Battery Information */
+static const struct ship_mode_info ship_mode_sanyo = {
+	.reg_addr = 0x3A,
+	.reg_data = {0xC574, 0xC574},
+};
+static const struct fet_info fet_info_sanyo = {
+	.reg_addr = 0x0,
+	.reg_mask = 0xC000,
+	.disc_val = 0x0,
+};
+
+static const struct fg_info fg_sanyo = {
+	.manuf_name = "SANYO",
+	.ship_mode = &ship_mode_sanyo,
+	.fet = &fet_info_sanyo,
+};
+
 static const struct battery_info batt_info_sanyo = {
 	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
 	.voltage_normal		= 11550, /* mV */
 	.voltage_min		= 9000, /* mV */
 	.precharge_current	= 256,	/* mA */
 	.start_charging_min_c	= 0,
-	.start_charging_max_c	= 46,
+	.start_charging_max_c	= 50,
 	.charging_min_c		= 0,
 	.charging_max_c		= 60,
 	.discharging_min_c	= 0,
 	.discharging_max_c	= 60,
 };
 
+/* Sony Ap13J4K Battery Information */
+static const struct ship_mode_info ship_mode_sony = {
+	.reg_addr = 0x3A,
+	.reg_data = {0xC574, 0xC574},
+};
+static const struct fet_info fet_info_sony = {
+	.reg_addr = 0x0,
+	.reg_mask = 0xC000,
+	.disc_val = 0x0,
+};
+
+static const struct fg_info fg_sony = {
+	.manuf_name = "SONYCorp",
+	.ship_mode = &ship_mode_sony,
+	.fet = &fet_info_sony,
+};
+
+static const struct battery_info batt_info_sony = {
+	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
+	.voltage_normal		= 11400, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 256,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= 0,
+	.discharging_max_c	= 60,
+};
+
+/* Panasonic AP1505L Battery Information */
+static const struct ship_mode_info ship_mode_panasonic = {
+	.reg_addr = 0x3A,
+	.reg_data = {0xC574, 0xC574},
+};
+static const struct fet_info fet_info_panasonic = {
+	.reg_addr = 0x0,
+	.reg_mask = 0xC000,
+	.disc_val = 0x0,
+};
+
+static const struct fg_info fg_panasonic = {
+	.manuf_name = "PANASON",
+	.ship_mode = &ship_mode_panasonic,
+	.fet = &fet_info_panasonic,
+};
+
+static const struct battery_info batt_info_panasonic = {
+	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
+	.voltage_normal		= 11550, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 256,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= 0,
+	.discharging_max_c	= 60,
+};
+
+/* Celxpert Li7C3PG0 Battery Information */
+static const struct ship_mode_info ship_mode_celxpert = {
+	.reg_addr = 0x34,
+	.reg_data = {0x0, 0x1},
+};
+static const struct fet_info fet_info_celxpert = {
+	.reg_addr = 0x0,
+	.reg_mask = 0x0018,
+	.disc_val = 0x0,
+};
+
+static const struct fg_info fg_celxpert = {
+	.manuf_name = "Celxpert",
+	.ship_mode = &ship_mode_celxpert,
+	.fet = &fet_info_celxpert,
+};
+
+static const struct battery_info batt_info_celxpert = {
+	.voltage_max		= TARGET_WITH_MARGIN(13050, 5), /* mV */
+	.voltage_normal		= 11400, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 200,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= 0,
+	.discharging_max_c	= 60,
+};
+
+/* LGC\011 L17L3PB0 Battery Information */
+static const struct ship_mode_info ship_mode_lgc011 = {
+	.reg_addr = 0x34,
+	.reg_data = {0x0, 0x1},
+};
+static const struct fet_info fet_info_lgc011 = {
+	.reg_addr = 0x0,
+	.reg_mask = 0x0018,
+	.disc_val = 0x0,
+};
+
+static const struct fg_info fg_lgc011 = {
+	.manuf_name = "LGC\011",
+	.ship_mode = &ship_mode_lgc011,
+	.fet = &fet_info_lgc011,
+};
+
+static const struct battery_info batt_info_lgc011 = {
+	.voltage_max		= TARGET_WITH_MARGIN(13050, 5), /* mV */
+	.voltage_normal		= 11400, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 500,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= 0,
+	.discharging_max_c	= 60,
+};
+
+/* SMP\011 L17M3PB0 Battery Information */
+static const struct ship_mode_info ship_mode_smp011 = {
+	.reg_addr = 0x34,
+	.reg_data = {0x0, 0x1},
+};
+static const struct fet_info fet_info_smp011 = {
+	.reg_addr = 0x0,
+	.reg_mask = 0x0018,
+	.disc_val = 0x0,
+};
+
+static const struct fg_info fg_smp011 = {
+	.manuf_name = "SMP\011",
+	.ship_mode = &ship_mode_smp011,
+	.fet = &fet_info_smp011,
+};
+
+static const struct battery_info batt_info_smp011 = {
+	.voltage_max		= TARGET_WITH_MARGIN(13050, 5), /* mV */
+	.voltage_normal		= 11400, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 192,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= 0,
+	.discharging_max_c	= 60,
+};
+
+
+/* LGC DELL Y07HK Battery Information */
+static const struct ship_mode_info ship_mode_lgc = {
+	.reg_addr = 0x0,
+	.reg_data = {0x10, 0x10},
+};
+static const struct fet_info fet_info_lgc = {
+	.reg_addr = 0x0,
+	.reg_mask = 0x6000,
+	.disc_val = 0x6000,
+};
+
+static const struct fg_info fg_lgc = {
+	.manuf_name = "LGC-LGC3.553",
+	.ship_mode = &ship_mode_lgc,
+	.fet = &fet_info_lgc,
+};
+
+static const struct battery_info batt_info_lgc = {
+	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
+	.voltage_normal		= 11400, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 256,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= 0,
+	.discharging_max_c	= 60,
+};
+
+/* BYD DELL FY8XM6C Battery Information */
+static const struct ship_mode_info ship_mode_byd = {
+	.reg_addr = 0x0,
+	.reg_data = {0x10, 0x10},
+};
+static const struct fet_info fet_info_byd = {
+	.reg_addr = 0x0,
+	.reg_mask = 0x6000,
+	.disc_val = 0x6000,
+};
+
+static const struct fg_info fg_byd = {
+	.manuf_name = "BYD",
+	.ship_mode = &ship_mode_byd,
+	.fet = &fet_info_byd,
+};
+
+static const struct battery_info batt_info_byd = {
+	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
+	.voltage_normal		= 11400, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 256,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= 0,
+	.discharging_max_c	= 60,
+};
+
+/* Simplo () Battery Information */
+static const struct ship_mode_info ship_mode_simplo = {
+	.reg_addr = 0x0,
+	.reg_data = {0x10, 0x10},
+};
+static const struct fet_info fet_info_simplo = {
+	.reg_addr = 0x0,
+	.reg_mask = 0x6000,
+	.disc_val = 0x6000,
+};
+
+static const struct fg_info fg_simplo = {
+	.manuf_name = "BYD",
+	.ship_mode = &ship_mode_simplo,
+	.fet = &fet_info_simplo,
+};
+
+static const struct battery_info batt_info_simplo = {
+	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
+	.voltage_normal		= 11490, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 256,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 50,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= 0,
+	.discharging_max_c	= 60,
+};
+
+
 static const struct board_batt_params info[] = {
 	[BATTERY_SANYO] = {
-		.manuf_name = "SANYO",
+		.fg = &fg_sanyo,
 		.batt_info = &batt_info_sanyo,
 	},
+
+	[BATTERY_SONY] = {
+		.fg = &fg_sony,
+		.batt_info = &batt_info_sony,
+	},
+
+	[BATTERY_PANASONIC] = {
+		.fg = &fg_panasonic,
+		.batt_info = &batt_info_panasonic,
+	},
+
+	[BATTERY_CELXPERT] = {
+		.fg = &fg_celxpert,
+		.batt_info = &batt_info_celxpert,
+	},
+
+	[BATTERY_LGC011] = {
+		.fg = &fg_lgc011,
+		.batt_info = &batt_info_lgc011,
+	},
+
+	[BATTERY_SMP011] = {
+		.fg = &fg_smp011,
+		.batt_info = &batt_info_smp011,
+	},
+
+	[BATTERY_LGC] = {
+		.fg = &fg_lgc,
+		.batt_info = &batt_info_lgc,
+	},
+
+	[BATTERY_BYD] = {
+		.fg = &fg_byd,
+		.batt_info = &batt_info_byd,
+	},
+
+	[BATTERY_SIMPLO] = {
+		.fg = &fg_simplo,
+		.batt_info = &batt_info_simplo,
+	},
+
 };
 BUILD_ASSERT(ARRAY_SIZE(info) == BATTERY_TYPE_COUNT);
 
@@ -78,7 +424,7 @@ static int board_get_battery_type(void)
 
 	if (!battery_manufacturer_name(name, sizeof(name))) {
 		for (i = 0; i < BATTERY_TYPE_COUNT; i++) {
-			if (!strcasecmp(name, info[i].manuf_name)) {
+			if (!strcasecmp(name, info[i].fg->manuf_name)) {
 				board_battery_type = i;
 				break;
 			}
@@ -98,7 +444,8 @@ static int board_get_battery_type(void)
 static void board_init_battery_type(void)
 {
 	if (board_get_battery_type() != BATTERY_TYPE_COUNT)
-		CPRINTS("found batt:%s", info[board_battery_type].manuf_name);
+		CPRINTS("found batt:%s",
+			info[board_battery_type].fg->manuf_name);
 	else
 		CPRINTS("battery not found");
 }
@@ -112,65 +459,21 @@ const struct battery_info *battery_get_info(void)
 int board_cut_off_battery(void)
 {
 	int rv;
+	int cmd;
 
+	/* If battery type is unknown can't send ship mode command */
+	if (board_get_battery_type() == BATTERY_TYPE_COUNT)
+		return EC_RES_ERROR;
+
+	cmd = info[board_battery_type].fg->ship_mode->reg_addr;
 	/* Ship mode command must be sent twice to take effect */
-	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+	rv = sb_write(cmd, info[board_battery_type].fg->ship_mode->reg_data[0]);
 	if (rv != EC_SUCCESS)
 		return EC_RES_ERROR;
 
-	rv = sb_write(SB_MANUFACTURER_ACCESS, SB_SHUTDOWN_DATA);
+	rv = sb_write(cmd, info[board_battery_type].fg->ship_mode->reg_data[1]);
 	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
-
-enum battery_disconnect_state battery_get_disconnect_state(void)
-{
-	uint8_t data[6];
-	int rv;
-
-	/*
-	 * Take note if we find that the battery isn't in disconnect state,
-	 * and always return NOT_DISCONNECTED without probing the battery.
-	 * This assumes the battery will not go to disconnect state during
-	 * runtime.
-	 */
-	static int not_disconnected;
-
-	if (not_disconnected)
-		return BATTERY_NOT_DISCONNECTED;
-
-	if (extpower_is_present()) {
-		/* Check if battery charging + discharging is disabled. */
-		rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
-				SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
-		if (rv)
-			return BATTERY_DISCONNECT_ERROR;
-
-		if (~data[3] & (BATTERY_DISCHARGING_DISABLED |
-				BATTERY_CHARGING_DISABLED)) {
-			not_disconnected = 1;
-			return BATTERY_NOT_DISCONNECTED;
-		}
-
-		/*
-		 * Battery is neither charging nor discharging. Verify that
-		 * we didn't enter this state due to a safety fault.
-		 */
-		rv = sb_read_mfgacc(PARAM_SAFETY_STATUS,
-				SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
-		if (rv || data[2] || data[3] || data[4] || data[5])
-			return BATTERY_DISCONNECT_ERROR;
-
-		/*
-		 * Battery is present and also the status is initialized and
-		 * no safety fault, battery is disconnected.
-		 */
-		if (battery_is_present() == BP_YES)
-			return BATTERY_DISCONNECTED;
-	}
-	not_disconnected = 1;
-	return BATTERY_NOT_DISCONNECTED;
-}
-
 
 static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 {
@@ -241,13 +544,60 @@ static int battery_init(void)
 		!!(batt_status & STATUS_INITIALIZED);
 }
 
+/* Allow booting now that the battery has woke up */
+static void battery_now_present(void)
+{
+	CPRINTS("battery will now report present");
+	battery_report_present = 1;
+}
+DECLARE_DEFERRED(battery_now_present);
+
+/*
+ * This function checks the charge/dishcarge FET status bits. Each battery type
+ * supported provides the register address, mask, and disconnect value for these
+ * 2 FET status bits. If the FET status matches the disconnected value, then
+ * BATTERY_DISCONNECTED is returned. This function is required to handle the
+ * cases when the fuel gauge is awake and will return a non-zero state of
+ * charge, but is not able yet to provide power (i.e. discharge FET is not
+ * active). By returning BATTERY_DISCONNECTED the AP will not be powered up
+ * until either the external charger is able to provided enough power, or
+ * the battery is able to provide power and thus prevent a brownout when the
+ * AP is powered on by the EC.
+ */
+static int battery_check_disconnect(void)
+{
+	int rv;
+	int reg;
+
+	/* If battery type is not known, can't check CHG/DCHG FETs */
+	if (board_battery_type == BATTERY_TYPE_COUNT) {
+		/* Keep trying to determine the battery type */
+		board_init_battery_type();
+		if (board_battery_type == BATTERY_TYPE_COUNT)
+			/* Still don't know, so return here */
+			return BATTERY_DISCONNECT_ERROR;
+	}
+
+	/* Read the status of charge/discharge FETs */
+	rv = sb_read(info[board_battery_type].fg->fet->reg_addr, &reg);
+
+	if (rv)
+		return BATTERY_DISCONNECT_ERROR;
+
+	if (reg == info[board_battery_type].fg->fet->disc_val)
+		return BATTERY_DISCONNECTED;
+
+	return BATTERY_NOT_DISCONNECTED;
+}
 
 /*
  * Physical detection of battery.
  */
+
 enum battery_present battery_is_present(void)
 {
 	enum battery_present batt_pres;
+	static int battery_report_present_timer_started;
 
 	/* Get the physical hardware status */
 	batt_pres = battery_hw_present();
@@ -257,16 +607,24 @@ enum battery_present battery_is_present(void)
 	 * success & the battery status is Initialized to find out if it
 	 * is a working battery and it is not in the cut-off mode.
 	 *
-	 * If battery I2C fails but VBATT is high, battery is booting from
-	 * cut-off mode.
-	 *
 	 * FETs are turned off after Power Shutdown time.
 	 * The device will wake up when a voltage is applied to PACK.
 	 * Battery status will be inactive until it is initialized.
 	 */
 	if (batt_pres == BP_YES && batt_pres_prev != batt_pres &&
-	    !battery_is_cut_off() && !battery_init()) {
+	    (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
+	     battery_check_disconnect() != BATTERY_NOT_DISCONNECTED ||
+	     battery_init() == 0)) {
 		batt_pres = BP_NO;
+	}  else if (batt_pres == BP_YES && batt_pres_prev == BP_NO &&
+		   !battery_report_present_timer_started) {
+		/*
+		 * Wait 1 second before reporting present if it was
+		 * previously reported as not present
+		 */
+		battery_report_present_timer_started = 1;
+		battery_report_present = 0;
+		hook_call_deferred(&battery_now_present_data, SECOND);
 	}
 
 	batt_pres_prev = batt_pres;
