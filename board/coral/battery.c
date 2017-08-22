@@ -26,6 +26,7 @@
 
 enum battery_type {
 	BATTERY_SANYO,
+	BATTERY_BYD,
 	BATTERY_TYPE_COUNT,
 };
 
@@ -37,6 +38,9 @@ struct board_batt_params {
 #define DEFAULT_BATTERY_TYPE BATTERY_SANYO
 static enum battery_present batt_pres_prev = BP_NOT_SURE;
 static enum battery_type board_battery_type = BATTERY_TYPE_COUNT;
+
+/* Battery may delay reporting battery present */
+static int battery_report_present = 1;
 
 /*
  * Battery info for LG A50. Note that the fields start_charging_min/max and
@@ -56,10 +60,30 @@ static const struct battery_info batt_info_sanyo = {
 	.discharging_max_c	= 60,
 };
 
+static const struct battery_info batt_info_byd = {
+	.voltage_max		= TARGET_WITH_MARGIN(13200, 5), /* mV */
+	.voltage_normal		= 11400, /* mV */
+	.voltage_min		= 9000, /* mV */
+	.precharge_current	= 256,	/* mA */
+	.start_charging_min_c	= 0,
+	.start_charging_max_c	= 46,
+	.charging_min_c		= 0,
+	.charging_max_c		= 60,
+	.discharging_min_c	= 0,
+	.discharging_max_c	= 60,
+};
+
+
+
 static const struct board_batt_params info[] = {
 	[BATTERY_SANYO] = {
 		.manuf_name = "SANYO",
 		.batt_info = &batt_info_sanyo,
+	},
+
+	[BATTERY_BYD] = {
+		.manuf_name = "BYD",
+		.batt_info = &batt_info_byd,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(info) == BATTERY_TYPE_COUNT);
@@ -241,13 +265,60 @@ static int battery_init(void)
 		!!(batt_status & STATUS_INITIALIZED);
 }
 
+/* Allow booting now that the battery has woke up */
+static void battery_now_present(void)
+{
+	CPRINTS("battery will now report present");
+	battery_report_present = 1;
+}
+DECLARE_DEFERRED(battery_now_present);
+
+/*
+ * Check for case where both XCHG and XDSG bits are set indicating that even
+ * though the FG can be read from the battery, the battery is not able to be
+ * charged or discharged. This situation will happen if a battery disconnect was
+ * intiaited via H1 setting the DISCONN signal to the battery. This will put the
+ * battery pack into a sleep state and when power is reconnected, the FG can be
+ * read, but the battery is still not able to provide power to the system. The
+ * calling function returns batt_pres = BP_NO, which instructs the charging
+ * state machine to prevent powering up the AP on battery alone which could lead
+ * to a brownout event when the battery isn't able yet to provide power to the
+ * system.
+ */
+static int battery_check_disconnect(void)
+{
+	int rv;
+	uint8_t data[6];
+
+	/* Check if battery charging + discharging is disabled. */
+	rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
+			    SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
+
+	if (rv)
+		return BATTERY_DISCONNECT_ERROR;
+
+	CPRINTS("batt: %02x  %02x %02x %02x: disc = %d",
+		data[5], data[4], data[3], data[2],
+		(data[3] & (BATTERY_DISCHARGING_DISABLED |
+			BATTERY_CHARGING_DISABLED)) ==
+		(BATTERY_DISCHARGING_DISABLED | BATTERY_CHARGING_DISABLED));
+
+	if ((data[3] & (BATTERY_DISCHARGING_DISABLED |
+			BATTERY_CHARGING_DISABLED)) ==
+	    (BATTERY_DISCHARGING_DISABLED | BATTERY_CHARGING_DISABLED))
+		return BATTERY_DISCONNECTED;
+
+	return BATTERY_NOT_DISCONNECTED;
+}
 
 /*
  * Physical detection of battery.
  */
+
 enum battery_present battery_is_present(void)
 {
 	enum battery_present batt_pres;
+	static int battery_report_present_timer_started;
 
 	/* Get the physical hardware status */
 	batt_pres = battery_hw_present();
@@ -265,8 +336,19 @@ enum battery_present battery_is_present(void)
 	 * Battery status will be inactive until it is initialized.
 	 */
 	if (batt_pres == BP_YES && batt_pres_prev != batt_pres &&
-	    !battery_is_cut_off() && !battery_init()) {
+	    (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
+	     battery_check_disconnect() != BATTERY_NOT_DISCONNECTED ||
+	     battery_init() == 0)) {
 		batt_pres = BP_NO;
+	}  else if (batt_pres == BP_YES && batt_pres_prev == BP_NO &&
+		   !battery_report_present_timer_started) {
+		/*
+		 * Wait 1 second before reporting present if it was
+		 * previously reported as not present
+		 */
+		battery_report_present_timer_started = 1;
+		battery_report_present = 0;
+		hook_call_deferred(&battery_now_present_data, SECOND);
 	}
 
 	batt_pres_prev = batt_pres;
