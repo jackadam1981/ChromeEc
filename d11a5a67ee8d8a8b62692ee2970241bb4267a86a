@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2529b8e9_e0aa7e55",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T02:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0ef8ec1_be0337a3",
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "821e6be2_d774aeb0",
         "filename": "common/system.c",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd6b5879_63025a27",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T02:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "821e6be2_d774aeb0",
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "5c230b94_f7c64372",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T02:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ef9c15d_d2ab43d1",
+      "range": {
+        "startLine": 609,
+        "startChar": 66,
+        "endLine": 609,
+        "endChar": 67
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c8b37e7_29c6d874",
         "filename": "common/system.c",
         "patchSetId": 6
@@ -79,6 +139,30 @@
       "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b36bd93_4dff0952",
+        "filename": "common/system.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T02:16:18Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need to. Fixed.",
+      "parentUuid": "1c8b37e7_29c6d874",
+      "range": {
+        "startLine": 1188,
+        "startChar": 21,
+        "endLine": 1188,
+        "endChar": 32
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "2710fb88_62e96481",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T02:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aca80a24_0deb9a16",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 9
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "535627bd_ded8ef29",
         "filename": "common/vboot_hash.c",
         "patchSetId": 6
@@ -116,6 +224,30 @@
       "writtenOn": "2017-08-21T23:51:43Z",
       "side": 1,
       "message": "*If* we\u0027re going to change the other vboot_hash_start() invocations then we should change these too (and get rid of system_get_image_used()).",
+      "range": {
+        "startLine": 321,
+        "startChar": 4,
+        "endLine": 321,
+        "endChar": 25
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30dd5332_d7a9a03e",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T02:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "535627bd_ded8ef29",
       "range": {
         "startLine": 321,
         "startChar": 4,
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "2ad7103a_1d45e8d7",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T02:16:18Z",
+      "side": 1,
+      "message": "There are lots of code using RW region for various purposes:\n\nmany calls to flash_write and flash_physical_write for cr50/cr51/cr52\nrollback.c for hammer and staff\nupdate_fw.c for hammer, polyberry, servo_micro, servo_v4, staff, sweetberry, tigertail\nnvmem.c for cr50, mn50\nEC_CMD_FLASH_WRITE for Depthcharge (soft sync)\n\nNone of these are conflicting with EFS currently.\n\nI didn\u0027t go into details about what exactly these boards are writing. If they ever need to use EFS, they need to define a separate RW region. Similarly, if EFS boards ever need to store some runtime data in flash, we need to define a separate RW region. I think it\u0027s a sensible design. We separate data which require verification and other data which can change dynamically.",
+      "parentUuid": "59cf2bd4_92ec4737",
+      "range": {
+        "startLine": 388,
+        "startChar": 23,
+        "endLine": 388,
+        "endChar": 41
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d615571_90267480",
         "filename": "util/ectool.c",
         "patchSetId": 6
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "2e5bbdb4_46723723",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6235,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T02:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d615571_90267480",
+      "range": {
+        "startLine": 6235,
+        "startChar": 2,
+        "endLine": 6235,
+        "endChar": 12
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05ad0772_e539cc70",
         "filename": "util/ectool.c",
         "patchSetId": 6
@@ -194,6 +374,30 @@
       "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c69f46_5af40e9b",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 6242,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-22T02:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05ad0772_e539cc70",
+      "range": {
+        "startLine": 6242,
+        "startChar": 2,
+        "endLine": 6242,
+        "endChar": 12
+      },
+      "revId": "d11a5a67ee8d8a8b62692ee2970241bb4267a86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
