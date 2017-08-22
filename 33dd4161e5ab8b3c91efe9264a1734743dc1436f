@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5e157e7_e58593be",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-22T18:24:38Z",
+      "side": 1,
+      "message": "From usb type-c?",
+      "range": {
+        "startLine": 65,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "33dd4161e5ab8b3c91efe9264a1734743dc1436f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f829a0fe_a297ac07",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-22T18:24:38Z",
+      "side": 1,
+      "message": "We have an interrupt enabled on this signal just to print this? What if the BJ is already plugged in and the EC is reset. Presumably we\u0027d never see the interrupt? Or will it fire if the signal is already high when the gpio is configured?",
+      "revId": "33dd4161e5ab8b3c91efe9264a1734743dc1436f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
