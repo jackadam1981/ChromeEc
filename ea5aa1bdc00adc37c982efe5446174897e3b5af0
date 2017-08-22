@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72a0799f_d905bd90",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-08-22T16:24:20Z",
+      "side": 1,
+      "message": "I feel we should move all the base logic from here down to base_disable into a file of its own: base.c. That will be helpful in the future to move out code from board/ to some common driver/.",
+      "revId": "ea5aa1bdc00adc37c982efe5446174897e3b5af0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
