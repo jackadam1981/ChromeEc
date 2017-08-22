@@ -175,6 +175,16 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			break;
 #endif
 
+		case EC_ACPI_MEM_DEVICE_FEATURES:
+			result = 0;
+#ifdef CONFIG_PWM_KBLIGHT
+#ifdef CONFIG_PWM_KBLIGHT_BOARD_OPTION
+			result |= board_has_kblight()?EC_ACPI_MEM_KEYBOARD_BACKLIGHT_EXISTS:0;
+#else
+			result |= EC_ACPI_MEM_KEYBOARD_BACKLIGHT_EXISTS;
+#endif
+#endif
+			break;
 		default:
 			result = acpi_read(acpi_addr);
 			break;

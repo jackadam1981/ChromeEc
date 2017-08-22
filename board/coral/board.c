@@ -545,6 +545,9 @@ static void board_init(void)
 
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
+
+	/* Fetch SKU now so it's cached on hot paths like interrupts */
+	system_get_sku_id();
 }
 /* PP3300 needs to be enabled before TCPC init hooks */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_FIRST);
@@ -1103,11 +1106,29 @@ DECLARE_CONSOLE_COMMAND(board_id, command_board_id,
 
 uint32_t system_get_sku_id(void)
 {
-	uint8_t sku_id_lower = board_read_version(ADC_BOARD_SKU_0);
-	uint8_t sku_id_higher = board_read_version(ADC_BOARD_SKU_1);
+	static int sku_id_lower = BOARD_VERSION_UNKNOWN;
+	static int sku_id_higher = BOARD_VERSION_UNKNOWN;
 
-	assert(sku_id_lower < 16);
-	assert(sku_id_higher < 16);
+	if (sku_id_lower == BOARD_VERSION_UNKNOWN) {
+		int i = 0;
+		while (sku_id_lower == BOARD_VERSION_UNKNOWN) {
+			i++;
+			sku_id_lower = board_read_version(ADC_BOARD_SKU_0);
+		}
+		CPRINTS("took %d attempts to read SKU ID 0: %d", i, sku_id_lower);
+		assert((sku_id_lower >= 0) && (sku_id_lower < 16));
+	}
+
+	if (sku_id_higher == BOARD_VERSION_UNKNOWN) {
+		int i = 0;
+		while (sku_id_higher == BOARD_VERSION_UNKNOWN) {
+			i++;
+			sku_id_higher = board_read_version(ADC_BOARD_SKU_1);
+		}
+		CPRINTS("took %d attempts to read SKU ID 1: %d", i, sku_id_higher);
+		assert((sku_id_higher >= 0) && (sku_id_higher < 16));
+	}
+
 	return (uint32_t)((sku_id_higher << 4) | sku_id_lower);
 
 }
@@ -1131,3 +1152,14 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+
+int board_has_kblight(void)
+{
+	uint32_t sku = system_get_sku_id();
+
+	// TODO: fill in the skus for devices with backlight
+	if (sku == 0) {
+		return 1;
+	}
+	return 0;
+}
