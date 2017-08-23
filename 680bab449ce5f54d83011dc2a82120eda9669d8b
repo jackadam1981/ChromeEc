@@ -22,6 +22,30 @@
       "revId": "680bab449ce5f54d83011dc2a82120eda9669d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "055782f9_971b17fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-23T22:36:36Z",
+      "side": 1,
+      "message": "julius had some concerns about backward compatibility of\nenabling this everywhere.\nwe\u0027ll only enable this on a case-by-case basis so it\u0027ll\nonly happen for devices where we have some confidence that\nit\u0027ll work as intended.\n\nso, the default is \"no change in behavior\", but for cases\nwe\u0027ve tested, we\u0027ll turn on the call to tcpm_init() coming\nout of suspend.",
+      "parentUuid": "0198af9b_b5325ca8",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "680bab449ce5f54d83011dc2a82120eda9669d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
