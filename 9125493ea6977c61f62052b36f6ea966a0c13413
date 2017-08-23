@@ -34,6 +34,29 @@
       "revId": "9125493ea6977c61f62052b36f6ea966a0c13413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d87c5b4f_39ad9fb6",
+        "filename": "chip/stm32/clock-f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-23T07:56:43Z",
+      "side": 1,
+      "message": "why is this function declared in the API ? what are we going to do with it outside of clock-f.c ?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "9125493ea6977c61f62052b36f6ea966a0c13413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
