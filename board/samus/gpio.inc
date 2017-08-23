@@ -22,7 +22,9 @@ GPIO_INT(PP1800_PGOOD,   PIN(L, 7), GPIO_INT_BOTH,                       power_s
 GPIO_INT(VCORE_PGOOD,    PIN(C, 6), GPIO_INT_BOTH,                       power_signal_interrupt)   /* Power good on core VR */
 GPIO_INT(WP_L,           PIN(A, 4), GPIO_INT_BOTH,                       switch_interrupt)         /* Write protect input */
 GPIO_INT(PCH_BL_EN,      PIN(M, 3), GPIO_INT_RISING,                     backlight_interrupt)      /* PCH backlight input */
+#ifdef CONFIG_JTAG
 GPIO_INT(JTAG_TCK,       PIN(C, 0), GPIO_DEFAULT,                        jtag_interrupt)           /* JTAG clock input */
+#endif
 GPIO_INT(UART0_RX,       PIN(A, 0), GPIO_PULL_UP | GPIO_INT_BOTH_DSLEEP, uart_deepsleep_interrupt) /* UART0 RX input */
 GPIO_INT(BKBOOST_DET,    PIN(B, 5), GPIO_INT_RISING,                     bkboost_det_interrupt)    /* Backboost detect */
 

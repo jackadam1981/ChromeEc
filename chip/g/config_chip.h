@@ -140,6 +140,9 @@
  */
 #define CONFIG_CUSTOMIZED_RO
 
+/* Enable JTAG debugging by default. */
+#define CONFIG_JTAG
+
 /* Number of I2C ports */
 #define I2C_PORT_COUNT 2
 

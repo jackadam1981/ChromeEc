@@ -242,8 +242,10 @@ void __idle(void)
 	/* Set SRAM and flash power management to 'low power' in deep sleep. */
 	LM4_SYSTEM_DSLPPWRCFG = 0x23;
 
+#ifdef CONFIG_JTAG
 	/* Enable JTAG interrupt which will notify us when JTAG is in use. */
 	gpio_enable_interrupt(GPIO_JTAG_TCK);
+#endif
 
 	/*
 	 * Initialize console in use to true and specify the console expire

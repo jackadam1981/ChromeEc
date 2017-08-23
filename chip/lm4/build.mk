@@ -12,7 +12,7 @@ CORE:=cortex-m
 CFLAGS_CPU+=-march=armv7e-m -mcpu=cortex-m4
 
 # Required chip modules
-chip-y=clock.o gpio.o hwtimer.o jtag.o system.o uart.o
+chip-y=clock.o gpio.o hwtimer.o system.o uart.o
 
 # Optional chip modules
 chip-$(CONFIG_ADC)+=adc.o chip_temp_sensor.o
@@ -20,6 +20,7 @@ chip-$(CONFIG_EEPROM)+=eeprom.o
 chip-$(CONFIG_FANS)+=fan.o
 chip-$(CONFIG_FLASH_PHYSICAL)+=flash.o
 chip-$(CONFIG_I2C)+=i2c.o
+chip-$(CONFIG_JTAG)+=jtag.o
 chip-$(CONFIG_LPC)+=lpc.o
 chip-$(CONFIG_PECI)+=peci.o
 # pwm functions are implemented with the fan functions

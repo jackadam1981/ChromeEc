@@ -29,7 +29,7 @@ DMA_TYPE=$(if $(CHIP_FAMILY_STM32F4),-stm32f4,)
 
 chip-$(CONFIG_DMA)+=dma$(DMA_TYPE).o
 chip-$(CONFIG_COMMON_RUNTIME)+=system.o
-chip-y+=jtag-$(CHIP_FAMILY).o clock-$(CHIP_FAMILY).o
+chip-y+=clock-$(CHIP_FAMILY).o
 ifeq ($(CHIP_FAMILY),$(filter $(CHIP_FAMILY),stm32f0 stm32f3 stm32f4))
 chip-y+=clock-f.o
 endif
@@ -56,6 +56,7 @@ endif
 chip-$(CONFIG_ADC)+=adc-$(CHIP_FAMILY).o
 chip-$(CONFIG_STM32_CHARGER_DETECT)+=charger_detect.o
 chip-$(CONFIG_DEBUG_PRINTF)+=debug_printf.o
+chip-$(CONFIG_JTAG)+=jtag-$(CHIP_FAMILY).o
 chip-$(CONFIG_OTP)+=otp-$(CHIP_FAMILY).o
 chip-$(CONFIG_PWM)+=pwm.o
 chip-$(CONFIG_RNG)+=trng.o

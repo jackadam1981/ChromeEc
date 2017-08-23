@@ -61,7 +61,9 @@ test_mockable __keep int main(void)
 #endif
 
 	/* Configure the pin multiplexers and GPIOs */
+#ifdef CONFIG_JTAG
 	jtag_pre_init();
+#endif
 	gpio_pre_init();
 
 #ifdef CONFIG_BOARD_POST_GPIO_INIT

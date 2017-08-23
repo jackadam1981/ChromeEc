@@ -20,7 +20,7 @@ CPPFLAGS += -I$(CRYPTOCLIB)/include
 endif
 
 # Required chip modules
-chip-y = clock.o gpio.o hwtimer.o jtag.o system.o
+chip-y = clock.o gpio.o hwtimer.o system.o
 chip-$(CONFIG_BOARD_ID_SUPPORT) += board_id.o
 ifeq ($(CONFIG_POLLING_UART),y)
 chip-y += polling_uart.o
@@ -68,6 +68,7 @@ chip-y+= pmu.o
 chip-y+= trng.o
 chip-y+= runlevel.o
 chip-$(CONFIG_USB_FW_UPDATE)+= usb_upgrade.o
+chip-$(CONFIG_JTAG)+= jtag.o
 chip-$(CONFIG_NON_HC_FW_UPDATE)+= upgrade_fw.o post_reset.o upgrade.o
 chip-$(CONFIG_SPS)+= sps.o
 chip-$(CONFIG_TPM_SPS)+=sps_tpm.o

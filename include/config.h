@@ -376,6 +376,9 @@
  */
 #undef CONFIG_DEBUG_BRINGUP
 
+/* Enable JTAG debugging. */
+#undef CONFIG_JTAG
+
 /*****************************************************************************/
 
 /*

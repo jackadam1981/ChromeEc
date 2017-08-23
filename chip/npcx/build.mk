@@ -17,7 +17,7 @@ CHIP_FAMILY:=npcx5
 endif
 
 # Required chip modules
-chip-y=header.o clock.o gpio.o hwtimer.o jtag.o system.o uart.o
+chip-y=header.o clock.o gpio.o hwtimer.o system.o uart.o
 chip-y+=system-$(CHIP_FAMILY).o
 
 # Optional chip modules
@@ -25,6 +25,7 @@ chip-$(CONFIG_ADC)+=adc.o
 chip-$(CONFIG_FANS)+=fan.o
 chip-$(CONFIG_FLASH_PHYSICAL)+=flash.o
 chip-$(CONFIG_I2C)+=i2c.o i2c-$(CHIP_FAMILY).o
+chip-$(CONFIG_JTAG)+=jtag.o
 chip-$(CONFIG_LPC)+=lpc.o
 chip-$(CONFIG_ESPI)+=espi.o
 chip-$(CONFIG_PECI)+=peci.o
