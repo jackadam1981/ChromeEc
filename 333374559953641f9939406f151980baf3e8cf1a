@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9ad8715_fc39605b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3889,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-23T15:15:28Z",
+      "side": 1,
+      "message": "This host command makes the assumption that ports correlate 1-to-1 with physical chips, but this may not always be the case.",
+      "range": {
+        "startLine": 3889,
+        "startChar": 11,
+        "endLine": 3889,
+        "endChar": 21
+      },
+      "revId": "333374559953641f9939406f151980baf3e8cf1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
