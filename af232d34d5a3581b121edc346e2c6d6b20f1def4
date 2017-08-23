@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05e27461_1c3bcf4d",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-23T15:38:21Z",
+      "side": 1,
+      "message": "nit: Could you put these in alphabetical order?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "af232d34d5a3581b121edc346e2c6d6b20f1def4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91db56e2_f6fe6747",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-23T15:38:21Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 112,
+        "startChar": 17,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "af232d34d5a3581b121edc346e2c6d6b20f1def4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "407e42b2_28c90486",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-23T15:38:21Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 134,
+        "startChar": 15,
+        "endLine": 134,
+        "endChar": 16
+      },
+      "revId": "af232d34d5a3581b121edc346e2c6d6b20f1def4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f75dc5f_a303efa0",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-23T15:38:21Z",
+      "side": 1,
+      "message": "Is this finalized or it could be TA2? Hardware is not ready.",
+      "range": {
+        "startLine": 134,
+        "startChar": 16,
+        "endLine": 134,
+        "endChar": 33
+      },
+      "revId": "af232d34d5a3581b121edc346e2c6d6b20f1def4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df2eed2_f7676168",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-23T15:38:21Z",
+      "side": 1,
+      "message": "nit: extra blank line.",
+      "revId": "af232d34d5a3581b121edc346e2c6d6b20f1def4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
