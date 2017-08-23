@@ -77,7 +77,7 @@ static struct first_response_pdu targ;
 static uint16_t protocol_version;
 static uint16_t header_type;
 static char *progname;
-static char *short_opts = "bcd:efhjrsuw";
+static char *short_opts = "bcd:efhjrstuw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"binvers",	1,   NULL, 'b'},
@@ -89,6 +89,7 @@ static const struct option long_opts[] = {
 	{"jump_to_rw",	0,   NULL, 'j'},
 	{"reboot",	0,   NULL, 'r'},
 	{"stay_in_ro",	0,   NULL, 's'},
+	{"tp_info",	0,   NULL, 't'},
 	{"unlock_rollback",	0,   NULL, 'u'},
 	{"unlock_rw",	0,   NULL, 'w'},
 	{},
@@ -127,6 +128,7 @@ static void usage(int errs)
 	       "  -j,--jump_to_rw          Tell EC to jump to RW\n"
 	       "  -r,--reboot              Tell EC to reboot\n"
 	       "  -s,--stay_in_ro          Tell EC to stay in RO\n"
+	       "  -t,--tp_info             Get touchpad information\n"
 	       "  -u,--unlock_rollback     Tell EC to unlock the rollback region\n"
 	       "  -w,--unlock_rw           Tell EC to unlock the RW region\n"
 	       "\n", progname, VID, PID);
@@ -978,6 +980,11 @@ int main(int argc, char *argv[])
 		case 's':
 			extra_command = UPDATE_EXTRA_CMD_STAY_IN_RO;
 			break;
+		case 't':
+			extra_command = UPDATE_EXTRA_CMD_TOUCHPAD_INFO;
+			extra_command_answer_len =
+				sizeof(struct touchpad_info);
+			break;
 		case 'u':
 			extra_command = UPDATE_EXTRA_CMD_UNLOCK_ROLLBACK;
 			break;
@@ -1050,6 +1057,8 @@ int main(int argc, char *argv[])
 		if (extra_command == UPDATE_EXTRA_CMD_PAIR_CHALLENGE) {
 			test_challenge((void *)extra_command_data,
 				       (void *)extra_command_answer);
+		} else if (extra_command == UPDATE_EXTRA_CMD_TOUCHPAD_INFO) {
+			hexdump(extra_command_answer, extra_command_answer_len);
 		}
 	}
 
