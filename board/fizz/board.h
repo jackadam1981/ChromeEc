@@ -43,6 +43,8 @@
 #define WIRELESS_GPIO_WLAN GPIO_WLAN_OFF_L
 #define WIRELESS_GPIO_WLAN_POWER GPIO_PP3300_DX_WLAN
 #define WIRELESS_GPIO_WWAN GPIO_PP3300_DX_LTE
+#define CONFIG_FANS 1
+#define CONFIG_PWM
 
 /* EC console commands */
 #define CONFIG_CMD_BUTTON
@@ -205,6 +207,24 @@ enum adc_channel {
 enum button {
 	BUTTON_RECOVERY = 0,
 	BUTTON_COUNT
+};
+
+enum pwm_channel {
+	PWM_CH_FAN,
+	/* Number of PWM channels */
+	PWM_CH_COUNT
+};
+
+enum fan_channel {
+	FAN_CH_0,
+	/* Number of FAN channels */
+	FAN_CH_COUNT
+};
+
+enum mft_channel {
+	MFT_CH_0,
+	/* Number of MFT channels */
+	MFT_CH_COUNT
 };
 
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */

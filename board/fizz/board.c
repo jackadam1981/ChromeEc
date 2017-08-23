@@ -45,6 +45,10 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 #include "espi.h"
+#include "fan.h"
+#include "fan_chip.h"
+#include "pwm.h"
+#include "pwm_chip.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -101,6 +105,36 @@ const struct adc_t adc_channels[] = {
 			   ADC_READ_MAX+1, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/******************************************************************************/
+/* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
+const struct pwm_t pwm_channels[] = {
+	[PWM_CH_FAN] = { 4, PWM_CONFIG_OPEN_DRAIN, 25000},
+};
+BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+/******************************************************************************/
+/* Physical fans. These are logically separate from pwm_channels. */
+const struct fan_t fans[] = {
+	[FAN_CH_0] = {
+		.flags = FAN_USE_RPM_MODE,
+		.rpm_min = 1000,
+		.rpm_start = 1000,
+		.rpm_max = 5200,
+		.ch = 0,/* Use MFT id to control fan */
+		.pgood_gpio = -1,
+		.enable_gpio = -1,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
+
+/******************************************************************************/
+/* MFT channels. These are logically separate from pwm_channels. */
+const struct mft_t mft_channels[] = {
+	[MFT_CH_0] = { NPCX_MFT_MODULE_1, TCKC_LFCLK, PWM_CH_FAN},
+};
+BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
+
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
