@@ -22,6 +22,30 @@
       "revId": "cb13b991b1407368767d6eb08879af7f3adab7a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0aca336c_f625b385",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-23T16:31:17Z",
+      "side": 1,
+      "message": "yes, I figured. We can set board specific size later, if needed.",
+      "parentUuid": "2e933faa_7018adfa",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 26
+      },
+      "revId": "cb13b991b1407368767d6eb08879af7f3adab7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
