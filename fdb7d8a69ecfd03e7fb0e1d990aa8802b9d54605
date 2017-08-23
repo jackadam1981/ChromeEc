@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfdb950a_d821e04a",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-23T07:48:18Z",
+      "side": 1,
+      "message": "Can you add a discriminator in your example above so that we understand what it is?",
+      "range": {
+        "startLine": 360,
+        "startChar": 47,
+        "endLine": 360,
+        "endChar": 60
+      },
+      "revId": "fdb7d8a69ecfd03e7fb0e1d990aa8802b9d54605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1c65e32_688a0179",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-23T07:48:18Z",
+      "side": 1,
+      "message": "one and well-formed what?",
+      "range": {
+        "startLine": 415,
+        "startChar": 56,
+        "endLine": 415,
+        "endChar": 57
+      },
+      "revId": "fdb7d8a69ecfd03e7fb0e1d990aa8802b9d54605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f61d4fb3_a2bf5284",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-23T07:48:18Z",
+      "side": 1,
+      "message": "I wonder if `in reversed(line_infos)` would be clearer that [::-1]",
+      "revId": "fdb7d8a69ecfd03e7fb0e1d990aa8802b9d54605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
