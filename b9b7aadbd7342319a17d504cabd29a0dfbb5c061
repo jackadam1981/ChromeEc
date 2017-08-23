@@ -45,6 +45,30 @@
       "revId": "b9b7aadbd7342319a17d504cabd29a0dfbb5c061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "430f1371_8eda7a0f",
+        "filename": "common/event_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-23T17:43:08Z",
+      "side": 1,
+      "message": "Nevermind, your test shows that it works, and I don\u0027t doubt it (since we\u0027re using prev_peek to count units of event_log_entry). Again, it assumes that additional payload size is zero.",
+      "parentUuid": "53847d57_ac5b78e5",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 65
+      },
+      "revId": "b9b7aadbd7342319a17d504cabd29a0dfbb5c061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
