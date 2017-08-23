@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86271921_63be6e5d",
+        "filename": "common/acpi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-08-23T21:16:10Z",
+      "side": 1,
+      "message": "Could we expose the existing features mask here and have the host look for EC_FEATURE_PWM_KEYB?",
+      "range": {
+        "startLine": 185,
+        "startChar": 7,
+        "endLine": 185,
+        "endChar": 38
+      },
+      "revId": "1b0eff49d23d95348eb62de90ac8fd081842bf68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
