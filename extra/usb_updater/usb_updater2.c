@@ -28,6 +28,10 @@
 #include "update_fw.h"
 #include "vb21_struct.h"
 
+#include "curve25519.h"
+#include <openssl/hmac.h>
+#include <openssl/sha.h>
+
 #ifdef DEBUG
 #define debug printf
 #else
@@ -48,7 +52,8 @@ enum exit_values {
 	noop = 0,	  /* All up to date, no update needed. */
 	all_updated = 1,  /* Update completed, reboot required. */
 	rw_updated  = 2,  /* RO was not updated, reboot required. */
-	update_error = 3  /* Something went wrong. */
+	update_error = 3, /* Something went wrong. */
+	auth_error = 4,   /* Something went wrong during authentication */
 };
 
 struct usb_endpoint {
@@ -72,10 +77,11 @@ static struct first_response_pdu targ;
 static uint16_t protocol_version;
 static uint16_t header_type;
 static char *progname;
-static char *short_opts = "bd:efhjrsuw";
+static char *short_opts = "bcd:efhjrsuw";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"binvers",	1,   NULL, 'b'},
+	{"challenge",	0,   NULL, 'c'},
 	{"device",	1,   NULL, 'd'},
 	{"entropy",	0,   NULL, 'e'},
 	{"fwver",	0,   NULL, 'f'},
@@ -87,6 +93,12 @@ static const struct option long_opts[] = {
 	{"unlock_rw",	0,   NULL, 'w'},
 	{},
 };
+
+/*
+ * TODO(crbug.com/649672): Needed by curve25519.c, remove this when we can use a
+ * crypto library instead.
+ */
+void rand_bytes(uint8_t *data, int len);
 
 /* Release USB device and return error to the OS. */
 static void shut_down(struct usb_endpoint *uep)
@@ -107,6 +119,7 @@ static void usage(int errs)
 	       "\n"
 	       "  -b,--binvers             Report versions of image's "
 				"RW and RO, do not update\n"
+	       "  -c,--challenge           Send base pairing challenge\n"
 	       "  -d,--device  VID:PID     USB device (default %04x:%04x)\n"
 	       "  -f,--fwver               Report running firmware versions.\n"
 	       "  -h,--help                Show this message\n"
@@ -741,17 +754,15 @@ static void send_done(struct usb_endpoint *uep)
 }
 
 static void send_subcommand(struct transfer_descriptor *td, uint16_t subcommand,
-			    void *cmd_body, size_t body_size)
+			    void *cmd_body, size_t body_size,
+			    uint8_t *response, size_t response_size)
 {
 	send_done(&td->uep);
 
-	uint8_t response = -1;
-	size_t response_size = sizeof(response);
-
 	ext_cmd_over_usb(&td->uep, subcommand,
 			cmd_body, body_size,
-			&response, &response_size);
-	printf("sent command %x, resp %x\n", subcommand, response);
+			response, &response_size);
+	printf("sent command %x, resp %x\n", subcommand, response[0]);
 }
 
 /* Returns number of successfully transmitted image sections. */
@@ -823,7 +834,7 @@ static void generate_reset_request(struct transfer_descriptor *td)
 	printf("reboot not triggered\n");
 }
 
-static void get_random(uint8_t *data, int len)
+void rand_bytes(uint8_t *data, int len)
 {
 	FILE *fp;
 	int i = 0;
@@ -848,6 +859,57 @@ static void get_random(uint8_t *data, int len)
 	fclose(fp);
 }
 
+uint8_t x25519_private_key[X25519_PRIVATE_KEY_LEN];
+
+static void generate_challenge(struct pair_challenge *pair)
+{
+	X25519_keypair(pair->host_public, x25519_private_key);
+	rand_bytes(pair->nonce, sizeof(pair->nonce));
+}
+
+static void hexdump(const uint8_t *data, int len)
+{
+	int i;
+
+	for (i = 0; i < len; i++) {
+		printf("%02x", data[i]);
+		if ((i % 16) == 15)
+			printf("\n");
+	}
+
+	if ((len % 16) != 0)
+		printf("\n");
+}
+
+static void test_challenge(struct pair_challenge *pair,
+			   struct pair_challenge_response *resp)
+{
+	uint8_t shared[X25519_PRIVATE_KEY_LEN];
+	uint8_t myauth[SHA256_DIGEST_LENGTH];
+
+	X25519(shared, x25519_private_key, resp->device_public);
+
+	/* Note: this key is the device identifier. */
+	printf("Device public key:\n");
+	hexdump(resp->device_public, X25519_PUBLIC_VALUE_LEN);
+
+	HMAC(EVP_sha256(), shared, sizeof(shared),
+		pair->nonce, sizeof(pair->nonce),
+		myauth, NULL);
+
+	printf("Authenticator (local):\n");
+	hexdump(myauth, X25519_PRIVATE_KEY_LEN);
+
+	if (memcmp(myauth,
+		   resp->authenticator, sizeof(resp->authenticator)) == 0) {
+		printf("Authenticator matches.\n");
+	} else {
+		printf("Authenticator does not match (remote):\n");
+		hexdump(resp->authenticator, sizeof(resp->authenticator));
+		exit(auth_error);
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -861,8 +923,10 @@ int main(int argc, char *argv[])
 	int binary_vers = 0;
 	int show_fw_ver = 0;
 	int extra_command = -1;
-	uint8_t extra_command_data[32];
+	uint8_t extra_command_data[50];
 	int extra_command_data_len = 0;
+	uint8_t extra_command_answer[64];
+	int extra_command_answer_len = 1;
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -880,6 +944,14 @@ int main(int argc, char *argv[])
 		case 'b':
 			binary_vers = 1;
 			break;
+		case 'c': {
+			generate_challenge((void *)extra_command_data);
+			extra_command_data_len = sizeof(struct pair_challenge);
+			extra_command = UPDATE_EXTRA_CMD_PAIR_CHALLENGE;
+			extra_command_answer_len =
+				sizeof(struct pair_challenge_response);
+			break;
+		}
 		case 'd':
 			if (!parse_vidpid(optarg, &vid, &pid)) {
 				printf("Invalid argument: \"%s\"\n", optarg);
@@ -893,7 +965,7 @@ int main(int argc, char *argv[])
 			usage(errorcnt);
 			break;
 		case 'e':
-			get_random(extra_command_data, 32);
+			rand_bytes(extra_command_data, 32);
 			extra_command_data_len = 32;
 			extra_command = UPDATE_EXTRA_CMD_INJECT_ENTROPY;
 			break;
@@ -970,9 +1042,16 @@ int main(int argc, char *argv[])
 
 		if (transferred_sections)
 			generate_reset_request(&td);
-	} else if (extra_command > -1)
+	} else if (extra_command > -1) {
 		send_subcommand(&td, extra_command,
-				extra_command_data, extra_command_data_len);
+				extra_command_data, extra_command_data_len,
+				extra_command_answer, extra_command_answer_len);
+
+		if (extra_command == UPDATE_EXTRA_CMD_PAIR_CHALLENGE) {
+			test_challenge((void *)extra_command_data,
+				       (void *)extra_command_answer);
+		}
+	}
 
 	libusb_close(td.uep.devh);
 	libusb_exit(NULL);
