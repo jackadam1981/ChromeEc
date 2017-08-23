@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8f1913a_d8340a08",
+        "filename": "common/event_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-23T17:18:47Z",
+      "side": 1,
+      "message": "I think this will only work if our additional payload size is always zero, which is the case for TPM logging (but not necessarily the case for PD logging, and future logging types). If our payload size is variable then I think this approach is hopeless, we\u0027ll be unable to determine the beginning of the newest entry from log_tail. Let\u0027s put this function behind CONFIG_TPM_LOGGING, and add a comment why it\u0027s the case (basically repeating my first sentence)?\n\nAnother idea is to start from log_head (oldest entry), then we could peek at entries of variable size.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "b9b7aadbd7342319a17d504cabd29a0dfbb5c061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53847d57_ac5b78e5",
+        "filename": "common/event_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-23T17:18:47Z",
+      "side": 1,
+      "message": "I don\u0027t think this will work. Eg. if after the first call prev_peek is 100 (pointing to byte 100), on the second call we will point to byte 99.. but UNIT_SIZE exceeds one byte.\n\nIf we follow the assumption I mentioned above, it\u0027s probably better to have prev_peek point to the beginning of an entry (prev_peek \u003d log_tail, decrease by LOG_SIZE every call).",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 65
+      },
+      "revId": "b9b7aadbd7342319a17d504cabd29a0dfbb5c061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
