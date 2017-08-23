@@ -173,8 +173,7 @@ enum usb_strings {
 
 /* Device indexes for devices that require debouncing */
 enum device_type {
-	DEVICE_AP = 0,
-	DEVICE_SERVO,
+	DEVICE_SERVO = 0,
 
 	DEVICE_COUNT
 };
@@ -229,6 +228,7 @@ enum nvmem_vars {
 void board_configure_deep_sleep_wakepins(void);
 /* Interrupt handler */
 void tpm_rst_deasserted(enum gpio_signal signal);
+void ap_detect_asserted(enum gpio_signal signal);
 void ec_detect_asserted(enum gpio_signal signal);
 void device_state_on(enum gpio_signal signal);
 void post_reboot_request(void);
@@ -260,12 +260,15 @@ int board_is_first_factory_boot(void);
 void enable_uart(int uart);
 void disable_uart(int uart);
 
+void init_ap_state(void);
 void init_ec_state(void);
 
 int ap_is_on(void);
 int ec_is_on(void);
 int rdd_is_connected(void);
 int servo_is_connected(void);
+
+void ap_connect_deferred(void);
 
 /* Returns True if chip is brought up in a factory test harness. */
 int chip_factory_mode(void);
