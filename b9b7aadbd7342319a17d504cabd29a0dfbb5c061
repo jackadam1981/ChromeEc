@@ -69,6 +69,30 @@
       "revId": "b9b7aadbd7342319a17d504cabd29a0dfbb5c061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc9ff891_bd447c43",
+        "filename": "common/event_log.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-23T17:45:51Z",
+      "side": 1,
+      "message": "ah, you are right, this completely misses the fact that entries are of variable size.\n\nStarting at the latest entry is not ideal because there is no guaranteed continuity.\n\nLet me think about it.",
+      "parentUuid": "53847d57_ac5b78e5",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 65
+      },
+      "revId": "b9b7aadbd7342319a17d504cabd29a0dfbb5c061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
