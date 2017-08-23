@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1275d8eb_f436639c",
+        "filename": "chip/g/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-23T19:44:06Z",
+      "side": 1,
+      "message": "This continues to maintain a hack.  It would be better just to delete all this JTAG stuff, and add CONFIG_CHIP_PRE_INIT which works similarly to (and immediately following) CONFIG_BOARD_PRE_INIT.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 19
+      },
+      "revId": "6249360daa54d8eb745e169028016f6492a1d9ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
