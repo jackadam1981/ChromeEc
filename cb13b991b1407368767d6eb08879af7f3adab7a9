@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e933faa_7018adfa",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-23T15:45:48Z",
+      "side": 1,
+      "message": "Note that the default log buffer size will be used -- 512 bytes.\n\n\u003e #define CONFIG_EVENT_LOG_SIZE 512",
+      "range": {
+        "startLine": 149,
+        "startChar": 8,
+        "endLine": 149,
+        "endChar": 26
+      },
+      "revId": "cb13b991b1407368767d6eb08879af7f3adab7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
