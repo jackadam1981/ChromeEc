@@ -81,6 +81,30 @@
       "revId": "9125493ea6977c61f62052b36f6ea966a0c13413",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d984c387_0377f429",
+        "filename": "chip/stm32/clock-f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-23T16:54:17Z",
+      "side": 1,
+      "message": "This is to match the comparable API in npcx, system_get_rtc_sec(). As Shawn suggested, I opened a bug for cleanup: https://bugs.chromium.org/p/chromium/issues/detail?id\u003d758245",
+      "parentUuid": "7f194a20_a4554fe2",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 0
+      },
+      "revId": "9125493ea6977c61f62052b36f6ea966a0c13413",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
