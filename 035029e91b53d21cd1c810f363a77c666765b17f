@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "5d8466e1_a21e2e62",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-23T19:39:45Z",
+      "side": 1,
+      "message": "I suggest changing this to:\n\n#ifdef CONFIG_BOARD_POWER_HANDLE_STATE\n  /*\n   * Board needs to do something special.\n   * Note: board MUST call power_handle_state() itself if needed\n   */\n  new_state \u003d board_power_handle_state(state);\n#else\n  /* Let the chipset handle the state first */\n  new_state \u003d power_handle_state(state);\n#endif\n\nThen you can define that config for your board, and put your override in, without having anything actually board-specific in this or skylake.c.\n\nThe board-specific function can do both pre- and post-processing of the state around its call to power_handle_state() if needed, or it can simply copy/paste/modify power_handle_state() if its changes are more extensive.",
+      "range": {
+        "startLine": 392,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 40
+      },
+      "revId": "035029e91b53d21cd1c810f363a77c666765b17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09eb2e8f_8856d4e9",
         "filename": "power/skylake.c",
         "patchSetId": 2
