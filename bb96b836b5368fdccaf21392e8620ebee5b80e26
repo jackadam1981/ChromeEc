@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b91c21a6_03fde7eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-24T16:27:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26cd25e6_32d99592",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "bb96b836b5368fdccaf21392e8620ebee5b80e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db6b25bf_5c38fbf0",
         "filename": "driver/tcpm/fusb302.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-24T16:14:00Z",
       "side": 1,
       "message": "isn\u0027t this DIV_ROUND_NEAREST(mv, 42) ?",
+      "range": {
+        "startLine": 58,
+        "startChar": 38,
+        "endLine": 58,
+        "endChar": 55
+      },
+      "revId": "bb96b836b5368fdccaf21392e8620ebee5b80e26",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2280a7_362f00c0",
+        "filename": "driver/tcpm/fusb302.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-24T16:27:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db6b25bf_5c38fbf0",
       "range": {
         "startLine": 58,
         "startChar": 38,
