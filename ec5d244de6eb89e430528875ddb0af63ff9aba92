@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30cbebd2_23023730",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-24T18:46:59Z",
+      "side": 1,
+      "message": "please add these functions to the appropriate .h file\n\nAren\u0027t we moving to the scheme where all devices can enter deep sleep, is this function necessary? \n\nI think a name like\n\nboard_deep_sleep_allowed() (or supported) would be clearer.",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "ec5d244de6eb89e430528875ddb0af63ff9aba92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a561b9_0f1da6af",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-24T18:46:59Z",
+      "side": 1,
+      "message": "what is the purpose of this function? Please describe it in the .h file where it is added.",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 32
+      },
+      "revId": "ec5d244de6eb89e430528875ddb0af63ff9aba92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
