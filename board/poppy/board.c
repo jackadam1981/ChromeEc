@@ -322,6 +322,7 @@ static void base_disable(void)
 	gpio_disable_interrupt(GPIO_BASE_DET_A);
 	base_detect_change(BASE_DISCONNECTED);
 }
+DECLARE_HOOK(HOOK_SYSJUMP, base_disable, HOOK_PRIO_DEFAULT);
 
 #include "gpio_list.h"
 
@@ -598,6 +599,9 @@ static void board_init(void)
 	/* Enable pericom BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
+
+	if (system_jumped_to_this_image() && chipset_in_state(CHIPSET_STATE_ON))
+		base_enable();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
