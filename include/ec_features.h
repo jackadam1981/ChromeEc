@@ -99,3 +99,6 @@ enum ec_feature_code {
 
 #define EC_FEATURE_MASK_0(event_code) (1UL << (event_code % 32))
 #define EC_FEATURE_MASK_1(event_code) (1UL << (event_code - 32))
+
+/* functions for board specific overrides of these flags at runtime */
+int board_has_kblight(void);

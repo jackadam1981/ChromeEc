@@ -21,7 +21,7 @@ uint32_t get_feature_flags(void)
 		| EC_FEATURE_MASK_0(EC_FEATURE_PWM_FAN)
 #endif
 #ifdef CONFIG_PWM_KBLIGHT
-		| EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB)
+		| (board_has_kblight()?EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB):0)
 #endif
 #ifdef HAS_TASK_LIGHTBAR
 		| EC_FEATURE_MASK_0(EC_FEATURE_LIGHTBAR)
@@ -106,4 +106,13 @@ uint32_t get_feature_flags(void)
 		| EC_FEATURE_MASK_0(EC_FEATURE_DEVICE_EVENT)
 #endif
 		;
+}
+
+/* board_has_kblight() can be overriden by board code to provide finer nuance
+ * to the default implication that compiling in keyboard backlight code means
+ * that the device comes with such a device.
+ */
+__attribute__((weak))
+int board_has_kblight(void) {
+	return 1;
 }
