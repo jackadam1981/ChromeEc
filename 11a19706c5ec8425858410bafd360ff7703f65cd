@@ -16,6 +16,24 @@
       "revId": "11a19706c5ec8425858410bafd360ff7703f65cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad9fcddb_1f5cf543",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-08-24T03:11:29Z",
+      "side": 1,
+      "message": "We can skip doing that. Shouldn\u0027t hurt in any way.",
+      "parentUuid": "ec244787_9af75518",
+      "revId": "11a19706c5ec8425858410bafd360ff7703f65cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
