@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fc1e807d_dedc2174",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-24T19:35:18Z",
+      "side": 1,
+      "message": "We can\u0027t just start enabling deep sleep on ARM. We need to change the wake pins and do some other stuff. enabling deep sleep on ARM will be done at the same we reconfigure the pins.\n\nThis patch is creating these functions so transitioning through the device state refactor stuff should be easier. Randall and I decided this is the best way for us to avoid stepping on eachothers toes.\n\nHe is going to rebase off of this patch and switch to using these function names. That way I should just be able to change what is enabled on which devices and things should just work...\n\nAlso it will make incorporating the deep sleep stuff into the release branch easier.",
+      "parentUuid": "30cbebd2_23023730",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "ec5d244de6eb89e430528875ddb0af63ff9aba92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4a561b9_0f1da6af",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "ec5d244de6eb89e430528875ddb0af63ff9aba92",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f793f3d_1e6e7feb",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-24T19:35:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4a561b9_0f1da6af",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 32
+      },
+      "revId": "ec5d244de6eb89e430528875ddb0af63ff9aba92",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
