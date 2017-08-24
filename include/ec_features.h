@@ -104,4 +104,7 @@ enum ec_feature_code {
 #define EC_FEATURE_MASK_0(event_code) (1UL << (event_code % 32))
 #define EC_FEATURE_MASK_1(event_code) (1UL << (event_code - 32))
 
+/* function for board specific overrides to default feature flags */
+uint32_t board_override_feature_flags(uint32_t bitmap);
+
 #endif  /* __CROS_EC_EC_FEATURES_H */
