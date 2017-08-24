@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1e17f33_4ec38e1e",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-24T10:37:35Z",
+      "side": 1,
+      "message": "After trying it, it\u0027s a lot of effort to use it for a lazy person, e.g.:\n[a] the unresolved output cannot be cut\u0026paste in the annotation file without reformatting\n[b] I need to open each source file mentioned\n[c] there is a lot of duplications in the annotations\n (if my function pointer is called 15 times and can resolve to 4 functions, I have to put 15x(4+1) \u003d 75 lines)\n[d] at the end of the day, I probably want to re-use my annotations, so rather than having a large annotation json file, I probably want to put chunks of it in each directory and the tool re-constructs the whole file.\n\nFor [a] and [b], maybe rather than printing:\n\"-\u003e ccd_password_digest [common/ccd_config.c:262] 511a2\"\nI need an option (or the default) to generate a useful template for my annotation file, e.g.:\n\"\"\"\n   ccd_password_digest[common/ccd_config.c:262]:\n   - HASH_update(\u0026sha, config.password_salt, sizeof(config.password_salt)); @511a2\n\"\"\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "499aff9bc8e1db4e493a027f587e9fcb1412ffac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
