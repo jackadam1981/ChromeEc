@@ -1093,9 +1093,14 @@ enum ec_feature_code {
 
 #define EC_FEATURE_MASK_0(event_code) (1UL << (event_code % 32))
 #define EC_FEATURE_MASK_1(event_code) (1UL << (event_code - 32))
+
 struct __ec_align4 ec_response_get_features {
 	uint32_t flags[2];
 };
+
+/* Return the lower/higher part of the feature flags bitmap */
+uint32_t get_feature_flags0(void);
+uint32_t get_feature_flags1(void);
 
 /*****************************************************************************/
 /* Get the board's SKU ID from EC */
