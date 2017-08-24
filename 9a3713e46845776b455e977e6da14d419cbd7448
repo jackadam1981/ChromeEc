@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32d7a4db_af8c66e7",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-24T02:03:31Z",
+      "side": 1,
+      "message": "You don\u0027t want to enable the interrupt in case of error (yes that\u0027s what the code used to do, but it\u0027s wrong ,-)",
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8af146c2_145e9371",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-24T02:03:31Z",
+      "side": 1,
+      "message": "Didn\u0027t spot that earlier, please use a different variable name (i).",
+      "range": {
+        "startLine": 393,
+        "startChar": 6,
+        "endLine": 393,
+        "endChar": 8
+      },
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb3e3124_5419fdb4",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-24T02:03:31Z",
+      "side": 1,
+      "message": "rv might be \u003d\u003d 0 here, that\u0027s not what you want to return.",
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63053124_2a517fa3",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-24T02:03:31Z",
+      "side": 1,
+      "message": "reset",
+      "range": {
+        "startLine": 460,
+        "startChar": 36,
+        "endLine": 460,
+        "endChar": 42
+      },
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee3862f_01672295",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-24T02:03:31Z",
+      "side": 1,
+      "message": "what is u?",
+      "range": {
+        "startLine": 472,
+        "startChar": 22,
+        "endLine": 472,
+        "endChar": 26
+      },
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
