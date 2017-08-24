@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a0e6751_bffecab3",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129624
+      },
+      "writtenOn": "2017-08-24T23:36:42Z",
+      "side": 1,
+      "message": "Would suggest to delete unused code rather than commenting it out. You can always refer to the git history if you need to bring it back.",
+      "range": {
+        "startLine": 105,
+        "startChar": 36,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "7a438eeeb43d8e973c9463d90428d2d6b0fdb668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dfe42ff_cf6465a0",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1129624
+      },
+      "writtenOn": "2017-08-24T23:36:42Z",
+      "side": 1,
+      "message": "May want to consider updating the existing comment to reflect the new change rather than adding a new comment for the same line of code.",
+      "range": {
+        "startLine": 135,
+        "startChar": 61,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "7a438eeeb43d8e973c9463d90428d2d6b0fdb668",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
