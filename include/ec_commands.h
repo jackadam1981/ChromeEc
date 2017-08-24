@@ -1123,6 +1123,10 @@ struct __ec_align4 ec_response_get_features {
 uint32_t get_feature_flags0(void);
 uint32_t get_feature_flags1(void);
 
+/* function for board specific overrides to default feature flags */
+uint32_t board_override_feature_flags0(uint32_t flags0);
+uint32_t board_override_feature_flags1(uint32_t flags1);
+
 /*****************************************************************************/
 /* Get the board's SKU ID from EC */
 #define EC_CMD_GET_SKU_ID 0x000E
