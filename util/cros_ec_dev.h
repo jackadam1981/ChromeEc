@@ -9,6 +9,7 @@
 #include <linux/ioctl.h>
 #include <linux/types.h>
 #include "include/ec_commands.h"
+#include "include/ec_features.h"
 
 #define CROS_EC_DEV_NAME "cros_ec"
 #define CROS_EC_DEV_VERSION "1.0.0"
