@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec244787_9af75518",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-24T01:55:09Z",
+      "side": 1,
+      "message": "That\u0027d cut power to the base during EC RO update (dogfooding).\n\nAlso, that\u0027s cut power after EC software sync, which means that the base will reboot and only be functional after another second in FW screen.\n\nThose are both corner cases, but I wonder if this is really necessary?",
+      "revId": "11a19706c5ec8425858410bafd360ff7703f65cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
