@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a9dbc01_fc2a0242",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-24T23:07:35Z",
+      "side": 1,
+      "message": "maybe rename to enable_ccd_uart or something to distinguish it more clearly from uartn_enable.",
+      "range": {
+        "startLine": 266,
+        "startChar": 5,
+        "endLine": 266,
+        "endChar": 16
+      },
+      "revId": "b95853794e57951531998d8e64d40b9d719e0aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "994cc84e_c5f7a5fd",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-24T23:07:35Z",
+      "side": 1,
+      "message": "Can we expand this comment a bit to say that we only debounce when we go from ON to OFF. OFF will go directly to ON when we see the transition, so we know that if the state is DEBOUNCING then the last known state was ON and nothing has changed.\n\nI dont know if this is immediately obvious.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 54
+      },
+      "revId": "b95853794e57951531998d8e64d40b9d719e0aad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
