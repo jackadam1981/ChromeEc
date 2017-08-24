@@ -32,6 +32,13 @@ extern const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT];
 
 static void usb_charge_set_control_mode(int port_id, int mode)
 {
+	/*
+	 * If we only support CDP and SDP, the control signals are hard-wired so
+	 * there's nothing to do.  The only to do is set ILIM_SEL.
+	 */
+#ifdef CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY
+	return;
+#else /* !defined(CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY) */
 #ifdef CONFIG_USB_PORT_POWER_SMART_SIMPLE
 	/*
 	 * One single shared control signal, so the last mode set to either
@@ -49,7 +56,8 @@ static void usb_charge_set_control_mode(int port_id, int mode)
 		gpio_set_level(GPIO_USB2_CTL2, mode & 0x2);
 		gpio_set_level(GPIO_USB2_CTL3, mode & 0x1);
 	}
-#endif
+#endif /* defined(CONFIG_USB_PORT_POWER_SMART_SIMPLE) */
+#endif /* defined(CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY) */
 }
 
 static void usb_charge_set_enabled(int port_id, int en)
@@ -67,14 +75,18 @@ static void usb_charge_set_ilim(int port_id, int sel)
 	/* ILIM_SEL signal is per-port and active low */
 	if (port_id == 0)
 		gpio_set_level(GPIO_USB1_ILIM_SEL_L, !sel);
+#if CONFIG_USB_PORT_POWER_SMART_PORT_COUNT == 2
 	else
 		gpio_set_level(GPIO_USB2_ILIM_SEL_L, !sel);
+#endif /* CONFIG_USB_PORT_POWER_SMART_PORT_COUNT == 2 */
 #else
 	/* ILIM_SEL is per-port and active high */
 	if (port_id == 0)
 		gpio_set_level(GPIO_USB1_ILIM_SEL, sel);
+#if CONFIG_USB_PORT_POWER_SMART_PORT_COUNT == 2
 	else
 		gpio_set_level(GPIO_USB2_ILIM_SEL, sel);
+#endif /* CONFIG_USB_PORT_POWER_SMART_PORT_COUNT == 2 */
 #endif /* CONFIG_USB_PORT_POWER_SMART_SIMPLE */
 }
 
@@ -107,10 +119,12 @@ int usb_charge_set_mode(int port_id, enum usb_charge_mode mode)
 		usb_charge_set_ilim(port_id, 1);
 		usb_charge_set_enabled(port_id, 1);
 		break;
+#ifndef CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY
 	case USB_CHARGE_MODE_DCP_SHORT:
 		usb_charge_set_control_mode(port_id, 4);
 		usb_charge_set_enabled(port_id, 1);
 		break;
+#endif /* !defined(CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY) */
 	default:
 		return EC_ERROR_UNKNOWN;
 	}
