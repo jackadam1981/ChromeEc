@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcb812e9_295c76df",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-24T08:18:30Z",
+      "side": 1,
+      "message": "The ARMv7-m is not terribly explicit on this topic,\nbut you can theorically have \"mov pc,\" / \"add pc, \" / \"sub pc, \"\nthose are rare though.",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 59
+      },
+      "revId": "88040ffc7492ab4baf009aa9cb7889b521fe5926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
