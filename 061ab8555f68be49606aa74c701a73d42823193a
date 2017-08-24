@@ -48,6 +48,98 @@
     },
     {
       "key": {
+        "uuid": "9d784b72_5ad8e774",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-24T16:14:03Z",
+      "side": 1,
+      "message": "Dead code?",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 5
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b76a6e5_9c2f2445",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-24T16:14:03Z",
+      "side": 1,
+      "message": "Dead code?",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 5
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "172bf8c4_3bd78d52",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-24T16:14:03Z",
+      "side": 1,
+      "message": "Note that there is an implicit 1-second timeout when the EC watchdog will kick in and reboot the entire system.\n\nIt might be better to have a timeout shorter than that which forces the AP back to G3.\n\nAlternately, we might need to split G3S5 into two states, with the transition between them being epsi_chan_ready().  Or can you just block the transition from G3S5 to S5 until espi_chan_ready() without spin-waiting?",
+      "range": {
+        "startLine": 1467,
+        "startChar": 0,
+        "endLine": 1478,
+        "endChar": 3
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f04d6bde_b6cab731",
+        "filename": "chip/mec1701/gpspi_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-24T16:14:03Z",
+      "side": 1,
+      "message": "Update comment?",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 37
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "219483dd_ce5e8817",
         "filename": "chip/mec1701/keyboard_raw.c",
         "patchSetId": 2
@@ -64,6 +156,98 @@
         "startChar": 30,
         "endLine": 5,
         "endChar": 37
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c3f36de_278913d5",
+        "filename": "chip/mec1701/lfw/ec_lfw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-24T16:14:03Z",
+      "side": 1,
+      "message": "Is there any battery-backed RAM which can be used to hold some of the panic data?  See CONFIG_CHIP_PANIC_BACKUP.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 14
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f04665e_b4bfa5ba",
+        "filename": "chip/mec1701/lfw/ec_lfw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-24T16:14:03Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 385,
+        "startChar": 29,
+        "endLine": 385,
+        "endChar": 39
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af5b62eb_efd8b689",
+        "filename": "chip/mec1701/lfw/ec_lfw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-24T16:14:03Z",
+      "side": 1,
+      "message": "udelay?",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 426,
+        "endChar": 7
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34a8d6b6_9e2fbbf9",
+        "filename": "chip/mec1701/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-24T16:14:03Z",
+      "side": 1,
+      "message": "Still?\n\nDo all commands fail, or just a subset of them?",
+      "range": {
+        "startLine": 736,
+        "startChar": 19,
+        "endLine": 737,
+        "endChar": 22
       },
       "revId": "061ab8555f68be49606aa74c701a73d42823193a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
