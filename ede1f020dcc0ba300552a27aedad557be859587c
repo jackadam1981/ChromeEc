@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "708c44b4_15a41d38",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1649,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-25T14:54:07Z",
+      "side": 1,
+      "message": "Should the delay be in board_set_tcpc_power_mode()? It seems that it could vary by board / chip.",
+      "range": {
+        "startLine": 1649,
+        "startChar": 2,
+        "endLine": 1649,
+        "endChar": 13
+      },
+      "revId": "ede1f020dcc0ba300552a27aedad557be859587c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
