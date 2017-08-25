@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "125db788_61205bc4",
+        "filename": "extra/usb_power/board.README",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-25T23:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e0e9da0_35c3b0b3",
+      "range": {
+        "startLine": 13,
+        "startChar": 53,
+        "endLine": 13,
+        "endChar": 73
+      },
+      "revId": "4accaaf93bf66b78e6b0080b345066acbcf1eca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b44680d_9429035c",
         "filename": "extra/usb_power/convert_servo_ina.py",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "204a3c1c_8a7ccdbb",
+        "filename": "extra/usb_power/convert_servo_ina.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-25T23:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b44680d_9429035c",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "4accaaf93bf66b78e6b0080b345066acbcf1eca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b34e4330_8d5ce5af",
         "filename": "extra/usb_power/convert_servo_ina.py",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "4accaaf93bf66b78e6b0080b345066acbcf1eca5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57aa8944_856fc9a5",
+        "filename": "extra/usb_power/convert_servo_ina.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-25T23:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b34e4330_8d5ce5af",
+      "revId": "4accaaf93bf66b78e6b0080b345066acbcf1eca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "90f48c71_27fba683",
+        "filename": "extra/usb_power/convert_servo_ina.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-25T23:59:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b110720_8dc11d23",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 36,
+        "endChar": 3
+      },
+      "revId": "4accaaf93bf66b78e6b0080b345066acbcf1eca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "891d43bd_65391758",
         "filename": "extra/usb_power/convert_servo_ina.py",
         "patchSetId": 1
@@ -99,6 +189,30 @@
       "writtenOn": "2017-08-25T23:29:59Z",
       "side": 1,
       "message": "what\u0027s with the weird spacing?",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 78
+      },
+      "revId": "4accaaf93bf66b78e6b0080b345066acbcf1eca5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff8e85d5_d29cc5d7",
+        "filename": "extra/usb_power/convert_servo_ina.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-25T23:59:39Z",
+      "side": 1,
+      "message": "I lined them up under the %s to keep track of them while developing, fixed.",
+      "parentUuid": "891d43bd_65391758",
       "range": {
         "startLine": 51,
         "startChar": 10,
