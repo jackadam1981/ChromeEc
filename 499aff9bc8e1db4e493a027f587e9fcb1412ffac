@@ -22,6 +22,30 @@
       "revId": "499aff9bc8e1db4e493a027f587e9fcb1412ffac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08c90d5_a9e90f3b",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-25T01:30:00Z",
+      "side": 1,
+      "message": "Removed the whitespace between \"function_name\" and \"[code_path:line_number]\".\nPrint relative filepath.\n\n[c], [d], and template generation are big changes, maybe it is better to do them in other CLs.",
+      "parentUuid": "d1e17f33_4ec38e1e",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 25
+      },
+      "revId": "499aff9bc8e1db4e493a027f587e9fcb1412ffac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
