@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5afdc7a4_c7ff0456",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-25T07:43:48Z",
+      "side": 1,
+      "message": "nit: As a space is forbidden here, I would write it as \u0027function_name\u0027",
+      "range": {
+        "startLine": 71,
+        "startChar": 77,
+        "endLine": 71,
+        "endChar": 90
+      },
+      "revId": "571d278e3af35047245c4de1c3865ab97e15662c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f7371f_c4d82bb6",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-25T07:43:48Z",
+      "side": 1,
+      "message": "the sentence is not fully clear to me.\nYou are suggesting here that the error is not fatal and the execution continue ?\nWhen does this happen ?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "571d278e3af35047245c4de1c3865ab97e15662c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b24b1774_6d44828c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-25T07:43:48Z",
+      "side": 1,
+      "message": "For the firmwares built with LTO, it\u0027s kind of tricky to use:\nIt\u0027s displaying:\n    tcpm_get_cc.lto_priv.235\n        -\u003e tcpm_get_cc.lto_priv.235[driver/tcpm/tcpm.h:95] 100b663a\nBut I have to write this in my .yaml annotation:\n   tcpm_get_cc[driver/tcpm/tcpm.h:95]:\n   - fusb302_tcpm_get_cc\n\nIs this intented ? maybe we can just avoid displaying the \u0027.lto_priv.235\u0027 above ?",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 51
+      },
+      "revId": "571d278e3af35047245c4de1c3865ab97e15662c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
