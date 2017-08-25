@@ -228,12 +228,63 @@ void gpio_set_level(enum gpio_signal signal, int value)
 		NPCX_PDOUT(gpio_list[signal].port) &= ~gpio_list[signal].mask;
 }
 
+int gpio_get_flags_by_mask(uint32_t port, uint32_t mask)
+{
+	uint32_t flags = 0;
+
+	/* If all GPIO pins are locked, return directly */
+#if defined(CHIP_FAMILY_NPCX7)
+	if ((NPCX_PLOCK_CTL(port) & mask) == mask)
+		return 0;
+#endif
+
+	/*
+	 * Configure pin as input, if requested. Output is configured only
+	 * after setting all other attributes, so as not to create a
+	 * temporary incorrect logic state 0:input 1:output
+	 */
+	if (NPCX_PDIR(port) | mask)
+		flags |= GPIO_OUTPUT;
+	else
+		flags |= GPIO_INPUT;
+
+	if (NPCX_PTYPE(port) | mask)
+		flags |= GPIO_OPEN_DRAIN;
+
+	if (NPCX_PPULL(port) & mask) {
+		if (NPCX_PPUD(port) & mask)
+			flags |= GPIO_PULL_DOWN;
+		else
+			flags |= GPIO_PULL_UP;
+	}
+
+	/* TODO: 1.8V low voltage select */
+	/* flags |= GPIO_SEL_1P8V; */
+
+	/* TODO: Set up interrupt type */
+	/* (flags |= GPIO_INT_ANY); */
+
+	/* Set level 0:low 1:high*/
+	if (NPCX_PDOUT(port) & mask)
+		flags |= GPIO_HIGH;
+	else
+		flags |= GPIO_LOW;
+
+	/* Lock GPIO output and configuration if need */
+#if defined(CHIP_FAMILY_NPCX7)
+	if (NPCX_PLOCK_CTL(port) & mask)
+		flags |= GPIO_LOCKED;
+#endif
+
+	return flags;
+}
+
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
 	/* If all GPIO pins are locked, return directly */
 #if defined(CHIP_FAMILY_NPCX7)
 	if ((NPCX_PLOCK_CTL(port) & mask) == mask)
-		return;
+		return 0;
 #endif
 
 	/*
@@ -262,19 +313,16 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 		NPCX_PPULL(port) &= ~mask; /* disable pull down/up */
 	}
 
-	/* 1.8V low voltage select */
-	if (flags & GPIO_SEL_1P8V) {
-		/*
-		 * Set IO type to open-drain & disable internal pulling
-		 * before selecting low-voltage level
-		 */
-		NPCX_PTYPE(port) |= mask;
-		NPCX_PPULL(port) &= ~mask;
-		gpio_low_voltage_level_sel(port, mask, 1);
-	} else
-		gpio_low_voltage_level_sel(port, mask, 0);
+	if (port != 4 || mask != 0x20) {
+		/* 1.8V low voltage select */
+		if (flags & GPIO_SEL_1P8V)
+			gpio_low_voltage_level_sel(port, mask, 1);
+		else
+			gpio_low_voltage_level_sel(port, mask, 0);
+	}
 
 	/* Set up interrupt type */
+	if (port != 4 || mask != 0x20) {
 	if (flags & GPIO_INT_ANY) {
 		const struct gpio_info *g = gpio_list;
 		enum gpio_signal gpio_int;
@@ -283,6 +331,7 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 		for (gpio_int = 0; gpio_int < GPIO_IH_COUNT; gpio_int++, g++)
 			if ((g->port == port) && (g->mask & mask))
 				gpio_interrupt_type_sel(gpio_int, flags);
+	}
 	}
 
 	/* Set level 0:low 1:high*/

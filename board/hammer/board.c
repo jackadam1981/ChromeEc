@@ -28,6 +28,7 @@
 #include "usb_descriptor.h"
 #include "usb_i2c.h"
 #include "util.h"
+#include "onewire.h"
 
 #include "gpio_list.h"
 
@@ -108,7 +109,7 @@ struct keyboard_scan_config keyscan_config = {
  */
 static void board_init(void)
 {
-
+	gpio_enable_interrupt(GPIO_BASE_DET);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

@@ -19,6 +19,8 @@
 
 #include "common.h"
 
+void onewire_interrupt(enum gpio_signal signal);
+
 /**
  * Reset the 1-wire bus.
  *
