@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28926313_452dcb6c",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-25T18:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1ada5eb_70e9ca61",
+      "range": {
+        "startLine": 52,
+        "startChar": 5,
+        "endLine": 52,
+        "endChar": 22
+      },
+      "revId": "1608adf9b2dbc918bcf16c359bc19577092f5139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7834f738_b22c695b",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-24T23:16:45Z",
       "side": 1,
       "message": "board_deep_sleep_allowed\n\nWe did not have this before. Why do we have it now?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "1608adf9b2dbc918bcf16c359bc19577092f5139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4fc3606_80e9353f",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-25T18:26:54Z",
+      "side": 1,
+      "message": "This is what used to be RESUME.",
+      "parentUuid": "7834f738_b22c695b",
       "range": {
         "startLine": 73,
         "startChar": 5,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "762318cd_dcd39d93",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-25T18:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7c3e82b_49e996fe",
+      "range": {
+        "startLine": 110,
+        "startChar": 6,
+        "endLine": 110,
+        "endChar": 23
+      },
+      "revId": "1608adf9b2dbc918bcf16c359bc19577092f5139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74970bd6_f557b917",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-24T23:16:45Z",
       "side": 1,
       "message": "board_detect_ap_with_tpm_rst",
+      "range": {
+        "startLine": 142,
+        "startChar": 6,
+        "endLine": 142,
+        "endChar": 23
+      },
+      "revId": "1608adf9b2dbc918bcf16c359bc19577092f5139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "577c0e22_dd8c394b",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-25T18:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74970bd6_f557b917",
       "range": {
         "startLine": 142,
         "startChar": 6,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "321e35fb_e04a0569",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-25T18:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ae3e207_6ca7113e",
+      "range": {
+        "startLine": 182,
+        "startChar": 6,
+        "endLine": 182,
+        "endChar": 23
+      },
+      "revId": "1608adf9b2dbc918bcf16c359bc19577092f5139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69a8005e_47f4ee24",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2017-08-24T23:16:45Z",
       "side": 1,
       "message": "board_detect_ap_with_tpm_rst",
+      "range": {
+        "startLine": 797,
+        "startChar": 5,
+        "endLine": 797,
+        "endChar": 22
+      },
+      "revId": "1608adf9b2dbc918bcf16c359bc19577092f5139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d45862bc_dee656e7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-25T18:26:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69a8005e_47f4ee24",
       "range": {
         "startLine": 797,
         "startChar": 5,
