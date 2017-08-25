@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "052e65eb_73488ca7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-25T19:12:21Z",
+      "side": 0,
+      "message": "So the flags are 64 bits worth. But the following patch only handles 32 bits.",
+      "revId": "f9a2ef234703a632aadef8ba637487881cabc843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

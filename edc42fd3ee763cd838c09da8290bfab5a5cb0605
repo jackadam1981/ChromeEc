@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07b766ad_aaa37225",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-25T19:12:21Z",
+      "side": 1,
+      "message": "Doesn\u0027t this mean we need to include another header when wanting to use ec_commands.h outside of the ec repo?",
+      "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
