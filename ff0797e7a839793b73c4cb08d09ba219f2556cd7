@@ -22,6 +22,52 @@
       "revId": "ff0797e7a839793b73c4cb08d09ba219f2556cd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50831280_154d1d78",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-25T15:02:45Z",
+      "side": 1,
+      "message": "It\u0027s slightly easier to read if you have no \u0027else\u0027 case, or even if you define a new empty usb_charge_set_control_mode()  for CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY().",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "ff0797e7a839793b73c4cb08d09ba219f2556cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d02f250_f658c65d",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-25T15:02:45Z",
+      "side": 1,
+      "message": "These ifdefs are getting unwieldy, it might be cleaner to assign \u0027enum gpio_signal ilim_gpio\u0027 / sel once based on ifdefs, and then call gpio_set_level(ilim_gpio, sel) once?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 47
+      },
+      "revId": "ff0797e7a839793b73c4cb08d09ba219f2556cd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
