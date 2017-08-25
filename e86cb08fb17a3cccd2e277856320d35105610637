@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c40fa12a_9f04fc77",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-25T22:56:29Z",
+      "side": 1,
+      "message": "nit: Add a bug or a username.",
+      "range": {
+        "startLine": 1171,
+        "startChar": 4,
+        "endLine": 1171,
+        "endChar": 8
+      },
+      "revId": "e86cb08fb17a3cccd2e277856320d35105610637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8257dd97_9d6003d5",
         "filename": "common/ec_features.c",
         "patchSetId": 1
@@ -18,6 +41,46 @@
         "startChar": 5,
         "endLine": 24,
         "endChar": 24
+      },
+      "revId": "e86cb08fb17a3cccd2e277856320d35105610637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e5672ae_a19a340f",
+        "filename": "common/ec_features.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-25T22:56:29Z",
+      "side": 1,
+      "message": "What about adding a new option called something like \u0027CONFIG_EC_FEATURE_BOARD_OVERRIDE\u0027?\n\nThen you would just pass the currently derived features and let the board modify it as it wished.\n\nWhat do you think?",
+      "revId": "e86cb08fb17a3cccd2e277856320d35105610637",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93ab509f_c39936cb",
+        "filename": "common/ec_features.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-25T22:56:29Z",
+      "side": 1,
+      "message": "nit: Nothing on the first line in multi-line comments.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 3
       },
       "revId": "e86cb08fb17a3cccd2e277856320d35105610637",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
