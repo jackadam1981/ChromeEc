@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b17071c_47f28db7",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-25T17:12:40Z",
+      "side": 1,
+      "message": "The register and data value are battery specific. We need that information in the battery_info struct. Or some other struct. This was all handed on reef before...",
+      "revId": "c4f1b3b7544b1d2f1f9d7eabf843aa448bc004e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
