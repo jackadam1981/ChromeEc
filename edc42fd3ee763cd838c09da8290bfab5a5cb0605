@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "5f4a38ff_feeb3f12",
+        "filename": "common/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-25T23:02:41Z",
+      "side": 1,
+      "message": "If this remains as a separate module, I would just put them on the same line.",
+      "range": {
+        "startLine": 128,
+        "startChar": 28,
+        "endLine": 128,
+        "endChar": 41
+      },
+      "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3085df4_eefffa86",
+        "filename": "common/ec_features.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-25T23:02:41Z",
+      "side": 1,
+      "message": "You\u0027ll need to handle the 2nd word of features as well. Or maybe name this \u0027get_feature_flags0\u0027 since there aren\u0027t any merged changes that use the 2nd word yet.",
+      "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07b766ad_aaa37225",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
