@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dbf3fd7_411d98d9",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-25T20:57:11Z",
+      "side": 1,
+      "message": "HOOK_SECOND gets called right after HOOK_INIT and will detect the AP (or if not present, start debouncing detect), so we don\u0027t need the dedicated init function to do so.",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "bfd24f326c1eed27daaab02aeecd27a5265cc30c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
