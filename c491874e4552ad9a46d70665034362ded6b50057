@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54546bf4_aeecb4e9",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-25T20:02:15Z",
+      "side": 1,
+      "message": "This does nothing after the previous refactoring which stopped auto-enabling interrupts",
+      "range": {
+        "startLine": 546,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 41
+      },
+      "revId": "c491874e4552ad9a46d70665034362ded6b50057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5ca0769_0b819712",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-25T20:02:15Z",
+      "side": 1,
+      "message": "Done by init_ap_state()",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 696,
+        "endChar": 39
+      },
+      "revId": "c491874e4552ad9a46d70665034362ded6b50057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
