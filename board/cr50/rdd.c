@@ -5,7 +5,6 @@
 
 #include "case_closed_debug.h"
 #include "console.h"
-#include "device_state.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
@@ -61,11 +60,6 @@ static void uart_select_tx(int uart, int signal)
 	}
 }
 
-int servo_is_connected(void)
-{
-	return device_get_state(DEVICE_SERVO) == DEVICE_STATE_ON;
-}
-
 void uartn_tx_connect(int uart)
 {
 	if (uart == UART_AP && !ccd_is_cap_enabled(CCD_CAP_AP_RX_CR50_TX))
@@ -78,8 +72,7 @@ void uartn_tx_connect(int uart)
 		return;
 
 	if (servo_is_connected()) {
-		CPRINTS("Servo is attached cannot enable %s UART",
-			uarts[uart].name);
+		CPRINTS("Servo attached; can't enable UART TX");
 		return;
 	}
 
