@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "9773b360_333e0b1b",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-25T19:57:17Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be symmetric?\n\ndeep sleep is only disabled/enabled from ap_state.c",
+      "parentUuid": "e3400a0e_c0917de8",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 22
+      },
+      "revId": "1608adf9b2dbc918bcf16c359bc19577092f5139",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7c3e82b_49e996fe",
         "filename": "board/cr50/ap_state.c",
         "patchSetId": 3
