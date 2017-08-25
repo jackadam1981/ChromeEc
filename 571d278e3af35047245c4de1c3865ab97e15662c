@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a788624_c5e20a51",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-25T08:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5afdc7a4_c7ff0456",
+      "range": {
+        "startLine": 71,
+        "startChar": 77,
+        "endLine": 71,
+        "endChar": 90
+      },
+      "revId": "571d278e3af35047245c4de1c3865ab97e15662c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4f7371f_c4d82bb6",
         "filename": "extra/stack_analyzer/README.md",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-25T07:43:48Z",
       "side": 1,
       "message": "the sentence is not fully clear to me.\nYou are suggesting here that the error is not fatal and the execution continue ?\nWhen does this happen ?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "571d278e3af35047245c4de1c3865ab97e15662c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c4423f5_2e614af1",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-25T08:26:32Z",
+      "side": 1,
+      "message": "It means the annotation can\u0027t be found in disassembly (because of inlining). But it is used to eliminate some inlined indirect calls. Maybe it\u0027s not very useful and we don\u0027t need to report this warning ?",
+      "parentUuid": "e4f7371f_c4d82bb6",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -68,6 +116,30 @@
       "revId": "571d278e3af35047245c4de1c3865ab97e15662c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f87525_3c5166cd",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-25T08:26:32Z",
+      "side": 1,
+      "message": "The annotation parser now can accept \"tcpm_get_cc.lto_priv.235[driver/tcpm/tcpm.h:95]\". It will be transform to \"tcpm_get_cc\" internally.",
+      "parentUuid": "b24b1774_6d44828c",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 51
+      },
+      "revId": "571d278e3af35047245c4de1c3865ab97e15662c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
