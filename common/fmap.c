@@ -163,7 +163,11 @@ const struct _ec_fmap {
 		},
 #endif
 
-		/* RW Firmware */
+		/* RW Firmware:
+		 * |   SIG_RW   |           RW_A            |
+		 *                <-RW_FWID->
+		 *  <-----------------EC_RW---------------->
+		 */
 		{
 			 /* The range of RW firmware to be auto-updated. */
 			.area_name = "EC_RW",
@@ -204,17 +208,6 @@ const struct _ec_fmap {
 			.area_size = sizeof(
 				current_image_data.rollback_version),
 			.area_flags = FMAP_AREA_STATIC,
-		},
-#endif
-#ifdef CONFIG_RWSIG_TYPE_RWSIG
-		{
-			 /* RW image signature */
-			.area_name = "SIG_RW",
-			.area_offset = CONFIG_EC_PROTECTED_STORAGE_OFF -
-				FMAP_REGION_START + CONFIG_RW_SIG_ADDR -
-				CONFIG_PROGRAM_MEMORY_BASE,
-			.area_size = CONFIG_RW_SIG_SIZE,
-			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
 #endif
 	}

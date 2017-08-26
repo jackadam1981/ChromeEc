@@ -1364,6 +1364,10 @@ enum ec_flash_region {
 	 * EC_FLASH_REGION_RO)
 	 */
 	EC_FLASH_REGION_WP_RO,
+	/* Region which holds active image */
+	EC_FLASH_REGION_ACTIVE,
+	/* Region which holds updatable image */
+	EC_FLASH_REGION_UPDATE,
 	/* Number of regions */
 	EC_FLASH_REGION_COUNT,
 };
