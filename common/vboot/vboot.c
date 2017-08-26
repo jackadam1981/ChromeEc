@@ -142,10 +142,11 @@ static int verify_and_jump(void)
 	}
 
 	/* 3. Jump (and reboot) */
-	system_run_image_copy(slot == VBOOT_EC_SLOT_A ?
+	rv = system_run_image_copy(slot == VBOOT_EC_SLOT_A ?
 			SYSTEM_IMAGE_RW : SYSTEM_IMAGE_RW_B);
+	CPRINTS("Failed to jump (%d)", rv);
 
-	return EC_ERROR_UNKNOWN;
+	return rv;
 }
 
 /* Request more power: charging battery or more powerful AC adapter */

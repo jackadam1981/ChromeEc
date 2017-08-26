@@ -42,10 +42,19 @@ enum system_image_copy_t {
 	SYSTEM_IMAGE_UNKNOWN = 0,
 	SYSTEM_IMAGE_RO,
 	SYSTEM_IMAGE_RW,
+	SYSTEM_IMAGE_RW_A = SYSTEM_IMAGE_RW,
 	/* Some systems may have these too */
 	SYSTEM_IMAGE_RO_B,
 	SYSTEM_IMAGE_RW_B,
 };
+
+/**
+ * Checks if running image is RW or not
+ *
+ * @param copy Image index to check
+ * @return     True if <copy> is a RW image or false otherwise.
+ */
+int system_is_rw_image(enum system_image_copy_t copy);
 
 /**
  * Pre-initializes the module.  This occurs before clocks or tasks are
