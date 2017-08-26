@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "937e3472_09040a1b",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-26T16:15:51Z",
+      "side": 1,
+      "message": "Sorry for being picky, can we change this a bit more? First change GPIO_USB_ILIM_SEL to GPIO_USB1_ILIM_SEL (only 4 board.h files), then something like:\n\n#if defined(CONFIG_USB_PORT_POWER_SMART_SIMPLE) || defined(CONFIG_USB_PORT_POWER_SMART_SIMPLE)\n/* ILIM_SEL signal is inverted */\nsel \u003d !sel;\n#endif\n\nilim_sel \u003d GPIO_USB1_ILIM_SEL;\n#if !defined(CONFIG_USB_PORT_POWER_SMART_SIMPLE) \u0026\u0026 CONFIG_USB_PORT_POWER_SMART_PORT_COUNT \u003d\u003d 2\n\tif (port_id !\u003d 0)\n\t\tilim_sel \u003d GPIO_USB2_ILIM_SEL;\n#endif\n\ngpio_set_level(ilim_sel, sel);",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 47
+      },
+      "revId": "cb7e64f5822e5e46cd2a8bd26127d5581551ae0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
