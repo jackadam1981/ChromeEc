@@ -16,6 +16,7 @@
 #include "hwtimer_chip.h"
 #include "registers.h"
 #include "rom_chip.h"
+#include "rwsig.h"
 #include "system.h"
 #include "system_chip.h"
 #include "task.h"
@@ -951,14 +952,14 @@ void system_jump_to_booter(void)
 	switch (system_get_shrspi_image_copy()) {
 	case SYSTEM_IMAGE_RW:
 		flash_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
-				CONFIG_RW_STORAGE_OFF;
-		flash_used = CONFIG_RW_SIZE;
+				CONFIG_RW_A_STORAGE_OFF;
+		flash_used = CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE;
 		break;
 #ifdef CONFIG_RW_B
 	case SYSTEM_IMAGE_RW_B:
 		flash_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
 				CONFIG_RW_B_STORAGE_OFF;
-		flash_used = CONFIG_RW_SIZE;
+		flash_used = CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE;
 		break;
 #endif
 	case SYSTEM_IMAGE_RO:
