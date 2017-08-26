@@ -133,6 +133,9 @@ enum ccd_capability {
 	/* Access to I2C via USB */
 	CCD_CAP_I2C = 15,
 
+	/* Override recovery button */
+	CCD_CAP_REC_BTN_OVERRIDE = 16,
+
 	/* Number of currently defined capabilities */
 	CCD_CAP_COUNT
 };
