@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80a9d273_e147738c",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-28T10:21:45Z",
+      "side": 1,
+      "message": "Should be \"analyzestack.yaml\" ?",
+      "revId": "f9eb4d35eaea2a5749eabc56dfdd4b24a8803ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f767b235_6db15f27",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-28T10:21:45Z",
+      "side": 1,
+      "message": "The tests in stack_analyzer_unittest.py have to be updated, like\n```\n559         print_mock.assert_called_once_with(                                     \n560             \u0027Error: Failed to parse annotation file.\u0027)\n```\nshould be\n```\n559         print_mock.assert_called_once_with(                                     \n560             \u0027Error: Failed to parse annotation file fake.\u0027)\n```",
+      "revId": "f9eb4d35eaea2a5749eabc56dfdd4b24a8803ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d6d45b1_223ea4b3",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-28T10:21:45Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "f9eb4d35eaea2a5749eabc56dfdd4b24a8803ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02072e41_cc93357a",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-28T10:21:45Z",
+      "side": 1,
+      "message": "Same as above",
+      "revId": "f9eb4d35eaea2a5749eabc56dfdd4b24a8803ecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
