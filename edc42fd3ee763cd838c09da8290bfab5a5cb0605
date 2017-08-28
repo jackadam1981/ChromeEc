@@ -74,6 +74,24 @@
       "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7b65268_0331b7fc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-08-28T13:06:37Z",
+      "side": 1,
+      "message": "The ACPI handler will get access to that bitmap in CL:626976 but doesn\u0027t need all the other things that are defined in here.\n\nThere was one instance where the additional include was necessary, in util/.\nI could just #include ec_features.h here to make it transparent.\n\nOr we just accept that the ACPI code will see some more defines than it needs for its work and I\u0027ll abandon this part of the series?",
+      "parentUuid": "6f855984_20c0cf94",
+      "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

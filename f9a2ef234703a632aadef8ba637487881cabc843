@@ -16,6 +16,24 @@
       "revId": "f9a2ef234703a632aadef8ba637487881cabc843",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f84a9f7b_ee3eb7a8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1095,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-08-28T13:06:37Z",
+      "side": 0,
+      "message": "the other 32bits are unused as of now. I wasn\u0027t sure if I should reserve all 8 bytes of EC ACPI space right now or if the access routine could resolve that lazily so that we reserve another 4 bytes later.\n\nIt probably makes sense to expose them all now or we have no more space left later?",
+      "parentUuid": "052e65eb_73488ca7",
+      "revId": "f9a2ef234703a632aadef8ba637487881cabc843",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
