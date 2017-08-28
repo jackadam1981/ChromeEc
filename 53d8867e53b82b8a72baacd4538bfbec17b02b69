@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "56ac6585_25822329",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-28T21:36:02Z",
+      "side": 1,
+      "message": "nit: 1 space padding around comment /* c. */",
+      "range": {
+        "startLine": 480,
+        "startChar": 5,
+        "endLine": 480,
+        "endChar": 49
+      },
+      "revId": "53d8867e53b82b8a72baacd4538bfbec17b02b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f891a808_0d2b54a6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -13,6 +36,30 @@
       "writtenOn": "2017-08-25T18:15:02Z",
       "side": 1,
       "message": "This should be okay because it only takes affect after an explicit contract is established.",
+      "range": {
+        "startLine": 481,
+        "startChar": 3,
+        "endLine": 481,
+        "endChar": 24
+      },
+      "revId": "53d8867e53b82b8a72baacd4538bfbec17b02b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8bc0060_dcc0ea81",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-28T21:36:02Z",
+      "side": 1,
+      "message": "Is it better to always sleep the allotted time, or wake up if another message is received before the timeout? Vincent what do you think?",
+      "parentUuid": "f891a808_0d2b54a6",
       "range": {
         "startLine": 481,
         "startChar": 3,
