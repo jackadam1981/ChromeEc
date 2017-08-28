@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3775c387_aacd73f6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1858,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-28T23:55:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebccd5cd_120c8a84",
+      "range": {
+        "startLine": 1858,
+        "startChar": 19,
+        "endLine": 1858,
+        "endChar": 24
+      },
+      "revId": "fe0ca09e3d688dae87b1b08cf7e654cc9baec906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a7f773e_75fcf42b",
         "filename": "include/case_closed_debug.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-28T23:24:13Z",
       "side": 1,
       "message": "Would we ever want to enable this separately from other restricted console commands?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 31
+      },
+      "revId": "fe0ca09e3d688dae87b1b08cf7e654cc9baec906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65021331_d193b713",
+        "filename": "include/case_closed_debug.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-28T23:55:43Z",
+      "side": 1,
+      "message": "Hmm, I don\u0027t think so. The override can only be done via the console command.",
+      "parentUuid": "9a7f773e_75fcf42b",
       "range": {
         "startLine": 136,
         "startChar": 0,
