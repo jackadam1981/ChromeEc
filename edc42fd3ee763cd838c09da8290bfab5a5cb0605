@@ -152,6 +152,24 @@
       "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49c49245_077fa05f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-08-28T21:02:16Z",
+      "side": 1,
+      "message": "It\u0027s not for coreboot\u0027s ACPI use, it\u0027s for consumption in CL:626976 (EC side ACPI handling)\n\nI added #include \"ec_features.h\" now so the values are also exported through ec_commands.h (ie. no externally visible change), but I can also roll this back if preferred.",
+      "parentUuid": "cfe68460_1a5379c1",
+      "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
