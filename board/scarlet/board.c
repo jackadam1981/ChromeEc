@@ -228,6 +228,16 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 			       CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
 }
 
+int board_is_ramp_allowed(int supplier)
+{
+	return 1;
+}
+
+int board_get_ramp_current_limit(int supplier, int sup_curr)
+{
+	return PD_MAX_CURRENT_MA;
+}
+
 int extpower_is_present(void)
 {
 	/*
