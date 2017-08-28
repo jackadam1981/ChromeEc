@@ -22,6 +22,30 @@
       "revId": "cb7e64f5822e5e46cd2a8bd26127d5581551ae0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61f94665_0813309a",
+        "filename": "common/usb_port_power_smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-28T16:48:18Z",
+      "side": 1,
+      "message": "No, that\u0027s fine; it\u0027s ends up being a lot cleaner this way. Thanks. Done.",
+      "parentUuid": "937e3472_09040a1b",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 47
+      },
+      "revId": "cb7e64f5822e5e46cd2a8bd26127d5581551ae0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
