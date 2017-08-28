@@ -22,6 +22,30 @@
       "revId": "88040ffc7492ab4baf009aa9cb7889b521fe5926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "715c7154_0ceefda7",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-28T01:22:46Z",
+      "side": 1,
+      "message": "I will add a TODO for these unhandled cases.",
+      "parentUuid": "fcb812e9_295c76df",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 59
+      },
+      "revId": "88040ffc7492ab4baf009aa9cb7889b521fe5926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
