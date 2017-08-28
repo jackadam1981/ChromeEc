@@ -134,6 +134,24 @@
       "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe68460_1a5379c1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-28T16:45:02Z",
+      "side": 1,
+      "message": "I think it\u0027s best to stick with one exported header file to reduce maintenance across all projects that use it. Feel free to expand the use of #ifndef/#ifdef __ACPI__ if you think it\u0027s useful, or even to (possibly automatically) split the header file for your own use in coreboot.",
+      "parentUuid": "c7b65268_0331b7fc",
+      "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
