@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "20f07bce_bb95dd71",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-28T08:58:45Z",
+      "side": 1,
+      "message": "Yeah, I had to add such annotations in a few places for hammer and found the message a bit confusing...",
+      "parentUuid": "2c4423f5_2e614af1",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 25
+      },
+      "revId": "571d278e3af35047245c4de1c3865ab97e15662c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b24b1774_6d44828c",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 4
