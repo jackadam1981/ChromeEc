@@ -708,11 +708,6 @@ static void bd9995x_battery_charging_profile_settings(void)
 	/* Fast-charge & Pre-charge Current Setting */
 	charger_set_current(PD_MAX_CURRENT_MA);
 
-	/* Charge Termination Current Setting */
-	ch_raw_write16(BD9995X_CMD_ITERM_SET,
-		       bd9995x_charger_info.current_min & 0x07C0,
-		       BD9995X_EXTENDED_COMMAND);
-
 	/* Trickle-charge Current Setting */
 	ch_raw_write16(BD9995X_CMD_ITRICH_SET,
 		       bi->precharge_current & 0x07C0,
