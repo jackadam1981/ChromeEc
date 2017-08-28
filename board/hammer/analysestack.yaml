@@ -1,0 +1,40 @@
+add:
+  queue_advance_head[common/queue.c:105]:
+  - queue_action_null
+  - queue_remove_direct
+  queue_advance_tail[common/queue.c:116]:
+  - queue_action_null
+  - queue_add_direct
+  queue_add_memcpy[common/queue.c:152]:
+  - memcpy_from_usbram
+  queue_add_memcpy[common/queue.c:157]:
+  - memcpy_from_usbram
+  queue_read_safe[common/queue.c:174]:
+  - memcpy_from_usbram
+  queue_read_safe[common/queue.c:179]:
+  - memcpy_from_usbram
+  hook_notify[common/hooks.c:124]:
+  - gpio_init
+  - usb_init
+  - i2c_init
+  - pwm_pin_init
+  - panic_init
+  - pwm_freq_change
+  - usb_release
+  hook_task[common/hooks.c:194]:
+  - keyboard_process_queue
+  - hid_touchpad_process_queue
+  - usb_stream_deferred
+  queue_remove_direct[common/queue_policies.c:27]:
+  - usb_read
+  queue_add_direct[common/queue_policies.c:18]:
+  - update_out_handler
+  - usb_written
+  ep0_rx[chip/stm32/usb.c:137]:
+  - hid_keyboard_iface_request
+  - hid_touchpad_iface_request
+  ep0_tx[chip/stm32/usb.c:283]:
+  - hid_keyboard_iface_request
+  - hid_touchpad_iface_request
+remove:
+- panic_assert_fail
