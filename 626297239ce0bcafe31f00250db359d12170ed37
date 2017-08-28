@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "482d7426_f519a5cb",
+        "filename": "extra/usb_power/convert_servo_ina.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-28T22:02:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c8ddef2_203a3ccf",
+      "range": {
+        "startLine": 18,
+        "startChar": 47,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "626297239ce0bcafe31f00250db359d12170ed37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45bfc08a_e7888561",
         "filename": "extra/usb_power/convert_servo_ina.py",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-26T00:15:07Z",
       "side": 1,
       "message": "Since (iirc) sweetberry config is json object, json.dump will print in similar format. It won\u0027t print in this specific order though. Also since this already works I guess there is no need to change.",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 16
+      },
+      "revId": "626297239ce0bcafe31f00250db359d12170ed37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db9303a0_501cc90b",
+        "filename": "extra/usb_power/convert_servo_ina.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-08-28T22:02:57Z",
+      "side": 1,
+      "message": "Yeah nice to keep it human readable, which json.dump isn\u0027t",
+      "parentUuid": "45bfc08a_e7888561",
       "range": {
         "startLine": 70,
         "startChar": 11,
