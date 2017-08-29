@@ -244,6 +244,41 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	return 0;
 }
 
+#if defined(HAS_TASK_CHARGER) && !defined(HAS_TASK_USB_CHG)
+/*
+ * Even if we don't support BC 1.2, we still need to initialize
+ * non-PD/TYPEC charge suppliers to make charge manager seeded.
+ */
+static void usb_charger_init(void)
+{
+	int i;
+	struct charge_port_info charge_none;
+
+	/* Initialize all non-PD/TYPEC charge suppliers to 0 */
+	charge_none.voltage = 0;
+	charge_none.current = 0;
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
+					     i,
+					     &charge_none);
+
+	}
+}
+DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
+#endif
+
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static int dp_flags[CONFIG_USB_PD_PORT_COUNT];
 /* DP Status VDM as returned by UFP */
