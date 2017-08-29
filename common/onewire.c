@@ -5,8 +5,12 @@
 
 /* 1-wire interface module for Chrome EC */
 
+#include <stddef.h>
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
+#include "hooks.h"
+#include "onewire.h"
 #include "task.h"
 #include "timer.h"
 
@@ -23,7 +27,7 @@
 #define T_W0L   63  /* Write 0 low; 62-120 us */
 #define T_W1L    7  /* Write 1 low; 5-15 us */
 #define T_RL     7  /* Read low; 5-15 us */
-#define T_MSR    9  /* Read sample time; <15 us.  Must be at least 200 ns after
+#define T_MSR   15  /* Read sample time; <15 us.  Must be at least 200 ns after
 		     * T_RL since that's how long the signal takes to be pulled
 		     * up on our board.  */
 
@@ -32,10 +36,9 @@
  */
 static void output0(int usec)
 {
-	gpio_set_flags(GPIO_ONEWIRE,
-		       GPIO_OPEN_DRAIN | GPIO_OUTPUT | GPIO_OUT_LOW);
+	gpio_set_level_tristate(GPIO_ONEWIRE, 1);
 	udelay(usec);
-	gpio_set_flags(GPIO_ONEWIRE, GPIO_INPUT);
+	gpio_set_level_tristate(GPIO_ONEWIRE, 2);
 }
 
 /**
@@ -58,7 +61,7 @@ static int readbit(void)
 	udelay(T_MSR - T_RL);
 
 	/* Read bit */
-	bit = gpio_get_level(GPIO_ONEWIRE);
+	bit = !gpio_get_level(GPIO_ONEWIRE);
 
 	/*
 	 * Enable interrupt as soon as we've read the bit.  The delay to the
@@ -111,7 +114,7 @@ int onewire_reset(void)
 	 */
 	udelay(T_MSP);
 
-	if (gpio_get_level(GPIO_ONEWIRE))
+	if (!gpio_get_level(GPIO_ONEWIRE))
 		return EC_ERROR_UNKNOWN;
 
 	/*
@@ -142,3 +145,75 @@ void onewire_write(int data)
 	for (i = 0; i < 8; i++)
 		writebit((data >> i) & 0x01);  /* LSB first */
 }
+
+static void onewire_send_loop(void);
+DECLARE_DEFERRED(onewire_send_loop);
+
+static void onewire_send_loop(void)
+{
+	static int cnt = 0;
+	static int errreset = 0;
+	static int errdata = 0;
+	int rv;
+	int data;
+	gpio_disable_interrupt(GPIO_ONEWIRE);
+	rv = onewire_reset();
+	if (rv) {
+		errreset++;
+		goto out;
+	}
+
+	onewire_write(cnt & 0xff);
+
+	data = onewire_read();
+	ccprintf("wrote %02x, read %02x (%02x)\n",
+		cnt & 0xff, data, ~data & 0xff);
+
+	gpio_enable_interrupt(GPIO_ONEWIRE);
+
+	if ((cnt & 0xff) != (~data & 0xff)) {
+		errdata++;
+	}
+
+out:
+	cnt++;
+	ccprintf("1wire errors %d-%d/%d\n", errreset, errdata, cnt);
+	hook_call_deferred(&onewire_send_loop_data, 500*MSEC);
+}
+
+static int command_onewire_send(int argc, char **argv)
+{
+	hook_call_deferred(&onewire_send_loop_data, 500*MSEC);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(onewire, command_onewire_send,
+		NULL, "Send onewire data");
+
+/* slow functions [9.995142 high=71204, low=46948] */
+/* fast functions [7.665873 high=1337, low=2670] */
+
+static int command_udelay_test(int argc, char **argv)
+{
+	int i;
+	const int loop = 1000;
+	timestamp_t t1, t2, t3;
+
+	interrupt_disable();
+	t1 = get_time();
+	for (i = 0; i < loop; i++) {
+		gpio_set_level_tristate(GPIO_ONEWIRE, 1);
+	}
+	t2 = get_time();
+	for (i = 0; i < loop; i++) {
+		gpio_set_level_tristate(GPIO_ONEWIRE, 2);
+	}
+	t3 = get_time();
+	interrupt_enable();
+
+	ccprints("high=%d, low=%d", t3.le.lo-t2.le.lo, t2.le.lo-t1.le.lo);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(udelay, command_udelay_test,
+		NULL, "udelay");

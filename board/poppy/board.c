@@ -203,8 +203,9 @@ static void base_detect_change(enum base_status status)
 	if (current_base_status == status)
 		return;
 
-	CPRINTS("Base %sconnected", connected ? "" : "not ");
-	gpio_set_level(GPIO_PP3300_DX_BASE, connected);
+	CPRINTS("Base %sconnected (not doing anything)", connected ? "" : "not ");
+	//gpio_set_level(GPIO_PP3300_DX_BASE, connected);
+	gpio_set_level(GPIO_PP3300_DX_BASE, 1);
 	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 	tablet_set_mode(!connected);
 	current_base_status = status;
