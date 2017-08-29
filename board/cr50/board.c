@@ -211,13 +211,13 @@ const struct strap_desc strap_regs[] = {
 
 #define BOARD_PROPERTIES_DEFAULT (BOARD_SLAVE_CONFIG_I2C | BOARD_USE_PLT_RESET)
 static struct board_cfg board_cfg_table[] = {
-	/* SPI Variants: DIOA12 = 1M PD, DIOA6 = 1M PD */
+	/* SPI Variants: DIOA12 = 5k PD, DIOA6 = 5k PD */
 	/* Kevin/Gru: DI0A9 = 5k PD, DIOA1 = 1M PU */
 	{ 0x02, BOARD_SLAVE_CONFIG_SPI | BOARD_NEEDS_SYS_RST_PULL_UP },
 	/* Poppy: DI0A9 = 1M PU, DIOA1 = 1M PU */
 	{ 0x0A, BOARD_SLAVE_CONFIG_SPI | BOARD_USE_PLT_RESET },
 
-	/* I2C Variants: DIOA9 = 1M PD, DIOA1 = 1M PD */
+	/* I2C Variants: DIOA9 = 5k PD, DIOA1 = 5k PD */
 	/* Reef/Eve: DIOA12 = 5k PD, DIOA6 = 1M PU */
 	{ 0x20, BOARD_SLAVE_CONFIG_I2C | BOARD_USE_PLT_RESET },
 	/* Rowan: DIOA12 = 5k PD, DIOA6 = 5k PU */
