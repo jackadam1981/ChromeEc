@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95588d1c_c12d121e",
+        "filename": "board/kevin/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-29T18:16:22Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be just an \"#else\"?",
+      "range": {
+        "startLine": 104,
+        "startChar": 3,
+        "endLine": 104,
+        "endChar": 24
+      },
+      "revId": "b81da6e6147775fea68f65574bdb767a6c44f9e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
