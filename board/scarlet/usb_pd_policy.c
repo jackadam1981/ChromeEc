@@ -38,8 +38,8 @@ const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
 
 const uint32_t pd_snk_pdo[] = {
 		PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
-		PDO_BATT(4750, 21000, 15000),
-		PDO_VAR(4750, 21000, 3000),
+		PDO_BATT(4750, 12000, 15000),
+		PDO_VAR(4750, 12000, 3000),
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
@@ -243,6 +243,41 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 
 	return 0;
 }
+
+#if defined(HAS_TASK_CHARGER) && !defined(HAS_TASK_USB_CHG)
+/*
+ * Even if we don't support BC 1.2, we still need to initialize
+ * non-PD/TYPEC charge suppliers to make charge manager seeded.
+ */
+static void usb_charger_init(void)
+{
+	int i;
+	struct charge_port_info charge_none;
+
+	/* Initialize all non-PD/TYPEC charge suppliers to 0 */
+	charge_none.voltage = 0;
+	charge_none.current = 0;
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
+		charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
+					     i,
+					     &charge_none);
+		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
+					     i,
+					     &charge_none);
+
+	}
+}
+DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
+#endif
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 static int dp_flags[CONFIG_USB_PD_PORT_COUNT];
