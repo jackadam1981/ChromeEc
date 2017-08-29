@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "feede8b0_c7c17cdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-29T17:04:18Z",
+      "side": 1,
+      "message": "yes, trunks_send --raw allows to do just that.",
+      "parentUuid": "24d00019_ebe09d40",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 39
+      },
+      "revId": "d6fd5244019964c102bb3e1f3bb486c9f2190ba3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "316b1e47_849aaf83",
         "filename": "board/cr50/board.c",
         "patchSetId": 1
