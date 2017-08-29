@@ -22,6 +22,30 @@
       "revId": "6092cb5e250d8ca4c1f24f6ef75fdf6c00b3c39e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf3776c_2739c5b5",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-29T09:50:11Z",
+      "side": 1,
+      "message": "This tries to remove and warn the invalid path(remove_path) containing duplicated functions, like A-\u003eA-\u003eA or A-\u003eB-\u003eB. But it still allows something like A-\u003eB-\u003eA. Not the duplication between invalid paths (the variable name is really confusing)\n\nThe reason of this restriction is because in the following matching algorithm(code 1056~1074), when the suffix of traversing path doesn\u0027t match the invalid path, to keep the matching processing going, we have to find the length of longest common suffix of the current traversing path and the prefix of the invalid path. This can be done efficiently by KMP algorithm, but not implemented yet.\n\nTo make it simple, when the current suffix mismatches to the prefix of invalid path, the length of longest common suffix and prefix is always 0 or 1 if we assume the invalid path has this restriction and can be decided easily.",
+      "parentUuid": "6b7d30ff_6ff28089",
+      "range": {
+        "startLine": 909,
+        "startChar": 0,
+        "endLine": 927,
+        "endChar": 40
+      },
+      "revId": "6092cb5e250d8ca4c1f24f6ef75fdf6c00b3c39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
