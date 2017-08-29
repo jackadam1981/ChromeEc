@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fa402d73_443b18b5",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1913,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-29T00:19:31Z",
+      "side": 1,
+      "message": "I wanted to block the vendor command over USB, but allow it via the TPM interface. If one is connected via USB, one could just use the console command to view the state.",
+      "parentUuid": "8d01df84_38c587d6",
+      "range": {
+        "startLine": 1913,
+        "startChar": 23,
+        "endLine": 1913,
+        "endChar": 44
+      },
+      "revId": "fe0ca09e3d688dae87b1b08cf7e654cc9baec906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a7f773e_75fcf42b",
         "filename": "include/case_closed_debug.h",
         "patchSetId": 2
