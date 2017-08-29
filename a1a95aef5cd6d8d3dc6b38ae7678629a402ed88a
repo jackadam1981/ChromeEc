@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "794ed8cf_afc9d4a5",
+        "filename": "common/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-29T09:18:19Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you are trying to workaround here ?\nThat\u0027s the case where the touchpad firmware file timestamped was touched but the content is still the same (while a build already exists). Is this frequent enough to add 5 lines here ?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 0
+      },
+      "revId": "a1a95aef5cd6d8d3dc6b38ae7678629a402ed88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae532b3_d947f254",
+        "filename": "common/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-29T09:18:19Z",
+      "side": 1,
+      "message": "What is the advantage of including the binary over just having the gen_touchpad_hash tool generating some .h C file with a structure containing the hashes and using/including it directly in the code ?",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 39
+      },
+      "revId": "a1a95aef5cd6d8d3dc6b38ae7678629a402ed88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66e8222e_d80083c7",
+        "filename": "util/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-29T09:18:19Z",
+      "side": 1,
+      "message": "Given the utility program has no dependency on our other C files, writing it in C seems to make this more complicated for very little benefit (eg over having a 5-line python script",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "a1a95aef5cd6d8d3dc6b38ae7678629a402ed88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
