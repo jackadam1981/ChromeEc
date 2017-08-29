@@ -10,6 +10,8 @@
 
 GPIO_INT(TOUCHPAD_INT, PIN(B, 8), GPIO_INT_FALLING, elan_tp_interrupt)
 
+GPIO_INT(BASE_DET, PIN(A, 15), GPIO_INT_BOTH, onewire_slave_interrupt)
+
 /* Keyboard inputs */
 #define GPIO_KB_INPUT  (GPIO_INPUT | GPIO_PULL_UP | GPIO_INT_BOTH)
 #define GPIO_KB_OUTPUT GPIO_ODR_HIGH
@@ -21,7 +23,8 @@ GPIO_INT(KB_IN03, PIN(A, 7),  GPIO_KB_INPUT, keyboard_raw_gpio_interrupt)
 GPIO_INT(KB_IN04, PIN(B, 12), GPIO_KB_INPUT, keyboard_raw_gpio_interrupt)
 GPIO_INT(KB_IN05, PIN(B, 2),  GPIO_KB_INPUT, keyboard_raw_gpio_interrupt)
 GPIO_INT(KB_IN06, PIN(B, 14), GPIO_KB_INPUT, keyboard_raw_gpio_interrupt)
-GPIO_INT(KB_IN07, PIN(B, 15), GPIO_KB_INPUT, keyboard_raw_gpio_interrupt)
+/* Broken: same number as base detection. */
+GPIO(KB_IN07, PIN(B, 15), GPIO_INPUT | GPIO_PULL_UP)
 
 /* Do not forget to update KB_OUT_PORT_LIST to match this. */
 GPIO(KB_OUT00,			PIN(B, 1),  GPIO_KB_OUTPUT)
@@ -48,8 +51,6 @@ GPIO(EN_PP3300_TP_ODL,		PIN(A, 14), GPIO_OUT_LOW)
 GPIO(KEYBOARD_BACKLIGHT,	PIN(B, 9), GPIO_OUT_LOW)
 
 GPIO(WP_L,			PIN(A, 13), GPIO_INPUT | GPIO_PULL_UP)
-
-GPIO(BASE_DET,			PIN(A, 15), GPIO_INPUT)
 
 /* Unimplemented signals since we are not an EC */
 UNIMPLEMENTED(ENTERING_RW)

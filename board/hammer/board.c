@@ -13,6 +13,7 @@
 #include "i2c.h"
 #include "keyboard_raw.h"
 #include "keyboard_scan.h"
+#include "onewire_slave.h"
 #include "printf.h"
 #include "pwm.h"
 #include "pwm_chip.h"
@@ -108,7 +109,7 @@ struct keyboard_scan_config keyscan_config = {
  */
 static void board_init(void)
 {
-
+	gpio_enable_interrupt(GPIO_BASE_DET);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

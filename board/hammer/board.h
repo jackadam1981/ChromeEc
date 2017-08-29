@@ -207,6 +207,10 @@
 #undef CONFIG_ROLLBACK_UPDATE
 #endif
 
+#define CONFIG_CMD_GPIO_EXTENDED
+#define CONFIG_ONEWIRE_SLAVE
+#define GPIO_ONEWIRE GPIO_BASE_DET
+
 #ifndef __ASSEMBLER__
 
 /* Timer selection */

@@ -81,6 +81,7 @@ common-$(CONFIG_LPC)+=acpi.o port80.o ec_features.o
 common-$(CONFIG_MAG_CALIBRATE)+= mag_cal.o math_util.o vec3.o mat33.o mat44.o
 common-$(CONFIG_MKBP_EVENT)+=mkbp_event.o
 common-$(CONFIG_ONEWIRE)+=onewire.o
+common-$(CONFIG_ONEWIRE_SLAVE)+=onewire_slave.o
 common-$(CONFIG_PHYSICAL_PRESENCE)+=physical_presence.o
 common-$(CONFIG_POWER_BUTTON)+=power_button.o
 common-$(CONFIG_POWER_BUTTON_X86)+=power_button_x86.o
