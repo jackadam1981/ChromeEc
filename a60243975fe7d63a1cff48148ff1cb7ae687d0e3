@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a06dd839_f330a50f",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-29T16:28:54Z",
+      "side": 1,
+      "message": "Although this function does nothing for the other port, it might be better to call it for each port (for (i \u003d 0; i \u003c USB_PD_PORT_COUNT; ...)) anyway, in case board_set_tcpc_power_mode() changes. Also it\u0027s easier to understand, code readers might question whether this function really resets both PD MCUs.",
+      "range": {
+        "startLine": 356,
+        "startChar": 1,
+        "endLine": 356,
+        "endChar": 51
+      },
+      "revId": "a60243975fe7d63a1cff48148ff1cb7ae687d0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
