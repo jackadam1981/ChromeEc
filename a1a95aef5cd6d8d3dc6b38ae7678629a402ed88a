@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "989e6515_475018d3",
+        "filename": "common/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-29T09:23:55Z",
+      "side": 1,
+      "message": "From the TEST\u003d in the next CL, I guess that the touchpad firmware file is not really part of the chroot/versioned build filesystem, so it can change under our feet.\nMaybe it should be submitted somewhere in a source repository (not necessarily here in the EC repo) if it is not already, and have the default path to it in the chroot set.",
+      "parentUuid": "794ed8cf_afc9d4a5",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 0
+      },
+      "revId": "a1a95aef5cd6d8d3dc6b38ae7678629a402ed88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cae532b3_d947f254",
         "filename": "common/build.mk",
         "patchSetId": 4
