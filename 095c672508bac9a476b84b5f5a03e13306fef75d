@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "be750665_8d54f210",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-29T18:24:00Z",
+      "side": 1,
+      "message": "Right, I\u0027ll add the init for CHARGE_SUPPLIER_VBUS here.",
+      "parentUuid": "726e08b0_582004f5",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 24
+      },
+      "revId": "095c672508bac9a476b84b5f5a03e13306fef75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04332e7c_1094224d",
         "filename": "board/scarlet/usb_pd_policy.c",
         "patchSetId": 1
@@ -105,6 +129,30 @@
       "writtenOn": "2017-08-29T16:14:12Z",
       "side": 1,
       "message": "I suggest to do all of this initialization in board_init(), no need to add an extra HOOK_INIT function. charge_manager needs the PD tasks to run before selecting an input port anyway, so there is no benefit to running this code before HOOK_PRIO_DEFAULT.",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 77
+      },
+      "revId": "095c672508bac9a476b84b5f5a03e13306fef75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15787689_adb86fca",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-29T18:24:00Z",
+      "side": 1,
+      "message": "OK, I\u0027ll move this to board_init().",
+      "parentUuid": "04332e7c_1094224d",
       "range": {
         "startLine": 279,
         "startChar": 0,
