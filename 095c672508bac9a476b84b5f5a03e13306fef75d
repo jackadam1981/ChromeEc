@@ -91,6 +91,29 @@
       "revId": "095c672508bac9a476b84b5f5a03e13306fef75d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04332e7c_1094224d",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-29T16:14:12Z",
+      "side": 1,
+      "message": "I suggest to do all of this initialization in board_init(), no need to add an extra HOOK_INIT function. charge_manager needs the PD tasks to run before selecting an input port anyway, so there is no benefit to running this code before HOOK_PRIO_DEFAULT.",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 77
+      },
+      "revId": "095c672508bac9a476b84b5f5a03e13306fef75d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
