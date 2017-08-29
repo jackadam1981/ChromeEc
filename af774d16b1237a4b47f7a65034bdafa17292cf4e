@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "62b4a4e4_d6bc1026",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-29T22:31:00Z",
+      "side": 1,
+      "message": "My changes take a substantial amount of code out of board.c.\n\nRecovery button has nothing to do with RDD.  It\u0027s used by verified boot on the AP.",
+      "parentUuid": "9799fe2d_e87f4d15",
+      "revId": "af774d16b1237a4b47f7a65034bdafa17292cf4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82c80226_2252d4f1",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
