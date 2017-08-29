@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6847345a_f5875456",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-29T20:30:02Z",
+      "side": 1,
+      "message": "I know you are just copying the comment, but this sounds a bit cryptic: do you mean to say that Cr50 should not fall into deep sleep when the AP is in S0? Why is it important to mention here?\n\nOr do I misunderstand this?",
+      "range": {
+        "startLine": 515,
+        "startChar": 15,
+        "endLine": 516,
+        "endChar": 21
+      },
+      "revId": "e82a6430ce3d63dffb431c7cee2bd4cd2206dc33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
