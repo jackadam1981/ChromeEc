@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7d39339_2e9e605d",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-29T16:26:49Z",
+      "side": 1,
+      "message": "Seems like a BUILD_ASSERT() would be handy here too, to make sure this list is the right size.",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "0138acb7bcdcfd12f21068777ab548221c41b5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "961305ec_09deb2f3",
+        "filename": "common/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-29T16:26:49Z",
+      "side": 1,
+      "message": "Use ARRAY_SIZE()\n\nAlso,\n\nBUILD_ASSERT(ESPI_MAX_VW \u003d\u003d VW_PLUS_GPIO_COUNT - VW_SIGNAL_BASE)\n\nto catch errors if VWs are added/removed.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 60
+      },
+      "revId": "0138acb7bcdcfd12f21068777ab548221c41b5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb101035_79009241",
+        "filename": "include/espi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-29T16:26:49Z",
+      "side": 1,
+      "message": "Add at the end: VW_SIGNAL_PLUS_GPIO_COUNT",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "0138acb7bcdcfd12f21068777ab548221c41b5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45f1ad4f_3a4607b9",
+        "filename": "include/espi.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-29T16:26:49Z",
+      "side": 1,
+      "message": "copy/paste error?",
+      "range": {
+        "startLine": 78,
+        "startChar": 26,
+        "endLine": 78,
+        "endChar": 53
+      },
+      "revId": "0138acb7bcdcfd12f21068777ab548221c41b5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d3d25bc_0244df97",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-29T16:26:49Z",
+      "side": 1,
+      "message": "Looks like it\u0027d be useful to have a signal_is_vw() function",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 33
+      },
+      "revId": "0138acb7bcdcfd12f21068777ab548221c41b5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
