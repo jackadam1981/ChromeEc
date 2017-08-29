@@ -69,6 +69,53 @@
       "revId": "53d8867e53b82b8a72baacd4538bfbec17b02b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "923260fb_9316a8b8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-29T15:02:31Z",
+      "side": 1,
+      "message": "\u003e this should be okay because it only takes affect after an explicit contract is established.\n\nI\u0027m not sure what this is really better.\nFor example, can\u0027t you ignore an ATTENTION message for nearly 20ms and break the DP MST feature ?\n\n\u003e Is it better to always sleep the allotted time, or wake up if another message is received before the timeout? Vincent what do you think?\n\nI would be better to not block the PD state machine, something similar to what we did for VDM (see pd_send_vdm/queue_vdm)",
+      "parentUuid": "d8bc0060_dcc0ea81",
+      "range": {
+        "startLine": 481,
+        "startChar": 3,
+        "endLine": 481,
+        "endChar": 24
+      },
+      "revId": "53d8867e53b82b8a72baacd4538bfbec17b02b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61bc04f8_7d3011a5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-29T15:02:31Z",
+      "side": 1,
+      "message": "How did you test this ?\nthis looks broken for VDMs (ie we will never retry ?) which are likely the main use-case.",
+      "range": {
+        "startLine": 494,
+        "startChar": 5,
+        "endLine": 494,
+        "endChar": 15
+      },
+      "revId": "53d8867e53b82b8a72baacd4538bfbec17b02b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
