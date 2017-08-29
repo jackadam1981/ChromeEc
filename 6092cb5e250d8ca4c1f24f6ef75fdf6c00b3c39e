@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b7d30ff_6ff28089",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-29T09:07:41Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand why you do it this way and keep the limitation about detecting duplicates.\nThe remove_list stays fairly small (for the build system), why not de-duplicating it fully either by just converting it to a set() or sorting it  ?",
+      "range": {
+        "startLine": 909,
+        "startChar": 0,
+        "endLine": 927,
+        "endChar": 40
+      },
+      "revId": "6092cb5e250d8ca4c1f24f6ef75fdf6c00b3c39e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
