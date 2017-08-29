@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a52fb10b_32ae625c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-08-29T16:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32a0673b_e4d2a7e4",
+      "revId": "65b9199ec28b94be472df1ddf1a6cd5394f94a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95126f8b_9b3625a4",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-08-29T00:22:59Z",
       "side": 1,
       "message": "On soraka:\n# ectool motionsense odr 2 10000 \n# ectool motionsense\noutput matches:\n# grep . /sys/bus/iio/devices/*/in_*_raw",
+      "revId": "65b9199ec28b94be472df1ddf1a6cd5394f94a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5500376d_51cec45a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-08-29T16:00:55Z",
+      "side": 1,
+      "message": "added",
+      "parentUuid": "95126f8b_9b3625a4",
       "revId": "65b9199ec28b94be472df1ddf1a6cd5394f94a1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "fdb4777e_4a0c0c19",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-08-29T16:00:55Z",
+      "side": 1,
+      "message": "the second gyro will not be reported with the LPC method. chromebooks only have one gyro anyway.",
+      "parentUuid": "dfbf5efe_cb47c904",
+      "range": {
+        "startLine": 624,
+        "startChar": 30,
+        "endLine": 624,
+        "endChar": 43
+      },
+      "revId": "65b9199ec28b94be472df1ddf1a6cd5394f94a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0dbb0682_08576733",
         "filename": "common/motion_sense.c",
         "patchSetId": 1
@@ -70,6 +130,30 @@
       "writtenOn": "2017-08-29T00:22:59Z",
       "side": 1,
       "message": "that space isn\u0027t necessary.",
+      "range": {
+        "startLine": 627,
+        "startChar": 52,
+        "endLine": 627,
+        "endChar": 53
+      },
+      "revId": "65b9199ec28b94be472df1ddf1a6cd5394f94a1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c39de5_2789aadc",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-08-29T16:00:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dbb0682_08576733",
       "range": {
         "startLine": 627,
         "startChar": 52,
