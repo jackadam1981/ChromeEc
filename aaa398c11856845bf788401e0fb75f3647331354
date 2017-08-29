@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3231f28e_7ad58467",
+        "filename": "common/ec_features.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-29T15:47:01Z",
+      "side": 1,
+      "message": "It would be nice if this pointed to a bug.  Why do we need this hack?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "aaa398c11856845bf788401e0fb75f3647331354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45fa300a_32445c7e",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -13,6 +36,30 @@
       "writtenOn": "2017-08-29T15:12:25Z",
       "side": 1,
       "message": "ec_commands.h is the ABI between the EC and the AP.\nPlease put the internal EC functions somewhere else.",
+      "range": {
+        "startLine": 1101,
+        "startChar": 0,
+        "endLine": 1103,
+        "endChar": 34
+      },
+      "revId": "aaa398c11856845bf788401e0fb75f3647331354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b76b6ad4_ab61834d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-29T15:47:01Z",
+      "side": 1,
+      "message": "host_command.h?",
+      "parentUuid": "45fa300a_32445c7e",
       "range": {
         "startLine": 1101,
         "startChar": 0,
