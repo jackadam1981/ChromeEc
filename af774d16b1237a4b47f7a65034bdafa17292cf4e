@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82c80226_2252d4f1",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1882,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-29T16:17:32Z",
+      "side": 1,
+      "message": "console_is_restricted()?",
+      "range": {
+        "startLine": 1882,
+        "startChar": 6,
+        "endLine": 1882,
+        "endChar": 59
+      },
+      "revId": "af774d16b1237a4b47f7a65034bdafa17292cf4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "922c9298_64bd84c6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1890,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-29T16:17:32Z",
+      "side": 1,
+      "message": "Can you just use parse_bool here?",
+      "range": {
+        "startLine": 1885,
+        "startChar": 2,
+        "endLine": 1890,
+        "endChar": 26
+      },
+      "revId": "af774d16b1237a4b47f7a65034bdafa17292cf4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
