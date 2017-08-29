@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c266b856_edffcfe3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1855,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-29T17:00:32Z",
+      "side": 1,
+      "message": "in a way it deals with debugging which is enabled by RDD, but if you feel that it is not a strong enough relationship feel free to put this in wp.c or a standalone file, call it recovery.c or some such.",
+      "parentUuid": "f040c890_12c9a51e",
+      "revId": "af774d16b1237a4b47f7a65034bdafa17292cf4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82c80226_2252d4f1",
         "filename": "board/cr50/board.c",
         "patchSetId": 3
