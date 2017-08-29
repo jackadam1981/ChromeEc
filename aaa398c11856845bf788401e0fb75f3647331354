@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45fa300a_32445c7e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-29T15:12:25Z",
+      "side": 1,
+      "message": "ec_commands.h is the ABI between the EC and the AP.\nPlease put the internal EC functions somewhere else.",
+      "range": {
+        "startLine": 1101,
+        "startChar": 0,
+        "endLine": 1103,
+        "endChar": 34
+      },
+      "revId": "aaa398c11856845bf788401e0fb75f3647331354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
