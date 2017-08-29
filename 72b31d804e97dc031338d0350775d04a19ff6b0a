@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bc934f0_04787633",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-08-29T15:22:29Z",
+      "side": 1,
+      "message": "please add a bit more substance to the commit message, what is the reason for doing this, how other parts of the system need to change.\n\nHow is this going to affect Kevin (which does not have a Cr50 and as such does not need this change)? The test should demonstrate that devices in question are still fully operational after this change.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "72b31d804e97dc031338d0350775d04a19ff6b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
