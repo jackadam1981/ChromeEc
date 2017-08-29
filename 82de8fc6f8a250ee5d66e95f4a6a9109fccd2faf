@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6654e7d2_abc4e1f2",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-29T17:17:50Z",
+      "side": 1,
+      "message": "Good point. I think the max power should be 3A * 13V(max voltage) \u003d 39W.",
+      "parentUuid": "67c04517_bbb22bcb",
+      "range": {
+        "startLine": 129,
+        "startChar": 8,
+        "endLine": 129,
+        "endChar": 23
+      },
+      "revId": "82de8fc6f8a250ee5d66e95f4a6a9109fccd2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "537d433d_eac1c61a",
         "filename": "board/scarlet/usb_pd_policy.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-29T16:38:26Z",
       "side": 1,
       "message": "I think this max_mv parameter should be the maximum voltage the board can support (~14V OVP, as you mentioned).",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "82de8fc6f8a250ee5d66e95f4a6a9109fccd2faf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b114d6b_af16cfc7",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-29T17:17:50Z",
+      "side": 1,
+      "message": "According to rt9466 datasheet, the on-chip VBUS_OVP can range from 13.5V to 15.5V. So maybe 13V is a better option here.",
+      "parentUuid": "537d433d_eac1c61a",
       "range": {
         "startLine": 41,
         "startChar": 17,
