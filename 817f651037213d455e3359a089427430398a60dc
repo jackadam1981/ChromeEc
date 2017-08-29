@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dede6399_1f91e805",
+        "filename": "extra/stack_analyzer/stack_analyzer_unittest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-29T01:56:52Z",
+      "side": 1,
+      "message": "Could you fix the lint warnings from \"cros lint extra/stack_analyzer/stack_analyzer_unittest.py\" ?\n```\n************* Module stack_analyzer_unittest\nC:554, 0: Wrong hanging indentation.\n            \u0027Warning: Annotation file fake does not exist.\u0027)\n            ^ | (bad-continuation)\nC:563, 0: Wrong hanging indentation.\n            \u0027Error: Failed to open annotation file fake.\u0027)\n            ^ | (bad-continuation)\nC:571, 0: Wrong hanging indentation.\n            \u0027Error: Failed to parse annotation file fake.\u0027)\n            ^ | (bad-continuation)\nC:575, 0: Wrong continued indentation.\n                            mock.mock_open(read_data\u003d\u0027\u0027)) as open_mock:\n                        |   ^ (bad-continuation)\nC:578, 0: Wrong hanging indentation.\n            \u0027Error: Invalid annotation file fake.\u0027)\n            ^ | (bad-continuation)\n09:48:52: ERROR: linter found errors in 1 files\n```\n\n```\nprint_mock.assert_any_call(\n__\u0027Warning: Annotation file fake does not exist.\u0027)\n```\nshould be\n```\nprint_mock.assert_any_call(\n____\u0027Warning: Annotation file fake does not exist.\u0027)\n```\n\n```\nwith mock.patch(\u0027__builtin__.open\u0027,\n                    mock.mock_open(read_data\u003d\u0027\u0027)) as open_mock:\n```\nshould be\n```\nwith mock.patch(\u0027__builtin__.open\u0027,\n                 mock.mock_open(read_data\u003d\u0027\u0027)) as open_mock:\n```",
+      "revId": "817f651037213d455e3359a089427430398a60dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
