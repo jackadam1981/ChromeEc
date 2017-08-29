@@ -188,6 +188,24 @@
       "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0d61795_9790e8a6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-08-29T14:44:41Z",
+      "side": 1,
+      "message": "I folded ec_features.h back into ec_commands.h",
+      "parentUuid": "fde2f9fa_c7138dd6",
+      "revId": "edc42fd3ee763cd838c09da8290bfab5a5cb0605",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
