@@ -22,6 +22,30 @@
       "revId": "72b31d804e97dc031338d0350775d04a19ff6b0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e08eb3de_ad6e1c5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-29T18:00:11Z",
+      "side": 1,
+      "message": "I think it would have the effect of burning a little more power for kevin. (Not sure of the exact numbers). I\u0027ve restructured the changes to leave kevin alone.",
+      "parentUuid": "7bc934f0_04787633",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "72b31d804e97dc031338d0350775d04a19ff6b0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
