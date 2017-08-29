@@ -192,6 +192,14 @@ int gpio_get_default_flags(enum gpio_signal signal);
 void gpio_set_level(enum gpio_signal signal, int value);
 
 /**
+ * Fast function to set gpio as input/output.
+ *
+ * @param signal	Signal to set
+ * @param value		0 - out low, 1 - out high, 2 - Hi-Z
+ */
+void gpio_set_level_tristate(enum gpio_signal signal, int value);
+
+/**
  * Reset the GPIO flags and alternate function state
  *
  * This returns the GPIO to it's default state of being a GPIO (not

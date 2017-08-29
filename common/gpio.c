@@ -107,6 +107,23 @@ int gpio_config_pin(enum module_id id, enum gpio_signal signal, int enable)
 				enable);
 }
 
+/*
+ * Default function, chips can provide a faster implementation, that may not
+ * guarantee to reset all flags.
+ */
+__attribute__((weak))
+void gpio_set_level_tristate(enum gpio_signal signal, int value)
+{
+	int flags = GPIO_INPUT;
+
+	if (value == 0)
+		flags = GPIO_OUTPUT | GPIO_OUT_LOW;
+	else if (value == 1)
+		flags = GPIO_OUTPUT | GPIO_OUT_HIGH;
+
+	gpio_set_flags(signal, flags);
+}
+
 void gpio_set_flags(enum gpio_signal signal, int flags)
 {
 	const struct gpio_info *g = gpio_list + signal;

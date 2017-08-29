@@ -228,6 +228,27 @@ void gpio_set_level(enum gpio_signal signal, int value)
 		NPCX_PDOUT(gpio_list[signal].port) &= ~gpio_list[signal].mask;
 }
 
+/*
+ * Fast function to set gpio as input/output.
+ * 0 - out low, 1 - out high, 2 - Hi-Z
+ */
+void gpio_set_level_tristate(enum gpio_signal signal, int value)
+{
+	uint32_t port = gpio_list[signal].port;
+	uint32_t mask = gpio_list[signal].mask;
+
+	if (value == 2) {
+		NPCX_PDIR(port) &= ~mask;
+	} else {
+		if (value == 1)
+			NPCX_PDOUT(port) |=  mask;
+		else
+			NPCX_PDOUT(port) &= ~mask;
+
+		NPCX_PDIR(port) |= mask;
+	}
+}
+
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
 	/* If all GPIO pins are locked, return directly */
