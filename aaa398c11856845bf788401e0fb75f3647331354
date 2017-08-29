@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8e25a9c_7c2181f5",
+        "filename": "common/ec_features.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-08-29T17:52:07Z",
+      "side": 1,
+      "message": "no idea. it\u0027s copied over from host_command.c.\nYou even touched the comment in fe9e3bf565, but originally it came from Gwendal in 17487510e3e2f91f44",
+      "parentUuid": "3231f28e_7ad58467",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 40
+      },
+      "revId": "aaa398c11856845bf788401e0fb75f3647331354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45fa300a_32445c7e",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -69,6 +93,30 @@
       "revId": "aaa398c11856845bf788401e0fb75f3647331354",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08e30c9a_4796c362",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-08-29T17:52:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b76b6ad4_ab61834d",
+      "range": {
+        "startLine": 1101,
+        "startChar": 0,
+        "endLine": 1103,
+        "endChar": 34
+      },
+      "revId": "aaa398c11856845bf788401e0fb75f3647331354",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
