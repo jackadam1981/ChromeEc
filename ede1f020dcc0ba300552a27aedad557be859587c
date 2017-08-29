@@ -22,6 +22,30 @@
       "revId": "ede1f020dcc0ba300552a27aedad557be859587c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2472ee1_ede60453",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1649,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-29T04:54:29Z",
+      "side": 1,
+      "message": "the delay is definitely TCPC chip specific, and unlikely to be board specific.\n\nthe delay exists in board_reset_pd_mcu(void), but we only want to\nreset a specific pd_mcu (TCPC).  this is the wrapper around\nset_tcpc_power_mode(port) that takes care of the delay.\n\ni\u0027m not too confident about adding the delay to board_set_tcpc_power_mode() because it\u0027ll slow down all\nof its callers.  maybe that\u0027s OK, and maybe that\u0027s the\ncorrect thing to do to meet timing requirements.\n\npd_restart_tcpc() is such a rare and slow code path in any\ncase where i didn\u0027t think about it very much.",
+      "parentUuid": "708c44b4_15a41d38",
+      "range": {
+        "startLine": 1649,
+        "startChar": 2,
+        "endLine": 1649,
+        "endChar": 13
+      },
+      "revId": "ede1f020dcc0ba300552a27aedad557be859587c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
