@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "74948741_be912a4e",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-29T23:39:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c70df766_5a6f7819",
+      "range": {
+        "startLine": 130,
+        "startChar": 30,
+        "endLine": 130,
+        "endChar": 35
+      },
+      "revId": "0c1bc5813ed873d12c5aa7fcb7987c24efb5b41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "372a4f62_484fdce9",
         "filename": "board/scarlet/usb_pd_policy.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-29T22:11:30Z",
       "side": 1,
       "message": "these include tolerance, so this can be right up to the edge of 13500.",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "0c1bc5813ed873d12c5aa7fcb7987c24efb5b41d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "387e7fd4_b9b51696",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-29T23:39:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "372a4f62_484fdce9",
       "range": {
         "startLine": 41,
         "startChar": 17,
