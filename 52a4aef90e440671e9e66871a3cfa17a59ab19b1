@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66b5b8d2_f38d0f71",
+        "filename": "board/scarlet/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-08-29T16:41:57Z",
+      "side": 1,
+      "message": "Does this board support non-USB-C chargers? If not then we don\u0027t want to enable charge ramping, we can precisely identify the capability of the USB-C / PD charger already, so no need to ramp.",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "52a4aef90e440671e9e66871a3cfa17a59ab19b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
