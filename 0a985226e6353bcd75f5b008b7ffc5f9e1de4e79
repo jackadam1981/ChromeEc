@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a2130bc_507be7c9",
+        "filename": "board/cr50/recovery_button.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-29T20:56:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "680f3b96_101a7059",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 22
+      },
+      "revId": "0a985226e6353bcd75f5b008b7ffc5f9e1de4e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9ba617a_cfae2853",
         "filename": "board/cr50/recovery_button.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "0a985226e6353bcd75f5b008b7ffc5f9e1de4e79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd00d59_884fd618",
+        "filename": "board/cr50/recovery_button.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-29T20:56:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ba617a_cfae2853",
+      "range": {
+        "startLine": 52,
+        "startChar": 19,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "0a985226e6353bcd75f5b008b7ffc5f9e1de4e79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
