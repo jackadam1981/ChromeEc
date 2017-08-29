@@ -71,6 +71,32 @@ int gpio_get_flags_by_mask(uint32_t port, uint32_t mask)
 	return flags;
 }
 
+/*
+ * Fast function to set gpio as input/output.
+ * 0 - out low, 1 - out high, 2 - Hi-Z
+ */
+void gpio_set_level_tristate(enum gpio_signal signal, int value)
+{
+	uint32_t port = gpio_list[signal].port;
+	uint32_t mask = gpio_list[signal].mask;
+
+	/* Bitmask for registers with 2 bits per GPIO pin */
+	const uint32_t mask2 = expand_to_2bit_mask(mask);
+	uint32_t val;
+
+	val = STM32_GPIO_MODER(port) & ~mask2;
+	if (value != 2) {
+		if (value == 1)
+			STM32_GPIO_BSRR(port) = mask;
+		else
+			STM32_GPIO_BSRR(port) = mask << 16;
+
+		/* General purpose, MODE = 01 */
+		val |= 0x55555555 & mask2;
+	}
+	STM32_GPIO_MODER(port) = val;
+}
+
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
 	/* Bitmask for registers with 2 bits per GPIO pin */
