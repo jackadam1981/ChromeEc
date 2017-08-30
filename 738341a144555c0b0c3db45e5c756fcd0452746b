@@ -70,6 +70,30 @@
       "revId": "738341a144555c0b0c3db45e5c756fcd0452746b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf997aa_01e23cd4",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-08-30T18:28:01Z",
+      "side": 1,
+      "message": "Ah, I see. Thanks for the explanation.",
+      "parentUuid": "2a6a4e73_45cd2c99",
+      "range": {
+        "startLine": 66,
+        "startChar": 30,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "738341a144555c0b0c3db45e5c756fcd0452746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
