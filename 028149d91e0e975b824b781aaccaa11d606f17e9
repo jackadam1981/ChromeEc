@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa5e09ee_fb8c1428",
+        "filename": "common/update_fw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-30T10:09:14Z",
+      "side": 1,
+      "message": "make it unsigned and avoid random traps not verified by the condition below ?",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 11
+      },
+      "revId": "028149d91e0e975b824b781aaccaa11d606f17e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
