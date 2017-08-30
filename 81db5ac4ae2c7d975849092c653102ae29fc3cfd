@@ -22,6 +22,30 @@
       "revId": "81db5ac4ae2c7d975849092c653102ae29fc3cfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddf436de_f3dd6161",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-08-30T17:43:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e84df6_d6b14689",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 22
+      },
+      "revId": "81db5ac4ae2c7d975849092c653102ae29fc3cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
