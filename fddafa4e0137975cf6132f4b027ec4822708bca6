@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b89660_6e2954c5",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-08-30T17:30:18Z",
+      "side": 1,
+      "message": "remove comment: with only one accel, not angle detection.",
+      "revId": "fddafa4e0137975cf6132f4b027ec4822708bca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f74670f8_66661e64",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-08-30T17:30:18Z",
+      "side": 1,
+      "message": "set it to 0 until someone needs it.",
+      "revId": "fddafa4e0137975cf6132f4b027ec4822708bca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e54ec37b_94c3dcc3",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-08-30T17:30:18Z",
+      "side": 1,
+      "message": "Leave it in suspend mode until someone needs it.",
+      "revId": "fddafa4e0137975cf6132f4b027ec4822708bca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b063d2_5a4b4081",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-08-30T17:30:18Z",
+      "side": 1,
+      "message": "same comments as above.",
+      "revId": "fddafa4e0137975cf6132f4b027ec4822708bca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
