@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1565f9b_95ef5e41",
+        "filename": "extra/stack_analyzer/example_annotation.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-30T10:54:40Z",
+      "side": 1,
+      "message": "is this still true ?",
+      "range": {
+        "startLine": 26,
+        "startChar": 11,
+        "endLine": 26,
+        "endChar": 66
+      },
+      "revId": "cd9948f7482cc3125f051f9990e448313a2357b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3aa0df_e996881c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-30T10:54:40Z",
+      "side": 1,
+      "message": "why would this happen ?\n(since they are filtered at line 780)",
+      "range": {
+        "startLine": 886,
+        "startChar": 0,
+        "endLine": 887,
+        "endChar": 16
+      },
+      "revId": "cd9948f7482cc3125f051f9990e448313a2357b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60eb90e6_9f1c8121",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-30T10:54:40Z",
+      "side": 1,
+      "message": "comments welcome on the high level logic of this chunk of code, it\u0027s not easy to understand.",
+      "range": {
+        "startLine": 889,
+        "startChar": 0,
+        "endLine": 916,
+        "endChar": 41
+      },
+      "revId": "cd9948f7482cc3125f051f9990e448313a2357b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556f05fa_96c5fc83",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 960,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-30T10:54:40Z",
+      "side": 1,
+      "message": "seems complicated to my unexpert eye.\nlet\u0027s rename remove_set as remove_simple, isn\u0027t the following equivalent ?\nremove_simple \u003d [ p for p in remove_list if len(p) \u003c\u003d 2 ]\nthen the following condition:\nif [callsite.callee] in remove_simple or [function, callsite.callee] in remove_simple:",
+      "range": {
+        "startLine": 954,
+        "startChar": 0,
+        "endLine": 960,
+        "endChar": 0
+      },
+      "revId": "cd9948f7482cc3125f051f9990e448313a2357b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8d5d299_b01e22df",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-30T10:54:40Z",
+      "side": 1,
+      "message": "\u0027add\u0027ing to \u0027remaining\u0027 and \u0027not\u0027 \u0027skip\u0027, a bit too much negated logic for me, I\u0027m a bit lost ...\n\nCan you write something simpler ?\n\nYou have something like ?\nremaining_remove_list \u003d [ p for p in remove_list if len(p) \u003e 3 and noEdge(p,edge_set) ]\n\nwith the noEdge() defined as your loop above",
+      "range": {
+        "startLine": 978,
+        "startChar": 0,
+        "endLine": 990,
+        "endChar": 49
+      },
+      "revId": "cd9948f7482cc3125f051f9990e448313a2357b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
