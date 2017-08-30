@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aaaca09_66a15258",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-30T01:29:06Z",
+      "side": 1,
+      "message": "Missing tracking bug, this is a significant change that needs to be tracked properly.",
+      "revId": "c4d0b855d2cd4f65942bc6c16e807457203f52e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6506a045_63e4f824",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-30T01:29:06Z",
+      "side": 1,
+      "message": "You need to retest flash protection as well, and check that corrupted images don\u0027t boot.",
+      "revId": "c4d0b855d2cd4f65942bc6c16e807457203f52e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
