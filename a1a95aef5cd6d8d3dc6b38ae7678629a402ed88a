@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "85f2ea77_e758fd72",
+        "filename": "common/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-30T08:11:29Z",
+      "side": 1,
+      "message": "Yes, and also the FW can be provided in one `make` run, but not the other.\n\nI\u0027m still not 100% sure how to handle this from portage perspective, I will update the chromeos-ec ebuild as well and see from there.",
+      "parentUuid": "989e6515_475018d3",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 0
+      },
+      "revId": "a1a95aef5cd6d8d3dc6b38ae7678629a402ed88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cae532b3_d947f254",
         "filename": "common/build.mk",
         "patchSetId": 4
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "05450542_717efcf5",
+        "filename": "common/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-30T08:11:29Z",
+      "side": 1,
+      "message": "That\u0027s a good point. Yes, we can do that.",
+      "parentUuid": "cae532b3_d947f254",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 39
+      },
+      "revId": "a1a95aef5cd6d8d3dc6b38ae7678629a402ed88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66e8222e_d80083c7",
         "filename": "util/build.mk",
         "patchSetId": 4
@@ -83,6 +131,30 @@
       "writtenOn": "2017-08-29T09:18:19Z",
       "side": 1,
       "message": "Given the utility program has no dependency on our other C files, writing it in C seems to make this more complicated for very little benefit (eg over having a 5-line python script",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "a1a95aef5cd6d8d3dc6b38ae7678629a402ed88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51962ff_d41de4a3",
+        "filename": "util/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-30T08:11:29Z",
+      "side": 1,
+      "message": "Well, there are 2 dependencies: touchpad FW size (CONFIG_TOUCHPAD_VIRTUAL_SIZE) and block size (CONFIG_UPDATE_PDU_SIZE), which are config options and can change per board.",
+      "parentUuid": "66e8222e_d80083c7",
       "range": {
         "startLine": 43,
         "startChar": 0,
