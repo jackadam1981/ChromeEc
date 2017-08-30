@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37e0e3ea_c7e33f0d",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-30T17:34:04Z",
+      "side": 1,
+      "message": "Can you add a comment about why we dont need to init servo state and ec state here?\n\nCan we move init_wp_state from 700 to here too??",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 721,
+        "endChar": 4
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d510242_68812fe3",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-30T17:34:04Z",
+      "side": 1,
+      "message": "enable_ccd_uart checks if rdd_is_connected. So It is unnecessary here.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8572162_d54caa51",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-30T17:34:04Z",
+      "side": 1,
+      "message": "Can we rename this disable_ccd_uart for symmetry?",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 20
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f14e5787_c458e731",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-30T17:34:04Z",
+      "side": 1,
+      "message": "Why do we check if servo is connected when we know it is not detectable? Why dont we always do servo_disconnect here?",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 26
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0fc1c21_0a319e34",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-30T17:34:04Z",
+      "side": 1,
+      "message": "else if",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 4
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f27f928_7adc4adb",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-30T17:34:04Z",
+      "side": 1,
+      "message": "Why does this check that it is undetectable?",
+      "range": {
+        "startLine": 154,
+        "startChar": 17,
+        "endLine": 154,
+        "endChar": 34
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80e1d551_a989657b",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-30T17:34:04Z",
+      "side": 1,
+      "message": "Why do we assume it is disconnected and not debouncing? Why dont we just add || DEVICE_STATE_UNDETECTABLE to 165 or just do regular debouncing stuff after UNDETECTABLE?",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
