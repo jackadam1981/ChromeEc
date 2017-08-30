@@ -22,6 +22,30 @@
       "revId": "a60243975fe7d63a1cff48148ff1cb7ae687d0e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6576a50_2482dff2",
+        "filename": "board/reef/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-30T00:18:15Z",
+      "side": 1,
+      "message": "updated comments to describe behavior a bit better.\ni\u0027d like to keep the structure the way it is so that\nrequired delays can be interleaved for TCPCs.",
+      "parentUuid": "a06dd839_f330a50f",
+      "range": {
+        "startLine": 356,
+        "startChar": 1,
+        "endLine": 356,
+        "endChar": 51
+      },
+      "revId": "a60243975fe7d63a1cff48148ff1cb7ae687d0e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
