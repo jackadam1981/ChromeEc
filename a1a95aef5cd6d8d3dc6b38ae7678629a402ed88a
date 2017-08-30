@@ -164,6 +164,30 @@
       "revId": "a1a95aef5cd6d8d3dc6b38ae7678629a402ed88a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55b851a7_d84fac90",
+        "filename": "util/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-30T09:54:20Z",
+      "side": 1,
+      "message": "Ok, it\u0027s still only a mildly convincing argument as we can get those arguments with a one-liner in the Makefile (e.g. as we do for CONFIG_PROGRAM_MEMORY_BASE)",
+      "parentUuid": "f51962ff_d41de4a3",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 53
+      },
+      "revId": "a1a95aef5cd6d8d3dc6b38ae7678629a402ed88a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
