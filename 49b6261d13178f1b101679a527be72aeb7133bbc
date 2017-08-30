@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "b5d8ac8a_acdab20e",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-30T19:52:58Z",
+      "side": 1,
+      "message": "No, because this only disables TX.  disable_ccd_uart() disables both RX+TX.",
+      "parentUuid": "f8572162_d54caa51",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 20
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f14e5787_c458e731",
         "filename": "board/cr50/servo_state.c",
         "patchSetId": 4
@@ -82,6 +106,30 @@
       "writtenOn": "2017-08-30T17:34:04Z",
       "side": 1,
       "message": "Why do we check if servo is connected when we know it is not detectable? Why dont we always do servo_disconnect here?",
+      "range": {
+        "startLine": 131,
+        "startChar": 6,
+        "endLine": 131,
+        "endChar": 26
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7a8f02_8c848397",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-30T19:52:58Z",
+      "side": 1,
+      "message": "I could, but then I\u0027d need to add\n\nif (!servo_is_connected())\n  return;\n\nto servo_is_disconnected().",
+      "parentUuid": "f14e5787_c458e731",
       "range": {
         "startLine": 131,
         "startChar": 6,
@@ -151,6 +199,30 @@
       "writtenOn": "2017-08-30T17:34:04Z",
       "side": 1,
       "message": "Why do we assume it is disconnected and not debouncing? Why dont we just add || DEVICE_STATE_UNDETECTABLE to 165 or just do regular debouncing stuff after UNDETECTABLE?",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 21
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8410661_e234d09e",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-30T19:52:58Z",
+      "side": 1,
+      "message": "While we\u0027re debouncing for a second, we inhibit ECTX.\n\nIf servo was driving ECTX, and then isn\u0027t, that may be because servo just happens to be sending a 0-bit, so we want to debounce, and during that time, we want to block CCD from taking over ECTX.\n\nIf CCD was driving ECTX, and then isn\u0027t, then we want to give priority to CCD being able to reclaim ECTX, rather than blocking it for a whole second.\n\nThat is, \"undetectable\" is a sub-state of \"disconnected\", just as \"debouncing\" is a sub-state of \"connected\".",
+      "parentUuid": "80e1d551_a989657b",
       "range": {
         "startLine": 155,
         "startChar": 4,
