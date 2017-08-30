@@ -8,7 +8,6 @@
 
 #include <stddef.h>
 
-
 /*
  * This file contains structures used to facilitate EC firmware updates
  * over USB (and over TPM for cr50).
@@ -189,6 +188,8 @@ struct pair_challenge_response {
 	uint8_t authenticator[16];
 } __packed;
 
+#define TOUCHPAD_FW_HASH_LENGTH 16
+
 struct touchpad_info {
 	uint8_t status; /* = EC_RES_SUCCESS */
 	uint8_t reserved; /* padding */
@@ -200,6 +201,13 @@ struct touchpad_info {
 	 */
 	uint32_t fw_address;
 	uint32_t fw_size;
+
+	/*
+	 * Truncated SHA256 hash of the trackpad FW accepted by this EC image.
+	 * This is used by the updater to make sure we do not attempt to flash
+	 * a touchpad FW that does not match the one shipped by the EC.
+	 */
+	uint8_t allowed_fw_hash[TOUCHPAD_FW_HASH_LENGTH];
 
 	/* Vendor specific data. */
 	struct {
@@ -239,5 +247,8 @@ int touchpad_get_info(struct touchpad_info *tp);
 
 /* Touchpad FW update: Write a FW block. */
 int touchpad_update_write(int offset, int size, const uint8_t *data);
+
+/* Truncated SHA256 hash of the touchpad firmware expected by this image. */
+extern const uint8_t touchpad_fw_hash[TOUCHPAD_FW_HASH_LENGTH];
 
 #endif  /* ! __CROS_EC_UPDATE_FW_H */
