@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "954974ca_8289eb9a",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2017-08-30T18:04:53Z",
+      "side": 1,
+      "message": "PD_OPERATING_POWER_MW?",
+      "range": {
+        "startLine": 41,
+        "startChar": 50,
+        "endLine": 41,
+        "endChar": 55
+      },
+      "revId": "840a821dc2079cc76e178a540dc6712f51b5fd9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a36a94_b746a3b7",
+        "filename": "board/scarlet/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2017-08-30T18:04:53Z",
+      "side": 1,
+      "message": "PD_MAX_CURRENT_MA?",
+      "range": {
+        "startLine": 42,
+        "startChar": 49,
+        "endLine": 42,
+        "endChar": 53
+      },
+      "revId": "840a821dc2079cc76e178a540dc6712f51b5fd9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
