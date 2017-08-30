@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23ae919c_98a1da92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-30T23:54:37Z",
+      "side": 1,
+      "message": "Please specify the exact reason, and add a TEST line, especially if you want to reuse that bug. And please do a full bisect of the EC code (I\u0027m not convinced this has been done).\n\nThis fix has been applied, reverted, applied again (presumably better version), and now we want to revert again: we need a good reason.",
+      "revId": "73a8464aa498e2980f54cdb95e8c7e0b293a39b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
