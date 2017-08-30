@@ -27,6 +27,8 @@
 BUILD_ASSERT(sizeof(touchpad_fw_hashes) ==
 		(CONFIG_TOUCHPAD_FW_CHUNKS * SHA256_DIGEST_SIZE));
 BUILD_ASSERT(sizeof(touchpad_fw_hashes[0]) == SHA256_DIGEST_SIZE);
+
+BUILD_ASSERT(sizeof(touchpad_fw_hash) == TOUCHPAD_FW_HASH_LENGTH);
 #endif
 
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
