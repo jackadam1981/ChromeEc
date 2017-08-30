@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f82825f5_765d9197",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-30T08:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d7a4db_af8c66e7",
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8af146c2_145e9371",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b4d5cb93_3bb3deed",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-30T08:49:59Z",
+      "side": 1,
+      "message": "Sounds like we are getting more budget !",
+      "parentUuid": "8af146c2_145e9371",
+      "range": {
+        "startLine": 393,
+        "startChar": 6,
+        "endLine": 393,
+        "endChar": 8
+      },
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb3e3124_5419fdb4",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 6
@@ -56,6 +98,24 @@
       "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f490e1_fa4aa1da",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-30T08:49:59Z",
+      "side": 1,
+      "message": "Good catch!",
+      "parentUuid": "bb3e3124_5419fdb4",
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "feddd923_752dd3ed",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-30T08:49:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63053124_2a517fa3",
+      "range": {
+        "startLine": 460,
+        "startChar": 36,
+        "endLine": 460,
+        "endChar": 42
+      },
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ee3862f_01672295",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 6
@@ -102,6 +186,30 @@
       "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc4653e9_e462c1dc",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-08-30T08:49:59Z",
+      "side": 1,
+      "message": "Ah...it looks like on purposely to make task declaration consistent.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/602739",
+      "parentUuid": "6ee3862f_01672295",
+      "range": {
+        "startLine": 472,
+        "startChar": 22,
+        "endLine": 472,
+        "endChar": 26
+      },
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
