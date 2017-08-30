@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3603a870_6c13013e",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-30T17:08:07Z",
+      "side": 1,
+      "message": "It is still a bit confusing that this is rdd_is_connected instead of ccd_is_enabled. Because ccd can be enabled without rdd being connected. But we can address this later.",
+      "range": {
+        "startLine": 66,
+        "startChar": 30,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "738341a144555c0b0c3db45e5c756fcd0452746b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
