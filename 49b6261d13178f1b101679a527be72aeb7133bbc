@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d5f91f0_71e49fa8",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-31T17:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37e0e3ea_c7e33f0d",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 721,
+        "endChar": 4
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d510242_68812fe3",
         "filename": "board/cr50/servo_state.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-30T17:34:04Z",
       "side": 1,
       "message": "enable_ccd_uart checks if rdd_is_connected. So It is unnecessary here.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8196b98d_9dd27da7",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-31T17:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d510242_68812fe3",
       "range": {
         "startLine": 87,
         "startChar": 0,
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "No, because this only disables TX.  disable_ccd_uart() disables both RX+TX.",
       "parentUuid": "f8572162_d54caa51",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 20
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9208ddc_ca67cfd2",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-31T17:57:41Z",
+      "side": 1,
+      "message": "Really, the change is that servo_disconnect() should call uartn_tx_connect().",
+      "parentUuid": "b5d8ac8a_acdab20e",
       "range": {
         "startLine": 113,
         "startChar": 1,
@@ -153,6 +225,30 @@
       "writtenOn": "2017-08-30T17:34:04Z",
       "side": 1,
       "message": "else if",
+      "range": {
+        "startLine": 148,
+        "startChar": 2,
+        "endLine": 148,
+        "endChar": 4
+      },
+      "revId": "49b6261d13178f1b101679a527be72aeb7133bbc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "648210a4_ccf8961d",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-08-31T17:57:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0fc1c21_0a319e34",
       "range": {
         "startLine": 148,
         "startChar": 2,
