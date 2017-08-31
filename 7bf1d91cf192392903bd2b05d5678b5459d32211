@@ -163,6 +163,30 @@
       "revId": "7bf1d91cf192392903bd2b05d5678b5459d32211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a820e79_262dc021",
+        "filename": "common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T08:21:05Z",
+      "side": 1,
+      "message": "Right ,-( We definitely want this to do the right thing:\n\nmake BOARD\u003dhammer -j\nthen\nmake BOARD\u003dhammer TOUCHPAD_FW\u003dxyz -j\n\nSo maybe we could do this:\nifneq ($(TOUCHPAD_FW),)\n.PHONY: $(out)/touchpad_fw_hash.h.new\nendif\n\nSo that we only force the hashing if TOUCHPAD_FW is set...\n\nThat\u0027d break:\nmake BOARD\u003dhammer TOUCHPAD_FW\u003dxyz -j\nmake BOARD\u003dhammer -j\n\nbut maybe we don\u0027t care about that use case?!",
+      "parentUuid": "f81adedc_ee28033d",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "7bf1d91cf192392903bd2b05d5678b5459d32211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
