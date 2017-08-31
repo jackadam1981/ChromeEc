@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bc9dea0_c958820c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T09:47:14Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you continue the main for loop here, instead of adding an incomplete remove_path to the rules?",
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "537abcca_6bcc5ce9",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T09:47:14Z",
+      "side": 1,
+      "message": "multiple",
+      "range": {
+        "startLine": 886,
+        "startChar": 46,
+        "endLine": 886,
+        "endChar": 54
+      },
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "901d2f76_069ea5e1",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T09:47:14Z",
+      "side": 1,
+      "message": "Transform",
+      "range": {
+        "startLine": 891,
+        "startChar": 10,
+        "endLine": 891,
+        "endChar": 19
+      },
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "031bbef2_f74887f6",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T09:47:14Z",
+      "side": 1,
+      "message": "There is an...",
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "305737d8_e9042d8c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T09:47:14Z",
+      "side": 1,
+      "message": "Not a python expert, but wouldn\u0027t\n\nif prev_path in remove_list:\n\ndo the same thing?",
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57458148_d31175f3",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T09:47:14Z",
+      "side": 1,
+      "message": "Already",
+      "range": {
+        "startLine": 1100,
+        "startChar": 14,
+        "endLine": 1100,
+        "endChar": 20
+      },
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e4fbb46_3d814329",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T09:47:14Z",
+      "side": 1,
+      "message": "situation",
+      "range": {
+        "startLine": 1103,
+        "startChar": 56,
+        "endLine": 1103,
+        "endChar": 65
+      },
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb579ad6_193e3fa5",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T09:47:14Z",
+      "side": 1,
+      "message": "larger",
+      "range": {
+        "startLine": 1108,
+        "startChar": 35,
+        "endLine": 1108,
+        "endChar": 40
+      },
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f46817e_99e27b7e",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T09:47:14Z",
+      "side": 1,
+      "message": "I kind of get what you mean there, but this needs a bit of rewording...",
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
