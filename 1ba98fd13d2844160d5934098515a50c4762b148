@@ -22,6 +22,30 @@
       "revId": "1ba98fd13d2844160d5934098515a50c4762b148",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9dac7c_5c74a84a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2303,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-08-31T21:28:53Z",
+      "side": 1,
+      "message": "there\u0027s no need to reboot the whole system at this point to get\nthese TCPCs updated.  we\u0027ll probably do a reboot later in any\ncase because the TCPC or EC firmware update is probably part of\na larger chromeos update that happens later in the update workflow.\nalso, note that if the AP only does a soft reboot, the EC won\u0027t reboot\nwhich means we won\u0027t be re-initializing the TCPCs.",
+      "parentUuid": "4ba25d57_cdc9799f",
+      "range": {
+        "startLine": 2303,
+        "startChar": 7,
+        "endLine": 2303,
+        "endChar": 22
+      },
+      "revId": "1ba98fd13d2844160d5934098515a50c4762b148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
