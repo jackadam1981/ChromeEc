@@ -211,6 +211,30 @@
       "revId": "7bf1d91cf192392903bd2b05d5678b5459d32211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7613c437_a411d4c7",
+        "filename": "common/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-08-31T09:01:40Z",
+      "side": 1,
+      "message": "I think this does the right thing:\n\n$(out)/touchpad_fw_hash.h: $(out)/util/gen_touchpad_hash $(out)/.touchpad_fw\n\t$(call quiet,tp_hash,TPHASH )\n\n$(out)/.touchpad_fw: $(TOUCHPAD_FW)\n\t@echo $(TOUCHPAD_FW) \u003e $@\n\nold_touchpad_fw :\u003d $(shell cat $(out)/.touchpad_fw 2\u003e /dev/null )\n\nifneq ($(TOUCHPAD_FW),$(old_touchpad_fw))\n.PHONY: $(out)/.touchpad_fw\nendif",
+      "parentUuid": "8afd6e98_754f17ba",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "7bf1d91cf192392903bd2b05d5678b5459d32211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
