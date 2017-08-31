@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fe7d4b3_e9ffe21f",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-31T09:28:56Z",
+      "side": 1,
+      "message": "nit: fputs ?\n(and all the following)",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 8
+      },
+      "revId": "579a7bb32a391f36b8aeec27405b0b34f18697b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91fa0594_144a16e8",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-08-31T09:28:56Z",
+      "side": 1,
+      "message": "nit: \u0027out\u0027 is both a label and the filename variable.\nGCC is happy with it ?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 4
+      },
+      "revId": "579a7bb32a391f36b8aeec27405b0b34f18697b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
