@@ -51,8 +51,8 @@ static int rdd_is_detected(void)
 
 void print_rdd_state(void)
 {
-	ccprintf("RDD:     %s\n",
-		 force_detected ? "forced enable" : device_state_name(state));
+	ccprintf("Rdd:     %s\n",
+		 force_detected ? "keepalive" : device_state_name(state));
 }
 
 /**
@@ -60,7 +60,7 @@ void print_rdd_state(void)
  */
 static void rdd_disconnect(void)
 {
-	CPRINTS("Debug accessory disconnect");
+	CPRINTS("Rdd disconnect");
 	state = DEVICE_STATE_DISCONNECTED;
 
 	/*
@@ -92,7 +92,7 @@ static void rdd_connect(void)
 		return;
 
 	/* We were previously disconnected, so connect */
-	CPRINTS("Debug accessory connect");
+	CPRINTS("Rdd connect");
 	state = DEVICE_STATE_CONNECTED;
 
 	/* Start pulling CCD_MODE_L low to enable the SBUx muxes */
@@ -227,16 +227,35 @@ void init_rdd_state(void)
 	GWRITE_FIELD(RDD, INT_ENABLE, INTR_DEBUG_STATE_DETECTED, 1);
 }
 
-void force_rdd_detect(int enable)
+static int command_rdd_keepalive(int argc, char **argv)
 {
-	force_detected = enable;
+	if (argc > 1) {
+		char opt = tolower(argv[1][0]);
 
-	/*
-	 * If we're forcing detection, trigger then connect handler early.
-	 *
-	 * Otherwise, we'll revert to the normal logic of checking the RDD
-	 * hardware CC state.
-	 */
-	if (force_detected)
-		hook_call_deferred(&rdd_connect_data, 0);
+		if (opt == 'k') {
+			/* Force Rdd detect */
+			ccprintf("Forcing Rdd detect until explicit reset\n");
+			force_detected = 1;
+			hook_call_deferred(&rdd_connect_data, 0);
+		} else if (opt == 'r') {
+			/* Go back to actual hardware state */
+			ccprintf("Using actual Rdd state\n");
+			force_detected = 0;
+		} else {
+			/* Invalid option */
+			return EC_ERROR_PARAM1;
+		}
+	} else {
+		/*
+		 * Just print the state.  Don't do this if we changed the state
+		 * above, because that won't take effect until the hook task
+		 * gets a chance to run and we'd print incorrect state down
+		 * here.
+		 */
+		print_rdd_state();
+	}
+	return EC_SUCCESS;
 }
+DECLARE_CONSOLE_COMMAND(rddkeepalive, command_rdd_keepalive,
+			"[keepalive|reset]",
+			"Get/set Rdd state");
