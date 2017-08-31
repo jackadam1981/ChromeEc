@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "82823416_8d62da35",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-31T10:31:16Z",
+      "side": 1,
+      "message": "We still need to iterate remaining signatures to catch all invalid signatures.",
+      "parentUuid": "0bc9dea0_c958820c",
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "537abcca_6bcc5ce9",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 4
@@ -39,6 +57,30 @@
       "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1f7d7ad_8447d37d",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 886,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-31T10:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "537abcca_6bcc5ce9",
+      "range": {
+        "startLine": 886,
+        "startChar": 46,
+        "endLine": 886,
+        "endChar": 54
+      },
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a5529390_4636ec41",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 891,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-31T10:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "901d2f76_069ea5e1",
+      "range": {
+        "startLine": 891,
+        "startChar": 10,
+        "endLine": 891,
+        "endChar": 19
+      },
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "031bbef2_f74887f6",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 4
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "d0f42e65_1d0062de",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-31T10:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "031bbef2_f74887f6",
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "305737d8_e9042d8c",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 4
@@ -96,6 +180,24 @@
       "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6860a6_9a828ea4",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-31T10:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305737d8_e9042d8c",
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "ae29f7cc_392dab11",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-31T10:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57458148_d31175f3",
+      "range": {
+        "startLine": 1100,
+        "startChar": 14,
+        "endLine": 1100,
+        "endChar": 20
+      },
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e4fbb46_3d814329",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 4
@@ -142,6 +268,30 @@
       "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72bfd6fb_225f0661",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1103,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-31T10:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e4fbb46_3d814329",
+      "range": {
+        "startLine": 1103,
+        "startChar": 56,
+        "endLine": 1103,
+        "endChar": 65
+      },
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "0718b243_1e8dd6c2",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-31T10:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb579ad6_193e3fa5",
+      "range": {
+        "startLine": 1108,
+        "startChar": 35,
+        "endLine": 1108,
+        "endChar": 40
+      },
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f46817e_99e27b7e",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 4
@@ -182,6 +356,24 @@
       "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0d9de2_6e495f3b",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1230649
+      },
+      "writtenOn": "2017-08-31T10:31:16Z",
+      "side": 1,
+      "message": "How about this ?",
+      "parentUuid": "8f46817e_99e27b7e",
+      "revId": "11260d4e9f7e3e917e8ed1d615ded22325f8d5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
