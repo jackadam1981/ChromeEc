@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5ec59f7_9b6dc133",
+        "filename": "chip/ish/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-08-31T05:30:59Z",
+      "side": 1,
+      "message": "Please just implement some indirection in *one* place.\n\n#ifdef CONFIG_ISH_UART_0\n#define ISH_DEBUG_UART UART_PORT_0\n#define ISH_DEBUG_UART_IRQ ISH_UART0_IRQ\n#else\n#define ISH_DEBUG_UART UART_PORT_1\n#define ISH_DEBUG_UART_IRQ ISH_UART1_IRQ\n#endif\n\nNow use the new macro instead of sprinkling #ifdef/#else/#endif throughout the code.",
+      "revId": "161dd1c5d5d5cb1e35ea42852d5912f963b2b554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
