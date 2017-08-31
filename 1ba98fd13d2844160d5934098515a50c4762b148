@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ba25d57_cdc9799f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2303,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-08-31T20:35:09Z",
+      "side": 1,
+      "message": "I thought the plan was to reboot the whole system at once instead of resetting each chip (ec, pd1, pd2,...). Could you clarify?",
+      "range": {
+        "startLine": 2303,
+        "startChar": 7,
+        "endLine": 2303,
+        "endChar": 22
+      },
+      "revId": "1ba98fd13d2844160d5934098515a50c4762b148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
