@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f2bea8c_e02a6c41",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-08-31T23:04:41Z",
+      "side": 1,
+      "message": "Why did these change from enable_ccd_uart?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "2b3fa454992488da4837a87d9666efca560e7f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
