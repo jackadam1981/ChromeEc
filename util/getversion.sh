@@ -71,6 +71,7 @@ get_tree_version() {
 
 
 IFS="${dc}"
+BRANCH_NAME_FILE="/mnt/host/source/src/scripts/branch_name"
 ver="${CR50_DEV:+DBG/}${BOARD}_"
 global_dirty=    # set if any of the component repos is 'dirty'.
 dir_list=( . )   # list of component directories, always includes the EC tree
@@ -112,6 +113,10 @@ echo "/* Sub-fields for use in Makefile.rules and to form build info string"
 echo " * in common/version.c. */"
 echo "#define VERSION \"${ver}\""
 echo "#define BUILDER \"${USER}@`hostname`\""
+
+if [ -f "${BRANCH_NAME_FILE}" ]; then
+  echo "#define CROS_BRANCH_NAME \""$(cat "${BRANCH_NAME_FILE}")"\""
+fi
 
 if [ -n "$global_dirty" ]; then
     echo "/* Repo is dirty, using time of last compilation */"
