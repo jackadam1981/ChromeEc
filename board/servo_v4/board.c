@@ -343,12 +343,46 @@ static void ccd_measure_sbu(void)
 	}
 }
 
+static uint8_t ccd_keepalive_enabled;
+static int command_keepalive(int argc, char **argv)
+{
+	int val;
+
+	if (argc > 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (argc == 2) {
+		if (!parse_bool(argv[1], &val))
+			return EC_ERROR_PARAM1;
+
+		ccd_keepalive_enabled = val;
+	}
+	ccprintf("ccd_keepalive: %sabled\n",
+		 ccd_keepalive_enabled ? "en" : "dis");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(keepalive, command_keepalive, "[enable | disable]",
+			"Enable CCD keepalive.  Prevents SBU sampling.");
+
 void ccd_set_mode(enum ccd_mode new_mode)
 {
 	if (new_mode == CCD_MODE_ENABLED) {
-		/* Allow some time following turning on of VBUS */
-		hook_call_deferred(&ccd_measure_sbu_data,
-				   PD_POWER_SUPPLY_TURN_ON_DELAY);
+		/*
+		 * Unfortunately the polarity detect is designed for real plug
+		 * events, and only accurately detects pre-connect idle. If
+		 * there's active traffic on the line (like while EC is
+		 * rebooting) this could pretty much go either way.  Therefore,
+		 * if CCD keepalive is enabled, let's not measure the SBU lines
+		 * and leave the mux alone.  Most likely nothing has changed.
+		 *
+		 * NOTE: Once CCD keepalive has been enabled, it will remained
+		 * enabled until explicitly disabled.
+		 */
+		if (!ccd_keepalive_enabled)
+			/* Allow some time following turning on of VBUS */
+			hook_call_deferred(&ccd_measure_sbu_data,
+					   PD_POWER_SUPPLY_TURN_ON_DELAY);
 	} else if (new_mode == CCD_MODE_DISABLED) {
 		/* We are not connected to anything */
 
