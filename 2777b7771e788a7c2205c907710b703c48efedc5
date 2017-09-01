@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "60fa1ba2_1a0d4a4b",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-09-01T23:11:37Z",
+      "side": 0,
+      "message": "it looks like we are not ready to turn this logic rail off in s3 for now",
+      "parentUuid": "96877cff_76560ab0",
+      "revId": "2777b7771e788a7c2205c907710b703c48efedc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f50592c_cd273974",
         "filename": "power/rk3399.c",
         "patchSetId": 3
@@ -101,6 +119,30 @@
       "side": 0,
       "message": "I think this should stay, we still need to turn on the rail in S5S3 and turn off the rail in S3S5.",
       "parentUuid": "5f50592c_cd273974",
+      "range": {
+        "startLine": 210,
+        "startChar": 29,
+        "endLine": 211,
+        "endChar": 28
+      },
+      "revId": "2777b7771e788a7c2205c907710b703c48efedc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a53d972_f17d277f",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-09-01T23:11:37Z",
+      "side": 0,
+      "message": "hmm, sorry, should be line 137",
+      "parentUuid": "abc38dc9_5f20b0e3",
       "range": {
         "startLine": 210,
         "startChar": 29,
