@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3519efd_e1df331e",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-01T16:59:53Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this console command. I understand that it\u0027s useful when initially working with the system, but once development is done, it\u0027s less useful and the battery presence and type is logged in the EC console already. My other concern is that this is in the console task and it\u0027s doing I2C accesses to the battery which is normally done in the charger task. To make this reliable there would need to be a mutex added and I don\u0027t think that\u0027s worth the effort.",
+      "range": {
+        "startLine": 430,
+        "startChar": 11,
+        "endLine": 430,
+        "endChar": 56
+      },
+      "revId": "b318d1cbc5d95205147ba6143163334c47e8b627",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
