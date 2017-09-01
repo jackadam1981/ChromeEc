@@ -22,6 +22,30 @@
       "revId": "b2393676c145489c18806b2b78d73aaa71d0c24b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcb2fac1_1a5a20a7",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-09-01T09:50:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ca30cb7_5a3cbb81",
+      "range": {
+        "startLine": 41,
+        "startChar": 17,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "b2393676c145489c18806b2b78d73aaa71d0c24b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
