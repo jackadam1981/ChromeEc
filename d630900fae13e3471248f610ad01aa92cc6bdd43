@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "771a4501_0dd61347",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-01T16:52:20Z",
+      "side": 1,
+      "message": "Its weird that we will have to type in \u0027rddkeepalive keepalive\u0027. Why dont we do rddkeepalive bool",
+      "range": {
+        "startLine": 259,
+        "startChar": 24,
+        "endLine": 259,
+        "endChar": 36
+      },
+      "revId": "d630900fae13e3471248f610ad01aa92cc6bdd43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
