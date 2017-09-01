@@ -50,5 +50,15 @@ struct charge_state_data {
  */
 int charge_set_input_current_limit(int ma, int mv);
 
+/*
+ * Expose charge/battery related state
+ *
+ * @param param command to get corresponding data
+ * @param value the corresponding data
+ */
+#ifdef CONFIG_CHARGE_STATE_DEBUG
+void charge_get_charge_state_debug(int param, uint32_t *value);
+#endif /* CONFIG_CHARGE_STATE_DEBUG */
+
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
 

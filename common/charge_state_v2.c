@@ -1357,3 +1357,28 @@ static int command_chgstate(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(chgstate, command_chgstate,
 			"[idle|discharge|debug on|off]",
 			"Get/set charge state machine status");
+
+#ifdef CONFIG_CHARGE_STATE_DEBUG
+void charge_get_charge_state_debug(int param, uint32_t *value)
+{
+	switch (param) {
+	case CS_PARAM_DEBUG_CTL_MODE:
+		*value = chg_ctl_mode;
+		break;
+	case CS_PARAM_DEBUG_MANUAL_MODE:
+		*value = manual_mode;
+		break;
+	case CS_PARAM_DEBUG_SEEMS_DEAD:
+		*value = battery_seems_to_be_dead;
+		break;
+	case CS_PARAM_DEBUG_SEEMS_DISCONNECTED:
+		*value = battery_seems_to_be_disconnected;
+		break;
+	case CS_PARAM_DEBUG_BATT_REMOVED:
+		*value = battery_was_removed;
+		break;
+	default:
+		*value = 0;
+	}
+}
+#endif

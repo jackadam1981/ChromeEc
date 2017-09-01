@@ -318,6 +318,12 @@
  */
 #undef CONFIG_BATTERY_LEVEL_NEAR_FULL
 
+/*
+ * Expose some data when it is needed.
+ * For example: CONFIG_CHARGER_PROFILE_OVERRIDE
+ */
+#undef CONFIG_CHARGE_STATE_DEBUG
+
 /* Include support for Bluetooth LE */
 #undef CONFIG_BLUETOOTH_LE
 
