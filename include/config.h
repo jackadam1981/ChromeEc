@@ -318,6 +318,12 @@
  */
 #undef CONFIG_BATTERY_LEVEL_NEAR_FULL
 
+/*
+ * Expose some data when it is needed.
+ * For example: CONFIG_BATTERY_VENDOR_PARAM.
+ */
+#undef CONFIG_BATTERY_DEBUG
+
 /* Include support for Bluetooth LE */
 #undef CONFIG_BLUETOOTH_LE
 
