@@ -50,5 +50,13 @@ struct charge_state_data {
  */
 int charge_set_input_current_limit(int ma, int mv);
 
+#ifdef CONFIG_BATTERY_DEBUG
+enum ec_charge_control_mode charge_get_vdendor_param_chg_ctl_mode(void);
+int charge_get_vdendor_param_manual_mode(void);
+int charge_get_vdendor_param_battery_seems_to_be_dead(void);
+int charge_get_vdendor_param_battery_seems_to_be_disconnected(void);
+int charge_get_vdendor_param_battery_was_removed(void);
+#endif /* CONFIG_BATTERY_DEBUG */
+
 #endif /* __CROS_EC_CHARGE_STATE_V2_H */
 

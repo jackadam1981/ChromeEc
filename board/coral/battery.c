@@ -37,6 +37,7 @@ struct board_batt_params {
 #define DEFAULT_BATTERY_TYPE BATTERY_SANYO
 static enum battery_present batt_pres_prev = BP_NOT_SURE;
 static enum battery_type board_battery_type = BATTERY_TYPE_COUNT;
+static int disch_on_ac;
 
 /*
  * Battery info for LG A50. Note that the fields start_charging_min/max and
@@ -214,7 +215,7 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 
 int charger_profile_override(struct charge_state_data *curr)
 {
-	int disch_on_ac = charger_should_discharge_on_ac(curr);
+	disch_on_ac = charger_should_discharge_on_ac(curr);
 
 	charger_discharge_on_ac(disch_on_ac);
 
@@ -293,4 +294,9 @@ enum ec_status charger_profile_override_set_param(uint32_t param,
 						  uint32_t value)
 {
 	return EC_RES_INVALID_PARAM;
+}
+
+int board_get_vdendor_param_discharge_on_ac(void)
+{
+	return disch_on_ac;
 }

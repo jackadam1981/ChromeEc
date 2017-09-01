@@ -1163,3 +1163,49 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+
+extern int board_get_vdendor_param_discharge_on_ac(void);
+int battery_get_vendor_param(uint32_t param, uint32_t *value)
+{
+	/*
+	 * For custom debug
+	 * 1 : chg_ctl_mode
+	 * 2 : manual_mode
+	 * 3 : battery_seems_to_be_dead
+	 * 4 : battery_seems_to_be_disconnected
+	 * 5 : battery_was_removed
+	 * 6 : charger_should_discharge_on_ac
+	 * 7 : DFET
+	 */
+	switch (param) {
+	case 1:
+		*value = charge_get_vdendor_param_chg_ctl_mode();
+		break;
+	case 2:
+		*value = charge_get_vdendor_param_manual_mode();
+		break;
+	case 3:
+		*value = charge_get_vdendor_param_battery_seems_to_be_dead();
+		break;
+	case 4:
+		*value =
+		   charge_get_vdendor_param_battery_seems_to_be_disconnected();
+		break;
+	case 5:
+		*value = charge_get_vdendor_param_battery_was_removed();
+		break;
+	case 6:
+		*value = board_get_vdendor_param_discharge_on_ac();
+		break;
+	default:
+		*value = 0;
+	}
+	ccprintf("battery_get_vendor_param: param=%d, value=0x%x\n", param, *value);
+
+	return EC_SUCCESS;
+}
+
+int battery_set_vendor_param(uint32_t param, uint32_t value)
+{
+	return EC_SUCCESS;
+}
