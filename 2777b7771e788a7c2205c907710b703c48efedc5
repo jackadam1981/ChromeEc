@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3aa30657_1335c180",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-09-01T11:17:01Z",
+      "side": 0,
+      "message": "maybe just comment out it, and explain why...",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 28
+      },
+      "revId": "2777b7771e788a7c2205c907710b703c48efedc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f50592c_cd273974",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-09-01T11:17:01Z",
+      "side": 0,
+      "message": "and this one",
+      "range": {
+        "startLine": 210,
+        "startChar": 29,
+        "endLine": 211,
+        "endChar": 28
+      },
+      "revId": "2777b7771e788a7c2205c907710b703c48efedc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
