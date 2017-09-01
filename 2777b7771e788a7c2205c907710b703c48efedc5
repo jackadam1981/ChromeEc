@@ -49,6 +49,23 @@
     },
     {
       "key": {
+        "uuid": "96877cff_76560ab0",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-01T20:31:24Z",
+      "side": 0,
+      "message": "Note that we didn\u0027t define S3_USB_WAKE for Nefario (CHIPSET_POWER_SEQ_VERSION \u003d\u003d 3). If you don\u0027t turn it off here, when will we turn it off?",
+      "revId": "2777b7771e788a7c2205c907710b703c48efedc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f50592c_cd273974",
         "filename": "power/rk3399.c",
         "patchSetId": 3
