@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "power.h"
 
 /* Args for host command handler */
 struct host_cmd_handler_args {
@@ -312,5 +313,20 @@ int host_get_vboot_mode(void);
  * @param key		Key to be sent (e.g. 'x')
  */
 void host_send_sysrq(uint8_t key);
+
+/*
+ * Get lazy wake masks
+ *
+ * @param state Sleep state
+ *
+ * @return lazy wake mask for the sleep state
+ */
+uint32_t get_lazy_wake_mask(enum power_state state);
+/*
+ * Set previous sleep state's wake mask
+ *
+ * @param mask Wake mask to set
+ */
+void set_prev_sleep_wake_mask(uint32_t mask);
 
 #endif  /* __CROS_EC_HOST_COMMAND_H */
