@@ -158,7 +158,9 @@ static const struct power_seq_op s3s0_power_seq[] = {
 #ifdef S3_USB_WAKE
 /* Sigs that may already be on in S3, if we need to wake-on-USB */
 static const struct power_seq_op s3s0_usb_wake_power_seq[] = {
-	{ GPIO_PP900_S0_EN, 1, 2 },
+	/* TODO: add the { GPIO_PP900_S0_EN, 1, 2 } in later.
+	 * See https://issuetracker.google.com/65270978
+	 */
 	{ GPIO_PP1800_USB_EN, 1, 2 },
 	{ GPIO_PP3300_S0_EN, 1, 2 },
 };
@@ -180,7 +182,9 @@ static const struct power_seq_op s0s3_power_seq[] = {
 	{ GPIO_PP1800_S0_EN_L, 1, 1 },
 	{ GPIO_AP_CORE_EN, 0, 20 },
 	{ GPIO_PP1800_AP_AVDD_EN_L, 1, 1 },
-	{ GPIO_PP900_S0_EN, 0, 0 },
+	/* TODO: add the { GPIO_PP900_S0_EN, 0, 0 } in later.
+	 * See https://issuetracker.google.com/65270978
+	 */
 };
 #else
 static const struct power_seq_op s0s3_power_seq[] = {
@@ -198,7 +202,9 @@ static const struct power_seq_op s0s3_power_seq[] = {
 static const struct power_seq_op s0s3_usb_wake_power_seq[] = {
 	{ GPIO_PP3300_S0_EN, 0, 20 },
 	{ GPIO_PP1800_USB_EN, 0, 1 },
-	{ GPIO_PP900_S0_EN, 0, 1 },
+	/* TODO: add the { GPIO_PP900_S0_EN, 0, 1 } in later.
+	 * See https://issuetracker.google.com/65270978
+	 */
 };
 #endif
 
