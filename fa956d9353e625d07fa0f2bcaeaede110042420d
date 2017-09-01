@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30aadae9_eea3e349",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-01T08:34:49Z",
+      "side": 1,
+      "message": "EP_TX_VALID",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 25
+      },
+      "revId": "fa956d9353e625d07fa0f2bcaeaede110042420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "973666d5_910394d4",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-01T08:34:49Z",
+      "side": 1,
+      "message": "EP_RX_DISAB",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "fa956d9353e625d07fa0f2bcaeaede110042420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d18ae7d2_10fcd647",
+        "filename": "chip/stm32/usb_hid.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-01T08:34:49Z",
+      "side": 1,
+      "message": "STM32_USB_EP() is a somewhat special register, you don\u0027t want to do \u0027|\u003d\u0027 on it as it has \u0027toggle\u0027 bits (look at the STM32_TOGGLE_EP to convince yourself)\nYou can likely write it differently (with TOGGLE_EP or better simply assigning STM32_USB_EP(ep) at the end of the function)\n\nalso replace \u0027(3 \u003c\u003c 12);  /* RX Valid */\u0027 by EP_RX_VALID",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 48
+      },
+      "revId": "fa956d9353e625d07fa0f2bcaeaede110042420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bad12644_836742c8",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-01T08:34:49Z",
+      "side": 1,
+      "message": "this is wrong even if you get the desired number in practice.\nlook at EP_BUF_SIZE above.\nthis is really DIV_ROUND_UP(HID_KEYBOARD__OUTPUT_REPORT_SIZE, 2) ?",
+      "range": {
+        "startLine": 247,
+        "startChar": 30,
+        "endLine": 247,
+        "endChar": 62
+      },
+      "revId": "fa956d9353e625d07fa0f2bcaeaede110042420d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
