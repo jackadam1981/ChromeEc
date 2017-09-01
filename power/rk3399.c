@@ -180,7 +180,6 @@ static const struct power_seq_op s0s3_power_seq[] = {
 	{ GPIO_PP1800_S0_EN_L, 1, 1 },
 	{ GPIO_AP_CORE_EN, 0, 20 },
 	{ GPIO_PP1800_AP_AVDD_EN_L, 1, 1 },
-	{ GPIO_PP900_S0_EN, 0, 0 },
 };
 #else
 static const struct power_seq_op s0s3_power_seq[] = {
