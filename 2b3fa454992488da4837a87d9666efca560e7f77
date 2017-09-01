@@ -46,6 +46,30 @@
       "revId": "2b3fa454992488da4837a87d9666efca560e7f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bae54fd7_0c3c2da6",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-01T16:48:07Z",
+      "side": 1,
+      "message": "Ok. \n\nWe should also reenable usb_i2c here. And maybe uart_bitbang? I am not sure how bitbang enable/disable works exactly.",
+      "parentUuid": "a4323ae0_a4a6f6fd",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "2b3fa454992488da4837a87d9666efca560e7f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
