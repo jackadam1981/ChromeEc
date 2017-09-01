@@ -94,6 +94,30 @@
       "revId": "1ba98fd13d2844160d5934098515a50c4762b148",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b032fe5e_9eb8aa57",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2303,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-01T17:01:07Z",
+      "side": 1,
+      "message": "It\u0027s still not clear whether resetting each TCPC is necessary or better. For example, I suppose resetting TCPC will cause power loss for Fizz running on type-c power.\n\nI raised my concern here:\nhttps://docs.google.com/a/google.com/document/d/1uzS0b3O3Us1QI2Sx7LDkjEfHmuhYB2BolrAoNwCVoc0/edit?disco\u003dAAAAA_x0NrI",
+      "parentUuid": "9b6e549b_49fb4c2d",
+      "range": {
+        "startLine": 2303,
+        "startChar": 7,
+        "endLine": 2303,
+        "endChar": 22
+      },
+      "revId": "1ba98fd13d2844160d5934098515a50c4762b148",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
