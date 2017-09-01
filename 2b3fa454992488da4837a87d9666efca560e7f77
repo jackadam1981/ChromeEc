@@ -22,6 +22,30 @@
       "revId": "2b3fa454992488da4837a87d9666efca560e7f77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4323ae0_a4a6f6fd",
+        "filename": "board/cr50/servo_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-01T16:36:49Z",
+      "side": 1,
+      "message": "We only uart_tx_disconnect() when servo is connected (lines 132-133), so we only need to uart_tx_connect() when it disconnects.\n\nUART RX is handled separately in the EC/AP state machines.",
+      "parentUuid": "1f2bea8c_e02a6c41",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 27
+      },
+      "revId": "2b3fa454992488da4837a87d9666efca560e7f77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
