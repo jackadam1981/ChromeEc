@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b937a3f5_55e4bbb1",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-01T01:59:26Z",
+      "side": 1,
+      "message": "one or two vertices\n\n(I find it slightly clearer that way)",
+      "range": {
+        "startLine": 934,
+        "startChar": 4,
+        "endLine": 934,
+        "endChar": 28
+      },
+      "revId": "f3857c97ad5b677b5bb77052ab57e01eea25c2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df00a436_efb19814",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-01T01:59:26Z",
+      "side": 1,
+      "message": "I\u0027d rather have the positive branch first, i.e.\n\nif remove_path[position] is curr_func:",
+      "revId": "f3857c97ad5b677b5bb77052ab57e01eea25c2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2055f7d_6d0875b4",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1066,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-01T01:59:26Z",
+      "side": 1,
+      "message": "You can do this unconditionally and then test\n\nif new_positions[index] \u003d\u003d len(remove_path):",
+      "revId": "f3857c97ad5b677b5bb77052ab57e01eea25c2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9d44d5_d0795a2c",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-01T01:59:26Z",
+      "side": 1,
+      "message": ", and we rely on user-provided annotations to break the cycle, after which the result will be accurate again.",
+      "revId": "f3857c97ad5b677b5bb77052ab57e01eea25c2b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
