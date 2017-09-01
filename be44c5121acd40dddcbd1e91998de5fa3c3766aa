@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d863f9dd_1baccb8c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-01T21:40:27Z",
+      "side": 1,
+      "message": "set_ec_on() / set_ap_on().",
+      "parentUuid": "ff1baf05_34e0b509",
+      "range": {
+        "startLine": 126,
+        "startChar": 8,
+        "endLine": 126,
+        "endChar": 10
+      },
+      "revId": "be44c5121acd40dddcbd1e91998de5fa3c3766aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d0b95a9_1ef85023",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-01T20:19:25Z",
       "side": 1,
       "message": "Why do some of the ccd capabilities get enabled before usb_init and some after? I think usb_init should happen first? Or last?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 25
+      },
+      "revId": "be44c5121acd40dddcbd1e91998de5fa3c3766aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d306153_0760c451",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-01T21:40:27Z",
+      "side": 1,
+      "message": "This mirrors the current call sequence, to make testing easier.  I can reorder the functions in a follow-up CL (and actually, I do, when all this collapses into ccd_update_state()...)",
+      "parentUuid": "4d0b95a9_1ef85023",
       "range": {
         "startLine": 117,
         "startChar": 0,
