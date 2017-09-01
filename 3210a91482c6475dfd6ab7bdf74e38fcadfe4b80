@@ -22,6 +22,30 @@
       "revId": "3210a91482c6475dfd6ab7bdf74e38fcadfe4b80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9305f787_9eb06d6e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-01T01:32:46Z",
+      "side": 1,
+      "message": "IIUC it\u0027s not 100% necessary on eve, but it might be good to backport it in case we decide to disable LOW_POWER_IDLE and end up hitting this again.\n\nI think it\u0027s fine as-is, I\u0027ll let Scott/Duncan decide if they want to backport.",
+      "parentUuid": "d2764eda_12d9e974",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "3210a91482c6475dfd6ab7bdf74e38fcadfe4b80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
