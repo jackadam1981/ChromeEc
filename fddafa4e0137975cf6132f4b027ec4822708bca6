@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e58bec69_13c64db2",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1109744
+      },
+      "writtenOn": "2017-09-01T01:40:37Z",
+      "side": 1,
+      "message": "May I check that do you mean setting odr and ec rate to 0 and we only use it when HOST command sets SENSOR_CONFIG_AP?",
+      "parentUuid": "f74670f8_66661e64",
+      "revId": "fddafa4e0137975cf6132f4b027ec4822708bca6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e54ec37b_94c3dcc3",
         "filename": "board/kahlee/board.c",
         "patchSetId": 1
