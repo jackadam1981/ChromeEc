@@ -11,6 +11,7 @@
 #include "console.h"
 #include "cpu.h"
 #include "dma.h"
+#include "ec_version.h"
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -964,6 +965,9 @@ static int command_version(int argc, char **argv)
 #endif
 
 	system_print_extended_version_info();
+#ifdef CROS_BRANCH_NAME
+	ccprintf("Branch:  %s\n", CROS_BRANCH_NAME);
+#endif
 	print_build_string();
 
 	return EC_SUCCESS;
