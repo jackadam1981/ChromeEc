@@ -22,6 +22,30 @@
       "revId": "2e01779ad3551ec388e1f73ac335b6f440b1e94d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bf531f2_482e9818",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1477,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-09-02T01:33:25Z",
+      "side": 1,
+      "message": "I feel like it\u0027s okay since the stress test is kind of a debug feature. Plus, I assume any new designs using the charger are probably using the newer 56.",
+      "parentUuid": "65224a6e_a9d52f47",
+      "range": {
+        "startLine": 1477,
+        "startChar": 20,
+        "endLine": 1477,
+        "endChar": 21
+      },
+      "revId": "2e01779ad3551ec388e1f73ac335b6f440b1e94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
