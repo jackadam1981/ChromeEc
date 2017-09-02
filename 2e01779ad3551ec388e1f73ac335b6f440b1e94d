@@ -46,6 +46,30 @@
       "revId": "2e01779ad3551ec388e1f73ac335b6f440b1e94d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c388b20c_7968e8fa",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1477,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-02T16:10:48Z",
+      "side": 1,
+      "message": "Yes, in addition, the latest versions of all boards we support on TOT use the 56 (including nefario). I added the comment in case we switch to a new rev part someday (57?).\n\nI did check the datasheet for an alternative read register that would return a constant value (regardless of chip ver), but nothing stood out.",
+      "parentUuid": "4bf531f2_482e9818",
+      "range": {
+        "startLine": 1477,
+        "startChar": 20,
+        "endLine": 1477,
+        "endChar": 21
+      },
+      "revId": "2e01779ad3551ec388e1f73ac335b6f440b1e94d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
