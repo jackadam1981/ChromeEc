@@ -5,6 +5,7 @@
 
 #include "config.h"
 
+#include "board_id.h"
 #include "byteorder.h"
 #include "compile_time_macros.h"
 #include "console.h"
@@ -179,10 +180,11 @@ static int new_is_older(const struct SignedHeader *new,
 
 /*
  * Check if this chunk of data is a rollback attempt, or is unaligned and
- * overlaps RO or RW header.
+ * overlaps RO or RW header, or would cause a board ID mismatch if attempted
+ * to run.
  *
- * Return False if this is such an attempt or an overlap, when in prod mode;
- * otherwise return True.
+ * Return False if there is any of the above problems and set the passed in
+ * error_code pointer to the proper error_code.
  */
 static int contents_allowed(uint32_t block_offset,
 			    size_t body_size, void *upgrade_data,
@@ -190,6 +192,7 @@ static int contents_allowed(uint32_t block_offset,
 {
 	/* Pointer to RO or RW header in flash, to compare against. */
 	const struct SignedHeader *header;
+	int is_rw_header = 0;
 
 	if (block_offset == valid_sections.ro_base_offset) {
 		header = (const struct SignedHeader *)
@@ -197,6 +200,7 @@ static int contents_allowed(uint32_t block_offset,
 	} else if (block_offset == valid_sections.rw_base_offset) {
 		header = (const struct SignedHeader *)
 			get_program_memory_addr(system_get_image_copy());
+		is_rw_header = 1;
 	} else {
 
 		/*
@@ -242,6 +246,12 @@ static int contents_allowed(uint32_t block_offset,
 	if (new_is_older(upgrade_data, header)) {
 		CPRINTF("%s: rejecting an older header.\n", __func__);
 		*error_code = UPGRADE_ROLLBACK_ERROR;
+		return 0;
+	}
+
+	if (is_rw_header && board_id_mismatch(upgrade_data)) {
+		CPRINTF("%s: rejecting Board ID mismatch.\n", __func__);
+		*error_code = UPGRADE_BOARD_ID_ERROR;
 		return 0;
 	}
 
