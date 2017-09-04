@@ -37,6 +37,7 @@ struct board_batt_params {
 #define DEFAULT_BATTERY_TYPE BATTERY_SANYO
 static enum battery_present batt_pres_prev = BP_NOT_SURE;
 static enum battery_type board_battery_type = BATTERY_TYPE_COUNT;
+static int disch_on_ac;
 
 /*
  * Battery info for LG A50. Note that the fields start_charging_min/max and
@@ -214,7 +215,7 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 
 int charger_profile_override(struct charge_state_data *curr)
 {
-	int disch_on_ac = charger_should_discharge_on_ac(curr);
+	disch_on_ac = charger_should_discharge_on_ac(curr);
 
 	charger_discharge_on_ac(disch_on_ac);
 
@@ -286,7 +287,44 @@ int board_battery_initialized(void)
 enum ec_status charger_profile_override_get_param(uint32_t param,
 						  uint32_t *value)
 {
-	return EC_RES_INVALID_PARAM;
+	/* For custom debug
+	 * 0x10001 : chg_ctl_mode
+	 * 0x10002 : manual_mode
+	 * 0x10003 : battery_seems_to_be_dead
+	 * 0x10004 : battery_seems_to_be_disconnected
+	 * 0x10005 : battery_was_removed
+	 * 0x10006 : charger_should_discharge_on_ac
+	 * 0x10007 : DFET
+	 */
+
+	switch(param) {
+	case 0x10001:
+		*value = charge_get_chg_ctl_mode();
+		break;
+	case 0x10002:
+		*value = charge_get_manual_mode();
+		break;
+	case 0x10003:
+		*value = charge_get_battery_seems_to_be_dead();
+		break;
+	case 0x10004:
+		*value = charge_get_battery_seems_to_be_disconnected();
+		break;
+	case 0x10005:
+		*value = charge_get_battery_was_removed();
+		break;
+	case 0x10006:
+		*value = disch_on_ac;
+		break;
+	case 0x10007:
+		*value = 0;	/* Change#616620 */
+		break;
+	default:
+		*value = 0;
+	}
+	ccprintf("param= 0x%x, value=%d\n", param, *value);
+
+	return EC_SUCCESS;
 }
 
 enum ec_status charger_profile_override_set_param(uint32_t param,
