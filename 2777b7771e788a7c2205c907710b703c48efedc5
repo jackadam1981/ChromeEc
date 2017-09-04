@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "93fe3082_a5f5cfd1",
+        "filename": "power/rk3399.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1121105
+      },
+      "writtenOn": "2017-09-04T07:41:35Z",
+      "side": 0,
+      "message": "Oh, we hadn\u0027t suported the S3_USB_WAKE on GRU devices yet.\n\nFeels free add/delete it, that\u0027s no any impact.",
+      "parentUuid": "96877cff_76560ab0",
+      "revId": "2777b7771e788a7c2205c907710b703c48efedc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f50592c_cd273974",
         "filename": "power/rk3399.c",
         "patchSetId": 3
