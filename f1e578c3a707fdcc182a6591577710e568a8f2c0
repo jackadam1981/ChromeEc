@@ -16,6 +16,24 @@
       "revId": "f1e578c3a707fdcc182a6591577710e568a8f2c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f199691_4f7d0ec4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-04T11:45:35Z",
+      "side": 1,
+      "message": "Huh, this was to make sure struct touchpad_info does not exceed 64 bytes (which would introduce extra complexity), but I think we\u0027d only use 50 bytes even with this.\n\nI\u0027ll try shipping the full 32 bytes again, not sure why I reduced it in the first place.",
+      "parentUuid": "e08bbb22_136bfc0f",
+      "revId": "f1e578c3a707fdcc182a6591577710e568a8f2c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
