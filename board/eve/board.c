@@ -366,6 +366,9 @@ static void board_pmic_init(void)
 	if (board_get_version() <= BOARD_VERSION_DVTB)
 		i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x18, 0x80);
 
+	/* VCCIOCNT - set to 0.85V and forced PWM operating mode */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x33);
+
 	if (system_jumped_to_this_image())
 		return;
 
@@ -374,9 +377,6 @@ static void board_pmic_init(void)
 
 	/* DISCHGCNT3 - enable 100 ohm discharge on V1.00A */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3e, 0x04);
-
-	/* Set CSDECAYEN / VCCIO decays to 0V at assertion of SLP_S0# */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x7a);
 
 	/*
 	 * Set V100ACNT / V1.00A Control Register:
