@@ -70,6 +70,30 @@
       "revId": "1cb04976bae11075ef9757fd0901e17fd80a2a66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0305fe8_f4b7b16c",
+        "filename": "power/rk3399.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1121105
+      },
+      "writtenOn": "2017-09-04T09:03:18Z",
+      "side": 0,
+      "message": "Don\u0027t worry, due to the POWER_S3S0 always run the s3s0_power_seq, so we needn\u0027t modify it.\n\n\n..\n\tcase POWER_S3S0:\n#ifdef S3_USB_WAKE\n\t\t/* Bring up S3 USB wake rails, if they are down */\n\t\tif (!usb_wake_enabled)\n\t\t\tpower_seq_run(s3s0_usb_wake_power_seq,\n\t\t\t\t      ARRAY_SIZE(s3s0_usb_wake_power_seq));\n\t\tusb_wake_enabled \u003d 0;\n#endif\n\t\tpower_seq_run(s3s0_power_seq, ARRAY_SIZE(s3s0_power_seq));",
+      "parentUuid": "d1a10915_1c26ee86",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "1cb04976bae11075ef9757fd0901e17fd80a2a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
