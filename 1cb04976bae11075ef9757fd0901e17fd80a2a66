@@ -22,6 +22,30 @@
       "revId": "1cb04976bae11075ef9757fd0901e17fd80a2a66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cf4146e_1df74552",
+        "filename": "power/rk3399.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1121105
+      },
+      "writtenOn": "2017-09-04T08:47:25Z",
+      "side": 0,
+      "message": "I don\u0027t think we need remove it, ensure the pp900 power rail .\nMaybe rmove it into the other place, but this only a hack patch.",
+      "parentUuid": "07ed7aa5_22802e76",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "1cb04976bae11075ef9757fd0901e17fd80a2a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
