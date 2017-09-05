@@ -6,7 +6,7 @@
 
 #include "common.h"
 #include "ec_version.h"
-#include "touchpad.h"
+#include "charge_state_v2.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "hwtimer.h"
@@ -16,10 +16,13 @@
 #include "printf.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "queue.h"
+#include "queue_policies.h"
 #include "registers.h"
 #include "rollback.h"
 #include "system.h"
 #include "task.h"
+#include "touchpad.h"
 #include "timer.h"
 #include "update_fw.h"
 #include "usart-stm32f0.h"
@@ -30,6 +33,9 @@
 #include "util.h"
 
 #include "gpio_list.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #ifdef SECTION_IS_RW
 #define CROS_EC_SECTION "RW"
@@ -104,12 +110,205 @@ struct keyboard_scan_config keyscan_config = {
 #endif
 #endif
 
+#if defined(BOARD_WAND) && defined(SECTION_IS_RW)
+struct consumer const ec_ec_usart_consumer;
+static struct usart_config const ec_ec_usart;
+
+static struct queue const ec_ec_usart_input = QUEUE_DIRECT(64, uint8_t,
+				ec_ec_usart.producer, ec_ec_usart_consumer);
+static struct queue const ec_ec_usart_output = QUEUE_DIRECT(64, uint8_t,
+				null_producer, ec_ec_usart.consumer);
+
+static void ec_ec_usart_written(struct consumer const *consumer, size_t count)
+{
+	/*CPRINTS("%s %d", __func__, count);*/
+	task_wake(TASK_ID_ECCOMM);
+}
+
+static void ec_ec_usart_flush(struct consumer const *consumer)
+{
+	CPRINTS("%s", __func__);
+}
+
+#include "battery.h"
+#include "crc8.h"
+#include "ec_comm.h"
+
+struct ec_response_battery_static_info base_battery_static;
+struct ec_response_battery_dynamic_info base_battery_dynamic;
+
+static void flush_queue(void)
+{
+	while (queue_count(&ec_ec_usart_input) > 0) {
+		queue_advance_head(&ec_ec_usart_input,
+				queue_count(&ec_ec_usart_input));
+		usleep(1*MSEC);
+	}
+}
+
+static void write_reply(uint16_t res, int seq, uint8_t *data, int len)
+{
+	struct ec_host_response4 header;
+	uint8_t crc;
+
+	memset(&header, 0, sizeof(header));
+	header.fields0 =
+		4 | /* version */
+		EC_PACKET4_0_IS_RESPONSE_MASK | /* is_response */
+		(seq << EC_PACKET4_0_SEQ_NUM_SHIFT); /* seq_num */
+	header.fields1 =
+		EC_PACKET4_1_DATA_CRC_PRESENT_MASK; /* data_crc_present */
+	header.result = res;
+	header.data_len = len;
+	header.header_crc =
+		crc8((uint8_t *)&header, sizeof(header)-1);
+	QUEUE_ADD_UNITS(&ec_ec_usart_output,
+			(uint8_t *)&header, sizeof(header));
+
+	QUEUE_ADD_UNITS(&ec_ec_usart_output, data, len);
+	crc = crc8(data, len);
+	QUEUE_ADD_UNITS(&ec_ec_usart_output, &crc, sizeof(crc));
+}
+
+void ec_comm_task(void *u)
+{
+	/* FIXME: Enough to contain any command. */
+	uint8_t command[24];
+	struct ec_host_request4 *header = (void *)&command[0];
+	unsigned int len, seq, hascrc;
+
+	while (1) {
+		task_wait_event(-1);
+
+		if (queue_count(&ec_ec_usart_input) == 0)
+			continue;
+
+		if (queue_count(&ec_ec_usart_input) > 0 &&
+			queue_count(&ec_ec_usart_input) < sizeof(*header)) {
+			usleep(1000);
+		}
+
+		if (queue_count(&ec_ec_usart_input) < sizeof(*header)) {
+			flush_queue();
+			continue;
+		}
+
+		QUEUE_REMOVE_UNITS(&ec_ec_usart_input,
+				(void *)header, sizeof(*header));
+
+#if 0
+		CPRINTS("%s f0=%02x f1=%02x cmd=%02x, length=%d", __func__,
+			header->fields0, header->fields1,
+			header->command, header->data_len);
+#endif
+
+		/* Ignore response */
+		if (header->fields0 & EC_PACKET4_0_IS_RESPONSE_MASK) {
+			flush_queue();
+			continue;
+		}
+
+		/* FIXME: Validate other fields. */
+		if (header->header_crc !=
+				crc8((uint8_t *)header, sizeof(*header)-1)) {
+			CPRINTS("%s crc error", __func__);
+			flush_queue();
+			continue;
+		}
+
+		len = header->data_len;
+		hascrc = header->fields1 & EC_PACKET4_1_DATA_CRC_PRESENT_MASK;
+		if (hascrc)
+			len += 1;
+
+		/* Flush on errors. */
+		if (len > (sizeof(command) - sizeof(*header))) {
+			CPRINTS("%s len error", __func__);
+			flush_queue();
+			continue;
+		}
+
+		seq = (header->fields0 & EC_PACKET4_0_SEQ_NUM_MASK) >>
+			EC_PACKET4_0_SEQ_NUM_SHIFT;
+
+		/* FIXME: Add timeout */
+		while (queue_count(&ec_ec_usart_input) < len) {
+			udelay(10);
+		}
+
+		QUEUE_REMOVE_UNITS(&ec_ec_usart_input,
+				(void *)&command[sizeof(*header)], len);
+
+		/* FIXME: Check data CRC!! */
+
+		if (header->command == EC_CMD_BATTERY_GET_STATIC) {
+			write_reply(EC_RES_SUCCESS, seq,
+				(void *)&base_battery_static,
+				sizeof(base_battery_static));
+		} else if (header->command == EC_CMD_BATTERY_GET_DYNAMIC) {
+			write_reply(EC_RES_SUCCESS, seq,
+				(void *)&base_battery_dynamic,
+				sizeof(base_battery_dynamic));
+		} else if (header->command == EC_CMD_CHARGER_CONTROL) {
+			/* FIXME: Sanity check command length */
+			struct ec_params_charger_control *params =
+				(void *)&command[sizeof(*header)];
+			struct ec_response_charger_control response;
+
+			if (params->max_current >= 0) {
+				charger_enable_otg_power(0);
+				charge_set_input_current_limit(
+					params->max_current, 1 /*FIXME*/);
+			} else {
+				/* FIXME: reset to minimum */
+				charge_set_input_current_limit(
+					128, 1 /*FIXME*/);
+				/* Do OTG */
+				charger_set_otg_current_voltage(
+					-params->max_current,
+					params->otg_voltage);
+				charger_enable_otg_power(1);
+			}
+
+			write_reply(EC_RES_SUCCESS, seq,
+				(void *)&response, sizeof(response));
+		} else {
+			flush_queue();
+		}
+	}
+}
+
+struct consumer const ec_ec_usart_consumer = {
+	.queue = &ec_ec_usart_input,
+	.ops   = &((struct consumer_ops const) {
+		.written = ec_ec_usart_written,
+		.flush   = ec_ec_usart_flush,
+	}),
+};
+
+static struct usart_config const ec_ec_usart =
+	USART_CONFIG(EC_EC_UART,
+		usart_rx_interrupt,
+		usart_tx_interrupt,
+		115200,
+		USART_CONFIG_FLAG_HDSEL,
+		ec_ec_usart_input,
+		ec_ec_usart_output);
+#endif /* BOARD_WAND && SECTION_IS_RW */
+
 /******************************************************************************
  * Initialize board.
  */
 static void board_init(void)
 {
+#if defined(BOARD_WAND) && defined(SECTION_IS_RW)
+	/* USB to serial queues */
+	queue_init(&ec_ec_usart_input);
+	queue_init(&ec_ec_usart_output);
 
+	/* UART init */
+	usart_init(&ec_ec_usart);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
