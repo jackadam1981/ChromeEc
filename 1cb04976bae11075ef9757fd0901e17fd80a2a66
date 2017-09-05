@@ -94,6 +94,30 @@
       "revId": "1cb04976bae11075ef9757fd0901e17fd80a2a66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c7719d_a1ddbccd",
+        "filename": "power/rk3399.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-05T16:53:29Z",
+      "side": 0,
+      "message": "With your proposed change, GPIO_PP900_S0_EN gets turned on here and never turned off. So, you\u0027re now creating different sequences between (cold boot) -\u003e S5 -\u003e S3 -\u003e S0 and then subsequent S5 -\u003e S3 -\u003e S0. If you\u0027re turning the rail on, you should turn it off somewhere. If you need it on for suspend, you should turn it on in S5S3 and off in S3S5.",
+      "parentUuid": "c0305fe8_f4b7b16c",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "1cb04976bae11075ef9757fd0901e17fd80a2a66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

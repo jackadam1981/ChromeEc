@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe2c9f95_e4915182",
+        "filename": "power/rk3399.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-05T16:53:29Z",
+      "side": 1,
+      "message": "Replace with:\n\n/* TODO(b/65270978): add GPIO_PP900_S0_EN control later. */\n\nAnd, no need to dupe the comment 3 times.",
+      "range": {
+        "startLine": 161,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 4
+      },
+      "revId": "3403566c5256d1d03ac454f27022e4af3e9fe5c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
