@@ -72,7 +72,13 @@
 #define CONFIG_UART_CONSOLE 1
 
 /* Optional features */
+/*
+ * TODO(b:65697962): Reenable low-power-idle on wand without breaking EC-EC
+ * communication
+ */
+#ifndef BOARD_WAND
 #define CONFIG_LOW_POWER_IDLE
+#endif
 #define CONFIG_LTO
 #define CONFIG_FORCE_CONSOLE_RESUME
 #define CONFIG_STM_HWTIMER32
@@ -217,6 +223,16 @@
  */
 #define I2C_PORT_CHARGER        0
 #define I2C_PORT_BATTERY        0
+
+#ifdef BOARD_WAND
+#define CONFIG_EC_EC_UART usart3_hw
+#define CONFIG_STREAM_USART3
+#define CONFIG_STREAM_USART
+
+#define CONFIG_EC_COMM
+#define CONFIG_EC_COMM_BATTERY_SLAVE
+#define CONFIG_HW_CRC
+#endif
 #endif
 
 #else /* SECTION_IS_RO */
