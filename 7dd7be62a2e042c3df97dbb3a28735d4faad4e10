@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8564dd9c_90092c00",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-09-05T12:00:22Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/608370 already defines a system_get_sku_id in system.h.\n\nThe SKU ID handling also needs to integrate into what\u0027s already there, otherwise we have two independent things called \"sku id\", which will confuse everybody.",
+      "revId": "7dd7be62a2e042c3df97dbb3a28735d4faad4e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
