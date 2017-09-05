@@ -250,6 +250,30 @@
       "revId": "0612aea910e9f29718154706af49ee454063cb37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260d5ce0_f7f28446",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-09-05T16:24:31Z",
+      "side": 1,
+      "message": "system_get_sku_id() is only implemented for boards where the SKU is read from the EC itself.\n\nFor the SKU-comes-from-AP use case (that you implement), the board won\u0027t provide its own function, so the from-AP code can provide that function instead.",
+      "parentUuid": "d2075dc8_50e135af",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 37
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
