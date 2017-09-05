@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "49e69dc4_64276174",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-05T15:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f8e44b9_618eb55e",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 27
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "264424b8_394fb247",
         "filename": "common/system.c",
         "patchSetId": 1
@@ -82,6 +106,30 @@
       "writtenOn": "2017-09-05T13:32:16Z",
       "side": 1,
       "message": "Instead of making this a separate function, just call it system_get_sku_id()",
+      "range": {
+        "startLine": 789,
+        "startChar": 9,
+        "endLine": 789,
+        "endChar": 30
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34ce5250_0e163a97",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-05T15:54:03Z",
+      "side": 1,
+      "message": "Do you mean the function name similar to system_get_sku_id(), right?",
+      "parentUuid": "264424b8_394fb247",
       "range": {
         "startLine": 789,
         "startChar": 9,
@@ -134,6 +182,30 @@
     },
     {
       "key": {
+        "uuid": "ae946476_db80f4ed",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-05T15:54:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df95a6da_809df9da",
+      "range": {
+        "startLine": 1499,
+        "startChar": 7,
+        "endLine": 1499,
+        "endChar": 22
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e649382f_165bc24c",
         "filename": "include/system.h",
         "patchSetId": 1
@@ -145,6 +217,30 @@
       "writtenOn": "2017-09-05T13:10:23Z",
       "side": 1,
       "message": "it\u0027s very unclear to me why we need 2 different function names here.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 37
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2075dc8_50e135af",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-05T15:54:03Z",
+      "side": 1,
+      "message": "system_get_sku_id() defines from board, system_get_soc_sku_id just return the SOC SKU ID used for other sub function. Do you have any idea for this if we don\u0027t need 2 different name?",
+      "parentUuid": "e649382f_165bc24c",
       "range": {
         "startLine": 221,
         "startChar": 0,
