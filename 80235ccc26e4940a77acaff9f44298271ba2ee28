@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b4b6483_86041b03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-05T11:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42b22424_52afbd8a",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "80235ccc26e4940a77acaff9f44298271ba2ee28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ea43dc2_9a937481",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-05T09:44:24Z",
       "side": 1,
       "message": "new command ID should be on ToT first else there is a risk of conflict.\n(on top of that, here there will be a useless merge conflict with EC_CMD_GET_SKU_ID)",
+      "range": {
+        "startLine": 1083,
+        "startChar": 0,
+        "endLine": 1083,
+        "endChar": 32
+      },
+      "revId": "80235ccc26e4940a77acaff9f44298271ba2ee28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a42da71b_59d9cf22",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-05T11:00:16Z",
+      "side": 1,
+      "message": "I will upload the CL for the command to ToT to make sure we do not have conflict problem.",
+      "parentUuid": "9ea43dc2_9a937481",
       "range": {
         "startLine": 1083,
         "startChar": 0,
