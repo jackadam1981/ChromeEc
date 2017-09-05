@@ -16,6 +16,24 @@
       "revId": "7dd7be62a2e042c3df97dbb3a28735d4faad4e10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b031b0b_4a01c74e",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-05T12:21:53Z",
+      "side": 1,
+      "message": "yes, this may confuse with \"sku id\", I will update new CL to ToT.",
+      "parentUuid": "8564dd9c_90092c00",
+      "revId": "7dd7be62a2e042c3df97dbb3a28735d4faad4e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
