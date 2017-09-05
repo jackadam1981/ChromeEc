@@ -6,7 +6,7 @@
 
 #include "common.h"
 #include "ec_version.h"
-#include "touchpad_elan.h"
+#include "charge_state_v2.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "hwtimer.h"
@@ -16,10 +16,13 @@
 #include "printf.h"
 #include "pwm.h"
 #include "pwm_chip.h"
+#include "queue.h"
+#include "queue_policies.h"
 #include "registers.h"
 #include "rollback.h"
 #include "system.h"
 #include "task.h"
+#include "touchpad_elan.h"
 #include "timer.h"
 #include "update_fw.h"
 #include "usart-stm32f0.h"
@@ -30,6 +33,9 @@
 #include "util.h"
 
 #include "gpio_list.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #ifdef SECTION_IS_RW
 #define CROS_EC_SECTION "RW"
@@ -110,12 +116,179 @@ struct keyboard_scan_config keyscan_config = {
 #endif
 #endif
 
+#if defined(BOARD_WAND) && defined(SECTION_IS_RW)
+struct consumer const usart3_consumer;
+static struct usart_config const usart3;
+
+static struct queue const usart3_input = QUEUE_DIRECT(64, uint8_t,
+					usart3.producer, usart3_consumer);
+static struct queue const usart3_output = QUEUE_DIRECT(64, uint8_t,
+					null_producer, usart3.consumer);
+
+static void usart3_written(struct consumer const *consumer, size_t count)
+{
+	/*CPRINTS("%s %d", __func__, count);*/
+	task_wake(TASK_ID_ECCOMM);
+}
+
+static void usart3_flush(struct consumer const *consumer)
+{
+	CPRINTS("%s", __func__);
+}
+
+#include "battery.h"
+#include "crc.h"
+#include "ec_comm.h"
+
+struct ec_comm_static_info base_static;
+struct ec_comm_dynamic_info base_dynamic;
+
+static void flush_queue(void)
+{
+	while (queue_count(&usart3_input) > 0) {
+		queue_advance_head(&usart3_input, queue_count(&usart3_input));
+		usleep(1*MSEC);
+	}
+}
+
+static void add_data(uint32_t *data, int len)
+{
+	int i;
+
+	for (i = 0; i < len; i++) {
+		crc32_hash32(data[i]);
+		QUEUE_ADD_UNITS(&usart3_output, &data[i], 4);
+	}
+}
+
+static void write_reply(uint8_t cmd, int seq, uint32_t *data, int len)
+{
+	struct ec_comm_header header;
+	uint32_t crc32;
+
+	memset(&header, 0, sizeof(header));
+
+	header.direction = EC_COMM_DIR_IN;
+	header.seq = seq;
+	header.version = EC_COMM_VERSION;
+	header.cmd = cmd;
+	header.length = len/4;
+	crc32_init();
+	add_data((void *)&header, 1);
+	add_data(data, len/4);
+	crc32 = crc32_result();
+	QUEUE_ADD_UNITS(&usart3_output, (void *)&crc32, sizeof(crc32));
+}
+
+void ec_comm_task(void *u)
+{
+	uint32_t command[4];
+	struct ec_comm_header *header = (void *)&command[0];
+	int len;
+	//uint32_t crc32;
+
+	while (1) {
+		task_wait_event(-1);
+
+		if (queue_count(&usart3_input) == 0)
+			continue;
+
+		if (queue_count(&usart3_input) > 0 &&
+			queue_count(&usart3_input) < 4) {
+			usleep(1000);
+		}
+
+		if (queue_count(&usart3_input) < 4) {
+			flush_queue();
+			continue;
+		}
+
+		QUEUE_REMOVE_UNITS(&usart3_input, (void *)header, 4);
+
+#if 0
+		CPRINTS("%s dir=%02x cmd=%02x, length=%d", __func__,
+			header->direction, header->cmd, header->length);
+#endif
+
+		len = 4*(header->length+1);
+
+		/* Flush on errors. */
+		if (len > (sizeof(command) - 4) || len < 0 ||
+				header->direction != EC_COMM_DIR_OUT ||
+				header->version != EC_COMM_VERSION) {
+			flush_queue();
+			continue;
+		}
+
+		/* FIXME: Add timeout */
+		while (queue_count(&usart3_input) < len) {
+			udelay(10);
+		}
+
+		QUEUE_REMOVE_UNITS(&usart3_input, (void *)&command[1], len);
+
+		/* FIXME: Check CRC!! */
+
+		if (header->cmd == EC_COMM_STATIC_INFO) {
+			write_reply(EC_COMM_STATIC_INFO, header->seq,
+				(void *)&base_static, sizeof(base_static));
+		} else if (header->cmd == EC_COMM_DYNAMIC_INFO) {
+			write_reply(EC_COMM_DYNAMIC_INFO, header->seq,
+				(void *)&base_dynamic, sizeof(base_dynamic));
+		} else if (header->cmd == EC_COMM_CHARGER_CONTROL) {
+			/* FIXME: Sanity check command length */
+			struct ec_comm_charger_control *ctrl =
+				(void *)&command[1];
+			if (ctrl->max_current >= 0) {
+				charger_set_otg_current_voltage(0, 5000);
+				charge_set_input_current_limit(ctrl->max_current, 1 /*FIXME*/);
+			} else {
+				/* FIXME: reset to minimum */
+				charge_set_input_current_limit(128, 1 /*FIXME*/);
+				/* Do OTG */
+				charger_set_otg_current_voltage(
+					-ctrl->max_current, ctrl->otg_voltage);
+			}
+			/* FIXME: rewrite ctrl. */
+			write_reply(EC_COMM_CHARGER_CONTROL, header->seq,
+				(void *)ctrl, sizeof(*ctrl));
+		} else {
+			flush_queue();
+		}
+	}
+}
+
+struct consumer const usart3_consumer = {
+	.queue = &usart3_input,
+	.ops   = &((struct consumer_ops const) {
+		.written = usart3_written,
+		.flush   = usart3_flush,
+	}),
+};
+
+static struct usart_config const usart3 =
+	USART_CONFIG(usart3_hw,
+		usart_rx_interrupt,
+		usart_tx_interrupt,
+		115200,
+		USART_CONFIG_FLAG_RX_INV | USART_CONFIG_FLAG_TX_INV,
+		usart3_input,
+		usart3_output);
+#endif /* BOARD_WAND && SECTION_IS_RW */
+
 /******************************************************************************
  * Initialize board.
  */
 static void board_init(void)
 {
+#if defined(BOARD_WAND) && defined(SECTION_IS_RW)
+	/* USB to serial queues */
+	queue_init(&usart3_input);
+	queue_init(&usart3_output);
 
+	/* UART init */
+	usart_init(&usart3);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
