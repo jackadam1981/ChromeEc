@@ -71,6 +71,46 @@
     },
     {
       "key": {
+        "uuid": "264424b8_394fb247",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-09-05T13:32:16Z",
+      "side": 1,
+      "message": "Instead of making this a separate function, just call it system_get_sku_id()",
+      "range": {
+        "startLine": 789,
+        "startChar": 9,
+        "endLine": 789,
+        "endChar": 30
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f872cd82_f68605d3",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-09-05T13:32:16Z",
+      "side": 1,
+      "message": "... that way it is called here, avoiding that we have two things doing the same, just slightly different.",
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df95a6da_809df9da",
         "filename": "include/config.h",
         "patchSetId": 1
