@@ -540,4 +540,6 @@ uint32_t system_board_properties_callback(void);
  */
 int system_rolling_reboot_suspected(void);
 
+uint32_t system_get_sku_id(void);
+
 #endif  /* __CROS_EC_SYSTEM_H */

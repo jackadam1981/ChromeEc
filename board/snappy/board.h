@@ -271,6 +271,7 @@ enum sensor_id {
 	BASE_MAG,
 };
 
+#define CONFIG_HOSTCMD_SKUID
 enum snappy_board_version {
 	BOARD_VERSION_UNKNOWN = -1,
 	BOARD_VERSION_1,
