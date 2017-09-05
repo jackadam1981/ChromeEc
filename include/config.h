@@ -1267,6 +1267,9 @@
 /* Board supports RTC host commands*/
 #undef CONFIG_HOSTCMD_RTC
 
+/* Host command to push SKU ID to ec */
+#undef CONFIG_HOSTCMD_SKUID
+
 /*****************************************************************************/
 
 /* Enable debugging and profiling statistics for hook functions */

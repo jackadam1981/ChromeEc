@@ -1079,6 +1079,13 @@ struct __ec_align4 ec_response_get_features {
 	uint32_t flags[2];
 };
 
+/* SET the board's SKU ID to EC */
+#define EC_CMD_SET_SKU_ID 0x000F
+
+struct __ec_align4 ec_params_set_sku_id {
+	uint32_t sku_id;
+};
+
 /*****************************************************************************/
 /* Flash commands */
 

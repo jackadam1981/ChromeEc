@@ -98,6 +98,8 @@ static enum ec_reboot_cmd reboot_at_shutdown;
 /* On-going actions preventing going into deep-sleep mode */
 uint32_t sleep_mask;
 
+static uint32_t sku_id;
+
 /**
  * Return the program memory address where the image `copy` begins or should
  * begin. In the case of external storage, the image may or may not currently
@@ -808,6 +810,11 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 	}
 }
 
+uint32_t system_get_sku_id(void)
+{
+	return sku_id;
+}
+
 /*****************************************************************************/
 /* Hooks */
 
@@ -1148,6 +1155,18 @@ DECLARE_CONSOLE_COMMAND(jumptags, command_jumptags,
 			"List jump tags");
 #endif /* CONFIG_CMD_JUMPTAGS */
 
+#ifdef CONFIG_HOSTCMD_SKUID
+static int command_sku_id(int argc, char **argv)
+{
+	ccprintf("SKU ID: %d\n", system_get_sku_id());
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sku_id, command_sku_id,
+			NULL,
+			"Get sku id");
+#endif
+
 /*****************************************************************************/
 /* Host commands */
 
@@ -1179,6 +1198,20 @@ static int host_command_get_version(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_GET_VERSION,
 		     host_command_get_version,
 		     EC_VER_MASK(0));
+
+#ifdef CONFIG_HOSTCMD_SKUID
+static int host_command_set_sku_id(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_set_sku_id *p = args->params;
+
+	sku_id = p->sku_id;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_SET_SKU_ID,
+		     host_command_set_sku_id,
+		     EC_VER_MASK(0));
+#endif
 
 static int host_command_build_info(struct host_cmd_handler_args *args)
 {
