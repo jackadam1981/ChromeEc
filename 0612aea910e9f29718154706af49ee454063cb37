@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19f3e8ab_cdae3cdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-05T13:10:23Z",
+      "side": 1,
+      "message": "I put the design questions in the bug",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef11d5fb_4ea616fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-05T13:10:23Z",
+      "side": 1,
+      "message": "Probably \u0027BRANCH\u003dreef\u0027 given your previous CL",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8e44b9_618eb55e",
+        "filename": "common/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-05T13:10:23Z",
+      "side": 1,
+      "message": "you can put it next to system_get_soc_sku_id()",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 27
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df95a6da_809df9da",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-05T13:10:23Z",
+      "side": 1,
+      "message": "nit: putting the acronyms (SKU, SOC, ID) in uppercase is a bit clearer.",
+      "range": {
+        "startLine": 1499,
+        "startChar": 7,
+        "endLine": 1499,
+        "endChar": 22
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e649382f_165bc24c",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-05T13:10:23Z",
+      "side": 1,
+      "message": "it\u0027s very unclear to me why we need 2 different function names here.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 37
+      },
+      "revId": "0612aea910e9f29718154706af49ee454063cb37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
