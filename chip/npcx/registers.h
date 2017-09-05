@@ -1814,27 +1814,32 @@ static inline void npcx_uart2gpio(void)
 {
 #if NPCX_UART_MODULE2
 	UPDATE_BIT(NPCX_WKEDG(1, 6), 4, 1);
-	CLEAR_BIT(NPCX_DEVALT(0x0C), NPCX_DEVALTC_UART_SL2);
 #else
 	UPDATE_BIT(NPCX_WKEDG(1, 1), 0, 1);
-	CLEAR_BIT(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL1);
 #endif
+	CLEAR_BIT(NPCX_DEVALT(0x0C), NPCX_DEVALTC_UART_SL2);
+	CLEAR_BIT(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL1);
 }
 #endif
 
 /* This routine switches the functionality from GPIO to UART rx */
-static inline void npcx_gpio2uart(void)
+static inline void npcx_gpio2uart(int pad)
 {
-#if NPCX_UART_MODULE2
-	CLEAR_BIT(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL1);
-	SET_BIT(NPCX_DEVALT(0x0C), NPCX_DEVALTC_UART_SL2);
-#else
+	if (NPCX_UART_MODULE2 ^ pad) {
+		CLEAR_BIT(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL1);
+		SET_BIT(NPCX_DEVALT(0x0C), NPCX_DEVALTC_UART_SL2);
+		UPDATE_BIT(NPCX_WKEDG(1, 1), 0, 1);
+	} else {
 #if defined(CHIP_FAMILY_NPCX7)
-	/* UART module 1 belongs to KSO since wake-up functionality in npcx7. */
-	CLEAR_BIT(NPCX_DEVALT(0x09), NPCX_DEVALT9_NO_KSO09_SL);
+		/* UART module 1 belongs to KSO since wake-up functionality in
+		 * npcx7. */
+		CLEAR_BIT(NPCX_DEVALT(0x09), NPCX_DEVALT9_NO_KSO09_SL);
+#else
+		CLEAR_BIT(NPCX_DEVALT(0x0C), NPCX_DEVALTC_UART_SL2);
 #endif
-	SET_BIT(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL1);
-#endif
+		SET_BIT(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL1);
+		UPDATE_BIT(NPCX_WKEDG(1, 6), 4, 1);
+	}
 }
 
 /* Wake pin definitions, defined at board-level */
