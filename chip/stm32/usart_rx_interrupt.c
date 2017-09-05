@@ -11,6 +11,10 @@
 #include "common.h"
 #include "queue.h"
 #include "registers.h"
+#include "console.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 static void usart_rx_init(struct usart_config const *config)
 {

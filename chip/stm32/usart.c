@@ -13,10 +13,15 @@
 #include "task.h"
 #include "usart.h"
 #include "util.h"
+#include "console.h"
+
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 void usart_init(struct usart_config const *config)
 {
 	intptr_t base = config->hw->base;
+	int index = config->hw->index;
 
 	/*
 	 * Enable clock to USART, this must be done first, before attempting
@@ -43,6 +48,12 @@ void usart_init(struct usart_config const *config)
 	STM32_USART_CR1(base) = 0x0000;
 	STM32_USART_CR2(base) = 0x0000;
 	STM32_USART_CR3(base) = 0x0000;
+
+	/* FIXME: Make this better and configurable. */
+	if (index == 2) { /* usart3 */
+		STM32_USART_CR1(base) = 0x0000;
+		STM32_USART_CR2(base) = (1 << 16) | (1 << 17); /* RXINV, TXINV */
+	}
 
 	/*
 	 * Enable the RX, TX, and variant specific HW.
