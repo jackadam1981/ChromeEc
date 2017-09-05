@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b00df06d_a73b1005",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1381,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-05T17:08:19Z",
+      "side": 1,
+      "message": "It might be cleaner replace all of these functions with a single function that fills in a struct with all the state parameters you need, something like \n\ncharge_debug_get_state(struct charger_state *state)\n{\n  state-\u003echg_ctl_mode \u003d chg_ctl_mode;\n  state-\u003emanual_mode \u003d manual_mode;\n  ...\n}",
+      "range": {
+        "startLine": 1362,
+        "startChar": 0,
+        "endLine": 1381,
+        "endChar": 1
+      },
+      "revId": "01de7529644c0bbb18db4a7013a0d538f79997e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8838a0fa_99fcf088",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-05T17:08:19Z",
+      "side": 1,
+      "message": "If you replace all of these with the single function I suggested, please add a comment with input / output / return value (similar to prototypes above).",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 41
+      },
+      "revId": "01de7529644c0bbb18db4a7013a0d538f79997e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34bb1579_e64f33fb",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-05T17:08:19Z",
+      "side": 1,
+      "message": "You may need to revise this comment.",
+      "range": {
+        "startLine": 323,
+        "startChar": 16,
+        "endLine": 323,
+        "endChar": 43
+      },
+      "revId": "01de7529644c0bbb18db4a7013a0d538f79997e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5acd31b9_f321364a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-05T17:08:19Z",
+      "side": 1,
+      "message": "Let\u0027s change this to \"CONFIG_CHARGE_STATE_DEBUG\".",
+      "range": {
+        "startLine": 325,
+        "startChar": 7,
+        "endLine": 325,
+        "endChar": 27
+      },
+      "revId": "01de7529644c0bbb18db4a7013a0d538f79997e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
