@@ -246,4 +246,41 @@ int uart_comx_putc_ok(void);
  */
 void uart_comx_putc(int c);
 
+/*
+ * Functions for pad switching UART, only defined on some chips (npcx), and
+ * if CONFIG_UART_PAD_SWITCH is enabled.
+ */
+enum uart_pad {
+	UART_DEFAULT_PAD = 0,
+	UART_ALTERNATE_PAD = 1,
+};
+
+/*
+ * Set UART pad to default or alternate pad. Normal users should not call this
+ * function, and instead use uart_alt_pad_read_write function below.
+ */
+void uart_set_pad(enum uart_pad newpad);
+
+/**
+ * Specialized function to write then read data on UART alternate pad.
+ * to alternate pad. The transfer may be interrupted at any time if data
+ * is received on the main pad.
+ *
+ * @param tx		Data to be sent
+ * @param tx_len	Length of data to be sent
+ * @param rx		Buffer to receive data
+ * @param rx_len	Receive buffer length
+ * @param timeout_us	Timeout in microseconds for the transaction to complete.
+ */
+int uart_alt_pad_read_write(uint8_t *tx, int tx_len, uint8_t *rx, int rx_len,
+			int timeout_us);
+
+/**
+ * Interrupt handler for default UART RX pin transition when UART is switched
+ * to alternate pad.
+ *
+ * @param signal	Signal which triggered the interrupt.
+ */
+void uart_default_pad_rx_interrupt(enum gpio_signal signal);
+
 #endif  /* __CROS_EC_UART_H */

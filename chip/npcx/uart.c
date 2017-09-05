@@ -9,15 +9,51 @@
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
+#include "hwtimer.h"
 #include "lpc.h"
 #include "registers.h"
 #include "clock_chip.h"
 #include "system.h"
 #include "task.h"
+#include "timer.h"
 #include "uart.h"
 #include "util.h"
 
 static int init_done;
+
+#ifdef CONFIG_UART_PAD_SWITCH
+/* Current pad: 0 for default pad, 1 for alternate. */
+static volatile enum uart_pad pad;
+
+/*
+ * When switched to alternate pad, read/write data according to the parameters
+ * below.
+ */
+static volatile uint8_t *altpad_rx_buf;
+static volatile int altpad_rx_pos;
+static volatile int altpad_rx_len;
+static volatile uint8_t *altpad_tx_buf;
+static volatile int altpad_tx_pos;
+static volatile int altpad_tx_len;
+
+/*
+ * Time we last received a byte on default UART, we do not allow use of
+ * alternate pad for block_alt_timeout_us after that, to make sure input
+ * characters are not lost (eitehr interactively, or though servod/FAFT).
+ */
+static timestamp_t last_default_pad_rx_time;
+
+static const uint32_t block_alt_timeout_us = 500*MSEC;
+#endif
+
+static inline enum uart_pad get_current_pad(void)
+{
+#ifdef CONFIG_UART_PAD_SWITCH
+	return pad;
+#else
+	return UART_DEFAULT_PAD;
+#endif
+}
 
 int uart_init_done(void)
 {
@@ -28,11 +64,11 @@ void uart_tx_start(void)
 {
 	/* We needn't to switch uart from gpio again in npcx7. */
 #if defined(CHIP_FAMILY_NPCX5)
-	if (uart_is_enable_wakeup()) {
+	if (uart_is_enable_wakeup() && get_current_pad() == UART_DEFAULT_PAD) {
 		/* disable MIWU */
 		uart_enable_wakeup(0);
 		/* Set pin-mask for UART */
-		npcx_gpio2uart();
+		npcx_gpio2uart(0);
 		/* enable uart again from MIWU mode */
 		task_enable_irq(NPCX_IRQ_UART);
 	}
@@ -88,15 +124,21 @@ int uart_tx_in_progress(void)
 int uart_rx_available(void)
 {
 	uint8_t ctrl = NPCX_UICTRL;
+	if (ctrl & 0x02) {
 #ifdef CONFIG_LOW_POWER_IDLE
-	/*
-	 * Activity seen on UART RX pin while UART was disabled for deep sleep.
-	 * The console won't see that character because the UART is disabled,
-	 * so we need to inform the clock module of UART activity ourselves.
-	 */
-	if (ctrl & 0x02)
+		/*
+		 * Activity seen on UART RX pin while UART was disabled for deep
+		 * sleep. The console won't see that character because the UART
+		 * is disabled, so we need to inform the clock module of UART
+		 * activity ourselves.
+		 */
 		clock_refresh_console_in_use();
 #endif
+#ifdef CONFIG_UART_PAD_SWITCH
+		if (get_current_pad() == UART_DEFAULT_PAD)
+			last_default_pad_rx_time = get_time();
+#endif
+	}
 	return ctrl & 0x02; /* If RX FIFO is empty return '0'*/
 }
 
@@ -114,7 +156,7 @@ int uart_read_char(void)
 	return NPCX_URBUF;
 }
 
-static void uart_clear_rx_fifo(int channel)
+void uart_clear_rx_fifo(int channel)
 {
 	int scratch __attribute__ ((unused));
 	if (channel == 0) { /* suppose '0' is EC UART*/
@@ -129,11 +171,126 @@ static void uart_clear_rx_fifo(int channel)
  */
 void uart_ec_interrupt(void)
 {
+#ifdef CONFIG_UART_PAD_SWITCH
+	if (pad == UART_ALTERNATE_PAD) {
+		if (uart_rx_available()) {
+			uint8_t c = uart_read_char();
+
+			if (altpad_rx_pos < altpad_rx_len)
+				altpad_rx_buf[altpad_rx_pos++] = c;
+		}
+		if (uart_tx_ready()) {
+			if (altpad_tx_pos < altpad_tx_len)
+				uart_write_char(altpad_tx_buf[altpad_tx_pos++]);
+			else
+				uart_tx_stop();
+		}
+		return;
+	}
+#endif
+
+	/* Default pad. */
 	/* Read input FIFO until empty, then fill output FIFO */
 	uart_process_input();
 	uart_process_output();
 }
 DECLARE_IRQ(NPCX_IRQ_UART, uart_ec_interrupt, 0);
+
+#ifdef CONFIG_UART_PAD_SWITCH
+void uart_set_pad(enum uart_pad newpad)
+{
+	NPCX_UICTRL = 0x00;
+	task_disable_irq(NPCX_IRQ_UART);
+
+	/* Flush the last byte */
+	uart_tx_flush();
+	uart_tx_stop();
+
+	/* Flush the FIFO. */
+	uart_clear_rx_fifo(0);
+
+	pad = newpad;
+
+	npcx_gpio2uart(pad);
+
+	/* Probably redundant. */
+	uart_clear_rx_fifo(0);
+
+	NPCX_UICTRL = 0x40;
+	task_enable_irq(NPCX_IRQ_UART);
+}
+
+void uart_default_pad_rx_interrupt(enum gpio_signal signal)
+{
+	/*
+	 * We received an interrupt on the primary pad, give up on the
+	 * transaction and switch back.
+	 */
+	gpio_disable_interrupt(GPIO_UART_MAIN_RX);
+	uart_set_pad(UART_DEFAULT_PAD);
+	last_default_pad_rx_time = get_time();
+}
+
+int uart_alt_pad_read_write(uint8_t *tx, int tx_len, uint8_t *rx, int rx_len,
+			    int timeout_us)
+{
+	uint32_t start = __hw_clock_source_read();
+	uint32_t delta;
+	int ret = 0;
+
+	if ((get_time().val - last_default_pad_rx_time.val)
+			< block_alt_timeout_us)
+		return -EC_ERROR_BUSY;
+
+	cflush();
+
+	altpad_rx_buf = rx;
+	altpad_rx_pos = 0;
+	altpad_rx_len = rx_len;
+	altpad_tx_buf = tx;
+	altpad_tx_pos = 0;
+	altpad_tx_len = tx_len;
+
+	uart_set_pad(UART_ALTERNATE_PAD);
+	gpio_clear_pending_interrupt(GPIO_UART_MAIN_RX);
+	gpio_enable_interrupt(GPIO_UART_MAIN_RX);
+	uart_tx_start();
+
+	do {
+		/* Pad switched during transaction. */
+		if (pad != UART_ALTERNATE_PAD) {
+			ret = -EC_ERROR_BUSY;
+			goto out;
+		}
+
+		if (altpad_rx_pos == altpad_rx_len &&
+		    altpad_tx_pos == altpad_tx_len)
+			break;
+
+		delta = __hw_clock_source_read() - start;
+
+		usleep(100);
+	} while (delta < timeout_us);
+
+	gpio_disable_interrupt(GPIO_UART_MAIN_RX);
+	uart_set_pad(UART_DEFAULT_PAD);
+
+	if (altpad_tx_pos == altpad_tx_len)
+		ret = altpad_rx_pos;
+	else
+		ret = -EC_ERROR_TIMEOUT;
+
+out:
+	altpad_rx_len = 0;
+	altpad_rx_pos = 0;
+	altpad_rx_buf = NULL;
+	altpad_tx_len = 0;
+	altpad_tx_pos = 0;
+	altpad_tx_buf = NULL;
+
+	return ret;
+}
+#endif
 
 static void uart_config(void)
 {
@@ -185,7 +342,7 @@ void uart_init(void)
 	clock_enable_peripheral(CGC_OFFSET_UART, mask, CGC_MODE_ALL);
 
 	/* Set pin-mask for UART */
-	npcx_gpio2uart();
+	npcx_gpio2uart(0);
 
 	/* Configure UARTs (identically) */
 	uart_config();
