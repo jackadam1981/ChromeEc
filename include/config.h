@@ -1496,6 +1496,9 @@
 /* EC controls the board's SKU ID and can report that to the AP */
 #undef CONFIG_HOSTCMD_SKUID
 
+/* Get sku id from soc side */
+#undef CONFIG_HOSTCMD_SOC_SKUID
+
 /*****************************************************************************/
 
 /* Enable debugging and profiling statistics for hook functions */

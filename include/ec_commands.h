@@ -1126,6 +1126,13 @@ struct __ec_align4 ec_response_sku_id {
 	uint32_t sku_id;
 };
 
+/* SET the SOC SKU ID to EC */
+#define EC_CMD_SET_SKU_ID 0x000F
+
+struct __ec_align4 ec_params_set_sku_id {
+	uint32_t sku_id;
+};
+
 /*****************************************************************************/
 /* Flash commands */
 
