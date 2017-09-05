@@ -34,6 +34,24 @@
       "revId": "7dd7be62a2e042c3df97dbb3a28735d4faad4e10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87cc03b8_db3429c4",
+        "filename": "include/system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-05T15:44:15Z",
+      "side": 1,
+      "message": "What you\u0027ll need to add on ToT is a \u0027set sku id\u0027 command that is symmetric with the \u0027get\u0027 one. It should, however, be guarded by a config I suspect. Also, you\u0027ll need to handle maintaining sku id across sysjump. Otherwise we\u0027ll need to always set the sku id after any sysjump which is not really possible.",
+      "parentUuid": "2b031b0b_4a01c74e",
+      "revId": "7dd7be62a2e042c3df97dbb3a28735d4faad4e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
