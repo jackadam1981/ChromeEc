@@ -105,6 +105,8 @@ static int read_and_hash_chunk(int offset, int size)
 #define SHA256_PRINT_SIZE 4
 #endif
 
+int command_task_info(int argc, char **argv);
+
 /**
  * Do next chunk of hashing work, if any.
  */
@@ -137,6 +139,8 @@ static void vboot_hash_next_chunk(void)
 		/* Store the final hash */
 		hash = SHA256_final(&ctx);
 		CPRINTS("hash done %.*h", SHA256_PRINT_SIZE, hash);
+
+		command_task_info(0, NULL);
 
 		in_progress = 0;
 
