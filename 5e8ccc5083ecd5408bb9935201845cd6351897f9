@@ -22,6 +22,30 @@
       "revId": "5e8ccc5083ecd5408bb9935201845cd6351897f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cecc078_151039ff",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-09-06T22:05:57Z",
+      "side": 1,
+      "message": "This corresponds to the cases where we\u0027re not in the \"disconnected\" or \"disconnected debounce\" states in our PD state machine. I believe it should cover the presentation of pullup/downs.",
+      "parentUuid": "4c86494b_c5c2f5e6",
+      "range": {
+        "startLine": 373,
+        "startChar": 24,
+        "endLine": 373,
+        "endChar": 39
+      },
+      "revId": "5e8ccc5083ecd5408bb9935201845cd6351897f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
