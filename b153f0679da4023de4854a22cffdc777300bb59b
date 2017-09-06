@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "023ae2c3_04e2b17f",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T00:53:35Z",
+      "side": 1,
+      "message": "Why do we care about init_rx_only here?",
+      "range": {
+        "startLine": 31,
+        "startChar": 31,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "229dccac_27268f64",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T00:53:35Z",
+      "side": 1,
+      "message": "Should this be ec_rx?\n\nIt seems like we need enable_uart_ec, enable_uart_ec_rx, and enable_uart_ec_tx.\n\nOk. I read a bit further down and I see that UART is only either RX-only or RX\u0026TX. So UART_EC is ok, but I think ec_is_rx_allowed should be ec_is_uart_allowed or something. Since disabling rx will disable the entire ec uart. This is also more in line with uartn_is_enabled and uart_tx_is_enabled.",
+      "range": {
+        "startLine": 181,
+        "startChar": 32,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9283b26_f9628e74",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T00:53:35Z",
+      "side": 1,
+      "message": "Does order matter here?",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 31
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f82081c0_8035277a",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T00:53:35Z",
+      "side": 1,
+      "message": "And because of line 224 we don\u0027t care about order here?",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 31
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33b89138_9d12869d",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T00:53:35Z",
+      "side": 1,
+      "message": "Add a comment that this pin is one of the real open drain pins, and we have no ability to drive it high or pull it up.",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77d189dd_d0372270",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T00:53:35Z",
+      "side": 1,
+      "message": "At some point we should change this to parse_bool",
+      "range": {
+        "startLine": 421,
+        "startChar": 8,
+        "endLine": 421,
+        "endChar": 18
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c63fafca_3886d0ad",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T00:53:35Z",
+      "side": 1,
+      "message": "Can we do Cr50RXECTX just to be clear?",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 123,
+        "endChar": 15
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
