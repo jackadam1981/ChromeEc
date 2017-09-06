@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27a6fe34_eb7f8c08",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-09-06T17:40:01Z",
+      "side": 1,
+      "message": "More precisely: \"failed to launch trunks_send\". Sending hasn\u0027t been attempted at this point, and may fail later.",
+      "range": {
+        "startLine": 304,
+        "startChar": 35,
+        "endLine": 304,
+        "endChar": 45
+      },
+      "revId": "f591e0c3d22571a9fb38ae9cd9bbe58f6925d706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42ffac84_df8207c9",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-09-06T17:40:01Z",
+      "side": 1,
+      "message": "pclose may return a non-zero exit code from trunks_send. Probably worth checking here. Will likely fail later anyways, since either the response will contain non-hex symbols, or will be empty, but good to fail early.",
+      "range": {
+        "startLine": 326,
+        "startChar": 1,
+        "endLine": 326,
+        "endChar": 7
+      },
+      "revId": "f591e0c3d22571a9fb38ae9cd9bbe58f6925d706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
