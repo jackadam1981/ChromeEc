@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "90d01566_7599d55b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T22:02:05Z",
+      "side": 1,
+      "message": "We are absolutely sure we dont want to have \u0027ccd lock\u0027 just print the lock state and \u0027ccd lock enable\u0027 actually lock ccd.\n\nOr change the command to ccd lockenable so we know thats the intent of the user.\n\nIt is ccd testlab just gets the state of ccd testlab and ccd testlab enable enables test lab mode. So I think ccd lockenable \n\nUltimately I am fine with either. But I am not sure if it is immediately clear ccd lock enables the lock.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "2b557261b443630143d51f6a541475530949c6e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bfd9d0e7_2b388e8f",
         "filename": "common/ccd_config.c",
         "patchSetId": 2
