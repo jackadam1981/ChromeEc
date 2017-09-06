@@ -4,11 +4,13 @@
  *
  * AP state machine
  */
+#include "ccd_config.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "system.h"
+//#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
