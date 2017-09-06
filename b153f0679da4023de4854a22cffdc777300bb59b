@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9641a6d7_91fb236d",
+        "filename": "board/cr50/ec_state.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-06T18:30:28Z",
+      "side": 1,
+      "message": "During the first second of boot, we only allow ECRX so that we can detect servo.\n\nThe code in ccd_update_state() needs to know it\u0027s ok to allow RX in that case, but not TX.",
+      "parentUuid": "023ae2c3_04e2b17f",
+      "range": {
+        "startLine": 31,
+        "startChar": 31,
+        "endLine": 31,
+        "endChar": 56
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "229dccac_27268f64",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 21
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-06T00:53:35Z",
       "side": 1,
       "message": "Should this be ec_rx?\n\nIt seems like we need enable_uart_ec, enable_uart_ec_rx, and enable_uart_ec_tx.\n\nOk. I read a bit further down and I see that UART is only either RX-only or RX\u0026TX. So UART_EC is ok, but I think ec_is_rx_allowed should be ec_is_uart_allowed or something. Since disabling rx will disable the entire ec uart. This is also more in line with uartn_is_enabled and uart_tx_is_enabled.",
+      "range": {
+        "startLine": 181,
+        "startChar": 32,
+        "endLine": 181,
+        "endChar": 34
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be230d75_e5eedc38",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-06T18:30:28Z",
+      "side": 1,
+      "message": "Well, RX is what\u0027s allowed.  It just happens that right now, if RX is not allowed, TX isn\u0027t either.  But that\u0027s an artifact of the UART control here, not of the EC state machine.\n\nAdded more comments where the flags are defined.",
+      "parentUuid": "229dccac_27268f64",
       "range": {
         "startLine": 181,
         "startChar": 32,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "44fddbda_23306091",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-06T18:30:28Z",
+      "side": 1,
+      "message": "No; TX disconnect just disconnects the pinmux.",
+      "parentUuid": "d9283b26_f9628e74",
+      "range": {
+        "startLine": 243,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 31
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f82081c0_8035277a",
         "filename": "board/cr50/rdd.c",
         "patchSetId": 21
@@ -82,6 +154,30 @@
       "writtenOn": "2017-09-06T00:53:35Z",
       "side": 1,
       "message": "And because of line 224 we don\u0027t care about order here?",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 31
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb5b1ba1_11adc7e1",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-06T18:30:28Z",
+      "side": 1,
+      "message": "Correct.  If bitbang is enabled, we won\u0027t enable TX.",
+      "parentUuid": "f82081c0_8035277a",
       "range": {
         "startLine": 268,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b7103f4c_4df15b9e",
+        "filename": "board/cr50/usb_i2c.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-06T18:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33b89138_9d12869d",
+      "range": {
+        "startLine": 22,
+        "startChar": 26,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77d189dd_d0372270",
         "filename": "chip/g/uart_bitbang.c",
         "patchSetId": 21
@@ -128,6 +248,30 @@
       "writtenOn": "2017-09-06T00:53:35Z",
       "side": 1,
       "message": "At some point we should change this to parse_bool",
+      "range": {
+        "startLine": 421,
+        "startChar": 8,
+        "endLine": 421,
+        "endChar": 18
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53d113a3_4436ce4e",
+        "filename": "chip/g/uart_bitbang.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-06T18:30:28Z",
+      "side": 1,
+      "message": "We\u0027d need to change the enable command below too.  Right now, it\u0027s\n\nbitbang 2 \u003cbaud\u003e \u003cparity\u003e\nbitbang 2 disable\n\nThough the latter could just be \u0027bitbang disable\u0027, because we can only enable one port at a time, and the port argument is ignored here...",
+      "parentUuid": "77d189dd_d0372270",
       "range": {
         "startLine": 421,
         "startChar": 8,
@@ -160,6 +304,53 @@
       "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f791a0d4_2b6510ab",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-06T18:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c63fafca_3886d0ad",
+      "range": {
+        "startLine": 123,
+        "startChar": 7,
+        "endLine": 123,
+        "endChar": 15
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ac758d3_2c632f68",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-06T18:30:28Z",
+      "side": 1,
+      "message": "Maybe should use \u0027Gsc\u0027 here, to be more future-proof?",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 131,
+        "endChar": 7
+      },
+      "revId": "b153f0679da4023de4854a22cffdc777300bb59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
