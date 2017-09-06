@@ -2096,6 +2096,9 @@
 /* Support computing of other hash sizes (without the VBOOT code) */
 #undef CONFIG_SHA256
 
+/* Unroll some loops in SHA256_transform for better performance. */
+#undef CONFIG_SHA256_OPTIMIZED
+
 /* Emulate the CLZ (Count Leading Zeros) in software for CPU lacking support */
 #undef CONFIG_SOFTWARE_CLZ
 
