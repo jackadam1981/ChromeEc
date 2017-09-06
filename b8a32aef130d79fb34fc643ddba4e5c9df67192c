@@ -22,6 +22,52 @@
       "revId": "b8a32aef130d79fb34fc643ddba4e5c9df67192c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8903d46_f445d7a2",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T22:09:36Z",
+      "side": 1,
+      "message": "Change the year",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "b8a32aef130d79fb34fc643ddba4e5c9df67192c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a31583_4bfa36ed",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T22:09:36Z",
+      "side": 1,
+      "message": "Should this be CASE_CLOSED_DEBUG_V1?",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b8a32aef130d79fb34fc643ddba4e5c9df67192c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
