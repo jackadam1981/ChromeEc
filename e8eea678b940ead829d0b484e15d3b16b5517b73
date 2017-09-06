@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7d419e2_fde73bd2",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-09-06T03:58:24Z",
+      "side": 1,
+      "message": "Might make more sense in the platform/ec directory, so it will build on desktop when you (presumably) pull only the ec git branch to build?",
+      "range": {
+        "startLine": 74,
+        "startChar": 47,
+        "endLine": 74,
+        "endChar": 58
+      },
+      "revId": "e8eea678b940ead829d0b484e15d3b16b5517b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
