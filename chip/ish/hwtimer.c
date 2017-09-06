@@ -39,6 +39,25 @@ void __hw_clock_event_set(uint32_t deadline)
 	HPET_TIMER_CONF_CAP(1) |= HPET_Tn_INT_ENB_CNF;
 }
 
+#ifdef CONFIG_LOW_POWER_IDLE
+/* this timer wakes CPU from 'hlt' while in idle/low power state */
+void __hw_clock_wake_set(uint32_t deadline)
+{
+#if defined(CHIP_FAMILY_ISH3)
+	HPET_TIMER_COMP(2) = deadline * CLOCK_FACTOR;
+#else
+	HPET_TIMER_COMP(2) = deadline;
+#endif
+	HPET_TIMER_CONF_CAP(2) |= HPET_Tn_INT_ENB_CNF;
+}
+
+void __hw_clock_wake_clear(void)
+{
+	HPET_TIMER_CONF_CAP(2) &= ~HPET_Tn_INT_ENB_CNF;
+}
+#endif /* #ifdef CONFIG_LOW_POWER_IDLE */
+
+
 uint32_t __hw_clock_event_get(void)
 {
 	return last_deadline;
@@ -80,8 +99,13 @@ static void __hw_clock_source_irq(int timer_id)
 	/* Clear interrupt */
 	HPET_INTR_CLEAR = (1 << timer_id);
 
-	/* If IRQ is from timer 0, 32-bit timer overflowed */
-	process_timers(timer_id == 0);
+	/*
+	 * If IRQ is from timer 0, 32-bit timer overflowed;
+	 * timer 2 is for idle wake up only, should not be processed
+	 * by OS.
+	 */
+	if (timer_id < 2)
+		process_timers(timer_id == 0);
 }
 
 void __hw_clock_source_irq_0(void)
@@ -96,6 +120,15 @@ void __hw_clock_source_irq_1(void)
 }
 DECLARE_IRQ(ISH_HPET_TIMER1_IRQ, __hw_clock_source_irq_1);
 
+#ifdef CONFIG_LOW_POWER_IDLE
+void __hw_clock_source_irq_2(void)
+{
+	__hw_clock_source_irq(2);
+}
+DECLARE_IRQ(ISH_HPET_TIMER2_IRQ, __hw_clock_source_irq_2);
+#endif
+
+
 int __hw_clock_source_init(uint32_t start_t)
 {
 
@@ -104,10 +137,14 @@ int __hw_clock_source_init(uint32_t start_t)
 	 * Therefore we need two timers:
 	 *   - Timer 0 as free running timer
 	 *   - Timer 1 as event timer
+	 *   - Timer 2 as wakeup timer during idle
 	 */
 
 	uint32_t timer0_config = 0x00000000;
 	uint32_t timer1_config = 0x00000000;
+#ifdef CONFIG_LOW_POWER_IDLE
+	uint32_t timer2_config = 0x00000000;
+#endif
 
 	/* Disable HPET */
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
@@ -138,11 +175,7 @@ int __hw_clock_source_init(uint32_t start_t)
 #endif
 	timer0_config |= HPET_Tn_VAL_SET_CNF;
 
-	/* Timer 0 - IRQ routing, no need IRQ set for HPET0 */
-	timer0_config &= ~HPET_Tn_INT_ROUTE_CNF_MASK;
-
 	/* Timer 1 - IRQ routing */
-	timer1_config &= ~HPET_Tn_INT_ROUTE_CNF_MASK;
 	timer1_config |= (ISH_HPET_TIMER1_IRQ <<
 				HPET_Tn_INT_ROUTE_CNF_SHIFT);
 
@@ -154,13 +187,23 @@ int __hw_clock_source_init(uint32_t start_t)
 	timer0_config |= HPET_Tn_INT_ENB_CNF;
 	timer1_config |= HPET_Tn_INT_ENB_CNF;
 
-	/* Unask HPET IRQ in IOAPIC */
+	/* Unmask HPET IRQ in IOAPIC */
 	task_enable_irq(ISH_HPET_TIMER0_IRQ);
 	task_enable_irq(ISH_HPET_TIMER1_IRQ);
 
 	/* Set timer 0/1 config */
 	HPET_TIMER_CONF_CAP(0) |= timer0_config;
 	HPET_TIMER_CONF_CAP(1) |= timer1_config;
+
+#ifdef CONFIG_LOW_POWER_IDLE
+	/* Timer 2 configuration */
+	timer2_config |= (ISH_HPET_TIMER2_IRQ <<
+				HPET_Tn_INT_ROUTE_CNF_SHIFT);
+	timer2_config |= HPET_Tn_INT_TYPE_CNF;
+	timer2_config |= HPET_Tn_INT_ENB_CNF;
+	task_enable_irq(ISH_HPET_TIMER2_IRQ);
+	HPET_TIMER_CONF_CAP(2) |= timer2_config;
+#endif
 
 #if defined(CHIP_FAMILY_ISH4) || defined(CHIP_FAMILY_ISH5)
 	/* Wait for timer to settle. required for ISH 4 */

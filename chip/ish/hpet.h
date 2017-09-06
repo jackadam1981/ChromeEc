@@ -26,11 +26,13 @@
 #define TIMER2_COMP_VAL_REG		0x148
 #define TIMER2_FSB_IR_REG		0x150
 
-/* ISH 4: Special status register
+#if defined(CHIP_FAMILY_ISH4) || defined(CHIP_FAMILY_ISH5)
+/* ISH 4/5: Special status register
  * Use this register to see HPET timer are settled after a write.
  */
 #define CONTROL_AND_STATUS_REG		0x160
 #define HPET_T_CONF_CAP_BIT		0x4
+#endif
 
 #define HPET_ENABLE_CNF			(1<<0)
 #define HPET_LEGACY_RT_CNF		(1<<1)
@@ -51,7 +53,10 @@
 #define HPET_MAIN_COUNTER	REG32(ISH_HPET_BASE + MAIN_COUNTER_REG)
 #endif
 #define HPET_INTR_CLEAR		REG32(ISH_HPET_BASE + GENERAL_INT_STAT_REG)
+
+#if defined(CHIP_FAMILY_ISH4) || defined(CHIP_FAMILY_ISH5)
 #define HPET_CTRL_STATUS	REG32(ISH_HPET_BASE + CONTROL_AND_STATUS_REG)
+#endif
 
 #define HPET_TIMER_CONF_CAP(x) \
 	REG32(ISH_HPET_BASE + TIMER0_CONF_CAP_REG + ((x) * 0x20))
