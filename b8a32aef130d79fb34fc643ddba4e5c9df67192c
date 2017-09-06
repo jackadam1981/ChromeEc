@@ -68,6 +68,30 @@
       "revId": "b8a32aef130d79fb34fc643ddba4e5c9df67192c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fbb51fb_6f0782cc",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-09-06T22:10:11Z",
+      "side": 1,
+      "message": "And should it be case_closed_debug_v1.h instead of ccd_config.h?",
+      "parentUuid": "c4a31583_4bfa36ed",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b8a32aef130d79fb34fc643ddba4e5c9df67192c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
