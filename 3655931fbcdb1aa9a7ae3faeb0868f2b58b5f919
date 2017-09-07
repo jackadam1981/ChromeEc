@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6038ce36_6bd1487f",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T20:12:55Z",
+      "side": 1,
+      "message": "Where is this \u0027wake a little earlier than event timer\u0027 enforced/done? I see no modification of deadline or how it correlates to the event timer in this code.",
+      "parentUuid": "3b825c29_56a729f0",
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11cf19ec_8c4571b8",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -78,6 +96,47 @@
         "endLine": 101,
         "endChar": 39
       },
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "153fd3d9_f348e1c8",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T20:12:55Z",
+      "side": 1,
+      "message": "Why don\u0027t you just call into __hw_clock_source_irq? I see no reason for this path to be different.",
+      "parentUuid": "f869b675_2329e1a5",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0adca605_617c4203",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T20:12:55Z",
+      "side": 1,
+      "message": "extra line",
       "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
