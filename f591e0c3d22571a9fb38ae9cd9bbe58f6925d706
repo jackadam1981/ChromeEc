@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e775b414_5ce418e1",
+        "filename": "extra/usb_updater/usb_updater.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-07T00:05:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27a6fe34_eb7f8c08",
+      "range": {
+        "startLine": 304,
+        "startChar": 35,
+        "endLine": 304,
+        "endChar": 45
+      },
+      "revId": "f591e0c3d22571a9fb38ae9cd9bbe58f6925d706",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42ffac84_df8207c9",
         "filename": "extra/usb_updater/usb_updater.c",
         "patchSetId": 3
