@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0b3a703_8a9662f7",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T05:25:52Z",
+      "side": 1,
+      "message": "What\u0027s the frequency of this timer? And why is it needed to wake up the cpu? \nAlso, the ish port still is not inline with using the correct timebase (microseconds).",
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11cf19ec_8c4571b8",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T05:25:52Z",
+      "side": 1,
+      "message": "If we\u0027re executing this code the interrupt has already been generated. We aren\u0027t generating another.",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
