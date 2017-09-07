@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "76d9068c_3d4eb9e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-07T05:56:07Z",
+      "side": 1,
+      "message": "Still not addressed.",
+      "parentUuid": "3cc22cc2_7d3f68dd",
+      "revId": "df3a086c611b6e046674cdeea76d552ef5a8b537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42c370b9_b5d648a6",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 9
