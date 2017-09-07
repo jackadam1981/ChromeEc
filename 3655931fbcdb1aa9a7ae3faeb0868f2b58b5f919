@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3b825c29_56a729f0",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-07T06:49:33Z",
+      "side": 1,
+      "message": "wake timer(hpet2) will generate interrupt a little earlier than event timer(hpet1) while CPU is in low power for recovery time purpose.\nCurrently all of HPET timers still using 12MHz(ISH3) or 32KHz(ISH4 or newer) as reference clock and still receives \u0027count\u0027 as input, not msec.  We are still working on 1 microsecond timebase.",
+      "parentUuid": "f0b3a703_8a9662f7",
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11cf19ec_8c4571b8",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2017-09-07T05:25:52Z",
       "side": 1,
       "message": "If we\u0027re executing this code the interrupt has already been generated. We aren\u0027t generating another.",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f869b675_2329e1a5",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-07T06:49:33Z",
+      "side": 1,
+      "message": "I agree. this comment might be misleading.\nI will change to:\n\" /* Do nothing. This interrupt wakes CPU from \u0027hlt\u0027. */ \"",
+      "parentUuid": "11cf19ec_8c4571b8",
       "range": {
         "startLine": 101,
         "startChar": 16,
