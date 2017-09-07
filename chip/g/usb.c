@@ -1327,8 +1327,17 @@ void usb_init(void)
 
 	/* If resuming, reinitialize the endpoints now. For a cold boot we'll
 	 * do this as part of handling the host-driven reset. */
-	if (resume)
+	if (resume) {
+		uint32_t pid = GREG32(PMU, PWRDN_SCRATCH19);
+		/* Restore DATA PIDs on endpoints */
+		for (i = 1; i < USB_EP_COUNT; i++) {
+			GR_USB_DOEPCTL(i) = pid & (1 << i) ?
+				DXEPCTL_SET_D1PID : DXEPCTL_SET_D0PID;
+			GR_USB_DIEPCTL(i) = pid & (1 << (i + 16)) ?
+				DXEPCTL_SET_D1PID : DXEPCTL_SET_D0PID;
+		}
 		usb_init_endpoints();
+	}
 
 	/* Clear any pending interrupts */
 	for (i = 0; i < 16; i++) {

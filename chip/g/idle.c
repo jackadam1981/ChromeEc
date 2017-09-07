@@ -129,8 +129,19 @@ static void prepare_to_sleep(void)
 		 * need is the device address, since everything else can be
 		 * reinitialized on resume.
 		 */
-		if (!GREAD_FIELD(USB, PCGCCTL, RSTPDWNMODULE))
+		if (!GREAD_FIELD(USB, PCGCCTL, RSTPDWNMODULE)) {
+			int i;
+			uint32_t pid = 0;
+
+			for (i = 1; i < USB_EP_COUNT; i++) {
+				if (GR_USB_DOEPCTL(i) & DXEPCTL_DPID)
+					pid |= (1 << i);
+				if (GR_USB_DIEPCTL(i) & DXEPCTL_DPID)
+					pid |= (1 << (i + 16));
+			}
 			GREG32(PMU, PWRDN_SCRATCH18) = GR_USB_DCFG;
+			GREG32(PMU, PWRDN_SCRATCH19) = pid;
+		}
 
 		/* Increment the deep sleep count */
 		GREG32(PMU, PWRDN_SCRATCH17) =
