@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4fe02cd8_b7ff9d63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-09-07T07:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaa5e714_70c0e01c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "c020d2c137856b9a15a77acce55e4f928d41611c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf61f822_b9a03bf4",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-06T17:03:07Z",
       "side": 1,
       "message": "I don\u0027t understand this example? How about \"For example, battery disconnect state\".",
+      "range": {
+        "startLine": 323,
+        "startChar": 16,
+        "endLine": 323,
+        "endChar": 47
+      },
+      "revId": "c020d2c137856b9a15a77acce55e4f928d41611c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "229a5284_e87364bd",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-09-07T07:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf61f822_b9a03bf4",
       "range": {
         "startLine": 323,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6dcea673_8899dffb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3476,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-09-07T07:51:33Z",
+      "side": 1,
+      "message": "I see.",
+      "parentUuid": "b3448178_5c9daa06",
+      "range": {
+        "startLine": 3476,
+        "startChar": 7,
+        "endLine": 3476,
+        "endChar": 32
+      },
+      "revId": "c020d2c137856b9a15a77acce55e4f928d41611c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e8f42e2_1bd9e72a",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2017-09-06T17:03:07Z",
       "side": 1,
       "message": "You might want to add ...DEBUG_MIN / ... DEBUG_MAX, so you know when to call out to the get_debug routine in your host command handler.",
+      "range": {
+        "startLine": 3478,
+        "startChar": 2,
+        "endLine": 3478,
+        "endChar": 35
+      },
+      "revId": "c020d2c137856b9a15a77acce55e4f928d41611c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9d3bb86_f53e7ee6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 3478,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-09-07T07:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e8f42e2_1bd9e72a",
       "range": {
         "startLine": 3478,
         "startChar": 2,
