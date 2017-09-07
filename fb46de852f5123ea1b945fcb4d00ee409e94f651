@@ -46,6 +46,29 @@
       "revId": "fb46de852f5123ea1b945fcb4d00ee409e94f651",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee80b22_b5c3a3c5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3173,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-07T21:04:42Z",
+      "side": 1,
+      "message": "I\u0027ll consider changing this to (HOOK_PRIO_DEFAULT + 1) so that role toggling is guaranteed to be disabled.",
+      "range": {
+        "startLine": 3173,
+        "startChar": 54,
+        "endLine": 3173,
+        "endChar": 75
+      },
+      "revId": "fb46de852f5123ea1b945fcb4d00ee409e94f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
