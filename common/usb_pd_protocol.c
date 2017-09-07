@@ -163,6 +163,10 @@ static struct pd_protocol {
 	uint16_t dev_id;
 	uint32_t dev_rw_hash[PD_RW_HASH_SIZE/4];
 	enum ec_current_image current_image;
+
+#ifdef CONFIG_LOW_POWER_IDLE
+	int in_src_discovery_since_suspend;
+#endif
 } pd[CONFIG_USB_PD_PORT_COUNT];
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -298,12 +302,26 @@ defined(CONFIG_CASE_CLOSED_DEBUG_EXTERNAL)
 }
 #endif
 
+#ifdef CONFIG_LOW_POWER_IDLE
+/* If any PD port is connected, then disable deep sleep */
+static void pd_update_sleep_mask(void)
+{
+	int i;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+		if (!pd[i].in_src_discovery_since_suspend && pd_is_connected(i))
+			break;
+
+	if (i == CONFIG_USB_PD_PORT_COUNT)
+		enable_sleep(SLEEP_MASK_USB_PD);
+	else
+		disable_sleep(SLEEP_MASK_USB_PD);
+}
+#endif
+
 static inline void set_state(int port, enum pd_states next_state)
 {
 	enum pd_states last_state = pd[port].task_state;
-#ifdef CONFIG_LOW_POWER_IDLE
-	int i;
-#endif
 
 	set_state_timeout(port, 0, 0);
 	pd[port].task_state = next_state;
@@ -362,15 +380,8 @@ static inline void set_state(int port, enum pd_states next_state)
 	}
 
 #ifdef CONFIG_LOW_POWER_IDLE
-	/* If any PD port is connected, then disable deep sleep */
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++) {
-		if (pd_is_connected(i))
-			break;
-	}
-	if (i == CONFIG_USB_PD_PORT_COUNT)
-		enable_sleep(SLEEP_MASK_USB_PD);
-	else
-		disable_sleep(SLEEP_MASK_USB_PD);
+	pd[port].in_src_discovery_since_suspend = 0;
+	pd_update_sleep_mask();
 #endif
 
 	if (debug_level >= 1)
@@ -3147,6 +3158,20 @@ static void dual_role_force_sink(void)
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, dual_role_force_sink, HOOK_PRIO_DEFAULT);
 
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
+
+#ifdef CONFIG_LOW_POWER_IDLE
+static void update_sleep_mask(void)
+{
+	int i;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+		if (pd[i].task_state == PD_STATE_SRC_DISCOVERY)
+			pd[i].in_src_discovery_since_suspend = 1;
+
+	pd_update_sleep_mask();
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, update_sleep_mask, HOOK_PRIO_DEFAULT - 1);
+#endif
 
 #ifdef CONFIG_COMMON_RUNTIME
 
