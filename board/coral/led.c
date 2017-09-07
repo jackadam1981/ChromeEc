@@ -98,7 +98,17 @@ static void led_set_battery(void)
 
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
-		led_set_color_battery(LED_AMBER);
+		/*
+		 * There's a 2% difference between the battery level
+		 * seen by the kernel and what's really going on,
+		 * so if they want to see 97%, we use 95%.
+		 * Hard code this number here, because this only affects the
+		 * LED color, not the battery charge state.
+		 */
+		if (charge_get_percent() >= 95)
+			led_set_color_battery(LED_BLUE);
+		else
+			led_set_color_battery(LED_AMBER);
 		break;
 	case PWR_STATE_DISCHARGE_FULL:
 		if (extpower_is_present()) {
