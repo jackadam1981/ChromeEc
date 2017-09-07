@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6b3c42e7_7d59bd25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-07T01:18:40Z",
+      "side": 1,
+      "message": "The only way to find out that \u0027ccd lock\u0027 is a command is now to use \u0027ccd help\u0027, which tells you that it sets the state.",
+      "parentUuid": "90d01566_7599d55b",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 9
+      },
+      "revId": "2b557261b443630143d51f6a541475530949c6e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bfd9d0e7_2b388e8f",
         "filename": "common/ccd_config.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-06T21:57:37Z",
       "side": 1,
       "message": "CCD_DISABLE",
+      "range": {
+        "startLine": 997,
+        "startChar": 18,
+        "endLine": 997,
+        "endChar": 28
+      },
+      "revId": "2b557261b443630143d51f6a541475530949c6e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2abd227_bb3a72c9",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-07T01:18:40Z",
+      "side": 1,
+      "message": "Yeah, that would make more sense now.  I\u0027ll change that in a subsequent CL.",
+      "parentUuid": "bfd9d0e7_2b388e8f",
       "range": {
         "startLine": 997,
         "startChar": 18,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "75f5102e_1968bff8",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-07T01:18:40Z",
+      "side": 1,
+      "message": "The states are printed below (lines 1016-1022).\n\nThe caps are printed if no args are specified; I\u0027ll update the help to indicate that.",
+      "parentUuid": "bed107b2_dae53660",
+      "range": {
+        "startLine": 1015,
+        "startChar": 13,
+        "endLine": 1015,
+        "endChar": 26
+      },
+      "revId": "2b557261b443630143d51f6a541475530949c6e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "129a981b_f2f186b9",
         "filename": "common/ccd_config.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-09-06T21:57:37Z",
       "side": 1,
       "message": "So help ccd prints \n[help | ...]\nConfigure case-closed debugging\n\nAnd ccd help prints command_ccd_help? Will people be able to figure out they need to do ccd help to get the real help statement?",
+      "range": {
+        "startLine": 1086,
+        "startChar": 9,
+        "endLine": 1086,
+        "endChar": 21
+      },
+      "revId": "2b557261b443630143d51f6a541475530949c6e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43ea4081_a231406c",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-07T01:18:40Z",
+      "side": 1,
+      "message": "Yeah, there\u0027s not a way to chain to subcommand help in the current console.\n\nAdded a clue in the output of \u0027ccd\u0027.",
+      "parentUuid": "129a981b_f2f186b9",
       "range": {
         "startLine": 1086,
         "startChar": 9,
