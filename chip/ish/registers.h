@@ -36,7 +36,10 @@ enum ish_i2c_port {
 #define ISH_I2C2_BASE     0x00105000
 #define ISH_UART_BASE     0x00103000
 #define ISH_GPIO_BASE     0x001F0000
+#define ISH_PMU_BASE      0x00800000
+#define ISH_CCU_BASE      0x00900000
 #define ISH_IPC_BASE      0x00B00000
+#define ISH_SBEP_BASE	  0x00D00000
 #define ISH_IOAPIC_BASE   0xFEC00000
 #define ISH_HPET_BASE     0xFED00000
 #define ISH_LAPIC_BASE    0xFEE00000
@@ -109,10 +112,29 @@ enum ish_i2c_port {
 #define IPC_PIMR                   (ISH_IPC_BASE + 0x4)
 #define IPC_ISH2HOST_MSG_REGS      (ISH_IPC_BASE + 0x60)
 #define IPC_ISH_FWSTS              (ISH_IPC_BASE + 0x34)
+#define IPC_ISH_RST_REG            (ISH_IPC_BASE + 0x44)
 #define IPC_HOST2ISH_DOORBELL      (ISH_IPC_BASE + 0x48)
 #define IPC_HOST2ISH_MSG_REGS      (ISH_IPC_BASE + 0xE0)
 #define IPC_ISH2HOST_DOORBELL      (ISH_IPC_BASE + 0x54)
 #define IPC_BUSY_CLEAR             (ISH_IPC_BASE + 0x378)
+
+/* CCU (Clock Control Unit) defs */
+/* Registers */
+#define	CCU_TRUNK_CG               (ISH_CCU_BASE + 0x00)
+    #define     CCU_TRUNK_CG_EN         (0x1)
+#define CCU_RST_HST                (ISH_CCU_BASE + 0x34)
+#define CCU_TCG_DISABLE            (ISH_CCU_BASE + 0x38)
+#define CCU_BCG_DISABLE            (ISH_CCU_BASE + 0x3C)
+
+#define PMU_ISH_FABRIC_CNT          (ISH_PMU_BASE + 0x18)
+#define PMU_RF_ROM_PWR_CTRL         (ISH_PMU_BASE + 0x30)
+    #define     PMU_RF_ROM_PG_EN    0x01
+    #define     PMU_RF_ROM_PG_DIS   0x00
+
+/* Clock gating register */
+#define SBEP_REG_CLK_GATE_ENABLE   (ISH_SBEP_BASE + 0x006C)
+    #define     SB_CLK_GATE_EN_LOCAL_CLK_GATE   0x1
+    #define     SB_CLK_GATE_EN_TRUNK_CLK_GATE   0x2
 
 /* IOAPIC registers */
 #define IOAPIC_IDX        0xFEC00000
