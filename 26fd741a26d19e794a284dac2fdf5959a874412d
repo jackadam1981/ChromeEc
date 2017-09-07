@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64ffd483_c2a1a6e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T03:09:04Z",
+      "side": 1,
+      "message": "Looks like a shutoff at ap-shutdown test is needed based on some bug commentary.",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32fe4791_ed1ad9ea",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T03:09:04Z",
+      "side": 1,
+      "message": "might not be true for all devices?",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebea4b5e_1c5843a2",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T03:09:04Z",
+      "side": 1,
+      "message": "disc is discharge? Just spell it out?",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d1735d8_c664583e",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T03:09:04Z",
+      "side": 1,
+      "message": "What does fg mean? oh. fuel gauge which I see below. spell it out?",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6266161b_41764dce",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T03:09:04Z",
+      "side": 1,
+      "message": "We can save pointers if you don\u0027t think there will be reuse of the structs. Same thing for fg_info.",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dddded9_965c6ca3",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T03:09:04Z",
+      "side": 1,
+      "message": "I don\u0027t see how this variable is ever actually used. It\u0027s just cleared to 0 based on some conditional.",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9667c26_f0375b98",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T03:09:04Z",
+      "side": 1,
+      "message": "space after { and before }",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8041804d_c0c177f3",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T03:09:04Z",
+      "side": 1,
+      "message": "These manuf_names are overly generic. Is there a model name to compare against? What about collisions?",
+      "range": {
+        "startLine": 104,
+        "startChar": 16,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e102cbca_b9bf3959",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T03:09:04Z",
+      "side": 1,
+      "message": "extra new line",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d126daa7_8bf73bfb",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-07T03:09:04Z",
+      "side": 1,
+      "message": "What happened to the reg_mask?",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
