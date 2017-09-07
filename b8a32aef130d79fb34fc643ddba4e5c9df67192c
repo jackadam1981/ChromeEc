@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45679c5d_723a5728",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-07T01:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74456d3e_d393ad97",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "b8a32aef130d79fb34fc643ddba4e5c9df67192c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8903d46_f445d7a2",
         "filename": "include/ccd_config.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-06T22:09:36Z",
       "side": 1,
       "message": "Change the year",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "b8a32aef130d79fb34fc643ddba4e5c9df67192c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed93625_344a018d",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-07T01:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8903d46_f445d7a2",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -83,6 +131,30 @@
       "side": 1,
       "message": "And should it be case_closed_debug_v1.h instead of ccd_config.h?",
       "parentUuid": "c4a31583_4bfa36ed",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "b8a32aef130d79fb34fc643ddba4e5c9df67192c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1655147_828e7c7f",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-07T01:22:55Z",
+      "side": 1,
+      "message": "No, this is the CCD config module.  CCD V1 refers to the entire refactoring including the changes to board/cr50/rdd.c, RMA, etc.",
+      "parentUuid": "4fbb51fb_6f0782cc",
       "range": {
         "startLine": 7,
         "startChar": 18,
