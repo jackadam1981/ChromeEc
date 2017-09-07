@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2471a8b2_5047b197",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3169,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-07T20:56:12Z",
+      "side": 1,
+      "message": "Once a port leaves SRC_DISCOVERY, this flag will never be set until EC goes to suspend for other reason (and hit this line again). How do we deal with a port which becomes idle in SRC_DISCOVERY again?",
+      "range": {
+        "startLine": 3169,
+        "startChar": 3,
+        "endLine": 3169,
+        "endChar": 44
+      },
+      "revId": "fb46de852f5123ea1b945fcb4d00ee409e94f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
