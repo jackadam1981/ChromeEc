@@ -22,6 +22,30 @@
       "revId": "fb46de852f5123ea1b945fcb4d00ee409e94f651",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cde9069e_fe3709d5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3169,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-07T21:02:39Z",
+      "side": 1,
+      "message": "If we\u0027re still in suspend, the port won\u0027t role toggle, so the ways out of SRC_DISCOVERY are:\n\n- Detach, in which case we\u0027ll stay a sink for as long as we\u0027re in suspend, so we\u0027ll never get back to SRC_DISCOVERY.\n\n- The port responds to our source cap, in which case it speaks PD, so we don\u0027t want to go to deep sleep (until detach, see above).",
+      "parentUuid": "2471a8b2_5047b197",
+      "range": {
+        "startLine": 3169,
+        "startChar": 3,
+        "endLine": 3169,
+        "endChar": 44
+      },
+      "revId": "fb46de852f5123ea1b945fcb4d00ee409e94f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
