@@ -31,6 +31,7 @@
 /* Charge supplier priority: lower number indicates higher priority. */
 test_mockable const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_PD] = 0,
+	[CHARGE_SUPPLIER_DEDICATED] = 0,
 	[CHARGE_SUPPLIER_TYPEC] = 1,
 	[CHARGE_SUPPLIER_PROPRIETARY] = 1,
 	[CHARGE_SUPPLIER_BC12_DCP] = 2,
