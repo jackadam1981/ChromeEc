@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "18ea612e_c980f459",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "I tested this after addressing the comments and this work with the batteries I have to test with.",
+      "parentUuid": "64ffd483_c2a1a6e0",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32fe4791_ed1ad9ea",
         "filename": "board/coral/battery.c",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "af2e309b_42ddc3bb",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "Every spec I have seen indicates that 2 writes are needed to enter cutoff mode. Some of the batteries want the same value twice, and others want 0x0 followed by 0x1.",
+      "parentUuid": "32fe4791_ed1ad9ea",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebea4b5e_1c5843a2",
         "filename": "board/coral/battery.c",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2017-09-07T03:09:04Z",
       "side": 1,
       "message": "disc is discharge? Just spell it out?",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d98edd9_074dc2ea",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "It was actually short for disconnect, so I have spelled it out to remove any ambiguity.",
+      "parentUuid": "ebea4b5e_1c5843a2",
       "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "8a3e2254_903a1086",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d1735d8_c664583e",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6266161b_41764dce",
         "filename": "board/coral/battery.c",
         "patchSetId": 4
@@ -87,6 +165,24 @@
       "writtenOn": "2017-09-07T03:09:04Z",
       "side": 1,
       "message": "We can save pointers if you don\u0027t think there will be reuse of the structs. Same thing for fg_info.",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5316114_25ba6809",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "I removed the intermediate struct instantiations and moved all the initialization to be in board_batt_params info[]. I think this format is better as there is clear demarcation for each battery\u0027s information.",
+      "parentUuid": "6266161b_41764dce",
       "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "a102717d_e2ffcb75",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "A code section was missing from the battery_is_present() function.\n\nif (!battery_report_present)\n\t\tbatt_pres \u003d BP_NO;\n\nI have fixed this.",
+      "parentUuid": "1dddded9_965c6ca3",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9667c26_f0375b98",
         "filename": "board/coral/battery.c",
         "patchSetId": 4
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "82efae7b_b189e8d5",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9667c26_f0375b98",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b330789_5f755c8f",
         "filename": "board/coral/battery.c",
         "patchSetId": 4
@@ -138,6 +270,24 @@
       "writtenOn": "2017-09-07T03:28:38Z",
       "side": 1,
       "message": "We only use D-FET for this function. Is it better to use D-FET bit only?",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "189b7c0f_42a830ad",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "This is being used to identify \"battery was in cutoff mode\" and I have not seen a case where both the charge and discharge FETs are turned off.",
+      "parentUuid": "7b330789_5f755c8f",
       "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -167,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "efb7de5c_a7d3fe6c",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "I thought about using the device name here instead, or in addition. So far in the specs we have received, there aren\u0027t collisions.",
+      "parentUuid": "8041804d_c0c177f3",
+      "range": {
+        "startLine": 104,
+        "startChar": 16,
+        "endLine": 104,
+        "endChar": 21
+      },
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e102cbca_b9bf3959",
         "filename": "board/coral/battery.c",
         "patchSetId": 4
@@ -184,6 +358,24 @@
     },
     {
       "key": {
+        "uuid": "4af2163c_19ce4310",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e102cbca_b9bf3959",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d126daa7_8bf73bfb",
         "filename": "board/coral/battery.c",
         "patchSetId": 4
@@ -195,6 +387,24 @@
       "writtenOn": "2017-09-07T03:09:04Z",
       "side": 1,
       "message": "What happened to the reg_mask?",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c487e8_52123e8f",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-07T21:28:10Z",
+      "side": 1,
+      "message": "It was there, but I think I may have inadvertently removed it when I took out a debug console print from this section. I have fixed it.",
+      "parentUuid": "d126daa7_8bf73bfb",
       "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
