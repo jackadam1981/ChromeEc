@@ -127,6 +127,23 @@
     },
     {
       "key": {
+        "uuid": "7b330789_5f755c8f",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-09-07T03:28:38Z",
+      "side": 1,
+      "message": "We only use D-FET for this function. Is it better to use D-FET bit only?",
+      "revId": "26fd741a26d19e794a284dac2fdf5959a874412d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8041804d_c0c177f3",
         "filename": "board/coral/battery.c",
         "patchSetId": 4
