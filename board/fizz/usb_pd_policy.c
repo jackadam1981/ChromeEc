@@ -46,6 +46,8 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
+extern enum charge_port input_port;
+
 int pd_is_valid_input_voltage(int mv)
 {
 	return 1;
@@ -253,7 +255,7 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 
 static void board_charge_manager_init(void)
 {
-	int input_voltage, input_port;
+	int input_voltage;
 	int i, j;
 	struct charge_port_info cpi = {
 		.voltage = USB_CHARGER_VOLTAGE_MV,
@@ -278,11 +280,9 @@ static void board_charge_manager_init(void)
 		cpi.current = 3330;	/* TODO: Set right value */
 		charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY, 1,
 					     &cpi);
-		/* Source only. Disable PD negotiation as a sink */
 		break;
 	case CHARGE_PORT_TYPEC0:
 		typec_set_input_current_limit(input_port, 3000, input_voltage);
-		/* Sink only. Disable PD negotiation as a source */
 		break;
 	}
 }

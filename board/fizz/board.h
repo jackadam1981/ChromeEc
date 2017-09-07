@@ -99,6 +99,7 @@
 #define CONFIG_USB_PD_PORT_COUNT 1
 #define CONFIG_USB_PD_QUIRK_SLOW_CC_STATUS
 #define CONFIG_USB_PD_VBUS_DETECT_GPIO
+#define CONFIG_USB_PD_TCPC_BOARD_INIT
 #define CONFIG_USB_PD_TCPC_LOW_POWER
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_TCPCI
@@ -228,7 +229,9 @@ enum button {
 int board_get_version(void);
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
+void board_tcpc_init(void);
 int board_get_battery_soc(void);
+int board_is_dual_role_locked(void);
 
 #endif /* !__ASSEMBLER__ */
 

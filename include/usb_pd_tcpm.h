@@ -282,4 +282,11 @@ int tcpc_run(int port, int evt);
  */
 int board_tcpc_post_init(int port) __attribute__((weak));
 
+/**
+ * Query if dual role state is locked or not
+ *
+ * @return True if it's locked.
+ */
+int board_is_dual_role_locked(void) __attribute__((weak));
+
 #endif /* __CROS_EC_USB_PD_TCPM_H */

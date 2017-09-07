@@ -1391,6 +1391,10 @@ DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, pd_update_try_source, HOOK_PRIO_DEFAULT);
 void pd_set_dual_role(enum pd_dual_role_states state)
 {
 	int i;
+
+	if (board_is_dual_role_locked && board_is_dual_role_locked())
+		return;
+
 	drp_state = state;
 
 #ifdef CONFIG_USB_PD_TRY_SRC

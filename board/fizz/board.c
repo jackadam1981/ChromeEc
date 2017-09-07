@@ -134,6 +134,9 @@ const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_USB5_ENABLE,
 };
 
+enum charge_port input_port;
+extern enum pd_dual_role_states drp_state;
+
 void board_reset_pd_mcu(void)
 {
 	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 0);
@@ -141,9 +144,17 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(GPIO_USB_C0_PD_RST_ODL, 1);
 }
 
+int board_is_dual_role_locked(void)
+{
+	return 1;
+}
+
 void board_tcpc_init(void)
 {
 	int port, reg;
+
+	/* Apply PD dual role state */
+	drp_state = input_port ? PD_DRP_FORCE_SOURCE : PD_DRP_FORCE_SINK;
 
 	/* Only reset TCPC if not sysjump */
 	if (!system_jumped_to_this_image()) {
@@ -173,7 +184,6 @@ void board_tcpc_init(void)
 		mux->hpd_update(port, 0, 0);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
 uint16_t tcpc_get_alert_status(void)
 {
