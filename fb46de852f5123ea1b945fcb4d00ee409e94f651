@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "58fc2f13_96124d37",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3169,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-07T23:25:30Z",
+      "side": 1,
+      "message": "If a PD device is plugged in to a port, the port leaves SRC_DISCOVERY. How will that port have in_src_discovery_since_suspend set again?",
+      "parentUuid": "cde9069e_fe3709d5",
+      "range": {
+        "startLine": 3169,
+        "startChar": 3,
+        "endLine": 3169,
+        "endChar": 44
+      },
+      "revId": "fb46de852f5123ea1b945fcb4d00ee409e94f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ee80b22_b5c3a3c5",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
