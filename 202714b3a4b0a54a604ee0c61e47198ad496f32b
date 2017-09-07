@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a82ebac_c81a3154",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-07T18:25:00Z",
+      "side": 1,
+      "message": "These ifdefs are getting messy, can\u0027t we change it like:\n\n#ifdef CONFIG_CHARGER_PROFILE_OVERRIDE\nif (...)\n...\n} else\n#endif\n\n#ifdef CONFIG_CHARGE_STATE_DEBUG\nif (...)\n...\n} else\n#endif\n\n/* standard params */\n...",
+      "range": {
+        "startLine": 1210,
+        "startChar": 0,
+        "endLine": 1221,
+        "endChar": 81
+      },
+      "revId": "202714b3a4b0a54a604ee0c61e47198ad496f32b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
