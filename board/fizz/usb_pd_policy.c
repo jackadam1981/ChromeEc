@@ -46,6 +46,8 @@ const uint32_t pd_snk_pdo[] = {
 };
 const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 
+static enum charge_port input_port;
+
 int pd_is_valid_input_voltage(int mv)
 {
 	return 1;
@@ -128,6 +130,9 @@ int pd_board_checks(void)
 
 int pd_check_power_swap(int port)
 {
+	/* If type-c port is supplying power, we never swap PR (to source) */
+	if (input_port == CHARGE_PORT_TYPEC0)
+		return 0;
 	/*
 	 * Allow power swap as long as we are acting as a dual role device,
 	 * otherwise assume our role is fixed (not in S0 or console command
@@ -253,7 +258,7 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 
 static void board_charge_manager_init(void)
 {
-	int input_voltage, input_port;
+	int input_voltage;
 	int i, j;
 	struct charge_port_info cpi = {
 		.voltage = USB_CHARGER_VOLTAGE_MV,
