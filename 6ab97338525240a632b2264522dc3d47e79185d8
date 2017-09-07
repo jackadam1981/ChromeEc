@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5540237a_99f00b36",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-07T15:37:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78df537d_88e73f42",
+      "range": {
+        "startLine": 128,
+        "startChar": 3,
+        "endLine": 130,
+        "endChar": 29
+      },
+      "revId": "6ab97338525240a632b2264522dc3d47e79185d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed481484_029b81df",
         "filename": "chip/g/idle.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-07T15:07:16Z",
       "side": 1,
       "message": "just a thought: should this be moved into a function in  usb.c to be somewhere near the resume code?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "6ab97338525240a632b2264522dc3d47e79185d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6c03aea_53d0546b",
+        "filename": "chip/g/idle.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-07T15:37:33Z",
+      "side": 1,
+      "message": "Yes I can do save/restore functions in usb.c",
+      "parentUuid": "ed481484_029b81df",
       "range": {
         "startLine": 133,
         "startChar": 0,
