@@ -1005,3 +1005,76 @@ int board_has_working_reset_flags(void)
 	/* All other board versions should have working reset flags */
 	return 1;
 }
+
+static void uart_send_loop(void);
+DECLARE_DEFERRED(uart_send_loop);
+
+static uint8_t tx[1024];
+/* We intentionally take a RX buffer size that is too long, so that
+ * uart_alt_pad_read_write does not complete successfully, and instead
+ * timeouts. */
+static uint8_t rx[sizeof(tx)+1];
+
+int total = 0;
+int errtimeout = 0;
+int errbusy = 0;
+int errothererr = 0;
+int errdataerr = 0;
+
+static void uart_send_loop(void)
+{
+	int ret, i;
+
+	for (i = 0; i < sizeof(tx); i++) {
+		tx[i] = '*';
+		if ((i % 4) == 0) {
+			tx[i] = 'a' + (i % 16);
+		}
+	}
+
+	if ((total % 100) == 0) {
+		ccprintf("UART %d (T%dB%d,O%dD%d)\n", total, errtimeout,
+			errbusy, errothererr, errdataerr);
+	}
+
+//	ccprintf("DOWN\n");
+//	cflush();
+
+	ret = uart_alt_pad_read_write(tx, sizeof(tx), rx, sizeof(rx), 200000);
+
+	total++;
+	ccprintf("uart send ret=%d\n", ret);
+
+	if (ret != sizeof(tx)) {
+		if (ret == -EC_ERROR_TIMEOUT)
+			errtimeout++;
+		else if (ret == -EC_ERROR_BUSY)
+			errbusy++;
+		else
+			errothererr++;
+	}
+
+	if (ret == 0) {
+		ccprintf("ERR0 USTAT=%02x, UICTRL=%02x\n", NPCX_USTAT, NPCX_UICTRL);
+	}
+
+	for (i = 0; i < ret; i++) {
+		/* This should never happen. */
+		if (tx[i] != rx[i]) {
+			errdataerr++;
+			break;
+		}
+//		ccprintf("R%02x", rx[i]);
+	}
+
+	hook_call_deferred(&uart_send_loop_data, 300*MSEC);
+}
+
+static int command_uart_send(int argc, char **argv)
+{
+	hook_call_deferred(&uart_send_loop_data, 500*MSEC);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(uart, command_uart_send,
+		NULL, "Send uart data");
