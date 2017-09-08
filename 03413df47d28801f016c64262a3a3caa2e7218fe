@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "74578d52_3c7ded56",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-08T16:36:32Z",
+      "side": 1,
+      "message": "Due to your concerns I have changed these to look only at D-FET status. However, I still think this is a \"don\u0027t care\" if both FETs are checked. The FET status only has to be correct at least once so the battery can be reported as present. In my past testing even when the battery charge level is full, both the discharge and charge FETs will change their status to \u0027on\u0027 when coming out of battery cutoff mode. At some later point, the charge FET may indeed turn off, but initially, it will have been on when resuming from cutoff mode and that\u0027s really all these bits are being used to check. \n\nWhen I was looking at a similar issue on Eve, I was going to use just the D-FET status, but with this bit only, our HW team was still able to reproduce a case where power rail to H1 glitched when resuming from battery cutoff, but was not able to repro that when the status of both FETs was checked.",
+      "parentUuid": "a28b25a2_18be3241",
+      "revId": "03413df47d28801f016c64262a3a3caa2e7218fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22178112_158cabbb",
         "filename": "board/coral/battery.c",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "72bf7b6b_53b6ca88",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-08T16:36:32Z",
+      "side": 1,
+      "message": "This is from the Sony battery spec of page 8:\n2.1 Smart Battery Data Definition\nb15,b14 (read only bits): FET Status\n00: Charge FET \u003d on, Discharge FET \u003d on\n01: Charge FET \u003d off, Discharge FET \u003d on\n10: Charge FET \u003d off, Discharge FET \u003d off\n11: Charge FET \u003d on, Discharge FET \u003d off\n\nI had misread the Sony definition and had the polarity and bit position. The 4 values seem to make it impossible to determine the status of the Charge FET from a single bit.",
+      "parentUuid": "22178112_158cabbb",
+      "revId": "03413df47d28801f016c64262a3a3caa2e7218fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed4327d9_4e303dde",
         "filename": "board/coral/battery.c",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2017-09-08T02:59:41Z",
       "side": 1,
       "message": "And the .disconnect_val should be 0x8000.",
+      "revId": "03413df47d28801f016c64262a3a3caa2e7218fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c75ccc8e_ede70d7c",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-08T16:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed4327d9_4e303dde",
       "revId": "03413df47d28801f016c64262a3a3caa2e7218fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
