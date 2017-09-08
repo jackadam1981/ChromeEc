@@ -22,6 +22,30 @@
       "revId": "d8508cfc087c45ea663754c6ceb63847b83fd8b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7d7518_bbd04f22",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-08T05:54:14Z",
+      "side": 1,
+      "message": "instead of system_get_sku_id from \"https://chromium-review.googlesource.com/#/c/chromiumos/platform/ec/+/633926/6/board/coral/board.c\" for snappy.",
+      "parentUuid": "9256610f_95e734be",
+      "range": {
+        "startLine": 107,
+        "startChar": 9,
+        "endLine": 107,
+        "endChar": 34
+      },
+      "revId": "d8508cfc087c45ea663754c6ceb63847b83fd8b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
