@@ -36,6 +36,7 @@ GPIO_INT(USB_C1_BC12_INT_L,	PIN(3, 3), GPIO_INT_FALLING,			usb1_evt)
 GPIO_INT(ACCELGYRO3_INT_L,	PIN(3, 6), GPIO_INT_FALLING,			bmi160_interrupt)
 GPIO_INT(BASE_DET_A,		PIN(4, 5), GPIO_INT_BOTH,			base_detect_interrupt)
 GPIO_INT(USB_C0_CABLE_DET,      PIN(D, 2), GPIO_INT_RISING,			anx74xx_cable_det_interrupt)
+GPIO_INT(UART_MAIN_RX,		PIN(6, 4), GPIO_INT_FALLING,			uart_default_pad_rx_interrupt)
 
 GPIO(PCH_RTCRST,		PIN(2, 7), GPIO_OUT_LOW)			/* RTCRST# to SOC (>= rev4) */
 GPIO(ENABLE_BACKLIGHT,		PIN(2, 6), GPIO_OUT_LOW)			/* Enable Backlight */
@@ -81,7 +82,11 @@ GPIO(LTE_WAKE_L,		PIN(7, 1), GPIO_INPUT)
 GPIO(LTE_OFF_ODL,		PIN(8, 0), GPIO_ODR_LOW)
 /* end of TODO */
 
-GPIO(PP3300_DX_BASE,		PIN(1, 1), GPIO_OUT_LOW)
+/* HACK: We reuse GPIO11 for UART alternate pad TX. */
+/*GPIO(PP3300_DX_BASE,		PIN(1, 1), GPIO_OUT_LOW)*/
+
+/* We want pull-up on UART alternate pad TX, when not active */
+GPIO(UART_ALT_TX,		PIN(1, 1), GPIO_INPUT | GPIO_PULL_UP)
 
 /* I2C pins - these will be reconfigured for alternate function below */
 GPIO(I2C0_0_SCL,		PIN(B, 5), GPIO_INPUT)				/* EC_I2C0_0_USBC_3V3_SCL */
