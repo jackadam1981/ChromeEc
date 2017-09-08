@@ -30,6 +30,7 @@
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 
 #define CRITICAL_BATTERY_SHUTDOWN_TIMEOUT_US \
 	(CONFIG_BATTERY_CRITICAL_SHUTDOWN_TIMEOUT * SECOND)
@@ -38,6 +39,8 @@
 
 /* Prior to negotiating PD, most PD chargers advertise 15W */
 #define LIKELY_PD_USBC_POWER_MW 15000
+
+static int charge_request(int voltage, int current);
 
 /*
  * State for charger_task(). Here so we can reset it on a HOOK_INIT, and
@@ -118,6 +121,351 @@ static void problem(enum problem_type p, int v)
 	}
 	problems_exist = 1;
 }
+
+/********************** EC COMM MOVE AWAY *****/
+
+#ifdef CONFIG_EC_COMM_BATTERY_MASTER
+
+#include "crc8.h"
+#include "ec_comm.h"
+#include "uart.h"
+
+struct ec_response_battery_static_info base_battery_static;
+struct ec_response_battery_dynamic_info base_battery_dynamic;
+
+#define DEBUG_EC_COMM_STATS
+#ifdef DEBUG_EC_COMM_STATS
+int total;
+int errtimeout;
+int errbusy;
+int errothererr;
+int errdataerr;
+int errcrc;
+#endif
+
+/* tx_rx must be one of ec_comm_*_tx_rx structure)
+ * txlen is the request data length in bytes
+ * rxlen is the response data length in bytes
+ */
+static int write_command(uint16_t command,
+			 uint8_t *tx_rx, int txlen, int rxlen,
+			 int timeout)
+{
+	static int cur_seq;
+	int ret;
+
+	struct ec_host_request4 *request_header = (void *)tx_rx;
+
+	/* Request (TX) size is header + (data + crc8), response follows. */
+	int tx_total_length =
+		sizeof(*request_header) + ((txlen > 0) ? (txlen + 1) : 0);
+	struct ec_host_request4 *response_header =
+		(void *)&tx_rx[tx_total_length];
+	int rx_total_length = tx_total_length +
+		sizeof(*request_header) + ((rxlen > 0) ? (rxlen + 1) : 0);
+
+	/* Make sure there is a gap between each commands. */
+	usleep(10*MSEC);
+
+#ifdef DEBUG_EC_COMM_STATS
+	if ((total % 10) == 0) {
+		CPRINTF("UART %d (T%dB%d,O%dD%dC%d)\n", total, errtimeout,
+			errbusy, errothererr, errdataerr, errcrc);
+	}
+#endif
+
+	cur_seq = (cur_seq + 1) &
+		(EC_PACKET4_0_SEQ_NUM_MASK >> EC_PACKET4_0_SEQ_NUM_SHIFT);
+
+	memset(request_header, 0, sizeof(*request_header));
+	/* fields0: leave seq_dup and is_response as 0. */
+	request_header->fields0 =
+		4 | /* version */
+		(cur_seq << EC_PACKET4_0_SEQ_NUM_SHIFT); /* seq_num */
+	/* fields1: leave command_version as 0. */
+	if (txlen > 0)
+		request_header->fields1 |= EC_PACKET4_1_DATA_CRC_PRESENT_MASK;
+	request_header->command = command;
+	request_header->data_len = txlen;
+	request_header->header_crc =
+		crc8((uint8_t *)request_header, sizeof(*request_header)-1);
+	if (txlen > 0)
+		tx_rx[sizeof(*request_header) + txlen] =
+			crc8(&tx_rx[sizeof(*request_header)], txlen);
+
+	gpio_disable_interrupt(GPIO_BASE_DET_A);
+	ret = uart_alt_pad_write_read((void *)tx_rx, tx_total_length,
+				      (void *)tx_rx, rx_total_length, timeout);
+	gpio_enable_interrupt(GPIO_BASE_DET_A);
+
+#ifdef DEBUG_EC_COMM_STATS
+	total++;
+	CPRINTF("uart send ret=%d/%d\n", ret, rx_total_length);
+#endif
+
+	if (ret != rx_total_length) {
+		if (ret == -EC_ERROR_TIMEOUT) {
+#ifdef DEBUG_EC_COMM_STATS
+			errtimeout++;
+#endif
+			return EC_ERROR_TIMEOUT;
+		}
+
+		if (ret == -EC_ERROR_BUSY) {
+#ifdef DEBUG_EC_COMM_STATS
+			errbusy++;
+#endif
+			return EC_ERROR_BUSY;
+		}
+
+#ifdef DEBUG_EC_COMM_STATS
+		errothererr++;
+#endif
+		return EC_ERROR_UNKNOWN;
+	}
+
+	/* TODO: Check integrity of our own data first? */
+	/*
+	 * TODO: Check integrity of received data (sequence number,
+	 * command, etc.)
+	 */
+	if (response_header->header_crc !=
+		crc8((uint8_t *)response_header, sizeof(*response_header)-1)) {
+#ifdef DEBUG_EC_COMM_STATS
+		errcrc++;
+		CPRINTF("|CRC header error\n");
+#endif
+		return EC_ERROR_CRC;
+	}
+
+	if (response_header->data_len > 0 &&
+	    response_header->data_len == rxlen &&
+		tx_rx[rx_total_length - 1] !=
+		    crc8(&tx_rx[tx_total_length + sizeof(*request_header)],
+				 rxlen)) {
+#ifdef DEBUG_EC_COMM_STATS
+		errcrc++;
+		CPRINTF("|CRC data error\n");
+#endif
+		return EC_ERROR_CRC;
+	}
+
+	return EC_SUCCESS;
+}
+
+static void base_get_dynamic_info(void)
+{
+	int ret;
+	struct {
+		struct {
+			struct ec_host_request4 head;
+		} tx;
+		struct {
+			struct ec_host_response4 head;
+			struct ec_response_battery_dynamic_info info;
+			uint8_t crc8;
+		} rx;
+	} __ec_align4 data;
+
+	ret = write_command(EC_CMD_BATTERY_GET_DYNAMIC,
+			(void *)&data, 0, sizeof(data.rx.info), 15000);
+	if (ret != EC_SUCCESS) {
+		CPRINTF("%s: error (%d)\n", __func__, ret);
+		return;
+	}
+/*
+	CPRINTF("V:          %d mV\n", data.info.voltage);
+	CPRINTF("I:          %d mA\n", data.info.current);
+	CPRINTF("Remaining:  %d mAh\n", data.info.remaining_capacity);
+	CPRINTF("Cap-full:   %d mAh\n", data.info.full_capacity);
+	CPRINTF("Status:     %04x\n", data.info.status);
+	CPRINTF("Flags:      %04x\n", data.info.flags);
+	CPRINTF("V-desired:  %d mV\n", data.info.desired_voltage);
+	CPRINTF("I-desired:  %d mA\n", data.info.desired_current);
+*/
+	memcpy(&base_battery_dynamic, &data.rx.info,
+				sizeof(base_battery_dynamic));
+}
+
+static void base_get_static_info(void)
+{
+	int ret;
+	struct {
+		struct {
+			struct ec_host_request4 head;
+		} tx;
+		struct {
+			struct ec_host_response4 head;
+			struct ec_response_battery_static_info info;
+			uint8_t crc8;
+		} rx;
+	} __ec_align4 data;
+
+	ret = write_command(EC_CMD_BATTERY_GET_STATIC,
+			(void *)&data, 0, sizeof(data.rx.info), 15000);
+	if (ret != EC_SUCCESS) {
+		CPRINTF("%s: error (%d)\n", __func__, ret);
+		return;
+	}
+/*
+	CPRINTF("Cap-design: %d mAh\n", data.info.design_capacity);
+	CPRINTF("V-design:   %d mV\n", data.info.design_voltage);
+	CPRINTF("C-count:    %d\n", data.info.cycle_count);
+	CPRINTF("Manuf:      %s\n", data.info.manufacturer);
+	CPRINTF("Model:      %s\n", data.info.model);
+	CPRINTF("Serial:     %s\n", data.info.serial);
+	CPRINTF("Type:       %s\n", data.info.type);
+*/
+	memcpy(&base_battery_static, &data.rx.info,
+				sizeof(base_battery_static));
+}
+
+static void base_charge_control(int max_current, int allow_charging)
+{
+	int ret;
+	struct {
+		struct {
+			struct ec_host_request4 head;
+			struct ec_params_charger_control ctrl;
+			uint8_t crc8;
+		} tx;
+		struct {
+			struct ec_host_response4 head;
+			struct ec_response_charger_control ctrl;
+			uint8_t crc8;
+		} rx;
+	} __ec_align4 data;
+
+	data.tx.ctrl.allow_charging = allow_charging;
+	data.tx.ctrl.max_current = max_current;
+	/* FIXME: Change OTG voltage. */
+	data.tx.ctrl.otg_voltage = 5000;
+
+	ret = write_command(EC_CMD_CHARGER_CONTROL,
+		(void *)&data, sizeof(data.tx.ctrl), sizeof(data.rx.ctrl),
+			30000);
+	if (ret != EC_SUCCESS) {
+		CPRINTF("%s: error (%d)\n", __func__, ret);
+		return;
+	}
+}
+
+#define CHG_ALLOCATE(power_var, total_power, value) do {	\
+	int val_capped = MIN(value, total_power);		\
+	power_var += val_capped;				\
+	total_power -= val_capped;				\
+} while (0)
+
+void charge_allocate_input_current_limit(void)
+{
+	/* All the power numbers are in uW. */
+	int total_power = 0;
+
+	/* FIXME: Smoothing of battery power */
+	int base_battery_power = base_battery_dynamic.current *
+		base_battery_dynamic.voltage;
+	int base_battery_power_max = base_battery_dynamic.desired_current *
+		base_battery_dynamic.desired_voltage;
+
+	 /* FIXME: 5W fixed for now. */
+	int lid_system_power = 5 * 1000 * 1000;
+
+	/* FIXME: Smoothing of battery power */
+	int lid_battery_power = curr.batt.current *
+		curr.batt.voltage;
+	int lid_battery_power_max = curr.batt.desired_current *
+		curr.batt.desired_voltage;
+
+	int power_base = 0;
+	int power_lid = 0;
+
+	int current_base = 0;
+	int current_lid = 0;
+
+	int percent_base = 0;
+	int percent_lid = charge_get_percent();
+
+	if (base_battery_dynamic.full_capacity > 0)
+		percent_base = 100 * base_battery_dynamic.remaining_capacity
+			/ base_battery_dynamic.full_capacity;
+
+	if (curr.desired_input_current > 0 && curr.input_voltage > 0)
+		total_power = curr.desired_input_current * curr.input_voltage;
+
+	CPRINTF("%s:\n", __func__);
+	CPRINTF("total power: %d\n", total_power);
+	CPRINTF("base battery power: %d (%d max)\n",
+		base_battery_power, base_battery_power_max);
+	CPRINTF("lid battery power: %d (%d max)\n",
+		lid_battery_power, lid_battery_power_max);
+	CPRINTF("percent base/lid %d%% %d%%\n",
+			percent_base, percent_lid);
+
+	if (total_power > 0) { /* Charging */
+		/* Algo 1a.+1b. */
+		CHG_ALLOCATE(power_base, total_power, 1000 * 1000);
+		CHG_ALLOCATE(power_lid, total_power,
+			lid_system_power + 1000 * 1000);
+		/* Algo 2.+3. */
+		lid_battery_power = MAX(lid_battery_power, 100*1000) * 9 / 8;
+		base_battery_power = MAX(base_battery_power, 200*1000) * 10 / 8;
+		CHG_ALLOCATE(power_lid, total_power, lid_battery_power);
+		/* FIXME: 2 amps max */
+		base_battery_power = MIN(base_battery_power,
+					2000 * curr.input_voltage);
+		CHG_ALLOCATE(power_base, total_power, base_battery_power);
+		/* Algo 4. */
+		CHG_ALLOCATE(power_lid, total_power, total_power);
+		CPRINTF("allocate base power=base %d uW / lid %d uW\n",
+			power_base, power_lid);
+
+		current_base = power_base / curr.input_voltage;
+		current_lid = power_lid / curr.input_voltage;
+
+		CPRINTF("allocate base current=base %d mA / lid %d mA\n",
+			current_base, current_lid);
+
+		/* FIXME: Do this in the right order to avoid overcurrent. */
+		base_charge_control(current_base, 1);
+		charger_set_input_current(current_lid);
+		charge_request(curr.requested_voltage,
+					curr.requested_current);
+	} else { /* Discharging */
+		/* Reset charger input current to default value. */
+		/* FIXME: This does not need to happen all the time */
+		//charger_set_input_current(0);
+		// Base 1.: Draw 2 Amps
+		if (percent_base > 5) {
+			base_charge_control(-2000, 0);
+			charger_set_input_current(1800);
+			if (percent_lid > 10) {
+				charge_request(0, 0);
+			} else {
+				/* Charge lid battery. */
+				/* FIXME: Apply limiting logic normally found in
+				 * main loop. */
+				charge_request(curr.batt.desired_voltage,
+					curr.batt.desired_current);
+			}
+		} else if (percent_base > 1) {
+			charger_set_input_current(0);
+			base_charge_control(0, 0);
+			/* FIXME: OTG lid to base. */
+		} else {
+			charger_set_input_current(0);
+			base_charge_control(0, 1);
+			/* FIXME: OTG lid to base. */
+		}
+	}
+
+	CPRINTF("====\n");
+	cflush();
+}
+#endif /* CONFIG_EC_COMM_BATTERY_MASTER */
+
+/*******************/
+
+
 
 #ifdef HAS_TASK_HOSTCMD
 /* Returns zero if every item was updated. */
@@ -791,6 +1139,7 @@ void charger_task(void *u)
 	 */
 	battery_get_params(&curr.batt);
 	prev_bp = curr.batt.is_present;
+	curr.input_voltage = CHARGE_VOLTAGE_UNINITIALIZED;
 	curr.desired_input_current = get_desired_input_current(prev_bp, info);
 
 	while (1) {
@@ -831,6 +1180,12 @@ void charger_task(void *u)
 		}
 		charger_get_params(&curr.chg);
 		battery_get_params(&curr.batt);
+
+#ifdef CONFIG_EC_COMM_BATTERY_MASTER
+		/* FIXME: Be smart about static info. */
+		base_get_static_info();
+		base_get_dynamic_info();
+#endif
 
 		if (prev_bp != curr.batt.is_present) {
 			prev_bp = curr.batt.is_present;
@@ -1081,7 +1436,12 @@ wait_for_it:
 			curr.requested_current = -1;
 #endif
 		}
+
+#ifdef CONFIG_EC_COMM_BATTERY_MASTER
+		charge_allocate_input_current_limit();
+#else
 		charge_request(curr.requested_voltage, curr.requested_current);
+#endif
 
 		/* How long to sleep? */
 		if (problems_exist)
@@ -1315,8 +1675,14 @@ int charge_set_input_current_limit(int ma, int mv)
 	/* Limit input current limit to max limit for this board */
 	ma = MIN(ma, CONFIG_CHARGER_MAX_INPUT_CURRENT);
 #endif
+	curr.input_voltage = mv;
 	curr.desired_input_current = ma;
+#ifdef CONFIG_EC_COMM_BATTERY_MASTER
+	charge_allocate_input_current_limit();
+	return EC_SUCCESS;
+#else
 	return charger_set_input_current(ma);
+#endif
 }
 
 /*****************************************************************************/
