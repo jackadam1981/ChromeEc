@@ -45,6 +45,29 @@
       "revId": "f8208528951e60a386ca5378220c1bd720a4d739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "074fdf02_ecaae629",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2100,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-08T16:04:17Z",
+      "side": 1,
+      "message": "How about CONFIG_SHA256_FAST or CONFIG_SHA256_UNROLLED? The existing implementation is already OPTIMIZED for code space.",
+      "range": {
+        "startLine": 2100,
+        "startChar": 7,
+        "endLine": 2100,
+        "endChar": 30
+      },
+      "revId": "f8208528951e60a386ca5378220c1bd720a4d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
