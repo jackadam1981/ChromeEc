@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "6ded2c09_31be54a3",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-08T17:13:03Z",
+      "side": 1,
+      "message": "I need to check with host chipset espi experts if this is required and if so on what platforms (notebook vs desktop).",
+      "parentUuid": "9d784b72_5ad8e774",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 5
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "172bf8c4_3bd78d52",
         "filename": "chip/mec1701/espi.c",
         "patchSetId": 2
