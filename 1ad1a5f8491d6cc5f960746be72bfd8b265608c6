@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27c09d49_5e5ea14b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-08T23:34:52Z",
+      "side": 1,
+      "message": "Renaming this will break flashrom and any other software which uses this interface.  Is it sufficient just to change the comment?\n\nShould it be ACTIVE_RW?  Because RO could be the active firmware in recovery mode.\n\nAlternately, rename it, but then down below,\n\n/* \u0027RW\u0027 is vague if there are multiple RW images; we mean the active one, so the old constant is deprecated */\n#define EC_FLASH_REGION_RW EC_FLASH_REGION_ACTIVE_RW",
+      "range": {
+        "startLine": 1382,
+        "startChar": 17,
+        "endLine": 1382,
+        "endChar": 23
+      },
+      "revId": "1ad1a5f8491d6cc5f960746be72bfd8b265608c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "435ea82e_81a834b0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-08T23:34:52Z",
+      "side": 1,
+      "message": "Same here.  This is an interface used by already-shipped RO firmware, so we need to preserve what the interface means on those systems, even if we define a newer one for new systems.",
+      "range": {
+        "startLine": 1954,
+        "startChar": 29,
+        "endLine": 1954,
+        "endChar": 35
+      },
+      "revId": "1ad1a5f8491d6cc5f960746be72bfd8b265608c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
