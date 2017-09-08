@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8986001e_720b1da8",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-08T16:59:43Z",
+      "side": 1,
+      "message": "If we\u0027re not doing PD charging on this board, can you just add \"#define CHARGE_SUPPLIER_DEDICATED CHARGE_SUPPLIER_PD\" above? Growing CHARGE_SUPPLIER_COUNT has some consequences for array sizes and performance.\n\nIt\u0027s also somewhat related to https://bugs.chromium.org/p/chromium/issues/detail?id\u003d759880#c1, it\u0027s probably a good idea (not for this CL) to someday allow boards to redefine \"enum charge_supplier\" on their own (actually this is how things originally worked long ago).",
+      "revId": "4a96ff08097b4cd48ffd1d7d2b11371a90053695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
