@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "fdffd5b2_484c7217",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-08T00:06:40Z",
+      "side": 1,
+      "message": "This timer is used in __idle() task in clock.c in separate commit.   This is similar to hibernation timer in MEC1322\u0027s idle task in clock.c.  \nI will submit patch soon.",
+      "parentUuid": "6038ce36_6bd1487f",
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11cf19ec_8c4571b8",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -126,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "3dae81f1_e4bed0c5",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-08T00:06:40Z",
+      "side": 1,
+      "message": "__hw_clock_source_irq() calls process_timers(), which is not needed for wake timer.",
+      "parentUuid": "153fd3d9_f348e1c8",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0adca605_617c4203",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -137,6 +179,24 @@
       "writtenOn": "2017-09-07T20:12:55Z",
       "side": 1,
       "message": "extra line",
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "683974bf_54df3309",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-08T00:06:40Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "0adca605_617c4203",
       "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
