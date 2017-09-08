@@ -142,6 +142,23 @@
     },
     {
       "key": {
+        "uuid": "643d3c8e_b2a998f6",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-08T17:19:29Z",
+      "side": 1,
+      "message": "Infinite while loops are bad! Implemented new code polling for master reading changed vwire a finite number of times with delay between polls. Currently 50 loops with 10 us delay. Worst case in production is 20MHz eSPI clock, one lane, and max payload size of 64 bytes. In development host chipset can be strapped to 8MHz eSPI clock.",
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "172bf8c4_3bd78d52",
         "filename": "chip/mec1701/espi.c",
         "patchSetId": 2
