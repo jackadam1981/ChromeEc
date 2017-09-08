@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f46b39b_84e480b8",
+        "filename": "common/sha256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-08T06:26:03Z",
+      "side": 1,
+      "message": "Just wondering if it would be better to define two separate functions SHA256_transform guarded entirely by CONFIG_SHA256_OPTIMIZED instead of adding chunks dependent on the config option?\n\n#ifdef CONFIG_SHA256_OPTIMIZED\nstatic void SHA256_transform(...) // optimized version\n#else\nstatic void SHA256_transform(...) // non-optimized version\n#endif\n\nProbably easier to read and follow the code-flow.",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 30
+      },
+      "revId": "f8208528951e60a386ca5378220c1bd720a4d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
