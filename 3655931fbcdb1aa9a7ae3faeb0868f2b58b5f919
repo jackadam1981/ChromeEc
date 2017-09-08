@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "8b74fad0_d169895d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-08T19:33:34Z",
+      "side": 1,
+      "message": "I added you in __idle task patch for your initial review.",
+      "parentUuid": "7bd0e8ee_1e0c0fe1",
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11cf19ec_8c4571b8",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -198,6 +216,30 @@
       "side": 1,
       "message": "Yes, but you could easily check if timer_id \u003d\u003d 2 and bail early.",
       "parentUuid": "3dae81f1_e4bed0c5",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "828b3d5f_106d2288",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-08T19:33:34Z",
+      "side": 1,
+      "message": "Thank you for idea. I changed it.",
+      "parentUuid": "8a9c87cd_90d03aff",
       "range": {
         "startLine": 101,
         "startChar": 16,
