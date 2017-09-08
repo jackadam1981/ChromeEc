@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66f7f18a_f90c796e",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-08T15:08:23Z",
+      "side": 1,
+      "message": "Will add BUILD_ASSERT()",
+      "parentUuid": "d7d39339_2e9e605d",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 2
+      },
+      "revId": "0138acb7bcdcfd12f21068777ab548221c41b5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "961305ec_09deb2f3",
         "filename": "common/espi.c",
         "patchSetId": 2
