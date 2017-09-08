@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a28b25a2_18be3241",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-09-08T02:59:41Z",
+      "side": 1,
+      "message": "And based on Sanyo and Panasonic spec, there\u0027s might chance that D-FET is on and C-FET is off(full charge).\nMight cause battery not in cutoff mode, but still recognize in cutoff.\nI still think we should only use D-FET status to identify \"battery was in cutoff mode\". After all this is used to avoid system power on when battery can\u0027t discharge.",
+      "revId": "03413df47d28801f016c64262a3a3caa2e7218fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22178112_158cabbb",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-09-08T02:59:41Z",
+      "side": 1,
+      "message": "For SONY battery, we only can use bit15 to identify battery in cutoff mode.\nPlease check b:64772598.",
+      "revId": "03413df47d28801f016c64262a3a3caa2e7218fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed4327d9_4e303dde",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-09-08T02:59:41Z",
+      "side": 1,
+      "message": "And the .disconnect_val should be 0x8000.",
+      "revId": "03413df47d28801f016c64262a3a3caa2e7218fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
