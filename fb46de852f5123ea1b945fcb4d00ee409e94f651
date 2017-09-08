@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "a28062b9_b6d02f42",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-08T10:37:10Z",
+      "side": 1,
+      "message": "I prefer flags being stored in the \u0027flags\u0027 rather than taking 4 bytes here.",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 36
+      },
+      "revId": "fb46de852f5123ea1b945fcb4d00ee409e94f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c69d467c_6fe8bdc6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-08T10:37:10Z",
+      "side": 1,
+      "message": "can\u0027t we used directly here:\nif (pd[i].flags \u0026 PD_FLAGS_PREVIOUS_PD_CONN)\nrather this new \u0027in_src_discovery_since_suspend\u0027 variable.",
+      "range": {
+        "startLine": 312,
+        "startChar": 2,
+        "endLine": 312,
+        "endChar": 66
+      },
+      "revId": "fb46de852f5123ea1b945fcb4d00ee409e94f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d47cdf9_3b3a72ec",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3168,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-08T10:37:10Z",
+      "side": 1,
+      "message": "it seems that:\nif (pd[i].flags \u0026 PD_FLAGS_PREVIOUS_PD_CONN) \nmight be a better condition here.",
+      "range": {
+        "startLine": 3168,
+        "startChar": 2,
+        "endLine": 3168,
+        "endChar": 49
+      },
+      "revId": "fb46de852f5123ea1b945fcb4d00ee409e94f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2471a8b2_5047b197",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
