@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "421fb2c8_c770bf64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-08T06:41:25Z",
+      "side": 1,
+      "message": "I think it should be okay to remove the HACK: tag.\n\nI just looked at the port80 implementation in EC closely. We already have a \"port80 intprint\" command to enable/disable printing of port80 messages in interrupt context. I think it should be fine to disable port80 message printing in interrupts by default since it saves significant amount of time. Adding Aaron and Duncan to get their thoughts on this.",
+      "revId": "ffb040af0c8d4a996e07ac62f2d8fd45e037f3ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
