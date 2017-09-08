@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5b68eeb5_ee33e2de",
+        "filename": "common/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-08T16:05:27Z",
+      "side": 1,
+      "message": "Will add ARRAY_SIZE() and BUILD_ASSERT(). Will add VW_SIGNAL_MAX to enum espi_vw_signal in include/espi.h",
+      "parentUuid": "961305ec_09deb2f3",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 60
+      },
+      "revId": "0138acb7bcdcfd12f21068777ab548221c41b5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb101035_79009241",
         "filename": "include/espi.h",
         "patchSetId": 2
