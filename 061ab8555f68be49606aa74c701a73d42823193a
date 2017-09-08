@@ -182,6 +182,30 @@
     },
     {
       "key": {
+        "uuid": "158af787_b7c85ca1",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1478,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-08T17:24:45Z",
+      "side": 1,
+      "message": "I have removed espi_wait_ready, espi_chan_ready and HOOK_CHIPSET_PRE_INT because the power state machine waits up to 10 seconds for SLP_S4# (a virtual wire) to de-assert. This should be more than enough time for eSPI master to bring up the link and send the new SLP_Sx virtual wire states.  New code is working on our KBL + MEC1701 EVB fly wire setup.",
+      "parentUuid": "172bf8c4_3bd78d52",
+      "range": {
+        "startLine": 1467,
+        "startChar": 0,
+        "endLine": 1478,
+        "endChar": 3
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f04d6bde_b6cab731",
         "filename": "chip/mec1701/gpspi_chip.h",
         "patchSetId": 2
