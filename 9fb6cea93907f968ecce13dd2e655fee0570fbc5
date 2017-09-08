@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e12594bd_d515ba36",
+        "filename": "util/tagbranch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-08T14:22:25Z",
+      "side": 1,
+      "message": "man, time flies when you are having fun :)\n\ncopy and paste, will fix.",
+      "parentUuid": "16b35ff7_09ee1fa9",
+      "range": {
+        "startLine": 3,
+        "startChar": 11,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "9fb6cea93907f968ecce13dd2e655fee0570fbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "238c6150_7c605c0d",
         "filename": "util/tagbranch.sh",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-08T10:51:32Z",
       "side": 1,
       "message": "in cros sdk, ORIGIN_NAME is always \u0027cros\u0027\nis this really useful (as it is a bit brittle)?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 55
+      },
+      "revId": "9fb6cea93907f968ecce13dd2e655fee0570fbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dec472b2_b6aa6913",
+        "filename": "util/tagbranch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-08T14:22:25Z",
+      "side": 1,
+      "message": "isn\u0027t it cros-internal for internal git trees? I was trying to make this universal across cros-sdk.",
+      "parentUuid": "238c6150_7c605c0d",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e379d836_36db5e7f",
+        "filename": "util/tagbranch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-08T14:22:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bedc2fb7_ce3f4c8c",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 71
+      },
+      "revId": "9fb6cea93907f968ecce13dd2e655fee0570fbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "365d3780_a7caeff8",
         "filename": "util/tagbranch.sh",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "9fb6cea93907f968ecce13dd2e655fee0570fbc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89e54cb7_5d0dec97",
+        "filename": "util/tagbranch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-08T14:22:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "365d3780_a7caeff8",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 32
+      },
+      "revId": "9fb6cea93907f968ecce13dd2e655fee0570fbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
