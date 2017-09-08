@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da60a0fb_780f020d",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-08T19:29:58Z",
+      "side": 1,
+      "message": "This function should be named system_get_sku_id()",
+      "revId": "b005e8a72372070a430b6fb75a697bdd56d08204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b8e33f8_9788be94",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1500,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-08T19:29:58Z",
+      "side": 1,
+      "message": "name this AP_SET_SKUID, please.",
+      "revId": "b005e8a72372070a430b6fb75a697bdd56d08204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dfb6d21_99eb571c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-08T19:29:58Z",
+      "side": 1,
+      "message": "Why use a separate struct? Just use the same one and rename it for clarity.",
+      "revId": "b005e8a72372070a430b6fb75a697bdd56d08204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15d99b5e_5aa31507",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-08T19:29:58Z",
+      "side": 1,
+      "message": "If we\u0027re *setting* something why is this function returning anything? This function shouldn\u0027t even exist. See my comments in the .c file.",
+      "revId": "b005e8a72372070a430b6fb75a697bdd56d08204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
