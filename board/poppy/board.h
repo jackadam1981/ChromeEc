@@ -184,6 +184,8 @@
 #define I2C_ADDR_BD99992	0x60
 #define I2C_ADDR_MP2949		0x40
 
+#define CONFIG_SW_CRC
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"

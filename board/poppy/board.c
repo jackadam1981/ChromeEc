@@ -1004,3 +1004,146 @@ int board_has_working_reset_flags(void)
 	/* All other board versions should have working reset flags */
 	return 1;
 }
+
+static void uart_send_loop(void);
+DECLARE_DEFERRED(uart_send_loop);
+
+#include "crc.h"
+#include "ec_comm.h"
+
+int total = 0;
+int errtimeout = 0;
+int errbusy = 0;
+int errothererr = 0;
+int errdataerr = 0;
+int errcrc = 0;
+
+/* RX buffer must have 3 blank uint32_t (rx data received back + header),
+ * and a blank uint32_t at the end (crc32). */
+static int write_command(uint8_t cmd, uint32_t *rx, int len, int timeout)
+{
+	int ret, i;
+	uint32_t crc;
+
+	uint32_t tx[2];
+	struct ec_comm_header *header = (void*)&tx[0];
+
+	header->direction = EC_COMM_DIR_OUT;
+	header->cmd = cmd;
+	header->_reserved = 0;
+	header->length = 2;
+	crc32_init();
+	crc32_hash32(tx[0]);
+	tx[1] = crc32_result();
+
+	gpio_disable_interrupt(GPIO_BASE_DET_A);
+	ret = uart_alt_pad_read_write((void*)tx, sizeof(tx),
+				      (void*)rx, len, timeout);
+	gpio_enable_interrupt(GPIO_BASE_DET_A);
+
+	total++;
+	ccprintf("uart send ret=%d\n", ret);
+
+	if (ret != len || ((ret % 4) != 0)) {
+		if (ret == -EC_ERROR_TIMEOUT) {
+			errtimeout++;
+			return EC_ERROR_TIMEOUT;
+		}
+
+		if (ret == -EC_ERROR_BUSY) {
+			errbusy++;
+			return EC_ERROR_BUSY;
+		}
+
+		errothererr++;
+		return EC_ERROR_UNKNOWN;
+	}
+
+	crc = 0;
+	crc32_init();
+	for (i = ARRAY_SIZE(tx); i < (ret/4)-1; i++)
+		crc32_hash32(rx[i]);
+
+	crc = crc32_result();
+	ccprintf("|CRC=%08x\n", crc);
+
+	if (crc != rx[(ret/4)-1]) {
+		errcrc++;
+		return EC_ERROR_CRC;
+	}
+
+	return EC_SUCCESS;
+}
+
+static void get_battery_static_info(void)
+{
+	struct {
+		uint32_t head[3];
+		struct ec_comm_battery_dynamic_info info;
+		uint32_t tail;
+	} data;
+
+	if (write_command(EC_COMM_BATTERY_DYNAMIC_INFO, (void*)&data,
+				sizeof(data), 10000) != EC_SUCCESS) {
+		CPRINTF("%s: error\n", __func__);
+		return;
+	}
+
+	CPRINTF("V:          %d mV\n", data.info.voltage);
+	CPRINTF("I:          %d mA\n", data.info.current);
+	CPRINTF("Remaining:  %d mAh\n", data.info.remaining_capacity);
+	CPRINTF("Cap-full:   %d mAh\n", data.info.full_capacity);
+	CPRINTF("Status:     %04x\n", data.info.status);
+	CPRINTF("Flags:      %04x\n", data.info.flags);
+	CPRINTF("V-desired:  %d mV\n", data.info.desired_voltage);
+	CPRINTF("I-desired:  %d mA\n", data.info.desired_current);
+}
+
+static void get_battery_dynamic_info(void)
+{
+	struct {
+		uint32_t head[3];
+		struct ec_comm_battery_static_info info;
+		uint32_t tail;
+	} data;
+
+	if (write_command(EC_COMM_BATTERY_STATIC_INFO, (void*)&data,
+				sizeof(data), 10000) != EC_SUCCESS) {
+		CPRINTF("%s: error\n", __func__);
+		return;
+	}
+
+	CPRINTF("Cap-design: %d mAh\n", data.info.design_capacity);
+	CPRINTF("V-design:   %d mAh\n", data.info.design_voltage);
+	CPRINTF("C-count:    %d\n", data.info.cycle_count);
+	CPRINTF("Manuf:      %s\n", data.info.manufacturer);
+	CPRINTF("Model:      %s\n", data.info.model);
+	CPRINTF("Serial:     %s\n", data.info.serial);
+	CPRINTF("Type:       %s\n", data.info.type);
+}
+
+static void uart_send_loop(void)
+{
+	static int dyn = 0;
+
+	if ((total % 10) == 0) {
+		ccprintf("UART %d (T%dB%d,O%dD%dC%d)\n", total, errtimeout,
+			errbusy, errothererr, errdataerr, errcrc);
+	}
+
+	if ((dyn = !dyn))
+		get_battery_dynamic_info();
+	else
+		get_battery_static_info();
+
+	hook_call_deferred(&uart_send_loop_data, 500*MSEC);
+}
+
+static int command_uart_send(int argc, char **argv)
+{
+	hook_call_deferred(&uart_send_loop_data, 500*MSEC);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(uart, command_uart_send,
+		NULL, "Send uart data");
