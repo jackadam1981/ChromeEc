@@ -39,6 +39,7 @@ struct charge_state_data {
 	int requested_current;
 	int desired_input_current;
 	int output_current;
+	int input_voltage;
 };
 
 /**
