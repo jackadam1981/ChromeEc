@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e66c584b_fc6af8e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-08T06:41:39Z",
+      "side": 1,
+      "message": "the HW starts by a DATA0 packet after initialization, unless you set the bit to start with a DATA1 packet.",
+      "parentUuid": "4f71f255_4ad8d13a",
+      "range": {
+        "startLine": 14,
+        "startChar": 65,
+        "endLine": 15,
+        "endChar": 27
+      },
+      "revId": "d74992710c5e3249789b88354eea7760e6e1857c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "847ccb31_76625a98",
         "filename": "chip/g/usb.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-07T16:43:20Z",
       "side": 1,
       "message": "why does this start with 1? There is no EP zero?",
+      "range": {
+        "startLine": 1261,
+        "startChar": 6,
+        "endLine": 1261,
+        "endChar": 11
+      },
+      "revId": "d74992710c5e3249789b88354eea7760e6e1857c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa4266e6_83b34e27",
+        "filename": "chip/g/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1261,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-08T06:41:39Z",
+      "side": 1,
+      "message": "On USB2.0, EP0 is always the Control endpoint which behaves differently.\nRegarding DATA PIDs, the SETUP transfers always start by DATA0",
+      "parentUuid": "847ccb31_76625a98",
       "range": {
         "startLine": 1261,
         "startChar": 6,
