@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "386c5a69_6c3c50e3",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-08T07:30:03Z",
+      "side": 1,
+      "message": "Maybe I was unclear, but re-using Proprietary for this is not OK.\nCHARGE_SUPPLIER_PROPRIETARY means something else on other products (ie Apple type chargers detected by the BC1.2 chip).\n\nYou should probably add another CHARGE_SUPPLIER_ type (eg CHARGE_SUPPLIER_FIXED|DEDICATED...) with priority 0",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "18de699ee0dd311b3e44d922341380e7b522ff83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
