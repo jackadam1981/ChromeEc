@@ -22,6 +22,29 @@
       "revId": "f8208528951e60a386ca5378220c1bd720a4d739",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90404c2d_2e42291a",
+        "filename": "common/sha256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-08T08:13:52Z",
+      "side": 1,
+      "message": "isn\u0027t this a good use-case for the SHA256_EXP() macro abandoned above ?\nMaybe it needs to be fixed.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 19
+      },
+      "revId": "f8208528951e60a386ca5378220c1bd720a4d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
