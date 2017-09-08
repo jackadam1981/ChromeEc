@@ -44,8 +44,8 @@ struct ec_comm_header {
 	uint8_t length; /* Payload length, in words (32-bit). */
 } __ec_align4;
 
-extern struct ec_comm_battery_static_info base_battery_static;
-extern struct ec_comm_battery_dynamic_info base_battery_dynamic;
+extern struct ec_response_battery_static_info base_battery_static;
+extern struct ec_response_battery_dynamic_info base_battery_dynamic;
 
 /*
  * Packed TX/RX structures for the commands above, used by the lid.
