@@ -16,6 +16,24 @@
       "revId": "4a96ff08097b4cd48ffd1d7d2b11371a90053695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1109ac21_41aaab33",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-08T17:19:28Z",
+      "side": 1,
+      "message": "We\u0027re using CHARGE_SUPPLIER_PD on this board.",
+      "parentUuid": "8986001e_720b1da8",
+      "revId": "4a96ff08097b4cd48ffd1d7d2b11371a90053695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
