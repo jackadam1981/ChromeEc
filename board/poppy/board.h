@@ -70,6 +70,11 @@
 #define CONFIG_BATTERY_DEVICE_CHEMISTRY "LION"
 #define CONFIG_BATTERY_SMART
 
+#ifdef BOARD_LUX
+#define CONFIG_EC_COMM
+#define CONFIG_EC_COMM_BATTERY_MASTER
+#endif
+
 /* Charger */
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGE_RAMP_HW /* This, or just RAMP? */
@@ -177,6 +182,8 @@
 /* I2C addresses */
 #define I2C_ADDR_BD99992	0x60
 #define I2C_ADDR_MP2949		0x40
+
+#define CONFIG_SW_CRC
 
 #ifndef __ASSEMBLER__
 
