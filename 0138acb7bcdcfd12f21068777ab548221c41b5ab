@@ -114,6 +114,30 @@
       "revId": "0138acb7bcdcfd12f21068777ab548221c41b5ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2fe64741_66d6b7ac",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-08T15:05:51Z",
+      "side": 1,
+      "message": "VW_SIGNAL_BASE is common to all eSPI chips. Can we put signal_is_vw() in the new common/espi.c of this changeset?",
+      "parentUuid": "2d3d25bc_0244df97",
+      "range": {
+        "startLine": 100,
+        "startChar": 5,
+        "endLine": 100,
+        "endChar": 33
+      },
+      "revId": "0138acb7bcdcfd12f21068777ab548221c41b5ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
