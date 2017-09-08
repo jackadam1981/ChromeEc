@@ -509,6 +509,30 @@
     },
     {
       "key": {
+        "uuid": "cae6061f_5df3275e",
+        "filename": "chip/mec1701/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-08T20:41:03Z",
+      "side": 1,
+      "message": "Note that we\u0027ve now added a chip_pre_init() function that may be a good place for these.",
+      "parentUuid": "403b38e5_40835418",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d678e85_4e7e605a",
         "filename": "power/skylake.c",
         "patchSetId": 2
