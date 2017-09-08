@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "25384e78_0ba48178",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-08T21:33:09Z",
+      "side": 1,
+      "message": "It\u0027s a good suggestion, let\u0027s see. We set PD_FLAGS_PREVIOUS_PD_CONN when our source caps get GoodCRC\u0027d as a source, or we get source caps as a sink. Task latency may be increased before that point, but that should be ok, since there are nCapsCount retries in either direction.\n\nI\u0027ll test this by plugging zinger and other sources in S3 and verifying PD still works.",
+      "parentUuid": "c69d467c_6fe8bdc6",
+      "range": {
+        "startLine": 312,
+        "startChar": 2,
+        "endLine": 312,
+        "endChar": 66
+      },
+      "revId": "fb46de852f5123ea1b945fcb4d00ee409e94f651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d47cdf9_3b3a72ec",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
