@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "7bd0e8ee_1e0c0fe1",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-08T02:40:21Z",
+      "side": 1,
+      "message": "OK. I\u0027ll wait for the full implementation sequence then. Right now it doesn\u0027t make sense.",
+      "parentUuid": "fdffd5b2_484c7217",
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "11cf19ec_8c4571b8",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -156,6 +174,30 @@
       "side": 1,
       "message": "__hw_clock_source_irq() calls process_timers(), which is not needed for wake timer.",
       "parentUuid": "153fd3d9_f348e1c8",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 39
+      },
+      "revId": "3655931fbcdb1aa9a7ae3faeb0868f2b58b5f919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a9c87cd_90d03aff",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-08T02:40:21Z",
+      "side": 1,
+      "message": "Yes, but you could easily check if timer_id \u003d\u003d 2 and bail early.",
+      "parentUuid": "3dae81f1_e4bed0c5",
       "range": {
         "startLine": 101,
         "startChar": 16,
