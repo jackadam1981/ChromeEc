@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a06cf91_a1e4e6e6",
+        "filename": "board/mec1701_evb/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-08T15:04:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b235dd3_62afb031",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 41
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec325512_565c1976",
         "filename": "board/mec1701_mecc/board.c",
         "patchSetId": 2
@@ -312,6 +336,30 @@
       "writtenOn": "2017-08-17T05:25:57Z",
       "side": 1,
       "message": "Could infer some of them from things like enum pwm_channel or CONFIG_FANS, but that doesn\u0027t necessarily tell you which ones are being used.\n\nProbably cleanest for individual drivers to enable their peripherals in their HOOK_INIT handlers.",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "403b38e5_40835418",
+        "filename": "chip/mec1701/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-08T15:04:40Z",
+      "side": 1,
+      "message": "Agree with sleep enable clearing in drivers but boards may differ. Would board_init be a good place as it knows how many PWM\u0027s or other peripherals are used?",
+      "parentUuid": "3891990a_2041e78b",
       "range": {
         "startLine": 136,
         "startChar": 4,
