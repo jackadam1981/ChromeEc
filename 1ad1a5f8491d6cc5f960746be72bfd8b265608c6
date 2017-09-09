@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5b49e812_0a8aec9c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-09T01:35:31Z",
+      "side": 1,
+      "message": "Yes, please copy the comment.  Then I think it\u0027s ok.",
+      "parentUuid": "e2ca9489_031a983e",
+      "range": {
+        "startLine": 1382,
+        "startChar": 17,
+        "endLine": 1382,
+        "endChar": 23
+      },
+      "revId": "1ad1a5f8491d6cc5f960746be72bfd8b265608c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "435ea82e_81a834b0",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
