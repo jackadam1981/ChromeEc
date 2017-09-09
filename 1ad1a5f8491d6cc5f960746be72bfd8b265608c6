@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e2ca9489_031a983e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-09T00:27:43Z",
+      "side": 1,
+      "message": "Done.\n\n\u003e Should it be ACTIVE_RW?\n\nActive is used differently from \u0027running\u0027. Active/non-active is tied to flash slots. Running image can be RO, RW_A, RW_B but active image can only be RW_A or RW_B. So, I think it\u0027s redundant to add _RW for the same reason it is so to name EC_FLASH_REGION_UPDATE_RW. RO always runs. So, I see it permanently \u0027active\u0027 (even when RW is running). In recovery mode, an active RW image doesn\u0027t enter \u0027running\u0027 state but it\u0027s still active on the flash.  I can copy this comment to the code if you prefer. I use \u0027active\u0027 to mean \u0027scheduled-to-run\u0027.",
+      "parentUuid": "27c09d49_5e5ea14b",
+      "range": {
+        "startLine": 1382,
+        "startChar": 17,
+        "endLine": 1382,
+        "endChar": 23
+      },
+      "revId": "1ad1a5f8491d6cc5f960746be72bfd8b265608c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "435ea82e_81a834b0",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-08T23:34:52Z",
       "side": 1,
       "message": "Same here.  This is an interface used by already-shipped RO firmware, so we need to preserve what the interface means on those systems, even if we define a newer one for new systems.",
+      "range": {
+        "startLine": 1954,
+        "startChar": 29,
+        "endLine": 1954,
+        "endChar": 35
+      },
+      "revId": "1ad1a5f8491d6cc5f960746be72bfd8b265608c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abacf7fd_e6a2deb5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-09T00:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "435ea82e_81a834b0",
       "range": {
         "startLine": 1954,
         "startChar": 29,
