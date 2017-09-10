@@ -24,82 +24,171 @@
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
 #define CPRINTS(format, args...) cprints(CC_CLOCK, format, ## args)
 
+#define SECS_PER_DAY        (86400)
+#define SECS_PER_YEAR       (365 * SECS_PER_DAY)
+#define SECS_TILL_YEAR_2K   (946684800)
+#define IS_LEAP_YEAR(x)     \
+	((x % 4 == 0) && ((x % 100 != 0) || (x % 400 == 0)))
+
+#if defined(CONFIG_CMD_RTC) || defined(CONFIG_HOSTCMD_RTC)
+static uint32_t days_since_year_start[12] = {
+0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
+#endif
 
 /* Convert between RTC regs in BCD and seconds */
-uint32_t rtc_to_sec(uint32_t rtc)
+
+static uint32_t rtc_tr_to_sec(uint32_t rtc_tr)
 {
 	uint32_t sec;
 
 	/* convert the hours field */
-	sec = (((rtc & 0x300000) >> 20) * 10 + ((rtc & 0xf0000) >> 16)) * 3600;
+	sec = (((rtc_tr & 0x300000) >> 20) * 10 +
+	       ((rtc_tr & 0xf0000) >> 16)) * 3600;
 	/* convert the minutes field */
-	sec += (((rtc & 0x7000) >> 12) * 10 + ((rtc & 0xf00) >> 8)) * 60;
+	sec += (((rtc_tr & 0x7000) >> 12) * 10 + ((rtc_tr & 0xf00) >> 8)) * 60;
 	/* convert the seconds field */
-	sec += ((rtc & 0x70) >> 4) * 10 + (rtc & 0xf);
-
+	sec += ((rtc_tr & 0x70) >> 4) * 10 + (rtc_tr & 0xf);
 	return sec;
 }
-uint32_t sec_to_rtc(uint32_t sec)
+
+uint32_t rtc_to_sec(struct rtc_time_reg rtc)
 {
-	uint32_t rtc;
+	uint32_t sec = 0;
+#if defined(CONFIG_CMD_RTC) || defined(CONFIG_HOSTCMD_RTC)
+	int year;
+	int month;
+	int day;
+	int i;
+
+	/* convert the years field */
+	year = (((rtc.rtc_dr & 0xf00000) >> 20) * 10 +
+	      ((rtc.rtc_dr & 0xf0000) >> 16));
+	sec = year * SECS_PER_YEAR;
+	for (i = 0; i < year; i++) {
+		if (IS_LEAP_YEAR(i))
+			sec += SECS_PER_DAY;
+	}
+
+	/* convert the months and days field */
+	month = (((rtc.rtc_dr & 0x1000) >> 12) * 10 +
+		((rtc.rtc_dr & 0xf00) >> 8));
+	day = ((rtc.rtc_dr & 0x30) >> 4) * 10 + (rtc.rtc_dr & 0xf);
+	day += days_since_year_start[month - 1];
+	day += (IS_LEAP_YEAR(year) && month > 2);
+
+	sec += (day - 1) * SECS_PER_DAY;
+
+	/* add the accumulated time in seconds from 1970 to 2000 */
+	sec += SECS_TILL_YEAR_2K;
+#endif
+	return sec + (rtc_ssr_to_us(rtc.rtc_ssr) / SECOND) +
+	       rtc_tr_to_sec(rtc.rtc_tr);
+}
+
+static uint32_t sec_to_rtc_tr(uint32_t sec)
+{
+	uint32_t rtc_tr;
 
 	/* convert the hours field */
-	rtc = ((sec / 36000) << 20) | (((sec / 3600) % 10) << 16);
+	rtc_tr = ((sec / 36000) << 20) | (((sec / 3600) % 10) << 16);
 	/* convert the minutes field */
-	rtc |= (((sec % 3600) / 600) << 12) | (((sec % 600) / 60) << 8);
+	rtc_tr |= (((sec % 3600) / 600) << 12) | (((sec % 600) / 60) << 8);
 	/* convert the seconds field */
-	rtc |= (((sec % 60) / 10) << 4) | (sec % 10);
+	rtc_tr |= (((sec % 60) / 10) << 4) | (sec % 10);
+
+	return rtc_tr;
+}
+
+struct rtc_time_reg sec_to_rtc(uint32_t sec)
+{
+	struct rtc_time_reg rtc;
+#if defined(CONFIG_CMD_RTC) || defined(CONFIG_HOSTCMD_RTC)
+	int year;
+	int month;
+	int day;
+	uint8_t is_leap_year;
+	int i;
+
+	/* rtc time must be after year 2000 */
+	sec = (sec > SECS_TILL_YEAR_2K) ? (sec - SECS_TILL_YEAR_2K) : 0;
+
+	/* convert the year, months and days */
+	day = sec / SECS_PER_DAY;
+
+	year = day / 365;
+	is_leap_year = IS_LEAP_YEAR(year);
+	day %= 365;
+	for (i = 0; i < year; i++) {
+		if (IS_LEAP_YEAR(i))
+			day -= 1;
+	}
+	if (++day <= 0) {
+		year -= 1;
+		is_leap_year = IS_LEAP_YEAR(year);
+		day += is_leap_year ? 366 : 365;
+	}
+	month = 1;
+	do {
+		if (days_since_year_start[month] +
+		    (is_leap_year && (month > 2)) >= day)
+			break;
+		month++;
+	} while (month < 12);
+	day -= days_since_year_start[month - 1] +
+	       (is_leap_year && (month > 2));
+
+	rtc.rtc_dr = ((year / 10) << 20) | ((year % 10) << 16);
+	rtc.rtc_dr |= ((month / 10) << 12) | ((month % 10) << 8);
+	rtc.rtc_dr |= ((day / 10) << 4) | (day % 10);
+#endif
+	rtc.rtc_tr = sec_to_rtc_tr(sec % SECS_PER_DAY);
+	rtc.rtc_ssr = 0;
 
 	return rtc;
 }
 
-/* Return time diff between two rtc readings */
-int32_t get_rtc_diff(uint32_t rtc0, uint32_t rtc0ss,
-		     uint32_t rtc1, uint32_t rtc1ss)
+/* Return sub-10-sec time diff between two rtc readings */
+int32_t get_rtc_diff(struct rtc_time_reg rtc0, struct rtc_time_reg rtc1)
 {
 	int32_t diff;
 
-	/* Note: this only looks at the diff mod 10 seconds */
-	diff =  ((rtc1 & 0xf) * SECOND +
-		 rtcss_to_us(rtc1ss)) -
-		((rtc0 & 0xf) * SECOND +
-		 rtcss_to_us(rtc0ss));
+	/* Note: This only looks at the diff mod 10 seconds */
+	diff =  ((rtc1.rtc_tr & 0xf) * SECOND +
+		 rtc_ssr_to_us(rtc1.rtc_ssr)) -
+		((rtc0.rtc_tr & 0xf) * SECOND +
+		 rtc_ssr_to_us(rtc0.rtc_ssr));
 
-	return (diff < 0) ? (diff + 10*SECOND) : diff;
+	return (diff < 0) ? (diff + 10 * SECOND) : diff;
 }
 
-void rtc_read(uint32_t *rtc, uint32_t *rtcss)
+void rtc_read(struct rtc_time_reg *rtc)
 {
-	/* Read current time synchronously */
+	/*
+	 * Read current time synchronously. Each registers must be read
+	 * twice with identical values because glitches may occur for reads
+	 * close to the RTCCLK edge.
+	 */
 	do {
-		*rtc = STM32_RTC_TR;
-		/*
-		 * RTC_SSR must be read twice with identical values because
-		 * glitches may occur for reads close to the RTCCLK edge.
-		 */
-		do {
-			*rtcss = STM32_RTC_SSR;
-		} while (*rtcss != STM32_RTC_SSR);
-	} while (*rtc != STM32_RTC_TR);
-}
+		rtc->rtc_ssr = STM32_RTC_SSR;
+	} while (rtc->rtc_ssr != STM32_RTC_SSR);
 
-uint32_t rtc_read_sec(void)
-{
-	uint32_t rtc = 0;
-	uint32_t rtcss = 0;
+	do {
+		rtc->rtc_tr = STM32_RTC_TR;
+	} while (rtc->rtc_tr != STM32_RTC_TR);
 
-	rtc_read(&rtc, &rtcss);
-
-	return rtc_to_sec(rtc) + (rtcss_to_us(rtcss) / SECOND);
+	do {
+		rtc->rtc_dr = STM32_RTC_DR;
+	} while (rtc->rtc_dr != STM32_RTC_DR);
 }
 
 void set_rtc_alarm(uint32_t delay_s, uint32_t delay_us,
-		      uint32_t *rtc, uint32_t *rtcss)
+		   struct rtc_time_reg *rtc)
 {
 	uint32_t alarm_sec, alarm_us;
 
 	/* Alarm must be within 1 day (86400 seconds) */
-	ASSERT((delay_s + delay_us / SECOND) < 86400);
+
+	ASSERT((delay_s + delay_us / SECOND) < SECS_PER_DAY);
 
 	rtc_unlock_regs();
 
@@ -109,13 +198,13 @@ void set_rtc_alarm(uint32_t delay_s, uint32_t delay_us,
 		;
 	STM32_RTC_ISR &= ~STM32_RTC_ISR_ALRAF;
 
-	rtc_read(rtc, rtcss);
+	rtc_read(rtc);
 
 	/* Calculate alarm time */
-	alarm_sec = rtc_to_sec(*rtc) + delay_s;
-	alarm_us = rtcss_to_us(*rtcss) + delay_us;
+	alarm_sec = rtc_tr_to_sec(rtc->rtc_tr) + delay_s;
+	alarm_us = rtc_ssr_to_us(rtc->rtc_ssr) + delay_us;
 	alarm_sec = alarm_sec + alarm_us / SECOND;
-	alarm_us = alarm_us % 1000000;
+	alarm_us = alarm_us % SECOND;
 	/*
 	 * If seconds is greater than 1 day, subtract by 1 day to deal with
 	 * 24-hour rollover.
@@ -124,8 +213,8 @@ void set_rtc_alarm(uint32_t delay_s, uint32_t delay_us,
 		alarm_sec -= 86400;
 
 	/* Set alarm time */
-	STM32_RTC_ALRMAR = sec_to_rtc(alarm_sec);
-	STM32_RTC_ALRMASSR = us_to_rtcss(alarm_us);
+	STM32_RTC_ALRMAR = sec_to_rtc_tr(alarm_sec);
+	STM32_RTC_ALRMASSR = us_to_rtc_ssr(alarm_us);
 	/* Check for match on hours, minutes, seconds, and subsecond */
 	STM32_RTC_ALRMAR |= 0xc0000000;
 	STM32_RTC_ALRMASSR |= 0x0f000000;
@@ -140,12 +229,23 @@ void set_rtc_alarm(uint32_t delay_s, uint32_t delay_us,
 
 uint32_t get_rtc_alarm(void)
 {
+	struct rtc_time_reg now;
+	uint32_t now_sec;
+	uint32_t alarm_sec;
+
 	if (!(STM32_RTC_CR & STM32_RTC_CR_ALRAE))
 		return 0;
-	return rtc_to_sec(STM32_RTC_ALRMAR) - rtc_read_sec();
+
+	rtc_read(&now);
+
+	now_sec = rtc_tr_to_sec(now.rtc_tr);
+	alarm_sec = rtc_tr_to_sec(STM32_RTC_ALRMAR & 0x3fffff);
+
+	return ((alarm_sec < now_sec) ? SECS_PER_DAY : 0) +
+	       (alarm_sec - now_sec);
 }
 
-void reset_rtc_alarm(uint32_t *rtc, uint32_t *rtcss)
+void reset_rtc_alarm(struct rtc_time_reg *rtc)
 {
 	rtc_unlock_regs();
 
@@ -158,16 +258,16 @@ void reset_rtc_alarm(uint32_t *rtc, uint32_t *rtcss)
 	STM32_EXTI_PR = EXTI_RTC_ALR_EVENT;
 
 	/* Read current time */
-	rtc_read(rtc, rtcss);
+	rtc_read(rtc);
 
 	rtc_lock_regs();
 }
 
 void __rtc_alarm_irq(void)
 {
-	uint32_t rtc, rtcss;
+	struct rtc_time_reg rtc;
 
-	reset_rtc_alarm(&rtc, &rtcss);
+	reset_rtc_alarm(&rtc);
 }
 DECLARE_IRQ(STM32_IRQ_RTC_ALARM, __rtc_alarm_irq, 1);
 
@@ -220,8 +320,10 @@ DECLARE_HOOK(HOOK_SYSJUMP, reset_flash_cache, HOOK_PRIO_DEFAULT);
 void print_system_rtc(enum console_channel ch)
 {
 	uint32_t sec;
+	struct rtc_time_reg rtc;
 
-	sec = rtc_read_sec();
+	rtc_read(&rtc);
+	sec = rtc_to_sec(rtc);
 	cprintf(ch, "RTC: 0x%08x (%d.00 s)\n", sec, sec);
 }
 
@@ -250,7 +352,7 @@ DECLARE_CONSOLE_COMMAND(rtc, command_system_rtc,
 static int command_rtc_alarm_test(int argc, char **argv)
 {
 	int s = 1, us = 0;
-	uint32_t rtc, rtcss;
+	struct rtc_time_reg rtc;
 	char *e;
 
 	ccprintf("Setting RTC alarm\n");
@@ -265,10 +367,9 @@ static int command_rtc_alarm_test(int argc, char **argv)
 		us = strtoi(argv[2], &e, 10);
 		if (*e)
 			return EC_ERROR_PARAM2;
-
 	}
 
-	set_rtc_alarm(s, us, &rtc, &rtcss);
+	set_rtc_alarm(s, us, &rtc);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(rtc_alarm, command_rtc_alarm_test,
@@ -284,8 +385,10 @@ DECLARE_CONSOLE_COMMAND(rtc_alarm, command_rtc_alarm_test,
 static int system_rtc_get_value(struct host_cmd_handler_args *args)
 {
 	struct ec_response_rtc *r = args->response;
+	struct rtc_time_reg rtc;
 
-	r->time = rtc_read_sec();
+	rtc_read(&rtc);
+	r->time = rtc_to_sec(rtc);
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
@@ -307,11 +410,10 @@ DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_VALUE,
 
 static int system_rtc_set_alarm(struct host_cmd_handler_args *args)
 {
-	uint32_t rtc;
-	uint32_t rtcss;
+	struct rtc_time_reg rtc;
 	const struct ec_params_rtc *p = args->params;
 
-	set_rtc_alarm(p->time, 0, &rtc, &rtcss);
+	set_rtc_alarm(p->time, 0, &rtc);
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_ALARM,
