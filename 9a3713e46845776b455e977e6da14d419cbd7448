@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "a3b1ae86_54a2d5ed",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-10T19:14:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ab52b133_8a63ef36",
+      "range": {
+        "startLine": 393,
+        "startChar": 6,
+        "endLine": 393,
+        "endChar": 8
+      },
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb3e3124_5419fdb4",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 6
@@ -137,6 +161,24 @@
       "side": 1,
       "message": "Good catch!",
       "parentUuid": "bb3e3124_5419fdb4",
+      "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b30087b3_dd928d91",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-10T19:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0f490e1_fa4aa1da",
       "revId": "9a3713e46845776b455e977e6da14d419cbd7448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false

@@ -37,6 +37,42 @@
     },
     {
       "key": {
+        "uuid": "2cae19be_6bb05228",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-10T19:14:33Z",
+      "side": 1,
+      "message": "Yes. Just added for extra cares.\nOur relation chain in code is a bit complicated for now.",
+      "parentUuid": "3cc22cc2_7d3f68dd",
+      "revId": "df3a086c611b6e046674cdeea76d552ef5a8b537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2b8346b_9e7826e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-10T19:14:33Z",
+      "side": 1,
+      "message": "Apologize, I now get what you mean 👌",
+      "parentUuid": "76d9068c_3d4eb9e2",
+      "revId": "df3a086c611b6e046674cdeea76d552ef5a8b537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42c370b9_b5d648a6",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 9
@@ -54,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "a236c8ac_08e23181",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-10T19:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42c370b9_b5d648a6",
+      "revId": "df3a086c611b6e046674cdeea76d552ef5a8b537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78982ed2_f017abca",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 9
@@ -68,6 +122,24 @@
       "revId": "df3a086c611b6e046674cdeea76d552ef5a8b537",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44315b8b_f761248b",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-10T19:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78982ed2_f017abca",
+      "revId": "df3a086c611b6e046674cdeea76d552ef5a8b537",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
