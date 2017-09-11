@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "346ca343_e25f5242",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-11T02:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da60a0fb_780f020d",
+      "revId": "b005e8a72372070a430b6fb75a697bdd56d08204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b8e33f8_9788be94",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-08T19:29:58Z",
       "side": 1,
       "message": "name this AP_SET_SKUID, please.",
+      "revId": "b005e8a72372070a430b6fb75a697bdd56d08204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d2aa0de_9cf324b0",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1500,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-11T02:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b8e33f8_9788be94",
       "revId": "b005e8a72372070a430b6fb75a697bdd56d08204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4994f6e6_e3ef7bd1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-11T02:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dfb6d21_99eb571c",
+      "revId": "b005e8a72372070a430b6fb75a697bdd56d08204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15d99b5e_5aa31507",
         "filename": "include/system.h",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2017-09-08T19:29:58Z",
       "side": 1,
       "message": "If we\u0027re *setting* something why is this function returning anything? This function shouldn\u0027t even exist. See my comments in the .c file.",
+      "revId": "b005e8a72372070a430b6fb75a697bdd56d08204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7128bfd8_6141982a",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-11T02:30:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15d99b5e_5aa31507",
       "revId": "b005e8a72372070a430b6fb75a697bdd56d08204",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
