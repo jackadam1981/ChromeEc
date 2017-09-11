@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1b29228_767c8a31",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-11T02:14:48Z",
+      "side": 1,
+      "message": "See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/597468/9/board/hammer/board.h, let\u0027s just set different CONFIG_TOUCHPAD_VIRTUAL_SIZE for hammer and staff.\n\nNo need eliminate symbolic link, ifdef BOARD_HAMMER/SORAKA work just fine.",
+      "revId": "63b934dfb3d840069b2d95dce097fce9c301e115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
