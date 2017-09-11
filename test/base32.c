@@ -14,8 +14,9 @@
 static int test_crc5(void)
 {
 	uint32_t seen;
-	int i, j, c;
+	int i, j, c, d;
 	int errors = 0;
+	uint8_t test_string[] = "CC5QQLALU";
 
 	/*
 	 * For every current CRC value and symbol, new CRC value is unique.
@@ -39,6 +40,22 @@ static int test_crc5(void)
 		}
 	}
 	TEST_ASSERT(errors == 0);
+
+	/* Test single digit changes */
+	c = 0;
+	for (i = 0; i < 8; i++)
+		c = crc5_sym(test_string[i], c);
+
+	for (i = 0; i < 8; i++) {
+		d = 0;
+		for (j = 0; j < 8; j++) {
+			if (i == j)
+				d = crc5_sym('D', d);
+			else
+				d = crc5_sym(test_string[j], d);
+		}
+		TEST_ASSERT(c != d);
+	}
 
 	return EC_SUCCESS;
 }
@@ -91,13 +108,13 @@ static int test_encode(void)
 	ENCTEST("\xff\x00\xff\x00\xff", 40, 0, "96AR8AH9");
 
 	/* CRC requires exact multiple of symbol count */
-	ENCTEST("\xff\x00\xff\x00\xff", 40, 4, "96ARL8AH9V");
-	ENCTEST("\xff\x00\xff\x00\xff", 40, 8, "96AR8AH9V");
+	ENCTEST("\xff\x00\xff\x00\xff", 40, 4, "96ARU8AH9D");
+	ENCTEST("\xff\x00\xff\x00\xff", 40, 8, "96AR8AH9L");
 	TEST_ASSERT(
 	    base32_encode(enc, 16, (uint8_t *)"\xff\x00\xff\x00\xff", 40, 6)
 	    == EC_ERROR_INVAL);
 	/* But what matters is symbol count, not bit count */
-	ENCTEST("\xff\x00\xff\x00\xfe", 39, 4, "96ARL8AH8W");
+	ENCTEST("\xff\x00\xff\x00\xfe", 39, 4, "96ARU8AH8P");
 
 	return EC_SUCCESS;
 }
@@ -148,7 +165,7 @@ static int test_decode(void)
 	DECTEST("\xff", 8, 0, "96");
 	DECTEST("\x08\x87", 16, 0, "BCDS");
 	DECTEST("\xff\x00\xff\x00\xff", 40, 0, "96AR8AH9");
-	DECTEST("\xff\x00\xff\x00\xfe", 39, 4, "96ARL8AH8W");
+	DECTEST("\xff\x00\xff\x00\xfe", 39, 4, "96ARU8AH8P");
 
 	/* Decode ignores whitespace and dashes */
 	DECTEST("\xff\x00\xff\x00\xff", 40, 0, " 96\tA-R\r8A H9\n");
@@ -171,14 +188,14 @@ static int test_decode(void)
 	DECTEST("\xff\xff\xff\xff\xff", 0, 0, "99999999");
 
 	/* Good CRCs */
-	DECTEST("\xff\x00\xff\x00\xff", 40, 4, "96ARL8AH9V");
-	DECTEST("\xff\x00\xff\x00\xff", 40, 8, "96AR8AH9V");
+	DECTEST("\xff\x00\xff\x00\xff", 40, 4, "96ARU8AH9D");
+	DECTEST("\xff\x00\xff\x00\xff", 40, 8, "96AR8AH9L");
 	/* Detect errors in data, CRC, and transposition */
 
 	/* CRC requires exact multiple of symbol count */
 	TEST_ASSERT(base32_decode(dec, 40, "96ARL8AH9", 4) == -1);
 	/* But what matters is symbol count, not bit count */
-	DECTEST("\xff\x00\xff\x00\xfe", 39, 4, "96ARL8AH8W");
+	DECTEST("\xff\x00\xff\x00\xfe", 39, 4, "96ARU8AH8P");
 
 	/* Detect errors in data, CRC, and transposition */
 	TEST_ASSERT(base32_decode(dec, 40, "96AQL", 4) == -1);
