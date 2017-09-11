@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cdfb10f_17c21e75",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-09-11T20:18:29Z",
+      "side": 1,
+      "message": "Any reason you can\u0027t just spell out \u002760 * 60 * 24\u0027 to be even more obvious?",
+      "range": {
+        "startLine": 27,
+        "startChar": 29,
+        "endLine": 27,
+        "endChar": 34
+      },
+      "revId": "18e96864cb444c2a892fb11a08bb30879f50630f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313e15db_2d21d453",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-09-11T20:18:29Z",
+      "side": 1,
+      "message": "Parentheses around \u0027x\u0027? To prevent incorrect association.\n\nSame for the other 2.",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "18e96864cb444c2a892fb11a08bb30879f50630f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "720a36f6_129907b4",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-09-11T20:18:29Z",
+      "side": 1,
+      "message": "Isn\u0027t this just a \u0027for (month \u003d 1; month \u003c 12; month++)\u0027 loop?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 22
+      },
+      "revId": "18e96864cb444c2a892fb11a08bb30879f50630f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
