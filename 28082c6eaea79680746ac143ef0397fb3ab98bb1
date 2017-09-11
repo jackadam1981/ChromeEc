@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "73a528b5_58baaa2b",
+        "filename": "common/base32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-11T20:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af34b10a_afc3865d",
+      "range": {
+        "startLine": 17,
+        "startChar": 27,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "28082c6eaea79680746ac143ef0397fb3ab98bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55282d91_0d52fecf",
         "filename": "common/base32.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-11T19:44:32Z",
       "side": 1,
       "message": "USB? clarify the comments.",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 12
+      },
+      "revId": "28082c6eaea79680746ac143ef0397fb3ab98bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce3cb3c7_10d8e94a",
+        "filename": "common/base32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-11T20:30:04Z",
+      "side": 1,
+      "message": "It\u0027s a standard 5-bit CRC used for error detection in USB Token Packets",
+      "parentUuid": "55282d91_0d52fecf",
       "range": {
         "startLine": 22,
         "startChar": 9,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0e215f29_9050451e",
+        "filename": "include/base32.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-11T20:30:04Z",
+      "side": 1,
+      "message": "The only difference is that it uses the polynomial X^5 + X^2 + X^0 and it\u0027s 5-bits.",
+      "parentUuid": "86117595_9e03b03f",
+      "range": {
+        "startLine": 15,
+        "startChar": 12,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "28082c6eaea79680746ac143ef0397fb3ab98bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03081967_bf42a9ba",
         "filename": "test/base32.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "28082c6eaea79680746ac143ef0397fb3ab98bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19a5be87_7f6dd5a6",
+        "filename": "test/base32.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-11T20:30:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03081967_bf42a9ba",
+      "range": {
+        "startLine": 100,
+        "startChar": 54,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "28082c6eaea79680746ac143ef0397fb3ab98bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
