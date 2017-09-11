@@ -39,7 +39,7 @@
 #define ETP_I2C_RESOLUTION_CMD		0x0108
 #define ETP_I2C_PRESSURE_CMD		0x010A
 #define ETP_I2C_SET_CMD			0x0300
-#define ETP_I2C_FW_CHECKSUM_CMD		0x030F
+#define ETP_I2C_IAP_CHECKSUM_CMD	0x0315
 
 #define ETP_ENABLE_ABS		0x0001
 
@@ -348,7 +348,7 @@ int touchpad_get_info(struct touchpad_info *tp)
 		return -1;
 	tp->elan.fw_version = val & 0xff;
 
-	rv = elan_tp_read_cmd(ETP_I2C_FW_CHECKSUM_CMD, &val);
+	rv = elan_tp_read_cmd(ETP_I2C_IAP_CHECKSUM_CMD, &val);
 	if (rv)
 		return -1;
 	tp->elan.fw_checksum = val;
