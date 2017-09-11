@@ -11,7 +11,6 @@
 GPIO_INT(POWER_BUTTON_L, PIN(E, 4), GPIO_INT_BOTH | GPIO_PULL_UP,   power_button_interrupt)
 GPIO_INT(PCH_PLTRST_L,   PIN(E, 3), GPIO_INT_BOTH | GPIO_PULL_UP,   lpcrst_interrupt)
 GPIO_INT(LID_OPEN,       PIN(E, 2), GPIO_INT_BOTH | GPIO_PULL_DOWN, lid_interrupt)
-GPIO_INT(WP_L,           PIN(E, 1), GPIO_INT_BOTH,                  switch_interrupt)         /* Write protect input */
 #ifdef CONFIG_LOW_POWER_IDLE
 GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING,               uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
@@ -62,6 +61,7 @@ GPIO(BOARD_VERSION2, PIN(KSO_H, 6), GPIO_INPUT)
 GPIO(BOARD_VERSION3, PIN(KSO_H, 7), GPIO_INPUT)
 
 /* Unimplemented signals which we need to emulate for now */
+UNIMPLEMENTED(WP)
 UNIMPLEMENTED(ENTERING_RW)
 
 ALTERNATE(PIN_MASK(B, 0x03), 1, MODULE_UART, GPIO_PULL_UP) /* UART1 */

@@ -503,6 +503,57 @@ void __idle(void)
 }
 #endif /* CONFIG_LOW_POWER_IDLE */
 
+static int command_ec_power_state(int argc, char **argv)
+{
+	int power_state = 0;
+	int i;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "normal")) {
+		ccprintf("EC active...\n");
+		/* Flush console */
+		cflush();
+		/* disable all interrupts */
+		interrupt_disable();
+		while (1)
+			;
+	} else if (!strcasecmp(argv[1], "doze")) {
+		ccprintf("EC doze...\n");
+		power_state = EC_PLL_DOZE;
+	} else if (!strcasecmp(argv[1], "deepdoze")) {
+		ccprintf("EC deep doze...\n");
+		power_state = EC_PLL_DEEP_DOZE;
+	} else if (!strcasecmp(argv[1], "sleep")) {
+		ccprintf("EC sleep...\n");
+		power_state = EC_PLL_SLEEP;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	/* Flush console */
+	cflush();
+	/* disable all interrupts */
+	interrupt_disable();
+	for (i = 0; i < IT83XX_IRQ_COUNT; i++) {
+		chip_disable_irq(i);
+		chip_clear_pending_irq(i);
+	}
+	clock_ec_pll_ctrl(power_state);
+	/* standby instruction */
+	asm("standby wake_grant");
+
+	/* we should never reach that point */
+	while (1)
+		;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(ecstate, command_ec_power_state,
+			"[normal | doze | deepdoze | sleep]",
+			"EC enter a specific power state");
+
 #ifdef CONFIG_LOW_POWER_IDLE
 #ifdef CONFIG_CMD_IDLE_STATS
 /**
