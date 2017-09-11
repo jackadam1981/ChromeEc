@@ -1,0 +1,294 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "263f39ef_78b4e9e5",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "this variable is never updated. Why isn\u0027t const?",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05656a8e_15697239",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t make sense with 48. MSEC is 1000 is it not? So the *value* is actually just 48.",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35e2ce1a_3ed55876",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "64 correlates to 24 in what way?",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "811ad9f4_6eee7f5c",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "These functions should be in a header.",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c89f57_44a4e5b7",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "What happens when early_wakeup is \u003c 1000?",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "489d7c20_aeaf805a",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "What was the point of interrupt_disable() above?",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572cd7f9_d97ed1e2",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "parens not needed",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb7865e1_cf7f888a",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "superfluous comment.",
+      "range": {
+        "startLine": 147,
+        "startChar": 23,
+        "endLine": 147,
+        "endChar": 32
+      },
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ef6dccf_bbbe4be5",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "superfluous comment.",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 18
+      },
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7229aa0f_87f52dfc",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "if () {\n} else {\n}",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "689d392d_1ac5b287",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "Why are these functions global? That should just be static linkage.",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0782ed15_6a34cd81",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "Comments should go above the functions that are describing what a function does.",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad3d1a7a_73ae43f5",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "Why isn\u0027t this just sitting in your idle task? Why isn\u0027t it prepare for sleep/idle?",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b8a593_437de8db",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "long line",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "234e2d4a_3f7896b2",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "long line",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57e576fd_3c735aa5",
+        "filename": "chip/ish/power_mgt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T22:42:44Z",
+      "side": 1,
+      "message": "Why is this in a header file? Can\u0027t you just as easily put this code in the compilation unit itself?",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
