@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be7027e6_9d9e1f4d",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T16:49:08Z",
+      "side": 1,
+      "message": "Where are there all these globally scoped variables in here?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "960206f5b15df50b5941feb0e044a0636f09b39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ba1c3e6_45e881b9",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T16:49:08Z",
+      "side": 1,
+      "message": "formatting is off inhere as well",
+      "revId": "960206f5b15df50b5941feb0e044a0636f09b39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32704688_51746753",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-11T16:49:08Z",
+      "side": 1,
+      "message": "The formatting in this file is completely wrong.",
+      "revId": "960206f5b15df50b5941feb0e044a0636f09b39d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
