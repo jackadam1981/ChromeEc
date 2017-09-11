@@ -16,6 +16,24 @@
       "revId": "e2963f10083ceb1c0e8b45b44de3cd38940b3a74",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39404787_63babbdd",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-11T02:18:49Z",
+      "side": 1,
+      "message": "(feel free to fixup in a follow-up CL, though.)",
+      "parentUuid": "0894be14_79e4fa59",
+      "revId": "e2963f10083ceb1c0e8b45b44de3cd38940b3a74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
