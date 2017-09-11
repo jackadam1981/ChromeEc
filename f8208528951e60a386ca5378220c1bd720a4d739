@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a878081e_5434604e",
+        "filename": "common/sha256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-11T03:54:51Z",
+      "side": 1,
+      "message": "Not sure, that\u0027d also introduce quite a bit of code duplication. Also, latest version is more compact, which makes the flow a bit easier to follow despite the ifdefs.",
+      "parentUuid": "6f46b39b_84e480b8",
+      "range": {
+        "startLine": 134,
+        "startChar": 7,
+        "endLine": 134,
+        "endChar": 30
+      },
+      "revId": "f8208528951e60a386ca5378220c1bd720a4d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90404c2d_2e42291a",
         "filename": "common/sha256.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a9114684_fefa8aa6",
+        "filename": "common/sha256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-11T03:54:51Z",
+      "side": 1,
+      "message": "Yes, good point, thanks. Makes the code far easier to read, too ,-)",
+      "parentUuid": "90404c2d_2e42291a",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 19
+      },
+      "revId": "f8208528951e60a386ca5378220c1bd720a4d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "074fdf02_ecaae629",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-09-08T16:04:17Z",
       "side": 1,
       "message": "How about CONFIG_SHA256_FAST or CONFIG_SHA256_UNROLLED? The existing implementation is already OPTIMIZED for code space.",
+      "range": {
+        "startLine": 2100,
+        "startChar": 7,
+        "endLine": 2100,
+        "endChar": 30
+      },
+      "revId": "f8208528951e60a386ca5378220c1bd720a4d739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad15226c_388fd083",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2100,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-11T03:54:51Z",
+      "side": 1,
+      "message": "Good point... CONFIG_SHA256_UNROLLED it is.",
+      "parentUuid": "074fdf02_ecaae629",
       "range": {
         "startLine": 2100,
         "startChar": 7,
