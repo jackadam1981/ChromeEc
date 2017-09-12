@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53bf7f82_9738c908",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1113139
+      },
+      "writtenOn": "2017-09-12T09:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4e02d32_9d2c93d9",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "28e77767e69b99620a01bd62dd9daebd4f896456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17aee39e_34383a61",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 1
@@ -53,6 +77,42 @@
       "writtenOn": "2017-09-11T19:48:19Z",
       "side": 1,
       "message": "Yes, I think at least full charge capacity is needed to make the reported battery info complete.",
+      "parentUuid": "17aee39e_34383a61",
+      "revId": "28e77767e69b99620a01bd62dd9daebd4f896456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c531d384_e851064b",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1113139
+      },
+      "writtenOn": "2017-09-12T09:47:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1f4219b_25dcb767",
+      "revId": "28e77767e69b99620a01bd62dd9daebd4f896456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7047ea0_af4e952d",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1113139
+      },
+      "writtenOn": "2017-09-12T09:47:36Z",
+      "side": 1,
+      "message": "add the full capacity param, but i am not sure what else param nedd to add in max17055, if there have, remind me, thanks.",
       "parentUuid": "17aee39e_34383a61",
       "revId": "28e77767e69b99620a01bd62dd9daebd4f896456",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
