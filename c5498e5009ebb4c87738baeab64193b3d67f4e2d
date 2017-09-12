@@ -51,6 +51,24 @@
       "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6798b9_ed3d845b",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-12T03:15:52Z",
+      "side": 1,
+      "message": "Or you can just directly fix it, I think this should work:\n\n#ifdef CONFIG_USB_UPDATE\n#define FW_PAGE_COUNT (CONFIG_TOUCHPAD_VIRTUAL_SIZE / FW_PAGE_SIZE)\n#define FW_SIZE CONFIG_TOUCHPAD_VIRTUAL_SIZE\n(second define a bit useless)\n\nAnd possibly add:\n\nBUILD_ASSERT((CONFIG_TOUCHPAD_VIRTUAL_SIZE % FW_PAGE_SIZE) \u003d\u003d 0)\n#endif",
+      "parentUuid": "a7520a03_404a470e",
+      "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
