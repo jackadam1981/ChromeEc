@@ -34,6 +34,24 @@
       "revId": "45f4da524f022c885a9910ee0ec322ba2b201db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c9d453a_163d95a1",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-12T16:37:49Z",
+      "side": 1,
+      "message": "I\u0027m aware of EC\u0027s internal fake port80 post codes. Maybe expand upon the comment above indicating how you assume only 8-bit port80 writes come from AP.",
+      "parentUuid": "09949cf3_9d8ec907",
+      "revId": "45f4da524f022c885a9910ee0ec322ba2b201db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
