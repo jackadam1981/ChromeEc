@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a4665d7_dbc49064",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "this variable will be eventually modified when \u0027dsleep\u0027 console command is implemented.",
+      "parentUuid": "263f39ef_78b4e9e5",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05656a8e_15697239",
         "filename": "chip/ish/clock.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-11T22:42:44Z",
       "side": 1,
       "message": "This comment doesn\u0027t make sense with 48. MSEC is 1000 is it not? So the *value* is actually just 48.",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d77e557d_6a0ad9b3",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "Yes, it is 96. will fix it.",
+      "parentUuid": "05656a8e_15697239",
       "revId": "7254175ead5097b886bc0a058041953c62e0c355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4db837f0_493035db",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "it is 24, not 64.",
+      "parentUuid": "35e2ce1a_3ed55876",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "811ad9f4_6eee7f5c",
         "filename": "chip/ish/clock.c",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2017-09-11T22:42:44Z",
       "side": 1,
       "message": "These functions should be in a header.",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2d1709_388d7f95",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "these 2 proto type and ISH specific(hpet2) and LOW_POWER_IDLE specific. and hwtimer.h is common code.\nDo you have any suggestion for proper location ? \nThank you",
+      "parentUuid": "811ad9f4_6eee7f5c",
       "revId": "7254175ead5097b886bc0a058041953c62e0c355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "7c7bf791_1c97dae9",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "1. instead of 1000, \u0027ENOUGH_TIME_FOR_LOW_POWER\u0027 is more generic for different ISH architecture.\n\n2. Since early_wakeup is unsigned, it can be issue. \n\nas alternative,\n\na. remove above line. \n    early_wakeup -\u003d ENOUGH_TIME_FOR_LOW_POWER;\n\nb. change line below to \n   max_sleep_time \u003d early_wakeup - t0.le.lo -        \n                                ENOUGH_TIME_FOR_LOW_POWER;",
+      "parentUuid": "46c89f57_44a4e5b7",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "489d7c20_aeaf805a",
         "filename": "chip/ish/clock.c",
         "patchSetId": 3
@@ -98,6 +188,24 @@
       "writtenOn": "2017-09-11T22:42:44Z",
       "side": 1,
       "message": "What was the point of interrupt_disable() above?",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d5af4b9_d1d094de",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "interrupt_disable() above is before entering deep sleep(staying sleep inside \u0027pm_execute_idle_flow(max....)\u0027 and \u0027pm_d0ix\u0027.\n\nthis \u0027cli\u0027 is right after wake up. \nRight after wake from interrupt of wake timer(HPET2), temporarily disable all interrupt, do some work and then, re-enable clock gating.",
+      "parentUuid": "489d7c20_aeaf805a",
       "revId": "7254175ead5097b886bc0a058041953c62e0c355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "3438736a_d5834189",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "572cd7f9_d97ed1e2",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb7865e1_cf7f888a",
         "filename": "chip/ish/clock.c",
         "patchSetId": 3
@@ -132,6 +258,30 @@
       "writtenOn": "2017-09-11T22:42:44Z",
       "side": 1,
       "message": "superfluous comment.",
+      "range": {
+        "startLine": 147,
+        "startChar": 23,
+        "endLine": 147,
+        "endChar": 32
+      },
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45d29561_a5792de8",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "eb7865e1_cf7f888a",
       "range": {
         "startLine": 147,
         "startChar": 23,
@@ -167,6 +317,30 @@
     },
     {
       "key": {
+        "uuid": "dc1d87d3_da8a1995",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "7ef6dccf_bbbe4be5",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 18
+      },
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7229aa0f_87f52dfc",
         "filename": "chip/ish/clock.c",
         "patchSetId": 3
@@ -178,6 +352,24 @@
       "writtenOn": "2017-09-11T22:42:44Z",
       "side": 1,
       "message": "if () {\n} else {\n}",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fdc38f2_211c5c1e",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "will fix it.",
+      "parentUuid": "7229aa0f_87f52dfc",
       "revId": "7254175ead5097b886bc0a058041953c62e0c355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -201,6 +393,24 @@
     },
     {
       "key": {
+        "uuid": "29fcb9c5_029120e4",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "changed to static.",
+      "parentUuid": "689d392d_1ac5b287",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0782ed15_6a34cd81",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 3
@@ -212,6 +422,24 @@
       "writtenOn": "2017-09-11T22:42:44Z",
       "side": 1,
       "message": "Comments should go above the functions that are describing what a function does.",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62e553b_c3872e56",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "0782ed15_6a34cd81",
       "revId": "7254175ead5097b886bc0a058041953c62e0c355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -241,6 +469,30 @@
     },
     {
       "key": {
+        "uuid": "d2ea2f7e_d7ab5d96",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "1. __idle task will choose either pm_d0i1, pm_d0i2 or pm_d0i3 from the maximum possible sleep time. \nThis implementation is only for pm_d0i1 but will be expanded later time. Each pm_d0ix will have its own sleep and wakes from it. \n2. code above REG32(CCU_TRUNK_CG) is for preparing idle/sleep.",
+      "parentUuid": "ad3d1a7a_73ae43f5",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18b8a593_437de8db",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 3
@@ -252,6 +504,24 @@
       "writtenOn": "2017-09-11T22:42:44Z",
       "side": 1,
       "message": "long line",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73287c0a_fe33bc7f",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "18b8a593_437de8db",
       "revId": "7254175ead5097b886bc0a058041953c62e0c355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -275,6 +545,24 @@
     },
     {
       "key": {
+        "uuid": "a469f243_399721af",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "fixed.",
+      "parentUuid": "234e2d4a_3f7896b2",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57e576fd_3c735aa5",
         "filename": "chip/ish/power_mgt.h",
         "patchSetId": 3
@@ -286,6 +574,24 @@
       "writtenOn": "2017-09-11T22:42:44Z",
       "side": 1,
       "message": "Why is this in a header file? Can\u0027t you just as easily put this code in the compilation unit itself?",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2da648cc_f4676a36",
+        "filename": "chip/ish/power_mgt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-12T04:28:39Z",
+      "side": 1,
+      "message": "this is used 2 different files.(power_mgt.c and clock.c).\nDo you mean that same macro in both \u0027c\u0027 files ?",
+      "parentUuid": "57e576fd_3c735aa5",
       "revId": "7254175ead5097b886bc0a058041953c62e0c355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
