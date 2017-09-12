@@ -16,6 +16,24 @@
       "revId": "45f4da524f022c885a9910ee0ec322ba2b201db0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09949cf3_9d8ec907",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-12T16:35:42Z",
+      "side": 1,
+      "message": "It looks like only port80 codes \u003c 256 are standard port80 messages from host. Others have special meaning: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/port80.h#13\n\nIn special event cases, we do not want to schedule deferred call because it can lead to unnecessary dump of port80 messages on S0ix-\u003eS0 transitions. It should not affect S3-\u003eS0 since S3 resume will have standard port80 messages coming from host.",
+      "parentUuid": "7980e4a1_41e01774",
+      "revId": "45f4da524f022c885a9910ee0ec322ba2b201db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
