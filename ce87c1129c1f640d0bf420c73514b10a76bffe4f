@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "cad1e653_ca0ea074",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-12T20:30:09Z",
+      "side": 1,
+      "message": "no space before the )",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee5e62a_a16330de",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-12T20:30:09Z",
+      "side": 1,
+      "message": "why this indirection ?  why not depend on $(TOUCHPAD_FW) directly ?",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d63b1a65_d7679646",
+        "filename": "util/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-12T20:30:09Z",
+      "side": 1,
+      "message": "spaces around the +\u003d",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400972b1_4885ef04",
+        "filename": "util/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-12T20:30:09Z",
+      "side": 1,
+      "message": "this will make PKG_CONFIG run with every expansion with BUILD_CFLAGS which slows things down a lot.  you should use indirection like we do with many other builds.  just grep for \"PC_CFLAGS\" in the tree for examples.",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a09720c2_634526d4",
         "filename": "util/gen_touchpad_hash.c",
         "patchSetId": 8
@@ -42,6 +110,91 @@
         "endLine": 52,
         "endChar": 24
       },
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14655581_639640eb",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-12T20:30:09Z",
+      "side": 1,
+      "message": "proposal: delete all the manual stderr writing of error messages and include err.h and use warn/warnx/err/errx helpers instead",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c808817f_59da12c7",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-12T20:30:09Z",
+      "side": 1,
+      "message": "i don\u0027t know about the EC codebase, but normally this is written in a while loop instead of a do...while\n\n while ((nopt \u003d getopt_long(...)) !\u003d -1) {",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "780bc340_fcab7f3a",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-12T20:30:09Z",
+      "side": 1,
+      "message": "normally you write to stderr for errors and stdout for --help, and exit 1/0 similarly",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7c9986_47f42d29",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-12T20:30:09Z",
+      "side": 1,
+      "message": "\"we\"",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35e32f25_1e7c3640",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-12T20:30:09Z",
+      "side": 1,
+      "message": "\"re\"",
       "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
