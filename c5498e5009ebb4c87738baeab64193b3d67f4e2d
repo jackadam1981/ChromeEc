@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9168a1af_0ceda528",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-12T02:50:07Z",
+      "side": 1,
+      "message": "TODO in code is enough.",
+      "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0455e965_165256b5",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-12T02:50:07Z",
+      "side": 1,
+      "message": "/* TODO(b/65188846): The actual FW_PAGE_COUNT depends on IC. */",
+      "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
