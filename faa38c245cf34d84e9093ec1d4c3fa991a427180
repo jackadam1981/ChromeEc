@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c77bbec7_b4b22886",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-09-12T16:37:44Z",
+      "side": 1,
+      "message": "S3 and s0ix suspend-resume tests done. \nwake source verification yet to be done",
+      "parentUuid": "d4390847_86e2d7a5",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 29,
+        "endChar": 64
+      },
+      "revId": "faa38c245cf34d84e9093ec1d4c3fa991a427180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25fe9e7e_7451bde9",
         "filename": "common/host_event_commands.c",
         "patchSetId": 6
@@ -76,6 +100,30 @@
       "writtenOn": "2017-09-10T17:30:54Z",
       "side": 1,
       "message": "If active wake mask is supported only for LPC, why are the lazy masks supported in !LPC case?",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 8
+      },
+      "revId": "faa38c245cf34d84e9093ec1d4c3fa991a427180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef24e76_bff12b55",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-09-12T16:37:44Z",
+      "side": 1,
+      "message": "Yes, make sense. Will fix",
+      "parentUuid": "97808e78_f7ca89ed",
       "range": {
         "startLine": 332,
         "startChar": 1,
@@ -191,6 +239,24 @@
     },
     {
       "key": {
+        "uuid": "d3ed7c7b_aa9b2529",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-09-12T16:37:44Z",
+      "side": 1,
+      "message": "Will fix",
+      "parentUuid": "f80cae7b_d5eea066",
+      "revId": "faa38c245cf34d84e9093ec1d4c3fa991a427180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c31b7c29_34da2ebb",
         "filename": "common/host_event_commands.c",
         "patchSetId": 6
@@ -202,6 +268,30 @@
       "writtenOn": "2017-09-10T17:30:54Z",
       "side": 1,
       "message": "Why not hide lazy wake mask structures and functions behind LPC config? It seems inconsistent that the active wake mask is hidden under LPC, but not the lazy masks.",
+      "range": {
+        "startLine": 435,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 1
+      },
+      "revId": "faa38c245cf34d84e9093ec1d4c3fa991a427180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5cfebd_2cbca6f4",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-09-12T16:37:44Z",
+      "side": 1,
+      "message": "Yes, will move lazy wake mask also under LPC check. Without active wake mask, it doesnt make sense to enable lazy mask flow",
+      "parentUuid": "c31b7c29_34da2ebb",
       "range": {
         "startLine": 435,
         "startChar": 0,
@@ -237,6 +327,30 @@
     },
     {
       "key": {
+        "uuid": "18f206fb_9cbeb042",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-09-12T16:37:44Z",
+      "side": 1,
+      "message": "I think it should. will fix",
+      "parentUuid": "53456d0b_2684c4af",
+      "range": {
+        "startLine": 459,
+        "startChar": 6,
+        "endLine": 459,
+        "endChar": 25
+      },
+      "revId": "faa38c245cf34d84e9093ec1d4c3fa991a427180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "28443ab2_e392ab1e",
         "filename": "common/host_event_commands.c",
         "patchSetId": 6
@@ -248,6 +362,30 @@
       "writtenOn": "2017-09-10T17:30:54Z",
       "side": 1,
       "message": "Does this not fit in 80 columns on previous line?",
+      "range": {
+        "startLine": 476,
+        "startChar": 6,
+        "endLine": 476,
+        "endChar": 34
+      },
+      "revId": "faa38c245cf34d84e9093ec1d4c3fa991a427180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d62556_de1d60e4",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-09-12T16:37:44Z",
+      "side": 1,
+      "message": "I think it should. will fix it",
+      "parentUuid": "28443ab2_e392ab1e",
       "range": {
         "startLine": 476,
         "startChar": 6,
@@ -317,6 +455,30 @@
     },
     {
       "key": {
+        "uuid": "26f31e29_85c69cc4",
+        "filename": "include/host_command.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-09-12T16:37:44Z",
+      "side": 1,
+      "message": "Since the host event APIs are declared here (host_set_events/host_clear_events...), I thought it might be good to add wake mask APIs also here. Any other better header file would you like to suggest?",
+      "parentUuid": "5af99bd6_d0ae83d8",
+      "range": {
+        "startLine": 317,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 0
+      },
+      "revId": "faa38c245cf34d84e9093ec1d4c3fa991a427180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b35e095d_ca057694",
         "filename": "power/common.c",
         "patchSetId": 6
@@ -345,6 +507,30 @@
       "writtenOn": "2017-09-10T17:30:54Z",
       "side": 1,
       "message": "Why change the order in which this is handled? Also, you are no longer checking chipset state?",
+      "range": {
+        "startLine": 348,
+        "startChar": 2,
+        "endLine": 350,
+        "endChar": 4
+      },
+      "revId": "faa38c245cf34d84e9093ec1d4c3fa991a427180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2bbbd52_a48fca33",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-09-12T16:37:44Z",
+      "side": 1,
+      "message": "With SLP_S0 interrupt + host commands for host_suspend/resume in place, I feel the chipset check doesn\u0027t make much sense\n\nRegarding the order, the order change wasn\u0027t intentional. But let me check from functionality perspective if it really matters",
+      "parentUuid": "d3360f61_672788d3",
       "range": {
         "startLine": 348,
         "startChar": 2,
