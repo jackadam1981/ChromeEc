@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15137774_8763b5ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-12T00:25:38Z",
+      "side": 1,
+      "message": "The comments are correct. What I think you\u0027re seeing is that the AP is holding these lines down and therefore the 1M pulldown resulting in \u002701\u0027 can\u0027t be read reliably. It\u0027s because of this reason, that the strap config logic will accept either 0x0505 or 0x0000 on the 2 pins that are supposed are used for the AP \u003c--\u003e H1 communication interface.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 66
+      },
+      "revId": "2b4466954bb59bd5b38b1390029ca222a86d8725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
