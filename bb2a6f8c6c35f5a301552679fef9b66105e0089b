@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9ef4aa27_5e0d60cd",
+        "filename": "test/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-12T14:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa9b3d8_897c7744",
+      "revId": "bb2a6f8c6c35f5a301552679fef9b66105e0089b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a1d8880_2d408821",
         "filename": "test/base32.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "decf0a28_31ebbfa0",
+        "filename": "test/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-12T14:47:30Z",
+      "side": 1,
+      "message": "I agree. This test is unnecessary.",
+      "parentUuid": "0a1d8880_2d408821",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "bb2a6f8c6c35f5a301552679fef9b66105e0089b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b8ec650_8ffb67fa",
         "filename": "test/base32.c",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2017-09-12T01:14:45Z",
       "side": 1,
       "message": "I think this is a duplicate comment to line 200; remove?",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 52
+      },
+      "revId": "bb2a6f8c6c35f5a301552679fef9b66105e0089b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5161656_5b7ab1f1",
+        "filename": "test/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-12T14:47:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b8ec650_8ffb67fa",
       "range": {
         "startLine": 193,
         "startChar": 1,
