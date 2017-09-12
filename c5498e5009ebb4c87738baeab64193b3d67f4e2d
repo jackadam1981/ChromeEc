@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "91f2b58a_ae89f035",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-12T06:28:24Z",
+      "side": 1,
+      "message": ": ) That\u0027s why I also write it on the commit message to show my determination !\nBut Nicolas told me to remove :-)  Will follow usual convention then.",
+      "parentUuid": "c99e45b5_8be12c7a",
+      "range": {
+        "startLine": 80,
+        "startChar": 46,
+        "endLine": 80,
+        "endChar": 53
+      },
+      "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0455e965_165256b5",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 13
@@ -95,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "a937c601_256a1584",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-12T06:28:24Z",
+      "side": 1,
+      "message": "I can\u0027t directly fixed in the CL as CONFIG_TOUCPAD_VIRTUAL_SIZE is not existed yet.\nWill do that in another CL.",
+      "parentUuid": "3a6798b9_ed3d845b",
+      "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5818e3be_d4b55f59",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 13
@@ -112,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "5f6558c2_dfd693cc",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-12T06:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5818e3be_d4b55f59",
+      "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92503a7c_fc82c000",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 13
@@ -123,6 +183,24 @@
       "writtenOn": "2017-09-12T03:18:36Z",
       "side": 1,
       "message": "Intentional to have two blank lines?",
+      "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afcf5353_6cde77e8",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-12T06:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92503a7c_fc82c000",
       "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -152,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "c615cbb0_9f3be140",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-12T06:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6e7bc4c_941cfaf4",
+      "range": {
+        "startLine": 465,
+        "startChar": 9,
+        "endLine": 465,
+        "endChar": 17
+      },
+      "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8f0b2e2_a7e77582",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 13
@@ -163,6 +265,30 @@
       "writtenOn": "2017-09-12T03:18:36Z",
       "side": 1,
       "message": "I think this should be double-indented?",
+      "range": {
+        "startLine": 470,
+        "startChar": 1,
+        "endLine": 470,
+        "endChar": 2
+      },
+      "revId": "c5498e5009ebb4c87738baeab64193b3d67f4e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06402f10_dc493df6",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-12T06:28:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f0b2e2_a7e77582",
       "range": {
         "startLine": 470,
         "startChar": 1,
