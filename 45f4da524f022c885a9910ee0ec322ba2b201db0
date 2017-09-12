@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7980e4a1_41e01774",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-12T15:44:37Z",
+      "side": 1,
+      "message": "Why conditionalize on data \u003c 256? Only allowing 8-bit writes to port80?",
+      "revId": "45f4da524f022c885a9910ee0ec322ba2b201db0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
