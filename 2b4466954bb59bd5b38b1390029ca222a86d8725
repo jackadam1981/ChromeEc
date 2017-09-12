@@ -22,6 +22,29 @@
       "revId": "2b4466954bb59bd5b38b1390029ca222a86d8725",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ffecd4b_11cea2e2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-12T00:32:19Z",
+      "side": 1,
+      "message": "FYI, this section of the comment covers how weak vs strong pulldown distinction isn\u0027t made for the 2 pins not being used for the AP communication interface.",
+      "range": {
+        "startLine": 1430,
+        "startChar": 42,
+        "endLine": 1434,
+        "endChar": 20
+      },
+      "revId": "2b4466954bb59bd5b38b1390029ca222a86d8725",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
