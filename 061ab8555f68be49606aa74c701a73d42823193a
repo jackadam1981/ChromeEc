@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "6da10fad_7707a7f6",
+        "filename": "chip/mec1701/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-12T14:28:45Z",
+      "side": 1,
+      "message": "Verified MEC17xx eSPI virtual wire defaults match PCH requirements. The functions espi_vw_after_pltrst and espi_vw_init_after_reset are not need. I will remove these functions.",
+      "parentUuid": "6ded2c09_31be54a3",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 5
+      },
+      "revId": "061ab8555f68be49606aa74c701a73d42823193a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "643d3c8e_b2a998f6",
         "filename": "chip/mec1701/espi.c",
         "patchSetId": 2
