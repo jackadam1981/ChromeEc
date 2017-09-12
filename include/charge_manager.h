@@ -17,6 +17,10 @@
 #define CHARGE_CURRENT_UNINITIALIZED -1
 #define CHARGE_VOLTAGE_UNINITIALIZED -1
 
+#if defined(HAS_TASK_USB_CHG) || defined(HAS_TASK_USB_CHG_P0)
+#define CHARGE_MANAGER_BC12
+#endif
+
 /**
  * Time to delay for detecting the charger type (must be long enough for BC1.2
  * driver to get supplier information and notify charge manager).
@@ -27,12 +31,14 @@
 enum charge_supplier {
 	CHARGE_SUPPLIER_PD,
 	CHARGE_SUPPLIER_TYPEC,
+#ifdef CHARGE_MANAGER_BC12
 	CHARGE_SUPPLIER_BC12_DCP,
 	CHARGE_SUPPLIER_BC12_CDP,
 	CHARGE_SUPPLIER_BC12_SDP,
 	CHARGE_SUPPLIER_PROPRIETARY,
 	CHARGE_SUPPLIER_OTHER,
 	CHARGE_SUPPLIER_VBUS,
+#endif
 	CHARGE_SUPPLIER_COUNT
 };
 
