@@ -57,6 +57,24 @@
       "revId": "63b934dfb3d840069b2d95dce097fce9c301e115",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "208b3db4_17b3b9fc",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-12T03:08:27Z",
+      "side": 1,
+      "message": "\u003e From the mail, it looks even soraka/stuff can have different size (can this also be addressed by define tricks) ? \n\u003e Or let\u0027s just get the size at the start up and put into touchpad_info for others to query ?\n\nSee https://b.corp.google.com/issues/65188846#comment7 , I think patch set 9 does the right thing.",
+      "parentUuid": "cc38e7dc_a3c78d3e",
+      "revId": "63b934dfb3d840069b2d95dce097fce9c301e115",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
