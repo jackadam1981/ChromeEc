@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f74ccbc4_498b0d69",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-12T20:08:30Z",
+      "side": 1,
+      "message": "This is seconds between the epoch (1/1/1970) and 1/1/2000, right? Might want to comment about this.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "8077b1d6b84405f73eca97111f025a0dc035b2fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "274226fc_ee1ef7bb",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-12T20:08:30Z",
+      "side": 1,
+      "message": "It might be best to put these functions (and struct calandar_date) in common code since they aren\u0027t related to stm32 implementation details. Also it would be good to have some test cases (especially test cases involving leak years) where you convert timestamps to dates and back, and compare against known values.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "8077b1d6b84405f73eca97111f025a0dc035b2fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
