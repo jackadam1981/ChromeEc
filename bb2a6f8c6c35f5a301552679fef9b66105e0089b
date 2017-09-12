@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1aa9b3d8_897c7744",
+        "filename": "test/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-12T01:14:45Z",
+      "side": 1,
+      "message": "In here, add a new test:\n\n\t/*\n\t * Do the same in the opposite order, to make sure a subsequent\n\t * character doesn\u0027t obscure a previous typo.\n\t */\n\tfor (i \u003d 0; i \u003c 32; i++) {\n\t\tseen \u003d 0;\n\t\tfor (j \u003d 0; j \u003c 32; j++)\n\t\t\tseen |\u003d 1 \u003c\u003c crc5_sym(i, j);\n\t\tTEST_ASSERT(seen \u003d\u003d 0xffffffff);\n\t}",
+      "revId": "bb2a6f8c6c35f5a301552679fef9b66105e0089b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a1d8880_2d408821",
+        "filename": "test/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-12T01:14:45Z",
+      "side": 1,
+      "message": "Should really be crc5_sym(decode_sym(test_string[i]), c)\n\nBut really, I think the test above is good enough.  That\u0027s the one I was missing.\n\nIf you do want to add a test case below, just show that:\n\nbase32_decode(dec, 45, \"CC5QQLALU@\", 9)\n\npasses (where @ is the correct new CRC) and\n\nbase32_decode(dec, 45, \"DC5QQLALU@\", 9)\n\nfails.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "bb2a6f8c6c35f5a301552679fef9b66105e0089b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b8ec650_8ffb67fa",
+        "filename": "test/base32.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-12T01:14:45Z",
+      "side": 1,
+      "message": "I think this is a duplicate comment to line 200; remove?",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 52
+      },
+      "revId": "bb2a6f8c6c35f5a301552679fef9b66105e0089b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
