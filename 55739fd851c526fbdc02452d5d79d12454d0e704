@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73b35582_260143f9",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-12T18:01:06Z",
+      "side": 1,
+      "message": "Let\u0027s put this behind #if CONFIG_DEDICATED_CHARGE_PORT_COUNT \u003e 0.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 33
+      },
+      "revId": "55739fd851c526fbdc02452d5d79d12454d0e704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9578782f_249e787c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-12T18:01:06Z",
+      "side": 1,
+      "message": "We need to add a TODO here and decide how to handle this new charger type (requires changes to get_ec_usb_pd_power_info() on kernel side).",
+      "revId": "55739fd851c526fbdc02452d5d79d12454d0e704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2006289c_6f6862a6",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-12T18:01:06Z",
+      "side": 1,
+      "message": "Let\u0027s put this behind #if CONFIG_DEDICATED_CHARGE_PORT_COUNT \u003e 0.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 26
+      },
+      "revId": "55739fd851c526fbdc02452d5d79d12454d0e704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
