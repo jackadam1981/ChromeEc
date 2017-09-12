@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a6eaf52_b14c36ff",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-12T23:45:51Z",
+      "side": 1,
+      "message": "Yes, will do.",
+      "parentUuid": "f74ccbc4_498b0d69",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "8077b1d6b84405f73eca97111f025a0dc035b2fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "274226fc_ee1ef7bb",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-12T20:08:30Z",
       "side": 1,
       "message": "It might be best to put these functions (and struct calandar_date) in common code since they aren\u0027t related to stm32 implementation details. Also it would be good to have some test cases (especially test cases involving leak years) where you convert timestamps to dates and back, and compare against known values.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "8077b1d6b84405f73eca97111f025a0dc035b2fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53f4d6cd_c22360ca",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-12T23:45:51Z",
+      "side": 1,
+      "message": "Do you think it\u0027s fine to move the code to common/timer.c?\nOr we should create common/rtclib.c and define a new option for it?",
+      "parentUuid": "274226fc_ee1ef7bb",
       "range": {
         "startLine": 76,
         "startChar": 0,
