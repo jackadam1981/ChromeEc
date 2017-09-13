@@ -493,6 +493,30 @@
     },
     {
       "key": {
+        "uuid": "44ec6b97_c5b5859d",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-13T16:38:14Z",
+      "side": 1,
+      "message": "Yes, but that\u0027s only setup and teardown. Keep the interrupt flipping in clock.c. That way it is in one place.",
+      "parentUuid": "d2ea2f7e_d7ab5d96",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18b8a593_437de8db",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 3
@@ -592,6 +616,24 @@
       "side": 1,
       "message": "this is used 2 different files.(power_mgt.c and clock.c).\nDo you mean that same macro in both \u0027c\u0027 files ?",
       "parentUuid": "57e576fd_3c735aa5",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43074a83_6cf64f81",
+        "filename": "chip/ish/power_mgt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-13T16:38:14Z",
+      "side": 1,
+      "message": "It could just reside in clock.c only deferring to the pm_d0iX functions for doing the setup and teardown.",
+      "parentUuid": "2da648cc_f4676a36",
       "revId": "7254175ead5097b886bc0a058041953c62e0c355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
