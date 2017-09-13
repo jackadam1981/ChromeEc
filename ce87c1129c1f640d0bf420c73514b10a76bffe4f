@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "59ce7115_0b0fd72c",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "Space is intentional to keep make output aligned, e.g.\n\n  TPHASH  touchpad_fw_hash.h\n  CC      RO/board/hammer/board.o\n  CC      RO/chip/stm32/clock-f.o\n  CC      RO/chip/stm32/clock-stm32f0.o",
+      "parentUuid": "cad1e653_ca0ea074",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ee5e62a_a16330de",
         "filename": "common/build.mk",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-12T20:30:09Z",
       "side": 1,
       "message": "why this indirection ?  why not depend on $(TOUCHPAD_FW) directly ?",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a74774b9_68fd2754",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "To avoid recomputing the hash (and therefore the object file, and EC image) on every single build (see the .PHONY logic below), and yet force rebuild when TOUCHPAD_FW parameter is changed.",
+      "parentUuid": "8ee5e62a_a16330de",
       "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "152c4bcf_a6e56113",
+        "filename": "util/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d63b1a65_d7679646",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "400972b1_4885ef04",
         "filename": "util/build.mk",
         "patchSetId": 8
@@ -67,6 +121,24 @@
       "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e0240ac_6fb23ed0",
+        "filename": "util/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "400972b1_4885ef04",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -93,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "2a5b669d_a971e357",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a09720c2_634526d4",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0876c244_6afab1af",
         "filename": "util/gen_touchpad_hash.c",
         "patchSetId": 8
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "d4e4e595_4bae60ee",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0876c244_6afab1af",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14655581_639640eb",
         "filename": "util/gen_touchpad_hash.c",
         "patchSetId": 8
@@ -127,6 +247,24 @@
       "writtenOn": "2017-09-12T20:30:09Z",
       "side": 1,
       "message": "proposal: delete all the manual stderr writing of error messages and include err.h and use warn/warnx/err/errx helpers instead",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50505cdc_583eb12a",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "Well, we use the return value to delete an incomplete output file on error, so I think it\u0027s better to keep it this way.",
+      "parentUuid": "14655581_639640eb",
       "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -150,6 +288,24 @@
     },
     {
       "key": {
+        "uuid": "2e890fca_d1fbf77d",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "This is copy-paste from other files in the directory, but I don\u0027t really mind.\n\nDone.",
+      "parentUuid": "c808817f_59da12c7",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "780bc340_fcab7f3a",
         "filename": "util/gen_touchpad_hash.c",
         "patchSetId": 8
@@ -164,6 +320,24 @@
       "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e89d9dd_ac82f918",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "780bc340_fcab7f3a",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -184,6 +358,24 @@
     },
     {
       "key": {
+        "uuid": "0b39ea3f_bd3751fb",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd7c9986_47f42d29",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35e32f25_1e7c3640",
         "filename": "util/gen_touchpad_hash.c",
         "patchSetId": 8
@@ -198,6 +390,24 @@
       "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9812e10_292a9cee",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T06:15:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35e32f25_1e7c3640",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
