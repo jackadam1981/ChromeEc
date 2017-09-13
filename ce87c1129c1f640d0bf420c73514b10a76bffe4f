@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "c76e05c3_ccf96a18",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-13T07:01:01Z",
+      "side": 1,
+      "message": "TOUCHPAD_FW is a path to an external file that doesn\u0027t change when you run `make`.  so why would the hash need to be recalculated when TOUCHPAD_FW doesn\u0027t change ?  make would see that the generated header file is newer than the TOUCHPAD_FW source and thus skip it.\n\nif i\u0027m reading this code correctly, the hash gets updated only when the *path* to the firmware file changes, not when the firmware file itself changes.  that doesn\u0027t make sense.",
+      "parentUuid": "a74774b9_68fd2754",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d63b1a65_d7679646",
         "filename": "util/build.mk",
         "patchSetId": 8
@@ -265,6 +283,24 @@
       "side": 1,
       "message": "Well, we use the return value to delete an incomplete output file on error, so I think it\u0027s better to keep it this way.",
       "parentUuid": "14655581_639640eb",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df5ddd2_50f558a5",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-13T07:01:01Z",
+      "side": 1,
+      "message": "how is that relevant to my suggestion ?  warn/warnx don\u0027t exit, and err/errx have an argument to specify the exit code.  so in funcs where you don\u0027t want to exit (like this one), warn/warnx should work fine.  in funcs where you want to exit (like main below), err/errx should work fine.",
+      "parentUuid": "50505cdc_583eb12a",
       "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
