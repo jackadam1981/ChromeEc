@@ -56,7 +56,7 @@ get_tree_version() {
     if [ -n "$(git diff-index --name-only HEAD 2>/dev/null)" ]; then
       dirty="${dirty_marker}"
     fi
-    vbase="${ver_major}.${ver_branch}.${numcommits}-${ghash}${dirty}"
+    vbase="${ver_major}.${ver_branch}.${numcommits}-${dirty}${ghash}"
   else
     # Fall back to the VCSID provided by the packaging system if available.
     if ghash=${VCSID##*-}; then
