@@ -93,6 +93,30 @@
       "revId": "8077b1d6b84405f73eca97111f025a0dc035b2fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3d0be9b_78e42ecf",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-13T17:35:38Z",
+      "side": 1,
+      "message": "Probably it\u0027s best to create a new file, common/rtc.c maybe (build based on CONFIG_HOSTCMD_RTC).",
+      "parentUuid": "53f4d6cd_c22360ca",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "8077b1d6b84405f73eca97111f025a0dc035b2fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
