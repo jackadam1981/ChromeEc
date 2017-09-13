@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "0b20f719_02a9dad4",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T08:40:48Z",
+      "side": 1,
+      "message": "So, if you replace this whole block by:\n\n$(out)/touchpad_fw_hash.h: $(out)/util/gen_touchpad_hash $(TOUCHPAD_FW)\n\t$(call quiet,tp_hash,TPHASH )\n\nDoing this:\nmake BOARD\u003dhammer -j\n(pass no touchpad firwmare)\nthen\nmake TOUCHPAD_FW\u003dSA459C-1211_ForGoogleHammer_4.0.bin BOARD\u003dhammer -j\n\ndoes not force hashes to be recomputed (because SA459C-1211_ForGoogleHammer_4.0.bin modification time is older than build/hammer/touchpad_fw_hash.h). You have to manually \"touch SA459C-1211_ForGoogleHammer_4.0.bin\" to force a rebuild. We want to avoid that (for developer convenience mostly).\n\n\u003e if i\u0027m reading this code correctly, the hash gets updated only when the *path* to the firmware file changes, not when the firmware file itself changes.  that doesn\u0027t make sense.\n\nWell, we are suffering from a similar issue as above, but if the path does not change, and $(TOUCHPAD_FW) is more recent than .touchpad_fw, the hashes will be rebuild.",
+      "parentUuid": "c76e05c3_ccf96a18",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d63b1a65_d7679646",
         "filename": "util/build.mk",
         "patchSetId": 8
@@ -301,6 +319,24 @@
       "side": 1,
       "message": "how is that relevant to my suggestion ?  warn/warnx don\u0027t exit, and err/errx have an argument to specify the exit code.  so in funcs where you don\u0027t want to exit (like this one), warn/warnx should work fine.  in funcs where you want to exit (like main below), err/errx should work fine.",
       "parentUuid": "50505cdc_583eb12a",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "190f749f_e72c3a00",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T08:40:48Z",
+      "side": 1,
+      "message": "Argh, thanks, I missed that warn/warnx does exactly that.\n\nDone!",
+      "parentUuid": "2df5ddd2_50f558a5",
       "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
