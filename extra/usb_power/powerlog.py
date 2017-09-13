@@ -14,6 +14,7 @@ import sys
 import time
 import traceback
 from pprint import pprint
+from stats_manager import StatsManager
 
 import usb
 
@@ -309,11 +310,6 @@ class Spower(object):
     else:
       debuglog("Command START: FAIL")
 
-    title = "ts:%dus" % actual_us
-    for i in range(0, len(self._inas)):
-      name = self._inas[i]['name']
-      title += ", %s uW" % name
-
     return actual_us
 
   def add_ina_name(self, name):
@@ -343,7 +339,7 @@ class Spower(object):
     raise Exception("Power", "Failed to find INA %s" % name)
 
   def set_time(self, timestamp_us):
-    """Set sweetberry tie to match host time.
+    """Set sweetberry time to match host time.
 
     Args:
       timestamp_us: host timestmap in us.
@@ -484,7 +480,8 @@ class powerlog(object):
     obj = powerlog()
 
   Instance Variables:
-    _pwr[]: Spower objects for individual sweetberries
+    _data: records sweetberries readings and calculates statistics.
+    _pwr[]: Spower objects for individual sweetberries.
   """
 
   def __init__(self, brdfile, cfgfile, serial_a=None,
@@ -498,6 +495,7 @@ class powerlog(object):
       sync_date: report timestamps synced with host datetime.
       use_ms: report timestamps in ms rather than us.
     """
+    self._data = StatsManager()
     self._pwr = {}
     self._use_ms = use_ms
 
@@ -602,6 +600,7 @@ class powerlog(object):
             for name in self._names:
               if name in aggregate_record:
                 csv += ", %.2f" % aggregate_record[name]
+                self._data.AddValue(name, aggregate_record[name])
               else:
                 csv += ", "
             csv += ", %d" % aggregate_record["status"]
@@ -611,10 +610,14 @@ class powerlog(object):
             for r in range(0, len(self._pwr)):
               pending_records.pop(0)
 
+    except KeyboardInterrupt:
+      print
 
     finally:
       for key in self._pwr:
         self._pwr[key].stop()
+      self._data.CalculateStats()
+      self._data.PrintSummary()
 
 
 def main():
@@ -624,15 +627,13 @@ def main():
   parser.add_argument('-b', '--board', type=str,
       help="Board configuration file, eg. my.board", default="")
   parser.add_argument('-c', '--config', type=str,
-      help="Rail config to monitor, eg my.config", default="")
+      help="Rail config to monitor, eg my.scenario", default="")
   parser.add_argument('-A', '--serial', type=str,
       help="Serial number of sweetberry A", default="")
   parser.add_argument('-B', '--serial_b', type=str,
       help="Serial number of sweetberry B", default="")
   parser.add_argument('-t', '--integration_us', type=int,
       help="Target integration time for samples", default=100000)
-  parser.add_argument('-n', '--samples', type=int,
-      help="Samples to capture, or none to sample forever.", default=0)
   parser.add_argument('-s', '--seconds', type=float,
       help="Seconds to run capture. Overrides -n", default=0.)
   parser.add_argument('--date', default=False,
@@ -658,7 +659,6 @@ def main():
 
   brdfile = args.board
   cfgfile = args.config
-  samples = args.samples
   seconds = args.seconds
   serial_a = args.serial
   serial_b = args.serial_b
@@ -670,10 +670,6 @@ def main():
   sync_speed = .8
   if args.slow:
     sync_speed = 1.2
-
-  forever = True
-  if samples > 0 or seconds > 0.:
-    forever = False
 
   # Set up logging interface.
   powerlogger = powerlog(brdfile, cfgfile, serial_a=serial_a,
