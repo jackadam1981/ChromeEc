@@ -6,6 +6,7 @@
 """Program to fetch power logging data from a sweetberry device
    or other usb device that exports a USB power logging interface.
 """
+from __future__ import print_function
 import argparse
 import array
 import json
@@ -17,14 +18,16 @@ from pprint import pprint
 
 import usb
 
+from stats_manager import StatsManager
+
 # This can be overridden by -v.
 debug = False
 def debuglog(msg):
   if debug:
-    print msg
+    print(msg)
 
 def logoutput(msg):
-  print msg
+  print(msg)
   sys.stdout.flush()
 
 
@@ -309,11 +312,6 @@ class Spower(object):
     else:
       debuglog("Command START: FAIL")
 
-    title = "ts:%dus" % actual_us
-    for i in range(0, len(self._inas)):
-      name = self._inas[i]['name']
-      title += ", %s uW" % name
-
     return actual_us
 
   def add_ina_name(self, name):
@@ -343,7 +341,7 @@ class Spower(object):
     raise Exception("Power", "Failed to find INA %s" % name)
 
   def set_time(self, timestamp_us):
-    """Set sweetberry tie to match host time.
+    """Set sweetberry time to match host time.
 
     Args:
       timestamp_us: host timestmap in us.
@@ -403,7 +401,7 @@ class Spower(object):
       cmd = struct.pack("<H", 0x0004)
       bytesread = self.wr_command(cmd, read_count=expected_bytes)
     except usb.core.USBError as e:
-      print "READ LINE FAILED %s" % e
+      print("READ LINE FAILED %s" % e)
       return None
 
     if len(bytesread) == 1:
@@ -441,8 +439,8 @@ class Spower(object):
     """
     status, size = struct.unpack("<BB", data[0:2])
     if len(data) != self.report_size(size):
-      print "READ LINE FAILED st:%d size:%d expected:%d len:%d" % (
-          status, size, self.report_size(size), len(data))
+      print("READ LINE FAILED st:%d size:%d expected:%d len:%d" % (
+          status, size, self.report_size(size), len(data)))
     else:
       pass
 
@@ -484,11 +482,12 @@ class powerlog(object):
     obj = powerlog()
 
   Instance Variables:
-    _pwr[]: Spower objects for individual sweetberries
+    _data: records sweetberries readings and calculates statistics.
+    _pwr[]: Spower objects for individual sweetberries.
   """
 
-  def __init__(self, brdfile, cfgfile, serial_a=None,
-               serial_b=None, sync_date=False, use_ms=False):
+  def __init__(self, brdfile, cfgfile, serial_a=None, serial_b=None,
+               sync_date=False, use_ms=False, print_stats=False):
     """
     Args:
       brdfile: string name of json file containing board layout.
@@ -498,8 +497,10 @@ class powerlog(object):
       sync_date: report timestamps synced with host datetime.
       use_ms: report timestamps in ms rather than us.
     """
+    self._data = StatsManager()
     self._pwr = {}
     self._use_ms = use_ms
+    self._print_stats = print_stats
 
     if not serial_a and not serial_b:
       self._pwr['A'] = Spower('A')
@@ -594,7 +595,8 @@ class powerlog(object):
               aggregate_record[rkey] = record[rkey]
             aggregate_record["boards"].add(record["berry"])
           else:
-            print "break %s, %s" % (record["berry"], aggregate_record["boards"])
+            print("break %s, %s" % (record["berry"],
+                                    aggregate_record["boards"]))
             break
 
           if aggregate_record["boards"] == set(self._pwr.keys()):
@@ -602,6 +604,7 @@ class powerlog(object):
             for name in self._names:
               if name in aggregate_record:
                 csv += ", %.2f" % aggregate_record[name]
+                self._data.AddValue(name, aggregate_record[name])
               else:
                 csv += ", "
             csv += ", %d" % aggregate_record["status"]
@@ -611,10 +614,15 @@ class powerlog(object):
             for r in range(0, len(self._pwr)):
               pending_records.pop(0)
 
+    except KeyboardInterrupt:
+      print()
 
     finally:
       for key in self._pwr:
         self._pwr[key].stop()
+      self._data.CalculateStats()
+      if self._print_stats:
+        self._data.PrintSummary()
 
 
 def main():
@@ -624,15 +632,13 @@ def main():
   parser.add_argument('-b', '--board', type=str,
       help="Board configuration file, eg. my.board", default="")
   parser.add_argument('-c', '--config', type=str,
-      help="Rail config to monitor, eg my.config", default="")
+      help="Rail config to monitor, eg my.scenario", default="")
   parser.add_argument('-A', '--serial', type=str,
       help="Serial number of sweetberry A", default="")
   parser.add_argument('-B', '--serial_b', type=str,
       help="Serial number of sweetberry B", default="")
   parser.add_argument('-t', '--integration_us', type=int,
       help="Target integration time for samples", default=100000)
-  parser.add_argument('-n', '--samples', type=int,
-      help="Samples to capture, or none to sample forever.", default=0)
   parser.add_argument('-s', '--seconds', type=float,
       help="Seconds to run capture. Overrides -n", default=0.)
   parser.add_argument('--date', default=False,
@@ -641,6 +647,9 @@ def main():
       help="Print timestamp as milliseconds", action="store_true")
   parser.add_argument('--slow', default=False,
       help="Intentionally overflow", action="store_true")
+  parser.add_argument('--print_stats', default=False,
+      help="Print statistics for sweetberry readings at the end",
+      action="store_true")
   parser.add_argument('-v', '--verbose', default=False,
       help="Very chatty printout", action="store_true")
 
@@ -658,12 +667,12 @@ def main():
 
   brdfile = args.board
   cfgfile = args.config
-  samples = args.samples
   seconds = args.seconds
   serial_a = args.serial
   serial_b = args.serial_b
   sync_date = args.date
   use_ms = args.ms
+  print_stats = args.print_stats
 
   boards = []
 
@@ -671,13 +680,10 @@ def main():
   if args.slow:
     sync_speed = 1.2
 
-  forever = True
-  if samples > 0 or seconds > 0.:
-    forever = False
-
   # Set up logging interface.
   powerlogger = powerlog(brdfile, cfgfile, serial_a=serial_a,
-      serial_b=serial_b, sync_date=sync_date, use_ms=use_ms)
+      serial_b=serial_b, sync_date=sync_date, use_ms=use_ms,
+      print_stats=print_stats)
 
   # Start logging.
   powerlogger.start(integration_us_request, seconds, sync_speed=sync_speed)
