@@ -22,6 +22,30 @@
       "revId": "4b057e426f780153885931495b2e771c059971ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4d4d933_99042b2a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-13T22:23:09Z",
+      "side": 1,
+      "message": "this concern is mostly due to adding branch names to the revision string (see the patch directly below this one).\n\nBut the full sha1 is still reported in the \u0027Build:\u0027 string included in the \u0027version\u0027 command output.",
+      "parentUuid": "2f78ea2d_75cfbb0d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "4b057e426f780153885931495b2e771c059971ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
