@@ -141,6 +141,9 @@
 #define CONFIG_USB_HID_KEYBOARD_BACKLIGHT
 #define CONFIG_USB_HID_TOUCHPAD
 
+/* Include touchpad FW hashes in image */
+#define CONFIG_TOUCHPAD_HASH_FW
+
 #ifdef BOARD_STAFF
 /* TODO(b:38277869): Adjust values to match hardware. */
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3214
