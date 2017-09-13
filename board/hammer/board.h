@@ -183,11 +183,13 @@
 
 /* Virtual address for touchpad FW in USB updater. */
 #define CONFIG_TOUCHPAD_VIRTUAL_OFF	0x80000000
-/* TODO(itspeter): The CONFIG_TOUCHPAD_VIRTUAL_SIZE depends on IC.
- *                 b/65188846 will address this separately. It will only works
- *                 for this size as for now.
- */
-#define CONFIG_TOUCHPAD_VIRTUAL_SIZE	(48*1024)
+
+/* Touchpad firmware size */
+#ifdef BOARD_STAFF
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE    (56*1024)   /* Detail in b/65188846 */
+#elif defined(BOARD_HAMMER)
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE    (48*1024)
+#endif
 
 #define CONFIG_CURVE25519
 

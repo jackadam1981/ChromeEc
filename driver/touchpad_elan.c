@@ -40,6 +40,7 @@
 #define ETP_I2C_PRESSURE_CMD		0x010A
 #define ETP_I2C_SET_CMD			0x0300
 #define ETP_I2C_FW_CHECKSUM_CMD		0x030F
+#define ETP_I2C_OSM_VERSION_CMD		0x0103
 
 #define ETP_ENABLE_ABS		0x0001
 
@@ -74,10 +75,10 @@
 #define ETP_FW_IAP_INTF_ERR		(1 << 4)
 
 #ifdef CONFIG_USB_UPDATE
-/* TODO(b/65188846): The actual FW_PAGE_COUNT depends on IC. */
+/* The actual FW_PAGE_COUNT depends on IC. */
+#define FW_SIZE			CONFIG_TOUCHPAD_VIRTUAL_SIZE
 #define FW_PAGE_SIZE		64
-#define FW_PAGE_COUNT		768
-#define FW_SIZE			(FW_PAGE_SIZE*FW_PAGE_COUNT)
+#define FW_PAGE_COUNT		(FW_SIZE/CONFIG_TOUCHPAD_VIRTUAL_SIZE)
 #endif
 
 struct {
@@ -363,6 +364,23 @@ static int elan_in_main_mode(void)
 	return val & ETP_I2C_MAIN_MODE_ON;
 }
 
+static int elan_get_ic_page_count(void)
+{
+	uint16_t ic_type;
+
+	elan_tp_read_cmd(ETP_I2C_OSM_VERSION_CMD, &ic_type);
+	CPRINTS("%s: ic_type:%04X.", __func__, ic_type);
+	switch (ic_type >> 8) {
+	case 0x09:
+		return 768;
+	case 0x0D:
+		return 896;
+	case 0x00:
+		return 1024;
+	}
+	return -1;
+}
+
 static int elan_prepare_for_update(void)
 {
 	uint16_t rx_buf;
@@ -445,6 +463,11 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 	CPRINTS("%s %08x %d", __func__, offset, size);
 
 	if (offset == 0) {
+		/* Verify the IC type is aligned with defined firmware size */
+		CPRINTS("itspeter: Checking size");
+		if (FW_PAGE_SIZE*elan_get_ic_page_count() != FW_SIZE)
+			return EC_ERROR_UNKNOWN;
+
 		gpio_disable_interrupt(GPIO_TOUCHPAD_INT);
 		CPRINTS("%s: prepare fw update.", __func__);
 		rv = elan_prepare_for_update();
