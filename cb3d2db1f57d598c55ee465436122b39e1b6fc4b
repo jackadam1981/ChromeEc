@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aaecdc64_bdbf51a1",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-13T21:07:29Z",
+      "side": 1,
+      "message": "I see there are HAS_TASK_USB_CHG_P1 and HAS_TASK_USB_CHG_P2 too. Even if they are not used, should we add them too?",
+      "range": {
+        "startLine": 21,
+        "startChar": 41,
+        "endLine": 21,
+        "endChar": 60
+      },
+      "revId": "cb3d2db1f57d598c55ee465436122b39e1b6fc4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20db2c45_6a991fda",
+        "filename": "include/charge_manager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-13T21:07:29Z",
+      "side": 1,
+      "message": "What\u0027s this used for?",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "cb3d2db1f57d598c55ee465436122b39e1b6fc4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
