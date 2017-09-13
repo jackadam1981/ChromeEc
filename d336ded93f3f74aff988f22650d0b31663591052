@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a19c783_8fe37d83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T13:43:49Z",
+      "side": 1,
+      "message": "Some Elan touchpad ICs have a different firmware sizes (48, 56, or 64 kb).",
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f4c4bc_473c1e0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T13:43:49Z",
+      "side": 1,
+      "message": "We use CONFIG_TOUCHPAD_VIRTUAL_SIZE, set in the board file, to determine\nthe appropriate size, and, at runtime, we sanity check the firmware size\naccording to the IC type reported by the touchpad.\n\n(not fully happy with this text either, I\u0027ll think about it more tomorrow)",
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9607672_9f4812b8",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T13:43:49Z",
+      "side": 1,
+      "message": "Drop the comment.\n\nAlso, can we consolidate all touchpad-related config options (i.e. move this to line 144?).",
+      "range": {
+        "startLine": 189,
+        "startChar": 52,
+        "endLine": 189,
+        "endChar": 78
+      },
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae948434_2044fbc2",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T13:43:49Z",
+      "side": 1,
+      "message": "Sort the commands by their value (i.e. put this above ETP_I2C_XY_TRACENUM_CMD).",
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8dd2994_398a7b80",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T13:43:49Z",
+      "side": 1,
+      "message": "FW_PAGE_SIZE",
+      "range": {
+        "startLine": 81,
+        "startChar": 32,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "751e00d5_1a1b421b",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T13:43:49Z",
+      "side": 1,
+      "message": "No need to print anything here.",
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f2e2749_5701e55a",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-13T13:43:49Z",
+      "side": 1,
+      "message": "space around operator *",
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
