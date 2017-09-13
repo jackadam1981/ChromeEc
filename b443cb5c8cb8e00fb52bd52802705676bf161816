@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "508af1d2_5e0e5887",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-13T02:08:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "14213ea1_b6cd37c6",
+      "revId": "b443cb5c8cb8e00fb52bd52802705676bf161816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89aa42aa_ba6f6e46",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-13T01:57:01Z",
       "side": 1,
       "message": "This doesn\u0027t look right.  Since i has already been incremented, shouldn\u0027t the index be i (and not i+1)?",
+      "revId": "b443cb5c8cb8e00fb52bd52802705676bf161816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52d3c329_45cc0852",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-13T02:08:08Z",
+      "side": 1,
+      "message": "you are right, this is a bug. Incidentally, the RSA test passes, as you mentioned maybe because the smaller primes are not used in the test?\n\nI\u0027ll look into modifying it to check this too.",
+      "parentUuid": "89aa42aa_ba6f6e46",
       "revId": "b443cb5c8cb8e00fb52bd52802705676bf161816",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
