@@ -22,6 +22,30 @@
       "revId": "5518fe49431d097ad77dcc9213d807f2a3ca6140",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f49a07cf_5f3b14fa",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-13T15:56:31Z",
+      "side": 1,
+      "message": "He\u0027s running into \"error: ‘i2c_s_test’ may be used uninitialized in this function\" with his toolchain. I think the error is legit, if argv[1] is \u003c\u003d 0.",
+      "parentUuid": "9e236a7a_53f24998",
+      "range": {
+        "startLine": 896,
+        "startChar": 29,
+        "endLine": 896,
+        "endChar": 46
+      },
+      "revId": "5518fe49431d097ad77dcc9213d807f2a3ca6140",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
