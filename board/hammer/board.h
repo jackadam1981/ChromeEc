@@ -141,6 +141,23 @@
 #define CONFIG_USB_HID_KEYBOARD_BACKLIGHT
 #define CONFIG_USB_HID_TOUCHPAD
 
+/* Enable elan trackpad driver */
+#define CONFIG_TOUCHPAD
+#define CONFIG_TOUCHPAD_ELAN
+#define CONFIG_TOUCHPAD_I2C_PORT 0
+#define CONFIG_TOUCHPAD_I2C_ADDR (0x15 << 1)
+
+/* Virtual address for touchpad FW in USB updater. */
+#define CONFIG_TOUCHPAD_VIRTUAL_OFF	0x80000000
+/* TODO(itspeter): The CONFIG_TOUCHPAD_VIRTUAL_SIZE depends on IC.
+ *                 b/65188846 will address this separately. It will only works
+ *                 for this size as for now.
+ */
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE	(48*1024)
+
+/* Include touchpad FW hashes in image */
+#define CONFIG_TOUCHPAD_HASH_FW
+
 #ifdef BOARD_STAFF
 /* TODO(b:38277869): Adjust values to match hardware. */
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3214
@@ -174,20 +191,6 @@
 
 /* Enable PWM */
 #define CONFIG_PWM
-
-/* Enable elan trackpad driver */
-#define CONFIG_TOUCHPAD
-#define CONFIG_TOUCHPAD_ELAN
-#define CONFIG_TOUCHPAD_I2C_PORT 0
-#define CONFIG_TOUCHPAD_I2C_ADDR (0x15 << 1)
-
-/* Virtual address for touchpad FW in USB updater. */
-#define CONFIG_TOUCHPAD_VIRTUAL_OFF	0x80000000
-/* TODO(itspeter): The CONFIG_TOUCHPAD_VIRTUAL_SIZE depends on IC.
- *                 b/65188846 will address this separately. It will only works
- *                 for this size as for now.
- */
-#define CONFIG_TOUCHPAD_VIRTUAL_SIZE	(48*1024)
 
 #define CONFIG_CURVE25519
 
