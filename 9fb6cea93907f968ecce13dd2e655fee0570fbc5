@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "4f3a3579_13d31e03",
+        "filename": "util/tagbranch.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-13T13:17:11Z",
+      "side": 1,
+      "message": "I meant that this script could be used in some other, internal, git tree. But I agree, this is a long shot, I\u0027ll hardcode the remote name here in the next patch.",
+      "parentUuid": "d2ce797d_76fca330",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 55
+      },
+      "revId": "9fb6cea93907f968ecce13dd2e655fee0570fbc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bedc2fb7_ce3f4c8c",
         "filename": "util/tagbranch.sh",
         "patchSetId": 1
