@@ -23,6 +23,7 @@
 #define CPRINTS(format, args...) cprints(CC_PWM, format, ## args)
 
 #define LED_TICK_TIME (500 * MSEC)
+#define LED_TICK_TWO_MIN (120 * 2)
 #define LED_TICKS_PER_BEAT 1
 #define NUM_PHASE 2
 #define DOUBLE_TAP_TICK_LEN (LED_TICKS_PER_BEAT * 8)
@@ -75,7 +76,9 @@ struct led_info {
 	/* LED pattern manage variables */
 	int ticks;
 	int pattern_sel;
+	int prev_pattern;
 	int tap_tick_count;
+	int low_batt_tick_count;
 	enum led_color color;
 	/* Color transition variables */
 	int state;
@@ -430,6 +433,11 @@ static void led_manage_patterns(enum led_pattern *pattern_desired, int tap)
 				led[i].tap_tick_count = tap ?
 					pattern[pattern_desired[i]].tap_len : 0;
 				led[i].pattern_sel = pattern_desired[i];
+				if (!tap && led[i].pattern_sel >= SOLID_RED) {
+					/* Reset previous pattern */
+					led[i].low_batt_tick_count =
+						LED_TICK_TWO_MIN;
+				}
 			}
 		}
 		/* Determine pattern phase and color for current phase */
@@ -466,6 +474,23 @@ static void led_manage_patterns(enum led_pattern *pattern_desired, int tap)
 		/* If double tap display is active, decrement its counter */
 		if (led[i].tap_tick_count)
 			led[i].tap_tick_count--;
+
+		/*
+		 * If a low battery pattern is being displayed, then check timer
+		 * and if it going to be zero, then change the pattern to 'off'
+		 */
+		if (led[i].low_batt_tick_count) {
+			if (--led[i].low_batt_tick_count == 1) {
+				led[i].low_batt_tick_count = 0;
+				/*
+				 * Save the low battery pattern that was being
+				 * displayed so that the pattern select function
+				 * will keep the LEDs off until the next low
+				 * battery threshold has been crossed.
+				 */
+				led[i].prev_pattern = led[i].pattern_sel;
+			}
+		}
 	}
 }
 
@@ -513,6 +538,10 @@ static void led_select_pattern(enum led_pattern *pattern_desired, int tap)
 		 */
 		new_pattern = led_get_double_tap_pattern(percent_chg);
 
+		if (new_pattern != led[0].prev_pattern) {
+			led[LED_LEFT].prev_pattern = OFF;
+			led[LED_RIGHT].prev_pattern = OFF;
+		}
 		/*
 		 * The patterns used for double tap and for not charging
 		 * state are the same for low battery cases. But, if
@@ -520,7 +549,8 @@ static void led_select_pattern(enum led_pattern *pattern_desired, int tap)
 		 * then only display LED pattern if double tap has
 		 * occurred.
 		 */
-		if (!tap && new_pattern <= WHITE_RED)
+		if (!tap && ((new_pattern <= WHITE_RED) ||
+			     (new_pattern == led[0].prev_pattern)))
 			new_pattern = OFF;
 		/*
 		 * When external charger is not connected, always apply pattern
@@ -551,6 +581,9 @@ static void led_select_pattern(enum led_pattern *pattern_desired, int tap)
 			new_pattern = OFF;
 		/* Apply this pattern to the non-charging side LED */
 		pattern_desired[side ^ 1] = new_pattern;
+		/* Always clear prev low battery pattern */
+		led[LED_LEFT].prev_pattern = OFF;
+		led[LED_RIGHT].prev_pattern = OFF;
 	}
 }
 
@@ -581,9 +614,11 @@ static void led_init(void)
 	 */
 	for (i = 0; i < LED_BOTH; i++) {
 		led[i].pattern_sel = OFF;
+		led[i].prev_pattern = OFF;
 		led[i].color = LED_OFF;
 		led[i].ticks = 0;
 		led[i].tap_tick_count = 0;
+		led[i].low_batt_tick_count = 0;
 		led[i].state = LED_STATE_DONE;
 	}
 
