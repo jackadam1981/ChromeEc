@@ -22,6 +22,30 @@
       "revId": "a6caa3fd51c6c853ea9562dc878553589110b727",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d58377_d7be2e39",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1113139
+      },
+      "writtenOn": "2017-09-13T01:39:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a06d8f9c_c28de714",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 32
+      },
+      "revId": "a6caa3fd51c6c853ea9562dc878553589110b727",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
