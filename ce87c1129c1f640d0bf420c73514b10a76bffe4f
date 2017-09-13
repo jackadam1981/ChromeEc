@@ -108,6 +108,41 @@
     },
     {
       "key": {
+        "uuid": "c0ea9a03_143a1e75",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-13T14:34:06Z",
+      "side": 1,
+      "message": "so it isn\u0027t that my suggestion would force a rebuild every time, it\u0027s that your code is working around one limitation and introducing a different limitation ;).  this deserves a comment.\n\nyou can address the timestamp issue by changing the echo to a ls:\n\n @ls -l \"$(TOUCHPAD_FW)\" \u003e $@",
+      "parentUuid": "0b20f719_02a9dad4",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d455c341_80193012",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-13T14:34:06Z",
+      "side": 1,
+      "message": "no space before the ).  you could omit it after the \u003e too.",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d63b1a65_d7679646",
         "filename": "util/build.mk",
         "patchSetId": 8
