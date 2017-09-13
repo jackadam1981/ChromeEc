@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f78ea2d_75cfbb0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-13T21:56:34Z",
+      "side": 1,
+      "message": "This is mostly due to longer version strings, not growing --short SHA1 size, right? Do we want to limit the size of each sub-string? Eg. up to 22 chars version, up to 9 (or 10) chars SHA1, up to 1 char \u0027+\u0027 dirty? I\u0027m just worried that we\u0027ll end up with a version string so long that we can\u0027t ID the build CL.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "4b057e426f780153885931495b2e771c059971ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
