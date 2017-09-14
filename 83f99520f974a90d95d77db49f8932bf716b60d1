@@ -167,6 +167,24 @@
     },
     {
       "key": {
+        "uuid": "6a4bc697_f9d690a0",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-14T21:45:47Z",
+      "side": 1,
+      "message": "i\u0027m not sure what \"branches\" is referring to here, but hdctools already installs a bunch of python modules into the sdk, so i guess you just need to update the code there to install the new modules you want ?  then you can import directly.",
+      "parentUuid": "b0f20256_ea20bfe2",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "295b99e2_394dce3f",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
