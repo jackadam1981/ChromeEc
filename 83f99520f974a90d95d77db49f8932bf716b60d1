@@ -131,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "9024e4e1_15ffc746",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-09-14T21:35:25Z",
+      "side": 1,
+      "message": "At a minimum lets make sure that we have exact copies of stats_manager.py in both ec \u0026 hdctools codebase so its easy to tell when there out-of-sync.",
+      "parentUuid": "16489623_adf176f5",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "295b99e2_394dce3f",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
