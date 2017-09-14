@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "757c5474_08227bd8",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-14T02:54:35Z",
+      "side": 1,
+      "message": "Done (I don\u0027t think that\u0027s a big issue, as touchpad FW files do not usually change, but your idea fixes it, so why not ,-))\n\nI had to do this though: ls -l \"$(TOUCHPAD_FW)\" 2\u003e\u00261, to ensure EC errors out in this case:\nmake TOUCHPAD_FW\u003d BOARD\u003dhammer -j\nmake TOUCHPAD_FW\u003d\"file_that_does_not_exist\" BOARD\u003dhammer -j",
+      "parentUuid": "c0ea9a03_143a1e75",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d455c341_80193012",
         "filename": "common/build.mk",
         "patchSetId": 8
@@ -140,6 +158,24 @@
       "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c22c0dbd_3f90442c",
+        "filename": "common/build.mk",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-14T02:54:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d455c341_80193012",
+      "revId": "ce87c1129c1f640d0bf420c73514b10a76bffe4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
