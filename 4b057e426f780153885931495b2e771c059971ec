@@ -46,6 +46,29 @@
       "revId": "4b057e426f780153885931495b2e771c059971ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e9f764e_9abcc002",
+        "filename": "util/getversion.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-14T07:45:22Z",
+      "side": 1,
+      "message": "then why not save one more character and use \u0027-\u0027 when not dirty and \u0027+\u0027 instead when dirty\n(instead of \u0027-\u0027 and \u0027-+\u0027)",
+      "range": {
+        "startLine": 59,
+        "startChar": 51,
+        "endLine": 59,
+        "endChar": 60
+      },
+      "revId": "4b057e426f780153885931495b2e771c059971ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
