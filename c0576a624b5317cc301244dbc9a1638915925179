@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfc1cf4b_31a916e1",
+        "filename": "common/build.mk",
+        "patchSetId": 12
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-14T05:12:49Z",
+      "side": 1,
+      "message": "should quote this too to be paranoid",
+      "revId": "c0576a624b5317cc301244dbc9a1638915925179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bbd35fd_cc4702e7",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-14T05:12:49Z",
+      "side": 1,
+      "message": "normally we write:\n\n const char kFoo[] \u003d \"...\";",
+      "revId": "c0576a624b5317cc301244dbc9a1638915925179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1da3d396_f2b5f93b",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-14T05:12:49Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "c0576a624b5317cc301244dbc9a1638915925179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
