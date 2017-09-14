@@ -95,6 +95,24 @@
     },
     {
       "key": {
+        "uuid": "16489623_adf176f5",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-09-14T21:23:13Z",
+      "side": 1,
+      "message": "To add a bit more background info, sweetberry is what we plan to use to in place of servo ina board for power measurement. IIRC, sweetberry relies on ec infrastructure to build and flash. Thus, not sure if we can move sweetberry code to hdctools (nsansers@ can shed more light on that). \n\nIt makes sense to me to have at least powerlog.py together with other power measurement tools. Then we can probably share stats_manager.py more easily.\nOtherwise, is there a way (symlink, etc) to make stats_manager available in several locations? It will be a great stats module for different power measurement tools and in autotests as well.",
+      "parentUuid": "4d82b461_c331e815",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "295b99e2_394dce3f",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
