@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cab58f8e_6d5d134a",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-14T23:45:38Z",
+      "side": 1,
+      "message": "Put elan_get_ic_page_count in a variable so you don\u0027t need to call it twice.",
+      "range": {
+        "startLine": 466,
+        "startChar": 21,
+        "endLine": 466,
+        "endChar": 43
+      },
+      "revId": "99d8596e70d390a0f6018d05a5e681d8ad3ced04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
