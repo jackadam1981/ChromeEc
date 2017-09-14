@@ -16,6 +16,24 @@
       "revId": "3d1829cc48007a7948618c6f327c09a5020c4101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b605135_7f433d1b",
+        "filename": "common/ec_features.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-09-14T01:26:46Z",
+      "side": 1,
+      "message": "Do you mean the CL:647957 and CL:648892? it\u0027s already here. we could cherry pick this CL and got it to work.",
+      "parentUuid": "020e0d3e_6c5de2ae",
+      "revId": "3d1829cc48007a7948618c6f327c09a5020c4101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
