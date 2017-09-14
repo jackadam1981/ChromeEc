@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "b0f20256_ea20bfe2",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-09-14T21:38:06Z",
+      "side": 1,
+      "message": "You can move it to hdctools if you like. This code must be runnable outside the chroot though since it\u0027s shared with android.\n\nAnother option is you can look at ec/util/ec3po which imports python from platform/ec into hdctools.",
+      "parentUuid": "109d034b_e195fc01",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "295b99e2_394dce3f",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
