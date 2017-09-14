@@ -13,7 +13,10 @@
 #include "led_common.h"
 #include "util.h"
 
-static int led_debug;
+const enum ec_led_id supported_led_ids[] = {
+			EC_LED_ID_POWER_LED};
+
+const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
 enum led_color {
 	LED_OFF = 0,
@@ -76,9 +79,8 @@ static void led_set_power(void)
  */
 static void led_tick(void)
 {
-	if (led_debug)
-		return;
-	led_set_power();
+	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+		led_set_power();
 }
 DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
 
@@ -90,8 +92,8 @@ static int command_led(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	if (!strcasecmp(argv[1], "debug")) {
-		led_debug ^= 1;
-		ccprintf("led_debug %s\n", led_debug ? "on" : "off");
+		led_auto_control(id, !led_auto_control_is_enabled(id));
+		ccprintf("led_debug %s\n", led_auto_control_is_enabled(id) ? "off" : "on");
 	} else if (!strcasecmp(argv[1], "off")) {
 		led_set_color(id, LED_OFF);
 	} else if (!strcasecmp(argv[1], "red")) {
@@ -109,3 +111,21 @@ static int command_led(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(led, command_led,
 			"[debug|red|green|amber|off]",
 			"Turn on/off LED");
+
+void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
+{
+	brightness_range[EC_LED_COLOR_RED] = 1;
+	brightness_range[EC_LED_COLOR_GREEN] = 1;
+}
+
+int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
+{
+	if (brightness[EC_LED_COLOR_RED] != 0)
+		led_set_color(led_id, LED_RED);
+	else if (brightness[EC_LED_COLOR_GREEN] != 0)
+		led_set_color(led_id, LED_GREEN);
+	else
+		led_set_color(led_id, LED_OFF);
+
+	return EC_SUCCESS;
+}
