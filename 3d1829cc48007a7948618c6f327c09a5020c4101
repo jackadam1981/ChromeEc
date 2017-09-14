@@ -34,6 +34,24 @@
       "revId": "3d1829cc48007a7948618c6f327c09a5020c4101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d8e914_4dd9e1d3",
+        "filename": "common/ec_features.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-14T04:05:02Z",
+      "side": 1,
+      "message": "I meant the commit referenced in the CL commit description. But I see that had coral changes -- which this branch doesn\u0027t have.",
+      "parentUuid": "6b605135_7f433d1b",
+      "revId": "3d1829cc48007a7948618c6f327c09a5020c4101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
