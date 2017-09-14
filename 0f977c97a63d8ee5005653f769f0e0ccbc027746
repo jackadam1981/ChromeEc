@@ -16,6 +16,24 @@
       "revId": "0f977c97a63d8ee5005653f769f0e0ccbc027746",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a174a30_bf119a05",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-14T23:20:59Z",
+      "side": 1,
+      "message": "Filed bug https://issuetracker.google.com/65693113. This will be fixed in a different patch.",
+      "parentUuid": "55a8c8ce_01ecba40",
+      "revId": "0f977c97a63d8ee5005653f769f0e0ccbc027746",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
