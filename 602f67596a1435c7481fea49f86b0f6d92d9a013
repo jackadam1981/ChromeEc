@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94819b9f_0dc8e6ac",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-14T10:11:14Z",
+      "side": 1,
+      "message": "It\u0027d be more useful to print \"FW_PAGE_SIZE * elan_get_ic_page_count()\", as FW_SIZE is kind of known. Or maybe print both.",
+      "revId": "602f67596a1435c7481fea49f86b0f6d92d9a013",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
