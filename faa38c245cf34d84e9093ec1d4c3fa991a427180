@@ -479,6 +479,30 @@
     },
     {
       "key": {
+        "uuid": "d5b122f9_abd009dc",
+        "filename": "include/host_command.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-14T07:34:06Z",
+      "side": 1,
+      "message": "Yeah, you are right. I did not realize that the host event functions are defined in this file. BTW, for consistency it would be good to put these together with the other host_event functions and under the CONFIG_HOSTCMD_EVENTS.",
+      "parentUuid": "26f31e29_85c69cc4",
+      "range": {
+        "startLine": 317,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 0
+      },
+      "revId": "faa38c245cf34d84e9093ec1d4c3fa991a427180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b35e095d_ca057694",
         "filename": "power/common.c",
         "patchSetId": 6
@@ -531,6 +555,30 @@
       "side": 1,
       "message": "With SLP_S0 interrupt + host commands for host_suspend/resume in place, I feel the chipset check doesn\u0027t make much sense\n\nRegarding the order, the order change wasn\u0027t intentional. But let me check from functionality perspective if it really matters",
       "parentUuid": "d3360f61_672788d3",
+      "range": {
+        "startLine": 348,
+        "startChar": 2,
+        "endLine": 350,
+        "endChar": 4
+      },
+      "revId": "faa38c245cf34d84e9093ec1d4c3fa991a427180",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00b69afa_64573e4f",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-14T07:34:06Z",
+      "side": 1,
+      "message": "\u003e With SLP_S0 interrupt + host commands for host_suspend/resume in place, I feel the chipset check doesn\u0027t make much sense\n\nI agree.",
+      "parentUuid": "c2bbbd52_a48fca33",
       "range": {
         "startLine": 348,
         "startChar": 2,
