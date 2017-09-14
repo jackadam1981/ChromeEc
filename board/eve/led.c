@@ -26,6 +26,7 @@
 #define LED_TICKS_PER_BEAT 1
 #define NUM_PHASE 2
 #define DOUBLE_TAP_TICK_LEN (LED_TICKS_PER_BEAT * 8)
+#define TWO_MIN_TICK_LEN (2 * 25)
 #define LED_FRAC_BITS 4
 #define LED_STEP_MSEC 45
 
@@ -71,12 +72,23 @@ enum led_side {
 	LED_BOTH
 };
 
+struct led_sequence {
+	enum led_pattern index;
+	int off_transition;
+	int timer;
+	int preempt;
+	int tap;
+};
+
 struct led_info {
 	/* LED pattern manage variables */
 	int ticks;
-	int pattern_sel;
-	int tap_tick_count;
+	int period;
+	int duty_cycle;
+	int start_off;
+	int stop_off;
 	enum led_color color;
+	struct led_sequence seq;
 	/* Color transition variables */
 	int state;
 	int step;
@@ -98,7 +110,6 @@ struct led_phase {
 
 static int led_debug;
 static int double_tap;
-static int led_charge_side;
 static struct led_info led[LED_BOTH];
 
 const enum ec_led_id supported_led_ids[] = {
@@ -408,7 +419,10 @@ static void led_change_color(void)
 	}
 }
 
-static void led_manage_patterns(enum led_pattern *pattern_desired, int tap)
+/*
+ * 
+ */
+static void led_manage_patterns(struct led_sequence *seq_desired)
 {
 	int color;
 	int phase;
@@ -417,25 +431,59 @@ static void led_manage_patterns(enum led_pattern *pattern_desired, int tap)
 
 	for (i = 0; i < LED_BOTH; i++) {
 		/* For each led check if the pattern needs to change */
-		if (pattern_desired[i] != led[i].pattern_sel) {
+		if ((((seq_desired[i].index != led[i].seq.index) &&
+		      !led[i].seq.tap) || seq_desired[i].tap) &&
+		    !led[i].stop_off) {
 			/*
-			 * Pattern needs to change, but if double tap sequence
-			 * is active, then need to wait until that
-			 * completes. Unless the pattern change is due to
-			 * external charger state change, make that happen
-			 * immediately.
+			 * A new LED pattern is requested. First check to see if
+			 * current sequence has an active timer (eg double tap)
+			 * which needs to finish before allowing new sequence to
+			 * become active.
 			 */
-			if (i == led_charge_side || !led[i].tap_tick_count) {
+			if (seq_desired[i].preempt || !led[i].seq.timer ||
+			    (led[i].seq.timer == led[i].ticks)) {
+				int index = seq_desired[i].index;
+
+				led[i].seq.index = index;
+				led[i].seq.tap = seq_desired[i].tap;
 				led[i].ticks = 0;
-				led[i].tap_tick_count = tap ?
-					pattern[pattern_desired[i]].tap_len : 0;
-				led[i].pattern_sel = pattern_desired[i];
+				led[i].duty_cycle = pattern[index].len[0];
+				led[i].period = pattern[index].len[0] +
+					pattern[index].len[1];
+				led[i].seq.timer = seq_desired[i].timer;
+				led[i].start_off =
+					seq_desired[i].off_transition;
+				led[i].stop_off = 0;
+				CPRINTS("led seq[%d]: in = %d d = %d p = %d t = %d o = %d, pre = %d",
+					i, index, led[i].duty_cycle, led[i].period,
+					led[i].seq.timer, led[i].start_off,
+					seq_desired[i].preempt);
 			}
 		}
-		/* Determine pattern phase and color for current phase */
-		phase = led[i].ticks < LED_TICKS_PER_BEAT *
-			pattern[led[i].pattern_sel].len[0] ? 0 : 1;
-		color = pattern[led[i].pattern_sel].color[phase];
+
+		if (led[i].start_off) {
+			color = LED_OFF;
+			led[i].start_off = 0;
+		} else if (led[i].stop_off) {
+			color = LED_OFF;
+			led[i].stop_off = 0;
+			led[i].seq.tap = 0;
+			CPRINTS("%d: off trans active", i);
+		} else {
+			phase = led[i].period ? led[i].ticks %
+				led[i].period : 0;
+			phase = phase >= led[i].duty_cycle ? 1 : 0;
+			color = pattern[led[i].seq.index].color[phase];
+			if (led[i].seq.timer) {
+				if (led[i].ticks < led[i].seq.timer) {
+					if (++led[i].ticks == led[i].seq.timer)
+						led[i].stop_off = 1;
+				} else {
+					color = LED_OFF;
+				}
+			}
+		}
+
 		/* If color is changing, then setup the transition. */
 		if (led[i].color != color) {
 			led_setup_color_change(led[i].color, color, i);
@@ -451,21 +499,6 @@ static void led_manage_patterns(enum led_pattern *pattern_desired, int tap)
 	for (i = 0; i < LED_BOTH; i++) {
 		/* Set color for the current phase */
 		set_color(color_brightness[led[i].color], i);
-
-		/*
-		 * Update led_ticks. If the len field is 0, then the pattern
-		 * being used is just one color so no need to increase the tick
-		 * count.
-		 */
-		if (pattern[led[i].pattern_sel].len[0])
-			if (++led[i].ticks == LED_TICKS_PER_BEAT *
-			    (pattern[led[i].pattern_sel].len[0] +
-			     pattern[led[i].pattern_sel].len[1]))
-				led[i].ticks = 0;
-
-		/* If double tap display is active, decrement its counter */
-		if (led[i].tap_tick_count)
-			led[i].tap_tick_count--;
 	}
 }
 
@@ -484,21 +517,17 @@ static enum led_pattern led_get_double_tap_pattern(int percent_chg)
 	return pattern;
 }
 
-static void led_select_pattern(enum led_pattern *pattern_desired, int tap)
+static void led_select_pattern(struct led_sequence *seq, int tap)
 {
 	enum charge_state chg_state = charge_get_state();
 	int side;
 	int percent_chg;
 	enum led_pattern new_pattern;
+	int i;
 
 	/* Get active charge port which maps directly to left/right LED */
 	side = charge_manager_get_active_charge_port();
-	/*
-	 * Maintain a copy of the side associated with charging. If there is no
-	 * active charging port, then charge_side = -1. This value is used to
-	 * manage the double_tap tick counts on a per LED basis.
-	 */
-	led_charge_side = side;
+
 	/* Ensure that side can be safely used as an index */
 	if (side < 0 || side >= CONFIG_USB_PD_PORT_COUNT)
 		side = LED_BOTH;
@@ -506,7 +535,7 @@ static void led_select_pattern(enum led_pattern *pattern_desired, int tap)
 	/* Get percent charge */
 	percent_chg = charge_get_percent();
 
-	if (side == LED_BOTH) {
+	if (side == LED_BOTH || tap) {
 		/*
 		 * External charger is not connected. Find the pattern that
 		 * would be used for double tap event.
@@ -526,9 +555,17 @@ static void led_select_pattern(enum led_pattern *pattern_desired, int tap)
 		 * When external charger is not connected, always apply pattern
 		 * to both LEDs.
 		 */
-		pattern_desired[LED_LEFT] = new_pattern;
-		pattern_desired[LED_RIGHT] = new_pattern;
-
+		for (i = LED_LEFT; i < LED_BOTH; i++) {
+			seq[i].index = new_pattern;
+			seq[i].off_transition = side == LED_BOTH ? 0 : 1;
+			seq[i].timer = tap ? pattern[new_pattern].tap_len :
+				TWO_MIN_TICK_LEN;
+			if (seq[i].index == OFF)
+				seq[i].timer = 0;
+			seq[i].preempt = (!tap && new_pattern >= SOLID_RED) ?
+				1 : 0;
+			seq[i].tap = tap;
+		}
 	} else {
 		/*
 		 * External charger is connected. First determine pattern for
@@ -543,14 +580,28 @@ static void led_select_pattern(enum led_pattern *pattern_desired, int tap)
 		} else {
 			new_pattern = OFF;
 		}
-		pattern_desired[side] = new_pattern;
+		seq[side].index = new_pattern;
+		seq[side].off_transition = 0;
+		seq[side].timer = 0;
+		seq[side].preempt = 1;
+		seq[side].tap = 0;
 
-		/* Check for double tap for side not associated with charger */
+		/*
+		 * Check for external charger, but battery is still too low to
+		 * allow the AP to boot. If this case is active, then use
+		 * BLINK_RED pattern on side opposite of charger
+		 */
 		new_pattern = led_get_double_tap_pattern(percent_chg);
-		if (!tap && new_pattern != BLINK_RED)
+		if (new_pattern != BLINK_RED)
 			new_pattern = OFF;
+
 		/* Apply this pattern to the non-charging side LED */
-		pattern_desired[side ^ 1] = new_pattern;
+		side ^= 1;
+		seq[side].index = new_pattern;
+		seq[side].off_transition = 0;
+		seq[side].timer = 0;
+		seq[side].preempt = 1;
+		seq[side].tap = 0;
 	}
 }
 
@@ -580,13 +631,25 @@ static void led_init(void)
 	 * when a color change is required.
 	 */
 	for (i = 0; i < LED_BOTH; i++) {
-		led[i].pattern_sel = OFF;
+		led[i].seq.index = OFF;
 		led[i].color = LED_OFF;
 		led[i].ticks = 0;
-		led[i].tap_tick_count = 0;
 		led[i].state = LED_STATE_DONE;
 	}
 
+}
+
+static void led_dump_info(void)
+{
+	int i;
+	
+	for (i = 0; i < 2; i++) {
+		CPRINTS("LED side = %d", i);
+		msleep(25);
+		CPRINTS("index = %d, per = %d duty = %d, t = %d, ticks = %d st = %d",
+			led[i].seq.index, led[i].period, led[i].duty_cycle,
+			led[i].seq.timer, led[i].ticks, led[i].stop_off);
+	}
 }
 
 void led_task(void)
@@ -599,7 +662,7 @@ void led_task(void)
 	usleep(SECOND);
 
 	while (1) {
-		enum led_pattern pattern_desired[LED_BOTH];
+		struct led_sequence seq_desired[LED_BOTH];
 		int tap = 0;
 
 		start_time = get_time().le.lo;
@@ -616,9 +679,9 @@ void led_task(void)
 		    led_auto_control_is_enabled(EC_LED_ID_RIGHT_LED) &&
 		    led_debug != 1) {
 			/* Determine desired LED patterns for both LEDS */
-			led_select_pattern(pattern_desired, tap);
+			led_select_pattern(seq_desired, tap);
 			/* Update LED patterns/colors (if necessary) */
-			led_manage_patterns(pattern_desired, tap);
+			led_manage_patterns(seq_desired);
 		}
 		/* Compute time for this iteration */
 		task_duration = get_time().le.lo - start_time;
@@ -664,6 +727,8 @@ static int command_led(int argc, char **argv)
 			color = LED_BLUE;
 		else if (!strcasecmp(argv[1], "white"))
 			color = LED_WHITE;
+		else if (!strcasecmp(argv[1], "dump"))
+			led_dump_info();
 		else
 			return EC_ERROR_PARAM1;
 
