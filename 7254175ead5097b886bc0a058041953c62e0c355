@@ -655,6 +655,24 @@
       "revId": "7254175ead5097b886bc0a058041953c62e0c355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46ef9153_6d06bc1a",
+        "filename": "chip/ish/power_mgt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-14T04:33:53Z",
+      "side": 1,
+      "message": "Sure, but you aren\u0027t there yet. I\u0027d rather see a simpler thing land then introduce stuff when it actually becomes an issue. There\u0027s more than one way to deal with different entry code for different power states. Let\u0027s just cross that bridge when it comes.",
+      "parentUuid": "0df2ef0e_707585b7",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
