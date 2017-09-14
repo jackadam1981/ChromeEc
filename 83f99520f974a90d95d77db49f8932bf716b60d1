@@ -113,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "109d034b_e195fc01",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-09-14T21:34:22Z",
+      "side": 1,
+      "message": "i don\u0027t know enough about how we package python code to know how to do this. probably mike does, though.",
+      "parentUuid": "16489623_adf176f5",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "295b99e2_394dce3f",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
