@@ -77,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "4d82b461_c331e815",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2017-09-14T21:06:54Z",
+      "side": 1,
+      "message": "so this code, ideally we\u0027d like to share across sweetberry, and hdctools.\nWhat would be the cleanest way to ensure that the code is shared, and that there\u0027s a single source of truth for this code? Can one depend on code from another branch? or can a branch have a symlink to another branch?",
+      "parentUuid": "2a21bcbe_de66cb2d",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "295b99e2_394dce3f",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
