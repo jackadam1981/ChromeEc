@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "db6d5955_1778acef",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-09-14T21:04:07Z",
+      "side": 1,
+      "message": "https://google.github.io/styleguide/pyguide.html#Imports says to use imports for packages and modules only",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60d0242d_99ecbdfe",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -36,6 +53,58 @@
       "writtenOn": "2017-09-14T20:30:16Z",
       "side": 1,
       "message": "This looks very similar to servo_util.py in CL:662578.  Is the plan to adopt this instead and for now keep a copy of stats_manager.py in hdctools as well?",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a21bcbe_de66cb2d",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-09-14T21:04:07Z",
+      "side": 1,
+      "message": "please find a way to avoid copy-and-pasting code.",
+      "parentUuid": "e5490106_7cf55948",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "295b99e2_394dce3f",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-09-14T21:04:07Z",
+      "side": 1,
+      "message": "what\u0027s this referring to?",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fbe88cf_2ab7bf71",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000042
+      },
+      "writtenOn": "2017-09-14T21:04:07Z",
+      "side": 1,
+      "message": "instead of a main function, please add unit tests for this module",
       "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
