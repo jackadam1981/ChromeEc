@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "622648cf_f5b6a40b",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-09-14T21:34:36Z",
+      "side": 1,
+      "message": "i see how that happened.  we\u0027re mixing logical/functional names and\nphysical names in the same table.\ni.e. TCPC\u003cn\u003e is associated with I2C\u003cm\u003e.\n\nhow do you feel about defining a bunch of GPIO_TCPC\u003cx\u003e_SCL, etc.\nin board.h?",
+      "range": {
+        "startLine": 98,
+        "startChar": 13,
+        "endLine": 98,
+        "endChar": 27
+      },
+      "revId": "8ecbcd8b2db454cb02d177810dca23ab869a0d24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
