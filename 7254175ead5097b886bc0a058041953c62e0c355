@@ -637,6 +637,24 @@
       "revId": "7254175ead5097b886bc0a058041953c62e0c355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0df2ef0e_707585b7",
+        "filename": "chip/ish/power_mgt.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-14T01:49:55Z",
+      "side": 1,
+      "message": "pm_d0i1, for sure, paused with \u0027hlt. \nBut pm_d0i2 and pm_d0i3 might use different way to enter its low power state and might not use \u0027hlt\u0027 on sleep.(for example, AON_task(always ON task as separate binary for ISH4) can be used. This is not finalized yet and this plan can be changed later.)\nThis is why \u0027...\u0027hlt\u0027 still stays at pm_d0i1() at this time.\nIf \u0027hlt\u0027 is common for rest of pm_d0ix implementation in the future, we will change as you advised.",
+      "parentUuid": "43074a83_6cf64f81",
+      "revId": "7254175ead5097b886bc0a058041953c62e0c355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
