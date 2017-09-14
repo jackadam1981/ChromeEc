@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "734f03dd_133d1efe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-14T09:56:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a19c783_8fe37d83",
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21f4c4bc_473c1e0b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "264b8980_75cb106b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-14T09:56:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21f4c4bc_473c1e0b",
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9607672_9f4812b8",
         "filename": "board/hammer/board.h",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2017-09-13T13:43:49Z",
       "side": 1,
       "message": "Drop the comment.\n\nAlso, can we consolidate all touchpad-related config options (i.e. move this to line 144?).",
+      "range": {
+        "startLine": 189,
+        "startChar": 52,
+        "endLine": 189,
+        "endChar": 78
+      },
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e7f2619_14320171",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-14T09:56:31Z",
+      "side": 1,
+      "message": "Sure, this should make the board difference better.",
+      "parentUuid": "e9607672_9f4812b8",
       "range": {
         "startLine": 189,
         "startChar": 52,
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "e61e0bdf_78c4b1b7",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-14T09:56:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae948434_2044fbc2",
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8dd2994_398a7b80",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 1
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "495c348e_563ce28c",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-14T09:56:31Z",
+      "side": 1,
+      "message": "Realized that FW_PAGE_COUNT is kind of copy \u0026 paste from usb_updater2, where we don\u0027t upload chunk by chunk and FW_PAGE_COUNT is used as terminate condition in a for loop. This isn\u0027t true anymore in our USB update protocol here. Remove this constant.\n\nThanks !",
+      "parentUuid": "a8dd2994_398a7b80",
+      "range": {
+        "startLine": 81,
+        "startChar": 32,
+        "endLine": 81,
+        "endChar": 60
+      },
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "751e00d5_1a1b421b",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 1
@@ -110,6 +212,24 @@
       "writtenOn": "2017-09-13T13:43:49Z",
       "side": 1,
       "message": "No need to print anything here.",
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d2f13c8_75f984eb",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-14T09:56:31Z",
+      "side": 1,
+      "message": "oops...I even use my ldap..",
+      "parentUuid": "751e00d5_1a1b421b",
       "revId": "d336ded93f3f74aff988f22650d0b31663591052",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -130,6 +250,24 @@
       "revId": "d336ded93f3f74aff988f22650d0b31663591052",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "987987f6_cd8147c7",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-09-14T09:56:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f2e2749_5701e55a",
+      "revId": "d336ded93f3f74aff988f22650d0b31663591052",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
