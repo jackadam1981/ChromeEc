@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "power.h"
 
 /* Args for host command handler */
 struct host_cmd_handler_args {
@@ -185,6 +186,19 @@ static inline int host_is_event_set(enum host_event_code event)
 {
 	return host_get_events() & EC_HOST_EVENT_MASK(event);
 }
+
+#ifdef CONFIG_LPC
+/*
+ * Get lazy wake masks
+ *
+ * @param state Sleep state
+ * @param mask  Lazy wake mask
+ *
+ * @return 0 for success and -1 for error
+ */
+
+int get_lazy_wake_mask(enum power_state state, uint32_t *mask);
+#endif
 #endif
 
 /**
@@ -316,5 +330,12 @@ void host_send_sysrq(uint8_t key);
 /* Return the lower/higher part of the feature flags bitmap */
 uint32_t get_feature_flags0(void);
 uint32_t get_feature_flags1(void);
+
+/*
+ * Set previous sleep state's wake mask
+ *
+ * @param mask Wake mask to set
+ */
+void set_prev_sleep_wake_mask(uint32_t mask);
 
 #endif  /* __CROS_EC_HOST_COMMAND_H */
