@@ -45,6 +45,30 @@
       "revId": "f970c05ca0062d6cbcef3122b2c46b066b1460e0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f4e057_80938d8e",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-15T16:51:33Z",
+      "side": 1,
+      "message": "Sorry, I read this the other way. Yes, this will work, but I think we would want to do this by default i.e. not enable/disable while entering/exiting S0ix.",
+      "parentUuid": "a02d8cfb_055b3e4d",
+      "range": {
+        "startLine": 239,
+        "startChar": 53,
+        "endLine": 239,
+        "endChar": 57
+      },
+      "revId": "f970c05ca0062d6cbcef3122b2c46b066b1460e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
