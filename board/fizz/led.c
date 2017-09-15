@@ -13,6 +13,9 @@
 #include "led_common.h"
 #include "util.h"
 
+#define LED_TOTAL_4SECS_TICKS 16
+#define LED_ON_1SEC_TICKS 4
+
 static int led_debug;
 
 enum led_color {
@@ -65,10 +68,30 @@ static int led_set_color(enum ec_led_id id, enum led_color color)
 
 static void led_set_power(void)
 {
-	if (chipset_in_state(CHIPSET_STATE_ON)) {
-		led_set_color(EC_LED_ID_POWER_LED, LED_GREEN);
+	static int power_ticks;
+	static int previous_state_suspend;
+
+	power_ticks++;
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND | CHIPSET_STATE_STANDBY)) {
+		/* Reset ticks if entering suspend so LED turns red
+		 * as soon as possible. */
+		if (!previous_state_suspend)
+			power_ticks = 0;
+		/* Blink once every four seconds. */
+		led_set_color(EC_LED_ID_POWER_LED,
+			(power_ticks % LED_TOTAL_4SECS_TICKS <
+			 LED_ON_1SEC_TICKS) ? LED_RED : LED_OFF);
+
+		previous_state_suspend = 1;
 		return;
 	}
+
+	previous_state_suspend = 0;
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		led_set_color(EC_LED_ID_POWER_LED, LED_OFF);
+	else if (chipset_in_state(CHIPSET_STATE_ON))
+		led_set_color(EC_LED_ID_POWER_LED, LED_GREEN);
 }
 
 /**
