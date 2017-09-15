@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee20ea6e_18c18162",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T11:52:09Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you are fixing here,\nCan you explain ?\n\nIf your previous change broke Zinger, then it should be fixed there.\nIf it doesn\u0027t , you can probably let it as is",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "fe948dd6a524a84f1efcc5ca42bf0001e282b3cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
