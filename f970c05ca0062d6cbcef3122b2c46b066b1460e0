@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "24f0a512_25ebd2fa",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-09-15T23:19:06Z",
+      "side": 1,
+      "message": "It would be nice to know why setting this doesn\u0027t work to disable SLP_S0# behavior on all the rails.  Perhaps the datasheet is misleading as to what this is doing.",
+      "range": {
+        "startLine": 572,
+        "startChar": 4,
+        "endLine": 572,
+        "endChar": 53
+      },
+      "revId": "f970c05ca0062d6cbcef3122b2c46b066b1460e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a02d8cfb_055b3e4d",
         "filename": "power/intel_x86.c",
         "patchSetId": 2
