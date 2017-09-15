@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0352d001_86afe692",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-09-15T20:38:01Z",
+      "side": 0,
+      "message": "from __future__ import print_function\n\u003c-are you referring to something like this?",
+      "parentUuid": "30f666c0_a08ee34e",
+      "revId": "7b96b2784d21dc47897ec1e6e22aa74afdaa4fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95746474_259ed661",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1

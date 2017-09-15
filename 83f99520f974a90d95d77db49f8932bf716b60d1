@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e18dfa83_c7f74fdf",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-09-15T20:38:01Z",
+      "side": 1,
+      "message": "https://www.chromium.org/chromium-os/python-style-guidelines#TOC-Imports\nThe Chromium OS python guide says it\u0027s ok.",
+      "parentUuid": "db6d5955_1778acef",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60d0242d_99ecbdfe",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2017-09-14T19:32:59Z",
       "side": 1,
       "message": "Can you add a commandline option to print/not print? Android parses this as CSV and does their own analysis.",
+      "range": {
+        "startLine": 620,
+        "startChar": 6,
+        "endLine": 620,
+        "endChar": 31
+      },
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8c98b7b_92006088",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-09-15T20:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d0242d_99ecbdfe",
       "range": {
         "startLine": 620,
         "startChar": 6,
@@ -202,6 +244,24 @@
     },
     {
       "key": {
+        "uuid": "a30d3e4b_840620fd",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-09-15T20:38:01Z",
+      "side": 1,
+      "message": "oops, forgot to delete.",
+      "parentUuid": "295b99e2_394dce3f",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fbe88cf_2ab7bf71",
         "filename": "extra/usb_power/stats_manager.py",
         "patchSetId": 1
@@ -216,6 +276,24 @@
       "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a669343_61355ac4",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-09-15T20:38:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fbe88cf_2ab7bf71",
+      "revId": "83f99520f974a90d95d77db49f8932bf716b60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
