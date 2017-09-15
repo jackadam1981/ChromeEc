@@ -63,12 +63,26 @@ static int led_set_color(enum ec_led_id id, enum led_color color)
 	}
 }
 
+#define LED_TOTAL_4SECS_TICKS 4
+#define LED_ON_1SEC_TICKS 1
+
 static void led_set_power(void)
 {
-	if (chipset_in_state(CHIPSET_STATE_ON)) {
+	static int suspend_ticks;
+
+	if (chipset_in_state(CHIPSET_STATE_ON))
 		led_set_color(EC_LED_ID_POWER_LED, LED_GREEN);
-		return;
-	}
+	else if (chipset_in_state(
+			CHIPSET_STATE_SUSPEND | CHIPSET_STATE_STANDBY))
+		/* Blink once every four seconds. */
+		led_set_color(EC_LED_ID_POWER_LED,
+			      (suspend_ticks % LED_TOTAL_4SECS_TICKS)
+						< LED_ON_1SEC_TICKS ?
+						LED_GREEN: LED_OFF);
+	else
+		led_set_color(EC_LED_ID_POWER_LED, LED_OFF);
+
+	suspend_ticks++;
 }
 
 /**
@@ -80,7 +94,7 @@ static void led_tick(void)
 		return;
 	led_set_power();
 }
-DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_SECOND, led_tick, HOOK_PRIO_DEFAULT);
 
 static int command_led(int argc, char **argv)
 {
