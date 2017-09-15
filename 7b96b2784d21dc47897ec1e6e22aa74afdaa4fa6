@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "18a133be_589bd4fb",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-09-15T21:23:14Z",
+      "side": 0,
+      "message": "Yeah, Can you add it? I didn\u0027t put it in before but it\u0027s probably good to add.",
+      "parentUuid": "0352d001_86afe692",
+      "revId": "7b96b2784d21dc47897ec1e6e22aa74afdaa4fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95746474_259ed661",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -96,6 +114,30 @@
       "side": 0,
       "message": "Done",
       "parentUuid": "b2e4c9d9_9db3c1b7",
+      "range": {
+        "startLine": 312,
+        "startChar": 3,
+        "endLine": 312,
+        "endChar": 33
+      },
+      "revId": "7b96b2784d21dc47897ec1e6e22aa74afdaa4fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e35fb8e4_c70157d7",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-09-15T21:23:14Z",
+      "side": 0,
+      "message": "Ah, you\u0027re right, thanks!",
+      "parentUuid": "c848b9f4_bc00f43d",
       "range": {
         "startLine": 312,
         "startChar": 3,
