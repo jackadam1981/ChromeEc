@@ -161,7 +161,8 @@ int DCRYPTO_gcm_encrypt(struct GCM_CTX *ctx, uint8_t *out, size_t out_len,
 {
 	uint8_t *outp = out;
 
-	if (out_len < (in_len & ~0x0F) + ((in_len & 0x0F) ? 16 : 0))
+	/* Output must have sufficient space for entire blocks. */
+	if (out_len < ((ctx->remainder + in_len) & ~0x0F))
 		return -1;
 
 	/* Process a previous partial block, if any. */
