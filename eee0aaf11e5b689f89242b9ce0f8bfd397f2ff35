@@ -236,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "cc496d14_828b30c5",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-15T23:41:21Z",
+      "side": 1,
+      "message": "I see. Thanks for the example.",
+      "parentUuid": "a2431506_37ead342",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 39
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9fe8202_4d2aa7a5",
         "filename": "chip/stm32/clock-f.h",
         "patchSetId": 5
