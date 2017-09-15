@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9030f267_ae7f0449",
+        "filename": "common/update_fw.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-15T09:04:43Z",
+      "side": 1,
+      "message": "Went for touchpad_fw_full_hash .",
+      "parentUuid": "89614a01_67c3f45c",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "1ba6de4db837653c4a7afcd7c1f398755b8a1928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77b7f2f8_526b6608",
         "filename": "util/gen_touchpad_hash.c",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-15T08:23:10Z",
       "side": 1,
       "message": "why is not print_hex() doing the next fputs() ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "1ba6de4db837653c4a7afcd7c1f398755b8a1928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5704639d_0821fc85",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-15T09:04:43Z",
+      "side": 1,
+      "message": "Well, just below we also use print_hex, but we want to terminate the array with a \";\\n\". Not sure if passing \",\\n\" or \";\\n\" as parameter would make the code clearer...",
+      "parentUuid": "77b7f2f8_526b6608",
       "range": {
         "startLine": 39,
         "startChar": 0,
