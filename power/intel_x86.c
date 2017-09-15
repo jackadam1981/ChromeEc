@@ -22,6 +22,7 @@
 #include "util.h"
 #include "vboot.h"
 #include "wireless.h"
+#include "i2c.h"
 
 /* Chipset specific header files */
 #ifdef CONFIG_CHIPSET_APOLLOLAKE
@@ -235,6 +236,8 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		} else if (power_get_host_sleep_state()
 					== HOST_SLEEP_EVENT_S0IX_SUSPEND &&
 				chipset_get_sleep_signal(SYS_SLEEP_S0IX) == 0) {
+			i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0x4a);
+			i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x7a);
 			return POWER_S0S0ix;
 #endif
 		}
@@ -246,6 +249,8 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		/* System in S0 only if SLP_S0 and SLP_S3 are de-asserted */
 		if ((chipset_get_sleep_signal(SYS_SLEEP_S0IX) == 1) &&
 		   (chipset_get_sleep_signal(SYS_SLEEP_S3) == 1)) {
+			i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x30, 0xa);
+			i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x3a);
 			return POWER_S0ixS0;
 		} else if (!power_has_signals(IN_PGOOD_ALL_CORE)) {
 			return POWER_S0;
