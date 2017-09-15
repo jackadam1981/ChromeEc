@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "305e2b67_2f95e9a3",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-09-15T22:00:11Z",
+      "side": 0,
+      "message": "Sure. But I don\u0027t really understand why we want to add this? I know that this uses print in a future python version but I don\u0027t understand why we need to use print from a future python version here.",
+      "parentUuid": "18a133be_589bd4fb",
+      "revId": "7b96b2784d21dc47897ec1e6e22aa74afdaa4fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95746474_259ed661",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
