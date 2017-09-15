@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89614a01_67c3f45c",
+        "filename": "common/update_fw.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T08:23:10Z",
+      "side": 1,
+      "message": "the variable naming starts to be confusing,\nmaybe the last one should have \u0027expected\u0027 or \u0027allowed\u0027 in its name, or that\u0027s actually the full image vs chunk ?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "1ba6de4db837653c4a7afcd7c1f398755b8a1928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77b7f2f8_526b6608",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T08:23:10Z",
+      "side": 1,
+      "message": "why is not print_hex() doing the next fputs() ?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "1ba6de4db837653c4a7afcd7c1f398755b8a1928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
