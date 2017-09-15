@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "45424a56_e413e3b0",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-09-15T20:28:56Z",
+      "side": 1,
+      "message": "Besides making the seconds since epoch to date calculations to directly convert to BCD (which is totally what we\u0027ve been trying to move away from, by sending it to common/rtc.c), I don\u0027t see how this can become any better.",
+      "parentUuid": "6fbe4221_15ff586e",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbfcbcd7_03b05883",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 5
@@ -105,6 +129,30 @@
       "writtenOn": "2017-09-15T12:00:26Z",
       "side": 1,
       "message": "the generated assembly for Cortex M0 burns my eyes....\nwe can probably do better.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d9d6c9_134909c3",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-09-15T20:28:56Z",
+      "side": 1,
+      "message": "Vincent, this seems like a pretty obvious binary to bcd conversion. Is there any clean/clever assembly tricks where this can become better?",
+      "parentUuid": "cbfcbcd7_03b05883",
       "range": {
         "startLine": 82,
         "startChar": 0,
@@ -152,6 +200,30 @@
       "side": 1,
       "message": "Is nested loops better?",
       "parentUuid": "843f836d_acc94b24",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 39
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2431506_37ead342",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-09-15T20:28:56Z",
+      "side": 1,
+      "message": "Yep, It\u0027ll make sure you don\u0027t get this race condition:\n\n2017-09-14 23:59:58\n2017-09-14 23:59:59\nrtc-\u003ertc_ssr \u003d STM32_RTC_SSR //whatever that is\nwhile (rtc-\u003ertc_ssr !\u003d STM32_RTC_SSR); // check succeeds, so we continue\nrtc-\u003ertc_tr \u003d STM32_RTC_TR // 23:59:59\nwhile (rtc-\u003ertc_tr !\u003d STM32_RTC_TR); // check succeeds so we continue\nrtc-\u003ertc_dr \u003d STM32_RTC_DR; //2017-09-14 \n2017-09-15 00:00:00\nwhile (rtc-\u003ertc_dr !\u003d STM32_RTC_DR); // check fails\nrtc-\u003ertc_dr \u003d STM32_RTC_DR; //2017-09-15 \nwhile (rtc-\u003ertc_dr !\u003d STM32_RTC_DR); // check succeeds so we continue\n2017-09-15 00:00:01\n\nrtc_read now returns the date as 2017-09-15 23:59:59",
+      "parentUuid": "95d1f152_487bf694",
       "range": {
         "startLine": 133,
         "startChar": 0,
