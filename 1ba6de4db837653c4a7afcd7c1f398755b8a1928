@@ -93,6 +93,30 @@
       "revId": "1ba6de4db837653c4a7afcd7c1f398755b8a1928",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c96bf6c_6b901a67",
+        "filename": "util/gen_touchpad_hash.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T09:10:04Z",
+      "side": 1,
+      "message": "but passing a boolean e.g. \u0027int last\u0027\nthen\nfprintf(\"}%c\\n\", last ? \u0027;\u0027 : \u0027,\u0027);\n\nmight be better/smaller / as readable",
+      "parentUuid": "5704639d_0821fc85",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "1ba6de4db837653c4a7afcd7c1f398755b8a1928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
