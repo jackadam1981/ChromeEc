@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6ccd0497_0baea973",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-09-15T17:37:11Z",
+      "side": 1,
+      "message": "I believe Shawn already argued the opposite on the bug:\n\nhttps://b.corp.google.com/issues/63908519#comment16\n\nI guess you two should work out what\u0027s \"too expensive\" on an STM32...\n\nI would also say this computation should be very infrequent (like, handful of checks per boot), but then I\u0027m not sure about something like doze mode (do we need RTC-scheduled wakeups to check for coalesced network updates? But I suspect even that shouldn\u0027t be highly frequent).",
+      "parentUuid": "9aac6637_a9c3629b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 48
+      },
+      "revId": "6e5f9dcbb03cd8bfab1889edc262c4f3b760101b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b3850f63_73730df2",
         "filename": "common/rtc.c",
         "patchSetId": 1
