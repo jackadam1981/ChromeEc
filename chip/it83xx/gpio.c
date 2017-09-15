@@ -18,6 +18,27 @@
 #include "timer.h"
 #include "util.h"
 
+/* Data structure to define KSI/KSO GPIO mode control registers. */
+struct kbs_gpio_ctrl_t {
+	/* GPIO mode control register. */
+	volatile uint8_t *gpio_mode;
+	/* GPIO output enable register. */
+	volatile uint8_t *gpio_out;
+	/* GPIO data register for output. */
+	volatile uint8_t *gpio_level;
+	/* GPIO data mirror register for input. */
+	volatile uint8_t *gpio_mirror;
+};
+
+const struct kbs_gpio_ctrl_t kbs_gpio_ctrl_regs[] = {
+	{ &IT83XX_KBS_KSIGCTRL,  &IT83XX_KBS_KSIGOEN, &IT83XX_KBS_KSIGDAT,
+		&IT83XX_KBS_KSIGDMRR},
+	{ &IT83XX_KBS_KSOHGCTRL, &IT83XX_KBS_KSOHGOEN, &IT83XX_KBS_KSOH1,
+		&IT83XX_KBS_KSOHGDMRR},
+	{ &IT83XX_KBS_KSOLGCTRL, &IT83XX_KBS_KSOLGOEN, &IT83XX_KBS_KSOL,
+		&IT83XX_KBS_KSOLGDMRR},
+};
+
 /*
  * Converts port (ie GPIO A) to base address offset of the control register
  * (GPCRx0) for that port.
@@ -275,34 +296,42 @@ void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
 
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
-	return (IT83XX_GPIO_DATA(gpio_list[signal].port) &
-			gpio_list[signal].mask) ? 1 : 0;
+	uint32_t p = gpio_list[signal].port;
+	uint32_t mask = gpio_list[signal].mask;
+	volatile uint8_t *ptr_port = (p < GPIO_KBS_OFF) ? &IT83XX_GPIO_DATA(p) :
+		kbs_gpio_ctrl_regs[p - GPIO_KBS_OFF].gpio_mirror;
+
+	return !!(*ptr_port & mask);
 }
 
 void gpio_set_level(enum gpio_signal signal, int value)
 {
+	uint32_t p = gpio_list[signal].port;
+	uint32_t mask = gpio_list[signal].mask;
+	volatile uint8_t *ptr_port = (p < GPIO_KBS_OFF) ? &IT83XX_GPIO_DATA(p) :
+		kbs_gpio_ctrl_regs[p - GPIO_KBS_OFF].gpio_level;
+
 	uint32_t int_mask = get_int_mask();
 
 	/* critical section with interrupts off */
 	interrupt_disable();
 	if (value)
-		IT83XX_GPIO_DATA(gpio_list[signal].port) |=
-				 gpio_list[signal].mask;
+		*ptr_port |= mask;
 	else
-		IT83XX_GPIO_DATA(gpio_list[signal].port) &=
-				~gpio_list[signal].mask;
+		*ptr_port &= ~mask;
 	/* restore interrupts */
 	set_int_mask(int_mask);
 }
 
 void gpio_kbs_pin_gpio_mode(uint32_t port, uint32_t mask, uint32_t flags)
 {
-	if (port == GPIO_KSO_H)
-		IT83XX_KBS_KSOHGCTRL |= mask;
-	else if (port == GPIO_KSO_L)
-		IT83XX_KBS_KSOLGCTRL |= mask;
-	else if (port == GPIO_KSI)
-		IT83XX_KBS_KSIGCTRL |= mask;
+	int p = port - GPIO_KBS_OFF;
+
+	/* GPIO mode */
+	*kbs_gpio_ctrl_regs[p].gpio_mode |= mask;
+	/* Enable GPIO output */
+	if (flags & GPIO_OUTPUT)
+		*kbs_gpio_ctrl_regs[p].gpio_out |= mask;
 }
 
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
@@ -451,8 +480,8 @@ void gpio_pre_init(void)
 		if (is_warm)
 			flags &= ~(GPIO_LOW | GPIO_HIGH);
 
-		if (g->port > GPIO_KBS_OFF)
-			/* KSO/KSI pins to GPIO mode (input only). */
+		if (g->port >= GPIO_KBS_OFF)
+			/* KSO/KSI pins to GPIO mode. */
 			gpio_kbs_pin_gpio_mode(g->port, g->mask, flags);
 		else
 			/* Set up GPIO based on flags */
