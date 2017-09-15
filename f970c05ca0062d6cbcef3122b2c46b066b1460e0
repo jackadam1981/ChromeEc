@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "974f2126_1987b784",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-15T15:13:07Z",
+      "side": 1,
+      "message": "This needs to be done for more than V085CNT.",
+      "range": {
+        "startLine": 570,
+        "startChar": 52,
+        "endLine": 570,
+        "endChar": 57
+      },
+      "revId": "f970c05ca0062d6cbcef3122b2c46b066b1460e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a02d8cfb_055b3e4d",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-15T15:13:07Z",
+      "side": 1,
+      "message": "If you are disabling it by default, why enable/disable it again and again. System will run into the same issue for runtime idle after one iteration of normal S0ix.",
+      "range": {
+        "startLine": 239,
+        "startChar": 53,
+        "endLine": 239,
+        "endChar": 57
+      },
+      "revId": "f970c05ca0062d6cbcef3122b2c46b066b1460e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
