@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12ac8fc4_636ceeb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T12:00:26Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bebe9bc_851b3b9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T12:00:26Z",
+      "side": 1,
+      "message": "given the change is modifying the code used by STM32F0 low power idle, you probably need to re-test it",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcecdf45_2b1481ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T12:00:26Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 20,
+        "startChar": 30,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fbe4221_15ff586e",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T12:00:26Z",
+      "side": 1,
+      "message": "we do tons of divisions and modulos in this function,\njust to do more computations on the result below, it\u0027s kind of suboptimal.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbfcbcd7_03b05883",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T12:00:26Z",
+      "side": 1,
+      "message": "the generated assembly for Cortex M0 burns my eyes....\nwe can probably do better.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "843f836d_acc94b24",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T12:00:26Z",
+      "side": 1,
+      "message": "doing 3 loops doesn\u0027t seem really good.\nFor coherency, you probably want to do a single one and verify all 3 values",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 39
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9fe8202_4d2aa7a5",
+        "filename": "chip/stm32/clock-f.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T12:00:26Z",
+      "side": 1,
+      "message": "to return a full structure, you might want to pass a pointer as parameter rather than this",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 44
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26d78f37_89df49a3",
+        "filename": "chip/stm32/clock-f.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T12:00:26Z",
+      "side": 1,
+      "message": "this renaming is at best confusing,\nthere is no \u0027register\u0027 involved here, this is a pure mathematical operation (unit conversion)",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1578ca4_784d5b85",
+        "filename": "chip/stm32/clock-f.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-15T12:00:26Z",
+      "side": 1,
+      "message": "please pass pointers here, you don\u0027t want to copy read-only data structures.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
