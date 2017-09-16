@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7e785910_5ebb8141",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-16T00:39:09Z",
+      "side": 1,
+      "message": "Yes, I will change it.",
+      "parentUuid": "e4ab92a6_17e439ab",
+      "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2af58018_924d1b81",
         "filename": "chip/ish/clock.c",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-15T16:32:29Z",
       "side": 1,
       "message": "get_time() and __hw_clock_event_get() are separate timers, right?",
+      "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c57da3_b950fc2c",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-16T00:39:09Z",
+      "side": 1,
+      "message": "Yes,\nget_time() is from HPET0.\n_hw_clock_event_get() is from HPET1.",
+      "parentUuid": "2af58018_924d1b81",
       "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "802d3f6d_52df540f",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-16T00:39:09Z",
+      "side": 1,
+      "message": "This is my mistake.\nWhile cleaning up debug code, a part of code were dropped.\n\n__hw_clock_wake_set(early_wakeup-ENOUGH_TIME_FOR_LOW_POWER);\nis right code. \n\nThank you",
+      "parentUuid": "bfa2eece_e28bc0c3",
+      "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51f55641_6b5edd85",
         "filename": "chip/ish/clock.c",
         "patchSetId": 5
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "a5967089_97fe19b4",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-16T00:39:09Z",
+      "side": 1,
+      "message": "Yes, it is.\nSince we want \u0027cli\u0027 quicker here, __asm__ directly here might reduce function call overhead. How do you think ?",
+      "parentUuid": "51f55641_6b5edd85",
+      "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b2f2fe0_e8f9a641",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 5
@@ -81,6 +153,24 @@
       "writtenOn": "2017-09-15T16:32:29Z",
       "side": 1,
       "message": "This comment is unnecessary.",
+      "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "079ce78a_f39198ab",
+        "filename": "chip/ish/power_mgt.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-16T00:39:09Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "7b2f2fe0_e8f9a641",
       "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
