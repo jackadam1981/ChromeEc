@@ -177,8 +177,10 @@ static int charge_manager_is_seeded(void)
 			if (available_charge[i][j].current ==
 			    CHARGE_CURRENT_UNINITIALIZED ||
 			    available_charge[i][j].voltage ==
-			    CHARGE_VOLTAGE_UNINITIALIZED)
+			    CHARGE_VOLTAGE_UNINITIALIZED) {
+				ccprintf("i = %d\n", i);
 				return 0;
+			}
 
 	is_seeded = 1;
 	return 1;
@@ -528,6 +530,8 @@ static void charge_manager_refresh(void)
 	while (1) {
 		charge_manager_get_best_charge_port(&new_port, &new_supplier);
 
+		ccprintf("%s\n", __func__);
+
 		/*
 		 * If the port or supplier changed, make an attempt to switch to
 		 * the port. We will re-set the active port on a supplier change
@@ -717,6 +721,8 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	int i;
 	int clear_override = 0;
 
+	ccprintf("%s(%d, %d, %d, c:%d v:%d)\n", __func__, change, supplier, port, charge->current, charge->voltage);
+
 	/* Determine if this is a change which can affect charge status */
 	switch (change) {
 	case CHANGE_CHARGE:
@@ -809,12 +815,15 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	 */
 	if (charge_manager_is_seeded())
 		hook_call_deferred(&charge_manager_refresh_data, 0);
+
+	ccprintf("CM seeded: %d\n", charge_manager_is_seeded());
 }
 
 void charge_manager_update_charge(int supplier,
 				  int port,
 				  struct charge_port_info *charge)
 {
+	ccprintf("%s(%d, %d)\n", __func__, supplier, port);
 	charge_manager_make_change(CHANGE_CHARGE, supplier, port, charge);
 }
 

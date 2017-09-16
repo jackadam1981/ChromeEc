@@ -304,9 +304,13 @@ void tcpci_tcpc_alert(int port)
 		} else {
 			/* Read Power Status register */
 			tcpci_tcpm_get_power_status(port, &reg);
-			/* Update VBUS status */
-			tcpc_vbus[port] = reg &
-				TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
+			/* HACKlol */
+			if (port == 0)
+				tcpc_vbus[0] = gpio_get_level(GPIO_AC_PRESENT);
+			else
+				/* Update VBUS status */
+				tcpc_vbus[port] = reg &
+					TCPC_REG_POWER_STATUS_VBUS_PRES ? 1 : 0;
 #if defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) && defined(CONFIG_USB_CHARGER)
 			/* Update charge manager with new VBUS state */
 			usb_charger_vbus_change(port, tcpc_vbus[port]);

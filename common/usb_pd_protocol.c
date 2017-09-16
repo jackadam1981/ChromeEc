@@ -249,6 +249,8 @@ void pd_vbus_low(int port)
 static inline int pd_is_vbus_present(int port)
 {
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
+	if (port == 0)
+		return gpio_get_level(GPIO_AC_PRESENT);
 	return tcpm_get_vbus_level(port);
 #else
 	return pd_snk_is_vbus_provided(port);
@@ -2347,7 +2349,6 @@ void pd_task(void *u)
 				break;
 			}
 #endif
-
 			/* Source connection monitoring */
 			if (cc1 != TYPEC_CC_VOLT_OPEN ||
 			    cc2 != TYPEC_CC_VOLT_OPEN) {
