@@ -189,10 +189,25 @@ int board_get_ramp_current_limit(int supplier, int sup_curr)
 
 static void board_init(void)
 {
+	struct charge_port_info chg = { 0 };
+
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C2_PD_INT_L);
+
+	/* HACK.  Update VBUS suppliers. */
+	/* The 'ol assuming that AC present is Vbus on port 0... */
+	chg.voltage = gpio_get_level(GPIO_AC_PRESENT) ? 5000 : 0;
+	if (chg.voltage)
+		chg.current = USB_CHARGER_MIN_CURR_MA;
+
+	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 0, &chg);
+	/* The others don't "have" Vbus... */
+	chg.voltage = 0;
+	chg.current = 0;
+	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 1, &chg);
+	charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, 2, &chg);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
