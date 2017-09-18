@@ -84,6 +84,8 @@
 #define CONFIG_USB_PID 0x5022
 #elif defined(BOARD_STAFF)
 #define CONFIG_USB_PID 0x502b
+#elif defined(BOARD_WAND)
+#define CONFIG_USB_PID 0x502d
 #elif defined(BOARD_WHISKERS)
 #define CONFIG_USB_PID 0x5030
 #else
@@ -160,7 +162,7 @@
 #define CONFIG_TOUCHPAD_HASH_FW
 
 /* Touchpad firmware size and dimension difference */
-#ifdef BOARD_HAMMER
+#if defined(BOARD_HAMMER) || defined(BOARD_WAND)
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3207
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1783
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 1018 /* tenth of mm */
@@ -197,7 +199,8 @@
 #define CONFIG_USB_I2C
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
-#define I2C_PORT_MASTER 0
+#define I2C_PORT_TOUCHPAD 0
+#define I2C_PORT_CHARGER 1
 
 /* Enable PWM */
 #define CONFIG_PWM
@@ -205,12 +208,30 @@
 /* Enable Elan touchpad driver */
 #define CONFIG_TOUCHPAD
 #define CONFIG_TOUCHPAD_ELAN
-#define CONFIG_TOUCHPAD_I2C_PORT 0
+#define CONFIG_TOUCHPAD_I2C_PORT I2C_PORT_TOUCHPAD
 #define CONFIG_TOUCHPAD_I2C_ADDR (0x15 << 1)
 
 #define CONFIG_CURVE25519
 
 #define CONFIG_USB_PAIRING
+
+#ifdef BOARD_WAND
+/* Battery and charger options. */
+#define CONFIG_CHARGER
+#define CONFIG_CHARGER_V2
+#define CONFIG_CHARGER_INPUT_CURRENT 128
+#define CONFIG_CHARGER_ISL9238
+#define CONFIG_CHARGER_SENSE_RESISTOR 10
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
+
+#define CONFIG_BATTERY_CUT_OFF
+#define CONFIG_BATTERY_DEVICE_CHEMISTRY "LION"
+#define CONFIG_BATTERY_SMART
+
+#define I2C_PORT_BATTERY I2C_PORT_CHARGER
+#endif /* BOARD_WAND */
 
 #else /* SECTION_IS_RO */
 /* Sign and switch to RW partition on boot. */
@@ -269,6 +290,11 @@ enum pwm_channel {
 	PWM_CH_KBLIGHT = 0,
 	/* Number of PWM channels */
 	PWM_CH_COUNT
+};
+
+enum adc_channel {
+	/* Number of ADC channels */
+	ADC_CH_COUNT
 };
 #endif
 
