@@ -84,6 +84,8 @@
 #define CONFIG_USB_PID 0x502b
 #elif defined(BOARD_HAMMER)
 #define CONFIG_USB_PID 0x5022
+#elif defined(BOARD_WAND)
+#define CONFIG_USB_PID 0x502d
 #else
 #error "Invalid board"
 #endif
@@ -155,7 +157,7 @@
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 1020 /* tenth of mm */
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 584 /* tenth of mm */
 #define CONFIG_TOUCHPAD_VIRTUAL_SIZE (56*1024)
-#elif defined(BOARD_HAMMER)
+#elif defined(BOARD_HAMMER) || defined(BOARD_WAND)
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X 3207
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1783
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 1018 /* tenth of mm */
@@ -193,6 +195,30 @@
 #define CONFIG_CURVE25519
 
 #define CONFIG_USB_PAIRING
+
+#ifdef BOARD_WAND
+/* Battery and charger options. */
+#define CONFIG_CHARGER
+#define CONFIG_CHARGER_V2
+/* TODO(b:66575472): Understand this value better and set it right. */
+#define CONFIG_CHARGER_INPUT_CURRENT 128
+#define CONFIG_CHARGER_ISL9238
+#define CONFIG_CHARGER_SENSE_RESISTOR 10
+#define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
+
+#define CONFIG_BATTERY_CUT_OFF
+#define CONFIG_BATTERY_DEVICE_CHEMISTRY "LION"
+#define CONFIG_BATTERY_SMART
+
+/*
+ * TODO(b:66575472): Temporary values, charger and battery will be a on
+ * a separate I2C bus eventually.
+ */
+#define I2C_PORT_CHARGER        0
+#define I2C_PORT_BATTERY        0
+#endif
 
 #else /* SECTION_IS_RO */
 /* Sign and switch to RW partition on boot. */
@@ -243,6 +269,11 @@ enum pwm_channel {
 	PWM_CH_KBLIGHT = 0,
 	/* Number of PWM channels */
 	PWM_CH_COUNT
+};
+
+enum adc_channel {
+	/* Number of ADC channels */
+	ADC_CH_COUNT
 };
 #endif
 
