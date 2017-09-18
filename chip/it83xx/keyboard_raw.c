@@ -10,6 +10,8 @@
 #include "task.h"
 #include "irq_chip.h"
 
+#define KSOH_PIN_MASK ((1 << (KEYBOARD_COLS - 8)) - 1)
+
 /*
  * Initialize the raw keyboard interface.
  */
@@ -37,8 +39,8 @@ void keyboard_raw_init(void)
 	IT83XX_KBS_KSOL = 0x00;
 #endif
 
-	/* KSO[15:8] pins low. */
-	IT83XX_KBS_KSOH1 = 0x00;
+	/* KSO[(KEYBOARD_COLS - 1):8] pins low. */
+	IT83XX_KBS_KSOH1 &= ~KSOH_PIN_MASK;
 
 	/* KSI[0-7] falling-edge triggered is selected */
 	IT83XX_WUC_WUEMR3 = 0xFF;
@@ -68,6 +70,7 @@ void keyboard_raw_task_start(void)
 test_mockable void keyboard_raw_drive_column(int col)
 {
 	int mask;
+	uint32_t int_mask;
 
 	/* Tri-state all outputs */
 	if (col == KEYBOARD_COLUMN_NONE)
@@ -84,7 +87,15 @@ test_mockable void keyboard_raw_drive_column(int col)
 	mask ^= (1 << 2);
 #endif
 	IT83XX_KBS_KSOL = mask & 0xff;
-	IT83XX_KBS_KSOH1 = (mask >> 8) & 0xff;
+
+	int_mask = get_int_mask();
+	/* critical section with interrupts off */
+	interrupt_disable();
+	/* only drive KSOH pins that are used as key scan function. */
+	IT83XX_KBS_KSOH1 = (IT83XX_KBS_KSOH1 & ~KSOH_PIN_MASK) |
+		((mask >> 8) & KSOH_PIN_MASK);
+	/* restore interrupts */
+	set_int_mask(int_mask);
 }
 
 /*
