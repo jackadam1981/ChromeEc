@@ -165,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "55eab5c9_cab1c491",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-18T08:06:49Z",
+      "side": 1,
+      "message": "given the modulo operation will always compute both the quotient and the remainder at lower level. We don\u0027t want the other division for the quotient.\n\nIt\u0027s actually a GCC optimization bug : see https://gcc.gnu.org/bugzilla/show_bug.cgi?id\u003d43721\n\nSo with a half-broken toolchain, maybe it\u0027s time to implement the div_t div(int, int) function as usually provided by the libc, e.g.:\ntypedef struct {\n       int quot;\n       int rem;\n} div_t;\n\ndiv_t __aeabi_idivmod(int n, int d);\n\nstatic inline div_t div(int n, int d)\n{\n       return __aeabi_idivmod(n, d);\n}\n\nThen\n       yr \u003d div(time.year, 10);\n       rtc_dr \u003d (yr.quot \u003c\u003c 20) | (yr.rem \u003c\u003c 16);\n       mo \u003d div(time.month, 10);\n       rtc_dr |\u003d (mo.quot \u003c\u003c 12) | (mo.rem \u003c\u003c 8);\n       day \u003d div(time.day, 10);\n       rtc_dr |\u003d (day.quot \u003c\u003c 4) | day.rem;\n\nThat said, here we have a division by a (small) constant,\nIMO the toolchain is supposed to simplify it (since the software division is slower in ARMv6-M), not sure why we cannot trigger this optimization...\nie  Q \u003d V / 10 \u003d\u003d (V * 0xCCCD) \u003e\u003e 19\nthen V % 10 \u003d\u003d V - Q * 10 \nseems both smaller and faster ...\nif only we had toolchain people.\n\ne.g.\nstatic uint8_t u8_to_bcd(uint8_t val)\n{       /* Fast division by 10 (when lacking HW div) */\n       uint32_t quot \u003d ((uint32_t)val * 0xCCCD) \u003e\u003e 19;\n       uint32_t rem \u003d val - quot * 10;\n       return rem | (quot \u003c\u003c 4);\n}\n\nThen\n       rtc_dr \u003d u8_to_bcd(time.year) \u003c\u003c 16;\n       rtc_dr |\u003d u8_to_bcd(time.month) \u003c\u003c 8;\n       rtc_dr |\u003d u8_to_bcd(time.day);\n\nBut we probably care slightly more about code size than speed here, so the former might be marginally better.",
+      "parentUuid": "44d9d6c9_134909c3",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "843f836d_acc94b24",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 5
