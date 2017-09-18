@@ -1,0 +1,1 @@
+../hammer/build.mk
