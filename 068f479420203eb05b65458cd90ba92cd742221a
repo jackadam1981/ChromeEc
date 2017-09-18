@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d760113_8a028d35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-18T09:28:42Z",
+      "side": 1,
+      "message": "nit: Twinkie",
+      "range": {
+        "startLine": 39,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 11
+      },
+      "revId": "068f479420203eb05b65458cd90ba92cd742221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "826f7377_0d1f7daa",
+        "filename": "board/chell/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-18T09:28:42Z",
+      "side": 1,
+      "message": "given we already fix-up payload[0] in common/usb_pd_policy.c\nie all the payload[0] |\u003d VDO_CMDT(CMDT_RSP_xxx);\n\nCan\u0027t we omit the version here ?\n\nyou are saving the dozen of board file changes while having a smaller code size ?",
+      "range": {
+        "startLine": 253,
+        "startChar": 3,
+        "endLine": 253,
+        "endChar": 25
+      },
+      "revId": "068f479420203eb05b65458cd90ba92cd742221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8df2bdd_6df282da",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-18T09:28:42Z",
+      "side": 1,
+      "message": "the ultimate bikeshedding:\nI would swap the order here\n(\u0027.\u0027 \u003c \u0027_\u0027 ;-)",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "068f479420203eb05b65458cd90ba92cd742221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "900fa829_efa7eb12",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-18T09:28:42Z",
+      "side": 1,
+      "message": "Can you comment why you need a 3-deep (aka MAX_PEND) queue here ?",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 41
+      },
+      "revId": "068f479420203eb05b65458cd90ba92cd742221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1211c2ba_70a69eb6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-18T09:28:42Z",
+      "side": 1,
+      "message": "I would be slightly inclined to re-use queue.h rather than adding and debugging another variant.\nThe RAM overhead should be minimal.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 16
+      },
+      "revId": "068f479420203eb05b65458cd90ba92cd742221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "471a00e7_17f569ac",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-18T09:28:42Z",
+      "side": 1,
+      "message": "is the PID really optional ?\nit doesn\u0027t seem so",
+      "range": {
+        "startLine": 712,
+        "startChar": 0,
+        "endLine": 713,
+        "endChar": 12
+      },
+      "revId": "068f479420203eb05b65458cd90ba92cd742221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b35c8403_208b9424",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-18T09:28:42Z",
+      "side": 1,
+      "message": "indentation is off ?",
+      "range": {
+        "startLine": 1258,
+        "startChar": 0,
+        "endLine": 1258,
+        "endChar": 30
+      },
+      "revId": "068f479420203eb05b65458cd90ba92cd742221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c271adb7_99b61c03",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-18T09:28:42Z",
+      "side": 1,
+      "message": "the names are a bit too generic, we might need a prefix (or a more verbose prefix) here.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 21
+      },
+      "revId": "068f479420203eb05b65458cd90ba92cd742221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
