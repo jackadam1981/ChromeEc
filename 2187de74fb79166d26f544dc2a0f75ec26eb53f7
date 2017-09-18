@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "337c5d11_6973be22",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-18T15:50:09Z",
+      "side": 1,
+      "message": "With CL 669773, this should be 100.",
+      "range": {
+        "startLine": 117,
+        "startChar": 38,
+        "endLine": 117,
+        "endChar": 39
+      },
+      "revId": "2187de74fb79166d26f544dc2a0f75ec26eb53f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8af979e1_237f72a8",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-18T15:50:09Z",
+      "side": 1,
+      "message": "We don\u0027t need this check.",
+      "range": {
+        "startLine": 123,
+        "startChar": 5,
+        "endLine": 123,
+        "endChar": 38
+      },
+      "revId": "2187de74fb79166d26f544dc2a0f75ec26eb53f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45fb429a_d77677e3",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-18T15:50:09Z",
+      "side": 1,
+      "message": "With CL 669773, this should be set_color(led_id, LED_RED, brightness).",
+      "range": {
+        "startLine": 124,
+        "startChar": 2,
+        "endLine": 124,
+        "endChar": 32
+      },
+      "revId": "2187de74fb79166d26f544dc2a0f75ec26eb53f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
