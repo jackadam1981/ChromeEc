@@ -59,9 +59,16 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
  */
 
 #ifdef SECTION_IS_RW
+#ifdef BOARD_WAND
+/* Battery needs 100 kHz */
+#define I2C_FREQ 100 /* kHz */
+#else
+#define I2C_FREQ 400 /* kHz */
+#endif
+
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master", I2C_PORT_MASTER, 400,
+	{"master", I2C_PORT_MASTER, I2C_FREQ,
 		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -200,3 +207,10 @@ int board_write_serial(const char *serialno)
 	return 0;
 }
 
+#ifdef BOARD_WAND
+/* TODO(b:66575472): This assumes external power is always present. */
+int extpower_is_present(void)
+{
+	return 1;
+}
+#endif
