@@ -827,6 +827,13 @@ static void handle_setup(enum table_case tc)
 				bytes = MIN(req->wLength, bytes);
 				if (load_in_fifo(webusb_url, bytes) < 0)
 					bytes = -1;
+			} else if (req->bRequest == 0x02 &&
+				   req->wIndex == MS_OS_20_REQ_DESCRIPTOR) {
+				bytes = 0x2e;
+				bytes = MIN(req->wLength, bytes);
+				ccprintf("MS OS2\n");
+				if (load_in_fifo(ms_os20_desc, bytes) < 0)
+					bytes = -1;
 			} else {
 				report_error(-1);
 			}

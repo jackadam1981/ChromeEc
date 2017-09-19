@@ -253,6 +253,8 @@ struct usb_endpoint_descriptor {
 #define USB_URL_SCHEME_HTTPS      0x01
 #define USB_URL_SCHEME_NONE       0xff
 
+#define MS_OS_20_REQ_DESCRIPTOR   0x07
+
 /*
  * URL descriptor helper.
  * (similar to string descriptor but UTF-8 instead of UTF-16)
@@ -342,5 +344,6 @@ extern const uint8_t usb_string_desc[];
 extern const void * const usb_fw_version;
 extern const struct bos_context bos_ctx;
 extern const void *webusb_url;
+extern const uint8_t ms_os20_desc[];
 
 #endif /* __CROS_EC_USB_DESCRIPTOR_H */

@@ -21,12 +21,13 @@ const void *webusb_url = USB_URL_DESC(HTTPS, CONFIG_WEBUSB_URL);
 static struct {
 	struct usb_bos_hdr_descriptor bos;
 	struct usb_platform_descriptor platform;
+	uint8_t ms_platform[0x1c];
 } bos_desc = {
 	.bos = {
 		.bLength = USB_DT_BOS_SIZE,
 		.bDescriptorType = USB_DT_BOS,
-		.wTotalLength = (USB_DT_BOS_SIZE + USB_DT_PLATFORM_SIZE),
-		.bNumDeviceCaps = 1,  /* platform caps */
+		.wTotalLength = (USB_DT_BOS_SIZE + USB_DT_PLATFORM_SIZE + 0x1c),
+		.bNumDeviceCaps = 2,  /* platform caps */
 	},
 	.platform = {
 		.bLength = USB_DT_PLATFORM_SIZE,
@@ -38,7 +39,51 @@ static struct {
 		.bVendorCode = 0x01,
 		.iLandingPage = 1,
 	},
+	.ms_platform = {
+	// Microsoft OS 2.0 Platform Capability Descriptor (MS_VendorCode 0x02)
+	0x1C,  // Length
+	USB_DT_DEVICE_CAPABILITY,  // Device Capability descriptor
+	USB_DC_DTYPE_PLATFORM,  // Platform Capability descriptor
+	0x00,  // Reserved
+	0xDF, 0x60, 0xDD, 0xD8, 0x89, 0x45, 0xC7, 0x4C,
+	0x9C, 0xD2, 0x65, 0x9D, 0x9E, 0x64, 0x8A, 0x9F,  // MS OS 2.0 GUID
+	0x00, 0x00, 0x03, 0x06,  // Windows version (8.1) (0x06030000)
+	0x2e, 0x00,  // Descriptor set length
+	0x02,  // Vendor request code
+	0x00   // Alternate enumeration code
+	},
 };
+
+const uint8_t ms_os20_desc[] = {
+	// Microsoft OS 2.0 descriptor set header (table 10)
+	0x0A, 0x00,  // Descriptor size (10 bytes)
+	0x00, 0x00,  // MS OS 2.0 descriptor set header
+	0x00, 0x00, 0x03, 0x06,  // Windows version (8.1) (0x06030000)
+	0x2e, 0x00,  // Size, MS OS 2.0 descriptor set
+
+	// Microsoft OS 2.0 configuration subset header
+	0x08, 0x00,  // Descriptor size (8 bytes)
+	0x01, 0x00,  // MS OS 2.0 configuration subset header
+	0x00,        // bConfigurationValue
+	0x00,        // Reserved
+	0x24, 0x00,  // Size, MS OS 2.0 configuration subset
+
+	// Microsoft OS 2.0 function subset header
+	0x08, 0x00,  // Descriptor size (8 bytes)
+	0x02, 0x00,  // MS OS 2.0 function subset header
+
+	0x02,  // First interface number
+
+	0x00,        // Reserved
+	0x1c, 0x00,  // Size, MS OS 2.0 function subset
+
+	// Microsoft OS 2.0 compatible ID descriptor (table 13)
+	0x14, 0x00,  // wLength
+	0x03, 0x00,  // MS_OS_20_FEATURE_COMPATIBLE_ID
+	'W',  'I',  'N',  'U',  'S',  'B',  0x00, 0x00,
+	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+};
+
 
 const struct bos_context bos_ctx = {
 	.descp = (void *)&bos_desc,
