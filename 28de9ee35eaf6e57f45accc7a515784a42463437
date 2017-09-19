@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c7963ba_5776a9ea",
+        "filename": "common/sha256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-19T20:04:32Z",
+      "side": 1,
+      "message": "I need help modifying the Makefile rules. Tried to ifdef sha256.o in common/build.mk but the build rules always compile all files in common.",
+      "parentUuid": "7080ffe9_6c31d73d",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 24
+      },
+      "revId": "28de9ee35eaf6e57f45accc7a515784a42463437",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78f82d0c_fd60d930",
         "filename": "common/sha256.c",
         "patchSetId": 1
