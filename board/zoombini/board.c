@@ -337,5 +337,37 @@ static int command_tcpc_dump_reg(int argc, char **argv)
 	/* tcpc_lock(port, 0); */
 	return EC_SUCCESS;
 }
+
 DECLARE_CONSOLE_COMMAND(tcpcdump, command_tcpc_dump_reg, "<port>",
 			"Dumps TCPCI regs 0-ff");
+
+static int command_pmic_dump_reg(int argc, char **argv)
+{
+	int regval;
+	int reg;
+	int rv;
+
+	/* Dump the regs for the PMIC. */
+	regval = 0;
+
+	cflush();
+	ccprintf("PMIC reg dump:\n");
+
+	for (reg = 0; reg <= 0xee; reg++) {
+		regval = 0;
+		rv = i2c_read8(3,0x60,reg,&regval);
+		if (!rv && (regval != 0xff)){
+			ccprintf("[0x%02x] = ", reg);
+			ccprintf("0x%02x\n", regval);
+		}
+		else if (rv){
+			ccprintf("[0x%02x] = ", reg);
+			ccprintf("ERR (%d)\n", rv);
+		}
+		cflush();
+	}
+
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(pmicdump, command_pmic_dump_reg, NULL, "Dumps pmic regs 0-ee");
