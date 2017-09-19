@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5893e7f7_da203484",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-19T05:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12ac8fc4_636ceeb9",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bebe9bc_851b3b9d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -59,6 +83,30 @@
       "writtenOn": "2017-09-15T12:00:26Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 20,
+        "startChar": 30,
+        "endLine": 20,
+        "endChar": 38
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0df9833_7c2476e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-19T05:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcecdf45_2b1481ee",
       "range": {
         "startLine": 20,
         "startChar": 30,
@@ -189,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "5d8bb1bd_5d6105f7",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-19T05:52:53Z",
+      "side": 1,
+      "message": "Great advice. I\u0027ll go with the second one since I saw some weird bug when calling __aeabi_idivmod()...",
+      "parentUuid": "55eab5c9_cab1c491",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "843f836d_acc94b24",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 5
@@ -307,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "f7a9b2e9_a961b0c2",
+        "filename": "chip/stm32/clock-f.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-19T05:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9fe8202_4d2aa7a5",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 44
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26d78f37_89df49a3",
         "filename": "chip/stm32/clock-f.h",
         "patchSetId": 5
@@ -330,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "7490c1d1_23f991de",
+        "filename": "chip/stm32/clock-f.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-19T05:52:53Z",
+      "side": 1,
+      "message": "OK...my initial idea is to align it with rtc_tr_to_sec() and rtc_dr_to_sec(). But I can change it back.",
+      "parentUuid": "26d78f37_89df49a3",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 38
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1578ca4_784d5b85",
         "filename": "chip/stm32/clock-f.h",
         "patchSetId": 5
@@ -341,6 +461,30 @@
       "writtenOn": "2017-09-15T12:00:26Z",
       "side": 1,
       "message": "please pass pointers here, you don\u0027t want to copy read-only data structures.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "eee0aaf11e5b689f89242b9ce0f8bfd397f2ff35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb2b6356_f335f6a4",
+        "filename": "chip/stm32/clock-f.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-19T05:52:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1578ca4_784d5b85",
       "range": {
         "startLine": 54,
         "startChar": 0,
