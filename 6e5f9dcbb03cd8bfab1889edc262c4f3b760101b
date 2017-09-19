@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "8d2080f8_c02fcba1",
+        "filename": "common/rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-09-19T18:37:55Z",
+      "side": 1,
+      "message": "The main concern here is: for RTCs that handle calendar years like this, how do they handle things like leap years? Their \"0\" year has to be centered somewhere in the 400-year cycle. If it\u0027s not centered on the year 2000 (modulo 400), then the conversions you\u0027re doing here won\u0027t work right. That\u0027s why I suggested that enforcing Y0 means Y2000 was a HW detail.\n\nAs long as the next RTC chip is similar, or the next driver writer is familiar, then I guess we\u0027re OK. I suppose \"year 0 means some multiple of 400\" is a reasonable enough assumption.",
+      "parentUuid": "6830613f_dbd204f5",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 65
+      },
+      "revId": "6e5f9dcbb03cd8bfab1889edc262c4f3b760101b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "476c85ac_eba28191",
         "filename": "include/rtc.h",
         "patchSetId": 1
