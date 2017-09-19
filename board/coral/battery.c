@@ -25,6 +25,8 @@
 #define SHIP_MODE_WRITES 2
 
 enum battery_type {
+	BATTERY_LGC15,
+	BATTERY_LGC203,
 	BATTERY_SANYO,
 	BATTERY_SONY,
 	BATTERY_PANASONIC,
@@ -50,7 +52,9 @@ struct fet_info {
 
 struct fuel_gauge_info {
 	const char *manuf_name;
+	const char *device_name;
 	const struct ship_mode_info ship_mode;
+	const int mfgacc_support;
 	const struct fet_info fet;
 };
 
@@ -91,6 +95,65 @@ static int disch_on_ac;
  * address, mask, and disconnect value need to be provided.
  */
 static const struct board_batt_params info[] = {
+	/* LGC AC15A8J Battery Information */
+	[BATTERY_LGC15] = {
+		.fuel_gauge = {
+			.manuf_name = "LGC",
+			.device_name = "AC15A8J",
+			.ship_mode = {
+				.reg_addr = 0x3A,
+				.reg_data = { 0xC574, 0xC574 },
+			},
+			.mfgacc_support = 1,
+			.fet = {
+				.reg_addr = 0x0,
+				.reg_mask = 0x0002,
+				.disconnect_val = 0x0,
+			}
+		},
+		.batt_info = {
+			.voltage_max		= TARGET_WITH_MARGIN(13200, 5),
+			.voltage_normal		= 11520, /* mV */
+			.voltage_min		= 9000, /* mV */
+			.precharge_current	= 256,	/* mA */
+			.start_charging_min_c	= 0,
+			.start_charging_max_c	= 50,
+			.charging_min_c		= 0,
+			.charging_max_c		= 60,
+			.discharging_min_c	= 0,
+			.discharging_max_c	= 60,
+		},
+	},
+
+	/* LGC C203-36J Battery Information */
+	[BATTERY_LGC203] = {
+		.fuel_gauge = {
+			.manuf_name = "AS1GXXc3KB",
+			.ship_mode = {
+				.reg_addr = 0x00,
+				.reg_data = { 0x0010, 0x0010 },
+			},
+			.mfgacc_support = 1,
+			.fet = {
+				.reg_addr = 0x0,
+				.reg_mask = 0x0002,
+				.disconnect_val = 0x0,
+			}
+		},
+		.batt_info = {
+			.voltage_max		= TARGET_WITH_MARGIN(13200, 5),
+			.voltage_normal		= 11520, /* mV */
+			.voltage_min		= 9000, /* mV */
+			.precharge_current	= 256,	/* mA */
+			.start_charging_min_c	= 0,
+			.start_charging_max_c	= 45,
+			.charging_min_c		= 0,
+			.charging_max_c		= 60,
+			.discharging_min_c	= 0,
+			.discharging_max_c	= 60,
+		},
+	},
+
 	/* SANYO AC15A3J Battery Information */
 	[BATTERY_SANYO] = {
 		.fuel_gauge = {
@@ -99,6 +162,7 @@ static const struct board_batt_params info[] = {
 				.reg_addr = 0x3A,
 				.reg_data = { 0xC574, 0xC574 },
 			},
+			.mfgacc_support = 0,
 			.fet = {
 				.reg_addr = 0x0,
 				.reg_mask = 0x4000,
@@ -127,6 +191,7 @@ static const struct board_batt_params info[] = {
 				.reg_addr = 0x3A,
 				.reg_data = { 0xC574, 0xC574 },
 			},
+			.mfgacc_support = 0,
 			.fet = {
 				.reg_addr = 0x0,
 				.reg_mask = 0x8000,
@@ -155,6 +220,7 @@ static const struct board_batt_params info[] = {
 				.reg_addr = 0x3A,
 				.reg_data = { 0xC574, 0xC574 },
 			},
+			.mfgacc_support = 0,
 			.fet = {
 				.reg_addr = 0x0,
 				.reg_mask = 0x4000,
@@ -183,6 +249,7 @@ static const struct board_batt_params info[] = {
 				.reg_addr = 0x34,
 				.reg_data = { 0x0, 0x1000 },
 			},
+			.mfgacc_support = 0,
 			.fet = {
 				.reg_addr = 0x0,
 				.reg_mask = 0x0018,
@@ -211,6 +278,7 @@ static const struct board_batt_params info[] = {
 				.reg_addr = 0x34,
 				.reg_data = { 0x0, 0x1000 },
 			},
+			.mfgacc_support = 0,
 			.fet = {
 				.reg_addr = 0x0,
 				.reg_mask = 0x0018,
@@ -239,6 +307,7 @@ static const struct board_batt_params info[] = {
 				.reg_addr = 0x34,
 				.reg_data = { 0x0, 0x1000 },
 			},
+			.mfgacc_support = 0,
 			.fet = {
 				.reg_addr = 0x0,
 				.reg_mask = 0x0018,
@@ -267,6 +336,7 @@ static const struct board_batt_params info[] = {
 				.reg_addr = 0x0,
 				.reg_data = { 0x10, 0x10 },
 			},
+			.mfgacc_support = 0,
 			.fet = {
 				.reg_addr = 0x0,
 				.reg_mask = 0x6000,
@@ -295,6 +365,7 @@ static const struct board_batt_params info[] = {
 				.reg_addr = 0x0,
 				.reg_data = { 0x10, 0x10 },
 			},
+			.mfgacc_support = 0,
 			.fet = {
 				.reg_addr = 0x0,
 				.reg_mask = 0x6000,
@@ -323,6 +394,7 @@ static const struct board_batt_params info[] = {
 				.reg_addr = 0x0,
 				.reg_data = { 0x10, 0x10 },
 			},
+			.mfgacc_support = 0,
 			.fet = {
 				.reg_addr = 0x0,
 				.reg_mask = 0x6000,
@@ -355,14 +427,24 @@ static inline const struct board_batt_params *board_get_batt_params(void)
 /* Get type of the battery connected on the board */
 static int board_get_battery_type(void)
 {
-	char name[32];
+	char manu_name[32], device_name[32];
 	int i;
 
-	if (!battery_manufacturer_name(name, sizeof(name))) {
+	if (!battery_manufacturer_name(manu_name, sizeof(manu_name))) {
 		for (i = 0; i < BATTERY_TYPE_COUNT; i++) {
-			if (!strcasecmp(name, info[i].fuel_gauge.manuf_name)) {
-				board_battery_type = i;
-				break;
+			if (!strcasecmp(manu_name,
+				info[i].fuel_gauge.manuf_name)) {
+				if (info[i].fuel_gauge.device_name == NULL) {
+					board_battery_type = i;
+					break;
+				} else if (!battery_device_name(device_name,
+					sizeof(device_name))) {
+					if (!strcasecmp(device_name,
+					info[i].fuel_gauge.device_name)) {
+						board_battery_type = i;
+						break;
+					}
+				}
 			}
 		}
 	}
@@ -508,6 +590,7 @@ static int battery_check_disconnect(void)
 {
 	int rv;
 	int reg;
+	uint8_t data[6];
 
 	/* If battery type is not known, can't check CHG/DCHG FETs */
 	if (board_battery_type == BATTERY_TYPE_COUNT) {
@@ -519,7 +602,14 @@ static int battery_check_disconnect(void)
 	}
 
 	/* Read the status of charge/discharge FETs */
-	rv = sb_read(info[board_battery_type].fuel_gauge.fet.reg_addr, &reg);
+	if (info[board_battery_type].fuel_gauge.mfgacc_support  == 1) {
+		rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
+				SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
+		/* Get the lowest 16bits of the OperationStatus() data */
+		reg = data[2] | data[3] << 8;
+	} else
+		rv = sb_read(info[board_battery_type].fuel_gauge.fet.reg_addr,
+					&reg);
 
 	if (rv)
 		return BATTERY_DISCONNECT_ERROR;
