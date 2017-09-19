@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4508f6d4_9036632f",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-19T18:59:13Z",
+      "side": 1,
+      "message": "Moved all new APIs to system.c. Removed enum flash_rw_slot and use enum system_image_copy_t instead. Basically, flash is no longer part of active/update slots from vboot\u0027s perspective.",
+      "parentUuid": "b60f6574_489d2ca9",
+      "range": {
+        "startLine": 1435,
+        "startChar": 0,
+        "endLine": 1435,
+        "endChar": 27
+      },
+      "revId": "9d61acf6a3ea1f271457d6809a86ed8325acea6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5790648b_bae57602",
         "filename": "common/vboot/vboot.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "9d61acf6a3ea1f271457d6809a86ed8325acea6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7b2f3ec_6cf1a973",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-19T18:59:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5790648b_bae57602",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 130,
+        "endChar": 61
+      },
+      "revId": "9d61acf6a3ea1f271457d6809a86ed8325acea6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
