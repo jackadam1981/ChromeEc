@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1732cb8_36a228a0",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-19T11:15:50Z",
+      "side": 1,
+      "message": "nit: the constant names are not so great.\nthe _TICKS suffix doesn\u0027t bring much to the table (particularly when it\u0027s seconds rather than ticks)\nI don\u0027t see the point of having a symbolic constant if the value is hardcoded in its name.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 27
+      },
+      "revId": "53880d94df227c7a5b85e931eb8c51be7ef0ec13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
