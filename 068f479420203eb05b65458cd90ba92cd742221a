@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "8ff818f8_d9ab4d00",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-19T10:49:09Z",
+      "side": 1,
+      "message": "Sure my suggestion is 1-deep.\n\nUnless you prove me it\u0027s useful for something, I would keep only the last entry and save the memory and the code for the FIFO.\nI think in most cases, we should have some kind of backpressure (ie not sending the next message before the previous one is done), if that\u0027s not case sometimes maybe we want to fix that instead.",
+      "parentUuid": "bd465469_0f98b5b8",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 41
+      },
+      "revId": "068f479420203eb05b65458cd90ba92cd742221a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1211c2ba_70a69eb6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8

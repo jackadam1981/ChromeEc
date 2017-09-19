@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87424242_dfa33237",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-19T10:49:09Z",
+      "side": 1,
+      "message": "you can actually remove this #ifdef,\ngiven pd_get_vdo_ver() is nicely defined in the other case (and the compiler will simplify the |\u003d0).",
+      "range": {
+        "startLine": 728,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 26
+      },
+      "revId": "ecc62ef7d2baa3116b717e9002c12307960daccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ee12d12_b1f73559",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-19T10:49:09Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 807,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 26
+      },
+      "revId": "ecc62ef7d2baa3116b717e9002c12307960daccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "185f3800_ea4e1dd3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-19T10:49:09Z",
+      "side": 1,
+      "message": "I bikeshedded on the order and forgot the more important comment ,sorry.\n\nWe have systems whose battery is not smart battery compliant, you should not have to include this ...\nit seems to be for STATUS_DISCHARGING / STATUS_FULLY_CHARGED when decoding battery_status() output. For those guys, battery_status() will return EC_ERROR_UNIMPLEMENTED so we might be somewhat fine I guess.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "ecc62ef7d2baa3116b717e9002c12307960daccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb126ad_7e81b613",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-19T10:49:09Z",
+      "side": 1,
+      "message": "nit: I\u0027m sorry to say that I prefer the old indentation.",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 20
+      },
+      "revId": "ecc62ef7d2baa3116b717e9002c12307960daccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
