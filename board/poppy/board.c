@@ -545,10 +545,38 @@ const struct button_config *recovery_buttons[] = {
 };
 const int recovery_buttons_count = ARRAY_SIZE(recovery_buttons);
 
+static void board_report_pmic_fault(void)
+{
+	int vrfault, pwrstat1, pwrstat2;
+
+	/* RESETIRQ1 -- Bit 4: VRFAULT */
+	i2c_read8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x8, &vrfault);
+	if (!(vrfault & (1 << 4)))
+		return;
+
+	/* VRFAULT has occurred, print VRFAULT status bits. */
+
+	/* PWRSTAT1 */
+	i2c_read8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x16, &pwrstat1);
+
+	/* PWRSTAT2 */
+	i2c_read8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x17, &pwrstat2);
+
+	CPRINTS("PMIC VRFAULT: PWRSTAT1=0x%02x PWRSTAT2=0x%02x", pwrstat1,
+		pwrstat2);
+
+	/* Clear all faults. */
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x8, (1 << 4));
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x16, pwrstat1);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x17, pwrstat2);
+}
+
 static void board_pmic_init(void)
 {
 	if (system_jumped_to_this_image())
 		return;
+
+	board_report_pmic_fault();
 
 	/* DISCHGCNT3 - enable 100 ohm discharge on V1.00A */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3e, 0x04);
