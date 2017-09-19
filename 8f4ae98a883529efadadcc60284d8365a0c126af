@@ -16,6 +16,24 @@
       "revId": "8f4ae98a883529efadadcc60284d8365a0c126af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e384d61b_1d400c22",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-19T23:17:07Z",
+      "side": 1,
+      "message": "This is for preventing led_task from sleeping too long in case led_set_power take extra time to finish. In normal iteration, interval should be much shorter than task_frequency_us.",
+      "parentUuid": "7d233c3c_06a1113b",
+      "revId": "8f4ae98a883529efadadcc60284d8365a0c126af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
