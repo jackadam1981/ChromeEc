@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3002e271_39e223e3",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-19T15:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87424242_dfa33237",
+      "range": {
+        "startLine": 728,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 26
+      },
+      "revId": "ecc62ef7d2baa3116b717e9002c12307960daccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ee12d12_b1f73559",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 9
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2c40daf4_0487c4f4",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-19T15:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ee12d12_b1f73559",
+      "range": {
+        "startLine": 807,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 26
+      },
+      "revId": "ecc62ef7d2baa3116b717e9002c12307960daccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "185f3800_ea4e1dd3",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 9
@@ -59,6 +107,30 @@
       "writtenOn": "2017-09-19T10:49:09Z",
       "side": 1,
       "message": "I bikeshedded on the order and forgot the more important comment ,sorry.\n\nWe have systems whose battery is not smart battery compliant, you should not have to include this ...\nit seems to be for STATUS_DISCHARGING / STATUS_FULLY_CHARGED when decoding battery_status() output. For those guys, battery_status() will return EC_ERROR_UNIMPLEMENTED so we might be somewhat fine I guess.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "ecc62ef7d2baa3116b717e9002c12307960daccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ad5eff_8b95f717",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-19T15:43:57Z",
+      "side": 1,
+      "message": "Maybe we should keep it for those batteries that are smart. I changed the return value check to EC_ERROR_UNIMPLEMENTED",
+      "parentUuid": "185f3800_ea4e1dd3",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -91,6 +163,30 @@
       "revId": "ecc62ef7d2baa3116b717e9002c12307960daccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40c01e54_44b3655a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-09-19T15:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cb126ad_7e81b613",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 20
+      },
+      "revId": "ecc62ef7d2baa3116b717e9002c12307960daccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
