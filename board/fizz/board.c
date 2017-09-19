@@ -229,13 +229,28 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 #define I2C_PMIC_WRITE(reg, data) \
 		i2c_write8(I2C_PORT_PMIC, TPS650830_I2C_ADDR1, (reg), (data))
 
-static void board_pmic_init(void)
+/* We want to initialize PMIC only once per boot */
+#define SYSJUMP_TAG_PMIC 0x4d50  /* "PM" */
+static uint8_t pmic_initialized = 0;
+static void pmic_sysjump(void)
+{
+	system_add_jump_tag(SYSJUMP_TAG_PMIC, 1,
+			    sizeof(pmic_initialized), &pmic_initialized);
+}
+DECLARE_HOOK(HOOK_SYSJUMP, pmic_sysjump, HOOK_PRIO_DEFAULT);
+
+void board_pmic_init(void)
 {
 	int err;
 	int error_count = 0;
+	int size, version;
+	const uint8_t *tag;
 
-	/* No need to re-init PMIC since settings are sticky across sysjump */
-	if (system_jumped_to_this_image())
+	tag = system_get_jump_tag(SYSJUMP_TAG_PMIC, &version, &size);
+	if (tag && version == 1 && size == sizeof(pmic_initialized))
+		pmic_initialized = *tag;
+
+	if (pmic_initialized)
 		return;
 
 	/* Read vendor ID */
@@ -350,12 +365,12 @@ static void board_pmic_init(void)
 		goto pmic_error;
 
 	CPRINTS("PMIC init done");
+	pmic_initialized = 1;
 	return;
 
 pmic_error:
 	CPRINTS("PMIC init failed");
 }
-DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_INIT_I2C + 1);
 
 /**
  * Notify the AC presence GPIO to the PCH.
