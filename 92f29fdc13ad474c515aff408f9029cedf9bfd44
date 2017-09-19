@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fcd0a38_18770a24",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2017-09-19T00:00:19Z",
+      "side": 1,
+      "message": "If you\u0027re going to import the different print function, you should change each \"print msg\" to be \"print(msg)\"",
+      "revId": "92f29fdc13ad474c515aff408f9029cedf9bfd44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
