@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "a7a8d059_934dd63f",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-19T17:14:44Z",
+      "side": 1,
+      "message": "It doesn\u0027t matter about the function overhead. You are either taking an interrupt or you are not. You could be taking interrupts on the sti or hlt instruction. The bigger issue is how important the cleanup logic is. With interrupts enabled you could be scheduled out without doing any of the sleep accounting or the hw clock stuff.",
+      "parentUuid": "a5967089_97fe19b4",
+      "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b2f2fe0_e8f9a641",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 5
