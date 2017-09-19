@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "78063595_8ce7cb7b",
+        "filename": "common/rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-19T05:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3850f63_73730df2",
+      "range": {
+        "startLine": 13,
+        "startChar": 22,
+        "endLine": 13,
+        "endChar": 30
+      },
+      "revId": "6e5f9dcbb03cd8bfab1889edc262c4f3b760101b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5237ab5f_1bf71acb",
         "filename": "common/rtc.c",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2017-09-18T21:09:18Z",
       "side": 1,
       "message": "This is specific to how we\u0027re handling STM32. Probably shouldn\u0027t be in common code.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 65
+      },
+      "revId": "6e5f9dcbb03cd8bfab1889edc262c4f3b760101b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6830613f_dbd204f5",
+        "filename": "common/rtc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-19T05:35:25Z",
+      "side": 1,
+      "message": "I guess it\u0027s ok. Starting calculation from the year of 2000 seems to be common comparing with a few other rtc chips. So I even define \u0027uint8_t year\u0027 in struct calandar_date as \u0027the years after 2000\u0027. In realistic applications, it\u0027s not likely we\u0027ll care about things before year 2000 anyway.",
+      "parentUuid": "5237ab5f_1bf71acb",
       "range": {
         "startLine": 37,
         "startChar": 0,
