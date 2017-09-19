@@ -234,6 +234,7 @@ void board_set_tcpc_power_mode(int port, int mode);
 int board_get_battery_soc(void);
 void led_alert(int enable);
 void led_critical(void);
+void board_pmic_init(void);
 
 #endif /* !__ASSEMBLER__ */
 

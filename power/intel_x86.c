@@ -296,6 +296,7 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 			 * We can print percent & power as they
 			 * improve. */
 			msleep(200);
+		board_pmic_init();
 #endif
 		power_s5_up = 1;
 		return POWER_S5;
