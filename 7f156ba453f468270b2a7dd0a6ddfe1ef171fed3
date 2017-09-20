@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "dfb4986c_a7545255",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-20T09:40:26Z",
+      "side": 1,
+      "message": "this part is a bit confusing IMO,\nusually \u0027answering\u0027 a VDM means the other side sent one in the other direction with CMDT_RSP_ACK/NACK/BUSY.\nHere we just want to check if it was transmitted properly (not transmission error and GOOD_CRC) [ie what the spec you quoted is saying]",
+      "range": {
+        "startLine": 19,
+        "startChar": 55,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "7f156ba453f468270b2a7dd0a6ddfe1ef171fed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2150c4d8_c650943e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2157,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-20T09:40:26Z",
+      "side": 1,
+      "message": "I think this is incorrect, we don\u0027t want to SOFT_RESET if the other side just ignore our VDM (unsupported/unrecognized) while it did GOOD_CRC it.\n\nFor PD2.0 Ignoring VDM is the proper behavior,\nand for PD.30, see table 6-58 in PD 3.0 spec and \"An unrecognized or unsupported Message received in the PE_SNK_Ready or PE_SRC_Ready states, Shall Not cause a Soft_Reset Message to be generated but instead a Not_Supported Message Shall be generated.\"",
+      "range": {
+        "startLine": 2157,
+        "startChar": 9,
+        "endLine": 2157,
+        "endChar": 51
+      },
+      "revId": "7f156ba453f468270b2a7dd0a6ddfe1ef171fed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f68a33c8_d1add7ed",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -13,6 +59,30 @@
       "writtenOn": "2017-08-10T23:29:07Z",
       "side": 1,
       "message": "I was wondering if perhaps pd_vdm_send_state_machine() might be a better place for this logic. (For example, what if we were a DFP in the SNK_READY state?)",
+      "range": {
+        "startLine": 2156,
+        "startChar": 0,
+        "endLine": 2162,
+        "endChar": 4
+      },
+      "revId": "7f156ba453f468270b2a7dd0a6ddfe1ef171fed3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71830706_b9c1e6dd",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-20T09:40:26Z",
+      "side": 1,
+      "message": "Yes, given only the VDM_STATE_ERR_SEND case is remaining, I would put it there.",
+      "parentUuid": "f68a33c8_d1add7ed",
       "range": {
         "startLine": 2156,
         "startChar": 0,
