@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4395cf0c_5a77b83f",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-09-20T18:52:43Z",
+      "side": 1,
+      "message": "Actually, I was wrong. We need to setup the sensor for S0 (only), chrome needs it for lid orientation.",
+      "revId": "73b314c1d04a5c860f0893f76c7e3141e0d445b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
