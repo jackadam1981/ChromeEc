@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcd65f35_c833a2fd",
+        "filename": "common/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-20T09:52:09Z",
+      "side": 1,
+      "message": "Do I want this if I\u0027m not using VBOOT EFS ?",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 61
+      },
+      "revId": "fa25fb608454598f802e3922c3d179d744b63803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed2e9c72_22b5f4b9",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-20T09:52:09Z",
+      "side": 1,
+      "message": "same remark as before: TODO is supposed to include a bug number",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "fa25fb608454598f802e3922c3d179d744b63803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
