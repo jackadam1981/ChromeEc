@@ -247,6 +247,9 @@ void __rtc_alarm_irq(void)
 	struct rtc_time_reg rtc;
 
 	reset_rtc_alarm(&rtc);
+#ifdef CONFIG_HOSTCMD_RTC
+	host_set_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC));
+#endif
 }
 DECLARE_IRQ(STM32_IRQ_RTC_ALARM, __rtc_alarm_irq, 1);
 
