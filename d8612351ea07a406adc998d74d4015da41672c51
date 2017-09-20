@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c2d8ab0_cb5125d8",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-20T10:03:38Z",
+      "side": 1,
+      "message": "given it\u0027s a constant, let\u0027s make it a constant ...\nthe debug command will be mildly interesting for anyone in the future.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "d8612351ea07a406adc998d74d4015da41672c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c929f01_f4b4bfbe",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-20T10:03:38Z",
+      "side": 1,
+      "message": "adding a task seems a lot of RAM for something you can do with a deferred function.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 1
+      },
+      "revId": "d8612351ea07a406adc998d74d4015da41672c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
