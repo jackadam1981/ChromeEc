@@ -214,6 +214,24 @@
     },
     {
       "key": {
+        "uuid": "39bf48b9_3d68843b",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-20T20:01:04Z",
+      "side": 1,
+      "message": "You need to add a comment explaining this properly.",
+      "parentUuid": "89b93efb_ceee980f",
+      "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b2f2fe0_e8f9a641",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 5
