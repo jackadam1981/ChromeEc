@@ -313,6 +313,10 @@ void __idle(void)
 		next_delay = __hw_clock_event_get() - t0.le.lo;
 
 		if (DEEP_SLEEP_ALLOWED &&
+#ifdef CONFIG_HOSTCMD_RTC
+		    /* The host is not using RTC alarm */
+		    !(STM32_RTC_CR & STM32_RTC_CR_ALRAE) &&
+#endif
 		    (next_delay > (STOP_MODE_LATENCY + SET_RTC_MATCH_DELAY))) {
 			/* deep-sleep in STOP mode */
 			idle_dsleep_cnt++;
