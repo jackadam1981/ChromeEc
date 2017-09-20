@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77eb7e18_bf8b06b9",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-20T16:40:09Z",
+      "side": 1,
+      "message": "Yes, I have seen VCCIO fault because of runtime S0ix at least on one device.",
+      "parentUuid": "b959268c_aebd5477",
+      "range": {
+        "startLine": 597,
+        "startChar": 51,
+        "endLine": 597,
+        "endChar": 54
+      },
+      "revId": "9c6f5456ad9a4e19e306b865ff34cc9c43b8561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c272519_d7f95366",
         "filename": "board/poppy/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-20T08:22:58Z",
       "side": 1,
       "message": "as per specs its same as default value for V18ACNT and V100ACNT.",
+      "range": {
+        "startLine": 606,
+        "startChar": 51,
+        "endLine": 606,
+        "endChar": 55
+      },
+      "revId": "9c6f5456ad9a4e19e306b865ff34cc9c43b8561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2fb7a90_eb326ef6",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-20T16:40:09Z",
+      "side": 1,
+      "message": "Yes, I just added it here for completeness so that the intent is clear.",
+      "parentUuid": "0c272519_d7f95366",
       "range": {
         "startLine": 606,
         "startChar": 51,
@@ -82,6 +130,30 @@
       "writtenOn": "2017-09-20T08:22:58Z",
       "side": 1,
       "message": "Keeping it default to 0x3a and not reconfigured at runtime based on S0ix and S0/\"S0ix in Idle display\" may have 10mw of power regression in S0ix state usecase.",
+      "range": {
+        "startLine": 624,
+        "startChar": 51,
+        "endLine": 624,
+        "endChar": 55
+      },
+      "revId": "9c6f5456ad9a4e19e306b865ff34cc9c43b8561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7bf18ce_922dc6d5",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-20T16:40:09Z",
+      "side": 1,
+      "message": "During runtime, do we need to just enable the LPM for V085 and VCCIO? and not for V100A and V18A?",
+      "parentUuid": "9086a300_845dc4a0",
       "range": {
         "startLine": 624,
         "startChar": 51,
