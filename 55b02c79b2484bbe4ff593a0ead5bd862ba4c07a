@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "7985418d_ae4008bb",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-20T00:21:11Z",
+      "side": 1,
+      "message": "On execution of sti/hlt, CPU and peripherals are clock-gated. \n\nOn external interrupt(mainly hpet2 timer), CPU wakes up but peripherals are not ready yet for task switching until pm_return_from_idle() runs. Any possible interrupts(including event timer for scheduling) shall be disabled until clock recovery(D0i1) so that next schedule can be enabled after last interrupt_enable()(line 153).",
+      "parentUuid": "a7a8d059_934dd63f",
+      "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b2f2fe0_e8f9a641",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 5

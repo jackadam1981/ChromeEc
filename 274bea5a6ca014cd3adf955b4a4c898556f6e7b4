@@ -16,6 +16,24 @@
       "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b00e996_b97b929d",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-20T00:21:11Z",
+      "side": 1,
+      "message": "early_wakeup is unsigned int32.\n\"early_wakeup \u003d __hw_clock_event_get() - ENOUGH_TIME_FOR_LOW_POWER;\" can be negative value.\n\nFollowing line\u0027s parameter is safe since this code runs only when \u0027max_sleep_time\u0027 \u003e 0. \n__hw_clock_wake_set(early_wakeup-ENOUGH_TIME_FOR_LOW_POWER);",
+      "parentUuid": "d4301bcf_b5f8db30",
+      "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
