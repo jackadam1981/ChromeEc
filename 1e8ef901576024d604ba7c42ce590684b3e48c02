@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bac5f85e_216fac42",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-20T15:56:38Z",
+      "side": 1,
+      "message": "We shouldn\u0027t special case this. We should add a field in  struct board_batt_params that has an optional device name string. And then match using that.",
+      "revId": "1e8ef901576024d604ba7c42ce590684b3e48c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b20e4a76_9373c66a",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-20T15:56:38Z",
+      "side": 1,
+      "message": "This should be a flag in fuel_gauge.fet to indicate where to get this info.",
+      "revId": "1e8ef901576024d604ba7c42ce590684b3e48c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
