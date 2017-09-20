@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2b40374_31238630",
+        "filename": "common/system.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-20T15:43:06Z",
+      "side": 1,
+      "message": "This is virtually no-op for non-EFS boards because they don\u0027t define SYSTEM_BBRAM_IDX_TRY_SLOT. bbram_idx_lookup returns -1 thus system_get_bbram returns an error immediately without accessing bbram.",
+      "parentUuid": "bcd65f35_c833a2fd",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 61
+      },
+      "revId": "fa25fb608454598f802e3922c3d179d744b63803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed2e9c72_22b5f4b9",
         "filename": "common/vboot/vboot.c",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "fa25fb608454598f802e3922c3d179d744b63803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51829d13_87e9fbcf",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-20T15:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed2e9c72_22b5f4b9",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 128,
+        "endChar": 15
+      },
+      "revId": "fa25fb608454598f802e3922c3d179d744b63803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
