@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b959268c_aebd5477",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1140516
+      },
+      "writtenOn": "2017-09-20T08:22:58Z",
+      "side": 1,
+      "message": "Is bit-6 causing stability issue. B\u0027coz disabling \u0027decay of VCCIO on SLP_S0# assertion\u0027 may cause power impact in S0ix (as per power architecture guide-55mw).",
+      "range": {
+        "startLine": 597,
+        "startChar": 51,
+        "endLine": 597,
+        "endChar": 54
+      },
+      "revId": "9c6f5456ad9a4e19e306b865ff34cc9c43b8561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c272519_d7f95366",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1140516
+      },
+      "writtenOn": "2017-09-20T08:22:58Z",
+      "side": 1,
+      "message": "as per specs its same as default value for V18ACNT and V100ACNT.",
+      "range": {
+        "startLine": 606,
+        "startChar": 51,
+        "endLine": 606,
+        "endChar": 55
+      },
+      "revId": "9c6f5456ad9a4e19e306b865ff34cc9c43b8561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0f495c9_d7247374",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1140516
+      },
+      "writtenOn": "2017-09-20T08:22:58Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 615,
+        "startChar": 51,
+        "endLine": 615,
+        "endChar": 55
+      },
+      "revId": "9c6f5456ad9a4e19e306b865ff34cc9c43b8561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9086a300_845dc4a0",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1140516
+      },
+      "writtenOn": "2017-09-20T08:22:58Z",
+      "side": 1,
+      "message": "Keeping it default to 0x3a and not reconfigured at runtime based on S0ix and S0/\"S0ix in Idle display\" may have 10mw of power regression in S0ix state usecase.",
+      "range": {
+        "startLine": 624,
+        "startChar": 51,
+        "endLine": 624,
+        "endChar": 55
+      },
+      "revId": "9c6f5456ad9a4e19e306b865ff34cc9c43b8561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
