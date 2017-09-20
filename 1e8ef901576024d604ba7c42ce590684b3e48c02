@@ -33,6 +33,24 @@
       "revId": "1e8ef901576024d604ba7c42ce590684b3e48c02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a74ecc9_c785c475",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-20T16:09:58Z",
+      "side": 1,
+      "message": "This special case isn\u0027t required. This battery uses the TI fuel gauge like other batteries which are already supported do as well. From the TI FG spec:\n\nManufacturerAccess() 0x0000\nA read word on this command returns the lowest 16 bits of the OperationStatus() data.\n\nThat\u0027s why I didn\u0027t add a function pointer for the FET status because all the batteries either have the FET bits defined in 0x00, or if they are TI fuel gauge, in the lower 16 bits of 0x54 which is then mirrored in a read of register 0x00.",
+      "parentUuid": "b20e4a76_9373c66a",
+      "revId": "1e8ef901576024d604ba7c42ce590684b3e48c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
