@@ -34,6 +34,24 @@
       "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0a95d3a_75634fbe",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-20T15:50:26Z",
+      "side": 1,
+      "message": "Yes and once you assign it to a signed type it will be negative. Assigning it to max_sleep_time will have the proper sign bits set if it is truly negative.",
+      "parentUuid": "2b00e996_b97b929d",
+      "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
