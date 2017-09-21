@@ -12,12 +12,16 @@
 #include "intel_x86.h"
 #include "power.h"
 #include "power_button.h"
+#include "task.h"
 #include "timer.h"
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
 static int forcing_shutdown;  /* Forced shutdown in progress? */
+
+/* 5V enable request bitmask from chipset and usb charger tasks. */
+static uint8_t cnl_5v_en_req;
 
 void chipset_force_shutdown(void)
 {
@@ -81,6 +85,42 @@ enum power_state chipset_force_g3(void)
 	return POWER_G3;
 }
 
+void cnl_5v_enable(int enable)
+{
+	task_id_t tid = task_get_current();
+	int idx;
+
+	if (tid == TASK_ID_CHIPSET) {
+		idx = 0;
+	} else {
+		/* It's one of the USB charger tasks. */
+		idx = (int)(tid - TASK_ID_USB_CHG_P0);
+
+		/*
+		 * Shift over the index by one, since index 0 is the chipset
+		 * task index.
+		 */
+		idx++;
+	}
+
+	if (enable) {
+		/*
+		 * Set the bit indicating the request and go ahead and turn on
+		 * the rail.
+		 */
+		cnl_5v_en_req |= 1 << idx;
+		gpio_set_level(GPIO_EN_PP5000, 1);
+	} else {
+		/*
+		 * A task wants to turn off the rail.  Only do so, if no one
+		 * wants it on.
+		 */
+		cnl_5v_en_req &= ~(1 << idx);
+		if (!cnl_5v_en_req)
+			gpio_set_level(GPIO_EN_PP5000, 0);
+	}
+}
+
 enum power_state power_handle_state(enum power_state state)
 {
 	enum power_state new_state;
@@ -104,11 +144,11 @@ enum power_state power_handle_state(enum power_state state)
 		 * In S3, enable 5V rail.  Wireless rails are handled by common
 		 * x86 chipset code.
 		 */
-		gpio_set_level(GPIO_EN_PP5000, 1);
+		cnl_5v_enable(1);
 		break;
 
 	case POWER_S3S5:
-		gpio_set_level(GPIO_EN_PP5000, 0);
+		cnl_5v_enable(0);
 		break;
 
 	default:

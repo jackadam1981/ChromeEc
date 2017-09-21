@@ -12,8 +12,11 @@
  * the system will have to charge ramp.
  */
 
+#include "cannonlake.h"
 #include "charge_manager.h"
+#include "chipset.h"
 #include "common.h"
+#include "console.h"
 #include "gpio.h"
 #include "task.h"
 #include "tcpm.h"
@@ -22,17 +25,17 @@
 #include "util.h"
 
 struct bq24392_pins {
-	enum gpio_signal chip_enable;
+	enum gpio_signal chip_enable_l;
 	enum gpio_signal chg_det;
 };
 
 static const struct bq24392_pins pin_tbl[] = {
-	{ GPIO_USB_C0_BC12_VBUS_ON, GPIO_USB_C0_BC12_CHG_DET },
+	{ GPIO_USB_C0_BC12_VBUS_ON_L, GPIO_USB_C0_BC12_CHG_DET },
 #ifdef HAS_TASK_USB_CHG_P1
-	{ GPIO_USB_C1_BC12_VBUS_ON, GPIO_USB_C1_BC12_CHG_DET },
+	{ GPIO_USB_C1_BC12_VBUS_ON_L, GPIO_USB_C1_BC12_CHG_DET },
 #endif
 #ifdef HAS_TASK_USB_CHG_P2
-	{ GPIO_USB_C2_BC12_VBUS_ON, GPIO_USB_C2_BC12_CHG_DET },
+	{ GPIO_USB_C2_BC12_VBUS_ON_L, GPIO_USB_C2_BC12_CHG_DET },
 #endif
 };
 
@@ -47,9 +50,9 @@ static void bc12_detect(const int port)
 
 	/*
 	 * Enable the IC to begin detection and connect switches if
-	 * necessary.
+	 * necessary.  Note, the value is 0 because the enable is active low.
 	 */
-	gpio_set_level(pin_tbl[port].chip_enable, 1);
+	gpio_set_level(pin_tbl[port].chip_enable_l, 0);
 
 	new_chg.voltage = USB_CHARGER_VOLTAGE_MV;
 #if defined(CONFIG_CHARGE_RAMP_SW) || defined(CONFIG_CHARGE_RAMP_HW)
@@ -88,7 +91,7 @@ static void power_down_ic(const int port)
 	struct charge_port_info no_chg = { 0 };
 
 	/* Turn off the IC. */
-	gpio_set_level(pin_tbl[port].chip_enable, 0);
+	gpio_set_level(pin_tbl[port].chip_enable_l, 1);
 
 	/* Let charge manager know there's no more charge available. */
 	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER, port, &no_chg);
@@ -127,8 +130,18 @@ void usb_charger_task(void *u)
 	while (1) {
 		evt = task_wait_event(-1);
 
-		if (evt & USB_CHG_EVENT_VBUS)
+		if (evt & USB_CHG_EVENT_VBUS) {
+			/*
+			 * Turn on the 5V rail to allow the chip to be
+			 * powered.
+			 */
+			cnl_5v_enable(1);
+
 			detect_or_power_down_ic(port);
+
+			/* Issue a request to turn off the rail. */
+			cnl_5v_enable(0);
+		}
 	}
 }
 

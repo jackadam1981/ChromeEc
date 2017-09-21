@@ -8,6 +8,16 @@
 #ifndef __CROS_EC_CANNONLAKE_H
 #define __CROS_EC_CANNONLAKE_H
 
+/**
+ * Enable/Disable the PP5000 rail.
+ *
+ * This function will turn on the 5V rail immediately if requested.  However,
+ * the rail will not turn off until all tasks want it off.
+ *
+ * @param enable: 1 to turn on the rail, 0 to request the rail to be turned off.
+ */
+void cnl_5v_enable(int enable);
+
 /* Input state flags. */
 #define IN_PCH_SLP_S3_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S3_DEASSERTED)
 #define IN_PCH_SLP_S4_DEASSERTED  POWER_SIGNAL_MASK(X86_SLP_S4_DEASSERTED)
