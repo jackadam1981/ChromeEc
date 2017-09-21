@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb935e43_6507a92f",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-21T18:43:10Z",
+      "side": 1,
+      "message": "I have intentionally added this extra indirection so that the chipset can get a chance to do things like enable/disable power signal interrupts for SLP_S0.",
+      "range": {
+        "startLine": 466,
+        "startChar": 5,
+        "endLine": 466,
+        "endChar": 42
+      },
+      "revId": "71288f766bb753f2e2121431c5b88f4ff6a4fdba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
