@@ -160,6 +160,24 @@
       "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a3be0ff_300a1647",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-21T20:36:47Z",
+      "side": 1,
+      "message": "I thought you were asking to define early_wakeup as signed.\nin my previous comments:\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\nint32_t early_wakeup;  // signed int \u003c\u003d\u003d\u003d \n\nearly_wakeup \u003d __hw_clock_event_get() \n                        - ENOUGH_TIME_FOR_LOW_POWER;\n\nmax_sleep_time \u003d early_wakeup - t0.le.lo;\n...\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nnow \u0027early_wakeup\u0027(signed int) as input parameter to __hw_clock_wake_set(uint32_t ..)\u0027.  type mismatch is here even though compiler does not complain.",
+      "parentUuid": "7773ade1_ac3507bf",
+      "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
