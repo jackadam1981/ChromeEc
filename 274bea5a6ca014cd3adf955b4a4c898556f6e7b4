@@ -88,6 +88,24 @@
       "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ace6ed_4a24b418",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-21T01:05:56Z",
+      "side": 1,
+      "message": "int32_t early_wakeup;  // signed \n\nearly_wakeup \u003d __hw_clock_event_get() \n                        - ENOUGH_TIME_FOR_LOW_POWER;\n\nmax_sleep_time \u003d early_wakeup - t0.le.lo;\n\nif (... \u0026\u0026 max_sleep_time \u003e 0 \u0026\u0026 ......) {\n\n    __hw_clock_wake_set(early_wakeup); // \u003c\u003d\u003d\u003d uint32_t \n\n    .......\n}\n\nIs this what you mean ?",
+      "parentUuid": "7e0c249b_a5e8c735",
+      "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

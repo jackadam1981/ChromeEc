@@ -232,6 +232,24 @@
     },
     {
       "key": {
+        "uuid": "c5a86bd0_6839e69d",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-21T01:05:56Z",
+      "side": 1,
+      "message": "Yes, I will change it.",
+      "parentUuid": "39bf48b9_3d68843b",
+      "revId": "55b02c79b2484bbe4ff593a0ead5bd862ba4c07a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b2f2fe0_e8f9a641",
         "filename": "chip/ish/power_mgt.c",
         "patchSetId": 5
