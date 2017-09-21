@@ -70,6 +70,24 @@
       "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c0a773a_b8e4c6e4",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-21T03:31:42Z",
+      "side": 1,
+      "message": "Currently on our KBL platforms (eve/poppy/soraka), the power architecture is such that if PMIC goes down, then it brings down the EC as well. I had initially kept this call outside the sysjump check, but then the print will be done only at the EC RO time.\n\nTypically, how big is the EC log buffer in our feedback reports? If the report is filed right after the issue occurs, I would think we should have the logs from EC RO still in there (considering that we no longer print every port80 message individually). What do you guys think?",
+      "parentUuid": "61dc1542_9d20c4a0",
+      "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
