@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "368a8991_108a89ad",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-21T17:42:01Z",
+      "side": 1,
+      "message": "The device_name check should be in here.\n\nif (info[i].device_name !\u003d NULL) {\n   read device_name and check against info[i].device_name\n}\n\nAlso, the order of the array needs to ensure device_name fields !\u003d NULL needs to come first.",
+      "revId": "9eed45c1fde0795bf243530ed84f78f776be6792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
