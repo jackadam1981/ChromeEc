@@ -52,6 +52,24 @@
       "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61dc1542_9d20c4a0",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-09-21T02:56:07Z",
+      "side": 1,
+      "message": "on a pmic shutdown we do lose EC power, but good point about not getting here if we don\u0027t sysjump, maybe this should be outside the system_jumped_to_this_image() check..",
+      "parentUuid": "46b79b80_7fb5f51d",
+      "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
