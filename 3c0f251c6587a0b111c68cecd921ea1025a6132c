@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96865cd3_0582b5b1",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-09-21T15:10:25Z",
+      "side": 1,
+      "message": "should this be #define?",
+      "range": {
+        "startLine": 174,
+        "startChar": 15,
+        "endLine": 174,
+        "endChar": 19
+      },
+      "revId": "3c0f251c6587a0b111c68cecd921ea1025a6132c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
