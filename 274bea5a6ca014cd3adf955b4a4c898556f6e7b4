@@ -124,6 +124,24 @@
       "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15e7c90f_8de54aa9",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-09-21T18:39:59Z",
+      "side": 1,
+      "message": "__hw_clock_wake_set(early_wakeup); // \u003c\u003d\u003d\u003d uint32_t \n\nin this line, even though the value of \u0027early_wakeup\u0027 is positive, its type is \u0027signed int\u0027 while \"__hw_clock_wake_set(...)\"\u0027s parameter is unsigned and is mismatched.  Do you think it is OK ?  There is no compile error.",
+      "parentUuid": "83698186_98a7d7d6",
+      "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
