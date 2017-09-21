@@ -481,8 +481,8 @@ static void charge_manager_get_best_charge_port(int *new_port,
 				 * Don't charge from a dual-role port unless
 				 * it is our override port.
 				 */
-				if (dualrole_capability[j] != CAP_DEDICATED &&
-				    override_port != j)
+				if ((dualrole_capability[j] == CAP_DUALROLE) &&
+				    (override_port != j))
 					continue;
 #endif
 
