@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "190ac893_79c2f43f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-21T18:14:08Z",
+      "side": 1,
+      "message": "Patchset 3 fixed S3 issue but after resume the fan doesn\u0027t spin. Can you also test S3-\u003eS0?",
+      "range": {
+        "startLine": 16,
+        "startChar": 53,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "37b6b4762cfde21b24665dc3517cad058c8f4d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
