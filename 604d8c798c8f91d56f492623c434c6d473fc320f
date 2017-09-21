@@ -16,6 +16,24 @@
       "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "742bcdcf_3f349831",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-09-21T02:49:33Z",
+      "side": 1,
+      "message": "So far that we have seen on eve and poppy these faults trigger either an AP reset or a full pmic shutdown.  (not sure if we have seen a fault bit set for just an AP reset like ALL_SYS_PWRGD going down)\n\nAnyway the logging process that grabs the EC console doesn\u0027t go back very far so we usually miss interesting stuff at the start.\n\nI guess we consider instead use the generic\u0027d pd_log interface https://chromium-review.googlesource.com/c/597314/ if we want to not rely on the inconsistency of the console logging...",
+      "parentUuid": "b67a5cc7_f9df0113",
+      "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
