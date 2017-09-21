@@ -34,6 +34,24 @@
       "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46b79b80_7fb5f51d",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-21T02:54:24Z",
+      "side": 1,
+      "message": "On the full pmic shutdown do we reset the EC on these platforms? I\u0027m not familiar with how the EC is powered. If the EC doesn\u0027t go down you won\u0027t be getting these messages because there won\u0027t be a sysjump to RW.",
+      "parentUuid": "742bcdcf_3f349831",
+      "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
