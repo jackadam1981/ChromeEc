@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f70cd72_1fc792e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-21T08:06:04Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 17
+      },
+      "revId": "0999bdb2d2e0448f0734dbe0e2b2c97beb0f43ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d630c0_79886d3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-21T08:06:04Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "0999bdb2d2e0448f0734dbe0e2b2c97beb0f43ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b42acf9f_eb78def2",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-21T08:06:04Z",
+      "side": 1,
+      "message": "there is no point in doing at runtime what you can do at compile time (less instructions, less code size)\nie you can compute the duty cycle at compile time, e.g :\n\n#define TICK_INTERVAL(_interval)  (_interval), (100 / (LED_PULSE_US / (_interval))\nstatic void configure_tick(uint32_t interval, int duty_inc, enum led_color color)\n{\n\tled_pulse.interval \u003d interval;\n\tled_pulse.duty_inc \u003d duty_inc;\n...\nconfigure_tick(TICK_INTERVAL(LED_PULSE_TICK_US), LED_AMBER);",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 54
+      },
+      "revId": "0999bdb2d2e0448f0734dbe0e2b2c97beb0f43ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7c3e81_b05a1b3b",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-21T08:06:04Z",
+      "side": 1,
+      "message": "remove this\nled_tick() is doing the right setting below, this one is not useful.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 40
+      },
+      "revId": "0999bdb2d2e0448f0734dbe0e2b2c97beb0f43ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c64913a_33aa0db6",
+        "filename": "board/fizz/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-21T08:06:04Z",
+      "side": 1,
+      "message": "everything is higher priority than led_tick, so not really.\nby the way this line is mostly useless, you are going to update the deferred call 2 lines below in led_tick, just skip this one",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 40
+      },
+      "revId": "0999bdb2d2e0448f0734dbe0e2b2c97beb0f43ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
