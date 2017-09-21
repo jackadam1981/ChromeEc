@@ -51,6 +51,42 @@
       "revId": "1e8ef901576024d604ba7c42ce590684b3e48c02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "375af34c_17f6db50",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-09-21T02:40:52Z",
+      "side": 1,
+      "message": "It can read OperationStatus() data without write 0x54 to 0x00, but it will always can\u0027t get FET status even battery already resume from cutoff.\nPlease check detail in https://partnerissuetracker.corp.google.com/issues/64772598#comment14",
+      "parentUuid": "5a74ecc9_c785c475",
+      "revId": "1e8ef901576024d604ba7c42ce590684b3e48c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2862f189_2bc845a7",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-09-21T02:40:52Z",
+      "side": 1,
+      "message": "This is register data from OperationStatus(), will complete it in next patch.",
+      "parentUuid": "b20e4a76_9373c66a",
+      "revId": "1e8ef901576024d604ba7c42ce590684b3e48c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
