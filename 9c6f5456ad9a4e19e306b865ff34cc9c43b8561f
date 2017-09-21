@@ -163,6 +163,30 @@
       "revId": "9c6f5456ad9a4e19e306b865ff34cc9c43b8561f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b46b839_72f260ce",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1140516
+      },
+      "writtenOn": "2017-09-21T04:52:18Z",
+      "side": 1,
+      "message": "My suggestion Yes. As in patch https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/668476 . In that we had added only for VM (V085ACNT), now we can add VCCIOCNT configuration at same place to enable \u0026 disable based on state. so that we will have stability(S0 and \u0027S0ix in idle display\u0027) and no power regression in S0ix state.",
+      "parentUuid": "b7bf18ce_922dc6d5",
+      "range": {
+        "startLine": 624,
+        "startChar": 51,
+        "endLine": 624,
+        "endChar": 55
+      },
+      "revId": "9c6f5456ad9a4e19e306b865ff34cc9c43b8561f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
