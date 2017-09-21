@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "099e441e_e16121ff",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-21T20:44:51Z",
+      "side": 1,
+      "message": "Just add \u0027- ENOUGH_TIME_FOR_LOW_POWER\u0027 here.",
+      "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d4301bcf_b5f8db30",
         "filename": "chip/ish/clock.c",
         "patchSetId": 6
