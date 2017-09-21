@@ -88,6 +88,24 @@
       "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54972a5f_4d613cd5",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-09-21T03:36:27Z",
+      "side": 1,
+      "message": "You can check it out at file:///var/log/cros_ec.log on a running system.  I see a few lines from RO before the sysjump,but some things can be noisy (like sensor it and sequencing) so it may depend.\n\nThe more I think about it the include/event_log.h interface actually looks pretty simple to use..",
+      "parentUuid": "9c0a773a_b8e4c6e4",
+      "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
