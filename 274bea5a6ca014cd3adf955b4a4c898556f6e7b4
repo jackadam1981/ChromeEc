@@ -142,6 +142,24 @@
       "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7773ade1_ac3507bf",
+        "filename": "chip/ish/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-21T19:01:37Z",
+      "side": 1,
+      "message": "early_wakeup is uint32_t. max_sleep_time is int32_t. I don\u0027t understand what you are asking.",
+      "parentUuid": "15e7c90f_8de54aa9",
+      "revId": "274bea5a6ca014cd3adf955b4a4c898556f6e7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
