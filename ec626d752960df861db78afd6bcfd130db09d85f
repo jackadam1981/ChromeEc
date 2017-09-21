@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b01c050_d8f2b42c",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-21T06:58:33Z",
+      "side": 1,
+      "message": "This cannot be put in generic intel_x86 code.",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 240,
+        "endChar": 59
+      },
+      "revId": "ec626d752960df861db78afd6bcfd130db09d85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb26dbe_27cb45aa",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-21T06:58:33Z",
+      "side": 1,
+      "message": "This cannot be put in generic intel_x86 code.",
+      "range": {
+        "startLine": 252,
+        "startChar": 3,
+        "endLine": 253,
+        "endChar": 59
+      },
+      "revId": "ec626d752960df861db78afd6bcfd130db09d85f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
