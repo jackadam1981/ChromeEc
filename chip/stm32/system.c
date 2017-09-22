@@ -181,6 +181,10 @@ void system_pre_init(void)
 	uint16_t reason, info;
 	uint8_t exception;
 #endif
+#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
+	defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32F4)
+	uint32_t bdcr_mask;
+#endif
 
 	/* enable clock on Power module */
 	STM32_RCC_APB1ENR |= STM32_RCC_PWREN;
@@ -208,19 +212,44 @@ void system_pre_init(void)
 	/* re-configure RTC if needed */
 #ifdef CHIP_FAMILY_STM32L
 	if ((STM32_RCC_CSR & 0x00C30000) != 0x00420000) {
-		/* the RTC settings are bad, we need to reset it */
+		/* The RTC settings are bad, we need to reset it */
 		STM32_RCC_CSR |= 0x00800000;
 		/* Enable RTC and use LSI as clock source */
 		STM32_RCC_CSR = (STM32_RCC_CSR & ~0x00C30000) | 0x00420000;
 	}
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
 	defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32F4)
-	if ((STM32_RCC_BDCR & 0x00018300) != 0x00008200) {
-		/* the RTC settings are bad, we need to reset it */
-		STM32_RCC_BDCR |= 0x00010000;
-		/* Enable RTC and use LSI as clock source */
-		STM32_RCC_BDCR = (STM32_RCC_BDCR & ~0x00018300) | 0x00008200;
+	bdcr_mask = STM32_RCC_BDCR_BDRST | STM32_RCC_BDCR_RTCEN |
+		    BCDR_RTCSEL_MASK;
+#ifdef CONFIG_STM32_CLOCK_LSE
+	bdcr_mask |= STM32_RCC_BDCR_LSERDY | STM32_RCC_BDCR_LSEON;
+
+	if ((STM32_RCC_BDCR & bdcr_mask) !=
+	    (STM32_RCC_BDCR_RTCEN | BCDR_RTCSEL(BDCR_SRC_LSE) |
+	    STM32_RCC_BDCR_LSERDY | STM32_RCC_BDCR_LSEON)) {
+		/* The RTC settings are bad, we need to reset it */
+		STM32_RCC_BDCR |= STM32_RCC_BDCR_BDRST;
+		/* Turn on LSE */
+		STM32_RCC_BDCR = (STM32_RCC_BDCR & ~bdcr_mask) |
+				 STM32_RCC_BDCR_LSEON;
+		/* Wait for LSE to be ready */
+		while (!(STM32_RCC_BDCR & STM32_RCC_BDCR_LSERDY))
+			;
+		/* Enable RTC and use LSE as clock source */
+		STM32_RCC_BDCR |= STM32_RCC_BDCR_RTCEN |
+				  BCDR_RTCSEL(BDCR_SRC_LSE);
 	}
+#else /* LSI as RTC clock source */
+	if ((STM32_RCC_BDCR & bdcr_mask) !=
+	    (STM32_RCC_BDCR_RTCEN | BCDR_RTCSEL(BDCR_SRC_LSI))) {
+		/* The RTC settings are bad, we need to reset it */
+		STM32_RCC_BDCR |= STM32_RCC_BDCR_BDRST;
+		/* Enable RTC and use LSI as clock source */
+		STM32_RCC_BDCR = (STM32_RCC_BDCR & ~bdcr_mask) |
+				 STM32_RCC_BDCR_RTCEN |
+				 BCDR_RTCSEL(BDCR_SRC_LSI);
+	}
+#endif
 #else
 #error "Unsupported chip family"
 #endif
