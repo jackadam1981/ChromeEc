@@ -22,6 +22,30 @@
       "revId": "47c0bbee0fbb3499174ada84e89d1ea73f0efc0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc4438f5_6a04fc66",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-09-22T16:41:49Z",
+      "side": 1,
+      "message": "It is good enough for rotation detection. Given we are in forced mode, 100Hz is pushing the EC.",
+      "parentUuid": "648da332_e7e44a3b",
+      "range": {
+        "startLine": 575,
+        "startChar": 10,
+        "endLine": 575,
+        "endChar": 15
+      },
+      "revId": "47c0bbee0fbb3499174ada84e89d1ea73f0efc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
