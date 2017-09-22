@@ -182,7 +182,7 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 	 * Note that we don't update the cached capacity: We do a real-time
 	 * conversion and return the converted values.
 	 */
-	static int batt_mode_cache;
+	static int batt_mode_cache = -1;
 	const struct batt_params *curr_batt;
 	/*
 	 * Don't allow host reads into arbitrary memory space, most params
@@ -197,7 +197,7 @@ int virtual_battery_operation(const uint8_t *batt_cmd_head,
 			batt_mode_cache = batt_cmd_head[1] |
 					  (batt_cmd_head[2] << 8);
 		} else if (read_len > 0) {
-			if (batt_mode_cache == 0)
+			if (batt_mode_cache == -1)
 				/*
 				 * Read the battery operational mode from
 				 * the battery to initialize batt_mode_cache.
