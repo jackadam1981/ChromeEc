@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "cdd4eb30_0335f443",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-09-22T16:43:21Z",
+      "side": 1,
+      "message": "This is what I was referencing.",
+      "range": {
+        "startLine": 10,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "47c0bbee0fbb3499174ada84e89d1ea73f0efc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "648da332_e7e44a3b",
         "filename": "board/kahlee/board.c",
         "patchSetId": 1
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "It is good enough for rotation detection. Given we are in forced mode, 100Hz is pushing the EC.",
       "parentUuid": "648da332_e7e44a3b",
+      "range": {
+        "startLine": 575,
+        "startChar": 10,
+        "endLine": 575,
+        "endChar": 15
+      },
+      "revId": "47c0bbee0fbb3499174ada84e89d1ea73f0efc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ad87198_6853ffa4",
+        "filename": "board/kahlee/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-09-22T16:43:21Z",
+      "side": 1,
+      "message": "Oh okay, just wanted to make sure it wasn\u0027t a typo. The commit message says 100Hz.",
+      "parentUuid": "bc4438f5_6a04fc66",
       "range": {
         "startLine": 575,
         "startChar": 10,
