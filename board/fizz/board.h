@@ -222,8 +222,8 @@ enum pwm_channel {
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW		15000
-#define PD_MAX_POWER_MW			45000
-#define PD_MAX_CURRENT_MA		3000
+#define PD_MAX_POWER_MW			90000
+#define PD_MAX_CURRENT_MA		4620
 #define PD_MAX_VOLTAGE_MV		20000
 
 /* Board specific handlers */
