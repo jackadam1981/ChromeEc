@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "005d4425_cb118b50",
+        "filename": "board/wand/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-22T11:07:39Z",
+      "side": 1,
+      "message": "Other battery code like the one for poppy define other functions, like battery_is_present. I wonder if those are needed.",
+      "revId": "21703d3ecc857debdfd262a7f596d97770b849e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
