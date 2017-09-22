@@ -34,6 +34,24 @@
       "revId": "9eed45c1fde0795bf243530ed84f78f776be6792",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e40dcdb0_e9798c12",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-22T05:38:13Z",
+      "side": 1,
+      "message": "Can you please put [LGC015] \u003d { manuf_name \u003d \"LGC\", .device_name \u003d \"AC15A8J\" } *before* [LGC011] \u003d { manuf_name \u003d \"LGC\", .device_name \u003d NULL } ?\n\nThen what I suggested will work since the device_name !\u003d NULL is checked first.",
+      "parentUuid": "10290c8e_f3e318ff",
+      "revId": "9eed45c1fde0795bf243530ed84f78f776be6792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
