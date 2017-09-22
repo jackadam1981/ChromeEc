@@ -16,6 +16,24 @@
       "revId": "9eed45c1fde0795bf243530ed84f78f776be6792",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10290c8e_f3e318ff",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-09-22T00:49:24Z",
+      "side": 1,
+      "message": "I need BATTERY_LGC011 device name for device_name check here.\nCould you help to update BATTERY_LGC011 device name to issue?",
+      "parentUuid": "368a8991_108a89ad",
+      "revId": "9eed45c1fde0795bf243530ed84f78f776be6792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
