@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8f1eb7ec_c3d2943f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-09-22T17:07:25Z",
+      "side": 1,
+      "message": "Got it. Double check that other board set the EC rate at 100ms (10Hz) so the AP will get fresh data every 10ms only. By setting the sensor at 10Hz, (effective 12.5hz) we are emulating that behavior.",
+      "parentUuid": "cdd4eb30_0335f443",
+      "range": {
+        "startLine": 10,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 59
+      },
+      "revId": "47c0bbee0fbb3499174ada84e89d1ea73f0efc0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "648da332_e7e44a3b",
         "filename": "board/kahlee/board.c",
         "patchSetId": 1
