@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a170aece_5292be01",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1233074
+      },
+      "writtenOn": "2017-09-23T00:13:23Z",
+      "side": 1,
+      "message": "okay, I will revise it.",
+      "parentUuid": "05e27461_1c3bcf4d",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 21
+      },
+      "revId": "af232d34d5a3581b121edc346e2c6d6b20f1def4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91db56e2_f6fe6747",
         "filename": "board/fizz/board.c",
         "patchSetId": 1
@@ -82,6 +106,30 @@
       "writtenOn": "2017-08-23T15:38:21Z",
       "side": 1,
       "message": "Is this finalized or it could be TA2? Hardware is not ready.",
+      "range": {
+        "startLine": 134,
+        "startChar": 16,
+        "endLine": 134,
+        "endChar": 33
+      },
+      "revId": "af232d34d5a3581b121edc346e2c6d6b20f1def4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "589b9a58_9b0a9421",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1233074
+      },
+      "writtenOn": "2017-09-23T00:13:23Z",
+      "side": 1,
+      "message": "I was told that will be TA2 in next build. Will revise it.",
+      "parentUuid": "9f75dc5f_a303efa0",
       "range": {
         "startLine": 134,
         "startChar": 16,

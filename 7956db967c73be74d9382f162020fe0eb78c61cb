@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac4210f8_ea2140b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1233074
+      },
+      "writtenOn": "2017-09-23T00:13:23Z",
+      "side": 1,
+      "message": "The target RPM is set as zero, the problem is that, +V3P3S is gone, FAN_PWM_CN1 is pulled high to 5V which is max duty. Since PU7 is not stuffed. Needs to control FAN_PWR_EN to disable the fan power.",
+      "parentUuid": "8e6738a3_570fac51",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 4
+      },
+      "revId": "7956db967c73be74d9382f162020fe0eb78c61cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f25556a_6744cfd3",
         "filename": "board/fizz/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-19T23:12:09Z",
       "side": 1,
       "message": "Where is this from? The datasheet I have says 5500.",
+      "range": {
+        "startLine": 123,
+        "startChar": 13,
+        "endLine": 123,
+        "endChar": 17
+      },
+      "revId": "7956db967c73be74d9382f162020fe0eb78c61cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "829c01a6_03642288",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1233074
+      },
+      "writtenOn": "2017-09-23T00:13:23Z",
+      "side": 1,
+      "message": "Got the fan datasheet from partner, will go ahead to revise it. Thanks.",
+      "parentUuid": "8f25556a_6744cfd3",
       "range": {
         "startLine": 123,
         "startChar": 13,

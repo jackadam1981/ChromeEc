@@ -22,6 +22,54 @@
       "revId": "37b6b4762cfde21b24665dc3517cad058c8f4d17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85caf7e2_1b7bdf23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1233074
+      },
+      "writtenOn": "2017-09-23T00:13:23Z",
+      "side": 1,
+      "message": "Thanks for the checking, it is not restored to an initial value after resuming from s3.",
+      "parentUuid": "190ac893_79c2f43f",
+      "range": {
+        "startLine": 16,
+        "startChar": 53,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "37b6b4762cfde21b24665dc3517cad058c8f4d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97b3f2fe_fef6dced",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1233074
+      },
+      "writtenOn": "2017-09-23T00:13:23Z",
+      "side": 1,
+      "message": "Thanks for checking, it was not restored to an initial value when resuming from S3.",
+      "parentUuid": "190ac893_79c2f43f",
+      "range": {
+        "startLine": 16,
+        "startChar": 53,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "37b6b4762cfde21b24665dc3517cad058c8f4d17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
