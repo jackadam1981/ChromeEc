@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ddf8e9b_acf0c184",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1167634
+      },
+      "writtenOn": "2017-09-23T01:21:13Z",
+      "side": 1,
+      "message": "This looks fine for a proof-of-concept; eventually we\u0027ll want \u0027start\u0027 to send the payload header, \u0027append\u0027 to send a payload component, and \u0027sign\u0027 to retrieve the payload signature struct. cl/169443967 has the sig struct details.",
+      "range": {
+        "startLine": 318,
+        "startChar": 11,
+        "endLine": 318,
+        "endChar": 25
+      },
+      "revId": "f01640207d3d0898d06f3ae210b9feb1b8967adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
