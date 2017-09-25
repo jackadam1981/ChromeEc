@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b328798f_ab9b4a12",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-25T15:25:51Z",
+      "side": 1,
+      "message": "What if we unexpectedly sequence down from S0IX? The interrupt may be enabled during S3 / S5, and when we come back up again. Do we want to add a call to power_signal_disable_interrupt() in S0S3 state to take care of this?",
+      "range": {
+        "startLine": 471,
+        "startChar": 1,
+        "endLine": 472,
+        "endChar": 59
+      },
+      "revId": "455b7f274fa0df761eb8e0296f8546bf84a2eeb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
