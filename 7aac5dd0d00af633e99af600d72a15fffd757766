@@ -16,6 +16,24 @@
       "revId": "7aac5dd0d00af633e99af600d72a15fffd757766",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fdac2c8_d050ce5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-25T04:25:38Z",
+      "side": 1,
+      "message": "Actually, I had a set of changes lying around in my local repo for reef, coral and a few other boards. I don\u0027t think we ever used S0ix on SKL(chell), but yes I want to ensure that these changes work fine on APL. +Scott, whenever you get a chance, can you please test these changes on coral and reef?\n\nKBL: Yes, I tested all possible paths on soraka and ensured it works fine. Eve should not be affected by this change because it does not enable S0ix.",
+      "parentUuid": "b49617bf_c09c29d5",
+      "revId": "7aac5dd0d00af633e99af600d72a15fffd757766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
