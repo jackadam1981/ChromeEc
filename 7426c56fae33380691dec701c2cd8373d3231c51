@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9da5ac8d_7872e0ee",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-25T03:47:33Z",
+      "side": 1,
+      "message": "I just now noticed Aaron\u0027s comment about this. Let me see if we can somehow get rid of the prev_sleep_wake_mask and change the way host event reporting works. Also, why define it for !CONFIG_LPC case?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "7426c56fae33380691dec701c2cd8373d3231c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b9bef2_49fd27cb",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-25T03:47:33Z",
+      "side": 1,
+      "message": "This should still go under CONFIG_LPC.",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 1
+      },
+      "revId": "7426c56fae33380691dec701c2cd8373d3231c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d55cd7_d7a0e41f",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-25T03:47:33Z",
+      "side": 1,
+      "message": "Maybe we should check if lazy_wm is actually valid before adding it to sysjump data?",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 17
+      },
+      "revId": "7426c56fae33380691dec701c2cd8373d3231c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64049710_0b83fef4",
+        "filename": "power/common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-25T03:47:33Z",
+      "side": 1,
+      "message": "extra blank line not required.",
+      "revId": "7426c56fae33380691dec701c2cd8373d3231c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa9d44a4_c0231c1d",
+        "filename": "power/common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-09-25T03:47:33Z",
+      "side": 1,
+      "message": "Is there a reason why we would not want to clear the EVENT_WAKE always?",
+      "range": {
+        "startLine": 219,
+        "startChar": 3,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "7426c56fae33380691dec701c2cd8373d3231c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
