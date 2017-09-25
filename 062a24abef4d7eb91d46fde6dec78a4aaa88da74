@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ca6c004_4fab9c0f",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-25T19:55:36Z",
+      "side": 1,
+      "message": "This comment seems stale.",
+      "revId": "062a24abef4d7eb91d46fde6dec78a4aaa88da74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "057bf663_e2dd9d74",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-25T19:55:36Z",
+      "side": 1,
+      "message": "you don\u0027t have to explicitly set device_name to NULL. It will automatically be set to NULL if you don\u0027t specify it.",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 23
+      },
+      "revId": "062a24abef4d7eb91d46fde6dec78a4aaa88da74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f30a2be_c7b099f3",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-09-25T19:55:36Z",
+      "side": 1,
+      "message": "I don\u0027t understand why we\u0027re calling out the battery name for doing this access. Why isn\u0027t there just a flag in the structure indicating how we should read the disharge fet.",
+      "revId": "062a24abef4d7eb91d46fde6dec78a4aaa88da74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
