@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91bb3cf9_059ebb66",
+        "filename": "include/power.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-09-25T00:51:07Z",
+      "side": 1,
+      "message": "Using an enum for this seems a little strange. Maybe #defines are more suited here?",
+      "revId": "db10072f8dd4f7f256facff8bec181078b26e7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
