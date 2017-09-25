@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c100eda9_5d143b7c",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-25T21:36:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e20c545f_49248975",
+      "range": {
+        "startLine": 829,
+        "startChar": 17,
+        "endLine": 829,
+        "endChar": 29
+      },
+      "revId": "5abdc5bd9daefd8f04e3853b4bc3598713692877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa5a4ac8_64146d59",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "eb4c5364_1e393373",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-25T21:36:58Z",
+      "side": 1,
+      "message": "changed the size, kept the name, as these are indeed unpacked deltas.",
+      "parentUuid": "aa5a4ac8_64146d59",
+      "revId": "5abdc5bd9daefd8f04e3853b4bc3598713692877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43abfda7_43838848",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2017-09-25T16:34:13Z",
       "side": 1,
       "message": "If you like, it\u0027s worth checking that the generated prime is the same before \u0026 after the change (perhaps via uart print)?  e.g. to ensure that the new table is correct.\n\n(the outcome of the rsa key generation step would be unaffected by this change, so relying on the output is not a sufficient test)",
+      "revId": "5abdc5bd9daefd8f04e3853b4bc3598713692877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ddda9c_32dbb59d",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1185,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-25T21:36:58Z",
+      "side": 1,
+      "message": "yes, added conditionally compiled test code and description.",
+      "parentUuid": "43abfda7_43838848",
       "revId": "5abdc5bd9daefd8f04e3853b4bc3598713692877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
