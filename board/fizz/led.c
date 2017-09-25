@@ -134,7 +134,7 @@ static void led_tick(void)
 
 static void led_suspend(void)
 {
-	CONFIG_TICK(LED_PULSE_TICK_US, LED_AMBER);
+	CONFIG_TICK(LED_PULSE_TICK_US, LED_GREEN);
 	led_tick();
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, led_suspend, HOOK_PRIO_DEFAULT);
@@ -157,10 +157,14 @@ static void led_resume(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, led_resume, HOOK_PRIO_DEFAULT);
 
-void led_alert(void)
+void led_alert(int enable)
 {
-	CONFIG_TICK(LED_PULSE_US, LED_RED);
-	led_tick();
+	if (enable) {
+		CONFIG_TICK(LED_PULSE_US, LED_RED);
+		led_tick();
+	} else {
+		hook_call_deferred(&led_tick_data, -1);
+	}
 }
 
 static int command_led(int argc, char **argv)
@@ -182,7 +186,7 @@ static int command_led(int argc, char **argv)
 	} else if (!strcasecmp(argv[1], "amber")) {
 		set_color(id, LED_AMBER, 100);
 	} else if (!strcasecmp(argv[1], "alert")) {
-		led_alert();
+		led_alert(1);
 	} else {
 		return EC_ERROR_PARAM1;
 	}

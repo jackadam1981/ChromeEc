@@ -149,8 +149,8 @@ static int verify_and_jump(void)
 /* Request more power: charging battery or more powerful AC adapter */
 static void request_power(void)
 {
-	/* TODO(crosbug.com/p/37646390): Blink LED */
 	CPRINTS("%s", __func__);
+	led_alert(1);
 }
 
 static void request_recovery(void)
@@ -203,6 +203,10 @@ static void vboot_main(void)
 		 * also be here because PD negotiation is still taking place.
 		 * If so, we'll briefly show request power sign but it will
 		 * be immediately corrected.
+		 *
+		 * We can also get here because we called system_can_boot_ap too
+		 * early. Power will be requested but it should be cancelled by
+		 * board_set_charge_limit as soon as a PD contract is made.
 		 */
 		request_power();
 		return;
