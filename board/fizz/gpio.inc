@@ -36,7 +36,6 @@ GPIO(PCH_PWRBTN_L,		PIN(7, 4), GPIO_ODR_HIGH)			/* Power Button to SOC */
 GPIO(EC_PLATFORM_RST,		PIN(A, 6), GPIO_OUT_LOW)			/* EC Reset to LDO_EN */
 GPIO(SYS_RESET_L,		PIN(6, 1), GPIO_ODR_HIGH)			/* Cold Reset to SOC */
 GPIO(PMIC_SLP_SUS_L,		PIN(8, 5), GPIO_OUT_LOW)			/* SLP_SUS# to PMIC */
-GPIO(BATTERY_PRESENT_L,		PIN(3, 4), GPIO_INPUT | GPIO_PULL_UP)		/* Battery Present */
 GPIO(CCD_MODE_ODL,		PIN(6, 3), GPIO_INPUT)				/* Case Closed Debug Mode */
 GPIO(EC_HAVEN_RESET_ODL,	PIN(0, 2), GPIO_ODR_HIGH)			/* H1 Reset */
 GPIO(ENTERING_RW,		PIN(7, 6), GPIO_OUTPUT)				/* EC Entering RW */
@@ -88,6 +87,10 @@ GPIO(USB_A_CHARGE_EN_L,		PIN(A, 5), GPIO_OUT_LOW)
 GPIO(BOARD_VERSION1,		PIN(C, 4), GPIO_INPUT)	/* Board ID bit0 */
 GPIO(BOARD_VERSION2,		PIN(C, 2), GPIO_INPUT)	/* Board ID bit1 */
 GPIO(BOARD_VERSION3,		PIN(0, 1), GPIO_INPUT)	/* Board ID bit2 */
+
+GPIO(POWER_RATE,		PIN(7, 1), GPIO_INPUT)	/* Adapter type */
+GPIO(U42_P_90W,			PIN(3, 3), GPIO_OUT_LOW)			/* Sensing 90W adapter */
+GPIO(U22_P_65W,			PIN(3, 4), GPIO_OUT_HIGH)			/* Sensing 65W adapter */
 
 /* Test points */
 GPIO(TP248,			PIN(5, 7), GPIO_INPUT | GPIO_PULL_UP)		/* EC_GPIO57 */

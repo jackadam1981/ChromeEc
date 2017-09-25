@@ -373,6 +373,15 @@ static void board_init(void)
 	board_extpower();
 
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
+
+	/* set proper input current sensing resistor */
+	if (gpio_get_level(GPIO_POWER_RATE)) {
+		gpio_set_level(GPIO_U42_P_90W, 1);
+		gpio_set_level(GPIO_U22_P_65W, 0);
+	} else {
+		gpio_set_level(GPIO_U42_P_90W, 0);
+		gpio_set_level(GPIO_U22_P_65W, 1);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
