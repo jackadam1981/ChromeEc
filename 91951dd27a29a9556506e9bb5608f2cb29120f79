@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d377c63b_2b6d91dc",
+        "filename": "common/rtc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-25T22:47:31Z",
+      "side": 1,
+      "message": "Will fix it.",
+      "parentUuid": "792baa5d_55ac1d1a",
+      "range": {
+        "startLine": 11,
+        "startChar": 7,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "91951dd27a29a9556506e9bb5608f2cb29120f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fb509d6_3f166bda",
         "filename": "common/rtc.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-25T19:56:12Z",
       "side": 1,
       "message": "The code will look cleaner if you remove this and use \u0027IS_LEAP_YEAR(time.year)\u0027 in the three references below.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 13
+      },
+      "revId": "91951dd27a29a9556506e9bb5608f2cb29120f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8ae93eb_5ed40489",
+        "filename": "common/rtc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-25T22:47:31Z",
+      "side": 1,
+      "message": "I meant to save a few instructions by using \u0027is_leap_year\u0027. Maybe I should leave this work to compiler.",
+      "parentUuid": "3fb509d6_3f166bda",
       "range": {
         "startLine": 43,
         "startChar": 1,
@@ -176,6 +224,30 @@
       "writtenOn": "2017-09-25T19:56:12Z",
       "side": 1,
       "message": "You\u0027ve verified that sec_to_date and date_to_sec are internally consistent (inverse functions), but how about adding some test cases where you compare results from your functions against known values? Eg. run \"date \u0026\u0026 date +%s\" on your workstation, and run the values through your functions to verify correctness.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 50
+      },
+      "revId": "91951dd27a29a9556506e9bb5608f2cb29120f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aff368dc_58eb37c2",
+        "filename": "test/rtc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-25T22:47:31Z",
+      "side": 1,
+      "message": "Will do.",
+      "parentUuid": "f970991a_63165210",
       "range": {
         "startLine": 41,
         "startChar": 0,
