@@ -46,6 +46,30 @@
       "revId": "ccf48d9feb0a6f68dc3f91550eae2bc5101f2fa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aabb47e_5b1eb6dd",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-09-25T22:47:22Z",
+      "side": 1,
+      "message": "I understand your concern. I actually don\u0027t want to change it to \"AVERAGE\" because \"MEAN\" is the correct and exact statistical term.",
+      "parentUuid": "f789ecf4_c15fd38d",
+      "range": {
+        "startLine": 63,
+        "startChar": 33,
+        "endLine": 63,
+        "endChar": 37
+      },
+      "revId": "ccf48d9feb0a6f68dc3f91550eae2bc5101f2fa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
