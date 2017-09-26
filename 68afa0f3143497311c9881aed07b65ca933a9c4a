@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77e67e85_85046c20",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-26T17:55:19Z",
+      "side": 1,
+      "message": "As a general rule, we try not to use non-squelchable ccprintf(), except for the direct output of console functions. Consider changing to cprintf(CHANNEL, \"...\") instead?",
+      "range": {
+        "startLine": 1227,
+        "startChar": 2,
+        "endLine": 1227,
+        "endChar": 10
+      },
+      "revId": "68afa0f3143497311c9881aed07b65ca933a9c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9ebc565_513bf356",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1232,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-26T17:55:19Z",
+      "side": 1,
+      "message": "Maybe it\u0027s better to inline the contents of this function in place of your single call? Then you don\u0027t need static variables. Also, what if DCRYPTO_bn_generate_prime() is called multiple times (not sure if that\u0027s possible)?",
+      "range": {
+        "startLine": 1218,
+        "startChar": 1,
+        "endLine": 1232,
+        "endChar": 6
+      },
+      "revId": "68afa0f3143497311c9881aed07b65ca933a9c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
