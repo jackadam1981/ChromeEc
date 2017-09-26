@@ -22,6 +22,30 @@
       "revId": "f1dcf5ec1b49b3353638d1d61109837af300148a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a601270_9fd22acb",
+        "filename": "common/vboot/vboot.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-26T16:31:47Z",
+      "side": 1,
+      "message": "No. The options left are either rapidly blinking or solid red. I believe we don\u0027t want to assign different meanings to different blinking speeds because it\u0027s too subjective to say rapid v.s. slow.",
+      "parentUuid": "285c846e_24a950aa",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 16
+      },
+      "revId": "f1dcf5ec1b49b3353638d1d61109837af300148a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
