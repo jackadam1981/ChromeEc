@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "deddd86d_a6c095a9",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-26T18:25:18Z",
+      "side": 1,
+      "message": "Is there any good reason to conditionally include this header? It goes against normal cros_ec style, and since console.h includes common.h, it can cause strange behavior, depending on what code gets thrown in past this point in a later commit.",
+      "range": {
+        "startLine": 1217,
+        "startChar": 0,
+        "endLine": 1217,
+        "endChar": 20
+      },
+      "revId": "68afa0f3143497311c9881aed07b65ca933a9c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77e67e85_85046c20",
         "filename": "chip/g/dcrypto/bn.c",
         "patchSetId": 1
@@ -84,6 +107,30 @@
       "side": 1,
       "message": "The goal of this function is to demonstrate that the new random number generator produces exactly the same sequence as the old, so just adding one line in the generator is cleaner than to add the same test code in two different implementations.\n\nAvoiding statics would be great, but given that this code is compiled in only occasionally having a clean separation (just one line to call the function) seems preferable to me.",
       "parentUuid": "e9ebc565_513bf356",
+      "range": {
+        "startLine": 1218,
+        "startChar": 1,
+        "endLine": 1232,
+        "endChar": 6
+      },
+      "revId": "68afa0f3143497311c9881aed07b65ca933a9c4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51aa21d5_cccb11ef",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1232,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-26T18:25:18Z",
+      "side": 1,
+      "message": "Ok, are you ok with the behavior when DCRYPTO_bn_generate_prime() is called multiple times? Typical behavior for the second call (I think) might be to see a number or two printed to the console (depending on previous max_printed), without any explanation.",
+      "parentUuid": "0dd5bfc8_9c4ca2e2",
       "range": {
         "startLine": 1218,
         "startChar": 1,
