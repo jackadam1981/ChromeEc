@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "b0f85fd4_307c02f4",
+        "filename": "common/rtc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-09-26T17:15:41Z",
+      "side": 1,
+      "message": "These subtractions only work for sane values of month and day. I guess that\u0027s a feature? Just have to be careful in the callers...",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "a3b69021f59c33426b3b677dcfcf6941c7af3414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5927879b_40ca2f35",
+        "filename": "common/rtc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-09-26T17:15:41Z",
+      "side": 1,
+      "message": "Not that I think you *need* to fix this, but... this probably doesn\u0027t work after you cross more than ~366 leap years :) Technically this would need to be a loop, until day_tmp \u003e 0. But then, we can\u0027t even represent seconds (or years) that far into future yet, so *shrug*\n\nAlso, Linux has the same bug. So it\u0027ll screw up in over 1000 years :D",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 2
+      },
+      "revId": "a3b69021f59c33426b3b677dcfcf6941c7af3414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ab7b2f_d3fd954e",
+        "filename": "include/rtc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-09-26T17:15:41Z",
+      "side": 1,
+      "message": "Is it worth documenting that these are 1-based?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "a3b69021f59c33426b3b677dcfcf6941c7af3414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fd9c25b_4264549f",
         "filename": "test/rtc.c",
         "patchSetId": 6
