@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "72a9538a_bf28a2eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-26T11:07:47Z",
+      "side": 1,
+      "message": "No,\nbut this description is not terribly precise wrt preemption\nmaybe try reading:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/changes/41/445941/2/core/runtime.md#tasks",
+      "parentUuid": "19ea83ae_9de35367",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "90b8a646123bafaea2d5b1973900b591c4a103fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95c97d34_e4cfc700",
         "filename": "core/nds32/task.c",
         "patchSetId": 1
