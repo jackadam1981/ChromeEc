@@ -291,7 +291,14 @@ void __ram_code syscall_handler(int desched, task_id_t resched, int swirq)
 
 task_ *next_sched_task(void)
 {
-	task_ *new_task = __task_id_to_ptr(__fls(tasks_ready & tasks_enabled));
+	/*
+	 * Switch to new highest priority task or
+	 * keep running current task until it exits its main function.
+	 */
+	task_ *new_task = ((1 << task_get_current()) &
+			(tasks_ready & ~(1 << TASK_ID_IDLE))) ?
+			current_task :
+			__task_id_to_ptr(__fls(tasks_ready & tasks_enabled));
 
 #ifdef CONFIG_TASK_PROFILING
 	if (current_task != new_task) {
