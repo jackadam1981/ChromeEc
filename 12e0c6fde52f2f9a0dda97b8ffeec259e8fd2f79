@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baf19a71_7f97a0dd",
+        "filename": "chip/g/dcrypto/bn.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-26T20:11:10Z",
+      "side": 1,
+      "message": "Why put this include behind an #ifdef?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "12e0c6fde52f2f9a0dda97b8ffeec259e8fd2f79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
