@@ -344,4 +344,13 @@ enum nvmem_users {
 
 #define I2C_PORT_MASTER 0
 
+#define CONFIG_BASE32
+#define CONFIG_CURVE25519
+#define CONFIG_RMA_AUTH
+#define CONFIG_RNG
+
+/* Dummy values to be replaced with real ones. */
+#define CONFIG_RMA_AUTH_SERVER_PUBLIC_KEY { 1, 2, 3 }
+#define CONFIG_RMA_AUTH_SERVER_KEY_ID	  0xf
+
 #endif /* __CROS_EC_BOARD_H */

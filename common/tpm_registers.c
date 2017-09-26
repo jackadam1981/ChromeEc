@@ -853,6 +853,7 @@ void tpm_task(void)
 		unsigned response_size;
 		uint32_t command_code;
 		struct tpm_cmd_header *tpmh;
+		size_t tpm_buf_size;
 
 		/* Wait for the next command event */
 		evt = task_wait_event(-1);
@@ -876,6 +877,7 @@ void tpm_task(void)
 			continue;
 
 		tpmh = (struct tpm_cmd_header *)tpm_.regs.data_fifo;
+		tpm_buf_size = sizeof(tpm_.regs.data_fifo);
 		command_code = be32toh(tpmh->command_code);
 		CPRINTF("%s: received fifo command 0x%04x\n",
 			__func__, command_code);
@@ -884,7 +886,7 @@ void tpm_task(void)
 
 #ifdef CONFIG_EXTENSION_COMMAND
 		if (IS_CUSTOM_CODE(command_code)) {
-			response_size = sizeof(tpm_.regs.data_fifo);
+			response_size = tpm_buf_size;
 			call_extension_command(tpmh, &response_size);
 		} else
 #endif
@@ -897,20 +899,20 @@ void tpm_task(void)
 				};
 				CPRINTF("%s: Ignoring TPM commands\n",
 					__func__);
-				response = tpm_.regs.data_fifo;
+				response = (void *)tpmh;
 				response_size = sizeof(tpm_broken_response);
 				memcpy(response, tpm_broken_response,
 				       response_size);
 			} else {
 				ExecuteCommand(tpm_.fifo_write_index,
-					       tpm_.regs.data_fifo,
+					       (void *)tpmh,
 					       &response_size,
 					       &response);
 			}
 		}
 		CPRINTF("got %d bytes in response\n", response_size);
 		if (response_size &&
-		    (response_size <= sizeof(tpm_.regs.data_fifo))) {
+		    (response_size <= tpm_buf_size)) {
 			uint32_t tpm_sts;
 			/*
 			 * TODO(vbendeb): revisit this when
@@ -930,8 +932,7 @@ void tpm_task(void)
 				 * Extension commands reuse FIFO buffer, the
 				 * rest need to copy.
 				 */
-				memcpy(tpm_.regs.data_fifo,
-				       response, response_size);
+				memcpy(tpmh, response, response_size);
 			}
 			tpm_.fifo_read_index = 0;
 			tpm_.fifo_write_index = response_size;
