@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fd9c25b_4264549f",
+        "filename": "test/rtc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-26T15:53:34Z",
+      "side": 1,
+      "message": "This should be declared \u0027static\u0027, or better yet, combine with the struct definition:\n\nstatic struct {\n        struct calendar_date time;\n        uint32_t sec;\n} test_case[] \u003d {\n        {{8, 3, 1}, 1204329600},\n        {{17, 10, 1}, 1506816000},\n};",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 2
+      },
+      "revId": "a3b69021f59c33426b3b677dcfcf6941c7af3414",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
