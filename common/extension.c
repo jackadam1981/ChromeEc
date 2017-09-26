@@ -70,7 +70,7 @@ void usb_extension_route_command(uint16_t command_code,
 	case EXTENSION_POST_RESET: /* Always need to be able to reset. */
 	case VENDOR_CC_GET_BOARD_ID:
 	case VENDOR_CC_TURN_UPDATE_ON:
-
+	case VENDOR_CC_GET_RMA_CHALLENGE:
 		/*
 		 * The return code normally put into the TPM response header
 		 * is not present in the USB response. Vendor command return

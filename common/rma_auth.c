@@ -9,9 +9,11 @@
 #include "base32.h"
 #include "chip/g/board_id.h"
 #include "curve25519.h"
+#include "extension.h"
 #include "rma_auth.h"
 #include "system.h"
 #include "timer.h"
+#include "tpm_vendor_cmds.h"
 #include "util.h"
 
 #ifdef CONFIG_DCRYPTO
@@ -141,3 +143,33 @@ int rma_try_authcode(const char *code)
 
 	return rv;
 }
+
+
+static enum vendor_cmd_rc get_rma_challenge(enum vendor_cmd_cc code,
+					    void *buf,
+					    size_t input_size,
+					    size_t *response_size)
+{
+	int rv;
+	uint8_t *error_code = buf; /* Just in case error report is needed. */
+
+	if (*response_size < sizeof(challenge)) {
+		*response_size = 1;
+		*error_code = VENDOR_RC_RESPONSE_TOO_BIG;
+		return VENDOR_RC_RESPONSE_TOO_BIG;
+
+	}
+
+	rv = rma_create_challenge();
+	if (rv != EC_SUCCESS) {
+		*response_size = 1;
+		*error_code = rv;
+		return rv;
+	}
+
+	*response_size = sizeof(challenge);
+	memcpy(buf, rma_get_challenge, sizeof(challenge));
+
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_GET_RMA_CHALLENGE, get_rma_challenge);
