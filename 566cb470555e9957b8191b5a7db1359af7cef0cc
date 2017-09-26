@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64b7c3a6_8c7f2f5d",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1112825
+      },
+      "writtenOn": "2017-09-26T23:16:04Z",
+      "side": 1,
+      "message": "I don\u0027t quite understand this part.\n\nLet\u0027s say rtc0 has a (simplified) value of 9s and rtc1 6s. In this case \u0027diff\u0027 is negative and the function returns -3s + 10s \u003d 7s. Why?\n\nAnd if this is intended, shouldn\u0027t the function return an uint32_t value since it is always \u003e\u003d 0.\n\nIt\u0027s not really a change in this patch and probably I\u0027m just missing something ...",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "566cb470555e9957b8191b5a7db1359af7cef0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
