@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19ea83ae_9de35367",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-09-26T10:32:10Z",
+      "side": 1,
+      "message": "I saw the description on:\nhttps://www.chromium.org/chromium-os/ec-development#TOC-Tasks\nDo I understand the description correctly?",
+      "parentUuid": "3ca2b24f_d66ff57f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "90b8a646123bafaea2d5b1973900b591c4a103fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95c97d34_e4cfc700",
         "filename": "core/nds32/task.c",
         "patchSetId": 1
