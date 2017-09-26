@@ -301,7 +301,7 @@ static int get_offset(int offset)
 		return flash_get_rw_offset(system_get_active_copy());
 	if (offset == EC_VBOOT_HASH_OFFSET_UPDATE)
 		return flash_get_rw_offset(system_get_update_copy());
-	return offset;
+	return data_offset;
 }
 
 /****************************************************************************/
