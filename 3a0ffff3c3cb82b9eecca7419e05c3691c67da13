@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ac46de13_14be5567",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-26T16:15:03Z",
+      "side": 1,
+      "message": "I would have added this flag within the fet_info struct since it\u0027s only being used to determine which register to read the FET status bits from.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 26
+      },
+      "revId": "3a0ffff3c3cb82b9eecca7419e05c3691c67da13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b28bd06_64fd41f5",
         "filename": "board/coral/battery.c",
         "patchSetId": 7
