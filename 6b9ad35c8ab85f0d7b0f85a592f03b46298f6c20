@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a920983_c9942819",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-26T10:07:17Z",
+      "side": 1,
+      "message": "Sure Zinger is limited to 3A.\n\nBut what happen if you plug a 15V 4A charger ?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 62
+      },
+      "revId": "6b9ad35c8ab85f0d7b0f85a592f03b46298f6c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0398f888_b565340c",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-26T10:07:17Z",
+      "side": 1,
+      "message": "No, given we don\u0027t have the logic to detect e-marked 5A cable.\nI\u0027m pretty sure we want to keep 3000 here else pd_find_pdo_index() will misbehave. \nIf you have an issue with the logic in charge_state_v2 you need to improve it there.",
+      "range": {
+        "startLine": 226,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 31
+      },
+      "revId": "6b9ad35c8ab85f0d7b0f85a592f03b46298f6c20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
