@@ -22,6 +22,30 @@
       "revId": "1f3c8f0d02bf18c0fe9970608626fa2134b8bdf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df87e859_6a9978c5",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-26T18:21:17Z",
+      "side": 1,
+      "message": "we are not initializing it, but we are in this block only if it is zeroed (the check in line 192).\n\nshared_mem_acquire() would not set the pointer unless it succeeds, but I can add an explicit check to be able to report the actual error.",
+      "parentUuid": "6d0b861e_54cd7eb7",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 31
+      },
+      "revId": "1f3c8f0d02bf18c0fe9970608626fa2134b8bdf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
