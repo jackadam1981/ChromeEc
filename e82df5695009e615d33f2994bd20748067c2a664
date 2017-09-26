@@ -1,0 +1,276 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fae3b751_3b83f123",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "should this say like \u0027CTRL+C caught\u0027 ?",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db4e9d7b_7257ddba",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "we discourage .format().  however, in this case, the datetime object provides strftime for you.\n\n save_dir \u003d datetime.datetime.now().strftime(\u0027Sweetberry%Y%m%d%H%M%S\u0027)",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "038543e0_7124357a",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "blank line above this docstring",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d779838_486fc633",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "no space before the (",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6202f632_e1290683",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "trailing comma",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50633319_3f8296dc",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "use a tuple instead of a list ?",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42bc4b8d_c7318837",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "single quotes",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa63e4e_d1e71e99",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "just use range",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "509bf22f_3f208b97",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "range",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6003e44f_deb3910b",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "no need for \"formatted_output\" ... just return the join directly",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7b4abf3_52373698",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "drop this blank line",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17d95d7b_0c9a59a2",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "delete this blank line",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e75a813_b6484738",
+        "filename": "extra/usb_power/stats_manager.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "single quotes",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d2bfaed_a675d8db",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "unindent by three spaces",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1be42d23_36e1ae54",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "normally this is defined right after setUp so it\u0027s clear what needs to go together with setup \u0026 cleanup",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2771ee_360eb3c0",
+        "filename": "extra/usb_power/stats_manager_unittest.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2017-09-26T07:43:55Z",
+      "side": 1,
+      "message": "delete the blank line",
+      "revId": "e82df5695009e615d33f2994bd20748067c2a664",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
