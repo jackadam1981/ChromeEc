@@ -10,6 +10,13 @@
 #include "hwtimer.h"
 #include "registers.h"
 #include "task.h"
+#include "util.h"
+
+#ifdef CONFIG_ISH_30
+#define CLOCK_FACTOR 12
+#else
+#define CLOCK_FACTOR 1
+#endif
 
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
 #define CPRINTS(format, args...) cprints(CC_CLOCK, format, ## args)
@@ -26,7 +33,11 @@ static uint32_t last_deadline;
 void __hw_clock_event_set(uint32_t deadline)
 {
 	last_deadline = deadline;
+#ifdef CONFIG_ISH_30
+	HPET_TIMER_COMP(1) = deadline * CLOCK_FACTOR;
+#else
 	HPET_TIMER_COMP(1) = deadline;
+#endif
 	HPET_TIMER_CONF_CAP(1) |= HPET_Tn_INT_ENB_CNF;
 }
 
@@ -42,13 +53,27 @@ void __hw_clock_event_clear(void)
 
 uint32_t __hw_clock_source_read(void)
 {
+#ifdef CONFIG_ISH_30
+	uint64_t tmp = HPET_MAIN_COUNTER;
+	uint32_t hi = tmp >> 32;
+	uint32_t lo = tmp;
+	uint32_t q, r;
+	const uint32_t d = CLOCK_FACTOR;
+	asm ("divl %4" : "=d" (r), "=a" (q) : "0" (hi), "1" (lo), "rm" (d) : "cc");
+	return q;
+#else
 	return HPET_MAIN_COUNTER;
+#endif
 }
 
 void __hw_clock_source_set(uint32_t ts)
 {
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
+#ifdef CONFIG_ISH_30
+	HPET_MAIN_COUNTER = ts * CLOCK_FACTOR;
+#else
 	HPET_MAIN_COUNTER = ts;
+#endif
 	HPET_GENERAL_CONFIG |= HPET_ENABLE_CNF;
 }
 
@@ -88,14 +113,31 @@ int __hw_clock_source_init(uint32_t start_t)
 
 	/* Disable HPET */
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
+#ifdef CONFIG_ISH_30
+	HPET_MAIN_COUNTER = start_t * CLOCK_FACTOR;
+#else
 	HPET_MAIN_COUNTER = start_t;
+#endif
 
+#ifdef CONFIG_ISH_30
+	/*
+	 * Set comparator value. HMC will operate in 64 bit mode.
+	 * HMC is 12MHz, Hence set COMP to 12x of 1MHz.
+	 */
+	HPET_TIMER_COMP_64(0) = 0xC00000000ULL;
+#else
 	/* Set comparator value */
 	HPET_TIMER_COMP(0) = 0XFFFFFFFF;
-
+#endif
 	/* Timer 0 - enable periodic mode */
 	timer0_config |= HPET_Tn_TYPE_CNF;
+#ifdef CONFIG_ISH_30
+	/* TIMER0 in 64-bit mode */
+	timer0_config &= ~HPET_Tn_32MODE_CNF;
+#else
+	/*TIMER0 in 32-bit mode*/
 	timer0_config |= HPET_Tn_32MODE_CNF;
+#endif
 	timer0_config |= HPET_Tn_VAL_SET_CNF;
 
 	/* Timer 0 - IRQ routing, no need IRQ set for HPET0 */
@@ -122,7 +164,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	HPET_TIMER_CONF_CAP(0) |= timer0_config;
 	HPET_TIMER_CONF_CAP(1) |= timer1_config;
 
-#if defined CONFIG_ISH_40
+#ifdef CONFIG_ISH_40
 	/* Wait for timer to settle. required for ISH 4 */
 	while (HPET_CTRL_STATUS & HPET_T_CONF_CAP_BIT)
 		;
