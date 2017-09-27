@@ -22,6 +22,29 @@
       "revId": "f01640207d3d0898d06f3ae210b9feb1b8967adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b4c785d_eab45aaa",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-27T01:54:37Z",
+      "side": 1,
+      "message": "here and in line 56 do these structures have to be called differently?\n\nWhy not call them the same, just define differenly, would reduce the number of #if/#else/#endif in the code",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "f01640207d3d0898d06f3ae210b9feb1b8967adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
