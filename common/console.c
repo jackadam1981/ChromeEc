@@ -664,13 +664,6 @@ void console_task(void *u)
 			console_handle_char(c);
 		}
 
-		while (1) {
-			c = usb_getc();
-			if (c == -1)
-				break;
-			console_handle_char(c);
-		}
-
 		task_wait_event(-1);  /* Wait for more input */
 	}
 }
