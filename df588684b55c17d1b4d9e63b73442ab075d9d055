@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0aa9c50_849c3418",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-27T14:57:23Z",
+      "side": 1,
+      "message": "Other than suspend_stress_test, how do we use the RTC alarm on the host? Do we wake use it to wake every X00 seconds for lucid sleep or something?\n\nIf we do use it in such ways, it\u0027s really inconvenient to disable low-power idle for the duration. We can do something better, like keeping track of the host RTC alarm, the low-power idle RTC wake point, and calling set_rtc_alarm() with the soonest deadline among the two.",
+      "range": {
+        "startLine": 317,
+        "startChar": 3,
+        "endLine": 318,
+        "endChar": 45
+      },
+      "revId": "df588684b55c17d1b4d9e63b73442ab075d9d055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
