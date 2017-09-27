@@ -94,6 +94,30 @@
       "revId": "566cb470555e9957b8191b5a7db1359af7cef0cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "24e647d8_a42b1ee6",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-27T18:38:02Z",
+      "side": 1,
+      "message": "rtc_tr (or the portion we\u0027re reading here, anyway) will also wrap for 1 out of 10 rtc_ssr wraps.",
+      "parentUuid": "ec0b80f2_cc3105a0",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "566cb470555e9957b8191b5a7db1359af7cef0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
