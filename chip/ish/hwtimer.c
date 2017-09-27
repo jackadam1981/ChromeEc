@@ -10,6 +10,9 @@
 #include "hwtimer.h"
 #include "registers.h"
 #include "task.h"
+#if defined CONFIG_ISH_30
+#include "util.h"
+#endif
 
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
 #define CPRINTS(format, args...) cprints(CC_CLOCK, format, ## args)
@@ -26,7 +29,11 @@ static uint32_t last_deadline;
 void __hw_clock_event_set(uint32_t deadline)
 {
 	last_deadline = deadline;
+#if defined CONFIG_ISH_30
+	HPET_TIMER_COMP(1) = deadline * 12;
+#else
 	HPET_TIMER_COMP(1) = deadline;
+#endif
 	HPET_TIMER_CONF_CAP(1) |= HPET_Tn_INT_ENB_CNF;
 }
 
@@ -42,13 +49,23 @@ void __hw_clock_event_clear(void)
 
 uint32_t __hw_clock_source_read(void)
 {
+#if defined CONFIG_ISH_30
+	uint64_t tmp = HPET_MAIN_COUNTER;
+	uint64divmod( &tmp , 12 ); /*TODO 64bit division.*/
+	return (uint32_t)(tmp);
+#else
 	return HPET_MAIN_COUNTER;
+#endif
 }
 
 void __hw_clock_source_set(uint32_t ts)
 {
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
+#if defined CONFIG_ISH_30
+	HPET_MAIN_COUNTER = ts * 12;
+#else
 	HPET_MAIN_COUNTER = ts;
+#endif
 	HPET_GENERAL_CONFIG |= HPET_ENABLE_CNF;
 }
 
@@ -88,14 +105,31 @@ int __hw_clock_source_init(uint32_t start_t)
 
 	/* Disable HPET */
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
+#if defined CONFIG_ISH_30
+	HPET_MAIN_COUNTER = start_t * 12;
+#else
 	HPET_MAIN_COUNTER = start_t;
+#endif
 
+#if defined CONFIG_ISH_30
+	/*
+	 * Set comparator value. HMC will operate in 64 bit mode.
+	 * HMC is 12MHz, Hence set COMP to 12x of 1MHz.
+	 */
+	HPET_TIMER_COMP_64(0) = 0xC00000000;
+#else
 	/* Set comparator value */
 	HPET_TIMER_COMP(0) = 0XFFFFFFFF;
-
+#endif
 	/* Timer 0 - enable periodic mode */
 	timer0_config |= HPET_Tn_TYPE_CNF;
+#if defined CONFIG_ISH_30
+	/* TIMER0 in 64-bit mode */
+	timer0_config &= ~HPET_Tn_32MODE_CNF;
+#else
+	/*TIMER0 in 32-bit mode*/
 	timer0_config |= HPET_Tn_32MODE_CNF;
+#endif
 	timer0_config |= HPET_Tn_VAL_SET_CNF;
 
 	/* Timer 0 - IRQ routing, no need IRQ set for HPET0 */
