@@ -211,6 +211,30 @@
       "revId": "24510cd39efd518fdbc94d05b53a52247c9fac68",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4fe61c1_7475edad",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-27T00:27:41Z",
+      "side": 1,
+      "message": "That\u0027ll break Depthcharge. It calls EC_VBOOT_HASH_GET with offset set to one of the magic values. If we replace it with data_offset unconditionally, Depthcharge can\u0027t distinguish whether it gets the hash of the intended image or not. In other words, we have to return EC_VBOOT_HASH_STATUS_NONE if a pre-calculated hash isn\u0027t the right one. So, I think what we want is:\n\nif (p-\u003eoffset || p-\u003esize)\n\tfill_response(r, p-\u003eoffset);\nelse\n\tfill_response(r, data_offset);\n\nFirst call covers Depthcharge and 2nd call covers \u0027ectool echash\u0027.",
+      "parentUuid": "bc108b55_83ed3582",
+      "range": {
+        "startLine": 440,
+        "startChar": 2,
+        "endLine": 440,
+        "endChar": 30
+      },
+      "revId": "24510cd39efd518fdbc94d05b53a52247c9fac68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
