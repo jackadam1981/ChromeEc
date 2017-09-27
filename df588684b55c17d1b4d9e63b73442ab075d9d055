@@ -46,6 +46,30 @@
       "revId": "df588684b55c17d1b4d9e63b73442ab075d9d055",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9baf7aed_ee415c88",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-09-27T16:08:45Z",
+      "side": 1,
+      "message": "Chatting with Ravi, we don\u0027t yet use RTC for lucid sleep, but there are plans to make more use of it.",
+      "parentUuid": "cc249c07_bac2b46d",
+      "range": {
+        "startLine": 317,
+        "startChar": 3,
+        "endLine": 318,
+        "endChar": 45
+      },
+      "revId": "df588684b55c17d1b4d9e63b73442ab075d9d055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
