@@ -16,6 +16,10 @@
 #define CPRINTF(format, args...) cprintf(CC_CLOCK, format, ## args)
 
 static uint32_t last_deadline;
+#if defined CONFIG_ISH_30
+static uint32_t hmc = 0;
+static uint8_t cnt = 0;
+#endif
 
 /* TODO: Conform to EC API
  * ISH supports 32KHz and 12MHz clock sources.
@@ -26,7 +30,11 @@ static uint32_t last_deadline;
 void __hw_clock_event_set(uint32_t deadline)
 {
 	last_deadline = deadline;
+#if defined CONFIG_ISH_30
+	HPET_TIMER_COMP(1) = deadline * 12;
+#else
 	HPET_TIMER_COMP(1) = deadline;
+#endif
 	HPET_TIMER_CONF_CAP(1) |= HPET_Tn_INT_ENB_CNF;
 }
 
@@ -42,23 +50,53 @@ void __hw_clock_event_clear(void)
 
 uint32_t __hw_clock_source_read(void)
 {
+#if defined CONFIG_ISH_30
+	return (hmc + (HPET_MAIN_COUNTER / 12));
+#else
 	return HPET_MAIN_COUNTER;
+#endif
 }
 
 void __hw_clock_source_set(uint32_t ts)
 {
 	HPET_GENERAL_CONFIG &= ~HPET_ENABLE_CNF;
+#if defined CONFIG_ISH_30
+	HPET_MAIN_COUNTER = ts * 12;
+#else
 	HPET_MAIN_COUNTER = ts;
+#endif
 	HPET_GENERAL_CONFIG |= HPET_ENABLE_CNF;
 }
 
 static void __hw_clock_source_irq(int timer_id)
 {
+#if defined CONFIG_ISH_30
+	unsigned char overf = 0;
+#endif
 	/* Clear interrupt */
 	HPET_INTR_CLEAR = (1 << timer_id);
+#if defined CONFIG_ISH_30
+	if ( timer_id == 0 ) {
+		/*
+		 * HMC is clocked at 12MHz. variable hmc tracks time at 1MHz unit by dividing HMC by 12
+		 * Also adjust 1MHz overflow with 12MHz by tracking it locally using cnt variable.
+		 * Value 0x1555 5555 is the 32bit overflow value for 1MHz. overf will be set to 1 at
+		 * 12th cnt when the HPET_MAIN_COUNTER reaches FFFF FFFF and call process_timers(1).
+		 */
+		hmc += (0x15555555);
+		cnt ++;
+		if ( cnt == 12 ) {
+			overf = 1;
+			cnt = 0;
+			hmc = 0;
+			}
+		}
 
 	/* If IRQ is from timer 0, 32-bit timer overflowed */
+	process_timers( overf );
+#else
 	process_timers(timer_id == 0);
+#endif
 }
 
 void __hw_clock_source_irq_0(void)
