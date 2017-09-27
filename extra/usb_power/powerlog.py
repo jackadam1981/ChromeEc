@@ -447,7 +447,7 @@ class Spower(object):
       pass
 
     timestamp = struct.unpack("<Q", data[2:10])[0]
-    debuglog("READ LINE: st:%d size:%d time:%d" % (status, size, timestamp))
+    debuglog("READ LINE: st:%d size:%d time:%dus" % (status, size, timestamp))
     ftimestamp = float(timestamp) / 1000000.
 
     record = {"ts": ftimestamp, "status": status, "berry":self._board}
@@ -457,7 +457,7 @@ class Spower(object):
       raw_w = struct.unpack("<H", data[idx:idx+2])[0]
       uw = raw_w * self._inas[i]['uWscale']
       name = self._inas[i]['name']
-      debuglog("READ %d %s: %fs: %fmW" % (i, name, ftimestamp, uw))
+      debuglog("READ %d %s: %fs: %fuW" % (i, name, ftimestamp, uw))
       record[self._inas[i]['name']] = uw
 
     return record
@@ -489,7 +489,7 @@ class powerlog(object):
   """
 
   def __init__(self, brdfile, cfgfile, serial_a=None, serial_b=None,
-               sync_date=False, use_ms=False, print_stats=False,
+               sync_date=False, use_ms=False, use_mW=False, print_stats=False,
                save_stats=False, save_raw_data=False):
     """
     Args:
@@ -503,6 +503,7 @@ class powerlog(object):
     self._data = StatsManager()
     self._pwr = {}
     self._use_ms = use_ms
+    self._use_mW = use_mW
     self._print_stats = print_stats
     self._save_stats = save_stats
     self._save_raw_data = save_raw_data
@@ -524,7 +525,7 @@ class powerlog(object):
 
     # Allocate the rails to the appropriate boards.
     used_boards = []
-    for name in names:
+    for name in self._names:
       success = False
       for key in self._pwr.keys():
         if self._pwr[key].add_ina_name(name):
@@ -570,7 +571,8 @@ class powerlog(object):
     # CSV header
     title = "ts:%dus" % integration_us
     for name in self._names:
-      title += ", %s uW" % name
+      unit = "mW" if self._use_mW else "uW"
+      title += ", %s %s" % (name, unit)
     title += ", status"
     logoutput(title)
 
@@ -608,8 +610,11 @@ class powerlog(object):
             csv = "%f" % aggregate_record["ts"]
             for name in self._names:
               if name in aggregate_record:
-                csv += ", %.2f" % aggregate_record[name]
-                self._data.AddValue(name, aggregate_record[name])
+                power = aggregate_record[name]
+                if self._use_mW:
+                  power /= 1000
+                csv += ", %.2f" % power
+                self._data.AddValue(name, power)
               else:
                 csv += ", "
             csv += ", %d" % aggregate_record["status"]
@@ -657,6 +662,9 @@ def main():
       help="Sync logged timestamp to host date", action="store_true")
   parser.add_argument('--ms', default=False,
       help="Print timestamp as milliseconds", action="store_true")
+  parser.add_argument('--mW', default=False,
+      help="Print power as milliwatts, otherwise default to microwatts",
+      action="store_true")
   parser.add_argument('--slow', default=False,
       help="Intentionally overflow", action="store_true")
   parser.add_argument('--print_stats', default=False,
@@ -690,6 +698,7 @@ def main():
   serial_b = args.serial_b
   sync_date = args.date
   use_ms = args.ms
+  use_mW = args.mW
   print_stats = args.print_stats
   save_stats = args.save_stats
   save_raw_data = args.save_raw_data
@@ -702,7 +711,7 @@ def main():
 
   # Set up logging interface.
   powerlogger = powerlog(brdfile, cfgfile, serial_a=serial_a,
-      serial_b=serial_b, sync_date=sync_date, use_ms=use_ms,
+      serial_b=serial_b, sync_date=sync_date, use_ms=use_ms, use_mW=use_mW,
       print_stats=print_stats, save_stats=save_stats,
       save_raw_data=save_raw_data)
 
