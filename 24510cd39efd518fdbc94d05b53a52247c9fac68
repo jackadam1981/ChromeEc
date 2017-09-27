@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2eeebef0_a1c411a6",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1115140
+      },
+      "writtenOn": "2017-09-27T00:03:26Z",
+      "side": 1,
+      "message": "yes, let me retain the old code and change elsewhere and upload new patch set.",
+      "parentUuid": "7335942e_effacc0b",
+      "range": {
+        "startLine": 304,
+        "startChar": 8,
+        "endLine": 304,
+        "endChar": 19
+      },
+      "revId": "24510cd39efd518fdbc94d05b53a52247c9fac68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ee5c542f_aa5856be",
         "filename": "common/vboot_hash.c",
         "patchSetId": 1
@@ -154,6 +178,30 @@
       "side": 1,
       "message": "yes, ec_params_vboot_hash should be memset to 0 in ectool.",
       "parentUuid": "5062ab3d_0d75101f",
+      "range": {
+        "startLine": 440,
+        "startChar": 2,
+        "endLine": 440,
+        "endChar": 30
+      },
+      "revId": "24510cd39efd518fdbc94d05b53a52247c9fac68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc108b55_83ed3582",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1115140
+      },
+      "writtenOn": "2017-09-27T00:03:26Z",
+      "side": 1,
+      "message": "EC_VBOOT_HASH_GET should return current hash status.\nSo we can directly pass data_offset and ignore size ?",
+      "parentUuid": "b751123c_ce25089e",
       "range": {
         "startLine": 440,
         "startChar": 2,
