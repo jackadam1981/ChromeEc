@@ -10,11 +10,15 @@
 #include "chip/g/board_id.h"
 #include "curve25519.h"
 #include "rma_auth.h"
-#include "sha256.h"
 #include "system.h"
 #include "timer.h"
 #include "util.h"
 
+#ifdef CONFIG_DCRYPTO
+#include "dcrypto.h"
+#else
+#include "sha256.h"
+#endif
 /* Minimum time since system boot or last challenge before making a new one */
 #define CHALLENGE_INTERVAL (10 * SECOND)
 
@@ -29,6 +33,32 @@ static char challenge[RMA_CHALLENGE_BUF_SIZE];
 static char authcode[RMA_AUTHCODE_BUF_SIZE];
 static int tries_left;
 static uint64_t last_challenge_time;
+
+static void get_hmac_sha256(void *hmac_out, const uint8_t *secret,
+			    size_t secret_size, const void *ch_ptr, size_t ch_size)
+{
+#ifdef CONFIG_DCRYPTO
+	LITE_HMAC_CTX hmac;
+
+	DCRYPTO_HMAC_SHA256_init(&hmac, secret, secret_size);
+	HASH_update(&hmac.hash, ch_ptr, ch_size);
+	memcpy(hmac_out, DCRYPTO_HMAC_final(&hmac), 32);
+#else
+	hmac_SHA256(hmac_out, secret, secret_size, ch_ptr, ch_size);
+#endif
+}
+
+static void hash_buffer(void *dest, size_t dest_size,
+			const void *buffer, size_t buf_size)
+{
+	/* We know that the destination is no larger than 32 bytes. */
+	uint8_t temp[32];
+
+	get_hmac_sha256(temp, buffer, buf_size, buffer, buf_size);
+
+	/* Or should we do XOR of the temp modulo dest size? */
+	memcpy(dest, temp, dest_size);
+}
 
 /**
  * Create a new RMA challenge/response
@@ -45,6 +75,7 @@ int rma_create_challenge(void)
 	uint8_t *device_id;
 	uint8_t *cptr = (uint8_t *)&c;
 	uint64_t t;
+	int unique_device_id_size;
 
 	/* Clear the current challenge and authcode, if any */
 	memset(challenge, 0, sizeof(challenge));
@@ -52,7 +83,8 @@ int rma_create_challenge(void)
 
 	/* Rate limit challenges */
 	t = get_time().val;
-	if (t - last_challenge_time < CHALLENGE_INTERVAL)
+	if (last_challenge_time &&
+	    (t - last_challenge_time < CHALLENGE_INTERVAL))
 		return EC_ERROR_TIMEOUT;
 	last_challenge_time = t;
 
@@ -64,9 +96,23 @@ int rma_create_challenge(void)
 		return EC_ERROR_UNKNOWN;
 	memcpy(c.board_id, &bid.type, sizeof(c.board_id));
 
-	if (system_get_chip_unique_id(&device_id) != sizeof(c.device_id))
+	unique_device_id_size = system_get_chip_unique_id(&device_id);
+
+	if (unique_device_id_size < sizeof(c.device_id))
 		return EC_ERROR_UNKNOWN;
-	memcpy(c.device_id, device_id, sizeof(c.device_id));
+
+	if (unique_device_id_size == sizeof(c.device_id)) {
+		/* The size matches, let's just copy it as is. */
+		memcpy(c.device_id, device_id, sizeof(c.device_id));
+	} else {
+		/*
+		 * The unique device ID size exceeds space allotted in
+		 * rma_challenge:device_id, let's use first few bytes of
+		 * SHA256.
+		 */
+		hash_buffer(c.device_id, sizeof(c.device_id),
+			    device_id, unique_device_id_size);
+	}
 
 	/* Calculate a new ephemeral key pair */
 	X25519_keypair(c.device_pub_key, temp);
@@ -83,7 +129,7 @@ int rma_create_challenge(void)
 	 * and DeviceID.  Those are all in the right order in the challenge
 	 * struct, after the version/key id byte.
 	 */
-	hmac_SHA256(temp, secret, sizeof(secret), cptr + 1, sizeof(c) - 1);
+	get_hmac_sha256(temp, secret, sizeof(secret), cptr + 1, sizeof(c) - 1);
 	if (base32_encode(authcode, sizeof(authcode), temp,
 			  RMA_AUTHCODE_CHARS * 5, 0))
 		return EC_ERROR_UNKNOWN;
