@@ -118,6 +118,30 @@
       "revId": "566cb470555e9957b8191b5a7db1359af7cef0cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f26d70fa_e75d151f",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-27T19:17:25Z",
+      "side": 1,
+      "message": "I see. If get_rtc_diff() is called when rtc_ssr wraps but rtc_dr doesn\u0027t yet, diff \u003c 0 could happen. I filed a separate bug (chromium:769407) for this.",
+      "parentUuid": "24e647d8_a42b1ee6",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "566cb470555e9957b8191b5a7db1359af7cef0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
