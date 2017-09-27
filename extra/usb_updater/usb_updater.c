@@ -1587,6 +1587,8 @@ static void process_rma(struct transfer_descriptor *td)
 	char rma_response[81];
 	size_t response_size = sizeof(rma_response);
 	size_t i;
+	char *authcode; /* Should be enough for server response. */
+	size_t auth_size;
 
 	send_vendor_command(td, VENDOR_CC_GET_RMA_CHALLENGE,
 			    NULL, 0, rma_response, &response_size);
@@ -1607,7 +1609,11 @@ static void process_rma(struct transfer_descriptor *td)
 		}
 		printf("%c", rma_response[i]);
 	}
-	printf("\n");
+	printf("\nNow enter response: ");
+	auth_size = getline(&authcode, 0, stdin);
+	printf("\nauth size %zd", auth_size);
+	if (auth_size > 0)
+		printf("%zd: %s", auth_size, authcode);
 }
 
 static void check_for_optarg(char *argv[])
