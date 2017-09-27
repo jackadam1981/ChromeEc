@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90829446_dbe3bc5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2017-09-27T23:14:17Z",
+      "side": 1,
+      "message": "Update this to include mW flag",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "9a2a5e3b9c415b67488d9c90b58608d6b0d572c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d7c09f5_62512e42",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2017-09-27T23:14:17Z",
+      "side": 1,
+      "message": "Move this to previous patch",
+      "range": {
+        "startLine": 450,
+        "startChar": 78,
+        "endLine": 450,
+        "endChar": 0
+      },
+      "revId": "9a2a5e3b9c415b67488d9c90b58608d6b0d572c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3732195b_e344cbbd",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2017-09-27T23:14:17Z",
+      "side": 1,
+      "message": "Move this to previous patch",
+      "range": {
+        "startLine": 460,
+        "startChar": 6,
+        "endLine": 460,
+        "endChar": 67
+      },
+      "revId": "9a2a5e3b9c415b67488d9c90b58608d6b0d572c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "055b0403_8037d60a",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2017-09-27T23:14:17Z",
+      "side": 1,
+      "message": "Move this to previous patch",
+      "range": {
+        "startLine": 528,
+        "startChar": 3,
+        "endLine": 528,
+        "endChar": 28
+      },
+      "revId": "9a2a5e3b9c415b67488d9c90b58608d6b0d572c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3918ecf0_d39f3df2",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2017-09-27T23:14:17Z",
+      "side": 1,
+      "message": "consider something like this.\n\noutside the loop\nmultiplier \u003d 0.001 if self._use_mW else 1\n\nself._data.AddValue(name, aggregate_record[name] * multiplier)",
+      "range": {
+        "startLine": 613,
+        "startChar": 16,
+        "endLine": 617,
+        "endChar": 48
+      },
+      "revId": "9a2a5e3b9c415b67488d9c90b58608d6b0d572c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
