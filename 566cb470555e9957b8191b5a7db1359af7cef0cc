@@ -46,6 +46,30 @@
       "revId": "566cb470555e9957b8191b5a7db1359af7cef0cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6991677_f4f33ef6",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-27T15:13:30Z",
+      "side": 1,
+      "message": "rtc_ssr can wrap, so if you take two samples in close proximity, you might sample rtc0 \u003d 9.9999s, rtc1 \u003d 0.0001s, so we\u0027re adding back 10s in that case to get the actual duration. I do agree that the function should return an unsigned value.",
+      "parentUuid": "bee41240_ca47d22e",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "566cb470555e9957b8191b5a7db1359af7cef0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
