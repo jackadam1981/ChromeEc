@@ -69,6 +69,30 @@
       "revId": "f01640207d3d0898d06f3ae210b9feb1b8967adc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac526c09_204599ea",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-27T02:31:56Z",
+      "side": 1,
+      "message": "it does not have to be called \u0027uart_to_usb\u0027, could be called uart_output for instance, resulting in a better readable code.",
+      "parentUuid": "1796a807_385c326a",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "f01640207d3d0898d06f3ae210b9feb1b8967adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
