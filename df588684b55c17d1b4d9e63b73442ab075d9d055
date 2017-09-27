@@ -70,6 +70,30 @@
       "revId": "df588684b55c17d1b4d9e63b73442ab075d9d055",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6630ed43_2a4b6760",
+        "filename": "chip/stm32/clock-stm32f0.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-27T21:37:18Z",
+      "side": 1,
+      "message": "If idle task calls set_rtc_alarm(), which is more likely the case, it overwrites rtc alarm deadline for the host. That means the host will be waken up earlier or later than what it initially requests. So I don\u0027t have a quick fix here.\n\nWe might be able to keep track of the rtc alarm setting which got overwritten and restore it later. Can we file a bug and place a TODO here?",
+      "parentUuid": "e0aa9c50_849c3418",
+      "range": {
+        "startLine": 317,
+        "startChar": 3,
+        "endLine": 318,
+        "endChar": 45
+      },
+      "revId": "df588684b55c17d1b4d9e63b73442ab075d9d055",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
