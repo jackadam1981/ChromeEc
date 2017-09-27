@@ -70,6 +70,30 @@
       "revId": "566cb470555e9957b8191b5a7db1359af7cef0cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec0b80f2_cc3105a0",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-09-27T18:29:23Z",
+      "side": 1,
+      "message": "When rtc_ssr wraps, doesn\u0027t it carry to rtc_tr so that diff is still positive?",
+      "parentUuid": "e6991677_f4f33ef6",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "566cb470555e9957b8191b5a7db1359af7cef0cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
