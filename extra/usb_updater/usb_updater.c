@@ -193,7 +193,7 @@ struct upgrade_pkt {
 	};
 } __packed;
 
-#define MAX_BUF_SIZE	(SIGNED_TRANSFER_SIZE + sizeof(struct upgrade_pkt))
+#define MAX_BUF_SIZE	500
 
 struct usb_endpoint {
 	struct libusb_device_handle *devh;
@@ -386,14 +386,12 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 	/* Used by transfer to /dev/tpm0 */
 	static uint8_t outbuf[MAX_BUF_SIZE];
 	struct upgrade_pkt *out = (struct upgrade_pkt *)outbuf;
-	/* Use the same structure, it will not be filled completely. */
 	int len, done;
 	int response_offset = offsetof(struct upgrade_pkt, command.data);
 	void *payload;
 	size_t header_size;
 	uint32_t rv;
-	size_t rx_size = sizeof(struct upgrade_pkt) +
-		sizeof(struct first_response_pdu);
+	const size_t rx_size = sizeof(outbuf);
 
 	debug("%s: sending to %#x %d bytes\n", __func__, addr, size);
 
@@ -451,15 +449,21 @@ static int tpm_send_pkt(struct transfer_descriptor *td, unsigned int digest,
 		return -1;
 	}
 
-	/*
-	 * Let's reuse the output buffer as the receve buffer; the combined
-	 * size of the two structures below is sure enough for any expected
-	 * response size.
-	 */
 	switch (td->ep_type) {
-	case dev_xfer:
-		len = read(td->tpm_fd, outbuf, rx_size);
+	case dev_xfer: {
+		int read_count;
+
+		len = 0;
+		do {
+			uint8_t *rx_buf = outbuf + len;
+			size_t rx_to_go = rx_size - len;
+
+			read_count = read(td->tpm_fd, rx_buf, rx_to_go);
+
+			len += read_count;
+		} while (read_count);
 		break;
+	}
 	case ts_xfer:
 		len = ts_read(outbuf, rx_size);
 		break;
@@ -1582,12 +1586,28 @@ static void process_rma(struct transfer_descriptor *td)
 {
 	char rma_response[81];
 	size_t response_size = sizeof(rma_response);
+	size_t i;
 
 	send_vendor_command(td, VENDOR_CC_GET_RMA_CHALLENGE,
 			    NULL, 0, rma_response, &response_size);
 
-	printf("got %zd bytes in response (%d)\n",
-	       response_size, rma_response[0]);
+	if (response_size == 1) {
+		printf("error %d\n", rma_response[0]);
+		if (td->ep_type == usb_xfer)
+			shut_down(&td->uep);
+		exit(update_error);
+	}
+
+	printf("Challenge:");
+	for (i = 0; i < response_size; i++) {
+		if (!(i % 5)) {
+			if (!(i % 40))
+				printf("\n");
+			printf(" ");
+		}
+		printf("%c", rma_response[i]);
+	}
+	printf("\n");
 }
 
 static void check_for_optarg(char *argv[])

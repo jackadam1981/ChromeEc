@@ -145,6 +145,7 @@ int rma_try_authcode(const char *code)
 }
 
 
+#include "console.h"
 static enum vendor_cmd_rc get_rma_challenge(enum vendor_cmd_cc code,
 					    void *buf,
 					    size_t input_size,
@@ -167,8 +168,17 @@ static enum vendor_cmd_rc get_rma_challenge(enum vendor_cmd_cc code,
 		return rv;
 	}
 
-	*response_size = sizeof(challenge);
-	memcpy(buf, rma_get_challenge, sizeof(challenge));
+	*response_size = sizeof(challenge) - 1;
+	memcpy(buf, rma_get_challenge(), *response_size);
+
+{
+	size_t i;
+
+	ccprintf("%s:%d response size %d\n", __func__, __LINE__, *response_size);
+	for (i = 0; i < *response_size; i++)
+		ccprintf("%c", ((uint8_t *)buf)[i]);
+	ccprintf("\n");
+ }
 
 	return VENDOR_RC_SUCCESS;
 }
