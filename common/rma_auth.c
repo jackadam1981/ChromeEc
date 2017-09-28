@@ -52,7 +52,8 @@ int rma_create_challenge(void)
 
 	/* Rate limit challenges */
 	t = get_time().val;
-	if (t - last_challenge_time < CHALLENGE_INTERVAL)
+	if (last_challenge_time &&
+	    (t - last_challenge_time < CHALLENGE_INTERVAL))
 		return EC_ERROR_TIMEOUT;
 	last_challenge_time = t;
 
