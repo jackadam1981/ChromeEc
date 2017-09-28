@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19263d19_67efe648",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-28T10:07:57Z",
+      "side": 1,
+      "message": "rather than this questionable hack (both having the PMIC init here as not much to do with VBOOT_EFS and rather than the direct callback the HOOK_CHIPSET_PRE_INIT was designed for this), you should probably move here the hook_notify(HOOK_CHIPSET_PRE_INIT) if the appropriate config is defined eg CONFIG_PMIC_OFF_IN_G3)\n\nActually I don\u0027t fully understand why you are moving everything around for this machine.\nOn normal one, we do the following:\n1. check if we have energy to boot (in #ifdef CONFIG_CHARGER above)\n2. tell the system to power up the PMIC with HOOK_CHIPSET_PRE_INIT\n3. wait for the rails to come up\n\nWhy your own loop for energy is not next to 1. ?\nWhat is actually turning on the PMIC rails ?",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 20
+      },
+      "revId": "0c66474fa3a83577e48a164a4dccfa65ba870574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
