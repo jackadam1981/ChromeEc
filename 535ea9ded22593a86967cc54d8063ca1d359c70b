@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a95c5ec_6e3c9e63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-28T14:39:54Z",
+      "side": 1,
+      "message": "This is probably because the reef coreboot board defines EC_ENABLE_TABLET_EVENT. There\u0027s no general requirement for all boards to EC_ACPI_MEM_DEVICE_ORIENTATION (only a few boards support it).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 6
+      },
+      "revId": "535ea9ded22593a86967cc54d8063ca1d359c70b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
