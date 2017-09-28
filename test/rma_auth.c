@@ -135,13 +135,19 @@ static int test_rma_auth(void)
 	char authcode[RMA_AUTHCODE_BUF_SIZE];
 	timestamp_t ts;
 
+	/* Attempt to verify a code before one is generated. */
+	TEST_ASSERT(rma_try_authcode("Bad") == EC_ERROR_ACCESS_DENIED);
+
+	/* First run should succeed. */
+	TEST_ASSERT(rma_create_challenge() == EC_SUCCESS);
+	TEST_ASSERT(strlen(rma_get_challenge()) == RMA_CHALLENGE_CHARS);
+
 	/* Test rate limiting */
 	FORCE_TIME(9 * SECOND);
 	TEST_ASSERT(rma_create_challenge() == EC_ERROR_TIMEOUT);
-	TEST_ASSERT(rma_try_authcode("Bad") == EC_ERROR_ACCESS_DENIED);
 	TEST_ASSERT(strlen(rma_get_challenge()) == 0);
 
-	FORCE_TIME(10 * SECOND);
+	FORCE_TIME(11 * SECOND);
 	TEST_ASSERT(rma_create_challenge() == 0);
 	TEST_ASSERT(strlen(rma_get_challenge()) == RMA_CHALLENGE_CHARS);
 
@@ -165,6 +171,9 @@ static int test_rma_auth(void)
 	TEST_ASSERT(strlen(challenge) == RMA_CHALLENGE_CHARS);
 	TEST_ASSERT(rma_server_side(authcode, challenge) == 0);
 	TEST_ASSERT(rma_try_authcode(authcode) == EC_SUCCESS);
+
+	/* Only one successful retrieval is allowed. */
+	TEST_ASSERT(rma_try_authcode(authcode) == EC_ERROR_ACCESS_DENIED);
 
 	/*
 	 * Make sure the server-side checks for fields work.  That is, test
