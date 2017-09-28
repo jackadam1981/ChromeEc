@@ -105,7 +105,7 @@ static void do_print_later(void)
 DECLARE_HOOK(HOOK_TICK, do_print_later, HOOK_PRIO_DEFAULT);
 
 /* Debugging stuff to display some registers and bits */
-static const char const *deezbits[32] = {
+static const char * const deezbits[32] = {
 	[0]     = "CURMOD",
 	[1]     = "MODEMIS",
 	[2]     = "OTGINT",
