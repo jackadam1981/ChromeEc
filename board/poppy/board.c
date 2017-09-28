@@ -209,7 +209,11 @@ static void base_detect_change(enum base_status status)
 		return;
 
 	CPRINTS("Base %sconnected", connected ? "" : "not ");
+#ifdef BOARD_LUX
+	/* TODO(b/67029560): Provide base power through charger OTG. */
+#else
 	gpio_set_level(GPIO_PP3300_DX_BASE, connected);
+#endif
 	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 	tablet_set_mode(!connected);
 	current_base_status = status;
@@ -902,7 +906,7 @@ const matrix_3x3_t mag_standard_ref = {
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
-#ifdef BOARD_SORAKA
+#if defined(BOARD_SORAKA) || defined(BOARD_LUX)
 const matrix_3x3_t lid_standard_ref = {
 	{ 0,  FLOAT_TO_FP(-1),  0},
 	{FLOAT_TO_FP(1),  0,  0},
@@ -1085,7 +1089,7 @@ const struct motion_sensor_t *motion_als_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 
-#ifdef BOARD_SORAKA
+#if defined(BOARD_SORAKA) || defined(BOARD_LUX)
 static void board_sensor_init(void)
 {
 	/* Old soraka use a different reference matrix */
