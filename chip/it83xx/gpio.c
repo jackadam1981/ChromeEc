@@ -323,14 +323,6 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 	/* To select 1.8v or 3.3v support. */
 	gpio_1p8v_3p3v_sel(port, mask, flags);
 
-	/* If output, set level before changing type to an output. */
-	if (flags & GPIO_OUTPUT) {
-		if (flags & GPIO_HIGH)
-			IT83XX_GPIO_DATA(port) |= mask;
-		else if (flags & GPIO_LOW)
-			IT83XX_GPIO_DATA(port) &= ~mask;
-	}
-
 	/* For each bit high in the mask, set input/output and pullup/down. */
 	while (mask_copy > 0) {
 		if (mask_copy & 1) {
@@ -361,6 +353,14 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 
 		pin++;
 		mask_copy >>= 1;
+	}
+
+	/* If output, set level after changing type to an output. */
+	if (flags & GPIO_OUTPUT) {
+		if (flags & GPIO_HIGH)
+			IT83XX_GPIO_DATA(port) |= mask;
+		else if (flags & GPIO_LOW)
+			IT83XX_GPIO_DATA(port) &= ~mask;
 	}
 
 	/* Set rising edge interrupt. */
