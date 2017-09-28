@@ -73,6 +73,14 @@
 #define CONFIG_BATTERY_PRESENT_CUSTOM
 #define CONFIG_BATTERY_SMART
 
+#ifdef BOARD_LUX
+#define CONFIG_UART_PAD_SWITCH
+
+#define CONFIG_EC_EC_COMM_MASTER
+#define CONFIG_EC_EC_COMM_BATTERY
+#define CONFIG_CRC8
+#endif
+
 /* Charger */
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGE_RAMP_HW /* This, or just RAMP? */
