@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4b2932e2_cd8978b2",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-28T09:57:45Z",
+      "side": 1,
+      "message": "at some point, this should be integrated properly in the official LED API in led_common.h",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 24
+      },
+      "revId": "f1dcf5ec1b49b3353638d1d61109837af300148a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "285c846e_24a950aa",
         "filename": "common/vboot/vboot.c",
         "patchSetId": 5
