@@ -22,6 +22,30 @@
       "revId": "0c66474fa3a83577e48a164a4dccfa65ba870574",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18aece51_28e875bd",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-09-28T16:36:02Z",
+      "side": 1,
+      "message": "Moved the power ready loop before hook_notify(HOOK_CHIPSET_PRE_INIT) and added a hook handler in board.c.\n\nAlso removed jumptag. If we initialize pmic on HOOK_CHIPSET_PRE_INIT, pmic should be initialized only once in RO or RW, whichever running at the time the system is ready to transition to s5.\n\n3V3DSW_PG can be used to inform EC that PMIC is ready but it\u0027s currently not wired to the EC. Alternatively, EC can keep polling some register over i2c.",
+      "parentUuid": "19263d19_67efe648",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 20
+      },
+      "revId": "0c66474fa3a83577e48a164a4dccfa65ba870574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
