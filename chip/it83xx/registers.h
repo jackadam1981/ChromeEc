@@ -653,14 +653,18 @@ enum {
 	GPIO_L = 0xc,
 	GPIO_M = 0xd,
 
-	/* NOTE: Support GPIO input only if KSO/KSI pins are used as GPIO. */
-	GPIO_KBS_OFF = 0x700,
-	/* KSI[7-0]  GPIO data mirror register. */
-	GPIO_KSI     = GPIO_KBS_OFF + 0x9,
-	/* KSO[15-8] GPIO data mirror register. */
-	GPIO_KSO_H   = GPIO_KBS_OFF + 0xc,
-	/* KSO[7-0]  GPIO data mirror register. */
-	GPIO_KSO_L   = GPIO_KBS_OFF + 0xf,
+	/*
+	 * Support GPIO input/output (push-pull) if KSO/KSI pins are
+	 * used as GPIO.
+	 * Supported flags: GPIO_INPUT, GPIO_OUTPUT, GPIO_LOW and GPIO_HIGH.
+	 */
+	GPIO_KBS_OFF = 0x80,
+	/* KSI[7-0] */
+	GPIO_KSI     = GPIO_KBS_OFF,
+	/* KSO[15-8] */
+	GPIO_KSO_H   = GPIO_KBS_OFF + 1,
+	/* KSO[7-0] */
+	GPIO_KSO_L   = GPIO_KBS_OFF + 2,
 };
 #define DUMMY_GPIO_BANK GPIO_A
 
