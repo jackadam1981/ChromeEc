@@ -48,7 +48,7 @@ int flash_physical_read(int offset, int size, char *data)
  * @param size          Number of bytes to write.
  * @param data          Data to write to flash.  Must be 32-bit aligned.
  */
-int flash_physical_write(int offset, int size, const char *data)
+int flash_physical_write(int offset, int size, const char * const data)
 {
 	int ret = EC_SUCCESS;
 	int  i, write_size;
