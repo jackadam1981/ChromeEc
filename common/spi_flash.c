@@ -275,9 +275,10 @@ int spi_flash_erase(unsigned int offset, unsigned int bytes)
  * @return EC_SUCCESS, or non-zero if any error.
  */
 int spi_flash_write(unsigned int offset, unsigned int bytes,
-	const uint8_t const *data)
+	const uint8_t * const data)
 {
 	int rv, write_size;
+	const uint8_t * actual = data;
 
 	/* Invalid input */
 	if (!data || offset + bytes > CONFIG_FLASH_SIZE ||
@@ -301,7 +302,7 @@ int spi_flash_write(unsigned int offset, unsigned int bytes,
 			return rv;
 
 		/* Copy data to send buffer; buffers may overlap */
-		memmove(buf + 4, data, write_size);
+		memmove(buf + 4, actual, write_size);
 
 		/* Compose instruction */
 		buf[0] = SPI_FLASH_PAGE_PRGRM;
@@ -314,7 +315,7 @@ int spi_flash_write(unsigned int offset, unsigned int bytes,
 		if (rv)
 			return rv;
 
-		data += write_size;
+		actual += write_size;
 		offset += write_size;
 		bytes -= write_size;
 	}
