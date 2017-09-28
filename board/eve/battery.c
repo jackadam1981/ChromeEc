@@ -15,6 +15,7 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "i2c.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
@@ -340,3 +341,105 @@ int board_battery_initialized(void)
 {
 	return battery_hw_present() == batt_pres_prev;
 }
+
+static int board_battery_unseal(void)
+{
+	int rv;
+	uint8_t data[6];
+
+	/* Get Operation Status */
+	rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
+			    SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
+
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+
+	if ((data[3] & 0x3) == 0x3) {
+		rv = sb_write(SB_MANUFACTURER_ACCESS,  0x2083);
+		if (rv != EC_SUCCESS)
+			return EC_RES_ERROR;
+
+		rv = sb_write(SB_MANUFACTURER_ACCESS, 0x4857);
+		if (rv)
+			return EC_RES_ERROR;
+	}
+	return EC_SUCCESS;
+}
+
+static int board_battery_seal(void)
+{
+	int rv;
+
+	rv = sb_write(SB_MANUFACTURER_ACCESS,  0x0030);
+	if (rv != EC_SUCCESS)
+		return EC_RES_ERROR;
+
+	return EC_SUCCESS;
+}
+
+int board_battery_write_flash(int addr, int data, int len)
+{
+	int rv;
+	uint8_t buf[sizeof(uint32_t) + 4];
+
+	if (len > 4)
+		return EC_ERROR_INVAL;
+
+	buf[0] = SB_ALT_MANUFACTURER_ACCESS;
+	/* Number of bytes to write, including the address */
+	buf[1] = len + 2;
+	/* Put in the flash address */
+	buf[2] = addr & 0xff;
+	buf[3] = (addr >> 8) & 0xff;
+
+	/* Add data to be written */
+	buf[4] = data & 0xff;
+	buf[5] = (data >> 8) & 0xff;
+	buf[6] = (data >> 16) & 0xff;
+	buf[7] = (data >> 24) & 0xff;
+	/* Account for command, length, and address */
+	len += 4;
+
+	i2c_lock(I2C_PORT_BATTERY, 1);
+	rv = i2c_xfer(I2C_PORT_BATTERY, BATTERY_ADDR, buf,
+		      len, NULL, 0, I2C_XFER_SINGLE);
+	i2c_lock(I2C_PORT_BATTERY, 0);
+
+	return rv;
+}
+
+static int board_battery_read_flash(int block, int len, uint8_t *buf)
+{
+	uint8_t data[sizeof(int) + 4];
+	int rv;
+	int i;
+
+	if (len > 4)
+		len = 4;
+	rv = sb_read_mfgacc(block,
+			    SB_ALT_MANUFACTURER_ACCESS, data, len + 3);
+	if (rv)
+		return EC_RES_ERROR;
+
+	for (i = 0; i < len; i++)
+		buf[i] = data[i+2];
+
+	return EC_SUCCESS;
+}
+
+static void board_check_battery(void)
+{
+	uint8_t protect_c;
+
+	if (board_battery_unseal())
+		return;
+
+	/* Check CTO enable */
+	board_battery_read_flash(0x482c, 1, &protect_c);
+
+	if (protect_c != 0x5)
+		board_battery_write_flash(0x482c, 0x5, 1);
+
+	board_battery_seal();
+}
+DECLARE_HOOK(HOOK_INIT, board_check_battery, HOOK_PRIO_DEFAULT);
