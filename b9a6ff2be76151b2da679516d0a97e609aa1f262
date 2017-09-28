@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac2130cf_3a6e2f2f",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-28T17:07:29Z",
+      "side": 1,
+      "message": "Should this be done for each pin immediately after line 333, to reduce the length of time between setting each pin as an output and driving it appropriately?  Also, I think this may need to be done before enabling a pullup/pulldown on the pin, to prevent a glitch if the pullup/pulldown is opposite of the desired output level.",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 2
+      },
+      "revId": "b9a6ff2be76151b2da679516d0a97e609aa1f262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
