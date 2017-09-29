@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d38c539f_716346b6",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-29T16:40:09Z",
+      "side": 1,
+      "message": "Let\u0027s change the npcx implementation to check us also, to be consistent.",
+      "range": {
+        "startLine": 170,
+        "startChar": 39,
+        "endLine": 170,
+        "endChar": 47
+      },
+      "revId": "0f17468f23302e892e8eadcd4ff374dcbe959f14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
