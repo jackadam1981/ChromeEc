@@ -45,6 +45,30 @@
       "revId": "7c7d8e99830b3352ca955535a57933fbb01160cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af045a20_2cf7f3e7",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-09-29T22:07:43Z",
+      "side": 1,
+      "message": "Fine with me, but Michael needs to adjust the server side then.",
+      "parentUuid": "2f2eb83f_120fc7de",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "7c7d8e99830b3352ca955535a57933fbb01160cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
