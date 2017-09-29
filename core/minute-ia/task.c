@@ -174,7 +174,7 @@ inline int in_interrupt_context(void)
 	return !!__in_isr;
 }
 
-inline int get_interrupt_context(void)
+static inline int get_interrupt_context(void)
 {
 	return 0;
 }
