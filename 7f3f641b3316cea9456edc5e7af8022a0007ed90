@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2003b8a9_feaa8aed",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-29T07:05:30Z",
+      "side": 1,
+      "message": "keep it static",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 26
+      },
+      "revId": "7f3f641b3316cea9456edc5e7af8022a0007ed90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c386231_e360cc92",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-09-29T07:05:30Z",
+      "side": 1,
+      "message": "you don\u0027t need this",
+      "range": {
+        "startLine": 236,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 27
+      },
+      "revId": "7f3f641b3316cea9456edc5e7af8022a0007ed90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
