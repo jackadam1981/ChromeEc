@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88387d2e_42a6d27a",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-29T20:47:19Z",
+      "side": 1,
+      "message": "Seems like overkill.  An attacker can\u0027t choose the message (device ID), so we\u0027re not worried about collision-via-extension.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 56
+      },
+      "revId": "7c7d8e99830b3352ca955535a57933fbb01160cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f2eb83f_120fc7de",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-09-29T20:47:19Z",
+      "side": 1,
+      "message": "There is no guarantee that board ID is printable characters.  I think we should fix this on the server side, not here.",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "7c7d8e99830b3352ca955535a57933fbb01160cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
