@@ -22,6 +22,30 @@
       "revId": "b9a6ff2be76151b2da679516d0a97e609aa1f262",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eea11225_caee8e0e",
+        "filename": "chip/it83xx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-09-29T05:21:53Z",
+      "side": 1,
+      "message": "Sorry I checked again, and I think we don\u0027t have this issue on IT83xx series.\nBecause in the output mode, the output level is depends on the last written data\nto data register (write operation is valid even we are in input mode).\nSo we don\u0027t need this change and let\u0027s abandon it.",
+      "parentUuid": "ac2130cf_3a6e2f2f",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 2
+      },
+      "revId": "b9a6ff2be76151b2da679516d0a97e609aa1f262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
