@@ -79,6 +79,30 @@
       "revId": "035029e91b53d21cd1c810f363a77c666765b17f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebacaa3c_034ac42d",
+        "filename": "power/skylake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-29T18:04:34Z",
+      "side": 1,
+      "message": "This came from Intel. Their SKL RVP3 reference board outputs the signal ALL_SYS_PWRGD. EC is required delay 10ms if ALL_SYS_PWGD \u003d\u003d 1 and SYS_RESET_L \u003d\u003d 0 and then drive SYS_RESET_L \u003d 1.",
+      "parentUuid": "54657c91_a0ce88da",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "035029e91b53d21cd1c810f363a77c666765b17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
