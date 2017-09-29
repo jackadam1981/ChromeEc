@@ -39,6 +39,7 @@ enum led_color {
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
 
+
 static int led_set_color_battery(enum led_color color)
 {
 	switch (color) {
@@ -64,6 +65,8 @@ void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	brightness_range[EC_LED_COLOR_BLUE] = 1;
 	brightness_range[EC_LED_COLOR_AMBER] = 1;
+	brightness_range[EC_LED_COLOR_RED] = 1;
+	brightness_range[EC_LED_COLOR_GREEN] = 1;
 }
 
 static int led_set_color(enum ec_led_id led_id, enum led_color color)
@@ -146,10 +149,7 @@ static void led_set_battery(void)
 /* Called by hook task every 1 sec */
 static void led_second(void)
 {
-	/*
-	 * Reference board only has one LED, so overload it to act as both
-	 * power LED and battery LED.
-	 */
+	/* Update battery LED */
 	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
 		led_set_battery();
 }
