@@ -28,6 +28,15 @@ USB_SPI_CONFIG(ccd_usb_spi, USB_IFACE_SPI, USB_EP_SPI);
 
 static enum device_state state = DEVICE_STATE_INIT;
 
+/* Flags for uart blocking */
+enum uart_block_flags {
+	UART_BLOCK_AP = (1 << 0),
+	UART_BLOCK_EC = (1 << 1)
+};
+
+/* Which UARTs are blocked by console command */
+static uint8_t uart_block;
+
 int ccd_ext_is_enabled(void)
 {
 	return state == DEVICE_STATE_CONNECTED;
@@ -247,6 +256,12 @@ static void ccd_state_change_hook(void)
 	if (flags_want & CCD_ENABLE_UART_EC_BITBANG)
 		flags_want &= ~CCD_ENABLE_UART_EC_TX;
 
+	/* UARTs can be specifically blocked by console command */
+	if (uart_block & UART_BLOCK_AP)
+		flags_want &= ~CCD_ENABLE_UART_AP;
+	if (uart_block & UART_BLOCK_EC)
+		flags_want &= ~CCD_ENABLE_UART_EC;
+
 	/* UARTs are either RX-only or RX+TX, so no RX implies no TX */
 	if (!(flags_want & CCD_ENABLE_UART_AP))
 		flags_want &= ~CCD_ENABLE_UART_AP_TX;
@@ -373,3 +388,43 @@ DECLARE_CONSOLE_COMMAND(ccdstate, command_ccd_state,
 			"",
 			"Print the case closed debug device state");
 
+static int command_uart_block(int argc, char **argv)
+{
+	uint8_t block_flag = 0;
+	int new_state;
+
+	if (argc == 3) {
+		if (!strcasecmp(argv[1], "AP"))
+			block_flag = UART_BLOCK_AP;
+		else if (!strcasecmp(argv[1], "EC"))
+			block_flag = UART_BLOCK_EC;
+		else
+			return EC_ERROR_PARAM1;
+
+		if (!parse_bool(argv[2], &new_state))
+			return EC_ERROR_PARAM2;
+
+		if (new_state)
+			uart_block |= block_flag;
+		else
+			uart_block &= ~block_flag;
+
+		/* Update UART state in deferred function */
+		ccd_update_state();
+	}
+
+	/* Regardless, print current state */
+	ccputs("UARTs blocked:");
+	if (uart_block & UART_BLOCK_AP)
+		ccputs(" AP");
+	if (uart_block & UART_BLOCK_EC)
+		ccputs(" EC");
+	if (!uart_block)
+		ccputs(" (none)");
+	ccputs("\n");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(uartblock, command_uart_block,
+			"[<AP | EC> [BOOLEAN]]",
+			"Force UARTs disabled");
