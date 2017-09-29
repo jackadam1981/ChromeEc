@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "73418f3e_e3d91076",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-29T17:54:03Z",
+      "side": 1,
+      "message": "The TRM states that the writes have to be within 4 seconds of each other, but doesn\u0027t specify that there can\u0027t be anything else in between.\n\nUnsealing is a two-step command performed by writing the first word of the unseal key to ManufacturerAccess() (MAC), followed by thesecond word of the unseal key to ManufacturerAccess(). The two words must be sent within 4 s.",
+      "parentUuid": "52868fb7_4f162777",
+      "range": {
+        "startLine": 358,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 2
+      },
+      "revId": "319631523da7a3208888b0211f7c95065d965874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c6e5410_f499e791",
         "filename": "board/eve/battery.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6f5d0f9a_63141230",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-29T17:54:03Z",
+      "side": 1,
+      "message": "I changed data to be a uint32_t",
+      "parentUuid": "9c6e5410_f499e791",
+      "range": {
+        "startLine": 399,
+        "startChar": 1,
+        "endLine": 399,
+        "endChar": 30
+      },
+      "revId": "319631523da7a3208888b0211f7c95065d965874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa7e0fc3_f33f5d86",
         "filename": "board/eve/battery.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-09-29T04:51:29Z",
       "side": 1,
       "message": "The size of this buffer shouldn\u0027t depend on sizeof(int) if you\u0027re just reading len + 4 (or is it len+3) bytes?",
+      "range": {
+        "startLine": 413,
+        "startChar": 14,
+        "endLine": 413,
+        "endChar": 25
+      },
+      "revId": "319631523da7a3208888b0211f7c95065d965874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7c1438f_c7ee97de",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-09-29T17:54:03Z",
+      "side": 1,
+      "message": "Yes, it doesn\u0027t depend on sizeof(int) and it\u0027s arbitrary. To be general purpose, the size should be 32 because that is the max block length of the manufacture access block read. Other than my debug console command, this is only be called with a length field of 1 and I thought I should make it larger enough to read registers like 0x54.",
+      "parentUuid": "aa7e0fc3_f33f5d86",
       "range": {
         "startLine": 413,
         "startChar": 14,
