@@ -1532,7 +1532,7 @@ static inline int get_snk_polarity(int cc1, int cc2)
 	return (cc2 > cc1);
 }
 
-#if defined(CONFIG_CHARGE_MANAGER) || defined(CONFIG_USB_PD_DTS)
+#if defined(CONFIG_CHARGE_MANAGER)
 /**
  * Returns type C current limit (mA) based upon cc_voltage (mV).
  */
@@ -1637,7 +1637,7 @@ void pd_task(void *u)
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	const int auto_toggle_supported = tcpm_auto_toggle_supported(port);
 #endif
-#if defined(CONFIG_CHARGE_MANAGER) || defined(CONFIG_USB_PD_DTS)
+#if defined(CONFIG_CHARGE_MANAGER)
 	int typec_curr = 0, typec_curr_change = 0;
 #endif /* CONFIG_CHARGE_MANAGER */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
@@ -1842,7 +1842,7 @@ void pd_task(void *u)
 				set_state(port,
 					PD_STATE_SRC_DISCONNECTED_DEBOUNCE);
 			}
-#if defined(CONFIG_USB_PD_DUAL_ROLE) && !defined(CONFIG_USB_PD_DTS)
+#if defined(CONFIG_USB_PD_DUAL_ROLE)
 			/*
 			 * Try.SRC state is embedded here. Wait for SNK
 			 * detect, or if timer expires, transition to
@@ -1948,29 +1948,6 @@ void pd_task(void *u)
 #endif
 				/* Set the USB muxes and the default USB role */
 				pd_set_data_role(port, CONFIG_USB_PD_DEBUG_DR);
-
-#ifdef CONFIG_USB_PD_DTS
-				if (new_cc_state == PD_CC_DEBUG_ACC) {
-					ccd_set_mode(system_is_locked() ?
-						     CCD_MODE_PARTIAL :
-						     CCD_MODE_ENABLED);
-
-					/* Enable Vbus */
-					pd_set_power_supply_ready(port);
-					/* Captive cable, CC1 always */
-					pd[port].polarity = 0;
-					tcpm_set_polarity(port, 0);
-					/* Enable TCPC RX */
-					if (pd_comm_is_enabled(port))
-						tcpm_set_rx_enable(port, 1);
-					pd[port].flags |=
-						PD_FLAGS_CHECK_DR_ROLE;
-					hard_reset_count = 0;
-					timeout = 10*MSEC;
-					set_state(port, PD_STATE_SRC_STARTUP);
-					break;
-				}
-#endif
 				set_state(port, PD_STATE_SRC_ACCESSORY);
 			}
 			break;
@@ -1988,9 +1965,6 @@ void pd_task(void *u)
 			     (cc1 != TYPEC_CC_VOLT_RD ||
 			      cc2 != TYPEC_CC_VOLT_RD))) {
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
-#ifdef CONFIG_USB_PD_DTS
-				ccd_set_mode(CCD_MODE_DISABLED);
-#endif
 				timeout = 10*MSEC;
 			}
 			break;
@@ -2442,7 +2416,7 @@ void pd_task(void *u)
 			pd[port].msg_id = 0;
 			/* initial data role for sink is UFP */
 			pd_set_data_role(port, PD_ROLE_UFP);
-#if defined(CONFIG_CHARGE_MANAGER) || defined(CONFIG_USB_PD_DTS)
+#if defined(CONFIG_CHARGE_MANAGER)
 			typec_curr = get_typec_current_limit(pd[port].polarity,
 							     cc1, cc2);
 			typec_set_input_current_limit(
@@ -2572,7 +2546,7 @@ void pd_task(void *u)
 						  get_time().val +
 						  PD_T_NO_RESPONSE,
 						  PD_STATE_SNK_DISCONNECTED);
-#if defined(CONFIG_CHARGE_MANAGER) || defined(CONFIG_USB_PD_DTS)
+#if defined(CONFIG_CHARGE_MANAGER)
 				/*
 				 * If we didn't come from disconnected, must
 				 * have come from some path that did not set
@@ -2585,7 +2559,7 @@ void pd_task(void *u)
 #endif
 			}
 
-#if defined(CONFIG_CHARGE_MANAGER) || defined(CONFIG_USB_PD_DTS)
+#if defined(CONFIG_CHARGE_MANAGER)
 			timeout = PD_T_SINK_ADJ - PD_T_DEBOUNCE;
 
 			/* Check if CC pull-up has changed */
@@ -3024,9 +2998,6 @@ void pd_task(void *u)
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				/* Debouncing */
 				timeout = 10*MSEC;
-#ifdef CONFIG_USB_PD_DTS
-				ccd_set_mode(CCD_MODE_DISABLED);
-#endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 				/*
 				 * If Try.SRC is configured, then ATTACHED_SRC
