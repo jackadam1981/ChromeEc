@@ -2521,6 +2521,15 @@
 #undef CONFIG_USB_PD_IDENTITY_HW_VERS
 #undef CONFIG_USB_PD_IDENTITY_SW_VERS
 
+/*
+ * USB-C DTS sources advertise current capability with CC Rp levels, but many
+ * do not adhere to the spec. Eg. suzy-qable advertises 1.5A regardless of
+ * the capability of the USB port that is powering it. Support such devices
+ * by ignoring USB-C advertised ILIM, instead allow ILIM to be determined
+ * by BC1.2 / default USB.
+ */
+#define CONFIG_USB_PD_IGNORE_DTS_RP
+
 /* USB PD MCU slave address for host commands */
 #define CONFIG_USB_PD_I2C_SLAVE_ADDR 0x3c
 

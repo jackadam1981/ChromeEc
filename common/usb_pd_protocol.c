@@ -1541,6 +1541,15 @@ static inline int get_typec_current_limit(int polarity, int cc1, int cc2)
 	int cc = polarity ? cc2 : cc1;
 	int cc_alt = polarity ? cc1 : cc2;
 
+#ifdef CONFIG_USB_PD_IGNORE_DTS_RP
+	/*
+	 * Ignore DTS partner Rp, but we may still charge from the port
+	 * via BC1.2 / default USB current.
+	 */
+	if (cc_alt != TYPEC_CC_OPEN)
+		return 0;
+#endif
+
 	if (cc == TYPEC_CC_VOLT_SNK_3_0 && cc_alt != TYPEC_CC_VOLT_SNK_1_5)
 		charge = 3000;
 	else if (cc == TYPEC_CC_VOLT_SNK_1_5)
