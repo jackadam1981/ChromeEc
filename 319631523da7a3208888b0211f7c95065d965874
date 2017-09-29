@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c6e5410_f499e791",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-29T04:51:29Z",
+      "side": 1,
+      "message": "Right shift of a negative number is implementation defined, you should either change the param to a uint32_t or just simplify the function to write a single byte only (you\u0027re only calling it with len \u003d 1, right?).",
+      "range": {
+        "startLine": 399,
+        "startChar": 1,
+        "endLine": 399,
+        "endChar": 30
+      },
+      "revId": "319631523da7a3208888b0211f7c95065d965874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa7e0fc3_f33f5d86",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-29T04:51:29Z",
+      "side": 1,
+      "message": "The size of this buffer shouldn\u0027t depend on sizeof(int) if you\u0027re just reading len + 4 (or is it len+3) bytes?",
+      "range": {
+        "startLine": 413,
+        "startChar": 14,
+        "endLine": 413,
+        "endChar": 25
+      },
+      "revId": "319631523da7a3208888b0211f7c95065d965874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
