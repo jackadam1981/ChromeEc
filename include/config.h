@@ -408,8 +408,6 @@
  */
 #undef CONFIG_DEDICATED_RECOVERY_BUTTON
 
-/* The case close debug (CCD) feature is provided by an external chip. */
-#undef CONFIG_CASE_CLOSED_DEBUG_EXTERNAL
 /* Support V1 CCD configuration */
 #undef CONFIG_CASE_CLOSED_DEBUG_V1
 /* Allow unsafe debugging functionality in V1 configuration */
@@ -2465,9 +2463,6 @@
 
 /* Respond to custom vendor-defined messages over PD */
 #undef CONFIG_USB_PD_CUSTOM_VDM
-
-/* Default USB data role when a USB PD debug accessory is seen */
-#define CONFIG_USB_PD_DEBUG_DR PD_ROLE_DFP
 
 /*
  * Define to have a fixed PD Task debug level.

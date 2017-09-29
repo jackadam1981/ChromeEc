@@ -170,12 +170,12 @@ static const char * const pd_state_names[] = {
 	"DISABLED", "SUSPENDED",
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	"SNK_DISCONNECTED", "SNK_DISCONNECTED_DEBOUNCE",
-	"SNK_ACCESSORY", "SNK_HARD_RESET_RECOVER",
+	"SNK_HARD_RESET_RECOVER",
 	"SNK_DISCOVERY", "SNK_REQUESTED", "SNK_TRANSITION", "SNK_READY",
 	"SNK_SWAP_INIT", "SNK_SWAP_SNK_DISABLE",
 	"SNK_SWAP_SRC_DISABLE", "SNK_SWAP_STANDBY", "SNK_SWAP_COMPLETE",
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
-	"SRC_DISCONNECTED", "SRC_DISCONNECTED_DEBOUNCE", "SRC_ACCESSORY",
+	"SRC_DISCONNECTED", "SRC_DISCONNECTED_DEBOUNCE",
 	"SRC_HARD_RESET_RECOVER", "SRC_STARTUP",
 	"SRC_DISCOVERY", "SRC_NEGOCIATE", "SRC_ACCEPTED", "SRC_POWERED",
 	"SRC_TRANSITION", "SRC_READY", "SRC_GET_SNK_CAP", "DR_SWAP",
@@ -254,18 +254,7 @@ static inline int pd_is_vbus_present(int port)
 	return pd_snk_is_vbus_provided(port);
 #endif
 }
-
-static int pd_debug_acc_plugged(int port)
-{
-#ifdef CONFIG_CASE_CLOSED_DEBUG_EXTERNAL
-	return pd[port].task_state == PD_STATE_SRC_ACCESSORY ||
-		pd[port].task_state == PD_STATE_SNK_ACCESSORY;
-#else
-	/* Debug accessories not supported */
-	return 0;
-#endif
-}
-#endif
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
 
 static inline void set_state(int port, enum pd_states next_state)
 {
@@ -1372,6 +1361,15 @@ void pd_set_dual_role(enum pd_dual_role_states state)
 			       PD_EVENT_UPDATE_DUAL_ROLE, 0);
 }
 
+/* Return true if a sink debug accessory is plugged into port. */
+static int pd_debug_acc_snk_plugged(int port)
+{
+	int cc1, cc2;
+
+	tcpm_get_cc(port, &cc1, &cc2);
+	return (cc1 == TYPEC_CC_VOLT_RD) && (cc2 == TYPEC_CC_VOLT_RD);
+}
+
 void pd_update_dual_role_config(int port)
 {
 	/*
@@ -1381,7 +1379,8 @@ void pd_update_dual_role_config(int port)
 	 * disconnected state).
 	 */
 	if (pd[port].power_role == PD_ROLE_SOURCE &&
-	    ((drp_state == PD_DRP_FORCE_SINK && !pd_debug_acc_plugged(port)) ||
+	    ((drp_state == PD_DRP_FORCE_SINK &&
+	     !pd_debug_acc_snk_plugged(port)) ||
 	     (drp_state == PD_DRP_TOGGLE_OFF
 	      && pd[port].task_state == PD_STATE_SRC_DISCONNECTED))) {
 		pd[port].power_role = PD_ROLE_SINK;
@@ -1906,7 +1905,8 @@ void pd_task(void *u)
 
 			/* Debounce complete */
 			/* UFP is attached */
-			if (new_cc_state == PD_CC_UFP_ATTACHED) {
+			if (new_cc_state == PD_CC_UFP_ATTACHED ||
+			    new_cc_state == PD_CC_DEBUG_ACC) {
 				pd[port].polarity = (cc2 == TYPEC_CC_VOLT_RD);
 				tcpm_set_polarity(port, pd[port].polarity);
 
@@ -1938,34 +1938,6 @@ void pd_task(void *u)
 				hard_reset_count = 0;
 				timeout = 5*MSEC;
 				set_state(port, PD_STATE_SRC_STARTUP);
-			}
-			/* Accessory is attached */
-			else if (new_cc_state == PD_CC_AUDIO_ACC ||
-				 new_cc_state == PD_CC_DEBUG_ACC) {
-#ifdef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
-				/* Remove VBUS */
-				pd_power_supply_reset(port);
-#endif
-				/* Set the USB muxes and the default USB role */
-				pd_set_data_role(port, CONFIG_USB_PD_DEBUG_DR);
-				set_state(port, PD_STATE_SRC_ACCESSORY);
-			}
-			break;
-		case PD_STATE_SRC_ACCESSORY:
-			/* Combined audio / debug accessory state */
-			timeout = 100*MSEC;
-
-			tcpm_get_cc(port, &cc1, &cc2);
-
-			/* If accessory becomes detached */
-			if ((pd[port].cc_state == PD_CC_AUDIO_ACC &&
-			     (cc1 != TYPEC_CC_VOLT_RA ||
-			      cc2 != TYPEC_CC_VOLT_RA)) ||
-			    (pd[port].cc_state == PD_CC_DEBUG_ACC &&
-			     (cc1 != TYPEC_CC_VOLT_RD ||
-			      cc2 != TYPEC_CC_VOLT_RD))) {
-				set_state(port, PD_STATE_SRC_DISCONNECTED);
-				timeout = 10*MSEC;
 			}
 			break;
 		case PD_STATE_SRC_HARD_RESET_RECOVER:
@@ -2427,7 +2399,8 @@ void pd_task(void *u)
 				tcpm_set_rx_enable(port, 1);
 
 			/* DFP is attached */
-			if (new_cc_state == PD_CC_DFP_ATTACHED) {
+			if (new_cc_state == PD_CC_DFP_ATTACHED ||
+			    new_cc_state == PD_CC_DEBUG_ACC) {
 				pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
 						  PD_FLAGS_CHECK_DR_ROLE |
 						  PD_FLAGS_CHECK_IDENTITY;
@@ -2437,22 +2410,6 @@ void pd_task(void *u)
 					&pd_usb_billboard_deferred_data,
 					PD_T_AME);
 			}
-#ifdef CONFIG_CASE_CLOSED_DEBUG_EXTERNAL
-			else if (new_cc_state == PD_CC_DEBUG_ACC)
-				set_state(port, PD_STATE_SNK_ACCESSORY);
-			break;
-		case PD_STATE_SNK_ACCESSORY:
-			/* debug accessory state */
-			timeout = 100*MSEC;
-
-			tcpm_get_cc(port, &cc1, &cc2);
-
-			/* If accessory becomes detached */
-			if (!cc_is_rp(cc1) || !cc_is_rp(cc2)) {
-				set_state(port, PD_STATE_SNK_DISCONNECTED);
-				timeout = 10*MSEC;
-			}
-#endif
 			break;
 		case PD_STATE_SNK_HARD_RESET_RECOVER:
 			if (pd[port].last_state != pd[port].task_state)
