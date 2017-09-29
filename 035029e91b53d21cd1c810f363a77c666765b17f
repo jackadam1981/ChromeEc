@@ -103,6 +103,30 @@
       "revId": "035029e91b53d21cd1c810f363a77c666765b17f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7683cfe4_22a153bd",
+        "filename": "power/skylake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1174219
+      },
+      "writtenOn": "2017-09-29T20:36:53Z",
+      "side": 1,
+      "message": "I found a way to remove this from the power state machine by using a custom interrupt handler for ALL_SYS_PWRGD that triggers a deferred hook function to handle the edge. It works on our MEC1701 EVB plus SKL RVP3 setup.",
+      "parentUuid": "ebacaa3c_034ac42d",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 21
+      },
+      "revId": "035029e91b53d21cd1c810f363a77c666765b17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
