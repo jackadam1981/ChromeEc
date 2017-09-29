@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "52868fb7_4f162777",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-09-29T04:54:10Z",
+      "side": 1,
+      "message": "I think these writes have to be contiguous, eg. you can\u0027t read from other regs in between them. That\u0027s probably fine if you\u0027re calling this function from HOOK_INIT, but just be aware that it\u0027s fragile (you probably will want to hold the i2c port mutex) if you do this once task scheduling has started.",
+      "range": {
+        "startLine": 358,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 2
+      },
+      "revId": "319631523da7a3208888b0211f7c95065d965874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c6e5410_f499e791",
         "filename": "board/eve/battery.c",
         "patchSetId": 1
