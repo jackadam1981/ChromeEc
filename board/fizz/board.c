@@ -64,7 +64,15 @@ static void tcpc_alert_event(enum gpio_signal signal)
 void adp_in(enum gpio_signal signal)
 {
 	/* TODO: Switch power source from USB-C to BJ only if we're in S5. */
-	CPRINTS("BJ detected");
+	struct charge_port_info cpi;
+	/* High = unplugged */
+	cpi.voltage = gpio_get_level(signal) ? 0 : 19000;
+	/* Set to 0 to ensure charge manager will ignore it. */
+	cpi.current = 0;
+	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED, 1, &cpi);
+	/* Explicitly notifies the host that BJ is plugged or unplugged
+	 * (when running on a type-c adapter). */
+	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 
 void vbus0_evt(enum gpio_signal signal)
@@ -372,6 +380,7 @@ static void board_init(void)
 	board_extpower();
 
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
+	gpio_enable_interrupt(GPIO_ADP_IN_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
