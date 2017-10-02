@@ -44,6 +44,11 @@ void usart_init(struct usart_config const *config)
 	STM32_USART_CR2(base) = 0x0000;
 	STM32_USART_CR3(base) = 0x0000;
 
+	if (config->flags & USART_CONFIG_FLAG_RX_INV)
+		STM32_USART_CR2(base) |= (1 << 16);
+	if (config->flags & USART_CONFIG_FLAG_TX_INV)
+		STM32_USART_CR2(base) |= (1 << 17);
+
 	/*
 	 * Enable the RX, TX, and variant specific HW.
 	 */
