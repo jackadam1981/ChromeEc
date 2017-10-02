@@ -93,6 +93,30 @@
       "revId": "7c7d8e99830b3352ca955535a57933fbb01160cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cad8eb12_d071c496",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-02T23:48:51Z",
+      "side": 1,
+      "message": "as discussed, the brand code string needs to be stored in such that when interpreted as a little endian 4 byte number it reads the values as if they were the RLZ string characters, so, for instance, RLZ string of ABCD should be stored as 0x41424344 (wheras if it was stored as a string, the 4 byte value would read 0x44434241.",
+      "parentUuid": "31389b81_7c7c617c",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "7c7d8e99830b3352ca955535a57933fbb01160cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
