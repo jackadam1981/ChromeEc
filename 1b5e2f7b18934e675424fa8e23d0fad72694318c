@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3984834_c6e99424",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-02T16:07:31Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 12,
+        "startChar": 54,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "1b5e2f7b18934e675424fa8e23d0fad72694318c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0784fbb7_58aca4c4",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-02T16:07:31Z",
+      "side": 1,
+      "message": "Shouldn\u0027t all these -1 values be LED_TIME_INDEFINITE ?",
+      "range": {
+        "startLine": 82,
+        "startChar": 32,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "1b5e2f7b18934e675424fa8e23d0fad72694318c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a125191f_6ce8b1b8",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-02T16:07:31Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to correct to use the default table as a proxy for the actual length of the real table.",
+      "range": {
+        "startLine": 167,
+        "startChar": 18,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "1b5e2f7b18934e675424fa8e23d0fad72694318c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa02b41d_8cb26eda",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-02T16:07:31Z",
+      "side": 1,
+      "message": "I\u0027m confused by the translation of the array index into an enum led_states and how that is related to STATE_CHARGING_LVL_x.",
+      "revId": "1b5e2f7b18934e675424fa8e23d0fad72694318c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
