@@ -46,6 +46,10 @@ static int usb_load_serial(void);
 
 #define USB_RESUME_TIMEOUT_MS 300
 
+#ifndef CONFIG_USB_CONFIG_COUNT
+#define CONFIG_USB_CONFIG_COUNT 1
+#endif
+
 /* USB Standard Device Descriptor */
 static const struct usb_device_descriptor dev_desc = {
 	.bLength = USB_DT_DEVICE_SIZE,
@@ -61,7 +65,7 @@ static const struct usb_device_descriptor dev_desc = {
 	.iManufacturer = USB_STR_VENDOR,
 	.iProduct = USB_STR_PRODUCT,
 	.iSerialNumber = USB_STR_SERIALNO,
-	.bNumConfigurations = 1
+	.bNumConfigurations = CONFIG_USB_CONFIG_COUNT
 };
 
 /* USB Configuration Descriptor */
@@ -99,6 +103,8 @@ static usb_uint ep0_buf_rx[USB_MAX_PACKET_SIZE / 2] __usb_ram;
 #define EP0_BUF_TX_SRAM_ADDR ((void *) usb_sram_addr(ep0_buf_tx))
 
 static int set_addr;
+/* Index of the USB configuration in use */
+static uint8_t current_cfg;
 /* remaining size of descriptor data to transfer */
 static int desc_left;
 /* pointer to descriptor data if any */
@@ -194,6 +200,10 @@ static void ep0_rx(void)
 			len = sizeof(dev_desc);
 			break;
 		case USB_DT_CONFIGURATION: /* Setup : Get configuration desc */
+			if (idx > 0 && usb_get_config_desc) {
+				desc = usb_get_config_desc(idx, &len);
+				break;
+			}
 			desc = __usb_desc;
 			len = USB_DESC_SIZE;
 			break;
@@ -223,6 +233,11 @@ static void ep0_rx(void)
 		}
 		ep0_send_descriptor(desc, len, type == USB_DT_CONFIGURATION ?
 						USB_DESC_SIZE : 0);
+	} else if (req == (USB_DIR_IN | (USB_REQ_GET_CONFIGURATION << 8))) {
+		ep0_buf_tx[0] = current_cfg;
+		btable_ep[0].tx_count = 1;
+		STM32_TOGGLE_EP(0, EP_TX_RX_MASK, EP_TX_RX_VALID,
+			  EP_STATUS_OUT /*null OUT transaction */);
 	} else if (req == (USB_DIR_IN | (USB_REQ_GET_STATUS << 8))) {
 		uint16_t data = 0;
 		/* Get status */
@@ -261,7 +276,7 @@ static void ep0_rx(void)
 			STM32_TOGGLE_EP(0, EP_TX_RX_MASK, EP_TX_RX_VALID, 0);
 			break;
 		case USB_REQ_SET_CONFIGURATION:
-			/* uint8_t cfg = ep0_buf_rx[1] & 0xff; */
+			current_cfg = ep0_buf_rx[1] & 0xff;
 			/* null IN for handshake */
 			btable_ep[0].tx_count = 0;
 			STM32_TOGGLE_EP(0, EP_TX_RX_MASK, EP_TX_RX_VALID, 0);
@@ -323,6 +338,7 @@ static void ep0_reset(void)
 	btable_ep[0].rx_addr = usb_sram_addr(ep0_buf_rx);
 	btable_ep[0].rx_count = 0x8000 | ((USB_MAX_PACKET_SIZE/32-1) << 10);
 	btable_ep[0].tx_count = 0;
+	current_cfg = 0;
 }
 USB_DECLARE_EP(0, ep0_tx, ep0_rx, ep0_reset);
 

@@ -344,4 +344,7 @@ extern const void * const usb_fw_version;
 extern const struct bos_context bos_ctx;
 extern const void *webusb_url;
 
+/* Return additional USB configuration descriptors */
+const uint8_t *usb_get_config_desc(uint8_t cfg, int *len) __attribute__((weak));
+
 #endif /* __CROS_EC_USB_DESCRIPTOR_H */
