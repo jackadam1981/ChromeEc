@@ -4550,7 +4550,7 @@ int cmd_usb_pd(int argc, char *argv[])
 				(r_v1->role & PD_CTRL_RESP_ROLE_EXT_POWERED) ?
 					" Externally powered\n" : "");
 	}
-	return (rv < 0 ? rv : 0);
+	return 0;
 }
 
 static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
