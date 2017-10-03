@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55e35058_7fd1f883",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-03T21:45:23Z",
+      "side": 1,
+      "message": "Maybe better to put `#define CONFIG_USB_CONFIG_COUNT 1` in include/config.h? Not a big deal I guess, if this line of CLs will never leave the branch.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "198a9b3169fb486b85d6c6eca063d509c8879dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "009d09b9_422e2621",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-03T21:45:23Z",
+      "side": 1,
+      "message": "Is this redundant? It looks like your usb_get_config_desc() routines can handle idx \u003d 0.",
+      "range": {
+        "startLine": 203,
+        "startChar": 7,
+        "endLine": 203,
+        "endChar": 14
+      },
+      "revId": "198a9b3169fb486b85d6c6eca063d509c8879dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
