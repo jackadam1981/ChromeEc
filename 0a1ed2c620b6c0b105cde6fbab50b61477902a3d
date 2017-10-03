@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef55c199_0d602650",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-10-03T16:18:02Z",
+      "side": 1,
+      "message": "parameter",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f607776f_d00c93c4",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-10-03T16:18:02Z",
+      "side": 1,
+      "message": "uint8_t? (it will get truncated to that anyway)",
+      "range": {
+        "startLine": 354,
+        "startChar": 34,
+        "endLine": 354,
+        "endChar": 37
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "304b9476_0d745460",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-10-03T16:18:02Z",
+      "side": 1,
+      "message": "desired",
+      "range": {
+        "startLine": 401,
+        "startChar": 28,
+        "endLine": 401,
+        "endChar": 35
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35e601b6_3cc11de0",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-10-03T16:18:02Z",
+      "side": 1,
+      "message": "maybe make this into a #define since it is used 3 times?",
+      "range": {
+        "startLine": 528,
+        "startChar": 26,
+        "endLine": 528,
+        "endChar": 32
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "296aae07_2991dbe2",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-10-03T16:18:02Z",
+      "side": 1,
+      "message": "should we skip board_battery_seal() if this is not successful?",
+      "range": {
+        "startLine": 537,
+        "startChar": 53,
+        "endLine": 537,
+        "endChar": 66
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d78d62a5_3e5ec231",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-10-03T16:18:02Z",
+      "side": 1,
+      "message": "check and return the success of board_battery_seal as return value of this function?",
+      "range": {
+        "startLine": 543,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 20
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
