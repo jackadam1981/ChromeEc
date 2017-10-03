@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6256f2eb_dd6cc80f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T01:12:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3984834_c6e99424",
+      "range": {
+        "startLine": 12,
+        "startChar": 54,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "1b5e2f7b18934e675424fa8e23d0fad72694318c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0784fbb7_58aca4c4",
         "filename": "board/coral/led.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-02T16:07:31Z",
       "side": 1,
       "message": "Shouldn\u0027t all these -1 values be LED_TIME_INDEFINITE ?",
+      "range": {
+        "startLine": 82,
+        "startChar": 32,
+        "endLine": 82,
+        "endChar": 34
+      },
+      "revId": "1b5e2f7b18934e675424fa8e23d0fad72694318c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bc735ce_7ab3b5ad",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T01:12:57Z",
+      "side": 1,
+      "message": "Yes, that\u0027s better. I also changed it to just LED_INDEFINITE so the lines where it\u0027s used aren\u0027t as long.",
+      "parentUuid": "0784fbb7_58aca4c4",
       "range": {
         "startLine": 82,
         "startChar": 32,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "02232bd8_8853abd4",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T01:12:57Z",
+      "side": 1,
+      "message": "The idea is to find out which STATE_CHARGING_LVL_N and the number of those states is limited by the size of the charging_lvl tables. These tables need to have 3 entries for LVL1, LVL2, and LVL3.",
+      "parentUuid": "a125191f_6ce8b1b8",
+      "range": {
+        "startLine": 167,
+        "startChar": 18,
+        "endLine": 167,
+        "endChar": 55
+      },
+      "revId": "1b5e2f7b18934e675424fa8e23d0fad72694318c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa02b41d_8cb26eda",
         "filename": "board/coral/led.c",
         "patchSetId": 1
@@ -82,6 +154,24 @@
       "writtenOn": "2017-10-02T16:07:31Z",
       "side": 1,
       "message": "I\u0027m confused by the translation of the array index into an enum led_states and how that is related to STATE_CHARGING_LVL_x.",
+      "revId": "1b5e2f7b18934e675424fa8e23d0fad72694318c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d2e9a94_13b57391",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T01:12:57Z",
+      "side": 1,
+      "message": "The first 3 states which have enum values of 0-2 are the STATE_CHARGING_LVL_N states. So the charging level table is used to determine which STATE_CHARGING_LVL_N to use. This was added to satisfy a Robo request to have the LED be red when charging but SOC \u003c\u003d 5%, green when \u003c 97%, then yellow after that.\n\nThe default scheme doesn\u0027t make this distinction and so the 3 states are really the same.",
+      "parentUuid": "fa02b41d_8cb26eda",
       "revId": "1b5e2f7b18934e675424fa8e23d0fad72694318c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
