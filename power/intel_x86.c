@@ -62,7 +62,7 @@ static int power_s5_up;       /* Chipset is sequencing up or down */
 static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
 {
 #ifdef CONFIG_ESPI_VW_SIGNALS
-	if (sleep_sig[state] > VW_SIGNAL_BASE)
+	if (espi_signal_is_vw(sleep_sig[state]) == EC_SUCCESS)
 		return espi_vw_get_wire(sleep_sig[state]);
 	else
 #endif
