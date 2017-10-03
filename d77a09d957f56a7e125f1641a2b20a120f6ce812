@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9027311_8eaa009b",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T19:10:44Z",
+      "side": 1,
+      "message": "I would have to dig into the NPCX implementation, but I\u0027m pretty sure that if there is an error in i2cxfer, it will leave the i2c in a good state. The i2c_read_string() that i mostly copied, only calls the i2c_lock() if the first transfer fails as well.",
+      "parentUuid": "017abddf_15297b63",
+      "range": {
+        "startLine": 397,
+        "startChar": 8,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a451325_acb46171",
         "filename": "board/eve/battery.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-03T18:15:37Z",
       "side": 1,
       "message": "Are reads not allowed to be larger than block_len? If so, should we return error on (block_len !\u003d len)? The caller will expect that len bytes were read into buf on success return.",
+      "range": {
+        "startLine": 403,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 18
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bd60fb2_8addc55c",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T19:10:44Z",
+      "side": 1,
+      "message": "It\u0027s my understanding that the battery will return how many bytes could be read from the block. So len could be less than block_len. This function is bascially a copy of i2c_read_string(), but here I truncate block_len to len instead of to len-1. I am fairly certain that the len-1 results in getting 1 too few bytes back.",
+      "parentUuid": "7a451325_acb46171",
       "range": {
         "startLine": 403,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4ed0847f_a66d4957",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T19:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b1ca9bd_9b9b2ef9",
+      "range": {
+        "startLine": 407,
+        "startChar": 47,
+        "endLine": 407,
+        "endChar": 48
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "970a44f5_41e41352",
         "filename": "board/eve/battery.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-10-03T18:15:37Z",
       "side": 1,
       "message": "protect_c may be uninitialized, if board_battery_read_flash() fails.",
+      "range": {
+        "startLine": 532,
+        "startChar": 5,
+        "endLine": 532,
+        "endChar": 14
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb8274a0_f890d1dd",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T19:10:44Z",
+      "side": 1,
+      "message": "Yes, I added a check for the previous read, so that if the read fails, it just attempts to seal and then returns an error.",
+      "parentUuid": "970a44f5_41e41352",
       "range": {
         "startLine": 532,
         "startChar": 5,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b2412887_38fc98c3",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T19:10:44Z",
+      "side": 1,
+      "message": "I went ahead and put the read inside the block where the write takes place. If the write doesn\u0027t need to take place, then I simply copy the value into the static variable.",
+      "parentUuid": "f970e24b_6ed1f476",
+      "range": {
+        "startLine": 539,
+        "startChar": 5,
+        "endLine": 539,
+        "endChar": 29
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b36ac6de_9e08123f",
         "filename": "board/eve/battery.c",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2017-10-03T18:15:37Z",
       "side": 1,
       "message": "This return value will be used as the host command result, so it should be EC_RES_* (EC_RES_INVALID_PARAM seems appropriate).",
+      "range": {
+        "startLine": 573,
+        "startChar": 9,
+        "endLine": 573,
+        "endChar": 31
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8a6d5d5_07af00c9",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T19:10:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b36ac6de_9e08123f",
       "range": {
         "startLine": 573,
         "startChar": 9,
