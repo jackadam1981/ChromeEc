@@ -72,49 +72,57 @@ static int keyscan_read_fdt_matrix(struct keyscan_info *keyscan,
 	FILE *f;
 	int err;
 
-	/* Allocate memory for key matrix */
-	if (stat(path, &buf)) {
-		fprintf(stderr, "Cannot stat key matrix file '%s'\n", path);
-		return -1;
-	}
-	keyscan->matrix_count = buf.st_size / 4;
-	keyscan->matrix = calloc(keyscan->matrix_count,
-				 sizeof(*keyscan->matrix));
-	if (!keyscan->matrix) {
-		fprintf(stderr, "Out of memory for key matrix\n");
-		return -1;
-	}
-
 	f = fopen(path, "rb");
 	if (!f) {
 		fprintf(stderr, "Cannot open key matrix file '%s'\n", path);
 		return -1;
 	}
 
-	/* Now read the data */
-	upto = err = 0;
-	while (fread(&word, 1, sizeof(word), f) == sizeof(word)) {
-		struct matrix_entry *matrix = &keyscan->matrix[upto++];
+	if (stat(path, &buf) == 0) {
+		/* Allocate memory for key matrix */
+		keyscan->matrix_count = buf.st_size / 4;
+		keyscan->matrix = calloc(keyscan->matrix_count,
+					 sizeof(*keyscan->matrix));
 
-		word = be32toh(word);
-		matrix->row = word >> 24;
-		matrix->col = (word >> 16) & 0xff;
-		matrix->keycode = word & 0xffff;
+		if (keyscan->matrix) {
+			/* Now read the data */
+			upto = err = 0;
+			while (fread(&word, 1, sizeof(word), f) ==
+				sizeof(word)) {
+				struct matrix_entry *matrix =
+					&keyscan->matrix[upto++];
 
-		/* Hard-code some sanity limits for now */
-		if (matrix->row >= KEYBOARD_ROWS ||
-		    matrix->col >= KEYBOARD_COLS) {
-			fprintf(stderr, "Matrix pos out of range (%d,%d)\n",
-				matrix->row, matrix->col);
-			return -1;
+				word = be32toh(word);
+				matrix->row = word >> 24;
+				matrix->col = (word >> 16) & 0xff;
+				matrix->keycode = word & 0xffff;
+
+				/* Hard-code some sanity limits for now */
+				if (matrix->row >= KEYBOARD_ROWS ||
+						matrix->col >= KEYBOARD_COLS) {
+					fprintf(stderr,
+						"Matrix pos out of range (%d,%d)\n",
+						matrix->row, matrix->col);
+					err = -1;
+					break;
+				}
+			}
+			if (!err && upto != keyscan->matrix_count) {
+				fprintf(stderr,
+					"Read mismatch from matrix file '%s'\n",
+					path);
+				err = -1;
+			}
+		} else {
+			fprintf(stderr, "Out of memory for key matrix\n");
+			err = -1;
 		}
-	}
-	fclose(f);
-	if (!err && upto != keyscan->matrix_count) {
-		fprintf(stderr, "Read mismatch from matrix file '%s'\n", path);
+	} else {
+		fprintf(stderr, "Cannot stat key matrix file '%s'\n", path);
 		err = -1;
 	}
 
+	fclose(f);
 	return err;
 }
 
@@ -498,10 +506,8 @@ static void keyscan_get_input(int fd, char *input, int max_len, int wait)
 	int len;
 
 	usleep(wait);
-	input[0] = '\0';
 	len = read(fd, input, max_len - 1);
-	if (len > 0)
-		input[len] = '\0';
+	input[len >= 0 ? len : 0] = '\0';
 }
 
 static int keyscan_send_sequence(struct keyscan_info *keyscan,
@@ -634,8 +640,7 @@ static int keyscan_run_tests(struct keyscan_info *keyscan)
 		err = run_test(keyscan, test);
 		any_err |= err;
 		if (err) {
-			printf("%d: %s: ", testnum, test->name);
-			printf(" : %s\n", err ? "FAIL" : "pass");
+			printf("%d: %s: FAIL\n", testnum, test->name);
 		}
 	}
 
