@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "bdd943be_707aac2d",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-03T20:34:54Z",
+      "side": 1,
+      "message": "i2c_read_string() is tailored to the smart battery spec:\n\nstring a block of chars (32 byte maximum) where the first byte indicates the number of chars in\nthe block and is exclusive (e.g. {08,\u0027M\u0027,\u0027y\u0027,\u0027B\u0027,\u0027a\u0027,\u0027t\u0027,\u0027t\u0027,\u0027C\u0027,\u0027o\u0027} is a block containing nine chars, the first (08) is\nthe length of the string and the second through the ninth chars form the string, \"MyBattCo\")\n\nAre you sure reads to mfgacc work in the same way w.r.t. block length? It\u0027s suspicious because we\u0027re reading binary data here, not null terminated strings.\n\ncallers to i2c_read_string() just expect to get back a null terminated string, so it\u0027s reasonable to not read back all len characters, if the string isn\u0027t log enough. But this is a different case, if I call board_battery_read_mfgacc(..., 4), and the function returns success, there should be four read bytes in my buffer.",
+      "parentUuid": "5bd60fb2_8addc55c",
+      "range": {
+        "startLine": 403,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 18
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b1ca9bd_9b9b2ef9",
         "filename": "board/eve/battery.c",
         "patchSetId": 2
