@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85edb7aa_78bf3c30",
+        "filename": "board/coral/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-03T20:48:19Z",
+      "side": 1,
+      "message": "enums always start at 0",
+      "revId": "98e170d864a110da1ed56432595cb5440320ba70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f00863a_aec030ed",
+        "filename": "board/coral/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-03T20:48:19Z",
+      "side": 1,
+      "message": "Is the brightness array guaranteed to only have one non-zero entry?",
+      "range": {
+        "startLine": 142,
+        "startChar": 33,
+        "endLine": 142,
+        "endChar": 34
+      },
+      "revId": "98e170d864a110da1ed56432595cb5440320ba70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b615d80_015f42aa",
+        "filename": "board/coral/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-03T20:48:19Z",
+      "side": 1,
+      "message": "the assumption is that charge_level can only be 100 max so i effectively is LVL_3?",
+      "revId": "98e170d864a110da1ed56432595cb5440320ba70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4aa82d83_260b0337",
+        "filename": "board/coral/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-03T20:48:19Z",
+      "side": 1,
+      "message": "Where are you getting those sku numbers. They don\u0027t line up with what I am seeing.",
+      "range": {
+        "startLine": 260,
+        "startChar": 5,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "98e170d864a110da1ed56432595cb5440320ba70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
