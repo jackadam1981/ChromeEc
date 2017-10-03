@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3885adb8_e4117dab",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T16:39:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef55c199_0d602650",
+      "range": {
+        "startLine": 25,
+        "startChar": 22,
+        "endLine": 25,
+        "endChar": 30
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f607776f_d00c93c4",
         "filename": "board/eve/battery.c",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "9c42f281_7441ddd9",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T16:39:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "304b9476_0d745460",
+      "range": {
+        "startLine": 401,
+        "startChar": 28,
+        "endLine": 401,
+        "endChar": 35
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35e601b6_3cc11de0",
         "filename": "board/eve/battery.c",
         "patchSetId": 1
@@ -91,6 +139,30 @@
       "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78e80627_265875cb",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T16:39:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35e601b6_3cc11de0",
+      "range": {
+        "startLine": 528,
+        "startChar": 26,
+        "endLine": 528,
+        "endChar": 32
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "02a026b3_916dca0a",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T16:39:47Z",
+      "side": 1,
+      "message": "I think if the unseal was successful, it is still probably best to attempt the seal operation. The only downside I can see is that it potentially takes 100 msec longer to complete.",
+      "parentUuid": "296aae07_2991dbe2",
+      "range": {
+        "startLine": 537,
+        "startChar": 53,
+        "endLine": 537,
+        "endChar": 66
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d78d62a5_3e5ec231",
         "filename": "board/eve/battery.c",
         "patchSetId": 1
@@ -128,6 +224,30 @@
       "writtenOn": "2017-10-03T16:18:02Z",
       "side": 1,
       "message": "check and return the success of board_battery_seal as return value of this function?",
+      "range": {
+        "startLine": 543,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 20
+      },
+      "revId": "0a1ed2c620b6c0b105cde6fbab50b61477902a3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e87b8d10_bc49d58b",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T16:39:47Z",
+      "side": 1,
+      "message": "I added a check for the return value and return an error code if it\u0027s non-zero.",
+      "parentUuid": "d78d62a5_3e5ec231",
       "range": {
         "startLine": 543,
         "startChar": 2,
