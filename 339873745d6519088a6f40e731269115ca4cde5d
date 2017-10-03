@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5e3c276_a657d0e7",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-03T21:50:07Z",
+      "side": 1,
+      "message": "I\u0027d change this to a single \u0027if\u0027 statement.",
+      "range": {
+        "startLine": 651,
+        "startChar": 0,
+        "endLine": 657,
+        "endChar": 3
+      },
+      "revId": "339873745d6519088a6f40e731269115ca4cde5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
