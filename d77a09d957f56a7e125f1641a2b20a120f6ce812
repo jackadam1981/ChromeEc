@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "7a451325_acb46171",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-03T18:15:37Z",
+      "side": 1,
+      "message": "Are reads not allowed to be larger than block_len? If so, should we return error on (block_len !\u003d len)? The caller will expect that len bytes were read into buf on success return.",
+      "range": {
+        "startLine": 403,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 18
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b1ca9bd_9b9b2ef9",
         "filename": "board/eve/battery.c",
         "patchSetId": 2
@@ -48,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "970a44f5_41e41352",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-03T18:15:37Z",
+      "side": 1,
+      "message": "protect_c may be uninitialized, if board_battery_read_flash() fails.",
+      "range": {
+        "startLine": 532,
+        "startChar": 5,
+        "endLine": 532,
+        "endChar": 14
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f970e24b_6ed1f476",
         "filename": "board/eve/battery.c",
         "patchSetId": 2
@@ -68,6 +114,29 @@
       "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b36ac6de_9e08123f",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-03T18:15:37Z",
+      "side": 1,
+      "message": "This return value will be used as the host command result, so it should be EC_RES_* (EC_RES_INVALID_PARAM seems appropriate).",
+      "range": {
+        "startLine": 573,
+        "startChar": 9,
+        "endLine": 573,
+        "endChar": 31
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
