@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "0cb886dc_efac1923",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T21:21:37Z",
+      "side": 1,
+      "message": "I used the console command battmfgacc and found that it consistently returned one fewer bytes than expected when I attempted reads in the flash space 0x4000. It does work for registers with addresses of 0x50, 0x51, etc. But will return a 0 if you pass it an address of 0x482c with a length of 1. If you pass it a length of 2, it will return 0x15 0x00.\n\nWhile it\u0027s not in this version, I had a console command to read/write the flash area and I found that it returned the expected values. The function which sb_read_mfgacc() in driver/battery/smart.c also calls i2c_read_string(). I duplicated the function here initially because I thought we were going to have a kernel script that did everything in i2cxfer calls, but it also has the benefit of working correctly for the flash area without have to ask for 1 more byte than I really need.",
+      "parentUuid": "f00c708d_f8ab8e47",
+      "range": {
+        "startLine": 403,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 18
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b1ca9bd_9b9b2ef9",
         "filename": "board/eve/battery.c",
         "patchSetId": 2
