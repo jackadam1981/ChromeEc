@@ -65,6 +65,17 @@ struct tpm_cmd_header {
 } __packed;
 
 /*
+ * This function allows to process a TPM command coming from elsewhere, not
+ * from the communications interface.
+ *
+ * A common use case would be making cryptographic calculation on task
+ * contexts where stack the size is not large enough, for instance console
+ * commands. This function will block to let the TPM task a chance to run to
+ * execute the command and return the result in the same buffer.
+ */
+void tpm_alt_extension(struct tpm_cmd_header *tpmh, size_t buffer_size);
+
+/*
  * The only TPM2 command we care about on the driver level, see
  * crosbug.com/p/55667 for detals.
  */
