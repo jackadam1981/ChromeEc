@@ -22,6 +22,30 @@
       "revId": "207b3b4e5fb4a1397a15f0b22061ea025e9ff4a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3257898e_c8103bf3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-03T15:55:59Z",
+      "side": 1,
+      "message": "Once you run \u0027ectool led power auto\u0027, any power state transition should restore the signal.\n\nThis is a known limitation. On Fizz, LED is not run by a task or a hook like other boards typically do. It\u0027s run by a deferred call. This saves CPU and RAM resources. ectool led command is handled by the common LED code. So, it\u0027s a bit tedious to fix it.\n\nIf this is affecting a factory test, please file a bug.",
+      "parentUuid": "db7e75a4_569dfa23",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 22
+      },
+      "revId": "207b3b4e5fb4a1397a15f0b22061ea025e9ff4a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
