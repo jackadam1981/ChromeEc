@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "cae288e0_9afbb12d",
+        "filename": "board/eve/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-10-03T21:18:38Z",
+      "side": 1,
+      "message": "Maybe add a comment just so anyone who does look at this as an example understands the specific use case here.",
+      "parentUuid": "f00c708d_f8ab8e47",
+      "range": {
+        "startLine": 403,
+        "startChar": 1,
+        "endLine": 405,
+        "endChar": 18
+      },
+      "revId": "d77a09d957f56a7e125f1641a2b20a120f6ce812",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b1ca9bd_9b9b2ef9",
         "filename": "board/eve/battery.c",
         "patchSetId": 2
