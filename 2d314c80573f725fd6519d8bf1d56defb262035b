@@ -16,6 +16,24 @@
       "revId": "2d314c80573f725fd6519d8bf1d56defb262035b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26bb2ded_0dc5e7e6",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-03T00:57:55Z",
+      "side": 1,
+      "message": "This file wasn\u0027t supposed to be part of this CL. I\u0027ve removed the file and put this changes back in the next CL.",
+      "parentUuid": "fd3fde5d_1245136f",
+      "revId": "2d314c80573f725fd6519d8bf1d56defb262035b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
