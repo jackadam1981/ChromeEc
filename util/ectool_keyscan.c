@@ -72,22 +72,23 @@ static int keyscan_read_fdt_matrix(struct keyscan_info *keyscan,
 	FILE *f;
 	int err;
 
-	/* Allocate memory for key matrix */
+	f = fopen(path, "rb");
+	if (!f) {
+		fprintf(stderr, "Cannot open key matrix file '%s'\n", path);
+		return -1;
+	}
+
 	if (stat(path, &buf)) {
 		fprintf(stderr, "Cannot stat key matrix file '%s'\n", path);
 		return -1;
 	}
+
+	/* Allocate memory for key matrix */
 	keyscan->matrix_count = buf.st_size / 4;
 	keyscan->matrix = calloc(keyscan->matrix_count,
 				 sizeof(*keyscan->matrix));
 	if (!keyscan->matrix) {
 		fprintf(stderr, "Out of memory for key matrix\n");
-		return -1;
-	}
-
-	f = fopen(path, "rb");
-	if (!f) {
-		fprintf(stderr, "Cannot open key matrix file '%s'\n", path);
 		return -1;
 	}
 
@@ -500,8 +501,7 @@ static void keyscan_get_input(int fd, char *input, int max_len, int wait)
 	usleep(wait);
 	input[0] = '\0';
 	len = read(fd, input, max_len - 1);
-	if (len > 0)
-		input[len] = '\0';
+	input[len] = '\0';
 }
 
 static int keyscan_send_sequence(struct keyscan_info *keyscan,
@@ -635,7 +635,7 @@ static int keyscan_run_tests(struct keyscan_info *keyscan)
 		any_err |= err;
 		if (err) {
 			printf("%d: %s: ", testnum, test->name);
-			printf(" : %s\n", err ? "FAIL" : "pass");
+			printf(" : %s\n", "FAIL");
 		}
 	}
 
