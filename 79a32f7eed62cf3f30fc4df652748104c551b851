@@ -22,6 +22,30 @@
       "revId": "79a32f7eed62cf3f30fc4df652748104c551b851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3788bae3_c15f99d7",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-04T18:24:16Z",
+      "side": 1,
+      "message": "no, the private key is OK (https://chromium.googlesource.com/chromiumos/platform/ec/+/master/extra/rma_reset/rma_reset.c#31), it\u0027s just the public key was wrong before this patch.",
+      "parentUuid": "c6bf82b2_310cbc1c",
+      "range": {
+        "startLine": 353,
+        "startChar": 8,
+        "endLine": 353,
+        "endChar": 41
+      },
+      "revId": "79a32f7eed62cf3f30fc4df652748104c551b851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
