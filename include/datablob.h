@@ -19,12 +19,8 @@
 
 static const uint8_t datablob_magic[] = { 0x43, 0x42, 0x49 };  /* 'C' 'B' 'I' */
 
-#define DATABLOB_ERR_CORRUPT	-1
-#define DATABLOB_ERR_INVALID	-2
-#define DATABLOB_ERR_READ	-3
-
-#define DATABLOB_CACHE_INVALID	0  /* Contents in flash and RAM match */
-#define DATABLOB_CACHE_SYNCD	1  /* RAM contents are old */
+#define DATABLOB_CACHE_INVALID	0  /* RAM contents are old */
+#define DATABLOB_CACHE_SYNCD	1  /* Contents in flash and RAM match */
 #define DATABLOB_CACHE_DIRTY	2  /* Flash contents are old */
 
 struct datablob_header {
