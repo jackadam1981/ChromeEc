@@ -4,6 +4,7 @@
  */
 
 #include "config.h"
+#include "nvram.h"
 #include "rwsig.h"
 
 #define STRINGIFY0(name) #name
@@ -417,8 +418,12 @@ SECTIONS
 	 * __image_size is stored in the struct image_data header and used
 	 * in hash calcuations.
 	 */
-	__flash_used = LOADADDR(.data) + SIZEOF(.data) - ORIGIN(FLASH);
-	__image_size = __flash_used;
+	__image_size = LOADADDR(.data) + SIZEOF(.data) - ORIGIN(FLASH);
+	__flash_used = __image_size
+#if defined(CONFIG_NVRAM) && defined(SECTION_IS_RW)
+			+ NVRAM_BLOCK_SIZE
+#endif
+	;
 
 #ifdef CONFIG_FLASH
         /*

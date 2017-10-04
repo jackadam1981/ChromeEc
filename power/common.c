@@ -16,6 +16,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "nvram.h"
 #include "intel_x86.h"
 #include "lpc.h"
 #include "power.h"
