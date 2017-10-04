@@ -2899,6 +2899,9 @@
 /* Do not try hold I/O pins at frozen level during deep sleep */
 #undef CONFIG_NO_PINHOLD
 
+/* Enable NVRAM */
+#undef CONFIG_NVRAM
+
 /* Support one-wire interface */
 #undef CONFIG_ONEWIRE
 
