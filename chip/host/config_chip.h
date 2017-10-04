@@ -10,7 +10,7 @@
 
 /* Memory mapping */
 #if !defined(TEST_NVMEM) && !defined(TEST_CR50_FUZZ)
-#define CONFIG_FLASH_SIZE 0x00020000
+#define CONFIG_FLASH_SIZE 0x00080000
 #define CONFIG_FLASH_BANK_SIZE 0x1000
 #else
 #define CONFIG_FLASH_SIZE (512 * 1024)
@@ -54,5 +54,9 @@ extern char __host_flash[CONFIG_FLASH_SIZE];
 #define GPIO_PIN_MASK(p, m) .port = GPIO_##p, .mask = (m)
 
 #define I2C_PORT_COUNT 1
+
+#define NVMEM_BLOCK_SIZE	0x1000
+#define NVMEM_FLASH_OFF		0x40000
+#define NVMEM_RECORD_SIZE	256
 
 #endif /* __CROS_EC_CONFIG_CHIP_H */
