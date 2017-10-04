@@ -77,6 +77,8 @@ int charger_set_input_current(int input_current)
 	int rv;
 	uint16_t reg = AC_CURRENT_TO_REG(input_current);
 
+	CPRINTF("%s(%d)\n", __func__, input_current);
+
 	rv = raw_write16(ISL923X_REG_ADAPTER_CURRENT1, reg);
 	if (rv)
 		return rv;
@@ -107,6 +109,8 @@ int charger_set_otg_current_voltage(int output_current, int output_voltage)
 	uint16_t current_reg = (output_current / ISL923X_OTG_CURRENT_STEP)
 			<< ISL923X_OTG_CURRENT_SHIFT;
 	int current_prev;
+
+	CPRINTF("%s(i=%d v=%d)\n", __func__, output_current, output_voltage);
 
 	/* Read currently provided current. */
 	rv = raw_read16(ISL923X_REG_OTG_CURRENT, &current_prev);
