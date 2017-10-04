@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d82cf3db_b099d313",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-10-04T10:19:57Z",
+      "side": 1,
+      "message": "Will move it under CONFIG_LPC",
+      "parentUuid": "9da5ac8d_7872e0ee",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "7426c56fae33380691dec701c2cd8373d3231c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23b9bef2_49fd27cb",
         "filename": "common/host_event_commands.c",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-09-25T03:47:33Z",
       "side": 1,
       "message": "This should still go under CONFIG_LPC.",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 1
+      },
+      "revId": "7426c56fae33380691dec701c2cd8373d3231c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5b5316_ee165a8f",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-10-04T10:19:57Z",
+      "side": 1,
+      "message": "ok..",
+      "parentUuid": "23b9bef2_49fd27cb",
       "range": {
         "startLine": 426,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "76a7909c_91a6f46c",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-10-04T10:19:57Z",
+      "side": 1,
+      "message": "Ok",
+      "parentUuid": "b8d55cd7_d7a0e41f",
+      "range": {
+        "startLine": 460,
+        "startChar": 1,
+        "endLine": 463,
+        "endChar": 17
+      },
+      "revId": "7426c56fae33380691dec701c2cd8373d3231c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64049710_0b83fef4",
         "filename": "power/common.c",
         "patchSetId": 7
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "60a3ec4f_5f78346e",
+        "filename": "power/common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-10-04T10:19:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64049710_0b83fef4",
+      "revId": "7426c56fae33380691dec701c2cd8373d3231c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa9d44a4_c0231c1d",
         "filename": "power/common.c",
         "patchSetId": 7
@@ -99,6 +189,30 @@
       "writtenOn": "2017-09-25T03:47:33Z",
       "side": 1,
       "message": "Is there a reason why we would not want to clear the EVENT_WAKE always?",
+      "range": {
+        "startLine": 219,
+        "startChar": 3,
+        "endLine": 219,
+        "endChar": 17
+      },
+      "revId": "7426c56fae33380691dec701c2cd8373d3231c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "928cd096_8e17e3e9",
+        "filename": "power/common.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-10-04T10:19:57Z",
+      "side": 1,
+      "message": "No issues identified yet. But this would make sure, this patch introduces no impact on platforms which relies on older host commands (0x87, 0x88, 0x89, 0x8A, 0x8B, 0x8C, 0x8D, 0x8E,0x8F)",
+      "parentUuid": "fa9d44a4_c0231c1d",
       "range": {
         "startLine": 219,
         "startChar": 3,
