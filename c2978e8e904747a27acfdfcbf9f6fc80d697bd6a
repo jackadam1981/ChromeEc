@@ -22,6 +22,30 @@
       "revId": "c2978e8e904747a27acfdfcbf9f6fc80d697bd6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaa2344b_d4bc2f65",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-10-04T16:22:28Z",
+      "side": 1,
+      "message": "Sorry, I misunderstood what you wanted. I\u0027ll add the queue with one buffered message.",
+      "parentUuid": "41254ad4_e58ae999",
+      "range": {
+        "startLine": 445,
+        "startChar": 0,
+        "endLine": 445,
+        "endChar": 68
+      },
+      "revId": "c2978e8e904747a27acfdfcbf9f6fc80d697bd6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
