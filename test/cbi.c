@@ -8,8 +8,10 @@
 #include "common.h"
 #include "console.h"
 #include "cros_board_info.h"
+#include "flash.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "nvmem.h"
 #include "test_util.h"
 #include "util.h"
 
@@ -131,9 +133,88 @@ static int test_cbi(void)
 	return EC_SUCCESS;
 }
 
+const int record_size = NVMEM_RECORD_SIZE;
+
+static int test_nvmem(void)
+{
+	uint8_t d8, size, out;
+	uint8_t buf[NVMEM_RECORD_SIZE];
+	int offset;
+	int i;
+
+	nvmem_reset();
+	TEST_ASSERT(nvmem_get_cache_status() == DATABLOB_CACHE_INVALID);
+	TEST_ASSERT(nvmem_get_offset() == 0);
+	offset = nvmem_flash_offset;
+
+	/* Write first (before initialization). */
+	d8 = 0;
+	size = sizeof(d8);
+	/* Write through to the end of the block. Offset should move along. */
+	for (i = 0; i < nvmem_block_size / record_size; i++) {
+		TEST_ASSERT(nvmem_set(0, &d8, sizeof(d8)) == EC_SUCCESS);
+		TEST_ASSERT(nvmem_get_cache_status() == DATABLOB_CACHE_DIRTY);
+		TEST_ASSERT(nvmem_get(0, &out, &size) == EC_SUCCESS);
+		TEST_ASSERT(out == d8);
+		TEST_ASSERT(size == sizeof(d8));
+		TEST_ASSERT(nvmem_write() == EC_SUCCESS);
+		TEST_ASSERT(nvmem_get_cache_status() == DATABLOB_CACHE_SYNCD);
+		TEST_ASSERT(nvmem_get_offset() == offset + record_size);
+		offset = nvmem_get_offset();
+		d8++;
+	}
+	/* Write another. It should be written to the first slot. */
+	TEST_ASSERT(nvmem_set(0, &d8, sizeof(d8)) == EC_SUCCESS);
+	TEST_ASSERT(nvmem_write() == EC_SUCCESS);
+	TEST_ASSERT(nvmem_get_offset() == nvmem_flash_offset + record_size);
+	/* Write the same data. Cache stays in SYNCD. Offset shouldn't move. */
+	TEST_ASSERT(nvmem_set(0, &d8, sizeof(d8)) == EC_SUCCESS);
+	TEST_ASSERT(nvmem_get_cache_status() == DATABLOB_CACHE_SYNCD);
+	TEST_ASSERT(nvmem_write() == EC_SUCCESS);
+	TEST_ASSERT(nvmem_get_offset() == nvmem_flash_offset + record_size);
+	offset = nvmem_get_offset();
+	/* Back-to-back set. Last value should prevail. */
+	d8++;
+	TEST_ASSERT(nvmem_set(0, &d8, sizeof(d8)) == EC_SUCCESS);
+	d8++;
+	TEST_ASSERT(nvmem_set(0, &d8, sizeof(d8)) == EC_SUCCESS);
+	TEST_ASSERT(nvmem_get(0, &out, &size) == EC_SUCCESS);
+	TEST_ASSERT(out == d8);
+	TEST_ASSERT(nvmem_write() == EC_SUCCESS);
+	TEST_ASSERT(nvmem_get_offset() == offset + record_size);
+
+	/* Read first (before initialization). */
+	nvmem_reset();
+	TEST_ASSERT(nvmem_get(0, &out, &size) == EC_ERROR_NOT_FOUND);
+
+	/*
+	 * Corrupted Block.
+	 *
+	 * Free records should never be followed by a valid record. So,
+	 * Free|Good|Free|... should never happen. It's treated as corruption.
+	 */
+	nvmem_reset();
+	d8 = 0;
+	TEST_ASSERT(nvmem_set(0, &d8, sizeof(d8)) == EC_SUCCESS);
+	TEST_ASSERT(nvmem_write() == EC_SUCCESS);
+	/* Copy a valid record to the next slot. */
+	flash_read(nvmem_flash_offset, sizeof(buf), buf);
+	nvmem_reset();
+	flash_write(nvmem_flash_offset + record_size, sizeof(buf), buf);
+	/* Get data from invalid block. */
+	TEST_ASSERT(nvmem_get(0, &d8, &size) == EC_ERROR_INVAL);
+	/* Set data to invalid block. This succeeds. */
+	TEST_ASSERT(nvmem_set(0, &d8, sizeof(d8)) == EC_SUCCESS);
+	TEST_ASSERT(nvmem_write() == EC_SUCCESS);
+	TEST_ASSERT(nvmem_get_offset() == nvmem_flash_offset + record_size);
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, char **argv)
 {
 	RUN_TEST(test_cbi);
+	RUN_TEST(test_nvmem);
 
 	test_print_result();
 }
