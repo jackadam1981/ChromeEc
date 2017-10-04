@@ -12,6 +12,7 @@
 #include "bd99992gw.h"
 #include "board_config.h"
 #include "button.h"
+#include "cbi.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
@@ -449,6 +450,8 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
+	CPRINTF("Board Version: 0x%x", board_get_version());
+
 	/* Provide AC status to the PCH */
 	board_extpower();
 
@@ -584,4 +587,9 @@ int fan_percent_to_rpm(int fan, int pct)
 			fan_table[current_level].rpm);
 
 	return fan_table[current_level].rpm;
+}
+
+int board_get_version(void)
+{
+	return cbi_get_board_version();
 }
