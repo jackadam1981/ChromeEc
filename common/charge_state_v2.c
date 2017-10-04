@@ -545,6 +545,8 @@ static int charge_request(int voltage, int current)
 	int r1 = EC_SUCCESS, r2 = EC_SUCCESS, r3 = EC_SUCCESS;
 	static int __bss_slow prev_volt, prev_curr;
 
+	CPRINTS("%s(%d, %d)", __func__, voltage, current);
+
 	if (!voltage || !current) {
 #ifdef CONFIG_CHARGER_NARROW_VDC
 		current = 0;
@@ -1244,6 +1246,8 @@ int charge_is_consuming_full_input_current(void)
 
 int charge_set_input_current_limit(int ma, int mv)
 {
+	CPRINTS("%s(%d,%d)", __func__, ma, mv);
+
 	/*
 	 * If battery is not present and we are not locked, then allow system
 	 * to pull as much input current as needed. Yes, we might overcurrent
