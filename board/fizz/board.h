@@ -129,6 +129,12 @@
 
 /* I2C addresses */
 #define I2C_ADDR_TCPC0		0x16
+#define I2C_ADDR_EEPROM		0xa0
+
+/* EEPROM offsets */
+#define EEPROM_OFFSET_BOARD_ID	0
+#define EEPROM_OFFSET_SKU_ID	1
+#define EEPROM_OFFSET_OEM_ID	2
 
 /* Verify and jump to RW image on boot */
 #define CONFIG_VBOOT_EFS
@@ -234,6 +240,7 @@ void board_set_tcpc_power_mode(int port, int mode);
 int board_get_battery_soc(void);
 void led_alert(int enable);
 void led_critical(void);
+int board_get_sku_id(void);
 
 #endif /* !__ASSEMBLER__ */
 

@@ -374,6 +374,10 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
+	board_get_version();
+	board_get_sku_id();
+	board_get_oem_id();
+
 	/* Provide AC status to the PCH */
 	board_extpower();
 
@@ -449,13 +453,6 @@ int64_t get_time_dsw_pwrok(void)
 
 int board_has_working_reset_flags(void)
 {
-	int version = system_get_board_version();
-
-	/* Board Rev0 will lose reset flags on power cycle. */
-	if (version == 0)
-		return 0;
-
-	/* All other board versions should have working reset flags */
 	return 1;
 }
 
@@ -464,3 +461,42 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_LED_GREEN] = { 5, PWM_CONFIG_DSLEEP, 100 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+static int get_board_info(const char *desc, int offset)
+{
+	int data;
+	if (i2c_read8(NPCX_I2C_PORT0_1, I2C_ADDR_EEPROM, EEPROM_OFFSET_BOARD_ID,
+		      &data)) {
+		CPRINTS("Failed to get %s", desc);
+		return -1;
+	}
+	CPRINTS("%s: %d", desc, data);
+	return data;
+}
+
+int board_get_version(void)
+{
+	static int ver = -1;
+	if (ver != -1)
+		return ver;
+	ver = get_board_info("board version", EEPROM_OFFSET_BOARD_ID);
+	return ver;
+}
+
+int board_get_sku_id(void)
+{
+	static int sku = -1;
+	if (sku != -1)
+		return sku;
+	sku = get_board_info("SKU_ID", EEPROM_OFFSET_SKU_ID);
+	return sku;
+}
+
+int board_get_oem_id(void)
+{
+	static int oem = -1;
+	if (oem != -1)
+		return oem;
+	oem = get_board_info("OEM_ID", EEPROM_OFFSET_OEM_ID);
+	return oem;
+}
