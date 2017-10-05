@@ -15,6 +15,7 @@
 #include "ec_commands.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "system.h"
 #include "task.h"
 #include "time.h"
 #include "util.h"
@@ -60,7 +61,31 @@ static enum usb_switch usb_switch_state[BD9995X_CHARGE_PORT_COUNT] = {
 	USB_SWITCH_DISCONNECT,
 	USB_SWITCH_DISCONNECT,
 };
+
+static int bd9995x_get_bc12_ilim(int charge_supplier)
+{
+	switch (charge_supplier) {
+	case CHARGE_SUPPLIER_BC12_CDP:
+		return 1500;
+	case CHARGE_SUPPLIER_BC12_DCP:
+		return 2000;
+	case CHARGE_SUPPLIER_BC12_SDP:
+		return 900;
+	case CHARGE_SUPPLIER_OTHER:
+#ifdef CONFIG_CHARGE_RAMP
+		return 2400;
+#else
+		/*
+		 * Setting the higher limit of current may result in an
+		 * anti-collapse hence limiting the current to 1A.
+		 */
+		return 1000;
 #endif
+	default:
+		return 500;
+	}
+}
+#endif /* HAS_TASK_USB_CHG */
 
 static inline int ch_raw_read16(int cmd, int *param,
 				enum bd9995x_command map_cmd)
@@ -482,6 +507,25 @@ static int usb_charger_process(enum bd9995x_charge_port port)
 	/* No need for the task to schedule a wait event */
 	return 0;
 }
+
+#if defined(CONFIG_CHARGE_RAMP) || defined(CONFIG_CHARGE_RAMP_HW)
+int chg_ramp_allowed(int supplier)
+{
+	/* Don't allow ramping in RO when write protected */
+	if (!system_is_in_rw() && system_is_locked())
+		return 0;
+	else
+		return supplier == CHARGE_SUPPLIER_BC12_DCP ||
+		       supplier == CHARGE_SUPPLIER_BC12_SDP ||
+		       supplier == CHARGE_SUPPLIER_BC12_CDP ||
+		       supplier == CHARGE_SUPPLIER_PROPRIETARY;
+}
+
+int chg_ramp_max(int supplier, int sup_curr)
+{
+	return bd9995x_get_bc12_ilim(supplier);
+}
+#endif /* CONFIG_CHARGE_RAMP_HW */
 #endif /* HAS_TASK_USB_CHG */
 
 /* chip specific interfaces */
@@ -1036,30 +1080,6 @@ int bd9995x_get_battery_voltage(void)
 }
 
 #ifdef HAS_TASK_USB_CHG
-int bd9995x_get_bc12_ilim(int charge_supplier)
-{
-	switch (charge_supplier) {
-	case CHARGE_SUPPLIER_BC12_CDP:
-		return 1500;
-	case CHARGE_SUPPLIER_BC12_DCP:
-		return 2000;
-	case CHARGE_SUPPLIER_BC12_SDP:
-		return 900;
-	case CHARGE_SUPPLIER_OTHER:
-#ifdef CONFIG_CHARGE_RAMP
-		return 2400;
-#else
-		/*
-		 * Setting the higher limit of current may result in an
-		 * anti-collapse hence limiting the current to 1A.
-		 */
-		return 1000;
-#endif
-	default:
-		return 500;
-	}
-}
-
 int bd9995x_bc12_enable_charging(enum bd9995x_charge_port port, int enable)
 {
 	int rv;

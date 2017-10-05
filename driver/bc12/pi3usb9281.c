@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "pi3usb9281.h"
+#include "system.h"
 #include "task.h"
 #include "timer.h"
 #include "usb_charge.h"
@@ -431,3 +432,32 @@ void usb_charger_task(void *u)
 		}
 	}
 }
+
+#if defined(CONFIG_CHARGE_RAMP) || defined(CONFIG_CHARGE_RAMP_HW)
+int chg_ramp_allowed(int supplier)
+{
+	/* Don't allow ramping in RO when write protected */
+	if (!system_is_in_rw() && system_is_locked())
+		return 0;
+	else
+		return supplier == CHARGE_SUPPLIER_BC12_DCP ||
+		       supplier == CHARGE_SUPPLIER_BC12_SDP ||
+		       supplier == CHARGE_SUPPLIER_BC12_CDP ||
+		       supplier == CHARGE_SUPPLIER_PROPRIETARY;
+}
+
+int chg_ramp_max(int supplier, int sup_curr)
+{
+	switch (supplier) {
+	case CHARGE_SUPPLIER_BC12_DCP:
+		return 2000;
+	case CHARGE_SUPPLIER_BC12_SDP:
+		return 1000;
+	case CHARGE_SUPPLIER_BC12_CDP:
+	case CHARGE_SUPPLIER_PROPRIETARY:
+		return sup_curr;
+	default:
+		return 500;
+	}
+}
+#endif /* CONFIG_CHARGE_RAMP || CONFIG_CHARGE_RAMP_HW */
