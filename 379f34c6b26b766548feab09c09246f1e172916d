@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c61ac904_d4d1d601",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7341,
+      "author": {
+        "id": 1166124
+      },
+      "writtenOn": "2017-10-05T15:41:32Z",
+      "side": 1,
+      "message": "So we want to move CROS_EC_DEV_NAME outside the strncpy? Not familiar with how we use device name, is 40 an arbitrary boundary?",
+      "revId": "379f34c6b26b766548feab09c09246f1e172916d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
