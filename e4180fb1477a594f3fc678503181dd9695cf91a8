@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f4f702f_3e39520e",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-10-05T23:11:33Z",
+      "side": 1,
+      "message": "This cleans up the UART start/stop such that the uart doesn\u0027t false trigger and deliver spurious /0 characters that messes up the signature.",
+      "parentUuid": "250e1df2_dbcf0cc7",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 18
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8cb9bf0d_01b8a2c7",
         "filename": "board/mn50/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-05T19:02:27Z",
       "side": 1,
       "message": "what is the purpose of this console command? Does it print out a signature to be compared to something, or to save somewhere?",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 48
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d24e51_5c81a72d",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-10-05T23:11:33Z",
+      "side": 1,
+      "message": "yes, it prints out a signature that can be compared later.",
+      "parentUuid": "8cb9bf0d_01b8a2c7",
       "range": {
         "startLine": 318,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "917a5f77_bbea4a2c",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-10-05T23:11:33Z",
+      "side": 1,
+      "message": "I\u0027d personally agree, but ec presubmit linter disallows this.",
+      "parentUuid": "685fb500_efe7c249",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 25
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e9fefe5_b14a79ff",
         "filename": "board/mn50/board.h",
         "patchSetId": 3
@@ -82,6 +154,24 @@
       "writtenOn": "2017-10-05T19:02:27Z",
       "side": 1,
       "message": "unrelated whitespace change?",
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08fa788a_b747d190",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-10-05T23:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e9fefe5_b14a79ff",
       "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "0902d0d4_5a46f389",
+        "filename": "board/mn50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-10-05T23:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "541cf253_42d06cad",
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9f72260_ebbb94f3",
         "filename": "board/mn50/signing.c",
         "patchSetId": 3
@@ -116,6 +224,30 @@
       "writtenOn": "2017-10-05T19:02:27Z",
       "side": 1,
       "message": "might want to check here and  in below functions that id is valid.",
+      "range": {
+        "startLine": 67,
+        "startChar": 14,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82830744_7e913659",
+        "filename": "board/mn50/signing.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-10-05T23:11:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9f72260_ebbb94f3",
       "range": {
         "startLine": 67,
         "startChar": 14,
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "776bdae5_0eedd1a2",
+        "filename": "board/mn50/signing.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-10-05T23:11:33Z",
+      "side": 1,
+      "message": "I\u0027ve tested this case and it seems to work consistently.",
+      "parentUuid": "822d70dc_c75c301d",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d89f5602_7bdfc5ec",
         "filename": "board/mn50/signing.c",
         "patchSetId": 3
@@ -162,6 +318,30 @@
       "writtenOn": "2017-10-05T19:02:27Z",
       "side": 1,
       "message": "you probably thought about this and have a reason not to do it, but wouldn\u0027t it be simpler just to plug in this signer interface at the point where USB driver reads data from the TX queue? No new stream would be required.",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 36
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c922c9e_7670c1e7",
+        "filename": "board/mn50/signing.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-10-05T23:11:33Z",
+      "side": 1,
+      "message": "The USB driver is purely a generic stream driver and doesn\u0027t know whether it\u0027s console, uart1, uart2, i2c, etc.",
+      "parentUuid": "d89f5602_7bdfc5ec",
       "range": {
         "startLine": 155,
         "startChar": 1,
@@ -191,6 +371,24 @@
     },
     {
       "key": {
+        "uuid": "cbfe6f2f_187af875",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-10-05T23:11:33Z",
+      "side": 1,
+      "message": "Sure. However this slot can\u0027t be arbitrarily reused since the key enums must be sequential",
+      "parentUuid": "d6fd0c8f_e1ef32e6",
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c31b0923_e5f964ca",
         "filename": "chip/g/usart.c",
         "patchSetId": 3
@@ -202,6 +400,30 @@
       "writtenOn": "2017-10-05T19:02:27Z",
       "side": 1,
       "message": "could this and the queue in line 44 be called \u0027usb_uart_input\u0027 of something to save another conditional compilation in line 75?",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5fe1f65_5976cc29",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-10-05T23:11:33Z",
+      "side": 1,
+      "message": "No, this is not possible, because the non-sig case is already called ap_uart_output, which is defined in both cases. In teh non-sig case the uart output and usb input must be same queue, but in the signer case they must be different queues.",
+      "parentUuid": "c31b0923_e5f964ca",
       "range": {
         "startLine": 38,
         "startChar": 26,
