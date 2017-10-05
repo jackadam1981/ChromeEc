@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7cc0955d_1772af75",
+        "filename": "board/coral/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-05T23:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85edb7aa_78bf3c30",
+      "revId": "98e170d864a110da1ed56432595cb5440320ba70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f00863a_aec030ed",
         "filename": "board/coral/led.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2017-10-03T20:48:19Z",
       "side": 1,
       "message": "Is the brightness array guaranteed to only have one non-zero entry?",
+      "range": {
+        "startLine": 142,
+        "startChar": 33,
+        "endLine": 142,
+        "endChar": 34
+      },
+      "revId": "98e170d864a110da1ed56432595cb5440320ba70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c02871a2_868d646c",
+        "filename": "board/coral/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-05T23:01:56Z",
+      "side": 1,
+      "message": "It\u0027s my understanding that ectool only supports one color enum.\n\nled \u003cname\u003e \u003cquery | auto | off | \u003ccolor\u003e | \u003ccolor\u003e\u003d\u003cvalue\u003e...\u003e                \n      Set the color of an LED or query brightness range",
+      "parentUuid": "5f00863a_aec030ed",
       "range": {
         "startLine": 142,
         "startChar": 33,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "c5c78849_2ada8c2b",
+        "filename": "board/coral/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-05T23:01:56Z",
+      "side": 1,
+      "message": "Yes that is the assumption. I modified how I do this because the range for LVL3 won\u0027t ever get used because by that point the power state will be PWR_STATE_CHARGE_NEAR_FULL. If the Robo upper ranger were lower, then it would have been useful. So now, instead of table of 3 values, I am just storing one value for the LVL1 vs LVL2 decision and LVL3 is controlled by PWR_STATE_CHARGE_NEAR_FULL which reflects more accurately how it will work.",
+      "parentUuid": "3b615d80_015f42aa",
+      "revId": "98e170d864a110da1ed56432595cb5440320ba70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4aa82d83_260b0337",
         "filename": "board/coral/led.c",
         "patchSetId": 2
@@ -70,6 +130,30 @@
       "writtenOn": "2017-10-03T20:48:19Z",
       "side": 1,
       "message": "Where are you getting those sku numbers. They don\u0027t line up with what I am seeing.",
+      "range": {
+        "startLine": 260,
+        "startChar": 5,
+        "endLine": 261,
+        "endChar": 33
+      },
+      "revId": "98e170d864a110da1ed56432595cb5440320ba70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5f53db9_cf60db5e",
+        "filename": "board/coral/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-05T23:01:56Z",
+      "side": 1,
+      "message": "I had incorrect values. I have confirmed the values needed for Robo.",
+      "parentUuid": "4aa82d83_260b0337",
       "range": {
         "startLine": 260,
         "startChar": 5,
