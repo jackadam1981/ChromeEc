@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc7c9cb3_89704338",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000058
+      },
+      "writtenOn": "2017-10-05T17:27:28Z",
+      "side": 1,
+      "message": "Will this cause problems if CONFIG_TASK_PROFILING is not defined?\nOr does the \"inline\" keyword make it optional?",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "3919720fffb969f1c35e4f34c75635753855266e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
