@@ -157,7 +157,7 @@ void anx74xx_cable_det_interrupt(enum gpio_signal signal)
  * We add a significant marging on the maximum value, due to noise on the line,
  * especially when PWM is active. See b/64193554 for details.
  */
-#define BASE_DETECT_MIN_MV 120
+#define BASE_DETECT_MIN_MV 12
 #define BASE_DETECT_MAX_MV 300
 
 /*
@@ -261,6 +261,10 @@ static void base_detect_deferred(void)
 
 	v = adc_read_channel(ADC_BASE_DET);
 	if (v == ADC_READ_ERROR)
+		return;
+
+	/* FIXME */
+	if (1)
 		return;
 
 	if (v >= BASE_DETECT_MIN_MV && v <= BASE_DETECT_MAX_MV) {
