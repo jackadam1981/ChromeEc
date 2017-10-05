@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "250e1df2_dbcf0cc7",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T19:02:27Z",
+      "side": 1,
+      "message": "how are changes to board_init() and enable_socket() related to this patch?",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 18
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cb9bf0d_01b8a2c7",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T19:02:27Z",
+      "side": 1,
+      "message": "what is the purpose of this console command? Does it print out a signature to be compared to something, or to save somewhere?",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 48
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "685fb500_efe7c249",
+        "filename": "board/mn50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T19:02:27Z",
+      "side": 1,
+      "message": "IIRC both sides if() and else clauses should use the brackets if they are required by either one.",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 25
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e9fefe5_b14a79ff",
+        "filename": "board/mn50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T19:02:27Z",
+      "side": 1,
+      "message": "unrelated whitespace change?",
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "541cf253_42d06cad",
+        "filename": "board/mn50/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T19:02:27Z",
+      "side": 1,
+      "message": "is this change related to this patch?",
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f72260_ebbb94f3",
+        "filename": "board/mn50/signing.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T19:02:27Z",
+      "side": 1,
+      "message": "might want to check here and  in below functions that id is valid.",
+      "range": {
+        "startLine": 67,
+        "startChar": 14,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "822d70dc_c75c301d",
+        "filename": "board/mn50/signing.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T19:02:27Z",
+      "side": 1,
+      "message": "just curious; doesn\u0027t hash_update pad the input to a certain quantity like 64 bits? Would passing the same stream in different chunks result in different hashes in this case?",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d89f5602_7bdfc5ec",
+        "filename": "board/mn50/signing.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T19:02:27Z",
+      "side": 1,
+      "message": "you probably thought about this and have a reason not to do it, but wouldn\u0027t it be simpler just to plug in this signer interface at the point where USB driver reads data from the TX queue? No new stream would be required.",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 36
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6fd0c8f_e1ef32e6",
+        "filename": "chip/g/dcrypto/app_key.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T19:02:27Z",
+      "side": 1,
+      "message": "this should be conditional on signer enabled.",
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c31b0923_e5f964ca",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T19:02:27Z",
+      "side": 1,
+      "message": "could this and the queue in line 44 be called \u0027usb_uart_input\u0027 of something to save another conditional compilation in line 75?",
+      "range": {
+        "startLine": 38,
+        "startChar": 26,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "e4180fb1477a594f3fc678503181dd9695cf91a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
