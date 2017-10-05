@@ -22,6 +22,30 @@
       "revId": "3919720fffb969f1c35e4f34c75635753855266e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f434116_b840ca0e",
+        "filename": "core/cortex-m/task.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1245511
+      },
+      "writtenOn": "2017-10-05T17:34:13Z",
+      "side": 1,
+      "message": "No idea, I’ll try to look more closely in the next days.",
+      "parentUuid": "dc7c9cb3_89704338",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "3919720fffb969f1c35e4f34c75635753855266e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
