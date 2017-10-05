@@ -236,6 +236,11 @@ static int command_detach_base(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(detachbase, command_detach_base,
 		NULL, "Simulate detach base");
 
+static void print_base_detect_value(int v, int tmp_pulse_width)
+{
+	CPRINTS("%s = %d (pulse %d)", adc_channels[ADC_BASE_DET].name,
+			v, tmp_pulse_width);
+}
 
 static void base_detect_deferred(void)
 {
@@ -252,18 +257,19 @@ static void base_detect_deferred(void)
 	v = adc_read_channel(ADC_BASE_DET);
 	if (v == ADC_READ_ERROR)
 		return;
-	CPRINTS("%s = %d (pulse %d)", adc_channels[ADC_BASE_DET].name,
-		v, tmp_pulse_width);
 
 	if (v >= BASE_DETECT_MIN_MV && v <= BASE_DETECT_MAX_MV) {
 		if (current_base_status != BASE_CONNECTED) {
+			print_base_detect_value(v, tmp_pulse_width);
 			base_detect_change(BASE_CONNECTED);
 		} else if (tmp_pulse_width >= BASE_DETECT_PULSE_MIN_US &&
 			   tmp_pulse_width <= BASE_DETECT_PULSE_MAX_US) {
+			print_base_detect_value(v, tmp_pulse_width);
 			CPRINTS("Sending event to AP");
 			host_set_single_event(EC_HOST_EVENT_KEY_PRESSED);
 		}
 	} else {
+		print_base_detect_value(v, tmp_pulse_width);
 		/*
 		 * TODO(b/35585396): Figure out what to do with
 		 * other ADC values that do not clearly indicate base
