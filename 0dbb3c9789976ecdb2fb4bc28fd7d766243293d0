@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69b9750d_8854f21e",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T16:56:24Z",
+      "side": 1,
+      "message": "I am not sure what you mean by stack corruption here. If the code were to write into memory beyond this structure boundaries - would in to be just as bad if the structure was in .bss? Or are you talking about stack overflow which I don\u0027t think is a problem here?\n\nI just feel like we should be saving as much room in  SRAM as we can.",
+      "parentUuid": "f48286ab_2a53179a",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 10
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8b1fa7a_97135d1a",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf6b119_ea64b022",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T16:56:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e8b1fa7a_97135d1a",
+      "range": {
+        "startLine": 718,
+        "startChar": 9,
+        "endLine": 718,
+        "endChar": 29
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "ca76973e_d5694f32",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T16:56:24Z",
+      "side": 1,
+      "message": "this would involve registering the task which needs to be signalled, adding an event for it - I thought this is simpler and sufficient. I can change this if you have a strong preference.",
+      "parentUuid": "049eaf20_2c2a9d3b",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 719,
+        "endChar": 13
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7d3f552_56fbc3e6",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-10-05T09:00:02Z",
       "side": 1,
       "message": "you can just re-trigger the TPM_EVENT_ALT_EXTENSION event if it happens at the same as TASK_EVENT_WAKE rather than all this business to clear bits in evt.",
+      "range": {
+        "startLine": 907,
+        "startChar": 2,
+        "endLine": 907,
+        "endChar": 11
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32ff76f7_38f7891d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T16:56:24Z",
+      "side": 1,
+      "message": "Would this scale if we added yet another event for this task in the future? \n\nWhat\u0027s the point in going through re-posting the event if we already know we had it signaled and see it in evt?",
+      "parentUuid": "b7d3f552_56fbc3e6",
       "range": {
         "startLine": 907,
         "startChar": 2,
