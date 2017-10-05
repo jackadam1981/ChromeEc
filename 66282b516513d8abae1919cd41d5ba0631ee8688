@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4336012_f9f61590",
+        "filename": "util/ectool_keyscan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T15:51:38Z",
+      "side": 1,
+      "message": "now it\u0027s no longer closing the file on error,\nlooks as bad as before ?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 12
+      },
+      "revId": "66282b516513d8abae1919cd41d5ba0631ee8688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad1959f5_e43bf4b1",
+        "filename": "util/ectool_keyscan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T15:51:38Z",
+      "side": 1,
+      "message": "this doesn\u0027t make much sense",
+      "range": {
+        "startLine": 637,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 29
+      },
+      "revId": "66282b516513d8abae1919cd41d5ba0631ee8688",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
