@@ -16,6 +16,24 @@
       "revId": "379f34c6b26b766548feab09c09246f1e172916d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37ea177d_21aa4c2e",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7341,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-10-05T16:00:37Z",
+      "side": 1,
+      "message": "This ensures that, no matter what\u0027s passed in, there\u0027s one byte more to set a \"0\" in. I went that way instead of restricting it to 39 bytes in the strncpy in line 7376 for maximum compatibility:\nIt might have worked by chance with a 40 byte input because the memory layout just happens to put a 0 afterwards. Restricting to 39 bytes would break this. It all depends a lot on how the local variables in main() are laid out.\nNaively and assuming little endian I\u0027d say the next byte is the \"1\" in rv, so that assumption would be wrong to begin with, and ectool --name {40 characters} would break.\n\nI haven\u0027t seen anything that _requires_ the 40 byte size, neither as upper nor as lower bound. It\u0027s later used to fill an 80 char buffer that\u0027s prefilled with \"/dev/\" in one of the comm_init() implementations, so there\u0027s still enough room with 41 bytes.",
+      "parentUuid": "c61ac904_d4d1d601",
+      "revId": "379f34c6b26b766548feab09c09246f1e172916d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
