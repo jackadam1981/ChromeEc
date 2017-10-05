@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "545d0f55_b34db6df",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T09:41:38Z",
+      "side": 1,
+      "message": "this gigantic ifdef seems mostly useless,\njust remove it",
+      "range": {
+        "startLine": 1140,
+        "startChar": 0,
+        "endLine": 1141,
+        "endChar": 61
+      },
+      "revId": "f86c2beebf347b5d640f89744e28e30d10278876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c343674_bde3b49b",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T09:41:38Z",
+      "side": 1,
+      "message": "right now, you don\u0027t do anything really useful with this variable,\njust remove it and save this gigantic conditional",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 6
+      },
+      "revId": "f86c2beebf347b5d640f89744e28e30d10278876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebddfb3d_9185ddb3",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T09:41:38Z",
+      "side": 1,
+      "message": "you don\u0027t really need to duplicate this code, it is common for both cases with src \u003d BDCR_SRC_LSI  or BDCR_SRC_LSE",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "f86c2beebf347b5d640f89744e28e30d10278876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84ca114d_bbf6772a",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T09:41:38Z",
+      "side": 1,
+      "message": "you say STM32F0 here, then do it for F0, L4, F3, F4 in the code.",
+      "range": {
+        "startLine": 675,
+        "startChar": 46,
+        "endLine": 675,
+        "endChar": 53
+      },
+      "revId": "f86c2beebf347b5d640f89744e28e30d10278876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
