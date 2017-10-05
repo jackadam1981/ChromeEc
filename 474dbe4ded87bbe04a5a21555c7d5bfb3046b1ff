@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f99f1745_74b370c4",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-05T15:25:21Z",
+      "side": 0,
+      "message": "This isn\u0027t necessary on fizz because board_set_charge_limit() will refuse to set a limit \u003c 3000mA, and board_set_active_charge_port() will reject CHARGE_PORT_NONE.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "474dbe4ded87bbe04a5a21555c7d5bfb3046b1ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
