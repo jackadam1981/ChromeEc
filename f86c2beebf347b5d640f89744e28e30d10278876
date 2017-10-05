@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b14ef1d5_48046661",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-10-05T20:33:33Z",
+      "side": 1,
+      "message": "I see. I\u0027ll make this unconditional.",
+      "parentUuid": "14d94c94_4b7cbfc4",
+      "range": {
+        "startLine": 1140,
+        "startChar": 0,
+        "endLine": 1141,
+        "endChar": 61
+      },
+      "revId": "f86c2beebf347b5d640f89744e28e30d10278876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c343674_bde3b49b",
         "filename": "chip/stm32/system.c",
         "patchSetId": 2
