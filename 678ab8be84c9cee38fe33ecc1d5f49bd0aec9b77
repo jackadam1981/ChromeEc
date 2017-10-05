@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf0a7853_58f7dc3d",
+        "filename": "board/mec1701_evb/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-05T18:43:00Z",
+      "side": 1,
+      "message": "trailing whitespace",
+      "range": {
+        "startLine": 35,
+        "startChar": 30,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "678ab8be84c9cee38fe33ecc1d5f49bd0aec9b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a52ecb54_7dbe2091",
+        "filename": "board/mec1701_evb/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-05T18:43:00Z",
+      "side": 1,
+      "message": "Why?  Still debugging?",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 5
+      },
+      "revId": "678ab8be84c9cee38fe33ecc1d5f49bd0aec9b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2684c56e_70b8518c",
+        "filename": "common/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-05T18:43:00Z",
+      "side": 1,
+      "message": "This seems to be separate functionality from adding MEC1701 support; it\u0027s adding a new interface which may be supported by other chips.  It should be in a separate CL.\n\n(This is a very big patchset to continue to review, so it\u0027s better to get it in and then add changes on top of it, rather than to introduce new functionality each patchset that requires subsequent rounds of review.)",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 45
+      },
+      "revId": "678ab8be84c9cee38fe33ecc1d5f49bd0aec9b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78ea62e3_7ba84bc6",
+        "filename": "power/skylake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-05T18:43:00Z",
+      "side": 1,
+      "message": "Whitespace change?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "678ab8be84c9cee38fe33ecc1d5f49bd0aec9b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
