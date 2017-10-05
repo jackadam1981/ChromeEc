@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80d58cf2_5949d38e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T17:34:39Z",
+      "side": 1,
+      "message": "does this description match the what\u0027s happening in this patch?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "7d8270cf76c3fabdc94298083fad70ca1e46fcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b41e847_76e2408e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T17:34:39Z",
+      "side": 1,
+      "message": "you can\u0027t merge a code changing patch without demonstrating that it works.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 9
+      },
+      "revId": "7d8270cf76c3fabdc94298083fad70ca1e46fcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4999bfba_45b6d8e9",
+        "filename": "common/sha256.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T17:34:39Z",
+      "side": 1,
+      "message": "this should be const void *",
+      "range": {
+        "startLine": 221,
+        "startChar": 57,
+        "endLine": 221,
+        "endChar": 67
+      },
+      "revId": "7d8270cf76c3fabdc94298083fad70ca1e46fcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ae8b4a0_399c9991",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-05T17:34:39Z",
+      "side": 1,
+      "message": "names in this set are sorted",
+      "range": {
+        "startLine": 787,
+        "startChar": 1,
+        "endLine": 787,
+        "endChar": 6
+      },
+      "revId": "7d8270cf76c3fabdc94298083fad70ca1e46fcaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
