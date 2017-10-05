@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad094c2b_5ec1630e",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-05T19:31:41Z",
+      "side": 1,
+      "message": "Normally I would not add another level of ramp_allowed functions, but I plan to modify these routines to implement charging w/ USB-C DTS.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 20
+      },
+      "revId": "8147901a02bdab4698bb0241dbf3e4badaacd371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4290dced_2e271678",
+        "filename": "common/charge_ramp_sw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-05T19:31:41Z",
+      "side": 1,
+      "message": "This file is a near-dupe of the old charge_ramp.c.",
+      "revId": "8147901a02bdab4698bb0241dbf3e4badaacd371",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
