@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "14d94c94_4b7cbfc4",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-10-05T19:40:15Z",
+      "side": 1,
+      "message": "But that doesn\u0027t mean you really need #ifdefs around your #defines. You just need to check for \u0027have RCC_BDCR\u0027 feature when you use it.\n\nI\u0027m not sure of EC coding style, but it seems reasonable to me to include all the definitions unconditionally. For Linux multiplatform drivers, we do this all the time -- #ifdef is generally avoided if at all possible.",
+      "parentUuid": "57a95d08_16a953b5",
+      "range": {
+        "startLine": 1140,
+        "startChar": 0,
+        "endLine": 1141,
+        "endChar": 61
+      },
+      "revId": "f86c2beebf347b5d640f89744e28e30d10278876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c343674_bde3b49b",
         "filename": "chip/stm32/system.c",
         "patchSetId": 2
