@@ -336,10 +336,15 @@ on_servov3() {
 # Returns 0 on success (if raiden should be used instead of servo)
 error_reported=  # Avoid double printing the error message.
 on_raiden() {
-	if [[ "${SERVO_TYPE}" =~ "servo_v4" ]] || \
-	   [[ "${SERVO_TYPE}" =~ "servo_micro" ]]; then
+	if [[ "${SERVO_TYPE}" =~ "ccd_cr50" ]]; then
 		return 0
 	fi
+	if [[ "${SERVO_TYPE}" =~ "servo_micro" ]]; then
+		if in_array "${BOARDS_RAIDEN[@]}" "${BOARD}"; then
+			return 0
+		fi
+	fi
+
 	if [ -z "${BOARD}" ]; then
 		[ "${FLAGS_raiden}" = ${FLAGS_TRUE} ] && return 0 || return 1
 	fi
