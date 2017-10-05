@@ -51,6 +51,22 @@ static const struct battery_info info = {
 	.discharging_min_c = 0,
 	.discharging_max_c = 60,
 };
+#elif defined(BOARD_NAUTILUS)
+
+static const struct battery_info info = {
+	.voltage_max = 13200,
+	.voltage_normal = 11550,
+	.voltage_min = 9100,
+	/* Pre-charge values. */
+	.precharge_current = 256, /* mA */
+
+	.start_charging_min_c = 0,
+	.start_charging_max_c = 50,
+	.charging_min_c = 0,
+	.charging_max_c = 60,
+	.discharging_min_c = 0,
+	.discharging_max_c = 60,
+};
 #else
 #error "Battery information not available for board"
 #endif
