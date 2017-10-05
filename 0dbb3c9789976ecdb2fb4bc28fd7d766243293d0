@@ -49,6 +49,23 @@
     },
     {
       "key": {
+        "uuid": "0685bdd0_47b60579",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-05T23:36:15Z",
+      "side": 1,
+      "message": "same line?",
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8b1fa7a_97135d1a",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -84,6 +101,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "e8b1fa7a_97135d1a",
+      "range": {
+        "startLine": 718,
+        "startChar": 9,
+        "endLine": 718,
+        "endChar": 29
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fdec7cc_500920cb",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-05T23:36:15Z",
+      "side": 1,
+      "message": "Doesn\u0027t the ec code base have a forced read instead of making the pointers decorated with \u0027volatile\u0027 ?",
+      "parentUuid": "bbf6b119_ea64b022",
       "range": {
         "startLine": 718,
         "startChar": 9,
@@ -143,6 +184,30 @@
     },
     {
       "key": {
+        "uuid": "4e36644f_ce6d1d15",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-05T23:36:15Z",
+      "side": 1,
+      "message": "It\u0027d just be a task id in alt_tpm_interface struct, right?",
+      "parentUuid": "ca76973e_d5694f32",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 719,
+        "endChar": 13
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7d3f552_56fbc3e6",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -187,6 +252,40 @@
       "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6901d714_f8bf3a33",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-05T23:36:15Z",
+      "side": 1,
+      "message": "Does this wipe interfere with other callers through this alt interface?",
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18dcf00a_30ba9420",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-05T23:36:15Z",
+      "side": 1,
+      "message": "I think some comments about the arguments would be helpful.",
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
