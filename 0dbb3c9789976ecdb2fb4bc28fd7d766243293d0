@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f48286ab_2a53179a",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T09:00:02Z",
+      "side": 1,
+      "message": "does saving 12 bytes really outweigh the stack corruption risk here ?",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 10
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8b1fa7a_97135d1a",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T09:00:02Z",
+      "side": 1,
+      "message": "shouldn\u0027t it be declared as volatile ?",
+      "range": {
+        "startLine": 718,
+        "startChar": 9,
+        "endLine": 718,
+        "endChar": 29
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "049eaf20_2c2a9d3b",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T09:00:02Z",
+      "side": 1,
+      "message": "why not sending an event the other way round rather than polling here ?",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 719,
+        "endChar": 13
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7d3f552_56fbc3e6",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T09:00:02Z",
+      "side": 1,
+      "message": "you can just re-trigger the TPM_EVENT_ALT_EXTENSION event if it happens at the same as TASK_EVENT_WAKE rather than all this business to clear bits in evt.",
+      "range": {
+        "startLine": 907,
+        "startChar": 2,
+        "endLine": 907,
+        "endChar": 11
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
