@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57a95d08_16a953b5",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-10-05T19:14:09Z",
+      "side": 1,
+      "message": "I didn\u0027t go through the whole stm32 family, but at least STM32L0 doesn\u0027t have RCC_BDCR.",
+      "parentUuid": "545d0f55_b34db6df",
+      "range": {
+        "startLine": 1140,
+        "startChar": 0,
+        "endLine": 1141,
+        "endChar": 61
+      },
+      "revId": "f86c2beebf347b5d640f89744e28e30d10278876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c343674_bde3b49b",
         "filename": "chip/stm32/system.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a6e25232_d2cbdf8c",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-10-05T19:14:09Z",
+      "side": 1,
+      "message": "If I remove this variable, I\u0027ll need to use literal numbers in code (e.g. L255-L259), which seems to be a bad coding style. But I can do so if you think it makes this code look simpler.",
+      "parentUuid": "2c343674_bde3b49b",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 6
+      },
+      "revId": "f86c2beebf347b5d640f89744e28e30d10278876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebddfb3d_9185ddb3",
         "filename": "chip/stm32/system.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-10-05T09:41:38Z",
       "side": 1,
       "message": "you don\u0027t really need to duplicate this code, it is common for both cases with src \u003d BDCR_SRC_LSI  or BDCR_SRC_LSE",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 2
+      },
+      "revId": "f86c2beebf347b5d640f89744e28e30d10278876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ab18713_c8e0d405",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-10-05T19:14:09Z",
+      "side": 1,
+      "message": "Right, this is not optimal. I\u0027ll fix it.",
+      "parentUuid": "ebddfb3d_9185ddb3",
       "range": {
         "startLine": 284,
         "startChar": 0,
