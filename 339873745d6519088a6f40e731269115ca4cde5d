@@ -22,6 +22,30 @@
       "revId": "339873745d6519088a6f40e731269115ca4cde5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1e52eb3_2e4e1d50",
+        "filename": "common/usb_pd_tcpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T15:24:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5e3c276_a657d0e7",
+      "range": {
+        "startLine": 651,
+        "startChar": 0,
+        "endLine": 657,
+        "endChar": 3
+      },
+      "revId": "339873745d6519088a6f40e731269115ca4cde5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
