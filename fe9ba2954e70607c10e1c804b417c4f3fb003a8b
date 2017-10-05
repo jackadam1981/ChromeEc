@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d95841dd_71cc2f3d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T14:00:05Z",
+      "side": 1,
+      "message": "this is wrong, ca_buffer has PDO_MAX_OBJECTS u32 (ie 7)\nyou cannot use one of them for the header (as your message might have 7 U32 for the payload), you likely need a dedicated U16 to store the header.",
+      "range": {
+        "startLine": 485,
+        "startChar": 5,
+        "endLine": 486,
+        "endChar": 35
+      },
+      "revId": "fe9ba2954e70607c10e1c804b417c4f3fb003a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd058e25_cc244369",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T14:00:05Z",
+      "side": 1,
+      "message": "nit: put those variables inside the scope where they are used (the if clause)",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 9
+      },
+      "revId": "fe9ba2954e70607c10e1c804b417c4f3fb003a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ff85bee_76753f9c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-05T14:00:05Z",
+      "side": 1,
+      "message": "nit: remove the ret variable and do the return directly.",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 539,
+        "endChar": 11
+      },
+      "revId": "fe9ba2954e70607c10e1c804b417c4f3fb003a8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
