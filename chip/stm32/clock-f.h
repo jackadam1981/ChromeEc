@@ -38,6 +38,12 @@ struct rtc_time_reg {
 	uint32_t rtc_dr; /* years, months, dates, week days */
 };
 
+/* Save the RTC alarm wake time */
+struct wake_time {
+	timestamp_t ts;
+	uint32_t rtc_alrmar; /* the value of register STM32_RTC_ALRMAR */
+};
+
 /* Convert between RTC regs in BCD and seconds */
 uint32_t rtc_to_sec(const struct rtc_time_reg *rtc);
 
@@ -85,4 +91,6 @@ void config_hispeed_clock(void);
 /* Get timer clock frequency (for STM32 only) */
 int clock_get_timer_freq(void);
 
+/* Get the RTC alarm wake time set by the host */
+struct wake_time *get_host_wake_time(void);
 #endif  /* __CROS_EC_CLOCK_F_H */

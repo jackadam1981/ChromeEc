@@ -39,12 +39,19 @@ static int dsleep_recovery_margin_us = 1000000;
 
 /*
  * minimum delay to enter stop mode
+ *
  * STOP_MODE_LATENCY: max time to wake up from STOP mode with regulator in low
  * power mode is 5 us + PLL locking time is 200us.
- * SET_RTC_MATCH_DELAY: max time to set RTC match alarm. if we set the alarm
+ *
+ * SET_RTC_MATCH_DELAY: max time to set RTC match alarm. If we set the alarm
  * in the past, it will never wake up and cause a watchdog.
  * For STM32F3, we are using HSE, which requires additional time to start up.
  * Therefore, the latency for STM32F3 is set longer.
+ *
+ * RESTORE_HOST_ALARM_LATENCY: max latency between the deferred routine is
+ * called and the host alarm is actually restored. In practice, the max latency
+ * is measured as ~600us. 1000us should be conservative enough to guarantee
+ * we won't miss the host alarm.
  */
 #ifdef CHIP_VARIANT_STM32F373
 #define STOP_MODE_LATENCY 500  /* us */
@@ -56,6 +63,10 @@ static int dsleep_recovery_margin_us = 1000000;
 #define STOP_MODE_LATENCY 50    /* us */
 #endif
 #define SET_RTC_MATCH_DELAY 200 /* us */
+
+#ifdef CONFIG_HOSTCMD_RTC
+#define RESTORE_HOST_ALARM_LATENCY 1000 /* us */
+#endif
 
 #endif /* CONFIG_LOW_POWER_IDLE */
 
@@ -283,6 +294,46 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 }
 #endif
 
+#ifdef CONFIG_HOSTCMD_RTC
+static int is_host_wake_alarm_expired(timestamp_t ts)
+{
+	struct wake_time *host_wake_time = get_host_wake_time();
+
+	return host_wake_time->ts.val &&
+	       timestamp_expired(host_wake_time->ts, &ts);
+}
+
+static void restore_host_wake_alarm(void)
+{
+	struct wake_time *host_wake_time;
+
+	host_wake_time = get_host_wake_time();
+
+	if (!host_wake_time->ts.val)
+		return;
+
+	rtc_unlock_regs();
+
+	/* Make sure alarm is disabled */
+	STM32_RTC_CR &= ~STM32_RTC_CR_ALRAE;
+	while (!(STM32_RTC_ISR & STM32_RTC_ISR_ALRAWF))
+		;
+	STM32_RTC_ISR &= ~STM32_RTC_ISR_ALRAF;
+
+	/* Set alarm time */
+	STM32_RTC_ALRMAR = host_wake_time->rtc_alrmar;
+
+	STM32_EXTI_PR = EXTI_RTC_ALR_EVENT;
+
+	/* Enable alarm and alarm interrupt */
+	STM32_EXTI_IMR |= EXTI_RTC_ALR_EVENT;
+	STM32_RTC_CR |= STM32_RTC_CR_ALRAE;
+
+	rtc_lock_regs();
+}
+DECLARE_DEFERRED(restore_host_wake_alarm);
+#endif
+
 #ifdef CONFIG_LOW_POWER_IDLE
 
 void clock_refresh_console_in_use(void)
@@ -309,22 +360,24 @@ void __idle(void)
 		if (DEEP_SLEEP_ALLOWED &&
 #ifdef CONFIG_HOSTCMD_RTC
 		    /*
-		     * Don't go to deep sleep mode when the host is using
-		     * RTC alarm otherwise the wake point for the host
-		     * would be overwritten.
-		     *
-		     * TODO(chromium:769503): Find a smart way to enable deep
-		     * sleep mode even when the host is using stm32 rtc alarm.
+		     * Don't go to deep sleep mode if we might miss the
+		     * wake alarm that the host requested. Note that the
+		     * host alarm always aligns to second. Considering the
+		     * worst case, we have to ensure alarm won't go off
+		     * within RESTORE_HOST_ALARM_LATENCY + 1 second after
+		     * EC exits deep sleep mode.
 		     */
-		    !(STM32_RTC_CR & STM32_RTC_CR_ALRAE) &&
+		    !is_host_wake_alarm_expired(
+			(timestamp_t)(next_delay + t0.val + SECOND +
+				      RESTORE_HOST_ALARM_LATENCY)) &&
 #endif
 		    (next_delay > (STOP_MODE_LATENCY + SET_RTC_MATCH_DELAY))) {
-			/* deep-sleep in STOP mode */
+			/* Deep-sleep in STOP mode */
 			idle_dsleep_cnt++;
 
 			uart_enable_wakeup(1);
 
-			/* set deep sleep bit */
+			/* Set deep sleep bit */
 			CPU_SCB_SYSCTRL |= 0x4;
 
 			set_rtc_alarm(0, next_delay - STOP_MODE_LATENCY,
@@ -341,12 +394,15 @@ void __idle(void)
 			 */
 			config_hispeed_clock();
 
-			/* fast forward timer according to RTC counter */
+			/* Fast forward timer according to RTC counter */
 			reset_rtc_alarm(&rtc1);
 			rtc_diff = get_rtc_diff(&rtc0, &rtc1);
 			t0.val = t0.val + rtc_diff;
 			force_time(t0);
 
+#ifdef CONFIG_HOSTCMD_RTC
+			hook_call_deferred(&restore_host_wake_alarm_data, 0);
+#endif
 			/* Record time spent in deep sleep. */
 			idle_dsleep_time_us += rtc_diff;
 
@@ -362,7 +418,7 @@ void __idle(void)
 		} else {
 			idle_sleep_cnt++;
 
-			/* normal idle : only CPU clock stopped */
+			/* Normal idle : only CPU clock stopped */
 			asm("wfi");
 		}
 #ifdef CONFIG_LOW_POWER_IDLE_LIMITED
