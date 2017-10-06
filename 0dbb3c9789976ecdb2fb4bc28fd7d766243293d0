@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d5beffd5_1927149d",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-06T13:30:16Z",
+      "side": 1,
+      "message": "Neither buffer overflow, nor stack overflow,\nplain memory corruption, you are passing around a pointer for an area inside your stack, then this stack is returned for other usage, the lifecycle in the other task of the pointer is designed to not use it after this point but it\u0027s a bit fragile.",
+      "parentUuid": "69b9750d_8854f21e",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 10
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0685bdd0_47b60579",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -179,6 +203,30 @@
     },
     {
       "key": {
+        "uuid": "5fae53c2_56a18b00",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-06T13:30:16Z",
+      "side": 1,
+      "message": "I imagine something close to what is done for MMIO in coreboot:\nhttps://chromium.googlesource.com/chromiumos/third_party/coreboot/+/master/src/arch/arm/include/armv7/arch/arch_io.h#41\nor the linux kernel e.g. readl/raw_readl.\n\nthis doesn\u0027t really exist in the EC codebase, the closest is the REG32() macro probably. \n! REG32(\u0026alt_if.done) might do the job here ?",
+      "parentUuid": "3e7da976_3f55cc9a",
+      "range": {
+        "startLine": 718,
+        "startChar": 9,
+        "endLine": 718,
+        "endChar": 29
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "049eaf20_2c2a9d3b",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -274,6 +322,30 @@
     },
     {
       "key": {
+        "uuid": "d01d8e28_dba14e88",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-06T13:30:16Z",
+      "side": 1,
+      "message": "Overall given that this firmware has a grand total of 3 tasks including the TPM task we are sending to, it\u0027s a bit overdesigned.\nAt the end of the day, we are always sending from the CONSOLE task to the TPM task.",
+      "parentUuid": "d1ebbc6f_fc794349",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 719,
+        "endChar": 13
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7d3f552_56fbc3e6",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -309,6 +381,30 @@
       "side": 1,
       "message": "Would this scale if we added yet another event for this task in the future? \n\nWhat\u0027s the point in going through re-posting the event if we already know we had it signaled and see it in evt?",
       "parentUuid": "b7d3f552_56fbc3e6",
+      "range": {
+        "startLine": 907,
+        "startChar": 2,
+        "endLine": 907,
+        "endChar": 11
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad4b6112_4f742127",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-06T13:30:16Z",
+      "side": 1,
+      "message": "\u003e What\u0027s the point in going through re-posting the event\n\nit\u0027s simpler than the 8 new lines of various operations on the evt variable ?\n\n\u003e Would this scale if we added yet another event for this task in the future? \n\nlikely better than not forgetting to reset bits in evt in various places.",
+      "parentUuid": "32ff76f7_38f7891d",
       "range": {
         "startLine": 907,
         "startChar": 2,
