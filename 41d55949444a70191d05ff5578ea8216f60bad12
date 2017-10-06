@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6bb56b5_cbe5263f",
+        "filename": "util/ectool_keyscan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-10-06T13:11:22Z",
+      "side": 1,
+      "message": "This doesn\u0027t fix the TOCTOU concern in Coverity #58171, it just swaps out the participants, but let\u0027s discuss the minutiae over there.",
+      "revId": "41d55949444a70191d05ff5578ea8216f60bad12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4968c8e_e745f9a9",
+        "filename": "util/ectool_keyscan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-10-06T13:11:22Z",
+      "side": 1,
+      "message": "a failure in read() can return a negative value, which would be a problem here, no?",
+      "revId": "41d55949444a70191d05ff5578ea8216f60bad12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
