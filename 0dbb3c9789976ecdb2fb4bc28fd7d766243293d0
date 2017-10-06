@@ -452,6 +452,24 @@
     },
     {
       "key": {
+        "uuid": "1c80d5ea_b8beab37",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-06T15:19:28Z",
+      "side": 1,
+      "message": "OK. I guess I was confused by the motivation of having other tasks need to use the tpm task. As such I didn\u0027t know what the impact would be in that situation. And wouldn\u0027t that just kill the other task since it\u0027d be permanently waiting for a response it will never get?",
+      "parentUuid": "2be0d4e4_5a6c7fe2",
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18dcf00a_30ba9420",
         "filename": "include/tpm_registers.h",
         "patchSetId": 2
