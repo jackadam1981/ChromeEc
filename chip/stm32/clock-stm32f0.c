@@ -309,20 +309,18 @@ void __idle(void)
 	while (1) {
 		asm volatile("cpsid i");
 
+		rtc_read(&rtc0);
 		t0 = get_time();
 		next_delay = __hw_clock_event_get() - t0.le.lo;
 
 		if (DEEP_SLEEP_ALLOWED &&
 #ifdef CONFIG_HOSTCMD_RTC
 		    /*
-		     * Don't go to deep sleep mode when the host is using
-		     * RTC alarm otherwise the wake point for the host
-		     * would be overwritten.
-		     *
-		     * TODO(chromium:769503): Find a smart way to enable deep
-		     * sleep mode even when the host is using stm32 rtc alarm.
+		     * Don't go to deep sleep mode if we will miss
+		     * the wake time which the host requested.
 		     */
-		    !(STM32_RTC_CR & STM32_RTC_CR_ALRAE) &&
+		    !is_host_wake_alarm_expired(next_delay / SECOND +
+		     rtc_to_sec(&rtc0)) &&
 #endif
 		    (next_delay > (STOP_MODE_LATENCY + SET_RTC_MATCH_DELAY))) {
 			/* deep-sleep in STOP mode */
