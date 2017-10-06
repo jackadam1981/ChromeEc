@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "018e8963_178419f3",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-06T09:10:43Z",
+      "side": 1,
+      "message": "nit: the former indentation was not just a mistake ...",
+      "range": {
+        "startLine": 1144,
+        "startChar": 0,
+        "endLine": 1148,
+        "endChar": 26
+      },
+      "revId": "8cbb015f3453b84056f428d5b4994560051d278e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f58165_226eca56",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-06T09:10:43Z",
+      "side": 1,
+      "message": "Having nit *constants* declared for both case would be better\n(And put less conditionals in the code)\n\nifdef CONFIG_STM32_CLOCK_LSE\n#define BDCR_SRC BDCR_SRC_LSE\n#define BDCR_RDY STM32_RCC_BDCR_LSERDY\n#else\n#define BDCR_SRC BDCR_SRC_LSI\n#define BDCR_RDY 0\n#endif\n\n#define BDCR_ENABLE_VALUE (STM32_RCC_BDCR_RTCEN | BCDR_RTCSEL(BDCR_SRC) | \\\n                         BDCR_RDY)\n#define BDCR_ENABLE_MASK (BDCR_ENABLE_VALUE | BCDR_RTCSEL_MASK | STM32_RCC_BDCR_BDRST)\n\nthen your code is nicely (and unconditionally):\nif ((STM32_RCC_BDCR \u0026 BDCR_ENABLE_MASK) !\u003d BDCR_ENABLE_VALUE) {",
+      "range": {
+        "startLine": 258,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 6
+      },
+      "revId": "8cbb015f3453b84056f428d5b4994560051d278e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52a03d0e_93762841",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-06T09:10:43Z",
+      "side": 1,
+      "message": "ditto you want a single path for this:\n/* Select clock source */\nSTM32_RCC_BDCR \u003d (STM32_RCC_BDCR \u0026 ~(STM32_RCC_BDCR_BDRST | BCDR_RTCSEL_MASK) | BDCR_RTCSEL(BDCR_SRC);",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 6
+      },
+      "revId": "8cbb015f3453b84056f428d5b4994560051d278e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
