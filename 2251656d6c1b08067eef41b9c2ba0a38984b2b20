@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1d6969f_ece2bb9f",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-06T08:09:29Z",
+      "side": 1,
+      "message": "other power events are debounced (by the charge manager)",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 43
+      },
+      "revId": "2251656d6c1b08067eef41b9c2ba0a38984b2b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57e99bfc_887804b9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3935,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-06T08:09:29Z",
+      "side": 1,
+      "message": "nit: this whitespace change doesn\u0027t bring much to the table",
+      "range": {
+        "startLine": 3932,
+        "startChar": 0,
+        "endLine": 3935,
+        "endChar": 37
+      },
+      "revId": "2251656d6c1b08067eef41b9c2ba0a38984b2b20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
