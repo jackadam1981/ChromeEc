@@ -85,4 +85,6 @@ void config_hispeed_clock(void);
 /* Get timer clock frequency (for STM32 only) */
 int clock_get_timer_freq(void);
 
+/* Check if the host rtc wake alarm is expired in a specific time */
+int is_host_wake_alarm_expired(timestamp_t ts);
 #endif  /* __CROS_EC_CLOCK_F_H */
