@@ -72,7 +72,43 @@ static uint32_t sec_to_rtc_tr(uint32_t sec)
 }
 
 #ifdef CONFIG_HOSTCMD_RTC
-static uint8_t host_rtc_alarm_set;
+static struct {
+	timestamp_t ts;
+	/* Preserve the alarm registers set by the host */
+	uint32_t rtc_alrmar;
+	uint32_t rtc_alrmassr;
+} host_wake_time;
+
+int is_host_wake_alarm_expired(timestamp_t ts)
+{
+	return host_wake_time.ts.val &&
+	       timestamp_expired(host_wake_time.ts, &ts);
+}
+
+static void restore_host_wake_alarm(void)
+{
+	if (!host_wake_time.ts.val)
+		return;
+
+	rtc_unlock_regs();
+
+	/* Make sure alarm is disabled */
+	STM32_RTC_CR &= ~STM32_RTC_CR_ALRAE;
+	while (!(STM32_RTC_ISR & STM32_RTC_ISR_ALRAWF))
+		;
+	STM32_RTC_ISR &= ~STM32_RTC_ISR_ALRAF;
+
+	/* Set alarm time */
+	STM32_RTC_ALRMAR = host_wake_time.rtc_alrmar;
+	STM32_RTC_ALRMASSR = host_wake_time.rtc_alrmassr;
+
+	STM32_EXTI_PR = EXTI_RTC_ALR_EVENT;
+	/* Enable alarm and alarm interrupt */
+	STM32_EXTI_IMR |= EXTI_RTC_ALR_EVENT;
+	STM32_RTC_CR |= STM32_RTC_CR_ALRAE;
+
+	rtc_lock_regs();
+}
 
 static uint32_t rtc_dr_to_sec(uint32_t rtc_dr)
 {
@@ -205,8 +241,19 @@ void set_rtc_alarm(uint32_t delay_s, uint32_t delay_us,
 	STM32_RTC_ALRMAR |= 0xc0000000;
 	STM32_RTC_ALRMASSR |= 0x0f000000;
 
-	/* Enable alarm and alarm interrupt */
+#ifdef CONFIG_HOSTCMD_RTC
+	/*
+	 * If alarm is set by the host, preserve the wake time timestamp
+	 * and alarm registers.
+	 */
+	if (!delay_us) {
+		host_wake_time.ts.val = delay_s * SECOND + get_time().val;
+		host_wake_time.rtc_alrmar = STM32_RTC_ALRMAR;
+		host_wake_time.rtc_alrmassr = STM32_RTC_ALRMASSR;
+	}
+#endif
 	STM32_EXTI_PR = EXTI_RTC_ALR_EVENT;
+	/* Enable alarm and alarm interrupt */
 	STM32_EXTI_IMR |= EXTI_RTC_ALR_EVENT;
 	STM32_RTC_CR |= STM32_RTC_CR_ALRAE;
 
@@ -255,10 +302,13 @@ void __rtc_alarm_irq(void)
 
 	reset_rtc_alarm(&rtc);
 #ifdef CONFIG_HOSTCMD_RTC
-	/* Do not wake up the host if the alarm was not set by the host */
-	if (host_rtc_alarm_set) {
-		host_set_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC));
-		host_rtc_alarm_set = 0;
+	/* Do not wake up the host if the alarm was not set for the host */
+	if (host_wake_time.ts.val) {
+		if (is_host_wake_alarm_expired(get_time())) {
+			host_set_events(EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC));
+			host_wake_time.ts.val = 0;
+		} else
+			restore_host_wake_alarm();
 	}
 #endif
 }
@@ -406,8 +456,6 @@ static int system_rtc_set_alarm(struct host_cmd_handler_args *args)
 	struct rtc_time_reg rtc;
 	const struct ec_params_rtc *p = args->params;
 
-	if (p->time != EC_RTC_ALARM_CLEAR)
-		host_rtc_alarm_set = 1;
 	set_rtc_alarm(p->time, 0, &rtc);
 	return EC_RES_SUCCESS;
 }
