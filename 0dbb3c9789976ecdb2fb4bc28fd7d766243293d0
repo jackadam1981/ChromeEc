@@ -66,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "64805086_f2603790",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-06T00:38:01Z",
+      "side": 1,
+      "message": "I\u0027ll check if it fits",
+      "parentUuid": "0685bdd0_47b60579",
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8b1fa7a_97135d1a",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "Doesn\u0027t the ec code base have a forced read instead of making the pointers decorated with \u0027volatile\u0027 ?",
       "parentUuid": "bbf6b119_ea64b022",
+      "range": {
+        "startLine": 718,
+        "startChar": 9,
+        "endLine": 718,
+        "endChar": 29
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e7da976_3f55cc9a",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-06T00:38:01Z",
+      "side": 1,
+      "message": "how does the forced read work - is there a compiler option?",
+      "parentUuid": "9fdec7cc_500920cb",
       "range": {
         "startLine": 718,
         "startChar": 9,
@@ -208,6 +250,30 @@
     },
     {
       "key": {
+        "uuid": "d1ebbc6f_fc794349",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-06T00:38:01Z",
+      "side": 1,
+      "message": "task ID is fine, I am not sure what happens with event types - we don\u0027t know what task uses what events for other purposes. \n\nWhat if the task waiting here gets a signal for some other reason?",
+      "parentUuid": "4e36644f_ce6d1d15",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 719,
+        "endChar": 13
+      },
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7d3f552_56fbc3e6",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -272,6 +338,24 @@
     },
     {
       "key": {
+        "uuid": "2be0d4e4_5a6c7fe2",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-06T00:38:01Z",
+      "side": 1,
+      "message": "the assumption is the same as before: if there is a reset it is ok to lose other events.",
+      "parentUuid": "6901d714_f8bf3a33",
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18dcf00a_30ba9420",
         "filename": "include/tpm_registers.h",
         "patchSetId": 2
@@ -283,6 +367,24 @@
       "writtenOn": "2017-10-05T23:36:15Z",
       "side": 1,
       "message": "I think some comments about the arguments would be helpful.",
+      "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d5f887c_54a5bd94",
+        "filename": "include/tpm_registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-06T00:38:01Z",
+      "side": 1,
+      "message": "will add",
+      "parentUuid": "18dcf00a_30ba9420",
       "revId": "0dbb3c9789976ecdb2fb4bc28fd7d766243293d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
