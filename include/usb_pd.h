@@ -1026,9 +1026,10 @@ void pd_update_contract(int port);
  * @param port USB-C port number
  * @param max_ma Maximum current limit
  * @param supply_voltage Voltage at which current limit is applied
+ * @param dts true if partner port is DTS
  */
 void typec_set_input_current_limit(int port, uint32_t max_ma,
-				   uint32_t supply_voltage);
+				   uint32_t supply_voltage, int dts);
 
 /**
  * Set the type-C current limit when sourcing current..

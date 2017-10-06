@@ -76,10 +76,10 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 }
 
 void typec_set_input_current_limit(int port, uint32_t max_ma,
-				   uint32_t supply_voltage)
+				   uint32_t supply_voltage, int dts)
 {
-	CPRINTS("TYPEC current limit port %d max %d mA %d mV",
-		port, max_ma, supply_voltage);
+	CPRINTS("TYPEC%scurrent limit port %d max %d mA %d mV",
+		dts ? " DTS " : " ", port, max_ma, supply_voltage);
 	gpio_set_level(GPIO_LED_R, !!max_ma);
 }
 

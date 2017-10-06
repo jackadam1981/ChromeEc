@@ -253,7 +253,8 @@ static void board_charge_manager_init(void)
 	/* Initialize the power source supplier */
 	switch (input_port) {
 	case CHARGE_PORT_TYPEC0:
-		typec_set_input_current_limit(input_port, 3000, input_voltage);
+		typec_set_input_current_limit(input_port, 3000,
+					      input_voltage, 0);
 		break;
 	case CHARGE_PORT_BARRELJACK:
 		cpi.voltage = input_voltage;

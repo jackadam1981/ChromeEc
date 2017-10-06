@@ -35,6 +35,7 @@ test_mockable const int supplier_priority[] = {
 	[CHARGE_SUPPLIER_DEDICATED] = 0,
 #endif
 	[CHARGE_SUPPLIER_TYPEC] = 1,
+	[CHARGE_SUPPLIER_TYPEC_DTS] = 1,
 #ifdef CHARGE_MANAGER_BC12
 	[CHARGE_SUPPLIER_PROPRIETARY] = 1,
 	[CHARGE_SUPPLIER_BC12_DCP] = 2,
@@ -274,6 +275,7 @@ static void charge_manager_fill_power_info(int port,
 			r->type = USB_CHG_TYPE_PD;
 			break;
 		case CHARGE_SUPPLIER_TYPEC:
+		case CHARGE_SUPPLIER_TYPEC_DTS:
 			r->type = USB_CHG_TYPE_C;
 			break;
 #ifdef CHARGE_MANAGER_BC12
@@ -834,13 +836,19 @@ void pd_set_input_current_limit(int port, uint32_t max_ma,
 }
 
 void typec_set_input_current_limit(int port, uint32_t max_ma,
-				   uint32_t supply_voltage)
+				   uint32_t supply_voltage, int dts)
 {
 	struct charge_port_info charge;
 
 	charge.current = max_ma;
 	charge.voltage = supply_voltage;
-	charge_manager_update_charge(CHARGE_SUPPLIER_TYPEC, port, &charge);
+	charge_manager_update_charge(dts ? CHARGE_SUPPLIER_TYPEC_DTS :
+					   CHARGE_SUPPLIER_TYPEC,
+					   port, &charge);
+	if (max_ma == 0 || supply_voltage == 0)
+		charge_manager_update_charge(dts ? CHARGE_SUPPLIER_TYPEC :
+					     CHARGE_SUPPLIER_TYPEC_DTS,
+					     port, &charge);
 }
 
 void charge_manager_update_charge(int supplier,

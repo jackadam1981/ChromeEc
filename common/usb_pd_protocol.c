@@ -288,7 +288,7 @@ static inline void set_state(int port, enum pd_states next_state)
 		/* Clear the input current limit */
 		pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
-		typec_set_input_current_limit(port, 0, 0);
+		typec_set_input_current_limit(port, 0, 0, 0);
 		charge_manager_set_ceil(port,
 					CEIL_REQUESTOR_PD,
 					CHARGE_CEIL_NONE);
@@ -1533,13 +1533,16 @@ static inline int get_snk_polarity(int cc1, int cc2)
 
 #if defined(CONFIG_CHARGE_MANAGER)
 /**
- * Returns type C current limit (mA) based upon cc_voltage (mV).
+ * Returns type C current limit (mA) based upon cc_voltage (mV) and sets
+ * is_dts according to whether the partner is a DTS port.
  */
-static inline int get_typec_current_limit(int polarity, int cc1, int cc2)
+static int get_typec_current_limit(int polarity, int cc1, int cc2, int *is_dts)
 {
 	int charge;
 	int cc = polarity ? cc2 : cc1;
 	int cc_alt = polarity ? cc1 : cc2;
+
+	*is_dts = (cc_alt != TYPEC_CC_OPEN);
 
 	if (cc == TYPEC_CC_VOLT_SNK_3_0 && cc_alt != TYPEC_CC_VOLT_SNK_1_5)
 		charge = 3000;
@@ -1637,7 +1640,7 @@ void pd_task(void *u)
 	const int auto_toggle_supported = tcpm_auto_toggle_supported(port);
 #endif
 #if defined(CONFIG_CHARGE_MANAGER)
-	int typec_curr = 0, typec_curr_change = 0;
+	int typec_curr = 0, typec_curr_change = 0, dts;
 #endif /* CONFIG_CHARGE_MANAGER */
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	enum pd_states this_state;
@@ -1716,7 +1719,7 @@ void pd_task(void *u)
 #ifdef CONFIG_CHARGE_MANAGER
 	/* Initialize PD and type-C supplier current limits to 0 */
 	pd_set_input_current_limit(port, 0, 0);
-	typec_set_input_current_limit(port, 0, 0);
+	typec_set_input_current_limit(port, 0, 0, 0);
 	charge_manager_update_dualrole(port, CAP_UNKNOWN);
 #endif
 
@@ -2390,9 +2393,9 @@ void pd_task(void *u)
 			pd_set_data_role(port, PD_ROLE_UFP);
 #if defined(CONFIG_CHARGE_MANAGER)
 			typec_curr = get_typec_current_limit(pd[port].polarity,
-							     cc1, cc2);
+							     cc1, cc2, &dts);
 			typec_set_input_current_limit(
-				port, typec_curr, TYPE_C_VOLTAGE);
+				port, typec_curr, TYPE_C_VOLTAGE, dts);
 #endif
 			/* If PD comm is enabled, enable TCPC RX */
 			if (pd_comm_is_enabled(port))
@@ -2522,14 +2525,17 @@ void pd_task(void *u)
 			/* Check if CC pull-up has changed */
 			tcpm_get_cc(port, &cc1, &cc2);
 			if (typec_curr != get_typec_current_limit(
-						pd[port].polarity, cc1, cc2)) {
+						pd[port].polarity, cc1, cc2,
+						&dts)) {
 				/* debounce signal by requiring two reads */
 				if (typec_curr_change) {
 					/* set new input current limit */
 					typec_curr = get_typec_current_limit(
-						pd[port].polarity, cc1, cc2);
+						pd[port].polarity, cc1, cc2,
+						&dts);
 					typec_set_input_current_limit(
-					  port, typec_curr, TYPE_C_VOLTAGE);
+					  port, typec_curr,
+					  TYPE_C_VOLTAGE, dts);
 				} else {
 					/* delay for debounce */
 					timeout = PD_T_DEBOUNCE;
@@ -2631,7 +2637,7 @@ void pd_task(void *u)
 			/* Stop drawing power */
 			pd_set_input_current_limit(port, 0, 0);
 #ifdef CONFIG_CHARGE_MANAGER
-			typec_set_input_current_limit(port, 0, 0);
+			typec_set_input_current_limit(port, 0, 0, 0);
 			charge_manager_set_ceil(port,
 						CEIL_REQUESTOR_PD,
 						CHARGE_CEIL_NONE);
