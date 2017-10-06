@@ -32,6 +32,22 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 
+/* Initialize board. */
+void board_config_pre_init(void)
+{
+	/* enable SYSCFG clock */
+	STM32_RCC_APB2ENR |= 1 << 0;
+	/* Remap USART DMA to match the USART driver and TIM2 DMA */
+	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10) /* Remap USART1 RX/TX DMA */
+			   |  (1 << 29);/* Remap TIM2 DMA */
+#if 0
+	/* 40 MHz pin speed on UART PA9/PA10 */
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0x003C0000;
+	/* 40 MHz pin speed on TX clock out PB9 */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0x000C0000;
+#endif
+}
+
 /******************************************************************************
  * Forward UARTs as a USB serial interface.
  */
@@ -82,6 +98,7 @@ const void *const usb_strings[] = {
 	[USB_STR_USART1_STREAM_NAME]  = USB_STRING_DESC("DUT UART"),
 	[USB_STR_CONSOLE_NAME] = USB_STRING_DESC("Tigertail Console"),
 	[USB_STR_UPDATE_NAME]  = USB_STRING_DESC("Firmware update"),
+	[USB_STR_SNIFFER] = USB_STRING_DESC("USB-PD Sniffer"),
 };
 
 BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
@@ -93,6 +110,9 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 const struct adc_t adc_channels[] = {
 	[ADC_SBU1] = {"SBU1", 3300, 4096, 0, STM32_AIN(6)},
 	[ADC_SBU2] = {"SBU2", 3300, 4096, 0, STM32_AIN(7)},
+	/* USB PD CC lines sensing. Converted to mV (3300mV/4096). */
+	[ADC_CH_CC1_PD] = {"CC1_PD", 3300, 4096, 0, STM32_AIN(1)},
+	[ADC_CH_CC2_PD] = {"CC2_PD", 3300, 4096, 0, STM32_AIN(3)},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 

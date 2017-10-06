@@ -17,7 +17,7 @@
 #define CONFIG_STREAM_USB
 #define CONFIG_CMD_USART_INFO
 
-/* The UART console is on USART1 (PA9/PA10) */
+/* The UART console is on USART2 (PA1/PA3) */
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 2
 #undef CONFIG_UART_TX_DMA
@@ -39,12 +39,42 @@
 #define CONFIG_USB_SERIALNO
 #define DEFAULT_SERIALNO "Uninitialized"
 
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_INTERNAL_COMP
+#define CONFIG_USB_PD_PORT_COUNT 1
+#define CONFIG_USB_PD_TCPC
+#define CONFIG_USB_PD_TCPM_STUB
+#define CONFIG_USB_PD_VBUS_DETECT_GPIO
+#define CONFIG_PD_USE_DAC_AS_REF
+
+/*
+ * use #define CONFIG_USBC_SNIFFER_HEADER_V1
+ * if you do not want twinkie to send out vbus info;
+ * use #define CONFIG_USBC_SNIFFER_HEADER_V2
+ * if you want twinkie to send out vbus info.
+ */
+#define CONFIG_USBC_SNIFFER_HEADER_V1
+#define CONFIG_HW_CRC
+
+#ifndef HAS_TASK_PD_C0 /* PD sniffer mode */
+#undef CONFIG_DMA_DEFAULT_HANDLERS
+#define CONFIG_USB_PD_TX_PHY_ONLY
+/* override the comparator interrupt handler */
+#undef CONFIG_USB_PD_RX_COMP_IRQ
+#endif
+
+#define CONFIG_ADC
+#define CONFIG_BOARD_PRE_INIT
+
 /* USB interface indexes (use define rather than enum to expand them) */
 #define USB_IFACE_CONSOLE	0
 #define USB_IFACE_UPDATE	1
 #define USB_IFACE_USART1_STREAM	2
 #define USB_IFACE_I2C		3
-#define USB_IFACE_COUNT		4
+#define USB_IFACE_SNIFFER   4
+
+#define USB_IFACE_COUNT		5
 
 /* USB endpoint indexes (use define rather than enum to expand them) */
 #define USB_EP_CONTROL		0
@@ -52,7 +82,9 @@
 #define USB_EP_UPDATE		2
 #define USB_EP_USART1_STREAM	3
 #define USB_EP_I2C		4
-#define USB_EP_COUNT		5
+#define USB_EP_SNIFFER   5
+
+#define USB_EP_COUNT		6
 
 /* Enable console recasting of GPIO type. */
 #define CONFIG_CMD_GPIO_EXTENDED
@@ -81,10 +113,25 @@
 #ifndef __ASSEMBLER__
 
 /* Timer selection */
-#define TIM_CLOCK32 2
-#define TIM_ADC     3
+/* #define TIM_CLOCK32 2 */
+/* #define TIM_ADC     3 */
 
+void sniffer_init(void);
 
+int wait_packet(int pol, uint32_t min_edges, uint32_t timeout_us);
+
+int expect_packet(int pol, uint8_t cmd, uint32_t timeout_us);
+
+uint8_t recording_enable(uint8_t mask);
+
+void trace_packets(void);
+
+void set_trace_mode(int mode);
+
+/* Timer selection */
+#define TIM_CLOCK_MSB  3
+#define TIM_CLOCK_LSB 15
+#define TIM_ADC       16
 
 #include "gpio_signal.h"
 
@@ -99,6 +146,7 @@ enum usb_strings {
 	USB_STR_USART1_STREAM_NAME,
 	USB_STR_CONSOLE_NAME,
 	USB_STR_UPDATE_NAME,
+	USB_STR_SNIFFER,
 
 	USB_STR_COUNT
 };
@@ -107,9 +155,29 @@ enum usb_strings {
 enum adc_channel {
 	ADC_SBU1 = 0,
 	ADC_SBU2,
+	ADC_CH_CC1_PD,
+	ADC_CH_CC2_PD,
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
+
+
+/* Standard-current Rp */
+#define PD_SRC_VNC           PD_SRC_DEF_VNC_MV
+#define PD_SRC_RD_THRESHOLD  PD_SRC_DEF_RD_THRESH_MV
+
+/* delay necessary for the voltage transition on the power supply */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY  50000 /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 50000 /* us */
+
+/* Define typical operating power and max power */
+#define PD_OPERATING_POWER_MW 15000
+#define PD_MAX_POWER_MW       60000
+#define PD_MAX_CURRENT_MA     3000
+#define PD_MAX_VOLTAGE_MV     20000
+
+
+
 
 void set_uart_state(int state);
 
