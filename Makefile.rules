@@ -20,6 +20,38 @@ host-srcs := $(foreach u,$(host-util-bin),$(sort $($(u)-objs:%.o=util/%.c) util/
 skip_boards = OWNERS host it83xx_evb reef_it8320
 boards := $(filter-out $(skip_boards),$(notdir $(wildcard board/* private*/board/*)))
 
+#
+# Ensure that the image is fully rebuilt if some essential Make variables have
+# changed.
+#
+# The essential Make variables are stored in the board/$(BOARD)/make_vars, one
+# per line (lines starting with '#' and empty lines are ignored). If the file
+# exists, the current state of the essential variables is saved in the build
+# directory in $(out)/make_vars.saved.
+#
+# If during a following build the state of the variables is different from the
+# state saved in the output directory, the output directory contents are
+# removed, which guarantees that the image is built from scratch with the
+# new set of essential Make variables' values.
+#
+MVARS_FILE:=board/$(BOARD)/make_vars
+SAVED_MVARS_FILE=$(out)/make_vars.saved
+ifneq ($(wildcard $(MVARS_FILE)),)
+
+# Get the list of essential variables.
+MVARS:=$(shell awk '/^[^\#]+/ {print}' $(MVARS_FILE))
+
+# Evaluate current state of the essential variables.
+CUR_MVARS:=$(foreach f,$(MVARS),$f=$($f))
+
+# Check if the values changed and remove contents of the output directory if
+# so.
+_check_mvars:=$(shell [ -f $(SAVED_MVARS_FILE) ] && \
+                        grep -q "$(CUR_MVARS)$$" $(SAVED_MVARS_FILE) || \
+                        rm -rf $(out)/*; \
+                 echo "$(CUR_MVARS)" > "$(SAVED_MVARS_FILE)")
+endif
+
 # Create output directories if necessary
 _common_dir_create := $(foreach d,$(common_dirs),$(shell [ -d $(out)/$(d) ] || \
 	    mkdir -p $(out)/$(d)))
