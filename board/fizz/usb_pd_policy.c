@@ -17,6 +17,7 @@
 #include "registers.h"
 #include "system.h"
 #include "task.h"
+#include "tcpm.h"
 #include "timer.h"
 #include "util.h"
 #include "usb_mux.h"
@@ -258,6 +259,7 @@ DECLARE_HOOK(HOOK_INIT, board_charge_manager_init, HOOK_PRIO_INIT_ADC + 1);
 int board_set_active_charge_port(int port)
 {
 	const int active_port = charge_manager_get_active_charge_port();
+	uint64_t timeout;
 
 	if (port < 0 || CHARGE_PORT_COUNT <= port)
 		return EC_ERROR_INVAL;
@@ -279,6 +281,11 @@ int board_set_active_charge_port(int port)
 		break;
 	case CHARGE_PORT_BARRELJACK :
 		gpio_set_level(GPIO_AC_JACK_CHARGE_L, 0);
+		/* Disconnect Type-C charger */
+		tcpm_set_cc(CHARGE_PORT_TYPEC0, TYPEC_CC_RP);
+		timeout = get_time().val + 100 * MSEC;
+		while (get_time().val < timeout && pd_snk_is_vbus_provided(port))
+			msleep(10);
 		gpio_set_level(GPIO_USB_C0_CHARGE_L, 1);
 		gpio_disable_interrupt(GPIO_ADP_IN_L);
 		break;
