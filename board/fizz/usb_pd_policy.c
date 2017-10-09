@@ -17,6 +17,7 @@
 #include "registers.h"
 #include "system.h"
 #include "task.h"
+#include "tcpm.h"
 #include "timer.h"
 #include "util.h"
 #include "usb_mux.h"
@@ -289,6 +290,11 @@ int board_set_active_charge_port(int port)
 		break;
 	case CHARGE_PORT_BARRELJACK :
 		gpio_set_level(GPIO_AC_JACK_CHARGE_L, 0);
+		/* If this is switching from type-c to BJ, we have to wait for
+		 * VBUS to come up. NX20P5090 datasheet says turn-on time for
+		 * 20V is 29 msec. */
+		if (pd_snk_is_vbus_provided(port))
+			msleep(30);
 		gpio_set_level(GPIO_USB_C0_CHARGE_L, 1);
 		gpio_disable_interrupt(GPIO_ADP_IN_L);
 		break;
