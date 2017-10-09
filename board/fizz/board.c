@@ -72,16 +72,17 @@ static int adp_in_state = 1;
 static void adp_in_deferred(void)
 {
 	/* TODO: Switch power source from USB-C to BJ only if we're in S5. */
-	struct charge_port_info cpi;
+	struct charge_port_info cpi = { 0 };
 	int level = gpio_get_level(GPIO_ADP_IN_L);
 
 	/* Debounce */
 	if (level == adp_in_state)
 		return;
-	/* High = unplugged. Low = plugged. TODO: Set appropriate voltage. */
-	cpi.voltage = level ? 0 : 19000;
-	/* Set to 0 to ensure charge manager will ignore it. */
-	cpi.current = 0;
+	if (!level) {
+		cpi.voltage = 19000;
+		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+			cpi.current = 4620;
+	}
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED, 1, &cpi);
 	/* Explicitly notifies the host that BJ is plugged or unplugged
 	 * (when running on a type-c adapter). */
