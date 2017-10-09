@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "117d1ee6_6df45934",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-09T13:35:27Z",
+      "side": 1,
+      "message": "the commit message are supposed to include BUG\u003d , TEST\u003d and BRANCH\u003d\n\nBy the way, given this is enforced by the pre-submit check, I imagine you skipped it too.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 50
+      },
+      "revId": "3fc63529d26c83e4601d41de41cbef21ed10a6fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
