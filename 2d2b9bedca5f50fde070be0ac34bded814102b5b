@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "0ec66479_6002b12d",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-10T21:24:40Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "8f93299c_fb4ddae7",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "2d2b9bedca5f50fde070be0ac34bded814102b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98d78e61_e0cbca2d",
         "filename": "common/host_event_commands.c",
         "patchSetId": 2
