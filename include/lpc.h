@@ -74,14 +74,16 @@ enum lpc_host_event_type {
 };
 
 /**
- * Set the event state.
+ * Get current state of host events.
  */
-void lpc_set_host_event_state(uint32_t mask);
+uint32_t lpc_get_host_events(void);
 
 /**
- * Clear and return the lowest host event.
+ * Get host events that are set based on the type provided.
+ *
+ * @param type		Event type
  */
-int lpc_query_host_event_state(void);
+uint32_t lpc_get_host_events_by_type(enum lpc_host_event_type type);
 
 /**
  * Set the event mask for the specified event type.
@@ -92,9 +94,16 @@ int lpc_query_host_event_state(void);
 void lpc_set_host_event_mask(enum lpc_host_event_type type, uint32_t mask);
 
 /**
- * Return the event mask for the specified event type.
+ * Get host event mask based on the type provided.
+ *
+ * @param type		Event type
  */
 uint32_t lpc_get_host_event_mask(enum lpc_host_event_type type);
+
+/**
+ * Clear and return the lowest host event.
+ */
+int lpc_query_host_event_state(void);
 
 /**
  * Set the EC_LPC_STATUS_* mask for the specified status.
@@ -123,5 +132,12 @@ void lpc_disable_acpi_interrupts(void);
 
 /* Enable LPC ACPI interrupts */
 void lpc_enable_acpi_interrupts(void);
+
+/**
+ * Update host event status. This function is called whenever host event bits
+ * need to be updated based on initialization complete or host event mask
+ * update or when a new host event is set or cleared.
+ */
+void lpc_update_host_event_status(void);
 
 #endif  /* __CROS_EC_LPC_H */
