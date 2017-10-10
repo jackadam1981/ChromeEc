@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e029c102_aee667b5",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-10T18:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2efaefb3_8fc542b4",
+      "range": {
+        "startLine": 848,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 0
+      },
+      "revId": "c17d16ff8359cae1b481cb0ede2ab9fc8397e019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b805ae0b_4529cfe5",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-09T17:06:17Z",
       "side": 1,
       "message": "does it worth encoding DTS as some kind \u0027flag\u0027 in the returned current ?\nit\u0027s some kind of intrinsic property of the current limit we use later, and it\u0027s generating better code.\nOf course it\u0027s a hack.",
+      "range": {
+        "startLine": 1539,
+        "startChar": 7,
+        "endLine": 1539,
+        "endChar": 79
+      },
+      "revId": "c17d16ff8359cae1b481cb0ede2ab9fc8397e019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3505f874_846f9b41",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-10T18:12:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b805ae0b_4529cfe5",
       "range": {
         "startLine": 1539,
         "startChar": 7,
