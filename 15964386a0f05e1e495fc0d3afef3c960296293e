@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dcaaa7e_ddc044f8",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-10T16:50:23Z",
+      "side": 1,
+      "message": "Why are you specifying values here? enums will self increment on their own. What does it matter what they actually are. Also, why do specify lower case? They look like a variable then.",
+      "revId": "15964386a0f05e1e495fc0d3afef3c960296293e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4c6559f_04628073",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-10T16:50:23Z",
+      "side": 1,
+      "message": "Is the default value of 0 ok for a mutex or is there more initialization required?",
+      "revId": "15964386a0f05e1e495fc0d3afef3c960296293e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8b7c4bd_cfaf3493",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-10T16:50:23Z",
+      "side": 1,
+      "message": "You should force the read here as well.",
+      "range": {
+        "startLine": 734,
+        "startChar": 10,
+        "endLine": 734,
+        "endChar": 31
+      },
+      "revId": "15964386a0f05e1e495fc0d3afef3c960296293e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edaf37c3_5e427b0c",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-10T16:50:23Z",
+      "side": 1,
+      "message": "You used REG32 when setting this field above. Why not here?",
+      "range": {
+        "startLine": 1028,
+        "startChar": 4,
+        "endLine": 1028,
+        "endChar": 25
+      },
+      "revId": "15964386a0f05e1e495fc0d3afef3c960296293e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
