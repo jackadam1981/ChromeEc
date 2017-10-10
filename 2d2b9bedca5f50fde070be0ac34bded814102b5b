@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fc506de_ea5b86ad",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-10T16:12:27Z",
+      "side": 1,
+      "message": "This is for each \u0027enum lpc_host_event_type\u0027, right? Do you want to add LPC_HOST_EVENT_COUNT and use it as the array size to make things more clear?",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 37
+      },
+      "revId": "2d2b9bedca5f50fde070be0ac34bded814102b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bf9a361_f63f490f",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-10T16:12:27Z",
+      "side": 1,
+      "message": "Let\u0027s rename this function while we\u0027re here? How about lpc_get_next_host_event()?",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 30
+      },
+      "revId": "2d2b9bedca5f50fde070be0ac34bded814102b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e4e426f_b047d589",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-10T16:12:27Z",
+      "side": 1,
+      "message": "I think we can make this more efficient? Something like:\n\nwhile (lpc_host_events) {\n  const int next_evt_idx \u003d __builtin_ffs(lpc_host_events) - 1;\n  host_clear_events(1 \u003c\u003c next_evt_idx);\n  if (!(e \u0026 (1 \u003c\u003c next_evt_idx))\n    continue;\n  evt_idx \u003d next_evt_idx + 1;\n  break;\n}",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 2
+      },
+      "revId": "2d2b9bedca5f50fde070be0ac34bded814102b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98d78e61_e0cbca2d",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-10T16:12:27Z",
+      "side": 1,
+      "message": "Let\u0027s add a #define for this version param?",
+      "range": {
+        "startLine": 92,
+        "startChar": 38,
+        "endLine": 92,
+        "endChar": 39
+      },
+      "revId": "2d2b9bedca5f50fde070be0ac34bded814102b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
