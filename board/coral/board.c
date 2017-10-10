@@ -63,7 +63,150 @@
 #define USB_PD_PORT_ANX74XX	0
 #define USB_PD_PORT_PS8751	1
 
+enum form_factor {
+	CLAMSHELL,
+	CONVERTIBLE,
+};
+
+struct sku_info {
+	uint8_t id;
+	enum form_factor form;
+};
+
 static int sku_id;
+
+/*
+ * There are 256 possible SKUs for Coral. This table is used to map a given SKU
+ * ID to its form factor, which is then used to determine number of motion
+ * sensors. The entries are from the Coral SJU Maxtrix and in the order listed
+ * in that document.
+ */
+static const struct sku_info sku_table[] = {
+	{
+		.id = 0,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 1,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 61,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 62,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 5,
+		.form = CONVERTIBLE,
+	},
+
+	{
+		.id = 4,
+		.form = CONVERTIBLE,
+	},
+
+	{
+		.id = 10,
+		.form = CONVERTIBLE,
+	},
+
+	{
+		.id = 9,
+		.form = CONVERTIBLE,
+	},
+
+	{
+		.id = 3,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 2,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 6,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 7,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 8,
+		.form = CONVERTIBLE,
+	},
+
+	{
+		.id = 26,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 27,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 70,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 71,
+		.form = CONVERTIBLE,
+	},
+
+	{
+		.id = 78,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 82,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 160,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 161,
+		.form = CLAMSHELL,
+	},
+
+	{
+		.id = 162,
+		.form = CONVERTIBLE,
+	},
+
+	{
+		.id = 163,
+		.form = CONVERTIBLE,
+	},
+
+	{
+		.id = 165,
+		.form = CONVERTIBLE,
+	},
+
+	{
+		.id = 166,
+		.form = CONVERTIBLE,
+	},
+};
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -987,7 +1130,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 },
 	},
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */
 const struct motion_sensor_t *motion_als_sensors[] = {
@@ -1011,6 +1154,29 @@ void board_hibernate(void)
 
 	/* Turn BGATE OFF for saving the power */
 	bd9995x_set_power_save_mode(BD9995X_PWR_SAVE_MAX);
+}
+
+static void board_set_motion_sensor_count(uint8_t sku_id)
+{
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(sku_table); i++) {
+		if (sku_table[i].id == sku_id) {
+			/*
+			 * There are two possible sensor
+			 * configurations. Clamshell device will not have any of
+			 * the motion sensors populated, while convertible
+			 * devices have the BMI160 Accel/Gryo and Kionx KX022
+			 * lid acceleration sensor. If a new SKU id is used that
+			 * is not in the table, then the number of motion
+			 * sensors will remain as ARRAY_SIZE(motion_sensors).
+			 */
+			motion_sensor_count = sku_table[i].form == CLAMSHELL ?
+				0 : ARRAY_SIZE(motion_sensors);
+			break;
+		}
+	}
+	CPRINTS("Motion Sensor Count = %d", motion_sensor_count);
 }
 
 struct {
@@ -1088,6 +1254,8 @@ static void board_get_sku_id(void)
 		    (sku_id_higher != BOARD_VERSION_UNKNOWN))
 			sku_id = (sku_id_higher << 4) | sku_id_lower;
 		CPRINTS("SKU ID: %d", sku_id);
+		/* Use sku_id to set motion sensor count */
+		board_set_motion_sensor_count(sku_id);
 	}
 }
 /* This can't run until after the ADC module has been initialized */
