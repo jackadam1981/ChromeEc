@@ -64,6 +64,10 @@ int usb_charger_ramp_max(int supplier, int sup_curr)
 	return 0;
 }
 
+void pd_send_host_event(int mask)
+{
+}
+
 int board_is_consuming_full_charge(void)
 {
 	return charge_limit_ma <= system_load_current_ma;
