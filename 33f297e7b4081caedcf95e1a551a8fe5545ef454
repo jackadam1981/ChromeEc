@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "360e63d2_80aef9de",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-11T19:36:54Z",
+      "side": 1,
+      "message": "Please add:\n\nDefining one of these will automatically define CONFIG_BATTERY at the end of this file.  If you add a new config here, you\u0027ll need to update that check.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "33f297e7b4081caedcf95e1a551a8fe5545ef454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d871b15_281771cc",
+        "filename": "test/test_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-11T19:36:54Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be needed because CONFIG_BATTERY_SMART is defined?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 22
+      },
+      "revId": "33f297e7b4081caedcf95e1a551a8fe5545ef454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
