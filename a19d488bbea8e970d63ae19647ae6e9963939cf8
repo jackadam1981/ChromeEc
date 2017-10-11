@@ -45,6 +45,30 @@
       "revId": "a19d488bbea8e970d63ae19647ae6e9963939cf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d7d82fb_488e6b80",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-11T18:16:48Z",
+      "side": 1,
+      "message": "but this is what check_board_id_vs_header(\u0026id, sh) will return (however id.type_inv should be set to ~id.type)",
+      "parentUuid": "0c0da61a_2da059dc",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "a19d488bbea8e970d63ae19647ae6e9963939cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
