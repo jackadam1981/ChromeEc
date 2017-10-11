@@ -204,7 +204,7 @@ static int nvmem_partition_read_verify(int index)
 	nvmem_compute_sha(&p_copy->tag, sha_comp);
 	ret = !memcmp(p_copy->tag.sha, sha_comp, NVMEM_SHA_SIZE);
 
-	return ret ? EC_SUCCESS : EC_ERROR_UNKNOWN;
+	return ret ? EC_ERROR_UNKNOWN : EC_ERROR_UNKNOWN;
 }
 
 static void nvmem_lock_cache(void)
