@@ -51,6 +51,25 @@ quiet = $(cmd_$(1))
 endif
 endif
 
+# Transform a command-line to put safely in a makefile
+# replace $ by $$, # by \#, ' by \'
+squote  := '
+makify_cmd = $(subst $(squote),'\$(squote)',$(subst \#,\\\#,$(subst $$,$$$$,$(cmd_$(1)))))
+
+# Has the build command list of arguments changed ?
+check_cmd = $(strip $(filter-out $(cmd_$(1)), $(cmd_$@)) \
+                    $(filter-out $(cmd_$@),   $(cmd_$(1))) )
+
+# Has a prerequisite changed ?
+# As Make would normally do, is it newer or absent ?
+check_prereq = $(filter-out ALWAYS,$?) $(filter-out ALWAYS $(wildcard $^),$^)
+
+# Conditionally execute the command if either prerequisites changed
+# OR the command itself did, and save the command-line in the .cmd file.
+check_dep = $(if $(strip $(check_prereq) $(check_cmd)), \
+	$(quiet) ;                                      \
+	printf '%s\n' 'cmd_$@ := $(makify_cmd)' > $(dir $@).$(notdir $@).cmd)
+
 # commands to build all targets
 cmd_lds = $(CPP) -P -C -MMD -MF $@.d -MT $@ $(CPPFLAGS) $< -o $@
 cmd_lds_b = $(cmd_lds) -DRW_B_LDS
@@ -281,11 +300,11 @@ coverage: $(cov-test-targets)
 
 $(out)/firmware_image.lds: common/firmware_image.lds.S
 	$(call quiet,lds,LDS    )
-$(out)/%.lds: core/$(CORE)/ec.lds.S
-	$(call quiet,lds,LDS    )
+$(out)/%.lds: core/$(CORE)/ec.lds.S ALWAYS
+	$(call check_dep,lds,LDS    )
 
-$(out)/%_B.lds: core/$(CORE)/ec.lds.S
-	$(call quiet,lds_b,LDS_B  )
+$(out)/%_B.lds: core/$(CORE)/ec.lds.S ALWAYS
+	$(call check_dep,lds_b,LDS_B  )
 
 $(out)/%.bin: $(out)/%.obj
 	$(call quiet,obj_to_bin,OBJCOPY)
@@ -365,19 +384,19 @@ $(out)/%.smap: $(out)/%.elf
 $(out)/$(PROJECT).exe: $(ro-objs)
 	$(call quiet,exe,EXE    )
 
-$(out)/RO/%.o:%.c
-	$(call quiet,c_to_o,CC     )
-$(out)/RW/%.o:%.c
-	$(call quiet,c_to_o,CC     )
+$(out)/RO/%.o:%.c ALWAYS
+	$(call check_dep,c_to_o,CC     )
+$(out)/RW/%.o:%.c ALWAYS
+	$(call check_dep,c_to_o,CC     )
 
 $(out)/$(SHOBJLIB)/%.o: override LATE_CFLAGS_DEFINE:=-DSHAREDLIB_IMAGE
-$(out)/$(SHOBJLIB)/%.o:%.c
-	$(call quiet,c_to_o,CC     )
+$(out)/$(SHOBJLIB)/%.o:%.c ALWAYS
+	$(call check_dep,c_to_o,CC     )
 
-$(out)/RO/%.o:%.S
-	$(call quiet,c_to_o,AS     )
-$(out)/RW/%.o:%.S
-	$(call quiet,c_to_o,AS     )
+$(out)/RO/%.o:%.S ALWAYS
+	$(call check_dep,c_to_o,AS     )
+$(out)/RW/%.o:%.S ALWAYS
+	$(call check_dep,c_to_o,AS     )
 
 
 # Conditionally force the rebuilding of ec_version.h only if it would be
@@ -564,3 +583,11 @@ analyzestack: $(out)/util/export_taskinfo.so
 .SECONDARY:
 
 -include $(deps)
+
+# Force rebuilding a target (e.g for targets using the check_dep function)
+ALWAYS:
+.PHONY: ALWAYS
+
+# Read the saved command lines in the .cmd files (only if they exist)
+cmd_files = $(foreach f, $(deps), $(dir $(f)).$(notdir $(f:.d=).cmd))
+-include $(cmd_files)
