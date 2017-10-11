@@ -216,7 +216,6 @@
 #undef CONFIG_BATTERY_BQ27541
 #undef CONFIG_BATTERY_BQ27621
 #undef CONFIG_BATTERY_MAX17055
-#undef CONFIG_BATTERY_SAMUS
 
 /* Compile mock battery support; used by tests. */
 #undef CONFIG_BATTERY_MOCK
@@ -3043,6 +3042,16 @@
 #error CONFIG_ACCEL_FIFO must be defined to use hw orientation sensor support
 #endif
 #define CONFIG_ORIENTATION_SENSOR
+#endif
+
+/*****************************************************************************/
+/* Define CONFIG_BATTERY if board has a battery. */
+#if defined(CONFIG_BATTERY_BQ20Z453) || \
+	defined(CONFIG_BATTERY_BQ27541) || \
+	defined(CONFIG_BATTERY_BQ27621) || \
+	defined(CONFIG_BATTERY_MAX17055) || \
+	defined(CONFIG_BATTERY_SMART)
+#define CONFIG_BATTERY
 #endif
 
 /*****************************************************************************/
