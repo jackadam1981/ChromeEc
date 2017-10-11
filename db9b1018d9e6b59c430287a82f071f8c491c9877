@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "312ad928_aa2d6f76",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-11T01:54:44Z",
+      "side": 1,
+      "message": "This isn\u0027t the most compact form. Why not just have a 32 byte array which represents the bits for convertible vs clamshell? Or if you don\u0027t want to do that then just have an array of id_begin, id_end tuples which represent the ranges?\n\nenum and unint8_t will be 8 bytes per entry because of padding.",
+      "revId": "db9b1018d9e6b59c430287a82f071f8c491c9877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
