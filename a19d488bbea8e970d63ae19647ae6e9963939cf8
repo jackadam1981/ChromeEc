@@ -22,6 +22,29 @@
       "revId": "a19d488bbea8e970d63ae19647ae6e9963939cf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf473ece_6750813e",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-11T18:12:44Z",
+      "side": 1,
+      "message": "just setting flags to 0 would have been enough?",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 38
+      },
+      "revId": "a19d488bbea8e970d63ae19647ae6e9963939cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
