@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c0da61a_2da059dc",
+        "filename": "chip/g/board_id.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-10-11T18:08:38Z",
+      "side": 1,
+      "message": "We should continue returning 1 if there is a board id error unless the image header is all 0s",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 39
+      },
+      "revId": "a19d488bbea8e970d63ae19647ae6e9963939cf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
