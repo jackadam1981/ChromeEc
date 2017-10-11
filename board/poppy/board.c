@@ -694,6 +694,14 @@ static void board_init(void)
 	 */
 	if (system_jumped_to_this_image() && chipset_in_state(CHIPSET_STATE_ON))
 		base_enable();
+
+	/* proper GPIO_LED_YELLO_C0 configuration for better S0ix/S3 power */
+	if (system_get_board_version() >= 5) /* rev5 or newer */
+		gpio_set_flags(GPIO_LED_YELLOW_C0_OLD,
+			GPIO_INPUT | GPIO_PULL_UP);
+	else
+		gpio_set_flags(GPIO_LED_YELLOW_C0,
+			GPIO_INPUT | GPIO_PULL_UP);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
