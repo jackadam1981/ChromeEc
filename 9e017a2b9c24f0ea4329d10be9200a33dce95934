@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "481ffb48_5ee094ed",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-11T17:00:45Z",
+      "side": 1,
+      "message": "this is a strictly compile time setting, I could be building images with this set or not set many times a day, each time manually removing the build directory when changing the setting.",
+      "parentUuid": "b66342e6_dd2bd20d",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 41
+      },
+      "revId": "9e017a2b9c24f0ea4329d10be9200a33dce95934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a4a1373_a45605a7",
         "filename": "Makefile.rules",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-11T15:58:21Z",
       "side": 1,
       "message": "Honestly this is a terrible hack, I don\u0027t the build system to randomly erase my directory.\n\nIMO we should do it as other make-based build systems are doing it, just add a dependency to the file where you are saving your current variables to the build rules.",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 42
+      },
+      "revId": "9e017a2b9c24f0ea4329d10be9200a33dce95934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dd4f6ff_f094cb27",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-11T17:00:45Z",
+      "side": 1,
+      "message": "why do you care if you don\u0027t use it, and you don\u0027t have to.\n\nDeleting the output directory is the the safest thing to do when an essential variable changes and Make does not know about it.\n\nIf you (or any other boards\u0027 user) don\u0027t care - the deletion would never happen to you. For me as a Cr50 user it is very convenient, this is what I do by hand each time CR50_DEV setting changes.\n\nAnd if I forget to blow away the output directory, the image still builds, but the result could easily brick the device (happened to nsanders@ in the past), so this patch makes sure the failure does not happen.",
+      "parentUuid": "5a4a1373_a45605a7",
       "range": {
         "startLine": 51,
         "startChar": 3,
