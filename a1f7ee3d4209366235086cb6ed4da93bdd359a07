@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89ca0dd3_6e2d5660",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-11T22:03:28Z",
+      "side": 1,
+      "message": "the indentation is a bit unwieldy here, we can probably do slightly better to save a few levels of indentation.\ne.g. \n} else if (type !\u003d TCPC_TX_HARD_RESET) {\n\nand\n\nif (pd[port].ca_buffered !\u003d 0)\n   return -1;",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 498,
+        "endChar": 3
+      },
+      "revId": "a1f7ee3d4209366235086cb6ed4da93bdd359a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6633e4d3_cf7ec2ce",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-11T22:03:28Z",
+      "side": 1,
+      "message": "nit: let\u0027s save the indentation here too.\n\nif (!pd[port].ca_buffered)\n   return;",
+      "range": {
+        "startLine": 528,
+        "startChar": 1,
+        "endLine": 528,
+        "endChar": 28
+      },
+      "revId": "a1f7ee3d4209366235086cb6ed4da93bdd359a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5195d728_e3c0c292",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2218,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-11T22:03:28Z",
+      "side": 1,
+      "message": "this is likely the wrong to do it,\nthis is the \u0027steady\u0027 disconnected state, we are going through this every 10ms, you might want to do it on the disconnection transition.",
+      "range": {
+        "startLine": 2213,
+        "startChar": 0,
+        "endLine": 2218,
+        "endChar": 34
+      },
+      "revId": "a1f7ee3d4209366235086cb6ed4da93bdd359a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9105d3f_d6145a4b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 2737,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-11T22:03:28Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 2736,
+        "startChar": 2,
+        "endLine": 2737,
+        "endChar": 27
+      },
+      "revId": "a1f7ee3d4209366235086cb6ed4da93bdd359a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff3b741e_d4e82d9e",
+        "filename": "test/usb_pd.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-11T22:03:28Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 480,
+        "startChar": 9,
+        "endLine": 480,
+        "endChar": 18
+      },
+      "revId": "a1f7ee3d4209366235086cb6ed4da93bdd359a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
