@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d13df98b_cb038b32",
+        "filename": "board/coral/sku.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-11T23:30:42Z",
+      "side": 1,
+      "message": "id needs parens around the macro parameter",
+      "range": {
+        "startLine": 11,
+        "startChar": 35,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "8e73e6e852b6b0a3d19c5d05f87f28dd68ac14ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3894c236_0ee4f62f",
+        "filename": "board/coral/sku.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-11T23:30:42Z",
+      "side": 1,
+      "message": "parens",
+      "range": {
+        "startLine": 88,
+        "startChar": 58,
+        "endLine": 88,
+        "endChar": 60
+      },
+      "revId": "8e73e6e852b6b0a3d19c5d05f87f28dd68ac14ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "181cba77_c487f557",
+        "filename": "board/coral/sku.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-11T23:30:42Z",
+      "side": 1,
+      "message": "parens",
+      "range": {
+        "startLine": 88,
+        "startChar": 45,
+        "endLine": 88,
+        "endChar": 47
+      },
+      "revId": "8e73e6e852b6b0a3d19c5d05f87f28dd68ac14ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
