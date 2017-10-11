@@ -1047,6 +1047,9 @@
 /* Number of cooling fans. Undef if none. */
 #undef CONFIG_FANS
 
+/* RPM that all fans should be set upon inilization */
+#undef CONFIG_FAN_SPEED
+
 /* Support fan control while in low-power idle */
 #undef CONFIG_FAN_DSLEEP
 

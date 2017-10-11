@@ -434,6 +434,7 @@ static void pwm_fan_init(void)
 	int version, size;
 	int i;
 	int fan = 0;
+	int fan_speed;
 
 	for (fan = 0; fan < CONFIG_FANS; fan++)
 		fan_channel_setup(fans[fan].ch, fans[fan].flags);
@@ -449,7 +450,12 @@ static void pwm_fan_init(void)
 	} else {
 		/* Set initial fan speed to maximum */
 		for (fan = 0; fan < CONFIG_FANS; fan++)
-			fan_set_rpm_target(fans[fan].ch, fans[fan].rpm_max);
+#ifdef CONFIG_FAN_SPEED
+			fan_speed = CONFIG_FAN_SPEED;
+#else
+			fan_speed = fans[fan].rpm_max;
+#endif /* CONFIG_FAN_SPEED */
+			fan_set_rpm_target(fans[fan].ch, fan_speed);
 	}
 
 	for (fan = 0; fan < CONFIG_FANS; fan++)
