@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa567298_129ed581",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-11T21:50:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "360e63d2_80aef9de",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 3
+      },
+      "revId": "33f297e7b4081caedcf95e1a551a8fe5545ef454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d871b15_281771cc",
         "filename": "test/test_config.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-11T19:36:54Z",
       "side": 1,
       "message": "Shouldn\u0027t be needed because CONFIG_BATTERY_SMART is defined?",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 22
+      },
+      "revId": "33f297e7b4081caedcf95e1a551a8fe5545ef454",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7557b85a_985fc12d",
+        "filename": "test/test_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-11T21:50:03Z",
+      "side": 1,
+      "message": "test_config overrides are included last in config.h, so CONFIG_BATTERY_SMART isn\u0027t defined at the time we check for it in config.h.",
+      "parentUuid": "1d871b15_281771cc",
       "range": {
         "startLine": 114,
         "startChar": 0,
