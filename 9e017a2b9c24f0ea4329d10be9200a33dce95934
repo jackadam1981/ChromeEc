@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b66342e6_dd2bd20d",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-11T15:58:21Z",
+      "side": 1,
+      "message": "why not declaring them directly in a variable in the board build.mk file ?\nrather than this specialized file you have to parse.",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 41
+      },
+      "revId": "9e017a2b9c24f0ea4329d10be9200a33dce95934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4a1373_a45605a7",
+        "filename": "Makefile.rules",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-11T15:58:21Z",
+      "side": 1,
+      "message": "Honestly this is a terrible hack, I don\u0027t the build system to randomly erase my directory.\n\nIMO we should do it as other make-based build systems are doing it, just add a dependency to the file where you are saving your current variables to the build rules.",
+      "range": {
+        "startLine": 51,
+        "startChar": 3,
+        "endLine": 51,
+        "endChar": 42
+      },
+      "revId": "9e017a2b9c24f0ea4329d10be9200a33dce95934",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
