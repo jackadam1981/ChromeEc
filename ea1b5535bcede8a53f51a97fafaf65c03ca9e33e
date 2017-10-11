@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7292f0ca_8d12a346",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-11T15:50:10Z",
+      "side": 1,
+      "message": "if the value is 1000 * MSEC, then this constant is in microseconds, the _MS seems misleading.",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "ea1b5535bcede8a53f51a97fafaf65c03ca9e33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c685fefd_387b5f16",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-11T15:50:10Z",
+      "side": 1,
+      "message": "you are adding complexity here,\nbut normally this event is sent by the charge_manager,\nYes you plug the USB-C adapter, i think it is also sent there (not great).\nthe only case you are solving is when the USB-C is unplugged ?\n(where the event is discarded on the charge_manager side ?)",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "ea1b5535bcede8a53f51a97fafaf65c03ca9e33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
