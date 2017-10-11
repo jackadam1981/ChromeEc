@@ -45,6 +45,30 @@
       "revId": "ea1b5535bcede8a53f51a97fafaf65c03ca9e33e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a76bc93c_91462c03",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-11T16:01:37Z",
+      "side": 1,
+      "message": "We typically send PD_EVENT_POWER_CHANGE when our charge port changes, but that\u0027s not the case here. It seems more appropriate to use EC_HOST_EVENT_AC_CONNECTED / EC_HOST_EVENT_AC_DISCONNECTED for this. What do you think? common/extpower_gpio.c already implements something like this.",
+      "parentUuid": "c685fefd_387b5f16",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "ea1b5535bcede8a53f51a97fafaf65c03ca9e33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
