@@ -1047,6 +1047,9 @@
 /* Number of cooling fans. Undef if none. */
 #undef CONFIG_FANS
 
+/* Percentage that all fans should be set upon initiation */
+#define CONFIG_FAN_INIT_SPEED 100
+
 /* Support fan control while in low-power idle */
 #undef CONFIG_FAN_DSLEEP
 
