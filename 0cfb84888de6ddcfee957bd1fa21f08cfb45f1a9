@@ -302,6 +302,30 @@
     },
     {
       "key": {
+        "uuid": "a00e85e3_f680b2b0",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-11T19:49:33Z",
+      "side": 1,
+      "message": "Revised. PTAL.",
+      "parentUuid": "b6838cb4_6b888f57",
+      "range": {
+        "startLine": 43,
+        "startChar": 66,
+        "endLine": 45,
+        "endChar": 58
+      },
+      "revId": "0cfb84888de6ddcfee957bd1fa21f08cfb45f1a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75abc8ac_c30a2aef",
         "filename": "include/usb_i2c.h",
         "patchSetId": 2
