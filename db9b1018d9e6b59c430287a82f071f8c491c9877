@@ -16,6 +16,24 @@
       "revId": "db9b1018d9e6b59c430287a82f071f8c491c9877",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ca1e4dc_290cabde",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-11T19:36:59Z",
+      "side": 1,
+      "message": "Yeah I was attempting to optimize around ease of updating/checking the table as new SKUs get added down the road. I had  considered a simple table of uint32_t or uint8_t. I redid the table as an array of uint8_t and added a macro to encode the bits so it\u0027s still pretty easy to see which SKUs have been marked as convertibles.\n\nI also redid the board_id console command and added an option to dump the table for a given range so it\u0027s easy to verify.",
+      "parentUuid": "312ad928_aa2d6f76",
+      "revId": "db9b1018d9e6b59c430287a82f071f8c491c9877",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
