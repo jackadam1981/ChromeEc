@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "242010b1_e7e93c29",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-12T17:32:40Z",
+      "side": 0,
+      "message": "How are you ensuring that the CHG port has stabilized (in SNK_READY) before the DUT port is notified that CHG port can provide VBUS?",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 48
+      },
+      "revId": "611c9be938ecc8db953356424066041e72490dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77e4c7a9_4533cf37",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-12T17:32:40Z",
+      "side": 0,
+      "message": "These entry points were used to both know what the CHG port voltage/current values are and used as a trigger so the DUT port could know whether it needed to redo it\u0027s PD contract. How is the interaction between the CHG and DUT port being managed in the new design?",
+      "range": {
+        "startLine": 437,
+        "startChar": 5,
+        "endLine": 437,
+        "endChar": 32
+      },
+      "revId": "611c9be938ecc8db953356424066041e72490dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
