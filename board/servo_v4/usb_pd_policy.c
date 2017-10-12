@@ -4,6 +4,7 @@
  */
 
 #include "atomic.h"
+#include "case_closed_debug.h"
 #include "charge_manager.h"
 #include "common.h"
 #include "console.h"
@@ -408,6 +409,11 @@ int pd_set_power_supply_ready(int port)
 	vbus[DUT].mv = 5000;
 	vbus[DUT].ma = 500;
 
+	/* Enable CCD, if debuggable TS attached */
+	if (pd_ts_dts_plugged(DUT))
+		ccd_set_mode(system_is_locked() ? CCD_MODE_PARTIAL :
+						  CCD_MODE_ENABLED);
+
 	return EC_SUCCESS; /* we are ready */
 }
 
@@ -416,6 +422,8 @@ void pd_power_supply_reset(int port)
 	/* Port 0 can never provide vbus. */
 	if (port == CHG)
 		return;
+
+	ccd_set_mode(CCD_MODE_DISABLED);
 
 	/* Disable VBUS */
 	gpio_set_level(GPIO_DUT_CHG_EN, 0);
