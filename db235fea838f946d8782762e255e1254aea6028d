@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0065c063_b4b62a1d",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-12T17:51:17Z",
+      "side": 1,
+      "message": "I think this flag is set unconditionally in current builds.",
+      "revId": "db235fea838f946d8782762e255e1254aea6028d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1bff797_407a8ff6",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-12T17:51:17Z",
+      "side": 1,
+      "message": "Is 2 and 5 the right sku numbers for big daddy? I can\u0027t remember. It\u0027d be better to have #defines. We should use it in  board_override_feature_flagsX() as well.",
+      "revId": "db235fea838f946d8782762e255e1254aea6028d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c0cc7cb_1328ac1d",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-12T17:51:17Z",
+      "side": 1,
+      "message": "So this would only work after a sysjump since we board_init() is called from the pd task, right?",
+      "revId": "db235fea838f946d8782762e255e1254aea6028d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
