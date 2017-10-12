@@ -22,6 +22,30 @@
       "revId": "9e2a417a4c09decc0368a8f1e52e08a14a2b0848",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6efa4e6f_8f727a5e",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-12T18:52:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5155d58f_100c558f",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 24
+      },
+      "revId": "9e2a417a4c09decc0368a8f1e52e08a14a2b0848",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
