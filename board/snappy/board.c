@@ -259,6 +259,15 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 static int ps8751_tune_mux(const struct usb_mux *mux)
 {
+#ifdef CONFIG_HOSTCMD_AP_SET_SKUID
+	uint32_t sku = system_get_sku_id();
+
+	/* b/67674524: Override BigDaddy DP EQ to 4.5db */
+	if (sku == 2 || sku == 5) {
+		i2c_write8(mux->port_addr, TCPC_PORT1_I2C_ADDR,
+			PS8751_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
+    }
+#endif
 	/* Snappy specific signal reconditioning */
 	i2c_write8(mux->port_addr, TCPC_PORT1_I2C_ADDR,
 		   PS8751_REG_MUX_USB_C2SS_EQ, 0x50);
