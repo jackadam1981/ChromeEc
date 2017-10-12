@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a6876d5_11de3865",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-10-12T18:58:27Z",
+      "side": 1,
+      "message": "does if (IS_ENABLED()) work?",
+      "revId": "8d42650ada2fa99cb4f0977c31208480b9cba13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b66e8670_b8e45a6d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-10-12T18:58:27Z",
+      "side": 1,
+      "message": "spelling",
+      "revId": "8d42650ada2fa99cb4f0977c31208480b9cba13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
