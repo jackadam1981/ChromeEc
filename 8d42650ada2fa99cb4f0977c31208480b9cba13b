@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5aa6f1fe_86341623",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1166124
+      },
+      "writtenOn": "2017-10-12T21:22:54Z",
+      "side": 1,
+      "message": "correct, IS_ENABLED isn\u0027t in the ec",
+      "parentUuid": "eed5b393_950965e0",
+      "revId": "8d42650ada2fa99cb4f0977c31208480b9cba13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df438b01_0a0f0a16",
         "filename": "common/fan.c",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2017-10-12T19:45:19Z",
       "side": 1,
       "message": "This might be overkill, but if this gives us the correct speed, why not just use this to set the initial value, then adjust:\n\nIn the board file:\n#define FAN_SPEED_MULTIPLIER\t1\n#define FAN_SPEED_DIVISOR\t2\n\nHere:\n\t\t\tfan_speed \u003d fans[fan].rpm_max;\n#if defined (FAN_SPEED_DIVISOR) \u0026\u0026 \\\n\tdefined (FAN_SPEED_MULTIPLIER) \u0026\u0026 \\\n\tFAN_SPEED_DIVISOR\n\t\t\tfan_speed *\u003d FAN_SPEED_MULTIPLIER;\n\t\t\tfan_speed /\u003d FAN_SPEED_DIVISOR;\n#endif\n\n\n\nThis allows you to set it to whatever percentage of max you want without having to know the actual values.",
+      "range": {
+        "startLine": 456,
+        "startChar": 3,
+        "endLine": 456,
+        "endChar": 33
+      },
+      "revId": "8d42650ada2fa99cb4f0977c31208480b9cba13b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b32aeb4_79ece11f",
+        "filename": "common/fan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1166124
+      },
+      "writtenOn": "2017-10-12T21:22:54Z",
+      "side": 1,
+      "message": "I think I will update CONFIG_fAN_SPEED to be a percentage.",
+      "parentUuid": "df438b01_0a0f0a16",
       "range": {
         "startLine": 456,
         "startChar": 3,
