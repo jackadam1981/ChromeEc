@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fbd6cd5a_abf2a89a",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-12T19:24:36Z",
+      "side": 0,
+      "message": "In general, once charge_manager is informed of a change, we\u0027re allowed to pull the specified current. For example, see the call to pd_set_input_current_limit() (calls into charge_manager_update_charge()) after receiving PD_CTRL_PS_RDY.",
+      "parentUuid": "242010b1_e7e93c29",
+      "range": {
+        "startLine": 184,
+        "startChar": 2,
+        "endLine": 184,
+        "endChar": 48
+      },
+      "revId": "611c9be938ecc8db953356424066041e72490dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77e4c7a9_4533cf37",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-12T17:32:40Z",
       "side": 0,
       "message": "These entry points were used to both know what the CHG port voltage/current values are and used as a trigger so the DUT port could know whether it needed to redo it\u0027s PD contract. How is the interaction between the CHG and DUT port being managed in the new design?",
+      "range": {
+        "startLine": 437,
+        "startChar": 5,
+        "endLine": 437,
+        "endChar": 32
+      },
+      "revId": "611c9be938ecc8db953356424066041e72490dd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a48d8e5a_0511cbf7",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-12T19:24:36Z",
+      "side": 0,
+      "message": "charge_manager takes care of that, board_set_active_charge_port() / board_set_charge_limit() are called by charge_manager when a meaningful input change occurs, which then call update_ports() (was board_manage_chg_port()).",
+      "parentUuid": "77e4c7a9_4533cf37",
       "range": {
         "startLine": 437,
         "startChar": 5,
