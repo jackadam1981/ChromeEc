@@ -16,6 +16,24 @@
       "revId": "e9ab40cc6da3f1cce7a4d8bdf95e0dfe1ad2b7df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adfc74b4_ee31f35f",
+        "filename": "board/coral/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-12T21:42:18Z",
+      "side": 1,
+      "message": "Yeah, for some reason my emacs doesn\u0027t match gerrit for this file. I will add another tab so that it lines up.",
+      "parentUuid": "31a285bf_1939d0f9",
+      "revId": "e9ab40cc6da3f1cce7a4d8bdf95e0dfe1ad2b7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
