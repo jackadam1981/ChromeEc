@@ -51,6 +51,24 @@
       "revId": "e9ab40cc6da3f1cce7a4d8bdf95e0dfe1ad2b7df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71de103a_4bf8389b",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-10-13T14:58:03Z",
+      "side": 1,
+      "message": "Correct, that comment was no longer correct since I changed the led to run at HOOK_TICK from HOOK_SECOND, I have updated the comment.",
+      "parentUuid": "d3dfddef_f6f7cfed",
+      "revId": "e9ab40cc6da3f1cce7a4d8bdf95e0dfe1ad2b7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
