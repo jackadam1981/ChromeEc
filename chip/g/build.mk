@@ -121,6 +121,7 @@ $(out)/RW/ec.RW.flat: $(out)/util/signer
 ifneq ($(CONFIG_RW_B),)
 $(out)/$(PROJECT).obj: $(out)/RW/ec.RW_B.flat
 $(out)/RW/ec.RW_B.flat: $(out)/util/signer
+deps-y += $(out)/RW/ec.RW_B.lds.d
 endif
 
 ifneq ($(CR50_DEV),)

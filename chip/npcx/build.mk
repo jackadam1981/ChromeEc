@@ -59,3 +59,5 @@ cmd_org_ec_elf_to_flat = $(OBJCOPY) --set-section-flags .roshared=share \
 cmd_npcx_ro_elf_to_flat=$(cmd_org_ec_elf_to_flat);$(cmd_ecst)
 cmd_ec_elf_to_flat = $(if $(filter $(out)/RO/ec.RO.flat, $@), \
                      $(cmd_npcx_ro_elf_to_flat), $(cmd_org_ec_elf_to_flat) )
+
+$(out)/RO/ec.RO.flat: $(out)/util/ecst
