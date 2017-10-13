@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "508ce434_5b0ed28f",
+        "filename": "test/usb_pd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-13T20:42:19Z",
+      "side": 1,
+      "message": "It took me a while to debug this, the subsequent test was failing... it worked by accident before because we would retry (after wake from unplug()) and see goodcrc (rather than trying to send source caps again from tcpm).",
+      "range": {
+        "startLine": 621,
+        "startChar": 0,
+        "endLine": 623,
+        "endChar": 19
+      },
+      "revId": "79df6145188a034b47cedc9b5256eb197cbff665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
