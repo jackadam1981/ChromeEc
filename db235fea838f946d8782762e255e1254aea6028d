@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d8c985a0_ac57c1b5",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2017-10-13T09:10:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0065c063_b4b62a1d",
+      "revId": "db235fea838f946d8782762e255e1254aea6028d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1bff797_407a8ff6",
         "filename": "board/snappy/board.c",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "da692564_750bbde3",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2017-10-13T09:10:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1bff797_407a8ff6",
+      "revId": "db235fea838f946d8782762e255e1254aea6028d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c0cc7cb_1328ac1d",
         "filename": "board/snappy/board.c",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2017-10-12T17:51:17Z",
       "side": 1,
       "message": "So this would only work after a sysjump since we board_init() is called from the pd task, right?",
+      "revId": "db235fea838f946d8782762e255e1254aea6028d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14dec841_e27548cc",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2017-10-13T09:10:15Z",
+      "side": 1,
+      "message": "correct; not perfect, stay open for any advice (process, enum vs. macro ...etc.).",
+      "parentUuid": "4c0cc7cb_1328ac1d",
       "revId": "db235fea838f946d8782762e255e1254aea6028d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
