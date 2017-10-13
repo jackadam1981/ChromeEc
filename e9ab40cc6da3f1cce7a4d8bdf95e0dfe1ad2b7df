@@ -34,6 +34,23 @@
       "revId": "e9ab40cc6da3f1cce7a4d8bdf95e0dfe1ad2b7df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3dfddef_f6f7cfed",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-10-13T08:26:00Z",
+      "side": 1,
+      "message": "It\u0027s called every 200ms (\u003d\u003d HOOK_TICK_INTERVAL_MS), right?\n\nOtherwise, with per-second sampling the 3.6s period would look pretty erratic",
+      "revId": "e9ab40cc6da3f1cce7a4d8bdf95e0dfe1ad2b7df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
