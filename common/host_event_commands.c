@@ -24,6 +24,35 @@
 #define LPC_SYSJUMP_TAG 0x4c50  /* "LP" */
 #define LPC_SYSJUMP_VERSION 1
 
+/*
+ * Always report mask includes mask of host events that need to be reported in
+ * host event always irrespective of the state of SCI, SMI and wake masks.
+ *
+ * Events that indicate critical shutdown/reboots that have occurred:
+ *   - EC_HOST_EVENT_THERMAL_SHUTDOWN
+ *   - EC_HOST_EVENT_BATTERY_SHUTDOWN
+ *   - EC_HOST_EVENT_HANG_REBOOT
+ *   - EC_HOST_EVENT_PANIC
+ *
+ * Events that are consumed by BIOS:
+ *   - EC_HOST_EVENT_KEYBOARD_RECOVERY
+ *   - EC_HOST_EVENT_KEYBOARD_FASTBOOT
+ *   - EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT
+ *
+ * Events that are buffered and have separate data maintained of their own:
+ *   - EC_HOST_EVENT_MKBP
+ *
+ */
+#define LPC_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK			\
+	(EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY) |		\
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_THERMAL_SHUTDOWN) |		\
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_BATTERY_SHUTDOWN) |		\
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_HANG_REBOOT) |		\
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_PANIC) |			\
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_FASTBOOT) |		\
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_MKBP) |			\
+	 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY_HW_REINIT))
+
 static uint32_t lpc_host_events;
 static uint32_t lpc_host_event_mask[LPC_HOST_EVENT_COUNT];
 
@@ -36,6 +65,17 @@ void lpc_set_host_event_mask(enum lpc_host_event_type type, uint32_t mask)
 uint32_t lpc_get_host_event_mask(enum lpc_host_event_type type)
 {
 	return lpc_host_event_mask[type];
+}
+
+static uint32_t lpc_get_all_host_event_masks(void)
+{
+	uint32_t or_mask = 0;
+	int i;
+
+	for (i = 0; i < LPC_HOST_EVENT_COUNT; i++)
+		or_mask |= lpc_get_host_event_mask(i);
+
+	return or_mask;
 }
 
 static void lpc_set_host_event_state(uint32_t events)
@@ -59,33 +99,11 @@ uint32_t lpc_get_host_events(void)
 
 int lpc_get_next_host_event(void)
 {
-	int evt_index = 0;
-	int i;
-	const uint32_t any_mask = lpc_get_host_event_mask(LPC_HOST_EVENT_SMI) |
-		lpc_get_host_event_mask(LPC_HOST_EVENT_SCI) |
-		lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE);
+	int evt_idx =  __builtin_ffs(lpc_host_events);
 
-	for (i = 0; i < 32; i++) {
-		const uint32_t e = (1 << i);
-
-		if (lpc_host_events & e) {
-			host_clear_events(e);
-
-			/*
-			 * If host hasn't unmasked this event, drop it.  We do
-			 * this at query time rather than event generation time
-			 * so that the host has a chance to unmask events
-			 * before they're dropped by a query.
-			 */
-			if (!(e & any_mask))
-				continue;
-
-			evt_index = i + 1;	/* Events are 1-based */
-			break;
-		}
-	}
-
-	return evt_index;
+	if (evt_idx)
+		host_clear_events(1 << (evt_idx - 1));
+	return evt_idx;
 }
 
 static void lpc_sysjump_save_mask(void)
@@ -108,11 +126,24 @@ static void lpc_post_sysjump_restore_mask(void)
 
 	memcpy(lpc_host_event_mask, prev_mask, sizeof(lpc_host_event_mask));
 }
+
+uint32_t __attribute__((weak)) lpc_override_always_report_mask(void)
+{
+	return LPC_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK;
+}
+
+static void lpc_init_mask(void)
+{
+	lpc_post_sysjump_restore_mask();
+	lpc_host_event_mask[LPC_HOST_EVENT_ALWAYS_REPORT] =
+		lpc_override_always_report_mask();
+}
+
 /*
  * This hook is required to run before chip gets to initialize LPC because
  * update host events will need the masks to be correctly restored.
  */
-DECLARE_HOOK(HOOK_INIT, lpc_post_sysjump_restore_mask, HOOK_PRIO_INIT_LPC - 1);
+DECLARE_HOOK(HOOK_INIT, lpc_init_mask, HOOK_PRIO_INIT_LPC - 1);
 
 #endif
 
@@ -141,6 +172,18 @@ void host_set_events(uint32_t mask)
 {
 	/* ignore host events the rest of board doesn't care about */
 	mask &= CONFIG_HOST_EVENT_REPORT_MASK;
+
+#ifdef CONFIG_LPC
+	/*
+	 * Host only cares about the events for which the masks are set either
+	 * in wake mask, SCI mask or SMI mask. In addition to that, there are
+	 * certain events that need to be always reported (Please see
+	 * LPC_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK). Thus, when a new host
+	 * event is being set, ensure that it is present in one of these
+	 * masks. Else, there is no need to process that event.
+	 */
+	mask &= lpc_get_all_host_event_masks();
+#endif
 
 	/* exit now if nothing has changed */
 	if (!((events & mask) != mask || (events_copy_b & mask) != mask))
@@ -251,6 +294,9 @@ static int command_host_event(int argc, char **argv)
 			lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, i);
 		else if (!strcasecmp(argv[1], "wake"))
 			lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, i);
+		else if (!strcasecmp(argv[1], "always_report"))
+			lpc_set_host_event_mask(LPC_HOST_EVENT_ALWAYS_REPORT,
+						i);
 #endif
 		else
 			return EC_ERROR_PARAM1;
@@ -266,11 +312,13 @@ static int command_host_event(int argc, char **argv)
 		 lpc_get_host_event_mask(LPC_HOST_EVENT_SCI));
 	ccprintf("Wake mask: 0x%08x\n",
 		 lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE));
+	ccprintf("Always report mask: 0x%08x\n",
+		 lpc_get_host_event_mask(LPC_HOST_EVENT_ALWAYS_REPORT));
 #endif
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(hostevent, command_host_event,
-			"[set | clear | clearb | smi | sci | wake] [mask]",
+			"[set | clear | clearb | smi | sci | wake | always_report] [mask]",
 			"Print / set host event state");
 
 /*****************************************************************************/
