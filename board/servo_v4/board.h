@@ -116,14 +116,15 @@
  * and the delay will need to be relative to the circuitry that allows VBUS to
  * be supplied to the DUT port from the CHG port.
  */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY  50000  /* us */
-#define PD_POWER_SUPPLY_TURN_OFF_DELAY 50000 /* us */
+#define PD_POWER_SUPPLY_TURN_ON_DELAY  250000  /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
 #define PD_MAX_POWER_MW       60000
 #define PD_MAX_CURRENT_MA     3000
-#define PD_MAX_VOLTAGE_MV     20000
+/* TODO: Fix VBUS drop on voltage transition */
+#define PD_MAX_VOLTAGE_MV     5000
 
 /*
  * Allow dangerous commands all the time, since we don't have a write protect
