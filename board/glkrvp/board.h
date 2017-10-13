@@ -95,6 +95,11 @@
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q40
 
+/* Verified boot */
+#define CONFIG_VBOOT_HASH
+#define CONFIG_VSTORE
+#define CONFIG_VSTORE_SLOT_COUNT 1
+
 /*
  * Enable 1 slot of secure temporary storage to support
  * suspend/resume with read/write memory training.
