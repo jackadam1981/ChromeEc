@@ -2859,6 +2859,9 @@
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
 
+/* VPD */
+#undef CONFIG_VPD
+
 /* Support for secure temporary storage for verified boot */
 #undef CONFIG_VSTORE
 

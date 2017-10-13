@@ -26,6 +26,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "vpd.h"
 #include "watchdog.h"
 
 /* Console output macros */
@@ -81,7 +82,11 @@ test_mockable __keep int main(void)
 	system_pre_init();
 	system_common_pre_init();
 
-#if defined(CONFIG_FLASH_PHYSICAL)
+#ifdef CONFIG_VPD
+	vpd_init();
+#endif
+
+#ifdef CONFIG_FLASH_PHYSICAL
 	/*
 	 * Initialize flash and apply write protect if necessary.  Requires
 	 * the reset flags calculated by system initialization.
