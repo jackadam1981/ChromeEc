@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d8b1de4_9d1da9cd",
+        "filename": "extra/usb_updater/ecusb/tiny_servo_common.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2017-10-14T04:03:53Z",
+      "side": 1,
+      "message": "Using \"grep -q\" won\u0027t output any message.",
+      "range": {
+        "startLine": 45,
+        "startChar": 23,
+        "endLine": 45,
+        "endChar": 53
+      },
+      "revId": "732d21c6a4fee137e936bfbcbaa4d99ec854cd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5de4c93_b659d34d",
+        "filename": "extra/usb_updater/ecusb/tiny_servo_common.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2017-10-14T04:03:53Z",
+      "side": 1,
+      "message": "In my chroot environment, there is an extra number before the serial, like:\n\n    iSerial                 3 C1612060861",
+      "range": {
+        "startLine": 65,
+        "startChar": 32,
+        "endLine": 65,
+        "endChar": 36
+      },
+      "revId": "732d21c6a4fee137e936bfbcbaa4d99ec854cd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "927ff474_04d8dd94",
+        "filename": "extra/usb_updater/ecusb/tiny_servo_common.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2017-10-14T04:03:53Z",
+      "side": 1,
+      "message": "2-space indentation",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "732d21c6a4fee137e936bfbcbaa4d99ec854cd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef110dad_b8588c32",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2017-10-14T04:03:53Z",
+      "side": 1,
+      "message": "No one uses it.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "732d21c6a4fee137e936bfbcbaa4d99ec854cd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
