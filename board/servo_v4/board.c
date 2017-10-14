@@ -305,9 +305,12 @@ static void init_ioexpander(void)
 	/* Write all GPIO to output 0 */
 	i2c_write8(1, 0x40, 0x2, 0x0);
 	i2c_write8(1, 0x40, 0x3, 0x0);
-	/* Write all GPIO to output direction */
+	/* Write GPIO to output direction */
 	i2c_write8(1, 0x40, 0x6, 0x0);
 	i2c_write8(1, 0x40, 0x7, 0x0);
+
+	/* Override strap resistors to input. */
+	i2c_write8(1, 0x40, 0x7, 0x18);
 }
 
 /* Define voltage thresholds for SBU USB detection */
@@ -450,6 +453,19 @@ int board_get_version(void)
 
 	return ver;
 }
+
+static int command_boardversion(int argc, char **argv)
+{
+
+	if (argc > 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	ccprintf("Board ID = %d\n", board_get_version());
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(boardversion, command_boardversion, "",
+			"Check board version.");
 
 static void board_init(void)
 {
