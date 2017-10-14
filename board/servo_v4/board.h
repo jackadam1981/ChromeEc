@@ -14,7 +14,7 @@
  * black. Only the black version has pullup resistors to distinguish its board
  * id from previous versions.
  */
-#define BOARD_VERSION_BLACK 3
+#define BOARD_VERSION_BLACK 2
 
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000

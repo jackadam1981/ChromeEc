@@ -472,6 +472,19 @@ int board_get_version(void)
 	return ver;
 }
 
+static int command_boardversion(int argc, char **argv)
+{
+
+	if (argc > 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	ccprintf("Board ID = %d", board_get_version());
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(boardversion, command_boardversion, "",
+			"Check board version.");
+
 static void board_init(void)
 {
 	/* USB to serial queues */
