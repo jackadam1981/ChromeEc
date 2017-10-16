@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db5baced_ad620065",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2512,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-16T11:09:04Z",
+      "side": 1,
+      "message": "nit: DUAL_ROLE and DRP are kind of redundant here, as the name is really long, I would call it CONFIG_USB_PD_INITIAL_DRP_STATE",
+      "range": {
+        "startLine": 2512,
+        "startChar": 0,
+        "endLine": 2512,
+        "endChar": 49
+      },
+      "revId": "86ccdc0e4c7daf45c08231d967a560ca327827f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
