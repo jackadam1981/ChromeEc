@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b8887016_55889f99",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-16T12:35:43Z",
+      "side": 1,
+      "message": "you probably don\u0027t need to run this in interrupt context.",
+      "parentUuid": "4fbe302b_51ce6243",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70a61d4a_785dab9c",
         "filename": "chip/stm32/clock-f.c",
         "patchSetId": 1
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "This is executed when the following sequence happens:\n(1) the host sets the alarm\n(2) the idle task comes in and overwrite the alarm\n(3) the alarm goes off and wakes up the idle task, but the host wake time in (1) doesn\u0027t come yet\n\nThen we need to restore the alarm setting to (1).",
       "parentUuid": "5f9a009e_481e6cee",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 29
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b629aa2_a214ae89",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-16T12:35:43Z",
+      "side": 1,
+      "message": "this is not really answering my question.\nWhat let you think that after (3), you have a pending irq triggering this code ?",
+      "parentUuid": "54965718_95b19c7f",
       "range": {
         "startLine": 298,
         "startChar": 0,
