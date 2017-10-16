@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2a192e4_102572a9",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04e05673_c39d92b1",
+      "range": {
+        "startLine": 134,
+        "startChar": 64,
+        "endLine": 134,
+        "endChar": 72
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dad25de0_2f9d3d8f",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "685c5dbe_0958577e",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Original purpose is prototype to test the extended reading is working as intended.\nI move this to an additional argument, hope that clarify things.",
+      "parentUuid": "dad25de0_2f9d3d8f",
+      "range": {
+        "startLine": 275,
+        "startChar": 6,
+        "endLine": 275,
+        "endChar": 23
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8d9b38b_98a966e0",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 7
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "d6225d5d_0857481b",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Was planning to change to 128.... \nHowever, on second thought, how about following the original protocol.\ni.e. force all of \u003e 60 bytes to use extended header. Might be clear to other ppl that already familiar with the original protocol.",
+      "parentUuid": "d8d9b38b_98a966e0",
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7eed1081_67b084e8",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 7
@@ -76,6 +142,24 @@
       "writtenOn": "2017-10-16T00:43:40Z",
       "side": 1,
       "message": "These 2 lines do not seem very necessary.",
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d20ee90_ebf1daac",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "For debug purpose.\nI move this to an additional argument, hope that clarify things.",
+      "parentUuid": "7eed1081_67b084e8",
       "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "dc226ec1_49cc20fa",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30ba990f_2c1b0732",
+      "range": {
+        "startLine": 546,
+        "startChar": 20,
+        "endLine": 546,
+        "endChar": 21
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0eafc235_2d4b9167",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 7
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "c652b23c_f4ce88bd",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0eafc235_2d4b9167",
+      "range": {
+        "startLine": 571,
+        "startChar": 34,
+        "endLine": 571,
+        "endChar": 35
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f501d95_c507533b",
         "filename": "extra/touchpad_updater/touchpad_updater.c",
         "patchSetId": 7
@@ -142,6 +274,24 @@
       "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d54962_cbf8ad73",
+        "filename": "extra/touchpad_updater/touchpad_updater.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "For debug purpose.\nI move this to an additional argument, hope that clarify things.",
+      "parentUuid": "2f501d95_c507533b",
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "8c0abbfa_3930e6e6",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Yes. Should be 0x7F.\nIn addition, to make the compatible a bit strict. Following the default CONFIG_USB_I2C_MAX_WRITE_COUNT in include/config.h, encouraging people want more, use the below header.",
+      "parentUuid": "4dcdfc9d_3a316bfe",
+      "range": {
+        "startLine": 22,
+        "startChar": 58,
+        "endLine": 22,
+        "endChar": 62
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc1e6b12_c732396a",
         "filename": "include/usb_i2c.h",
         "patchSetId": 7
@@ -188,6 +362,30 @@
       "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b7a216_ec965f59",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc1e6b12_c732396a",
+      "range": {
+        "startLine": 29,
+        "startChar": 53,
+        "endLine": 29,
+        "endChar": 67
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -234,6 +432,54 @@
       "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1401c11_33183bdb",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "You\u0027re right.\nIn usb_i2c.h, USB_I2C_WRITE_BUFFER define follows CONFIG_USB_I2C_MAX_WRITE_COUNT\nand in usb_i2c.c : \nif (write_count \u003e CONFIG_USB_I2C_MAX_WRITE_COUNT)\n  config-\u003ebuffer[0] \u003d USB_I2C_WRITE_COUNT_INVALID;\n\n\nRemove this statement.",
+      "parentUuid": "878b8bbd_01900944",
+      "range": {
+        "startLine": 50,
+        "startChar": 19,
+        "endLine": 50,
+        "endChar": 73
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1373b5b_ccd4dcc5",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a4280f2_f62e670b",
+      "range": {
+        "startLine": 50,
+        "startChar": 22,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -306,6 +552,78 @@
     },
     {
       "key": {
+        "uuid": "2f84b075_d49cd180",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9efa79f9_a5cb09f1",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bddc92c5_ddaf0341",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "406f2072_fda6ee82",
+      "range": {
+        "startLine": 60,
+        "startChar": 51,
+        "endLine": 60,
+        "endChar": 58
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c03226b_4659d586",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03cf2c7a_811824b6",
+      "range": {
+        "startLine": 60,
+        "startChar": 37,
+        "endLine": 60,
+        "endChar": 50
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6acc48d_db77eec9",
         "filename": "include/usb_i2c.h",
         "patchSetId": 7
@@ -326,6 +644,30 @@
       "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "721fd5bc_c6d9150c",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6acc48d_db77eec9",
+      "range": {
+        "startLine": 69,
+        "startChar": 61,
+        "endLine": 69,
+        "endChar": 71
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -352,6 +694,30 @@
     },
     {
       "key": {
+        "uuid": "200c2eb5_ce5211af",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf095720_694229f2",
+      "range": {
+        "startLine": 70,
+        "startChar": 57,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30444993_aba7ef44",
         "filename": "include/usb_i2c.h",
         "patchSetId": 7
@@ -375,6 +741,30 @@
     },
     {
       "key": {
+        "uuid": "d68b4e5d_44827a89",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30444993_aba7ef44",
+      "range": {
+        "startLine": 79,
+        "startChar": 39,
+        "endLine": 79,
+        "endChar": 71
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f23dc5f_dfd349be",
         "filename": "include/usb_i2c.h",
         "patchSetId": 7
@@ -395,6 +785,30 @@
       "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58146f73_fe34397b",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-10-16T08:34:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f23dc5f_dfd349be",
+      "range": {
+        "startLine": 104,
+        "startChar": 30,
+        "endLine": 104,
+        "endChar": 65
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
