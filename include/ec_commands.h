@@ -858,7 +858,8 @@ struct __ec_align4 ec_response_hello {
 enum ec_current_image {
 	EC_IMAGE_UNKNOWN = 0,
 	EC_IMAGE_RO,
-	EC_IMAGE_RW
+	EC_IMAGE_RW,
+	EC_IMAGE_RW_B,
 };
 
 struct __ec_align4 ec_response_get_version {

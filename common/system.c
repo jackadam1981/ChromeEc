@@ -1249,8 +1249,10 @@ static int host_command_get_version(struct host_cmd_handler_args *args)
 		r->current_image = EC_IMAGE_RO;
 		break;
 	case SYSTEM_IMAGE_RW:
-	case SYSTEM_IMAGE_RW_B:
 		r->current_image = EC_IMAGE_RW;
+		break;
+	case SYSTEM_IMAGE_RW_B:
+		r->current_image = EC_IMAGE_RW_B;
 		break;
 	default:
 		r->current_image = EC_IMAGE_UNKNOWN;
