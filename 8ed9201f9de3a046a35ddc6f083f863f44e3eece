@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2d62f68_87df141d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-16T16:10:35Z",
+      "side": 1,
+      "message": "How do you plan to use flags[1], do you plan to port the host-side patches to devices with existing stable FW? There\u0027s a potential problem if the host expects flags[1] to get filled in by this host command, but it\u0027s always zero because EC FW is still old. We can solve it by rev\u0027ing the host command version, but it depends how / where you using flags[1] on the host.",
+      "range": {
+        "startLine": 718,
+        "startChar": 1,
+        "endLine": 718,
+        "endChar": 36
+      },
+      "revId": "8ed9201f9de3a046a35ddc6f083f863f44e3eece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
