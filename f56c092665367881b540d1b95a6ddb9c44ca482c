@@ -22,6 +22,30 @@
       "revId": "f56c092665367881b540d1b95a6ddb9c44ca482c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27a5d009_eab36ca3",
+        "filename": "board/glkrvp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-10-16T16:13:20Z",
+      "side": 1,
+      "message": "okay thank you, I will push a separate CL for this.",
+      "parentUuid": "bdd0575b_c67d0247",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "f56c092665367881b540d1b95a6ddb9c44ca482c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
