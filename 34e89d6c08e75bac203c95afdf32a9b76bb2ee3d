@@ -342,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "c0143747_dd27192c",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-16T08:37:30Z",
+      "side": 1,
+      "message": "No, I don\u0027t see why you would need to use the extended header for writes between 61 and 127.",
+      "parentUuid": "8c0abbfa_3930e6e6",
+      "range": {
+        "startLine": 22,
+        "startChar": 58,
+        "endLine": 22,
+        "endChar": 62
+      },
+      "revId": "34e89d6c08e75bac203c95afdf32a9b76bb2ee3d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc1e6b12_c732396a",
         "filename": "include/usb_i2c.h",
         "patchSetId": 7
