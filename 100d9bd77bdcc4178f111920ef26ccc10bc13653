@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61e1cd19_155979b2",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-16T12:14:07Z",
+      "side": 1,
+      "message": "AFAIK servo is not using CCD_MODE_PARTIAL.\nOverall it was mostly hijacking those callbacks, so maybe better renaming them.\n\nAlso give the last call to ccd_set_mode() is now internal to servo_v4 board, we probably want to remove it from the API (ie get rid of include/case_closed_debug.h)",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 26
+      },
+      "revId": "100d9bd77bdcc4178f111920ef26ccc10bc13653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "302ed535_62589fd6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-16T12:14:07Z",
+      "side": 1,
+      "message": "now, that the new alignment is terrible, you probably want to move this field a bit.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 16
+      },
+      "revId": "100d9bd77bdcc4178f111920ef26ccc10bc13653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94c686c4_5fc4a7fa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1908,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-16T12:14:07Z",
+      "side": 1,
+      "message": "what happens now for AUDIO_ACC ?\nworth at least a comment.",
+      "range": {
+        "startLine": 1907,
+        "startChar": 0,
+        "endLine": 1908,
+        "endChar": 41
+      },
+      "revId": "100d9bd77bdcc4178f111920ef26ccc10bc13653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
