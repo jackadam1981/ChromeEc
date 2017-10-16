@@ -2637,6 +2637,9 @@
 /* USB Product ID. */
 #undef CONFIG_USB_PID
 
+/* USB C Power Path Controllers (PPC) */
+#undef CONFIG_USBC_PPC_SN5S330
+
 /* Support for USB type-c superspeed mux */
 #undef CONFIG_USBC_SS_MUX
 
