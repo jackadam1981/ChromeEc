@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41258aac_bede6f9c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-16T22:36:58Z",
+      "side": 1,
+      "message": "There\u0027s an odd asymmetry between this and ec_response_get_version version strings and EC_REBOOT_JUMP_RW.\n\nIn some cases, \"RW\" means \"RW-A\", and in some cases, it means \"Active RW image\", which could be RW-B.\n\nIt may be better to add a new command to get the active image, which more precisely handles *which* image (and maybe with space for a few flags).  That would also help the problem that we have to read 100 bytes of ec_response_get_version when 99% of the time all we care about is less than a byte of which image is active.",
+      "range": {
+        "startLine": 862,
+        "startChar": 1,
+        "endLine": 862,
+        "endChar": 15
+      },
+      "revId": "9a105e77696e68d263fe78f1c2b8720e49c81685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
