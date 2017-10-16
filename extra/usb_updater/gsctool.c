@@ -247,7 +247,7 @@ static const struct option long_opts[] = {
 	{"fwver",	0,   NULL, 'f'},
 	{"help",	0,   NULL, 'h'},
 	{"post_reset",	0,   NULL, 'p'},
-	{"rma_auth",	0,   NULL, 'r'},
+	{"rma_auth",	2,   NULL, 'r'},
 	{"systemdev",	0,   NULL, 's'},
 	{"trunks_send",	0,   NULL, 't'},
 	{"upstart",	0,   NULL, 'u'},
@@ -1591,52 +1591,53 @@ static void process_bid(struct transfer_descriptor *td,
  * and send the code back to Cr50. The Cr50 would report if the code matched
  * its expectations or not.
  */
-static void process_rma(struct transfer_descriptor *td)
+static void process_rma(struct transfer_descriptor *td, const char *authcode)
 {
 	char rma_response[81];
 	size_t response_size = sizeof(rma_response);
 	size_t i;
-	char *authcode = NULL;
 	size_t auth_size = 0;
 
-	send_vendor_command(td, VENDOR_CC_RMA_CHALLENGE_RESPONSE,
-			    NULL, 0, rma_response, &response_size);
-
-	if (response_size == 1) {
-		printf("error %d\n", rma_response[0]);
-		if (td->ep_type == usb_xfer)
-			shut_down(&td->uep);
-		exit(update_error);
-	}
-
-	printf("Challenge:");
-	for (i = 0; i < response_size; i++) {
-		if (!(i % 5)) {
-			if (!(i % 40))
-				printf("\n");
-			printf(" ");
-		}
-		printf("%c", rma_response[i]);
-	}
-	printf("\nNow enter response: ");
-	auth_size = getline(&authcode, &auth_size, stdin);
-	if (auth_size > 0) {
-
-		response_size = sizeof(rma_response);
-
+	if (!authcode) {
 		send_vendor_command(td, VENDOR_CC_RMA_CHALLENGE_RESPONSE,
-				    authcode, auth_size - 1, /* drop the '\n' */
-				    rma_response, &response_size);
+				    NULL, 0, rma_response, &response_size);
 
 		if (response_size == 1) {
-			printf("\nrma unlock failed, code %d\n",
-			       *rma_response);
+			printf("error %d\n", rma_response[0]);
 			if (td->ep_type == usb_xfer)
 				shut_down(&td->uep);
 			exit(update_error);
 		}
-		printf("RMA unlock succeeded.\n");
+
+		printf("Challenge:");
+		for (i = 0; i < response_size; i++) {
+			if (!(i % 5)) {
+				if (!(i % 40))
+					printf("\n");
+				printf(" ");
+			}
+			printf("%c", rma_response[i]);
+		}
+		printf("\n");
+		return;
 	}
+
+	printf("Processing response...");
+	auth_size = strlen(authcode);
+	response_size = sizeof(rma_response);
+
+	send_vendor_command(td, VENDOR_CC_RMA_CHALLENGE_RESPONSE,
+			    authcode, auth_size,
+			    rma_response, &response_size);
+
+	if (response_size == 1) {
+		printf("\nrma unlock failed, code %d\n",
+		       *rma_response);
+		if (td->ep_type == usb_xfer)
+			shut_down(&td->uep);
+		exit(update_error);
+	}
+	printf("RMA unlock succeeded.\n");
 }
 
 int main(int argc, char *argv[])
@@ -1652,6 +1653,7 @@ int main(int argc, char *argv[])
 	int binary_vers = 0;
 	int show_fw_ver = 0;
 	int rma = 0;
+	const char *rma_auth_code;
 	int corrupt_inactive_rw = 0;
 	struct board_id bid;
 	enum board_id_action bid_action;
@@ -1691,11 +1693,10 @@ int main(int argc, char *argv[])
 			usage(errorcnt);
 			break;
 		case 'i':
-			if (!optarg && argv[optind] && argv[optind][0] != '-') {
+			if (!optarg && argv[optind] && argv[optind][0] != '-')
 				/* optional argument present. */
-				optarg = argv[optind];
-				optind++;
-			}
+				optarg = argv[optind++];
+
 			if (!parse_bid(optarg, &bid, &bid_action)) {
 				printf("Invalid board id argument: \"%s\"\n",
 				       optarg);
@@ -1704,6 +1705,12 @@ int main(int argc, char *argv[])
 			break;
 		case 'r':
 			rma = 1;
+
+			if (!optarg && argv[optind] && argv[optind][0] != '-')
+				/* optional argument present. */
+				optarg = argv[optind++];
+
+			rma_auth_code = optarg;
 			break;
 		case 's':
 			td.ep_type = dev_xfer;
@@ -1782,7 +1789,7 @@ int main(int argc, char *argv[])
 		process_bid(&td, bid_action, &bid);
 
 	if (rma)
-		process_rma(&td);
+		process_rma(&td, rma_auth_code);
 
 	if (corrupt_inactive_rw)
 		invalidate_inactive_rw(&td);
