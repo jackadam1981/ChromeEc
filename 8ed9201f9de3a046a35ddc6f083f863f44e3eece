@@ -22,6 +22,30 @@
       "revId": "8ed9201f9de3a046a35ddc6f083f863f44e3eece",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bf7324e_159872ec",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-16T19:41:29Z",
+      "side": 1,
+      "message": "Currently, the only flag that I have added to flags[1] is https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/719578/2/common/ec_features.c#119\n\nEC_FEATURE_UNIFIED_WAKE_MASKS is used to indicate to the host that the EC uses the new way of reporting host events (i.e. no need to set wake mask before reading out host events from the EC).\n\nThis is the host side implementation of this: https://review.coreboot.org/c/22006/4/src/ec/google/chromeec/ec.c\n\nThere is no plan to port these host-side patches to any of the current devices with stable FW. Instead it would be used for all the devices going forward. So, the version of host FW going forward will check if the features flag is set.\nIf yes: Go ahead and read host events (i.e. skip programming masks)\nIf no: Program masks and then read host events (No is a safer outcome here since setting of wake masks before reading host events will not have any side-effect with new or old EC).\n\nHence, I felt that it might be okay to not update the version of the command. Thoughts?",
+      "parentUuid": "a2d62f68_87df141d",
+      "range": {
+        "startLine": 718,
+        "startChar": 1,
+        "endLine": 718,
+        "endChar": 36
+      },
+      "revId": "8ed9201f9de3a046a35ddc6f083f863f44e3eece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
