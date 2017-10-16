@@ -209,4 +209,16 @@ void power_reset_host_sleep_state(enum host_sleep_event sleep_event);
 #endif /* CONFIG_POWER_S0IX */
 #endif /* CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
 
+#ifdef CONFIG_POWER_PP5000_CONTROL
+/**
+ * Enable/Disable the PP5000 rail.
+ *
+ * This function will turn on the 5V rail immediately if requested.  However,
+ * the rail will not turn off until all tasks want it off.
+ *
+ * @param enable: 1 to turn on the rail, 0 to request the rail to be turned off.
+ */
+void power_5v_enable(int enable);
+#endif /* defined(CONFIG_POWER_PP5000_CONTROL) */
+
 #endif  /* __CROS_EC_POWER_H */

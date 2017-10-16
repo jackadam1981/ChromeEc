@@ -782,3 +782,50 @@ void power_reset_host_sleep_state(enum host_sleep_event sleep_event)
 #endif /* CONFIG_POWER_S0IX */
 
 #endif /* CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
+
+#ifdef CONFIG_POWER_PP5000_CONTROL
+/* 5V enable request bitmask from chipset and usb charger tasks. */
+static uint8_t pwr_5v_en_req;
+static struct mutex pwr_5v_ctl_mtx;
+
+void __attribute__((weak))
+power_5v_enable(int enable)
+{
+	task_id_t tid = task_get_current();
+	int idx = 0;
+
+#ifdef HAS_TASK_USB_CHG_P0
+	if (tid != TASK_ID_CHIPSET) {
+		/* It's one of the USB charger tasks. */
+		idx = (int)(tid - TASK_ID_USB_CHG_P0);
+
+		/*
+		 * Shift over the index by one, since index 0 is the chipset
+		 * task index.
+		 */
+		idx++;
+	}
+#endif /* defined(HAS_TASK_USB_CHG_P0) */
+
+	mutex_lock(&pwr_5v_ctl_mtx);
+
+	if (enable) {
+		/* Set the bit indicating the request. */
+		pwr_5v_en_req |= 1 << idx;
+	} else {
+		/* Clear the task's request bit. */
+		pwr_5v_en_req &= ~(1 << idx);
+	}
+
+	/*
+	 * If there are any outstanding requests for the rail to be enabled,
+	 * turn on the rail.  Otherwise, turn it off.
+	 */
+	if (pwr_5v_en_req)
+		gpio_set_level(GPIO_EN_PP5000, 1);
+	else
+		gpio_set_level(GPIO_EN_PP5000, 0);
+
+	mutex_unlock(&pwr_5v_ctl_mtx);
+}
+#endif /* defined(CONFIG_POWER_PP5000_CONTROL) */
