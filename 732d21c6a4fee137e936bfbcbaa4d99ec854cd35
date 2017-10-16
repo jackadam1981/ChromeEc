@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f3697417_ff80d1f1",
+        "filename": "extra/usb_updater/ecusb/stm32uart.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-16T00:52:05Z",
+      "side": 1,
+      "message": "? It\u0027s used below, it seems.",
+      "range": {
+        "startLine": 45,
+        "startChar": 18,
+        "endLine": 45,
+        "endChar": 21
+      },
+      "revId": "732d21c6a4fee137e936bfbcbaa4d99ec854cd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08547f6e_33b282c0",
+        "filename": "extra/usb_updater/ecusb/stm32uart.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-16T00:52:05Z",
+      "side": 1,
+      "message": "This one is really not used, why not remove it?",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "732d21c6a4fee137e936bfbcbaa4d99ec854cd35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d8b1de4_9d1da9cd",
         "filename": "extra/usb_updater/ecusb/tiny_servo_common.py",
         "patchSetId": 4
