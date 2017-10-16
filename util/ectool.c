@@ -258,7 +258,7 @@ const char help_str[] =
 	"";
 
 /* Note: depends on enum system_image_copy_t */
-static const char * const image_names[] = {"unknown", "RO", "RW"};
+static const char * const image_names[] = {"unknown", "RO", "RW", "RW_B"};
 
 /* Note: depends on enum ec_led_colors */
 static const char * const led_color_names[] = {
