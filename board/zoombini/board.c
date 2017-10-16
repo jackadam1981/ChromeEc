@@ -12,6 +12,7 @@
 #include "common.h"
 #include "console.h"
 #include "compile_time_macros.h"
+#include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "ec_commands.h"
 #ifdef CONFIG_ESPI_VW_SIGNALS
@@ -101,6 +102,13 @@ const struct i2c_port_t i2c_ports[] = {
 	{"tcpc2",   I2C_PORT_TCPC2, 1000, GPIO_TCPC2_SCL,  GPIO_TCPC2_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* TODO(aaboagye): Add the other ports. */
+const struct sn5s330_map sn5s330_tbl[] = {
+	{I2C_PORT_TCPC0, SN5S330_ADDR0},
+};
+const unsigned int sn5s330_cnt = ARRAY_SIZE(sn5s330_tbl);
+
 
 /* GPIO to enable/disable the USB Type-A port. */
 const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
@@ -257,6 +265,11 @@ int board_set_active_charge_port(int port)
 	gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, port != 1);
 	gpio_set_level(GPIO_USB_C2_CHARGE_EN_L, port != 2);
 	initialized = 1;
+
+	/* Turn on the FET such that power actually flows. */
+	if (port == 0)
+		sn5s330_pp2_fet_enable(sn5s330_tbl[0].i2c_port,
+				       sn5s330_tbl[0].i2c_addr);
 
 	return EC_SUCCESS;
 }
