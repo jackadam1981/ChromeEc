@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdd0575b_c67d0247",
+        "filename": "board/glkrvp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-16T15:55:23Z",
+      "side": 1,
+      "message": "Not for this CL, but you may need to enable an internal PU on NC pins for optimal power. See \"2.1.4 Unused Pins and Modules\" section of the \"Board Design Ref Guide\".",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "f56c092665367881b540d1b95a6ddb9c44ca482c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
