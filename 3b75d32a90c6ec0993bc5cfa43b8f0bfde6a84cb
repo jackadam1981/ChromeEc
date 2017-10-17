@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "b356693b_5a19436d",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-17T07:05:22Z",
+      "side": 1,
+      "message": "This is exactly my point, this code is running with IRQ disabled (at line 310 and re-enabled at line 374), so no it won\u0027t be run until you re-enable IRQ.",
+      "parentUuid": "c10c6d53_60200588",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 29
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81fc9f7c_5f0301b9",
         "filename": "chip/stm32/clock-f.h",
         "patchSetId": 1
