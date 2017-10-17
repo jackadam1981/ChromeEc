@@ -286,6 +286,30 @@
     },
     {
       "key": {
+        "uuid": "e5c674b9_e5821a8e",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-10-17T08:38:07Z",
+      "side": 1,
+      "message": "Thanks, I see the issue now. I will move this code snippet to idle task.",
+      "parentUuid": "b356693b_5a19436d",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 29
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81fc9f7c_5f0301b9",
         "filename": "chip/stm32/clock-f.h",
         "patchSetId": 1
