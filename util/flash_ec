@@ -602,6 +602,9 @@ function flash_flashrom() {
 			# Servo micro doesn't support this control.
 			dut_control spi1_buf_on_flex_en:on
 		fi
+
+		# Wait 1 second to let the voltage stabilize.
+		sleep 1
 	else
 		# Temp layout
 		L=/tmp/flash_spi_layout_$$
