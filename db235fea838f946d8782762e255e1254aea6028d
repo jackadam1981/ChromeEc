@@ -122,6 +122,24 @@
       "revId": "db235fea838f946d8782762e255e1254aea6028d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ffdab56_92a78706",
+        "filename": "board/snappy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-17T15:16:19Z",
+      "side": 1,
+      "message": "I\u0027m not sure right now aside from sending an event to the pd task to process any mux updates with another callback in struct usb_mux. That way, even during RO, you should be able to obtain the right values without a sysjump.",
+      "parentUuid": "14dec841_e27548cc",
+      "revId": "db235fea838f946d8782762e255e1254aea6028d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
