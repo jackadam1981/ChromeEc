@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "c10c6d53_60200588",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-10-17T03:17:17Z",
+      "side": 1,
+      "message": "I don\u0027t think there is any pending irq after (3).\nBut this code would run in (3) when the idle task is woken up by the alarm set here: https://chromium.googlesource.com/chromiumos/platform/ec/+/master/chip/stm32/clock-stm32f0.c#336",
+      "parentUuid": "0b629aa2_a214ae89",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 29
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81fc9f7c_5f0301b9",
         "filename": "chip/stm32/clock-f.h",
         "patchSetId": 1
