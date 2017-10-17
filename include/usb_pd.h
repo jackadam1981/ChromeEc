@@ -886,16 +886,15 @@ enum pd_request_type {
 /**
  * Decide which PDO to choose from the source capabilities.
  *
- * @param cnt  the number of Power Data Objects.
- * @param src_caps Power Data Objects representing the source capabilities.
+ * @param port USB-C port number
  * @param rdo  requested Request Data Object.
  * @param ma  selected current limit (stored on success)
  * @param mv  selected supply voltage (stored on success)
  * @param req_type request type
  * @return <0 if invalid, else EC_SUCCESS
  */
-int pd_build_request(int cnt, uint32_t *src_caps, uint32_t *rdo,
-		     uint32_t *ma, uint32_t *mv, enum pd_request_type req_type);
+int pd_build_request(int port, uint32_t *rdo, uint32_t *ma, uint32_t *mv,
+		     enum pd_request_type req_type);
 
 /**
  * Check if max voltage request is allowed (only used if
@@ -913,6 +912,26 @@ int pd_is_max_request_allowed(void);
  * @param src_caps Power Data Objects representing the source capabilities.
  */
 void pd_process_source_cap(int port, int cnt, uint32_t *src_caps);
+
+/**
+ * Find PDO index that offers the most amount of power and stays within
+ * max_mv voltage.
+ *
+ * @param port USB-C port number
+ * @param max_mv maximum voltage (or -1 if no limit)
+ * @return index of PDO within source cap packet
+ */
+int pd_find_pdo_index(int port, int max_mv);
+
+/**
+ * Extract power information out of a Power Data Object (PDO)
+ *
+ * @param port USB-C port number
+ * @param pdo_index index of PDO within source cap packet
+ * @ma Output - current of the PDO
+ * @mv Output - voltage of the PDO
+ */
+void pd_extract_pdo_power(int port, int pdo_index, uint32_t *ma, uint32_t *mv);
 
 /**
  * Reduce the sink power consumption to a minimum value.
