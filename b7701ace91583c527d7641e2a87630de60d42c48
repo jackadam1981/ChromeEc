@@ -22,6 +22,30 @@
       "revId": "b7701ace91583c527d7641e2a87630de60d42c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37e392e5_131202b5",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-17T18:54:21Z",
+      "side": 1,
+      "message": "I believe the FET automatically turns off when Vbus turns off. This would be controlled by the load switch.",
+      "parentUuid": "f4abe75e_64be83d6",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 36
+      },
+      "revId": "b7701ace91583c527d7641e2a87630de60d42c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
