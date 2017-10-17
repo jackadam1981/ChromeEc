@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7eccb5e1_75f9762b",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-17T03:53:56Z",
+      "side": 1,
+      "message": "Just be aware that this may not cover your battery cut-off / not present cases, you might need to add another condition or two later.",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 67
+      },
+      "revId": "7e3c4ea7cf41a32b7f0d2771336c67ef0e9b5b96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
