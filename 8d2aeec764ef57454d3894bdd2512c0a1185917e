@@ -22,6 +22,30 @@
       "revId": "8d2aeec764ef57454d3894bdd2512c0a1185917e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46486bac_786d3df4",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T15:18:29Z",
+      "side": 1,
+      "message": "Oops dupe comment, I wrote this one a while ago and forgot.",
+      "parentUuid": "34511cca_9c0260b3",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "8d2aeec764ef57454d3894bdd2512c0a1185917e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
