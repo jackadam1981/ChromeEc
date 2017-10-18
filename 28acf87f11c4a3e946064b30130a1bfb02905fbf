@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7de8ffdb_1e2b60eb",
+        "filename": "board/snappy/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T10:29:00Z",
+      "side": 1,
+      "message": "is this in the spec ?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 20
+      },
+      "revId": "28acf87f11c4a3e946064b30130a1bfb02905fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f8e658c_76f0f33c",
+        "filename": "board/snappy/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T10:29:00Z",
+      "side": 1,
+      "message": "All this special code is basically just forcing the local state/flags to PWR_STATE_IDLE/chflags \u003d CHARGE_FLAG_FORCE_IDLE when this condition is met ? then using the normal code path.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 10
+      },
+      "revId": "28acf87f11c4a3e946064b30130a1bfb02905fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
