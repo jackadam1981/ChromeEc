@@ -117,5 +117,7 @@ int charger_set_hw_ramp(int enable);
 /* Print all charger info for debugging purposes */
 void print_charger_debug(void);
 
+int charger_set_otg_current_voltage(int output_current, int output_voltage);
+
 #endif /* __CROS_EC_CHARGER_H */
 

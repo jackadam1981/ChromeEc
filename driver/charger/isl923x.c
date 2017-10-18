@@ -97,6 +97,54 @@ int charger_get_input_current(int *input_current)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_CHARGER_ISL9238
+/* Not implemented for ISL9237 that has many limitations. */
+int charger_set_otg_current_voltage(int output_current, int output_voltage)
+{
+	int rv, control1;
+	uint16_t volt_reg = (output_voltage / ISL9238_OTG_VOLTAGE_STEP)
+			<< ISL9238_OTG_VOLTAGE_SHIFT;
+	uint16_t current_reg = (output_current / ISL923X_OTG_CURRENT_STEP)
+			<< ISL923X_OTG_CURRENT_SHIFT;
+	int current_prev;
+
+	/* Read currently provided current. */
+	rv = raw_read16(ISL923X_REG_OTG_CURRENT, &current_prev);
+	if (rv)
+		return rv;
+
+	/* Decrease current first, if needed. */
+	if (current_prev > current_reg) {
+		rv = raw_write16(ISL923X_REG_OTG_CURRENT, current_reg);
+		if (rv)
+			return rv;
+	}
+
+	rv = raw_write16(ISL923X_REG_OTG_VOLTAGE, volt_reg);
+	if (rv)
+		return rv;
+
+	/* Increase current. */
+	if (current_prev <= current_reg) {
+		rv = raw_write16(ISL923X_REG_OTG_CURRENT, current_reg);
+		if (rv)
+			return rv;
+	}
+
+	/* Enable OTG */
+	rv = raw_read16(ISL923X_REG_CONTROL1, &control1);
+	if (rv)
+		return rv;
+
+	if (output_current > 0)
+		control1 |= ISL923X_C1_OTG;
+	else
+		control1 &= ~ISL923X_C1_OTG;
+
+	return raw_write16(ISL923X_REG_CONTROL1, control1);
+}
+#endif /* CONFIG_CHARGER_ISL9238 */
+
 int charger_manufacturer_id(int *id)
 {
 	int rv;
@@ -253,7 +301,7 @@ int charger_post_init(void)
 		return rv;
 
 #ifdef CONFIG_CHARGE_RAMP_HW
-#ifdef CONFIG_CHARGER_ISL9237
+#ifdef CONFIG_ISL9237
 	rv = charger_get_option(&reg);
 	if (rv)
 		return rv;
