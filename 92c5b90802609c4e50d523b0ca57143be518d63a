@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d238f182_f88d8615",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T14:46:20Z",
+      "side": 1,
+      "message": "Maybe it\u0027s best to take these actions on HOST_SLEEP_EVENT_S0IX_RESUME only. EC_CMD_HOST_SLEEP_EVENT is getting overloaded for various functions and there may come a day when a board that does S0ix can also legitimately get a sleep event outside of these two.",
+      "range": {
+        "startLine": 466,
+        "startChar": 1,
+        "endLine": 466,
+        "endChar": 7
+      },
+      "revId": "92c5b90802609c4e50d523b0ca57143be518d63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
