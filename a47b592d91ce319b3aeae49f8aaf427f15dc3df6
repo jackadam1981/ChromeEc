@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c034594a_de16f83e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T10:08:17Z",
+      "side": 1,
+      "message": "you are only reading never writing these variables ?\ncannot be correct or I missed some subtle hack.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 45
+      },
+      "revId": "a47b592d91ce319b3aeae49f8aaf427f15dc3df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fae4ac8e_7357106a",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T10:08:17Z",
+      "side": 1,
+      "message": "nit: as we are supposed to use kernel style, you need braces here.\nit\u0027s either:\nif (cond)\n  clause;\nelse\n  other_clause;\n\nor:\nif (cond) {\n  clause;\n  more;\n} else {\n  other_clause;\n}\n\nboth branches are supposed to have the same \u0027bracing\u0027",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 0
+      },
+      "revId": "a47b592d91ce319b3aeae49f8aaf427f15dc3df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e50199e6_73565487",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T10:08:17Z",
+      "side": 1,
+      "message": "2nd time, time to have a small static function for this ?",
+      "range": {
+        "startLine": 430,
+        "startChar": 8,
+        "endLine": 431,
+        "endChar": 38
+      },
+      "revId": "a47b592d91ce319b3aeae49f8aaf427f15dc3df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda7b19f_d49c7b9d",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T10:08:17Z",
+      "side": 1,
+      "message": "Do I want to sleep here (and block the PD state machine) for potentially hundreds of milliseconds ?\nmaybe this is the easiest solution (to avoid increasing PD_POWER_SUPPLY_TURN_ON_DELAY) but what if we just have a deferred function checking the transition happened before the turn-on delay ?",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 14
+      },
+      "revId": "a47b592d91ce319b3aeae49f8aaf427f15dc3df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
