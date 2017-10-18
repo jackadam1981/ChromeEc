@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff591343_f9498223",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-18T16:35:25Z",
+      "side": 1,
+      "message": "nit: you might want to check if it already defined on an off chance someone defined it with an assigned value for whatever reason.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 43
+      },
+      "revId": "c17c2281609262292d78e5d1176715509285dbef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554de777_071d38e0",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 915,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-18T16:35:25Z",
+      "side": 1,
+      "message": "the way you use it it disables all upgrade checks (rate limiting, header overlap, version rollback, board id). Also, this applies to g chip\u0027s updates only, so maybe call it\n\nCONFIG_IGNORE_G_UPDATE_CHECKS\n\nand add edit the comment to this respect.",
+      "range": {
+        "startLine": 914,
+        "startChar": 7,
+        "endLine": 915,
+        "endChar": 0
+      },
+      "revId": "c17c2281609262292d78e5d1176715509285dbef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
