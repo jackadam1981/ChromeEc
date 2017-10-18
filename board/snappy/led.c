@@ -15,6 +15,7 @@
 #include "host_command.h"
 #include "led_common.h"
 #include "util.h"
+#include "system.h"
 
 #define BAT_LED_ON 0
 #define BAT_LED_OFF 1
@@ -106,6 +107,8 @@ static void led_set_battery(void)
 {
 	static int battery_ticks;
 	static int power_ticks;
+	static int previous_state_suspend;
+	uint32_t sku = system_get_sku_id();
 	uint32_t chflags = charge_get_flags();
 	int remaining_capacity;
 	int full_charge_capacity;
@@ -113,6 +116,36 @@ static void led_set_battery(void)
 
 	battery_ticks++;
 	power_ticks++;
+
+	/* b/67870473: override battery led for system suspend,
+	 * because Alan/BigDaddy boards are non-power-led design.
+	 */
+	if (sku == SKU_BIGDADDY_KBDBKLIGHT || sku == SKU_BIGDADDY
+			|| sku == SKU_ALAN) {
+		if (chipset_in_state(CHIPSET_STATE_SUSPEND
+				| CHIPSET_STATE_STANDBY)) {
+			/*
+			 * Reset ticks if entering suspend so LED turns white
+			 * as soon as possible.
+			 */
+			if (!previous_state_suspend)
+				power_ticks = 0;
+
+			if (charge_get_state() == PWR_STATE_CHARGE)
+				/* Always indicate when charging,
+				 * even in suspend.
+				 */
+				led_set_color_battery(LED_AMBER);
+			else
+				/* Blink once every one second. */
+				led_set_color_battery((power_ticks & 0x4) ?
+						  LED_WHITE : LED_OFF);
+
+			previous_state_suspend = 1;
+			return;
+		}
+		previous_state_suspend = 0;
+	}
 
 	remaining_capacity = *(int *)host_get_memmap(EC_MEMMAP_BATT_CAP);
 	full_charge_capacity = *(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
