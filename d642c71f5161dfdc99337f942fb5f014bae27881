@@ -69,6 +69,30 @@
       "revId": "d642c71f5161dfdc99337f942fb5f014bae27881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b03dc332_60e63c16",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T16:42:16Z",
+      "side": 1,
+      "message": "I think a mutex will still be necessary since preemption can occur after deciding to set gpio level, before gpio level is actually set (which may undo the proper GPIO level set in the thread that preempted).",
+      "parentUuid": "05afb41e_6975cd2e",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "d642c71f5161dfdc99337f942fb5f014bae27881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
