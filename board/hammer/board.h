@@ -186,7 +186,8 @@
 #define CONFIG_USB_I2C
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
-#define I2C_PORT_MASTER 0
+#define I2C_PORT_TOUCHPAD 0
+#define I2C_PORT_CHARGER 1
 
 /* Enable PWM */
 #define CONFIG_PWM
@@ -194,7 +195,7 @@
 /* Enable Elan touchpad driver */
 #define CONFIG_TOUCHPAD
 #define CONFIG_TOUCHPAD_ELAN
-#define CONFIG_TOUCHPAD_I2C_PORT 0
+#define CONFIG_TOUCHPAD_I2C_PORT I2C_PORT_TOUCHPAD
 #define CONFIG_TOUCHPAD_I2C_ADDR (0x15 << 1)
 
 #define CONFIG_CURVE25519
@@ -216,15 +217,10 @@
 #define CONFIG_BATTERY_DEVICE_CHEMISTRY "LION"
 #define CONFIG_BATTERY_SMART
 
-/*
- * TODO(b:66575472): Temporary values, charger and battery will be a on
- * a separate I2C bus eventually.
- */
-#define I2C_PORT_CHARGER        0
-#define I2C_PORT_BATTERY        0
+#define I2C_PORT_BATTERY I2C_PORT_CHARGER
 
-#define EC_EC_UART usart3_hw
-#define CONFIG_STREAM_USART3
+#define EC_EC_UART usart2_hw
+#define CONFIG_STREAM_USART2
 #define CONFIG_STREAM_USART
 
 #define CONFIG_EC_COMM_SLAVE

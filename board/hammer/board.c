@@ -65,17 +65,15 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
  */
 
 #ifdef SECTION_IS_RW
-#ifdef BOARD_WAND
-/* Battery needs 100 kHz */
-#define I2C_FREQ 100 /* kHz */
-#else
-#define I2C_FREQ 400 /* kHz */
-#endif
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"master", I2C_PORT_MASTER, I2C_FREQ,
-		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
+	{"touchpad", I2C_PORT_TOUCHPAD, 400,
+		GPIO_TOUCHPAD_I2C_SCL, GPIO_TOUCHPAD_I2C_SDA},
+#ifdef BOARD_WAND
+	{"charger", I2C_PORT_CHARGER, 100,
+		GPIO_CHARGER_I2C_SCL, GPIO_CHARGER_I2C_SDA},
+#endif
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
@@ -319,6 +317,9 @@ void board_config_pre_init(void)
  */
 void board_usb_wake(void)
 {
+#ifdef BOARD_WAND
+	/* FIXME: Implement side-band wake for wand. */
+#else
 	/*
 	 * Poke detection pin for about 500us, we disable interrupts
 	 * to make sure that we do not get preempted (setting GPIO high
@@ -331,6 +332,7 @@ void board_usb_wake(void)
 	udelay(500);
 	gpio_set_flags(GPIO_BASE_DET, GPIO_INPUT);
 	interrupt_enable();
+#endif
 }
 
 /*
