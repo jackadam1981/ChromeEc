@@ -52,6 +52,24 @@
       "revId": "1006aa68503a7230541a6bcba84ecc2081b354b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74691a1b_ad5d369e",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-18T23:29:55Z",
+      "side": 1,
+      "message": "Basically, it depends on which one we want to prioritize:\n1. Do we want to assume that RO will have setup always_report mask and just use that?\n2. Assume that we will have to setup always_report mask because RO does not support it yet.\n\nI think a better strategy here would be to uprev LPC_SYSJUMP_VERSION. That way RW can check:\n1. LPC_SYSJUMP_VERSION \u003d\u003d 1 \u003d\u003d\u003d\u003e Re-program the always_report mask since RO EC does not know about it.\n2. LPC_SYSJUMP_VERSION \u003d\u003d 2 \u003d\u003d\u003d\u003e Skip re-programming the always_report mask since RO has already set it up.\n\nDoes this make sense?",
+      "parentUuid": "a12adb6b_e6912829",
+      "revId": "1006aa68503a7230541a6bcba84ecc2081b354b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
