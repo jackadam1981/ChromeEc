@@ -20,23 +20,6 @@ static enum battery_present batt_pres_prev = BP_NOT_SURE;
 #define SB_SHIP_MODE_REG	SB_MANUFACTURER_ACCESS
 #define SB_SHUTDOWN_DATA        0x0010
 
-#ifdef BOARD_SORAKA
-static const struct battery_info info = {
-	.voltage_max = 8800,
-	.voltage_normal = 7700,
-	.voltage_min = 6100,
-	/* Pre-charge values. */
-	.precharge_current = 256, /* mA */
-
-	.start_charging_min_c = 0,
-	.start_charging_max_c = 45,
-	.charging_min_c = 0,
-	.charging_max_c = 45,
-	.discharging_min_c = -10,
-	.discharging_max_c = 60,
-};
-#elif defined(BOARD_POPPY)
-
 static const struct battery_info info = {
 	.voltage_max = 8800,
 	.voltage_normal = 7600,
@@ -51,9 +34,6 @@ static const struct battery_info info = {
 	.discharging_min_c = 0,
 	.discharging_max_c = 60,
 };
-#else
-#error "Battery information not available for board"
-#endif
 
 const struct battery_info *battery_get_info(void)
 {

@@ -1332,3 +1332,8 @@ int bmi160_get_sensor_temp(int idx, int *temp_ptr)
 	*temp_ptr = C_TO_K(23 + ((temp + 256) >> 9));
 	return 0;
 }
+
+struct bmi160_drv_data_t g_bmi160_data = {
+        .flags = 0,
+};
+

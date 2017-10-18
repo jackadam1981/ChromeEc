@@ -493,6 +493,8 @@ struct bmi160_drv_data_t {
 
 void bmi160_interrupt(enum gpio_signal signal);
 
+extern struct bmi160_drv_data_t g_bmi160_data;
+
 #ifdef CONFIG_MAG_BMI160_BMM150
 /* Functions to access the compass through the accel/gyro. */
 int raw_mag_read8(const int port, const int addr, const uint8_t reg,
