@@ -46,6 +46,30 @@
       "revId": "b7701ace91583c527d7641e2a87630de60d42c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64f5a2d4_3fcaf182",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-18T00:17:06Z",
+      "side": 1,
+      "message": "I was wrong, it does not automatically turn off. In the latest patchset, I now turn off the FET if the port is de-selected.",
+      "parentUuid": "37e392e5_131202b5",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 36
+      },
+      "revId": "b7701ace91583c527d7641e2a87630de60d42c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
