@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "902e0803_44010ede",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-18T10:18:06Z",
+      "side": 1,
+      "message": "(I meant, I thought we could use the top half for CR1, bottom half for CR2, or something like that, but that doesn\u0027t really seem to work...)",
+      "parentUuid": "5da27c58_0745a698",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "fc6f3eafd99a68e116e46e5028c467df6b3f2a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93713154_581f047b",
         "filename": "chip/stm32/usart.h",
         "patchSetId": 4
