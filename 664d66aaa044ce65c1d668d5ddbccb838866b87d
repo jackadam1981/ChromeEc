@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f96fe2c_0dccb662",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-18T23:49:58Z",
+      "side": 1,
+      "message": "The term \"raiden\" is kind of confusing (at least to me). It\u0027s not a matter if it\u0027s a \"raiden board\". Using servo_micro with flashrom to flash SPI requires the raiden_debug_spi programmer, as servo_micro itself uses CCD to flash SPI.",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 3
+      },
+      "revId": "664d66aaa044ce65c1d668d5ddbccb838866b87d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d73731e7_92cffc99",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-18T23:49:58Z",
+      "side": 1,
+      "message": "This is the line that I\u0027m worried about breaking. Maybe we should just add the check for servo micro here as well then?",
+      "revId": "664d66aaa044ce65c1d668d5ddbccb838866b87d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
