@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a10f6b96_644f3fcf",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-18T17:01:07Z",
+      "side": 1,
+      "message": "This function is called for HOOK_INIT which would be called in RO case as well. Maybe need a better name for the function? lpc_init_mask() instead of the lpc_post_sysjump_restore_mask()\n\nThe way it works is:\non cold boot: EC will set LPC_HOST_EVENT_ALWAYS_REPORT mask by default. Other masks will be just initialized to 0 until explicitly set by the host.\n\non sysjump: EC will set LPC_HOST_EVENT_ALWAYS_REPORT and just override it with the values in sysjump saved data.\n\nFor the case you mentioned:\n1. RW update which modifies the default mask: I think we would have to do more than just this. As you indicated we will need a callback into board to allow this.\n\n2. Feature being deployed in RW but not RO: That would not work too since memcpy below will update it to whatever RO has saved.\n\nI feel like we should at least support #2 above. Let me rework this a bit more, something like this:\n\n1. Add a new function lpc_init_mask which is called upon HOOK_INIT\n2. lpc_init_mask will first call into lpc_post_sysjump_restore_mask and then set LPC_HOST_EVENT_ALWAYS_REPORT to default mask. I can add a weak function here to return LPC_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK by default and it can be overriden by boards at any time.",
+      "parentUuid": "4de5476b_92f0e901",
+      "revId": "91603a37c2fc21033f797796d3921164dc5c9c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8dcb954_42cbbdc8",
         "filename": "common/host_event_commands.c",
         "patchSetId": 3
