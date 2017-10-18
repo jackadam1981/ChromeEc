@@ -85,6 +85,24 @@
       "revId": "91603a37c2fc21033f797796d3921164dc5c9c93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38ae08c3_fe31c2e5",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-18T17:14:28Z",
+      "side": 1,
+      "message": "Wouldn\u0027t hurt to have those in :). I will update that. Just the way these host events are used, it seems like if the host is up and ready to program the masks, it would probably prefer programming one of SCI/SMI/wake masks. But I agree, it would give more flexibility to users and to the host to have this support available.",
+      "parentUuid": "78899369_bbdd294d",
+      "revId": "91603a37c2fc21033f797796d3921164dc5c9c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
