@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11690385_c4f4177c",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T10:54:05Z",
+      "side": 1,
+      "message": "about the current dance, can really this chip transition voltage with a significant load ?\nelse you can simplify ...",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 0
+      },
+      "revId": "0b72d070b75239e4f9d6fba567a7dd2f860f26c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f38f762_779d492a",
+        "filename": "include/charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T10:54:05Z",
+      "side": 1,
+      "message": "we are slowly drifting from what OTG is really (5V VBUS amongst other things)",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "0b72d070b75239e4f9d6fba567a7dd2f860f26c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6d4f3fa_6acf1be5",
+        "filename": "include/charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T10:54:05Z",
+      "side": 1,
+      "message": "I don\u0027t know yet where this API is used,\nbut from far away it looks a bit unsafe.\ne.g if I\u0027m doing the following sequence:\ncharger_enable_otg_power(1);\ncharger_set_otg_current_voltage(500, 20000);\n...\ncharger_enable_otg_power(0);\nthen after some other events:\ncharger_enable_otg_power(1);\nI\u0027m getting 20V out of my port ... hum badness ensue\n\nI guess for your product it\u0027s not an issue.\nshort of changing the API, maybe we should think where the voltage is reset to 5V ? and document it here ?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 36
+      },
+      "revId": "0b72d070b75239e4f9d6fba567a7dd2f860f26c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
