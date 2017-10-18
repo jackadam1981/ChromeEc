@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc76e731_2100c27e",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T09:41:36Z",
+      "side": 1,
+      "message": "time to change this to uint8_t ?",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 10
+      },
+      "revId": "594201f708413cbc1f526e0bb24dabe9d3443a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3cafa4b_612d73de",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T09:41:36Z",
+      "side": 1,
+      "message": "I wouldn\u0027t say this is a clean-up from the previous version,\nbut maybe more convenient for your follow-up CLs ;-)\n\ndepending what your other user is, you might want to return a PDO rather than an index in the (former) pd_find_pdo_index ?",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 45
+      },
+      "revId": "594201f708413cbc1f526e0bb24dabe9d3443a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
