@@ -51,6 +51,40 @@
       "revId": "91603a37c2fc21033f797796d3921164dc5c9c93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32842c35_e71dbc86",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-18T17:05:30Z",
+      "side": 1,
+      "message": "So basically you are consciously not allowing anyone to set the always one on the console or...",
+      "revId": "91603a37c2fc21033f797796d3921164dc5c9c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78899369_bbdd294d",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-18T17:05:30Z",
+      "side": 1,
+      "message": "through host commands like this.",
+      "revId": "91603a37c2fc21033f797796d3921164dc5c9c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
