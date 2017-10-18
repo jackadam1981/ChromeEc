@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c64356e_50fb02ba",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T09:13:55Z",
+      "side": 1,
+      "message": "given this code is STM32 / USART specific, isn\u0027t too much abstraction killing the abstraction (or more likely the flash size...)\nthe next guy will want to set the number of STOP bits in CR2 ?\nsadly the other interesting config bits (parity, bits count) are in CR1, we cannot just store and mask CR2.\nmaybe this is good enough",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "fc6f3eafd99a68e116e46e5028c467df6b3f2a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93713154_581f047b",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T09:13:55Z",
+      "side": 1,
+      "message": "\u0027int\u0027 is not the best bitfield ever, maybe an unsigned type would be better.",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 10
+      },
+      "revId": "fc6f3eafd99a68e116e46e5028c467df6b3f2a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
