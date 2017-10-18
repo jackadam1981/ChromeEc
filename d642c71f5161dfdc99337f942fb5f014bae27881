@@ -45,6 +45,30 @@
       "revId": "d642c71f5161dfdc99337f942fb5f014bae27881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05afb41e_6975cd2e",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T15:47:46Z",
+      "side": 1,
+      "message": "uint32_t cnl_5v_en_req;\n// ...\natomic_or(\u0026cnl_5v_en_req, 1 \u003c\u003c idx);\n// ...\natomic_clear(\u0026cnl_5v_en_req);\nif (atomic_read(\u0026cnl_5v_en_req, 1 \u003c\u003c idx))\n  gpio_set_level(GPIO_EN_PP5000, 0);\n\nmight be good enough for this case and lighterweight.",
+      "parentUuid": "e043b069_be1f2257",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "d642c71f5161dfdc99337f942fb5f014bae27881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
