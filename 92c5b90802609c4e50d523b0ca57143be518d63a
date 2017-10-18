@@ -22,6 +22,47 @@
       "revId": "92c5b90802609c4e50d523b0ca57143be518d63a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a630a99_6ca534d7",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-18T16:30:46Z",
+      "side": 1,
+      "message": "Ya. Agreed.",
+      "parentUuid": "d238f182_f88d8615",
+      "range": {
+        "startLine": 466,
+        "startChar": 1,
+        "endLine": 466,
+        "endChar": 7
+      },
+      "revId": "92c5b90802609c4e50d523b0ca57143be518d63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55eea0ee_86b30baf",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-18T16:30:46Z",
+      "side": 1,
+      "message": "How are you ensuring the ordering that S0ix_resume happens after the query of events?",
+      "revId": "92c5b90802609c4e50d523b0ca57143be518d63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
