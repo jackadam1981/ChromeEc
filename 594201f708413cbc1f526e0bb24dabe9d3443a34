@@ -45,6 +45,30 @@
       "revId": "594201f708413cbc1f526e0bb24dabe9d3443a34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9d4b55a_54c83c81",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-18T10:13:02Z",
+      "side": 1,
+      "message": "Now I have seen the servo_v4 new code,\nwe obviously need the index to fill the RDO below, my request is at best badly formulated, but still shouldn\u0027t this function just take a \u0027uint32_t pdo\u0027 and maybe pd_find_pdo_index() changed to\nint pd_find_pdo_index(int port, int max_mv, uint32_t *selected_pdo)",
+      "parentUuid": "b3cafa4b_612d73de",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 45
+      },
+      "revId": "594201f708413cbc1f526e0bb24dabe9d3443a34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
