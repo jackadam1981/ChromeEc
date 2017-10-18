@@ -16,6 +16,24 @@
       "revId": "1006aa68503a7230541a6bcba84ecc2081b354b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa7edef0_78071fbf",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-18T23:16:23Z",
+      "side": 1,
+      "message": "Correct. If RO does not support it and RW does, then we would want to go with the one in RW.",
+      "parentUuid": "34810834_61d034eb",
+      "revId": "1006aa68503a7230541a6bcba84ecc2081b354b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
