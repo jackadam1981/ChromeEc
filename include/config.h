@@ -908,6 +908,11 @@
  */
 #undef CONFIG_UPTO_SHA512
 
+/*
+ * When enabled ignore version compare during fw upgrade.
+ */
+#undef CONFIG_IGNORE_FW_VERSION_ON_UPGRADE
+
 /*****************************************************************************/
 /*
  * Debugging config
