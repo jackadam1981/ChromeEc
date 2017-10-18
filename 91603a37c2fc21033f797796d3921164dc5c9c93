@@ -103,6 +103,24 @@
       "revId": "91603a37c2fc21033f797796d3921164dc5c9c93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "676f6e14_ea361b4c",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-18T17:17:40Z",
+      "side": 1,
+      "message": "I would say let\u0027s add this to CONSOLE_COMMAND, but not use up another host command to set/read/clear the new mask. Since we are moving towards using a single host event command to set/read/clear all the masks, we can add this new mask to that command. Thoughts?\n(Reference: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/576047)",
+      "parentUuid": "38ae08c3_fe31c2e5",
+      "revId": "91603a37c2fc21033f797796d3921164dc5c9c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
