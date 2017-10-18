@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be45640e_01b28f21",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T15:16:29Z",
+      "side": 1,
+      "message": "I\u0027m assuming \u0027cnl\u0027 stands for cannonlake? Maybe we should use a more generic name (and add the prototype to power.h), it doesn\u0027t seem proper for the bc1.2 driver to depend on cannonlake.",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 18
+      },
+      "revId": "d642c71f5161dfdc99337f942fb5f014bae27881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e043b069_be1f2257",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T15:16:29Z",
+      "side": 1,
+      "message": "This mask / assignment can be racy. Maybe it\u0027s best to use a mutex + counter (represents number of callers that want 5v on) (kind of like a counting semaphore) -- grab mutex, inc / dec counter, take action if counter is zero / non-zero, release mutex.",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 15
+      },
+      "revId": "d642c71f5161dfdc99337f942fb5f014bae27881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
