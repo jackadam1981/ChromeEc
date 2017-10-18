@@ -7,7 +7,6 @@
 
 #include "adc.h"
 #include "adc_chip.h"
-#include "als.h"
 #include "bd99992gw.h"
 #include "board_config.h"
 #include "button.h"
@@ -18,7 +17,7 @@
 #include "chipset.h"
 #include "console.h"
 #include "driver/accelgyro_bmi160.h"
-#include "driver/als_opt3001.h"
+#include "driver/accel_bma2x2.h"
 #include "driver/baro_bmp280.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -55,7 +54,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-#define USB_PD_PORT_ANX74XX	0
+#define USB_PD_PORT_ANX74XX	-1
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -112,7 +111,7 @@ void usb1_evt(enum gpio_signal signal)
 	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
 }
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER_FALSE
 static void anx74xx_cable_det_handler(void)
 {
 	int cable_det = gpio_get_level(GPIO_USB_C0_CABLE_DET);
@@ -330,20 +329,18 @@ static void base_disable(void)
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
 #ifdef CONFIG_POWER_S0IX
-	{GPIO_PCH_SLP_S0_L,
-		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
-		"SLP_S0_DEASSERTED"},
+	{GPIO_PCH_SLP_S0_L,	1, "SLP_S0_DEASSERTED"},
 #endif
 #ifdef CONFIG_ESPI_VW_SIGNALS
-	{VW_SLP_S3_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
-	{VW_SLP_S4_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
+	{VW_SLP_S3_L,		1, "SLP_S3_DEASSERTED"},
+	{VW_SLP_S4_L,		1, "SLP_S4_DEASSERTED"},
 #else
-	{GPIO_PCH_SLP_S3_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
-	{GPIO_PCH_SLP_S4_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
+	{GPIO_PCH_SLP_S3_L,	1, "SLP_S3_DEASSERTED"},
+	{GPIO_PCH_SLP_S4_L,	1, "SLP_S4_DEASSERTED"},
 #endif
-	{GPIO_PCH_SLP_SUS_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_SUS_DEASSERTED"},
-	{GPIO_RSMRST_L_PGOOD,	POWER_SIGNAL_ACTIVE_HIGH, "RSMRST_L_PGOOD"},
-	{GPIO_PMIC_DPWROK,	POWER_SIGNAL_ACTIVE_HIGH, "PMIC_DPWROK"},
+	{GPIO_PCH_SLP_SUS_L,	1, "SLP_SUS_DEASSERTED"},
+	{GPIO_RSMRST_L_PGOOD,	1, "RSMRST_L_PGOOD"},
+	{GPIO_PMIC_DPWROK,	1, "PMIC_DPWROK"},
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
@@ -382,15 +379,15 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{NPCX_I2C_PORT0_0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 	{NPCX_I2C_PORT0_0, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_0, 0x90, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0, /* don't care / unused */
-		.driver = &anx74xx_tcpm_usb_mux_driver,
-		.hpd_update = &anx74xx_tcpc_update_hpd_status,
+		.driver = &tcpci_tcpm_usb_mux_driver,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 	{
 		.port_addr = 1,
@@ -443,12 +440,8 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(GPIO_USB_C1_PD_RST_L, 0);
 
 	msleep(MAX(1, ANX74XX_RST_L_PWR_L_DELAY_MS));
+	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
 	gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);
-	/* Disable TCPC0 (anx3429) power */
-	gpio_set_level(GPIO_USB_C0_TCPC_PWR, 0);
-
-	msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
-	board_set_tcpc_power_mode(USB_PD_PORT_ANX74XX, 1);
 }
 
 void board_tcpc_init(void)
@@ -457,7 +450,7 @@ void board_tcpc_init(void)
 
 	/* Only reset TCPC if not sysjump */
 	if (!system_jumped_to_this_image()) {
-		gpio_set_level(GPIO_PP3300_USB_PD, 1);
+	/*	gpio_set_level(GPIO_PP3300_USB_PD, 1); for Hopper*/
 		/* TODO(crosbug.com/p/61098): How long do we need to wait? */
 		msleep(10);
 		board_reset_pd_mcu();
@@ -472,16 +465,12 @@ void board_tcpc_init(void)
 	 *
 	 * NOTE: PS8751 A3 will wake on any I2C access.
 	 */
-	i2c_read8(NPCX_I2C_PORT0_1, 0x10, 0xA0, &reg);
+	i2c_read8(NPCX_I2C_PORT0_0, 0x10, 0xA0, &reg);
 
 	/* Enable TCPC interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	/* Enable CABLE_DET interrupt for ANX3429 wake from standby */
-	gpio_enable_interrupt(GPIO_USB_C0_CABLE_DET);
-#endif
 
 	/*
 	 * Initialize HPD to low; after sysjump SOC needs to see
@@ -517,22 +506,15 @@ const struct temp_sensor_t temp_sensors[] = {
 
 	/* These BD99992GW temp sensors are only readable in S0 */
 	{"Ambient", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
-	 BD99992GW_ADC_CHANNEL_SYSTHERM0, 4},
+	 BD99992GW_ADC_CHANNEL_SYSTHERM1, 4},
 	{"Charger", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM1, 4},
 	{"DRAM", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM2, 4},
 	{"eMMC", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
-	 BD99992GW_ADC_CHANNEL_SYSTHERM3, 4},
+	 BD99992GW_ADC_CHANNEL_SYSTHERM2, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
-
-/* ALS instances. Must be in same order as enum als_id. */
-struct als_t als[] = {
-	/* TODO(crosbug.com/p/61098): verify attenuation_factor */
-	{"TI", opt3001_init, opt3001_read_lux, 5},
-};
-BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
 
 const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 	[BUTTON_VOLUME_DOWN] = {"Volume Down", KEYBOARD_BUTTON_VOLUME_DOWN,
@@ -664,7 +646,7 @@ static void board_init(void)
 
 	/* Enable sensors power supply */
 	gpio_set_level(GPIO_PP1800_DX_SENSOR, 1);
-	gpio_set_level(GPIO_PP3300_DX_SENSOR, 1);
+/*	gpio_set_level(GPIO_PP3300_DX_SENSOR, 1);*/
 
 	/* Enable VBUS interrupt */
 	if (system_get_board_version() == 0) {
@@ -816,29 +798,29 @@ int board_is_consuming_full_charge(void)
 
 void board_hibernate(void)
 {
-	CPRINTS("Triggering PMIC shutdown.");
-	uart_flush_output();
+    CPRINTS("Triggering PMIC shutdown.");
+    uart_flush_output();
 
     /* Trigger PMIC shutdown. */
-	if (i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x49, 0x01)) {
-		/*
-		 * If we can't tell the PMIC to shutdown, instead reset
-		 * and don't start the AP. Hopefully we'll be able to
-		 * communicate with the PMIC next time.
-		 */
-		CPRINTS("PMIC i2c failed.");
-		system_reset(SYSTEM_RESET_LEAVE_AP_OFF);
-	}
+    if (i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x49, 0x01)) {
+        /*
+         * If we can't tell the PMIC to shutdown, instead reset
+         * and don't start the AP. Hopefully we'll be able to
+         * communicate with the PMIC next time.
+         */
+        CPRINTS("PMIC i2c failed.");
+        system_reset(SYSTEM_RESET_LEAVE_AP_OFF);
+    }
 
-	/* Await shutdown. */
-	while (1)
-		;
+    /* Await shutdown. */
+    while (1)
+        ;
 }
 
 int board_get_version(void)
 {
 	static int ver = -1;
-	uint8_t id4;
+/*	uint8_t id4;*/
 
 	if (ver != -1)
 		return ver;
@@ -857,156 +839,221 @@ int board_get_version(void)
 	 * 4th bit is using tristate strapping, ternary encoding:
 	 * Hi-Z (id4=2) => 0, (id4=0) => 1, (id4=1) => 2
 	 */
+/*
 	id4 = gpio_get_ternary(GPIO_BOARD_VERSION4);
 	ver |= ((id4 + 1) % 3) * 0x08;
-
+*/
 	CPRINTS("Board ID = %d", ver);
 
 	return ver;
 }
 
-/* Lid Sensor mutex */
-static struct mutex g_lid_mutex;
+#ifdef CONFIG_LID_ANGLE_UPDATE
+/*
+static int has_trackpad_disable = -1;
+*/
 
-static struct bmi160_drv_data_t g_bmi160_data;
+void lid_angle_peripheral_enable(int enable)
+{
+#if 0
+        int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
+
+        /*
+         * Support old hardware where GPIO 127 is directly connected
+         * to the trackpad interrupt.
+         * Can be removed once board version 0 and 1 are retired.
+         */
+        if (has_trackpad_disable < 0) {
+                has_trackpad_disable = board_get_version() >= 2;
+                if (!has_trackpad_disable)
+                        gpio_set_flags(GPIO_TRACKPAD_INT_DISABLE, GPIO_INPUT);
+        }
+
+        if (enable) {
+                keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
+                if (has_trackpad_disable)
+                        gpio_set_level(GPIO_TRACKPAD_INT_DISABLE, 0);
+        } else {
+                /*
+                 * Ensure chipset is off before disabling keyboard. When chipset
+                 * is on, EC keeps keyboard enabled and the AP decides when to
+                 * ignore keys based on its more accurate lid angle calculation.
+                 *
+                 * TODO(crosbug.com/p/43695): Remove this check once we have a
+                 * host command that can inform EC when we are entering or
+                 * exiting tablet mode in S0. Also, add this check back to the
+                 * function lid_angle_update in lid_angle.c
+                 */
+                if (!chipset_in_s0) {
+                        keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
+                        if (has_trackpad_disable)
+                                gpio_set_level(GPIO_TRACKPAD_INT_DISABLE, 1);
+                }
+        }
+#endif
+}
+#endif
+
+#ifdef HAS_TASK_MOTIONSENSE
+/* Motion sensors */
+/* Mutexes */
+static struct mutex g_lid_mutex;
+static struct mutex g_base_mutex;
+
+/* BMA255 private data */
+struct bma2x2_accel_data g_bma255_data = {
+        .variant = BMA255,
+};
 
 /* Matrix to rotate accelrator into standard reference frame */
-const matrix_3x3_t mag_standard_ref = {
-	{ FLOAT_TO_FP(-1), 0, 0},
-	{ 0,  FLOAT_TO_FP(1), 0},
-	{ 0, 0, FLOAT_TO_FP(-1)}
+const matrix_3x3_t base_standard_ref = {
+        { 0, FLOAT_TO_FP(1),  0},
+        { FLOAT_TO_FP(1),  0, 0},
+        { 0,  0, FLOAT_TO_FP(-1)}
 };
 
 const matrix_3x3_t lid_standard_ref = {
-	{FLOAT_TO_FP(-1),  0,  0},
-	{ 0,  FLOAT_TO_FP(-1),  0},
-	{ 0,  0, FLOAT_TO_FP(1)}
+        { 0,  FLOAT_TO_FP(1), 0},
+        { FLOAT_TO_FP(-1),  0,  0},
+        { 0,  0, FLOAT_TO_FP(1)}
 };
+
 
 struct motion_sensor_t motion_sensors[] = {
-	[LID_ACCEL] = {
-	 .name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .port = I2C_PORT_GYRO,
-	 .addr = BMI160_ADDR0,
-	 .rot_standard_ref = &lid_standard_ref,
-	 .default_range = 2,  /* g, enough for laptop. */
-	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
-	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
-	 .config = {
-		 /* AP: by default use EC settings */
-		 [SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* EC use accel for angle detection */
-		 [SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0
-		 },
-	 },
-	},
+        [LID_ACCEL] = {
+         .name = "Lid Accel",
+         .active_mask = SENSOR_ACTIVE_S0_S3,
+         .chip = MOTIONSENSE_CHIP_BMA255,
+         .type = MOTIONSENSE_TYPE_ACCEL,
+         .location = MOTIONSENSE_LOC_LID,
+         .drv = &bma2x2_accel_drv,
+         .mutex = &g_lid_mutex,
+         .drv_data = &g_bma255_data,
+         .port = I2C_PORT_ACCEL,
+         .addr = BMA2x2_I2C_ADDR1,
+         .rot_standard_ref = &lid_standard_ref,
+         .default_range = 8, /* g, to support tablet mode */
+         .config = {
+                /* AP: by default use EC settings */
+                [SENSOR_CONFIG_AP] = {
+                        .odr = 0,
+                        .ec_rate = 0,
+                },
+                /* EC use accel for angle detection */
+                [SENSOR_CONFIG_EC_S0] = {
+                        .odr = 10000 | ROUND_UP_FLAG,
+                        .ec_rate = 100 * MSEC,
+                },
+                /* Sensor on in S3 */
+                [SENSOR_CONFIG_EC_S3] = {
+                        .odr = 10000 | ROUND_UP_FLAG,
+                        .ec_rate = 100 * MSEC,
+                },
+                /* Sensor off in S5 */
+                [SENSOR_CONFIG_EC_S5] = {
+                        .odr = 0,
+                        .ec_rate = 0,
+                },
+         },
+        },
 
-	[LID_GYRO] = {
-	 .name = "Lid Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_GYRO,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .port = I2C_PORT_GYRO,
-	 .addr = BMI160_ADDR0,
-	 .default_range = 1000, /* dps */
-	 .rot_standard_ref = &lid_standard_ref,
-	 .min_frequency = BMI160_GYRO_MIN_FREQ,
-	 .max_frequency = BMI160_GYRO_MAX_FREQ,
-	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* EC does not need in S0 */
-		 [SENSOR_CONFIG_EC_S0] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-	 },
-	},
-
-	[LID_MAG] = {
-	 .name = "Lid Mag",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_MAG,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .port = I2C_PORT_GYRO,
-	 .addr = BMI160_ADDR0,
-	 .default_range = 1 << 11, /* 16LSB / uT, fixed */
-	 .rot_standard_ref = &mag_standard_ref,
-	 .min_frequency = BMM150_MAG_MIN_FREQ,
-	 .max_frequency = BMM150_MAG_MAX_FREQ,
-	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* EC does not need in S0 */
-		 [SENSOR_CONFIG_EC_S0] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S3/S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			 .odr = 0,
-			 .ec_rate = 0,
-		 },
-	 },
-	},
+        [BASE_ACCEL] = {
+         .name = "Base Accel",
+         .active_mask = SENSOR_ACTIVE_S0_S3,
+         .chip = MOTIONSENSE_CHIP_BMI160,
+         .type = MOTIONSENSE_TYPE_ACCEL,
+         .location = MOTIONSENSE_LOC_BASE,
+         .drv = &bmi160_drv,
+         .mutex = &g_base_mutex,
+         .drv_data = &g_bmi160_data,
+         .port = I2C_PORT_ACCEL,
+         .addr = BMI160_ADDR0,
+         .rot_standard_ref = &base_standard_ref,
+         .default_range = 8, /* g, to support tablet mode  */
+         .config = {
+                 /* AP: by default use EC settings */
+                 [SENSOR_CONFIG_AP] = {
+                         .odr = 0,
+                         .ec_rate = 0,
+                 },
+                 /* EC use accel for angle detection */
+                 [SENSOR_CONFIG_EC_S0] = {
+                         .odr = 10000 | ROUND_UP_FLAG,
+                         .ec_rate = 100 * MSEC,
+                 },
+                 /* Sensor on in S3 */
+                 [SENSOR_CONFIG_EC_S3] = {
+                         .odr = 10000 | ROUND_UP_FLAG,
+                         .ec_rate = 100 * MSEC,
+                 },
+                 /* Sensor off in S5 */
+                 [SENSOR_CONFIG_EC_S5] = {
+                         .odr = 0,
+                         .ec_rate = 0
+                 },
+         },
+        },
+        [BASE_GYRO] = {
+         .name = "Base Gyro",
+         .active_mask = SENSOR_ACTIVE_S0_S3,
+         .chip = MOTIONSENSE_CHIP_BMI160,
+         .type = MOTIONSENSE_TYPE_GYRO,
+         .location = MOTIONSENSE_LOC_BASE,
+         .drv = &bmi160_drv,
+         .mutex = &g_base_mutex,
+         .drv_data = &g_bmi160_data,
+         .port = I2C_PORT_ACCEL,
+         .addr = BMI160_ADDR0,
+         .default_range = 1000, /* dps */
+         .rot_standard_ref = &base_standard_ref,
+         .config = {
+                 /* AP: by default shutdown all sensors */
+                 [SENSOR_CONFIG_AP] = {
+                         .odr = 0,
+                         .ec_rate = 0,
+                 },
+                 /* EC does not need in S0 */
+                 [SENSOR_CONFIG_EC_S0] = {
+                         .odr = 0,
+                         .ec_rate = 0,
+                 },
+                 /* Sensor off in S3/S5 */
+                 [SENSOR_CONFIG_EC_S3] = {
+                         .odr = 0,
+                         .ec_rate = 0,
+                 },
+                 /* Sensor off in S3/S5 */
+                 [SENSOR_CONFIG_EC_S5] = {
+                         .odr = 0,
+                         .ec_rate = 0,
+                 },
+         },
+        },
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+#endif /* HAS_TASK_MOTIONSENSE */
+
+#ifdef BOARD_SORAKA
+static void board_sensor_init(void)
+{
+	/* Old soraka use a different reference matrix */
+	if (system_get_board_version() <= 3) {
+		motion_sensors[LID_ACCEL].rot_standard_ref =
+			&lid_standard_ref_old;
+		motion_sensors[LID_GYRO].rot_standard_ref =
+			&lid_standard_ref_old;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_sensor_init, HOOK_PRIO_DEFAULT);
+#endif
 
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 1);
+#ifdef POPPY_REV0
+	gpio_set_level(GPIO_PP3300_DX_CAM, 1);
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -1014,6 +1061,9 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 static void board_chipset_suspend(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT, 0);
+#ifdef POPPY_REV0
+	gpio_set_level(GPIO_PP3300_DX_CAM, 0);
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 

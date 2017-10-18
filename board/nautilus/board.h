@@ -28,6 +28,8 @@
 #define CONFIG_FPU
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#define CONFIG_KEYBOARD_COL2_INVERTED
+#define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_LED_COMMON
 #define CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
@@ -94,24 +96,24 @@
 #define CONFIG_POWER_S0IX
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 
-/* Sensor */
-#define CONFIG_ALS
-#define CONFIG_ALS_OPT3001
-#define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
+
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_BD99992GW
 /* TODO(crosbug.com/p/61098): Is this the correct thermistor? */
 #define CONFIG_THERMISTOR_NCP15WB
-
-#define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
 #define CONFIG_ACCELGYRO_BMI160
-#define CONFIG_MAG_BMI160_BMM150
-#define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
-#define BMM150_I2C_ADDRESS BMM150_ADDR0	/* 8-bit address */
-#define CONFIG_MAG_CALIBRATE
+#define CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
+#define CONFIG_ACCEL_BMA255
+#define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+#define CONFIG_LID_ANGLE_UPDATE
+#define CONFIG_LID_ANGLE_TABLET_MODE
+#define CONFIG_LID_ANGLE_INVALID_CHECK
 
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 1024
@@ -135,9 +137,8 @@
 #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
 #define CONFIG_USB_PD_PORT_COUNT 2
 #define CONFIG_USB_PD_VBUS_DETECT_GPIO
-#define CONFIG_USB_PD_TCPC_LOW_POWER
+/*#define CONFIG_USB_PD_TCPC_LOW_POWER*/
 #define CONFIG_USB_PD_TCPM_MUX
-#define CONFIG_USB_PD_TCPM_ANX74XX
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TCPM_PS8751
 #define CONFIG_USB_PD_TRY_SRC
@@ -208,14 +209,14 @@ enum als_id {
 
 /*
  * Motion sensors:
- * When reading through IO memory is set up for sensors (LPC is used),
- * the first 2 entries must be accelerometers, then gyroscope.
- * For BMI160, accel, gyro and compass sensors must be next to each other.
+ * When reading through IO memory is set up, the first 2 entries must be
+ * accelerometers, then gyroscope.
+ * For BMI160, accel and gyro sensors must be next to each other.
  */
 enum sensor_id {
-	LID_ACCEL = 0,
-	LID_GYRO,
-	LID_MAG,
+        LID_ACCEL = 0,
+        BASE_ACCEL,
+        BASE_GYRO,
 };
 
 enum adc_channel {
