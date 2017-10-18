@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e1966f5_3d41245c",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-18T07:19:29Z",
+      "side": 1,
+      "message": "Should not revert this.",
+      "revId": "7dbd524365deb5e141bb710f0c838b532a83dc1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "935abd9a_8e432f0b",
+        "filename": "include/charger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-18T07:19:29Z",
+      "side": 1,
+      "message": "Should reuse this.",
+      "revId": "7dbd524365deb5e141bb710f0c838b532a83dc1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
