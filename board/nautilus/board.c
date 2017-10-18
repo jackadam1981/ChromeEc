@@ -309,21 +309,6 @@ void base_detect_interrupt(enum gpio_signal signal)
 	base_detect_debounce_time = time_now + BASE_DETECT_DEBOUNCE_US;
 }
 
-static void base_enable(void)
-{
-	/* Enable base detection interrupt. */
-	base_detect_debounce_time = get_time().val;
-	hook_call_deferred(&base_detect_deferred_data, 0);
-	gpio_enable_interrupt(GPIO_BASE_DET_A);
-}
-
-static void base_disable(void)
-{
-	/* Disable base detection interrupt and disable power to base. */
-	gpio_disable_interrupt(GPIO_BASE_DET_A);
-	base_detect_change(BASE_DISCONNECTED);
-}
-
 #include "gpio_list.h"
 
 /* power signal list.  Must match order of enum power_signal. */
@@ -380,7 +365,7 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{NPCX_I2C_PORT0_0, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	{NPCX_I2C_PORT0_0, 0x90, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_1, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
@@ -670,12 +655,6 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
 
-	/*
-	 * If we jumped to this image and chipset is already in S0, enable
-	 * base.
-	 */
-	if (system_jumped_to_this_image() && chipset_in_state(CHIPSET_STATE_ON))
-		base_enable();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -1079,7 +1058,7 @@ static void board_chipset_startup(void)
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x41, 0x01);
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x2a, 0x02);
 
-	base_enable();
+        gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
@@ -1094,7 +1073,7 @@ static void board_chipset_shutdown(void)
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x41, 0x0);
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x2a, 0x0);
 
-	base_disable();
+        gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
