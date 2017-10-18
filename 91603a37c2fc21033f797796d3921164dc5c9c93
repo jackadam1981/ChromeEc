@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4de5476b_92f0e901",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-18T16:29:18Z",
+      "side": 1,
+      "message": "Why is this always being re-initialized? So one can push a RW update which modifies the default mask? Wouldn\u0027t that be a per board thing if that occurred? And wouldn\u0027t we just be overriding it in the memcpy() below? Or are you trying to handle the case of this feature being deployed in RW but the RO doesn\u0027t have it?",
+      "revId": "91603a37c2fc21033f797796d3921164dc5c9c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8dcb954_42cbbdc8",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-18T16:29:18Z",
+      "side": 1,
+      "message": "Please add a comment detailing the reason for this.",
+      "revId": "91603a37c2fc21033f797796d3921164dc5c9c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
