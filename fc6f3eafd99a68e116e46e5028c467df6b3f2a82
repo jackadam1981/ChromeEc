@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "da4b90f7_30c8e9dd",
+        "filename": "chip/stm32/usart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-18T10:16:30Z",
+      "side": 1,
+      "message": "We can still save a few bytes of flash by saving cr2 value in a variable before applying it (since STM32_USART_CR2 is volatile).",
+      "revId": "fc6f3eafd99a68e116e46e5028c467df6b3f2a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c64356e_50fb02ba",
         "filename": "chip/stm32/usart.h",
         "patchSetId": 4
@@ -13,6 +30,30 @@
       "writtenOn": "2017-10-18T09:13:55Z",
       "side": 1,
       "message": "given this code is STM32 / USART specific, isn\u0027t too much abstraction killing the abstraction (or more likely the flash size...)\nthe next guy will want to set the number of STOP bits in CR2 ?\nsadly the other interesting config bits (parity, bits count) are in CR1, we cannot just store and mask CR2.\nmaybe this is good enough",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 41
+      },
+      "revId": "fc6f3eafd99a68e116e46e5028c467df6b3f2a82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da27c58_0745a698",
+        "filename": "chip/stm32/usart.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-18T10:16:30Z",
+      "side": 1,
+      "message": "In CR1 the interesting bits are:\n28: M1: Word length\n12: M0: Word length\n10/9: Parity stuff\n\nIn CR2:\n31:24: Address\n22:20: Auto-baud\n19: MSB first\n18-16: Inversion stuff\n15: LIN mode\n11-8: SCLK stuff\n4: Address\n\nIn CR3:\n3: Half-duplex selection\n\nSo yeah, a bit too many bits to fit in a single int...",
+      "parentUuid": "8c64356e_50fb02ba",
       "range": {
         "startLine": 137,
         "startChar": 0,
