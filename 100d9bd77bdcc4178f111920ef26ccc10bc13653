@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3dd96ae9_359ad02d",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T01:19:51Z",
+      "side": 1,
+      "message": "I don\u0027t understand all the nuances / uses cases here, but ccd_set_mode(CCD_MODE_PARTIAL) doesn\u0027t do exactly the same thing as ccd_set_mode(CCD_MODE_DISASBLED) in the servo_v4 implementation... anyway, why does this depend on the locked state of servo_v4? Debug capability of the DUT should not depend on it, so I agree it should be removed.",
+      "parentUuid": "61e1cd19_155979b2",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 26
+      },
+      "revId": "100d9bd77bdcc4178f111920ef26ccc10bc13653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "302ed535_62589fd6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "55885b85_0f4338d5",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T01:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "302ed535_62589fd6",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 16
+      },
+      "revId": "100d9bd77bdcc4178f111920ef26ccc10bc13653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94c686c4_5fc4a7fa",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 6
@@ -59,6 +107,30 @@
       "writtenOn": "2017-10-16T12:14:07Z",
       "side": 1,
       "message": "what happens now for AUDIO_ACC ?\nworth at least a comment.",
+      "range": {
+        "startLine": 1907,
+        "startChar": 0,
+        "endLine": 1908,
+        "endChar": 41
+      },
+      "revId": "100d9bd77bdcc4178f111920ef26ccc10bc13653",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f616531_ce2433da",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1908,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T01:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94c686c4_5fc4a7fa",
       "range": {
         "startLine": 1907,
         "startChar": 0,
