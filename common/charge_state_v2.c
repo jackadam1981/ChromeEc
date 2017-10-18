@@ -14,6 +14,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "ec_comm.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -121,6 +122,10 @@ static void problem(enum problem_type p, int v)
 
 #ifdef HAS_TASK_HOSTCMD
 /* Returns zero if every item was updated. */
+/*
+ * FIXME: These 2 functions duplicate a lot of code with the ones in
+ * the #else branch, try to improve that.
+ */
 static int update_static_battery_info(void)
 {
 	char *batt_str;
@@ -264,14 +269,143 @@ static void update_dynamic_battery_info(void)
 	if (send_batt_status_event)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 }
-#else
-/* No AP to inform. */
+#elif defined(CONFIG_EC_COMM_BATTERY_SLAVE)
 static int update_static_battery_info(void)
 {
-	return EC_RES_SUCCESS;
+	int batt_serial;
+	int val;
+	/*
+	 * The return values have type enum ec_error_list, but EC_SUCCESS is
+	 * zero. We'll just look for any failures so we can try them all again.
+	 */
+	int rv, ret;
+
+	/* Smart battery serial number is 16 bits */
+	memset(base_battery_static.serial, 0,
+		sizeof(base_battery_static.serial));
+	rv = battery_serial_number(&batt_serial);
+	if (!rv)
+		snprintf(base_battery_static.serial,
+			sizeof(base_battery_static.serial),
+			"%04X", batt_serial);
+
+	/* Design Capacity of Full */
+	ret = battery_design_capacity(&val);
+	if (!ret)
+		base_battery_static.design_capacity = val;
+	rv |= ret;
+
+	/* Design Voltage */
+	ret = battery_design_voltage(&val);
+	if (!ret)
+		base_battery_static.design_voltage = val;
+	rv |= ret;
+
+	/* Cycle Count */
+	ret = battery_cycle_count(&val);
+	if (!ret)
+		base_battery_static.cycle_count = val;
+	rv |= ret;
+
+	/* Battery Manufacturer string */
+	memset(base_battery_static.manufacturer, 0,
+		sizeof(base_battery_static.manufacturer));
+	rv |= battery_manufacturer_name(base_battery_static.manufacturer,
+				sizeof(base_battery_static.manufacturer));
+
+	/* Battery Model string */
+	memset(base_battery_static.model, 0, sizeof(base_battery_static.model));
+	rv |= battery_device_name(base_battery_static.model,
+				sizeof(base_battery_static.model));
+
+	/* Battery Type string */
+	memset(base_battery_static.type, 0, sizeof(base_battery_static.type));
+	rv |= battery_device_chemistry(base_battery_static.type,
+				sizeof(base_battery_static.type));
+
+	/* Zero the dynamic entries. They'll come next. */
+	base_battery_dynamic.voltage = 0;
+	base_battery_dynamic.current = 0;
+	base_battery_dynamic.remaining_capacity = 0;
+	base_battery_dynamic.full_capacity = 0;
+	base_battery_dynamic.status = 0;
+	base_battery_dynamic.flags = 0;
+	base_battery_dynamic.desired_voltage = 0;
+	base_battery_dynamic.desired_current = 0;
+
+	if (rv)
+		problem(PR_STATIC_UPDATE, rv);
+	else
+		; /* FIXME: Set a flag telling that the information is valid. */
+
+	return rv;
 }
 
-static void update_dynamic_battery_info(void) {}
+static void update_dynamic_battery_info(void)
+{
+	uint8_t tmp;
+	static int __bss_slow batt_present;
+
+	tmp = 0;
+	if (curr.ac)
+		tmp |= EC_BATT_FLAG_AC_PRESENT;
+
+	if (curr.batt.is_present == BP_YES) {
+		tmp |= EC_BATT_FLAG_BATT_PRESENT;
+		batt_present = 1;
+	} else {
+		/*
+		 * Require two consecutive updates with BP_NOT_SURE
+		 * before reporting it gone to the host.
+		 */
+		if (batt_present)
+			tmp |= EC_BATT_FLAG_BATT_PRESENT;
+		batt_present = 0;
+	}
+
+	if (!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE))
+		base_battery_dynamic.voltage = curr.batt.voltage;
+
+	if (!(curr.batt.flags & BATT_FLAG_BAD_CURRENT))
+		base_battery_dynamic.current = curr.batt.current;
+
+	if (!(curr.batt.flags & BATT_FLAG_BAD_DESIRED_VOLTAGE))
+		base_battery_dynamic.desired_voltage = curr.batt.desired_voltage;
+
+	if (!(curr.batt.flags & BATT_FLAG_BAD_DESIRED_CURRENT))
+		base_battery_dynamic.desired_current = curr.batt.desired_current;
+
+	if (!(curr.batt.flags & BATT_FLAG_BAD_REMAINING_CAPACITY)) {
+		/*
+		 * If we're running off the battery, it must have some charge.
+		 * Don't report zero charge, as that has special meaning
+		 * to Chrome OS powerd.
+		 */
+		if (curr.batt.remaining_capacity == 0 && !curr.batt_is_charging)
+			base_battery_dynamic.remaining_capacity = 1;
+		else
+			base_battery_dynamic.remaining_capacity =
+				curr.batt.remaining_capacity;
+	}
+
+	if (!(curr.batt.flags & BATT_FLAG_BAD_FULL_CAPACITY) &&
+		(curr.batt.full_capacity <=
+		   (base_battery_dynamic.full_capacity - LFCC_EVENT_THRESH) ||
+		 curr.batt.full_capacity >=
+		   (base_battery_dynamic.full_capacity + LFCC_EVENT_THRESH))) {
+		base_battery_dynamic.full_capacity = curr.batt.full_capacity;
+	}
+
+	if (curr.batt.is_present == BP_YES &&
+	    !(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
+	    curr.batt.state_of_charge <= BATTERY_LEVEL_CRITICAL)
+		tmp |= EC_BATT_FLAG_LEVEL_CRITICAL;
+
+	tmp |= curr.batt_is_charging ? EC_BATT_FLAG_CHARGING :
+				       EC_BATT_FLAG_DISCHARGING;
+
+	base_battery_dynamic.flags = tmp;
+}
 #endif
 
 static const char * const state_list[] = {
