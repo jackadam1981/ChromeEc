@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaa071bb_0f7b9f82",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T15:04:36Z",
+      "side": 1,
+      "message": "Maybe we should rename this something more generic (like ppc_dump?) and put it behind #CONFIG_CMD_PPC_DUMP (undef by default)? It will be helpful if we ever have different parts in the ppc class.",
+      "range": {
+        "startLine": 85,
+        "startChar": 24,
+        "endLine": 85,
+        "endChar": 36
+      },
+      "revId": "2c65e26cfd33f2312e89c4b35974a3f5907aad59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f20104a2_c9108e37",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T15:04:36Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this function take an index into the config table rather than i2c port / address directly?",
+      "range": {
+        "startLine": 89,
+        "startChar": 26,
+        "endLine": 89,
+        "endChar": 45
+      },
+      "revId": "2c65e26cfd33f2312e89c4b35974a3f5907aad59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa15bca0_0d4f930d",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T15:04:36Z",
+      "side": 1,
+      "message": "This param is confusing, shall we use an enum instead?",
+      "range": {
+        "startLine": 89,
+        "startChar": 46,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "2c65e26cfd33f2312e89c4b35974a3f5907aad59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8392bcd4_12431ec0",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T15:04:36Z",
+      "side": 1,
+      "message": "Need a header guard here.",
+      "revId": "2c65e26cfd33f2312e89c4b35974a3f5907aad59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15f2373d_2e4957e3",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T15:04:36Z",
+      "side": 1,
+      "message": "Maybe it\u0027s best to name this sn5s330_config, and sn5s330_tbl[] sn5s330_chips[], to make the purpose clear?",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "2c65e26cfd33f2312e89c4b35974a3f5907aad59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c287bc7a_e690c27c",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T15:04:36Z",
+      "side": 1,
+      "message": "I don\u0027t know if it\u0027s official policy, but we usually put prototypes at the end of the header, after #defines / structs.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 66
+      },
+      "revId": "2c65e26cfd33f2312e89c4b35974a3f5907aad59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34511cca_9c0260b3",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-18T15:04:36Z",
+      "side": 1,
+      "message": "Do you want to put this behind CONFIG_CMD_##### instead? And maybe it\u0027s best to give the command + CONFIG some generic name (ppc_dump?) so that the same command works with other similar components in the future.",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 17
+      },
+      "revId": "8d2aeec764ef57454d3894bdd2512c0a1185917e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
