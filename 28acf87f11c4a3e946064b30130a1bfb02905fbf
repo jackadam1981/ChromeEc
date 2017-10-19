@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "eef1ab1e_9d9edc92",
+        "filename": "board/snappy/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-19T16:12:52Z",
+      "side": 1,
+      "message": "I think it\u0027s reasonable to produce consistent behavior, also it can apply to other battery blink states below.",
+      "parentUuid": "6bcfab30_c513996f",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 20
+      },
+      "revId": "28acf87f11c4a3e946064b30130a1bfb02905fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f8e658c_76f0f33c",
         "filename": "board/snappy/led.c",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I can\u0027t get your point. Could you explain more?",
       "parentUuid": "1f8e658c_76f0f33c",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 10
+      },
+      "revId": "28acf87f11c4a3e946064b30130a1bfb02905fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "831745e7_a33bfaca",
+        "filename": "board/snappy/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-19T16:12:52Z",
+      "side": 1,
+      "message": "The code you propose to add is a near-duplicate of \u0027case PWR_STATE_IDLE:\u0027 below, maybe you can re-write things to have less code duplication.",
+      "parentUuid": "dfa9769b_3dfcc85c",
       "range": {
         "startLine": 123,
         "startChar": 0,
