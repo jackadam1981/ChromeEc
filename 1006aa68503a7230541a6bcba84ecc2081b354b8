@@ -70,6 +70,24 @@
       "revId": "1006aa68503a7230541a6bcba84ecc2081b354b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84f4e807_78dfcfaf",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-19T02:37:45Z",
+      "side": 1,
+      "message": "I was just noting the implications with the current implementation in this patch. Since we didn\u0027t add a proper host command it\u0027s just the #define and/or the lpc_override_always_report_mask().",
+      "parentUuid": "74691a1b_ad5d369e",
+      "revId": "1006aa68503a7230541a6bcba84ecc2081b354b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
