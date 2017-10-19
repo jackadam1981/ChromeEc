@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "64090ddf_171f84de",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T08:03:05Z",
+      "side": 1,
+      "message": "I\u0027m not favor of not putting needless #ifdef for prototypes",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 34
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0a927d0_57a8b126",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T08:03:05Z",
+      "side": 1,
+      "message": "no longer needed ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "823fe4a6_9f5ab821",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T08:03:05Z",
+      "side": 1,
+      "message": "given the power_5v_enable() code actually does the gpio_set_level, what about removing the #ifdef here\nand modifying slightly the implementation there to handle both cases.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 6
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfcb6780_5d8e8241",
         "filename": "power/common.c",
         "patchSetId": 2
@@ -33,6 +102,75 @@
       "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f36e58_1af13479",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T08:03:05Z",
+      "side": 1,
+      "message": "might worth commenting at least in the header about the trap for people using deferred functions (ie we are executed in TASK_HOOK) which is somewhat common in the USB charging code.\nOr ask the caller to pass the id.",
+      "range": {
+        "startLine": 794,
+        "startChar": 0,
+        "endLine": 794,
+        "endChar": 36
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38568595_50dcf965",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T08:03:05Z",
+      "side": 1,
+      "message": "we are trading 3 bytes of RAM (actually maybe 0 due to alignment) for additional complexity (and some flash space)\nIMO you can make pwr_5v_en_req a uin32t_t and use directly the task_id as an index.",
+      "range": {
+        "startLine": 797,
+        "startChar": 0,
+        "endLine": 808,
+        "endChar": 41
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9de852f8_e096dfcc",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T08:03:05Z",
+      "side": 1,
+      "message": "nit: we are using kernel-style, IMO\nif (enable) /* Set the bit indicating the request. */\n\tpwr_5v_en_req |\u003d 1 \u003c\u003c idx;\nelse /* Clear the task\u0027s request bit. */\n\tpwr_5v_en_req \u0026\u003d ~(1 \u003c\u003c idx);",
+      "range": {
+        "startLine": 812,
+        "startChar": 0,
+        "endLine": 818,
+        "endChar": 2
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
