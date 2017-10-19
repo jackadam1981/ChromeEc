@@ -29,6 +29,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
+#include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "math_util.h"
 #include "motion_lid.h"
@@ -111,204 +112,6 @@ void usb1_evt(enum gpio_signal signal)
 	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
 }
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER_FALSE
-static void anx74xx_cable_det_handler(void)
-{
-	int cable_det = gpio_get_level(GPIO_USB_C0_CABLE_DET);
-	int reset_n = gpio_get_level(GPIO_USB_C0_PD_RST_L);
-
-	/*
-	 * A cable_det low->high transition was detected. If following the
-	 * debounce time, cable_det is high, and reset_n is low, then ANX3429 is
-	 * currently in standby mode and needs to be woken up. Set the
-	 * TCPC_RESET event which will bring the ANX3429 out of standby
-	 * mode. Setting this event is gated on reset_n being low because the
-	 * ANX3429 will always set cable_det when transitioning to normal mode
-	 * and if in normal mode, then there is no need to trigger a tcpc reset.
-	 */
-	if (cable_det && !reset_n)
-		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET, 0);
-}
-DECLARE_DEFERRED(anx74xx_cable_det_handler);
-
-void anx74xx_cable_det_interrupt(enum gpio_signal signal)
-{
-	/* debounce for 2 msec */
-	hook_call_deferred(&anx74xx_cable_det_handler_data, (2 * MSEC));
-}
-#endif
-
-/*
- * Base detection and debouncing
- *
- * TODO(b/35585396): Fine-tune these values.
- */
-#define BASE_DETECT_DEBOUNCE_US (20 * MSEC)
-
-/*
- * rev0: Lid has 100K pull-up, base has 5.1K pull-down, so the ADC
- * value should be around 5.1/(100+5.1)*3300 = 160.
- * >=rev1: Lid has 604K pull-up, base has 30.1K pull-down, so the
- * ADC value should be around 30.1/(604+30.1)*3300 = 156
- *
- * We add a significant marging on the maximum value, due to noise on the line,
- * especially when PWM is active. See b/64193554 for details.
- */
-#define BASE_DETECT_MIN_MV 120
-#define BASE_DETECT_MAX_MV 300
-
-/*
- * When the base is connected in reverse, it presents a 100K pull-down,
- * so the ADC value should be around 100/(604+100)*3300 = 469
- *
- * TODO(b:64370797): Do something with these values.
- */
-#define BASE_DETECT_REVERSE_MIN_MV 450
-#define BASE_DETECT_REVERSE_MAX_MV 500
-
-/*
- * Base EC pulses detection pin for 500 us to signal out of band USB wake (that
- * can be used to wake system from deep S3).
- */
-#define BASE_DETECT_PULSE_MIN_US 400
-#define BASE_DETECT_PULSE_MAX_US 650
-
-static uint64_t base_detect_debounce_time;
-
-static void base_detect_deferred(void);
-DECLARE_DEFERRED(base_detect_deferred);
-
-enum base_status {
-	BASE_UNKNOWN = 0,
-	BASE_DISCONNECTED = 1,
-	BASE_CONNECTED = 2,
-};
-
-static enum base_status current_base_status;
-
-/*
- * This function is called whenever there is a change in the base detect
- * status. Actions taken include:
- * 1. Change in power to base
- * 2. Indicate mode change to host.
- * 3. Indicate tablet mode to host. Current assumption is that if base is
- * disconnected then the system is in tablet mode, else if the base is
- * connected, then the system is not in tablet mode.
- */
-static void base_detect_change(enum base_status status)
-{
-	int connected = (status == BASE_CONNECTED);
-
-	if (current_base_status == status)
-		return;
-
-	CPRINTS("Base %sconnected", connected ? "" : "not ");
-	gpio_set_level(GPIO_PP3300_DX_BASE, connected);
-	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
-	tablet_set_mode(!connected);
-	current_base_status = status;
-}
-
-/* Measure detection pin pulse duration (used to wake AP from deep S3). */
-static uint64_t pulse_start;
-static uint32_t pulse_width;
-
-static int command_attach_base(int argc, char **argv)
-{
-	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
-	tablet_set_mode(0);
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(attachbase, command_attach_base,
-		NULL, "Simulate attach base");
-
-static int command_detach_base(int argc, char **argv)
-{
-	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
-	tablet_set_mode(1);
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(detachbase, command_detach_base,
-		NULL, "Simulate detach base");
-
-
-static void base_detect_deferred(void)
-{
-	uint64_t time_now = get_time().val;
-	int v;
-	uint32_t tmp_pulse_width = pulse_width;
-
-	if (base_detect_debounce_time > time_now) {
-		hook_call_deferred(&base_detect_deferred_data,
-				   base_detect_debounce_time - time_now);
-		return;
-	}
-
-	v = adc_read_channel(ADC_BASE_DET);
-	if (v == ADC_READ_ERROR)
-		return;
-	CPRINTS("%s = %d (pulse %d)", adc_channels[ADC_BASE_DET].name,
-		v, tmp_pulse_width);
-
-	if (v >= BASE_DETECT_MIN_MV && v <= BASE_DETECT_MAX_MV) {
-		if (current_base_status != BASE_CONNECTED) {
-			base_detect_change(BASE_CONNECTED);
-		} else if (tmp_pulse_width >= BASE_DETECT_PULSE_MIN_US &&
-			   tmp_pulse_width <= BASE_DETECT_PULSE_MAX_US) {
-			CPRINTS("Sending event to AP");
-			host_set_single_event(EC_HOST_EVENT_KEY_PRESSED);
-		}
-	} else {
-		/*
-		 * TODO(b/35585396): Figure out what to do with
-		 * other ADC values that do not clearly indicate base
-		 * presence or absence.
-		 */
-		base_detect_change(BASE_DISCONNECTED);
-	}
-}
-
-static inline int detect_pin_connected(enum gpio_signal det_pin)
-{
-	return gpio_get_level(det_pin) == 0;
-}
-
-void base_detect_interrupt(enum gpio_signal signal)
-{
-	uint64_t time_now = get_time().val;
-
-	if (base_detect_debounce_time <= time_now) {
-		/*
-		 * Detect and measure detection pin pulse, when base is
-		 * connected. Only a single pulse is measured over a debounce
-		 * period. If no pulse, or multiple pulses are detected,
-		 * pulse_width is set to 0.
-		 */
-		if (current_base_status == BASE_CONNECTED &&
-		    !detect_pin_connected(signal)) {
-			pulse_start = time_now;
-		} else {
-			pulse_start = 0;
-		}
-		pulse_width = 0;
-
-		hook_call_deferred(&base_detect_deferred_data,
-				   BASE_DETECT_DEBOUNCE_US);
-	} else {
-		if (current_base_status == BASE_CONNECTED &&
-		    detect_pin_connected(signal) && !pulse_width &&
-		    pulse_start) {
-			/* First pulse within period. */
-			pulse_width = time_now - pulse_start;
-		} else {
-			pulse_start = 0;
-			pulse_width = 0;
-		}
-	}
-
-	base_detect_debounce_time = time_now + BASE_DETECT_DEBOUNCE_US;
-}
-
 #include "gpio_list.h"
 
 /* power signal list.  Must match order of enum power_signal. */
@@ -354,8 +157,8 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
-	{"tcpc",      NPCX_I2C_PORT0_0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
-	{"als",       NPCX_I2C_PORT0_1, 400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
+	{"tcpc0",     NPCX_I2C_PORT0_0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
+	{"tcpc1",     NPCX_I2C_PORT0_1, 400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
 	{"charger",   NPCX_I2C_PORT1,   100, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
 	{"pmic",      NPCX_I2C_PORT2,   400, GPIO_I2C2_SCL,   GPIO_I2C2_SDA},
 	{"accelgyro", NPCX_I2C_PORT3,   400, GPIO_I2C3_SCL,   GPIO_I2C3_SDA},
@@ -827,31 +630,20 @@ int board_get_version(void)
 	return ver;
 }
 
+static void tablet_mode_changed(void)
+{
+        host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+}
+DECLARE_HOOK(HOOK_TABLET_MODE_CHANGE, tablet_mode_changed, HOOK_PRIO_DEFAULT);
+
 #ifdef CONFIG_LID_ANGLE_UPDATE
-/*
-static int has_trackpad_disable = -1;
-*/
 
 void lid_angle_peripheral_enable(int enable)
 {
-#if 0
         int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
-
-        /*
-         * Support old hardware where GPIO 127 is directly connected
-         * to the trackpad interrupt.
-         * Can be removed once board version 0 and 1 are retired.
-         */
-        if (has_trackpad_disable < 0) {
-                has_trackpad_disable = board_get_version() >= 2;
-                if (!has_trackpad_disable)
-                        gpio_set_flags(GPIO_TRACKPAD_INT_DISABLE, GPIO_INPUT);
-        }
 
         if (enable) {
                 keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
-                if (has_trackpad_disable)
-                        gpio_set_level(GPIO_TRACKPAD_INT_DISABLE, 0);
         } else {
                 /*
                  * Ensure chipset is off before disabling keyboard. When chipset
@@ -865,11 +657,8 @@ void lid_angle_peripheral_enable(int enable)
                  */
                 if (!chipset_in_s0) {
                         keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
-                        if (has_trackpad_disable)
-                                gpio_set_level(GPIO_TRACKPAD_INT_DISABLE, 1);
                 }
         }
-#endif
 }
 #endif
 
