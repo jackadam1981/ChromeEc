@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4009acd_e537a994",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-19T19:01:39Z",
+      "side": 1,
+      "message": "Should these be separate options?\n\nCONFIG_EC_COMM_MASTER\nCONFIG_EC_COMM_SLAVE\nCONFIG_EC_COMM_BATTERY\n\nOr do you envision a device will be master for some commands and slave for others?\n\nYou can always derive these (and CONFIG_EC_COMM itself) elsewhere, perhaps in ec_comm.h:\n\n#if defined(CONFIG_EC_COMM_MASTER) || defined(CONFIG_EC_COMM_SLAVE)\n#define CONFIG_EC_COMM\n#endif\n\n#if defined(CONFIG_EC_COMM_SLAVE) \u0026\u0026 defined(CONFIG_EC_COMM_BATTERY)\n#define CONFIG_EC_COMM_BATTERY_SLAVE\n#endif\n\nThat is, think about what we\u0027d do for master/slave support for keyboard backlight, for example.",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 881,
+        "endChar": 3
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d088b71_cdbd2f13",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-19T19:01:39Z",
+      "side": 1,
+      "message": "Is order of bits in a bitfield guaranteed across processor architectures?  Both sides may not be Cortex-M.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29bd6eb4_1aad2ae3",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-19T19:01:39Z",
+      "side": 1,
+      "message": "Units?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de227889_07acffff",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-19T19:01:39Z",
+      "side": 1,
+      "message": "See pack/align macros in ec_commands.h.\n\nUsing __packed generates inefficient code for accessing aligned uint16 and uint32 members.",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71100fd1_bf4ade8d",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-19T19:01:39Z",
+      "side": 1,
+      "message": "What are the possible values/flags?  Ok to reference battery.h or ec_commands.h if you don\u0027t want to duplicate them.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d3b4c4e_af68cd9d",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-19T19:01:39Z",
+      "side": 1,
+      "message": "Same comment on bitfields as above.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6701c3fc_3a7172a6",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-19T19:01:39Z",
+      "side": 1,
+      "message": "Everything is guaranteed uint32_t-aligned, so __packed will *really* hurt performance here.\n\nUse __packed __aligned(4) instead (or __ec_align4, as defined by ec_commands.h)",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 10
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
