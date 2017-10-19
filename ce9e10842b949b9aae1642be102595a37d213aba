@@ -22,6 +22,30 @@
       "revId": "ce9e10842b949b9aae1642be102595a37d213aba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e27df912_925c6fba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-10-19T02:13:38Z",
+      "side": 1,
+      "message": "Maybe it\u0027s just slow. We need to get a working and signed firmware ASAP so I don\u0027t have time to debug the detail.\nLet me link this CL to b:67917615 too.",
+      "parentUuid": "b5d8395c_66161eef",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "ce9e10842b949b9aae1642be102595a37d213aba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
