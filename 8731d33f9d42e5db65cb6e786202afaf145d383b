@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96d08268_899c0c08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-19T22:17:41Z",
+      "side": 1,
+      "message": "I am assuming something similar is seen during detach case as well i.e. ADC value is greater than disconnect minimum and ADC is not polled again?",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "8731d33f9d42e5db65cb6e786202afaf145d383b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
