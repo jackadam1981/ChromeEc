@@ -187,6 +187,30 @@
       "revId": "a47b592d91ce319b3aeae49f8aaf427f15dc3df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d98a1f59_5c5737cb",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T07:31:24Z",
+      "side": 1,
+      "message": "So if the other negotiation/transition on the other port fails (e.g Hard Reset from the other side) which is a not so unlikely event, we are going to timeout here after 500ms, then try to recover from what we have missed (e.g the upstream power supply on CHG has already cut power, so it was cut to our DUT ? which is already gone ?) maybe it\u0027s ok, I\u0027m fully sure what would happen.",
+      "parentUuid": "cd2a2c5a_30725145",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 14
+      },
+      "revId": "a47b592d91ce319b3aeae49f8aaf427f15dc3df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
