@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b6e837d9_1a553303",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2017-10-19T19:42:39Z",
+      "side": 1,
+      "message": "Agreed. It seem confusing.\n\nI did that as I tried to program Hammer\u0027s EC (stm32). I think programming stm32 still uses stm32mon to direct-access to its UART interface, instead of flashrom with the raiden_debug_spi programmer.",
+      "parentUuid": "1f96fe2c_0dccb662",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 3
+      },
+      "revId": "664d66aaa044ce65c1d668d5ddbccb838866b87d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d73731e7_92cffc99",
         "filename": "util/flash_ec",
         "patchSetId": 3
