@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55f50738_3c0e112c",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T07:23:30Z",
+      "side": 1,
+      "message": "or return vSafe5V in case of error  ?\nie\n*selected_pdo \u003d src_caps[MIN(0, ret)];",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 32
+      },
+      "revId": "dabe295825a12eda03df32c28005919393de13b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c6e75f2_69cf28e9",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T07:23:30Z",
+      "side": 1,
+      "message": "or use the new API here and below ?\nie add\npdo \u003d pd_src_caps[port][0];\n\nand remove the \u0027pdo \u003d pd_src_caps[port][pdo_index];\u0027 below ?",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 15
+      },
+      "revId": "dabe295825a12eda03df32c28005919393de13b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df529361_96e372a3",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T07:23:30Z",
+      "side": 1,
+      "message": "new API here ?\nif (pd_find_pdo_index(port, PD_MAX_VOLTAGE_MV, \u0026pdo) \u003c 0)\n   pdo \u003d src_caps[0];\n\nor just \u0027pd_find_pdo_index(port, PD_MAX_VOLTAGE_MV, \u0026pdo);\u0027 if you update pdo_find_pdo_index()",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 16
+      },
+      "revId": "dabe295825a12eda03df32c28005919393de13b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
