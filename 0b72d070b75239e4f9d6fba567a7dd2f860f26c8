@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5d01a744_350a9962",
+        "filename": "include/charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T07:05:28Z",
+      "side": 1,
+      "message": "Yes Android phones transformed \u0027OTG\u0027 into something confusing long time ago.\nNowadays what most people simply refers an \u0027OTG cable\u0027 (micro-B to A-receptacle) is actually the cable which goes against the OTG spec (it should have a micro-A but it wants to fit in your phone lack of micro-AB receptacle)",
+      "parentUuid": "df393e07_17b6a6df",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 22
+      },
+      "revId": "0b72d070b75239e4f9d6fba567a7dd2f860f26c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6d4f3fa_6acf1be5",
         "filename": "include/charger.h",
         "patchSetId": 3
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Actually, if you look at patch set 1, I didn\u0027t use charger_enable_otg_power (I didn\u0027t realize that function actually existed).\n\nInstead, I relied on output_current being \u003e0 to decide whether to enable OTG, maybe that\u0027s a bit cleaner? There are only very few users and providers of the current interface, so we can easily change them, and have the current chargers reject any OTG voltage !\u003d 5000.\n\nWDYT?",
       "parentUuid": "f6d4f3fa_6acf1be5",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 36
+      },
+      "revId": "0b72d070b75239e4f9d6fba567a7dd2f860f26c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6a9062_2f223e9e",
+        "filename": "include/charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-19T07:05:28Z",
+      "side": 1,
+      "message": "Just comment here about the assumptions you just phrased above and let\u0027s say it\u0027s good enough.",
+      "parentUuid": "b0406b9a_3ca85054",
       "range": {
         "startLine": 82,
         "startChar": 0,
