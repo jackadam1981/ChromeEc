@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1d278e7_cdc2b701",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-19T00:29:19Z",
+      "side": 1,
+      "message": "I\u0027m not super thrilled about this name. I\u0027m welcome to suggestions.",
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfcb6780_5d8e8241",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-19T00:29:19Z",
+      "side": 1,
+      "message": "There was nothing here that was Cannonlake specific, so I decided to place it here. I defined it as weak such that other chipsets could override the implementation if they desired.",
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
