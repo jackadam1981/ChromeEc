@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "495b57b1_c771f9c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-19T16:07:11Z",
+      "side": 1,
+      "message": "My bad. I thought I had put this in while updating all the battery CLs. Probably lost it somewhere doing rebase. Thanks for fixing this!",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 38
+      },
+      "revId": "997f31b1f829e7a9d83359a782010f8932587d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2222ef2a_3a77cb27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-19T16:07:11Z",
+      "side": 1,
+      "message": "Can you please check a few more things:\n1. Recovery from battery-cutoff is fine\n2. Device does not get stuck in reboot loop when in critical battery condition",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "997f31b1f829e7a9d83359a782010f8932587d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
