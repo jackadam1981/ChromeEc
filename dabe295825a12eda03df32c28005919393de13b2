@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2bbc8af0_34425e91",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-19T15:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c6e75f2_69cf28e9",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 15
+      },
+      "revId": "dabe295825a12eda03df32c28005919393de13b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df529361_96e372a3",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 2
@@ -83,6 +107,30 @@
       "writtenOn": "2017-10-19T07:23:30Z",
       "side": 1,
       "message": "new API here ?\nif (pd_find_pdo_index(port, PD_MAX_VOLTAGE_MV, \u0026pdo) \u003c 0)\n   pdo \u003d src_caps[0];\n\nor just \u0027pd_find_pdo_index(port, PD_MAX_VOLTAGE_MV, \u0026pdo);\u0027 if you update pdo_find_pdo_index()",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 16
+      },
+      "revId": "dabe295825a12eda03df32c28005919393de13b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a94159c6_bc8b7468",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-19T15:14:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df529361_96e372a3",
       "range": {
         "startLine": 249,
         "startChar": 0,
