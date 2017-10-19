@@ -211,6 +211,30 @@
       "revId": "a47b592d91ce319b3aeae49f8aaf427f15dc3df6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "101af997_2a6800b6",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-19T15:17:39Z",
+      "side": 1,
+      "message": "We can check to make sure CHG is still active as a condition of the while loop, it will help to reduce latency in the case you described.",
+      "parentUuid": "d98a1f59_5c5737cb",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 437,
+        "endChar": 14
+      },
+      "revId": "a47b592d91ce319b3aeae49f8aaf427f15dc3df6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
