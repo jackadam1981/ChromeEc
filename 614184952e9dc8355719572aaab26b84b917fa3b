@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a505aa88_047d0354",
+        "filename": "extra/tigertool/ecusb/stm32uart.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-19T06:17:36Z",
+      "side": 1,
+      "message": "Defaults to False.",
+      "revId": "614184952e9dc8355719572aaab26b84b917fa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "198e97fc_9086bd28",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-19T06:17:36Z",
+      "side": 1,
+      "message": "specified",
+      "range": {
+        "startLine": 38,
+        "startChar": 30,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "614184952e9dc8355719572aaab26b84b917fa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9dfb021_45dbdae5",
+        "filename": "extra/tigertool/ecusb/tiny_servo_common.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-19T06:17:36Z",
+      "side": 1,
+      "message": "Just serialname?",
+      "range": {
+        "startLine": 95,
+        "startChar": 26,
+        "endLine": 95,
+        "endChar": 47
+      },
+      "revId": "614184952e9dc8355719572aaab26b84b917fa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1d54a92_0f48662f",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-19T06:17:36Z",
+      "side": 1,
+      "message": "Why not just drop these 2 lines?",
+      "revId": "614184952e9dc8355719572aaab26b84b917fa3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
