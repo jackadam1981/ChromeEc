@@ -22,6 +22,30 @@
       "revId": "2c8e84a0d15f5a5a9ebed882261128777c07f59b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc352ad_558596cf",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-20T18:15:23Z",
+      "side": 1,
+      "message": "It\u0027s not really documented, but I think CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT implies that charge_manager_source_port() must be called from pd_power_supply_reset() to update Rp on all ports. We might consider moving common parts of CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT pd_power_supply_reset() and related source port control into common code.",
+      "parentUuid": "e000f5a3_0e649048",
+      "range": {
+        "startLine": 370,
+        "startChar": 3,
+        "endLine": 370,
+        "endChar": 52
+      },
+      "revId": "2c8e84a0d15f5a5a9ebed882261128777c07f59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
