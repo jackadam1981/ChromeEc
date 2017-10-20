@@ -8,6 +8,7 @@
 #include "common.h"
 #include "base32.h"
 #include "byteorder.h"
+#include "ccd_config.h"
 #include "chip/g/board_id.h"
 #include "console.h"
 #include "curve25519.h"
@@ -19,6 +20,7 @@
 #include "tpm_registers.h"
 #include "tpm_vendor_cmds.h"
 #include "util.h"
+#include "hooks.h"
 
 #ifdef CONFIG_DCRYPTO
 #include "dcrypto.h"
@@ -225,6 +227,22 @@ static enum vendor_cmd_rc get_challenge(uint8_t *buf, size_t *buf_size)
 	return VENDOR_RC_SUCCESS;
 }
 
+static void enter_rma_mode(void)
+{
+	CPRINTF("%s: resetiing TPM\n", __func__);
+	if (tpm_reset_request(1, 1) != EC_SUCCESS) {
+		CPRINTF("%s: TPM reset attempt failed\n", __func__);
+		return;
+	}
+
+	CPRINTF("%s: opening CCD\n", __func__);
+	ccd_config_init(CCD_STATE_OPENED);
+	CPRINTF("%s: Rebooting\n", __func__);
+	cflush();
+	system_reset(SYSTEM_RESET_HARD);
+}
+DECLARE_DEFERRED(enter_rma_mode);
+
 /*
  * Compare response sent by the operator with the pre-compiled auth code.
  * Return error code or success depending on the comparison results.
@@ -249,6 +267,7 @@ static enum vendor_cmd_rc process_response(uint8_t *buf,
 	if (rv == EC_SUCCESS) {
 		CPRINTF("%s: success!\n", __func__);
 		*response_size = 0;
+		hook_call_deferred(&enter_rma_mode_data, 1 * SECOND);
 		return VENDOR_RC_SUCCESS;
 	}
 
@@ -279,7 +298,6 @@ static enum vendor_cmd_rc rma_challenge_response(enum vendor_cmd_cc code,
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_RMA_CHALLENGE_RESPONSE,
 		       rma_challenge_response);
-
 
 #define RMA_CMD_BUF_SIZE (sizeof(struct tpm_cmd_header) + \
 			  RMA_CHALLENGE_BUF_SIZE)
