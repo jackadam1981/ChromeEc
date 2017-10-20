@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "604775e6_3cf60d3e",
+        "filename": "include/power.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-20T02:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64090ddf_171f84de",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 34
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0a927d0_57a8b126",
         "filename": "power/cannonlake.c",
         "patchSetId": 2
@@ -65,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "92e5c4f3_f4e662af",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-20T02:38:49Z",
+      "side": 1,
+      "message": "Need it now for the call to task_get_current().",
+      "parentUuid": "d0a927d0_57a8b126",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "823fe4a6_9f5ab821",
         "filename": "power/cannonlake.c",
         "patchSetId": 2
@@ -76,6 +124,30 @@
       "writtenOn": "2017-10-19T08:03:05Z",
       "side": 1,
       "message": "given the power_5v_enable() code actually does the gpio_set_level, what about removing the #ifdef here\nand modifying slightly the implementation there to handle both cases.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 6
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48e4ec22_3acb04a3",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-20T02:38:49Z",
+      "side": 1,
+      "message": "The problem that I had was that not every board(e.g. - chell) has the 5V enable GPIO which led to compilation errors since the function is in the common power code.\n\nI guess an alternative could be to define an \"UNIMPLEMENTED(EN_PP5000)\" in the gpio.inc files of the boards that don\u0027t have it?",
+      "parentUuid": "823fe4a6_9f5ab821",
       "range": {
         "startLine": 108,
         "startChar": 0,
@@ -128,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "47ecb746_5343d79f",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-20T02:38:49Z",
+      "side": 1,
+      "message": "Ah, that\u0027s a good point that I missed. I think I\u0027ll have the caller pass in the ID.",
+      "parentUuid": "36f36e58_1af13479",
+      "range": {
+        "startLine": 794,
+        "startChar": 0,
+        "endLine": 794,
+        "endChar": 36
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38568595_50dcf965",
         "filename": "power/common.c",
         "patchSetId": 2
@@ -151,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "0947ece6_59b0770f",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-20T02:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38568595_50dcf965",
+      "range": {
+        "startLine": 797,
+        "startChar": 0,
+        "endLine": 808,
+        "endChar": 41
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9de852f8_e096dfcc",
         "filename": "power/common.c",
         "patchSetId": 2
@@ -162,6 +282,30 @@
       "writtenOn": "2017-10-19T08:03:05Z",
       "side": 1,
       "message": "nit: we are using kernel-style, IMO\nif (enable) /* Set the bit indicating the request. */\n\tpwr_5v_en_req |\u003d 1 \u003c\u003c idx;\nelse /* Clear the task\u0027s request bit. */\n\tpwr_5v_en_req \u0026\u003d ~(1 \u003c\u003c idx);",
+      "range": {
+        "startLine": 812,
+        "startChar": 0,
+        "endLine": 818,
+        "endChar": 2
+      },
+      "revId": "1d81c1e4daf2dfe3a0e3a2341fc4754b85c7a4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "273174cb_0dfbb5e8",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-20T02:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9de852f8_e096dfcc",
       "range": {
         "startLine": 812,
         "startChar": 0,
