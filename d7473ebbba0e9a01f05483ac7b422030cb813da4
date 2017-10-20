@@ -16,6 +16,24 @@
       "revId": "d7473ebbba0e9a01f05483ac7b422030cb813da4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57470b2b_77522e5e",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-10-20T08:04:29Z",
+      "side": 1,
+      "message": "Hi Nicolas:\nPlease refer the following table for uart pad settings.\n\n       |       UART Module 1     |     UART Module 2       |\n-------+-------------------------+-------------------------+\nnpcx5  | UART_SL1 -\u003e 1 (DEVALTA) | UART_SL1 -\u003e 0 (DEVALTA) |\n       | UART_SL2 -\u003e 0 (DEVALTC) | UART_SL2 -\u003e 1 (DEVALTC) |\n-------+-------------------------+-------------------------+\nnpcx7  | UART_SL1 -\u003e 1 (DEVALTA) | UART_SL1 -\u003e 0 (DEVALTA) |\n       | UART_SL2 -\u003e 0 (DEVALTC) | UART_SL2 -\u003e 1 (DEVALTC) |\n       |NO_KSO09_SL-\u003e 0 (DEVALT9)|                         |\n\nI think the key is NPCX_UART_2_DEVALT_SL should be DEVALTC_UART_SL2 no matter chip is npcx5 or npcx7. In order to support wakeup through RX signals, setting NO_KSO09_SL to zero is necessary on npcx7. Move it to uart_init() might be a good way. We\u0027ll test this patch on our evb to prove it.",
+      "parentUuid": "345b4075_5932d72a",
+      "revId": "d7473ebbba0e9a01f05483ac7b422030cb813da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
