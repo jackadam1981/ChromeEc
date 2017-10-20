@@ -641,6 +641,7 @@ enum battery_present battery_is_present(void)
 	     battery_check_disconnect() != BATTERY_NOT_DISCONNECTED ||
 	     battery_init() == 0)) {
 		battery_report_present = 0;
+		battery_report_present_timer_started = 0;
 	}  else if (batt_pres == BP_YES && batt_pres_prev == BP_NO &&
 		   !battery_report_present_timer_started) {
 		/*
