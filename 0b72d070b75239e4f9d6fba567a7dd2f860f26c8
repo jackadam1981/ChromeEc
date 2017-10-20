@@ -188,6 +188,30 @@
       "revId": "0b72d070b75239e4f9d6fba567a7dd2f860f26c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a42bf125_30f8d614",
+        "filename": "include/charger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-20T06:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad6a9062_2f223e9e",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 36
+      },
+      "revId": "0b72d070b75239e4f9d6fba567a7dd2f860f26c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
