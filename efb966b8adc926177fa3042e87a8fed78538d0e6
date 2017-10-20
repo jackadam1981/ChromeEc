@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8247f49c_96b81119",
+        "filename": "common/fmap.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-20T00:13:33Z",
+      "side": 1,
+      "message": "Unrelated to this change, but why is RW firmware in FMAP_AREA_RO?",
+      "range": {
+        "startLine": 192,
+        "startChar": 36,
+        "endLine": 192,
+        "endChar": 48
+      },
+      "revId": "efb966b8adc926177fa3042e87a8fed78538d0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6842c086_db503e7c",
+        "filename": "common/vpd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-20T00:13:33Z",
+      "side": 1,
+      "message": "Must be in its own erase block.  Otherwise, since some bits are already 0, it won\u0027t be possible to overwrite the block.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 29
+      },
+      "revId": "efb966b8adc926177fa3042e87a8fed78538d0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "908a131a_a8cdcc9c",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2862,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-20T00:13:33Z",
+      "side": 1,
+      "message": "More words",
+      "range": {
+        "startLine": 2862,
+        "startChar": 3,
+        "endLine": 2862,
+        "endChar": 6
+      },
+      "revId": "efb966b8adc926177fa3042e87a8fed78538d0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd80d38b_8890c701",
+        "filename": "include/vpd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-20T00:13:33Z",
+      "side": 1,
+      "message": "What is the current version?  Is 32 bits overkill for this?",
+      "range": {
+        "startLine": 4,
+        "startChar": 4,
+        "endLine": 4,
+        "endChar": 22
+      },
+      "revId": "efb966b8adc926177fa3042e87a8fed78538d0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ded08c2_5c251316",
+        "filename": "include/vpd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-20T00:13:33Z",
+      "side": 1,
+      "message": "I thought we didn\u0027t care about storing OEM name in the EC.  Only storing things the EC needs to know about?",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 13
+      },
+      "revId": "efb966b8adc926177fa3042e87a8fed78538d0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bd20eae_603ecbd4",
+        "filename": "include/vpd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-20T00:13:33Z",
+      "side": 1,
+      "message": "CRC-8?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "efb966b8adc926177fa3042e87a8fed78538d0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
