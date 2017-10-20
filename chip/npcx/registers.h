@@ -1792,56 +1792,57 @@ enum {
 				| MASK(A_SIZE))
 
 /******************************************************************************/
-/* Inline functions */
+/* UART registers and functions */
+
+#if NPCX_UART_MODULE2
+/* To be used as 2nd parameter to NPCX_WK*() macro, port is always 1. */
+#define NPCX_UART_WK_PORT_N 6
+#define NPCX_UART_WK_BIT 4
+#define NPCX_UART_MIWU_IRQ NPCX_IRQ_WKINTG_1
+#define NPCX_UART_DEVALT NPCX_DEVALT(0x0C)
+#define NPCX_UART_DEVALT_SL NPCX_DEVALTC_UART_SL2
+#define NPCX_UART_ALT_DEVALT NPCX_DEVALT(0x0A)
+#define NPCX_UART_ALT_DEVALT_SL NPCX_DEVALTA_UART_SL1
+#else
+#define NPCX_UART_WK_PORT_N 1
+#define NPCX_UART_WK_BIT 0
+#define NPCX_UART_MIWU_IRQ NPCX_IRQ_WKINTB_1
+#define NPCX_UART_DEVALT NPCX_DEVALT(0x0A)
+#define NPCX_UART_DEVALT_SL NPCX_DEVALTA_UART_SL1
+#define NPCX_UART_ALT_DEVALT NPCX_DEVALT(0x0C)
+#define NPCX_UART_ALT_DEVALT_SL NPCX_DEVALTA_UART_SL1
+#endif
+
 /* This routine checks pending bit of GPIO wake-up functionality */
 #if defined(CHIP_FAMILY_NPCX5)
 static inline int uart_is_wakeup_from_gpio(void)
 {
-#if NPCX_UART_MODULE2
-	return IS_BIT_SET(NPCX_WKPND(1, 6), 4);
-#else
-	return IS_BIT_SET(NPCX_WKPND(1, 1), 0);
-#endif
+	return IS_BIT_SET(NPCX_WKPND(1, NPCX_UART_WK_PORT_N), NPCX_UART_WK_BIT);
 }
 
 /* This routine checks wake-up functionality from GPIO is enabled or not */
 static inline int uart_is_enable_wakeup(void)
 {
-#if NPCX_UART_MODULE2
-	return IS_BIT_SET(NPCX_WKEN(1, 6), 4);
-#else
-	return IS_BIT_SET(NPCX_WKEN(1, 1), 0);
-#endif
+	return IS_BIT_SET(NPCX_WKEN(1, NPCX_UART_WK_PORT_N), NPCX_UART_WK_BIT);
 }
 
 /* This routine clears the pending wake-up from GPIO on UART rx pin */
 static inline void uart_clear_pending_wakeup(void)
 {
-#if NPCX_UART_MODULE2
-	SET_BIT(NPCX_WKPCL(1, 6), 4);
-#else
-	SET_BIT(NPCX_WKPCL(1, 1), 0);
-#endif
+	SET_BIT(NPCX_WKPCL(1, NPCX_UART_WK_PORT_N), NPCX_UART_WK_BIT);
 }
 
 /* This routine enables wake-up functionality from GPIO on UART rx pin */
 static inline void uart_enable_wakeup(int enable)
 {
-#if NPCX_UART_MODULE2
-	UPDATE_BIT(NPCX_WKEN(1, 6), 4, enable);
-#else
-	UPDATE_BIT(NPCX_WKEN(1, 1), 0, enable);
-#endif
+	UPDATE_BIT(NPCX_WKEN(1, NPCX_UART_WK_PORT_N), NPCX_UART_WK_BIT,
+		enable);
 }
 
 /* This routine checks functionality is UART rx or not */
 static inline int npcx_is_uart(void)
 {
-#if NPCX_UART_MODULE2
-	return IS_BIT_SET(NPCX_DEVALT(0x0C), NPCX_DEVALTC_UART_SL2);
-#else
-	return IS_BIT_SET(NPCX_DEVALT(0x0A), NPCX_DEVALTA_UART_SL1);
-#endif
+	return IS_BIT_SET(NPCX_UART_DEVALT, NPCX_UART_DEVALT_SL);
 }
 
 #endif
