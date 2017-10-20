@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f6fb4b5_b5f78e84",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-20T19:28:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7292f0ca_8d12a346",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 38
+      },
+      "revId": "ea1b5535bcede8a53f51a97fafaf65c03ca9e33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c685fefd_387b5f16",
         "filename": "board/fizz/board.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I\u0027m not sure what code sits behind AC_CONNECT/DISCONNECT events. If we trigger AC_CONNECT on BJ insert, it implies type-c adapter isn\u0027t counted as an external power.\n\nThe charge manager checks (new_port !\u003d charge_port || new_charge_current !\u003d charge_current || new_supplier !\u003d charge_supplier) to decide whether to send PD_EVENT_POWER_CHANGE or not. So, this case doesn\u0027t seem violating the rule.",
       "parentUuid": "a76bc93c_91462c03",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "ea1b5535bcede8a53f51a97fafaf65c03ca9e33e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90aca8a0_94973ce8",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-20T19:28:46Z",
+      "side": 1,
+      "message": "\u003e you plug the USB-C adapter, i think it is also sent there (not great).\n\nADP_IN triggers only for BJ adapter.",
+      "parentUuid": "32d32ea4_e6503c14",
       "range": {
         "startLine": 85,
         "startChar": 0,
