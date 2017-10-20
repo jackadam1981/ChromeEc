@@ -46,6 +46,30 @@
       "revId": "2c8e84a0d15f5a5a9ebed882261128777c07f59b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ec7b53_79e84a05",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-10-20T20:24:38Z",
+      "side": 1,
+      "message": "Since Rp is restored in pd_power_supply_reset() when CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT is defined, I\u0027ll just compile this line out if CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT is defined.",
+      "parentUuid": "cfc352ad_558596cf",
+      "range": {
+        "startLine": 370,
+        "startChar": 3,
+        "endLine": 370,
+        "endChar": 52
+      },
+      "revId": "2c8e84a0d15f5a5a9ebed882261128777c07f59b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
