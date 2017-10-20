@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fba2fadc_cde06173",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-20T23:57:07Z",
+      "side": 1,
+      "message": "alphabetize",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "0fdcf9ae2b0d96bb96fed5bf2d28e17d374dbd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae92f217_fcd8bb8f",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-20T23:57:07Z",
+      "side": 1,
+      "message": "ccd_reset_config(CCD_RESET_RMA)\n\nYes, that\u0027ll need to be exposed through ccd_config.h.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 35
+      },
+      "revId": "0fdcf9ae2b0d96bb96fed5bf2d28e17d374dbd1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
