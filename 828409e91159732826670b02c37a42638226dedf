@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1108db97_8bb64f8c",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-20T19:55:33Z",
+      "side": 1,
+      "message": "you can use ARRAY_SIZE(fan_table).",
+      "range": {
+        "startLine": 494,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 24
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c356d9a8_f19648e3",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-20T19:55:33Z",
+      "side": 1,
+      "message": "nit: current_level",
+      "range": {
+        "startLine": 515,
+        "startChar": 12,
+        "endLine": 515,
+        "endChar": 24
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37dae697_b81ff900",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-20T19:55:33Z",
+      "side": 1,
+      "message": "nit: need spaces",
+      "range": {
+        "startLine": 533,
+        "startChar": 23,
+        "endLine": 533,
+        "endChar": 24
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a9d9f42_cf3cd89a",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-20T19:55:33Z",
+      "side": 1,
+      "message": "If this is true, you can skip get_temp for TMP432_LOCAL, right?",
+      "range": {
+        "startLine": 196,
+        "startChar": 5,
+        "endLine": 196,
+        "endChar": 38
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f889ce_dcf2b0b0",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-20T19:55:33Z",
+      "side": 1,
+      "message": "Why do you want to print all temps?",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 39
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97b920ef_b42b3317",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-20T19:55:33Z",
+      "side": 1,
+      "message": "Can you also print in C?",
+      "range": {
+        "startLine": 223,
+        "startChar": 15,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
