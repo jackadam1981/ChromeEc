@@ -102,6 +102,21 @@ static enum power_state power_wait_s5_rtc_reset(void)
 
 #ifdef CONFIG_POWER_S0IX
 /*
+ * Flag to notify listeners about HOOK_CHIPSET_SUSPEND the first time SLP_S0# is
+ * asserted after receiving host sleep event HOST_SLEEP_EVENT_S0IX_SUSPEND.
+ */
+static int s0ix_notify_suspend;
+
+#define S0IX_NOTIFY_DELAY  (50 * MSEC)
+
+/*
+ * Flag to notify listeners about HOOK_CHIPSET_RESUME on receiving
+ * HOST_SLEEP_EVENT_S0IX_RESUME if not already triggered by the deferred
+ * callback timeout of 50ms.
+ */
+static int s0ix_notify_resume;
+
+/*
  * In AP S0 -> S3 & S0ix transitions,
  * the chipset_suspend is called.
  *
@@ -151,6 +166,16 @@ static void handle_chipset_reset(void)
 	}
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
+
+void s0ix_notify_resume_cb(void)
+{
+	if (!s0ix_notify_resume)
+		return;
+	s0ix_notify_resume = 0;
+	hook_notify(HOOK_CHIPSET_RESUME);
+}
+DECLARE_DEFERRED(s0ix_notify_resume_cb);
+
 #endif
 
 void chipset_throttle_cpu(int throttle)
@@ -360,10 +385,23 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 
 #ifdef CONFIG_POWER_S0IX
 	case POWER_S0S0ix:
-		/* call hooks before standby */
-		hook_notify(HOOK_CHIPSET_SUSPEND);
+
+		/* Cancel any pending resume notify calls. */
+		hook_call_deferred(&s0ix_notify_resume_cb_data, -1);
+		s0ix_notify_resume = 0;
 
 		s0ix_lpc_enable_wake_mask();
+
+		if (s0ix_notify_suspend) {
+			/* Call hooks before standby. */
+			hook_notify(HOOK_CHIPSET_SUSPEND);
+
+			/*
+			 * Done with calling hooks. No need to call hooks for
+			 * suspend until we receive a host command again.
+			 */
+			s0ix_notify_suspend = 0;
+		}
 
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
@@ -375,10 +413,10 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 
 
 	case POWER_S0ixS0:
+		s0ix_notify_resume = 1;
 		s0ix_lpc_disable_wake_mask();
-
-		/* Call hooks now that rails are up */
-		hook_notify(HOOK_CHIPSET_RESUME);
+		hook_call_deferred(&s0ix_notify_resume_cb_data,
+					S0IX_NOTIFY_DELAY);
 
 		/*
 		 * Disable idle task deep sleep. This means that the low
@@ -461,9 +499,12 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 	power_board_handle_host_sleep_event(state);
 
 #ifdef CONFIG_POWER_S0IX
-	if (state == HOST_SLEEP_EVENT_S0IX_SUSPEND)
+	if (state == HOST_SLEEP_EVENT_S0IX_SUSPEND) {
+		s0ix_notify_suspend = 1;
 		power_signal_enable_interrupt(sleep_sig[SYS_SLEEP_S0IX]);
-	else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
+	} else if (state == HOST_SLEEP_EVENT_S0IX_RESUME) {
+		s0ix_notify_resume_cb();
+		s0ix_notify_suspend = 0;
 		/* clear host events */
 		while (lpc_get_next_host_event() != 0)
 			;
