@@ -130,7 +130,6 @@ static void thermal_control(void)
 			cond_set_false(&cond_hot[j]);
 	}
 
-
 	/* What do we do about it? (note hard-coded logic). */
 
 	if (cond_went_true(&cond_hot[EC_TEMP_THRESH_HALT])) {
