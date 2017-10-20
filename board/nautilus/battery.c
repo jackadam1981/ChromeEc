@@ -121,6 +121,7 @@ static int battery_init(void)
  * to a brownout event when the battery isn't able yet to provide power to the
  * system. .
  */
+#if 0
 static int battery_check_disconnect(void)
 {
 	int rv;
@@ -139,6 +140,7 @@ static int battery_check_disconnect(void)
 
 	return BATTERY_NOT_DISCONNECTED;
 }
+#endif
 
 enum battery_present battery_is_present(void)
 {
@@ -161,7 +163,7 @@ enum battery_present battery_is_present(void)
 	 */
 	if (batt_pres == BP_YES && batt_pres_prev != batt_pres &&
 	    (battery_is_cut_off() != BATTERY_CUTOFF_STATE_NORMAL ||
-	     battery_check_disconnect() != BATTERY_NOT_DISCONNECTED ||
+	     /*battery_check_disconnect() != BATTERY_NOT_DISCONNECTED ||*/
 	     battery_init() == 0)) {
 		batt_pres = BP_NO;
 	}
