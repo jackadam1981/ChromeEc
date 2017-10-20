@@ -17,6 +17,7 @@ static int temp_val_local;
 static int temp_val_remote1;
 static int temp_val_remote2;
 static uint8_t is_sensor_shutdown;
+static int fake_temp[TMP432_IDX_COUNT] = {-1, -1, -1};
 
 /**
  * Determine whether the sensor is powered.
@@ -191,10 +192,42 @@ static void temp_sensor_poll(void)
 
 	if (get_temp(TMP432_REMOTE2, &temp_c) == EC_SUCCESS)
 		temp_val_remote2 = C_TO_K(temp_c);
+
+	if (fake_temp[TMP432_IDX_LOCAL] != -1)
+		temp_val_local = C_TO_K(fake_temp[TMP432_IDX_LOCAL]);
+
+	if (fake_temp[TMP432_IDX_REMOTE1] != -1)
+		temp_val_remote1 = C_TO_K(fake_temp[TMP432_IDX_REMOTE1]);
+
+	if (fake_temp[TMP432_IDX_REMOTE2] != -1)
+		temp_val_remote2 = C_TO_K(fake_temp[TMP432_IDX_REMOTE2]);
 }
 DECLARE_HOOK(HOOK_SECOND, temp_sensor_poll, HOOK_PRIO_TEMP_SENSOR);
 
 #ifdef CONFIG_CMD_TEMP_SENSOR
+static int tmp432_set_fake_temp(int index, int degree_c)
+{
+	int i;
+	int degree_k;
+
+	if ((index < 0) || (index >= TMP432_IDX_COUNT))
+		return EC_ERROR_INVAL;
+
+	fake_temp[index] = degree_c;
+
+	for (i = 0; i < TMP432_IDX_COUNT; ++i)
+		ccprintf("\tfake_temp[%d]= %d C\n", i, fake_temp[i]);
+
+	ccprintf("New degree will be updated 1 sec later\n");
+	for (i = 0; i < TMP432_IDX_COUNT; ++i) {
+		if (!tmp432_get_val(i, &degree_k))
+			ccprintf("\tfake_temp[%d]= %d K or %d C\n",
+				i, degree_k, (degree_k - 273));
+	}
+
+	return EC_SUCCESS;
+}
+
 static void print_temps(
 		const char *name,
 		const int tmp432_temp_reg,
@@ -321,6 +354,10 @@ static int command_tmp432(int argc, char **argv)
 	} else if (!strcasecmp(command, "setbyte")) {
 		ccprintf("Setting 0x%02x to 0x%02x\n", offset, data);
 		rv = raw_write8(offset, data);
+	} else if (!strcasecmp(command, "fake")) {
+		ccprintf("Hook temperature\n");
+		rv = tmp432_set_fake_temp(offset, data);
+		print_status();
 	} else
 		return EC_ERROR_PARAM1;
 
@@ -328,7 +365,7 @@ static int command_tmp432(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(tmp432, command_tmp432,
 	"[settemp|setbyte <offset> <value>] or [getbyte <offset>] or"
-	"[power <on|off>]. "
+	"[fake <index> <value>] or [power <on|off>]. "
 	"Temps in Celsius.",
 	"Print tmp432 temp sensor status or set parameters.");
 #endif
