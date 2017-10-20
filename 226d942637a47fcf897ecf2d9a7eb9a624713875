@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c84a3ab7_0f01700b",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-20T17:28:13Z",
+      "side": 1,
+      "message": "By default, the FETs are closed unless the chip comes up in dead battery mode. In that case, the PP2 FET is open.\n\nPerhaps on init, we can try to enforce that behaviour? Close PP1 and PP2 only if we didn\u0027t boot in dead battery mode. On a sysjump, we probably should leave the FETs as previously configured (such that we don\u0027t brown out when jumping to RW).",
+      "parentUuid": "715c6c34_dfa65840",
+      "range": {
+        "startLine": 101,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "226d942637a47fcf897ecf2d9a7eb9a624713875",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a6d0012_bf0f1733",
         "filename": "driver/ppc/sn5s330.h",
         "patchSetId": 5
