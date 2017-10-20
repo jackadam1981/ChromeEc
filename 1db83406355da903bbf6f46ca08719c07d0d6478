@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd85d1b2_b5d70079",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-20T19:45:36Z",
+      "side": 1,
+      "message": "It may be better to call resume hooks from the chipset task to keep things consistent. You can see what was done for reef here:\n\nhttps://chromium-review.googlesource.com/#/c/chromiumos/platform/ec/+/401072/",
+      "range": {
+        "startLine": 481,
+        "startChar": 2,
+        "endLine": 481,
+        "endChar": 35
+      },
+      "revId": "1db83406355da903bbf6f46ca08719c07d0d6478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
