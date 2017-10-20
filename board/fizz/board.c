@@ -117,9 +117,9 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 const struct fan_t fans[] = {
 	[FAN_CH_0] = {
 		.flags = FAN_USE_RPM_MODE,
-		.rpm_min = 1000,
-		.rpm_start = 1000,
-		.rpm_max = 5500,
+		.rpm_min = 2800,
+		.rpm_start = 2800,
+		.rpm_max = 5600,
 		.ch = MFT_CH_0,	/* Use MFT id to control fan */
 		.pgood_gpio = -1,
 		.enable_gpio = GPIO_FAN_PWR_EN,
@@ -240,7 +240,7 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  */
 struct ec_thermal_config thermal_params[] = {
 	/* {Twarn, Thigh, Thalt}, fan_off, fan_max */
-	{{0, 0, 0}, C_TO_K(35), C_TO_K(68)},	/* TMP432_Internal */
+	{{0, 0, 0}, C_TO_K(44), C_TO_K(81)},	/* TMP432_Internal */
 	{{0, 0, 0}, 0, 0},	/* TMP432_Sensor_1 */
 	{{0, 0, 0}, 0, 0},	/* TMP432_Sensor_2 */
 };
@@ -490,3 +490,63 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_FAN] = {4, PWM_CONFIG_OPEN_DRAIN, 25000},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+#define NUM_FAN_LEVELS 8
+struct fan_step {
+	int on;
+	int off;
+	int rpm;
+};
+
+/* Do not make the fan on/off point equal to 0 or 100 */
+const struct fan_step fan_table[NUM_FAN_LEVELS] = {
+	{.off = 2, .rpm = 0},
+	{.on = 16, .off =  2, .rpm = 2800},
+	{.on = 27, .off = 18, .rpm = 3200},
+	{.on = 35, .off = 29, .rpm = 3500},
+	{.on = 43, .off = 37, .rpm = 4200},
+	{.on = 54, .off = 45, .rpm = 4800},
+	{.on = 64, .off = 56, .rpm = 5200},
+	{.on = 97, .off = 83, .rpm = 5600},
+};
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	static int currentLevel;
+	static int previous_pct;
+	int i;
+
+	/*
+	 * Compare the pct and previous pct, we have the three paths :
+	 *  1. decreasing path. (check the off point)
+	 *  2. increasing path. (check the on point)
+	 *  3. invariant path. (return the current RPM)
+	 */
+	if (pct < previous_pct) {
+		for (i = currentLevel; i >= 0; i--) {
+			if (pct <= fan_table[i].off)
+				currentLevel = i - 1;
+			else
+				break;
+		}
+	} else if (pct > previous_pct) {
+		for (i = currentLevel+1; i < NUM_FAN_LEVELS; i++) {
+			if (pct >= fan_table[i].on)
+				currentLevel = i;
+			else
+				break;
+		}
+	}
+
+	if (currentLevel < 0)
+		currentLevel = 0;
+
+	previous_pct = pct;
+
+	if (fan_table[currentLevel].rpm !=
+		fan_get_rpm_target(fans[fan].ch))
+		cprintf(CC_THERMAL, "[%T Setting fan RPM to %d]\n",
+			fan_table[currentLevel].rpm);
+
+	return fan_table[currentLevel].rpm;
+}
