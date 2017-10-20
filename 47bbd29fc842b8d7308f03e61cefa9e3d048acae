@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "306bf4dc_7e09cb6e",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-20T21:19:42Z",
+      "side": 1,
+      "message": "I realize that doing four separate PDO searches isn\u0027t the most efficient way to do this, but it\u0027s not completely awful and it saves adding a new interface function to get the entire PDO table from the charger port.",
+      "range": {
+        "startLine": 167,
+        "startChar": 16,
+        "endLine": 167,
+        "endChar": 33
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
