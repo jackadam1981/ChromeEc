@@ -46,6 +46,30 @@
       "revId": "1db83406355da903bbf6f46ca08719c07d0d6478",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c67bd89_57cfb417",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-20T20:35:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e01c8b22_761f0b60",
+      "range": {
+        "startLine": 481,
+        "startChar": 2,
+        "endLine": 481,
+        "endChar": 35
+      },
+      "revId": "1db83406355da903bbf6f46ca08719c07d0d6478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
