@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "345b4075_5932d72a",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-20T06:49:39Z",
+      "side": 1,
+      "message": "ML: Please check I got this right, current code does strange things on CHIP_FAMILY_NPCX7 (especially in gpio2uart and uart2gpio), possibly updating the wrong registers?",
+      "revId": "d7473ebbba0e9a01f05483ac7b422030cb813da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
