@@ -60,6 +60,11 @@ enum rt946x_ilmtsel {
 	RT946X_ILMTSEL_LOWER_LEVEL, /* lower of above two */
 };
 
+enum rt946x_adc_in_sel {
+	RT946X_ADC_VBUS_DIV5 = 1,
+	RT946X_ADC_VBUS_DIV2,
+};
+
 enum rt946x_irq {
 	RT946X_IRQ_CHGSTATC = 0,
 	RT946X_IRQ_CHGFAULT,
@@ -566,7 +571,27 @@ int charger_discharge_on_ac(int enable)
 
 int charger_get_vbus_voltage(int port)
 {
-	return EC_ERROR_UNIMPLEMENTED;
+	int val;
+	int vbus_mv;
+
+	/* Set VBUS as ADC input */
+	rt946x_update_bits(RT946X_REG_CHGADC, RT946X_MASK_ADC_IN_SEL,
+		RT946X_ADC_VBUS_DIV5 << RT946X_SHIFT_ADC_IN_SEL);
+
+	/* Start ADC conversion */
+	rt946x_set_bit(RT946X_REG_CHGADC, RT946X_MASK_ADC_START);
+
+	/* Wait for the conversion to finish, around 25ms */
+	val = RT946X_MASK_ADC_STAT;
+	while (val & RT946X_MASK_ADC_STAT)
+		rt946x_read8(RT946X_REG_CHGSTAT, &val);
+
+	/* Read the results */
+	rt946x_read8(RT946X_REG_ADCDATAL, &vbus_mv);
+	rt946x_read8(RT946X_REG_ADCDATAH, &val);
+	vbus_mv |= (val << 8);
+
+	return (vbus_mv * 25);
 }
 
 /* Setup sourcing current to prevent overload */
