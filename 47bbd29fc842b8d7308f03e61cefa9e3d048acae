@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "5cf82d4b_342ce1ae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-22T14:01:49Z",
+      "side": 1,
+      "message": "typo? I think you meant \u0027discrete\u0027",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca2bf3d_acaf1b11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-22T14:01:49Z",
+      "side": 1,
+      "message": "servo?",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22411d23_ec7895ff",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-22T14:01:49Z",
+      "side": 1,
+      "message": "for the new USB PD power rules, should be 15000 rather than 12000.\nif you feel we still have too many 12V Zinger and devices without 20V support, we can definitely put both.",
+      "range": {
+        "startLine": 42,
+        "startChar": 59,
+        "endLine": 42,
+        "endChar": 64
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "047d80a0_0cae6656",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-22T14:01:49Z",
+      "side": 1,
+      "message": "discrete ?",
+      "range": {
+        "startLine": 156,
+        "startChar": 42,
+        "endLine": 156,
+        "endChar": 50
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "306bf4dc_7e09cb6e",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 2
@@ -22,6 +114,53 @@
       "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2548a0fa_a2169cf7",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-22T14:01:49Z",
+      "side": 1,
+      "message": "should be fine.",
+      "parentUuid": "306bf4dc_7e09cb6e",
+      "range": {
+        "startLine": 167,
+        "startChar": 16,
+        "endLine": 167,
+        "endChar": 33
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eec20f3a_1afab467",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-22T14:01:49Z",
+      "side": 1,
+      "message": "you might be transforming battery/variable power supply PDOs into fixed ones (not necessarily accurately).\nMaybe we want to just skip non-fixed one for now ?",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 24
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
