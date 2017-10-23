@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9409f645_87a3c915",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-23T16:36:22Z",
+      "side": 1,
+      "message": "This should be explained better as in why ISH_30 means we need to scale the timer, etc.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 28
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c3131f0_4b44b72b",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-23T16:36:22Z",
+      "side": 1,
+      "message": "These do not need to be initialized to 0. The objects are in the bss section and zero\u0027d out by the runtime.",
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9db7e5d4_a8b5cc6d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-23T16:36:22Z",
+      "side": 1,
+      "message": "remove spaces within the ().",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 6
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f429cc3d_01d055b5",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-23T16:36:22Z",
+      "side": 1,
+      "message": "What is hmc?",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c930a5ed_883822d3",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-23T16:36:22Z",
+      "side": 1,
+      "message": "What does this mean? Overflows to what?",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 59
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c25923b6_5600441f",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-23T16:36:22Z",
+      "side": 1,
+      "message": "comment over 80",
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86c58369_75d5bc3b",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-23T16:36:22Z",
+      "side": 1,
+      "message": "parens not needed",
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7a170d5_631e4371",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-23T16:36:22Z",
+      "side": 1,
+      "message": "same thing as before",
+      "range": {
+        "startLine": 88,
+        "startChar": 6,
+        "endLine": 88,
+        "endChar": 7
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84b5dad0_a13b0033",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-23T16:36:22Z",
+      "side": 1,
+      "message": "indention is off",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
