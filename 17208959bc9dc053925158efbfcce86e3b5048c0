@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "734ff401_84181181",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-23T18:06:53Z",
+      "side": 1,
+      "message": "According to the datasheet, \"ADC Conversion Time each Channel\" is typically 200ms. Have you seen timeouts?",
+      "range": {
+        "startLine": 585,
+        "startChar": 15,
+        "endLine": 585,
+        "endChar": 19
+      },
+      "revId": "17208959bc9dc053925158efbfcce86e3b5048c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
