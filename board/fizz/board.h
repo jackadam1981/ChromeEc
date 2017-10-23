@@ -131,6 +131,9 @@
 /* I2C addresses */
 #define I2C_ADDR_TCPC0		0x16
 
+/* VPD */
+#define CONFIG_VPD
+
 /* Verify and jump to RW image on boot */
 #define CONFIG_VBOOT_EFS
 #define CONFIG_VBOOT_HASH

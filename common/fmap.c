@@ -10,6 +10,7 @@
 #include "rwsig.h"
 #include "util.h"
 #include "version.h"
+#include "vpd.h"
 
 /* FMAP structs. See http://code.google.com/p/flashmap/wiki/FmapSpec */
 #define FMAP_NAMELEN 32
@@ -79,10 +80,18 @@ struct fmap_area_header {
 #define NUM_EC_FMAP_AREAS_RW_B     0
 #endif
 
+#ifdef CONFIG_VPD
+#define NUM_EC_FMAP_AREAS_VPD 1
+extern const struct vpd ro_vpd;
+#else
+#define NUM_EC_FMAP_AREAS_VPD 0
+#endif
+
 #define NUM_EC_FMAP_AREAS (7 + \
 			NUM_EC_FMAP_AREAS_RWSIG + \
 			NUM_EC_FMAP_AREAS_ROLLBACK + \
-			NUM_EC_FMAP_AREAS_RW_B)
+			NUM_EC_FMAP_AREAS_RW_B + \
+			NUM_EC_FMAP_AREAS_VPD)
 
 const struct _ec_fmap {
 	struct fmap_header header;
@@ -145,6 +154,16 @@ const struct _ec_fmap {
 			.area_size = sizeof(ec_fmap),
 			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
 		},
+#ifdef CONFIG_VPD
+		{
+			.area_name = "RO_VPD",
+			.area_offset = CONFIG_EC_PROTECTED_STORAGE_OFF -
+				FMAP_REGION_START + CONFIG_RO_STORAGE_OFF +
+				RELATIVE_RO((uint32_t)&ro_vpd),
+			.area_size = sizeof(ro_vpd),
+			.area_flags = FMAP_AREA_STATIC | FMAP_AREA_RO,
+		},
+#endif
 		{
 			/*
 			 * The range for write protection, for factory

@@ -26,6 +26,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "vpd.h"
 #include "watchdog.h"
 
 /* Console output macros */
@@ -80,6 +81,10 @@ test_mockable __keep int main(void)
 	 */
 	system_pre_init();
 	system_common_pre_init();
+
+#ifdef CONFIG_VPD
+	vpd_init();
+#endif
 
 #if defined(CONFIG_FLASH_PHYSICAL)
 	/*
