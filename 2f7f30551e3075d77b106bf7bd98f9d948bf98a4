@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b401729_904f7ced",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-23T11:58:53Z",
+      "side": 1,
+      "message": "I still disagree with the comment here,\nyou are setting the sensitivity to falling edge (which fully makes sense to wake up an UART but this is not what the comment says).\n\nby the way, how are you ensuring you are not going to deep sleep in \u0027alternate pad\u0027 mode ?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 63
+      },
+      "revId": "2f7f30551e3075d77b106bf7bd98f9d948bf98a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
