@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0e0b0e9_e6fda937",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-23T08:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2081173b_604adbb3",
+      "range": {
+        "startLine": 1813,
+        "startChar": 32,
+        "endLine": 1813,
+        "endChar": 53
+      },
+      "revId": "43ce8811b5c8abea09580a9c43f3478832ec23e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37543e32_3de644e3",
         "filename": "chip/npcx/uart.c",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Hi Vincent:\nIn CL 284036, the uart driver set the WKAEDG bit which belongs to RX pin before selecting to GPIO to make sure ec can wake-up from deep idle if there\u0027s a falling edge on RX pin. The line 65 should be \"SET_BIT(NPCX_WKEDG(1, NPCX_UART_WK_PORT_N), NPCX_UART_WK_BIT);\". Otherwise ec won\u0027t wake-up by the uart received transaction when RX pin is selected to GPIO.",
       "parentUuid": "37543e32_3de644e3",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "43ce8811b5c8abea09580a9c43f3478832ec23e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b407ccd2_ee8e0321",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-23T08:59:25Z",
+      "side": 1,
+      "message": "Ok, I think I understand now, got very confused (and accidentally changed the logic in my previous patch), sorry about that.\n\nI see that the original code did not CLEAR_BIT(NPCX_WKEDG(1, NPCX_UART_WK_PORT_N), NPCX_UART_WK_BIT); in gpio2uart, and only SET_BIT in uart2gpio.\n\nBut then I don\u0027t think we need this line, because clock_uart2gpio calls:\nnpcx_uart2gpio();\nthen\nuart_enable_wakeup(1);\n\nWhich does the exact same thing?",
+      "parentUuid": "33bc5183_11b2f117",
       "range": {
         "startLine": 62,
         "startChar": 4,
