@@ -52,6 +52,24 @@
       "revId": "d7473ebbba0e9a01f05483ac7b422030cb813da4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "895db6ed_e04ad6b3",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-10-23T02:28:10Z",
+      "side": 1,
+      "message": "Hi Nicolas:\nI have verified that, with this patch + ML\u0027s  pad setting, the UART pad switch can work on npcx7 EVB. \nThe change below is required for UART2:\n-#if defined(CHIP_FAMILY_NPCX7)\n-/* UART module 1 belongs to KSO since wake-up functionality in npcx7. */\n-#define NPCX_UART_2_DEVALT NPCX_DEVALT(0x09)\n-#define NPCX_UART_2_DEVALT_SL NPCX_DEVALT9_NO_KSO09_SL\n-#else\n #define NPCX_UART_2_DEVALT NPCX_DEVALT(0x0C)\n #define NPCX_UART_2_DEVALT_SL NPCX_DEVALTC_UART_SL2\n-#endif",
+      "parentUuid": "16cb491c_9928b106",
+      "revId": "d7473ebbba0e9a01f05483ac7b422030cb813da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
