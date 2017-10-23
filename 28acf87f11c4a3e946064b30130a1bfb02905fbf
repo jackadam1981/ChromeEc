@@ -141,6 +141,30 @@
       "revId": "28acf87f11c4a3e946064b30130a1bfb02905fbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ba3fa3a_20c616d6",
+        "filename": "board/snappy/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2017-10-23T01:28:43Z",
+      "side": 1,
+      "message": "The code only active on S3 and not duplicate with case PWR_STATE_IDLE, because of PWR_STATE_IDLE is blinking amber, but the code is blinking white, if we merge above code to below, i must be add S3 condition to other cases except PWR_STATE_CHARGE, right?",
+      "parentUuid": "831745e7_a33bfaca",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 10
+      },
+      "revId": "28acf87f11c4a3e946064b30130a1bfb02905fbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
