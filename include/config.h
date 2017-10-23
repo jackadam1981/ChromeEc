@@ -2879,6 +2879,10 @@
 /* Support computing hash of code for verified boot */
 #undef CONFIG_VBOOT_HASH
 
+/* VPD */
+#undef CONFIG_VPD
+#define CONFIG_RO_VPD_SIZE	256
+
 /* Support for secure temporary storage for verified boot */
 #undef CONFIG_VSTORE
 
