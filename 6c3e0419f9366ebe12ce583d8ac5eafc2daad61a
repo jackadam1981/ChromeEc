@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b19383da_bfed1829",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-23T20:16:11Z",
+      "side": 1,
+      "message": "I think keeping them here is beneficial: one can see who is resetting the EC.",
+      "parentUuid": "7daa4c23_81bcae20",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 39
+      },
+      "revId": "6c3e0419f9366ebe12ce583d8ac5eafc2daad61a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a91e202c_477aac1c",
         "filename": "common/tpm_registers.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-23T20:03:04Z",
       "side": 1,
       "message": "Shouldn\u0027t the EC still be in reset while we are doing this?",
+      "range": {
+        "startLine": 825,
+        "startChar": 0,
+        "endLine": 853,
+        "endChar": 0
+      },
+      "revId": "6c3e0419f9366ebe12ce583d8ac5eafc2daad61a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62b84aa6_9a8c57dc",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-23T20:16:11Z",
+      "side": 1,
+      "message": "it will be - the caller of tpm_reset which requested the wipeout is still waiting for the reset to complete, so the EC is still held in reset.",
+      "parentUuid": "a91e202c_477aac1c",
       "range": {
         "startLine": 825,
         "startChar": 0,
