@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "33bc5183_11b2f117",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-10-23T08:21:09Z",
+      "side": 1,
+      "message": "Hi Vincent:\nIn CL 284036, the uart driver set the WKAEDG bit which belongs to RX pin before selecting to GPIO to make sure ec can wake-up from deep idle if there\u0027s a falling edge on RX pin. The line 65 should be \"SET_BIT(NPCX_WKEDG(1, NPCX_UART_WK_PORT_N), NPCX_UART_WK_BIT);\". Otherwise ec won\u0027t wake-up by the uart received transaction when RX pin is selected to GPIO.",
+      "parentUuid": "37543e32_3de644e3",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "43ce8811b5c8abea09580a9c43f3478832ec23e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcf744c0_2835b90d",
         "filename": "chip/npcx/uart.c",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2017-10-23T07:06:32Z",
       "side": 1,
       "message": "I don\u0027t think that\u0027s what this register write does,\non top of that, does the UART mode really care about the GPIO interrupt mode ?\n\nNuvoton please comment.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 51
+      },
+      "revId": "43ce8811b5c8abea09580a9c43f3478832ec23e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67e24cee_6a233055",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-10-23T08:21:09Z",
+      "side": 1,
+      "message": "On npcx5, uart has no ability to wake-up ec from deep sleep. Before ec entering deep-idle, we switched pin-mux from uart to gpio and make sure ec can wake up by a falling edge on RX pin. I don\u0027t think line 99 is necessary since it belongs to gpio not uart. This function, npcx_gpio2uart(), usually is called after ec wake-up from deep idle.",
+      "parentUuid": "bcf744c0_2835b90d",
       "range": {
         "startLine": 98,
         "startChar": 1,
