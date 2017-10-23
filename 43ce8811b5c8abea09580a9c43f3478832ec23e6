@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "eb0ac7dc_88e1479c",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-10-23T09:09:21Z",
+      "side": 1,
+      "message": "No, they\u0027re not the same thing. In npcx_uart2gpio, the driver sets the wake-up type to falling edge to detect uart rx transaction. In uart_enable_wakeup(1), we enable wake-up mechanism by setting WKEN.",
+      "parentUuid": "b407ccd2_ee8e0321",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "43ce8811b5c8abea09580a9c43f3478832ec23e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcf744c0_2835b90d",
         "filename": "chip/npcx/uart.c",
         "patchSetId": 4
