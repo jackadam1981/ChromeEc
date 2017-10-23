@@ -22,6 +22,52 @@
       "revId": "a921475d13520eaa6b8669a1df98c1623726f2f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6c7e3e7_e67012e1",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-10-23T19:44:41Z",
+      "side": 1,
+      "message": "We should disable sleep while we\u0027re resetting the TPM. If we put the EC in reset it is possible that cr50 will enter deep sleep while we\u0027re waiting the 10 seconds to call rma_reset_failed. At that point we\u0027d lose track of all of this and the EC would be held in reset until cr50 wakes up for some reason.",
+      "range": {
+        "startLine": 282,
+        "startChar": 44,
+        "endLine": 282,
+        "endChar": 55
+      },
+      "revId": "a921475d13520eaa6b8669a1df98c1623726f2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5899a297_f599562e",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-10-23T19:44:41Z",
+      "side": 1,
+      "message": "Why 1 second?",
+      "range": {
+        "startLine": 310,
+        "startChar": 43,
+        "endLine": 310,
+        "endChar": 53
+      },
+      "revId": "a921475d13520eaa6b8669a1df98c1623726f2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
