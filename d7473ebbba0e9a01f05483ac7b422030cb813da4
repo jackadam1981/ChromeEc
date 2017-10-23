@@ -34,6 +34,24 @@
       "revId": "d7473ebbba0e9a01f05483ac7b422030cb813da4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16cb491c_9928b106",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-23T02:06:34Z",
+      "side": 1,
+      "message": "Understood, thanks for the clarification. Still included the NO_KSO09_SL DEVALT line in  npcx_gpio2uart, but potentially that could be changed.",
+      "parentUuid": "57470b2b_77522e5e",
+      "revId": "d7473ebbba0e9a01f05483ac7b422030cb813da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
