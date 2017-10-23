@@ -613,6 +613,29 @@ static int init(const struct motion_sensor_t *s)
 				goto reset_failed;
 			}
 		} while (1);
+
+		/* Verify WHO_AM_I matches expected value */
+		reg = KIONIX_WHO_AM_I(V(s));
+		timeout = 0;
+		do {
+			msleep(1);
+
+			/* Read WHO_AM_I to be sure the device has booted */
+			ret = raw_read8(s->port, s->i2c_spi_addr_flags, reg,
+			    &val);
+			if (ret == EC_SUCCESS && val == KIONIX_WHO_AM_I_VAL(V(s)))
+				break;
+
+			/* Check for timeout. */
+			if (timeout++ > 20) {
+				ret = EC_ERROR_TIMEOUT;
+				break;
+			}
+		} while (1);
+		if (ret != EC_SUCCESS) {
+			goto reset_failed;
+		}
+
 	} else {
 		/* Wait 2 milliseconds for completion of the software reset. */
 		msleep(2);
