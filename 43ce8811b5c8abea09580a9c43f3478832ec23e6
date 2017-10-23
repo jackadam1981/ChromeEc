@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "94fd91d9_96ea0807",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-23T09:11:14Z",
+      "side": 1,
+      "message": "No... NPCX_WKEN !\u003d NPCX_WKEDG... You\u0027re right...",
+      "parentUuid": "b407ccd2_ee8e0321",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "43ce8811b5c8abea09580a9c43f3478832ec23e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcf744c0_2835b90d",
         "filename": "chip/npcx/uart.c",
         "patchSetId": 4
