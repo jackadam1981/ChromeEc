@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e5701eb9_d71ecae4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-23T16:36:48Z",
+      "side": 1,
+      "message": "Yup, \"intentionally unobtrusive\" was not my intended meaning. Done.",
+      "parentUuid": "5cf82d4b_342ce1ae",
+      "range": {
+        "startLine": 9,
+        "startChar": 48,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dca2bf3d_acaf1b11",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-22T14:01:49Z",
       "side": 1,
       "message": "servo?",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "471e24a2_1cb396ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-23T16:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca2bf3d_acaf1b11",
       "range": {
         "startLine": 14,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c7fd1033_61d0e064",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-23T16:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22411d23_ec7895ff",
+      "range": {
+        "startLine": 42,
+        "startChar": 59,
+        "endLine": 42,
+        "endChar": 64
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "047d80a0_0cae6656",
         "filename": "board/servo_v4/usb_pd_policy.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-10-22T14:01:49Z",
       "side": 1,
       "message": "discrete ?",
+      "range": {
+        "startLine": 156,
+        "startChar": 42,
+        "endLine": 156,
+        "endChar": 50
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27692dec_3a7fc272",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-23T16:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "047d80a0_0cae6656",
       "range": {
         "startLine": 156,
         "startChar": 42,
@@ -152,6 +248,30 @@
       "writtenOn": "2017-10-22T14:01:49Z",
       "side": 1,
       "message": "you might be transforming battery/variable power supply PDOs into fixed ones (not necessarily accurately).\nMaybe we want to just skip non-fixed one for now ?",
+      "range": {
+        "startLine": 179,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 24
+      },
+      "revId": "47bbd29fc842b8d7308f03e61cefa9e3d048acae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b8295e6_0036a9f2",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-23T16:36:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eec20f3a_1afab467",
       "range": {
         "startLine": 179,
         "startChar": 5,
