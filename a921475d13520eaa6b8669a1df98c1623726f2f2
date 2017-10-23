@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "87b14e22_1c963925",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-23T21:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71cf5d84_1ab5895d",
+      "range": {
+        "startLine": 255,
+        "startChar": 14,
+        "endLine": 255,
+        "endChar": 23
+      },
+      "revId": "a921475d13520eaa6b8669a1df98c1623726f2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6c7e3e7_e67012e1",
         "filename": "common/rma_auth.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d0f414c6_78d318bd",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-23T21:18:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c7e3e7_e67012e1",
+      "range": {
+        "startLine": 282,
+        "startChar": 44,
+        "endLine": 282,
+        "endChar": 55
+      },
+      "revId": "a921475d13520eaa6b8669a1df98c1623726f2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5899a297_f599562e",
         "filename": "common/rma_auth.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-10-23T19:44:41Z",
       "side": 1,
       "message": "Why 1 second?",
+      "range": {
+        "startLine": 310,
+        "startChar": 43,
+        "endLine": 310,
+        "endChar": 53
+      },
+      "revId": "a921475d13520eaa6b8669a1df98c1623726f2f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "460ea2a7_6d01bcca",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-23T21:18:05Z",
+      "side": 1,
+      "message": "we want TPM transaction which called this function to complete, the host would receive the response, confirm status, etc.",
+      "parentUuid": "5899a297_f599562e",
       "range": {
         "startLine": 310,
         "startChar": 43,
