@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3cbffce_e4f4fc13",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-23T06:04:00Z",
+      "side": 1,
+      "message": "as per my previous comment, this line is really obscure, a small comment about the issue wrt sleep would be nice.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 62
+      },
+      "revId": "5254672147c3dc6babfb8368044088bb766bf9e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
