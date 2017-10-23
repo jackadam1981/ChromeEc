@@ -81,6 +81,12 @@ enum dualrole_capabilities {
 void charge_manager_update_dualrole(int port, enum dualrole_capabilities cap);
 
 /**
+ * Tell charge_manager to leave safe mode and switch to standard port / ILIM
+ * selection logic.
+ */
+void charge_manager_leave_safemode(void);
+
+/**
  * Charge ceiling can be set independently by different tasks / functions,
  * for different purposes.
  */
