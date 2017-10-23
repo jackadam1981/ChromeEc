@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37543e32_3de644e3",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-23T07:06:32Z",
+      "side": 1,
+      "message": "Actually edge vs level seems to be set by the WKMOD register (according to the GPIO code). \nClearing this, seems to switch from falling edge to rising edge (or low level to high level).\nThe phrasing of CL 284036 would let me thing that the bug is triggered by the \u0027both edges\u0027 mode, but this is WKAEDG register which doesn\u0027t match the actual change in the CL.\n\nWould be nice if Nuvoton can clarify this workaround.",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "43ce8811b5c8abea09580a9c43f3478832ec23e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcf744c0_2835b90d",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-23T07:06:32Z",
+      "side": 1,
+      "message": "I don\u0027t think that\u0027s what this register write does,\non top of that, does the UART mode really care about the GPIO interrupt mode ?\n\nNuvoton please comment.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 51
+      },
+      "revId": "43ce8811b5c8abea09580a9c43f3478832ec23e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
