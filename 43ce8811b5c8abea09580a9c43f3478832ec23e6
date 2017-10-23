@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2081173b_604adbb3",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-10-23T08:07:08Z",
+      "side": 1,
+      "message": "It should be:\n#define NPCX_UART_ALT_DEVALT_SL NPCX_DEVALTC_UART_SL2",
+      "range": {
+        "startLine": 1813,
+        "startChar": 32,
+        "endLine": 1813,
+        "endChar": 53
+      },
+      "revId": "43ce8811b5c8abea09580a9c43f3478832ec23e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37543e32_3de644e3",
         "filename": "chip/npcx/uart.c",
         "patchSetId": 4
