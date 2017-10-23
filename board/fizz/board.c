@@ -17,7 +17,7 @@
 #include "charger.h"
 #include "chipset.h"
 #include "console.h"
-#include "driver/pmic_tps650830.h"
+#include "driver/pmic_tps650x30.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -248,10 +248,10 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 /* Initialize PMIC */
 #define I2C_PMIC_READ(reg, data) \
-		i2c_read8(I2C_PORT_PMIC, TPS650830_I2C_ADDR1, (reg), (data))
+		i2c_read8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1, (reg), (data))
 
 #define I2C_PMIC_WRITE(reg, data) \
-		i2c_write8(I2C_PORT_PMIC, TPS650830_I2C_ADDR1, (reg), (data))
+		i2c_write8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1, (reg), (data))
 
 static void board_pmic_init(void)
 {
@@ -265,8 +265,8 @@ static void board_pmic_init(void)
 	/* Read vendor ID */
 	while (1) {
 		int data;
-		err = I2C_PMIC_READ(TPS650830_REG_VENDORID, &data);
-		if (!err && data == TPS650830_VENDOR_ID)
+		err = I2C_PMIC_READ(TPS650X30_REG_VENDORID, &data);
+		if (!err && data == TPS650X30_VENDOR_ID)
 			break;
 		else if (error_count > 5)
 			goto pmic_error;
@@ -278,7 +278,7 @@ static void board_pmic_init(void)
 	 * [6] : CSDECAYEN
 	 * otherbits: default
 	 */
-	err = I2C_PMIC_WRITE(TPS650830_REG_VCCIOCNT, 0x4A);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_VCCIOCNT, 0x4A);
 	if (err)
 		goto pmic_error;
 
@@ -287,7 +287,7 @@ static void board_pmic_init(void)
 	 * [4] : VCCIOLPM clear
 	 * otherbits: default
 	 */
-	err = I2C_PMIC_WRITE(TPS650830_REG_VRMODECTRL, 0x2F);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_VRMODECTRL, 0x2F);
 	if (err)
 		goto pmic_error;
 
@@ -296,7 +296,7 @@ static void board_pmic_init(void)
 	 * [7] : MVCCIOPG clear
 	 * otherbits: default
 	 */
-	err = I2C_PMIC_WRITE(TPS650830_REG_PGMASK1, 0x80);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_PGMASK1, 0x80);
 	if (err)
 		goto pmic_error;
 
@@ -307,7 +307,7 @@ static void board_pmic_init(void)
 	 * [2] : 1b V9 Power Fault Masked
 	 * [0] : 1b V13 Power Fault Masked
 	 */
-	err = I2C_PMIC_WRITE(TPS650830_REG_PWFAULT_MASK1, 0x95);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_PWFAULT_MASK1, 0x95);
 	if (err)
 		goto pmic_error;
 
@@ -318,7 +318,7 @@ static void board_pmic_init(void)
 	 * [3:2] : 01b V18S discharge resistance (V8S), 100 Ohm
 	 * [1:0] : 01b V100S discharge resistance (V11S), 100 Ohm
 	 */
-	err = I2C_PMIC_WRITE(TPS650830_REG_DISCHCNT4, 0x15);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_DISCHCNT4, 0x15);
 	if (err)
 		goto pmic_error;
 
@@ -329,7 +329,7 @@ static void board_pmic_init(void)
 	 * [3:2] : 01b V100A discharge resistance (V11), 100 Ohm
 	 * [1:0] : 01b V085A discharge resistance (V12), 100 Ohm
 	 */
-	err = I2C_PMIC_WRITE(TPS650830_REG_DISCHCNT3, 0x55);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_DISCHCNT3, 0x55);
 	if (err)
 		goto pmic_error;
 
@@ -340,7 +340,7 @@ static void board_pmic_init(void)
 	 * [3:2] : 01b V33PCH discharge resistance (V7), 100 Ohm
 	 * [1:0] : 01b V18A discharge resistance (V8), 100 Ohm
 	 */
-	err = I2C_PMIC_WRITE(TPS650830_REG_DISCHCNT2, 0x55);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_DISCHCNT2, 0x55);
 	if (err)
 		goto pmic_error;
 
@@ -349,7 +349,7 @@ static void board_pmic_init(void)
 	 * [7:2] : 00b Reserved
 	 * [1:0] : 01b VCCIO discharge resistance (V4), 100 Ohm
 	 */
-	err = I2C_PMIC_WRITE(TPS650830_REG_DISCHCNT1, 0x01);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_DISCHCNT1, 0x01);
 	if (err)
 		goto pmic_error;
 
@@ -359,7 +359,7 @@ static void board_pmic_init(void)
 	 *  [5:4] : 10b default
 	 *  [5:4] : 01b 5.1V (0x1a)
 	 */
-	err = I2C_PMIC_WRITE(TPS650830_REG_V5ADS3CNT, 0x1a);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_V5ADS3CNT, 0x1a);
 	if (err)
 		goto pmic_error;
 
@@ -369,7 +369,7 @@ static void board_pmic_init(void)
 	 *   [6] :      0b Power button reset timer logic, no action (default)
 	 * [5:0] : 011111b Force an Emergency reset time, 31s (default)
 	 */
-	err = I2C_PMIC_WRITE(TPS650830_REG_PBCONFIG, 0x9F);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_PBCONFIG, 0x9F);
 	if (err)
 		goto pmic_error;
 
