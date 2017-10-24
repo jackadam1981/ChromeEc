@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "74bce32a_382d4166",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1798,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T06:07:06Z",
+      "side": 1,
+      "message": "Done. NPCX code has a lot of those #if defined (xx), but, yes, #ifdef is more common in EC code in general.",
+      "parentUuid": "f1d24e46_cf70ac21",
+      "range": {
+        "startLine": 1798,
+        "startChar": 0,
+        "endLine": 1798,
+        "endChar": 12
+      },
+      "revId": "4322816334cdbc1a467044b64623500990035238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1379abfa_ebb2af54",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "4322816334cdbc1a467044b64623500990035238",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bcba494_1684b5e7",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1805,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T06:07:06Z",
+      "side": 1,
+      "message": "Done. Also added few blank lines to try to help readability a bit.",
+      "parentUuid": "1379abfa_ebb2af54",
+      "range": {
+        "startLine": 1805,
+        "startChar": 0,
+        "endLine": 1805,
+        "endChar": 6
+      },
+      "revId": "4322816334cdbc1a467044b64623500990035238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
