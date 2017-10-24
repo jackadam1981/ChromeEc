@@ -16,6 +16,24 @@
       "revId": "bd0e55c6d33da909cdb23ddec8f167ac9c76534a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "467f21e1_285fe8cc",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-24T21:40:28Z",
+      "side": 1,
+      "message": "Done. Initially, while adding this I debated with myself about the same thing  -- whether to add a helper function or would it just be an overkill :D.. Added it now.",
+      "parentUuid": "514ab3b9_2e7a75d5",
+      "revId": "bd0e55c6d33da909cdb23ddec8f167ac9c76534a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
