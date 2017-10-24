@@ -168,6 +168,29 @@
     },
     {
       "key": {
+        "uuid": "f203496f_9a50308d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-24T08:40:46Z",
+      "side": 1,
+      "message": "you are actually making your clock drift by doing so\n(after 12 periods, your HMC is 0xfffffffc, your timestamp is jumping from 0xfffffffb to 0x10000000 so you are missing 4 clock beats)\n\nmaybe we don\u0027t care rather having to override the common code.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84b5dad0_a13b0033",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 1
@@ -188,6 +211,29 @@
       "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d775cfb_af197ff4",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-24T08:40:46Z",
+      "side": 1,
+      "message": "so this timer is actually 64-bit ? (why not using it then)\nor this is just a no-op ? (why putting it then)",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 37
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
