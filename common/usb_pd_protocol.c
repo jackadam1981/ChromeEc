@@ -151,6 +151,7 @@ static struct pd_protocol {
 	/* next Vendor Defined Message to send */
 	uint32_t vdo_data[VDO_MAX_SIZE];
 	uint8_t vdo_count;
+	uint8_t vdm_tx_type;
 	/* VDO to retry if UFP responder replied busy. */
 	uint32_t vdo_retry;
 
@@ -1145,7 +1146,7 @@ static void handle_request(int port, uint16_t head,
 }
 
 void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
-		 int count)
+		 int count, enum tcpm_transmit_type type)
 {
 	if (count > VDO_MAX_SIZE - 1) {
 		CPRINTF("VDM over max size\n");
@@ -1155,6 +1156,7 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	/* set VDM header with VID & CMD */
 	pd[port].vdo_data[0] = VDO(vid, ((vid & USB_SID_PD) == USB_SID_PD) ?
 				   1 : (PD_VDO_CMD(cmd) <= CMD_ATTENTION), cmd);
+	pd[port].vdm_tx_type = type;
 	queue_vdm(port, pd[port].vdo_data, data, count);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
@@ -1224,7 +1226,7 @@ static void pd_vdm_send_state_machine(int port)
 		header = PD_HEADER(PD_DATA_VENDOR_DEF, pd[port].power_role,
 				   pd[port].data_role, pd[port].msg_id,
 				   (int)pd[port].vdo_count);
-		res = pd_transmit(port, TCPC_TX_SOP, header,
+		res = pd_transmit(port, pd[port].vdm_tx_type, header,
 				  pd[port].vdo_data);
 		if (res < 0) {
 			pd[port].vdm_state = VDM_STATE_ERR_SEND;
@@ -2123,7 +2125,8 @@ void pd_task(void *u)
 			    (pd[port].flags & PD_FLAGS_CHECK_IDENTITY)) {
 #ifndef CONFIG_USB_PD_SIMPLE_DFP
 				pd_send_vdm(port, USB_SID_PD,
-					    CMD_DISCOVER_IDENT, NULL, 0);
+					    CMD_DISCOVER_IDENT, NULL, 0,
+					    TCPC_TX_SOP);
 #endif
 				pd[port].flags &= ~PD_FLAGS_CHECK_IDENTITY;
 				break;
@@ -2595,7 +2598,8 @@ void pd_task(void *u)
 			if (pd[port].data_role == PD_ROLE_DFP &&
 			     (pd[port].flags & PD_FLAGS_CHECK_IDENTITY)) {
 				pd_send_vdm(port, USB_SID_PD,
-					    CMD_DISCOVER_IDENT, NULL, 0);
+					    CMD_DISCOVER_IDENT, NULL, 0,
+					    TCPC_TX_SOP);
 				pd[port].flags &= ~PD_FLAGS_CHECK_IDENTITY;
 				break;
 			}
@@ -3143,7 +3147,7 @@ static int remote_flashing(int argc, char **argv)
 		flash_offset[port] += argc * 4;
 	}
 
-	pd_send_vdm(port, USB_VID_GOOGLE, cmd, data, cnt);
+	pd_send_vdm(port, USB_VID_GOOGLE, cmd, data, cnt, TCPC_TX_SOP);
 
 	/* Wait until VDM is done */
 	while (pd[port].vdm_state > 0)
@@ -3171,7 +3175,7 @@ void pd_send_hpd(int port, enum hpd_event hpd)
 				0,		      /* power low */
 				0x2);
 	pd_send_vdm(port, USB_SID_DISPLAYPORT,
-		    VDO_OPOS(opos) | CMD_ATTENTION, data, 1);
+		    VDO_OPOS(opos) | CMD_ATTENTION, data, 1, TCPC_TX_SOP);
 	/* Wait until VDM is done. */
 	while (pd[0].vdm_state > 0)
 		task_wait_event(USB_PD_RX_TMOUT_US * (PD_RETRY_COUNT + 1));
@@ -3187,7 +3191,8 @@ int pd_fetch_acc_log_entry(int port)
 		return pd[port].vdm_state == VDM_STATE_BUSY ?
 				EC_RES_BUSY : EC_RES_UNAVAILABLE;
 
-	pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_GET_LOG, NULL, 0);
+	pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_GET_LOG, NULL, 0,
+		    TCPC_TX_SOP);
 	timeout.val = get_time().val + 75*MSEC;
 
 	/* Wait until VDM is done */
@@ -3429,13 +3434,17 @@ static int command_pd(int argc, char **argv)
 			if (*e)
 				return EC_ERROR_PARAM4;
 			pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_PING_ENABLE,
-				    &enable, 1);
+				    &enable, 1, TCPC_TX_SOP);
 		} else if (!strncasecmp(argv[3], "curr", 4)) {
 			pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_CURRENT,
-				    NULL, 0);
+				    NULL, 0, TCPC_TX_SOP);
 		} else if (!strncasecmp(argv[3], "vers", 4)) {
 			pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_VERSION,
-				    NULL, 0);
+				    NULL, 0, TCPC_TX_SOP);
+		} else if (!strncasecmp(argv[3], "ident", 4)) {
+			pd_send_vdm(port, USB_SID_PD, CMD_DISCOVER_IDENT,
+				    NULL, 0, TCPC_TX_SOP_PRIME);
+		}
 		} else {
 			return EC_ERROR_PARAM_COUNT;
 		}
@@ -3610,7 +3619,8 @@ static int hc_remote_flash(struct host_cmd_handler_args *args)
 
 	switch (p->cmd) {
 	case USB_PD_FW_REBOOT:
-		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_REBOOT, NULL, 0);
+		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_REBOOT, NULL, 0,
+			    TCPC_TX_SOP);
 
 		/*
 		 * Return immediately to free pending i2c bus.	Host needs to
@@ -3619,7 +3629,8 @@ static int hc_remote_flash(struct host_cmd_handler_args *args)
 		return EC_RES_SUCCESS;
 
 	case USB_PD_FW_FLASH_ERASE:
-		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_FLASH_ERASE, NULL, 0);
+		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_FLASH_ERASE, NULL, 0,
+			    TCPC_TX_SOP);
 
 		/*
 		 * Return immediately.	Host needs to manage delays here which
@@ -3628,7 +3639,8 @@ static int hc_remote_flash(struct host_cmd_handler_args *args)
 		return EC_RES_SUCCESS;
 
 	case USB_PD_FW_ERASE_SIG:
-		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_ERASE_SIG, NULL, 0);
+		pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_ERASE_SIG, NULL, 0,
+			    TCPC_TX_SOP);
 		timeout.val = get_time().val + 500*MSEC;
 		break;
 
@@ -3640,7 +3652,8 @@ static int hc_remote_flash(struct host_cmd_handler_args *args)
 		size = p->size / 4;
 		for (i = 0; i < size; i += VDO_MAX_SIZE - 1) {
 			pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_FLASH_WRITE,
-				    data + i, MIN(size - i, VDO_MAX_SIZE - 1));
+				    data + i, MIN(size - i, VDO_MAX_SIZE - 1),
+				    TCPC_TX_SOP);
 			timeout.val = get_time().val + 500*MSEC;
 
 			/* Wait until VDM is done */
@@ -3765,7 +3778,8 @@ static int hc_remote_pd_set_amode(struct host_cmd_handler_args *args)
 	case PD_EXIT_MODE:
 		if (pd_dfp_exit_mode(p->port, p->svid, p->opos))
 			pd_send_vdm(p->port, p->svid,
-				    CMD_EXIT_MODE | VDO_OPOS(p->opos), NULL, 0);
+				    CMD_EXIT_MODE | VDO_OPOS(p->opos), NULL, 0,
+				    TCPC_TX_SOP);
 		else {
 			CPRINTF("Failed exit mode\n");
 			return EC_RES_ERROR;
@@ -3774,7 +3788,7 @@ static int hc_remote_pd_set_amode(struct host_cmd_handler_args *args)
 	case PD_ENTER_MODE:
 		if (pd_dfp_enter_mode(p->port, p->svid, p->opos))
 			pd_send_vdm(p->port, p->svid, CMD_ENTER_MODE |
-				    VDO_OPOS(p->opos), NULL, 0);
+				    VDO_OPOS(p->opos), NULL, 0, TCPC_TX_SOP);
 		break;
 	default:
 		return EC_RES_INVALID_PARAM;
