@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1d24e46_cf70ac21",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1798,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-24T05:16:02Z",
+      "side": 1,
+      "message": "nit: #ifdef ?",
+      "range": {
+        "startLine": 1798,
+        "startChar": 0,
+        "endLine": 1798,
+        "endChar": 12
+      },
+      "revId": "4322816334cdbc1a467044b64623500990035238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1379abfa_ebb2af54",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 1805,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-24T05:16:02Z",
+      "side": 1,
+      "message": "nit: IMO adding a comment about the condition on the #else and #endif lines really helps when reading this nested conditions",
+      "range": {
+        "startLine": 1805,
+        "startChar": 0,
+        "endLine": 1805,
+        "endChar": 6
+      },
+      "revId": "4322816334cdbc1a467044b64623500990035238",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
