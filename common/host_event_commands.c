@@ -144,8 +144,13 @@ uint32_t __attribute__((weak)) lpc_override_always_report_mask(void)
 	return LPC_HOST_EVENT_ALWAYS_REPORT_DEFAULT_MASK;
 }
 
-static void lpc_init_mask(void)
+void lpc_init_mask(void)
 {
+	static int init_done;
+
+	if (init_done)
+		return;
+
 	/*
 	 * First check if masks were stashed before sysjump. If no masks were
 	 * stashed or if the EC image performing sysjump does not support always
@@ -154,6 +159,8 @@ static void lpc_init_mask(void)
 	if (!lpc_post_sysjump_restore_mask())
 		lpc_host_event_mask[LPC_HOST_EVENT_ALWAYS_REPORT] =
 			lpc_override_always_report_mask();
+
+	init_done = 1;
 }
 
 /*
