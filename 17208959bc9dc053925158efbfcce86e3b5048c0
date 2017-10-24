@@ -22,6 +22,30 @@
       "revId": "17208959bc9dc053925158efbfcce86e3b5048c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c7f4e86_e1747fb1",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-10-24T01:35:23Z",
+      "side": 1,
+      "message": "According what I times, the conversion only takes ~25ms. But maybe I should wait for up to 200ms.",
+      "parentUuid": "734ff401_84181181",
+      "range": {
+        "startLine": 585,
+        "startChar": 15,
+        "endLine": 585,
+        "endChar": 19
+      },
+      "revId": "17208959bc9dc053925158efbfcce86e3b5048c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
