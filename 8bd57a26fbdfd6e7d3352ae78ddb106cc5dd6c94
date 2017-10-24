@@ -330,6 +330,30 @@
       "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "031ab7b3_5ef3f09e",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-24T19:49:37Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be easier/lower overhead to run it in 64-bit mode with the comparator set to 0xC00000000 ?",
+      "parentUuid": "b0f13571_8d68aa1f",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 37
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
