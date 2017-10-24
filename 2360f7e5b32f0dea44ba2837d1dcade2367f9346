@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e03c6b49_f62f056e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-24T23:56:44Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/684302 sets it back to TCPC_TX_SOP. Why?",
+      "range": {
+        "startLine": 1229,
+        "startChar": 35,
+        "endLine": 1229,
+        "endChar": 46
+      },
+      "revId": "2360f7e5b32f0dea44ba2837d1dcade2367f9346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "471c0e33_a8d8e30f",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-10-24T23:56:44Z",
+      "side": 1,
+      "message": "What do you think about adding \u0027type\u0027?",
+      "range": {
+        "startLine": 1289,
+        "startChar": 19,
+        "endLine": 1289,
+        "endChar": 37
+      },
+      "revId": "2360f7e5b32f0dea44ba2837d1dcade2367f9346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
