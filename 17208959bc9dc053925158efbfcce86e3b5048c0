@@ -46,6 +46,30 @@
       "revId": "17208959bc9dc053925158efbfcce86e3b5048c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba90b1fb_dafd5e2c",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-10-24T11:49:44Z",
+      "side": 1,
+      "message": "A bit of buffer time is even better. I\u0027ll make the timeout 250ms.",
+      "parentUuid": "8c7f4e86_e1747fb1",
+      "range": {
+        "startLine": 585,
+        "startChar": 15,
+        "endLine": 585,
+        "endChar": 19
+      },
+      "revId": "17208959bc9dc053925158efbfcce86e3b5048c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
