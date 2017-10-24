@@ -46,6 +46,30 @@
       "revId": "4694f55105d6fe53c9941c225ca01e2064665eee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bbd94b7_60515f8d",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-24T15:40:44Z",
+      "side": 1,
+      "message": "Sorry, had missed your point earlier. You are right, lpc_init_mask will be called by main.c in case of sysjump as well. So, there is no need to have this hook anymore.",
+      "parentUuid": "db5704c6_a26c5842",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 63
+      },
+      "revId": "4694f55105d6fe53c9941c225ca01e2064665eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
