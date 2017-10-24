@@ -1283,9 +1283,10 @@ void pd_log_recv_vdm(int port, int cnt, uint32_t *payload);
  * @param cmd      VDO command number
  * @param data     Pointer to payload to send
  * @param count    number of data objects in payload
+ * @param type     transmit type
  */
 void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
-		 int count);
+		 int count, enum tcpm_transmit_type type);
 
 /* Power Data Objects for the source and the sink */
 extern const uint32_t pd_src_pdo[];
