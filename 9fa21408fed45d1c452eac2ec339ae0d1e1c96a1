@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98da762a_760851f9",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-24T15:33:59Z",
+      "side": 1,
+      "message": "Multi-line comment style is:\n\n/*\n * Comment...\n * Comment...\n */",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 45
+      },
+      "revId": "9fa21408fed45d1c452eac2ec339ae0d1e1c96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e519ccfe_160e006c",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-24T15:33:59Z",
+      "side": 1,
+      "message": "Maybe you should enable this interrupt only after you have decided not to charge from the barrel jack (in CHARGE_MANAGER_INIT). I think there is some chance this interrupt may be pending, even if you are charging from the barrel jack, and in that case adp_in_deferred() will do undesired things.",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 38
+      },
+      "revId": "9fa21408fed45d1c452eac2ec339ae0d1e1c96a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
