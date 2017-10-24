@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bafc1720_62ba40ba",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T03:00:16Z",
+      "side": 1,
+      "message": "\u003e by the way, how are you ensuring you are not going to deep sleep in \u0027alternate pad\u0027 mode ?\n\nWe don\u0027t, and this is very broken (right now the EC will not go into deep sleep because we call clock_refresh_console_in_use even when we are on the alternate pad).\n\nWill fix in a follow-up CL, thanks.",
+      "parentUuid": "8b401729_904f7ced",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 63
+      },
+      "revId": "2f7f30551e3075d77b106bf7bd98f9d948bf98a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92a78e92_732a52d8",
         "filename": "chip/npcx/uart.c",
         "patchSetId": 7
