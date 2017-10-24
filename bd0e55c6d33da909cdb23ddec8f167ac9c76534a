@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "514ab3b9_2e7a75d5",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-24T18:18:24Z",
+      "side": 1,
+      "message": "Is it worth adding a helper function? Or overkill?\n\nstatic void s0ix_transition(int check_state, int hook_id)\n{\n  if (s0ix_notify !\u003d check_state)\n     return;\n  hook_notify(hook_id);\n  s0ix_notify \u003d S0IX_NOTIFY_NONE;\n}",
+      "revId": "bd0e55c6d33da909cdb23ddec8f167ac9c76534a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
