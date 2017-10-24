@@ -185,7 +185,7 @@ static int write_command(uint16_t cmd,
 
 #ifdef DEBUG_EC_COMM_STATS
 	total++;
-	CPRINTF("uart send ret=%d/%d\n", ret, rxlen);
+	//CPRINTF("uart send ret=%d/%d\n", ret, rxlen);
 #endif
 
 	if (ret != rxlen || ((ret % 4) != 0)) {
@@ -313,8 +313,8 @@ void charge_allocate_input_current_limit(void) {
 	/* FIXME: Smoothing of battery power */
 	int base_battery_power = base_battery_dynamic.current *
 		base_battery_dynamic.voltage;
-	int base_battery_power_max = base_battery_dynamic.desired_current *
-		base_battery_dynamic.desired_voltage;
+	//int base_battery_power_max = base_battery_dynamic.desired_current *
+	//	base_battery_dynamic.desired_voltage;
 
 	 /* FIXME: 5W fixed for now. */
 	int lid_system_power = 5 * 1000 * 1000;
@@ -322,8 +322,8 @@ void charge_allocate_input_current_limit(void) {
 	/* FIXME: Smoothing of battery power */
 	int lid_battery_power = curr.batt.current *
 		curr.batt.voltage;
-	int lid_battery_power_max = curr.batt.desired_current *
-		curr.batt.desired_voltage;
+	//int lid_battery_power_max = curr.batt.desired_current *
+	//	curr.batt.desired_voltage;
 
 	int power_base = 0;
 	int power_lid = 0;
@@ -341,6 +341,7 @@ void charge_allocate_input_current_limit(void) {
 	if (curr.desired_input_current > 0 && curr.input_voltage > 0)
 		total_power = curr.desired_input_current * curr.input_voltage;
 
+	/*
 	CPRINTF("%s:\n", __func__);
 	CPRINTF("total power: %d\n", total_power);
 	CPRINTF("base battery power: %d (%d max)\n",
@@ -349,6 +350,7 @@ void charge_allocate_input_current_limit(void) {
 		lid_battery_power, lid_battery_power_max);
 	CPRINTF("percent base/lid %d%% %d%%\n",
 			percent_base, percent_lid);
+	*/
 
 	if (total_power > 0) { /* Charging */
 		/* Algo 1a.+1b. */
@@ -363,14 +365,14 @@ void charge_allocate_input_current_limit(void) {
 		CHG_ALLOCATE(power_base, total_power, base_battery_power * 3 / 2);
 		/* Algo 4. */
 		CHG_ALLOCATE(power_lid, total_power, total_power);
-		CPRINTF("allocate base power=base %d uW / lid %d uW\n",
-			power_base, power_lid);
+		//CPRINTF("allocate base power=base %d uW / lid %d uW\n",
+		//	power_base, power_lid);
 
 		current_base = power_base / curr.input_voltage;
 		current_lid = power_lid / curr.input_voltage;
 
-		CPRINTF("allocate base current=base %d mA / lid %d mA\n",
-			current_base, current_lid);
+		//CPRINTF("allocate base current=base %d mA / lid %d mA\n",
+		//	current_base, current_lid);
 
 		/* FIXME: Do this in the right order to avoid overcurrent. */
 		/* FIXME: We need to scale down current_base a bit, as there is
@@ -408,8 +410,8 @@ void charge_allocate_input_current_limit(void) {
 		}
 	}
 
-	CPRINTF("====\n");
-	cflush();
+	//CPRINTF("====\n");
+	//cflush();
 }
 #endif /* CONFIG_EC_COMM_BATTERY_MASTER */
 
