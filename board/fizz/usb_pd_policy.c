@@ -22,6 +22,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "vpd.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -219,6 +220,41 @@ int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 	return 0;
 }
 
+static void get_adapter_spec(int *voltage, int *current)
+{
+	const static struct bj_adapter {
+		uint8_t *name;
+		int voltage;
+		int current;
+	} adapters[] = {
+		{ "PPP012C-S", 19500, 4620 },
+		{ "ADP-65HB HCE", 19500, 3330 },
+		{ "PA-1650-30", 19000, 3420 },
+		{ "PA-1900-92", 19000, 4740 },
+	};
+	const uint8_t *value;
+	uint8_t value_len;
+	int i;
+
+	/* Default setting */
+	*voltage = 19000;
+	*current = 3000;
+
+	if (vpd_get(VPD_TYPE_STRING, "adapter", &value, &value_len))
+		/* VPD doesn't have adapter info */
+		return;
+
+	for (i = 0; i < ARRAY_SIZE(adapters); i++) {
+		if (value_len != strlen(adapters[i].name))
+			continue;
+		if (strncmp(adapters[i].name, value, value_len))
+			continue;
+		*voltage = adapters[i].voltage;
+		*current = adapters[i].current;
+		return;
+	}
+}
+
 static void board_charge_manager_init(void)
 {
 	int input_voltage;
@@ -251,11 +287,7 @@ static void board_charge_manager_init(void)
 		typec_set_input_current_limit(input_port, 3000, input_voltage);
 		break;
 	case CHARGE_PORT_BARRELJACK:
-		cpi.voltage = input_voltage;
-		if (gpio_get_level(GPIO_POWER_RATE))
-			cpi.current = 4620;
-		else
-			cpi.current = 3330;
+		get_adapter_spec(&cpi.voltage, &cpi.current);
 		charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED, 1,
 					     &cpi);
 		break;
