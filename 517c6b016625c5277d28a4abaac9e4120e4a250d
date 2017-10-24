@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0973a3e9_df735737",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-24T16:34:57Z",
+      "side": 1,
+      "message": "HCPv4 will use macros to pull out bitfields since those are stable across processors / compilers.  See for example src/platform/vboot_reference/firmware/2lib/include/2nvstorage_fields.h\n\n#define EC_COMM_HEADER_DIRECTION_MASK 0x01\n#define EC_COMM_HEADER_SEQ_MASK 0x06\n#define EC_COMM_HEADER_SEQ_SHIFT 1\n#define EC_COMM_HEADER_VERSION_MASK 0x38\n#define EC_COMM_HEADER_VERSION_SHIFT 3\n/* Reserved, set 0, ignore on read: mask 0xC0 */\n\nand then \n\nstruct ec_comm_header {\n  uint8_t header;  /* Header bitfields - see EC_COMM_HEADER_* /\n}\n\nSo we\u0027ll have to convert at some point.",
+      "parentUuid": "ba6a1d78_cc047289",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94d3e8e3_5e1c5740",
         "filename": "include/ec_comm.h",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-24T08:14:46Z",
       "side": 1,
       "message": "I\u0027m pondering about these. I think the structures could be generated with a macro.",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3d29657_72c327e0",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-24T16:34:57Z",
+      "side": 1,
+      "message": "Almost certainly, with lots of ##.\n\nOr just walk a pointer along the buffer and explicitly typecast.  Which will be necessary if the messages are ever variable-length anyway.",
+      "parentUuid": "94d3e8e3_5e1c5740",
       "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
