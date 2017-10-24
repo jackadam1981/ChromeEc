@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c7f9f94_f13fec55",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-24T07:54:35Z",
+      "side": 1,
+      "message": "you can unconditionally do it, it\u0027s harmless (ie it\u0027s a simple bit, not ref counting)",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 33
+      },
+      "revId": "ffdcbca8949fb7745702be1669723d9a1ce3d07d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
