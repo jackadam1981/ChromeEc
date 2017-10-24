@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2efbc58e_734de18e",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T08:14:46Z",
+      "side": 1,
+      "message": "Board would always be either master or slave.\n\nYour suggestion makes sense (separating master/slave and features).",
+      "parentUuid": "f4009acd_e537a994",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 881,
+        "endChar": 3
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d088b71_cdbd2f13",
         "filename": "include/ec_comm.h",
         "patchSetId": 5
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "c88c09a6_8f2b8e71",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T08:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29bd6eb4_1aad2ae3",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 54
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de227889_07acffff",
         "filename": "include/ec_comm.h",
         "patchSetId": 5
@@ -82,6 +130,30 @@
       "writtenOn": "2017-10-19T19:01:39Z",
       "side": 1,
       "message": "See pack/align macros in ec_commands.h.\n\nUsing __packed generates inefficient code for accessing aligned uint16 and uint32 members.",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 10
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88895332_2e7b4132",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T08:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de227889_07acffff",
       "range": {
         "startLine": 55,
         "startChar": 2,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "76c60fbf_4d6b245d",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T08:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71100fd1_bf4ade8d",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 27
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d3b4c4e_af68cd9d",
         "filename": "include/ec_comm.h",
         "patchSetId": 5
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "b3d6d1e1_07d55f67",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T08:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d3b4c4e_af68cd9d",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 24
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6701c3fc_3a7172a6",
         "filename": "include/ec_comm.h",
         "patchSetId": 5
@@ -151,6 +271,30 @@
       "writtenOn": "2017-10-19T19:01:39Z",
       "side": 1,
       "message": "Everything is guaranteed uint32_t-aligned, so __packed will *really* hurt performance here.\n\nUse __packed __aligned(4) instead (or __ec_align4, as defined by ec_commands.h)",
+      "range": {
+        "startLine": 107,
+        "startChar": 2,
+        "endLine": 107,
+        "endChar": 10
+      },
+      "revId": "a43a578346df143aa3aa12ebea1c42b68326da9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afc11864_7a300f72",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T08:14:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6701c3fc_3a7172a6",
       "range": {
         "startLine": 107,
         "startChar": 2,

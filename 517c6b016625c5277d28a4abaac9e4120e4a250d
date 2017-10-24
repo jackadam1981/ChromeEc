@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba6a1d78_cc047289",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T08:14:46Z",
+      "side": 1,
+      "message": "The structure below is still using bitfields. I\u0027m not quite sure if we want to fix this now, or wait for Host Command Protocol v4.",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94d3e8e3_5e1c5740",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T08:14:46Z",
+      "side": 1,
+      "message": "I\u0027m pondering about these. I think the structures could be generated with a macro.",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69e6e94_651dddc7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4487,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T08:14:46Z",
+      "side": 1,
+      "message": "This is not really needed if we use EC Host command protocol that has the result field in the reply header...",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
