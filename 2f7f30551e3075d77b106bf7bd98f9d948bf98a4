@@ -99,6 +99,24 @@
       "revId": "2f7f30551e3075d77b106bf7bd98f9d948bf98a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "798524df_012f444b",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T05:11:10Z",
+      "side": 1,
+      "message": "Right, and then that opens the way for further simplification. See next revision.",
+      "parentUuid": "66546736_8552d557",
+      "revId": "2f7f30551e3075d77b106bf7bd98f9d948bf98a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
