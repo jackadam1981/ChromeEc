@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "aa7ba36b_833da084",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-10-24T19:25:51Z",
+      "side": 1,
+      "message": "We just name it from initial of \"HPET Main Counter\".",
+      "parentUuid": "f429cc3d_01d055b5",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c930a5ed_883822d3",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 1
@@ -99,6 +123,30 @@
       "writtenOn": "2017-10-23T16:36:22Z",
       "side": 1,
       "message": "What does this mean? Overflows to what?",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 59
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af1c4c26_7b614aab",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-10-24T19:25:51Z",
+      "side": 1,
+      "message": "Since system clock runs 12 times faster(at 12MHz vs 1MHz),\nwhen equivalent 1MHz clocks reaches at 0x1555 5555(every 0x1FFFFFFFF uSec), 12MHz clock reaches at 0xFFFF FFFF. ( 0xFFFFFFFF / 12 \u003d 0x1555 5555).",
+      "parentUuid": "c930a5ed_883822d3",
       "range": {
         "startLine": 83,
         "startChar": 11,
@@ -191,6 +239,30 @@
     },
     {
       "key": {
+        "uuid": "1500554f_92068ca9",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-10-24T19:25:51Z",
+      "side": 1,
+      "message": "Yes there is 4 clock drift after 12 times of 32bit timer overflow. Since those 4 clocks are at 12MHz, 1/3uSec at every 2^32 uSec(\u003d 1.19 hours). I think we can ignore.",
+      "parentUuid": "f203496f_9a50308d",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84b5dad0_a13b0033",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 1
@@ -225,6 +297,30 @@
       "writtenOn": "2017-10-24T08:40:46Z",
       "side": 1,
       "message": "so this timer is actually 64-bit ? (why not using it then)\nor this is just a no-op ? (why putting it then)",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 37
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0f13571_8d68aa1f",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-10-24T19:25:51Z",
+      "side": 1,
+      "message": "Timer 0 supports either 32 bit or 64bit mode.\nSince upper 32bit system time is maintained in common layer, we try to avoid chip specific changes in common layer.",
+      "parentUuid": "0d775cfb_af197ff4",
       "range": {
         "startLine": 136,
         "startChar": 0,
