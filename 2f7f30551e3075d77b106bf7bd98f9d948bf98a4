@@ -22,6 +22,23 @@
       "revId": "2f7f30551e3075d77b106bf7bd98f9d948bf98a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92a78e92_732a52d8",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-24T02:32:35Z",
+      "side": 1,
+      "message": "I think it would make more sense if we setup WKEDG here (for NPCX5 only):\nSET_BIT(NPCX_WKEDG(1, NPCX_UART_WK_PORT_N), NPCX_UART_WK_BIT);\n\nML: Would that work? Or was there a specific reason why we do it in uart2gpio function?",
+      "revId": "2f7f30551e3075d77b106bf7bd98f9d948bf98a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
