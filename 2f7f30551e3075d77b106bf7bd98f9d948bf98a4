@@ -81,6 +81,24 @@
       "revId": "2f7f30551e3075d77b106bf7bd98f9d948bf98a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfe829be_b8175987",
+        "filename": "chip/npcx/uart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-10-24T05:04:55Z",
+      "side": 1,
+      "message": "Indeed, it seems better.",
+      "parentUuid": "66546736_8552d557",
+      "revId": "2f7f30551e3075d77b106bf7bd98f9d948bf98a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
