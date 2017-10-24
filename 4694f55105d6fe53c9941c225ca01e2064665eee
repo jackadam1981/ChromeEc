@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2cf1388_cfeb974e",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-24T15:34:29Z",
+      "side": 1,
+      "message": "This isn\u0027t useful anymore, let\u0027s remove it? And remove the double-call init_done protection?",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 63
+      },
+      "revId": "4694f55105d6fe53c9941c225ca01e2064665eee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
