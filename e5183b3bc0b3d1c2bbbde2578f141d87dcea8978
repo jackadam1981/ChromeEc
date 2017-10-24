@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d46ba3aa_edac7d81",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-24T04:52:46Z",
+      "side": 1,
+      "message": "These prints are duped a lot, do you want to add a macro?",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 26
+      },
+      "revId": "e5183b3bc0b3d1c2bbbde2578f141d87dcea8978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
