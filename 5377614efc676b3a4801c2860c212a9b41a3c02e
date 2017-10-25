@@ -46,6 +46,30 @@
       "revId": "5377614efc676b3a4801c2860c212a9b41a3c02e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb931027_4cd256b5",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-25T20:58:27Z",
+      "side": 1,
+      "message": "Ok, you\u0027re right, we won\u0027t set it up until timer_init(). In practice, does it take \u003c 30ms between gpio_pre_init() and here? Is there any other way we can tell, eg. i2c comms won\u0027t work until we have waited?",
+      "parentUuid": "556f9d47_49a9a96a",
+      "range": {
+        "startLine": 227,
+        "startChar": 25,
+        "endLine": 227,
+        "endChar": 35
+      },
+      "revId": "5377614efc676b3a4801c2860c212a9b41a3c02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
