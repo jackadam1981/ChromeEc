@@ -70,6 +70,30 @@
       "revId": "5377614efc676b3a4801c2860c212a9b41a3c02e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d4a10c1_0f212353",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-25T21:13:43Z",
+      "side": 1,
+      "message": "It certainly doesn\u0027t take that long (~6.5ms from timer_init()) and i2c comms work, but the concern here is waiting for all of the rails to discharge. Willis mentions that we\u0027ll probably have to characterize it to see just how long it takes all the rails to shut down.\n\nI can file a bug and add a TODO here to see if we can shorten up the delay. Otherwise it\u0027s a ~24ms boot penalty.",
+      "parentUuid": "cb931027_4cd256b5",
+      "range": {
+        "startLine": 227,
+        "startChar": 25,
+        "endLine": 227,
+        "endChar": 35
+      },
+      "revId": "5377614efc676b3a4801c2860c212a9b41a3c02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
