@@ -14,11 +14,14 @@
 #include "gpio.h"
 #include "util.h"
 
+#define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+
 static enum battery_present batt_pres_prev = BP_NOT_SURE;
 
 /* Shutdown mode parameter to write to manufacturer access register */
 #define SB_SHIP_MODE_REG	SB_MANUFACTURER_ACCESS
-#define SB_SHUTDOWN_DATA        0x0010
+#define SB_SHUTDOWN_DATA	0x0010
+#define SB_REVIVE_DATA		0x23a7
 
 #ifdef BOARD_SORAKA
 static const struct battery_info info = {
@@ -163,6 +166,17 @@ static int battery_check_disconnect(void)
 enum battery_present battery_is_present(void)
 {
 	enum battery_present batt_pres;
+#ifdef BOARD_SORAKA
+	static int battery_revive_done;
+
+	if (!battery_revive_done &&
+	    battery_check_disconnect() == BATTERY_DISCONNECTED) {
+		CPRINTS("Battery is disconnected! Trying to revive!");
+		sb_write(SB_MANUFACTURER_ACCESS, 0x23a7);
+	}
+
+	battery_revive_done = 1;
+#endif
 
 	/* Get the physical hardware status */
 	batt_pres = battery_hw_present();
