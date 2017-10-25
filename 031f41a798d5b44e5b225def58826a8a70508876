@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3faa8069_b844bc8f",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-25T12:20:27Z",
+      "side": 1,
+      "message": "this is really poorly optimized on the critical path.\nThis x86 core has an hardware DIV instruction capable of doing 64-bit/32-bit division (EAX \u003d EDX:EAX/RM) ? it\u0027s just GCC doing a poor job here ?\n\nif you do this:\n        /* Force GCC to use the DIV instruction to divide by 12 */\n        uint32_t hi \u003d tmp \u003e\u003e 32;\n        uint32_t lo \u003d tmp;\n        uint32_t q, r;\n        const uint32_t d \u003d 32;\n        asm (\"divl %4\" : \"\u003dd\" (r), \"\u003da\" (q) : \"0\" (hi), \"1\" (lo), \"rm\" (d) : \"cc\");\n        return q;\n\nLooks way better on my machine, is it working for you ?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
