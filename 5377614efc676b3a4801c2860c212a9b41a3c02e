@@ -22,6 +22,30 @@
       "revId": "5377614efc676b3a4801c2860c212a9b41a3c02e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "556f9d47_49a9a96a",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-25T20:49:50Z",
+      "side": 1,
+      "message": "I don\u0027t think the system timer is set up at that point yet, so it\u0027d effectively be the same thing I\u0027m doing now? (t\u003d0?)",
+      "parentUuid": "bdea1ec1_759ab1f4",
+      "range": {
+        "startLine": 227,
+        "startChar": 25,
+        "endLine": 227,
+        "endChar": 35
+      },
+      "revId": "5377614efc676b3a4801c2860c212a9b41a3c02e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
