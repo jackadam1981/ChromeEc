@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce76a6ff_86221861",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-25T12:25:43Z",
+      "side": 1,
+      "message": "nit: our usual convention is \"#ifdef CONFIG_ISH_30\"\nor less preferred #if defined(CONFIG_ISH_30)",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "698678f1_e440eccc",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-25T12:25:43Z",
+      "side": 1,
+      "message": "this #ifdef doesn\u0027t seem useful",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a0450d7_ffea1af9",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-25T12:25:43Z",
+      "side": 1,
+      "message": "no ifdef here",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3faa8069_b844bc8f",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -18,6 +87,52 @@
         "startChar": 0,
         "endLine": 55,
         "endChar": 24
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "293edaf3_c6744b98",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-25T12:25:43Z",
+      "side": 1,
+      "message": "rather than all those #ifdef,\nyou can probably define at the top of the file something like\n#ifdef CONFIG_ISH_30\n#define CLOCK_FACTOR 12\n#else \n#define CLOCK_FACTOR 1\n#endif\n\nthen:\nHPET_MAIN_COUNTER \u003d start_t * CLOCK_FACTOR;",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 6
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12304e0d_624ed76d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-25T12:25:43Z",
+      "side": 1,
+      "message": "maybe 0xC00000000ULL",
+      "range": {
+        "startLine": 119,
+        "startChar": 25,
+        "endLine": 119,
+        "endChar": 36
       },
       "revId": "031f41a798d5b44e5b225def58826a8a70508876",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
