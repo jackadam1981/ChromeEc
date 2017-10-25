@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b470327b_0eebdb98",
+        "filename": "board/zoombini/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-25T20:49:11Z",
+      "side": 1,
+      "message": "So, these are \"on\" by default? You\u0027re not only changing to ODR, you\u0027re also changing the default polarity?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "40c9663b5285817dfa36a95cf0eb109f4cdf07e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
