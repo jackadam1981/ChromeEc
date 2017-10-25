@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd95b560_b2d7a923",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-25T23:47:26Z",
+      "side": 1,
+      "message": "Are there going to be more than one battery used on this board? If so, you\u0027ll likely want to start parameterizing these things.",
+      "revId": "8e9f02d67cafd12a1172a420851e83b3d848dfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ee6cce8_5ac3861b",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-25T23:47:26Z",
+      "side": 1,
+      "message": "Fire and forget?",
+      "revId": "8e9f02d67cafd12a1172a420851e83b3d848dfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
