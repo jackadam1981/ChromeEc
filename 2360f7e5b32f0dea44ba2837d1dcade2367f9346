@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "88e8165d_74b291c2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1229,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-25T15:18:36Z",
+      "side": 1,
+      "message": "because my hack does not change the pd_send_vdm prototype.\nso you need to restore the type which is a global state.",
+      "parentUuid": "e03c6b49_f62f056e",
+      "range": {
+        "startLine": 1229,
+        "startChar": 35,
+        "endLine": 1229,
+        "endChar": 46
+      },
+      "revId": "2360f7e5b32f0dea44ba2837d1dcade2367f9346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "471c0e33_a8d8e30f",
         "filename": "include/usb_pd.h",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-24T23:56:44Z",
       "side": 1,
       "message": "What do you think about adding \u0027type\u0027?",
+      "range": {
+        "startLine": 1289,
+        "startChar": 19,
+        "endLine": 1289,
+        "endChar": 37
+      },
+      "revId": "2360f7e5b32f0dea44ba2837d1dcade2367f9346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cfcf0ec_c00b6464",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-25T15:18:36Z",
+      "side": 1,
+      "message": "putting tons of arguments (ie \u003e4) to functions generate large code (as they are stacked rather than put into registers).\nI\u0027m not thrilled by the modification but we probably need to see the whole picture (ie how the whole cable interrogation will be handled and how its state will be stored) before deciding what will be the best implementation.\n\nBy the way, you need to update all the board code if you change this prototype.\n\nAt least, vid and cmd are immediately recombined into the VDM header inside the function, the caller can probably do it with the proper macro.",
+      "parentUuid": "471c0e33_a8d8e30f",
       "range": {
         "startLine": 1289,
         "startChar": 19,
