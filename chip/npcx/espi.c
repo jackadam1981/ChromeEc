@@ -527,6 +527,8 @@ void espi_interrupt(void)
 	int chan;
 	uint32_t mask, status;
 
+	/*CPRINTS("*************SKH eSPI ISR");*/
+
 #if defined(CHIP_FAMILY_NPCX7)
 	/*
 	 * Bit 17 of ESPIIE is reserved. We need to set the same bit in mask
@@ -553,7 +555,7 @@ void espi_interrupt(void)
 		} /* eSPI reset (from eSPI_rst pin) */
 		else if (IS_BIT_SET(status, NPCX_ESPISTS_ESPIRST)) {
 			CPRINTS("eSPI RST");
-			chipset_handle_espi_reset_assert();
+			/*chipset_handle_espi_reset_assert();*/
 			espi_reset_recovery();
 		}
 

@@ -61,8 +61,8 @@
 #define DEBUG_PECI                       0
 #define DEBUG_SHI                        0
 #define DEBUG_CLK                        0
-#define DEBUG_LPC                        0
-#define DEBUG_ESPI                       0
+#define DEBUG_LPC                        1
+#define DEBUG_ESPI                       1
 
 /* Modules Map */
 #define NPCX_ESPI_BASE_ADDR              0x4000A000
