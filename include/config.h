@@ -471,6 +471,17 @@
 #undef CONFIG_CHARGER_BD9995X_CHGEN
 
 /*
+ * Enable dynamic input current limit clamping.
+ *
+ * When enabled, if the requested charger voltage exceeds
+ * CONFIG_CHARGER_DYNAMIC_ICL_VOLTAGE_THRESHOLD, the current will be limited to
+ * CONFIG_CHARGER_DYNAMIC_ICL.  The values are in mV and mA. You must define
+ * both to use this feature.
+ */
+#undef CONFIG_CHARGER_DYNAMIC_ICL
+#undef CONFIG_CHARGER_DYNAMIC_ICL_VOLTAGE_THRESHOLD
+
+/*
  * BD9995X PD port to charger port mapping.
  * By default VBUS is selected as primary port.
  * Define only if the VCC is the primary port.
@@ -3125,6 +3136,11 @@
 
 #ifdef CONFIG_USB_SERIALNO
 #define CONFIG_SERIALNO_LEN 28
+#endif
+
+#if defined(CONFIG_CHARGER_DYNAMIC_ICL) && \
+	!defined(CONFIG_CHARGER_DYNAMIC_ICL_VOLTAGE_THRESHOLD)
+#error "CONFIG_CHARGER_DYNAMIC_ICL_VOLTAGE_THRESHOLD must be defined!"
 #endif
 
 #endif  /* __CROS_EC_CONFIG_H */

@@ -596,6 +596,20 @@ static void charge_manager_refresh(void)
 	} else {
 		new_charge_current_uncapped =
 			available_charge[new_supplier][new_port].current;
+
+#ifdef CONFIG_CHARGER_DYNAMIC_ICL
+		/*
+		 * Depending on the charge inductor design, the maximum limit
+		 * may need to be reduced at higher voltages to protect the
+		 * charge inductor.
+		 */
+		if ((available_charge[new_supplier][new_port].voltage >
+		     CONFIG_CHARGER_DYNAMIC_ICL_VOLTAGE_THRESHOLD) &&
+		    (new_charge_current_uncapped > CONFIG_CHARGER_DYNAMIC_ICL))
+			new_charge_current_uncapped =
+				CONFIG_CHARGER_DYNAMIC_ICL;
+#endif /* defined(CONFIG_CHARGER_DYNAMIC_ICL) */
+
 #ifdef CONFIG_CHARGE_RAMP_HW
 		/*
 		 * Allow to set the maximum current value, so the hardware can
