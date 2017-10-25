@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29abbb68_ab6aa1a4",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-25T23:51:13Z",
+      "side": 1,
+      "message": "I\u0027d wrap them in a do..while(0).",
+      "revId": "1b8df63376de615cbe6963d13dde5e0a17018458",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
