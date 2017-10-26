@@ -13,6 +13,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "lpc.h"
 #include "power.h"
 #include "system.h"
 #include "task.h"
@@ -195,6 +196,33 @@ void power_set_state(enum power_state new_state)
 	if (state == POWER_S5S3)
 		want_g3_exit = 0;
 }
+
+#ifdef CONFIG_LPC
+ /*
+  * Set wake mask on edge of sleep state entry
+  *
+  * @param state New sleep state
+  */
+static void power_set_active_wake_mask(enum power_state state)
+{
+	uint32_t wake_mask;
+
+	if (state == POWER_S0)
+		wake_mask = 0;
+	else if (lpc_is_active_mask_set_by_host())
+		return;
+	else if (get_lazy_wake_mask(state, &wake_mask))
+		return;
+#ifdef CONFIG_POWER_S0IX
+	if ((state == POWER_S0ix) && (wake_mask == 0))
+		wake_mask = DEFAULT_WAKE_MASK_S0IX;
+#endif
+
+	lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, wake_mask);
+}
+#else
+static void power_set_active_wake_mask(enum power_state state) { }
+#endif
 
 /**
  * Common handler for steady states
@@ -414,8 +442,10 @@ void chipset_task(void *u)
 			new_state = power_common_state(state);
 
 		/* Handle state changes */
-		if (new_state != state)
+		if (new_state != state) {
 			power_set_state(new_state);
+			power_set_active_wake_mask(new_state);
+		}
 	}
 }
 
