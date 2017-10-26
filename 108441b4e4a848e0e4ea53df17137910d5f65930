@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7184417_48839651",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-10-26T16:27:40Z",
+      "side": 1,
+      "message": "There is a similar changes for kx022. It is in a branch [cl/536723], let see if I can bring it in.",
+      "revId": "108441b4e4a848e0e4ea53df17137910d5f65930",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
