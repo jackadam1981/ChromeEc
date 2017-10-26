@@ -3097,6 +3097,8 @@ struct __ec_align1 ec_response_temp_sensor_get_info {
 /*****************************************************************************/
 /* Host event commands */
 
+
+/* Obsolete. New implementation should use EC_CMD_PROGRAM_HOST_EVENT instead */
 /*
  * Host event mask params and response structures, shared by all of the host
  * event commands below.
@@ -3121,6 +3123,73 @@ struct __ec_align4 ec_response_host_event_mask {
 #define EC_CMD_HOST_EVENT_CLEAR         0x008C
 #define EC_CMD_HOST_EVENT_SET_WAKE_MASK 0x008E
 #define EC_CMD_HOST_EVENT_CLEAR_B       0x008F
+
+/*
+ * Unified host event programming interface - Should be used by newer versions
+ * of BIOS/OS to program host events and masks
+ */
+
+struct __ec_align4 ec_params_program_host_event {
+
+	/* Action requested by host - one of enum ec_host_event_action. */
+	uint8_t action;
+
+	/*
+	 * Mask that the host requested the action on - one of
+	 * enum ec_host_event_mask.
+	 */
+	uint8_t mask;
+
+	/* Value to be used in case of set operations. */
+	uint32_t value;
+};
+
+struct __ec_align4 ec_response_program_host_event {
+
+	/* Mask that the host requested - one of enum ec_host_event_mask. */
+	uint8_t mask;
+
+	/* Mask value in case of get operation */
+	uint32_t value;
+};
+
+enum ec_host_event_action {
+	EC_HOST_EVENT_GET,
+	EC_HOST_EVENT_SET,
+	EC_HOST_EVENT_CLEAR,
+};
+
+enum ec_host_event_mask {
+
+	/* Main host event copy */
+	EC_HOST_EVENT_MAIN,
+
+	/* Copy B of host events */
+	EC_HOST_EVENT_B,
+
+	/* SCI Mask */
+	EC_HOST_EVENT_SCI_MASK,
+
+	/* SMI Mask */
+	EC_HOST_EVENT_SMI_MASK,
+
+	/* Mask of events that should be always reported in hostevents */
+	EC_HOST_EVENT_ALWAYS_REPORT_MASK,
+
+	/* Active wake mask */
+	EC_HOST_EVENT_ACTIVE_WAKE_MASK,
+
+	/* Lazy wake mask for S0ix */
+	EC_HOST_EVENT_LAZY_WAKE_MASK_S0IX,
+
+	/* Lazy wake mask for S3 */
+	EC_HOST_EVENT_LAZY_WAKE_MASK_S3,
+
+	/* Lazy wake mask for S5 */
+	EC_HOST_EVENT_LAZY_WAKE_MASK_S5,
+};
+
+#define EC_CMD_PROGRAM_HOST_EVENT       0x00A3
 
 /*****************************************************************************/
 /* Switch commands */
