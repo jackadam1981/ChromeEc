@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "07d71caf_8654a8e9",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T06:30:47Z",
+      "side": 1,
+      "message": "minute-ia supports i486 instruction set and div64 is not supported. With the above code, compilation works fine but ISH doesnt execute",
+      "parentUuid": "3faa8069_b844bc8f",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "293edaf3_c6744b98",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3

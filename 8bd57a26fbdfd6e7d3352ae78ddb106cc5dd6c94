@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "ccb6f165_4f348e1e",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T06:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c3131f0_4b44b72b",
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9db7e5d4_a8b5cc6d",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 1
@@ -53,6 +71,30 @@
       "writtenOn": "2017-10-23T16:36:22Z",
       "side": 1,
       "message": "remove spaces within the ().",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 6
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d75db956_393bf7e6",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T06:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9db7e5d4_a8b5cc6d",
       "range": {
         "startLine": 79,
         "startChar": 5,
@@ -99,6 +141,30 @@
       "writtenOn": "2017-10-24T19:25:51Z",
       "side": 1,
       "message": "We just name it from initial of \"HPET Main Counter\".",
+      "parentUuid": "f429cc3d_01d055b5",
+      "range": {
+        "startLine": 81,
+        "startChar": 5,
+        "endLine": 81,
+        "endChar": 8
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "256fb084_01e9a191",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T06:30:47Z",
+      "side": 1,
+      "message": "HMC\u003dHPET Main Counter(12MHz)\nvariable hmc --\u003e1MHz",
       "parentUuid": "f429cc3d_01d055b5",
       "range": {
         "startLine": 81,
@@ -159,6 +225,30 @@
     },
     {
       "key": {
+        "uuid": "77be4819_16fba07a",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T06:30:47Z",
+      "side": 1,
+      "message": "Since HMC(12MHz) is 12x faster wrt local variable hmc which is tracking at 1MHz, its value will be 0xFFFFFFFF/12\u003d0x15555555 when HMC is overflown",
+      "parentUuid": "c930a5ed_883822d3",
+      "range": {
+        "startLine": 83,
+        "startChar": 11,
+        "endLine": 83,
+        "endChar": 59
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c25923b6_5600441f",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 1
@@ -170,6 +260,24 @@
       "writtenOn": "2017-10-23T16:36:22Z",
       "side": 1,
       "message": "comment over 80",
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75dc5191_021ae25f",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T06:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c25923b6_5600441f",
       "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -193,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "a455dca6_f1b98ed7",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T06:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c58369_75d5bc3b",
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7a170d5_631e4371",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 1
@@ -204,6 +330,30 @@
       "writtenOn": "2017-10-23T16:36:22Z",
       "side": 1,
       "message": "same thing as before",
+      "range": {
+        "startLine": 88,
+        "startChar": 6,
+        "endLine": 88,
+        "endChar": 7
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "064b3ee3_ad0485b3",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T06:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7a170d5_631e4371",
       "range": {
         "startLine": 88,
         "startChar": 6,
@@ -263,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "e8fffc91_8b474d88",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T06:30:47Z",
+      "side": 1,
+      "message": "This would be present else would have to override the common code as you mentioned",
+      "parentUuid": "f203496f_9a50308d",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 11
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84b5dad0_a13b0033",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 1
@@ -274,6 +448,30 @@
       "writtenOn": "2017-10-23T16:36:22Z",
       "side": 1,
       "message": "indention is off",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 3
+      },
+      "revId": "8bd57a26fbdfd6e7d3352ae78ddb106cc5dd6c94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0959636_424507f5",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T06:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84b5dad0_a13b0033",
       "range": {
         "startLine": 92,
         "startChar": 0,
