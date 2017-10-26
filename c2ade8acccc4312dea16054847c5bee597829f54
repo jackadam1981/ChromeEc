@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7fa0a184_cdefb7a2",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-26T05:46:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "debbd7e6_1fe0942b",
+      "range": {
+        "startLine": 169,
+        "startChar": 3,
+        "endLine": 169,
+        "endChar": 8
+      },
+      "revId": "c2ade8acccc4312dea16054847c5bee597829f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "967afa65_a2a2dac7",
         "filename": "board/poppy/battery.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2017-10-26T05:38:51Z",
       "side": 1,
       "message": "A slightly nicer (and probably more compact code-size wise) way is to do:\n\nwhile (tries_num--) {\n\n}",
+      "revId": "c2ade8acccc4312dea16054847c5bee597829f54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b385b819_4abf3881",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-26T05:46:05Z",
+      "side": 1,
+      "message": "Yeah, I agree. I just did it this way to help with printing the try count ;) Updated it now.",
+      "parentUuid": "967afa65_a2a2dac7",
       "revId": "c2ade8acccc4312dea16054847c5bee597829f54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
