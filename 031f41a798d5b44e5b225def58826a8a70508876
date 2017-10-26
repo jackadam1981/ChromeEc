@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "eda3a9f3_0e8d6891",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T08:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a0450d7_ffea1af9",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3faa8069_b844bc8f",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -118,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "c34d8ae1_cd64156c",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T08:48:20Z",
+      "side": 1,
+      "message": "changed to d \u003d 12. Works fine.",
+      "parentUuid": "07d71caf_8654a8e9",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "293edaf3_c6744b98",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -141,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "388576e5_3eb58613",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T08:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "293edaf3_c6744b98",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 6
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12304e0d_624ed76d",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
@@ -152,6 +224,30 @@
       "writtenOn": "2017-10-25T12:25:43Z",
       "side": 1,
       "message": "maybe 0xC00000000ULL",
+      "range": {
+        "startLine": 119,
+        "startChar": 25,
+        "endLine": 119,
+        "endChar": 36
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28692093_f5e5fc81",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-10-26T08:48:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12304e0d_624ed76d",
       "range": {
         "startLine": 119,
         "startChar": 25,
