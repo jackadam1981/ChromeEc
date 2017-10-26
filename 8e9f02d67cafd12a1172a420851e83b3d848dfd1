@@ -69,6 +69,24 @@
       "revId": "8e9f02d67cafd12a1172a420851e83b3d848dfd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81673dc4_3c941d4e",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-26T04:22:12Z",
+      "side": 1,
+      "message": "If you are done anyway shouldn\u0027t we keep trying until it works? Or does sb_write() never indicate failure? Or can we determine it came out?",
+      "parentUuid": "1afc0a8d_db8b6085",
+      "revId": "8e9f02d67cafd12a1172a420851e83b3d848dfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
