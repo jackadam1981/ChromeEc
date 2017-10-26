@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0236cff3_237b6b21",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-26T09:17:39Z",
+      "side": 1,
+      "message": "sure d \u003d 12 \nSo the CPU core supports the divl or not ?",
+      "parentUuid": "c34d8ae1_cd64156c",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "293edaf3_c6744b98",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
