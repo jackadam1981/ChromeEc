@@ -22,6 +22,30 @@
       "revId": "206f1dd93b04b6240b079ef7af1fe97ae5f6bdd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca98b8ec_e7d0dbdd",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1165254
+      },
+      "writtenOn": "2017-10-26T20:22:48Z",
+      "side": 1,
+      "message": "Correct.As defined in NPCX5 and NPCX7 datasheets.",
+      "parentUuid": "9f1cb02f_d5e9ecd4",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 51
+      },
+      "revId": "206f1dd93b04b6240b079ef7af1fe97ae5f6bdd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
