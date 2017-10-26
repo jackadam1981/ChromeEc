@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f1cb02f_d5e9ecd4",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-26T18:12:58Z",
+      "side": 1,
+      "message": "Just to double confirm, this works differently on npcx5.\n\n- On npcx5, VCC_RST# cannot be muxed to GPO77 (we tested this, reset is still functional even when we set the old/now-undocumented GPO77 pin mux config).\n- On npcx7, VCC_RST# can be muxed to GPO77, until we write the write-once bit here, subsequently the pin function is forced to VCC_RST#.",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 51
+      },
+      "revId": "206f1dd93b04b6240b079ef7af1fe97ae5f6bdd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
