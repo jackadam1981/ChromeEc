@@ -931,7 +931,7 @@ wait_for_it:
 			 */
 			else if (manual_mode) {
 				curr.requested_voltage = curr.chg.voltage;
-				curr.requested_current = curr.chg.current;
+				curr.requested_current = 0;//curr.chg.current;
 			}
 		} else {
 #ifndef CONFIG_CHARGER_MAINTAIN_VBAT

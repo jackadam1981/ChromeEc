@@ -116,7 +116,10 @@ static inline int ch_raw_write16(int cmd, int param,
 					enum bd9995x_command map_cmd)
 {
 	int rv;
-
+#if 0
+        ccprintf("charger write- PID=%d,type:%d, offset:0x%x, param=0x%x or %d\n",
+		task_get_current(), map_cmd, cmd, param, param); cflush(); cflush();
+#endif
 	/* Map the Charge command code to appropriate region */
 	mutex_lock(&bd9995x_map_mutex);
 	if (charger_map_cmd != map_cmd) {
@@ -246,11 +249,20 @@ static int bd9995x_charger_enable(int enable)
 	if (rv)
 		return rv;
 
-	if (enable)
+	if (enable) {
+                if (reg & BD9995X_CMD_CHGOP_SET2_BATT_LEARN) {
+                        ccprintf("\t\tcatched LearnMode\n");cflush();
+                        reg &= ~BD9995X_CMD_CHGOP_SET2_BATT_LEARN;
+                }
+                if (reg & BD9995X_CMD_CHGOP_SET2_USB_SUS) {
+                        ccprintf("\t\tcatched USB_SUS\n");cflush();
+                        reg &= ~BD9995X_CMD_CHGOP_SET2_USB_SUS;
+                }
 		reg |= BD9995X_CMD_CHGOP_SET2_CHG_EN;
-	else
+	} else {
 		reg &= ~BD9995X_CMD_CHGOP_SET2_CHG_EN;
-
+        }
+        ccprintf("set BD9995X_CMD_CHGOP_SET2 to 0x%x\n", reg);
 	return ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 				BD9995X_EXTENDED_COMMAND);
 }
@@ -724,8 +736,13 @@ int charger_set_current(int current)
 			return rv;
 	}
 
+        current = MIN(current, BD9995X_IPRECH_MAX);
+        if (current <= 0) {
+                current = 512;
+        }
+
 	rv = ch_raw_write16(BD9995X_CMD_IPRECH_SET,
-			    MIN(current, BD9995X_IPRECH_MAX),
+			    current,
 			    BD9995X_EXTENDED_COMMAND);
 	if (rv)
 		return rv;
