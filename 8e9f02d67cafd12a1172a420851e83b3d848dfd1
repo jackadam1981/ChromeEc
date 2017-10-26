@@ -87,6 +87,24 @@
       "revId": "8e9f02d67cafd12a1172a420851e83b3d848dfd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69eb166b_4b1b8204",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-26T04:32:36Z",
+      "side": 1,
+      "message": "sb_write returns success/failure. So, we can definitely check that. But I am worried if we keep retrying and sb_write keeps failing, then we would never continue booting. Maybe we should add a try_count (of 10 tries?) and if it doesn\u0027t help, just continue booting. At least the device would boot up on AC power. What do you think?",
+      "parentUuid": "81673dc4_3c941d4e",
+      "revId": "8e9f02d67cafd12a1172a420851e83b3d848dfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
