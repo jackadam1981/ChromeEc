@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c65565e_561782c2",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-26T02:31:12Z",
+      "side": 1,
+      "message": "At this point, we have one battery for poppy and other for soraka. Different parameters for the two are covered in battery_info below. But I agree, if we want to support more, at some point, we will have to start parameterizing these things.",
+      "parentUuid": "cd95b560_b2d7a923",
+      "revId": "8e9f02d67cafd12a1172a420851e83b3d848dfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ee6cce8_5ac3861b",
         "filename": "board/poppy/battery.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-25T23:47:26Z",
       "side": 1,
       "message": "Fire and forget?",
+      "revId": "8e9f02d67cafd12a1172a420851e83b3d848dfd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1afc0a8d_db8b6085",
+        "filename": "board/poppy/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-26T02:31:12Z",
+      "side": 1,
+      "message": "Basically, this is trying to work around an issue of battery behavior on performing battery cutoff using hardware combo. Battery goes into an emergency shutdown mode and requires us to send this command to revive it.\n\nThus, this function sends the revive data once. If it succeeds good. If not, there is not much that can be done. Also, battery_revive_done is set to 1 outside this if block because we care about sending this command only if the battery never allowed chg and dsg.\n\nI think I should probably add the above details as a comment here. :)",
+      "parentUuid": "4ee6cce8_5ac3861b",
       "revId": "8e9f02d67cafd12a1172a420851e83b3d848dfd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
