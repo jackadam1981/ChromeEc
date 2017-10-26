@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa1fbb39_fc972367",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-26T23:43:40Z",
+      "side": 1,
+      "message": "this is meant to be an actual limit. Do you think this is not enough?",
+      "parentUuid": "5926d136_41f81c2d",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "54f2f0ce80b5c5824fb54a826247ff41d373a247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8404a807_759e926a",
         "filename": "common/ccd_config.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-26T23:35:17Z",
       "side": 1,
       "message": "+1?\n\ndo_ccd_password() uses strcasecmp(), which assumes a null-terminated string.",
+      "range": {
+        "startLine": 796,
+        "startChar": 17,
+        "endLine": 796,
+        "endChar": 32
+      },
+      "revId": "54f2f0ce80b5c5824fb54a826247ff41d373a247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "faab53c5_9f69e92d",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-26T23:43:40Z",
+      "side": 1,
+      "message": "the extra byte is added in 1138, it is not needed here as the vendor command does not care about null termination,",
+      "parentUuid": "8404a807_759e926a",
       "range": {
         "startLine": 796,
         "startChar": 17,
