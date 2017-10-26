@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4aad4e55_a602bd29",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-10-26T19:12:17Z",
+      "side": 1,
+      "message": "rename ec_ec_comm",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba6a1d78_cc047289",
         "filename": "include/ec_comm.h",
         "patchSetId": 8
@@ -37,6 +54,40 @@
     },
     {
       "key": {
+        "uuid": "f1d8d8f4_ac994c71",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-10-26T19:12:17Z",
+      "side": 1,
+      "message": "s/in words (32-bit)/in 32-bit words/",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "baf7d28c_f0e3ebaf",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-10-26T19:12:17Z",
+      "side": 1,
+      "message": "is it really necessary to save the request? Code that send the request expeting a response has enough information to know what the response is about.",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94d3e8e3_5e1c5740",
         "filename": "include/ec_comm.h",
         "patchSetId": 8
@@ -69,6 +120,23 @@
       "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39f3c63b_fd0c6101",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4439,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-10-26T19:12:17Z",
+      "side": 1,
+      "message": "if we had an index in the request command, can it be used by the host to gather battery information, so that we can deprecate EC_MEMMAP_BATT_VOLT ... EC_MEMMAP_BATT_TYPE mappings?\n\nIn case of mewoth, idx 0 would be the battery in the lid, 1 the battery in the base.",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
