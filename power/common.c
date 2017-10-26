@@ -13,6 +13,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "lpc.h"
 #include "power.h"
 #include "system.h"
 #include "task.h"
@@ -195,6 +196,53 @@ void power_set_state(enum power_state new_state)
 	if (state == POWER_S5S3)
 		want_g3_exit = 0;
 }
+
+#ifdef CONFIG_LPC
+ /*
+  * Set wake mask on edge of sleep state entry
+  *
+  * @param state New sleep state
+  */
+static void power_set_active_wake_mask(enum power_state state)
+{
+	uint32_t active_wm = lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE);
+	uint32_t lazy_wm;
+	static uint8_t lazy_wm_in_use;
+
+	switch (state) {
+	case POWER_S5:
+	case POWER_S3:
+#ifdef CONFIG_POWER_S0IX
+	case POWER_S0ix:
+#endif
+		if (!active_wm && !get_lazy_wake_mask(state, &lazy_wm)) {
+			lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, lazy_wm);
+			lazy_wm_in_use = 1;
+		}
+
+		break;
+	case POWER_S3S0:
+	case POWER_S5S3:
+#ifdef CONFIG_POWER_S0IX
+	case POWER_S0ixS0:
+#endif
+		/* clear active wake mask on exit from sleep state */
+		lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
+		break;
+	case POWER_S3S5:
+		/* Special handling for S5 which goes through S3->S3S5->S5 */
+		if (lazy_wm_in_use) {
+			lpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);
+			lazy_wm_in_use = 0;
+		}
+		break;
+	default:
+		break;
+	}
+}
+#else
+static void power_set_active_wake_mask(enum power_state state) { }
+#endif
 
 /**
  * Common handler for steady states
@@ -414,8 +462,10 @@ void chipset_task(void *u)
 			new_state = power_common_state(state);
 
 		/* Handle state changes */
-		if (new_state != state)
+		if (new_state != state) {
 			power_set_state(new_state);
+			power_set_active_wake_mask(new_state);
+		}
 	}
 }
 

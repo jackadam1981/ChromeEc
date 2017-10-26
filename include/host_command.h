@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "power.h"
 
 /* Args for host command handler */
 struct host_cmd_handler_args {
@@ -185,6 +186,19 @@ static inline int host_is_event_set(enum host_event_code event)
 {
 	return host_get_events() & EC_HOST_EVENT_MASK(event);
 }
+
+#ifdef CONFIG_LPC
+/*
+ * Get lazy wake masks
+ *
+ * @param state Sleep state
+ * @param mask  Lazy wake mask
+ *
+ * @return 0 for success and -1 for error
+ */
+
+int get_lazy_wake_mask(enum power_state state, uint32_t *mask);
+#endif
 #endif
 
 /**
