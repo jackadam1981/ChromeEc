@@ -16,6 +16,24 @@
       "revId": "42e60659e48b70b1987f1bc18583e2bb39bbb8f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cdaabde_af050e39",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-27T20:08:22Z",
+      "side": 1,
+      "message": "this is a great idea, actually, I thought about it but then was not sure how to do it and it slipped through the cracks.\n\nAdded echo suppression, now it is required to enter the password twice.",
+      "parentUuid": "c4234147_b24b8a02",
+      "revId": "42e60659e48b70b1987f1bc18583e2bb39bbb8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
