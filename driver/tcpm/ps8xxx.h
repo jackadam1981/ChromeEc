@@ -8,7 +8,64 @@
 #ifndef __CROS_EC_USB_PD_TCPM_PS8XXX_H
 #define __CROS_EC_USB_PD_TCPM_PS8XXX_H
 
+
+/* BIST Carrier Mode 2 registers not defined in programmering guide.
+ *
+ * Register Name	| Offset | Type | Reset | Description
+ *			|        |      | Value |
+ * ---------------------------------------------------------------
+ * BIST_CONT_MODE_BYTE0	| 0xBC   | 0xFF | R/W   | BIST timer byte0
+ * BIST_CONT_MODE_BYTE1	| 0xBD   | 0x0F | R/W   | BIST timer byte1
+ * BIST_CONT_MODE_BYTE2	| 0xBE   | 0x00 | R/W   | BIST timer byte2
+ *			|        |      |       |
+ * BIST_CONT_MODE_CTR	| 0xBF   | 0x00 | R/W   | BIST carrier mode 2.
+ *			|        |      |       | Two modes to control
+ *			|        |      |       | how BIST transfer terminates:
+ *			|        |      |       |
+ *			|        |      |       | 1:
+ *			|        |      |       |  When the BIST_CONT_MODE_BYTE*
+ *			|        |      |       |  timer expires, the BIST
+ *			|        |      |       |  transfer terminates.
+ *			|        |      |       |
+ *			|        |      |       | 2:
+ *			|        |      |       |  When this timer is disabled,
+ *			|        |      |       |  Bit[1] is asserted and the
+ *			|        |      |       |  BIST transfer terminates.
+ *			|        |      |       |
+ *			|        |      |       | Bit[0]:
+ *			|        |      |       |  1: The BIST timer is disabled
+ *			|        |      |       |  0: The BIST timer is enabled
+ *			|        |      |       |
+ *			|        |      |       | Bit[1]:
+ *			|        |      |       |  1: BIST transfer has
+ *			|        |      |       |     terminated and BIST
+ *			|	 |	|	|     transfer mode exited
+ *			|        |      |       |  0: BIST data is transmitting.
+ *			|        |      |       |
+ *			|        |      |       | Bit[7:2]: Reserved
+ *			|        |      |       |
+ * REG_DET_CTRL0(Page6)	| 0x08   |      | R/W   | Bit[3:0] Reserved
+ *			|        |      |       |
+ *			|        |      |       | Bit[4] SW_CC1_EN
+ *			|        |      |       |  1: enable
+ *			|        |      |       |  0: disable
+ *			|        |      |       |
+ *			|        |      |       | Bit[5] SW_CC2_EN
+ *			|        |      |       |  1 enable
+ *			|        |      |       |  0 disable
+ *			|        |      |       |
+ *			|        |      |       | Bit[7:6] Reserved
+ */
+
+
+
 #define PS8XXX_VENDOR_ID  0x1DA0
+#define PS8XXX_REG_I2C_DEBUGGING_ENABLE		0xA0
+#define PS8XXX_REG_BIST_CONT_MODE_BYTE0		0xBC
+#define PS8XXX_REG_BIST_CONT_MODE_BYTE1		0xBD
+#define PS8XXX_REG_BIST_CONT_MODE_BYTE2		0xBE
+#define PS8XXX_REG_BIST_CONT_MODE_CTR		0XBF
+#define PS8XXX_REG_DET_CTRL0			0x08
 
 #if defined(CONFIG_USB_PD_TCPM_PS8751)
 /* Vendor defined registers */
