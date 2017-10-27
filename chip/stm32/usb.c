@@ -407,12 +407,16 @@ void usb_wake(void)
 		 * USB wake not enabled, or already woken up, or already waking
 		 * up,nothing to do.
 		 */
+		CPRINTF("NO WAKE (%d %04x)\n", remote_wakeup_enabled,
+			STM32_USB_CNTR);
 		return;
 	}
 
 	/* Only allow one caller at a time. */
-	if (!atomic_read_clear(&usb_wake_done))
+	if (!atomic_read_clear(&usb_wake_done)) {
+		CPRINTF("NO WAKE (one)\n");
 		return;
+	}
 
 	CPRINTF("WAKE\n");
 
@@ -433,13 +437,17 @@ void usb_wake(void)
 int usb_is_suspended(void)
 {
 	/* Either hardware block is suspended... */
-	if (STM32_USB_CNTR & STM32_USB_CNTR_FSUSP)
+	if (STM32_USB_CNTR & STM32_USB_CNTR_FSUSP) {
+		CPRINTF("s(hw)\n");
 		return 1;
+	}
 
 #ifdef CONFIG_USB_REMOTE_WAKEUP
 	/* ... or we are currently waking up. */
-	if (!usb_wake_done)
+	if (!usb_wake_done) {
+		CPRINTF("s(!done)\n");
 		return 1;
+	}
 #endif
 
 	return 0;
