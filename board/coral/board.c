@@ -280,9 +280,19 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 static int ps8751_tune_mux(const struct usb_mux *mux)
 {
+	uint32_t sku = system_get_sku_id();
+
 	/* 0x98 sets lower EQ of DP port (4.5db) */
 	i2c_write8(NPCX_I2C_PORT0_1, 0x16, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION,
 		   0x98);
+
+	if ((sku >> 4) == BOARD_VERSION_4) {
+		if (((sku & 0xF) == BOARD_VERSION_14) ||
+		    ((sku & 0xF) == BOARD_VERSION_15))
+			i2c_write8(NPCX_I2C_PORT0_1, 0x16,
+				   PS8XXX_REG_MUX_USB_C2SS_HS_THRESHOLD, 0xa0);
+	}
+
 	return EC_SUCCESS;
 }
 
