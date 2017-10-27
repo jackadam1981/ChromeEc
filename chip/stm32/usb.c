@@ -348,13 +348,13 @@ static void usb_reset(void)
 /* See RM0091 Reference Manual 30.5.5 Suspend/Resume events */
 static void usb_suspend(void)
 {
-	CPRINTF("SUS\n");
-
 	/* Set FSUSP bit to activate suspend mode */
 	STM32_USB_CNTR |= STM32_USB_CNTR_FSUSP;
 
 	/* Set USB low power mode */
 	STM32_USB_CNTR |= STM32_USB_CNTR_LP_MODE;
+
+	CPRINTF("SUS (%04x)\n", STM32_USB_CNTR);
 
 	clock_enable_module(MODULE_USB, 0);
 
@@ -364,7 +364,7 @@ static void usb_suspend(void)
 
 static void usb_resume(void)
 {
-	CPRINTF("RSM\n");
+	CPRINTF("RSM (%04x)\n", STM32_USB_CNTR);
 
 	/*
 	 * TODO(crosbug.com/p/63273): Reference manual suggests going back to
@@ -407,14 +407,19 @@ void usb_wake(void)
 		 * USB wake not enabled, or already woken up, or already waking
 		 * up,nothing to do.
 		 */
+		CPRINTF("NO WAKE (%d %04x)\n", remote_wakeup_enabled,
+			STM32_USB_CNTR);
 		return;
 	}
 
 	/* Only allow one caller at a time. */
-	if (!atomic_read_clear(&usb_wake_done))
+	if (!atomic_read_clear(&usb_wake_done)) {
+		CPRINTF("NO WAKE (one)\n");
 		return;
+	}
 
-	CPRINTF("WAKE\n");
+	CPRINTF("WAKE (%d %04x)\n", remote_wakeup_enabled,
+			STM32_USB_CNTR);
 
 	/*
 	 * Set RESUME bit for 1 to 15 ms, then clear it. We ask the interrupt
@@ -437,13 +442,17 @@ void usb_wake(void)
 int usb_is_suspended(void)
 {
 	/* Either hardware block is suspended... */
-	if (STM32_USB_CNTR & STM32_USB_CNTR_FSUSP)
+	if (STM32_USB_CNTR & STM32_USB_CNTR_FSUSP) {
+		CPRINTF("s(hw)\n");
 		return 1;
+	}
 
 #ifdef CONFIG_USB_REMOTE_WAKEUP
 	/* ... or we are currently waking up. */
-	if (!usb_wake_done)
+	if (!usb_wake_done) {
+		CPRINTF("s(!done)\n");
 		return 1;
+	}
 #endif
 
 	return 0;
