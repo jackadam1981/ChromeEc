@@ -46,6 +46,30 @@
       "revId": "d006540b588602d5539893a893587905fe9c33da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0246dce6_525b513c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-10-27T16:49:35Z",
+      "side": 1,
+      "message": "usb_updater -P \n\nwould not be accepted without a parameter, it would be rejected by the option parser.",
+      "parentUuid": "8e0e4c88_f59f1b1d",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "d006540b588602d5539893a893587905fe9c33da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
