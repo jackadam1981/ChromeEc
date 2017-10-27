@@ -92,6 +92,46 @@ int ps8xxx_tcpc_get_fw_version(int port, int *version)
 	return tcpc_read(port, FW_VER_REG, version);
 }
 
+static int ps8xxx_tcpc_bist_mode_2(int port)
+{
+	int tmp;
+	int rv;
+
+	/* Wakeup TCPC */
+	tcpc_read(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE, &tmp);
+
+	/* Allow the TCPC to wake up */
+	msleep(10);
+
+	/* Enable I2C access port0 and port1 */
+	rv = tcpc_write(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE, 0x30);
+
+	/*
+	 * BIST TIMER applies 15Mhz clock, So 0Xb8f47 generates a BIST
+	 * for 50ms.
+	 */
+	rv |= tcpc_write(port, PS8XXX_REG_BIST_CONT_MODE_BYTE0, 0x47);
+	rv |= tcpc_write(port, PS8XXX_REG_BIST_CONT_MODE_BYTE1, 0x8f);
+	rv |= tcpc_write(port, PS8XXX_REG_BIST_CONT_MODE_BYTE2, 0x0b);
+
+	/* Auto stop */
+	rv |= tcpc_write(port, PS8XXX_REG_BIST_CONT_MODE_CTR, 0);
+
+	/* Start BIST MODE 2 */
+	rv |= tcpc_write(port, TCPC_REG_TRANSMIT, TCPC_TX_BIST_MODE_2);
+
+	return rv;
+}
+
+static int ps8xxx_tcpm_transmit(int port, enum tcpm_transmit_type type,
+			uint16_t header, const uint32_t *data)
+{
+	if (type == TCPC_TX_BIST_MODE_2)
+		return ps8xxx_tcpc_bist_mode_2(port);
+	else
+		return tcpci_tcpm_transmit(port, type, header, data);
+}
+
 static int ps8xxx_tcpm_release(int port)
 {
 	int version;
@@ -120,7 +160,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message		= &tcpci_tcpm_get_message,
-	.transmit		= &tcpci_tcpm_transmit,
+	.transmit		= &ps8xxx_tcpm_transmit,
 	.tcpc_alert		= &tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
