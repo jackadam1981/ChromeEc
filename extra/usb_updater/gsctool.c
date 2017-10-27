@@ -237,7 +237,7 @@ struct transfer_descriptor {
 
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "bcd:fhiprstu";
+static char *short_opts = "bcd:fhiP:prstu";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
 	{"binvers",	0,   NULL, 'b'},
@@ -246,6 +246,7 @@ static const struct option long_opts[] = {
 	{"device",	1,   NULL, 'd'},
 	{"fwver",	0,   NULL, 'f'},
 	{"help",	0,   NULL, 'h'},
+	{"password",	1,   NULL, 'P'},
 	{"post_reset",	0,   NULL, 'p'},
 	{"rma_auth",	2,   NULL, 'r'},
 	{"systemdev",	0,   NULL, 's'},
@@ -543,6 +544,9 @@ static void usage(int errs)
 	       "                           Get or set Info1 board ID fields\n"
 	       "                           ID could be 32 bit hex or 4 "
 	       "character string.\n"
+	       "  -P,--password <password>\n"
+	       "                           Set or clear CCD password. Use\n"
+	       "                           'clear' to clear it.\n"
 	       "  -p,--post_reset          Request post reset after transfer\n"
 	       "  -r,--rma_auth [auth_code]\n"
 	       "                           Request RMA challenge or process "
@@ -1531,6 +1535,26 @@ static int parse_bid(const char *opt,
 	return 1;
 }
 
+static void process_password(struct transfer_descriptor *td,
+			     const char *password)
+{
+	size_t response_size;
+	uint8_t response;
+	uint32_t rv;
+
+	response_size = sizeof(response);
+	rv = send_vendor_command(td, VENDOR_CC_CCD_PASSWORD,
+				 password, strlen(password),
+				 &response, &response_size);
+
+	if (!rv)
+		return;
+
+	fprintf(stderr, "Error setting password: rv %d, response %d\n",
+		rv, response_size ? 0 : response);
+	exit(update_error);
+}
+
 static void process_bid(struct transfer_descriptor *td,
 			enum board_id_action bid_action,
 			struct board_id *bid)
@@ -1664,6 +1688,7 @@ int main(int argc, char *argv[])
 	int corrupt_inactive_rw = 0;
 	struct board_id bid;
 	enum board_id_action bid_action;
+	const char *password = NULL;
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -1728,6 +1753,9 @@ int main(int argc, char *argv[])
 		case 'p':
 			td.post_reset = 1;
 			break;
+		case 'P':
+			password = optarg;
+			break;
 		case 'u':
 			td.upstart_mode = 1;
 			break;
@@ -1757,7 +1785,8 @@ int main(int argc, char *argv[])
 	if (!show_fw_ver &&
 	    !corrupt_inactive_rw &&
 	    (bid_action == bid_none) &&
-	    !rma) {
+	    !rma &&
+	    !password) {
 		if (optind >= argc) {
 			fprintf(stderr,
 				"\nERROR: Missing required <binary image>\n\n");
@@ -1791,6 +1820,9 @@ int main(int argc, char *argv[])
 			exit(update_error);
 		}
 	}
+
+	if (password)
+		process_password(&td, password);
 
 	if (bid_action != bid_none)
 		process_bid(&td, bid_action, &bid);
