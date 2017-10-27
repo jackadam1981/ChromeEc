@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bb0f7b29_40f5dec9",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-10-27T05:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a864120b_984cb581",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 12
+      },
+      "revId": "dd6656f4e81c2a8c8b071e625e98ca87e310d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_588dbd88",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-19T11:44:16Z",
       "side": 1,
       "message": "there is a race condition here if the interrupt mask changed in-between.\nNot sure how you are supposed to do this cleanly on this CPU core, but this is not fully correct.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "dd6656f4e81c2a8c8b071e625e98ca87e310d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbb65273_7900c14c",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-10-27T05:26:21Z",
+      "side": 1,
+      "message": "The espi_vw_set_valid() function was removed,  and we also apply this change to espi_vw_set_wire().\n\nYes, we will have a race condition here.\nBut I think this is harmless and we can avoid interrupt being enabled unexpectedly.\neg: \na() dis-int\nb() dis-int\nb() en-int \n(interrupt already enabled here)\na() en-int.\n\nWe only have two interrupt mask settings and used to enable/disable CPU interrupt (enable\u003d0x4000fffc and disable\u003d0x40000000).\nIf interrupt is triggered in-between and come back to finish the sequence: The interrupt mask will be in enable state, and we will disable interrupt, do foo, and then restore it.",
+      "parentUuid": "a864120b_588dbd88",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "0a2e0fdf_cbb270d7",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-10-27T05:26:21Z",
+      "side": 1,
+      "message": "comments added.",
+      "parentUuid": "a864120b_1887456b",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 1
+      },
+      "revId": "dd6656f4e81c2a8c8b071e625e98ca87e310d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a864120b_987a7589",
         "filename": "chip/it83xx/espi.c",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2017-01-19T11:44:16Z",
       "side": 1,
       "message": "you can do both operation on VWIDX at the same time",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 36
+      },
+      "revId": "dd6656f4e81c2a8c8b071e625e98ca87e310d2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "581b82e0_affa4bfe",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-10-27T05:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a864120b_987a7589",
       "range": {
         "startLine": 288,
         "startChar": 0,
