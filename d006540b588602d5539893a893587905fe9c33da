@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b472ddf_e9e4a35d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-10-27T12:43:27Z",
+      "side": 1,
+      "message": "So there is no way to get the status of the password like set/empty?\n\nIf you do usb_updater -P and cr50 is open or unlocked the password will be cleared?",
+      "range": {
+        "startLine": 19,
+        "startChar": 5,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "d006540b588602d5539893a893587905fe9c33da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
