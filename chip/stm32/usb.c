@@ -407,12 +407,16 @@ void usb_wake(void)
 		 * USB wake not enabled, or already woken up, or already waking
 		 * up,nothing to do.
 		 */
+		CPRINTF("NO WAKE (%d %04x)\n", remote_wakeup_enabled,
+			STM32_USB_CNTR);
 		return;
 	}
 
 	/* Only allow one caller at a time. */
-	if (!atomic_read_clear(&usb_wake_done))
+	if (!atomic_read_clear(&usb_wake_done)) {
+		CPRINTF("NO WAKE (one)\n");
 		return;
+	}
 
 	CPRINTF("WAKE\n");
 
