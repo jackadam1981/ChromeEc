@@ -779,3 +779,25 @@ DECLARE_CONSOLE_COMMAND(serialno, command_serialno,
 	"load/set [value]",
 	"Read and write USB serial number");
 #endif  /* CONFIG_USB_SERIALNO */
+
+static int command_usb(int argc, char **argv)
+{
+	int rv = EC_SUCCESS;
+
+	if (argc != 1) {
+		if (strcasecmp(argv[1], "connect") == 0) {
+			usb_connect();
+		} else if (strcasecmp(argv[1], "disconnect") == 0) {
+			usb_disconnect();
+		} else if (strcasecmp(argv[1], "wake") == 0) {
+			usb_wake();
+		} else
+			return EC_ERROR_INVAL;
+	}
+
+	return rv;
+}
+
+DECLARE_CONSOLE_COMMAND(usb, command_usb,
+	"connect/disconnect/wake",
+	"USB debugging command");
