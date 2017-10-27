@@ -92,6 +92,37 @@ int ps8xxx_tcpc_get_fw_version(int port, int *version)
 	return tcpc_read(port, FW_VER_REG, version);
 }
 
+static int ps8xxx_tcpm_transmit(int port, enum tcpm_transmit_type type,
+			uint16_t header, const uint32_t *data)
+{
+	int rv;
+
+	if (type == TCPC_TX_BIST_MODE_2) {
+		int tmp;
+
+		/* Wakeup TCPC */
+		tcpc_read(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE, &tmp);
+
+		/* Enalbe I2C access p0 */
+		rv = tcpc_write(port, PS8XXX_REG_I2C_DEBUGGING_ENABLE, 0x30);
+
+		rv |= tcpc_write(port, 0xbc, 0x47);
+		msleep(50);
+
+		rv |= tcpc_write(port, 0xbd, 0x8f);
+		rv |= tcpc_write(port, 0xbe, 0x0b);
+
+		/* Auto stop */
+		rv |= tcpc_write(port, 0xbf, 0);
+
+		/* Start BIST MODE 2 */
+		rv |= tcpc_write(port, TCPC_REG_TRANSMIT, TCPC_TX_BIST_MODE_2);
+	} else
+		rv = tcpci_tcpm_transmit(port, type, header, data);
+
+	return rv;
+}
+
 static int ps8xxx_tcpm_release(int port)
 {
 	int version;
@@ -120,7 +151,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.set_msg_header		= &tcpci_tcpm_set_msg_header,
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message		= &tcpci_tcpm_get_message,
-	.transmit		= &tcpci_tcpm_transmit,
+	.transmit		= &ps8xxx_tcpm_transmit,
 	.tcpc_alert		= &tcpci_tcpc_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,

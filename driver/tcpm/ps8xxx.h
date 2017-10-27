@@ -9,6 +9,7 @@
 #define __CROS_EC_USB_PD_TCPM_PS8XXX_H
 
 #define PS8XXX_VENDOR_ID  0x1DA0
+#define PS8XXX_REG_I2C_DEBUGGING_ENABLE         0xA0
 
 #if defined(CONFIG_USB_PD_TCPM_PS8751)
 /* Vendor defined registers */
