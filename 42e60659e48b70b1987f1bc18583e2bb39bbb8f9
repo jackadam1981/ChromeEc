@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4234147_b24b8a02",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1547,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-10-27T19:28:56Z",
+      "side": 1,
+      "message": "Technically should probably tcsetattr() to clear the ECHO flag around getline(), so we don\u0027t echo the password either.\n\nBut that\u0027s a minor nit.",
+      "revId": "42e60659e48b70b1987f1bc18583e2bb39bbb8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
