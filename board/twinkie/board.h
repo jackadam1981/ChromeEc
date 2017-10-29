@@ -82,6 +82,9 @@ void trace_packets(void);
 
 void set_trace_mode(int mode);
 
+void sniffer_trace_packet(int head, uint32_t *payload);
+void sniffer_trace_reload(void);
+
 /* Timer selection */
 #define TIM_CLOCK_MSB  3
 #define TIM_CLOCK_LSB 15

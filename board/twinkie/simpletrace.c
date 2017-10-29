@@ -110,13 +110,6 @@ static void print_packet(int head, uint32_t *payload)
 	const char *name;
 	const char *prole;
 
-	if (trace_mode == TRACE_MODE_RAW) {
-		ccprintf("%T[%04x]", head);
-		for (i = 0; i < cnt; i++)
-			ccprintf(" %08x", payload[i]);
-		ccputs("\n");
-		return;
-	}
 	name = cnt ? data_msg_name[typ] : ctrl_msg_name[typ];
 	prole = head & (PD_ROLE_SOURCE << 8) ? "SRC" : "SNK";
 	ccprintf("%T %s/%d [%04x]%s", prole, id, head, name);
@@ -196,7 +189,7 @@ void rx_event(void)
 				pd_rx_disable_monitoring(0);
 				/* trigger the analysis in the task */
 #ifdef HAS_TASK_SNIFFER
-				task_set_event(TASK_ID_SNIFFER, 1 << i, 0);
+				task_set_event(TASK_ID_SNIFFER, 4 << i, 0);
 #endif
 				/* start reception only one CC line */
 				break;
@@ -216,6 +209,7 @@ void trace_packets(void)
 {
 	int head;
 	uint32_t payload[7];
+	uint32_t evt;
 
 #ifdef HAS_TASK_SNIFFER
 	/* Disable sniffer DMA configuration */
@@ -235,9 +229,13 @@ void trace_packets(void)
 	pd_rx_enable_monitoring(0);
 
 	while (1) {
-		task_wait_event(-1);
+		evt = task_wait_event(-1);
 		if (trace_mode == TRACE_MODE_OFF)
 			break;
+		if (evt < 4) { /* USB event only */
+			sniffer_trace_reload();
+			continue;
+		}
 		/* incoming packet processing */
 		head = pd_analyze_rx(0, payload);
 		pd_rx_complete(0);
@@ -245,7 +243,9 @@ void trace_packets(void)
 		STM32_COMP_CSR |= STM32_COMP_CMP2EN | STM32_COMP_CMP1EN;
 		pd_rx_enable_monitoring(0);
 		/* print the last packet content */
-		if (head > 0)
+		if (trace_mode == TRACE_MODE_RAW)
+			sniffer_trace_packet(head, payload);
+		else if (head > 0)
 			print_packet(head, payload);
 		else
 			print_error(head);
