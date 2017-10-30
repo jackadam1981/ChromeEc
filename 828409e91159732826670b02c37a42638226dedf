@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "00d47ba2_d6f7f7a2",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-10-30T06:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1108db97_8bb64f8c",
+      "range": {
+        "startLine": 494,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 24
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c356d9a8_f19648e3",
         "filename": "board/fizz/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-20T19:55:33Z",
       "side": 1,
       "message": "nit: current_level",
+      "range": {
+        "startLine": 515,
+        "startChar": 12,
+        "endLine": 515,
+        "endChar": 24
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "386062d1_b67c0748",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-10-30T06:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c356d9a8_f19648e3",
       "range": {
         "startLine": 515,
         "startChar": 12,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4afad881_a7ea4133",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-10-30T06:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37dae697_b81ff900",
+      "range": {
+        "startLine": 533,
+        "startChar": 23,
+        "endLine": 533,
+        "endChar": 24
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a9d9f42_cf3cd89a",
         "filename": "driver/temp_sensor/tmp432.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-10-20T19:55:33Z",
       "side": 1,
       "message": "If this is true, you can skip get_temp for TMP432_LOCAL, right?",
+      "range": {
+        "startLine": 196,
+        "startChar": 5,
+        "endLine": 196,
+        "endChar": 38
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6249064_97b0e2eb",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-10-30T06:57:57Z",
+      "side": 1,
+      "message": "Do you mean like this ?\n\nif (fake_temp[TMP432_IDX_LOCAL] !\u003d -1)\n        temp_val_local \u003d C_TO_K(fake_temp[TMP432_IDX_LOCAL]);\nelse\n        if (get_temp(TMP432_LOCAL, \u0026temp_c) \u003d\u003d EC_SUCCESS)\n            temp_val_local \u003d C_TO_K(temp_c);",
+      "parentUuid": "2a9d9f42_cf3cd89a",
       "range": {
         "startLine": 196,
         "startChar": 5,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "a6158208_1f600271",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-10-30T06:57:57Z",
+      "side": 1,
+      "message": "A explicit way to know if the temperature we got is a real temperature or a fake one is to see if it is -1 or not.",
+      "parentUuid": "22f889ce_dcf2b0b0",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 39
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97b920ef_b42b3317",
         "filename": "driver/temp_sensor/tmp432.c",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2017-10-20T19:55:33Z",
       "side": 1,
       "message": "Can you also print in C?",
+      "range": {
+        "startLine": 223,
+        "startChar": 15,
+        "endLine": 223,
+        "endChar": 34
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e0ec1ef_48584267",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-10-30T06:57:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97b920ef_b42b3317",
       "range": {
         "startLine": 223,
         "startChar": 15,
