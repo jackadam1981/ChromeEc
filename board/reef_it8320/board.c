@@ -174,13 +174,13 @@ static void it83xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
-		.port_addr = 0xa8,
-		.driver = &pi3usb30532_usb_mux_driver,
+		.port_addr = 0xb0,
+		.driver = &it5205_usb_mux_driver,
 		.hpd_update = &it83xx_tcpc_update_hpd_status,
 	},
 	{
-		.port_addr = 0x20,
-		.driver = &ps874x_usb_mux_driver,
+		.port_addr = 0x90,
+		.driver = &it5205_usb_mux_driver,
 		.hpd_update = &it83xx_tcpc_update_hpd_status,
 	},
 };

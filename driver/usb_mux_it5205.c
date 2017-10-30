@@ -113,6 +113,107 @@ static int it5205_get_mux(int i2c_addr, mux_state_t *mux_state)
 	return EC_SUCCESS;
 }
 
+static int console_command_it5205(int argc, char **argv)
+{
+	int ret, addr, reg, val;
+	char *e;
+
+	if (argc < 4)
+		return EC_ERROR_PARAM_COUNT;
+	addr = strtoi(argv[2], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM2;
+	reg = strtoi(argv[3], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM3;
+	if (!strcasecmp(argv[1], "w")) {
+		if (argc < 5)
+			return EC_ERROR_PARAM_COUNT;
+		val = strtoi(argv[4], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM4;
+		ret = it5205_write(addr, reg, val);
+		if (ret)
+			return EC_ERROR_ACCESS_DENIED;
+	}
+
+	ret = it5205_read(addr, reg, &val);
+	if (ret)
+		return EC_ERROR_UNKNOWN;
+
+	ccprintf("it5205 addr:%x reg:%xh value is %xh\n", addr, reg, val);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(it5205, console_command_it5205,
+			"it5205 [r/w] [addr] [reg] | [val]",
+			"Read or write a mux register");
+
+static int console_command_it5205_get(int argc, char **argv)
+{
+	mux_state_t mux_state;
+	int ret, addr;
+	char *e;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+	addr = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+	ret = it5205_get_mux(addr, &mux_state);
+	if (ret)
+		return EC_ERROR_ACCESS_DENIED;
+
+	if (mux_state)
+		ccprintf("mux state : %s %s %s\n",
+		(mux_state & MUX_USB_ENABLED)        ? "usb"  : "",
+		(mux_state & MUX_DP_ENABLED)         ? "dp"   : "",
+		(mux_state & MUX_POLARITY_INVERTED)  ? "flip" : "");
+	else
+		ccprintf("mux state : none\n");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(it5205_get, console_command_it5205_get,
+			"it5205 [addr]", "");
+
+static int console_command_it5205_set(int argc, char **argv)
+{
+	mux_state_t mux_state = 0;
+	int ret, addr;
+	char *e;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	addr = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	if (!strcasecmp(argv[2], "none"))
+		mux_state = 0;
+	else if (!strcasecmp(argv[2], "usb"))
+		mux_state |= MUX_USB_ENABLED;
+	else if (!strcasecmp(argv[2], "dp"))
+		mux_state |= MUX_DP_ENABLED;
+	else if (!strcasecmp(argv[2], "dock"))
+		mux_state |= (MUX_DP_ENABLED | MUX_USB_ENABLED);
+	else
+		return EC_ERROR_PARAM2;
+
+	if ((!strcasecmp(argv[3], "flip")) && (argc == 4))
+		mux_state |= MUX_POLARITY_INVERTED;
+
+	ret = it5205_set_mux(addr, mux_state);
+	if (ret)
+		return EC_ERROR_ACCESS_DENIED;
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(it5205_set, console_command_it5205_set,
+			"it5205 [addr] [none | usb | dp | dock] | [flip]",
+			"");
+
 const struct usb_mux_driver it5205_usb_mux_driver = {
 	.init = it5205_init,
 	.set = it5205_set_mux,
