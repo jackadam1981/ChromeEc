@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "75424339_5c03b6f7",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-30T20:05:33Z",
+      "side": 1,
+      "message": "Yes, for stm32 we\u0027ll still use stm32mon. I think the only change that needs to be made here is the change at L339.\n\n    \n\tif [[ \"${SERVO_TYPE}\" \u003d~ \"ccd_cr50\" ]] || \\\n\t   [[ \"${SERVO_TYPE}\" \u003d~ \"servo_micro\" ]]; then\n\t\treturn 0\n\tfi",
+      "parentUuid": "b6e837d9_1a553303",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 3
+      },
+      "revId": "664d66aaa044ce65c1d668d5ddbccb838866b87d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d73731e7_92cffc99",
         "filename": "util/flash_ec",
         "patchSetId": 3
