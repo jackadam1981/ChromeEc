@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0817f1bc_5327ab8c",
+        "filename": "driver/usb_mux_it5205.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-30T17:13:39Z",
+      "side": 1,
+      "message": "This can be declared static.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 12
+      },
+      "revId": "e9bcb21a867094a7d00e1707c6cadae858b524ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "628fefd8_fe80bd22",
+        "filename": "driver/usb_mux_it5205.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-30T17:13:39Z",
+      "side": 1,
+      "message": "You can replace this with a \"switch(mux_state \u0026 MUX_STATE_DP_USB_MASK\") statement, use \"\u003d\" assignment instead of \"|\u003d\", and move \"reg \u003d 0\" to the \"default:\" case.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 23
+      },
+      "revId": "e9bcb21a867094a7d00e1707c6cadae858b524ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d108cda_9be4b613",
+        "filename": "driver/usb_mux_it5205.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-30T17:13:39Z",
+      "side": 1,
+      "message": "You can replace this with a \"switch(reg \u0026 IT5205_DP_USB_CTRL_MASK)\" statement, use \"\u003d\" assignment instead of \"|\u003d\", and move \"*mux_state \u003d 0\" to the \"default:\" case.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "e9bcb21a867094a7d00e1707c6cadae858b524ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
