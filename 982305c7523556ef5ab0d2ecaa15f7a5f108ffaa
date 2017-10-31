@@ -22,6 +22,30 @@
       "revId": "982305c7523556ef5ab0d2ecaa15f7a5f108ffaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9df05f50_f72d08c3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3609,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-31T15:20:07Z",
+      "side": 1,
+      "message": "We can probably just put a comment here indicating it\u0027s not a valid state to set, but used internally to the EC logic.",
+      "parentUuid": "7d3f441d_5700348a",
+      "range": {
+        "startLine": 3609,
+        "startChar": 1,
+        "endLine": 3609,
+        "endChar": 36
+      },
+      "revId": "982305c7523556ef5ab0d2ecaa15f7a5f108ffaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
