@@ -138,6 +138,19 @@ int charger_set_otg_current_voltage(int output_current, int output_voltage)
 	/* Set current. */
 	return raw_write16(ISL923X_REG_OTG_CURRENT, current_reg);
 }
+
+int isl9238_set_input_voltage_regulation_ref(int voltage)
+{
+	int rv;
+	uint16_t regval = (voltage / ISL9238_INPUT_VOLTAGE_REF_STEP)
+		<< ISL9238_INPUT_VOLTAGE_REF_SHIFT;
+
+	rv = raw_write16(ISL9238_REG_INPUT_VOLTAGE, regval);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS;
+}
 #endif /* CONFIG_CHARGER_ISL9238 */
 
 int charger_manufacturer_id(int *id)
