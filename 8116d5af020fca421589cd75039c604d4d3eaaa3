@@ -22,6 +22,30 @@
       "revId": "8116d5af020fca421589cd75039c604d4d3eaaa3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7969058f_a9510bed",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-31T16:00:53Z",
+      "side": 1,
+      "message": "It\u0027s an input regulation loop voltage (basically a 5V adapter would be allowed to drop to this voltage (e.g. 4.096V) before the current gets limited: we call this \"ramping\" in EC code).\n\nSo this is not safety-related (the voltage is already applied to the board before this kicks in, and changing this value won\u0027t protect the board in any way).",
+      "parentUuid": "e90fc96b_fcdcdf26",
+      "range": {
+        "startLine": 148,
+        "startChar": 18,
+        "endLine": 148,
+        "endChar": 43
+      },
+      "revId": "8116d5af020fca421589cd75039c604d4d3eaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
