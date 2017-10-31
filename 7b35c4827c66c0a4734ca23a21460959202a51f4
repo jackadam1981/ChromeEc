@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3ce653a9_68cee59c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-31T15:23:56Z",
+      "side": 1,
+      "message": "you need proper BRANCH\u003d / BUG\u003d / TEST\u003d lines\n\nThis also means that you are bypassing the pre-submit check ...",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 59
+      },
+      "revId": "7b35c4827c66c0a4734ca23a21460959202a51f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbe00f19_6927d732",
         "filename": "chip/ish/hpet.h",
         "patchSetId": 4
