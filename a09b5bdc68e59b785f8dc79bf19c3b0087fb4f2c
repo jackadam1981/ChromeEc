@@ -106,6 +106,24 @@
       "revId": "a09b5bdc68e59b785f8dc79bf19c3b0087fb4f2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84e9455c_32f4b249",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-31T23:34:01Z",
+      "side": 1,
+      "message": "Yeah, that matches the data I collected in the bug I mention above (not much difference between 4.096 and 4.437V).\n\nI guess we might just lose a bit of current with very long cables, but maybe that\u0027s ok?\n\nIn that case I\u0027d just change isl923x.c to apply that limit (just like we apply a 4.2V limit on isl9237), so that all boards using ISL9238 benefit from it.",
+      "parentUuid": "54308895_ff0b749b",
+      "revId": "a09b5bdc68e59b785f8dc79bf19c3b0087fb4f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
