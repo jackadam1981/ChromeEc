@@ -3606,6 +3606,7 @@ struct __ec_align4 ec_response_hibernation_delay {
 #define EC_CMD_HOST_SLEEP_EVENT 0x00A9
 
 enum host_sleep_event {
+	HOST_SLEEP_EVENT_DEFAULT_RESET = 0,
 	HOST_SLEEP_EVENT_S3_SUSPEND   = 1,
 	HOST_SLEEP_EVENT_S3_RESUME    = 2,
 	HOST_SLEEP_EVENT_S0IX_SUSPEND = 3,

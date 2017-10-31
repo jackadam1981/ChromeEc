@@ -206,7 +206,7 @@ void power_board_handle_host_sleep_event(enum host_sleep_event state);
  *
  * @param sleep_event Reset sleep state.
  */
-void power_reset_host_sleep_state(enum host_sleep_event sleep_event);
+void power_reset_host_sleep_state(void);
 #endif /* CONFIG_POWER_S0IX */
 #endif /* CONFIG_POWER_TRACK_HOST_SLEEP_STATE */
 
