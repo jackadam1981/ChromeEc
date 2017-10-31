@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e90fc96b_fcdcdf26",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-31T15:55:02Z",
+      "side": 1,
+      "message": "This is an input voltage limit, right? \"The input voltage register contains SMBus readable and writable\ninput voltage limit.\" Don\u0027t we want to set this to some safety value based on what our board can accommodate?",
+      "range": {
+        "startLine": 148,
+        "startChar": 18,
+        "endLine": 148,
+        "endChar": 43
+      },
+      "revId": "8116d5af020fca421589cd75039c604d4d3eaaa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
