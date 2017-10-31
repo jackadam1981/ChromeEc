@@ -238,6 +238,30 @@
     },
     {
       "key": {
+        "uuid": "b00d044e_a36e027d",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1127214
+      },
+      "writtenOn": "2017-10-31T20:57:17Z",
+      "side": 1,
+      "message": "64bit div is supported in ISH/minute-IA. \nOperation suffix \u0027l\u0027 is necessary for long data type and \u0027divl\u0027 is right form of \u0027div\u0027 for 64bit.\nwe tested and confirmed inline assembly(patch4) works fine.\nSorry for confusing.",
+      "parentUuid": "8c508970_f7ad20ef",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 24
+      },
+      "revId": "031f41a798d5b44e5b225def58826a8a70508876",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "293edaf3_c6744b98",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 3
