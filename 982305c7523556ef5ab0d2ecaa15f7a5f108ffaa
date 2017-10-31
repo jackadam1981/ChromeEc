@@ -70,6 +70,30 @@
       "revId": "982305c7523556ef5ab0d2ecaa15f7a5f108ffaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba6ce647_09cb7224",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3609,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-31T15:46:00Z",
+      "side": 1,
+      "message": "I put it here just because its easier to look at all the possible values on the EC side together and keeping them in different files felt a bit disconnected. But, I can move it to the file include/power.h where the reset function is defined.",
+      "parentUuid": "6e7eac4b_4ff1a43d",
+      "range": {
+        "startLine": 3609,
+        "startChar": 1,
+        "endLine": 3609,
+        "endChar": 36
+      },
+      "revId": "982305c7523556ef5ab0d2ecaa15f7a5f108ffaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
