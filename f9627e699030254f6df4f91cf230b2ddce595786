@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58dc7b3f_5b7f8db1",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-10-31T15:18:29Z",
+      "side": 1,
+      "message": "This adds 256 bytes to the buffer unconditionally. We may want to parameterize this in the future.",
+      "revId": "f9627e699030254f6df4f91cf230b2ddce595786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
