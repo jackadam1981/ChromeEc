@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d97aa2ae_1950fa9d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-31T21:21:23Z",
+      "side": 1,
+      "message": "You should be able to confirm the wake sources in S0ix as well using mosys now.",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17e43349_e9a4b205",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-31T21:21:23Z",
+      "side": 1,
+      "message": "We should reset response structure here just to be sure we don\u0027t send back any invalid data:\n\nmemset(r, 0, sizeof(*r));",
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63562218_8c133012",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-31T21:21:23Z",
+      "side": 1,
+      "message": "r-\u003emask \u003d p-\u003emask;",
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836a192a_f0efa05f",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-31T21:21:23Z",
+      "side": 1,
+      "message": "args-\u003eresponse_size \u003d 0;",
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faadb207_c1c1f49d",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-31T21:21:23Z",
+      "side": 1,
+      "message": "*mask \u003d 0;",
+      "range": {
+        "startLine": 605,
+        "startChar": 1,
+        "endLine": 605,
+        "endChar": 2
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cef55b6d_0637d949",
+        "filename": "include/host_command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-31T21:21:23Z",
+      "side": 1,
+      "message": "Can you please expand the comment to indicate that the mask returned is for the sleep state provided.",
+      "range": {
+        "startLine": 192,
+        "startChar": 3,
+        "endLine": 192,
+        "endChar": 22
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51a4ac69_3b73830b",
+        "filename": "power/common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-31T21:21:23Z",
+      "side": 1,
+      "message": "Why consider all these different cases? Shouldn\u0027t it be:\n\ncase POWER_S0:\n\tlpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, 0);\n\tbreak;\n\nIn fact I think this entire function can be written a little differently:\n\nstatic void power_set_active_wake_mask(enum power_state state)\n{\n\tuint32_t wake_mask;\n\tuint32_t active_wm \u003d lpc_get_host_event_mask(LPC_HOST_EVENT_WAKE);\n\n\tif (state \u003d\u003d POWER_S0)\n\t\twake_mask \u003d 0;\n\telse if (active_wm || lpc_get_lazy_wake_mask(state, \u0026wake_mask))\n\t\treturn;\n\n\tlpc_set_host_event_mask(LPC_HOST_EVENT_WAKE, wake_mask);\n}",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 6
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8bf287c_59fe35fa",
+        "filename": "power/common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-10-31T21:21:23Z",
+      "side": 1,
+      "message": "Why is this required? LPC_HOST_EVENT_WAKE will be eventually overridden when state machine reaches POWER_S5.",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 3
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
