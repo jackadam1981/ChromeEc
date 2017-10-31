@@ -16,6 +16,24 @@
       "revId": "a09b5bdc68e59b785f8dc79bf19c3b0087fb4f2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df48c328_1269d2bf",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-31T16:17:33Z",
+      "side": 1,
+      "message": "The BC 1.2 detector chip (BQ24392) that we\u0027re using is configured a little strangely. Essentially, we get a binary signal that the charger is either a SDP or not (CDP, DCP, proprietary). We then assume the upper limit is 2400mA and ramp. The charger may not actually support drawing 2400mA, but much less. With one particularly bad charger, we saw Vbus drop to 4V at just 400mA.\n\nRegarding how much current we actually draw, I\u0027ll have to get back to you once I take a measurement.",
+      "parentUuid": "d63e6f10_872c8a84",
+      "revId": "a09b5bdc68e59b785f8dc79bf19c3b0087fb4f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
