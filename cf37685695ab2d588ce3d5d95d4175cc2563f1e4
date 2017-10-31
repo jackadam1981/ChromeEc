@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ca4c7dd_72b6b491",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 838,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-31T15:55:49Z",
+      "side": 1,
+      "message": "Actually you can just unset CONFIG_BOARD_SPECIFIC_VERSION and let system_get_board_version do this for you.",
+      "revId": "cf37685695ab2d588ce3d5d95d4175cc2563f1e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
