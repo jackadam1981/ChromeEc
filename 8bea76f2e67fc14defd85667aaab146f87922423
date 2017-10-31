@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ad5a74b9_eb24968a",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-31T15:20:53Z",
+      "side": 1,
+      "message": "you can probably do a dedicated function for this case",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 35
+      },
+      "revId": "8bea76f2e67fc14defd85667aaab146f87922423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "059e99dd_4b64eeeb",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 1
@@ -13,6 +36,52 @@
       "writtenOn": "2017-10-28T00:13:12Z",
       "side": 1,
       "message": "the chip needs a 10ms delay here if the i2c read fails.\n... it can\u0027t wake up instantly.",
+      "revId": "8bea76f2e67fc14defd85667aaab146f87922423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96438426_7bc2e44a",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-31T15:20:53Z",
+      "side": 1,
+      "message": "does this mean \u0027Port 0\u0027 ? why (ie is this broken in some situation) ?",
+      "range": {
+        "startLine": 106,
+        "startChar": 22,
+        "endLine": 106,
+        "endChar": 25
+      },
+      "revId": "8bea76f2e67fc14defd85667aaab146f87922423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c51a3916_b46e14c6",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-31T15:20:53Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 12
+      },
       "revId": "8bea76f2e67fc14defd85667aaab146f87922423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -58,6 +127,75 @@
         "startChar": 25,
         "endLine": 109,
         "endChar": 29
+      },
+      "revId": "8bea76f2e67fc14defd85667aaab146f87922423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb427fcc_429e7463",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-31T15:20:53Z",
+      "side": 1,
+      "message": "it\u0027s a giant delay for the PD stack, what is this for ?",
+      "range": {
+        "startLine": 110,
+        "startChar": 2,
+        "endLine": 110,
+        "endChar": 13
+      },
+      "revId": "8bea76f2e67fc14defd85667aaab146f87922423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a714755_bb79511a",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-31T15:20:53Z",
+      "side": 1,
+      "message": "nit: the kernel style for if else\nif { \n} else {\n}\nor\nif\n  clause;\nelse\n  otherclause;\n\nnot something in between",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 7
+      },
+      "revId": "8bea76f2e67fc14defd85667aaab146f87922423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d29fcdc_f272a6d7",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-10-31T15:20:53Z",
+      "side": 1,
+      "message": "does the fact that you put it here means it\u0027s common for 8805 and 8751 (despite the title of the CL)",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 52
       },
       "revId": "8bea76f2e67fc14defd85667aaab146f87922423",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
