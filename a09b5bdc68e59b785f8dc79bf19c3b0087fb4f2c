@@ -52,6 +52,24 @@
       "revId": "a09b5bdc68e59b785f8dc79bf19c3b0087fb4f2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b889003_e639651d",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-10-31T16:26:27Z",
+      "side": 1,
+      "message": "The register takes values in 341.3mV steps. 4500 (and 4600) end up being set at ~4.439V. The next step is ~4.783V. I chose the lower value. Should I instead choose the higher one?",
+      "parentUuid": "350761b4_15277d2c",
+      "revId": "a09b5bdc68e59b785f8dc79bf19c3b0087fb4f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
