@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d3f441d_5700348a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3609,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-31T14:40:09Z",
+      "side": 1,
+      "message": "Will the host actually use this param? If not, it probably shouldn\u0027t be in this header, as it will only cause confusion for callers (and it kind of breaks the idea of this host command -- \"Inform the EC when entering a sleep state\", but DEFAULT_RESET doesn\u0027t sound like a sleep state).",
+      "range": {
+        "startLine": 3609,
+        "startChar": 1,
+        "endLine": 3609,
+        "endChar": 36
+      },
+      "revId": "982305c7523556ef5ab0d2ecaa15f7a5f108ffaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
