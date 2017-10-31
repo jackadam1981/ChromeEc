@@ -34,6 +34,24 @@
       "revId": "a09b5bdc68e59b785f8dc79bf19c3b0087fb4f2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "350761b4_15277d2c",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-10-31T16:21:19Z",
+      "side": 1,
+      "message": "Assuming your interpretation of this register is correct, it controls VBUS floor for \"HW ramp\" (eg. throttle ILIM once VBUS drops below this voltage). Our similar threshold for SW ramp is typically 4.6V (derived from BC1.2 min Vchg - tolerance). If we want HW ramp ramp to behave in a similar way, we should choose some floor close to 4.6V here?",
+      "parentUuid": "d63e6f10_872c8a84",
+      "revId": "a09b5bdc68e59b785f8dc79bf19c3b0087fb4f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
