@@ -12,6 +12,7 @@
 #include "common.h"
 #include "console.h"
 #include "compile_time_macros.h"
+#include "driver/charger/isl923x.h"
 #include "driver/pmic_tps650x30.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -326,13 +327,23 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 		charge_ma = max_ma;
 	}
 
-
 	/*
 	 * To protect the charge inductor, at voltages above 18V we should
 	 * set the current limit to 2.7A.
 	 */
 	if (charge_mv > 18000)
 		charge_ma = MIN(2700, charge_ma);
+
+	/*
+	 * If we're charging from a high powered BC1.2 charger, we should set
+	 * the charger's input voltage limit to ~4.5V in order to be kinder to
+	 * the charger.
+	 */
+	if (supplier == CHARGE_SUPPLIER_OTHER && charge_ma == 2400)
+		isl9238_set_input_voltage_regulation_ref(4500);
+	else
+		/* Otherwise, restore to default of 4.096V. */
+		isl9238_set_input_voltage_regulation_ref(4096);
 
 	charge_set_input_current_limit(MAX(charge_ma,
 					   CONFIG_CHARGER_INPUT_CURRENT),
