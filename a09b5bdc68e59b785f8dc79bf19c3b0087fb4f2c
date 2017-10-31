@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d63e6f10_872c8a84",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-10-31T15:28:29Z",
+      "side": 1,
+      "message": "I\u0027m not sure to understand.\n\nYou have a charger that can (supposedly) provide 2400 mA (I guess an Apple charger?), and the voltage drops below 4.5V before reaching that current?\n\nHow much current do you actually draw when you reach the 4.5V limit? What about if you set the limit to 4.096V?",
+      "revId": "a09b5bdc68e59b785f8dc79bf19c3b0087fb4f2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
