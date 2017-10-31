@@ -221,6 +221,10 @@
 #define ISL923X_OTG_CURRENT_STEP 128
 #define ISL923X_OTG_CURRENT_SHIFT 7
 
+/* Input voltage regulation voltage reference */
+#define ISL9238_INPUT_VOLTAGE_REF_STEP 341
+#define ISL9238_INPUT_VOLTAGE_REF_SHIFT 8
+
 /* Info register fields */
 #define ISL9237_INFO_PROG_RESISTOR_MASK 0xf
 #define ISL923X_INFO_TRICKLE_ACTIVE_MASK (1 << 4)
@@ -273,4 +277,20 @@ enum isl9237_fsm_state {
 #define INPUT_I_STEP  4
 
 #define I2C_ADDR_CHARGER ISL923X_ADDR
+
+/**
+ * Set the reference voltage for the input voltage regulation loop.
+ *
+ * This function writes to the Input Voltage Register(0x4B) which sets the
+ * minimum input voltage for the regulation loop.  The charger will reduce the
+ * input current being pulled from the adapter to attempt to keep the voltage
+ * from falling significantly beneath this reference voltage.  Setting this
+ * reference voltage higher may result in drawing less current than the
+ * adapter's maximum current.  Note that voltage is set in steps of 341.3 mV.
+ *
+ * @param voltage: Desired voltage in mV.
+ * @return EC_SUCCESS, or otherwise on error.
+ */
+int isl9238_set_input_voltage_regulation_ref(int voltage);
+
 #endif /* __CROS_EC_ISL923X_H */
