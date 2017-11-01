@@ -291,6 +291,11 @@ void battery_get_params(struct batt_params *batt)
 	/* If any of those reads worked, the battery is responsive */
 	if ((batt->flags & flags_to_check) != flags_to_check) {
 		batt->flags |= BATT_FLAG_RESPONSIVE;
+		/*
+		 * Assuming the battery wants to be charged as long as
+		 * it's responsive.
+		 */
+		batt->flags |= BATT_FLAG_WANT_CHARGE;
 		batt->is_present = BP_YES;
 	} else
 		batt->is_present = BP_NOT_SURE;
