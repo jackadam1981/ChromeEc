@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f70574e5_269f1688",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-11-01T18:32:48Z",
+      "side": 1,
+      "message": "It takes another patch to fix this but thermal_params[2] and temp_sensors[2] are burning extra cpu cycles for TMP431, which has only one remote sensor.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 52
+      },
+      "revId": "1822d25cf820c66ebaa5ca084923a2c9738703ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5275aff_2951b6d3",
+        "filename": "common/thermal.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-11-01T18:32:48Z",
+      "side": 1,
+      "message": "Does this have a meaning? If the first condition (t \u003e limit) isn\u0027t true, t is either equal to limit or less than limit necessarily.",
+      "range": {
+        "startLine": 91,
+        "startChar": 15,
+        "endLine": 91,
+        "endChar": 24
+      },
+      "revId": "1822d25cf820c66ebaa5ca084923a2c9738703ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b89a4bd2_95389636",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-11-01T18:32:48Z",
+      "side": 1,
+      "message": "Can you get rid of these and make print_status print fake and real temperatures?",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 2
+      },
+      "revId": "1822d25cf820c66ebaa5ca084923a2c9738703ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
