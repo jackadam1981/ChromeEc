@@ -540,7 +540,9 @@ DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 
 static void board_set_tablet_mode(void)
 {
-	tablet_set_mode(!gpio_get_level(GPIO_TABLET_MODE_L));
+	/* b:67917181: Ignore tablet_mode pin status for clamshell SKUs */
+	tablet_set_mode((!gpio_get_level(GPIO_TABLET_MODE_L)) &
+		SKU_IS_CONVERTIBLE(sku_id));
 }
 
 /* Initialize board. */
