@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "274ba965_96250971",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-01T17:44:10Z",
+      "side": 1,
+      "message": "\"board_\" namespace seems to imply it\u0027s implemented in board code, but that\u0027s mostly not the case anymore.\n\nHow about naming this \"charge_is_consuming_full_input()\" or similar, move it to charge_state_v2.c, and remove __attribute__((weak)). Then conveniently boards which don\u0027t use charge_state_v2 (only samus_pd) can just implement charge_is_consuming_full_input() by themselves, no need for weak linking.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "23b72b3ccfdb2a1fd2b5352db280c58b1eeb98e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7859f20b_907a4356",
+        "filename": "test/charge_ramp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-01T17:44:10Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "23b72b3ccfdb2a1fd2b5352db280c58b1eeb98e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
