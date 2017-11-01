@@ -19,9 +19,12 @@ enum chg_ramp_vbus_state {
 /**
  * Check if board is consuming full input current
  *
+ * This returns true if the battery charge percentage is between 2% and 95%
+ * exclusive.
+ *
  * @return Board is consuming full input current
  */
-int board_is_consuming_full_charge(void);
+int charge_is_consuming_full_input_current(void);
 
 /**
  * Check if VBUS is too low

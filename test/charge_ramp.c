@@ -64,7 +64,13 @@ int usb_charger_ramp_max(int supplier, int sup_curr)
 	return 0;
 }
 
-int board_is_consuming_full_charge(void)
+/* This too is unused, but necessary to link. */
+int charge_get_percent(void)
+{
+	return 42; /* The answer to everything. */
+}
+
+int charge_is_consuming_full_input_current(void)
 {
 	return charge_limit_ma <= system_load_current_ma;
 }

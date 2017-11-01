@@ -6,6 +6,7 @@
 /* Charge input current limit ramp module for Chrome EC */
 
 #include "charge_manager.h"
+#include "charge_state.h"
 #include "common.h"
 #include "system.h"
 #include "usb_charge.h"
