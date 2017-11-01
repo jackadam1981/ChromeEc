@@ -6,6 +6,7 @@
 /* Charge input current limit ramp module for Chrome EC */
 
 #include "charge_manager.h"
+#include "charge_state.h"
 #include "common.h"
 #include "system.h"
 #include "usb_charge.h"
@@ -38,4 +39,12 @@ test_mockable int chg_ramp_max(int supplier, int sup_curr)
 
 	/* Otherwise ask the BC1.2 detect module */
 	return usb_charger_ramp_max(supplier, sup_curr);
+}
+
+__attribute__((weak))
+int board_is_consuming_full_charge(void)
+{
+	int chg_pct = charge_get_percent();
+
+	return chg_pct > 2 && chg_pct < 95;
 }
