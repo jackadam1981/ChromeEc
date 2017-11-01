@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d70ce2d1_00d23339",
+        "filename": "common/charge_ramp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-01T17:47:00Z",
+      "side": 1,
+      "message": "Sure, that sounds good; let me do that.",
+      "parentUuid": "274ba965_96250971",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "23b72b3ccfdb2a1fd2b5352db280c58b1eeb98e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7859f20b_907a4356",
         "filename": "test/charge_ramp.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-01T17:44:10Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 10
+      },
+      "revId": "23b72b3ccfdb2a1fd2b5352db280c58b1eeb98e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "754fce8f_acfedc1f",
+        "filename": "test/charge_ramp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-01T17:47:00Z",
+      "side": 1,
+      "message": "Just random.",
+      "parentUuid": "7859f20b_907a4356",
       "range": {
         "startLine": 70,
         "startChar": 8,
