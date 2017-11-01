@@ -39,6 +39,30 @@
       "revId": "af4b39a889223967e0335538504dd0284c465602",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6d9c5e5_7296a876",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-01T02:40:15Z",
+      "side": 1,
+      "message": "I mostly copied from the lead device. I agree the default config for KSO*/KSI* should just work here.",
+      "parentUuid": "bfef4d26_ff862cfc",
+      "range": {
+        "startLine": 132,
+        "startChar": 54,
+        "endLine": 132,
+        "endChar": 67
+      },
+      "revId": "af4b39a889223967e0335538504dd0284c465602",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
