@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f0f3a411_43371dc0",
+        "filename": "include/charge_ramp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-01T18:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85d34877_449e112d",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 49
+      },
+      "revId": "9b58042b558d35607281823935fc7ebdc6b3cd18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7feee8b_fe86d1b1",
         "filename": "test/charge_ramp.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-01T18:06:59Z",
       "side": 1,
       "message": "Maybe this isn\u0027t needed anymore?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 47
+      },
+      "revId": "9b58042b558d35607281823935fc7ebdc6b3cd18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bca3eef4_4bbac3d0",
+        "filename": "test/charge_ramp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-01T18:16:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7feee8b_fe86d1b1",
       "range": {
         "startLine": 67,
         "startChar": 0,
