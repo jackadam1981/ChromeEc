@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1afa950b_23f1f038",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-01T21:17:37Z",
+      "side": 1,
+      "message": "This is 0x7 RegSenseLow, right? Why write this reg twice?",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 32
+      },
+      "revId": "db63a70e48e7422e6a9fa6a752acead7507ace47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d383fd7_7679d4cb",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 1
