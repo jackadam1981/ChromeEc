@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d383fd7_7679d4cb",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-01T20:56:38Z",
+      "side": 1,
+      "message": "If we define CONFIG_BOARD_VERSION and CONFIG_BOARD_SPECIFIC_VERSION then board_get_version() will be called from the \u0027ver\u0027 console command and we shouldn\u0027t need a new console command.",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 27
+      },
+      "revId": "db63a70e48e7422e6a9fa6a752acead7507ace47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
