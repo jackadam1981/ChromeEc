@@ -185,6 +185,16 @@ static void sps_configure(enum sps_mode mode, enum spi_clock_mode clk_mode,
 	/* xfer 0xff when tx fifo is empty */
 	GREG32(SPS, DUMMY_WORD) = GC_SPS_DUMMY_WORD_DEFAULT;
 
+	if (!GREAD_FIELD(SPS, VAL, CSB)) {
+		/*
+		 * Reset while the external controller is mid SPI
+		 * transaction.
+		 */
+		ccprintf("%s: reset while CS active\n", __func__);
+		while (!GREAD_FIELD(SPS, VAL, CSB))
+			;
+	}
+
 	/* [5,4,3]           [2,1,0]
 	 * RX{DIS, EN, RST} TX{DIS, EN, RST}
 	 */
