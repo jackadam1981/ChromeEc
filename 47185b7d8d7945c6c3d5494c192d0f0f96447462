@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d650f71_987d797d",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-01T14:47:52Z",
+      "side": 1,
+      "message": "You have given this flag a non-standard meaning, see driver/battery/smart.c:\n\n\t/*\n\t * Charging allowed if both desired voltage and current are nonzero\n\t * and battery isn\u0027t full (and we read them all correctly).\n\t */\n\nShouldn\u0027t it work the same way here?",
+      "range": {
+        "startLine": 298,
+        "startChar": 17,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "47185b7d8d7945c6c3d5494c192d0f0f96447462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
