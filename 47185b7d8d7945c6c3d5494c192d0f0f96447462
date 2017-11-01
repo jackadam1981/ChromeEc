@@ -22,6 +22,30 @@
       "revId": "47185b7d8d7945c6c3d5494c192d0f0f96447462",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7987bc4_2c71cd2e",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-01T15:36:27Z",
+      "side": 1,
+      "message": "I hope I had seen this comment earlier. I\u0027ll fix it to match the definition of BATT_FLAG_WANT_CHARGE here.",
+      "parentUuid": "2d650f71_987d797d",
+      "range": {
+        "startLine": 298,
+        "startChar": 17,
+        "endLine": 298,
+        "endChar": 38
+      },
+      "revId": "47185b7d8d7945c6c3d5494c192d0f0f96447462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
