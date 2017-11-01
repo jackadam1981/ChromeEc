@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e8d7c20_42bbee4e",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-01T14:57:17Z",
+      "side": 1,
+      "message": "This may cause us to needlessly throttle 5V USB-C / PD charging, see USB-C spec p.190, \"USB Type-C Cable’s Output as a Function of Load...\". Chargers are allowed to drop as low as 4V for 3A load.",
+      "range": {
+        "startLine": 311,
+        "startChar": 57,
+        "endLine": 311,
+        "endChar": 63
+      },
+      "revId": "dc78b9b6283c16157412fdaf6da84f1eb3bc20f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
