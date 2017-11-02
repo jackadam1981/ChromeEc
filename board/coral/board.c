@@ -541,6 +541,8 @@ DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 static void board_set_tablet_mode(void)
 {
 	/* b:67917181: Ignore tablet_mode pin status for clamshell SKUs */
+	CPRINTF("HP: TABLET_MODE_L=%d conv=%d\n",
+		gpio_get_level(GPIO_TABLET_MODE_L), SKU_IS_CONVERTIBLE(sku_id));
 	tablet_set_mode((!gpio_get_level(GPIO_TABLET_MODE_L)) &
 		SKU_IS_CONVERTIBLE(sku_id));
 }
