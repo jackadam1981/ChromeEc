@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "29fe0232_2e706ebd",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-11-02T00:00:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c7d466_a76b172a",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 45
+      },
+      "revId": "db63a70e48e7422e6a9fa6a752acead7507ace47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1afa950b_23f1f038",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "948a1273_0723c051",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-11-02T00:00:07Z",
+      "side": 1,
+      "message": "See: http://www.ti.com/lit/ds/scps153b/scps153b.pdf\n\n0x7 is \"Configuration register\" and indicates GPIO direction.\n\nI\u0027ve added names.",
+      "parentUuid": "f4ceed97_f75843d9",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 32
+      },
+      "revId": "db63a70e48e7422e6a9fa6a752acead7507ace47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d383fd7_7679d4cb",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 1
@@ -83,6 +131,30 @@
       "writtenOn": "2017-11-01T20:56:38Z",
       "side": 1,
       "message": "If we define CONFIG_BOARD_VERSION and CONFIG_BOARD_SPECIFIC_VERSION then board_get_version() will be called from the \u0027ver\u0027 console command and we shouldn\u0027t need a new console command.",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 468,
+        "endChar": 27
+      },
+      "revId": "db63a70e48e7422e6a9fa6a752acead7507ace47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30c3b18f_552badf2",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-11-02T00:00:07Z",
+      "side": 1,
+      "message": "Thanks! didn\u0027t know that was there.",
+      "parentUuid": "4d383fd7_7679d4cb",
       "range": {
         "startLine": 457,
         "startChar": 0,
