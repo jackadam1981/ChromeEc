@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b0f3e40_28327640",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-02T16:21:42Z",
+      "side": 1,
+      "message": "I added a note to clarify it. For protected / production systems, we typically verify our battery is able to provide sufficient power before powering-on AP (and then sysjumping / negotiating PD). But some developer / factory setups are battery-less, and usually unprotected. I think it\u0027s better to break the spec and possibly brown out the charger than not pull sufficient current and constantly brown out the device (we\u0027ve implemented this on some platforms before, see the \"Ignore lower charge ceiling on PD transition\" code I deleted in some board.c files).\n\nBTW, I think it might be a good idea to move all of the boot / don\u0027t boot / inhibit power-on code into charge_manager and make it based on safe_mode. I will send some more CLs later.",
+      "parentUuid": "5b244bb0_4b0d1d18",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 18
+      },
+      "revId": "8d1c57d1ff37fea87959b3ef516ea14d5674829b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8c25680_e6aa74cd",
         "filename": "common/charge_manager.c",
         "patchSetId": 3
@@ -59,6 +83,30 @@
       "writtenOn": "2017-11-02T09:45:11Z",
       "side": 1,
       "message": "nit: putting the condition on #endif is very nice for the readers, given we have too many of them, e.g.\n#endif /* !CONFIG_CHARGE_MANAGER_DRP_CHARGING */",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 6
+      },
+      "revId": "8d1c57d1ff37fea87959b3ef516ea14d5674829b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8441fdf9_4a5840a7",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-02T16:21:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20515ba8_a1535dac",
       "range": {
         "startLine": 156,
         "startChar": 0,
