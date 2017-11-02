@@ -49,16 +49,25 @@ GPIO(EC_PCH_RTCRST,	PIN(B, 7), GPIO_INPUT)			/* EC_PCH_RTCRST TODO: Not used yet
  * I2C pins should be configured as inputs until I2C module is
  * initialized. This will avoid driving the lines unintentionally.
  */
-GPIO(I2C0_SCL0,     PIN(B, 5), GPIO_ODR_HIGH)
-GPIO(I2C0_SDA0,     PIN(B, 4), GPIO_ODR_HIGH)
-GPIO(I2C0_SCL1,     PIN(B, 3), GPIO_ODR_HIGH)
-GPIO(I2C0_SDA1,     PIN(B, 2), GPIO_ODR_HIGH)
+GPIO(I2C0_SCL,     PIN(B, 5), GPIO_ODR_HIGH)
+GPIO(I2C0_SDA,     PIN(B, 4), GPIO_ODR_HIGH)
+//GPIO(I2C0_SCL1,     PIN(B, 3), GPIO_ODR_HIGH)
+//GPIO(I2C0_SDA1,     PIN(B, 2), GPIO_ODR_HIGH)
 GPIO(I2C1_SCL,      PIN(9, 0), GPIO_ODR_HIGH)
 GPIO(I2C1_SDA,      PIN(8, 7), GPIO_ODR_HIGH)
 GPIO(I2C2_SCL,      PIN(9, 2), GPIO_ODR_HIGH)
 GPIO(I2C2_SDA,      PIN(9, 1), GPIO_ODR_HIGH)
 GPIO(I2C3_SCL,      PIN(D, 1), GPIO_ODR_HIGH)
 GPIO(I2C3_SDA,      PIN(D, 0), GPIO_ODR_HIGH)
+GPIO(I2C7_SCL,      PIN(B, 3), GPIO_ODR_HIGH)
+GPIO(I2C7_SDA,      PIN(B, 2), GPIO_ODR_HIGH)
+
+//GPIO(I2C4_SCL,	PIN(8, 5), GPIO_ODR_HIGH)
+//GPIO(I2C4_SDA,	PIN(8, 6), GPIO_ODR_HIGH)
+//GPIO(I2C5_SCL,	PIN(3, 3), GPIO_ODR_HIGH)
+//GPIO(I2C5_SDA,	PIN(3, 6), GPIO_ODR_HIGH)
+//GPIO(I2C6_SCL,	PIN(C, 2), GPIO_ODR_HIGH)
+//GPIO(I2C6_SDA,	PIN(C, 1), GPIO_ODR_HIGH)
 
 /* Type-C control GPIOs */
 UNIMPLEMENTED(USB_C0_5V_EN)
@@ -131,26 +140,17 @@ GPIO(NC_57,	PIN(5, 7), GPIO_INPUT)
 ALTERNATE(PIN_MASK(6, 0x30), 1,  MODULE_UART,        0)    /* GPIO64/65    */
 
 /* Alternate pins for I2C */
-ALTERNATE(PIN_MASK(B, 0x0C), 1,  MODULE_I2C,         0)    /* I2C0SDA1/I2C0SCL1       GPIOB2/B3	   */
-ALTERNATE(PIN_MASK(B, 0x30), 1,  MODULE_I2C,         0)    /* I2C0SDA0/I2C0SCL0       GPIOB4/B5	   */
-ALTERNATE(PIN_MASK(8, 0x80), 1,  MODULE_I2C,         0)    /* I2C1SDA                 GPIO87       */
-ALTERNATE(PIN_MASK(9, 0x07), 1,  MODULE_I2C,         0)    /* I2C1SCL/I2C2SDA/I2C2SCL GPIO90/91/92 */
-ALTERNATE(PIN_MASK(D, 0x03), 1,  MODULE_I2C,         0)    /* I2C3SDA/I2C3SCL         GPIOD0/D1    */
+ALTERNATE(PIN_MASK(B, 0x0C), 1,  MODULE_I2C,         0)    /* I2C7_SDA/I2C7_SCL       GPIOB2/B3	   */
+ALTERNATE(PIN_MASK(B, 0x30), 1,  MODULE_I2C,         0)    /* I2C0_SDA/I2C0_SCL       GPIOB4/B5	   */
+ALTERNATE(PIN_MASK(8, 0x80), 1,  MODULE_I2C,         0)    /* I2C1_SDA                GPIO87       */
+ALTERNATE(PIN_MASK(9, 0x07), 1,  MODULE_I2C,         0)    /* I2C1_SCL/I2C2_SDA/I2C2_SCL GPIO90/91/92 */
+ALTERNATE(PIN_MASK(D, 0x03), 1,  MODULE_I2C,         0)    /* I2C3_SDA/I2C3_SCL       GPIOD0/D1    */
 
-/* Alternate pins for ADC/SPI/PWM/MFT */
+/* Alternate pins for ADC */
 ALTERNATE(PIN_MASK(4, 0x38), 1,  MODULE_ADC,         0)    /* ADC                     GPIO45/44/43 */
-ALTERNATE(PIN_MASK(A, 0x0A), 1,  MODULE_SPI,         0)    /* SPIP_MOSI/SPIP_SCLK     GPIOA3/A1	   */
-ALTERNATE(PIN_MASK(9, 0x20), 1,  MODULE_SPI,         0)    /* SPIP_MISO               GPIO95       */
-ALTERNATE(PIN_MASK(C, 0x04), 3,  MODULE_PWM,         0)    /* PWM1 for PWM/KBLIGHT Test GPIOC2     */
+
 /* Alternative functionality for FANS */
-#ifdef CONFIG_FANS
-ALTERNATE(PIN_MASK(C, 0x08), 7,  MODULE_PWM,         0)    /* PWM0 for PWM/FAN Test   GPIOC3       */
-#if NPCX_TACH_SEL2
-ALTERNATE(PIN_MASK(9, 0x08), 3,  MODULE_PWM,         0)    /* MFT-1/TA1_TACH1 for FAN GPIO93       */
-#else
 ALTERNATE(PIN_MASK(4, 0x01), 3,  MODULE_PWM,         0)    /* MFT-1/TA1_TACH1 for FAN Test GPIO40  */
-#endif
-#endif
 
 /* Keyboard pins */
 #define GPIO_KB_INPUT (GPIO_INPUT)

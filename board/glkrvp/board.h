@@ -52,6 +52,7 @@
 
 /* UART */
 #define NPCX_UART_MODULE2    1 /* 0:GPIO10/11 1:GPIO64/65 as UART */
+#define NPCX7_PWM1_SEL       0 /* GPIO C2 is not used as PWM1. */
 
 /* USB-A config */
 
@@ -88,7 +89,6 @@
 #define CONFIG_I2C_MASTER
 
 #define CONFIG_LID_SWITCH
-#define CONFIG_LTO
 #define CONFIG_UART_HOST 0
 
 #define CONFIG_LOW_POWER_IDLE
@@ -112,9 +112,9 @@
 #define NPCX_TACH_SEL2       0 /* 0:GPIO40/A4 1:GPIO93/D3 as TACH */
 
 /* I2C ports */
-#define I2C_PORT_CHARGER	NPCX_I2C_PORT3
-#define I2C_PORT_BATTERY	NPCX_I2C_PORT3
-#define I2C_PORT_USB_MUX	NPCX_I2C_PORT0_1
+#define I2C_PORT_CHARGER	NPCX_I2C_PORT3_0
+#define I2C_PORT_BATTERY	NPCX_I2C_PORT3_0
+#define I2C_PORT_USB_MUX	NPCX_I2C_PORT7_0
 
 /* EC exclude modules */
 #undef CONFIG_ADC
