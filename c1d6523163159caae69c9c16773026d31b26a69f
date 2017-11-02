@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0ca1fea4_0a10a08d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-02T15:17:46Z",
+      "side": 1,
+      "message": "will verify this",
+      "parentUuid": "d97aa2ae_1950fa9d",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 37
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "17e43349_e9a4b205",
         "filename": "common/host_event_commands.c",
         "patchSetId": 8
@@ -36,6 +60,24 @@
       "writtenOn": "2017-10-31T21:21:23Z",
       "side": 1,
       "message": "We should reset response structure here just to be sure we don\u0027t send back any invalid data:\n\nmemset(r, 0, sizeof(*r));",
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6ff8e4_21e99a58",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-02T15:17:46Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "17e43349_e9a4b205",
       "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "1cf94efe_9ff4614f",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-02T15:17:46Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "63562218_8c133012",
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "836a192a_f0efa05f",
         "filename": "common/host_event_commands.c",
         "patchSetId": 8
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "8cbc6017_f9180462",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-02T15:17:46Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "836a192a_f0efa05f",
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faadb207_c1c1f49d",
         "filename": "common/host_event_commands.c",
         "patchSetId": 8
@@ -87,6 +165,30 @@
       "writtenOn": "2017-10-31T21:21:23Z",
       "side": 1,
       "message": "*mask \u003d 0;",
+      "range": {
+        "startLine": 605,
+        "startChar": 1,
+        "endLine": 605,
+        "endChar": 2
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce78f57e_e2e701fe",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-02T15:17:46Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "faadb207_c1c1f49d",
       "range": {
         "startLine": 605,
         "startChar": 1,
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "0a631f61_3faa36f4",
+        "filename": "include/host_command.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-02T15:17:46Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "cef55b6d_0637d949",
+      "range": {
+        "startLine": 192,
+        "startChar": 3,
+        "endLine": 192,
+        "endChar": 22
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51a4ac69_3b73830b",
         "filename": "power/common.c",
         "patchSetId": 8
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "11c7ca81_d06698bd",
+        "filename": "power/common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-02T15:17:46Z",
+      "side": 1,
+      "message": "Make sense. will implement this",
+      "parentUuid": "51a4ac69_3b73830b",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 6
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8bf287c_59fe35fa",
         "filename": "power/common.c",
         "patchSetId": 8
@@ -156,6 +306,30 @@
       "writtenOn": "2017-10-31T21:21:23Z",
       "side": 1,
       "message": "Why is this required? LPC_HOST_EVENT_WAKE will be eventually overridden when state machine reaches POWER_S5.",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 3
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d682367b_ccd451a3",
+        "filename": "power/common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-02T15:17:46Z",
+      "side": 1,
+      "message": "With present logic, without having the lazy_wm_in_use check,  active_wm would be set to 0 on S3S5. Even if active wake mask was set by host (before initiating S5), this flow would force use of lazy_wm. But with the new logic suggested by Furquan (previous comment), this would be taken care.",
+      "parentUuid": "f8bf287c_59fe35fa",
       "range": {
         "startLine": 233,
         "startChar": 2,
