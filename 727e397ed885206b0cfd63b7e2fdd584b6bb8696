@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e2bbae88_c898c661",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2017-11-02T21:08:16Z",
+      "side": 1,
+      "message": ":(",
+      "parentUuid": "efa74a03_3441e662",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "727e397ed885206b0cfd63b7e2fdd584b6bb8696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2067d2ec_2f9adbae",
         "filename": "board/bob/battery.c",
         "patchSetId": 3
