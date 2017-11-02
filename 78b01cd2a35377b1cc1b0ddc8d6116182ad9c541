@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3ef1cb_337e9ae6",
+        "filename": "power/rk3399.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-02T15:47:52Z",
+      "side": 1,
+      "message": "I lowered this to still meet the pack vendor\u0027s recommendation. The consequence of getting this too short is that the device won\u0027t auto-power on, which isn\u0027t disastrous. But, after 6.5 seconds of staring at a black screen, I think most users will be reaching for the power button anyway.",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "78b01cd2a35377b1cc1b0ddc8d6116182ad9c541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
