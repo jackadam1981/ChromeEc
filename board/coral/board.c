@@ -542,6 +542,9 @@ static void board_set_tablet_mode(void)
 {
 	int tablet_mode = 0;
 
+	CPRINTF("HP: TABLET_MODE_L=%d conv=%d\n",
+		gpio_get_level(GPIO_TABLET_MODE_L), SKU_IS_CONVERTIBLE(sku_id));
+
 	if (SKU_IS_CONVERTIBLE(sku_id))
 		tablet_mode = !gpio_get_level(GPIO_TABLET_MODE_L);
 
