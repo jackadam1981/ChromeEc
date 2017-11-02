@@ -145,6 +145,8 @@ enum ec_error_list {
 	EC_ERROR_UNCHANGED = 22,
 	/* Memory allocation */
 	EC_ERROR_MEMORY_ALLOCATION = 23,
+	/* something wrong in a HW */
+	EC_ERROR_HW_INTERNAL = 24,
 
 	/* Verified boot errors */
 	EC_ERROR_VBOOT_SIGNATURE = 0x1000, /* 4096 */
