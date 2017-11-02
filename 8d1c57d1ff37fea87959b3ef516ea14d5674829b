@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b244bb0_4b0d1d18",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-02T09:45:11Z",
+      "side": 1,
+      "message": "For systems having battery cut-off close to the charge manager safe thresholds, when plugged a charger browning out on high current transitions, it\u0027s kind of random behavior (timings between battery transitions, PD negotiation ...)",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 18
+      },
+      "revId": "8d1c57d1ff37fea87959b3ef516ea14d5674829b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8c25680_e6aa74cd",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-02T09:45:11Z",
+      "side": 1,
+      "message": "at startup if we are plugged to a DRP  (which we wouldn\u0027t charge from by default) ), is this actually cutting charge current after the transition ?  I\u0027m not sure by reading the code.\n\noh actually, this what your unit test verifies ...\ngood job",
+      "range": {
+        "startLine": 101,
+        "startChar": 2,
+        "endLine": 102,
+        "endChar": 68
+      },
+      "revId": "8d1c57d1ff37fea87959b3ef516ea14d5674829b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20515ba8_a1535dac",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-02T09:45:11Z",
+      "side": 1,
+      "message": "nit: putting the condition on #endif is very nice for the readers, given we have too many of them, e.g.\n#endif /* !CONFIG_CHARGE_MANAGER_DRP_CHARGING */",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 6
+      },
+      "revId": "8d1c57d1ff37fea87959b3ef516ea14d5674829b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
