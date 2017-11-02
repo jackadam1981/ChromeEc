@@ -138,6 +138,7 @@
 #define I2C_PORT_PD_MCU MEC1322_I2C1
 #define I2C_PORT_TCPC MEC1322_I2C1
 #define I2C_PORT_ACCEL MEC1322_I2C2
+#define I2C_PORT_ALS MEC1322_I2C2
 #define I2C_PORT_BATTERY MEC1322_I2C3
 #define I2C_PORT_CHARGER MEC1322_I2C3
 
@@ -145,6 +146,10 @@
 #define I2C_PORT_THERMAL I2C_PORT_PMIC
 
 /* Sensors */
+#define CONFIG_ALS
+#define CONFIG_CMD_ALS
+#define CONFIG_CMD_BH1730_TEST
+#define CONFIG_ALS_BH1730
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
 #define CONFIG_ACCELGYRO_BMI160
@@ -210,6 +215,11 @@ enum power_signal {
 
 	/* Number of X86 signals */
 	POWER_SIGNAL_COUNT
+};
+
+enum als_id {
+        ALS_BH1730 = 0,
+        ALS_COUNT
 };
 
 /*

@@ -6,6 +6,7 @@
 /* Caroline board-specific configuration */
 
 #include "adc_chip.h"
+#include "als.h"
 #include "bd99992gw.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -13,6 +14,7 @@
 #include "charger.h"
 #include "chipset.h"
 #include "console.h"
+#include "driver/als_bh1730.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
 #include "extpower.h"
@@ -605,6 +607,12 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #endif /* HAS_TASK_MOTIONSENSE */
+
+#if HAS_TASK_ALS
+struct als_t als[] = {
+        {"Rohm", bh1730_init, bh1730_read_lux, 1}
+};
+#endif
 
 int board_get_version(void)
 {
