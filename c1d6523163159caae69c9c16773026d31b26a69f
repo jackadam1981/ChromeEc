@@ -339,6 +339,30 @@
       "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ff0b17d_627aaeb1",
+        "filename": "power/common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-02T18:00:42Z",
+      "side": 1,
+      "message": "Yes, the above logic I provided would cover the case you pointed out. But thinking about it more, I came across two cases that we need to have special handling for:\n\n1. Old BIOS and new EC -- programming of S0ix mask: We need to still use a default S0ix wake mask here if host did not program active mask.\n\n2. New BIOS and new EC -- what happens if host programs both active and lazy masks? -- I have added a paragraph in the design doc towards the end to cover this.\n\nOverall the above logic should look something like this:\nstatic void power_set_active_wake_mask(enum power_state state)\n{\n»       uint32_t wake_mask;\n\n»       /* Reset active mask to 0 after coming back to S0. */\n»       if (state \u003d\u003d POWER_S0)\n»       »       wake_mask \u003d 0;\n»       /* If not in S0, then honor current mask if set by host. */\n»       else if (lpc_is_active_mask_set_by_host())\n»       »       return;\n»       /* If host has not set active mask, check if lazy mask is available. for this power state. */\n»       else if (lpc_get_lazy_wake_mask(state, \u0026wake_mask))\n»       »       return;\n\n»       /* Ensure S0ix mask is non-zero. */\n»       if ((state \u003d\u003d POWER_S0IX) \u0026\u0026 (wake_mask \u003d\u003d 0))\n»       »       wake_mask \u003d get_default_s0ix_mask();\n\n»       /* Set active mask and reset active_mask_set_by_host flag. */\n»       lpc_reset_active_mask(wake_mask);\n}\n\nLet me know what you think.",
+      "parentUuid": "d682367b_ccd451a3",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 3
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
