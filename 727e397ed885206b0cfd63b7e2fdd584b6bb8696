@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2067d2ec_2f9adbae",
+        "filename": "board/bob/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-02T15:45:22Z",
+      "side": 1,
+      "message": "Write / read to manuf. access normally come in pairs. Can you double check that write A + write B + read doesn\u0027t cause strange behavior (eg. read from A buffered and returned instead of read from B)?",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 64
+      },
+      "revId": "727e397ed885206b0cfd63b7e2fdd584b6bb8696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
