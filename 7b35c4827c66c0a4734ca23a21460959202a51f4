@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33ae449e_87359c2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-11-02T02:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce653a9_68cee59c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 59
+      },
+      "revId": "7b35c4827c66c0a4734ca23a21460959202a51f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbe00f19_6927d732",
         "filename": "chip/ish/hpet.h",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "31181368_f3c83b8e",
+        "filename": "chip/ish/hpet.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-11-02T02:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbe00f19_6927d732",
+      "range": {
+        "startLine": 62,
+        "startChar": 46,
+        "endLine": 62,
+        "endChar": 47
+      },
+      "revId": "7b35c4827c66c0a4734ca23a21460959202a51f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfd2618e_a41606bc",
         "filename": "chip/ish/hwtimer.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-10-30T18:08:40Z",
       "side": 1,
       "message": "Isn\u0027t this supposed to be CLOCK_FACTOR?",
+      "range": {
+        "startLine": 61,
+        "startChar": 20,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "7b35c4827c66c0a4734ca23a21460959202a51f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21593db3_72485c49",
+        "filename": "chip/ish/hwtimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1117579
+      },
+      "writtenOn": "2017-11-02T02:44:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd2618e_a41606bc",
       "range": {
         "startLine": 61,
         "startChar": 20,
