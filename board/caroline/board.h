@@ -113,6 +113,7 @@
 #define CONFIG_TEMP_SENSOR_BD99992GW
 #define CONFIG_THERMISTOR_NCP15WB
 
+#define CONFIG_REPLACE_LOADER_WITH_BSS_SLOW
 /*
  * Enable 1 slot of secure temporary storage to support
  * suspend/resume with read/write memory training.
