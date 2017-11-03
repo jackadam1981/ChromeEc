@@ -16,6 +16,24 @@
       "revId": "aae2b1df17d2abe042b6072490767f43f0ff43b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e844098_7b7d2624",
+        "filename": "board/coral/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2017-11-03T16:32:50Z",
+      "side": 1,
+      "message": "Simply return was my original idea as well, I then changed to this considering initial static value of:\n\ncommon/tablet_mode.c: line 9\nstatic int tablet_mode \u003d 1;",
+      "parentUuid": "74b46dba_f40eeb3d",
+      "revId": "aae2b1df17d2abe042b6072490767f43f0ff43b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
