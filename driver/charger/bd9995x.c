@@ -55,6 +55,14 @@ static enum bd9995x_command charger_map_cmd = BD9995X_INVALID_COMMAND;
 /* Mutex for active register set control. */
 static struct mutex bd9995x_map_mutex;
 
+/* manual control charge mode */
+static int manual_normal_mode_status;
+
+void set_manual_normal_mode_status(int value)
+{
+	manual_normal_mode_status = value;
+}
+
 #ifdef HAS_TASK_USB_CHG
 /* USB switch */
 static enum usb_switch usb_switch_state[BD9995X_CHARGE_PORT_COUNT] = {
@@ -745,11 +753,13 @@ int charger_set_current(int current)
 	 * the charge current feedback amp (VREF_CHG) is set to 0V. Hence
 	 * the DCDC stops switching (because of the EA offset).
 	 */
-	if (!current || bd9995x_is_discharging_on_ac()) {
+	if (!current || !manual_normal_mode_status) {
 		chg_enable = 0;
 		rv = bd9995x_charger_enable(0);
 		if (rv)
 			return rv;
+		else
+			return EC_SUCCESS;
 	}
 
 	rv = ch_raw_write16(BD9995X_CMD_IPRECH_SET,
