@@ -9,7 +9,7 @@
 # IT83xx SoC family has an Andes N801 core.
 CORE:=nds32
 
-CFLAGS_CPU+=-mno-gp-direct
+CFLAGS_CPU+=-mcmodel=large
 
 # Required chip modules
 chip-y=hwtimer.o uart.o gpio.o system.o clock.o irq.o intc.o
