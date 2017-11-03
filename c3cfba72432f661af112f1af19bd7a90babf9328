@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4365132_db5a63a7",
+        "filename": "board/coral/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-11-03T16:42:58Z",
+      "side": 1,
+      "message": "Can you just use a local variable then? It reads clearer, imo.\n\nint tablet_mode \u003d 0;\n\nif (SKU_IS_CONVERTIBLE(sku_id))\n  tablet_mode \u003d !gpio_get_level(GPIO_TABLET_MODE_L);\n\ntablet_set_mode(tablet_mode);",
+      "revId": "c3cfba72432f661af112f1af19bd7a90babf9328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
