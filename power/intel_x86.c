@@ -58,6 +58,28 @@ static const int sleep_sig[] = {
 
 static int power_s5_up;       /* Chipset is sequencing up or down */
 
+#ifdef CONFIG_CHARGER
+/* Flag to indicate if power up was inhibited due to low battery SOC level. */
+static int power_up_inhibited;
+
+static void power_up_inhibited_check(void)
+{
+	if (!power_up_inhibited)
+		return;
+
+	if (charge_prevent_power_on(0) || charge_want_shutdown()) {
+		CPRINTS("Power-up still inhibited!!");
+		return;
+	}
+
+	CPRINTS("Battery SOC ok to boot AP!");
+	power_up_inhibited = 0;
+	chipset_exit_hard_off();
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, power_up_inhibited_check,
+	     HOOK_PRIO_DEFAULT);
+#endif
+
 /* Get system sleep state through GPIOs or VWs */
 static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
 {
@@ -288,9 +310,12 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		if (charge_want_shutdown() ||
 		    tries > CHARGER_INITIALIZED_TRIES) {
 			CPRINTS("power-up inhibited");
+			power_up_inhibited = 1;
 			chipset_force_shutdown();
 			return POWER_G3;
 		}
+
+		power_up_inhibited = 0;
 		}
 #endif
 
