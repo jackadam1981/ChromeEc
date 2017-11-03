@@ -717,11 +717,13 @@ int charger_set_current(int current)
 	 * the charge current feedback amp (VREF_CHG) is set to 0V. Hence
 	 * the DCDC stops switching (because of the EA offset).
 	 */
-	if (!current || bd9995x_is_discharging_on_ac()) {
+	if (!current) {
 		chg_enable = 0;
 		rv = bd9995x_charger_enable(0);
 		if (rv)
 			return rv;
+		else
+			return EC_SUCCESS;
 	}
 
 	rv = ch_raw_write16(BD9995X_CMD_IPRECH_SET,

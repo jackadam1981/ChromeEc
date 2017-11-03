@@ -932,6 +932,10 @@ wait_for_it:
 			else if (manual_mode) {
 				curr.requested_voltage = curr.chg.voltage;
 				curr.requested_current = curr.chg.current;
+#ifdef CONFIG_CHARGER_BD9995X
+				if (chg_ctl_mode != CHARGE_CONTROL_NORMAL)
+					curr.requested_current = 0;
+#endif
 			}
 		} else {
 #ifndef CONFIG_CHARGER_MAINTAIN_VBAT
