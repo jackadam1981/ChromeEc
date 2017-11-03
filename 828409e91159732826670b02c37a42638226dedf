@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "63edb3b4_d3026b83",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-11-03T05:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66ecd9aa_c710f8e3",
+      "range": {
+        "startLine": 196,
+        "startChar": 5,
+        "endLine": 196,
+        "endChar": 38
+      },
+      "revId": "828409e91159732826670b02c37a42638226dedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "22f889ce_dcf2b0b0",
         "filename": "driver/temp_sensor/tmp432.c",
         "patchSetId": 1
