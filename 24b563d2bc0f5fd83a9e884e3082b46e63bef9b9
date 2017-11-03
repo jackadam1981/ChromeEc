@@ -22,6 +22,30 @@
       "revId": "24b563d2bc0f5fd83a9e884e3082b46e63bef9b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "606d704c_202a5c92",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-03T20:12:39Z",
+      "side": 1,
+      "message": "Looking at the way batt_params-\u003eis_present is filled in, it seems like that could be a good way to have this logic in for all platforms irrespective of CONFIG_BATTERY_HW_PRESENT_CUSTOM being defined.",
+      "parentUuid": "12434f95_2c8bb0e1",
+      "range": {
+        "startLine": 1051,
+        "startChar": 30,
+        "endLine": 1051,
+        "endChar": 50
+      },
+      "revId": "24b563d2bc0f5fd83a9e884e3082b46e63bef9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
