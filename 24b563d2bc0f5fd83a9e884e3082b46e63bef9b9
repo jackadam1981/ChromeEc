@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12434f95_2c8bb0e1",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-11-03T15:39:12Z",
+      "side": 1,
+      "message": "One other possibility is that we don\u0027t need to require battery_hw_present and could just use current_batt_params-\u003eis_present, but I\u0027m not sure if that would work..",
+      "range": {
+        "startLine": 1051,
+        "startChar": 30,
+        "endLine": 1051,
+        "endChar": 50
+      },
+      "revId": "24b563d2bc0f5fd83a9e884e3082b46e63bef9b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
