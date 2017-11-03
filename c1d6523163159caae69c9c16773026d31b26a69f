@@ -387,6 +387,30 @@
       "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f315f135_91e6b87e",
+        "filename": "power/common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-03T04:43:17Z",
+      "side": 1,
+      "message": "That is the reason I suggested use of lpc_is_active_mask_set_by_host(). \n\n3) In #3 lpc_is_active_mask_set_by_host() will return false. Thus, power_set_active_wake_mask will set the wake mask for POWER_S5 state.\n\nPlease also check the last section in the design doc. It details how to maintain a flag to indicate if the mask is set by host.",
+      "parentUuid": "59caa43e_4e34ae92",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 3
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
