@@ -27,6 +27,8 @@
 #include "watchdog.h"
 #include "wp.h"
 
+#include "gpio.h"
+
 /* TPM2 library includes. */
 #include "ExecCommand_fp.h"
 #include "Platform.h"
@@ -757,12 +759,13 @@ int tpm_reset_request(int wait_until_done, int wipe_nvmem_first)
 		cprints(CC_TASK, "%s: already scheduled", __func__);
 		return EC_ERROR_BUSY;
 	}
+	reset_in_progress = 1;
+	gpio_set_level(GPIO_DIOM4, 0);
 
 	/* Record input parameters as two bits in the data field. */
 	tpm_log_event(TPM_EVENT_INIT,
 		      (!!wait_until_done << 1) | !!wipe_nvmem_first);
 
-	reset_in_progress = 1;
 	wipe_result = EC_SUCCESS;
 
 	/* We can't change our minds about wiping. */
@@ -869,6 +872,7 @@ static void tpm_reset_now(int wipe_first)
 	hook_call_deferred(&reinstate_nvmem_commits_data, 3 * SECOND);
 
 	reset_in_progress = 0;
+	gpio_set_level(GPIO_DIOM4, 1);
 
 	/* Reinitialize TPM interface unless in chip factory mode. */
 	if (!chip_factory_mode()) {

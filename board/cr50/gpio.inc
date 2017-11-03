@@ -69,6 +69,7 @@ GPIO_INT(EC_TX_CR50_RX,   PIN(1, 4),  GPIO_INT_FALLING, ec_tx_cr50_rx)
 
 /* Pull this low to interrupt the AP */
 GPIO(INT_AP_L,        PIN(0, 0), GPIO_OUT_HIGH)
+GPIO(DIOM4,           PIN(0, 15), GPIO_OUT_HIGH)
 
 /* Use these to take over the AP & EC flash (only when AP & EC are off!) */
 GPIO(EC_FLASH_SELECT, PIN(0, 1), GPIO_OUT_LOW)
@@ -133,6 +134,8 @@ UNIMPLEMENTED(ENTERING_RW)
 /* GPIOs - mark outputs as inputs too, to read back from the driven pad */
 PINMUX(GPIO(INT_AP_L),        A5, DIO_INPUT)	/* DIOB7 is p_digitial_od */
                                                 /* We can't pull it up */
+PINMUX(GPIO(DIOM4), M4, DIO_OUTPUT)
+
 PINMUX(GPIO(EC_FLASH_SELECT), B2, DIO_INPUT)
 PINMUX(GPIO(AP_FLASH_SELECT), B3, DIO_INPUT)
 PINMUX(GPIO(EN_PP3300_INA_L), B7, DIO_INPUT)

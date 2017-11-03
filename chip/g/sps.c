@@ -15,6 +15,8 @@
 #include "timer.h"
 #include "watchdog.h"
 
+#include "gpio.h"
+
 /*
  * This file is a driver for the CR50 SPS (SPI slave) controller. The
  * controller deploys a 2KB buffer split evenly between receive and transmit
@@ -414,6 +416,8 @@ void _sps0_interrupt(void)
 
 void _sps0_cs_deassert_interrupt(void)
 {
+	gpio_set_level(GPIO_DIOM4, 1);
+	gpio_set_level(GPIO_DIOM4, 0);
 	sps_cs_deassert_interrupt(0);
 }
 DECLARE_IRQ(GC_IRQNUM_SPS0_CS_DEASSERT_INTR, _sps0_cs_deassert_interrupt, 1);
