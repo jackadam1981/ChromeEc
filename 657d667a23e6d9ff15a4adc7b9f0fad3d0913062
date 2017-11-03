@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cf93642_7e25981c",
+        "filename": "driver/temp_sensor/tmp432.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-11-03T22:51:26Z",
+      "side": 1,
+      "message": "nit: It seems this file uses \u003d\u003d EC_SUCCESS.",
+      "range": {
+        "startLine": 282,
+        "startChar": 6,
+        "endLine": 282,
+        "endChar": 7
+      },
+      "revId": "657d667a23e6d9ff15a4adc7b9f0fad3d0913062",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
