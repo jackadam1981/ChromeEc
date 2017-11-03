@@ -363,6 +363,30 @@
       "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59caa43e_4e34ae92",
+        "filename": "power/common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-11-03T04:36:48Z",
+      "side": 1,
+      "message": "I see one more corner case \n\nWhen host set lazy wake mask for S3 and S5\n \nWith above logic you suggested , in S5 flow,\n1)System enter S3 : S3 lazy wake mask will be programmed as active wake mask\n2) System enter S3S5: Since active wake mask is set in step 1, power_set_active_wake_mask would return without updating active wake mask\n3)System enter S5: same scenario as step 2 and on S5 system will have S3 active wake mask.\n\nBasically need to find a way to distinguish between active wake mask set by host and active wake mask programmed by  lazy wake mask.",
+      "parentUuid": "6ff0b17d_627aaeb1",
+      "range": {
+        "startLine": 233,
+        "startChar": 2,
+        "endLine": 237,
+        "endChar": 3
+      },
+      "revId": "c1d6523163159caae69c9c16773026d31b26a69f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
