@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74b46dba_f40eeb3d",
+        "filename": "board/coral/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-11-03T15:39:33Z",
+      "side": 1,
+      "message": "No need to put the bug number in the comment.\n\nAlso, just return early:\n\nif (SKU_IS_CONVERTIBLE(sku_id))\n  return;\ntablet_set_mode(...);",
+      "revId": "aae2b1df17d2abe042b6072490767f43f0ff43b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
