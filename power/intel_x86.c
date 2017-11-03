@@ -58,6 +58,34 @@ static const int sleep_sig[] = {
 
 static int power_s5_up;       /* Chipset is sequencing up or down */
 
+#ifdef CONFIG_CHARGER
+/* Flag to indicate if power up was inhibited due to low battery SOC level. */
+static int power_up_inhibited;
+
+static int power_up_inhibited_check(int power_button_pressed)
+{
+	return charge_prevent_power_on(power_button_pressed) ||
+		charge_want_shutdown();
+}
+
+static void power_up_inhibited_cb(void)
+{
+	if (!power_up_inhibited)
+		return;
+
+	if (power_up_inhibited_check(0)) {
+		CPRINTS("power-up still inhibited");
+		return;
+	}
+
+	CPRINTS("Battery SOC ok to boot AP!");
+	power_up_inhibited = 0;
+
+	chipset_exit_hard_off();
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, power_up_inhibited_cb, HOOK_PRIO_DEFAULT);
+#endif
+
 /* Get system sleep state through GPIOs or VWs */
 static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
 {
@@ -275,22 +303,29 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 #ifdef CONFIG_CHARGER
 		{
 		int tries = 0;
+
 		/*
 		 * Allow charger to be initialized for upto defined tries,
 		 * in case we're trying to boot the AP with no battery.
 		 */
-		while (charge_prevent_power_on(0) &&
+		while (power_up_inhibited_check(0) &&
 		       tries++ < CHARGER_INITIALIZED_TRIES) {
 			msleep(CHARGER_INITIALIZED_DELAY_MS);
 		}
 
-		/* Return to G3 if battery level is too low */
-		if (charge_want_shutdown() ||
-		    tries > CHARGER_INITIALIZED_TRIES) {
+		/*
+		 * Return to G3 if battery level is too low. Set
+		 * power_up_inhibited in order to check the eligibility to boot
+		 * AP up after battery SOC changes.
+		 */
+		if (tries > CHARGER_INITIALIZED_TRIES) {
 			CPRINTS("power-up inhibited");
+			power_up_inhibited = 1;
 			chipset_force_shutdown();
 			return POWER_G3;
 		}
+
+		power_up_inhibited = 0;
 		}
 #endif
 
