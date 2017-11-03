@@ -22,6 +22,30 @@
       "revId": "78b01cd2a35377b1cc1b0ddc8d6116182ad9c541",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb9cf36e_be5fa5a8",
+        "filename": "power/rk3399.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-11-03T02:04:10Z",
+      "side": 1,
+      "message": "ok, that make sense. the factory will run more tests later to confirm too:)",
+      "parentUuid": "4a3ef1cb_337e9ae6",
+      "range": {
+        "startLine": 53,
+        "startChar": 32,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "78b01cd2a35377b1cc1b0ddc8d6116182ad9c541",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
