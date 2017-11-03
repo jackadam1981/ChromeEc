@@ -22,6 +22,30 @@
       "revId": "4a20da369714de701df5ffdafc772dd344c70c72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "286a5e59_f05ebf0b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-03T15:09:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "066acc40_5ea9becc",
+      "range": {
+        "startLine": 1053,
+        "startChar": 6,
+        "endLine": 1053,
+        "endChar": 29
+      },
+      "revId": "4a20da369714de701df5ffdafc772dd344c70c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
