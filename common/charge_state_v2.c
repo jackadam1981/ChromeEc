@@ -26,6 +26,9 @@
 #include "task.h"
 #include "timer.h"
 #include "util.h"
+#ifdef CONFIG_CHARGER_BD9995X
+#include "bd9995x.h"
+#endif
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_CHARGER, outstr)
@@ -939,6 +942,12 @@ wait_for_it:
 			else if (manual_mode) {
 				curr.requested_voltage = curr.chg.voltage;
 				curr.requested_current = curr.chg.current;
+#ifdef CONFIG_CHARGER_BD9995X
+				if (chg_ctl_mode != CHARGE_CONTROL_NORMAL)
+					set_manual_mode_in_chg_status(0);
+				else
+					set_manual_mode_in_chg_status(1);
+#endif
 			}
 		} else {
 #ifndef CONFIG_CHARGER_MAINTAIN_VBAT

@@ -356,6 +356,8 @@ int bd9995x_get_battery_temp(int *temp_ptr);
 void bd9995x_set_power_save_mode(int mode);
 /* Get Battery Voltage Measurement Value */
 int bd9995x_get_battery_voltage(void);
+/* Manual control charge mode */
+void set_manual_mode_in_chg_status(int value);
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_CHARGER
 extern struct i2c_stress_test_dev bd9995x_i2c_stress_test_dev;
