@@ -750,6 +750,8 @@ int charger_set_current(int current)
 		rv = bd9995x_charger_enable(0);
 		if (rv)
 			return rv;
+		else
+			return EC_SUCCESS;
 	}
 
 	rv = ch_raw_write16(BD9995X_CMD_IPRECH_SET,
