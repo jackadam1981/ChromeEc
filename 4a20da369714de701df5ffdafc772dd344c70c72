@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "066acc40_5ea9becc",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2017-11-03T02:02:17Z",
+      "side": 1,
+      "message": "One thing I didn\u0027t do in the eve branch but probably should have is handle the LIMIT_POWER option properly, like the above code:\n\n#ifdef CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT\n  MIN(LIKELY_PD_USBC_POWER_MW * 1000,\n\tCONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000)\n#else\n  (LIKELY_PD_USB_POWER_MW * 1000)\n#endif",
+      "range": {
+        "startLine": 1053,
+        "startChar": 6,
+        "endLine": 1053,
+        "endChar": 29
+      },
+      "revId": "4a20da369714de701df5ffdafc772dd344c70c72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
