@@ -93,6 +93,30 @@
       "revId": "727e397ed885206b0cfd63b7e2fdd584b6bb8696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c64cbe61_4d82b270",
+        "filename": "board/bob/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1114236
+      },
+      "writtenOn": "2017-11-03T02:11:19Z",
+      "side": 1,
+      "message": "right, and it works in my test.\nand i\u0027ve asked the battery vendor to confirm that is safe or provide another register to write(they would send me the answer today) :)",
+      "parentUuid": "2067d2ec_2f9adbae",
+      "range": {
+        "startLine": 75,
+        "startChar": 2,
+        "endLine": 75,
+        "endChar": 64
+      },
+      "revId": "727e397ed885206b0cfd63b7e2fdd584b6bb8696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
