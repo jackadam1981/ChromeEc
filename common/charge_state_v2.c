@@ -628,7 +628,7 @@ static int get_desired_input_current(enum battery_present batt_present,
 #endif
 	}
 }
-
+extern void set_manual_normal_mode_status(int value);
 /* Main loop */
 void charger_task(void *u)
 {
@@ -939,6 +939,12 @@ wait_for_it:
 			else if (manual_mode) {
 				curr.requested_voltage = curr.chg.voltage;
 				curr.requested_current = curr.chg.current;
+#ifdef CONFIG_CHARGER_BD9995X
+				if (chg_ctl_mode != CHARGE_CONTROL_NORMAL)
+					set_manual_normal_mode_status(0);
+				else
+					set_manual_normal_mode_status(0);
+#endif
 			}
 		} else {
 #ifndef CONFIG_CHARGER_MAINTAIN_VBAT
