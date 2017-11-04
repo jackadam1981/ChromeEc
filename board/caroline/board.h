@@ -184,6 +184,8 @@
 #define BH1730_LUXTH4_D1_1K             149
 /* Depends on how fast the AP boots and typical ODRs */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+/* Lower maximal ODR to 100Hz */
+#define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ 100000
 
 /* Modules we want to exclude */
 #undef CONFIG_CMD_APTHROTTLE
