@@ -22,6 +22,30 @@
       "revId": "1dfae50c59ef27d539ba23178fc9765bdcfca24c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a060267_d71d0c5a",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-11-06T16:17:09Z",
+      "side": 1,
+      "message": "On the RO-\u003eRW sysjump does the interrupt get enabled again? If not, then you can probably drop that other CL. Does it hurt anything to keep both CLs?",
+      "parentUuid": "d2417221_a88d8d56",
+      "range": {
+        "startLine": 1042,
+        "startChar": 0,
+        "endLine": 1043,
+        "endChar": 22
+      },
+      "revId": "1dfae50c59ef27d539ba23178fc9765bdcfca24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
