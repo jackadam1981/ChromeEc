@@ -46,6 +46,30 @@
       "revId": "0f37888d6b73042e0edc508fb990da337b0a974c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ce31475_a0b947c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-11-06T21:13:45Z",
+      "side": 1,
+      "message": "Just to make sure, do you mean that there\u0027s no need to explicitly mention -mcmodel\u003dlarge either?",
+      "parentUuid": "d936b9b3_a2657835",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "0f37888d6b73042e0edc508fb990da337b0a974c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
