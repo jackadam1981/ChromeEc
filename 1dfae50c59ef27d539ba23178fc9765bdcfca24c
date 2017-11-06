@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2417221_a88d8d56",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2017-11-06T08:04:27Z",
+      "side": 1,
+      "message": "This would be redundant when it stacks on top of CL:748944, open to advise.\n\nThat said, I came up these two CLs separately, both considered initial tablet_mode value in common code.",
+      "range": {
+        "startLine": 1042,
+        "startChar": 0,
+        "endLine": 1043,
+        "endChar": 22
+      },
+      "revId": "1dfae50c59ef27d539ba23178fc9765bdcfca24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
