@@ -16,6 +16,24 @@
       "revId": "66e9d00e858b390e92ed1bc039d8421e78cc5cbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa7476c5_3798fad4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-06T17:33:34Z",
+      "side": 1,
+      "message": "Running the CTS tests, in particular, the ones that set the sensors at max supported frequency. [android.hardware.cts.SensorBatchingTests.testGameRotationVector_fastest_batching and friends, see https://buganizer.corp.google.com/issues/67112751]",
+      "parentUuid": "5c4c8afd_5c72d55e",
+      "revId": "66e9d00e858b390e92ed1bc039d8421e78cc5cbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
