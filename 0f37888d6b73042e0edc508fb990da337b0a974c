@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "becc20f1_e14741a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-11-06T14:10:10Z",
+      "side": 1,
+      "message": "Hi Patrick,\n\nThanks for the fix.\n\nI think we don\u0027t need \"-mno-gp-direct\" option anymore on gcc 6.3 (patch 1 already done it).\nBecause this option was added as a workaround for fixing previously toolchain relocation bug.\nAnd now the bug was fixed.\n(Remove this option can save more flash space.)\n\nBy the way, can we remove \u0027it83xx_evb\u0027 and \u0027reef_it8320\u0027 from skip_boards if\nnds32 toolchain already in chroot?\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/Makefile.rules#20\n\nThank you again.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "0f37888d6b73042e0edc508fb990da337b0a974c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
