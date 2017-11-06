@@ -22,6 +22,30 @@
       "revId": "0f37888d6b73042e0edc508fb990da337b0a974c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d936b9b3_a2657835",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-11-06T15:25:14Z",
+      "side": 1,
+      "message": "There\u0027s some more work necessary to enable building with the toolchain, but I should get to that shortly. Thanks for pointing out where I can enable them afterwards.",
+      "parentUuid": "becc20f1_e14741a8",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "0f37888d6b73042e0edc508fb990da337b0a974c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
