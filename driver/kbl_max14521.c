@@ -35,11 +35,6 @@ static int curr_step;
 
 int max14521_init(void)
 {
-	/*
-	 * Tell it to read continually. This uses 70uA, as opposed to nearly
-	 * zero, but it makes the hook/update code cleaner (we don't want to
-	 * wait 90ms to read on demand while processing hook callbacks).
-	 */
 	int rv;
 
         curr_step = 0;
@@ -76,10 +71,10 @@ int max14521_set_kblight(int step)
 	int rv;
 
         if(step < 0)
-                return EC_ERROR;
+                return EC_ERROR_PARAM1;
 
         if(step >= 4)
-                return EC_ERROR;
+                return EC_ERROR_PARAM1;
 
         rv = i2c_write8(I2C_PORT_KBLIGHT, MAX14521_I2C_ADDR,
                         MAX14521_REG_EL_FREQ, kblight_freq[step]);
@@ -97,7 +92,7 @@ int max14521_set_kblight(int step)
                         MAX14521_REG_EL_UPDATE, kblight_step[step]);
 
 	if(rv)
-                return rv
+                return rv;
 
         curr_step = step;
 

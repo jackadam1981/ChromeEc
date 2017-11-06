@@ -17,6 +17,7 @@
 #include "driver/als_bh1730.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/kbl_max14521.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -44,8 +45,8 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 
-#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+#define CPRINTS(format, args...) /*cprints(CC_USBCHARGE, format, ## args)*/
+#define CPRINTF(format, args...) /*cprintf(CC_USBCHARGE, format, ## args)*/
 
 #define GPIO_KB_INPUT (GPIO_INPUT | GPIO_PULL_UP)
 #define GPIO_KB_OUTPUT (GPIO_ODR_HIGH)
@@ -700,3 +701,82 @@ void chipset_set_pmic_slp_sus_l(int level)
 		previous_level = level;
 	}
 }
+
+/*
+ * Control KBLIGHT  
+ */
+
+/*****************************************************************************/
+/* Console commands */
+
+static int command_kblight(int argc, char **argv)
+{
+        if (argc >= 2) {
+                char *e;
+                int i = strtoi(argv[1], &e, 0);
+                if (*e)
+                        return EC_ERROR_PARAM1;
+                max14521_set_kblight(i);
+        }
+
+        ccprintf("Keyboard backlight: %d step\n", max14521_get_kblight());
+        return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(kblight, command_kblight,
+                        "step",
+                        "Set keyboard backlight",
+                        NULL);
+
+#if 0
+/*****************************************************************************/
+/* Host commands */
+
+int pwm_command_get_keyboard_backlight(struct host_cmd_handler_args *args)
+{
+        struct ec_response_pwm_get_keyboard_backlight *r = args->response;
+
+        r->percent = pwm_get_duty(PWM_CH_KBLIGHT);
+        r->enabled = pwm_get_enabled(PWM_CH_KBLIGHT);
+        args->response_size = sizeof(*r);
+
+        return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT,
+                     pwm_command_get_keyboard_backlight,
+                     EC_VER_MASK(0));
+
+int pwm_command_set_keyboard_backlight(struct host_cmd_handler_args *args)
+{
+        const struct ec_params_pwm_set_keyboard_backlight *p = args->params;
+
+        pwm_set_duty(PWM_CH_KBLIGHT, p->percent);
+
+        return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_KEYBOARD_BACKLIGHT,
+                     pwm_command_set_keyboard_backlight,
+                     EC_VER_MASK(0));
+#endif
+
+/*****************************************************************************/
+/* Hooks */
+
+static void kblight_init(void)
+{
+	gpio_set_level(GPIO_KBDBKLIT_RST_L, 1);
+	msleep(10);
+	max14521_init();
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_init, HOOK_PRIO_DEFAULT);
+
+static void kblight_suspend(void)
+{
+	gpio_set_level(GPIO_KBDBKLIT_RST_L, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kblight_suspend, HOOK_PRIO_DEFAULT);
+
+static void kblight_shutdown(void)
+{
+	gpio_set_level(GPIO_KBDBKLIT_RST_L, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, kblight_shutdown, HOOK_PRIO_DEFAULT);

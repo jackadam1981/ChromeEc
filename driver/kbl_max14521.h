@@ -5,10 +5,11 @@
  * Intersil ILS29035 light sensor driver
  */
 
-#ifndef __CROS_EC_ALS_ISL29035_H
-#define __CROS_EC_ALS_ISL29035_H
+#ifndef __CROS_EC_KBLIGHT_MAX14521_H
+#define __CROS_EC_KBLIGHT_MAX14521_H
 
-int isl29035_init(void);
-int isl29035_read_lux(int *lux, int af);
+int max14521_init(void);
+int max14521_set_kblight(int step);
+int max14521_get_kblight(void);
 
-#endif	/* __CROS_EC_ALS_ISL29035_H */
+#endif	/* __CROS_EC_KBLIGHT_MAX14521_H */
