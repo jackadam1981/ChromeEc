@@ -45,6 +45,30 @@
       "revId": "1143236d001e67d9c355bbf4a468151f05c7697c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29054543_ee0fb323",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-06T16:59:45Z",
+      "side": 1,
+      "message": "Ah, this was my fault. I can make a CL to move the definitions after this lands.",
+      "parentUuid": "b3376f81_55df2731",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 62
+      },
+      "revId": "1143236d001e67d9c355bbf4a468151f05c7697c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
