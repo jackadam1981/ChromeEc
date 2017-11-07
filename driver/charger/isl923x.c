@@ -270,14 +270,20 @@ int charger_set_voltage(int voltage)
 
 int charger_post_init(void)
 {
+	/* The ISL9237/8 can be powered from VSYS. */
+	return EC_SUCCESS;
+}
+
+static void isl923x_init(void)
+{
 	int rv, reg;
 
 #ifdef CONFIG_TRICKLE_CHARGING
 	const struct battery_info *bi = battery_get_info();
 
-	rv = raw_write16(ISL923X_REG_SYS_VOLTAGE_MIN, bi->voltage_min);
+	raw_write16(ISL923X_REG_SYS_VOLTAGE_MIN, bi->voltage_min);
 	if (rv)
-		return rv;
+		return;
 #endif
 
 	/*
@@ -286,26 +292,27 @@ int charger_post_init(void)
 	 */
 	rv = raw_read16(ISL923X_REG_CONTROL2, &reg);
 	if (rv)
-		return rv;
+		return;
 
 	rv = raw_write16(ISL923X_REG_CONTROL2,
 			reg |
 			ISL923X_C2_PROCHOT_DEBOUNCE_1000 |
 			ISL923X_C2_ADAPTER_DEBOUNCE_150);
 	if (rv)
-		return rv;
+		return;
 
 #ifdef CONFIG_CHARGE_RAMP_HW
 #ifdef CONFIG_CHARGER_ISL9237
 	rv = charger_get_option(&reg);
 	if (rv)
-		return rv;
+		return;
 
 	/* Set input voltage regulation reference voltage for charge ramp */
 	reg &= ~ISL9237_C0_VREG_REF_MASK;
 	reg |= ISL9237_C0_VREG_REF_4200;
 
-	return charger_set_option(reg);
+	charger_set_option(reg);
+	return;
 #else
 	/*
 	 * For the ISL9238, set the input voltage regulation to 4.439V.  Note,
@@ -314,23 +321,22 @@ int charger_post_init(void)
 	reg = (4439 / ISL9238_INPUT_VOLTAGE_REF_STEP)
 		<< ISL9238_INPUT_VOLTAGE_REF_SHIFT;
 
-	rv = raw_write16(ISL9238_REG_INPUT_VOLTAGE, reg);
-	if (rv)
-		return rv;
+	raw_write16(ISL9238_REG_INPUT_VOLTAGE, reg);
 
-	return EC_SUCCESS;
+	return;
 #endif
 #else
 	rv = charger_get_option(&reg);
 	if (rv)
-		return rv;
+		return;
 
 	/* Disable voltage regulation loop to disable charge ramp */
 	reg |= ISL923X_C0_DISABLE_VREG;
 
-	return charger_set_option(reg);
+	charger_set_option(reg);
 #endif
 }
+DECLARE_HOOK(HOOK_INIT, isl923x_init, HOOK_PRIO_INIT_I2C+1);
 
 int charger_discharge_on_ac(int enable)
 {
@@ -356,7 +362,6 @@ int charger_discharge_on_ac(int enable)
 /*****************************************************************************/
 /* Hardware current ramping */
 
-#ifdef CONFIG_CHARGE_RAMP_HW
 int charger_set_hw_ramp(int enable)
 {
 	int rv, reg;
@@ -374,6 +379,7 @@ int charger_set_hw_ramp(int enable)
 	return charger_set_option(reg);
 }
 
+#ifdef CONFIG_CHARGE_RAMP_HW
 int chg_ramp_is_stable(void)
 {
 	/*
