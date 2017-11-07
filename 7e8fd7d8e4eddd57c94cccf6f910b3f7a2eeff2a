@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7b503299_77638a59",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-07T19:12:24Z",
+      "side": 1,
+      "message": "We can consider modifying charger_get_current() to report zero when CHG_EN is disabled, since the charge current is effectively zero, despite what some limit register contains.",
+      "parentUuid": "3aeb8401_29904818",
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "424be5a6_b505731d",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
