@@ -235,6 +235,7 @@ void battery_get_params(struct batt_params *batt)
 					BATT_FLAG_BAD_STATE_OF_CHARGE |
 					BATT_FLAG_BAD_VOLTAGE |
 					BATT_FLAG_BAD_CURRENT;
+	const uint32_t want_charge = batt->flags & BATT_FLAG_WANT_CHARGE;
 
 	/* Reset flags */
 	batt->flags = 0;
@@ -273,6 +274,7 @@ void battery_get_params(struct batt_params *batt)
 	/* If any of those reads worked, the battery is responsive */
 	if ((batt->flags & flags_to_check) != flags_to_check) {
 		batt->flags |= BATT_FLAG_RESPONSIVE;
+		batt->flags |= want_charge;
 		batt->is_present = BP_YES;
 	} else
 		batt->is_present = BP_NOT_SURE;
