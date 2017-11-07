@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82ab9e27_9641b8d9",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-11-07T18:59:04Z",
+      "side": 1,
+      "message": "Using enable and disable instead of start and stop makes more sense to me. Either way the naming here should be consistent with the tpm function names.",
+      "range": {
+        "startLine": 544,
+        "startChar": 4,
+        "endLine": 544,
+        "endChar": 9
+      },
+      "revId": "244c5f4305faba6d97b7505bd89e12ac1a767846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62d72b3_89d6acf3",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-11-07T18:59:04Z",
+      "side": 1,
+      "message": "Please keep the comment from before.",
+      "range": {
+        "startLine": 814,
+        "startChar": 1,
+        "endLine": 814,
+        "endChar": 26
+      },
+      "revId": "244c5f4305faba6d97b7505bd89e12ac1a767846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba14976c_0cb9ffe3",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-11-07T18:59:04Z",
+      "side": 1,
+      "message": "Reenable or restart",
+      "range": {
+        "startLine": 872,
+        "startChar": 4,
+        "endLine": 872,
+        "endChar": 16
+      },
+      "revId": "244c5f4305faba6d97b7505bd89e12ac1a767846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9541f97_95a3773f",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-11-07T18:59:04Z",
+      "side": 1,
+      "message": "When the chip is in factory mode why dont we want to enable/disable the tpm interface?\nShould we always reenable it?",
+      "range": {
+        "startLine": 872,
+        "startChar": 41,
+        "endLine": 872,
+        "endChar": 58
+      },
+      "revId": "244c5f4305faba6d97b7505bd89e12ac1a767846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
