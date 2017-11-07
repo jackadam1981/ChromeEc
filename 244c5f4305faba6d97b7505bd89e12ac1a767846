@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c49a3e11_b0377802",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-11-07T19:12:46Z",
+      "side": 1,
+      "message": "this is really stopping and restarting the interfaces, it is not just a disable/enable action.\n\nwhat tpm function names you meant?",
+      "parentUuid": "82ab9e27_9641b8d9",
+      "range": {
+        "startLine": 544,
+        "startChar": 4,
+        "endLine": 544,
+        "endChar": 9
+      },
+      "revId": "244c5f4305faba6d97b7505bd89e12ac1a767846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f62d72b3_89d6acf3",
         "filename": "common/tpm_registers.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "244c5f4305faba6d97b7505bd89e12ac1a767846",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edf70845_c03673d8",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-11-07T19:12:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f62d72b3_89d6acf3",
+      "range": {
+        "startLine": 814,
+        "startChar": 1,
+        "endLine": 814,
+        "endChar": 26
+      },
+      "revId": "244c5f4305faba6d97b7505bd89e12ac1a767846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +130,54 @@
       "writtenOn": "2017-11-07T18:59:04Z",
       "side": 1,
       "message": "When the chip is in factory mode why dont we want to enable/disable the tpm interface?\nShould we always reenable it?",
+      "range": {
+        "startLine": 872,
+        "startChar": 41,
+        "endLine": 872,
+        "endChar": 58
+      },
+      "revId": "244c5f4305faba6d97b7505bd89e12ac1a767846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82ef9783_ee178d64",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-11-07T19:12:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba14976c_0cb9ffe3",
+      "range": {
+        "startLine": 872,
+        "startChar": 4,
+        "endLine": 872,
+        "endChar": 16
+      },
+      "revId": "244c5f4305faba6d97b7505bd89e12ac1a767846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300ba3ee_ccb0e913",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-11-07T19:12:46Z",
+      "side": 1,
+      "message": "no, in factory mode we don\u0027t want TPM running at all, because it messes up the default SPI bite factory mode uses for its purposes.",
+      "parentUuid": "b9541f97_95a3773f",
       "range": {
         "startLine": 872,
         "startChar": 41,
