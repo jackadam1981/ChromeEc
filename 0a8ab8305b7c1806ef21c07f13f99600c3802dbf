@@ -22,6 +22,30 @@
       "revId": "0a8ab8305b7c1806ef21c07f13f99600c3802dbf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb384e8_cef2c04e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-07T14:35:53Z",
+      "side": 1,
+      "message": "Right, \"add a function to check if the partner port is known to be PD-capable\" is what the CL does, the BC1.2 stuff (which is the justification for adding the function) is in the next CL.",
+      "parentUuid": "82f49c98_f62e8b0b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "0a8ab8305b7c1806ef21c07f13f99600c3802dbf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
