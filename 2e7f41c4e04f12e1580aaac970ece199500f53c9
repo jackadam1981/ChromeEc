@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b7a7a0f_fe028826",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-07T15:42:56Z",
+      "side": 1,
+      "message": "is the detection in automatic mode still triggered if you enable it after VBUS already rose ?",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 31
+      },
+      "revId": "2e7f41c4e04f12e1580aaac970ece199500f53c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
