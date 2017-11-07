@@ -311,6 +311,35 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
 	     board_spi_disable,
 	     MOTION_SENSE_HOOK_PRIO + 1);
 
+static int batt_pack_status = -1;
+static int batt_rv = -1;
+static int voltage = -1;
+
+int charger_get_vbus_voltage(int port);
+
+void bob_batt_is_charging(void)
+{
+	int data;
+	int rv;
+
+	rv = sb_read(0x43, &data);
+	data &= 1;
+
+	if (rv != batt_rv || (!rv && (batt_pack_status != data)))
+		CPRINTS("*******%s, rv:%x, DFET:%d connected:%d*******",
+			__func__, rv, data, !rv && data);
+
+	batt_rv = rv;
+	batt_pack_status = data;
+
+	data = charger_get_vbus_voltage(0);
+	rv = data < 2000 ? 500 : 2000;
+
+	if ((data / rv) != (voltage / rv))
+		CPRINTS("!!!!!!!!!!!!********port 0 voltage:%d*********", data);
+	voltage = data;
+}
+
 static void board_init(void)
 {
 	/* Enable TCPC alert interrupts */

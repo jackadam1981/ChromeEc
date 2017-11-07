@@ -370,6 +370,8 @@ void chipset_exit_hard_off(void)
 /*****************************************************************************/
 /* Task function */
 
+void bob_batt_is_charging(void);
+
 void chipset_task(void)
 {
 	enum power_state new_state;
@@ -378,6 +380,10 @@ void chipset_task(void)
 	static uint32_t last_in_signals;
 
 	while (1) {
+
+		bob_batt_is_charging();
+		task_wake(TASK_ID_CHIPSET);
+
 		/*
 		 * In order to prevent repeated console spam, only print the
 		 * current power state if something has actually changed.  It's
