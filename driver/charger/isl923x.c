@@ -332,6 +332,21 @@ static void isl923x_init(void)
 
 	charger_set_option(reg);
 #endif /* defined(CONFIG_CHARGE_RAMP_HW) */
+
+#ifdef CONFIG_CHARGER_ISL9238
+	/*
+	 * Don't reread the prog pin and don't reload the ILIM on ACIN.
+	 */
+	raw_read16(ISL9238_REG_CONTROL3, &reg);
+	reg |= ISL9238_C3_NO_RELOAD_ACLIM_ON_ACIN |
+		ISL9238_C3_NO_REREAD_PROG_PIN;
+	raw_write16(ISL9238_REG_CONTROL3, reg);
+
+	/*
+	 * Initialize the input current limit to the board's default.
+	 */
+	charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
+#endif /* defined(CONFIG_CHARGER_ISL9238) */
 }
 DECLARE_HOOK(HOOK_INIT, isl923x_init, HOOK_PRIO_INIT_I2C+1);
 
