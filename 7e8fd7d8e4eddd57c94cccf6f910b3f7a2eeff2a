@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3aeb8401_29904818",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-11-07T14:05:47Z",
+      "side": 1,
+      "message": "This function will get charge current from charger.\nIf we only disable CHG_EN when idle/discharge, curr.request_current will be override to none zero value by curr.chg.current.",
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "424be5a6_b505731d",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2017-11-06T16:32:15Z",
       "side": 1,
       "message": "This doesn\u0027t belong here. Manual charge control is a test / debug option, we should either leave it up to the tester / debugger not to shoot off their own foot or else modify the BD9995X driver so it\u0027s impossible to set regs into a bad state.",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 938,
+        "endChar": 6
+      },
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6378c0e5_ceaa57b6",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-11-07T14:05:47Z",
+      "side": 1,
+      "message": "This is only use for keep in idle/discharge for BD9995X. For tester/debugger they need the current value in normal charge. If idle/discharge, the value will be zero even in manual mode\nThe major purpose to set zero here is used for set CHG_EN disable and prevent to override with none-zero of curr.chg.current in next cycle then charge will restart .(please check comment in line 698)",
+      "parentUuid": "424be5a6_b505731d",
       "range": {
         "startLine": 935,
         "startChar": 0,
@@ -82,6 +123,30 @@
       "writtenOn": "2017-11-06T16:32:15Z",
       "side": 1,
       "message": "Not anymore, why?",
+      "range": {
+        "startLine": 715,
+        "startChar": 4,
+        "endLine": 715,
+        "endChar": 21
+      },
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ad9466d_363a63be",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-11-07T14:05:47Z",
+      "side": 1,
+      "message": "We found this BIT might be incorrect for reference.\nSo we consider only use request current \u003d 0 as disable charge.\nPlease check b:68363618 for detail information.",
+      "parentUuid": "c01a9b97_2b3a1203",
       "range": {
         "startLine": 715,
         "startChar": 4,
