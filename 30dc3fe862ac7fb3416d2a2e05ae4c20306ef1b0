@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6953b9c1_c04902cd",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-07T23:24:53Z",
+      "side": 1,
+      "message": "Might be handy to comment:\n\n/* Wait for external controller to deassert CS before continuing */",
+      "range": {
+        "startLine": 194,
+        "startChar": 2,
+        "endLine": 194,
+        "endChar": 37
+      },
+      "revId": "30dc3fe862ac7fb3416d2a2e05ae4c20306ef1b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
