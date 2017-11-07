@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6f56001_d922d6bc",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-11-07T23:12:42Z",
+      "side": 1,
+      "message": "if CS went away, isn\u0027t that the sign that it was a wakeup pulse, and not the real CS with data?",
+      "range": {
+        "startLine": 394,
+        "startChar": 9,
+        "endLine": 394,
+        "endChar": 11
+      },
+      "revId": "fc643a8baf574add81517f67b316e4044aa365b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb1462cf_b1d9b6fb",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-11-07T23:12:42Z",
+      "side": 1,
+      "message": "closing \u0027 is missing",
+      "range": {
+        "startLine": 395,
+        "startChar": 18,
+        "endLine": 395,
+        "endChar": 23
+      },
+      "revId": "fc643a8baf574add81517f67b316e4044aa365b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
