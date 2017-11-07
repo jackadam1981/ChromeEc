@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99cbcc03_7b154194",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-11-07T23:19:30Z",
+      "side": 1,
+      "message": "no, if we are here while CS is asserted this means we delayed reacting to the wake up pulse and are now in the real transaction, so we should just exit and wait for the real transaction to continue.\n\nIf CS got deasserted while we are here this could be because the delay was so long that the host gave up waiting for the real transaction to proceed. In this case we should process the interrupt and clean up.",
+      "parentUuid": "c6f56001_d922d6bc",
+      "range": {
+        "startLine": 394,
+        "startChar": 9,
+        "endLine": 394,
+        "endChar": 11
+      },
+      "revId": "fc643a8baf574add81517f67b316e4044aa365b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb1462cf_b1d9b6fb",
         "filename": "chip/g/sps.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "fc643a8baf574add81517f67b316e4044aa365b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b38651e_9465e0bd",
+        "filename": "chip/g/sps.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-11-07T23:19:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fb1462cf_b1d9b6fb",
+      "range": {
+        "startLine": 395,
+        "startChar": 18,
+        "endLine": 395,
+        "endChar": 23
+      },
+      "revId": "fc643a8baf574add81517f67b316e4044aa365b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
