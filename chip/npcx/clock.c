@@ -360,6 +360,10 @@ void __idle(void)
 #if defined(CHIP_FAMILY_NPCX5)
 			/* GPIO back to UART-rx (console) */
 			clock_gpio2uart();
+#elif defined(CHIP_FAMILY_NPCX7)
+			/* Refresh console in-use timer */
+			if (uart_is_wakeup_from_gpio())
+				clock_refresh_console_in_use();
 #endif
 
 			/* Record time spent in deep sleep. */

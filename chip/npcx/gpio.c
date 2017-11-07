@@ -559,8 +559,6 @@ void __gpio_wk1h_interrupt(void)
 		CLEAR_BIT(NPCX_WKEN(MIWU_TABLE_1, MIWU_GROUP_8), 7);
 		/* Clear pending bit for WUI */
 		SET_BIT(NPCX_WKPCL(MIWU_TABLE_1, MIWU_GROUP_8), 7);
-		/* Notify the clock module that the console is in use. */
-		clock_refresh_console_in_use();
 	} else
 #endif
 		gpio_interrupt(WUI_INT(MIWU_TABLE_1, MIWU_GROUP_8));

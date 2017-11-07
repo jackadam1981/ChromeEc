@@ -1830,12 +1830,13 @@ enum {
 #endif
 
 /* This routine checks pending bit of GPIO wake-up functionality */
-#if defined(CHIP_FAMILY_NPCX5)
 static inline int uart_is_wakeup_from_gpio(void)
 {
-	return IS_BIT_SET(NPCX_WKPND(1, NPCX_UART_WK_GROUP), NPCX_UART_WK_BIT);
+	return IS_BIT_SET(NPCX_WKPND(MIWU_TABLE_1, NPCX_UART_WK_GROUP),
+			NPCX_UART_WK_BIT);
 }
 
+#if defined(CHIP_FAMILY_NPCX5)
 /* This routine checks wake-up functionality from GPIO is enabled or not */
 static inline int uart_is_enable_wakeup(void)
 {
