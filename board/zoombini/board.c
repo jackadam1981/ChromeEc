@@ -12,6 +12,7 @@
 #include "common.h"
 #include "console.h"
 #include "compile_time_macros.h"
+#include "driver/charger/isl923x.h"
 #include "driver/pmic_tps650x30.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -190,10 +191,37 @@ static void board_chipset_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
+static void isl9238_set_hw_ramp(int enable)
+{
+	int reg;
+
+	if (charger_get_option(&reg))
+		return;
+
+	/* HW ramp is controlled by input voltage regulation reference bits */
+	if (enable)
+		reg &= ~ISL923X_C0_DISABLE_VREG;
+	else
+		reg |= ISL923X_C0_DISABLE_VREG;
+
+	charger_set_option(reg);
+}
+
 static void board_init(void)
 {
 	struct charge_port_info chg;
 	int i;
+	int reg;
+	int regval;
+
+	/* Set up the input voltage reference for regulation loop. */
+	regval = (4439 / ISL9238_INPUT_VOLTAGE_REF_STEP)
+		<< ISL9238_INPUT_VOLTAGE_REF_SHIFT;
+	reg = ISL9238_REG_INPUT_VOLTAGE;
+	i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER, reg, regval);
+
+	/* Disable the regulation loop by default. */
+	isl9238_set_hw_ramp(0);
 
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
@@ -300,6 +328,15 @@ int board_set_active_charge_port(int port)
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
+	/*
+	 * Turn on the input voltage regulation loop to be nicer to BC1.2
+	 * chargers.  This will limit the minimum input voltage ~4.45V.
+	 */
+	if (supplier == CHARGE_SUPPLIER_OTHER)
+		isl9238_set_hw_ramp(1);
+	else
+		isl9238_set_hw_ramp(0);
+
 	/*
 	 * To protect the charge inductor, at voltages above 18V we should
 	 * set the current limit to 2.7A.
