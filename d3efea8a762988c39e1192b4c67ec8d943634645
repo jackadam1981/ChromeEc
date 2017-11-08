@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dec2b669_c3bf2c1a",
+        "filename": "board/rainier/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1239286
+      },
+      "writtenOn": "2017-11-08T22:52:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3dd6615f_d61e4786",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 13
+      },
+      "revId": "d3efea8a762988c39e1192b4c67ec8d943634645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68a4b0b4_dc993732",
         "filename": "board/rainier/board.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-08T22:18:12Z",
       "side": 1,
       "message": "Double confirm that you\u0027re following the same scheme here (at least for rev0)?",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 339,
+        "endChar": 48
+      },
+      "revId": "d3efea8a762988c39e1192b4c67ec8d943634645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7843b3c_cc3cb6f0",
+        "filename": "board/rainier/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1239286
+      },
+      "writtenOn": "2017-11-08T22:52:17Z",
+      "side": 1,
+      "message": "Confirmed.",
+      "parentUuid": "68a4b0b4_dc993732",
       "range": {
         "startLine": 324,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1b1d4ffa_2f51e4f4",
+        "filename": "board/rainier/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1239286
+      },
+      "writtenOn": "2017-11-08T22:52:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "999b241d_a7b46710",
+      "range": {
+        "startLine": 514,
+        "startChar": 1,
+        "endLine": 517,
+        "endChar": 5
+      },
+      "revId": "d3efea8a762988c39e1192b4c67ec8d943634645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea2dd174_9e5d5699",
         "filename": "board/rainier/board.c",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-08T22:18:12Z",
       "side": 1,
       "message": "Might want to change this comment \"Assume there is always sufficient power from the charger to power-on\". Actually thinking about this more, we might need to change this, be wary if you see brownout loop issues on power-on with your device.",
+      "range": {
+        "startLine": 538,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 4
+      },
+      "revId": "d3efea8a762988c39e1192b4c67ec8d943634645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c22460ac_7fadcaef",
+        "filename": "board/rainier/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1239286
+      },
+      "writtenOn": "2017-11-08T22:52:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea2dd174_9e5d5699",
       "range": {
         "startLine": 538,
         "startChar": 0,
