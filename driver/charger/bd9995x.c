@@ -246,10 +246,13 @@ static int bd9995x_charger_enable(int enable)
 	if (rv)
 		return rv;
 
-	if (enable)
+	if (enable) {
 		reg |= BD9995X_CMD_CHGOP_SET2_CHG_EN;
-	else
+		reg &= ~(BD9995X_CMD_CHGOP_SET2_BATT_LEARN |
+			 BD9995X_CMD_CHGOP_SET2_USB_SUS);
+	} else {
 		reg &= ~BD9995X_CMD_CHGOP_SET2_CHG_EN;
+	}
 
 	return ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 				BD9995X_EXTENDED_COMMAND);
@@ -954,12 +957,14 @@ int charger_discharge_on_ac(int enable)
 	 * discharge VBUS quickly when charging is not allowed and the AC
 	 * is removed.
 	 */
-	if (enable)
+	if (enable) {
 		reg |= BD9995X_CMD_CHGOP_SET2_BATT_LEARN |
 			BD9995X_CMD_CHGOP_SET2_USB_SUS;
-	else
+		reg &= ~BD9995X_CMD_CHGOP_SET2_CHG_EN;
+	} else {
 		reg &= ~(BD9995X_CMD_CHGOP_SET2_BATT_LEARN |
 			BD9995X_CMD_CHGOP_SET2_USB_SUS);
+	}
 
 	return ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 				BD9995X_EXTENDED_COMMAND);
