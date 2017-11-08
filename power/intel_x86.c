@@ -58,6 +58,17 @@ static const int sleep_sig[] = {
 
 static int power_s5_up;       /* Chipset is sequencing up or down */
 
+/**
+ * Allow AP to boot using DC Jack
+ *
+ * @return 1 - DC Jack attached, 0 - DC Jack not attached
+ */
+__attribute__((weak)) int board_dc_jack_present(void)
+{
+	/* Need to implement board specific DC Jack present */
+	return 0;
+}
+
 /* Get system sleep state through GPIOs or VWs */
 static inline int chipset_get_sleep_signal(enum sys_sleep_state state)
 {
@@ -281,6 +292,15 @@ enum power_state common_intel_x86_power_handle_state(enum power_state state)
 		 */
 		while (charge_prevent_power_on(0) &&
 		       tries++ < CHARGER_INITIALIZED_TRIES) {
+			/*
+			 * During the early development of software without
+			 * Type-C charger, allow AP to boot if DC Jack is
+			 * attached.
+			 */
+			if (board_dc_jack_present) {
+				if (board_dc_jack_present())
+					break;
+			}
 			msleep(CHARGER_INITIALIZED_DELAY_MS);
 		}
 
