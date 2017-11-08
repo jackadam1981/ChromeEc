@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "12c914c3_4f5c010f",
+        "filename": "chip/npcx/system-npcx5.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-08T19:33:52Z",
+      "side": 1,
+      "message": "This doesn\u0027t encompass the entire size.",
+      "range": {
+        "startLine": 52,
+        "startChar": 36,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "375b60776156036ef458069c408e5ed4b24692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75b2aee9_fbac9eb7",
         "filename": "chip/npcx/system-npcx5.c",
         "patchSetId": 8
