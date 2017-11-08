@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e87f9dde_5d647588",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-08T21:26:39Z",
+      "side": 1,
+      "message": "This function is called from usb_charger_task, we should probably hold usb_switch_lock (eg. mutex_lock(\u0026usb_switch_lock[port];) while doing this, I think there is no guarantee that other tasks won\u0027t preempt and call usb_charger_set_switches().",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 24
+      },
+      "revId": "59b27858e3047346fb99c09ac4c551fde8ce4b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
