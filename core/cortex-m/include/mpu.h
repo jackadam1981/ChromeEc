@@ -60,10 +60,15 @@ extern char __iram_text_end;
 /**
  * Protect RAM from code execution
  */
-int mpu_protect_ram(void);
+int mpu_protect_data_ram(void);
 
 /**
- * Protect flash memory from code execution
+ * Protect code RAM from being overwritten
+ */
+int mpu_protect_code_ram(void);
+
+/**
+ * Protect internal mapped flash memory from code execution
  */
 int mpu_lock_ro_flash(void);
 int mpu_lock_rw_flash(void);
