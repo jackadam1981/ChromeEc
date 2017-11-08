@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "771405ab_7ff2f0fa",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-08T17:01:25Z",
+      "side": 1,
+      "message": "are these the same for nautilus battery?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "2a257c5e626deaf80c16e4a0e130e815eb4f121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d8d839_dd4172c1",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-08T17:01:25Z",
+      "side": 1,
+      "message": "Are these bit values correct for nautilus battery?",
+      "range": {
+        "startLine": 135,
+        "startChar": 17,
+        "endLine": 136,
+        "endChar": 28
+      },
+      "revId": "2a257c5e626deaf80c16e4a0e130e815eb4f121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
