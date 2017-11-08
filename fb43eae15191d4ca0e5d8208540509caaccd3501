@@ -45,6 +45,30 @@
       "revId": "fb43eae15191d4ca0e5d8208540509caaccd3501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da11940e_0e962caf",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-11-08T21:40:22Z",
+      "side": 1,
+      "message": "the phrasing is probably not clear enough but this is usage:\n1. ./powerlog.py --save_stats /tmp\nsave to /tmp\n2. ./powerlog.py --save_stats\nsave to where powerlog.py is\n3. ./powerlog.py\nnot save stats",
+      "parentUuid": "640e0953_cff9a0a7",
+      "range": {
+        "startLine": 689,
+        "startChar": 6,
+        "endLine": 689,
+        "endChar": 15
+      },
+      "revId": "fb43eae15191d4ca0e5d8208540509caaccd3501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
