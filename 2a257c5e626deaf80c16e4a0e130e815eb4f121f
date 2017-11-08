@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f674acc9_c5c09033",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-08T21:35:11Z",
+      "side": 0,
+      "message": "This pin looks to be NC now, you might want to just rename it so we don\u0027t forget about the pin and misconfigure it for power purpose.",
+      "range": {
+        "startLine": 38,
+        "startChar": 9,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "2a257c5e626deaf80c16e4a0e130e815eb4f121f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
