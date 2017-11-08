@@ -108,4 +108,11 @@ int use_g2f(void);
 unsigned u2f_custom_dispatch(uint8_t ins, struct apdu apdu, uint8_t *buf,
 			     unsigned *ret_len) __attribute__((weak));
 
+#define SSH_CERT_COUNT 2
+#define SSH_CERT_SIZE 0x800
+#define SSH_CERT_OFFSET 0x3000
+const void* ssh_cert_addr(uint32_t cert_num);
+int ssh_cert_write(uint32_t cert_num, const void *buffer, size_t buffer_size);
+
+
 #endif /* __CROS_EC_U2F_IMPL_H */

@@ -8,6 +8,7 @@
 #include "console.h"
 #include "dcrypto.h"
 #include "extension.h"
+#include "flash.h"
 #include "nvmem_vars.h"
 #include "rbox.h"
 #include "registers.h"
@@ -19,6 +20,7 @@
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_EXTENSION, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_EXTENSION, format, ## args)
 
 /* ---- physical presence (using the laptop power button) ---- */
 
@@ -224,3 +226,88 @@ enum vendor_cmd_rc vc_u2f_apdu(enum vendor_cmd_cc code, void *body,
 	return VENDOR_RC_SUCCESS;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_U2F_APDU, vc_u2f_apdu);
+
+/*
+ * Provide access to two 2K flash pages at offset 0x3000 from the base of each
+ * RO regions. Page 1 is mapped to 0x43000 and page 2 - to 0x73000. Each page
+ * is 0x800 in size.
+ */
+const void* ssh_cert_addr(uint32_t cert_num)
+{
+	if (cert_num >= SSH_CERT_COUNT) {
+		CPRINTF("%s: invalid certificate number %d\n",
+			__func__, cert_num);
+		return NULL;
+	}
+
+	return (const void *)(CONFIG_PROGRAM_MEMORY_BASE + SSH_CERT_OFFSET +
+			      cert_num * CFG_FLASH_HALF);
+}
+
+int ssh_cert_write(uint32_t cert_num, const void *buffer, size_t buffer_size)
+{
+	uint32_t cert_addr;
+	int rv;
+
+	cert_addr = (uint32_t)ssh_cert_addr(cert_num);
+
+	if (!cert_addr)
+		return EC_ERROR_INVAL;
+
+	if (buffer_size > SSH_CERT_SIZE) {
+		CPRINTF("%s: certificate size 0x%zx too big\n",
+			__func__, buffer_size);
+		return EC_ERROR_INVAL;
+	}
+
+	/* Let's use flash region 6 for this. */
+	GREG32(GLOBALSEC, FLASH_REGION6_BASE_ADDR) = (uint32_t) cert_addr;
+	GREG32(GLOBALSEC, FLASH_REGION6_SIZE) = SSH_CERT_SIZE - 1;
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, RD_EN, 1);
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 1);
+
+	rv = flash_physical_erase(cert_addr - CONFIG_PROGRAM_MEMORY_BASE,
+				  SSH_CERT_SIZE);
+
+	if (rv != EC_SUCCESS) {
+		CPRINTF("%s: failed to erase certificate space at 0x%x\n",
+			__func__, cert_addr);
+		GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 0);
+		return rv;
+	}
+
+	rv = flash_physical_write(cert_addr - CONFIG_PROGRAM_MEMORY_BASE,
+				  buffer_size, buffer);
+
+	GWRITE_FIELD(GLOBALSEC, FLASH_REGION6_CTRL, WR_EN, 0);
+	if (rv != EC_SUCCESS)
+		CPRINTF("%s: failed to write certificate at 0x%x\n",
+			__func__, cert_addr);
+
+	return rv;
+}
+
+static int command_ssh_cert(int argc, char **argv)
+{
+	int cert_num;
+	const void *cert;
+
+	uint8_t buffer[] = {1, 2, 3, 4, 5, 6, 7, 8};
+
+	if (argc < 2)
+		return EC_ERROR_INVAL;
+
+
+	cert_num = *argv[1] - '0';
+
+	cert = ssh_cert_addr(cert_num);
+
+	if (!cert)
+		return EC_ERROR_PARAM1;
+
+
+	return ssh_cert_write(cert_num, buffer, sizeof(buffer));
+}
+DECLARE_SAFE_CONSOLE_COMMAND(sshcert, command_ssh_cert, "", "");
+
