@@ -49,6 +49,13 @@ const struct {
 			0xcd375bcd,  0x8065e8cc,  0xc892ed69,  0x72436c7d
 		}
 	},
+	{
+		"U2F_SSH",
+		{
+			0xb504ea91,  0xa0d8dcd1,  0x702d194e,  0x49c8a831,
+			0x510825fb,  0x821dfe0d,  0x709b360b,  0x27b74961
+		}
+	},
 #ifdef CONFIG_STREAM_SIGNATURE
 	{
 		/* This key signs data from H1's configured by mn50/scribe. */

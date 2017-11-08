@@ -70,8 +70,8 @@ static int anonymous_cert(const p256_int *d, const p256_int *pk_x,
 	return DCRYPTO_x509_gen_u2f_cert(d, pk_x, pk_y, NULL, cert, n);
 }
 
-static int individual_cert(const p256_int *d, const p256_int *pk_x,
-			   const p256_int *pk_y,  uint8_t *cert, const int n)
+int individual_cert(const p256_int *d, const p256_int *pk_x,
+		    const p256_int *pk_y,  uint8_t *cert, const int n)
 {
 	p256_int *serial;
 
