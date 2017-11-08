@@ -94,6 +94,30 @@
       "revId": "1dfae50c59ef27d539ba23178fc9765bdcfca24c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c0bd7b4_42293d96",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2017-11-08T11:59:29Z",
+      "side": 1,
+      "message": "Unlike manually perform \u0027sysjump\u0027, free running from RO to RW I did not see board_init() been called again.\n\ni.e. (SuzyQ EC console on convertible model)\n--- UART initialized after reboot ---\n[Reset cause: hibernate wake-pin]\n[Image: RO, coral_1.1.9999-6e8f628  @E6440]\n[0.003426 init buttons]\n[0.003647 Inits done]\nHP: board_initHP: TABLET_MODE_L\u003d1 conv\u003d0 sku_id\u003d0\n[0.007292 found batt:SMP-SDI3.72]\n...\n[13.458743 Jumping to image RW]\n[13.461873 UART initialized after sysjump]\n[Image: RW, coral_v1.1.7242-bb6b1db23 2017-11-03 02:51:17 @build21-m2.golo.chromium.org]\n...\n[13.571945 USB charge p0 m2]\n[13.574401 ID/SKU ADC 4 \u003d 1138 mV]\n[13.576373 ID/SKU ADC 3 \u003d 1809 mV]\n[13.576875 SKU ID: 166]",
+      "parentUuid": "ac625380_6f5c24fb",
+      "range": {
+        "startLine": 1042,
+        "startChar": 0,
+        "endLine": 1043,
+        "endChar": 22
+      },
+      "revId": "1dfae50c59ef27d539ba23178fc9765bdcfca24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
