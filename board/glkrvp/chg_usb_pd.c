@@ -91,6 +91,11 @@ void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
+int board_dc_jack_present(void)
+{
+	return !gpio_get_level(GPIO_DC_JACK_PRESENT_L);
+}
+
 void board_tcpc_init(void)
 {
 	/* Only reset TCPC if not sysjump */
@@ -137,7 +142,7 @@ int board_set_active_charge_port(int port)
 	/* check if we are source vbus on that port */
 	int source = board_charger_port_is_sourcing_vbus(port);
 
-	if (is_real_port && source) {
+	if ((is_real_port && source) || board_dc_jack_present()) {
 		CPRINTS("Skip enable p%d", port);
 		return EC_ERROR_INVAL;
 	}
