@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da93b93e_9fbe56a8",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-08T21:55:25Z",
+      "side": 1,
+      "message": "If you tell charge_manager about the capability of this charge port then you shouldn\u0027t need to touch common code to get this working. See fizz for an example.",
+      "range": {
+        "startLine": 66,
+        "startChar": 26,
+        "endLine": 66,
+        "endChar": 47
+      },
+      "revId": "7269edfd0482f3f32ab6ca35e48fdfd0ab21e8b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
