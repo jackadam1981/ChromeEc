@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "82e1f2a9_aea82288",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-08T00:08:41Z",
+      "side": 1,
+      "message": "I think we should add logic, if necessary, to the driver code to handle the manual override needed for the factory tests.",
+      "parentUuid": "6378c0e5_ceaa57b6",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 938,
+        "endChar": 6
+      },
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46ce2b64_6d37281a",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 2
@@ -95,6 +119,30 @@
       "writtenOn": "2017-11-06T16:34:56Z",
       "side": 1,
       "message": "Maybe we should just enforce CHARGE_I_MIN for BD9995X_CMD_IPRECH_SET / BD9995X_CMD_CHG_CURRENT?",
+      "range": {
+        "startLine": 701,
+        "startChar": 4,
+        "endLine": 701,
+        "endChar": 23
+      },
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "767f6e12_0b5cb2a1",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-08T00:08:41Z",
+      "side": 1,
+      "message": "Since this function is being used to control the charger on/off via bd9995x_charger_enable(), we might need to restructure it so that the fastcharge current level is set when non-zero charge current is enabled. When the desired current from the caller is 0, then the only thing we should do is disable the bit 7 in CHGOP_SET2.",
+      "parentUuid": "46ce2b64_6d37281a",
       "range": {
         "startLine": 701,
         "startChar": 4,
@@ -174,6 +222,29 @@
       "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "585ad49d_d9ed3fe9",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-08T00:08:41Z",
+      "side": 1,
+      "message": "Rohm\u0027s suggestion is that we should never set the precharge current in this function and that setting it in the bd9995x_init() function should be sufficient.",
+      "range": {
+        "startLine": 729,
+        "startChar": 1,
+        "endLine": 731,
+        "endChar": 33
+      },
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
