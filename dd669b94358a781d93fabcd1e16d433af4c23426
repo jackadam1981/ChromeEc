@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5169945d_559bb989",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-08T08:22:33Z",
+      "side": 1,
+      "message": "what\u0027s the end goal of doing this ?\n\nOverall, it\u0027s likely broken because the PD state machine is in charge of setting CC resistors and you are doing it behind its back, all kind of badness might happen.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 47
+      },
+      "revId": "dd669b94358a781d93fabcd1e16d433af4c23426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebd48d56_12a9a35f",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-08T08:22:33Z",
+      "side": 1,
+      "message": "why are we looping here ?\nto prevent the PD state machine from reacting ?\n\nby the way, I don\u0027t think VBUS is guaranteed to discharge in 100ms",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 14
+      },
+      "revId": "dd669b94358a781d93fabcd1e16d433af4c23426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
