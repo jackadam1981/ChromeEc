@@ -16,7 +16,8 @@
  * .iram.text, which is used for hibernation. */
 enum mpu_region {
 	REGION_IRAM = 0,          /* For internal RAM */
-	REGION_FLASH_MEMORY = 1,  /* For flash memory */
+	REGION_IRAM2 = 1,         /* For internal RAM, second region */
+	REGION_FLASH_MEMORY = 2,  /* For flash memory */
 	REGION_IRAM_TEXT = 7      /* For *.(iram.text) */
 };
 
@@ -32,7 +33,7 @@ enum mpu_region {
  * Based on 3.1.4.1 'Updating an MPU Region' of Stellaris LM4F232H5QC Datasheet
  */
 static void mpu_update_region(uint8_t region, uint32_t addr, uint8_t size_bit,
-			      uint16_t attr, uint8_t enable)
+			      uint16_t attr, uint8_t enable, uint8_t srd)
 {
 	asm volatile("isb; dsb;");
 
@@ -41,7 +42,7 @@ static void mpu_update_region(uint8_t region, uint32_t addr, uint8_t size_bit,
 	if (enable) {
 		MPU_BASE = addr;
 		MPU_ATTR = attr;
-		MPU_SIZE = (size_bit - 1) << 1 | 1;	/* Enable */
+		MPU_SIZE = (srd << 8) | (size_bit - 1) << 1 | 1; /* Enable */
 	}
 
 	asm volatile("isb; dsb;");
@@ -62,19 +63,58 @@ static int mpu_config_region(uint8_t region, uint32_t addr, uint32_t size,
 			     uint16_t attr, uint8_t enable)
 {
 	int size_bit = 0;
+	uint8_t blocks, srd;
 
 	if (!size)
 		return EC_SUCCESS;
-	while (!(size & 1)) {
-		size_bit++;
-		size >>= 1;
-	}
-	/* Region size must be a power of 2 (size == 0) and equal or larger than
-	 * 32 (size_bit >= 5) */
-	if (size > 1 || size_bit < 5)
+
+	/* Bit position of first '1' in size */
+	size_bit = 32 - __builtin_clz(size);
+	/* Min. region size is 32 bytes */
+	if (size_bit < 5)
 		return -EC_ERROR_INVAL;
 
-	mpu_update_region(region, addr, size_bit, attr, enable);
+	/* If size is a power of 2 then represent it with a single MPU region */
+	if (POWER_OF_TWO(size)) {
+		mpu_update_region(region, addr, size_bit, attr, enable, 0);
+		return EC_SUCCESS;
+	}
+
+	/* Support multi-region protection for IRAM only */
+	if (region != REGION_IRAM)
+		return -EC_ERROR_INVAL;
+
+	/* Verify we can represent range with 2 regions */
+	if (size & ~(0x3f << (size_bit - 6)))
+		return -EC_ERROR_INVAL;
+	if (__builtin_ctz(size) < 4)
+		return -EC_ERROR_INVAL;
+
+	/*
+	 * Round up size of first region to power of 2.
+	 * Calculate the number of fully occupied blocks (block size =
+	 * region size / 8) in the first region.
+	 */
+	blocks = size >> (size_bit - 3);
+	/* Represent occupied blocks with srd mask (inverted for 0 = occupied */
+	srd = (1 << blocks) - 1;
+	mpu_update_region(region, addr, size_bit + 1, attr, enable, ~srd);
+
+	/*
+	 * Second protection region (if necessary) begins at the first block
+	 * we marked unoccupied in the first region.
+	 * Size of the second region is the block size of first region.
+	 */
+	addr += (1 << (size_bit - 3)) * blocks;
+	/*
+	 * Now represent occupied blocks in the second region. It's possible
+	 * that the first region completely represented the occupied area, if
+	 * so then no second protection region is required.
+	 */
+	srd = (1 << ((size >> (size_bit - 6)) & 0x7)) - 1;
+	if (srd)
+		mpu_update_region(region + 1, addr, size_bit - 2, attr, enable,
+				  ~srd);
 
 	return EC_SUCCESS;
 }
