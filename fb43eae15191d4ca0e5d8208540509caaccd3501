@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c74efa4_9a1c0f72",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-11-08T20:22:36Z",
+      "side": 1,
+      "message": "nit, looks like this could all fall under condition \u0027if self._print_raw_data:\u0027 to be more performant.",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 23
+      },
+      "revId": "fb43eae15191d4ca0e5d8208540509caaccd3501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "640e0953_cff9a0a7",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-11-08T20:22:36Z",
+      "side": 1,
+      "message": "Does this create the directory if it DNE ... if not then \u0027specified\u0027 might want to be \u0027directory exists\u0027 for clarity.  If it doesn\u0027t create dir ... should it?",
+      "range": {
+        "startLine": 689,
+        "startChar": 6,
+        "endLine": 689,
+        "endChar": 15
+      },
+      "revId": "fb43eae15191d4ca0e5d8208540509caaccd3501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
