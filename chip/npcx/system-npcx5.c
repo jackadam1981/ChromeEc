@@ -27,54 +27,6 @@ uintptr_t __lpram_lfw_start = CONFIG_LPRAM_BASE + LFW_OFFSET;
 /* IC specific low-level driver depends on chip series */
 
 /**
- * Configure address 0x40001600 (Low Power RAM) in the the MPU
- * (Memory Protection Unit) as a "regular" memory
- */
-void system_mpu_config(void)
-{
-	/* Enable MPU */
-	CPU_MPU_CTRL = 0x7;
-
-	/* Create a new MPU Region for low-power ram */
-	CPU_MPU_RNR  = 0;                         /* Select region number 0 */
-	CPU_MPU_RASR = CPU_MPU_RASR & 0xFFFFFFFE; /* Disable region */
-	CPU_MPU_RBAR = CONFIG_LPRAM_BASE;         /* Set region base address */
-	/*
-	 * Set region size & attribute and enable region
-	 * [31:29] - Reserved.
-	 * [28]    - XN (Execute Never) = 0
-	 * [27]    - Reserved.
-	 * [26:24] - AP                 = 011 (Full access)
-	 * [23:22] - Reserved.
-	 * [21:19,18,17,16] - TEX,S,C,B = 001000 (Normal memory)
-	 * [15:8]  - SRD                = 0 (Subregions enabled)
-	 * [7:6]   - Reserved.
-	 * [5:1]   - SIZE               = 01001 (1K)
-	 * [0]     - ENABLE             = 1 (enabled)
-	 */
-	CPU_MPU_RASR = 0x03080013;
-
-	/* Create a new MPU Region for data ram */
-	CPU_MPU_RNR  = 1;                         /* Select region number 1 */
-	CPU_MPU_RASR = CPU_MPU_RASR & 0xFFFFFFFE; /* Disable region */
-	CPU_MPU_RBAR = CONFIG_RAM_BASE;           /* Set region base address */
-	/*
-	 * Set region size & attribute and enable region
-	 * [31:29] - Reserved.
-	 * [28]    - XN (Execute Never) = 1
-	 * [27]    - Reserved.
-	 * [26:24] - AP                 = 011 (Full access)
-	 * [23:22] - Reserved.
-	 * [21:19,18,17,16] - TEX,S,C,B = 001000 (Normal memory)
-	 * [15:8]  - SRD                = 0 (Subregions enabled)
-	 * [7:6]   - Reserved.
-	 * [5:1]   - SIZE               = 01110 (32K)
-	 * [0]     - ENABLE             = 1 (enabled)
-	 */
-	CPU_MPU_RASR = 0x1308001D;
-}
-
-/**
  * hibernate function in low power ram for npcx5 series.
  */
 void __keep __attribute__ ((noreturn, section(".lowpower_ram")))

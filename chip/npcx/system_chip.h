@@ -32,12 +32,6 @@ enum bbram_data_index {
 /* Issue a watchdog reset*/
 void system_watchdog_reset(void);
 
-/*
- * Configure the specific memory addresses in the the MPU
- * (Memory Protection Unit) for Nuvoton different chip series.
- */
-void system_mpu_config(void);
-
 /* Hibernate function for different Nuvoton chip series. */
 void __hibernate_npcx_series(void);
 

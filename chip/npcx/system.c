@@ -689,12 +689,6 @@ void system_pre_init(void)
 	SET_BIT(NPCX_LFCGCALCNT, NPCX_LFCGCALCNT_LPREG_CTL_EN);
 #endif
 
-	/*
-	 * Configure LPRAM in the MPU as a regular memory
-	 * and DATA RAM to prevent code execution
-	 */
-	system_mpu_config();
-
 #ifdef CONFIG_CHIP_PANIC_BACKUP
 	chip_panic_data_restore();
 #endif
