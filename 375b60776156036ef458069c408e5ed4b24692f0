@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41b022d6_c25aa92a",
+        "filename": "chip/npcx/system-npcx5.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-08T19:28:52Z",
+      "side": 1,
+      "message": "Why do we have to have an entry for this LPRAM region in MPU? XN is not set, full access is allowed, so we\u0027re not protecting against anything?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 52
+      },
+      "revId": "375b60776156036ef458069c408e5ed4b24692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75b2aee9_fbac9eb7",
+        "filename": "chip/npcx/system-npcx5.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-08T19:28:52Z",
+      "side": 1,
+      "message": "We\u0027re already setting up MPU for this region in core/cortex-m/mpu.c (in some circumstances, on protected systems) so these settings may get overwritten.",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "375b60776156036ef458069c408e5ed4b24692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b17840e3_973a06df",
+        "filename": "chip/npcx/system-npcx5.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-08T19:28:52Z",
+      "side": 1,
+      "message": "This may vary (boards may redef data RAM size).",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 46
+      },
+      "revId": "375b60776156036ef458069c408e5ed4b24692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
