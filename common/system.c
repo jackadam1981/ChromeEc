@@ -326,21 +326,33 @@ void system_disable_jump(void)
 	if (system_is_locked()) {
 		int ret;
 		int enable_mpu = 0;
-		enum system_image_copy_t copy;
+		enum system_image_copy_t __attribute__((unused)) copy;
 
 		CPRINTS("MPU type: %08x", mpu_get_type());
 		/*
-		 * Protect RAM from code execution
+		 * Protect data RAM from code execution
 		 */
-		ret = mpu_protect_ram();
+		ret = mpu_protect_data_ram();
 		if (ret == EC_SUCCESS) {
 			enable_mpu = 1;
-			CPRINTS("RAM locked. Exclusion %08x-%08x",
+			CPRINTS("data RAM locked. Exclusion %08x-%08x",
 				&__iram_text_start, &__iram_text_end);
 		} else {
-			CPRINTS("Failed to lock RAM (%d)", ret);
+			CPRINTS("Failed to lock data RAM (%d)", ret);
 		}
 
+#ifdef CONFIG_EXTERNAL_STORAGE
+		/*
+		 * Protect code RAM from being overwritten
+		 */
+		ret = mpu_protect_code_ram();
+		if (ret == EC_SUCCESS) {
+			enable_mpu = 1;
+			CPRINTS("code RAM locked.");
+		} else {
+			CPRINTS("Failed to lock code RAM (%d)", ret);
+		}
+#else
 		/*
 		 * Protect inactive image (ie. RO if running RW, vice versa)
 		 * from code execution.
@@ -366,13 +378,14 @@ void system_disable_jump(void)
 			CPRINTS("Failed to lock %s image (%d)",
 				system_image_copy_t_to_string(copy), ret);
 		}
+#endif /* !CONFIG_EXTERNAL_STORAGE */
 
 		if (enable_mpu)
 			mpu_enable();
 	} else {
 		CPRINTS("System is unlocked. Skip MPU configuration");
 	}
-#endif
+#endif /* CONFIG_MPU */
 }
 
 test_mockable enum system_image_copy_t system_get_image_copy(void)
