@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60d0058a_f7351898",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 3122,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-09T02:23:52Z",
+      "side": 1,
+      "message": "I was looking at the host_cmd_handler_args structure and it seems to already have a version field defined. Check MKBP or battery cutoff where EC_VER_MASK(0) | EC_VER_MASK(1) is used to define the versions that the host command supports. Looking at that, it seems redundant that we have version fields here in the request and response structures. Sorry about this late realization. But, I think it should be okay to just skip this version field altogether and rely only on the command version field supported in host_cmd_handler_args.\n\nWhat do you think?",
+      "range": {
+        "startLine": 3118,
+        "startChar": 2,
+        "endLine": 3122,
+        "endChar": 17
+      },
+      "revId": "3d0bf39348e643991b159bbc59c9928dfbfcbc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
