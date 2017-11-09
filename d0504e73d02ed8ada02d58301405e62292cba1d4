@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "326cedda_addb2e36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-09T15:32:41Z",
+      "side": 1,
+      "message": "What does this mean? At power-on, ILIM will become .476A or 1.5A based on PROG (that seems expected / documented), and then shortly after it will happen again in some way that can\u0027t be explained?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "d0504e73d02ed8ada02d58301405e62292cba1d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82a8f0e1_e1cefe66",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
