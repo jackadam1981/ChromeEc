@@ -542,8 +542,12 @@ static void board_set_tablet_mode(void)
 {
 	int tablet_mode = 0;
 
-	if (SKU_IS_CONVERTIBLE(sku_id))
-		tablet_mode = !gpio_get_level(GPIO_TABLET_MODE_L);
+	if (SKU_IS_CONVERTIBLE(sku_id)) {
+		int lid_angle = motion_lid_get_angle();
+		tablet_mode = !gpio_get_level(GPIO_TABLET_MODE_L) &&
+			((lid_angle == LID_ANGLE_UNRELIABLE)?
+			0: (lid_angle >= 180));
+	}
 
 	tablet_set_mode(tablet_mode);
 }
