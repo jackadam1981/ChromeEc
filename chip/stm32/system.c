@@ -223,6 +223,8 @@ void chip_pre_init(void)
 		STM32_RCC_PB1_WWDG | STM32_RCC_PB1_IWDG;
 	apb2fz_reg = STM32_RCC_PB2_TIM9 | STM32_RCC_PB2_TIM10 |
 		STM32_RCC_PB2_TIM11;
+#elif defined(CHIP_FAMILY_STM32H7)
+	/* TBD */
 #endif
 
 	if (apb1fz_reg)
@@ -239,22 +241,29 @@ void system_pre_init(void)
 #endif
 
 	/* enable clock on Power module */
+#ifndef CHIP_FAMILY_STM32H7
 	STM32_RCC_APB1ENR |= STM32_RCC_PWREN;
+#endif
 #if defined(CHIP_FAMILY_STM32F4)
 	/* enable backup registers */
 	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_BKPSRAMEN;
+#elif defined(CHIP_FAMILY_STM32H7)
+	/* enable backup registers */
+	STM32_RCC_AHB4ENR |= 1 << 28;
 #else
 	/* enable backup registers */
 	STM32_RCC_APB1ENR |= 1 << 27;
 #endif
 	/* Delay 1 APB clock cycle after the clock is enabled */
 	clock_wait_bus_cycles(BUS_APB, 1);
+#ifndef CHIP_FAMILY_STM32H7
 	/* Enable access to RCC CSR register and RTC backup registers */
 	STM32_PWR_CR |= 1 << 8;
 #ifdef CHIP_VARIANT_STM32L476
 	/* Enable Vddio2 */
 	STM32_PWR_CR2 |= 1 << 9;
 #endif
+#endif /* !CHIP_FAMILY_STM32H7 */
 
 	/* switch on LSI */
 	STM32_RCC_CSR |= 1 << 0;
@@ -270,7 +279,8 @@ void system_pre_init(void)
 		STM32_RCC_CSR = (STM32_RCC_CSR & ~0x00C30000) | 0x00420000;
 	}
 #elif defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32F3) || \
-	defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32F4)
+	defined(CHIP_FAMILY_STM32L4) || defined(CHIP_FAMILY_STM32F4) || \
+	defined(CHIP_FAMILY_STM32H7)
 	if ((STM32_RCC_BDCR & BDCR_ENABLE_MASK) != BDCR_ENABLE_VALUE) {
 		/* The RTC settings are bad, we need to reset it */
 		STM32_RCC_BDCR |= STM32_RCC_BDCR_BDRST;
@@ -476,5 +486,8 @@ int system_is_reboot_warm(void)
 #elif defined(CHIP_FAMILY_STM32F4)
 	return ((STM32_RCC_AHB1ENR & STM32_RCC_AHB1ENR_GPIOMASK)
 			== STM32_RCC_AHB1ENR_GPIOMASK);
+#elif defined(CHIP_FAMILY_STM32H7)
+	return ((STM32_RCC_AHB4ENR & STM32_RCC_AHB4ENR_GPIOMASK)
+			== STM32_RCC_AHB4ENR_GPIOMASK);
 #endif
 }
