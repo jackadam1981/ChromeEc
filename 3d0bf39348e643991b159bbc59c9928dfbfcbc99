@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "047575c4_f541badf",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-09T02:28:13Z",
+      "side": 1,
+      "message": "Maybe be more explicit about what mask this is:\nactive_wake_mask_set_by_host or active_wm_set_by_host",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "3d0bf39348e643991b159bbc59c9928dfbfcbc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "60d0058a_f7351898",
         "filename": "include/ec_commands.h",
         "patchSetId": 9
