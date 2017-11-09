@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b20656a_224c73d6",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-11-09T21:42:28Z",
+      "side": 1,
+      "message": "Can we incorporate most of these checks into a common helper?\n\n/* return true if reset should be initiated, false if spin and wait */\nint determine_save_flags_for_reset(int input_flags, int *save_flags);\n\nThen we can update all the chipsets to behave similarly? It seems like a lot of stuff could be common-ized here.",
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
