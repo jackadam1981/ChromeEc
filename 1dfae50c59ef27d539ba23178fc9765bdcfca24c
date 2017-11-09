@@ -118,6 +118,30 @@
       "revId": "1dfae50c59ef27d539ba23178fc9765bdcfca24c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48e9abb2_0158a670",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2017-11-09T10:38:48Z",
+      "side": 1,
+      "message": "I realized a corner case that is able to boot clamshell in tablet mode when TABLET_MODE_L is 0.\nTurns out not only interrupt calls the enable_input_devices(), so think the CL:748944 covers this (interrupt is disabled, TABLET_MODE_L is 0, then enable_input_devices() been called again).",
+      "parentUuid": "0a060267_d71d0c5a",
+      "range": {
+        "startLine": 1042,
+        "startChar": 0,
+        "endLine": 1043,
+        "endChar": 22
+      },
+      "revId": "1dfae50c59ef27d539ba23178fc9765bdcfca24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
