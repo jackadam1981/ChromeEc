@@ -16,6 +16,24 @@
       "revId": "037efe3a880861f90791ad72bcf873dd8703f1e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "555805a1_6580e9c7",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-11-09T23:28:57Z",
+      "side": 1,
+      "message": "Yes, since they used the same light sensor, I will apply the same calibration flow to both of them. On the other hand, different window (panel) would have attenuation_factor so the fixed value here is not that meaningful.",
+      "parentUuid": "29bf0e4d_cb1e0ce9",
+      "revId": "037efe3a880861f90791ad72bcf873dd8703f1e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
