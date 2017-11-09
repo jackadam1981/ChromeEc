@@ -91,6 +91,7 @@
 
 #define STM32_IRQ_CAN_SCE         22 /* STM32F373 only */
 #define STM32_IRQ_EXTI9_5         23
+#ifndef CHIP_FAMILY_STM32H7
 #define STM32_IRQ_LCD             24 /* STM32L15X only */
 #define STM32_IRQ_TIM15           24 /* STM32F373 only */
 #define STM32_IRQ_TIM9            25 /* STM32L15X only */
@@ -99,6 +100,7 @@
 #define STM32_IRQ_TIM17           26 /* STM32F373 only */
 #define STM32_IRQ_TIM11           27 /* STM32L15X only */
 #define STM32_IRQ_TIM18_DAC2      27 /* STM32F373 only */
+#endif /* !CHIP_FAMILY_STM32H7 */
 #define STM32_IRQ_TIM2            28
 #define STM32_IRQ_TIM3            29
 #define STM32_IRQ_TIM4            30
@@ -148,6 +150,12 @@
 #define STM32_IRQ_RNG             80 /* STM32L4 only */
 #define STM32_IRQ_FPU             81 /* STM32F373 only */
 
+#ifdef CHIP_FAMILY_STM32H7
+#define STM32_IRQ_TIM15         116
+#define STM32_IRQ_TIM16         117
+#define STM32_IRQ_TIM17         118
+#endif /* CHIP_FAMILY_STM32H7 */
+
 /* To simplify code generation, define DMA channel 9..10 */
 #define STM32_IRQ_DMA_CHANNEL_9    STM32_IRQ_DMA2_CHANNEL1
 #define STM32_IRQ_DMA_CHANNEL_10   STM32_IRQ_DMA2_CHANNEL2
@@ -160,7 +168,7 @@
 #define STM32_IRQ_I2C3 STM32_IRQ_I2C3_EV
 #endif /* !CHIP_FAMILY_STM32F0 */
 
-#ifdef CHIP_FAMILY_STM32F4
+#if defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32H7)
 /*
  * STM32F4 introduces a concept of DMA stream to allow
  * fine allocation of a stream to a channel.
@@ -192,6 +200,11 @@
 #endif
 
 #ifndef __ASSEMBLER__
+
+#ifdef CHIP_FAMILY_STM32H7
+/* On STM32H7 all the peripheral addresses are different, split it */
+#include "registers-stm32h7.h"
+#else /* !CHIP_FAMILY_STM32H7 */
 
 /* --- USART --- */
 #if defined(CHIP_FAMILY_STM32F4)
@@ -2391,6 +2404,7 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 #define STM32_CEC_BASE              0x40007800 /* STM32F373 */
 #define STM32_LCD_BASE              0x40002400
 
+#endif /* !CHIP_FAMILY_STM32H7 */
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_REGISTERS_H */
