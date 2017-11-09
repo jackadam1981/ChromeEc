@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42211040_23da31c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T17:28:36Z",
+      "side": 1,
+      "message": "At power-on, ILIM becomes .476A or 1.5A based on PROG. (interestingly, it\u0027s 1.5A).\nWe disable rereading of the PROG pin and reloading ILIM.\nWe rewrite ILIM to our desired value.\nWe plug in AC, and the charger resets ILIM to .476A.\n\nFurther unplug/replug don\u0027t result in the charger resetting ILIM.",
+      "parentUuid": "326cedda_addb2e36",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "d0504e73d02ed8ada02d58301405e62292cba1d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82a8f0e1_e1cefe66",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2017-11-09T15:21:16Z",
       "side": 1,
       "message": "I believe this would solve the problem with this issue too: b/66017697",
+      "revId": "d0504e73d02ed8ada02d58301405e62292cba1d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dfdc5b7_119f3f9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T17:28:36Z",
+      "side": 1,
+      "message": "Reading through that, I think this will as well. I\u0027ll add it to the commit message.",
+      "parentUuid": "82a8f0e1_e1cefe66",
       "revId": "d0504e73d02ed8ada02d58301405e62292cba1d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
