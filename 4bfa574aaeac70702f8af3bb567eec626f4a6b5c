@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2130a67d_83989f93",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T18:58:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "330a7533_ff467003",
+      "revId": "4bfa574aaeac70702f8af3bb567eec626f4a6b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1966682_b2267e2f",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-11-09T15:11:46Z",
       "side": 1,
       "message": "ditto",
+      "revId": "4bfa574aaeac70702f8af3bb567eec626f4a6b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83873b3c_f807c67b",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T18:58:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1966682_b2267e2f",
       "revId": "4bfa574aaeac70702f8af3bb567eec626f4a6b5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c9de54c5_6c9c0f4d",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T18:58:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "516fe108_e6df9dc2",
+      "revId": "4bfa574aaeac70702f8af3bb567eec626f4a6b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b938389_43c47af7",
         "filename": "driver/charger/isl923x.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2017-11-09T15:11:46Z",
       "side": 1,
       "message": "Why?",
+      "revId": "4bfa574aaeac70702f8af3bb567eec626f4a6b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "675173cb_a7085d69",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T18:58:24Z",
+      "side": 1,
+      "message": "I wrote a function that basically did the same thing as this function, but we weren\u0027t defining CONFIG_CHARGE_RAMP_HW. To not make duplicate code, I decided to compile this in as well.\n\nI guess it wastes 36 bytes for those boards that don\u0027t use it... For now, I\u0027ll roll it into our board. I may end up removing that approach entirely. (HW+SW chg ramp)",
+      "parentUuid": "8b938389_43c47af7",
       "revId": "4bfa574aaeac70702f8af3bb567eec626f4a6b5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
