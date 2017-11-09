@@ -22,6 +22,30 @@
       "revId": "59b27858e3047346fb99c09ac4c551fde8ce4b37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ec33bf8_844f1025",
+        "filename": "driver/bc12/pi3usb9281.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-11-09T08:39:07Z",
+      "side": 1,
+      "message": "Done. Since the init is dealing with reset condition. I called pi3usb9281_reset() instead.",
+      "parentUuid": "e87f9dde_5d647588",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 24
+      },
+      "revId": "59b27858e3047346fb99c09ac4c551fde8ce4b37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
