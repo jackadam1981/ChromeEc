@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9499a41_ce80e86f",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-11-09T20:47:37Z",
+      "side": 1,
+      "message": "TODO(ecgh) ?",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "c92942f531f15635515266692c0b190af3dd7e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58a9b1f4_42b43ad1",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-11-09T20:47:37Z",
+      "side": 1,
+      "message": "So why the 512KB? Can you expand the comment?",
+      "range": {
+        "startLine": 21,
+        "startChar": 42,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "c92942f531f15635515266692c0b190af3dd7e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d847ed55_63a4ae27",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-11-09T20:47:37Z",
+      "side": 1,
+      "message": "Should this use tabs instead of spaces?",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "c92942f531f15635515266692c0b190af3dd7e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
