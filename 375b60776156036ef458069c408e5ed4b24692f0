@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "621ed970_33889bba",
+        "filename": "chip/npcx/system-npcx5.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-11-09T02:35:48Z",
+      "side": 1,
+      "message": "Yes, we did need an entry for LPRAM region in MPU. LPRAM (Suspend RAM) is used for hibernating and  GDMA bypass on npcx5. For example, When \"hibernate\" console command is executed, ec will move a little FW to LPRAM and jump into this region to turn off all 128/256KB RAM for better power consumption. Without creating an MPU region which XN attribute is zero for LPRAM, we\u0027ll get hard fault after jumping into this region.",
+      "parentUuid": "41b022d6_c25aa92a",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 52
+      },
+      "revId": "375b60776156036ef458069c408e5ed4b24692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12c914c3_4f5c010f",
         "filename": "chip/npcx/system-npcx5.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-08T19:33:52Z",
       "side": 1,
       "message": "This doesn\u0027t encompass the entire size.",
+      "range": {
+        "startLine": 52,
+        "startChar": 36,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "375b60776156036ef458069c408e5ed4b24692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f261b9a_8cf95fe1",
+        "filename": "chip/npcx/system-npcx5.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-11-09T02:35:48Z",
+      "side": 1,
+      "message": "We didn\u0027t use the full suspend ram for hibernating and bypass of GDMA. Since MPU_RASR\u0027s limitation for region size, I only create a 1KB region for them. \n\nI thought it might be better to change CONFIG_LPRAM_SIZE to 1KB. We can check whether ec runs out of the suspend ram.",
+      "parentUuid": "12c914c3_4f5c010f",
       "range": {
         "startLine": 52,
         "startChar": 36,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "8c8abf7c_54b5330f",
+        "filename": "chip/npcx/system-npcx5.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-11-09T02:35:48Z",
+      "side": 1,
+      "message": "Indeed, mpu_protect_ram() already did the same thing in commom/system.c. I think this part is useless.",
+      "parentUuid": "75b2aee9_fbac9eb7",
+      "range": {
+        "startLine": 57,
+        "startChar": 1,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "375b60776156036ef458069c408e5ed4b24692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b17840e3_973a06df",
         "filename": "chip/npcx/system-npcx5.c",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-08T19:28:52Z",
       "side": 1,
       "message": "This may vary (boards may redef data RAM size).",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 46
+      },
+      "revId": "375b60776156036ef458069c408e5ed4b24692f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00aad10e_c95c8530",
+        "filename": "chip/npcx/system-npcx5.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-11-09T02:35:48Z",
+      "side": 1,
+      "message": "Yes, introducing CONFIG_RAM_XXXX definitions is better.",
+      "parentUuid": "b17840e3_973a06df",
       "range": {
         "startLine": 71,
         "startChar": 1,
