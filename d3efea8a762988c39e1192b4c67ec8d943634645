@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "14df4fd7_5c39e02a",
+        "filename": "board/rainier/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-09T04:58:40Z",
+      "side": 1,
+      "message": "Sorry, I was unclear -- we need to keep board_spi_disable() but we don\u0027t need the hook_init_done synchronization.",
+      "parentUuid": "dec2b669_c3bf2c1a",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 13
+      },
+      "revId": "d3efea8a762988c39e1192b4c67ec8d943634645",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68a4b0b4_dc993732",
         "filename": "board/rainier/board.c",
         "patchSetId": 4
