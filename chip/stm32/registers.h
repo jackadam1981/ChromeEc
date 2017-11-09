@@ -61,6 +61,7 @@
 #define STM32_IRQ_EXTI2            8
 #define STM32_IRQ_EXTI3            9
 #define STM32_IRQ_EXTI4           10
+#ifndef CHIP_FAMILY_STM32H7
 #define STM32_IRQ_DMA_CHANNEL_1   11
 #define STM32_IRQ_DMA_CHANNEL_2   12
 #define STM32_IRQ_DMA_CHANNEL_3   13
@@ -68,6 +69,7 @@
 #define STM32_IRQ_DMA_CHANNEL_5   15
 #define STM32_IRQ_DMA_CHANNEL_6   16
 #define STM32_IRQ_DMA_CHANNEL_7   17
+#endif /* !CHIP_FAMILY_STM32H7 */
 
 #ifdef CHIP_VARIANT_STM32F373
 #define STM32_IRQ_USB_HP          74
@@ -192,6 +194,11 @@
 #endif
 
 #ifndef __ASSEMBLER__
+
+#ifdef CHIP_FAMILY_STM32H7
+/* On STM32H7 all the peripheral addresses are different, split it */
+#include "registers-stm32h7.h"
+#else /* !CHIP_FAMILY_STM32H7 */
 
 /* --- USART --- */
 #if defined(CHIP_FAMILY_STM32F4)
@@ -2391,6 +2398,7 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 #define STM32_CEC_BASE              0x40007800 /* STM32F373 */
 #define STM32_LCD_BASE              0x40002400
 
+#endif /* !CHIP_FAMILY_STM32H7 */
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_REGISTERS_H */
