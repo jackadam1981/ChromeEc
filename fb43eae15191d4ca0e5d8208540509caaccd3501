@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "21cafee5_0f4b6ce7",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-11-09T01:48:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c74efa4_9a1c0f72",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 586,
+        "endChar": 23
+      },
+      "revId": "fb43eae15191d4ca0e5d8208540509caaccd3501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "640e0953_cff9a0a7",
         "filename": "extra/usb_power/powerlog.py",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "fb43eae15191d4ca0e5d8208540509caaccd3501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be8d073e_fd3ea01a",
+        "filename": "extra/usb_power/powerlog.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-11-09T01:48:40Z",
+      "side": 1,
+      "message": "resolved offline",
+      "parentUuid": "da11940e_0e962caf",
+      "range": {
+        "startLine": 689,
+        "startChar": 6,
+        "endLine": 689,
+        "endChar": 15
+      },
+      "revId": "fb43eae15191d4ca0e5d8208540509caaccd3501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
