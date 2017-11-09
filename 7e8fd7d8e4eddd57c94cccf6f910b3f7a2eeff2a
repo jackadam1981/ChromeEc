@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "cd9c59df_c0c24efb",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-11-09T01:21:02Z",
+      "side": 1,
+      "message": "Host command will interrupt charger task.\nThe example in b:68364154, after charger task finish setting CHG_EN, host command interrupt and set to idle/discharge. After that, charger task will continue set charge current, and it will override charge current to none zero value.\nIf host command interrupt before charger task set CHG_EN, charger_get_current() will fail to set zero in next charge cycle due to charger task override CHG_EN.",
+      "parentUuid": "771e90b2_ef9d602f",
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "424be5a6_b505731d",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
@@ -179,6 +197,30 @@
       "side": 1,
       "message": "Since this function is being used to control the charger on/off via bd9995x_charger_enable(), we might need to restructure it so that the fastcharge current level is set when non-zero charge current is enabled. When the desired current from the caller is 0, then the only thing we should do is disable the bit 7 in CHGOP_SET2.",
       "parentUuid": "46ce2b64_6d37281a",
+      "range": {
+        "startLine": 701,
+        "startChar": 4,
+        "endLine": 701,
+        "endChar": 23
+      },
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7148bdac_a695c939",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-11-09T01:21:02Z",
+      "side": 1,
+      "message": "We should run bd9995x_charger_enable() before charger_set_current() and charger_set_current() only execute when current is none zero value, right?",
+      "parentUuid": "767f6e12_0b5cb2a1",
       "range": {
         "startLine": 701,
         "startChar": 4,
