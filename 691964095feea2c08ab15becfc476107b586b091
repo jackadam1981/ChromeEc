@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "adbf6073_4d8cc95c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T22:16:26Z",
+      "side": 1,
+      "message": "nit: I\u0027d make the tag \"system: \"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b20656a_224c73d6",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
@@ -16,6 +39,156 @@
       "revId": "691964095feea2c08ab15becfc476107b586b091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74d0f4b4_e893cd5b",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T22:16:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b20656a_224c73d6",
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4b6195d_6207476e",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T22:16:26Z",
+      "side": 1,
+      "message": "I don\u0027t think this should set the AP_OFF flag on its own. The reboot command will cycle through all of the arguments passed in. Therefore, we can just string them together.\n\ne.g. : \u003e reboot ap-off wait-ext",
+      "range": {
+        "startLine": 725,
+        "startChar": 37,
+        "endLine": 725,
+        "endChar": 56
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2187a7c6_0b7f1e85",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T22:16:26Z",
+      "side": 1,
+      "message": "I think I prefer \"wait-ext\" for wait external reset. It could be Cr50 generated for instance and not servo.\n\nAdditionally, these flags are informational. Is it necessary to know that we were waiting? The reset cause will be reset-pin.\n\nWhat do you think?",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86f6732a_61037ec4",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T22:16:26Z",
+      "side": 1,
+      "message": "Maybe \"Waiting for ext reset...\" ?",
+      "range": {
+        "startLine": 1127,
+        "startChar": 11,
+        "endLine": 1127,
+        "endChar": 27
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7729753e_6329c5b9",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T22:16:26Z",
+      "side": 1,
+      "message": "Maybe we should only print this when \u0027SYSTEM_RESET_WAIT_EXT\u0027 is set.",
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46c3dcd7_0b9d3577",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T22:16:26Z",
+      "side": 1,
+      "message": "nit: \"to be driven\".",
+      "range": {
+        "startLine": 36,
+        "startChar": 63,
+        "endLine": 36,
+        "endChar": 72
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2f2205f_e0829588",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-09T22:16:26Z",
+      "side": 1,
+      "message": "EC_RST_L ?",
+      "range": {
+        "startLine": 266,
+        "startChar": 36,
+        "endLine": 266,
+        "endChar": 45
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
