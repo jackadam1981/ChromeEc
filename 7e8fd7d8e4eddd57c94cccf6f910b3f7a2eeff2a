@@ -233,6 +233,30 @@
     },
     {
       "key": {
+        "uuid": "0c3b04a5_0ff7f2ac",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-09T01:28:58Z",
+      "side": 1,
+      "message": "It\u0027s my understanding that the charger current should be set prior to setting charger enabled.",
+      "parentUuid": "7148bdac_a695c939",
+      "range": {
+        "startLine": 701,
+        "startChar": 4,
+        "endLine": 701,
+        "endChar": 23
+      },
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fcdd5d8_de7ff18a",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 2
