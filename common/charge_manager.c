@@ -670,6 +670,15 @@ static void charge_manager_refresh(void)
 		updated_old_port = charge_port;
 	}
 
+#ifdef CONFIG_CHARGER_V2
+	/*
+	 * If there's no more charge port, reset the input current to the
+	 * charger default.
+	 */
+	if (charge_port != new_port && charge_port == CHARGE_PORT_NONE)
+		charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
+#endif /* defined(CONFIG_CHARGER_V2) */
+
 	/* Update globals to reflect current state. */
 	charge_current = new_charge_current;
 	charge_current_uncapped = new_charge_current_uncapped;
