@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d656cf6f_24758aaf",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-09T21:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9499a41_ce80e86f",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 9
+      },
+      "revId": "c92942f531f15635515266692c0b190af3dd7e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58a9b1f4_42b43ad1",
         "filename": "board/grunt/board.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-09T20:47:37Z",
       "side": 1,
       "message": "So why the 512KB? Can you expand the comment?",
+      "range": {
+        "startLine": 21,
+        "startChar": 42,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "c92942f531f15635515266692c0b190af3dd7e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d835730_c4ceb9b3",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-09T21:14:20Z",
+      "side": 1,
+      "message": "I\u0027m not sure, since I copied this from zoombini. Aseda, do you know?",
+      "parentUuid": "58a9b1f4_42b43ad1",
       "range": {
         "startLine": 21,
         "startChar": 42,
@@ -68,6 +116,30 @@
       "revId": "c92942f531f15635515266692c0b190af3dd7e9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f530603_cdb4b53a",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-09T21:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d847ed55_63a4ae27",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "c92942f531f15635515266692c0b190af3dd7e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
