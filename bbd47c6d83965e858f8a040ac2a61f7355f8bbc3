@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "865af9ea_4dc66658",
+        "filename": "chip/npcx/system-npcx5.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-11-09T02:37:10Z",
+      "side": 0,
+      "message": "Creating a new MPU region which XN attribute is zero for low-power ram is necessary. Or we\u0027ll get the hard fault after jumping into it. The following is the console log when ec executed \"hibernate\" without this part on npcx_evb.\n\n\u003e hibernate 3\nHibernating for 3.000000 s\n\n\u003d\u003d\u003d PROCESS EXCEPTION: 03 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 61000000 \u003d\u003d\u003d\nr0 :100b51a8 r1 :200c2558 r2 :0000001d r3 :0000001d\nr4 :00000000 r5 :00000003 r6 :00000002 r7 :200c0864\nr8 :100b53e4 r9 :00000000 r10:00000000 r11:00000000\nr12:40001601 sp :200c1ff0 lr :100b2997 pc :40001600\nInstruction access violation, Forced hard fault\nmmfs \u003d 1, shcsr \u003d 70000, hfsr \u003d 40000000, dfsr \u003d 0\n\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Process Stack Contents \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n200c2010: 200c0860 00000002 200c0860 100ac77b\n200c2020: 200c0ae4 200c0aee deadd00d deadd00d\n200c2030: 00000000 00000000 00000000 00000000\n200c2040: 00000000 00000000 00000000 00000000\n\nRebooting...",
+      "revId": "bbd47c6d83965e858f8a040ac2a61f7355f8bbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
