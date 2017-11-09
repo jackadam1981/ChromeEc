@@ -73,6 +73,10 @@ void dma_select_channel(enum dma_channel channel, unsigned char stream)
 	val = STM32_DMA_CSELR(channel) & ~(mask << ch * shift);
 	STM32_DMA_CSELR(channel) = val | (stream << ch * shift);
 }
+#elif defined(CHIP_FAMILY_STM32H7)
+void dma_select_channel(enum dma_channel channel, unsigned char stream)
+{
+}
 #endif
 
 void dma_disable(enum dma_channel channel)
@@ -232,6 +236,8 @@ void dma_init(void)
 {
 #if defined(CHIP_FAMILY_STM32L4)
 	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN|STM32_RCC_AHB1ENR_DMA2EN;
+#elif defined(CHIP_FAMILY_STM32H7)
+	STM32_RCC_AHB4ENR |= STM32_RCC_HB4_BDMA;
 #else
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;
 #endif
@@ -363,6 +369,9 @@ DECLARE_DMA_IRQ(4);
 DECLARE_DMA_IRQ(5);
 DECLARE_DMA_IRQ(6);
 DECLARE_DMA_IRQ(7);
+#ifdef CHIP_FAMILY_STM32H7
+DECLARE_DMA_IRQ(8);
+#endif
 #ifdef CHIP_FAMILY_STM32F3
 DECLARE_DMA_IRQ(9);
 DECLARE_DMA_IRQ(10);
