@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "330a7533_ff467003",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-09T15:11:46Z",
+      "side": 1,
+      "message": "This looks confusing at best, drop it.",
+      "revId": "4bfa574aaeac70702f8af3bb567eec626f4a6b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1966682_b2267e2f",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-09T15:11:46Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "4bfa574aaeac70702f8af3bb567eec626f4a6b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516fe108_e6df9dc2",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-09T15:11:46Z",
+      "side": 1,
+      "message": "I know I authored (or touched recently) that code, but can you please annotate the endif?",
+      "revId": "4bfa574aaeac70702f8af3bb567eec626f4a6b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b938389_43c47af7",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-09T15:11:46Z",
+      "side": 1,
+      "message": "Why?",
+      "revId": "4bfa574aaeac70702f8af3bb567eec626f4a6b5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
