@@ -1,0 +1,63 @@
+/* Copyright 2017 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Memory mapping */
+#define CONFIG_FLASH_SIZE       (1048 * 1024)
+
+/* 7*128K blocks in each bank */
+#define SIZE_128KB (128 * 1024)
+#define CONFIG_FLASH_REGION_TYPE_COUNT 1
+#define CONFIG_FLASH_MULTIPLE_REGION 7
+
+/* Erasing 128K can take up to 2s, need to defer erase. */
+#define CONFIG_FLASH_DEFERRED_ERASE
+
+/* minimum write size for 3.3V. 1 for 1.8V */
+#define STM32_FLASH_WRITE_SIZE_1800 1
+#define STM32_FLASH_WS_DIV_1800 16000000
+#define STM32_FLASH_WRITE_SIZE_3300 4
+#define STM32_FLASH_WS_DIV_3300 30000000
+#define CONFIG_FLASH_WRITE_SIZE STM32_FLASH_WRITE_SIZE_3300
+
+/* No page mode on STM32F, so no benefit to larger write sizes */
+#define CONFIG_FLASH_WRITE_IDEAL_SIZE CONFIG_FLASH_WRITE_SIZE
+
+/*       ITCM-RAM:  64kB 0x00000000 - 0x0000FFFF (CPU and MDMA) */
+/*       DTCM-RAM: 128kB 0x20000000 - 0x2001FFFF (CPU and MDMA) */
+/* (D1) AXI-SRAM : 512kB 0x24000000 - 0x2407FFFF (no BDMA) */
+/* (D2) AHB-SRAM1: 128kB 0x30000000 - 0x3001FFFF */
+/* (D2) AHB-SRAM2: 128kB 0x30020000 - 0x3003FFFF */
+/* (D2) AHB-SRAM3:  32kB 0x30040000 - 0x30047FFF */
+/* (D3) AHB-SRAM4:  64kB 0x38000000 - 0x3800FFFF */
+/* (D3) backup RAM:  4kB 0x38800000 - 0x38800FFF */
+#define CONFIG_RAM_BASE		0x24000000
+#define CONFIG_RAM_SIZE		0x00080000
+
+#define CONFIG_RO_MEM_OFF	0
+#define CONFIG_RO_SIZE		(128 * 1024)
+#define CONFIG_RW_MEM_OFF	(128 * 1024)
+#define CONFIG_RW_SIZE		(896 * 1024)
+
+#define CONFIG_RO_STORAGE_OFF	0
+#define CONFIG_RW_STORAGE_OFF	0
+
+#define CONFIG_EC_PROTECTED_STORAGE_OFF		0
+#define CONFIG_EC_PROTECTED_STORAGE_SIZE	CONFIG_RW_MEM_OFF
+#define CONFIG_EC_WRITABLE_STORAGE_OFF		CONFIG_RW_MEM_OFF
+#define CONFIG_EC_WRITABLE_STORAGE_SIZE					\
+		 (CONFIG_FLASH_SIZE - CONFIG_EC_WRITABLE_STORAGE_OFF)
+
+#define CONFIG_WP_STORAGE_OFF		CONFIG_EC_PROTECTED_STORAGE_OFF
+#define CONFIG_WP_STORAGE_SIZE		CONFIG_EC_PROTECTED_STORAGE_SIZE
+
+#undef I2C_PORT_COUNT
+#define I2C_PORT_COUNT	4
+
+/* Use PSTATE embedded in the RO image, not in its own erase block */
+#define CONFIG_FLASH_PSTATE
+#undef CONFIG_FLASH_PSTATE_BANK
+
+/* Number of IRQ vectors on the NVIC */
+#define CONFIG_IRQ_COUNT	150
