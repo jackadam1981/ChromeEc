@@ -16,6 +16,24 @@
       "revId": "e5bf95317398336cac3ce5575cc9981a04007a89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71b7fad6_c0fde7c7",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2017-11-10T18:41:28Z",
+      "side": 1,
+      "message": "Agreed.\n\nI read CL:383073 before the draft, I was considering whether or not it\u0027s a good value in 180 degrees or I should honor Gwendal\u0027s work before, so add Gwendal for open advice.",
+      "parentUuid": "50e5c7a1_c03974d3",
+      "revId": "e5bf95317398336cac3ce5575cc9981a04007a89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
