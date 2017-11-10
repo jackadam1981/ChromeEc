@@ -135,6 +135,30 @@
     },
     {
       "key": {
+        "uuid": "b7464d2c_d9d68607",
+        "filename": "board/zoombini/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-10T15:29:54Z",
+      "side": 1,
+      "message": "The gpio.inc include is in include/gpio.wrap, so I don\u0027t think that will work.\n\nI do agree that if the GPIOs are mostly common between our two boards, we should define the differences behind #ifdefs and not split the file.",
+      "parentUuid": "0b2dfd07_897d81af",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73560c9b_7d33afe2",
         "filename": "board/zoombini/gpio.inc",
         "patchSetId": 1
