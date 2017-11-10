@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d587b1b5_89695971",
+        "filename": "include/usb_i2c.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-10T05:15:20Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be 255 as well?",
+      "range": {
+        "startLine": 25,
+        "startChar": 25,
+        "endLine": 25,
+        "endChar": 27
+      },
+      "revId": "8a41cdc8da43897d969f644d3e450a3662557adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01c2f691_defc845d",
         "filename": "include/usb_i2c.h",
         "patchSetId": 9
