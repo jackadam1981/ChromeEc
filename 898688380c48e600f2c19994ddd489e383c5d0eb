@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea2ed0bf_cb69c0f2",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-10T03:59:15Z",
+      "side": 1,
+      "message": "This is already done right?",
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c11a5ad_97f1c8df",
+        "filename": "board/zoombini/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-10T03:59:15Z",
+      "side": 1,
+      "message": "Can you make this back into a tab? Less whitespace diffs just make things a little easier to see.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "222a617f_f443258b",
+        "filename": "board/zoombini/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-10T03:59:15Z",
+      "side": 1,
+      "message": "Here as well.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 8
+      },
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f05fb45_513a4019",
+        "filename": "board/zoombini/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-10T03:59:15Z",
+      "side": 1,
+      "message": "Here too.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 8
+      },
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73560c9b_7d33afe2",
+        "filename": "board/zoombini/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-10T03:59:15Z",
+      "side": 1,
+      "message": "Remove this extra newline.",
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55188c35_527cdc0b",
+        "filename": "board/zoombini/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-10T03:59:15Z",
+      "side": 1,
+      "message": "nit: remove extra line.",
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
