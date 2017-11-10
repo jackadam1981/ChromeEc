@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd07e0b6_2807ff86",
+        "filename": "board/coral/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-10T20:51:07Z",
+      "side": 1,
+      "message": "lid angle is not needed.\nFor the EC point of Tablet mode is when the lid is against the base (angle \u003d 360). It is different from the chrome tablet mode.\nThe GPIO from the GMR sensor is a very good indicator, use it directly.",
+      "revId": "22d62f6039ae16f5722290a7b48025d4f939639e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
