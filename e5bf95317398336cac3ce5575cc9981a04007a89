@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50e5c7a1_c03974d3",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-11-10T17:09:41Z",
+      "side": 1,
+      "message": "Should we just check lid angle prior to dealing w/ the gpio?\n\nif (lid_ange !\u003d LID_ANGLE_UNRELIABLE \u0026\u0026 lid_angle \u003e\u003d 180)\n  tablet_mode \u003d !gpio_get_level(...)\n\n\nSame logic, but it reads clearer instead of doing all the ternary and chained \u0026\u0026.",
+      "revId": "e5bf95317398336cac3ce5575cc9981a04007a89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
