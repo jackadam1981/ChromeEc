@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4113ce33_49e1574a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-10T01:00:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adbf6073_4d8cc95c",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b20656a_224c73d6",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "abdfa273_f4b97121",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-10T01:00:58Z",
+      "side": 1,
+      "message": "I moved this to a function in common/system.c system_encode_save_flags()",
+      "parentUuid": "74d0f4b4_e893cd5b",
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4b6195d_6207476e",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
@@ -83,6 +125,30 @@
     },
     {
       "key": {
+        "uuid": "bfdced45_5a8e7bd5",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-10T01:00:58Z",
+      "side": 1,
+      "message": "Because I am removing RESET_FLAG_WAIT_SERVO, then I this whole if clause becomes unnecessary.",
+      "parentUuid": "d4b6195d_6207476e",
+      "range": {
+        "startLine": 725,
+        "startChar": 37,
+        "endLine": 725,
+        "endChar": 56
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "340c3965_8b1aec6a",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
@@ -94,6 +160,30 @@
       "writtenOn": "2017-11-09T23:29:25Z",
       "side": 1,
       "message": "Won\u0027t we still watchdog reset if servo doesn\u0027t reset us in time?",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 736,
+        "endChar": 3
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58814702_40b3e642",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-10T01:00:58Z",
+      "side": 1,
+      "message": "Yes, That would happen if the external reset doesn\u0027t happen soon enough. What would be better for this case?",
+      "parentUuid": "340c3965_8b1aec6a",
       "range": {
         "startLine": 734,
         "startChar": 1,
@@ -141,6 +231,54 @@
       "side": 1,
       "message": "I don\u0027t think this needs to be preserved across the reset.  Waiting on external reset is local to the current boot.",
       "parentUuid": "2187a7c6_0b7f1e85",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31271d53_1bd613dd",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-10T01:00:58Z",
+      "side": 1,
+      "message": "I have been on the fence about this. I do believe there is limited utility and knowing the reset reason for this use case. If the reset reason is removed, then the flag SYSTEM_RESET_WAIT_EXT only needs to be used to decide to skip the call to system_watchdog_reset(). \n\nI haven\u0027t removed this yet, but if that is the consensus then I think RESET_FLAG_WAIT_EXT can just be removed altogether.",
+      "parentUuid": "2187a7c6_0b7f1e85",
+      "range": {
+        "startLine": 93,
+        "startChar": 14,
+        "endLine": 93,
+        "endChar": 24
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9fa26dc_85faf45c",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-10T01:00:58Z",
+      "side": 1,
+      "message": "Looks like the consensus will be that we don\u0027t need to save the reset reason. Removing this  reason.",
+      "parentUuid": "de02a6ab_4f66116b",
       "range": {
         "startLine": 93,
         "startChar": 14,
@@ -210,6 +348,30 @@
       "writtenOn": "2017-11-09T23:29:25Z",
       "side": 1,
       "message": "Print should go below @1133.  Otherwise, if you do\n\nreboot wait-ext nosuchoption\n\nyou\u0027d see wait-servo, but the command would error out before calling system_reset().",
+      "parentUuid": "86f6732a_61037ec4",
+      "range": {
+        "startLine": 1127,
+        "startChar": 11,
+        "endLine": 1127,
+        "endChar": 27
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7674af6d_45651dfd",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-10T01:00:58Z",
+      "side": 1,
+      "message": "Actually, I think I put this in just for debug purposes, so I have removed it entirely.",
       "parentUuid": "86f6732a_61037ec4",
       "range": {
         "startLine": 1127,
