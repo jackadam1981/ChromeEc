@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "202a1e6a_d607107a",
+        "filename": "board/glkrvp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-10T05:29:12Z",
+      "side": 1,
+      "message": "This seems excessive, probably copied from reef LED days to work around buggy TCPCs. We might consider reducing it.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 40
+      },
+      "revId": "ae48a76e9e6231b1446cf212ce4a4ec238f5ac2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
