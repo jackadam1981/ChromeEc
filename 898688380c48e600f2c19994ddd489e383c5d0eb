@@ -111,6 +111,30 @@
     },
     {
       "key": {
+        "uuid": "0b2dfd07_897d81af",
+        "filename": "board/zoombini/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-10T10:21:40Z",
+      "side": 1,
+      "message": "You can probably simply do:\n#ifdef BOARD_ZOMBINI\n#include \"gpio-zoombini.inc\"\n#elif defined(BOARD_MEOWTH)\n#include \"gpio-meowth.inc\"\n#else\n#error \"Unknown board\"\n#endif\n\nAt the same time, skimming through it, Meowth looks mostly like a subset of Zoombini, so might not be worth fully splitting it.",
+      "parentUuid": "bc8c03f7_9a7eee32",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73560c9b_7d33afe2",
         "filename": "board/zoombini/gpio.inc",
         "patchSetId": 1
