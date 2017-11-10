@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c05d6fcb_4c336090",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-10T10:51:48Z",
+      "side": 1,
+      "message": "the current enable_mpu behavior looks wrong if one succeeds and one fails.",
+      "range": {
+        "startLine": 350,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 18
+      },
+      "revId": "2b59f0eb3d32fd416ef1ffdc19769ae576a4fc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63d14ef5_393dbb32",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-10T10:51:48Z",
+      "side": 1,
+      "message": "you need to comment the new \u0027srd\u0027 parameter above.",
+      "range": {
+        "startLine": 26,
+        "startChar": 40,
+        "endLine": 26,
+        "endChar": 52
+      },
+      "revId": "2b59f0eb3d32fd416ef1ffdc19769ae576a4fc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a43de44_f5b3f8d1",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-10T10:51:48Z",
+      "side": 1,
+      "message": "nit: I feel not putting parenthesis here is a dangerous slope (as replacing | by + would break) but nothing new or broken",
+      "range": {
+        "startLine": 35,
+        "startChar": 41,
+        "endLine": 35,
+        "endChar": 47
+      },
+      "revId": "2b59f0eb3d32fd416ef1ffdc19769ae576a4fc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89cfb55c_7a550365",
+        "filename": "core/cortex-m/mpu.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-10T10:51:48Z",
+      "side": 1,
+      "message": "-EC_ERROR_INVAL ?",
+      "range": {
+        "startLine": 50,
+        "startChar": 36,
+        "endLine": 50,
+        "endChar": 50
+      },
+      "revId": "2b59f0eb3d32fd416ef1ffdc19769ae576a4fc03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
