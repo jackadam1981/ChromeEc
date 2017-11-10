@@ -196,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "2b1bc549_0abc8db0",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-10T01:24:16Z",
+      "side": 1,
+      "message": "Add:\n\nif (flags \u0026 SYSTEM_RESET_WAIT_EXT) {\n  /* Wait 10 seconds for external reset */\n  for (i \u003d 0; i \u003c 1000; i++) {\n    watchdog_reload();\n    udelay(10000);\n}\n\nThen drop through to spinning (which will watchdog after a couple seconds).  That way, we won\u0027t hang forever if external reset doesn\u0027t come in.\n\nNote that we must use udelay() not usleep() because interrupts have been disabled.",
+      "parentUuid": "58814702_40b3e642",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 736,
+        "endChar": 3
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2187a7c6_0b7f1e85",
         "filename": "common/system.c",
         "patchSetId": 2

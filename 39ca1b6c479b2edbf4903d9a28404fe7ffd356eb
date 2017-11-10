@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0046fbba_99be40a3",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-10T01:24:16Z",
+      "side": 1,
+      "message": "reset_flags \u0026 (SYSTEM_RESET_HARD | SYSTEM_RESET_WAIT_EXT)",
+      "range": {
+        "startLine": 242,
+        "startChar": 6,
+        "endLine": 243,
+        "endChar": 41
+      },
+      "revId": "39ca1b6c479b2edbf4903d9a28404fe7ffd356eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
