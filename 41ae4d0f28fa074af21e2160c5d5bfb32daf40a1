@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a70ee53e_0a009b18",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-10T20:37:22Z",
+      "side": 1,
+      "message": "Need to hold this mutex before checking fifo_entries, otherwise no guarantee FIFO is non-empty for code below.",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 32
+      },
+      "revId": "41ae4d0f28fa074af21e2160c5d5bfb32daf40a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f17f0192_c28f70a6",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-10T20:37:22Z",
+      "side": 1,
+      "message": "Need to hold this mutex before checking fifo_entries, otherwise no guarantee fifo is not full for code below.",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 29
+      },
+      "revId": "41ae4d0f28fa074af21e2160c5d5bfb32daf40a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
