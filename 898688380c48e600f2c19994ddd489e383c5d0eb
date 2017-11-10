@@ -159,6 +159,30 @@
     },
     {
       "key": {
+        "uuid": "b7c8df6a_0b99e4aa",
+        "filename": "board/zoombini/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-10T21:00:42Z",
+      "side": 1,
+      "message": "I understand your suggestion now, you propose to add those #includes to gpio.inc. The only disadvantage is that gpio.inc (which possibly may contain just #includes and not useful definitions) still needs to exist.",
+      "parentUuid": "b7464d2c_d9d68607",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73560c9b_7d33afe2",
         "filename": "board/zoombini/gpio.inc",
         "patchSetId": 1
