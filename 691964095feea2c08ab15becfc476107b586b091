@@ -220,6 +220,30 @@
     },
     {
       "key": {
+        "uuid": "f637365a_35b6d169",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-10T21:01:17Z",
+      "side": 1,
+      "message": "I think we should just wait and kick the watchdog forever. If we have the print, I think it should be clear that the device is waiting for external reset.\n\nIf a user/developer notices their EC is stuck, they\u0027ll probably assert EC_RST_L anyways.",
+      "parentUuid": "2b1bc549_0abc8db0",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 736,
+        "endChar": 3
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2187a7c6_0b7f1e85",
         "filename": "common/system.c",
         "patchSetId": 2
