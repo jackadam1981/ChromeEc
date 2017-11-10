@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "92e68c9c_81644137",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-10T19:02:57Z",
+      "side": 1,
+      "message": "It was more SPI flash than we\u0027ve ever used and I wasn\u0027t sure if we had other plans for the space. Therefore, I left it unallocated for now.",
+      "parentUuid": "2d835730_c4ceb9b3",
+      "range": {
+        "startLine": 21,
+        "startChar": 42,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "c92942f531f15635515266692c0b190af3dd7e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d847ed55_63a4ae27",
         "filename": "board/grunt/board.h",
         "patchSetId": 2
