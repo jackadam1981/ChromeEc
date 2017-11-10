@@ -88,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "bc8c03f7_9a7eee32",
+        "filename": "board/zoombini/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-10T05:43:20Z",
+      "side": 1,
+      "message": "I don\u0027t think we support it, but it would be nice if we could split this into two gpio.inc files. TODO(me) figure out the best way to do that.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 21
+      },
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73560c9b_7d33afe2",
         "filename": "board/zoombini/gpio.inc",
         "patchSetId": 1
@@ -119,6 +142,29 @@
       "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "408e001d_e0b80fac",
+        "filename": "power/cannonlake.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-10T05:43:20Z",
+      "side": 1,
+      "message": "We\u0027ll need to include common.h for this to work reliably. But, we should keep #ifdef BOARD out of common code, it will quickly get messy once we have more cannonlake boards.\n\nThere are a few ways you can solve this, maybe add #define PP5000_PGOOD_POWER_SIGNAL_MASK 0 / POWER_SIGNAL_MASK(PP5000_PGOOD) (for zoombini / meowth) and use PP5000_PGOOD_POWER_SIGNAL_MASK here.",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "898688380c48e600f2c19994ddd489e383c5d0eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
