@@ -9,6 +9,8 @@
 #include "hwtimer.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "sha256.h"
+#include "shared_mem.h"
 #include "task.h"
 #include "timer.h"
 #include "touchpad.h"
@@ -506,11 +508,131 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 	return EC_SUCCESS;
 }
 
-/* TODO(b:63993891): Implement debugging mode for Elan touchpad. */
+/* Debugging mode. */
+
+/* Allowed unlock commands. We only store a hash of the allowed commands. */
+#define TOUCHPAD_ELAN_DEBUG_CMD_LENGTH 50
+#define TOUCHPAD_ELAN_DEBUG_NUM_CMD 2
+
+static const uint8_t
+allowed_command_hashes[TOUCHPAD_ELAN_DEBUG_NUM_CMD][SHA256_DIGEST_SIZE] = {
+	{
+		0xe6, 0xf6, 0xbf, 0x4e, 0xd6, 0x9d, 0x50, 0x41,
+		0xb8, 0xab, 0xb4, 0xe4, 0x84, 0x36, 0xdc, 0x52,
+		0xc8, 0xf4, 0xb4, 0x9d, 0xcf, 0x13, 0xee, 0x35,
+		0xf7, 0x10, 0x1f, 0x42, 0x5a, 0x62, 0xfe, 0x63
+	},
+	{
+		0x62, 0xd8, 0xf8, 0x70, 0xb2, 0xc9, 0x1d, 0xc6,
+		0x7d, 0x2b, 0x96, 0x9e, 0x96, 0xfd, 0xd6, 0x34,
+		0xd5, 0xfd, 0xf4, 0x26, 0xb3, 0x5b, 0x7e, 0xe8,
+		0xc4, 0x3e, 0x9b, 0xba, 0x73, 0xc8, 0x6b, 0x33
+	},
+};
+
 int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		   uint8_t **data, unsigned int *data_size)
 {
-	return EC_RES_INVALID_COMMAND;
+	static uint8_t *buffer;
+	static unsigned int buffer_size;
+	unsigned int offset;
+
+	/* Offset parameter is 1 byte. */
+	if (param_size < 1)
+		return EC_RES_INVALID_PARAM;
+
+	/*
+	 * Debug command, compute SHA-256, check that it matches allowed hash,
+	 * and execute I2C command.
+	 * param[0] must be 0xff
+	 * param[1] is the offset of the command in the data
+	 * param[2] is the command length
+	 * param[3-4] is the read-back length (MSB first), can be 0
+	 * param[5-49] is verified using SHA-256 hash.
+	 */
+	if (param[0] == 0xff && param_size == TOUCHPAD_ELAN_DEBUG_CMD_LENGTH) {
+		struct sha256_ctx ctx;
+		uint8_t *command_hash;
+		unsigned int offset = param[1];
+		unsigned int write_length = param[2];
+		unsigned int read_length =
+			((unsigned int)param[3] << 8) | param[4];
+		int i;
+		int match;
+		int rv;
+
+		if (offset < 5 || write_length == 0 ||
+		    (offset + write_length) >= TOUCHPAD_ELAN_DEBUG_CMD_LENGTH)
+			return EC_RES_INVALID_PARAM;
+
+		SHA256_init(&ctx);
+		SHA256_update(&ctx, param+5, TOUCHPAD_ELAN_DEBUG_CMD_LENGTH-5);
+		command_hash = SHA256_final(&ctx);
+
+		match = 0;
+		for (i = 0; i < TOUCHPAD_ELAN_DEBUG_NUM_CMD; i++) {
+			if (!memcmp(command_hash, allowed_command_hashes[i],
+					sizeof(allowed_command_hashes[i]))) {
+				match = 1;
+				break;
+			}
+		}
+
+		if (!match)
+			return EC_RES_INVALID_PARAM;
+
+		if (buffer) {
+			shared_mem_release(buffer);
+			buffer = NULL;
+		}
+
+		buffer_size = read_length;
+
+		if (read_length > 0) {
+			if (shared_mem_acquire(buffer_size,
+				    (char **)&buffer) != EC_SUCCESS) {
+				buffer = NULL;
+				buffer_size = 0;
+				return EC_RES_BUSY;
+			}
+
+			memset(buffer, 0, buffer_size);
+		}
+
+		i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
+		rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT,
+			      CONFIG_TOUCHPAD_I2C_ADDR,
+			      &param[offset], write_length,
+			      buffer, read_length, I2C_XFER_SINGLE);
+		i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
+
+		if (rv)
+			return EC_RES_BUS_ERROR;
+
+		return EC_RES_SUCCESS;
+	}
+
+	/*
+	 * Data request: Retrieve previously read data from buffer in blocks of
+	 * 64 bytes.
+	 */
+	offset = param[0] * 64;
+
+	if (!buffer)
+		return EC_RES_UNAVAILABLE;
+
+	if (offset >= buffer_size) {
+		shared_mem_release(buffer);
+		buffer = NULL;
+		*data = NULL;
+		*data_size = 0;
+		return EC_RES_OVERFLOW;
+	}
+
+	*data = buffer + offset;
+	*data_size = MIN(64, buffer_size - offset);
+
+	return EC_RES_SUCCESS;
 }
 #endif
 
