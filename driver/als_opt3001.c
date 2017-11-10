@@ -54,12 +54,12 @@ int opt3001_init(void)
 		return EC_ERROR_UNKNOWN;
 
 	/*
-	 * [15:12]: 0101b Automatic full scale (1310.40lux, 0.32lux/lsb)
+	 * [15:12]: 1100b Automatic full scale
 	 * [11]   : 1b    Conversion time 800ms
 	 * [10:9] : 10b   Continuous Mode of conversion operation
 	 * [4]    : 1b    Latched window-style comparison operation
 	 */
-	return opt3001_i2c_write(OPT3001_REG_CONFIGURE, 0x5C10);
+	return opt3001_i2c_write(OPT3001_REG_CONFIGURE, 0xCC10);
 }
 
 /**
