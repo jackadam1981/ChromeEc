@@ -45,6 +45,30 @@
       "revId": "3d0bf39348e643991b159bbc59c9928dfbfcbc99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6527b566_a971a928",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 3122,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-10T11:28:20Z",
+      "side": 1,
+      "message": "Looking at DECLARE_HOST_COMMAND definition, I feel we may need new host command handler(or update the declaration) for EC_CMD_PROGRAM_HOST_EVENT if we need to support new field in  ec_params_program_host_event incase HAS_TASK_HOSTCMD is defined. \n\n#ifdef HAS_TASK_HOSTCMD\n....\n#define DECLARE_HOST_COMMAND(command, routine, version_mask)    \\\n        const struct host_command __keep EXPAND(0x0000, command)        \\\n        __attribute__((section(\".rodata.hcmds.\"EXPANDSTR(0x0000, command)))) \\\n                \u003d {routine, command, version_mask}\n\n....\n#else\n....\n#define DECLARE_HOST_COMMAND(command, routine, version_mask)    \\\n        int (routine)(struct host_cmd_handler_args *args)       \\\n                __attribute__((unused))\n....\n#endif\n\n\nDECLARE_HOST_COMMAND(EC_CMD_PROGRAM_HOST_EVENT,\n                     host_command_program_host_event,\n                     EC_VER_MASK(0));",
+      "parentUuid": "60d0058a_f7351898",
+      "range": {
+        "startLine": 3118,
+        "startChar": 2,
+        "endLine": 3122,
+        "endChar": 17
+      },
+      "revId": "3d0bf39348e643991b159bbc59c9928dfbfcbc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
