@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81ee0cd9_a082b60b",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-10T23:24:21Z",
+      "side": 1,
+      "message": "Please don\u0027t use TASK_ALS anymore.\nWhit the proper driver, the ALS sensor can be managed by the motion_sense task and be seen by android apps.",
+      "revId": "980750797de6c5a75242aa2ddef55a310d2d525d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb108d59_b717bc2b",
+        "filename": "board/caroline/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-10T23:24:21Z",
+      "side": 1,
+      "message": "Use the motion_sense_task to handle ALS sensor.",
+      "revId": "980750797de6c5a75242aa2ddef55a310d2d525d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
