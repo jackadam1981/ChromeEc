@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "f9030773_0e201feb",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-11-11T13:38:42Z",
+      "side": 1,
+      "message": "Or the more formal direction is to move poppy\u0027s ALS from ALS task to motion_sense task then it will be the same with other recent platforms / projects (ex: Reef)?\n\nOn the other hand, crbug.com/783616 would not be needed because acpi-als will be replaced by cros-ec-als.",
+      "parentUuid": "9d36dac3_95208dfe",
+      "revId": "a8b97a85e3498948f4abfb0337c37b63431b6511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3c111d4_2cb6cebc",
         "filename": "driver/als_opt3001.c",
         "patchSetId": 1
