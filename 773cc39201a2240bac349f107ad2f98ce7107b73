@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "253a0279_f1f82308",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-11T16:32:28Z",
+      "side": 1,
+      "message": "Let\u0027s check the return value so ISL9238_REG_CONTROL3 doesn\u0027t get trashed on failure.",
+      "range": {
+        "startLine": 340,
+        "startChar": 1,
+        "endLine": 340,
+        "endChar": 40
+      },
+      "revId": "773cc39201a2240bac349f107ad2f98ce7107b73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
