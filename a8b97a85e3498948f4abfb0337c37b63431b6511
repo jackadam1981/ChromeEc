@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce13dbb9_cd9a5cea",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-11-11T03:31:54Z",
+      "side": 1,
+      "message": "Thanks for the reminding.",
+      "parentUuid": "630bccd8_e05b6564",
+      "revId": "a8b97a85e3498948f4abfb0337c37b63431b6511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3c111d4_2cb6cebc",
         "filename": "driver/als_opt3001.c",
         "patchSetId": 1
@@ -53,6 +71,23 @@
         "endLine": 79,
         "endChar": 44
       },
+      "revId": "a8b97a85e3498948f4abfb0337c37b63431b6511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37559a44_9ae9f619",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-11-11T03:31:54Z",
+      "side": 1,
+      "message": "Then I will move to this part to check and verify\n  1. In the spec the reset value of this reg is 0xC810 and 0xCXXX is for auto scale. Therefore will still correct it here.\n  2. Need to find out where set this 0x0XXX to 0x5XXX.",
       "revId": "a8b97a85e3498948f4abfb0337c37b63431b6511",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
