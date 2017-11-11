@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb841acc_74e77e99",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-11T16:42:16Z",
+      "side": 1,
+      "message": "Can you expand this comment to explain why it is relevant in the context of charger_post_init() (eg. why you moved initialization to HOOK_INIT).",
+      "range": {
+        "startLine": 273,
+        "startChar": 4,
+        "endLine": 273,
+        "endChar": 42
+      },
+      "revId": "04c13e6b4001b132ed51a5f3b32b9e63f4b15df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcf7d976_6b48efc8",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-11T16:42:16Z",
+      "side": 1,
+      "message": "rv is unassigned.",
+      "range": {
+        "startLine": 285,
+        "startChar": 5,
+        "endLine": 285,
+        "endChar": 7
+      },
+      "revId": "04c13e6b4001b132ed51a5f3b32b9e63f4b15df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab717274_89899433",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-11T16:42:16Z",
+      "side": 1,
+      "message": "rv isn\u0027t needed if you don\u0027t need to store the return value.",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 9
+      },
+      "revId": "04c13e6b4001b132ed51a5f3b32b9e63f4b15df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdfc6b03_d32beaf5",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-11T16:42:16Z",
+      "side": 1,
+      "message": "Let\u0027s add a console print if this function fails? Maybe change these returns to gotos, add the print at the end.",
+      "revId": "04c13e6b4001b132ed51a5f3b32b9e63f4b15df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18c58bb6_b165e8b4",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-11T16:42:16Z",
+      "side": 1,
+      "message": "Spaces here, \"... + 1\".",
+      "range": {
+        "startLine": 336,
+        "startChar": 38,
+        "endLine": 336,
+        "endChar": 58
+      },
+      "revId": "04c13e6b4001b132ed51a5f3b32b9e63f4b15df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
