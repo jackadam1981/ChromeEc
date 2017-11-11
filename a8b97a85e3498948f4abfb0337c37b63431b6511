@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9d36dac3_95208dfe",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-11-11T13:24:04Z",
+      "side": 1,
+      "message": "Hi Gwendal,\n\nIn poppy\u0027s ec.tasklist [1], it shows that poppy defined to have ALS task and [2] presents poppy\u0027s board.c declared struct als_t which is a legacy struct for ALS task. Hence I believe for Poppy project, I changed the right place. May I have your confirm again? Thanks.\n\n[1] https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/poppy/ec.tasklist#25\n[2] https://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/poppy/board.c#538",
+      "parentUuid": "ce13dbb9_cd9a5cea",
+      "revId": "a8b97a85e3498948f4abfb0337c37b63431b6511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3c111d4_2cb6cebc",
         "filename": "driver/als_opt3001.c",
         "patchSetId": 1
