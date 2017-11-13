@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab0829fc_9727ad4a",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1119124
+      },
+      "writtenOn": "2017-11-13T23:06:21Z",
+      "side": 1,
+      "message": "did we determine that debug needs to be enabled?\nmy reading of clearing the 0x01 bit is that it enables\nadditional I2C pages, but none of the registers we\u0027re\nwriting after this operation are on these additional pages.",
+      "range": {
+        "startLine": 100,
+        "startChar": 56,
+        "endLine": 100,
+        "endChar": 60
+      },
+      "revId": "b499a42b9f57d2922cacf31b76f9f34f47243720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
