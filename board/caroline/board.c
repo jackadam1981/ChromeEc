@@ -15,6 +15,7 @@
 #include "console.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/kbl_max14521.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -692,3 +693,45 @@ void chipset_set_pmic_slp_sus_l(int level)
 		previous_level = level;
 	}
 }
+
+uint32_t board_override_feature_flags0(uint32_t flags0)
+{
+	int boardid = system_get_board_version();
+
+	/*
+	 * We always compile in backlight support for caroline, but only some
+	 * models come with the hardware. Therefore, check if the current
+	 * device is one of them and return the default value - with backlight
+	 * here.
+	 */
+	if (boardid < 6)
+		flags0 &= ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB);
+
+	return flags0;
+}
+
+uint32_t board_override_feature_flags1(uint32_t flags1)
+{
+	return flags1;
+}
+
+/*
+ * Control KBLIGHT
+ */
+/*****************************************************************************/
+/* Hooks */
+
+static void kblight_enable(void)
+{
+	gpio_set_level(GPIO_KBDBKLIT_RST_L, 1);
+	msleep(10);
+	max14521_init();
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_enable, HOOK_PRIO_DEFAULT);
+
+static void kblight_disable(void)
+{
+	gpio_set_level(GPIO_KBDBKLIT_RST_L, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kblight_disable, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, kblight_disable, HOOK_PRIO_DEFAULT);
