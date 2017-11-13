@@ -34,6 +34,24 @@
       "revId": "22d62f6039ae16f5722290a7b48025d4f939639e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7a29cf1_ad781916",
+        "filename": "board/coral/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-13T10:49:07Z",
+      "side": 1,
+      "message": "- external magnet affecting lid close/tablet mode GMR is an expected behavior (see b:35586669 c27) \n- when device is held like a book, with hinge vertical or near vertical, the lid angle is unreliable, and the tablet mode GMR is great a detecting full tablet mode.\n\nMy previous comment stands.",
+      "parentUuid": "0e822325_9d9f354e",
+      "revId": "22d62f6039ae16f5722290a7b48025d4f939639e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
