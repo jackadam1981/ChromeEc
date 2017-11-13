@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "c17d166b_4db688d8",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-13T11:43:45Z",
+      "side": 1,
+      "message": "why this one needs the wake-up dance while the regular transmit does not ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 12
+      },
+      "revId": "1fef8c037dbc7efe4e86ca9061c074b91f95bafb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5f6c5b0_0782f1f1",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-13T11:43:45Z",
+      "side": 1,
+      "message": "not sure why the comment says \u0027port 0 and port 1\u0027,\nit seems to do for \u0027port\u0027 only and the 0x30 here actually meant : bit 0 \u003d\u003d 0 (aka enabling \u0027debug\u0027 registers\u0027) and keeping everything else to reset  value (31h)",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 60
+      },
+      "revId": "1fef8c037dbc7efe4e86ca9061c074b91f95bafb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01065067_4d29c253",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-13T11:43:45Z",
+      "side": 1,
+      "message": "Ok, so those 3 registers are simply the initialization of the counter,\nthen the \u0027MODE\u0027 in their names is a bit confusing.\n\nAlso if the timer is really 15.000Mhz, then 0xb71b0 is 50ms, so why this value (which 50.5ms) ?\n\nYou might want nice constants here ?\ne.g.\n#define PS8751_BIST_TIMER_FREQ 15000000\n#define PS8751_BIST_DELAY_MS         50\n\n#define PS8751_BIST_COUNTER (PS8751_BIST_TIMER_FREQ / MSEC * PS8751_BIST_DELAY_MS) \n...",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "1fef8c037dbc7efe4e86ca9061c074b91f95bafb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66e9da65_96cce8c7",
         "filename": "driver/tcpm/ps8xxx.h",
         "patchSetId": 4
