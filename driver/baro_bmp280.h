@@ -206,8 +206,7 @@ struct bmp280_calib_param_t {
 struct bmp280_drv_data_t {
 
 	struct   bmp280_calib_param_t calib_param;
-	uint16_t rate;
-	uint16_t range;
+	struct   accelgyro_saved_data_t base;
 };
 #define BMP280_RATE_SHIFT 1
 
