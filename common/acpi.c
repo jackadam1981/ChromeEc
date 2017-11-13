@@ -144,7 +144,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		case EC_ACPI_MEM_TEST_COMPLIMENT:
 			result = 0xff - acpi_mem_test;
 			break;
-#ifdef CONFIG_PWM_KBLIGHT
+#if defined(CONFIG_PWM_KBLIGHT) || defined(CONFIG_PWM_KBLIGHT_CHIP)
 		case EC_ACPI_MEM_KEYBOARD_BACKLIGHT:
 			result = pwm_get_duty(PWM_CH_KBLIGHT);
 			break;
@@ -190,7 +190,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		case EC_ACPI_MEM_TEST:
 			acpi_mem_test = data;
 			break;
-#ifdef CONFIG_PWM_KBLIGHT
+#if defined(CONFIG_PWM_KBLIGHT) || defined(CONFIG_PWM_KBLIGHT_CHIP)
 		case EC_ACPI_MEM_KEYBOARD_BACKLIGHT:
 			/*
 			 * Debug output with CR not newline, because the host
