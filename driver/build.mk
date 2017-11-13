@@ -83,6 +83,7 @@ driver-$(CONFIG_TEMP_SENSOR_TMP112)+=temp_sensor/tmp112.o
 
 # Touchpads
 driver-$(CONFIG_TOUCHPAD_ELAN)+=touchpad_elan.o
+driver-$(CONFIG_TOUCHPAD_ST)+=touchpad_st.o
 
 # Thermistors
 driver-$(CONFIG_THERMISTOR_NCP15WB)+=temp_sensor/thermistor_ncp15wb.o
