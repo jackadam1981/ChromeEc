@@ -127,6 +127,24 @@
       "revId": "a8b97a85e3498948f4abfb0337c37b63431b6511",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "810784a2_98f54b04",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-13T07:22:58Z",
+      "side": 1,
+      "message": "in the function below.\nI realize I set the mask (like OPT3001_RANGE_MASK) illogically.\n\nset_range get a parameter (default_range) you set in board.c motion_sensors array.",
+      "parentUuid": "37559a44_9ae9f619",
+      "revId": "a8b97a85e3498948f4abfb0337c37b63431b6511",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
