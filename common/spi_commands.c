@@ -50,7 +50,7 @@ static int command_spixfer(int argc, char **argv)
 
 	} else if (strcasecmp(argv[1], "w") == 0) {
 		/* 8-bit write */
-		uint8_t cmd[2] = { offset, v };
+		uint8_t cmd[2] = { offset, (v & 0xFF), };
 
 		rv = spi_transaction(&spi_devices[dev_id], cmd, 2, NULL, 0);
 
