@@ -1316,6 +1316,21 @@ struct __ec_align_size1 ec_params_pwm_set_fan_duty_v1 {
 	uint8_t fan_idx;
 };
 
+/* Get keyboard backlight(step) */
+#define EC_CMD_STEP_GET_KEYBOARD_BACKLIGHT 0x25
+
+struct __ec_align1 ec_response_step_get_keyboard_backlight {
+	uint8_t step;
+	uint8_t enabled;
+};
+
+/* Set keyboard backlight */
+#define EC_CMD_STEP_SET_KEYBOARD_BACKLIGHT 0x26
+
+struct __ec_align1 ec_params_step_set_keyboard_backlight {
+	uint8_t step;
+};
+
 /*****************************************************************************/
 /*
  * Lightbar commands. This looks worse than it is. Since we only use one HOST

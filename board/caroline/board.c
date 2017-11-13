@@ -15,6 +15,7 @@
 #include "console.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/kbl_max14521.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -692,3 +693,75 @@ void chipset_set_pmic_slp_sus_l(int level)
 		previous_level = level;
 	}
 }
+
+/*
+ * Control KBLIGHT
+ */
+
+/*****************************************************************************/
+/* Console commands */
+
+static int command_kblight(int argc, char **argv)
+{
+        if (argc >= 2) {
+                char *e;
+                int i = strtoi(argv[1], &e, 0);
+                if (*e)
+                        return EC_ERROR_PARAM1;
+                max14521_set_kblight(i);
+        }
+
+        ccprintf("Keyboard backlight: %d step\n", max14521_get_kblight());
+        return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(kblight, command_kblight,
+                        "step",
+                        "Set keyboard backlight",
+                        NULL);
+
+/*****************************************************************************/
+/* Host commands */
+
+int step_command_get_keyboard_backlight(struct host_cmd_handler_args *args)
+{
+        struct ec_response_step_get_keyboard_backlight *r = args->response;
+
+        r->step = max14521_get_kblight();
+        r->enabled = gpio_get_level(GPIO_KBDBKLIT_RST_L);
+        args->response_size = sizeof(*r);
+
+        return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_STEP_GET_KEYBOARD_BACKLIGHT,
+                     step_command_get_keyboard_backlight,
+                     EC_VER_MASK(0));
+
+int step_command_set_keyboard_backlight(struct host_cmd_handler_args *args)
+{
+        const struct ec_params_step_set_keyboard_backlight *p = args->params;
+
+        max14521_set_kblight(p->step);
+
+        return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_STEP_SET_KEYBOARD_BACKLIGHT,
+                     step_command_set_keyboard_backlight,
+                     EC_VER_MASK(0));
+
+/*****************************************************************************/
+/* Hooks */
+
+static void kblight_enable(void)
+{
+	gpio_set_level(GPIO_KBDBKLIT_RST_L, 1);
+	msleep(10);
+	max14521_init();
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_enable, HOOK_PRIO_DEFAULT);
+
+static void kblight_disable(void)
+{
+	gpio_set_level(GPIO_KBDBKLIT_RST_L, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kblight_disable, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, kblight_disable, HOOK_PRIO_DEFAULT);

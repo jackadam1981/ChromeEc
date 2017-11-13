@@ -190,6 +190,10 @@ const char help_str[] =
 	"      Set entry in PD MCU's device rw_hash table.\n"
 	"  sertest\n"
 	"      Serial output test for COM2\n"
+	"  stepgetkblight\n"
+	"      Prints current keyboard backlight step\n"
+	"  stepsetkblight <percent>\n"
+	"      Set keyboard backlight in step\n"
 	"  switches\n"
 	"      Prints current EC switch positions\n"
 	"  temps <sensorid>\n"
@@ -1897,6 +1901,50 @@ int cmd_pwm_set_keyboard_backlight(int argc, char *argv[])
 
 	printf("Keyboard backlight set.\n");
 	return 0;
+}
+
+int cmd_step_get_keyboard_backlight(int argc, char *argv[])
+{
+        struct ec_response_step_get_keyboard_backlight r;
+        int rv;
+
+        rv = ec_command(EC_CMD_STEP_GET_KEYBOARD_BACKLIGHT, 0,
+                        NULL, 0, &r, sizeof(r));
+        if (rv < 0)
+                return rv;
+
+        if (r.enabled == 1)
+                printf("Current keyboard backlight step: %d\n", r.step);
+        else
+                printf("Keyboard backlight disabled.\n");
+
+        return 0;
+}
+
+
+int cmd_step_set_keyboard_backlight(int argc, char *argv[])
+{
+        struct ec_params_step_set_keyboard_backlight p;
+        char *e;
+        int rv;
+
+        if (argc != 2) {
+                fprintf(stderr, "Usage: %s <step>\n", argv[0]);
+                return -1;
+        }
+        p.step = strtol(argv[1], &e, 0);
+        if (e && (*e > 3)) {
+                fprintf(stderr, "Bad step.\n");
+                return -1;
+        }
+
+        rv = ec_command(EC_CMD_STEP_SET_KEYBOARD_BACKLIGHT, 0,
+                        &p, sizeof(p), NULL, 0);
+        if (rv < 0)
+                return rv;
+
+        printf("Keyboard backlight set.\n");
+        return 0;
 }
 
 int cmd_fanduty(int argc, char *argv[])
@@ -6650,6 +6698,8 @@ const struct command commands[] = {
 	{"rtcset", cmd_rtc_set},
 	{"rwhashpd", cmd_rw_hash_pd},
 	{"sertest", cmd_serial_test},
+	{"stepgetkblight", cmd_step_get_keyboard_backlight},
+	{"stepsetkblight", cmd_step_set_keyboard_backlight},
 	{"port80flood", cmd_port_80_flood},
 	{"switches", cmd_switches},
 	{"temps", cmd_temperature},
