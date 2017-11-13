@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dc4477d8_f378ea4a",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-11-13T21:46:32Z",
+      "side": 1,
+      "message": "This was part of the procedure sent to me from Parade. I removed it and the BIST was still generated.",
+      "parentUuid": "c17d166b_4db688d8",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 12
+      },
+      "revId": "1fef8c037dbc7efe4e86ca9061c074b91f95bafb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5f6c5b0_0782f1f1",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a6b5d1b6_62f5f8fe",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-11-13T21:46:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5f6c5b0_0782f1f1",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 60
+      },
+      "revId": "1fef8c037dbc7efe4e86ca9061c074b91f95bafb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01065067_4d29c253",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-11-13T11:43:45Z",
       "side": 1,
       "message": "Ok, so those 3 registers are simply the initialization of the counter,\nthen the \u0027MODE\u0027 in their names is a bit confusing.\n\nAlso if the timer is really 15.000Mhz, then 0xb71b0 is 50ms, so why this value (which 50.5ms) ?\n\nYou might want nice constants here ?\ne.g.\n#define PS8751_BIST_TIMER_FREQ 15000000\n#define PS8751_BIST_DELAY_MS         50\n\n#define PS8751_BIST_COUNTER (PS8751_BIST_TIMER_FREQ / MSEC * PS8751_BIST_DELAY_MS) \n...",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 13
+      },
+      "revId": "1fef8c037dbc7efe4e86ca9061c074b91f95bafb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "434b1138_3249a452",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-11-13T21:46:32Z",
+      "side": 1,
+      "message": "Again, this was part of the example sent from Parade.",
+      "parentUuid": "01065067_4d29c253",
       "range": {
         "startLine": 110,
         "startChar": 0,
