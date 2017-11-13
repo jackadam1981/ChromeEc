@@ -283,7 +283,7 @@ static int bmp280_set_range(const struct motion_sensor_t *s,
 	 * ->range contains the number of bit to right shift in order for the
 	 * measurment to fit into 16 bits (or less if the AP wants to).
 	 */
-	data->range = 15 - __builtin_clz(range);
+	data->base.range = 15 - __builtin_clz(range);
 	return EC_SUCCESS;
 }
 
@@ -291,7 +291,7 @@ static int bmp280_get_range(const struct motion_sensor_t *s)
 {
 	struct bmp280_drv_data_t *data = BMP280_GET_DATA(s);
 
-	return 1 << (16 + data->range);
+	return 1 << (16 + data->base.range);
 }
 
 /*
@@ -340,7 +340,7 @@ static int bmp280_read(const struct motion_sensor_t *s, vector_3_t v)
 	if (ret)
 		return ret;
 
-	v[0] = bmp280_compensate_pressure(s, pres) >> data->range;
+	v[0] = bmp280_compensate_pressure(s, pres) >> data->base.range;
 	v[1] = v[2] = 0;
 
 	return EC_SUCCESS;
@@ -359,13 +359,13 @@ static int bmp280_set_data_rate(const struct motion_sensor_t *s, int rate,
 
 	if (rate == 0) {
 		/* Set to sleep mode */
-		data->rate = 0;
+		data->base.odr = 0;
 		return bmp280_set_power_mode(s, BMP280_SLEEP_MODE);
 	} else
 		period = 1000000 / rate;
 
 	/* reset power mode, waking from sleep */
-	if (!data->rate) {
+	if (!data->base.odr) {
 		ret = bmp280_set_power_mode(s, BMP280_NORMAL_MODE);
 		if (ret)
 			return ret;
@@ -387,7 +387,7 @@ static int bmp280_set_data_rate(const struct motion_sensor_t *s, int rate,
 		 * The maximum frequency is around 76Hz. Be sure it fits in 16
 		 * bits by shifting by one bit.
 		 */
-		data->rate = (1000000 >> BMP280_RATE_SHIFT) /
+		data->base.odr = (1000000 >> BMP280_RATE_SHIFT) /
 			     (standby_durn[durn] + BMP280_COMPUTE_TIME);
 	return ret;
 }
@@ -396,7 +396,7 @@ static int bmp280_get_data_rate(const struct motion_sensor_t *s)
 {
 	struct bmp280_drv_data_t *data = BMP280_GET_DATA(s);
 
-	return data->rate << BMP280_RATE_SHIFT;
+	return data->base.odr << BMP280_RATE_SHIFT;
 }
 
 const struct accelgyro_drv bmp280_drv = {
