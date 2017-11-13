@@ -22,6 +22,30 @@
       "revId": "dc78b9b6283c16157412fdaf6da84f1eb3bc20f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d13fbdc_2e71ae3c",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-13T21:19:17Z",
+      "side": 1,
+      "message": "As you noted in the bug, it will only affect chargers that we decide to ramp (aka usually not USB-C / PD chargers).",
+      "parentUuid": "4e8d7c20_42bbee4e",
+      "range": {
+        "startLine": 311,
+        "startChar": 57,
+        "endLine": 311,
+        "endChar": 63
+      },
+      "revId": "dc78b9b6283c16157412fdaf6da84f1eb3bc20f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
