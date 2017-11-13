@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "faf77fd3_4bedd813",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-13T18:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "427212ec_230660f1",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 77
+      },
+      "revId": "25713edd9d86d8c928357e929da97bd0632d6406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19cfcba0_5870a738",
         "filename": "board/nautilus/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-08T21:35:11Z",
       "side": 1,
       "message": "Just so you know, these are two busses on the same controller, we can only use one bus at a time. Since we have different i2c addresses, it\u0027s no different than if they were placed on the same bus (and we could save two pins..). Maybe something to bring up with the OEM / ODM.",
+      "range": {
+        "startLine": 356,
+        "startChar": 2,
+        "endLine": 356,
+        "endChar": 18
+      },
+      "revId": "25713edd9d86d8c928357e929da97bd0632d6406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3178f955_3b8e6b4a",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-13T18:50:11Z",
+      "side": 1,
+      "message": "Thanks. I mentioned it in the bug.",
+      "parentUuid": "19cfcba0_5870a738",
       "range": {
         "startLine": 356,
         "startChar": 2,
