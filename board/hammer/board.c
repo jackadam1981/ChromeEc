@@ -28,6 +28,7 @@
 #include "usart_rx_dma.h"
 #include "usb_descriptor.h"
 #include "usb_i2c.h"
+#include "usb_spi.h"
 #include "util.h"
 
 #include "gpio_list.h"
@@ -65,6 +66,8 @@ const struct spi_device_t spi_devices[] = {
 	{ CONFIG_SPI_TOUCHPAD_PORT, 1, GPIO_SPI1_NSS },
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+
+USB_SPI_CONFIG(usb_spi, USB_IFACE_I2C_SPI, USB_EP_I2C_SPI);
 #else /* !BOARD_WHISKERS */
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
@@ -86,11 +89,17 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
+#ifdef BOARD_WHISKERS
+/* SPI interface is always enabled, no need to do anything. */
+void usb_spi_board_enable(struct usb_spi_config const *config) {}
+void usb_spi_board_disable(struct usb_spi_config const *config) {}
+#else /* !BOARD_WHISKERS */
 int usb_i2c_board_is_enabled(void)
 {
 	/* Disable I2C passthrough when the system is locked */
 	return !system_is_locked();
 }
+#endif /* !BOARD_WHISKERS */
 
 #ifdef CONFIG_KEYBOARD_BOARD_CONFIG
 struct keyboard_scan_config keyscan_config = {
@@ -114,6 +123,9 @@ struct keyboard_scan_config keyscan_config = {
 static void board_init(void)
 {
 #if defined(BOARD_WHISKERS) && defined(SECTION_IS_RW)
+	/* Disable SPI passthrough when the system is locked */
+	usb_spi_enable(&usb_spi, system_is_locked());
+
 	/* Enable SPI for touchpad */
 	gpio_config_module(MODULE_SPI_MASTER, 1);
 

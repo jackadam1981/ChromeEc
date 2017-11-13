@@ -107,7 +107,8 @@
 #define USB_IFACE_HID_KEYBOARD	0
 #define USB_IFACE_UPDATE	1
 #define USB_IFACE_HID_TOUCHPAD	2
-#define USB_IFACE_I2C		3
+/* Can be either I2C or SPI passthrough, depending on the board. */
+#define USB_IFACE_I2C_SPI	3
 #define USB_IFACE_COUNT		4
 #else
 #define USB_IFACE_UPDATE	0
@@ -120,7 +121,8 @@
 #ifdef SECTION_IS_RW
 #define USB_EP_HID_KEYBOARD	2
 #define USB_EP_HID_TOUCHPAD	3
-#define USB_EP_I2C		4
+/* Can be either I2C or SPI passthrough, depending on the board. */
+#define USB_EP_I2C_SPI		4
 #define USB_EP_COUNT		5
 #else
 #define USB_EP_COUNT		2
@@ -197,6 +199,8 @@
 #define CONFIG_PWM
 
 #ifdef BOARD_WHISKERS
+/* Enable control of SPI over USB */
+#define CONFIG_USB_SPI
 #define CONFIG_SPI_MASTER
 #define CONFIG_SPI_TOUCHPAD_PORT 0
 
@@ -205,6 +209,8 @@
 #else /* !BOARD_WHISKERS */
 /* Enable control of I2C over USB */
 #define CONFIG_USB_I2C
+#define USB_IFACE_I2C USB_IFACE_I2C_SPI
+#define USB_EP_I2C USB_EP_I2C_SPI
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define I2C_PORT_MASTER 0
