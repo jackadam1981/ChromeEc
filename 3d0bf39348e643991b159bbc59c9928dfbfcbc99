@@ -93,6 +93,30 @@
       "revId": "3d0bf39348e643991b159bbc59c9928dfbfcbc99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cebbde55_d32991ce",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 3122,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-13T15:39:13Z",
+      "side": 1,
+      "message": "My query was, if we update the structure, how do we uprev the EC_VER_MASK if HAS_TASK_HOSTCMD is defined? Do we need a new DECLARE_HOST_COMMAND() with a different EC_VER_MASK?",
+      "parentUuid": "c8767a80_018b03e5",
+      "range": {
+        "startLine": 3118,
+        "startChar": 2,
+        "endLine": 3122,
+        "endChar": 17
+      },
+      "revId": "3d0bf39348e643991b159bbc59c9928dfbfcbc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
