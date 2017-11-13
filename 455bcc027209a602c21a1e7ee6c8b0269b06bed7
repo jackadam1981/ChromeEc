@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dfa5c0a2_a7313193",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-13T20:36:17Z",
+      "side": 1,
+      "message": "Will leave this clean-up for future CL.",
+      "parentUuid": "bb885672_0ab2c280",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "455bcc027209a602c21a1e7ee6c8b0269b06bed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "339d4dfa_2fde1333",
         "filename": "board/grunt/gpio.inc",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "455bcc027209a602c21a1e7ee6c8b0269b06bed7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "510b26e3_98cab25e",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-13T20:36:17Z",
+      "side": 1,
+      "message": "Removed internal, and checked other pull-ups against schematic. Added internal pull-ups for VOLDN_BTN, VOLUP_BTN, PROCHOT, APU_ALERT.",
+      "parentUuid": "339d4dfa_2fde1333",
+      "range": {
+        "startLine": 18,
+        "startChar": 50,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "455bcc027209a602c21a1e7ee6c8b0269b06bed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "27ba23b5_99f6967e",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-13T20:36:17Z",
+      "side": 1,
+      "message": "Reviewed with jbruneau@, this is as intended.",
+      "parentUuid": "b250ab86_9357e5c8",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "455bcc027209a602c21a1e7ee6c8b0269b06bed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd9dcae3_9fa3f858",
         "filename": "board/grunt/gpio.inc",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-13T09:42:13Z",
       "side": 1,
       "message": "no I2C5 config ?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 71
+      },
+      "revId": "455bcc027209a602c21a1e7ee6c8b0269b06bed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e902a49_70413c49",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-13T20:36:17Z",
+      "side": 1,
+      "message": "Leaving EEPROM and keyboard backlight config for later.",
+      "parentUuid": "dd9dcae3_9fa3f858",
       "range": {
         "startLine": 37,
         "startChar": 0,
