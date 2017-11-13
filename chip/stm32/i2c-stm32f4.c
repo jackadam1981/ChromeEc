@@ -53,7 +53,7 @@ static const __unused struct dma_option dma_tx_option[I2C_PORT_COUNT] = {
 	{STM32_DMAC_I2C3_TX, (void *)&STM32_I2C_DR(STM32_I2C3_PORT),
 	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT |
 	 STM32_DMA_CCR_CHANNEL(STM32_I2C3_TX_REQ_CH)},
-#if !defined(CHIP_VARIANT_STM32F411)
+#if !defined(CHIP_VARIANT_STM32F411) && !defined(CHIP_VARIANT_STM32F401)
 	{STM32_DMAC_FMPI2C4_TX, (void *)&STM32_FMPI2C_TXDR(STM32_FMPI2C4_PORT),
 	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT |
 	 STM32_DMA_CCR_CHANNEL(STM32_FMPI2C4_TX_REQ_CH)},
@@ -70,7 +70,7 @@ static const struct dma_option dma_rx_option[I2C_PORT_COUNT] = {
 	{STM32_DMAC_I2C3_RX, (void *)&STM32_I2C_DR(STM32_I2C3_PORT),
 	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT |
 	 STM32_DMA_CCR_CHANNEL(STM32_I2C3_RX_REQ_CH)},
-#if !defined(CHIP_VARIANT_STM32F411)
+#if !defined(CHIP_VARIANT_STM32F411) && !defined(CHIP_VARIANT_STM32F401)
 	{STM32_DMAC_FMPI2C4_RX, (void *)&STM32_FMPI2C_RXDR(STM32_FMPI2C4_PORT),
 	 STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT |
 	 STM32_DMA_CCR_CHANNEL(STM32_FMPI2C4_RX_REQ_CH)},
@@ -102,7 +102,7 @@ static void _i2c_dma_wake_callback_2(void *cb_data)
 	_i2c_dma_wake_callback(cb_data, 2);
 }
 
-#if !defined(CHIP_VARIANT_STM32F411)
+#if !defined(CHIP_VARIANT_STM32F411) && !defined(CHIP_VARIANT_STM32F401)
 static void _i2c_dma_wake_callback_3(void *cb_data)
 {
 	_i2c_dma_wake_callback(cb_data, 3);
@@ -114,7 +114,7 @@ static void (*i2c_callbacks[I2C_PORT_COUNT])(void *) = {
 	_i2c_dma_wake_callback_0,
 	_i2c_dma_wake_callback_1,
 	_i2c_dma_wake_callback_2,
-#if !defined(CHIP_VARIANT_STM32F411)
+#if !defined(CHIP_VARIANT_STM32F411) && !defined(CHIP_VARIANT_STM32F401)
 	_i2c_dma_wake_callback_3,
 #endif
 };
