@@ -23,6 +23,9 @@ driver-$(CONFIG_ALS_OPT3001)+=als_opt3001.o
 driver-$(CONFIG_ALS_SI114X)+=als_si114x.o
 driver-$(CONFIG_ALS_BH1730)+=als_bh1730.o
 
+#Keyboard Backlight
+driver-$(CONFIG_KBLIGHT_MAX14521)+=kbl_max14521.o
+
 # Batteries
 driver-$(CONFIG_BATTERY_BQ20Z453)+=battery/bq20z453.o
 driver-$(CONFIG_BATTERY_BQ27541)+=battery/bq27541.o
