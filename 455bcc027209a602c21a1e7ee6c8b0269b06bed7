@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb885672_0ab2c280",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-13T09:42:13Z",
+      "side": 1,
+      "message": "It\u0027s unclear to me why we need to define the tachymeter pin muxing if we are not using it.\n\nBut overall the issue probably doesn\u0027t lie in this CL but all these NPCX config defines which don\u0027t want to be named as such and both are missing  the CONFIG_ prefix and are used directly without defined() (e.g. #if NPCX_TACH_SEL2), this is against EC code base rules and fragile, we should probably fix it at some poimt.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 43
+      },
+      "revId": "455bcc027209a602c21a1e7ee6c8b0269b06bed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "339d4dfa_2fde1333",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-13T09:42:13Z",
+      "side": 1,
+      "message": "why do you have both an internal and an external pull-up (R722)",
+      "range": {
+        "startLine": 18,
+        "startChar": 50,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "455bcc027209a602c21a1e7ee6c8b0269b06bed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b250ab86_9357e5c8",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-13T09:42:13Z",
+      "side": 1,
+      "message": "this GPIO is constantly leaking a bit of power through the 100K pull-down, is that the HW guy intent ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "455bcc027209a602c21a1e7ee6c8b0269b06bed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd9dcae3_9fa3f858",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-13T09:42:13Z",
+      "side": 1,
+      "message": "no I2C5 config ?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 71
+      },
+      "revId": "455bcc027209a602c21a1e7ee6c8b0269b06bed7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
