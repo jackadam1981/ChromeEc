@@ -18,6 +18,7 @@
 #include "pwm_chip.h"
 #include "registers.h"
 #include "rollback.h"
+#include "spi.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -58,12 +59,20 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
  */
 
 #ifdef SECTION_IS_RW
+#ifdef BOARD_WHISKERS
+/* SPI devices */
+const struct spi_device_t spi_devices[] = {
+	{ CONFIG_SPI_TOUCHPAD_PORT, 1, GPIO_SPI1_NSS },
+};
+const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+#else /* !BOARD_WHISKERS */
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"master", I2C_PORT_MASTER, 400,
 		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+#endif /* !BOARD_WHISKERS */
 
 #ifdef BOARD_STAFF
 #define KBLIGHT_PWM_FREQ 100 /* Hz */
@@ -104,7 +113,24 @@ struct keyboard_scan_config keyscan_config = {
  */
 static void board_init(void)
 {
+#if defined(BOARD_WHISKERS) && defined(SECTION_IS_RW)
+	/* Enable SPI for touchpad */
+	gpio_config_module(MODULE_SPI_MASTER, 1);
 
+	/* Set all four SPI pins to high speed */
+	/* pins B3/4/5, A15 */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0x00000fc0;
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xc0000000;
+
+	/* Enable clocks to SPI1 module */
+	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;
+
+	/* Reset SPI1 */
+	STM32_RCC_APB2RSTR |= STM32_RCC_PB2_SPI1;
+	STM32_RCC_APB2RSTR &= ~STM32_RCC_PB2_SPI1;
+
+	spi_enable(CONFIG_SPI_TOUCHPAD_PORT, 1);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -122,6 +148,7 @@ void board_config_pre_init(void)
 	STM32_SYSCFG_CFGR1 |= (1 << 9) | (1 << 10); /* Remap USART1 RX/TX DMA */
 }
 
+#ifndef BOARD_WHISKERS
 /*
  * Side-band USB wake, to be able to wake lid even in deep S3, when USB
  * controller is off.
@@ -141,6 +168,7 @@ void board_usb_wake(void)
 	gpio_set_flags(GPIO_BASE_DET, GPIO_INPUT);
 	interrupt_enable();
 }
+#endif
 
 /*
  * Get entropy based on Clock Recovery System, which is enabled on hammer to

@@ -193,20 +193,28 @@
 /* Keyboard output port list */
 #define KB_OUT_PORT_LIST GPIO_A, GPIO_B, GPIO_C, GPIO_F
 
+/* Enable PWM */
+#define CONFIG_PWM
+
+#ifdef BOARD_WHISKERS
+#define CONFIG_SPI_MASTER
+#define CONFIG_SPI_TOUCHPAD_PORT 0
+
+#define CONFIG_TOUCHPAD
+#define CONFIG_TOUCHPAD_ST
+#else /* !BOARD_WHISKERS */
 /* Enable control of I2C over USB */
 #define CONFIG_USB_I2C
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define I2C_PORT_MASTER 0
 
-/* Enable PWM */
-#define CONFIG_PWM
-
 /* Enable Elan touchpad driver */
 #define CONFIG_TOUCHPAD
 #define CONFIG_TOUCHPAD_ELAN
 #define CONFIG_TOUCHPAD_I2C_PORT 0
 #define CONFIG_TOUCHPAD_I2C_ADDR (0x15 << 1)
+#endif /* !BOARD_WHISKERS */
 
 #define CONFIG_CURVE25519
 
