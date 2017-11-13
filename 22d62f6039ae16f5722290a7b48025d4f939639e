@@ -16,6 +16,24 @@
       "revId": "22d62f6039ae16f5722290a7b48025d4f939639e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e822325_9d9f354e",
+        "filename": "board/coral/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2017-11-13T09:27:55Z",
+      "side": 1,
+      "message": "I entitled EC tablet mode in purpose.\nThis is a legacy issue since reef family, references are b:35586669 and b:35944176.\nWhen the GMR is affected by external magnetic field, it could unexpectedly deassert TABLET_MODE_L or LID_OPEN.\nThis patch along w/ down below dependent two are trying to mitigate the unexpected TABLET_MODE_L deassertion.\n\nAs to this one for the convertible device, when it hovers on top of the other coral devices, by watching TABLET_MODE_L and lid_angle, there is chance that the upper convertible enters chrome tablet mode unexpectedly w/ keyboard been disabled while the form is in the clamshell in reality.\n\nIn short, an external magnetic field can make GMR deassert TABLET_MODE_L while the lid is not folding into 360 degrees, I shall make commit messages more clear, my apology.",
+      "parentUuid": "bd07e0b6_2807ff86",
+      "revId": "22d62f6039ae16f5722290a7b48025d4f939639e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
