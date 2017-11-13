@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2870586d_f1422cfe",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-13T16:36:42Z",
+      "side": 1,
+      "message": "replacing a numeric value by what is actually the identity macro taking the same value as parameter is definitely not an improvement, it makes the code more verbose and the goal of the constant was some kind of self-documentation.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "23e6055a3f714deb2fe85a56ec85cce35d11e201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
