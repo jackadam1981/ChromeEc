@@ -685,7 +685,7 @@ static int host_command_get_features(struct host_cmd_handler_args *args)
 #ifdef CONFIG_FANS
 		| EC_FEATURE_MASK_0(EC_FEATURE_PWM_FAN)
 #endif
-#ifdef CONFIG_PWM_KBLIGHT
+#if (defined CONFIG_PWM_KBLIGHT || defined CONFIG_HACK_PWM_KBLIGHT)
 		| EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB)
 #endif
 #ifdef HAS_TASK_LIGHTBAR

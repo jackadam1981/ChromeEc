@@ -148,6 +148,10 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		case EC_ACPI_MEM_KEYBOARD_BACKLIGHT:
 			result = pwm_get_duty(PWM_CH_KBLIGHT);
 			break;
+#elif (defined CONFIG_HACK_PWM_KBLIGHT)
+                case EC_ACPI_MEM_KEYBOARD_BACKLIGHT:
+                        result = hack_pwm_get_duty();
+                        break;
 #endif
 #ifdef CONFIG_FANS
 		case EC_ACPI_MEM_FAN_DUTY:
@@ -200,6 +204,11 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			CPRINTF("\r[%T ACPI kblight %d]", data);
 			pwm_set_duty(PWM_CH_KBLIGHT, data);
 			break;
+#elif (defined CONFIG_HACK_PWM_KBLIGHT)
+                case EC_ACPI_MEM_KEYBOARD_BACKLIGHT:
+			CPRINTF("\r[%T ACPI kblight %d]", data);
+                        hack_pwm_set_duty(data);
+                        break;
 #endif
 #ifdef CONFIG_FANS
 		case EC_ACPI_MEM_FAN_DUTY:

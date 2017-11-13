@@ -15,6 +15,7 @@
 #include "console.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/kbl_max14521.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -691,4 +692,44 @@ void chipset_set_pmic_slp_sus_l(int level)
 		i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x43, val);
 		previous_level = level;
 	}
+}
+
+/*
+ * Control KBLIGHT
+ */
+
+int g_hack_pwm_duty;
+/*****************************************************************************/
+/* Hooks */
+
+static void kblight_enable(void)
+{
+	gpio_set_level(GPIO_KBDBKLIT_RST_L, 1);
+	msleep(10);
+	max14521_init();
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_enable, HOOK_PRIO_DEFAULT);
+
+static void kblight_disable(void)
+{
+	gpio_set_level(GPIO_KBDBKLIT_RST_L, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kblight_disable, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, kblight_disable, HOOK_PRIO_DEFAULT);
+
+static void update_kblight(void)
+{
+        max14521_set_kblight(g_hack_pwm_duty);
+}
+DECLARE_DEFERRED(update_kblight);
+
+int hack_pwm_get_duty(void)
+{
+        return max14521_get_kblight();
+}
+
+void hack_pwm_set_duty(int data)
+{
+        g_hack_pwm_duty = data;
+        hook_call_deferred(update_kblight, 1);
 }
