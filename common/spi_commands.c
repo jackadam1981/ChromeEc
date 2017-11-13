@@ -50,9 +50,12 @@ static int command_spixfer(int argc, char **argv)
 
 	} else if (strcasecmp(argv[1], "w") == 0) {
 		/* 8-bit write */
-		uint8_t cmd[2] = { offset, v };
+		uint8_t cmd[3] = { offset, (v >> 8), (v & 0xFF), };
+		uint8_t tmp[8];
 
-		rv = spi_transaction(&spi_devices[dev_id], cmd, 2, NULL, 0);
+		rv = spi_transaction(&spi_devices[dev_id], cmd, 3, tmp, 7);
+		for (v = 0; v < 7; ++ v)
+			ccprintf("tmp[%d] = %02x\n", v, tmp[v]);
 
 		/*
 		 * Some SPI device needs a delay before accepting other

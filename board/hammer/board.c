@@ -5,6 +5,7 @@
 /* Hammer board configuration */
 
 #include "common.h"
+#include "clock.h"
 #include "ec_version.h"
 #include "touchpad.h"
 #include "gpio.h"
@@ -62,7 +63,7 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 #ifdef BOARD_WHISKERS
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
-	{ CONFIG_SPI_TOUCHPAD_PORT, 1, GPIO_SPI1_NSS },
+	[SPI_ST_TP_DEVICE_ID] = { CONFIG_SPI_TOUCHPAD_PORT, 2, GPIO_SPI1_NSS },
 };
 const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
 #else /* !BOARD_WHISKERS */
@@ -86,11 +87,13 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
+#ifndef BOARD_WHISKERS
 int usb_i2c_board_is_enabled(void)
 {
 	/* Disable I2C passthrough when the system is locked */
 	return !system_is_locked();
 }
+#endif /* !BOARD_WHISKERS */
 
 #ifdef CONFIG_KEYBOARD_BOARD_CONFIG
 struct keyboard_scan_config keyscan_config = {
@@ -114,25 +117,34 @@ struct keyboard_scan_config keyscan_config = {
 static void board_init(void)
 {
 #if defined(BOARD_WHISKERS) && defined(SECTION_IS_RW)
-	/* Enable SPI for touchpad */
-	gpio_config_module(MODULE_SPI_MASTER, 1);
+	spi_enable(CONFIG_SPI_TOUCHPAD_PORT, 0);
 
-	/* Set all four SPI pins to high speed */
-	/* pins B3/4/5, A15 */
-	STM32_GPIO_OSPEEDR(GPIO_B) |= 0x00000fc0;
-	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xc0000000;
-
-	/* Enable clocks to SPI1 module */
-	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;
+	/* Disable SPI passthrough when the system is locked */
+	// usb_spi_enable(&usb_spi, system_is_locked());
 
 	/* Reset SPI1 */
 	STM32_RCC_APB2RSTR |= STM32_RCC_PB2_SPI1;
 	STM32_RCC_APB2RSTR &= ~STM32_RCC_PB2_SPI1;
+	/* Enable clocks to SPI1 module */
+	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;
 
+	clock_wait_bus_cycles(BUS_APB, 1);
+	/* Enable SPI for touchpad */
+	gpio_config_module(MODULE_SPI_MASTER, 1);
 	spi_enable(CONFIG_SPI_TOUCHPAD_PORT, 1);
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+void board_config_post_gpio_init(void)
+{
+#if defined(BOARD_WHISKERS) && defined(SECTION_IS_RW)
+	/* Set all four SPI pins to high speed */
+	/* pins B3/5, A15 */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0x00000cc0;
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xc0000000;
+#endif
+}
 
 void board_config_pre_init(void)
 {
