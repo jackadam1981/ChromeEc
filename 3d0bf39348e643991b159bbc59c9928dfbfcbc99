@@ -117,6 +117,30 @@
       "revId": "3d0bf39348e643991b159bbc59c9928dfbfcbc99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "841b4a68_5e76ca2a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 3122,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-13T19:23:28Z",
+      "side": 1,
+      "message": "We can simply update DECLARE_HOST_COMMAND to indicate that both versions 0 and 1 are supported using EC_VER_MASK(0) | EC_VER_MASK(1) and then check for the args-\u003eversion in command handler. e.g. common/battery.c:\n\nDECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cutoff,\n\t\tEC_VER_MASK(0) | EC_VER_MASK(1));",
+      "parentUuid": "cebbde55_d32991ce",
+      "range": {
+        "startLine": 3118,
+        "startChar": 2,
+        "endLine": 3122,
+        "endChar": 17
+      },
+      "revId": "3d0bf39348e643991b159bbc59c9928dfbfcbc99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
