@@ -6650,6 +6650,8 @@ const struct command commands[] = {
 	{"rtcset", cmd_rtc_set},
 	{"rwhashpd", cmd_rw_hash_pd},
 	{"sertest", cmd_serial_test},
+	{"stepgetkblight", cmd_step_get_keyboard_backlight},
+	{"stepsetkblight", cmd_step_set_keyboard_backlight},
 	{"port80flood", cmd_port_80_flood},
 	{"switches", cmd_switches},
 	{"temps", cmd_temperature},

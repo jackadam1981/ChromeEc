@@ -61,6 +61,8 @@
 #define CONFIG_HOSTCMD_PD
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
+#define CONFIG_KBLIGHT_MAX14521
+#define CONFIG_HACK_PWM_KBLIGHT
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_LED_COMMON
@@ -132,6 +134,7 @@
 
 /* I2C ports */
 #define I2C_PORT_PMIC MEC1322_I2C0_0
+#define I2C_PORT_KBLIGHT MEC1322_I2C0_0
 #define I2C_PORT_USB_CHARGER_1 MEC1322_I2C0_1
 #define I2C_PORT_USB_MUX MEC1322_I2C0_1
 #define I2C_PORT_USB_CHARGER_2 MEC1322_I2C0_0
@@ -263,6 +266,10 @@ int board_get_version(void);
 
 /* Reset RTC */
 void board_rtc_reset(void);
+
+/*Hack set/get pwm kblight */
+int hack_pwm_get_duty(void);
+void hack_pwm_set_duty(int data);
 
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)

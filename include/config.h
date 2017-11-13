@@ -1567,6 +1567,8 @@
 /* Support PWM output to keyboard backlight */
 #undef CONFIG_PWM_KBLIGHT
 
+#undef CONFIG_HACK_PWM_KBLIGHT
+
 /* Base address of RAM for the chip */
 #undef CONFIG_RAM_BASE
 
