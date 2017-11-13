@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8f2dc75_1ed7737a",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1153039
+      },
+      "writtenOn": "2017-11-13T06:43:36Z",
+      "side": 1,
+      "message": "After I check with FW team again,. the formula is a little complex.\nIt IC body is 0x0A : the formula should be ((val[0] * val[1]) * 2) + 3;\nIf IC body is 0x0D(soraka) : ((val[0] * (val[1] + val[1]%4)) * 2) + 3;\nOur future IC maybe change rule again, and we will patch then if necessary\nDo you plan to add the code to fetch IC type here?",
+      "revId": "53a8f2bb30261d51287c7e3893dd90d1ad93ee94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
