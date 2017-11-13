@@ -17,6 +17,10 @@
 #include "util.h"
 #include "driver/accel_lis2dh.h"
 
+#define CPUTS(outstr) cputs(CC_ACCEL, outstr)
+#define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
+
 #ifdef CONFIG_ACCEL_FIFO
 /**
  * enable_fifo - Enable/Disable FIFO in LIS2DH
@@ -367,11 +371,6 @@ static int init(const struct motion_sensor_t *s)
 
 	mutex_unlock(s->mutex);
 
-	/* Config initial Acc Range */
-	ret = set_range(s, s->default_range, 0);
-	if (ret != EC_SUCCESS)
-		return ret;
-
 	/* Set default resolution */
 	data->resol = LIS2DH_RESOLUTION;
 
@@ -379,7 +378,7 @@ static int init(const struct motion_sensor_t *s)
 	ret = config_interrupt(s);
 #endif
 
-	sensor_init_done(s, get_range(s));
+	sensor_init_done(s);
 	return ret;
 
 err_unlock:
