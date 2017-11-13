@@ -40,6 +40,8 @@
 #include "config-stm32l442.h"
 #elif defined(CHIP_VARIANT_STM32F76X)
 #include "config-stm32f76x.h"
+#elif defined(CHIP_VARIANT_STM32F401)
+#include "config-stm32f40x.h"
 #elif defined(CHIP_FAMILY_STM32F4)
 /* STM32F4 family */
 #include "config-stm32f446.h"
