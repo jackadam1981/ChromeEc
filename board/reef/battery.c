@@ -595,24 +595,6 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 		return 0;
 
 	/*
-	 * In light load (<450mA being withdrawn from VSYS) the DCDC of the
-	 * charger operates intermittently i.e. DCDC switches continuously
-	 * and then stops to regulate the output voltage and current, and
-	 * sometimes to prevent reverse current from flowing to the input.
-	 * This causes a slight voltage ripple on VSYS that falls in the
-	 * audible noise frequency (single digit kHz range). This small
-	 * ripple generates audible noise in the output ceramic capacitors
-	 * (caps on VSYS and any input of DCDC under VSYS).
-	 *
-	 * To overcome this issue enable the battery learning operation
-	 * and suspend USB charging and DC/DC converter.
-	 */
-	if (!battery_is_cut_off() &&
-		!(curr->batt.flags & BATT_FLAG_WANT_CHARGE) &&
-		(curr->batt.status & STATUS_FULLY_CHARGED))
-		return 1;
-
-	/*
 	 * To avoid inrush current from the external charger, enable
 	 * discharge on AC till the new charger is detected and charge
 	 * detect delay has passed.

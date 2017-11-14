@@ -48,9 +48,6 @@ enum bd9995x_charge_port {
 #define INPUT_I_MIN	512
 #define INPUT_I_STEP	32
 
-/* Min. charge current w/ no battery to prevent collapse */
-#define BD9995X_NO_BATTERY_CHARGE_I_MIN	512
-
 /*
  * BC1.2 minimum voltage threshold.
  * BC1.2 charging port output voltage range is 4.75V to 5.25V,
