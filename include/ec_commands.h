@@ -4131,6 +4131,14 @@ struct __ec_align2 ec_params_charge_port_override {
 	int16_t override_port; /* Override port# */
 };
 
+struct __ec_align2 ec_params_charge_port_override_v1 {
+	int16_t override_port; /* Override port# */
+	int16_t supplier;      /* Override supplier */
+	/* Max is 32767 mA/mV. */
+	int16_t current_ma;    /* Override current */
+	int16_t voltage_mv;    /* Override voltage */
+};
+
 /*
  * Read (and delete) one entry of PD event log.
  * TODO(crbug.com/751742): Make this host command more generic to accommodate
