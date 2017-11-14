@@ -3584,6 +3584,11 @@ struct __ec_align2 ec_params_external_power_limit_v1 {
 
 #define EC_POWER_LIMIT_NONE 0xffff
 
+/*
+ * Set maximum voltage & current for a dedicated charge port
+ */
+#define EC_CMD_SET_DEDICATED_CHARGER_LIMIT 0x00A3
+
 /*****************************************************************************/
 /* Hibernate/Deep Sleep Commands */
 
