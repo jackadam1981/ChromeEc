@@ -45,6 +45,29 @@
       "revId": "c4401d1968c90c961daffc9cef959488ea083218",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9d71a5a_8a66bfe6",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-14T21:12:08Z",
+      "side": 1,
+      "message": "nit: This documentation needs some updating now.",
+      "range": {
+        "startLine": 196,
+        "startChar": 49,
+        "endLine": 197,
+        "endChar": 30
+      },
+      "revId": "c4401d1968c90c961daffc9cef959488ea083218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
