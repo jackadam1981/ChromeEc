@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "939df4fd_52896390",
+        "filename": "driver/accel_lis2dh.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-14T15:42:35Z",
+      "side": 1,
+      "message": "Now we\u0027ll call set_range() after enabling interrupts. Is that ok?",
+      "range": {
+        "startLine": 381,
+        "startChar": 1,
+        "endLine": 381,
+        "endChar": 17
+      },
+      "revId": "c4401d1968c90c961daffc9cef959488ea083218",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
