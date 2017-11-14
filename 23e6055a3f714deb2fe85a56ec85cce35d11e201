@@ -22,6 +22,30 @@
       "revId": "23e6055a3f714deb2fe85a56ec85cce35d11e201",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b1df115_8afbe5da",
+        "filename": "chip/it83xx/espi.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2017-11-14T05:07:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2870586d_f1422cfe",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "23e6055a3f714deb2fe85a56ec85cce35d11e201",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
