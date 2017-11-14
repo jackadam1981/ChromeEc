@@ -22,6 +22,30 @@
       "revId": "b499a42b9f57d2922cacf31b76f9f34f47243720",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e92b733_2ceeb392",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-11-14T16:57:05Z",
+      "side": 1,
+      "message": "It seems debug does not need to be enabled. I removed the line and the BIST was still generated.",
+      "parentUuid": "ab0829fc_9727ad4a",
+      "range": {
+        "startLine": 100,
+        "startChar": 56,
+        "endLine": 100,
+        "endChar": 60
+      },
+      "revId": "b499a42b9f57d2922cacf31b76f9f34f47243720",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
