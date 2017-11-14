@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8a5b294_3db1a26c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-14T19:19:15Z",
+      "side": 1,
+      "message": "Did you try testing old BIOS with new EC and new BIOS with old EC to ensure nothing breaks?",
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c5802f7_ef6b4b54",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-14T19:19:15Z",
+      "side": 1,
+      "message": "Can you please add a comment what this variable indicates?",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95eb9d46_210e7c98",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-14T19:19:15Z",
+      "side": 1,
+      "message": "Can you please add a comment indicating that mask of 0 is considered as no active mask.",
+      "range": {
+        "startLine": 66,
+        "startChar": 39,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a71b1a7_3ca728aa",
+        "filename": "include/host_command.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-14T19:19:15Z",
+      "side": 1,
+      "message": "Can you please add a comment when this will be used?",
+      "range": {
+        "startLine": 191,
+        "startChar": 8,
+        "endLine": 191,
+        "endChar": 30
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9baba7a4_0b899099",
+        "filename": "include/host_command.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-14T19:19:15Z",
+      "side": 1,
+      "message": "1",
+      "range": {
+        "startLine": 208,
+        "startChar": 11,
+        "endLine": 208,
+        "endChar": 15
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "763259cb_666e89af",
+        "filename": "include/host_command.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-14T19:19:15Z",
+      "side": 1,
+      "message": "0",
+      "range": {
+        "startLine": 208,
+        "startChar": 60,
+        "endLine": 208,
+        "endChar": 65
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "458ca807_46116d91",
+        "filename": "power/common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-14T19:19:15Z",
+      "side": 1,
+      "message": "Can you please add a comment indicating the outline of this function:\n1. On transition to S0, wake mask is reset.\n2. In non-S0 states, active mask set by host gets a higher preference.\n3. If host has not set any active mask, then check if a lazy mask exists for the current power state.\n4. If state is S0ix and no lazy or active wake mask is set, then use default S0ix mask to be compatible with older BIOS versions.",
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
