@@ -244,6 +244,30 @@
     },
     {
       "key": {
+        "uuid": "20c6851c_d2771db8",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-14T18:31:16Z",
+      "side": 1,
+      "message": "I added the 10 second delay as I think that\u0027s plenty of time for the faft script to issue the cold reset. This time can be adjusted or made infinite if that\u0027s preferred.",
+      "parentUuid": "f637365a_35b6d169",
+      "range": {
+        "startLine": 734,
+        "startChar": 1,
+        "endLine": 736,
+        "endChar": 3
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2187a7c6_0b7f1e85",
         "filename": "common/system.c",
         "patchSetId": 2
@@ -433,6 +457,30 @@
     },
     {
       "key": {
+        "uuid": "1095e126_e3e93512",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-14T18:31:16Z",
+      "side": 1,
+      "message": "I do need a print for the regexp set in the python script. Added \"Waiting for ext reset!\"",
+      "parentUuid": "7674af6d_45651dfd",
+      "range": {
+        "startLine": 1127,
+        "startChar": 11,
+        "endLine": 1127,
+        "endChar": 27
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7729753e_6329c5b9",
         "filename": "common/system.c",
         "patchSetId": 2
@@ -486,6 +534,24 @@
     },
     {
       "key": {
+        "uuid": "d035de87_20e642d8",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1135,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-14T18:31:16Z",
+      "side": 1,
+      "message": "If wait-ext is used, then will print \"Waiting for ext reset!\"",
+      "parentUuid": "453f5339_a004f36c",
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46c3dcd7_0b9d3577",
         "filename": "include/system.h",
         "patchSetId": 2
@@ -533,6 +599,30 @@
     },
     {
       "key": {
+        "uuid": "15124ade_cb9d8806",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-14T18:31:16Z",
+      "side": 1,
+      "message": "Yes, this flag has been removed.",
+      "parentUuid": "339d5e1a_69fc4ab5",
+      "range": {
+        "startLine": 36,
+        "startChar": 63,
+        "endLine": 36,
+        "endChar": 72
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2f2205f_e0829588",
         "filename": "include/system.h",
         "patchSetId": 2
@@ -567,6 +657,30 @@
       "writtenOn": "2017-11-09T23:29:25Z",
       "side": 1,
       "message": "Wait for the reset pin to be driven, rather than resetting ourselves.",
+      "range": {
+        "startLine": 266,
+        "startChar": 3,
+        "endLine": 266,
+        "endChar": 63
+      },
+      "revId": "691964095feea2c08ab15becfc476107b586b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e403363f_c24fd88c",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-14T18:31:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcb5c895_f2f491b2",
       "range": {
         "startLine": 266,
         "startChar": 3,
