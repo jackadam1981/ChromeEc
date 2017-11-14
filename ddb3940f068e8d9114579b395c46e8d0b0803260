@@ -65,6 +65,29 @@
     },
     {
       "key": {
+        "uuid": "f3601bbf_b76ef1c4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-14T20:48:04Z",
+      "side": 1,
+      "message": "0x38 - 0x3b now contain the upper 32 bits.  It\u0027s almost like we knew we\u0027d need more than 32 bits of host events eventually... ;)",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 65
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c640fa86_cf34a350",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
