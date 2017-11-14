@@ -652,13 +652,10 @@ int charger_set_current(int current)
 	/* Charge current step 64 mA */
 	current &= ~0x3F;
 
-	if (current < BD9995X_NO_BATTERY_CHARGE_I_MIN &&
-	    (battery_is_present() != BP_YES || battery_is_cut_off()))
-		current = BD9995X_NO_BATTERY_CHARGE_I_MIN;
-
 	/*
 	 * Disable charger before setting charge current to 0 or when
 	 * discharging on AC.
+	 *
 	 * If charging current is set to 0mA during charging, reference of
 	 * the charge current feedback amp (VREF_CHG) is set to 0V. Hence
 	 * the DCDC stops switching (because of the EA offset).
