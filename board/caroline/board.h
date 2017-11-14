@@ -138,6 +138,7 @@
 #define I2C_PORT_PD_MCU MEC1322_I2C1
 #define I2C_PORT_TCPC MEC1322_I2C1
 #define I2C_PORT_ACCEL MEC1322_I2C2
+#define I2C_PORT_ALS MEC1322_I2C2
 #define I2C_PORT_BATTERY MEC1322_I2C3
 #define I2C_PORT_CHARGER MEC1322_I2C3
 
@@ -152,6 +153,7 @@
 #define CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
 #define CONFIG_ACCEL_BMA255
 #define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ALS_BH1730
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
@@ -222,7 +224,16 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	BASE_ACCEL,
 	BASE_GYRO,
+        LID_ALS,
 };
+
+/*
+ * For backward compatibility, to report ALS via ACPI,
+ * Define the number of ALS sensors: motion_sensor copy the data to the ALS
+ * memmap region.
+ */
+#define CONFIG_ALS
+#define ALS_COUNT 1
 
 enum temp_sensor_id {
 	TEMP_SENSOR_BATTERY,
