@@ -101,7 +101,16 @@ enum sn5s330_pp_idx {
 #define SN5S330_OVP_EN_CC (1 << 4)
 
 /* INT_STATUS_REG4 */
+#define SN5S330_DIG_RES (1 << 0)
 #define SN5S330_DB_BOOT (1 << 1)
+#define SN5S330_VSAFE0V_STAT (1 << 2)
+#define SN5S330_VSAFE0V_MASK (1 << 3)
+
+/* INT_MASK_RISE_EDGE_1 */
+#define SN5S330_ILIM_PP1_RISE_MASK (1 << 4)
+
+/* INT_MASK_FALL_EDGE_1 */
+#define SN5S330_ILIM_PP1_FALL_MASK (1 << 4)
 
 /**
  * Turn on/off the PP1 or PP2 FET.
