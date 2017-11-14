@@ -1089,41 +1089,79 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_POWER_INFO,
 
 static int hc_charge_port_override(struct host_cmd_handler_args *args)
 {
-	const struct ec_params_charge_port_override *p = args->params;
-	const int16_t override_port = p->override_port;
+	const struct ec_params_charge_port_override_v1 *p = args->params;
+	const int16_t port = p->override_port;
+	struct charge_port_info ci;
 
-	if (override_port < OVERRIDE_DONT_CHARGE ||
-	    override_port >= CHARGE_PORT_COUNT)
+	if (port < OVERRIDE_DONT_CHARGE || port >= CHARGE_PORT_COUNT)
 		return EC_RES_INVALID_PARAM;
 
-	return charge_manager_set_override(override_port) == EC_SUCCESS ?
-		EC_RES_SUCCESS : EC_RES_ERROR;
+	if (args->version == 0 || p->current_ma < 0 || p->voltage_mv < 0)
+		return charge_manager_set_override(port)
+				== EC_SUCCESS ? EC_RES_SUCCESS : EC_RES_ERROR;
+
+	ci.current = p->current_ma;
+	ci.voltage = p->voltage_mv;
+
+	if (p->supplier < 0 || CHARGE_SUPPLIER_COUNT <= p->supplier)
+		return EC_RES_INVALID_PARAM;
+
+	charge_manager_update_charge(p->supplier, port, &ci);
+
+	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_PD_CHARGE_PORT_OVERRIDE,
 		     hc_charge_port_override,
-		     EC_VER_MASK(0));
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+#ifdef CONFIG_CMD_CHARGE_PORT_OVERRIDE
 static int command_charge_port_override(int argc, char **argv)
 {
-	int port = OVERRIDE_OFF;
-	int ret = EC_SUCCESS;
+	int port;
+	int ret;
 	char *e;
 
-	if (argc >= 2) {
-		port = strtoi(argv[1], &e, 0);
-		if (*e || port < OVERRIDE_DONT_CHARGE ||
-		    port >= CHARGE_PORT_COUNT)
-			return EC_ERROR_PARAM1;
-		ret = charge_manager_set_override(port);
+	if (argc < 2) {
+		ccprintf("Override: %d\n", override_port);
+		return EC_SUCCESS;
 	}
 
-	ccprintf("Override: %d\n", (argc >= 2 && ret == EC_SUCCESS) ?
-					port : override_port);
+	/* Process the 1st parameter. */
+	port = strtoi(argv[1], &e, 0);
+	if (*e || port < OVERRIDE_DONT_CHARGE || port >= CHARGE_PORT_COUNT)
+		return EC_ERROR_PARAM1;
+
+	/* Process supplier, current, voltage. */
+	if (argc == 2) {
+		ret = charge_manager_set_override(port);
+	} else if (argc == 5) {
+		struct charge_port_info ci;
+		int supplier = strtoi(argv[2], &e, 0);
+		if (port < 0)
+			return EC_ERROR_PARAM_COUNT;
+		if (*e || supplier < 0 || CHARGE_SUPPLIER_COUNT <= supplier)
+			return EC_ERROR_PARAM2;
+		ci.current = strtoi(argv[3], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM3;
+		ci.voltage = strtoi(argv[4], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM4;
+		charge_manager_update_charge(supplier, port, &ci);
+		ret = EC_SUCCESS;
+	} else {
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	ccprintf("Override port %d %s\n", port,
+		 (ret == EC_SUCCESS) ? "" : "failed");
 	return ret;
 }
 DECLARE_CONSOLE_COMMAND(chgoverride, command_charge_port_override,
-	"[port | -1 | -2]",
-	"Force charging from a given port (-1 = off, -2 = disable charging)");
+	"[port | -1 | -2] [supplier] [max_current_ma] [max_voltage_mv]",
+	"Force charging from a given port (-1 = off, -2 = disable charging).\n"
+	"To change max current and voltage, port has to be specified.");
+#endif
 
 #ifdef CONFIG_CHARGE_MANAGER_EXTERNAL_POWER_LIMIT
 static void charge_manager_set_external_power_limit(int current_lim,

@@ -4117,7 +4117,13 @@ struct __ec_align_size1 ec_params_usb_pd_discovery_entry {
 	uint8_t ptype; /* product type (hub,periph,cable,ama) */
 };
 
-/* Override default charge behavior */
+/*
+ * Override default charge behavior
+ *
+ * Version 1 can override the max current and voltage for a specific
+ * {port, supplier}. If current or voltage is negative, the command only
+ * changes the override port (as version 0 does).
+ */
 #define EC_CMD_PD_CHARGE_PORT_OVERRIDE 0x0114
 
 /* Negative port parameters have special meaning */
@@ -4129,6 +4135,14 @@ enum usb_pd_override_ports {
 
 struct __ec_align2 ec_params_charge_port_override {
 	int16_t override_port; /* Override port# */
+};
+
+struct __ec_align2 ec_params_charge_port_override_v1 {
+	int16_t override_port; /* Override port# */
+	int16_t supplier;      /* Override supplier */
+	/* Max is 32767 mA/mV. */
+	int16_t current_ma;    /* Override current */
+	int16_t voltage_mv;    /* Override voltage */
 };
 
 /*

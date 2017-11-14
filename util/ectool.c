@@ -7,6 +7,7 @@
 #include <errno.h>
 #include <getopt.h>
 #include <inttypes.h>
+#include <limits.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -16,6 +17,7 @@
 
 #include "anx74xx.h"
 #include "battery.h"
+#include "charge_manager.h"
 #include "comm-host.h"
 #include "compile_time_macros.h"
 #include "cros_ec_dev.h"
@@ -6912,16 +6914,38 @@ int cmd_force_lid_open(int argc, char *argv[])
 
 int cmd_charge_port_override(int argc, char *argv[])
 {
-	struct ec_params_charge_port_override p;
+	struct ec_params_charge_port_override_v1 p = {
+		.current_ma = -1,
+		.voltage_mv = -1,
+	};
+	int current, volt;
+	int cmdver = 1;
+	int psize = sizeof(p);
 	char *e;
 	int rv;
 
+	if (!ec_cmd_version_supported(EC_CMD_PD_CHARGE_PORT_OVERRIDE, cmdver)) {
+		/* Fall back to version 0 command */
+		cmdver = 0;
+		psize = sizeof(struct ec_params_charge_port_override);
+	}
+
 	if (argc < 2) {
-		fprintf(stderr, "Usage: %s <port# | dontcharge | off>\n",
-			argv[0]);
+		if (cmdver == 1) {
+			fprintf(stderr, "Usage: %s <dontcharge | off>\n",
+				argv[0]);
+			fprintf(stderr, "Usage: %s <port#> "
+				"[supplier] [max_current_ma] [max_volt_mv]\n",
+				argv[0]);
+		} else {
+			fprintf(stderr,
+				"Usage: %s <port# | dontcharge | off>\n",
+				argv[0]);
+		}
 		return -1;
 	}
 
+	/* Process the 1st parameter. */
 	if (!strcasecmp(argv[1], "dontcharge"))
 		p.override_port = OVERRIDE_DONT_CHARGE;
 	else if (!strcasecmp(argv[1], "off"))
@@ -6934,12 +6958,49 @@ int cmd_charge_port_override(int argc, char *argv[])
 		}
 	}
 
-	rv = ec_command(EC_CMD_PD_CHARGE_PORT_OVERRIDE, 0, &p, sizeof(p),
+	if (cmdver == 0 || argc == 2) {
+		rv = ec_command(EC_CMD_PD_CHARGE_PORT_OVERRIDE, cmdver, &p,
+				psize, NULL, 0);
+		if (rv < 0)
+			return rv;
+		printf("Override port set to %d\n", p.override_port);
+		return 0;
+	}
+
+	if (argc != 5 || p.override_port < 0) {
+		fprintf(stderr, "Bad parameter.\n");
+		return -1;
+	}
+
+	p.supplier = strtol(argv[2], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad parameter.\n");
+		return -1;
+	}
+	current = strtol(argv[3], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad parameter.\n");
+		return -1;
+	}
+	volt = strtol(argv[4], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad parameter.\n");
+		return -1;
+	}
+	if (current < 0 || SHRT_MAX < current || volt < 0 || SHRT_MAX < volt) {
+		fprintf(stderr, "Current & voltage must be between 0 and %d.\n",
+			SHRT_MAX);
+		return -1;
+	}
+	p.current_ma = current;
+	p.voltage_mv = volt;
+
+	rv = ec_command(EC_CMD_PD_CHARGE_PORT_OVERRIDE, cmdver, &p, psize,
 			NULL, 0);
 	if (rv < 0)
 		return rv;
 
-	printf("Override port set to %d\n", p.override_port);
+	printf("Override current and ovltage of port %d\n", p.override_port);
 	return 0;
 }
 
