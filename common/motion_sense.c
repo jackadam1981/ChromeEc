@@ -542,6 +542,10 @@ static inline void update_sense_data(uint8_t *lpc_status,
 {
 	int i;
 	struct motion_sensor_t *sensor;
+#if (!defined HAS_TASK_ALS) && (defined CONFIG_ALS)
+        uint16_t *lpc_als = (uint16_t *)host_get_memmap(EC_MEMMAP_ALS);
+#endif
+
 	/*
 	 * Set the busy bit before writing the sensor data. Increment
 	 * the counter and clear the busy bit after writing the sensor
@@ -571,6 +575,11 @@ static inline void update_sense_data(uint8_t *lpc_status,
 		lpc_data[2+3*i] = sensor->xyz[Y];
 		lpc_data[3+3*i] = sensor->xyz[Z];
 	}
+
+#if (!defined HAS_TASK_ALS) && (defined CONFIG_ALS)
+        for (i = 0; i < EC_ALS_ENTRIES && i < ALS_COUNT; i++)
+                lpc_als[i] = motion_als_sensors[i]->xyz[X];
+#endif          
 
 	/*
 	 * Increment sample id and clear busy bit to signal we finished
