@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27e84818_cf233e53",
+        "filename": "board/nucleo-f401re/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-14T16:13:14Z",
+      "side": 1,
+      "message": "Why did you add these hook_notify()s? I\u0027m guessing you found some important functionality outside of chipset that depends on these? We don\u0027t have a chipset task for this board so we really shouldn\u0027t have to do this.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "67c7a23e1fd0dfcd37e0df6a8ae6c9824b1bfb2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd1e3ed7_6d2e4f25",
+        "filename": "board/nucleo-f401re/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-14T16:13:14Z",
+      "side": 1,
+      "message": "You might consider not defining this, it makes things less developer friendly.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 24
+      },
+      "revId": "67c7a23e1fd0dfcd37e0df6a8ae6c9824b1bfb2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
