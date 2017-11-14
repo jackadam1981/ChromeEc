@@ -22,6 +22,30 @@
       "revId": "52d7eefe6a848cd2f4a85dc020f2119916781758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f7bedf_56635b25",
+        "filename": "include/update_fw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-14T00:25:59Z",
+      "side": 1,
+      "message": "\u003e Will you plan to allow only up to 64 bytes ?\n\nYes. I do not want to increase the queue size just for this.\n\n\u003e I see you check that on usb_common.c as well, however, it looks like in the issue tracker b/63993891. They seems to ask for larger chunk ?\n\nSee the prototype implementation in CL:763576. The idea is that the first transaction would allocate a buffer, and followup request get the data back.",
+      "parentUuid": "882763b4_e06ce846",
+      "range": {
+        "startLine": 261,
+        "startChar": 10,
+        "endLine": 261,
+        "endChar": 19
+      },
+      "revId": "52d7eefe6a848cd2f4a85dc020f2119916781758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
