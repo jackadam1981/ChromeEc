@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58f1e42a_df88b385",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-15T05:23:41Z",
+      "side": 1,
+      "message": "Add a BUILD_ASSERT that both sizes are the same.",
+      "revId": "c34fe3f98a3dae357491f6c5998024f7ced745c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c5c3fa3_eb38e0a9",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-15T05:23:41Z",
+      "side": 1,
+      "message": "I don\u0027t think we can do this at runtime. If we are driving the PWM output, the GPIO may appear to be low. We need to detect backlight at init time.",
+      "revId": "c34fe3f98a3dae357491f6c5998024f7ced745c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
