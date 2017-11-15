@@ -35,13 +35,15 @@ static uint64_t __bss_slow next_deferred_time;
 
 #ifdef CONFIG_CMD_BUTTON
 static int siml_btn_presd;
+/* bitmask to keep track of simulated state of each button */
+static int sim_button_state;
 
-static int simulated_button_pressed(void)
+static int simulated_button_pressed(enum keyboard_button_type type)
 {
-	static int button = 1;
+	int button_mask = 1 << type;
 
-	button = !button;
-	return button;
+	sim_button_state = sim_button_state ^ button_mask;
+	return !(!!(sim_button_state & button_mask));
 }
 #endif
 
@@ -53,10 +55,9 @@ static int raw_button_pressed(const struct button_config *button)
 	int raw_value =
 #ifdef CONFIG_CMD_BUTTON
 			siml_btn_presd ?
-			simulated_button_pressed() :
+			simulated_button_pressed(button->type) :
 #endif
 			gpio_get_level(button->gpio);
-
 	return button->flags & BUTTON_FLAG_ACTIVE_HIGH ?
 				       raw_value : !raw_value;
 }
@@ -300,47 +301,69 @@ static void button_interrupt_simulate(int button)
 
 static int console_command_button(int argc, char **argv)
 {
-	int button;
+	/*
+	 * Max 3 types of buttons we can press at the same time:
+	 * (vup, vdown, rec)
+	 */
+	int button[3];
+	int button_idx = 0;
 	int press_ms = 50;
 	char *e;
+	int argv_idx;
+	int num_buttons = 0;
 
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
 
-	if (!strcasecmp(argv[1], "vup"))
-		button = button_present(KEYBOARD_BUTTON_VOLUME_UP);
-	else if (!strcasecmp(argv[1], "vdown"))
-		button = button_present(KEYBOARD_BUTTON_VOLUME_DOWN);
-	else if (!strcasecmp(argv[1], "rec"))
-		button = button_present(KEYBOARD_BUTTON_RECOVERY);
-	else
-		return EC_ERROR_PARAM1;
+	for (button_idx = 0, argv_idx = 1;
+	     argv_idx < argc;
+	     argv_idx++, button_idx++) {
+		if (!strcasecmp(argv[argv_idx], "vup")) {
+			button[button_idx] =
+				button_present(KEYBOARD_BUTTON_VOLUME_UP);
+			num_buttons++;
+		} else if (!strcasecmp(argv[argv_idx], "vdown")) {
+			button[button_idx] =
+				button_present(KEYBOARD_BUTTON_VOLUME_DOWN);
+			num_buttons++;
+		} else if (!strcasecmp(argv[argv_idx], "rec")) {
+			button[button_idx] =
+				button_present(KEYBOARD_BUTTON_RECOVERY);
+			num_buttons++;
+		} else {
+			/*
+			 * Is this the last parameter?  If so, check
+			 * if integer.  If not, then error.
+			 */
+			if (argv_idx == argc - 1) {
+				press_ms = strtoi(argv[argv_idx], &e, 0);
+				if (*e)
+					return EC_ERROR_PARAM1 + argv_idx - 1;
+			} else
+				return EC_ERROR_PARAM1 + argv_idx - 1;
+		}
 
-	if (button == BUTTON_COUNT)
-		return EC_ERROR_PARAM1;
-
-	if (argc > 2) {
-		press_ms = strtoi(argv[2], &e, 0);
-		if (*e)
-			return EC_ERROR_PARAM2;
+		if (button[button_idx] == BUTTON_COUNT)
+			return EC_ERROR_PARAM1 + argv_idx - 1;
 	}
 
 	siml_btn_presd = 1;
 
-	/* Press the button */
-	button_interrupt_simulate(button);
+	/* Press the button(s) */
+	for (button_idx = 0; button_idx < num_buttons; button_idx++)
+		button_interrupt_simulate(button[button_idx]);
 
-	/* Hold the button */
+	/* Hold the button(s) */
 	msleep(press_ms);
 
-	/* Release the button */
-	button_interrupt_simulate(button);
+	/* Release the button(s) */
+	for (button_idx = 0; button_idx < num_buttons; button_idx++)
+		button_interrupt_simulate(button[button_idx]);
 
 	/* Wait till button processing is finished */
 	msleep(100);
 
 	siml_btn_presd = 0;
-
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(button, console_command_button,
