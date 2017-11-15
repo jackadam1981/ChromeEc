@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bc67c575_36c363de",
+        "filename": "board/nucleo-f401re/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:18:36Z",
+      "side": 1,
+      "message": "I did it in the F411 board when testing MEMS sensors. I configure in motion_sensors that the sensors are only active in S0, therefore I need to pretend we are reaching S0. Not needed otherwise.",
+      "parentUuid": "27e84818_cf233e53",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "67c7a23e1fd0dfcd37e0df6a8ae6c9824b1bfb2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd1e3ed7_6d2e4f25",
         "filename": "board/nucleo-f401re/board.h",
         "patchSetId": 4
@@ -42,6 +66,40 @@
         "endLine": 48,
         "endChar": 24
       },
+      "revId": "67c7a23e1fd0dfcd37e0df6a8ae6c9824b1bfb2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfe0f758_9d15dd15",
+        "filename": "chip/stm32/config-stm32f40x.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:18:36Z",
+      "side": 1,
+      "message": "look identical to stm32f446.h. Rename stm32f446.h as stm32f4x.h and use it for the 401 as well.",
+      "revId": "67c7a23e1fd0dfcd37e0df6a8ae6c9824b1bfb2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93dbfdb0_a03b8405",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:18:36Z",
+      "side": 1,
+      "message": "remove",
       "revId": "67c7a23e1fd0dfcd37e0df6a8ae6c9824b1bfb2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
