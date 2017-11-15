@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7657436_5d2bc9f9",
+        "filename": "core/cortex-m/llsl.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T09:29:04Z",
+      "side": 1,
+      "message": "Cortex-M0 is a ARMv6-M ISA,\nwhile this directory is targeted at cortex M3/M4/M7 with ARMv7-M ISA.\n\nARMv6-M is more or less a subset of v7-M when writing assembly, but it\u0027s usually not terribly optimized then ...",
+      "range": {
+        "startLine": 1,
+        "startChar": 23,
+        "endLine": 1,
+        "endChar": 36
+      },
+      "revId": "57bcfb5c979c43cad31d0a7fd12e95b2a4c2d4bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "539d5d64_34a67505",
+        "filename": "core/cortex-m/llsl.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T09:29:04Z",
+      "side": 1,
+      "message": "this version is kind of naive.\n\nI think a simple C version like this should be at least as performant :\nunion words {\n  uint64_t u64;\n  uint32_t w[2];\n};\n\nuint64_t __aeabi_llsl(uint64_t v, uint32_t shift)\n{\n    union words val;\n    union words res;\n\n    val.u64 \u003d v;\n    res.w[1] \u003d val.w[1] \u003c\u003c shift;\n    res.w[0] \u003d val.w[0] \u003c\u003c shift;\n    res.w[1] |\u003d val.w[0] \u003c\u003c (shift - 32);\n    res.w[1] |\u003d val.w[0] \u003e\u003e (32 - shift);\n    return res.u64;\n}\n\nOur toolchain might not be perfect for this, so if you want to keep an assembly version, this C code should translate in this version without branch:\n\n\t/* in:  r0:r1  shift r2\n\t * out: r0:r1\n\t */\na_aeabi_llsl:\n\t mov    r3, r0       // save in[0]\n         lsls\tr0, r2       // out[0] \u003d in[0] \u003c\u003c shift\n         lsls\tr1, r2       // out[1] \u003d in[1] \u003c\u003c shift\n         mov    ip, r3\n\t subs   r2, #32      // shift -\u003d 32\n\t lsls\tr3, r2       // tmp \u003d in[0] \u003c\u003c (shift - 32)\n\t orrs\tr1, r3       // out[1] |\u003d in[0] \u003c\u003c (shift - 32)\n         rsbs\tr2, #0       // -shift (previously 32 - shift)\n         mov    r3, ip\n         lsrs\tr3, r2       // tmp \u003d in[0] \u003e\u003e (32 - shift)\n         orrs\tr1, r3       // out[1] |\u003d in[0] \u003e\u003e (32 - shift)\n         bx lr",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 6
+      },
+      "revId": "57bcfb5c979c43cad31d0a7fd12e95b2a4c2d4bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
