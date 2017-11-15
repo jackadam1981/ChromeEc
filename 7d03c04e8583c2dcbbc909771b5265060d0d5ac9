@@ -1,0 +1,225 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "622b8bf7_d7c4b63a",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "Verify it is powered on in suspend.",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19e22aea_152b2aa1",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "LOC_LID",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d3dcf13_7aa7d670",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "you need to set something: what is the maximal value in Lux the sensor can return when v[0] \u003d 0xFFFF?",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0dd870d_940b0f6d",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "you need to set something: min: 500 (.5Hz), max 20000 (20Hz)",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e926b18_1d863c36",
+        "filename": "board/caroline/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "given the ALS has no FIFO/interrupt, you need add to list of sensor in forced mode:\n((1 \u003c\u003c LID_ACCEL) || (1 \u003c\u003c LID_ALS))",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "444a04ac_f2949b07",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "upload with --verify option, remove trailing spaces.",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a27ca379_8a4e1412",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "EC_SUCCESS, no harm was done.",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "224c6384_8938d54b",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "EC_SUCCESS, no harm was done.\nyou need to return something, 1 is good enough.\nFor als, we use offset/range for calibration purposes:\n\nVtrue \u003d (range) * (Vmeasured + offset)",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a18a52de_d686abd4",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "EC_SUCCESS, no harm was done.",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "080ad9e2_1a80c804",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "EC_SUCCESS, no harm was done.\nNote that may want to save some sort of calibration data (to deal with the glass in front of the ALS).",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea5a2344_83ed7959",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "EC_SUCCESS, no harm was done.\nYou need to return an offset, 0 is good enough.",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3456bd9c_635ce660",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "use sensor_init_done()",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b86e7bf_879d5105",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:45:53Z",
+      "side": 1,
+      "message": "other include files use tab between names and values.",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
