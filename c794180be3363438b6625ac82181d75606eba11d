@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83c5ce02_9ca715dd",
+        "filename": "setup.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-11-15T22:48:48Z",
+      "side": 1,
+      "message": "Why is this different from CL:767547 ?",
+      "range": {
+        "startLine": 59,
+        "startChar": 28,
+        "endLine": 59,
+        "endChar": 62
+      },
+      "revId": "c794180be3363438b6625ac82181d75606eba11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "508bffbf_336ef5ce",
+        "filename": "setup.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1160860
+      },
+      "writtenOn": "2017-11-15T22:48:48Z",
+      "side": 1,
+      "message": "Why repeat this part from CL:767547 ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "c794180be3363438b6625ac82181d75606eba11d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
