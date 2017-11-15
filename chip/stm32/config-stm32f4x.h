@@ -1,4 +1,4 @@
-/* Copyright 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016,2017 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -48,7 +48,11 @@
 
 
 #undef I2C_PORT_COUNT
+#if defined(CHIP_VARIANT_STM32F411)
+#define I2C_PORT_COUNT	3
+#else
 #define I2C_PORT_COUNT	4
+#endif
 
 /* Use PSTATE embedded in the RO image, not in its own erase block */
 #define CONFIG_FLASH_PSTATE
