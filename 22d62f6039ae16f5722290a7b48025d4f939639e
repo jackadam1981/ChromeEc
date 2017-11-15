@@ -52,6 +52,24 @@
       "revId": "22d62f6039ae16f5722290a7b48025d4f939639e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36b6acc8_e67cf62d",
+        "filename": "board/coral/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1119560
+      },
+      "writtenOn": "2017-11-15T09:32:54Z",
+      "side": 1,
+      "message": "Agreed, this workaround cannot compromise unreliable lid_angle between cold EC boot and hinge vertical folding to full tablet mode.\n\nAbandon patch to honor Gwendal\u0027s review.",
+      "parentUuid": "e7a29cf1_ad781916",
+      "revId": "22d62f6039ae16f5722290a7b48025d4f939639e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
