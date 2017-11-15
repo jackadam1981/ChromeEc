@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f589fe8a_54b53b1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "Yes,\n\nTo verify with old EC, modified common/ec_features.c to return 0 by get_feature_flags1()",
+      "parentUuid": "b8a5b294_3db1a26c",
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c5802f7_ef6b4b54",
         "filename": "common/host_event_commands.c",
         "patchSetId": 10
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "34e8cf7c_98484b9f",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "5c5802f7_ef6b4b54",
+      "range": {
+        "startLine": 59,
+        "startChar": 15,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95eb9d46_210e7c98",
         "filename": "common/host_event_commands.c",
         "patchSetId": 10
@@ -53,6 +95,30 @@
       "writtenOn": "2017-11-14T19:19:15Z",
       "side": 1,
       "message": "Can you please add a comment indicating that mask of 0 is considered as no active mask.",
+      "range": {
+        "startLine": 66,
+        "startChar": 39,
+        "endLine": 66,
+        "endChar": 48
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a475c42b_82aa7f28",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "95eb9d46_210e7c98",
       "range": {
         "startLine": 66,
         "startChar": 39,
@@ -111,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "f40628e2_480d4f5d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3027,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/#/c/chromiumos/platform/ec/+/770925 takes care of this",
+      "parentUuid": "c640fa86_cf34a350",
+      "range": {
+        "startLine": 3027,
+        "startChar": 1,
+        "endLine": 3027,
+        "endChar": 21
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0aeddb8b_2041a281",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
@@ -122,6 +212,30 @@
       "writtenOn": "2017-11-14T20:46:09Z",
       "side": 1,
       "message": "Can only use __ec_align4 if struct size is a multiple of 32 bits.\n\nSuggest\n\nuint8_t action;\nuint8_t mask_type;   // Not \"mask\" which\u0027d mean the bits in value to set/clear\nuint16_t reserved;   // Set 0, ignore on read\nuint64_t value;      // Expand to 64 bits",
+      "range": {
+        "startLine": 3134,
+        "startChar": 0,
+        "endLine": 3141,
+        "endChar": 14
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75a14e68_93dbb079",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3141,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "ok..",
+      "parentUuid": "0aeddb8b_2041a281",
       "range": {
         "startLine": 3134,
         "startChar": 0,
@@ -157,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "6edc4867_caf7d12f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3147,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "It is updated only on GET, for other operations, response structure is not used.",
+      "parentUuid": "4c0e3b7a_aac4dc7c",
+      "range": {
+        "startLine": 3147,
+        "startChar": 19,
+        "endLine": 3147,
+        "endChar": 49
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "470edcb5_111b61ff",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
@@ -168,6 +306,30 @@
       "writtenOn": "2017-11-14T20:46:09Z",
       "side": 1,
       "message": "Host should already know this.",
+      "range": {
+        "startLine": 3149,
+        "startChar": 1,
+        "endLine": 3150,
+        "endChar": 14
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8a0234_79f84114",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3150,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "You meant this can be removed?",
+      "parentUuid": "470edcb5_111b61ff",
       "range": {
         "startLine": 3149,
         "startChar": 1,
@@ -203,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "89421758_9831a54d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3153,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "38351769_455fc124",
+      "range": {
+        "startLine": 3153,
+        "startChar": 1,
+        "endLine": 3153,
+        "endChar": 9
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d97e678_90ce3c00",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
@@ -214,6 +400,30 @@
       "writtenOn": "2017-11-14T20:46:09Z",
       "side": 1,
       "message": "Please comment how these work.  I\u0027d assume:\n\nGET - value is ignored\nSET - 1-bits in value are set\nCLEAR - 1-bits in value are cleared",
+      "range": {
+        "startLine": 3156,
+        "startChar": 0,
+        "endLine": 3160,
+        "endChar": 2
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f018cf0c_05964da1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3160,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "4d97e678_90ce3c00",
       "range": {
         "startLine": 3156,
         "startChar": 0,
@@ -249,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "6dca5eb1_cfc0b15c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3192,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "Existing hostevents are named as EC_CMD_HOST_EVENT_* which would be obsolete after the new host command\n\nTo distinguish from old one, named it differently",
+      "parentUuid": "7a135535_7367849a",
+      "range": {
+        "startLine": 3192,
+        "startChar": 8,
+        "endLine": 3192,
+        "endChar": 33
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a71b1a7_3ca728aa",
         "filename": "include/host_command.h",
         "patchSetId": 10
@@ -260,6 +494,30 @@
       "writtenOn": "2017-11-14T19:19:15Z",
       "side": 1,
       "message": "Can you please add a comment when this will be used?",
+      "range": {
+        "startLine": 191,
+        "startChar": 8,
+        "endLine": 191,
+        "endChar": 30
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3bec9ac_3e68296d",
+        "filename": "include/host_command.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "6a71b1a7_3ca728aa",
       "range": {
         "startLine": 191,
         "startChar": 8,
@@ -318,6 +576,30 @@
     },
     {
       "key": {
+        "uuid": "cfb7ed2d_5e88ec67",
+        "filename": "include/host_command.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "763259cb_666e89af",
+      "range": {
+        "startLine": 208,
+        "startChar": 60,
+        "endLine": 208,
+        "endChar": 65
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "458ca807_46116d91",
         "filename": "power/common.c",
         "patchSetId": 10
@@ -329,6 +611,24 @@
       "writtenOn": "2017-11-14T19:19:15Z",
       "side": 1,
       "message": "Can you please add a comment indicating the outline of this function:\n1. On transition to S0, wake mask is reset.\n2. In non-S0 states, active mask set by host gets a higher preference.\n3. If host has not set any active mask, then check if a lazy mask exists for the current power state.\n4. If state is S0ix and no lazy or active wake mask is set, then use default S0ix mask to be compatible with older BIOS versions.",
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f64e09f2_76172b19",
+        "filename": "power/common.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1130416
+      },
+      "writtenOn": "2017-11-15T10:04:04Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "458ca807_46116d91",
       "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
