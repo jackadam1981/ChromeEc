@@ -161,6 +161,23 @@
     },
     {
       "key": {
+        "uuid": "f1434bd5_144b51a1",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T22:09:05Z",
+      "side": 1,
+      "message": "0xDA means \"11011010 : 38 cycle. 102.6ms.\" period.\n\nGiven to set TIMING in init, the sensor ODR is set at ~10Hz.\nYou need to return that info in get_data_rate.\nYou may consider be able to change the data rate by populating set_data_rate.",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2cfff00_eddba4b6",
         "filename": "driver/als_bh1730.c",
         "patchSetId": 2
