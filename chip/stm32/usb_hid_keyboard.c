@@ -530,3 +530,9 @@ void keyboard_state_changed(int row, int col, int is_pressed)
 
 	keyboard_process_queue();
 }
+
+void usb_keyboard_init(void)
+{
+	add_descriptor_patch(&hid_desc_kb.desc[0].wDescriptorLength, 60);
+}
+DECLARE_HOOK(HOOK_INIT, usb_keyboard_init, HOOK_PRIO_DEFAULT-1);
