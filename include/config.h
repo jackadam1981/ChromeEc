@@ -1435,7 +1435,10 @@
 #undef CONFIG_HOST_COMMAND_STATUS
 
 /* clear bit(s) to mask reporting of an EC_HOST_EVENT_XXX event(s) */
-#define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffff
+#define CONFIG_HOST_EVENT_REPORT_MASK 0xffffffffffffffff
+
+/* Config option to support 64-bit hostevents and wake-masks. */
+#define CONFIG_HOST_EVENT64
 
 /*
  * The host commands are sorted in the .rodata.hcmds section so use the binary
