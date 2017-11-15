@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35116698_8a690cec",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-15T14:58:46Z",
+      "side": 1,
+      "message": "The diff between disable() and enable() is just to \"Disable low power mode on SLP_S0# assertion\" for several rails. Is there actually a case where SLP_S0# will become asserted and we don\u0027t want to enable low-power mode? If not, can we just set these registers once?",
+      "range": {
+        "startLine": 589,
+        "startChar": 12,
+        "endLine": 589,
+        "endChar": 45
+      },
+      "revId": "aa2ae70d3358b6862983491aa71c36e9020b2b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
