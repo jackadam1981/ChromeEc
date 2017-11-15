@@ -83,8 +83,7 @@
 /* Unused 0x28 - 0x2f */
 #define EC_MEMMAP_SWITCHES         0x30	/* 8 bits */
 /* Unused 0x31 - 0x33 */
-#define EC_MEMMAP_HOST_EVENTS      0x34 /* 32 bits */
-/* Reserve 0x38 - 0x3f for additional host event-related stuff */
+#define EC_MEMMAP_HOST_EVENTS      0x34 /* 64 bits */
 /* Battery values are all 32 bits */
 #define EC_MEMMAP_BATT_VOLT        0x40 /* Battery Present Voltage */
 #define EC_MEMMAP_BATT_RATE        0x44 /* Battery Present Rate */
@@ -595,7 +594,7 @@ enum host_event_code {
 	EC_HOST_EVENT_INVALID = 32
 };
 /* Host event mask */
-#define EC_HOST_EVENT_MASK(event_code) (1UL << ((event_code) - 1))
+#define EC_HOST_EVENT_MASK(event_code) (1ULL << ((event_code) - 1))
 
 /* Arguments at EC_LPC_ADDR_HOST_ARGS */
 struct __ec_align4 ec_lpc_host_args {
@@ -2995,7 +2994,7 @@ enum ec_mkbp_event {
 	/* Keyboard matrix changed. The event data is the new matrix state. */
 	EC_MKBP_EVENT_KEY_MATRIX = 0,
 
-	/* New host event. The event data is 4 bytes of host event flags. */
+	/* New host event. The event data is 8 bytes of host event flags. */
 	EC_MKBP_EVENT_HOST_EVENT = 1,
 
 	/* New Sensor FIFO data. The event data is fifo_info structure. */
@@ -3024,7 +3023,7 @@ union __ec_align_offset1 ec_response_get_next_data {
 	uint8_t key_matrix[13];
 
 	/* Unaligned */
-	uint32_t host_event;
+	uint64_t host_event;
 
 	struct __ec_todo_unpacked {
 		/* For aligning the fifo_info */
