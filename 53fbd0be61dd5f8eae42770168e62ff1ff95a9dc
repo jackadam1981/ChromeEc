@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50974ae9_693debdb",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "please run it through the pre-submit check",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 0
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9301a8f1_3a605a9e",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "driver-specific commands should probably be in the driver file",
+      "range": {
+        "startLine": 704,
+        "startChar": 1,
+        "endLine": 765,
+        "endChar": 1
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b182b04_4b1ec239",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "2017",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be5eeb0c_d95f302d",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "why do we have only 4 steps, are the other values between E0 and FD working ?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d78e4d_96d6c324",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "using a constant such as :\n#define BOOST_FREQ_1013KHZ 0x4\nmight make it slightly more self descriptive.",
+      "range": {
+        "startLine": 49,
+        "startChar": 47,
+        "endLine": 49,
+        "endChar": 51
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad627f4_574f4992",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "kblight_step[0] ?",
+      "range": {
+        "startLine": 61,
+        "startChar": 48,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe47f2d_377af89d",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "step ? 0x73 : 0\nseems more efficient",
+      "range": {
+        "startLine": 80,
+        "startChar": 46,
+        "endLine": 80,
+        "endChar": 64
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3be8ce7b_7234c2fb",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "why are touching the frequency register to enable/disable rather than the enable bit in PWR_MODE ?",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a3a6f2_fdb50781",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "Why are you updating both registers ?\naccording to the datasheet, updating  MAX14521_REG_EL_UPDATE is equivalent to writing all 4 MAX14521_REG_EL1_T_V / MAX14521_REG_EL2_T_V / MAX14521_REG_EL3_T_V / MAX14521_REG_EL4_T_V",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 68
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad7e496_c0d78f9a",
+        "filename": "driver/kbl_max14521.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "we are in 2017\nno (c) please",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "388631be_e2046d1a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T15:14:06Z",
+      "side": 1,
+      "message": "we should use the commands 0x22 and 0x23 above rather than creating new ones.",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1332,
+        "endChar": 2
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
