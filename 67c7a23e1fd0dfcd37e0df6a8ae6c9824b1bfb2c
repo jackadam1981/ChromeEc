@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "47c7ab84_76ba60fc",
+        "filename": "board/nucleo-f401re/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-15T05:13:38Z",
+      "side": 1,
+      "message": "That\u0027s unfortunate, we can fix it by making those HOOK_STARTUP / HOOK_RESUME routines run on HOOK_INIT if we don\u0027t have a chipset task.\n\nFor now, can we add a comment here about why we\u0027re doing this (eg. \"Run motion sensor init routines since we don\u0027t have a chipset task\")?",
+      "parentUuid": "bc67c575_36c363de",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 34
+      },
+      "revId": "67c7a23e1fd0dfcd37e0df6a8ae6c9824b1bfb2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd1e3ed7_6d2e4f25",
         "filename": "board/nucleo-f401re/board.h",
         "patchSetId": 4
