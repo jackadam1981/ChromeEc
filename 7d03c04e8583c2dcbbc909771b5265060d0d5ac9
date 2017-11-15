@@ -138,6 +138,167 @@
     },
     {
       "key": {
+        "uuid": "de4d641e_d595f7a3",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T14:58:12Z",
+      "side": 1,
+      "message": "can we remove this mess ?\nand declare the functions directly as static",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 6
+      },
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2cfff00_eddba4b6",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T14:58:12Z",
+      "side": 1,
+      "message": "this is a constant, you don\u0027t need to compute at runtime",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4771b6c5_3e794a7b",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T14:58:12Z",
+      "side": 1,
+      "message": "again, this is a constant, you can compute it at build time rather than for every single measurement at runtime.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 43
+      },
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beff090d_58a73080",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T14:58:12Z",
+      "side": 1,
+      "message": "I have hard time believing you need that many floating point computations to simply convert the value ...",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 12
+      },
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f380ec_7152bad1",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T14:58:12Z",
+      "side": 1,
+      "message": "since this does nothing, remove it ?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 1
+      },
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "108f973e_c5b0b02e",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T14:58:12Z",
+      "side": 1,
+      "message": "the API seems a bit over-complicated, why not returning directly the u32 ?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a7fcf72_5129bfbc",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T14:58:12Z",
+      "side": 1,
+      "message": "most of the code is identical, we should not duplicate it",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 27
+      },
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "444a04ac_f2949b07",
         "filename": "driver/als_bh1730.c",
         "patchSetId": 2
@@ -240,6 +401,29 @@
     },
     {
       "key": {
+        "uuid": "15d881e3_4c69f5e3",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T14:58:12Z",
+      "side": 1,
+      "message": "no ccprintf is non-interactive code\nyou need to define a CPRINTS/CPRINTF on a proper channel.",
+      "range": {
+        "startLine": 387,
+        "startChar": 7,
+        "endLine": 387,
+        "endChar": 17
+      },
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3456bd9c_635ce660",
         "filename": "driver/als_bh1730.c",
         "patchSetId": 2
@@ -271,6 +455,29 @@
       "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc27205c_48939e38",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T14:58:12Z",
+      "side": 1,
+      "message": "to change the API, you have to submit it first on master branch",
+      "range": {
+        "startLine": 1880,
+        "startChar": 0,
+        "endLine": 1880,
+        "endChar": 37
+      },
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
