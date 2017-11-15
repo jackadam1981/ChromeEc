@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f0ecd26_97eccfc1",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-15T16:47:18Z",
+      "side": 1,
+      "message": "%016lx",
+      "range": {
+        "startLine": 165,
+        "startChar": 21,
+        "endLine": 165,
+        "endChar": 22
+      },
+      "revId": "5d30357abcdfeed051cd859e9772b67d3c5b7c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4f4c90f_64430f90",
+        "filename": "chip/lm4/lpc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-15T16:47:18Z",
+      "side": 1,
+      "message": "%016lx",
+      "range": {
+        "startLine": 190,
+        "startChar": 16,
+        "endLine": 190,
+        "endChar": 22
+      },
+      "revId": "5d30357abcdfeed051cd859e9772b67d3c5b7c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7139ecfa_29711abf",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-15T16:47:18Z",
+      "side": 1,
+      "message": "%016lx",
+      "range": {
+        "startLine": 178,
+        "startChar": 15,
+        "endLine": 178,
+        "endChar": 23
+      },
+      "revId": "5d30357abcdfeed051cd859e9772b67d3c5b7c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c18a0194_e8afd355",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-15T16:47:18Z",
+      "side": 1,
+      "message": "%016lx",
+      "range": {
+        "startLine": 225,
+        "startChar": 15,
+        "endLine": 225,
+        "endChar": 22
+      },
+      "revId": "5d30357abcdfeed051cd859e9772b67d3c5b7c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ad27b67_b01387b4",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-15T16:47:18Z",
+      "side": 1,
+      "message": "Isn\u0027t this masking redundant with the typecast to uint32?\n\nAlso, %lx should work for uint64",
+      "range": {
+        "startLine": 186,
+        "startChar": 58,
+        "endLine": 186,
+        "endChar": 70
+      },
+      "revId": "5d30357abcdfeed051cd859e9772b67d3c5b7c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3161aab5_472c4204",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2998,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-15T16:47:18Z",
+      "side": 1,
+      "message": "We can\u0027t redefine the 32-bit version as 64 bits, unless existing EC implementations guarantee the top 32 bits were 0.\n\nIf current implementations can have non-zero top 32 bits, won\u0027t that cause the host to process spurious events on older systems?\n\nInstead, I think we need to define EC_MKBP_EVENT_HOST_EVENT64 \u003d 7, indicating the top 32 bits are populated.",
+      "range": {
+        "startLine": 2997,
+        "startChar": 1,
+        "endLine": 2998,
+        "endChar": 30
+      },
+      "revId": "5d30357abcdfeed051cd859e9772b67d3c5b7c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3294c6e_2ebdbf04",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 3026,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-15T16:47:18Z",
+      "side": 1,
+      "message": "Maybe: \n\nuint32_t host_event;\nuint64_t host_event64;\n\nEither that, or the caller must explicitly mask the top 32 bits if EC_MKBP_HOST_EVENT vs. EC_MKBP_HOST_EVENT64",
+      "range": {
+        "startLine": 3026,
+        "startChar": 1,
+        "endLine": 3026,
+        "endChar": 21
+      },
+      "revId": "5d30357abcdfeed051cd859e9772b67d3c5b7c6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
