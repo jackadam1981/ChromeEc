@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "116f97bd_27c8909d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:50:02Z",
+      "side": 1,
+      "message": "Don\u0027t forget to add \n  \u003cfeature name\u003d\"android.hardware.sensor.light\" /\u003e\n\nin src/private-overlays/overlay-caroline-private/chromeos-base/chromeos-bsp-caroline-private/files/hardware_features.xml",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38672b72_88f9e113",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:50:02Z",
+      "side": 1,
+      "message": "identation",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b4c836d_9ca8a069",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-15T02:50:02Z",
+      "side": 1,
+      "message": "Add more tests:\n\u003d access data with ectool motion_sense\n\u003d check data by reading sysfs attributes for sensor.\n\u003d Install AIDA64 in ARC/Android, check you see the light sensor in sensor tab.",
+      "revId": "7d03c04e8583c2dcbbc909771b5265060d0d5ac9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "622b8bf7_d7c4b63a",
         "filename": "board/caroline/board.c",
         "patchSetId": 2
