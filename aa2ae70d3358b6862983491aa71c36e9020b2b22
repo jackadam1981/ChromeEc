@@ -22,6 +22,30 @@
       "revId": "aa2ae70d3358b6862983491aa71c36e9020b2b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6b4cb1d_b6064e0b",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-15T15:37:21Z",
+      "side": 1,
+      "message": "Yes. During runtime S0ix. More details in this bug: b/65421825. Basically, there are two types of S0ix -- one scheduled by the kernel and the other is runtime without software control. We do not want the VRs to decay during runtime S0ix because it could lead to instability as mentioned in the bug.",
+      "parentUuid": "35116698_8a690cec",
+      "range": {
+        "startLine": 589,
+        "startChar": 12,
+        "endLine": 589,
+        "endChar": 45
+      },
+      "revId": "aa2ae70d3358b6862983491aa71c36e9020b2b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
