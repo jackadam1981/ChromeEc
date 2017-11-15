@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12559fee_495c06cd",
+        "filename": "include/system.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-11-15T19:16:46Z",
+      "side": 1,
+      "message": "than",
+      "range": {
+        "startLine": 273,
+        "startChar": 43,
+        "endLine": 273,
+        "endChar": 47
+      },
+      "revId": "76a7c0f7ea823f0c5910529095431c0005a21f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7616c2e4_dafbd78f",
+        "filename": "include/system.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-11-15T19:16:46Z",
+      "side": 1,
+      "message": "More accurately, it just adds 10 sec delay to the normal reset. I think it should be mentioned so. It should also explain why 10 sec.",
+      "range": {
+        "startLine": 273,
+        "startChar": 3,
+        "endLine": 273,
+        "endChar": 7
+      },
+      "revId": "76a7c0f7ea823f0c5910529095431c0005a21f59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
