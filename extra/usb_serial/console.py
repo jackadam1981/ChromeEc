@@ -242,7 +242,7 @@ parser.add_argument('-s', '--serialno', type=str,
     help="serial number of device", default="")
 
 
-def main():
+def runconsole():
   args = parser.parse_args()
 
   vidstr, pidstr = args.device.split(':')
@@ -264,7 +264,7 @@ def main():
   while sobj.running():
     time.sleep(.1)
 
-if __name__ == '__main__':
+def main():
   global old_settings
   global fd
   try:
@@ -274,7 +274,7 @@ if __name__ == '__main__':
   except:
     pass
   try:
-    main()
+    runconsole()
   except KeyboardInterrupt:
     sobj.exit()
   except Exception as e:
@@ -285,3 +285,7 @@ if __name__ == '__main__':
       traceback.print_exc()
   finally:
     force_exit()
+
+
+if __name__ == '__main__':
+  main()
