@@ -119,8 +119,63 @@ void usb_read_setup_packet(usb_uint *buffer, struct usb_setup_packet *packet)
 	packet->wLength       = buffer[3];
 }
 
-static void ep0_send_descriptor(const uint8_t *desc, int len,
-				uint16_t fixup_size)
+struct usb_descriptor_patch {
+	const void *address;
+	uint16_t data;
+};
+
+static struct usb_descriptor_patch desc_patches[4];
+
+void add_descriptor_patch(const void *address, uint16_t data)
+{
+	int i;
+
+	for (i = 0; i < ARRAY_SIZE(desc_patches); i++) {
+		if (!desc_patches[i].address) {
+			desc_patches[i].address = address;
+			desc_patches[i].data = data;
+			return;
+		}
+	}
+
+	CPRINTF("Patch table overflow\n");
+	ASSERT(0);
+}
+
+void *memcpy_to_usbram_patch(void *dest, const void *src, size_t n)
+{
+	int i;
+	void *ret;
+
+	ret = memcpy_to_usbram(EP0_BUF_TX_SRAM_ADDR, src, n);
+
+	for (i = 0; i < ARRAY_SIZE(desc_patches); i++) {
+		int offset;
+
+		if (!desc_patches[i].address || desc_patches[i].address < src)
+			break;
+
+		offset = desc_patches[i].address - src;
+
+		if (offset >= n)
+			break;
+
+		if ((offset % 2) == 0) {
+			ep0_buf_tx[offset/2] = desc_patches[i].data;
+		} else {
+			ep0_buf_tx[offset/2] =
+				(ep0_buf_tx[offset/2] & 0x00ff) |
+				((desc_patches[i].data & 0x00ff) << 8);
+			ep0_buf_tx[offset/2+1] =
+				(ep0_buf_tx[offset/2+1] & 0xff00) |
+				((desc_patches[i].data & 0xff00) >> 8);
+		}
+	}
+
+	return ret;
+}
+
+static void ep0_send_descriptor(const uint8_t *desc, int len)
 {
 	/* do not send more than what the host asked for */
 	len = MIN(ep0_buf_rx[3], len);
@@ -133,9 +188,10 @@ static void ep0_send_descriptor(const uint8_t *desc, int len,
 		desc_ptr = desc + USB_MAX_PACKET_SIZE;
 		len = USB_MAX_PACKET_SIZE;
 	}
-	memcpy_to_usbram(EP0_BUF_TX_SRAM_ADDR, desc, len);
-	if (fixup_size) /* set the real descriptor size */
-		ep0_buf_tx[1] = fixup_size;
+
+	ccprintf("Send: %08x-%08x\n", desc, desc+len);
+
+	memcpy_to_usbram_patch(EP0_BUF_TX_SRAM_ADDR, desc, len);
 	btable_ep[0].tx_count = len;
 	/* send the null OUT transaction if the transfer is complete */
 	STM32_TOGGLE_EP(0, EP_TX_RX_MASK, EP_TX_RX_VALID,
@@ -174,7 +230,7 @@ static void ep0_rx(void)
 		if (b_req == 0x01 && idx == WEBUSB_REQ_GET_URL) {
 			int len = *(uint8_t *)webusb_url;
 
-			ep0_send_descriptor(webusb_url, len, 0);
+			ep0_send_descriptor(webusb_url, len);
 			return;
 		}
 #endif
@@ -221,8 +277,7 @@ static void ep0_rx(void)
 		default: /* unhandled descriptor */
 			goto unknown_req;
 		}
-		ep0_send_descriptor(desc, len, type == USB_DT_CONFIGURATION ?
-						USB_DESC_SIZE : 0);
+		ep0_send_descriptor(desc, len);
 	} else if (req == (USB_DIR_IN | (USB_REQ_GET_STATUS << 8))) {
 		uint16_t data = 0;
 		/* Get status */
@@ -289,6 +344,9 @@ static void ep0_tx(void)
 	if (desc_ptr) {
 		/* we have an on-going descriptor transfer */
 		int len = MIN(desc_left, USB_MAX_PACKET_SIZE);
+
+		ccprintf("Send(f): %08x-%08x\n", desc_ptr, desc_ptr+len);
+
 		memcpy_to_usbram(EP0_BUF_TX_SRAM_ADDR, desc_ptr, len);
 		btable_ep[0].tx_count = len;
 		desc_left -= len;
@@ -538,6 +596,8 @@ DECLARE_IRQ(STM32_IRQ_USB_LP, usb_interrupt, 1);
 
 void usb_init(void)
 {
+	add_descriptor_patch(&usb_desc_conf.wTotalLength, USB_DESC_SIZE);
+
 	/* Enable USB device clock. */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_USB;
 

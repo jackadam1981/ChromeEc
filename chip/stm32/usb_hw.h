@@ -63,6 +63,17 @@ void usb_read_setup_packet(usb_uint *buffer, struct usb_setup_packet *packet);
 void *memcpy_to_usbram(void *dest, const void *src, size_t n);
 void *memcpy_from_usbram(void *dest, const void *src, size_t n);
 
+/*
+ * Descriptor patching support, useful to change a few values in the descriptor
+ * (typically, length or bitfields) without having to move descriptors in RAM.
+ */
+
+/* Add patch to table: replace data at address (STM32 flash) with data. */
+void add_descriptor_patch(const void *address, uint16_t data);
+
+/* Copy to USB ram, applying patches to src as required. */
+void *memcpy_to_usbram_patch(void *dest, const void *src, size_t n);
+
 /* Compute the address inside dedicate SRAM for the USB controller */
 #define usb_sram_addr(x) ((x - __usb_ram_start) * sizeof(uint16_t))
 
