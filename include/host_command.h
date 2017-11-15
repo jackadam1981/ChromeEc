@@ -122,6 +122,18 @@ struct host_command {
 	int version_mask;
 };
 
+#ifdef CONFIG_HOST_EVENT64
+typedef uint64_t host_event_t;
+#define HOST_EVENT_CPRINTS(str, e)	\
+	CPRINTS("%s 0x%08lx 0x%08lx", (uint32_t)(e >> 32), (uint32_t)e)
+#define HOST_EVENT_CCPRINTF(str, e)	\
+	ccprintf("%s 0x%08lx 0x%08lx\n", (uint32_t)(e >> 32), (uint32_t)e)
+#else
+typedef uint32_t host_event_t;
+#define HOST_EVENT_CPRINTS(str, e)	CPRINTS("%s 0x%08x", e)
+#define HOST_EVENT_CCPRINTF(str, e)	ccprintf("%s 0x%08x\n", e)
+#endif
+
 /**
  * Return a pointer to the memory-mapped buffer.
  *
@@ -150,14 +162,14 @@ uint16_t host_command_process(struct host_cmd_handler_args *args);
  *
  * @param mask          Event bits to set (use EC_HOST_EVENT_MASK()).
  */
-void host_set_events(uint32_t mask);
+void host_set_events(host_event_t mask);
 
 /**
  * Set a single host event.
  *
  * @param event         Event to set (EC_HOST_EVENT_*).
  */
-static inline void host_set_single_event(int event)
+static inline void host_set_single_event(host_event_t event)
 {
 	host_set_events(EC_HOST_EVENT_MASK(event));
 }
@@ -168,12 +180,12 @@ static inline void host_set_single_event(int event)
  * @param mask          Event bits to clear (use EC_HOST_EVENT_MASK()).
  *                      Write 1 to a bit to clear it.
  */
-void host_clear_events(uint32_t mask);
+void host_clear_events(host_event_t mask);
 
 /**
  * Return the raw event state.
  */
-uint32_t host_get_events(void);
+host_event_t host_get_events(void);
 
 /**
  * Check a single host event.
