@@ -93,6 +93,30 @@
       "revId": "25713edd9d86d8c928357e929da97bd0632d6406",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b21237b0_701b4cb6",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-15T19:24:49Z",
+      "side": 1,
+      "message": "The partner said the address selection on ps8751b is broken. The i2c address of ps8751b can only be 0x16.",
+      "parentUuid": "3178f955_3b8e6b4a",
+      "range": {
+        "startLine": 356,
+        "startChar": 2,
+        "endLine": 356,
+        "endChar": 18
+      },
+      "revId": "25713edd9d86d8c928357e929da97bd0632d6406",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
