@@ -22,6 +22,30 @@
       "revId": "dc150684c3090578b3e0c88e3e927ed2701ad84b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44275de8_11e35303",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-15T18:46:26Z",
+      "side": 1,
+      "message": "I actually split this up to make it easier to read. Two 32-bit integers. Also it reduces the noise because of upper 32-bits until we are using just the lower 32-bits. What do you think?",
+      "parentUuid": "499d25f8_53f3b033",
+      "range": {
+        "startLine": 186,
+        "startChar": 14,
+        "endLine": 186,
+        "endChar": 29
+      },
+      "revId": "dc150684c3090578b3e0c88e3e927ed2701ad84b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
