@@ -295,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "6d49ce3d_487a8fec",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3147,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-15T16:52:55Z",
+      "side": 1,
+      "message": "Please add comment to this effect.",
+      "parentUuid": "6edc4867_caf7d12f",
+      "range": {
+        "startLine": 3147,
+        "startChar": 19,
+        "endLine": 3147,
+        "endChar": 49
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "470edcb5_111b61ff",
         "filename": "include/ec_commands.h",
         "patchSetId": 10
@@ -330,6 +354,30 @@
       "side": 1,
       "message": "You meant this can be removed?",
       "parentUuid": "470edcb5_111b61ff",
+      "range": {
+        "startLine": 3149,
+        "startChar": 1,
+        "endLine": 3150,
+        "endChar": 14
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc720505_15b7f246",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3150,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-15T16:52:55Z",
+      "side": 1,
+      "message": "Yes.  There\u0027s no command queue, so with only one command in flight  the host knows what mask it just requested.",
+      "parentUuid": "7a8a0234_79f84114",
       "range": {
         "startLine": 3149,
         "startChar": 1,
@@ -471,6 +519,30 @@
       "side": 1,
       "message": "Existing hostevents are named as EC_CMD_HOST_EVENT_* which would be obsolete after the new host command\n\nTo distinguish from old one, named it differently",
       "parentUuid": "7a135535_7367849a",
+      "range": {
+        "startLine": 3192,
+        "startChar": 8,
+        "endLine": 3192,
+        "endChar": 33
+      },
+      "revId": "ddb3940f068e8d9114579b395c46e8d0b0803260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f80abdc_ff089d4b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 3192,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-15T16:52:55Z",
+      "side": 1,
+      "message": "The new one is a superset of all the old ones, so it\u0027s ok to use the shorter term.",
+      "parentUuid": "6dca5eb1_cfc0b15c",
       "range": {
         "startLine": 3192,
         "startChar": 8,
