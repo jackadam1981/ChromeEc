@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fc3e877_6a4fe64d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T10:23:30Z",
+      "side": 1,
+      "message": "seems to be missing the \"BUG\u003d\"\nprobably means it didn\u0027t pass the presubmit check either.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "683e934d29586dcd3666794f5e885ba1f145e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "192e2cca_d44a0fbb",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-15T10:23:30Z",
+      "side": 1,
+      "message": "seems to be a straight copy of the one above, then put the 2 defined() there and don\u0027t duplicate the settings",
+      "range": {
+        "startLine": 1004,
+        "startChar": 0,
+        "endLine": 1004,
+        "endChar": 37
+      },
+      "revId": "683e934d29586dcd3666794f5e885ba1f145e2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
