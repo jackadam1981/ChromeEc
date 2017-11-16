@@ -95,6 +95,9 @@
 
 /* Number of buttons */
 #define CONFIG_BUTTON_COUNT		2
+#define CONFIG_VOLUME_BUTTONS
+#define GPIO_VOLUME_DOWN_L GPIO_VOLUME_DOWN
+#define GPIO_VOLUME_UP_L GPIO_VOLUME_UP
 
 #define CONFIG_ADC
 

@@ -202,11 +202,6 @@ enum adc_channel {
 	ADC_CH_COUNT
 };
 
-enum button {
-	BUTTON_RECOVERY = 0,
-	BUTTON_COUNT
-};
-
 enum pwm_channel {
 	PWM_CH_LED_RED,
 	PWM_CH_LED_GREEN,

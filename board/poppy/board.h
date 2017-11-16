@@ -37,6 +37,7 @@
 #define CONFIG_UART_HOST 0
 #define CONFIG_VBOOT_HASH
 #define CONFIG_SHA256_UNROLLED
+#define CONFIG_VOLUME_BUTTONS
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
 #define CONFIG_WATCHDOG_HELP
@@ -228,12 +229,6 @@ enum adc_channel {
 	ADC_VBUS,
 	ADC_AMON_BMON,
 	ADC_CH_COUNT
-};
-
-enum button {
-	BUTTON_VOLUME_DOWN = 0,
-	BUTTON_VOLUME_UP = 1,
-	BUTTON_COUNT
 };
 
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */

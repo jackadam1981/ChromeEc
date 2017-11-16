@@ -38,6 +38,18 @@ struct button_config {
 	int flags;
 };
 
+/* NOTE: This MUST match the order in the "buttons" array. */
+enum button {
+#ifdef CONFIG_VOLUME_BUTTONS
+	BUTTON_VOLUME_UP,
+	BUTTON_VOLUME_DOWN,
+#endif /* defined(CONFIG_VOLUME_BUTTONS) */
+#ifdef CONFIG_DEDICATED_RECOVERY_BUTTON
+	BUTTON_RECOVERY,
+#endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
+	BUTTON_COUNT,
+};
+
 /*
  * Defined in board.c. Should be CONFIG_BUTTON_COUNT elements long.
  */

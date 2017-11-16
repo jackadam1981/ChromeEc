@@ -410,6 +410,11 @@
  */
 #undef CONFIG_DEDICATED_RECOVERY_BUTTON
 
+/*
+ * The board has a volume rocker with volume up and volume down buttons.
+ */
+#undef CONFIG_VOLUME_BUTTONS
+
 /* Support V1 CCD configuration */
 #undef CONFIG_CASE_CLOSED_DEBUG_V1
 /* Allow unsafe debugging functionality in V1 configuration */

@@ -8,6 +8,7 @@
 #include "button.h"
 #include "chipset.h"
 #include "common.h"
+#include "compile_time_macros.h"
 #include "console.h"
 #include "gpio.h"
 #include "host_command.h"
@@ -677,3 +678,34 @@ DECLARE_HOOK(HOOK_TICK, debug_led_tick, HOOK_PRIO_DEFAULT);
 
 #endif /* !CONFIG_DEDICATED_RECOVERY_BUTTON */
 #endif /* CONFIG_EMULATED_SYSRQ */
+
+const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
+#ifdef CONFIG_VOLUME_BUTTONS
+	[BUTTON_VOLUME_UP] = {
+		.name = "Volume Up",
+		.type = KEYBOARD_BUTTON_VOLUME_UP,
+		.gpio = GPIO_VOLUME_UP_L,
+		.debounce_us = 30 * MSEC,
+		.flags = 0,
+	},
+
+	[BUTTON_VOLUME_DOWN] = {
+		.name = "Volume Down",
+		.type = KEYBOARD_BUTTON_VOLUME_DOWN,
+		.gpio = GPIO_VOLUME_DOWN_L,
+		.debounce_us = 30 * MSEC,
+		.flags = 0,
+	},
+#endif /* defined(CONFIG_VOLUME_BUTTONS) */
+
+#ifdef CONFIG_DEDICATED_RECOVERY_BUTTON
+	[BUTTON_RECOVERY] = {
+		.name = "Recovery",
+		.type = KEYBOARD_BUTTON_RECOVERY,
+		.gpio = GPIO_RECOVERY_L,
+		.debounce_us = 30 * MSEC,
+		.flags = 0,
+	}
+#endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
+};
+BUILD_ASSERT(ARRAY_SIZE(buttons) == CONFIG_BUTTON_COUNT);
