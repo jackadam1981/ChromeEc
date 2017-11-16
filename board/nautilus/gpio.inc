@@ -60,9 +60,6 @@ GPIO(PCH_SLP_S0_L,		PIN(7, 5), GPIO_INPUT)
 /* NC pins */
 GPIO(GPIOD2_NC,			PIN(D, 2), GPIO_INPUT | GPIO_PULL_UP)
 
-/* Sensor interrupts, not implemented yet */
-GPIO(ALS_INT_L,			PIN(2, 5), GPIO_INPUT)
-
 /* TODO(b/35585396): Make use of these GPIOs */
 GPIO(PP1800_DX_SENSOR,		PIN(1, 4), GPIO_OUTPUT)
 GPIO(PP3300_DX_SENSOR,		PIN(2, 1), GPIO_OUTPUT)
