@@ -116,6 +116,30 @@
       "revId": "951d756030d11c87e488094c9c7f7016cce8e818",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "159af2ea_24bbc11b",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-16T21:09:25Z",
+      "side": 1,
+      "message": "\u003e But then we won\u0027t be able to guarantee atomic update of events (across upper and lower 32-bits)\n\nIs there any case where it matters? Eg. do we have behavior that depends on two events being set simultaneously? I think the answer is \"no\" and we just need to protect against data hazards here.",
+      "parentUuid": "eb50f706_14ecc11f",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 1
+      },
+      "revId": "951d756030d11c87e488094c9c7f7016cce8e818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
