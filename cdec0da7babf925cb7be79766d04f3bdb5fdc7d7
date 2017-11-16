@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08088b4e_4cae20ec",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-16T20:22:06Z",
+      "side": 1,
+      "message": "I think the return value of this function isn\u0027t obvious based on the naming, we should either rename it to power_up_is_inhibited() or add a comment about the return value (eg. \"return true if AP power-up should be inhibited\").",
+      "revId": "cdec0da7babf925cb7be79766d04f3bdb5fdc7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46f7e77c_6a21a392",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-16T20:22:06Z",
+      "side": 1,
+      "message": "Do we need this parameter?",
+      "range": {
+        "startLine": 65,
+        "startChar": 40,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "cdec0da7babf925cb7be79766d04f3bdb5fdc7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
