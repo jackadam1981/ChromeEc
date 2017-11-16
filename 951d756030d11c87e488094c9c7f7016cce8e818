@@ -69,6 +69,29 @@
       "revId": "951d756030d11c87e488094c9c7f7016cce8e818",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6939a05c_bc88b84d",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-16T20:10:05Z",
+      "side": 1,
+      "message": "Someone might try calling these with interrupts already disabled. Can we get away with atomic_or\u0027ing / atomic_clear\u0027ing 32 bits at a time?",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 1
+      },
+      "revId": "951d756030d11c87e488094c9c7f7016cce8e818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
