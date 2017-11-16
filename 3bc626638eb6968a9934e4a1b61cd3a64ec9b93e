@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bd8a817_6f14cd8d",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-16T22:45:26Z",
+      "side": 1,
+      "message": "For reference, it appears the compiler Does The Right Thing with the 32-bit shift:\n\nhost_events_atomic_clear:\n        push    {r3, r4, r5, lr}\n        mov     r5, r3\n        mov     r4, r0\n        mov     r1, r2\n        bl      atomic_clear\n        mov     r1, r5\n        add     r0, r4, #4\n        bl      atomic_clear\n        @ sp needed\n        pop     {r3, r4, r5}\n        pop     {r0}\n        bx      r0\n\n(one would hope it would, but one is often surprised...)",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 1
+      },
+      "revId": "3bc626638eb6968a9934e4a1b61cd3a64ec9b93e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
