@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05a32c19_1b2475e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-16T19:00:18Z",
+      "side": 1,
+      "message": "This is a bit vague.\nMaybe say \u0027nautilus: cleanup board.c\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "951a4b0ed241c02da3e68cfb6e4b5aba94c4ff86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "610727d1_8e84ec10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-16T19:00:18Z",
+      "side": 1,
+      "message": "More specifically, remove unused pin GPIO_PP3300_USB_PD.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 28
+      },
+      "revId": "951a4b0ed241c02da3e68cfb6e4b5aba94c4ff86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}

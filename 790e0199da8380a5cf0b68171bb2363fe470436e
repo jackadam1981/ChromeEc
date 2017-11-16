@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "989e0e41_1d58b2e5",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-16T19:00:18Z",
+      "side": 0,
+      "message": "Can you also remove GPIO_PP3300_USB_PD in gpio.inc?",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 40
+      },
+      "revId": "790e0199da8380a5cf0b68171bb2363fe470436e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17987b18_cb659b6d",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-16T19:00:18Z",
+      "side": 0,
+      "message": "I saw we use ps8751\u0027b\u0027 on Nautilus.\nSo it can wake on any I2C access as ps8751 a3 too?",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 47
+      },
+      "revId": "790e0199da8380a5cf0b68171bb2363fe470436e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
