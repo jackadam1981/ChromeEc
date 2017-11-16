@@ -399,19 +399,20 @@ void clear_typematic_key(void)
 static uint32_t get_supported_buttons(void)
 {
 	uint32_t val = 0;
-#ifdef CONFIG_BUTTON_COUNT
+#ifdef CONFIG_VOLUME_BUTTONS
 	int i;
 
-	for (i = 0; i < CONFIG_BUTTON_COUNT; i++) {
+	for (i = 0; i < BUTTON_COUNT; i++) {
 		if (buttons[i].type == KEYBOARD_BUTTON_VOLUME_UP)
 			val |= (1 << EC_MKBP_VOL_UP);
 		if (buttons[i].type == KEYBOARD_BUTTON_VOLUME_DOWN)
 			val |= (1 << EC_MKBP_VOL_DOWN);
 	}
-#endif
+#endif /* defined(CONFIG_VOLUME_BUTTONS) */
+
 #ifdef CONFIG_POWER_BUTTON
 	val |= (1 << EC_MKBP_POWER_BUTTON);
-#endif
+#endif /* defined(CONFIG_POWER_BUTTON) */
 	return val;
 }
 
