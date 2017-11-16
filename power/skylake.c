@@ -34,7 +34,8 @@ void chipset_force_shutdown(void)
 	 * Consider reducing the latency here by changing the power off
 	 * hold time on the PMIC.
 	 */
-	if (!chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+	if (!chipset_in_state(CHIPSET_STATE_HARD_OFF |
+				CHIPSET_STATE_SOFT_OFF)) {
 		forcing_shutdown = 1;
 		power_button_pch_press();
 	}
