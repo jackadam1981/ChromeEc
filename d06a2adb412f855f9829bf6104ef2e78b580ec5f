@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3a71e77_0c864c6b",
+        "filename": "include/host_command.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-16T18:59:41Z",
+      "side": 1,
+      "message": "Just\n\nenum power_state;\n\ninstead of including the full header.  Many modules include host_command.h, and this forces them all to include power.h.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 18
+      },
+      "revId": "d06a2adb412f855f9829bf6104ef2e78b580ec5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "387bb42e_d91e4bc1",
+        "filename": "include/host_command.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-16T18:59:41Z",
+      "side": 1,
+      "message": "EC_SUCCESS if successful, non-zero if error.\n\n(and please use an EC_ERROR_ code from common.h)",
+      "range": {
+        "startLine": 201,
+        "startChar": 25,
+        "endLine": 201,
+        "endChar": 35
+      },
+      "revId": "d06a2adb412f855f9829bf6104ef2e78b580ec5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
