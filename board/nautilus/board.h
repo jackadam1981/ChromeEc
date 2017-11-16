@@ -100,9 +100,6 @@
 #define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
 
 /* Sensor */
-#define CONFIG_ALS
-#define CONFIG_ALS_OPT3001
-#define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_TEMP_SENSOR_BD99992GW
 /* TODO(crosbug.com/p/61098): Is this the correct thermistor? */
