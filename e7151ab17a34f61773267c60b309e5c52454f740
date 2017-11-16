@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9005689c_854733ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-16T19:32:44Z",
+      "side": 1,
+      "message": "You can use chromium:783371 here.",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "e7151ab17a34f61773267c60b309e5c52454f740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6afa7d5_87d26ae5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-16T19:32:44Z",
+      "side": 1,
+      "message": "\u0027None\u0027 sounds right, cleanups like this mostly stay on TOT.",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "e7151ab17a34f61773267c60b309e5c52454f740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "336b6bd5_21407226",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-16T19:32:44Z",
+      "side": 1,
+      "message": "Can we get rid of this and just use BUTTON_COUNT from the enum, since we aren\u0027t defining buttons[] in board code anymore? It saves the board/ creator the busy work of adding up (CONFIG_VOLUME_BUTTONS * 2) + CONFIG_DEDICATED_RECOVERY_BUTTON.",
+      "range": {
+        "startLine": 400,
+        "startChar": 7,
+        "endLine": 400,
+        "endChar": 26
+      },
+      "revId": "e7151ab17a34f61773267c60b309e5c52454f740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bbf6772_5178d434",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-16T19:32:44Z",
+      "side": 1,
+      "message": "The name of this CONFIG is confusing (not your fault), especially considering we already have CONFIG_DEDICATED_RECOVERY_BUTTON. Maybe we can fix it later.",
+      "range": {
+        "startLine": 406,
+        "startChar": 7,
+        "endLine": 406,
+        "endChar": 29
+      },
+      "revId": "e7151ab17a34f61773267c60b309e5c52454f740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
