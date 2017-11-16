@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d200ffa_e274e2c0",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-11-16T05:34:12Z",
+      "side": 0,
+      "message": "If set minimum current here, charge won\u0027t be disable forever.",
+      "revId": "d6c836b4dacdce0f3279ac56d92e7cfd92fdf967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
