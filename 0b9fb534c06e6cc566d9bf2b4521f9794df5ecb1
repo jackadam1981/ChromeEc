@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c327e97d_0eb94936",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-16T06:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36be1dc8_442a6757",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 57
+      },
+      "revId": "0b9fb534c06e6cc566d9bf2b4521f9794df5ecb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29db752a_26ed4124",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-11T16:59:28Z",
       "side": 1,
       "message": "Minor issue, but we use \"power-up inhibited\" print below, might want to be consistent with capitalization for search purposes.",
+      "range": {
+        "startLine": 71,
+        "startChar": 11,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "0b9fb534c06e6cc566d9bf2b4521f9794df5ecb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d04251e_e5e82ff1",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-16T06:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29db752a_26ed4124",
       "range": {
         "startLine": 71,
         "startChar": 11,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f82d23ea_c96001ed",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-16T06:39:59Z",
+      "side": 1,
+      "message": "I tested this on Soraka and there doesn\u0027t seem to be a need to simulate power button press. I can test it on Apollo lake too in order to confirm this is not chipset specific.",
+      "parentUuid": "34ab6d71_031d69d5",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "0b9fb534c06e6cc566d9bf2b4521f9794df5ecb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64ddb0c7_ea8043e9",
         "filename": "power/intel_x86.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-11T16:59:28Z",
       "side": 1,
       "message": "We should make it clear that we will attempt to power-on later once battery conditions improve, either by revising the comment or the print here.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 19
+      },
+      "revId": "0b9fb534c06e6cc566d9bf2b4521f9794df5ecb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cc9bc21_c4ecca0d",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-16T06:39:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64ddb0c7_ea8043e9",
       "range": {
         "startLine": 308,
         "startChar": 0,
