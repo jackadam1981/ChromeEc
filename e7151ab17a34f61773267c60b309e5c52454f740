@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f5bc4ee8_88c01df1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-16T22:58:12Z",
+      "side": 1,
+      "message": "Oh cool, didn\u0027t know that existed. Done.",
+      "parentUuid": "9005689c_854733ab",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "e7151ab17a34f61773267c60b309e5c52454f740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6afa7d5_87d26ae5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-16T19:32:44Z",
       "side": 1,
       "message": "\u0027None\u0027 sounds right, cleanups like this mostly stay on TOT.",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "e7151ab17a34f61773267c60b309e5c52454f740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fd3ed22_cefdc27b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-16T22:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6afa7d5_87d26ae5",
       "range": {
         "startLine": 20,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e1e0d3b9_6f54ef5b",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-16T22:58:12Z",
+      "side": 1,
+      "message": "Sure thing, that\u0027s another improvement. Done.",
+      "parentUuid": "336b6bd5_21407226",
+      "range": {
+        "startLine": 400,
+        "startChar": 7,
+        "endLine": 400,
+        "endChar": 26
+      },
+      "revId": "e7151ab17a34f61773267c60b309e5c52454f740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bbf6772_5178d434",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-16T19:32:44Z",
       "side": 1,
       "message": "The name of this CONFIG is confusing (not your fault), especially considering we already have CONFIG_DEDICATED_RECOVERY_BUTTON. Maybe we can fix it later.",
+      "range": {
+        "startLine": 406,
+        "startChar": 7,
+        "endLine": 406,
+        "endChar": 29
+      },
+      "revId": "e7151ab17a34f61773267c60b309e5c52454f740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53b7c862_1b584165",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-16T22:58:12Z",
+      "side": 1,
+      "message": "Agreed. CONFIG_BUTTON_TRIGGERED_RECOVERY comes to mind (and have CONFIG_DEDICATED_RECOVERY_BUTTON automatically define it), but I\u0027ll give it some more thought.",
+      "parentUuid": "0bbf6772_5178d434",
       "range": {
         "startLine": 406,
         "startChar": 7,
