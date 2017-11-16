@@ -248,7 +248,7 @@ static const struct board_batt_params info[] = {
 			},
 			.fet = {
 				.reg_addr = 0x0,
-				.reg_mask = 0x0018,
+				.reg_mask = 0x0010,
 				.disconnect_val = 0x0,
 			}
 		},
@@ -276,7 +276,7 @@ static const struct board_batt_params info[] = {
 			},
 			.fet = {
 				.reg_addr = 0x0,
-				.reg_mask = 0x0018,
+				.reg_mask = 0x0010,
 				.disconnect_val = 0x0,
 			}
 		},
@@ -304,7 +304,7 @@ static const struct board_batt_params info[] = {
 			},
 			.fet = {
 				.reg_addr = 0x0,
-				.reg_mask = 0x0018,
+				.reg_mask = 0x0010,
 				.disconnect_val = 0x0,
 			}
 		},
