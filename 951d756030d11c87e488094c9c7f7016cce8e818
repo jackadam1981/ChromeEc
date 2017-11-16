@@ -92,6 +92,30 @@
       "revId": "951d756030d11c87e488094c9c7f7016cce8e818",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb50f706_14ecc11f",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-16T20:49:00Z",
+      "side": 1,
+      "message": "But then we won\u0027t be able to guarantee atomic update of events (across upper and lower 32-bits). The point you mentioned is valid i.e. we might enable interrupts without considering the current state. May be using get_int_mask and set_int_mask is better in this case?",
+      "parentUuid": "6939a05c_bc88b84d",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 1
+      },
+      "revId": "951d756030d11c87e488094c9c7f7016cce8e818",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
