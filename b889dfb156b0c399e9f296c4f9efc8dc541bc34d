@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a004f48d_d3a3fbed",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2017-11-16T08:33:49Z",
+      "side": 1,
+      "message": "I mimic this from reef/board.c but I suspect that only S3 can be removed. Especially that we disabled sensor in S3/S5 below. Would like to confirm with reviewers?",
+      "revId": "b889dfb156b0c399e9f296c4f9efc8dc541bc34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
