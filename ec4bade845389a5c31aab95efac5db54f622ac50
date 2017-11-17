@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e1f4edeb_9e7a5e1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-11-17T16:45:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4a13fbb_8b428b36",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "ec4bade845389a5c31aab95efac5db54f622ac50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94ba4b67_a740f6ed",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-17T16:37:59Z",
       "side": 1,
       "message": "And then you don\u0027t this line.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "ec4bade845389a5c31aab95efac5db54f622ac50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb75bca8_ed0487b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-11-17T16:45:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "94ba4b67_a740f6ed",
       "range": {
         "startLine": 9,
         "startChar": 0,
