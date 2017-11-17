@@ -117,6 +117,30 @@
       "revId": "790e0199da8380a5cf0b68171bb2363fe470436e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "741fb50a_8decfe90",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-17T10:32:22Z",
+      "side": 0,
+      "message": "Okay, if there is no side effect with workaround code, it is safe. So, I will keep it. When I can make sure that we don\u0027t have A1 and A2, I will remove it.",
+      "parentUuid": "d71d28d3_a1183348",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 47
+      },
+      "revId": "790e0199da8380a5cf0b68171bb2363fe470436e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
