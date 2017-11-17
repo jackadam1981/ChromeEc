@@ -93,6 +93,29 @@
       "revId": "ec4bade845389a5c31aab95efac5db54f622ac50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b711c432_9e170163",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-17T16:57:23Z",
+      "side": 1,
+      "message": "Sorry, I found it coinside with EC_HAVEN_RESET_ODL.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "ec4bade845389a5c31aab95efac5db54f622ac50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
