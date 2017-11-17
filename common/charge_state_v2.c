@@ -875,10 +875,10 @@ wait_for_it:
 		}
 #endif
 
-#ifdef CONFIG_CHARGE_MANAGER
+#if defined(CONFIG_CHARGE_MANAGER) && defined(CONFIG_CHARGE_MANAGER_SAFE_MODE)
 		if (curr.batt.state_of_charge >=
 		    CONFIG_CHARGE_MANAGER_BAT_PCT_SAFE_MODE_EXIT &&
-		    !battery_seems_to_be_disconnected)
+		    !battery_seems_to_be_disconnected && curr.batt.is_present)
 			charge_manager_leave_safe_mode();
 #endif
 
