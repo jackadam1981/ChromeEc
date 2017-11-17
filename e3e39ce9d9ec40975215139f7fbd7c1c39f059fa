@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c76639f0_7be1771e",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 711,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-17T17:44:56Z",
+      "side": 1,
+      "message": "Yes, it should always be true for now. It\u0027s a compile time assertion, so it shouldn\u0027t cost any space, however I can remove it if you think it\u0027s unnecessary.",
+      "parentUuid": "6b3155d4_436687ee",
+      "revId": "e3e39ce9d9ec40975215139f7fbd7c1c39f059fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6ef83be_a720ea7a",
         "filename": "common/main.c",
         "patchSetId": 3
