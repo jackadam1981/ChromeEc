@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2917986d_09f4b42e",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2017-11-17T18:17:21Z",
+      "side": 1,
+      "message": "So this is actually problematic because GPIO_EN_PP1800_U needs to go high when SLP_S4_L goes high and then go low when SLP_S4_L goes low. I have spoken to the meowth team and they\u0027re planning to remove this command (and just use SLP_S4_L) for their P1 build. Would it be possible to add this to to the cannonlake.c file as a temporary measure?",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 39
+      },
+      "revId": "f2b87f77d30cc3b67469e54321cc240380728353",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
