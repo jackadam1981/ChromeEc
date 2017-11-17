@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ff3c60c2_c097b686",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-17T07:46:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08088b4e_4cae20ec",
+      "revId": "cdec0da7babf925cb7be79766d04f3bdb5fdc7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46f7e77c_6a21a392",
         "filename": "power/intel_x86.c",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2017-11-16T20:22:06Z",
       "side": 1,
       "message": "Do we need this parameter?",
+      "range": {
+        "startLine": 65,
+        "startChar": 40,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "cdec0da7babf925cb7be79766d04f3bdb5fdc7d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4040a7d_844d8eba",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-17T07:46:08Z",
+      "side": 1,
+      "message": "Actually, I just added it in case anyone ends up using this function in some other place. But, I think I can just add a const in this function to make it clear what the parameter to charge_prevent_power_on is.",
+      "parentUuid": "46f7e77c_6a21a392",
       "range": {
         "startLine": 65,
         "startChar": 40,
