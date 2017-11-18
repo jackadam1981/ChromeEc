@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d5609b5_93b01d6b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4142,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-18T06:45:14Z",
+      "side": 1,
+      "message": "Thinking about this more, it may make sense to drop the supplier param and override the current / voltage on the active supplier instead, because supplier index varies by board and isn\u0027t known to the host. What do you think?",
+      "range": {
+        "startLine": 4142,
+        "startChar": 9,
+        "endLine": 4142,
+        "endChar": 17
+      },
+      "revId": "bcd32968f9e8593ef27d3cf6db4a6fd7f9648fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39152156_acd4a64a",
+        "filename": "util/ectool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7003,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-18T06:45:14Z",
+      "side": 1,
+      "message": "spelling here",
+      "range": {
+        "startLine": 7003,
+        "startChar": 30,
+        "endLine": 7003,
+        "endChar": 37
+      },
+      "revId": "bcd32968f9e8593ef27d3cf6db4a6fd7f9648fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
