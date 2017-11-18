@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b229e92_a23b02a0",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-18T00:27:08Z",
+      "side": 1,
+      "message": "We still need the ability to signal \"don\u0027t charge\" or \"force charge from override_port\" without modifying current / voltage (and maybe vice-verse).\n\nHow about for current / voltage \u003c 0, override port selection. For current / voltage \u003e 0, override current / voltage only?\n\nWe should also comment how this works in ec_commands.h, it\u0027s not obvious anymore.",
+      "range": {
+        "startLine": 1099,
+        "startChar": 0,
+        "endLine": 1109,
+        "endChar": 2
+      },
+      "revId": "548bd0d63d36a103d0cf1bc9389a0a78e191db10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
