@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29c70e48_cbb4cda0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-18T02:01:10Z",
+      "side": 1,
+      "message": "I would do something like this:\n\n    \nmeowth: zoombini: Reomved 5V enable pins.\n\nNot needed since we\u0027re using the SN5S330.\n[..snip..]",
+      "revId": "a4a4fb3833c403deb2355bcb70fb4c4fc460d0cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
