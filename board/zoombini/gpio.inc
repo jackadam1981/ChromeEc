@@ -34,7 +34,6 @@ GPIO_INT(PP5000_PGOOD,    PIN(C, 0), GPIO_INT_BOTH, power_signal_interrupt)
 
 /* Power Enables. */
 GPIO(EN_PP3300_DSW,        PIN(6, 0), GPIO_OUT_HIGH)
-GPIO(EN_PP3300_TRACKPAD,   PIN(B, 7), GPIO_OUT_LOW)
 GPIO(EN_PP5000,            PIN(7, 3), GPIO_OUT_LOW)
 
 GPIO(ENTERING_RW,         PIN(E, 1), GPIO_OUT_LOW)

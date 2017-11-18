@@ -212,25 +212,17 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 
 static void board_chipset_startup(void)
 {
-#ifdef BOARD_ZOOMBINI
-	/* Enable trackpad. */
-	gpio_set_level(GPIO_EN_PP3300_TRACKPAD, 1);
-	/* TODO(aaboagye): Remove Trackpad function in P1 - moved to AP */
-#else /* !defined(BOARD_ZOOMBINI) */
+#ifdef BOARD_MEOWTH /* defined(BOARD_MEOWTH) */
 	gpio_set_level(GPIO_EN_PP1800_U, 1);
-#endif /* defined(BOARD_ZOOMBINI) */
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void board_chipset_shutdown(void)
 {
-#ifdef BOARD_ZOOMBINI
-	/* Disable trackpad. */
-	gpio_set_level(GPIO_EN_PP3300_TRACKPAD, 0);
-	/* TODO(aaboagye): Remove Trackpad function in P1 - moved to AP */
-#else /* !defined(BOARD_ZOOMBINI) */
+#ifdef BOARD_MEOWTH /*defined(BOARD_MEOWTH) */
 	gpio_set_level(GPIO_EN_PP1800_U, 0);
-#endif /* defined(BOARD_ZOOMBINI) */
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
