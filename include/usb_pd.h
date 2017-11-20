@@ -1746,6 +1746,13 @@ int pd_ts_dts_plugged(int port);
  */
 int pd_capable(int port);
 
+/**
+ * Return PDOs
+ *
+ * @param port USB-C port number
+ */
+uint32_t *pd_get_src_caps(int port);
+
 /* ----- Logging ----- */
 #ifdef CONFIG_USB_PD_LOGGING
 /**

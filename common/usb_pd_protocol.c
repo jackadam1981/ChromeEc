@@ -1519,6 +1519,10 @@ static void handle_request(int port, uint16_t head,
 		for (p = 0; p < cnt; p++)
 			CPRINTF("[%d]%08x ", p, payload[p]);
 		CPRINTF("\n");
+		for (p = 0; p < cnt; p++)
+			CPRINTF("pdo[%d]=%d mV, %d mA\n", p,
+				((payload[p] >> 10) & 0x3FF) * 50,
+				10 * (payload[p] & 0x3FF));
 	}
 
 	/*
@@ -3864,6 +3868,18 @@ static int command_pd(int argc, char **argv)
 			(pd[port].flags & PD_FLAGS_VCONN_ON) ? "-VC" : "",
 			pd_state_names[pd[port].task_state],
 			pd[port].flags);
+	} else if (!strncasecmp(argv[2], "pdo", 3)) {
+		uint32_t *caps = pd_get_src_caps(port);
+		int ma, mv;
+
+		ccprintf("Available Options:\n");
+		while (*caps) {
+			mv = ((caps[0] >> 10) & 0x3FF) * 50;
+			ma = 10 * (caps[0] & 0x3FF);
+			ccprintf("\t[%d mV / %d mA / %d mW]\n",
+				mv, ma, mv*ma/1000);
+			caps++;
+		}
 	} else {
 		return EC_ERROR_PARAM1;
 	}

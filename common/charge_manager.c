@@ -382,6 +382,8 @@ static void charge_manager_fill_power_info(int port,
 #endif
 		}
 	}
+
+	memcpy(r->src_caps, pd_get_src_caps(port), sizeof(r->src_caps));
 }
 #endif /* TEST_BUILD */
 

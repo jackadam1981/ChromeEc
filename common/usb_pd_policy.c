@@ -1041,3 +1041,8 @@ void pd_set_vbus_discharge(int port, int enable)
 	mutex_unlock(&discharge_lock[port]);
 }
 #endif /* CONFIG_USB_PD_DISCHARGE */
+
+uint32_t *pd_get_src_caps(int port)
+{
+	return pd_src_caps[port];
+}
