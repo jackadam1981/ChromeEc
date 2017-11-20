@@ -108,11 +108,14 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
 #define CONFIG_ACCELGYRO_BMI160
-#define CONFIG_MAG_BMI160_BMM150
-#define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
-#define BMM150_I2C_ADDRESS BMM150_ADDR0	/* 8-bit address */
-#define CONFIG_MAG_CALIBRATE
+#define CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
+#define CONFIG_ACCEL_BMA255
+#define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+#define CONFIG_LID_ANGLE_UPDATE
 
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 1024
@@ -202,14 +205,14 @@ enum temp_sensor_id {
 
 /*
  * Motion sensors:
- * When reading through IO memory is set up for sensors (LPC is used),
- * the first 2 entries must be accelerometers, then gyroscope.
- * For BMI160, accel, gyro and compass sensors must be next to each other.
+ * When reading through IO memory is set up, the first 2 entries must be
+ * accelerometers, then gyroscope.
+ * For BMI160, accel and gyro sensors must be next to each other.
  */
 enum sensor_id {
-	LID_ACCEL = 0,
-	LID_GYRO,
-	LID_MAG,
+        LID_ACCEL = 0,
+        BASE_ACCEL,
+        BASE_GYRO,
 };
 
 enum adc_channel {
