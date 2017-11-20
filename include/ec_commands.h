@@ -811,6 +811,78 @@ struct __ec_align4 ec_host_response {
 };
 
 /*****************************************************************************/
+
+/* Version 4 request from host */
+struct __ec_align4 ec_host_request4 {
+	/*
+	 * bits 0-3: Structure version (=4)
+	 * bit    4: Is response (=0)
+	 * bits 5-6: Sequence number
+	 * bit    7: Sequence duplicate flag
+	 */
+	uint8_t fields0;
+
+	/*
+	 * bits 0-4: Command version
+	 * bits 5-6: Reserved (set 0, ignore on read)
+	 * bit    7: Is data CRC present
+	 */
+	uint8_t fields1;
+
+	/* Command code (EC_CMD_*) */
+	uint16_t command;
+
+	/* Length of data which follows this header */
+	uint16_t data_len;
+
+	/* Reserved (set 0, ignore on read) */
+	uint8_t reserved;
+
+	/* CRC-8 of above fields, using x^8 + x^2 + x + 1 polynomial */
+	uint8_t header_crc;
+};
+
+/* Version 4 response from EC */
+struct __ec_align4 ec_host_response4 {
+	/*
+	 * bits 0-3: Structure version (=4)
+	 * bit    4: Is response (=1)
+	 * bits 5-6: Sequence number
+	 * bit    7: Sequence duplicate flag
+	 */
+	uint8_t fields0;
+
+	/*
+	 * bits 0-6: Reserved (set 0, ignore on read)
+	 * bit    7: Is data CRC present
+	 */
+	uint8_t fields1;
+
+	/* Result code (EC_RES_*) */
+	uint16_t result;
+
+	/* Length of data which follows this header */
+	uint16_t data_len;
+
+	/* Reserved (set 0, ignore on read) */
+	uint8_t reserved;
+
+	/* CRC-8 of above fields, using x^8 + x^2 + x + 1 polynomial */
+	uint8_t header_crc;
+};
+
+/* Fields in fields0 byte */
+#define EC_PACKET4_0_VERSION_MASK	0x0f
+#define EC_PACKET4_0_IS_RESPONSE_MASK	0x10
+#define EC_PACKET4_0_SEQ_NUM_SHIFT	5
+#define EC_PACKET4_0_SEQ_NUM_MASK	0x60
+#define EC_PACKET4_0_SEQ_DUP_MASK	0x80
+
+/* Fields in fields1 byte */
+#define EC_PACKET4_1_COMMAND_VERSION_MASK	0x1f  /* (request only) */
+#define EC_PACKET4_1_DATA_CRC_PRESENT_MASK	0x80
+
+/*****************************************************************************/
 /*
  * Notes on commands:
  *
