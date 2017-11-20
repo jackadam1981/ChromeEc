@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "4b0a229c_23d5fa39",
+        "filename": "board/nautilus/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-20T01:24:05Z",
+      "side": 1,
+      "message": "Thanks,unsigned int is correct.",
+      "parentUuid": "e9d171d8_849a5520",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "b2724b44e53f5346a5a0dc86dc86b7b475b90b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f8f4272_8412e1c6",
         "filename": "board/nautilus/led.c",
         "patchSetId": 5
@@ -59,6 +83,30 @@
       "writtenOn": "2017-11-20T00:53:36Z",
       "side": 1,
       "message": "Why is this initialized to LED_RED? It should already be taken care of by the switch case below.",
+      "range": {
+        "startLine": 73,
+        "startChar": 32,
+        "endLine": 73,
+        "endChar": 39
+      },
+      "revId": "b2724b44e53f5346a5a0dc86dc86b7b475b90b94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "822a7028_d07670ce",
+        "filename": "board/nautilus/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-20T01:24:05Z",
+      "side": 1,
+      "message": "I want to make sure that value is initialized.",
+      "parentUuid": "0f8f4272_8412e1c6",
       "range": {
         "startLine": 73,
         "startChar": 32,
