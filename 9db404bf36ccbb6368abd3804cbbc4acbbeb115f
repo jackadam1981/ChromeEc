@@ -70,6 +70,30 @@
       "revId": "9db404bf36ccbb6368abd3804cbbc4acbbeb115f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8ca7b92_a2923f9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-20T17:40:18Z",
+      "side": 1,
+      "message": "I had looked at some other boards that were using isl charger chip. But, IIRC, none of them define a custom battery_is_present function, like we have on poppy/soraka/eve. So, in that case, charger state machine will only look for hardware gpio and decide whether to provide precharge current. So, ideally, I think those boards might not even run into this issue.",
+      "parentUuid": "ba6a819a_b242fb40",
+      "range": {
+        "startLine": 13,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 49
+      },
+      "revId": "9db404bf36ccbb6368abd3804cbbc4acbbeb115f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
