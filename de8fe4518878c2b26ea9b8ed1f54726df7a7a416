@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58780509_18d4e02a",
+        "filename": "include/host_command.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-20T10:36:55Z",
+      "side": 1,
+      "message": "this is an event code (0\u003c\u003d \u003d\u003c63) not a uint64_t",
+      "range": {
+        "startLine": 160,
+        "startChar": 41,
+        "endLine": 160,
+        "endChar": 55
+      },
+      "revId": "de8fe4518878c2b26ea9b8ed1f54726df7a7a416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
