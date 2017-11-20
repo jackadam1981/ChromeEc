@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16f2949_8a039aa3",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-20T18:29:09Z",
+      "side": 1,
+      "message": "Can we just remove this (L53 and L54) for now?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 73
+      },
+      "revId": "6ca3b8d47fcdf16d7475b3c204265e6f135828da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
