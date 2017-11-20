@@ -22,6 +22,30 @@
       "revId": "9db404bf36ccbb6368abd3804cbbc4acbbeb115f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d3ab0a5_3d8f5ab3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-20T06:06:52Z",
+      "side": 1,
+      "message": "This will impact both Poppy and Soraka i.e. when battery is coming back from ship mode, we will have to provide precharge current to wake it up. I found that even Rohm charger requires something similar. So, it should basically be true for all charger chips.",
+      "parentUuid": "fa11b0b9_6d5b5895",
+      "range": {
+        "startLine": 13,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 49
+      },
+      "revId": "9db404bf36ccbb6368abd3804cbbc4acbbeb115f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
