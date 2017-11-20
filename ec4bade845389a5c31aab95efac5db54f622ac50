@@ -116,6 +116,30 @@
       "revId": "ec4bade845389a5c31aab95efac5db54f622ac50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ef98621_f7e66b07",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-20T00:43:15Z",
+      "side": 1,
+      "message": "We didn\u0027t use EC_HAVEN_RESET_ODL. To make sure, I create bug 69523332.",
+      "parentUuid": "b711c432_9e170163",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "ec4bade845389a5c31aab95efac5db54f622ac50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
