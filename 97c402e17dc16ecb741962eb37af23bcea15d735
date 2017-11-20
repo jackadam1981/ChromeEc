@@ -22,6 +22,30 @@
       "revId": "97c402e17dc16ecb741962eb37af23bcea15d735",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "181757ea_306974d8",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-20T01:05:44Z",
+      "side": 0,
+      "message": "Removed from https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/773320 and update code.",
+      "parentUuid": "dde05070_1b96b6ff",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 67
+      },
+      "revId": "97c402e17dc16ecb741962eb37af23bcea15d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
