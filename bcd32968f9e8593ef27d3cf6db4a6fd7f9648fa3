@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "30bd7fd2_97cd157f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4142,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-11-20T17:01:42Z",
+      "side": 1,
+      "message": "The combination of p-\u003eoverride_port and charge_supplier doesn\u0027t make sense if override_port !\u003d charge_port.\n\nSo, we have to let the command use charge_port as well (instead of p-\u003eoverride_port). Then, updating current \u0026 voltage and updating override_port become irrelevant. So, it doesn\u0027t make much sense to put these two cases in a single command.",
+      "parentUuid": "4d5609b5_93b01d6b",
+      "range": {
+        "startLine": 4142,
+        "startChar": 9,
+        "endLine": 4142,
+        "endChar": 17
+      },
+      "revId": "bcd32968f9e8593ef27d3cf6db4a6fd7f9648fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39152156_acd4a64a",
         "filename": "util/ectool.c",
         "patchSetId": 6
