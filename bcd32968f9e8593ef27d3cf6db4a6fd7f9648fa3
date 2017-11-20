@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f581292d_affcbadf",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-20T08:28:26Z",
+      "side": 1,
+      "message": "I thought we had decided earlier that the dedicated ports where\n[CONFIG_USB_PD_PORT_COUNT : CHARGE_PORT_COUNT - 1]\n(as defined in charge manager)\nthan if you have one dedicated charge port :\nyou can define it generically in  include/charge_manager.h\n#define DEDICATED_CHARGE_PORT CONFIG_USB_PD_PORT_COUNT\n\nIf you have more than 1, it seems this code is broken, so we might not care for now.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 31
+      },
+      "revId": "bcd32968f9e8593ef27d3cf6db4a6fd7f9648fa3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d5609b5_93b01d6b",
         "filename": "include/ec_commands.h",
         "patchSetId": 6
