@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d526305f_8d1b1833",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-20T00:56:56Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "d8a85e6f_fd06c99c",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "97c402e17dc16ecb741962eb37af23bcea15d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c085c60e_148a0bc2",
         "filename": "board/nautilus/board.h",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "42196c5f_55b6163d",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-20T00:56:56Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "c085c60e_148a0bc2",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 38
+      },
+      "revId": "97c402e17dc16ecb741962eb37af23bcea15d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3408c677_a9248282",
         "filename": "board/nautilus/board.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-11-16T19:04:17Z",
       "side": 1,
       "message": "Remove this too.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 2
+      },
+      "revId": "97c402e17dc16ecb741962eb37af23bcea15d735",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a983b3e2_636e33bd",
+        "filename": "board/nautilus/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-20T00:56:56Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "3408c677_a9248282",
       "range": {
         "startLine": 203,
         "startChar": 0,
