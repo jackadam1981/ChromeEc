@@ -4062,6 +4062,7 @@ struct __ec_align2 usb_chg_measures {
 	uint16_t current_lim;
 };
 
+#include "usb_pd.h"
 struct __ec_align4 ec_response_usb_pd_power_info {
 	uint8_t role;
 	uint8_t type;
@@ -4069,6 +4070,7 @@ struct __ec_align4 ec_response_usb_pd_power_info {
 	uint8_t reserved1;
 	struct usb_chg_measures meas;
 	uint32_t max_power;
+	uint32_t src_caps[PDO_MAX_OBJECTS];
 };
 
 /* Write USB-PD device FW */
