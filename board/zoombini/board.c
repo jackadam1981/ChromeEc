@@ -305,35 +305,70 @@ int board_set_active_charge_port(int port)
 	int is_real_port = (port >= 0 &&
 			    port < CONFIG_USB_PD_PORT_COUNT);
 	int i;
+	int rv;
 
 	if (!is_real_port && port != CHARGE_PORT_NONE)
 		return EC_ERROR_INVAL;
 
 	CPRINTS("New chg p%d", port);
 
-#ifdef BOARD_ZOOMBINI
 	if (port == CHARGE_PORT_NONE) {
 		/* Disable all ports. */
-		gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 1);
+		for (i = 0; i < sn5s330_cnt; i++) {
+			rv = sn5s330_pp_fet_enable(i, SN5S330_PP2, 0);
+			if (rv) {
+				CPRINTS("Disabling C%d PP2 FET failed.", i);
+				return rv;
+			}
+		}
+
+		return EC_SUCCESS;
+	}
+
+#ifdef BOARD_ZOOMBINI
+	/* TODO(aaboagye): Remove after next zoombini boards. */
+	if (port >= 1)
+		return EC_SUCCESS;
+#endif /* defined(BOARD_ZOOMBINI) */
+
+	/* Check if the port is sourcing VBUS. */
+	if (sn5s330_is_pp_fet_enabled(port, SN5S330_PP1, &i))
+		return EC_ERROR_UNKNOWN;
+
+	if (i) {
+		CPRINTF("Skip enable p%d", port);
+		return EC_ERROR_INVAL;
+	}
+
+	/* Enable requested charge port. */
+	if (sn5s330_pp_fet_enable(i, SN5S330_PP2, 1)) {
+		CPRINTS("Enabling C%d PP2 FET failed.");
+		return EC_ERROR_UNKNOWN;
+	}
+
+	return EC_SUCCESS;
+#if 0
+	if (port == CHARGE_PORT_NONE) {
+		/* Disable all ports. */
+		/* gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, 1); */
 		gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, 1);
 		gpio_set_level(GPIO_USB_C2_CHARGE_EN_L, 1);
 		return EC_SUCCESS;
 	}
 
 	/* Check if the port is sourcing VBUS. */
-	if (((port == 0) && gpio_get_level(GPIO_USB_C0_5V_EN)) ||
-	    ((port == 1) && gpio_get_level(GPIO_USB_C1_5V_EN)) ||
-	    ((port == 2) && gpio_get_level(GPIO_USB_C2_5V_EN))) {
+	if (sn5s330_is_pp_fet_enabled(port, SN5S330_PP1, &i))
+		return EC_ERROR_UNKNOWN;
+	if (i) {
 		CPRINTF("Skip enable p%d", port);
 		return EC_ERROR_INVAL;
 	}
 
 	/* Disable other charge ports and enable requested port. */
-	gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, port != 0);
+	/* gpio_set_level(GPIO_USB_C0_CHARGE_EN_L, port != 0); */
 	gpio_set_level(GPIO_USB_C1_CHARGE_EN_L, port != 1);
 	gpio_set_level(GPIO_USB_C2_CHARGE_EN_L, port != 2);
 
-#endif /* defined(BOARD_ZOOMBINI) */
 	/*
 	 * TODO(aaboagye): Remove manual charge enabling on P1 -
 	 *  switched to sn5s330
@@ -351,6 +386,7 @@ int board_set_active_charge_port(int port)
 	}
 
 	return EC_SUCCESS;
+#endif /* defined(BOARD_ZOOMBINI) */
 }
 
 void board_set_charge_limit(int port, int supplier, int charge_ma,

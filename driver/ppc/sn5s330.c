@@ -99,6 +99,49 @@ DECLARE_CONSOLE_COMMAND(ppc_dump, command_sn5s330_dump,
 			"<Type-C port>", "dump the SN5S330 regs");
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
 
+static int get_func_set3(uint8_t chip_idx, int *regval)
+{
+	int status;
+	int port;
+	int addr;
+
+	port = sn5s330_chips[chip_idx].i2c_port;
+	addr = sn5s330_chips[chip_idx].i2c_addr;
+
+	status = i2c_read8(port, addr, SN5S330_FUNC_SET3, regval);
+	if (status) {
+		CPRINTS("Failed to read FUNC_SET3!");
+		return status;
+	}
+
+	return EC_SUCCESS;
+}
+
+int sn5s330_is_pp_fet_enabled(uint8_t chip_idx, enum sn5s330_pp_idx pp,
+			     int *is_enabled)
+{
+	int pp_bit;
+	int status;
+	int regval;
+
+	if (pp == SN5S330_PP1) {
+		pp_bit = SN5S330_PP1_EN;
+	} else if (pp == SN5S330_PP2) {
+		pp_bit = SN5S330_PP2_EN;
+	} else {
+		CPRINTF("bad PP idx(%d)!", pp);
+		return EC_ERROR_INVAL;
+	}
+
+	status = get_func_set3(chip_idx, &regval);
+	if (status)
+		return status;
+
+	*is_enabled = !!(pp_bit & regval);
+
+	return EC_SUCCESS;
+}
+
 int sn5s330_pp_fet_enable(uint8_t chip_idx, enum sn5s330_pp_idx pp, int enable)
 {
 	int regval;
@@ -116,14 +159,14 @@ int sn5s330_pp_fet_enable(uint8_t chip_idx, enum sn5s330_pp_idx pp, int enable)
 		return EC_ERROR_INVAL;
 	}
 
-	port = sn5s330_chips[chip_idx].i2c_port;
-	addr = sn5s330_chips[chip_idx].i2c_addr;
-
-	status = i2c_read8(port, addr, SN5S330_FUNC_SET3, &regval);
+	status = get_func_set3(chip_idx, &regval);
 	if (status) {
 		CPRINTS("Failed to read FUNC_SET3!");
 		return status;
 	}
+
+	port = sn5s330_chips[chip_idx].i2c_port;
+	addr = sn5s330_chips[chip_idx].i2c_addr;
 
 	if (enable)
 		regval |= pp_bit;
@@ -390,4 +433,4 @@ static void sn5s330_init(void)
 			CPRINTS("C%d: SN5S330 init failed! (%d)", i, rv);
 	}
 }
-DECLARE_HOOK(HOOK_INIT, sn5s330_init, HOOK_PRIO_LAST);
+DECLARE_HOOK(HOOK_INIT, sn5s330_init, HOOK_PRIO_INIT_I2C + 1);
