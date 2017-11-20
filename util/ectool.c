@@ -4556,6 +4556,9 @@ int cmd_usb_pd(int argc, char *argv[])
 
 static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
 {
+	int mv, ma;
+	uint32_t *caps;
+
 	switch (r->role) {
 	case USB_PD_PORT_POWER_DISCONNECTED:
 		printf("Disconnected");
@@ -4618,6 +4621,17 @@ static void print_pd_power_info(struct ec_response_usb_pd_power_info *r)
 		r->meas.current_max);
 	if (r->max_power)
 		printf(" / %dmW", r->max_power / 1000);
+	printf("\n");
+
+	printf("Available Options:\n");
+	caps = r->src_caps;
+	while (*caps) {
+		mv = ((caps[0] >> 10) & 0x3FF) * 50;
+		ma = 10 * (caps[0] & 0x3FF);
+		printf("\t[%d mV / %d mA / %d mW]\n", mv, ma, mv*ma/1000);
+
+		caps++;
+	}
 	printf("\n");
 }
 
