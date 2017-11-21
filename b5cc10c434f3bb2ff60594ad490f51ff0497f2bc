@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f0038f6_55b711ac",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-21T08:22:43Z",
+      "side": 1,
+      "message": "Can we have a short description here of how the protocol work?\n\nI.e. at least explain where the CRC is (at the end of the data, IIUC?), and how it is computed (CRC8, with which polynomial)",
+      "revId": "b5cc10c434f3bb2ff60594ad490f51ff0497f2bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
