@@ -104,7 +104,7 @@ GPIO(USB2_OTG_ID,		PIN(A, 1), GPIO_ODR_LOW)			/* OTG ID */
 GPIO(USB2_OTG_VBUSSENSE,	PIN(9, 5), GPIO_OUT_LOW)			/* OTG VBUS Sense */
 
 /* LEDs (2 colors on each port) */
-GPIO(LED_YELLOW_C0,		PIN(2, 4), GPIO_OUT_LOW)			/* This is from rev5 */
+GPIO(SOC_TOP_SWAP_STRAP,	PIN(2, 4), GPIO_OUT_LOW)			/* This is from rev5 */
 GPIO(LED_YELLOW_C0_OLD,		PIN(3, 2), GPIO_OUT_LOW)			/* This is for rev1 to rev4 */
 GPIO(LED_WHITE_C0,		PIN(C, 6), GPIO_OUT_LOW)
 GPIO(LED_YELLOW_C1,		PIN(3, 1), GPIO_OUT_LOW)
