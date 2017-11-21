@@ -16,6 +16,24 @@
       "revId": "f2946e832aaeb6281d16899cebc3211c8757fc2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db28ce17_71047189",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-21T04:24:03Z",
+      "side": 1,
+      "message": "Because tries is post-incremented in the while loop above? So, the above loop would fail when tries \u003d\u003d CHARGER_INITIALIZED_TRIES and then post-increment sets tries to CHARGER_INITIALIZED_TRIES+1.",
+      "parentUuid": "00f0ee68_76c665fe",
+      "revId": "f2946e832aaeb6281d16899cebc3211c8757fc2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
