@@ -52,6 +52,24 @@
       "revId": "f2946e832aaeb6281d16899cebc3211c8757fc2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16e6ab70_52341199",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-21T17:37:02Z",
+      "side": 1,
+      "message": "That\u0027s true. I have updated the above loop in next patchset.",
+      "parentUuid": "f59882a6_e5edb9d7",
+      "revId": "f2946e832aaeb6281d16899cebc3211c8757fc2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
