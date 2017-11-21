@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cce24aa0_a272ec20",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2017-11-21T23:15:13Z",
+      "side": 1,
+      "message": "Why need this?",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "1fcb572508693a223367996cd10f475a131d698e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e907158b_9d970c21",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2017-11-21T23:15:13Z",
+      "side": 1,
+      "message": "Look like you can just keep either button_idx or num_buttons in this loop. Don\u0027t need both.",
+      "range": {
+        "startLine": 322,
+        "startChar": 10,
+        "endLine": 322,
+        "endChar": 20
+      },
+      "revId": "1fcb572508693a223367996cd10f475a131d698e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff38cf10_9fe4c244",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2017-11-21T23:15:13Z",
+      "side": 1,
+      "message": "Also need a check: button_idx \u003e\u003d 3 (the size of button[])?\n\nIf the command is \"button vup vup vup vup\", any error?",
+      "range": {
+        "startLine": 347,
+        "startChar": 40,
+        "endLine": 347,
+        "endChar": 41
+      },
+      "revId": "1fcb572508693a223367996cd10f475a131d698e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
