@@ -34,6 +34,24 @@
       "revId": "f2946e832aaeb6281d16899cebc3211c8757fc2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f59882a6_e5edb9d7",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-11-21T16:41:43Z",
+      "side": 1,
+      "message": "Ya. I was actually thinking about that this morning. That\u0027s subtle behavior to me relying on post increment when the condition fails. Anyway, carry on.",
+      "parentUuid": "db28ce17_71047189",
+      "revId": "f2946e832aaeb6281d16899cebc3211c8757fc2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
