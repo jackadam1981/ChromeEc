@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f3ef8dff_4e510285",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-21T01:13:45Z",
+      "side": 1,
+      "message": "I copied this from zoombini, so perhaps it could be removed from both.\nI\u0027m also not sure yet that I have the right PD_MAX_POWER_MW setting for Grunt.",
+      "parentUuid": "6e77b9a0_6fb343f4",
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac8da1a7_e3f2c629",
         "filename": "board/grunt/board.h",
         "patchSetId": 2
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "030faf54_670d94dc",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-21T01:13:45Z",
+      "side": 1,
+      "message": "I\u0027m curious how zoombini solves this without using ADC. Not sure whether Grunt can do the same.",
+      "parentUuid": "c676e4e0_213466d6",
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c3dcf846_79335070",
         "filename": "board/grunt/usb_pd_policy.c",
         "patchSetId": 2
@@ -64,6 +100,24 @@
       "writtenOn": "2017-11-21T00:23:06Z",
       "side": 1,
       "message": "We have separate GPIOs for that on poppy.",
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92472d58_d15dc734",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-21T01:13:45Z",
+      "side": 1,
+      "message": "Yes, those GPIOs don\u0027t exist on Grunt. I believe I need to use the SN5S330 to get the same effect.",
+      "parentUuid": "c3dcf846_79335070",
       "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
