@@ -16,6 +16,47 @@
       "revId": "b889dfb156b0c399e9f296c4f9efc8dc541bc34d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f2dc713_f62e2eac",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 997,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-21T05:25:25Z",
+      "side": 1,
+      "message": "Yes, that sounds correct.",
+      "parentUuid": "a004f48d_d3a3fbed",
+      "revId": "b889dfb156b0c399e9f296c4f9efc8dc541bc34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b9d94b_24a04531",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-21T05:25:25Z",
+      "side": 1,
+      "message": "This looks equivalent to (data \u003e\u003e 12).",
+      "range": {
+        "startLine": 149,
+        "startChar": 15,
+        "endLine": 149,
+        "endChar": 36
+      },
+      "revId": "b889dfb156b0c399e9f296c4f9efc8dc541bc34d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
