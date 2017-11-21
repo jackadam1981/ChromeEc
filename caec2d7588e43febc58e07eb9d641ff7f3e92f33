@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcbb7386_160c3558",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-21T17:30:31Z",
+      "side": 1,
+      "message": "It would be good to comment why we do this (to avoid 64-bit shifts which require a library function...)",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "caec2d7588e43febc58e07eb9d641ff7f3e92f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce99d0e6_e5d76597",
+        "filename": "include/config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-21T17:30:31Z",
+      "side": 1,
+      "message": "ULL?\n\nDoes this depend on CONFIG_HOST_EVENT64?",
+      "revId": "caec2d7588e43febc58e07eb9d641ff7f3e92f33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
