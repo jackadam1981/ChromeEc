@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e77b9a0_6fb343f4",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-21T00:23:06Z",
+      "side": 1,
+      "message": "You already have:\n#define PD_MAX_POWER_MW                 45000\n\nWhich should naturally protect you against \u003e18V \u0026\u0026 \u003e 2.7A.",
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac8da1a7_e3f2c629",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-21T00:23:06Z",
+      "side": 1,
+      "message": "nit: Multiline comment style is \n\n/*\n * TODO\n * blah\n */",
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c676e4e0_213466d6",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-21T00:23:06Z",
+      "side": 1,
+      "message": "You probably want to add that to an ADC pin...",
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3dcf846_79335070",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-21T00:23:06Z",
+      "side": 1,
+      "message": "We have separate GPIOs for that on poppy.",
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
