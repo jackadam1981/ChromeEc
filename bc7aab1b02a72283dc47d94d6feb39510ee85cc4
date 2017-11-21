@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "f0de92ce_f33f8c23",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1525,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-21T10:19:04Z",
+      "side": 1,
+      "message": "this decoding is not always accurate,\nso better no decoding than an inaccurate one.",
+      "range": {
+        "startLine": 1523,
+        "startChar": 0,
+        "endLine": 1525,
+        "endChar": 31
+      },
+      "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d7f1db0_b7d921bc",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3880,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-21T10:19:04Z",
+      "side": 1,
+      "message": "ditto about the decoding",
+      "range": {
+        "startLine": 3877,
+        "startChar": 0,
+        "endLine": 3880,
+        "endChar": 24
+      },
+      "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a496d42_f09f3a4a",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -22,6 +68,52 @@
       "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "181e2247_ef2f62a0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4073,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-21T10:19:04Z",
+      "side": 1,
+      "message": "what is the end goal of this ?\n\nFor machines running in normal mode, it\u0027s not really helpful as the user cannot run \u0027ectool usbpdpower\u0027, for machines in dev mode, now drinkcat has wired a mechanism to dump the EC log maybe there are cheaper alternatives.",
+      "range": {
+        "startLine": 4073,
+        "startChar": 0,
+        "endLine": 4073,
+        "endChar": 36
+      },
+      "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4606668_e2bafeb3",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4633,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-21T10:19:04Z",
+      "side": 1,
+      "message": "so you are dumping only the charging port.",
+      "range": {
+        "startLine": 4625,
+        "startChar": 0,
+        "endLine": 4633,
+        "endChar": 8
+      },
+      "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
