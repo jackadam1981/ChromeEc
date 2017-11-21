@@ -511,6 +511,8 @@ int touchpad_update_write(int offset, int size, const uint8_t *data)
 /* Debugging mode. */
 
 /* Allowed debug commands. We only store a hash of the allowed commands. */
+#define MAX_BYTES_IN_ONE_READING 254
+
 #define TOUCHPAD_ELAN_DEBUG_CMD_LENGTH 50
 #define TOUCHPAD_ELAN_DEBUG_NUM_CMD 2
 
@@ -558,9 +560,9 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		unsigned int write_length = param[2];
 		unsigned int read_length =
 			((unsigned int)param[3] << 8) | param[4];
-		int i;
-		int match;
-		int rv;
+		int i, match, rv;
+		int complete_bytes; /* Number of bytes read so far */
+		int xfer_flag;
 
 		if (offset < 5 || write_length == 0 ||
 		    (offset + write_length) >= TOUCHPAD_ELAN_DEBUG_CMD_LENGTH)
@@ -601,10 +603,30 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		}
 
 		i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
-		rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT,
-			      CONFIG_TOUCHPAD_I2C_ADDR,
-			      &param[offset], write_length,
-			      buffer, read_length, I2C_XFER_SINGLE);
+		/*
+		 * Because I2C_XFER_SINGLE might limit the reading to be less
+		 * than 255 bytes (for example, register design of STM32_I2C_CR2
+		 * in i2c-stm32f0.c), we hold the STOP bits for reading request
+		 * larger than 255 bytes.
+		 */
+		complete_bytes = 0;
+		xfer_flag = I2C_XFER_START;
+		do {
+			int bytes_to_read = read_length - complete_bytes;
+			if (bytes_to_read > MAX_BYTES_IN_ONE_READING)
+				bytes_to_read = MAX_BYTES_IN_ONE_READING;
+			else
+				xfer_flag |= I2C_XFER_STOP;
+			rv = i2c_xfer(
+				CONFIG_TOUCHPAD_I2C_PORT,
+				CONFIG_TOUCHPAD_I2C_ADDR,
+				complete_bytes ? NULL : &param[offset],
+				complete_bytes ? 0 : write_length,
+				buffer + complete_bytes,
+				bytes_to_read, xfer_flag);
+			complete_bytes += bytes_to_read;
+			xfer_flag = 0;
+		} while (complete_bytes < read_length && !rv);
 		i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
 
 		if (rv)
