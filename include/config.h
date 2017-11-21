@@ -1619,6 +1619,11 @@
 #undef CONFIG_ISH_30
 #undef CONFIG_ISH_40
 
+#undef CONFI_ISH_I2C_PORT0_SPEED
+#undef CONFI_ISH_I2C_PORT1_SPEED
+#undef CONFI_ISH_I2C_PORT2_SPEED
+
+/*****************************************************************************/
 /* Current/Power monitor */
 
 /*
