@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "431c2d91_d961fb29",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50974ae9_693debdb",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 0
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9301a8f1_3a605a9e",
         "filename": "board/caroline/board.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a9237d9_a6a2e13d",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9301a8f1_3a605a9e",
+      "range": {
+        "startLine": 704,
+        "startChar": 1,
+        "endLine": 765,
+        "endChar": 1
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1205378b_473d57a0",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b182b04_4b1ec239",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 22
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be5eeb0c_d95f302d",
         "filename": "driver/kbl_max14521.c",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c06060c_667edc75",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "\u003e why do we have only 4 steps, are the other values between E0 and FD working ?\n\nI have changed to use full range.",
+      "parentUuid": "be5eeb0c_d95f302d",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "5f22f7f2_fc38e770",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47d78e4d_96d6c324",
+      "range": {
+        "startLine": 49,
+        "startChar": 47,
+        "endLine": 49,
+        "endChar": 51
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ad627f4_574f4992",
         "filename": "driver/kbl_max14521.c",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b605d680_c234cf85",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ad627f4_574f4992",
+      "range": {
+        "startLine": 61,
+        "startChar": 48,
+        "endLine": 61,
+        "endChar": 52
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +330,54 @@
     },
     {
       "key": {
+        "uuid": "ae0c7d25_6fe61a26",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfe47f2d_377af89d",
+      "range": {
+        "startLine": 80,
+        "startChar": 46,
+        "endLine": 80,
+        "endChar": 64
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "527d5f65_c5d6a879",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3be8ce7b_7234c2fb",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8a3a6f2_fdb50781",
         "filename": "driver/kbl_max14521.c",
         "patchSetId": 3
@@ -206,6 +398,30 @@
       "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fabf2b5_eaa72cce",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "\u003e Why are you updating both registers ?\n\u003e according to the datasheet, updating  MAX14521_REG_EL_UPDATE is equivalent to writing all 4 MAX14521_REG_EL1_T_V / MAX14521_REG_EL2_T_V / MAX14521_REG_EL3_T_V / MAX14521_REG_EL4_T_V\n\nMAX14521_REG_EL_UPDATE must be written to apply output in MAX14521_REG_ELx_T_V.",
+      "parentUuid": "d8a3a6f2_fdb50781",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 68
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "77cbf06d_bf70b128",
+        "filename": "driver/kbl_max14521.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ad7e496_c0d78f9a",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "388631be_e2046d1a",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -252,6 +492,30 @@
       "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "243870b3_504af232",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-21T01:36:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "388631be_e2046d1a",
+      "range": {
+        "startLine": 1319,
+        "startChar": 0,
+        "endLine": 1332,
+        "endChar": 2
+      },
+      "revId": "53fbd0be61dd5f8eae42770168e62ff1ff95a9dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
