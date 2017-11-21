@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a496d42_f09f3a4a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4065,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-21T05:17:40Z",
+      "side": 1,
+      "message": "We can\u0027t include this header here, this file is used externally by other projects that use host commands, eg. coreboot and kernel.",
+      "range": {
+        "startLine": 4065,
+        "startChar": 0,
+        "endLine": 4065,
+        "endChar": 19
+      },
+      "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
