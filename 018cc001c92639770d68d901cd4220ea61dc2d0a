@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8590c86e_dac76904",
+        "filename": "common/usb_i2c.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-21T06:48:34Z",
+      "side": 1,
+      "message": "Looks like we will need that logic in more than one place (Elan touchpad debugging interface will also require it).\n\nCan you move that code to the core (i.e. move the logic to i2c-stm32f0.c)?",
+      "revId": "018cc001c92639770d68d901cd4220ea61dc2d0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
