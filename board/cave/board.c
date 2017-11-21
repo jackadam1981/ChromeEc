@@ -225,12 +225,6 @@ struct ec_thermal_config thermal_params[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
-/* ALS instances. Must be in same order as enum als_id. */
-struct als_t als[] = {
-	{"TI", opt3001_init, opt3001_read_lux, 5},
-};
-BUILD_ASSERT(ARRAY_SIZE(als) == ALS_COUNT);
-
 const struct button_config buttons[CONFIG_BUTTON_COUNT] = {
 	{"Volume Down", KEYBOARD_BUTTON_VOLUME_DOWN, GPIO_VOLUME_DOWN_L,
 	 30 * MSEC, 0},
@@ -525,6 +519,10 @@ static struct mutex g_base_mutex;
 /* KX022 private data */
 struct kionix_accel_data g_kx022_data;
 
+struct opt3001_drv_data_t g_opt3001_data = {
+	.attenuation = 5,
+};
+
 const matrix_3x3_t rot_base_accel = {
 	{ FLOAT_TO_FP(-1), 0, 0 },
 	{ 0, FLOAT_TO_FP(1), 0  },
@@ -651,9 +649,50 @@ struct motion_sensor_t motion_sensors[] = {
 		 },
 	 },
 	},
+	[LID_ALS] = {
+	 .name = "Light",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_OPT3001,
+	 .type = MOTIONSENSE_TYPE_LIGHT,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &opt3001_drv,
+	 .drv_data = &g_opt3001_data,
+	 .addr = OPT3001_I2C_ADDR1,
+	 .rot_standard_ref = NULL,
+	 .default_range = OPT3001_RANGE_AUTOMATIC_FULL_SCALE,
+	 .config = {
+		/* AP: by default shutdown all sensors */
+		[SENSOR_CONFIG_AP] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 1000,
+			.ec_rate = 0,
+		},
+		/* Sensor off in S3/S5 */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+		/* Sensor off in S3/S5 */
+		[SENSOR_CONFIG_EC_S5] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+	 },
+	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #endif /* defined(HAS_TASK_MOTIONSENSE) */
+
+
+/* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */
+const struct motion_sensor_t *motion_als_sensors[] = {
+	&motion_sensors[LID_ALS],
+};
+BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
+
 
 int board_get_version(void)
 {

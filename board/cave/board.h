@@ -239,12 +239,13 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-/* Light sensors */
-enum als_id {
-	ALS_OPT3001 = 0,
-
-	ALS_COUNT
-};
+/*
+ *  * For backward compatibility, to report ALS via ACPI,
+ *   * Define the number of ALS sensors: motion_sensor copy the data to the ALS
+ *    * memmap region.
+ *     */
+#define CONFIG_ALS
+#define ALS_COUNT 1
 
 /*
  * Motion sensors:
@@ -256,6 +257,7 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	BASE_ACCEL,
 	BASE_GYRO,
+	LID_ALS,
 };
 
 enum pwm_channel {
@@ -297,7 +299,7 @@ void board_rtc_reset(void);
 int board_get_device_orientation(void);
 
 /* Sensors without hardware FIFO are in forced mode */
-#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
+#define CONFIG_ACCEL_FORCE_MODE_MASK ((1 << LID_ACCEL) || (1 << LID_ALS))
 
 #endif /* !__ASSEMBLER__ */
 
