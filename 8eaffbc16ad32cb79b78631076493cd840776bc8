@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "48fce099_d1bfc357",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-22T05:54:03Z",
+      "side": 1,
+      "message": "Yes, we have accelerometer on board.",
+      "parentUuid": "4b9839d3_8942710c",
+      "range": {
+        "startLine": 550,
+        "startChar": 9,
+        "endLine": 550,
+        "endChar": 19
+      },
+      "revId": "8eaffbc16ad32cb79b78631076493cd840776bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69b5803a_54b92a58",
         "filename": "board/nautilus/board.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-22T05:46:36Z",
       "side": 1,
       "message": "Same as above?",
+      "range": {
+        "startLine": 588,
+        "startChar": 9,
+        "endLine": 588,
+        "endChar": 18
+      },
+      "revId": "8eaffbc16ad32cb79b78631076493cd840776bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4b6fb50_683fceb3",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-22T05:54:03Z",
+      "side": 1,
+      "message": "Yes, we have gyro on board.",
+      "parentUuid": "69b5803a_54b92a58",
       "range": {
         "startLine": 588,
         "startChar": 9,
