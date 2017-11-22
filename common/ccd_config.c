@@ -1153,3 +1153,29 @@ static enum vendor_cmd_rc ccd_password(enum vendor_cmd_cc code,
 	return VENDOR_RC_SUCCESS;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_CCD_PASSWORD, ccd_password);
+
+
+static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
+					  void *buf,
+					  size_t input_size,
+					  size_t *response_size)
+{
+	int rv;
+
+	ccd_set_state(CCD_STATE_OPENED);
+
+	rv = ccd_reset_config(0);
+
+	/* Let's set state to 'locked' no matter what. */
+	ccd_set_state(CCD_STATE_LOCKED);
+
+	if (rv != EC_SUCCESS) {
+		((uint8_t *)buf)[0] = (uint8_t)rv;
+		*response_size = 1;
+		return VENDOR_RC_INTERNAL_ERROR;
+	}
+
+	*response_size = 0;
+	return VENDOR_RC_SUCCESS;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_DISABLE_RMA, ccd_disable_rma);
