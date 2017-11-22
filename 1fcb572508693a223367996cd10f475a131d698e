@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "25b0b726_185b47ce",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:21:04Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this live inside simulated_button_pressed()",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 28
+      },
+      "revId": "1fcb572508693a223367996cd10f475a131d698e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cce24aa0_a272ec20",
         "filename": "common/button.c",
         "patchSetId": 1
@@ -22,6 +45,76 @@
       "revId": "1fcb572508693a223367996cd10f475a131d698e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dac6ee7_2f9b0b47",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:21:04Z",
+      "side": 1,
+      "message": "Can you please add a comment about what this function is doing?",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 46
+      },
+      "revId": "1fcb572508693a223367996cd10f475a131d698e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "070bd917_a43359ba",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:21:04Z",
+      "side": 1,
+      "message": "Yeah, this should not be required.",
+      "parentUuid": "cce24aa0_a272ec20",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "1fcb572508693a223367996cd10f475a131d698e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af4a6984_a17b17f1",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:21:04Z",
+      "side": 1,
+      "message": "I think this loop can be formatted as:\n\nint button;\nuint32_t button_mask \u003d 0;\n\nfor (argv_idx \u003d 1; argv_idx \u003c argc; argv_idx++) {\n    if (!strcasecmp(argv[argv_idx], \"vup\"))\n             button \u003d button_present(KEYBOARD_BUTTON_VOLUME_UP);\n    else if (!strcasecmp(argv[1], \"vdown\"))\n             button \u003d button_present(KEYBOARD_BUTTON_VOLUME_DOWN);\n    else if (!strcasecmp(argv[1], \"rec\"))\n             button \u003d button_present(KEYBOARD_BUTTON_RECOVERY);\n    else {\n         /* If last parameter check if it is an integer. */\n         if (argv_idx \u003d\u003d argc - 1) {\n                press_ms \u003d strtoi(argv[argv_idx], \u0026e, 0);\n                /* If integer, break out of the loop. */\n                if (!*e)\n                    break;\n         }\n         button \u003d BUTTON_COUNT;\n    }\n\n    if (button \u003d\u003d BUTTON_COUNT)\n          return EC_ERROR_PARAM1 + argv_idx - 1;\n\n    button_mask |\u003d (1 \u003c\u003c button);\n}\n\nif (!button_mask)\n    return EC_SUCCESS;\n\nfor (button_idx \u003d 0; button_idx \u003c BUTTON_COUNT; button_idx++) {\n      if (button_mask \u0026 (1 \u003c\u003c button_idx))\n            button_interrupt_simulate(button_idx);\n}\n...",
+      "range": {
+        "startLine": 318,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 4
+      },
+      "revId": "1fcb572508693a223367996cd10f475a131d698e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
