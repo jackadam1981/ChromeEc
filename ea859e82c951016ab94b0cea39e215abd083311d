@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2eaad3f5_ab1d5381",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:51:27Z",
+      "side": 1,
+      "message": "host_event_t",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 9
+      },
+      "revId": "ea859e82c951016ab94b0cea39e215abd083311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "057c7c56_16203575",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:51:27Z",
+      "side": 1,
+      "message": "host_event_t",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 9
+      },
+      "revId": "ea859e82c951016ab94b0cea39e215abd083311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b6cad35_f9f09a0a",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:51:27Z",
+      "side": 1,
+      "message": "host_event_t",
+      "revId": "ea859e82c951016ab94b0cea39e215abd083311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f682d66_3ec18fd8",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:51:27Z",
+      "side": 1,
+      "message": "host_event_t mask_value \u003d (host_event_t)(p-\u003evalue);\n\nAnd then use mask_value as a parameter to different calls below. It will ensure that the correct size of host events is used.",
+      "revId": "ea859e82c951016ab94b0cea39e215abd083311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "418e706c_9e1a2782",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:51:27Z",
+      "side": 1,
+      "message": "Same comment as above:\nhost_event_t mask_value \u003d (host_event_t)(p-\u003evalue);",
+      "revId": "ea859e82c951016ab94b0cea39e215abd083311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18b67f6f_cc5bcd6d",
+        "filename": "common/host_event_commands.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:51:27Z",
+      "side": 1,
+      "message": "host_event_t",
+      "range": {
+        "startLine": 707,
+        "startChar": 47,
+        "endLine": 707,
+        "endChar": 55
+      },
+      "revId": "ea859e82c951016ab94b0cea39e215abd083311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "239c818f_1645ffe8",
+        "filename": "include/host_command.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:51:27Z",
+      "side": 1,
+      "message": "Why is this needed in .h file? I think you can move it to power/common.c where it is used.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 50
+      },
+      "revId": "ea859e82c951016ab94b0cea39e215abd083311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01209ca8_2412ec5e",
+        "filename": "include/host_command.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:51:27Z",
+      "side": 1,
+      "message": "host_event_t",
+      "range": {
+        "startLine": 201,
+        "startChar": 47,
+        "endLine": 201,
+        "endChar": 55
+      },
+      "revId": "ea859e82c951016ab94b0cea39e215abd083311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0938fa26_c4df303a",
+        "filename": "power/common.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-22T18:51:27Z",
+      "side": 1,
+      "message": "host_event_t",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 9
+      },
+      "revId": "ea859e82c951016ab94b0cea39e215abd083311d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
