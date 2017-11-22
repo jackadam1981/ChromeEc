@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9ea0dd2_7605bfb7",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-22T11:22:40Z",
+      "side": 1,
+      "message": "I think we can move this to motion sensor part",
+      "revId": "b29f2cca762edc3b6b365a22d9d8590b0ecdf88c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96007210_905c9f6c",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-22T11:22:40Z",
+      "side": 1,
+      "message": "we need to change int to unsigned int, otherwise negative lux values will be returned in some cases.",
+      "revId": "b29f2cca762edc3b6b365a22d9d8590b0ecdf88c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "921f697c_375c52ee",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-22T11:22:40Z",
+      "side": 1,
+      "message": "function can be common code with motion_sensor if we add i2c_addr as function parameter.",
+      "revId": "b29f2cca762edc3b6b365a22d9d8590b0ecdf88c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a57b219_120bcc74",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-22T11:22:40Z",
+      "side": 1,
+      "message": "function can be common code with motion_sensor if we add i2c_addr as function parameter.",
+      "revId": "b29f2cca762edc3b6b365a22d9d8590b0ecdf88c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f30e2d75_ff1cb946",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-22T11:22:40Z",
+      "side": 1,
+      "message": "macro typo",
+      "revId": "b29f2cca762edc3b6b365a22d9d8590b0ecdf88c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f9c1fd3_535a4f3d",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-22T11:22:40Z",
+      "side": 1,
+      "message": "common code as said earlier.",
+      "revId": "b29f2cca762edc3b6b365a22d9d8590b0ecdf88c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "268acdf8_f52b4ffd",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-22T11:22:40Z",
+      "side": 1,
+      "message": "common code.",
+      "revId": "b29f2cca762edc3b6b365a22d9d8590b0ecdf88c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
