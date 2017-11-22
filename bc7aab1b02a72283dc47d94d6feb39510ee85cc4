@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81881574_a2d0b9d2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1525,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-11-22T02:34:21Z",
+      "side": 1,
+      "message": "This one can be removed.",
+      "parentUuid": "f0de92ce_f33f8c23",
+      "range": {
+        "startLine": 1523,
+        "startChar": 0,
+        "endLine": 1525,
+        "endChar": 31
+      },
+      "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d7f1db0_b7d921bc",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-21T10:19:04Z",
       "side": 1,
       "message": "ditto about the decoding",
+      "range": {
+        "startLine": 3877,
+        "startChar": 0,
+        "endLine": 3880,
+        "endChar": 24
+      },
+      "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51908ad7_e0297ea7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3880,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-11-22T02:34:21Z",
+      "side": 1,
+      "message": "Is there any way or bit to make it accurate ?\nI\u0027d like to keep one for console command.",
+      "parentUuid": "4d7f1db0_b7d921bc",
       "range": {
         "startLine": 3877,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7617795a_ec85809b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4065,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-11-22T02:34:21Z",
+      "side": 1,
+      "message": "How about defining PDO_MAX_OBJECTS here ?",
+      "parentUuid": "5a496d42_f09f3a4a",
+      "range": {
+        "startLine": 4065,
+        "startChar": 0,
+        "endLine": 4065,
+        "endChar": 19
+      },
+      "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "181e2247_ef2f62a0",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e8db14d4_26436a9f",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4073,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-11-22T02:34:21Z",
+      "side": 1,
+      "message": "It\u0027s only needed when debug, but I don\u0027t know how to make it gone when a machine is not accessible for ectool.",
+      "parentUuid": "181e2247_ef2f62a0",
+      "range": {
+        "startLine": 4073,
+        "startChar": 0,
+        "endLine": 4073,
+        "endChar": 36
+      },
+      "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4606668_e2bafeb3",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2017-11-21T10:19:04Z",
       "side": 1,
       "message": "so you are dumping only the charging port.",
+      "range": {
+        "startLine": 4625,
+        "startChar": 0,
+        "endLine": 4633,
+        "endChar": 8
+      },
+      "revId": "bc7aab1b02a72283dc47d94d6feb39510ee85cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d67ba20_e725fa1a",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4633,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2017-11-22T02:34:21Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll update this if the information is not enough.",
+      "parentUuid": "f4606668_e2bafeb3",
       "range": {
         "startLine": 4625,
         "startChar": 0,
