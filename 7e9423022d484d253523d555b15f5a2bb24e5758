@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6acea037_f94e30fc",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-22T18:26:51Z",
+      "side": 1,
+      "message": "See steps below.",
+      "parentUuid": "f2e92864_11e40026",
+      "range": {
+        "startLine": 826,
+        "startChar": 41,
+        "endLine": 826,
+        "endChar": 42
+      },
+      "revId": "7e9423022d484d253523d555b15f5a2bb24e5758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4b3d3ee_1ace3c8b",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2017-11-22T07:05:09Z",
       "side": 1,
       "message": "Does this include CRC?",
+      "revId": "7e9423022d484d253523d555b15f5a2bb24e5758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ecbe845_8112a96d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-22T18:26:51Z",
+      "side": 1,
+      "message": "No; see lines 822-824.",
+      "parentUuid": "b4b3d3ee_1ace3c8b",
       "revId": "7e9423022d484d253523d555b15f5a2bb24e5758",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
