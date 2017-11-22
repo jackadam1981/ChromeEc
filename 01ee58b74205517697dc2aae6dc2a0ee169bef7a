@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eb2537ab_a46c1072",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-22T00:25:08Z",
+      "side": 1,
+      "message": "okay.",
+      "parentUuid": "d0e6dd8a_37e0dfba",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "01ee58b74205517697dc2aae6dc2a0ee169bef7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "785427fc_d684bfa0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-21T18:47:17Z",
       "side": 1,
       "message": "And then you don\u0027t need this.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "01ee58b74205517697dc2aae6dc2a0ee169bef7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ebc9f09_e7b79fe1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-22T00:25:08Z",
+      "side": 1,
+      "message": "okay.",
+      "parentUuid": "785427fc_d684bfa0",
       "range": {
         "startLine": 9,
         "startChar": 0,
