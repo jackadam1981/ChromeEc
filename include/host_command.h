@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
+enum power_state;
 
 /* Args for host command handler */
 struct host_cmd_handler_args {
@@ -182,6 +183,31 @@ host_event_t host_get_events(void);
  * @return true if <event> is set or false otherwise
  */
 int host_is_event_set(enum host_event_code event);
+
+#ifdef CONFIG_LPC
+
+/* If host doesn't program s0ix lazy wake mask, use default s0ix mask */
+#define DEFAULT_WAKE_MASK_S0IX  (EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) | \
+				EC_HOST_EVENT_MASK(EC_HOST_EVENT_MODE_CHANGE))
+/*
+ * Get lazy wake masks for the sleep state provided
+ *
+ * @param state Sleep state
+ * @param mask  Lazy wake mask.
+ *
+ * @return EC_SUCCESS for success and EC_ERROR_INVAL for error
+ */
+
+int get_lazy_wake_mask(enum power_state state, uint64_t *mask);
+
+/*
+ * Check if active wake mask set by host
+ *
+ *
+ * @return 1 if active wake mask set by host else return 0
+ */
+uint8_t lpc_is_active_wm_set_by_host(void);
+#endif
 #endif
 
 /**
