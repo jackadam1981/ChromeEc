@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d187792_d9bf0225",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-23T05:06:15Z",
+      "side": 1,
+      "message": "Scott, you might want to pull this CL into coral branch since it is expected to help with power consumption in S0ix.",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "0163e1dcf109f255751c4e3e16d36e043e1fe1c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74118340_66e8add5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-23T05:06:15Z",
+      "side": 1,
+      "message": "Ruben, can you please verify if this CL solves the polling timeout issue you are seeing on Soraka?",
+      "revId": "0163e1dcf109f255751c4e3e16d36e043e1fe1c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
