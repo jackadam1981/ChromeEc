@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cdf88da_296d5959",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-23T05:15:17Z",
+      "side": 1,
+      "message": "This change looks pretty harmless to me. We configure PMIC_INT_L as an input, but anyways never use it.",
+      "range": {
+        "startLine": 56,
+        "startChar": 42,
+        "endLine": 56,
+        "endChar": 54
+      },
+      "revId": "7ea29ae6f94827992a2e9069bc2f42752d9e4936",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
