@@ -22,6 +22,30 @@
       "revId": "ab42d5ed11ceba33a40fbfbadf0a27f76c4185fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f91c972_ff37f1f7",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-23T07:27:24Z",
+      "side": 1,
+      "message": "It\u0027s better to match the name in the schematics.\n\nWe can add a note as a comment, though.",
+      "parentUuid": "340df9f3_2976ee75",
+      "range": {
+        "startLine": 54,
+        "startChar": 5,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "ab42d5ed11ceba33a40fbfbadf0a27f76c4185fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
