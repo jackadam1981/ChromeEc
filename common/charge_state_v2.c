@@ -657,7 +657,7 @@ void charger_task(void *u)
 
 #ifdef CONFIG_SB_FIRMWARE_UPDATE
 		if (sb_fw_update_in_progress()) {
-			task_wait_event(CHARGE_MAX_SLEEP_USEC);
+			task_wait_event(CHARGE_SBFW_UPDATE_SLEEP_USEC);
 			continue;
 		}
 #endif
