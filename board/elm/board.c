@@ -427,8 +427,11 @@ static void board_extpower(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 
-static void board_spi_enable(void)
+void board_spi_enable(void)
 {
+	gpio_set_level(GPIO_SPI2_NSS, 1);
+	gpio_set_level(GPIO_SPI2_NSS_DB, 1);
+
 	/* Enable SPI for KX022 */
 	gpio_config_module(MODULE_SPI_MASTER, 1);
 
@@ -471,7 +474,6 @@ static void board_chipset_pre_init(void)
 	/* Enable level shift of AC_OK when power on */
 	board_extpower_buffer_to_soc();
 
-	board_spi_enable();
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_pre_init, HOOK_PRIO_DEFAULT);
 

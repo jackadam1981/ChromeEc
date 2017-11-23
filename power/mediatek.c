@@ -690,6 +690,7 @@ enum power_state power_handle_state(enum power_state state)
 		power_on();
 		if (power_wait_signals(IN_POWER_GOOD) == EC_SUCCESS) {
 			CPRINTS("POWER_GOOD seen");
+			board_spi_enable();
 			power_button_was_pressed = 0;
 			return POWER_S3;
 		} else {

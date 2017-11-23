@@ -260,6 +260,9 @@ void board_set_ap_reset(int asserted);
 
 void board_reset_sensors(void);
 
+void board_spi_enable(void);
+
+
 #endif  /* !__ASSEMBLER__ */
 
 #endif  /* __CROS_EC_BOARD_H */
