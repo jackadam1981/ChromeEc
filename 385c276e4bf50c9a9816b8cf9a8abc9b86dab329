@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "486ab902_b98872ba",
+        "filename": "board/glkrvp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2017-11-23T08:50:46Z",
+      "side": 0,
+      "message": "Hi Vijay:\nThe build error issue was already fixed in CL 756535.(https://chromium-review.googlesource.com/#/c/chromiumos/platform/ec/+/756535/) You needn\u0027t remove lto now.",
+      "revId": "385c276e4bf50c9a9816b8cf9a8abc9b86dab329",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
