@@ -39,6 +39,29 @@
       "revId": "0163e1dcf109f255751c4e3e16d36e043e1fe1c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9079c328_e4cb3f2e",
+        "filename": "include/chipset.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-23T05:13:38Z",
+      "side": 1,
+      "message": "nit, add a comma at the end, so next time we add an entry we don\u0027t need to change this line.",
+      "range": {
+        "startLine": 39,
+        "startChar": 30,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "0163e1dcf109f255751c4e3e16d36e043e1fe1c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
