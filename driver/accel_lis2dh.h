@@ -140,19 +140,21 @@ enum lis2dh_fs {
 	(1 << (31 - __builtin_clz(_fs)))
 
 /* Acc Gain value */
-#define LIS2DH_FS_2G_GAIN	4
-#define LIS2DH_FS_4G_GAIN	8
-#define LIS2DH_FS_8G_GAIN	16
-#define LIS2DH_FS_16G_GAIN	48
+#define LIS2DH_FS_2G_GAIN	64
+#define LIS2DH_FS_4G_GAIN	128
+#define LIS2DH_FS_8G_GAIN	256
+#define LIS2DH_FS_16G_GAIN	768
 
 /* Return Gain from Full Scale range
  * TODO: This work only for 2, 4 and 8 G full scale */
 #define LIS2DH_FS_TO_GAIN(_fs) \
-	(LIS2DH_FS_2G_GAIN << (30 - __builtin_clz(_fs)))
+	(_fs == 16 ? LIS2DH_FS_16G_GAIN : \
+	(LIS2DH_FS_2G_GAIN << (30 - __builtin_clz(_fs))))
 
 /* Return Full Scale Range from normalized gain */
 #define LIS2DH_GAIN_TO_FS(_gain) \
-	(1 << (30 - __builtin_clz(_gain)))
+	(_gain == LIS2DH_FS_16G_GAIN ? 16 : \
+	(1 << (30 - __builtin_clz(_gain) - 4)))
 
 /* Sensor resolution in number of bits
  * This sensor has variable precision (8/10/12 bits) depending Power Mode

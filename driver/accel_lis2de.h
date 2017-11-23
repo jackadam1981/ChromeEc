@@ -135,21 +135,22 @@ enum lis2de_fs {
 	(1 << (31 - __builtin_clz(_fs)))
 
 /* Acc Gain value in ug/LSB */
-#define LIS2DE_FS_2G_GAIN		15600
-#define LIS2DE_FS_4G_GAIN		31200
-#define LIS2DE_FS_8G_GAIN		62400
-#define LIS2DE_FS_16G_GAIN		187500
+#define LIS2DE_FS_2G_GAIN		256
+#define LIS2DE_FS_4G_GAIN		512
+#define LIS2DE_FS_8G_GAIN		1024
+#define LIS2DE_FS_16G_GAIN		3072
 
 /*
  * Return Gain from Full Scale range.
  * TODO: This work only for 2, 4 and 8 G full scale.
  */
 #define LIS2DE_FS_TO_GAIN(_fs) \
-	(LIS2DE_FS_2G_GAIN << (30 - __builtin_clz(_fs)))
+	(_fs == 16 ? LIS2DE_FS_16G_GAIN : \
+	(LIS2DE_FS_2G_GAIN << (30 - __builtin_clz(_fs))))
 
 /* Return Full Scale Range from normalized gain */
 #define LIS2DE_GAIN_TO_FS(_gain) \
-	(1 << (30 - __builtin_clz(_gain/LIS2DE_FS_2G_GAIN)))
+	(1 << (32 - __builtin_clz(_gain / LIS2DE_FS_2G_GAIN)))
 
 #define LIS2DE_RESOLUTION		8
 

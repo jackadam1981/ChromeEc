@@ -146,10 +146,10 @@ enum lis2ds_fs {
 #define LIS2DS_ACCEL_FS_MAX_VAL		16
 
 /* Acc Gain value */
-#define LIS2DS_FS_2G_GAIN		61
-#define LIS2DS_FS_4G_GAIN		122
-#define LIS2DS_FS_8G_GAIN		244
-#define LIS2DS_FS_16G_GAIN		488
+#define LIS2DS_FS_2G_GAIN		976
+#define LIS2DS_FS_4G_GAIN		1952
+#define LIS2DS_FS_8G_GAIN		3904
+#define LIS2DS_FS_16G_GAIN		7808
 
 /* FS Full Scale value from Gain */
 #define LIS2DS_GAIN_FS(_gain) \
