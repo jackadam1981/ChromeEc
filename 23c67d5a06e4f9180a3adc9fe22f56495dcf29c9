@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5cdf66c_2ffa3e1c",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-23T02:23:39Z",
+      "side": 1,
+      "message": "I don\u0027t think this\u0027ll work.  If PP is required, the command will succeed, and start the asynchronous physical presence state machine to request power button presses.\n\nWhat we want is for the command to fail if PP is required.  Something like:\n\nif (raw_has_password())\n    FAIL;\n\nint need_pp \u003d !(ccd_is_cap_enabled(CCD_CAP_OPEN_WITHOUT_LONG_PP) \u0026\u0026 ccd_is_cap_enabled(CCD_CAP_UNLOCK_WITHOUT_SHORT_PP));\n\n/* Bypass physical presence check entirely if battery is removed */\nif (ccd_is_cap_enabled(CCD_CAP_REMOVE_BATTERY_BYPASSES_PP) \u0026\u0026 !board_battery_is_present())\nneed_pp \u003d 0;\n\nif (need_pp)\n    FAIL;\n\n// Note that this currently returns void; change so it fails if TPM wipe\n// fails.\nif (ccd_open_done() !\u003d EC_SUCCESS)\n    FAIL;\n\nif (ccd_reset_config(0) !\u003d EC_SUCCESS)\n    FAIL;\n\nccd_set_state(CCD_STATE_LOCKED);",
+      "range": {
+        "startLine": 1167,
+        "startChar": 0,
+        "endLine": 1171,
+        "endChar": 3
+      },
+      "revId": "23c67d5a06e4f9180a3adc9fe22f56495dcf29c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
