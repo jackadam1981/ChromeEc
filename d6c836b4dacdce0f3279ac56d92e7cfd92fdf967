@@ -34,6 +34,24 @@
       "revId": "d6c836b4dacdce0f3279ac56d92e7cfd92fdf967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1d68b31_d0ae3dc8",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-11-23T06:04:39Z",
+      "side": 0,
+      "message": "If we use command to set charge state to idle, it will fail if set current to minimum here.",
+      "parentUuid": "fb54757b_a86963df",
+      "revId": "d6c836b4dacdce0f3279ac56d92e7cfd92fdf967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
