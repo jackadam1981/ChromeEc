@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64146735_6ceaa7b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-24T01:58:45Z",
+      "side": 1,
+      "message": "chip/stm32/i2c: Add support for long read in i2c_xfer\n\n(or something like this, there is nothing touchpad_elan related in this CL).",
+      "revId": "3dc278e10be6a42d1a4359d3e089f9480b359c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c99197b_31d25ff8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-24T01:58:45Z",
+      "side": 1,
+      "message": "Drop this, not needed.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "3dc278e10be6a42d1a4359d3e089f9480b359c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa39390_eaa507ce",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-24T01:58:45Z",
+      "side": 1,
+      "message": "This is not a config option, maybe call this:\n\nI2C_XFER_SINGLE_MAX_READ_BYTES",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "3dc278e10be6a42d1a4359d3e089f9480b359c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "659b87d3_7eaa1706",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-24T01:58:45Z",
+      "side": 1,
+      "message": "Could we fold this into chip_i2c_xfer?\n\nI.e. have a single chip_i2c_xfer that would work for short (\u003c256 bytes) and long (\u003e256 bytes) transfers?",
+      "revId": "3dc278e10be6a42d1a4359d3e089f9480b359c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a13f1f5c_bb740400",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-24T01:58:45Z",
+      "side": 1,
+      "message": "Drop CONFIG_I2C_XFER_SINGLE_MAX_READING, does not seem very useful?",
+      "revId": "3dc278e10be6a42d1a4359d3e089f9480b359c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
