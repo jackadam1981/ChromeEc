@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "a2a3d512_022ccef7",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-24T10:56:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cb9a3ec7_2abd52ab",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a468f8e7_76cfb79c",
         "filename": "driver/als_bh1730.c",
         "patchSetId": 7
@@ -91,6 +115,30 @@
       "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac953ee3_771f4698",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-24T10:56:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a468f8e7_76cfb79c",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 36
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "8f6328c8_31985578",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-24T10:56:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "752853a4_1098fd4b",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 32
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae6213ad_2e4c91f0",
         "filename": "driver/als_bh1730.c",
         "patchSetId": 7
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "41b96193_c69cfcb9",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-24T10:56:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae6213ad_2e4c91f0",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 14
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a74e5c8a_4e8967ac",
         "filename": "driver/als_bh1730.h",
         "patchSetId": 7
@@ -160,6 +256,30 @@
       "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfc41f13_62c94d66",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-24T10:56:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a74e5c8a_4e8967ac",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +329,30 @@
     },
     {
       "key": {
+        "uuid": "f3bf917f_fab962e2",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-24T10:56:29Z",
+      "side": 1,
+      "message": "I will remove \"#ifdef\" if both type of drivers still compiles.",
+      "parentUuid": "a768e7d4_555b66a8",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ee30be0_17237beb",
         "filename": "driver/als_bh1730.h",
         "patchSetId": 7
@@ -229,6 +373,30 @@
       "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6127399_c3e2982f",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-24T10:56:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8ee30be0_17237beb",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
