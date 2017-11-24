@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6925f707_34a606d5",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-24T00:24:32Z",
+      "side": 1,
+      "message": "nit: Parenthesis aren\u0027t needed (CHIPSET_STATE_ANY_SUSPEND is not a macro), but don\u0027t hurt either.",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 26
+      },
+      "revId": "187aaf37e60947e752c68820dfcaa32b5a0b460e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
