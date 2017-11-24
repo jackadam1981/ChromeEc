@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c090e1f4_26c7ddfc",
+        "filename": "driver/als_opt3001.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-24T00:59:30Z",
+      "side": 1,
+      "message": "It\u0027s preferred to use int16_t / uint16_t for these types.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 14
+      },
+      "revId": "4ad1ad4d104466ff86076a8d1f2ca89f6a6e1888",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
