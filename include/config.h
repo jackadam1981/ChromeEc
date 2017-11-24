@@ -1567,6 +1567,13 @@
 #undef CONFIG_I2C_PASSTHRU_RESTRICTED
 #undef CONFIG_I2C_VIRTUAL_BATTERY
 
+/* If a handy function handles register to support large I2C reading exists.
+ * For IC that implements so, the max reading in chip_i2c_xfer() should be
+ * defined as well.
+ */
+#undef CONFIG_I2C_XFER_LARGE_READING
+#undef CONFIG_I2C_XFER_SINGLE_MAX_READING
+
 /* EC uses an I2C master interface */
 #undef CONFIG_I2C_MASTER
 

@@ -110,6 +110,24 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 #define I2C_LINE_SDA_HIGH (1 << 1)
 #define I2C_LINE_IDLE (I2C_LINE_SCL_HIGH | I2C_LINE_SDA_HIGH)
 
+#ifdef CONFIG_I2C_XFER_LARGE_READING
+/**
+ * Thin wrapper for some chips that has limitation on reading large chunk.
+ * Primarily handles the flags on first and last call for chip_i2c_xfer.
+ *
+ * @param port		Port to access
+ * @param slave_addr	Slave device address
+ * @param out		Data to send
+ * @param out_size	Number of bytes to send
+ * @param in		Destination buffer for received data
+ * @param in_size	Number of bytes to receive
+ * @return EC_SUCCESS, or non-zero if error.
+ */
+int i2c_xfer_large_reading(int port, int slave_addr, const uint8_t *out,
+			   int out_size, uint8_t *in, int in_size);
+#endif
+
+
 /**
  * Chip-level function to transmit one block of raw data, then receive one
  * block of raw data.
@@ -128,6 +146,23 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
  */
 int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags);
+
+#ifdef CONFIG_I2C_XFER_LARGE_READING
+/**
+ * Thin wrapper for chips that doesn't support large reading in an
+ * I2C_XFER_SINGLE. Usually a warpper for chip_i2c_xfer()
+ *
+ * @param port		Port to access
+ * @param slave_addr	Slave device address
+ * @param out		Data to send
+ * @param out_size	Number of bytes to send
+ * @param in		Destination buffer for received data
+ * @param in_size	Number of bytes to receive
+ * @return EC_SUCCESS, or non-zero if error.
+ */
+int chip_i2c_xfer_large_reading(int port, int slave_addr, const uint8_t *out,
+				int out_bytes, uint8_t *in, int in_bytes);
+#endif
 
 /**
  * Return raw I/O line levels (I2C_LINE_*) for a port when port is in alternate

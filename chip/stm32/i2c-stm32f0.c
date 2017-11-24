@@ -27,6 +27,9 @@
 /* Transmit timeout in microseconds */
 #define I2C_TX_TIMEOUT_MASTER	(10 * MSEC)
 
+/* Property derived from STM32_I2C_CR2 */
+#define CONFIG_I2C_XFER_SINGLE_MAX_READING 255
+
 #ifdef CONFIG_HOSTCMD_I2C_SLAVE_ADDR
 #if (I2C_PORT_EC == STM32_I2C1_PORT)
 #define IRQ_SLAVE STM32_IRQ_I2C1
@@ -549,6 +552,46 @@ xfer_exit:
 
 	return rv;
 }
+
+#ifdef CONFIG_I2C_XFER_LARGE_READING
+int chip_i2c_xfer_large_reading(int port, int slave_addr, const uint8_t *out,
+				int out_bytes, uint8_t *in, int in_bytes)
+{
+	int rv = EC_SUCCESS;
+	int one_xfer_read;
+	int complete_bytes = 0;
+	int xfer_flag = I2C_XFER_START;
+	/*
+	 * Because The I2C_XFER_SINGLE might limit the reading to be
+	 * under 255 bytes (Register design of STM32_I2C_CR2) We hold the STOP
+	 * bits for reading request larger than that.
+	 */
+
+	/* User might call accidentally. Fall back to single transaction. */
+	if (in_bytes <= CONFIG_I2C_XFER_SINGLE_MAX_READING) {
+		return chip_i2c_xfer(port, slave_addr, out, out_bytes, in,
+				     in_bytes, I2C_XFER_SINGLE);
+	}
+
+	do {
+		one_xfer_read = in_bytes - complete_bytes;
+		if (one_xfer_read > CONFIG_I2C_XFER_SINGLE_MAX_READING)
+			one_xfer_read = CONFIG_I2C_XFER_SINGLE_MAX_READING;
+		else
+			xfer_flag |= I2C_XFER_STOP;
+		rv = i2c_xfer(
+			port, slave_addr,
+			complete_bytes ? NULL : out,
+			complete_bytes ? 0 : out_bytes,
+			in + complete_bytes,
+			one_xfer_read, xfer_flag);
+		complete_bytes += one_xfer_read;
+		xfer_flag = 0;
+	} while (complete_bytes < in_bytes && !rv);
+
+	return rv;
+}
+#endif
 
 int i2c_raw_get_scl(int port)
 {

@@ -65,6 +65,27 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	return ret;
 }
 
+#ifdef CONFIG_I2C_XFER_LARGE_READING
+int i2c_xfer_large_reading(int port, int slave_addr, const uint8_t *out,
+			   int out_size, uint8_t *in, int in_size)
+{
+	int i;
+	int ret = EC_SUCCESS;
+
+//int chip_i2c_xfer_large_reading(int port, int slave_addr, const uint8_t *out,
+//			        int out_bytes, uint8_t *in, int in_bytes)
+	for (i = 0; i <= CONFIG_I2C_NACK_RETRY_COUNT; i++) {
+		ret = chip_i2c_xfer_large_reading(port, slave_addr, out,
+			 out_size, in, in_size);
+		if (ret != EC_ERROR_BUSY)
+			break;
+	}
+	return ret;
+}
+#endif
+
+
+
 void i2c_lock(int port, int lock)
 {
 #ifdef CONFIG_I2C_MULTI_PORT_CONTROLLER
