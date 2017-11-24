@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f5671f3_e04fad3b",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T09:31:27Z",
+      "side": 1,
+      "message": "using 8 bytes per entry is not terribly efficient here\n(and uint16 is kind of arbitrary but let\u0027s admit it\u0027s good enough for now and simpler)\n\nAt the end of the day, doesn\u0027t each caller know the subset of patches it is interested in ? and to which descriptor (a single one) they apply ?\nIf so (but I\u0027m missing the real user), the caller should pass the pointer to the patch list (which can be a local struct) and the address can be relative (then a u16)",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 15
+      },
+      "revId": "ead808180f8899c255048011f674e4dc9d4f8b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
