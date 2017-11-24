@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59faaa32_85600c31",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-24T20:17:36Z",
+      "side": 1,
+      "message": "Need leading /* and closing */ on empty lines for multi-line comment.",
+      "range": {
+        "startLine": 1115,
+        "startChar": 1,
+        "endLine": 1116,
+        "endChar": 67
+      },
+      "revId": "bf3bf406e93aff26cf809bbaa60be1c79f8120ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e266bab7_c0299aca",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 3590,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-24T20:17:36Z",
+      "side": 1,
+      "message": "This works differently than EC_CMD_EXTERNAL_POWER_LIMIT, but from the naming one might expect it to work in the same way (eg. with charge manager ceil, and EC_POWER_LIMIT_NONE being a meaningful parameter). How about naming it differently to make the function more clear (maybe EC_CMD_OVERRIDE_DEDICATED_CHARGER_LIMIT), and we might want to use a different param struct as well.",
+      "range": {
+        "startLine": 3590,
+        "startChar": 8,
+        "endLine": 3590,
+        "endChar": 42
+      },
+      "revId": "bf3bf406e93aff26cf809bbaa60be1c79f8120ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
