@@ -10,6 +10,7 @@
 
 #include "common.h"
 
+extern const char __flash_dma_start;
 #define __ram_code __attribute__((section(".ram_code")))
 
 /* IRQ numbers */

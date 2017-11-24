@@ -15,7 +15,6 @@
 #include "shared_mem.h"
 #include "uart.h"
 
-const char __flash_dma_start;
 #define FLASH_DMA_START ((uint32_t) &__flash_dma_start)
 #define FLASH_DMA_CODE __attribute__((section(".flash_direct_map")))
 
