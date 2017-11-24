@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0eae79d_2575dacd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "this is the branches where you want to backport it.\nwould be \"BRANCH\u003dnone\"\nbut in this case, it is :\nBRANCH\u003dglados",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f863d69_d86e6750",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "TEST\u003d",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb9a3ec7_2abd52ab",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "are you still using this ?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a468f8e7_76cfb79c",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "as mentioned earlier, splitting the word here just makes the whole thing larger and slower. Why not keeping the u32 ?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 36
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "752853a4_1098fd4b",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "can we remove this mess of test_data_ variables ?\nand just do in this case, \nlux \u003d bh1730_convert_to_lux(strtoi(argv[1], \u0026e, 0), strtoi(argv[2], \u0026e, 0));\nlux \u003d lux * af;",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 32
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae6213ad_2e4c91f0",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "static ?",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 14
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a74e5c8a_4e8967ac",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "comment style is: /* Software reset */\nyou should really run the pre-submit check",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f3d6f2_36a893fb",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "nit: it seems there is at least one too many GAIN here",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a768e7d4_555b66a8",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "please get rid of this #ifdef, it seems everything can be unconditionally declared.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee30be0_17237beb",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "remove it or tell what the opt3001 has to do here",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 6
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d5df84_7730daf7",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-24T10:37:18Z",
+      "side": 1,
+      "message": "nit: the list here is likely alpha-sorted \nso this should be 2 lines up",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 34
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
