@@ -46,29 +46,68 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 int charger_profile_override(struct charge_state_data *curr)
 {
-	const struct battery_info *batt_info = battery_get_info();
-	int now_discharging;
-
 	/* battery temp in 0.1 deg C */
 	int bat_temp_c = curr->batt.temperature - 2731;
 
-	if (curr->state == ST_CHARGE) {
-		/* Don't charge if outside of allowable temperature range */
-		if (bat_temp_c >= batt_info->charging_max_c * 10 ||
-		    bat_temp_c < batt_info->charging_min_c * 10) {
-			curr->requested_current = curr->requested_voltage = 0;
-			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
-			curr->state = ST_IDLE;
-			now_discharging = 0;
-		/* Don't start charging if battery is nearly full */
-		} else if (curr->batt.status & STATUS_FULLY_CHARGED) {
-			curr->requested_current = curr->requested_voltage = 0;
-			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
-			curr->state = ST_DISCHARGE;
-			now_discharging = 1;
-		} else
-			now_discharging = 0;
-		charger_discharge_on_ac(now_discharging);
+	int bat_voltage;
+	static int prev_bat_voltage;
+
+	/*
+	 * Keep track of battery temperature range:
+	 *
+	 *        ZONE_1   ZONE_2     ZONE_3
+	 * -----+--------+--------+------------+----- Temperature (C)
+	 *      0        10       20           45
+	 *
+	 * 0.2C of hysteresis is added during zone transition.
+	 */
+	static enum {
+		TEMP_ZONE_1, /* 0 - 10C */
+		TEMP_ZONE_2, /* 10 - 20C */
+		TEMP_ZONE_3, /* 20 - 45C */
+		TEMP_OUT_OF_RANGE /* < 0C or > 45C */
+	} temp_range = TEMP_ZONE_3;
+
+	if (!(curr->batt.flags & BATT_FLAG_BAD_TEMPERATURE)) {
+		if (bat_temp_c < -1 || bat_temp_c > 451)
+			temp_range = TEMP_OUT_OF_RANGE;
+		else if (bat_temp_c > 1 && bat_temp_c < 99)
+			temp_range = TEMP_ZONE_1;
+		else if (bat_temp_c > 101 && bat_temp_c < 199)
+			temp_range = TEMP_ZONE_2;
+		else if (bat_temp_c > 201 && bat_temp_c < 449)
+			temp_range = TEMP_ZONE_3;
+	} else
+		temp_range = TEMP_OUT_OF_RANGE;
+
+	if (curr->state != ST_CHARGE)
+		return 0;
+
+	/*
+	 * If either the current or battery reading is bad, fall back to
+	 * previous reading.
+	 */
+	if (curr->batt.flags &
+	    (BATT_FLAG_BAD_VOLTAGE | BATT_FLAG_BAD_CURRENT))
+		bat_voltage = prev_bat_voltage;
+	else
+		bat_voltage = prev_bat_voltage = curr->batt.voltage;
+
+	switch (temp_range) {
+	case TEMP_ZONE_1:
+		curr->requested_current = 900;
+		curr->requested_voltage = 4200;
+		break;
+	case TEMP_ZONE_2:
+		curr->requested_current = (bat_voltage < 4200) ? 2700 : 1800;
+		break;
+	case TEMP_ZONE_3:
+		break;
+	case TEMP_OUT_OF_RANGE:
+		curr->requested_current = curr->requested_voltage = 0;
+		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+		curr->state = ST_IDLE;
+		break;
 	}
 
 	return 0;
