@@ -14,6 +14,14 @@
 #include "extpower.h"
 #include "util.h"
 
+/*
+ * AE-Tech battery pack has two charging phases when operating
+ * between 10 and 20C
+ */
+#define CHARGE_PHASE_CHANGE_TRIP_VOLTAGE_MV 4200
+#define CHARGE_PHASE_CHANGE_HYSTERESIS_MV 50
+#define CHARGE_PHASE_CHANGED_CURRENT_MA 1800
+
 static const struct battery_info info = {
 	.voltage_max		= 4350,
 	.voltage_normal		= 3800,
@@ -46,29 +54,91 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 
 int charger_profile_override(struct charge_state_data *curr)
 {
-	const struct battery_info *batt_info = battery_get_info();
-	int now_discharging;
-
 	/* battery temp in 0.1 deg C */
 	int bat_temp_c = curr->batt.temperature - 2731;
 
-	if (curr->state == ST_CHARGE) {
-		/* Don't charge if outside of allowable temperature range */
-		if (bat_temp_c >= batt_info->charging_max_c * 10 ||
-		    bat_temp_c < batt_info->charging_min_c * 10) {
-			curr->requested_current = curr->requested_voltage = 0;
-			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
-			curr->state = ST_IDLE;
-			now_discharging = 0;
-		/* Don't start charging if battery is nearly full */
-		} else if (curr->batt.status & STATUS_FULLY_CHARGED) {
-			curr->requested_current = curr->requested_voltage = 0;
-			curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
-			curr->state = ST_DISCHARGE;
-			now_discharging = 1;
-		} else
-			now_discharging = 0;
-		charger_discharge_on_ac(now_discharging);
+	/*
+	 * Keep track of battery temperature range:
+	 *
+	 *        ZONE_0   ZONE_1     ZONE_2
+	 * -----+--------+--------+------------+----- Temperature (C)
+	 *      t0       t1       t2           t3
+	 */
+	enum {
+		TEMP_ZONE_0, /* t0 < bat_temp_c <= t1 */
+		TEMP_ZONE_1, /* t1 < bat_temp_c <= t2 */
+		TEMP_ZONE_2, /* t2 < bat_temp_c <= t3 */
+		TEMP_OUT_OF_RANGE, /* bat_temp_c <= t0 or > t3 */
+	} temp_zone;
+
+	static const struct {
+		int temp_min; /* 0.1 deg C */
+		int temp_max; /* 0.1 deg C */
+		int desired_current; /* mA */
+		int desired_voltage; /* mV */
+	} temp_zones[] = {
+		{0, 100, 900, 4200}, /* TEMP_ZONE_0 */
+		{100, 200, 2700, 4350}, /* TEMP_ZONE_1 */
+		{200, 450, 3500, 4350}, /* TEMP_ZONE_2 */
+	};
+
+	static int charge_phase = 1;
+
+	if ((curr->batt.flags & BATT_FLAG_BAD_TEMPERATURE) ||
+	    (bat_temp_c < temp_zones[0].temp_min) ||
+	    (bat_temp_c >= temp_zones[ARRAY_SIZE(temp_zones) - 1].temp_max))
+		temp_zone = TEMP_OUT_OF_RANGE;
+	else {
+		temp_zone = 0;
+		while (temp_zone < ARRAY_SIZE(temp_zones)) {
+			if (bat_temp_c < temp_zones[temp_zone].temp_max)
+				break;
+			temp_zone++;
+		}
+	}
+
+	if (curr->state != ST_CHARGE) {
+		charge_phase = 1;
+		return 0;
+	}
+
+	switch (temp_zone) {
+	case TEMP_ZONE_0:
+	case TEMP_ZONE_2:
+		curr->requested_current =
+			temp_zones[temp_zone].desired_current;
+		curr->requested_voltage =
+			temp_zones[temp_zone].desired_voltage;
+		break;
+	case TEMP_ZONE_1:
+		/*
+		 * If the voltage reading is bad, let's be conservative
+		 * and assume change_phase == 1.
+		 */
+		if (curr->batt.flags & BATT_FLAG_BAD_VOLTAGE)
+			charge_phase = 1;
+		else {
+			if (curr->batt.voltage <
+			    (CHARGE_PHASE_CHANGE_TRIP_VOLTAGE_MV -
+			     CHARGE_PHASE_CHANGE_HYSTERESIS_MV))
+				charge_phase = 0;
+			else if (curr->batt.voltage >
+				 CHARGE_PHASE_CHANGE_TRIP_VOLTAGE_MV)
+				charge_phase = 1;
+		}
+
+		curr->requested_voltage =
+			temp_zones[temp_zone].desired_voltage;
+
+		curr->requested_current = (charge_phase) ?
+			CHARGE_PHASE_CHANGED_CURRENT_MA :
+			temp_zones[temp_zone].desired_current;
+		break;
+	case TEMP_OUT_OF_RANGE:
+		curr->requested_current = curr->requested_voltage = 0;
+		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
+		curr->state = ST_IDLE;
+		break;
 	}
 
 	return 0;
