@@ -2873,9 +2873,8 @@
 /* USB I2C config */
 #undef CONFIG_USB_I2C
 
-/* Allowed read/write count for USB over I2C */
+/* Allowed write count for USB over I2C */
 #define CONFIG_USB_I2C_MAX_WRITE_COUNT 60
-#define CONFIG_USB_I2C_MAX_READ_COUNT 60
 
 /*****************************************************************************/
 /* USB Power monitoring interface config */
@@ -3092,6 +3091,17 @@
 	defined(CONFIG_BATTERY_MAX17055) || \
 	defined(CONFIG_BATTERY_SMART)
 #define CONFIG_BATTERY
+#endif
+
+/*****************************************************************************/
+/*
+ * Define CONFIG_USB_PD_VBUS_MEASURE_CHARGER if the charger on the board
+ * supports VBUS measurement.
+ */
+#if defined(CONFIG_CHARGER_BD9995X) || \
+	defined(CONFIG_CHARGER_RT9466) || \
+	defined(CONFIG_CHARGER_RT9467)
+#define CONFIG_USB_PD_VBUS_MEASURE_CHARGER
 #endif
 
 /*****************************************************************************/
