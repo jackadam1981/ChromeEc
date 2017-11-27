@@ -378,6 +378,30 @@
     },
     {
       "key": {
+        "uuid": "01bc6535_821f612d",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T12:59:54Z",
+      "side": 1,
+      "message": "I\u0027m not seeing it.",
+      "parentUuid": "74397dbd_ee318f99",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a768e7d4_555b66a8",
         "filename": "driver/als_bh1730.h",
         "patchSetId": 7
@@ -437,6 +461,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "f3bf917f_fab962e2",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc9004fe_5c4f0c80",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T12:59:54Z",
+      "side": 1,
+      "message": "I\u0027m not seeing it either",
+      "parentUuid": "2d1c5716_84ca6057",
       "range": {
         "startLine": 49,
         "startChar": 0,
