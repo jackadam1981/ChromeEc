@@ -426,6 +426,30 @@
     },
     {
       "key": {
+        "uuid": "6eaadbd8_77449769",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-27T21:33:52Z",
+      "side": 1,
+      "message": "please refer heikki\u0027s comment.",
+      "parentUuid": "42870002_8d959942",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a768e7d4_555b66a8",
         "filename": "driver/als_bh1730.h",
         "patchSetId": 7
@@ -533,6 +557,30 @@
       "side": 1,
       "message": "Driver won\u0027t compile if we remove \"#ifdef ALS_TASK\".",
       "parentUuid": "dc9004fe_5c4f0c80",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b4d2455_2a6842a6",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-27T21:33:52Z",
+      "side": 1,
+      "message": "When HAS_TASK_ALS is defined the parameters of the function are different.\nSo I think it is needed.",
+      "parentUuid": "bfae8b7a_5b91a20b",
       "range": {
         "startLine": 49,
         "startChar": 0,
