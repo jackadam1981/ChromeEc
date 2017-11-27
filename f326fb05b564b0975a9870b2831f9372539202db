@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "454ee018_30ce2255",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2878,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-27T20:44:24Z",
+      "side": 0,
+      "message": "Did you remove this because it\u0027s unused, and you ran into a lint error?",
+      "range": {
+        "startLine": 2878,
+        "startChar": 8,
+        "endLine": 2878,
+        "endChar": 37
+      },
+      "revId": "f326fb05b564b0975a9870b2831f9372539202db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
