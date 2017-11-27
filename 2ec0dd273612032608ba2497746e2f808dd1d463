@@ -39,6 +39,24 @@
       "revId": "2ec0dd273612032608ba2497746e2f808dd1d463",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6ae803e_480ee603",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-27T23:12:51Z",
+      "side": 0,
+      "message": "Aah I see. Okay, I will fix that.",
+      "parentUuid": "e6fc66bd_32d22a53",
+      "revId": "2ec0dd273612032608ba2497746e2f808dd1d463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
