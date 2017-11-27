@@ -106,11 +106,22 @@ enum sn5s330_pp_idx {
 #define SN5S330_VSAFE0V_STAT (1 << 2)
 #define SN5S330_VSAFE0V_MASK (1 << 3)
 
-/* INT_MASK_RISE_EDGE_1 */
-#define SN5S330_ILIM_PP1_RISE_MASK (1 << 4)
+/* INT_MASK_RISE/FALL_EDGE_1 */
+#define SN5S330_ILIM_PP1_MASK (1 << 4)
 
 /* INT_MASK_FALL_EDGE_1 */
 #define SN5S330_ILIM_PP1_FALL_MASK (1 << 4)
+
+/**
+ * Determine if a PP FET is enabled or not.
+ *
+ * @param chip_idx: The index into the sn5s330_chips[] table.
+ * @param pp: The power path index (PP1 or PP2).
+ * @param enable: 1 to turn on the FET, 0 to turn off.
+ * @param EC_SUCCESS if i2c access worked, otherwise an error.
+ */
+int sn5s330_is_pp_fet_enabled(uint8_t chip_idx, enum sn5s330_pp_idx pp,
+			      int *is_enabled);
 
 /**
  * Turn on/off the PP1 or PP2 FET.
