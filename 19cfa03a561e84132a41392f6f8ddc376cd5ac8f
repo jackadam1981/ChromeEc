@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a10a0083_6729ab99",
+        "filename": "power/skylake.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-27T08:03:35Z",
+      "side": 1,
+      "message": "Just updated this to use the enum which already covers the case for HARD_OFF | SOFT_OFF.",
+      "range": {
+        "startLine": 37,
+        "startChar": 23,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "19cfa03a561e84132a41392f6f8ddc376cd5ac8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
