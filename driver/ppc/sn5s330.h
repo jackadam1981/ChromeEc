@@ -100,6 +100,9 @@ enum sn5s330_pp_idx {
 #define SN5S330_PP2_CONFIG (1 << 2)
 #define SN5S330_OVP_EN_CC (1 << 4)
 
+/* INT_STATUS_REG3 */
+#define SN5S330_VBUS_GOOD (1 << 0)
+
 /* INT_STATUS_REG4 */
 #define SN5S330_DIG_RES (1 << 0)
 #define SN5S330_DB_BOOT (1 << 1)
@@ -109,15 +112,21 @@ enum sn5s330_pp_idx {
 /* INT_MASK_RISE/FALL_EDGE_1 */
 #define SN5S330_ILIM_PP1_MASK (1 << 4)
 
-/* INT_MASK_FALL_EDGE_1 */
-#define SN5S330_ILIM_PP1_FALL_MASK (1 << 4)
+/**
+ * Determine if VBUS is present or not.
+ *
+ * @param chip_idx: The index into the sn5s330_chips[] table.
+ * @param vbus_present: 1: VBUS is present. 0: VBUS is not present.
+ * @return EC_SUCCESS if able to determine VBUS status, otherwise an error.
+ */
+int sn5s330_get_vbus_status(uint8_t chip_idx, int *vbus_present);
 
 /**
  * Determine if a PP FET is enabled or not.
  *
  * @param chip_idx: The index into the sn5s330_chips[] table.
  * @param pp: The power path index (PP1 or PP2).
- * @param enable: 1 to turn on the FET, 0 to turn off.
+ * @param is_enabled: 1: The FET is enabled. 0: FET is disabled.
  * @param EC_SUCCESS if i2c access worked, otherwise an error.
  */
 int sn5s330_is_pp_fet_enabled(uint8_t chip_idx, enum sn5s330_pp_idx pp,

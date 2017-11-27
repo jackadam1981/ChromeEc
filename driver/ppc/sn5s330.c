@@ -140,14 +140,15 @@ int sn5s330_is_pp_fet_enabled(uint8_t chip_idx, enum sn5s330_pp_idx pp,
 	int status;
 	int regval;
 
-	if (pp == SN5S330_PP1) {
+	if (pp == SN5S330_PP1)
 		pp_bit = SN5S330_PP1_EN;
-	} else if (pp == SN5S330_PP2) {
+	else if (pp == SN5S330_PP2)
 		pp_bit = SN5S330_PP2_EN;
-	} else {
-		CPRINTF("bad PP idx(%d)!", pp);
+	else
 		return EC_ERROR_INVAL;
-	}
+
+	if (chip_idx >= sn5s330_cnt)
+		return EC_ERROR_INVAL;
 
 	status = get_func_set3(chip_idx, &regval);
 	if (status)
@@ -436,6 +437,20 @@ static int init_sn5s330(int idx)
 
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
+int sn5s330_get_vbus_status(uint8_t chip_idx, int *vbus_present)
+{
+	int regval;
+	int rv;
+
+	rv = read_reg(chip_idx, SN5S330_INT_STATUS_REG3, &regval);
+	if (!rv)
+		*vbus_present = !!(regval & SN5S330_VBUS_GOOD);
+
+	return rv;
+}
+#endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 
 static void sn5s330_init(void)
 {
