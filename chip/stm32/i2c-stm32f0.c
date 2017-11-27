@@ -433,6 +433,9 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	int i;
 	int xfer_start = flags & I2C_XFER_START;
 	int xfer_stop = flags & I2C_XFER_STOP;
+#ifdef CONFIG_I2C_XFER_LARGE_READING
+	int yet_to_receive_bytes;
+#endif
 
 #if defined(CONFIG_I2C_SCL_GATE_ADDR) && defined(CONFIG_I2C_SCL_GATE_PORT)
 	if (port == CONFIG_I2C_SCL_GATE_PORT &&
@@ -472,6 +475,34 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 			STM32_I2C_TXDR(port) = out[i];
 		}
 	}
+#ifdef CONFIG_I2C_XFER_LARGE_READING
+	/* Because STM32_I2C_CR2 register only has 16 bits, which limits a
+	 * single receiving capped at 0xFF bytes. We handles the case where
+	 * caller wants a single transaction of receiving beyond this limit.
+	 */
+	if (in_bytes <= 0xFF || (xfer_start && xfer_stop))
+		goto xfer_receive;
+
+	yet_to_receive_bytes = in_bytes;
+	xfer_start = I2C_XFER_START;
+	xfer_stop = 0;
+	in_bytes = 0xFF;
+	goto xfer_receive;
+
+xfer_large_reading_continue:
+	xfer_start = 0;
+	in += in_bytes;
+	yet_to_receive_bytes -= in_bytes;
+	if (yet_to_receive_bytes > 0xFF) {
+		in_bytes = 0xFF;
+	} else {
+		in_bytes = yet_to_receive_bytes;
+		xfer_stop = I2C_XFER_STOP;
+	}
+	goto xfer_receive;
+#endif
+
+xfer_receive:
 	if (in_bytes) {
 		if (out_bytes) { /* wait for completion of the write */
 			rv = wait_isr(port, STM32_I2C_ISR_TC);
@@ -510,6 +541,11 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	rv = wait_isr(port, xfer_stop ? STM32_I2C_ISR_STOP : STM32_I2C_ISR_TCR);
 	if (rv)
 		goto xfer_exit;
+
+#ifdef CONFIG_I2C_XFER_LARGE_READING
+	if (yet_to_receive_bytes > 0xFF)
+		goto xfer_large_reading_continue;
+#endif
 
 xfer_exit:
 	/* clear status */

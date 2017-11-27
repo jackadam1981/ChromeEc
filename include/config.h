@@ -1575,6 +1575,9 @@
 #undef CONFIG_I2C_PASSTHRU_RESTRICTED
 #undef CONFIG_I2C_VIRTUAL_BATTERY
 
+/* Explicitly enable I2C large reading (applied only to STM32F0) */
+#define CONFIG_I2C_XFER_LARGE_READING
+
 /* EC uses an I2C master interface */
 #undef CONFIG_I2C_MASTER
 

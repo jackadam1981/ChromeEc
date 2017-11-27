@@ -142,6 +142,9 @@
 #undef CONFIG_USB_I2C_MAX_READ_COUNT
 #define CONFIG_USB_I2C_MAX_READ_COUNT (1024 - 6) /* 6 is maximum header size */
 
+/* Explicitly enable I2C large reading on STM32F0 */
+#define CONFIG_I2C_XFER_LARGE_READING
+
 /* No lid switch */
 #undef CONFIG_LID_SWITCH
 
