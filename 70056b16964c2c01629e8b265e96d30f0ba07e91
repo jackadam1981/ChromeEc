@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25c79e00_3e7988be",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-27T09:01:54Z",
+      "side": 1,
+      "message": "Well, the register is actually 32 bits, the problem is that only 8 bits are used for the read transaction length (NBYTES, bits 23 to 16).",
+      "range": {
+        "startLine": 479,
+        "startChar": 13,
+        "endLine": 479,
+        "endChar": 51
+      },
+      "revId": "70056b16964c2c01629e8b265e96d30f0ba07e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45020b62_e9d3a640",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-27T09:01:54Z",
+      "side": 1,
+      "message": "Define 0xFF as a macro. Also, in the previous version of the code, you seem to say that the limit was 0xFE? What\u0027s correct?",
+      "range": {
+        "startLine": 483,
+        "startChar": 17,
+        "endLine": 483,
+        "endChar": 21
+      },
+      "revId": "70056b16964c2c01629e8b265e96d30f0ba07e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f75666_108d85f6",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-27T09:01:54Z",
+      "side": 1,
+      "message": "Logic seems wrong, I guess you only want to special case when START and STOP are set? In any case, I don\u0027t think it\u0027s really necessary, see below.",
+      "range": {
+        "startLine": 483,
+        "startChar": 26,
+        "endLine": 483,
+        "endChar": 49
+      },
+      "revId": "70056b16964c2c01629e8b265e96d30f0ba07e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f016fb9_489d2675",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-27T09:01:54Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s ok to ignore flags in this case. I would only set START if flags passed as parameter has it set.",
+      "revId": "70056b16964c2c01629e8b265e96d30f0ba07e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a037e1ae_2dafcce3",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-27T09:01:54Z",
+      "side": 1,
+      "message": "Ditto with stop.",
+      "revId": "70056b16964c2c01629e8b265e96d30f0ba07e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da7a8b01_0bad2506",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1579,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-11-27T09:01:54Z",
+      "side": 1,
+      "message": "#undef by default.",
+      "revId": "70056b16964c2c01629e8b265e96d30f0ba07e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
