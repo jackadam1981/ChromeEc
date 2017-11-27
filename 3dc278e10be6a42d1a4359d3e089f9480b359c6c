@@ -82,6 +82,24 @@
     },
     {
       "key": {
+        "uuid": "3db608a5_fe51724d",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-11-27T05:49:30Z",
+      "side": 1,
+      "message": "Folding this quite a different approach. PTAL at CL:790015 if that is more closer to what you want ?",
+      "parentUuid": "659b87d3_7eaa1706",
+      "revId": "3dc278e10be6a42d1a4359d3e089f9480b359c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a13f1f5c_bb740400",
         "filename": "include/config.h",
         "patchSetId": 1
