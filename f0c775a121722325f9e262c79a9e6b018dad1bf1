@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e090105e_f7302c0e",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-27T21:30:07Z",
+      "side": 1,
+      "message": "When chip is shutdowned by reset pin, some registers must be initialized whenever duty is changed form 0 to non-zero value. So we want to set reset pin to high during S0.\nThank you.",
+      "parentUuid": "40c967be_2ac82478",
+      "range": {
+        "startLine": 710,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 72
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbce3f1a_db2b5ed0",
         "filename": "common/acpi.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08874fbd_c23d59bd",
+        "filename": "common/acpi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-27T21:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbce3f1a_db2b5ed0",
+      "range": {
+        "startLine": 147,
+        "startChar": 31,
+        "endLine": 147,
+        "endChar": 67
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b9b62c5d_eb49e7f7",
+        "filename": "common/acpi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-27T21:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce4dcd8_536d3232",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 67
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9de5f7ad_07c61310",
         "filename": "common/host_command.c",
         "patchSetId": 6
@@ -91,6 +163,30 @@
       "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e5b804_c0669bef",
+        "filename": "common/host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-27T21:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9de5f7ad_07c61310",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 67
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c21cb832_53971477",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-27T21:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea1077be_d3e9bf60",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 18
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc25d3c7_cb65dffc",
         "filename": "driver/kbl_max14521.c",
         "patchSetId": 6
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "f91ca877_eac8dcf9",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-27T21:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc25d3c7_cb65dffc",
+      "range": {
+        "startLine": 131,
+        "startChar": 43,
+        "endLine": 131,
+        "endChar": 44
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "824f74b4_fa1d0898",
         "filename": "include/config.h",
         "patchSetId": 6
@@ -160,6 +304,30 @@
       "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7f04bc7_8d889360",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-11-27T21:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "824f74b4_fa1d0898",
+      "range": {
+        "startLine": 1570,
+        "startChar": 0,
+        "endLine": 1570,
+        "endChar": 30
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
