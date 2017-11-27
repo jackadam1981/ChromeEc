@@ -45,6 +45,30 @@
       "revId": "185909bdc707eaa3758a96b03788305963e12eb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50c27865_d11faf4c",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-27T22:09:36Z",
+      "side": 1,
+      "message": "Aah yes! Good catch. Let me fix that.",
+      "parentUuid": "18e9b3c9_42c1cc09",
+      "range": {
+        "startLine": 319,
+        "startChar": 9,
+        "endLine": 319,
+        "endChar": 30
+      },
+      "revId": "185909bdc707eaa3758a96b03788305963e12eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
