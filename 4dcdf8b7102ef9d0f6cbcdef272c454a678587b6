@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3032774b_6afe57ab",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 3593,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-27T19:16:11Z",
+      "side": 1,
+      "message": "I don\u0027t think this is true (if you pass EC_POWER_LIMIT_NONE you will be telling charge_manager you have voltage / current of 0xffff) which is why I suggested using the different param struct.",
+      "range": {
+        "startLine": 3593,
+        "startChar": 36,
+        "endLine": 3593,
+        "endChar": 55
+      },
+      "revId": "4dcdf8b7102ef9d0f6cbcdef272c454a678587b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
