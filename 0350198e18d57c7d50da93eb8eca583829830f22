@@ -402,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "42870002_8d959942",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-27T13:35:21Z",
+      "side": 1,
+      "message": "Registers bits definition is following:\n\"register\"_\"field\"_\"value\"\n\nfor example:\nBH1730_GAIN_GAIN_X2_GAIN",
+      "parentUuid": "01bc6535_821f612d",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a768e7d4_555b66a8",
         "filename": "driver/als_bh1730.h",
         "patchSetId": 7
@@ -485,6 +509,30 @@
       "side": 1,
       "message": "I\u0027m not seeing it either",
       "parentUuid": "2d1c5716_84ca6057",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "0350198e18d57c7d50da93eb8eca583829830f22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfae8b7a_5b91a20b",
+        "filename": "driver/als_bh1730.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-11-27T13:35:21Z",
+      "side": 1,
+      "message": "Driver won\u0027t compile if we remove \"#ifdef ALS_TASK\".",
+      "parentUuid": "dc9004fe_5c4f0c80",
       "range": {
         "startLine": 49,
         "startChar": 0,
