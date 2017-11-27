@@ -441,3 +441,12 @@ static void sn5s330_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, sn5s330_init, HOOK_PRIO_INIT_I2C + 1);
+
+int ppc_is_sourcing_vbus(int port)
+{
+	int is_sourcing_vbus;
+
+	sn5s330_is_pp_fet_enabled(port, SN5S330_PP1, &is_sourcing_vbus);
+
+	return is_sourcing_vbus;
+}
