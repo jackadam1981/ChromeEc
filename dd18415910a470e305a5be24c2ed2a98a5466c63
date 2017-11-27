@@ -22,6 +22,30 @@
       "revId": "dd18415910a470e305a5be24c2ed2a98a5466c63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d634ab86_23ffea7e",
+        "filename": "include/charge_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-27T22:52:46Z",
+      "side": 1,
+      "message": "Done. crrev.com/c/792013",
+      "parentUuid": "aad20a62_d9e5c0db",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "dd18415910a470e305a5be24c2ed2a98a5466c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
