@@ -22,6 +22,29 @@
       "revId": "185909bdc707eaa3758a96b03788305963e12eb3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18e9b3c9_42c1cc09",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-27T19:34:02Z",
+      "side": 1,
+      "message": "Now you aren\u0027t honoring the final is_power_up_inhibited() check (eg. is_power_up_inhibited() may return false on call #CHARGER_INITIALIZED_TRIES, yet you will still take action as if power up were inhibited). You can swap the order of the two conditions to fix it.",
+      "range": {
+        "startLine": 319,
+        "startChar": 9,
+        "endLine": 319,
+        "endChar": 30
+      },
+      "revId": "185909bdc707eaa3758a96b03788305963e12eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
