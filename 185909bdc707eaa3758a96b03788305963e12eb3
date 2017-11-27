@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dfea8a9_02b35265",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-27T08:05:49Z",
+      "side": 1,
+      "message": "As mentioned, I verified that this change works fine on coral too. Only thing that is different on coral is that the minimum battery percentage for boot-up is set as 1%. So, I temporarily changed it to 2% and verified the steps mentioned in the commit message.\n\nDiff used:\ndiff --git a/board/coral/board.h b/board/coral/board.h\nindex d10081f0a..89cbef1ab 100644\n--- a/board/coral/board.h\n+++ b/board/coral/board.h\n@@ -61,7 +61,7 @@\n #define CONFIG_CHARGER_DISCHARGE_ON_AC\n #define CONFIG_CHARGER_INPUT_CURRENT 512\n #define CONFIG_CHARGER_MAINTAIN_VBAT\n-#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 1\n+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 2\n #define CONFIG_USB_CHARGER\n #define CONFIG_CHARGER_PROFILE_OVERRIDE\n #define CONFIG_CHARGE_MANAGER_EXTERNAL_POWER_LIMIT\n\nI will let Aaron/Scott decide if we want to update the minimum battery percentage value for coral.",
+      "range": {
+        "startLine": 16,
+        "startChar": 27,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "185909bdc707eaa3758a96b03788305963e12eb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
