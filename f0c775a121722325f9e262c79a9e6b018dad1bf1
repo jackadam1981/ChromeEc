@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40c967be_2ac82478",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T12:56:32Z",
+      "side": 1,
+      "message": "if keeping the chip under reset is consuming less power, maybe you want you want to do it when the keyboard backlight is turned off (PWM duty cycle \u003d\u003d 0) \nthen use the standard.",
+      "range": {
+        "startLine": 710,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 72
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbce3f1a_db2b5ed0",
+        "filename": "common/acpi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T12:56:32Z",
+      "side": 1,
+      "message": "you no longer need this change",
+      "range": {
+        "startLine": 147,
+        "startChar": 31,
+        "endLine": 147,
+        "endChar": 67
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ce4dcd8_536d3232",
+        "filename": "common/acpi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T12:56:32Z",
+      "side": 1,
+      "message": "you no longer need this change",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 67
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9de5f7ad_07c61310",
+        "filename": "common/host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T12:56:32Z",
+      "side": 1,
+      "message": "you no longer need this change",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 67
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea1077be_d3e9bf60",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T12:56:32Z",
+      "side": 1,
+      "message": "it\u0027s not really related to ACPI, although the ACPI functions are calling this",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 18
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc25d3c7_cb65dffc",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T12:56:32Z",
+      "side": 1,
+      "message": "if you want it immediately, put 0 here",
+      "range": {
+        "startLine": 131,
+        "startChar": 43,
+        "endLine": 131,
+        "endChar": 44
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "824f74b4_fa1d0898",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T12:56:32Z",
+      "side": 1,
+      "message": "you need to put a comment describing the configuration option.\nYou can use the one I proposed in the previous iteration of the review:\n/* the keyboard backlight PWM is implemented in an external chip */",
+      "range": {
+        "startLine": 1570,
+        "startChar": 0,
+        "endLine": 1570,
+        "endChar": 30
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
