@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aad20a62_d9e5c0db",
+        "filename": "include/charge_state.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-27T19:29:52Z",
+      "side": 1,
+      "message": "It looks like CONFIG_SB_FIRMWARE_UPDATE is dead on TOT, we can remove it in another CL.",
+      "range": {
+        "startLine": 23,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "dd18415910a470e305a5be24c2ed2a98a5466c63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
