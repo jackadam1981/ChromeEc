@@ -655,13 +655,6 @@ void charger_task(void *u)
 
 	while (1) {
 
-#ifdef CONFIG_SB_FIRMWARE_UPDATE
-		if (sb_fw_update_in_progress()) {
-			task_wait_event(CHARGE_MAX_SLEEP_USEC);
-			continue;
-		}
-#endif
-
 		/* Let's see what's going on... */
 		curr.ts = get_time();
 		sleep_usec = 0;
