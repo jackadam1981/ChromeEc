@@ -100,6 +100,24 @@
     },
     {
       "key": {
+        "uuid": "c53c5321_6058afba",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-27T10:08:19Z",
+      "side": 1,
+      "message": "Looking at 790015, as expected it\u0027s not terribly better.\nOverall, the hardware has a size limit and we want to do several logical transfers.\nUnless your goal is to minimize the gap between chunks during the transfer.\nGiven common/i2c_master.c i2c_xfer() already has the retry loop, you could put the chunk loop there too and have the physical i2c drivers just export their size limit ?",
+      "parentUuid": "3db608a5_fe51724d",
+      "revId": "3dc278e10be6a42d1a4359d3e089f9480b359c6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a13f1f5c_bb740400",
         "filename": "include/config.h",
         "patchSetId": 1
