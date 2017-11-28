@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7bbb0c56_8e3a806c",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1117900
+      },
+      "writtenOn": "2017-11-28T00:19:55Z",
+      "side": 1,
+      "message": "Yes, I assume that the buttons are 0 \u003d not pressed, 1 \u003d pressed.  However, this is just locally.  raw_button_pressed should take care of the active high/low adjustments, no?",
+      "parentUuid": "dc657323_7453b538",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "0779686ddd065fddc2a3ef70f1b543a03f96262a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c680c4c_53f0ff34",
         "filename": "common/button.c",
         "patchSetId": 2
