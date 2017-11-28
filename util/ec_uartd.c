@@ -19,6 +19,8 @@
 #define _GNU_SOURCE
 #endif
 
+#define __packed __attribute__((__packed__))
+
 #include <errno.h>
 #include <fcntl.h>
 #pragma GCC diagnostic ignored "-Wstrict-prototypes"
