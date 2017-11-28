@@ -148,6 +148,7 @@
 #undef CONFIG_CONSOLE_CMDHELP
 #undef CONFIG_CMD_I2C_SCAN
 #undef CONFIG_CONSOLE_HISTORY
+#undef CONFIG_CMD_PWR
 
 /* Features of eSPI */
 #undef CONFIG_ESPI       /* Use eSPI protocol for host interface of x86 CPU */
