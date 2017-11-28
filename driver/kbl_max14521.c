@@ -46,6 +46,13 @@ static int max14521_set_kblight(int percent)
 {
         int rv, step;
 
+#ifdef CONFIG_CAROLINE_KBL_ALS
+        if(system_get_board_version() < 6) {
+                curr_percent = percent;
+                return EC_SUCCESS;
+        }
+#endif
+
         if(percent == 0) {
                 curr_percent = 0;
 
@@ -91,6 +98,13 @@ static int max14521_set_kblight(int percent)
 int max14521_init(void)
 {
 	int rv;
+
+#ifdef CONFIG_CAROLINE_KBL_ALS
+        if(system_get_board_version() < 6) {
+                curr_percent = 0;
+                return EC_SUCCESS;
+        }
+#endif
 
         rv = i2c_write8(I2C_PORT_KBLIGHT, MAX14521_I2C_ADDR,
                         MAX14521_REG_BST_FREQ, MAX14521_BST_FREQ_1KHZ);

@@ -8,6 +8,7 @@
 #include "driver/als_bh1730.h"
 #include "i2c.h"
 #include "console.h"
+#include "system.h"
 
 #define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE, format, ## args)
@@ -93,6 +94,12 @@ static int bh1730_convert_to_lux(uint32_t data0_1)
 static int bh1730_init_sensor(int port, int addr)
 {
 	int ret;
+
+#ifdef CONFIG_CAROLINE_KBL_ALS
+        if(system_get_board_version() < 6) {
+                return 0;
+        }
+#endif
 
 	CPRINTF("bh1730_init_sensor \n");
 
@@ -185,6 +192,12 @@ int bh1730_read_lux(const struct motion_sensor_t *s, vector_3_t v)
 	struct bh1730_drv_data_t *drv_data = BH1730_GET_DATA(s);
 	int ret;
 	int data0_1;
+
+#ifdef CONFIG_CAROLINE_KBL_ALS
+        if(system_get_board_version() < 6) {
+                return 0;
+        }
+#endif
 
 	/* read data0 and data1 from sensor */
 	ret = i2c_read32(I2C_PORT_ALS, s->addr, BH1730_DATA0LOW, &data0_1);
