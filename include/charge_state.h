@@ -132,7 +132,6 @@ int charge_get_battery_temp(int idx, int *temp_ptr);
  */
 const struct batt_params *charger_current_battery_params(void);
 
-
 /* Config Charger */
 #ifdef CONFIG_CHARGER_V2
 #include "charge_state_v2.h"

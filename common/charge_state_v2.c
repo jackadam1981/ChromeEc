@@ -1546,6 +1546,50 @@ DECLARE_HOST_COMMAND(EC_CMD_CHARGE_STATE, charge_command_charge_state,
 /*****************************************************************************/
 /* Console commands */
 
+#ifdef CONFIG_CMD_PWR_AVG
+
+static int command_pwr_avg(int argc, char **argv)
+{
+	int avg_voltage_mv;
+	int avg_current_ma;
+	int avg_pwr_mw;
+	int rv;
+	char type;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (argv[1][0] != 'm' || strnlen(argv[1], 3) > 2)
+		return EC_ERROR_PARAM1;
+
+	avg_voltage_mv = battery_get_avg_voltage();
+	avg_current_ma = battery_get_avg_current();
+	avg_pwr_mw = avg_voltage_mv * avg_current_ma / 1000;
+	type = argv[1][1];
+
+	switch (type) {
+	case 'v':
+		rv = avg_voltage_mv;
+		break;
+	case 'a':
+		rv = avg_current_ma;
+		break;
+	case 'w':
+		rv = avg_pwr_mw;
+		break;
+	default:
+		return EC_ERROR_PARAM1;
+	}
+	ccprintf("%s = %d\n", argv[1], rv);
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(pwr_avg, command_pwr_avg,
+			"[mw|ma|mv]",
+			"Get 1 min avg");
+
+#endif /* CONFIG_CMD_PWR_AVG */
+
 static int command_chgstate(int argc, char **argv)
 {
 	int rv;
