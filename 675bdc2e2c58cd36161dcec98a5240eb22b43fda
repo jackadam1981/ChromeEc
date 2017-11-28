@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5865afe_536b523b",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-28T17:47:19Z",
+      "side": 0,
+      "message": "At a glance, removing this seems like it might be problematic. Have you tried booting without a battery?",
+      "revId": "675bdc2e2c58cd36161dcec98a5240eb22b43fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
