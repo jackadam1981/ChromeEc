@@ -143,4 +143,14 @@ int sn5s330_is_pp_fet_enabled(uint8_t chip_idx, enum sn5s330_pp_idx pp,
  */
 int sn5s330_pp_fet_enable(uint8_t chip_idx, enum sn5s330_pp_idx pp, int enable);
 
+/**
+ * Interrupt Handler for the SN5S330.
+ *
+ * By default, the only interrupt sources that are unmasked are overcurrent
+ * conditions for PP1.
+ *
+ * @param port: The Type-C port which triggered the interrupt.
+ */
+void sn5s330_interrupt(int port);
+
 #endif /* defined(__CROS_EC_SN5S330_H) */

@@ -13,3 +13,12 @@
  * @return 1 if sourcing Vbus, 0 if not.
  */
 int ppc_is_sourcing_vbus(int port);
+
+/**
+ * Board specific callback when overcurrent status changes.
+ *
+ * @param port: The Type-C port where the overcurrent event happened.
+ * @param is_oc: 1: The port is currently overcurrented, 0: The port is not
+ *               overcurrented.
+ */
+void board_overcurrent_event(int port, int is_oc);

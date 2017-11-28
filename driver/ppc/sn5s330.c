@@ -18,6 +18,7 @@
 #include "system.h"
 #include "timer.h"
 #include "usb_pd_tcpm.h"
+#include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -474,4 +475,55 @@ int ppc_is_sourcing_vbus(int port)
 	sn5s330_is_pp_fet_enabled(port, SN5S330_PP1, &is_sourcing_vbus);
 
 	return is_sourcing_vbus;
+}
+
+static void sn5s330_interrupt_deferred(int port)
+{
+	int rise = 0;
+	int fall = 0;
+
+	/*
+	 * The only interrupts that should be enabled are the PP1 overcurrent
+	 * condition.
+	 */
+	read_reg(port, SN5S330_INT_TRIP_RISE_REG1, &rise);
+	read_reg(port, SN5S330_INT_TRIP_FALL_REG1, &fall);
+
+	/* Let the board know about the overcurrent event. */
+	board_overcurrent_event(port, !!(rise & SN5S330_ILIM_PP1_MASK));
+
+	/* Clear the interrupt sources. */
+	write_reg(port, SN5S330_INT_TRIP_RISE_REG1, rise);
+	write_reg(port, SN5S330_INT_TRIP_FALL_REG1, fall);
+}
+
+static void c0_interrupt_deferred(void) { sn5s330_interrupt_deferred(0); }
+DECLARE_DEFERRED(c0_interrupt_deferred);
+static void c1_interrupt_deferred(void) { sn5s330_interrupt_deferred(1); }
+DECLARE_DEFERRED(c1_interrupt_deferred);
+#if CONFIG_USB_PD_PORT_COUNT == 3
+static void c2_interrupt_deferred(void) { sn5s330_interrupt_deferred(2); }
+DECLARE_DEFERRED(c2_interrupt_deferred);
+#endif /* CONFIG_USB_PD_PORT_COUNT = 3 */
+
+void sn5s330_interrupt(int port)
+{
+	switch (port) {
+	case 0:
+		hook_call_deferred(&c0_interrupt_deferred_data, 0);
+		break;
+
+	case 1:
+		hook_call_deferred(&c1_interrupt_deferred_data, 0);
+		break;
+
+#if CONFIG_USB_PD_PORT_COUNT == 3
+	case 2:
+		hook_call_deferred(&c2_interrupt_deferred_data, 0);
+		break;
+#endif /* CONFIG_USB_PD_PORT_COUNT = 3 */
+
+	default:
+		break;
+	}
 }
