@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "console.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
 #include "smbus.h"
@@ -282,6 +283,56 @@ test_mockable int battery_device_chemistry(char *dest, int size)
 {
 	return sb_read_string(SB_DEVICE_CHEMISTRY, dest, size);
 }
+
+#ifdef CONFIG_CMD_PWR_AVG
+
+int16_t battery_get_avg_current(void)
+{
+	int current;
+
+	/* This is a signed 16-bit value. */
+	sb_read(SB_AVERAGE_CURRENT, &current);
+	return (int16_t)current;
+}
+
+#define MAX_VOLTAGE_SAMPLES         6
+#define VOLTAGE_SAMPLING_INTERVAL   (10 * SECOND)
+static uint32_t voltage_sample_sum;
+static uint8_t voltage_sample_count;
+static uint8_t voltage_sample_ptr;
+/* ring array used to keep voltage samples. */
+static uint16_t voltage_samples[MAX_VOLTAGE_SAMPLES];
+
+static void update_avg_voltage(void);
+
+DECLARE_DEFERRED(update_avg_voltage);
+
+uint16_t battery_get_avg_voltage(void)
+{
+	if (!voltage_sample_count)
+		update_avg_voltage();
+	return voltage_sample_sum / voltage_sample_count;
+}
+
+static void update_avg_voltage(void)
+{
+	int voltage;
+
+	sb_read(SB_VOLTAGE, &voltage);
+	// evict oldest sample from array, update with fresh reading,
+	// and update running avg sum.
+	voltage_sample_sum += voltage - voltage_samples[voltage_sample_ptr];
+	voltage_samples[voltage_sample_ptr] = voltage;
+	if (voltage_sample_count < MAX_VOLTAGE_SAMPLES)
+		voltage_sample_count++;
+	//wrap pointer used for ring array index.
+	voltage_sample_ptr++;
+	if (voltage_sample_ptr == MAX_VOLTAGE_SAMPLES)
+		voltage_sample_ptr = 0;
+	hook_call_deferred(&update_avg_voltage_data, VOLTAGE_SAMPLING_INTERVAL);
+}
+
+#endif /* CONFIG_CMD_PWR_AVG */
 
 void battery_get_params(struct batt_params *batt)
 {
