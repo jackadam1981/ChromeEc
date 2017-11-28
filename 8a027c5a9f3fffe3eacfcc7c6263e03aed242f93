@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b0ba980_d344ceef",
+        "filename": "chip/it83xx/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-11-28T17:24:30Z",
+      "side": 1,
+      "message": "This isn\u0027t a register, is it?  Just a variable for the flash module.  Perhaps it should go into flash_chip.h?  Also, please add a comment describing what it is and how it\u0027s used.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 35
+      },
+      "revId": "8a027c5a9f3fffe3eacfcc7c6263e03aed242f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
