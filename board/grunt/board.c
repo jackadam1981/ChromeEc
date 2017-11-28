@@ -13,6 +13,9 @@
 #include "common.h"
 #include "console.h"
 #include "compile_time_macros.h"
+#include "driver/accel_kionix.h"
+#include "driver/accel_kx022.h"
+#include "driver/accelgyro_bmi160.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -20,6 +23,7 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "motion_sense.h"
 #include "power.h"
 #include "power_button.h"
 #include "registers.h"
@@ -86,3 +90,159 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+
+/* Motion sensors */
+/* Mutexes */
+static struct mutex g_lid_mutex;
+static struct mutex g_base_mutex;
+
+/* Matrix to rotate accelrator into standard reference frame */
+const matrix_3x3_t base_standard_ref = {
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ FLOAT_TO_FP(1), 0,  0},
+	{ 0, 0,  FLOAT_TO_FP(1)}
+};
+
+/* sensor private data */
+static struct kionix_accel_data g_kx022_data;
+static struct bmi160_drv_data_t g_bmi160_data;
+
+struct motion_sensor_t motion_sensors[] = {
+	[LID_ACCEL] = {
+	 .name = "Lid Accel",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_KX022,
+	 .type = MOTIONSENSE_TYPE_ACCEL,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &kionix_accel_drv,
+	 .mutex = &g_lid_mutex,
+	 .drv_data = &g_kx022_data,
+	 .port = I2C_PORT_SENSOR,
+	 .addr = KX022_ADDR1,
+	 .rot_standard_ref = NULL, /* Identity matrix. */
+	 .default_range = 2, /* g, enough for laptop. */
+	 .config = {
+		/* AP: by default use EC settings */
+		[SENSOR_CONFIG_AP] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 0,
+		},
+		 /* Sensor off in S3/S5. */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+		/* Sensor off in S3/S5. */
+		[SENSOR_CONFIG_EC_S5] = {
+			.odr = 0,
+			.ec_rate = 0,
+		},
+	 },
+	},
+
+	[BASE_ACCEL] = {
+	 .name = "Base Accel",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_ACCEL,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .port = I2C_PORT_SENSOR,
+	 .addr = BMI160_ADDR0,
+	 .default_range = 2, /* g, enough for laptop */
+	 .rot_standard_ref = NULL,
+	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
+	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
+	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* EC use accel for angle detection */
+		 [SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+	 },
+	},
+
+	[BASE_GYRO] = {
+	 .name = "Base Gyro",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .type = MOTIONSENSE_TYPE_GYRO,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &bmi160_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_bmi160_data,
+	 .port = I2C_PORT_SENSOR,
+	 .addr = BMI160_ADDR0,
+	 .default_range = 1000, /* dps */
+	 .rot_standard_ref = &base_standard_ref,
+	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* EC does not need in S0 */
+		 [SENSOR_CONFIG_EC_S0] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+	 },
+	},
+};
+
+const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+#ifndef TEST_BUILD
+void lid_angle_peripheral_enable(int enable)
+{
+	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
+}
+#endif
+
+/* Called on AP S3 -> S0 transition */
+static void board_chipset_resume(void)
+{
+	gpio_set_level(GPIO_EN_PP1800_SENSOR, 1);
+	/* TODO(teravest): Give sensors time to boot? */
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume,
+	      MOTION_SENSE_HOOK_PRIO - 1);
+
+/* Called on AP S0 -> S3 transition */
+static void board_chipset_suspend(void)
+{
+	gpio_set_level(GPIO_EN_PP1800_SENSOR, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
