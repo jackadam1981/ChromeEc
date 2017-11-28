@@ -56,6 +56,14 @@
 #define I2C_PORT_THERMAL	NPCX_I2C_PORT3_0
 #define I2C_PORT_SENSOR		NPCX_I2C_PORT7_0
 
+/* Sensors */
+#define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_ACCEL_KX022
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_UPDATE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -73,6 +81,12 @@ enum power_signal {
 	X86_VGATE,
 	X86_SPOK,
 	POWER_SIGNAL_COUNT
+};
+
+enum sensor_id {
+	LID_ACCEL,
+	BASE_ACCEL,
+	BASE_GYRO,
 };
 
 void board_reset_pd_mcu(void);
