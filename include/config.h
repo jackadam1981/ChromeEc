@@ -1575,6 +1575,15 @@
 #undef CONFIG_I2C_PASSTHRU_RESTRICTED
 #undef CONFIG_I2C_VIRTUAL_BATTERY
 
+/*
+ * Conservative I2C reading size per single transaction. For example, register
+ * of stm32f0 and stm32l4 are limited to be 8 bits for this field.
+ */
+#define CONFIG_I2C_READING_PER_XFER_CALL 0xFF
+
+/* Enable large reading in i2c_xfer() in i2c_master.c without retry. */
+#undef CONFIG_I2C_XFER_LARGE_READING
+
 /* EC uses an I2C master interface */
 #undef CONFIG_I2C_MASTER
 

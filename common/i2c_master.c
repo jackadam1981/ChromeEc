@@ -55,6 +55,30 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 {
 	int i;
 	int ret = EC_SUCCESS;
+#ifdef CONFIG_I2C_XFER_LARGE_READING
+	/* Split into multiple chip_i2c_xfer call without retry. */
+	int yet_to_receive = in_size;
+
+	if (in_size > CONFIG_I2C_READING_PER_XFER_CALL &&
+		 flags == I2C_XFER_SINGLE) {
+		flags = I2C_XFER_START;
+		do {
+			if (yet_to_receive > CONFIG_I2C_READING_PER_XFER_CALL) {
+				in_size = CONFIG_I2C_READING_PER_XFER_CALL;
+			} else {
+				in_size = yet_to_receive;
+				flags = I2C_XFER_STOP;
+			}
+			ret |= chip_i2c_xfer(port, slave_addr, out, out_size,
+				in, in_size, flags);
+			out = NULL;
+			flags = out_size = 0;
+			in += in_size;
+			yet_to_receive -= in_size;
+		} while (yet_to_receive && ret == EC_SUCCESS);
+		return ret;
+	}
+#endif
 
 	for (i = 0; i <= CONFIG_I2C_NACK_RETRY_COUNT; i++) {
 		ret = chip_i2c_xfer(port, slave_addr, out, out_size, in,
