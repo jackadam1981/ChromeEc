@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1d2a0022_c279d47b",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-11-28T04:54:14Z",
+      "side": 1,
+      "message": "With your USB descriptor patch, we don\u0027t need to check this anymore :)",
+      "parentUuid": "58f1e42a_df88b385",
+      "revId": "c34fe3f98a3dae357491f6c5998024f7ced745c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c5c3fa3_eb38e0a9",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "c34fe3f98a3dae357491f6c5998024f7ced745c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a799328_330f8899",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1116939
+      },
+      "writtenOn": "2017-11-28T04:54:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c5c3fa3_eb38e0a9",
+      "revId": "c34fe3f98a3dae357491f6c5998024f7ced745c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
