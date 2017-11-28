@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7773815c_870d4061",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-11-28T21:21:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f20f89_458296d6",
+      "range": {
+        "startLine": 70,
+        "startChar": 33,
+        "endLine": 70,
+        "endChar": 45
+      },
+      "revId": "f44ade54fb602b632b955168640bfb3cd339d5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5a0a050_6aeb31bf",
         "filename": "extra/usb_updater/servo_updater.py",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-28T15:52:38Z",
       "side": 1,
       "message": "Better to split these 2 cases into 2 if-clauses, more readable than merging into one.",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 44
+      },
+      "revId": "f44ade54fb602b632b955168640bfb3cd339d5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8800207f_c7f4d2e7",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-11-28T21:21:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5a0a050_6aeb31bf",
       "range": {
         "startLine": 83,
         "startChar": 5,
