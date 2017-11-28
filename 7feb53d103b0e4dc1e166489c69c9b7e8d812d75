@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b64b5ba3_343c7edf",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-28T05:15:21Z",
+      "side": 1,
+      "message": "I should\u0027ve dropped it.",
+      "parentUuid": "fed000cb_ca2c1db2",
+      "range": {
+        "startLine": 17,
+        "startChar": 41,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e11f32b5_4edbecc4",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 4
@@ -105,6 +129,24 @@
       "writtenOn": "2017-11-28T04:50:10Z",
       "side": 1,
       "message": "might want to combine these into one line if it\u0027s going to be periodically outputting to the console",
+      "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb1a87de_49eaebf4",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-28T05:15:21Z",
+      "side": 1,
+      "message": "I should\u0027ve dropped it.",
+      "parentUuid": "86f37965_cd1e9b9b",
       "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
