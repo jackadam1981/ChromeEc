@@ -65,6 +65,24 @@ static int max17055_write(int offset, int data)
 	return i2c_write16(I2C_PORT_BATTERY, MAX17055_ADDR, offset, data);
 }
 
+#ifdef CONFIG_CMD_PWR_AVG
+
+static int max17055_shift_mask_write(int offset, int16_t data,
+					int16_t shift, int16_t mask)
+{
+	int old_data;
+	int new_data;
+	int rv;
+
+	rv = max17055_read(offset, &old_data)
+	if (rv)
+		return rv;
+	new_data = ((data << shift) & mask) | (old_data & ~mask);
+	return max17055_write(offset, new_data);
+}
+
+#endif /* CONFIG_CMD_PWR_AVG */
+
 /* Return 1 if the device id is correct. */
 static int max17055_probe(void)
 {
@@ -263,6 +281,28 @@ void battery_get_params(struct batt_params *batt)
 		batt->flags |= BATT_FLAG_WANT_CHARGE;
 }
 
+#ifdef CONFIG_CMD_PWR_AVG
+
+int16_t battery_get_avg_current(void)
+{
+	int current;
+
+	/* This is a signed 16-bit value. */
+	max17055_read(REG_AVERAGE_CURRENT, &current);
+	return (int16_t)current;
+}
+
+uint16_t battery_get_avg_voltage(void)
+{
+	int voltage;
+
+	/* This is an unsigned 16-bit value. */
+	max17055_read(REG_AVERAGE_VOLTAGE, &voltage);
+	return (uint16_t)voltage;
+}
+
+#endif /* CONFIG_CMD_PWR_AVG */
+
 /* Wait until battery is totally stable. */
 int battery_wait_for_stable(void)
 {
@@ -338,6 +378,18 @@ static int max17055_init_config(void)
 		    max17055_write(REG_QR_TABLE30, config->qr_table30))
 			return EC_ERROR_UNKNOWN;
 	}
+
+#ifdef CONFIG_CMD_PWR_AVG
+	/* configure AvgCurent & AvgVoltage registers to keep a 1min average
+	 * see maxim17055. for details.
+	 */
+	if (max17055_shift_mask_write(REG_FILTERCFG, AVG_CURR_CFG_1MIN_PERIOD,
+				      AVG_CURR_CFG_MASK, AVG_CURR_CFG_SHIFT) ||
+	    max17055_shift_mask_write(REG_FILTERCFG, AVG_VOLT_CFG_1MIN_PERIOD,
+				      AVG_VOLT_CFG_MASK, AVG_VOLT_CFG_SHIFT))
+		return EC_ERROR_UNKNOWN;
+#endif /* CONFIG_CMD_PWR_AVG */
+
 
 	/* Restore the original HibCFG value. */
 	if (max17055_write(REG_HIBCFG, hib_cfg))

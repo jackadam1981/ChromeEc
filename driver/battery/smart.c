@@ -8,6 +8,7 @@
 #include "battery.h"
 #include "battery_smart.h"
 #include "console.h"
+#include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
 #include "smbus.h"
@@ -21,6 +22,18 @@
 #define BATTERY_NO_RESPONSE_TIMEOUT	(1000*MSEC)
 
 static int fake_state_of_charge = -1;
+
+#ifdef CONFIG_CMD_PWR_AVG
+
+#define MAX_VOLTAGE_SAMPLES         6
+#define VOLTAGE_SAMPLING_INTERVAL   (10 * SECOND)
+static uint32_t voltage_sample_sum;
+static uint8_t voltage_sample_count;
+static uint8_t voltage_sample_ptr;
+static uint16_t voltage_samples[MAX_VOLTAGE_SAMPLES];
+static void update_avg_voltage(void);
+
+#endif /* CONFIG_CMD_PWR_AVG */
 
 test_mockable int sb_read(int cmd, int *param)
 {
@@ -282,6 +295,45 @@ test_mockable int battery_device_chemistry(char *dest, int size)
 {
 	return sb_read_string(SB_DEVICE_CHEMISTRY, dest, size);
 }
+
+#ifdef CONFIG_CMD_PWR_AVG
+
+int16_t battery_get_avg_current(void)
+{
+	int current;
+
+	/* This is a signed 16-bit value. */
+	sb_read(SB_AVERAGE_CURRENT, &current);
+	return (int16_t)current;
+}
+
+uint16_t battery_get_avg_voltage(void)
+{
+	return voltage_sample_sum / voltage_sample_count;
+}
+
+DECLARE_DEFERRED(update_avg_voltage);
+
+static void update_avg_voltage(void)
+{
+	int voltage;
+	int prev_voltage;
+
+	sb_read(SB_VOLTAGE, &voltage);
+	prev_voltage = voltage_samples[voltage_sample_ptr];
+	voltage_samples[voltage_sample_ptr] = voltage;
+	voltage_sample_sum += (-prev_voltage + voltage);
+	if (voltage_sample_count < MAX_VOLTAGE_SAMPLES)
+		voltage_sample_count++;
+	voltage_sample_ptr++;
+	if (voltage_sample_ptr == MAX_VOLTAGE_SAMPLES)
+		voltage_sample_ptr = 0;
+	hook_call_deferred(&update_avg_voltage_data, VOLTAGE_SAMPLING_INTERVAL);
+}
+
+DECLARE_HOOK(HOOK_INIT, update_avg_voltage, HOOK_PRIO_DEFAULT);
+
+#endif /* CONFIG_CMD_PWR_AVG */
 
 void battery_get_params(struct batt_params *batt)
 {
