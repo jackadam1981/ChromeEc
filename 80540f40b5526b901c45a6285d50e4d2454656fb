@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e35eb95b_3c95836f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-28T02:56:26Z",
+      "side": 1,
+      "message": "How about something like \u0027For rev1+, we assign new GPIO pin to detect board id. NOTE: This CL will break board id detection on rev0.\u0027",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "80540f40b5526b901c45a6285d50e4d2454656fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
