@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5eccbc0_bbc3ffd6",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1214649
+      },
+      "writtenOn": "2017-11-28T08:17:04Z",
+      "side": 1,
+      "message": "What about extending this to AP reset (chipset_reset) scenario also? This might be helpful to cover issue discussed in https://partnerissuetracker.corp.google.com/issues/69334392.",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 669,
+        "endChar": 29
+      },
+      "revId": "d0dd1c8990e26e3a105afa2dcc135fc43833af2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
