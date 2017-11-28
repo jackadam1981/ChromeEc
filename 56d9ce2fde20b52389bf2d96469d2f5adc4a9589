@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "de6b86ca_2af0f0f6",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-11-28T10:56:48Z",
+      "side": 1,
+      "message": "Sounds like everyone is fine with a separate function.",
+      "parentUuid": "bec48831_3fae21f3",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 30
+      },
+      "revId": "56d9ce2fde20b52389bf2d96469d2f5adc4a9589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26969adc_44f3e135",
         "filename": "common/i2c_master.c",
         "patchSetId": 2
@@ -69,6 +93,30 @@
       "revId": "56d9ce2fde20b52389bf2d96469d2f5adc4a9589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2f5cf77_bd5e92cc",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-11-28T10:56:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26969adc_44f3e135",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 9
+      },
+      "revId": "56d9ce2fde20b52389bf2d96469d2f5adc4a9589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
