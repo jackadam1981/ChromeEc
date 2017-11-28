@@ -52,6 +52,24 @@
       "revId": "d6c836b4dacdce0f3279ac56d92e7cfd92fdf967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f132278_08175310",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2017-11-28T16:39:14Z",
+      "side": 0,
+      "message": "what is the side effect you see? it should be okay to set charging current 0 at idle mode",
+      "parentUuid": "a1d68b31_d0ae3dc8",
+      "revId": "d6c836b4dacdce0f3279ac56d92e7cfd92fdf967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
