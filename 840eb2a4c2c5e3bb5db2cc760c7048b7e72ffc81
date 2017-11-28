@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bf879e79_b39b81b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-11-28T02:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef932d6e_fb393e8a",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "840eb2a4c2c5e3bb5db2cc760c7048b7e72ffc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df1bb653_6dce70c3",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3f157e41_6eaedf25",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-11-28T02:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df1bb653_6dce70c3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "840eb2a4c2c5e3bb5db2cc760c7048b7e72ffc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "200d4de5_46a9e197",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-11-28T02:33:48Z",
       "side": 1,
       "message": "What version is it? Since which build did you change the GPIO to probe board_id?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "840eb2a4c2c5e3bb5db2cc760c7048b7e72ffc81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fd1de43_99baa85e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-11-28T02:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "200d4de5_46a9e197",
       "range": {
         "startLine": 13,
         "startChar": 0,
