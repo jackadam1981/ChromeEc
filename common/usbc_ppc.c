@@ -48,10 +48,7 @@ int ppc_is_vbus_present(int port, int *vbus_present)
 	if (port >= ppc_cnt)
 		return EC_ERROR_INVAL;
 
-	if (ppc_chips[port].drv->get_vbus_status == NULL)
-		return EC_ERROR_UNIMPLEMENTED;
-
-	return ppc_chips[port].drv->get_vbus_status(port, vbus_present);
+	return ppc_chips[port].drv->is_vbus_status(port, vbus_present);
 }
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 
