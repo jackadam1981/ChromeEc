@@ -16,13 +16,19 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#define PTN5110_EXT_GPIO_CONFIG		0x92
-#define PTN5110_EXT_GPIO_CONTROL	0x93
+/* Analogix-7447 TCPC registers define */
+#define ANX7447_POWER_STATUS		0x1E
+#define ANX7447_POWER_STATUS_SOURCING_VBUS	(1 << 4)
 
-#define PTN5110_EXT_GPIO_FRS_EN			(1 << 6)
-#define PTN5110_EXT_GPIO_EN_SRC			(1 << 5)
-#define PTN5110_EXT_GPIO_EN_SNK1		(1 << 4)
-#define PTN5110_EXT_GPIO_IILIM_5V_VBUS_L	(1 << 3)
+#define ANX7447_COMMAND_REG		0x23
+#define ANX7447_COMMAND_DISABLE_SINK_VBUS	0x44
+#define ANX7447_COMMAND_ENABLE_SINK_VBUS	0x55
+#define ANX7447_COMMAND_DISABLE_SOURCE_VBUS	0x66
+#define ANX7447_COMMAND_ENABLE_SOURCE_VBUS	0x77
+
+#define ANX7447_DEVICE_CAPABILITIES_1_0	0x24
+#define ANX7447_DEV_CAP_0_1_SINK_VBUS	(1 << 2)
+#define ANX7447_DEV_CAP_0_1_SOURCE_VBUS	(1 << 0)
 
 enum glkrvp_charge_ports {
 	TYPE_C_PORT_0,
@@ -31,8 +37,9 @@ enum glkrvp_charge_ports {
 };
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{NPCX_I2C_PORT0_1, 0xA0, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	{NPCX_I2C_PORT0_1, 0xA4, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_1, 0x52, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	/* Keep it to avoid errors */
+	{NPCX_I2C_PORT0_1, 0x52, &tcpci_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_COUNT);
 
@@ -56,37 +63,24 @@ static int board_charger_port_is_sourcing_vbus(int port)
 {
 	int reg;
 
-	if (tcpc_read(port, PTN5110_EXT_GPIO_CONTROL, &reg))
+	if (tcpc_read(port, ANX7447_POWER_STATUS, &reg))
 		return 0;
 
-	return !!(reg & PTN5110_EXT_GPIO_EN_SRC);
-}
-
-static int ptn5110_ext_gpio_enable(int port, int enable, int gpio)
-{
-	int reg;
-	int rv;
-
-	rv = tcpc_read(port, PTN5110_EXT_GPIO_CONTROL, &reg);
-	if (rv)
-		return rv;
-
-	if (enable)
-		reg |= gpio;
-	else
-		reg &= ~gpio;
-
-	return tcpc_write(port, PTN5110_EXT_GPIO_CONTROL, reg);
+	return !!(reg & ANX7447_POWER_STATUS_SOURCING_VBUS);
 }
 
 void board_charging_enable(int port, int enable)
 {
-	ptn5110_ext_gpio_enable(port, enable, PTN5110_EXT_GPIO_EN_SNK1);
+	tcpc_write(port, ANX7447_COMMAND_REG, enable ?
+			ANX7447_COMMAND_ENABLE_SINK_VBUS :
+			ANX7447_COMMAND_DISABLE_SINK_VBUS);
 }
 
 void board_vbus_enable(int port, int enable)
 {
-	ptn5110_ext_gpio_enable(port, enable, PTN5110_EXT_GPIO_EN_SRC);
+	tcpc_write(port, ANX7447_COMMAND_REG, enable ?
+			ANX7447_COMMAND_ENABLE_SOURCE_VBUS :
+			ANX7447_COMMAND_DISABLE_SOURCE_VBUS);
 }
 
 void tcpc_alert_event(enum gpio_signal signal)
@@ -114,19 +108,12 @@ int board_tcpc_post_init(int port)
 	int reg;
 	int rv;
 
-	rv = tcpc_read(port, PTN5110_EXT_GPIO_CONFIG, &reg);
+	rv = tcpc_read(port, ANX7447_DEVICE_CAPABILITIES_1_0, &reg);
 	if (rv)
 		return rv;
 
-	/* Configure PTN5110 External GPIOs as output */
-	reg |=  PTN5110_EXT_GPIO_EN_SRC | PTN5110_EXT_GPIO_EN_SNK1 |
-		PTN5110_EXT_GPIO_IILIM_5V_VBUS_L;
-	rv = tcpc_write(port, PTN5110_EXT_GPIO_CONFIG, reg);
-	if (rv)
-		return rv;
-
-	return ptn5110_ext_gpio_enable(port, 1,
-					PTN5110_EXT_GPIO_IILIM_5V_VBUS_L);
+	reg |= ANX7447_DEV_CAP_0_1_SOURCE_VBUS | ANX7447_DEV_CAP_0_1_SINK_VBUS;
+	return tcpc_write(port, ANX7447_DEVICE_CAPABILITIES_1_0, reg);
 }
 
 /* Reset PD MCU */
