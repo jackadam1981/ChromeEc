@@ -1901,6 +1901,15 @@ enum motionsensor_chip {
 	MOTIONSENSE_CHIP_BH1730 = 11,
 };
 
+/* List of orientation positions */
+enum motionsensor_orientation {
+	MOTIONSENSE_ORIENTATION_LANDSCAPE = 0,
+	MOTIONSENSE_ORIENTATION_PORTRAIT = 1,
+	MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_PORTRAIT = 2,
+	MOTIONSENSE_ORIENTATION_UPSIDE_DOWN_LANDSCAPE = 3,
+	MOTIONSENSE_ORIENTATION_UNKNOWN = 4,
+};
+
 struct __ec_todo_packed ec_response_motion_sensor_data {
 	/* Flags for each sensor. */
 	uint8_t flags;
