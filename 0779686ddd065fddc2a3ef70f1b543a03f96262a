@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a2c09093_59b0da5c",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-28T00:26:24Z",
+      "side": 1,
+      "message": "Basically, this function would have to do the same work as raw_button_pressed in order to ensure raw_button_pressed does the right thing. Consider this example:\n1. BTN_X(bit 5) is active high\n2. On EC console, user simulates \"button x 50\"\n3. simulated_button_pressed on first query will return :\n        button_mask \u003d (1 \u003c\u003c 5);\n        sim_button_state \u003d 0 ^ (1 \u003c\u003c 5) \u003d (1 \u003c\u003c 5)\n        return !(sim_button_state \u0026 button_mask) \u003d !((1 \u003c\u003c 5) \u0026 (1 \u003c\u003c 5)) \u003d\u003d\u003e Returns 0\n4. raw_button_pressed will see raw_value \u003d 0\n   Since button-\u003eflags will be BUTTON_FLAG_ACTIVE_HIGH, it will return raw_value back which is 0 indicating button is not pressed.",
+      "parentUuid": "7bbb0c56_8e3a806c",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "0779686ddd065fddc2a3ef70f1b543a03f96262a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c680c4c_53f0ff34",
         "filename": "common/button.c",
         "patchSetId": 2
