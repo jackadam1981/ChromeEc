@@ -65,6 +65,39 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	return ret;
 }
 
+int i2c_xfer_large_reading(int port, int slave_addr, const uint8_t *out,
+			   int out_size, uint8_t *in, int in_size)
+{
+	int flags = I2C_XFER_START;
+	int yet_to_receive = in_size;
+	int ret = EC_SUCCESS;
+
+	if (in_size > CONFIG_I2C_READ_PER_XFER_CALL) {
+		do {
+			if (yet_to_receive > CONFIG_I2C_READ_PER_XFER_CALL) {
+				in_size = CONFIG_I2C_READ_PER_XFER_CALL;
+			} else {
+				in_size = yet_to_receive;
+				flags = I2C_XFER_STOP;
+			}
+			ret = chip_i2c_xfer(port, slave_addr, out, out_size,
+				in, in_size, flags);
+			out = NULL;
+			flags = out_size = 0;
+			in += in_size;
+			yet_to_receive -= in_size;
+		} while (yet_to_receive && ret == EC_SUCCESS);
+	} else {
+		/*
+		 * Looks like we didn't hit the limits. Fall back to normal
+		 * i2c_xfer() path.
+		 */
+		ret = i2c_xfer(port, slave_addr, out, out_size, in, in_size,
+				I2C_XFER_SINGLE);
+	}
+	return ret;
+}
+
 void i2c_lock(int port, int lock)
 {
 #ifdef CONFIG_I2C_MULTI_PORT_CONTROLLER

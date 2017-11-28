@@ -106,6 +106,24 @@ extern const int i2c_test_dev_used;
 int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	     uint8_t *in, int in_size, int flags);
 
+/**
+ * Thin wrapper for chips that doesn't support large reading with flag
+ * I2C_XFER_SINGLE. This function is expected to call only when the desired
+ * flag is I2C_XFER_SINGLE. Reading will be split into multiple call of
+ * chip_i2c_xfer() without retry logic. If chips support large reading, it will
+ * automatically fall back to i2c_xfer().
+ *
+ * @param port		Port to access
+ * @param slave_addr	Slave device address
+ * @param out		Data to send
+ * @param out_size	Number of bytes to send
+ * @param in		Destination buffer for received data
+ * @param in_size	Number of bytes to receive
+ * @return EC_SUCCESS, or non-zero if error.
+ */
+int i2c_xfer_large_reading(int port, int slave_addr, const uint8_t *out,
+			   int out_size, uint8_t *in, int in_size);
+
 #define I2C_LINE_SCL_HIGH (1 << 0)
 #define I2C_LINE_SDA_HIGH (1 << 1)
 #define I2C_LINE_IDLE (I2C_LINE_SCL_HIGH | I2C_LINE_SDA_HIGH)
