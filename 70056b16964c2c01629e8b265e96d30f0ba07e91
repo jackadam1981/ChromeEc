@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "9f6140eb_23f844d3",
+        "filename": "chip/stm32/i2c-stm32f0.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-11-28T07:58:34Z",
+      "side": 1,
+      "message": "Thanks for point this out. The correct logic should be :\nif (      (I2C_XFER_SINGLE)      \u0026\u0026 (in_bytes \u003e 0xFF)  ) for special case, which inverted to\n\nif (     !(I2C_XFER_SINGLE)      || (in_bytes \u003c\u003d 0xFF) )\nif ( !(xfer_start \u0026\u0026 xfer_stop)  || (in_bytes \u003c\u003d 0xFF) )\nif ( (!xfer_start || !xfer_stop) || (in_bytes \u003c\u003d 0xFF) )\n    goto xfer_receive;\n\n\nAfter fixing this logic remaining comments should be solved.",
+      "parentUuid": "d2f75666_108d85f6",
+      "range": {
+        "startLine": 483,
+        "startChar": 26,
+        "endLine": 483,
+        "endChar": 49
+      },
+      "revId": "70056b16964c2c01629e8b265e96d30f0ba07e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f016fb9_489d2675",
         "filename": "chip/stm32/i2c-stm32f0.c",
         "patchSetId": 1
