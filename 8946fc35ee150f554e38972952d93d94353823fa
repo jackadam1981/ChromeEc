@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e6b875d_afe4e3ba",
+        "filename": "board/grunt/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-28T20:44:37Z",
+      "side": 1,
+      "message": "I wonder what the best priority and stack size is. I see some other boards using VENTI_TASK_STACK_SIZE and ordering this before chipset_task.",
+      "revId": "8946fc35ee150f554e38972952d93d94353823fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
