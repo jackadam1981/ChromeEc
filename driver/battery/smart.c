@@ -283,6 +283,20 @@ test_mockable int battery_device_chemistry(char *dest, int size)
 	return sb_read_string(SB_DEVICE_CHEMISTRY, dest, size);
 }
 
+#ifdef CONFIG_CMD_PWR
+
+void battery_get_power(struct battery_power_info *pwr_info)
+{
+	int current;
+
+	sb_read(SB_VOLTAGE, &pwr_info->voltage);
+	/* This is a signed 16-bit value. */
+	sb_read(SB_CURRENT, &current);
+	pwr_info->current = (int16_t)current;
+}
+
+#endif /* CONFIG_CMD_PWR */
+
 void battery_get_params(struct batt_params *batt)
 {
 	struct batt_params batt_new = {0};

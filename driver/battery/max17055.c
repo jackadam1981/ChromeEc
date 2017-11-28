@@ -263,6 +263,21 @@ void battery_get_params(struct batt_params *batt)
 		batt->flags |= BATT_FLAG_WANT_CHARGE;
 }
 
+#ifdef CONFIG_CMD_PWR
+
+void battery_get_power(struct battery_power_info *pwr_info)
+{
+	int reg_val;
+
+	max17055_read(REG_VOLTAGE, &reg_val);
+	pwr_info->voltage = VOLTAGE_CONV(reg_val);
+	/* This is a signed 16-bit value. */
+	max17055_read(REG_CURRENT, &reg_val);
+	pwr_info->current = (CURRENT_CONV((int16_t)reg_val));
+}
+
+#endif /* CONFIG_CMD_PWR */
+
 /* Wait until battery is totally stable. */
 int battery_wait_for_stable(void)
 {

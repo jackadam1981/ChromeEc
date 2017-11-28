@@ -21,6 +21,30 @@
 #define CHARGE_MIN_SLEEP_USEC          (MSEC * 50)
 #define CHARGE_MAX_SLEEP_USEC          MINUTE
 
+#ifdef CONFIG_CMD_PWR
+
+#define MAX_POWER_SAMPLES              60
+#define PWR_UPDATE_INTERVAL            SECOND
+/* TODO(coconutruben): raise an error if HOOK_TICKS_PER_SAMPLE is below 1 */
+/* TODO(coconutruben): this works well right now because all hook ticks
+ * multiply nicely to one second. What if that's not the case.
+ */
+#define PWR_HOOK_TICKS_PER_SAMPLE  (PWR_UPDATE_INTERVAL/HOOK_TICK_INTERVAL)
+
+/* Power sample array and house keeping for running
+ * average of power consumption
+ */
+
+struct avg_battery_power_info {
+	int samples[MAX_POWER_SAMPLES];
+	int sample_sum;
+	int avg_power;
+	uint8_t ptr;
+	uint8_t samples_recorded;
+};
+
+#endif /* CONFIG_CMD_PWR */
+
 /* Power states */
 enum charge_state {
 	/* Meta-state; unchanged from previous time through task loop */
@@ -131,7 +155,6 @@ int charge_get_battery_temp(int idx, int *temp_ptr);
  * Use this carefully. Other threads can modify data while you are reading.
  */
 const struct batt_params *charger_current_battery_params(void);
-
 
 /* Config Charger */
 #ifdef CONFIG_CHARGER_V2

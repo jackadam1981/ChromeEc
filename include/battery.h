@@ -74,6 +74,26 @@ struct batt_params {
 	int flags;            /* Flags */
 };
 
+#ifdef CONFIG_CMD_PWR
+
+/* Holds information needed for power calculation. */
+/* A subset of params, but used in a different context. */
+/* TODO(coconutruben): pull this into battery_params as a struct
+ * inside a struct
+ */
+
+struct battery_power_info {
+	int current; /* in mA */
+	int voltage; /* in mV */
+};
+
+/* Read voltage and current seen by battery. Does not check for flags
+ * or whether those values are bad readings, or way off etc
+ */
+void battery_get_power(struct battery_power_info *pwr_info);
+
+#endif /* CONFIG_CMD_PWR */
+
 /* Flags for batt_params */
 
 /* Battery wants to be charged */

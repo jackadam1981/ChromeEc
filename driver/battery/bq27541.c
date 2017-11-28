@@ -278,6 +278,20 @@ void battery_get_params(struct batt_params *batt)
 	}
 }
 
+#ifdef CONFIG_CMD_PWR
+
+void battery_get_power(struct battery_power_info *pwr_info)
+{
+	int current;
+
+	bq27541_read(REG_VOLTAGE, &pwr_info->voltage);
+	/* This is a signed 16-bit value. */
+	bq27541_read(REG_AVERAGE_CURRENT, &current);
+	pwr_info->current = (int16_t)current;
+}
+
+#endif /* CONFIG_CMD_PWR */
+
 /* Wait until battery is totally stable */
 int battery_wait_for_stable(void)
 {

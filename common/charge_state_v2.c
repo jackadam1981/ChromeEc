@@ -58,6 +58,14 @@ static int battery_seems_to_be_dead;
 
 static int battery_seems_to_be_disconnected;
 
+#ifdef CONFIG_CMD_PWR
+/* Struct to shuttle information from battery to periodic update */
+static struct battery_power_info pwr_info;
+/* Holds power running average */
+static struct avg_battery_power_info avg_pwr_info;
+
+#endif /* CONFIG_CMD_PWR */
+
 /*
  * Was battery removed?  Set when we see BP_NO, cleared after the battery is
  * reattached and becomes responsive.  Used to indicate an error state after
@@ -1422,6 +1430,46 @@ static int command_chgstate(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(chgstate, command_chgstate,
 			"[idle|discharge|debug on|off]",
 			"Get/set charge state machine status");
+
+#ifdef CONFIG_CMD_PWR
+
+static void avg_power_update(void)
+{
+	static uint16_t runs;
+	int power;
+
+	runs++;
+	if (runs < PWR_HOOK_TICKS_PER_SAMPLE)
+		return;
+	runs = 0;
+	battery_get_power(&pwr_info);
+	if (avg_pwr_info.samples_recorded < MAX_POWER_SAMPLES)
+		avg_pwr_info.samples_recorded++;
+	power = pwr_info.current * pwr_info.voltage / 1000;
+	avg_pwr_info.sample_sum += (-avg_pwr_info.samples[avg_pwr_info.ptr]
+					+ power);
+	avg_pwr_info.samples[avg_pwr_info.ptr] = power;
+	avg_pwr_info.avg_power = avg_pwr_info.sample_sum
+				 / avg_pwr_info.samples_recorded;
+	avg_pwr_info.ptr++;
+	if (avg_pwr_info.ptr == MAX_POWER_SAMPLES)
+		avg_pwr_info.ptr = 0;
+}
+
+DECLARE_HOOK(HOOK_INIT, avg_power_update, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_TICK, avg_power_update, HOOK_PRIO_DEFAULT);
+
+static int command_avg_power(int argc, char **argv)
+{
+	ccprintf("mw = %d\n", avg_pwr_info.avg_power);
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(pwr_avg, command_avg_power,
+			NULL,
+			"avg sys power");
+
+#endif /* CONFIG_CMD_PWR */
 
 #ifdef CONFIG_CHARGE_STATE_DEBUG
 int charge_get_charge_state_debug(int param, uint32_t *value)
