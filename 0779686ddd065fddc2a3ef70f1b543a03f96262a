@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc657323_7453b538",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-28T00:14:19Z",
+      "side": 1,
+      "message": "I think the implicit assumption here is that all the buttons are active low and so 0 is returned when button is pressed and 1 when button is not pressed. Shouldn\u0027t this function check for the button active state i.e. active high/active low before returning the right value? It looks like this assumption was done even in the original code. If at any point we use a button that is not active low, this function will not work correctly.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 42
+      },
+      "revId": "0779686ddd065fddc2a3ef70f1b543a03f96262a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c680c4c_53f0ff34",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-28T00:14:19Z",
+      "side": 1,
+      "message": "Does this need to be initialized here?",
+      "range": {
+        "startLine": 315,
+        "startChar": 16,
+        "endLine": 315,
+        "endChar": 19
+      },
+      "revId": "0779686ddd065fddc2a3ef70f1b543a03f96262a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
