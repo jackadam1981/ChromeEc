@@ -187,7 +187,7 @@ int bh1730_read_lux(const struct motion_sensor_t *s, vector_3_t v)
 	int data0_1;
 
 	/* read data0 and data1 from sensor */
-	ret = i2c_read32(s->port, s->addr, BH1730_DATA0LOW, &data0_1);
+	ret = i2c_read32(I2C_PORT_ALS, s->addr, BH1730_DATA0LOW, &data0_1);
 	if (ret != EC_SUCCESS) {
 		CPRINTF("bh1730_read_lux - fail %d\n", ret);
 		return ret;
@@ -265,7 +265,7 @@ static int bh1730_init(const struct motion_sensor_t *s)
 
 	CPRINTF("bh1730_init \n");
 
-	ret = bh1730_init_sensor(s->port, s->addr);
+	ret = bh1730_init_sensor(I2C_PORT_ALS, s->addr);
 
 	if (ret != EC_SUCCESS) {
 		CPRINTF("bh1730_init_sensor - fail %d\n", ret);
