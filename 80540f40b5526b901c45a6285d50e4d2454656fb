@@ -22,6 +22,30 @@
       "revId": "80540f40b5526b901c45a6285d50e4d2454656fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9611062c_5b19e1f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-28T03:11:23Z",
+      "side": 1,
+      "message": "Old patch used wrong board id pin. ID3 is GPIO86. But it was assigned GPIO57. It is wrong.\nRev1: ID1\u003d0, ID2\u003d0, ID3\u003d1 , so board will be rev4.\nSo, I want to change pin map as real board. And we will update schematic as well.\nID1\u003d1, ID2\u003d0, ID3\u003d0\nNext Revision will be\nID1\u003d0, ID2\u003d1, ID3\u003d0",
+      "parentUuid": "e35eb95b_3c95836f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "80540f40b5526b901c45a6285d50e4d2454656fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
