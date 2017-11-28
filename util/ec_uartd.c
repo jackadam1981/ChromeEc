@@ -21,6 +21,7 @@
 
 #include <errno.h>
 #include <fcntl.h>
+#include <stdint.h>
 #pragma GCC diagnostic ignored "-Wstrict-prototypes"
 #include <ftdi.h>
 #pragma GCC diagnostic pop
