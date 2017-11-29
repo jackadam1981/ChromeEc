@@ -16,6 +16,24 @@
       "revId": "8946fc35ee150f554e38972952d93d94353823fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef9b88de_9d5739ab",
+        "filename": "board/grunt/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2017-11-29T18:39:37Z",
+      "side": 1,
+      "message": "I\u0027ve moved this before CHIPSET and changed to VENTI_TASK_STACK_SIZE for consistency. I read through a bunch of git history and review comments, but couldn\u0027t find any explicit discussion for what the right decisions are.",
+      "parentUuid": "6e6b875d_afe4e3ba",
+      "revId": "8946fc35ee150f554e38972952d93d94353823fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
