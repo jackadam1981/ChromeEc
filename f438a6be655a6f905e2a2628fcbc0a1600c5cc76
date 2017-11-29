@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae537d25_d2502291",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-29T01:11:57Z",
+      "side": 1,
+      "message": "Want to confirm you have this in the data sheet, or that it\u0027s been confirmed via testing. I can\u0027t find this value in the data sheet.",
+      "range": {
+        "startLine": 414,
+        "startChar": 18,
+        "endLine": 414,
+        "endChar": 20
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1836b6c_911e1aad",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-29T01:11:57Z",
+      "side": 1,
+      "message": "The 2 bits being checked here should be XCHG (bit 14) and XDSG (bit 13) so the mask should be 0x6000. The lower 16 bits of operational status (0x44) are returned when a read of 0x00 is done.",
+      "range": {
+        "startLine": 422,
+        "startChar": 4,
+        "endLine": 422,
+        "endChar": 22
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de89f6a7_24f72609",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-29T01:11:57Z",
+      "side": 1,
+      "message": "Similar the manufacturer name, I don\u0027t see a precharge current specified in the battery spec data sheet.",
+      "range": {
+        "startLine": 430,
+        "startChar": 24,
+        "endLine": 430,
+        "endChar": 27
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f772650e_6f54d7c2",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-29T01:11:57Z",
+      "side": 1,
+      "message": "Want to confirm you have this in the data sheet, or that it\u0027s been confirmed via testing. I can\u0027t find this value in the data sheet.",
+      "range": {
+        "startLine": 443,
+        "startChar": 18,
+        "endLine": 443,
+        "endChar": 26
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85b43333_eaf3248c",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-29T01:11:57Z",
+      "side": 1,
+      "message": "same comment as above",
+      "range": {
+        "startLine": 451,
+        "startChar": 5,
+        "endLine": 451,
+        "endChar": 23
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
