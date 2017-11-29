@@ -27,6 +27,8 @@
 #define CONFIG_ADC
 #define CONFIG_I2C
 #define CONFIG_LPC
+#define CONFIG_TEMP_SENSOR
+#define CONFIG_THERMISTOR_NCP15WB
 
 #define CONFIG_BOARD_VERSION
 
@@ -75,6 +77,12 @@ enum power_signal {
 	X86_VGATE,
 	X86_SPOK,
 	POWER_SIGNAL_COUNT
+};
+
+enum temp_sensor_id {
+	TEMP_SENSOR_CHARGER = 0,
+	TEMP_SENSOR_SOC,
+	TEMP_SENSOR_COUNT
 };
 
 void board_reset_pd_mcu(void);
