@@ -234,6 +234,30 @@
       "revId": "a1af78fe9b74948cf35a26df671ca95cdbee5523",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17c6d082_55674be8",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T02:52:11Z",
+      "side": 1,
+      "message": "Just to correct: I\u0027ll make charge_phase \u003d 1 in case that the voltage reading is bad as a more conservative approach.",
+      "parentUuid": "02b79725_0c67ff11",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "a1af78fe9b74948cf35a26df671ca95cdbee5523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
