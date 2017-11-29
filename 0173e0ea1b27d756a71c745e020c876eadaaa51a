@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9092529c_e1c5c5ce",
+        "filename": "common/ec_features.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-11-29T15:00:26Z",
+      "side": 1,
+      "message": "While I cherry-pick code, I can find it in master branch.\nThat\u0027s why I add it.\nActually, I didn\u0027t verify it on glados firmware branch.\nI think we can remove it on glados firmware branch.",
+      "parentUuid": "e8592b22_611a8abb",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "0173e0ea1b27d756a71c745e020c876eadaaa51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "084cf4a5_b95d7d51",
         "filename": "include/host_command.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-29T12:44:32Z",
       "side": 1,
       "message": "unrelated?",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 34
+      },
+      "revId": "0173e0ea1b27d756a71c745e020c876eadaaa51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383e32a4_3b380d92",
+        "filename": "include/host_command.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-11-29T15:00:26Z",
+      "side": 1,
+      "message": "We don\u0027t need it. It comes from ToT while I merge.\nSo, I will remove it.",
+      "parentUuid": "084cf4a5_b95d7d51",
       "range": {
         "startLine": 261,
         "startChar": 0,
