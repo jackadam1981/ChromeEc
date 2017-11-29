@@ -2262,6 +2262,9 @@
 #undef CONFIG_HOSTCMD_PD
 #endif
 
+/* Can query ALS with EC_FEATURE */
+#undef CONFIG_CAROLINE_ALS
+
 /*****************************************************************************/
 /*
  * Apply test config overrides last, since tests need to override some of the
