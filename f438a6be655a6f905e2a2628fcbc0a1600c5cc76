@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ca69fdf_3f9243c5",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1241583
+      },
+      "writtenOn": "2017-11-29T03:08:44Z",
+      "side": 1,
+      "message": "I confirmed it with battery vendor, and got the manuf_name \"GF\" from ec log file",
+      "parentUuid": "ae537d25_d2502291",
+      "range": {
+        "startLine": 414,
+        "startChar": 18,
+        "endLine": 414,
+        "endChar": 20
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1836b6c_911e1aad",
         "filename": "board/coral/battery.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-29T01:11:57Z",
       "side": 1,
       "message": "The 2 bits being checked here should be XCHG (bit 14) and XDSG (bit 13) so the mask should be 0x6000. The lower 16 bits of operational status (0x44) are returned when a read of 0x00 is done.",
+      "range": {
+        "startLine": 422,
+        "startChar": 4,
+        "endLine": 422,
+        "endChar": 22
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da2d65bb_7e5dcbd4",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1241583
+      },
+      "writtenOn": "2017-11-29T03:08:44Z",
+      "side": 1,
+      "message": "This function is required to handle the cases when the fuel gauge is awake and will return a non-zero state of charge, but is not able yet to provide power (i.e. discharge FET is not active).  So should we check the bit 1(DSG FET status)?",
+      "parentUuid": "c1836b6c_911e1aad",
       "range": {
         "startLine": 422,
         "startChar": 4,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "716f0da4_b0f7e2d8",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1241583
+      },
+      "writtenOn": "2017-11-29T03:08:44Z",
+      "side": 1,
+      "message": "Yes,I not see see a precharge current in the SPEC, I got it from battery vendor",
+      "parentUuid": "de89f6a7_24f72609",
+      "range": {
+        "startLine": 430,
+        "startChar": 24,
+        "endLine": 430,
+        "endChar": 27
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f772650e_6f54d7c2",
         "filename": "board/coral/battery.c",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ab72e01f_cbc4a768",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1241583
+      },
+      "writtenOn": "2017-11-29T03:08:44Z",
+      "side": 1,
+      "message": "the datasheet same as GF battery, just different manuf_name",
+      "parentUuid": "f772650e_6f54d7c2",
+      "range": {
+        "startLine": 443,
+        "startChar": 18,
+        "endLine": 443,
+        "endChar": 26
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85b43333_eaf3248c",
         "filename": "board/coral/battery.c",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2017-11-29T01:11:57Z",
       "side": 1,
       "message": "same comment as above",
+      "range": {
+        "startLine": 451,
+        "startChar": 5,
+        "endLine": 451,
+        "endChar": 23
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a19278fd_5e8e2f67",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1241583
+      },
+      "writtenOn": "2017-11-29T03:08:44Z",
+      "side": 1,
+      "message": "This function is required to handle the cases when the fuel gauge is awake and will return a non-zero state of charge, but is not able yet to provide power (i.e. discharge FET is not active).  So should we check the bit 1(DSG FET status)?",
+      "parentUuid": "85b43333_eaf3248c",
       "range": {
         "startLine": 451,
         "startChar": 5,
