@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83811ec5_9f63f8c3",
+        "filename": "common/ec_features.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-11-29T15:41:57Z",
+      "side": 1,
+      "message": "If we don\u0027t use it in glados firmware branch, I will remove it.",
+      "parentUuid": "20efb28c_389ccef9",
+      "range": {
+        "startLine": 119,
+        "startChar": 19,
+        "endLine": 122,
+        "endChar": 6
+      },
+      "revId": "68cef0ec0f5cc85f50c4d0858a771f212afe641c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36373cfa_d9c8bc8a",
         "filename": "common/ec_features.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8850997a_08cb636a",
+        "filename": "common/ec_features.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-11-29T15:41:57Z",
+      "side": 1,
+      "message": "\u003e Did you try Dan\u0027s solution in https://issuetracker.google.com/65567128 comment #58 first rather than adding this\n\u003e as suggested in the issue tracker ?\n\nI just assign EC_FEATURE_SENSOR_ALS so that we can enable/disable with condition.",
+      "parentUuid": "36373cfa_d9c8bc8a",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 6
+      },
+      "revId": "68cef0ec0f5cc85f50c4d0858a771f212afe641c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cdd00de_53a6b882",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2017-11-29T15:27:34Z",
       "side": 1,
       "message": "if we end up declaring a new EC FEATURE (I would prefer we don\u0027t), we need to do it first on master (to ensure that we reserve a number without conflict)",
+      "range": {
+        "startLine": 1098,
+        "startChar": 0,
+        "endLine": 1100,
+        "endChar": 0
+      },
+      "revId": "68cef0ec0f5cc85f50c4d0858a771f212afe641c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf0bbbc3_5b37373b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-11-29T15:41:57Z",
+      "side": 1,
+      "message": "\u003e if we end up declaring a new EC FEATURE (I would prefer we don\u0027t), we need to do it first on master (to ensure that we reserve a number without conflict)\n\nI think we need it to enable/disable in coreboot as board id.\nDo you think we can enable/disable als without new EC FEATURE ?\nor do you want to use existing EC FEATURE to enable/disable als ?",
+      "parentUuid": "1cdd00de_53a6b882",
       "range": {
         "startLine": 1098,
         "startChar": 0,
