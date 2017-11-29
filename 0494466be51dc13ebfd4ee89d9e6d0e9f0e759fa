@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6341f564_36f12f54",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-29T18:28:12Z",
+      "side": 1,
+      "message": "Defining a sensor in motion_sensor that does not exist is very dangerous. It also delay the boot time as the EC will try to initialize it.\n\nInstead, reduce the number of sensors [motion_sensor_count] for boardid \u003c 6.",
+      "revId": "0494466be51dc13ebfd4ee89d9e6d0e9f0e759fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a68d131d_ee4bb660",
+        "filename": "board/caroline/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-29T18:28:12Z",
+      "side": 1,
+      "message": "upload with --verify. It will warn you CONFIG_CAROLINE_ALS should also be defined in config.h",
+      "revId": "0494466be51dc13ebfd4ee89d9e6d0e9f0e759fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
