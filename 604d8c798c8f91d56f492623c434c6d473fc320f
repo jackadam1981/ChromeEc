@@ -124,6 +124,24 @@
       "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89af2fb5_9e5618d2",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-29T21:10:04Z",
+      "side": 1,
+      "message": "Finally, I got a chance to look at the event_log mechanism in detail on the EC side. It definitely looks like a great way to report EC events back to the host. However, the problem with it right now is that there can only be a single user of event_log at a time and currently that user is PD. We could either:\n1. Add PMIC fault as a special PD event but that doesn\u0027t seem very clean and it would be reported using the cros_ec_pd logger in the kernel.\n2. Update event_log mechanism to handle multiple users (probably using some user id) but that would require a bigger infra change for the event log both on EC and kernel side.\n\nSo, I spoke to Shawn about this and he indicated that we have another option here. Using panicinfo instead of the event_log. There is a way in the EC to set panic info after EC boots up (if it thinks that there was some kind of panic during previous boot-up). It can be easily extended by adding a new software panic reason. This mechanism allows the caller to add a 32-bit payload along with the panic reason. So, if we have upto 4 8-bytes registers then they can be easily squeezed into this payload. I have prepared a quick patch to support this using panicinfo and tested it on Soraka. Please let me know what you think.",
+      "parentUuid": "751acc28_3bfd211f",
+      "revId": "604d8c798c8f91d56f492623c434c6d473fc320f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
