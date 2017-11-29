@@ -313,6 +313,24 @@
     },
     {
       "key": {
+        "uuid": "6ea490ab_b788f4e8",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T02:50:40Z",
+      "side": 1,
+      "message": "OK. Let\u0027s make charge_phase \u003d 1 in case the voltage reading is bad.",
+      "parentUuid": "7ab847c7_ca0d3a60",
+      "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6a6102f_9952dc78",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 4
