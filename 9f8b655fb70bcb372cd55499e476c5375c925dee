@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14fbca76_33f3f173",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-29T22:12:33Z",
+      "side": 1,
+      "message": "You should probably initialize these, and/or check to make sure your i2c reads are succeeding.",
+      "range": {
+        "startLine": 551,
+        "startChar": 1,
+        "endLine": 551,
+        "endChar": 33
+      },
+      "revId": "9f8b655fb70bcb372cd55499e476c5375c925dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "208c1ead_b9b26d0e",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-29T22:12:33Z",
+      "side": 1,
+      "message": "You didn\u0027t modify pwrstat1 / pwrstat2, these bits are write 1 to clear?",
+      "range": {
+        "startLine": 573,
+        "startChar": 51,
+        "endLine": 573,
+        "endChar": 59
+      },
+      "revId": "9f8b655fb70bcb372cd55499e476c5375c925dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7b2a33c_2a64a18a",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-29T22:12:33Z",
+      "side": 1,
+      "message": "At this stage, are most / all of your users running with SW sync / sysjump enabled? Also I think this check is redundant if you\u0027re ensuring system_get_image_copy() \u003d\u003d SYSTEM_IMAGE_RW.",
+      "range": {
+        "startLine": 672,
+        "startChar": 5,
+        "endLine": 672,
+        "endChar": 32
+      },
+      "revId": "9f8b655fb70bcb372cd55499e476c5375c925dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef8a981c_1c61d976",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-29T22:12:33Z",
+      "side": 1,
+      "message": "Are you sure this won\u0027t get called from RO on a regular / problem-free EC cold boot? Also this is technically not an EC panic / reset, but I think it\u0027s OK to use the same logging mechanism.",
+      "range": {
+        "startLine": 1104,
+        "startChar": 0,
+        "endLine": 1108,
+        "endChar": 73
+      },
+      "revId": "9f8b655fb70bcb372cd55499e476c5375c925dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
