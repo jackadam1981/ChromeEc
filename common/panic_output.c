@@ -130,6 +130,7 @@ static void panic_init(void)
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, panic_init, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESET, panic_init, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CMD_STACKOVERFLOW
 static void stack_overflow_recurse(int n)
