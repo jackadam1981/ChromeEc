@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c0d08d1e_718cabd7",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-29T00:33:35Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "5f14c3ca_205a4fba",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 27
+      },
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e77b9a0_6fb343f4",
         "filename": "board/grunt/board.c",
         "patchSetId": 2
@@ -80,6 +104,30 @@
       "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6649f584_7b873a5a",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-29T00:33:35Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "75f41ef3_29b2801e",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 46
+      },
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "ecd1cae6_e9c53506",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-29T00:33:35Z",
+      "side": 1,
+      "message": "This configuration (45/3/20) is also used by coral, eve, poppy, and reef.\nI have b/69683178 to find the correct values for grunt.\nAdded TODO here for this.",
+      "parentUuid": "3cf7826a_daf05e8e",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 31
+      },
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c676e4e0_213466d6",
         "filename": "board/grunt/board.h",
         "patchSetId": 2
@@ -188,6 +260,24 @@
       "side": 1,
       "message": "Zoombini uses  CONFIG_USB_PD_VBUS_DETECT_TCPC, so the TCPC gives the VBUS value, but overall the charge_manager doesn\u0027t need VBUS value and the whole system just needs to know the VBUS presence (whether it is in 4.25V..20V range).",
       "parentUuid": "030faf54_670d94dc",
+      "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23935f50_187f53ed",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-29T00:33:35Z",
+      "side": 1,
+      "message": "Ok, my plan then is to use SN5S330 PPC to detect VBUS presence, and to not support reading the VBUS level.",
+      "parentUuid": "4b30e51b_08f6dcb6",
       "revId": "afb2dbe5e07e233ee05f2f0ee604f07012025798",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
