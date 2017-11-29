@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4c88c7e7_a435a2b4",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T00:52:02Z",
+      "side": 1,
+      "message": "Maybe change it to one-way 50mV.",
+      "parentUuid": "e11f32b5_4edbecc4",
+      "range": {
+        "startLine": 24,
+        "startChar": 42,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9d9ef161_49da5d35",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 4
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9199e2ef_6f15f273",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T00:52:02Z",
+      "side": 1,
+      "message": "OK, will fix it.",
+      "parentUuid": "9d9ef161_49da5d35",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 41
+      },
+      "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f634ae8b_98b85d3f",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 4
@@ -106,6 +154,30 @@
       "writtenOn": "2017-11-28T04:50:10Z",
       "side": 1,
       "message": "aren\u0027t min-max ranges usually specified with the min inclusive and the max exclusive? shifting 0.1C isn\u0027t a big deal, but this did strike me as odd...",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 47
+      },
+      "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e366897a_91258791",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T00:52:02Z",
+      "side": 1,
+      "message": "OK, will fix it.",
+      "parentUuid": "f634ae8b_98b85d3f",
       "range": {
         "startLine": 94,
         "startChar": 0,
@@ -170,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "e279ae25_01d4cbe5",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T00:52:02Z",
+      "side": 1,
+      "message": "Good point. We should clear the static int here.",
+      "parentUuid": "406cd7bb_4a7e46b0",
+      "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d806b4e2_d848cee9",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 4
@@ -187,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "3d5e4931_c0c391b0",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T00:52:02Z",
+      "side": 1,
+      "message": "It\u0027s probably fine. This is only used for phase transition when temperature is between 10 and 20C. The worst thing that can go wrong with bat_voltage \u003d 0 is to make phase\u003d0 when it should be 1.",
+      "parentUuid": "d806b4e2_d848cee9",
+      "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6a6102f_9952dc78",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 4
@@ -198,6 +306,24 @@
       "writtenOn": "2017-11-28T04:50:10Z",
       "side": 1,
       "message": "I would rather shift the hysteresis down so that charge_phase \u003d 1 when bat_voltage \u003e TRIP_VOLTAGE, rather than always changing phase HYSTERESIS_MV too late.\n\nAlternatively, get rid of the voltage hysteresis entirely, and make charge_phase only transition from 0\u003d\u003e1 during charging, and reset to 0 when charging is disabled.",
+      "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fc39b48_ac8747ab",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T00:52:02Z",
+      "side": 1,
+      "message": "I prefer to keep HYSTERESIS_MV but only do one-way hysteresis (H-\u003eL).",
+      "parentUuid": "c6a6102f_9952dc78",
       "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
