@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8592b22_611a8abb",
+        "filename": "common/ec_features.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-11-29T12:44:32Z",
+      "side": 1,
+      "message": "these are new compared to the code removed in host_command.c. I suppose they don\u0027t hurt and the existing fields weren\u0027t moved, but did you verify that?",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 6
+      },
+      "revId": "0173e0ea1b27d756a71c745e020c876eadaaa51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "084cf4a5_b95d7d51",
+        "filename": "include/host_command.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2017-11-29T12:44:32Z",
+      "side": 1,
+      "message": "unrelated?",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 267,
+        "endChar": 34
+      },
+      "revId": "0173e0ea1b27d756a71c745e020c876eadaaa51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
