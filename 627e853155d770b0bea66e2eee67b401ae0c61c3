@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a75cec2_d64912ca",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-29T17:52:13Z",
+      "side": 1,
+      "message": "Oh yes, I see A3 on the 1.1 DB schematic, thanks. So I\u0027ve removed this A2 code.",
+      "parentUuid": "ed501b80_f75871f4",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 48
+      },
+      "revId": "627e853155d770b0bea66e2eee67b401ae0c61c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "01714cfe_f986f942",
         "filename": "board/grunt/board.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-29T16:23:06Z",
       "side": 1,
       "message": "with this, your system will likely never charge, so it is kind of useless.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 10
+      },
+      "revId": "627e853155d770b0bea66e2eee67b401ae0c61c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ee08aba_d9102fe2",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-29T17:52:13Z",
+      "side": 1,
+      "message": "Yep, I will need to do the SN5S330 TODOs before the system will be able to charge.",
+      "parentUuid": "01714cfe_f986f942",
       "range": {
         "startLine": 273,
         "startChar": 0,
