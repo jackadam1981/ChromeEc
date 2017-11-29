@@ -260,6 +260,7 @@ DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
+	int boardid = system_get_board_version();
 	/* Enable PD MCU interrupt */
 	gpio_enable_interrupt(GPIO_PD_MCU_INT);
 	/* Enable VBUS interrupt */
@@ -275,6 +276,10 @@ static void board_init(void)
 
 	/* Provide AC status to the PCH */
 	gpio_set_level(GPIO_PCH_ACOK, extpower_is_present());
+
+	/* Enable ALS */
+	if (boardid >= 6)
+		motion_sensors[LID_ALS].active_mask = SENSOR_ACTIVE_S0;
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -607,7 +612,7 @@ struct motion_sensor_t motion_sensors[] = {
 	},
         [LID_ALS] = {
          .name = "Light",
-         .active_mask = SENSOR_ACTIVE_S0,
+         .active_mask = 0,
          .chip = MOTIONSENSE_CHIP_BH1730,
          .type = MOTIONSENSE_TYPE_LIGHT,
          .location = MOTIONSENSE_LOC_LID,
@@ -755,6 +760,17 @@ uint32_t board_override_feature_flags0(uint32_t flags0)
 
 uint32_t board_override_feature_flags1(uint32_t flags1)
 {
+	int boardid = system_get_board_version();
+
+	/*
+	 * We always compile in als support for caroline, but only some
+	 * models come with the hardware. Therefore, check if the current
+	 * device is one of them and return the default value - with als
+	 * here.
+	 */
+	if (boardid < 6)
+		flags1 &= ~EC_FEATURE_MASK_1(EC_FEATURE_SENSOR_ALS);
+
 	return flags1;
 }
 
@@ -766,6 +782,9 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 
 static void kblight_enable(void)
 {
+	int boardid = system_get_board_version();
+	if( boardid < 6 )
+		return;
 	gpio_set_level(GPIO_KBDBKLIT_RST_L, 1);
 	msleep(10);
 	max14521_init();
@@ -774,6 +793,9 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_enable, HOOK_PRIO_DEFAULT);
 
 static void kblight_disable(void)
 {
+	int boardid = system_get_board_version();
+	if( boardid < 6 )
+		return;
 	gpio_set_level(GPIO_KBDBKLIT_RST_L, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kblight_disable, HOOK_PRIO_DEFAULT);

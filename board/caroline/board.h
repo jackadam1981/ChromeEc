@@ -172,6 +172,8 @@
 /* Depends on how fast the AP boots and typical ODRs */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
 
+#define CONFIG_CAROLINE_ALS
+
 /* Modules we want to exclude */
 #undef CONFIG_CMD_APTHROTTLE
 #undef CONFIG_CMD_BATTFAKE
