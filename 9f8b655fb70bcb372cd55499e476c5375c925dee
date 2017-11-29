@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9f1ac8e1_143b93f4",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-29T23:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14fbca76_33f3f173",
+      "range": {
+        "startLine": 551,
+        "startChar": 1,
+        "endLine": 551,
+        "endChar": 33
+      },
+      "revId": "9f8b655fb70bcb372cd55499e476c5375c925dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "208c1ead_b9b26d0e",
         "filename": "board/poppy/board.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-29T22:12:33Z",
       "side": 1,
       "message": "You didn\u0027t modify pwrstat1 / pwrstat2, these bits are write 1 to clear?",
+      "range": {
+        "startLine": 573,
+        "startChar": 51,
+        "endLine": 573,
+        "endChar": 59
+      },
+      "revId": "9f8b655fb70bcb372cd55499e476c5375c925dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddc53887_72ad52d0",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-29T23:06:52Z",
+      "side": 1,
+      "message": "Yes, all these bits are write 1 to clear.",
+      "parentUuid": "208c1ead_b9b26d0e",
       "range": {
         "startLine": 573,
         "startChar": 51,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9614eedc_3a61eaa9",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-29T23:06:52Z",
+      "side": 1,
+      "message": "Basically, this check was in there so that board_pmic_init does nothing if EC performs a sysjump. In case it jumps to RW, then we report pmic fault, but if it sysjumps to RO, nothing is done and we return early.",
+      "parentUuid": "c7b2a33c_2a64a18a",
+      "range": {
+        "startLine": 672,
+        "startChar": 5,
+        "endLine": 672,
+        "endChar": 32
+      },
+      "revId": "9f8b655fb70bcb372cd55499e476c5375c925dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef8a981c_1c61d976",
         "filename": "board/poppy/board.c",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-29T22:12:33Z",
       "side": 1,
       "message": "Are you sure this won\u0027t get called from RO on a regular / problem-free EC cold boot? Also this is technically not an EC panic / reset, but I think it\u0027s OK to use the same logging mechanism.",
+      "range": {
+        "startLine": 1104,
+        "startChar": 0,
+        "endLine": 1108,
+        "endChar": 73
+      },
+      "revId": "9f8b655fb70bcb372cd55499e476c5375c925dee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8254bd04_a1a51028",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-29T23:06:52Z",
+      "side": 1,
+      "message": "\u003e Are you sure this won\u0027t get called from RO on a regular / problem-free EC cold boot?\n\nYes, that is true. This will get called on regular/problem-free EC cold boot as well as after EC resets because of some problem. Regular/problem-free EC cold boot is not much of an issue since there would be nothing interesting to log. But in the second case, we defeat the purpose of logging this in RW only. I think since we are now logging the information in panicinfo, it should be okay to just do it in board_pmic_init() and board_chipset_reset() always irrespective of RO/RW.\n\n\u003e Also this is technically not an EC panic / reset, but I think it\u0027s OK to use the same logging mechanism.\n\nThat\u0027s right. Basically, it was a PMIC fault which resulted in instability in the system (could have resulted in only the AP being reset) and hence logging it here using the same mechanism.",
+      "parentUuid": "ef8a981c_1c61d976",
       "range": {
         "startLine": 1104,
         "startChar": 0,
