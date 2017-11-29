@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed501b80_f75871f4",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-29T16:23:06Z",
+      "side": 1,
+      "message": "are we really producing new boards with old silicon ?\n(and the schematics suggest it\u0027s A3)",
+      "range": {
+        "startLine": 239,
+        "startChar": 3,
+        "endLine": 246,
+        "endChar": 48
+      },
+      "revId": "627e853155d770b0bea66e2eee67b401ae0c61c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01714cfe_f986f942",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-29T16:23:06Z",
+      "side": 1,
+      "message": "with this, your system will likely never charge, so it is kind of useless.",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 10
+      },
+      "revId": "627e853155d770b0bea66e2eee67b401ae0c61c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
