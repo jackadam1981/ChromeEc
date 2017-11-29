@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c1be66b_e9c9c4d4",
+        "filename": "board/elm/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-11-29T21:05:16Z",
+      "side": 1,
+      "message": "Don\u0027t need to export this function if we\u0027re not going to call it from power/mediatek.c.",
+      "revId": "eef7b8638fabdf308ea060cb15b4ea082b5b8de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53dd18cd_2cbc9bb5",
+        "filename": "power/mediatek.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2017-11-29T21:05:16Z",
+      "side": 1,
+      "message": "It was called in HOOK_CHIPSET_PRE_INIT(board.c). We probably don\u0027t need to call it here.",
+      "revId": "eef7b8638fabdf308ea060cb15b4ea082b5b8de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
