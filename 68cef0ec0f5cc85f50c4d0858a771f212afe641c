@@ -96,6 +96,23 @@
     },
     {
       "key": {
+        "uuid": "c7677526_810780b8",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-11-29T18:23:30Z",
+      "side": 1,
+      "message": "This is redundant with existing API.\nYou can use command EC_CMD_MOTION_SENSE_CMD/MOTIONSENSE_CMD_DUMP and EC_CMD_MOTION_SENSE_CMD/MOTIONSENSE_CMD_INFO look for the type of sensor present.\nIf a sensor of type MOTIONSENSE_TYPE_LIGHT is present, then you have a light sensor. \n\nSee function cros_ec_sensors_register in src/third_party/kernel/v4.4/drivers/platform/chrome/cros_ec_dev.c for usage.\n\nAlternatively, if \ncat /sys/bus/iio/devices/iio:devices*/name | grep -q cros-ec-light is true, then you have an ALS sensor.",
+      "revId": "68cef0ec0f5cc85f50c4d0858a771f212afe641c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cdd00de_53a6b882",
         "filename": "include/ec_commands.h",
         "patchSetId": 1
