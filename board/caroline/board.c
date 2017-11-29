@@ -260,6 +260,7 @@ DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
+	int boardid = system_get_board_version();
 	/* Enable PD MCU interrupt */
 	gpio_enable_interrupt(GPIO_PD_MCU_INT);
 	/* Enable VBUS interrupt */
@@ -275,6 +276,13 @@ static void board_init(void)
 
 	/* Provide AC status to the PCH */
 	gpio_set_level(GPIO_PCH_ACOK, extpower_is_present());
+
+	/*
+	 * If board id is lower than 6 and we define ALS in build stage
+	 * Disable ALS.
+	 */
+	if (boardid < 6 && motion_sensor_count >= LID_ALS )
+		motion_sensors[LID_ALS].active_mask = 0;
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -766,6 +774,9 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 
 static void kblight_enable(void)
 {
+	int boardid = system_get_board_version();
+	if( boardid < 6 )
+		return;
 	gpio_set_level(GPIO_KBDBKLIT_RST_L, 1);
 	msleep(10);
 	max14521_init();
@@ -774,6 +785,9 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_enable, HOOK_PRIO_DEFAULT);
 
 static void kblight_disable(void)
 {
+	int boardid = system_get_board_version();
+	if( boardid < 6 )
+		return;
 	gpio_set_level(GPIO_KBDBKLIT_RST_L, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kblight_disable, HOOK_PRIO_DEFAULT);
