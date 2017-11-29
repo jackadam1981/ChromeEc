@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d842aeb8_269a0553",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T02:48:41Z",
+      "side": 1,
+      "message": "Will move it into charger_profile_override().",
+      "parentUuid": "469ce804_b6b56476",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "a1af78fe9b74948cf35a26df671ca95cdbee5523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea2a549a_b654004e",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-29T01:49:21Z",
       "side": 1,
       "message": "You can make this cleaner if you check for bad temp / out of range (check first entry min and last entry max), and if not, check for bat_temp_c \u003c temp_zones[i].temp_max across your entire table.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 55
+      },
+      "revId": "a1af78fe9b74948cf35a26df671ca95cdbee5523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3b2b41a_52ceb075",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T02:48:41Z",
+      "side": 1,
+      "message": "SG. Will do.",
+      "parentUuid": "ea2a549a_b654004e",
       "range": {
         "startLine": 90,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2c9db1a0_f8e50bb9",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T02:48:41Z",
+      "side": 1,
+      "message": "Yes, will fix it.",
+      "parentUuid": "67148e63_d3322164",
+      "range": {
+        "startLine": 91,
+        "startChar": 7,
+        "endLine": 91,
+        "endChar": 12
+      },
+      "revId": "a1af78fe9b74948cf35a26df671ca95cdbee5523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a45e85d7_839b5e69",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c3da5436_aa345768",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T02:48:41Z",
+      "side": 1,
+      "message": "Uh, I thought I already make TEMP_OUT_OF_RANGE \u003d 3.",
+      "parentUuid": "a45e85d7_839b5e69",
+      "range": {
+        "startLine": 96,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "a1af78fe9b74948cf35a26df671ca95cdbee5523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "008f3617_39f0ff4a",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 5
@@ -105,6 +201,30 @@
       "writtenOn": "2017-11-29T01:49:21Z",
       "side": 1,
       "message": "Under what scenario can this happen?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 46
+      },
+      "revId": "a1af78fe9b74948cf35a26df671ca95cdbee5523",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02b79725_0c67ff11",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-29T02:48:41Z",
+      "side": 1,
+      "message": "When somehow voltage sensing from the gauge is bad...? I\u0027ll just not change phase when the voltage reading is bad.",
+      "parentUuid": "008f3617_39f0ff4a",
       "range": {
         "startLine": 106,
         "startChar": 0,
