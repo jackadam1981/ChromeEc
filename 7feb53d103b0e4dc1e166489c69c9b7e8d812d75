@@ -295,6 +295,24 @@
     },
     {
       "key": {
+        "uuid": "7ab847c7_ca0d3a60",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2017-11-29T01:02:53Z",
+      "side": 1,
+      "message": "isn\u0027t that bad, though?  charge_phase\u003d1 is the safer phase",
+      "parentUuid": "3d5e4931_c0c391b0",
+      "revId": "7feb53d103b0e4dc1e166489c69c9b7e8d812d75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6a6102f_9952dc78",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 4
