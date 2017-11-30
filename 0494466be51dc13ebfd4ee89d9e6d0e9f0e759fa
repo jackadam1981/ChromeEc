@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "989cbd69_c1868e56",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-11-30T20:38:08Z",
+      "side": 1,
+      "message": "We don\u0027t have to change the common code:\nIf CONFIG_DYNAMIC_MOTION_SENSOR_COUNT is defined, \nmotion_sensor_count is not a constant anymore.\n\nYou may need to merge https://chromium-review.googlesource.com/#/c/chromiumos/platform/ec/+/711194/",
+      "parentUuid": "797dcbba_ddc12156",
+      "revId": "0494466be51dc13ebfd4ee89d9e6d0e9f0e759fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a68d131d_ee4bb660",
         "filename": "board/caroline/board.h",
         "patchSetId": 3
