@@ -22,6 +22,30 @@
       "revId": "06dc1b95a459605a7c41b1f3b2f01199556d8e6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff99c52f_1866487e",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-11-30T00:07:42Z",
+      "side": 1,
+      "message": "Yeah, just the print would differ in EC console. Otherwise, the panic info should be updated just once.",
+      "parentUuid": "fd4d4115_1e196fc1",
+      "range": {
+        "startLine": 675,
+        "startChar": 1,
+        "endLine": 675,
+        "endChar": 36
+      },
+      "revId": "06dc1b95a459605a7c41b1f3b2f01199556d8e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
