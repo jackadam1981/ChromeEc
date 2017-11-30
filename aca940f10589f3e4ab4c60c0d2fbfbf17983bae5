@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb78dd90_680408d1",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-30T00:57:05Z",
+      "side": 1,
+      "message": "Might it be better to use more generic names here? Eg. along the lines of \"ppc_is_sourcing_vbus()\", something like \"ppc_charge_enable()\", \"ppc_vbus_enable()\", etc? Maybe we won\u0027t need the board code to be concerned with the details of PP1 / PP2.",
+      "range": {
+        "startLine": 318,
+        "startChar": 8,
+        "endLine": 318,
+        "endChar": 29
+      },
+      "revId": "aca940f10589f3e4ab4c60c0d2fbfbf17983bae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "088d3063_4b0650b8",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-30T00:57:05Z",
+      "side": 1,
+      "message": "Can you use ppc_is_sourcing_vbus() here?",
+      "range": {
+        "startLine": 329,
+        "startChar": 6,
+        "endLine": 329,
+        "endChar": 30
+      },
+      "revId": "aca940f10589f3e4ab4c60c0d2fbfbf17983bae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
