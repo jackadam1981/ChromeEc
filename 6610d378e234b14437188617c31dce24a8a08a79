@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4febb22e_04d22231",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-11-30T00:21:10Z",
+      "side": 1,
+      "message": "So, right now this just sets the GPIO. I\u0027m not sure when we\u0027d like to turn the FET back on. I\u0027m going to file a bug for this so that we can decide what the policy is/should be, but I\u0027m just setting the GPIO for now.\n\nOne thought that I had is having the AP send a host command to acknowledge the overcurrent event. However, that depends on the AP being up to restore the port.\n\nMaybe the EC could re-enable the FET and see if it overcurrents very quickly within a time period and then waits for an acknowledgement from the AP. idk...",
+      "revId": "6610d378e234b14437188617c31dce24a8a08a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
