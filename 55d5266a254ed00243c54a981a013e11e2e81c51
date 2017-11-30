@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aa5379e_aa49728d",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-11-30T19:24:01Z",
+      "side": 1,
+      "message": "How about using a local variable for this? And above.",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 10
+      },
+      "revId": "55d5266a254ed00243c54a981a013e11e2e81c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
