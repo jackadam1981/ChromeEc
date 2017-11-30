@@ -863,8 +863,19 @@ static void handle_vdm_request(int port, int cnt, uint32_t *payload)
 			PD_VDO_VID(payload[0]), payload[0] & 0xFFFF);
 }
 
+/**
+ * Returns whether the sink has detected a Rp resistor on the other side.
+ */
+static inline int cc_is_rp(int cc)
+{
+	return (cc == TYPEC_CC_VOLT_SNK_DEF) || (cc == TYPEC_CC_VOLT_SNK_1_5) ||
+	       (cc == TYPEC_CC_VOLT_SNK_3_0);
+}
+
 void pd_execute_hard_reset(int port)
 {
+	int cc1, cc2;
+
 	if (pd[port].last_state == PD_STATE_HARD_RESET_SEND)
 		CPRINTF("C%d HARD RST TX\n", port);
 	else
@@ -884,6 +895,13 @@ void pd_execute_hard_reset(int port)
 	 * state to run knows that we just did a hard reset.
 	 */
 	pd[port].last_state = PD_STATE_HARD_RESET_EXECUTE;
+
+	tcpm_get_cc(port, &cc1, &cc2);
+	if (cc_is_rp(cc1) || cc_is_rp(cc2))
+		pd[port].data_role = PD_ROLE_UFP;
+	else
+		pd[port].data_role = PD_ROLE_DFP;
+	pd_update_roles(port);
 
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	/*
@@ -1878,15 +1896,6 @@ void pd_ping_enable(int port, int enable)
 		pd[port].flags |= PD_FLAGS_PING_ENABLED;
 	else
 		pd[port].flags &= ~PD_FLAGS_PING_ENABLED;
-}
-
-/**
- * Returns whether the sink has detected a Rp resistor on the other side.
- */
-static inline int cc_is_rp(int cc)
-{
-	return (cc == TYPEC_CC_VOLT_SNK_DEF) || (cc == TYPEC_CC_VOLT_SNK_1_5) ||
-	       (cc == TYPEC_CC_VOLT_SNK_3_0);
 }
 
 /*
