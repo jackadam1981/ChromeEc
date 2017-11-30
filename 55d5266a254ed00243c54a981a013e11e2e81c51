@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d216c33c_1402c9fb",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-30T21:38:51Z",
+      "side": 1,
+      "message": "When I was implementing this long ago for some slightly different setup, I looked at the error for each possible ADC measurement, eg:\n\nhttps://docs.google.com/spreadsheets/d/1LRScUBVshK3eDaZtJM_NEudTXZI0B562rOr2EXPQ3EM/edit#gid\u003d1580175231\n\n.. but what you have already done is probably sufficient.",
+      "parentUuid": "f6277836_94b0ba40",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 40
+      },
+      "revId": "55d5266a254ed00243c54a981a013e11e2e81c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e061d578_c53297dc",
         "filename": "board/grunt/board.c",
         "patchSetId": 1

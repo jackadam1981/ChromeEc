@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2aa179b_48a2d5cf",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-30T21:38:51Z",
+      "side": 1,
+      "message": "I think you need to change the paramter to \"idx ? NPCX_ADC_CH1 : NPCX_ADC_CH0\".",
+      "range": {
+        "startLine": 127,
+        "startChar": 27,
+        "endLine": 127,
+        "endChar": 39
+      },
+      "revId": "467ccd47eefebff2b694a4685fa89fd012516fa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
