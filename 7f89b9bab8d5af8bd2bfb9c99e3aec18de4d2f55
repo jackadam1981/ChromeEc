@@ -2,6 +2,108 @@
   "comments": [
     {
       "key": {
+        "uuid": "d666dd03_93e10f12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-11-30T20:12:30Z",
+      "side": 1,
+      "message": "Add some testing: on the console, do accel_read X to read the value and ensure your matrices are correct. [see https://source.android.com/devices/sensors/sensor-types#phone_axes]",
+      "revId": "7f89b9bab8d5af8bd2bfb9c99e3aec18de4d2f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e694ca04_419e981d",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-11-30T20:12:30Z",
+      "side": 1,
+      "message": "min/max frequency missing.",
+      "revId": "7f89b9bab8d5af8bd2bfb9c99e3aec18de4d2f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a057022_f3e13f62",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-11-30T20:12:30Z",
+      "side": 1,
+      "message": "init() function of sensor have some retry mechanism.",
+      "revId": "7f89b9bab8d5af8bd2bfb9c99e3aec18de4d2f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "442717fc_b8d75729",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-11-30T20:12:30Z",
+      "side": 1,
+      "message": "Add\n#define CONFIG_CMD_ACCELS\n#define CONFIG_CMD_ACCEL_INFO\n\nAt least for debugging.",
+      "revId": "7f89b9bab8d5af8bd2bfb9c99e3aec18de4d2f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6634ea2e_bd306873",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-11-30T20:12:30Z",
+      "side": 1,
+      "message": "I recommend to enable BMI160 interrupt, as it has barely been tested without:\n#define CONFIG_ACCEL_INTERRUPTS\n#define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)\n\n/* FIFO size is in power of 2. */\n#define CONFIG_ACCEL_FIFO 1024 \u003c\u003c check if it can be bigger or has to be smaller.\n\n/* Depends on how fast the AP boots and typical ODRs */\n#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)\n\n\nThere is also a change needed in gpio.list (describing the interrupt pin) and in board.c board_init() function to register the interrupt.\n\u003csomething like:\n        /* Enable interrupts from BMI160 sensor. */\n        gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);\n\u003e",
+      "revId": "7f89b9bab8d5af8bd2bfb9c99e3aec18de4d2f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c7f82a9_55e8154e",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-11-30T20:12:30Z",
+      "side": 1,
+      "message": "missing for current motion sensor code:\nForce scanning when sensor does not support interrupt.\n\n/* Sensors without hardware FIFO are in forced mode */\n#define CONFIG_ACCEL_FORCE_MODE_MASK (1 \u003c\u003c LID_ACCEL))",
+      "revId": "7f89b9bab8d5af8bd2bfb9c99e3aec18de4d2f55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "420c47ce_0c6a511d",
         "filename": "board/grunt/ec.tasklist",
         "patchSetId": 4
