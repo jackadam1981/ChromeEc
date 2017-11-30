@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "797dcbba_ddc12156",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-30T01:12:21Z",
+      "side": 1,
+      "message": "\u003e Defining a sensor in motion_sensor that does not exist is very dangerous. It also delay the boot time as the EC will try to initialize it.\n\u003e \n\u003e Instead, reduce the number of sensors [motion_sensor_count] for boardid \u003c 6.\n\nI think motion_sensor_count is constant. If we want to change motion_sensor_count in runtime, we have to change common code as well. Do you want to change common code as well ?",
+      "parentUuid": "6341f564_36f12f54",
+      "revId": "0494466be51dc13ebfd4ee89d9e6d0e9f0e759fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a68d131d_ee4bb660",
         "filename": "board/caroline/board.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-11-29T18:28:12Z",
       "side": 1,
       "message": "upload with --verify. It will warn you CONFIG_CAROLINE_ALS should also be defined in config.h",
+      "revId": "0494466be51dc13ebfd4ee89d9e6d0e9f0e759fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07b3bdb1_873e2dfb",
+        "filename": "board/caroline/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-11-30T01:12:21Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/795616/1/include/config.h has define. But I will recheck if we need define.",
+      "parentUuid": "a68d131d_ee4bb660",
       "revId": "0494466be51dc13ebfd4ee89d9e6d0e9f0e759fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
