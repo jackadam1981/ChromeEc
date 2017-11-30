@@ -17,54 +17,47 @@
 #include "i2c.h"
 #include "system.h"
 #include "timer.h"
+#include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-static int read_reg(uint8_t chip_idx, int reg, int *regval)
+static int read_reg(uint8_t port, int reg, int *regval)
 {
-	if (chip_idx >= sn5s330_cnt)
+	if (port >= ppc_cnt)
 		return EC_ERROR_INVAL;
 
-	return i2c_read8(sn5s330_chips[chip_idx].i2c_port,
-			   sn5s330_chips[chip_idx].i2c_addr,
-			   reg,
-			   regval);
+	return i2c_read8(ppc_chips[port].i2c_port,
+			 ppc_chips[port].i2c_addr,
+			 reg,
+			 regval);
 }
 
-static int write_reg(uint8_t chip_idx, int reg, int regval)
+static int write_reg(uint8_t port, int reg, int regval)
 {
-	if (chip_idx >= sn5s330_cnt)
+	if (port >= ppc_cnt)
 		return EC_ERROR_INVAL;
 
-	return i2c_write8(sn5s330_chips[chip_idx].i2c_port,
-			  sn5s330_chips[chip_idx].i2c_addr,
+	return i2c_write8(ppc_chips[port].i2c_port,
+			  ppc_chips[port].i2c_addr,
 			  reg,
 			  regval);
 }
 
 #ifdef CONFIG_CMD_PPC_DUMP
-static int command_sn5s330_dump(int argc, char **argv)
+static int sn5s330_dump(int port)
 {
 	int i;
 	int data;
-	int chip_idx;
-	int port;
-	int addr;
+	int p;
+	int a;
 
-	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
-
-	chip_idx = atoi(argv[1]);
-	if (chip_idx >= sn5s330_cnt)
-		return EC_ERROR_PARAM1;
-
-	port = sn5s330_chips[chip_idx].i2c_port;
-	addr = sn5s330_chips[chip_idx].i2c_addr;
+	p = ppc_chips[port].i2c_port;
+	a = ppc_chips[port].i2c_addr;
 
 	for (i = SN5S330_FUNC_SET1; i <= SN5S330_FUNC_SET12; i++) {
-		i2c_read8(port, addr, i, &data);
+		i2c_read8(p, a, i, &data);
 		ccprintf("FUNC_SET%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_FUNC_SET1 + 1,
 			 i,
@@ -72,7 +65,7 @@ static int command_sn5s330_dump(int argc, char **argv)
 	}
 
 	for (i = SN5S330_INT_STATUS_REG1; i <= SN5S330_INT_STATUS_REG4; i++) {
-		i2c_read8(port, addr, i, &data);
+		i2c_read8(p, a, i, &data);
 		ccprintf("INT_STATUS_REG%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_INT_STATUS_REG1 + 1,
 			 i,
@@ -81,7 +74,7 @@ static int command_sn5s330_dump(int argc, char **argv)
 
 	for (i = SN5S330_INT_TRIP_RISE_REG1; i <= SN5S330_INT_TRIP_RISE_REG3;
 	     i++) {
-		i2c_read8(port, addr, i, &data);
+		i2c_read8(p, a, i, &data);
 		ccprintf("INT_TRIP_RISE_REG%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_INT_TRIP_RISE_REG1 + 1,
 			 i,
@@ -90,7 +83,7 @@ static int command_sn5s330_dump(int argc, char **argv)
 
 	for (i = SN5S330_INT_TRIP_FALL_REG1; i <= SN5S330_INT_TRIP_FALL_REG3;
 	     i++) {
-		i2c_read8(port, addr, i, &data);
+		i2c_read8(p, a, i, &data);
 		ccprintf("INT_TRIP_FALL_REG%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_INT_TRIP_FALL_REG1 + 1,
 			 i,
@@ -99,7 +92,7 @@ static int command_sn5s330_dump(int argc, char **argv)
 
 	for (i = SN5S330_INT_MASK_RISE_REG1; i <= SN5S330_INT_MASK_RISE_REG3;
 	     i++) {
-		i2c_read8(port, addr, i, &data);
+		i2c_read8(p, a, i, &data);
 		ccprintf("INT_MASK_RISE_REG%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_INT_MASK_RISE_REG1 + 1,
 			 i,
@@ -108,7 +101,7 @@ static int command_sn5s330_dump(int argc, char **argv)
 
 	for (i = SN5S330_INT_MASK_FALL_REG1; i <= SN5S330_INT_MASK_FALL_REG3;
 	     i++) {
-		i2c_read8(port, addr, i, &data);
+		i2c_read8(p, a, i, &data);
 		ccprintf("INT_MASK_FALL_REG%d [%02Xh] = 0x%02x\n",
 			 i - SN5S330_INT_MASK_FALL_REG1 + 1,
 			 i,
@@ -117,8 +110,6 @@ static int command_sn5s330_dump(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ppc_dump, command_sn5s330_dump,
-			"<Type-C port>", "dump the SN5S330 regs");
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
 
 static int get_func_set3(uint8_t chip_idx, int *regval)
@@ -132,7 +123,7 @@ static int get_func_set3(uint8_t chip_idx, int *regval)
 	return status;
 }
 
-int sn5s330_is_pp_fet_enabled(uint8_t chip_idx, enum sn5s330_pp_idx pp,
+static int sn5s330_is_pp_fet_enabled(uint8_t chip_idx, enum sn5s330_pp_idx pp,
 			     int *is_enabled)
 {
 	int pp_bit;
@@ -157,7 +148,8 @@ int sn5s330_is_pp_fet_enabled(uint8_t chip_idx, enum sn5s330_pp_idx pp,
 	return EC_SUCCESS;
 }
 
-int sn5s330_pp_fet_enable(uint8_t chip_idx, enum sn5s330_pp_idx pp, int enable)
+static int sn5s330_pp_fet_enable(uint8_t chip_idx, enum sn5s330_pp_idx pp,
+				 int enable)
 {
 	int regval;
 	int status;
@@ -188,7 +180,7 @@ int sn5s330_pp_fet_enable(uint8_t chip_idx, enum sn5s330_pp_idx pp, int enable)
 	return EC_SUCCESS;
 }
 
-static int init_sn5s330(int idx)
+static int sn5s330_init(int port)
 {
 	int regval;
 	int status;
@@ -197,8 +189,8 @@ static int init_sn5s330(int idx)
 	int i2c_addr;
 	int reg;
 
-	i2c_port = sn5s330_chips[idx].i2c_port;
-	i2c_addr = sn5s330_chips[idx].i2c_addr;
+	i2c_port = ppc_chips[port].i2c_port;
+	i2c_addr = ppc_chips[port].i2c_addr;
 
 	/* Set the sourcing current limit value. */
 #if defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) &&			\
@@ -306,7 +298,7 @@ static int init_sn5s330(int idx)
 	}
 
 	/* Turn off PP1 FET. */
-	status = sn5s330_pp_fet_enable(idx, SN5S330_PP1, 0);
+	status = sn5s330_pp_fet_enable(port, SN5S330_PP1, 0);
 	if (status) {
 		CPRINTS("Failed to turn off PP1 FET!");
 	}
@@ -415,7 +407,7 @@ static int init_sn5s330(int idx)
 			   SN5S330_DB_BOOT);
 
 		/* Turn on PP2 FET. */
-		status = sn5s330_pp_fet_enable(idx, SN5S330_PP2, 1);
+		status = sn5s330_pp_fet_enable(port, SN5S330_PP2, 1);
 		if (status) {
 			CPRINTS("Failed to turn on PP2 FET!");
 			return status;
@@ -425,24 +417,9 @@ static int init_sn5s330(int idx)
 	return EC_SUCCESS;
 }
 
-static void sn5s330_init(void)
+int sn5s330_is_sourcing_vbus(int port)
 {
-	int i;
-	int rv;
-
-	for (i = 0; i < sn5s330_cnt; i++) {
-		rv = init_sn5s330(i);
-		if (!rv)
-			CPRINTS("C%d: SN5S330 init done.", i);
-		else
-			CPRINTS("C%d: SN5S330 init failed! (%d)", i, rv);
-	}
-}
-DECLARE_HOOK(HOOK_INIT, sn5s330_init, HOOK_PRIO_INIT_I2C + 1);
-
-int ppc_is_sourcing_vbus(int port)
-{
-	int is_sourcing_vbus;
+	int is_sourcing_vbus = 0;
 	int rv;
 
 	rv = sn5s330_is_pp_fet_enabled(port, SN5S330_PP1, &is_sourcing_vbus);
@@ -455,12 +432,22 @@ int ppc_is_sourcing_vbus(int port)
 	return is_sourcing_vbus;
 }
 
-int ppc_vbus_sink_enable(int port, int enable)
+int sn5s330_vbus_sink_enable(int port, int enable)
 {
 	return sn5s330_pp_fet_enable(port, SN5S330_PP2, !!enable);
 }
 
-int ppc_vbus_source_enable(int port, int enable)
+int sn5s330_vbus_source_enable(int port, int enable)
 {
 	return sn5s330_pp_fet_enable(port, SN5S330_PP1, !!enable);
 }
+
+const struct ppc_drv sn5s330_drv = {
+	.init = &sn5s330_init,
+	.is_sourcing_vbus = &sn5s330_is_sourcing_vbus,
+	.vbus_sink_enable = &sn5s330_vbus_sink_enable,
+	.vbus_source_enable = &sn5s330_vbus_source_enable,
+#ifdef CONFIG_CMD_PPC_DUMP
+	.reg_dump = &sn5s330_dump,
+#endif /* defined(CONFIG_CMD_PPC_DUMP) */
+};
