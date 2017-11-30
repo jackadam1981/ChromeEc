@@ -68,6 +68,30 @@
       "revId": "793d5f2dd34b7b41080cb87194469425eb98ff11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3465784_5f14f46e",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-11-30T02:17:53Z",
+      "side": 1,
+      "message": "But the condition is going to be really long.\nI personally don\u0027t like to break a if (condition) line into two.",
+      "parentUuid": "548fd562_dc135447",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 46
+      },
+      "revId": "793d5f2dd34b7b41080cb87194469425eb98ff11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
