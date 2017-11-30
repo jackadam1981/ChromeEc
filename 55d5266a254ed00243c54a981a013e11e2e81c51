@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "04b64028_cdcd276e",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-30T20:28:37Z",
+      "side": 1,
+      "message": "Did you look at the worst-case error for interpolation between these two points? The reason we have more data points as the temperature increases is that the actual function becomes less linear. If we have \u003e 1C error @ actual temp 75C then we probably want an intermediate data point here.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 40
+      },
+      "revId": "55d5266a254ed00243c54a981a013e11e2e81c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e061d578_c53297dc",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-30T20:28:37Z",
+      "side": 1,
+      "message": "This function should be declared static. Also, it\u0027s probably best to have one function, you can distinguish between the two sensors with the \u0027idx\u0027 parameter.",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 26
+      },
+      "revId": "55d5266a254ed00243c54a981a013e11e2e81c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5aa5379e_aa49728d",
         "filename": "board/grunt/board.c",
         "patchSetId": 1
