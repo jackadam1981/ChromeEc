@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd4d4115_1e196fc1",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-11-30T00:03:02Z",
+      "side": 1,
+      "message": "On EC cold boot, will HOOK_INIT be called before HOOK_CHIPSET_RESET? I guess it doesn\u0027t really matter which is called first, we\u0027ll still get the panic log (though maybe an unexpected \"SYSJUMP\" vs \"CHIPSET RESET\" print).",
+      "range": {
+        "startLine": 675,
+        "startChar": 1,
+        "endLine": 675,
+        "endChar": 36
+      },
+      "revId": "06dc1b95a459605a7c41b1f3b2f01199556d8e6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
