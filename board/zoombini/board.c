@@ -305,6 +305,22 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+static void board_check_power(void)
+{
+	int regval;
+
+	if (i2c_read8(I2C_PORT_PMIC, PMIC_I2C_ADDR, 0xe7, &regval))
+		ccprintf("\nfailed to read PGOOD_STAT1\n");
+	else
+		ccprintf("\n\n\tE7h: %02x\n\n", regval);
+
+	if (i2c_read8(I2C_PORT_PMIC, PMIC_I2C_ADDR, 0xe8, &regval))
+		ccprintf("\nfailed to read PGOOD_STAT2\n");
+	else
+		ccprintf("\n\n\tE8h: %02x\n\n", regval);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_check_power, HOOK_PRIO_DEFAULT);
+
 void board_overcurrent_event(int port)
 {
 	/* Sanity check the port. */
@@ -352,14 +368,22 @@ static void board_pmic_init(void)
 		;
 	gpio_set_level(GPIO_PMIC_EN, 1);
 
+	if (i2c_write8(I2C_PORT_PMIC, PMIC_I2C_ADDR, 0x31, 0xa)) {
+		cprints(CC_SYSTEM, "failed to set vprimcorecntl\n");
+	}
+
+	/* Mask vprimcore fault. */
+	if (i2c_write8(I2C_PORT_PMIC, PMIC_I2C_ADDR, 0xe6, 1))
+		cprints(CC_SYSTEM, "failed to mask pwfault_mask2\n");
+
 	/*
 	 * PGMASK1 : Mask VCCIO and 5V from Power Good Tree
 	 * [7] : 1b MVCCIOPG is masked.
 	 * [2] : 1b MV5APG is masked.
 	 */
 	if (i2c_write8(I2C_PORT_PMIC, PMIC_I2C_ADDR, TPS650X30_REG_PGMASK1,
-		       (1 << 7) | (1 << 2)))
-		cprints(CC_SYSTEM, "PMIC init failed!");
+		       (1 << 7) | (1 << 6) | (1 << 2)))
+		       cprints(CC_SYSTEM, "PMIC init failed!");
 	else
 		cprints(CC_SYSTEM, "PMIC init'd");
 }
