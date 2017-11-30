@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60a521f1_03f1dda3",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-30T09:32:27Z",
+      "side": 1,
+      "message": "this should be unconditionally true due to CL 792574 ?\nthen it\u0027s not useful to check it at runtime.",
+      "range": {
+        "startLine": 284,
+        "startChar": 20,
+        "endLine": 284,
+        "endChar": 49
+      },
+      "revId": "067b020c8706e6633b76ade75a045843beb432ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f19edb_de0b3a50",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-11-30T09:32:27Z",
+      "side": 1,
+      "message": "nit: if (system_get_board_version() \u003c 6)",
+      "range": {
+        "startLine": 776,
+        "startChar": 1,
+        "endLine": 779,
+        "endChar": 9
+      },
+      "revId": "067b020c8706e6633b76ade75a045843beb432ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
