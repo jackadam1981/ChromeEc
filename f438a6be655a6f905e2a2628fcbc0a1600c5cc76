@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "658fbcd2_bd18ce05",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-30T03:11:05Z",
+      "side": 1,
+      "message": "For XDSG only, the mask should be 0x2000",
+      "parentUuid": "da2d65bb_7e5dcbd4",
+      "range": {
+        "startLine": 422,
+        "startChar": 4,
+        "endLine": 422,
+        "endChar": 22
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de89f6a7_24f72609",
         "filename": "board/coral/battery.c",
         "patchSetId": 1
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "This function is required to handle the cases when the fuel gauge is awake and will return a non-zero state of charge, but is not able yet to provide power (i.e. discharge FET is not active).  So should we check the bit 1(DSG FET status)?",
       "parentUuid": "85b43333_eaf3248c",
+      "range": {
+        "startLine": 451,
+        "startChar": 5,
+        "endLine": 451,
+        "endChar": 23
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c05fdee_f382a376",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-11-30T03:11:05Z",
+      "side": 1,
+      "message": "Checking is XCHG/XDSG works for detecting exit from ship mode, but yes checking for XDSG being set is sufficient. So in that case the mask would be 0x2000",
+      "parentUuid": "a19278fd_5e8e2f67",
       "range": {
         "startLine": 451,
         "startChar": 5,
