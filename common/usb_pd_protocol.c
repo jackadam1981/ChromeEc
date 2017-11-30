@@ -791,6 +791,7 @@ static int pd_get_saved_active(int port)
 
 static void pd_set_saved_active(int port, int val)
 {
+	CPRINTS("===== pd_set_saved_active: val = %d ++++", val);
 	if (system_set_bbram(port ? SYSTEM_BBRAM_IDX_PD1 :
 				    SYSTEM_BBRAM_IDX_PD0, val))
 		CPRINTS("PD NVRAM FAIL");
@@ -1119,7 +1120,9 @@ static void handle_data_request(int port, uint16_t head,
 					sink_can_xmit(port, SINK_TX_OK);
 #endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE
-				pd_set_saved_active(port, 1);
+				pd_set_saved_active(port,
+						    pd[port].supply_voltage >
+						    5000);
 #endif
 				pd[port].requested_idx = RDO_POS(payload[0]);
 				set_state(port, PD_STATE_SRC_ACCEPTED);
@@ -1311,6 +1314,12 @@ static void handle_ctrl_request(int port, uint16_t head,
 			set_state(port, PD_STATE_SNK_READY);
 			pd_set_input_current_limit(port, pd[port].curr_limit,
 						   pd[port].supply_voltage);
+			/*
+			 * If VBUS > 5V, then need to save port to BBRAM to
+			 * ensure that partner port gets reset.
+			 */
+			pd_set_saved_active(port,
+					    pd[port].supply_voltage > 5000);
 #ifdef CONFIG_CHARGE_MANAGER
 			/* Set ceiling based on what's negotiated */
 			charge_manager_set_ceil(port,
@@ -1411,7 +1420,6 @@ static void handle_ctrl_request(int port, uint16_t head,
 		} else if (pd[port].task_state == PD_STATE_SNK_REQUESTED) {
 			/* explicit contract is now in place */
 			pd[port].flags |= PD_FLAGS_EXPLICIT_CONTRACT;
-			pd_set_saved_active(port, 1);
 			set_state(port, PD_STATE_SNK_TRANSITION);
 #endif
 		}
@@ -3392,6 +3400,8 @@ void pd_task(void *u)
 			set_state(port, PD_STATE_SNK_DISCONNECTED);
 			/* set timeout small to reconnect fast */
 			timeout = 5*MSEC;
+			/* Always clear saved port when VBUS is disconnected */
+			pd_set_saved_active(port, 0);
 		}
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 	}
