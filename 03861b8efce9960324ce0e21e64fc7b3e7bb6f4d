@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7e3ba29_c249823e",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-30T18:00:54Z",
+      "side": 1,
+      "message": "nit: get_func_set3 already printed this",
+      "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de8c7d2c_937dbe0f",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-30T18:00:54Z",
+      "side": 1,
+      "message": "Why change from 0xFF to regval here?",
+      "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced8e862_b3e1f554",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-30T18:00:54Z",
+      "side": 1,
+      "message": "Delete this if above is being used for both rise and fall?",
+      "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cff82f1b_55c9718f",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-30T18:00:54Z",
+      "side": 1,
+      "message": "nit: param should be is_enabled",
+      "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60278d99_b5d8cee6",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-30T18:00:54Z",
+      "side": 1,
+      "message": "nit: @return",
+      "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
