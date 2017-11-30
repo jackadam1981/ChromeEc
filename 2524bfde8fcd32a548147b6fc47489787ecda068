@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "803e9be0_eb365ed8",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-11-30T13:40:33Z",
+      "side": 1,
+      "message": "Using Vincent\u0027s patch. Drop this function at all. Thanks ~",
+      "parentUuid": "f05a8ea8_09ab195a",
+      "range": {
+        "startLine": 68,
+        "startChar": 19,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "2524bfde8fcd32a548147b6fc47489787ecda068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5a30eab_e95e8b4c",
         "filename": "common/i2c_master.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "2524bfde8fcd32a548147b6fc47489787ecda068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7b9b08_31b55467",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-11-30T13:40:33Z",
+      "side": 1,
+      "message": "Dropped as applying your patch :-)",
+      "parentUuid": "f5a30eab_e95e8b4c",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 47
+      },
+      "revId": "2524bfde8fcd32a548147b6fc47489787ecda068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
