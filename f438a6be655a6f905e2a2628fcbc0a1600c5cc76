@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "0384dc09_877077dd",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1241583
+      },
+      "writtenOn": "2017-11-30T03:30:17Z",
+      "side": 1,
+      "message": "OK, I will fix it",
+      "parentUuid": "658fbcd2_bd18ce05",
+      "range": {
+        "startLine": 422,
+        "startChar": 4,
+        "endLine": 422,
+        "endChar": 22
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "de89f6a7_24f72609",
         "filename": "board/coral/battery.c",
         "patchSetId": 1
@@ -273,6 +297,30 @@
       "side": 1,
       "message": "Checking is XCHG/XDSG works for detecting exit from ship mode, but yes checking for XDSG being set is sufficient. So in that case the mask would be 0x2000",
       "parentUuid": "a19278fd_5e8e2f67",
+      "range": {
+        "startLine": 451,
+        "startChar": 5,
+        "endLine": 451,
+        "endChar": 23
+      },
+      "revId": "f438a6be655a6f905e2a2628fcbc0a1600c5cc76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c1f04b0_56af4ad7",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1241583
+      },
+      "writtenOn": "2017-11-30T03:30:17Z",
+      "side": 1,
+      "message": "OK,I will fix it",
+      "parentUuid": "8c05fdee_f382a376",
       "range": {
         "startLine": 451,
         "startChar": 5,
