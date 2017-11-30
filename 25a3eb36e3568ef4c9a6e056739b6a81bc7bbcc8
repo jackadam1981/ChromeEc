@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d36cefde_6fa68273",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-11-30T18:01:30Z",
+      "side": 1,
+      "message": "What should return value be if there is an I2C error?",
+      "revId": "25a3eb36e3568ef4c9a6e056739b6a81bc7bbcc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
