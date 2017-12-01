@@ -89,6 +89,15 @@ struct tpm_cmd_header {
 void tpm_alt_extension(struct tpm_cmd_header *tpmh, size_t buffer_size);
 
 /*
+ * A function to register a callback to be invoked when TPM is started up (as
+ * opposed to restarted/resumed after low power state).
+ *
+ * @param callback pointer to the function to call when TPM startup is
+ *                 successfully processed.
+ */
+void register_tpm_reset_callback(void (*callback)(void));
+
+/*
  * The only TPM2 command we care about on the driver level, see
  * crosbug.com/p/55667 for detals.
  */
