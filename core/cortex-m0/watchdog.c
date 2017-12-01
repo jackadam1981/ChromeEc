@@ -20,9 +20,11 @@ void watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 	if ((excep_lr & 0xf) == 1) {
 		/* we were already in exception context */
 		stack = (uint32_t *)excep_sp;
+		panic_set_reason(PANIC_SW_WATCHDOG, stack[6], 0);
 	} else {
 		/* we were in task context */
 		stack = (uint32_t *)psp;
+		panic_set_reason(PANIC_SW_WATCHDOG, task_get_current(), 0);
 	}
 
 	panic_printf("### WATCHDOG PC=%08x / LR=%08x / pSP=%08x ",
