@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "94febc0e_0c6ddee0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-01T00:53:31Z",
+      "side": 1,
+      "message": "The meaning of this function is changed, we might need to find a new name for it.",
+      "range": {
+        "startLine": 792,
+        "startChar": 12,
+        "endLine": 792,
+        "endChar": 31
+      },
+      "revId": "d1fff28e1f06dfd93386e97259158785ba27cdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7787c233_307590d6",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
@@ -22,6 +45,29 @@
       "revId": "d1fff28e1f06dfd93386e97259158785ba27cdb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e420100_4a48117a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-01T00:53:31Z",
+      "side": 1,
+      "message": "Since the meaning of this function has changed, source role is probably irrelevant, we will reset the output on pd_power_supply_reset() on the other side of sysjump.",
+      "range": {
+        "startLine": 1123,
+        "startChar": 4,
+        "endLine": 1125,
+        "endChar": 16
+      },
+      "revId": "d1fff28e1f06dfd93386e97259158785ba27cdb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
