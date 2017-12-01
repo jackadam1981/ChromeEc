@@ -38,11 +38,7 @@ static void update_vbus_supplier(int port, int vbus_level)
 	}
 }
 
-#ifdef CONFIG_USB_PD_5V_EN_ACTIVE_LOW
-#define USB_5V_EN(port) !gpio_get_level(GPIO_USB_C##port##_5V_EN_L)
-#else
 #define USB_5V_EN(port) gpio_get_level(GPIO_USB_C##port##_5V_EN)
-#endif
 
 int usb_charger_port_is_sourcing_vbus(int port)
 {

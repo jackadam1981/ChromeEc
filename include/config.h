@@ -2538,12 +2538,6 @@
 /* Initial DRP / toggle policy */
 #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_TOGGLE_OFF
 
-/*
- * Define if VBUS source GPIOs (GPIO_USB_C*_5V_EN) are active-low (and named
- * (..._L) rather than default active-high.
- */
-#undef CONFIG_USB_PD_5V_EN_ACTIVE_LOW
-
 /* Dynamic USB PD source capability */
 #undef CONFIG_USB_PD_DYNAMIC_SRC_CAP
 
