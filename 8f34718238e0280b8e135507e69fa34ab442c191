@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0dd611f_dd9e9464",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-01T18:01:52Z",
+      "side": 1,
+      "message": "I will not +2 the CL directly. Instead, let\u0027s work on the change on the master branch and once +2, you will cherry pick for the glados branch.",
+      "revId": "8f34718238e0280b8e135507e69fa34ab442c191",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
