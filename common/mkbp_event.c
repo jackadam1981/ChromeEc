@@ -76,6 +76,7 @@ int mkbp_send_event(uint8_t event_type)
 	}
 #endif
 
+	//get time, instead of 0xbbbbbb
 	set_host_interrupt(1);
 	return 1;
 }

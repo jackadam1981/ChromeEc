@@ -161,6 +161,7 @@ static void motion_sense_insert_flush(struct motion_sensor_t *sensor)
 	vector.flags = MOTIONSENSE_SENSOR_FLAG_FLUSH |
 		       MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
 	vector.timestamp = __hw_clock_source_read();
+	CPRINTS("amstan insert flush");
 	vector.sensor_num = sensor - motion_sensors;
 
 	motion_sense_fifo_add_unit(&vector, sensor, 0);
@@ -171,7 +172,9 @@ static void motion_sense_insert_timestamp(void)
 	struct ec_response_motion_sensor_data vector;
 	vector.flags = MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
 	vector.timestamp = __hw_clock_source_read();
+	vector.timestamp = 0xaaaaaa;
 	vector.sensor_num = 0;
+	CPRINTS("amstan insert timestamp");
 	motion_sense_fifo_add_unit(&vector, NULL, 0);
 }
 
@@ -184,6 +187,8 @@ static void motion_sense_get_fifo_info(
 	fifo_info->total_lost = motion_sense_fifo_lost;
 	mutex_unlock(&g_sensor_mutex);
 	fifo_info->timestamp = __hw_clock_source_read();
+	fifo_info->timestamp = 0xbbbbbb;
+	CPRINTS("amstan get fifo info");
 }
 #endif
 
@@ -956,7 +961,7 @@ void motion_sense_task(void *u)
 		 */
 		if (fifo_flush_needed || wake_up_needed ||
 		    event & TASK_EVENT_MOTION_ODR_CHANGE ||
-		    queue_space(&motion_sense_fifo) < CONFIG_ACCEL_FIFO_THRES ||
+		    queue_space(&motion_sense_fifo) < CONFIG_ACCEL_FIFO_THRES || //logic inverted s/queue_space/queue_used
 		    (motion_int_interval > 0 &&
 		     time_after(ts_end_task.le.lo,
 				ts_last_int.le.lo + motion_int_interval))) {
@@ -1018,7 +1023,7 @@ static int motion_sense_get_next_event(uint8_t *out)
 	union ec_response_get_next_data *data =
 		(union ec_response_get_next_data *)out;
 	/* out is not padded. It has one byte for the event type */
-	motion_sense_get_fifo_info(&data->sensor_fifo.info);
+	motion_sense_get_fifo_info(&data->sensor_fifo.info); //time in here from near set_host_interrupt(1); from mkbp_event.c 0xbbbbbb
 	return sizeof(data->sensor_fifo);
 }
 
@@ -1182,7 +1187,7 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 			 * Send an event to have a timestamp inserted in the
 			 * FIFO.
 			 */
-			motion_sense_insert_timestamp();
+			motion_sense_insert_timestamp(); //ignore for timinig purposes
 #endif
 			sensor->config[SENSOR_CONFIG_AP].odr =
 				in->sensor_odr.data |
