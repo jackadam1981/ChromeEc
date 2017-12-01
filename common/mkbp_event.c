@@ -79,7 +79,7 @@ int mkbp_send_event(uint8_t event_type)
 #endif
 
 	set_host_interrupt(1);
-	mkbp_last_event_time = __hw_clock_source_read();
+	mkbp_last_event_time = (0xbbbb << 16) + (__hw_clock_source_read() & 0xffff);
 
 	return 1;
 }
