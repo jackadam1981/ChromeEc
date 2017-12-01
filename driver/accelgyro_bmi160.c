@@ -514,9 +514,9 @@ static int get_offset(const struct motion_sensor_t *s,
 		raw_read8(s->port, s->addr, BMI160_OFFSET_EN_GYR98, &val98);
 		/*
 		 * The offset of the gyroscope off_gyr_[xyz] is a 10 bit
-		 * two-complement number in units of 0.061 °/s.
+		 * two-complement number in units of 0.061 ??/s.
 		 * Therefore a maximum range that can be compensated is
-		 * -31.25 °/s to +31.25 °/s
+		 * -31.25 ??/s to +31.25 ??/s
 		 */
 		for (i = X; i <= Z; i++) {
 			raw_read8(s->port, s->addr, BMI160_OFFSET_GYR70 + i,
@@ -777,7 +777,7 @@ int list_activities(const struct motion_sensor_t *s,
  */
 void bmi160_interrupt(enum gpio_signal signal)
 {
-	last_interrupt_timestamp = __hw_clock_source_read();
+	last_interrupt_timestamp = 0xaaaa0000 + (__hw_clock_source_read() % 0xffff);
 	task_set_event(TASK_ID_MOTIONSENSE,
 		       CONFIG_ACCELGYRO_BMI160_INT_EVENT, 0);
 }
@@ -849,7 +849,7 @@ static int config_interrupt(const struct motion_sensor_t *s)
 
 	/* configure fifo watermark at 50% */
 	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_0,
-			512 / sizeof(uint32_t));
+			1); //more stuff here later, like an ifdef, or maybe not, maybe we can just leave it like this for all chromebooks
 #ifdef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
 	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_1,
 			BMI160_FIFO_HEADER_EN);
@@ -984,9 +984,9 @@ static int bmi160_decode_header(struct motion_sensor_t *s,
 				if ((s+i)->in_spoof_mode)
 					v = (s+i)->spoof_xyz;
 #endif  /* defined(CONFIG_ACCEL_SPOOF_MODE) */
-				vector.data[X] = v[X];
-				vector.data[Y] = v[Y];
-				vector.data[Z] = v[Z];
+				vector.data[X] = 0x2501;//v[X];
+				vector.data[Y] = 0x2502;//v[Y];
+				vector.data[Z] = 0x2503;//v[Z];
 				vector.sensor_num = i + (s - motion_sensors);
 				motion_sense_fifo_add_data(&vector, s + i, 3, last_interrupt_timestamp);
 				*bp += (i == MOTIONSENSE_TYPE_MAG ? 8 : 6);
