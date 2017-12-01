@@ -53,6 +53,11 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
+static void vsync_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("vsync pin interrupt %d!", gpio_get_level(signal));
+}
+
 static void overtemp_interrupt(enum gpio_signal signal)
 {
 	CPRINTS("AP wants shutdown");
