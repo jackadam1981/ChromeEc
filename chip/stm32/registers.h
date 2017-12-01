@@ -2353,12 +2353,14 @@ typedef volatile struct stm32_dma_regs stm32_dma_regs_t;
 #define EP_TX_NAK   0x0020
 #define EP_TX_STALL 0x0010
 #define EP_TX_DISAB 0x0000
+#define EP_TX_CTR   0x0080
 #define EP_RX_DTOG  0x4000
 #define EP_RX_MASK  0x3000
 #define EP_RX_VALID 0x3000
 #define EP_RX_NAK   0x2000
 #define EP_RX_STALL 0x1000
 #define EP_RX_DISAB 0x0000
+#define EP_RX_CTR   0x8000
 
 #define EP_STATUS_OUT 0x0100
 
