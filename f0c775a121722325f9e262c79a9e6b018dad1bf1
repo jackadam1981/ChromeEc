@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "943034ce_decee254",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2017-12-01T01:41:52Z",
+      "side": 1,
+      "message": "Engineer in Maxim says that there is no difference between RB(reset pin) \u003d 0 and EN(in PWR_MODE) \u003d 0.",
+      "parentUuid": "1ec66bc7_41a7bf43",
+      "range": {
+        "startLine": 710,
+        "startChar": 0,
+        "endLine": 716,
+        "endChar": 72
+      },
+      "revId": "f0c775a121722325f9e262c79a9e6b018dad1bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbce3f1a_db2b5ed0",
         "filename": "common/acpi.c",
         "patchSetId": 6
