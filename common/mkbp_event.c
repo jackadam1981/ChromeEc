@@ -9,12 +9,14 @@
 #include "chipset.h"
 #include "gpio.h"
 #include "host_command.h"
+#include "hwtimer.h"
 #include "link_defs.h"
 #include "mkbp_event.h"
 #include "power.h"
 #include "util.h"
 
 static uint32_t events;
+uint32_t mkbp_last_event_time;
 
 static void set_event(uint8_t event_type)
 {
@@ -77,6 +79,8 @@ int mkbp_send_event(uint8_t event_type)
 #endif
 
 	set_host_interrupt(1);
+	mkbp_last_event_time = __hw_clock_source_read();
+
 	return 1;
 }
 
