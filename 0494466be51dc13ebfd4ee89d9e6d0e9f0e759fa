@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2aeb2de9_c8f666b6",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-12-01T01:56:25Z",
+      "side": 1,
+      "message": "Thank you for your update. Logically, we can use CONFIG_DYNAMIC_MOTION_SENSOR_COUNT. But caroline ec flash is going to the end of limit. So, with CONFIG_DYNAMIC_MOTION_SENSOR_COUNT and board id check function, I got error \"ld.bfd.real: No room left in the flash\". Do we need to remove some debug code to get more room ? Or is it another way to get more room for flash ?",
+      "parentUuid": "989cbd69_c1868e56",
+      "revId": "0494466be51dc13ebfd4ee89d9e6d0e9f0e759fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a68d131d_ee4bb660",
         "filename": "board/caroline/board.h",
         "patchSetId": 3
