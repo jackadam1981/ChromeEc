@@ -18,6 +18,7 @@
 #include "driver/charger/rt946x.h"
 #include "driver/tcpm/fusb302.h"
 #include "driver/temp_sensor/tmp432.h"
+#include "driver/vsync.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -246,6 +247,9 @@ static void board_init(void)
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCEL_INT_L);
 
+	/* Enable interrupt for the camera vsync. */
+	gpio_enable_interrupt(GPIO_VSYNC_INT);
+
 	/* Set SPI2 pins to high speed */
 	/* pins D0/D1/D3/D4 */
 	STM32_GPIO_OSPEEDR(GPIO_D) |= 0x000003cf;
@@ -440,6 +444,41 @@ struct motion_sensor_t motion_sensors[] = {
 			 .ec_rate = 0,
 		 },
 	 },
+	},
+	[VSYNC] = {
+	 .name = "VSYNC",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_GPIO,
+	 .type = MOTIONSENSE_TYPE_SYNC,
+	 .location = MOTIONSENSE_LOC_CAMERA,
+	 .drv = &vsync_drv,
+	 .default_range = 0, /* dps */
+	 .rot_standard_ref = &base_standard_ref,
+	 .min_frequency = 0,
+	 .max_frequency = 0,
+	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* EC does not need in S0 */
+		 [SENSOR_CONFIG_EC_S0] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+	 },
+
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
