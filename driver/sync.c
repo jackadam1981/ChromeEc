@@ -66,6 +66,7 @@ void sync_interrupt(enum gpio_signal signal)
 	last_interrupt_timestamp = timestamp;
 	event_counter++;
 
+	CPRINTS("sync!"); /* temporary */
 	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_SYNC_INT_EVENT, 0);
 }
 
@@ -83,6 +84,7 @@ static int motion_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 		return EC_SUCCESS; /* nothing new yet */
 	previous_interrupt_timestamp = timestamp;
 
+	CPRINTF("sync irq_handler\n"); /* temporary */
 	vector.data[X] = event_counter;
 	motion_sense_fifo_add_data(&vector, s, 1, timestamp);
 	return EC_SUCCESS;

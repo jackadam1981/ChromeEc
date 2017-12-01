@@ -167,6 +167,7 @@ static void motion_sense_insert_flush(struct motion_sensor_t *sensor)
 	vector.flags = MOTIONSENSE_SENSOR_FLAG_FLUSH |
 		       MOTIONSENSE_SENSOR_FLAG_TIMESTAMP;
 	vector.timestamp = __hw_clock_source_read();
+	CPRINTS("amstan insert flush");
 	vector.sensor_num = sensor - motion_sensors;
 
 	motion_sense_fifo_add_unit(&vector, sensor, 0);
@@ -962,7 +963,7 @@ void motion_sense_task(void *u)
 		 */
 		if (fifo_flush_needed || wake_up_needed ||
 		    event & TASK_EVENT_MOTION_ODR_CHANGE ||
-		    queue_space(&motion_sense_fifo) < CONFIG_ACCEL_FIFO_THRES ||
+		    queue_space(&motion_sense_fifo) < CONFIG_ACCEL_FIFO_THRES || //logic inverted s/queue_space/queue_used
 		    (motion_int_interval > 0 &&
 		     time_after(ts_end_task.le.lo,
 				ts_last_int.le.lo + motion_int_interval))) {
