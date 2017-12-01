@@ -83,6 +83,12 @@
 #define CR50_RID	0  /* No revision ID yet */
 
 static __preserved uint8_t reset_in_progress;
+__preserved void (*reset_callback_func)(void);
+
+void register_tpm_reset_callback(void (*callback)(void))
+{
+	reset_callback_func = callback;
+}
 
 /* Tpm state machine states. */
 enum tpm_states {
