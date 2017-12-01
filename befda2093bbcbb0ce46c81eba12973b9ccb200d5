@@ -22,6 +22,30 @@
       "revId": "befda2093bbcbb0ce46c81eba12973b9ccb200d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231c4f03_8e09a0b1",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-01T08:51:31Z",
+      "side": 1,
+      "message": "Thanks Josh, we\u0027ll update the CL (just FYI I\u0027ll be off next week, so probably around December 11).",
+      "parentUuid": "942579f7_f79a303e",
+      "range": {
+        "startLine": 519,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 3
+      },
+      "revId": "befda2093bbcbb0ce46c81eba12973b9ccb200d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
