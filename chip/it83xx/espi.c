@@ -337,15 +337,7 @@ void espi_vw_interrupt(void)
 	int i;
 	uint8_t vwidx_updated = IT83XX_ESPI_VWCTRL1;
 
-	/*
-	 * TODO(b:68918637): write-1 clear bug.
-	 * for now, we have to write 0xff to clear pending bit.
-	 */
-#if 0
 	IT83XX_ESPI_VWCTRL1 = vwidx_updated;
-#else
-	IT83XX_ESPI_VWCTRL1 = 0xff;
-#endif
 	task_clear_pending_irq(IT83XX_IRQ_ESPI_VW);
 
 	for (i = 0; i < CHIP_ESPI_VW_INTERRUPT_NUM; i++) {
@@ -366,11 +358,6 @@ void espi_interrupt(void)
 void espi_init(void)
 {
 	int i;
-
-	/* TODO: PLL change won't success if eSPI chip select is low. */
-#if (PLL_CLOCK != 48000000)
-#error "Not support PLL change if eSPI module is enabled. "
-#endif
 
 	for (i = 0; i < ARRAY_SIZE(vw_init_setting); i++)
 		IT83XX_ESPI_VWIDX(vw_init_setting[i].index) =

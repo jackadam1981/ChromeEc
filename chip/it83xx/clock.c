@@ -224,8 +224,16 @@ void clock_init(void)
 #if (PLL_CLOCK == 24000000)     || \
 	(PLL_CLOCK == 48000000) || \
 	(PLL_CLOCK == 96000000)
+
+#ifdef CONFIG_ESPI
+	IT83XX_GPIO_GPCRM5 = 0x40;
+	IT83XX_GPIO_GPDRM |= (1 << 5);
+#endif
 	/* Set PLL frequency */
 	clock_set_pll(PLL_CLOCK / 24000000);
+#ifdef CONFIG_ESPI
+	IT83XX_GPIO_GPCRM5 = 0;
+#endif
 #else
 #error "Support only for PLL clock speed of 24/48/96MHz."
 #endif
@@ -237,7 +245,11 @@ void clock_init(void)
 	 * these functions, or firmware treats VCC logic high
 	 * as following setting.
 	 */
+#ifdef CONFIG_ESPI
+	IT83XX_GCTRL_RSTS = (IT83XX_GCTRL_RSTS & 0x37) + 0x40;
+#else
 	IT83XX_GCTRL_RSTS = (IT83XX_GCTRL_RSTS & 0x3F) + 0x40;
+#endif
 
 	/* Turn off auto clock gating. */
 	IT83XX_ECPM_AUTOCG = 0x00;
