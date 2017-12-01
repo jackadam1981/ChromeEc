@@ -53,6 +53,11 @@ static void tcpc_alert_event(enum gpio_signal signal)
 #endif
 }
 
+static void vsync_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("vsync!");
+}
+
 static void overtemp_interrupt(enum gpio_signal signal)
 {
 	CPRINTS("AP wants shutdown");
@@ -245,6 +250,9 @@ static void board_init(void)
 
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCEL_INT_L);
+
+	/* Enable interrupt for the camera vsync. */
+	gpio_enable_interrupt(GPIO_VSYNC_INT);
 
 	/* Set SPI2 pins to high speed */
 	/* pins D0/D1/D3/D4 */
