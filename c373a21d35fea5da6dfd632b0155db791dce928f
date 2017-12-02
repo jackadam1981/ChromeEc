@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6108fa3_2129a6be",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2017-12-02T01:23:31Z",
+      "side": 1,
+      "message": "Should probably move this inside set_host_interrupt() and only send it when the arg goes from a 0-\u003e1, not every time it\u0027s called with a 1.",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 49
+      },
+      "revId": "c373a21d35fea5da6dfd632b0155db791dce928f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
