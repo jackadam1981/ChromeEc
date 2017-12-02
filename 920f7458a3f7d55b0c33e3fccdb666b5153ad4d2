@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cacdad99_ab2434da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-02T00:47:05Z",
+      "side": 1,
+      "message": "There is also a \u0027crash\u0027 EC console command which may be helpful.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 34
+      },
+      "revId": "920f7458a3f7d55b0c33e3fccdb666b5153ad4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "980ef9ec_14dc76c7",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-02T00:47:05Z",
+      "side": 1,
+      "message": "You may want to put this behind #ifdef CONFIG_SOFTWARE_PANIC.",
+      "revId": "920f7458a3f7d55b0c33e3fccdb666b5153ad4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d2a4121_cbee49d6",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-02T00:47:05Z",
+      "side": 1,
+      "message": "This has the side effect of panic\u0027ing slightly early, before the actual watchdog fires.",
+      "range": {
+        "startLine": 397,
+        "startChar": 1,
+        "endLine": 397,
+        "endChar": 15
+      },
+      "revId": "920f7458a3f7d55b0c33e3fccdb666b5153ad4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
