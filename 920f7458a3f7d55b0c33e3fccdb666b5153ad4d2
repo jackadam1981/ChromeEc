@@ -128,6 +128,30 @@
       "revId": "920f7458a3f7d55b0c33e3fccdb666b5153ad4d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "742ba4bf_e9fa53c2",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-02T01:02:36Z",
+      "side": 1,
+      "message": "We can try storing the panic reason / data without causing a SW panic, though I remember stm32 has strange watchdog behavior, something related to double resets?\n\nIf you compare reset flags from software_panic vs actual watchdog, are there any meaningful differences?",
+      "parentUuid": "02ef624f_1fd1fbc2",
+      "range": {
+        "startLine": 397,
+        "startChar": 1,
+        "endLine": 397,
+        "endChar": 15
+      },
+      "revId": "920f7458a3f7d55b0c33e3fccdb666b5153ad4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
