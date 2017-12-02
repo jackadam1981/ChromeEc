@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95e38aa0_76c40c43",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-02T00:36:24Z",
+      "side": 1,
+      "message": "Do non-robo systems have a power LED? If not, you probably should leave brightness_range \u003d { 0 } for that LED.",
+      "revId": "50976596d99b9095abe59dc6b4e73a9d218b8cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea46378e_4007b092",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-02T00:36:24Z",
+      "side": 1,
+      "message": "If non-robo systems don\u0027t have a power LED, you should probably return error if asked to change its state.",
+      "revId": "50976596d99b9095abe59dc6b4e73a9d218b8cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c30aac7d_30f8ef43",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-02T00:36:24Z",
+      "side": 1,
+      "message": "White and blue are both achieved by asserting the same GPIO? Do boards have one-or-the-other?",
+      "range": {
+        "startLine": 195,
+        "startChar": 25,
+        "endLine": 195,
+        "endChar": 36
+      },
+      "revId": "50976596d99b9095abe59dc6b4e73a9d218b8cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
