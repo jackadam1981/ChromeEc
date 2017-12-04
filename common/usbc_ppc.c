@@ -14,7 +14,27 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+static uint8_t oc_event_cnt_tbl[CONFIG_USB_PD_PORT_COUNT];
+
 /* Simple wrappers to dispatch to the drivers. */
+
+int ppc_add_oc_event(int port)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	oc_event_cnt_tbl[port]++;
+	return EC_SUCCESS;
+}
+
+int ppc_clear_oc_event_counter(int port)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	oc_event_cnt_tbl[port] = 0;
+	return EC_SUCCESS;
+}
 
 int ppc_is_sourcing_vbus(int port)
 {
@@ -39,6 +59,18 @@ int ppc_vbus_source_enable(int port, int enable)
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
 
+	/*
+	 * Check our OC event counter.  If we've exceeded our threshold, then
+	 * let's latch our source path off to prevent continuous cycling.  When
+	 * the PD state machine detects a disconnection on the CC lines, we will
+	 * reset our OC event counter.
+	 */
+	if (enable && (oc_event_cnt_tbl[port] >= PPC_OC_CNT_THRESH)) {
+		CPRINTS("p%d: OC event limit reached!  Source path disabled.",
+			port);
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
 	return ppc_chips[port].drv->vbus_source_enable(port, enable);
 }
 
@@ -58,6 +90,7 @@ static void ppc_init(void)
 	int rv;
 
 	for (i = 0; i < ppc_cnt; i++) {
+		oc_event_cnt_tbl[i] = 0;
 		rv = ppc_chips[i].drv->init(i);
 		if (rv)
 			CPRINTS("p%d: PPC init failed! (%d)", i, rv);
