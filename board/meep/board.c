@@ -331,11 +331,11 @@ const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
 #endif
 
-void board_overcurrent_event(int port)
+void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* Sanity check the port. */
 	if ((port < 0) || (port >= CONFIG_USB_PD_PORT_COUNT))
 		return;
 
-	gpio_set_level(GPIO_USB_C_OC, 0);
+	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
 }

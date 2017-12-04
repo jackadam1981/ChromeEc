@@ -493,7 +493,7 @@ int board_is_sourcing_vbus(int port)
 	return EC_ERROR_INVAL;
 }
 
-void board_overcurrent_event(int port)
+void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* TODO(waihong): Notify AP? */
 	CPRINTS("p%d: overcurrent!", port);
