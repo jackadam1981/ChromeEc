@@ -34,6 +34,24 @@
       "revId": "9fde470dab464e04fcfceb23d51da49391fda08e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf091a52_a1d54f83",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-12-04T23:01:53Z",
+      "side": 1,
+      "message": "Yes, thus my comment being board dependent since it\u0027s bus loading dependent.",
+      "parentUuid": "a7c97092_b3b7afee",
+      "revId": "9fde470dab464e04fcfceb23d51da49391fda08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
