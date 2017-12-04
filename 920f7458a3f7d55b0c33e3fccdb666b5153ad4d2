@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c7d59bd_cebce3d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-04T20:22:04Z",
+      "side": 1,
+      "message": "Yes, but I\u0027m trying to log it in panic_info too so that we can retrieve crash PC in the next boot. It helps us debug from feedback report, which might not have the ec log from the previous boot.",
+      "parentUuid": "3bd14a30_70e27062",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "920f7458a3f7d55b0c33e3fccdb666b5153ad4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cacdad99_ab2434da",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
