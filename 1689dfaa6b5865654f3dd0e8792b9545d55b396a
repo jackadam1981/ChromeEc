@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59642306_71ae06eb",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-12-04T21:42:51Z",
+      "side": 1,
+      "message": "This should be implemented on all the other chips/ as well.",
+      "revId": "1689dfaa6b5865654f3dd0e8792b9545d55b396a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e6d9788_80ed942a",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-12-04T21:42:51Z",
+      "side": 1,
+      "message": "put on same line as HOOK_CHIPSET_SHUTDOWN ?",
+      "revId": "1689dfaa6b5865654f3dd0e8792b9545d55b396a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
