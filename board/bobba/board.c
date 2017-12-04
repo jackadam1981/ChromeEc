@@ -322,11 +322,11 @@ void lid_angle_peripheral_enable(int enable)
 }
 #endif
 
-void board_overcurrent_event(int port)
+void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* Sanity check the port. */
 	if ((port < 0) || (port >= CONFIG_USB_PD_PORT_COUNT))
 		return;
 
-	gpio_set_level(GPIO_USB_C_OC, 0);
+	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
 }
