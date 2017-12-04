@@ -372,9 +372,6 @@ void board_overcurrent_event(int port)
 	default:
 		return;
 	};
-
-	/* TODO(aaboagye): Write a PD log entry for the OC event. */
-	CPRINTS("C%d: overcurrent!", port);
 }
 
 static void board_pmic_init(void)

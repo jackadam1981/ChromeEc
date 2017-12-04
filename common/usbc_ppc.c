@@ -8,13 +8,72 @@
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
+#include "timer.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+static uint8_t oc_event_cnt_tbl[CONFIG_USB_PD_PORT_COUNT];
+static uint8_t clear_oc_event_att[CONFIG_USB_PD_PORT_COUNT];
+
 /* Simple wrappers to dispatch to the drivers. */
+
+int ppc_add_oc_event(int port)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	oc_event_cnt_tbl[port]++;
+
+	if (oc_event_cnt_tbl[port] >= PPC_OC_CNT_THRESH)
+		CPRINTS("p%d: OC event limit reached!  Source path disabled.",
+			port);
+	return EC_SUCCESS;
+}
+
+/* Flag to prevent perpetually postponing the clearing attempts table. */
+static int clear_oc_tbl_scheduled;
+
+static void clear_oc_tbl(void)
+{
+	int i;
+
+	for (i = 0; i < ppc_cnt; i++)
+		if (clear_oc_event_att[i] > PPC_OC_CNT_THRESH)
+			clear_oc_event_att[i] = 0;
+
+	clear_oc_tbl_scheduled = 0;
+}
+DECLARE_DEFERRED(clear_oc_tbl);
+
+int ppc_clear_oc_event_counter(int port)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	clear_oc_event_att[port]++;
+
+	/*
+	 * If we are clearing our event table in quick succession, we may be in
+	 * an overcurrent loop where we are also detecting a disconnect on the
+	 * CC pins.  Therefore, let's not clear it just yet and the let the
+	 * limit be reached.  This way, we won't send the hard reset and
+	 * actually detect the physical disconnect.
+	 */
+	if (clear_oc_event_att[port] > PPC_OC_CNT_THRESH) {
+		if (!clear_oc_tbl_scheduled) {
+			hook_call_deferred(&clear_oc_tbl_data, 2 * SECOND);
+			clear_oc_tbl_scheduled = 1;
+		}
+
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	oc_event_cnt_tbl[port] = 0;
+	return EC_SUCCESS;
+}
 
 int ppc_is_sourcing_vbus(int port)
 {
@@ -47,6 +106,15 @@ int ppc_vbus_source_enable(int port, int enable)
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
 
+	/*
+	 * Check our OC event counter.  If we've exceeded our threshold, then
+	 * let's latch our source path off to prevent continuous cycling.  When
+	 * the PD state machine detects a disconnection on the CC lines, we will
+	 * reset our OC event counter.
+	 */
+	if (enable && (oc_event_cnt_tbl[port] >= PPC_OC_CNT_THRESH))
+		return EC_ERROR_ACCESS_DENIED;
+
 	return ppc_chips[port].drv->vbus_source_enable(port, enable);
 }
 
@@ -66,6 +134,7 @@ static void ppc_init(void)
 	int rv;
 
 	for (i = 0; i < ppc_cnt; i++) {
+		oc_event_cnt_tbl[i] = 0;
 		rv = ppc_chips[i].drv->init(i);
 		if (rv)
 			CPRINTS("p%d: PPC init failed! (%d)", i, rv);
