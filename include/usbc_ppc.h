@@ -10,6 +10,9 @@
 
 /* Common APIs for USB Type-C Power Path Controllers (PPC) */
 
+/* Number of times a port may overcurrent before we latch off the port. */
+#define PPC_OC_CNT_THRESH 3
+
 struct ppc_drv {
 	/**
 	 * Initialize the PPC.
@@ -78,6 +81,23 @@ struct ppc_config_t {
 
 extern const struct ppc_config_t ppc_chips[];
 extern const unsigned int ppc_cnt;
+
+/**
+ * Increment the overcurrent event counter.
+ *
+ * @param port: The Type-C port that has overcurrented.
+ * @return EC_SUCCESS on success, EC_ERROR_INVAL if non-existent port.
+ */
+int ppc_add_oc_event(int port);
+
+
+/**
+ * Clear the overcurrent event counter.
+ *
+ * @param port: The Type-C port's counter to clear.
+ * @return EC_SUCCESS on success, EC_ERROR_INVAL if non-existent port.
+ */
+int ppc_clear_oc_event_counter(int port);
 
 /**
  * Determine if VBUS is present or not.
