@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9a3850e_b992f4ac",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-12-04T22:40:23Z",
+      "side": 1,
+      "message": "This formatting is all off. \n\nspace after if\nno space after ( or before )\n\nAlso, why isn\u0027t a #define being used instead of open coding 6 everywhere?",
+      "range": {
+        "startLine": 788,
+        "startChar": 1,
+        "endLine": 788,
+        "endChar": 37
+      },
+      "revId": "2588f01f1a511225ce44c09da94b2967e1ff274e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
