@@ -16,6 +16,24 @@
       "revId": "9fde470dab464e04fcfceb23d51da49391fda08e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7c97092_b3b7afee",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-12-04T22:37:46Z",
+      "side": 1,
+      "message": "hcnt and lcnt are system clock count in SCL high period and low period. It\u0027s decided by system clock, I2C speed, and bus loading(here use 400pf)",
+      "parentUuid": "16b3b4a5_e1450668",
+      "revId": "9fde470dab464e04fcfceb23d51da49391fda08e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
