@@ -43,6 +43,7 @@ enum pd_rx_errors {
 #define PD_EVENT_CC               (1<<4) /* CC line change event */
 #define PD_EVENT_TCPC_RESET       (1<<5) /* TCPC has reset */
 #define PD_EVENT_UPDATE_DUAL_ROLE (1<<6) /* DRP state has changed */
+#define PD_EVENT_SEND_HARD_RESET  (1<<7) /* Issue a Hard Reset. */
 
 /* --- PD data message helpers --- */
 #define PDO_MAX_OBJECTS   7
@@ -1675,6 +1676,14 @@ int pd_get_polarity(int port);
  * @param port USB-C port number
  */
 int pd_get_partner_data_swap_capable(int port);
+
+/**
+ * Handle an overcurrent protection event.  The port acting as a source has
+ * reported an overcurrent event.
+ *
+ * @param port: USB-C port number.
+ */
+void pd_handle_overcurrent(int port);
 
 /**
  * Request power swap command to be issued
