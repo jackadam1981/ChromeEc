@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f208d32_6db4b665",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-04T13:45:04Z",
+      "side": 1,
+      "message": "seems something specific to the other tool UI, do we need it ?\n\"Part Two tab\" seems the least useful info ...",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 1
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0f43b61_54aa4e35",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-04T13:45:04Z",
+      "side": 1,
+      "message": "more than 200 lines of allocations/boilerplate to write 4 lines is just ... too much, either do it in a single asprintf or no buffering",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 1
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48211bff_0dd621b6",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-04T13:45:04Z",
+      "side": 1,
+      "message": "this is some kind of bad strcpy ?",
+      "range": {
+        "startLine": 513,
+        "startChar": 2,
+        "endLine": 513,
+        "endChar": 28
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc7f2dec_26879b71",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-04T13:45:04Z",
+      "side": 1,
+      "message": "at the end of the day, you just want to type_name to point to the (constant) name/description.\n        char *type_name;\n\tif (is_drp()) {\n\t\ttype \u003d DRP;\n\t\ttype_name \u003d \"DRP\";",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 535,
+        "endChar": 63
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9daf6370_56acec42",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-04T13:45:04Z",
+      "side": 1,
+      "message": "the spec says:\n\"Parameter Definitions may appear in any order within the Vendor Info File.\"\n\nso why all this re-ordering ?",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 557,
+        "endChar": 72
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a63560b0_43624b92",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-04T13:45:04Z",
+      "side": 1,
+      "message": "it\u0027s close to impossible to see the diffs with all the lines re-ordering",
+      "range": {
+        "startLine": 609,
+        "startChar": 0,
+        "endLine": 611,
+        "endChar": 34
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf641b1_e0c80b09",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-04T13:45:04Z",
+      "side": 1,
+      "message": "what is the point of buffering here to write it below ?",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 625,
+        "endChar": 3
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
