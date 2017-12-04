@@ -70,6 +70,24 @@
       "revId": "d6c836b4dacdce0f3279ac56d92e7cfd92fdf967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c49da409_38962e98",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-12-04T03:51:06Z",
+      "side": 0,
+      "message": "The first cycle should be OK, but next charge task cycle will start charge in https://chromium.googlesource.com/chromiumos/platform/ec/+/913d08db47c16a837b401e5469882131108f2d03/common/charge_state_v2.c#941\nIf set a none zero value here, idle command will fail in next charge cycle if we use charge current in charger when in idle mode.\nIf we need set none zero value here, also need change manual_mode charge current setting in charge_state_v2, otherwise idle command will fail.\nPlease refer to my change in charge_state_v2 in https://chromium-review.googlesource.com/#/c/chromiumos/platform/ec/+/753101/",
+      "parentUuid": "5f132278_08175310",
+      "revId": "d6c836b4dacdce0f3279ac56d92e7cfd92fdf967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
