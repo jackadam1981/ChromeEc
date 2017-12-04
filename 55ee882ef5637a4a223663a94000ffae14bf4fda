@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73566c37_59d15a78",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1111429
+      },
+      "writtenOn": "2017-12-04T11:02:23Z",
+      "side": 1,
+      "message": "Need to enable interrupt\ngpio_enable_interrupt(GPIO_VSYNC_INT_L);",
+      "range": {
+        "startLine": 242,
+        "startChar": 12,
+        "endLine": 242,
+        "endChar": 22
+      },
+      "revId": "55ee882ef5637a4a223663a94000ffae14bf4fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b500e37_400ed2bf",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1111429
+      },
+      "writtenOn": "2017-12-04T11:02:23Z",
+      "side": 1,
+      "message": "Both GPIO_PULL_DOWN and GPIO_PULL_UP works on my Dru with the *special* sensor.",
+      "range": {
+        "startLine": 35,
+        "startChar": 55,
+        "endLine": 35,
+        "endChar": 69
+      },
+      "revId": "55ee882ef5637a4a223663a94000ffae14bf4fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fc0f938_e2d329cb",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1111429
+      },
+      "writtenOn": "2017-12-04T11:02:23Z",
+      "side": 1,
+      "message": "The vsync is high active, when the vsync triggered this pin goes high.",
+      "range": {
+        "startLine": 35,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "55ee882ef5637a4a223663a94000ffae14bf4fda",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
