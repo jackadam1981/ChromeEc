@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "061b05f6_a8f704f2",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-12-04T22:25:33Z",
+      "side": 1,
+      "message": "It\u0027s currently needed only for the boards with CONFIG_POWER_BUTTON_INIT_IDLE. Do you still suggest it be added to other chips in this patch or we do it later as needed?",
+      "parentUuid": "59642306_71ae06eb",
+      "revId": "1689dfaa6b5865654f3dd0e8792b9545d55b396a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e6d9788_80ed942a",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
