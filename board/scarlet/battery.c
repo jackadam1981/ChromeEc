@@ -9,6 +9,7 @@
 #include "battery_smart.h"
 #include "charge_state.h"
 #include "console.h"
+#include "driver/battery/max17055.h"
 #include "driver/charger/rt946x.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -27,9 +28,21 @@ static const struct battery_info info = {
 	.discharging_max_c	= 55,
 };
 
+static const struct max17055_batt_params batt_params = {
+	.is_ez_config		= 1,
+	.design_cap		= 0x2328,
+	.ichg_term		= 0x0220,
+	.v_empty		= 0xa561,
+};
+
 const struct battery_info *battery_get_info(void)
 {
 	return &info;
+}
+
+const struct max17055_batt_params *max17055_get_batt_params(void)
+{
+	return &batt_params;
 }
 
 int board_cut_off_battery(void)
