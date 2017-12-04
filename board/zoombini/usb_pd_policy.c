@@ -124,9 +124,16 @@ int pd_set_power_supply_ready(int port)
 	if (rv)
 		return rv;
 
-	/* Provide Vbus. */
+	/*
+	 * Provide Vbus.
+	 *
+	 * The port will be latched off if we've exceeded our overcurrent
+	 * limit.
+	 */
 	rv = ppc_vbus_source_enable(port, 1);
-	if (rv)
+	if (rv == EC_ERROR_ACCESS_DENIED)
+		CPRINTS("p%d: port is latched off.", port);
+	else if (rv)
 		return rv;
 
 	/* Notify host of power info change. */
