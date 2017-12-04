@@ -8,11 +8,15 @@
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
+#include "timer.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+
+static uint8_t oc_event_cnt_tbl[CONFIG_USB_PD_PORT_COUNT];
+static uint8_t clear_oc_event_att[CONFIG_USB_PD_PORT_COUNT];
 
 /* Simple wrappers to dispatch to the drivers. */
 
@@ -30,6 +34,61 @@ int ppc_init(int port)
 		CPRINTS("p%d: PPC init'd.", port);
 
 	return rv;
+}
+
+int ppc_add_oc_event(int port)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	oc_event_cnt_tbl[port]++;
+
+	if (oc_event_cnt_tbl[port] >= PPC_OC_CNT_THRESH)
+		CPRINTS("C%d: OC event limit reached!  Source path disabled.",
+			port);
+	return EC_SUCCESS;
+}
+
+/* Flag to prevent perpetually postponing the clearing attempts table. */
+static int clear_oc_tbl_scheduled;
+
+static void clear_oc_tbl(void)
+{
+	int i;
+
+	for (i = 0; i < ppc_cnt; i++)
+		if (clear_oc_event_att[i] > PPC_OC_CNT_THRESH)
+			clear_oc_event_att[i] = 0;
+
+	clear_oc_tbl_scheduled = 0;
+}
+DECLARE_DEFERRED(clear_oc_tbl);
+
+int ppc_clear_oc_event_counter(int port)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	clear_oc_event_att[port]++;
+
+	/*
+	 * If we are clearing our event table in quick succession, we may be in
+	 * an overcurrent loop where we are also detecting a disconnect on the
+	 * CC pins.  Therefore, let's not clear it just yet and the let the
+	 * limit be reached.  This way, we won't send the hard reset and
+	 * actually detect the physical disconnect.
+	 */
+	if (clear_oc_event_att[port] > PPC_OC_CNT_THRESH) {
+		if (!clear_oc_tbl_scheduled) {
+			hook_call_deferred(&clear_oc_tbl_data, 2 * SECOND);
+			clear_oc_tbl_scheduled = 1;
+		}
+
+		return EC_ERROR_ACCESS_DENIED;
+	}
+
+	oc_event_cnt_tbl[port] = 0;
+	return EC_SUCCESS;
 }
 
 int ppc_is_sourcing_vbus(int port)
@@ -68,6 +127,14 @@ int ppc_discharge_vbus(int port, int enable)
 	return ppc_chips[port].drv->discharge_vbus(port, enable);
 }
 
+int ppc_is_port_latched_off(int port)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return 0;
+
+	return oc_event_cnt_tbl[port] >= PPC_OC_CNT_THRESH;
+}
+
 #ifdef CONFIG_USBC_PPC_SBU
 int ppc_set_sbu(int port, int enable)
 {
@@ -83,6 +150,15 @@ int ppc_set_vconn(int port, int enable)
 {
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
+
+	/*
+	 * Check our OC event counter.  If we've exceeded our threshold, then
+	 * let's latch our source path off to prevent continuous cycling.  When
+	 * the PD state machine detects a disconnection on the CC lines, we will
+	 * reset our OC event counter.
+	 */
+	if (enable && (oc_event_cnt_tbl[port] >= PPC_OC_CNT_THRESH))
+		return EC_ERROR_ACCESS_DENIED;
 
 	return ppc_chips[port].drv->set_vconn(port, enable);
 }
@@ -101,6 +177,15 @@ int ppc_vbus_source_enable(int port, int enable)
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
 
+	/*
+	 * Check our OC event counter.  If we've exceeded our threshold, then
+	 * let's latch our source path off to prevent continuous cycling.  When
+	 * the PD state machine detects a disconnection on the CC lines, we will
+	 * reset our OC event counter.
+	 */
+	if (enable && (oc_event_cnt_tbl[port] >= PPC_OC_CNT_THRESH))
+		return EC_ERROR_ACCESS_DENIED;
+
 	return ppc_chips[port].drv->vbus_source_enable(port, enable);
 }
 
@@ -115,7 +200,6 @@ int ppc_is_vbus_present(int port)
 	return ppc_chips[port].drv->is_vbus_present(port);
 }
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
-
 
 #ifdef CONFIG_CMD_PPC_DUMP
 static int command_ppc_dump(int argc, char **argv)

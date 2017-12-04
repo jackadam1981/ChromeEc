@@ -630,6 +630,10 @@ static inline void set_state(int port, enum pd_states next_state)
 			pd_power_supply_reset(port);
 			tcpm_select_rp_value(port, CONFIG_USB_PD_PULLUP);
 			tcpm_set_cc(port, TYPEC_CC_RP);
+#ifdef CONFIG_USBC_PPC
+			/* Clear any overcurrent event. */
+			board_overcurrent_event(port, 0);
+#endif /* CONFIG_USBC_PPC */
 		}
 #ifdef CONFIG_USB_PD_REV30
 		/* Adjust rev to highest level*/
@@ -2755,6 +2759,11 @@ void pd_task(void *u)
 		}
 #endif
 
+#ifdef CONFIG_USBC_PPC
+		if (evt & PD_EVENT_SEND_HARD_RESET)
+			set_state(port, PD_STATE_HARD_RESET_SEND);
+#endif /* defined(CONFIG_USBC_PPC) */
+
 		/* process any potential incoming message */
 		incoming_packet = tcpm_has_pending_message(port);
 		if (incoming_packet) {
@@ -2855,6 +2864,13 @@ void pd_task(void *u)
 				new_cc_state = PD_CC_AUDIO_ACC;
 			} else {
 				/* No UFP */
+#ifdef CONFIG_USBC_PPC
+				/*
+				 * Clear the overcurrent event counter
+				 * since we've detected a disconnect.
+				 */
+				ppc_clear_oc_event_counter(port);
+#endif /* defined(CONFIG_USBC_PPC) */
 				set_state(port, PD_STATE_SRC_DISCONNECTED);
 				timeout = 5*MSEC;
 				break;
@@ -2874,6 +2890,16 @@ void pd_task(void *u)
 			}
 
 			/* Debounce complete */
+
+#ifdef CONFIG_USBC_PPC
+			/*
+			 * If the port is latched off, just continue to
+			 * monitor for a detach.
+			 */
+			if (ppc_is_port_latched_off(port))
+				break;
+#endif /* CONFIG_USBC_PPC */
+
 			/* UFP is attached */
 			if (new_cc_state == PD_CC_UFP_ATTACHED ||
 			    new_cc_state == PD_CC_DEBUG_ACC) {
@@ -3858,6 +3884,14 @@ void pd_task(void *u)
 
 			assert(auto_toggle_supported);
 
+#ifdef CONFIG_USBC_PPC
+			/*
+			 * Clear the overcurrent event counter
+			 * since we've detected a disconnect.
+			 */
+			ppc_clear_oc_event_counter(port);
+#endif /* defined(CONFIG_USBC_PPC) */
+
 			/*
 			 * If SW decided we should be in a low power state and
 			 * the CC lines did not change, then don't talk with the
@@ -4300,6 +4334,52 @@ void pd_update_contract(int port)
 }
 
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
+
+#ifdef CONFIG_USBC_PPC
+static void pd_send_hard_reset(int port)
+{
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SEND_HARD_RESET, 0);
+}
+
+static uint32_t port_oc_reset_req;
+
+static void re_enable_ports(void)
+{
+	int port;
+	uint32_t ports = atomic_read_clear(&port_oc_reset_req);
+
+	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
+		if ((1 << port) & ports) {
+			pd_send_hard_reset(port);
+			/*
+			 * Let the board specific code know about the OC event.
+			 */
+			board_overcurrent_event(port, 1);
+
+			/*
+			 * TODO(b/117854867): Send an alert message
+			 * indicating OCP after explicit contract.
+			 */
+		}
+	}
+}
+DECLARE_DEFERRED(re_enable_ports);
+
+void pd_handle_overcurrent(int port)
+{
+	/* Keep track of the overcurrent events. */
+	CPRINTS("C%d: overcurrent!", port);
+#ifdef CONFIG_USB_PD_LOGGING
+	pd_log_event(PD_EVENT_PS_FAULT, PD_LOG_PORT_SIZE(port, 0), PS_FAULT_OCP,
+		     NULL);
+#endif /* defined(CONFIG_USB_PD_LOGGING) */
+	ppc_add_oc_event(port);
+
+	/* Wait 1s before trying to re-enable the port. */
+	atomic_or(&port_oc_reset_req, (1 << port));
+	hook_call_deferred(&re_enable_ports_data, SECOND);
+}
+#endif /* defined(CONFIG_USBC_PPC) */
 
 static int command_pd(int argc, char **argv)
 {
