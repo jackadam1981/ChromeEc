@@ -88,6 +88,24 @@
       "revId": "d6c836b4dacdce0f3279ac56d92e7cfd92fdf967",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "565716f7_f6d82896",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-12-04T03:56:01Z",
+      "side": 0,
+      "message": "Sorry for my misunderstanding, it should not related to my change.\nBut I think this portion should not remove, because manufacturer suggest charge current should not be zero.",
+      "parentUuid": "c49da409_38962e98",
+      "revId": "d6c836b4dacdce0f3279ac56d92e7cfd92fdf967",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
