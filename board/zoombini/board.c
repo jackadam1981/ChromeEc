@@ -360,8 +360,17 @@ void board_overcurrent_event(int port)
 		return;
 	};
 
-	/* TODO(aaboagye): Write a PD log entry for the OC event. */
-	CPRINTS("C%d: overcurrent!", port);
+#ifdef BOARD_MEOWTH
+	if (!gpio_get_level(GPIO_USB_C0_PD_INT_L)) {
+		ccprints("C0 INT still asserted, re-rollin'\n");
+		usb_c_interrupt(GPIO_USB_C0_PD_INT_L);
+	}
+
+	if (!gpio_get_level(GPIO_USB_C1_PD_INT_L)) {
+		ccprints("C1 INT still asserted, re-rollin'\n");
+		usb_c_interrupt(GPIO_USB_C1_PD_INT_L);
+	}
+#endif /* defined(BOARD_MEOWTH) */
 }
 
 static void board_pmic_init(void)
