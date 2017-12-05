@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c4997766_3e59edff",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T20:35:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49ce8e52_e00de88e",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 24
+      },
+      "revId": "e245c0c3cab15cef8770e91abcab65b85cca47e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02779762_721b0c46",
         "filename": "include/usbc_ppc.h",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-05T19:16:48Z",
       "side": 1,
       "message": "To make this work properly with PD and USB charger tasks, we\u0027re going to need to enable PPC VBUS interrupts and take some actions when we see level change. Let\u0027s add a TODO?",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "e245c0c3cab15cef8770e91abcab65b85cca47e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b409be2_fdf243fd",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T20:35:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02779762_721b0c46",
       "range": {
         "startLine": 60,
         "startChar": 7,
