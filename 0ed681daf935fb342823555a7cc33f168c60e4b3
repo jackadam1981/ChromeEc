@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d1dc962_15a668fd",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-12-05T03:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7da945a_8480bf4a",
+      "range": {
+        "startLine": 93,
+        "startChar": 11,
+        "endLine": 94,
+        "endChar": 52
+      },
+      "revId": "0ed681daf935fb342823555a7cc33f168c60e4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6dfada4_d9bd06ba",
         "filename": "extra/usb_updater/servo_updater.py",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-04T17:12:51Z",
       "side": 1,
       "message": "It\u0027d be more reliable to extract the fmap section RO_FRID from the binfile to get the version.",
+      "range": {
+        "startLine": 153,
+        "startChar": 51,
+        "endLine": 153,
+        "endChar": 58
+      },
+      "revId": "0ed681daf935fb342823555a7cc33f168c60e4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a8262e2_6d683df8",
+        "filename": "extra/usb_updater/servo_updater.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000104
+      },
+      "writtenOn": "2017-12-05T03:47:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6dfada4_d9bd06ba",
       "range": {
         "startLine": 153,
         "startChar": 51,
