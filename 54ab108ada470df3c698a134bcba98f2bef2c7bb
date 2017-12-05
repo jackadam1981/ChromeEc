@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bc25b69_5af5df47",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-12-05T22:23:08Z",
+      "side": 1,
+      "message": "Wondering if you need this check for NULL? Isn\u0027t get_vbus_status required to not be null when CONFIG_USB_PD_VBUS_DETECT_PPC is set? Or is this to cover the case where you are using some but not all of the PPCs on a board to detect vbus?",
+      "revId": "54ab108ada470df3c698a134bcba98f2bef2c7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91070fa_00757c34",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-12-05T22:23:08Z",
+      "side": 1,
+      "message": "get_vbus_status should be is_vbus_present (to match struct ppc_drv definition).",
+      "revId": "54ab108ada470df3c698a134bcba98f2bef2c7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
