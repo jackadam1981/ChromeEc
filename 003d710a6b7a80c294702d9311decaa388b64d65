@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "220f6496_207ff08c",
+        "filename": "driver/kbl_max14521.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T10:33:34Z",
+      "side": 1,
+      "message": "you skipped the pre-submit check once again, this line is too long.",
+      "range": {
+        "startLine": 39,
+        "startChar": 43,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "003d710a6b7a80c294702d9311decaa388b64d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
