@@ -222,6 +222,30 @@
       "revId": "920f7458a3f7d55b0c33e3fccdb666b5153ad4d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1f283f0_755fbeef",
+        "filename": "chip/stm32/hwtimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-05T00:21:31Z",
+      "side": 1,
+      "message": "If we don\u0027t trigger a SW panic here, when the real watchdog triggers, the reset flag would become RESET_FLAG_WATCHDOG. Then the stored panic_info would be overwritten by https://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/system.c#796",
+      "parentUuid": "742ba4bf_e9fa53c2",
+      "range": {
+        "startLine": 397,
+        "startChar": 1,
+        "endLine": 397,
+        "endChar": 15
+      },
+      "revId": "920f7458a3f7d55b0c33e3fccdb666b5153ad4d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
