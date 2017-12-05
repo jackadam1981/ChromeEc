@@ -46,6 +46,30 @@
       "revId": "2678263daef297c7a8ceb8ae2149e5adad65b1c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0265986_d1cd150d",
+        "filename": "board/coral/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-05T18:24:49Z",
+      "side": 1,
+      "message": "Yeah, I just meant to not ignore led_id for non-robo (which you have done in patch set 2).",
+      "parentUuid": "591283b5_cdf46f8b",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 26
+      },
+      "revId": "2678263daef297c7a8ceb8ae2149e5adad65b1c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
