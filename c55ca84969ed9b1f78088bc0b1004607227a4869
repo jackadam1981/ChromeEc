@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b92a59f3_002ace44",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T14:51:41Z",
+      "side": 1,
+      "message": "The testing workgroup is constantly changing its magic Windows binary used a generator, seems kind of a lost battle or time consuming.\n\nPlease note I don\u0027t understand who are those vendors and what they are trying to achieve.",
+      "parentUuid": "4133bf24_15b46fed",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 1
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e0f43b61_54aa4e35",
         "filename": "util/genvif.c",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "e0f43b61_54aa4e35",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 1
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c513428d_2c44b7b5",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T14:51:41Z",
+      "side": 1,
+      "message": "or not so, it\u0027s still not obvious to me why we are buffering all this text, then print the buffer, why are we not printing directly ?",
+      "parentUuid": "2ecb64b4_d97803db",
       "range": {
         "startLine": 275,
         "startChar": 0,
