@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "96ef024c_720f8500",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-12-05T19:41:25Z",
+      "side": 1,
+      "message": "Implemented only for ish and mec1322. Other chips don\u0027t even have chip_save_reset_flags.",
+      "parentUuid": "b479dbd7_efaaf211",
+      "revId": "1689dfaa6b5865654f3dd0e8792b9545d55b396a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e6d9788_80ed942a",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
