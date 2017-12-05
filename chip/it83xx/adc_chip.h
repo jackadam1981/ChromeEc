@@ -19,6 +19,21 @@
  */
 #define ADC_TIMEOUT_US 248
 
+enum adc_hw_channel {
+	ADC_HW_CH_0 = 0,
+	ADC_HW_CH_1,
+	ADC_HW_CH_2,
+	ADC_HW_CH_3,
+	ADC_HW_CH_4,
+	ADC_HW_CH_5,
+	ADC_HW_CH_6,
+	ADC_HW_CH_7,
+	ADC_HW_CH_13 = 13,
+	ADC_HW_CH_14,
+	ADC_HW_CH_15,
+	ADC_HW_CH_16,
+};
+
 /* Data structure to define ADC channel control registers. */
 struct adc_ctrl_t {
 	volatile uint8_t *adc_ctrl;
