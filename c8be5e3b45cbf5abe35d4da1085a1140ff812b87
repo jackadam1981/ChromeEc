@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff67469d_8032f81a",
+        "filename": "common/ec_features.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T10:28:44Z",
+      "side": 1,
+      "message": "this was:\n#ifdef CONFIG_PMU_POWERINFO\nplease keep it as it was.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 5
+      },
+      "revId": "c8be5e3b45cbf5abe35d4da1085a1140ff812b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e613a19_425d4323",
+        "filename": "common/ec_features.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T10:28:44Z",
+      "side": 1,
+      "message": "this was:\n#ifdef HAS_TASK_PDCMD",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 24
+      },
+      "revId": "c8be5e3b45cbf5abe35d4da1085a1140ff812b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44fef00f_84de5717",
+        "filename": "common/ec_features.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T10:28:44Z",
+      "side": 1,
+      "message": "you have removed here:\n/* should be more generic */\n#ifdef CONFIG_USB_SWITCH_TSU6721\n\t\t| EC_FEATURE_MASK_0(EC_FEATURE_USB_MUX)\n#endif",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 6
+      },
+      "revId": "c8be5e3b45cbf5abe35d4da1085a1140ff812b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cce459c7_84d2c3d7",
+        "filename": "common/ec_features.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T10:28:44Z",
+      "side": 1,
+      "message": "you are never using this function ?\nThen remove it.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "c8be5e3b45cbf5abe35d4da1085a1140ff812b87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
