@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b479dbd7_efaaf211",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2017-12-05T17:49:07Z",
+      "side": 1,
+      "message": "For completeness, I think so. Why wait for someone to stumble over it not existing?",
+      "parentUuid": "061b05f6_a8f704f2",
+      "revId": "1689dfaa6b5865654f3dd0e8792b9545d55b396a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e6d9788_80ed942a",
         "filename": "chip/npcx/system.c",
         "patchSetId": 2
