@@ -94,6 +94,30 @@
       "revId": "3bb08ed694d9c41538988668d8a6ef7874601116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfc01424_806cbf56",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-05T18:59:27Z",
+      "side": 0,
+      "message": "But then the caller probably wouldn\u0027t find setting alarm timeout for \u003e 86400 secs is illegal since it\u0027s silently clamped to 86400 secs. I guess it\u0027s better to leave the ASSERT here?",
+      "parentUuid": "45399f01_4acababe",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 7
+      },
+      "revId": "3bb08ed694d9c41538988668d8a6ef7874601116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
