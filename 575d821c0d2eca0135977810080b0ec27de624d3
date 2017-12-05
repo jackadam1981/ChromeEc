@@ -22,6 +22,30 @@
       "revId": "575d821c0d2eca0135977810080b0ec27de624d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abf83734_d99d6991",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-05T19:37:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39991cdd_17f8da6f",
+      "range": {
+        "startLine": 197,
+        "startChar": 18,
+        "endLine": 197,
+        "endChar": 23
+      },
+      "revId": "575d821c0d2eca0135977810080b0ec27de624d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
