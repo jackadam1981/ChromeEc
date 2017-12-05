@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "23cc4072_51776f20",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T23:01:25Z",
+      "side": 1,
+      "message": "I guess we could make the assumption that if a board decides to use CONFIG_USB_PD_VBUS_DETECT_PPC, then their PPCs must support it. I\u0027ll remove the check.",
+      "parentUuid": "6bc25b69_5af5df47",
+      "revId": "54ab108ada470df3c698a134bcba98f2bef2c7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f91070fa_00757c34",
         "filename": "common/usbc_ppc.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2017-12-05T22:23:08Z",
       "side": 1,
       "message": "get_vbus_status should be is_vbus_present (to match struct ppc_drv definition).",
+      "revId": "54ab108ada470df3c698a134bcba98f2bef2c7bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb755717_96dfd0f8",
+        "filename": "common/usbc_ppc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T23:01:25Z",
+      "side": 1,
+      "message": "Good catch.",
+      "parentUuid": "f91070fa_00757c34",
       "revId": "54ab108ada470df3c698a134bcba98f2bef2c7bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
