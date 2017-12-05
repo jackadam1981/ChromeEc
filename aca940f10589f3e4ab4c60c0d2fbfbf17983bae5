@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "30c5231d_47be9649",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T06:20:19Z",
+      "side": 1,
+      "message": "Ack. Please see the child commit.",
+      "parentUuid": "fb78dd90_680408d1",
+      "range": {
+        "startLine": 318,
+        "startChar": 8,
+        "endLine": 318,
+        "endChar": 29
+      },
+      "revId": "aca940f10589f3e4ab4c60c0d2fbfbf17983bae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "088d3063_4b0650b8",
         "filename": "board/zoombini/board.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-30T00:57:05Z",
       "side": 1,
       "message": "Can you use ppc_is_sourcing_vbus() here?",
+      "range": {
+        "startLine": 329,
+        "startChar": 6,
+        "endLine": 329,
+        "endChar": 30
+      },
+      "revId": "aca940f10589f3e4ab4c60c0d2fbfbf17983bae5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3781b97e_b6a5237b",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T06:20:19Z",
+      "side": 1,
+      "message": "Ack Please see the child commit.",
+      "parentUuid": "088d3063_4b0650b8",
       "range": {
         "startLine": 329,
         "startChar": 6,
