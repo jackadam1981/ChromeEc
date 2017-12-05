@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "950e794a_0f6ac28c",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T19:55:32Z",
+      "side": 1,
+      "message": "Hmm, yes that\u0027s correct. I\u0027ll remove them.",
+      "parentUuid": "6821bb6a_57cc7fb2",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "29c8ea04d5d67ac6d1ea89f47b6829da410c7fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad80abb7_1fff2032",
         "filename": "driver/ppc/sn5s330.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-05T19:10:48Z",
       "side": 1,
       "message": "Change this to \"const int p \u003d ...\". BTW, why change the naming from port / addr? Seems inconsistent with your use in another function below.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 30
+      },
+      "revId": "29c8ea04d5d67ac6d1ea89f47b6829da410c7fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4243a48c_10f62322",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T19:55:32Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll also add the i2c_ prefix. I think the reason was because port became a parameter.",
+      "parentUuid": "ad80abb7_1fff2032",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9839a9bf_5ee6d3d0",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T19:55:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73bf3a9b_0160535f",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 3
+      },
+      "revId": "29c8ea04d5d67ac6d1ea89f47b6829da410c7fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0bffed3_7d48960b",
         "filename": "driver/ppc/sn5s330.c",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-12-05T19:05:33Z",
       "side": 1,
       "message": "Can we get away with removing these ifdefs from this file? If reg_dump() is never called, will sn5s330_dump() be dropped?",
+      "range": {
+        "startLine": 450,
+        "startChar": 7,
+        "endLine": 450,
+        "endChar": 26
+      },
+      "revId": "29c8ea04d5d67ac6d1ea89f47b6829da410c7fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89daef3e_ac311707",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T19:55:32Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem to be dropped even if it\u0027s not called.",
+      "parentUuid": "a0bffed3_7d48960b",
       "range": {
         "startLine": 450,
         "startChar": 7,
