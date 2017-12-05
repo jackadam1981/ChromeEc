@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2753c0b_ccf81c76",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T07:02:57Z",
+      "side": 1,
+      "message": "I don\u0027t think this is sufficient. I think what I want here is that we entered the src_disconnected state not by issuing a hard reset nor receiving one, but instead by a true disconnection via voltage readings on the CC lines. However, can we even do that?\n\nIn debugging, I noticed that with faster PD devices (that is faster to respond to PD messages), I ended up in an overcurrent loop due to clearing the OC event counter.",
+      "revId": "2b6a5d93d9a0bccb5de6bf86dcce2a8cc2ada307",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
