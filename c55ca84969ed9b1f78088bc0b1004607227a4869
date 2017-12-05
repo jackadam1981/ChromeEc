@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "1ef84c0b_1e7d8d34",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T15:29:07Z",
+      "side": 1,
+      "message": "I\u0027m probably really dumb but I had hard time understanding what the output layout have to do with buffering the text.\nYou meant that you need to compute max_power (by iterating through the input) to display it in PD_Power_as_Sink/Source before displaying the actual PDOs ?",
+      "parentUuid": "7de4f7c3_c8598153",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 1
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48211bff_0dd621b6",
         "filename": "util/genvif.c",
         "patchSetId": 2
