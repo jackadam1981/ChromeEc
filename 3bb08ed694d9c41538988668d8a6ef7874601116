@@ -22,6 +22,30 @@
       "revId": "3bb08ed694d9c41538988668d8a6ef7874601116",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9f6f9a1_0d8ff8ac",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-05T01:46:48Z",
+      "side": 0,
+      "message": "For now the only caller is idle_task, who never set a timeout for more than one day. Not sure if we should still keep the ASSERT here to prevent other future callers from violating the rule.",
+      "parentUuid": "acdc073f_71d2dd3d",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 7
+      },
+      "revId": "3bb08ed694d9c41538988668d8a6ef7874601116",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
