@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d66ce51c_6f854a77",
+        "filename": "board/eve_fp/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-05T18:33:25Z",
+      "side": 1,
+      "message": "Just curious why?!?",
+      "range": {
+        "startLine": 23,
+        "startChar": 42,
+        "endLine": 23,
+        "endChar": 46
+      },
+      "revId": "bdb4527e522a8dfb0deab6ea039a525a71d68d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5c3f598_41e742f4",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-05T18:33:25Z",
+      "side": 1,
+      "message": "Is there potential for the interrupt line to stay asserted + never serviced if EC_CMD_FP_MODE is received at about the same time as an interrupt occurs?",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 43
+      },
+      "revId": "bdb4527e522a8dfb0deab6ea039a525a71d68d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e39163f4_19acf701",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-05T18:33:25Z",
+      "side": 1,
+      "message": "Will board.h maybe define this? If so, we should include common.h?",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "bdb4527e522a8dfb0deab6ea039a525a71d68d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
