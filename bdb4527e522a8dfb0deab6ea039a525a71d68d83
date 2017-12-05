@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b9aaea5_881a73d7",
+        "filename": "board/eve_fp/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T20:24:17Z",
+      "side": 1,
+      "message": "I have a console command testing the proprietary driver commands which consume large amount of stack.\nbut I guess I will never submit it and the common console command properly does this through the FPSENSOR task which has the large stack.\nI will throttle this back",
+      "parentUuid": "d66ce51c_6f854a77",
+      "range": {
+        "startLine": 23,
+        "startChar": 42,
+        "endLine": 23,
+        "endChar": 46
+      },
+      "revId": "bdb4527e522a8dfb0deab6ea039a525a71d68d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5c3f598_41e742f4",
         "filename": "common/fpsensor.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e34b95af_038508a3",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T20:24:17Z",
+      "side": 1,
+      "message": "Not really because the UPDATE_CONFIG will take care of putting back the sensor in a known and when we arrive here actually the interrupt state is already lost.\nbut interestingly, if we never have received the previous interrupt (because we timeout before getting the expected event) we never the gpio_disable_interrupt() which might have side effect at least on power, I will fix this",
+      "parentUuid": "a5c3f598_41e742f4",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 43
+      },
+      "revId": "bdb4527e522a8dfb0deab6ea039a525a71d68d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e39163f4_19acf701",
         "filename": "include/fpsensor.h",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-12-05T18:33:25Z",
       "side": 1,
       "message": "Will board.h maybe define this? If so, we should include common.h?",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "bdb4527e522a8dfb0deab6ea039a525a71d68d83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "26c1408e_82e99f0f",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-05T20:24:17Z",
+      "side": 1,
+      "message": "Yes seems better to include it.",
+      "parentUuid": "e39163f4_19acf701",
       "range": {
         "startLine": 14,
         "startChar": 8,
