@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6821bb6a_57cc7fb2",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-05T19:05:33Z",
+      "side": 1,
+      "message": "Is this check redundant now that you\u0027re validating port number one level up?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "29c8ea04d5d67ac6d1ea89f47b6829da410c7fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73bf3a9b_0160535f",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-05T19:05:33Z",
+      "side": 1,
+      "message": "These routines can be declared static now.",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 3
+      },
+      "revId": "29c8ea04d5d67ac6d1ea89f47b6829da410c7fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0bffed3_7d48960b",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-05T19:05:33Z",
+      "side": 1,
+      "message": "Can we get away with removing these ifdefs from this file? If reg_dump() is never called, will sn5s330_dump() be dropped?",
+      "range": {
+        "startLine": 450,
+        "startChar": 7,
+        "endLine": 450,
+        "endChar": 26
+      },
+      "revId": "29c8ea04d5d67ac6d1ea89f47b6829da410c7fb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
