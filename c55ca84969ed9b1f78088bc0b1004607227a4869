@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "7de4f7c3_c8598153",
+        "filename": "util/genvif.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2017-12-05T15:16:50Z",
+      "side": 1,
+      "message": "This is done to match the USB.org vif generator output. Plus I think it\u0027s easier to read:\n\nPD_Power_as_Sink: 63000\nUSB_Suspend_May_Be_Cleared: NO\nGiveBack_May_Be_Set: YES\nHigher_Capability_Set: NO\nNum_Snk_PDOs: 3\n\n        Snk_PDO_Supply_Type1: 0\n        Snk_PDO_Voltage1: 100\n        Snk_PDO_Op_Current1: 50\n\n        Snk_PDO_Supply_Type2: 1\n        Snk_PDO_Min_Voltage2: 95\n        Snk_PDO_Max_Voltage2: 420\n        Snk_PDO_Op_Power2: 60\n\n        Snk_PDO_Supply_Type3: 2\n        Snk_PDO_Min_Voltage3: 95\n        Snk_PDO_Max_Voltage3: 420\n        Snk_PDO_Op_Current3: 300",
+      "parentUuid": "c513428d_2c44b7b5",
+      "range": {
+        "startLine": 275,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 1
+      },
+      "revId": "c55ca84969ed9b1f78088bc0b1004607227a4869",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48211bff_0dd621b6",
         "filename": "util/genvif.c",
         "patchSetId": 2
