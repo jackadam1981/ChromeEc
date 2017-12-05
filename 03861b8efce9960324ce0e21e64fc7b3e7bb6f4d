@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ec25e190_8618c030",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T03:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7e3ba29_c249823e",
+      "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de8c7d2c_937dbe0f",
         "filename": "driver/ppc/sn5s330.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-11-30T18:00:54Z",
       "side": 1,
       "message": "Why change from 0xFF to regval here?",
+      "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a01939ae_d41dfc3c",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T03:39:54Z",
+      "side": 1,
+      "message": "I think it was a remnant from earlier when I thought I had to set up an interrupt for Vbus detection. I\u0027ll change it back.",
+      "parentUuid": "de8c7d2c_937dbe0f",
       "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c5e0454c_4ea79c9b",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T03:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced8e862_b3e1f554",
+      "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cff82f1b_55c9718f",
         "filename": "driver/ppc/sn5s330.h",
         "patchSetId": 3
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "c0131602_0c5ae870",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T03:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cff82f1b_55c9718f",
+      "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "60278d99_b5d8cee6",
         "filename": "driver/ppc/sn5s330.h",
         "patchSetId": 3
@@ -84,6 +156,24 @@
       "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e52fc7_9176797b",
+        "filename": "driver/ppc/sn5s330.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-05T03:39:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60278d99_b5d8cee6",
+      "revId": "03861b8efce9960324ce0e21e64fc7b3e7bb6f4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
