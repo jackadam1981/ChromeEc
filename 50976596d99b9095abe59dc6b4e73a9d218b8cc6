@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ba88c15_e906f767",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-12-05T00:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95e38aa0_76c40c43",
+      "revId": "50976596d99b9095abe59dc6b4e73a9d218b8cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea46378e_4007b092",
         "filename": "board/coral/led.c",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d7cffe34_d35eb74b",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-12-05T00:52:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea46378e_4007b092",
+      "revId": "50976596d99b9095abe59dc6b4e73a9d218b8cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c30aac7d_30f8ef43",
         "filename": "board/coral/led.c",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2017-12-02T00:36:24Z",
       "side": 1,
       "message": "White and blue are both achieved by asserting the same GPIO? Do boards have one-or-the-other?",
+      "range": {
+        "startLine": 195,
+        "startChar": 25,
+        "endLine": 195,
+        "endChar": 36
+      },
+      "revId": "50976596d99b9095abe59dc6b4e73a9d218b8cc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81055d28_d5360ed1",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-12-05T00:52:02Z",
+      "side": 1,
+      "message": "Yes, Santa has blue LED for this gpio line, while on Nasher it\u0027s white. Both have amber controlled by the same GPIO.",
+      "parentUuid": "c30aac7d_30f8ef43",
       "range": {
         "startLine": 195,
         "startChar": 25,
