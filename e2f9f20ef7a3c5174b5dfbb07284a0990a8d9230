@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "383dacad_0a4ab095",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "\u0026 0x0000ffff not needed?",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce8bd085_670de4ca",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "upload with --verify, it will spot:\n- no space around (), no {} for single code line.",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2432559a_df547235",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "why 2? 2lux? why not 0?",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fcf4e68_7c021704",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "Do not use {, declare local variables at beginning of function.",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab7d044_dfeae2e8",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "else should be on the same line as }",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b122947e_126c135d",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "should be MAX_LUX here.",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b34125e0_6e7880d0",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "remove printf, esp. on data path.",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58e3ad2b_72dd9d94",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "other als sensor use range/offset for per device calibration (see https://chromium.googlesource.com/chromiumos/platform/factory/+/HEAD/py/test/pytests/light_sensor_calibration.py)\nYou are sure you will not need that and leave VPD entry for ALS empty.",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "213ee83c_5a0d678b",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "remove, already printed by motion_sense.",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85442dd8_841ffa9b",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "remove line",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e6daa26_095e0553",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2017-12-06T05:47:12Z",
+      "side": 1,
+      "message": "remove line",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
