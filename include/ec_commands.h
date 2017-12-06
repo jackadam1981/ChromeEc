@@ -1858,6 +1858,7 @@ struct __ec_todo_packed ec_params_lightbar {
 	union {
 		struct __ec_todo_unpacked {
 			/* no args */
+			uint8_t unused; /* for C++ compatibility */
 		} dump, off, on, init, get_seq, get_params_v0, get_params_v1,
 			version, get_brightness, get_demo, suspend, resume,
 			get_params_v2_timing, get_params_v2_tap,
@@ -1934,6 +1935,7 @@ struct __ec_todo_packed ec_response_lightbar {
 
 		struct __ec_todo_unpacked {
 			/* no return params */
+			uint8_t unused; /* for C++ compatibility */
 		} off, on, init, set_brightness, seq, reg, set_rgb,
 			demo, set_params_v0, set_params_v1,
 			set_program, manual_suspend_ctrl, suspend, resume,
@@ -2446,6 +2448,7 @@ struct __ec_todo_packed ec_params_motion_sense {
 
 		/* Used for MOTIONSENSE_CMD_FIFO_INFO */
 		struct __ec_todo_unpacked {
+			uint8_t unused; /* for C++ compatibility */
 		} fifo_info;
 
 		/* Used for MOTIONSENSE_CMD_FIFO_READ */
@@ -2461,6 +2464,7 @@ struct __ec_todo_packed ec_params_motion_sense {
 
 		/* Used for MOTIONSENSE_CMD_LID_ANGLE */
 		struct __ec_todo_unpacked {
+			uint8_t unused; /* for C++ compatibility */
 		} lid_angle;
 
 		/* Used for MOTIONSENSE_CMD_FIFO_INT_ENABLE */
@@ -2571,6 +2575,7 @@ struct __ec_todo_packed ec_response_motion_sense {
 		} list_activities;
 
 		struct __ec_todo_unpacked {
+			uint8_t unused; /* for C++ compatibility */
 		} set_activity;
 
 		/* Used for MOTIONSENSE_CMD_LID_ANGLE */
@@ -3747,6 +3752,7 @@ struct __ec_todo_packed ec_params_charge_state {
 	union {
 		struct __ec_align1 {
 			/* no args */
+			uint8_t unused; /* for C++ compatibility */
 		} get_state;
 
 		struct __ec_todo_unpacked {
@@ -3775,6 +3781,7 @@ struct __ec_align4 ec_response_charge_state {
 		} get_param;
 		struct __ec_align4 {
 			/* no return values */
+			uint8_t unused; /* for C++ compatibility */
 		} set_param;
 	};
 };
@@ -3990,6 +3997,7 @@ struct __ec_align4 ec_params_sb_fw_update {
 		/* EC_SB_FW_UPDATE_PROTECT  = 0x6 */
 		struct __ec_align4 {
 			/* no args */
+			uint8_t unused; /* for C++ compatibility */
 		} dummy;
 
 		/* EC_SB_FW_UPDATE_WRITE    = 0x3 */
