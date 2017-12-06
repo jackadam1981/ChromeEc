@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e0f7412_ee84b2ba",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-06T17:36:34Z",
+      "side": 1,
+      "message": "Why do you need another CONFIG to specify port speed? Can\u0027t you just use i2c_ports[i].speed, which all boards must define if they implement i2c? Also what\u0027s the meaning of the \"CONFI\" naming here?",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "39efbc3ada5545f6784e7d09b7c358684cb124fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
