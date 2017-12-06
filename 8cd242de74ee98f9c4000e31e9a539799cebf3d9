@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac1b2deb_62034556",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-12-06T21:10:15Z",
+      "side": 1,
+      "message": "Should be PIN_MASK(3, 0x48)",
+      "revId": "8cd242de74ee98f9c4000e31e9a539799cebf3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5119303_903ec9e9",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-12-06T21:10:15Z",
+      "side": 1,
+      "message": "Need to add line to set alternate PWM mode for PWM pin.",
+      "revId": "8cd242de74ee98f9c4000e31e9a539799cebf3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
