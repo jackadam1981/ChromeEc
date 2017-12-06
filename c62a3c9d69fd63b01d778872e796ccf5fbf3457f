@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a06c0e1_d6726b22",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2017-12-06T23:09:42Z",
+      "side": 1,
+      "message": "I double checked that 3.3V is okay for the backlight enable and i2c.",
+      "revId": "c62a3c9d69fd63b01d778872e796ccf5fbf3457f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74acf154_69501218",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2017-12-06T23:09:42Z",
+      "side": 1,
+      "message": "I squinted at the datasheet and 3.3V looked good for the EEPROM also.",
+      "revId": "c62a3c9d69fd63b01d778872e796ccf5fbf3457f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
