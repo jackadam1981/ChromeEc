@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "012ef36e_a5c5d83e",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-06T02:51:36Z",
+      "side": 1,
+      "message": "Can this be declared static?",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 9
+      },
+      "revId": "d85d985e093d1d2440e37abce7ed7ba428693d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bcaa6b5_3549422e",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-06T02:51:36Z",
+      "side": 1,
+      "message": "Maybe it\u0027s best to make a macro, rather than duplicating these first two params, or even use globals?",
+      "range": {
+        "startLine": 318,
+        "startChar": 6,
+        "endLine": 318,
+        "endChar": 27
+      },
+      "revId": "d85d985e093d1d2440e37abce7ed7ba428693d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c20dfd3_b3faff16",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-06T02:51:36Z",
+      "side": 1,
+      "message": "If append() fails, we\u0027re destined for failure anyway, how about just calling exit() from append()? It will shrink write_pdo_to_buf greatly.",
+      "range": {
+        "startLine": 320,
+        "startChar": 3,
+        "endLine": 320,
+        "endChar": 13
+      },
+      "revId": "d85d985e093d1d2440e37abce7ed7ba428693d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
