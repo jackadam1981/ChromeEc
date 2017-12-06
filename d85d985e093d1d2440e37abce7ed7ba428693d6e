@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "393e2f3f_b0dd3552",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-06T10:48:19Z",
+      "side": 1,
+      "message": "you don\u0027t need the special malloc case,\nrealloc(NULL,n) is already to malloc(n)",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 44
+      },
+      "revId": "d85d985e093d1d2440e37abce7ed7ba428693d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5bcaa6b5_3549422e",
         "filename": "util/genvif.c",
         "patchSetId": 3
@@ -59,6 +82,30 @@
       "writtenOn": "2017-12-06T02:51:36Z",
       "side": 1,
       "message": "If append() fails, we\u0027re destined for failure anyway, how about just calling exit() from append()? It will shrink write_pdo_to_buf greatly.",
+      "range": {
+        "startLine": 320,
+        "startChar": 3,
+        "endLine": 320,
+        "endChar": 13
+      },
+      "revId": "d85d985e093d1d2440e37abce7ed7ba428693d6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7d5ca8a_9289a5da",
+        "filename": "util/genvif.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-06T10:48:19Z",
+      "side": 1,
+      "message": "Good idea",
+      "parentUuid": "2c20dfd3_b3faff16",
       "range": {
         "startLine": 320,
         "startChar": 3,
