@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "90b77f1d_294d1b0f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001197
+      },
+      "writtenOn": "2017-12-06T11:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0e8cd76_0720b508",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 72
+      },
+      "revId": "abff59e055ccf00e597b77f2538436a5a09267bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fce3c80b_74fdb43a",
         "filename": "common/i2c_master.c",
         "patchSetId": 4
