@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8ce4054_a3464de7",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-07T22:40:24Z",
+      "side": 1,
+      "message": "These variables are almost the same name, you might want to choose something more distinct.",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 11
+      },
+      "revId": "df9aa34e0ac6a4d6a3d4b6d64b7573ffeb35c6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8bb34be_be0a2c92",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-07T22:40:24Z",
+      "side": 1,
+      "message": "You have precision loss here, is that ok? Should dpacc be a function of dqacc or config-\u003edesign_cap?",
+      "range": {
+        "startLine": 290,
+        "startChar": 2,
+        "endLine": 290,
+        "endChar": 45
+      },
+      "revId": "df9aa34e0ac6a4d6a3d4b6d64b7573ffeb35c6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5ce435e_ebf96c13",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-07T22:40:24Z",
+      "side": 1,
+      "message": "May want this last, for alignment.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 22
+      },
+      "revId": "df9aa34e0ac6a4d6a3d4b6d64b7573ffeb35c6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c64b9ee_aa2e5778",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-07T22:40:24Z",
+      "side": 1,
+      "message": "Please add comments indicating what these parameters represent, including units.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 21
+      },
+      "revId": "df9aa34e0ac6a4d6a3d4b6d64b7573ffeb35c6b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
