@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f8288de_3c0b13bc",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-07T22:25:33Z",
+      "side": 1,
+      "message": "Moving this to the common watchdog_trace() code sounds good to me. But for now we only use one 32-bit register(r5) to store panic info. So I\u0027m not sure about about how to store both PC and task#. Maybe we need a follow-up CL to do that?",
+      "parentUuid": "6d0c3f6b_38dafbe0",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 52
+      },
+      "revId": "5bc51b902a7397361da85ade6a67b4866cd7aa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05f8167a_93be6718",
         "filename": "common/system.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-07T10:34:04Z",
       "side": 1,
       "message": "IMO this is not the right condition,\nit might be misleading to keep an older reason,\nreason !\u003d PANIC_SW_WATCHDOG",
+      "range": {
+        "startLine": 801,
+        "startChar": 6,
+        "endLine": 801,
+        "endChar": 13
+      },
+      "revId": "5bc51b902a7397361da85ade6a67b4866cd7aa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f878380_7659eb89",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-07T22:25:33Z",
+      "side": 1,
+      "message": "OK, will do.",
+      "parentUuid": "05f8167a_93be6718",
       "range": {
         "startLine": 801,
         "startChar": 6,
