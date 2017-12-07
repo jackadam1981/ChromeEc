@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b8d5c55_0f38671a",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-07T10:26:18Z",
+      "side": 1,
+      "message": "given you are changing one pin at a time, using gpio_set_flags might be more readable.\ne.g.\ngpio_set_flags(GPIO_ACCELGYRO3_INT_L, GPIO_INT_FALLING | GPIO_PULL_DOWN);",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 62
+      },
+      "revId": "808d930029e31badf44b5baef8b1124ab81091c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
