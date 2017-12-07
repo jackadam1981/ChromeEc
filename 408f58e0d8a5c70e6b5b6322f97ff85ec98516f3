@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4397e89_c9481d0b",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-07T18:56:15Z",
+      "side": 1,
+      "message": "No, we don\u0027t currently don\u0027t wait for SLP_SUS_L to go low. It looks like we force G3 after we\u0027ve been in S5 for at least 10 seconds, or if DPWROK goes away leaving S5. (Also if we sysjump and the AP isn\u0027t in S0, but that would be manually triggered and not the normal flow.)\n\nShould SLP_SUS_L be going low in S5? I don\u0027t see that happening.",
+      "parentUuid": "24187046_65b09876",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "408f58e0d8a5c70e6b5b6322f97ff85ec98516f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bb50cd3_55f8c5e7",
         "filename": "power/cannonlake.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-07T16:44:35Z",
       "side": 1,
       "message": "Just to understand this better, the S5G3 state gets us into \"Deep S5\" while the chipset_force_g3 command gets us into true G3 (no DSW rail). I think since we don\u0027t have a Deep S5 state that\u0027s okay, but I\u0027m wondering if there\u0027s ever a case where we\u0027ll stay in Deep S5.",
+      "range": {
+        "startLine": 128,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 17
+      },
+      "revId": "408f58e0d8a5c70e6b5b6322f97ff85ec98516f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "717fa575_cd72e4c9",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-07T18:56:15Z",
+      "side": 1,
+      "message": "I guess that\u0027s right. We\u0027re only within the S5G3 state very briefly as it\u0027s a transition state because don\u0027t have \"Deep S5\" state.",
+      "parentUuid": "8bb50cd3_55f8c5e7",
       "range": {
         "startLine": 128,
         "startChar": 1,
