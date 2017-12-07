@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9987bc42_a05af7a0",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2017-12-07T23:09:26Z",
+      "side": 1,
+      "message": "likely makes sense to move to third_party/tpm2 since it is called from there",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 46
+      },
+      "revId": "425bf7a827a6f7a56577a306d57c81f8e27f184b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
