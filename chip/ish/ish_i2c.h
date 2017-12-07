@@ -184,10 +184,11 @@ struct i2c_context {
 	uint8_t max_rx_depth;
 	uint8_t max_tx_depth;
 	uint8_t bus;
+	uint8_t speed;
 	uint32_t interrupts;
 	uint32_t reason;
 	uint8_t error_flag;
-	uint8_t speed;
+	int int_pin;
 	task_id_t wait_task_id;
 };
 
