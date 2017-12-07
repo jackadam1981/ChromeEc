@@ -22,6 +22,30 @@
       "revId": "5b11139f0d749fcce173907316ea7007faafdc9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd559637_3cdd1225",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-07T00:11:41Z",
+      "side": 1,
+      "message": "I\u0027d argue we could remove these entirely, and just replace with a comment \"These commands have no args:\".",
+      "parentUuid": "17fed391_e3bc341e",
+      "range": {
+        "startLine": 1861,
+        "startChar": 0,
+        "endLine": 1861,
+        "endChar": 46
+      },
+      "revId": "5b11139f0d749fcce173907316ea7007faafdc9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
