@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb50ac78_48e2208d",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-07T22:58:19Z",
+      "side": 1,
+      "message": "They are mostly just bitfields from characterization result.",
+      "parentUuid": "05afa205_d7e3c8b9",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 23
+      },
+      "revId": "55a90199065c62977918787634d50adbba34b55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfda9be9_216fc908",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-07T22:47:40Z",
       "side": 1,
       "message": "At some point you will select this dynamically at runtime?",
+      "range": {
+        "startLine": 53,
+        "startChar": 9,
+        "endLine": 53,
+        "endChar": 21
+      },
+      "revId": "55a90199065c62977918787634d50adbba34b55a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7bc4a12_61155a1b",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-07T22:58:19Z",
+      "side": 1,
+      "message": "Yes, we\u0027ll support different battery packs through a strap pin. I\u0027ll upload a CL soon.",
+      "parentUuid": "cfda9be9_216fc908",
       "range": {
         "startLine": 53,
         "startChar": 9,
