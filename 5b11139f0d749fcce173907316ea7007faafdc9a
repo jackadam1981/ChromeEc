@@ -46,6 +46,30 @@
       "revId": "5b11139f0d749fcce173907316ea7007faafdc9a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9ef8fa_bea1d1aa",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-07T15:32:11Z",
+      "side": 1,
+      "message": "that\u0027s breaking at least host_cmd_motion_sense() and ectool I think\n[though the previous version was changing the response size]",
+      "parentUuid": "dd559637_3cdd1225",
+      "range": {
+        "startLine": 1861,
+        "startChar": 0,
+        "endLine": 1861,
+        "endChar": 46
+      },
+      "revId": "5b11139f0d749fcce173907316ea7007faafdc9a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
