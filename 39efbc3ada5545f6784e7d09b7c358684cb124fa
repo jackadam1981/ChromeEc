@@ -22,6 +22,30 @@
       "revId": "39efbc3ada5545f6784e7d09b7c358684cb124fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6c7aab3_6739e933",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-12-07T01:15:27Z",
+      "side": 1,
+      "message": "Somehow ISH I2C code didn\u0027t use i2c_ports for init, so I kept the same way. I will reuse i2c_ports and eliminate CONFIG_xxx and submit another patch. The CONFI is typo, sorry.",
+      "parentUuid": "4e0f7412_ee84b2ba",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "39efbc3ada5545f6784e7d09b7c358684cb124fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
