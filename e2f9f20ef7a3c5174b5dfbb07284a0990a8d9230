@@ -212,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "258fe8c8_18d66735",
+        "filename": "driver/als_bh1730.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1253082
+      },
+      "writtenOn": "2017-12-07T05:55:41Z",
+      "side": 1,
+      "message": "Based on component data sheet value is zero not max.",
+      "parentUuid": "7f328aa6_6e0d6d44",
+      "revId": "e2f9f20ef7a3c5174b5dfbb07284a0990a8d9230",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b34125e0_6e7880d0",
         "filename": "driver/als_bh1730.c",
         "patchSetId": 14
