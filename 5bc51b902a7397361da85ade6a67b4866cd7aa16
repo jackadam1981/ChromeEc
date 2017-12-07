@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d0c3f6b_38dafbe0",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-07T10:34:04Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be in the common watchdog_trace() code,\nand actually there you know the PC in both case\nyou can properly record both task number *and* PC",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 52
+      },
+      "revId": "5bc51b902a7397361da85ade6a67b4866cd7aa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f8167a_93be6718",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-07T10:34:04Z",
+      "side": 1,
+      "message": "IMO this is not the right condition,\nit might be misleading to keep an older reason,\nreason !\u003d PANIC_SW_WATCHDOG",
+      "range": {
+        "startLine": 801,
+        "startChar": 6,
+        "endLine": 801,
+        "endChar": 13
+      },
+      "revId": "5bc51b902a7397361da85ade6a67b4866cd7aa16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
