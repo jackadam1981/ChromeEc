@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "842d6df0_967e49b2",
+        "filename": "core/cortex-m0/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-08T20:06:43Z",
+      "side": 1,
+      "message": "Yes, thanks for pointing this out.",
+      "parentUuid": "755a9321_707210a7",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 57
+      },
+      "revId": "5409188bdc7deae8324611f63f1b7de06077ae18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "714e6c3a_f013fa72",
         "filename": "core/cortex-m0/watchdog.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-08T08:51:44Z",
       "side": 1,
       "message": "that\u0027s not really what I asked for ;-)\nthe interesting property of putting it here is that you can always getting the PC.\nMaybe we can try something like this:\npanic_set_reason(PANIC_SW_WATCHDOG, stack[6], (excep_lr \u0026 0xf) \u003d\u003d 1 ? 0xff, task_get_current());\n\nif you would be nicer to put this in the right registers, but it needs a  bit of re-factoring, though it seems nobody really use the \u0027exception\u0027 parameter for the intended purpose ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 61
+      },
+      "revId": "5409188bdc7deae8324611f63f1b7de06077ae18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f35e762_3dd716b7",
+        "filename": "core/cortex-m0/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-08T20:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "714e6c3a_f013fa72",
       "range": {
         "startLine": 23,
         "startChar": 0,
