@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ee9ab598_3e9914b7",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-08T00:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "059b8ee7_d8446543",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 12
+      },
+      "revId": "408f58e0d8a5c70e6b5b6322f97ff85ec98516f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c26feaaf_079f7411",
         "filename": "power/cannonlake.c",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2017-12-07T22:20:43Z",
       "side": 1,
       "message": "If GPIO_PCH_DSW_PWROK \u0027belongs\u0027 to this function (I don\u0027t think anyone else will touch it) then let\u0027s just add a static variable to keep track of the level we have set? It should have three states (uninitialized / low / high) so we handle sysjump and first call properly.",
+      "range": {
+        "startLine": 95,
+        "startChar": 35,
+        "endLine": 95,
+        "endChar": 53
+      },
+      "revId": "408f58e0d8a5c70e6b5b6322f97ff85ec98516f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d801bbdc_233fa24d",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-08T00:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c26feaaf_079f7411",
       "range": {
         "startLine": 95,
         "startChar": 35,
