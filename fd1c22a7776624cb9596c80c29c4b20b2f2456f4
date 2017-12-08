@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78dee728_93514ca5",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-12-08T00:10:47Z",
+      "side": 1,
+      "message": "btw, do we still care about this check now, once it is required to know the password to clear it?",
+      "range": {
+        "startLine": 782,
+        "startChar": 0,
+        "endLine": 782,
+        "endChar": 42
+      },
+      "revId": "fd1c22a7776624cb9596c80c29c4b20b2f2456f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
