@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96bd2c50_94638da4",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-08T23:58:58Z",
+      "side": 1,
+      "message": "Let\u0027s put this behind \u0027#if CONFIG_USB_PD_PORT_COUNT \u003e\u003d 2\u0027, in case we have a single-port board that uses this part.",
+      "revId": "071afab85a18d6d31a1c524dbdf9e39594487e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f94ae7a9_8312b94a",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-08T23:58:58Z",
+      "side": 1,
+      "message": "Let\u0027s change this to \u003e\u003d, just to make it future proof?",
+      "range": {
+        "startLine": 480,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 33
+      },
+      "revId": "071afab85a18d6d31a1c524dbdf9e39594487e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13542497_1b7b00b2",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-08T23:58:58Z",
+      "side": 1,
+      "message": "What do you think about an alternate implementation that uses a single uint32_t mask of ports signaling OC, which we can atomic_read_clear() from a single deferred function (rather than on function for every port)?",
+      "range": {
+        "startLine": 489,
+        "startChar": 22,
+        "endLine": 489,
+        "endChar": 48
+      },
+      "revId": "071afab85a18d6d31a1c524dbdf9e39594487e31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
