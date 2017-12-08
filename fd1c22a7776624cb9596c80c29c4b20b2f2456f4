@@ -22,6 +22,30 @@
       "revId": "fd1c22a7776624cb9596c80c29c4b20b2f2456f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d405abb_1ae15963",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-08T00:12:16Z",
+      "side": 1,
+      "message": "No, I suppose not.  Because with the password, you could open and then clear.",
+      "parentUuid": "78dee728_93514ca5",
+      "range": {
+        "startLine": 782,
+        "startChar": 0,
+        "endLine": 782,
+        "endChar": 42
+      },
+      "revId": "fd1c22a7776624cb9596c80c29c4b20b2f2456f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
