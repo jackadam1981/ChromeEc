@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "59f1f47f_d604ecab",
+        "filename": "power/cannonlake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1112979
+      },
+      "writtenOn": "2017-12-08T18:10:15Z",
+      "side": 1,
+      "message": "SLP_SUS_L shouldn\u0027t be going low in S5. However, if we want to exist S5 we should wait for it to go low before we leave S5. Now how we actually tell the CPU that we want to go into Deep S5, I\"m not really sure. We probably should figure out if there\u0027s a way to do it \"legally\" and not just randomly pull stuff. I was sort of hoping that maybe a long power button press would do it, but that doesn\u0027t seem to be true... Let me ask Intel.",
+      "parentUuid": "d4397e89_c9481d0b",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 0
+      },
+      "revId": "408f58e0d8a5c70e6b5b6322f97ff85ec98516f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "059b8ee7_d8446543",
         "filename": "power/cannonlake.c",
         "patchSetId": 1
