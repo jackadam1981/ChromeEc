@@ -13,45 +13,79 @@
 #include "driver/charger/rt946x.h"
 #include "ec_commands.h"
 #include "extpower.h"
+#include "gpio.h"
 #include "util.h"
 
-static const struct battery_info info = {
-	.voltage_max		= 4350,
-	.voltage_normal		= 3800,
-	.voltage_min		= 3000,
-	.precharge_current	= 700,
-	.start_charging_min_c	= 0,
-	.start_charging_max_c	= 45,
-	.charging_min_c		= 0,
-	.charging_max_c		= 45,
-	.discharging_min_c	= -20,
-	.discharging_max_c	= 55,
+enum battery_type {
+	BATTERY_SIMPLO,
+	BATTERY_AETECH
 };
 
-static const struct max17055_batt_profile batt_profile = {
-	.is_ez_config		= 0,
-	.design_cap		= 0x232f, /* 9007mAh */
-	.ichg_term		= 0x0240, /* 180mA */
-	/* Empty voltage = 2800mV, Recovery voltage = 3280mV */
-	.v_empty		= 0x8752,
-	.learn_cfg		= 0x4476,
-	.dpacc			= 0x0c7b,
-	.rcomp0			= 0x0077,
-	.tempco			= 0x1d3f,
-	.qr_table00		= 0x1200,
-	.qr_table10		= 0x0900,
-	.qr_table20		= 0x0480,
-	.qr_table30		= 0x0480,
+static const struct battery_info info[] = {
+	[BATTERY_SIMPLO] = {
+		.voltage_max		= 4400,
+		.voltage_normal		= 3840,
+		.voltage_min		= 3000,
+		.precharge_current	= 256,
+		.start_charging_min_c	= 0,
+		.start_charging_max_c	= 45,
+		.charging_min_c		= 0,
+		.charging_max_c		= 60,
+		.discharging_min_c	= -20,
+		.discharging_max_c	= 60,
+	},
+	[BATTERY_AETECH] = {
+		.voltage_max		= 4350,
+		.voltage_normal		= 3800,
+		.voltage_min		= 3000,
+		.precharge_current	= 700,
+		.start_charging_min_c	= 0,
+		.start_charging_max_c	= 45,
+		.charging_min_c		= 0,
+		.charging_max_c		= 45,
+		.discharging_min_c	= -20,
+		.discharging_max_c	= 55,
+	}
+};
+
+static const struct max17055_batt_profile batt_profile[] = {
+	/*
+	 * TODO(philipchen): Update the battery profile for Simplo
+	 * battery once we have the characterization result. For now
+	 * we mostly reuse the numbers from AE-Tech battery.
+	 */
+	[BATTERY_SIMPLO] = {
+		.is_ez_config		= 1,
+		.design_cap		= 0x23A0, /* 9120mAh */
+		.ichg_term		= 0x0240, /* 180mA */
+		/* Empty voltage = 2800mV, Recovery voltage = 3280mV */
+		.v_empty		= 0x2328,
+	},
+	[BATTERY_AETECH] = {
+		.is_ez_config		= 0,
+		.design_cap		= 0x232f, /* 9007mAh */
+		.ichg_term		= 0x0240, /* 180mA */
+		/* Empty voltage = 2800mV, Recovery voltage = 3280mV */
+		.v_empty		= 0x8752,
+		.learn_cfg		= 0x4476,
+		.dpacc			= 0x0c7b,
+		.rcomp0			= 0x0077,
+		.tempco			= 0x1d3f,
+		.qr_table00		= 0x1200,
+		.qr_table10		= 0x0900,
+		.qr_table20		= 0x0480,
+		.qr_table30		= 0x0480,
+	},
 };
 
 const struct battery_info *battery_get_info(void)
 {
-	return &info;
+	return &info[gpio_get_level(GPIO_BATT_ID)];
 }
 
 const struct max17055_batt_profile *max17055_get_batt_profile(void)
 {
-	return &batt_profile;
+	return &batt_profile[gpio_get_level(GPIO_BATT_ID)];
 }
 
 int board_cut_off_battery(void)
