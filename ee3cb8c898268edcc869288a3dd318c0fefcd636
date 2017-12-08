@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "877758eb_963d162e",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-12-08T17:05:13Z",
+      "side": 0,
+      "message": "The second one was wrong (ALL_SYS_PGOOD doesn\u0027t exist) and I didn\u0027t think they were adding value since they are repeating what the code says, so deleting seemed appropriate.",
+      "parentUuid": "56aba485_3a9f67a6",
+      "revId": "ee3cb8c898268edcc869288a3dd318c0fefcd636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9ce2e007_1ecc231a",
         "filename": "power/stoney.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-12-08T06:37:16Z",
       "side": 0,
       "message": "Maybe add a comment that the rising edge of this pass through is dealt with elsewhere?",
+      "revId": "ee3cb8c898268edcc869288a3dd318c0fefcd636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9d3e70_69f4920d",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2017-12-08T17:05:13Z",
+      "side": 0,
+      "message": "Not sure what you mean. handle_pass_through() is dealing with all the edges. I\u0027ve added a delay to the VGATE rising edge inside of handle_pass_through().",
+      "parentUuid": "9ce2e007_1ecc231a",
       "revId": "ee3cb8c898268edcc869288a3dd318c0fefcd636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
