@@ -127,3 +127,23 @@ static void led_second(void)
 		scarlet_led_set_battery();
 }
 DECLARE_HOOK(HOOK_SECOND, led_second, HOOK_PRIO_DEFAULT);
+
+void led_control(enum ec_led_id led_id, enum ec_led_state state)
+{
+	enum led_color color;
+
+	if ((led_id != EC_LED_ID_RECOVERY_HW_REINIT_LED) &&
+	    (led_id != EC_LED_ID_SYSRQ_DEBUG_LED))
+		return;
+
+	if (state == LED_STATE_RESET) {
+		led_auto_control(EC_LED_ID_BATTERY_LED, 1);
+		scarlet_led_set_battery();
+		return;
+	}
+
+	color = state ? LED_AMBER : LED_OFF;
+
+	led_auto_control(EC_LED_ID_BATTERY_LED, 0);
+	bat_led_set_color(color);
+}
