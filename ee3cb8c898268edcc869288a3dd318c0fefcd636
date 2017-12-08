@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56aba485_3a9f67a6",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2017-12-08T06:37:16Z",
+      "side": 0,
+      "message": "Why drop these comments?",
+      "revId": "ee3cb8c898268edcc869288a3dd318c0fefcd636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ce2e007_1ecc231a",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2017-12-08T06:37:16Z",
+      "side": 0,
+      "message": "Maybe add a comment that the rising edge of this pass through is dealt with elsewhere?",
+      "revId": "ee3cb8c898268edcc869288a3dd318c0fefcd636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
