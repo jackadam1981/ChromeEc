@@ -186,6 +186,30 @@
     },
     {
       "key": {
+        "uuid": "14b43c90_3e16ae61",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-12-08T01:15:44Z",
+      "side": 1,
+      "message": "Try another way to let driver code to handle the manual manual override needed for factory tests.\nPlease help review this.",
+      "parentUuid": "f6019870_96868f3f",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 938,
+        "endChar": 6
+      },
+      "revId": "7e8fd7d8e4eddd57c94cccf6f910b3f7a2eeff2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46ce2b64_6d37281a",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 2
