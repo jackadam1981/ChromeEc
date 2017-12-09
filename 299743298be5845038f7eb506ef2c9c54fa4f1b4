@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2d6de8_b93019a9",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T01:16:04Z",
+      "side": 1,
+      "message": "Why is the divisor 32 here rather than 16? I see you had the same question on the crbug.",
+      "range": {
+        "startLine": 288,
+        "startChar": 31,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bf6ad48_8b6c5856",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T01:16:04Z",
+      "side": 1,
+      "message": "Add a comment \"Design capacity of the cell (mAh)\".",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 21
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b2670bd_2015d6de",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T01:16:04Z",
+      "side": 1,
+      "message": "Add a comment \"Charge termination current (mA)\".",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 20
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "225f810c_19f5a909",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T01:16:04Z",
+      "side": 1,
+      "message": "You may want to split this into two params (empty_voltage / recovery_voltage) and comment their function.",
+      "range": {
+        "startLine": 70,
+        "startChar": 10,
+        "endLine": 70,
+        "endChar": 17
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77d8179e_5f105a13",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T01:16:04Z",
+      "side": 1,
+      "message": "Need to indent / align these comments.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0f8ff3b_a5011329",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T01:16:04Z",
+      "side": 1,
+      "message": "This is a 16 bit register, but our only control is to turn on off \"voltage fuel gauge influence on the mixing algorithm\" (let\u0027s just call it \"learn mode\"). I suspect we\u0027ll always want to turn off \"voltage fuel gauge influence on the mixing algorithm\" if we have the custom tuning parameters below (is_ez_config \u003d 0). If this really needs to be parameterized, it can be an on / off paramter.",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62312365_493d74e1",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T01:16:04Z",
+      "side": 1,
+      "message": "Add a comment \"Change in battery SOC between relaxation points (pct / 16)\".",
+      "range": {
+        "startLine": 74,
+        "startChar": 10,
+        "endLine": 74,
+        "endChar": 15
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78dcc461_a772a113",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T01:16:04Z",
+      "side": 1,
+      "message": "Add a comment \"Magic cell tuning parameters\".",
+      "range": {
+        "startLine": 75,
+        "startChar": 1,
+        "endLine": 80,
+        "endChar": 21
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
