@@ -289,7 +289,7 @@ static void board_init(void)
 	if (cached_board_id < 6)
 		motion_sensor_count -= 1;
 #else
-	/* In case of Caroline, we have to enable ALS motion seneor dynamically. */
+	/* In case of Caroline, we have to enable ALS motion sensors dynamically. */
 #error "Need to define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT on caroline."
 #endif
 }
