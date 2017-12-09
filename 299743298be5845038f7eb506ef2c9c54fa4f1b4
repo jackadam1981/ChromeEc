@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ee62c459_22575cfc",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-09T02:12:38Z",
+      "side": 1,
+      "message": "I asked Maxim the same question last week. They said this is their magic sauce.",
+      "parentUuid": "1a2d6de8_b93019a9",
+      "range": {
+        "startLine": 288,
+        "startChar": 31,
+        "endLine": 288,
+        "endChar": 33
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bf6ad48_8b6c5856",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 5
