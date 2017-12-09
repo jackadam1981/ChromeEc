@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e466cde2_34a9ac16",
+        "filename": "board/scarlet/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T02:01:48Z",
+      "side": 1,
+      "message": "This local variable isn\u0027t very useful, I would just inline the logic.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 22
+      },
+      "revId": "8b7c0f7f25cb46e91e1978aa6ea07f7c1d24e9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae62fbf_2524b0c4",
+        "filename": "board/scarlet/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T02:01:48Z",
+      "side": 1,
+      "message": "It\u0027s not disastrous, but the call to scarlet_led_set_battery() here isn\u0027t synchronized to HOOK_SECOND, so you may have two calls to scarlet_led_set_battery() in succession, which may create some unwanted LED effects (eg. super brief flash). You might consider not calling scarlet_led_set_battery() here, and having the change be picked up at the next HOOK_SECOND (unless you\u0027re in a rush and can\u0027t wait a second!).",
+      "range": {
+        "startLine": 141,
+        "startChar": 2,
+        "endLine": 141,
+        "endChar": 25
+      },
+      "revId": "8b7c0f7f25cb46e91e1978aa6ea07f7c1d24e9a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
