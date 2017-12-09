@@ -39,6 +39,30 @@
       "revId": "e2e29a9cb1d4a11e0c6ebc874f3f13799a577d99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb1b2c4b_758867d6",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-09T08:25:11Z",
+      "side": 1,
+      "message": "oops, some mistake from c\u0026p. Should be 0x8752.",
+      "parentUuid": "e1b95a81_1f00eece",
+      "range": {
+        "startLine": 62,
+        "startChar": 14,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "e2e29a9cb1d4a11e0c6ebc874f3f13799a577d99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
