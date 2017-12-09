@@ -22,6 +22,30 @@
       "revId": "297985e71dc57a2a8ce826339220eb75163dd63a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0296ae77_4ce29fc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-12-09T01:28:17Z",
+      "side": 1,
+      "message": "yes, this aspect of password management remains opened, as discussed we need to identify more use cases. But I think it should be done under a different patch.",
+      "parentUuid": "79e4fc8b_63ec1b50",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "297985e71dc57a2a8ce826339220eb75163dd63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
