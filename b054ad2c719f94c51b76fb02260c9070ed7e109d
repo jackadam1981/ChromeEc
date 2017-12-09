@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92dc1dfb_2e4ac00a",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T00:03:01Z",
+      "side": 1,
+      "message": "It\u0027s probably better to have just one routine, decode port number by comparing \u0027s\u0027.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "b054ad2c719f94c51b76fb02260c9070ed7e109d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fda89ad3_894f72c4",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-09T00:03:01Z",
+      "side": 1,
+      "message": "How about having a single ISR, just compare \u0027s\u0027 against your GPIO interrupts to decode port#?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 78
+      },
+      "revId": "b054ad2c719f94c51b76fb02260c9070ed7e109d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
