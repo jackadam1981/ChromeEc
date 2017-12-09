@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79e4fc8b_63ec1b50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-09T01:25:23Z",
+      "side": 1,
+      "message": "Note that if a password is not set, \u0027ccd unlock\u0027 is NOT allowed via Cr50 console.  Only \u0027ccd open\u0027 is allowed in that case (with the usual 5-minute physical presence requirement).\n\nOtherwise, a malicious charger can opportunistically wait for the window between TPM startup and user login.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "297985e71dc57a2a8ce826339220eb75163dd63a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
