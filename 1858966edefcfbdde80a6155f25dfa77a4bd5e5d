@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "778ac247_d37b4566",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-12-09T00:01:27Z",
+      "side": 1,
+      "message": "I will make another patch to fix typo.",
+      "parentUuid": "4dccdbd9_70225d2a",
+      "range": {
+        "startLine": 292,
+        "startChar": 54,
+        "endLine": 292,
+        "endChar": 60
+      },
+      "revId": "1858966edefcfbdde80a6155f25dfa77a4bd5e5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10ae971c_2e9f3bd1",
         "filename": "board/caroline/board.c",
         "patchSetId": 11
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "767ed4a4_248dd932",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-12-09T00:01:27Z",
+      "side": 1,
+      "message": "I want to make sure if CONFIG_DYNAMIC_MOTION_SENSOR_COUNT is define on Caroline.\nSo, if CONFIG_DYNAMIC_MOTION_SENSOR_COUNT is not in Caroline, build will be failed.",
+      "parentUuid": "10ae971c_2e9f3bd1",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 6
+      },
+      "revId": "1858966edefcfbdde80a6155f25dfa77a4bd5e5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae2922ee_8716d12a",
         "filename": "board/caroline/board.c",
         "patchSetId": 11
@@ -59,6 +107,30 @@
       "writtenOn": "2017-12-05T10:18:29Z",
       "side": 1,
       "message": "since CONFIG_DYNAMIC_MOTION_SENSOR_COUNT is defined in caroline board.h,\nthis is useless.",
+      "range": {
+        "startLine": 664,
+        "startChar": 0,
+        "endLine": 666,
+        "endChar": 6
+      },
+      "revId": "1858966edefcfbdde80a6155f25dfa77a4bd5e5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0201172b_ebb4639e",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1000439
+      },
+      "writtenOn": "2017-12-09T00:01:27Z",
+      "side": 1,
+      "message": "Yes, but when we disable CONFIG_DYNAMIC_MOTION_SENSOR_COUNT in caroline board.h, we need it.",
+      "parentUuid": "ae2922ee_8716d12a",
       "range": {
         "startLine": 664,
         "startChar": 0,
