@@ -152,6 +152,12 @@
 #undef CONFIG_ALS
 #endif
 #undef CONFIG_ALS_AL3010
+#undef CONFIG_ALS_BH1730
+/*
+ * If defined, BH1730 uses board specific lux calculation formula parameters.
+ * If not defined, BH1730 uses default parameters to calculate lux.
+ */
+#undef CONFIG_ALS_BH1730_LUXTH_PARAMS
 #undef CONFIG_ALS_ISL29035
 #undef CONFIG_ALS_OPT3001
 /* Define the exact model ID present on the board: SI1141 = 41, SI1142 = 42, */
@@ -1576,6 +1582,18 @@
 #undef CONFIG_I2C_PASSTHRU_RESTRICTED
 #undef CONFIG_I2C_VIRTUAL_BATTERY
 
+/*
+ * Conservative I2C reading size per single transaction. For example, register
+ * of stm32f0 and stm32l4 are limited to be 8 bits for this field.
+ */
+#define CONFIG_I2C_CHIP_MAX_READ_SIZE 255
+
+/*
+ * Enable i2c_xfer() for receiving request larger than
+ * CONFIG_I2C_CHIP_MAX_READ_SIZE.
+ */
+#undef CONFIG_I2C_XFER_LARGE_READ
+
 /* EC uses an I2C master interface */
 #undef CONFIG_I2C_MASTER
 
@@ -2411,6 +2429,9 @@
 /*****************************************************************************/
 /* USB stream config */
 #undef CONFIG_STREAM_USB
+
+/* USB isochronous config */
+#undef CONFIG_USB_ISOCHRONOUS
 
 /*****************************************************************************/
 /* UART config */
