@@ -16,6 +16,24 @@
       "revId": "94554d575eedfd152435b085e9b87aeac52979f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a3c5229_192a11f9",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-11T06:23:42Z",
+      "side": 1,
+      "message": "First, whiskers does not have detection pin. Then, we only implemented this as side-band wake for the case we go into Deep S3 (where the USB controller is off and cannot be waken up using in-band USB wake mechanism). whiskers\u0027 lid will not use Deep S3 (SoC does not support it), so we don\u0027t need this.",
+      "parentUuid": "0309d99f_56e1eeeb",
+      "revId": "94554d575eedfd152435b085e9b87aeac52979f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
