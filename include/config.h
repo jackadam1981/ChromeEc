@@ -2831,6 +2831,9 @@
 /* Compile chip support for the USB device controller */
 #undef CONFIG_USB
 
+/* Support USB isochronous handler */
+#undef CONFIG_USB_ISOCHRONOUS
+
 /* Support USB blob handler. */
 #undef CONFIG_USB_BLOB
 
