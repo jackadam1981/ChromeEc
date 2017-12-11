@@ -76,4 +76,5 @@ chip-$(CONFIG_USB_HID_KEYBOARD)+=usb_hid_keyboard.o
 chip-$(CONFIG_USB_HID_TOUCHPAD)+=usb_hid_touchpad.o
 chip-$(CONFIG_USB_PD_TCPC)+=usb_pd_phy.o
 chip-$(CONFIG_USB_SPI)+=usb_spi.o
+chip-$(CONFIG_USB_ISOCHRONOUS)+=usb_isochronous.o
 endif
