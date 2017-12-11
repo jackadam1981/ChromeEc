@@ -188,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "37e2a258_d0c51d45",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-11T21:35:27Z",
+      "side": 1,
+      "message": "The datasheet is clear that all bits in this reg are fixed, except for D[6:4], which can only take the value 0 or 7 (\"Writing any value between 1h and 6h is ignored\") to indicate the learn mode start stage. If this info is not correct, we should ask for a revised datasheet.",
+      "parentUuid": "44269427_9b8b753c",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62312365_493d74e1",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 5
