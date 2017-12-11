@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2e8716ae_007b56c7",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1187060
+      },
+      "writtenOn": "2017-12-11T09:25:37Z",
+      "side": 1,
+      "message": "Yes ,I have add the board_spi_enable() in the",
+      "parentUuid": "3fbd278f_b07596b8",
+      "revId": "eef7b8638fabdf308ea060cb15b4ea082b5b8de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c1be66b_e9c9c4d4",
         "filename": "board/elm/board.h",
         "patchSetId": 1
