@@ -16,6 +16,75 @@
       "revId": "5ff1b127fc27f271e66860897db33eaaa14a50ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7180ffe_8e63578c",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-11T09:36:34Z",
+      "side": 1,
+      "message": "if address is still uninitialized (\u003d\u003d0), the check below will exit rather than skip it ?",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 54
+      },
+      "revId": "5ff1b127fc27f271e66860897db33eaaa14a50ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8b51d19_901e4ed8",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-11T09:36:34Z",
+      "side": 1,
+      "message": "continue oder break ?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "5ff1b127fc27f271e66860897db33eaaa14a50ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d155b07f_8f49016f",
+        "filename": "chip/stm32/usb_hw.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-11T09:36:34Z",
+      "side": 1,
+      "message": "maybe worth noting it needs to happen before the first memcpy_to_usbram_ep0_patch ?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 78
+      },
+      "revId": "5ff1b127fc27f271e66860897db33eaaa14a50ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
