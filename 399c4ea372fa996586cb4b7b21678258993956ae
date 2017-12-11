@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6346364a_1daf3294",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-11T09:28:56Z",
+      "side": 1,
+      "message": "wasn\u0027t the original version with the ALTERNATE() in gpio.inc better ?\n\nYou can still read those pins until you do the gpio_config_module(MODULE_PWM, 1) (which happens at HOOK_PRIO_INIT_PWM + 1 in pwm_pin_init)\nand are we really leaked any power by having PWM defined but not used ?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 6
+      },
+      "revId": "399c4ea372fa996586cb4b7b21678258993956ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
