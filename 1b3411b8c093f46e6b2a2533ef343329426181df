@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f485353c_8ead8745",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2017-12-11T15:02:45Z",
+      "side": 1,
+      "message": "Ed you could change the docs for board_set_active_charge_port() to mention this.",
+      "parentUuid": "f434fcde_c2efae62",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 40
+      },
+      "revId": "1b3411b8c093f46e6b2a2533ef343329426181df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7784cb81_d04708ef",
         "filename": "board/grunt/usb_pd_policy.c",
         "patchSetId": 1
