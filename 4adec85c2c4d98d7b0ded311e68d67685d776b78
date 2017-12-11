@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb102048_b7689b7c",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-11T07:56:53Z",
+      "side": 1,
+      "message": "as mentioned earlier, CONFIG_xxx defines are per-board, you should not have to put #ifdef on them on board.c,\nyou can probably just remove the else clause",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 5
+      },
+      "revId": "4adec85c2c4d98d7b0ded311e68d67685d776b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2de872e8_9a1d3ddc",
+        "filename": "board/caroline/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-11T07:56:53Z",
+      "side": 1,
+      "message": "the line seems too long,\nyou probably need a multi-line comment (or re-phrase it):\n/*\n * ....\n */",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 77
+      },
+      "revId": "4adec85c2c4d98d7b0ded311e68d67685d776b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
