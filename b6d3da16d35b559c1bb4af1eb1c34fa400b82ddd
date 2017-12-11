@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5ee582bd_13af1fad",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-11T20:03:33Z",
+      "side": 1,
+      "message": "If anyone swaps the battery while the system is plugged in, max17055 wouldn\u0027t update its battery config. So it messes up anyway. Let\u0027s just read it once.",
+      "parentUuid": "896ee479_bf0d08c9",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 42
+      },
+      "revId": "b6d3da16d35b559c1bb4af1eb1c34fa400b82ddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb840b95_eadfbb7e",
         "filename": "board/scarlet/gpio.inc",
         "patchSetId": 3
