@@ -2430,6 +2430,9 @@
 /* USB stream config */
 #undef CONFIG_STREAM_USB
 
+/* USB isochronous config */
+#undef CONFIG_USB_ISOCHRONOUS
+
 /*****************************************************************************/
 /* UART config */
 
