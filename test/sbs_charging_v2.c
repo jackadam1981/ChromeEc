@@ -454,10 +454,7 @@ static int test_hc_charge_state(void)
 					    &params, sizeof(params),
 					    &resp, sizeof(resp));
 		TEST_ASSERT(rv == EC_RES_SUCCESS);
-		if (i != CS_PARAM_LIMIT_POWER)
-			TEST_ASSERT(resp.get_param.value);
-		else
-			TEST_ASSERT(!resp.get_param.value);
+		TEST_ASSERT(resp.get_param.value);
 
 		/* Bump it up a bit */
 		tmp = resp.get_param.value;
@@ -468,8 +465,7 @@ static int test_hc_charge_state(void)
 			tmp -= 128;		/* Should be valid delta */
 			break;
 		case CS_PARAM_CHG_STATUS:
-		case CS_PARAM_LIMIT_POWER:
-			/* These ones can't be set */
+			/* This one can't be set */
 			break;
 		case CS_PARAM_CHG_OPTION:
 			tmp = CHG_OPT2;
@@ -481,7 +477,7 @@ static int test_hc_charge_state(void)
 		rv = test_send_host_command(EC_CMD_CHARGE_STATE, 0,
 					    &params, sizeof(params),
 					    &resp, sizeof(resp));
-		if (i == CS_PARAM_CHG_STATUS || i == CS_PARAM_LIMIT_POWER)
+		if (i == CS_PARAM_CHG_STATUS)
 			TEST_ASSERT(rv == EC_RES_ACCESS_DENIED);
 		else
 			TEST_ASSERT(rv == EC_RES_SUCCESS);
