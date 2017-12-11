@@ -164,6 +164,30 @@
     },
     {
       "key": {
+        "uuid": "44269427_9b8b753c",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-11T20:15:54Z",
+      "side": 1,
+      "message": "I discussed with Maxim. They said it\u0027s not an on/off parameter if we use non-EZ config (i.e. every bit could change in battery characterization). I think the datasheet is misleading.\n\nAnd they claim even though the implementation guide says this reg is optional during config but we should write the characterization result to it for better precision.\n\nSo I\u0027ll add it back.",
+      "parentUuid": "a0f8ff3b_a5011329",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62312365_493d74e1",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 5
