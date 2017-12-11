@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ad3efce_71cae5c0",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-11T17:54:40Z",
+      "side": 1,
+      "message": "The strapping GPIO isn\u0027t going to change, so it might be better to read it just once, rather than on every function call.",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 42
+      },
+      "revId": "b6d3da16d35b559c1bb4af1eb1c34fa400b82ddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb840b95_eadfbb7e",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-11T17:54:40Z",
+      "side": 1,
+      "message": "So the simplo pack will pull this down (is the PD strong enough to override our internal PU?), and the aetech will leave it floating?\n\nAlso is this detection compatible with the existing boards?",
+      "range": {
+        "startLine": 79,
+        "startChar": 52,
+        "endLine": 79,
+        "endChar": 64
+      },
+      "revId": "b6d3da16d35b559c1bb4af1eb1c34fa400b82ddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
