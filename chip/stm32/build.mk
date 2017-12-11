@@ -59,6 +59,7 @@ chip-$(CONFIG_DEBUG_PRINTF)+=debug_printf.o
 chip-$(CONFIG_OTP)+=otp-$(CHIP_FAMILY).o
 chip-$(CONFIG_PWM)+=pwm.o
 chip-$(CONFIG_RNG)+=trng.o
+chip-$(CONFIG_USB_ISOCHRONOUS)+=usb-isochronous.o
 
 ifeq ($(CHIP_FAMILY),stm32f4)
 chip-$(CONFIG_USB)+=usb_dwc.o usb_endpoints.o
