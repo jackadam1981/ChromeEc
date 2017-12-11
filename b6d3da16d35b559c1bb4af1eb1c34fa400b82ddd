@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1f1efe51_5aae844c",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-11T19:21:07Z",
+      "side": 1,
+      "message": "I agree. Will just remove it.",
+      "parentUuid": "b2cc7a56_881f0c0b",
+      "revId": "b6d3da16d35b559c1bb4af1eb1c34fa400b82ddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87b178df_2fd46f85",
         "filename": "board/scarlet/battery.c",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-12-11T19:01:37Z",
       "side": 1,
       "message": "use the macros here, too?  or is that already in a separate CL",
+      "revId": "b6d3da16d35b559c1bb4af1eb1c34fa400b82ddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91c2e8fd_c195a1f7",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-11T19:21:07Z",
+      "side": 1,
+      "message": "These numbers directly come from the characterization result (a.k.a. INI file). We only need macros when we don\u0027t have battery characterization yet.",
+      "parentUuid": "87b178df_2fd46f85",
       "revId": "b6d3da16d35b559c1bb4af1eb1c34fa400b82ddd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
