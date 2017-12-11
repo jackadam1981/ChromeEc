@@ -212,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "a0b1d58a_d3192395",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-11T21:40:10Z",
+      "side": 1,
+      "message": "From the characterization result, learn_cfg\u003d0x4476. So D7 is set to 0, which violates what the datasheet says. I agree Maxim should revise the datasheet.",
+      "parentUuid": "37e2a258_d0c51d45",
+      "range": {
+        "startLine": 73,
+        "startChar": 10,
+        "endLine": 73,
+        "endChar": 19
+      },
+      "revId": "299743298be5845038f7eb506ef2c9c54fa4f1b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62312365_493d74e1",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 5
