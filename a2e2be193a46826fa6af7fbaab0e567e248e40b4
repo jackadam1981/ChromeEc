@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92a2bb82_062f137e",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-12-12T19:17:09Z",
+      "side": 0,
+      "message": "Is the check for discharging_on_ac not required? I guess this interferes with manual_normal_mode_status being used to disable charging?",
+      "range": {
+        "startLine": 748,
+        "startChar": 17,
+        "endLine": 748,
+        "endChar": 47
+      },
+      "revId": "a2e2be193a46826fa6af7fbaab0e567e248e40b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
