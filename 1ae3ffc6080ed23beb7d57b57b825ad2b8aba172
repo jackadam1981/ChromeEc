@@ -50,6 +50,24 @@
       "revId": "1ae3ffc6080ed23beb7d57b57b825ad2b8aba172",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bda6cbf8_f4e42d13",
+        "filename": "chip/g/usart.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-12-12T07:06:49Z",
+      "side": 1,
+      "message": "Ok yeah this should have been reverted entirely. We can switch back to send_data_to_usb(\u0026NAME); and remove the rest of the deferred stuff.",
+      "parentUuid": "94160093_b0d01af3",
+      "revId": "1ae3ffc6080ed23beb7d57b57b825ad2b8aba172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
