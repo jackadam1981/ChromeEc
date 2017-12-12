@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83f19cd7_56d8fc04",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2339,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-12T18:22:00Z",
+      "side": 1,
+      "message": "This comment no longer applies? \u0027enum lightbar_command\u0027 is now in ec_commands.h.",
+      "range": {
+        "startLine": 2335,
+        "startChar": 0,
+        "endLine": 2339,
+        "endChar": 3
+      },
+      "revId": "56da4f60367720fb18891df6d840ff067a23f0ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b034f48c_68437e7a",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2343,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-12T18:22:00Z",
+      "side": 1,
+      "message": "Size to LIGHTBAR_NUM_CMDS (and/or use BUILD_ASSERT), just to make it clear what these entries represent?",
+      "range": {
+        "startLine": 2343,
+        "startChar": 2,
+        "endLine": 2343,
+        "endChar": 23
+      },
+      "revId": "56da4f60367720fb18891df6d840ff067a23f0ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
