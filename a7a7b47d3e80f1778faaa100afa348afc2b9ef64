@@ -22,6 +22,30 @@
       "revId": "a7a7b47d3e80f1778faaa100afa348afc2b9ef64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93b3991b_308c2458",
+        "filename": "power/rk3399.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-12T18:57:05Z",
+      "side": 1,
+      "message": "Ah, I see power_update_signals() is called in power_update_signals(). So it does help us react to IN_PGOOD_S0 within 5ms. Should we do the do similar change to the other power signals and then remove this hook routine (power_signal_changed)?",
+      "parentUuid": "1bb80582_3b028793",
+      "range": {
+        "startLine": 601,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 65
+      },
+      "revId": "a7a7b47d3e80f1778faaa100afa348afc2b9ef64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
