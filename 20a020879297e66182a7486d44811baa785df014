@@ -16,6 +16,24 @@
       "revId": "20a020879297e66182a7486d44811baa785df014",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd60d481_e232e54c",
+        "filename": "chip/ish/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2017-12-12T23:19:15Z",
+      "side": 1,
+      "message": "Fixed. since in ISH port and controller are one to one match, I use i2c_ports[].port directly.",
+      "parentUuid": "a5cea7ce_87ffde99",
+      "revId": "20a020879297e66182a7486d44811baa785df014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
