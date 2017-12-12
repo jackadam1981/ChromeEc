@@ -22,6 +22,30 @@
       "revId": "c56791f9c62af96ddcb152e538680e75efaf15d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95d75bf1_62b3e6cd",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-12T00:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d205c71a_e63d91aa",
+      "range": {
+        "startLine": 381,
+        "startChar": 9,
+        "endLine": 381,
+        "endChar": 13
+      },
+      "revId": "c56791f9c62af96ddcb152e538680e75efaf15d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
