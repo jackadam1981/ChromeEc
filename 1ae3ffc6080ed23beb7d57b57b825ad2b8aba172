@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85284522_482bf9e9",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-12-12T06:24:05Z",
+      "side": 1,
+      "message": "this appears to have been reverted over time..",
+      "revId": "1ae3ffc6080ed23beb7d57b57b825ad2b8aba172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22d6078f_71d179cf",
+        "filename": "chip/g/usart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-12-12T06:24:05Z",
+      "side": 1,
+      "message": "this also appears to have been removed later..",
+      "revId": "1ae3ffc6080ed23beb7d57b57b825ad2b8aba172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94160093_b0d01af3",
+        "filename": "chip/g/usart.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2017-12-12T06:24:05Z",
+      "side": 1,
+      "message": "this one hurts when deferred.\n\nsend_data_to_usb(\u0026NAME);\nworks a lot better, along w/ 16x larger QUEUE_SIZE in usart.c (for my use case..)",
+      "revId": "1ae3ffc6080ed23beb7d57b57b825ad2b8aba172",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
