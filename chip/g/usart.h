@@ -16,8 +16,6 @@ struct usart_config {
 
 	struct producer const producer;
 	struct consumer const consumer;
-
-	const struct deferred_data *deferred;
 };
 
 extern struct consumer_ops const uart_consumer_ops;
@@ -43,7 +41,7 @@ extern struct producer_ops const uart_producer_ops;
 		GR_UART_ISTATECLR(NAME.uart) =				\
 			GC_UART_ISTATECLR_RX_MASK;			\
 		/* Read input FIFO until empty */			\
-		hook_call_deferred(NAME.deferred, 0);			\
+		send_data_to_usb(&NAME);				\
 	}
 
 
@@ -51,8 +49,6 @@ extern struct producer_ops const uart_producer_ops;
 		     UART,						\
 		     RX_QUEUE,						\
 		     TX_QUEUE)						\
-	static void CONCAT2(NAME, _deferred_)(void);			\
-	DECLARE_DEFERRED(CONCAT2(NAME, _deferred_));			\
 	struct usart_config const NAME = {				\
 		.uart      = UART,					\
 		.consumer  = {						\
@@ -63,12 +59,7 @@ extern struct producer_ops const uart_producer_ops;
 			.queue = &RX_QUEUE,				\
 			.ops   = &uart_producer_ops,			\
 		},							\
-		.deferred  = &CONCAT2(NAME, _deferred__data),		\
-	};								\
-	static void CONCAT2(NAME, _deferred_)(void)			\
-	{								\
-		send_data_to_usb(&NAME);				\
-	}								\
+	}
 
 
 /* Read data from UART and add it to the producer queue */
