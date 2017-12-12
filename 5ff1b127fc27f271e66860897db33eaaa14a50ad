@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "c5639b45_009edb70",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-12T00:49:24Z",
+      "side": 1,
+      "message": "right, continue.",
+      "parentUuid": "c8b51d19_901e4ed8",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "5ff1b127fc27f271e66860897db33eaaa14a50ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d155b07f_8f49016f",
         "filename": "chip/stm32/usb_hw.h",
         "patchSetId": 4
@@ -85,6 +109,30 @@
       "revId": "5ff1b127fc27f271e66860897db33eaaa14a50ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caaa0a0a_67b067cd",
+        "filename": "chip/stm32/usb_hw.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-12T00:49:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d155b07f_8f49016f",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 78
+      },
+      "revId": "5ff1b127fc27f271e66860897db33eaaa14a50ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
