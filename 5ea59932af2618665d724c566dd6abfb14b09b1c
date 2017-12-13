@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6c970266_87b78ceb",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2017-12-13T10:33:56Z",
+      "side": 1,
+      "message": "My concern here that the charge_task in suspend (after a recent fix) only runs every minute.\nOne other way would be that if CMD_PWR is defined, then to reset the MAX_TIME to 500MS or so, and take the ~2mW hit that charge_task running that frequently does, and update the average that way. What do you think?",
+      "parentUuid": "169273af_cbd211fd",
+      "range": {
+        "startLine": 1445,
+        "startChar": 0,
+        "endLine": 1445,
+        "endChar": 30
+      },
+      "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcd4fc42_6b2a75d5",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "22d24147_49ae6cc0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2017-12-13T10:33:56Z",
+      "side": 1,
+      "message": "The reason I put it here is that I thought if the update gets preempted by a request this way there is no race: either you read the old avg, or the new avg. The other way, you might get preempted while samples_recorded is already updated, while sample sum isn\u0027t yet.\nThis wouldn\u0027t be an issue after the first minute anymore.\nIs there another way to avoid this?",
+      "parentUuid": "bcd4fc42_6b2a75d5",
+      "range": {
+        "startLine": 1453,
+        "startChar": 5,
+        "endLine": 1453,
+        "endChar": 36
+      },
+      "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "824838e4_7579b65d",
         "filename": "driver/battery/smart.c",
         "patchSetId": 2
@@ -82,6 +130,30 @@
       "writtenOn": "2017-12-13T10:07:57Z",
       "side": 1,
       "message": "Smart battery gas gauge already have an integrated function to integrate the current over the last, ie AverageCurrent() [0x0b].\nIt\u0027s likely giving a more accurate result than half-frequently polling the instantaneous value.",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 31
+      },
+      "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94c74872_139e3857",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2017-12-13T10:33:56Z",
+      "side": 1,
+      "message": "thanks for the pointer :) I just looked at the spec and it said it returns a 1min running average, so really useful for us. A couple questions:\n- does the voltage vary enough depending on charge state that we would still need to pull the instantaneous voltages?\n- If I take advantage of this, then I would need to pull the entire running average into the [battery].c files. Does that make sense, or am I missing something?",
+      "parentUuid": "824838e4_7579b65d",
       "range": {
         "startLine": 294,
         "startChar": 0,
