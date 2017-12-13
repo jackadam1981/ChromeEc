@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "870a8ab7_ef6bd2ad",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-13T02:56:20Z",
+      "side": 1,
+      "message": "Be careful that all added options should be hidden behind BOARD_WHISKERS",
+      "revId": "5cbdb2f3c4d0ee8e032fccdc4b421791c77c62a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a5df667_770fe31c",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-13T02:56:20Z",
+      "side": 1,
+      "message": "You\u0027re going to need multiple interfaces for isochronous EP (i.e. default interface must consume 0 bandwidth)",
+      "revId": "5cbdb2f3c4d0ee8e032fccdc4b421791c77c62a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
