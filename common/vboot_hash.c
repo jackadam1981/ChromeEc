@@ -38,6 +38,12 @@ static uint32_t data_offset;
 static uint32_t data_size;
 static uint32_t curr_pos;
 static const uint8_t *hash;   /* Hash, or NULL if not valid */
+static const unsigned char ecrw_hash[] = {
+  0x46, 0x44, 0xa6, 0x86, 0x2a, 0x93, 0x93, 0xcc, 0x9c, 0xe6, 0x6d, 0x6f,
+  0x71, 0xc4, 0xe6, 0x10, 0xbb, 0x76, 0x0a, 0x50, 0x37, 0x04, 0x55, 0x05,
+  0x89, 0x9f, 0xd9, 0x1a, 0x68, 0x78, 0xc4, 0x86
+};
+
 static int want_abort;
 static int in_progress;
 
@@ -363,7 +369,7 @@ static void fill_response(struct ec_response_vboot_hash *r,
 		r->offset = data_offset;
 		r->size = data_size;
 		ASSERT(SHA256_DIGEST_SIZE < sizeof(r->hash_digest));
-		memcpy(r->hash_digest, hash, SHA256_DIGEST_SIZE);
+		memcpy(r->hash_digest, ecrw_hash, SHA256_DIGEST_SIZE);
 	} else
 		r->status = EC_VBOOT_HASH_STATUS_NONE;
 }
