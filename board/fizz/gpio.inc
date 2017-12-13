@@ -12,7 +12,6 @@ GPIO_INT(USB_C0_PD_INT_ODL,	PIN(3, 7), GPIO_INT_FALLING | GPIO_PULL_UP,	tcpc_ale
 GPIO_INT(AC_PRESENT,		PIN(C, 1), GPIO_INT_BOTH,			extpower_interrupt)
 GPIO_INT(POWER_BUTTON_L,	PIN(0, 4), GPIO_INT_BOTH | GPIO_PULL_UP,	power_button_interrupt)	/* MECH_PWR_BTN_ODL */
 
-GPIO_INT(PCH_SLP_S0_L,		PIN(7, 5), GPIO_INT_BOTH,			power_signal_interrupt)
 /* Use VW signals instead of GPIOs */
 #ifndef CONFIG_ESPI_VW_SIGNALS
 GPIO_INT(PCH_SLP_S3_L,		PIN(7, 3), GPIO_INT_BOTH,			power_signal_interrupt)
@@ -43,6 +42,7 @@ GPIO(PMIC_INT_L,		PIN(6, 0), GPIO_INPUT)				/* PMIC interrupt */
 GPIO(U42_P,			PIN(3, 3), GPIO_OUTPUT | GPIO_PULL_DOWN)
 GPIO(U22_C,			PIN(3, 4), GPIO_OUTPUT | GPIO_PULL_DOWN)
 GPIO(POWER_RATE,		PIN(7, 1), GPIO_INPUT)				/* High: i3/5/7. Low: Celeron */
+GPIO(PCH_SLP_S0_L,		PIN(7, 5), GPIO_INPUT)
 
 /* Fizz specific pins */
 GPIO(LAN_PWR_EN,		PIN(8, 3), GPIO_OUT_HIGH)			/* Ethernet power enabled */
