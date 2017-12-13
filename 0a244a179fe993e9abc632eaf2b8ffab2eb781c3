@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8698caac_d3542c23",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-13T18:51:54Z",
+      "side": 1,
+      "message": "Can we move this case last? Although this usage seems valid (I had to look it up!) it seems to go against standard convention to have the default: case not be last.",
+      "range": {
+        "startLine": 464,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 8
+      },
+      "revId": "0a244a179fe993e9abc632eaf2b8ffab2eb781c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
