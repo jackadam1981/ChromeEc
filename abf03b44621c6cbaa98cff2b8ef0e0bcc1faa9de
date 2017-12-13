@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd203e4a_67398e58",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-13T22:07:35Z",
+      "side": 1,
+      "message": "What we\u0027re really saving is whether the port partner is sourcing \u003e 5V, I\u0027d change the naming with that in mind.",
+      "range": {
+        "startLine": 780,
+        "startChar": 11,
+        "endLine": 780,
+        "endChar": 34
+      },
+      "revId": "abf03b44621c6cbaa98cff2b8ef0e0bcc1faa9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87c05ce5_561ea5ee",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3398,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-13T22:07:35Z",
+      "side": 1,
+      "message": "There are other paths out of sink that won\u0027t go through here. Now that I think about it more, it may make more sense for charge_manager to set / clear this flag (set when changing to active sink \u003e 5V, clear when active \u003e 5V and switching to \u003c 5V, including 0V). We\u0027ll still want to check / reset / clear at the start of the PD task.",
+      "range": {
+        "startLine": 3398,
+        "startChar": 3,
+        "endLine": 3398,
+        "endChar": 26
+      },
+      "revId": "abf03b44621c6cbaa98cff2b8ef0e0bcc1faa9de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
