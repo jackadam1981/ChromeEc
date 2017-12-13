@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f2469b6_6b28c0d7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3687,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-13T19:07:17Z",
+      "side": 1,
+      "message": "We we do this with a deferred routine instead?",
+      "range": {
+        "startLine": 3685,
+        "startChar": 1,
+        "endLine": 3687,
+        "endChar": 14
+      },
+      "revId": "3e8ede70e1ebebd41279d851c6576abfd8c950ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
