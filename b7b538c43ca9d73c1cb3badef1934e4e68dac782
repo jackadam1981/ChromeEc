@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c675001a_e32e1b0c",
+        "filename": "include/adc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-13T17:16:16Z",
+      "side": 1,
+      "message": "Let\u0027s move this to ec/include/hooks.h (enum hook_priority) and assign it HOOK_PRIO_FIRST + 12.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "b7b538c43ca9d73c1cb3badef1934e4e68dac782",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
