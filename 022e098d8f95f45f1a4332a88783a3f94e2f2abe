@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5af962bb_2b67bf1d",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-13T18:02:48Z",
+      "side": 1,
+      "message": "It\u0027s awkward to read battery ID and search your table on every call to charger_profile_override(), you might consider doing this only if rv / rc / soc \u003d\u003d 0, which should be in rare cases.\n\nOr can you use board_battery_type here instead? charger_profile_override() should be called from the charger task, so board_init_battery_type() will have already been called. Or are you worried that battery_manufacturer_name() will be unreadable at board_init_battery_type() time (maybe due to cut-off / waking-up battery)? If so, it might be better to change board_get_battery_type(), always return board_battery_type, unless board_battery_type is uninitialized (BATTERY_TYPE_COUNT), and then try to identify it. Then, change lone uses of board_battery_type to call board_get_battery_type().",
+      "range": {
+        "startLine": 612,
+        "startChar": 5,
+        "endLine": 612,
+        "endChar": 27
+      },
+      "revId": "022e098d8f95f45f1a4332a88783a3f94e2f2abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
