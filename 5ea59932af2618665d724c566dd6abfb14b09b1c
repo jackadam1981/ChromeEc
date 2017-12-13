@@ -119,6 +119,76 @@
     },
     {
       "key": {
+        "uuid": "39664c8c_44af2ee3",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-13T17:45:15Z",
+      "side": 1,
+      "message": "You can add a mutex if you want to make this completely reliable. You may find that some cros_ec console commands are not completely reliable, there is a lower bar for correctness than host commands, which must function correctly in all circumstances to not break production.",
+      "parentUuid": "22d24147_49ae6cc0",
+      "range": {
+        "startLine": 1453,
+        "startChar": 5,
+        "endLine": 1453,
+        "endChar": 36
+      },
+      "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2edccbec_0cb18c57",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1460,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-13T17:45:15Z",
+      "side": 1,
+      "message": "Why call this on HOOK_INIT? Won\u0027t it skew your measurements slightly since HOOK_INIT to first HOOK_TICK interval may not be close to HOOK_TICK_INTERVAL?",
+      "range": {
+        "startLine": 1459,
+        "startChar": 0,
+        "endLine": 1460,
+        "endChar": 61
+      },
+      "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ec677a3_1f50d16f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-13T17:45:15Z",
+      "side": 1,
+      "message": "Let\u0027s name this according to the console command, eg. CONFIG_CMD_PWR_AVG. Also let\u0027s be consistent with the name of the function (avg_power vs pwr_avg).",
+      "range": {
+        "startLine": 1472,
+        "startChar": 10,
+        "endLine": 1472,
+        "endChar": 24
+      },
+      "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "824838e4_7579b65d",
         "filename": "driver/battery/smart.c",
         "patchSetId": 2
@@ -163,6 +233,29 @@
       "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8381bf90_ef17a6d2",
+        "filename": "include/charge_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-13T17:45:15Z",
+      "side": 1,
+      "message": "Can much of this go in the .c file with the implementation? Also let\u0027s leave the #ifdef out of the header.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 27
+      },
+      "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
