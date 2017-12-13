@@ -22,6 +22,30 @@
       "revId": "a2e2be193a46826fa6af7fbaab0e567e248e40b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781b2d7c_c577cdc1",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2017-12-13T03:09:05Z",
+      "side": 0,
+      "message": "Because this change:https://chromium-review.googlesource.com/#/c/chromiumos/platform/ec/+/758088/\nWe think only use BATT_LEARN bit to check discharging_on_ac is not required.",
+      "parentUuid": "92a2bb82_062f137e",
+      "range": {
+        "startLine": 748,
+        "startChar": 17,
+        "endLine": 748,
+        "endChar": 47
+      },
+      "revId": "a2e2be193a46826fa6af7fbaab0e567e248e40b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
