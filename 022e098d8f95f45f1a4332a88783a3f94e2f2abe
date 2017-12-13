@@ -22,6 +22,30 @@
       "revId": "022e098d8f95f45f1a4332a88783a3f94e2f2abe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46c97ead_935322ae",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2017-12-13T18:10:59Z",
+      "side": 1,
+      "message": "Good point, I should just be checking board_battery_type directly here, because for the case that\u0027s being checked battery_type will be known at this point.",
+      "parentUuid": "5af962bb_2b67bf1d",
+      "range": {
+        "startLine": 612,
+        "startChar": 5,
+        "endLine": 612,
+        "endChar": 27
+      },
+      "revId": "022e098d8f95f45f1a4332a88783a3f94e2f2abe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
