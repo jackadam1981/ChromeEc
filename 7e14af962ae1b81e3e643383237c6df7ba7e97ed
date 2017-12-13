@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f020056_15ea0f7f",
+        "filename": "chip/stm32/usb-isochronous.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-13T02:26:33Z",
+      "side": 1,
+      "message": "One concern I have with this is that we\u0027ll need to do 2 copies of the data.\n\n - Read X kb from SPI into buffer\n - Copy from buffer into queue\n - Copy from queue into USB buffer\n\nAlso, we never want to send old data, so the touchpad driver would have to purge the queue if the data has not been transmitted, for whatever reason.\n\nThe abstraction layer is nice, but it might be a problem in the future... Maybe we should just have the touchpad driver handle copy from SPI buffer to USB buffer directly.\n\nWDYT?",
+      "revId": "7e14af962ae1b81e3e643383237c6df7ba7e97ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53ba8604_67e4f5f2",
+        "filename": "chip/stm32/usb-isochronous.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-13T02:26:33Z",
+      "side": 1,
+      "message": "In usb_hid_touchpad, where we don\u0027t care about _rx, we just set:\n\nUSB_DECLARE_EP(USB_EP_HID_TOUCHPAD, hid_touchpad_tx, hid_touchpad_tx,\n               hid_touchpad_event);\n\nI think you can do the same here, and not even declare _ep_rx.",
+      "revId": "7e14af962ae1b81e3e643383237c6df7ba7e97ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
