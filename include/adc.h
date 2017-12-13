@@ -10,7 +10,11 @@
 
 #include "common.h"
 
-#define HOOK_PRIO_INIT_ADC HOOK_PRIO_DEFAULT /* ADC priority */
+/*
+ * ADC init must be done prior deterning SKU ID and SKU ID needs to be done
+ * before HOOK_PRIO_DEFAULT.
+ */
+#define HOOK_PRIO_INIT_ADC (HOOK_PRIO_DEFAULT - 2) /* ADC priority */
 
 #define ADC_READ_ERROR -1  /* Value returned by adc_read_channel() on error */
 
