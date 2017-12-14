@@ -155,10 +155,6 @@ void board_hibernate(void)
 	msleep(100);
 
 	gpio_set_level(GPIO_SMC_SHUTDOWN, 1);
-
-	/* Power to EC should shut down now */
-	while (1)
-		;
 }
 
 int board_get_version(void)
