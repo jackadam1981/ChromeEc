@@ -22,6 +22,30 @@
       "revId": "ac43ad7f8b303e0c4dbb7febac90c3912deef858",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c2a47f4_2d4a5d97",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-14T01:53:44Z",
+      "side": 1,
+      "message": "I think because it\u0027s edge sensitive instead of level sensitive. Let\u0027s say both the TCPC and PPC are asserting the interrupt. We handle the TCPC interrupt and then begin handling the PPC\u0027s interrupt. If the TCPC re-asserts its interrupt before we\u0027ve cleared the PPC interrupt, we\u0027ll miss it.\n\nI naively tried changing it to level sensitive, but that didn\u0027t end up working so well.",
+      "parentUuid": "3ef2b6a7_ed5dc29f",
+      "range": {
+        "startLine": 348,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 40
+      },
+      "revId": "ac43ad7f8b303e0c4dbb7febac90c3912deef858",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
