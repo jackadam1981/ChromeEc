@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "463f2ba4_c6595276",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-14T09:12:56Z",
+      "side": 1,
+      "message": "To be honest, you are likely to have a good chunk of the 2mW hit by running your own tick stuff.\nSo yes, you can just cap the sleep duration when the pwr measurement is *Enabled* (more than defined)\nif you can take advantage of the 1min average, this should be mostly solved though.",
+      "parentUuid": "6c970266_87b78ceb",
+      "range": {
+        "startLine": 1445,
+        "startChar": 0,
+        "endLine": 1445,
+        "endChar": 30
+      },
+      "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcd4fc42_6b2a75d5",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 2
@@ -229,6 +253,53 @@
         "startChar": 0,
         "endLine": 294,
         "endChar": 31
+      },
+      "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b96ff23b_e3147e95",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-14T09:12:56Z",
+      "side": 1,
+      "message": "\u003e does the voltage vary enough depending on charge state \n\u003e that we would still need to pull the instantaneous voltages?\n\nExcepted in the last 15% of the battery where the voltage drops very quickly, likely not, should be ok. People who needs precision should use the battery in its linear range rather than fully discharged.\n(you can use the average between the initial voltage and the final one, which effectively linearize the voltage and re-gain a bit of precision)\n\n\u003e If I take advantage of this, then I would need to pull the entire running \u003e average into the [battery].c files. Does that make sense, \n\u003e or am I missing something?\n\nTo some extend yes, but actually we have a very limited number of battery drivers: the vast majority of products are using smart batteries,\nBQ27741 is no longer a thing (ryu is gone, we just forget it here)\nso the only additional one is MAX17055 which has a similar AvgCurrent feature. So you can admit that the battery driver provide the AvgCurrent function and do the remaining part in your common code.",
+      "parentUuid": "94c74872_139e3857",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 31
+      },
+      "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d58f2f_4a2bb401",
+        "filename": "include/charge_state.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-14T09:12:56Z",
+      "side": 1,
+      "message": "by the way, EC-style is TODO(crbug.com/XXXX)",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 20
       },
       "revId": "5ea59932af2618665d724c566dd6abfb14b09b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
