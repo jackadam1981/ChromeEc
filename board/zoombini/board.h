@@ -99,6 +99,10 @@
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USBC_PPC_SN5S330
+#ifdef BOARD_MEOWTH
+/* Meowth has its PPC interrupt line shared with the TCPC Alert# line. */
+#define CONFIG_USBC_PPC_SHARED_IRQ
+#endif /* defined(BOARD_MEOWTH) */
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP

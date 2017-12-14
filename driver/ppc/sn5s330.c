@@ -13,7 +13,6 @@
 #include "common.h"
 #include "console.h"
 #include "driver/ppc/sn5s330.h"
-#include "hooks.h"
 #include "i2c.h"
 #include "system.h"
 #include "timer.h"
@@ -23,8 +22,6 @@
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
-
-static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
@@ -511,23 +508,6 @@ static void sn5s330_handle_interrupt(int port)
 		pd_handle_overcurrent(port);
 }
 
-static void sn5s330_irq_deferred(void)
-{
-	int i;
-	uint32_t pending = atomic_read_clear(&irq_pending);
-
-	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
-		if ((1 << i) & pending)
-			sn5s330_handle_interrupt(i);
-}
-DECLARE_DEFERRED(sn5s330_irq_deferred);
-
-void sn5s330_interrupt(int port)
-{
-	atomic_or(&irq_pending, (1 << port));
-	hook_call_deferred(&sn5s330_irq_deferred_data, 0);
-}
-
 const struct ppc_drv sn5s330_drv = {
 	.init = &sn5s330_init,
 	.is_sourcing_vbus = &sn5s330_is_sourcing_vbus,
@@ -540,4 +520,5 @@ const struct ppc_drv sn5s330_drv = {
 	.is_vbus_present = &sn5s330_is_vbus_present,
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 	.set_vbus_source_current_limit = &sn5s330_set_vbus_source_current_limit,
+	.isr = &sn5s330_handle_interrupt,
 };

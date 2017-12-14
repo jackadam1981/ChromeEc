@@ -5,8 +5,10 @@
 
 /* USB-C Power Path Controller Common Code */
 
+#include "atomic.h"
 #include "common.h"
 #include "console.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "timer.h"
 #include "usbc_ppc.h"
@@ -17,8 +19,8 @@
 
 static uint8_t oc_event_cnt_tbl[CONFIG_USB_PD_PORT_COUNT];
 static uint8_t clear_oc_event_att[CONFIG_USB_PD_PORT_COUNT];
-
-/* Simple wrappers to dispatch to the drivers. */
+/* Bitmask of PPC ports requesting to have their ISR run. */
+static uint32_t irq_pending;
 
 int ppc_add_oc_event(int port)
 {
@@ -33,9 +35,6 @@ int ppc_add_oc_event(int port)
 	return EC_SUCCESS;
 }
 
-/* Flag to prevent perpetually postponing the clearing attempts table. */
-static int clear_oc_tbl_scheduled;
-
 static void clear_oc_tbl(void)
 {
 	int i;
@@ -43,8 +42,6 @@ static void clear_oc_tbl(void)
 	for (i = 0; i < ppc_cnt; i++)
 		if (clear_oc_event_att[i] > PPC_OC_CNT_THRESH)
 			clear_oc_event_att[i] = 0;
-
-	clear_oc_tbl_scheduled = 0;
 }
 DECLARE_DEFERRED(clear_oc_tbl);
 
@@ -63,16 +60,34 @@ int ppc_clear_oc_event_counter(int port)
 	 * actually detect the physical disconnect.
 	 */
 	if (clear_oc_event_att[port] > PPC_OC_CNT_THRESH) {
-		if (!clear_oc_tbl_scheduled) {
-			hook_call_deferred(&clear_oc_tbl_data, 2 * SECOND);
-			clear_oc_tbl_scheduled = 1;
-		}
-
+		hook_call_deferred(&clear_oc_tbl_data, 2 * SECOND);
 		return EC_ERROR_ACCESS_DENIED;
 	}
 
 	oc_event_cnt_tbl[port] = 0;
 	return EC_SUCCESS;
+}
+
+#ifdef CONFIG_USBC_PPC_SHARED_IRQ
+void ppc_reenable_irqs(void)
+{
+	int p;
+
+	for (p = 0; p < ppc_cnt; p++)
+		gpio_enable_interrupt(ppc_chips[p].int_pin);
+}
+#endif /* defined(CONFIG_USBC_PPC_SHARED_IRQ) */
+
+void ppc_handle_pending_irqs(void)
+{
+	int p;
+	int pending_irqs = atomic_read_clear(&irq_pending);
+
+	for (p = 0; p < ppc_cnt; p++) {
+		if ((1 << p) & pending_irqs) {
+			ppc_chips[p].drv->isr(p);
+		}
+	}
 }
 
 int ppc_is_sourcing_vbus(int port)
@@ -83,6 +98,11 @@ int ppc_is_sourcing_vbus(int port)
 	}
 
 	return ppc_chips[port].drv->is_sourcing_vbus(port);
+}
+
+void ppc_set_pending_irq(int port)
+{
+	atomic_or(&irq_pending, (1 << port));
 }
 
 int ppc_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp)

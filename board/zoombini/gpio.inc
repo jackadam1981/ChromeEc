@@ -132,8 +132,8 @@ ALTERNATE(PIN_MASK(D, 0x04), 1, MODULE_PMU, 0) /* GPIOD2 */
 /* Meowth GPIOs */
 #else
 
-GPIO_INT(USB_C0_PD_INT_L, PIN(6, 1), GPIO_INT_FALLING, usb_c_interrupt)
-GPIO_INT(USB_C1_PD_INT_L, PIN(F, 5), GPIO_INT_FALLING, usb_c_interrupt)
+GPIO_INT(USB_C0_PD_INT_L, PIN(6, 1), GPIO_INT_LOW, usb_c_interrupt)
+GPIO_INT(USB_C1_PD_INT_L, PIN(F, 5), GPIO_INT_LOW, usb_c_interrupt)
 
 GPIO_INT(POWER_BUTTON_L,  PIN(0, 1), GPIO_INT_BOTH | GPIO_PULL_UP, power_button_interrupt)
 GPIO_INT(WP_L,            PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)

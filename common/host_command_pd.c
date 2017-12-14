@@ -18,6 +18,7 @@
 #include "timer.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "usbc_ppc.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_PD_HOST_CMD, format, ## args)
@@ -203,8 +204,23 @@ static void pd_exchange_status(uint32_t ec_state)
 			/* Delay to prevent task starvation */
 			usleep(5*MSEC);
 		first_exchange = 0;
+
+#ifdef CONFIG_USBC_PPC
+		/* Handle any pending PPC interrupts. */
+		ppc_handle_pending_irqs();
+#endif /* defined(CONFIG_USBC_PPC) */
+
 	} while (pd_get_alert());
 #endif /* USB_TCPM_WITH_OFF_CHIP_TCPC */
+
+#ifdef CONFIG_USBC_PPC_SHARED_IRQ
+	/*
+	 * Since the IRQ pin is shared between the TCPC and PPC, we disabled it
+	 * upon entering our ISR.  Now that we've finished handling the
+	 * interrupts, let's re-enable the interrupt pin.
+	 */
+	ppc_reenable_irqs();
+#endif /* defined(CONFIG_USBC_PPC_SHARED_IRQ) */
 }
 
 void pd_command_task(void *u)

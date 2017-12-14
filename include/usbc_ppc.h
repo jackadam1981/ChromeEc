@@ -7,6 +7,7 @@
 #define __CROS_EC_USBC_PPC_H
 
 #include "common.h"
+#include "gpio.h"
 #include "usb_pd_tcpm.h"
 
 /* Common APIs for USB Type-C Power Path Controllers (PPC) */
@@ -87,12 +88,23 @@ struct ppc_drv {
 	 */
 	int (*is_vbus_present)(int port, int *vbus_present);
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
+
+	/**
+	 * The interrupt service routine for the PPC.
+	 *
+	 * NOTE: This is called in PDCMD context.
+	 * @param port: The Type-C port number.
+	 */
+	void (*isr)(int port);
 };
 
 struct ppc_config_t {
 	int i2c_port;
 	int i2c_addr;
 	const struct ppc_drv *drv;
+#ifdef CONFIG_USBC_PPC_SHARED_IRQ
+	enum gpio_signal int_pin;
+#endif /* defined(CONFIG_USBC_PPC_SHARED_IRQ) */
 };
 
 extern const struct ppc_config_t ppc_chips[];
@@ -106,7 +118,6 @@ extern const unsigned int ppc_cnt;
  */
 int ppc_add_oc_event(int port);
 
-
 /**
  * Clear the overcurrent event counter.
  *
@@ -114,6 +125,11 @@ int ppc_add_oc_event(int port);
  * @return EC_SUCCESS on success, EC_ERROR_INVAL if non-existent port.
  */
 int ppc_clear_oc_event_counter(int port);
+
+/**
+ * Handle any pending interrupts.
+ */
+void ppc_handle_pending_irqs(void);
 
 /**
  * Determine if VBUS is present or not.
@@ -132,6 +148,21 @@ int ppc_is_vbus_present(int port, int *vbus_present);
  * @return 1 if sourcing Vbus, 0 if not.
  */
 int ppc_is_sourcing_vbus(int port);
+
+/**
+ * Re-enable all PPC interrupts.
+ *
+ * This is used if the PPC shares its interrupt line with the TCPC
+ * (CONFIG_USBC_PPC_SHARED_IRQ).
+ */
+void ppc_reenable_irqs(void);
+
+/**
+ * Indicate that there's a pending PPC IRQ for this port.
+ *
+ * @param port: The Type-C port number.
+ */
+void ppc_set_pending_irq(int port);
 
 /**
  * Set the Vbus source path current limit

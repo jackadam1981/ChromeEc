@@ -2688,6 +2688,9 @@
 /* USB Type-C Power Path Controllers (PPC) */
 #undef CONFIG_USBC_PPC_SN5S330
 
+/* USB Type-C PPC shares its interrupt with the TCPC. */
+#undef CONFIG_USBC_PPC_SHARED_IRQ
+
 /* Support for USB type-c superspeed mux */
 #undef CONFIG_USBC_SS_MUX
 

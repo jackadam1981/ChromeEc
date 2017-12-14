@@ -59,8 +59,14 @@ static void usb_c_interrupt(enum gpio_signal s)
 {
 	int port = (s == GPIO_USB_C0_PD_INT_L) ? 0 : 1;
 
+	/*
+	 * Since the interrupt is level sensitive, let's disable the interrupt
+	 * while we handle it.  After the interrupt line is no longer asserted,
+	 * we will re-enable the interrupt.
+	 */
+	gpio_disable_interrupt(s);
+	ppc_set_pending_irq(port);
 	tcpc_alert_event(s);
-	sn5s330_interrupt(port);
 }
 #endif /* defined(BOARD_MEOWTH) */
 
@@ -69,15 +75,15 @@ static void ppc_interrupt(enum gpio_signal s)
 {
 	switch (s) {
 	case GPIO_USB_C0_PPC_INT_L:
-		sn5s330_interrupt(0);
+		ppc_set_pending_irq(0);
 		break;
 
 	case GPIO_USB_C1_PPC_INT_L:
-		sn5s330_interrupt(1);
+		ppc_set_pending_irq(1);
 		break;
 
 	case GPIO_USB_C2_PPC_INT_L:
-		sn5s330_interrupt(2);
+		ppc_set_pending_irq(2);
 		break;
 
 	default:
@@ -187,18 +193,24 @@ const struct ppc_config_t ppc_chips[] = {
 	{
 		.i2c_port = I2C_PORT_TCPC0,
 		.i2c_addr = SN5S330_ADDR0,
-		.drv = &sn5s330_drv
+		.drv = &sn5s330_drv,
+#ifdef BOARD_MEOWTH
+		.int_pin = GPIO_USB_C0_PD_INT_L,
+#endif /* defined(BOARD_MEOWTH) */
 	},
 #ifdef BOARD_ZOOMBINI
 	{
-	       .i2c_port = I2C_PORT_TCPC1,
-	       .i2c_addr = SN5S330_ADDR0,
-	       .drv = &sn5s330_drv
+		.i2c_port = I2C_PORT_TCPC1,
+		.i2c_addr = SN5S330_ADDR0,
+		.drv = &sn5s330_drv,
+#ifdef BOARD_MEOWTH
+		.int_pin = GPIO_USB_C1_PD_INT_L,
+#endif /* defined(BOARD_MEOWTH) */
 	},
 	{
-	      .i2c_port = I2C_PORT_TCPC2,
-	      .i2c_addr = SN5S330_ADDR0,
-	      .drv = &sn5s330_drv
+		.i2c_port = I2C_PORT_TCPC2,
+		.i2c_addr = SN5S330_ADDR0,
+		.drv = &sn5s330_drv,
 	}
 #endif /* defined(BOARD_ZOOMBINI) */
 };
@@ -482,34 +494,12 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
-#ifdef BOARD_MEOWTH
-	int regval;
 
-	/*
-	 * For Meowth, the interrupt line is shared between the TCPC and PPC.
-	 * Therefore, go out and actually read the alert registers to report the
-	 * alert status.
-	 */
-	if (!tcpc_read16(0, TCPC_REG_ALERT, &regval)) {
-		/* The TCPCI spec says to ignore bits 14:12. */
-		regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
-
-		if (regval)
-			status |= PD_STATUS_TCPC_ALERT_0;
-	}
-
-	if (!tcpc_read16(1, TCPC_REG_ALERT, &regval)) {
-		/* TCPCI spec says to ignore bits 14:12. */
-		regval &= ~((1 << 14) | (1 << 13) | (1 << 12));
-
-		if (regval)
-			status |= PD_STATUS_TCPC_ALERT_1;
-	}
-#else
 	if (!gpio_get_level(GPIO_USB_C0_PD_INT_L))
 		status |= PD_STATUS_TCPC_ALERT_0;
 	if (!gpio_get_level(GPIO_USB_C1_PD_INT_L))
 		status |= PD_STATUS_TCPC_ALERT_1;
+#ifdef BOARD_ZOOMBINI
 	if (!gpio_get_level(GPIO_USB_C2_PD_INT_L))
 		status |= PD_STATUS_TCPC_ALERT_2;
 #endif /* defined(BOARD_ZOOMBINI) */
