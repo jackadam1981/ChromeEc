@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "c37d1861_aba17ded",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T02:28:37Z",
+      "side": 1,
+      "message": "Not really, but it\u0027s not a huge penalty to save it anyway.\n\nNormally you\u0027d have 2 buffers: tx with data to transmit, and rx with data to be received.\n\nIn our case, we just have a bigger tx+rx buffer: when transmitting, we only fill the tx part, and when receiving we receive the whole tx+rx.\n\nYes, we could try to be smarter and skip bytes when receiving, so that we could use a unified tx/rx buffer. In practice the tx buffer is quite small.\n\nI\u0027ll think about it, and add you to subsequent CLs.",
+      "parentUuid": "baf7d28c_f0e3ebaf",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94d3e8e3_5e1c5740",
         "filename": "include/ec_comm.h",
         "patchSetId": 8
@@ -117,6 +135,24 @@
       "side": 1,
       "message": "Almost certainly, with lots of ##.\n\nOr just walk a pointer along the buffer and explicitly typecast.  Which will be necessary if the messages are ever variable-length anyway.",
       "parentUuid": "94d3e8e3_5e1c5740",
+      "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee74102b_56e11c9c",
+        "filename": "include/ec_comm.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T02:28:37Z",
+      "side": 1,
+      "message": "Ended up declaring those structures in the places that use it, instead.",
+      "parentUuid": "a3d29657_72c327e0",
       "revId": "517c6b016625c5277d28a4abaac9e4120e4a250d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
