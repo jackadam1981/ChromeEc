@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "c0238190_2995d753",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4683,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-15T21:20:17Z",
+      "side": 1,
+      "message": "Coding style in this file has a descriptive comment before the command.  (Or it should, anyway...)",
+      "revId": "e96aff75f20f4e9240ab854fbf5c18a6aee826cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25fc2a0d_886368eb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4686,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-15T21:20:17Z",
+      "side": 1,
+      "message": "This will force 32-bit padding.\n\nWhich is fine - it matches what you were doing earlier with 32-bit padded messages.\n\nBut it might be worth a comment that all EC-EC commands are 32-bit padded.  Or better still explicitly add padding bytes to the structs.",
+      "range": {
+        "startLine": 4686,
+        "startChar": 7,
+        "endLine": 4686,
+        "endChar": 18
+      },
+      "revId": "e96aff75f20f4e9240ab854fbf5c18a6aee826cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca38ccb8_856663eb",
         "filename": "include/ec_commands.h",
         "patchSetId": 12
