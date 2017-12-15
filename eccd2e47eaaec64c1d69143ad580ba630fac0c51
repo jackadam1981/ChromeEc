@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57a53299_408a62d6",
+        "filename": "chip/stm32/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "This should be in the else branch below.\n\nAlso, name might be usb_isochronous to be a little more consistent with the other (yes usb-stream isn\u0027t...)",
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34607511_530d281e",
+        "filename": "chip/stm32/usb-isochronous.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "nit: Blank line at start of comment.\n\n/*\n * Currently..",
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2e361a9_254d4900",
+        "filename": "chip/stm32/usb-isochronous.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "Do any of these need to be macros? I think they could be static functions that\u0027d be inlined instead.",
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39d9323f_da482d0e",
+        "filename": "chip/stm32/usb-isochronous.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "nit: one space",
+      "range": {
+        "startLine": 77,
+        "startChar": 12,
+        "endLine": 77,
+        "endChar": 14
+      },
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be682838_0b47b694",
+        "filename": "chip/stm32/usb-isochronous.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "nit: comment style",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 4
+      },
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d80af5a0_2d41433c",
+        "filename": "chip/stm32/usb-isochronous.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "If I get this right:\n\nClear buffer count for buffer that we just transmitted, so we do not transmit the data twice.",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 22
+      },
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dafb224e_3d6b8af1",
+        "filename": "chip/stm32/usb-isochronous.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "Just cast to a proper pointer type: I think that\u0027s usb_uint* here.",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 10
+      },
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf897f7e_c8024887",
+        "filename": "chip/stm32/usb-isochronous.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "typedef isn\u0027t really needed, just use:\n\nsize_t (*tx_callback)(uintptr_t usb_addr, size_t tx_size);\n\nbelow.",
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b310106f_c3c71a1f",
+        "filename": "chip/stm32/usb-isochronous.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "Also I\u0027d use a proper pointer type, or void *.",
+      "range": {
+        "startLine": 19,
+        "startChar": 32,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba5dfed5_44a2cbe5",
+        "filename": "chip/stm32/usb-isochronous.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "You could use kerneldoc format for this, e.g.\n\n/**\n * Description\n *\n * @param usb_addr: ...\n * @return\n */",
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129e32d2_a2df311a",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2434,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:35:15Z",
+      "side": 1,
+      "message": "This should probably be with the rest of the CONFIG_USB options below.",
+      "revId": "eccd2e47eaaec64c1d69143ad580ba630fac0c51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
