@@ -46,6 +46,30 @@
       "revId": "a84d90bd9855c3e444e2b13f892909af318e1c48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "768a9cb2_bf086169",
+        "filename": "board/cr50/wp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2017-12-15T23:42:48Z",
+      "side": 1,
+      "message": "I understand that we are setting it to follow battery presence. But the use of the function is not very obvious. If I looked at that I would think that we are setting write protect to be enabled. Because wp_en is 1.\n\nIts up to you.",
+      "parentUuid": "f0f7e339_64348787",
+      "range": {
+        "startLine": 421,
+        "startChar": 24,
+        "endLine": 421,
+        "endChar": 25
+      },
+      "revId": "a84d90bd9855c3e444e2b13f892909af318e1c48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
