@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "798d792d_36e4fd26",
+        "filename": "board/hammer/battery.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-15T09:11:01Z",
+      "side": 1,
+      "message": "is the battery gas gauge badly programmed that you need an override for it ?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b4674b1_bd3734cb",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-15T09:11:01Z",
+      "side": 1,
+      "message": "unless B10/B11 are used on hammer, can we keep this unconditionally defined to reduce the churn ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 17
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c06b5c7_af7a8288",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-15T09:11:01Z",
+      "side": 1,
+      "message": "no ifdef here",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b06ff30_cb335c04",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-15T09:11:01Z",
+      "side": 1,
+      "message": "I dont think this is anyhow useful",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 46
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54640681_b7359bb1",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-15T09:11:01Z",
+      "side": 1,
+      "message": "you need 3 defines for the EC_EC feature, is this justified ?",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 33
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
