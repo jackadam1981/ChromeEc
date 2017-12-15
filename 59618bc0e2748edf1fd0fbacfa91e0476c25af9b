@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd538d02_bf7065a5",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:55:46Z",
+      "side": 1,
+      "message": "CONFIG_USB_TOUCHPAD_PASSTHRU",
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffd08af0_4b664e9e",
+        "filename": "board/hammer/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:55:46Z",
+      "side": 1,
+      "message": "board-$(CONFIG_USB_TOUCHPAD_PASSTHRU)\n\nAlso, I think touchpad_passthru should probably be in chip/stm32 directory.",
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f0bb67_280d300b",
+        "filename": "board/hammer/touchpad_passthru.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:55:46Z",
+      "side": 1,
+      "message": "Alphabetical order.",
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f9c2a0a_365f01fd",
+        "filename": "board/hammer/touchpad_passthru.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:55:46Z",
+      "side": 1,
+      "message": "Not needed.",
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1ff486e_50e35493",
+        "filename": "board/hammer/touchpad_passthru.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:55:46Z",
+      "side": 1,
+      "message": "Wondering if 16-bit would be better to keep the memcpy_to_usbram call below aligned, and maybe include a flag indicating if this is a new frame, instead of relying on the magic 0x5566.\n\ni.e. you\u0027d send:\n0001\n0100\n0200\n0300\nthen new frame:\n0401\n0500\n0600\n\nThat still leaves 7 bits for other stuff.\n\nAlso you don\u0027t necessarily need 256 values for the counters.",
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945ddc65_3f129adc",
+        "filename": "board/hammer/touchpad_passthru.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:55:46Z",
+      "side": 1,
+      "message": "nit: no space",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac226835_f25cdfc3",
+        "filename": "board/hammer/touchpad_passthru.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-15T03:55:46Z",
+      "side": 1,
+      "message": "nit: no space",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
