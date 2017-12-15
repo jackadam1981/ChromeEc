@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e6a478c4_d30a37e5",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2017-12-15T23:29:50Z",
+      "side": 1,
+      "message": "removed the hook",
+      "parentUuid": "0cd149a2_e5c4f2a4",
+      "range": {
+        "startLine": 238,
+        "startChar": 1,
+        "endLine": 238,
+        "endChar": 33
+      },
+      "revId": "dc5a39ec3036e7ad9430f915a68801e183126761",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f0650b7_91c4199f",
         "filename": "common/rma_auth.c",
         "patchSetId": 1
