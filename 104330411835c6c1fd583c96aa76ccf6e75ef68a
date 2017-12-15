@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "026e1ae0_480836dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2017-12-15T01:33:28Z",
+      "side": 1,
+      "message": "Tested with manual power button press. But this should not break existing wake sources.",
+      "parentUuid": "cd5b8748_17b45617",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "104330411835c6c1fd583c96aa76ccf6e75ef68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "297ebbe1_4fbe04d9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-15T01:19:56Z",
       "side": 1,
       "message": "remove space",
+      "range": {
+        "startLine": 9,
+        "startChar": 69,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "104330411835c6c1fd583c96aa76ccf6e75ef68a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db74e526_6e943125",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2017-12-15T01:33:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "297ebbe1_4fbe04d9",
       "range": {
         "startLine": 9,
         "startChar": 69,
