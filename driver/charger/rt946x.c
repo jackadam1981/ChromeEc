@@ -92,8 +92,9 @@ static const uint8_t rt946x_irq_maskall[RT946X_IRQ_COUNT] = {
 #endif
 };
 
+/* Must be in acsending order */
 static const uint16_t rt946x_boost_current[] = {
-	500, 700, 1100, 1300, 1800, 2100, 2400, 3000,
+	500, 700, 1100, 1300, 1800, 2100, 2400,
 };
 
 static int rt946x_read8(int reg, int *val)
@@ -163,17 +164,18 @@ static inline uint8_t rt946x_closest_reg(uint16_t min, uint16_t max,
 	return (target - min) / step;
 }
 
-static uint8_t rt946x_closest_reg_via_tbl(const uint16_t *tbl, uint16_t target)
+static uint8_t rt946x_closest_reg_via_tbl(const uint16_t *tbl,
+					  uint8_t tbl_len,
+					  uint16_t target)
 {
-	int i = 0;
+	int i;
 
-	if (target < tbl[0])
-		return 0;
-	for (i = 0; i < ARRAY_SIZE(tbl) - 1; i++) {
-		if (target >= tbl[i] && target < tbl[i + 1])
+	/* The table must be sorted in ascending order */
+	for (i = 0; i < tbl_len; i++) {
+		if (target < tbl[i])
 			return i;
 	}
-	return ARRAY_SIZE(tbl) - 1;
+	return tbl_len - 1;
 }
 
 static int rt946x_chip_rev(int *chip_rev)
@@ -278,7 +280,8 @@ static int rt946x_set_boost_current(unsigned int current)
 {
 	uint8_t reg_current = 0;
 
-	reg_current = rt946x_closest_reg_via_tbl(rt946x_boost_current, current);
+	reg_current = rt946x_closest_reg_via_tbl(rt946x_boost_current,
+				ARRAY_SIZE(rt946x_boost_current), current);
 
 	CPRINTF("%s current = %d(0x%02X)\n", __func__, current, reg_current);
 
