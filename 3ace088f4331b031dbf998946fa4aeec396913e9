@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c935b19_32f8ab9e",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-16T17:03:05Z",
+      "side": 1,
+      "message": "Do you want to add a print for sudden CS deassertion also?",
+      "range": {
+        "startLine": 170,
+        "startChar": 6,
+        "endLine": 170,
+        "endChar": 20
+      },
+      "revId": "3ace088f4331b031dbf998946fa4aeec396913e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f9f41f8_d359b481",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-16T17:03:05Z",
+      "side": 1,
+      "message": "You may want to print dma_bytes_done() and needed, it may help with debugging such failures.",
+      "range": {
+        "startLine": 177,
+        "startChar": 12,
+        "endLine": 177,
+        "endChar": 24
+      },
+      "revId": "3ace088f4331b031dbf998946fa4aeec396913e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
