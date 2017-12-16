@@ -46,6 +46,30 @@
       "revId": "27c01992fc80d92aa96f34a3a382b0e7dae9498a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd22e543_e185384c",
+        "filename": "board/glkrvp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-16T00:27:41Z",
+      "side": 0,
+      "message": "What does the SMC_SHUTDOWN pin do?",
+      "parentUuid": "4859fa99_3a8c5dd9",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 1
+      },
+      "revId": "27c01992fc80d92aa96f34a3a382b0e7dae9498a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
