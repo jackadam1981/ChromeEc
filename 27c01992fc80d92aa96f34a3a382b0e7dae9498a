@@ -94,6 +94,30 @@
       "revId": "27c01992fc80d92aa96f34a3a382b0e7dae9498a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "273b4375_2b22e203",
+        "filename": "board/glkrvp/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-16T17:18:59Z",
+      "side": 0,
+      "message": "\"Shutdown signal from EC to power sequencing PLD\" - so this doesn\u0027t cut power to the EC itself? In that case this change is doing more than fixing RTC wake from hibernate, it\u0027s making hibernate actually enter a low-power mode.",
+      "parentUuid": "4a6e5522_168a2b4a",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 1
+      },
+      "revId": "27c01992fc80d92aa96f34a3a382b0e7dae9498a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
