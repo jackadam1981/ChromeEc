@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4942c178_705e462a",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-12-16T01:20:00Z",
+      "side": 1,
+      "message": "My comment was on 753-755 in patchset 1.\n\nMaking these buttons mutually exclusive is interesting... Do we ever want to have a recovery button on a device which has volume buttons? Recovery button is also used for user confirmation on dev mode transition for Fizz but I assume other keyboard-less devices have other ways to process user confirmation.",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 5
+      },
+      "revId": "d74115262d8693fd8dbc556b553e91c7eed84d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4f4be6_a11b9a01",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-12-16T01:20:00Z",
+      "side": 1,
+      "message": "To match users\u0027 expectation, I feel we also should add CONFIG_VOLUME_BUTTONS here. Any reason we want volume buttons not to trigger recovery on one particular board? And, that would eliminate the need for CONFIG_BUTTON_TRIGGERED_RECOVERY...",
+      "range": {
+        "startLine": 3138,
+        "startChar": 7,
+        "endLine": 3138,
+        "endChar": 39
+      },
+      "revId": "d74115262d8693fd8dbc556b553e91c7eed84d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
