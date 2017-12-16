@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "052373c0_faeda4c1",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-16T01:39:27Z",
+      "side": 1,
+      "message": "My mistake; I messed that up.\n\nBut, that is a good question. I think the answer would be no. A device that has volume buttons shouldn\u0027t need a dedicated recovery button as the volume button combination can be used to request recovery. It\u0027d save a pin too.\n\nFor confirmation, I think that other keyboard-less devices use the power button.\n\nThough, now that I think about it, why don\u0027t devices like fizz use the power button for confirmation? Maybe because there\u0027s already a separate recovery button, so we might as well use it?",
+      "parentUuid": "4942c178_705e462a",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 5
+      },
+      "revId": "d74115262d8693fd8dbc556b553e91c7eed84d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e4f4be6_a11b9a01",
         "filename": "include/config.h",
         "patchSetId": 2
