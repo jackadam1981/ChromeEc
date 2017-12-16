@@ -22,6 +22,30 @@
       "revId": "a131314bc305a98c44313e5c9339e604898a9e28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef8331f9_0d1d46a3",
+        "filename": "common/button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 755,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-16T01:01:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a1404d_16b4044d",
+      "range": {
+        "startLine": 753,
+        "startChar": 0,
+        "endLine": 755,
+        "endChar": 28
+      },
+      "revId": "a131314bc305a98c44313e5c9339e604898a9e28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
