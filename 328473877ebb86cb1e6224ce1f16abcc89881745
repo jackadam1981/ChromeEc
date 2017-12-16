@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e476dec_f8e5a406",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-16T16:55:41Z",
+      "side": 1,
+      "message": "Spelling here.",
+      "range": {
+        "startLine": 95,
+        "startChar": 14,
+        "endLine": 95,
+        "endChar": 23
+      },
+      "revId": "328473877ebb86cb1e6224ce1f16abcc89881745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e37e1af5_43f5123d",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-16T16:55:41Z",
+      "side": 1,
+      "message": "Why did you make this a parameter? And why is tbl a paramter, for that matter?",
+      "range": {
+        "startLine": 168,
+        "startChar": 15,
+        "endLine": 168,
+        "endChar": 22
+      },
+      "revId": "328473877ebb86cb1e6224ce1f16abcc89881745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
