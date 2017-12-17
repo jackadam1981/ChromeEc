@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "183d123a_9a52681e",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-17T18:35:46Z",
+      "side": 1,
+      "message": "If you use \u0027i \u003c ARRAY_SIZE(rt946x_boost_current) - 1\u0027 as your \u0027for\u0027 loop condition then you don\u0027t need to change i, and you don\u0027t need a variable reg_current. Also add a comment that you\u0027re using the greatest achievable boost current, if requested current is too large.",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 49
+      },
+      "revId": "9269da30eb1051684abb3678c7e83308888fa600",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
