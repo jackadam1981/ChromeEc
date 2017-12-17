@@ -16,6 +16,24 @@
       "revId": "ae00aa80225ed725d2962dfb608019d3fb70b314",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3cb12f3_274ba712",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-17T03:34:54Z",
+      "side": 0,
+      "message": "ARRAY_SIZE(tbl) would be 2 \u003d sizeof(uint16_t *) / sizeof(uint16_t) because the array is treated as a pointer.",
+      "parentUuid": "c6282c37_203ee828",
+      "revId": "ae00aa80225ed725d2962dfb608019d3fb70b314",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

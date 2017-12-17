@@ -45,6 +45,30 @@
       "revId": "328473877ebb86cb1e6224ce1f16abcc89881745",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9884e7c_c365992b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2017-12-17T03:34:54Z",
+      "side": 1,
+      "message": "This is to fix the wrong use case of ARRAY_SIZE. Thinking twice, since rt946x_closest_reg_via_tbl() is only used to calculate the current limit for now, maybe we should just remove this function instead of fixing it?",
+      "parentUuid": "e37e1af5_43f5123d",
+      "range": {
+        "startLine": 168,
+        "startChar": 15,
+        "endLine": 168,
+        "endChar": 22
+      },
+      "revId": "328473877ebb86cb1e6224ce1f16abcc89881745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
