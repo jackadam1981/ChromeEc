@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6155cdb8_20ef3cf6",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-12-17T22:59:47Z",
+      "side": 1,
+      "message": "\u003e why don\u0027t devices like fizz use the power button for confirmation? \n\nI think power button press is supposed to shut down the system immediately on firmware screens. I fixed a bug for Fizz not doing so. So, there is a test expecting this behavior. \n\nIf power button is used for confirmation, there is no intuitive way for a user to cancel the mode transition without a keyboard. On firmware screens, I think we should do:\n\n* power button short press -\u003e shut down\n* power button long press -\u003e confirmation",
+      "parentUuid": "052373c0_faeda4c1",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 5
+      },
+      "revId": "d74115262d8693fd8dbc556b553e91c7eed84d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e4f4be6_a11b9a01",
         "filename": "include/config.h",
         "patchSetId": 2
