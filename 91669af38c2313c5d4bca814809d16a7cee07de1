@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6af4156b_fcb37997",
+        "filename": "board/zoombini/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-12-18T20:20:55Z",
+      "side": 1,
+      "message": "OPT3001 is in forced mode (not interrupt driven), so you need \n#define CONFIG_ACCEL_FORCE_MODE_MASK (1 \u003c\u003c LID_ALS)",
+      "revId": "91669af38c2313c5d4bca814809d16a7cee07de1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
