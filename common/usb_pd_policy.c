@@ -293,6 +293,9 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 	memcpy(&pe[port].identity, payload + 1, identity_size);
 	switch (ptype) {
 	case IDH_PTYPE_AMA:
+		/* the other side forgot the AMA VDO, don't speculate... */
+		if (cnt <= VDO_I(AMA))
+			break;
 		/* TODO(tbroch) do I disable VBUS here if power contract
 		 * requested it
 		 */
@@ -316,13 +319,14 @@ static int dfp_discover_svids(int port, uint32_t *payload)
 	return 1;
 }
 
-static void dfp_consume_svids(int port, uint32_t *payload)
+static void dfp_consume_svids(int port, int cnt, uint32_t *payload)
 {
 	int i;
 	uint32_t *ptr = payload + 1;
 	uint16_t svid0, svid1;
+	int max_svid = 2 * (cnt - 1);
 
-	for (i = pe[port].svid_cnt; i < pe[port].svid_cnt + 12; i += 2) {
+	for (i = pe[port].svid_cnt; i < pe[port].svid_cnt + max_svid; i += 2) {
 		if (i == SVID_DISCOVERY_MAX) {
 			CPRINTF("ERR:SVIDCNT\n");
 			break;
@@ -742,7 +746,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload)
 #endif
 			break;
 		case CMD_DISCOVER_SVID:
-			dfp_consume_svids(port, payload);
+			dfp_consume_svids(port, cnt, payload);
 			rsize = dfp_discover_modes(port, payload);
 			break;
 		case CMD_DISCOVER_MODES:
