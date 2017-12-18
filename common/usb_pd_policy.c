@@ -293,6 +293,9 @@ static void dfp_consume_identity(int port, int cnt, uint32_t *payload)
 	memcpy(&pe[port].identity, payload + 1, identity_size);
 	switch (ptype) {
 	case IDH_PTYPE_AMA:
+		/* the other side forgot the AMA VDO, don't speculate... */
+		if (cnt <= VDO_I(AMA))
+			break;
 		/* TODO(tbroch) do I disable VBUS here if power contract
 		 * requested it
 		 */
