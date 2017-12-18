@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "b922811c_7edc0ba1",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-18T19:02:12Z",
+      "side": 1,
+      "message": "I checked with Shelley, and she said that there\u0027s a \"cancel\" option.",
+      "parentUuid": "e0296d3f_b528e52b",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 5
+      },
+      "revId": "d74115262d8693fd8dbc556b553e91c7eed84d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e4f4be6_a11b9a01",
         "filename": "include/config.h",
         "patchSetId": 2
