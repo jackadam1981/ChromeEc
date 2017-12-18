@@ -22,6 +22,7 @@
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
 #include "driver/temp_sensor/g78x.h"
+#include "driver/temp_sensor/sb_tsi.h"
 #include "pi3usb9281.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -99,6 +100,8 @@ const struct temp_sensor_t temp_sensors[] = {
 	{"G781_Sensor_1", TEMP_SENSOR_TYPE_BOARD, g78x_get_val,
 		G78X_TEMP_REMOTE1, 4},
 	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp,
+		0, 4},
+	{"CPU", TEMP_SENSOR_TYPE_CPU, sb_tsi_get_val,
 		0, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
