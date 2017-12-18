@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dbb3fce3_cba274fb",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4683,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-18T07:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0238190_2995d753",
+      "revId": "e96aff75f20f4e9240ab854fbf5c18a6aee826cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25fc2a0d_886368eb",
         "filename": "include/ec_commands.h",
         "patchSetId": 12
@@ -30,6 +48,30 @@
       "writtenOn": "2017-12-15T21:20:17Z",
       "side": 1,
       "message": "This will force 32-bit padding.\n\nWhich is fine - it matches what you were doing earlier with 32-bit padded messages.\n\nBut it might be worth a comment that all EC-EC commands are 32-bit padded.  Or better still explicitly add padding bytes to the structs.",
+      "range": {
+        "startLine": 4686,
+        "startChar": 7,
+        "endLine": 4686,
+        "endChar": 18
+      },
+      "revId": "e96aff75f20f4e9240ab854fbf5c18a6aee826cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bcfe5d60_e4422508",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4686,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-18T07:11:41Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be the case, I mean, at least there is no _internal_ padding:\n\nsizeof(struct ec_params_battery_dynamic_info)\u003d1\nsizeof(struct ec_response_battery_dynamic_info)\u003d16\nsizeof(struct ec_response_battery_static_info)\u003d40\nsizeof(struct ec_params_charger_control)\u003d5\n\nBut I think I see the issue, especially when using these structures on the master side, and I use some packed structures that definitely will not have the right alignment (padding to 32-bit would not help there, either, as there is a single byte crc8):\n\n       struct {\n               struct {\n                       struct ec_host_request4 head; \u003c\u003c\u003c\u003c\u003c aligned\n                       struct ec_params_charger_control ctrl; \u003c\u003c\u003c\u003c\u003c aligned\n                       uint8_t crc8;\n               } tx;\n               struct {\n                       struct ec_host_response4 head; \u003c\u003c\u003c\u003c\u003c not aligned\n               } rx;\n       } __ec_align4 data;\n\nI will keep __ec_align4 in these structures, but rework the EC-EC master functions.",
+      "parentUuid": "25fc2a0d_886368eb",
       "range": {
         "startLine": 4686,
         "startChar": 7,
