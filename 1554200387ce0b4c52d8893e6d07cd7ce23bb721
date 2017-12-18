@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "299de02c_71a45178",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4688,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-18T10:01:08Z",
+      "side": 1,
+      "message": "if we have no pre-existing implementation, isn\u0027t making it optional more complicated for little added value ?",
+      "range": {
+        "startLine": 4688,
+        "startChar": 34,
+        "endLine": 4688,
+        "endChar": 63
+      },
+      "revId": "1554200387ce0b4c52d8893e6d07cd7ce23bb721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20a502f9_67b86539",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4694,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-18T10:01:08Z",
+      "side": 1,
+      "message": "this assumption already exists in charge_state_v2, but at the end of the day, this means our cycle_count is partially wrong most of the time...\nwe can live with it since mostly nobody uses it, but we need to be careful when reading feedbacks \u0026 co",
+      "range": {
+        "startLine": 4694,
+        "startChar": 1,
+        "endLine": 4694,
+        "endChar": 22
+      },
+      "revId": "1554200387ce0b4c52d8893e6d07cd7ce23bb721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e5d3d4_f29e0911",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4716,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-18T10:01:08Z",
+      "side": 1,
+      "message": "this is a broken API and a pre-existing trap in our existing code,\nbut here we don\u0027t really whether the other side is compiled with CONFIG_BATTERY_SMART or not ?\nnot sure what we are really doing (properly) with this.",
+      "range": {
+        "startLine": 4716,
+        "startChar": 0,
+        "endLine": 4716,
+        "endChar": 70
+      },
+      "revId": "1554200387ce0b4c52d8893e6d07cd7ce23bb721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8855f482_f8f7668e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4725,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-18T10:01:08Z",
+      "side": 1,
+      "message": "why skipping 15 indexes ?",
+      "range": {
+        "startLine": 4725,
+        "startChar": 31,
+        "endLine": 4725,
+        "endChar": 37
+      },
+      "revId": "1554200387ce0b4c52d8893e6d07cd7ce23bb721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed2c9000_582603d1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4739,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-18T10:01:08Z",
+      "side": 1,
+      "message": "whose battery ?",
+      "range": {
+        "startLine": 4737,
+        "startChar": 0,
+        "endLine": 4739,
+        "endChar": 24
+      },
+      "revId": "1554200387ce0b4c52d8893e6d07cd7ce23bb721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
