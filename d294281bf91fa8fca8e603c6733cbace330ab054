@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c19b49ce_569be365",
+        "filename": "board/hammer/battery.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-18T07:16:39Z",
+      "side": 1,
+      "message": "That\u0027s a good question... This is code we\u0027ve been copying around between boards (probably started with chell), I\u0027m really not sure.\n\nShawn: Do you have any idea maybe?",
+      "parentUuid": "798d792d_36e4fd26",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b4674b1_bd3734cb",
         "filename": "board/hammer/board.c",
         "patchSetId": 15
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-15T09:11:01Z",
       "side": 1,
       "message": "unless B10/B11 are used on hammer, can we keep this unconditionally defined to reduce the churn ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 17
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50dfa408_176a7362",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-18T07:16:39Z",
+      "side": 1,
+      "message": "Not used on hammer, but B10/B11 will be used on whiskers...",
+      "parentUuid": "0b4674b1_bd3734cb",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9317933f_d33a8725",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-18T07:16:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c06b5c7_af7a8288",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b06ff30_cb335c04",
         "filename": "board/hammer/board.h",
         "patchSetId": 15
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8b716a6d_4ced04cf",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-18T07:16:39Z",
+      "side": 1,
+      "message": "Right, this is only useful when CONFIG_CMD_I2C_STRESS_TEST_BATTERY is set...",
+      "parentUuid": "0b06ff30_cb335c04",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 237,
+        "endChar": 46
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54640681_b7359bb1",
         "filename": "board/hammer/board.h",
         "patchSetId": 15
@@ -105,6 +201,30 @@
       "writtenOn": "2017-12-15T09:11:01Z",
       "side": 1,
       "message": "you need 3 defines for the EC_EC feature, is this justified ?",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 33
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b646f4cf_0d880ca8",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-18T07:16:39Z",
+      "side": 1,
+      "message": "- EC_EC_UART is to avoid hard-coding the port in board.c. That matches what we do for I2C buses, for example.\n- CONFIG_EC_EC_COMM_SLAVE/CONFIG_EC_EC_COMM_BATTERY: At least at some point we were imagining using EC-EC communication for other purposes. There are no plans now though, so potentially we could get rid of CONFIG_EC_EC_COMM_BATTERY.",
+      "parentUuid": "54640681_b7359bb1",
       "range": {
         "startLine": 242,
         "startChar": 0,
