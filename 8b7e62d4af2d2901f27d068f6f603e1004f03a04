@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "debaf6f9_aa5cc41e",
+        "filename": "common/button.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-12-18T19:35:58Z",
+      "side": 1,
+      "message": "Why not #elif? I thought our discussion led us to the conclusion that volume buttons and recovery button should be mutually exclusive. If there is a pair of volume buttons, they\u0027ll do all a recovery button is supposed to do.",
+      "range": {
+        "startLine": 736,
+        "startChar": 1,
+        "endLine": 736,
+        "endChar": 6
+      },
+      "revId": "8b7e62d4af2d2901f27d068f6f603e1004f03a04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
