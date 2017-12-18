@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e0296d3f_b528e52b",
+        "filename": "common/button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-18T18:16:54Z",
+      "side": 1,
+      "message": "Ah, that\u0027s a good point that I hadn\u0027t thought of. I *think* the current detachable FW UI uses a short press for confirmation, but I should check with Shelley to confirm. However, I\u0027m not sure if there\u0027s a menu option that says \"Cancel\" or something. \n\nI think your suggestion makes sense if there\u0027s no \"cancel\" selection.\n\nAlso, let me move the #elif to L753-755.",
+      "parentUuid": "6155cdb8_20ef3cf6",
+      "range": {
+        "startLine": 737,
+        "startChar": 0,
+        "endLine": 737,
+        "endChar": 5
+      },
+      "revId": "d74115262d8693fd8dbc556b553e91c7eed84d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e4f4be6_a11b9a01",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -84,6 +108,30 @@
       "writtenOn": "2017-12-16T01:20:00Z",
       "side": 1,
       "message": "To match users\u0027 expectation, I feel we also should add CONFIG_VOLUME_BUTTONS here. Any reason we want volume buttons not to trigger recovery on one particular board? And, that would eliminate the need for CONFIG_BUTTON_TRIGGERED_RECOVERY...",
+      "range": {
+        "startLine": 3138,
+        "startChar": 7,
+        "endLine": 3138,
+        "endChar": 39
+      },
+      "revId": "d74115262d8693fd8dbc556b553e91c7eed84d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a4c7e8c_f26ad848",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3138,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-18T18:16:54Z",
+      "side": 1,
+      "message": "Yes, not all boards that have volume buttons should use them for triggering recovery. Think of the convertibles which still have a keyboard such as eve or kevin.",
+      "parentUuid": "7e4f4be6_a11b9a01",
       "range": {
         "startLine": 3138,
         "startChar": 7,
