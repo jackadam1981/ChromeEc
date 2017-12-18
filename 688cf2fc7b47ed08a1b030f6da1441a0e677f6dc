@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bad039d_54a4615b",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2017-12-18T19:51:15Z",
+      "side": 1,
+      "message": "Could you update the description? We should mention if there are volume buttons, a recovery button doesn\u0027t work and it\u0027s intended (because volume buttons can do what a recovery button is supposed to do).",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 410,
+        "endChar": 50
+      },
+      "revId": "688cf2fc7b47ed08a1b030f6da1441a0e677f6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
