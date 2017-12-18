@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "06153b19_83a840a1",
+        "filename": "board/hammer/battery.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-18T09:48:20Z",
+      "side": 1,
+      "message": "On Chell, it was the battery gas gauge not programmed to the project spec ... I hope we are able to get a few bytes right.\nyou should consult with your trusted HW guy,\nbut unless you are planning to add fast-charging later, I would remove this.",
+      "parentUuid": "c19b49ce_569be365",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b4674b1_bd3734cb",
         "filename": "board/hammer/board.c",
         "patchSetId": 15
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "- EC_EC_UART is to avoid hard-coding the port in board.c. That matches what we do for I2C buses, for example.\n- CONFIG_EC_EC_COMM_SLAVE/CONFIG_EC_EC_COMM_BATTERY: At least at some point we were imagining using EC-EC communication for other purposes. There are no plans now though, so potentially we could get rid of CONFIG_EC_EC_COMM_BATTERY.",
       "parentUuid": "54640681_b7359bb1",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 33
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b4b4b49_6069a519",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-18T09:48:20Z",
+      "side": 1,
+      "message": "Ok fine, I can live with a bit of over-engineering here (random combinations will be broken though due to lack of compile-testing)",
+      "parentUuid": "b646f4cf_0d880ca8",
       "range": {
         "startLine": 242,
         "startChar": 0,
