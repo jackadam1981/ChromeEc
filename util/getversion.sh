@@ -58,6 +58,7 @@ get_tree_version() {
     else
       marker="-"
     fi
+    ghash="fantablev3"
     vbase="${ver_major}.${ver_branch}.${numcommits}${marker}${ghash}"
   else
     # Fall back to the VCSID provided by the packaging system if available.

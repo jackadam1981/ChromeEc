@@ -292,8 +292,8 @@ struct ec_thermal_config thermal_params[] = {
 	 * {Twarn, Thigh, X    }, <off>
 	 * fan_off, fan_max
 	 */
-	{{0, C_TO_K(87), C_TO_K(89)}, {0, C_TO_K(86), 0},
-		C_TO_K(44), C_TO_K(81)},/* TMP432_Internal */
+	{{0, C_TO_K(80), C_TO_K(83)}, {0, C_TO_K(78), 0},
+		C_TO_K(4), C_TO_K(76)},/* TMP432_Internal */
 	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP432_Sensor_1 */
 	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP432_Sensor_2 */
 };
@@ -542,14 +542,14 @@ struct fan_step {
 
 /* Do not make the fan on/off point equal to 0 or 100 */
 const struct fan_step fan_table[] = {
-	{.off = 2, .rpm = 0},
-	{.on = 16, .off =  2, .rpm = 2800},
-	{.on = 27, .off = 18, .rpm = 3200},
-	{.on = 35, .off = 29, .rpm = 3400},
-	{.on = 43, .off = 37, .rpm = 4200},
-	{.on = 54, .off = 45, .rpm = 4800},
-	{.on = 64, .off = 56, .rpm = 5200},
-	{.on = 97, .off = 83, .rpm = 5600},
+	{.off = 1, .rpm = 0},
+	{.on = 36, .off =  1, .rpm = 2800},
+	{.on = 62, .off = 58, .rpm = 3200},
+	{.on = 68, .off = 63, .rpm = 3400},
+	{.on = 73, .off = 69, .rpm = 4200},
+	{.on = 80, .off = 75, .rpm = 4800},
+	{.on = 88, .off = 83, .rpm = 5200},
+	{.on = 98, .off = 91, .rpm = 5600},
 };
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table)
 
