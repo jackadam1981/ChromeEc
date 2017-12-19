@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba97e1fb_e427bc71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-19T00:28:53Z",
+      "side": 1,
+      "message": "I wonder if there\u0027s a servo GPIO we can use for this, so that steps 2 and 4 can be done via dut_control commands?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "513d90897c2ebc5c91ebe473ccb2668686f336f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
