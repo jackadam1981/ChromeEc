@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1396e3d9_967d5b55",
+        "filename": "board/hammer/battery.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-19T08:45:42Z",
+      "side": 1,
+      "message": "Please remove CONFIG_CHARGER_PROFILE_OVERRIDE and all this empty code",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 1
+      },
+      "revId": "035c2f5042242ea0ef09c58a43e0586d0e2d643d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
