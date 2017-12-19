@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c03f25a_7a2e48e3",
+        "filename": "chip/npcx/spiflashfw/monitor_hdr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-12-19T02:50:15Z",
+      "side": 1,
+      "message": "Will the trailing data be part of RO/RW image? If it is and the size(RO/RW +trailing data) is not more than NPCX_PROGRAM_MEMORY_SIZE, using fixed size should be fine here. \nI agree that It will be better if we can use the actual RO/RW image size here. But I am thinking how to get it during compiling time.\nAlternatively, how about replace this filed like the following scripts in flash_ec?  \n# Read the RO image size                                                         \nEC_IMG_SIZE\u003d$(printf \"%08X\" `stat -c \"%s\" build/npcx7_evb/RO/ec.RO.flat`)           \necho $EC_IMG_SIZE                                                                \n# Covert the value of image size to little endian                                \nEC_IMG_SIZE_LE\u003d${EC_IMG_SIZE:6:2}${EC_IMG_SIZE:4:2}${EC_IMG_SIZE:2:2}${EC_IMG_SIZE:0:2}\necho $EC_IMG_SIZE_LE                                                             \n# Replace actual image size with the default code RAM size                       \nxxd -g4 ${MONITOR_RO_HDR} | awk -v s\u003d\"$EC_IMG_SIZE_LE\" \u0027NR\u003d\u003d1 {$3\u003ds}1\u0027 | xxd -r \u003e monitor_tmp.bin",
+      "parentUuid": "279b2105_eb812b77",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "35cbdb67aed93882c6b144c643f2ad6a22656473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "157d9937_c97796a5",
         "filename": "chip/npcx/spiflashfw/monitor_hdr.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "832ae917_b64d2825",
+        "filename": "chip/npcx/spiflashfw/monitor_hdr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-12-19T02:50:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "157d9937_c97796a5",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "35cbdb67aed93882c6b144c643f2ad6a22656473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c1c1178_945c9557",
         "filename": "chip/npcx/spiflashfw/monitor_hdr.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2017-12-18T20:58:32Z",
       "side": 1,
       "message": "This should just be CONFIG_EC_WRITABLE_STORAGE_OFF, in case we have preceding non-image data.",
+      "range": {
+        "startLine": 29,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "35cbdb67aed93882c6b144c643f2ad6a22656473",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47ecdf82_b6209e7c",
+        "filename": "chip/npcx/spiflashfw/monitor_hdr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2017-12-19T02:50:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c1c1178_945c9557",
       "range": {
         "startLine": 29,
         "startChar": 1,
