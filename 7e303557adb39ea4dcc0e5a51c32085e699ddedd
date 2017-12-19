@@ -16,6 +16,24 @@
       "revId": "7e303557adb39ea4dcc0e5a51c32085e699ddedd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9df9cbad_fb0935d2",
+        "filename": "driver/temp_sensor/sb_tsi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2017-12-19T18:26:50Z",
+      "side": 1,
+      "message": "The pins used on this interface are in the VDD_18 voltage domain (AMD doc #55350, pages 12, 22) and are only powered in S0 from the PP1800_S0 rail (grunt schematic, page 10).",
+      "parentUuid": "83cf237f_4311dff9",
+      "revId": "7e303557adb39ea4dcc0e5a51c32085e699ddedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
