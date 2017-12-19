@@ -31,6 +31,7 @@
 #define REG_TIME_TO_FULL            0x20
 #define REG_DEVICE_NAME             0x21
 #define REG_QR_TABLE10              0x22
+#define REG_FULL_CAPACITY_NOM       0x23
 #define REG_LEARNCFG                0x28
 #define REG_QR_TABLE20              0x32
 #define REG_RCOMP0                  0x38
@@ -40,10 +41,12 @@
 #define REG_QR_TABLE30              0x42
 #define REG_DQACC                   0x45
 #define REG_DPACC                   0x46
+#define REG_OCV_TABLE               0x80
 #define REG_STATUS2                 0xb0
 #define REG_HIBCFG                  0xba
 #define REG_CONFIG2                 0xbb
 #define REG_MODELCFG                0xdb
+#define REG_VFSOC                   0xff
 
 /* Status reg (0x00) flags */
 #define STATUS_POR                  0x0002
@@ -55,9 +58,15 @@
 /* FStat reg (0x3d) flags */
 #define FSTAT_DNR                   0x0001
 
+/* Config2 reg (0xbb) flags */
+#define CONF2_LDMDL                 0x0020
+
 /* ModelCfg reg (0xdb) flags */
 #define MODELCFG_REFRESH            0x8000
 #define MODELCFG_VCHG               0x0400
+
+/* The number of words in the custom model from cell characterization */
+#define CUSTOM_MODEL_LEN            48
 
 /*
  * Before we have the battery fully characterized, we use these macros to
@@ -109,6 +118,7 @@ struct max17055_batt_profile {
 	uint16_t qr_table10;
 	uint16_t qr_table20;
 	uint16_t qr_table30;
+	uint16_t custom_model[CUSTOM_MODEL_LEN];
 
 	/*
 	 * If is_ez_config is nonzero, we only use design_cap, ichg_term,
