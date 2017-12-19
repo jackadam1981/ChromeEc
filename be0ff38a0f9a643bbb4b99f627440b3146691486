@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "87f2cbbf_c1e9cdda",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:05:31Z",
+      "side": 1,
+      "message": "Right, but the buffer needs to accomodate parameters _and_ crc8 byte.\n\n(note that I refactored the code a little bit, to take into account alignment as well).",
+      "parentUuid": "fc3f6c17_3be07c01",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 49
+      },
+      "revId": "be0ff38a0f9a643bbb4b99f627440b3146691486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76477b6a_e29e023a",
         "filename": "common/ec_ec_comm_slave.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-19T00:51:40Z",
       "side": 1,
       "message": "#ifdef EXTRA_DEBUG ?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 5
+      },
+      "revId": "be0ff38a0f9a643bbb4b99f627440b3146691486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce1b67c8_790bc690",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76477b6a_e29e023a",
       "range": {
         "startLine": 183,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a6b60bb5_9d990288",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:05:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0d3a554_2aa9ecfd",
+      "range": {
+        "startLine": 208,
+        "startChar": 23,
+        "endLine": 208,
+        "endChar": 58
+      },
+      "revId": "be0ff38a0f9a643bbb4b99f627440b3146691486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bee3a3d_b05bf285",
         "filename": "common/ec_ec_comm_slave.c",
         "patchSetId": 3
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "bef88237_424c8c90",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:05:31Z",
+      "side": 1,
+      "message": "It\u0027s not. I refactor a bit of this code, and removed that as well.",
+      "parentUuid": "5bee3a3d_b05bf285",
+      "range": {
+        "startLine": 228,
+        "startChar": 8,
+        "endLine": 228,
+        "endChar": 16
+      },
+      "revId": "be0ff38a0f9a643bbb4b99f627440b3146691486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ae8e272_64c10a8c",
         "filename": "common/ec_ec_comm_slave.c",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2017-12-19T00:51:40Z",
       "side": 1,
       "message": "If we end up with a lot of commands spread across files, then DECLARE_HOST_COMMAND() makes sense.  If it\u0027s only these 3, this is ok.",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 28
+      },
+      "revId": "be0ff38a0f9a643bbb4b99f627440b3146691486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "427ee067_ea268531",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:05:31Z",
+      "side": 1,
+      "message": "Just these 3, at least for now.",
+      "parentUuid": "1ae8e272_64c10a8c",
       "range": {
         "startLine": 241,
         "startChar": 2,
