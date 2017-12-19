@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c2131bc9_f43df779",
+        "filename": "board/hammer/battery.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:06:50Z",
+      "side": 1,
+      "message": "Noted, dropped. Filed https://b.corp.google.com/issues/70816727 to check on other boards.",
+      "parentUuid": "06153b19_83a840a1",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "d294281bf91fa8fca8e603c6733cbace330ab054",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b4674b1_bd3734cb",
         "filename": "board/hammer/board.c",
         "patchSetId": 15
