@@ -342,37 +342,94 @@ int battery_wait_for_stable(void)
 	return EC_SUCCESS;
 }
 
+static int max17055_model_loading(int reg, int val_start, int bit_finish)
+{
+	int reg_read = 0;
+	int retries = 50;
+
+	/* Initiate model loading */
+	if (max17055_write(reg, val_start))
+		return EC_ERROR_UNKNOWN;
+
+	/* Wait up to 500 ms until bit_finish in target reg is cleared. */
+	while (--retries) {
+		if (max17055_read(reg, &reg_read))
+			return EC_ERROR_UNKNOWN;
+		if (!(bit_finish & reg_read))
+			break;
+		msleep(10);
+	}
+
+	if (!retries)
+		return EC_ERROR_TIMEOUT;
+
+	return EC_SUCCESS;
+}
+
 /* Configured MAX17055 with the battery parameters for optimal performance. */
 static int max17055_load_batt_model(void)
 {
+	int i;
 	int reg;
 	int hib_cfg;
 	int dqacc;
-	int dpacc;
-
-	int retries = 50;
+	int rv;
 
 	const struct max17055_batt_profile *config;
 
 	config = max17055_get_batt_profile();
 
-	if (config->is_ez_config) {
+	if (config->is_ez_config)
 		dqacc = config->design_cap / 32;
-		/* Choose the model for charge voltage > 4.275V. */
-		dpacc = dqacc * 51200 / config->design_cap;
-	} else {
+	else {
 		dqacc = config->design_cap / 16;
-		dpacc = config->dpacc;
+
+		/* Unlock model access */
+		if (max17055_write(0x62, 0x0059) ||
+		    max17055_write(0x63, 0x00c4))
+			return EC_ERROR_UNKNOWN;
+
+		/* Write the 48-word model in INI file to max17055 */
+		for (i = 0; i < CUSTOM_MODEL_LEN; i++) {
+			if (max17055_write(REG_OCV_TABLE + i,
+					   config->custom_model[i]))
+				return EC_ERROR_UNKNOWN;
+		}
+
+		/* Lock model access */
+		if (max17055_write(0x62, 0) || max17055_write(0x63, 0))
+			return EC_ERROR_UNKNOWN;
 	}
 
 	if (max17055_write(REG_DESIGN_CAPACITY, config->design_cap) ||
-	    max17055_write(REG_DQACC, dqacc) ||
-	    max17055_write(REG_CHARGE_TERM_CURRENT, config->ichg_term) ||
+	    max17055_write(REG_DQACC, dqacc))
+		return EC_ERROR_UNKNOWN;
+
+	if (!config->is_ez_config) {
+		if (max17055_write(REG_DPACC, 0x0c80))
+			return EC_ERROR_UNKNOWN;
+	}
+
+	if (max17055_write(REG_CHARGE_TERM_CURRENT, config->ichg_term) ||
 	    max17055_write(REG_EMPTY_VOLTAGE, config->v_empty_detect))
 		return EC_ERROR_UNKNOWN;
 
 	if (!config->is_ez_config) {
-		if (max17055_write(REG_LEARNCFG, config->learn_cfg))
+		if (max17055_write(REG_RCOMP0, config->rcomp0) ||
+		    max17055_write(REG_TEMPCO, config->tempco) ||
+		    max17055_write(REG_QR_TABLE00, config->qr_table00) ||
+		    max17055_write(REG_QR_TABLE10, config->qr_table10) ||
+		    max17055_write(REG_REMAINING_CAPACITY, 0))
+			return EC_ERROR_UNKNOWN;
+
+		if (max17055_read(REG_VFSOC, &reg))
+			return EC_ERROR_UNKNOWN;
+
+		if (max17055_write(0x48, reg) ||
+		    max17055_write(REG_FULL_CHARGE_CAPACITY,
+				   config->design_cap) ||
+		    max17055_write(REG_FULL_CAPACITY_NOM,
+				   config->design_cap))
 			return EC_ERROR_UNKNOWN;
 	}
 
@@ -386,27 +443,30 @@ static int max17055_load_batt_model(void)
 	    max17055_write(0x60, 0))
 		return EC_ERROR_UNKNOWN;
 
-	if (max17055_write(REG_DPACC, dpacc) ||
-	    max17055_write(REG_MODELCFG, (MODELCFG_REFRESH | MODELCFG_VCHG)))
-		return EC_ERROR_UNKNOWN;
-
-	/* Delay up to 500 ms until MODELCFG.REFRESH bit == 0. */
-	while (--retries) {
-		if (max17055_read(REG_MODELCFG, &reg))
+	if (config->is_ez_config) {
+		/* Choose the model for charge voltage > 4.275V. */
+		if (max17055_write(REG_DPACC,
+				   dqacc * 51200 / config->design_cap))
 			return EC_ERROR_UNKNOWN;
-		if (!(MODELCFG_REFRESH & reg))
-			break;
-		msleep(10);
-	}
-	if (!retries)
-		return EC_ERROR_TIMEOUT;
 
-	if (!config->is_ez_config) {
-		if (max17055_write(REG_RCOMP0, config->rcomp0) ||
-		    max17055_write(REG_TEMPCO, config->tempco) ||
-		    max17055_write(REG_QR_TABLE00, config->qr_table00) ||
-		    max17055_write(REG_QR_TABLE10, config->qr_table10) ||
-		    max17055_write(REG_QR_TABLE20, config->qr_table20) ||
+		rv = max17055_model_loading(REG_MODELCFG,
+					    MODELCFG_REFRESH | MODELCFG_VCHG,
+					    MODELCFG_REFRESH);
+		if (rv)
+			return rv;
+
+	} else {
+		if (max17055_write(REG_LEARNCFG, config->learn_cfg) ||
+		    max17055_read(REG_CONFIG2, &reg))
+			return EC_ERROR_UNKNOWN;
+
+		rv = max17055_model_loading(REG_CONFIG2,
+					    reg | CONF2_LDMDL,
+					    CONF2_LDMDL);
+		if (rv)
+			return rv;
+
+		if (max17055_write(REG_QR_TABLE20, config->qr_table20) ||
 		    max17055_write(REG_QR_TABLE30, config->qr_table30))
 			return EC_ERROR_UNKNOWN;
 	}
@@ -414,6 +474,7 @@ static int max17055_load_batt_model(void)
 	/* Restore the original HibCFG value. */
 	if (max17055_write(REG_HIBCFG, hib_cfg))
 		return EC_ERROR_UNKNOWN;
+
 	return EC_SUCCESS;
 }
 
