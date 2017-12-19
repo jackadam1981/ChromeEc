@@ -33,6 +33,24 @@
       "revId": "5cbdb2f3c4d0ee8e032fccdc4b421791c77c62a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6f4b64a_08666e22",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2017-12-19T10:01:55Z",
+      "side": 1,
+      "message": "It should be one interface with multiple alternate settings.",
+      "parentUuid": "8a5df667_770fe31c",
+      "revId": "5cbdb2f3c4d0ee8e032fccdc4b421791c77c62a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

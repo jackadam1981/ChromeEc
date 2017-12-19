@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "76857fe8_e9e5ce23",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2017-12-19T10:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd538d02_bf7065a5",
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffd08af0_4b664e9e",
         "filename": "board/hammer/build.mk",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2017-12-15T03:55:46Z",
       "side": 1,
       "message": "board-$(CONFIG_USB_TOUCHPAD_PASSTHRU)\n\nAlso, I think touchpad_passthru should probably be in chip/stm32 directory.",
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9983538_20a7cf5c",
+        "filename": "board/hammer/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2017-12-19T10:01:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure, currently this is somewhat device specific.  We can move it back when we think it is general enough.",
+      "parentUuid": "ffd08af0_4b664e9e",
       "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "57ea0b2b_bfd9097b",
+        "filename": "board/hammer/touchpad_passthru.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2017-12-19T10:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f0bb67_280d300b",
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f9c2a0a_365f01fd",
         "filename": "board/hammer/touchpad_passthru.c",
         "patchSetId": 5
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "4fd0f1d5_95db775f",
+        "filename": "board/hammer/touchpad_passthru.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2017-12-19T10:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f9c2a0a_365f01fd",
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1ff486e_50e35493",
         "filename": "board/hammer/touchpad_passthru.c",
         "patchSetId": 5
@@ -84,6 +156,24 @@
       "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5530f6e_b4a76c0d",
+        "filename": "board/hammer/touchpad_passthru.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2017-12-19T10:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1ff486e_50e35493",
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "412ca1ff_6b1fdd72",
+        "filename": "board/hammer/touchpad_passthru.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2017-12-19T10:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "945ddc65_3f129adc",
+      "range": {
+        "startLine": 47,
+        "startChar": 27,
+        "endLine": 47,
+        "endChar": 28
+      },
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac226835_f25cdfc3",
         "filename": "board/hammer/touchpad_passthru.c",
         "patchSetId": 5
@@ -130,6 +244,30 @@
       "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8eb908c3_93b7bde8",
+        "filename": "board/hammer/touchpad_passthru.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2017-12-19T10:01:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac226835_f25cdfc3",
+      "range": {
+        "startLine": 48,
+        "startChar": 16,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "59618bc0e2748edf1fd0fbacfa91e0476c25af9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
