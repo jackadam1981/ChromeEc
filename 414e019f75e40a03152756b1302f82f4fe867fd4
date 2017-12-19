@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "79a509b6_4a7c7254",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-12-19T20:06:09Z",
+      "side": 1,
+      "message": "should add \u0027oak\u0027, \u0027gru\u0027, \u0027eve\u0027, \u0027coral\u0027 \u0026 \u0027fizz\u0027 I  think.",
+      "range": {
+        "startLine": 17,
+        "startChar": 7,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "414e019f75e40a03152756b1302f82f4fe867fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37b7e148_8c0179df",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-12-19T20:06:09Z",
+      "side": 1,
+      "message": "nit, adapter",
+      "range": {
+        "startLine": 19,
+        "startChar": 26,
+        "endLine": 19,
+        "endChar": 35
+      },
+      "revId": "414e019f75e40a03152756b1302f82f4fe867fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bb31e7a_e6cab908",
         "filename": "common/usb_pd_policy.c",
         "patchSetId": 1
@@ -13,6 +59,30 @@
       "writtenOn": "2017-12-18T21:16:28Z",
       "side": 1,
       "message": "Do we need to validate cnt in other places? Eg. dfp_consume_svids?",
+      "range": {
+        "startLine": 297,
+        "startChar": 6,
+        "endLine": 297,
+        "endChar": 9
+      },
+      "revId": "414e019f75e40a03152756b1302f82f4fe867fd4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf6b9da4_4ac2a421",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2017-12-19T20:06:09Z",
+      "side": 1,
+      "message": "SVID list is null terminated and we search for that so should be ok there.",
+      "parentUuid": "0bb31e7a_e6cab908",
       "range": {
         "startLine": 297,
         "startChar": 6,
