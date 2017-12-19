@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "deab103f_ee3290c7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 4686,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:03:43Z",
+      "side": 1,
+      "message": "Now I understand... CONFIG_HOSTCMD_ALIGNED is not set so none of the ec_align statements matter...\n\nI switched the 2 structures here to __ec_align_size1, and the battery dynamic info to __ec_align_size2.\n\nI might also throw an error in the master implementation if CONFIG_HOSTCMD_ALIGNED is set, unless I figure out a good way to fix the problem above.",
+      "parentUuid": "bcfe5d60_e4422508",
+      "range": {
+        "startLine": 4686,
+        "startChar": 7,
+        "endLine": 4686,
+        "endChar": 18
+      },
+      "revId": "e96aff75f20f4e9240ab854fbf5c18a6aee826cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca38ccb8_856663eb",
         "filename": "include/ec_commands.h",
         "patchSetId": 12

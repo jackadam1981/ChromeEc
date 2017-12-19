@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1944db64_01296129",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4688,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:03:43Z",
+      "side": 1,
+      "message": "We\u0027d use the parameter for AP-EC communication (i.e. when used as a true host command).\n\nFor current ec-ec master, we don\u0027t send the parameter, and the ec-ec slave ignores it. That saves 2 bytes per transaction (parameter + crc8, out of 30+ bytes...) and a little bit of code. Maybe not worth the extra complicatedness, I\u0027ll drop the statement.",
+      "parentUuid": "299de02c_71a45178",
+      "range": {
+        "startLine": 4688,
+        "startChar": 34,
+        "endLine": 4688,
+        "endChar": 63
+      },
+      "revId": "1554200387ce0b4c52d8893e6d07cd7ce23bb721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20a502f9_67b86539",
         "filename": "include/ec_commands.h",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-18T10:01:08Z",
       "side": 1,
       "message": "this assumption already exists in charge_state_v2, but at the end of the day, this means our cycle_count is partially wrong most of the time...\nwe can live with it since mostly nobody uses it, but we need to be careful when reading feedbacks \u0026 co",
+      "range": {
+        "startLine": 4694,
+        "startChar": 1,
+        "endLine": 4694,
+        "endChar": 22
+      },
+      "revId": "1554200387ce0b4c52d8893e6d07cd7ce23bb721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2574946_d0db3306",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4694,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:03:43Z",
+      "side": 1,
+      "message": "Right, filed https://bugs.chromium.org/p/chromium/issues/detail?id\u003d795991 , we might want to move it to the dynamic struct, eventually.\n\nIt\u0027s a little less bad on lux/wand, as wand will reset on each attach/detach, so the value will be a little more accurate.",
+      "parentUuid": "20a502f9_67b86539",
       "range": {
         "startLine": 4694,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1e97bb4e_da89b306",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4716,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:03:43Z",
+      "side": 1,
+      "message": "Right, we\u0027re not even doing anything with it...",
+      "parentUuid": "a7e5d3d4_f29e0911",
+      "range": {
+        "startLine": 4716,
+        "startChar": 0,
+        "endLine": 4716,
+        "endChar": 70
+      },
+      "revId": "1554200387ce0b4c52d8893e6d07cd7ce23bb721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8855f482_f8f7668e",
         "filename": "include/ec_commands.h",
         "patchSetId": 13
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0ffca8c4_9a58cda1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4725,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:03:43Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be necessary. Changed to 0x0602.",
+      "parentUuid": "8855f482_f8f7668e",
+      "range": {
+        "startLine": 4725,
+        "startChar": 31,
+        "endLine": 4725,
+        "endChar": 37
+      },
+      "revId": "1554200387ce0b4c52d8893e6d07cd7ce23bb721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed2c9000_582603d1",
         "filename": "include/ec_commands.h",
         "patchSetId": 13
@@ -105,6 +201,30 @@
       "writtenOn": "2017-12-18T10:01:08Z",
       "side": 1,
       "message": "whose battery ?",
+      "range": {
+        "startLine": 4737,
+        "startChar": 0,
+        "endLine": 4739,
+        "endChar": 24
+      },
+      "revId": "1554200387ce0b4c52d8893e6d07cd7ce23bb721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc4dace_6db68455",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 4739,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-19T04:03:43Z",
+      "side": 1,
+      "message": "added base.",
+      "parentUuid": "ed2c9000_582603d1",
       "range": {
         "startLine": 4737,
         "startChar": 0,
