@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb78a84f_3eefd816",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-19T00:55:17Z",
+      "side": 1,
+      "message": "Could we just memset the entire base_battery_static struct at the start, rather than one call per field?",
+      "range": {
+        "startLine": 284,
+        "startChar": 1,
+        "endLine": 285,
+        "endChar": 38
+      },
+      "revId": "0acf55ebbffe593afb490a8dd400de69001b2492",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
