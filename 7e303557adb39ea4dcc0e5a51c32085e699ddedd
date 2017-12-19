@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83cf237f_4311dff9",
+        "filename": "driver/temp_sensor/sb_tsi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2017-12-19T00:52:10Z",
+      "side": 1,
+      "message": "is the sensor up in all state, even S5? If not, raw_read8 will timeout.",
+      "revId": "7e303557adb39ea4dcc0e5a51c32085e699ddedd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
