@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ec63b62_21733fd6",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-19T16:36:34Z",
+      "side": 1,
+      "message": "It\u0027d be cleaner to do something like:\n\n#define BIGGEST_STRUCT_SIZE 8\n\nBUILD_ASSERT(BIGGEST_STRUCT_SIZE \u003e\u003d\n\t(sizeof(struct ec_params_battery_static_info)));\n...\n\n/* Command buffer needs to hold the biggest params struct + CRC byte */\n#define COMMAND_BUFFER_PARAMS_SIZE (BIGGEST_STRUCT_SIZE + 1)\n\nSame compiled code, but makes the calculations more explicit and dedups the + 1",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 47
+      },
+      "revId": "7c51845fcb63eeeb4d8f0a22af3f128e9b843816",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
