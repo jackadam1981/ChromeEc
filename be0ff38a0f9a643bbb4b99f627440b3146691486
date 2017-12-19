@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc3f6c17_3be07c01",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-19T00:51:40Z",
+      "side": 1,
+      "message": "CRC isn\u0027t part of the param, right?  So\n\n#define COMMAND_BUFFER_PARAM_SIZE \\\n\t(COMMAND_BUFFER_SIZE - sizeof(struct ec_host_request4) - 1)\n\nBUILD_ASSERT(COMMAND_BUFFER_PARAM_SIZE \u003e\u003d\n\tsizeof(struct ec_params_battery_static_info));",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 49
+      },
+      "revId": "be0ff38a0f9a643bbb4b99f627440b3146691486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76477b6a_e29e023a",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-19T00:51:40Z",
+      "side": 1,
+      "message": "#ifdef EXTRA_DEBUG ?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 5
+      },
+      "revId": "be0ff38a0f9a643bbb4b99f627440b3146691486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0d3a554_2aa9ecfd",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-19T00:51:40Z",
+      "side": 1,
+      "message": "Yes.  It\u0027s a valid header, so there\u0027s a master waiting for a response.  Don\u0027t make it timeout; tell it what\u0027s wrong...",
+      "range": {
+        "startLine": 208,
+        "startChar": 23,
+        "endLine": 208,
+        "endChar": 58
+      },
+      "revId": "be0ff38a0f9a643bbb4b99f627440b3146691486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bee3a3d_b05bf285",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-19T00:51:40Z",
+      "side": 1,
+      "message": "Is this cast necessary?",
+      "range": {
+        "startLine": 228,
+        "startChar": 8,
+        "endLine": 228,
+        "endChar": 16
+      },
+      "revId": "be0ff38a0f9a643bbb4b99f627440b3146691486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ae8e272_64c10a8c",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-19T00:51:40Z",
+      "side": 1,
+      "message": "If we end up with a lot of commands spread across files, then DECLARE_HOST_COMMAND() makes sense.  If it\u0027s only these 3, this is ok.",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 28
+      },
+      "revId": "be0ff38a0f9a643bbb4b99f627440b3146691486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
