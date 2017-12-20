@@ -93,6 +93,7 @@ struct stm32_def {
 	{0x442, "STM32F09x",     0x40000,  2048, {13, 13} },
 	{0x431, "STM32F411",     0x80000, 16384, {13, 19} },
 	{0x441, "STM32F412",     0x80000, 16384, {13, 19} },
+	{0x450, "STM32H74x",    0x200000, 131768, {13, 19} },
 	{0x451, "STM32F76x",    0x200000, 32768, {13, 19} },
 	{ 0 }
 };
@@ -378,11 +379,14 @@ int send_command(int fd, uint8_t cmd, payload_t *loads, int cnt,
 		}
 
 		/* Wait for the ACK */
-		if (wait_for_ack(fd) < 0) {
-			fprintf(stderr, "payload %d ACK failed for CMD%02x\n",
+		res = wait_for_ack(fd);
+		if (res < 0) {
+			if (res != -ETIMEDOUT)
+				fprintf(stderr,
+					"payload %d ACK failed for CMD%02x\n",
 					c, cmd);
 			free(data);
-			return -1;
+			return res;
 		}
 		free(data);
 	}
@@ -614,7 +618,11 @@ int command_ext_erase(int fd, uint16_t count, uint16_t start)
 			pages[i+1] = htons(start + i);
 	}
 
+	printf("Erasing...\n");
 	res = send_command(fd, CMD_EXTERASE, &load, 1, NULL, 0, 1);
+	/* Erase can take long time (e.g. 13s+ on STM32H7) */
+	while (res == -ETIMEDOUT)
+		res = wait_for_ack(fd);
 	if (res >= 0)
 		printf("Flash erased.\n");
 
@@ -847,6 +855,11 @@ int write_flash(int fd, struct stm32_def *chip, const char *filename,
 		return -EIO;
 	}
 	fclose(hnd);
+
+	if (1) { /* fast write: skip empty trailing space */
+		while (buffer[res - 1] == 0xff && res)
+			res--;
+	}
 
 	printf("Writing %d bytes at 0x%08x\n", res, offset);
 	written = command_write_mem(fd, offset, res, buffer);
