@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0146e4bd_d2cd9b18",
+        "filename": "include/espi.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-20T18:52:52Z",
+      "side": 1,
+      "message": "Usually, x_is_y() returns 1 if x is y, 0 if not.  Here, this code:\n\nif (espi_signal_is_vw(z)) {\n\n}\n\ndoes the opposite of what it looks like.  Suggest changing return to 1 if VW, 0 if not.",
+      "range": {
+        "startLine": 89,
+        "startChar": 3,
+        "endLine": 89,
+        "endChar": 39
+      },
+      "revId": "3685d5faf16e1e7b6f597a1a9e8d4489c0814b07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
