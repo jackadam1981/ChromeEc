@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa3f16a0_a883c04b",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-12-20T17:16:05Z",
+      "side": 0,
+      "message": "This seems unrelated to the S0ix change.",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 6
+      },
+      "revId": "8f63140a2b6c25b4a8fc6e5169d2a2a70c42416d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd6660d_0b3bb154",
+        "filename": "board/fizz/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-12-20T17:16:05Z",
+      "side": 0,
+      "message": "This seems unrelated to this change.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 6
+      },
+      "revId": "8f63140a2b6c25b4a8fc6e5169d2a2a70c42416d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b1c0fd4_2ff7bba5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-12-20T17:16:05Z",
+      "side": 1,
+      "message": "If you intend to test S0ix, then before you suspend, you need to:\n1. Enable S0ix by writing 1 to PMC controller\u0027s register and\n2. Make powerd use S0ix by writing 1 to suspend_to_idle file.",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 25
+      },
+      "revId": "36f3af74ecf6ff8df2e18bbb8767b151c69e94a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
