@@ -556,6 +556,10 @@ static int charge_request(int voltage, int current)
 #endif
 	}
 
+#ifdef BOARD_MEOWTH
+	voltage = MIN(7800, voltage);
+#endif
+
 	if (curr.ac) {
 		if (prev_volt != voltage || prev_curr != current)
 			CPRINTS("%s(%dmV, %dmA)", __func__, voltage, current);
