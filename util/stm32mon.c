@@ -856,6 +856,10 @@ int write_flash(int fd, struct stm32_def *chip, const char *filename,
 	}
 	fclose(hnd);
 
+	/* faster write: skip empty trailing space */
+	while (buffer[res - 1] == 0xff && res)
+		res--;
+
 	printf("Writing %d bytes at 0x%08x\n", res, offset);
 	written = command_write_mem(fd, offset, res, buffer);
 	if (written != res) {
