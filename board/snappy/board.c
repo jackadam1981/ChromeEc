@@ -1009,6 +1009,10 @@ void board_hibernate(void)
 
 	/* Turn BGATE OFF for saving the power */
 	bd9995x_set_power_save_mode(BD9995X_PWR_SAVE_MAX);
+
+	gpio_set_level(GPIO_EN_PP5000, 0);
+	while (gpio_get_level(GPIO_PP5000_PG))
+		;
 }
 
 struct {
