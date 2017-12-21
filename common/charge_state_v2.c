@@ -475,6 +475,11 @@ static inline int battery_too_low(void)
 		 curr.batt.voltage <= batt_info->voltage_min));
 }
 
+static inline int is_battery_charging_not_allowed(void)
+{
+	return !(curr.batt.flags & BATT_FLAG_WANT_CHARGE) &&
+		(curr.batt.status & STATUS_FULLY_CHARGED);
+}
 
 /*
  * Send host event to the AP if the battery is temperature or charge level
@@ -826,6 +831,15 @@ void charger_task(void)
 
 			battery_seems_to_be_dead = battery_was_removed = 0;
 			curr.state = ST_CHARGE;
+
+			/*
+			 * To save the wall charger power, if the battery
+			 * charging is not allowed, disable the battery
+			 * charging circuit by forcing the charger to idle
+			 * mode.
+			 */
+			if (is_battery_charging_not_allowed())
+				set_chg_ctrl_mode(CHARGE_CONTROL_IDLE);
 		}
 
 		/*
