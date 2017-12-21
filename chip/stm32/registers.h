@@ -1597,6 +1597,7 @@ struct stm32_spi_regs {
 	uint32_t crcpoly;
 	uint32_t rxcrcr;
 	uint32_t txcrcr;
+	uint32_t udrdr;
 #else  /* !CHIP_FAMILY_STM32H7 */
 	uint16_t cr1;
 	uint16_t _pad0;

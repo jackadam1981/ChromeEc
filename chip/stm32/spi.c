@@ -29,12 +29,12 @@
 
 /* DMA channel option */
 static const struct dma_option dma_tx_option = {
-	STM32_DMAC_SPI1_TX, (void *)&STM32_SPI1_REGS->dr,
+	STM32_DMAC_SPI1_TX, (void *)&STM32_SPI1_REGS->txdr,
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
 };
 
 static const struct dma_option dma_rx_option = {
-	STM32_DMAC_SPI1_RX, (void *)&STM32_SPI1_REGS->dr,
+	STM32_DMAC_SPI1_RX, (void *)&STM32_SPI1_REGS->rxdr,
 	STM32_DMA_CCR_MSIZE_8_BIT | STM32_DMA_CCR_PSIZE_8_BIT
 };
 
@@ -157,7 +157,7 @@ enum spi_state {
  * @param nss		GPIO signal for NSS control line
  * @return 0 if bytes received, -1 if we hit a timeout or NSS went high
  */
-static int wait_for_bytes(stm32_dma_chan_t *rxdma, int needed,
+static int wait_for_bytes(dma_chan_t *rxdma, int needed,
 			  enum gpio_signal nss)
 {
 	timestamp_t deadline;
@@ -271,6 +271,10 @@ static void tx_status(uint8_t byte)
 {
 	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
 
+#ifdef CHIP_FAMILY_STM32H7
+	REG8(&spi->txdr) = byte;
+	spi->ifcr = 1 << 5;
+#else /* !CHIP_FAMILY_STM32H7 */
 	spi->dr = byte;
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32L4)
 	/* It sends the byte 4 times in order to be sure it bypassed the FIFO
@@ -280,6 +284,7 @@ static void tx_status(uint8_t byte)
 	spi->dr = byte;
 	spi->dr = byte;
 #endif
+#endif /* !CHIP_FAMILY_STM32H7 */
 }
 
 /**
@@ -309,7 +314,7 @@ static void setup_for_transaction(void)
 	 * Read dummy bytes in case there are some pending; this prevents the
 	 * receive DMA from getting that byte right when we start it.
 	 */
-	dummy = spi->dr;
+	dummy = spi->rxdr;
 #if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32L4)
 	/* 4 Bytes makes sure the RX FIFO on the F0 is empty as well. */
 	dummy = spi->dr;
@@ -319,6 +324,11 @@ static void setup_for_transaction(void)
 
 	/* Start DMA */
 	dma_start_rx(&dma_rx_option, sizeof(in_msg), in_msg);
+
+#ifdef CHIP_FAMILY_STM32H7
+	spi->cr1 |= STM32_SPI_CR1_SPE;
+	REG8(&spi->udrdr) = 0x5a;
+#endif
 
 	/* Ready to receive */
 	state = SPI_STATE_READY_TO_RX;
@@ -391,7 +401,8 @@ static void spi_send_response(struct host_cmd_handler_args *args)
  */
 static void spi_send_response_packet(struct host_packet *pkt)
 {
-	stm32_dma_chan_t *txdma;
+	dma_chan_t *txdma;
+	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
 
 	/*
 	 * If we're not processing, then the AP has already terminated the
@@ -417,7 +428,9 @@ static void spi_send_response_packet(struct host_packet *pkt)
 	txdma = dma_get_channel(STM32_DMAC_SPI1_TX);
 	dma_prepare_tx(&dma_tx_option, sizeof(out_preamble) + pkt->response_size
 		+ EC_SPI_PAST_END_LENGTH, out_msg);
+	spi->cfg1 |= STM32_SPI_CFG1_TXDMAEN;
 	dma_go(txdma);
+	spi->ifcr = 1 << 5;
 
 	/*
 	 * Before the state is set to SENDING, any CS de-assertion would
@@ -437,7 +450,7 @@ static void spi_send_response_packet(struct host_packet *pkt)
  */
 void spi_event(enum gpio_signal signal)
 {
-	stm32_dma_chan_t *rxdma;
+	dma_chan_t *rxdma;
 	uint16_t i;
 
 	/* If not enabled, ignore glitches on NSS */
@@ -627,14 +640,14 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, spi_chipset_shutdown, HOOK_PRIO_DEFAULT);
 static void spi_init(void)
 {
 	stm32_spi_regs_t *spi = STM32_SPI1_REGS;
-	uint8_t was_enabled = enabled;
+	uint8_t was_enabled = 1; //enabled;
 
 	/* Reset the SPI Peripheral to clear any existing weird states. */
 	/* Fix for bug chrome-os-partner:31390 */
 	enabled = 0;
 	state = SPI_STATE_DISABLED;
-	STM32_RCC_APB2RSTR |= (1 << 12);
-	STM32_RCC_APB2RSTR &= ~(1 << 12);
+	STM32_RCC_APB2RSTR |= STM32_RCC_PB2_SPI1;
+	STM32_RCC_APB2RSTR &= ~STM32_RCC_PB2_SPI1;
 
 	/* 40 MHz pin speed */
 	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xff00;
@@ -649,16 +662,25 @@ static void spi_init(void)
 #ifdef CHIP_FAMILY_STM32L4
 	dma_select_channel(STM32_DMAC_SPI1_TX, 1);
 	dma_select_channel(STM32_DMAC_SPI1_RX, 1);
+#elif defined(CHIP_FAMILY_STM32H7)
+	dma_select_channel(STM32_DMAC_SPI1_TX, DMAMUX1_REQ_SPI1_TX);
+	dma_select_channel(STM32_DMAC_SPI1_RX, DMAMUX1_REQ_SPI1_RX);
 #endif
 	/*
 	 * Enable rx/tx DMA and get ready to receive our first transaction and
 	 * "disable" FIFO by setting event to happen after only 1 byte
 	 */
-	spi->cr2 = STM32_SPI_CR2_RXDMAEN | STM32_SPI_CR2_TXDMAEN |
-		STM32_SPI_CR2_FRXTH | STM32_SPI_CR2_DATASIZE(8);
+	spi->cfg2 = 0;
+	spi->cr2 = sizeof(in_msg); /* useless for slave ? */
+	spi->cfg1 = STM32_SPI_CFG1_DATASIZE(8) | STM32_SPI_CFG1_FTHLV(4)
+			| STM32_SPI_CFG1_CRCSIZE(8)
+			/*| STM32_SPI_CFG1_TXDMAEN*/ | STM32_SPI_CFG1_RXDMAEN |
+			(2 << 9) | (0 << 11);
+	REG8(&spi->udrdr) = 0xa5;
 
 	/* Enable the SPI peripheral */
-	spi->cr1 |= STM32_SPI_CR1_SPE;
+	//spi->cr1 = STM32_SPI_CR1_SPE;
+	spi->cr1 = 0;
 
 	gpio_enable_interrupt(GPIO_SPI1_NSS);
 
