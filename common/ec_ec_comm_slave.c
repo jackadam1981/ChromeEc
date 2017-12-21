@@ -12,6 +12,7 @@
 #include "crc8.h"
 #include "ec_commands.h"
 #include "ec_ec_comm_slave.h"
+#include "extpower.h"
 #include "hwtimer.h"
 #include "queue.h"
 #include "queue_policies.h"
@@ -30,6 +31,8 @@
  */
 struct ec_response_battery_static_info base_battery_static;
 struct ec_response_battery_dynamic_info base_battery_dynamic;
+
+int charging_allowed = 1;
 
 /*
  * Our command parameter buffer must be big enough to fit any command
@@ -51,7 +54,6 @@ BUILD_ASSERT(LARGEST_PARAMS_SIZE >=
  * should not take more than 2ms to be sent at 115200 bps.
  */
 #define COMMAND_TIMEOUT_US (5 * MSEC)
-
 
 void ec_ec_comm_slave_written(struct consumer const *consumer, size_t count)
 {
@@ -140,6 +142,7 @@ static void handle_cmd_charger_control(
 		charger_enable_otg_power(0);
 		charge_set_input_current_limit(
 			MIN(MAX_CURRENT_MA, params->max_current), 0);
+		charging_allowed = params->allow_charging;
 	} else {
 		if (-params->max_current > MAX_OTG_CURRENT_MA ||
 				params->otg_voltage > MAX_OTG_VOLTAGE_MV) {
@@ -153,10 +156,20 @@ static void handle_cmd_charger_control(
 		charger_set_otg_current_voltage(-params->max_current,
 						params->otg_voltage);
 		charger_enable_otg_power(1);
+		charging_allowed = 0;
 	}
 
 out:
 	write_response(ret, seq, NULL, 0);
+}
+
+/*
+ * On dual-battery slave, we use the charging allowed signal from master to
+ * indicate whether external power is present.
+ */
+int extpower_is_present(void)
+{
+	return charging_allowed;
 }
 #endif
 

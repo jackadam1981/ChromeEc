@@ -1072,6 +1072,13 @@ wait_for_it:
 				curr.batt.voltage + info->voltage_step);
 			curr.requested_current = -1;
 #endif
+			/*
+			 * On EC-EC slave, we use curr.ac as indicator of
+			 * whether battery should be charged.
+			 */
+#ifdef CONFIG_EC_EC_COMM_BATTERY_SLAVE
+			curr.requested_current = 0;
+#endif
 		}
 		charge_request(curr.requested_voltage, curr.requested_current);
 
