@@ -633,8 +633,23 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
  */
 int charger_profile_override(struct charge_state_data *curr)
 {
-	int disch_on_ac = charger_should_discharge_on_ac(curr);
+	int disch_on_ac;
 
+	/*
+	 * To save the wall charger power, if the battery charging is not
+	 * allowed, disable the battery charging circuit by forcing the
+	 * charger to idle mode.
+	 */
+	if (!(curr->batt.flags & BATT_FLAG_WANT_CHARGE) &&
+		(curr->batt.status & STATUS_FULLY_CHARGED)) {
+		curr->state = ST_IDLE;
+		curr->requested_current = 0;
+		curr->requested_voltage = 0;
+
+		return 0;
+	}
+
+	disch_on_ac = charger_should_discharge_on_ac(curr);
 	charger_discharge_on_ac(disch_on_ac);
 
 	if (disch_on_ac) {
