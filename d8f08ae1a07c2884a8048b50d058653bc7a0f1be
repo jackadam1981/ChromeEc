@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6d5e54a_d29b7691",
+        "filename": "board/zoombini/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-12-21T05:02:47Z",
+      "side": 1,
+      "message": "I think eventually we should provide a helper function in smart battery driver that does this. Most of the batteries require same/very similar implementation.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "d8f08ae1a07c2884a8048b50d058653bc7a0f1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
