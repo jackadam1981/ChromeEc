@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d9ab120_86254489",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-21T11:13:16Z",
+      "side": 1,
+      "message": "nit: you are not using them",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 69
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba70b134_65ddae8d",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-21T11:13:16Z",
+      "side": 1,
+      "message": "static ?\nmaybe in a struct too",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 13
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c42e4185_5e377b19",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-21T11:13:16Z",
+      "side": 1,
+      "message": "I don\u0027t understand why do you need such a structure rather than a union or 2 separate entities ?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1b2f04_1ec2c9f4",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-21T11:13:16Z",
+      "side": 1,
+      "message": "you should document \"@param timeout\" here, at least to know in which unit it is...",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a756af3d_7fbcde85",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-21T11:13:16Z",
+      "side": 1,
+      "message": "where is this actually defined ?\nI can no longer find it.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00848996_0393d0cd",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-21T11:13:16Z",
+      "side": 1,
+      "message": "Maybe you should create a macro such as INCR_COMM_STATS\ne.g.\n#ifdef DEBUG_EC_COMM_STATS\n#define INCR_COMM_STATS(var) (var)++\n#else\n#define INCR_COMM_STATS(var)\n#endif",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 6
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc3a811c_872daf60",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-21T11:13:16Z",
+      "side": 1,
+      "message": "nit: seems to have very little added value",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 236,
+        "endChar": 41
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24585b95_c7081a1c",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-21T11:13:16Z",
+      "side": 1,
+      "message": "15 * MSEC ?",
+      "range": {
+        "startLine": 307,
+        "startChar": 25,
+        "endLine": 307,
+        "endChar": 30
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2f01cf0_0e7e04a7",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2017-12-21T11:13:16Z",
+      "side": 1,
+      "message": "30 * MSEC ?",
+      "range": {
+        "startLine": 348,
+        "startChar": 42,
+        "endLine": 348,
+        "endChar": 47
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
