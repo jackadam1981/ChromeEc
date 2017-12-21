@@ -22,6 +22,30 @@
       "revId": "d8f08ae1a07c2884a8048b50d058653bc7a0f1be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4a78184_9f54c4b4",
+        "filename": "board/zoombini/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2017-12-21T05:04:18Z",
+      "side": 1,
+      "message": "Yeah, I was thinking the same thing. :) I think maybe some batteries might have a different shutdown data command, but we can easily make that board dependent.",
+      "parentUuid": "f6d5e54a_d29b7691",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "d8f08ae1a07c2884a8048b50d058653bc7a0f1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
