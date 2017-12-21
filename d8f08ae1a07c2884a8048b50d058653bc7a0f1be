@@ -46,6 +46,30 @@
       "revId": "d8f08ae1a07c2884a8048b50d058653bc7a0f1be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9dfe663_bdeacc4e",
+        "filename": "board/zoombini/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-12-21T05:16:27Z",
+      "side": 1,
+      "message": "Yeah, we should add a config option CONFIG_SB_SHUTDOWN_DATA which is set to 0x10 by default. Then board can override it if required.",
+      "parentUuid": "f4a78184_9f54c4b4",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "d8f08ae1a07c2884a8048b50d058653bc7a0f1be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
