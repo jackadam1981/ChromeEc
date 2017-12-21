@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9713543_09f12f71",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-21T16:55:31Z",
+      "side": 1,
+      "message": "How does a GPIO get powered back up again?  Might be useful to add a comment to explain.",
+      "range": {
+        "startLine": 274,
+        "startChar": 3,
+        "endLine": 274,
+        "endChar": 40
+      },
+      "revId": "daa1dcaacf1e9531eec139781051ed989f9b4d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9c52e78_319a5f72",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-21T16:55:31Z",
+      "side": 1,
+      "message": "power down?",
+      "range": {
+        "startLine": 276,
+        "startChar": 27,
+        "endLine": 276,
+        "endChar": 37
+      },
+      "revId": "daa1dcaacf1e9531eec139781051ed989f9b4d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
