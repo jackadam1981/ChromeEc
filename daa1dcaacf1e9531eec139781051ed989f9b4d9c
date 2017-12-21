@@ -69,6 +69,30 @@
       "revId": "daa1dcaacf1e9531eec139781051ed989f9b4d9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3237a630_58fbc1d6",
+        "filename": "include/gpio.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2017-12-21T17:32:30Z",
+      "side": 1,
+      "message": "Chip level mchp/clock.c prepare_for_deep_sleep calls board_prepare_for_deep_sleep where calls to gpio_power_down_module(MODULE_xxx) are made.  On wake, resume_from_deep_sleep in chip/mchp/clock.c calls board_resume_from_deep_sleep where calls to gpio_config_module(MODULE_xxx, 1) are made.",
+      "parentUuid": "e9c52e78_319a5f72",
+      "range": {
+        "startLine": 276,
+        "startChar": 27,
+        "endLine": 276,
+        "endChar": 37
+      },
+      "revId": "daa1dcaacf1e9531eec139781051ed989f9b4d9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
