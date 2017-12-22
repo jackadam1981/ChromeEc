@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa54d3a9_93a0a701",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-22T10:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d9ab120_86254489",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 69
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba70b134_65ddae8d",
         "filename": "common/ec_ec_comm_master.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8487d6b3_0d8a2f77",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-22T10:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba70b134_65ddae8d",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 13
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c42e4185_5e377b19",
         "filename": "common/ec_ec_comm_master.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2017-12-21T11:13:16Z",
       "side": 1,
       "message": "I don\u0027t understand why do you need such a structure rather than a union or 2 separate entities ?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 19
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5866ab65_3213772c",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-22T10:25:30Z",
+      "side": 1,
+      "message": "Right, it\u0027s not very well explained, changed the variable names to make it a little clearer, hopefully.",
+      "parentUuid": "c42e4185_5e377b19",
       "range": {
         "startLine": 63,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d9546666_33ce6ec3",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-22T10:25:30Z",
+      "side": 1,
+      "message": "Done. Added units in parameter name and documentation.",
+      "parentUuid": "aa1b2f04_1ec2c9f4",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 2
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a756af3d_7fbcde85",
         "filename": "common/ec_ec_comm_master.c",
         "patchSetId": 3
@@ -105,6 +201,30 @@
       "writtenOn": "2017-12-21T11:13:16Z",
       "side": 1,
       "message": "where is this actually defined ?\nI can no longer find it.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 25
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5725412_aae4c985",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-22T10:25:30Z",
+      "side": 1,
+      "message": "include/ec_commands.h",
+      "parentUuid": "a756af3d_7fbcde85",
       "range": {
         "startLine": 105,
         "startChar": 1,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "f556d5a4_3e8e697d",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-22T10:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00848996_0393d0cd",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 6
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc3a811c_872daf60",
         "filename": "common/ec_ec_comm_master.c",
         "patchSetId": 3
@@ -151,6 +295,30 @@
       "writtenOn": "2017-12-21T11:13:16Z",
       "side": 1,
       "message": "nit: seems to have very little added value",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 236,
+        "endChar": 41
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79df921_728044e2",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-22T10:25:30Z",
+      "side": 1,
+      "message": "Right, it should be the caller\u0027s function name.",
+      "parentUuid": "fc3a811c_872daf60",
       "range": {
         "startLine": 236,
         "startChar": 32,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "b9a9256f_c6ca6fba",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-22T10:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24585b95_c7081a1c",
+      "range": {
+        "startLine": 307,
+        "startChar": 25,
+        "endLine": 307,
+        "endChar": 30
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2f01cf0_0e7e04a7",
         "filename": "common/ec_ec_comm_master.c",
         "patchSetId": 3
@@ -206,6 +398,30 @@
       "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ccb70e5_9864a82b",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-22T10:25:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2f01cf0_0e7e04a7",
+      "range": {
+        "startLine": 348,
+        "startChar": 42,
+        "endLine": 348,
+        "endChar": 47
+      },
+      "revId": "b361809df959f32e671c7d179b8cf45babc3bf76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
