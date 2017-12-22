@@ -22,6 +22,30 @@
       "revId": "3a0f234feeb56c33af7f145b7ed876e68f08f86a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07c6b2e8_e4c23243",
+        "filename": "common/ec_ec_comm_slave.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2017-12-22T00:19:32Z",
+      "side": 1,
+      "message": "No good reason, actually, let\u0027s keep it 0.",
+      "parentUuid": "4c5efc35_87255e3b",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 32
+      },
+      "revId": "3a0f234feeb56c33af7f145b7ed876e68f08f86a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
