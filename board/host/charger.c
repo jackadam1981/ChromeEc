@@ -144,6 +144,17 @@ int charger_set_input_current(int current)
 	return EC_SUCCESS;
 }
 
+int charger_set_otg_current_voltage(int output_current, int output_voltage)
+{
+	return EC_SUCCESS;
+}
+
+
+int charger_enable_otg_power(int enabled)
+{
+	return EC_SUCCESS;
+}
+
 
 int charger_post_init(void)
 {
