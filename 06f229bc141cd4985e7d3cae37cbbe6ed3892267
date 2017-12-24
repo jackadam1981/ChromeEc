@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48c48041_763483b7",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-12-24T11:27:56Z",
+      "side": 1,
+      "message": "dnojiri?",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "06f229bc141cd4985e7d3cae37cbbe6ed3892267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33e74feb_9a770c63",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-12-24T11:27:56Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this. See b/70816727.",
+      "revId": "06f229bc141cd4985e7d3cae37cbbe6ed3892267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef9d8bd_add17c80",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-12-24T11:27:56Z",
+      "side": 1,
+      "message": "dnojiri",
+      "range": {
+        "startLine": 139,
+        "startChar": 9,
+        "endLine": 139,
+        "endChar": 19
+      },
+      "revId": "06f229bc141cd4985e7d3cae37cbbe6ed3892267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c12f1409_c9278e30",
+        "filename": "board/nami/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-12-24T11:27:56Z",
+      "side": 1,
+      "message": "This function was changed later on Poppy/Soraka: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/776024",
+      "range": {
+        "startLine": 148,
+        "startChar": 21,
+        "endLine": 148,
+        "endChar": 39
+      },
+      "revId": "06f229bc141cd4985e7d3cae37cbbe6ed3892267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27a1a658_2ca64cbe",
+        "filename": "board/nami/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2017-12-24T11:27:56Z",
+      "side": 1,
+      "message": "Just a note: Looks like LPM is disabled for all the VRs. In case if we decide to use S0ix, we should re-visit this to dynamically enable/disable LPM.",
+      "range": {
+        "startLine": 291,
+        "startChar": 10,
+        "endLine": 291,
+        "endChar": 18
+      },
+      "revId": "06f229bc141cd4985e7d3cae37cbbe6ed3892267",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
