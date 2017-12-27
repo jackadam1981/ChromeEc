@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df85102f_f70ccf8d",
+        "filename": "chip/mchp/config_flash_layout.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-27T20:54:07Z",
+      "side": 1,
+      "message": "for?",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "revId": "1e9d04c25f210f6534d9198259fedbe823558402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d270ecb_475534b2",
+        "filename": "chip/mchp/config_flash_layout.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-27T20:54:07Z",
+      "side": 1,
+      "message": "h?",
+      "range": {
+        "startLine": 68,
+        "startChar": 58,
+        "endLine": 68,
+        "endChar": 59
+      },
+      "revId": "1e9d04c25f210f6534d9198259fedbe823558402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92c7767e_32abe466",
+        "filename": "chip/mchp/qmspi_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-27T20:54:07Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "1e9d04c25f210f6534d9198259fedbe823558402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdcd5c2a_2fdb4bc4",
+        "filename": "chip/mchp/qmspi_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-27T20:54:07Z",
+      "side": 1,
+      "message": "Should be able to dump this for Chromium EC; we\u0027re C-only.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 6
+      },
+      "revId": "1e9d04c25f210f6534d9198259fedbe823558402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8231c7f_f1847b26",
+        "filename": "chip/mchp/spi_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-27T20:54:07Z",
+      "side": 1,
+      "message": "(here too, and everywhere except headers shared with AP code (e.g. ec_commands.h))",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "1e9d04c25f210f6534d9198259fedbe823558402",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
