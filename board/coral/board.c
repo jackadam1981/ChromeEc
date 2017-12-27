@@ -53,6 +53,7 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "watchdog.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -1183,3 +1184,26 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
 }
+
+static void shutdown_system_when_PP3300_OVP(void)
+{
+	if ((gpio_get_level(GPIO_EN_PP3300) == 1) &&
+	    (gpio_get_level(GPIO_PP3300_PG) == 0)) {
+		msleep(500);
+		watchdog_reload();
+
+		msleep(500);
+		watchdog_reload();
+
+		msleep(500);
+		watchdog_reload();
+
+		msleep(500);
+		watchdog_reload();
+
+		if ((gpio_get_level(GPIO_EN_PP3300) == 1) &&
+		    (gpio_get_level(GPIO_PP3300_PG) == 0))
+			chipset_force_shutdown();
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, shutdown_system_when_PP3300_OVP, HOOK_PRIO_DEFAULT);
