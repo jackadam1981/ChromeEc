@@ -951,8 +951,9 @@ wait_for_it:
 			sleep_usec = CHARGE_POLL_PERIOD_SHORT;
 		else if (sleep_usec <= 0) {
 			/* default values depend on the state */
-			if (curr.state == ST_IDLE ||
-			    curr.state == ST_DISCHARGE) {
+			if (!curr.ac &&
+			    (curr.state == ST_IDLE ||
+			    curr.state == ST_DISCHARGE)) {
 				/* If AP is off, we can sleep a long time */
 				if (chipset_in_state(CHIPSET_STATE_ANY_OFF |
 						     CHIPSET_STATE_ANY_SUSPEND))
