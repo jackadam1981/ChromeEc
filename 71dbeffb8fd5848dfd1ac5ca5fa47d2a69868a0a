@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "14ee4c0e_09195033",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-12-28T05:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd7cd89b_faa4ee47",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "71dbeffb8fd5848dfd1ac5ca5fa47d2a69868a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56191eb3_ea165b0f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-21T08:18:09Z",
       "side": 1,
       "message": "Can you specifically say it\u0027s lid accel?",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 18
+      },
+      "revId": "71dbeffb8fd5848dfd1ac5ca5fa47d2a69868a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dac6fe9_72b071c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2017-12-28T05:52:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56191eb3_ea165b0f",
       "range": {
         "startLine": 9,
         "startChar": 12,
