@@ -142,6 +142,22 @@ void anx74xx_cable_det_interrupt(enum gpio_signal signal)
 /* Base detection and debouncing */
 #define BASE_DETECT_DEBOUNCE_US (20 * MSEC)
 
+static uint64_t base_detect_debounce_time;
+
+static void base_detect_deferred(void);
+DECLARE_DEFERRED(base_detect_deferred);
+
+enum base_status {
+	BASE_UNKNOWN = 0,
+	BASE_DISCONNECTED = 1,
+	BASE_CONNECTED = 2,
+};
+
+static enum base_status current_base_status;
+
+#ifndef BOARD_LUX
+/* Base detection code for poppy/soraka (non-lux). */
+
 /*
  * If the base status is unclear (i.e. not within expected ranges, read
  * the ADC value again every 500ms.
@@ -179,19 +195,6 @@ void anx74xx_cable_det_interrupt(enum gpio_signal signal)
 #define BASE_DETECT_PULSE_MIN_US 400
 #define BASE_DETECT_PULSE_MAX_US 650
 
-static uint64_t base_detect_debounce_time;
-
-static void base_detect_deferred(void);
-DECLARE_DEFERRED(base_detect_deferred);
-
-enum base_status {
-	BASE_UNKNOWN = 0,
-	BASE_DISCONNECTED = 1,
-	BASE_CONNECTED = 2,
-};
-
-static enum base_status current_base_status;
-
 /*
  * This function is called whenever there is a change in the base detect
  * status. Actions taken include:
@@ -218,24 +221,6 @@ static void base_detect_change(enum base_status status)
 /* Measure detection pin pulse duration (used to wake AP from deep S3). */
 static uint64_t pulse_start;
 static uint32_t pulse_width;
-
-static int command_attach_base(int argc, char **argv)
-{
-	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
-	tablet_set_mode(0);
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(attachbase, command_attach_base,
-		NULL, "Simulate attach base");
-
-static int command_detach_base(int argc, char **argv)
-{
-	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
-	tablet_set_mode(1);
-	return EC_SUCCESS;
-}
-DECLARE_CONSOLE_COMMAND(detachbase, command_detach_base,
-		NULL, "Simulate detach base");
 
 static void print_base_detect_value(int v, int tmp_pulse_width)
 {
@@ -339,6 +324,194 @@ static void base_disable(void)
 	gpio_disable_interrupt(GPIO_BASE_DET_A);
 	base_detect_change(BASE_DISCONNECTED);
 }
+
+#else /* BOARD_LUX */
+/* Base detection code for lux. */
+
+/*
+ * If the base status is unclear (i.e. not within expected ranges, read
+ * the ADC value again every 500ms.
+ */
+#define BASE_DETECT_RETRY_US (500 * MSEC)
+
+/*
+ * When base is disconnected, and gets connected:
+ * Lid has 1M pull-up, base has 200K pull-down, so the ADC
+ * value should be around 200/(200+1000)*3300 = 550.
+ *
+ * Idle value should be ~3300: lid has 1M pull-up, and nothing else (i.e. ADC
+ * maxing out at 2813).
+ */
+#define BASE_DISCONNECT_DETECT_MIN_MV 450
+#define BASE_DISCONNECT_DETECT_MAX_MV 600
+
+#define BASE_DISCONNECT_MIN_MV 2800
+#define BASE_DISCONNECT_MAX_MV ADC_MAX_VOLT+1
+
+/*
+ * When base is connected, then gets disconnected:
+ * Lid has 1M pull-up, lid has 13.3K pull-down, so the ADC
+ * value should be around 13.3/(13.3+1000)*3300 = 43.
+ *
+ * Idle level when connected should be:
+ * Lid has 13.3K pull-down, base has 5.1K pull-up, so the ADC value should be
+ * around 13.3/(13.3+5.1)*3300 = 2385 (actual value is 2346 as there is still
+ * a 1M pull-up on lid, and 200K pull-down on base).
+ */
+#define BASE_CONNECT_DETECT_MIN_MV 30
+#define BASE_CONNECT_DETECT_MAX_MV 50
+
+#define BASE_CONNECT_MIN_MV 2250
+#define BASE_CONNECT_MAX_MV 2400
+
+/*
+ * This function is called whenever there is a change in the base detect
+ * status. Actions taken include:
+ * 1. Change in power to base
+ * 2. Indicate mode change to host.
+ * 3. Indicate tablet mode to host. Current assumption is that if base is
+ * disconnected then the system is in tablet mode, else if the base is
+ * connected, then the system is not in tablet mode.
+ */
+static void base_detect_change(enum base_status status)
+{
+	int connected = (status == BASE_CONNECTED);
+
+	if (current_base_status == status)
+		return;
+
+	CPRINTS("Base %sconnected", connected ? "" : "not ");
+
+	/* Activate base power, enable pull-down. */
+	gpio_set_level(GPIO_PPVAR_VAR_BASE, connected);
+	gpio_set_level(GPIO_EC_COMM_PD, !connected);
+
+	/*
+	 * Wake the charger task (it is responsible for providing OTG power to
+	 * the base if required).
+	 */
+	task_wake(TASK_ID_CHARGER);
+
+	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+	tablet_set_mode(!connected);
+	current_base_status = status;
+}
+
+static void print_base_detect_value(int v)
+{
+	CPRINTS("%s = %d (%d)", adc_channels[ADC_BASE_DET].name, v,
+		current_base_status);
+}
+
+static void base_detect_deferred(void)
+{
+	uint64_t time_now = get_time().val;
+	int v;
+
+	if (base_detect_debounce_time > time_now) {
+		hook_call_deferred(&base_detect_deferred_data,
+				   base_detect_debounce_time - time_now);
+		return;
+	}
+
+	v = adc_read_channel(ADC_BASE_DET);
+	if (v == ADC_READ_ERROR)
+		return;
+
+	if (current_base_status == BASE_DISCONNECTED) {
+		if (v >= BASE_DISCONNECT_DETECT_MIN_MV &&
+		    v <= BASE_DISCONNECT_DETECT_MAX_MV) {
+			print_base_detect_value(v);
+			base_detect_change(BASE_CONNECTED);
+			return;
+		} else if (v >= BASE_DISCONNECT_MIN_MV &&
+			   v <= BASE_DISCONNECT_MAX_MV) {
+			CPRINTF("Disconnected.");
+			print_base_detect_value(v);
+			return;
+		}
+	} else {
+		/* Base connected, or status unknown. */
+		if (current_base_status == BASE_UNKNOWN &&
+				gpio_get_level(GPIO_EC_COMM_PD)) {
+			/*
+			 * If status is unknown, activate pull-down: that should
+			 * give us a clear indicator if base is connected during
+			 * the next polling.
+			 */
+			gpio_set_level(GPIO_EC_COMM_PD, 0);
+		} else if (v >= BASE_CONNECT_DETECT_MIN_MV &&
+		    v <= BASE_CONNECT_DETECT_MAX_MV) {
+			print_base_detect_value(v);
+			base_detect_change(BASE_DISCONNECTED);
+			return;
+		} else if (v >= BASE_CONNECT_MIN_MV &&
+			   v <= BASE_CONNECT_MAX_MV) {
+			CPRINTF("Connected.");
+			print_base_detect_value(v);
+			if (current_base_status == BASE_UNKNOWN)
+				base_detect_change(BASE_CONNECTED);
+			return;
+		}
+	}
+
+	CPRINTF("Unclear.");
+	print_base_detect_value(v);
+	/* Unclear base status, schedule again in a while. */
+	hook_call_deferred(&base_detect_deferred_data,
+				   BASE_DETECT_RETRY_US);
+}
+
+static inline int detect_pin_connected(enum gpio_signal det_pin)
+{
+	return gpio_get_level(det_pin) == 0;
+}
+
+void base_detect_interrupt(enum gpio_signal signal)
+{
+	uint64_t time_now = get_time().val;
+
+	if (base_detect_debounce_time <= time_now)
+		hook_call_deferred(&base_detect_deferred_data,
+				   BASE_DETECT_DEBOUNCE_US);
+
+	base_detect_debounce_time = time_now + BASE_DETECT_DEBOUNCE_US;
+}
+
+static void base_enable(void)
+{
+	/* Enable base detection interrupt. */
+	base_detect_debounce_time = get_time().val;
+	hook_call_deferred(&base_detect_deferred_data, 0);
+	gpio_enable_interrupt(GPIO_BASE_DET_A);
+}
+
+static void base_disable(void)
+{
+	/* Disable base detection interrupt and disable power to base. */
+	gpio_disable_interrupt(GPIO_BASE_DET_A);
+	base_detect_change(BASE_DISCONNECTED);
+}
+
+#endif /* BOARD_LUX */
+
+static int command_attach_base(int argc, char **argv)
+{
+	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+	tablet_set_mode(0);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(attachbase, command_attach_base,
+		NULL, "Simulate attach base");
+
+static int command_detach_base(int argc, char **argv)
+{
+	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+	tablet_set_mode(1);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(detachbase, command_detach_base,
+		NULL, "Simulate detach base");
 
 #include "gpio_list.h"
 
