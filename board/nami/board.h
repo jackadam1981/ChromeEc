@@ -13,6 +13,7 @@
  * TODO: Remove this config before production.
  */
 #define CONFIG_SYSTEM_UNLOCKED
+#define CONFIG_USB_PD_DEBUG_LEVEL 2
 
 /* EC */
 #define CONFIG_ADC
