@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "730fd54a_baf55aaa",
+        "filename": "chip/stm32/spi_master-stm32h7.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-28T19:21:58Z",
+      "side": 1,
+      "message": "If CONFIG_STM32_SPI1_MASTER isn\u0027t defined then port \u003d 0 param to spi_enable() corresponds to SPI2?",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "7d265c9d2b80aacc36ede77b6f8cbf674e7a0ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "521fce96_337e90d3",
+        "filename": "chip/stm32/spi_master-stm32h7.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-28T19:21:58Z",
+      "side": 1,
+      "message": "This function doesn\u0027t grab the mutex (fp_command_passthru() seems to be the only external caller). Is it going to be a problem?",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 25
+      },
+      "revId": "7d265c9d2b80aacc36ede77b6f8cbf674e7a0ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
