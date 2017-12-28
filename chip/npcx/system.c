@@ -499,7 +499,17 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	/* Initialize watchdog */
 	NPCX_TWCFG = 0; /* Select T0IN clock as watchdog prescaler clock */
 	SET_BIT(NPCX_TWCFG, NPCX_TWCFG_WDCT0I);
+#if defined(BOARD_REEF) || defined(BOARD_SNAPPY)
+	/*
+	 * In order to extend the occurred time of watchdog to 500 ms after
+	 * wake-up from hibernating, keep prescaler ratio timer0 and watchdog
+	 * clock to 1:1024 and 1:8.
+	 */
+	NPCX_TWCP = 0x0A;
+	NPCX_WDCP = 0x03;
+#else
 	NPCX_TWCP = 0x00; /* Keep prescaler ratio timer0 clock to 1:1 */
+#endif
 	NPCX_TWDT0 = 0x00; /* Set internal counter and prescaler */
 
 	/* Disable interrupt */
@@ -528,7 +538,6 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	 */
 	if (seconds || microseconds)
 		system_set_rtc_alarm(seconds, microseconds);
-
 
 	/* execute hibernate func depend on chip series */
 	__hibernate_npcx_series();
