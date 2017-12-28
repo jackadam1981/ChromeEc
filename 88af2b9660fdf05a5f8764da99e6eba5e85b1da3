@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e63e07c_2d6a01f7",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-28T17:20:05Z",
+      "side": 1,
+      "message": "#include \"common.h\" instead",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "88af2b9660fdf05a5f8764da99e6eba5e85b1da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14d14df9_c5f148e7",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-28T17:20:05Z",
+      "side": 1,
+      "message": "Note that not using aligned host commands will expand code size on the master by 1-3KB.\n\nThat may be ok for the current board, but it is likely to cause problems in the future.\n\nI thought you were going to pad out the packets to 32-bit boundaries?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 3
+      },
+      "revId": "88af2b9660fdf05a5f8764da99e6eba5e85b1da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1040f089_3c3c8bb4",
+        "filename": "common/ec_ec_comm_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-28T17:20:05Z",
+      "side": 1,
+      "message": "command?",
+      "range": {
+        "startLine": 126,
+        "startChar": 42,
+        "endLine": 126,
+        "endChar": 50
+      },
+      "revId": "88af2b9660fdf05a5f8764da99e6eba5e85b1da3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
