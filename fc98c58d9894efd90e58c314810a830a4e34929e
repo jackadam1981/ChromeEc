@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d425f8e_60a0efc2",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-28T01:58:04Z",
+      "side": 1,
+      "message": "battery?\n\n(Batter-backed registers save their state to custom-shaped pancakes...)",
+      "range": {
+        "startLine": 248,
+        "startChar": 39,
+        "endLine": 248,
+        "endChar": 45
+      },
+      "revId": "fc98c58d9894efd90e58c314810a830a4e34929e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2f59db2_e831ceb0",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-28T01:58:04Z",
+      "side": 1,
+      "message": "Extra blank line?",
+      "range": {
+        "startLine": 558,
+        "startChar": 0,
+        "endLine": 558,
+        "endChar": 0
+      },
+      "revId": "fc98c58d9894efd90e58c314810a830a4e34929e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96dfa319_4cb11515",
+        "filename": "chip/mchp/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-28T01:58:04Z",
+      "side": 1,
+      "message": "Still?",
+      "range": {
+        "startLine": 693,
+        "startChar": 3,
+        "endLine": 694,
+        "endChar": 23
+      },
+      "revId": "fc98c58d9894efd90e58c314810a830a4e34929e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e958ef8_584f0b82",
+        "filename": "chip/mchp/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-28T01:58:04Z",
+      "side": 1,
+      "message": "Extra blank line?",
+      "range": {
+        "startLine": 697,
+        "startChar": 0,
+        "endLine": 697,
+        "endChar": 0
+      },
+      "revId": "fc98c58d9894efd90e58c314810a830a4e34929e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
