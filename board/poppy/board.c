@@ -364,6 +364,24 @@ static void base_disable(void)
 #define BASE_CONNECT_MIN_MV 2250
 #define BASE_CONNECT_MAX_MV 2400
 
+/**
+ * Board-specific routine to indicate if the base is connected.
+ */
+int board_is_base_connected()
+{
+	return current_base_status == BASE_CONNECTED;
+}
+
+/**
+ * Board-specific routine to enable power distribution between lid and base
+ * (current can flow both ways).
+ */
+void board_enable_base_power(int enable)
+{
+	CPRINTS("Base power %sabled", enable ? "en" : "dis");
+	gpio_set_level(GPIO_PPVAR_VAR_BASE, enable);
+}
+
 /*
  * This function is called whenever there is a change in the base detect
  * status. Actions taken include:
@@ -382,13 +400,15 @@ static void base_detect_change(enum base_status status)
 
 	CPRINTS("Base %sconnected", connected ? "" : "not ");
 
-	/* Activate base power, enable pull-down. */
-	gpio_set_level(GPIO_PPVAR_VAR_BASE, connected);
+	/* Enable pull-down if connected. */
 	gpio_set_level(GPIO_EC_COMM_PD, !connected);
+	/* Disable power to/from base as quickly as possible. */
+	if (!connected)
+		board_enable_base_power(0);
 
 	/*
-	 * Wake the charger task (it is responsible for providing OTG power to
-	 * the base if required).
+	 * Wake the charger task (it is responsible for enabling power to the
+	 * base, and providing OTG power to the base if required).
 	 */
 	task_wake(TASK_ID_CHARGER);
 
@@ -447,10 +467,11 @@ static void base_detect_deferred(void)
 			return;
 		} else if (v >= BASE_CONNECT_MIN_MV &&
 			   v <= BASE_CONNECT_MAX_MV) {
-			CPRINTF("Connected.");
-			print_base_detect_value(v);
-			if (current_base_status == BASE_UNKNOWN)
+			if (current_base_status == BASE_UNKNOWN) {
+				CPRINTF("Connected.");
+				print_base_detect_value(v);
 				base_detect_change(BASE_CONNECTED);
+			}
 			return;
 		}
 	}
