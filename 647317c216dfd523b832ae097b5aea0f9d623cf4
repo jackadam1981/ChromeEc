@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f38f4db5_629b8b1d",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-28T18:41:06Z",
+      "side": 1,
+      "message": "Why is this prototype needed?",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a0fd4ef3_ac39c485",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-28T18:41:06Z",
+      "side": 1,
+      "message": "You can move these down to the #ifdef CONFIG_CMD_PWR_AVG block below.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 37
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8bbb601_8fe5f8bd",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-28T18:41:06Z",
+      "side": 1,
+      "message": "May want to verify voltage_sample_count is non-zero.",
+      "range": {
+        "startLine": 312,
+        "startChar": 29,
+        "endLine": 312,
+        "endChar": 49
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1385b4eb_7ce834a1",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-28T18:41:06Z",
+      "side": 1,
+      "message": "This method of sampling is applicable to more than just smart battery, right? Did you add it here because some other batteries have better internal sampling mechanisms?",
+      "range": {
+        "startLine": 317,
+        "startChar": 12,
+        "endLine": 317,
+        "endChar": 30
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0743b373_6406ddc2",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-28T18:41:06Z",
+      "side": 1,
+      "message": "This isn\u0027t really the previous voltage, it\u0027s the oldest sample which you may now evict, right?",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 17
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef44b9ef_9bd27671",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-28T18:41:06Z",
+      "side": 1,
+      "message": "You may wish to add a comment or two to explain what you\u0027re doing here, eg. \"Evict oldest sample and update sum\".",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 325,
+        "endChar": 49
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca616b89_e78f0bfd",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-28T18:41:06Z",
+      "side": 1,
+      "message": "This seems too intrusive to turn on by default for all boards with smart battery. Can we leave this off by default, and maybe kick off sampling when an arg is passed to your console function?",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 63
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93c584f9_190b4cac",
+        "filename": "include/battery.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2017-12-28T18:41:06Z",
+      "side": 1,
+      "message": "Let\u0027s remove this.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
