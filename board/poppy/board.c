@@ -378,8 +378,10 @@ int board_is_base_connected()
  */
 void board_enable_base_power(int enable)
 {
-	CPRINTS("Base power %sabled", enable ? "en" : "dis");
+	CPRINTS("Base power %sabled (ALWAYS ON)", enable ? "en" : "dis");
+#if 0
 	gpio_set_level(GPIO_PPVAR_VAR_BASE, enable);
+#endif
 }
 
 /*
