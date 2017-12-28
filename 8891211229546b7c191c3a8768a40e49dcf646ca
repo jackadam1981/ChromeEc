@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ece12e72_5bb1dd4b",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-28T23:50:27Z",
+      "side": 1,
+      "message": "Coding standards nit: If one clause has {} they should all use {}",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 41
+      },
+      "revId": "8891211229546b7c191c3a8768a40e49dcf646ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4f22222_b8a1cfd1",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2017-12-28T23:50:27Z",
+      "side": 1,
+      "message": "It would be useful to print a warning on any mismatch, since it means one of the ports will be running slower than it wants.\n\nAlso, does this do the wrong thing on a sysjump if RO configures a port for 100kbps and then RW configures it for 400kbps?\n\nCould just do:\n\nint controller_kbps[MAX_CONTROLLERS] \u003d {0};\n\nkbps \u003d i2c_ports[i].kbps;\nif (controller_kbps[controller] \u0026\u0026 controller_kbps[controller] !\u003d kbps) {\n  CPRINTS(\"i2c_init(): controller %d speed conflict: %d !\u003d %d\",\n                  controller, kbps, controller_kbps[controller]);\n  kbps \u003d MIN(kbps, controller_kbps[controller]);\n}\ncontroller_kbps[controller] \u003d kbps;",
+      "range": {
+        "startLine": 573,
+        "startChar": 2,
+        "endLine": 573,
+        "endChar": 4
+      },
+      "revId": "8891211229546b7c191c3a8768a40e49dcf646ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
