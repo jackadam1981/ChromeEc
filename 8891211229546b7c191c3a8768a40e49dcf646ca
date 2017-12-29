@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "323e96f5_fca53267",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1252031
+      },
+      "writtenOn": "2017-12-29T02:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ece12e72_5bb1dd4b",
+      "range": {
+        "startLine": 470,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 41
+      },
+      "revId": "8891211229546b7c191c3a8768a40e49dcf646ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4f22222_b8a1cfd1",
         "filename": "chip/mchp/i2c.c",
         "patchSetId": 2
