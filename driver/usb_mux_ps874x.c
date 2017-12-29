@@ -33,20 +33,19 @@ static int ps874x_init(int i2c_addr)
 
 	/*
 	 * Verify revision / chip ID registers.
-	 * From Parade: PS8743 may have REVISION_ID1 as 0 or 1,
-	 * PS8740 may have REVISION_ID2 as 0 or 1,
-	 * 1 is derived from 0 and have same functionality.
+	 * From Parade: PS8743 may have REVISION_ID1 as 0 or 1
+	 * Rev 1 is derived from Rev 0 and have same functionality.
 	 */
 	res = ps874x_read(i2c_addr, PS874X_REG_REVISION_ID1, &val);
 	if (res)
 		return res;
-	if (val < PS874X_REVISION_ID1)
+	if (val > PS874X_REVISION_ID1)
 		return EC_ERROR_UNKNOWN;
 
 	res = ps874x_read(i2c_addr, PS874X_REG_REVISION_ID2, &val);
 	if (res)
 		return res;
-	if (val < PS874X_REVISION_ID2)
+	if (val != PS874X_REVISION_ID2)
 		return EC_ERROR_UNKNOWN;
 
 	res = ps874x_read(i2c_addr, PS874X_REG_CHIP_ID1, &val);
