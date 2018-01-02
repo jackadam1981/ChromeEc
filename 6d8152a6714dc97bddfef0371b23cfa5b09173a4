@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0d0ca49_53078235",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-01-02T23:53:30Z",
+      "side": 1,
+      "message": "this logic only does opendrain high.\ndo we care about opendrain low?",
+      "revId": "6d8152a6714dc97bddfef0371b23cfa5b09173a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af599b7f_a83a8e8b",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-01-02T23:53:30Z",
+      "side": 1,
+      "message": "this sequence still has a short window of value high and output enable, when going from 1 to 0\n\ncan be avoided by never setting the gpio bit to 1",
+      "revId": "6d8152a6714dc97bddfef0371b23cfa5b09173a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af586cb0_6271e6a9",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-01-02T23:53:30Z",
+      "side": 1,
+      "message": "this also has potential window where gpio bit can be 1 and output enabled",
+      "revId": "6d8152a6714dc97bddfef0371b23cfa5b09173a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
