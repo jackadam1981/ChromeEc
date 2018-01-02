@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b06d3e0_a136db86",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-01-02T23:38:52Z",
+      "side": 0,
+      "message": "I get that there is a concern about the max voltage being too low, but the 0.5% margin was added due to voltage regulator accuracy and the concern that it could exceed the max allowed voltage. Would it be better to set this TARGET_WITH_MARGIN(13200, 2)?",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 46
+      },
+      "revId": "f166ba9cb5b9469a7f8b06eedbdcbac602d6c09c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
