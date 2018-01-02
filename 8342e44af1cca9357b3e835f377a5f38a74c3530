@@ -16,6 +16,23 @@
       "revId": "8342e44af1cca9357b3e835f377a5f38a74c3530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f6690cf_f962e029",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-02T17:35:15Z",
+      "side": 1,
+      "message": "Are the sensor off in S3? If so, EC won\u0027t be able to calculate lid angle in S3. We won\u0027t be able to disable resume from keyboard while in table mode.\nIf so, given in S0, lid angle calculation is done by the AP, we can remove lid angle calculation altogether.",
+      "revId": "8342e44af1cca9357b3e835f377a5f38a74c3530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
