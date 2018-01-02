@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81c7fd6a_55064122",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-01-02T23:34:19Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this have been changed to LED_OFF? That will result in blinking amber when the battery is not present.",
+      "range": {
+        "startLine": 94,
+        "startChar": 36,
+        "endLine": 94,
+        "endChar": 47
+      },
+      "revId": "f2f709c334527cfb7412d7c75c7e2f4bfea793ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
