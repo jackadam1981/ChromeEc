@@ -188,11 +188,13 @@ const struct ppc_config_t ppc_chips[] = {
 		.i2c_addr = SN5S330_ADDR0,
 		.drv = &sn5s330_drv
 	},
+#if 0
 	{
 		.i2c_port = I2C_PORT_TCPC1,
 		.i2c_addr = SN5S330_ADDR0,
 		.drv = &sn5s330_drv,
 	},
+#endif /* 0 */
 #ifdef BOARD_ZOOMBINI
 	{
 		.i2c_port = I2C_PORT_TCPC2,
@@ -233,12 +235,14 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
 
+#if 0
 	{
 		.i2c_host_port = I2C_PORT_TCPC1,
 		.i2c_slave_addr = 0x16,
 		.drv = &tcpci_tcpm_drv,
 		.pol = TCPC_ALERT_ACTIVE_LOW,
 	},
+#endif /* 0 */
 
 #ifdef BOARD_ZOOMBINI
 	{
@@ -258,11 +262,13 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
 
+#if 0
 	{
 		.port_addr = 1,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
+#endif /* 0 */
 
 #ifdef BOARD_ZOOMBINI
 	{
@@ -319,7 +325,9 @@ static void board_init(void)
 
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
+#if 0
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_L);
+#endif /* 0 */
 #ifdef BOARD_ZOOMBINI
 	gpio_enable_interrupt(GPIO_USB_C2_PD_INT_L);
 
