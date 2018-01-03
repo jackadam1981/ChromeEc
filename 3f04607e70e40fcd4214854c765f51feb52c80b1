@@ -16,6 +16,24 @@
       "revId": "3f04607e70e40fcd4214854c765f51feb52c80b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "290ae4ca_da86cf45",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-03T02:13:41Z",
+      "side": 1,
+      "message": "I am not sure how this is better that what happens now in gpio_set_flags_by_mask() which is called during init, that is, where would the code drive 1 unless this is not an open drain pin?\n\nAlso, note that this function does not have access to flags (easy enough to change of course).",
+      "parentUuid": "76f43e0c_6c2505f3",
+      "revId": "3f04607e70e40fcd4214854c765f51feb52c80b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
