@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76f43e0c_6c2505f3",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-01-03T01:35:16Z",
+      "side": 1,
+      "message": "most defensive coding would be:\n\nif (g-\u003eflags \u0026 GPIO_OPEN_DRAIN) {\n  set_one_gpio_bit(g-\u003eport, g-\u003emask, 0); // make sure to never drive 1\n  if (value) {\n    GR_GPIO_CLRDOUTEN(g-\u003eport) \u003d g-\u003emask; // float\n  } else {\n    GR_GPIO_SETDOUTEN(g-\u003eport) \u003d g-\u003emask; // drive\n  }\n} else {\n  set_one_gpio_bit(g-\u003eport, g-\u003emask, value); // drive 0 or 1\n}",
+      "revId": "3f04607e70e40fcd4214854c765f51feb52c80b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
