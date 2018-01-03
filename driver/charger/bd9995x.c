@@ -1328,7 +1328,7 @@ DECLARE_CONSOLE_COMMAND(bd9995x, console_command_bd9995x,
 			"Read or write a charger register");
 #endif /* CONFIG_CMD_CHARGER */
 
-#ifdef CONFIG_CMD_CHARGER_PSYS
+#ifdef CONFIG_CHARGER_PSYS_READ
 static int bd9995x_psys_charger_adc(void)
 {
 	int i;
@@ -1392,7 +1392,7 @@ static int console_command_psys(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(psys, console_command_psys,
 			NULL,
 			"Get the system power in mW");
-#endif /* CONFIG_CMD_CHARGER_PSYS */
+#endif /* CONFIG_CHARGER_PSYS_READ */
 
 #ifdef CONFIG_CMD_CHARGER_ADC_AMON_BMON
 static int bd9995x_amon_bmon_chg_adc(void)
