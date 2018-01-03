@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0487bc7b_c69f5954",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 4714,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-03T21:22:21Z",
+      "side": 1,
+      "message": "current is a reserved keyword in the kernel, see crbug/798830",
+      "revId": "752851a5240469b2f5b02fb7c57fea3776c830c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
