@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4c636491_6b3b1e52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-03T01:15:41Z",
+      "side": 1,
+      "message": "And I just tested the patch: it works for that test case.",
+      "parentUuid": "dea337b5_9b685746",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "7db7e911e438736b88c4cb2b619b7cdcef08135d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4faef4e_da31c57b",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
