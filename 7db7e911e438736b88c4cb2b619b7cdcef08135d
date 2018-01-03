@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb063cea_e68db494",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-01-03T00:54:57Z",
+      "side": 1,
+      "message": "Doesn\u0027t this need to have the adapter connected with the device in s5?\n\nShould you also check that we don\u0027t get the second enter-mode in the s3-\u003eS0 case?",
+      "range": {
+        "startLine": 14,
+        "startChar": 14,
+        "endLine": 14,
+        "endChar": 20
+      },
+      "revId": "7db7e911e438736b88c4cb2b619b7cdcef08135d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4faef4e_da31c57b",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3426,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-01-03T00:54:57Z",
+      "side": 1,
+      "message": "Nit: should these all be of the form \"PD:S0-\u003eS3\" so it is clear where they come from?",
+      "range": {
+        "startLine": 3426,
+        "startChar": 10,
+        "endLine": 3426,
+        "endChar": 12
+      },
+      "revId": "7db7e911e438736b88c4cb2b619b7cdcef08135d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
