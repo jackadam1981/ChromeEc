@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1be6ed03_1bc4abc4",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-03T17:48:01Z",
+      "side": 1,
+      "message": "not necessarily: if you know you are going to insert a timestamp during the call of the motion_sense task, no need to insert several timestamp. For instance:\n\n\n+-----\n| sensor 1 datum\n+-----\n| TS\n+-----\n| sensor 2 datum\n+-----\n| TS\n+-----\n| sensor 3 datum\n+-----\n| TS\n+-----\nis equivalent to\n\n+-----\n| sensor 1 datum\n+-----\n| sensor 2 datum\n+-----\n| sensor 3 datum\n+-----\n| TS\n+-----\nThe later save spaces.",
+      "revId": "9b79c73bccb2b7d1cdfb4b6fee0ddcf82947f89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7edd32c1_549173f2",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-03T17:48:01Z",
+      "side": 1,
+      "message": "There is a problem if you have append to process 2 samples or more here (unlikely but possible):\nYou will have\n+------------\n| datum 1\n+------------\n| last_interrupt_timestamp\n+------------\n| datum 2\n+------------\n| last_interrupt_timestamp\n+------------\n\nCTS will complain there is no gap between datum 1 and 2.\n\nyou want\n+------------\n| datum 1\n+------------\n| datum 2\n+------------\n| last_interrupt_timestamp\n+------------\n\ncros ec ring will insert a gap; it will be erroneous as the gap will be less than the ODR would have predicted, but we will pass CTS tests.",
+      "revId": "9b79c73bccb2b7d1cdfb4b6fee0ddcf82947f89d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
