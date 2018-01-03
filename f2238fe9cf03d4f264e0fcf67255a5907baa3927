@@ -16,6 +16,24 @@
       "revId": "f2238fe9cf03d4f264e0fcf67255a5907baa3927",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc5dd997_efb7c213",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-03T01:11:00Z",
+      "side": 1,
+      "message": "the assumption in this code before this patch is that it is disabled by default (output must be enabled), this is why I did not add it.\n\nIsn\u0027t it guaranteed by H1 hardware that it comes out of reset with outputs disabled? \n\nBut I guess RO could mess up with these too, let me add it.",
+      "parentUuid": "6681b80a_ff775d27",
+      "revId": "f2238fe9cf03d4f264e0fcf67255a5907baa3927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
