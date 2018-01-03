@@ -3767,6 +3767,9 @@ static int cmd_motionsense(int argc, char **argv)
 		case MOTIONSENSE_TYPE_BARO:
 			printf("barometer\n");
 			break;
+		case MOTIONSENSE_TYPE_SYNC:
+			printf("sync\n");
+			break;
 		default:
 			printf("unknown\n");
 		}
@@ -3778,6 +3781,9 @@ static int cmd_motionsense(int argc, char **argv)
 			break;
 		case MOTIONSENSE_LOC_LID:
 			printf("lid\n");
+			break;
+		case MOTIONSENSE_LOC_CAMERA:
+			printf("camera\n");
 			break;
 		default:
 			printf("unknown\n");
@@ -3811,6 +3817,9 @@ static int cmd_motionsense(int argc, char **argv)
 			break;
 		case MOTIONSENSE_CHIP_OPT3001:
 			printf("opt3001\n");
+			break;
+		case MOTIONSENSE_CHIP_GPIO:
+			printf("gpio\n");
 			break;
 		default:
 			printf("unknown\n");
