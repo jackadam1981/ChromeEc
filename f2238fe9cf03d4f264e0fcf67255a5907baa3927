@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6681b80a_ff775d27",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-01-03T01:06:12Z",
+      "side": 1,
+      "message": "Shouldn\u0027t there be code for the case OPEN_DRAIN and GPIO_HIGH?\nThat would do CLRDOUTEN(port) \u003d mask",
+      "revId": "f2238fe9cf03d4f264e0fcf67255a5907baa3927",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
