@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29b6404e_f982e7cf",
+        "filename": "driver/temp_sensor/sb_tsi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-03T18:48:01Z",
+      "side": 1,
+      "message": "Delete \"last polled\", since no longer polling?",
+      "range": {
+        "startLine": 37,
+        "startChar": 11,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "bd98e2914f8e2fd051f5367c397582cbb81d4716",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
