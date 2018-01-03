@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f98376f8_70f74871",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-03T18:54:39Z",
+      "side": 1,
+      "message": "You\u0027re right, adding the function prototype is the best way of solving this.",
+      "parentUuid": "d6cfcd20_1e1bfbc6",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8bbb601_8fe5f8bd",
         "filename": "driver/battery/smart.c",
         "patchSetId": 3
@@ -295,6 +319,30 @@
       "side": 1,
       "message": "I agree that it feels intrusive, but I don\u0027t understand the proposed alternative?\nAre you saying to kick off sampling on the first call to the function? in that case, we\u0027d have to check for count \u003d\u003d 0 or not in the console function and based on that kick it off? or is the suggestion something else?",
       "parentUuid": "ca616b89_e78f0bfd",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 63
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d7832c_bf3a07f5",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-03T18:54:39Z",
+      "side": 1,
+      "message": "We can do it as you suggest (kick off sampling with a call to hook_call_deferred(\u0026update_avg_voltage_data, 0) in your console function) based on sampling not having started yet (check for count \u003d\u003d 0, or use a \u0027sampling started\u0027 static variable) or with a \u0027start\u0027 argument to the console function, whichever way you think is more convenient. The idea is that we won\u0027t be constantly taking samples until we are asked, because most of the time we don\u0027t care about the sample data.",
+      "parentUuid": "1b59196b_84fc81f3",
       "range": {
         "startLine": 334,
         "startChar": 0,
