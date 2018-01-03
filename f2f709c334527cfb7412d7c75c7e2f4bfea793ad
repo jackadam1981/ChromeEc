@@ -22,6 +22,30 @@
       "revId": "f2f709c334527cfb7412d7c75c7e2f4bfea793ad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9420f730_aadd68e7",
+        "filename": "board/coral/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1138669
+      },
+      "writtenOn": "2018-01-03T02:09:47Z",
+      "side": 1,
+      "message": "Yes. you\u0027re right. Fixed it via the patch set 2 and will also wait for ODM\u0027s further verification. Thanks for catching this.",
+      "parentUuid": "81c7fd6a_55064122",
+      "range": {
+        "startLine": 94,
+        "startChar": 36,
+        "endLine": 94,
+        "endChar": 47
+      },
+      "revId": "f2f709c334527cfb7412d7c75c7e2f4bfea793ad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
