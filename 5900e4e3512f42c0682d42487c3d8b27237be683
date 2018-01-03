@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d0006ac_857c91ed",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-03T17:21:21Z",
+      "side": 1,
+      "message": "Enable output for push-pull (high or low), or open-drain low.",
+      "range": {
+        "startLine": 92,
+        "startChar": 6,
+        "endLine": 93,
+        "endChar": 50
+      },
+      "revId": "5900e4e3512f42c0682d42487c3d8b27237be683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e07a4cef_fa95dfa8",
+        "filename": "chip/g/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-03T17:21:21Z",
+      "side": 1,
+      "message": "Disable output for open-drain high to get a high-Z pin.",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 99,
+        "endChar": 12
+      },
+      "revId": "5900e4e3512f42c0682d42487c3d8b27237be683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
