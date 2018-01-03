@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "849a9d47_959834c7",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-03T09:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0fd4ef3_ac39c485",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 37
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6cfcd20_1e1bfbc6",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-03T09:29:36Z",
+      "side": 1,
+      "message": "I was having issues where I couldn\u0027t declare a deferred without it, since the function itself uses the deferred. Is there another way to solve this?",
+      "parentUuid": "f38f4db5_629b8b1d",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8bbb601_8fe5f8bd",
         "filename": "driver/battery/smart.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2017-12-28T18:41:06Z",
       "side": 1,
       "message": "May want to verify voltage_sample_count is non-zero.",
+      "range": {
+        "startLine": 312,
+        "startChar": 29,
+        "endLine": 312,
+        "endChar": 49
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "791a0762_1e32ae34",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-03T09:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8bbb601_8fe5f8bd",
       "range": {
         "startLine": 312,
         "startChar": 29,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "1732de3f_707c8b79",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-03T09:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0743b373_6406ddc2",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 17
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef44b9ef_9bd27671",
         "filename": "driver/battery/smart.c",
         "patchSetId": 3
@@ -128,6 +224,30 @@
       "writtenOn": "2017-12-28T18:41:06Z",
       "side": 1,
       "message": "You may wish to add a comment or two to explain what you\u0027re doing here, eg. \"Evict oldest sample and update sum\".",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 325,
+        "endChar": 49
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0082da0c_3cd6e0ab",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-03T09:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef44b9ef_9bd27671",
       "range": {
         "startLine": 323,
         "startChar": 1,
@@ -163,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "1b59196b_84fc81f3",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-03T09:29:36Z",
+      "side": 1,
+      "message": "I agree that it feels intrusive, but I don\u0027t understand the proposed alternative?\nAre you saying to kick off sampling on the first call to the function? in that case, we\u0027d have to check for count \u003d\u003d 0 or not in the console function and based on that kick it off? or is the suggestion something else?",
+      "parentUuid": "ca616b89_e78f0bfd",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 334,
+        "endChar": 63
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93c584f9_190b4cac",
         "filename": "include/battery.h",
         "patchSetId": 3
@@ -174,6 +318,30 @@
       "writtenOn": "2017-12-28T18:41:06Z",
       "side": 1,
       "message": "Let\u0027s remove this.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "647317c216dfd523b832ae097b5aea0f9d623cf4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5cab91a1_69efec80",
+        "filename": "include/battery.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-03T09:29:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93c584f9_190b4cac",
       "range": {
         "startLine": 77,
         "startChar": 0,
