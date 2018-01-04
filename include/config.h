@@ -121,6 +121,12 @@
  */
 #undef CONFIG_ACCEL_LIS2DH_INT_EVENT
 
+/* Sync event driver */
+#undef CONFIG_SYNC
+
+/* Simulate command for sync */
+#undef CONFIG_SYNC_COMMAND
+
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC
 
