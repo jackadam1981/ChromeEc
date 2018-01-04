@@ -1728,6 +1728,52 @@ static void process_rma(struct transfer_descriptor *td, const char *authcode)
 	printf("RMA unlock succeeded.\n");
 }
 
+/* Make sure /usr/sbin is part of PATH. */
+static void set_trunks_send_path(void)
+{
+	char const *ts_path = "/usr/sbin";
+	char *path = getenv("PATH");
+	const char *ts_path_location;
+	size_t ts_path_len = strlen(ts_path);
+	char *new_path;
+	char *addition;
+
+	if (!path) {
+		/* Set the only value and be done with it. */
+		setenv("PATH", ts_path, 1);
+		return;
+	}
+
+	/* Is /usr/sbin already in PATH? */
+	ts_path_location = strstr(path, ts_path);
+	if (ts_path_location) {
+		const char *ts_path_end = ts_path_location + ts_path_len;
+
+		if (((ts_path_location == path) ||
+		     (ts_path_location[-1] == ':')) &&
+		    (!ts_path_end[0] || (ts_path_end[0] == ':')))
+			/* Noting to do, PATH is right. */
+			return;
+	}
+
+	/*
+	 * Need to extend PATH. Old value, plus new string plus two chars for
+	 * the separator and the termination.
+	 */
+	new_path = malloc(strlen(path) + ts_path_len + 2 * sizeof(char));
+	if (!new_path) {
+		fprintf(stderr, "Failed to allocate room for new PATH\n");
+		exit(update_error);
+	}
+
+	strcpy(new_path, path);
+	addition = new_path + strlen(new_path);
+	*addition++ = ':';	/*  PATH separator. */
+	strcpy(addition, ts_path);
+	setenv("PATH", new_path, 1);
+	free(new_path);
+}
+
 int main(int argc, char *argv[])
 {
 	struct transfer_descriptor td;
@@ -1893,6 +1939,12 @@ int main(int argc, char *argv[])
 			perror("Could not open TPM");
 			exit(update_error);
 		}
+	} else {
+		/*
+		 * trunks_send will have to be used, make sure it is
+		 * available.
+		 */
+		set_trunks_send_path();
 	}
 
 	if (password)
