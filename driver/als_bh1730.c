@@ -83,17 +83,6 @@ static int bh1730_read_lux(const struct motion_sensor_t *s, vector_3_t v)
 		return EC_SUCCESS;
 }
 
-static int bh1730_set_range(const struct motion_sensor_t *s, int range,
-			     int rnd)
-{
-	return EC_SUCCESS;
-}
-
-static int bh1730_get_range(const struct motion_sensor_t *s)
-{
-	return 1;
-}
-
 static int bh1730_set_data_rate(const struct motion_sensor_t *s,
 				int rate, int roundup)
 {
@@ -110,22 +99,6 @@ static int bh1730_get_data_rate(const struct motion_sensor_t *s)
 	struct bh1730_drv_data_t *drv_data = BH1730_GET_DATA(s);
 
 	return drv_data->rate;
-}
-
-static int bh1730_set_offset(const struct motion_sensor_t *s,
-			const int16_t *offset,
-			int16_t    temp)
-{
-	return EC_SUCCESS;
-}
-
-static int bh1730_get_offset(const struct motion_sensor_t *s,
-			int16_t   *offset,
-			int16_t    *temp)
-{
-	*offset = 0;
-
-	return EC_SUCCESS;
 }
 
 /**
@@ -165,10 +138,6 @@ static int bh1730_init(const struct motion_sensor_t *s)
 const struct accelgyro_drv bh1730_drv = {
 	.init = bh1730_init,
 	.read = bh1730_read_lux,
-	.set_range = bh1730_set_range,
-	.get_range = bh1730_get_range,
-	.set_offset = bh1730_set_offset,
-	.get_offset = bh1730_get_offset,
 	.set_data_rate = bh1730_set_data_rate,
 	.get_data_rate = bh1730_get_data_rate,
 };
