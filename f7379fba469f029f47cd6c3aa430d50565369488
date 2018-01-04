@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a4bbc1c_8a68d4a1",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-04T23:47:07Z",
+      "side": 1,
+      "message": "Add a TODO until you have the device in hand.",
+      "revId": "f7379fba469f029f47cd6c3aa430d50565369488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d5cfd7a_19b9fbb5",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-04T23:47:07Z",
+      "side": 1,
+      "message": "SENSOR_ACTIVE_S0_S3 (base gyro and accel are the same chip).\nDon\u0027t worry about power consumption. Adding the gyro when in suspend mode (odr \u003d 0Hz),",
+      "revId": "f7379fba469f029f47cd6c3aa430d50565369488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c997aed_eb21dd49",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-04T23:47:07Z",
+      "side": 1,
+      "message": "given it is the same chip, rot_standard_def should be equal to the base accel one.",
+      "revId": "f7379fba469f029f47cd6c3aa430d50565369488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b692e14_54235479",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-04T23:47:07Z",
+      "side": 1,
+      "message": "missing fields,  min_frequency, max_frequency",
+      "revId": "f7379fba469f029f47cd6c3aa430d50565369488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
