@@ -16,6 +16,24 @@
       "revId": "752851a5240469b2f5b02fb7c57fea3776c830c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "646c1ec4_1ba57aa6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 4714,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-04T01:05:38Z",
+      "side": 1,
+      "message": "Argh, can we just fix the kernel instead? ,-) current_task would be a better name...\n\nAnyway, I\u0027ll probably do actual_voltage/current, for lack of better idea... CL:848460.",
+      "parentUuid": "0487bc7b_c69f5954",
+      "revId": "752851a5240469b2f5b02fb7c57fea3776c830c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
