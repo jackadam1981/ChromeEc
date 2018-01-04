@@ -46,6 +46,30 @@
       "revId": "f166ba9cb5b9469a7f8b06eedbdcbac602d6c09c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc69a52_d38c68e2",
+        "filename": "board/coral/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-01-04T05:19:41Z",
+      "side": 0,
+      "message": "Are you confident the batteries are tolerant of being charged at 13.2 * 1.005? Are you only concerned about the charging voltage being too low? If the higher voltage isn\u0027t a concern, then removing the margin would be fine. However, my concern is that we are then departing from what we\u0027ve done for other boards that use the bd9995x charger.",
+      "parentUuid": "069c90de_bee22916",
+      "range": {
+        "startLine": 118,
+        "startChar": 19,
+        "endLine": 118,
+        "endChar": 46
+      },
+      "revId": "f166ba9cb5b9469a7f8b06eedbdcbac602d6c09c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
