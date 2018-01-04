@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2a25fce_5197435b",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:50:39Z",
+      "side": 1,
+      "message": "rename: sync.c (it could be use for something else than V)",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52ecc724_ff3549df",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:50:39Z",
+      "side": 1,
+      "message": "return the current counter (to meet IIO ABI requirement, and be sure we are not missing interrupts).",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8e4d612_9aace9b2",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:50:39Z",
+      "side": 1,
+      "message": "There is a bug already to get rid of _range/_offset when it does nothing (crbug/761758). Can you handle it cleanly and get rid of this code?",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea1d036d_fcafb377",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:50:39Z",
+      "side": 1,
+      "message": "Add code for get/set_data_rate to disable the interrupt when not needed.",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57c384cf_5e8fecc1",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:50:39Z",
+      "side": 1,
+      "message": "always true.",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b07e909_c3043ec0",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:50:39Z",
+      "side": 1,
+      "message": "return if the int has not popped.",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11a611ce_c5e6c2ad",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:50:39Z",
+      "side": 1,
+      "message": "use a counter to be compliant with iio abi: \n\nWhat:\t\t/sys/bus/iio/devices/iio:deviceX/in_countY_raw\nKernelVersion:\t4.10\nContact:\tlinux-iio@vger.kernel.org\nDescription:\n\t\tRaw counter device counts from channel Y. For quadrature\n\t\tcounters, multiplication by an available [Y]_scale results in\n\t\tthe counts of a single quadrature signal phase from channel Y.",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19b243dd_afbc57e7",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:50:39Z",
+      "side": 1,
+      "message": "CONFIG_SYNC_GPIO instead of GPIO_VSYNC_INT",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c1aff46_7862192b",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:50:39Z",
+      "side": 1,
+      "message": "CONFIG_SYNC_GPIO \nWhen defined, driver sync is included.\nWhat if we need to monitor more than one gpio? just a todo, most probably.",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
