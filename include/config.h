@@ -121,6 +121,12 @@
  */
 #undef CONFIG_ACCEL_LIS2DH_INT_EVENT
 
+/* VSYNC gpio */
+#undef CONFIG_VSYNC
+
+/* Simulate command for vsync */
+#undef CONFIG_VSYNC_COMMAND
+
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC
 
