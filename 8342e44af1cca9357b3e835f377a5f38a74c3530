@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "e314c57a_72c72c64",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:13:26Z",
+      "side": 1,
+      "message": "see below for angle detection in S3.",
+      "revId": "8342e44af1cca9357b3e835f377a5f38a74c3530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f6690cf_f962e029",
         "filename": "board/grunt/board.c",
         "patchSetId": 5
@@ -48,6 +65,58 @@
       "side": 1,
       "message": "The sensors are currently on in S3.\n\nThe sensor power rail (PP1800_SENSOR) is controlled by EN_PP1800_SENSOR, which is connected to GPIO67 on the EC, and which defaults high when the EC is on.",
       "parentUuid": "7f6690cf_f962e029",
+      "revId": "8342e44af1cca9357b3e835f377a5f38a74c3530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "460cbb19_4578c977",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:13:26Z",
+      "side": 1,
+      "message": "If we want sensors usable in S3, we should set .active_mask \u003d SENSOR_ACTIVE_S0_S3. If you want them in S5 as well (battery tap), set .active_mask \u003d SENSOR_ACTIVE_S0_S3_S5.",
+      "parentUuid": "f7bb13a8_5215f79e",
+      "revId": "8342e44af1cca9357b3e835f377a5f38a74c3530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8d07ee8_1dfc1695",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:13:26Z",
+      "side": 1,
+      "message": "set odr !\u003d 0 for angle detection if needed in S3.",
+      "revId": "8342e44af1cca9357b3e835f377a5f38a74c3530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0b3a9c5_ddfe0408",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T19:13:26Z",
+      "side": 1,
+      "message": "If we went sensors powered in S3, we should remove this hook, and the resume hook as well.",
       "revId": "8342e44af1cca9357b3e835f377a5f38a74c3530",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
