@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cb41b530_943ab495",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-04T20:59:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2a25fce_5197435b",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52ecc724_ff3549df",
         "filename": "driver/vsync.c",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-04T19:50:39Z",
       "side": 1,
       "message": "return the current counter (to meet IIO ABI requirement, and be sure we are not missing interrupts).",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7a9ebf3_c5c08afc",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-04T20:59:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52ecc724_ff3549df",
       "revId": "4c25581e34b178f824fe62127d47ddece163d469",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "6b17b99c_f3375f2b",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-04T20:59:09Z",
+      "side": 1,
+      "message": "Done, see https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/850639",
+      "parentUuid": "a8e4d612_9aace9b2",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea1d036d_fcafb377",
         "filename": "driver/vsync.c",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2018-01-04T19:50:39Z",
       "side": 1,
       "message": "Add code for get/set_data_rate to disable the interrupt when not needed.",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "80292c27_7a5b7977",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-04T20:59:09Z",
+      "side": 1,
+      "message": "TODO",
+      "parentUuid": "ea1d036d_fcafb377",
       "revId": "4c25581e34b178f824fe62127d47ddece163d469",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "d5a23177_bd514480",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-04T20:59:09Z",
+      "side": 1,
+      "message": "Done, removed.",
+      "parentUuid": "57c384cf_5e8fecc1",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b07e909_c3043ec0",
         "filename": "driver/vsync.c",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2018-01-04T19:50:39Z",
       "side": 1,
       "message": "return if the int has not popped.",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7215cf3_8d262c8b",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-04T20:59:09Z",
+      "side": 1,
+      "message": "I think this is done. .. if you mean my /*Nothing to do*/ return.",
+      "parentUuid": "1b07e909_c3043ec0",
       "revId": "4c25581e34b178f824fe62127d47ddece163d469",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "17881103_f8d55143",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-04T20:59:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11a611ce_c5e6c2ad",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19b243dd_afbc57e7",
         "filename": "driver/vsync.c",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2018-01-04T19:50:39Z",
       "side": 1,
       "message": "CONFIG_SYNC_GPIO instead of GPIO_VSYNC_INT",
+      "revId": "4c25581e34b178f824fe62127d47ddece163d469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dceb066d_6ff94832",
+        "filename": "driver/vsync.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-04T20:59:09Z",
+      "side": 1,
+      "message": "I renamed it to GPIO_VSYNC_INT. Not sure I want to make a config option for this given that we already have hardcoded names for things like this (eg bmi160 interrupt pin).\n\nBut actually, the only reason I have the GPIO named in here is because i needed an argument for this function. I guess I don\u0027t have to give a real pin maybe?",
+      "parentUuid": "19b243dd_afbc57e7",
       "revId": "4c25581e34b178f824fe62127d47ddece163d469",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
