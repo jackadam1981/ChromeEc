@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8024b4ad_93bc2a50",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T21:16:36Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ca052e1_449ac9b0",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T21:16:36Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b01e81a0_ebe0ce4c",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T21:16:36Z",
+      "side": 1,
+      "message": "Define your own event",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ff96d67_aa67950e",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T21:16:36Z",
+      "side": 1,
+      "message": "I would remove load_fifo, you are already called in motion_irq_handler() and this sensor does not have its own fifo.",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c757739a_242ab5cc",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T21:16:36Z",
+      "side": 1,
+      "message": "given you are making the strong assumption of a single sync driver, make vector global, so that you don\u0027t have to set empty fields.",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ea388b2_c7e66ebf",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T21:16:36Z",
+      "side": 1,
+      "message": "s/3/1/, only one valid field.",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92160a18_ab09575f",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-04T21:16:36Z",
+      "side": 1,
+      "message": "set previous_interrupt_timestamp",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
