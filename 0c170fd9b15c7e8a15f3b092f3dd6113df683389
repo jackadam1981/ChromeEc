@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b618f914_85ecb5e3",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-05T04:46:20Z",
+      "side": 1,
+      "message": "sure, would be the right thing to do",
+      "parentUuid": "e990db76_e98e7aa2",
+      "range": {
+        "startLine": 1769,
+        "startChar": 1,
+        "endLine": 1772,
+        "endChar": 27
+      },
+      "revId": "0c170fd9b15c7e8a15f3b092f3dd6113df683389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45315cd0_d5238a93",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-05T04:33:11Z",
       "side": 1,
       "message": "Since trunks_send was invoked by popen, what about adding\n\n PATH\u003d$PATH:/usr/sbin\n\nin where the popen command was prepared?",
+      "range": {
+        "startLine": 1947,
+        "startChar": 2,
+        "endLine": 1947,
+        "endChar": 25
+      },
+      "revId": "0c170fd9b15c7e8a15f3b092f3dd6113df683389",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1ca8805_e1cf05a6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1947,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-05T04:46:20Z",
+      "side": 1,
+      "message": "I really like this idea, let me try that.",
+      "parentUuid": "45315cd0_d5238a93",
       "range": {
         "startLine": 1947,
         "startChar": 2,
