@@ -22,6 +22,30 @@
       "revId": "28c3b2beff09d9a5cc9730ce2ac4c2b6c7e2e5cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "543971b7_9f1a3cc9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-01-05T16:56:19Z",
+      "side": 0,
+      "message": "I think it\u0027s at most 1 sec as that\u0027s the max sleep time for the charger task main loop.",
+      "parentUuid": "6037da35_ab178ab5",
+      "range": {
+        "startLine": 1314,
+        "startChar": 8,
+        "endLine": 1314,
+        "endChar": 31
+      },
+      "revId": "28c3b2beff09d9a5cc9730ce2ac4c2b6c7e2e5cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
