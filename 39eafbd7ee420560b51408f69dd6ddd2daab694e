@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd488ab1_3487a904",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-05T04:36:23Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be included in this enum, it\u0027s not a functional transfer type.\n\nwhy not to have a flag in main() to indicate that both interfaces should be tried.",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 16
+      },
+      "revId": "39eafbd7ee420560b51408f69dd6ddd2daab694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85d9e8b5_2a5ee277",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1908,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-05T04:36:23Z",
+      "side": 1,
+      "message": "there is no need in this \u0027else\u0027 as exit never returns.",
+      "range": {
+        "startLine": 1908,
+        "startChar": 5,
+        "endLine": 1908,
+        "endChar": 11
+      },
+      "revId": "39eafbd7ee420560b51408f69dd6ddd2daab694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a22dbfa7_ca772676",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-05T04:36:23Z",
+      "side": 1,
+      "message": "not a big deal, but would be cleaner if this \u0027else\u0027 was replaced with \n\n} else if (td.ep_type \u003d\u003d dev_xfer)",
+      "range": {
+        "startLine": 1911,
+        "startChar": 4,
+        "endLine": 1911,
+        "endChar": 8
+      },
+      "revId": "39eafbd7ee420560b51408f69dd6ddd2daab694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
