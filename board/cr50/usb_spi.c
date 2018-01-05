@@ -20,10 +20,6 @@ static void disable_ec_ap_spi(void)
 	/* Configure SPI GPIOs */
 	gpio_set_level(GPIO_AP_FLASH_SELECT, 0);
 	gpio_set_level(GPIO_EC_FLASH_SELECT, 0);
-
-	/* Release AP and EC */
-	deassert_ec_rst();
-	deassert_sys_rst();
 }
 
 static void enable_ec_spi(void)
@@ -31,9 +27,6 @@ static void enable_ec_spi(void)
 	/* Select EC flash */
 	gpio_set_level(GPIO_AP_FLASH_SELECT, 0);
 	gpio_set_level(GPIO_EC_FLASH_SELECT, 1);
-
-	/* Hold EC in reset. This will also hold the AP in reset. */
-	assert_ec_rst();
 }
 
 static void enable_ap_spi(void)
@@ -41,12 +34,6 @@ static void enable_ap_spi(void)
 	/* Select AP flash */
 	gpio_set_level(GPIO_AP_FLASH_SELECT, 1);
 	gpio_set_level(GPIO_EC_FLASH_SELECT, 0);
-
-	/*
-	 * On some systems SYS_RST_L is not level sensitive, so the only way to
-	 * be sure we're holding the AP in reset is to hold the EC in reset.
-	 */
-	assert_ec_rst();
 }
 
 int usb_spi_board_enable(struct usb_spi_config const *config)
