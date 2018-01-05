@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4accf66e_a277f041",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-05T10:44:21Z",
+      "side": 1,
+      "message": "This is racy, as this function can be called from a deferred task, or from the charger task. We might want to wake the charger task instead.",
+      "revId": "440d9b5d0a0e1252a30330d1bdd5a67b2fd6d5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
