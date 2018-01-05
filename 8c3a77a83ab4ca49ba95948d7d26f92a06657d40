@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbd4afca_165706bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-05T01:20:52Z",
+      "side": 1,
+      "message": "BRANCH\u003d?\n\nDo we want to backport this to some FW branches?",
+      "revId": "8c3a77a83ab4ca49ba95948d7d26f92a06657d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bf3ff40_e3a3ce5a",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-05T01:20:52Z",
+      "side": 1,
+      "message": "The extra set of parenthesis are not needed, and make the code a little harder to read IMHO.",
+      "revId": "8c3a77a83ab4ca49ba95948d7d26f92a06657d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
