@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cb2745a_4417c539",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-05T17:31:45Z",
+      "side": 1,
+      "message": "But this change makes it so it ONLY works if unlocked, *not* if opened.\n\nOpened is a superset of unlocked, so there\u0027s no reason to exclude it.",
+      "range": {
+        "startLine": 771,
+        "startChar": 1,
+        "endLine": 772,
+        "endChar": 38
+      },
+      "revId": "de7100337f97ec68e4803312569e33e8984b133b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
