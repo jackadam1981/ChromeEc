@@ -17,12 +17,19 @@
 
 static void disable_ec_ap_spi(void)
 {
+	int was_ap_spi_en = gpio_get_level(GPIO_AP_FLASH_SELECT);
+
 	/* Configure SPI GPIOs */
 	gpio_set_level(GPIO_AP_FLASH_SELECT, 0);
 	gpio_set_level(GPIO_EC_FLASH_SELECT, 0);
 
 	/* Release AP and EC */
-	deassert_ec_rst();
+	if (was_ap_spi_en)
+		/*
+		 * Only deassert EC reset if it was asserted because we enabled
+		 * AP SPI.
+		 */
+		deassert_ec_rst();
 	deassert_sys_rst();
 }
 
@@ -32,8 +39,11 @@ static void enable_ec_spi(void)
 	gpio_set_level(GPIO_AP_FLASH_SELECT, 0);
 	gpio_set_level(GPIO_EC_FLASH_SELECT, 1);
 
-	/* Hold EC in reset. This will also hold the AP in reset. */
-	assert_ec_rst();
+	/*
+	 * Note that we don't hold the EC in reset here.  This is because some
+	 * ECs with internal SPI flash cannot be held in reset in order to
+	 * access the flash.
+	 */
 }
 
 static void enable_ap_spi(void)
