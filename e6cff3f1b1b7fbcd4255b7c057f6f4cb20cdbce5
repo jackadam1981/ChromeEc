@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc78cf01_9e6513e6",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-05T10:17:40Z",
+      "side": 1,
+      "message": "We should think what to do in S5 without AC adapter, maybe stop all communication with base (tell it to go to sleep). Or at least tell the base to go to sleep before hibernating ourselves.",
+      "revId": "e6cff3f1b1b7fbcd4255b7c057f6f4cb20cdbce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
