@@ -195,6 +195,7 @@ enum temp_sensor_id {
 
 enum adc_channel {
 	ADC_VBUS,
+	ADC_PWR_SENSE,
 	ADC_CH_COUNT
 };
 

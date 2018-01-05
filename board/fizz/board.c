@@ -118,6 +118,24 @@ void adp_in(enum gpio_signal signal)
 	hook_call_deferred(&adp_in_deferred_data, ADP_DEBOUNCE_MS * MSEC);
 }
 
+void power_sense_deferred(void)
+{
+	int v = adc_read_channel(ADC_PWR_SENSE);
+	/* 90% of 1.2V is the threshold for prochot */
+	if (v < 1080)
+		return;
+	ccprintf(":%dmV\n", v);
+	cflush();
+}
+DECLARE_DEFERRED(power_sense_deferred);
+
+void power_sense(enum gpio_signal signal)
+{
+	ccprintf("PWR!");
+	cflush();
+	hook_call_deferred(&power_sense_deferred_data, 0);
+}
+
 void vbus0_evt(enum gpio_signal signal)
 {
 	task_wake(TASK_ID_PD_C0);
@@ -151,6 +169,7 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 const struct adc_t adc_channels[] = {
 	/* Vbus sensing (1/10 voltage divider). */
 	[ADC_VBUS] = {"VBUS", NPCX_ADC_CH2, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0},
+	[ADC_PWR_SENSE] = {"PWR", NPCX_ADC_CH4, ADC_MAX_VOLT, ADC_READ_MAX+1, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -444,6 +463,7 @@ static void board_init(void)
 	board_extpower();
 
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
+	gpio_enable_interrupt(GPIO_PWR_SENSE);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
