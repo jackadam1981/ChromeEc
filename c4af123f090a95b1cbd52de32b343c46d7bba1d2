@@ -39,6 +39,30 @@
       "revId": "c4af123f090a95b1cbd52de32b343c46d7bba1d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b652b031_6070574f",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-05T19:10:11Z",
+      "side": 1,
+      "message": "I think so.",
+      "parentUuid": "1b85641c_2fa410ab",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "c4af123f090a95b1cbd52de32b343c46d7bba1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
