@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c73bb6fc_141b1ab3",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-05T17:30:15Z",
+      "side": 1,
+      "message": "I have to enable and disable the sensor here.",
+      "parentUuid": "8024b4ad_93bc2a50",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2ca052e1_449ac9b0",
         "filename": "driver/sync.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-04T21:16:36Z",
       "side": 1,
       "message": "remove",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffd4250c_3fabe357",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-05T17:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ca052e1_449ac9b0",
       "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "724118a9_5c5e842b",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-05T17:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b01e81a0_ebe0ce4c",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ff96d67_aa67950e",
         "filename": "driver/sync.c",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2018-01-04T21:16:36Z",
       "side": 1,
       "message": "I would remove load_fifo, you are already called in motion_irq_handler() and this sensor does not have its own fifo.",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c08c49a_55eeefec",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-05T17:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ff96d67_aa67950e",
       "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "8426ec23_eee9ca69",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-05T17:30:15Z",
+      "side": 1,
+      "message": "Done.\n\nRe strong assumptions: I agree something more object oriented would be better, but demultiplexing the sync_interrupt function to the proper drv_data (if there\u0027s multiple) would be weird.",
+      "parentUuid": "c757739a_242ab5cc",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ea388b2_c7e66ebf",
         "filename": "driver/sync.c",
         "patchSetId": 2
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "e036f35d_bf1b42b3",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-05T17:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ea388b2_c7e66ebf",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92160a18_ab09575f",
         "filename": "driver/sync.c",
         "patchSetId": 2
@@ -115,6 +223,24 @@
       "writtenOn": "2018-01-04T21:16:36Z",
       "side": 1,
       "message": "set previous_interrupt_timestamp",
+      "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f46e6bf_941aeda5",
+        "filename": "driver/sync.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-05T17:30:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92160a18_ab09575f",
       "revId": "d00534e8046d1c28c0bdddc8288a15f56349e424",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
