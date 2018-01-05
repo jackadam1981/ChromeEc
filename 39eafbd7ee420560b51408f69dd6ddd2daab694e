@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bb580317_d41f43cf",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-01-05T04:45:01Z",
+      "side": 1,
+      "message": "Because then checking \"exclusive\" would need more code; but yes, we can do that.",
+      "parentUuid": "fd488ab1_3487a904",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 16
+      },
+      "revId": "39eafbd7ee420560b51408f69dd6ddd2daab694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85d9e8b5_2a5ee277",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "67f14487_7b8db813",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1908,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-01-05T04:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85d9e8b5_2a5ee277",
+      "range": {
+        "startLine": 1908,
+        "startChar": 5,
+        "endLine": 1908,
+        "endChar": 11
+      },
+      "revId": "39eafbd7ee420560b51408f69dd6ddd2daab694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a22dbfa7_ca772676",
         "filename": "extra/usb_updater/gsctool.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-01-05T04:36:23Z",
       "side": 1,
       "message": "not a big deal, but would be cleaner if this \u0027else\u0027 was replaced with \n\n} else if (td.ep_type \u003d\u003d dev_xfer)",
+      "range": {
+        "startLine": 1911,
+        "startChar": 4,
+        "endLine": 1911,
+        "endChar": 8
+      },
+      "revId": "39eafbd7ee420560b51408f69dd6ddd2daab694e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d23f49_50f09413",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1000239
+      },
+      "writtenOn": "2018-01-05T04:45:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a22dbfa7_ca772676",
       "range": {
         "startLine": 1911,
         "startChar": 4,
