@@ -226,6 +226,7 @@ struct transfer_descriptor {
 	uint32_t rw_offset;
 	uint32_t post_reset;
 	enum transfer_type {
+		any_xfer = -1,
 		usb_xfer = 0,
 		dev_xfer = 1,
 		ts_xfer = 2
@@ -238,9 +239,10 @@ struct transfer_descriptor {
 
 static uint32_t protocol_version;
 static char *progname;
-static char *short_opts = "bcd:fhiPprstu";
+static char *short_opts = "abcd:fhiPprstu";
 static const struct option long_opts[] = {
 	/* name    hasarg *flag val */
+	{"any",		0,   NULL, 'a'},
 	{"binvers",	0,   NULL, 'b'},
 	{"board_id",    2,   NULL, 'i'},
 	{"corrupt",	0,   NULL, 'c'},
@@ -535,6 +537,8 @@ static void usage(int errs)
 	       "\n"
 	       "Options:\n"
 	       "\n"
+	       "  -a,--any                 Try any interfaces to find Cr50"
+	       " (-d, -s, -t are all ignored)\n"
 	       "  -b,--binvers             Report versions of image's "
 				"RW and RO headers, do not update\n"
 	       "  -c,--corrupt             Corrupt the inactive rw\n"
@@ -1747,7 +1751,7 @@ int main(int argc, char *argv[])
 	enum board_id_action bid_action;
 	int password = 0;
 	const char *exclusive_opt_error =
-		"Options -s and -t are mutually exclusive\n";
+		"Options -a, -s and -t are mutually exclusive\n";
 
 	progname = strrchr(argv[0], '/');
 	if (progname)
@@ -1764,6 +1768,14 @@ int main(int argc, char *argv[])
 	opterr = 0;				/* quiet, you */
 	while ((i = getopt_long(argc, argv, short_opts, long_opts, 0)) != -1) {
 		switch (i) {
+		case 'a':
+			if (td.ep_type) {
+				errorcnt++;
+				fprintf(stderr, "%s", exclusive_opt_error);
+				break;
+			}
+			td.ep_type = any_xfer;
+			break;
 		case 'b':
 			binary_vers = 1;
 			break;
@@ -1887,11 +1899,17 @@ int main(int argc, char *argv[])
 
 	if (td.ep_type == usb_xfer) {
 		usb_findit(vid, pid, &td.uep);
-	} else if (td.ep_type == dev_xfer) {
+	} else if (td.ep_type == dev_xfer || td.ep_type == any_xfer) {
 		td.tpm_fd = open("/dev/tpm0", O_RDWR);
 		if (td.tpm_fd < 0) {
-			perror("Could not open TPM");
-			exit(update_error);
+			if (td.ep_type == dev_xfer) {
+				perror("Could not open TPM");
+				exit(update_error);
+			} else {
+				td.ep_type = ts_xfer;
+			}
+		} else {
+			td.ep_type = dev_xfer;
 		}
 	}
 
