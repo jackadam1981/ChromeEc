@@ -769,7 +769,11 @@ static int command_ccd_set(int argc, char **argv)
 static int do_ccd_password(char *password)
 {
 	/* Only works if unlocked or opened */
-	if (ccd_state == CCD_STATE_LOCKED)
+	if ((ccd_state != CCD_STATE_UNLOCKED)
+#ifdef CCD_DEBUG
+	    && (ccd_state != CCD_STATE_OPENED)
+#endif
+	)
 		return EC_ERROR_ACCESS_DENIED;
 
 	if (raw_has_password()) {

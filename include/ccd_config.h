@@ -17,6 +17,10 @@ enum ccd_state {
 	CCD_STATE_COUNT
 };
 
+#ifdef CR50_DEV
+#define CCD_DEBUG
+#endif
+
 /* Flags */
 enum ccd_flag {
 	/* Flags that can only be set internally; fill from bottom up */
