@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "409c3e2d_e7f379ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-05T19:02:13Z",
+      "side": 1,
+      "message": "does flash AP using flashrom still work fine?",
+      "revId": "c4af123f090a95b1cbd52de32b343c46d7bba1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b85641c_2fa410ab",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-05T19:02:13Z",
+      "side": 1,
+      "message": "should this be removed for symmetry sake?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "c4af123f090a95b1cbd52de32b343c46d7bba1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
