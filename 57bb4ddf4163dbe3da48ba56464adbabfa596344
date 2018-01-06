@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa706ce9_93b865e6",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-06T00:37:46Z",
+      "side": 0,
+      "message": "this was completely useless, as this byte (the one set to \u0027\\0\u0027) was not being transferred.",
+      "range": {
+        "startLine": 1591,
+        "startChar": 1,
+        "endLine": 1591,
+        "endChar": 23
+      },
+      "revId": "57bb4ddf4163dbe3da48ba56464adbabfa596344",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
