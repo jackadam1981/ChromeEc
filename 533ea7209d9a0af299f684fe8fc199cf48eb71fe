@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe121626_00fb5848",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-06T06:08:53Z",
+      "side": 1,
+      "message": "kernel currently expects a proper value to SENSOR_RANGE(GET), as it is used for scale sysfs entry. scale is then used by Sensor HAL to calculate the real value.\nIf get_range is not defined, return default_range.",
+      "revId": "533ea7209d9a0af299f684fe8fc199cf48eb71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2830d442_a484b150",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-06T06:08:53Z",
+      "side": 1,
+      "message": "MOTIONSENSE_CMD_SENSOR_OFFSET(get) is not used, as EC is returning data with offset applied, but to be consistent, \nreturn 0 to all vectors of MOTIONSENSE_CMD_SENSOR_OFFSET(get) if get_offset is not defined.",
+      "revId": "533ea7209d9a0af299f684fe8fc199cf48eb71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b11887c0_42441e6b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1545,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-06T06:08:53Z",
+      "side": 1,
+      "message": "I am noticing get/set_resolution is not use outside this function and the init routines, we should get rid of them in another CL.",
+      "revId": "533ea7209d9a0af299f684fe8fc199cf48eb71fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
