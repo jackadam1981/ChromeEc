@@ -98,6 +98,17 @@ enum ccd_capability {
 	CCD_CAP_COUNT
 };
 
+/*
+ * Subcommand code, used to pass different CCD commands using the same TPM
+ * vendor command.
+ */
+enum ccd_vendor_subcommands {
+	CCDV_PASSWORD,
+	CCDV_OPEN,
+	CCDV_UNLOCK,
+	CCDV_LOCK,
+};
+
 /**
  * Initialize CCD configuration at boot.
  *
