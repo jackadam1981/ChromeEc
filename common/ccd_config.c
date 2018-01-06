@@ -803,25 +803,22 @@ static int do_ccd_password(char *password)
 	return ccd_set_password(password);
 }
 
-static int command_ccd_password(int argc, char **argv)
+/*
+ * Prepare a message containing a TPM vendor command, have the TPM task
+ * process the message and report the result to the caller.
+ *
+ * Message header is always the same, the caller supplies the subcommand code
+ * and payload, if any.
+ */
+static int send_vendor_command(enum ccd_vendor_subcommands subcmd,
+			       void *payload, size_t size)
 {
-	struct ccd_vendor_cmd_header *vch;
 	int rv;
-	size_t password_size;
+	struct ccd_vendor_cmd_header *vch;
 	size_t command_size;
 
-	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
 
-	password_size = strlen(argv[1]);
-
-	if (password_size > CCD_MAX_PASSWORD_SIZE) {
-		ccprintf("Password can not be longer than %d characters\n",
-			 CCD_MAX_PASSWORD_SIZE);
-		return EC_ERROR_PARAM1;
-	}
-
-	command_size = sizeof(*vch) + password_size;
+	command_size = sizeof(*vch) + size;
 	rv = shared_mem_acquire(command_size, (char **)&vch);
 	if (rv != EC_SUCCESS)
 		return rv;
@@ -831,9 +828,9 @@ static int command_ccd_password(int argc, char **argv)
 	vch->tpm_header.size = htobe32(command_size);
 	vch->tpm_header.command_code = htobe32(TPM_CC_VENDOR_BIT_MASK);
 	vch->tpm_header.subcommand_code = htobe16(VENDOR_CC_CCD);
-	vch->ccd_subcommand = CCDV_PASSWORD;
+	vch->ccd_subcommand = subcmd;
 
-	memcpy(vch + 1, argv[1], password_size);
+	memcpy(vch + 1, payload, size);
 	tpm_alt_extension(&vch->tpm_header, command_size);
 
 	/*
@@ -849,6 +846,24 @@ static int command_ccd_password(int argc, char **argv)
 
 	shared_mem_release(vch);
 	return EC_SUCCESS;
+}
+
+static int command_ccd_password(int argc, char **argv)
+{
+	size_t password_size;
+
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	password_size = strlen(argv[1]);
+
+	if (password_size > CCD_MAX_PASSWORD_SIZE) {
+		ccprintf("Password can not be longer than %d characters\n",
+			 CCD_MAX_PASSWORD_SIZE);
+		return EC_ERROR_PARAM1;
+	}
+
+	return send_vendor_command(CCDV_PASSWORD, argv[1], password_size);
 }
 
 static int command_ccd_open(int argc, char **argv)
