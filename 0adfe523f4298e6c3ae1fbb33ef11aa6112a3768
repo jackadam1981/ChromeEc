@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db70f2ed_08f64a18",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-06T00:40:03Z",
+      "side": 1,
+      "message": "you need to disable interrupt when rate is 0, to prevent event to be sent to AP.",
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b63d768b_329ebe23",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-06T00:40:03Z",
+      "side": 1,
+      "message": "nit: sync_irq_handler to be name consistent",
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12f2c6f7_df12ca77",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-06T00:40:03Z",
+      "side": 1,
+      "message": "I return EC_ERROR_NOT_HANDLED in other handlers.",
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3c53981_1340ce2f",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-06T00:40:03Z",
+      "side": 1,
+      "message": "Use a config variable. You can even overload CONFIG_SYNC, defining it at the interrupt line to use.",
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
