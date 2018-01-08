@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ead9f5cd_057ddf73",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-08T08:36:14Z",
+      "side": 1,
+      "message": "can we unconditionally define this ?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 16
+      },
+      "revId": "7643d1a6f96dce4702def29e0e3a35c3686644ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0145fad1_8641fb01",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-08T08:36:14Z",
+      "side": 1,
+      "message": "seems wrong ?",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "7643d1a6f96dce4702def29e0e3a35c3686644ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44cfda1b_c85e4407",
         "filename": "util/flash_ec",
         "patchSetId": 2
