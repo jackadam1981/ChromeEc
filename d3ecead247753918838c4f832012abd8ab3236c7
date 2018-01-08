@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "660a30de_312801cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-08T22:23:33Z",
+      "side": 1,
+      "message": "Note that this and the following two CLs all need to go in as a unit.  The best way to do that is to have each CL CQ-DEPEND on the others.\n\nFor example, here:\n\nCQ-DEPEND\u003dCL:841022,CL:841043\n\n(and likewise in the other two CLs)\n\nA less-good way to do it is to mark them all CQ ready in rapid succession and hope the build system is busy enough it doesn\u0027t pick up only some of them...",
+      "revId": "d3ecead247753918838c4f832012abd8ab3236c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16911e7d_808923bd",
+        "filename": "board/mchpevb1/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-08T22:23:33Z",
+      "side": 1,
+      "message": "???",
+      "range": {
+        "startLine": 400,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 32
+      },
+      "revId": "d3ecead247753918838c4f832012abd8ab3236c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
