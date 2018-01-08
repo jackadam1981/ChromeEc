@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f79379ab_e42383cf",
+        "filename": "chip/stm32/spi_master-stm32h7.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-08T07:59:37Z",
+      "side": 1,
+      "message": "Yes that\u0027s the current API (same as in the original stm32/spi_master.c file)\nit\u0027s a bit confusing but save a small bit of memory.\nI could have removed the #ifdef here as the saving is not really important for this platform but having some variants behaving one way and the other ones another way seems even more confusing to me.",
+      "parentUuid": "730fd54a_baf55aaa",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "7d265c9d2b80aacc36ede77b6f8cbf674e7a0ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "521fce96_337e90d3",
         "filename": "chip/stm32/spi_master-stm32h7.c",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-28T19:21:58Z",
       "side": 1,
       "message": "This function doesn\u0027t grab the mutex (fp_command_passthru() seems to be the only external caller). Is it going to be a problem?",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 25
+      },
+      "revId": "7d265c9d2b80aacc36ede77b6f8cbf674e7a0ad7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d31615e_089b3fbd",
+        "filename": "chip/stm32/spi_master-stm32h7.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-08T07:59:37Z",
+      "side": 1,
+      "message": "This is on purpose since you would need to keep the mutex until the end of the flush regardless.\nI have just verified, indeed it\u0027s not properly documented in include/spi.h",
+      "parentUuid": "521fce96_337e90d3",
       "range": {
         "startLine": 264,
         "startChar": 4,
