@@ -1,0 +1,255 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eab28a82_032998b4",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "switch(argv[1][1])",
+      "range": {
+        "startLine": 1570,
+        "startChar": 9,
+        "endLine": 1570,
+        "endChar": 13
+      },
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe08f56_3eafa10a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "Get 1 min power average",
+      "range": {
+        "startLine": 1589,
+        "startChar": 4,
+        "endLine": 1589,
+        "endChar": 17
+      },
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6833118f_c9e8ba74",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "nit: Blank line before #ifdef (but maybe not after)",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a48884dc_9ba78e83",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "nit: Blank line after #endif (but maybe not before)",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb70be20_05e59d94",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "nit: drop",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba302f6_f1e5aee9",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "Why 6?",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61e1ad1a_7e2d3085",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "EC comment style in /* ring array used to keep voltage samples. */",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d655b16_ea7cc4db",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "Looks like an infinite loop to me?!\n\nAnyway, no recursion in EC code please.",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 316,
+        "endChar": 34
+      },
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7403bd0f_89b1da9a",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "voltage_sample_sum +\u003d voltage - voltage_samples[voltage_sample_ptr];\n\tvoltage_samples[voltage_sample_ptr] \u003d voltage;",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 53
+      },
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ca24733_f45ac70c",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "So as soon as you call this once, this will run forever?\n\nGenerally (but I think Vincent made that point already), do you really gain anything by doing so much averaging? Can\u0027t you just use the latest value, or average with the last readout 60s before? Can you collect data to back this up (or not)?",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "159d2735_6c8f2588",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "nit: Comment style has /* alone on the first line.",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5cea841_94a56582",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "nit: I\u0027d drop the blank line.",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e74f63b_a3d8250d",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-08T05:35:48Z",
+      "side": 1,
+      "message": "maybe the config option should be CONFIG_CMD_POWER_AVERAGE?",
+      "range": {
+        "startLine": 778,
+        "startChar": 8,
+        "endLine": 778,
+        "endChar": 26
+      },
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
