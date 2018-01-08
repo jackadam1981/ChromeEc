@@ -570,13 +570,14 @@ static void ccd_open_done(void)
 {
 	if (!ccd_is_cap_enabled(CCD_CAP_OPEN_WITHOUT_TPM_WIPE)) {
 		/* Can't open unless wipe succeeds */
-		if (board_wipe_tpm() != EC_SUCCESS) {
+		if (tpm_sync_reset(1) != EC_SUCCESS) {
 			CPRINTS("CCD open TPM wipe failed");
 			return;
 		}
 	}
 
-	if (!ccd_is_cap_enabled(CCD_CAP_UNLOCK_WITHOUT_AP_REBOOT))
+	if (!ccd_is_cap_enabled(CCD_CAP_UNLOCK_WITHOUT_AP_REBOOT) ||
+	    !ccd_is_cap_enabled(CCD_CAP_OPEN_WITHOUT_TPM_WIPE))
 		board_reboot_ap();
 
 	CPRINTS("CCD opened");
@@ -859,33 +860,56 @@ static int command_ccd_password(int argc, char **argv)
 	return process_vendor_command(CCDV_PASSWORD, argv[1], password_size);
 }
 
-static int command_ccd_open(int argc, char **argv)
+static enum vendor_cmd_rc ccd_open(void *buf,
+				   size_t input_size,
+				   size_t *response_size)
 {
 	int is_long = 1;
 	int need_pp = 1;
 	int rv;
+	char *buffer = buf;
 
-	if (force_disabled)
-		return EC_ERROR_ACCESS_DENIED;
+	*response_size = 0;	/* Let's be optimistic. */
+
+	if (force_disabled) {
+		*response_size = 1;
+		buffer[0] = EC_ERROR_ACCESS_DENIED;
+		return VENDOR_RC_NOT_ALLOWED;
+	}
 
 	if (ccd_state == CCD_STATE_OPENED)
-		return EC_SUCCESS;
+		return VENDOR_RC_SUCCESS;
 
 	if (raw_has_password()) {
-		if (argc < 2)
-			return EC_ERROR_PARAM_COUNT;
+		if (!input_size) {
+			*response_size = 1;
+			buffer[0] = EC_ERROR_PARAM_COUNT;
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
 
-		rv = raw_check_password(argv[1]);
-		if (rv)
-			return rv;
+		/*
+		 * We know there is plenty of room in the TPM buffer this is
+		 * stored in.
+		 */
+		buffer[input_size] = '\0';
+		rv = raw_check_password(buffer);
+		if (rv) {
+			*response_size = 1;
+			buffer[0] = rv;
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
 	} else if (!board_fwmp_allows_unlock()) {
-		return EC_ERROR_ACCESS_DENIED;
+		*response_size = 1;
+		buffer[0] = EC_ERROR_ACCESS_DENIED;
+		return VENDOR_RC_NOT_ALLOWED;
 	}
 
 	/* Fail and abort if already checking physical presence */
 	if (physical_detect_busy()) {
 		physical_detect_abort();
-		return EC_ERROR_BUSY;
+		*response_size = 1;
+		buffer[0] = EC_ERROR_BUSY;
+		return VENDOR_RC_INTERNAL_ERROR;
 	}
 
 	/* Reduce physical presence if enabled via config */
@@ -903,41 +927,85 @@ static int command_ccd_open(int argc, char **argv)
 	if (need_pp) {
 		/* Start physical presence detect */
 		ccprintf("Starting CCD open...\n");
-		return physical_detect_start(is_long, ccd_open_done);
+		rv = physical_detect_start(is_long, ccd_open_done);
+		if (rv != EC_SUCCESS) {
+			*response_size = 1;
+			buffer[0] = rv;
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
 	} else {
 		/* No physical presence required; go straight to done */
 		ccd_open_done();
-		return EC_SUCCESS;
 	}
+
+	return VENDOR_RC_SUCCESS;
 }
 
-static int command_ccd_unlock(int argc, char **argv)
+static int command_ccd_wrapper(int argc, char **argv,
+			       enum ccd_vendor_subcommands subcmd)
+{
+	size_t password_size;
+	void *password;
+
+	if (argc > 1) {
+		password_size = strlen(argv[1]);
+
+		if (password_size  > CCD_MAX_PASSWORD_SIZE)
+			return EC_ERROR_PARAM1;
+		password = argv[1];
+	} else {
+		password_size = 0;
+		password = NULL;
+	}
+
+	return process_vendor_command(subcmd, password, password_size);
+}
+
+static enum vendor_cmd_rc ccd_unlock(void *buf,
+				     size_t input_size,
+				     size_t *response_size)
 {
 	int need_pp = 1;
 	int rv;
+	char *buffer = buf;
 
-	if (force_disabled)
-		return EC_ERROR_ACCESS_DENIED;
+	if (force_disabled) {
+		*response_size = 1;
+		buffer[0] = EC_ERROR_ACCESS_DENIED;
+		return VENDOR_RC_NOT_ALLOWED;
+	}
 
 	if (ccd_state == CCD_STATE_UNLOCKED)
-		return EC_SUCCESS;
+		return VENDOR_RC_SUCCESS;
 
 	/* Can go from opened to unlocked with no delay or password */
 	if (ccd_state == CCD_STATE_OPENED) {
 		ccd_unlock_done();
-		return EC_SUCCESS;
+		return VENDOR_RC_SUCCESS;
 	}
 
 	if (raw_has_password()) {
-		if (argc < 2)
-			return EC_ERROR_PARAM_COUNT;
+		if (!input_size) {
+			*response_size = 1;
+			buffer[0] = EC_ERROR_PARAM_COUNT;
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
 
-		rv = raw_check_password(argv[1]);
-		if (rv)
-			return rv;
+		/*
+		 * We know there is plenty of room in the TPM buffer this is
+		 * stored in.
+		 */
+		buffer[input_size] = '\0';
+		rv = raw_check_password(buffer);
+		if (rv) {
+			*response_size = 1;
+			buffer[0] = rv;
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
 	} else if (!board_fwmp_allows_unlock()) {
-		/* Unlock disabled by FWMP */
-		return EC_ERROR_ACCESS_DENIED;
+		*response_size = 1;
+		buffer[0] = EC_ERROR_ACCESS_DENIED;
+		return VENDOR_RC_NOT_ALLOWED;
 	} else {
 		/*
 		 * When unlock is requested via the console, physical presence
@@ -962,7 +1030,9 @@ static int command_ccd_unlock(int argc, char **argv)
 	/* Fail and abort if already checking physical presence */
 	if (physical_detect_busy()) {
 		physical_detect_abort();
-		return EC_ERROR_BUSY;
+		*response_size = 1;
+		buffer[0] = EC_ERROR_BUSY;
+		return VENDOR_RC_INTERNAL_ERROR;;
 	}
 
 	/* Bypass physical presence check if configured to do so */
@@ -978,21 +1048,32 @@ static int command_ccd_unlock(int argc, char **argv)
 	if (need_pp) {
 		/* Start physical presence detect */
 		ccprintf("Starting CCD unlock...\n");
-		return physical_detect_start(0, ccd_unlock_done);
+		rv = physical_detect_start(0, ccd_unlock_done);
+		if (rv != EC_SUCCESS) {
+			*response_size = 1;
+			buffer[0] = rv;
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
 	} else {
 		/* Unlock immediately */
 		ccd_unlock_done();
-		return EC_SUCCESS;
 	}
+	return VENDOR_RC_SUCCESS;
 }
 
-static int command_ccd_lock(void)
+static enum vendor_cmd_rc ccd_lock(void *unused0,
+				   size_t unused1,
+				   size_t *response_size)
 {
 	/* Lock always works */
 	ccprintf("CCD locked.\n");
 	ccd_set_state(CCD_STATE_LOCKED);
-	return EC_SUCCESS;
+	if (response_size)
+		*response_size = 0;
+	return VENDOR_RC_SUCCESS;
 }
+
+
 
 /* NOTE: Testlab command is console-only; no TPM vendor command for this */
 static int command_ccd_testlab(int argc, char **argv)
@@ -1113,11 +1194,11 @@ static int command_ccd(int argc, char **argv)
 
 	/* Commands to set state */
 	if (!strcasecmp(argv[1], "lock"))
-		return command_ccd_lock();
+		return command_ccd_wrapper(0, NULL, CCDV_LOCK);
 	if (!strcasecmp(argv[1], "unlock"))
-		return command_ccd_unlock(argc - 1, argv + 1);
+		return command_ccd_wrapper(argc - 1, argv + 1, CCDV_UNLOCK);
 	if (!strcasecmp(argv[1], "open"))
-		return command_ccd_open(argc - 1, argv + 1);
+		return command_ccd_wrapper(argc - 1, argv + 1, CCDV_OPEN);
 
 	/* Commands to configure capabilities */
 	if (!strcasecmp(argv[1], "set"))
@@ -1307,6 +1388,18 @@ static enum vendor_cmd_rc ccd_vendor(enum vendor_cmd_cc code,
 		handler = ccd_password;
 		break;
 
+	case CCDV_OPEN:
+		handler = ccd_open;
+		break;
+
+	case CCDV_UNLOCK:
+		handler = ccd_unlock;
+		break;
+
+	case CCDV_LOCK:
+		handler = ccd_lock;
+		break;
+
 	default:
 		CPRINTS("%s:%d - unknown subcommand\n", __func__, __LINE__);
 		break;
@@ -1379,12 +1472,7 @@ static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
 		}
 
 
-		rv = command_ccd_lock();
-		if (rv != EC_SUCCESS) {
-			error_line = __LINE__;
-			break;
-		}
-
+		ccd_lock(NULL, 0, NULL);
 		*response_size = 0;
 		return VENDOR_RC_SUCCESS;
 	} while (0);
