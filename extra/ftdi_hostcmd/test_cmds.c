@@ -221,6 +221,7 @@ static int get_response(struct ec_host_response *hdr,
 			alarm(0);
 			goto out;
 		}
+		printf("%02x| ", *ptr);
 		if (*ptr == EC_SPI_FRAME_START) {
 			free(ptr);
 			break;
@@ -408,6 +409,7 @@ static struct lookup cmd_table[] = {
 	{0x0b, "EC_CMD_GET_PROTOCOL_INFO"},
 	{0x0c, "EC_CMD_GSV_PAUSE_IN_S5"},
 	{0x0d, "EC_CMD_GET_FEATURES"},
+#if 0
 	{0x10, "EC_CMD_FLASH_INFO"},
 	{0x11, "EC_CMD_FLASH_READ"},
 	{0x12, "EC_CMD_FLASH_WRITE"},
@@ -504,6 +506,7 @@ static struct lookup cmd_table[] = {
 	{0x117, "EC_CMD_USB_PD_SET_AMODE"},
 	{0x118, "EC_CMD_PD_WRITE_LOG_ENTRY"},
 	{0x200, "EC_CMD_BLOB"},
+#endif
 };
 
 #define ARRAY_SIZE(A) (sizeof(A) / sizeof(A[0]))
@@ -538,6 +541,7 @@ static void scan_commands(uint16_t start, uint16_t stop)
 			printf("Querying CMD %02x\n", i);
 
 		q_vers.cmd = i;
+		//usleep(1);
 		if (0 != send_cmd(EC_CMD_GET_CMD_VERSIONS, 1,
 				  &q_vers, sizeof(q_vers),
 				  &ec_resp,
