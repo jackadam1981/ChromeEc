@@ -4,8 +4,9 @@
 
 # Use your own libmpsse if you want, but we're going to use the files
 # that are part of the Chromium OS trunks_client program.
-PLATFORM2 = ../../../../platform2
-MPSSE_DIR = $(PLATFORM2)/trunks/ftdi
+#TRUNKS = ../../../../aosp/system/tpm/trunks
+TRUNKS = .
+MPSSE_DIR = $(TRUNKS)/ftdi
 
 PROG = test_cmds
 SRCS = test_cmds.c $(MPSSE_DIR)/mpsse.c $(MPSSE_DIR)/support.c
