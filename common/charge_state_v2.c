@@ -1319,6 +1319,10 @@ int charge_set_output_current_limit(int ma, int mv)
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	/* If we start providing power, wake the charger task. */
+	if (curr.output_current == 0 && enable)
+		task_wake(TASK_ID_CHARGER);
+
 	curr.output_current = ma;
 
 	return EC_SUCCESS;
