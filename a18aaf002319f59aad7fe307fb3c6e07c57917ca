@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf130653_d6d9729e",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-08T22:18:47Z",
+      "side": 1,
+      "message": "MEC17xx?",
+      "range": {
+        "startLine": 7,
+        "startChar": 54,
+        "endLine": 7,
+        "endChar": 61
+      },
+      "revId": "a18aaf002319f59aad7fe307fb3c6e07c57917ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f435385_f09be6cd",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-08T22:18:47Z",
+      "side": 1,
+      "message": "Minor nit: extra whitespace",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 2
+      },
+      "revId": "a18aaf002319f59aad7fe307fb3c6e07c57917ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f713cdbd_5c5968b2",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-08T22:18:47Z",
+      "side": 1,
+      "message": "Dead code?",
+      "range": {
+        "startLine": 430,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 49
+      },
+      "revId": "a18aaf002319f59aad7fe307fb3c6e07c57917ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
