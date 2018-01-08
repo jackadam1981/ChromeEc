@@ -167,6 +167,7 @@ void *uart_monitor_stdin(void *d)
 void uart_init(void)
 {
 	pthread_create(&input_thread, NULL, uart_monitor_stdin, NULL);
+	sched_yield(); /* Allow input_thread to run before continuing */
 	stopped = 1;  /* Not transmitting yet */
 	init_done = 1;
 }
