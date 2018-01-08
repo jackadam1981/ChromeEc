@@ -1558,8 +1558,6 @@ static int command_pwr_avg(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	avg_voltage_mv = battery_get_avg_voltage();
-	if (avg_voltage_mv < 0)
-		return EC_ERROR_UNKNOWN;
 	avg_current_ma = battery_get_avg_current();
 	avg_pwr_mw = avg_voltage_mv * avg_current_ma / 1000;
 
