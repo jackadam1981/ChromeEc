@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "e976b692_730607ad",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2018-01-08T15:24:12Z",
+      "side": 1,
+      "message": "I\u0027m not entirely familiar with the EC source repo, but isn\u0027t this the top half?",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb0e51f_e8892dff",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2018-01-08T15:24:12Z",
+      "side": 1,
+      "message": "And this looks like the bottom half.",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b63d768b_329ebe23",
         "filename": "driver/sync.c",
         "patchSetId": 4
