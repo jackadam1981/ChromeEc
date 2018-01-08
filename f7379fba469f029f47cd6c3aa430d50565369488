@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ccfeea0f_a567a301",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-01-08T19:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a4bbc1c_8a68d4a1",
+      "revId": "f7379fba469f029f47cd6c3aa430d50565369488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d5cfd7a_19b9fbb5",
         "filename": "board/grunt/board.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-04T23:47:07Z",
       "side": 1,
       "message": "SENSOR_ACTIVE_S0_S3 (base gyro and accel are the same chip).\nDon\u0027t worry about power consumption. Adding the gyro when in suspend mode (odr \u003d 0Hz),",
+      "revId": "f7379fba469f029f47cd6c3aa430d50565369488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5edad730_5ea556dd",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-01-08T19:37:02Z",
+      "side": 1,
+      "message": "Okay, thanks. I\u0027ve changed this to SENSOR_ACTIVE_S0_S3.",
+      "parentUuid": "3d5cfd7a_19b9fbb5",
       "revId": "f7379fba469f029f47cd6c3aa430d50565369488",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "3daec026_17a76826",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-01-08T19:37:02Z",
+      "side": 1,
+      "message": "ok, I made base_standard_ref set for base gyro and base accel.",
+      "parentUuid": "2c997aed_eb21dd49",
+      "revId": "f7379fba469f029f47cd6c3aa430d50565369488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b692e14_54235479",
         "filename": "board/grunt/board.c",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2018-01-04T23:47:07Z",
       "side": 1,
       "message": "missing fields,  min_frequency, max_frequency",
+      "revId": "f7379fba469f029f47cd6c3aa430d50565369488",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17ef2c8c_a4aa30d5",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-01-08T19:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b692e14_54235479",
       "revId": "f7379fba469f029f47cd6c3aa430d50565369488",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
