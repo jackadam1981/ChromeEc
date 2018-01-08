@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "6ea7610e_751ab977",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-01-08T16:13:15Z",
+      "side": 1,
+      "message": "Rereading linux doc, you\u0027re right, I had it inverted too.",
+      "parentUuid": "e976b692_730607ad",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddb0e51f_e8892dff",
         "filename": "driver/sync.c",
         "patchSetId": 4
