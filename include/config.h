@@ -575,7 +575,7 @@
 /* Minimum battery percentage for power on */
 #undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
 
-/* Narrow VDC power path */
+/* Set this option when using a Narrow VDC (NVDC) charger, such as ISL9237/8. */
 #undef CONFIG_CHARGER_NARROW_VDC
 
 /*
