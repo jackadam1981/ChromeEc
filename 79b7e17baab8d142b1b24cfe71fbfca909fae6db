@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "04777e2b_8a2fa961",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab28a82_032998b4",
+      "range": {
+        "startLine": 1570,
+        "startChar": 9,
+        "endLine": 1570,
+        "endChar": 13
+      },
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe08f56_3eafa10a",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ffeaf937_ec150599",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fe08f56_3eafa10a",
+      "range": {
+        "startLine": 1589,
+        "startChar": 4,
+        "endLine": 1589,
+        "endChar": 17
+      },
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6833118f_c9e8ba74",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 4
@@ -62,6 +110,24 @@
       "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fbdfd52_832f550c",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6833118f_c9e8ba74",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "a1f265ce_03fb71e0",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a48884dc_9ba78e83",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb70be20_05e59d94",
         "filename": "driver/battery/smart.c",
         "patchSetId": 4
@@ -96,6 +180,24 @@
       "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef6ddfa_3418dfec",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb70be20_05e59d94",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "3ade2f40_d138628d",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "to take 6 10s averages so that it\u0027s a minute. Should I make one of those 2 dependent on the other, so that they don\u0027t get out of sync?",
+      "parentUuid": "1ba302f6_f1e5aee9",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61e1ad1a_7e2d3085",
         "filename": "driver/battery/smart.c",
         "patchSetId": 4
@@ -130,6 +250,24 @@
       "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2887b7_54da0099",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61e1ad1a_7e2d3085",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -156,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "d7433082_808921f0",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "shouldn\u0027t be an infinite loop, since a call to update_avg_voltage should ensure that voltage_sample_count is not 0. But point taken :)",
+      "parentUuid": "8d655b16_ea7cc4db",
+      "range": {
+        "startLine": 316,
+        "startChar": 1,
+        "endLine": 316,
+        "endChar": 34
+      },
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7403bd0f_89b1da9a",
         "filename": "driver/battery/smart.c",
         "patchSetId": 4
@@ -179,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "82916f19_ed884546",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7403bd0f_89b1da9a",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 53
+      },
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ca24733_f45ac70c",
         "filename": "driver/battery/smart.c",
         "patchSetId": 4
@@ -190,6 +376,24 @@
       "writtenOn": "2018-01-08T05:35:48Z",
       "side": 1,
       "message": "So as soon as you call this once, this will run forever?\n\nGenerally (but I think Vincent made that point already), do you really gain anything by doing so much averaging? Can\u0027t you just use the latest value, or average with the last readout 60s before? Can you collect data to back this up (or not)?",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51d0104_9cecd391",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "Yep, it\u0027ll run forever after the first call, or at least until the next ec reset.\nOptions would be: adding start/stop args, adding only \u0027stop\u0027 arg, or cancelling the loop after  a couple minutes if pwr_avg hasn\u0027t been called.\nThe reason I\u0027m hesitant to add start/stop is that it\u0027s an extra step for users to jump through, and would increase the code-size. Thoughts?\n\nWith regards to the actual polling: from what I tested previously on soraka, running only one getter every 10s is not measurable, at least with our servo it\u0027s not. When we were running the charger task every 500ms, which has a lot more calls to the battery, the impact was 2mW on the npcx chip. But I\u0027ll collect both power impact data, and voltage curves over the next couple days to see if this is indeed required or not.\n\nThe reason I\u0027m hesitant to rely on the last read and take the avg is that I don\u0027t want to run into issues if the user doesn\u0027t call the command every minute, but maybe only once an hour or so, and we\u0027re using a very weird voltage average there. The reason I\u0027m hesitant to hop on charge_task and use that data is that the polling frequency there can change. But hopefully the data I\u0027ll collect will make it clear which way is the best way to go.",
+      "parentUuid": "1ca24733_f45ac70c",
       "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -213,6 +417,24 @@
     },
     {
       "key": {
+        "uuid": "d7fa23ca_c812eecb",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "159d2735_6c8f2588",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5cea841_94a56582",
         "filename": "include/battery.h",
         "patchSetId": 4
@@ -230,6 +452,24 @@
     },
     {
       "key": {
+        "uuid": "cb37ff56_0e47c147",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5cea841_94a56582",
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e74f63b_a3d8250d",
         "filename": "include/config.h",
         "patchSetId": 4
@@ -241,6 +481,30 @@
       "writtenOn": "2018-01-08T05:35:48Z",
       "side": 1,
       "message": "maybe the config option should be CONFIG_CMD_POWER_AVERAGE?",
+      "range": {
+        "startLine": 778,
+        "startChar": 8,
+        "endLine": 778,
+        "endChar": 26
+      },
+      "revId": "79b7e17baab8d142b1b24cfe71fbfca909fae6db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd30f530_52ef749f",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-09T10:44:54Z",
+      "side": 1,
+      "message": "other commands seem to follow that CONFIG_CMD_[cmd_name] where cmd_name is also the command in the ec console. Do you think there could be confusion if it\u0027s defined as POWER_AVERAGE but in the ec console the command only shows up as pwr_avg?",
+      "parentUuid": "5e74f63b_a3d8250d",
       "range": {
         "startLine": 778,
         "startChar": 8,
