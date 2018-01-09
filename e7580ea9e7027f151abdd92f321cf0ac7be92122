@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a1e18a6_3856e092",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-09T13:00:59Z",
+      "side": 1,
+      "message": "doing 2 slow RMW accesses when you can be doing one is not terribly interesting.\nI cannot even find the corresponding register in the datasheet, is there actually anything else in it ?",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 49
+      },
+      "revId": "e7580ea9e7027f151abdd92f321cf0ac7be92122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcecc6c4_cbb8907e",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-09T13:00:59Z",
+      "side": 1,
+      "message": "either the formula or the constant is wrong here\n(the period formula is suspiciously identical to the voltage one below)",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "e7580ea9e7027f151abdd92f321cf0ac7be92122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
