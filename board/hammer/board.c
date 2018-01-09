@@ -4,6 +4,7 @@
  */
 /* Hammer board configuration */
 
+#include "adc_chip.h"
 #include "common.h"
 #include "ec_version.h"
 #include "ec_ec_comm_slave.h"
@@ -133,6 +134,14 @@ static struct usart_config const ec_ec_usart =
 		USART_CONFIG_FLAG_HDSEL,
 		ec_ec_comm_slave_input,
 		ec_ec_comm_slave_output);
+
+/* ADC channels */
+const struct adc_t adc_channels[] = {
+	/* Board ID, output in mV */
+	[ADC_BOARD_ID] = {"BOARD_ID", 3300, 4096, 0, STM32_AIN(3)},
+};
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
 #endif /* BOARD_WAND && SECTION_IS_RW */
 
 /******************************************************************************

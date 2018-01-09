@@ -221,6 +221,8 @@
 #define CONFIG_USB_PAIRING
 
 #ifdef BOARD_WAND
+#define CONFIG_ADC
+
 /* Battery and charger options. */
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_V2
@@ -282,6 +284,7 @@
 
 /* Timer selection */
 #define TIM_CLOCK32 2
+#define TIM_ADC 3
 #ifdef BOARD_WHISKERS
 #define TIM_KBLIGHT 16
 #define TIM_WATCHDOG 17
@@ -312,6 +315,9 @@ enum pwm_channel {
 };
 
 enum adc_channel {
+#ifdef BOARD_WAND
+	ADC_BOARD_ID = 0,
+#endif
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
