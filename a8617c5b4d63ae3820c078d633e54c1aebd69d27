@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e531167_3d98fbc7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1581,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-09T12:34:27Z",
+      "side": 1,
+      "message": "won\u0027t your (future) tool want to read several of those parameters atomically ?",
+      "range": {
+        "startLine": 1567,
+        "startChar": 0,
+        "endLine": 1581,
+        "endChar": 36
+      },
+      "revId": "a8617c5b4d63ae3820c078d633e54c1aebd69d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7a92929_23156446",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-09T12:34:27Z",
+      "side": 1,
+      "message": "maybe -EC_ERROR_UNIMPLEMENTED (or 0), so the pwr_avg command output clearly shows we had an error ?",
+      "range": {
+        "startLine": 276,
+        "startChar": 8,
+        "endLine": 276,
+        "endChar": 31
+      },
+      "revId": "a8617c5b4d63ae3820c078d633e54c1aebd69d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf41eb8_b16bb87c",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-09T12:34:27Z",
+      "side": 1,
+      "message": "maybe my conclusion in my earlier answer was unclear but I don\u0027t think computing this average rather than just taking the instant value worth the code size/effort. Does your testing show otherwise ?",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 36
+      },
+      "revId": "a8617c5b4d63ae3820c078d633e54c1aebd69d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6374703a_24b2b957",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-09T12:34:27Z",
+      "side": 1,
+      "message": "nit: same as Nicolas\u0027s comment above, no C++ style comment",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 31
+      },
+      "revId": "a8617c5b4d63ae3820c078d633e54c1aebd69d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
