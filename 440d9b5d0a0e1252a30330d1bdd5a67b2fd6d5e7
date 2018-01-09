@@ -16,6 +16,24 @@
       "revId": "440d9b5d0a0e1252a30330d1bdd5a67b2fd6d5e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2adc5cc3_28f0d44a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-09T23:24:10Z",
+      "side": 1,
+      "message": "Either wake the charger task, or call the deferred function to do it, one of the two.",
+      "parentUuid": "4accf66e_a277f041",
+      "revId": "440d9b5d0a0e1252a30330d1bdd5a67b2fd6d5e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
