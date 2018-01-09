@@ -22,6 +22,30 @@
       "revId": "3672568a012cc6a727d8e3481a9c5dad4c9e726b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c68217ef_b9621156",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-09T17:40:23Z",
+      "side": 1,
+      "message": "The default should be 0, it will be enabled when ARC++ needs it.",
+      "parentUuid": "e65eef37_8ef3a2ad",
+      "range": {
+        "startLine": 466,
+        "startChar": 10,
+        "endLine": 466,
+        "endChar": 11
+      },
+      "revId": "3672568a012cc6a727d8e3481a9c5dad4c9e726b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
