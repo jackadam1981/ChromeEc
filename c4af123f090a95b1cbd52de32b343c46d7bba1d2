@@ -105,6 +105,30 @@
       "revId": "c4af123f090a95b1cbd52de32b343c46d7bba1d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e2a219d_f61d4578",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-09T01:40:59Z",
+      "side": 1,
+      "message": "So after much ado, I\u0027ve only left it in the case where we assert it because of enabling the AP SPI bridge. (I\u0027m using the flash_select pin as a proxy). This way we can have our cake and eat it too. One can just run flashrom against the AP and it just works, and flash_ec works for um well, flashing the EC.",
+      "parentUuid": "8b9bb970_7903f2ef",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "c4af123f090a95b1cbd52de32b343c46d7bba1d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
