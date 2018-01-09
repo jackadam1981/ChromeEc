@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2325afb0_c770438d",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-01-09T17:13:29Z",
+      "side": 1,
+      "message": "From http://www.st.com/content/ccc/resource/technical/document/application_note/51/5f/03/1e/bd/9b/45/be/CD00264342.pdf/files/CD00264342.pdf/jcr:content/translations/en.CD00264342.pdf, \nres must be a multiple of 4. \n\n\"\"\"Figure 12: N+1 should always be a multiple of 4.\"\"\"",
+      "revId": "3c89d54e42091656f8b072aa38a534517712efee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
