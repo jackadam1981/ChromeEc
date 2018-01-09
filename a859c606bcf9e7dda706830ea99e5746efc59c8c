@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7343e38f_4e9a09df",
+        "filename": "chip/host/uart.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-09T08:43:59Z",
+      "side": 1,
+      "message": "we probably want a pthread_cond_wait() here,\nand properly do the pthread_cond_signal() after the printf in uart_monitor_stdin()",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 66
+      },
+      "revId": "a859c606bcf9e7dda706830ea99e5746efc59c8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
