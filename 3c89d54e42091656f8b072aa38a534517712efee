@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0a5229b5_23de5293",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-09T17:17:21Z",
+      "side": 1,
+      "message": "I think it\u0027s best to reverse these conditions, so as not to invoke undefined behavior by accessing buffer[-1].",
+      "range": {
+        "startLine": 860,
+        "startChar": 8,
+        "endLine": 860,
+        "endChar": 39
+      },
+      "revId": "3c89d54e42091656f8b072aa38a534517712efee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2325afb0_c770438d",
         "filename": "util/stm32mon.c",
         "patchSetId": 1
