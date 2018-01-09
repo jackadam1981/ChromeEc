@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e65eef37_8ef3a2ad",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1001646
+      },
+      "writtenOn": "2018-01-09T17:21:22Z",
+      "side": 1,
+      "message": "I had to set this to 1 to enable the driver.",
+      "range": {
+        "startLine": 466,
+        "startChar": 10,
+        "endLine": 466,
+        "endChar": 11
+      },
+      "revId": "3672568a012cc6a727d8e3481a9c5dad4c9e726b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
