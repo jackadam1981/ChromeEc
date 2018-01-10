@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5a207ea_19909a8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-10T17:34:47Z",
+      "side": 1,
+      "message": "Please include chromium:774428 also.",
+      "revId": "1649425281cdfba85a559053bfe7db0e91818347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf83d9f2_0c217f3e",
+        "filename": "board/cyan/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-10T17:34:47Z",
+      "side": 1,
+      "message": "Are you sure this modification still achieves the goals of your original CL? It seems to me a lower-risk change might be to set reported SOC to 100% once requested charge current drops below some point and we\u0027re still in fast charge.",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 37
+      },
+      "revId": "1649425281cdfba85a559053bfe7db0e91818347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
