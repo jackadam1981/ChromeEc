@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2ce632f0_6df50603",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-01-10T18:12:33Z",
+      "side": 1,
+      "message": "I don\u0027t find this representative of what actually changed in the CL.  It simply looks like instead of hard-coding to 12900 based on model you instead apply a delta of -150 from FG request.  Could a better summary of how we arrived at desired_mv - 150 be added here and could details of the analysis be added to b:68012423\n\nAlso is this planned as a permanent solution or would future FG firmware change account for this internally?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "1649425281cdfba85a559053bfe7db0e91818347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5a207ea_19909a8c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
