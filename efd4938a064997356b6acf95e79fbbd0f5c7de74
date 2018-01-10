@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed140693_8fe57692",
+        "filename": "board/nami/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-10T11:16:21Z",
+      "side": 1,
+      "message": "This is wrong, it should be:\n    LID_ACCEL,\n    BASE_ACCEL,\n    BASE_GYRO,",
+      "revId": "efd4938a064997356b6acf95e79fbbd0f5c7de74",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
