@@ -107,6 +107,15 @@ enum ccd_vendor_subcommands {
 	CCDV_OPEN = 1,
 	CCDV_UNLOCK = 2,
 	CCDV_LOCK = 3,
+	CCDV_PP_POLL_UNLOCK = 4,
+	CCDV_PP_POLL_OPEN = 5,
+};
+
+enum ccd_pp_state {
+	CCDPP_CLOSED = 0,
+	CCDPP_AWAITING_PRESS = 1,
+	CCDPP_BETWEEN_PRESSES = 2,
+	CCDPP_PP_DONE = 3
 };
 
 /**
