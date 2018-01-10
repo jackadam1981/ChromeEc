@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "154b66e6_c80ab0f0",
+        "filename": "board/glkrvp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-01-10T02:02:21Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "585e5126_7564db2b",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 88
+      },
+      "revId": "504d948544fed5951a6546d00064e72acd5a6163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f6b232e_9f011c51",
         "filename": "power/apollolake.c",
         "patchSetId": 3
