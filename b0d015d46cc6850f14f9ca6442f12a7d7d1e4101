@@ -22,6 +22,30 @@
       "revId": "b0d015d46cc6850f14f9ca6442f12a7d7d1e4101",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f512e24b_fe797647",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-10T01:02:27Z",
+      "side": 1,
+      "message": "board_wipe_tpm() is not called any more, tpm_sync_reset() does not involve a reboot, so we need to reboot here.",
+      "parentUuid": "d742b9fd_fb9c6671",
+      "range": {
+        "startLine": 579,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 56
+      },
+      "revId": "b0d015d46cc6850f14f9ca6442f12a7d7d1e4101",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
