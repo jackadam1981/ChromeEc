@@ -16,6 +16,24 @@
       "revId": "9a492271ea3621c79afbd772a581e0e0a63ffea5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57611452_56cef543",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-10T14:46:51Z",
+      "side": 1,
+      "message": "It\u0027s definitely better to have a timeout here,\nbut we can just limit the number of iterations and call it a day.",
+      "parentUuid": "93d0f182_5f1c19bb",
+      "revId": "9a492271ea3621c79afbd772a581e0e0a63ffea5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
