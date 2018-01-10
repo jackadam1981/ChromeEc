@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "91a5424a_2e556f7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-01-10T19:26:03Z",
+      "side": 1,
+      "message": "That answers my question :).",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "dc8ac760e528aa22e3f46575048091399b461b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79cb47d2_afb1752f",
         "filename": "board/nautilus/board.c",
         "patchSetId": 4
