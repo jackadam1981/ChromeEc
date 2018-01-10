@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79cb47d2_afb1752f",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-01-10T19:25:32Z",
+      "side": 1,
+      "message": "Why was this array changed? Since each entry was already indexed correctly using [...], order would not have mattered here.",
+      "range": {
+        "startLine": 590,
+        "startChar": 23,
+        "endLine": 590,
+        "endChar": 37
+      },
+      "revId": "dc8ac760e528aa22e3f46575048091399b461b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
