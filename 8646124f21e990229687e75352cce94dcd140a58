@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3879ad34_ed03b01b",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-10T18:36:32Z",
+      "side": 1,
+      "message": "This looks strange. Does https://engdoc.corp.google.com/eng/doc/shell.xml?showone\u003dUse_Local_Variables\u0026cl\u003dhead#Use_Local_Variables explain the problem you were seeing before (\"declaration and assignment must be separate statements when the assignment value is provided by a command substitution\").",
+      "range": {
+        "startLine": 596,
+        "startChar": 1,
+        "endLine": 596,
+        "endChar": 28
+      },
+      "revId": "8646124f21e990229687e75352cce94dcd140a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10b6eba6_a4eda6ab",
+        "filename": "util/flash_ec",
+        "patchSetId": 3
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-10T18:36:32Z",
+      "side": 1,
+      "message": "Can we use board_is_npcx_internal_spi here too?",
+      "range": {
+        "startLine": 639,
+        "startChar": 2,
+        "endLine": 639,
+        "endChar": 61
+      },
+      "revId": "8646124f21e990229687e75352cce94dcd140a58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
