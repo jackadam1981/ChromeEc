@@ -87,6 +87,24 @@
       "revId": "504d948544fed5951a6546d00064e72acd5a6163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d691743b_a2444d2f",
+        "filename": "power/apollolake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1117319
+      },
+      "writtenOn": "2018-01-10T19:48:26Z",
+      "side": 1,
+      "message": "For big cores, unexpected power loss can be triggered by power_button_pch_press(). So there is code to undo the power button press by invoking power_button_pch_release(). We do not have this mechanism in the code for small cores so I am leaving it empty here.",
+      "parentUuid": "5f6b232e_9f011c51",
+      "revId": "504d948544fed5951a6546d00064e72acd5a6163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
