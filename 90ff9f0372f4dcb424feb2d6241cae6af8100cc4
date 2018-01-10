@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b3c2cb08_705f6f37",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-10T03:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a24a29b_94ae50e7",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 41
+      },
+      "revId": "90ff9f0372f4dcb424feb2d6241cae6af8100cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "047160d9_0912e41b",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "90ff9f0372f4dcb424feb2d6241cae6af8100cc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b1888ed_47342866",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-10T03:33:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "047160d9_0912e41b",
+      "range": {
+        "startLine": 29,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 12
+      },
+      "revId": "90ff9f0372f4dcb424feb2d6241cae6af8100cc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
