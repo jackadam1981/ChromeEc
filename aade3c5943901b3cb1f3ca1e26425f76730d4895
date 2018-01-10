@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad3db581_7ede6818",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-10T18:01:42Z",
+      "side": 1,
+      "message": "/* Wake up the task when something important happens */\nstatic void charge_wakeup(void)\n{\n\ttask_wake(TASK_ID_CHARGER);\n}\nDECLARE_HOOK(HOOK_CHIPSET_RESUME, charge_wakeup, HOOK_PRIO_DEFAULT);\nDECLARE_HOOK(HOOK_AC_CHANGE, charge_wakeup, HOOK_PRIO_DEFAULT);\n\nDoes it make more sense to fully implement HOOK_AC_CHANGE instead? See crbug.com/791109, maybe we need to add \"- Notify HOOK_AC_CHANGE\" to the \"When a VBUS change occurs, other modules / tasks need to be informed:\" list.\n\nLet\u0027s add a TODO for now?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "aade3c5943901b3cb1f3ca1e26425f76730d4895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
