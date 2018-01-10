@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d803e3b9_42ff1801",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-10T10:02:20Z",
+      "side": 1,
+      "message": "Not really, PSYS is not connected to EC on other boards.",
+      "parentUuid": "ead9f5cd_057ddf73",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 16
+      },
+      "revId": "7643d1a6f96dce4702def29e0e3a35c3686644ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0145fad1_8641fb01",
         "filename": "board/poppy/gpio.inc",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-08T08:36:14Z",
       "side": 1,
       "message": "seems wrong ?",
+      "range": {
+        "startLine": 24,
+        "startChar": 7,
+        "endLine": 24,
+        "endChar": 36
+      },
+      "revId": "7643d1a6f96dce4702def29e0e3a35c3686644ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9cff702_153deb70",
+        "filename": "board/poppy/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-10T10:02:20Z",
+      "side": 1,
+      "message": "git diff is confused here, this is actually correct.\n\n#ifndef CONFIG_ESPI_VW_SIGNALS\n  #ifdef BOARD_LUX\n    GPIO_INT(PCH_SLP_S3_L, ...\n  #else\n    GPIO_INT(PCH_SLP_S3_L, ...\n  #endif\n  GPIO_INT(PCH_SLP_S4_L, ...\n#endif /* !CONFIG_ESPI_VW_SIGNALS */",
+      "parentUuid": "0145fad1_8641fb01",
       "range": {
         "startLine": 24,
         "startChar": 7,
