@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bee3ba8_f2f0c812",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-10T18:29:40Z",
+      "side": 1,
+      "message": "I don\u0027t see this signal in my schematic, so just to confirm -- this is a charge enable that is either on / off? If so, it should probably be initialized high / off.",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "83898905578fd677a2f197a5f73fdb014823ec3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9fac40c0_e563919f",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-10T18:29:40Z",
+      "side": 1,
+      "message": "This initial state here should be low, to match board_chipset_shutdown().",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 16
+      },
+      "revId": "83898905578fd677a2f197a5f73fdb014823ec3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
