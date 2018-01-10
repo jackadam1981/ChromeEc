@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50dfbba2_19ccec06",
+        "filename": "board/glkrvp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-01-10T01:00:53Z",
+      "side": 1,
+      "message": "#ifndef CONFIG_ESPI_VW_SIGNALS\nrespective changes needed in board.c\nrefer soraka",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 88
+      },
+      "revId": "504d948544fed5951a6546d00064e72acd5a6163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f6b232e_9f011c51",
+        "filename": "power/apollolake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-01-10T01:00:53Z",
+      "side": 1,
+      "message": "need to handle unexpected power loss.\nplease file a crosbug",
+      "revId": "504d948544fed5951a6546d00064e72acd5a6163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
