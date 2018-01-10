@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c4ac2e63_810f026f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-10T00:57:07Z",
+      "side": 1,
+      "message": "samus_pd.\n\nAlso, the statement is a bit misleading. Yes, clearly not needed on any *_pd boards, glados_pd does not need it either.\n\nWhy is it not \"necessary\" on wheatley? Also, this option shouldn\u0027t be set on any box that does not have a battery, right? (e.g. fizz)",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 36
+      },
+      "revId": "a8617c5b4d63ae3820c078d633e54c1aebd69d27",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0e531167_3d98fbc7",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 5
