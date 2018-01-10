@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66a355b0_daa91a66",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-10T03:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "629d041e_18174ac2",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 35
+      },
+      "revId": "a0533dfb303eff8dd9b2d1f78891866b63c1f65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7e0a453_d91702fd",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-09T02:01:06Z",
       "side": 1,
       "message": "Let\u0027s use a local variable for this condition, to reduce code duplication w/ line 614 and 703, eg:\n\nlocal descriptive_name \u003d $(in_array \"${BOARDS_NPCX_INT_SPI[@]}\" \"${BOARD}\").",
+      "range": {
+        "startLine": 635,
+        "startChar": 4,
+        "endLine": 635,
+        "endChar": 61
+      },
+      "revId": "a0533dfb303eff8dd9b2d1f78891866b63c1f65e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6edaa48d_3775fbd2",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-10T03:21:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7e0a453_d91702fd",
       "range": {
         "startLine": 635,
         "startChar": 4,
