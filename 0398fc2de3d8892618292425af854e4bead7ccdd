@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "40514f5d_0cc1233d",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-10T17:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a83a77d_fa8f15a8",
+      "range": {
+        "startLine": 69,
+        "startChar": 3,
+        "endLine": 69,
+        "endChar": 10
+      },
+      "revId": "0398fc2de3d8892618292425af854e4bead7ccdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3966a407_c570ab41",
         "filename": "include/ccd_config.h",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-10T15:56:59Z",
       "side": 1,
       "message": "Add explicit \u003d0, \u003d1 \u003d2 since these are an interface across processors.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 2
+      },
+      "revId": "0398fc2de3d8892618292425af854e4bead7ccdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0312c1f_f583d8b5",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-10T17:33:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3966a407_c570ab41",
       "range": {
         "startLine": 106,
         "startChar": 0,
