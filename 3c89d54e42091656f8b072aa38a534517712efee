@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad851f6c_a3be6d56",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-10T14:47:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a5229b5_23de5293",
+      "range": {
+        "startLine": 860,
+        "startChar": 8,
+        "endLine": 860,
+        "endChar": 39
+      },
+      "revId": "3c89d54e42091656f8b072aa38a534517712efee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2325afb0_c770438d",
         "filename": "util/stm32mon.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-01-09T17:13:29Z",
       "side": 1,
       "message": "From http://www.st.com/content/ccc/resource/technical/document/application_note/51/5f/03/1e/bd/9b/45/be/CD00264342.pdf/files/CD00264342.pdf/jcr:content/translations/en.CD00264342.pdf, \nres must be a multiple of 4. \n\n\"\"\"Figure 12: N+1 should always be a multiple of 4.\"\"\"",
+      "revId": "3c89d54e42091656f8b072aa38a534517712efee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bad9957f_c0655730",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-10T14:47:10Z",
+      "side": 1,
+      "message": "thanks for the link, I remembered we ran into such an issue on a chip but was not able to find the constraint before uploading this ...",
+      "parentUuid": "2325afb0_c770438d",
       "revId": "3c89d54e42091656f8b072aa38a534517712efee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
