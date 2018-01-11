@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6aae23bb_510cb2d1",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-11T17:58:21Z",
+      "side": 1,
+      "message": "Should we remove stm32_dma_chan_t entirely and just use dma_chan_t everywhere?",
+      "range": {
+        "startLine": 169,
+        "startChar": 26,
+        "endLine": 169,
+        "endChar": 36
+      },
+      "revId": "3d678010e3b947fa6e0f19fdafb37e281fcb368a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66dad1ad_41ea9a8e",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-11T17:58:21Z",
+      "side": 1,
+      "message": "Is this necessary on H7? \"0: does not reset the SPI4 block (default after reset)\".",
+      "range": {
+        "startLine": 656,
+        "startChar": 0,
+        "endLine": 656,
+        "endChar": 43
+      },
+      "revId": "3d678010e3b947fa6e0f19fdafb37e281fcb368a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
