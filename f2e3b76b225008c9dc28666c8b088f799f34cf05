@@ -46,6 +46,30 @@
       "revId": "f2e3b76b225008c9dc28666c8b088f799f34cf05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cd583f4_5730d902",
+        "filename": "power/rk3399.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-11T21:24:20Z",
+      "side": 1,
+      "message": "Yes, I would expect this to be in s3s0_usb_wake_power_seq[]. Does the spreadsheet say it should be enabled after AP_CORE_EN? In general, I would expect things to be symmetrical, eg. in USB-wake S3, PP1800_S0_EN will be on while AP_CORE_EN will be off, so I would be skeptical of the claim that AP_CORE_EN must be turned on before PP1800_S0_EN.",
+      "parentUuid": "94f5a00d_be8741c0",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 28
+      },
+      "revId": "f2e3b76b225008c9dc28666c8b088f799f34cf05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
