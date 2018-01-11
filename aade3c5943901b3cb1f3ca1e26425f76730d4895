@@ -46,6 +46,30 @@
       "revId": "aade3c5943901b3cb1f3ca1e26425f76730d4895",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01cfc844_de83093d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-11T00:57:40Z",
+      "side": 1,
+      "message": "Oh, actually, maybe I misunderstood your statement.\n\nThis is needed on the base, not on the lid. The base has no way to know when AC is unplugged or plugged (and the charging loop period might be very long): there is no VBUS detection on the base (it relies on the lid).\n\nSo it should react to when the lid asks it to start providing power (through OTG). Calling HOOK_AC_CHANGE is a little weird then.",
+      "parentUuid": "08f0e555_bcfb2615",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "aade3c5943901b3cb1f3ca1e26425f76730d4895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
