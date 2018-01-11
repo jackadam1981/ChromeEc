@@ -196,6 +196,12 @@
 #undef CONFIG_BACKLIGHT_LID
 
 /*
+ * Define LCD backlight is low active.
+ * Pull low to turn on backlight.
+ */
+#undef CONFIG_BACKLIGHT_ACTIVE_LOW
+
+/*
  * If defined, EC will enable the backlight signal only if this GPIO is
  * asserted AND the lid is open.  This supports passing the backlight-enable
  * signal from the AP through EC.
