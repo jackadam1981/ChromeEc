@@ -123,6 +123,16 @@ int gpio_get_flags(enum gpio_signal signal)
 }
 #endif
 
+void gpio_activate(enum gpio_signal signal, int enable)
+{
+	const struct gpio_info *g = gpio_list + signal;
+
+	if (g->flags & GPIO_ACTIVE_LOW) // Low Active
+		gpio_set_level(signal, !enable);
+	else	// High Active
+		gpio_set_level(signal, enable);
+}
+
 int gpio_get_default_flags(enum gpio_signal signal)
 {
 	return gpio_list[signal].flags;
