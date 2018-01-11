@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39f53bae_c734e10e",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-11T23:56:53Z",
+      "side": 1,
+      "message": "Typo.\n\nBut maybe \"Unlock only allowed after password set\", since that\u0027s clearer that you have to set the password, not that one is already set and you need to specify one.",
+      "range": {
+        "startLine": 1187,
+        "startChar": 13,
+        "endLine": 1187,
+        "endChar": 19
+      },
+      "revId": "f6a8ec4b129c6cede52e6e6eb0768938c89937f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
