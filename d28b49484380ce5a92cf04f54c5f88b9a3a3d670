@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "709c607c_0c7e3d62",
+        "filename": "board/yuna/bq24707a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-01-11T00:56:59Z",
+      "side": 1,
+      "message": "Battery manufacturer request to use cycle count.",
+      "parentUuid": "5eab4550_a04af339",
+      "range": {
+        "startLine": 161,
+        "startChar": 14,
+        "endLine": 161,
+        "endChar": 25
+      },
+      "revId": "d28b49484380ce5a92cf04f54c5f88b9a3a3d670",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb2f573c_0e7e8943",
         "filename": "board/yuna/bq24707a.c",
         "patchSetId": 1
