@@ -905,11 +905,8 @@ static enum vendor_cmd_rc ccd_open(void *buf,
 		return VENDOR_RC_SUCCESS;
 
 	if (raw_has_password()) {
-		if (!input_size) {
-			*response_size = 1;
-			buffer[0] = EC_ERROR_PARAM_COUNT;
-			return VENDOR_RC_INTERNAL_ERROR;
-		}
+		if (!input_size)
+			return VENDOR_RC_PASSWORD_REQUIRED;
 
 		/*
 		 * We know there is plenty of room in the TPM buffer this is
@@ -990,11 +987,8 @@ static enum vendor_cmd_rc ccd_unlock(void *buf,
 	}
 
 	if (raw_has_password()) {
-		if (!input_size) {
-			*response_size = 1;
-			buffer[0] = EC_ERROR_PARAM_COUNT;
-			return VENDOR_RC_INTERNAL_ERROR;
-		}
+		if (!input_size)
+			return VENDOR_RC_PASSWORD_REQUIRED;
 
 		/*
 		 * We know there is plenty of room in the TPM buffer this is
