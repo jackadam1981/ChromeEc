@@ -22,6 +22,30 @@
       "revId": "aade3c5943901b3cb1f3ca1e26425f76730d4895",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08f0e555_bcfb2615",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-11T00:50:40Z",
+      "side": 1,
+      "message": "I guess I could just call `hook_notify(HOOK_AC_CHANGE);` , right?\n\nAlso I might want to call that on the other \"edge\" too (when we stop providing power).",
+      "parentUuid": "ad3db581_7ede6818",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "aade3c5943901b3cb1f3ca1e26425f76730d4895",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
