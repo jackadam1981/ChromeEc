@@ -18,14 +18,16 @@ static void update_backlight(void)
 {
 #ifdef CONFIG_BACKLIGHT_REQ_GPIO
 	/* Enable the backlight if lid is open AND requested by AP */
-	gpio_set_level(GPIO_ENABLE_BACKLIGHT, lid_is_open() &&
-		       gpio_get_level(CONFIG_BACKLIGHT_REQ_GPIO));
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT,
+	gpio_activate(GPIO_ENABLE_BACKLIGHT, lid_is_open()
+	&& gpio_get_level(CONFIG_BACKLIGHT_REQ_GPIO)));
 #else
 	/*
 	 * Enable backlight if lid is open; this is AND'd with the request from
 	 * the AP in hardware.
 	 */
-	gpio_set_level(GPIO_ENABLE_BACKLIGHT, lid_is_open());
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT,
+	gpio_activate(GPIO_ENABLE_BACKLIGHT, lid_is_open()));
 #endif
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, update_backlight, HOOK_PRIO_DEFAULT);
@@ -60,8 +62,8 @@ static int switch_command_enable_backlight(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_switch_enable_backlight *p = args->params;
 
-	gpio_set_level(GPIO_ENABLE_BACKLIGHT, p->enabled);
-
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT,
+	gpio_activate(GPIO_ENABLE_BACKLIGHT, p->enabled));
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_SWITCH_ENABLE_BKLIGHT,
