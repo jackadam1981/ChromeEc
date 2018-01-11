@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "582a8581_7fc4d382",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-11T18:14:04Z",
+      "side": 1,
+      "message": "Are you doing this just so spi_chipset_startup() gets called? Maybe it\u0027s better to find some other way to call it, I wonder what other unwanted CHIPSET_RESUME hooks may get called here.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "1457173f75214460267f7f97433eec5f468b63c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
