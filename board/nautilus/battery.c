@@ -24,6 +24,12 @@ static enum battery_present batt_pres_prev = BP_NOT_SURE;
 #define SB_SHIP_MODE_REG	SB_MANUFACTURER_ACCESS
 #define SB_SHUTDOWN_DATA        0x0010
 
+#define SB_FET_STATUS		(0x03 << 14)
+#define SB_FET_DCHG_ON_CHG_ON	(0x00 << 14)
+#define SB_FET_DCHG_ON_CHG_OFF	(0x01 << 14)
+#define SB_FET_DCHG_OFF_CHG_OFF	(0x02 << 14)
+#define SB_FET_DCHG_OFF_CHG_ON	(0x03 << 14)
+
 static const struct battery_info info = {
 	.voltage_max = 8700,
 	.voltage_normal = 7700,
@@ -127,19 +133,15 @@ static int battery_init(void)
  */
 static int battery_check_disconnect(void)
 {
-	int rv;
-	uint8_t data[6];
+	int rv, val;
 
 	/* Check if battery charging + discharging is disabled. */
-	rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
-			    SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
+	rv = sb_read(SB_MANUFACTURER_ACCESS, &val);
 	if (rv)
 		return BATTERY_DISCONNECT_ERROR;
 
 	/* TODO(philipchen): Verify if Nautilus battery supports this check. */
-	if ((data[3] & (BATTERY_DISCHARGING_DISABLED |
-			BATTERY_CHARGING_DISABLED)) ==
-	    (BATTERY_DISCHARGING_DISABLED | BATTERY_CHARGING_DISABLED))
+	if ((val & SB_FET_STATUS) == SB_FET_DCHG_OFF_CHG_OFF)
 		return BATTERY_DISCONNECTED;
 
 	return BATTERY_NOT_DISCONNECTED;
