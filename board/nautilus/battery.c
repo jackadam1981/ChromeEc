@@ -127,19 +127,15 @@ static int battery_init(void)
  */
 static int battery_check_disconnect(void)
 {
-	int rv;
-	uint8_t data[6];
+	int rv, val;
 
 	/* Check if battery charging + discharging is disabled. */
-	rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
-			    SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
+	rv = sb_read(SB_MANUFACTURER_ACCESS, &val);
 	if (rv)
 		return BATTERY_DISCONNECT_ERROR;
 
 	/* TODO(philipchen): Verify if Nautilus battery supports this check. */
-	if ((data[3] & (BATTERY_DISCHARGING_DISABLED |
-			BATTERY_CHARGING_DISABLED)) ==
-	    (BATTERY_DISCHARGING_DISABLED | BATTERY_CHARGING_DISABLED))
+	if ((val & 0xC000) == 0x8000)
 		return BATTERY_DISCONNECTED;
 
 	return BATTERY_NOT_DISCONNECTED;
