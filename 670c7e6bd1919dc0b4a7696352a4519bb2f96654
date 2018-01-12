@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b0f14fc_5e8cd0aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-12T13:05:07Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 13,
+        "startChar": 44,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "670c7e6bd1919dc0b4a7696352a4519bb2f96654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce8d0410_2286f040",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-12T13:05:07Z",
+      "side": 1,
+      "message": "please re-phrase",
+      "range": {
+        "startLine": 16,
+        "startChar": 36,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "670c7e6bd1919dc0b4a7696352a4519bb2f96654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a220f1d0_809d221d",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-12T13:05:07Z",
+      "side": 1,
+      "message": "why does this apply only to Snappy ?",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 25
+      },
+      "revId": "670c7e6bd1919dc0b4a7696352a4519bb2f96654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac303462_24821fff",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-12T13:05:07Z",
+      "side": 1,
+      "message": "what this means is unclear to me",
+      "range": {
+        "startLine": 464,
+        "startChar": 27,
+        "endLine": 464,
+        "endChar": 40
+      },
+      "revId": "670c7e6bd1919dc0b4a7696352a4519bb2f96654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
