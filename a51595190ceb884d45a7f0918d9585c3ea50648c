@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edeb5b09_e36b11b3",
+        "filename": "board/nami/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-12T01:16:04Z",
+      "side": 1,
+      "message": "I think you need to update backlight_lid.c (and the boards using it) so that it can handle both active low and high.",
+      "range": {
+        "startLine": 43,
+        "startChar": 35,
+        "endLine": 43,
+        "endChar": 48
+      },
+      "revId": "a51595190ceb884d45a7f0918d9585c3ea50648c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
