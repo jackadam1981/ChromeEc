@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "f60a5589_713390bf",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-12T18:29:43Z",
+      "side": 1,
+      "message": "Snappy uses a different battery from other Reef variants. Other batteries supply enough VBAT which can sustain PP1800 even with a voltage drop from BGATE. So, they\u0027re not affected.\n\nWe can apply this to other variants too but if we do so, we need to test all the variants.\n\nI\u0027ll let a PM decide.",
+      "parentUuid": "a220f1d0_809d221d",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 25
+      },
+      "revId": "670c7e6bd1919dc0b4a7696352a4519bb2f96654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac303462_24821fff",
         "filename": "chip/npcx/system.c",
         "patchSetId": 1
