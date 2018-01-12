@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c47ce98_ffaad3e3",
+        "filename": "common/backlight_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-12T21:32:51Z",
+      "side": 1,
+      "message": "Does this not work correctly if you use GPIO_OUT_LOW?",
+      "revId": "79f3d0e5efa32621f230deaf00ce1f165a8c2e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
