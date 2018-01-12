@@ -9,6 +9,7 @@
 #include "console.h"
 #include "cbi.h"
 #include "crc8.h"
+#include "host_command.h"
 #include "i2c.h"
 #include "util.h"
 
@@ -103,3 +104,14 @@ int cbi_get_oem_id(void)
 		return EC_ERROR_UNKNOWN;
 	return bi.oem_id;
 }
+
+static int hc_get_cbi(struct host_cmd_handler_args *args)
+{
+	if (init_board_info())
+		return EC_RES_ERROR;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_CBI,
+		     hc_get_cbi,
+		     EC_VER_MASK(0));
