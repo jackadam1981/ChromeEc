@@ -34,6 +34,24 @@
       "revId": "79f3d0e5efa32621f230deaf00ce1f165a8c2e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46254bd9_d8479804",
+        "filename": "common/backlight_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-12T21:37:03Z",
+      "side": 1,
+      "message": "OK I thought it meant something else.\n\nThere is actually no active-low support in the EC that I can see.",
+      "parentUuid": "dad40215_a152d2fa",
+      "revId": "79f3d0e5efa32621f230deaf00ce1f165a8c2e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
