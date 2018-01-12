@@ -4570,6 +4570,19 @@ struct __ec_align1 ec_params_efs_verify {
 	uint8_t region;		/* enum ec_flash_region */
 };
 
+#define EC_CMD_CBI_GET		0x011F
+
+enum cbi_data_type {
+	CBI_DATA_BOARD_VERSION,
+	CBI_DATA_OEM_ID,
+	CBI_DATA_SKU_ID,
+	CBI_DATA_COUNT,
+};
+
+struct __ec_align4 ec_params_cbi_get {
+	uint32_t type;		/* enum cbi_data_type */
+};
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
