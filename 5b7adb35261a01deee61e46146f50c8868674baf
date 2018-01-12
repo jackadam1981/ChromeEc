@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f09df7a3_0ed5da24",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-12T08:51:49Z",
+      "side": 1,
+      "message": "(60W * 100 overflows a 32-bit int, for example\n\nWe therefore divide the product by 1000 and re-multiply the power numbers by 1000 when converting them back to current.",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 57
+      },
+      "revId": "5b7adb35261a01deee61e46146f50c8868674baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
