@@ -22,6 +22,30 @@
       "revId": "1cc03392cd416f05fc191ed0ba1954ff7aafc721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "144d3961_9a027c8a",
+        "filename": "common/backlight_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-12T22:58:02Z",
+      "side": 1,
+      "message": "Conflict: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/864492",
+      "parentUuid": "588dfb0a_0cfaed6c",
+      "range": {
+        "startLine": 22,
+        "startChar": 39,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "1cc03392cd416f05fc191ed0ba1954ff7aafc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
