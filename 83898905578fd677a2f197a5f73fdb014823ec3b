@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ccf6edbe_41326392",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2018-01-12T00:43:18Z",
+      "side": 1,
+      "message": "GPIO00 is not used in previous version of nautilus board and there is no problem.\n\ndw48.ko will upload the datasheet of GR3703 on b:71775046.\nCDP / SDP is selected by ILIM_SEL on CTLs \u003d 1.",
+      "parentUuid": "90942e71_198d8967",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "83898905578fd677a2f197a5f73fdb014823ec3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fac40c0_e563919f",
         "filename": "board/nautilus/gpio.inc",
         "patchSetId": 3
