@@ -16,6 +16,24 @@
       "revId": "e6cff3f1b1b7fbcd4255b7c057f6f4cb20cdbce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "369ac558_08654260",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-12T01:43:42Z",
+      "side": 1,
+      "message": "Tracked here: b/71874971",
+      "parentUuid": "fc78cf01_9e6513e6",
+      "revId": "e6cff3f1b1b7fbcd4255b7c057f6f4cb20cdbce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
