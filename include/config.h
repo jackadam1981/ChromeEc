@@ -189,6 +189,7 @@
 
 /* Allow proprietary communication protocols' extensions. */
 #undef CONFIG_EXTENSION_COMMAND
+
 /*
  * Support controlling the display backlight based on the state of the lid
  * switch.  The EC will disable the backlight when the lid is closed.
@@ -201,6 +202,11 @@
  * signal from the AP through EC.
  */
 #undef CONFIG_BACKLIGHT_REQ_GPIO
+
+/*
+ * If defined, display backlight enable GPIO is active low.
+ */
+#undef CONFIG_BACKLIGHT_ENABLE_ACTIVE_LOW
 
 /* Support base32 text encoding */
 #undef CONFIG_BASE32
