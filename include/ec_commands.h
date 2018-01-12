@@ -4571,6 +4571,7 @@ struct __ec_align1 ec_params_efs_verify {
 };
 
 #define EC_CMD_GET_CROS_BOARD_INFO	0x011F
+#define EC_CMD_SET_CROS_BOARD_INFO	0x0120
 
 enum cbi_data_type {
 	/* integer types */
@@ -4584,6 +4585,16 @@ enum cbi_data_type {
 
 struct __ec_align4 ec_params_get_cbi {
 	uint32_t type;		/* enum cbi_data_type */
+};
+
+#define CBI_SET_NO_SYNC		(1 << 0)	/* Skip write to EEPROM */
+#define CBI_SET_INIT		(1 << 1)	/* Initialize header */
+
+struct __ec_align1 ec_params_set_cbi {
+	uint32_t type;		/* enum cbi_data_type */
+	uint8_t flag;		/* CBI_SET_* */
+	uint32_t data;		/* For numeric value */
+	uint8_t raw[];		/* For string and raw data */
 };
 
 /*****************************************************************************/
