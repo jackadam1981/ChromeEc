@@ -52,6 +52,24 @@
       "revId": "79f3d0e5efa32621f230deaf00ce1f165a8c2e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ff4a53e_9f78c341",
+        "filename": "common/backlight_lid.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-12T22:57:43Z",
+      "side": 1,
+      "message": "I think we should have global support for active low/high in gpio.h as a flag. We can add API gpio_activate(enum gpio_signal signal, int enable), which automatically sets 1 or 0 depending on the flag. Otherwise, we\u0027ll keep adding CONFIG_FOO_ACTIVE_LOW and more code like this...\n\nConflicting CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/861583.",
+      "parentUuid": "46254bd9_d8479804",
+      "revId": "79f3d0e5efa32621f230deaf00ce1f165a8c2e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
