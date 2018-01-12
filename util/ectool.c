@@ -59,6 +59,8 @@ const char help_str[] =
 	"      Read or write board-specific battery parameter\n"
 	"  boardversion\n"
 	"      Prints the board version\n"
+	"  cbi\n"
+	"      Set/Get Board Information\n"
 	"  chargecurrentlimit\n"
 	"      Set the maximum battery charging current\n"
 	"  chargecontrol\n"
