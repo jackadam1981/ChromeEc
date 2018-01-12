@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6053825_700cf519",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-12T00:00:35Z",
+      "side": 1,
+      "message": "Would be more readable if these were CCD_PP_*.  And then this could just be CCD_PP_DONE.\n\nSee CCD_FLAG_* (not CCDFLAG_*) and CCD_CAP_* (not CCDCAP_*) for similar design patterns.",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 14
+      },
+      "revId": "42db00f2360325a7cd938a1e3a09662722c22eff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
