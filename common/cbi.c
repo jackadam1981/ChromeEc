@@ -9,6 +9,7 @@
 #include "console.h"
 #include "cbi.h"
 #include "crc8.h"
+#include "host_command.h"
 #include "i2c.h"
 #include "util.h"
 
@@ -103,3 +104,31 @@ int cbi_get_oem_id(void)
 		return EC_ERROR_UNKNOWN;
 	return bi.oem_id;
 }
+
+static int hc_cbi_get(struct host_cmd_handler_args *args)
+{
+	const struct __ec_align4 ec_params_cbi_get *p = args->params;
+	if (init_board_info())
+		return EC_RES_ERROR;
+	switch (p->type) {
+	case CBI_DATA_BOARD_VERSION:
+		memcpy(args->response, &bi.version, sizeof(bi.version));
+		args->response_size = sizeof(bi.version);
+		break;
+	case CBI_DATA_OEM_ID:
+		memcpy(args->response, &bi.oem_id, sizeof(bi.oem_id));
+		args->response_size = sizeof(bi.oem_id);
+		break;
+	case CBI_DATA_SKU_ID:
+		memcpy(args->response, &bi.sku_id, sizeof(bi.sku_id));
+		args->response_size = sizeof(bi.sku_id);
+		break;
+	default:
+		return EC_RES_INVALID_PARAM;
+	}
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_CBI_GET,
+		     hc_cbi_get,
+		     EC_VER_MASK(0));
