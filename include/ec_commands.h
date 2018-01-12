@@ -4473,6 +4473,27 @@ struct __ec_align4 ec_params_rwsig_action {
 	uint32_t action;
 };
 
+/*
+ * Retrieve info from Cros Board Info store. Response is based on the data
+ * type. Integers return a uint32. Strings return a string, using the response
+ * size to determine how big it is.
+ */
+#define EC_CMD_GET_CROS_BOARD_INFO	0x011F
+
+enum cbi_data_type {
+	/* integer types */
+	CBI_DATA_BOARD_VERSION = 0,
+	CBI_DATA_OEM_ID = 1,
+	CBI_DATA_SKU_ID = 2,
+	/* string types */
+	CBI_FIRST_STRING_PARAM = 0x1000,
+	CBI_DATA_COUNT,
+};
+
+struct __ec_align4 ec_params_get_cbi {
+	uint32_t type;		/* enum cbi_data_type */
+};
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
