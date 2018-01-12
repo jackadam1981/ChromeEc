@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "588dfb0a_0cfaed6c",
+        "filename": "common/backlight_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-12T17:15:50Z",
+      "side": 1,
+      "message": "Instead of using CONFIG_ and repeating the code, can you fix it using a flag like struct power_signal_info does? Each board should set a polarity in a flag.\n\n(I wonder why we don\u0027t have polarity setting built in gpio.h. That\u0027ll allow us to remove some code and CONFIG_ macros. We even can add API gpio_activate which automatically figures out high and low by looking up the flag. It looks very easy to do...)",
+      "range": {
+        "startLine": 22,
+        "startChar": 39,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "1cc03392cd416f05fc191ed0ba1954ff7aafc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
