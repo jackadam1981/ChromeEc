@@ -22,6 +22,30 @@
       "revId": "1457173f75214460267f7f97433eec5f468b63c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9dbf99b_aa90846f",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-12T13:42:39Z",
+      "side": 1,
+      "message": "Yes as we did on eve_fp:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/master/board/eve_fp/board.c#17\nat the end of the day, it will be called on the SLP_S3 transition (and set some useful sleep mask), so it\u0027s mostly equivalent.",
+      "parentUuid": "582a8581_7fc4d382",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "1457173f75214460267f7f97433eec5f468b63c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
