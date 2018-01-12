@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e903063f_3df5a30d",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1653,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-12T00:08:36Z",
+      "side": 1,
+      "message": "Did we ever add rate limiting for password attempts in Cr50\u0027s password checker?  If not, we should (not here, of course...)",
+      "range": {
+        "startLine": 1653,
+        "startChar": 7,
+        "endLine": 1653,
+        "endChar": 30
+      },
+      "revId": "e7cba50510e6996521dc1c77774100303871e173",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
