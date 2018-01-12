@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "e83b7196_1243964f",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-12T18:38:33Z",
+      "side": 1,
+      "message": "Thinking about this again, we probably don\u0027t want to apply it to other variants. 500 msec delay on every cold boot is a big deal.",
+      "parentUuid": "f60a5589_713390bf",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 25
+      },
+      "revId": "670c7e6bd1919dc0b4a7696352a4519bb2f96654",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac303462_24821fff",
         "filename": "chip/npcx/system.c",
         "patchSetId": 1
