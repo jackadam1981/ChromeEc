@@ -172,7 +172,7 @@ static int hc_cbi_set(struct host_cmd_handler_args *args)
 		initialized = 1;
 	} else {
 		if (read_board_info())
-		return EC_RES_ERROR;
+			return EC_RES_ERROR;
 	}
 
 	switch (p->type) {
