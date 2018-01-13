@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "5e397ae4_293f0b9d",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-13T01:57:31Z",
+      "side": 1,
+      "message": "Ok, you flipped these between rev3 and rev4, I didn\u0027t notice.\n\nLet\u0027s make two small changes:\n\n1) Rename USB_A_CHARGE_EN_L to something like \"USB_A_ILIM_SEL\" or \"USB_A_ILIM_CDP\" to reflect that it enables higher CDP current limit.\n\n2) Initialize to zero (lower) ILIM.",
+      "parentUuid": "ccf6edbe_41326392",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "83898905578fd677a2f197a5f73fdb014823ec3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fac40c0_e563919f",
         "filename": "board/nautilus/gpio.inc",
         "patchSetId": 3
