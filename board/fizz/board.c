@@ -450,7 +450,7 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
-	CPRINTF("Board Version: 0x%x", board_get_version());
+	CPRINTS("Board Version: 0x%04x", board_get_version());
 
 	/* Provide AC status to the PCH */
 	board_extpower();

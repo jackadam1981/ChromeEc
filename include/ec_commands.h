@@ -4585,6 +4585,7 @@ struct __ec_align4 ec_params_cbi_get {
 };
 
 #define CBI_SET_NO_SYNC		(1 << 0)	/* Skip write to EEPROM */
+#define CBI_SET_INIT		(1 << 1)	/* Initialize header */
 
 struct __ec_align1 ec_params_cbi_set {
 	uint32_t type;		/* enum cbi_data_type */

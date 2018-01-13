@@ -18,21 +18,23 @@
 static struct board_info bi;
 static int initialized;
 
-static int cbi_crc8(const struct board_info *bi)
+static uint8_t cbi_crc8(const struct board_info *bi)
 {
-	return crc8((uint8_t *)&bi->head.version, bi->head.total_size - 4);
+	return crc8((uint8_t *)&bi->head.crc + 1, bi->head.total_size - 4);
 }
 
 /*
  * Get board information from EEPROM
  */
-static int init_board_info(void)
+static int read_board_info(void)
 {
 	uint8_t buf[256];
 	uint8_t offset;
 
 	if (initialized)
 		return EC_SUCCESS;
+
+	CPRINTS("Reading board info");
 
 	/* Read header */
 	offset = 0;
@@ -72,14 +74,16 @@ static int init_board_info(void)
 		return EC_ERROR_INVAL;
 	}
 
+	/* Save only the data we understand. */
+	memcpy(&bi.head + 1, &buf[sizeof(bi.head)],
+	       sizeof(bi) - sizeof(bi.head));
+
 	/* Check CRC */
 	if (cbi_crc8(&bi) != bi.head.crc) {
 		CPRINTS("Bad CRC");
 		return EC_ERROR_INVAL;
 	}
 
-	/* Every thing looks good. Save only the data we understand. */
-	memcpy(&bi.major, &buf[sizeof(bi.head)], sizeof(bi) - sizeof(bi.head));
 	initialized = 1;
 
 	return EC_SUCCESS;
@@ -90,10 +94,9 @@ static int write_board_info(void)
 	uint8_t buf[17];	/* Address byte + Page write size (16) */
 	_Static_assert(sizeof(buf) > sizeof(struct board_info),
 		       "Buffer is smaller than struct board_info");
-	bi.head.crc = cbi_crc8(&bi);
 
 	buf[0] = 0;	/* Offset 0 */
-	memcpy(buf, &bi, sizeof(bi));
+	memcpy(&buf[1], &bi, sizeof(bi));
 	if (i2c_xfer(I2C_PORT_EEPROM, I2C_ADDR_EEPROM, buf,
 		     sizeof(bi) + 1, NULL, 0, I2C_XFER_SINGLE)) {
 		CPRINTS("Failed to write");
@@ -105,7 +108,7 @@ static int write_board_info(void)
 
 int cbi_get_board_version(void)
 {
-	if (init_board_info())
+	if (read_board_info())
 		return EC_ERROR_UNKNOWN;
 	return bi.version;
 }
@@ -116,14 +119,14 @@ int cbi_get_board_version(void)
  */
 int cbi_get_sku_id(void)
 {
-	if (init_board_info())
+	if (read_board_info())
 		return EC_ERROR_UNKNOWN;
 	return bi.sku_id;
 }
 
 int cbi_get_oem_id(void)
 {
-	if (init_board_info())
+	if (read_board_info())
 		return EC_ERROR_UNKNOWN;
 	return bi.oem_id;
 }
@@ -132,25 +135,23 @@ static int hc_cbi_get(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_cbi_get *p = args->params;
 
-	if (init_board_info())
+	if (read_board_info())
 		return EC_RES_ERROR;
 
 	switch (p->type) {
 	case CBI_DATA_BOARD_VERSION:
-		memcpy(args->response, &bi.version, sizeof(bi.version));
-		args->response_size = sizeof(bi.version);
+		*(uint32_t *)args->response = bi.version;
 		break;
 	case CBI_DATA_OEM_ID:
-		memcpy(args->response, &bi.oem_id, sizeof(bi.oem_id));
-		args->response_size = sizeof(bi.oem_id);
+		*(uint32_t *)args->response = bi.oem_id;
 		break;
 	case CBI_DATA_SKU_ID:
-		memcpy(args->response, &bi.sku_id, sizeof(bi.sku_id));
-		args->response_size = sizeof(bi.sku_id);
+		*(uint32_t *)args->response = bi.sku_id;
 		break;
 	default:
 		return EC_RES_INVALID_PARAM;
 	}
+	args->response_size = sizeof(uint32_t);
 
 	return EC_RES_SUCCESS;
 }
@@ -162,8 +163,17 @@ static int hc_cbi_set(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_cbi_set *p = args->params;
 
-	if (init_board_info())
-		return EC_RES_ERROR;
+	if (p->flag & CBI_SET_INIT) {
+		memset(&bi, 0, sizeof(bi));
+		memcpy(&bi.head.magic, cbi_magic, sizeof(cbi_magic));
+		bi.head.major = CBI_VERSION_MAJOR;
+		bi.head.minor = CBI_VERSION_MINOR;
+		bi.head.total_size = sizeof(bi);
+		initialized = 1;
+	} else {
+		if (read_board_info())
+			return EC_RES_ERROR;
+	}
 
 	switch (p->type) {
 	case CBI_DATA_BOARD_VERSION:
@@ -184,6 +194,8 @@ static int hc_cbi_set(struct host_cmd_handler_args *args)
 	default:
 		return EC_RES_INVALID_PARAM;
 	}
+
+	bi.head.crc = cbi_crc8(&bi);
 
 	/* Skip write if client asks so. */
 	if (p->flag & CBI_SET_NO_SYNC)
