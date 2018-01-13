@@ -46,6 +46,30 @@
       "revId": "1cc03392cd416f05fc191ed0ba1954ff7aafc721",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123b2de0_883665c2",
+        "filename": "common/backlight_lid.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-01-13T04:22:40Z",
+      "side": 1,
+      "message": "We got your point, we will try to add it.",
+      "parentUuid": "144d3961_9a027c8a",
+      "range": {
+        "startLine": 22,
+        "startChar": 39,
+        "endLine": 23,
+        "endChar": 50
+      },
+      "revId": "1cc03392cd416f05fc191ed0ba1954ff7aafc721",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
