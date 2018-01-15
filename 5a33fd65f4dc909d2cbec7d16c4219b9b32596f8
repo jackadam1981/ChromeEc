@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36d1ca6c_fa67f325",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-15T10:12:05Z",
+      "side": 1,
+      "message": "Configure",
+      "range": {
+        "startLine": 381,
+        "startChar": 4,
+        "endLine": 381,
+        "endChar": 13
+      },
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2890f5bd_0da3554f",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-15T10:12:05Z",
+      "side": 1,
+      "message": "see maxim17055 datasheet for details.",
+      "range": {
+        "startLine": 382,
+        "startChar": 8,
+        "endLine": 382,
+        "endChar": 18
+      },
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "049e10de_24e95773",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-15T10:12:05Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused by \"0: Write these bits to 0.\" in the datasheet, and if that refers to bits D15/D14.\n\nAlso, I\u0027m concerned about modifying _any_ of these registers, as the user guide says: \"It is recommended that these values are not changed, unless absolutely required by the application. Table\": it looks like it\u0027s going to change the charging algorithm behaviour itself (see \"1.2.5 End-of-Charge Detection\" for example).",
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4130e9a3_79c48afd",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-15T10:12:05Z",
+      "side": 1,
+      "message": "EC code style is `/*` alone on first line.",
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2581dd2c_ce4d94a1",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-15T10:12:05Z",
+      "side": 1,
+      "message": "Formula\n\nAlso, put the whole comment in a single block:\n\n/*\n * Formula here is PERIOD \u003d 45s * 2^(CURR_CFG - 7)\n * Technically this is every 1.5min, since the configuration\n * doesn\u0027t allow for more granularity\n */",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 10
+      },
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c9827bc_3f4f045a",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-15T10:12:05Z",
+      "side": 1,
+      "message": "granularity",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
