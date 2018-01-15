@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddc001e4_08b863f2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-15T09:59:44Z",
+      "side": 1,
+      "message": "A bit weird to abbreviate pwr but not voltage/current.\n\nIMHO I\u0027d just use mv, ma, and mw as variable names.",
+      "range": {
+        "startLine": 1555,
+        "startChar": 5,
+        "endLine": 1555,
+        "endChar": 15
+      },
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "990f3c44_21602062",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-15T09:59:44Z",
+      "side": 1,
+      "message": "drop this",
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc3a6c3_ecc3578d",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-15T09:59:44Z",
+      "side": 1,
+      "message": "Can you reflow the test to fix as close as possible to 80 columns?",
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
