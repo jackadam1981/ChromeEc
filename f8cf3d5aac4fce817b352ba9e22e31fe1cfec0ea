@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a816aca0_47ec8270",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-15T16:50:56Z",
+      "side": 1,
+      "message": "nit: isn\u0027t this called \u0027current\u0027 ?",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8548d846_31783ee8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-15T16:50:56Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddc001e4_08b863f2",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 7
@@ -18,6 +64,29 @@
         "startChar": 5,
         "endLine": 1555,
         "endChar": 15
+      },
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53cbf8dd_ae564fa0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-15T16:50:56Z",
+      "side": 1,
+      "message": "this guy might be a negative value returned in a uint16_t and casted to int.\nNot sure it works the way you think.\nDid you check ?",
+      "range": {
+        "startLine": 1561,
+        "startChar": 1,
+        "endLine": 1561,
+        "endChar": 24
       },
       "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
@@ -53,6 +122,29 @@
       "writtenOn": "2018-01-15T09:59:44Z",
       "side": 1,
       "message": "Can you reflow the test to fix as close as possible to 80 columns?",
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b22d071_9a50d35e",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-15T16:50:56Z",
+      "side": 1,
+      "message": "I suspect \u0027voltage\u0027 might uninitialized in case of sb_read() failure ?\nyou should probably initialize it with an error code above in the declaration.",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 16
+      },
       "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
