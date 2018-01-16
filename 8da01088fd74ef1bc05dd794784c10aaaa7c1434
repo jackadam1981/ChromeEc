@@ -34,6 +34,24 @@
       "revId": "8da01088fd74ef1bc05dd794784c10aaaa7c1434",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce5191b0_7fa43429",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-01-16T17:29:51Z",
+      "side": 1,
+      "message": "Oh ok. That makese sense. It\u0027d be helpful to put that info into the commit description.",
+      "parentUuid": "87b79ac4_3c198bff",
+      "revId": "8da01088fd74ef1bc05dd794784c10aaaa7c1434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
