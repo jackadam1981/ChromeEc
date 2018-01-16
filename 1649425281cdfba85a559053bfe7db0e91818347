@@ -62,6 +62,30 @@
       "revId": "1649425281cdfba85a559053bfe7db0e91818347",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5abd3986_d8ba1a1e",
+        "filename": "board/cyan/bq24773.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-01-16T08:00:17Z",
+      "side": 1,
+      "message": "Because we still want battery gauge set full charge by itself, and after confirm with manufacturer, change voltage from decrease 300mV to 150mV can make sure battery reach full charge.",
+      "parentUuid": "bf83d9f2_0c217f3e",
+      "range": {
+        "startLine": 227,
+        "startChar": 5,
+        "endLine": 229,
+        "endChar": 37
+      },
+      "revId": "1649425281cdfba85a559053bfe7db0e91818347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
