@@ -84,4 +84,12 @@ enum finger_state fp_sensor_finger_status(void);
 #define FP_SENSOR_LOW_SENSOR_COVERAGE 3
 int fp_sensor_acquire_image(uint8_t *image_data);
 
+/*
+ * Acquires a fingerprint image with ...
+ *
+ * Same as the fp_sensor_acquire_image function above,
+ * excepted XxX
+ */
+int fp_sensor_acquire_image_with_mode(uint8_t *image_data, int mode);
+
 #endif /* __CROS_EC_FPSENSOR_H */
