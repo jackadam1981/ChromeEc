@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a88e679_14ca9430",
+        "filename": "util/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-16T10:14:30Z",
+      "side": 1,
+      "message": "Makes sense,\nI have added a ifeq() on the board name for now.",
+      "parentUuid": "9a59f868_318cd89d",
+      "range": {
+        "startLine": 11,
+        "startChar": 33,
+        "endLine": 11,
+        "endChar": 45
+      },
+      "revId": "c6adf17e8a48690749a5acdf9d7adc88bae16c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4157bdd_f0cee8be",
         "filename": "util/comm-servo-spi.c",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "f101db86_7ea84a28",
+        "filename": "util/comm-servo-spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-16T10:14:30Z",
+      "side": 1,
+      "message": "Overall I\u0027m adding it only on the build machine rather than the AP version mainly because I don\u0027t want to add a dependency to libftdi there, it should work in both places. It\u0027s true we generally want it on the \u0027build\u0027 arch (aka your dev workstation) rather than the \u0027host\u0027 arch (aka the AP) right now, might change if we build any test system based on it.\n\n\u003e BTW, depending on how you build, the arch of the ectool binary may match the DUT, which could be incorrect for the host.\n\nthat\u0027s why the new \u0027ectool_servo\u0027 is built with BUILDCC rather than HOSTCC in order to ensure it matches the developer workstation.\n\nI have added some description at the top of the file.",
+      "parentUuid": "d4157bdd_f0cee8be",
+      "revId": "c6adf17e8a48690749a5acdf9d7adc88bae16c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bf6d365_36b44f49",
         "filename": "util/comm-servo-spi.c",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2018-01-12T18:05:01Z",
       "side": 1,
       "message": "Use calloc() instead to zero?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 29
+      },
+      "revId": "c6adf17e8a48690749a5acdf9d7adc88bae16c3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a75a89be_bee2953e",
+        "filename": "util/comm-servo-spi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-16T10:14:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bf6d365_36b44f49",
       "range": {
         "startLine": 108,
         "startChar": 0,
