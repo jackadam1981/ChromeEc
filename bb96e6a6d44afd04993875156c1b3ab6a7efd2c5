@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3fb972a_703739b3",
+        "filename": "board/nami/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-16T17:57:08Z",
+      "side": 1,
+      "message": "The convention seems to append _L for an active low signal.\n\nI am also going to try to make a CL that uses a polarity setting for backlight to remove some come (and inverse code) soon.",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "bb96e6a6d44afd04993875156c1b3ab6a7efd2c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
