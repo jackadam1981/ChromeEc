@@ -16,6 +16,24 @@
       "revId": "8da01088fd74ef1bc05dd794784c10aaaa7c1434",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87b79ac4_3c198bff",
+        "filename": "board/grunt/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-16T00:30:44Z",
+      "side": 1,
+      "message": "Grunt HW has these driven from EC to SOC, unlike coral which had the TCPCs drive the HPD signals to SOC. I don\u0027t know the reason for the difference.",
+      "parentUuid": "158927c1_03d93c52",
+      "revId": "8da01088fd74ef1bc05dd794784c10aaaa7c1434",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
