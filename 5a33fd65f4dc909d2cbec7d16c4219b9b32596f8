@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34cc143b_831735c9",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T05:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36d1ca6c_fa67f325",
+      "range": {
+        "startLine": 381,
+        "startChar": 4,
+        "endLine": 381,
+        "endChar": 13
+      },
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2890f5bd_0da3554f",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6b78341d_47b32d60",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T05:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2890f5bd_0da3554f",
+      "range": {
+        "startLine": 382,
+        "startChar": 8,
+        "endLine": 382,
+        "endChar": 18
+      },
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "049e10de_24e95773",
         "filename": "driver/battery/max17055.c",
         "patchSetId": 4
@@ -59,6 +107,24 @@
       "writtenOn": "2018-01-15T10:12:05Z",
       "side": 1,
       "message": "I\u0027m a bit confused by \"0: Write these bits to 0.\" in the datasheet, and if that refers to bits D15/D14.\n\nAlso, I\u0027m concerned about modifying _any_ of these registers, as the user guide says: \"It is recommended that these values are not changed, unless absolutely required by the application. Table\": it looks like it\u0027s going to change the charging algorithm behaviour itself (see \"1.2.5 End-of-Charge Detection\" for example).",
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "632275e5_785ee758",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T05:09:24Z",
+      "side": 1,
+      "message": "Fair point about that comment. From what I can tell:\n- AvgCurrent is used to determine end of charge, as using it allows to sanity check instantaneous current measurements. In that case, I would assume that us elongating the default (from 5s to ~90s) shouldn\u0027t have any adverse effects of detecting the end of charge. The examples listed check against:\n- removing a charge-source \u0026 using the avg to sanity check, which ours still does (for a long time)\n- application spikes \u0026 using the avg to sanity check, which in our case should also still apply.\nI\u0027ll check with maxim if there is the danger of overshooting w/ 90s as the avg might not drop quickly enough.\n\nWith regard to the AvgVoltage, I\u0027m more concerned, since AvgVCell is used to detect if the battery is empty, and lagging behind for 85s might be problematic here. I\u0027ll ask Maxim.",
+      "parentUuid": "049e10de_24e95773",
       "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -79,6 +145,24 @@
       "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0af41ab3_c5cea507",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T05:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4130e9a3_79c48afd",
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "8bfb31fe_105155b1",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T05:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2581dd2c_ce4d94a1",
+      "range": {
+        "startLine": 75,
+        "startChar": 3,
+        "endLine": 75,
+        "endChar": 10
+      },
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c9827bc_3f4f045a",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 4
@@ -125,6 +233,30 @@
       "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b4eb886_badf0325",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T05:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c9827bc_3f4f045a",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 36
+      },
+      "revId": "5a33fd65f4dc909d2cbec7d16c4219b9b32596f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

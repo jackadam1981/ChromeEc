@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e49c682_b8b7aee6",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T05:09:24Z",
+      "side": 1,
+      "message": "The other values values in the register are to set the time constant for a \u0027mixing algorithm\u0027 and the time constant for the average temperature readings. Since these are two values are the first 7 bits, I can reduce this to one RMW without overwriting the other values.",
+      "parentUuid": "7a1e18a6_3856e092",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 49
+      },
+      "revId": "e7580ea9e7027f151abdd92f321cf0ac7be92122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcecc6c4_cbb8907e",
         "filename": "driver/battery/max17055.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e7580ea9e7027f151abdd92f321cf0ac7be92122",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e005887_c99509c2",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T05:09:24Z",
+      "side": 1,
+      "message": "nice catch, thanks. It\u0027s supposed to be -7 and not -2.",
+      "parentUuid": "dcecc6c4_cbb8907e",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "e7580ea9e7027f151abdd92f321cf0ac7be92122",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
