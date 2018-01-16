@@ -9,7 +9,6 @@
 #define __CROS_EC_BOARD_H
 
 /* Optional modules */
-#define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
 #define CONFIG_CHIPSET_RK3399
 #define CONFIG_CMD_ACCELS

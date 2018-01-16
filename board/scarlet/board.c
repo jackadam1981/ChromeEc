@@ -3,8 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include "adc.h"
-#include "adc_chip.h"
 #include "backlight.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -66,13 +64,6 @@ static void warm_reset_request_interrupt(enum gpio_signal signal)
 }
 
 #include "gpio_list.h"
-
-/******************************************************************************/
-/* ADC channels. Must be in the exactly same order as in enum adc_channel. */
-const struct adc_t adc_channels[] = {
-	[ADC_BOARD_ID] = {"BOARD_ID", 16, 4096, 0, STM32_AIN(10)},
-};
-BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /******************************************************************************/
 /* I2C ports */
@@ -310,33 +301,14 @@ BUILD_ASSERT(ARRAY_SIZE(scarlet_boards) == BOARD_VERSION_COUNT);
 
 #define THRESHOLD_MV 56 /* Simply assume 1800/16/2 */
 
+/*
+ * We don't really need to detect board version through EC. Let's make
+ * board_get_version() a placeholder to save the power consumption from
+ * ADC module.
+ */
 int board_get_version(void)
 {
-	static int version = BOARD_VERSION_UNKNOWN;
-	int mv;
-	int i;
-
-	if (version != BOARD_VERSION_UNKNOWN)
-		return version;
-
-	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 0);
-	/* Wait to allow cap charge */
-	msleep(10);
-	mv = adc_read_channel(ADC_BOARD_ID);
-
-	if (mv == ADC_READ_ERROR)
-		mv = adc_read_channel(ADC_BOARD_ID);
-
-	gpio_set_level(GPIO_EC_BOARD_ID_EN_L, 1);
-
-	for (i = 0; i < BOARD_VERSION_COUNT; ++i) {
-		if (mv < scarlet_boards[i].expect_mv + THRESHOLD_MV) {
-			version = scarlet_boards[i].version;
-			break;
-		}
-	}
-
-	return version;
+	return 0;
 }
 
 /* Motion sensors */
