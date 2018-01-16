@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fe25e33e_c630d73e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T07:37:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a816aca0_47ec8270",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8548d846_31783ee8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8389b8d_03a20107",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T07:37:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8548d846_31783ee8",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 53
+      },
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b605de16_2e73043a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1555,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T07:37:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddc001e4_08b863f2",
+      "range": {
+        "startLine": 1555,
+        "startChar": 5,
+        "endLine": 1555,
+        "endChar": 15
+      },
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53cbf8dd_ae564fa0",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0c424ce6_c027af1d",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T07:37:25Z",
+      "side": 1,
+      "message": "thanks for that catch, you\u0027re right that would\u0027ve never triggered. Moreover, now that I\u0027m not keeping arrays \u0026 taking up too much RAM I\u0027ll make these functions return signed ints, to also facilitate this use-case.",
+      "parentUuid": "53cbf8dd_ae564fa0",
+      "range": {
+        "startLine": 1561,
+        "startChar": 1,
+        "endLine": 1561,
+        "endChar": 24
+      },
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "990f3c44_21602062",
         "filename": "driver/battery/smart.c",
         "patchSetId": 7
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "f07d9cea_eaab1b28",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T07:37:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "990f3c44_21602062",
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdc3a6c3_ecc3578d",
         "filename": "driver/battery/smart.c",
         "patchSetId": 7
@@ -125,6 +239,24 @@
       "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "727a2a91_493136f1",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T07:37:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdc3a6c3_ecc3578d",
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -148,6 +280,30 @@
       "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c239580_692e5ac3",
+        "filename": "driver/battery/smart.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-01-16T07:37:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b22d071_9a50d35e",
+      "range": {
+        "startLine": 308,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 16
+      },
+      "revId": "f8cf3d5aac4fce817b352ba9e22e31fe1cfec0ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
