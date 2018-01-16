@@ -32,6 +32,7 @@
 #define REG_DEVICE_NAME             0x21
 #define REG_QR_TABLE10              0x22
 #define REG_LEARNCFG                0x28
+#define REG_FILTERCFG               0x29
 #define REG_QR_TABLE20              0x32
 #define REG_RCOMP0                  0x38
 #define REG_TEMPCO                  0x39
@@ -58,6 +59,32 @@
 /* ModelCfg reg (0xdb) flags */
 #define MODELCFG_REFRESH            0x8000
 #define MODELCFG_VCHG               0x0400
+
+
+/* Masks and shifts to use FilterCfg reg to calibrate avg voltage & current */
+#define AVG_VOLT_CFG_MASK        0x0070
+#define AVG_VOLT_CFG_SHIFT       4
+
+#define AVG_CURR_CFG_MASK        0x000f
+#define AVG_CURR_CFG_SHIFT       0
+
+/*
+ * Maxim's gauge uses a moving average to calculate the avg
+ * voltage and current
+ */
+
+/*
+ * Formula here is PERIOD = 45s * 2^(CURR_CFG - 7).
+ * Technically this is every 1.5min, since the configuration
+ * doesn't allow for more granularity.
+ */
+#define AVG_CURR_CFG_1MIN_PERIOD 8
+/*
+ * Formula here is PERIOD = 45s * 2^(VOLT_CFG - 2).
+ * Technically this is every 1.5min, since the configuration
+ * doesn't allow for more granularity.
+ */
+#define AVG_VOLT_CFG_1MIN_PERIOD 3
 
 /*
  * Before we have the battery fully characterized, we use these macros to
