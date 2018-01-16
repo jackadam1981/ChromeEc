@@ -22,6 +22,30 @@
       "revId": "db39e4e82d41cd6bcbb7cc13c3323b2c49a28924",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a66478d_9e342915",
+        "filename": "board/scarlet/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-16T20:41:47Z",
+      "side": 1,
+      "message": "On sysjump gpio_init() (unlike cold boot), we will not re-initialize logic level of GPIOs, so they will keep the same logic level from pre-sysjump.",
+      "parentUuid": "43d53b36_8faaea5d",
+      "range": {
+        "startLine": 85,
+        "startChar": 39,
+        "endLine": 85,
+        "endChar": 51
+      },
+      "revId": "db39e4e82d41cd6bcbb7cc13c3323b2c49a28924",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
