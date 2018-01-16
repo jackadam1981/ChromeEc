@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90f1a286_97f0bdbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-16T16:38:50Z",
+      "side": 1,
+      "message": "You\u0027re adding a new temperature sensor driver. It\u0027s too significant not to be mentioned...",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "21fdb7eb8088b198c2765623dc6080372fbb7c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df65a201_069fa0de",
+        "filename": "driver/temp_sensor/F75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-16T16:38:50Z",
+      "side": 1,
+      "message": "This one too.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "21fdb7eb8088b198c2765623dc6080372fbb7c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdc66e50_f88490d3",
+        "filename": "driver/temp_sensor/F75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-16T16:38:50Z",
+      "side": 1,
+      "message": "Can you revise it? It doesn\u0027t match the function.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "21fdb7eb8088b198c2765623dc6080372fbb7c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b7c81c6_13ec9f2e",
+        "filename": "driver/temp_sensor/F75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-16T16:38:50Z",
+      "side": 1,
+      "message": "i2c_read8 returns error code as a positive integer. Please fix.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 11
+      },
+      "revId": "21fdb7eb8088b198c2765623dc6080372fbb7c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ccb528_7d35d210",
+        "filename": "driver/temp_sensor/F75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-16T16:38:50Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "range": {
+        "startLine": 38,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "21fdb7eb8088b198c2765623dc6080372fbb7c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06455637_a48f861b",
+        "filename": "driver/temp_sensor/F75303.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-16T16:38:50Z",
+      "side": 1,
+      "message": "I don\u0027t have a datasheet. Can you confirm this is correct (not uint8_t)?",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "21fdb7eb8088b198c2765623dc6080372fbb7c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e854b16_a25082fd",
+        "filename": "driver/temp_sensor/F75303.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-16T16:38:50Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "21fdb7eb8088b198c2765623dc6080372fbb7c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3047284_828b5733",
+        "filename": "driver/temp_sensor/F75303.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-16T16:38:50Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 8,
+        "startChar": 8,
+        "endLine": 8,
+        "endChar": 23
+      },
+      "revId": "21fdb7eb8088b198c2765623dc6080372fbb7c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e83ace3_4c66a478",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2439,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-16T16:38:50Z",
+      "side": 1,
+      "message": "Can you provide more info?",
+      "range": {
+        "startLine": 2439,
+        "startChar": 36,
+        "endLine": 2439,
+        "endChar": 50
+      },
+      "revId": "21fdb7eb8088b198c2765623dc6080372fbb7c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
