@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0df34eea_c5a500e2",
+        "filename": "board/nami/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T21:53:22Z",
+      "side": 1,
+      "message": "Call into the backlight API to enable/disable backlight, rather than directly setting the GPIO.",
+      "range": {
+        "startLine": 648,
+        "startChar": 1,
+        "endLine": 648,
+        "endChar": 41
+      },
+      "revId": "af80435fd8f329196ced1b194dae51a4389e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "475390de_211ab2b3",
+        "filename": "common/backlight_lid.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T21:53:22Z",
+      "side": 1,
+      "message": "Seems like this could just as easily be done in a helper function at the top of this file:\n\nvoid enable_backlight(int enabled)\n{\n#ifdef CONFIG_BACKLIGHT_REQ_GPIO_ACTIVE_LOW\n    gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, !enabled);\n#else\n    gpio_set_level(GPIO_ENABLE_BACKLIGHT, enabled);\n#endif\n}",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 37
+      },
+      "revId": "af80435fd8f329196ced1b194dae51a4389e7274",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
