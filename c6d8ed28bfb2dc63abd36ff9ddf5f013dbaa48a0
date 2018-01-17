@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9df2fd28_b1601345",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-17T10:45:31Z",
+      "side": 1,
+      "message": "from the current __enter_hibernate path (and it\u0027s modified version here), it\u0027s well hidden that the path of hibernation is actually using the watchdog to get out of it (not only as a safety). We should really document it properly in the npcx code as this seems a critical piece of the hibernation process.",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "c6d8ed28bfb2dc63abd36ff9ddf5f013dbaa48a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c130df36_c8a2a60d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-17T10:45:31Z",
+      "side": 1,
+      "message": "As mentioned yesterday, in the past, when adding a delay to workaround various issues with low/drained batteries, we repeatedly failed because the battery has actually several totally different modes when it is fully drained (e.g. just low voltage / not answering gas gauge / under-voltage protection / battery internal cut-off ...) which trigger different sequences/timings when plugged back (and are notably difficult to reproduce).\n\nHere, what would be happen for example if the battery gas gauge has triggered an internal cut-off after having detected an undervoltage on the cells ?\nWill the BGATE business and the dip on PP1800_EC happens immediately (since just when we plug AC , the battery is 0V, same as not present) or later on when the battery gas gauge has closed again its FET ? (and maybe at the wrong time)",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 67
+      },
+      "revId": "c6d8ed28bfb2dc63abd36ff9ddf5f013dbaa48a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "970fda87_5d42b721",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-17T10:45:31Z",
+      "side": 1,
+      "message": "so the \u0027booter\u0027 is running watchdog disabled ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 16,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "c6d8ed28bfb2dc63abd36ff9ddf5f013dbaa48a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9088cf1_95b0bbee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-17T10:45:31Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 24,
+        "startChar": 21,
+        "endLine": 24,
+        "endChar": 32
+      },
+      "revId": "c6d8ed28bfb2dc63abd36ff9ddf5f013dbaa48a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
