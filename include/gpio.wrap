@@ -28,6 +28,22 @@
 #endif
 
 /*
+ * The GPIO_AND_ALIAS macro is used to define a new GPIO with an alias
+ *
+ * The name should match the schematic name, and the alias should be used
+ * for any common code. The name is used to populate the gpio_signal enum
+ * by first prepending GPIO_ to the name.  It is also used to construct
+ * the string name that is presented in the shell interface.  The pin
+ * parameter should use PIN macro and will be expand to GPIO_PIN
+ * defined on each board.  The flags parameter is passed on to the
+ * gpio_info directly. The alias is defined to map directly to the
+ * generated GPIO_ name.
+ */
+#ifndef GPIO_AND_ALIAS
+#define GPIO_AND_ALIAS(name, pin, flags, alias)
+#endif
+
+/*
  * The GPIO_INT macro is used to define a GPIOs that have an IRQ handler.
  *
  * The IRQ handler pointers are stored as elements in the gpio_irq_handlers
@@ -79,6 +95,7 @@
  * Once the gpio.inc file has been included these macros are no longer needed.
  */
 #undef GPIO
+#undef GPIO_AND_ALIAS
 #undef GPIO_INT
 #undef ALTERNATE
 #undef UNIMPLEMENTED

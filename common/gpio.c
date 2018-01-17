@@ -40,6 +40,11 @@ static const struct gpio_alt_func gpio_alt_funcs[] = {
 	#include "gpio.wrap"
 };
 
+/* Create the aliases for all gpio pins that need it.  */
+#define GPIO_AND_ALIAS(name, pin, flags, alias) \
+	const enum gpio_signal alias = GPIO_##name;
+#include "gpio.wrap"
+
 /*
  * GPIO_CONFIG_ALL_PORTS signifies a "don't care" for the GPIO port.  This is
  * used in gpio_config_pins().  When the port parameter is set to this, the

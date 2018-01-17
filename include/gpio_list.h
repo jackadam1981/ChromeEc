@@ -13,8 +13,9 @@
 #define GPIO(name, pin, flags) {#name, GPIO_##pin, flags},
 #endif
 
-#define UNIMPLEMENTED(name) {#name, DUMMY_GPIO_BANK, 0, GPIO_DEFAULT},
+#define GPIO_AND_ALIAS(name, pin, flags, alias) GPIO(name, pin, flags)
 #define GPIO_INT(name, pin, flags, signal) GPIO(name, pin, flags)
+#define UNIMPLEMENTED(name) {#name, DUMMY_GPIO_BANK, 0, GPIO_DEFAULT},
 
 /* GPIO signal list. */
 const struct gpio_info gpio_list[] = {
@@ -44,6 +45,7 @@ const int gpio_ih_count = ARRAY_SIZE(gpio_irq_handlers);
  * initializing them the way you think.
  */
 #define GPIO(name, pin, flags) pin
+#define GPIO_AND_ALIAS(name, pin, flags, alias) pin
 #define GPIO_INT(name, pin, flags, signal) pin
 /*
  * The compiler will complain if we use the same name twice. The linker ignores
