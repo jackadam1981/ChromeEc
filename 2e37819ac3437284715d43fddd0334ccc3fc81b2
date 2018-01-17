@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4909240_aba85664",
+        "filename": "common/cbi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:05:53Z",
+      "side": 1,
+      "message": "This is just to catch when the current simple code below will fail, right?\n\nMaybe add a comment that if this fails, someone needs to handle splitting up the write.",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 54
+      },
+      "revId": "2e37819ac3437284715d43fddd0334ccc3fc81b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29454e1a_2e962ddd",
+        "filename": "common/cbi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:05:53Z",
+      "side": 1,
+      "message": "Could fail for multiple reasons, right?\n\nShould we check our write protect signal first, and if that\u0027s set assume we can\u0027t write CBI (access denied) and don\u0027t even need to bother with i2c_xfer()\n\nThen return some other error if the write fails, because in that case it\u0027s likely a i2c bus error.",
+      "range": {
+        "startLine": 107,
+        "startChar": 18,
+        "endLine": 107,
+        "endChar": 31
+      },
+      "revId": "2e37819ac3437284715d43fddd0334ccc3fc81b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1e0b7ef_c983c9c1",
+        "filename": "common/cbi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:05:53Z",
+      "side": 1,
+      "message": "Do we need to detect the newer header version and fix this?",
+      "range": {
+        "startLine": 202,
+        "startChar": 4,
+        "endLine": 203,
+        "endChar": 34
+      },
+      "revId": "2e37819ac3437284715d43fddd0334ccc3fc81b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29585ec9_8a16af1e",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4587,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:05:53Z",
+      "side": 1,
+      "message": "Intended usage?\n\nIs this to make it fast to write a bunch of settings and only write to EEPROM on the last one?",
+      "range": {
+        "startLine": 4587,
+        "startChar": 34,
+        "endLine": 4587,
+        "endChar": 60
+      },
+      "revId": "2e37819ac3437284715d43fddd0334ccc3fc81b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f07edc9_3985015c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4588,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:05:53Z",
+      "side": 1,
+      "message": "Just the header?  Or all the values...",
+      "range": {
+        "startLine": 4588,
+        "startChar": 45,
+        "endLine": 4588,
+        "endChar": 51
+      },
+      "revId": "2e37819ac3437284715d43fddd0334ccc3fc81b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bea0dab_6c3f41ad",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4592,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:05:53Z",
+      "side": 1,
+      "message": "flags (presuming more than one could be set)",
+      "range": {
+        "startLine": 4592,
+        "startChar": 9,
+        "endLine": 4592,
+        "endChar": 13
+      },
+      "revId": "2e37819ac3437284715d43fddd0334ccc3fc81b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d1ebb5c_de08ff22",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4594,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:05:53Z",
+      "side": 1,
+      "message": "Does it complain if you put these in a union?",
+      "range": {
+        "startLine": 4593,
+        "startChar": 1,
+        "endLine": 4594,
+        "endChar": 46
+      },
+      "revId": "2e37819ac3437284715d43fddd0334ccc3fc81b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
