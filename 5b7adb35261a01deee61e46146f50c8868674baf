@@ -22,6 +22,23 @@
       "revId": "5b7adb35261a01deee61e46146f50c8868674baf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfdf9b8f_bc67cf38",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1274,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-17T06:36:13Z",
+      "side": 1,
+      "message": "Should be EC_BATT_FLAG_INVALID_DATA. That\u0027ll serve to invalidate both static and dynamic information.",
+      "revId": "5b7adb35261a01deee61e46146f50c8868674baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
