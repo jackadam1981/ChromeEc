@@ -158,6 +158,30 @@
     },
     {
       "key": {
+        "uuid": "8f63be84_3d99d279",
+        "filename": "include/cbi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-17T20:30:38Z",
+      "side": 1,
+      "message": "cbi-util use it.",
+      "parentUuid": "5ddad222_973d2a39",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e875d524_ad5a3f5c",
         "filename": "include/cbi.h",
         "patchSetId": 6
@@ -209,6 +233,30 @@
       "writtenOn": "2018-01-17T00:56:27Z",
       "side": 1,
       "message": "Function description comments?\n\nWhat do these return if there is no valid CBI?  -1? 0? 0xff?  Should that be a constant defined by this interface?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 32
+      },
+      "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "336e4c17_4e62233e",
+        "filename": "include/cbi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-17T20:30:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1953ac70_0b533c09",
       "range": {
         "startLine": 42,
         "startChar": 1,
