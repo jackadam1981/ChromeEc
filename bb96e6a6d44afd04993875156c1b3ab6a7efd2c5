@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d02acf00_269e396f",
+        "filename": "board/nami/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-17T03:11:08Z",
+      "side": 1,
+      "message": "I see why now. You don\u0027t want to create another CONFIG for the backlight gpio pin",
+      "parentUuid": "f3fb972a_703739b3",
+      "range": {
+        "startLine": 43,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "bb96e6a6d44afd04993875156c1b3ab6a7efd2c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d88dbb4_75206180",
         "filename": "common/gpio.c",
         "patchSetId": 4
