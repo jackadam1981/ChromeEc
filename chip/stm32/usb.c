@@ -394,6 +394,8 @@ static void usb_suspend(void)
 
 	/* USB is not in use anymore, we can (hopefully) sleep now. */
 	enable_sleep(SLEEP_MASK_USB_DEVICE);
+
+	CPRINTF("SUS done %04x\n", STM32_USB_CNTR);
 }
 
 static void usb_resume_deferred(void)
@@ -585,6 +587,8 @@ static void usb_interrupt_handle_wake(uint16_t status)
 
 		for (ep = 1; ep < USB_EP_COUNT; ep++)
 			usb_ep_event[ep](USB_EVENT_DEVICE_RESUME);
+	} else {
+		CPRINTF("@");
 	}
 }
 #endif /* CONFIG_USB_SUSPEND && CONFIG_USB_REMOTE_WAKEUP */
@@ -855,3 +859,31 @@ DECLARE_CONSOLE_COMMAND(serialno, command_serialno,
 	"load/set [value]",
 	"Read and write USB serial number");
 #endif  /* CONFIG_USB_SERIALNO */
+
+static int command_usbdebug(int argc, char **argv)
+{
+	int state = (STM32_USB_FNR & STM32_USB_FNR_RXDP_RXDM_MASK)
+				>> STM32_USB_FNR_RXDP_RXDM_SHIFT;
+
+	CPRINTF("state %d\n", state);
+
+	CPRINTF("CNTR %04x\n", STM32_USB_CNTR);
+	CPRINTF("ISTR %04x\n", STM32_USB_ISTR);
+	CPRINTF("FNR %04x\n", STM32_USB_FNR);
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(usbdebug, command_usbdebug,
+	NULL,
+	"USB debug");
+
+static int command_usbreset(int argc, char **argv)
+{
+	usb_wake();
+	usb_reset();
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(usbreset, command_usbreset,
+	NULL,
+	"USB reset");

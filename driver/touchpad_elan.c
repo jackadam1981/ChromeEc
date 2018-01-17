@@ -155,6 +155,8 @@ static int elan_tp_read_report(void)
 	struct usb_hid_touchpad_report report;
 	uint16_t timestamp;
 
+	CPRINTF("i");
+
 	/* Compute and save timestamp early in case another interrupt comes. */
 	timestamp = irq_ts / USB_HID_TOUCHPAD_TIMESTAMP_UNIT;
 
