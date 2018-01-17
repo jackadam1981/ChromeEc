@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a64887e_6c3601b4",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-17T12:42:46Z",
+      "side": 1,
+      "message": "nit: uint32_t ?",
+      "range": {
+        "startLine": 401,
+        "startChar": 1,
+        "endLine": 401,
+        "endChar": 4
+      },
+      "revId": "4a96ea95551bc486cc366c8014ed6faaa6a598c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d26a427_2fc46b84",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-17T12:42:46Z",
+      "side": 1,
+      "message": "it\u0027s kind of slippery slope, some days calling clock_enable_module() or enable_sleep() with interrupt disabled might explode ... \nActually, I suspect here enable_sleep already re-enables irq earlier than you think.",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 21
+      },
+      "revId": "4a96ea95551bc486cc366c8014ed6faaa6a598c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "739c8b2c_85a9d7dd",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-17T12:42:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 4
+      },
+      "revId": "4a96ea95551bc486cc366c8014ed6faaa6a598c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6388aedd_916802f4",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-17T12:42:46Z",
+      "side": 1,
+      "message": "nit: the static checker might complain this is useless.",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 9
+      },
+      "revId": "4a96ea95551bc486cc366c8014ed6faaa6a598c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
