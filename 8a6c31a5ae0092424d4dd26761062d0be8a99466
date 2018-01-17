@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "39f0aba9_304078ca",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T00:56:27Z",
+      "side": 1,
+      "message": "Ignored. :)",
+      "parentUuid": "4d74e79c_6248583a",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 30
+      },
+      "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b76b59b_9b0126bf",
         "filename": "common/cbi.c",
         "patchSetId": 6
@@ -45,6 +69,155 @@
       "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "555b0db8_1967f7ee",
+        "filename": "common/cbi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T00:56:27Z",
+      "side": 1,
+      "message": "The way this is coded right now, if the CRC is bad, every call will re-read the entire CBI, and error out before here.  So every call will be slow.\n\nSeems like there are 4 states:\n- Uninitialized\n- I2C read errors (can\u0027t get at the data)\n- Read data, but invalid contents (bad checksum, version, or crc)\n- Valid data\n\nOnly need to read from I2C if it\u0027s uninitialized.  If we\u0027re worried about I2C read errors, the first attempt should make retries, but after that subsequent calls to read_board_info() would know there\u0027s a hardware problem and wouldn\u0027t try to read.",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 17
+      },
+      "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe67c71d_ee561bb1",
+        "filename": "include/cbi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T00:56:27Z",
+      "side": 1,
+      "message": "Suggest calling this cros_board_info.h, since \u0027cbi\u0027 is cryptic.\n\nThe functions and constants can still be cbi_*() / CBI_*",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7e61b02_dd4ab24c",
+        "filename": "include/cbi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T00:56:27Z",
+      "side": 1,
+      "message": "/* \u0027C\u0027 \u0027B\u0027 \u0027I\u0027 */",
+      "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ddad222_973d2a39",
+        "filename": "include/cbi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T00:56:27Z",
+      "side": 1,
+      "message": "Do callers need access to this struct?  If not, move it inside cros_board_info.c so it\u0027s not part of the public interface.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 17
+      },
+      "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e875d524_ad5a3f5c",
+        "filename": "include/cbi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T00:56:27Z",
+      "side": 1,
+      "message": "minor_version ?",
+      "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e344a5b5_90dc51ea",
+        "filename": "include/cbi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T00:56:27Z",
+      "side": 1,
+      "message": "Here (and above), comments describing struct members are useful.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 1
+      },
+      "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1953ac70_0b533c09",
+        "filename": "include/cbi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T00:56:27Z",
+      "side": 1,
+      "message": "Function description comments?\n\nWhat do these return if there is no valid CBI?  -1? 0? 0xff?  Should that be a constant defined by this interface?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 32
+      },
+      "revId": "8a6c31a5ae0092424d4dd26761062d0be8a99466",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
