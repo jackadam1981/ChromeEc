@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bbc821d_5adfe48e",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6123,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:11:18Z",
+      "side": 1,
+      "message": "\"Get/set CrOS Board Info\\n\"",
+      "revId": "75e036d9f1f8f3efc7ccffa3ae66621f710126e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0eea5899_f8814dbe",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6124,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:11:18Z",
+      "side": 1,
+      "message": "field?  variable?  param?\n\n(since type may be int / raw / string in the future, right?)",
+      "range": {
+        "startLine": 6124,
+        "startChar": 20,
+        "endLine": 6124,
+        "endChar": 24
+      },
+      "revId": "75e036d9f1f8f3efc7ccffa3ae66621f710126e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "259c25d4_2b9388fe",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6131,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:11:18Z",
+      "side": 1,
+      "message": "(skip write to EEPROM)",
+      "revId": "75e036d9f1f8f3efc7ccffa3ae66621f710126e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d86727ed_32657b38",
+        "filename": "util/ectool.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6132,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T04:11:18Z",
+      "side": 1,
+      "message": "all fields to defaults",
+      "range": {
+        "startLine": 6132,
+        "startChar": 23,
+        "endLine": 6132,
+        "endChar": 34
+      },
+      "revId": "75e036d9f1f8f3efc7ccffa3ae66621f710126e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
