@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cfa960d_82c3ac01",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4573,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T02:15:13Z",
+      "side": 1,
+      "message": "Please add comment describing this command\n\nAnd maybe\n\nEC_CMD_GET_CROS_BOARD_INFO\n\nsince CBI is cryptic.",
+      "range": {
+        "startLine": 4573,
+        "startChar": 0,
+        "endLine": 4573,
+        "endChar": 30
+      },
+      "revId": "e54e96186aaf68aae2aed5e7d1b48624b32e55a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc8cbb6d_72163f26",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4579,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T02:15:13Z",
+      "side": 1,
+      "message": "Add explicit \u003d0, \u003d1, \u003d2, \u003d3\n\n(since this is an interface, enums must be constant between AP and EC, and this prevents someone from inserting a new enum in the middle)",
+      "range": {
+        "startLine": 4576,
+        "startChar": 0,
+        "endLine": 4579,
+        "endChar": 16
+      },
+      "revId": "e54e96186aaf68aae2aed5e7d1b48624b32e55a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edc858c4_94088ddf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4585,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T02:15:13Z",
+      "side": 1,
+      "message": "Add response struct, so that the interface documents what comes back.\n\nWhat will be returned if the CBI data is unavailable or bad CRC?",
+      "revId": "e54e96186aaf68aae2aed5e7d1b48624b32e55a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
