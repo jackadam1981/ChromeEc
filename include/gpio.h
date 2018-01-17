@@ -36,6 +36,7 @@
 #ifdef CONFIG_GPIO_POWER_DOWN
 #define GPIO_POWER_DOWN    (1 << 20) /* Pin and pad is powered off */
 #endif
+#define GPIO_ACTIVE_LOW    (1 << 21) /* Pin is active when low */
 
 /* Common flag combinations */
 #define GPIO_OUT_LOW        (GPIO_OUTPUT | GPIO_LOW)
@@ -191,8 +192,18 @@ int gpio_get_default_flags(enum gpio_signal signal);
  * Set the value of a signal.
  *
  * @param signal	Signal to set
- * @param value		New value for signal (0 = low, != high */
+ * @param value		New value for signal (0 = low, 1 = high)
+ */
 void gpio_set_level(enum gpio_signal signal, int value);
+
+/**
+ * Activates or deactivates the GPIO correctly according to
+ * its GPIO_ACTIVE_LOW flag value.
+ *
+ * @param signal	Signal to activate or deactivate
+ * @param activate	Activate pin (0 = deactivate, 1 = activate)
+ */
+void gpio_activate(enum gpio_signal signal, int activate);
 
 /**
  * Reset the GPIO flags and alternate function state
