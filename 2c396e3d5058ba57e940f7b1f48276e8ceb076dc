@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9612af9a_60206f3c",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-17T12:38:08Z",
+      "side": 1,
+      "message": "even toggling USB_RST in RCC_APB1RSTR doesn\u0027t recover it ?\n(then usb_init again)\n\nI feel you might regret this one later.",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 24
+      },
+      "revId": "2c396e3d5058ba57e940f7b1f48276e8ceb076dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
