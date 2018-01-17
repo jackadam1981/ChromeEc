@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e152827_566f7e0f",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-17T11:04:45Z",
+      "side": 1,
+      "message": "in other TCPCs, when using CONFIG_USB_PD_VBUS_DETECT_TCPC we do the following sequence:\n        usb_charger_vbus_change(port, tcpc_vbus[port]);\n        task_wake(PD_PORT_TO_TASK_ID(port));\n(see in tcpci_tcpc_alert() in driver/tcpm/tcpci.c)\n\nwhere usb_charger_vbus_change() is implemented in common/usb_charger.c as :\n        /* If VBUS has transitioned low, notify PD module directly */\n        if (!vbus_level)\n                pd_vbus_low(port);\n        /* Update VBUS supplier and signal VBUS change to USB_CHG task *                \n        charge.voltage \u003d USB_CHARGER_VOLTAGE_MV;\n        charge.current \u003d vbus_level ? USB_CHARGER_MIN_CURR_MA : 0;\n        charge_manager_update_charge(CHARGE_SUPPLIER_VBUS,\n                                             port,\n                                             \u0026charge);\n        /* USB Charger task(s) */\n        task_set_event(USB_CHG_PORT_TO_TASK_ID(port), USB_CHG_EVENT_VBUS, 0);\n\nSo at least, the pd_vbus_low() is never done here ?\nI don\u0027t know either why you would not need the charge supplier.",
+      "range": {
+        "startLine": 881,
+        "startChar": 0,
+        "endLine": 883,
+        "endChar": 29
+      },
+      "revId": "21054b473d8afd366a8001a7fd4efa4048ec8d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
