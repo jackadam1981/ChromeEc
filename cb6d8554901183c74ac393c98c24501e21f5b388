@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96d83baf_471593d1",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-01-17T02:20:41Z",
+      "side": 1,
+      "message": "I think we need to do a similar thing in ec_state and servo_state",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 46
+      },
+      "revId": "cb6d8554901183c74ac393c98c24501e21f5b388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
