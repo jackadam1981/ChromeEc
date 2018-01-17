@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "efaa0f56_830a1ca2",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-17T21:23:41Z",
+      "side": 1,
+      "message": "This was what zoombini did, but not sure why. I\u0027ve changed it. It still seems to work.",
+      "parentUuid": "f4472f15_8c1da9c6",
+      "range": {
+        "startLine": 367,
+        "startChar": 29,
+        "endLine": 367,
+        "endChar": 46
+      },
+      "revId": "b9edbb9489b97b2cf75e970a3c5a39acbd4dcd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f80082d6_ee5cc91d",
         "filename": "board/grunt/board.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b9edbb9489b97b2cf75e970a3c5a39acbd4dcd20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6d89b18_5cfc6c96",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-17T21:23:41Z",
+      "side": 1,
+      "message": "The PWM1 pin is EC_PCH_PWR_BTN_L, so used for something else",
+      "parentUuid": "f80082d6_ee5cc91d",
+      "range": {
+        "startLine": 368,
+        "startChar": 26,
+        "endLine": 368,
+        "endChar": 27
+      },
+      "revId": "b9edbb9489b97b2cf75e970a3c5a39acbd4dcd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
