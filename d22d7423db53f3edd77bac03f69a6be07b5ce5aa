@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da5b59a2_02bbcedb",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T02:11:21Z",
+      "side": 1,
+      "message": "Cros boot info?",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 19
+      },
+      "revId": "d22d7423db53f3edd77bac03f69a6be07b5ce5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35cbf4d1_56120f2a",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T02:11:21Z",
+      "side": 1,
+      "message": "I think I see where this code came from... ;)",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "d22d7423db53f3edd77bac03f69a6be07b5ce5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96ccd10e_2c2f4eb1",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T02:11:21Z",
+      "side": 1,
+      "message": "Seems like this function gets unwieldy as we add fields...",
+      "range": {
+        "startLine": 125,
+        "startChar": 7,
+        "endLine": 125,
+        "endChar": 63
+      },
+      "revId": "d22d7423db53f3edd77bac03f69a6be07b5ce5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32313386_73262485",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T02:11:21Z",
+      "side": 1,
+      "message": "Seems like this could just be a struct board_info and then fill in the fields directly.\n\nIf you want to ensure all required fields are present, just maintain an additional local variable with a bit/flag for each variable\n\n#define BOARD_VERSION_SET \u003d (1 \u003c\u003c 0)\n#define OEM_ID_SET \u003d (1 \u003c\u003c 1)\netc\n#define NUM_REQUIRED_FIELDS 4\n\nunsigned fields_set \u003d 0;\n\nthen before calling create(),\n\nif (fields_set !\u003d (1 \u003c\u003c NUM_REQUIRED_FIELDS) - 1)\n    printf(\"Hey, you didn\u0027t set all the required fields!\")",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 22
+      },
+      "revId": "d22d7423db53f3edd77bac03f69a6be07b5ce5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8fa3b1b_fcacccfd",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-17T02:11:21Z",
+      "side": 1,
+      "message": "|| oem_id \u003e UCHAR_MAX\n\nThat is, do the range checking for args where it\u0027ll print a more meaningful error.",
+      "range": {
+        "startLine": 274,
+        "startChar": 3,
+        "endLine": 274,
+        "endChar": 31
+      },
+      "revId": "d22d7423db53f3edd77bac03f69a6be07b5ce5aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
