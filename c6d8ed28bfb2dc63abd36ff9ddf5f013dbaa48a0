@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "227ed865_aacd1cb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-17T17:26:33Z",
+      "side": 1,
+      "message": "If a battery triggers internal cutoff, VSYS is lost (and EC is no longer in hibernation). Upon AC plug-in, pp3300 and pp1800 come up at the same time. PP1800 would be sustained by VBUS (not VBAT) so BGATE won\u0027t affect pp1800.",
+      "parentUuid": "c130df36_c8a2a60d",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 67
+      },
+      "revId": "c6d8ed28bfb2dc63abd36ff9ddf5f013dbaa48a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "970fda87_5d42b721",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2018-01-17T10:45:31Z",
       "side": 1,
       "message": "so the \u0027booter\u0027 is running watchdog disabled ?",
+      "range": {
+        "startLine": 15,
+        "startChar": 16,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "c6d8ed28bfb2dc63abd36ff9ddf5f013dbaa48a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb1258a_3487a657",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-17T17:26:33Z",
+      "side": 1,
+      "message": "I think so. CH Li, can you answer the question?",
+      "parentUuid": "970fda87_5d42b721",
       "range": {
         "startLine": 15,
         "startChar": 16,
