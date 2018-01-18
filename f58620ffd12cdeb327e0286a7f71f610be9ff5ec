@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dfd15da_2701332d",
+        "filename": "common/cbi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-18T00:04:54Z",
+      "side": 1,
+      "message": "I like this design pattern for ensuring a consistent prefix.",
+      "range": {
+        "startLine": 15,
+        "startChar": 41,
+        "endLine": 15,
+        "endChar": 58
+      },
+      "revId": "f58620ffd12cdeb327e0286a7f71f610be9ff5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b883f81f_874ee0cb",
+        "filename": "common/cbi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-18T00:04:54Z",
+      "side": 1,
+      "message": "Well, an enumerated value.",
+      "range": {
+        "startLine": 28,
+        "startChar": 70,
+        "endLine": 28,
+        "endChar": 72
+      },
+      "revId": "f58620ffd12cdeb327e0286a7f71f610be9ff5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
