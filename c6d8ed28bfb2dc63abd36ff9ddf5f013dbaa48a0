@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2af9f2f2_f723258d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-01-18T08:44:14Z",
+      "side": 1,
+      "message": "Hi all,\nYes, the watchdog is not enabled in the booter.",
+      "parentUuid": "6bb1258a_3487a657",
+      "range": {
+        "startLine": 15,
+        "startChar": 16,
+        "endLine": 15,
+        "endChar": 39
+      },
+      "revId": "c6d8ed28bfb2dc63abd36ff9ddf5f013dbaa48a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9088cf1_95b0bbee",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
