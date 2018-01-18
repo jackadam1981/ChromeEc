@@ -18,11 +18,7 @@
 
 #define EEPROM_PAGE_WRITE_SIZE	16
 static struct board_info bi;
-/* TODO: Init it to -1. On error (I2C or bad contents), retry a read and set it
- * to enum ec_error_list if it still fails. The successive calls can be
- * immediately returned with the cached error code. This will avoid attempting
- * reads doomed to fail. */
-static int initialized;
+static int initialized = -1;
 
 static uint8_t cbi_crc8(const struct board_info *bi)
 {
@@ -32,13 +28,10 @@ static uint8_t cbi_crc8(const struct board_info *bi)
 /*
  * Get board information from EEPROM
  */
-static int read_board_info(void)
+static int do_read_board_info(void)
 {
 	uint8_t buf[256];
 	uint8_t offset;
-
-	if (initialized)
-		return EC_SUCCESS;
 
 	CPRINTS("Reading board info");
 
@@ -92,9 +85,22 @@ static int read_board_info(void)
 	       sizeof(bi) - sizeof(bi.head));
 	/* If we're handling previous version, clear all new fields */
 
-	initialized = 1;
-
 	return EC_SUCCESS;
+}
+
+static int read_board_info(void)
+{
+	if (initialized != -1)
+		/* We already tried and know the result. Return the cached
+		 * error code immediately to avoid wasteful reads. */
+		return initialized;
+
+	initialized = do_read_board_info();
+	if (initialized)
+		/* On error (I2C or bad contents), retry a read */
+		initialized = do_read_board_info();
+
+	return initialized;
 }
 
 static int eeprom_is_write_protected(void)
@@ -196,7 +202,7 @@ static int hc_cbi_set(struct host_cmd_handler_args *args)
 	if (p->flag & CBI_SET_INIT) {
 		memset(&bi, 0, sizeof(bi));
 		memcpy(&bi.head.magic, cbi_magic, sizeof(cbi_magic));
-		initialized = 1;
+		initialized = EC_SUCCESS;
 	} else {
 		if (read_board_info())
 			return EC_RES_ERROR;
