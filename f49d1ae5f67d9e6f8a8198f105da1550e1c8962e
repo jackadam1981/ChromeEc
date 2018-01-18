@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "011ffd51_9321c783",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-18T03:52:47Z",
+      "side": 1,
+      "message": "Not sure it is worth repeating this whole comment twice so close together, think it applies more to board_chipset_suspend. If suspend disables the backlight, then resume has to enable it again.",
+      "range": {
+        "startLine": 227,
+        "startChar": 4,
+        "endLine": 227,
+        "endChar": 40
+      },
+      "revId": "f49d1ae5f67d9e6f8a8198f105da1550e1c8962e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd7ca953_4b090cf7",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-18T03:52:47Z",
+      "side": 1,
+      "message": "I think this wording is a little confusing. How about something like: \"This ensures that the backlight stays off in S3, no matter what the SOC has it set to.\"",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 238,
+        "endChar": 41
+      },
+      "revId": "f49d1ae5f67d9e6f8a8198f105da1550e1c8962e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
