@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "c92bb745_571f45b8",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-18T02:15:12Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 144,
+        "startChar": 55,
+        "endLine": 144,
+        "endChar": 58
+      },
+      "revId": "5b7adb35261a01deee61e46146f50c8868674baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2157bcb_103e259f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-18T02:15:12Z",
+      "side": 1,
+      "message": "-s",
+      "range": {
+        "startLine": 152,
+        "startChar": 63,
+        "endLine": 152,
+        "endChar": 64
+      },
+      "revId": "5b7adb35261a01deee61e46146f50c8868674baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12cd455c_d75d65a1",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-18T02:15:12Z",
+      "side": 1,
+      "message": "Should this have code following it?",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 50
+      },
+      "revId": "5b7adb35261a01deee61e46146f50c8868674baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb3d1e38_50094065",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-18T02:15:12Z",
+      "side": 1,
+      "message": "margin",
+      "range": {
+        "startLine": 330,
+        "startChar": 7,
+        "endLine": 330,
+        "endChar": 14
+      },
+      "revId": "5b7adb35261a01deee61e46146f50c8868674baf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f09df7a3_0ed5da24",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 21
