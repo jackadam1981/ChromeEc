@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "cd25834f_8e2c5ec4",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-18T16:29:38Z",
+      "side": 1,
+      "message": "I prefer setting the GPIO directly here in the board file: it avoids having to go look in another file to see what it does, and avoids linking suspend/resume with CONFIG_BACKLIGHT_LID. Then enable_backlight could be static in backlight_lid.c (although that change is already merged).",
+      "revId": "f49d1ae5f67d9e6f8a8198f105da1550e1c8962e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd7ca953_4b090cf7",
         "filename": "board/grunt/board.c",
         "patchSetId": 3
