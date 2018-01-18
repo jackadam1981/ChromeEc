@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d9781cc1_e3f6f4c9",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-18T02:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a64887e_6c3601b4",
+      "range": {
+        "startLine": 401,
+        "startChar": 1,
+        "endLine": 401,
+        "endChar": 4
+      },
+      "revId": "4a96ea95551bc486cc366c8014ed6faaa6a598c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d26a427_2fc46b84",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-17T12:42:46Z",
       "side": 1,
       "message": "it\u0027s kind of slippery slope, some days calling clock_enable_module() or enable_sleep() with interrupt disabled might explode ... \nActually, I suspect here enable_sleep already re-enables irq earlier than you think.",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 21
+      },
+      "revId": "4a96ea95551bc486cc366c8014ed6faaa6a598c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00feb212_c7476318",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-18T02:58:20Z",
+      "side": 1,
+      "message": "Right, just protected the CNTR accesses in usb_suspend.\n\n(note that usb_suspend is also called from interrupt context, so I hope clock_enable_module() or enable_sleep() don\u0027t do anything bad like sleeping...)",
+      "parentUuid": "5d26a427_2fc46b84",
       "range": {
         "startLine": 406,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fe49505e_f579a2f9",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-18T02:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "739c8b2c_85a9d7dd",
+      "range": {
+        "startLine": 416,
+        "startChar": 1,
+        "endLine": 416,
+        "endChar": 4
+      },
+      "revId": "4a96ea95551bc486cc366c8014ed6faaa6a598c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6388aedd_916802f4",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "4a96ea95551bc486cc366c8014ed6faaa6a598c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3244438f_1d7968c8",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-18T02:58:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6388aedd_916802f4",
+      "range": {
+        "startLine": 441,
+        "startChar": 0,
+        "endLine": 441,
+        "endChar": 9
+      },
+      "revId": "4a96ea95551bc486cc366c8014ed6faaa6a598c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
