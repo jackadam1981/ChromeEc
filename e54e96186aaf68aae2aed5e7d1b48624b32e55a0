@@ -80,6 +80,24 @@
       "revId": "e54e96186aaf68aae2aed5e7d1b48624b32e55a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f71e0279_85fb5f73",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4585,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-18T00:08:37Z",
+      "side": 1,
+      "message": "Please add a comment\n\n/* Response is based on the data type.  Integers return a uint32.  Strings return a (null-terminated?) string; use the response size to determine how big it is. */",
+      "parentUuid": "f019b313_313b3be0",
+      "revId": "e54e96186aaf68aae2aed5e7d1b48624b32e55a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
