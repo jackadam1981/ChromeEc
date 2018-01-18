@@ -518,7 +518,7 @@ void board_reset_sensors(void)
 	gpio_set_level(GPIO_SENSOR_PWR_EN_L, 1);
 
 	/* Min VDD off time is 10 ms, make it longer */
-	msleep(20);
+	msleep(25);
 
 	/* Power on sensors */
 	gpio_set_level(GPIO_SENSOR_PWR_EN_L, 0);
