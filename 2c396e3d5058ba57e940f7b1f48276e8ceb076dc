@@ -22,6 +22,30 @@
       "revId": "2c396e3d5058ba57e940f7b1f48276e8ceb076dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d385114_038f2bdb",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-18T02:58:29Z",
+      "side": 1,
+      "message": "Thanks Vincent, I should have tried harder ,-) That works ,-)",
+      "parentUuid": "9612af9a_60206f3c",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 478,
+        "endChar": 24
+      },
+      "revId": "2c396e3d5058ba57e940f7b1f48276e8ceb076dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
