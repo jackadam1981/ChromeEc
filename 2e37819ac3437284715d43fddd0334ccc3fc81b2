@@ -160,6 +160,30 @@
       "revId": "2e37819ac3437284715d43fddd0334ccc3fc81b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcd6081a_8ee81371",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 4594,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-18T01:37:03Z",
+      "side": 1,
+      "message": "Actually, it does. Reverted the change.",
+      "parentUuid": "4d1ebb5c_de08ff22",
+      "range": {
+        "startLine": 4593,
+        "startChar": 1,
+        "endLine": 4594,
+        "endChar": 46
+      },
+      "revId": "2e37819ac3437284715d43fddd0334ccc3fc81b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
