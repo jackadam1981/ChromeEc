@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bceb1e06_e053a1ec",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-18T01:57:24Z",
+      "side": 1,
+      "message": "EC_ERROR_INTERNAL_FIRST (this is guaranteed to avoid collisions)",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "adc74e6bb15f8bd60dcd12871980f19e5dd2d25e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1824059b_c311214c",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-18T01:57:24Z",
+      "side": 1,
+      "message": "cached_read_result",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "adc74e6bb15f8bd60dcd12871980f19e5dd2d25e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
