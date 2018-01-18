@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a405f9cd_aad71c52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003079
+      },
+      "writtenOn": "2018-01-18T01:07:39Z",
+      "side": 1,
+      "message": "This change from 12900 to -150 is request by customer. And customer already update comment to b:68012423.\n\nThis is S/T solution just for these old projects without LEM(life end mode).\nDetail is in b:37484779 #1 attached pptx file.",
+      "parentUuid": "2ce632f0_6df50603",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "1649425281cdfba85a559053bfe7db0e91818347",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5a207ea_19909a8c",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
