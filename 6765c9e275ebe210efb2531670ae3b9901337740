@@ -22,6 +22,30 @@
       "revId": "6765c9e275ebe210efb2531670ae3b9901337740",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe7262a_274cf507",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-18T09:04:26Z",
+      "side": 1,
+      "message": "[107010.327438] usb 1-2: USB disconnect, device number 110\n[107010.515043] usb 1-2: new full-speed USB device number 111 using xhci_hcd\n\nLooks like toggling STM32_RCC_PB1_USB resets STM32_USB_BCDR to 0000.\n\nUSB stuck\nSTM32_USB_BCDR\u003d8000\n(reset here)\nSTM32_USB_BCDR\u003d0000\nSTM32_USB_BCDR\u003d0000\nSTM32_USB_BCDR\u003d0000\nRST EP0 3220\nSTM32_USB_BCDR\u003d8000\nUSB init done",
+      "parentUuid": "6b342017_8441ec58",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 13
+      },
+      "revId": "6765c9e275ebe210efb2531670ae3b9901337740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
