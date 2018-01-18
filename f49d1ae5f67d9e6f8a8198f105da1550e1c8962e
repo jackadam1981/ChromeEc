@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5c5c5ae5_0e111df7",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-18T17:02:13Z",
+      "side": 1,
+      "message": "Reordered functions and dropped duplicate comment information out of resume.",
+      "parentUuid": "011ffd51_9321c783",
+      "range": {
+        "startLine": 227,
+        "startChar": 4,
+        "endLine": 227,
+        "endChar": 40
+      },
+      "revId": "f49d1ae5f67d9e6f8a8198f105da1550e1c8962e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd25834f_8e2c5ec4",
         "filename": "board/grunt/board.c",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "f49d1ae5f67d9e6f8a8198f105da1550e1c8962e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cca71df_001e5ec2",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-18T17:02:13Z",
+      "side": 1,
+      "message": "I was thinking of the module as backlight instead of backlight lid control module. I agree that tying power states to the lid control module seems a bit wacky. Reverted back to GPIO pin directly",
+      "parentUuid": "cd25834f_8e2c5ec4",
+      "revId": "f49d1ae5f67d9e6f8a8198f105da1550e1c8962e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "f49d1ae5f67d9e6f8a8198f105da1550e1c8962e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ccd56fb_0948e75f",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-18T17:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd7ca953_4b090cf7",
+      "range": {
+        "startLine": 236,
+        "startChar": 32,
+        "endLine": 238,
+        "endChar": 41
+      },
+      "revId": "f49d1ae5f67d9e6f8a8198f105da1550e1c8962e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
