@@ -445,6 +445,10 @@ enum power_state power_chipset_init(void)
 		}
 	}
 
+#ifdef BOARD_HANA
+	board_reset_sensors();
+#endif
+
 	/* Leave power off only if requested by reset flags */
 	if (!(reset_flags & RESET_FLAG_AP_OFF) &&
 	    !(reset_flags & RESET_FLAG_SYSJUMP)) {
