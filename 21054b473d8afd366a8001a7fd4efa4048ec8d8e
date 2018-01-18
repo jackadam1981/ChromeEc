@@ -22,6 +22,30 @@
       "revId": "21054b473d8afd366a8001a7fd4efa4048ec8d8e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95e40a4d_83e3e056",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-18T00:24:06Z",
+      "side": 1,
+      "message": "The proper way to handle this is with HOOK_AC_CHANGE (charge_wakeup() is a HOOK_AC_CHANGE routine). I think we will never call hook_notify(HOOK_AC_CHANGE) because we don\u0027t have an extpower GPIO on this board. This is another case that should be handled by crbug.com/791109. Some higher level code needs to be keeping track of VBUS level (it shouldn\u0027t be in every TCPC driver) to take the necessary actions.",
+      "parentUuid": "9e152827_566f7e0f",
+      "range": {
+        "startLine": 881,
+        "startChar": 0,
+        "endLine": 883,
+        "endChar": 29
+      },
+      "revId": "21054b473d8afd366a8001a7fd4efa4048ec8d8e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
