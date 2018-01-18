@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b342017_8441ec58",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-18T08:02:13Z",
+      "side": 1,
+      "message": "Out of curiosity, what is happening on the side (either in the kernel log or on the USB analyzer) ?\n\ngiven we are not removing the DP pull-up, the host stack ends up detecting we are no longer answering on the old address and re-enumerating ?",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 13
+      },
+      "revId": "6765c9e275ebe210efb2531670ae3b9901337740",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
