@@ -743,18 +743,18 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
 static void board_chipset_startup(void)
 {
-        /* Enable USB-A port. */
-        gpio_set_level(GPIO_USB1_ENABLE, 1);
-
+	gpio_set_level(GPIO_USB_POWERON_L, 0);
+	/* Enable USB-A port. */
+	gpio_set_level(GPIO_USB1_ENABLE, 1);
 	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
 
 static void board_chipset_shutdown(void)
 {
-        /* Disable USB-A port. */
-        gpio_set_level(GPIO_USB1_ENABLE, 0);
-
+	gpio_set_level(GPIO_USB_POWERON_L, 1);
+	/* Disable USB-A port. */
+	gpio_set_level(GPIO_USB1_ENABLE, 0);
 	gpio_set_level(GPIO_ENABLE_TOUCHPAD, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
