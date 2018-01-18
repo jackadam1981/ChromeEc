@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61784dc6_c201862d",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-18T04:04:24Z",
+      "side": 1,
+      "message": "We may want PWM_CONFIG_DSLEEP too, so that the LEDs stay on in low power mode.",
+      "revId": "dc1814b25ea41dd4c68f600d6ca4b5a92c5afb6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
