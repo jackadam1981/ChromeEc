@@ -189,11 +189,20 @@
 
 /* Allow proprietary communication protocols' extensions. */
 #undef CONFIG_EXTENSION_COMMAND
+
 /*
  * Support controlling the display backlight based on the state of the lid
  * switch.  The EC will disable the backlight when the lid is closed.
+ *
+ * The GPIO should be named GPIO_BACKLIGHT_ENABLED if active high, or
+ * GPIO_BACKLIGHT_ENABLED_L if active low. See CONFIG_BACKLIGHT_LID_ACTIVE_LOW.
  */
 #undef CONFIG_BACKLIGHT_LID
+
+/*
+ * The backlight GPIO pin is active low and named GPIO_BACKLIGHT_ENABLED_L
+ */
+#undef CONFIG_BACKLIGHT_LID_ACTIVE_LOW
 
 /*
  * If defined, EC will enable the backlight signal only if this GPIO is
@@ -521,8 +530,17 @@
  */
 #undef CONFIG_CHARGER_CURRENT_LIMIT
 
-/* Enable/disable system power monitor PSYS function */
+/*
+ * Enable/disable system power monitor PSYS function: this enables output
+ * from charger chip to SoC.
+ */
 #undef CONFIG_CHARGER_PSYS
+
+/*
+ * Enable reading PSYS (system power) value, either via "psys" console command,
+ * or via charger_get_system_power function.
+ */
+#undef CONFIG_CHARGER_PSYS_READ
 
 /*
  * Board specific charging current termination limit, in mA.  If defined and
@@ -575,7 +593,7 @@
 /* Minimum battery percentage for power on */
 #undef CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON
 
-/* Narrow VDC power path */
+/* Set this option when using a Narrow VDC (NVDC) charger, such as ISL9237/8. */
 #undef CONFIG_CHARGER_NARROW_VDC
 
 /*
@@ -729,7 +747,6 @@
 #undef  CONFIG_CMD_CHARGER_ADC_AMON_BMON
 #undef  CONFIG_CMD_CHARGER_PROFILE_OVERRIDE
 #undef  CONFIG_CMD_CHARGER_PROFILE_OVERRIDE_TEST
-#undef  CONFIG_CMD_CHARGER_PSYS
 #define CONFIG_CMD_CHARGE_SUPPLIER_INFO
 #undef  CONFIG_CMD_CHGRAMP
 #undef  CONFIG_CMD_CLOCKGATES
@@ -775,6 +792,7 @@
 #undef  CONFIG_CMD_PMU
 #define CONFIG_CMD_POWERINDEBUG
 #undef  CONFIG_CMD_POWERLED
+#define CONFIG_CMD_PWR_AVG
 #define CONFIG_CMD_POWER_AP
 #undef  CONFIG_CMD_PPC_DUMP
 #define CONFIG_CMD_REGULATOR
@@ -1582,6 +1600,9 @@
 
 /* Set SKU ID from AP */
 #undef CONFIG_HOSTCMD_AP_SET_SKUID
+
+/* Suppress debug output for commands in host_command_suppressed */
+#undef CONFIG_SUPPRESS_HOST_COMMANDS
 
 /*****************************************************************************/
 
@@ -3062,6 +3083,9 @@
 /* WiFi power control signal is active-low. */
 #undef CONFIG_WLAN_POWER_ACTIVE_LOW
 
+/* Support Wake-on-Voice */
+#undef CONFIG_WAKE_ON_VOICE
+
 /*
  * Write protect signal is active-high.  If this is defined, there must be a
  * GPIO named GPIO_WP; if not defined, there must be a GPIO names GPIO_WP_L.
@@ -3111,6 +3135,12 @@
  * allows to nail different images to different boards.
  */
 #undef CONFIG_BOARD_ID_SUPPORT
+
+/*
+ * Define this to enable Cros Board Info support. I2C_EEPROM_PORT and
+ * I2C_EEPROM_ADDR must be defined as well.
+ */
+#undef CONFIG_CROS_BOARD_INFO
 
 /*****************************************************************************/
 /*
@@ -3216,12 +3246,35 @@
 
 /*****************************************************************************/
 /*
+ * Define CONFIG_CHARGER_NARROW_VDC for chargers that use a Narrow VDC power
+ * architecture.
+ */
+#if defined(CONFIG_CHARGER_ISL9237) || defined(CONFIG_CHARGER_ISL9238)
+#define CONFIG_CHARGER_NARROW_VDC
+#endif
+
+/*****************************************************************************/
+/*
  * Define CONFIG_BUTTON_TRIGGERED_RECOVERY if a board has a dedicated recovery
  * button.
  */
 #ifdef CONFIG_DEDICATED_RECOVERY_BUTTON
 #define CONFIG_BUTTON_TRIGGERED_RECOVERY
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
+
+/*****************************************************************************/
+/*
+ * Define derived configuration options for EC-EC communication
+ */
+#ifdef CONFIG_EC_EC_COMM_BATTERY
+#ifdef CONFIG_EC_EC_COMM_MASTER
+#define CONFIG_EC_EC_COMM_BATTERY_MASTER
+#endif
+
+#ifdef CONFIG_EC_EC_COMM_SLAVE
+#define CONFIG_EC_EC_COMM_BATTERY_SLAVE
+#endif
+#endif /* CONFIG_EC_EC_COMM_BATTERY */
 
 /*****************************************************************************/
 /*
@@ -3254,6 +3307,13 @@
 
 #ifndef HAS_TASK_PDCMD
 #undef CONFIG_HOSTCMD_PD
+#endif
+
+/*
+ * Power Average task only works when there's a battery to talk to.
+ */
+#ifndef CONFIG_BATTERY
+#undef CONFIG_CMD_PWR_AVG
 #endif
 
 /*****************************************************************************/

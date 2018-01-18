@@ -10,6 +10,8 @@
 
 GPIO_INT(USB_C0_PD_INT_ODL,	PIN(A, 0), GPIO_INT_FALLING,			tcpc_alert_event)
 GPIO_INT(USB_C1_PD_INT_ODL,	PIN(F, 5), GPIO_INT_FALLING,			tcpc_alert_event)
+GPIO_INT(USB_C0_SWCTL_INT_ODL,	PIN(0, 3), GPIO_INT_FALLING,			ppc_interrupt)
+GPIO_INT(USB_C1_SWCTL_INT_ODL,	PIN(0, 4), GPIO_INT_FALLING,			ppc_interrupt)
 GPIO_INT(PCH_SLP_S3_L,		PIN(A, 6), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(PCH_SLP_S5_L,		PIN(A, 3), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(VGATE,			PIN(F, 4), GPIO_INT_BOTH,			power_signal_interrupt)
@@ -18,13 +20,14 @@ GPIO_INT(POWER_BUTTON_L,	PIN(0, 1), GPIO_INT_BOTH,			power_button_interrupt)
 GPIO_INT(LID_OPEN,		PIN(D, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	lid_interrupt)
 GPIO_INT(AC_PRESENT,		PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	extpower_interrupt)
 GPIO_INT(WP_L,			PIN(A, 1), GPIO_INT_BOTH,			switch_interrupt)
-GPIO_INT(VOLDN_BTN_ODL,		PIN(7, 0), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interrupt)
-GPIO_INT(VOLUP_BTN_ODL,		PIN(7, 5), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interrupt)
+GPIO_INT(VOLUME_DOWN_L,		PIN(7, 0), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interrupt)
+GPIO_INT(VOLUME_UP_L,		PIN(7, 5), GPIO_INT_BOTH | GPIO_PULL_UP,	button_interrupt)
 GPIO_INT(USB_C0_CABLE_DET,	PIN(3, 7), GPIO_INT_RISING,			anx74xx_cable_det_interrupt)
+GPIO_INT(6AXIS_INT_L,		PIN(8, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V,	bmi160_interrupt)
 
 GPIO(EN_PWR_A,			PIN(E, 2), GPIO_OUT_HIGH)			/* Enable Power */
 GPIO(EN_PP1800_SENSOR,		PIN(6, 7), GPIO_OUT_HIGH)			/* Enable Power */
-GPIO(ENABLE_BACKLIGHT,		PIN(D, 3), GPIO_OUT_LOW)			/* Enable Backlight */
+GPIO(ENABLE_BACKLIGHT_L,	PIN(D, 3), GPIO_OUT_HIGH)			/* Enable Backlight */
 GPIO(PCH_RSMRST_L,		PIN(C, 2), GPIO_OUT_LOW)			/* RSMRST# to SOC */
 GPIO(PCH_PWRBTN_L,		PIN(C, 1), GPIO_OUT_HIGH)			/* Power Button to SOC */
 GPIO(PCH_WAKE_L,		PIN(7, 4), GPIO_OUT_HIGH)			/* Wake SOC */
@@ -37,7 +40,6 @@ GPIO(EC_APU_RST,		PIN(E, 4), GPIO_INPUT)				/* Reset to SOC */
 GPIO(CPU_PROCHOT,		PIN(3, 4), GPIO_INPUT | GPIO_SEL_1P8V)		/* PROCHOT to SOC */
 GPIO(APU_ALERT_L,		PIN(A, 2), GPIO_INPUT)				/* Alert to SOC */
 GPIO(3AXIS_INT_L,		PIN(5, 0), GPIO_INPUT | GPIO_SEL_1P8V)		/* 3 Axis Accel */
-GPIO(6AXIS_INT_L,		PIN(8, 6), GPIO_INPUT | GPIO_SEL_1P8V)		/* 6 Axis Accel */
 GPIO(KB_BL_EN,			PIN(F, 2), GPIO_OUT_LOW)			/* Enable KB Backlight */
 
 /* We don't have 5V rail control but the BQ24392 driver expects the GPIO */
@@ -72,12 +74,12 @@ GPIO(USB_C0_OC_L,		PIN(7, 3), GPIO_OUT_HIGH)			/* C0 Over Current */
 GPIO(USB_C1_OC_L,		PIN(D, 7), GPIO_OUT_HIGH)			/* C1 Over Current */
 GPIO(USB_C0_PD_RST_L,		PIN(F, 1), GPIO_OUT_HIGH)			/* C0 PD Reset */
 GPIO(USB_C1_PD_RST_L,		PIN(D, 5), GPIO_OUT_HIGH)			/* C1 PD Reset */
-GPIO(USB_C0_SWCTL_INT_ODL,	PIN(0, 3), GPIO_INPUT)				/* C0 Switch Interrupt */
-GPIO(USB_C1_SWCTL_INT_ODL,	PIN(0, 4), GPIO_INPUT)				/* C1 Switch Interrupt */
 GPIO(USB_C0_BC12_VBUS_ON_L,	PIN(8, 2), GPIO_ODR_HIGH)			/* C0 BC1.2 Power */
 GPIO(USB_C1_BC12_VBUS_ON_L,	PIN(B, 1), GPIO_ODR_HIGH)			/* C1 BC1.2 Power */
 GPIO(USB_C0_BC12_CHG_DET,	PIN(6, 2), GPIO_INPUT)				/* C0 BC1.2 Detect */
 GPIO(USB_C1_BC12_CHG_DET,	PIN(8, 3), GPIO_INPUT)				/* C1 BC1.2 Detect */
+GPIO(USB_C0_DP_HPD,		PIN(9, 5), GPIO_OUT_LOW)			/* C0 DP Hotplug Detect */
+GPIO(USB_C1_DP_HPD,		PIN(9, 6), GPIO_OUT_LOW)			/* C1 DP Hotplug Detect */
 
 /* Board ID */
 GPIO(BOARD_VERSION1,		PIN(C, 7), GPIO_INPUT)
@@ -96,6 +98,7 @@ ALTERNATE(PIN_MASK(3, 0x48), 1, MODULE_I2C, 0)					/* I2C5 */
 ALTERNATE(PIN_MASK(B, 0x0C), 1, MODULE_I2C, 0)					/* I2C7 */
 ALTERNATE(PIN_MASK(4, 0x30), 1, MODULE_ADC, 0)					/* ADC0-1 */
 ALTERNATE(PIN_MASK(B, 0x80), 1, MODULE_PWM, 0)					/* KB Backlight */
+ALTERNATE(PIN_MASK(C, 0x18), 1, MODULE_PWM, 0) 					/* LED 1 & 2 */
 
 /* Keyboard Pins */
 ALTERNATE(PIN_MASK(3, 0x03), 0, MODULE_KEYBOARD_SCAN, GPIO_INPUT)		/* KSI_00-01 */

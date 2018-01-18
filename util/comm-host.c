@@ -21,6 +21,9 @@ int (*ec_command_proto)(int command, int version,
 
 int (*ec_readmem)(int offset, int bytes, void *dest);
 
+int (*ec_pollevent)(unsigned long mask, void *buffer, size_t buf_size,
+		    int timeout);
+
 int ec_max_outsize, ec_max_insize;
 void *ec_outbuf;
 void *ec_inbuf;
@@ -29,6 +32,7 @@ static int command_offset;
 int comm_init_dev(const char *device_name) __attribute__((weak));
 int comm_init_lpc(void) __attribute__((weak));
 int comm_init_i2c(void) __attribute__((weak));
+int comm_init_servo_spi(const char *device_name) __attribute__((weak));
 
 static int fake_readmem(int offset, int bytes, void *dest)
 {
@@ -95,6 +99,10 @@ int comm_init(int interfaces, const char *device_name)
 	/* Prefer new /dev method */
 	if ((interfaces & COMM_DEV) && comm_init_dev &&
 	    !comm_init_dev(device_name))
+		goto init_ok;
+
+	if ((interfaces & COMM_SERVO) && comm_init_servo_spi &&
+	    !comm_init_servo_spi(device_name))
 		goto init_ok;
 
 	/* Do not fallback to other communication methods if target is not a

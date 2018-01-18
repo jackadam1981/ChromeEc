@@ -13,11 +13,16 @@ build-util-art+=util/export_taskinfo.so
 ifeq ($(CHIP),npcx)
 build-util-bin+=ecst
 endif
+# Build on a limited subset of boards to save build time
+ifeq ($(BOARD),meowth_fp)
+build-util-bin+=ectool_servo
+endif
 
 comm-objs=$(util-lock-objs:%=lock/%) comm-host.o comm-dev.o
 comm-objs+=comm-lpc.o comm-i2c.o misc_util.o
 
 ectool-objs=ectool.o ectool_keyscan.o ec_flash.o ec_panicinfo.o $(comm-objs)
+ectool_servo-objs=$(ectool-objs) comm-servo-spi.o
 ec_sb_firmware_update-objs=ec_sb_firmware_update.o $(comm-objs) misc_util.o
 ec_sb_firmware_update-objs+=powerd_lock.o
 lbplay-objs=lbplay.o $(comm-objs)
@@ -51,6 +56,12 @@ OPENSSL_LDFLAGS := $(shell $(PKG_CONFIG) --libs openssl)
 $(out)/util/gen_touchpad_hash: BUILD_CFLAGS += $(OPENSSL_CFLAGS)
 $(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += $(OPENSSL_LDFLAGS)
 endif # CONFIG_TOUCHPAD_VIRTUAL_OFF
+
+build-util-bin += cbi-util
+$(out)/util/cbi-util: $(out)/util/crc8.o
+$(out)/util/cbi-util: BUILD_LDFLAGS=$(out)/util/crc8.o -static
+$(out)/util/crc8.o: common/crc8.c
+	$(call quiet,c_to_vif,BUILDCC)
 
 $(out)/util/export_taskinfo.so: $(out)/util/export_taskinfo_ro.o \
 			$(out)/util/export_taskinfo_rw.o

@@ -64,6 +64,15 @@ enum ccd_capability_state {
 	CCD_CAP_STATE_COUNT
 };
 
+/*
+ * CCD command header; including the subcommand code used to demultiplex
+ * various CCD commands over the same TPM vendor command.
+ */
+struct ccd_vendor_cmd_header {
+	struct tpm_cmd_header tpm_header;
+	uint8_t ccd_subcommand;
+} __packed;
+
 /* Size of password salt and digest in bytes */
 #define CCD_PASSWORD_SALT_SIZE 4
 #define CCD_PASSWORD_DIGEST_SIZE 16
@@ -143,6 +152,7 @@ static struct ccd_config config;
 static uint8_t ccd_config_loaded;
 static uint8_t force_disabled;
 static struct mutex ccd_config_mutex;
+static uint8_t ccd_console_active; /* CCD console command is in progress. */
 
 /******************************************************************************/
 /* Raw config accessors */
@@ -557,21 +567,43 @@ static int ccd_set_password(const char *password)
 /******************************************************************************/
 /* Handlers for state changes requiring physical presence */
 
-static void ccd_open_done(void)
+/*
+ * Could be invoked synchronously on the TPM task context, or asynchronously,
+ * after physical presence is established, on the hooks task context.
+ *
+ * The appropriate TPM reset entry point needs to be invoked. Also, make sure
+ * that the board is always rebooted when TPM is reset.
+ *
+ * @param sync   Non-zero to invoke synchronously.
+ */
+static void ccd_open_done(int sync)
 {
+	int rv;
+
 	if (!ccd_is_cap_enabled(CCD_CAP_OPEN_WITHOUT_TPM_WIPE)) {
 		/* Can't open unless wipe succeeds */
-		if (board_wipe_tpm() != EC_SUCCESS) {
+		if (sync)
+			rv = tpm_sync_reset(1);
+		else
+			rv = board_wipe_tpm();
+
+		if (rv != EC_SUCCESS) {
 			CPRINTS("CCD open TPM wipe failed");
 			return;
 		}
 	}
 
-	if (!ccd_is_cap_enabled(CCD_CAP_UNLOCK_WITHOUT_AP_REBOOT))
+	if (!ccd_is_cap_enabled(CCD_CAP_UNLOCK_WITHOUT_AP_REBOOT) ||
+	    (!ccd_is_cap_enabled(CCD_CAP_OPEN_WITHOUT_TPM_WIPE) && sync))
 		board_reboot_ap();
 
 	CPRINTS("CCD opened");
 	ccd_set_state(CCD_STATE_OPENED);
+}
+
+static void ccd_open_done_async(void)
+{
+	ccd_open_done(0);
 }
 
 static void ccd_unlock_done(void)
@@ -794,80 +826,116 @@ static int do_ccd_password(char *password)
 	return ccd_set_password(password);
 }
 
-static int command_ccd_password(int argc, char **argv)
+/*
+ * Common wrapper for CCD commands which are passed through the TPM task
+ * context.
+ *
+ * All commands could have a single parameter, which is the password (to be
+ * set, cleared, or entered to open/unlock). If argc calue exceeds 1, the
+ * pointer to password is set, it is checked not to exceed maximum size.
+ *
+ * If the check succeeds, prepare a message containing a TPM vendor command,
+ * have the TPM task process the message and report the result to the caller.
+ *
+ * Message header is always the same, the payload is the password, if
+ * supplied.
+ */
+static int ccd_command_wrapper(int argc, char *password,
+			       enum ccd_vendor_subcommands subcmd)
 {
-	struct tpm_cmd_header *tpmh;
 	int rv;
-	size_t password_size;
+	struct ccd_vendor_cmd_header *vch;
 	size_t command_size;
+	size_t password_size;
+	uint32_t return_code;
 
-	if (argc < 2)
-		return EC_ERROR_PARAM_COUNT;
+	if (argc > 1) {
+		password_size = strlen(password);
 
-	password_size = strlen(argv[1]);
-
-	if (password_size > CCD_MAX_PASSWORD_SIZE) {
-		ccprintf("Password can not be longer than %d characters\n",
-			 CCD_MAX_PASSWORD_SIZE);
-		return EC_ERROR_PARAM1;
+		if (password_size  > CCD_MAX_PASSWORD_SIZE)
+			return EC_ERROR_PARAM1;
+	} else {
+		password_size = 0;
 	}
 
-	command_size = sizeof(struct tpm_cmd_header) + password_size;
-	rv = shared_mem_acquire(command_size, (char **)&tpmh);
+	command_size = sizeof(*vch) + password_size;
+	rv = shared_mem_acquire(command_size, (char **)&vch);
 	if (rv != EC_SUCCESS)
 		return rv;
 
 	/* Build the extension command to set/clear CCD password. */
-	tpmh->tag = htobe16(0x8001); /* TPM_ST_NO_SESSIONS */
-	tpmh->size = htobe32(command_size);
-	tpmh->command_code = htobe32(TPM_CC_VENDOR_BIT_MASK);
-	tpmh->subcommand_code = htobe16(VENDOR_CC_CCD_PASSWORD);
-	memcpy(tpmh + 1, argv[1], password_size);
-	tpm_alt_extension(tpmh, command_size);
+	vch->tpm_header.tag = htobe16(0x8001); /* TPM_ST_NO_SESSIONS */
+	vch->tpm_header.size = htobe32(command_size);
+	vch->tpm_header.command_code = htobe32(TPM_CC_VENDOR_BIT_MASK);
+	vch->tpm_header.subcommand_code = htobe16(VENDOR_CC_CCD);
+	vch->ccd_subcommand = subcmd;
+
+	memcpy(vch + 1, password, password_size);
+	tpm_alt_extension(&vch->tpm_header, command_size);
 
 	/*
 	 * Return status in the command code field now, in case of error,
 	 * error code is the first byte after the header.
 	 */
-	if (tpmh->command_code) {
-		ccprintf("Password setting error %d\n",
-			 ((uint8_t *)(tpmh + 1))[0]);
-		rv = EC_ERROR_UNKNOWN;
+	return_code = be32toh(vch->tpm_header.command_code);
+	if (return_code && (return_code != VENDOR_RC_IN_PROGRESS)) {
+		rv = vch->ccd_subcommand;
 	} else {
 		rv = EC_SUCCESS;
 	}
 
-	shared_mem_release(tpmh);
-	return EC_SUCCESS;
+	shared_mem_release(vch);
+	return rv;
 }
 
-static int command_ccd_open(int argc, char **argv)
+static enum vendor_cmd_rc ccd_open(void *buf,
+				   size_t input_size,
+				   size_t *response_size)
 {
 	int is_long = 1;
 	int need_pp = 1;
 	int rv;
+	char *buffer = buf;
 
-	if (force_disabled)
-		return EC_ERROR_ACCESS_DENIED;
+	if (force_disabled) {
+		*response_size = 1;
+		buffer[0] = EC_ERROR_ACCESS_DENIED;
+		return VENDOR_RC_NOT_ALLOWED;
+	}
 
 	if (ccd_state == CCD_STATE_OPENED)
-		return EC_SUCCESS;
+		return VENDOR_RC_SUCCESS;
 
 	if (raw_has_password()) {
-		if (argc < 2)
-			return EC_ERROR_PARAM_COUNT;
+		if (!input_size) {
+			*response_size = 1;
+			buffer[0] = EC_ERROR_PARAM_COUNT;
+			return VENDOR_RC_PASSWORD_REQUIRED;
+		}
 
-		rv = raw_check_password(argv[1]);
-		if (rv)
-			return rv;
+		/*
+		 * We know there is plenty of room in the TPM buffer this is
+		 * stored in.
+		 */
+		buffer[input_size] = '\0';
+		rv = raw_check_password(buffer);
+		if (rv) {
+			*response_size = 1;
+			buffer[0] = rv;
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
 	} else if (!board_fwmp_allows_unlock()) {
-		return EC_ERROR_ACCESS_DENIED;
+		*response_size = 1;
+		buffer[0] = EC_ERROR_ACCESS_DENIED;
+		return VENDOR_RC_NOT_ALLOWED;
 	}
 
 	/* Fail and abort if already checking physical presence */
 	if (physical_detect_busy()) {
 		physical_detect_abort();
-		return EC_ERROR_BUSY;
+		*response_size = 1;
+		buffer[0] = EC_ERROR_BUSY;
+		return VENDOR_RC_INTERNAL_ERROR;
 	}
 
 	/* Reduce physical presence if enabled via config */
@@ -885,41 +953,66 @@ static int command_ccd_open(int argc, char **argv)
 	if (need_pp) {
 		/* Start physical presence detect */
 		ccprintf("Starting CCD open...\n");
-		return physical_detect_start(is_long, ccd_open_done);
-	} else {
-		/* No physical presence required; go straight to done */
-		ccd_open_done();
-		return EC_SUCCESS;
+		rv = physical_detect_start(is_long, ccd_open_done_async);
+		if (rv != EC_SUCCESS) {
+			*response_size = 1;
+			buffer[0] = rv;
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
+		return VENDOR_RC_IN_PROGRESS;
 	}
+
+	/* No physical presence required; go straight to done */
+	ccd_open_done(1);
+
+	return VENDOR_RC_SUCCESS;
 }
 
-static int command_ccd_unlock(int argc, char **argv)
+static enum vendor_cmd_rc ccd_unlock(void *buf,
+				     size_t input_size,
+				     size_t *response_size)
 {
 	int need_pp = 1;
 	int rv;
+	char *buffer = buf;
 
-	if (force_disabled)
-		return EC_ERROR_ACCESS_DENIED;
+	if (force_disabled) {
+		*response_size = 1;
+		buffer[0] = EC_ERROR_ACCESS_DENIED;
+		return VENDOR_RC_NOT_ALLOWED;
+	}
 
 	if (ccd_state == CCD_STATE_UNLOCKED)
-		return EC_SUCCESS;
+		return VENDOR_RC_SUCCESS;
 
 	/* Can go from opened to unlocked with no delay or password */
 	if (ccd_state == CCD_STATE_OPENED) {
 		ccd_unlock_done();
-		return EC_SUCCESS;
+		return VENDOR_RC_SUCCESS;
 	}
 
 	if (raw_has_password()) {
-		if (argc < 2)
-			return EC_ERROR_PARAM_COUNT;
+		if (!input_size) {
+			*response_size = 1;
+			buffer[0] = EC_ERROR_PARAM_COUNT;
+			return VENDOR_RC_PASSWORD_REQUIRED;
+		}
 
-		rv = raw_check_password(argv[1]);
-		if (rv)
-			return rv;
+		/*
+		 * We know there is plenty of room in the TPM buffer this is
+		 * stored in.
+		 */
+		buffer[input_size] = '\0';
+		rv = raw_check_password(buffer);
+		if (rv) {
+			*response_size = 1;
+			buffer[0] = rv;
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
 	} else if (!board_fwmp_allows_unlock()) {
-		/* Unlock disabled by FWMP */
-		return EC_ERROR_ACCESS_DENIED;
+		*response_size = 1;
+		buffer[0] = EC_ERROR_ACCESS_DENIED;
+		return VENDOR_RC_NOT_ALLOWED;
 	} else {
 		/*
 		 * When unlock is requested via the console, physical presence
@@ -944,7 +1037,9 @@ static int command_ccd_unlock(int argc, char **argv)
 	/* Fail and abort if already checking physical presence */
 	if (physical_detect_busy()) {
 		physical_detect_abort();
-		return EC_ERROR_BUSY;
+		*response_size = 1;
+		buffer[0] = EC_ERROR_BUSY;
+		return VENDOR_RC_INTERNAL_ERROR;
 	}
 
 	/* Bypass physical presence check if configured to do so */
@@ -960,21 +1055,32 @@ static int command_ccd_unlock(int argc, char **argv)
 	if (need_pp) {
 		/* Start physical presence detect */
 		ccprintf("Starting CCD unlock...\n");
-		return physical_detect_start(0, ccd_unlock_done);
-	} else {
-		/* Unlock immediately */
-		ccd_unlock_done();
-		return EC_SUCCESS;
+		rv = physical_detect_start(0, ccd_unlock_done);
+		if (rv != EC_SUCCESS) {
+			*response_size = 1;
+			buffer[0] = rv;
+			return VENDOR_RC_INTERNAL_ERROR;
+		}
+		return VENDOR_RC_IN_PROGRESS;
 	}
+
+	/* Unlock immediately */
+	ccd_unlock_done();
+
+	return VENDOR_RC_SUCCESS;
 }
 
-static int command_ccd_lock(void)
+static enum vendor_cmd_rc ccd_lock(void *unused0,
+				   size_t unused1,
+				   size_t *response_size)
 {
 	/* Lock always works */
 	ccprintf("CCD locked.\n");
 	ccd_set_state(CCD_STATE_LOCKED);
-	return EC_SUCCESS;
+	return VENDOR_RC_SUCCESS;
 }
+
+
 
 /* NOTE: Testlab command is console-only; no TPM vendor command for this */
 static int command_ccd_testlab(int argc, char **argv)
@@ -1083,7 +1189,7 @@ static int command_ccd_help(void)
 /**
  * Case closed debugging config command.
  */
-static int command_ccd(int argc, char **argv)
+static int command_ccd_body(int argc, char **argv)
 {
 	/* If no args or 'get', print info */
 	if (argc < 2 || !strcasecmp(argv[1], "get"))
@@ -1095,17 +1201,25 @@ static int command_ccd(int argc, char **argv)
 
 	/* Commands to set state */
 	if (!strcasecmp(argv[1], "lock"))
-		return command_ccd_lock();
-	if (!strcasecmp(argv[1], "unlock"))
-		return command_ccd_unlock(argc - 1, argv + 1);
+		return ccd_command_wrapper(0, NULL, CCDV_LOCK);
+	if (!strcasecmp(argv[1], "unlock")) {
+		if (!raw_has_password()) {
+			ccprintf("Unlock only allowed after password is set\n");
+			return EC_ERROR_ACCESS_DENIED;
+		}
+		return ccd_command_wrapper(argc - 1, argv[2], CCDV_UNLOCK);
+	}
 	if (!strcasecmp(argv[1], "open"))
-		return command_ccd_open(argc - 1, argv + 1);
+		return ccd_command_wrapper(argc - 1, argv[2], CCDV_OPEN);
 
 	/* Commands to configure capabilities */
 	if (!strcasecmp(argv[1], "set"))
 		return command_ccd_set(argc - 1, argv + 1);
-	if (!strcasecmp(argv[1], "password"))
-		return command_ccd_password(argc - 1, argv + 1);
+	if (!strcasecmp(argv[1], "password")) {
+		if (argc != 3)
+			return EC_ERROR_PARAM_COUNT;
+		return ccd_command_wrapper(argc - 1, argv[2], CCDV_PASSWORD);
+	}
 	if (!strcasecmp(argv[1], "reset"))
 		return command_ccd_reset(argc - 1, argv + 1);
 
@@ -1121,6 +1235,17 @@ static int command_ccd(int argc, char **argv)
 
 	/* Anything else (including "help") prints help */
 	return command_ccd_help();
+}
+
+static int command_ccd(int argc, char **argv)
+{
+	int rv;
+
+	ccd_console_active = 1;
+	rv = command_ccd_body(argc, argv);
+	ccd_console_active = 0;
+
+	return rv;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(ccd, command_ccd,
 			     "[help | ...]",
@@ -1225,14 +1350,12 @@ static enum vendor_cmd_rc manage_ccd_password(enum vendor_cmd_cc code,
 DECLARE_VENDOR_COMMAND(VENDOR_CC_MANAGE_CCD_PWD, manage_ccd_password);
 
 /*
- * Handle the VENDOR_CC_CCD_PASSWORD command.
+ * Handle the CCVD_PASSWORD subcommand.
  *
- * The payload of the command is a text string to use to set the password. The
- * text string set to 'clear' has a special effect though, it clears the
- * password instead of setting it.
+ * The payload of the command is a text string to use to set or clear the
+ * password.
  */
-static enum vendor_cmd_rc ccd_password(enum vendor_cmd_cc code,
-				       void *buf,
+static enum vendor_cmd_rc ccd_password(void *buf,
 				       size_t input_size,
 				       size_t *response_size)
 {
@@ -1261,11 +1384,139 @@ static enum vendor_cmd_rc ccd_password(enum vendor_cmd_cc code,
 		return VENDOR_RC_INTERNAL_ERROR;
 	}
 
-	*response_size = 0;
 	return VENDOR_RC_SUCCESS;
 }
-DECLARE_VENDOR_COMMAND(VENDOR_CC_CCD_PASSWORD, ccd_password);
 
+static enum vendor_cmd_rc ccd_pp_poll(void *buf,
+				      size_t input_size,
+				      size_t *response_size)
+{
+	char *buffer = buf;
+
+	if ((ccd_state == CCD_STATE_OPENED) ||
+	    (ccd_state == CCD_STATE_UNLOCKED)) {
+		buffer[0] = CCD_PP_DONE;
+	} else {
+		switch (physical_presense_fsm_state()) {
+		case PP_AWAITING_PRESS:
+			buffer[0] = CCD_PP_AWAITING_PRESS;
+			break;
+		case PP_BETWEEN_PRESSES:
+			buffer[0] = CCD_PP_BETWEEN_PRESSES;
+			break;
+		default:
+			buffer[0] = CCD_PP_CLOSED;
+			break;
+		}
+	}
+	*response_size = 1;
+	return VENDOR_RC_SUCCESS;
+}
+
+static enum vendor_cmd_rc ccd_pp_poll_unlock(void *buf,
+					     size_t input_size,
+					     size_t *response_size)
+{
+	char *buffer;
+
+	if ((ccd_state != CCD_STATE_OPENED) &&
+	    (ccd_state != CCD_STATE_UNLOCKED))
+		return ccd_pp_poll(buf, input_size, response_size);
+
+
+	buffer = buf;
+	*response_size = 1;
+	buffer[0] = CCD_PP_DONE;
+
+	return VENDOR_RC_SUCCESS;
+}
+
+static enum vendor_cmd_rc ccd_pp_poll_open(void *buf,
+					   size_t input_size,
+					   size_t *response_size)
+{
+	char *buffer;
+
+	if (ccd_state != CCD_STATE_OPENED)
+		return ccd_pp_poll(buf, input_size, response_size);
+
+
+	buffer = buf;
+	*response_size = 1;
+	buffer[0] = CCD_PP_DONE;
+
+	return VENDOR_RC_SUCCESS;
+}
+
+/*
+ * Common TPM Vendor command handler used to demultiplex various CCD commands
+ * which need to be available both throuh CLI and over /dev/tpm0.
+ */
+static enum vendor_cmd_rc ccd_vendor(enum vendor_cmd_cc code,
+				     void *buf,
+				     size_t input_size,
+				     size_t *response_size)
+{
+	enum vendor_cmd_rc (*handler)(void *x, size_t y, size_t *t);
+	char *buffer;
+	enum vendor_cmd_rc rc;
+
+	/*
+	 * buf points to the next byte after tpm header, i.e. to the CCD
+	 * subcommand. Cache the pointer to make it easier to access and
+	 * manipulate.
+	 */
+	buffer = buf;
+
+	/* Pick what to do based on subcommand. */
+	switch (buffer[0]) {
+	case CCDV_PASSWORD:
+		handler = ccd_password;
+		break;
+
+	case CCDV_OPEN:
+		handler = ccd_open;
+		break;
+
+	case CCDV_UNLOCK:
+		handler = ccd_unlock;
+		break;
+
+	case CCDV_LOCK:
+		handler = ccd_lock;
+		break;
+
+	case CCDV_PP_POLL_UNLOCK:
+		handler = ccd_pp_poll_unlock;
+		break;
+
+	case CCDV_PP_POLL_OPEN:
+		handler = ccd_pp_poll_open;
+		break;
+
+	default:
+		CPRINTS("%s:%d - unknown subcommand\n", __func__, __LINE__);
+		break;
+	}
+
+	if (handler) {
+		*response_size = 0;  /* Let's be optimistic: 0 means success. */
+
+		rc = handler(buf + 1, input_size - 1, response_size);
+
+		/*
+		 * Move response up for the master to see it in the right
+		 * place in the response buffer.
+		 */
+		memmove(buf, buf + 1, *response_size);
+	} else {
+		rc = VENDOR_RC_NO_SUCH_SUBCOMMAND;
+		*response_size = 0;
+	}
+
+	return rc;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_CCD, ccd_vendor);
 
 static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
 					  void *buf,
@@ -1317,12 +1568,7 @@ static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
 		}
 
 
-		rv = command_ccd_lock();
-		if (rv != EC_SUCCESS) {
-			error_line = __LINE__;
-			break;
-		}
-
+		ccd_lock(NULL, 0, NULL);
 		*response_size = 0;
 		return VENDOR_RC_SUCCESS;
 	} while (0);

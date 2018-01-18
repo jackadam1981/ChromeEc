@@ -20,6 +20,7 @@
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/ps8xxx.h"
+#include "driver/temp_sensor/sb_tsi.h"
 #include "ec_commands.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -90,6 +91,13 @@ void anx74xx_cable_det_interrupt(enum gpio_signal signal)
 }
 #endif
 
+static void ppc_interrupt(enum gpio_signal signal)
+{
+	int port = (signal == GPIO_USB_C0_SWCTL_INT_ODL) ? 0 : 1;
+
+	sn5s330_interrupt(port);
+}
+
 #include "gpio_list.h"
 
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -120,9 +128,10 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 /* I2C port map. */
 const struct i2c_port_t i2c_ports[] = {
 	{"power",   I2C_PORT_POWER,   100, GPIO_I2C0_SCL, GPIO_I2C0_SDA},
-	{"tcpc0",   I2C_PORT_TCPC0,  1000, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
-	{"tcpc1",   I2C_PORT_TCPC1,  1000, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
+	{"tcpc0",   I2C_PORT_TCPC0,   400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
+	{"tcpc1",   I2C_PORT_TCPC1,   400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
 	{"thermal", I2C_PORT_THERMAL, 400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
+	{"kblight", I2C_PORT_KBLIGHT, 100, GPIO_I2C5_SCL, GPIO_I2C5_SDA},
 	{"sensor",  I2C_PORT_SENSOR,  400, GPIO_I2C7_SCL, GPIO_I2C7_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
@@ -195,6 +204,31 @@ const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
 	GPIO_EN_USB_A1_5V,
 };
 
+static void board_init(void)
+{
+	/* Enable Gyro interrupts */
+	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static void board_chipset_suspend(void)
+{
+	/*
+	 * Turn off display backlight. This ensures that the backlight stays off
+	 * in S3, no matter what the AP has it set to. The AP also controls it.
+	 * This is here more for legacy reasons.
+	 */
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+static void board_chipset_resume(void)
+{
+	/* Allow display backlight to turn on. See above backlight comment */
+	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
 /**
  * Power on (or off) a single TCPC.
  * minimum on/off delays are included.
@@ -257,10 +291,12 @@ void board_tcpc_init(void)
 	if (!system_jumped_to_this_image())
 		board_reset_pd_mcu();
 
-	/* Enable TCPC0 interrupt */
-	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
+	/* Enable PPC interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_SWCTL_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_SWCTL_INT_ODL);
 
-	/* Enable TCPC1 interrupt */
+	/* Enable TCPC interrupts. */
+	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -277,27 +313,29 @@ void board_tcpc_init(void)
 		mux->hpd_update(port, 0, 0);
 	}
 }
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
 void board_overcurrent_event(int port)
 {
-	/* TODO(ecgh): assert GPIO to notify SOC */
+	enum gpio_signal signal = (port == 0) ? GPIO_USB_C0_OC_L
+					      : GPIO_USB_C1_OC_L;
+
+	gpio_set_level(signal, 0);
+
+	CPRINTS("p%d: overcurrent!", port);
 }
 
 int board_set_active_charge_port(int port)
 {
 	int i;
-	int rv;
 
 	CPRINTS("New chg p%d", port);
 
 	if (port == CHARGE_PORT_NONE) {
 		/* Disable all ports. */
 		for (i = 0; i < ppc_cnt; i++) {
-			rv = ppc_vbus_sink_enable(i, 0);
-			if (rv) {
-				CPRINTS("Disabling p%d sink path failed.", i);
-				return rv;
-			}
+			if (ppc_vbus_sink_enable(i, 0))
+				CPRINTS("p%d: sink disable failed.", i);
 		}
 
 		return EC_SUCCESS;
@@ -318,12 +356,12 @@ int board_set_active_charge_port(int port)
 			continue;
 
 		if (ppc_vbus_sink_enable(i, 0))
-			CPRINTS("p%d: sink path disable failed.", i);
+			CPRINTS("p%d: sink disable failed.", i);
 	}
 
 	/* Enable requested charge port. */
 	if (ppc_vbus_sink_enable(port, 1)) {
-		CPRINTS("p%d: sink path enable failed.");
+		CPRINTS("p%d: sink enable failed.");
 		return EC_ERROR_UNKNOWN;
 	}
 
@@ -363,7 +401,15 @@ struct keyboard_scan_config keyscan_config = {
 
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
-	[PWM_CH_KBLIGHT] = { 5, 0, 100 },
+	[PWM_CH_KBLIGHT] =     { 5, 0, 100 },
+	[PWM_CH_LED1_ORANGE] = {
+		0, PWM_CONFIG_OPEN_DRAIN | PWM_CONFIG_ACTIVE_LOW |
+		PWM_CONFIG_DSLEEP, 100
+	},
+	[PWM_CH_LED2_BLUE] =   {
+		2, PWM_CONFIG_OPEN_DRAIN | PWM_CONFIG_ACTIVE_LOW |
+		PWM_CONFIG_DSLEEP, 100
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
@@ -415,6 +461,7 @@ static int board_get_temp(int idx, int *temp_k)
 const struct temp_sensor_t temp_sensors[] = {
 	{"Charger", TEMP_SENSOR_TYPE_BOARD, board_get_temp, 0, 1},
 	{"SOC", TEMP_SENSOR_TYPE_BOARD, board_get_temp, 1, 5},
+	{"CPU", TEMP_SENSOR_TYPE_CPU, sb_tsi_get_val, 0, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -556,6 +603,15 @@ struct motion_sensor_t motion_sensors[] = {
 };
 
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+static void board_init_leds_off(void)
+{
+	/* Initialize the LEDs off. */
+	/* TODO(sjg): Eventually do something with these LEDs. */
+	pwm_set_duty(PWM_CH_LED1_ORANGE, 0);
+	pwm_set_duty(PWM_CH_LED2_BLUE, 0);
+}
+DECLARE_HOOK(HOOK_INIT, board_init_leds_off, HOOK_PRIO_INIT_PWM + 1);
 
 #ifndef TEST_BUILD
 void lid_angle_peripheral_enable(int enable)

@@ -384,11 +384,17 @@ static void usb_suspend(void)
 {
 	CPRINTF("SUS\n");
 
+	/*
+	 * usb_suspend can be called from hook task, make sure no interrupt is
+	 * modifying CNTR at the same time.
+	 */
+	interrupt_disable();
 	/* Set FSUSP bit to activate suspend mode */
 	STM32_USB_CNTR |= STM32_USB_CNTR_FSUSP;
 
 	/* Set USB low power mode */
 	STM32_USB_CNTR |= STM32_USB_CNTR_LP_MODE;
+	interrupt_enable();
 
 	clock_enable_module(MODULE_USB, 0);
 
@@ -396,15 +402,20 @@ static void usb_suspend(void)
 	enable_sleep(SLEEP_MASK_USB_DEVICE);
 }
 
+static void usb_resume_deferred(void)
+{
+	uint32_t state = (STM32_USB_FNR & STM32_USB_FNR_RXDP_RXDM_MASK)
+		>> STM32_USB_FNR_RXDP_RXDM_SHIFT;
+
+	CPRINTF("RSMd %d %04x\n", state, STM32_USB_CNTR);
+	if (state == 2 || state == 3)
+		usb_suspend();
+}
+DECLARE_DEFERRED(usb_resume_deferred);
+
 static void usb_resume(void)
 {
-	CPRINTF("RSM\n");
-
-	/*
-	 * TODO(crosbug.com/p/63273): Reference manual suggests going back to
-	 * sleep if state is 10 or 11, but this seems to cause other problems
-	 * (see bug). Ignore them for now.
-	 */
+	uint32_t state;
 
 	clock_enable_module(MODULE_USB, 1);
 
@@ -413,6 +424,22 @@ static void usb_resume(void)
 
 	/* USB is in use again */
 	disable_sleep(SLEEP_MASK_USB_DEVICE);
+
+	state = (STM32_USB_FNR & STM32_USB_FNR_RXDP_RXDM_MASK)
+		>> STM32_USB_FNR_RXDP_RXDM_SHIFT;
+
+	CPRINTF("RSM %d %04x\n", state, STM32_USB_CNTR);
+
+	/*
+	 * Reference manual tells we should go back to sleep if state is 10 or
+	 * 11. However, setting FSUSP and LP_MODE in this interrupt routine
+	 * seems to lock the USB controller (see b/35775088 and b/71688150).
+	 * Instead, we do it in a deferred routine. The host must assert the
+	 * reset condition for 20ms, so reading D+/D- after ~3ms should be safe
+	 * (there is no chance we end up sampling during a bus transaction).
+	 */
+	if (state == 2 || state == 3)
+		hook_call_deferred(&usb_resume_deferred_data, 3 * MSEC);
 }
 
 #ifdef CONFIG_USB_REMOTE_WAKEUP
@@ -433,13 +460,34 @@ void board_usb_wake(void)
 	/* Side-band USB wake, do nothing by default. */
 }
 
+/* Called 10ms after usb_wake started. */
+static void usb_wake_deferred(void)
+{
+	if (esof_count == 3) {
+		/*
+		 * If we reach here, it means that we are not counting ESOF/SOF
+		 * properly (either of these interrupts should occur every 1ms).
+		 * This should never happen if we implemented the resume logic
+		 * correctly.
+		 *
+		 * We reset the controller in that case, which recovers the
+		 * interface.
+		 */
+		CPRINTF("USB stuck\n");
+		STM32_RCC_APB1RSTR |= STM32_RCC_PB1_USB;
+		STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_USB;
+		usb_init();
+	}
+}
+DECLARE_DEFERRED(usb_wake_deferred);
+
 void usb_wake(void)
 {
 	if (!remote_wakeup_enabled ||
 	    !(STM32_USB_CNTR & STM32_USB_CNTR_FSUSP)) {
 		/*
 		 * USB wake not enabled, or already woken up, or already waking
-		 * up,nothing to do.
+		 * up, nothing to do.
 		 */
 		return;
 	}
@@ -451,13 +499,23 @@ void usb_wake(void)
 	CPRINTF("WAKE\n");
 
 	/*
+	 * Sometimes the USB controller gets stuck, and does not count SOF/ESOF
+	 * frames anymore, detect that.
+	 */
+	hook_call_deferred(&usb_wake_deferred_data, 10 * MSEC);
+
+	/*
 	 * Set RESUME bit for 1 to 15 ms, then clear it. We ask the interrupt
 	 * routine to count 3 ESOF interrupts, which should take between
 	 * 2 and 3 ms.
 	 */
 	esof_count = 3;
+
+	/* STM32_USB_CNTR can also be updated from interrupt context. */
+	interrupt_disable();
 	STM32_USB_CNTR |= STM32_USB_CNTR_RESUME |
-			  STM32_USB_CNTR_ESOFM | STM32_USB_CNTR_SOFM;
+		STM32_USB_CNTR_ESOFM | STM32_USB_CNTR_SOFM;
+	interrupt_enable();
 
 	/* Try side-band wake as well. */
 	board_usb_wake();

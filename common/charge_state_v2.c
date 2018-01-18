@@ -218,6 +218,9 @@ static void update_dynamic_battery_info(void)
 		batt_present = 0;
 	}
 
+	if (curr.batt.flags & EC_BATT_FLAG_INVALID_DATA)
+		tmp |= EC_BATT_FLAG_INVALID_DATA;
+
 	if (!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE))
 		*memmap_volt = curr.batt.voltage;
 
@@ -355,6 +358,9 @@ static void update_dynamic_battery_info(void)
 			tmp |= EC_BATT_FLAG_BATT_PRESENT;
 		batt_present = 0;
 	}
+
+	if (curr.batt.flags & EC_BATT_FLAG_INVALID_DATA)
+		tmp |= EC_BATT_FLAG_INVALID_DATA;
 
 	if (!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE))
 		base_battery_dynamic.actual_voltage = curr.batt.voltage;
@@ -546,7 +552,11 @@ static int charge_request(int voltage, int current)
 	if (!voltage || !current) {
 #ifdef CONFIG_CHARGER_NARROW_VDC
 		current = 0;
-		/* With NVDC charger, keep VSYS voltage higher than battery */
+		/*
+		 * With NVDC charger, keep VSYS voltage higher than battery,
+		 * otherwise the BGATE FET body diode would conduct and
+		 * discharge the battery.
+		 */
 		voltage = charger_closest_voltage(
 			curr.batt.voltage + charger_get_info()->voltage_step);
 		/* If the battery is full, request the max voltage. */
@@ -1309,6 +1319,11 @@ int charge_set_output_current_limit(int ma, int mv)
 	if (ret != EC_SUCCESS)
 		return ret;
 
+	/* If we start/stop providing power, wake the charger task. */
+	if ((curr.output_current == 0 && enable) ||
+	    (curr.output_current > 0 && !enable))
+		task_wake(TASK_ID_CHARGER);
+
 	curr.output_current = ma;
 
 	return EC_SUCCESS;
@@ -1545,6 +1560,34 @@ DECLARE_HOST_COMMAND(EC_CMD_CHARGE_STATE, charge_command_charge_state,
 
 /*****************************************************************************/
 /* Console commands */
+
+#ifdef CONFIG_CMD_PWR_AVG
+
+static int command_pwr_avg(int argc, char **argv)
+{
+	int avg_mv;
+	int avg_ma;
+	int avg_mw;
+
+	if (argc != 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	avg_mv = battery_get_avg_voltage();
+	if (avg_mv < 0)
+		return EC_ERROR_UNKNOWN;
+	avg_ma = battery_get_avg_current();
+	avg_mw = avg_mv * avg_ma / 1000;
+
+	ccprintf("mv = %d\nma = %d\nmw = %d\n",
+		avg_mv, avg_ma, avg_mw);
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(pwr_avg, command_pwr_avg,
+			NULL,
+			"Get 1 min power average");
+
+#endif /* CONFIG_CMD_PWR_AVG */
 
 static int command_chgstate(int argc, char **argv)
 {

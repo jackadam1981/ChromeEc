@@ -18,6 +18,9 @@
 /* EC */
 #define CONFIG_ADC
 #define CONFIG_BOARD_VERSION
+#define CONFIG_BOARD_SPECIFIC_VERSION
+#define CONFIG_CRC8
+#define CONFIG_CROS_BOARD_INFO
 #define CONFIG_DEDICATED_RECOVERY_BUTTON
 #define CONFIG_EMULATED_SYSRQ
 #define CONFIG_LED_COMMON
@@ -26,6 +29,7 @@
 #define CONFIG_DPTF
 #define CONFIG_FLASH_SIZE 0x80000
 #define CONFIG_FPU
+#define CONFIG_SUPPRESS_HOST_COMMANDS
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #undef  CONFIG_LID_SWITCH
@@ -130,6 +134,7 @@
 
 /* I2C addresses */
 #define I2C_ADDR_TCPC0		0x16
+#define I2C_ADDR_EEPROM		0xa0
 
 /* Verify and jump to RW image on boot */
 #define CONFIG_VBOOT_EFS

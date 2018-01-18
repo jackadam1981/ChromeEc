@@ -17,6 +17,7 @@
 #include "charger.h"
 #include "chipset.h"
 #include "console.h"
+#include "cros_board_info.h"
 #include "driver/pmic_tps650x30.h"
 #include "driver/temp_sensor/tmp432.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -52,6 +53,12 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
+
+uint16_t host_command_suppressed[] = {
+	EC_CMD_CONSOLE_SNAPSHOT,
+	EC_CMD_CONSOLE_READ,
+	HOST_COMMAND_SUPPRESS_DELIMITER,
+};
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {
@@ -449,6 +456,10 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
+	uint32_t version;
+	if (cbi_get_board_version(&version) == EC_SUCCESS)
+		CPRINTS("Board Version: 0x%04x", version);
+
 	/* Provide AC status to the PCH */
 	board_extpower();
 
@@ -505,18 +516,6 @@ int64_t get_time_dsw_pwrok(void)
 {
 	/* DSW_PWROK is turned on before EC was powered. */
 	return -20 * MSEC;
-}
-
-int board_has_working_reset_flags(void)
-{
-	int version = system_get_board_version();
-
-	/* Board Rev0 will lose reset flags on power cycle. */
-	if (version == 0)
-		return 0;
-
-	/* All other board versions should have working reset flags */
-	return 1;
 }
 
 const struct pwm_t pwm_channels[] = {
