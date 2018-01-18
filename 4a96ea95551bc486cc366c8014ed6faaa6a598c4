@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "135fd0fb_1cfc30ef",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-18T08:09:29Z",
+      "side": 1,
+      "message": "Well calling interrupt_enable() in interrupt context is not terribly great idea either. Should work on those chips though",
+      "parentUuid": "00feb212_c7476318",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 21
+      },
+      "revId": "4a96ea95551bc486cc366c8014ed6faaa6a598c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "739c8b2c_85a9d7dd",
         "filename": "chip/stm32/usb.c",
         "patchSetId": 1
