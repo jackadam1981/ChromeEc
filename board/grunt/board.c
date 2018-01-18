@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "button.h"
+#include "backlight.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charge_state_v2.h"
@@ -220,15 +221,15 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 static void board_chipset_resume(void)
 {
-	/* Turn on display backlight (active low GPIO). */
-	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 0);
+	/* Turn on display backlight. */
+	enable_backlight(1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
 static void board_chipset_suspend(void)
 {
-	/* Turn off display backlight (active low GPIO). */
-	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 1);
+	/* Turn off display backlight. */
+	enable_backlight(0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
