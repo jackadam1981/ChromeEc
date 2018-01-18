@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "da66f219_88c7df9b",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-18T00:08:31Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "efaa0f56_830a1ca2",
+      "range": {
+        "startLine": 367,
+        "startChar": 29,
+        "endLine": 367,
+        "endChar": 46
+      },
+      "revId": "b9edbb9489b97b2cf75e970a3c5a39acbd4dcd20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f80082d6_ee5cc91d",
         "filename": "board/grunt/board.c",
         "patchSetId": 1
