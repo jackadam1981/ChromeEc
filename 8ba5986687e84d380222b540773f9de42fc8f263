@@ -22,6 +22,30 @@
       "revId": "8ba5986687e84d380222b540773f9de42fc8f263",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "016d8b22_903c5ffa",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-01-19T02:11:24Z",
+      "side": 1,
+      "message": "Yes, that\u0027s a good point about the R/M/W possible conflict and bd9995x_select_input_port() gets called early enough w.r.t USB_SUS being cleared. The one issue i see with checking the battery voltage here, is that this only gets called once per connection, so potentially VSYS_PRIORITY wont\u0027 get cleared until the connection is removed (if I\u0027m understanding it correctly)",
+      "parentUuid": "f2fc74ae_8c99c3c4",
+      "range": {
+        "startLine": 792,
+        "startChar": 22,
+        "endLine": 792,
+        "endChar": 46
+      },
+      "revId": "8ba5986687e84d380222b540773f9de42fc8f263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
