@@ -1992,6 +1992,15 @@ static void pd_init_tasks(void)
 	CPRINTS("PD comm %sabled", enable ? "en" : "dis");
 
 	initialized = 1;
+
+#ifdef CONFIG_USB_PD_TCPC_BOARD_INIT
+	/*
+	 * Board specific TCPC init
+	 * Since this may sleep, must be after initialized has been set to 1,
+	 * to ensure only the first PD task does the initialization.
+	 */
+	board_tcpc_init();
+#endif
 }
 #endif /* CONFIG_COMMON_RUNTIME */
 
@@ -2040,11 +2049,6 @@ void pd_task(void *u)
 
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset(port);
-
-#ifdef CONFIG_USB_PD_TCPC_BOARD_INIT
-	/* Board specific TCPC init */
-	board_tcpc_init();
-#endif
 
 	/* Initialize TCPM driver and wait for TCPC to be ready */
 	res = tcpm_init(port);
