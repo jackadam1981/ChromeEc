@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2fc74ae_8c99c3c4",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-19T01:18:48Z",
+      "side": 1,
+      "message": "This read / mask / write is potentially a problem. HOOKS tasks will call bd9995x_select_input_port() which does RMW of the same register, it can be preempted by the charger task which calls this function. We can either add a mutex or check / clear this bit in bd9995x_select_input_port().\n\nI think clearing this bit in bd9995x_select_input_port() achieves the same function since VSYS_PRIORITY is only relevant when VSYSREG_SET \u003c\u003d VBAT, and we set VSYSREG to battery voltage_min in bd9995x_charger_enable(). So, if battery is super low when we start charging, we\u0027ll leave VSYSREG_SET on, but it will do nothing once battery voltage passes voltage_min. Then when we switch ports (eg. unplug) we\u0027ll clear VSYSREG_SET once and for all.\n\nWhat do you think?",
+      "range": {
+        "startLine": 792,
+        "startChar": 22,
+        "endLine": 792,
+        "endChar": 46
+      },
+      "revId": "8ba5986687e84d380222b540773f9de42fc8f263",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
