@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "994e437a_67100ddf",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "Since you\u0027re at it, can you please reorder the CR2_* bits? CR1_* seem to be sorted by bit number in descending order (following the datasheet), do the same here.",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d331a8c_4ac0c20b",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "\"_is_\" is probably good practice, but I don\u0027t think we do that so often in EC code.\n\nspi_tx_done",
+      "range": {
+        "startLine": 110,
+        "startChar": 18,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a643ca2_d7196f00",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "Not very important, but curious: Is it really necessary to check TX buffer level? Or BSY is enough?",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a3485b_6a9ae489",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "(also not very important)\n\nWe set STM32_SPI_CR2_FRXTH so:\n\"RXNE goes high and stays high until the RXFIFO level is greater or\nequal to 1/4 (8-bit).\"\n\nIt does not seem necessary to check for FIFO level.",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "620691e1_5af38d80",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure to follow, where are you servicing these interrupts?",
+      "range": {
+        "startLine": 146,
+        "startChar": 53,
+        "endLine": 147,
+        "endChar": 35
+      },
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa11a861_be5d8dd3",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "It seems really weird to manipulate the SPI registers in a dma interrupt. Can you move that back to the main function? (spi_transaction_async)",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49aa68f9_5619a01b",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "That\u0027s a interrupt routine, right? A tight while loop isn\u0027t a great idea there...",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 29
+      },
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1df0e7a9_dd29391b",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 27
+      },
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f348b83_d79b13c7",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "Why do you need to clear both BIDIOE and BIDIMODE, then set BIDIMODE?\n\nIsn\u0027t it enough to clear BIDIOE?",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76e4220f_bf71e479",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "ditto: It seems really weird to manipulate the SPI registers in a dma function. Can you move that back to the main function? (spi_transaction_async)",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d4524f3_10babad7",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 1,
+      "message": "ditto: It seems really weird to manipulate the SPI registers in a dma function. Can you move that back to the main function? (spi_transaction_async)",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

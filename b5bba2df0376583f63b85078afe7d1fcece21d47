@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7981688e_ce091a3a",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 0,
+      "message": "What happened to this line? It seems like with half-duplex the SPI controller could be left enabled all the time?\n\nI think it makes sense to enable/disable it only when needed, but I find this a little odd.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 31
+      },
+      "revId": "b5bba2df0376583f63b85078afe7d1fcece21d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd6b4a74_b90f00c1",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 0,
+      "message": "Why does this not work anymore?",
+      "revId": "b5bba2df0376583f63b85078afe7d1fcece21d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5e71308_f1f4e875",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-19T06:43:27Z",
+      "side": 0,
+      "message": "Why did you remove this?",
+      "revId": "b5bba2df0376583f63b85078afe7d1fcece21d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
