@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "20bf91fe_8bd63fef",
+        "filename": "board/nami/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-19T17:49:45Z",
+      "side": 1,
+      "message": "I ended up not using the enable_backlight() method for grunt based on a discussion with Ed. Ultimately it felt weird to tie suspend resume functionality to a BACKLIGHT_LID config.\n\nIf the module (or config define) were purely backlight, it would make more sense. However, it didn\u0027t seem worth it to create a pure backlight module with only one method in it that knew how to toggle between active high and active low.\n\nThoughts?",
+      "parentUuid": "8ab70828_1dba8d38",
+      "range": {
+        "startLine": 648,
+        "startChar": 1,
+        "endLine": 648,
+        "endChar": 44
+      },
+      "revId": "5605f4fd5649dbef132e913ffe9493e0d3a9d207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e8203d8_59fff20e",
         "filename": "board/nami/board.c",
         "patchSetId": 6
