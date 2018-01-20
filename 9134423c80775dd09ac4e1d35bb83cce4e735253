@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8642815_771c0d1d",
+        "filename": "common/host_command.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-20T00:54:47Z",
+      "side": 1,
+      "message": "I can make this syntax compiled outside chroot in a sample c source but not this one.",
+      "range": {
+        "startLine": 565,
+        "startChar": 0,
+        "endLine": 565,
+        "endChar": 60
+      },
+      "revId": "9134423c80775dd09ac4e1d35bb83cce4e735253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
