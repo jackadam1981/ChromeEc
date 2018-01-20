@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "90445a50_dd698ce4",
+        "filename": "board/nami/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-20T00:23:59Z",
+      "side": 1,
+      "message": "...but the only suspend/resume functionality here is toggling the backlight.\n\nIn general, I like to have only one way to change an underlying hardware state.  It makes it easier to change or debug.  For example, if we clone this board to another one where the backlight signal is active high, we\u0027d need to change this code back again.  If we call enable_backlight(), we don\u0027t.\n\nBut this in the board directory, so it presumably knows the polarity of the backlight signal.  So in that sense it\u0027s fine.\n\nTo translate all that: If if were me, I\u0027d call enable_backlight().  But this is not totally awful, so if y\u0027all really want to do it this way I won\u0027t block it.",
+      "parentUuid": "20bf91fe_8bd63fef",
+      "range": {
+        "startLine": 648,
+        "startChar": 1,
+        "endLine": 648,
+        "endChar": 44
+      },
+      "revId": "5605f4fd5649dbef132e913ffe9493e0d3a9d207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e8203d8_59fff20e",
         "filename": "board/nami/board.c",
         "patchSetId": 6
