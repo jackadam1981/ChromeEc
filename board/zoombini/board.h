@@ -33,7 +33,7 @@
 #define CONFIG_LPC
 #define CONFIG_PWM
 
-/* TODO(aaboagye): Verify the right address. */
+#define CONFIG_ALS
 #define CONFIG_ALS_OPT3001
 #define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 #define ALS_COUNT 1
