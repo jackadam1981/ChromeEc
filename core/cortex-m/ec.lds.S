@@ -204,6 +204,12 @@ SECTIONS
         __hooks_ccd_change_end = .;
 #endif
 
+#ifdef CONFIG_DETACHABLE_BASE_DETECTION
+         __hooks_base_detect_change = .;
+         KEEP(*(.rodata.HOOK_BASE_DETECT_CHANGE))
+         __hooks_base_detect_change_end = .;
+#endif /* defined(CONFIG_DETACHABLE_BASE_DETECTION) */
+
         __hooks_tick = .;
         KEEP(*(.rodata.HOOK_TICK))
         __hooks_tick_end = .;

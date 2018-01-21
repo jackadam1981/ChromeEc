@@ -171,6 +171,15 @@ enum hook_type {
 	HOOK_CCD_CHANGE,
 #endif
 
+#ifdef CONFIG_DETACHABLE_BASE_DETECTION
+	/*
+	 * Base detection state has changed.
+	 *
+	 * Hook routines are called from the HOOKS task.
+	 */
+	HOOK_BASE_DETECT_CHANGE,
+#endif /* defined(CONFIG_DETACHABLE_BASE_DETECTION) */
+
 	/*
 	 * Periodic tick, every HOOK_TICK_INTERVAL.
 	 *

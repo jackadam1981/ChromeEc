@@ -58,6 +58,10 @@ extern const struct hook_data __hooks_battery_soc_change_end[];
 extern const struct hook_data __hooks_ccd_change[];
 extern const struct hook_data __hooks_ccd_change_end[];
 #endif
+#ifdef CONFIG_DETACHABLE_BASE_DETECTION
+extern const struct hook_data __hooks_base_detect_change[];
+extern const struct hook_data __hooks_base_detect_change_end[];
+#endif /* defined(CONFIG_DETACHABLE_BASE_DETECTION) */
 extern const struct hook_data __hooks_tick[];
 extern const struct hook_data __hooks_tick_end[];
 extern const struct hook_data __hooks_second[];

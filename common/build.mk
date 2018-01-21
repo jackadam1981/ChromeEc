@@ -43,6 +43,7 @@ ifneq ($(CORE),cortex-m0)
 common-$(CONFIG_CURVE25519)+=curve25519-generic.o
 endif
 common-$(CONFIG_DEDICATED_RECOVERY_BUTTON)+=button.o
+common-$(CONFIG_DETACHABLE_BASE_DETECTION)+=base_detect.o
 common-$(CONFIG_DEVICE_EVENT)+=device_event.o
 common-$(CONFIG_DEVICE_STATE)+=device_state.o
 common-$(CONFIG_DPTF)+=dptf.o

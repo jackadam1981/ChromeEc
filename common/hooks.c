@@ -50,6 +50,9 @@ static const struct hook_ptrs hook_list[] = {
 #ifdef CONFIG_CASE_CLOSED_DEBUG_V1
 	{__hooks_ccd_change, __hooks_ccd_change_end},
 #endif
+#ifdef CONFIG_DETACHABLE_BASE_DETECTION
+	{__hooks_base_detect_change, __hooks_base_detect_change_end},
+#endif /* defined(CONFIG_DETACHABLE_BASE_DETECTION) */
 	{__hooks_tick, __hooks_tick_end},
 	{__hooks_second, __hooks_second_end},
 };
