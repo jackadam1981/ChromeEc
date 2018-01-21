@@ -90,6 +90,17 @@ static void ppc_interrupt(enum gpio_signal s)
 }
 #endif /* defined(BOARD_ZOOMBINI) */
 
+#ifdef BOARD_MEOWTH
+static void base_pwr_fault(enum gpio_signal s)
+{
+	if (!gpio_get_level(GPIO_BASE_PWR_FLT_L)) {
+		/* Turn off base power. */
+		CPRINTS("Base Power Fault!");
+		gpio_set_level(GPIO_BASE_PWR_EN, 0);
+	}
+}
+#endif /* defined(BOARD_MEOWTH) */
+
 #include "gpio_list.h"
 
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -119,6 +130,14 @@ const struct adc_t adc_channels[] = {
 
 	[ADC_TEMP_SENSOR_WIFI] = {
 		"WIFI", NPCX_ADC_CH8, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0
+	},
+
+	[ADC_BASE_ATTACH] = {
+		"BASE ATTACH", NPCX_ADC_CH9, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0
+	},
+
+	[ADC_BASE_DETACH] = {
+		"BASE DETACH", NPCX_ADC_CH4, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0
 	},
 #endif /* defined(BOARD_ZOOMBINI) */
 };
@@ -649,3 +668,24 @@ static int command_tcpc_dump_reg(int argc, char **argv)
 }
 DECLARE_CONSOLE_COMMAND(tcpcdump, command_tcpc_dump_reg, "<port>",
 			"Dumps TCPCI regs 0-ff");
+
+#ifdef BOARD_MEOWTH
+static int command_base_pwr_enable(int argc, char **argv)
+{
+	int enable;
+
+	if (argc > 1) {
+		if (!parse_bool(argv[1], &enable))
+			return EC_ERROR_PARAM1;
+
+		gpio_set_level(GPIO_BASE_PWR_EN, enable);
+	}
+
+	ccprintf("Base Power: %sabled\n",
+		 gpio_get_level(GPIO_BASE_PWR_EN) ? "en" : "dis");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(basepwr, command_base_pwr_enable, "[enable|disable]",
+			"Enable/Disable base power.");
+#endif /* defined(BOARD_MEOWTH) */
