@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "timer.h"
 #include "util.h"
+#include "watchdog.h"
 
 #define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
@@ -64,6 +65,7 @@ static void base_detect_deferred(void)
 	int attach_reading;
 	int detach_reading;
 
+	watchdog_reload();
 	read_pin(&attach_reading, base_pin_cfg.attach_pin);
 	read_pin(&detach_reading, base_pin_cfg.detach_pin);
 
@@ -127,11 +129,9 @@ enum base_detect_state base_get_detect_state(void)
 
 static int command_basedetectdebug(int argc, char **argv)
 {
-	if (argc < 1)
-		return EC_ERROR_PARAM_COUNT;
-
-	if (!parse_bool(argv[1], &debug))
-		return EC_ERROR_PARAM1;
+	if (argc > 1)
+		if (!parse_bool(argv[1], &debug))
+			return EC_ERROR_PARAM1;
 
 	return EC_SUCCESS;
 }
