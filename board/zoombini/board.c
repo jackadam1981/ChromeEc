@@ -3,9 +3,10 @@
  * found in the LICENSE file.
  */
 
-/* Zoombini board-specific configuration */
+/* Mewoth/Zoombini board-specific configuration */
 
 #include "adc_chip.h"
+#include "base_detect.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state.h"
@@ -90,6 +91,51 @@ static void ppc_interrupt(enum gpio_signal s)
 }
 #endif /* defined(BOARD_ZOOMBINI) */
 
+#ifdef BOARD_MEOWTH
+static uint8_t base_power_on_attempts;
+static void clear_base_power_on_attempts_deferred(void)
+{
+	base_power_on_attempts = 0;
+}
+DECLARE_DEFERRED(clear_base_power_on_attempts_deferred);
+
+static void check_and_reapply_base_power_deferred(void)
+{
+	if (base_get_detect_state() != BASE_ATTACHED)
+		return;
+
+	if (base_power_on_attempts < 3) {
+		CPRINTS("Reapply base power");
+		gpio_set_level(GPIO_BASE_PWR_EN, 1);
+		base_power_on_attempts++;
+
+		hook_call_deferred(&clear_base_power_on_attempts_deferred_data,
+				   SECOND);
+	}
+
+}
+DECLARE_DEFERRED(check_and_reapply_base_power_deferred);
+
+static void base_pwr_fault(enum gpio_signal s)
+{
+	/* Inverted because active low. */
+	int fault_detected = !gpio_get_level(GPIO_BASE_PWR_FLT_L);
+
+	if (fault_detected) {
+		/* Turn off base power. */
+		CPRINTS("Base Power Fault!");
+		gpio_set_level(GPIO_BASE_PWR_EN, 0);
+
+		/*
+		 * Try and apply power in a bit if maybe it was just a temporary
+		 * condition.
+		 */
+		hook_call_deferred(&check_and_reapply_base_power_deferred_data,
+				   15 * MSEC);
+	}
+}
+#endif /* defined(BOARD_MEOWTH) */
+
 #include "gpio_list.h"
 
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -119,6 +165,14 @@ const struct adc_t adc_channels[] = {
 
 	[ADC_TEMP_SENSOR_WIFI] = {
 		"WIFI", NPCX_ADC_CH8, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0
+	},
+
+	[ADC_BASE_ATTACH] = {
+		"BASE ATTACH", NPCX_ADC_CH9, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0
+	},
+
+	[ADC_BASE_DETACH] = {
+		"BASE DETACH", NPCX_ADC_CH4, ADC_MAX_VOLT, ADC_READ_MAX + 1, 0
 	},
 #endif /* defined(BOARD_ZOOMBINI) */
 };
