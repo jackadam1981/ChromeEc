@@ -1051,6 +1051,8 @@
 #define CONFIG_DEBUG_STACK_OVERFLOW
 
 /*****************************************************************************/
+/* Support detachable base detection. */
+#undef CONFIG_DETACHABLE_BASE_DETECTION
 
 /* Support events from devices attached to the EC */
 #undef CONFIG_DEVICE_EVENT

@@ -85,6 +85,10 @@ SECTIONS {
     *(.rodata.HOOK_BATTERY_SOC_CHANGE)
     __hooks_battery_soc_change_end = .;
 
+    __hooks_base_detect_change = .;
+    *(.rodata.HOOK_BASE_DETECT_CHANGE)
+    __hooks_base_detect_change_end = .;
+
     __hooks_tick = .;
     *(.rodata.HOOK_TICK)
     __hooks_tick_end = .;
