@@ -217,6 +217,8 @@ enum adc_channel {
 	ADC_TEMP_SENSOR_CHARGER,
 #ifdef BOARD_MEOWTH
 	ADC_TEMP_SENSOR_WIFI,
+	ADC_BASE_ATTACH,
+	ADC_BASE_DETACH,
 #endif /* defined(BOARD_MEOWTH) */
 	ADC_CH_COUNT
 };
@@ -256,6 +258,8 @@ enum sensor_id {
 
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ALS)
 
+
+void base_pwr_fault(enum gpio_signal s);
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 
