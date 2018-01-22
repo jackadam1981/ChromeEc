@@ -1857,6 +1857,18 @@
 #undef CONFIG_LED_POLICY_STD
 
 /*
+ * Support common RGB PWM-controlled LEDs that conform the the Chrome OS LED
+ * behaviour specification.
+ */
+#undef CONFIG_LED_RGB
+
+/*
+ * How many RGB LEDs does the system have that will be controlled by common LED
+ * policy?
+ */
+#undef CONFIG_LED_RGB_COUNT
+
+/*
  * LEDs for LED_POLICY STD may be inverted.  In this case they are active low
  * and the GPIO names will be GPIO_LED..._L.
  */
@@ -3256,6 +3268,11 @@
 #ifdef CONFIG_DEDICATED_RECOVERY_BUTTON
 #define CONFIG_BUTTON_TRIGGERED_RECOVERY
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
+
+
+#ifdef CONFIG_LED_RGB_COUNT
+#define CONFIG_LED_RGB
+#endif /* defined(CONFIG_RGB_LED) */
 
 /*****************************************************************************/
 /*
