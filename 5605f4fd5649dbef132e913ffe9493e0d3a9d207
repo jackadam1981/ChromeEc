@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e59cbd1f_e2ed03db",
+        "filename": "board/nami/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-01-22T09:05:02Z",
+      "side": 1,
+      "message": "Hi, Randallv and Jett, we are confused about which way we should use.\nAs my understanding, Jett preferred to use gpio_set_level, but Randall preferred to use enable_backlight() in board.c.\nWe wonder which way we should follow, or we can decide by ourselves?",
+      "parentUuid": "90445a50_dd698ce4",
+      "range": {
+        "startLine": 648,
+        "startChar": 1,
+        "endLine": 648,
+        "endChar": 44
+      },
+      "revId": "5605f4fd5649dbef132e913ffe9493e0d3a9d207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e8203d8_59fff20e",
         "filename": "board/nami/board.c",
         "patchSetId": 6
