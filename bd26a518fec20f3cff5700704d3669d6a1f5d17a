@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c94cf292_ecc3450f",
+        "filename": "board/zoombini/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2018-01-22T21:02:52Z",
+      "side": 1,
+      "message": "This file is also shared with meowth, so a bunch of stuff has to be inside #ifdef sections.",
+      "parentUuid": "0cf38bea_1d67884d",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 21
+      },
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d4f8e80_270db3ca",
         "filename": "board/zoombini/board.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4fdb8b5e_5bb2ed71",
+        "filename": "board/zoombini/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2018-01-22T21:02:52Z",
+      "side": 1,
+      "message": "Yes, it\u0027s there on line 1865.",
+      "parentUuid": "6d4f8e80_270db3ca",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24d7d9fe_f4d02cb5",
         "filename": "driver/led/lm3630a.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-01-22T17:50:02Z",
       "side": 1,
       "message": "IMO using this sort of type for a parameter is not a great idea. Does the compiler have to mask the value? If you use \u0027unsigned int\u0027 then it can just use a register.",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea2aed72_718fa413",
+        "filename": "driver/led/lm3630a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2018-01-22T21:02:52Z",
+      "side": 1,
+      "message": "i2c_write8 wants to put the value into a uint8_t later, so I used that here in the hopes that the compiler would warn about incorrect uses.  Is the compiler not able to pass a uint8 in a register?  Since these are inlined, does it actually matter other than fixing the allowed range?",
+      "parentUuid": "24d7d9fe_f4d02cb5",
       "range": {
         "startLine": 14,
         "startChar": 25,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "44871395_cdbb656e",
+        "filename": "driver/led/lm3630a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2018-01-22T21:02:52Z",
+      "side": 1,
+      "message": "That seems to be the convention for these helper functions in other drivers.  It makes a difference of 0 bytes in the output object (perhaps the compiler is inlining without the keyword anyway, since they\u0027re so simple and the uses are all in the same file?).  I did update to mark them as static, since they\u0027re not supposed to be exported.",
+      "parentUuid": "d05bdfd0_490a914e",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a88afac7_098e0063",
         "filename": "driver/led/lm3630a.c",
         "patchSetId": 1
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "a992ce4d_e79d437f",
+        "filename": "driver/led/lm3630a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2018-01-22T21:02:52Z",
+      "side": 1,
+      "message": "Enabling resets this back to 0, so it has to happen after setting the control register.",
+      "parentUuid": "a88afac7_098e0063",
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "089f5dd5_04baab39",
         "filename": "driver/led/lm3630a.h",
         "patchSetId": 1
@@ -125,6 +239,24 @@
       "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02609565_b980a7a6",
+        "filename": "driver/led/lm3630a.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2018-01-22T21:02:52Z",
+      "side": 1,
+      "message": "As far as I can see, EC code typically uses #define for register numbers.  There are a few enums, but none of them seem to be used for this type of thing.",
+      "parentUuid": "089f5dd5_04baab39",
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
