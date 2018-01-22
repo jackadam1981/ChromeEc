@@ -1844,6 +1844,9 @@
  */
 #undef CONFIG_LED_POLICY_STD
 
+#undef CONFIG_RGB_LED
+#undef CONFIG_RGB_LED_COUNT
+
 /*
  * LEDs for LED_POLICY STD may be inverted.  In this case they are active low
  * and the GPIO names will be GPIO_LED..._L.
@@ -3234,6 +3237,11 @@
 #ifdef CONFIG_DEDICATED_RECOVERY_BUTTON
 #define CONFIG_BUTTON_TRIGGERED_RECOVERY
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
+
+
+#ifdef CONFIG_RGB_LED_COUNT
+#define CONFIG_RGB_LED
+#endif /* defined(CONFIG_RGB_LED) */
 
 /*****************************************************************************/
 /*
