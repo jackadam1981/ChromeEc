@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "8c4c003f_a6423647",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-22T14:01:56Z",
+      "side": 0,
+      "message": "because we are handling DMA interrupt by ourselves. DMA functions will clear interrupt flags before calling our callback functions.  So dma_wait at here will not work.",
+      "parentUuid": "cd6b4a74_b90f00c1",
+      "revId": "b5bba2df0376583f63b85078afe7d1fcece21d47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5e71308_f1f4e875",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 3

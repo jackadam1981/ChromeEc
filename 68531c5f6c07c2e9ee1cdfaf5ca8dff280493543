@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c9961a4e_aae89e81",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-22T14:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "994e437a_67100ddf",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d331a8c_4ac0c20b",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd7dac98_24210ad5",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-22T14:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d331a8c_4ac0c20b",
+      "range": {
+        "startLine": 110,
+        "startChar": 18,
+        "endLine": 110,
+        "endChar": 32
+      },
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -99,6 +141,30 @@
     },
     {
       "key": {
+        "uuid": "9900db10_59458580",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-22T14:01:56Z",
+      "side": 1,
+      "message": "It turns out these bits are not required.",
+      "parentUuid": "620691e1_5af38d80",
+      "range": {
+        "startLine": 146,
+        "startChar": 53,
+        "endLine": 147,
+        "endChar": 35
+      },
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa11a861_be5d8dd3",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 3
@@ -116,6 +182,24 @@
     },
     {
       "key": {
+        "uuid": "f61ac1d2_d16c546d",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-22T14:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa11a861_be5d8dd3",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49aa68f9_5619a01b",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 3
@@ -127,6 +211,30 @@
       "writtenOn": "2018-01-19T06:43:27Z",
       "side": 1,
       "message": "That\u0027s a interrupt routine, right? A tight while loop isn\u0027t a great idea there...",
+      "range": {
+        "startLine": 223,
+        "startChar": 1,
+        "endLine": 223,
+        "endChar": 29
+      },
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bade37b_2d77a473",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-22T14:01:56Z",
+      "side": 1,
+      "message": "Done\n\nyeah... this cause the system to crash..",
+      "parentUuid": "49aa68f9_5619a01b",
       "range": {
         "startLine": 223,
         "startChar": 1,
@@ -162,6 +270,30 @@
     },
     {
       "key": {
+        "uuid": "a6ffda82_f8183cca",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-22T14:01:56Z",
+      "side": 1,
+      "message": "this will read from RX FIFO",
+      "parentUuid": "1df0e7a9_dd29391b",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 224,
+        "endChar": 27
+      },
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f348b83_d79b13c7",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 3
@@ -176,6 +308,24 @@
       "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dff59c5_494ab8cc",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-22T14:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f348b83_d79b13c7",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +346,24 @@
     },
     {
       "key": {
+        "uuid": "ec1d0a57_56462024",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-22T14:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76e4220f_bf71e479",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d4524f3_10babad7",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 3
@@ -210,6 +378,24 @@
       "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1872de2f_6a6ff9e0",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-22T14:01:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4524f3_10babad7",
+      "revId": "68531c5f6c07c2e9ee1cdfaf5ca8dff280493543",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
