@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cf38bea_1d67884d",
+        "filename": "board/zoombini/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-22T17:50:02Z",
+      "side": 1,
+      "message": "IMO yhis is confusing, as this is zoombini/board.h! But I see this is the pattern in this file.",
+      "range": {
+        "startLine": 37,
+        "startChar": 7,
+        "endLine": 37,
+        "endChar": 21
+      },
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d4f8e80_270db3ca",
+        "filename": "board/zoombini/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-22T17:50:02Z",
+      "side": 1,
+      "message": "Does this need to go in config.h?",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 33
+      },
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d7d9fe_f4d02cb5",
+        "filename": "driver/led/lm3630a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-22T17:50:02Z",
+      "side": 1,
+      "message": "IMO using this sort of type for a parameter is not a great idea. Does the compiler have to mask the value? If you use \u0027unsigned int\u0027 then it can just use a register.",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d05bdfd0_490a914e",
+        "filename": "driver/led/lm3630a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-22T17:50:02Z",
+      "side": 1,
+      "message": "Why make these inline? How does it affect code size?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a88afac7_098e0063",
+        "filename": "driver/led/lm3630a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-22T17:50:02Z",
+      "side": 1,
+      "message": "Should this come before the enable? I suppose it doesn\u0027t really matter, but it might be nicer to finish init before turning it on.",
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "089f5dd5_04baab39",
+        "filename": "driver/led/lm3630a.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-22T17:50:02Z",
+      "side": 1,
+      "message": "Would this be better as an enum? Or is #define normally used in the EC?",
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
