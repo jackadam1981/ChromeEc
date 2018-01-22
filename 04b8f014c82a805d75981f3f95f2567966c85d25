@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da2364c8_e7739cd0",
+        "filename": "board/grunt/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-22T21:54:27Z",
+      "side": 1,
+      "message": "Attempted to improve wording of comment to be less confusing",
+      "parentUuid": "ffbebb55_2e717c0d",
+      "revId": "04b8f014c82a805d75981f3f95f2567966c85d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8b1f9ab_a7b0169b",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 1
@@ -78,6 +96,30 @@
       "side": 1,
       "message": "Do you think that a board would use this config in another way that didn\u0027t expect the ec to die here? If no, I think the comment would be good in both locations.",
       "parentUuid": "6bab32ff_3dde7e0b",
+      "range": {
+        "startLine": 360,
+        "startChar": 2,
+        "endLine": 360,
+        "endChar": 8
+      },
+      "revId": "04b8f014c82a805d75981f3f95f2567966c85d25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5989f07_86283c89",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-22T21:54:27Z",
+      "side": 1,
+      "message": "Added two more copies of the comment, here and in config.h",
+      "parentUuid": "178d4fbc_9d60b1f4",
       "range": {
         "startLine": 360,
         "startChar": 2,
