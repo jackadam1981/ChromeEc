@@ -19,12 +19,21 @@ static uint32_t led_auto_control_flags = ~0x00;
 static int led_is_supported(enum ec_led_id led_id)
 {
 	int i;
+	int j;
+	static int supported_leds = -1;
 
-	for (i = 0; i < supported_led_ids_count; i++)
-		if (led_id == supported_led_ids[i])
-			return 1;
+	if (supported_leds == -1) {
+		supported_leds = 0;
 
-	return 0;
+		for (i = 0; i < supported_led_ids_count; i++)
+			for (j = 0; j < EC_LED_ID_COUNT; j++)
+				if (j == supported_led_ids[i]) {
+					supported_leds |= (1 << j);
+					break;
+				}
+	}
+
+	return !!((1 << (int)led_id) & supported_leds);
 }
 
 void led_auto_control(enum ec_led_id led_id, int enable)
@@ -37,6 +46,9 @@ void led_auto_control(enum ec_led_id led_id, int enable)
 
 int led_auto_control_is_enabled(enum ec_led_id led_id)
 {
+	if (!led_is_supported(led_id))
+		return 0;
+
 	return (led_auto_control_flags & LED_AUTO_CONTROL_FLAG(led_id)) != 0;
 }
 
