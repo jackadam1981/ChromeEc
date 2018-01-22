@@ -780,6 +780,7 @@
 #define CONFIG_CMD_INA
 #undef  CONFIG_CMD_JUMPTAGS
 #define CONFIG_CMD_KEYBOARD
+#define CONFIG_CMD_LEDTEST
 #undef  CONFIG_CMD_LID_ANGLE
 #undef  CONFIG_CMD_MCDP
 #define CONFIG_CMD_MD
@@ -1866,6 +1867,29 @@
  * bicolor led for charging and one power led
  */
 #undef CONFIG_LED_POLICY_STD
+
+/*
+ * Support common RGB PWM-controlled LEDs that conform to the Chrome OS LED
+ * behaviour specification.
+ */
+#undef CONFIG_LED_RGB
+
+/*
+ * Here are some recommended color settings by default, but a board can change
+ * the colors to one of "enum ec_led_colors" as they see fit.
+ */
+#define CONFIG_LED_RGB_CHARGE_COLOR EC_LED_COLOR_AMBER
+#define CONFIG_LED_RGB_NEAR_FULL_COLOR EC_LED_COLOR_GREEN
+#define CONFIG_LED_RGB_CHARGE_ERROR_COLOR EC_LED_COLOR_RED
+#define CONFIG_LED_RGB_SOC_ON_COLOR EC_LED_COLOR_GREEN
+#define CONFIG_LED_RGB_SOC_SUSPEND_COLOR EC_LED_COLOR_GREEN
+#define CONFIG_LED_RGB_LOW_BATT_COLOR EC_LED_COLOR_AMBER
+
+/*
+ * How many RGB LEDs does the system have that will be controlled by the common
+ * RGB LED policy?
+ */
+#undef CONFIG_LED_RGB_COUNT
 
 /*
  * LEDs for LED_POLICY STD may be inverted.  In this case they are active low
@@ -3266,6 +3290,11 @@
 #ifdef CONFIG_DEDICATED_RECOVERY_BUTTON
 #define CONFIG_BUTTON_TRIGGERED_RECOVERY
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
+
+
+#ifdef CONFIG_LED_RGB_COUNT
+#define CONFIG_LED_RGB
+#endif /* defined(CONFIG_RGB_LED) */
 
 /*****************************************************************************/
 /*
