@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb3fd6f3_2cb95262",
+        "filename": "board/nami/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-22T22:08:31Z",
+      "side": 1,
+      "message": "Can you add comments describing where these sensors are located?",
+      "range": {
+        "startLine": 252,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 61
+      },
+      "revId": "a5a0abbcba582ca694881496dbcd8fe79eee85c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "528fa0c0_531ea162",
+        "filename": "board/nami/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-22T22:08:31Z",
+      "side": 1,
+      "message": "nit: Can you make it consistent (capital v.s. lower-case)? \u0027Local\u0027 and \u0027Remote\u0027 will save us some bytes.",
+      "range": {
+        "startLine": 254,
+        "startChar": 10,
+        "endLine": 254,
+        "endChar": 19
+      },
+      "revId": "a5a0abbcba582ca694881496dbcd8fe79eee85c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbaaba6f_3b1c93b7",
+        "filename": "driver/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-22T22:08:31Z",
+      "side": 1,
+      "message": "I think our file names use only lower case.",
+      "range": {
+        "startLine": 86,
+        "startChar": 49,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "a5a0abbcba582ca694881496dbcd8fe79eee85c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fda7fcc_edbebe8a",
+        "filename": "driver/temp_sensor/F75303.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-22T22:08:31Z",
+      "side": 1,
+      "message": "Please fix.",
+      "range": {
+        "startLine": 31,
+        "startChar": 21,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "a5a0abbcba582ca694881496dbcd8fe79eee85c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
