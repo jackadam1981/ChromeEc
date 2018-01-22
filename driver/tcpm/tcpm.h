@@ -13,6 +13,9 @@
 #include "gpio.h"
 #include "i2c.h"
 #include "usb_pd_tcpm.h"
+#ifdef CONFIG_USBC_PPC
+#include "usbc_ppc.h"
+#endif /* defined(CONFIG_USBC_PPC) */
 
 #if defined(CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE) && \
 	!defined(CONFIG_USB_PD_DUAL_ROLE)
@@ -112,12 +115,31 @@ static inline int tcpm_set_cc(int port, int pull)
 
 static inline int tcpm_set_polarity(int port, int polarity)
 {
-	return tcpc_config[port].drv->set_polarity(port, polarity);
+	int rv = tcpc_config[port].drv->set_polarity(port, polarity);
+
+	if (rv)
+		return rv;
+
+#ifdef CONFIG_USBC_PPC
+	return ppc_set_polarity(port, polarity);
+#endif /* defined(CONFIG_USBC_PPC) */
+
+	return EC_SUCCESS;
 }
 
 static inline int tcpm_set_vconn(int port, int enable)
 {
-	return tcpc_config[port].drv->set_vconn(port, enable);
+	int rv;
+
+	rv = tcpc_config[port].drv->set_vconn(port, enable);
+	if (rv)
+		return rv;
+
+#ifdef CONFIG_USBC_PPC
+	return ppc_set_vconn(port, enable);
+#endif /* defined(CONFIG_USBC_PPC) */
+
+	return EC_SUCCESS;
 }
 
 static inline int tcpm_set_msg_header(int port, int power_role, int data_role)

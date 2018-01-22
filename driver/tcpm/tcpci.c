@@ -6,6 +6,7 @@
 /* Type-C port manager */
 
 #include "anx74xx.h"
+#include "console.h"
 #include "ec_commands.h"
 #include "ps8xxx.h"
 #include "task.h"
