@@ -303,7 +303,7 @@ static void update_prescaler(void)
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, update_prescaler, HOOK_PRIO_DEFAULT);
 
-int __hw_clock_source_init(uint32_t start_t)
+void __hw_early_init_hwtimer(void)
 {
 	/*
 	 * 1. Use ITIM16-1 as internal time reading
@@ -321,6 +321,12 @@ int __hw_clock_source_init(uint32_t start_t)
 	/* Set initial prescaler */
 	update_prescaler();
 
+	hw_clock_source_set_preload(0, 1);
+}
+
+/* Note that early_init_hwtimer() has already executed by this point */
+int __hw_clock_source_init(uint32_t start_t)
+{
 	/*
 	 * Override the count with the start value now that counting has
 	 * started.

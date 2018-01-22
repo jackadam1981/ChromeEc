@@ -35,4 +35,7 @@ uint32_t __hw_clock_get_sleep_time(uint16_t pre_evt_cnt);
 /* Handle ITIM32 overflow if interrupt is disabled */
 void __hw_clock_handle_overflow(uint32_t clksrc_high);
 
+/* Set up the timer for use before the task system is available */
+void __hw_early_init_hwtimer(void);
+
 #endif /* __CROS_EC_HWTIMER_CHIP_H */

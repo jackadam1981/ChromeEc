@@ -22,6 +22,7 @@
 #include "lpc_chip.h"
 #include "ec_commands.h"
 #include "host_command.h"
+#include "hwtimer_chip.h"
 
 #if !(DEBUG_GPIO)
 #define CPUTS(...)
@@ -401,6 +402,21 @@ void gpio_pre_init(void)
 
 	system_check_bbram_on_reset();
 	is_warm = system_is_reboot_warm();
+
+	/* Set up the timer in case we want to use msleep() */
+	__hw_early_init_hwtimer();
+#ifdef CONFIG_GPIO_INIT_POWER_ON_DELAY_MS
+	/*
+	 * On power-on of some boards, H1 releases the EC from reset but then
+	 * quickly asserts and releases the reset a second time. This means the
+	 * EC sees 2 resets: (1) power-on reset, (2) reset-pin reset. If we add
+	 * a delay between reset (1) and configuring GPIO output levels, then
+	 * reset (2) will happen before the end of the delay so we avoid extra
+	 * output toggles.
+	 */
+	if (system_get_reset_flags() & RESET_FLAG_POWER_ON)
+		msleep(CONFIG_GPIO_INIT_POWER_ON_DELAY_MS);
+#endif
 
 #ifdef CHIP_FAMILY_NPCX7
 	/*
