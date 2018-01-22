@@ -356,7 +356,10 @@ static inline void set_state(int port, enum pd_states next_state)
 #endif
 #ifdef CONFIG_USBC_VCONN
 		tcpm_set_vconn(port, 0);
-#endif
+#ifdef CONFIG_USBC_PPC
+		ppc_set_vconn(port, 0);
+#endif /* defined(CONFIG_USBC_PPC) */
+#endif /*defined(CONFIG_USBC_VCONN) */
 #else /* CONFIG_USB_PD_DUAL_ROLE */
 	if (next_state == PD_STATE_SRC_DISCONNECTED) {
 #endif
@@ -2181,6 +2184,9 @@ void pd_task(void *u)
 			     (PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE &&
 			     pd[port].task_state == PD_STATE_SRC_READY))) {
 				tcpm_set_polarity(port, pd[port].polarity);
+#ifdef CONFIG_USBC_PPC
+				ppc_set_polarity(port, pd[port].polarity);
+#endif /* defined(CONFIG_USB_PPC) */
 				tcpm_set_msg_header(port, pd[port].power_role,
 						    pd[port].data_role);
 				tcpm_set_rx_enable(port, 1);
@@ -2312,6 +2318,9 @@ void pd_task(void *u)
 			    new_cc_state == PD_CC_DEBUG_ACC) {
 				pd[port].polarity = (cc1 != TYPEC_CC_VOLT_RD);
 				tcpm_set_polarity(port, pd[port].polarity);
+#ifdef CONFIG_USBC_PPC
+				ppc_set_polarity(port, pd[port].polarity);
+#endif /* defined(CONFIG_USBC_PPC) */
 
 				/* initial data role for source is DFP */
 				pd_set_data_role(port, PD_ROLE_DFP);
@@ -2337,6 +2346,9 @@ void pd_task(void *u)
 
 #ifdef CONFIG_USBC_VCONN
 				tcpm_set_vconn(port, 1);
+#ifdef CONFIG_USBC_PPC
+				ppc_set_vconn(port, 1);
+#endif /* defined(CONFIG_USBC_PPC) */
 				pd[port].flags |= PD_FLAGS_VCONN_ON;
 #endif
 
@@ -2795,6 +2807,9 @@ void pd_task(void *u)
 			/* We are attached */
 			pd[port].polarity = get_snk_polarity(cc1, cc2);
 			tcpm_set_polarity(port, pd[port].polarity);
+#ifdef CONFIG_USBC_PPC
+			ppc_set_polarity(port, pd[port].polarity);
+#endif /* defined(CONFIG_USBC_PPC) */
 			/* reset message ID  on connection */
 			pd[port].msg_id = 0;
 			/* initial data role for sink is UFP */
@@ -3129,6 +3144,9 @@ void pd_task(void *u)
 				if (!(pd[port].flags & PD_FLAGS_VCONN_ON)) {
 					/* Turn VCONN on and wait for it */
 					tcpm_set_vconn(port, 1);
+#ifdef CONFIG_USBC_PPC
+					ppc_set_vconn(port, 1);
+#endif /* defined(CONFIG_USBC_PPC) */
 					set_state_timeout(port,
 					  get_time().val + PD_VCONN_SWAP_DELAY,
 					  PD_STATE_VCONN_SWAP_READY);
@@ -3161,6 +3179,9 @@ void pd_task(void *u)
 				} else {
 					/* Turn VCONN off and wait for it */
 					tcpm_set_vconn(port, 0);
+#ifdef CONFIG_USBC_PPC
+					ppc_set_vconn(port, 0);
+#endif /* defined(CONFIG_USBC_PPC) */
 					pd[port].flags &= ~PD_FLAGS_VCONN_ON;
 					set_state_timeout(port,
 					  get_time().val + PD_VCONN_SWAP_DELAY,
