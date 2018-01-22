@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "032506c2_0f7a1987",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-22T17:43:06Z",
+      "side": 1,
+      "message": "should we also define this GPIO in board/grunt/gpio.inc",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 46
+      },
+      "revId": "7a4c7f58cf7a0645df0a0d1744aa5cf14800170b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
