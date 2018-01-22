@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4eca1505_14165406",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T09:33:00Z",
+      "side": 1,
+      "message": "a random note: this is a somewhat high resistance vs all the dirt which might end up in the connector, how confident the EEs are that the value will remain stable over time ?",
+      "range": {
+        "startLine": 37,
+        "startChar": 11,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f205fa7_1fc3ae1c",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T09:33:00Z",
+      "side": 1,
+      "message": "this is barely more than the 5% tolerance on components ?\ndo we need such a precise range ? are those resistors 1% ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed65d546_26eba4ce",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T09:33:00Z",
+      "side": 1,
+      "message": "you are not re-scheduling a deferred_call for later ?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85aedbe5_22bf2591",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T09:33:00Z",
+      "side": 1,
+      "message": "if our status is already disconnect, we print  Disconnected again ?",
+      "range": {
+        "startLine": 160,
+        "startChar": 3,
+        "endLine": 160,
+        "endChar": 28
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf7077ba_711d933f",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T09:33:00Z",
+      "side": 1,
+      "message": "if we are in the connect range then ... we are disconnected ?\nEither the naming is strange or my brain is blurry this morning",
+      "range": {
+        "startLine": 174,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 41
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d387a4b_16ded931",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T09:33:00Z",
+      "side": 1,
+      "message": "what is this used for ?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 0
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
