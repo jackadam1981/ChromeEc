@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "8d3ba342_a551a720",
+        "filename": "driver/led/lm3630a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-22T21:14:50Z",
+      "side": 1,
+      "message": "The compiler can only use the machine registers, which in this case are 32-bit. So the only way it can enforce this is to mask off the top 24 bits.\n\nSo long as this does not actually do this, and affect code size (as you say below), I don\u0027t think it matters.",
+      "parentUuid": "ea2aed72_718fa413",
+      "range": {
+        "startLine": 14,
+        "startChar": 25,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d05bdfd0_490a914e",
         "filename": "driver/led/lm3630a.c",
         "patchSetId": 1
@@ -222,6 +246,24 @@
       "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea2f0225_6aa58c71",
+        "filename": "driver/led/lm3630a.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2018-01-22T21:14:50Z",
+      "side": 1,
+      "message": "Worth a comment?",
+      "parentUuid": "a992ce4d_e79d437f",
+      "revId": "bd26a518fec20f3cff5700704d3669d6a1f5d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
