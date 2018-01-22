@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "aabb1cb8_9578d615",
+        "filename": "board/nami/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-22T14:45:01Z",
+      "side": 1,
+      "message": "You can do either option.",
+      "parentUuid": "e59cbd1f_e2ed03db",
+      "range": {
+        "startLine": 648,
+        "startChar": 1,
+        "endLine": 648,
+        "endChar": 44
+      },
+      "revId": "5605f4fd5649dbef132e913ffe9493e0d3a9d207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e8203d8_59fff20e",
         "filename": "board/nami/board.c",
         "patchSetId": 6
