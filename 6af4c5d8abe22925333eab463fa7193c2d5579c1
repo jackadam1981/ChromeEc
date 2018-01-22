@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e7a93ae8_4dc04875",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4678,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T13:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "646da64c_1d1acfa3",
+      "range": {
+        "startLine": 4677,
+        "startChar": 0,
+        "endLine": 4678,
+        "endChar": 37
+      },
+      "revId": "6af4c5d8abe22925333eab463fa7193c2d5579c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b193a90_f19d1314",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-21T19:05:08Z",
       "side": 1,
       "message": "to-be-added in upcoming private change, right?",
+      "range": {
+        "startLine": 4728,
+        "startChar": 10,
+        "endLine": 4728,
+        "endChar": 16
+      },
+      "revId": "6af4c5d8abe22925333eab463fa7193c2d5579c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdb8db0d_822fcb1c",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4728,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T13:43:12Z",
+      "side": 1,
+      "message": "Yes the value is set by the private sensor driver,\nbut the 2 changes need to go in together as per CQ-DEPEND\u003dCL:*546799",
+      "parentUuid": "0b193a90_f19d1314",
       "range": {
         "startLine": 4728,
         "startChar": 10,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "751f72a8_94dd5c56",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T13:43:12Z",
+      "side": 1,
+      "message": "Sure, it depends if we want to reflect the intent (I\u0027m really computing the average, I don\u0027t care about the sum) or the actual content.\nUpdated.",
+      "parentUuid": "160f500a_12e61634",
+      "range": {
+        "startLine": 1143,
+        "startChar": 15,
+        "endLine": 1143,
+        "endChar": 21
+      },
+      "revId": "6af4c5d8abe22925333eab463fa7193c2d5579c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41a5482a_b0cc7985",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "a510c680_826875d8",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T13:43:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a5482a_b0cc7985",
+      "range": {
+        "startLine": 1162,
+        "startChar": 2,
+        "endLine": 1173,
+        "endChar": 4
+      },
+      "revId": "6af4c5d8abe22925333eab463fa7193c2d5579c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "816f8811_e979f901",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2018-01-21T19:05:08Z",
       "side": 1,
       "message": "I derived this and it looks correct, but how about mentioning the formula you\u0027re using here? variance \u003d sum(X^2) / N - u^2.\n\nAlso you can improve precision by changing \"lo_avg / cnt * lo_avg / cnt\" to \"lo_avg * lo_avg / cnt / cnt\".",
+      "range": {
+        "startLine": 1179,
+        "startChar": 0,
+        "endLine": 1180,
+        "endChar": 55
+      },
+      "revId": "6af4c5d8abe22925333eab463fa7193c2d5579c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e659e303_d8e937b3",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-22T13:43:12Z",
+      "side": 1,
+      "message": "Added some content.\n\nFor the precision, there was a risk of overflow on 32-bit platform, but I force it to int64_t now and updated it",
+      "parentUuid": "816f8811_e979f901",
       "range": {
         "startLine": 1179,
         "startChar": 0,
