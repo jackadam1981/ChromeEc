@@ -1631,6 +1631,17 @@
 
 #undef CONFIG_GESTURE_SIGMO_EVENT
 
+/*
+ * Delay between power on and configuring GPIOs.
+ * On power-on of some boards, H1 releases the EC from reset but then
+ * quickly asserts and releases the reset a second time. This means the
+ * EC sees 2 resets: (1) power-on reset, (2) reset-pin reset. If we add
+ * a delay between reset (1) and configuring GPIO output levels, then
+ * reset (2) will happen before the end of the delay so we avoid extra
+ * output toggles.
+ */
+#undef CONFIG_GPIO_INIT_POWER_ON_DELAY_MS
+
 /* Do we want to detect the lid angle? */
 #undef CONFIG_LID_ANGLE
 
