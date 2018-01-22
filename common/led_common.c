@@ -37,6 +37,9 @@ void led_auto_control(enum ec_led_id led_id, int enable)
 
 int led_auto_control_is_enabled(enum ec_led_id led_id)
 {
+	if (!led_is_supported(led_id))
+		return 0;
+
 	return (led_auto_control_flags & LED_AUTO_CONTROL_FLAG(led_id)) != 0;
 }
 
