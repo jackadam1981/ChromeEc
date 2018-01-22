@@ -1445,6 +1445,9 @@
 
 #undef CONFIG_GESTURE_SIGMO_EVENT
 
+/* Delay between power on and configuring GPIOs */
+#undef CONFIG_GPIO_INIT_POWER_ON_DELAY_MS
+
 /* Do we want to detect the lid angle? */
 #undef CONFIG_LID_ANGLE
 

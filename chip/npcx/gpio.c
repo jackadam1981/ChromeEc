@@ -355,6 +355,11 @@ void gpio_pre_init(void)
 	system_check_bbram_on_reset();
 	is_warm = system_is_reboot_warm();
 
+#ifdef CONFIG_GPIO_INIT_POWER_ON_DELAY_MS
+	if (system_get_reset_flags() & RESET_FLAG_POWER_ON)
+		msleep(CONFIG_GPIO_INIT_POWER_ON_DELAY_MS);
+#endif
+
 #ifdef CHIP_FAMILY_NPCX7
 	/*
 	 * TODO: Set bit 7 of DEVCNT again for npcx7 series. Please see Errata

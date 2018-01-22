@@ -37,6 +37,12 @@
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VOLUME_BUTTONS
 
+/*
+ * H1 will reset us again soon after power on. Wait for this reset-pin reset
+ * before configuring GPIO output levels to avoid extra output toggles.
+ */
+#define CONFIG_GPIO_INIT_POWER_ON_DELAY_MS 100
+
 #define CONFIG_BATTERY_CUT_OFF
 #define CONFIG_BATTERY_PRESENT_GPIO GPIO_EC_BATT_PRES_ODL
 #define CONFIG_BATTERY_SMART
