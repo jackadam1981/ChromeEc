@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65d7b50a_4b6ce824",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-22T17:29:10Z",
+      "side": 1,
+      "message": "Probably it makes sense to assert this when sequencing up to S3, and deassert when sequencing down to S5 (HOOK_CHIPSET_STARTUP / HOOK_CHIPSET_SHUTDOWN).",
+      "range": {
+        "startLine": 96,
+        "startChar": 32,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "f44cabb11aa335e92a08f6701640a7a79dd65619",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
