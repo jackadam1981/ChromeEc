@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d10dff49_b1234767",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-22T21:06:00Z",
+      "side": 1,
+      "message": "This priority happens (much?) later than start of the PD task, right?",
+      "range": {
+        "startLine": 316,
+        "startChar": 41,
+        "endLine": 316,
+        "endChar": 61
+      },
+      "revId": "728a9ad47e27c96823d2ebfae72d6da73acc7958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
