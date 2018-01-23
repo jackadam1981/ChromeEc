@@ -53,6 +53,8 @@
 #include "usb_pd_tcpm.h"
 #include "util.h"
 #include "espi.h"
+#include "fan.h"
+#include "fan_chip.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -152,6 +154,28 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
+/******************************************************************************/
+/* Physical fans. These are logically separate from pwm_channels. */
+const struct fan_t fans[] = {
+	[FAN_CH_0] = {
+		.flags = FAN_USE_RPM_MODE,
+		.rpm_min = 2800,
+		.rpm_start = 2800,
+		.rpm_max = 5600,
+		.ch = MFT_CH_0,	/* Use MFT id to control fan */
+		.pgood_gpio = -1,
+		.enable_gpio = -1,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
+
+/******************************************************************************/
+/* MFT channels. These are logically separate from pwm_channels. */
+const struct mft_t mft_channels[] = {
+	[MFT_CH_0] = {NPCX_MFT_MODULE_2, TCKC_LFCLK, PWM_CH_FAN},
+};
+BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
+
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
 	{"tcpc0",     NPCX_I2C_PORT0_0, 400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
@@ -163,6 +187,22 @@ const struct i2c_port_t i2c_ports[]  = {
 	/* dnojiri: Add KB backlight, ALS, G-sensor, Thermal sensor, BC1.2 Detectors. */
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/*
+ * Thermal limits for each temp sensor.  All temps are in degrees K.  Must be in
+ * same order as enum temp_sensor_id.  To always ignore any temp, use 0.
+ */
+struct ec_thermal_config thermal_params[] = {
+	/* {Twarn, Thigh, Thalt}, <on>
+	 * {Twarn, Thigh, X    }, <off>
+	 * fan_off, fan_max
+	 */
+	{{0, C_TO_K(87), C_TO_K(89)}, {0, C_TO_K(86), 0},
+		C_TO_K(44), C_TO_K(81)},/* TMP432_Internal */
+	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP432_Sensor_1 */
+	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP432_Sensor_2 */
+};
+BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
@@ -698,6 +738,65 @@ void lid_angle_peripheral_enable(int enable)
 }
 #endif
 
+struct fan_step {
+	int on;
+	int off;
+	int rpm;
+};
+
+/* Do not make the fan on/off point equal to 0 or 100 */
+const struct fan_step fan_table[] = {
+	{.off = 2, .rpm = 0},
+	{.on = 16, .off =  2, .rpm = 2800},
+	{.on = 27, .off = 18, .rpm = 3200},
+	{.on = 35, .off = 29, .rpm = 3400},
+	{.on = 43, .off = 37, .rpm = 4200},
+	{.on = 54, .off = 45, .rpm = 4800},
+	{.on = 64, .off = 56, .rpm = 5200},
+	{.on = 97, .off = 83, .rpm = 5600},
+};
+#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table)
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	static int current_level;
+	static int previous_pct;
+	int i;
+
+	/*
+	 * Compare the pct and previous pct, we have the three paths :
+	 *  1. decreasing path. (check the off point)
+	 *  2. increasing path. (check the on point)
+	 *  3. invariant path. (return the current RPM)
+	 */
+	if (pct < previous_pct) {
+		for (i = current_level; i >= 0; i--) {
+			if (pct <= fan_table[i].off)
+				current_level = i - 1;
+			else
+				break;
+		}
+	} else if (pct > previous_pct) {
+		for (i = current_level + 1; i < NUM_FAN_LEVELS; i++) {
+			if (pct >= fan_table[i].on)
+				current_level = i;
+			else
+				break;
+		}
+	}
+
+	if (current_level < 0)
+		current_level = 0;
+
+	previous_pct = pct;
+
+	if (fan_table[current_level].rpm !=
+		fan_get_rpm_target(fans[fan].ch))
+		cprintf(CC_THERMAL, "[%T Setting fan RPM to %d]\n",
+			fan_table[current_level].rpm);
+
+	return fan_table[current_level].rpm;
+}
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {

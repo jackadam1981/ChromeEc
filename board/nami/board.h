@@ -49,6 +49,10 @@
 #define CONFIG_WIRELESS_SUSPEND \
 	(EC_WIRELESS_SWITCH_WLAN | EC_WIRELESS_SWITCH_WLAN_POWER)
 #define WIRELESS_GPIO_WLAN_POWER GPIO_PP3300_DX_WLAN
+#define CONFIG_FANS 1
+#define CONFIG_FAN_RPM_CUSTOM
+#define CONFIG_THROTTLE_AP
+#define CONFIG_CHIPSET_CAN_THROTTLE
 
 /* EC console commands */
 #define CONFIG_CMD_ACCELS
@@ -234,6 +238,18 @@ enum pwm_channel {
 	PWM_CH_FAN,
 	/* Number of PWM channels */
 	PWM_CH_COUNT
+};
+
+enum fan_channel {
+	FAN_CH_0,
+	/* Number of FAN channels */
+	FAN_CH_COUNT
+};
+
+enum mft_channel {
+	MFT_CH_0,
+	/* Number of MFT channels */
+	MFT_CH_COUNT
 };
 
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */
