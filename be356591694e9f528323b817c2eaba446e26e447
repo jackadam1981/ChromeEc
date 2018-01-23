@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9eb50d44_55e5a8ec",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-23T03:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25c91a67_1598f22b",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9803326d_ab9ca408",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-23T00:11:26Z",
       "side": 1,
       "message": "Yes but prepare_stream (called from dma_prepare_tx/dma_start_rx) does it. Why is it needed here?",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b3ea40_367d9696",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-23T03:12:44Z",
+      "side": 1,
+      "message": "ah.. let\u0027s update `chip/stm32/dma.c`.\n(prepare_stream is only defined and used in `dma-stm32f4.c`)",
+      "parentUuid": "9803326d_ab9ca408",
       "revId": "be356591694e9f528323b817c2eaba446e26e447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "be356591694e9f528323b817c2eaba446e26e447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e69f7ec_51ae2315",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-23T03:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39e5b6d3_9a428aa2",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -102,6 +156,24 @@
       "revId": "be356591694e9f528323b817c2eaba446e26e447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff3a0660_55c63163",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-23T03:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "211110e6_311ba95d",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
