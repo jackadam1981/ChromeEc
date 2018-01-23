@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "7a776356_e269f22b",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T02:06:09Z",
+      "side": 1,
+      "message": "No, got confused, this is ok. (dma_start, setup regs, then dma_wait).",
+      "parentUuid": "20b131b2_82e28101",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "211110e6_311ba95d",
         "filename": "chip/stm32/spi_master.c",
         "patchSetId": 9
@@ -98,6 +116,24 @@
       "writtenOn": "2018-01-23T00:11:26Z",
       "side": 1,
       "message": "ditto: Shouldn\u0027t spi-\u003ecr1 be setup before this?",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c20456_a14527aa",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T02:06:09Z",
+      "side": 1,
+      "message": "Same, got confused.",
+      "parentUuid": "b3c472c2_9d67c301",
       "revId": "be356591694e9f528323b817c2eaba446e26e447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
