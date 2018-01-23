@@ -67,8 +67,10 @@ driver-$(CONFIG_INA219)$(CONFIG_INA231)+=ina2xx.o
 
 # LED drivers
 driver-$(CONFIG_LED_DRIVER_DS2413)+=led/ds2413.o
+driver-$(CONFIG_LED_DRIVER_LM3592)+=led/lm3592.o
 driver-$(CONFIG_LED_DRIVER_LM3630A)+=led/lm3630a.o
 driver-$(CONFIG_LED_DRIVER_LP5562)+=led/lp5562.o
+
 
 # Voltage regulators
 driver-$(CONFIG_REGULATOR_IR357X)+=regulator_ir357x.o
