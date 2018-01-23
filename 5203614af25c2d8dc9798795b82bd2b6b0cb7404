@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dbbe4aa_e5cbc90d",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-23T18:23:18Z",
+      "side": 1,
+      "message": "Can you define enum f75303_index in f75303.h and do:\n\nint f75303_get_val(enum f75303_index idx, ...)\n{\n    switch (idx) {\n    case F75303_IDX_INTERNAL:\n    ...\n\nThanks,",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "5203614af25c2d8dc9798795b82bd2b6b0cb7404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4157131_f5f5fa6c",
+        "filename": "util/flash_ec",
+        "patchSetId": 7
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-23T18:23:18Z",
+      "side": 1,
+      "message": "Can you remove this change? It\u0027s going to be done by https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/879585.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 5
+      },
+      "revId": "5203614af25c2d8dc9798795b82bd2b6b0cb7404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
