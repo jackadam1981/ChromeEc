@@ -62,6 +62,9 @@ driver-$(CONFIG_CHARGER_SY21612)+=charger/sy21612.o
 # I/O expander
 driver-$(CONFIG_IO_EXPANDER_PCA9534)+=ioexpander_pca9534.o
 
+# keyboard backlight drivers
+driver-$(CONFIG_KBBL_DRIVER_LM3592)+=lm3592.o
+
 # Current/Power monitor
 driver-$(CONFIG_INA219)$(CONFIG_INA231)+=ina2xx.o
 
