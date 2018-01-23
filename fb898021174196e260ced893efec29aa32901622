@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "de38335d_c0afd982",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2018-01-23T06:30:05Z",
+      "side": 1,
+      "message": "maybe Tony/Roy would have some other ideas, I think we don\u0027t have to worry dirt in connector since there\u0027s no possible pull up path (to PP3300_DSW as 1M does) in connector. As for dirt to pull down CC line, I think 200k pull-down resistor is still safe.",
+      "parentUuid": "4eca1505_14165406",
+      "range": {
+        "startLine": 37,
+        "startChar": 11,
+        "endLine": 37,
+        "endChar": 22
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9f205fa7_1fc3ae1c",
         "filename": "board/poppy/base_detect_lux.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-22T09:33:00Z",
       "side": 1,
       "message": "this is barely more than the 5% tolerance on components ?\ndo we need such a precise range ? are those resistors 1% ?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf773171_f13ff3bb",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2018-01-23T06:30:05Z",
+      "side": 1,
+      "message": "The resistors are 1% in tolerance",
+      "parentUuid": "9f205fa7_1fc3ae1c",
       "range": {
         "startLine": 43,
         "startChar": 0,
