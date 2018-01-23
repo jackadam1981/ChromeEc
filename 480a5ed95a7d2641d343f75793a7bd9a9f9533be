@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72d5ba19_46083276",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T06:22:41Z",
+      "side": 1,
+      "message": "That\u0027ll cause strange behaviour when the timer overflows (which is not that unlikely with 32-bit timer, like one in 5000 probability (800*1000/2**32).\n\nInstead, do:\n\nstart \u003d __hw_clock_source_read();\n\nwhile () {\n if ((__hw_clock_source_read() - start) \u003e\u003d SPI_TRANSACTION_TIMEOUT_USEC)\n}",
+      "revId": "480a5ed95a7d2641d343f75793a7bd9a9f9533be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84885664_4a7a842a",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T06:22:41Z",
+      "side": 1,
+      "message": "Brackets for this block please (I know there is only one statement, but, still, more than one line).",
+      "revId": "480a5ed95a7d2641d343f75793a7bd9a9f9533be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
