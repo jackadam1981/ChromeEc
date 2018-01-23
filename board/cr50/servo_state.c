@@ -138,6 +138,8 @@ static void servo_detect(void)
 	if (gpio_get_level(GPIO_DETECT_SERVO)) {
 		servo_connect();
 		return;
+	} else {
+		gpio_enable_interrupt(GPIO_DETECT_SERVO);
 	}
 
 	/*
@@ -180,7 +182,6 @@ static void servo_detect(void)
 		set_state(DEVICE_STATE_INIT_DEBOUNCING);
 	else
 		set_state(DEVICE_STATE_DEBOUNCING);
-	gpio_enable_interrupt(GPIO_DETECT_SERVO);
 }
 /*
  * Do this at slightly elevated priority so it runs before rdd_check_pin() and

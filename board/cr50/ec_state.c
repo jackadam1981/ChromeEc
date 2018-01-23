@@ -111,6 +111,8 @@ static void ec_detect(void)
 	if (gpio_get_level(GPIO_DETECT_EC)) {
 		set_ec_on();
 		return;
+	} else {
+		gpio_enable_interrupt(GPIO_DETECT_EC);
 	}
 
 	/* EC wasn't detected.  If we're already off, done. */
@@ -134,6 +136,5 @@ static void ec_detect(void)
 		set_state(DEVICE_STATE_INIT_DEBOUNCING);
 	else
 		set_state(DEVICE_STATE_DEBOUNCING);
-	gpio_enable_interrupt(GPIO_DETECT_EC);
 }
 DECLARE_HOOK(HOOK_SECOND, ec_detect, HOOK_PRIO_DEFAULT);
