@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a44e1e6_1bb19ce4",
+        "filename": "board/nautilus/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-23T17:44:02Z",
+      "side": 1,
+      "message": "Default state should be high / off, in case AP isn\u0027t powered on boot (eg. \"reboot ap-off\").",
+      "range": {
+        "startLine": 96,
+        "startChar": 32,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "df25df0bcd5eaeeaca249007b43f78a4f494e3e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
