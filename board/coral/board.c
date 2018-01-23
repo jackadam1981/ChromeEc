@@ -411,6 +411,7 @@ void board_tcpc_init(void)
 		mux->hpd_update(port, 0, 0);
 	}
 }
+DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_DEFAULT);
 
 /*
  * Data derived from Seinhart-Hart equation in a resistor divider circuit with
