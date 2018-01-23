@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fadda9c6_01871b51",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2018-01-23T20:41:32Z",
+      "side": 1,
+      "message": "I changed this to HOOK_CHIPSET_RESUME as you suggested, but now I\u0027m not able to test this on my board.  These two hooks are never called.  Is that a side effect of the power tester chip it has instead of a CPU, or do I need to debug more?",
+      "revId": "c6e0847babdae2dca46f47e2bcd4019cbba9eba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
