@@ -1,0 +1,262 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e218413_dadd4380",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "Explain how you tested.\n\nWe should test on elm, as well, to check that this does not break full-duplex.",
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53eb946_68e896ef",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "You don\u0027t need to add \"inline\": the compiler will do the right thing.",
+      "range": {
+        "startLine": 117,
+        "startChar": 7,
+        "endLine": 117,
+        "endChar": 13
+      },
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c1848b2_3be0e6c5",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "Use __hw_clock_source_read (that fits in a uint32_t, while timestamp is 64-bit). That should help reduce code size a bit.",
+      "range": {
+        "startLine": 122,
+        "startChar": 15,
+        "endLine": 122,
+        "endChar": 29
+      },
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "755e93dd_78c252c1",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 132,
+        "startChar": 7,
+        "endLine": 132,
+        "endChar": 13
+      },
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d524064b_46bb5bbc",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "Drop this, it\u0027s _really_ unused now ,-)",
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cb06543_e4eb1818",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "nit: Comment style has first \u0027/*\u0027 alone on first line.",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 5
+      },
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4238141_b1d4b277",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "polls",
+      "range": {
+        "startLine": 263,
+        "startChar": 39,
+        "endLine": 263,
+        "endChar": 44
+      },
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1222cb86_9c7dca6e",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "polls",
+      "range": {
+        "startLine": 275,
+        "startChar": 24,
+        "endLine": 275,
+        "endChar": 29
+      },
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa1527e_53cd2509",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 275,
+        "startChar": 2,
+        "endLine": 275,
+        "endChar": 4
+      },
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "748642dd_ed6f1e0d",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "(with 8Mhz clock)",
+      "range": {
+        "startLine": 276,
+        "startChar": 11,
+        "endLine": 276,
+        "endChar": 21
+      },
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b25569a6_07d05c36",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "Is this needed? BIDIMODE should still be set from spi_master_initialize, and nothing clears it, right?",
+      "range": {
+        "startLine": 321,
+        "startChar": 13,
+        "endLine": 321,
+        "endChar": 38
+      },
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9c3b203_5e8ca6f7",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:30:54Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we swap the 2 statements? I.e. disable the controller before setting BIDIOE?\n\nAlso, do we really need to set BIDIOE, since we\u0027re doing it again on next transfer before re-enabling the controller?",
+      "revId": "19b0c6984518e59957723bc52f0cfa86bf4b1958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
