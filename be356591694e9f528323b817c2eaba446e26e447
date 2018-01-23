@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25c91a67_1598f22b",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T00:11:26Z",
+      "side": 1,
+      "message": "nit: update comment.",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9803326d_ab9ca408",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T00:11:26Z",
+      "side": 1,
+      "message": "Yes but prepare_stream (called from dma_prepare_tx/dma_start_rx) does it. Why is it needed here?",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39e5b6d3_9a428aa2",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T00:11:26Z",
+      "side": 1,
+      "message": "You should move the timeout code from the old spi_dma_wait here.",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20b131b2_82e28101",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T00:11:26Z",
+      "side": 1,
+      "message": "How can DMA work if the controller is actually disabled?!\n\nShouldn\u0027t spi-\u003ecr1 be setup before this?",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "211110e6_311ba95d",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T00:11:26Z",
+      "side": 1,
+      "message": "ditto: Timeout.",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3c472c2_9d67c301",
+        "filename": "chip/stm32/spi_master.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T00:11:26Z",
+      "side": 1,
+      "message": "ditto: Shouldn\u0027t spi-\u003ecr1 be setup before this?",
+      "revId": "be356591694e9f528323b817c2eaba446e26e447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
