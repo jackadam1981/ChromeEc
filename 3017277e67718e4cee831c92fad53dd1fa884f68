@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "3e4383c9_068da00f",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1114964
+      },
+      "writtenOn": "2018-01-23T20:53:23Z",
+      "side": 1,
+      "message": "The alerts feature used in two ways:\n - read data over VendorCommand (required)\n - read and print alerts state in EC shell (optional)\n\nThe table above is for \"alerts\" shell command.\n\nIf this table is too big then I propose following solution:\n - add CONFIG_ALERTS compile flag like suggested by Mary. This flag will be enabled for Cr50.\n - add CONFIG_ALERTS_SHELL_CMD flag to enable \"alerts\" command in the shell. Will be disabled by default.",
+      "parentUuid": "4898f707_fdc3a782",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "3017277e67718e4cee831c92fad53dd1fa884f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8673534a_b242a543",
         "filename": "chip/g/alerts.c",
         "patchSetId": 14
@@ -82,6 +106,30 @@
       "writtenOn": "2018-01-23T19:33:08Z",
       "side": 1,
       "message": "What is the alert data used for? Should it always be available or just when Cr50 is unlocked?",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 48
+      },
+      "revId": "3017277e67718e4cee831c92fad53dd1fa884f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38363884_9e8261aa",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1114964
+      },
+      "writtenOn": "2018-01-23T20:53:23Z",
+      "side": 1,
+      "message": "+ scottdj@ to answer this question",
+      "parentUuid": "8673534a_b242a543",
       "range": {
         "startLine": 309,
         "startChar": 1,
