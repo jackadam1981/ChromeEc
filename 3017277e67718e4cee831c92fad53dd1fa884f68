@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7abffe3b_17a67730",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-01-23T19:33:08Z",
+      "side": 1,
+      "message": "I think this is the old format. It should be removed.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "3017277e67718e4cee831c92fad53dd1fa884f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b703fa_2801d159",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-01-23T19:33:08Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "3017277e67718e4cee831c92fad53dd1fa884f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8673534a_b242a543",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-01-23T19:33:08Z",
+      "side": 1,
+      "message": "What is the alert data used for? Should it always be available or just when Cr50 is unlocked?",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 48
+      },
+      "revId": "3017277e67718e4cee831c92fad53dd1fa884f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7babe33_278cc80f",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 14
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-01-23T19:33:08Z",
+      "side": 1,
+      "message": "Can you add a config option for alerts?",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 6
+      },
+      "revId": "3017277e67718e4cee831c92fad53dd1fa884f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
