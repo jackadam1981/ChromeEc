@@ -23,6 +23,12 @@
 #undef CONFIG_LID_SWITCH
 #define CONFIG_MKBP_EVENT
 #define CONFIG_PRINTF_LEGACY_LI_FORMAT
+#define CONFIG_RSA
+#define CONFIG_RSA_KEY_SIZE 3072
+#define CONFIG_RSA_EXPONENT_3
+#define CONFIG_RWSIG
+#define CONFIG_RWSIG_TYPE_RWSIG
+#define CONFIG_SHA256
 #define CONFIG_SPI
 #define CONFIG_STM_HWTIMER32
 #undef CONFIG_TASK_PROFILING
@@ -32,14 +38,17 @@
 /* Temporary */
 #undef CONFIG_FLASH
 #undef CONFIG_FLASH_PHYSICAL
+#define CONFIG_SYSTEM_UNLOCKED
 
 #define CONFIG_CMD_FLASH
 
 /* SPI configuration for the fingerprint sensor */
 #define CONFIG_SPI_MASTER
 #define CONFIG_SPI_FP_PORT  2 /* SPI4: third master config */
+#ifdef SECTION_IS_RW
 #define CONFIG_FP_SENSOR_FPC1145
 #define CONFIG_CMD_FPSENSOR_DEBUG
+#endif
 
 #define CONFIG_CMD_SPI_XFER
 
@@ -49,9 +58,20 @@
 #define TIM_CLOCK32 2
 #define TIM_WATCHDOG 16
 
+#include <stdint.h>
 #include "gpio_signal.h"
 
 void fps_event(enum gpio_signal signal);
+
+/* STM32H7 flash support is not ready, let's pretend nothing is protected */
+static inline uint32_t flash_get_protect(void)
+{
+	return 0;
+}
+static inline int flash_set_protect(uint32_t mask, uint32_t flags)
+{
+	return 0;
+}
 
 #endif /* !__ASSEMBLER__ */
 
