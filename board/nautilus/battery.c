@@ -13,16 +13,20 @@
 #include "extpower.h"
 #include "gpio.h"
 #include "util.h"
+#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
 static enum battery_present batt_pres_prev = BP_NOT_SURE;
 
-/*
- * TODO(philipchen): Check if these parameters are valid for Nautilus battery.
- *
- * Shutdown mode parameter to write to manufacturer access register
- */
+/* Shutdown mode parameters to write to manufacturer access register */
 #define SB_SHIP_MODE_REG	SB_MANUFACTURER_ACCESS
-#define SB_SHUTDOWN_DATA        0x0010
+#define SB_SHUTDOWN_DATA	0x0010
+
+/*
+ * Unlike other smart batteries, Nautilus battery uses different
+ * bit fields in manufacturer access register for XCHG/XDSG.
+ */
+#define NAUTILUS_BATTERY_CHARGING_DISABLED	0x80
+#define NAUTILUS_BATTERY_DISCHARGING_DISABLED	0x40
 
 static const struct battery_info info = {
 	.voltage_max = 8700,
@@ -123,23 +127,22 @@ static int battery_init(void)
  * calling function returns batt_pres = BP_NO, which instructs the charging
  * state machine to prevent powering up the AP on battery alone which could lead
  * to a brownout event when the battery isn't able yet to provide power to the
- * system. .
+ * system.
  */
 static int battery_check_disconnect(void)
 {
 	int rv;
-	uint8_t data[6];
+	int batt_mfgacc;
 
 	/* Check if battery charging + discharging is disabled. */
-	rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
-			    SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
+	rv = sb_read(SB_MANUFACTURER_ACCESS, &batt_mfgacc);
 	if (rv)
 		return BATTERY_DISCONNECT_ERROR;
 
-	/* TODO(philipchen): Verify if Nautilus battery supports this check. */
-	if ((data[3] & (BATTERY_DISCHARGING_DISABLED |
-			BATTERY_CHARGING_DISABLED)) ==
-	    (BATTERY_DISCHARGING_DISABLED | BATTERY_CHARGING_DISABLED))
+	if ((batt_mfgacc & (NAUTILUS_BATTERY_DISCHARGING_DISABLED |
+			    NAUTILUS_BATTERY_CHARGING_DISABLED)) ==
+	    (NAUTILUS_BATTERY_DISCHARGING_DISABLED |
+	     NAUTILUS_BATTERY_CHARGING_DISABLED))
 		return BATTERY_DISCONNECTED;
 
 	return BATTERY_NOT_DISCONNECTED;
