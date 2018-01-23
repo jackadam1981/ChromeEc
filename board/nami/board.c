@@ -21,6 +21,7 @@
 #include "driver/accel_bma2x2.h"
 #include "driver/als_opt3001.h"
 #include "driver/baro_bmp280.h"
+#include "driver/led/lm3509.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
@@ -693,6 +694,7 @@ void lid_angle_peripheral_enable(int enable)
 static void board_chipset_resume(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 0);
+	lm3509_poweron();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -700,5 +702,16 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 static void board_chipset_suspend(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 1);
+	lm3509_poweroff();
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
+
+/* Called on AP S0 -> S3 transition */
+static void lm3509_kblight_lid_change(void)
+{
+	if (lid_is_open())
+		lm3509_poweron();
+	else
+		lm3509_poweroff();
+}
+DECLARE_HOOK(HOOK_LID_CHANGE, lm3509_kblight_lid_change, HOOK_PRIO_DEFAULT);
