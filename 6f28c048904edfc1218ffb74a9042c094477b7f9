@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b721cb8a_f349bfbb",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-23T02:13:24Z",
+      "side": 1,
+      "message": "I would not set this enable during HOOK_INIT. You probably want to enable on HOOK_CHIPSET_RESUME and then disable on HOOK_CHIPSET_SUSPEND.",
+      "revId": "6f28c048904edfc1218ffb74a9042c094477b7f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
