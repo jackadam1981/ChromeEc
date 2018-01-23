@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "eb29994d_678400a3",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-23T02:13:16Z",
+      "side": 1,
+      "message": "system_get_reset_flags() only worked after system_is_reboot_warm() had set the reset flags correctly. I didn\u0027t see a simple way to rearrange this, but I\u0027ll take another look.",
+      "parentUuid": "f2e2ab10_00a951eb",
+      "revId": "576da301c34c28a6972f3626013fc5f397e2e851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2e8fc36_a882f033",
         "filename": "chip/npcx/gpio.c",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-01-23T01:47:36Z",
       "side": 1,
       "message": "Timers aren\u0027t ready for use yet, so I don\u0027t think you can use this. Does this even work?",
+      "revId": "576da301c34c28a6972f3626013fc5f397e2e851",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a3c95f5_9bc86d13",
+        "filename": "chip/npcx/gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-23T02:13:16Z",
+      "side": 1,
+      "message": "It seemed to work as expected when I tested it, but I\u0027ll double check how the timers are working here, thanks!",
+      "parentUuid": "c2e8fc36_a882f033",
       "revId": "576da301c34c28a6972f3626013fc5f397e2e851",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
