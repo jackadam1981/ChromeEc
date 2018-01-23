@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "5bda89ee_5c7c70f7",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:14:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed65d546_26eba4ce",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 9
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85aedbe5_22bf2591",
         "filename": "board/poppy/base_detect_lux.c",
         "patchSetId": 6
@@ -82,6 +106,30 @@
       "writtenOn": "2018-01-22T09:33:00Z",
       "side": 1,
       "message": "if our status is already disconnect, we print  Disconnected again ?",
+      "range": {
+        "startLine": 160,
+        "startChar": 3,
+        "endLine": 160,
+        "endChar": 28
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2d73f91_d681e69b",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:14:42Z",
+      "side": 1,
+      "message": "Dropped. The whole block has been rearranged, actually.",
+      "parentUuid": "85aedbe5_22bf2591",
       "range": {
         "startLine": 160,
         "startChar": 3,
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "871135c4_2a547f7f",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:14:42Z",
+      "side": 1,
+      "message": "I fixed the variable names to make them hopefully less confusing. Also modified the logic quite a bit (activating the pull-down is not actually needed).",
+      "parentUuid": "cf7077ba_711d933f",
+      "range": {
+        "startLine": 174,
+        "startChar": 9,
+        "endLine": 177,
+        "endChar": 41
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d387a4b_16ded931",
         "filename": "board/poppy/base_detect_lux.c",
         "patchSetId": 6
@@ -128,6 +200,30 @@
       "writtenOn": "2018-01-22T09:33:00Z",
       "side": 1,
       "message": "what is this used for ?",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 0
+      },
+      "revId": "fb898021174196e260ced893efec29aa32901622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea4d2f42_98e5f697",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-23T03:14:42Z",
+      "side": 1,
+      "message": "Nothing... I guess that\u0027s a good reason for not manually adding inline keyword, compiler does not complain in that case.",
+      "parentUuid": "3d387a4b_16ded931",
       "range": {
         "startLine": 197,
         "startChar": 0,
