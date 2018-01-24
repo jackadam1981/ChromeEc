@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "757e4027_eaa423b1",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-01-24T07:48:00Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "1dbbe4aa_e5cbc90d",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 1
+      },
+      "revId": "5203614af25c2d8dc9798795b82bd2b6b0cb7404",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4157131_f5f5fa6c",
         "filename": "util/flash_ec",
         "patchSetId": 7
