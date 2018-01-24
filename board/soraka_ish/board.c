@@ -24,11 +24,16 @@
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
-	{"accelgyro", I2C_PORT_GYRO,   400, GPIO_I2C0_SCL,   GPIO_I2C0_SDA},
+	{"accelgyro", I2C_PORT_GYRO, 400},/*IO_I2C0_SCL,   GPIO_I2C0_SDA},*/
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 #include "gpio_list.h"
+
+void bmi160_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("Inside ISH bmi160_interrupt");
+}
 
 /* Lid Sensor mutex */
 static struct mutex g_lid_mutex;
