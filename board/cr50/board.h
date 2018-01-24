@@ -278,15 +278,18 @@ int usb_i2c_board_enable(void);
 void usb_i2c_board_disable(void);
 
 void print_ap_state(void);
+void print_ap_uart_state(void);
 void print_ec_state(void);
 void print_servo_state(void);
 
 int ap_is_on(void);
+int ap_uart_is_on(void);
 int ec_is_on(void);
 int ec_is_rx_allowed(void);
 int servo_is_connected(void);
 
-void set_ap_on_deferred(void);
+void set_ap_on(void);
+void set_ap_off(void);
 
 /* Returns True if chip is brought up in a factory test harness. */
 int chip_factory_mode(void);
