@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adafa150_0193492c",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-01-24T22:45:15Z",
+      "side": 1,
+      "message": "Better to use SB_MANUFACTURER_ACCESS since it makes it clear that you are reading manufacturer access register. Reason for having SB_SHIP_MODE_REG macro is to use that when sending cutoff command to battery.",
+      "range": {
+        "startLine": 136,
+        "startChar": 14,
+        "endLine": 136,
+        "endChar": 30
+      },
+      "revId": "b8b665da72d1a15d626e3fa0fd07936e032fd63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "700ba08c_4d54fe49",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-01-24T22:45:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t look right. From the image attached here https://b.corp.google.com/issues/69016914#comment9, it seems like bit 15 \u003d 1 and bit 14 \u003d 0 implies both charging and discharging FETs are disabled. Thus, what you need to check is:\n\n#define FETS_SHIFT (14)\n#define FETS_MASK  (0x3)\n#define FETS_DISABLED  (0x2)\n\nif (((batt_mfgacc \u003e\u003e FETS_SHIFT) \u0026 FETS_MASK) \u003d\u003d FETS_DISABLED)\n         return BATTERY_DISCONNECTED;",
+      "range": {
+        "startLine": 140,
+        "startChar": 1,
+        "endLine": 143,
+        "endChar": 42
+      },
+      "revId": "b8b665da72d1a15d626e3fa0fd07936e032fd63f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
