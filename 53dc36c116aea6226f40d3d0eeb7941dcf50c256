@@ -22,6 +22,30 @@
       "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8edf472_a3da8e4c",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-24T17:05:36Z",
+      "side": 1,
+      "message": "The prototype is defined in a common temperature sensor interface. So, this doesn\u0027t work. Sorry please use int idx (as done in patch 7).",
+      "parentUuid": "914448e0_65bf985d",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
