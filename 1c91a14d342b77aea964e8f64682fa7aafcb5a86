@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "5570e4e5_23f086d1",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-24T19:26:40Z",
+      "side": 1,
+      "message": "Maybe,  \"Enable/disable supplying power to base\"",
+      "parentUuid": "f9197eae_c9693630",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "edcede26_2262b470",
         "filename": "board/poppy/base_detect_lux.c",
         "patchSetId": 7
@@ -151,6 +175,30 @@
       "writtenOn": "2018-01-24T10:26:10Z",
       "side": 1,
       "message": "This Unclear message will mystify people and keep them awake, good thing",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 21
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e6bf95_48aa785c",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-24T19:26:40Z",
+      "side": 1,
+      "message": "It\u0027s self-referential. ;)",
+      "parentUuid": "498c9ec8_42bdf07b",
       "range": {
         "startLine": 182,
         "startChar": 0,
