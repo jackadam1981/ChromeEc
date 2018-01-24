@@ -524,17 +524,6 @@ void board_configure_deep_sleep_wakepins(void)
 		/* enable powerdown exit */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
 	}
-
-	if (!board_detect_ap_with_tpm_rst()) {
-		/*
-		 * DIOA3 is GPIO_DETECT_AP which is used to detect if the AP
-		 * is in S0. If the AP is in s0, cr50 should not be in deep
-		 * sleep so wake up.
-		 */
-		GWRITE_FIELD(PINMUX, EXITEDGE0, DIOA3, 0); /* level sensitive */
-		GWRITE_FIELD(PINMUX, EXITINV0, DIOA3, 0);  /* wake on high */
-		GWRITE_FIELD(PINMUX, EXITEN0, DIOA3, 1);
-	}
 }
 
 static void deferred_tpm_rst_isr(void);
@@ -591,12 +580,6 @@ static void configure_board_specific_gpios(void)
 		GWRITE_FIELD(PINMUX, EXITINV0, DIOM0, 1);
 		/* Enable powerdown exit on DIOM0 */
 		GWRITE_FIELD(PINMUX, EXITEN0, DIOM0, 1);
-	}
-	if (!board_detect_ap_with_tpm_rst()) {
-		/* Use AP UART TX as the DETECT AP signal. */
-		GWRITE(PINMUX, GPIO1_GPIO1_SEL, GC_PINMUX_DIOA3_SEL);
-		/* Enable the input */
-		GWRITE_FIELD(PINMUX, DIOA3_CTL, IE, 1);
 	}
 }
 
@@ -726,6 +709,13 @@ static void board_init(void)
 	 * machines run in HOOK_SECOND, which first triggers right after
 	 * HOOK_INIT, not at +1.0 seconds.
 	 */
+
+	/*
+	 * No board should be using ap uart to detect the ap state any more.
+	 * Print a message though to let the user know.
+	 */
+	if (!board_detect_ap_with_tpm_rst())
+		CPRINTS("Cr50 no longer supports detecting AP with UART");
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -824,11 +814,10 @@ static void deferred_tpm_rst_isr(void)
 	CPRINTS("%s", __func__);
 
 	/*
-	 * If the board uses TPM reset to detect the AP, connect AP.  This is
-	 * the only way those boards connect; they don't examine AP UART TX.
+	 * TPM reset is used to detect the AP, connect AP. Let the AP state
+	 * machine know the AP is on.
 	 */
-	if (board_detect_ap_with_tpm_rst())
-		set_ap_on_deferred();
+	set_ap_on();
 
 	/*
 	 * If no reboot request is posted, OR if the other RW's header is not
