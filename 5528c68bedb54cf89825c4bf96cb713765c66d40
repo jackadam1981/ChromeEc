@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a26ba3a0_a16554aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:47:32Z",
+      "side": 1,
+      "message": "then, is it actually working with the real battery ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "5528c68bedb54cf89825c4bf96cb713765c66d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fbe5a9c_d059b11b",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:47:32Z",
+      "side": 1,
+      "message": "I imagine you checked this and can remove the comment ?",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 72
+      },
+      "revId": "5528c68bedb54cf89825c4bf96cb713765c66d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
