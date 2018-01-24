@@ -30,9 +30,13 @@
 #define BDCR_ENABLE_MASK (BDCR_ENABLE_VALUE | BDCR_RTCSEL_MASK | \
 			STM32_RCC_BDCR_BDRST)
 
+/* We use 16-bit BKP / BBRAM entries. */
+#define STM32_BKP_ENTRIES (STM32_BKP_BYTES / 2)
+
 enum bkpdata_index {
 	BKPDATA_INDEX_SCRATCHPAD,	     /* General-purpose scratchpad */
 	BKPDATA_INDEX_SAVED_RESET_FLAGS,     /* Saved reset flags */
+#ifdef CONFIG_HOSTCMD_VBNV_CONTEXT
 	BKPDATA_INDEX_VBNV_CONTEXT0,
 	BKPDATA_INDEX_VBNV_CONTEXT1,
 	BKPDATA_INDEX_VBNV_CONTEXT2,
@@ -41,14 +45,23 @@ enum bkpdata_index {
 	BKPDATA_INDEX_VBNV_CONTEXT5,
 	BKPDATA_INDEX_VBNV_CONTEXT6,
 	BKPDATA_INDEX_VBNV_CONTEXT7,
+#endif
 #ifdef CONFIG_SOFTWARE_PANIC
 	BKPDATA_INDEX_SAVED_PANIC_REASON,    /* Saved panic reason */
 	BKPDATA_INDEX_SAVED_PANIC_INFO,      /* Saved panic data */
 	BKPDATA_INDEX_SAVED_PANIC_EXCEPTION, /* Saved panic exception code */
 #endif
+#ifdef CONFIG_USB_PD_DUAL_ROLE
 	BKPDATA_INDEX_PD0,		     /* USB-PD saved port0 state */
 	BKPDATA_INDEX_PD1,		     /* USB-PD saved port1 state */
+#endif
+	BKPDATA_COUNT
 };
+BUILD_ASSERT(STM32_BKP_ENTRIES >= BKPDATA_COUNT);
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+BUILD_ASSERT(CONFIG_USB_PD_PORT_COUNT <= 2);
+#endif
 
 /**
  * Read backup register at specified index.
@@ -333,6 +346,8 @@ void system_reset(int flags)
 	if (flags & SYSTEM_RESET_HARD)
 		save_flags |= RESET_FLAG_HARD;
 
+	/* Reset flags are 32-bits, but BBRAM entry is only 16 bits. */
+	ASSERT(!(save_flags >> 16));
 	bkpdata_write(BKPDATA_INDEX_SAVED_RESET_FLAGS, save_flags);
 
 	if (flags & SYSTEM_RESET_HARD) {
@@ -428,12 +443,14 @@ static int bkpdata_index_lookup(enum system_bbram_idx idx, int *msb)
 {
 	*msb = 0;
 
+#ifdef CONFIG_HOSTCMD_VBNV_CONTEXT
 	if (idx >= SYSTEM_BBRAM_IDX_VBNVBLOCK0 &&
 	    idx <= SYSTEM_BBRAM_IDX_VBNVBLOCK15) {
 		*msb = (idx - SYSTEM_BBRAM_IDX_VBNVBLOCK0) % 2;
 		return BKPDATA_INDEX_VBNV_CONTEXT0 +
 		       (idx - SYSTEM_BBRAM_IDX_VBNVBLOCK0) / 2;
 	}
+#endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	if (idx == SYSTEM_BBRAM_IDX_PD0)
 		return BKPDATA_INDEX_PD0;
