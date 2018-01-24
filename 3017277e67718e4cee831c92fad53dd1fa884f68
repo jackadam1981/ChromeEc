@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f0cb4ce7_2ed254fc",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-01-24T19:47:22Z",
+      "side": 1,
+      "message": "Copyright 2018",
+      "parentUuid": "5cbd22d3_880cc6dd",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "3017277e67718e4cee831c92fad53dd1fa884f68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4898f707_fdc3a782",
         "filename": "chip/g/alerts.c",
         "patchSetId": 14
