@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5dd7673_91a823c1",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "I have never seen the pogo connector,\nbut usually mechanical connectors often requires larger debouncing periods (50 to 200ms??)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46fa6c8d_a1ff84a5",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "I still mildly believe that all those ranges will stay this precise over time, but given the HW guys vouch for it, let\u0027s go",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 43
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9197eae_c9693630",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "I do not parse this very well.",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edcede26_2262b470",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "is this right order ?\nit seems we might have a race condition if we notify first the other side, then change the mode (unless that\u0027s unrelated modes)",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b180cbd_7a828bb5",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "nit: while I like short string, might worth mentioning \u0027base\u0027",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1d868e_1fa97c41",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "random perusing: wouldn\u0027t it be smaller / easier to understand if you write something like :\nint disconnect_range \u003d v \u003e\u003d BASE_CONNECTED_DISCONNECT_MIN_MV \u0026\u0026\n\t\t    v \u003c\u003d BASE_CONNECTED_DISCONNECT_MAX_MV;\nint connect_range \u003d v \u003e\u003d BASE_CONNECTED_CONNECT_MIN_MV \u0026\u0026\n\t\t    v \u003c\u003d BASE_CONNECTED_CONNECT_MAX_MV;\n\n/* unchanged */\nif (current_base_status \u003d\u003d BASE_CONNECTED \u0026\u0026 range_connected) ||\n   (current_base_status \u003d\u003d BASE_DISCONNECTED \u0026\u0026 range_disconnected)\n      return;\n\nprint_base_detect_value(v);\nif (range_connected) {\n   base_detect_change(BASE_CONNECTED)\n   return;\n}\nif (range_disconnected) {\n   base_detect_change(BASE_DISCONNECTED)\n   return;\n}\n\n/* continue to unclear */",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "498c9ec8_42bdf07b",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "This Unclear message will mystify people and keep them awake, good thing",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 21
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f69d199_6615eca2",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "you are printing it for v \u003d\u003d ADC_READ_ERROR ?\n(not sure if this is the only path, but isn\u0027t there an implicit return above retry:, no actually that\u0027s not the case after reading again, maybe put a code above retry: or inside the else clause saying that you continue to retry when the voltage is in between the ranges.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 28
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feff2f7a_f25824ab",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "FR Nit: being French, I would tend to use \u0027That\u0027 but \u0027This\u0027 might be more correct here ?",
+      "range": {
+        "startLine": 203,
+        "startChar": 47,
+        "endLine": 203,
+        "endChar": 52
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "002d54d9_f4f1eba0",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "are ?",
+      "range": {
+        "startLine": 203,
+        "startChar": 39,
+        "endLine": 203,
+        "endChar": 41
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a13c8a4_64ea0467",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-24T10:26:10Z",
+      "side": 1,
+      "message": "nit: this initial 0 was good enough ?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 44
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
