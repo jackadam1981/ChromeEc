@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "914448e0_65bf985d",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-01-24T11:43:07Z",
+      "side": 1,
+      "message": "I try to compile with \"int f75303_get_val(enum f75303_index idx, ...)\", it shows below message:\n---------------------------------------------------------------------------------------------\nboard/nami/board.c:255:2: error: initialization from incompatible pointer type [-Werror]\n  {\"F75303_Local\", TEMP_SENSOR_TYPE_BOARD, f75303_get_val,\n  ^\nboard/nami/board.c:255:2: error: (near initialization for ‘temp_sensors[0].read’) [-Werror]\nboard/nami/board.c:257:2: error: initialization from incompatible pointer type [-Werror]\n  {\"F75303_Remote\", TEMP_SENSOR_TYPE_BOARD, f75303_get_val,\n  ^\nboard/nami/board.c:257:2: error: (near initialization for ‘temp_sensors[1].read’) [-Werror]\ncc1: all warnings being treated as errors\nmake: *** [Makefile.rules:369: build/nami/RO/board/nami/board.o] Error 1\n--------------------------------------------------------------------------------------------\nAnd I believe I shouldn\u0027t modify below code.\nstruct temp_sensor_t {\n\tconst char *name;\n\t/* Temperature sensor type. */\n\tenum temp_sensor_type type;\n\t/* Read sensor value in K into temp_ptr; return non-zero if error. */\n\tint (*read)(int idx, int *temp_ptr);\n...}\n\nDo I misunderstand the modified way? \nThanks.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
