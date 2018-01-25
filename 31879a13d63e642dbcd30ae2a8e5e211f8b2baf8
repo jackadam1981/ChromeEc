@@ -46,6 +46,30 @@
       "revId": "31879a13d63e642dbcd30ae2a8e5e211f8b2baf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88dc4620_dca47daa",
+        "filename": "board/nami/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1000094
+      },
+      "writtenOn": "2018-01-25T02:01:44Z",
+      "side": 1,
+      "message": "This is opposite of every time we have done an efficiency measurement on the charger circuit. So will likely cause the laptop to get hotter than it needs to.\n\nBefore setting this parameter you should do measurements of the efficiency of the charger into the battery for a 15V and 20V power source. Every case we have seen so far the 15V is more efficient (which makes sense for the smaller voltage difference) and thus less heat put into the unit.\n\nIt is correct that using the higher voltage will get less IR loss on the USB-C cable so the cable will heat less (and maybe in the power brick) but it is generally better to have the laptop run cooler (and avoid thermally throttling the CPU).",
+      "parentUuid": "5536663e_12889813",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 0
+      },
+      "revId": "31879a13d63e642dbcd30ae2a8e5e211f8b2baf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
