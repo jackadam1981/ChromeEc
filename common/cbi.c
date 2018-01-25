@@ -251,3 +251,14 @@ static int hc_cbi_set(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_SET_CROS_BOARD_INFO,
 		     hc_cbi_set,
 		     EC_VER_MASK(0));
+
+static int command_dump_cbi(int argc, char **argv)
+{
+	ccprintf("Board version=0x%04x\n", bi.version);
+	ccprintf("Oem id=0x%04x\n", bi.oem_id);
+	ccprintf("Sku id=0x%04x\n", bi.sku_id);
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(cbi, command_dump_cbi, "Get cbi from EEPROM",
+					       "Get cbi from EEPROM");

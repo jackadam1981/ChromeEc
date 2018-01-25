@@ -296,8 +296,8 @@ struct ec_thermal_config thermal_params[] = {
 	 * {Twarn, Thigh, X    }, <off>
 	 * fan_off, fan_max
 	 */
-	{{0, C_TO_K(87), C_TO_K(89)}, {0, C_TO_K(86), 0},
-		C_TO_K(44), C_TO_K(81)},/* TMP432_Internal */
+	{{0, C_TO_K(80), C_TO_K(81)}, {0, C_TO_K(78), 0},
+		C_TO_K(4), C_TO_K(76)},	/* TMP432_Internal */
 	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP432_Sensor_1 */
 	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP432_Sensor_2 */
 };
@@ -532,19 +532,40 @@ struct fan_step {
 };
 
 /* Do not make the fan on/off point equal to 0 or 100 */
-const struct fan_step fan_table[] = {
-	{.off = 2, .rpm = 0},
-	{.on = 16, .off =  2, .rpm = 2800},
-	{.on = 27, .off = 18, .rpm = 3200},
-	{.on = 35, .off = 29, .rpm = 3400},
-	{.on = 43, .off = 37, .rpm = 4200},
-	{.on = 54, .off = 45, .rpm = 4800},
-	{.on = 64, .off = 56, .rpm = 5200},
-	{.on = 97, .off = 83, .rpm = 5600},
+static const struct fan_step fan_table0[] = {	/* Kench & Teemo */
+	{.on =  0, .off =  1, .rpm = 0},
+	{.on = 36, .off =  1, .rpm = 2800},
+	{.on = 58, .off = 58, .rpm = 3200},
+	{.on = 66, .off = 61, .rpm = 3400},
+	{.on = 75, .off = 69, .rpm = 4200},
+	{.on = 81, .off = 76, .rpm = 4800},
+	{.on = 88, .off = 83, .rpm = 5200},
+	{.on = 98, .off = 91, .rpm = 5600},
 };
-#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table)
+static const struct fan_step fan_table1[] = {	/* Sion */
+	{.on =  0, .off =  1, .rpm = 0},
+	{.on = 36, .off =  1, .rpm = 2800},
+	{.on = 62, .off = 58, .rpm = 3200},
+	{.on = 68, .off = 63, .rpm = 3400},
+	{.on = 75, .off = 69, .rpm = 4200},
+	{.on = 81, .off = 76, .rpm = 4800},
+	{.on = 88, .off = 83, .rpm = 5200},
+	{.on = 98, .off = 91, .rpm = 5600},
+};
+/* All fan tables must having the same number of levels */
+#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
+BUILD_ASSERT(ARRAY_SIZE(fan_table1) == NUM_FAN_LEVELS);
 
-int fan_percent_to_rpm(int fan, int pct)
+/*
+ * fan_tables must follow the order of 'enum fan_table_id' defined in board.h
+ */
+static const struct fan_step *fan_tables[] = {
+	fan_table0,
+	fan_table0,
+	fan_table1,
+};
+
+static int get_custom_rpm(int fan, int pct, const struct fan_step fan_table[])
 {
 	static int current_level;
 	static int previous_pct;
@@ -583,4 +604,19 @@ int fan_percent_to_rpm(int fan, int pct)
 			fan_table[current_level].rpm);
 
 	return fan_table[current_level].rpm;
+}
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	/*
+	 * 1. Kench & Teemo are using the same table
+	 * 2. default use Kench & Teemo's due to a smaller active point
+	 */
+	uint32_t oem_id = FAN_TABLE_DEFAULT;
+
+	cbi_get_oem_id(&oem_id);
+	if (oem_id > FAN_TABLE_COUNT)
+		oem_id = FAN_TABLE_DEFAULT;
+
+	return get_custom_rpm(fan, pct, fan_tables[oem_id]);
 }
