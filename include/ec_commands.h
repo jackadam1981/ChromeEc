@@ -3216,9 +3216,29 @@ struct __ec_align2 ec_response_keyboard_factory_test {
 
 /* Fingerprint events in 'fp_events' for EC_MKBP_EVENT_FINGERPRINT */
 #define EC_MKBP_FP_RAW_EVENT(fp_events) ((fp_events) & 0x00FFFFFF)
+#define EC_MKBP_FP_ERRCODE(fp_events)   ((fp_events) & 0x0000000F)
+#define EC_MKBP_FP_ENROLL_PROGRESS(fpe) ((fpe) & 0x00000FF0)
+#define EC_MKBP_FP_ENROLL_PROGRESS_OFFSET 4
+#define EC_MKBP_FP_ENROLL               (1 << 27)
+#define EC_MKBP_FP_MATCH                (1 << 28)
 #define EC_MKBP_FP_FINGER_DOWN          (1 << 29)
 #define EC_MKBP_FP_FINGER_UP            (1 << 30)
 #define EC_MKBP_FP_IMAGE_READY          (1 << 31)
+/* code given by EC_MKBP_FP_ERRCODE() when EC_MKBP_FP_ENROLL is set */
+#define EC_MKBP_FP_ERR_ENROLL_OK               0
+#define EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY      1
+#define EC_MKBP_FP_ERR_ENROLL_IMMOBILE         2
+#define EC_MKBP_FP_ERR_ENROLL_LOW_COVERAGE     3
+/* Can be used to detect if image was usable for enrollment or not. */
+#define EC_MKBP_FP_ERR_ENROLL_PROBLEM_MASK     1
+/* code given by EC_MKBP_FP_ERRCODE() when EC_MKBP_FP_MATCH is set */
+#define EC_MKBP_FP_ERR_MATCH_NO                0
+#define EC_MKBP_FP_ERR_MATCH_YES               1
+#define EC_MKBP_FP_ERR_MATCH_YES_UPDATED       3
+#define EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED 5
+#define EC_MKBP_FP_ERR_MATCH_NO_LOW_QUALITY    2
+#define EC_MKBP_FP_ERR_MATCH_NO_LOW_COVERAGE   4
+
 
 /*****************************************************************************/
 /* Temperature sensor commands */
@@ -4695,6 +4715,10 @@ struct __ec_align2 ec_params_fp_sensor_config {
 /* Extracts the capture type from the sensor 'mode' word */
 #define FP_CAPTURE_TYPE(mode) (((mode) >> FP_MODE_CAPTURE_TYPE_SHIFT) \
 					& FP_MODE_CAPTURE_TYPE_MASK)
+/* Enroll the current finger image */
+#define FP_MODE_ENROLL        (1<<4)
+/* Try to match the current finger image */
+#define FP_MODE_MATCH         (1<<5)
 /* special value: don't change anything just read back current mode */
 #define FP_MODE_DONT_CHANGE   (1<<31)
 
