@@ -70,10 +70,10 @@
 /* Optional features present on this chip */
 
 /* Note: ISH does not use the LPC bus but the protocol. */
-#define CONFIG_LPC
+#define CONFIG_HOSTCMD_LPC
 
-/* GPIO - to be implemented */
-#define GPIO_PIN(index) (index)
+/* Macro used with gpio.inc */
+#define GPIO_PIN(index) GPIO_0, (1 << index)
 #define GPIO_PIN_MASK(pin, mask) ((pin), (mask))
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
