@@ -415,6 +415,8 @@ static void board_init(void)
 	/* Enable pericom BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_L);
+
+	battery_alert(1 * SECOND);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -484,8 +486,8 @@ void board_hibernate(void)
 }
 
 const struct pwm_t pwm_channels[] = {
-	[PWM_CH_LED_RED]   = { 3, PWM_CONFIG_DSLEEP, 100 },
-	[PWM_CH_LED_GREEN] = { 5, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_LED_AMBER]   = { 5, PWM_CONFIG_DSLEEP, 100 },
+	[PWM_CH_LED_WHITE] = { 3, PWM_CONFIG_DSLEEP, 100 },
 	[PWM_CH_FAN] = {4, PWM_CONFIG_OPEN_DRAIN, 25000},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
