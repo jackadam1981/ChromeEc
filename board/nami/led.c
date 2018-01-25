@@ -1,10 +1,13 @@
-/* Copyright 2017 The Chromium OS Authors. All rights reserved.
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Power and battery LED control for Fizz
+ * LED control for Nami
  */
 
+#include "battery.h"
+#include "charge_manager.h"
+#include "charge_state.h"
 #include "chipset.h"
 #include "console.h"
 #include "ec_commands.h"
@@ -15,70 +18,56 @@
 #include "timer.h"
 #include "util.h"
 
-const enum ec_led_id supported_led_ids[] = {EC_LED_ID_POWER_LED};
+const enum ec_led_id supported_led_ids[] = {EC_LED_ID_LEFT_LED};
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
+
+#define LED_TOTAL_2SECS_TICKS		2
+#define LED_ON_1SEC_TICKS		1
+#define LED_PULSE_US			(2 * SECOND)
+/* 40 msec for nice and smooth transition. */
+#define LED_PULSE_TICK_US		(40 * MSEC)
 
 enum led_color {
 	LED_OFF = 0,
-	LED_RED,
-	LED_GREEN,
+	LED_WHITE,
 	LED_AMBER,
-
 	/* Number of colors, not a color itself */
 	LED_COLOR_COUNT
 };
 
-static int set_color_power(enum led_color color, int duty)
+static int set_color_Left(enum led_color color, int duty)
 {
-	int green = 0;
-	int red = 0;
-
 	if (duty < 0 || 100 < duty)
 		return EC_ERROR_UNKNOWN;
 
 	switch (color) {
 	case LED_OFF:
+		pwm_set_duty(PWM_CH_LED_WHITE, 0);
+		pwm_set_duty(PWM_CH_LED_AMBER, 0);
 		break;
-	case LED_GREEN:
-		green = 1;
-		break;
-	case LED_RED:
-		red = 1;
+	case LED_WHITE:
+		pwm_set_duty(PWM_CH_LED_WHITE, duty);
+		pwm_set_duty(PWM_CH_LED_AMBER, 0);
 		break;
 	case LED_AMBER:
-		green = 1;
-		red = 1;
+		pwm_set_duty(PWM_CH_LED_WHITE, 0);
+		pwm_set_duty(PWM_CH_LED_AMBER, duty);
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;
 	}
-
-	if (red)
-		pwm_set_duty(PWM_CH_LED_RED, duty);
-	else
-		pwm_set_duty(PWM_CH_LED_RED, 0);
-
-	if (green)
-		pwm_set_duty(PWM_CH_LED_GREEN, duty);
-	else
-		pwm_set_duty(PWM_CH_LED_GREEN, 0);
-
 	return EC_SUCCESS;
 }
 
 static int set_color(enum ec_led_id id, enum led_color color, int duty)
 {
 	switch (id) {
-	case EC_LED_ID_POWER_LED:
-		return set_color_power(color, duty);
+	case EC_LED_ID_LEFT_LED:
+		return set_color_Left(color, duty);
 	default:
 		return EC_ERROR_UNKNOWN;
 	}
 }
-
-#define LED_PULSE_US		(2 * SECOND)
-/* 40 msec for nice and smooth transition. */
-#define LED_PULSE_TICK_US	(40 * MSEC)
 
 /* When pulsing is enabled, brightness is incremented by <duty_inc> every
  * <interval> usec from 0 to 100% in LED_PULSE_US usec. Then it's decremented
@@ -90,10 +79,11 @@ static struct {
 	int duty;
 } led_pulse;
 
-#define CONFIG_TICK(interval, color) \
-	config_tick((interval), 100 / (LED_PULSE_US / (interval)), (color))
+#define CONFIGURE_PULSE(interval, color) \
+	configure_pulse((interval), 100 / (LED_PULSE_US / (interval)), (color))
 
-static void config_tick(uint32_t interval, int duty_inc, enum led_color color)
+static void configure_pulse(uint32_t interval, int duty_inc,
+	enum led_color color)
 {
 	led_pulse.interval = interval;
 	led_pulse.duty_inc = duty_inc;
@@ -101,9 +91,9 @@ static void config_tick(uint32_t interval, int duty_inc, enum led_color color)
 	led_pulse.duty = 0;
 }
 
-static void pulse_power_led(enum led_color color)
+static void pulse_led(enum led_color color)
 {
-	set_color(EC_LED_ID_POWER_LED, color, led_pulse.duty);
+	set_color(EC_LED_ID_LEFT_LED, color, led_pulse.duty);
 	if (led_pulse.duty + led_pulse.duty_inc > 100)
 		led_pulse.duty_inc = led_pulse.duty_inc * -1;
 	else if (led_pulse.duty + led_pulse.duty_inc < 0)
@@ -121,69 +111,91 @@ static void led_tick(void)
 	static uint8_t pwm_enabled = 0;
 
 	if (!pwm_enabled) {
-		pwm_enable(PWM_CH_LED_RED, 1);
-		pwm_enable(PWM_CH_LED_GREEN, 1);
+		pwm_enable(PWM_CH_LED_WHITE, 1);
+		pwm_enable(PWM_CH_LED_AMBER, 1);
 		pwm_enabled = 1;
 	}
-	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
-		pulse_power_led(led_pulse.color);
+	if (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED))
+		pulse_led(led_pulse.color);
 	elapsed = get_time().le.lo - start;
 	next = led_pulse.interval > elapsed ? led_pulse.interval - elapsed : 0;
 	hook_call_deferred(&led_tick_data, next);
 }
 
-static void led_suspend(void)
+static void board_led_set_battery(void)
 {
-	CONFIG_TICK(LED_PULSE_TICK_US, LED_GREEN);
-	led_tick();
-}
-DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, led_suspend, HOOK_PRIO_DEFAULT);
+	static uint8_t pulse_enable;
+	static int error_ticks;
 
-static void led_shutdown(void)
-{
-	hook_call_deferred(&led_tick_data, -1);
-	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
-		set_color(EC_LED_ID_POWER_LED, LED_OFF, 0);
-}
-DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, led_shutdown, HOOK_PRIO_DEFAULT);
-
-static void led_resume(void)
-{
-	/* Assume there is no race condition with led_tick, which also
-	 * runs in hook_task. */
-	hook_call_deferred(&led_tick_data, -1);
-	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
-		set_color(EC_LED_ID_POWER_LED, LED_GREEN, 100);
-}
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, led_resume, HOOK_PRIO_DEFAULT);
-
-void led_alert(int enable)
-{
-	if (enable) {
-		/* Overwrite the current signal */
-		config_tick(1 * SECOND, 100, LED_RED);
-		led_tick();
-	} else {
-		/* Restore the previous signal */
-		if (chipset_in_state(CHIPSET_STATE_ON))
-			led_resume();
-		else if (chipset_in_state(CHIPSET_STATE_SUSPEND))
-			led_suspend();
-		else if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
-			led_shutdown();
+	switch (charge_get_state()) {
+	case PWR_STATE_CHARGE:
+		/* Always indicate when charging, even in suspend. */
+		hook_call_deferred(&led_tick_data, -1);
+		pulse_enable = 0;
+		set_color(EC_LED_ID_LEFT_LED, LED_AMBER, 100);
+		break;
+	case PWR_STATE_DISCHARGE:
+		if (chipset_in_state(CHIPSET_STATE_ON)) {
+			hook_call_deferred(&led_tick_data, -1);
+			pulse_enable = 0;
+			set_color(EC_LED_ID_LEFT_LED, LED_WHITE, 100);
+		} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+			/* Pulsing (rising for 2 sec , falling for 2 sec) */
+			if (!pulse_enable) {
+				CONFIGURE_PULSE(LED_PULSE_TICK_US, LED_AMBER);
+				led_tick();
+				pulse_enable = 1;
+			}
+		} else {
+			hook_call_deferred(&led_tick_data, -1);
+			pulse_enable = 0;
+			set_color(EC_LED_ID_LEFT_LED, LED_OFF, 0);
+		}
+		break;
+	case PWR_STATE_ERROR:
+		hook_call_deferred(&led_tick_data, -1);
+		pulse_enable = 0;
+		set_color(EC_LED_ID_LEFT_LED,
+			(error_ticks % LED_TOTAL_2SECS_TICKS
+			<  LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF, 100);
+		break;
+	case PWR_STATE_CHARGE_NEAR_FULL:
+	case PWR_STATE_IDLE: /* External power connected in IDLE */
+		hook_call_deferred(&led_tick_data, -1);
+		pulse_enable = 0;
+		set_color(EC_LED_ID_LEFT_LED, LED_WHITE, 100);
+		break;
+	default:
+		/* Other states don't alter LED behavior */
+		hook_call_deferred(&led_tick_data, -1);
+		pulse_enable = 0;
+		break;
 	}
+	error_ticks++;
 }
 
-void led_critical(void)
+static uint32_t led_interval;
+static void left_led_tick(void);
+DECLARE_DEFERRED(left_led_tick);
+static void left_led_tick(void)
 {
-	hook_call_deferred(&led_tick_data, -1);
-	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
-		set_color(EC_LED_ID_POWER_LED, LED_RED, 100);
+	if (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED))
+		board_led_set_battery();
+	hook_call_deferred(&left_led_tick_data, led_interval);
+}
+
+void led_alert(uint32_t interval)
+{
+	if (interval)
+		led_interval = interval;
+	else
+		led_interval = -1;
+	left_led_tick();
 }
 
 static int command_led(int argc, char **argv)
 {
-	enum ec_led_id id = EC_LED_ID_POWER_LED;
+	enum ec_led_id id = EC_LED_ID_LEFT_LED;
 
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
@@ -193,38 +205,29 @@ static int command_led(int argc, char **argv)
 		ccprintf("o%s\n", led_auto_control_is_enabled(id) ? "ff" : "n");
 	} else if (!strcasecmp(argv[1], "off")) {
 		set_color(id, LED_OFF, 0);
-	} else if (!strcasecmp(argv[1], "red")) {
-		set_color(id, LED_RED, 100);
-	} else if (!strcasecmp(argv[1], "green")) {
-		set_color(id, LED_GREEN, 100);
+	} else if (!strcasecmp(argv[1], "white")) {
+		set_color(id, LED_WHITE, 100);
 	} else if (!strcasecmp(argv[1], "amber")) {
 		set_color(id, LED_AMBER, 100);
-	} else if (!strcasecmp(argv[1], "alert")) {
-		led_alert(1);
-	} else if (!strcasecmp(argv[1], "crit")) {
-		led_critical();
 	} else {
 		return EC_ERROR_PARAM1;
 	}
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(led, command_led,
-			"[debug|red|green|amber|off|alert|crit]",
+			"[debug|white|amber|off]",
 			"Turn on/off LED.");
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
-	brightness_range[EC_LED_COLOR_RED] = 100;
-	brightness_range[EC_LED_COLOR_GREEN] = 100;
+	brightness_range[EC_LED_COLOR_WHITE] = 100;
 	brightness_range[EC_LED_COLOR_AMBER] = 100;
 }
 
 int led_set_brightness(enum ec_led_id id, const uint8_t *brightness)
 {
-	if (brightness[EC_LED_COLOR_RED])
-		return set_color(id, LED_RED, brightness[EC_LED_COLOR_RED]);
-	else if (brightness[EC_LED_COLOR_GREEN])
-		return set_color(id, LED_GREEN, brightness[EC_LED_COLOR_GREEN]);
+	if (brightness[EC_LED_COLOR_WHITE])
+		return set_color(id, LED_WHITE, brightness[EC_LED_COLOR_WHITE]);
 	else if (brightness[EC_LED_COLOR_AMBER])
 		return set_color(id, LED_AMBER, brightness[EC_LED_COLOR_AMBER]);
 	else
