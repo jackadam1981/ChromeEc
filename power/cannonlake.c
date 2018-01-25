@@ -52,7 +52,7 @@ void chipset_handle_espi_reset_assert(void)
 	}
 }
 
-void chipset_reset(int cold_reset)
+void ap_chipset_reset(int cold_reset)
 {
 	/*
 	 * The EC cannot control warm vs cold reset of the chipset using

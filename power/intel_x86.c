@@ -155,7 +155,7 @@ static void s0ix_transition(int check_state, int hook_id)
 	s0ix_notify = S0IX_NOTIFY_NONE;
 }
 
-static void handle_chipset_reset(void)
+static void handle_chipset_reset_in_s0ix(void)
 {
 	if (chipset_in_state(CHIPSET_STATE_STANDBY)) {
 		CPRINTS("chipset reset: exit s0ix");
@@ -163,7 +163,7 @@ static void handle_chipset_reset(void)
 		task_wake(TASK_ID_CHIPSET);
 	}
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
+DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset_in_s0ix, HOOK_PRIO_FIRST);
 
 #endif
 
@@ -508,3 +508,25 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 }
 
 #endif
+
+void chipset_reset(int cold_reset)
+{
+	/* In S3, AP is off hence do Resume Well Reset */
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		/*
+		 * Resetting the resume power plane logic: This signal must
+		 * be asserted for at least 10 ms after the suspend power
+		 * wells are valid. When deasserted, this signal is an
+		 * indication that the suspend power wells are stable.
+		 */
+		if (gpio_get_level(GPIO_PCH_RSMRST_L) == 0)
+			return;
+#ifdef CONFIG_CHIPSET_APOLLOLAKE
+		ap_set_force_cold_reset();
+#endif
+		gpio_set_level(GPIO_PCH_RSMRST_L, 0);
+		udelay(20 * MSEC);
+		gpio_set_level(GPIO_PCH_RSMRST_L, 1);
+	} else
+		ap_chipset_reset(cold_reset);
+}
