@@ -33,4 +33,12 @@ enum power_state chipset_force_g3(void);
  */
 enum power_state common_intel_x86_power_handle_state(enum power_state state);
 
+/**
+ * Reset the CPU and/or chipset.
+ *
+ * @param cold_reset	If !=0, force a cold reset of the CPU and chipset;
+ *			if 0, just pulse the reset line to the CPU.
+ */
+void ap_chipset_reset(int cold_reset);
+
 #endif /* __CROS_EC_INTEL_X86_H */

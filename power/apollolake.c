@@ -46,7 +46,7 @@ void chipset_handle_espi_reset_assert(void)
 {
 }
 
-void chipset_reset(int cold_reset)
+void ap_chipset_reset(int cold_reset)
 {
 	CPRINTS("%s(%d)", __func__, cold_reset);
 	if (cold_reset) {

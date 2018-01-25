@@ -54,7 +54,7 @@ enum power_state chipset_force_g3(void)
 	return POWER_G3;
 }
 
-void chipset_reset(int cold_reset)
+void ap_chipset_reset(int cold_reset)
 {
 	CPRINTS("%s(%d)", __func__, cold_reset);
 
