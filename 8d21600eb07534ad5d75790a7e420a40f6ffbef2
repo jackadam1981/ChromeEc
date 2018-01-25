@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b73e123_bd324b24",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-25T11:41:29Z",
+      "side": 1,
+      "message": "this seems to be implemented everywhere as no-op ?\nMaybe it\u0027s time to remove it to save time next time we look at this.",
+      "range": {
+        "startLine": 869,
+        "startChar": 0,
+        "endLine": 869,
+        "endChar": 34
+      },
+      "revId": "8d21600eb07534ad5d75790a7e420a40f6ffbef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6259090_b3c0a256",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 929,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-25T11:41:29Z",
+      "side": 1,
+      "message": "nit: for \u0027obvious\u0027 reasons, the PD spec defines the values such as:\nPD_ROLE_SINK \u003d\u003d PD_ROLE_UFP\nPD_ROLE_SOURCE \u003d\u003d PD_ROLE_DFP\nso here, rather than this complicated identity function, I would just put :\npd_set_data_role(port, pd[port].power_role);\nand update the comment above to something like:\n/* Set initial data role (matching power role) */\nas a reminder it\u0027s not just a typo",
+      "range": {
+        "startLine": 927,
+        "startChar": 24,
+        "endLine": 929,
+        "endChar": 23
+      },
+      "revId": "8d21600eb07534ad5d75790a7e420a40f6ffbef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c095542b_38174360",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1249,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-25T11:41:29Z",
+      "side": 1,
+      "message": "nit: I would put it next to pd_set_data_role()",
+      "range": {
+        "startLine": 1248,
+        "startChar": 0,
+        "endLine": 1249,
+        "endChar": 45
+      },
+      "revId": "8d21600eb07534ad5d75790a7e420a40f6ffbef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57933fdb_0778bdb6",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1269,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-25T11:41:29Z",
+      "side": 1,
+      "message": "originally we skipped this on purpose, but let\u0027s say the world has changed in the last 3 years and now everybody has a reasonable stack.",
+      "range": {
+        "startLine": 1268,
+        "startChar": 0,
+        "endLine": 1269,
+        "endChar": 30
+      },
+      "revId": "8d21600eb07534ad5d75790a7e420a40f6ffbef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec6d8e55_3fe39bfa",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-25T11:41:29Z",
+      "side": 1,
+      "message": "this is the least preferred way (aka last fallback) of doing ErrorRecovery.\nWe should stay tErrorRecovery \u003d 25ms without CC resistors on machines supporting it ?",
+      "range": {
+        "startLine": 1274,
+        "startChar": 0,
+        "endLine": 1277,
+        "endChar": 37
+      },
+      "revId": "8d21600eb07534ad5d75790a7e420a40f6ffbef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15492cb2_14931815",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-25T11:41:29Z",
+      "side": 1,
+      "message": "seems strange to me.\nIn a disconnected state, our data role is not really something defined ?\nand when we are going to connect again, the stack will set again the role ? \n(when leaving the _DEBOUNCE state)\noh I read further and I see now you removed those unconditional settings later.\n\nCan you point me at the spec wording which let you think that we should keep the data role over the error recovery process ?",
+      "range": {
+        "startLine": 1278,
+        "startChar": 0,
+        "endLine": 1278,
+        "endChar": 19
+      },
+      "revId": "8d21600eb07534ad5d75790a7e420a40f6ffbef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
