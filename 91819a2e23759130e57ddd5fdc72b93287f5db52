@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ce57500_27550f47",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-25T02:35:48Z",
+      "side": 1,
+      "message": "I realize this may cause deadlock toggling between two ports taking this same action. Any other suggestions? Some devices (eg. Apple accessory) don\u0027t seem to reset data role on cold reset. One alternative is to switch power role here, then switch data role to power role default.",
+      "range": {
+        "startLine": 1278,
+        "startChar": 2,
+        "endLine": 1278,
+        "endChar": 19
+      },
+      "revId": "91819a2e23759130e57ddd5fdc72b93287f5db52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
