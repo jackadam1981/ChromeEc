@@ -10,6 +10,7 @@
 #include "driver/accelgyro_bmi160.h"
 #include "driver/baro_bmp280.h"
 #include "gpio.h"
+#include "gpio_list.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
@@ -17,7 +18,6 @@
 #include "motion_sense.h"
 #include "task.h"
 #include "uart.h"
-//#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -46,6 +46,12 @@ const matrix_3x3_t lid_standard_ref = {
 	{FLOAT_TO_FP(-1),  0,  0},
 	{ 0,  0, FLOAT_TO_FP(-1)}
 };
+
+/* This is placeholder before CONFIG_ACCEL_INTERRUPTS is defined */
+void bmi160_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("Inside ISH bmi160_interrupt");
+}
 
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
