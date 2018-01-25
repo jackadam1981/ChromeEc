@@ -217,6 +217,15 @@ enum fan_channel {
 	FAN_CH_COUNT
 };
 
+enum fan_table_id {
+	FAN_TABLE_DEFAULT = 0,
+	FAN_TABLE_KENCH = 0,
+	FAN_TABLE_TEEMO,
+	FAN_TABLE_SION,
+	/* Number of ID */
+	FAN_TABLE_COUNT,
+};
+
 enum mft_channel {
 	MFT_CH_0,
 	/* Number of MFT channels */
