@@ -17,8 +17,8 @@
 #include "motion_sense.h"
 #include "task.h"
 #include "uart.h"
-//#include "util.h"
 
+#include "gpio_list.h" /* has to be included last */
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
@@ -46,6 +46,12 @@ const matrix_3x3_t lid_standard_ref = {
 	{FLOAT_TO_FP(-1),  0,  0},
 	{ 0,  0, FLOAT_TO_FP(-1)}
 };
+
+/* This is placeholder for testing GPIO_ISH_GPIO_3_INT */
+void bmi160_interrupt(enum gpio_signal signal)
+{
+	CPRINTS("Inside ISH bmi160_interrupt");
+}
 
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
