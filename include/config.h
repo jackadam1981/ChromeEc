@@ -2643,9 +2643,15 @@
 
 /*
  * Define (along with CONFIG_USB_PD_DISCHARGE) if discharge circuit is
- * using PD discharge registers.
+ * using PD discharge registers on TCPC.
  */
 #undef CONFIG_USB_PD_DISCHARGE_TCPC
+
+/*
+ * Define (along with CONFIG_USB_PD_DISCHARGE) if discharge circuit is
+ * using PD discharge registers on PPC.
+ */
+#undef CONFIG_USB_PD_DISCHARGE_PPC
 
 /* Define if this board can act as a dual-role PD port (source and sink) */
 #undef CONFIG_USB_PD_DUAL_ROLE
