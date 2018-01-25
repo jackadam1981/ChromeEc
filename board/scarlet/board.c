@@ -387,7 +387,7 @@ struct motion_sensor_t motion_sensors[] = {
 		 /* Enable accel in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 10000 | ROUND_UP_FLAG,
-			 .ec_rate = 100 * MSEC,
+			 .ec_rate = 0,
 		 },
 		 /* Sensor off in S3/S5 */
 		 [SENSOR_CONFIG_EC_S3] = {
