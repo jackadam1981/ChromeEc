@@ -54,6 +54,7 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+static uint32_t oem_id = OEM_DEFAULT;
 uint16_t host_command_suppressed[] = {
 	EC_CMD_CONSOLE_SNAPSHOT,
 	EC_CMD_CONSOLE_READ,
@@ -296,8 +297,8 @@ struct ec_thermal_config thermal_params[] = {
 	 * {Twarn, Thigh, X    }, <off>
 	 * fan_off, fan_max
 	 */
-	{{0, C_TO_K(87), C_TO_K(89)}, {0, C_TO_K(86), 0},
-		C_TO_K(44), C_TO_K(81)},/* TMP432_Internal */
+	{{0, C_TO_K(80), C_TO_K(81)}, {0, C_TO_K(78), 0},
+		C_TO_K(4), C_TO_K(76)},	/* TMP432_Internal */
 	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP432_Sensor_1 */
 	{{0, 0, 0}, {0, 0, 0}, 0, 0},	/* TMP432_Sensor_2 */
 };
@@ -460,6 +461,9 @@ static void board_init(void)
 	if (cbi_get_board_version(&version) == EC_SUCCESS)
 		CPRINTS("Board Version: 0x%04x", version);
 
+	if (cbi_get_oem_id(&oem_id) == EC_SUCCESS)
+		CPRINTS("Oem Id: 0x%04x", oem_id);
+
 	/* Provide AC status to the PCH */
 	board_extpower();
 
@@ -532,19 +536,30 @@ struct fan_step {
 };
 
 /* Do not make the fan on/off point equal to 0 or 100 */
-const struct fan_step fan_table[] = {
-	{.off = 2, .rpm = 0},
-	{.on = 16, .off =  2, .rpm = 2800},
-	{.on = 27, .off = 18, .rpm = 3200},
-	{.on = 35, .off = 29, .rpm = 3400},
-	{.on = 43, .off = 37, .rpm = 4200},
-	{.on = 54, .off = 45, .rpm = 4800},
-	{.on = 64, .off = 56, .rpm = 5200},
-	{.on = 97, .off = 83, .rpm = 5600},
+const struct fan_step fan_table_kench_teemo[] = {
+	{.on =  0, .off =  1, .rpm = 0},
+	{.on = 36, .off =  1, .rpm = 2800},
+	{.on = 58, .off = 58, .rpm = 3200},
+	{.on = 66, .off = 61, .rpm = 3400},
+	{.on = 75, .off = 69, .rpm = 4200},
+	{.on = 81, .off = 76, .rpm = 4800},
+	{.on = 88, .off = 83, .rpm = 5200},
+	{.on = 98, .off = 91, .rpm = 5600},
 };
-#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table)
+const struct fan_step fan_table_sion[] = {
+	{.on =  0, .off =  1, .rpm = 0},
+	{.on = 36, .off =  1, .rpm = 2800},
+	{.on = 62, .off = 58, .rpm = 3200},
+	{.on = 68, .off = 63, .rpm = 3400},
+	{.on = 75, .off = 69, .rpm = 4200},
+	{.on = 81, .off = 76, .rpm = 4800},
+	{.on = 88, .off = 83, .rpm = 5200},
+	{.on = 98, .off = 91, .rpm = 5600},
+};
+/* All fan tables must having the same number of levels */
+#define NUM_FAN_LEVELS ARRAY_SIZE(fan_table_kench_teemo)
 
-int fan_percent_to_rpm(int fan, int pct)
+static int get_custom_rpm(int fan, int pct, const struct fan_step fan_table[])
 {
 	static int current_level;
 	static int previous_pct;
@@ -584,3 +599,33 @@ int fan_percent_to_rpm(int fan, int pct)
 
 	return fan_table[current_level].rpm;
 }
+
+int fan_percent_to_rpm(int fan, int pct)
+{
+	/* keep updating oem_id until we get one */
+	if (oem_id == OEM_DEFAULT)
+		cbi_get_oem_id(&oem_id);
+
+	/*
+	 * 1. Kench & Teemo are using the same table
+	 * 2. default use Kench & Teemo's due to a smaller active point
+	 */
+	if (oem_id == OEM_SION)
+		return get_custom_rpm(fan, pct, fan_table_sion);
+	else
+		return get_custom_rpm(fan, pct, fan_table_kench_teemo);
+}
+
+static int command_oem_id(int argc, char **argv)
+{
+	ccprintf("old Oem Id: 0x%04x\n", oem_id);
+
+	if (oem_id == OEM_DEFAULT) {
+		cbi_get_oem_id(&oem_id);
+		ccprintf("retried Oem Id: 0x%04x\n", oem_id);
+	}
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(oem, command_oem_id, "Get oem id from EEPROM",
+					     "Get oem id from EEPROM");
