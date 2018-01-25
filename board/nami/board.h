@@ -229,8 +229,8 @@ enum adc_channel {
 };
 
 enum pwm_channel {
-	PWM_CH_LED_RED,
-	PWM_CH_LED_GREEN,
+	PWM_CH_LED_AMBER,
+	PWM_CH_LED_WHITE,
 	PWM_CH_FAN,
 	/* Number of PWM channels */
 	PWM_CH_COUNT,
@@ -257,6 +257,7 @@ enum pwm_channel {
 int board_get_version(void);
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
+void battery_alert(uint32_t interval);
 
 #endif /* !__ASSEMBLER__ */
 
