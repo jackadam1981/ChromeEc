@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40d0d58a_f7e2dee8",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-25T16:10:32Z",
+      "side": 1,
+      "message": "is this working with your new algorithm ?\naren\u0027t we going out of bounds on those variants ?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 6
+      },
+      "revId": "382b29994016e4ad30fd229fd4ab91cb90b202e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
