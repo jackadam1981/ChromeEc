@@ -326,7 +326,8 @@ static int sn5s330_init(int port)
 	/*
 	 * Before turning on the PP2 FET, let's mask off all interrupts except
 	 * for the PP1 overcurrent condition and then clear all pending
-	 * interrupts.
+	 * interrupts. If PPC is being used to detect VBUS, then also enable
+	 * interrupts for VBUS presence.
 	 *
 	 * TODO(aaboagye): Unmask fast-role swap events once fast-role swap is
 	 * implemented in the PD stack.
@@ -362,15 +363,22 @@ static int sn5s330_init(int port)
 		return status;
 	}
 
+#ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
+	/* If PPC is being used to detect VBUS, enable VBUS interrupts. */
+	regval = ~SN5S330_VBUS_GOOD_MASK;
+#else
+	regval = 0xFF;
+#endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
+
 	status = i2c_write8(i2c_port, i2c_addr, SN5S330_INT_MASK_RISE_REG3,
-			    0xFF);
+			    regval);
 	if (status) {
 		CPRINTS("Failed to write INT_MASK_RISE3!");
 		return status;
 	}
 
 	status = i2c_write8(i2c_port, i2c_addr, SN5S330_INT_MASK_FALL_REG3,
-			    0xFF);
+			    regval);
 	if (status) {
 		CPRINTS("Failed to write INT_MASK_FALL3!");
 		return status;
@@ -497,7 +505,7 @@ static void sn5s330_handle_interrupt(int port)
 
 	/*
 	 * The only interrupts that should be enabled are the PP1 overcurrent
-	 * condition.
+	 * condition, and for VBUS_GOOD if PPC is being used to detect VBUS.
 	 */
 	read_reg(port, SN5S330_INT_TRIP_RISE_REG1, &rise);
 	read_reg(port, SN5S330_INT_TRIP_FALL_REG1, &fall);
@@ -509,6 +517,20 @@ static void sn5s330_handle_interrupt(int port)
 	/* Clear the interrupt sources. */
 	write_reg(port, SN5S330_INT_TRIP_RISE_REG1, rise);
 	write_reg(port, SN5S330_INT_TRIP_FALL_REG1, fall);
+
+#ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
+	read_reg(port, SN5S330_INT_TRIP_RISE_REG3, &rise);
+	read_reg(port, SN5S330_INT_TRIP_FALL_REG3, &fall);
+
+	/* Let the board know about the VBUS event. */
+	if (rise & SN5S330_VBUS_GOOD_MASK
+	    || fall & SN5S330_VBUS_GOOD_MASK)
+		board_vbus_event(port);
+
+	/* Clear the interrupt sources. */
+	write_reg(port, SN5S330_INT_TRIP_RISE_REG3, rise);
+	write_reg(port, SN5S330_INT_TRIP_FALL_REG3, fall);
+#endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 }
 
 static void sn5s330_irq_deferred(void)

@@ -325,6 +325,11 @@ void board_overcurrent_event(int port)
 	CPRINTS("p%d: overcurrent!", port);
 }
 
+void board_vbus_event(int port)
+{
+	usb_charger_vbus_change(port, pd_snk_is_vbus_provided(port));
+}
+
 int board_set_active_charge_port(int port)
 {
 	int i;
