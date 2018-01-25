@@ -22,6 +22,30 @@
       "revId": "8e77e76d407580b3a485a683449315259debc390",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eada191_d65c90b2",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-25T15:56:34Z",
+      "side": 1,
+      "message": "The verbose version is fine for now, and seems a bit more robust.\n\nIf we do go the other way, I\u0027d suggest NOT_CONFIG_FOO.  And we\u0027d need to catch/duplicate all the config-like options (NOT_CHIP_VARIANT_xxx, NOT_HAS_TASK_xxx, etc.), not just CONFIG_xxx.",
+      "parentUuid": "7a2aa923_b3e3ab58",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "8e77e76d407580b3a485a683449315259debc390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
