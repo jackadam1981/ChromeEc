@@ -72,8 +72,8 @@
 /* Note: ISH does not use the LPC bus but the protocol. */
 #define CONFIG_HOSTCMD_LPC
 
-/* GPIO - to be implemented */
-#define GPIO_PIN(index) (index)
+/* Macro used with gpio.inc */
+#define GPIO_PIN(index) GPIO_0, (1 << index)
 #define GPIO_PIN_MASK(p, m) .port = (p), .mask = (m)
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */
