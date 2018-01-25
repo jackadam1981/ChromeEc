@@ -68,12 +68,6 @@ struct ppc_drv {
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
-	/*
-	 * TODO(aaboagye): In order for VBUS detection to work properly for our
-	 * system, we need to enable VBUS interrupts and send the appropriate
-	 * notifications.
-	 */
-
 	/**
 	 * Determine if VBUS is present or not.
 	 *
@@ -148,5 +142,16 @@ int ppc_vbus_source_enable(int port, int enable);
  * @param port: The Type-C port which overcurrented.
  */
 void board_overcurrent_event(int port);
+
+#ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
+/**
+ * Board specific callback when VBUS rises or falls past a 4.0V threshold.
+ * The board is expected to call ppc_is_vbus_present to determine the current
+ * status of VBUS.
+ *
+ * @param port: The Type-C port where VBUS changed.
+ */
+void board_vbus_event(int port);
+#endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 
 #endif /* !defined(__CROS_EC_USBC_PPC_H) */
