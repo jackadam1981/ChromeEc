@@ -16,6 +16,24 @@
       "revId": "c6e0847babdae2dca46f47e2bcd4019cbba9eba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3acc288_64acdd32",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-25T02:45:46Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct. You\u0027ll actually need the chipset to sequence up and down.",
+      "parentUuid": "fadda9c6_01871b51",
+      "revId": "c6e0847babdae2dca46f47e2bcd4019cbba9eba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
