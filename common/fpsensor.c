@@ -25,10 +25,16 @@
 #define FP_SENSOR_IMAGE_SIZE 0
 #define FP_SENSOR_RES_X 0
 #define FP_SENSOR_RES_Y 0
+#define FP_ALGORITHM_TEMPLATE_SIZE 0
+#define FP_MAX_FINGER_COUNT 0
 #endif
 
 /* Last acquired frame */
 static uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE];
+#ifdef HAVE_FP_PRIVATE_DRIVER /* Temporary */
+/* Current finger template */
+static uint8_t fp_template[FP_MAX_FINGER_COUNT][FP_ALGORITHM_TEMPLATE_SIZE];
+#endif /* HAVE_FP_PRIVATE_DRIVER */
 
 #define CPRINTF(format, args...) cprintf(CC_FP, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_FP, format, ## args)
@@ -42,9 +48,10 @@ static uint8_t fp_buffer[FP_SENSOR_IMAGE_SIZE];
 #define TASK_EVENT_SENSOR_IRQ     TASK_EVENT_CUSTOM(1)
 #define TASK_EVENT_UPDATE_CONFIG  TASK_EVENT_CUSTOM(2)
 
+#define FP_MODE_ANY_CAPTURE (FP_MODE_CAPTURE | FP_MODE_ENROLL | FP_MODE_MATCH)
 #define FP_MODE_ANY_DETECT_FINGER (FP_MODE_FINGER_DOWN | FP_MODE_FINGER_UP | \
-				   FP_MODE_CAPTURE)
-#define FP_MODE_ANY_WAIT_IRQ      (FP_MODE_FINGER_DOWN | FP_MODE_CAPTURE)
+				   FP_MODE_ANY_CAPTURE)
+#define FP_MODE_ANY_WAIT_IRQ      (FP_MODE_FINGER_DOWN | FP_MODE_ANY_CAPTURE)
 
 /* Delay between 2 s of the sensor to detect finger removal */
 #define FINGER_POLLING_DELAY (100*MSEC)
@@ -58,13 +65,10 @@ void fps_event(enum gpio_signal signal)
 	task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_SENSOR_IRQ, 0);
 }
 
-static inline int is_test_capture(uint32_t mode)
+static void send_mkbp_event(uint32_t event)
 {
-	int capture_type = FP_CAPTURE_TYPE(mode);
-
-	return (mode & FP_MODE_CAPTURE)
-		&& (capture_type == FP_CAPTURE_PATTERN0
-		    || capture_type == FP_CAPTURE_PATTERN1);
+	atomic_or(&fp_events, event);
+	mkbp_send_event(EC_MKBP_EVENT_FINGERPRINT);
 }
 
 static inline int is_raw_capture(uint32_t mode)
@@ -75,11 +79,46 @@ static inline int is_raw_capture(uint32_t mode)
 	     || capture_type == FP_CAPTURE_QUALITY_TEST);
 }
 
-static void send_mkbp_event(uint32_t event)
+#ifdef HAVE_FP_PRIVATE_DRIVER
+static inline int is_test_capture(uint32_t mode)
 {
-	atomic_or(&fp_events, event);
-	mkbp_send_event(EC_MKBP_EVENT_FINGERPRINT);
+	int capture_type = FP_CAPTURE_TYPE(mode);
+
+	return (mode & FP_MODE_CAPTURE)
+		&& (capture_type == FP_CAPTURE_PATTERN0
+		    || capture_type == FP_CAPTURE_PATTERN1);
 }
+
+static void fp_process_finger(void)
+{
+	int res = fp_sensor_acquire_image_with_mode(fp_buffer,
+			FP_CAPTURE_TYPE(sensor_mode));
+	if (!res) {
+		uint32_t evt = EC_MKBP_FP_IMAGE_READY;
+
+		if (sensor_mode & FP_MODE_ENROLL) {
+			int percent = 0;
+			/* begin/continue enrollment */
+			CPRINTS("Enrolling ...");
+			res = fp_finger_enroll(fp_template[0], fp_buffer,
+					       &percent);
+			CPRINTS("Enroll =>%d (%d%%)", res, percent);
+			/* TODO: if (res < 0) */
+			evt = EC_MKBP_FP_ENROLL | EC_MKBP_FP_ERRCODE(res)
+			    | EC_MKBP_FP_ENROLL_PROGRESS(percent << 4);
+		} else if (sensor_mode & FP_MODE_MATCH) {
+			/* match finger against current templates */
+			CPRINTS("Matching ...");
+			res = fp_finger_match(fp_template[0], fp_buffer);
+			CPRINTS("Match =>%d", res);
+			/* TODO: if (res < 0) */
+			evt = EC_MKBP_FP_MATCH | EC_MKBP_FP_ERRCODE(res);
+		}
+		sensor_mode &= ~FP_MODE_ANY_CAPTURE;
+		send_mkbp_event(evt);
+	}
+}
+#endif /* HAVE_FP_PRIVATE_DRIVER */
 
 void fp_task(void)
 {
@@ -141,16 +180,9 @@ void fp_task(void)
 			}
 
 			if (st == FINGER_PRESENT &&
-			    sensor_mode & FP_MODE_CAPTURE) {
-				int res = fp_sensor_acquire_image_with_mode(
-						fp_buffer,
-						FP_CAPTURE_TYPE(sensor_mode));
+			    sensor_mode & FP_MODE_ANY_CAPTURE)
+				fp_process_finger();
 
-				if (!res) {
-					sensor_mode &= ~FP_MODE_CAPTURE;
-					send_mkbp_event(EC_MKBP_FP_IMAGE_READY);
-				}
-			}
 			if (sensor_mode & FP_MODE_ANY_WAIT_IRQ) {
 				fp_sensor_configure_detect();
 				gpio_enable_interrupt(GPIO_FPS_INT);
@@ -316,25 +348,35 @@ static void upload_pgm_image(uint8_t *frame)
 int command_fptest(int argc, char **argv)
 {
 	int tries = 200;
-	int capture_type = FP_CAPTURE_SIMPLE_IMAGE;
+	uint32_t mode = FP_MODE_CAPTURE |
+		(FP_CAPTURE_SIMPLE_IMAGE << FP_MODE_CAPTURE_TYPE_SHIFT);
 
 	if (argc >= 2) {
-		char *e;
+		if (!strcasecmp(argv[1], "enroll")) {
+			mode = FP_MODE_ENROLL;
+		} else if (!strcasecmp(argv[1], "match")) {
+			mode = FP_MODE_MATCH;
+		} else {
+			char *e;
+			int capture_type = strtoi(argv[1], &e, 0);
 
-		capture_type = strtoi(argv[1], &e, 0);
-		if (*e || capture_type < 0 || capture_type > 3)
-			return EC_ERROR_PARAM1;
+			if (*e || capture_type < 0 || capture_type > 3)
+				return EC_ERROR_PARAM1;
+			mode = FP_MODE_CAPTURE
+			     | (capture_type << FP_MODE_CAPTURE_TYPE_SHIFT);
+		}
 	}
 
 	ccprintf("Waiting for finger ...\n");
-	sensor_mode = FP_MODE_CAPTURE |
-		(capture_type << FP_MODE_CAPTURE_TYPE_SHIFT);
+	sensor_mode = mode;
 	task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_UPDATE_CONFIG, 0);
 
 	while (tries--) {
-		if (!(sensor_mode & FP_MODE_CAPTURE)) {
-			ccprintf("done\n");
-			upload_pgm_image(fp_buffer + FP_SENSOR_IMAGE_OFFSET);
+		if (!(sensor_mode & FP_MODE_ANY_CAPTURE)) {
+			ccprintf("done (events:%x)\n", fp_events);
+			if (mode & FP_MODE_CAPTURE)
+				upload_pgm_image(
+					fp_buffer + FP_SENSOR_IMAGE_OFFSET);
 			return 0;
 		}
 		usleep(100 * MSEC);
