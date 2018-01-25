@@ -110,6 +110,12 @@
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
 
+/* Oem id */
+#define OEM_DEFAULT	0xFF
+#define OEM_KENCH	0x00
+#define OEM_TEEMO	0x01
+#define OEM_SION	0x02
+
 /* Charge ports */
 #undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
