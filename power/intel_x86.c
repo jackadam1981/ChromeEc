@@ -155,7 +155,7 @@ static void s0ix_transition(int check_state, int hook_id)
 	s0ix_notify = S0IX_NOTIFY_NONE;
 }
 
-static void handle_chipset_reset(void)
+static void handle_chipset_reset_in_s0ix(void)
 {
 	if (chipset_in_state(CHIPSET_STATE_STANDBY)) {
 		CPRINTS("chipset reset: exit s0ix");
@@ -163,7 +163,7 @@ static void handle_chipset_reset(void)
 		task_wake(TASK_ID_CHIPSET);
 	}
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
+DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset_in_s0ix, HOOK_PRIO_FIRST);
 
 #endif
 
@@ -508,3 +508,16 @@ void power_chipset_handle_host_sleep_event(enum host_sleep_event state)
 }
 
 #endif
+
+void chipset_reset(int cold_reset)
+{
+	/* In S3 AP is off hence do system hard reset */
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		system_reset(SYSTEM_RESET_HARD);
+		/* should never return */
+		while (1)
+			;
+	}
+
+	ap_chipset_reset(cold_reset);
+}
