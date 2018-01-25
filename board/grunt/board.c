@@ -17,6 +17,7 @@
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/led/lm3630a.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -226,6 +227,13 @@ static void board_chipset_resume(void)
 {
 	/* Allow display backlight to turn on. See above backlight comment */
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 0);
+
+	/*
+	 * Enable keyboard backlight. This needs to be done here because
+	 * the chip doesn't have power until PP3300_S0 comes up.
+	 */
+	gpio_set_level(GPIO_KB_BL_EN, 1);
+	lm3630a_poweron();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -402,7 +410,7 @@ struct keyboard_scan_config keyscan_config = {
 /* PWM channels. Must be in the exactly same order as in enum pwm_channel. */
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_KBLIGHT] =     { 5, 0, 100 },
-	[PWM_CH_LED1_ORANGE] = {
+	[PWM_CH_LED1_AMBER] = {
 		0, PWM_CONFIG_OPEN_DRAIN | PWM_CONFIG_ACTIVE_LOW |
 		PWM_CONFIG_DSLEEP, 100
 	},
@@ -608,7 +616,7 @@ static void board_init_leds_off(void)
 {
 	/* Initialize the LEDs off. */
 	/* TODO(sjg): Eventually do something with these LEDs. */
-	pwm_set_duty(PWM_CH_LED1_ORANGE, 0);
+	pwm_set_duty(PWM_CH_LED1_AMBER, 0);
 	pwm_set_duty(PWM_CH_LED2_BLUE, 0);
 }
 DECLARE_HOOK(HOOK_INIT, board_init_leds_off, HOOK_PRIO_INIT_PWM + 1);

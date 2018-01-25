@@ -67,6 +67,7 @@ driver-$(CONFIG_INA219)$(CONFIG_INA231)+=ina2xx.o
 
 # LED drivers
 driver-$(CONFIG_LED_DRIVER_DS2413)+=led/ds2413.o
+driver-$(CONFIG_LED_DRIVER_LM3630A)+=led/lm3630a.o
 driver-$(CONFIG_LED_DRIVER_LP5562)+=led/lp5562.o
 
 # Voltage regulators
@@ -83,6 +84,7 @@ driver-$(CONFIG_TEMP_SENSOR_TMP006)+=temp_sensor/tmp006.o
 driver-$(CONFIG_TEMP_SENSOR_TMP112)+=temp_sensor/tmp112.o
 driver-$(CONFIG_TEMP_SENSOR_TMP411)+=temp_sensor/tmp411.o
 driver-$(CONFIG_TEMP_SENSOR_TMP432)+=temp_sensor/tmp432.o
+driver-$(CONFIG_TEMP_SENSOR_F75303)+=temp_sensor/f75303.o
 
 # Touchpads
 driver-$(CONFIG_TOUCHPAD_ELAN)+=touchpad_elan.o

@@ -5,6 +5,7 @@
  * Richtek rt946x battery charger driver.
  */
 
+#include "battery.h"
 #include "battery_smart.h"
 #include "charger.h"
 #include "common.h"
@@ -105,11 +106,6 @@ static int rt946x_read8(int reg, int *val)
 static int rt946x_write8(int reg, int val)
 {
 	return i2c_write8(I2C_PORT_CHARGER, RT946X_ADDR, reg, val);
-}
-
-static int rt946x_block_read(int reg, uint8_t *val, int len)
-{
-	return i2c_read_string(I2C_PORT_CHARGER, RT946X_ADDR, reg, val, len);
 }
 
 static int rt946x_block_write(int reg, const uint8_t *val, int len)
@@ -310,20 +306,38 @@ static int rt946x_set_ircmp_res(unsigned int res)
 		reg_res << RT946X_SHIFT_IRCMP_RES);
 }
 
+static int rt946x_set_iprec(unsigned int iprec)
+{
+	uint8_t reg_iprec = 0;
+
+	reg_iprec = rt946x_closest_reg(RT946X_IPREC_MIN, RT946X_IPREC_MAX,
+		RT946X_IPREC_STEP, iprec);
+
+	CPRINTF("%s: iprec = %d(0x%02X)\n", __func__, iprec, reg_iprec);
+
+	return rt946x_update_bits(RT946X_REG_CHGCTRL8, RT946X_MASK_IPREC,
+		reg_iprec << RT946X_SHIFT_IPREC);
+}
+
 static int rt946x_init_irq(void)
 {
 	int rv = 0;
-	uint8_t dummy[RT946X_IRQ_COUNT] = {0};
+	int dummy;
+	int i;
 
 	/* Mask all interrupts */
 	rv = rt946x_block_write(RT946X_REG_CHGSTATCCTRL, rt946x_irq_maskall,
 				RT946X_IRQ_COUNT);
 	if (rv)
 		return rv;
+
 	/* Clear all interrupt flags */
-	rv = rt946x_block_read(RT946X_REG_CHGSTATC, dummy, RT946X_IRQ_COUNT);
-	if (rv)
-		return rv;
+	for (i = 0; i < RT946X_IRQ_COUNT; i++) {
+		rv = rt946x_read8(RT946X_REG_CHGSTATC + i, &dummy);
+		if (rv)
+			return rv;
+	}
+
 	/* Init interrupt */
 	return rt946x_block_write(RT946X_REG_CHGSTATCCTRL, rt946x_irqmask,
 				  ARRAY_SIZE(rt946x_irqmask));
@@ -332,7 +346,14 @@ static int rt946x_init_irq(void)
 static int rt946x_init_setting(void)
 {
 	int rv = 0;
+	const struct battery_info *batt_info = battery_get_info();
 
+#ifdef CONFIG_CHARGER_OTG
+	/*  Disable boost-mode output voltage */
+	rv = charger_enable_otg_power(0);
+	if (rv)
+		return rv;
+#endif
 	/* Disable BC12 detection */
 	rv = rt946x_enable_bc12_detection(0);
 	if (rv)
@@ -365,6 +386,10 @@ static int rt946x_init_setting(void)
 	rv = rt946x_set_ircmp_res(rt946x_charger_init_setting.ircmp_res);
 	if (rv)
 		return rv;
+	rv = rt946x_set_iprec(batt_info->precharge_current);
+	if (rv)
+		return rv;
+
 	return rt946x_init_irq();
 }
 
@@ -746,9 +771,11 @@ static void rt946x_init(void)
 	}
 	CPRINTF("RT946X CHIP REV: 0x%02x\n", reg);
 
-	if (rt946x_init_setting())
+	if (rt946x_init_setting()) {
+		CPRINTF("RT946X init failed\n");
 		return;
-	CPRINTF("RT946X initialized\n");
+	}
+	CPRINTF("RT946X init succeeded\n");
 }
 DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_LAST);
 

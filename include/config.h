@@ -335,6 +335,23 @@
 #undef CONFIG_BATTERY_LEVEL_NEAR_FULL
 
 /*
+ * Use an alternative method to store battery information: Instead of writing
+ * directly to host memory mapped region, this keeps the battery information in
+ * ec_response_battery_static/dynamic_info structures, that can then be fetched
+ * using host commands, or via EC_ACPI_MEM_BATTERY_INDEX command, which tells
+ * the EC to update the shared memory.
+ *
+ * This is required on dual-battery systems, and on on hostless bases with a
+ * battery.
+ */
+#undef CONFIG_BATTERY_V2
+
+/*
+ * Number of batteries, only matters when CONFIG_BATTERY_V2 is used.
+ */
+#undef CONFIG_BATTERY_COUNT
+
+/*
  * Expose some data when it is needed.
  * For example, battery disconnect state
  */
@@ -736,6 +753,7 @@
 #undef  CONFIG_CMD_ACCEL_FIFO
 #undef  CONFIG_CMD_ACCEL_INFO
 #define CONFIG_CMD_ACCELSPOOF
+#define CONFIG_CMD_ADC
 #undef  CONFIG_CMD_ALS
 #define CONFIG_CMD_APTHROTTLE
 #undef  CONFIG_CMD_BATDEBUG
@@ -779,6 +797,7 @@
 #define CONFIG_CMD_INA
 #undef  CONFIG_CMD_JUMPTAGS
 #define CONFIG_CMD_KEYBOARD
+#undef CONFIG_CMD_LEDTEST
 #undef  CONFIG_CMD_LID_ANGLE
 #undef  CONFIG_CMD_MCDP
 #define CONFIG_CMD_MD
@@ -966,6 +985,16 @@
  * When enabled ignore version et al during fw upgrade for chip/g.
  */
 #undef CONFIG_IGNORE_G_UPDATE_CHECKS
+
+/*
+ * When enabled hardware alerts statistics provided via VendorCommand extension.
+ */
+#undef CONFIG_ENABLE_H1_ALERTS
+
+/*
+ * Enable console shell command 'alerts' that prints chip alerts statistics.
+ */
+#undef CONFIG_ENABLE_H1_ALERTS_CONSOLE
 
 /*****************************************************************************/
 /*
@@ -1534,6 +1563,13 @@
  */
 #undef CONFIG_HOSTCMD_ALIGNED
 
+/*
+ * Include host commands to fetch battery information from
+ * ec_response_battery_static/dynamic_info structures, only makes sense when
+ * CONFIG_BATTERY_V2 is enabled.
+ */
+#undef CONFIG_HOSTCMD_BATTERY_V2
+
 /* Default hcdebug mode, e.g. HCDEBUG_OFF or HCDEBUG_NORMAL */
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_NORMAL
 
@@ -1709,12 +1745,6 @@
 #undef CONFIG_I2C_MULTI_PORT_CONTROLLER
 
 /*****************************************************************************/
-/* ISH config */
-
-/* Various ISH version */
-#undef CONFIG_ISH_30
-#undef CONFIG_ISH_40
-
 /* Current/Power monitor */
 
 /*
@@ -1863,6 +1893,29 @@
 #undef CONFIG_LED_POLICY_STD
 
 /*
+ * Support common PWM-controlled LEDs that conform to the Chrome OS LED
+ * behaviour specification.
+ */
+#undef CONFIG_LED_PWM
+
+/*
+ * Here are some recommended color settings by default, but a board can change
+ * the colors to one of "enum ec_led_colors" as they see fit.
+ */
+#define CONFIG_LED_PWM_CHARGE_COLOR EC_LED_COLOR_AMBER
+#define CONFIG_LED_PWM_NEAR_FULL_COLOR EC_LED_COLOR_GREEN
+#define CONFIG_LED_PWM_CHARGE_ERROR_COLOR EC_LED_COLOR_RED
+#define CONFIG_LED_PWM_SOC_ON_COLOR EC_LED_COLOR_GREEN
+#define CONFIG_LED_PWM_SOC_SUSPEND_COLOR EC_LED_COLOR_GREEN
+#define CONFIG_LED_PWM_LOW_BATT_COLOR EC_LED_COLOR_AMBER
+
+/*
+ * How many PWM LEDs does the system have that will be controlled by the common
+ * PWM LED policy?  Currently, this may be at most 2.
+ */
+#undef CONFIG_LED_PWM_COUNT
+
+/*
  * LEDs for LED_POLICY STD may be inverted.  In this case they are active low
  * and the GPIO names will be GPIO_LED..._L.
  */
@@ -1871,6 +1924,7 @@
 
 /* Support for LED driver chip(s) */
 #undef CONFIG_LED_DRIVER_DS2413  /* Maxim DS2413, on one-wire interface */
+#undef CONFIG_LED_DRIVER_LM3630A /* LM3630A, on I2C interface */
 #undef CONFIG_LED_DRIVER_LP5562  /* LP5562, on I2C interface */
 
 /* Offset in flash where little firmware will live. */
@@ -2455,6 +2509,7 @@
 #undef CONFIG_TEMP_SENSOR_TMP006	/* TI TMP006 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_TMP411	/* TI TMP411 sensor, on I2C bus */
 #undef CONFIG_TEMP_SENSOR_TMP432	/* TI TMP432 sensor, on I2C bus */
+#undef CONFIG_TEMP_SENSOR_F75303	/* Fintek  F75303 sensor, on I2C bus */
 
 #undef CONFIG_THERMISTOR_NCP15WB	/* NCP15WB thermistor */
 
@@ -2637,21 +2692,19 @@
 /*
  * Define if this board can enable VBUS discharge (eg. through a GPIO-controlled
  * discharge circuit, or through port controller registers) to discharge VBUS
- * rapidly on disconnect.
+ * rapidly on disconnect. Will be defined automatically when one of the below
+ * options is defined.
  */
 #undef CONFIG_USB_PD_DISCHARGE
 
-/*
- * Define (along with CONFIG_USB_PD_DISCHARGE) if discharge circuit is
- * EC GPIO-controlled.
- */
+/* Define if discharge circuit is EC GPIO-controlled. */
 #undef CONFIG_USB_PD_DISCHARGE_GPIO
 
-/*
- * Define (along with CONFIG_USB_PD_DISCHARGE) if discharge circuit is
- * using PD discharge registers.
- */
+/* Define if discharge circuit is using PD discharge registers on TCPC. */
 #undef CONFIG_USB_PD_DISCHARGE_TCPC
+
+/* Define if discharge circuit is using PD discharge registers on PPC. */
+#undef CONFIG_USB_PD_DISCHARGE_PPC
 
 /* Define if this board can act as a dual-role PD port (source and sink) */
 #undef CONFIG_USB_PD_DUAL_ROLE
@@ -2720,9 +2773,6 @@
 
 /* Use TCPC module (type-C port controller) */
 #undef CONFIG_USB_PD_TCPC
-
-/* Board provides specific TCPC init function */
-#undef CONFIG_USB_PD_TCPC_BOARD_INIT
 
 /* Enable TCPC to enter low power mode */
 #undef CONFIG_USB_PD_TCPC_LOW_POWER
@@ -2835,6 +2885,9 @@
 
 /* Compile chip support for the USB device controller */
 #undef CONFIG_USB
+
+/* Support USB isochronous handler */
+#undef CONFIG_USB_ISOCHRONOUS
 
 /* Support USB blob handler. */
 #undef CONFIG_USB_BLOB
@@ -3262,6 +3315,11 @@
 #define CONFIG_BUTTON_TRIGGERED_RECOVERY
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
 
+
+#ifdef CONFIG_LED_PWM_COUNT
+#define CONFIG_LED_PWM
+#endif /* defined(CONFIG_LED_PWM_COUNT) */
+
 /*****************************************************************************/
 /*
  * Define derived configuration options for EC-EC communication
@@ -3269,12 +3327,24 @@
 #ifdef CONFIG_EC_EC_COMM_BATTERY
 #ifdef CONFIG_EC_EC_COMM_MASTER
 #define CONFIG_EC_EC_COMM_BATTERY_MASTER
+#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_COUNT 2
 #endif
 
 #ifdef CONFIG_EC_EC_COMM_SLAVE
 #define CONFIG_EC_EC_COMM_BATTERY_SLAVE
+#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_COUNT 1
 #endif
 #endif /* CONFIG_EC_EC_COMM_BATTERY */
+
+/*****************************************************************************/
+/* Define derived USB PD Discharge common path */
+#if defined(CONFIG_USB_PD_DISCHARGE_GPIO) || \
+	defined(CONFIG_USB_PD_DISCHARGE_TCPC) || \
+	defined(CONFIG_USB_PD_DISCHARGE_PPC)
+#define CONFIG_USB_PD_DISCHARGE
+#endif
 
 /*****************************************************************************/
 /*
@@ -3309,11 +3379,13 @@
 #undef CONFIG_HOSTCMD_PD
 #endif
 
-/*
- * Power Average task only works when there's a battery to talk to.
- */
+/* Certain console cmds are irrelevant without parent modules. */
 #ifndef CONFIG_BATTERY
 #undef CONFIG_CMD_PWR_AVG
+#endif
+
+#ifndef CONFIG_ADC
+#undef CONFIG_CMD_ADC
 #endif
 
 /*****************************************************************************/

@@ -1567,10 +1567,14 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_RTC_BACKUP(n)         REG32(STM32_RTC_BASE + 0x50 + 4 * (n))
 
 #define STM32_BKP_DATA(n)           STM32_RTC_BACKUP(n)
-#if defined(CHIP_FAMILY_STM32F3) || defined(CHIP_FAMILY_STM32H7)
-#define STM32_BKP_ENTRIES           32
+#if defined(CHIP_FAMILY_STM32H7) || defined(CHIP_FAMILY_STM32L4)
+#define STM32_BKP_BYTES             128
+#elif defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32L)
+#define STM32_BKP_BYTES             80
+#elif defined(CHIP_FAMILY_STM32F3)
+#define STM32_BKP_BYTES             64
 #else
-#define STM32_BKP_ENTRIES           20
+#define STM32_BKP_BYTES             20
 #endif
 
 #else
@@ -1660,12 +1664,13 @@ typedef volatile struct stm32_spi_regs stm32_spi_regs_t;
 #define STM32_SPI_CR1_CPOL		(1 << 1)
 #define STM32_SPI_CR1_CPHA		(1 << 0)
 #define STM32_SPI_CR2_FRXTH		(1 << 12)
-#define STM32_SPI_CR2_NSSP		(1 << 3)
+#define STM32_SPI_CR2_DATASIZE(n)	(((n) - 1) << 8)
+#define STM32_SPI_CR2_TXEIE		(1 << 7)
 #define STM32_SPI_CR2_RXNEIE		(1 << 6)
-#define STM32_SPI_CR2_RXDMAEN		(1 << 0)
+#define STM32_SPI_CR2_NSSP		(1 << 3)
 #define STM32_SPI_CR2_SSOE		(1 << 2)
 #define STM32_SPI_CR2_TXDMAEN		(1 << 1)
-#define STM32_SPI_CR2_DATASIZE(n)	(((n) - 1) << 8)
+#define STM32_SPI_CR2_RXDMAEN		(1 << 0)
 
 #define STM32_SPI_SR_RXNE		(1 << 0)
 #define STM32_SPI_SR_TXE		(1 << 1)

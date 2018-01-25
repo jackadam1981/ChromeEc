@@ -55,15 +55,13 @@ GPIO(PCH_SLP_S0_L,		PIN(7, 5), GPIO_INPUT)
 #endif
 
 /* NC pins */
+GPIO(GPIO02_NC,			PIN(0, 2), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(GPIO71_NC,			PIN(7, 1), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(GPIO80_NC,			PIN(8, 0), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GPIOD2_NC,			PIN(D, 2), GPIO_INPUT | GPIO_PULL_UP)
 
-/* TODO(b/35585396): Make use of these GPIOs */
+/* Sensor Power */
 GPIO(PP1800_DX_SENSOR,		PIN(E, 7), GPIO_OUTPUT)
-
-GPIO(PP3300_DX_LTE,		PIN(0, 2), GPIO_OUT_LOW)
-GPIO(LTE_WAKE_L,		PIN(7, 1), GPIO_INPUT)
-GPIO(LTE_OFF_ODL,		PIN(8, 0), GPIO_ODR_LOW)
-/* end of TODO */
 
 /* I2C pins - these will be reconfigured for alternate function below */
 GPIO(I2C0_0_SCL,		PIN(B, 5), GPIO_INPUT)				/* EC_I2C0_0_USBC_3V3_SCL */
@@ -99,9 +97,9 @@ GPIO(USB_A_ILIM_SEL,		PIN(0, 0), GPIO_OUT_LOW)
 GPIO(USB1_ENABLE,		PIN(0, 1), GPIO_OUT_LOW)
 
 /* LEDs (2 colors on each port) */
-GPIO(LED_ACIN,			PIN(B, 6), GPIO_OUT_LOW)			/* ACIN LED */
-GPIO(POWER_LED,			PIN(B, 7), GPIO_OUT_LOW)			/* Power LED */
-GPIO(LED_CHARGE,		PIN(C, 6), GPIO_OUT_LOW)			/* Charge LED */
+GPIO(LED_ACIN,			PIN(B, 6), GPIO_OUT_HIGH)			/* ACIN LED */
+GPIO(POWER_LED,			PIN(B, 7), GPIO_OUT_HIGH)			/* Power LED */
+GPIO(LED_CHARGE,		PIN(C, 6), GPIO_OUT_HIGH)			/* Charge LED */
 
 /* Board ID */
 GPIO(BOARD_VERSION1,		PIN(8, 6), GPIO_INPUT)				/* Board ID bit0 */

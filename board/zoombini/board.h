@@ -33,7 +33,12 @@
 #define CONFIG_LPC
 #define CONFIG_PWM
 
-/* TODO(aaboagye): Verify the right address. */
+/* KB backlight driver */
+#ifdef BOARD_ZOOMBINI
+#define CONFIG_LED_DRIVER_LM3630A
+#endif /* defined(BOARD_ZOOMBINI) */
+
+#define CONFIG_ALS
 #define CONFIG_ALS_OPT3001
 #define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 #define ALS_COUNT 1
@@ -66,6 +71,7 @@
 #define CONFIG_CHARGE_RAMP_HW
 #define CONFIG_USB_CHARGER
 #endif /* defined(BOARD_ZOOMBINI) */
+#define CONFIG_CHARGER_DISCHARGE_ON_AC
 
 #define CONFIG_CHIPSET_CANNONLAKE
 #define CONFIG_CHIPSET_RESET_HOOK
@@ -93,6 +99,13 @@
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
+#endif /* defined(BOARD_MEOWTH) */
+
+#define CONFIG_LED_COMMON
+#ifdef BOARD_MEOWTH
+#define CONFIG_LED_PWM_COUNT 2
+#else
+#define CONFIG_LED_PWM_COUNT 1
 #endif /* defined(BOARD_MEOWTH) */
 
 #define CONFIG_USB_POWER_DELIVERY

@@ -800,7 +800,6 @@ static void check_and_queue_gestures(uint32_t *event)
 		vector.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID;
 		motion_sense_fifo_add_unit(&vector, NULL, 0);
 #endif
-		CPRINTS("double tap!");
 		/* Call board specific function to process tap */
 		sensor_board_proc_double_tap();
 	}
@@ -818,7 +817,6 @@ static void check_and_queue_gestures(uint32_t *event)
 		vector.sensor_num = MOTION_SENSE_ACTIVITY_SENSOR_ID;
 		motion_sense_fifo_add_unit(&vector, NULL, 0);
 #endif
-		CPRINTS("significant motion");
 		/* Disable further detection */
 		activity_sensor = &motion_sensors[CONFIG_GESTURE_SIGMO];
 		activity_sensor->drv->manage_activity(
@@ -1220,6 +1218,8 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 				in->sensor_range.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
+		if (!sensor->drv->set_range || !sensor->drv->get_range)
+			return EC_RES_INVALID_COMMAND;
 
 		/* Set new range if the data arg has a value. */
 		if (in->sensor_range.data != EC_MOTION_SENSE_NO_VALUE) {
@@ -1241,6 +1241,8 @@ static int host_cmd_motion_sense(struct host_cmd_handler_args *args)
 				in->sensor_offset.sensor_num);
 		if (sensor == NULL)
 			return EC_RES_INVALID_PARAM;
+		if (!sensor->drv->set_offset || !sensor->drv->get_offset)
+			return EC_RES_INVALID_COMMAND;
 
 		/* Set new range if the data arg has a value. */
 		if (in->sensor_offset.flags & MOTION_SENSE_SET_OFFSET) {

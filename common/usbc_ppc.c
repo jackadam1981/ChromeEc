@@ -16,6 +16,22 @@
 
 /* Simple wrappers to dispatch to the drivers. */
 
+int ppc_init(int port)
+{
+	int rv;
+
+	if (port >= ppc_cnt)
+		return EC_ERROR_INVAL;
+
+	rv = ppc_chips[port].drv->init(port);
+	if (rv)
+		CPRINTS("p%d: PPC init failed! (%d)", port, rv);
+	else
+		CPRINTS("p%d: PPC init'd.", port);
+
+	return rv;
+}
+
 int ppc_is_sourcing_vbus(int port)
 {
 	if ((port < 0) || (port >= ppc_cnt)) {
@@ -26,12 +42,36 @@ int ppc_is_sourcing_vbus(int port)
 	return ppc_chips[port].drv->is_sourcing_vbus(port);
 }
 
+int ppc_set_polarity(int port, int polarity)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	return ppc_chips[port].drv->set_polarity(port, polarity);
+}
+
 int ppc_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp)
 {
 	if ((port < 0) || (port >= ppc_cnt))
 		return EC_ERROR_INVAL;
 
 	return ppc_chips[port].drv->set_vbus_source_current_limit(port, rp);
+}
+
+int ppc_discharge_vbus(int port, int enable)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	return ppc_chips[port].drv->discharge_vbus(port, enable);
+}
+
+int ppc_set_vconn(int port, int enable)
+{
+	if ((port < 0) || (port >= ppc_cnt))
+		return EC_ERROR_INVAL;
+
+	return ppc_chips[port].drv->set_vconn(port, enable);
 }
 
 int ppc_vbus_sink_enable(int port, int enable)
@@ -51,29 +91,17 @@ int ppc_vbus_source_enable(int port, int enable)
 }
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
-int ppc_is_vbus_present(int port, int *vbus_present)
+int ppc_is_vbus_present(int port)
 {
-	if (port >= ppc_cnt)
-		return EC_ERROR_INVAL;
+	if ((port < 0) || (port >= ppc_cnt)) {
+		CPRINTS("%s(%d) Invalid port!", __func__, port);
+		return 0;
+	}
 
-	return ppc_chips[port].drv->is_vbus_present(port, vbus_present);
+	return ppc_chips[port].drv->is_vbus_present(port);
 }
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 
-static void ppc_init(void)
-{
-	int i;
-	int rv;
-
-	for (i = 0; i < ppc_cnt; i++) {
-		rv = ppc_chips[i].drv->init(i);
-		if (rv)
-			CPRINTS("p%d: PPC init failed! (%d)", i, rv);
-		else
-			CPRINTS("p%d: PPC init'd.", i);
-	}
-}
-DECLARE_HOOK(HOOK_INIT, ppc_init, HOOK_PRIO_INIT_I2C + 1);
 
 #ifdef CONFIG_CMD_PPC_DUMP
 static int command_ppc_dump(int argc, char **argv)

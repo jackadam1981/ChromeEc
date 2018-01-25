@@ -24,8 +24,10 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "usbc_ppc.h"
 #include "tcpm.h"
 #include "version.h"
+#include "vboot.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -316,6 +318,29 @@ static inline int pd_is_vbus_present(int port)
 }
 #endif
 
+static void set_polarity(int port, int polarity)
+{
+	tcpm_set_polarity(port, polarity);
+#ifdef CONFIG_USBC_PPC
+	ppc_set_polarity(port, polarity);
+#endif /* defined(CONFIG_USBC_PPC) */
+}
+
+#ifdef CONFIG_USBC_VCONN
+static void set_vconn(int port, int enable)
+{
+#ifdef CONFIG_USBC_PPC
+	/*
+	 * USB-C PPCs can source their own Vconn.  No need to tell the TCPC
+	 * to source its own.
+	 */
+	ppc_set_vconn(port, enable);
+#else /* !defined(CONFIG_USBC_PPC) */
+	tcpm_set_vconn(port, enable);
+#endif /* defined(CONFIG_USBC_PPC) */
+}
+#endif /* defined(CONFIG_USBC_VCONN) */
+
 static inline void set_state(int port, enum pd_states next_state)
 {
 	enum pd_states last_state = pd[port].task_state;
@@ -354,8 +379,8 @@ static inline void set_state(int port, enum pd_states next_state)
 					CHARGE_CEIL_NONE);
 #endif
 #ifdef CONFIG_USBC_VCONN
-		tcpm_set_vconn(port, 0);
-#endif
+		set_vconn(port, 0);
+#endif /* defined(CONFIG_USBC_VCONN) */
 #else /* CONFIG_USB_PD_DUAL_ROLE */
 	if (next_state == PD_STATE_SRC_DISCONNECTED) {
 #endif
@@ -596,7 +621,7 @@ static int send_source_cap(int port)
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, src_pdo);
 	if (debug_level >= 2)
-		CPRINTF("srcCAP>%d\n", bit_len);
+		CPRINTS("C%d srcCAP>%d", port, bit_len);
 
 	return bit_len;
 }
@@ -1828,9 +1853,9 @@ static void pd_partner_port_reset(int port)
 	   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))
 		return;
 
-	/* Provide Rp for 100 msec. or until we no longer have VBUS. */
+	/* Provide Rp for 200 msec. or until we no longer have VBUS. */
 	tcpm_set_cc(port, TYPEC_CC_RP);
-	timeout = get_time().val + 100 * MSEC;
+	timeout = get_time().val + 200 * MSEC;
 
 	while (get_time().val < timeout && pd_is_vbus_present(port))
 		msleep(10);
@@ -1986,6 +2011,10 @@ static void pd_init_tasks(void)
 	/* Disable PD communication at init if we're in RO and locked. */
 	if (!system_is_in_rw() && system_is_locked())
 		enable = 0;
+#ifdef CONFIG_VBOOT_EFS
+	if (vboot_need_pd_comm())
+		enable = 1;
+#endif
 #endif
 	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
 		pd_comm_enabled[i] = enable;
@@ -2041,11 +2070,6 @@ void pd_task(void *u)
 	/* Ensure the power supply is in the default state */
 	pd_power_supply_reset(port);
 
-#ifdef CONFIG_USB_PD_TCPC_BOARD_INIT
-	/* Board specific TCPC init */
-	board_tcpc_init();
-#endif
-
 	/* Initialize TCPM driver and wait for TCPC to be ready */
 	res = tcpm_init(port);
 
@@ -2100,6 +2124,16 @@ void pd_task(void *u)
 #endif
 	tcpm_set_cc(port, PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE ?
 		    TYPEC_CC_RP : TYPEC_CC_RD);
+
+#ifdef CONFIG_USBC_PPC
+	/*
+	 * Wait to initialize the PPC after setting the correct Rd values in
+	 * the TCPC otherwise the TCPC might not be pulling the CC lines down
+	 * when the PPC connects the CC lines from the USB connector to the
+	 * TCPC cause the source to drop Vbus causing a brown out.
+	 */
+	ppc_init(port);
+#endif
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
 	/* Initialize PD Policy engine */
@@ -2174,7 +2208,7 @@ void pd_task(void *u)
 #endif
 			     (PD_ROLE_DEFAULT(port) == PD_ROLE_SOURCE &&
 			     pd[port].task_state == PD_STATE_SRC_READY))) {
-				tcpm_set_polarity(port, pd[port].polarity);
+				set_polarity(port, pd[port].polarity);
 				tcpm_set_msg_header(port, pd[port].power_role,
 						    pd[port].data_role);
 				tcpm_set_rx_enable(port, 1);
@@ -2305,7 +2339,7 @@ void pd_task(void *u)
 			if (new_cc_state == PD_CC_UFP_ATTACHED ||
 			    new_cc_state == PD_CC_DEBUG_ACC) {
 				pd[port].polarity = (cc1 != TYPEC_CC_VOLT_RD);
-				tcpm_set_polarity(port, pd[port].polarity);
+				set_polarity(port, pd[port].polarity);
 
 				/* initial data role for source is DFP */
 				pd_set_data_role(port, PD_ROLE_DFP);
@@ -2330,7 +2364,7 @@ void pd_task(void *u)
 					tcpm_set_rx_enable(port, 1);
 
 #ifdef CONFIG_USBC_VCONN
-				tcpm_set_vconn(port, 1);
+				set_vconn(port, 1);
 				pd[port].flags |= PD_FLAGS_VCONN_ON;
 #endif
 
@@ -2788,7 +2822,7 @@ void pd_task(void *u)
 
 			/* We are attached */
 			pd[port].polarity = get_snk_polarity(cc1, cc2);
-			tcpm_set_polarity(port, pd[port].polarity);
+			set_polarity(port, pd[port].polarity);
 			/* reset message ID  on connection */
 			pd[port].msg_id = 0;
 			/* initial data role for sink is UFP */
@@ -3122,7 +3156,7 @@ void pd_task(void *u)
 			if (pd[port].last_state != pd[port].task_state) {
 				if (!(pd[port].flags & PD_FLAGS_VCONN_ON)) {
 					/* Turn VCONN on and wait for it */
-					tcpm_set_vconn(port, 1);
+					set_vconn(port, 1);
 					set_state_timeout(port,
 					  get_time().val + PD_VCONN_SWAP_DELAY,
 					  PD_STATE_VCONN_SWAP_READY);
@@ -3154,7 +3188,7 @@ void pd_task(void *u)
 						  READY_RETURN_STATE(port));
 				} else {
 					/* Turn VCONN off and wait for it */
-					tcpm_set_vconn(port, 0);
+					set_vconn(port, 0);
 					pd[port].flags &= ~PD_FLAGS_VCONN_ON;
 					set_state_timeout(port,
 					  get_time().val + PD_VCONN_SWAP_DELAY,

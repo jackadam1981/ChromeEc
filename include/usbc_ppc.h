@@ -49,6 +49,15 @@ struct ppc_drv {
 	int (*vbus_source_enable)(int port, int enable);
 
 	/**
+	 * Inform the PPC of the polarity of the CC pins.
+	 *
+	 * @param port: The Type-C port number.
+	 * @param polarity: 1: CC2 used for comms, 0: CC1 used for comms.
+	 * @return EC_SUCCESS on success, error otherwise.
+	 */
+	int (*set_polarity)(int port, int polarity);
+
+	/**
 	 * Set the Vbus source path current limit
 	 *
 	 * @param port: The Type-C port number.
@@ -56,6 +65,23 @@ struct ppc_drv {
 	 * @return EC_SUCCESS on success, error otherwise.
 	 */
 	int (*set_vbus_source_current_limit)(int port, enum tcpc_rp_value rp);
+
+	/**
+	 * Discharge PD VBUS on src/sink disconnect & power role swap
+	 *
+	 * @param port: The Type-C port number.
+	 * @param enable: 1 -> discharge vbus, 0 -> stop discharging vbus
+	 * @return EC_SUCCESS on success, error otherwise.
+	 */
+	int (*discharge_vbus)(int port, int enable);
+
+	/**
+	 * Turn on/off the VCONN FET.
+	 *
+	 * @param port: The Type-C port number.
+	 * @param enable: 1: enable VCONN FET 0: disable VCONN FET.
+	 */
+	int (*set_vconn)(int port, int enable);
 
 #ifdef CONFIG_CMD_PPC_DUMP
 	/**
@@ -68,21 +94,13 @@ struct ppc_drv {
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
-	/*
-	 * TODO(aaboagye): In order for VBUS detection to work properly for our
-	 * system, we need to enable VBUS interrupts and send the appropriate
-	 * notifications.
-	 */
-
 	/**
 	 * Determine if VBUS is present or not.
 	 *
 	 * @param port: The Type-C port number.
-	 * @param vbus_present: 1: VBUS is present. 0: VBUS is not present.
-	 * @return EC_SUCCESS if able to determine VBUS status, otherwise an
-	 *         error.
+	 * @return 1 if VBUS is present, 0 if not.
 	 */
-	int (*is_vbus_present)(int port, int *vbus_present);
+	int (*is_vbus_present)(int port);
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 };
 
@@ -96,14 +114,20 @@ extern const struct ppc_config_t ppc_chips[];
 extern const unsigned int ppc_cnt;
 
 /**
+ * Initializes the PPC for the specified port.
+ *
+ * @param port: The Type-C port number.
+ * @return EC_SUCCESS on success, error otherwise.
+ */
+int ppc_init(int port);
+
+/**
  * Determine if VBUS is present or not.
  *
  * @param port: The Type-C port number.
- * @param vbus_present: 1: VBUS is present. 0: VBUS is not present.
- * @return EC_SUCCESS if able to determine VBUS status, otherwise an
- *         error.
+ * @return 1 if VBUS is present, 0 if not.
  */
-int ppc_is_vbus_present(int port, int *vbus_present);
+int ppc_is_vbus_present(int port);
 
 /**
  * Is the port sourcing Vbus?
@@ -114,6 +138,15 @@ int ppc_is_vbus_present(int port, int *vbus_present);
 int ppc_is_sourcing_vbus(int port);
 
 /**
+ * Inform the PPC of the polarity of the CC pins.
+ *
+ * @param port: The Type-C port number.
+ * @param polarity: 1: CC2 used for comms, 0: CC1 used for comms.
+ * @return EC_SUCCESS on success, error otherwise.
+ */
+int ppc_set_polarity(int port, int polarity);
+
+/**
  * Set the Vbus source path current limit
  *
  * @param port: The Type-C port number.
@@ -121,6 +154,23 @@ int ppc_is_sourcing_vbus(int port);
  * @return EC_SUCCESS on success, error otherwise.
  */
 int ppc_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp);
+
+/**
+ * Turn on/off the VCONN FET.
+ *
+ * @param port: The Type-C port number.
+ * @param enable: 1: enable VCONN FET 0: disable VCONN FET.
+ */
+int ppc_set_vconn(int port, int enable);
+
+/**
+ * Discharge PD VBUS on src/sink disconnect & power role swap
+ *
+ * @param port: The Type-C port number.
+ * @param enable: 1 -> discharge vbus, 0 -> stop discharging vbus
+ * @return EC_SUCCESS on success, error otherwise.
+ */
+int ppc_discharge_vbus(int port, int enable);
 
 /**
  * Turn on/off the charge path FET, such that current flows into the

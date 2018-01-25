@@ -204,16 +204,21 @@
 #define CONFIG_USB_I2C
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
-#define I2C_PORT_TOUCHPAD 0
+#define I2C_PORT_MASTER 0
+#define I2C_PORT_KBLIGHT 0
 #define I2C_PORT_CHARGER 1
 
 /* Enable PWM */
 #define CONFIG_PWM
 
+#ifdef BOARD_WHISKERS
+#define CONFIG_LED_DRIVER_LM3630A
+#endif
+
 /* Enable Elan touchpad driver */
 #define CONFIG_TOUCHPAD
 #define CONFIG_TOUCHPAD_ELAN
-#define CONFIG_TOUCHPAD_I2C_PORT I2C_PORT_TOUCHPAD
+#define CONFIG_TOUCHPAD_I2C_PORT I2C_PORT_MASTER
 #define CONFIG_TOUCHPAD_I2C_ADDR (0x15 << 1)
 
 #define CONFIG_CURVE25519
@@ -284,13 +289,8 @@
 
 /* Timer selection */
 #define TIM_CLOCK32 2
-#ifdef BOARD_WHISKERS
-#define TIM_KBLIGHT 16
-#define TIM_WATCHDOG 17
-#else
 #define TIM_WATCHDOG 16
 #define TIM_KBLIGHT 17
-#endif
 
 #include "gpio_signal.h"
 

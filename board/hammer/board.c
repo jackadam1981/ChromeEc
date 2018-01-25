@@ -5,6 +5,7 @@
 /* Hammer board configuration */
 
 #include "common.h"
+#include "driver/led/lm3630a.h"
 #include "ec_version.h"
 #include "ec_ec_comm_slave.h"
 #include "gpio.h"
@@ -66,8 +67,8 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
-	{"touchpad", I2C_PORT_TOUCHPAD, 400,
-		GPIO_TOUCHPAD_I2C_SCL, GPIO_TOUCHPAD_I2C_SDA},
+	{"master", I2C_PORT_MASTER, 400,
+		GPIO_MASTER_I2C_SCL, GPIO_MASTER_I2C_SDA},
 #ifdef BOARD_WAND
 	{"charger", I2C_PORT_CHARGER, 100,
 		GPIO_CHARGER_I2C_SCL, GPIO_CHARGER_I2C_SDA},
@@ -162,14 +163,20 @@ static void board_init(void)
 	}
 #endif /* BOARD_STAFF */
 
-#if defined(BOARD_WAND) && defined(SECTION_IS_RW)
+#ifdef SECTION_IS_RW
+#ifdef BOARD_WAND
 	/* USB to serial queues */
 	queue_init(&ec_ec_comm_slave_input);
 	queue_init(&ec_ec_comm_slave_output);
 
 	/* UART init */
 	usart_init(&ec_ec_usart);
-#endif
+#endif /* BOARD_WAND */
+
+#ifdef BOARD_WHISKERS
+	lm3630a_poweron();
+#endif /* BOARD_WHISKERS */
+#endif /* SECTION_IS_RW */
 }
 /* This needs to happen before PWM is initialized. */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_PWM - 1);
@@ -199,7 +206,7 @@ int board_has_keyboard_backlight(void)
  */
 void board_usb_wake(void)
 {
-#ifdef BOARD_WAND
+#if defined(BOARD_WAND) || defined(BOARD_WHISKERS)
 	/* FIXME: Implement side-band wake for wand. */
 #else
 	/*

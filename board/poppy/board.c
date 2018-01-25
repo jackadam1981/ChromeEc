@@ -57,6 +57,9 @@
 
 #define USB_PD_PORT_ANX74XX	0
 
+/* Minimum input current limit. */
+#define ILIM_MIN_MA 472
+
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if ((signal == GPIO_USB_C0_PD_INT_ODL) &&
@@ -141,7 +144,6 @@ void anx74xx_cable_det_interrupt(enum gpio_signal signal)
 
 static int command_attach_base(int argc, char **argv)
 {
-	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 	tablet_set_mode(0);
 	return EC_SUCCESS;
 }
@@ -150,7 +152,6 @@ DECLARE_CONSOLE_COMMAND(attachbase, command_attach_base,
 
 static int command_detach_base(int argc, char **argv)
 {
-	host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
 	tablet_set_mode(1);
 	return EC_SUCCESS;
 }
@@ -632,6 +633,10 @@ int board_set_active_charge_port(int charge_port)
 		gpio_set_level(GPIO_USB_C0_CHARGE_L, 1);
 		gpio_set_level(GPIO_USB_C1_CHARGE_L, 1);
 	} else {
+#ifdef BOARD_LUX
+		/* Disable cross-power with base, charger task will reenable. */
+		board_enable_base_power(0);
+#endif
 		/* Make sure non-charging port is disabled */
 		gpio_set_level(charge_port ? GPIO_USB_C0_CHARGE_L :
 					     GPIO_USB_C1_CHARGE_L, 1);
@@ -654,8 +659,13 @@ int board_set_active_charge_port(int charge_port)
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
-	charge_set_input_current_limit(MAX(charge_ma,
-				   CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
+	/* Adjust ILIM according to measurements to eliminate overshoot. */
+	charge_ma = (charge_ma - 500) * 31 / 32 + 472;
+	/* 5V is significantly more accurate than other voltages. */
+	if (charge_mv > 5000)
+		charge_ma -= 52;
+
+	charge_set_input_current_limit(MAX(charge_ma, ILIM_MIN_MA), charge_mv);
 }
 
 void board_hibernate(void)

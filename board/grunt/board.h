@@ -23,6 +23,13 @@
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
 
+/*
+ * Enable 1 slot of secure temporary storage to support
+ * suspend/resume with read/write memory training.
+ */
+#define CONFIG_VSTORE
+#define CONFIG_VSTORE_SLOT_COUNT 1
+
 #define CONFIG_ADC
 #define CONFIG_BACKLIGHT_LID
 #define CONFIG_BACKLIGHT_LID_ACTIVE_LOW
@@ -71,8 +78,7 @@
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_COMM_LOCKED
-#define CONFIG_USB_PD_DISCHARGE
-#define CONFIG_USB_PD_DISCHARGE_TCPC
+#define CONFIG_USB_PD_DISCHARGE_PPC
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_LOGGING
@@ -120,8 +126,6 @@
 /* Accelerometer and Gyroscope are the same device. */
 #define I2C_PORT_ACCEL		I2C_PORT_SENSOR
 
-#define CONFIG_BRINGUP /* TODO(teravest): Remove this later. */
-
 /* Sensors */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT TASK_EVENT_CUSTOM(4)
@@ -136,6 +140,9 @@
 
 /* Thermal */
 #define CONFIG_TEMP_SENSOR_SB_TSI
+
+/* KB backlight driver */
+#define CONFIG_LED_DRIVER_LM3630A
 
 /* FIFO size is a power of 2. */
 #define CONFIG_ACCEL_FIFO 1024  /* TODO(teravest): Check this value. */
@@ -172,7 +179,7 @@ enum temp_sensor_id {
 
 enum pwm_channel {
 	PWM_CH_KBLIGHT = 0,
-	PWM_CH_LED1_ORANGE,
+	PWM_CH_LED1_AMBER,
 	PWM_CH_LED2_BLUE,
 	PWM_CH_COUNT
 };
@@ -187,7 +194,6 @@ enum sensor_id {
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
 
 void board_reset_pd_mcu(void);
-void board_tcpc_init(void);
 
 #endif /* !__ASSEMBLER__ */
 

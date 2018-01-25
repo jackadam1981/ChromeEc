@@ -16,7 +16,7 @@ common-$(CONFIG_ACCELGYRO_LSM6DSM)+=math_util.o
 common-$(CONFIG_ACCEL_LIS2DH)+=math_util.o
 common-$(CONFIG_ACCEL_KXCJ9)+=math_util.o
 common-$(CONFIG_ACCEL_KX022)+=math_util.o
-common-$(CONFIG_ADC)+=adc.o
+common-$(CONFIG_CMD_ADC)+=adc.o
 common-$(HAS_TASK_ALS)+=als.o
 common-$(CONFIG_AP_HANG_DETECT)+=ap_hang_detect.o
 common-$(CONFIG_BACKLIGHT_LID)+=backlight_lid.o
@@ -72,6 +72,7 @@ common-$(CONFIG_KEYBOARD_PROTOCOL_MKBP)+=keyboard_mkbp.o
 common-$(CONFIG_KEYBOARD_TEST)+=keyboard_test.o
 common-$(CONFIG_LED_COMMON)+=led_common.o
 common-$(CONFIG_LED_POLICY_STD)+=led_policy_std.o
+common-$(CONFIG_LED_PWM)+=led_pwm.o
 common-$(CONFIG_LID_ANGLE)+=motion_lid.o math_util.o
 common-$(CONFIG_LID_ANGLE_UPDATE)+=lid_angle.o
 common-$(CONFIG_LID_SWITCH)+=lid_switch.o
@@ -134,10 +135,9 @@ common-$(HAS_TASK_LIGHTBAR)+=lb_common.o lightbar.o
 common-$(HAS_TASK_MOTIONSENSE)+=motion_sense.o
 common-$(HAS_TASK_TPM)+=tpm_registers.o
 
-ifeq ($(CONFIG_MALLOC),y)
-common-$(CONFIG_COMMON_RUNTIME)+=shmalloc.o
-else
-common-$(CONFIG_COMMON_RUNTIME)+=shared_mem.o
+ifneq ($(CONFIG_COMMON_RUNTIME),)
+common-$(CONFIG_MALLOC)+=shmalloc.o
+common-$(call not_cfg,$(CONFIG_MALLOC))+=shared_mem.o
 endif
 
 ifeq ($(CTS_MODULE),)

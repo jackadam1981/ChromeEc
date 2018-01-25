@@ -1151,7 +1151,7 @@ static int fp_pattern_frame(int capt_type, const char *title, int inv)
 	if (rv < 0)
 		return -1;
 	/* ensure the capture has happened without using event support */
-	usleep(50000);
+	usleep(200000);
 	pattern = fp_download_frame(&info);
 	if (!pattern)
 		return -1;
@@ -6076,6 +6076,11 @@ int get_battery_command(int index)
 	if (rv < 0)
 		return -1;
 
+	if (dynamic_r.flags & EC_BATT_FLAG_INVALID_DATA) {
+		printf("  Invalid data (not present?)\n");
+		return -1;
+	}
+
 	if (!is_string_printable(static_r.manufacturer))
 		goto cmd_error;
 	printf("  OEM name:               %s\n", static_r.manufacturer);
@@ -6452,7 +6457,10 @@ static int cmd_cbi(int argc, char *argv[])
 		rv = ec_command(EC_CMD_SET_CROS_BOARD_INFO, 0, &p, sizeof(p),
 				NULL, 0);
 		if (rv < 0) {
-			fprintf(stderr, "Error code: %d\n", rv);
+			if (rv == -EC_RES_ACCESS_DENIED - EECRESULT)
+				fprintf(stderr, "Write failed. WP enabled?\n");
+			else
+				fprintf(stderr, "Error code: %d\n", rv);
 			return rv;
 		}
 		return 0;

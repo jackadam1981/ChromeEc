@@ -91,9 +91,13 @@ enum sn5s330_pp_idx {
 /* FUNC_SET_3 */
 #define SN5S330_PP1_EN (1 << 0)
 #define SN5S330_PP2_EN (1 << 1)
+#define SN5S330_VBUS_DISCH_EN (1 << 2)
 #define SN5S330_SET_RCP_MODE_PP1 (1 << 5)
 #define SN5S330_SET_RCP_MODE_PP2 (1 << 6)
 
+/* FUNC_SET_4 */
+#define SN5S330_VCONN_EN (1 << 0)
+#define SN5S330_CC_POLARITY (1 << 1)
 #define SN5S330_CC_EN (1 << 4)
 
 /* FUNC_SET_9 */
@@ -119,13 +123,23 @@ enum sn5s330_pp_idx {
  */
 #define SN5S330_ILIM_PP1_MASK (1 << 4)
 
+/*
+ * INT_MASK_RISE/FALL_EDGE_3
+ *
+ * The VBUS_GOOD bit indicates VBUS has increased beyond a 4.0V threshold.
+ * For rising edge registers, this indicates VBUS has risen above 4.0V.
+ * For falling edge registers, this indicates VBUS has fallen below 4.0V.
+ */
+#define SN5S330_VBUS_GOOD_MASK (1 << 0)
+
 extern const struct ppc_drv sn5s330_drv;
 
 /**
  * Interrupt Handler for the SN5S330.
  *
  * By default, the only interrupt sources that are unmasked are overcurrent
- * conditions for PP1.
+ * conditions for PP1, and VBUS_GOOD if PPC is being used to detect VBUS
+ * (CONFIG_USB_PD_VBUS_DETECT_PPC).
  *
  * @param port: The Type-C port which triggered the interrupt.
  */
