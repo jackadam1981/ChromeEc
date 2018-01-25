@@ -22,6 +22,30 @@
       "revId": "382b29994016e4ad30fd229fd4ab91cb90b202e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80af80ed_929243d0",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-25T17:16:10Z",
+      "side": 1,
+      "message": "Thanks for catching that. Checking datasheets, there are no supported parts where these aren\u0027t 32-bit regs, so we can use the same packing method for all parts. I don\u0027t think it\u0027s worth keeping around the simple / space wasteful packing just for parts with large BKP data.",
+      "parentUuid": "40d0d58a_f7e2dee8",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 6
+      },
+      "revId": "382b29994016e4ad30fd229fd4ab91cb90b202e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
