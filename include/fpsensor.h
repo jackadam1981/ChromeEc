@@ -93,4 +93,40 @@ int fp_sensor_acquire_image(uint8_t *image_data);
  */
 int fp_sensor_acquire_image_with_mode(uint8_t *image_data, int mode);
 
+/*
+ * Compares given finger image against enrolled templates.
+ * The matching algorithm can update the template with additional biometric data
+ * from the image, if it chooses to do so.
+ * Returns:
+ * - negative value on error
+ * - EC_MKBP_FP_ERR_MATCH_NO on non-match
+ * - EC_MKBP_FP_ERR_MATCH_YES for match when template was not updated with
+ *   new data
+ * - EC_MKBP_FP_ERR_MATCH_YES_UPDATED for match when template was updated
+ * - EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED match, but update failed (not saved)
+ * - EC_MKBP_FP_ERR_MATCH_LOW_QUALITY when matching could not be performed due
+ *   to low image quality
+ * - EC_MKBP_FP_ERR_MATCH_LOW_COVERAGE when matching could not be performed
+ *   due to finger covering too little area of the sensor
+ */
+int fp_finger_match(void *templ, uint32_t templ_count, uint8_t *image,
+                    uint32_t *update_bitmap);
+
+/*
+ * Adds fingerprint image to the current enrollment session.
+ *
+ * TBD: use templ == NULL to abort current
+ *
+ * Returns:
+ * - negative value on error
+ * - EC_MKBP_FP_ERR_ENROLL_OK when image was successfully enrolled
+ * - EC_MKBP_FP_ERR_ENROLL_IMMOBILE when image added, but user should be advised
+ *   to move finger
+ * - EC_MKBP_FP_ERR_ENROLL_LOW_QUALITY when image could not be used due to low
+ *   image quality
+ * - EC_MKBP_FP_ERR_ENROL__LOW_COVERAGE when image could not be used  due to
+ *   finger covering too little area of the sensor
+ */
+int fp_finger_enroll(void *templ, uint8_t *image, int *completion);
+
 #endif /* __CROS_EC_FPSENSOR_H */
