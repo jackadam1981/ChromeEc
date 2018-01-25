@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a2aa923_b3e3ab58",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-25T11:00:19Z",
+      "side": 1,
+      "message": "this is one possible implementation, we can probably invent fancy alternatives, e.g :\ncommon-$(!CONFIG_FOO)+\u003dbar.o\n\nAFAIK Make allows a very large set character in variable names, so we would just define all !CONFIG_xxx at the same time as CONFIG_xxx",
+      "range": {
+        "startLine": 55,
+        "startChar": 9,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "8e77e76d407580b3a485a683449315259debc390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
