@@ -266,9 +266,9 @@ enum mft_channel {
 #define PD_VCONN_SWAP_DELAY		5000   /* us */
 
 /* Define typical operating power and max power */
-#define PD_OPERATING_POWER_MW		15000
-#define PD_MAX_POWER_MW			45000
-#define PD_MAX_CURRENT_MA		3000
+#define PD_OPERATING_POWER_MW		10000
+#define PD_MAX_POWER_MW			65000
+#define PD_MAX_CURRENT_MA		3250
 #define PD_MAX_VOLTAGE_MV		20000
 
 /* Board specific handlers */
