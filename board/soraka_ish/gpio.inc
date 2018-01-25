@@ -5,7 +5,16 @@
  * found in the LICENSE file.
  */
 
-/* I2C pins - these will be reconfigured for alternate function below */
-GPIO(I2C0_SCL,            PIN(15),  GPIO_INPUT)
-GPIO(I2C0_SDA,            PIN(16),  GPIO_INPUT)
-GPIO(ENTERING_RW,         PIN(41),  GPIO_OUT_LOW)
+
+GPIO_INT(ACCELGYRO3_INT_L,      PIN(2), GPIO_INT_FALLING | GPIO_SEL_1P8V,    bmi160_interrupt)
+GPIO(ISH_GPIO_0,            PIN(0),  GPIO_INPUT)
+GPIO(ISH_GPIO_1,            PIN(1),  GPIO_INPUT)
+GPIO(ISH_GPIO_3,            PIN(3),  GPIO_INPUT)
+GPIO(ISH_GPIO_4,            PIN(4),  GPIO_INPUT)
+GPIO(ISH_GPIO_5,            PIN(5),  GPIO_INPUT)
+GPIO(ISH_GPIO_6,            PIN(6),  GPIO_INPUT)
+GPIO(ISH_GPIO_7,            PIN(7),  GPIO_INPUT)
+
+UNIMPLEMENTED(ENTERING_RW)
+UNIMPLEMENTED(I2C0_SCL)
+UNIMPLEMENTED(I2C0_SDA)
