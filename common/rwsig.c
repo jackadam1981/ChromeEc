@@ -190,6 +190,7 @@ int rwsig_check_signature(void)
 	hash = SHA256_final(&ctx);
 
 	good = rsa_verify(key, sig, hash, rsa_workbuf);
+	CPRINTS("RSA verify %d.", good);
 	if (!good)
 		goto out;
 
