@@ -22,6 +22,30 @@
       "revId": "31879a13d63e642dbcd30ae2a8e5e211f8b2baf8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5536663e_12889813",
+        "filename": "board/nami/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2018-01-25T01:53:02Z",
+      "side": 1,
+      "message": "power team consider that TypeC adapter should provide higher voltage in the same watt if it can",
+      "parentUuid": "e406a382_b08d7847",
+      "range": {
+        "startLine": 246,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 0
+      },
+      "revId": "31879a13d63e642dbcd30ae2a8e5e211f8b2baf8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
