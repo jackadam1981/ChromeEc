@@ -11,6 +11,14 @@
 #ifndef __ASSEMBLER__
 #include "common.h"
 
+
+/* ISH GPIO has only one port */
+#define ISH_GPIO_PORT_0 0
+
+/* Chip-independent aliases for port base group */
+#define GPIO_0 ISH_GPIO_PORT_0
+#define DUMMY_GPIO_BANK ISH_GPIO_PORT_0
+
 /*
  * ISH3.0 has 3 controllers. Locking must occur by-controller (not by-port).
  */
@@ -20,6 +28,7 @@ enum ish_i2c_port {
 	ISH_I2C2   = 2,      /* Controller 2 */
 	I2C_PORT_COUNT,
 };
+
 #endif
 
 #define ISH_I2C_PORT_COUNT	I2C_PORT_COUNT
