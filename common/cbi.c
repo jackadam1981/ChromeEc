@@ -21,6 +21,10 @@
 static struct board_info bi;
 static int cached_read_result = EC_ERROR_CBI_CACHE_INVALID;
 
+#ifdef CONFIG_CMD_CBI_FAKE
+static int fake_oem_id = -1;
+#endif
+
 static uint8_t cbi_crc8(const struct board_info *bi)
 {
 	return crc8((uint8_t *)&bi->head.crc + 1, bi->head.total_size - 4);
@@ -85,6 +89,11 @@ static int do_read_board_info(void)
 	memcpy(&bi.head + 1, &buf[sizeof(bi.head)],
 	       sizeof(bi) - sizeof(bi.head));
 	/* If we're handling previous version, clear all new fields */
+
+#ifdef CONFIG_CMD_CBI_FAKE
+	if (fake_oem_id != -1)
+		bi.oem_id = fake_oem_id;
+#endif
 
 	return EC_SUCCESS;
 }
@@ -251,3 +260,45 @@ static int hc_cbi_set(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_SET_CROS_BOARD_INFO,
 		     hc_cbi_set,
 		     EC_VER_MASK(0));
+
+static int command_dump_cbi(int argc, char **argv)
+{
+#ifdef CONFIG_CMD_CBI_FAKE
+	if (argc >= 3) {
+		if (!strcasecmp(argv[1], "fake")) {
+			char *e;
+			int type;
+
+			type = strtoi(argv[2], &e, 10);
+			if (*e)
+				return EC_ERROR_PARAM1;
+
+			if (type != 1)
+				return EC_ERROR_PARAM1;
+
+			if (argc >= 4) {
+				fake_oem_id = strtoi(argv[3], &e, 10);
+				if (*e)
+					return EC_ERROR_PARAM2;
+			} else {
+				fake_oem_id = -1;
+			}
+
+			/* override cbi value instead of changing real value */
+			do_read_board_info();
+		}
+	}
+
+	ccprintf("Faked OEM_ID: ");
+	if (fake_oem_id == -1)
+		ccprintf("is Off\n");
+	else
+		ccprintf("%u (0x%x)\n", fake_oem_id);
+#endif
+	ccprintf("BOARD_VERSION: %u (0x%x)\n", bi.version);
+	ccprintf("OEM_ID: %u (0x%x)\n", bi.oem_id);
+	ccprintf("SKU_ID: %u (0x%x)\n", bi.sku_id);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(cbi, command_dump_cbi, NULL, NULL);
