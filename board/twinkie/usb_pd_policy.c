@@ -94,11 +94,6 @@ void pd_check_dr_role(int port, int dr_role, int flags)
 {
 }
 
-void pd_execute_data_swap(int port, int data_role)
-{
-	/* Do nothing */
-}
-
 int pd_custom_vdm(int port, int cnt, uint32_t *payload,
 		  uint32_t **rpayload)
 {

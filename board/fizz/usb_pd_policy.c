@@ -115,11 +115,6 @@ int pd_check_vconn_swap(int port)
 	return gpio_get_level(GPIO_PMIC_SLP_SUS_L);
 }
 
-void pd_execute_data_swap(int port, int data_role)
-{
-	/* Do nothing */
-}
-
 void pd_check_pr_role(int port, int pr_role, int flags)
 {
 	/*

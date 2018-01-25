@@ -717,6 +717,7 @@ enum pd_states {
 #define PD_FLAGS_PARTNER_USB_COMM  (1 << 14)/* port partner is USB comms */
 #define PD_FLAGS_UPDATE_SRC_CAPS   (1 << 15)/* send new source capabilities */
 #define PD_FLAGS_TS_DTS_PARTNER    (1 << 16)/* partner has rp/rp or rd/rd */
+#define PD_FLAGS_DR_INITIALIZED    (1 << 17)/* port data role has been set */
 /* Flags to clear on a disconnect */
 #define PD_FLAGS_RESET_ON_DISCONNECT_MASK (PD_FLAGS_PARTNER_DR_POWER | \
 					   PD_FLAGS_PARTNER_DR_DATA | \
@@ -732,10 +733,12 @@ enum pd_states {
 					   PD_FLAGS_TRY_SRC | \
 					   PD_FLAGS_PARTNER_USB_COMM | \
 					   PD_FLAGS_UPDATE_SRC_CAPS | \
-					   PD_FLAGS_TS_DTS_PARTNER)
+					   PD_FLAGS_TS_DTS_PARTNER | \
+					   PD_FLAGS_DR_INITIALIZED)
 
 /* Per-port battery backed RAM flags */
 #define PD_BBRMFLG_EXPLICIT_CONTRACT (1 << 0)
+#define PD_BBRMFLG_DATA_ROLE         (1 << 1)
 
 enum pd_cc_states {
 	PD_CC_NONE,
@@ -914,11 +917,12 @@ enum pd_data_msg_type {
 	((id) << 9) | ((cnt) << 12) | ((ext) << 15))
 
 /* Used for processing pd header */
-#define PD_HEADER_EXT(header)  (((header) >> 15) & 1)
-#define PD_HEADER_CNT(header)  (((header) >> 12) & 7)
-#define PD_HEADER_TYPE(header) ((header) & 0xF)
-#define PD_HEADER_ID(header)   (((header) >> 9) & 7)
-#define PD_HEADER_REV(header)  (((header) >> 6) & 3)
+#define PD_HEADER_EXT(header)   (((header) >> 15) & 1)
+#define PD_HEADER_CNT(header)   (((header) >> 12) & 7)
+#define PD_HEADER_TYPE(header)  ((header) & 0xF)
+#define PD_HEADER_ID(header)    (((header) >> 9) & 7)
+#define PD_HEADER_REV(header)   (((header) >> 6) & 3)
+#define PD_HEADER_DROLE(header) (((header) >> 5) & 1)
 
 /* Used for processing pd extended header */
 #define PD_EXT_HEADER_CHUNKED(header)   (((header) >> 15) & 1)
@@ -1243,14 +1247,6 @@ void pd_check_dr_role(int port, int dr_role, int flags);
  * @param pid Port partner Product ID
  */
 int pd_charge_from_device(uint16_t vid, uint16_t pid);
-
-/**
- * Execute data swap.
- *
- * @param port USB-C port number
- * @param data_role new data role
- */
-void pd_execute_data_swap(int port, int data_role);
 
 /**
  * Get PD device info used for VDO_CMD_SEND_INFO / VDO_CMD_READ_INFO

@@ -98,11 +98,6 @@ int pd_check_vconn_swap(int port)
 	return gpio_get_level(GPIO_PCH_SLP_SUS_L);
 }
 
-void pd_execute_data_swap(int port, int data_role)
-{
-	/* Do nothing */
-}
-
 int pd_is_valid_input_voltage(int mv)
 {
 	return 1;

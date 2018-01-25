@@ -90,11 +90,6 @@ int pd_check_data_swap(int port, int data_role)
 	return (data_role == PD_ROLE_UFP) ? 1 : 0;
 }
 
-void pd_execute_data_swap(int port, int data_role)
-{
-	/* TODO: need to open/close D+/D- switch based on role */
-}
-
 void pd_check_pr_role(int port, int pr_role, int flags)
 {
 	/*
