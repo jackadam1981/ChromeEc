@@ -124,6 +124,8 @@ const char help_str[] =
 	"      Prints information about the Fingerprint sensor\n"
 	"  fpmode [capture|deepsleep|fingerdown|fingerup]\n"
 	"      Configure/Read the fingerprint sensor current mode\n"
+	"  fptemplate [<infile>|<index 0..2>]\n"
+	"      Add a template if <infile> is provided, else dump it\n"
 	"  forcelidopen <enable>\n"
 	"      Forces the lid switch to open position\n"
 	"  gpioget <GPIO name>\n"
@@ -1092,22 +1094,34 @@ int cmd_rwsig_action(int argc, char *argv[])
 	return ec_command(EC_CMD_RWSIG_ACTION, 0, &req, sizeof(req), NULL, 0);
 }
 
-static void *fp_download_frame(struct ec_response_fp_info *info, int all)
+#define FP_FRAME_INDEX_SIMPLE_IMAGE -1
+static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 {
 	struct ec_params_fp_frame p;
 	int rv = 0;
 	size_t stride, size;
 	void *buffer;
 	uint8_t *ptr;
+	int cmdver = ec_cmd_version_supported(EC_CMD_FP_INFO, 1) ? 1 : 0;
+	int rsize = cmdver == 1 ? sizeof(*info)
+				: sizeof(struct ec_response_fp_info_v0);
 
-	rv = ec_command(EC_CMD_FP_INFO, 0, NULL, 0, info, sizeof(*info));
+	/* templates not supported in command v0 */
+	if (index > 0 && cmdver == 0)
+		return NULL;
+
+	rv = ec_command(EC_CMD_FP_INFO, cmdver, NULL, 0, info, rsize);
 	if (rv < 0)
 		return NULL;
 
-	if (all)
-		size = info->frame_size;
-	else
+	if (index == FP_FRAME_INDEX_SIMPLE_IMAGE) {
 		size = (size_t)info->width * info->bpp/8 * info->height;
+		index = 0;
+	} else if (index == FP_FRAME_INDEX_RAW_IMAGE) {
+		size = info->frame_size;
+	} else {
+		size = info->template_size;
+	}
 
 	buffer = malloc(size);
 	if (!buffer) {
@@ -1116,7 +1130,7 @@ static void *fp_download_frame(struct ec_response_fp_info *info, int all)
 	}
 
 	ptr = buffer;
-	p.offset = 0;
+	p.offset = index << FP_FRAME_INDEX_SHIFT;
 	while (size) {
 		stride = MIN(ec_max_insize, size);
 		p.size = stride;
@@ -1153,7 +1167,7 @@ static int fp_pattern_frame(int capt_type, const char *title, int inv)
 		return -1;
 	/* ensure the capture has happened without using event support */
 	usleep(200000);
-	pattern = fp_download_frame(&info, 0);
+	pattern = fp_download_frame(&info, FP_FRAME_INDEX_SIMPLE_IMAGE);
 	if (!pattern)
 		return -1;
 
@@ -1276,8 +1290,11 @@ int cmd_fp_info(int argc, char *argv[])
 {
 	struct ec_response_fp_info r;
 	int rv;
+	int cmdver = ec_cmd_version_supported(EC_CMD_FP_INFO, 1) ? 1 : 0;
+	int rsize = cmdver == 1 ? sizeof(r)
+				: sizeof(struct ec_response_fp_info_v0);
 
-	rv = ec_command(EC_CMD_FP_INFO, 0, NULL, 0, &r, sizeof(r));
+	rv = ec_command(EC_CMD_FP_INFO, cmdver, NULL, 0, &r, rsize);
 	if (rv < 0)
 		return rv;
 
@@ -1290,6 +1307,11 @@ int cmd_fp_info(int argc, char *argv[])
 	       r.errors & FP_ERROR_BAD_HWID ? "BAD_HWID " : "",
 	       r.errors & FP_ERROR_INIT_FAIL ? "INIT_FAIL " : "",
 	       FP_ERROR_DEAD_PIXELS(r.errors));
+	if (cmdver == 1) {
+		printf("Templates: size %d count %d/%d dirty bitmap %x\n",
+		       r.template_size, r.template_valid, r.template_max,
+		       r.template_dirty);
+	}
 
 	return 0;
 }
@@ -1297,8 +1319,9 @@ int cmd_fp_info(int argc, char *argv[])
 int cmd_fp_frame(int argc, char *argv[])
 {
 	struct ec_response_fp_info r;
-	int raw = (argc == 2 && !strcasecmp(argv[1], "raw"));
-	void *buffer = fp_download_frame(&r, raw);
+	int idx = (argc == 2 && !strcasecmp(argv[1], "raw")) ?
+		FP_FRAME_INDEX_RAW_IMAGE : FP_FRAME_INDEX_SIMPLE_IMAGE;
+	void *buffer = fp_download_frame(&r, idx);
 	uint8_t *ptr = buffer;
 	int x, y;
 
@@ -1307,7 +1330,7 @@ int cmd_fp_frame(int argc, char *argv[])
 		return -1;
 	}
 
-	if (raw) {
+	if (idx == FP_FRAME_INDEX_RAW_IMAGE) {
 		fwrite(buffer, r.frame_size, 1, stdout);
 		goto frame_done;
 	}
@@ -1324,6 +1347,67 @@ int cmd_fp_frame(int argc, char *argv[])
 frame_done:
 	free(buffer);
 	return 0;
+}
+
+int cmd_fp_template(int argc, char *argv[])
+{
+	struct ec_response_fp_info r;
+	struct ec_params_fp_template *p =
+				(struct ec_params_fp_template *)ec_outbuf;
+	int max_chunk = ec_max_outsize
+			- offsetof(struct ec_params_fp_template, data);
+	int idx = -1;
+	char *e;
+	int size;
+	void *buffer = NULL;
+	uint32_t offset = 0;
+	int rv = 0;
+
+	if (argc < 2) {
+		fprintf(stderr, "Usage: %s [<infile>|<index>]\n", argv[0]);
+		return -1;
+	}
+
+	idx = strtol(argv[1], &e, 0);
+	if (!(e && *e)) {
+		buffer = fp_download_frame(&r, idx + 1);
+		if (!buffer) {
+			fprintf(stderr, "Failed to get FP template %d\n", idx);
+			return -1;
+		}
+		fwrite(buffer, r.template_size, 1, stdout);
+		free(buffer);
+		return 0;
+	}
+	/* not an index, is it a filename ? */
+	buffer = read_file(argv[1], &size);
+	if (!buffer) {
+		fprintf(stderr, "Invalid parameter: %s\n", argv[1]);
+		return -1;
+	}
+	printf("sending template from: %s (%d bytes)\n", argv[1], size);
+	while (size) {
+		uint32_t tlen = MIN(max_chunk, size);
+
+		p->offset = offset;
+		p->size = tlen;
+		size -= tlen;
+		if (!size)
+			p->size |= FP_TEMPLATE_COMMIT;
+		memcpy(p->data, buffer + offset, tlen);
+		rv = ec_command(EC_CMD_FP_TEMPLATE, 0, p, tlen +
+				offsetof(struct ec_params_fp_template, data),
+				NULL, 0);
+		if (rv < 0)
+			break;
+		offset += tlen;
+	}
+	if (rv < 0)
+		fprintf(stderr, "Failed with %d\n", rv);
+	else
+		rv = 0;
+	free(buffer);
+	return rv;
 }
 
 /**
@@ -7720,6 +7804,7 @@ const struct command commands[] = {
 	{"fpframe", cmd_fp_frame},
 	{"fpinfo", cmd_fp_info},
 	{"fpmode", cmd_fp_mode},
+	{"fptemplate", cmd_fp_template},
 	{"gpioget", cmd_gpio_get},
 	{"gpioset", cmd_gpio_set},
 	{"hangdetect", cmd_hang_detect},
