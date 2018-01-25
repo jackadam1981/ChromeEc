@@ -34,6 +34,24 @@
       "revId": "c6e0847babdae2dca46f47e2bcd4019cbba9eba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945f2cca_b21f12df",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2018-01-25T17:20:19Z",
+      "side": 1,
+      "message": "I don\u0027t have a board that I can properly test this on then.  It worked correctly when I was using the other hook point, so I\u0027m pretty confident this should be fine.  I\u0027ll go ahead and submit, and we can fix it later if needed.",
+      "parentUuid": "c3acc288_64acdd32",
+      "revId": "c6e0847babdae2dca46f47e2bcd4019cbba9eba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
