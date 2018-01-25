@@ -27,6 +27,7 @@
 #include "timer.h"
 #include "uart.h"
 #include "util.h"
+#include "vboot.h"
 #include "watchdog.h"
 
 /* Console output macros */
@@ -168,8 +169,10 @@ test_mockable __keep int main(void)
 	button_init();
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON | CONFIG_VOLUME_BUTTONS) */
 
-#if !defined(CONFIG_VBOOT_EFS) && \
-	defined(CONFIG_RWSIG) && !defined(HAS_TASK_RWSIG)
+#if defined(CONFIG_VBOOT_EFS)
+	vboot_main();
+#else
+#if defined(CONFIG_RWSIG) && !defined(HAS_TASK_RWSIG)
 	/*
 	 * Check the RW firmware signature and jump to it if it is good.
 	 *
@@ -191,6 +194,7 @@ test_mockable __keep int main(void)
 		}
 	}
 #endif  /* !CONFIG_VBOOT_EFS && CONFIG_RWSIG && !HAS_TASK_RWSIG */
+#endif
 
 	/*
 	 * Print the init time.  Not completely accurate because it can't take
