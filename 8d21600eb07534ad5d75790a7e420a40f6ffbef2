@@ -117,6 +117,30 @@
     },
     {
       "key": {
+        "uuid": "8d10b23c_dde66569",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-25T21:56:35Z",
+      "side": 1,
+      "message": "Ok, let\u0027s use TYPEC_CC_OPEN for ports that support it. I will put up another change to identify such ports.",
+      "parentUuid": "ec6d8e55_3fe39bfa",
+      "range": {
+        "startLine": 1274,
+        "startChar": 0,
+        "endLine": 1277,
+        "endChar": 37
+      },
+      "revId": "8d21600eb07534ad5d75790a7e420a40f6ffbef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15492cb2_14931815",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 2
@@ -128,6 +152,30 @@
       "writtenOn": "2018-01-25T11:41:29Z",
       "side": 1,
       "message": "seems strange to me.\nIn a disconnected state, our data role is not really something defined ?\nand when we are going to connect again, the stack will set again the role ? \n(when leaving the _DEBOUNCE state)\noh I read further and I see now you removed those unconditional settings later.\n\nCan you point me at the spec wording which let you think that we should keep the data role over the error recovery process ?",
+      "range": {
+        "startLine": 1278,
+        "startChar": 0,
+        "endLine": 1278,
+        "endChar": 19
+      },
+      "revId": "8d21600eb07534ad5d75790a7e420a40f6ffbef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e06e517_f5be559e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-25T21:56:35Z",
+      "side": 1,
+      "message": "\u003e Can you point me at the spec wording which let you think that we should keep the data role over the error recovery process ?\n\nIn fact there is no such wording, but I need to solve the following problem -- if we have a data role conflict with a partner port that does not reset its data role on hard reset / data role conflict (against the spec, but we make the same mistake without this CL) then how can we recover? Simply keeping the same power role and resetting the data role to power role default on our side might not be changing the data role at all, so we\u0027ll again have a conflict.\n\nAny other suggestion?",
+      "parentUuid": "15492cb2_14931815",
       "range": {
         "startLine": 1278,
         "startChar": 0,
