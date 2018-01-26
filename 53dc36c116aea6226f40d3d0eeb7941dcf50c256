@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9751c858_209ba654",
+        "filename": "board/nami/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-01-26T07:08:41Z",
+      "side": 1,
+      "message": "No, we should remove it.",
+      "parentUuid": "217ed70c_9eb32fad",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 31
+      },
+      "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51d4c3ec_7fb5a70d",
         "filename": "board/nami/board.h",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c89dac81_7ae95285",
+        "filename": "board/nami/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-01-26T07:08:41Z",
+      "side": 1,
+      "message": "OK",
+      "parentUuid": "51d4c3ec_7fb5a70d",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 8
+      },
+      "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "236733cc_cc96214f",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-01-26T07:08:41Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "c64c0b38_e8e2db59",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "923b8928_48e38b5d",
         "filename": "driver/temp_sensor/f75303.c",
         "patchSetId": 8
@@ -91,6 +163,30 @@
       "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abef6c37_8e522d1c",
+        "filename": "driver/temp_sensor/f75303.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-01-26T07:08:41Z",
+      "side": 1,
+      "message": "Sorry for my careless mistake.",
+      "parentUuid": "923b8928_48e38b5d",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -185,6 +281,30 @@
       "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb9e393_156bf890",
+        "filename": "driver/temp_sensor/f75303.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-01-26T07:08:41Z",
+      "side": 1,
+      "message": "OK.",
+      "parentUuid": "ff68aca0_1b6bdeef",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "53dc36c116aea6226f40d3d0eeb7941dcf50c256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
