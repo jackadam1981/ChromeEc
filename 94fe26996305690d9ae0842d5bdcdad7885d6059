@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "377935bf_45e35fae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-26T18:28:54Z",
+      "side": 1,
+      "message": "What doesn\u0027t work well? The lid is pulling too much current and bringing down the base? So you\u0027d rather brown-out only the lid?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "94fe26996305690d9ae0842d5bdcdad7885d6059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b80469ba_e77664b1",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-26T18:28:54Z",
+      "side": 1,
+      "message": "Why do we need both this function and \u0027static int base_connected\u0027?",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "94fe26996305690d9ae0842d5bdcdad7885d6059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e7ef8db_a066fcda",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-26T18:28:54Z",
+      "side": 1,
+      "message": "Is it possible for the lid to charge from something other than the base? If not, it seems you want to modify no-battery charge behavior from default on this board. If you approach the problem from that perspective, it makes sense to add a #define to change this behavior, which avoids sprinkling base references in this code. And this proposed #define might also be useful for boards that don\u0027t fit this lid / base model.",
+      "range": {
+        "startLine": 1174,
+        "startChar": 2,
+        "endLine": 1174,
+        "endChar": 25
+      },
+      "revId": "94fe26996305690d9ae0842d5bdcdad7885d6059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
