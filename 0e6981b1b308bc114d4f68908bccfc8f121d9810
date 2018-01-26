@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19424149_331035fc",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-26T15:11:52Z",
+      "side": 1,
+      "message": "What do you think about moving this task_wake to usb_charger_vbus within a #define CONFIG_USB_PD_VBUS_DETECT_PPC block similar to the CONFIG_USB_PD_VBUS_DETECT_CHARGER case [1].\n\nThe task_wake seems more natural there since we are adding a task there. Thoughts?\n\n[1] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/9c06f2f1c2ba3da9545f4ee5e47d7d0faf308435/common/usb_charger.c#78",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 331,
+        "endChar": 37
+      },
+      "revId": "0e6981b1b308bc114d4f68908bccfc8f121d9810",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
