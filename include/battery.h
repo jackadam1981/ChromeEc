@@ -375,4 +375,7 @@ enum battery_disconnect_state battery_get_disconnect_state(void);
 extern struct i2c_stress_test_dev battery_i2c_stress_test_dev;
 #endif
 
+void battery_refresh(int index);
+void battery_set_index(int index);
+
 #endif /* __CROS_EC_BATTERY_H */

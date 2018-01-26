@@ -473,4 +473,79 @@ static int host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_GET_DYNAMIC,
 		     host_command_battery_get_dynamic,
 		     EC_VER_MASK(0));
-#endif /* CONFIG_EC_EC_COMM_BATTERY */
+#endif
+
+static void battery_update(int index)
+{
+	char *batt_str;
+	int *memmap_dcap = (int *)host_get_memmap(EC_MEMMAP_BATT_DCAP);
+	int *memmap_dvlt = (int *)host_get_memmap(EC_MEMMAP_BATT_DVLT);
+	int *memmap_ccnt = (int *)host_get_memmap(EC_MEMMAP_BATT_CCNT);
+	int *memmap_volt = (int *)host_get_memmap(EC_MEMMAP_BATT_VOLT);
+	int *memmap_rate = (int *)host_get_memmap(EC_MEMMAP_BATT_RATE);
+	int *memmap_cap = (int *)host_get_memmap(EC_MEMMAP_BATT_CAP);
+	int *memmap_lfcc = (int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
+	uint8_t *memmap_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
+
+	/* Smart battery serial number is 16 bits */
+	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_SERIAL);
+	memcpy(batt_str, battery_static[index].serial, EC_MEMMAP_TEXT_MAX);
+
+	/* Design Capacity of Full */
+	*memmap_dcap = battery_static[index].design_capacity;
+
+	/* Design Voltage */
+	*memmap_dvlt = battery_static[index].design_voltage;
+
+	/* Cycle Count */
+	*memmap_ccnt = battery_static[index].cycle_count;
+
+	/* Battery Manufacturer string */
+	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MFGR);
+	memcpy(batt_str, battery_static[index].manufacturer, EC_MEMMAP_TEXT_MAX);
+
+	/* Battery Model string */
+	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MODEL);
+	memcpy(batt_str, battery_static[index].model, EC_MEMMAP_TEXT_MAX);
+
+	/* Battery Type string */
+	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_TYPE);
+	memcpy(batt_str, battery_static[index].type, EC_MEMMAP_TEXT_MAX);
+
+	*memmap_volt = battery_dynamic[index].actual_voltage;
+	*memmap_rate = battery_dynamic[index].actual_current;
+	*memmap_cap = battery_dynamic[index].remaining_capacity;
+	*memmap_lfcc = battery_dynamic[index].full_capacity;
+	*memmap_flags = battery_dynamic[index].flags;
+}
+
+void battery_refresh(int index)
+{
+	if (*host_get_memmap(EC_MEMMAP_BATT_INDEX) == index)
+		battery_update(index);
+}
+
+void battery_set_index(int index)
+{
+	if (*host_get_memmap(EC_MEMMAP_BATT_INDEX) == index)
+		return;
+
+	*host_get_memmap(EC_MEMMAP_BATT_INDEX) = -1;
+	if (index < 0 || index >= CONFIG_BATTERY_COUNT)
+		return;
+
+	battery_update(index);
+	*host_get_memmap(EC_MEMMAP_BATT_INDEX) = index;
+}
+
+static void battery_init(void)
+{
+	*host_get_memmap(EC_MEMMAP_BATT_INDEX) = -1;
+	*host_get_memmap(EC_MEMMAP_BATT_COUNT) = CONFIG_BATTERY_COUNT;
+	/* Version 2 means that battery info can be modified by XYZ */
+	*host_get_memmap(EC_MEMMAP_BATTERY_VERSION) = 2;
+
+	battery_set_index(0);
+}
+DECLARE_HOOK(HOOK_INIT, battery_init, HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_BATTERY_V2 */
