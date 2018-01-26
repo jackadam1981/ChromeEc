@@ -762,11 +762,10 @@ static int update_static_battery_info(void)
 
 	if (rv)
 		problem(PR_STATIC_UPDATE, rv);
-	else
-		; /*
-		   * TODO(b:65697620): Do we need to set a flag to indicate that
-		   * the information is now valid?
-		   */
+
+#ifdef HAS_TASK_HOSTCMD
+	battery_memmap_refresh(0);
+#endif
 
 	return rv;
 }
@@ -775,6 +774,8 @@ static void update_dynamic_battery_info(void)
 {
 	static int __bss_slow batt_present;
 	uint8_t tmp;
+	int send_batt_status_event = 0;
+	int send_batt_info_event = 0;
 
 	tmp = 0;
 	if (curr.ac)
@@ -783,6 +784,9 @@ static void update_dynamic_battery_info(void)
 	if (curr.batt.is_present == BP_YES) {
 		tmp |= EC_BATT_FLAG_BATT_PRESENT;
 		batt_present = 1;
+		/* Tell the AP to read battery info if it is newly present. */
+		if (!(battery_dynamic[0].flags & EC_BATT_FLAG_BATT_PRESENT))
+			send_batt_info_event++;
 	} else {
 		/*
 		 * Require two consecutive updates with BP_NOT_SURE
@@ -790,6 +794,8 @@ static void update_dynamic_battery_info(void)
 		 */
 		if (batt_present)
 			tmp |= EC_BATT_FLAG_BATT_PRESENT;
+		else if (battery_dynamic[0].flags & EC_BATT_FLAG_BATT_PRESENT)
+			send_batt_info_event++;
 		batt_present = 0;
 	}
 
@@ -829,6 +835,8 @@ static void update_dynamic_battery_info(void)
 		 curr.batt.full_capacity >=
 		   (battery_dynamic[0].full_capacity + LFCC_EVENT_THRESH))) {
 		battery_dynamic[0].full_capacity = curr.batt.full_capacity;
+		/* Poke the AP if the full_capacity changes. */
+		send_batt_info_event++;
 	}
 
 	if (curr.batt.is_present == BP_YES &&
@@ -839,7 +847,22 @@ static void update_dynamic_battery_info(void)
 	tmp |= curr.batt_is_charging ? EC_BATT_FLAG_CHARGING :
 				       EC_BATT_FLAG_DISCHARGING;
 
+	/* Tell the AP to re-read battery status if charge state changes */
+	if (battery_dynamic[0].flags != tmp)
+		send_batt_status_event++;
+
 	battery_dynamic[0].flags = tmp;
+
+#ifdef HAS_TASK_HOSTCMD
+	battery_memmap_refresh(0);
+#endif
+
+#ifdef CONFIG_HOSTCMD_EVENTS
+	if (send_batt_info_event)
+		host_set_single_event(EC_HOST_EVENT_BATTERY);
+	if (send_batt_status_event)
+		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
+#endif
 }
 #endif /* CONFIG_BATTERY_V2 */
 
@@ -1306,22 +1329,46 @@ void charger_task(void *u)
 		base_connected = board_is_base_connected();
 
 		if (!base_connected) {
+			const int invalid_flags = EC_BATT_FLAG_INVALID_DATA;
 			/* Invalidate static/dynamic information */
-			battery_dynamic[1].flags = EC_BATT_FLAG_INVALID_DATA;
+			if (battery_dynamic[1].flags != invalid_flags) {
+				battery_dynamic[1].flags = invalid_flags;
+
+				host_set_single_event(EC_HOST_EVENT_BATTERY);
+				host_set_single_event(
+					EC_HOST_EVENT_BATTERY_STATUS);
+			}
 			charge_base = -1;
 			base_responsive = 0;
 			prev_current_base = 0;
 			prev_allow_charge_base = 0;
 		} else if (base_responsive) {
 			int old_flags = battery_dynamic[1].flags;
+			int flags_changed;
+			int old_full_capacity =
+				battery_dynamic[1].full_capacity;
 
 			ec_ec_master_base_get_dynamic_info();
-
+			flags_changed = (old_flags != battery_dynamic[1].flags);
 			/* Fetch static information when flags change. */
-			if (old_flags != battery_dynamic[1].flags)
+			if (flags_changed)
 				ec_ec_master_base_get_static_info();
 
 			charge_base = charge_get_base_percent();
+			battery_memmap_refresh(1);
+
+			/* Newly connected battery, or change in capacity. */
+			if (old_flags & EC_BATT_FLAG_INVALID_DATA ||
+			    (old_flags & EC_BATT_FLAG_BATT_PRESENT) !=
+					(battery_dynamic[1].flags &
+						EC_BATT_FLAG_BATT_PRESENT) ||
+					old_full_capacity !=
+					       battery_dynamic[1].full_capacity)
+				host_set_single_event(EC_HOST_EVENT_BATTERY);
+
+			if (flags_changed)
+				host_set_single_event(
+					EC_HOST_EVENT_BATTERY_STATUS);
 		}
 #endif
 

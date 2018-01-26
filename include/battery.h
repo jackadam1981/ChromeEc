@@ -375,4 +375,17 @@ enum battery_disconnect_state battery_get_disconnect_state(void);
 extern struct i2c_stress_test_dev battery_i2c_stress_test_dev;
 #endif
 
+/**
+ * Refresh battery information in host memory mapped region, if index is
+ * currently presented.
+ * Only makes sense if CONFIG_BATTERY_V2 is set.
+ */
+void battery_memmap_refresh(int index);
+
+/**
+ * Set which index to present in host memory mapped region.
+ * Only makes sense if CONFIG_BATTERY_V2 is set.
+ */
+void battery_memmap_set_index(int index);
+
 #endif /* __CROS_EC_BATTERY_H */
