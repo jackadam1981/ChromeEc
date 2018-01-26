@@ -377,6 +377,19 @@ void print_battery_debug(void);
  */
 enum battery_disconnect_state battery_get_disconnect_state(void);
 
+#ifdef CONFIG_BATTERY_V2
+/**
+ * Refresh battery information in host memory mapped region, if index is
+ * currently presented.
+ */
+void battery_memmap_refresh(enum battery_index index);
+
+/**
+ * Set which index to present in host memory mapped region.
+ */
+void battery_memmap_set_index(enum battery_index index);
+#endif /* CONFIG_BATTERY_V2 */
+
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_BATTERY
 extern struct i2c_stress_test_dev battery_i2c_stress_test_dev;
 #endif
