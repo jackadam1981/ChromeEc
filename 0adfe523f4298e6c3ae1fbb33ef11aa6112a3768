@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ffde3e83_8ebc6083",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-26T01:20:43Z",
+      "side": 1,
+      "message": "The top half of the interrupt should be small enough to not matter.",
+      "parentUuid": "20f8b342_41693fa8",
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e976b692_730607ad",
         "filename": "driver/sync.c",
         "patchSetId": 4
@@ -84,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "d0e76efc_415d0b0f",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-26T01:20:43Z",
+      "side": 1,
+      "message": "Done, you\u0027re right Ricky.\n\nI copied the terminology from bmi160. But it\u0027s actually right over there, I guess I inverted it. Maybe the ec interrupt from the kernel is backwards?",
+      "parentUuid": "6ea7610e_751ab977",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddb0e51f_e8892dff",
         "filename": "driver/sync.c",
         "patchSetId": 4
@@ -107,6 +149,30 @@
     },
     {
       "key": {
+        "uuid": "4317ac46_45732a54",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-26T01:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb0e51f_e8892dff",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 11
+      },
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b63d768b_329ebe23",
         "filename": "driver/sync.c",
         "patchSetId": 4
@@ -118,6 +184,24 @@
       "writtenOn": "2018-01-06T00:40:03Z",
       "side": 1,
       "message": "nit: sync_irq_handler to be name consistent",
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34670a5a_a9bb5333",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-26T01:20:43Z",
+      "side": 1,
+      "message": "Sigh, I don\u0027t like that name, since it implies it\u0027s the top half. Kernel calls them irq_handler (top, real time, hard irq), irq_thread (the scheduled thing that runs in the event loop, not in an irq context).\n\nPunting for a later revision for now.",
+      "parentUuid": "b63d768b_329ebe23",
       "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -141,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "c92834de_ea5e42ff",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-26T01:20:43Z",
+      "side": 1,
+      "message": "Done.\n\nAlso fixed event bitfield checking. s/!\u003d/!(...\u0026...)/",
+      "parentUuid": "12f2c6f7_df12ca77",
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3c53981_1340ce2f",
         "filename": "driver/sync.c",
         "patchSetId": 4
@@ -152,6 +254,24 @@
       "writtenOn": "2018-01-06T00:40:03Z",
       "side": 1,
       "message": "Use a config variable. You can even overload CONFIG_SYNC, defining it at the interrupt line to use.",
+      "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffd68516_80b97f37",
+        "filename": "driver/sync.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-01-26T01:20:43Z",
+      "side": 1,
+      "message": "I wish I didn\u0027t have to reference GPIO_SYNC_INT at all here. Perhaps I could use 0 instead?\n\nThen this driver doesn\u0027t need to care what GPIO_SYNC_INT is called.\n\nPunting for a later revision for now.",
+      "parentUuid": "d3c53981_1340ce2f",
       "revId": "0adfe523f4298e6c3ae1fbb33ef11aa6112a3768",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
