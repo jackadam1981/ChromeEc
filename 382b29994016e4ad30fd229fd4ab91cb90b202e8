@@ -46,6 +46,30 @@
       "revId": "382b29994016e4ad30fd229fd4ab91cb90b202e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b33895d_c1e16b06",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-26T10:17:12Z",
+      "side": 1,
+      "message": "But isn\u0027t this kind of broken for INDEX_PD0/PD1 ?\nI thought we used 2 locations while the data would fit in one to avoid concurrency/RMW issue in pd_set_saved_active() with multiple ports.\n\nWhile this was half-broken before, it would be even more now.",
+      "parentUuid": "80af80ed_929243d0",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 6
+      },
+      "revId": "382b29994016e4ad30fd229fd4ab91cb90b202e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
