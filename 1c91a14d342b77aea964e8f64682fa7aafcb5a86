@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "8a7d946f_d22e192c",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-26T08:57:32Z",
+      "side": 1,
+      "message": "oh yes, my eyes are CONNECTED_DISCONNECTED_CONNECTED and did not parse it well.",
+      "parentUuid": "6432cb0e_8cdb160f",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "498c9ec8_42bdf07b",
         "filename": "board/poppy/base_detect_lux.c",
         "patchSetId": 7
