@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a98267dd_83bf22e6",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-26T01:24:59Z",
+      "side": 1,
+      "message": "We did more experiments on the older Lux, and even with 5ms debounce time, it would work ok, most of the time. There are strong magnets on both sides too, so the connector should snap in place really quickly.\n\nWe\u0027ll do more fine-tuning.",
+      "parentUuid": "b5dd7673_91a823c1",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "46fa6c8d_a1ff84a5",
         "filename": "board/poppy/base_detect_lux.c",
         "patchSetId": 7
@@ -95,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "de425c41_47b5561b",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-26T01:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5570e4e5_23f086d1",
+      "range": {
+        "startLine": 99,
+        "startChar": 6,
+        "endLine": 99,
+        "endChar": 22
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edcede26_2262b470",
         "filename": "board/poppy/base_detect_lux.c",
         "patchSetId": 7
@@ -106,6 +154,30 @@
       "writtenOn": "2018-01-24T10:26:10Z",
       "side": 1,
       "message": "is this right order ?\nit seems we might have a race condition if we notify first the other side, then change the mode (unless that\u0027s unrelated modes)",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 29
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c927d8ac_c653a07d",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-26T01:24:59Z",
+      "side": 1,
+      "message": "You\u0027re right, this looks wrong. Probably never an issue in practice though. I\u0027ll fix on poppy as well. https://chromium-review.googlesource.com/#/c/chromiumos/platform/ec/+/887998",
+      "parentUuid": "edcede26_2262b470",
       "range": {
         "startLine": 125,
         "startChar": 0,
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b9fad7c4_017aaa60",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-26T01:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b180cbd_7a828bb5",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d1d868e_1fa97c41",
         "filename": "board/poppy/base_detect_lux.c",
         "patchSetId": 7
@@ -152,6 +248,30 @@
       "writtenOn": "2018-01-24T10:26:10Z",
       "side": 1,
       "message": "random perusing: wouldn\u0027t it be smaller / easier to understand if you write something like :\nint disconnect_range \u003d v \u003e\u003d BASE_CONNECTED_DISCONNECT_MIN_MV \u0026\u0026\n\t\t    v \u003c\u003d BASE_CONNECTED_DISCONNECT_MAX_MV;\nint connect_range \u003d v \u003e\u003d BASE_CONNECTED_CONNECT_MIN_MV \u0026\u0026\n\t\t    v \u003c\u003d BASE_CONNECTED_CONNECT_MAX_MV;\n\n/* unchanged */\nif (current_base_status \u003d\u003d BASE_CONNECTED \u0026\u0026 range_connected) ||\n   (current_base_status \u003d\u003d BASE_DISCONNECTED \u0026\u0026 range_disconnected)\n      return;\n\nprint_base_detect_value(v);\nif (range_connected) {\n   base_detect_change(BASE_CONNECTED)\n   return;\n}\nif (range_disconnected) {\n   base_detect_change(BASE_DISCONNECTED)\n   return;\n}\n\n/* continue to unclear */",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 2
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6432cb0e_8cdb160f",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-26T01:24:59Z",
+      "side": 1,
+      "message": "Sadly it\u0027s a bit more complicated than that: There are 4 detection ranges, not just 2.",
+      "parentUuid": "6d1d868e_1fa97c41",
       "range": {
         "startLine": 151,
         "startChar": 0,
@@ -211,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "cea29d43_7aa281ca",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-26T01:24:59Z",
+      "side": 1,
+      "message": "It\u0027s actually not _so_ bad because it\u0027s followed by the not quite as unclear print below. Anyway... I refactored print_base_detect_value a little, hopefully it\u0027ll be less mystifying now ?!",
+      "parentUuid": "f2e6bf95_48aa785c",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 182,
+        "endChar": 21
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f69d199_6615eca2",
         "filename": "board/poppy/base_detect_lux.c",
         "patchSetId": 7
@@ -222,6 +366,30 @@
       "writtenOn": "2018-01-24T10:26:10Z",
       "side": 1,
       "message": "you are printing it for v \u003d\u003d ADC_READ_ERROR ?\n(not sure if this is the only path, but isn\u0027t there an implicit return above retry:, no actually that\u0027s not the case after reading again, maybe put a code above retry: or inside the else clause saying that you continue to retry when the voltage is in between the ranges.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 28
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d00bb220_4fe48d5c",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-26T01:24:59Z",
+      "side": 1,
+      "message": "ADC_READ_ERROR is -1. I guess it should be obvious that something went wrong.",
+      "parentUuid": "7f69d199_6615eca2",
       "range": {
         "startLine": 183,
         "startChar": 0,
@@ -280,6 +448,54 @@
     },
     {
       "key": {
+        "uuid": "ee8423fb_004eacc3",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-26T01:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feff2f7a_f25824ab",
+      "range": {
+        "startLine": 203,
+        "startChar": 47,
+        "endLine": 203,
+        "endChar": 52
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f943eeb5_67bb705b",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-26T01:24:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "002d54d9_f4f1eba0",
+      "range": {
+        "startLine": 203,
+        "startChar": 39,
+        "endLine": 203,
+        "endChar": 41
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a13c8a4_64ea0467",
         "filename": "board/poppy/base_detect_lux.c",
         "patchSetId": 7
@@ -291,6 +507,30 @@
       "writtenOn": "2018-01-24T10:26:10Z",
       "side": 1,
       "message": "nit: this initial 0 was good enough ?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 44
+      },
+      "revId": "1c91a14d342b77aea964e8f64682fa7aafcb5a86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38efc7f3_2590bba2",
+        "filename": "board/poppy/base_detect_lux.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-26T01:24:59Z",
+      "side": 1,
+      "message": "Right, 0 should be fine.",
+      "parentUuid": "0a13c8a4_64ea0467",
       "range": {
         "startLine": 210,
         "startChar": 0,
