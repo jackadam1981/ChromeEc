@@ -79,6 +79,9 @@
 #define CONFIG_EC_EC_COMM_MASTER
 #define CONFIG_EC_EC_COMM_BATTERY
 #define CONFIG_CRC8
+
+#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_COUNT 2
 #endif
 
 /* Charger */
