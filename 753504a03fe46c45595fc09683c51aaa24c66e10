@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f4e87f4_ec919db5",
+        "filename": "common/led_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-26T18:48:42Z",
+      "side": 1,
+      "message": "It would be nice to not step through supported_led_ids[] every time we call this function. Can we add a bitmask for supported LED IDs instead? We can initialize it the first time led_is_supported() is called.",
+      "range": {
+        "startLine": 40,
+        "startChar": 6,
+        "endLine": 40,
+        "endChar": 22
+      },
+      "revId": "753504a03fe46c45595fc09683c51aaa24c66e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
