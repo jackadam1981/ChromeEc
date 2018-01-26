@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "852348ae_3c022adc",
+        "filename": "board/poppy/base_detect_poppy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-01-26T14:54:47Z",
+      "side": 1,
+      "message": "Actually, can you please wait to submit this change? I have a change coming up for DPTF that gets rid of this event from here completely.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 50
+      },
+      "revId": "0b847f286ae520281f15cd2f9227ff71d808db17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
