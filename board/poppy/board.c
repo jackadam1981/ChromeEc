@@ -654,6 +654,13 @@ int board_set_active_charge_port(int charge_port)
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
+	/* Adjust ILIM according to measurements to eliminte overshoot. */
+	if (charge_ma >= 500) {
+		charge_ma = (charge_ma - 500) * 97 / 100 + 472;
+		/* 5V is significantly more accurate than other voltages. */
+		if (charge_mv > 5000)
+			charge_ma -= 52;
+	}
 	charge_set_input_current_limit(MAX(charge_ma,
 				   CONFIG_CHARGER_INPUT_CURRENT), charge_mv);
 }
