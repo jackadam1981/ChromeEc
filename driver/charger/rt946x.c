@@ -746,8 +746,10 @@ static void rt946x_init(void)
 	}
 	CPRINTF("RT946X CHIP REV: 0x%02x\n", reg);
 
-	if (rt946x_init_setting())
+	if (rt946x_init_setting()) {
+		CPRINTF("RT946X not initialized correctly\n");
 		return;
+	}
 	CPRINTF("RT946X initialized\n");
 }
 DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_LAST);
