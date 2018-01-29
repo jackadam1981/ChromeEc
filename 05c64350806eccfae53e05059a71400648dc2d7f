@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ea70ce4_fe99ae61",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-01-29T23:35:20Z",
+      "side": 1,
+      "message": "This is when the irq fired but our reading of the gpio indicates that we\u0027ve set it low?\n\nI\u0027m having a hard time understanding the logic here and what you are trying to guard against.\n\nirq indicates what? if irq is 0 we just pass the value onto the gpio?",
+      "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
