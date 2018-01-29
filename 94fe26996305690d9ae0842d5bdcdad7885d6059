@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "77037666_1febb1af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T08:01:30Z",
+      "side": 1,
+      "message": "I tried to clarify. Basically, we could try to implement the no-battery case in the algorithm, but I don\u0027t think it\u0027s worth the effort, for something that would only ever be used in early bringup (and in that case, one should bring up the lid first, without battery, then connect a battery, and then try to connect the base and see if power transfer works).",
+      "parentUuid": "377935bf_45e35fae",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 17
+      },
+      "revId": "94fe26996305690d9ae0842d5bdcdad7885d6059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b80469ba_e77664b1",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "e0e2c1ab_8c3dd563",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T08:01:30Z",
+      "side": 1,
+      "message": "Because the compiler doesn\u0027t do a good job at getting rid of base_connected...\n\nAnyway, I found the magic line:\nconst static int base_connected;\n\n(adding \u003d 0 seems to confuse the compiler, and generates _much_ larger code)",
+      "parentUuid": "b80469ba_e77664b1",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 27
+      },
+      "revId": "94fe26996305690d9ae0842d5bdcdad7885d6059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e7ef8db_a066fcda",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2018-01-26T18:28:54Z",
       "side": 1,
       "message": "Is it possible for the lid to charge from something other than the base? If not, it seems you want to modify no-battery charge behavior from default on this board. If you approach the problem from that perspective, it makes sense to add a #define to change this behavior, which avoids sprinkling base references in this code. And this proposed #define might also be useful for boards that don\u0027t fit this lid / base model.",
+      "range": {
+        "startLine": 1174,
+        "startChar": 2,
+        "endLine": 1174,
+        "endChar": 25
+      },
+      "revId": "94fe26996305690d9ae0842d5bdcdad7885d6059",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57a4634f_571f4d67",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T08:01:30Z",
+      "side": 1,
+      "message": "Yes, most of the time the lid charges from external power (USB-C), it\u0027s very rare to charge from base.\n\nI don\u0027t quite see how I can ifdef it out... I still want to keep the no-battery behaviour when no base is connected, as it\u0027s useful during early bringup.",
+      "parentUuid": "7e7ef8db_a066fcda",
       "range": {
         "startLine": 1174,
         "startChar": 2,
