@@ -488,7 +488,9 @@ void board_hibernate(void)
 {
 	CPRINTS("Triggering PMIC shutdown.");
 	uart_flush_output();
-	/* dnojiri: revisit */
+	gpio_set_level(GPIO_EC_HIBERNATE, 1);
+	while (1)
+		;
 }
 
 const struct pwm_t pwm_channels[] = {
