@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6064e402_635763a5",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T09:04:59Z",
+      "side": 1,
+      "message": "Not needed, it\u0027s already stubbed below.",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f8775b8_3673b379",
+        "filename": "board/hammer/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T09:04:59Z",
+      "side": 1,
+      "message": "It\u0027s already set just above, no need for this.",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
