@@ -25,7 +25,11 @@
 #define CONFIG_LID_SWITCH_GPIO_LIST LID_GPIO(GPIO_LID_OPEN)
 #endif
 
-static int debounced_lid_open;		/* Debounced lid state */
+static int debounced_lid_open;         /* Debounced lid state */
+int tino_return_debounced_lid_open(void)
+{
+	return debounced_lid_open;
+}
 static int forced_lid_open;	/* Forced lid open */
 
 /**
@@ -43,7 +47,7 @@ static int raw_lid_open(void)
 /**
  * Handle lid open.
  */
-static void lid_switch_open(void)
+void lid_switch_open(void)
 {
 	if (debounced_lid_open) {
 		CPRINTS("lid already open");
@@ -59,7 +63,7 @@ static void lid_switch_open(void)
 /**
  * Handle lid close.
  */
-static void lid_switch_close(void)
+void lid_switch_close(void)
 {
 	if (!debounced_lid_open) {
 		CPRINTS("lid already closed");
