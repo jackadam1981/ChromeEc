@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54c65b74_87c4b868",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-29T22:12:34Z",
+      "side": 1,
+      "message": "I don\u0027t think we should make \u0027apreset warm\u0027 do \u0027apreset cold\u0027 regardless the host power state. We have apreset cold, which can reset AP in s3.",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "e061dbcdc0d0ee16b781b84aa8405b638905a1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
