@@ -70,6 +70,30 @@
       "revId": "382b29994016e4ad30fd229fd4ab91cb90b202e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a9d8ca5_9cf8ddd0",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-29T22:10:29Z",
+      "side": 1,
+      "message": "I\u0027m going to add a mutex here. We can take care of the PD0/PD1 case easily enough by splitting them across 32-bit boundary, but depending on how bkpdata is used in the future, it\u0027s likely to break in other ways that devs might not immediately realize.",
+      "parentUuid": "3b33895d_c1e16b06",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 6
+      },
+      "revId": "382b29994016e4ad30fd229fd4ab91cb90b202e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
