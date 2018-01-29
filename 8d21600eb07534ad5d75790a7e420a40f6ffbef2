@@ -185,6 +185,30 @@
       "revId": "8d21600eb07534ad5d75790a7e420a40f6ffbef2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91665dd8_2aecd3de",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-29T17:10:24Z",
+      "side": 1,
+      "message": "I still wonder here ...\nWhile we definitely need to fix the hard-reset, isn\u0027t the keeping the data role over recovery actually fixing some (misbehaving) devices at the expense of potentially breaking the ones betting that we are implemented properly (and reversing to the default data role) ?",
+      "parentUuid": "9e06e517_f5be559e",
+      "range": {
+        "startLine": 1278,
+        "startChar": 0,
+        "endLine": 1278,
+        "endChar": 19
+      },
+      "revId": "8d21600eb07534ad5d75790a7e420a40f6ffbef2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
