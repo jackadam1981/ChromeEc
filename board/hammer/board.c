@@ -265,9 +265,9 @@ void board_usb_wake(void)
 void board_touchpad_reset(void)
 {
 #ifdef BOARD_WHISKERS
-	gpio_set_level(GPIO_EN_PP3300_TP, 0);
-	msleep(100);
 	gpio_set_level(GPIO_EN_PP3300_TP, 1);
+	msleep(100);
+	gpio_set_level(GPIO_EN_PP3300_TP, 0);
 	msleep(100);
 #else
 	gpio_set_level(GPIO_EN_PP3300_TP_ODL, 1);
