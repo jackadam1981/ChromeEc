@@ -42,6 +42,23 @@
     },
     {
       "key": {
+        "uuid": "bc41d6dc_87888d71",
+        "filename": "common/rgb_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T05:22:34Z",
+      "side": 1,
+      "message": "Is there such a thing? AFAICT each OEM has their own ideas on what LEDs should look like in different states. Also, led bevaviour would probably be different on different form factor, so I\u0027m not sure how much we could reuse here, across boards.",
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9414e972_eec1c782",
         "filename": "common/rgb_led.c",
         "patchSetId": 2
