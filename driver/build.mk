@@ -29,6 +29,7 @@ driver-$(CONFIG_ALS_ISL29035)+=als_isl29035.o
 driver-$(CONFIG_ALS_OPT3001)+=als_opt3001.o
 driver-$(CONFIG_ALS_SI114X)+=als_si114x.o
 driver-$(CONFIG_ALS_BH1730)+=als_bh1730.o
+driver-$(CONFIG_ALS_CM32181E)+=als_cm32181e.o
 
 # Barometers
 driver-$(CONFIG_BARO_BMP280)+=baro_bmp280.o
