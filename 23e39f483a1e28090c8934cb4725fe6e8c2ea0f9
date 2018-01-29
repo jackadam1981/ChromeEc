@@ -2,6 +2,91 @@
   "comments": [
     {
       "key": {
+        "uuid": "32d94d5c_9ef542d8",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "#endif\n\nThe I2C master port still exists on whiskers, so you should still set it.",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f222bf76_456b18fb",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "drop",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d085f3bc_d5f07152",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "Maybe create a big #ifdef SECTION_IS_RW and have #if #elif blocks in it.",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc19acf7_ba1208e7",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "Un-comment, your system is _not_ locked.",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb5f4849_93f0ce3c",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "Why can\u0027t you do that in board_init?",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6064e402_635763a5",
         "filename": "board/hammer/board.c",
         "patchSetId": 1
@@ -30,6 +115,114 @@
       "writtenOn": "2018-01-29T09:04:59Z",
       "side": 1,
       "message": "It\u0027s already set just above, no need for this.",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f918ca0b_28804568",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "Define macros for specific bits (e.g. #define HEADER_FLAGS_NEW_FRAME (1\u003c\u003c0)). Bitfields can\u0027t really be relied on as their order depends on the architecture/compiler.",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6a7a0aa_7c0869ec",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "We most often use `struct x { ... } __packed;`.",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1a6051_03933e10",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "ditto about bitfield",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f318e53b_e96fbeea",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "sizeof, here and for all the others too.",
+      "range": {
+        "startLine": 216,
+        "startChar": 37,
+        "endLine": 216,
+        "endChar": 47
+      },
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67034552_bc5c6818",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "The canonical way is:\nretry \u003d 5;\nwhile (retry--) {",
+      "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59ba22ed_b79d3e1c",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T11:50:33Z",
+      "side": 1,
+      "message": "if (rx_buf[0] \u003d\u003d 0xA5 \u0026\u0026 rx_buf[0] \u003d\u003d 0x01 \u0026\u0026 count !\u003d (rx_buf[2] | (rx_buf[3] \u003c\u003c 8)))",
       "revId": "23e39f483a1e28090c8934cb4725fe6e8c2ea0f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
