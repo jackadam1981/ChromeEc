@@ -22,6 +22,30 @@
       "revId": "e061dbcdc0d0ee16b781b84aa8405b638905a1fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0213afc9_6c6e6650",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-01-29T22:35:24Z",
+      "side": 1,
+      "message": "in S3 both \"apreset warm\" and \"apreset cold\" will not work as AP is off hence we are doing EC reset.",
+      "parentUuid": "54c65b74_87c4b868",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "e061dbcdc0d0ee16b781b84aa8405b638905a1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
