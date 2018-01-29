@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d9434328_e95ff13e",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-29T21:59:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbbd0b1b_292b9c61",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 4
+      },
+      "revId": "a979ea0540cf15ea0b240e758e1367f9b3101e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "39f5f549_cc50bd67",
         "filename": "board/coral/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-29T16:35:26Z",
       "side": 1,
       "message": "Could you remove declaration from board/coral/board.h (and grunt)?",
+      "range": {
+        "startLine": 414,
+        "startChar": 24,
+        "endLine": 414,
+        "endChar": 39
+      },
+      "revId": "a979ea0540cf15ea0b240e758e1367f9b3101e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b10544b_7e0af605",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-29T21:59:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39f5f549_cc50bd67",
       "range": {
         "startLine": 414,
         "startChar": 24,
