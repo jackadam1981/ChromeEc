@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "76bd3fb0_eacfef2f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-29T17:33:32Z",
+      "side": 1,
+      "message": "Please test wakeups. The sources are AC plugin, LID open, and power button.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "bc11b5f1f8fd188171cfcf6516e1b7eb74d63c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f75d3575_ece4e8df",
         "filename": "board/nami/board.c",
         "patchSetId": 1
@@ -18,6 +41,53 @@
         "startChar": 1,
         "endLine": 483,
         "endChar": 38
+      },
+      "revId": "bc11b5f1f8fd188171cfcf6516e1b7eb74d63c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2faaaff_f467134a",
+        "filename": "board/nami/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-29T17:33:32Z",
+      "side": 1,
+      "message": "Got confirmation from dyeh. EC_HIBERNATE causes U91 to turn off ROP_PMIC_ENVR3. So, the EC will shut off. Please add while(1) after this line.",
+      "parentUuid": "f75d3575_ece4e8df",
+      "range": {
+        "startLine": 483,
+        "startChar": 1,
+        "endLine": 483,
+        "endChar": 38
+      },
+      "revId": "bc11b5f1f8fd188171cfcf6516e1b7eb74d63c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2001594_522c1569",
+        "filename": "board/nami/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-29T17:33:32Z",
+      "side": 1,
+      "message": "Then, we can remove this.",
+      "range": {
+        "startLine": 484,
+        "startChar": 1,
+        "endLine": 484,
+        "endChar": 23
       },
       "revId": "bc11b5f1f8fd188171cfcf6516e1b7eb74d63c6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
