@@ -99,6 +99,10 @@
 #define CONFIG_STREAM_USB
 #define CONFIG_USB_UPDATE
 
+#ifdef SECTION_IS_RW
+#define CONFIG_USB_ISOCHRONOUS
+#endif
+
 #undef CONFIG_USB_MAXPOWER_MA
 #define CONFIG_USB_MAXPOWER_MA 100
 
@@ -114,8 +118,10 @@
 #define USB_IFACE_HID_KEYBOARD	0
 #define USB_IFACE_UPDATE	1
 #define USB_IFACE_HID_TOUCHPAD	2
-#define USB_IFACE_I2C		3
-#define USB_IFACE_COUNT		4
+/* Can be either I2C or SPI passthrough, depending on the board. */
+#define USB_IFACE_I2C_SPI	3
+#define USB_IFACE_ST_TOUCHPAD	4
+#define USB_IFACE_COUNT		5
 #else
 #define USB_IFACE_UPDATE	0
 #define USB_IFACE_COUNT		1
@@ -127,8 +133,10 @@
 #ifdef SECTION_IS_RW
 #define USB_EP_HID_KEYBOARD	2
 #define USB_EP_HID_TOUCHPAD	3
-#define USB_EP_I2C		4
-#define USB_EP_COUNT		5
+/* Can be either I2C or SPI passthrough, depending on the board. */
+#define USB_EP_I2C_SPI		4
+#define USB_EP_ST_TOUCHPAD	5
+#define USB_EP_COUNT		6
 #else
 #define USB_EP_COUNT		2
 #endif
@@ -200,8 +208,9 @@
 /* Keyboard output port list */
 #define KB_OUT_PORT_LIST GPIO_A, GPIO_B, GPIO_C, GPIO_F
 
-/* Enable control of I2C over USB */
-#define CONFIG_USB_I2C
+/* Enable PWM */
+#define CONFIG_PWM
+
 #define CONFIG_I2C
 #define CONFIG_I2C_MASTER
 #define I2C_PORT_MASTER 0
@@ -210,11 +219,30 @@
 /* Enable PWM */
 #define CONFIG_PWM
 
+#ifdef BOARD_WHISKERS
+/* Enable control of SPI over USB */
+#define CONFIG_USB_SPI
+#define CONFIG_SPI_MASTER
+#define CONFIG_SPI_HALFDUPLEX
+#define CONFIG_STM32_SPI1_MASTER
+#define CONFIG_SPI_TOUCHPAD_PORT 0
+#define SPI_ST_TP_DEVICE_ID 0
+/* Enable SPI master xfer command */
+#define CONFIG_CMD_SPI_XFER
+#define CONFIG_TOUCHPAD
+#define CONFIG_TOUCHPAD_ST
+
+#else  /* !BOARD_WHISKERS */
+/* Enable control of I2C over USB */
+#define CONFIG_USB_I2C
+#define USB_IFACE_I2C USB_IFACE_I2C_SPI
+#define USB_EP_I2C USB_EP_I2C_SPI
 /* Enable Elan touchpad driver */
 #define CONFIG_TOUCHPAD
 #define CONFIG_TOUCHPAD_ELAN
 #define CONFIG_TOUCHPAD_I2C_PORT I2C_PORT_MASTER
 #define CONFIG_TOUCHPAD_I2C_ADDR (0x15 << 1)
+#endif  /* BOARD_WHISKERS */
 
 #define CONFIG_CURVE25519
 
