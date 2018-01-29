@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "56ae7380_7c995c04",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-29T12:15:40Z",
+      "side": 1,
+      "message": "`USB buffer` is the USB hardware currently using, and `APP buffer` is the other buffer that can be write by application (software).",
+      "parentUuid": "67ca675b_e39a209e",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "828f32e5e4b104ed2b848f77b175a5362cce03e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30fe1d02_26e91eac",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 16
