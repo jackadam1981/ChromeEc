@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3863308_0de4c364",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T05:16:46Z",
+      "side": 1,
+      "message": "CONFIG_LED_RGB would be a better name, to group all the led files together.",
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c01ad4b2_5ecc05fb",
+        "filename": "common/rgb_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T05:16:46Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9414e972_eec1c782",
+        "filename": "common/rgb_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T05:16:46Z",
+      "side": 1,
+      "message": "Can we add this to HOOK_TICK instead? This should save power by calling all the ticks at the same time.",
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61335007_2c15c09d",
+        "filename": "include/rgb_led.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T05:16:46Z",
+      "side": 1,
+      "message": "__CROS_EC_RGB_LED_H",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
