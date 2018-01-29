@@ -507,6 +507,30 @@
       "revId": "2cea3d866729961a72412be784a7e1185c45f01b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c75d76b1_19d4342b",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-29T22:37:59Z",
+      "side": 1,
+      "message": "my point is that if it is at zero when we read it, it does not matter if it is about to be increased, the new value will be read the next time atomically, so it won\u0027t be lost.",
+      "parentUuid": "4166b20e_df46bd3c",
+      "range": {
+        "startLine": 308,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 19
+      },
+      "revId": "2cea3d866729961a72412be784a7e1185c45f01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
