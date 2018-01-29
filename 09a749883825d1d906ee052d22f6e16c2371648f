@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "635f9867_cd3b42f5",
+        "filename": "board/nami/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-29T19:29:42Z",
+      "side": 1,
+      "message": "Do you mind keeping the original name?",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "09a749883825d1d906ee052d22f6e16c2371648f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d70d10_47db1d5b",
+        "filename": "board/nami/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-29T19:29:42Z",
+      "side": 1,
+      "message": "Instead hooking every 200ms, let\u0027s add API \u0027battery_alert\u0027, which calls config_tick with interval \u003d 1 sec. Please refer to led_lert in board/fizz/led.c for hint.\n\nThis is more resource efficient because when we don\u0027t need blinking (e.g. in s0), we can remove periodical code execution entirely (as done in led_resume in board/fizz/led.c).",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 57
+      },
+      "revId": "09a749883825d1d906ee052d22f6e16c2371648f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
