@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02373494_bb219722",
+        "filename": "common/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T06:33:53Z",
+      "side": 1,
+      "message": "This looks very, very, meowth-specific, please put it in the board folder for now.",
+      "revId": "4fa34363199f8df7ab2581e6617b42fb8a03b0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e058ad3d_3bca8571",
+        "filename": "common/base_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T06:33:53Z",
+      "side": 1,
+      "message": "Please define functions instead, they\u0027ll be inlined as needed.",
+      "revId": "4fa34363199f8df7ab2581e6617b42fb8a03b0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "369cc5b6_cc1efbce",
+        "filename": "common/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T06:33:53Z",
+      "side": 1,
+      "message": "I don\u0027t think you need a new hook, just define some board_ function instead.",
+      "revId": "4fa34363199f8df7ab2581e6617b42fb8a03b0e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
