@@ -5,6 +5,7 @@
 /* Hammer board configuration */
 
 #include "common.h"
+#include "clock.h"
 #include "ec_version.h"
 #include "ec_ec_comm_slave.h"
 #include "gpio.h"
@@ -20,6 +21,7 @@
 #include "queue_policies.h"
 #include "registers.h"
 #include "rollback.h"
+#include "spi.h"
 #include "system.h"
 #include "task.h"
 #include "touchpad.h"
@@ -30,6 +32,7 @@
 #include "usart_rx_dma.h"
 #include "usb_descriptor.h"
 #include "usb_i2c.h"
+#include "usb_spi.h"
 #include "util.h"
 
 #include "gpio_list.h"
@@ -63,6 +66,18 @@ BUILD_ASSERT(ARRAY_SIZE(usb_strings) == USB_STR_COUNT);
  */
 
 #ifdef SECTION_IS_RW
+#ifdef BOARD_WHISKERS
+/* SPI devices */
+const struct spi_device_t spi_devices[] = {
+	[SPI_ST_TP_DEVICE_ID] = { CONFIG_SPI_TOUCHPAD_PORT, 2, GPIO_SPI1_NSS },
+};
+const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+
+USB_SPI_CONFIG(usb_spi, USB_IFACE_I2C_SPI, USB_EP_I2C_SPI);
+/* SPI interface is always enabled, no need to do anything. */
+void usb_spi_board_enable(struct usb_spi_config const *config) {}
+void usb_spi_board_disable(struct usb_spi_config const *config) {}
+#endif  /* !BOARD_WHISKERS */
 
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
@@ -162,17 +177,51 @@ static void board_init(void)
 	}
 #endif /* BOARD_STAFF */
 
-#if defined(BOARD_WAND) && defined(SECTION_IS_RW)
+#ifdef SECTION_IS_RW
+#if defined(BOARD_WAND)
 	/* USB to serial queues */
 	queue_init(&ec_ec_comm_slave_input);
 	queue_init(&ec_ec_comm_slave_output);
 
 	/* UART init */
 	usart_init(&ec_ec_usart);
+#elif defined(BOARD_WHISKERS)
+	spi_enable(CONFIG_SPI_TOUCHPAD_PORT, 0);
+
+	/* Disable SPI passthrough when the system is locked */
+	usb_spi_enable(&usb_spi, system_is_locked());
+
+	/* Set all four SPI pins to high speed */
+	/* pins B3/5, A15 */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0x00000cc0;
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xc0000000;
+
+	/* Reset SPI1 */
+	STM32_RCC_APB2RSTR |= STM32_RCC_PB2_SPI1;
+	STM32_RCC_APB2RSTR &= ~STM32_RCC_PB2_SPI1;
+	/* Enable clocks to SPI1 module */
+	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;
+
+	clock_wait_bus_cycles(BUS_APB, 1);
+	/* Enable SPI for touchpad */
+	gpio_config_module(MODULE_SPI_MASTER, 1);
+	spi_enable(CONFIG_SPI_TOUCHPAD_PORT, 1);
+
+#endif
 #endif
 }
 /* This needs to happen before PWM is initialized. */
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_PWM - 1);
+
+void board_config_post_gpio_init(void)
+{
+#if defined(BOARD_WHISKERS) && defined(SECTION_IS_RW) && 0
+	/* Set all four SPI pins to high speed */
+	/* pins B3/5, A15 */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0x00000cc0;
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xc0000000;
+#endif
+}
 
 void board_config_pre_init(void)
 {
