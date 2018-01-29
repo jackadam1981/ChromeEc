@@ -422,7 +422,8 @@ void system_check_reset_cause(void)
 /**
  * Chip-level function to set GPIOs and wake-up inputs for hibernate.
  */
-void system_set_gpios_and_wakeup_inputs_hibernate(void)
+#ifdef CONFIG_SUPPORT_CHIP_HIBERNATION
+static void system_set_gpios_and_wakeup_inputs_hibernate(void)
 {
 	int table, i;
 
@@ -460,6 +461,7 @@ void system_set_gpios_and_wakeup_inputs_hibernate(void)
 #endif
 	}
 }
+#endif
 
 /**
  * hibernate function for npcx ec.
@@ -509,7 +511,9 @@ void __enter_hibernate(uint32_t seconds, uint32_t microseconds)
 	 * Set gpios and wake-up input for better power consumption before
 	 * entering hibernate.
 	 */
+#ifdef CONFIG_SUPPORT_CHIP_HIBERNATION
 	system_set_gpios_and_wakeup_inputs_hibernate();
+#endif
 
 	/*
 	 * Give the board a chance to do any late stage hibernation work.
