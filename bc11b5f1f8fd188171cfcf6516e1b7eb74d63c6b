@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f75d3575_ece4e8df",
+        "filename": "board/nami/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-29T17:25:45Z",
+      "side": 1,
+      "message": "Dexter, can we make this cause silego (U91) to shut off the EC? Then we can while(1) here.",
+      "range": {
+        "startLine": 483,
+        "startChar": 1,
+        "endLine": 483,
+        "endChar": 38
+      },
+      "revId": "bc11b5f1f8fd188171cfcf6516e1b7eb74d63c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
