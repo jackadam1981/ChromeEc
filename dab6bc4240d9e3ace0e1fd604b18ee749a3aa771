@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a23834f5_77e1d60a",
+        "filename": "common/led_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T05:03:10Z",
+      "side": 1,
+      "message": "This looks complicated, isn\u0027t this loop just:\n\nif (supported_led_ids[i] \u003c EC_LED_ID_COUNT)\n    supported_leds |\u003d (1 \u003c\u003c supported_led_ids[i]);\n\nAnd I think the if test here is not even needed, so:\n\nsupported_leds |\u003d (1 \u003c\u003c supported_led_ids[i]);\n\nFeel free to add a build time assert for EC_LED_ID_COUNT \u003c 31 if you feel paranoid ,-)",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "dab6bc4240d9e3ace0e1fd604b18ee749a3aa771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b172894_a0cb9afd",
+        "filename": "common/led_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-29T05:03:10Z",
+      "side": 1,
+      "message": "`!!` is usually not required, just drop it.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "dab6bc4240d9e3ace0e1fd604b18ee749a3aa771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
