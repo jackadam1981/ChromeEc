@@ -480,6 +480,7 @@ void board_hibernate(void)
 {
 	CPRINTS("Triggering PMIC shutdown.");
 	uart_flush_output();
+	gpio_set_level(GPIO_EC_HIBERNATE, 1);
 	/* dnojiri: revisit */
 }
 
