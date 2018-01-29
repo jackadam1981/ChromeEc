@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce72307f_dee69fce",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-29T19:57:05Z",
+      "side": 1,
+      "message": "We should have \u0027if (size \u003c sizeof(*bi)) { return -1; } here... I\u0027ll create a patch if not done in this one.",
+      "revId": "7d89bf722955605bffd000a7e7fd18e20d0d313e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
