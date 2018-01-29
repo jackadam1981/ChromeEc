@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3b84c03_534b53be",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-29T19:21:41Z",
+      "side": 1,
+      "message": "isn\u0027t this comment becoming misleading?\n\nI think we should keep only actual strapping bits in this mask, and then set the derived bits on each reset.",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 54,
+        "endChar": 60
+      },
+      "revId": "717ffb17dc2f885489d915fe23c661e0f650bf77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
