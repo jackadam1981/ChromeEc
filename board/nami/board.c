@@ -18,7 +18,7 @@
 #include "driver/pmic_tps650x30.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/accel_bma2x2.h"
-#include "driver/als_opt3001.h"
+#include "driver/als_cm32181e.h"
 #include "driver/baro_bmp280.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -507,7 +507,7 @@ static struct bmi160_drv_data_t g_bmi160_data;
 /* BMA255 private data */
 static struct bma2x2_accel_data g_bma255_data;
 
-static struct opt3001_drv_data_t g_opt3001_data = {
+static struct cm32181e_drv_data_t g_cm32181e_data = {
 	.scale = 1,
 	.uscale = 0,
 	.offset = 0,
@@ -643,17 +643,17 @@ struct motion_sensor_t motion_sensors[] = {
 	[LID_ALS] = {
 	 .name = "Light",
 	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_OPT3001,
+	 .chip = MOTIONSENSE_CHIP_CM32181E,
 	 .type = MOTIONSENSE_TYPE_LIGHT,
 	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &opt3001_drv,
-	 .drv_data = &g_opt3001_data,
+	 .drv = &cm32181e_drv,
+	 .drv_data = &g_cm32181e_data,
 	 .port = I2C_PORT_ALS,
-	 .addr = OPT3001_I2C_ADDR,
+	 .addr = CM32181E_I2C_ADDR,
 	 .rot_standard_ref = NULL,
 	 .default_range = 0x10000, /* scale = 1; uscale = 0 */
-	 .min_frequency = OPT3001_LIGHT_MIN_FREQ,
-	 .max_frequency = OPT3001_LIGHT_MAX_FREQ,
+	 .min_frequency = CM32181E_LIGHT_MIN_FREQ,
+	 .max_frequency = CM32181E_LIGHT_MAX_FREQ,
 	 .config = {
 		/* AP: by default shutdown all sensors */
 		[SENSOR_CONFIG_AP] = {
@@ -701,6 +701,7 @@ void lid_angle_peripheral_enable(int enable)
 static void board_chipset_resume(void)
 {
 	gpio_set_level(GPIO_ENABLE_BACKLIGHT_L, 0);
+
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 

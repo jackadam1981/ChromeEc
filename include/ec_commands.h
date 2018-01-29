@@ -2270,6 +2270,7 @@ enum motionsensor_chip {
 	MOTIONSENSE_CHIP_OPT3001 = 10,
 	MOTIONSENSE_CHIP_BH1730 = 11,
 	MOTIONSENSE_CHIP_GPIO = 12,
+	MOTIONSENSE_CHIP_CM32181E = 13,
 };
 
 /* List of orientation positions */
