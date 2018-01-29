@@ -51,6 +51,57 @@
 
 #define TPS650830_I2C_ADDR TPS650830_I2C_ADDR1
 
+static int tino_force_lid_open; /* Tino forced lid open */
+
+static int tino_raw_lid_open(void)
+{
+	return !!tino_force_lid_open;
+}
+
+static void tino_lid_change_deferred(void)
+{
+	const int tino_new_open = tino_raw_lid_open();
+
+	/* If lid hasn't changed state, nothing to do */
+	if (tino_new_open == tino_return_debounced_lid_open())
+		return;
+
+	if (tino_new_open)
+		lid_switch_open();
+	else
+		lid_switch_close();
+}
+DECLARE_DEFERRED(tino_lid_change_deferred);
+
+void tino_lid_interrupt(void)
+{
+	/* Reset lid debounce time */
+	hook_call_deferred(tino_lid_change_deferred, 30000);
+}
+
+static int tino_lid_change(int argc, char **argv)
+{
+	if (argc != 2) {
+		CPRINTS("TINO: number of arguments is not two!");
+		return EC_ERROR_INVAL;
+	}
+
+	if (!strcasecmp(argv[1], "0")) {
+		tino_force_lid_open = 0;
+		CPRINTS("TINO: simulate lid close!");
+	} else if (!strcasecmp(argv[1], "1")) {
+		tino_force_lid_open = 1;
+		CPRINTS("TINO: simulate lid open!");
+	}
+	tino_lid_interrupt();
+	return EC_SUCCESS;
+
+	CPRINTS("TINO: argument is not 0 or 1!");
+	return EC_ERROR_PARAM1;
+}
+DECLARE_CONSOLE_COMMAND(foo, tino_lid_change, "[0|1]",
+			"Tino simulates lid close/open", NULL);
+
 /* Exchange status with PD MCU. */
 static void pd_mcu_interrupt(enum gpio_signal signal)
 {

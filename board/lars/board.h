@@ -190,6 +190,8 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
+void tino_lid_interrupt(void);
+
 /* start as a sink in case we have no other power supply/battery */
 #define PD_DEFAULT_STATE PD_STATE_SNK_DISCONNECTED
 

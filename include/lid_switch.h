@@ -10,6 +10,10 @@
 
 #include "common.h"
 
+int tino_return_debounced_lid_open(void);
+void lid_switch_open(void);
+void lid_switch_close(void);
+
 /**
  * Return non-zero if lid is open.
  *
