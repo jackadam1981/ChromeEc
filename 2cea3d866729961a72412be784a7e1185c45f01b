@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "8db553e7_36f87a0c",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1114964
+      },
+      "writtenOn": "2018-01-29T22:09:57Z",
+      "side": 1,
+      "message": "Correct. CONFIG_ENABLE_H1_ALERTS_CONSOLE is now a debug-purpose config that needs to be enabled manually.",
+      "parentUuid": "dc88329b_2111ca3f",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 46
+      },
+      "revId": "2cea3d866729961a72412be784a7e1185c45f01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0318672_9e10d1c9",
         "filename": "chip/g/alerts.c",
         "patchSetId": 16
@@ -285,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "347239b3_11cde794",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1114964
+      },
+      "writtenOn": "2018-01-29T22:09:57Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "77d9ad2f_2f6786c5",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "2cea3d866729961a72412be784a7e1185c45f01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bac4068d_713f4bc4",
         "filename": "chip/g/alerts.c",
         "patchSetId": 16
@@ -426,6 +474,30 @@
       "side": 1,
       "message": "We sure don\u0027t want to disable inerrupts for too long. I missed the fact that you are clearing the value after reads though, how about you disable interrupt on each counter separately (inside the for() loop) and only if the read value is non-zero?",
       "parentUuid": "f10f52a0_210d3ed4",
+      "range": {
+        "startLine": 308,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 19
+      },
+      "revId": "2cea3d866729961a72412be784a7e1185c45f01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4166b20e_df46bd3c",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1114964
+      },
+      "writtenOn": "2018-01-29T22:09:57Z",
+      "side": 1,
+      "message": "to check if the value is non-zero we need to read it first. Thus to make it really atomic we need to read it twice\n\nc \u003d counter[i]\nif (c) {\n  disable_intr();\n  c \u003d counter[i]; // reread value as it might change since the first read\n  counter[i] \u003d 0\n  enable_intr();\n\n  response[i] \u003d c\n}\n\n\n\nAnother option is to use atomic operations. There are atomic_read_clear() and atomic_add(), it seems what I need.",
+      "parentUuid": "67e11b24_dbe18880",
       "range": {
         "startLine": 308,
         "startChar": 1,
