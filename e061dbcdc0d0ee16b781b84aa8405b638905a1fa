@@ -70,6 +70,30 @@
       "revId": "e061dbcdc0d0ee16b781b84aa8405b638905a1fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b705d3_1e8cc8c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-01-29T22:54:25Z",
+      "side": 1,
+      "message": "I dint get the meaning of \"fallback automated\".\n\nThere are some special keyboard keys for apreset warm \u0026 cold and also some boards (ex GRU) use special GPIO for warm reset. Hence added this code instead of using reboot.",
+      "parentUuid": "1c3b7028_b78b649a",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "e061dbcdc0d0ee16b781b84aa8405b638905a1fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
