@@ -46,6 +46,30 @@
       "revId": "269b619468e831ad178e7796f27db7be55a25c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "276bdf18_ec77d01a",
+        "filename": "board/nami/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-29T19:33:55Z",
+      "side": 1,
+      "message": "We don\u0027t want to use a task or persistent hooks (e.g. HOOK_TICK) for LED as done traditionally on other projects. Let\u0027s do more resource efficient LED control (as done in board/fizz/led.c).",
+      "parentUuid": "f1e3c3ee_1e1ea08f",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 8
+      },
+      "revId": "269b619468e831ad178e7796f27db7be55a25c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
