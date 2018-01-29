@@ -176,12 +176,10 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = USB_PD_PORT_ANX74XX,  /* don't care / unused */
 		.driver = &anx74xx_tcpm_usb_mux_driver,
-		.hpd_update = &anx74xx_tcpc_update_hpd_status,
 	},
 	{
 		.port_addr = USB_PD_PORT_PS8751,
 		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 		/* TODO(ecgh): ps8751_tune_mux needed? */
 	}
 };
@@ -291,8 +289,6 @@ void board_reset_pd_mcu(void)
 
 void board_tcpc_init(void)
 {
-	int port;
-
 	/* TODO(ecgh): need to wait for disconnected battery? */
 
 	/* Only reset TCPC if not sysjump */
@@ -311,15 +307,6 @@ void board_tcpc_init(void)
 	/* Enable CABLE_DET interrupt for ANX3429 wake from standby */
 	gpio_enable_interrupt(GPIO_USB_C0_CABLE_DET);
 #endif
-	/*
-	 * Initialize HPD to low; after sysjump SOC needs to see
-	 * HPD pulse to enable video path
-	 */
-	for (port = 0; port < CONFIG_USB_PD_PORT_COUNT; port++) {
-		const struct usb_mux *mux = &usb_muxes[port];
-
-		mux->hpd_update(port, 0, 0);
-	}
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
