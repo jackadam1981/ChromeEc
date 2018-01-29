@@ -16,6 +16,52 @@
       "revId": "4891b40d2c6332a08e784013ee7523eaca193743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7556dab7_f4e89807",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-29T17:58:01Z",
+      "side": 1,
+      "message": "Does it hurt to always include this header file, and only #define the actual code?",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "4891b40d2c6332a08e784013ee7523eaca193743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d30f2814_ecc0115a",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-29T17:58:01Z",
+      "side": 1,
+      "message": "When should we define another PPC config (e.g. cl:886563) and have the USB_PD_protocol.c code fork vs hide PPC code within TPCP code?",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "4891b40d2c6332a08e784013ee7523eaca193743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
