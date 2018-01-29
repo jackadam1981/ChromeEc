@@ -79,7 +79,11 @@ GPIO(SPI1_NSS,			PIN(A, 15), GPIO_OUT_HIGH)
 /* TODO(b:68934906): Enable interrupt on this pin */
 GPIO(LID_OPEN,			PIN(B, 11), GPIO_INPUT | GPIO_PULL_UP)
 #else
+  #ifdef BOARD_WHISKERS
+GPIO(SPI1_NSS,			PIN(A, 15), GPIO_OUT_HIGH)
+  #else
 GPIO(BASE_DET,			PIN(A, 15), GPIO_INPUT)
+  #endif
 #endif
 
 /* Unimplemented signals since we are not an EC */
