@@ -141,7 +141,8 @@
 #define USB_EP_I2C_SPI		4
 #ifdef BOARD_WHISKERS
 #define USB_EP_ST_TOUCHPAD	5
-#define USB_EP_COUNT		6
+#define USB_EP_ST_TOUCHPAD_INT	6
+#define USB_EP_COUNT		7
 #else
 #define USB_EP_COUNT		5
 #endif
