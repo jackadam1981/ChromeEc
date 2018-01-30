@@ -466,6 +466,7 @@ static int st_tp_usb_set_interface(usb_uint alternate_setting,
 		return -1;
 }
 
+/* USB descriptors */
 USB_ISOCHRONOUS_CONFIG_FULL(usb_st_tp_passthru_config,
 			    USB_IFACE_ST_TOUCHPAD,
 			    USB_CLASS_VENDOR_SPEC,
@@ -475,8 +476,50 @@ USB_ISOCHRONOUS_CONFIG_FULL(usb_st_tp_passthru_config,
 			    USB_EP_ST_TOUCHPAD,
 			    128,  /* packet size */
 			    st_tp_usb_tx_callback,
-			    st_tp_usb_set_interface)
+			    st_tp_usb_set_interface,
+			    1 /* 1 extra EP for interrupts */)
 
+struct st_tp_interrupt_t {
+#define ST_TP_INT_FRAME_AVAILABLE	(1 << 0)
+	uint32_t flags,
+};
+
+static usb_uint st_tp_usb_int_buffer[sizeof(struct st_tp_interrupt_t)];
+
+const struct usb_endpoint_descriptor USB_EP_DESC(USB_IFACE_ST_TOUCHPAD, 81) = {
+	.bLength = USB_DT_ENDPOINT_SIZE,
+	.bDescriptorType = USB_DT_ENDPOINT,
+	.bEndpointAddress = 0x80 | USB_EP_ST_TOUCHPAD_INT,
+	.bmAttributes = 0x03 /* Interrupt endpoint */,
+	.wMaxPacketSize = sizeof(struct st_tp_interrupt_t),
+	.bInterval = 2 /* ms */,
+};
+
+static void st_tp_interrupt_tx(void)
+{
+	STM32_USB_EP(USB_EP_ST_TOUCHPAD_INT) &= EP_MASK;
+	if (usb_buffer_index < spi_buffer_index)
+		/* pending frames */
+		hook_call_deferred(&st_tp_interrupt_send_data, 0);
+}
+
+static void st_tp_interrupt_event(enum usb_ep_event evt)
+{
+	int ep = USB_EP_ST_TOUCHPAD_INT;
+
+	if (evt == USB_EVENT_RESET) {
+		btable_ep[ep].tx_addr = st_tp_usb_int_buffer;
+		btable_ep[ep].tx_count = sizeof(struct st_tp_interrupt_t);
+
+		STM32_USB_EP(ep) = ((ep << 0) |
+				    EP_TX_VALID |
+				    (3 << 9) /* interrupt EP */ |
+				    EP_RX_DISAB);
+	}
+}
+
+USB_DECLARE_EP(USB_EP_ST_TOUCHPAD_INT, st_tp_interrupt_tx, st_tp_interrupt_tx,
+	       st_tp_interrupt_event);
 
 /* Debugging commands */
 static int command_touchpad_st(int argc, char **argv)
