@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce2312e7_127d87e6",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-01-30T00:57:49Z",
+      "side": 1,
+      "message": "Sounds right",
+      "parentUuid": "8e517cd9_ab4c9ae8",
+      "range": {
+        "startLine": 337,
+        "startChar": 6,
+        "endLine": 337,
+        "endChar": 30
+      },
+      "revId": "a93faaeae846be5750bca21161761374842e09c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f171c2a6_4d6ac2f4",
         "filename": "driver/charger/rt946x.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-29T23:46:49Z",
       "side": 1,
       "message": "Random acts of whitespace?",
+      "range": {
+        "startLine": 371,
+        "startChar": 12,
+        "endLine": 372,
+        "endChar": 0
+      },
+      "revId": "a93faaeae846be5750bca21161761374842e09c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bdc4103_cd7a8652",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-01-30T00:57:49Z",
+      "side": 1,
+      "message": "I did this intentionally to align the coding style with the rest of this file.",
+      "parentUuid": "f171c2a6_4d6ac2f4",
       "range": {
         "startLine": 371,
         "startChar": 12,
