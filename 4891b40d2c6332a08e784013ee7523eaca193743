@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "2dd75a45_56a1ecd5",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-30T18:54:30Z",
+      "side": 1,
+      "message": "I think I should actually be making the distinction in the usb_pd_protocol.c. I think one should add a config option where there\u0027s a choice, but in this case having a PPC should be enough.",
+      "parentUuid": "d30f2814_ecc0115a",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 124,
+        "endChar": 24
+      },
+      "revId": "4891b40d2c6332a08e784013ee7523eaca193743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1498a17_f78cbf73",
         "filename": "driver/tcpm/tcpm.h",
         "patchSetId": 2
@@ -76,6 +100,24 @@
       "writtenOn": "2018-01-29T18:11:56Z",
       "side": 1,
       "message": "Is there any reason to set_vconn on the TCPC when we are also doing ppc_set_vconn?",
+      "revId": "4891b40d2c6332a08e784013ee7523eaca193743",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38205c1d_c9ed10cf",
+        "filename": "driver/tcpm/tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-30T18:54:30Z",
+      "side": 1,
+      "message": "This was a good question and made me take a closer look at schematics and datasheets. The PPC has its own source for Vconn, so therefore I don\u0027t think it\u0027s needed to set Vconn on the TCPC as well.",
+      "parentUuid": "e1498a17_f78cbf73",
       "revId": "4891b40d2c6332a08e784013ee7523eaca193743",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
