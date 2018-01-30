@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea23d7dc_467a4bae",
+        "filename": "board/nami/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-01-30T02:53:01Z",
+      "side": 1,
+      "message": "I modify the name because it show error when i do Pre-submit checks.\nDo you have any suggestion?\n\n        Errors:\n            * Hook script \"util/config_option_check.py 2\u003e\u00261\" failed with code 1:\n              The following config options were found to be missing from include/config.h.\n              Please add new config options there along with descriptions.\n              \n              \n              \u003e CONFIG_TICK                                          board/nami/led.c:151\n              \n              It may also be possible that you have a typo.",
+      "parentUuid": "635f9867_cd3b42f5",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "09a749883825d1d906ee052d22f6e16c2371648f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64d70d10_47db1d5b",
         "filename": "board/nami/led.c",
         "patchSetId": 2
