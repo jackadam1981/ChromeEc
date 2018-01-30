@@ -108,6 +108,24 @@
       "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68747fd3_0a7ed962",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-30T16:53:19Z",
+      "side": 1,
+      "message": "I copied this from the other boards that use gpio_set_level for HPD: chell, elm, glados, oak, samus_pd, strago, wheatley.",
+      "parentUuid": "0ea70ce4_fe99ae61",
+      "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
