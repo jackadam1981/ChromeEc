@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07a6ac1d_82f881cc",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-30T20:40:54Z",
+      "side": 1,
+      "message": "oops, I missed this before: we don\u0027t publish URLs which are not openly available - this is an open source project.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 102
+      },
+      "revId": "05e827d1eeb0e6d4fc6ebc07657a4098b6d8c563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd98f063_77c867a7",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-30T20:40:54Z",
+      "side": 1,
+      "message": "this line would not fit on a standard terminal, please wrap it.",
+      "range": {
+        "startLine": 285,
+        "startChar": 3,
+        "endLine": 286,
+        "endChar": 56
+      },
+      "revId": "05e827d1eeb0e6d4fc6ebc07657a4098b6d8c563",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19b90122_a61d6eb8",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-30T20:40:54Z",
+      "side": 1,
+      "message": "this has not been addressed.",
+      "parentUuid": "5b5db2db_78f008e8",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 38
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e580230_499b65f1",
         "filename": "chip/g/alerts.c",
         "patchSetId": 21
@@ -236,6 +260,30 @@
       "side": 1,
       "message": "alert_intr_clear() does a well defined task - cleares Interrupt status. I prefer to keep this function - its functionality might be helpful later.",
       "parentUuid": "c8a507bc_ff7b6dff",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 39
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b9de45d_39afc2bd",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-30T20:40:54Z",
+      "side": 1,
+      "message": "you can have it in a separate function if you prefer. My point is that with the suggested modification each macro definition would take less space (whatever the alert_counters[ALERT_NUM_##name]++ operation takes, probably 8 bytes per definition.\n\nWe don\u0027t have much code space to waste.",
+      "parentUuid": "9762be84_053e89f5",
       "range": {
         "startLine": 277,
         "startChar": 0,
