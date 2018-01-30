@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a23f0cda_41741e71",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-30T08:00:15Z",
+      "side": 1,
+      "message": "same size ,-) Keep as-is then.",
+      "parentUuid": "e7505b19_d924e6e2",
+      "revId": "828f32e5e4b104ed2b848f77b175a5362cce03e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67ca675b_e39a209e",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 16
