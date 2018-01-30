@@ -16,6 +16,24 @@
       "revId": "7ad48d8f64d9cde9f3b2edbb31706e7fb843d2c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e58eaab5_def1795e",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-30T19:51:15Z",
+      "side": 1,
+      "message": "Yes, I should add a check for CONFIG_USB_CHARGER. And thanks for the pointer to that bug, will add a note there too.",
+      "parentUuid": "ec3c03ac_b2a4a7c4",
+      "revId": "7ad48d8f64d9cde9f3b2edbb31706e7fb843d2c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
