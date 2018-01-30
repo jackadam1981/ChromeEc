@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "835620aa_16bf733b",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1114964
+      },
+      "writtenOn": "2018-01-30T19:02:13Z",
+      "side": 1,
+      "message": "The file is split into two parts - top one contains data struct declarations, bottom one contains functions. If we merge it then need to mix declarations/code. I slightly prefer declaration/code separation version but fine with either codestyle.\n\nIn case of merging #ifdef it makes sense to move CONFIG_ENABLE_H1_ALERTS_CONSOLE section to the bottom of the file.",
+      "parentUuid": "6e580230_499b65f1",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 38
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07e303f9_28b34d88",
         "filename": "chip/g/alerts.c",
         "patchSetId": 21
@@ -62,6 +86,24 @@
       "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed69ee3_44b91c34",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1114964
+      },
+      "writtenOn": "2018-01-30T19:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07e303f9_28b34d88",
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "ed625ed8_27f0658f",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1114964
+      },
+      "writtenOn": "2018-01-30T19:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d73d30_bd3ac512",
+      "range": {
+        "startLine": 253,
+        "startChar": 14,
+        "endLine": 253,
+        "endChar": 59
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e3f660c_7ca3cfd1",
         "filename": "chip/g/alerts.c",
         "patchSetId": 21
@@ -111,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "8e891b9f_2f71e1d0",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1114964
+      },
+      "writtenOn": "2018-01-30T19:02:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e3f660c_7ca3cfd1",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 29
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8a507bc_ff7b6dff",
         "filename": "chip/g/alerts.c",
         "patchSetId": 21
@@ -122,6 +212,30 @@
       "writtenOn": "2018-01-30T01:27:42Z",
       "side": 1,
       "message": "it just struck me: could counter increment  be done in alert_intr_clear() (which would be called something like \u0027alert_interrupt_process() in that case). this would allow duplicating  \"alert_counters[ALERT_NUM_##name]++;\"",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 39
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9762be84_053e89f5",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1114964
+      },
+      "writtenOn": "2018-01-30T19:02:13Z",
+      "side": 1,
+      "message": "alert_intr_clear() does a well defined task - cleares Interrupt status. I prefer to keep this function - its functionality might be helpful later.",
+      "parentUuid": "c8a507bc_ff7b6dff",
       "range": {
         "startLine": 277,
         "startChar": 0,
