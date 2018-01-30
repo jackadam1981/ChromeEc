@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "041dc241_2bf4b9bd",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-30T18:45:48Z",
+      "side": 1,
+      "message": "nit: Would prefer if the statement said \"failed to enable/disable Vbus discharge\".",
+      "range": {
+        "startLine": 499,
+        "startChar": 21,
+        "endLine": 499,
+        "endChar": 45
+      },
+      "revId": "60e696a19df9376fda0515862a7ffac6e370b456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757a932d_68af7c55",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2636,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-30T18:45:48Z",
+      "side": 1,
+      "message": "Maybe we could define this for boards at the bottom when they define one of the CONFIG_USB_PD_DISCHARGE options.",
+      "range": {
+        "startLine": 2636,
+        "startChar": 7,
+        "endLine": 2636,
+        "endChar": 30
+      },
+      "revId": "60e696a19df9376fda0515862a7ffac6e370b456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
