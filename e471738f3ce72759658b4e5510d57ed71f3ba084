@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b5db2db_78f008e8",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-30T01:27:42Z",
+      "side": 1,
+      "message": "there should be an empty line after local variable declarations.\n\nDoes this patch run cleanly through \u0027repo upload\u0027 ?",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 38
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e580230_499b65f1",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-30T01:27:42Z",
+      "side": 1,
+      "message": "why are there still two sections for #if CONFIG_ENABLE_H1_ALERTS_CONSOLE ?",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 38
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07e303f9_28b34d88",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-30T01:27:42Z",
+      "side": 1,
+      "message": "empty line after local declarations is required.",
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44d73d30_bd3ac512",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-30T01:27:42Z",
+      "side": 1,
+      "message": "line exceeds 80 cols.",
+      "range": {
+        "startLine": 253,
+        "startChar": 14,
+        "endLine": 253,
+        "endChar": 59
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e3f660c_7ca3cfd1",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-30T01:27:42Z",
+      "side": 1,
+      "message": "this new functionality needs to be mentioned in the patch description",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 269,
+        "endChar": 29
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a507bc_ff7b6dff",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-01-30T01:27:42Z",
+      "side": 1,
+      "message": "it just struck me: could counter increment  be done in alert_intr_clear() (which would be called something like \u0027alert_interrupt_process() in that case). this would allow duplicating  \"alert_counters[ALERT_NUM_##name]++;\"",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 39
+      },
+      "revId": "e471738f3ce72759658b4e5510d57ed71f3ba084",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
