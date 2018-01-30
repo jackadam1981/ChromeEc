@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6c459c2f_39e81c24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-30T16:00:43Z",
+      "side": 1,
+      "message": "Yes, the backing file is now sometimes like:\n/dev/shm/EC_persist__mnt_host_source_src_platform_ec_build_host_nvmem_nvmem.exe_flash\nif the sources live in /mnt/host/source/src/platform/ec/build/host/nvmem/nvmem.exe_flash\n(ie replacing / in the path by _)\n\nwhile it used to be:\n/mnt/host/source/src/platform/ec/build/host/nvmem/nvmem.exe_persist_flash",
+      "parentUuid": "411bb7d6_9eba9098",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 34
+      },
+      "revId": "98fc0d82629d911d5baa2547310ac5d2f6574c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "15904d8a_1572bef3",
         "filename": "chip/host/persistence.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-30T15:45:33Z",
       "side": 1,
       "message": "I know you are not changing this, but couldn\u0027t readlink() return PATH_MAX value?\n\nhere and in all snptintf() invocations it could be better readable to do\n\nbuf[PATH_MAX - 1] \u003d 0;\n\nand then use (PATH_MAX - 1) as the buffer size. In this case no need to check the return value each time.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "98fc0d82629d911d5baa2547310ac5d2f6574c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f2a5b4_ddf19a43",
+        "filename": "chip/host/persistence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-30T16:00:43Z",
+      "side": 1,
+      "message": "indeed, the original code might be broken here and triggering an out-of-bound write below.",
+      "parentUuid": "15904d8a_1572bef3",
       "range": {
         "startLine": 19,
         "startChar": 1,
