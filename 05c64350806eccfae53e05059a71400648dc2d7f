@@ -192,6 +192,24 @@
       "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "761df388_e4f531c2",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-30T19:57:38Z",
+      "side": 1,
+      "message": "Yes: I will see what I can find in history/spec/docs to understand better what is happening here so I can provide a comment.",
+      "parentUuid": "4e21e337_42a61c2d",
+      "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
