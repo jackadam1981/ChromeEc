@@ -1,0 +1,412 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8be67071_270cbbb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "Please mention this in the subject.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2efe0da_85220e17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "We need a bug for this change. The bug should explain why we\u0027re replacing OPT3001 with CM32181E.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f4b93da_64322eca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "Please write actual commands you used and the outputs.",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53926de0_ad78b71c",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "Extra line.",
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc03848_e40c22fe",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "This one too.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df5f938e_b580d0aa",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "This comment and all the similar comments in this file are not really adding any useful info. I would remove them.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 3
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6953d6a3_b4cc7de9",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "Please do return i2c_read16(port, addr, reg, data_ptr);",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839a870c_c6f815eb",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "static int",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 3
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4d44a0_1856d7f1",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "Is this right?",
+      "range": {
+        "startLine": 56,
+        "startChar": 59,
+        "endLine": 56,
+        "endChar": 64
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d6cfef4_f9f0fbce",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "nit: do you need this?",
+      "range": {
+        "startLine": 85,
+        "startChar": 34,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f964fb9_470379b7",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "I think this can be a single line: return CM32181E_GET_DATA(s)-\u003erate.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 23
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d9c6d4_21937bc2",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "This doesn\u0027t look matching the comment above. Can you explain or fix?",
+      "range": {
+        "startLine": 136,
+        "startChar": 62,
+        "endLine": 136,
+        "endChar": 68
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4826a458_89e88c9f",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "2018?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9615fc9_a7d8b18a",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "capella?",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 5
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cefffcc_abb363a3",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "can you use /* ... */?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a01d5e9d_3bdc457c",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "nit: alignment",
+      "range": {
+        "startLine": 19,
+        "startChar": 30,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "549ac8b9_78639eeb",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "I don\u0027t see this member. How does it compile? If you remove \u0027-\u003edrv_data\u0027, the rest of the code makes sense.",
+      "range": {
+        "startLine": 26,
+        "startChar": 67,
+        "endLine": 26,
+        "endChar": 75
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5191a837_944b8ba0",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:49:27Z",
+      "side": 1,
+      "message": "nit: please remove \u0027_t\u0027",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
