@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50826ece_b993876b",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-30T17:31:09Z",
+      "side": 1,
+      "message": "Was following the pattern from other boards that do this.",
+      "parentUuid": "014e527c_2e92464f",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 76
+      },
+      "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "121449b5_7ea1adc7",
         "filename": "board/grunt/usb_pd_policy.c",
         "patchSetId": 2
@@ -82,6 +106,30 @@
       "writtenOn": "2018-01-30T16:21:25Z",
       "side": 1,
       "message": "should this be (irq \u0026\u0026 cur_level) instead?",
+      "range": {
+        "startLine": 365,
+        "startChar": 5,
+        "endLine": 365,
+        "endChar": 18
+      },
+      "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "557164d9_89ab6ff2",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-01-30T17:31:09Z",
+      "side": 1,
+      "message": "Was copying other boards that set HPD GPIO (chell, elm, glados, oak, samus_pd, strago, wheatley), assuming it has been tested and works correctly.",
+      "parentUuid": "5229ab4d_abba798b",
       "range": {
         "startLine": 365,
         "startChar": 5,
