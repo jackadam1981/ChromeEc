@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88e5eb55_fb893c2b",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1192536
+      },
+      "writtenOn": "2018-01-30T17:57:59Z",
+      "side": 1,
+      "message": "Do you also need to power it off somewhere?  For grunt, we don\u0027t explicitly power it off because power is removed when the AP shuts down, but for zoombini, I added an explicit lm3630a_poweroff() call.",
+      "revId": "815cc7b0aacd66dc0d2108f79fec220366607d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
