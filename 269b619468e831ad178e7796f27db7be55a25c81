@@ -94,6 +94,30 @@
       "revId": "269b619468e831ad178e7796f27db7be55a25c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48b4d340_c5e15f29",
+        "filename": "board/nami/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-30T17:17:09Z",
+      "side": 1,
+      "message": "Sorry I don\u0027t understand your question. If you\u0027re talking about behavior of LEDs, please take a look at a document for partners: https://www.google.com/chromeos/partner/fe/docs/latest-requirements/chromebook.html.\n\nIf you\u0027re talking about implementation/coding, please rephrase your question.",
+      "parentUuid": "e989bd0c_b5649067",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 8
+      },
+      "revId": "269b619468e831ad178e7796f27db7be55a25c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
