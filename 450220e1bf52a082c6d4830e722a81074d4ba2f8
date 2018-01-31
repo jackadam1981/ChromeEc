@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "638bd247_ff6ea314",
+        "filename": "common/led_rgb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-31T02:23:00Z",
+      "side": 1,
+      "message": "I don\u0027t understand why you need 2 variables?\n\nAFAICT show_suspend_state in only set to 1 in one place, and pulse_leds_deferred does the exact same thing whether led_is_pulsing or show_suspend_state is set. Can\u0027t we just use led_is_pulsing only?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 30
+      },
+      "revId": "450220e1bf52a082c6d4830e722a81074d4ba2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d749d8ea_598f1ba5",
+        "filename": "common/led_rgb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-31T02:23:00Z",
+      "side": 1,
+      "message": "Set led_is_pulsing \u003d 1 here, too?",
+      "revId": "450220e1bf52a082c6d4830e722a81074d4ba2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d994d3_490a2591",
+        "filename": "common/led_rgb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-31T02:23:00Z",
+      "side": 1,
+      "message": "Please add a config option to allow disabling this function.",
+      "revId": "450220e1bf52a082c6d4830e722a81074d4ba2f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
