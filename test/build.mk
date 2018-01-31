@@ -77,6 +77,7 @@ test-list-host += usb_pd_rev30
 test-list-host += utils
 test-list-host += utils_str
 test-list-host += vboot
+test-list-host += weaver_ng
 test-list-host += x25519
 endif
 
@@ -132,4 +133,5 @@ usb_pd_rev30-y=usb_pd.o
 utils-y=utils.o
 utils_str-y=utils_str.o
 vboot-y=vboot.o
+weaver_ng-y=weaver_ng.o
 x25519-y=x25519.o
