@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "490bb7be_f51125bd",
+        "filename": "chip/host/persistence.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-01-31T08:21:38Z",
+      "side": 1,
+      "message": "Done (with Vadim\u0027s proposal)",
+      "parentUuid": "f0f2a5b4_ddf19a43",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 48
+      },
+      "revId": "98fc0d82629d911d5baa2547310ac5d2f6574c5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f9a2125_0d77b939",
         "filename": "chip/host/persistence.c",
         "patchSetId": 1
