@@ -1,0 +1,43 @@
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Provides the minimal declarations needed by pinweaver to build on
+ * CHIP_HOST.
+ */
+
+#ifndef __CROS_EC_DCRYPTO_MOCKS_H
+#define __CROS_EC_DCRYPTO_MOCKS_H
+
+#include <sha256.h>
+#include <stdint.h>
+#include <string.h>
+
+#define AES256_BLOCK_CIPHER_KEY_SIZE 32
+#define SHA256_DIGEST_SIZE 32
+
+extern struct pw_timestamp_t MOCK_update_timestamp;
+
+#define HASH_CTX sha256_ctx
+
+struct dcrypto_mock_ctx_t {
+	struct HASH_CTX hash;
+};
+#define LITE_HMAC_CTX struct dcrypto_mock_ctx_t
+#define LITE_SHA256_CTX struct HASH_CTX
+
+void HASH_update(struct HASH_CTX *ctx, const void *data, size_t len);
+
+uint8_t *HASH_final(struct HASH_CTX *ctx);
+
+void DCRYPTO_SHA256_init(LITE_SHA256_CTX *ctx, uint32_t sw_required);
+
+void DCRYPTO_HMAC_SHA256_init(LITE_HMAC_CTX *ctx, const void *key,
+			      unsigned int len);
+const uint8_t *DCRYPTO_HMAC_final(LITE_HMAC_CTX *ctx);
+
+int DCRYPTO_aes_ctr(uint8_t *out, const uint8_t *key, uint32_t key_bits,
+		    const uint8_t *iv, const uint8_t *in, size_t in_len);
+
+#endif  /* __CROS_EC_DCRYPTO_MOCKS_H */
