@@ -3051,6 +3051,13 @@
 #define CONFIG_AUX_TIMER_PERIOD_MS (CONFIG_WATCHDOG_PERIOD_MS - 500)
 
 /*****************************************************************************/
+/* Weaver NG config
+ * A feature which exchanges a low entropy secret with rate limits for a high
+ * entropy secret. This enables a set of vendor specific commands for Cr50.
+ */
+#undef CONFIG_WEAVER_NG
+
+/*****************************************************************************/
 /* WebUSB config */
 
 /*
