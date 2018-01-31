@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d09aca5d_ff5beb56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-01-31T21:09:15Z",
+      "side": 1,
+      "message": "Please add a more useful description.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58ed64c9_4fe22e68",
+        "filename": "include/weaver_ng.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-01-31T21:09:15Z",
+      "side": 1,
+      "message": "not really? :-D",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a983485_edefa8c4",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-01-31T21:09:15Z",
+      "side": 1,
+      "message": "nope",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7509289_a2c38b18",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-01-31T21:09:15Z",
+      "side": 1,
+      "message": "any good reason to make this a union?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2871f30d_34575e94",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-01-31T21:09:15Z",
+      "side": 1,
+      "message": "The intention in the design doc was to make this a table mapping attempts to delay, not an enum. That way, we can update the schedule from userspace without having to make Cr50 changes.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
