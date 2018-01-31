@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "7187c544_352a4be8",
+        "filename": "common/rgb_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-31T01:58:36Z",
+      "side": 1,
+      "message": "I see an example, and recommendations. In practice OEMs don\u0027t care and do whatever aligns with their design language. See b/37970194 for an example.",
+      "parentUuid": "bd7efaee_634aa0b7",
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9414e972_eec1c782",
         "filename": "common/rgb_led.c",
         "patchSetId": 2
