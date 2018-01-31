@@ -11,6 +11,8 @@
 /* Optional features */
 #define CONFIG_HIBERNATE_PSL
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands. */
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_CMD_BUTTON
 #define CONFIG_CMD_PPC_DUMP
 
@@ -38,10 +40,44 @@
 #define CONFIG_LED_DRIVER_LM3630A
 #endif /* defined(BOARD_ZOOMBINI) */
 
+#define CONFIG_ACCELGYRO_LSM6DSM
+#define CONFIG_MAG_LIS2MDL
 #define CONFIG_ALS
 #define CONFIG_ALS_OPT3001
 #define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 #define ALS_COUNT 1
+
+/* FIFO size is in power of 2. */
+#define CONFIG_ACCEL_FIFO 1024
+
+/* Depends on how fast the AP boots and typical ODRs */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+
+/* Interrupt management. */
+#define CONFIG_ACCEL_INTERRUPTS
+
+/* Gesture Configuration. */
+#define CONFIG_GESTURE_DETECTION
+#define CONFIG_GESTURE_HOST_DETECTION
+#define CONFIG_GESTURE_SAMPLING_INTERVAL_MS	5
+
+/* First sensor is motion_sensor is used for significant motion. */
+#define CONFIG_GESTURE_SIGMO			0
+#define CONFIG_GESTURE_SIGMO_PROOF_MS		500
+#define CONFIG_GESTURE_SIGMO_SKIP_MS		3000
+#define CONFIG_GESTURE_SIGMO_THRES_MG		500
+
+#define CONFIG_GESTURE_SENSOR_BATTERY_TAP	0
+#define CONFIG_GESTURE_TAP_THRES_MG		100
+#define CONFIG_GESTURE_TAP_MAX_INTERSTICE_T	500
+#define CONFIG_GESTURE_DETECTION_MASK \
+	((1 << CONFIG_GESTURE_SIGMO) | \
+	 (1 << CONFIG_GESTURE_SENSOR_BATTERY_TAP))
+#define CONFIG_GESTURE_TAP_EVENT		TASK_EVENT_CUSTOM(1024)
+#define CONFIG_GESTURE_SIGMO_EVENT		TASK_EVENT_CUSTOM(2048)
+
+/* Custom sensor option. */
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT		TASK_EVENT_CUSTOM(4)
 
 #define CONFIG_BACKLIGHT_LID
 
@@ -244,6 +280,9 @@ enum power_signal {
 };
 
 enum sensor_id {
+	LID_ACCEL,
+	LID_GYRO,
+	LID_MAG,
 	LID_ALS,
 };
 
