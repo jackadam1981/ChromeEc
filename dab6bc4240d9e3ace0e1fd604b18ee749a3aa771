@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ec0acbe_2092d16a",
+        "filename": "common/led_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-31T01:38:30Z",
+      "side": 1,
+      "message": "Done. Much more succinct.",
+      "parentUuid": "a23834f5_77e1d60a",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 5
+      },
+      "revId": "dab6bc4240d9e3ace0e1fd604b18ee749a3aa771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5b172894_a0cb9afd",
         "filename": "common/led_common.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "dab6bc4240d9e3ace0e1fd604b18ee749a3aa771",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6774bc_98da3297",
+        "filename": "common/led_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-31T01:38:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b172894_a0cb9afd",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "dab6bc4240d9e3ace0e1fd604b18ee749a3aa771",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
