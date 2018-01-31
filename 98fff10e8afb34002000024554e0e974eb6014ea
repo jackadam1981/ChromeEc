@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a864c980_72cc2657",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-31T18:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8878b100_b38fad8c",
+      "range": {
+        "startLine": 664,
+        "startChar": 45,
+        "endLine": 664,
+        "endChar": 53
+      },
+      "revId": "98fff10e8afb34002000024554e0e974eb6014ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfbbede7_01a6fbc1",
         "filename": "board/poppy/board.c",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "99b7ead9_c30b43c2",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-31T18:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfbbede7_01a6fbc1",
+      "range": {
+        "startLine": 665,
+        "startChar": 18,
+        "endLine": 665,
+        "endChar": 21
+      },
+      "revId": "98fff10e8afb34002000024554e0e974eb6014ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61adcbc1_44f390ce",
         "filename": "board/poppy/board.c",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2018-01-31T02:42:57Z",
       "side": 1,
       "message": "nit, and not too relevant on npcx5 anyway (there is hardware division). I tend to prefer measuring ratios in /128, instead of /100, so you could replace a division by a simpler shift. I.e. 124/128 (\u003d31/32) instead of 97/100.",
+      "range": {
+        "startLine": 666,
+        "startChar": 34,
+        "endLine": 666,
+        "endChar": 42
+      },
+      "revId": "98fff10e8afb34002000024554e0e974eb6014ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebe614a9_f7ea59c0",
+        "filename": "board/poppy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2018-01-31T18:10:51Z",
+      "side": 1,
+      "message": "Done, good suggestion",
+      "parentUuid": "61adcbc1_44f390ce",
       "range": {
         "startLine": 666,
         "startChar": 34,
