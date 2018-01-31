@@ -58,7 +58,16 @@ const struct {
 			0x5ecb7690,  0x09f732c9,  0xe540bf14,  0xcc46799a
 		}
 	},
+#else
+	{ "", {} },
 #endif
+	{
+		"PINWEAVER",
+		{
+			0x51cd9166,  0x911a7460,  0x96aeaf06,  0xa9d0371c,
+			0xfa08a500,  0xfe4e04a1,  0xe0a36b57,  0x0418c429
+		}
+	},
 };
 
 int DCRYPTO_appkey_init(enum dcrypto_appid appid, struct APPKEY_CTX *ctx)
