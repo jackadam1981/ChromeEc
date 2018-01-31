@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "94a34e15_2d388675",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-31T03:35:40Z",
+      "side": 1,
+      "message": "Done\n\nso \"!!(int_value)\" is convention for converting integer to boolean, or it depends?",
+      "parentUuid": "e7505b19_d924e6e2",
+      "revId": "828f32e5e4b104ed2b848f77b175a5362cce03e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67ca675b_e39a209e",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 16
@@ -126,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "e6dc1046_e1507db5",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-31T03:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cf428d3_f3f36bb0",
+      "range": {
+        "startLine": 53,
+        "startChar": 21,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "828f32e5e4b104ed2b848f77b175a5362cce03e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "30fe1d02_26e91eac",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 16
@@ -137,6 +179,24 @@
       "writtenOn": "2018-01-29T11:32:16Z",
       "side": 1,
       "message": "ret \u003d -1, then you can skip the return 0 and else branch below.",
+      "revId": "828f32e5e4b104ed2b848f77b175a5362cce03e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d1030a1_7123b1e9",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-31T03:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30fe1d02_26e91eac",
       "revId": "828f32e5e4b104ed2b848f77b175a5362cce03e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -160,6 +220,24 @@
     },
     {
       "key": {
+        "uuid": "e78d070b_e6a35dc2",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-31T03:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e08c254a_8a0f7167",
+      "revId": "828f32e5e4b104ed2b848f77b175a5362cce03e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1941b5e2_098b208b",
         "filename": "chip/stm32/usb_isochronous.h",
         "patchSetId": 16
@@ -171,6 +249,30 @@
       "writtenOn": "2018-01-29T11:32:16Z",
       "side": 1,
       "message": "pointer",
+      "range": {
+        "startLine": 30,
+        "startChar": 44,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "828f32e5e4b104ed2b848f77b175a5362cce03e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e093eae_42b500d1",
+        "filename": "chip/stm32/usb_isochronous.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1136349
+      },
+      "writtenOn": "2018-01-31T03:35:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1941b5e2_098b208b",
       "range": {
         "startLine": 30,
         "startChar": 44,
