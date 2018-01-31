@@ -138,6 +138,8 @@
 /* Include crypto stuff, both software and hardware. */
 #define CONFIG_DCRYPTO
 #define CONFIG_UPTO_SHA512
+/* TPM spec requires support upto RSA-2k. */
+#define CONFIG_RSA_MAX_BYTES 256
 
 /* Implement custom udelay, due to usec hwtimer imprecision. */
 #define CONFIG_HW_SPECIFIC_UDELAY

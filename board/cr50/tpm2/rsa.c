@@ -243,7 +243,7 @@ CRYPT_RESULT _cpri__TestKeyRSA(TPM2B *d_buf, uint32_t e,
 		return CRYPT_PARAMETER;
 	if (N_buf->size != p_buf->size * 2)
 		return CRYPT_PARAMETER;  /* Insufficient output buffer space. */
-	if (N_buf->size > RSA_MAX_BYTES)
+	if (N_buf->size > CONFIG_RSA_MAX_BYTES)
 		return CRYPT_PARAMETER;  /* Unsupported key size. */
 
 	DCRYPTO_bn_wrap(&N, N_buf->buffer, N_buf->size);
@@ -350,7 +350,7 @@ CRYPT_RESULT _cpri__GenerateKeyRSA(
 		256;
 
 	const uint16_t num_bytes = num_bits / 8;
-	uint8_t q_buf[RSA_MAX_BYTES / 2];
+	uint8_t q_buf[CONFIG_RSA_MAX_BYTES / 2];
 
 	struct LITE_BIGNUM e;
 	struct LITE_BIGNUM p;
@@ -366,7 +366,7 @@ CRYPT_RESULT _cpri__GenerateKeyRSA(
 
 	if (num_bits & 0xF)
 		return CRYPT_FAIL;
-	if (num_bytes > RSA_MAX_BYTES)
+	if (num_bytes > CONFIG_RSA_MAX_BYTES)
 		return CRYPT_FAIL;
 	/* Seed size must be at least 2*security_strength per TPM 2.0 spec. */
 	if (seed == NULL || seed->size * 8 < 2 * security_strength)
@@ -944,7 +944,7 @@ static void rsa_command_handler(void *cmd_body,
 	TPM2B_PUBLIC_KEY_RSA rsa_n;
 
 	TPM2B_128_BYTE_VALUE seed;
-	uint8_t bn_buf[RSA_MAX_BYTES];
+	uint8_t bn_buf[CONFIG_RSA_MAX_BYTES];
 	struct LITE_BIGNUM bn;
 	char label[MAX_LABEL_LEN];
 

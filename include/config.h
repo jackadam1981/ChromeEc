@@ -964,6 +964,11 @@
 #undef CONFIG_UPTO_SHA512
 
 /*
+ * THe maximum supported RSA key size, requires CONFIG_DCRYPTO.
+ */
+#undef CONFIG_RSA_MAX_BYTES
+
+/*
  * When enabled ignore version et al during fw upgrade for chip/g.
  */
 #undef CONFIG_IGNORE_G_UPDATE_CHECKS

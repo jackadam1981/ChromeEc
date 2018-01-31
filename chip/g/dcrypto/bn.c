@@ -1070,9 +1070,9 @@ static int bn_probable_prime(const struct LITE_BIGNUM *p)
 	int s = 0;
 
 	uint32_t ONE_buf = 1;
-	uint8_t r_buf[RSA_MAX_BYTES / 2];
-	uint8_t A_buf[RSA_MAX_BYTES / 2];
-	uint8_t y_buf[RSA_MAX_BYTES / 2];
+	uint8_t r_buf[CONFIG_RSA_MAX_BYTES / 2];
+	uint8_t A_buf[CONFIG_RSA_MAX_BYTES / 2];
+	uint8_t y_buf[CONFIG_RSA_MAX_BYTES / 2];
 
 	struct LITE_BIGNUM ONE;
 	struct LITE_BIGNUM r;
