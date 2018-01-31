@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c33b581_0f728780",
+        "filename": "board/eve/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-01-31T23:01:50Z",
+      "side": 1,
+      "message": "This could also be converted into a function of its own and called from board_extpower() [and from the usb_pd_policy.c] if needed.",
+      "range": {
+        "startLine": 466,
+        "startChar": 1,
+        "endLine": 468,
+        "endChar": 39
+      },
+      "revId": "9eb112a642ab64f65652d121ac8b5cff2a098efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
