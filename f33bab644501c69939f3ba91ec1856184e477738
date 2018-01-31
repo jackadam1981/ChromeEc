@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3308053a_747ebc8f",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-31T23:09:46Z",
+      "side": 1,
+      "message": "should we pull this logic into its own local function?\n\nAlso, I thought we wouldn\u0027t need to get vconn on both the TCPC and PPC since they would potentially fight to drive the line.",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 25
+      },
+      "revId": "f33bab644501c69939f3ba91ec1856184e477738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
