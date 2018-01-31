@@ -1,0 +1,756 @@
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#include <pinweaver.h>
+
+#include <common.h>
+#include <console.h>
+#include <dcrypto.h>
+#include <pinweaver_tpm_imports.h>
+#include <pinweaver_types.h>
+#include <timer.h>
+#include <trng.h>
+#include <util.h>
+
+/* Compile time sanity checks. */
+/* Make sure the hash size is consistent with dcrypto. */
+BUILD_ASSERT(PW_HASH_SIZE >= SHA256_DIGEST_SIZE);
+
+/* sizeof(struct leaf_data_t) % 16 should be zero */
+BUILD_ASSERT(sizeof(struct leaf_sensitive_data_t) % PW_WRAP_BLOCK_SIZE == 0);
+
+/* pw_request_t.data.raw should be the largest member of the union. */
+BUILD_ASSERT(sizeof(((struct pw_request_t *)0)->data) ==
+	     sizeof(((struct pw_request_t *)0)->data.raw));
+
+/* pw_response_t.data.raw should be the largest member of the union */
+BUILD_ASSERT(sizeof(((struct pw_response_t *)0)->data) ==
+	     sizeof(((struct pw_response_t *)0)->data.raw));
+
+
+BUILD_ASSERT(sizeof(((struct merkle_tree_t *)0)->wrap_key) ==
+	     AES256_BLOCK_CIPHER_KEY_SIZE);
+
+/******************************************************************************/
+/* Basic operations required by the Merkle tree.
+ */
+
+/* Creates an empty Merkle_tree with the given parameters. */
+static int create_merkle_tree(struct bits_per_level_t bits_per_level,
+			      struct height_t height,
+			      struct merkle_tree_t *merkle_tree)
+{
+	uint16_t fan_out = 1 << bits_per_level.v;
+	uint8_t temp_hash[PW_HASH_SIZE] = {};
+	uint8_t hx;
+	uint16_t kx;
+	LITE_SHA256_CTX ctx;
+
+	merkle_tree->bits_per_level = bits_per_level;
+	merkle_tree->height = height;
+
+	/* Initialize the root hash. */
+	for (hx = 0; hx < height.v; ++hx) {
+		uint8_t *dst = temp_hash;
+
+		if (hx == height.v - 1)
+			dst = merkle_tree->root;
+
+		DCRYPTO_SHA256_init(&ctx, 0);
+		for (kx = 0; kx < fan_out; ++kx)
+			HASH_update(&ctx, temp_hash, PW_HASH_SIZE);
+		memcpy(dst, HASH_final(&ctx), PW_HASH_SIZE);
+	}
+
+	rand_bytes(merkle_tree->hmac_key, sizeof(merkle_tree->hmac_key));
+
+	rand_bytes(merkle_tree->wrap_key, sizeof(merkle_tree->wrap_key));
+
+	/* TODO(allenwebb) generate public private key pair */
+	return EC_SUCCESS;
+}
+
+/* Computes the HMAC for an encrypted leaf using the key in the merkle_tree. */
+static void compute_hmac(const struct merkle_tree_t *merkle_tree,
+			 const struct wrapped_leaf_data_t *wrapped_leaf_data,
+			 uint8_t result[PW_HASH_SIZE])
+{
+	LITE_HMAC_CTX hmac;
+
+	DCRYPTO_HMAC_SHA256_init(&hmac, merkle_tree->hmac_key,
+				 sizeof(merkle_tree->hmac_key));
+	HASH_update(&hmac.hash, &wrapped_leaf_data->pub,
+		    sizeof(wrapped_leaf_data->pub));
+	HASH_update(&hmac.hash, wrapped_leaf_data->cipher_text,
+		    sizeof(wrapped_leaf_data->cipher_text));
+	memcpy(result, DCRYPTO_HMAC_final(&hmac), PW_HASH_SIZE);
+}
+
+/* Computes the root hash for the specified path and child hash. */
+static void compute_root_hash(const struct merkle_tree_t *merkle_tree,
+			      struct label_t path,
+			      const uint8_t hashes[][PW_HASH_SIZE],
+			      const uint8_t child_hash[PW_HASH_SIZE],
+			      uint8_t new_root[PW_HASH_SIZE])
+{
+	/* This is one less than the fan out, the number of sibling hashes. */
+	uint16_t num_aux = (1 << merkle_tree->bits_per_level.v) - 1;
+	uint8_t temp_hash[PW_HASH_SIZE];
+	uint8_t *dst = temp_hash;
+	uint8_t hx = 0;
+	uint64_t index = path.v;
+
+	/* Case child_hash -> new_root */
+	if (merkle_tree->height.v == 1) {
+		compute_hash(hashes, num_aux, (struct index_t){index & num_aux},
+			     child_hash, new_root);
+		return;
+	}
+
+	/* Case child_hash -> temp_a */
+	compute_hash(hashes, num_aux, (struct index_t){index & num_aux},
+		     child_hash, dst);
+	hashes += num_aux;
+	for (hx = 1; hx < merkle_tree->height.v - 1; ++hx) {
+		index = index >> merkle_tree->bits_per_level.v;
+		compute_hash(hashes, num_aux, (struct index_t){index & num_aux},
+			     temp_hash, dst);
+		hashes += num_aux;
+	}
+
+	/* Handle last case temp_? -> new_root. */
+	index = index >> merkle_tree->bits_per_level.v;
+	compute_hash(hashes, num_aux, (struct index_t){index & num_aux},
+		     temp_hash, new_root);
+}
+
+/* Checks to see the specified path is valid. The length of the path should be
+ * validated prior to calling this function.
+ *
+ * Returns 0 on success or an error code otherwise.
+ */
+static int authenticate_path(const struct merkle_tree_t *merkle_tree,
+			     struct label_t path,
+			     const uint8_t hashes[][PW_HASH_SIZE],
+			     const uint8_t child_hash[PW_HASH_SIZE])
+{
+	uint8_t parent[PW_HASH_SIZE];
+
+	compute_root_hash(merkle_tree, path, hashes, child_hash, parent);
+	if (memcmp(parent, merkle_tree->root, sizeof(parent)) != 0)
+		return PW_ERR_PATH_AUTH_FAILED;
+	return EC_SUCCESS;
+}
+
+/* Encrypts the leaf meta data. */
+static int encrypt_leaf_data(const struct merkle_tree_t *merkle_tree,
+			     const struct leaf_data_t *leaf_data,
+			     struct wrapped_leaf_data_t *wrapped_leaf_data)
+{
+	/* Generate a random IV. */
+	rand_bytes(wrapped_leaf_data->iv, sizeof(wrapped_leaf_data->iv));
+	memcpy(&wrapped_leaf_data->pub, &leaf_data->pub,
+	       sizeof(leaf_data->pub));
+	if (DCRYPTO_aes_ctr(wrapped_leaf_data->cipher_text,
+			    merkle_tree->wrap_key,
+			    sizeof(merkle_tree->wrap_key) << 3,
+			    wrapped_leaf_data->iv, (uint8_t *)&leaf_data->sec,
+			    sizeof(leaf_data->sec)) != EC_SUCCESS) {
+		return PW_ERR_CRYPTO_FAILURE;
+	}
+	return EC_SUCCESS;
+}
+
+/* Decrypts the leaf meta data. */
+static int decrypt_leaf_data(
+		const struct merkle_tree_t *merkle_tree,
+		const struct wrapped_leaf_data_t *wrapped_leaf_data,
+		struct leaf_data_t *leaf_data)
+{
+	memcpy(&leaf_data->pub, &wrapped_leaf_data->pub,
+	       sizeof(leaf_data->pub));
+	if (DCRYPTO_aes_ctr((uint8_t *)&leaf_data->sec, merkle_tree->wrap_key,
+			    sizeof(merkle_tree->wrap_key) << 3,
+			    wrapped_leaf_data->iv,
+			    wrapped_leaf_data->cipher_text,
+			    sizeof(leaf_data->sec)) != EC_SUCCESS) {
+		return PW_ERR_CRYPTO_FAILURE;
+	}
+	return EC_SUCCESS;
+}
+
+/******************************************************************************/
+/* Parameter and state validation functions.
+ */
+
+static int validate_tree_parameters(struct bits_per_level_t bits_per_level,
+				    struct height_t height)
+{
+	uint8_t fan_out = 1 << bits_per_level.v;
+
+	if (bits_per_level.v < BITS_PER_LEVEL_MIN ||
+	    bits_per_level.v > BITS_PER_LEVEL_MAX)
+		return PW_ERR_BITS_PER_LEVEL_INVALID;
+
+	if (height.v < HEIGHT_MIN ||
+	    height.v > HEIGHT_MAX(bits_per_level.v) ||
+	    ((fan_out - 1) * height.v) * PW_HASH_SIZE > PW_MAX_PATH_SIZE)
+		return PW_ERR_HEIGHT_INVALID;
+
+	return EC_SUCCESS;
+}
+
+/* Verifies that merkle_tree has been initialized. */
+static int validate_tree(const struct merkle_tree_t *merkle_tree)
+{
+	if (validate_tree_parameters(merkle_tree->bits_per_level,
+				     merkle_tree->height) != EC_SUCCESS)
+		return PW_ERR_TREE_INVALID;
+	return EC_SUCCESS;
+}
+
+/* Checks the following conditions:
+ * Extra index fields should be all zero.
+ */
+static int validate_label(const struct merkle_tree_t *merkle_tree,
+			  struct label_t path)
+{
+	uint8_t shift_by = merkle_tree->bits_per_level.v *
+			   merkle_tree->height.v;
+
+	if ((path.v >> shift_by) == 0)
+		return EC_SUCCESS;
+	return PW_ERR_LABEL_INVALID;
+}
+
+/* Checks the following conditions:
+ * Columns should be strictly increasing.
+ * Zeroes for filler at the end of the delay_schedule are permitted.
+ */
+static int validate_delay_schedule(const struct delay_schedule_entry_t
+				   delay_schedule[PW_SCHED_COUNT])
+{
+	size_t x;
+
+	/* The first entry should not be useless. */
+	if (delay_schedule[0].time_diff.v == 0)
+		return PW_ERR_DELAY_SCHEDULE_INVALID;
+
+	for (x = PW_SCHED_COUNT - 1; x > 0; --x) {
+		if (delay_schedule[x].attempt_count.v == 0) {
+			if (delay_schedule[x].time_diff.v != 0)
+				return PW_ERR_DELAY_SCHEDULE_INVALID;
+		} else if (delay_schedule[x].attempt_count.v <=
+				delay_schedule[x - 1].attempt_count.v ||
+				delay_schedule[x].time_diff.v <=
+				delay_schedule[x - 1].time_diff.v) {
+			return PW_ERR_DELAY_SCHEDULE_INVALID;
+		}
+	}
+	return EC_SUCCESS;
+}
+
+/* Sets the value of ts to the current notion of time. */
+static void update_timestamp(struct pw_timestamp_t *ts)
+{
+	ts->timer_value = get_time().val / SECOND;
+	ts->boot_count = get_restart_count();
+}
+
+/* Checks if an auth attempt can be made or not based on the delay schedule.
+ * EC_SUCCESS is returned when a new attempt can be made otherwise
+ * seconds_to_wait will be updated with the remaining wait time required.
+ */
+static int test_rate_limit(struct leaf_data_t *leaf_data,
+			   struct time_diff_t *seconds_to_wait)
+{
+	uint64_t ready_time;
+	uint8_t x;
+	struct pw_timestamp_t current_time;
+	struct time_diff_t delay = {0};
+
+	/* This loop ends when x is one greater than the index that applies. */
+	for (x = 0; x < ARRAY_SIZE(leaf_data->pub.delay_schedule); ++x) {
+		/* Stop if a null entry is reached. The first part of the delay
+		 * schedule has a list of increasing (attempt_count, time_diff)
+		 * pairs with any unused entries zeroed out at the end.
+		 */
+		if (leaf_data->pub.delay_schedule[x].attempt_count.v == 0)
+			break;
+
+		/* Stop once a delay schedule entry is reached whose
+		 * threshold is greater than the current number of
+		 * attempts.
+		 */
+		if (leaf_data->pub.attempt_count.v <
+		    leaf_data->pub.delay_schedule[x].attempt_count.v)
+			break;
+	}
+
+	/* If the first threshold was greater than the current number of
+	 * attempts, there is no delay. Otherwise, grab the delay from the
+	 * entry prior to the one that was too big.
+	 */
+	if (x > 1)
+		delay = leaf_data->pub.delay_schedule[x - 1].time_diff;
+
+	if (delay.v == 0)
+		return EC_SUCCESS;
+
+	if (delay.v == PW_BLOCK_ATTEMPTS) {
+		seconds_to_wait->v = PW_BLOCK_ATTEMPTS;
+		return PW_ERR_RATE_LIMIT_REACHED;
+	}
+
+	update_timestamp(&current_time);
+
+	/* TODO(allenwebb) verify the timer starts at zero on reboot. */
+	if (leaf_data->pub.timestamp.boot_count == current_time.boot_count)
+		ready_time = delay.v + leaf_data->pub.timestamp.timer_value;
+	else
+		ready_time = delay.v;
+
+	if (current_time.timer_value >= ready_time)
+		return EC_SUCCESS;
+
+	seconds_to_wait->v = ready_time - current_time.timer_value;
+	return PW_ERR_RATE_LIMIT_REACHED;
+}
+
+/******************************************************************************/
+/* Per-request-type handler implementations.
+ */
+
+static int pw_handle_reset_tree(struct merkle_tree_t *merkle_tree,
+				const struct pw_request_reset_tree_t *request,
+				uint8_t new_root[PW_HASH_SIZE])
+{
+	int ret;
+
+	ret = validate_tree_parameters(request->bits_per_level,
+				       request->height);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = create_merkle_tree(request->bits_per_level, request->height,
+				 merkle_tree);
+
+	if (ret == EC_SUCCESS)
+		memcpy(new_root, merkle_tree->root, sizeof(merkle_tree->root));
+	return ret;
+}
+
+static int pw_handle_insert_leaf(struct merkle_tree_t *merkle_tree,
+				 const struct pw_request_insert_leaf_t *request,
+				 struct pw_response_insert_leaf_t *response,
+				 uint8_t new_root[PW_HASH_SIZE])
+{
+	int ret = EC_SUCCESS;
+	struct leaf_data_t leaf_data = {};
+	struct wrapped_leaf_data_t wrapped_leaf_data;
+	const uint8_t empty_hash[PW_HASH_SIZE] = {};
+
+	ret = validate_tree(merkle_tree);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = validate_label(merkle_tree, request->label);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = validate_delay_schedule(request->delay_schedule);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = authenticate_path(merkle_tree, request->label,
+				request->path_hashes, empty_hash);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	memset(&leaf_data, 0, sizeof(leaf_data));
+	leaf_data.pub.protocol_version = PW_PROTOCOL_VERSION;
+
+	leaf_data.pub.label.v = request->label.v;
+	memcpy(&leaf_data.pub.delay_schedule, &request->delay_schedule,
+	       sizeof(request->delay_schedule));
+	memcpy(&leaf_data.sec.low_entropy_secret, &request->low_entropy_secret,
+	       sizeof(request->low_entropy_secret));
+	memcpy(&leaf_data.sec.high_entropy_secret,
+	       &request->high_entropy_secret,
+	       sizeof(request->high_entropy_secret));
+	memcpy(&leaf_data.sec.reset_secret, &request->reset_secret,
+	       sizeof(request->reset_secret));
+
+	ret = encrypt_leaf_data(merkle_tree, &leaf_data, &wrapped_leaf_data);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	compute_hmac(merkle_tree, &wrapped_leaf_data, wrapped_leaf_data.hmac);
+
+	compute_root_hash(merkle_tree, leaf_data.pub.label,
+			  request->path_hashes, wrapped_leaf_data.hmac,
+			  new_root);
+
+	memcpy(&response->wrapped_leaf_data, &wrapped_leaf_data,
+	       sizeof(wrapped_leaf_data));
+
+	return ret;
+}
+
+static int pw_handle_remove_leaf(struct merkle_tree_t *merkle_tree,
+				 const struct pw_request_remove_leaf_t *request,
+				 uint8_t new_root[PW_HASH_SIZE])
+{
+	int ret = EC_SUCCESS;
+	const uint8_t empty_hash[PW_HASH_SIZE] = {};
+
+	ret = validate_tree(merkle_tree);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = validate_label(merkle_tree, request->leaf_location);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = authenticate_path(merkle_tree, request->leaf_location,
+				request->path_hashes, request->leaf_hmac);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	compute_root_hash(merkle_tree, request->leaf_location,
+			  request->path_hashes, empty_hash, new_root);
+
+	return ret;
+}
+
+static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
+			      const struct pw_request_try_auth_t *request,
+			      struct pw_response_try_auth_t *response,
+			      uint8_t new_root[PW_HASH_SIZE])
+{
+	int ret = EC_SUCCESS;
+	struct attempt_count_t dummy_ac;
+	struct leaf_data_t leaf_data = {};
+	struct wrapped_leaf_data_t wrapped_leaf_data;
+	uint8_t hmac[PW_HASH_SIZE];
+
+	ret = validate_tree(merkle_tree);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = validate_label(merkle_tree, request->leaf_location);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = authenticate_path(merkle_tree, request->leaf_location,
+				request->path_hashes,
+				request->wrapped_leaf_data.hmac);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	compute_hmac(merkle_tree, &request->wrapped_leaf_data, hmac);
+	/* Safe memcmp is used here to prevent an attacker from being able to
+	 * brute force a valid HMAC for a crafted wrapped_leaf_data.
+	 * memcmp privdes an attacker a timing side-channel they can use to
+	 * determine how much of a prefix is correct.
+	 */
+	if (safe_memcmp(hmac, request->wrapped_leaf_data.hmac, sizeof(hmac)))
+		return PW_ERR_HMAC_AUTH_FAILED;
+
+	ret = decrypt_leaf_data(merkle_tree, &request->wrapped_leaf_data,
+				&leaf_data);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	if (leaf_data.pub.label.v != request->leaf_location.v)
+		return PW_ERR_LABEL_INVALID;
+
+	ret = test_rate_limit(&leaf_data, &response->seconds_to_wait);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* After this:
+	 * 1) ret must not be overwritten
+	 * 2) Each path must be constant time from this point onward (or take
+	 *    the same time for both a failed auth and a successful auth).
+	 */
+	dummy_ac.v = leaf_data.pub.attempt_count.v;
+	if (safe_memcmp(request->low_entropy_secret,
+			leaf_data.sec.low_entropy_secret,
+			sizeof(request->low_entropy_secret)) != 0) {
+		/* Prevent an overflow. */
+		if (leaf_data.pub.attempt_count.v == UINT32_MAX)
+			++dummy_ac.v;
+		else
+			++leaf_data.pub.attempt_count.v;
+		dummy_ac.v = 0;
+		ret = PW_ERR_LOWENT_AUTH_FAILED;
+	} else {
+		if (leaf_data.pub.attempt_count.v == UINT32_MAX)
+			++dummy_ac.v;
+		else
+			++dummy_ac.v;
+		leaf_data.pub.attempt_count.v = 0;
+		ret = EC_SUCCESS;
+	}
+	update_timestamp(&leaf_data.pub.timestamp);
+
+	/* This has a non-constant time path, but it doesn't convey information
+	 * about whether a PW_ERR_LOWENT_AUTH_FAILED happened or not.
+	 */
+	if (encrypt_leaf_data(merkle_tree, &leaf_data,
+			      &wrapped_leaf_data) != EC_SUCCESS)
+		return PW_ERR_CRYPTO_FAILURE;
+
+	compute_hmac(merkle_tree, &wrapped_leaf_data, wrapped_leaf_data.hmac);
+
+	compute_root_hash(merkle_tree, leaf_data.pub.label,
+			  request->path_hashes, wrapped_leaf_data.hmac,
+			  new_root);
+
+	memcpy(&response->wrapped_leaf_data, &wrapped_leaf_data,
+	       sizeof(wrapped_leaf_data));
+
+	/* TODO: Write to log here to prevent a timing side channel. */
+
+	if (ret == EC_SUCCESS)
+		memcpy(&response->high_entropy_secret,
+		       &leaf_data.sec.high_entropy_secret,
+		       sizeof(response->high_entropy_secret));
+
+	return ret;
+}
+
+static int pw_handle_reset_auth(struct merkle_tree_t *merkle_tree,
+				const struct pw_request_reset_auth_t *request,
+				struct pw_response_reset_auth_t *response,
+				uint8_t new_root[PW_HASH_SIZE])
+{
+	int ret = EC_SUCCESS;
+	struct leaf_data_t leaf_data = {};
+	struct wrapped_leaf_data_t wrapped_leaf_data;
+	uint8_t hmac[PW_HASH_SIZE];
+
+	ret = validate_tree(merkle_tree);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = validate_label(merkle_tree, request->leaf_location);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = authenticate_path(merkle_tree, request->leaf_location,
+				request->path_hashes,
+				request->wrapped_leaf_data.hmac);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	compute_hmac(merkle_tree, &request->wrapped_leaf_data, hmac);
+	/* Safe memcmp is used here to prevent an attacker from being able to
+	 * brute force a valid HMAC for a crafted wrapped_leaf_data.
+	 * memcmp privdes an attacker a timing side-channel they can use to
+	 * determine how much of a prefix is correct.
+	 */
+	if (safe_memcmp(hmac, request->wrapped_leaf_data.hmac, sizeof(hmac)))
+		return PW_ERR_HMAC_AUTH_FAILED;
+
+	ret = decrypt_leaf_data(merkle_tree, &request->wrapped_leaf_data,
+				&leaf_data);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	if (leaf_data.pub.label.v != request->leaf_location.v)
+		return PW_ERR_LABEL_INVALID;
+
+	/* Safe memcmp is used here to prevent an attacker from being able to
+	 * brute force the reset secret and use it to unlock the leaf.
+	 * memcmp privdes an attacker a timing side-channel they can use to
+	 * determine how much of a prefix is correct.
+	 */
+	if (safe_memcmp(request->reset_secret,
+			leaf_data.sec.reset_secret,
+			sizeof(request->reset_secret)) != 0)
+		return PW_ERR_RESET_AUTH_FAILED;
+
+	leaf_data.pub.attempt_count.v = 0;
+
+	ret = encrypt_leaf_data(merkle_tree, &leaf_data, &wrapped_leaf_data);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	compute_hmac(merkle_tree, &wrapped_leaf_data, wrapped_leaf_data.hmac);
+
+	compute_root_hash(merkle_tree, leaf_data.pub.label,
+			  request->path_hashes, wrapped_leaf_data.hmac,
+			  new_root);
+
+	memcpy(&response->wrapped_leaf_data, &wrapped_leaf_data,
+	       sizeof(wrapped_leaf_data));
+
+	return ret;
+}
+
+/******************************************************************************/
+/* Non-static functions.
+ */
+
+int get_path_auxilary_hash_count(const struct merkle_tree_t *merkle_tree)
+{
+	return ((1 << merkle_tree->bits_per_level.v) - 1) *
+			merkle_tree->height.v;
+}
+
+/* Computes the SHA256 parent hash of a set of child hashes given num_hashes
+ * sibling hashes in hashes[] and the index of child_hash.
+ *
+ * Assumptions:
+ * num_hashes == fan_out - 1
+ * ARRAY_SIZE(hashes) == num_hashes
+ * 0 <= location <= num_hashes
+ */
+void compute_hash(const uint8_t hashes[][PW_HASH_SIZE], uint16_t num_hashes,
+		  struct index_t location,
+		  const uint8_t child_hash[PW_HASH_SIZE],
+		  uint8_t result[PW_HASH_SIZE])
+{
+	LITE_SHA256_CTX ctx;
+
+	DCRYPTO_SHA256_init(&ctx, 0);
+	if (location.v > 0)
+		HASH_update(&ctx, hashes[0], PW_HASH_SIZE * location.v);
+	HASH_update(&ctx, child_hash, PW_HASH_SIZE);
+	if (location.v < num_hashes)
+		HASH_update(&ctx, hashes[location.v],
+			    PW_HASH_SIZE * (num_hashes - location.v));
+	memcpy(result, HASH_final(&ctx), PW_HASH_SIZE);
+}
+
+/* Handles the message in request using the context in merkle_tree and writes
+ * the results to response. The return value captures any error conditions that
+ * occurred or EC_SUCCESS if there were no errors.
+ *
+ * This implementation is written to handle the case where request and response
+ * exist at the same memory location---are backed by the same buffer. This means
+ * the implementation requires that no reads are made to request after response
+ * has been written to.
+ */
+int pw_handle_request(struct merkle_tree_t *merkle_tree,
+		      const struct pw_request_t *request,
+		      struct pw_response_t *response)
+{
+	int32_t ret;
+	/* Store state needed for the response until the contents of request are
+	 * no longer needed.
+	 */
+	struct pw_response_header_t header;
+	/* Store the message type of the request since it may be overwritten
+	 * inside the switch whenever response and request overlap in memory.
+	 */
+	struct pw_message_type_t type = request->header.type;
+
+	header.version = PW_PROTOCOL_VERSION;
+	header.type.v = PW_MT_ERROR_MSG;
+	header.data_length = 0;
+	/* Initialize new_root to the current root. */
+	memcpy(header.root, merkle_tree->root, sizeof(merkle_tree->root));
+
+	if (request->header.version != PW_PROTOCOL_VERSION) {
+		ret = PW_ERR_VERSION_MISMATCH;
+		goto cleanup;
+	}
+
+	switch (type.v) {
+	case PW_MTQ_RESET_TREE:
+		if (request->header.data_length !=
+		    sizeof(request->data.reset_tree)) {
+			ret = PW_ERR_LENGTH_INVALID;
+			break;
+		}
+		ret = pw_handle_reset_tree(merkle_tree,
+					   &request->data.reset_tree,
+					   header.root);
+		if (ret == EC_SUCCESS)
+			header.type.v = PW_MTA_RESET_TREE;
+		break;
+	case PW_MTQ_INSERT_LEAF:
+		if (request->header.data_length !=
+		    sizeof(request->data.insert_leaf) +
+		    get_path_auxilary_hash_count(merkle_tree)) {
+			ret = PW_ERR_LENGTH_INVALID;
+			break;
+		}
+		ret = pw_handle_insert_leaf(merkle_tree,
+					    &request->data.insert_leaf,
+					    &response->data.insert_leaf,
+					    header.root);
+		if (ret == EC_SUCCESS) {
+			header.type.v = PW_MTA_INSERT_LEAF;
+			header.data_length =
+					sizeof(response->data.insert_leaf);
+		}
+		break;
+	case PW_MTQ_REMOVE_LEAF:
+		if (request->header.data_length !=
+		    sizeof(request->data.remove_leaf) +
+		    get_path_auxilary_hash_count(merkle_tree)) {
+			ret = PW_ERR_LENGTH_INVALID;
+			break;
+		}
+		ret = pw_handle_remove_leaf(merkle_tree,
+					    &request->data.remove_leaf,
+					    header.root);
+		if (ret == EC_SUCCESS)
+			header.type.v = PW_MTA_REMOVE_LEAF;
+		break;
+	case PW_MTQ_TRY_AUTH:
+		if (request->header.data_length !=
+		    sizeof(request->data.try_auth) +
+		    get_path_auxilary_hash_count(merkle_tree)) {
+			ret = PW_ERR_LENGTH_INVALID;
+			break;
+		}
+		ret = pw_handle_try_auth(merkle_tree,
+					 &request->data.try_auth,
+					 &response->data.try_auth,
+					 header.root);
+		if (ret == EC_SUCCESS) {
+			header.type.v = PW_MTA_TRY_AUTH;
+			header.data_length = sizeof(response->data.try_auth);
+		} else if (ret == (PW_ERR_LOWENT_AUTH_FAILED)) {
+			header.type.v = PW_MTA_TRY_AUTH;
+			header.data_length = sizeof(response->data.try_auth
+					.wrapped_leaf_data);
+		} else if (ret == PW_ERR_RATE_LIMIT_REACHED) {
+			header.type.v = PW_MTA_TRY_AUTH;
+			header.data_length = sizeof(response->data.try_auth
+					.seconds_to_wait);
+		}
+		break;
+	case PW_MTQ_RESET_AUTH:
+		if (request->header.data_length !=
+		    sizeof(request->data.reset_auth) +
+		    get_path_auxilary_hash_count(merkle_tree)) {
+			ret = PW_ERR_LENGTH_INVALID;
+			break;
+		}
+		ret = pw_handle_reset_auth(merkle_tree,
+					   &request->data.reset_auth,
+					   &response->data.reset_auth,
+					   header.root);
+		if (ret == EC_SUCCESS) {
+			header.type.v = PW_MTA_RESET_AUTH;
+			header.data_length =
+					sizeof(response->data.reset_auth);
+		}
+		break;
+	default:
+		ret = PW_ERR_TYPE_INVALID;
+		break;
+	}
+cleanup:
+	memcpy(&response->header, &header, sizeof(header));
+	response->header.result_code = ret;
+	return ret;
+};
