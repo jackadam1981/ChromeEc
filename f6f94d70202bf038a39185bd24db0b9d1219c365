@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "278bd3b4_c06c7461",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-01-31T02:54:26Z",
+      "side": 1,
+      "message": "my style preference is to implement categorization\nlogic using a case statement.\n\ncase \"${foo}\" in\n(latestboard)\n  ;\u0026\n(foo|bar)\n  ...\n  ;;\nesac\n\nif you prefer i-t-e, you can still simplify the test to\n\nif [[ \"${BOARD}\" \u003d\u003d \"zoombini\" || \\\n       \"${BOARD}\" \u003d\u003d \"meowth\" ]]; then",
+      "range": {
+        "startLine": 648,
+        "startChar": 17,
+        "endLine": 648,
+        "endChar": 18
+      },
+      "revId": "f6f94d70202bf038a39185bd24db0b9d1219c365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
