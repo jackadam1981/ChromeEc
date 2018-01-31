@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "53f50c18_d12d105d",
+        "filename": "common/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-31T01:38:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3863308_0de4c364",
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c01ad4b2_5ecc05fb",
         "filename": "common/rgb_led.c",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "0a96ffe1_7db89301",
+        "filename": "common/rgb_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-31T01:38:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c01ad4b2_5ecc05fb",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc41d6dc_87888d71",
         "filename": "common/rgb_led.c",
         "patchSetId": 2
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "bd7efaee_634aa0b7",
+        "filename": "common/rgb_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-31T01:38:45Z",
+      "side": 1,
+      "message": "Yes, there is: http://shortn/_oWnP6ENQJs. For the different form factors, the overall LED behaviour doesn\u0027t seem to differ. It\u0027s just a matter of showing power vs. charging or both.",
+      "parentUuid": "bc41d6dc_87888d71",
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9414e972_eec1c782",
         "filename": "common/rgb_led.c",
         "patchSetId": 2
@@ -70,6 +130,24 @@
       "writtenOn": "2018-01-29T05:16:46Z",
       "side": 1,
       "message": "Can we add this to HOOK_TICK instead? This should save power by calling all the ticks at the same time.",
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f752e53d_86e6148d",
+        "filename": "common/rgb_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-31T01:38:45Z",
+      "side": 1,
+      "message": "The reason I had a separate tick interval is because I wanted to be able to pulse quickly(e.g. 500ms period, 50% duty cycle. (battery not present)) and not every chip has the same HOOK_TICK_INTERVAL.",
+      "parentUuid": "9414e972_eec1c782",
       "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -96,6 +174,30 @@
       "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de857ded_4b271822",
+        "filename": "include/rgb_led.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-01-31T01:38:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61335007_2c15c09d",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "599a11c0792ad40bae9613f515eccf35594f5a2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
