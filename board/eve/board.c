@@ -459,8 +459,13 @@ static void board_init(void)
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
 
-	/* Provide AC status to the PCH */
-	gpio_set_level(GPIO_PCH_ACOK, extpower_is_present());
+	/*
+	 * Indicate AC is present to the PCH if either port is
+	 * supplying VBUS or there an external charger present.
+	 */
+	gpio_set_level(GPIO_PCH_ACOK, extpower_is_present() ||
+		       board_vbus_source_enabled(0) ||
+		       board_vbus_source_enabled(1));
 
 #if defined(CONFIG_KEYBOARD_SCANCODE_MUTABLE) && !defined(TEST_BUILD)
 	if (board_get_version() == 4) {
@@ -478,7 +483,14 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
  */
 static void board_extpower(void)
 {
-	gpio_set_level(GPIO_PCH_ACOK, extpower_is_present());
+	if (extpower_is_present()) {
+		/* Enable ACOK always if charger is present */
+		gpio_set_level(GPIO_PCH_ACOK, 1);
+	} else if (!board_vbus_source_enabled(0) &&
+		   !board_vbus_source_enabled(1)) {
+		/* Disable ACOK if no charger or VBUS supplied */
+		gpio_set_level(GPIO_PCH_ACOK, 0);
+	}
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 

@@ -125,6 +125,13 @@ int pd_set_power_supply_ready(int port)
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 
+	/*
+	 * Enable ACOK to PCH if providing VBUS so it will prevent
+	 * the AP from going into Deep Sleep states and allow the
+	 * connected USB device to charge or wake the system.
+	 */
+	gpio_set_level(GPIO_PCH_ACOK, 1);
+
 	return EC_SUCCESS; /* we are ready */
 }
 
@@ -147,6 +154,13 @@ void pd_power_supply_reset(int port)
 
 	/* notify host of power info change */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
+
+	/*
+	 * Disable ACOK to PCH if other port also has VBUS disabled
+	 * and no external charger is present.
+	 */
+	if (!vbus_en[port ^ 1] && !extpower_is_present())
+		gpio_set_level(GPIO_PCH_ACOK, 0);
 }
 
 int pd_board_checks(void)
