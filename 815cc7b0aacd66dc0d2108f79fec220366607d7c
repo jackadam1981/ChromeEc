@@ -16,6 +16,24 @@
       "revId": "815cc7b0aacd66dc0d2108f79fec220366607d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99bef89_e1e21ab8",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-31T02:45:18Z",
+      "side": 1,
+      "message": "Well, this is a base, so there is no AP, and it\u0027s hard to tell when we should actually shut it down.\n\nWe\u0027ll do power measurements at some point. Maybe when PWM is disabled/off, we could shut down the chip. Maybe the quiescent power is too low and it\u0027s not worth it.",
+      "parentUuid": "88e5eb55_fb893c2b",
+      "revId": "815cc7b0aacd66dc0d2108f79fec220366607d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
