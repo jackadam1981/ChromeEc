@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "f2350609_4b58804f",
+        "filename": "chip/stm32/usb_isochronous.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-31T03:38:47Z",
+      "side": 1,
+      "message": "If you use the value as a true \"boolean\" (i.e. only use it in logical tests), then you\u0027d just return \"STM32_USB_EP(config-\u003eendpoint) \u0026 EP_TX_DTOG\", as anything non-zero is true.\n\nSince you actually need the value to be 1 or 0, either way is fine. !! is a neat trick, but the if block, or a ?: single line expression, would both be fine. And it appears that the generated code is equally compact.",
+      "parentUuid": "94a34e15_2d388675",
+      "revId": "828f32e5e4b104ed2b848f77b175a5362cce03e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67ca675b_e39a209e",
         "filename": "chip/stm32/usb_isochronous.c",
         "patchSetId": 16
