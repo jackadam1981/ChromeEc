@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6bfd6fd_a9295953",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-31T03:43:03Z",
+      "side": 1,
+      "message": "This must only be set for whiskers.",
+      "revId": "33ed2b783a4376623e6f1ffadbfd35750ec30324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36469863_166a04c3",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-31T03:43:03Z",
+      "side": 1,
+      "message": "You can\u0027t add this on non-whiskers.",
+      "revId": "33ed2b783a4376623e6f1ffadbfd35750ec30324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a2fa65a_9d65a791",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-01-31T03:43:03Z",
+      "side": 1,
+      "message": "Please separate this as a new change.",
+      "revId": "33ed2b783a4376623e6f1ffadbfd35750ec30324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
