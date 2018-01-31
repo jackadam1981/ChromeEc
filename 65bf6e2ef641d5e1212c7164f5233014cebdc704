@@ -22,6 +22,30 @@
       "revId": "65bf6e2ef641d5e1212c7164f5233014cebdc704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "888dfd8c_55002237",
+        "filename": "board/nami/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2018-01-31T03:22:53Z",
+      "side": 1,
+      "message": "Even if \u0027#undef SUPPORT_HIB\u0027 in board.h that hibernate_wake_pins and hibernate_wake_pins_used still are called,so we can\u0027t remove them.\nBut it test pass by modify \u0027SUPPORT_HIB 0\u0027 in npcx\\registers.h",
+      "parentUuid": "169adb0b_4cbeab56",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 21
+      },
+      "revId": "65bf6e2ef641d5e1212c7164f5233014cebdc704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
