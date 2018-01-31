@@ -152,6 +152,66 @@ static void print_frame(void)
 	}
 }
 
+/* For testing, computes X/Y coordinates by centor of mess */
+static void compute_and_set_touchpad_report(void)
+{
+	uint64_t sum_x = 0, sum_y = 0;
+	uint32_t i, j, index, n = 0;
+	struct usb_hid_touchpad_report report;
+	struct st_tp_usb_frame *buffer = &frame_buffer[usb_buffer_index & 1];
+	static uint8_t finger_status = 0;
+	const uint32_t W = 3000, H = 1500;
+
+	if (usb_buffer_index == spi_buffer_index)
+		/* buffer is empty. */
+		return;
+
+	memset(&report, 0, sizeof(report));
+	report.id = 0x01;
+	report.timestamp =
+		__hw_clock_source_read() / USB_HID_TOUCHPAD_TIMESTAMP_UNIT;
+	report.count = 0;
+
+	for (i = 0; i < ST_TOUCH_ROWS; i++) {
+		for (j = 0; j < ST_TOUCH_COLS; j++) {
+			index = i * ST_TOUCH_COLS + j;
+
+			if (buffer->frame[index] < 25)
+				continue;
+			/*
+			 * max(sum_?) = 25 * 18 * 255 * 25 * 3000 = 8606250000
+			 */
+			sum_x += buffer->frame[index] * (j * W / ST_TOUCH_COLS);
+			sum_y += buffer->frame[index] * (i * H / ST_TOUCH_ROWS);
+			/* max(n) = 25 * 18 * 255 */
+			n += buffer->frame[index];
+		}
+	}
+
+	if (n) {
+		report.finger[0].id = 1;
+		report.finger[0].tip = 1;
+		report.finger[0].inrange = 1;
+		report.finger[0].pressure = 50;
+		/* width and height of finger, not touchpad... */
+		report.finger[0].width = 10;
+		report.finger[0].height = 10;
+		report.finger[0].x = W - MIN(sum_x / n, W);
+		report.finger[0].y = MIN(sum_y / n, H);
+		report.count = 1;
+		report.button = 0;
+		finger_status = 1;
+	} else if (finger_status) {
+		report.finger[0].id = 1;
+		report.count = 1;
+		finger_status = 0;
+	}
+
+	if (report.count) {
+		set_touchpad_report(&report);
+	}
+}
+
 static int st_tp_read_report(void)
 {
 	/* because we are using double buffering, so, if usb_buffer_index = N
@@ -168,6 +228,7 @@ static int st_tp_read_report(void)
 	st_tp_send_ack();
 
 	if (debug_mode) {
+		compute_and_set_touchpad_report();
 		print_frame();
 		atomic_add(&usb_buffer_index, 1);
 	}
