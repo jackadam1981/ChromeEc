@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c077c26_e4aac524",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-31T18:10:27Z",
+      "side": 1,
+      "message": "cbi does caching itself. So, let\u0027s use it:\n\n  uint32_t oem_id \u003d 0;\n  cbi_get_oem_id(\u0026oem_id);\n\nWhen cbi_get_oem_id fails, it won\u0027t change oem_id.",
+      "range": {
+        "startLine": 606,
+        "startChar": 0,
+        "endLine": 608,
+        "endChar": 26
+      },
+      "revId": "1039aee048a8df215b24c28942d336318a317eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfb95599_3bf0e146",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-31T18:10:27Z",
+      "side": 1,
+      "message": "Can you do \u0027return get_custom_rpm(fan, pct, fan_tables[oem_id])\u0027?\n\nand fan_tables would look:\n\n  fan_tables[] \u003d {\n    fan_table0, // kench\n    fan_table0, // teemo\n    fan_table1, // sion\n  }",
+      "range": {
+        "startLine": 614,
+        "startChar": 0,
+        "endLine": 617,
+        "endChar": 57
+      },
+      "revId": "1039aee048a8df215b24c28942d336318a317eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a611b3bd_fd2359bb",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-01-31T18:10:27Z",
+      "side": 1,
+      "message": "Could you move this to common/cbi.c? You can probably just dump whole board info.",
+      "range": {
+        "startLine": 620,
+        "startChar": 0,
+        "endLine": 632,
+        "endChar": 35
+      },
+      "revId": "1039aee048a8df215b24c28942d336318a317eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
