@@ -360,4 +360,7 @@ enum nvmem_users {
 		0xdb, 0xf4, 0x79, 0x5f, 0x8a, 0x0f, 0x28, 0x3f}
 #define CONFIG_RMA_AUTH_SERVER_KEY_ID	  0x10
 
+/* Enable hardware backed brute force resistance feature */
+#define CONFIG_WEAVER_NG
+
 #endif /* __CROS_EC_BOARD_H */
