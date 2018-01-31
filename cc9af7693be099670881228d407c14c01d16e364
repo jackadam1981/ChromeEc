@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "24918d30_4cc9c9fa",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-01-31T16:48:51Z",
+      "side": 1,
+      "message": "NPCX7 has an internal SPI flash chip.  Gang programmer mode forces it to expose the internal SPI bus on external pins.  At that point we just talk to it like any other SPI device.",
+      "parentUuid": "30a1f02f_a0991132",
+      "range": {
+        "startLine": 311,
+        "startChar": 27,
+        "endLine": 311,
+        "endChar": 32
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79528584_5e0017a5",
         "filename": "common/ccd_config.c",
         "patchSetId": 1
