@@ -22,6 +22,30 @@
       "revId": "760caca89bfe3d91fe7d66b8d435a105664fd0d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71fdcd4e_9e63554a",
+        "filename": "driver/ppc/sn5s330.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-01-31T23:01:03Z",
+      "side": 1,
+      "message": "Thanks. Fixed in cl:896395",
+      "parentUuid": "8bdb34da_77c2a7a6",
+      "range": {
+        "startLine": 499,
+        "startChar": 24,
+        "endLine": 499,
+        "endChar": 28
+      },
+      "revId": "760caca89bfe3d91fe7d66b8d435a105664fd0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
