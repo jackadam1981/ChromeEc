@@ -309,9 +309,17 @@ void board_reset_pd_mcu(void)
 
 void board_tcpc_init(void)
 {
+	int count = 0;
 	int port;
 
-	/* TODO(ecgh): need to wait for disconnected battery? */
+	/* Wait for disconnected battery to wake up */
+	while (battery_hw_present() == BP_YES &&
+	       battery_is_present() == BP_NO) {
+		usleep(100 * MSEC);
+		/* Give up waiting after 2 seconds */
+		if (++count > 20)
+			break;
+	}
 
 	/* Only reset TCPC if not sysjump */
 	if (!system_jumped_to_this_image())
