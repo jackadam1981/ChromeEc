@@ -833,7 +833,7 @@ void lpc_lreset_pltrst_handler(void)
 
 	pltrst_asserted = lpc_get_pltrst_asserted();
 
-	ccprintf("LPC RESET# %sasserted",
+	ccprintf("LPC RESET# %sasserted\n",
 		pltrst_asserted ? "" : "de");
 
 	/*
