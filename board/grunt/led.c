@@ -37,8 +37,8 @@ const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
 enum led_color {
 	LED_OFF = 0,
-	LED_GREEN,
 	LED_AMBER,
+	LED_BLUE,
 	LED_COLOR_COUNT  /* Number of colors, not a color itself */
 };
 
@@ -46,15 +46,15 @@ static int led_set_color_battery(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
-		gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_OFF);
+		gpio_set_level(GPIO_BAT_LED_BLUE, BAT_LED_OFF);
 		gpio_set_level(GPIO_BAT_LED_AMBER, BAT_LED_OFF);
 		break;
-	case LED_GREEN:
-		gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_ON);
+	case LED_BLUE:
+		gpio_set_level(GPIO_BAT_LED_BLUE, BAT_LED_ON);
 		gpio_set_level(GPIO_BAT_LED_AMBER, BAT_LED_OFF);
 		break;
 	case LED_AMBER:
-		gpio_set_level(GPIO_BAT_LED_GREEN, BAT_LED_OFF);
+		gpio_set_level(GPIO_BAT_LED_BLUE, BAT_LED_OFF);
 		gpio_set_level(GPIO_BAT_LED_AMBER, BAT_LED_ON);
 		break;
 	default:
@@ -67,10 +67,10 @@ static int led_set_color_power(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
-		gpio_set_level(GPIO_PWR_LED_GREEN, PWR_LED_OFF);
+		gpio_set_level(GPIO_PWR_LED_BLUE, PWR_LED_OFF);
 		break;
-	case LED_GREEN:
-		gpio_set_level(GPIO_PWR_LED_GREEN, PWR_LED_ON);
+	case LED_BLUE:
+		gpio_set_level(GPIO_PWR_LED_BLUE, PWR_LED_ON);
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;
@@ -104,7 +104,7 @@ static int led_set_color(enum ec_led_id led_id, enum led_color color)
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
 	if (brightness[EC_LED_COLOR_GREEN] != 0)
-		led_set_color(led_id, LED_GREEN);
+		led_set_color(led_id, LED_BLUE);
 	else if (brightness[EC_LED_COLOR_AMBER] != 0)
 		led_set_color(led_id, LED_AMBER);
 	else
@@ -134,15 +134,15 @@ static void led_set_battery(void)
 			 LED_ON_1SEC_TICKS) ? LED_AMBER : LED_OFF);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
-		led_set_color_battery(LED_GREEN);
+		led_set_color_battery(LED_BLUE);
 		break;
 	case PWR_STATE_IDLE: /* External power connected in IDLE */
 		if (chflags & CHARGE_FLAG_FORCE_IDLE)
 			led_set_color_battery(
 				(battery_ticks % LED_TOTAL_4SECS_TICKS <
-				 LED_ON_2SECS_TICKS) ? LED_AMBER : LED_GREEN);
+				 LED_ON_2SECS_TICKS) ? LED_AMBER : LED_BLUE);
 		else
-			led_set_color_battery(LED_GREEN);
+			led_set_color_battery(LED_BLUE);
 		break;
 	default:
 		/* Other states don't alter LED behavior */
@@ -164,7 +164,7 @@ static void led_set_power(void)
 		led_set_color_battery(
 			(suspend_ticks % LED_TOTAL_4SECS_TICKS)
 			< LED_ON_1SEC_TICKS ?
-			LED_GREEN : LED_OFF);
+			LED_BLUE : LED_OFF);
 		previous_state_suspend = 1;
 		return;
 	}
@@ -172,7 +172,7 @@ static void led_set_power(void)
 	previous_state_suspend = 0;
 
 	if (chipset_in_state(CHIPSET_STATE_ON))
-		led_set_color_power(LED_GREEN);
+		led_set_color_power(LED_BLUE);
 	else
 		led_set_color_power(LED_OFF);
 }
