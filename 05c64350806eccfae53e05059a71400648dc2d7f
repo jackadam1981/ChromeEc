@@ -228,6 +228,24 @@
       "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98d840fc_758e6d78",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-02-01T20:04:18Z",
+      "side": 1,
+      "message": "the failure is that HPD_IRQ is signaled (w/in packet) but the HPD GPIO is low which shouldn\u0027t occur as IRQ is a short low pulse (.5-\u003e1ms) of that GPIO so its expected to return to HI",
+      "parentUuid": "f29cb355_7160fcb7",
+      "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
