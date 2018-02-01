@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4309d5dc_ea29af7c",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-01T20:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "121449b5_7ea1adc7",
+      "range": {
+        "startLine": 353,
+        "startChar": 1,
+        "endLine": 353,
+        "endChar": 26
+      },
+      "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a207066_5b739163",
         "filename": "board/grunt/usb_pd_policy.c",
         "patchSetId": 2
@@ -92,6 +116,30 @@
       "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06b890b8_5b67c361",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-01T20:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a207066_5b739163",
+      "range": {
+        "startLine": 362,
+        "startChar": 2,
+        "endLine": 362,
+        "endChar": 8
+      },
+      "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +187,30 @@
       "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afc532d9_253af2fc",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-01T20:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "557164d9_89ab6ff2",
+      "range": {
+        "startLine": 365,
+        "startChar": 5,
+        "endLine": 365,
+        "endChar": 18
+      },
+      "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -246,6 +318,24 @@
       "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fbad8cd_a39c2b4c",
+        "filename": "board/grunt/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-01T20:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98d840fc_758e6d78",
+      "revId": "05c64350806eccfae53e05059a71400648dc2d7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
