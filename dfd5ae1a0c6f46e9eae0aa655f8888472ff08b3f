@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "c4384adf_bba652ea",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1181480
+      },
+      "writtenOn": "2018-02-01T05:39:07Z",
+      "side": 1,
+      "message": "Does this need be fixed at 16 bits?",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7509289_a2c38b18",
         "filename": "include/weaver_ng_types.h",
         "patchSetId": 1
@@ -110,6 +133,75 @@
         "startChar": 0,
         "endLine": 45,
         "endChar": 19
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "685a8239_48abc75c",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1181480
+      },
+      "writtenOn": "2018-02-01T05:39:07Z",
+      "side": 1,
+      "message": "Just curious: Any reason to make this typedef instead of just a normal struct low_entropy_secret_t ? (In case it\u0027s just the convention in this repo, please ignore).",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dff93c8_89e29baa",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1181480
+      },
+      "writtenOn": "2018-02-01T05:39:07Z",
+      "side": 1,
+      "message": "Similar question to L30: Any reason for this to be a union?",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aecc4928_d275b966",
+        "filename": "test/weaver_ng.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1181480
+      },
+      "writtenOn": "2018-02-01T05:39:07Z",
+      "side": 1,
+      "message": "nit: 2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
       },
       "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
