@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b1536be_dc419fe9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-01T10:54:22Z",
+      "side": 1,
+      "message": "Ok for TX, but for RX it\u0027s likely a bad idea,\nonce you will have disconnected the debug board, the EC will get random console input triggering all kind of weird failure.\nYou need to keep something to ensure the RX path is stable.",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "939373218d0746c7dbbbf54b0747e4b2392cd02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
