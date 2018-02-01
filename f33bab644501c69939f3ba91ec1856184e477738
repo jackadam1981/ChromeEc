@@ -22,6 +22,30 @@
       "revId": "f33bab644501c69939f3ba91ec1856184e477738",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f35b1775_adf10db7",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-01T18:51:25Z",
+      "side": 1,
+      "message": "Done. Sorry, I didn\u0027t get around to testing it before, but it seems to work now.",
+      "parentUuid": "3308053a_747ebc8f",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 25
+      },
+      "revId": "f33bab644501c69939f3ba91ec1856184e477738",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
