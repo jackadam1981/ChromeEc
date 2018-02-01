@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a48d6e3c_323b6727",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-01T21:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d09aca5d_ff5beb56",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58ed64c9_4fe22e68",
         "filename": "include/weaver_ng.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a830e98c_78668da1",
+        "filename": "include/weaver_ng.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-01T21:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58ed64c9_4fe22e68",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a983485_edefa8c4",
         "filename": "include/weaver_ng_types.h",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1432b8f9_99f55338",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-01T21:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a983485_edefa8c4",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 34
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "4c84c2f2_b7c0c025",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-01T21:22:34Z",
+      "side": 1,
+      "message": "I changed it to 8 to match the size on the host.",
+      "parentUuid": "1113b082_0a49eeff",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7509289_a2c38b18",
         "filename": "include/weaver_ng_types.h",
         "patchSetId": 1
@@ -129,6 +225,30 @@
       "writtenOn": "2018-01-31T21:09:15Z",
       "side": 1,
       "message": "any good reason to make this a union?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79931e35_b70af1fc",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-01T21:22:34Z",
+      "side": 1,
+      "message": "I removed the union now that I verified that the random number generator operates over byte arrays.",
+      "parentUuid": "f7509289_a2c38b18",
       "range": {
         "startLine": 30,
         "startChar": 8,
@@ -161,6 +281,30 @@
       "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34c5926d_36b0fe36",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-01T21:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2871f30d_34575e94",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -210,6 +354,54 @@
     },
     {
       "key": {
+        "uuid": "06ec4a43_fe6ef04a",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-01T21:22:34Z",
+      "side": 1,
+      "message": "See answer above.",
+      "parentUuid": "5dff93c8_89e29baa",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a640aee3_a99ec752",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-01T21:22:34Z",
+      "side": 1,
+      "message": "I have been using typedefs:\n1) to make it easier to change how something is represented without a large refactor. This is balanced by the use static_asserts to explicitly check assumptions whenever possible to make it harder to introduce bugs through type changes later.\n2) to make it easier to catch code errors where data flow isn\u0027t correct since they become type errors.\n3) to keep from having to prefix types with struct.",
+      "parentUuid": "685a8239_48abc75c",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aecc4928_d275b966",
         "filename": "test/weaver_ng.tasklist",
         "patchSetId": 1
@@ -230,6 +422,30 @@
       "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb3ca46f_bcf8ffd1",
+        "filename": "test/weaver_ng.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-01T21:22:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aecc4928_d275b966",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
