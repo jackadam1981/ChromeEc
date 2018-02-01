@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65371ccd_72c6ec8a",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-01T09:04:28Z",
+      "side": 1,
+      "message": "usually we don\u0027t call hooks from interrupt context\n(even less from a random context for the same hook)",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 31
+      },
+      "revId": "66d9144d8094177dcbfc50c7a692be4ff72ce2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b032fa46_b3039a95",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-01T09:04:28Z",
+      "side": 1,
+      "message": "questionable at best.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 57
+      },
+      "revId": "66d9144d8094177dcbfc50c7a692be4ff72ce2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8d1bc1d_36deb037",
+        "filename": "include/hooks.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-01T09:04:28Z",
+      "side": 1,
+      "message": "IMO, it\u0027s not the great name,\nit\u0027s USB Power Management/PM ?",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 17
+      },
+      "revId": "66d9144d8094177dcbfc50c7a692be4ff72ce2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
