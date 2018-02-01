@@ -46,6 +46,30 @@
       "revId": "65bf6e2ef641d5e1212c7164f5233014cebdc704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "522e9e9e_36b8787d",
+        "filename": "board/nami/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-01T16:25:03Z",
+      "side": 1,
+      "message": "Yes. \"You need to surround some code with #ifdef SUPPORT_HIB .. #endif to avoid compile errors.\"",
+      "parentUuid": "888dfd8c_55002237",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 21
+      },
+      "revId": "65bf6e2ef641d5e1212c7164f5233014cebdc704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
