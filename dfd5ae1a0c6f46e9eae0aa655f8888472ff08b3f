@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "1113b082_0a49eeff",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1181480
+      },
+      "writtenOn": "2018-02-01T19:04:44Z",
+      "side": 1,
+      "message": "Actually, on the host side the label is planned to be a uint64_t (which can be converted to a bitstring or any other required representation internally).",
+      "parentUuid": "c4384adf_bba652ea",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 27
+      },
+      "revId": "dfd5ae1a0c6f46e9eae0aa655f8888472ff08b3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7509289_a2c38b18",
         "filename": "include/weaver_ng_types.h",
         "patchSetId": 1
