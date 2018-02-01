@@ -17,6 +17,8 @@
 #include "update_fw.h"
 #include "util.h"
 #include "usb_hid_touchpad.h"
+/* TODO(stimim): make this an option (respect CONFIG_USB_ISOCHRONOUS) */
+#include "usb_isochronous.h"
 
 /* Console output macros */
 #define CC_TOUCHPAD CC_USB
@@ -379,6 +381,47 @@ void touchpad_task(void *u)
 	}
 }
 
+static size_t transmit_report_offset = 0;
+
+/* USB interface has completed TX, it's asking for more data */
+static size_t st_tp_usb_tx_callback(usb_uint *usb_addr, size_t tx_size)
+{
+	size_t num_byte_available;
+	size_t count = 0;
+	uintptr_t ptr = usb_sram_addr(usb_addr);
+	struct st_tp_usb_frame *buffer = &frame_buffer[usb_buffer_index & 1];
+
+	if (debug_mode) /* frames will be printed on console */
+		return 0;
+
+	if (usb_buffer_index == spi_buffer_index)
+		/* buffer is empty */
+		return 0;
+
+	num_byte_available = sizeof(*buffer) - transmit_report_offset;
+	if (num_byte_available > 0) {
+		if (transmit_report_offset == 0)
+			packet_header.flags |= HEADER_FLAGS_NEW_FRAME;
+		memcpy_to_usbram((void *)ptr,
+				 &packet_header,
+				 sizeof(packet_header));
+		packet_header.index++;
+		count += sizeof(packet_header);
+		num_byte_available = MIN(tx_size - count, num_byte_available);
+		memcpy_to_usbram((void *)(ptr + count),
+				 (((uint8_t *)buffer) + transmit_report_offset),
+				 num_byte_available);
+		transmit_report_offset += num_byte_available;
+		count += num_byte_available;
+
+		if (transmit_report_offset == ST_TOUCH_FRAME_SIZE) {
+			transmit_report_offset = 0;
+			atomic_add(&usb_buffer_index, 1);
+		}
+	}
+	return count;
+}
+
 static void st_tp_enable_interrupt(int enable)
 {
 	uint8_t tx_buf[] = {
@@ -404,6 +447,31 @@ static void st_tp_usb_disable(void)
 	gpio_disable_interrupt(GPIO_TOUCHPAD_INT);
 }
 DECLARE_DEFERRED(st_tp_usb_disable);
+
+static int st_tp_usb_set_interface(usb_uint alternate_setting,
+				   usb_uint interface)
+{
+	if (alternate_setting == 1) {
+		hook_call_deferred(&st_tp_usb_enable_data, 0);
+		return 0;
+	} else if (alternate_setting == 0) {
+		hook_call_deferred(&st_tp_usb_disable_data, 0);
+		return 0;
+	} else  /* we only have two settings. */
+		return -1;
+}
+
+USB_ISOCHRONOUS_CONFIG_FULL(usb_st_tp_passthru_config,
+			    USB_IFACE_ST_TOUCHPAD,
+			    USB_CLASS_VENDOR_SPEC,
+			    0,  /* subclass */
+			    0,  /* protocol */
+			    0,  /* interface name */
+			    USB_EP_ST_TOUCHPAD,
+			    128,  /* packet size */
+			    st_tp_usb_tx_callback,
+			    st_tp_usb_set_interface)
+
 
 /* Debugging commands */
 static int command_touchpad_st(int argc, char **argv)
