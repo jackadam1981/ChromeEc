@@ -116,7 +116,12 @@
 #define USB_IFACE_HID_TOUCHPAD	2
 /* Can be either I2C or SPI passthrough, depending on the board. */
 #define USB_IFACE_I2C_SPI	3
+#ifdef BOARD_WHISKERS
+#define USB_IFACE_ST_TOUCHPAD	4
+#define USB_IFACE_COUNT		5
+#else /* !BOARD_WHISKERS */
 #define USB_IFACE_COUNT		4
+#endif /* BOARD_WHISKERS */
 #else
 #define USB_IFACE_UPDATE	0
 #define USB_IFACE_COUNT		1
@@ -130,7 +135,12 @@
 #define USB_EP_HID_TOUCHPAD	3
 /* Can be either I2C or SPI passthrough, depending on the board. */
 #define USB_EP_I2C_SPI		4
+#ifdef BOARD_WHISKERS
+#define USB_EP_ST_TOUCHPAD	5
+#define USB_EP_COUNT		6
+#else /* !BOARD_WHISKERS */
 #define USB_EP_COUNT		5
+#endif /* BOARD_WHISKERS */
 #else
 #define USB_EP_COUNT		2
 #endif
@@ -229,6 +239,8 @@
 #define CONFIG_CMD_SPI_XFER
 #define CONFIG_TOUCHPAD
 #define CONFIG_TOUCHPAD_ST
+/* To send heatmap to AP */
+#define CONFIG_USB_ISOCHRONOUS
 
 #else  /* !BOARD_WHISKERS */
 /* Enable control of I2C over USB */
