@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c02c86d4_81278de7",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-02-01T07:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8cfe0d6_3cffe82b",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 0
+      },
+      "revId": "2e37bcfc7619341906658c506faae6de2b744a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fe6990b_2d4184c3",
         "filename": "board/fizz/board.c",
         "patchSetId": 6
