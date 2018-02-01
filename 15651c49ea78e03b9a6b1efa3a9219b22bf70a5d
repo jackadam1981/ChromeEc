@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a13ff2b0_49570886",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-01T09:10:56Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "15651c49ea78e03b9a6b1efa3a9219b22bf70a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c30ec29_cd738d65",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-01T09:10:56Z",
+      "side": 1,
+      "message": "for the specific implementation of this specific product,\nbut we can imagine we might have both (ie a LID close detector on the KB side)\nAny reason to not define a new bit ?",
+      "range": {
+        "startLine": 789,
+        "startChar": 26,
+        "endLine": 789,
+        "endChar": 52
+      },
+      "revId": "15651c49ea78e03b9a6b1efa3a9219b22bf70a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
