@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73d39cea_7087d4c1",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-01T09:15:34Z",
+      "side": 1,
+      "message": "is there really something else (not static) in this register ?\nelse these kind of RMW over I2C is the best way of getting hard to debug corruptions.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "84c491ff2e2879eb91fe7ae43aad1fd4ccca7ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7049df6_cebc9621",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-01T09:15:34Z",
+      "side": 1,
+      "message": "maybe just check it inside the elan_tp_set_power function",
+      "range": {
+        "startLine": 724,
+        "startChar": 3,
+        "endLine": 724,
+        "endChar": 22
+      },
+      "revId": "84c491ff2e2879eb91fe7ae43aad1fd4ccca7ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
