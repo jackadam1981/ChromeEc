@@ -22,6 +22,30 @@
       "revId": "9eb112a642ab64f65652d121ac8b5cff2a098efa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82a53e5a_440348cc",
+        "filename": "board/eve/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-02-01T00:18:41Z",
+      "side": 1,
+      "message": "I moved these around just before pushing this commit and somehow didn\u0027t notice that they ended up doing the same thing in very different ways.  I can at least make them the same...",
+      "parentUuid": "2c33b581_0f728780",
+      "range": {
+        "startLine": 466,
+        "startChar": 1,
+        "endLine": 468,
+        "endChar": 39
+      },
+      "revId": "9eb112a642ab64f65652d121ac8b5cff2a098efa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
