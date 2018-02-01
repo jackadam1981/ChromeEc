@@ -14,6 +14,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "led_common.h"
+#include "pwm.h"
 #include "util.h"
 
 #define BAT_LED_ON 0
@@ -46,16 +47,16 @@ static int led_set_color_battery(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
-		gpio_set_level(GPIO_BAT_LED_BLUE, BAT_LED_OFF);
-		gpio_set_level(GPIO_BAT_LED_AMBER, BAT_LED_OFF);
+		pwm_set_duty(PWM_CH_LED1_AMBER, 0);
+		pwm_set_duty(PWM_CH_LED2_BLUE, 0);
 		break;
 	case LED_BLUE:
-		gpio_set_level(GPIO_BAT_LED_BLUE, BAT_LED_ON);
-		gpio_set_level(GPIO_BAT_LED_AMBER, BAT_LED_OFF);
+		pwm_set_duty(PWM_CH_LED1_AMBER, 0);
+		pwm_set_duty(PWM_CH_LED2_BLUE, 100);
 		break;
 	case LED_AMBER:
-		gpio_set_level(GPIO_BAT_LED_BLUE, BAT_LED_OFF);
-		gpio_set_level(GPIO_BAT_LED_AMBER, BAT_LED_ON);
+		pwm_set_duty(PWM_CH_LED1_AMBER, 100);
+		pwm_set_duty(PWM_CH_LED2_BLUE, 0);
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;
@@ -67,10 +68,10 @@ static int led_set_color_power(enum led_color color)
 {
 	switch (color) {
 	case LED_OFF:
-		gpio_set_level(GPIO_PWR_LED_BLUE, PWR_LED_OFF);
+		pwm_set_duty(PWM_CH_LED2_BLUE, 0);
 		break;
 	case LED_BLUE:
-		gpio_set_level(GPIO_PWR_LED_BLUE, PWR_LED_ON);
+		pwm_set_duty(PWM_CH_LED2_BLUE, 100);
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;
@@ -80,8 +81,8 @@ static int led_set_color_power(enum led_color color)
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
-	brightness_range[EC_LED_COLOR_GREEN] = 1;
 	brightness_range[EC_LED_COLOR_AMBER] = 1;
+	brightness_range[EC_LED_COLOR_GREEN] = 1;
 }
 
 static int led_set_color(enum ec_led_id led_id, enum led_color color)
@@ -186,3 +187,9 @@ static void led_second(void)
 		led_set_power();
 }
 DECLARE_HOOK(HOOK_SECOND, led_second, HOOK_PRIO_DEFAULT);
+
+void led_control(enum ec_led_id led_id, enum ec_led_state state)
+{
+	/* TODO(sjg@chromium.org): Figure out what we should do here */
+	led_second();
+}

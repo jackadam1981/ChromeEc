@@ -142,6 +142,9 @@
 /* Thermal */
 #define CONFIG_TEMP_SENSOR_SB_TSI
 
+/* Power and battery LEDs */
+#define CONFIG_LED_COMMON
+
 /* KB backlight driver */
 #define CONFIG_LED_DRIVER_LM3630A
 
