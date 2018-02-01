@@ -113,6 +113,43 @@ static struct st_tp_usb_frame frame_buffer[2]; /* double buffering */
 static int st_tp_read_frame(void);
 static int st_tp_send_ack(void);
 
+static int debug_mode = 0;
+
+static void print_frame(void)
+{
+	static char debug_line[ST_TOUCH_COLS + 5];
+	int i, j, index;
+	int v;
+	struct st_tp_usb_frame *buffer = &frame_buffer[usb_buffer_index & 1];
+
+	if (usb_buffer_index == spi_buffer_index)
+		/* buffer is empty. */
+		return;
+
+	/* We will have ~150 FPS, let's print ~4 frames per second */
+	if (usb_buffer_index % 37 == 0) {
+		/* move cursor back to top left corner */
+		CPRINTF("\x1b[H");
+		CPUTS("==============\n");
+		for (i = 0; i < ST_TOUCH_ROWS; i++) {
+			for (j = 0; j < ST_TOUCH_COLS; j++) {
+				index = i * ST_TOUCH_COLS;
+				index += (ST_TOUCH_COLS - j - 1); // flip X
+				v = buffer->frame[index];
+
+				if (v > 0)
+					debug_line[j] = '0' + v * 10 / 256;
+				else
+					debug_line[j] = ' ';
+			}
+			debug_line[j++] = '\n';
+			debug_line[j++] = '\0';
+			CPRINTF(debug_line);
+		}
+		CPUTS("==============\n");
+	}
+}
+
 static int st_tp_read_report(void)
 {
 	/* because we are using double buffering, so, if usb_buffer_index = N
@@ -128,6 +165,10 @@ static int st_tp_read_report(void)
 	}
 	st_tp_send_ack();
 
+	if (debug_mode) {
+		print_frame();
+		atomic_add(&usb_buffer_index, 1);
+	}
 	return 0;
 }
 
@@ -363,3 +404,27 @@ static void st_tp_usb_disable(void)
 	gpio_disable_interrupt(GPIO_TOUCHPAD_INT);
 }
 DECLARE_DEFERRED(st_tp_usb_disable);
+
+/* Debugging commands */
+static int command_touchpad_st(int argc, char **argv)
+{
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+	if (strcasecmp(argv[1], "enable") == 0) {
+		debug_mode = 1;
+		hook_call_deferred(&st_tp_usb_enable_data, 0);
+		return 0;
+	} else if (strcasecmp(argv[1], "disable") == 0) {
+		debug_mode = 0;
+		hook_call_deferred(&st_tp_usb_disable_data, 0);
+		return 0;
+	} else if (strcasecmp(argv[1], "version") == 0) {
+		st_tp_read_system_info(1);
+		return 0;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+}
+DECLARE_CONSOLE_COMMAND(touchpad_st, command_touchpad_st,
+			"<enable|disable|version>",
+			"Read write spi. id is spi_devices array index");
