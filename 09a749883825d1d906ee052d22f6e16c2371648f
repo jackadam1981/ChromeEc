@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "da609821_b112905d",
+        "filename": "board/nami/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-02T21:00:11Z",
+      "side": 1,
+      "message": "Please split the line 87 and use \u0027interval\u0027. \u0027inter\u0027 is too ambiguous (e.g. internal, interrupt, interval).",
+      "parentUuid": "693302e6_96b78c54",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "09a749883825d1d906ee052d22f6e16c2371648f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64d70d10_47db1d5b",
         "filename": "board/nami/led.c",
         "patchSetId": 2
