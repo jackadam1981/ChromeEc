@@ -5,10 +5,12 @@
 
 /* Power button state machine for x86 platforms */
 
+#include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -309,13 +311,24 @@ static void state_machine(uint64_t tnow)
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 		break;
 	case PWRBTN_STATE_INIT_ON:
+#ifdef HAS_TASK_CHARGER
 		/*
 		 * Don't do anything until the charger knows the battery level.
 		 * Otherwise we could power on the AP only to shut it right
 		 * back down due to insufficient battery.
 		 */
-#ifdef HAS_TASK_CHARGER
 		if (charge_get_state() == PWR_STATE_INIT)
+			break;
+#endif
+#ifdef CONFIG_CHARGE_MANAGER
+		/*
+		 * Wait for charge current to be initialized if AC is present.
+		 * Otherwise this same check in charge_prevent_power_on will
+		 * thwart our attempt to set_pwrbtn_to_pch here.
+		 */
+		if (extpower_is_present() &&
+		    (charge_manager_get_charger_current() ==
+		     CHARGE_CURRENT_UNINITIALIZED))
 			break;
 #endif
 
