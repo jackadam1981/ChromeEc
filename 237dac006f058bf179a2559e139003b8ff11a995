@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6967528_1255af1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T23:23:39Z",
+      "side": 1,
+      "message": "s/ap/ap state/",
+      "range": {
+        "startLine": 12,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ee8ee21_7e3f389d",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T23:23:39Z",
+      "side": 1,
+      "message": "if it isn\u0027t what?",
+      "range": {
+        "startLine": 55,
+        "startChar": 51,
+        "endLine": 55,
+        "endChar": 63
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c21e7db_963714ca",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T23:23:39Z",
+      "side": 1,
+      "message": "what does this mean?",
+      "range": {
+        "startLine": 61,
+        "startChar": 11,
+        "endLine": 62,
+        "endChar": 13
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aeccb57_1c0207fe",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T23:23:39Z",
+      "side": 1,
+      "message": "if the AP was off and then we came here in a state other than \u0027debouncing\u0027 or \u0027on\u0027 - when would the AP state be changed?",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8959059_1e9221f3",
+        "filename": "board/cr50/ap_uart_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T23:23:39Z",
+      "side": 1,
+      "message": "this message would not be printed if this function returned in line 74?",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a563ab6_663f3846",
+        "filename": "board/cr50/ap_uart_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T23:23:39Z",
+      "side": 1,
+      "message": "why do you need to disable/reenable this interrup here?\n\nWould it not make sense to enable this interrupt only if state transitioned to \u0027off\u0027 and disable when state trasitioned to \u0027on\u0027 (as opposed to disabling it in the isr)?",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92ad5c0a_f57dc2cf",
+        "filename": "board/cr50/ap_uart_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T23:23:39Z",
+      "side": 1,
+      "message": "is this \u0027init debouncing\u0027 state really needed? Why not to set \u0027debouncinig\u0027 right away?",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 40
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77faec97_54b10dd7",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T23:23:39Z",
+      "side": 1,
+      "message": "why would board_detect_ap_with_tpm_rst() ever return false now?",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 718,
+        "endChar": 60
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

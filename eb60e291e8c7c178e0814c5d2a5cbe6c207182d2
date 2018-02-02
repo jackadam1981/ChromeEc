@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bdd556d_7c550ba3",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T23:23:39Z",
+      "side": 0,
+      "message": "we pretty much don\u0027t need this function any more, right?",
+      "range": {
+        "startLine": 528,
+        "startChar": 6,
+        "endLine": 528,
+        "endChar": 34
+      },
+      "revId": "eb60e291e8c7c178e0814c5d2a5cbe6c207182d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
