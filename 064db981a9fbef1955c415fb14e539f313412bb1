@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f5301e97_bdd002d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-02T17:14:38Z",
+      "side": 1,
+      "message": "typo: verify",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "064db981a9fbef1955c415fb14e539f313412bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "800f33a9_9cb1144c",
         "filename": "board/fizz/board.c",
         "patchSetId": 3
@@ -13,6 +36,30 @@
       "writtenOn": "2018-02-02T15:05:00Z",
       "side": 1,
       "message": "can you append something like \"because CONFIG_VBOOT_EFS is defined for this board\" just so people looking at this code don\u0027t think that this is always the case (I am not 100% sure though).",
+      "range": {
+        "startLine": 240,
+        "startChar": 55,
+        "endLine": 240,
+        "endChar": 64
+      },
+      "revId": "064db981a9fbef1955c415fb14e539f313412bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95905c75_f43ffdfd",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-02T17:14:38Z",
+      "side": 1,
+      "message": "It\u0027s only true for EFS.  Other systems stay in RO through booting the AP.",
+      "parentUuid": "800f33a9_9cb1144c",
       "range": {
         "startLine": 240,
         "startChar": 55,
@@ -45,6 +92,23 @@
       "revId": "064db981a9fbef1955c415fb14e539f313412bb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ffffa5f_1f7a5380",
+        "filename": "include/vboot.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-02T17:14:38Z",
+      "side": 1,
+      "message": "For RO firmware, this will verify and jump to RW unless recovery is needed.\n\n(I\u0027m looking for some hint in the description of when this function will return and when it won\u0027t...)",
+      "revId": "064db981a9fbef1955c415fb14e539f313412bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
