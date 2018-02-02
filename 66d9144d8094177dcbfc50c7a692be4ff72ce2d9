@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9f60c0a9_d0fb5292",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-02T12:02:19Z",
+      "side": 1,
+      "message": "Yeah... The alternative is to have a small deferred function that calls hook_notify. In practice my handlers are simple enough (usually something like wake another task), that it didn\u0027t seem worth it...\n\nAgree it\u0027s a trap though, I\u0027ll fix it.",
+      "parentUuid": "65371ccd_72c6ec8a",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 448,
+        "endChar": 31
+      },
+      "revId": "66d9144d8094177dcbfc50c7a692be4ff72ce2d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b032fa46_b3039a95",
         "filename": "include/hooks.h",
         "patchSetId": 2
