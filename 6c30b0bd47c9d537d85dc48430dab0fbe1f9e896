@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "58e72151_da861a95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-02T20:47:26Z",
+      "side": 1,
+      "message": "This patch does more than this. Please describe other things to be changed.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "6c30b0bd47c9d537d85dc48430dab0fbe1f9e896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7837986_4fb48524",
         "filename": "board/nami/board.h",
         "patchSetId": 1
@@ -85,6 +108,30 @@
       "side": 1,
       "message": "Do you prefer 15W in nami?",
       "parentUuid": "3499956a_e0c2cb3e",
+      "range": {
+        "startLine": 240,
+        "startChar": 31,
+        "endLine": 240,
+        "endChar": 36
+      },
+      "revId": "6c30b0bd47c9d537d85dc48430dab0fbe1f9e896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ce972d0_a3146e52",
+        "filename": "board/nami/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-02T20:47:26Z",
+      "side": 1,
+      "message": "We have to do power test and figure out the minimal wattage.",
+      "parentUuid": "e73dad19_ad98f6a8",
       "range": {
         "startLine": 240,
         "startChar": 31,
