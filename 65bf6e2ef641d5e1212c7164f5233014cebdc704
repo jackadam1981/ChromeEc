@@ -94,6 +94,30 @@
       "revId": "65bf6e2ef641d5e1212c7164f5233014cebdc704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "793949ff_664f9bba",
+        "filename": "board/nami/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-02T20:27:25Z",
+      "side": 1,
+      "message": "Yes, including promoting the macro to CONFIG_.\n\nYou can also empty hibernate_wake_pins and move on if you\u0027re not comfortable with changing the common code.",
+      "parentUuid": "bbb9fdbf_5a048d22",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 21
+      },
+      "revId": "65bf6e2ef641d5e1212c7164f5233014cebdc704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
