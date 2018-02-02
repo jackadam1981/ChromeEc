@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "a7c931a1_56126d23",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-02T18:31:59Z",
+      "side": 1,
+      "message": "used",
+      "range": {
+        "startLine": 153,
+        "startChar": 57,
+        "endLine": 153,
+        "endChar": 61
+      },
+      "revId": "a47c191bd5f9512116fa7cad717c607ba6e4d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a0ef319_d6485ff1",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-02T18:31:59Z",
+      "side": 1,
+      "message": "\u003c ?",
+      "range": {
+        "startLine": 182,
+        "startChar": 25,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "a47c191bd5f9512116fa7cad717c607ba6e4d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4c7d648_5ea5c9f7",
         "filename": "chip/g/uartn.c",
         "patchSetId": 1
