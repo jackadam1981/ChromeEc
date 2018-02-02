@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a85db04_a17e562f",
+        "filename": "board/zoombini/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-02T00:14:24Z",
+      "side": 1,
+      "message": "I think this would be clearer with an if statement, because you are converting from one enum type to another and the arithmetic seems fragile ,-)\n\nMaybe something like:\n\nenum led_id rgb_led;\n\n#ifdef BOARD_MEOWTH\nif (led_id \u003d\u003d EC_LED_ID_LEFT_LED)\n   rgb_leb \u003d something (I\u0027m not sure to understand from current code);\nelse if (led_id \u003d\u003d EC_LED_ID_RIGH_LED)\n   rgb_led \u003d ...;\nelse\n   return EC_ERROR_UNKNOWN;\n#else\nif (led_id \u003d\u003d EC_LED_ID_POWER_LED)\n   rgb_led \u003d ...;\nelse\n   return EC_ERROR_UNKNOWN;\n#endif\n\nWDYT?",
+      "revId": "133adde524616870ff63d218aeeb2b9138d65ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
