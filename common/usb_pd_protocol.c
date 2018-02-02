@@ -620,7 +620,7 @@ static int send_source_cap(int port)
 
 	bit_len = pd_transmit(port, TCPC_TX_SOP, header, src_pdo);
 	if (debug_level >= 2)
-		CPRINTF("srcCAP>%d\n", bit_len);
+		CPRINTF("C%d srcCAP>%d\n", port, bit_len);
 
 	return bit_len;
 }
