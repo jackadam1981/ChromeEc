@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "e59b2427_4202fa6f",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T02:53:26Z",
+      "side": 1,
+      "message": "how about enabling the pullup Marius is talking about when CCD is enabled.",
+      "parentUuid": "6330174d_73a9c76b",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 231,
+        "endChar": 20
+      },
+      "revId": "a47c191bd5f9512116fa7cad717c607ba6e4d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1570ec47_e462cafe",
         "filename": "chip/g/uartn.c",
         "patchSetId": 1
