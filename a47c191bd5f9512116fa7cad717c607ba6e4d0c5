@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "08741bc0_43bc05ca",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T02:29:12Z",
+      "side": 1,
+      "message": "sure, we might as well. This just seems clean and not requiring anything special like figuring out what register to set, etc.\n\nlet me look into this.",
+      "parentUuid": "b4c7d648_5ea5c9f7",
+      "range": {
+        "startLine": 203,
+        "startChar": 3,
+        "endLine": 203,
+        "endChar": 40
+      },
+      "revId": "a47c191bd5f9512116fa7cad717c607ba6e4d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94880ada_784d9be2",
         "filename": "chip/g/uartn.c",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b24df83e_113e29ae",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T02:29:12Z",
+      "side": 1,
+      "message": "this is an interesting concern, how about we disable this if CCD is on?",
+      "parentUuid": "94880ada_784d9be2",
+      "range": {
+        "startLine": 230,
+        "startChar": 3,
+        "endLine": 231,
+        "endChar": 20
+      },
+      "revId": "a47c191bd5f9512116fa7cad717c607ba6e4d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1570ec47_e462cafe",
         "filename": "chip/g/uartn.c",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-02-02T02:10:39Z",
       "side": 1,
       "message": "If INTERRUPT_DISABLE is pending should we cancel it?",
+      "range": {
+        "startLine": 246,
+        "startChar": 2,
+        "endLine": 246,
+        "endChar": 28
+      },
+      "revId": "a47c191bd5f9512116fa7cad717c607ba6e4d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54bb187d_8c066a75",
+        "filename": "chip/g/uartn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T02:29:12Z",
+      "side": 1,
+      "message": "I don\u0027t think we want to do anything extra in the ISR - the hook will not run if the value is zero, so no harm done.",
+      "parentUuid": "1570ec47_e462cafe",
       "range": {
         "startLine": 246,
         "startChar": 2,
