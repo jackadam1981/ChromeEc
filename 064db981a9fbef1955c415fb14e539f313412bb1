@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "800f33a9_9cb1144c",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-02T15:05:00Z",
+      "side": 1,
+      "message": "can you append something like \"because CONFIG_VBOOT_EFS is defined for this board\" just so people looking at this code don\u0027t think that this is always the case (I am not 100% sure though).",
+      "range": {
+        "startLine": 240,
+        "startChar": 55,
+        "endLine": 240,
+        "endChar": 64
+      },
+      "revId": "064db981a9fbef1955c415fb14e539f313412bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def5c80c_c905e2ee",
+        "filename": "common/main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-02T15:05:00Z",
+      "side": 1,
+      "message": "you could change this to #elif and drop the #endif on 197",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 0
+      },
+      "revId": "064db981a9fbef1955c415fb14e539f313412bb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
