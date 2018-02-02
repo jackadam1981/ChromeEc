@@ -259,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "1325ae74_e87b1b32",
+        "filename": "board/cr50/ap_uart_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-02T23:38:52Z",
+      "side": 1,
+      "message": "The difference is that in INIT_DEBOUNCING, the device is considered disconnected until proven otherwise.\n\nIn DEBOUNCING, the device is still considered connected.\n\nThat is, INIT_DEBOUNCING -\u003e CONNECTED needs to set things up for a connection, but DEBOUNCING -\u003e CONNECTED does not (because things are left set up; we don\u0027t disconnect until the end of debouncing).\n\nSimilarly, INIT_DEBOUNCING -\u003e DISCONNECTED does not generate a disconnect (because we were never connected) but DEBOUNCING -\u003e DISCONNECTED does.",
+      "parentUuid": "b0cf24ba_0511181b",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 40
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77faec97_54b10dd7",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
