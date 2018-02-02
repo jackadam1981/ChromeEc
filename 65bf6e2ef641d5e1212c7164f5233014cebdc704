@@ -70,6 +70,30 @@
       "revId": "65bf6e2ef641d5e1212c7164f5233014cebdc704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbb9fdbf_5a048d22",
+        "filename": "board/nami/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2018-02-02T03:23:05Z",
+      "side": 1,
+      "message": "May I create a \u0027#undef CONFIG_SUPPORT_HIB\u0027 for surround some code to avoid compile errors?\nBecause \u0027SUPPORT_HIB\u0027 still defined in npcx\\system.c even if \u0027#undef SUPPORT_HIB\u0027 in board.h",
+      "parentUuid": "522e9e9e_36b8787d",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 21
+      },
+      "revId": "65bf6e2ef641d5e1212c7164f5233014cebdc704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
