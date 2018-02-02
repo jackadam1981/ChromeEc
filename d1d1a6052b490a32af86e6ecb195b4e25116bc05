@@ -33,6 +33,24 @@
       "revId": "d1d1a6052b490a32af86e6ecb195b4e25116bc05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac84c51a_6f3d5e53",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-02T22:22:24Z",
+      "side": 1,
+      "message": "Yep, will add comments before merging if I do go this way, but not sure yet if this is the right direction to be heading in or not, so wanted to put this up for discussion first.",
+      "parentUuid": "eac35cfd_66f3123f",
+      "revId": "d1d1a6052b490a32af86e6ecb195b4e25116bc05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
