@@ -22,6 +22,30 @@
       "revId": "939373218d0746c7dbbbf54b0747e4b2392cd02d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb9f8901_9164681c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2018-02-02T07:03:09Z",
+      "side": 1,
+      "message": "H1 has a internal pull-down on SERVO_TX_EC_RX:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/firmware-cr50-9308.B/board/cr50/gpio.inc#66\nSo RX path isn\u0027t floating.\nAnd we will get about 1.8v on DETECT_SERVO if we pull-up EC\u0027s RX without\nservo board connected.",
+      "parentUuid": "5b1536be_dc419fe9",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "939373218d0746c7dbbbf54b0747e4b2392cd02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
