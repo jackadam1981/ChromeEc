@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9b91126_bcb83e73",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-02T23:32:29Z",
+      "side": 1,
+      "message": "Would it be useful to define constants / enums for this?  e.g\n\nbattery_dynamic[BATT_IDX_MAIN]\nbattery_dynamic[BATT_IDX_BASE]",
+      "range": {
+        "startLine": 26,
+        "startChar": 52,
+        "endLine": 27,
+        "endChar": 55
+      },
+      "revId": "97aef8e6e8bc1079a98eb59974eac6e93f944b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "436211f9_f0cf41ff",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-02T23:32:29Z",
+      "side": 1,
+      "message": "Suggest using a temporary variable, e.g.:\n\nbs \u003d \u0026battery_static[0];\n\nThen the code below is shorter too:\n\nsnprintf(bs-\u003eserial, sizeof(bs-\u003eserial), ...)",
+      "range": {
+        "startLine": 721,
+        "startChar": 1,
+        "endLine": 721,
+        "endChar": 58
+      },
+      "revId": "97aef8e6e8bc1079a98eb59974eac6e93f944b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
