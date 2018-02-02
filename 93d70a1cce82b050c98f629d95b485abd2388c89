@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44f9bf22_f84cd453",
+        "filename": "common/cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-02T20:38:19Z",
+      "side": 1,
+      "message": "This bloats code size unnecessarily and makes adaptation harder. So, let\u0027s not do this. You can use \u0027ectool cbi set\u0027 command to set desired values.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "93d70a1cce82b050c98f629d95b485abd2388c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "638fa5f6_65c57b17",
+        "filename": "common/cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-02T20:38:19Z",
+      "side": 1,
+      "message": "Please use \"OEM_ID: %u (0x%x)\\n\" for consistency with ectool.",
+      "range": {
+        "startLine": 292,
+        "startChar": 11,
+        "endLine": 292,
+        "endChar": 23
+      },
+      "revId": "93d70a1cce82b050c98f629d95b485abd2388c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
