@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a3d8c96b_1e9f51f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-02T19:49:38Z",
+      "side": 1,
+      "message": "Can we just interrupt on RX (as GPIO) rising?\n\nAlso, have we reported this as a HW bug so it can be fixed in future silicon?",
+      "range": {
+        "startLine": 20,
+        "startChar": 51,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "a47c191bd5f9512116fa7cad717c607ba6e4d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7c931a1_56126d23",
         "filename": "chip/g/uartn.c",
         "patchSetId": 1
