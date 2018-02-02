@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "b309d985_1d4cf455",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-02T23:32:26Z",
+      "side": 1,
+      "message": "yeah. tpm_rst_deasserted calls set_ap_on.",
+      "parentUuid": "6aeccb57_1c0207fe",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 9
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8959059_1e9221f3",
         "filename": "board/cr50/ap_uart_state.c",
         "patchSetId": 6
@@ -105,6 +129,30 @@
       "writtenOn": "2018-02-02T23:23:39Z",
       "side": 1,
       "message": "this message would not be printed if this function returned in line 74?",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebaab4f7_a4a0770e",
+        "filename": "board/cr50/ap_uart_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-02T23:32:26Z",
+      "side": 1,
+      "message": "If the state \u003d\u003d DEVICE_STATE_ON then this has been called before and already printed once.",
+      "parentUuid": "f8959059_1e9221f3",
       "range": {
         "startLine": 77,
         "startChar": 1,
@@ -140,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "c4dda744_db664ad8",
+        "filename": "board/cr50/ap_uart_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-02T23:32:26Z",
+      "side": 1,
+      "message": "I can move this to 103, but this is consistent with ec, ap, and servo state machines.",
+      "parentUuid": "9a563ab6_663f3846",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92ad5c0a_f57dc2cf",
         "filename": "board/cr50/ap_uart_state.c",
         "patchSetId": 6
@@ -163,6 +235,30 @@
     },
     {
       "key": {
+        "uuid": "b0cf24ba_0511181b",
+        "filename": "board/cr50/ap_uart_state.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-02T23:32:26Z",
+      "side": 1,
+      "message": "I am not sure. Randall?",
+      "parentUuid": "92ad5c0a_f57dc2cf",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 40
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "77faec97_54b10dd7",
         "filename": "board/cr50/board.c",
         "patchSetId": 6
@@ -174,6 +270,30 @@
       "writtenOn": "2018-02-02T23:23:39Z",
       "side": 1,
       "message": "why would board_detect_ap_with_tpm_rst() ever return false now?",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 718,
+        "endChar": 60
+      },
+      "revId": "237dac006f058bf179a2559e139003b8ff11a995",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abbf4d71_1a5216a2",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-02T23:32:26Z",
+      "side": 1,
+      "message": "Board properties aren\u0027t updated properly? Something with Rowan strappings pops up?",
+      "parentUuid": "77faec97_54b10dd7",
       "range": {
         "startLine": 717,
         "startChar": 0,
