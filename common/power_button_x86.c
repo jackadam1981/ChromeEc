@@ -6,6 +6,7 @@
 /* Power button state machine for x86 platforms */
 
 #include "charge_state.h"
+#include "charge_manager.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -311,6 +312,11 @@ static void state_machine(uint64_t tnow)
 		 */
 #ifdef HAS_TASK_CHARGER
 		if (charge_get_state() == PWR_STATE_INIT)
+			break;
+#endif
+#ifdef CONFIG_CHARGE_MANAGER
+		if (charge_manager_get_charger_current()
+		    == CHARGE_CURRENT_UNINITIALIZED)
 			break;
 #endif
 

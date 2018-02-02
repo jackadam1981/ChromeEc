@@ -14,6 +14,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "system.h"
+#include "task.h"
 #include "tcpm.h"
 #include "timer.h"
 #include "usb_pd.h"
@@ -649,6 +650,9 @@ static void charge_manager_refresh(void)
 
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
+#ifdef HAS_TASK_POWERBTN
+		task_wake(TASK_ID_POWERBTN);
+#endif
 	}
 
 	/*
