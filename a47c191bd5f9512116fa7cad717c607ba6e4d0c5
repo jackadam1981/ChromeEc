@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ef090be_5b543f35",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-02T20:35:00Z",
+      "side": 1,
+      "message": "yes, this is an option.",
+      "parentUuid": "a3d8c96b_1e9f51f1",
+      "range": {
+        "startLine": 20,
+        "startChar": 51,
+        "endLine": 21,
+        "endChar": 39
+      },
+      "revId": "a47c191bd5f9512116fa7cad717c607ba6e4d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7c931a1_56126d23",
         "filename": "chip/g/uartn.c",
         "patchSetId": 1
