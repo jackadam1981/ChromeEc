@@ -16,6 +16,24 @@
       "revId": "133adde524616870ff63d218aeeb2b9138d65ef5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af56d95d_b3022af6",
+        "filename": "board/zoombini/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-03T01:56:26Z",
+      "side": 1,
+      "message": "Done. I was banking on the fact that people always add new enum entries to the bottom (right?) 😋 But agreed, it was a bit fragile.",
+      "parentUuid": "0a85db04_a17e562f",
+      "revId": "133adde524616870ff63d218aeeb2b9138d65ef5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
