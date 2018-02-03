@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "f275a524_f8a77293",
+        "filename": "board/nami/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-03T07:40:55Z",
+      "side": 1,
+      "message": "I ever try to split it, but the meet another error when i do Pre-submit checks....\nSo I tried to shorten the string...\nDo you have any suggestion?\n        Errors:\n            * checkpatch.pl errors/warnings\n            \n            WARNING: Avoid unnecessary line continuations\n            #179: FILE: board/nami/led.c:86:\n            +static void configure_pulse(uint32_t interval, int duty_inc, \\\n            \n            total: 0 errors, 1 warnings, 315 lines checked\n            \n            NOTE: For some of the reported defects, checkpatch may be able to\n                  mechanically convert to the typical style using --fix or --fix-inplace.\n            \n            Your patch has style problems, please review.\n            \n            NOTE: Ignored message types: FILE_PATH_CHANGES GERRIT_CHANGE_ID GIT_COMMIT_ID MSLEEP SPLIT_STRING VOLATILE\n            \n            NOTE: If any of the errors are false positives, please report\n                  them to the maintainer, see CHECKPATCH in MAINTAINERS.",
+      "parentUuid": "da609821_b112905d",
+      "range": {
+        "startLine": 87,
+        "startChar": 12,
+        "endLine": 87,
+        "endChar": 20
+      },
+      "revId": "09a749883825d1d906ee052d22f6e16c2371648f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64d70d10_47db1d5b",
         "filename": "board/nami/led.c",
         "patchSetId": 2
