@@ -41,16 +41,27 @@ void chipset_force_shutdown(void)
 	}
 }
 
+static void chipset_force_g3(void)
+{
+	/* Disable system power ("*_A" rails) in G3. */
+	gpio_set_level(GPIO_EN_PWR_A, 0);
+}
+
 void chipset_reset(int cold_reset)
 {
 	CPRINTS("%s(%d)", __func__, cold_reset);
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+		CPRINTS("Can't reset: SOC is off");
+		return;
+	}
+
 	if (cold_reset) {
 		/*
 		 * Perform chipset_force_shutdown and mark forcing_coldreset.
 		 * Once in S5G3 state, check forcing_coldreset to power up.
 		 */
 		forcing_coldreset = 1;
-
 		chipset_force_shutdown();
 	} else {
 		/*
@@ -89,7 +100,7 @@ enum power_state power_chipset_init(void)
 		}
 
 		CPRINTS("forcing G3");
-		chipset_force_shutdown();
+		chipset_force_g3();
 	}
 	return POWER_G3;
 }
@@ -104,6 +115,13 @@ static void handle_pass_through(enum power_state state,
 	 */
 	int in_level = gpio_get_level(pin_in);
 	int out_level = gpio_get_level(pin_out);
+
+	/*
+	 * Only pass through high VGATE (S0 power) when SPOK (system power, S5)
+	 * is also high (VGATE is pulled high in G3 when SPOK is low).
+	 */
+	if ((pin_in == GPIO_VGATE) && in_level && !gpio_get_level(GPIO_SPOK))
+		in_level = 0;
 
 	/* Nothing to do. */
 	if (in_level == out_level)
@@ -136,23 +154,27 @@ enum power_state _power_handle_state(enum power_state state)
 		/* Exit SOC G3 */
 		/* Platform is powering up, clear forcing_coldreset */
 		forcing_coldreset = 0;
-#ifdef CONFIG_PMIC
+
+		/* Enable system power ("*_A" rails) in S5. */
+		gpio_set_level(GPIO_EN_PWR_A, 1);
+
 		/* Call hooks to initialize PMIC */
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
-#endif
-		CPRINTS("Exit SOC G3");
 
 		if (power_wait_signals(IN_SPOK)) {
-			chipset_force_shutdown();
+			chipset_force_g3();
 			return POWER_G3;
 		}
+
+		CPRINTS("Exit SOC G3");
+
 		return POWER_S5;
 
 	case POWER_S5:
 		if (!power_has_signals(IN_SPOK)) {
 			/* Required rail went away */
-			chipset_force_shutdown();
-			return POWER_S5G3;
+			chipset_force_g3();
+			return POWER_G3;
 		} else if (gpio_get_level(GPIO_PCH_SLP_S5_L) == 1) {
 			/* Power up to next state */
 			return POWER_S5S3;
@@ -162,8 +184,8 @@ enum power_state _power_handle_state(enum power_state state)
 	case POWER_S5S3:
 		if (!power_has_signals(IN_SPOK)) {
 			/* Required rail went away */
-			chipset_force_shutdown();
-			return POWER_S5G3;
+			chipset_force_g3();
+			return POWER_G3;
 		}
 
 		/* Call hooks now that rails are up */
@@ -174,8 +196,8 @@ enum power_state _power_handle_state(enum power_state state)
 	case POWER_S3:
 		if (!power_has_signals(IN_SPOK)) {
 			/* Required rail went away */
-			chipset_force_shutdown();
-			return POWER_S3S5;
+			chipset_force_g3();
+			return POWER_G3;
 		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 1) {
 			/* Power up to next state */
 			return POWER_S3S0;
@@ -188,8 +210,8 @@ enum power_state _power_handle_state(enum power_state state)
 	case POWER_S3S0:
 		if (!power_has_signals(IN_SPOK)) {
 			/* Required rail went away */
-			chipset_force_shutdown();
-			return POWER_S3S5;
+			chipset_force_g3();
+			return POWER_G3;
 		}
 
 		/* Enable wireless */
@@ -208,14 +230,15 @@ enum power_state _power_handle_state(enum power_state state)
 
 	case POWER_S0:
 		if (!power_has_signals(IN_SPOK)) {
-			chipset_force_shutdown();
-			return POWER_S0S3;
+			/* Required rail went away */
+			chipset_force_g3();
+			return POWER_G3;
 		} else if (gpio_get_level(GPIO_PCH_SLP_S3_L) == 0) {
 			/* Power down to next state */
 			return POWER_S0S3;
 		}
-
 		break;
+
 	case POWER_S0S3:
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
@@ -241,13 +264,14 @@ enum power_state _power_handle_state(enum power_state state)
 		return POWER_S5;
 
 	case POWER_S5G3:
-		chipset_force_shutdown();
 
 		/* Power up the platform again for forced cold reset */
 		if (forcing_coldreset) {
 			forcing_coldreset = 0;
 			return POWER_G3S5;
 		}
+
+		chipset_force_g3();
 
 		return POWER_G3;
 
