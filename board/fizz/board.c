@@ -468,9 +468,13 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+/* Before this version, GPIO is connected to TP. So, toggling it is a no-op. */
+#define BOARD_VERSION_WITH_PR7824	1
+
 void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
+	uint32_t bv;
 	/* Turn on/off power shortage alert. Performs the same check as
 	 * system_can_boot_ap(). It's repeated here because charge_manager
 	 * hasn't updated charge_current/voltage when board_set_charge_limit
@@ -478,14 +482,22 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	led_alert(charge_ma * charge_mv <
 			CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW * 1000);
 
+	/* This should always work because HOOK_PRIO_CHARGE_MANAGER_INIT
+	 * is notified after HOOK_PRIO_INIT_I2C. */
+	if (cbi_get_board_version(&bv))
+		/* We don't know if the board is capable of 87W limit.
+		 * We fall back to the previous limit (3.33A). */
+		bv = BOARD_VERSION_WITH_PR7824 - 1;
+
 	/*
 	 * We have two FETs connected to two registers: PR257 & PR258.
 	 * These control thresholds of the over current monitoring system.
 	 *
-	 *                              PR257, PR258
-	 * For 4.62A (90W BJ adapter),     on,   off
-	 * For 3.33A (65W BJ adapter),    off,    on
-	 * For 3.00A (Type-C adapter),    off,   off
+	 *                               PR257  PR7824 PR258
+	 * For 4.62A (90W BJ adapter),      on     off   off
+	 * For 4.35A (87W Type-C adapter)  off      on   off
+	 * For 3.33A (65W BJ adapter),     off     off    on
+	 * For 3.00A (60W Type-C adapter)  off     off   off
 	 *
 	 * The over current monitoring system doesn't support less than 3A
 	 * (e.g. 2.25A, 2.00A). These current most likely won't be enough to
@@ -493,14 +505,22 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	 * PMON_PSYS and trigger H_PROCHOT by itself.
 	 */
 	if (charge_ma >= 4620) {
-		gpio_set_level(GPIO_U42_P, 1);
-		gpio_set_level(GPIO_U22_C, 0);
+		gpio_set_level(GPIO_ICC_474, 1);
+		gpio_set_level(GPIO_ICC_435, 0);
+		gpio_set_level(GPIO_ICC_342, 0);
+		/* This isn't a mistake. Apple's 87W charger offers 4.3A @20V */
+	} else if (charge_ma >= 4300 && bv >= BOARD_VERSION_WITH_PR7824) {
+		gpio_set_level(GPIO_ICC_474, 0);
+		gpio_set_level(GPIO_ICC_435, 1);
+		gpio_set_level(GPIO_ICC_342, 0);
 	} else if (charge_ma >= 3330) {
-		gpio_set_level(GPIO_U42_P, 0);
-		gpio_set_level(GPIO_U22_C, 1);
+		gpio_set_level(GPIO_ICC_474, 0);
+		gpio_set_level(GPIO_ICC_435, 0);
+		gpio_set_level(GPIO_ICC_342, 1);
 	} else if (charge_ma >= 3000) {
-		gpio_set_level(GPIO_U42_P, 0);
-		gpio_set_level(GPIO_U22_C, 0);
+		gpio_set_level(GPIO_ICC_474, 0);
+		gpio_set_level(GPIO_ICC_435, 0);
+		gpio_set_level(GPIO_ICC_342, 0);
 	} else {
 		/* TODO(http://crosbug.com/p/65013352) */
 		CPRINTS("Current %dmA not supported", charge_ma);
