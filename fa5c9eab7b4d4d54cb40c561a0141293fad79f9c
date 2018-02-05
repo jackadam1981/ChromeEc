@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f66ec462_b904801b",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-05T19:05:18Z",
+      "side": 1,
+      "message": "I know the callers in this module, but future boards may call into this. I _could_ remove it, but I\u0027d rather err on the side of safety. Without LTO, removing the checks saves 12 B.",
+      "parentUuid": "c1476048_ad6f5614",
+      "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8bb90d6_e1deb337",
         "filename": "common/led_pwm.c",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2018-02-05T18:01:05Z",
       "side": 1,
       "message": "This seems confusing to me. Do we have to check led_auto_control_is_enabled? Would it be possible to simplify this by assuming that logical PWM LEDs (as defined by the board in struct pwm_led pwm_leds[CONFIG_LED_PWM_COUNT]) are always / solely controlled by led_pwm.c?",
+      "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dc31564_759107cc",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-05T19:05:18Z",
+      "side": 1,
+      "message": "We have to check for auto control since the LEDs are not always controlled from the policy here. The behaviour can be overridden from userspace via ectool. I\u0027ve added a comment.",
+      "parentUuid": "a8bb90d6_e1deb337",
       "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -53,6 +89,41 @@
     },
     {
       "key": {
+        "uuid": "e41ea7a6_e9ef3223",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-05T19:05:18Z",
+      "side": 1,
+      "message": "We still need led_auto_control because of factory testing. The factory uses ectool to check LED functionality. Otherwise, I\u0027d have to duplicate the logic here (including the host command handler).",
+      "parentUuid": "58628a20_da81b6d9",
+      "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf4a7840_afd02f6e",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-05T19:05:18Z",
+      "side": 1,
+      "message": "Changing this to undefined by default as it\u0027s really only useful for initial debug.",
+      "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "184153b9_2bf9d5cd",
         "filename": "include/config.h",
         "patchSetId": 6
@@ -67,6 +138,24 @@
       "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50c9e45f_9f35bb18",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1892,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-05T19:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "184153b9_2bf9d5cd",
+      "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
