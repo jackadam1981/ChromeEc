@@ -34,6 +34,24 @@
       "revId": "27e4d47e39e4f620959b4cb1f6d39edfd6642c64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84985f49_7032e9f2",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-05T15:14:53Z",
+      "side": 1,
+      "message": "Ah, I was confusing cprints and cprintf. Reverting this file",
+      "parentUuid": "de7c2d07_4d3241fc",
+      "revId": "27e4d47e39e4f620959b4cb1f6d39edfd6642c64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
