@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "dba062e1_0fdcbefb",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-05T21:12:38Z",
+      "side": 1,
+      "message": "can variable be named differently from the type? I know this has been the pattern, but this really confuses some code browsing tools.",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b79f7e26_87fdbe11",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -111,6 +134,145 @@
         "startChar": 27,
         "endLine": 311,
         "endChar": 32
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11125814_c91c0b52",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-05T21:12:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24918d30_4cc9c9fa",
+      "range": {
+        "startLine": 311,
+        "startChar": 27,
+        "endLine": 311,
+        "endChar": 32
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d779d98_a8750a08",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-05T21:12:38Z",
+      "side": 1,
+      "message": "for the purposes of saving RAM space, please make these byte sized,",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 25
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66131721_5742b8ff",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-05T21:12:38Z",
+      "side": 1,
+      "message": "if it was held in reset during the SPI process why is it required to assert the reset in line 335?",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 342,
+        "endChar": 30
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd40b1f9_3c4f29f8",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-05T21:12:38Z",
+      "side": 1,
+      "message": "should these assignments be made before bus is released?",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 19
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e204a22_c3393fe8",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-05T21:12:38Z",
+      "side": 1,
+      "message": "as in other commands of this kind, this should be passed through vendor command context, which would make this feature available both through CLI and through vendor command.",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 0
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0446be2a_ecc54c3b",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-05T21:12:38Z",
+      "side": 1,
+      "message": "does this really need to be so flexible?\n\nwhy not always pass AP/EC parameter, and not have \u0027disable\u0027 at all - just turn it off each time command completed?",
+      "range": {
+        "startLine": 596,
+        "startChar": 7,
+        "endLine": 597,
+        "endChar": 23
       },
       "revId": "cc9af7693be099670881228d407c14c01d16e364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
