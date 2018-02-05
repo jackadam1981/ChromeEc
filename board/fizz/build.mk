@@ -12,3 +12,20 @@ CHIP_VARIANT:=npcx5m6g
 board-y=board.o
 board-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o
 board-y+=led.o
+
+sku_ids = 0 1 2 3 4 5 6
+brd_ver = 0
+
+make_cbi = $(out)/util/cbi-util --create $(1)_$(3).bin \
+		--board_version 0 --oem_id $(2) --sku_id $(3) --size 256;
+
+cbi_kench: $(out)/util/cbi-util
+	$(foreach s,$(sku_ids),$(call make_cbi,$(out)/$@,$(brd_ver),$(s)))
+
+cbi_kench: $(out)/util/cbi-util
+	$(foreach s,$(sku_ids),$(call make_cbi,$(out)/$@,$(brd_ver),$(s)))
+
+cbi_kench: $(out)/util/cbi-util
+	$(foreach s,$(sku_ids),$(call make_cbi,$(out)/$@,$(brd_ver),$(s)))
+
+PROJECT_EXTRA += cbi_kench cbi_teemo cbi_sion
