@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3227c8bf_01d5088f",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-05T00:57:44Z",
+      "side": 1,
+      "message": "In all fairness, this is what the kernel driver does:\nhttps://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/drivers/input/mouse/elan_i2c_i2c.c#180\n\nOn the other hand, the rest of the bits always seem to be 0, and writing 1 to them doesn\u0027t not seem to do anything.\n\nKT: Is there anything else in this register? Or can I just write 0x1 to disable, and 0x0 to resume?",
+      "parentUuid": "73d39cea_7087d4c1",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "84c491ff2e2879eb91fe7ae43aad1fd4ccca7ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7049df6_cebc9621",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "84c491ff2e2879eb91fe7ae43aad1fd4ccca7ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04aae5f4_2de22be1",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-05T00:57:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7049df6_cebc9621",
+      "range": {
+        "startLine": 724,
+        "startChar": 3,
+        "endLine": 724,
+        "endChar": 22
+      },
+      "revId": "84c491ff2e2879eb91fe7ae43aad1fd4ccca7ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
