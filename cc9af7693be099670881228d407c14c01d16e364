@@ -211,6 +211,30 @@
     },
     {
       "key": {
+        "uuid": "02bdeb37_b7497b02",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-05T22:20:11Z",
+      "side": 1,
+      "message": "Gang mode is implemented this way:\n\nAssert reset\nAssert gang enable\nDeassert reset\n(use gang mode)\nDeassert gang enable\nAssert reset\nDeassert reset\n\nLine 335-336 is the second pulse.  I\u0027ll add more comments.",
+      "parentUuid": "66131721_5742b8ff",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 342,
+        "endChar": 30
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd40b1f9_3c4f29f8",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -268,6 +292,30 @@
       "writtenOn": "2018-02-05T21:12:38Z",
       "side": 1,
       "message": "does this really need to be so flexible?\n\nwhy not always pass AP/EC parameter, and not have \u0027disable\u0027 at all - just turn it off each time command completed?",
+      "range": {
+        "startLine": 596,
+        "startChar": 7,
+        "endLine": 597,
+        "endChar": 23
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb47e29_c16f5e63",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-05T22:20:11Z",
+      "side": 1,
+      "message": "Going from disabled -\u003e AP or EC requires physical presence.\n\nSo if we turn it off every command, you\u0027ll have to tap the power button every command.",
+      "parentUuid": "0446be2a_ecc54c3b",
       "range": {
         "startLine": 596,
         "startChar": 7,
