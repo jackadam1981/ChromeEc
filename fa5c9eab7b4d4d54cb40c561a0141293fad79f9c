@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1476048_ad6f5614",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-05T06:30:47Z",
+      "side": 1,
+      "message": "Is this input validation really needed? I mean, you know who the callers are, right?\n\n(again, code size concern)",
+      "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
