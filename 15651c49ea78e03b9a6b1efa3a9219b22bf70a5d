@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "443e9733_8ccc13a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-05T01:23:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a13ff2b0_49570886",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 44
+      },
+      "revId": "15651c49ea78e03b9a6b1efa3a9219b22bf70a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c30ec29_cd738d65",
         "filename": "common/keyboard_scan.c",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "15651c49ea78e03b9a6b1efa3a9219b22bf70a5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8db8747_2e33a568",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-05T01:23:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c30ec29_cd738d65",
+      "range": {
+        "startLine": 789,
+        "startChar": 26,
+        "endLine": 789,
+        "endChar": 52
+      },
+      "revId": "15651c49ea78e03b9a6b1efa3a9219b22bf70a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
