@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7976a565_4270997b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-05T18:10:32Z",
+      "side": 1,
+      "message": "is it required here, given we are on the EC that talks to the AP?",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54964acd_b9ded682",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-05T18:10:32Z",
+      "side": 1,
+      "message": "is it required here, given we are on the EC that talks to the AP?",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31d70da_58189e91",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-05T18:10:32Z",
+      "side": 1,
+      "message": "nit, I2C_STRESS... as usually at end of .h",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5184b3c1_4c983376",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-05T18:10:32Z",
+      "side": 1,
+      "message": "Add #ifdef CONFIG_BATTERY_V2 to force a compile error if not.",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "682a3d28_e3c3d99d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-05T18:10:32Z",
+      "side": 1,
+      "message": "add EC_FEATURE_SEVERAL_BATTERY, even if not used directly. It may be used on ARM.",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
