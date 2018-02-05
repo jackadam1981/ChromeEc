@@ -16,6 +16,57 @@
       "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8bb90d6_e1deb337",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-05T18:01:05Z",
+      "side": 1,
+      "message": "This seems confusing to me. Do we have to check led_auto_control_is_enabled? Would it be possible to simplify this by assuming that logical PWM LEDs (as defined by the board in struct pwm_led pwm_leds[CONFIG_LED_PWM_COUNT]) are always / solely controlled by led_pwm.c?",
+      "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58628a20_da81b6d9",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-05T18:01:05Z",
+      "side": 1,
+      "message": "Would be nice to avoid this use of supported_led_ids and led_auto_control, if possible!",
+      "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "184153b9_2bf9d5cd",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1892,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-05T18:01:05Z",
+      "side": 1,
+      "message": "Mention that this can only be 1 or 2?",
+      "revId": "fa5c9eab7b4d4d54cb40c561a0141293fad79f9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
