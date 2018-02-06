@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caadc891_90f5190d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T13:17:38Z",
+      "side": 1,
+      "message": "What if we leave a 256-bit PSTATE word blank and just write it in full? Would that work?",
+      "revId": "c3ed05793693f80e13fcd15474183801fdcfcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b5b898_d987ab54",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1956,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T13:17:38Z",
+      "side": 1,
+      "message": "This one is weird. The RM first says bit 3 in the table, then bit 4... And 4 again in the full table 3.6... And it\u0027s not in table 3.6 for 0x118...\n\nDon\u0027t know if you have a contact at ST, might be good to tell them. I assume that 4 is correct, if it works?",
+      "revId": "c3ed05793693f80e13fcd15474183801fdcfcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871ca88d_bdd3992d",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T13:17:38Z",
+      "side": 1,
+      "message": "? I don\u0027t see this one in RM.",
+      "revId": "c3ed05793693f80e13fcd15474183801fdcfcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
