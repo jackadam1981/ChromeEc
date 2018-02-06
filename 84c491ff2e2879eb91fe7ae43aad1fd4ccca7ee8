@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "eda437cd_ff291585",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T07:10:12Z",
+      "side": 1,
+      "message": "np, thanks KT!",
+      "parentUuid": "ef54ad99_4e6e4a41",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 0
+      },
+      "revId": "84c491ff2e2879eb91fe7ae43aad1fd4ccca7ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7049df6_cebc9621",
         "filename": "driver/touchpad_elan.c",
         "patchSetId": 2
