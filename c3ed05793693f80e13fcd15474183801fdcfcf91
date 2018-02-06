@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "526d552f_882540a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-06T13:27:45Z",
+      "side": 1,
+      "message": "Yes it should\nbtw as expected, the flash subsystem guarantees that the ECC of all FF is FF, so the ECC of blank flash is 10-bit of blank flash.\n\nFor the WP design itself, I\u0027m not sure this would be better than the current scheme (but it\u0027s a bit open since the final security scheme for this firmware is fully designed yet)\nI had the patch to expand the PSTATE code to support write size \u003e 4 bytes to make it compatible with this chip.",
+      "parentUuid": "caadc891_90f5190d",
+      "revId": "c3ed05793693f80e13fcd15474183801fdcfcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08b5b898_d987ab54",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "49972faf_c386b4f5",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1956,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-06T13:27:45Z",
+      "side": 1,
+      "message": "Yes, that\u0027s interesting ... and I don\u0027t know which one is ok, since the current code is not using it.\nI might just remove it for now.",
+      "parentUuid": "08b5b898_d987ab54",
+      "revId": "c3ed05793693f80e13fcd15474183801fdcfcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "871ca88d_bdd3992d",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2018-02-06T13:17:38Z",
       "side": 1,
       "message": "? I don\u0027t see this one in RM.",
+      "revId": "c3ed05793693f80e13fcd15474183801fdcfcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15117303_ec8cdcb8",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1959,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-06T13:27:45Z",
+      "side": 1,
+      "message": "Indeed OPT_BUSY is only in OPTSR_CUR while all other bits are common between _CUR and _PRG",
+      "parentUuid": "871ca88d_bdd3992d",
       "revId": "c3ed05793693f80e13fcd15474183801fdcfcf91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
