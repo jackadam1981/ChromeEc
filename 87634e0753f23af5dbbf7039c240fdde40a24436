@@ -16,6 +16,24 @@
       "revId": "87634e0753f23af5dbbf7039c240fdde40a24436",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b3f39f4_6e175282",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-06T18:05:44Z",
+      "side": 1,
+      "message": "The other parameters setup in rt946x_init_setting() have similar logging. But I do feel these logging are unnecessary, and we should probably submit another CL to remove them at all.",
+      "parentUuid": "abf4085b_a47fa362",
+      "revId": "87634e0753f23af5dbbf7039c240fdde40a24436",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
