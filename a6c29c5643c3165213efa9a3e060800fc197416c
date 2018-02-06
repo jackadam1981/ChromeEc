@@ -149,6 +149,48 @@
     },
     {
       "key": {
+        "uuid": "8482a98c_200945eb",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-06T21:07:44Z",
+      "side": 1,
+      "message": "Got it, thanks!",
+      "parentUuid": "503a7d05_067a91a1",
+      "revId": "a6c29c5643c3165213efa9a3e060800fc197416c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9ad21a7_ad8ecf09",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-06T21:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce106c28_328ccefe",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 70
+      },
+      "revId": "a6c29c5643c3165213efa9a3e060800fc197416c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8665b70_699d82e4",
         "filename": "power/stoney.c",
         "patchSetId": 1
@@ -163,6 +205,24 @@
       "revId": "a6c29c5643c3165213efa9a3e060800fc197416c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b10fa87_97bdaa39",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-06T21:07:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8665b70_699d82e4",
+      "revId": "a6c29c5643c3165213efa9a3e060800fc197416c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
