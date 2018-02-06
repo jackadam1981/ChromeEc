@@ -210,11 +210,17 @@ struct touchpad_info {
 	uint8_t allowed_fw_hash[32];
 
 	/* Vendor specific data. */
-	struct {
-		uint16_t id;
-		uint16_t fw_version;
-		uint16_t fw_checksum;
-	} elan;
+	union {
+		struct {
+			uint16_t id;
+			uint16_t fw_version;
+			uint16_t fw_checksum;
+		} elan;
+		struct {
+			uint64_t release_info;
+			uint32_t fw_crc;
+		} st;
+	} /* anonymous */;
 } __packed;
 
 void fw_update_command_handler(void *body,
