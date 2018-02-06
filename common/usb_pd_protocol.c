@@ -1920,9 +1920,17 @@ static void pd_partner_port_reset(int port)
 		explicit_contract_in_place = 0;
 
 	/*
-	 * Check our battery-backed previous port state. If PD comms were
-	 * active, and we didn't just lose power, make sure we
-	 * don't boot into RO with a pre-existing power contract.
+	 * If an explicit contract is in place and PD communications are
+	 * allowed, don't apply Rp.  We'll issue a SoftReset later on and
+	 * renegotiate our contract.  This particular condition only applies to
+	 * unlocked RO images with an explicit contract in place.
+	 */
+	if (explicit_contract_in_place && pd_comm_is_enabled(port))
+		return;
+
+	/*
+	 * If an explicit contract is in place, and we didn't just lose power,
+	 * make sure we don't boot into RO with that contract.
 	 */
 	if (!explicit_contract_in_place ||
 	   system_get_image_copy() != SYSTEM_IMAGE_RO ||
