@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2633ce3f_dcec7c5a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T04:02:19Z",
+      "side": 1,
+      "message": "No, the base uses that same function to update it\u0027s local structures (that\u0027s how it was used originally, before this change). And does not have an AP to talk to (directly).",
+      "parentUuid": "7976a565_4270997b",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54964acd_b9ded682",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2018-02-05T18:10:32Z",
       "side": 1,
       "message": "is it required here, given we are on the EC that talks to the AP?",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ebb0af8_91ad1aed",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T04:02:19Z",
+      "side": 1,
+      "message": "ditto.\n\n(it\u0027s not likely to have HAS_TASK_HOSTCMD and not CONFIG_HOSTCMD_EVENTS, but that\u0027s how the rest of host_set_single_event calls are protected)",
+      "parentUuid": "54964acd_b9ded682",
       "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "882dd013_83922192",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T04:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31d70da_58189e91",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5184b3c1_4c983376",
         "filename": "include/battery.h",
         "patchSetId": 4
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "928f7031_5ca94c1f",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T04:02:19Z",
+      "side": 1,
+      "message": "There seems to be different school of thoughts about ifdefs in include files ,-) And it\u0027d trigger a link error... But yes, I can add that.\n\nDone",
+      "parentUuid": "5184b3c1_4c983376",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "682a3d28_e3c3d99d",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
@@ -81,6 +153,24 @@
       "writtenOn": "2018-02-05T18:10:32Z",
       "side": 1,
       "message": "add EC_FEATURE_SEVERAL_BATTERY, even if not used directly. It may be used on ARM.",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fab8b71_58c4e894",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T04:02:19Z",
+      "side": 1,
+      "message": "I\u0027d rather hold off on allocating a bit for this, until we figure out how we want to pass battery information on ARM.\n\nFiled https://b.corp.google.com/issues/72970709 for this purpose.",
+      "parentUuid": "682a3d28_e3c3d99d",
       "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
