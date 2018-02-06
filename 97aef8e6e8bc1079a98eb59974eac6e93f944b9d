@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c46ef12_23707064",
+        "filename": "common/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T01:21:43Z",
+      "side": 1,
+      "message": "Yeah I thought about it, and dismissed the idea. With your other idea of using a temporary variable as needed, I think it makes much more sense.\n\nDone.",
+      "parentUuid": "a9b91126_bcb83e73",
+      "range": {
+        "startLine": 26,
+        "startChar": 52,
+        "endLine": 27,
+        "endChar": 55
+      },
+      "revId": "97aef8e6e8bc1079a98eb59974eac6e93f944b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "436211f9_f0cf41ff",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-02T23:32:29Z",
       "side": 1,
       "message": "Suggest using a temporary variable, e.g.:\n\nbs \u003d \u0026battery_static[0];\n\nThen the code below is shorter too:\n\nsnprintf(bs-\u003eserial, sizeof(bs-\u003eserial), ...)",
+      "range": {
+        "startLine": 721,
+        "startChar": 1,
+        "endLine": 721,
+        "endChar": 58
+      },
+      "revId": "97aef8e6e8bc1079a98eb59974eac6e93f944b9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3bb77b5_a700490b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-06T01:21:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "436211f9_f0cf41ff",
       "range": {
         "startLine": 721,
         "startChar": 1,
