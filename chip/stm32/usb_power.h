@@ -35,9 +35,9 @@
  *
  *     addina:	0x0002
  *
- *     +--------+--------------------------+-------------+--------------+-----------+-------------+--------+
- *     | 0x0002 | 1B: 4b: extender 4b: bus | 1B:INA type | 1B: INA addr | 1B: extra | 4B: voltage | 4B: Rs |
- *     +--------+--------------------------+-------------+--------------+-----------+-------------+--------+
+ *     +--------+--------------------------+-------------+--------------+-----------+--------+
+ *     | 0x0002 | 1B: 4b: extender 4b: bus | 1B:INA type | 1B: INA addr | 1B: extra | 4B: Rs |
+ *     +--------+--------------------------+-------------+--------------+-----------+--------+
  *
  *     start:	0x0003
  *
@@ -95,6 +95,7 @@ enum usb_power_error {
 	USB_POWER_ERROR_BUSY		= 0x06,
 	USB_POWER_ERROR_READ_SIZE	= 0x07,
 	USB_POWER_ERROR_FULL		= 0x08,
+	USB_POWER_ERROR_INVAL		= 0x09,
 	USB_POWER_ERROR_UNKNOWN		= 0x80,
 };
 
@@ -105,6 +106,13 @@ enum usb_power_command {
 	USB_POWER_CMD_START	= 0x0003,
 	USB_POWER_CMD_NEXT	= 0x0004,
 	USB_POWER_CMD_SETTIME	= 0x0005,
+};
+
+enum usb_power_ina_type {
+	USBP_INA231_POWER	= 0x1,
+	USBP_INA231_BUSV	= 0x2,
+	USBP_INA231_CURRENT	= 0x3,
+	USBP_INA231_SHUNTV	= 0x4,
 };
 
 enum usb_power_states {
@@ -132,6 +140,11 @@ struct usb_power_ina_cfg {
 	int rs;
 	/* uA per div as reported from INA */
 	int scale;
+
+	/* Is this power, shunt voltage, bus voltage, or current? */
+	int type;
+	/* Is this INA returning the one value only and can use readagain? */
+	int shared;
 };
 
 

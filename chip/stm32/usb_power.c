@@ -16,8 +16,6 @@
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 
-
-
 static int usb_power_init_inas(struct usb_power_config const *config);
 static int usb_power_read(struct usb_power_config const *config);
 static int usb_power_write_line(struct usb_power_config const *config);
@@ -102,9 +100,6 @@ static int usb_power_write_line(struct usb_power_config const *config)
 		return bytes;
 	}
 
-	CPRINTS("usb_power_write_line: no data rs: %d, rc: %d",
-		USB_POWER_RECORD_SIZE(state->ina_count),
-		USB_POWER_MAX_CACHED(state->ina_count));
 	return 0;
 }
 
@@ -133,12 +128,12 @@ static int usb_power_state_stop(struct usb_power_config const *config)
 		return USB_POWER_ERROR_NOT_CAPTURING;
 	}
 
-	state->state = USB_POWER_STATE_SETUP;
+	state->state = USB_POWER_STATE_OFF;
 	state->reports_head = 0;
 	state->reports_tail = 0;
 	state->reports_xmit_active = 0;
 	state->stride_bytes = 0;
-	CPRINTS("[STOP] STATE: CAPTURING -> SETUP");
+	CPRINTS("[STOP] STATE: CAPTURING -> OFF");
 	return USB_POWER_SUCCESS;
 }
 
@@ -207,6 +202,7 @@ static int usb_power_state_addina(struct usb_power_config const *config,
 {
 	struct usb_power_state *state = config->state;
 	struct usb_power_ina_cfg *ina;
+	int i;
 
 	/* Only valid from OFF or SETUP */
 	if ((state->state != USB_POWER_STATE_OFF) &&
@@ -232,12 +228,33 @@ static int usb_power_state_addina(struct usb_power_config const *config,
 		state->ina_count = 0;
 	}
 
+	if ((cmd->addina.type < USBP_INA231_POWER) ||
+	    (cmd->addina.type > USBP_INA231_SHUNTV)) {
+		CPRINTS("[ADDINA] Error INA type 0x%x invalid", (int)(cmd->addina.type));
+		return USB_POWER_ERROR_INVAL;
+	}
+
 	/* Select INA to configure */
 	ina = state->ina_cfg + state->ina_count;
 
 	ina->port = cmd->addina.port;
 	ina->addr = (cmd->addina.addr) << 1;  /* 7 to 8 bit addr. */
 	ina->rs = cmd->addina.rs;
+	ina->type = cmd->addina.type;
+	ina->shared = 0;
+#ifdef USB_POWER_VERBOSE
+	ina->shared = 1;
+#endif
+
+	/* Check if shared with previously configured INAs. */
+	for (i = 0; i < state->ina_count; i++) {
+		struct usb_power_ina_cfg *tmp = state->ina_cfg + i;
+		if ((tmp->port == ina->port) &&
+		    (tmp->addr == ina->addr)) {
+			ina->shared = 1;
+			tmp->shared = 1;
+		}
+	}
 
 	state->ina_count += 1;
 	return USB_POWER_SUCCESS;
@@ -305,7 +322,6 @@ static int usb_power_read(struct usb_power_config const *config)
 			if (ret)
 				return EC_SUCCESS;
 
-			CPRINTS("[CAP] busy");
 			result = USB_POWER_ERROR_BUSY;
 		} else {
 			CPRINTS("[STOP] Error not capturing.");
@@ -353,7 +369,21 @@ static int usb_power_read(struct usb_power_config const *config)
 #define INA231_MODE_BUS			0x6
 #define INA231_MODE_BOTH		0x7
 
+int reg_type_mapping(enum usb_power_ina_type ina_type) {
+	switch (ina_type) {
+	case USBP_INA231_POWER:
+		return INA231_REG_PWR;
+	case USBP_INA231_BUSV:
+		return INA231_REG_BUSV;
+	case USBP_INA231_CURRENT:
+		return INA231_REG_CURR;
+	case USBP_INA231_SHUNTV:
+		return INA231_REG_RSHV;
 
+	default:
+		return INA231_REG_CONF;
+	}
+}
 
 uint16_t ina2xx_readagain(uint8_t port, uint8_t addr)
 {
@@ -524,7 +554,10 @@ static int usb_power_init_inas(struct usb_power_config const *config)
 		 * will be cached and all ina2xx_readagain() calls will read
 		 * from the same address.
 		 */
-		ina2xx_read(ina->port, ina->addr, INA231_REG_PWR);
+		ina2xx_read(ina->port, ina->addr, reg_type_mapping(ina->type));
+#ifdef USB_POWER_VERBOSE
+		CPRINTS("[CAP] %d (%d,0x%02x): type:%d", (int)(ina->type));
+#endif
 	}
 
 	return EC_SUCCESS;
@@ -570,7 +603,7 @@ static int usb_power_get_samples(struct usb_power_config const *config)
 	r->timestamp = time;
 
 	for (i = 0; i < state->ina_count; i++) {
-		int power;
+		int regval;
 		struct usb_power_ina_cfg *ina = inas + i;
 
 		/* Read INA231.
@@ -578,11 +611,16 @@ static int usb_power_get_samples(struct usb_power_config const *config)
 		 * Readagain cached this address so we'll save an I2C
 		 * transaction.
 		 */
-		power = ina2xx_readagain(ina->port, ina->addr);
-		r->power[i] = power;
+		if (ina->shared)
+			regval = ina2xx_read(ina->port, ina->addr,
+			                     reg_type_mapping(ina->type));
+		else
+			regval = ina2xx_readagain(ina->port, ina->addr);
+		r->power[i] = regval;
 #ifdef USB_POWER_VERBOSE
 		{
 		int current;
+		int power;
 		int voltage;
 		int bvoltage;
 
@@ -590,7 +628,6 @@ static int usb_power_get_samples(struct usb_power_config const *config)
 		bvoltage = ina2xx_read(ina->port, ina->addr, INA231_REG_BUSV);
 		current = ina2xx_read(ina->port, ina->addr, INA231_REG_CURR);
 		power = ina2xx_read(ina->port, ina->addr, INA231_REG_PWR);
-		}
 		{
 		int uV = ((int)voltage * 25) / 10;
 		int mV = ((int)bvoltage * 125) / 100;
@@ -603,6 +640,7 @@ static int usb_power_get_samples(struct usb_power_config const *config)
 		CPRINTS("[CAP] %duV %dmV %duA %dCuA "
 			"%duW v:%04x, b:%04x, p:%04x",
 			uV, mV, uA, CuA, uW, voltage, bvoltage, power);
+		}
 		}
 #endif
 	}
