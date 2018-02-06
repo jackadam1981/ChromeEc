@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a107117_bd24fb68",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-06T18:18:49Z",
+      "side": 1,
+      "message": "separate comment, but I\u0027d like to see our gpios get renamed to reflect our reality. We can kill off kahlee and normalize these gpios to be reflective of the reference platform.",
+      "range": {
+        "startLine": 120,
+        "startChar": 27,
+        "endLine": 120,
+        "endChar": 32
+      },
+      "revId": "a6c29c5643c3165213efa9a3e060800fc197416c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "753e420b_2c430720",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-06T18:18:49Z",
+      "side": 1,
+      "message": "This because VCC on RT3661ABGQW is PP5000_A.  We should talk about this in the bug. I wonder if we want this to be automatically done in hw vs working around it in sw. Also, these sorts of details regarding PP5000_A is important.",
+      "revId": "a6c29c5643c3165213efa9a3e060800fc197416c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8665b70_699d82e4",
+        "filename": "power/stoney.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-06T18:18:49Z",
+      "side": 1,
+      "message": "Why can\u0027t we go through S5G3 state? Same question as all the other similar changes.",
+      "revId": "a6c29c5643c3165213efa9a3e060800fc197416c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
