@@ -21,8 +21,6 @@
 #define ST_TP_CMD_SPI_HOST_BUFFER_ACK		0xC0
 #define ST_TP_CMD_READ_SPI_HOST_BUFFER		0xC1
 
-#define ST_TP_HEAT_MAP_ADDR		0x20
-
 #define ST_HOST_BUFFER_DATA_VALID	(1 << 0)
 #define ST_HOST_BUFFER_MT_READY		(1 << 3)
 #define ST_HOST_BUFFER_SF_READY		(1 << 4)
@@ -54,6 +52,79 @@ struct st_tp_host_data_header_t {
 	uint8_t host_data_mem_id;
 	uint16_t count;
 } __packed;
+
+struct st_tp_system_info_t {
+	struct st_tp_host_data_header_t header;
+	uint16_t api_ver_rev;
+	uint8_t api_ver_minor;
+	uint8_t api_ver_major;
+	uint16_t chip0_ver;
+	uint16_t chip0_id;  /* 0x3936 */
+	uint16_t chip1_ver;
+	uint16_t chip1_id;
+	uint16_t fw_ver;
+	uint16_t svn_rev;
+	uint16_t cfg_ver;
+	uint16_t cfg_project_id;
+	uint16_t cx_ver;
+	uint16_t cx_project_id;
+	uint8_t cfg_afe_ver;
+	uint8_t cx_afe_ver;
+	uint8_t panel_cfg_afe_ver;
+	uint8_t protocol;
+	uint8_t die_id[16];
+	uint64_t release_info; /* unsigned little endian 64 bit integer */
+	uint32_t fw_crc;
+	uint32_t cfg_crc;
+	/* reserve 16 bytes */
+	uint16_t scr_res_x;
+	uint16_t scr_res_y;
+	uint8_t scr_tx_len;
+	uint8_t scr_rx_len;
+	uint8_t key_len;
+	uint8_t frc_len;
+	/* reserve 40 bytes */
+	uint16_t dbg_frame_addr;
+	/* reserve 6 bytes */
+	uint16_t ms_scr_raw_addr;
+	uint16_t ms_scr_filter_addr;
+	uint16_t ms_scr_str_addr;
+	uint16_t ms_scr_bl_addr;
+	uint16_t ss_tch_tx_raw_addr;
+	uint16_t ss_tch_tx_filter_addr;
+	uint16_t ss_tch_tx_str_addr;
+	uint16_t ss_tch_tx_bl_addr;
+	uint16_t ss_tch_rx_raw_addr;
+	uint16_t ss_tch_rx_filter_addr;
+	uint16_t ss_tch_rx_str_addr;
+	uint16_t ss_tch_rx_bl_addr;
+	uint16_t key_raw_addr;
+	uint16_t key_filter_addr;
+	uint16_t key_str_addr;
+	uint16_t key_bl_addr;
+	uint16_t frc_raw_addr;
+	uint16_t frc_filter_addr;
+	uint16_t frc_str_addr;
+	uint16_t frc_bl_addr;
+	uint16_t ss_hvr_tx_raw_addr;
+	uint16_t ss_hvr_tx_filter_addr;
+	uint16_t ss_hvr_tx_str_addr;
+	uint16_t ss_hvr_tx_bl_addr;
+	uint16_t ss_hvr_rx_raw_addr;
+	uint16_t ss_hvr_rx_filter_addr;
+	uint16_t ss_hvr_rx_str_addr;
+	uint16_t ss_hvr_rx_bl_addr;
+	uint16_t ss_prx_tx_raw_addr;
+	uint16_t ss_prx_tx_filter_addr;
+	uint16_t ss_prx_tx_str_addr;
+	uint16_t ss_prx_tx_bl_addr;
+	uint16_t ss_prx_rx_raw_addr;
+	uint16_t ss_prx_rx_filter_addr;
+	uint16_t ss_prx_rx_str_addr;
+	uint16_t ss_prx_rx_bl_addr;
+} __packed;
+
+#define ST_TP_SYSTEM_INFO_LEN		0xD0
 
 struct st_tp_host_buffer_heat_map_t {
 	uint8_t frame[ST_TOUCH_FRAME_SIZE];
