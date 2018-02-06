@@ -1,0 +1,67 @@
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+#ifndef __CROS_EC_TOUCHPAD_ST_H
+#define __CROS_EC_TOUCHPAD_ST_H
+
+#define ST_VENDOR_ID		0x0483
+
+#define ST_TP_DUMMY_BYTE	1
+
+#define ST_TP_CMD_READ_ALL_EVENTS		0x87
+#define ST_TP_CMD_WRITE_SCAN_MODE_SELECT	0xA0
+#define ST_TP_CMD_WRITE_FEATURE_SELECT		0xA2
+#define ST_TP_CMD_WRITE_SYSTEM_COMMAND		0xA4
+#define ST_TP_CMD_WRITE_HOST_DATA_MEMORY	0xA6
+#define ST_TP_CMD_READ_HOST_DATA_MEMORY		0xA7
+#define ST_TP_CMD_WRITE_FW_CONFIG		0xA8
+#define ST_TP_CMD_READ_FW_CONFIG		0xA9
+#define ST_TP_CMD_SPI_HOST_BUFFER_ACK		0xC0
+#define ST_TP_CMD_READ_SPI_HOST_BUFFER		0xC1
+
+#define ST_TP_HEAT_MAP_ADDR		0x20
+
+#define ST_HOST_BUFFER_DATA_VALID	(1 << 0)
+#define ST_HOST_BUFFER_MT_READY		(1 << 3)
+#define ST_HOST_BUFFER_SF_READY		(1 << 4)
+#define ST_HOST_BUFFER_SS_READY		(1 << 5)
+
+#define ST_TP_SCAN_MODE_ACTIVE		0x00
+#define ST_TP_SCAN_MODE_LOW_POWER	0x01
+#define ST_TP_SCAN_MODE_TUNING_WIZARD	0x02
+#define ST_TP_SCAN_MODE_LOCKED		0x03
+
+#define ST_TOUCH_ROWS		(18)  /* force len */
+#define ST_TOUCH_COLS		(25)  /* sense len */
+
+#define ST_TOUCH_HEADER_SIZE	32
+
+#define BYTES_PER_PIXEL		2
+/* Number of bits per pixel, this value is decided by experiments. */
+#define BITS_PER_PIXEL		(11)
+
+#define ST_TOUCH_FRAME_SIZE	(ST_TOUCH_ROWS * ST_TOUCH_COLS * BYTES_PER_PIXEL)
+#define ST_TOUCH_FORCE_SIZE	(ST_TOUCH_ROWS * BYTES_PER_PIXEL)
+#define ST_TOUCH_SENSE_SIZE	(ST_TOUCH_COLS * BYTES_PER_PIXEL)
+
+#define ST_TP_MEM_ID_SYSTEM_INFO	0x01
+
+struct st_tp_host_data_header_t {
+#define ST_TP_HEADER_MAGIC	0xA5
+	uint8_t magic;  /* this should always be ST_TP_HEADER_MAGIC */
+	uint8_t host_data_mem_id;
+	uint16_t count;
+} __packed;
+
+struct st_tp_host_buffer_heat_map_t {
+	uint8_t frame[ST_TOUCH_FRAME_SIZE];
+#if 0  /* we are not using these now */
+	uint8_t force[ST_TOUCH_FORCE_SIZE];
+	uint8_t sense[ST_TOUCH_SENSE_SIZE];
+#endif
+} __packed;
+
+#endif /* __CROS_EC_TOUCHPAD_ST_H */
+
