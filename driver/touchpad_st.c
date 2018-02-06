@@ -407,8 +407,13 @@ DECLARE_DEFERRED(st_tp_init);
 #ifdef CONFIG_USB_UPDATE
 int touchpad_get_info(struct touchpad_info *tp)
 {
+	if (st_tp_read_system_info(1))
+		return -1;
+
 	tp->status = EC_RES_SUCCESS;
-	tp->vendor = 0;
+	tp->vendor = ST_VENDOR_ID;
+	tp->st.release_info = system_info.release_info;
+	tp->st.fw_crc = system_info.fw_crc;
 
 	return sizeof(*tp);
 }
