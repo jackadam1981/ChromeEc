@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e767cdaa_b7ea95d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8be67071_270cbbb2",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 19
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2efe0da_85220e17",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de85b2d4_1935c5d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2efe0da_85220e17",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dac22666_1acdc30f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f4b93da_64322eca",
+      "range": {
+        "startLine": 14,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53926de0_ad78b71c",
         "filename": "board/nami/board.c",
         "patchSetId": 3
@@ -85,6 +157,24 @@
       "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e8ab5dd_94353f91",
+        "filename": "board/nami/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53926de0_ad78b71c",
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "e4f9efbf_2e0d5a79",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffc03848_e40c22fe",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df5f938e_b580d0aa",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 3
@@ -131,6 +245,30 @@
       "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0da1d8a5_5800a970",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "OK, got this.",
+      "parentUuid": "df5f938e_b580d0aa",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 3
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "9c1045ca_596f925f",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6953d6a3_b4cc7de9",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 12
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "839a870c_c6f815eb",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 3
@@ -177,6 +339,30 @@
       "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524fcfae_ebe1446d",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "839a870c_c6f815eb",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 3
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "0b1ca8ac_eaa081f3",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb4d44a0_1856d7f1",
+      "range": {
+        "startLine": 56,
+        "startChar": 59,
+        "endLine": 56,
+        "endChar": 64
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d6cfef4_f9f0fbce",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 3
@@ -223,6 +433,30 @@
       "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23abb506_baca0a41",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Changed.",
+      "parentUuid": "2d6cfef4_f9f0fbce",
+      "range": {
+        "startLine": 85,
+        "startChar": 34,
+        "endLine": 85,
+        "endChar": 35
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "22ff31fa_ae4eabee",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f964fb9_470379b7",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 23
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08d9c6d4_21937bc2",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 3
@@ -269,6 +527,30 @@
       "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43892802_34db0eae",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08d9c6d4_21937bc2",
+      "range": {
+        "startLine": 136,
+        "startChar": 62,
+        "endLine": 136,
+        "endChar": 68
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -295,6 +577,30 @@
     },
     {
       "key": {
+        "uuid": "f61689fc_4080cdcd",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4826a458_89e88c9f",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9615fc9_a7d8b18a",
         "filename": "driver/als_cm32181e.h",
         "patchSetId": 3
@@ -315,6 +621,30 @@
       "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b1eb285_c3429345",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9615fc9_a7d8b18a",
+      "range": {
+        "startLine": 5,
+        "startChar": 3,
+        "endLine": 5,
+        "endChar": 5
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -341,6 +671,30 @@
     },
     {
       "key": {
+        "uuid": "3a1764a7_1fb6f36c",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cefffcc_abb363a3",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a01d5e9d_3bdc457c",
         "filename": "driver/als_cm32181e.h",
         "patchSetId": 3
@@ -361,6 +715,30 @@
       "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e0c52d4_8266650e",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a01d5e9d_3bdc457c",
+      "range": {
+        "startLine": 19,
+        "startChar": 30,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -387,6 +765,30 @@
     },
     {
       "key": {
+        "uuid": "9d61bf94_7d419bd2",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "I believe this is a right one. \nSee the way this macro being used. \nFor example, in als_cm32181e.c:\nstatic int cm32181e_read_lux(const struct motion_sensor_t *s, vector_3_t v)\n{\n\tstruct cm32181e_drv_data *drv_data \u003d CM32181E_GET_DATA(s);\n...etc.\n}\nWe need to assign data (as cm32181e_drv_data type) to drv_data from s(as motion_sensor_t).\nThat is to say, we need to appoint a specific member,like s-\u003edrv_data.\nSo, I suggest keeping this sentence.",
+      "parentUuid": "549ac8b9_78639eeb",
+      "range": {
+        "startLine": 26,
+        "startChar": 67,
+        "endLine": 26,
+        "endChar": 75
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5191a837_944b8ba0",
         "filename": "driver/als_cm32181e.h",
         "patchSetId": 3
@@ -398,6 +800,30 @@
       "writtenOn": "2018-01-30T17:49:27Z",
       "side": 1,
       "message": "nit: please remove \u0027_t\u0027",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "67fa2fbd6f10552e8df70b3b7f891208a012a03a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a438dd7c_73642e41",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-06T14:38:59Z",
+      "side": 1,
+      "message": "It should be a common code style, right?\nI checked with other project, and they all named xxx_drv_data_t.\nI am guessing, xxx should be the device name, _drv means it is a driver, \n_data means data, but I can\u0027t get the meaning of _t.\nWhat do the _t mean?",
+      "parentUuid": "5191a837_944b8ba0",
       "range": {
         "startLine": 28,
         "startChar": 24,
