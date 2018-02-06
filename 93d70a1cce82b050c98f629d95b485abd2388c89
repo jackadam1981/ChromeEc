@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "87271d2d_f23ca17a",
+        "filename": "common/cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-06T19:00:44Z",
+      "side": 1,
+      "message": "After updating ectool, you need to do\n\n  # ectool cbi set 1 1 2\n\n\u00272\u0027 is to make EC initialize EEPROM. Then, you can read it back for convirmation:\n\n  # ectool cbi get 1 1\n\n\u00271\u0027 is to make EC discard cache and reload contents from EEPROM.",
+      "parentUuid": "4cab59d9_e0cf879f",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "93d70a1cce82b050c98f629d95b485abd2388c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "638fa5f6_65c57b17",
         "filename": "common/cbi.c",
         "patchSetId": 8
