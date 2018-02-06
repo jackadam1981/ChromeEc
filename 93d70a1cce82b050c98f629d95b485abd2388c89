@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7f36c51b_cde12abf",
+        "filename": "common/cbi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-02-06T01:41:02Z",
+      "side": 1,
+      "message": "check wpsw_cur is 0,\nexecuting `ectool cbi set 1 1` on a non preflashed EEPROM machine and got\n\nEC result 1 (INVALID_COMMAND)\nError code: -1001\n\nIs this expected result ?",
+      "parentUuid": "2dc9653b_8ebd5927",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 0
+      },
+      "revId": "93d70a1cce82b050c98f629d95b485abd2388c89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "638fa5f6_65c57b17",
         "filename": "common/cbi.c",
         "patchSetId": 8
