@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "843fcbe2_72021ab8",
+        "filename": "chip/npcx/apm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "It was changed to be “UNSUPPORTED”, you\u0027ll see that in the next version.",
+      "parentUuid": "22942710_69cef1d7",
+      "range": {
+        "startLine": 189,
+        "startChar": 27,
+        "endLine": 189,
+        "endChar": 32
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf224870_e6f05fc9",
         "filename": "chip/npcx/apm.c",
         "patchSetId": 2
@@ -88,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "7802073f_fa0ae10b",
+        "filename": "chip/npcx/apm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Code deleted, you\u0027ll see that in the next version.",
+      "parentUuid": "cf224870_e6f05fc9",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 5
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82a3baed_16d48c93",
         "filename": "chip/npcx/apm.c",
         "patchSetId": 2
@@ -99,6 +147,30 @@
       "writtenOn": "2018-02-02T18:17:59Z",
       "side": 1,
       "message": "For a function with this many parameters, it may be more readable to put them in a struct apm_auto_gain_config and pass a pointer to the struct.\n\nThat way the struct can be initialized like\n\nstruct apm auto_gain_config cfg \u003d {\n    .agc_target \u003d 3,\n    .nois_gate_en \u003d 1,\n...\n};",
+      "range": {
+        "startLine": 525,
+        "startChar": 1,
+        "endLine": 534,
+        "endChar": 72
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4852cb86_0a9650b5",
+        "filename": "chip/npcx/apm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Code changed as you asked for, you\u0027ll see that in the next version.",
+      "parentUuid": "82a3baed_16d48c93",
       "range": {
         "startLine": 525,
         "startChar": 1,
@@ -157,6 +229,30 @@
     },
     {
       "key": {
+        "uuid": "379cb2d1_196c9009",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Done, you\u0027ll see that in the next version.",
+      "parentUuid": "59e97e9f_d0e67f7e",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2e415ac_8cbd2349",
         "filename": "chip/npcx/wov.c",
         "patchSetId": 2
@@ -168,6 +264,30 @@
       "writtenOn": "2018-02-02T18:17:59Z",
       "side": 1,
       "message": "Nit: \"buf\" is more typical",
+      "range": {
+        "startLine": 185,
+        "startChar": 17,
+        "endLine": 185,
+        "endChar": 21
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39fa24ef_a9e3a9dc",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Done, you\u0027ll see that in the next version.",
+      "parentUuid": "b2e415ac_8cbd2349",
       "range": {
         "startLine": 185,
         "startChar": 17,
@@ -203,6 +323,30 @@
     },
     {
       "key": {
+        "uuid": "a538af1d_66c3d387",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "This buffer is not needed any more and it was deleted from the code, you\u0027ll see that in the next version.",
+      "parentUuid": "d0a2fa6b_77223b79",
+      "range": {
+        "startLine": 195,
+        "startChar": 28,
+        "endLine": 195,
+        "endChar": 33
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88252b28_6f79c970",
         "filename": "chip/npcx/wov.c",
         "patchSetId": 2
@@ -214,6 +358,30 @@
       "writtenOn": "2018-02-02T18:17:59Z",
       "side": 1,
       "message": "A comment describing this would be useful.\n\nLooks like it\u0027s scanning through the possible dividers looking for a set that matches constraints...",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 2
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6490a39_66b607c0",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Please see in the next comment below.",
+      "parentUuid": "88252b28_6f79c970",
       "range": {
         "startLine": 229,
         "startChar": 0,
@@ -249,6 +417,30 @@
     },
     {
       "key": {
+        "uuid": "14b44195_f0047257",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Relevant explanation added to the functions. \n\nRun time indeed may be a bit long, the only way to minimize it is to maintain tables instead to activate the algorithm. In order to do that there is a need to minimize the needed sample frequency, frame length etc, otherwise the table size will be huge.",
+      "parentUuid": "40ff8886_3e62c652",
+      "range": {
+        "startLine": 289,
+        "startChar": 8,
+        "endLine": 289,
+        "endChar": 26
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d49c2b6_f1bef316",
         "filename": "chip/npcx/wov.c",
         "patchSetId": 2
@@ -260,6 +452,30 @@
       "writtenOn": "2018-02-02T18:17:59Z",
       "side": 1,
       "message": "Is this number special, or just an arbitrary \"long enough\"?",
+      "range": {
+        "startLine": 316,
+        "startChar": 14,
+        "endLine": 316,
+        "endChar": 20
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de220651_103da404",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "It is just an arbitrary \"long enough\" number.",
+      "parentUuid": "9d49c2b6_f1bef316",
       "range": {
         "startLine": 316,
         "startChar": 14,
@@ -295,6 +511,30 @@
     },
     {
       "key": {
+        "uuid": "b6940c0f_2a4cd120",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Done, you\u0027ll see that in the next version.",
+      "parentUuid": "7ad923b3_42dee8a0",
+      "range": {
+        "startLine": 334,
+        "startChar": 19,
+        "endLine": 334,
+        "endChar": 25
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1ab18ec_343765ff",
         "filename": "chip/npcx/wov.c",
         "patchSetId": 2
@@ -318,6 +558,30 @@
     },
     {
       "key": {
+        "uuid": "5189271f_9cde86a7",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Done, you\u0027ll see that in the next version.",
+      "parentUuid": "f1ab18ec_343765ff",
+      "range": {
+        "startLine": 548,
+        "startChar": 2,
+        "endLine": 555,
+        "endChar": 33
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb623ad9_15e6f443",
         "filename": "chip/npcx/wov.c",
         "patchSetId": 2
@@ -329,6 +593,30 @@
       "writtenOn": "2018-02-02T18:17:59Z",
       "side": 1,
       "message": "If the functions / variables above this are local to this file, suggest making them static.",
+      "range": {
+        "startLine": 753,
+        "startChar": 3,
+        "endLine": 753,
+        "endChar": 21
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50fb428e_ee8c9d80",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 753,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Done, you\u0027ll see that in the next version.",
+      "parentUuid": "cb623ad9_15e6f443",
       "range": {
         "startLine": 753,
         "startChar": 3,
@@ -387,6 +675,30 @@
     },
     {
       "key": {
+        "uuid": "2c14bc9d_786716d8",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Done, you\u0027ll see that in the next version.",
+      "parentUuid": "60318e61_aec4cf8c",
+      "range": {
+        "startLine": 830,
+        "startChar": 1,
+        "endLine": 830,
+        "endChar": 32
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17b88c6e_be1f12ce",
         "filename": "chip/npcx/wov.c",
         "patchSetId": 2
@@ -398,6 +710,30 @@
       "writtenOn": "2018-02-02T18:17:59Z",
       "side": 1,
       "message": "typo: correctness",
+      "range": {
+        "startLine": 1258,
+        "startChar": 25,
+        "endLine": 1258,
+        "endChar": 35
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d97b966_b1a365d2",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Done, you\u0027ll see that in the next version.",
+      "parentUuid": "17b88c6e_be1f12ce",
       "range": {
         "startLine": 1258,
         "startChar": 25,
@@ -433,6 +769,30 @@
     },
     {
       "key": {
+        "uuid": "d4437950_d3346be5",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "Done, you\u0027ll see that in the next version.",
+      "parentUuid": "b95a3fd1_4cdf6ffe",
+      "range": {
+        "startLine": 1389,
+        "startChar": 0,
+        "endLine": 1394,
+        "endChar": 46
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80610736_5001b216",
         "filename": "chip/npcx/wov.c",
         "patchSetId": 2
@@ -444,6 +804,30 @@
       "writtenOn": "2018-02-02T18:17:59Z",
       "side": 1,
       "message": "UPDATE_BIT(NPCX_APM_CR_ADC, NPCX_APM_CR_ADC_ADC_SOFT_MUTE);\n\n(elsewhere, too)",
+      "range": {
+        "startLine": 1474,
+        "startChar": 1,
+        "endLine": 1477,
+        "endChar": 60
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb3e6683_d0824364",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1477,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "For some unknown reason I had an issue with UPDATE_BIT macro in my system, this is the reason I used the SET/CLEAR_BIT.\nAs for the point of view of performance it is the same, I prefer it remain as it is.",
+      "parentUuid": "80610736_5001b216",
       "range": {
         "startLine": 1474,
         "startChar": 1,
@@ -479,6 +863,30 @@
     },
     {
       "key": {
+        "uuid": "1f214ff9_294d7a32",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1544,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "In the “Google WoV API” document it says “Possible values are from 0 to -22.5 dBFS in steps of -1.5” , this is the reason I didn’t round it. \nIf you want it to be round, there is a need to update the document.",
+      "parentUuid": "da160815_3d68ebc9",
+      "range": {
+        "startLine": 1539,
+        "startChar": 1,
+        "endLine": 1544,
+        "endChar": 24
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29dc382d_a363360a",
         "filename": "chip/npcx/wov.c",
         "patchSetId": 2
@@ -502,6 +910,30 @@
     },
     {
       "key": {
+        "uuid": "a87ee5a0_777f347c",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1562,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "There is an issue in this code and it is already fixed, you\u0027ll see it in the next version.\n\nThe fix is below:\n\n\tfor (attack_time_code \u003d 0; attack_time_code \u003c\u003d 0x0F;\n\t     attack_time_code++) {\n\t\tif (((attack_time_code+1)*32) \u003d\u003d attack_time)\n\t\t\tbreak;\n\t}\n\tif (attack_time_code \u003e 0x0F)\n\t\treturn EC_ERROR_INVAL;",
+      "parentUuid": "29dc382d_a363360a",
+      "range": {
+        "startLine": 1556,
+        "startChar": 1,
+        "endLine": 1562,
+        "endChar": 24
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffa1df0f_7db02882",
         "filename": "chip/npcx/wov.c",
         "patchSetId": 2
@@ -513,6 +945,30 @@
       "writtenOn": "2018-02-02T18:17:59Z",
       "side": 1,
       "message": "Should this return error?  Seems like this will silently fail with invalid input",
+      "range": {
+        "startLine": 1694,
+        "startChar": 2,
+        "endLine": 1694,
+        "endChar": 8
+      },
+      "revId": "f2ea91ab672f917375ac59ab964cf8373dd7e15d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca88f930_bb39aacd",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1694,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-02-06T06:43:28Z",
+      "side": 1,
+      "message": "In the API document it says wov_set_i2s_tdm_config should be void and return nothing. \nAnyway I changed it to return EC error code. You\u0027ll see it in the next version.",
+      "parentUuid": "ffa1df0f_7db02882",
       "range": {
         "startLine": 1694,
         "startChar": 2,
