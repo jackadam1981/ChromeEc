@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62989b39_cdc2a28d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-06T16:35:25Z",
+      "side": 1,
+      "message": "I posted a question on the bug. Do we need to get this part approved?",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ccfd46f_0e451687",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-06T16:35:25Z",
+      "side": 1,
+      "message": "nit: This can be: CM32181E_GET_DATA(s)-\u003erate \u003d rate;",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a99fcd2_36ad7ac5",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-06T16:35:25Z",
+      "side": 1,
+      "message": "Please remove spaces and join the lines.",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca4042b_a092dd31",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-06T16:35:25Z",
+      "side": 1,
+      "message": "Why is this not *offset \u003d CM32181E_GET_DATA(s)-\u003eoffset?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73c44568_f58177e1",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-06T16:35:25Z",
+      "side": 1,
+      "message": "cm32181e_set_range is empty. What\u0027s the intention?",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a409de96_fa4b4d89",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-06T16:35:25Z",
+      "side": 1,
+      "message": "nit: please use tabs for consistency.",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea560e13_c6345720",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-06T16:35:25Z",
+      "side": 1,
+      "message": "Can we put this in als_cm32181e.c?",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
