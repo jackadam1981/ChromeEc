@@ -681,7 +681,14 @@ void system_pre_init(void)
 #endif
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_4) = 0xF4; /* Skip ITIM2/1_PD */
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_5) = 0xF8;
-	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_6) = 0xF5; /* Skip ITIM5_PD */
+
+#ifdef CONFIG_ESPI
+	/* eSPI_PD!!! */
+	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_6) = 0x75; /* Skip ITIM5_PD */
+#else
+%%%	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_6) = 0xF5; /* Skip ITIM5_PD */
+#endif
+
 #if defined(CHIP_FAMILY_NPCX7)
 	NPCX_PWDWN_CTL(NPCX_PMC_PWDWN_7) = 0x07;
 #endif
