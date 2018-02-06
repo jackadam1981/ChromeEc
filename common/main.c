@@ -92,7 +92,8 @@ test_mockable __keep int main(void)
 #endif
 
 	/* Set the CPU clocks / PLLs.  System is now running at full speed. */
-	clock_init();
+	if (!system_jumped_to_this_image())
+		clock_init();
 
 	/*
 	 * Initialize timer.  Everything after this can be benchmarked.

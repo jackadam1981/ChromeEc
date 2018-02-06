@@ -60,8 +60,8 @@
 static struct	host_packet lpc_packet;
 static struct	host_cmd_handler_args host_cmd_args;
 static uint8_t	host_cmd_flags;         /* Flags from host command */
-static uint8_t	shm_mem_host_cmd[256] __aligned(8);
-static uint8_t	shm_memmap[256] __aligned(8);
+static uint8_t	shm_mem_host_cmd[256] __aligned(256);
+static uint8_t	shm_memmap[256] __aligned(256);
 /* Params must be 32-bit aligned */
 static uint8_t params_copy[EC_LPC_HOST_PACKET_SIZE] __aligned(4);
 static int init_done;
