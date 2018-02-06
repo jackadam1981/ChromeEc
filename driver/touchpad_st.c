@@ -29,6 +29,7 @@
 
 #define SPI (&(spi_devices[SPI_ST_TP_DEVICE_ID]))
 
+struct st_tp_system_info_t system_info;
 
 struct packet_header_t {
 	uint8_t index;
@@ -64,6 +65,7 @@ static struct st_tp_usb_packet_t usb_packet[2]; /* double buffering */
 
 static int st_tp_read_frame(void);
 static int st_tp_send_ack(void);
+static int get_heat_map_addr(void) __attribute__((pure));
 
 static int debug_mode = 0;
 
@@ -77,6 +79,16 @@ static struct {
 		struct st_tp_host_data_header_t header;
 	} /* anonymous */;
 } __packed rx_buf;
+
+static int get_heat_map_addr(void)
+{
+	switch (system_info.release_info) {
+		case 0x1:
+			return 0x20;
+		default:
+			return -1; /* Unknown version */
+	}
+}
 
 static void print_frame(void)
 {
@@ -149,6 +161,8 @@ static int st_tp_read_frame(void)
 	int ret = EC_SUCCESS;
 	int rx_len = sizeof(*heat_map) + ST_TP_DUMMY_BYTE;
 
+	if (get_heat_map_addr() < 0)
+		goto failed;
 	/*
 	 * theoretically, we should read host buffer header to check if data is
 	 * valid, but the data should always be ready when interrupt pin is low.
@@ -156,7 +170,7 @@ static int st_tp_read_frame(void)
 	 */
 	ret = st_tp_command_response(
 			ST_TP_CMD_READ_SPI_HOST_BUFFER,
-			ST_TP_HEAT_MAP_ADDR,
+			get_heat_map_addr(),
 			&rx_buf,
 			rx_len);
 	if (ret == EC_SUCCESS) {
@@ -179,6 +193,7 @@ static int st_tp_read_frame(void)
 		}
 #endif
 	}
+failed:
 	return ret;
 }
 
@@ -247,26 +262,111 @@ static int st_tp_load_host_data(uint8_t mem_id)
 
 static int st_tp_read_system_info(int load)
 {
-	int ret;
-	uint8_t _rx_buf[8 + 1];
-	uint8_t *rx_buf = _rx_buf + 1;  /* 1 dummy byte */
+	int ret, size;
+	int rx_len = ST_TP_DUMMY_BYTE + ST_TP_SYSTEM_INFO_LEN;
+	uint8_t *ptr = rx_buf.bytes;
 
 	if (load)
 		st_tp_load_host_data(ST_TP_MEM_ID_SYSTEM_INFO);
 	ret = st_tp_command_response(ST_TP_CMD_READ_HOST_DATA_MEMORY, 0x0000,
-				     _rx_buf, 4 + 1);
-	CPRINTS("header: %02x %02x %02x %02x",
-		rx_buf[0], rx_buf[1], rx_buf[2], rx_buf[3]);
-	ret = st_tp_command_response(ST_TP_CMD_READ_HOST_DATA_MEMORY, 0x0008,
-				     _rx_buf, sizeof(_rx_buf));
-	CPRINTS("chip0: %02x %02x %02x %02x",
-		rx_buf[0], rx_buf[1], rx_buf[2], rx_buf[3]);
-	CPRINTS("chip1: %02x %02x %02x %02x",
-		rx_buf[4], rx_buf[5], rx_buf[6], rx_buf[7]);
-	ret = st_tp_command_response(ST_TP_CMD_READ_FW_CONFIG, 0x0030,
-				     _rx_buf, 3);
-	CPRINTS("sense len: %02x %02x ", rx_buf[0], rx_buf[1]);
+				     &rx_buf, rx_len);
+	if (ret)
+		return ret;
 
+	/* Parse the content */
+	size = sizeof(system_info.header)
+		+ sizeof(system_info.api_ver_rev)
+		+ sizeof(system_info.api_ver_minor)
+		+ sizeof(system_info.api_ver_major)
+		+ sizeof(system_info.chip0_ver)
+		+ sizeof(system_info.chip0_id)
+		+ sizeof(system_info.chip1_ver)
+		+ sizeof(system_info.chip1_id)
+		+ sizeof(system_info.fw_ver)
+		+ sizeof(system_info.svn_rev)
+		+ sizeof(system_info.cfg_ver)
+		+ sizeof(system_info.cfg_project_id)
+		+ sizeof(system_info.cx_ver)
+		+ sizeof(system_info.cx_project_id)
+		+ sizeof(system_info.cfg_afe_ver)
+		+ sizeof(system_info.cx_afe_ver)
+		+ sizeof(system_info.panel_cfg_afe_ver)
+		+ sizeof(system_info.protocol)
+		+ sizeof(system_info.die_id)
+		+ sizeof(system_info.release_info)
+		+ sizeof(system_info.fw_crc)
+		+ sizeof(system_info.cfg_crc);
+	memcpy(&system_info, ptr, size);
+
+	/* Check header */
+	if (system_info.header.magic != ST_TP_HEADER_MAGIC ||
+	    system_info.header.host_data_mem_id != ST_TP_MEM_ID_SYSTEM_INFO)
+		return EC_ERROR_UNKNOWN;
+
+	ptr += size;
+	ptr += 16;
+
+	size = sizeof(system_info.scr_res_x)
+		+ sizeof(system_info.scr_res_y)
+		+ sizeof(system_info.scr_tx_len)
+		+ sizeof(system_info.scr_rx_len)
+		+ sizeof(system_info.key_len)
+		+ sizeof(system_info.frc_len);
+	memcpy(&system_info.scr_res_x, ptr, size);
+	ptr += size;
+	ptr += 40;
+
+	size = sizeof(system_info.dbg_frame_addr);
+	memcpy(&system_info.dbg_frame_addr, ptr, size);
+	ptr += size;
+	ptr += 6;
+
+	size = sizeof(system_info.ms_scr_raw_addr)
+		+ sizeof(system_info.ms_scr_filter_addr)
+		+ sizeof(system_info.ms_scr_str_addr)
+		+ sizeof(system_info.ms_scr_bl_addr)
+		+ sizeof(system_info.ss_tch_tx_raw_addr)
+		+ sizeof(system_info.ss_tch_tx_filter_addr)
+		+ sizeof(system_info.ss_tch_tx_str_addr)
+		+ sizeof(system_info.ss_tch_tx_bl_addr)
+		+ sizeof(system_info.ss_tch_rx_raw_addr)
+		+ sizeof(system_info.ss_tch_rx_filter_addr)
+		+ sizeof(system_info.ss_tch_rx_str_addr)
+		+ sizeof(system_info.ss_tch_rx_bl_addr)
+		+ sizeof(system_info.key_raw_addr)
+		+ sizeof(system_info.key_filter_addr)
+		+ sizeof(system_info.key_str_addr)
+		+ sizeof(system_info.key_bl_addr)
+		+ sizeof(system_info.frc_raw_addr)
+		+ sizeof(system_info.frc_filter_addr)
+		+ sizeof(system_info.frc_str_addr)
+		+ sizeof(system_info.frc_bl_addr)
+		+ sizeof(system_info.ss_hvr_tx_raw_addr)
+		+ sizeof(system_info.ss_hvr_tx_filter_addr)
+		+ sizeof(system_info.ss_hvr_tx_str_addr)
+		+ sizeof(system_info.ss_hvr_tx_bl_addr)
+		+ sizeof(system_info.ss_hvr_rx_raw_addr)
+		+ sizeof(system_info.ss_hvr_rx_filter_addr)
+		+ sizeof(system_info.ss_hvr_rx_str_addr)
+		+ sizeof(system_info.ss_hvr_rx_bl_addr)
+		+ sizeof(system_info.ss_prx_tx_raw_addr)
+		+ sizeof(system_info.ss_prx_tx_filter_addr)
+		+ sizeof(system_info.ss_prx_tx_str_addr)
+		+ sizeof(system_info.ss_prx_tx_bl_addr)
+		+ sizeof(system_info.ss_prx_rx_raw_addr)
+		+ sizeof(system_info.ss_prx_rx_filter_addr)
+		+ sizeof(system_info.ss_prx_rx_str_addr)
+		+ sizeof(system_info.ss_prx_rx_bl_addr);
+	memcpy(&system_info.ms_scr_raw_addr, ptr, size);
+	ptr += size;
+
+#define ST_TP_SHOW(attr) CPRINTS(#attr ": %04x", system_info.attr)
+	ST_TP_SHOW(chip0_id);
+	ST_TP_SHOW(chip0_ver);
+	ST_TP_SHOW(scr_tx_len);
+	ST_TP_SHOW(scr_rx_len);
+	ST_TP_SHOW(release_info);
+#undef SHOW
 	return ret;
 }
 
