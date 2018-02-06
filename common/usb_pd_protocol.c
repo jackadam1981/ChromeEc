@@ -1853,13 +1853,21 @@ static int pd_is_power_swapping(int port)
 static void pd_partner_port_reset(int port)
 {
 	uint64_t timeout;
+	int explicit_contract_in_place = pd_get_saved_active(port);
 
 	/*
-	 * Check our battery-backed previous port state. If PD comms were
-	 * active, and we didn't just lose power, make sure we
-	 * don't boot into RO with a pre-existing power contract.
+	 * If an explicit contract is in place and PD communications are
+	 * allowed, don't apply Rp.  We'll issue a SoftReset later on and
+	 * renegotiate our contract.
 	 */
-	if (!pd_get_saved_active(port) ||
+	if (explicit_contract_in_place && pd_comm_is_enabled(port))
+		return;
+
+	/*
+	 * If an explicit contract is in place, and we didn't just lose power,
+	 * make sure we don't boot into RO with that contract.
+	 */
+	if (!explicit_contract_in_place ||
 	   system_get_image_copy() != SYSTEM_IMAGE_RO ||
 	   system_get_reset_flags() &
 	   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))
