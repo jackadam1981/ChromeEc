@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f30a934e_0943ea31",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-06T22:42:55Z",
+      "side": 1,
+      "message": "With this approach, do we still need forcing_coldreset, chipset_force_g3, chipset_do_shutdown, etc. for apollolake? These all look like a workaround to me. \n\nSkylake boards don\u0027t have this workaround. Why are these needed for Apollolake?",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 39
+      },
+      "revId": "23598a7a24822f9ea2a67b9b114f6abbcf65a5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "093d1c22_686787ef",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-06T22:42:55Z",
+      "side": 1,
+      "message": "nit: please do else { ... }.",
+      "revId": "23598a7a24822f9ea2a67b9b114f6abbcf65a5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
