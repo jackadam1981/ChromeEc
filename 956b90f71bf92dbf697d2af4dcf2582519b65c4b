@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cde12a0_d6afe5d8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1152,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-07T01:19:38Z",
+      "side": 0,
+      "message": "Removed this since the contract isn\u0027t really active until we get the accept message. This also follows the original commit here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/802248/5/common/usb_pd_protocol.c#b1121",
+      "revId": "956b90f71bf92dbf697d2af4dcf2582519b65c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
