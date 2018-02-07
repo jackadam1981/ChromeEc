@@ -2673,6 +2673,12 @@
  */
 #undef CONFIG_USB_PD_5V_EN_ACTIVE_LOW
 
+/*
+ * Switch VBUS source directly by charger instead of
+ * external switch.
+ */
+#undef CONFIG_USB_PD_5V_CHARGER_CTRL
+
 /* Dynamic USB PD source capability */
 #undef CONFIG_USB_PD_DYNAMIC_SRC_CAP
 

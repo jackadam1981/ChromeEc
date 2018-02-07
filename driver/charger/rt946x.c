@@ -387,6 +387,14 @@ int charger_enable_otg_power(int enabled)
 	return (enabled ? rt946x_set_bit : rt946x_clr_bit)
 		(RT946X_REG_CHGCTRL1, RT946X_MASK_OPA_MODE);
 }
+
+int charger_is_sourcing_otg_power(int port)
+{
+	int val = 0;
+
+	return rt946x_read8(RT946X_REG_CHGCTRL1, &val) ?
+		0 : !!(val & RT946X_MASK_OPA_MODE);
+}
 #endif
 
 int charger_set_input_current(int input_current)
