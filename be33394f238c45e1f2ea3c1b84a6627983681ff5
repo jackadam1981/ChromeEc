@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7bdd410_0303dfc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T13:06:44Z",
+      "side": 1,
+      "message": "nit: IMO, GMR is a very obfuscated TLA for magnet",
+      "range": {
+        "startLine": 7,
+        "startChar": 59,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5676a8c9_302aab37",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T13:06:44Z",
+      "side": 1,
+      "message": "I was going to ask you where you were connecting the USB in the RO firmware,\nbut now I realize that CONFIG_USB_INHIBIT_CONNECT seems to be defined only for SECTION_IS_RW (it starts to be subtle).\nThen when you jump from RO to RW, is the connection really in the state you think ? it connects then disconnects ?\nI imagine it\u0027s kind of unlikely since the product might be closed.",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 59
+      },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5929ca5_1f2d47e4",
+        "filename": "board/hammer/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T13:06:44Z",
+      "side": 1,
+      "message": "isn\u0027t this useless ?\nGPIO_INT_ normally includes GPIO_INPUT",
+      "range": {
+        "startLine": 14,
+        "startChar": 31,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
