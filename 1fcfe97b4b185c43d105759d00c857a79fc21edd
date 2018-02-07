@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a362029_962e83d1",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-07T17:19:26Z",
+      "side": 1,
+      "message": "Please make it static. Thanks,",
+      "range": {
+        "startLine": 425,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 1
+      },
+      "revId": "1fcfe97b4b185c43d105759d00c857a79fc21edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a78339_f3d7c728",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-07T17:19:26Z",
+      "side": 1,
+      "message": "Do we even need to call this function when CONFIG_SUPPORT_HIB isn\u0027t defined?",
+      "range": {
+        "startLine": 425,
+        "startChar": 5,
+        "endLine": 425,
+        "endChar": 49
+      },
+      "revId": "1fcfe97b4b185c43d105759d00c857a79fc21edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e2b9ef6_437fe0ed",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1654,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-07T17:19:26Z",
+      "side": 1,
+      "message": "Could you name it CONFIG_SUPPORT_CHIP_HIBERNATION or something similar to make it clear this is for controling CHIP hibernation feature?",
+      "range": {
+        "startLine": 1654,
+        "startChar": 8,
+        "endLine": 1654,
+        "endChar": 26
+      },
+      "revId": "1fcfe97b4b185c43d105759d00c857a79fc21edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
