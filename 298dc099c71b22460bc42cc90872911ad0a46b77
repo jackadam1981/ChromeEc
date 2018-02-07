@@ -22,6 +22,30 @@
       "revId": "298dc099c71b22460bc42cc90872911ad0a46b77",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d89096a_e8c82d3d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-07T14:29:42Z",
+      "side": 1,
+      "message": "I like this better too",
+      "parentUuid": "9c559a93_94bf586d",
+      "range": {
+        "startLine": 815,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 42
+      },
+      "revId": "298dc099c71b22460bc42cc90872911ad0a46b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
