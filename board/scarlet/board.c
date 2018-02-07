@@ -233,6 +233,9 @@ static void board_init(void)
 	/* Enable TCPC alert interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_L);
 
+	/* Enable TCPC alert interrupts */
+	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
+
 	/* Enable reboot / shutdown control inputs from AP */
 	gpio_enable_interrupt(GPIO_WARM_RESET_REQ);
 	gpio_enable_interrupt(GPIO_AP_OVERTEMP);
@@ -448,4 +451,9 @@ int tablet_get_mode(void)
 {
 	/* Always in tablet mode */
 	return 1;
+}
+
+void usb_charger_set_switches(int port, enum usb_switch setting)
+{
+	/* TODO(philipchen): Implement the virtual switch */
 }
