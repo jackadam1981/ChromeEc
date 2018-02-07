@@ -22,6 +22,30 @@
       "revId": "1a3bbab9a84d9bd8c6b13554208f375e741f293d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa2c1503_f4ee8992",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-07T18:33:12Z",
+      "side": 1,
+      "message": "we should not be mixing up pre-mp and prod images on the same device. Also, is you have two prod signed images with the same version number programmed in the H1, the B is always guaranteed to run, because they have the same version number and both have header timestamp set to zero.\n\nThat is even if you program .prod on an H1 running .pre-pvt, the .prod is not guaranteed to run if it is of the same version number.",
+      "parentUuid": "5e58a123_b34e232d",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "1a3bbab9a84d9bd8c6b13554208f375e741f293d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
