@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "045377e0_707c067d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T13:22:26Z",
+      "side": 1,
+      "message": "isn\u0027t this broken when you jump with your power/data roles reversed (e.g. connected to a dock), aren\u0027t going to send the SoftReset with the wrong role bit set ?",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 70
+      },
+      "revId": "934b1636ada47caa848d279543bb629cb37e6dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
