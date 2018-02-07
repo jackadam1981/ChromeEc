@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "a39fc76c_dd2d6cd3",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-07T17:10:48Z",
+      "side": 1,
+      "message": "Could you add a comment and explain why this has to be zero? Is it for the same reason that cm32181e_set_offset is empty?",
+      "parentUuid": "344d8293_e1808eb8",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73c44568_f58177e1",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 4
