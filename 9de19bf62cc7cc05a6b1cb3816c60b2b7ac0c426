@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5a71330a_e262e14f",
+        "filename": "common/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-07T06:22:56Z",
+      "side": 1,
+      "message": "Only if (*host_get_memmap(EC_MEMMAP_BATT_INDEX) !\u003d index), we want to make sure the info is updated on init.\n\nI should probably add some INVALID index to the enum.",
+      "parentUuid": "5703c0b7_9b4eeb3b",
+      "range": {
+        "startLine": 548,
+        "startChar": 2,
+        "endLine": 548,
+        "endChar": 45
+      },
+      "revId": "9de19bf62cc7cc05a6b1cb3816c60b2b7ac0c426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "000ade1a_bce37f16",
         "filename": "common/battery.c",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "9de19bf62cc7cc05a6b1cb3816c60b2b7ac0c426",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c08e2dd1_60a10c9b",
+        "filename": "common/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-07T06:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "000ade1a_bce37f16",
+      "range": {
+        "startLine": 552,
+        "startChar": 26,
+        "endLine": 552,
+        "endChar": 27
+      },
+      "revId": "9de19bf62cc7cc05a6b1cb3816c60b2b7ac0c426",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
