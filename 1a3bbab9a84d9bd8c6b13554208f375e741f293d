@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e58a123_b34e232d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-07T18:28:19Z",
+      "side": 1,
+      "message": "Generally I think we should do this, but if we want to update the lab devices to the mp image we could now, by just running gsctool cr50.prod. Because the mp image was built later than the prepvt one it will run. If we increase the prepvt version we can\u0027t do this. \n\nDid we abandon the plan to update lab devices to .prod once it is released?",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "1a3bbab9a84d9bd8c6b13554208f375e741f293d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
