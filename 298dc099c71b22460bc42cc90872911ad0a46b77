@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c559a93_94bf586d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-07T05:08:24Z",
+      "side": 1,
+      "message": "Instead of guarding this with CONFIG_USB_PD_PORT_COUNT, can we just do:\n\nstatic int pd_get_bbram_idx(int port)\n{\n  switch (port) {\n     case 2:\n           return SYSTEM_BBRAM_IDX_PD2;\n     case 1:\n           return SYSTEM_BBRAM_IDX_PD1;\n     case 0:\n           return SYSTEM_BBRAM_IDX_PD0;\n     default:\n           return -1;\n  }\n}\n\nstatic int pd_set_saved_active(int port)\n{\n    if (system_get_bbram(pd_get_bbram_idx(port, \u0026val)) {\n        ...\n    }\n    ...\n}\n\nstatic void pd_set_saved_active(int port, int val)\n{\n    if (system_set_bbram(pd_get_bbram_idx(port), val)) {\n       ...\n     }\n    ...\n}",
+      "range": {
+        "startLine": 815,
+        "startChar": 0,
+        "endLine": 822,
+        "endChar": 42
+      },
+      "revId": "298dc099c71b22460bc42cc90872911ad0a46b77",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
