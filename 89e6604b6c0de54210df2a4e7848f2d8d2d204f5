@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0ab0681_f125b5ac",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1860,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-07T22:57:27Z",
+      "side": 1,
+      "message": "what signals/starts this soft reset later?",
+      "range": {
+        "startLine": 1860,
+        "startChar": 44,
+        "endLine": 1860,
+        "endChar": 53
+      },
+      "revId": "89e6604b6c0de54210df2a4e7848f2d8d2d204f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b34885_f815913a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-07T22:57:27Z",
+      "side": 1,
+      "message": "can you add in your comment that this condition only applies to unlocked RO images (with a PD contract)?",
+      "range": {
+        "startLine": 1863,
+        "startChar": 35,
+        "endLine": 1863,
+        "endChar": 53
+      },
+      "revId": "89e6604b6c0de54210df2a4e7848f2d8d2d204f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
