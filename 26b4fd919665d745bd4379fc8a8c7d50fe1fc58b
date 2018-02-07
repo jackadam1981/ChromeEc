@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ca2ad15_99682eb1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T11:20:57Z",
+      "side": 1,
+      "message": "typo ? stuffed ?",
+      "range": {
+        "startLine": 18,
+        "startChar": 58,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "26b4fd919665d745bd4379fc8a8c7d50fe1fc58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34197372_fbc7b683",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T11:20:57Z",
+      "side": 1,
+      "message": "typo: currents ?",
+      "range": {
+        "startLine": 33,
+        "startChar": 27,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "26b4fd919665d745bd4379fc8a8c7d50fe1fc58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c17b6171_c4b310a7",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T11:20:57Z",
+      "side": 1,
+      "message": "nit: I\u0027m pretty sure that EC style is to put the end of comment on the next line.",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 15
+      },
+      "revId": "26b4fd919665d745bd4379fc8a8c7d50fe1fc58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb534cff_eae657a4",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T11:20:57Z",
+      "side": 1,
+      "message": "so if the CBI reading fails, we default to the old default behavior,\nshouldn\u0027t we use the new one (aka MP)",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 516,
+        "endChar": 22
+      },
+      "revId": "26b4fd919665d745bd4379fc8a8c7d50fe1fc58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b7d4893_7b6051c3",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T11:20:57Z",
+      "side": 1,
+      "message": "nit: same typo",
+      "range": {
+        "startLine": 529,
+        "startChar": 62,
+        "endLine": 529,
+        "endChar": 69
+      },
+      "revId": "26b4fd919665d745bd4379fc8a8c7d50fe1fc58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee01a9c9_0694753e",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T11:20:57Z",
+      "side": 1,
+      "message": "it\u0027s usually smaller if you do something like this:\n        int pow_60w \u003d 0, pow_65w \u003d 0, pow_87w \u003d 0;\n\n        if (supplier \u003d\u003d CHARGE_SUPPLIER_DEDICATED) {\n        } else if (charge_ma \u003e\u003d 4300) { /* Apple 87W charger offers 4.3A @20V */\n                pow_87w \u003d 1;\n        } else if (charge_ma \u003e\u003d 3250) {\n                pow_65w \u003d 1;\n        } else if (charge_ma \u003e\u003d 3000) {\n                pow_60w \u003d 1;\n        } else {\n                /* TODO(http://crosbug.com/p/65013352) */\n                CPRINTS(\"Current %dmA not supported\", charge_ma);\n        }\n        gpio_set_level(GPIO_TYPE_C_87W, pow_87w);\n        gpio_set_level(GPIO_TYPE_C_65W, pow_65w);\n        gpio_set_level(GPIO_TYPE_C_60W, pow_60w);",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 563,
+        "endChar": 34
+      },
+      "revId": "26b4fd919665d745bd4379fc8a8c7d50fe1fc58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a5ce3b1_06b5fc62",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T11:20:57Z",
+      "side": 1,
+      "message": "should we ensure here that at least the lowest limit is set ?\nas it seems that we default on dedicated here.",
+      "range": {
+        "startLine": 566,
+        "startChar": 2,
+        "endLine": 566,
+        "endChar": 51
+      },
+      "revId": "26b4fd919665d745bd4379fc8a8c7d50fe1fc58b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
