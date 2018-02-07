@@ -808,12 +808,28 @@ static int send_request(int port, uint32_t rdo)
 	return bit_len;
 }
 
+static int get_bbram_idx(int port)
+{
+	switch (port) {
+	case 2:
+		return SYSTEM_BBRAM_IDX_PD2;
+
+	case 1:
+		return SYSTEM_BBRAM_IDX_PD1;
+
+	case 0:
+		return SYSTEM_BBRAM_IDX_PD0;
+
+	default:
+		return -1;
+	}
+}
+
 static int pd_get_saved_active(int port)
 {
 	uint8_t val;
 
-	if (system_get_bbram(port ? SYSTEM_BBRAM_IDX_PD1 :
-				    SYSTEM_BBRAM_IDX_PD0, &val)) {
+	if (system_get_bbram(get_bbram_idx(port), &val)) {
 		CPRINTS("PD NVRAM FAIL");
 		return 0;
 	}
@@ -822,8 +838,7 @@ static int pd_get_saved_active(int port)
 
 static void pd_set_saved_active(int port, int val)
 {
-	if (system_set_bbram(port ? SYSTEM_BBRAM_IDX_PD1 :
-				    SYSTEM_BBRAM_IDX_PD0, val))
+	if (system_set_bbram(get_bbram_idx(port), val))
 		CPRINTS("PD NVRAM FAIL");
 }
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
@@ -1148,9 +1163,6 @@ static void handle_data_request(int port, uint16_t head,
 				if (pd[port].rev == PD_REV30 &&
 					pd[port].power_role == PD_ROLE_SOURCE)
 					sink_can_xmit(port, SINK_TX_OK);
-#endif
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-				pd_set_saved_active(port, 1);
 #endif
 				pd[port].requested_idx = RDO_POS(payload[0]);
 				set_state(port, PD_STATE_SRC_ACCEPTED);
