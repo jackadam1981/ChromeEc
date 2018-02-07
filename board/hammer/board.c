@@ -141,6 +141,18 @@ static struct usart_config const ec_ec_usart =
  */
 static int has_keyboard_backlight;
 
+#ifdef SECTION_IS_RW
+#ifdef BOARD_WHISKERS
+static void board_pwm_init(void)
+{
+	CPRINTS("Setting PWM to 50%");
+	pwm_enable(PWM_CH_KBLIGHT, 1);
+	pwm_set_duty(PWM_CH_KBLIGHT, 50);
+}
+DECLARE_HOOK(HOOK_INIT, board_pwm_init, HOOK_PRIO_DEFAULT);
+#endif /* BOARD_WHISKERS */
+#endif /* SECTION_IS_RW */
+
 static void board_init(void)
 {
 	/* Detect keyboard backlight: pull-down means it is present. */
