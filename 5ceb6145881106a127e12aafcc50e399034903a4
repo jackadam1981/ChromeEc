@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "e76f3042_9c80b066",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-07T20:35:56Z",
+      "side": 1,
+      "message": "I think wp state should be reset in ccd reset. Or is it at least possible to reset wp even when ccd is locked?",
+      "parentUuid": "8c2aa84c_3509571f",
+      "range": {
+        "startLine": 1568,
+        "startChar": 7,
+        "endLine": 1568,
+        "endChar": 24
+      },
+      "revId": "5ceb6145881106a127e12aafcc50e399034903a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1a5d764_9f912fd4",
         "filename": "common/ccd_config.c",
         "patchSetId": 2
