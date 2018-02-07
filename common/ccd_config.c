@@ -24,6 +24,7 @@
 #include "tpm_registers.h"
 #include "tpm_vendor_cmds.h"
 #include "trng.h"
+#include "wp.h"
 
 #define CPRINTS(format, args...) cprints(CC_CCD, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_CCD, format, ## args)
@@ -1530,6 +1531,7 @@ static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
 	do {
 		if (raw_has_password()) {
 			error_line = __LINE__;
+			rv = EC_ERROR_ACCESS_DENIED;
 			break;
 		}
 
@@ -1569,6 +1571,11 @@ static enum vendor_cmd_rc ccd_disable_rma(enum vendor_cmd_cc code,
 			break;
 		}
 
+		/* Force WP enabled at boot. */
+		raw_set_flag(CCD_FLAG_OVERRIDE_WP_AT_BOOT, 0);
+		raw_set_flag(CCD_FLAG_OVERRIDE_WP_STATE_ENABLED, 1);
+
+		init_wp_state();
 
 		ccd_lock(NULL, 0, NULL);
 		*response_size = 0;
