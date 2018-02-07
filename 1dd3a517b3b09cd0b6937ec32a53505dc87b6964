@@ -46,6 +46,30 @@
       "revId": "1dd3a517b3b09cd0b6937ec32a53505dc87b6964",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2e04179_6ab8e276",
+        "filename": "board/cr50/wp.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-07T19:51:31Z",
+      "side": 1,
+      "message": "(but not in patch set 4...)",
+      "parentUuid": "66d03409_a3431ac0",
+      "range": {
+        "startLine": 25,
+        "startChar": 13,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "1dd3a517b3b09cd0b6937ec32a53505dc87b6964",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
