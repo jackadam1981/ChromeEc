@@ -9,8 +9,13 @@
 #include "common.h"
 #include "usb_pd_tcpm.h"
 
-/* Common APIs for USB Type-C Power Path Controllers (PPC) */
-
+/*
+ * Common APIs for USB Type-C Power Path Controllers (PPC).
+ *
+ * Note: The PPC should only be used to control Vbus. It should not control the
+ * CC lines expect for dead battery mode. If the PPC controls CC lines (e.g.
+ * sourcing Vconn, it can confuse some TCPC chips).
+ */
 struct ppc_drv {
 	/**
 	 * Initialize the PPC.
@@ -49,15 +54,6 @@ struct ppc_drv {
 	int (*vbus_source_enable)(int port, int enable);
 
 	/**
-	 * Inform the PPC of the polarity of the CC pins.
-	 *
-	 * @param port: The Type-C port number.
-	 * @param polarity: 1: CC2 used for comms, 0: CC1 used for comms.
-	 * @return EC_SUCCESS on success, error otherwise.
-	 */
-	int (*set_polarity)(int port, int polarity);
-
-	/**
 	 * Set the Vbus source path current limit
 	 *
 	 * @param port: The Type-C port number.
@@ -74,14 +70,6 @@ struct ppc_drv {
 	 * @return EC_SUCCESS on success, error otherwise.
 	 */
 	int (*discharge_vbus)(int port, int enable);
-
-	/**
-	 * Turn on/off the VCONN FET.
-	 *
-	 * @param port: The Type-C port number.
-	 * @param enable: 1: enable VCONN FET 0: disable VCONN FET.
-	 */
-	int (*set_vconn)(int port, int enable);
 
 #ifdef CONFIG_CMD_PPC_DUMP
 	/**
@@ -138,15 +126,6 @@ int ppc_is_vbus_present(int port);
 int ppc_is_sourcing_vbus(int port);
 
 /**
- * Inform the PPC of the polarity of the CC pins.
- *
- * @param port: The Type-C port number.
- * @param polarity: 1: CC2 used for comms, 0: CC1 used for comms.
- * @return EC_SUCCESS on success, error otherwise.
- */
-int ppc_set_polarity(int port, int polarity);
-
-/**
  * Set the Vbus source path current limit
  *
  * @param port: The Type-C port number.
@@ -154,14 +133,6 @@ int ppc_set_polarity(int port, int polarity);
  * @return EC_SUCCESS on success, error otherwise.
  */
 int ppc_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp);
-
-/**
- * Turn on/off the VCONN FET.
- *
- * @param port: The Type-C port number.
- * @param enable: 1: enable VCONN FET 0: disable VCONN FET.
- */
-int ppc_set_vconn(int port, int enable);
 
 /**
  * Discharge PD VBUS on src/sink disconnect & power role swap
