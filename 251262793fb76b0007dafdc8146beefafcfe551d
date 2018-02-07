@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aed74ba2_49fb0593",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-02-07T00:18:22Z",
+      "side": 1,
+      "message": "I think it\u0027d be good to detail the root cause of needing to check SPOK, etc in this CL. That nuance isn\u0027t detailed here.",
+      "revId": "251262793fb76b0007dafdc8146beefafcfe551d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "104b287c_4ae6b333",
+        "filename": "power/stoney.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-02-07T00:18:22Z",
+      "side": 1,
+      "message": "FWIW, you\u0027re now killing kahlee\u0027s functionality here since force_shutdown() isn\u0027t used and force_g3() is a nop on kahlee. I\u0027m not sure how much we care, but it\u0027s definitely changing behavior.",
+      "revId": "251262793fb76b0007dafdc8146beefafcfe551d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
