@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8d83909_6b426d03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-07T18:24:13Z",
+      "side": 1,
+      "message": "Verify it becomes disabled if you unplug the battery.",
+      "range": {
+        "startLine": 15,
+        "startChar": 40,
+        "endLine": 15,
+        "endChar": 59
+      },
+      "revId": "5ceb6145881106a127e12aafcc50e399034903a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b1210c7_f2953de2",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-07T18:24:13Z",
+      "side": 1,
+      "message": "Does CCD reset wp state?",
+      "range": {
+        "startLine": 1568,
+        "startChar": 7,
+        "endLine": 1568,
+        "endChar": 24
+      },
+      "revId": "5ceb6145881106a127e12aafcc50e399034903a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1a5d764_9f912fd4",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1576,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-07T18:24:13Z",
+      "side": 1,
+      "message": "Does this set wp to follow batt presence?",
+      "range": {
+        "startLine": 1575,
+        "startChar": 0,
+        "endLine": 1576,
+        "endChar": 54
+      },
+      "revId": "5ceb6145881106a127e12aafcc50e399034903a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
