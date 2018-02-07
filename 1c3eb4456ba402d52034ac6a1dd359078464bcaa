@@ -22,6 +22,30 @@
       "revId": "1c3eb4456ba402d52034ac6a1dd359078464bcaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c01a65f_4b8de3f3",
+        "filename": "util/signer/ec_RW-manifest-prod.json",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-07T20:27:55Z",
+      "side": 1,
+      "message": "I don\u0027t think so, it still reflects the state of the version track. Changing major is for making sure that pre-mp and pm versions are clearly different.",
+      "parentUuid": "8a5727e4_dca46fe0",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 12
+      },
+      "revId": "1c3eb4456ba402d52034ac6a1dd359078464bcaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
