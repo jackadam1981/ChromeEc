@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c06a3345_db51a479",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-07T11:17:42Z",
+      "side": 1,
+      "message": "Sure. But could we keep modifying code and make it look good? That way, we will have a complete branch when the ALS component pass. Maybe I can hold verify_bit until the issue being approved.",
+      "parentUuid": "62989b39_cdc2a28d",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ccfd46f_0e451687",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d24b8a7c_a53b402d",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-07T11:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ccfd46f_0e451687",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 23
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9495cc58_200581ca",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-07T11:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a99fcd2_36ad7ac5",
+      "range": {
+        "startLine": 77,
+        "startChar": 3,
+        "endLine": 78,
+        "endChar": 19
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ca4042b_a092dd31",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "344d8293_e1808eb8",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-07T11:17:42Z",
+      "side": 1,
+      "message": "Because they actually are 0. But, yes, I agree with you. This way are easier to maintain for other people who wants to use this ALS.",
+      "parentUuid": "0ca4042b_a092dd31",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3a4cca22_bd0f8873",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-07T11:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73c44568_f58177e1",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 19
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a409de96_fa4b4d89",
         "filename": "driver/als_cm32181e.h",
         "patchSetId": 4
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "f83a284e_f5e5eae1",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-07T11:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a409de96_fa4b4d89",
+      "range": {
+        "startLine": 24,
+        "startChar": 31,
+        "endLine": 24,
+        "endChar": 41
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea560e13_c6345720",
         "filename": "driver/als_cm32181e.h",
         "patchSetId": 4
@@ -160,6 +304,30 @@
       "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bb8340f_6f29b971",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-07T11:17:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea560e13_c6345720",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 0
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
