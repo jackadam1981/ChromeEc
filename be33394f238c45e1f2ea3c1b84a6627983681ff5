@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "00320b4d_cb53c245",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-07T17:27:35Z",
+      "side": 1,
+      "message": "The AP is what tells whiskers to jump from RO to RW right? I would assume the product is open at that point?",
+      "parentUuid": "5676a8c9_302aab37",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 59
+      },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5929ca5_1f2d47e4",
         "filename": "board/hammer/gpio.inc",
         "patchSetId": 3
@@ -65,6 +89,23 @@
         "endLine": 14,
         "endChar": 43
       },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c11ed6_1a55671c",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-07T17:27:35Z",
+      "side": 1,
+      "message": "If this is only used for 8042 keyboard protocol (which it seems it is), maybe we should just provide this definition if it\u0027s not being used in keyboard_scan.h.",
       "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
