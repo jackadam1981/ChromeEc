@@ -13,6 +13,7 @@
 #include "hooks.h"
 #include "tcpm.h"
 #include "timer.h"
+#include "usb_charge.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "util.h"
@@ -396,9 +397,7 @@ static int fusb302_tcpm_init(int port)
 	reg &= ~TCPC_REG_MASK_ALERT;
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	/* TODO(crbug.com/791109): Clean up VBUS notification. */
-#ifdef CONFIG_USB_CHARGER
-#error "Use CONFIG_USB_PD_VBUS_DETECT_CHARGER instead"
-#endif
+
 	/* VBUS threshold crossed (~4.0V) */
 	reg &= ~TCPC_REG_MASK_VBUSOK;
 #endif /* CONFIG_USB_PD_VBUS_DETECT_TCPC */
@@ -878,6 +877,10 @@ void fusb302_tcpc_alert(int port)
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
 	if (interrupt & TCPC_REG_INTERRUPT_VBUSOK) {
 		/* VBUS crossed threshold */
+#ifdef HAS_TASK_USB_CHG
+		usb_charger_vbus_change(port,
+					fusb302_tcpm_get_vbus_level(port));
+#endif
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	}
 #endif
