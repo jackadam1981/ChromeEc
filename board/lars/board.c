@@ -731,3 +731,46 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, abort_fan_control_on_suspend,
 		HOOK_PRIO_TEMP_SENSOR);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, abort_fan_control_on_suspend,
 		HOOK_PRIO_TEMP_SENSOR);
+
+static int tino_temp_init_func(int argc, char **argv)
+{
+	int ret, data;
+
+	if (argc != 1)
+		return EC_ERROR_PARAM_COUNT;
+
+	ret = I2C_TMP432_READ(TMP432_CONFIGURATION1_R, &data);
+	if (ret)
+		goto tino_temp_init_error;
+
+	/*
+	 * Change ALERT/THERM pin to THERM mode
+	 * [5] : 0 for ALERT mode(default), 1 for THERM mode
+	 */
+	data |= TMP432_CONFIG1_MODE;
+	ret = I2C_TMP432_WRITE8(TMP432_CONFIGURATION1_W, data);
+	if (ret)
+		goto tino_temp_init_error;
+
+	/* Set Throttling Point:30C */
+	ret = I2C_TMP432_WRITE16(TMP432_LOCAL_HIGH_LIMIT_W, 30);
+	if (ret)
+		goto tino_temp_init_error;
+
+	/*
+	 * Set hysteresis to 5C ,throttling off 25C, THERM mode only
+	 * default: 10C
+	 */
+	ret = I2C_TMP432_WRITE8(TMP432_THERM_HYSTERESIS, 0x05);
+	if (ret)
+		goto tino_temp_init_error;
+
+	CPRINTS("tino temp init done");
+	return EC_SUCCESS;
+
+tino_temp_init_error:
+	CPRINTS("tino temp init failed");
+	return EC_ERROR_INVAL;
+}
+DECLARE_CONSOLE_COMMAND(tino_temp_init, tino_temp_init_func, NULL,
+		"Set TMP432 alert pin to THERM mode, high limit as 30C", NULL);
