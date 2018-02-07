@@ -334,6 +334,30 @@
     },
     {
       "key": {
+        "uuid": "eeb8c417_25488de2",
+        "filename": "chip/stm32/clock-f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-07T13:28:45Z",
+      "side": 1,
+      "message": "but before irq is re-enabled, you are calling reset_rtc_alarm which is supposed to clear the pending alarm.\nWhile it might work by accident, this is totally obscure.",
+      "parentUuid": "8b65af71_672684fb",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 29
+      },
+      "revId": "3b75d32a90c6ec0993bc5cfa43b8f0bfde6a84cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81fc9f7c_5f0301b9",
         "filename": "chip/stm32/clock-f.h",
         "patchSetId": 1
