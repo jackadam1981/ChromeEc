@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "752de5b6_f9fb31d0",
+        "filename": "chip/npcx/system_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-07T04:59:58Z",
+      "side": 0,
+      "message": "Instead of changing the index of TRY_SLOT, should PD2 be added as index 15? That way we won\u0027t break any other boards using TRY_SLOT index?",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 30
+      },
+      "revId": "ddd4b363afc5593d73154833d23f773e370e6308",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
