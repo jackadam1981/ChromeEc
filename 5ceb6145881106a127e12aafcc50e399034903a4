@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "798578df_d6efb83a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-07T19:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8d83909_6b426d03",
+      "range": {
+        "startLine": 15,
+        "startChar": 40,
+        "endLine": 15,
+        "endChar": 59
+      },
+      "revId": "5ceb6145881106a127e12aafcc50e399034903a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b1210c7_f2953de2",
         "filename": "common/ccd_config.c",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Yes.",
       "parentUuid": "3b1210c7_f2953de2",
+      "range": {
+        "startLine": 1568,
+        "startChar": 7,
+        "endLine": 1568,
+        "endChar": 24
+      },
+      "revId": "5ceb6145881106a127e12aafcc50e399034903a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c2aa84c_3509571f",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-07T19:38:49Z",
+      "side": 1,
+      "message": "it actually does not.",
+      "parentUuid": "92603bef_8bb80e49",
       "range": {
         "startLine": 1568,
         "startChar": 7,
@@ -119,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "dce02aab_d20285ec",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1576,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-07T19:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "15127bdc_b2f7fa6c",
+      "range": {
+        "startLine": 1575,
+        "startChar": 0,
+        "endLine": 1576,
+        "endChar": 54
+      },
+      "revId": "5ceb6145881106a127e12aafcc50e399034903a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ddc1414_95a55ce6",
         "filename": "common/ccd_config.c",
         "patchSetId": 2
@@ -130,6 +202,30 @@
       "writtenOn": "2018-02-07T18:42:32Z",
       "side": 1,
       "message": "This may have side effects, particularly if the reset flags indicate we woke from hibernate.\n\nWP should follow the battery the next HOOK_SECOND anyway.  Why do we need to do this now?",
+      "range": {
+        "startLine": 1578,
+        "startChar": 2,
+        "endLine": 1578,
+        "endChar": 18
+      },
+      "revId": "5ceb6145881106a127e12aafcc50e399034903a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43a69189_61028857",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1578,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-07T19:38:49Z",
+      "side": 1,
+      "message": "changed as discussed.",
+      "parentUuid": "6ddc1414_95a55ce6",
       "range": {
         "startLine": 1578,
         "startChar": 2,
