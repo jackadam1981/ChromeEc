@@ -93,6 +93,30 @@
       "revId": "89e6604b6c0de54210df2a4e7848f2d8d2d204f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f44136b_b57a4683",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-08T14:39:48Z",
+      "side": 1,
+      "message": "True, I meant to say that the fall through (else case) only really applies to unlocked RO images with contract in place. (If it is in RW, the condition on line 1871 will skip the Rp application already).\n\nIs it worth putting the condition (system_get_image_copy() \u003d\u003d SYSTEM_IMAGE_RO) in the statement to make it more clear when you are trying to perform this skip?",
+      "parentUuid": "98811710_649f0871",
+      "range": {
+        "startLine": 1863,
+        "startChar": 35,
+        "endLine": 1863,
+        "endChar": 53
+      },
+      "revId": "89e6604b6c0de54210df2a4e7848f2d8d2d204f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
