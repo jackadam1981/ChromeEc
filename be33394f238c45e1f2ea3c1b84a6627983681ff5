@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "91252b94_0f74d849",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T10:11:33Z",
+      "side": 1,
+      "message": "Fine. GMR seems to be a trendy word nowadays (yeah, you\u0027re right, but we use it to mean the sensor... anyway).\n\nFixed the message.",
+      "parentUuid": "c5cd9811_afe3c725",
+      "range": {
+        "startLine": 7,
+        "startChar": 59,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5676a8c9_302aab37",
         "filename": "board/hammer/board.c",
         "patchSetId": 3
