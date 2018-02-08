@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a93a7781_e59f771e",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-08T04:23:28Z",
+      "side": 1,
+      "message": "There are two issues here:\n1. Platforms other than skylake using npcx might not need to trigger a PMIC reset. This was just a workaround for the power topology specifically on skylake platforms derived from glados.\n\n2. On Fizz, since you removed CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET, if the board runs into a panic/watchdog reset, then the x86 domain could end up in a weird state since the pmic reset won\u0027t be triggered there.",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 6
+      },
+      "revId": "3ca67ae9ef9483c482d9d8f51704734aa19b25dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
