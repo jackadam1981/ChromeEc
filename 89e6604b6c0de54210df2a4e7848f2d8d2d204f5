@@ -117,6 +117,30 @@
       "revId": "89e6604b6c0de54210df2a4e7848f2d8d2d204f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d29d3363_9b8df068",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-08T16:48:45Z",
+      "side": 1,
+      "message": "Ah, I think I see what you\u0027re saying now. Do you think it would be better to change the condition at L1870 to the following? Essentially change that check for just RO. For my check, I don\u0027t care about the running image; only if we have a contract in place and can speak PD.\n\n    \nif (!explicit_contract_in_place ||\n    ((system_get_image_copy() \u003d\u003d SYSTEM_IMAGE_RO) \u0026\u0026\n     (system_get_reset_flags() \u0026\n     (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))))",
+      "parentUuid": "9f44136b_b57a4683",
+      "range": {
+        "startLine": 1863,
+        "startChar": 35,
+        "endLine": 1863,
+        "endChar": 53
+      },
+      "revId": "89e6604b6c0de54210df2a4e7848f2d8d2d204f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
