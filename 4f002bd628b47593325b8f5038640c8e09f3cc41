@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e127f01_ff2cd49f",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T01:59:31Z",
+      "side": 1,
+      "message": "nit: space here, not tab.",
+      "range": {
+        "startLine": 85,
+        "startChar": 47,
+        "endLine": 85,
+        "endChar": 49
+      },
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7b02f84_163bc05c",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T01:59:31Z",
+      "side": 1,
+      "message": "I wonder. \"Configuring the programming parameters\" in the RM seems to imply that we need to unlock _both_ banks before we can configure the option bytes?",
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14ec83ba_83906c85",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T01:59:31Z",
+      "side": 1,
+      "message": "nit: Maybe add a comment to explain that there is only one set of option bytes.",
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6cc7474_ee8f20dc",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T01:59:31Z",
+      "side": 1,
+      "message": "Would:\n\nif (enabled)\n    STM32_FLASH_OPTSR_PRG(0) |\u003d FLASH_OPTSR_RSS1;\nelse\n    STM32_FLASH_OPTSR_PRG(0) \u0026\u003d ~FLASH_OPTSR_RSS1;\n\nBe a tiny bit more readable?",
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "266b56a2_6d0ab715",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T01:59:31Z",
+      "side": 1,
+      "message": "nit: one space",
+      "range": {
+        "startLine": 162,
+        "startChar": 7,
+        "endLine": 162,
+        "endChar": 9
+      },
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20e26e4f_67843aae",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T01:59:31Z",
+      "side": 1,
+      "message": "RM says one should configure ACR WRHIGHFREQ. I guess the default is fine?",
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "497b94d4_268a1f63",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T01:59:31Z",
+      "side": 1,
+      "message": "RM says to check for BSY1/2... I\u0027m not very clear is checking WBNE/QW is fully equivalent to BSY...",
+      "range": {
+        "startLine": 218,
+        "startChar": 8,
+        "endLine": 218,
+        "endChar": 35
+      },
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

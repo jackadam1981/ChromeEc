@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "38c2679e_2be27b34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T01:59:31Z",
+      "side": 1,
+      "message": "No strong opinion. The PSTATE in RO is something we used before and we presumably know is reliable. RSS1 needs more testing, but if you\u0027re confident about it, ok.",
+      "parentUuid": "526d552f_882540a3",
+      "revId": "c3ed05793693f80e13fcd15474183801fdcfcf91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfc3cf16_5072bd17",
         "filename": "chip/stm32/flash-stm32h7.c",
         "patchSetId": 1
