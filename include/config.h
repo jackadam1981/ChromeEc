@@ -166,6 +166,9 @@
 /* Support AP Warm reset Interrupt. */
 #undef CONFIG_AP_WARM_RESET_INTERRUPT
 
+/* Support audio codec for WoV and I2S normal recording. */
+#undef CONFIG_AUDIO_CODEC
+
 /* Allow proprietary communication protocols' extensions. */
 #undef CONFIG_EXTENSION_COMMAND
 /*

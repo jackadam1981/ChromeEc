@@ -522,6 +522,8 @@ static const char * const ec_feature_names[] = {
 	[EC_FEATURE_RTC] = "Real-time clock",
 	[EC_FEATURE_TOUCHPAD] = "Touchpad",
 	[EC_FEATURE_RWSIG] = "RWSIG task",
+	[EC_FEATURE_DEVICE_EVENT] = "Device event",
+	[EC_FEATURE_AUDIO_CODEC] = "Audio Codec",
 };
 
 int cmd_inventory(int argc, char *argv[])
@@ -534,6 +536,7 @@ int cmd_inventory(int argc, char *argv[])
 		return rv;
 
 	printf("EC supported features:\n");
+	printf("EC flags: r.flags[0], r.flags[1] = 0x%x, 0x%x\n", r.flags[0], r.flags[1]);
 	for (i = 0, idx = 0; i < 2; i++) {
 		for (j = 0; j < 32; j++, idx++) {
 			if (r.flags[i] & (1 << j)) {

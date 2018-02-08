@@ -1089,6 +1089,8 @@ enum ec_feature_code {
 	EC_FEATURE_RWSIG = 30,
 	/* EC has device events support */
 	EC_FEATURE_DEVICE_EVENT = 31,
+	/* EC has audio codec support */
+	EC_FEATURE_AUDIO_CODEC = 32,
 };
 
 #define EC_FEATURE_MASK_0(event_code) (1UL << (event_code % 32))
