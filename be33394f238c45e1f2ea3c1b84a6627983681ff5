@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c5cd9811_afe3c725",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-08T09:49:09Z",
+      "side": 1,
+      "message": "sure, better put something that nobody understands rather than something slightly incorrect.\nWe can even go down the pedantic path, GMR is the name of the quantum effect, the magnetic field sensor is a GMR sensor...",
+      "parentUuid": "c95d492b_ba3a9127",
+      "range": {
+        "startLine": 7,
+        "startChar": 59,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5676a8c9_302aab37",
         "filename": "board/hammer/board.c",
         "patchSetId": 3
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "BTW, the lid switch on whiskers means something a little different (please have a look at the bug). So the lid can be fully operating.\n\nI\u0027m actually not fully sure how we should handle the RO case. I\u0027m a bit reluctant to add more code in RO (and therefore more room for failure modes where we can\u0027t update the RW). I\u0027ll think we\u0027ll need to do more complete tests with the full systems, and check that Chrome does the right thing in terms of tablet mode detection.\n\nAlso, the interface gets disconnected anyway on sysjump (see usb_release hook).",
       "parentUuid": "00320b4d_cb53c245",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 59
+      },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9916f52d_c584c086",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-08T09:49:09Z",
+      "side": 1,
+      "message": "ok, with the disconnect on sysjump, we can probably live with it.",
+      "parentUuid": "4bd77f0e_8c911f72",
       "range": {
         "startLine": 248,
         "startChar": 0,
