@@ -431,9 +431,6 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 
 static void board_spi_enable(void)
 {
-	gpio_set_level(GPIO_SPI2_NSS, 1);
-	gpio_set_level(GPIO_SPI2_NSS_DB, 1);
-
 	/* Enable SPI for KX022 */
 	gpio_config_module(MODULE_SPI_MASTER, 1);
 
@@ -476,6 +473,7 @@ static void board_chipset_pre_init(void)
 	/* Enable level shift of AC_OK when power on */
 	board_extpower_buffer_to_soc();
 
+	board_spi_enable();
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_pre_init, HOOK_PRIO_DEFAULT);
 
@@ -492,7 +490,6 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 /* Called on AP S3 -> S0 transition */
 static void board_chipset_resume(void)
 {
-        board_spi_enable();
 #ifdef CONFIG_TEMP_SENSOR_TMP432
 	hook_call_deferred(&tmp432_set_power_deferred_data, 0);
 #endif
