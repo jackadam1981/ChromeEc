@@ -544,6 +544,30 @@
     },
     {
       "key": {
+        "uuid": "4bf35cab_7829994f",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:41:05Z",
+      "side": 1,
+      "message": "It\u0027s more than two.  At least four:\n\n- Flash descriptor\n- ME firmware\n- AP-RO firmware\n- EC-RO firmware\n\nThere would be huge push-back against operators having to push the power button 20 times.",
+      "parentUuid": "4a13e5ec_246fc209",
+      "range": {
+        "startLine": 596,
+        "startChar": 7,
+        "endLine": 597,
+        "endChar": 23
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79528584_5e0017a5",
         "filename": "common/ccd_config.c",
         "patchSetId": 1

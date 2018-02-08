@@ -22,6 +22,30 @@
       "revId": "32944e932c7875f05903650be21d22e55eea2527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5a9c0fc_638f406f",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:41:05Z",
+      "side": 1,
+      "message": "Yes.\n\nIt\u0027s easy to provide this capability, so even though it\u0027s a seldom-used case, we should do it.  Same reason why the FWMP supports storing a developer kernel key hash (which was a bit more work).  Give the owner control.",
+      "parentUuid": "d0cb2444_d19a0e3d",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "32944e932c7875f05903650be21d22e55eea2527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
