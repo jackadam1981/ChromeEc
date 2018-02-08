@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "500c71b6_92fd4d78",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dba062e1_0fdcbefb",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b79f7e26_87fdbe11",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-29T21:40:57Z",
       "side": 1,
       "message": "here and in line 196: capabilities could be checked before acquiring the bus",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 46
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2dfb4ed_1f511445",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b79f7e26_87fdbe11",
       "range": {
         "startLine": 190,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c659ff11_bd0e9554",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3cabcde_d24d776b",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 22
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "945b8a16_32d602a6",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-01-29T21:40:57Z",
       "side": 1,
       "message": "I don\u0027t remember: does the read start offset need to be aligned to a page boundary to be able to read full SPI_HASH_CHUNK_SIZE?",
+      "range": {
+        "startLine": 297,
+        "startChar": 5,
+        "endLine": 297,
+        "endChar": 32
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "095e6652_bfff11e6",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:02:19Z",
+      "side": 1,
+      "message": "No.  Only matters for write/erase.\n\nTested with offset/size (0,64), (0,68), (1,63), (4,60), (4,64), using\n\nspihash ap\nspihash \u003coffset\u003e \u003csize\u003e dump",
+      "parentUuid": "945b8a16_32d602a6",
       "range": {
         "startLine": 297,
         "startChar": 5,
@@ -188,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "266aa58c_d8c9db04",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d779d98_a8750a08",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 25
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66131721_5742b8ff",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -235,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "5d284a8d_fa723caa",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02bdeb37_b7497b02",
+      "range": {
+        "startLine": 341,
+        "startChar": 4,
+        "endLine": 342,
+        "endChar": 30
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd40b1f9_3c4f29f8",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -258,6 +402,30 @@
     },
     {
       "key": {
+        "uuid": "a285918a_e507cb7b",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd40b1f9_3c4f29f8",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 19
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e204a22_c3393fe8",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -269,6 +437,30 @@
       "writtenOn": "2018-02-05T21:12:38Z",
       "side": 1,
       "message": "as in other commands of this kind, this should be passed through vendor command context, which would make this feature available both through CLI and through vendor command.",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 0
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76b75f0c_122f39a5",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:02:19Z",
+      "side": 1,
+      "message": "Agree.  Will do this in a second update to this patch.",
+      "parentUuid": "5e204a22_c3393fe8",
       "range": {
         "startLine": 520,
         "startChar": 0,
@@ -387,6 +579,30 @@
       "side": 1,
       "message": "Though \"ReadFlash\" is a more accurate description.  I\u0027ll update that.",
       "parentUuid": "77928426_a28b3b70",
+      "range": {
+        "startLine": 143,
+        "startChar": 2,
+        "endLine": 143,
+        "endChar": 36
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e4ed0e_1ac54ad3",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-08T18:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0517e9f0_10e311da",
       "range": {
         "startLine": 143,
         "startChar": 2,
