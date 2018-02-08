@@ -733,8 +733,14 @@ void system_reset(int flags)
 		}
 	}
 
-	/* Ask the watchdog to trigger a hard reboot */
+#ifdef CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET
+	/* Ask the watchdog to trigger a hard reboot. Real reboot will be done
+	 * by chipset_handle_reboot in RO. */
 	system_watchdog_reset();
+#else
+	/* We do real reboot right away */
+	gpio_set_level(GPIO_EC_PLATFORM_RST, 1);
+#endif
 
 	/* Spin and wait for reboot; should never return */
 	while (1)
