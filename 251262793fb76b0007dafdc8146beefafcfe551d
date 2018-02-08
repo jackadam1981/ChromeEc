@@ -33,6 +33,24 @@
       "revId": "251262793fb76b0007dafdc8146beefafcfe551d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66622b07_d998820c",
+        "filename": "power/stoney.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-08T20:08:33Z",
+      "side": 1,
+      "message": "Yep, this is changing kahlee behavior. I could try using #ifdef BOARD_KAHLEE or __attribute__((weak)) to avoid changing it. Not sure if that is worth doing or not. Did we have sysjump working on kahlee? I\u0027m not sure.",
+      "parentUuid": "104b287c_4ae6b333",
+      "revId": "251262793fb76b0007dafdc8146beefafcfe551d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
