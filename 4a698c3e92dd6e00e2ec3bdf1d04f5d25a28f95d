@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7163c864_87b877ec",
+        "filename": "common/main.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-08T05:39:59Z",
+      "side": 1,
+      "message": "We should probably guard this with CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET. Else, it will fail compilation for any boards using CONFIG_VBOOT_EFS but not providing chipset_handle_reboot.\n\nOr maybe its better to call chipset_pre_init() here just like the other init/pre-init calls in this function and add a weak definition in chipset.c which does nothing.\n\nFor skylake, you can override the weak definition to do something like this:\n\n#ifdef CONFIG_VBOOT_EFS\nvoid chipset_pre_init(void)\n{\n     chipset_handle_reboot();\n}\n#endif\n\nThoughts?",
+      "range": {
+        "startLine": 178,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 22
+      },
+      "revId": "4a698c3e92dd6e00e2ec3bdf1d04f5d25a28f95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ddabd9_fb0725cb",
+        "filename": "power/skylake.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-08T05:39:59Z",
+      "side": 1,
+      "message": "Why is this guard required? Once you do a PMIC reset, the above function should just fail in L141 and return.",
+      "range": {
+        "startLine": 170,
+        "startChar": 8,
+        "endLine": 170,
+        "endChar": 24
+      },
+      "revId": "4a698c3e92dd6e00e2ec3bdf1d04f5d25a28f95d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
