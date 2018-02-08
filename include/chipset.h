@@ -114,4 +114,8 @@ static inline void chipset_handle_espi_reset_assert(void) { }
  */
 int chipset_pltrst_is_valid(void) __attribute__((weak));
 
+/**
+ * Execute chipset-specific reboot.
+ */
+void chipset_handle_reboot(void);
 #endif  /* __CROS_EC_CHIPSET_H */
