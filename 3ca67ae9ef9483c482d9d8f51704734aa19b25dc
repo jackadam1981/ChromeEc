@@ -46,6 +46,30 @@
       "revId": "3ca67ae9ef9483c482d9d8f51704734aa19b25dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ed305c6_536f9d5b",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-02-08T04:29:57Z",
+      "side": 1,
+      "message": "I was just chatting to Daisuke about this. The issue is that doing this here means we sprinkle around board specific logic in multiple places. We still need to handle watchdog resets normally -- when we actually watchdog -- by doing the pmic reset. Why clutter up multiple files?",
+      "parentUuid": "27c08833_3fb4d166",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 6
+      },
+      "revId": "3ca67ae9ef9483c482d9d8f51704734aa19b25dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
