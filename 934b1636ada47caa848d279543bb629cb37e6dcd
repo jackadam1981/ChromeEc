@@ -46,6 +46,30 @@
       "revId": "934b1636ada47caa848d279543bb629cb37e6dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de807b9b_7c5be181",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-08T13:33:25Z",
+      "side": 1,
+      "message": "if you have the wrong role set, the other side can (and should) discard your packet, some devices will do it and others don\u0027t (our current hardware is in the latter category)\nbefore leaving, Shawn was still fixing issues trickling for this, see \ncrrev.com/c/885462 and the 2 bugs linked there: b/71333840 and crbug.com/805040\n\nBy the way ,the PD rev 2.0 explicitly says we should go to ErrorRecovery in case of badly set data role, see \"6.2.1.6 Port Data Role\"\n\"\"\"\nShould a USB Type-C Port receive a Message with the Port Data Role field set to the same Data Role as its current\nData Role, except for the GoodCRC Message, USB Type-C error recovery actions as defined in [USB Type-C 1.2] shall\nbe performed.\n\"\"\"",
+      "parentUuid": "83197372_030d9216",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 70
+      },
+      "revId": "934b1636ada47caa848d279543bb629cb37e6dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
