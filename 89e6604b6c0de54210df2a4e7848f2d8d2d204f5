@@ -141,6 +141,30 @@
       "revId": "89e6604b6c0de54210df2a4e7848f2d8d2d204f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5aa3dbba_98563df0",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-08T17:43:20Z",
+      "side": 1,
+      "message": "I think your proposed condition changes when the skip occurs from when the flags are anything but brownout and power on to only brown out and power on, which I don\u0027t think we want to make.\n\nI see how you are thinking of \"explicit_contract_in_place \u0026\u0026 pd_comm_is_enabled(port)\" condition; you don\u0027t care if it is RO or RW. Where as the below condition (line 1870) only cares about the RO condition. It is when you think of these two conditions together and how you actually get to the reset code is what I was having trouble figuring out initially, until I realized that RO has pd disabled when it is locked. Without knowing that, I thought this return was superseding the below condition almost all of the time for RW and R0.\n\nMy suggestion to add the \"system_get_image_copy() \u003d\u003d SYSTEM_IMAGE_RO\" condition doesn\u0027t actually change the net result of when you get to the reset code, but it helped me understand that the code was targeting that specific use case. A comment about Unlocked vs Locked RO (and pd comm enable/disable) would also serve the same purpose.\n\nThanks for hearing me out!",
+      "parentUuid": "d29d3363_9b8df068",
+      "range": {
+        "startLine": 1863,
+        "startChar": 35,
+        "endLine": 1863,
+        "endChar": 53
+      },
+      "revId": "89e6604b6c0de54210df2a4e7848f2d8d2d204f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
