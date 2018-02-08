@@ -809,6 +809,12 @@ static int host_command_get_features(struct host_cmd_handler_args *args)
 		| EC_FEATURE_MASK_0(EC_FEATURE_DEVICE_EVENT)
 #endif
 		;
+
+	r->flags[1] = 0
+#ifdef CONFIG_AUDIO_CODEC
+		| EC_FEATURE_MASK_0(EC_FEATURE_AUDIO_CODEC)
+#endif
+		;
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_FEATURES,

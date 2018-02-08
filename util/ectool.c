@@ -510,6 +510,7 @@ static const char * const ec_feature_names[] = {
 	[EC_FEATURE_I2C] = "I2C master",
 	[EC_FEATURE_CHARGER] = "Charger",
 	[EC_FEATURE_BATTERY] = "Simple Battery",
+	[EC_FEATURE_AUDIO_CODEC] = "Audio Codec",
 	[EC_FEATURE_SMART_BATTERY] = "Smart Battery",
 	[EC_FEATURE_HANG_DETECT] = "Host hang detection",
 	[EC_FEATURE_PMU] = "Power Management",
