@@ -22,6 +22,30 @@
       "revId": "3ca67ae9ef9483c482d9d8f51704734aa19b25dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27c08833_3fb4d166",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-08T04:25:19Z",
+      "side": 1,
+      "message": "If you are looking to save an extra reset, I think we can do something like this:\n\n#ifdef CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET\n     gpio_set_level(GPIO_EC_PLATFORM_RST, 1);\n#else\n     system_watchdog_reset();\n#endif\n\nThat way we won\u0027t have to do an extra EC reset when EC is asked to do a reboot and it comes down this path.",
+      "parentUuid": "a93a7781_e59f771e",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 743,
+        "endChar": 6
+      },
+      "revId": "3ca67ae9ef9483c482d9d8f51704734aa19b25dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
