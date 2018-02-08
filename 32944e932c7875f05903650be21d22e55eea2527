@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0cb2444_d19a0e3d",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-08T18:30:45Z",
+      "side": 1,
+      "message": "so, the idea is that users who install alternative bioses with passwords stored there in clear will have to change this capability? \n\nIt would be still overwritten during RMA, right? What do we protect against - that a user who updates BIOS gives his device to someone else and that someone else runs the commands on the SuzyQ console?",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "32944e932c7875f05903650be21d22e55eea2527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

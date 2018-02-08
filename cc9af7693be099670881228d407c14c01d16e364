@@ -520,6 +520,30 @@
     },
     {
       "key": {
+        "uuid": "4a13e5ec_246fc209",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-08T18:30:45Z",
+      "side": 1,
+      "message": "so what\u0027s the big deal? The operator needs to read two values, they would tap the button twice?",
+      "parentUuid": "4eb47e29_c16f5e63",
+      "range": {
+        "startLine": 596,
+        "startChar": 7,
+        "endLine": 597,
+        "endChar": 23
+      },
+      "revId": "cc9af7693be099670881228d407c14c01d16e364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79528584_5e0017a5",
         "filename": "common/ccd_config.c",
         "patchSetId": 1
