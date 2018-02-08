@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b46ffa59_d95a736d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1860,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-08T00:57:54Z",
+      "side": 1,
+      "message": "* VBUS is present since we didn\u0027t apply Rp\u0027s here.\n* We start out in state sink disconnected.\n* something on CC pins so transition to sink disconnected debounce\n* still attached so head to sink discovery\n* start SourceCap timer and wait for source caps\n* The source caps never arrive (because there\u0027s already a contract in place / nothing\u0027s changed)\n* Send a SoftReset.",
+      "parentUuid": "b0ab0681_f125b5ac",
+      "range": {
+        "startLine": 1860,
+        "startChar": 44,
+        "endLine": 1860,
+        "endChar": 53
+      },
+      "revId": "89e6604b6c0de54210df2a4e7848f2d8d2d204f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45b34885_f815913a",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-07T22:57:27Z",
       "side": 1,
       "message": "can you add in your comment that this condition only applies to unlocked RO images (with a PD contract)?",
+      "range": {
+        "startLine": 1863,
+        "startChar": 35,
+        "endLine": 1863,
+        "endChar": 53
+      },
+      "revId": "89e6604b6c0de54210df2a4e7848f2d8d2d204f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98811710_649f0871",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1863,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-08T00:57:54Z",
+      "side": 1,
+      "message": "But it also applies to RW images; PD comms are typically enabled in RW.",
+      "parentUuid": "45b34885_f815913a",
       "range": {
         "startLine": 1863,
         "startChar": 35,
