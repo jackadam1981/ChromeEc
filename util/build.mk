@@ -57,9 +57,9 @@ $(out)/util/gen_touchpad_hash: BUILD_CFLAGS += $(OPENSSL_CFLAGS)
 $(out)/util/gen_touchpad_hash: BUILD_LDFLAGS += $(OPENSSL_LDFLAGS)
 endif # CONFIG_TOUCHPAD_VIRTUAL_OFF
 
-build-util-bin += cbi-util
+host-util-bin += cbi-util
 $(out)/util/cbi-util: $(out)/util/crc8.o
-$(out)/util/cbi-util: BUILD_LDFLAGS=$(out)/util/crc8.o -static
+$(out)/util/cbi-util: HOST_LDFLAGS=$(out)/util/crc8.o -static
 $(out)/util/crc8.o: common/crc8.c
 	$(call quiet,c_to_vif,BUILDCC)
 
