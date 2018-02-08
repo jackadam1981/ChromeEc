@@ -510,6 +510,7 @@ static const char * const ec_feature_names[] = {
 	[EC_FEATURE_I2C] = "I2C master",
 	[EC_FEATURE_CHARGER] = "Charger",
 	[EC_FEATURE_BATTERY] = "Simple Battery",
+	[EC_FEATURE_AUDIO_CODEC] = "Audio Codec",
 	[EC_FEATURE_SMART_BATTERY] = "Smart Battery",
 	[EC_FEATURE_HANG_DETECT] = "Host hang detection",
 	[EC_FEATURE_PMU] = "Power Management",
@@ -534,6 +535,7 @@ int cmd_inventory(int argc, char *argv[])
 		return rv;
 
 	printf("EC supported features:\n");
+	printf("EC flags: r.flags[0], r.flags[1] = 0x%x, 0x%x\n", r.flags[0], r.flags[1]);
 	for (i = 0, idx = 0; i < 2; i++) {
 		for (j = 0; j < 32; j++, idx++) {
 			if (r.flags[i] & (1 << j)) {
