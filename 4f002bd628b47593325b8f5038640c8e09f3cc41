@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "443d322d_619e73d4",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-08T17:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e127f01_ff2cd49f",
+      "range": {
+        "startLine": 85,
+        "startChar": 47,
+        "endLine": 85,
+        "endChar": 49
+      },
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7b02f84_163bc05c",
         "filename": "chip/stm32/flash-stm32h7.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2018-02-08T01:59:31Z",
       "side": 1,
       "message": "I wonder. \"Configuring the programming parameters\" in the RM seems to imply that we need to unlock _both_ banks before we can configure the option bytes?",
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae4c9feb_a1abbc61",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-08T17:15:49Z",
+      "side": 1,
+      "message": "Experiments proved that we can do without doing _both_ ...\nMass-erase needs _both_ but I\u0027m not using it,\nI suspect this unlock() is actually useless now, I will re-do more testing on this.",
+      "parentUuid": "d7b02f84_163bc05c",
       "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "134db45d_88973c45",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-08T17:15:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "14ec83ba_83906c85",
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6cc7474_ee8f20dc",
         "filename": "chip/stm32/flash-stm32h7.c",
         "patchSetId": 3
@@ -70,6 +130,24 @@
       "writtenOn": "2018-02-08T01:59:31Z",
       "side": 1,
       "message": "Would:\n\nif (enabled)\n    STM32_FLASH_OPTSR_PRG(0) |\u003d FLASH_OPTSR_RSS1;\nelse\n    STM32_FLASH_OPTSR_PRG(0) \u0026\u003d ~FLASH_OPTSR_RSS1;\n\nBe a tiny bit more readable?",
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2139897f_d061c365",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-08T17:15:49Z",
+      "side": 1,
+      "message": "If you want, though I prefer the other version.",
+      "parentUuid": "b6cc7474_ee8f20dc",
       "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "9abe0e13_26613d2b",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-08T17:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "266b56a2_6d0ab715",
+      "range": {
+        "startLine": 162,
+        "startChar": 7,
+        "endLine": 162,
+        "endChar": 9
+      },
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20e26e4f_67843aae",
         "filename": "chip/stm32/flash-stm32h7.c",
         "patchSetId": 3
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "179cf81e_286e2c3f",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-08T17:15:49Z",
+      "side": 1,
+      "message": "it\u0027s done in clock-stm32h7.c (as in other variants I think)\nand this code is supposed to keep it intact.",
+      "parentUuid": "20e26e4f_67843aae",
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "497b94d4_268a1f63",
         "filename": "chip/stm32/flash-stm32h7.c",
         "patchSetId": 3
@@ -127,6 +247,30 @@
       "writtenOn": "2018-02-08T01:59:31Z",
       "side": 1,
       "message": "RM says to check for BSY1/2... I\u0027m not very clear is checking WBNE/QW is fully equivalent to BSY...",
+      "range": {
+        "startLine": 218,
+        "startChar": 8,
+        "endLine": 218,
+        "endChar": 35
+      },
+      "revId": "4f002bd628b47593325b8f5038640c8e09f3cc41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd750b03_06e7d78a",
+        "filename": "chip/stm32/flash-stm32h7.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-08T17:15:49Z",
+      "side": 1,
+      "message": "the RM is a bit unclear on this topic, I had to experiment to fully understand it.\nthe key indication from the doc is \"QW1/2: [...]. It supersedes the BSY1/2 status bit\"\nOverall BSY1/2 is useless, there are queues so they will flip for a short period at a random time ... (not immediately)",
+      "parentUuid": "497b94d4_268a1f63",
       "range": {
         "startLine": 218,
         "startChar": 8,
