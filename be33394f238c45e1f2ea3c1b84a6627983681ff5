@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c95d492b_ba3a9127",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T03:25:35Z",
+      "side": 1,
+      "message": "well, GMR is the sensor part, the magnet is the actuator...\n\n\"magnet active\" sounds weird and then I can\u0027t fit \"magnet sensor active\" in 60+ chars, so...",
+      "parentUuid": "a7bdd410_0303dfc1",
+      "range": {
+        "startLine": 7,
+        "startChar": 59,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5676a8c9_302aab37",
         "filename": "board/hammer/board.c",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "4bd77f0e_8c911f72",
+        "filename": "board/hammer/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T03:25:35Z",
+      "side": 1,
+      "message": "BTW, the lid switch on whiskers means something a little different (please have a look at the bug). So the lid can be fully operating.\n\nI\u0027m actually not fully sure how we should handle the RO case. I\u0027m a bit reluctant to add more code in RO (and therefore more room for failure modes where we can\u0027t update the RW). I\u0027ll think we\u0027ll need to do more complete tests with the full systems, and check that Chrome does the right thing in terms of tablet mode detection.\n\nAlso, the interface gets disconnected anyway on sysjump (see usb_release hook).",
+      "parentUuid": "00320b4d_cb53c245",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 59
+      },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5929ca5_1f2d47e4",
         "filename": "board/hammer/gpio.inc",
         "patchSetId": 3
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "4a2fcbeb_75a9d171",
+        "filename": "board/hammer/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T03:25:35Z",
+      "side": 1,
+      "message": "Right, copied from GPIO_KB_INPUT below...",
+      "parentUuid": "c5929ca5_1f2d47e4",
+      "range": {
+        "startLine": 14,
+        "startChar": 31,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16c11ed6_1a55671c",
         "filename": "chip/stm32/usb_hid_keyboard.c",
         "patchSetId": 3
@@ -106,6 +178,24 @@
       "writtenOn": "2018-02-07T17:27:35Z",
       "side": 1,
       "message": "If this is only used for 8042 keyboard protocol (which it seems it is), maybe we should just provide this definition if it\u0027s not being used in keyboard_scan.h.",
+      "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1b896e_29cf9573",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-08T03:25:35Z",
+      "side": 1,
+      "message": "Yeah, I see your point, but I\u0027m a bit reluctant to add a driver-specific ifdef in keyboard_scan.h, and __attribute__((_weak)) doesn\u0027t feel very appealing either...\n\nAnd LTO will remove the function anyway...",
+      "parentUuid": "16c11ed6_1a55671c",
       "revId": "be33394f238c45e1f2ea3c1b84a6627983681ff5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
