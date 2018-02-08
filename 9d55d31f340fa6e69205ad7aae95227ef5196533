@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "ba2b8c9b_6130ece9",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-08T12:02:38Z",
+      "side": 1,
+      "message": "Yes, in my understanding, this offset is for fine tune the value of the sensors. In this ALS component, there is no offset. Am I getting it in right way?\nBy the way, I modified to \"*offset \u003d CM32181E_GET_DATA(s)-\u003eoffset;\" in patch 5.",
+      "parentUuid": "a39fc76c_dd2d6cd3",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 13
+      },
+      "revId": "9d55d31f340fa6e69205ad7aae95227ef5196533",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "73c44568_f58177e1",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 4
