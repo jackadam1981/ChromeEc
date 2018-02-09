@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0d15a53_986cfa8d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2367,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-09T17:26:33Z",
+      "side": 1,
+      "message": "Need to turn Vconn off here if enable Vbus fails? (Since previously we wouldn\u0027t have turned it on.)",
+      "revId": "1b000b410b96585d94163acbff099657641038ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
