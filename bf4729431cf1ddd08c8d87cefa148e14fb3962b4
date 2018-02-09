@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7b53eac1_bac07bea",
+        "filename": "board/meowth_fp/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-09T13:54:03Z",
+      "side": 1,
+      "message": "good point, I have just measured in the current arbitrary execution condition, it is doing more improvement than I would have expected from this Cortex-M7 with a cache.",
+      "parentUuid": "74b41548_7a6cb2e7",
+      "revId": "bf4729431cf1ddd08c8d87cefa148e14fb3962b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "07565846_3564c61f",
         "filename": "board/meowth_fp/board.h",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2018-02-09T13:32:15Z",
       "side": 1,
       "message": "I\u0027m not sure to understand why this is a problem?\n\nAlso, you only define this in RW? RW verification should be in RO, right?",
+      "revId": "bf4729431cf1ddd08c8d87cefa148e14fb3962b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbeeb0ed_f385650c",
+        "filename": "board/meowth_fp/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-09T13:54:03Z",
+      "side": 1,
+      "message": "Yes this is what my comment meant:\nCONFIG_MALLOC does NOT work for the RO because when doing the RW firmware image verification (during the RO execution), the shared_mem_init() is not executed YET at the point where the verification happens, and the verification DOES usr shared_mem, then the shared_mem_alloc fails (because the shmalloc code is not designed for this use-case), so does the verification.\nHence I\u0027m defining only the SECTION_IS_RW rather than for the full firmware (which would be more straightforward)\n\nVisibly my wording is bad since you didn\u0027t understand it (while you know most of those details) but I\u0027m not sure how to improve it.",
+      "parentUuid": "07565846_3564c61f",
       "revId": "bf4729431cf1ddd08c8d87cefa148e14fb3962b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
