@@ -608,4 +608,5 @@ int system_set_active_copy(enum system_image_copy_t copy);
  */
 uint32_t flash_get_rw_offset(enum system_image_copy_t copy);
 
+int system_is_warm_reboot_notified(void);
 #endif  /* __CROS_EC_SYSTEM_H */
