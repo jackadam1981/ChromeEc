@@ -22,6 +22,30 @@
       "revId": "f0054091a01be7863324b6e74b90fc2454897455",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cabaacf5_d7132131",
+        "filename": "board/kahlee/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-09T17:41:10Z",
+      "side": 1,
+      "message": "Added an \"#ifndef BOARD_KAHLEE\" to the POWER_G3S5 case, and removed this.",
+      "parentUuid": "803cbee5_d9f843bc",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 23
+      },
+      "revId": "f0054091a01be7863324b6e74b90fc2454897455",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
