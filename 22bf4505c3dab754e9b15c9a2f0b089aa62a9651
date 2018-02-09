@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40ec5189_b12e1d84",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-09T17:56:08Z",
+      "side": 1,
+      "message": "Rather than doing this everywhere, could you do:\n\ndef dummy_print():\n  pass\n\ndebug_print \u003d dummy_print\n\nThen in main:\n\nif VERBOSE:\n  debug_print \u003d print\n\nThen just find/replace print with debug_print",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 41
+      },
+      "revId": "22bf4505c3dab754e9b15c9a2f0b089aa62a9651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38928dbb_5ac93eda",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-09T17:56:08Z",
+      "side": 1,
+      "message": "Extra whitespace (in a few other places, too)",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 2
+      },
+      "revId": "22bf4505c3dab754e9b15c9a2f0b089aa62a9651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea5c98c8_5bc1a603",
+        "filename": "chip/mchp/util/pack_ec.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-09T17:56:08Z",
+      "side": 1,
+      "message": "Bits of extra whitespace in here to clean up later...",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 2
+      },
+      "revId": "22bf4505c3dab754e9b15c9a2f0b089aa62a9651",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
