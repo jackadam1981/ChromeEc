@@ -160,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "758eccbf_93242c4f",
+        "filename": "include/battery.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-09T00:51:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "02eec244_104917e0",
+      "revId": "d1d4e47ab7ac7e6b2820856dee4275d6c1a6cc51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "682a3d28_e3c3d99d",
         "filename": "include/ec_commands.h",
         "patchSetId": 4
