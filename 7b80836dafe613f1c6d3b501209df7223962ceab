@@ -16,6 +16,24 @@
       "revId": "7b80836dafe613f1c6d3b501209df7223962ceab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7697ead_9b5186e2",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2361,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-09T17:42:50Z",
+      "side": 1,
+      "message": "Correct. It has been removed. Git troubles :)",
+      "parentUuid": "3c8bcc78_2e11e638",
+      "revId": "7b80836dafe613f1c6d3b501209df7223962ceab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
