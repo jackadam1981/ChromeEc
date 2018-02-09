@@ -56,6 +56,35 @@ static struct mutex bd9995x_map_mutex;
 
 /* Tracks the state of VSYS_PRIORITY */
 static int vsys_priority;
+
+enum chgop2_mode {
+	mode_off = 0,
+	mode_auto,
+	mode_on,
+	mode_auto_no_chg,
+	mode_num
+};
+
+static char chgop2_mode_disp[mode_num][16] = {
+	"Off",
+	"Auto",
+	"On",
+	"No Charge Auto",
+};
+
+static int16_t dcdc_freq_val[] = {
+	600,
+	875,
+	1000,
+	1200
+};
+/* Chopper mode control desired value */
+static int chop_mode;
+static int chop_all;
+static int dcdc_freq;
+static int dcdc_freq_low;
+static int dcdc_mode;
+
 /* Mutex for VIN_CTRL_SET register */
 static struct mutex bd9995x_vin_mutex;
 
@@ -198,6 +227,7 @@ static int bd9995x_charger_enable(int enable)
 	int rv, reg;
 	static int prev_chg_enable = -1;
 	const struct battery_info *bi = battery_get_info();
+	int reg_prev;
 
 #ifdef CONFIG_CHARGER_BD9995X_CHGEN
 	/*
@@ -251,11 +281,15 @@ static int bd9995x_charger_enable(int enable)
 	if (rv)
 		return rv;
 
+	reg_prev = reg;
+
 	if (enable)
 		reg |= BD9995X_CMD_CHGOP_SET2_CHG_EN;
 	else
 		reg &= ~BD9995X_CMD_CHGOP_SET2_CHG_EN;
 
+	CPRINTS("bd9995x: chg_en[%d]: prev = %x new = %x",
+		enable, reg_prev, reg);
 	return ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 				BD9995X_EXTENDED_COMMAND);
 }
@@ -912,6 +946,7 @@ static void bd9995x_init(void)
 	ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 		       BD9995X_EXTENDED_COMMAND);
 
+	dcdc_freq = BD9995X_CMD_CHGOP_SET2_DCDC_CLK_SEL_1200 >> 2;
 	/*
 	 * We disable IADP (here before setting IBUS_LIM_SET and ICC_LIM_SET)
 	 * to prevent voltage on IADP/RESET pin from affecting SEL_ILIM_VAL.
@@ -979,11 +1014,73 @@ int charger_discharge_on_ac(int enable)
 {
 	int rv;
 	int reg;
+	int reg1;
+	int freq;
+	int chop_all_bit = 0;
 
 	rv = ch_raw_read16(BD9995X_CMD_CHGOP_SET2, &reg,
 				BD9995X_EXTENDED_COMMAND);
 	if (rv)
 		return rv;
+
+	/*
+	 * Test code for enabling/disabling chopper mode. Piggyback here where
+	 * CHGOP2_SET is already being read/written to make sure that the
+	 * register setting for bit0 (CHOP_ALL) tracks the value of the static
+	 * variable chopper_mode.
+	 */
+	reg1 = reg;
+
+	switch (chop_mode) {
+	case mode_off:
+		chop_all = 0;
+		chop_all_bit = 0;
+		break;
+	case mode_auto:
+		chop_all_bit = chop_all;
+		break;
+	case mode_on:
+		chop_all = 1;
+		chop_all_bit = 1;
+		break;
+	case mode_auto_no_chg:
+		chop_all_bit = 0;
+		if (chop_all && !(reg & BD9995X_CMD_CHGOP_SET2_CHG_EN))
+			chop_all_bit = 1;
+		break;
+	}
+
+	/*
+	 * At this point chop_all_bit reflects the desired value of chop mode for
+	 * the bd9995x. However, if mode == mode_auto_no_chg, then don't apply
+	 * the desired value unless the bd9995x is not charging the battery.
+	 */
+	if (chop_all_bit) {
+		reg |=  BD9995X_CMD_CHGOP_SET2_CHOP_ALL;
+		if ((reg1 & BD9995X_CMD_CHGOP_SET2_CHOP_ALL) == 0)
+			CPRINTS("Chopper Mode enabled: CHGOP_SET2 = %x, prev = %x",
+			reg, reg1);
+
+	} else {
+		reg &= ~BD9995X_CMD_CHGOP_SET2_CHOP_ALL;
+		if (reg1 & BD9995X_CMD_CHGOP_SET2_CHOP_ALL)
+			CPRINTS("Chopper Mode disabled: CHGOP_SET2 = %x, prev = %x",
+			reg, reg1);
+	}
+
+	if (dcdc_mode == mode_on) {
+		dcdc_freq = dcdc_freq_low;
+	} else if (dcdc_mode == mode_off) {
+		dcdc_freq = 3;
+	}
+	/* Make sure the current dcdc fequency matches desired */
+	freq = (reg & BD9995X_CMD_CHGOP_SET2_DCDC_CLK_SEL) >> 2;
+	if (freq != dcdc_freq) {
+		reg &= ~BD9995X_CMD_CHGOP_SET2_DCDC_CLK_SEL;
+		reg |= (dcdc_freq << 2);
+		CPRINTS("bd9995x: dcdc freq = %d kHz",
+			dcdc_freq_val[dcdc_freq]);
+	}
 
 	/*
 	 * Suspend USB charging and DC/DC converter so that BATT_LEARN mode
@@ -1001,6 +1098,32 @@ int charger_discharge_on_ac(int enable)
 	return ch_raw_write16(BD9995X_CMD_CHGOP_SET2, reg,
 				BD9995X_EXTENDED_COMMAND);
 }
+
+static void bd99995x_chopper_mode_disable(void)
+{
+	if (chop_mode == mode_auto || chop_mode == mode_auto_no_chg)
+		chop_all = 0;
+	if (dcdc_mode == mode_auto)
+		dcdc_freq = 3;
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, bd99995x_chopper_mode_disable,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, bd99995x_chopper_mode_disable,
+	     HOOK_PRIO_DEFAULT);
+
+static void bd99995x_chopper_mode_enable(void)
+{
+	if (chop_mode == mode_auto || chop_mode == mode_auto_no_chg)
+		chop_all = 1;
+	if (dcdc_mode == mode_auto)
+		dcdc_freq = dcdc_freq_low;
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, bd99995x_chopper_mode_enable,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, bd99995x_chopper_mode_enable,
+	     HOOK_PRIO_DEFAULT);
+
+
 
 int charger_get_vbus_voltage(int port)
 {
@@ -1290,6 +1413,55 @@ static int read_ext(uint8_t cmd)
 	ch_raw_read16(cmd, &read, BD9995X_EXTENDED_COMMAND);
 	return read;
 }
+
+static void bd9995x_print_chgop2_state(void)
+{
+	ccprintf("CHGOP2_SET = 0x%x\n", read_ext(0xc));
+	ccprintf("chopper_mode = %s, dcdc_mode = %s freq_low = %d kHz\n",
+		 chgop2_mode_disp[chop_mode],
+		 chgop2_mode_disp[dcdc_mode],
+		 dcdc_freq_val[dcdc_freq_low]);
+}
+
+static int console_bd9995x_chgop2(int argc, char **argv)
+{
+	int val;
+	char *e;
+
+	if (argc < 2) {
+		bd9995x_print_chgop2_state();
+		return EC_SUCCESS;
+	}
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	val = strtoi(argv[2], &e, 10);
+	if (*e || val >= mode_num)
+		return EC_ERROR_PARAM2;
+
+	if (!strcasecmp(argv[1], "chop")) {
+		chop_mode = val;
+	} else if (!strcasecmp(argv[1], "dcdc")) {
+		dcdc_mode = val;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	if (argc == 4) {
+		val = strtoi(argv[3], &e, 10);
+		if (*e || val >= 4 || val < 0)
+			return EC_ERROR_PARAM4;
+		dcdc_freq_low = val;
+	}
+
+	bd9995x_print_chgop2_state();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(chgop2, console_bd9995x_chgop2,
+			"<chop|dcdc> <mode> <val>",
+			"Control of DC-DC and chopper mode");
+
 
 /* Dump all readable registers on bd9995x */
 static int console_bd9995x_dump_regs(int argc, char **argv)

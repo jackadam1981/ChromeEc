@@ -578,7 +578,7 @@ static int charger_should_discharge_on_ac(struct charge_state_data *curr)
 	if (!battery_is_cut_off() &&
 		!(curr->batt.flags & BATT_FLAG_WANT_CHARGE) &&
 		(curr->batt.status & STATUS_FULLY_CHARGED))
-		return 1;
+		return 0;
 
 	/*
 	 * To avoid inrush current from the external charger, enable
