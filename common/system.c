@@ -97,6 +97,12 @@ static int jumped_to_image;
 static int disable_jump;  /* Disable ALL jumps if system is locked */
 static int force_locked;  /* Force system locked even if WP isn't enabled */
 static enum ec_reboot_cmd reboot_at_shutdown;
+static int warm_reboot_notified;
+
+int system_is_warm_reboot_notified(void)
+{
+	return warm_reboot_notified;
+}
 
 /* On-going actions preventing going into deep-sleep mode */
 uint32_t sleep_mask;
@@ -926,6 +932,12 @@ static void system_common_shutdown(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, system_common_shutdown, HOOK_PRIO_DEFAULT);
 
+static void system_chipset_resumed(void)
+{
+	warm_reboot_notified = 0;
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, system_chipset_resumed, HOOK_PRIO_DEFAULT);
+
 /*****************************************************************************/
 /* Console commands */
 
@@ -1436,6 +1448,11 @@ int host_command_reboot(struct host_cmd_handler_args *args)
 		return EC_RES_SUCCESS;
 	}
 
+	if (p.flags & EC_REBOOT_FLAG_WARM_REBOOT) {
+		CPRINTS("Warm reboot is notified");
+		warm_reboot_notified = 1;
+		return EC_RES_SUCCESS;
+	}
 	if (p.flags & EC_REBOOT_FLAG_SWITCH_RW_SLOT) {
 #ifdef CONFIG_VBOOT_EFS
 		if (system_set_active_copy(system_get_update_copy()))

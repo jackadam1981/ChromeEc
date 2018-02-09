@@ -4076,12 +4076,14 @@ enum ec_reboot_cmd {
 	EC_REBOOT_DISABLE_JUMP = 5,  /* Disable jump until next reboot */
 	EC_REBOOT_HIBERNATE = 6,     /* Hibernate EC */
 	EC_REBOOT_HIBERNATE_CLEAR_AP_OFF = 7, /* and clears AP_OFF flag */
+	EC_REBOOT_WARM_REBOOT = 8,   /* Warm reboot notification */
 };
 
 /* Flags for ec_params_reboot_ec.reboot_flags */
 #define EC_REBOOT_FLAG_RESERVED0      (1 << 0)  /* Was recovery request */
 #define EC_REBOOT_FLAG_ON_AP_SHUTDOWN (1 << 1)  /* Reboot after AP shutdown */
 #define EC_REBOOT_FLAG_SWITCH_RW_SLOT (1 << 2)  /* Switch RW slot */
+#define EC_REBOOT_FLAG_WARM_REBOOT    (1 << 3)  /* Warm reboot */
 
 struct __ec_align1 ec_params_reboot_ec {
 	uint8_t cmd;           /* enum ec_reboot_cmd */
