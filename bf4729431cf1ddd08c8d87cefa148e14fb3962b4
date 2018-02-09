@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74b41548_7a6cb2e7",
+        "filename": "board/meowth_fp/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-09T13:32:15Z",
+      "side": 1,
+      "message": "Since you\u0027re hashing a lot of data, you might want to consider CONFIG_SHA256_UNROLLED",
+      "revId": "bf4729431cf1ddd08c8d87cefa148e14fb3962b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07565846_3564c61f",
+        "filename": "board/meowth_fp/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-09T13:32:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure to understand why this is a problem?\n\nAlso, you only define this in RW? RW verification should be in RO, right?",
+      "revId": "bf4729431cf1ddd08c8d87cefa148e14fb3962b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
