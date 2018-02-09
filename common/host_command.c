@@ -401,6 +401,9 @@ static const struct host_command *find_host_command(int command)
 #endif
 }
 
+#define SUPPRESSED_CMD_INTERVAL (60 * 60 * SECOND)
+static timestamp_t suppressed_cmd_deadline;
+
 static void host_command_init(void)
 {
 	/* Initialize memory map ID area */
@@ -413,6 +416,8 @@ static void host_command_init(void)
 	host_set_single_event(EC_HOST_EVENT_INTERFACE_READY);
 	HOST_EVENT_CPRINTS("hostcmd init", host_get_events());
 #endif
+
+	suppressed_cmd_deadline.val = get_time().val + SUPPRESSED_CMD_INTERVAL;
 }
 
 void host_command_task(void *u)
@@ -560,21 +565,40 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CMD_VERSIONS,
 		     host_command_get_cmd_versions,
 		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
-extern uint16_t host_command_suppressed[];
-/* Default suppress list. Define yours in board.c. */
-static uint32_t suppressed_count;
-
 static int host_command_is_suppressed(uint16_t cmd)
 {
 #ifdef CONFIG_SUPPRESS_HOST_COMMANDS
-	uint16_t *p = host_command_suppressed;
-	while (*p != HOST_COMMAND_SUPPRESS_DELIMITER) {
-		if (*p++ == cmd)
+	int i;
+	for (i = 0; i < hc_suppressed_count; i++) {
+		if (hc_suppressed[i].cmd == cmd) {
+			hc_suppressed->count++;
 			return 1;
+		}
 	}
 #endif
 	return 0;
 }
+
+/*
+ * Print & reset hc_suppressed. It should be called periodically and on
+ * important events (e.g. shutdown, sysjump, etc.).
+ */
+static void dump_host_command_suppressed(void)
+{
+	int i;
+	CPUTS("[HC Suppressed CMD:");
+	for (i = 0; i < hc_suppressed_count; i++) {
+		cprintf(CC_HOSTCMD, " 0x%x=%d",
+			hc_suppressed[i].cmd, hc_suppressed[i].count);
+		hc_suppressed[i].count = 0;
+	}
+	CPUTS("]\n");
+	cflush();
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
+	     dump_host_command_suppressed, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_SYSJUMP,
+	     dump_host_command_suppressed, HOOK_PRIO_DEFAULT);
 
 /**
  * Print debug output for the host command request, before it's processed.
@@ -595,7 +619,12 @@ static void host_command_debug_request(struct host_cmd_handler_args *args)
 	if (hcdebug == HCDEBUG_NORMAL) {
 		uint64_t t = get_time().val;
 		if (host_command_is_suppressed(args->command)) {
-			suppressed_count++;
+			timestamp_t now = get_time();
+			if (timestamp_expired(suppressed_cmd_deadline, &now)) {
+				dump_host_command_suppressed();
+				suppressed_cmd_deadline.val = now.val +
+						SUPPRESSED_CMD_INTERVAL;
+			}
 			return;
 		}
 		if (args->command == hc_prev_cmd &&
@@ -866,7 +895,7 @@ static int command_hcdebug(int argc, char **argv)
 
 	ccprintf("Host command debug mode is %s\n",
 		 hcdebug_mode_names[hcdebug]);
-	ccprintf("%u suppressed\n", suppressed_count);
+	dump_host_command_suppressed();
 
 	return EC_SUCCESS;
 }
