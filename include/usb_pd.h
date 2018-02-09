@@ -1411,6 +1411,14 @@ static inline void pd_send_host_event(int mask) { }
 int pd_alt_mode(int port, uint16_t svid);
 
 /**
+ * Determine if any port is in alternate mode or not.
+ *
+ * @param svid
+ * @return 1: yes or 0: no.
+ */
+int pd_is_in_alt_mode(uint16_t svid);
+
+/**
  * Send hpd over USB PD.
  *
  * @param port port number.

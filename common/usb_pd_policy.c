@@ -395,6 +395,15 @@ int pd_alt_mode(int port, uint16_t svid)
 	return (modep) ? modep->opos : -1;
 }
 
+int pd_is_in_alt_mode(uint16_t svid)
+{
+	int i;
+	for (i = 0; i < CONFIG_USB_PD_PORT_COUNT; i++)
+		if (pd_alt_mode(i, svid) > 0)
+			return 1;
+	return 0;
+}
+
 int allocate_mode(int port, uint16_t svid)
 {
 	int i, j;

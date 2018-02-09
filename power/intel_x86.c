@@ -19,6 +19,7 @@
 #include "power_button.h"
 #include "system.h"
 #include "task.h"
+#include "usb_pd.h"
 #include "util.h"
 #include "vboot.h"
 #include "wireless.h"
