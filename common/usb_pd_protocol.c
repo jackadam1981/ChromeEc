@@ -1853,13 +1853,18 @@ static void pd_partner_port_reset(int port)
 	   (RESET_FLAG_BROWNOUT | RESET_FLAG_POWER_ON))
 		return;
 
+	/*
+	 * Clear the active contract bit before we apply Rp incase we
+	 * intentionally brown out because we cut off our only power supply
+	 */
+	pd_set_saved_active(port, 0);
+
 	/* Provide Rp for 200 msec. or until we no longer have VBUS. */
 	tcpm_set_cc(port, TYPEC_CC_RP);
 	timeout = get_time().val + 200 * MSEC;
 
 	while (get_time().val < timeout && pd_is_vbus_present(port))
 		msleep(10);
-	pd_set_saved_active(port, 0);
 }
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
@@ -2348,6 +2353,13 @@ void pd_task(void *u)
 					pd[port].flags |=
 						PD_FLAGS_TS_DTS_PARTNER;
 
+
+#ifdef CONFIG_USBC_VCONN
+				/* Enable Vconn before Vbus as per spec. */
+				set_vconn(port, 1);
+				pd[port].flags |= PD_FLAGS_VCONN_ON;
+#endif
+
 #ifndef CONFIG_USBC_BACKWARDS_COMPATIBLE_DFP
 				/* Enable VBUS */
 				if (pd_set_power_supply_ready(port)) {
@@ -2363,10 +2375,7 @@ void pd_task(void *u)
 				if (pd_comm_is_enabled(port))
 					tcpm_set_rx_enable(port, 1);
 
-#ifdef CONFIG_USBC_VCONN
-				set_vconn(port, 1);
-				pd[port].flags |= PD_FLAGS_VCONN_ON;
-#endif
+
 
 				pd[port].flags |= PD_FLAGS_CHECK_PR_ROLE |
 						  PD_FLAGS_CHECK_DR_ROLE;
