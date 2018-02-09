@@ -8,11 +8,13 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#ifndef BOARD_SORAKA
 /*
  * Allow dangerous commands.
  * TODO: Remove this config before production.
  */
 #define CONFIG_SYSTEM_UNLOCKED
+#endif
 
 /* EC */
 #define CONFIG_ADC
@@ -145,6 +147,9 @@
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
+#ifdef BOARD_SORAKA
+#define CONFIG_USB_PD_COMM_LOCKED
+#endif
 #define CONFIG_USB_PD_CUSTOM_VDM
 #define CONFIG_USB_PD_DISCHARGE_TCPC
 #define CONFIG_USB_PD_DUAL_ROLE
