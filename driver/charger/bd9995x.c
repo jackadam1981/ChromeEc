@@ -51,6 +51,32 @@ static enum bd9995x_command charger_map_cmd = BD9995X_INVALID_COMMAND;
 
 static struct mutex bd9995x_map_mutex;
 
+enum chgop2_mode {
+	mode_off = 0,
+	mode_auto,
+	mode_on,
+	mode_num
+};
+
+static char chgop2_mode_disp[mode_num][5] = {
+	"Off",
+	"Auto",
+	"On"
+};
+
+static int16_t dcdc_freq_val[] = {
+	600,
+	875,
+	1000,
+	1200
+};
+/* Chopper mode control desired value */
+static int chop_mode;
+static int chop_all;
+static int dcdc_freq;
+static int dcdc_freq_low;
+static int dcdc_mode;
+
 #ifdef HAS_TASK_USB_CHG
 /* USB switch */
 static enum usb_switch usb_switch_state[BD9995X_CHARGE_PORT_COUNT] = {
@@ -868,11 +894,51 @@ int charger_discharge_on_ac(int enable)
 {
 	int rv;
 	int reg;
+	int reg1, freq;
 
 	rv = ch_raw_read16(BD9995X_CMD_CHGOP_SET2, &reg,
 				BD9995X_EXTENDED_COMMAND);
 	if (rv)
 		return rv;
+
+	/*
+	 * Test code for enabling/disabling chopper mode. Piggyback here where
+	 * CHGOP2_SET is already being read/written to make sure that the
+	 * register setting for bit0 (CHOP_ALL) tracks the value of the static
+	 * variable chopper_mode.
+	 */
+	reg1 = reg;
+	if (chop_mode == mode_on) {
+		chop_all = 1;
+	} else if (chop_mode == mode_off) {
+		chop_all = 0;
+	}
+	if (chop_all) {
+		reg |=  BD9995X_CMD_CHGOP_SET2_CHOP_ALL;
+		if ((reg1 & BD9995X_CMD_CHGOP_SET2_CHOP_ALL) == 0)
+			CPRINTS("Chopper Mode enabled: CHGOP_SET2 = %x, prev = %x",
+			reg, reg1);
+
+	} else {
+		reg &= ~BD9995X_CMD_CHGOP_SET2_CHOP_ALL;
+		if (reg1 & BD9995X_CMD_CHGOP_SET2_CHOP_ALL)
+			CPRINTS("Chopper Mode disabled: CHGOP_SET2 = %x, prev = %x",
+			reg, reg1);
+	}
+
+	if (dcdc_mode == mode_on) {
+		dcdc_freq = dcdc_freq_low;
+	} else if (dcdc_mode == mode_off) {
+		dcdc_freq = 3;
+	}
+	/* Make sure the current dcdc fequency matches desired */
+	freq = (reg & BD9995X_CMD_CHGOP_SET2_DCDC_CLK_SEL) >> 2;
+	if (freq != dcdc_freq) {
+		reg &= ~BD9995X_CMD_CHGOP_SET2_DCDC_CLK_SEL;
+		reg |= (dcdc_freq << 2);
+		CPRINTS("bd9995x: dcdc freq = %d kHz",
+			dcdc_freq_val[dcdc_freq]);
+	}
 
 	/*
 	 * Suspend USB charging and DC/DC converter so that BATT_LEARN mode
@@ -1161,6 +1227,54 @@ static int read_ext(uint8_t cmd)
 	ch_raw_read16(cmd, &read, BD9995X_EXTENDED_COMMAND);
 	return read;
 }
+
+static void bd9995x_print_chgop2_state(void)
+{
+	ccprintf("CHGOP2_SET = 0x%x\n", read_ext(0xc));
+	ccprintf("chopper_mode = %s, dcdc_mode = %s freq_low = %d kHz\n",
+		 chgop2_mode_disp[chop_mode],
+		 chgop2_mode_disp[dcdc_mode],
+		 dcdc_freq_val[dcdc_freq_low]);
+}
+
+static int console_bd9995x_chgop2(int argc, char **argv)
+{
+	int val;
+	char *e;
+
+	if (argc < 2) {
+		bd9995x_print_chgop2_state();
+		return EC_SUCCESS;
+	}
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	val = strtoi(argv[2], &e, 10);
+	if (*e || val >= mode_num)
+		return EC_ERROR_PARAM2;
+
+	if (!strcasecmp(argv[1], "chop")) {
+		chop_mode = val;
+	} else if (!strcasecmp(argv[1], "dcdc")) {
+		dcdc_mode = val;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	if (argc == 4) {
+		val = strtoi(argv[3], &e, 10);
+		if (*e || val >= 4 || val < 0)
+			return EC_ERROR_PARAM4;
+		dcdc_freq_low = val;
+	}
+
+	bd9995x_print_chgop2_state();
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(chgop2, console_bd9995x_chgop2,
+			"<chop|dcdc> <mode> <val>",
+			"Control of DC-DC and chopper mode");
 
 /* Dump all readable registers on bd9995x */
 static int console_bd9995x_dump_regs(int argc, char **argv)
