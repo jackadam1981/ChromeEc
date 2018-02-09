@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1675d7f_d9599081",
+        "filename": "board/elm/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-02-09T10:57:16Z",
+      "side": 1,
+      "message": "Do not add empty line here.",
+      "revId": "9c6b6840c60cf06f59c794b7987f2a22fd1bfe00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f5b412_814bbc56",
+        "filename": "board/elm/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2018-02-09T10:57:16Z",
+      "side": 1,
+      "message": "Do not replace TAB with spaces.",
+      "range": {
+        "startLine": 497,
+        "startChar": 0,
+        "endLine": 497,
+        "endChar": 8
+      },
+      "revId": "9c6b6840c60cf06f59c794b7987f2a22fd1bfe00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
