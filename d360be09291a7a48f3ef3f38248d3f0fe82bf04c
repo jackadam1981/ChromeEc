@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9acf605_3a703acf",
+        "filename": "common/host_command.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-09T20:54:24Z",
+      "side": 1,
+      "message": "Or maybe if it\u0027s been more than X seconds (X\u003d600?) since the last suppressed command?",
+      "range": {
+        "startLine": 616,
+        "startChar": 3,
+        "endLine": 617,
+        "endChar": 35
+      },
+      "revId": "d360be09291a7a48f3ef3f38248d3f0fe82bf04c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
