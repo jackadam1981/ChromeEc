@@ -54,12 +54,11 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
-uint16_t host_command_suppressed[] = {
-	EC_CMD_CONSOLE_SNAPSHOT,
-	EC_CMD_CONSOLE_READ,
-	EC_CMD_PD_GET_LOG_ENTRY,
-	HOST_COMMAND_SUPPRESS_DELIMITER,
+const uint16_t hc_suppressed_cmd[] = {
+	EC_CMD_CONSOLE_SNAPSHOT, EC_CMD_CONSOLE_READ, EC_CMD_PD_GET_LOG_ENTRY,
 };
+uint32_t hc_suppressed_cnt[ARRAY_SIZE(hc_suppressed_cmd)];
+const int hc_suppressed_len = ARRAY_SIZE(hc_suppressed_cmd);
 
 static void tcpc_alert_event(enum gpio_signal signal)
 {

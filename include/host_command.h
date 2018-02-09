@@ -337,7 +337,8 @@ void host_send_sysrq(uint8_t key);
 uint32_t get_feature_flags0(void);
 uint32_t get_feature_flags1(void);
 
-/* Used to define the end of host_command_suppressed */
-#define HOST_COMMAND_SUPPRESS_DELIMITER 0xFFFF
+const extern uint16_t hc_suppressed_cmd[];
+extern uint32_t hc_suppressed_cnt[];
+extern const int hc_suppressed_len;
 
 #endif  /* __CROS_EC_HOST_COMMAND_H */
