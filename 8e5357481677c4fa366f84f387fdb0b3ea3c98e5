@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc95e200_36853013",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-09T00:11:18Z",
+      "side": 1,
+      "message": "nit: !CHIP_FAMILY_STM32H7",
+      "range": {
+        "startLine": 131,
+        "startChar": 10,
+        "endLine": 131,
+        "endChar": 29
+      },
+      "revId": "8e5357481677c4fa366f84f387fdb0b3ea3c98e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
