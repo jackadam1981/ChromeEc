@@ -22,6 +22,30 @@
       "revId": "3e23536d815426c107551df97cbefcc94a3971f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c7235ff_e41c8c28",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-12T03:50:11Z",
+      "side": 1,
+      "message": "By default, power button SMI pulse from EC is enabled. Depthcharge can instruct EC to disable this pulse.  However, EC was not honoring that setting after a sysjump here. Hence, we need to ensure that power button is asserted by the EC on sysjump only if power button pulse is not disabled explicitly by AP.",
+      "parentUuid": "98b417fa_02f1617c",
+      "range": {
+        "startLine": 209,
+        "startChar": 5,
+        "endLine": 209,
+        "endChar": 13
+      },
+      "revId": "3e23536d815426c107551df97cbefcc94a3971f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
