@@ -70,6 +70,30 @@
       "revId": "3e23536d815426c107551df97cbefcc94a3971f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e606191_32c1c69c",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-12T04:27:06Z",
+      "side": 1,
+      "message": "\u003e Does power_button_pulse_enabled control \u0027power button SMI pulse\u0027?\n\nYes, power_button_pulse_enabled controls the pulse from EC to AP (L278 in this file).\n\n\u003e And doesn\u0027t set_pwrbtn_to_pch(0,0) assert the power button\n\nYes, set_pwrbtn_to_pch asserts the power button to the PCH. I wrote the comment using negative connotation because power_button_pulse_enabled is enabled by default. What I meant by the comment \"If power button SMI is disabled, then it should be honored.\" is --\u003e Do not assert power button when power_button_pulse_enabled is disabled by AP. But, I understand that the comment could be a little confusing. I can update it to \"enabled\" if that sounds correct.",
+      "parentUuid": "3c905ccf_6f68197c",
+      "range": {
+        "startLine": 209,
+        "startChar": 5,
+        "endLine": 209,
+        "endChar": 13
+      },
+      "revId": "3e23536d815426c107551df97cbefcc94a3971f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
