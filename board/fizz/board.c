@@ -639,26 +639,31 @@ static int get_custom_rpm(int fan, int pct, int oem_id)
 	const struct fan_step *fan_table = fan_tables[oem_id];
 	int i;
 
-	/*
-	 * Compare the pct and previous pct, we have the three paths :
-	 *  1. decreasing path. (check the off point)
-	 *  2. increasing path. (check the on point)
-	 *  3. invariant path. (return the current RPM)
-	 */
-	if (pct < previous_pct) {
-		for (i = current_level; i >= 0; i--) {
-			if (pct <= fan_table[i].off)
-				current_level = i - 1;
-			else
-				break;
+	/* Fan control is needed only in S0. */
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		/*
+		 * Compare the pct and previous pct, we have the three paths :
+		 *  1. decreasing path. (check the off point)
+		 *  2. increasing path. (check the on point)
+		 *  3. invariant path. (return the current RPM)
+		 */
+		if (pct < previous_pct) {
+			for (i = current_level; i >= 0; i--) {
+				if (pct <= fan_table[i].off)
+					current_level = i - 1;
+				else
+					break;
+			}
+		} else if (pct > previous_pct) {
+			for (i = current_level + 1; i < NUM_FAN_LEVELS; i++) {
+				if (pct >= fan_table[i].on)
+					current_level = i;
+				else
+					break;
+			}
 		}
-	} else if (pct > previous_pct) {
-		for (i = current_level + 1; i < NUM_FAN_LEVELS; i++) {
-			if (pct >= fan_table[i].on)
-				current_level = i;
-			else
-				break;
-		}
+	} else {
+		current_level = pct = 0;
 	}
 
 	if (current_level < 0)
