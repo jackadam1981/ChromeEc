@@ -118,6 +118,30 @@
       "revId": "934b1636ada47caa848d279543bb629cb37e6dcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab79eb8c_f6bf22b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-12T09:10:09Z",
+      "side": 1,
+      "message": "\u003e As an aside, I think we need that change that Shawn was working on.\n\nAt least the portion fixing the issue on Hard Reset seems sorely needed.\n\n\u003e For the current issue where we send the SoftReset with the wrong role bit, I think we could save our data role as well. Basically, turn the battery backed byte in RAM to a byte of flags. Maybe bit 0 means explicit contract in place, bit 1 could be data role. We could also expand upon this if we needed to keep more state. This should be applicable for EC soft resets (e.g. reboot, sysjump).\n\n\nIn the past, we have been wary to go down this path because, you might actually have a lot of state at the end. On top of that, part of your state might be saved in RO firmware.\n\n\u003e \n\u003e If it\u0027s a hard reset or no explicit contract in place, we should set the data roles to their default for Source vs Sink.\n\n\nDefinitely.",
+      "parentUuid": "fece8a69_297211cb",
+      "range": {
+        "startLine": 21,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 70
+      },
+      "revId": "934b1636ada47caa848d279543bb629cb37e6dcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
