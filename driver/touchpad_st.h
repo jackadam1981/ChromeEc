@@ -21,6 +21,14 @@
 #define ST_TP_CMD_SPI_HOST_BUFFER_ACK		0xC0
 #define ST_TP_CMD_READ_SPI_HOST_BUFFER		0xC1
 
+#define ST_TP_CMD_WRITE_HW_REG			0xFA
+#define ST_TP_CMD_READ_HW_REG			0xFB
+
+/* Max number of bytes that the DMA can burn on the flash in one shot in FTI */
+#define ST_TP_FLASH_BUFFER_SIZE		(64 * 1024)
+/* Max number of bytes that can be written in I2C to the DMA */
+#define ST_TP_DMA_CHUNK_SIZE		32
+
 #define ST_HOST_BUFFER_DATA_VALID	(1 << 0)
 #define ST_HOST_BUFFER_MT_READY		(1 << 3)
 #define ST_HOST_BUFFER_SF_READY		(1 << 4)
@@ -45,6 +53,11 @@
 #define ST_TOUCH_SENSE_SIZE	(ST_TOUCH_COLS * BYTES_PER_PIXEL)
 
 #define ST_TP_MEM_ID_SYSTEM_INFO	0x01
+
+#define ST_TP_FLASH_OFFSET_CODE (0x0000 << 2)
+#define ST_TP_FLASH_OFFSET_CONFIG (0x7C00 << 2)
+#define ST_TP_FLASH_OFFSET_CX (0x7000 << 2)
+
 
 struct st_tp_host_data_header_t {
 #define ST_TP_HEADER_MAGIC	0xA5
