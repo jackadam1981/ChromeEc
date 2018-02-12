@@ -198,7 +198,7 @@
 #define CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y 1500
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X 1000 /* tenth of mm */
 #define CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y 500 /* tenth of mm */
-#define CONFIG_TOUCHPAD_VIRTUAL_SIZE (48*1024)
+#define CONFIG_TOUCHPAD_VIRTUAL_SIZE (128*1024)
 #else
 #error "No touchpad information for board."
 #endif

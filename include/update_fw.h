@@ -216,10 +216,12 @@ struct touchpad_info {
 			uint16_t fw_version;
 			uint16_t fw_checksum;
 		} elan;
+#if 0
 		struct {
 			uint64_t release_info;
 			uint32_t fw_crc;
 		} st;
+#endif
 	} /* anonymous */;
 } __packed;
 
