@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "715891ea_e089ddbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-02-13T08:00:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9697ad9a_e16d427b",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 2
+      },
+      "revId": "ce1dec1e3291eb6ce74754dcb2950f5336b9027f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a22af84_aa271b74",
         "filename": "chip/npcx/registers.h",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "ce1dec1e3291eb6ce74754dcb2950f5336b9027f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42afba5a_90bf4162",
+        "filename": "chip/npcx/registers.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1679,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-02-13T08:00:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a22af84_aa271b74",
+      "revId": "ce1dec1e3291eb6ce74754dcb2950f5336b9027f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
