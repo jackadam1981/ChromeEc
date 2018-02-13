@@ -9,6 +9,7 @@
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
+#include "hooks.h"
 #include "intc.h"
 #include "registers.h"
 #include "system.h"
@@ -150,11 +151,16 @@ static void uart_config(void)
 	 */
 	IT83XX_UART_FCR(UART_PORT) = 0x07;
 
+}
+
+static void uart_rx_enable_interrupt(void)
+{
 	/*
 	 * set OUT2 bit to enable interrupt logic.
 	 */
 	IT83XX_UART_MCR(UART_PORT) = 0x08;
 }
+DECLARE_HOOK(HOOK_INIT, uart_rx_enable_interrupt, HOOK_PRIO_FIRST);
 
 #ifdef CONFIG_UART_HOST
 static void host_uart_config(void)
