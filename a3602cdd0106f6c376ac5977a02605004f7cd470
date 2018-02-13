@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a73901e_f2a3bece",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-13T07:01:56Z",
+      "side": 1,
+      "message": "!\u003d EC_SUCCESS)",
+      "range": {
+        "startLine": 840,
+        "startChar": 49,
+        "endLine": 840,
+        "endChar": 50
+      },
+      "revId": "a3602cdd0106f6c376ac5977a02605004f7cd470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baa0f2ae_885ce808",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-13T07:01:56Z",
+      "side": 1,
+      "message": "!\u003d EC_SUCCESS",
+      "range": {
+        "startLine": 848,
+        "startChar": 48,
+        "endLine": 848,
+        "endChar": 49
+      },
+      "revId": "a3602cdd0106f6c376ac5977a02605004f7cd470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ac199ad_3e024837",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-13T07:01:56Z",
+      "side": 1,
+      "message": "!val?",
+      "range": {
+        "startLine": 851,
+        "startChar": 5,
+        "endLine": 851,
+        "endChar": 8
+      },
+      "revId": "a3602cdd0106f6c376ac5977a02605004f7cd470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c49cdb10_3c3fd02c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-13T07:01:56Z",
+      "side": 1,
+      "message": "passed in flag is already left shifted by required amount i.e. PD_BBRMFLG_EXPLICIT_CONTRACT is defined as (1 \u003c\u003c 0). Do you still need 1 \u003c\u003c flag here?",
+      "range": {
+        "startLine": 852,
+        "startChar": 18,
+        "endLine": 852,
+        "endChar": 29
+      },
+      "revId": "a3602cdd0106f6c376ac5977a02605004f7cd470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fe5f0c6_95d1987d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-13T07:01:56Z",
+      "side": 1,
+      "message": "same as above.",
+      "range": {
+        "startLine": 854,
+        "startChar": 18,
+        "endLine": 854,
+        "endChar": 27
+      },
+      "revId": "a3602cdd0106f6c376ac5977a02605004f7cd470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
