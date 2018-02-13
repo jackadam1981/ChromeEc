@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "5b524c77_5527c4d9",
+        "filename": "board/nami/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-13T03:26:49Z",
+      "side": 1,
+      "message": "Yes, I plan to remove the power LED and let it become battery LED. Because this EC FW also will be for Vayne, and Vayne only have battery LED.",
+      "parentUuid": "d43e2a0c_0cdf1868",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "33eacd07ba7e7e4b0e81d9950864e9d5d99bb462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2fe647ae_aeeaf935",
         "filename": "board/nami/led.c",
         "patchSetId": 6
@@ -59,6 +83,30 @@
       "writtenOn": "2018-02-13T03:05:01Z",
       "side": 1,
       "message": "I\u0027m wondering we should hook HOOK_BATTERY_SOC_CHANGE and HOOK_AC_CHANGE to configure the battery LED\u0027s behavior (as similarly done for the power LED). In the hook, you can call charge_get_state(). Then, you don\u0027t need battery_tick below.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 1
+      },
+      "revId": "33eacd07ba7e7e4b0e81d9950864e9d5d99bb462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8e514a9_fb578476",
+        "filename": "board/nami/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-13T03:26:49Z",
+      "side": 1,
+      "message": "I ever do it at before, and i find there is no event issue when battery charge status changed.\nAnd I try to refer to other project, and find no one use \" HOOK_BATTERY_SOC_CHANGE and HOOK_AC_CHANGE\" to configure the battery LED\u0027s behavior. So i thinks maybe the \"HOOK_BATTERY_SOC_CHANGE\" will trigger only when battery remove or insert.\nI will check it again today.",
+      "parentUuid": "2fe647ae_aeeaf935",
       "range": {
         "startLine": 126,
         "startChar": 0,
