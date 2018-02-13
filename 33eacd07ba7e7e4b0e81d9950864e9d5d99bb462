@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd3ede2b_8d73c6e0",
+        "filename": "board/nami/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-13T03:05:01Z",
+      "side": 1,
+      "message": "not used.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "33eacd07ba7e7e4b0e81d9950864e9d5d99bb462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d43e2a0c_0cdf1868",
+        "filename": "board/nami/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-13T03:05:01Z",
+      "side": 1,
+      "message": "You\u0027re calling pulse_battery_led from led_tick but actual pulsing is done by board_led_set_battery. Are you removing power LED control?",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "33eacd07ba7e7e4b0e81d9950864e9d5d99bb462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe647ae_aeeaf935",
+        "filename": "board/nami/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-13T03:05:01Z",
+      "side": 1,
+      "message": "I\u0027m wondering we should hook HOOK_BATTERY_SOC_CHANGE and HOOK_AC_CHANGE to configure the battery LED\u0027s behavior (as similarly done for the power LED). In the hook, you can call charge_get_state(). Then, you don\u0027t need battery_tick below.",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 1
+      },
+      "revId": "33eacd07ba7e7e4b0e81d9950864e9d5d99bb462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccbd3bbb_418d2a5e",
+        "filename": "board/nami/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-13T03:05:01Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 163,
+        "startChar": 9,
+        "endLine": 163,
+        "endChar": 25
+      },
+      "revId": "33eacd07ba7e7e4b0e81d9950864e9d5d99bb462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
