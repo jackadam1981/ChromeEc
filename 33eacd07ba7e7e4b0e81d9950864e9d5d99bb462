@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e3bcb282_f8db09a0",
+        "filename": "board/nami/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-13T06:10:40Z",
+      "side": 1,
+      "message": "I confirm the \"HOOK_BATTERY_SOC_CHANGE\" event only issue when battery remove and insert.\nSo i don\u0027t think we can use \" HOOK_BATTERY_SOC_CHANGE and HOOK_AC_CHANGE\" to configure the battery LED like power LED control in Fizz.",
+      "parentUuid": "b8e514a9_fb578476",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 1
+      },
+      "revId": "33eacd07ba7e7e4b0e81d9950864e9d5d99bb462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ccbd3bbb_418d2a5e",
         "filename": "board/nami/led.c",
         "patchSetId": 6
