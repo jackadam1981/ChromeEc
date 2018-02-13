@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "602143a8_30b7f313",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-13T07:06:42Z",
+      "side": 1,
+      "message": "i mixed up my squashing and squashed it in the child commit. no need for shifting here.",
+      "parentUuid": "c49cdb10_3c3fd02c",
+      "range": {
+        "startLine": 852,
+        "startChar": 18,
+        "endLine": 852,
+        "endChar": 29
+      },
+      "revId": "a3602cdd0106f6c376ac5977a02605004f7cd470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fe5f0c6_95d1987d",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 3
