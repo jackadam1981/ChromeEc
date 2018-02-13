@@ -142,6 +142,7 @@
 /* Modules we want to exclude */
 #undef CONFIG_PECI
 #undef CONFIG_CMD_HASH
+#undef CONFIG_CMD_MD
 #undef CONFIG_CMD_TEMP_SENSOR
 #undef CONFIG_CMD_TIMERINFO
 #undef CONFIG_CONSOLE_CMDHELP
