@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a655453_0a51c50f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-13T15:49:28Z",
+      "side": 1,
+      "message": "73055990",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "09822dc83edd296c6149b5651c58e427b66c9fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "813ba55d_2574ebbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-13T15:49:28Z",
+      "side": 1,
+      "message": "You need to test at least resume, suspend, lm3592 command and these should be mentioned.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "09822dc83edd296c6149b5651c58e427b66c9fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "859ed992_f3f1bfb6",
+        "filename": "driver/lm3592.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-13T15:49:28Z",
+      "side": 1,
+      "message": "why do you need this?",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "09822dc83edd296c6149b5651c58e427b66c9fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8947831c_82b372b6",
+        "filename": "driver/lm3592.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-13T15:49:28Z",
+      "side": 1,
+      "message": "Not used.",
+      "range": {
+        "startLine": 19,
+        "startChar": 11,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "09822dc83edd296c6149b5651c58e427b66c9fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "10b24e03_d86da218",
         "filename": "driver/lm3592.c",
         "patchSetId": 1
@@ -13,6 +105,52 @@
       "writtenOn": "2018-02-13T02:31:26Z",
       "side": 1,
       "message": "extra space, perhaps move above the return statement.",
+      "revId": "09822dc83edd296c6149b5651c58e427b66c9fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a24cb3f_280d7f65",
+        "filename": "driver/lm3592.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-13T15:49:28Z",
+      "side": 1,
+      "message": "Where is this defined?",
+      "range": {
+        "startLine": 53,
+        "startChar": 10,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "09822dc83edd296c6149b5651c58e427b66c9fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b31fcd69_d8490733",
+        "filename": "driver/lm3592.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-13T15:49:28Z",
+      "side": 1,
+      "message": "Please align indentation.",
+      "range": {
+        "startLine": 14,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 32
+      },
       "revId": "09822dc83edd296c6149b5651c58e427b66c9fa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
