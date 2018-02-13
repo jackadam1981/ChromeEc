@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bbff0666_3babc453",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-02-13T07:08:45Z",
+      "side": 1,
+      "message": "I just found we have another intended behavior:\n\"Enable fan at first boot despite temperature is less than level 1.\"",
+      "parentUuid": "de6462e7_0ddb34e8",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "0bbe7f5a26fcafe4ab7ce20d13b3cc37e3a70b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5869e39a_33f86afc",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-12T16:49:46Z",
       "side": 1,
       "message": "Do you know why fan_is_stalled returns true? There is a HOOK_CHIPSET_SHUTDOWN calling pwm_fan_S3_S5, which should turn off fan 0. If this is working intended, fan_is_stalled should return false.",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 14
+      },
+      "revId": "0bbe7f5a26fcafe4ab7ce20d13b3cc37e3a70b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c5f86f_c63a0668",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-02-13T07:08:45Z",
+      "side": 1,
+      "message": "pwm_fan_S3_S5() did turn off fan 0, however, pwm_fan_S3_S5() call set_thermal_control_enabled(enable) too. In this case, fan_percent_to_rpm will() be invoked by thermal_control().\nAnd then fan 0 is enabled by pwm_enable() in pwm_set_raw_duty().",
+      "parentUuid": "5869e39a_33f86afc",
       "range": {
         "startLine": 11,
         "startChar": 4,
