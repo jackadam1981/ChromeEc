@@ -33,6 +33,24 @@
       "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2107cc97_54811e40",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-13T17:07:52Z",
+      "side": 1,
+      "message": "Oh, well maybe not all of AP flash, but MAX_SPI_HASH_SIZE.",
+      "parentUuid": "443036ff_764d6917",
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
