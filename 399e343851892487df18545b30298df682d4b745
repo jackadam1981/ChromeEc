@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47a83c87_e12d2b62",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-13T14:53:38Z",
+      "side": 1,
+      "message": "Should we\nreturn !!(pd[port].flags \u0026 PD_FLAGS_DR_INITIALIZED);\nto make it clear that this is a boolean return?",
+      "range": {
+        "startLine": 346,
+        "startChar": 1,
+        "endLine": 346,
+        "endChar": 49
+      },
+      "revId": "399e343851892487df18545b30298df682d4b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa0acaa7_c9ca1ba4",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-13T14:53:38Z",
+      "side": 1,
+      "message": "what do you think about \n\nif (pd_get_saved_port_flags(port, \u0026saved_flgs)) \u003d\u003d EC_SUCCESS)\n\ninstead of negation?",
+      "range": {
+        "startLine": 2205,
+        "startChar": 5,
+        "endLine": 2205,
+        "endChar": 48
+      },
+      "revId": "399e343851892487df18545b30298df682d4b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "351cbfd4_3fe84ada",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2208,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-13T14:53:38Z",
+      "side": 1,
+      "message": "What do you think about using the following condition instead of !!  ?\n\n(saved_flgs \u0026 PD_BBRMFLG_DATA_ROLE) ? PD_ROLE_DFP : PD_ROLE_UFP",
+      "range": {
+        "startLine": 2208,
+        "startChar": 9,
+        "endLine": 2208,
+        "endChar": 42
+      },
+      "revId": "399e343851892487df18545b30298df682d4b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
