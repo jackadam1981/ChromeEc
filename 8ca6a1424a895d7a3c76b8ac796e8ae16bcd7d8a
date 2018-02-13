@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73b413c7_114a2523",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-13T17:06:00Z",
+      "side": 1,
+      "message": "Do you want to be more strict about \u0027dev\u0027? It seems if dev \u003e 1, you enable the EC SPI bus. (There\u0027s also a USB_SPI_H1 enumeration entry...)\n\nEDIT: Oh, I see that this isn\u0027t exposed directly.",
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "443036ff_764d6917",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-13T17:06:00Z",
+      "side": 1,
+      "message": "Is this enough to not trigger a watchdog? Have you tried hashing all of AP flash? Cr50 doesn\u0027t have that many tasks so it\u0027s probably okay.",
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
