@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4cf203b_b52ab81e",
+        "filename": "chip/npcx/wov.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1723,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-14T18:43:43Z",
+      "side": 1,
+      "message": "Don\u0027t need the if().  If you pass a bad sample rate, wov_set_sample_rate(fs) will correctly return an error code that will be passed through.",
+      "range": {
+        "startLine": 1722,
+        "startChar": 3,
+        "endLine": 1723,
+        "endChar": 57
+      },
+      "revId": "ede8102e42876bde7195962c7e20c1464f4e0c47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
