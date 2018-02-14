@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2e42f191_5c15ee19",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1875,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-14T22:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a3de4d_c57e7339",
+      "revId": "a462488948e2b658612e070bd6067334b285d24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ad88d50_113a95d4",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2018-02-14T05:35:34Z",
       "side": 1,
       "message": "this can also be : explicit_contract_in_place \u003d !!(flags \u0026 PD_BBRMFLG_EXPLICIT_CONTRACT);",
+      "range": {
+        "startLine": 1877,
+        "startChar": 1,
+        "endLine": 1880,
+        "endChar": 33
+      },
+      "revId": "a462488948e2b658612e070bd6067334b285d24c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4316c4f_96d81d02",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1880,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-14T22:09:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ad88d50_113a95d4",
       "range": {
         "startLine": 1877,
         "startChar": 1,
