@@ -6388,7 +6388,7 @@ static void cmd_cbi_help(char *cmd)
  */
 static int cmd_cbi(int argc, char *argv[])
 {
-	enum cbi_data_type type;
+	enum cbi_data_tag tag;
 	char *e;
 	int rv;
 
@@ -6398,17 +6398,17 @@ static int cmd_cbi(int argc, char *argv[])
 		return -1;
 	}
 
-	/* Type */
-	type = strtol(argv[2], &e, 0);
+	/* Tag */
+	tag = strtol(argv[2], &e, 0);
 	if (e && *e) {
-		fprintf(stderr, "Bad type\n");
+		fprintf(stderr, "Bad tag\n");
 		return -1;
 	}
 
 	if (!strcasecmp(argv[1], "get")) {
 		struct ec_params_get_cbi p;
 		uint32_t r;
-		p.type = type;
+		p.tag = tag;
 		if (argc > 3) {
 			p.flag = strtol(argv[3], &e, 0);
 			if (e && *e) {
@@ -6422,39 +6422,45 @@ static int cmd_cbi(int argc, char *argv[])
 			fprintf(stderr, "Error code: %d\n", rv);
 			return rv;
 		}
-		if (type < CBI_FIRST_STRING_PARAM) { 	/* integer fields */
+		if (tag < CBI_FIRST_STRING_PARAM) { 	/* integer fields */
 			if (rv < sizeof(uint32_t)) {
 				fprintf(stderr, "Invalid size: %d\n", rv);
 				return -1;
 			}
 			printf("%u (0x%x)\n", r, r);
 		} else {
-			fprintf(stderr, "Invalid type: %x\n", type);
+			fprintf(stderr, "Invalid tag: %x\n", tag);
 			return -1;
 		}
 		return 0;
 	} else if (!strcasecmp(argv[1], "set")) {
-		struct ec_params_set_cbi p;
+		struct ec_params_set_cbi *p =
+				(struct ec_params_set_cbi *)ec_outbuf;
+		uint32_t v;
 		if (argc < 4) {
 			fprintf(stderr, "Invalid number of params\n");
 			cmd_cbi_help(argv[0]);
 			return -1;
 		}
-		memset(&p, 0, sizeof(p));
-		p.type = type;
-		p.data = strtol(argv[3], &e, 0);
+		memset(p, 0, ec_max_outsize);
+		p->tag = tag;
+		v = strtol(argv[3], &e, 0);
 		if (e && *e) {
 			fprintf(stderr, "Bad value\n");
 			return -1;
 		}
+		/* Little endian */
+		memcpy(p->data, &v, sizeof(v));
+		p->size = sizeof(v);
 		if (argc > 4) {
-			p.flag = strtol(argv[4], &e, 0);
+			p->flag = strtol(argv[4], &e, 0);
 			if (e && *e) {
 				fprintf(stderr, "Bad flag\n");
 				return -1;
 			}
 		}
-		rv = ec_command(EC_CMD_SET_CROS_BOARD_INFO, 0, &p, sizeof(p),
+		rv = ec_command(EC_CMD_SET_CROS_BOARD_INFO, 0,
+				p, sizeof(*p) + sizeof(v),
 				NULL, 0);
 		if (rv < 0) {
 			if (rv == -EC_RES_ACCESS_DENIED - EECRESULT)
