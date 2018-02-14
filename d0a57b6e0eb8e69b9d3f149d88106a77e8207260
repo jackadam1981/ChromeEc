@@ -46,6 +46,30 @@
       "revId": "d0a57b6e0eb8e69b9d3f149d88106a77e8207260",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5102bd4_7adcd759",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-14T21:32:56Z",
+      "side": 1,
+      "message": "Looking at the test, the \"shmem\" command is also needed, but that\u0027s been removed from samus_pd on ToT. Huh, also looking at the firmware-samus-6300.B branch, it\u0027s been removed there as welll... Is it released from a different branch? I guess we only run FAFT against samus and not samus_pd?",
+      "parentUuid": "cc420b11_5c2df85a",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "d0a57b6e0eb8e69b9d3f149d88106a77e8207260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
