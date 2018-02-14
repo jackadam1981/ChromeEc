@@ -66,6 +66,15 @@ struct st_tp_host_data_header_t {
 	uint16_t count;
 } __packed;
 
+/*
+ * A structure to maintain current system state.
+ */
+#define SYSTEM_STATE_DEBUG_MODE		(1 << 0)
+#define SYSTEM_STATE_ENABLE_HEAT_MAP	(1 << 1)
+#define SYSTEM_STATE_ENABLE_DOME_SWITCH	(1 << 2)
+#define SYSTEM_STATE_ACTIVE_MODE	(1 << 3)
+#define SYSTEM_STATE_DOME_SWITCH_LEVEL  (1 << 4)
+
 struct st_tp_system_info_t {
 	struct st_tp_host_data_header_t header;
 	uint16_t api_ver_rev;
@@ -139,6 +148,25 @@ struct st_tp_system_info_t {
 
 #define ST_TP_SYSTEM_INFO_LEN		0xD0
 
+struct st_tp_host_buffer_header_t {
+#define ST_TP_BUFFER_HEADER_DATA_VALID		(1 << 0)
+#define ST_TP_BUFFER_HEADER_EVT_FIFO_NOT_EMPTY	(1 << 1)
+#define ST_TP_BUFFER_HEADER_SYS_FAULT		(1 << 2)
+#define ST_TP_BUFFER_HEADER_HEAT_MAP_MT_RDY	(1 << 3)
+#define ST_TP_BUFFER_HEADER_HEAT_MAP_SF_RDY	(1 << 4)
+#define ST_TP_BUFFER_HEADER_HEAT_MAP_SS_RDY	(1 << 5)
+#define ST_TP_BUFFER_HEADER_DOMESWITCH_CHG	(1 << 6)
+	uint8_t flags;
+	uint8_t reserved[3];
+	uint8_t heatmap_miss_count;
+	uint8_t event_count;
+	uint8_t event_miss_count;
+	uint8_t dome_switch_down_count:3;
+	uint8_t dome_switch_up_count:3;
+	uint8_t dome_switch_level:1;
+	uint8_t dome_switch_overflow:1;
+} __packed;
+
 struct st_tp_host_buffer_heat_map_t {
 	uint8_t frame[ST_TOUCH_FRAME_SIZE];
 #if 0  /* we are not using these now */
@@ -146,6 +174,43 @@ struct st_tp_host_buffer_heat_map_t {
 	uint8_t sense[ST_TOUCH_SENSE_SIZE];
 #endif
 } __packed;
+
+struct st_tp_event_t {
+	unsigned magic:2;  /* should always be 0x3 */
+	unsigned reserved:2;
+#define ST_TP_EVENT_ID_ENTER_POINTER	0x1
+#define ST_TP_EVENT_ID_MOTION_POINTER	0x2
+#define ST_TP_EVENT_ID_LEAVE_POINTER	0x3
+#define ST_TP_EVENT_ID_STATUS_REPORT	0x4
+#define ST_TP_EVENT_ID_USER_REPORT	0x5
+#define ST_TP_EVENT_ID_DEBUG_REPORT	0xe
+#define ST_TP_EVENT_ID_ERROR_REPORT	0xf
+	unsigned evt_id:4;
+
+	union {
+		struct {
+			unsigned touch_type:4;
+			unsigned touch_id:4;
+			unsigned y:12;
+			unsigned x:12;
+			uint16_t reserved;
+		} __packed finger;
+
+		struct {
+			uint8_t report_type;
+			uint32_t info;
+			uint8_t reserved;
+		} __packed report;
+	} __packed ; /* anonymous */
+
+	unsigned evt_left:4;
+	unsigned reserved_2:4;
+} __packed;
+
+enum ST_TP_MODE {
+	X_Y_MODE = 0,
+	HEAT_MAP_MODE,
+};
 
 #endif /* __CROS_EC_TOUCHPAD_ST_H */
 
