@@ -58,12 +58,13 @@ static void set_led_color(int color)
 	 *  We must check if auto control is enabled since the LEDs may be
 	 *  controlled from the AP at anytime.
 	 */
-	if ((led_auto_control_is_enabled(EC_LED_ID_POWER_LED)) ||
-	    (led_auto_control_is_enabled(EC_LED_ID_LEFT_LED)))
+	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED) ||
+	    led_auto_control_is_enabled(EC_LED_ID_LEFT_LED))
 		set_pwm_led_color(PWM_LED0, color);
 
 #if CONFIG_LED_PWM_COUNT >= 2
-	if (led_auto_control_is_enabled(EC_LED_ID_RIGHT_LED))
+	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED) ||
+	    led_auto_control_is_enabled(EC_LED_ID_RIGHT_LED))
 		set_pwm_led_color(PWM_LED1, color);
 #endif /* CONFIG_LED_PWM_COUNT >= 2 */
 }
