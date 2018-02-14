@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "3f9a94b3_88099772",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-14T01:13:49Z",
+      "side": 1,
+      "message": "drop newline here and in other CPRINTS conversions.\n\nalso, copied and pasted console messages sometimes are a pain as it is not clear where they come from.",
+      "range": {
+        "startLine": 527,
+        "startChar": 31,
+        "endLine": 527,
+        "endChar": 33
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62db91ad_2fb818ca",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-14T01:13:49Z",
+      "side": 1,
+      "message": "should this check happen before timeout is bumped in line 532?",
+      "range": {
+        "startLine": 535,
+        "startChar": 1,
+        "endLine": 537,
+        "endChar": 0
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "443036ff_764d6917",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -48,6 +94,121 @@
       "side": 1,
       "message": "Oh, well maybe not all of AP flash, but MAX_SPI_HASH_SIZE.",
       "parentUuid": "443036ff_764d6917",
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e80f2157_5facf1d3",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-14T01:13:49Z",
+      "side": 1,
+      "message": "I know it is easier to code this way, but I think all fields exceeding 1 byte is size need to be serialized.",
+      "range": {
+        "startLine": 678,
+        "startChar": 41,
+        "endLine": 678,
+        "endChar": 63
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db975d58_3e1c4862",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-14T01:13:49Z",
+      "side": 1,
+      "message": "as a future enhancement it wold be good to allow the user to request dumps of much larger areas in one CLI command and have a wrapper somewhere here for retrieving the dump in available chunk sizes.",
+      "range": {
+        "startLine": 682,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 36
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a8f343c_deaeb2f5",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-14T01:13:49Z",
+      "side": 1,
+      "message": "I don\u0027t think it is worth it to use malloc/free here.\n\nA simple experiment shows that after this command runs max stack use of the console task is 432 bytes out of 1024.",
+      "range": {
+        "startLine": 691,
+        "startChar": 1,
+        "endLine": 691,
+        "endChar": 10
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "854a2394_674160fe",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-14T01:13:49Z",
+      "side": 1,
+      "message": "when you drop malloc the subcommand value will have to be kept in a local variable, as this field is likely to be overwritten by the response.",
+      "range": {
+        "startLine": 717,
+        "startChar": 6,
+        "endLine": 717,
+        "endChar": 17
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3018d8b_62974a24",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-14T01:13:49Z",
+      "side": 1,
+      "message": "why is padding set to 3 as opposed to 2, shouldn\u0027t it bring the offset of the next field to a 4 divisible boundary?\n\nBut since this structure is packed I would say there is no need to pad it at all.",
+      "range": {
+        "startLine": 136,
+        "startChar": 13,
+        "endLine": 136,
+        "endChar": 14
+      },
       "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
