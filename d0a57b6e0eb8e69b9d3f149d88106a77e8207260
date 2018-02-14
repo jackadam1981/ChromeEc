@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee59938c_6fddccfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-14T08:36:19Z",
+      "side": 1,
+      "message": "this section is actually wrong. It is used as part of the EC test suite (e.g firmware_ECSharedMem) and you cannot qualify a new firmware image without it.\n\nGiven the large army of CL copying specialists we have, I prefer to get the record straight before the CL gets copied ad nauseam to every single board in existence.",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "d0a57b6e0eb8e69b9d3f149d88106a77e8207260",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
