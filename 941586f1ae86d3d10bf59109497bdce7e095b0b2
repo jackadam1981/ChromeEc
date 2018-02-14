@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d51e99_e3246b21",
+        "filename": "board/zoombini/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-14T07:38:54Z",
+      "side": 1,
+      "message": "usually the CONFIG_CMD_* config option is used for console commands and not host commands. Maybe we should rename (not in this CL) to CONFIG_HOSTCMD_PD_CONTROL.",
+      "range": {
+        "startLine": 113,
+        "startChar": 8,
+        "endLine": 113,
+        "endChar": 29
+      },
+      "revId": "941586f1ae86d3d10bf59109497bdce7e095b0b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
