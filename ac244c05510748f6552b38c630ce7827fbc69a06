@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a186ccf8_25854d02",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4591,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-15T22:28:05Z",
+      "side": 1,
+      "message": "BOARD_VERSION_1, BOARD_VERSION_2 for cleanliness. There is no major/minor parsing then.",
+      "revId": "ac244c05510748f6552b38c630ce7827fbc69a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
