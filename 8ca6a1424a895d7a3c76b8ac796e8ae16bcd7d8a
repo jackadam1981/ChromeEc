@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "026c4f57_56422b0d",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-15T00:23:53Z",
+      "side": 1,
+      "message": "No, I don\u0027t really want to be more strict, because this isn\u0027t exposed directly.",
+      "parentUuid": "73b413c7_114a2523",
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f9a94b3_88099772",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "83101c1c_783ab86e",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-15T00:23:53Z",
+      "side": 1,
+      "message": "Fixed.  Also added __func__ to messages so they\u0027re distinguishable.",
+      "parentUuid": "3f9a94b3_88099772",
+      "range": {
+        "startLine": 527,
+        "startChar": 31,
+        "endLine": 527,
+        "endChar": 33
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62db91ad_2fb818ca",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2018-02-14T01:13:49Z",
       "side": 1,
       "message": "should this check happen before timeout is bumped in line 532?",
+      "range": {
+        "startLine": 535,
+        "startChar": 1,
+        "endLine": 537,
+        "endChar": 0
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19e39bf3_c94d9e53",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-15T00:23:53Z",
+      "side": 1,
+      "message": "No.  It\u0027s still activity, so still resets the timeout.",
+      "parentUuid": "62db91ad_2fb818ca",
       "range": {
         "startLine": 535,
         "startChar": 1,
@@ -100,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "a8ac8190_53080b1e",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-15T00:23:53Z",
+      "side": 1,
+      "message": "Yes, it works fine.  The watchdog reload in hook_tick is pretty fast.",
+      "parentUuid": "2107cc97_54811e40",
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e80f2157_5facf1d3",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -111,6 +195,30 @@
       "writtenOn": "2018-02-14T01:13:49Z",
       "side": 1,
       "message": "I know it is easier to code this way, but I think all fields exceeding 1 byte is size need to be serialized.",
+      "range": {
+        "startLine": 678,
+        "startChar": 41,
+        "endLine": 678,
+        "endChar": 63
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab871e45_50ac00a9",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-15T00:23:53Z",
+      "side": 1,
+      "message": "Do you mean don\u0027t use structs for vendor commands?",
+      "parentUuid": "e80f2157_5facf1d3",
       "range": {
         "startLine": 678,
         "startChar": 41,
@@ -146,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "eecef7d2_11749b12",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-15T00:23:53Z",
+      "side": 1,
+      "message": "Agree",
+      "parentUuid": "db975d58_3e1c4862",
+      "range": {
+        "startLine": 682,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 36
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a8f343c_deaeb2f5",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -157,6 +289,30 @@
       "writtenOn": "2018-02-14T01:13:49Z",
       "side": 1,
       "message": "I don\u0027t think it is worth it to use malloc/free here.\n\nA simple experiment shows that after this command runs max stack use of the console task is 432 bytes out of 1024.",
+      "range": {
+        "startLine": 691,
+        "startChar": 1,
+        "endLine": 691,
+        "endChar": 10
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf0f68f_8512e188",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-15T00:23:53Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if there was a special reason why you were doing it in the ccd config command.  That one also passes a relatively small amount of data.",
+      "parentUuid": "5a8f343c_deaeb2f5",
       "range": {
         "startLine": 691,
         "startChar": 1,
