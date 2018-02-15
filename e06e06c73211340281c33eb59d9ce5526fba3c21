@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c70fc17_2218e2b0",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-15T16:28:25Z",
+      "side": 1,
+      "message": "EEPROM_PAGE_WRITE_US?",
+      "range": {
+        "startLine": 188,
+        "startChar": 9,
+        "endLine": 188,
+        "endChar": 10
+      },
+      "revId": "e06e06c73211340281c33eb59d9ce5526fba3c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ecf73431_52d75602",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6458,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-15T16:28:25Z",
+      "side": 1,
+      "message": "Can size be an optional argument?  If not present, just use the smallest size which fits the value.",
+      "range": {
+        "startLine": 6454,
+        "startChar": 2,
+        "endLine": 6458,
+        "endChar": 3
+      },
+      "revId": "e06e06c73211340281c33eb59d9ce5526fba3c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
