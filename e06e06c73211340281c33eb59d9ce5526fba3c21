@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "0731eb76_d1c18750",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-15T16:32:58Z",
+      "side": 1,
+      "message": "This should be total_size - (sizeof(total_size) + sizeof(version).",
+      "revId": "e06e06c73211340281c33eb59d9ce5526fba3c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2384df47_61be941e",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-15T16:32:58Z",
+      "side": 1,
+      "message": "Why don\u0027t we have a \u0027find tag\u0027 that returns length and pointer to data?",
+      "revId": "e06e06c73211340281c33eb59d9ce5526fba3c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7a7105a_7c2e677c",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-15T16:32:58Z",
+      "side": 1,
+      "message": "why +1 ?",
+      "revId": "e06e06c73211340281c33eb59d9ce5526fba3c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c70fc17_2218e2b0",
         "filename": "common/cbi.c",
         "patchSetId": 2
@@ -19,6 +70,63 @@
         "endLine": 188,
         "endChar": 10
       },
+      "revId": "e06e06c73211340281c33eb59d9ce5526fba3c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e92778a1_48cf5e4b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4596,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-15T16:32:58Z",
+      "side": 1,
+      "message": "What does this mean? Do strings matter?",
+      "range": {
+        "startLine": 4596,
+        "startChar": 1,
+        "endLine": 4596,
+        "endChar": 31
+      },
+      "revId": "e06e06c73211340281c33eb59d9ce5526fba3c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abb2a669_6cc81b25",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 4597,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-15T16:32:58Z",
+      "side": 1,
+      "message": "COUNT \u003d\u003d 0x81 -- is that what we want for this?",
+      "revId": "e06e06c73211340281c33eb59d9ce5526fba3c21",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57c2201d_83828d02",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 6427,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-15T16:32:58Z",
+      "side": 1,
+      "message": "So you are specifically saying only 1 byte or 4 bytes fields?\n\nWhy wouldn\u0027t we specify type with a tag?",
       "revId": "e06e06c73211340281c33eb59d9ce5526fba3c21",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
