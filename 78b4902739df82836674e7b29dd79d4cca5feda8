@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b9ef51f_9e5cce0d",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-15T18:48:28Z",
+      "side": 1,
+      "message": "I think we should still have the BD9995X_IPRECH_MAX check to ensure that the battery never requests for precharge current more than the charger max:\ni.e.\n\nMIN(BD9995X_IPRECH_MAX, MIN(current, battery_get_info()-\u003eprecharge_current + BD9995X_IPRECH_MAX))",
+      "range": {
+        "startLine": 740,
+        "startChar": 7,
+        "endLine": 741,
+        "endChar": 32
+      },
+      "revId": "78b4902739df82836674e7b29dd79d4cca5feda8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
