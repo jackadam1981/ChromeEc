@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "174df948_fc7ce6b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-15T18:08:11Z",
+      "side": 1,
+      "message": "Can you explicitly state that there is some sort of cr50 reset after turning the AP off and before running ccd open, because that is where the issue is. It\u0027s not just that the AP is off.",
+      "revId": "483a56882ec21b8462e565ebe18c9e667becd6dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
