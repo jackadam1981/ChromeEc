@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1870eb4_d056133d",
+        "filename": "common/cbi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-15T20:54:47Z",
+      "side": 1,
+      "message": "why is head a global symbol outside of this compilation unit? should be static?",
+      "revId": "8a8fc556ce12650ebb804c7e9ba99fd06978a9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3391560f_901552f3",
+        "filename": "common/cbi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-15T20:54:47Z",
+      "side": 1,
+      "message": "const struct",
+      "revId": "8a8fc556ce12650ebb804c7e9ba99fd06978a9cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
