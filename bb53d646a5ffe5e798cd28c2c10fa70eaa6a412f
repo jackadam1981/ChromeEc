@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437bbb49_59ef241d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-15T22:25:38Z",
+      "side": 1,
+      "message": "Green? Should be blue? So is this the same as SOC on?",
+      "revId": "bb53d646a5ffe5e798cd28c2c10fa70eaa6a412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f0cd4ca_6a97382f",
+        "filename": "board/grunt/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-15T22:25:38Z",
+      "side": 1,
+      "message": "I think there should only be one entry in supported_led_ids[]: EC_LED_ID_POWER_LED is the one logical LED, whose color can be set to amber or blue (or some mixture of amber and blue).",
+      "revId": "bb53d646a5ffe5e798cd28c2c10fa70eaa6a412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a80805f_cb88a181",
+        "filename": "board/grunt/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-15T22:25:38Z",
+      "side": 1,
+      "message": "We could have more colors that are a mixture of blue and amber.",
+      "revId": "bb53d646a5ffe5e798cd28c2c10fa70eaa6a412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbeda797_91a70cf2",
+        "filename": "board/grunt/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-15T22:25:38Z",
+      "side": 1,
+      "message": "One logical LED, with amber and blue channels.",
+      "revId": "bb53d646a5ffe5e798cd28c2c10fa70eaa6a412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
