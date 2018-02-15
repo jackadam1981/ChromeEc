@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "4f0fb498_28d83446",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-15T00:37:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "83101c1c_783ab86e",
+      "range": {
+        "startLine": 527,
+        "startChar": 31,
+        "endLine": 527,
+        "endChar": 33
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62db91ad_2fb818ca",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -128,6 +152,30 @@
       "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19ae2d43_ff15d4b3",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-15T00:37:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19e39bf3_c94d9e53",
+      "range": {
+        "startLine": 535,
+        "startChar": 1,
+        "endLine": 537,
+        "endChar": 0
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -231,6 +279,30 @@
     },
     {
       "key": {
+        "uuid": "17391f9b_740d4752",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-15T00:37:45Z",
+      "side": 1,
+      "message": "no, I mean fields larger that 1 byte should be converted to network byte order while for passing on the wire.",
+      "parentUuid": "ab871e45_50ac00a9",
+      "range": {
+        "startLine": 678,
+        "startChar": 41,
+        "endLine": 678,
+        "endChar": 63
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db975d58_3e1c4862",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -278,6 +350,30 @@
     },
     {
       "key": {
+        "uuid": "8ce93656_90b5c258",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-15T00:37:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eecef7d2_11749b12",
+      "range": {
+        "startLine": 682,
+        "startChar": 2,
+        "endLine": 682,
+        "endChar": 36
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a8f343c_deaeb2f5",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
@@ -313,6 +409,30 @@
       "side": 1,
       "message": "I wasn\u0027t sure if there was a special reason why you were doing it in the ccd config command.  That one also passes a relatively small amount of data.",
       "parentUuid": "5a8f343c_deaeb2f5",
+      "range": {
+        "startLine": 691,
+        "startChar": 1,
+        "endLine": 691,
+        "endChar": 10
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f528b2ab_087c133e",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-15T00:37:45Z",
+      "side": 1,
+      "message": "this probably was done  before console task\u0027s stack size was increased and/or when crypto stuff ran on the same context, I\u0027ll verify that there is no significant stack use there and get rid of the malloc.",
+      "parentUuid": "cbf0f68f_8512e188",
       "range": {
         "startLine": 691,
         "startChar": 1,
