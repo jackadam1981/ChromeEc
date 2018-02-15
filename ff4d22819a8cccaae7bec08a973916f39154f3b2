@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cc8f105_8b6747d6",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-15T23:49:31Z",
+      "side": 1,
+      "message": "how did this slip through pre-upload check? Or is this allowed in tot? I see this triggering warnings in the cr50 branch.",
+      "revId": "ff4d22819a8cccaae7bec08a973916f39154f3b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
