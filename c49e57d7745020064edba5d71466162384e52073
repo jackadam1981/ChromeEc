@@ -22,6 +22,30 @@
       "revId": "c49e57d7745020064edba5d71466162384e52073",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "851c6333_8ee7279c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-15T15:05:04Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t see the path where (type \u003d\u003d PD_CTRL_WAIT) is false\n\u003e since we just got here from switching on type.\n\nwhen type \u003d\u003d PD_CTRL_REJECT as per line 1354.\n\n\u003e Should we drop this condition?\n\nNo, we should not. Retrying forever when the other side does not support the requested role is unlikely to be a good idea.",
+      "parentUuid": "9fec7e3e_ce658628",
+      "range": {
+        "startLine": 1357,
+        "startChar": 7,
+        "endLine": 1357,
+        "endChar": 27
+      },
+      "revId": "c49e57d7745020064edba5d71466162384e52073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
