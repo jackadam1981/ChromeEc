@@ -303,6 +303,30 @@
     },
     {
       "key": {
+        "uuid": "51175521_dea2299f",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-15T02:35:48Z",
+      "side": 1,
+      "message": "actually, I am not sure about this one anymore, we don\u0027t worry about these in other cases, we can address them all at once if we ever move to a big endian host or dut.",
+      "parentUuid": "17391f9b_740d4752",
+      "range": {
+        "startLine": 678,
+        "startChar": 41,
+        "endLine": 678,
+        "endChar": 63
+      },
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db975d58_3e1c4862",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
