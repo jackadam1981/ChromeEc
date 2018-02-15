@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2085d147_3461c754",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-15T17:46:01Z",
+      "side": 1,
+      "message": "Suggest a constant for this MANUAL_NO_OVERRIDE \u003d 0x80000000\n\nWith base/lid charging, I believe negative currents may be possible so -1 could be in a valid range.",
+      "range": {
+        "startLine": 59,
+        "startChar": 56,
+        "endLine": 59,
+        "endChar": 72
+      },
+      "revId": "633b50e446139f1faf5ca75c269ca952dba732a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
