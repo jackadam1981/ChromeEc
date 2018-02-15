@@ -22,6 +22,30 @@
       "revId": "78b4902739df82836674e7b29dd79d4cca5feda8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df998d84_ef05d0d3",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-02-15T19:57:18Z",
+      "side": 1,
+      "message": "I have asked Rohm for guidance regarding the charger limit. I thought that 1024 was the limit of this register so adding another MIN check relative to 1024 would not have any effect, but the spec says that the register limit is 1984, but the actual limit is 1024. They need to check with the Japan design team.",
+      "parentUuid": "7b9ef51f_9e5cce0d",
+      "range": {
+        "startLine": 740,
+        "startChar": 7,
+        "endLine": 741,
+        "endChar": 32
+      },
+      "revId": "78b4902739df82836674e7b29dd79d4cca5feda8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
