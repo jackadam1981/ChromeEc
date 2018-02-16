@@ -22,6 +22,29 @@
       "revId": "18d42581f12c4f4ccfa7503b17ffaaa3f1261c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a16314d2_62609775",
+        "filename": "include/host_command.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-16T11:14:05Z",
+      "side": 1,
+      "message": "aren\u0027t you mixing read-only and read-write-uninitialized data ?\nIt\u0027s inefficient: depending on the platform,\nthe RO data will be copied from .rodata flash to memory for nothing.\n.data for count will be stored in flash and initialized for nothing.\nOn top of that, given the fields are not aligned, splitting it is likely better.",
+      "range": {
+        "startLine": 340,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 2
+      },
+      "revId": "18d42581f12c4f4ccfa7503b17ffaaa3f1261c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
