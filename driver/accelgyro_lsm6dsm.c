@@ -58,12 +58,64 @@ static int config_threshold(const struct motion_sensor_t *s, uint16_t thr)
  * Configure interrupt int 1 to fire handler for:
  *
  * FIFO threshold on watermark
+ * Significant Motion
+ * Tap
  *
  * @s: Motion sensor pointer
  */
 static int config_interrupt(const struct motion_sensor_t *s)
 {
 	int ret = EC_SUCCESS;
+
+#ifdef CONFIG_GESTURE_SIGMO
+	/* Configure significant motion as 7 step. */
+	ret = st_write_data_with_mask(s, LSM6DSM_CTRL10_ADDR,
+				      LSM6DSM_FUNC_EN_MASK,
+				      LSM6DSM_EN_BIT);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = st_write_data_with_mask(s, LSM6DSM_CTRL10_ADDR,
+				      LSM6DSM_SIG_MOT_MASK,
+				      LSM6DSM_EN_BIT);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* Enable interrupt on sig. motion and route to int1. */
+	ret = st_write_data_with_mask(s, LSM6DSM_FIFO_INT1_CTRL,
+				      LSM6DSM_INT1_SIGN_MASK,
+				      LSM6DSM_EN_BIT);
+	if (ret != EC_SUCCESS)
+		return ret;
+#endif
+
+#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
+	/* Enable interrupt on tap and route on int1. */
+	ret = raw_write8(s->port, s->addr, LSM6DSM_LIR_ADDR,
+			 LSM6DSM_EN_INT | LSM6DSM_EN_TAP);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* Configure tap duration. */
+	ret = st_write_data_with_mask(s, LSM6DSM_TAP_THS_6D,
+			LSM6DSM_D4D_EN_MASK | LSM6DSM_TAP_TH_MASK, 0x89);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = raw_write8(s->port, s->addr, LSM6DSM_INT_DUR2_ADDR, 0x06);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = raw_write8(s->port, s->addr, LSM6DSM_WUP_THS_ADDR, 0x00);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = st_write_data_with_mask(s, LSM6DSM_MD1_CFG_ADDR,
+				      LSM6DSM_INT1_STAP_MASK,
+				      LSM6DSM_EN_BIT);
+	if (ret != EC_SUCCESS)
+		return ret;
+#endif /* CONFIG_GESTURE_SENSOR_BATTERY_TAP */
 
 #ifdef CONFIG_ACCEL_FIFO_THRES
 	ret = config_threshold(s, CONFIG_ACCEL_FIFO_THRES);
@@ -72,7 +124,8 @@ static int config_interrupt(const struct motion_sensor_t *s)
 
 	/* Enable interrupt on FIFO watermask and route to int1. */
 	ret = st_write_data_with_mask(s, LSM6DSM_FIFO_INT1_CTRL,
-				      LSM6DSM_FTH_INT1_MASK, LSM6DSM_EN_BIT);
+				      LSM6DSM_FTH_INT1_MASK,
+				      LSM6DSM_EN_BIT);
 #endif /* CONFIG_ACCEL_FIFO */
 
 	return ret;
@@ -92,13 +145,105 @@ void lsm6dsm_interrupt(enum gpio_signal signal)
  */
 static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 {
+	int ret = EC_SUCCESS;
+
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
 	    (!(*event & CONFIG_ACCEL_LSM6DSM_INT_EVENT)))
 		return EC_ERROR_NOT_HANDLED;
 
-	return EC_SUCCESS;
+#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
+	{
+		int tmp;
+
+		/* Read int source register. */
+		ret = raw_read8(s->port, s->addr, LSM6DSM_TAP_SRC_ADDR, &tmp);
+		if (ret != EC_SUCCESS)
+			return ret;
+
+		if (tmp & LSM6DSM_STAP_DETECT)
+			*event |= CONFIG_GESTURE_TAP_EVENT;
+	}
+#endif /* CONFIG_GESTURE_SENSOR_BATTERY_TAP */
+#ifdef CONFIG_GESTURE_SIGMO
+	{
+		int tmp;
+
+		/* Read int source 1 register. */
+		ret = raw_read8(s->port, s->addr, LSM6DSM_FUNC_SRC1_ADDR, &tmp);
+		if (ret != EC_SUCCESS)
+			return ret;
+
+		if (tmp & LSM6DSM_SIGN_MOTION_IA)
+			*event |= CONFIG_GESTURE_SIGMO_EVENT;
+	}
+#endif /* CONFIG_GESTURE_SIGMO */
+
+	return ret;
 }
 #endif /* CONFIG_ACCEL_INTERRUPTS */
+
+#ifdef CONFIG_GESTURE_DETECTION
+/* manage_activity - Manage gesture recognition. */
+int manage_activity(const struct motion_sensor_t *s,
+		    enum motionsensor_activity activity, int enable,
+		    const struct ec_motion_sense_activity *param)
+{
+	int ret;
+	struct stprivate_data *drv_data = s->drv_data;
+
+	switch (activity) {
+#ifdef CONFIG_GESTURE_SIGMO
+	case MOTIONSENSE_ACTIVITY_SIG_MOTION:
+		/* Enable/disable interrupt sig. motion and route to int1. */
+		ret = st_write_data_with_mask(s, LSM6DSM_FIFO_INT1_CTRL,
+					      LSM6DSM_INT1_SIGN_MASK,
+					      (enable ? LSM6DSM_EN_BIT :
+					       LSM6DSM_DIS_BIT));
+		if (ret != EC_SUCCESS)
+			return ret;
+		break;
+#endif
+#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
+	case MOTIONSENSE_ACTIVITY_DOUBLE_TAP:
+		/* Enable/disable interrupt tap detection and route to int1. */
+		ret = st_write_data_with_mask(s, LSM6DSM_MD1_CFG_ADDR,
+					      LSM6DSM_INT1_STAP_MASK,
+					      (enable ? LSM6DSM_EN_BIT :
+					       LSM6DSM_DIS_BIT));
+		if (ret != EC_SUCCESS)
+			return ret;
+		break;
+#endif
+	default:
+		/* Unhandled activity. */
+		ret = EC_RES_INVALID_PARAM;
+		break;
+	}
+
+	if (ret == EC_SUCCESS) {
+		if (enable) {
+			drv_data->en_activities |= 1 << activity;
+			drv_data->dis_activities &= ~(1 << activity);
+		} else {
+			drv_data->en_activities &= ~(1 << activity);
+			drv_data->dis_activities |= 1 << activity;
+		}
+	}
+
+	return ret;
+}
+
+int list_activities(const struct motion_sensor_t *s, uint32_t *enabled,
+		    uint32_t *disabled)
+{
+	struct stprivate_data *drv_data = s->drv_data;
+
+	*enabled = drv_data->en_activities;
+	*disabled = drv_data->dis_activities;
+
+	return EC_RES_SUCCESS;
+}
+#endif /* CONFIG_GESTURE_HOST_DETECTION */
 
 #ifdef CONFIG_ACCEL_FIFO
 /**
@@ -660,17 +805,31 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_GESTURE_HOST_DETECTION
+/*
+ * init_activities
+ * Works on Accelerometer sensor only
+ * Init configured activities (Significant Motion, Tap)
+ */
+static void init_activities(const struct motion_sensor_t *s)
+{
+	struct stprivate_data *data = s->drv_data;
+
+	data->en_activities = data->dis_activities = 0;
+
+#ifdef CONFIG_GESTURE_SIGMO
+	data->dis_activities |= (1 << MOTIONSENSE_ACTIVITY_SIG_MOTION);
+#endif /* CONFIG_GESTURE_SIGMO */
+#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
+	data->dis_activities |= (1 << MOTIONSENSE_ACTIVITY_DOUBLE_TAP);
+#endif /* CONFIG_GESTURE_SENSOR_BATTERY_TAP */
+}
+#endif /* CONFIG_GESTURE_HOST_DETECTION */
+
 static int init(const struct motion_sensor_t *s)
 {
 	int ret = 0, tmp;
 	struct stprivate_data *data = s->drv_data;
-
-	ret = raw_read8(s->port, s->addr, LSM6DSM_WHO_AM_I_REG, &tmp);
-	if (ret != EC_SUCCESS)
-		return EC_ERROR_UNKNOWN;
-
-	if (tmp != LSM6DSM_WHO_AM_I)
-		return EC_ERROR_ACCESS_DENIED;
 
 	/*
 	 * This sensor can be powered through an EC reboot, so the state of the
@@ -697,6 +856,10 @@ static int init(const struct motion_sensor_t *s)
 				LSM6DSM_EN_BIT);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
+
+#ifdef CONFIG_GESTURE_HOST_DETECTION
+		init_activities(s);
+#endif /* CONFIG_GESTURE_HOST_DETECTION */
 
 #ifdef CONFIG_ACCEL_FIFO
 		ret = set_fifo_mode(s, BYPASS);
@@ -741,4 +904,8 @@ const struct accelgyro_drv lsm6dsm_drv = {
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
 #endif /* CONFIG_ACCEL_INTERRUPTS */
+#ifdef CONFIG_GESTURE_DETECTION
+	.manage_activity = manage_activity,
+	.list_activities = list_activities,
+#endif
 };

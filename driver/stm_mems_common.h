@@ -122,6 +122,10 @@ struct stprivate_data {
 	int samples_in_pattern;
 	int num_pattern;
 #endif /* CONFIG_ACCEL_FIFO */
+#ifdef CONFIG_GESTURE_DETECTION
+	uint8_t	en_activities;
+	uint8_t	dis_activities;
+#endif /* CONFIG_GESTURE_HOST_DETECTION */
 };
 
 #endif /* __CROS_EC_ST_COMMONS_H */

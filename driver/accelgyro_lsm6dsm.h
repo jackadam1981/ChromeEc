@@ -59,7 +59,51 @@ static inline uint16_t MIN_AZ(int _a, int _b)
 #define LSM6DSM_CTRL6_ADDR		0x15
 #define LSM6DSM_CTRL7_ADDR		0x16
 
+#define LSM6DSM_CTRL10_ADDR		0x19
+#define LSM6DSM_FUNC_EN_MASK		0x04
+#define LSM6DSM_SIG_MOT_MASK		0x01
+#define LSM6DSM_FUNC_EN			0x04
+#define LSM6DSM_SIG_MOT_EN		0x01
+
+/* Master mode configuration register */
+#define LSM6DSM_MASTER_CONFIG		0x1a
+#define LSM6DSM_PASSTROUGH_MASK		0x1f
+#define LSM6DSM_START_CONFIG		0x10
+#define LSM6DSM_PULLUP_EN		0x08
+#define LSM6DSM_PASSTROUGH_MODE		0x04
+#define LSM6DSM_MASTER_ENABLE		0x01
+
+#define LSM6DSM_TAP_SRC_ADDR		0x1c
+#define LSM6DSM_STAP_DETECT		0x20
+#define LSM6DSM_DTAP_DETECT		0x10
+
 #define LSM6DSM_STATUS_REG		0x1e
+
+#define LSM6DSM_FUNC_SRC1_ADDR		0x53
+#define LSM6DSM_SIGN_MOTION_IA		0x40
+
+#define LSM6DSM_LIR_ADDR		0x58
+#define LSM6DSM_LIR_MASK		0x01
+#define LSM6DSM_EN_INT			0x80
+#define LSM6DSM_EN_TAP			0x0e
+#define LSM6DSM_TAP_MASK		0x8e
+
+#define LSM6DSM_TAP_THS_6D		0x59
+#define LSM6DSM_D4D_EN_MASK		0x80
+#define LSM6DSM_TAP_TH_MASK		0x1f
+
+#define LSM6DSM_INT_DUR2_ADDR		0x5a
+#define LSM6DSM_TAP_DUR_MASK		0xf0
+#define LSM6DSM_TAP_QUIET_MASK		0x0c
+
+#define LSM6DSM_WUP_THS_ADDR		0x5b
+#define LSM6DSM_S_D_TAP_MASK		0x80
+#define LSM6DSM_STAP_EN			0
+#define LSM6DSM_DTAP_EN			1
+
+#define LSM6DSM_MD1_CFG_ADDR		0x5e
+#define LSM6DSM_INT1_STAP_MASK		0x40
+#define LSM6DSM_INT1_DTAP_MASK		0x08
 
 /* Output data rate registers and masks */
 #define LSM6DSM_ODR_REG(_sensor) \
@@ -237,7 +281,7 @@ struct fstatus {
 
 /* FS register address/mask for Acc/Gyro sensors */
 #define LSM6DSM_RANGE_REG(_sensor)  (LSM6DSM_ACCEL_FS_ADDR + (_sensor))
-#define LSM6DSM_RANGE_MASK  		0x0c
+#define LSM6DSM_RANGE_MASK		0x0c
 
 /* Status register bitmask for Acc/Gyro data ready */
 enum lsm6dsm_status {
@@ -250,7 +294,7 @@ enum lsm6dsm_status {
 #define LSM6DSM_STS_GDA_MASK		0x02
 
 /* Sensor resolution in number of bits: fixed 16 bit */
-#define LSM6DSM_RESOLUTION      	16
+#define LSM6DSM_RESOLUTION		16
 
 extern const struct accelgyro_drv lsm6dsm_drv;
 
