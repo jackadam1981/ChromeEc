@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e115d77_09857257",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-16T00:24:18Z",
+      "side": 1,
+      "message": "%T \n\n(would be handy if this printed a timestamp, so if I come back after an overnight run I can see when each group printed)",
+      "revId": "52f5e8884815ccb2687e743fc6486307e45e71c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0f70eda_f03db643",
+        "filename": "common/host_command.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-16T00:24:18Z",
+      "side": 1,
+      "message": "Move to the dump function?\n\nThat is, if you dump frequently enough for other reasons, this doesn\u0027t trigger down here...",
+      "range": {
+        "startLine": 625,
+        "startChar": 4,
+        "endLine": 626,
+        "endChar": 30
+      },
+      "revId": "52f5e8884815ccb2687e743fc6486307e45e71c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
