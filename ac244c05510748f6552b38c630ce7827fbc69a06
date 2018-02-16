@@ -34,6 +34,24 @@
       "revId": "ac244c05510748f6552b38c630ce7827fbc69a06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c1a2b84_cdea9381",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4591,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-16T04:45:11Z",
+      "side": 1,
+      "message": "Either that, or a subsequent byte value 00 needs to mean \u0027default\u0027 or \u0027not specified\u0027.  Then reading a longer field from a CBI with a shorter value works as expected.",
+      "parentUuid": "ffc9632a_df8b9e59",
+      "revId": "ac244c05510748f6552b38c630ce7827fbc69a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
