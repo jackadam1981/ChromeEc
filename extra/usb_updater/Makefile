@@ -34,22 +34,30 @@ CFLAGS  += -I../../include -I../../util -I../../test
 
 BOARD ?= cr50
 LIBS_g  = $(shell $(PKG_CONFIG) --libs   libcrypto)
-CFLAGS_g = $(shell $(PKG_CONFIG) --cflags libcrypto)
-CFLAGS_g  += -I../../board/$(BOARD) -I ../../chip/g
+CFLAGS_g = -I../../board/$(BOARD) -I ../../chip/g
+CFLAGS_g += $(shell $(PKG_CONFIG) --cflags libcrypto)
 
 LIBS_common  = -lfmap
 
 all: $(PROGRAMS)
 
-# chip/g updater
-gsctool: gsctool.c Makefile
-	$(CC) $(CFLAGS) $(CFLAGS_g) $< $(LFLAGS) $(LIBS) $(LIBS_g) -o $@
+GSCTOOL_SOURCES := gsctool.c
+GSCTOOL_OBJS := $(patsubst %.c,%.o,$(GSCTOOL_SOURCES))
+DEPS := $(patsubst %.c,%.d,$(GSCTOOL_SOURCES))
 
-# common EC code USB updater
+# chip/g updater
+gsctool: $(GSCTOOL_OBJS) Makefile
+	$(CC) $(GSCTOOL_OBJS) $(LFLAGS) $(LIBS) $(LIBS_g) -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) $(CFLAGS_g) -c -MMD -MF $(basename $@).d -o $@ $<
+
 usb_updater2: usb_updater2.c Makefile
 	$(CC) $(CFLAGS) $< $(LFLAGS) $(LIBS) $(LIBS_common) -o $@
 
 .PHONY: clean
 
 clean:
-	rm -rf $(PROGRAMS) *~
+	rm -rf $(PROGRAMS) *~ *.o *.d
+
+-include $(DEPS)
