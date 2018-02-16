@@ -70,6 +70,24 @@
       "revId": "ac244c05510748f6552b38c630ce7827fbc69a06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6180749d_a7dc56a1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4591,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-02-16T15:27:35Z",
+      "side": 1,
+      "message": "What I was trying to suggest is that we have semantics of tags with implied length. If we need longer ones we add a new tag. We have 256 tags to play with. It seems weird to have someone using the same tag but getting different lengths.",
+      "parentUuid": "429f2eb1_c2f2cf3d",
+      "revId": "ac244c05510748f6552b38c630ce7827fbc69a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
