@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3eda4a03_10fa98ef",
+        "filename": "common/host_command.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-16T15:38:53Z",
+      "side": 1,
+      "message": "you can declare it as static too",
+      "range": {
+        "startLine": 407,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 14
+      },
+      "revId": "c970976f916908f4cb39d6b8f9e68ecdc62b8559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b9818c4_1ac8dba5",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1641,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-16T15:38:53Z",
+      "side": 1,
+      "message": "why not putting it as #undef by default,\nso you know when there is nothing to do and can compile out the useless code as your previous version I think.",
+      "range": {
+        "startLine": 1641,
+        "startChar": 0,
+        "endLine": 1641,
+        "endChar": 7
+      },
+      "revId": "c970976f916908f4cb39d6b8f9e68ecdc62b8559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
