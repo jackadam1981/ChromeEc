@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "571fb111_4be174d4",
+        "filename": "board/fizz/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-16T20:12:50Z",
+      "side": 1,
+      "message": "this is now useless",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 38
+      },
+      "revId": "d49971100a9a4fc708167eb10397efba38278c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e5cf4c2_424be0f8",
+        "filename": "common/host_command.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-16T20:12:50Z",
+      "side": 1,
+      "message": "I find that adding the condition in a comment helps readability\ne.g. \n#endif /* CONFIG_SUPPRESSED_HOST_COMMANDS */",
+      "range": {
+        "startLine": 626,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 6
+      },
+      "revId": "d49971100a9a4fc708167eb10397efba38278c1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
