@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acc7d086_c70070bf",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-16T13:25:43Z",
+      "side": 1,
+      "message": "Maybe now it would be more convenient to simply have something like this per board:\n#define CONFIG_SUPPRESS_HOST_COMMANDS EC_CMD_CONSOLE_SNAPSHOT,CMD_CONSOLE_READ,EC_CMD_PD_GET_LOG_ENTRY\n\nThen put the variables directly in host_command.c\nand get rid of the extern definitions",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "82f7c59e48ced3dd2ff80c61c0f115b2e87d07af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
