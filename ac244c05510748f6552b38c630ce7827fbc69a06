@@ -52,6 +52,24 @@
       "revId": "ac244c05510748f6552b38c630ce7827fbc69a06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "429f2eb1_c2f2cf3d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4591,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-16T11:18:53Z",
+      "side": 1,
+      "message": "Actually, Aaron\u0027s comment now looks totally different from what I thought...   If we separate BOARD_VERSION into two 1-byte fields, we lose advantage of handling version as an integer. I\u0027m guessing most callers just do numeric comparison with BOARD_VERSION as a whole. If it\u0027s separated, it takes two host command calls.\n\nRegarding tag v.s. field length: We shouldn\u0027t (or don\u0027t need to) bind semantics to the field length. Tags hold the semantics. As long as the tag is the same, the field lengths shouldn\u0027t matter. Of course 1-byte field can\u0027t describe a tuple field (e.g. minor:major version). So, it\u0027s necessary to bump up the field length but the other way should be permitted (a long field describes a short value).",
+      "parentUuid": "3c1a2b84_cdea9381",
+      "revId": "ac244c05510748f6552b38c630ce7827fbc69a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
