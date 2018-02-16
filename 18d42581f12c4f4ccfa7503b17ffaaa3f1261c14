@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bda516fa_317caea6",
+        "filename": "common/host_command.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-16T05:02:00Z",
+      "side": 1,
+      "message": "Technically, you could use HOUR.  But this is fine.",
+      "range": {
+        "startLine": 405,
+        "startChar": 32,
+        "endLine": 405,
+        "endChar": 52
+      },
+      "revId": "18d42581f12c4f4ccfa7503b17ffaaa3f1261c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
