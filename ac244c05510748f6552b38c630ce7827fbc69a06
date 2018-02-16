@@ -16,6 +16,24 @@
       "revId": "ac244c05510748f6552b38c630ce7827fbc69a06",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc9632a_df8b9e59",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 4591,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-16T02:56:57Z",
+      "side": 1,
+      "message": "CBI APIs are coded in the way that allows integer fields to be 1 through 4 byte long. If we\u0027re simply expanding the existing field because we have more than 256 SKU_IDs, we don\u0027t need a new tag. How the integer value is stored in EEPROM is masked from users of the library. That is \u002702\u0027 v.s. \u002702 00 00 00\u0027 come out as 0x02. This is why I\u0027m reluctant to add a size suffix to the tag names.\n\nIf we are introducing a different scheme, we should introduce a new tag. For example, we may expand SKU_ID to 3 byte value: \u003cform_factor\u003e\u003ccpu_sku\u003e\u003cssd_size\u003e. That\u0027ll take a new tag because \u002702 00 00\u0027 and \u002702\u0027 have different meanings.",
+      "parentUuid": "a186ccf8_25854d02",
+      "revId": "ac244c05510748f6552b38c630ce7827fbc69a06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
