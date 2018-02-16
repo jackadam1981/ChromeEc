@@ -92,6 +92,30 @@
       "revId": "78b4902739df82836674e7b29dd79d4cca5feda8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db674663_1b2cd78b",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-02-16T15:03:35Z",
+      "side": 1,
+      "message": "So Rohm confirmed that the register limit and actual limit are both 1984 and the 1024 limit in the data sheet is an error. I think the charger limitation is inherent in the register limitation and I\u0027m not sure there is any additional utility in adding a #define that is used as an additional MIN check.",
+      "parentUuid": "df998d84_ef05d0d3",
+      "range": {
+        "startLine": 740,
+        "startChar": 7,
+        "endLine": 741,
+        "endChar": 32
+      },
+      "revId": "78b4902739df82836674e7b29dd79d4cca5feda8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
