@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "8df3dee1_5a5d51ca",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-16T01:37:48Z",
+      "side": 1,
+      "message": "I missed this, it should have caused vendor command return status of VENDOR_RC_IN_PROGRESS.",
+      "revId": "8ca6a1424a895d7a3c76b8ac796e8ae16bcd7d8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f9a94b3_88099772",
         "filename": "board/cr50/usb_spi.c",
         "patchSetId": 1
