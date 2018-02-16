@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "5915c306_d2f11d4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-16T03:29:51Z",
+      "side": 1,
+      "message": "typo: \u0027set\u0027.",
+      "range": {
+        "startLine": 9,
+        "startChar": 58,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "78b4902739df82836674e7b29dd79d4cca5feda8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33c00354_c3f83151",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-16T03:29:51Z",
+      "side": 1,
+      "message": "missing \u0027to\u0027 ?",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "78b4902739df82836674e7b29dd79d4cca5feda8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b9ef51f_9e5cce0d",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
