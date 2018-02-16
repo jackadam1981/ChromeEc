@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "405f0ac4_e66da378",
+        "filename": "board/grunt/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-02-16T00:10:33Z",
+      "side": 1,
+      "message": "I agree, they don\u0027t really blend to a good third color, so lets just do blue and amber.",
+      "parentUuid": "b560267f_c82ee076",
+      "revId": "bb53d646a5ffe5e798cd28c2c10fa70eaa6a412f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bbeda797_91a70cf2",
         "filename": "board/grunt/led.c",
         "patchSetId": 4
