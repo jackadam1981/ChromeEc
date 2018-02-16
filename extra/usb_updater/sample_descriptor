@@ -1,0 +1,15 @@
+# All numbers expressed in hex
+#<board id>:{a|e|g}{h|d}:base_addr:size:
+#value:[mask:]
+#value:[mask:]
+#value:[mask:]
+#value:[mask:]
+#..
+
+QZUX:a:h:0:10000:
+756c41b90ac9aa23a6c98ce13549dccd72e0a83f8537eb834d9cfc3d12bf3503:
+
+QZUX:a:d:10:10
+
+QZUX:e:h:0:100:
+055d262badc1116520a7ae1d3fda380c0382b4b87f0db10de6495053ba3aadb8:
