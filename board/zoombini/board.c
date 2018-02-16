@@ -300,12 +300,13 @@ struct motion_sensor_t motion_sensors[] = {
 			},
 		},
 	},
+#if 0
 	[LID_MAG] = {
 		.name = "LIS2MDL MAG",
 		.active_mask = SENSOR_ACTIVE_S0,
 		.chip = MOTIONSENSE_CHIP_LIS2MDL,
 		.type = MOTIONSENSE_TYPE_MAG,
-		.location = MOTIONSENSE_LOC_BASE,
+		.location = MOTIONSENSE_LOC_LID,
 		.drv = &lsm6dsm_drv,
 		.drv_data = &lsm6dsm_m_data,
 		.mutex = &g_base_mutex,
@@ -336,6 +337,7 @@ struct motion_sensor_t motion_sensors[] = {
 			},
 		},
 	},
+#endif
 	[LID_ALS] = {
 		.name = "Light",
 		.active_mask = SENSOR_ACTIVE_S0,

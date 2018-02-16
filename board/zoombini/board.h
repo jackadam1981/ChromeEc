@@ -41,33 +41,41 @@
 #endif /* defined(BOARD_ZOOMBINI) */
 
 #define CONFIG_ACCELGYRO_LSM6DSM
-#define CONFIG_MAG_LIS2MDL
+/* TODO(gwendal): to be redefined, mag over accel should be revisited. */
+#if 0
+#define CONFIG_MAG_LIS2MDL /* currently exclusive with LSM6DSM_LIS2MDL */
+#define CONFIG_MAG_LSM6DSM_LIS2MDL
+#endif
 #define CONFIG_ALS
 #define CONFIG_ALS_OPT3001
 #define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 #define ALS_COUNT 1
 
+#if 0
 /* FIFO size is in power of 2. */
 #define CONFIG_ACCEL_FIFO 1024
 
 /* Depends on how fast the AP boots and typical ODRs */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#endif
 
 /* Interrupt management. */
 #define CONFIG_ACCEL_INTERRUPTS
 
 /* Gesture Configuration. */
 #define CONFIG_GESTURE_DETECTION
+#if 0
+/* Require FIFO */
 #define CONFIG_GESTURE_HOST_DETECTION
+#endif
 #define CONFIG_GESTURE_SAMPLING_INTERVAL_MS	5
 
-/* First sensor is motion_sensor is used for significant motion. */
-#define CONFIG_GESTURE_SIGMO			0
+#define CONFIG_GESTURE_SIGMO			LID_ACCEL
 #define CONFIG_GESTURE_SIGMO_PROOF_MS		500
 #define CONFIG_GESTURE_SIGMO_SKIP_MS		3000
 #define CONFIG_GESTURE_SIGMO_THRES_MG		500
 
-#define CONFIG_GESTURE_SENSOR_BATTERY_TAP	0
+#define CONFIG_GESTURE_SENSOR_BATTERY_TAP	LID_ACCEL
 #define CONFIG_GESTURE_TAP_THRES_MG		100
 #define CONFIG_GESTURE_TAP_MAX_INTERSTICE_T	500
 #define CONFIG_GESTURE_DETECTION_MASK \
