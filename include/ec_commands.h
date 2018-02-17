@@ -4628,6 +4628,8 @@ struct __ec_align1 ec_params_set_cbi {
 	uint8_t raw[];		/* For string and raw data */
 };
 
+#define EC_CMD_GET_HPD			0x121
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
