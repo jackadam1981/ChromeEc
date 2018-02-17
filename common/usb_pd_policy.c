@@ -919,7 +919,17 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_GET_AMODE,
 		     hc_remote_pd_get_amode,
 		     EC_VER_MASK(0));
 
+#ifdef GPIO_USB_C0_DP_HPD
+static int hc_get_hpd(struct host_cmd_handler_args *args)
+{
+	return gpio_get_level(GPIO_USB_C0_DP_HPD) ?
+			EC_RES_SUCCESS : EC_RES_ERROR;
+}
+DECLARE_HOST_COMMAND(EC_CMD_GET_HPD,
+		     hc_get_hpd,
+		     EC_VER_MASK(0));
 #endif
+#endif  /* CONFIG_USB_PD_ALT_MODE_DFP */
 
 #define FW_RW_END (CONFIG_EC_WRITABLE_STORAGE_OFF + \
 		   CONFIG_RW_STORAGE_OFF + CONFIG_RW_SIZE)
