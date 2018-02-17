@@ -46,6 +46,23 @@
       "revId": "633b50e446139f1faf5ca75c269ca952dba732a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62ad2589_551b9bc3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3753,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-17T16:33:06Z",
+      "side": 1,
+      "message": "I don\u0027t think we can simply change field meanings in this structure, as ec_commands.h is used across different branches, and we need to keep backwards compatibility.\n\nKeeping MANUAL_MODE should be fine, even if not supported on newer EC. Just add MANUAL_CURRENT/VOLTAGE as new fields.",
+      "revId": "633b50e446139f1faf5ca75c269ca952dba732a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
