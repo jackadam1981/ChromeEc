@@ -22,6 +22,30 @@
       "revId": "633b50e446139f1faf5ca75c269ca952dba732a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "208ab6d9_491184fd",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-02-17T16:28:29Z",
+      "side": 1,
+      "message": "-1 should be fine. This sets the voltage/current requested by (main) battery, so it\u0027s not different in dual-battery systems.\n\nSide note, manual control is quite broken/incomplete on dual battery systems. Partially tracked in b/72072512.",
+      "parentUuid": "2085d147_3461c754",
+      "range": {
+        "startLine": 59,
+        "startChar": 56,
+        "endLine": 59,
+        "endChar": 72
+      },
+      "revId": "633b50e446139f1faf5ca75c269ca952dba732a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
