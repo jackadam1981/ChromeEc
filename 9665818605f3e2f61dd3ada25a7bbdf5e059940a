@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45454b97_5fd91c3a",
+        "filename": "common/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-19T19:56:29Z",
+      "side": 1,
+      "message": "Instead of putting this logic here, would it help if this was added to common/vboot/ under a CHIPSET hook?\n\ni.e.\n#ifdef CONFIG_VBOOT_EFS\nvoid perform_efs(void)\n{\n       if (!system_is_in_rw()) {\n            ...\n       }\n}\n\nDECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, perform_efs, HOOK_PRIO_DEFAULT);\n#endif\n\nThat way all vboot logic can live in the same file.",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 6
+      },
+      "revId": "9665818605f3e2f61dd3ada25a7bbdf5e059940a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
