@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "eced0562_17b4dfd4",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T22:52:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7d77bd9_ec07d14c",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 13
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0094932d_08855296",
         "filename": "common/weaver_ng.c",
         "patchSetId": 14
@@ -308,6 +332,30 @@
     },
     {
       "key": {
+        "uuid": "30a7054d_2b5032bf",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T22:52:27Z",
+      "side": 1,
+      "message": "You are right. I checked with Bill and H1 had a safe_memcmp for this purpose. Previously, I missed the fact that the timing side channel includes this function call and just fixed the code after. It is fixed now.",
+      "parentUuid": "b2c1afd5_376da919",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 35
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "764ffcd5_cd24654f",
         "filename": "common/weaver_ng.c",
         "patchSetId": 14
@@ -352,6 +400,30 @@
       "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03c1a048_f53d2b33",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T22:52:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d9616f6_e3a4fc78",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 0
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
