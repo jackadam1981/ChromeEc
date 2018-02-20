@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ebce51b0_e05bab25",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-20T18:56:22Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "396d28bd_155bab87",
+      "range": {
+        "startLine": 420,
+        "startChar": 17,
+        "endLine": 420,
+        "endChar": 51
+      },
+      "revId": "e56ecb49e1f8bc10d61611d07e7c6f6bf39f6700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f4a6a39_f9e74f16",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "b7f3d77f_8c7ba8d9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-20T18:56:22Z",
+      "side": 1,
+      "message": "Okay, will remove.",
+      "parentUuid": "a8e8a2f0_62505a5a",
+      "range": {
+        "startLine": 939,
+        "startChar": 0,
+        "endLine": 939,
+        "endChar": 34
+      },
+      "revId": "e56ecb49e1f8bc10d61611d07e7c6f6bf39f6700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1f55d363_9a9ca10c",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "5c80652c_3626b8ba",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-20T18:56:22Z",
+      "side": 1,
+      "message": "Yes, they don\u0027t get reset here but, the data roles get set appropriately in the SRC/SNK disconnected debounce states (after debouncing) prior to enabling PD comms.",
+      "parentUuid": "1f55d363_9a9ca10c",
+      "range": {
+        "startLine": 1336,
+        "startChar": 2,
+        "endLine": 1337,
+        "endChar": 31
+      },
+      "revId": "e56ecb49e1f8bc10d61611d07e7c6f6bf39f6700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddcf37b6_bb3e6c72",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7
@@ -105,6 +177,30 @@
       "writtenOn": "2018-02-20T14:58:07Z",
       "side": 1,
       "message": "you are restoring the data role but keep the default power role ???\nLooks broken to me in some cases.",
+      "range": {
+        "startLine": 2196,
+        "startChar": 0,
+        "endLine": 2216,
+        "endChar": 33
+      },
+      "revId": "e56ecb49e1f8bc10d61611d07e7c6f6bf39f6700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2629bb9b_205c85f3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2216,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-20T18:56:22Z",
+      "side": 1,
+      "message": "pd_partner_port_reset() may result in us leaving the physical layer in place. I\u0027m assuming that the state machine catches up resolving the correct power role. However to be honest, I\u0027ve only been looking at the perspective of a default sink power role.\n\nWhat are the cases you are thinking about?",
+      "parentUuid": "ddcf37b6_bb3e6c72",
       "range": {
         "startLine": 2196,
         "startChar": 0,
