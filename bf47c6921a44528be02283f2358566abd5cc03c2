@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "b2c1afd5_376da919",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2018-02-20T20:19:01Z",
+      "side": 1,
+      "message": "Is there a reason to not just use a version of memcmp that\u0027s time constant, as in, it always compares the entire buffer?",
+      "parentUuid": "5aafac32_3f6c7c41",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 35
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "764ffcd5_cd24654f",
         "filename": "common/weaver_ng.c",
         "patchSetId": 14
