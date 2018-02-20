@@ -28,6 +28,10 @@ static enum battery_present batt_pres_prev = BP_NOT_SURE;
 #define BATFETS_MASK		(0x3)
 #define BATFETS_DISABLED	(0x2)
 
+#define BATTEMP_PROTECT0	(5 * 10)
+#define BATTEMP_PROTECT1	(12 * 10)
+#define BATTEMP_PROTECT2	(45 * 10)
+
 static const struct battery_info info = {
 	.voltage_max = 8700,
 	.voltage_normal = 7700,
@@ -65,6 +69,7 @@ int charger_profile_override(struct charge_state_data *curr)
 {
 	const struct battery_info *batt_info;
 	int bat_temp_c;
+	int bat_curr;
 
 	batt_info = battery_get_info();
 
@@ -84,7 +89,26 @@ int charger_profile_override(struct charge_state_data *curr)
 		curr->requested_voltage = 0;
 		curr->batt.flags &= ~BATT_FLAG_WANT_CHARGE;
 		curr->state = ST_IDLE;
+		return 0;
 	}
+
+	/* calculate current : 0.3C */
+	bat_curr = curr->batt.desired_current * 3 / 7;
+
+	if((curr->state == ST_CHARGE) && (bat_curr != 0)) {
+		if(bat_temp_c < BATTEMP_PROTECT0) {
+			/* 0 <= Temp < 5 : 8.4V, 0.3C */
+			curr->requested_current = bat_curr;
+			curr->requested_voltage = 8400;
+		} else if(bat_temp_c < BATTEMP_PROTECT1) {
+			/* 5 <= Temp < 12 : 8.7V, 0.3C */
+			curr->requested_current = bat_curr;
+		} else if(bat_temp_c >= BATTEMP_PROTECT2) {
+			/* 45 <= Temp < 55 : 8.4V, 0.7C */
+			curr->requested_voltage = 8400;
+		}
+	}
+
 	return 0;
 }
 
