@@ -45,6 +45,30 @@
       "revId": "3eaf8bb1de749d3acd2c5eb4ad2a8ee03b909b76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e22cdee8_20aabff2",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-20T20:40:58Z",
+      "side": 1,
+      "message": "d-\u003etag should always fall in the range because find_tag returns NULL if it doesn\u0027t. \n\nIn case some crazy developers call print_integer with a raw integer or enum cbi_data_tag gets out of sync, I can still add the check.",
+      "parentUuid": "f583f285_f79e694f",
+      "range": {
+        "startLine": 219,
+        "startChar": 40,
+        "endLine": 219,
+        "endChar": 58
+      },
+      "revId": "3eaf8bb1de749d3acd2c5eb4ad2a8ee03b909b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
