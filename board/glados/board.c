@@ -219,10 +219,12 @@ static void board_pmic_init(void)
 
 	/*
 	 * Set V085ACNT / V0.85A Control Register:
-	 * Lower power mode = 0.7V.
-	 * Nominal output = 1.0V.
+	 * Lower power mode = 0.7V == d[7:6] == 01b.
+	 * Nominal output   = 1.0V == d[5:4] == 11b.
+	 * Force LP mode exit = rise SLP_S0# ==  d[3:2] == 10b (default).
+	 * mode control     = PFM  == d[1:0] == 01b.
 	 */
-	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x7a);
+	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x38, 0x79);
 
 	/* VRMODECTRL - enable low-power mode for VCCIO and V0.85A */
 	i2c_write8(I2C_PORT_PMIC, I2C_ADDR_BD99992, 0x3b, 0x18);
