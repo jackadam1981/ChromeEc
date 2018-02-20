@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "396d28bd_155bab87",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-20T14:58:07Z",
+      "side": 1,
+      "message": "this part of the condition looks redundant:\nif DR_INITIALIZED is not set here, you don\u0027t care clearing it below.",
+      "range": {
+        "startLine": 420,
+        "startChar": 17,
+        "endLine": 420,
+        "endChar": 51
+      },
+      "revId": "e56ecb49e1f8bc10d61611d07e7c6f6bf39f6700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f4a6a39_f9e74f16",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-20T14:58:07Z",
+      "side": 1,
+      "message": "it\u0027s kind of convoluted, I feel that it would be easier to record that the data role is reversed compared to the power role.\nbut given I don\u0027t see the power role being saved either (as mentioned below), maybe I\u0027m totally confused.",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 36
+      },
+      "revId": "e56ecb49e1f8bc10d61611d07e7c6f6bf39f6700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8e8a2f0_62505a5a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-20T14:58:07Z",
+      "side": 1,
+      "message": "my previous comment about this still stands,\nthis is not wrong just because this callback is empty in every single board.\nWe probably want to remove it.",
+      "range": {
+        "startLine": 939,
+        "startChar": 0,
+        "endLine": 939,
+        "endChar": 34
+      },
+      "revId": "e56ecb49e1f8bc10d61611d07e7c6f6bf39f6700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f55d363_9a9ca10c",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-20T14:58:07Z",
+      "side": 1,
+      "message": "if your own roles are reversed and DR_INITIALIZED if set, you don\u0027t reset your data role here, is this the intended behavior ?",
+      "range": {
+        "startLine": 1336,
+        "startChar": 2,
+        "endLine": 1337,
+        "endChar": 31
+      },
+      "revId": "e56ecb49e1f8bc10d61611d07e7c6f6bf39f6700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddcf37b6_bb3e6c72",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2216,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-20T14:58:07Z",
+      "side": 1,
+      "message": "you are restoring the data role but keep the default power role ???\nLooks broken to me in some cases.",
+      "range": {
+        "startLine": 2196,
+        "startChar": 0,
+        "endLine": 2216,
+        "endChar": 33
+      },
+      "revId": "e56ecb49e1f8bc10d61611d07e7c6f6bf39f6700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
