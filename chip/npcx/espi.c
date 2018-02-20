@@ -9,6 +9,7 @@
 #include "system.h"
 #include "task.h"
 #include "chipset.h"
+#include "clock_chip.h"
 #include "console.h"
 #include "uart.h"
 #include "util.h"
@@ -597,11 +598,50 @@ void espi_interrupt(void)
 }
 DECLARE_IRQ(NPCX_IRQ_ESPI, espi_interrupt, 3);
 
+static uint8_t espi_get_max_freq(void)
+{
+#define ESPI_ENTRY(f, e)	{ .fmclk = f, .espi_usable_freq = e }
+
+	int i;
+	uint8_t fmclk = clock_get_fm_freq() / (1000 * 1000UL);
+	uint8_t espi_max_freq = NPCX_ESPI_MAXFREQ_MAX;
+
+	/*
+	 * This table _should be_ organized in increasing order of FMCLK
+	 * values.
+	 */
+	static const struct {
+		/* FMCLK value in MHz */
+		uint8_t fmclk;
+		/* One of NPCX_ESPI_MAXFREQ_* macros */
+		uint8_t espi_usable_freq;
+	} espi_freq_table[] = {
+#if defined(CHIP_FAMILY_NPCX5)
+		ESPI_ENTRY(33, NPCX_ESPI_MAXFREQ_33),
+		ESPI_ENTRY(48, NPCX_ESPI_MAXFREQ_50),
+		ESPI_ENTRY(50, NPCX_ESPI_MAXFREQ_66),
+#elif defined(CHIP_FAMILY_NPCX7)
+		ESPI_ENTRY(33, NPCX_ESPI_MAXFREQ_33),
+		ESPI_ENTRY(50, NPCX_ESPI_MAXFREQ_50),
+#endif
+	};
+
+	for (i = 0; i < ARRAY_SIZE(espi_freq_table); i++) {
+		if (fmclk <= espi_freq_table[i].fmclk) {
+			espi_max_freq = espi_freq_table[i].espi_usable_freq;
+			break;
+		}
+	}
+
+	return MIN(NPCX_ESPI_MAXFREQ_MAX, espi_max_freq);
+}
+
 /*****************************************************************************/
 /* eSPI Initialization functions */
 void espi_init(void)
 {
 	int i;
+	uint32_t espi_max_freq = espi_get_max_freq();
 
 	/* Support all channels */
 	NPCX_ESPICFG |= ESPI_SUPP_CH_ALL;
@@ -611,8 +651,9 @@ void espi_init(void)
 		NPCX_ESPI_IO_MODE_ALL);
 
 	/* Set eSPI speed to max supported */
+	cprints(CC_LPC, "Setting ESPICFG_MAXFREQ to %d", espi_max_freq);
 	SET_FIELD(NPCX_ESPICFG, NPCX_ESPICFG_MAXFREQ_FILED,
-		  NPCX_ESPI_MAXFREQ_MAX);
+		  espi_max_freq);
 
 	/* Configure Master-to-Slave Virtual Wire indexes (Inputs) */
 	for (i = 0; i < ARRAY_SIZE(espi_in_list); i++)
