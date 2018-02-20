@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0865f93_cb62b7d7",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-20T19:08:20Z",
+      "side": 1,
+      "message": "Suggest just copying the value in the switch, since the rest of the code is duplicated.\n\nuint32_t v;\n\ncase 1:\n   v \u003d *(uint8_t *)d-\u003evalue;\n   break;\ncase 2:\n   v \u003d *(uint26_t *)d-\u003evalue;\n   break;\n\n...\n\nThen printf() once.",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 8
+      },
+      "revId": "3eaf8bb1de749d3acd2c5eb4ad2a8ee03b909b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f583f285_f79e694f",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-20T19:08:20Z",
+      "side": 1,
+      "message": "This should be sanity-checked.\n\nconst char *name \u003d d-\u003etag \u003c CBI_TAG_COUNT ? field_name[d-\u003etag] : \"?TAG?\";",
+      "range": {
+        "startLine": 219,
+        "startChar": 40,
+        "endLine": 219,
+        "endChar": 58
+      },
+      "revId": "3eaf8bb1de749d3acd2c5eb4ad2a8ee03b909b76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
