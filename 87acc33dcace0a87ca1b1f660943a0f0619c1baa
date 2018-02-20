@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6be3bc23_662510aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-20T19:13:31Z",
+      "side": 1,
+      "message": "user/developer/semi-automated test framework :p",
+      "parentUuid": "4f5ffc66_4c8b6a1e",
+      "range": {
+        "startLine": 17,
+        "startChar": 64,
+        "endLine": 17,
+        "endChar": 71
+      },
+      "revId": "87acc33dcace0a87ca1b1f660943a0f0619c1baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e0bbcc7_fc8bece9",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-20T16:52:48Z",
       "side": 1,
       "message": "this part is quite hard to understand unless you read the full history of this CL.\nYou probably need to mention that this mysterious SoftReset would come from the fact that our SRC_CAP packets might stay unanswered (due to the existing contract)",
+      "range": {
+        "startLine": 1919,
+        "startChar": 30,
+        "endLine": 1920,
+        "endChar": 28
+      },
+      "revId": "87acc33dcace0a87ca1b1f660943a0f0619c1baa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65cdabdc_caa6d548",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1920,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-20T19:13:31Z",
+      "side": 1,
+      "message": "Sure, I can expand upon this. (The SoftReset actually comes from our SrcCap timer expiring waiting to receive SrcCaps, not us sending SrcCaps).",
+      "parentUuid": "6e0bbcc7_fc8bece9",
       "range": {
         "startLine": 1919,
         "startChar": 30,
