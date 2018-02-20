@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c8f90422_3ee57697",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "859f044e_68ef39a8",
+      "range": {
+        "startLine": 19,
+        "startChar": 35,
+        "endLine": 19,
+        "endChar": 71
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fd38980_1b23dcb7",
         "filename": "common/weaver_ng.c",
         "patchSetId": 14
@@ -45,6 +69,30 @@
       "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e61d0d9d_5cda6d32",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "That isn\u0027t allowed in what ever standard the EC code is built using (probably gnu90).\n\n\"\"\"\n  CC      RW/common/weaver_ng.o\ncommon/weaver_ng.c: In function ‘create_merkle_tree’:\ncommon/weaver_ng.c:52:2: error: ‘for’ loop initial declarations are only allowed in C99 or C11 mode\n  for (param_h_t hx \u003d 1; hx \u003c param_h; ++hx) {\n\"\"\"",
+      "parentUuid": "5fd38980_1b23dcb7",
+      "range": {
+        "startLine": 53,
+        "startChar": 6,
+        "endLine": 53,
+        "endChar": 8
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "88804ece_dcff6a1d",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "We might want some way of encrypting the secrets that are sent over dbus. If we don\u0027t care if clear text secrets are sent over dbus, we can get rid of the asymmetric key pair. The code to handle decryption and using a session key isn\u0027t written yet.",
+      "parentUuid": "d1ccbdb1_2b59967a",
+      "range": {
+        "startLine": 67,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 55
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41e3e263_441e4661",
         "filename": "common/weaver_ng.c",
         "patchSetId": 14
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "18bf8147_ef41d9c9",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "We can do either. What matters is that it is consistent on the AP side.\nAckn",
+      "parentUuid": "41e3e263_441e4661",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 41
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0eb68895_9ca68d49",
         "filename": "common/weaver_ng.c",
         "patchSetId": 14
@@ -105,6 +201,30 @@
       "writtenOn": "2018-02-19T10:02:10Z",
       "side": 1,
       "message": "This introduces a timing side channel that you need to avoid (i.e. allowing an attacker that observes and early return to kill power to H1 so the attempt doesn\u0027t get counted).\n\nWe need constant time operations to the point where the root hash update has landed in NVRAM.",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 13
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7d77bd9_ec07d14c",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "I don\u0027t count attempts that aren\u0027t made---if the attempt is rate limited, no attempt is made or recorded.",
+      "parentUuid": "0eb68895_9ca68d49",
       "range": {
         "startLine": 522,
         "startChar": 0,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "5aafac32_3f6c7c41",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "This is a legitimate place were a timing side channel might be present. I have updated to code with dummy operations mirroring each branch so they take the same time.",
+      "parentUuid": "0094932d_08855296",
+      "range": {
+        "startLine": 525,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 35
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "764ffcd5_cd24654f",
         "filename": "common/weaver_ng.c",
         "patchSetId": 14
@@ -151,6 +295,30 @@
       "writtenOn": "2018-02-19T10:02:10Z",
       "side": 1,
       "message": "ditto re timing side channel",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 0
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d9616f6_e3a4fc78",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "I don\u0027t think a timing side channel applies to the reset case because the only time we update the metadata for a reset is on success---even if the attacker cuts the power early it doesn\u0027t gain them anything in the reset case because the reset secret is high entropy and isn\u0027t rate limited.",
+      "parentUuid": "764ffcd5_cd24654f",
       "range": {
         "startLine": 581,
         "startChar": 0,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "ee73f546_a9ce7ca1",
+        "filename": "include/weaver_ng.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a095141_79ea0f48",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 0
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492d66e4_e41f709e",
         "filename": "include/weaver_ng.h",
         "patchSetId": 14
@@ -206,6 +398,30 @@
       "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6279c44f_65172c3c",
+        "filename": "include/weaver_ng.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "492d66e4_e41f709e",
+      "range": {
+        "startLine": 74,
+        "startChar": 55,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "595e02d3_4d9edc15",
+        "filename": "include/weaver_ng.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fe0fcb1_0f1cd816",
+      "range": {
+        "startLine": 77,
+        "startChar": 33,
+        "endLine": 77,
+        "endChar": 34
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e129c4dd_ea26a746",
         "filename": "include/weaver_ng.h",
         "patchSetId": 14
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "40fd9395_43b0faca",
+        "filename": "include/weaver_ng.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e129c4dd_ea26a746",
+      "range": {
+        "startLine": 96,
+        "startChar": 5,
+        "endLine": 96,
+        "endChar": 17
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b438e7e_950bf691",
         "filename": "include/weaver_ng.h",
         "patchSetId": 14
@@ -272,6 +536,24 @@
     },
     {
       "key": {
+        "uuid": "6a430d55_39a5b3c1",
+        "filename": "include/weaver_ng.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b438e7e_950bf691",
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d02b6f46_57acf250",
         "filename": "include/weaver_ng.h",
         "patchSetId": 14
@@ -286,6 +568,24 @@
       "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1816f368_070b8add",
+        "filename": "include/weaver_ng.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d02b6f46_57acf250",
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -312,6 +612,30 @@
     },
     {
       "key": {
+        "uuid": "081b3f36_e8a95464",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a25b9fbc_001779d1",
+      "range": {
+        "startLine": 13,
+        "startChar": 8,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37a70137_3e44be54",
         "filename": "include/weaver_ng_types.h",
         "patchSetId": 14
@@ -332,6 +656,30 @@
       "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40afccd6_c2ce51ce",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37a70137_3e44be54",
+      "range": {
+        "startLine": 43,
+        "startChar": 22,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -358,6 +706,30 @@
     },
     {
       "key": {
+        "uuid": "8ef47a43_17f98302",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "223534d0_b699d751",
+      "range": {
+        "startLine": 48,
+        "startChar": 22,
+        "endLine": 48,
+        "endChar": 23
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfbc60ba_8f68ebb1",
         "filename": "include/weaver_ng_types.h",
         "patchSetId": 14
@@ -369,6 +741,30 @@
       "writtenOn": "2018-02-19T10:02:10Z",
       "side": 1,
       "message": "Alternatively, you could size the array using the max parameters you\u0027ve specified above?",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 62
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47aec7da_5bad7bc2",
+        "filename": "include/weaver_ng_types.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-20T18:57:08Z",
+      "side": 1,
+      "message": "This actually makes the size of the struct match the size of a TPM message.\n\nI will add an additional check to reset_tree that makes sure the path will actually fit into a TPM message with the given parameters.",
+      "parentUuid": "bfbc60ba_8f68ebb1",
       "range": {
         "startLine": 229,
         "startChar": 2,
