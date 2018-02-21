@@ -7,9 +7,12 @@
 
 #include <common.h>
 #include <console.h>
+#include <extension.h>
+#include <hooks.h>
 #include <pinweaver_tpm_imports.h>
 #include <pinweaver_types.h>
 #include <timer.h>
+#include <tpm_vendor_cmds.h>
 #include <trng.h>
 #include <util.h>
 
@@ -540,6 +543,44 @@ static int pw_handle_reset_auth(struct merkle_tree_t *merkle_tree,
 
 	return ret;
 }
+
+struct merkle_tree_t pw_merkle_tree;
+
+/*
+ * Handle the VENDOR_CC_WEAVER_NG command.
+ */
+static enum vendor_cmd_rc pw_vendor_specific_command(enum vendor_cmd_cc code,
+						      void *buf,
+						      size_t input_size,
+						      size_t *response_size)
+{
+	const struct pw_request_t *request = buf;
+	struct pw_response_t *response = buf;
+	int ret;
+
+	if (code != VENDOR_CC_PINWEAVER)
+		return VENDOR_RC_BOGUS_ARGS;
+
+	if (input_size != request->header.data_length + sizeof(request->header))
+		return VENDOR_RC_REQUEST_TOO_BIG;
+
+	ret = pw_handle_request(&pw_merkle_tree, request, response);
+
+	/* TODO(allenwebb) store merkle_tree log update to flash here. */
+
+	*response_size = response->header.data_length +
+			 sizeof(response->header);
+
+	return ret == EC_SUCCESS ? VENDOR_RC_SUCCESS : VENDOR_RC_INTERNAL_ERROR;
+}
+DECLARE_VENDOR_COMMAND(VENDOR_CC_PINWEAVER,
+		pw_vendor_specific_command);
+
+static void pinweaver_init(void)
+{
+	/* TODO(allenwebb) load merkle_tree from flash here. */
+}
+DECLARE_HOOK(HOOK_INIT, pinweaver_init, HOOK_PRIO_LAST);
 
 /******************************************************************************/
 /* Non-static functions.
