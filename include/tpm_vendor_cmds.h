@@ -55,6 +55,11 @@ enum vendor_cmd_cc {
 	VENDOR_CC_GET_ALERTS_DATA = 35,
 	VENDOR_CC_SPI_HASH = 36,
 
+	/* A gap left to separate the weaver_ng command so future weaver_ng
+	 * commands don't become fragmented.
+	 */
+	VENDOR_CC_PINWEAVER = 1024,
+
 	LAST_VENDOR_COMMAND = 65535,
 };
 
