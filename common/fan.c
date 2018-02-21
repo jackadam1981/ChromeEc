@@ -469,17 +469,20 @@ static void pwm_fan_second(void)
 	uint16_t *mapped = (uint16_t *)host_get_memmap(EC_MEMMAP_FAN);
 	uint16_t rpm;
 	int stalled = 0;
+	static uint8_t stalled_fans = 0;
 	int fan;
 
 	for (fan = 0; fan < CONFIG_FANS; fan++) {
 		if (fan_is_stalled(fans[fan].ch)) {
 			rpm = EC_FAN_SPEED_STALLED;
 			stalled = 1;
-			cprints(CC_PWM, "Fan %d stalled!", fan);
+			if (!IS_BIT_SET(stalled_fans, fan))
+				cprints(CC_PWM, "Fan %d stalled!", fan);
+			SET_BIT(stalled_fans, fan);
 		} else {
 			rpm = fan_get_rpm_actual(fans[fan].ch);
+			CLEAR_BIT(stalled_fans, fan);
 		}
-
 		mapped[fan] = rpm;
 	}
 
