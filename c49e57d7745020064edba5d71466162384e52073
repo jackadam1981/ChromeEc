@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "539fefc4_4bb1593d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-21T03:04:01Z",
+      "side": 1,
+      "message": "Could you use chromium:814098 instead? I want to keep b:72387533 dedicated to the architectural issue and fixes.",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "c49e57d7745020064edba5d71466162384e52073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9fec7e3e_ce658628",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
