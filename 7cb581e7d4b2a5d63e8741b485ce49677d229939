@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5818ce9b_39e8fbc2",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-21T18:54:33Z",
+      "side": 1,
+      "message": "Is there a way to share this code between here and common/cbi.c?\n\nThat is, maybe cbi.c should be:\n\n/* stuff to share between firmware and cbi-util */\n\n#ifndef CBI_UTIL\n\n/* firmware-only code like host commands */\n\n#endif\n\nAnd then link or include common/cbi.c into cbi-util?\n\n(Can be done in a later CL.)",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 10
+      },
+      "revId": "7cb581e7d4b2a5d63e8741b485ce49677d229939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
