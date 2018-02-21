@@ -160,6 +160,22 @@ static const struct fast_charge_params fast_chg_params_smp_ca445 = {
  */
 int charger_profile_override(struct charge_state_data *curr)
 {
+	int dischg_on_ac = 0;
+
+	/*
+	 * If battery is almost full and does not want charge
+	 * then discharge on AC
+	 */
+	if (!(curr->batt.flags & BATT_FLAG_WANT_CHARGE) &&
+		(curr->batt.status & STATUS_FULLY_CHARGED))
+		dischg_on_ac = 1;
+
+	charger_discharge_on_ac(dischg_on_ac);
+	if (dischg_on_ac) {
+		curr->state = ST_DISCHARGE;
+		return 0;
+	}
+
 	return charger_profile_override_common(curr,
 			&fast_chg_params_smp_ca445,
 			&prev_chg_profile_info,
