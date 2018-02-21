@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "836041d0_1ab5048d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-21T06:36:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "539fefc4_4bb1593d",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "c49e57d7745020064edba5d71466162384e52073",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9fec7e3e_ce658628",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
