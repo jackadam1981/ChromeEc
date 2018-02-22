@@ -427,6 +427,30 @@
     },
     {
       "key": {
+        "uuid": "03d87ea1_75dc6759",
+        "filename": "common/weaver_ng.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-22T21:05:29Z",
+      "side": 1,
+      "message": "After Kerrnel@ posted a comment about memcmp in the case above I realized that there is indeed a side channel here and have fixed it.",
+      "parentUuid": "03c1a048_f53d2b33",
+      "range": {
+        "startLine": 581,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 0
+      },
+      "revId": "bf47c6921a44528be02283f2358566abd5cc03c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a095141_79ea0f48",
         "filename": "include/weaver_ng.h",
         "patchSetId": 14
