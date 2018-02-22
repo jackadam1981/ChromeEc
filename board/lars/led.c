@@ -226,20 +226,4 @@ DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
 
 #define I2C_TMP432_READ(reg, data) \
 	i2c_read16(I2C_PORT_THERMAL, TMP432_I2C_ADDR, (reg), (data))
-static void tino_check_temp_func(void)
-{
-	int ret;
-	int data;
 
-	ret = I2C_TMP432_READ(TMP432_STATUS, &data);
-	if (ret)
-		goto tino_check_temp_error;
-
-	data &= TMP432_STATUS_TEMP_HIGH_ALARM;
-	lars_led_set_color_battery(data ? LED_BLUE : LED_AMBER);
-	return;
-
-tino_check_temp_error:
-	ccprintf("tino check temp failed");
-}
-DECLARE_HOOK(HOOK_TICK, tino_check_temp_func, HOOK_PRIO_DEFAULT);

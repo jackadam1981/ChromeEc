@@ -735,30 +735,47 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, abort_fan_control_on_suspend,
 static int tino_temp_init_func(int argc, char **argv)
 {
 	int ret, data;
+	int mode; /* 0 : ALERT mode; 1 : THERMAL2 mode */
 
-	if (argc != 1)
-		return EC_ERROR_PARAM_COUNT;
+	if (argc != 2) {
+		CPRINTS("TINO: number of arguments is not two!");
+		return EC_ERROR_INVAL;
+	}
+
+	if (!strcasecmp(argv[1], "0")) {
+		mode = 0;
+		CPRINTS("TINO: AL/TH pin runs alert mode!");
+	} else if (!strcasecmp(argv[1], "1")) {
+		mode = 1;
+		CPRINTS("TINO: AL/TH pin runs thermal mode!");
+	} else {
+		CPRINTS("TINO: argument is not 0 or 1");
+		return EC_ERROR_PARAM1;
+	}
 
 	ret = I2C_TMP432_READ(TMP432_CONFIGURATION1_R, &data);
 	if (ret)
 		goto tino_temp_init_error;
 
-	/*
-	 * Change ALERT/THERM pin to THERM mode
-	 * [5] : 0 for ALERT mode(default), 1 for THERM mode
-	 */
-	data |= TMP432_CONFIG1_MODE;
+	/* ALERT/THERM pin: 0 for ALERT mode(default), 1 for THERM mode. */
+	/* Change ALERT/THERM pin to ALERT mode */
+	if (mode == 0)
+		data &= !TMP432_CONFIG1_MODE;
+	else
+	/* Change ALERT/THERM pin to THERM mode */
+		data |= TMP432_CONFIG1_MODE;
+
 	ret = I2C_TMP432_WRITE8(TMP432_CONFIGURATION1_W, data);
 	if (ret)
 		goto tino_temp_init_error;
 
-	/* Set Throttling Point:30C */
-	ret = I2C_TMP432_WRITE16(TMP432_LOCAL_HIGH_LIMIT_W, 30);
+	/* Set Throttling Point:32C */
+	ret = I2C_TMP432_WRITE16(TMP432_LOCAL_HIGH_LIMIT_W, 32);
 	if (ret)
 		goto tino_temp_init_error;
 
 	/*
-	 * Set hysteresis to 5C ,throttling off 25C, THERM mode only
+	 * Set hysteresis to 5C ,throttling off 27C, THERM mode only
 	 * default: 10C
 	 */
 	ret = I2C_TMP432_WRITE8(TMP432_THERM_HYSTERESIS, 0x05);
@@ -772,5 +789,29 @@ tino_temp_init_error:
 	CPRINTS("tino temp init failed");
 	return EC_ERROR_INVAL;
 }
-DECLARE_CONSOLE_COMMAND(tino_temp_init, tino_temp_init_func, NULL,
-		"Set TMP432 alert pin to THERM mode, high limit as 30C", NULL);
+DECLARE_CONSOLE_COMMAND(tino_temp_init, tino_temp_init_func, [0|1],
+		"Set TMP432 AL/TH pin, high limit as 32C", NULL);
+
+static int tino_check_temp_func(int argc, char **argv)
+{
+	int ret;
+	int data;
+
+	ret = I2C_TMP432_READ(TMP432_STATUS, &data);
+	if (ret)
+		goto tino_check_temp_error;
+
+	data &= TMP432_STATUS_TEMP_HIGH_ALARM;
+	if (data == 0)
+		CPRINTS("TINO: TMP432 remote high alarm status is 0");
+	else
+		CPRINTS("TINO: TMP432 remote high alarm status is 1");
+
+	return EC_SUCCESS;
+
+tino_check_temp_error:
+	CPRINTS("tino check temp failed");
+	return EC_ERROR_INVAL;
+}
+DECLARE_CONSOLE_COMMAND(tino_check_temp, tino_check_temp_func, NULL,
+		"Check TMP432 status in Status Register", NULL);
