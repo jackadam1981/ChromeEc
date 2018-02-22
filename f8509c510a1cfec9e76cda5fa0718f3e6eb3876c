@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b53d06e8_f3e7fafd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-22T01:45:44Z",
+      "side": 1,
+      "message": "I believe we prefer better description.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "f8509c510a1cfec9e76cda5fa0718f3e6eb3876c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ddcf77b_5b3a7380",
+        "filename": "board/nami/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-22T01:45:44Z",
+      "side": 1,
+      "message": "nit: Could you remove these extra spaces?",
+      "range": {
+        "startLine": 288,
+        "startChar": 40,
+        "endLine": 288,
+        "endChar": 41
+      },
+      "revId": "f8509c510a1cfec9e76cda5fa0718f3e6eb3876c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ef87c7_020c51c7",
+        "filename": "board/nami/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-22T01:45:44Z",
+      "side": 1,
+      "message": "Why are these all zero?",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 56
+      },
+      "revId": "f8509c510a1cfec9e76cda5fa0718f3e6eb3876c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
