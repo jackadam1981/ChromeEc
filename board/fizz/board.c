@@ -12,6 +12,7 @@
 #include "bd99992gw.h"
 #include "board_config.h"
 #include "button.h"
+#include "cec.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "charger.h"
@@ -452,6 +453,7 @@ static void board_init(void)
 	board_extpower();
 
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
+	cec_init();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -671,7 +673,7 @@ int fan_percent_to_rpm(int fan, int pct)
 {
 	uint32_t oem_id;
 	if (cbi_get_oem_id(&oem_id) || oem_id >= ARRAY_SIZE(fan_tables)) {
-		CPRINTF("Fan OEM%d not supported or failed to get OEM", oem_id);
+		// CPRINTF("Fan OEM%d not supported or failed to get OEM", oem_id);
 		oem_id = 0;
 	}
 	return get_custom_rpm(fan, pct, oem_id);

@@ -75,6 +75,8 @@ const char help_str[] =
 	"      Prints supported version mask for a command number\n"
 	"  console\n"
 	"      Prints the last output to the EC debug console\n"
+	"  displaypower <on|off>\n"
+	"  	Toggle external display on or off.\n"
 	"  echash [CMDS]\n"
 	"      Various EC hash commands\n"
 	"  eventclear <mask>\n"
@@ -7670,6 +7672,37 @@ int cmd_wait_event(int argc, char *argv[])
 	return 0;
 }
 
+int cmd_display_power(int argc, char *argv[])
+{
+	struct ec_params_display_power p;
+	struct ec_response_display_power r;
+	char off_string[10];
+	char on_string[10];
+
+	if(argc != 2) {
+		fprintf(stderr, "Usage: %s <on|off>\n", argv[0]);
+		return -1;
+	}
+
+	strcpy(off_string, "off");
+	strcpy(on_string, "on");
+	if(strcmp(argv[1], off_string)) {
+		fprintf(stdout, "wanted to turn off\n");
+		p.turn_on_display = 0;
+	}
+	else if(strcmp(argv[1], on_string)) {
+		fprintf(stdout, "wanted to turn on\n");
+		p.turn_on_display = 1;
+	}
+	else {
+		fprintf(stderr, "Need to pass in ON or OFF\n");
+		return -EINVAL;
+	}
+
+	return ec_command(EC_CMD_DISPLAY_POWER, 0, &p, sizeof(p), &r, sizeof(r));
+}
+
+
 /* NULL-terminated list of commands */
 const struct command commands[] = {
 	{"autofanctrl", cmd_thermal_auto_fan_ctrl},
@@ -7686,6 +7719,7 @@ const struct command commands[] = {
 	{"chipinfo", cmd_chipinfo},
 	{"cmdversions", cmd_cmdversions},
 	{"console", cmd_console},
+	{"displaypower", cmd_display_power},
 	{"echash", cmd_ec_hash},
 	{"eventclear", cmd_host_event_clear},
 	{"eventclearb", cmd_host_event_clear_b},

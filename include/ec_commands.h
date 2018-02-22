@@ -4832,6 +4832,16 @@ struct __ec_align_size1 ec_params_charger_control {
 	uint8_t allow_charging;
 };
 
+#define EC_CMD_DISPLAY_POWER 0x0603
+
+struct __ec_align4 ec_params_display_power {
+	uint32_t turn_on_display;
+};
+
+struct __ec_align4 ec_response_display_power {
+	uint32_t result;
+};
+
 /*****************************************************************************/
 /*
  * Reserve a range of host commands for board-specific, experimental, or
