@@ -62,4 +62,12 @@ int cbi_get_oem_id(uint32_t *oem_id);
 int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size);
 int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size);
 
+/*
+ * Utility functions
+ */
+uint8_t cbi_crc8(const struct cbi_header *h);
+uint8_t *cbi_set_data(uint8_t *p, enum cbi_data_tag tag,
+		      const void *buf, int size);
+struct cbi_data *cbi_find_tag(const void *cbi, enum cbi_data_tag tag);
+
 #endif /* __CROS_EC_CROS_BOARD_INFO_H */
