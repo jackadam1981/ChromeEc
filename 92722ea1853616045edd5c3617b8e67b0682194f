@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cd7f90a_cdc9f1d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-22T23:34:18Z",
+      "side": 1,
+      "message": "You didn\u0027t touch thermal_params.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "92722ea1853616045edd5c3617b8e67b0682194f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "455d5f23_c8a6326f",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-22T23:34:18Z",
+      "side": 1,
+      "message": "What are these changes for?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 20
+      },
+      "revId": "92722ea1853616045edd5c3617b8e67b0682194f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "561cda43_3f1c463a",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-22T23:34:18Z",
+      "side": 1,
+      "message": "Can you do \u0027oem_id \u003d 3\u0027 here and remove line 687? cbi_get_oem_id doesn\u0027t change oem_id if it fails.",
+      "range": {
+        "startLine": 684,
+        "startChar": 1,
+        "endLine": 684,
+        "endChar": 17
+      },
+      "revId": "92722ea1853616045edd5c3617b8e67b0682194f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ecf8031_5a671799",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-22T23:34:18Z",
+      "side": 1,
+      "message": "Please add \u0027\\n\u0027.",
+      "range": {
+        "startLine": 686,
+        "startChar": 55,
+        "endLine": 686,
+        "endChar": 56
+      },
+      "revId": "92722ea1853616045edd5c3617b8e67b0682194f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
