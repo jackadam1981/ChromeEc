@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb80ce3e_5d4482a3",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-22T21:48:36Z",
+      "side": 1,
+      "message": "What exactly fails here when there\u0027s no battery present?",
+      "revId": "211cca4487fac983fcfac50cd409b9ec66cb169c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
