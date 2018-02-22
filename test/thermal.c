@@ -118,7 +118,7 @@ static int test_init_val(void)
 	TEST_ASSERT(cpu_throttled == 0);
 	TEST_ASSERT(cpu_shutdown == 0);
 	TEST_ASSERT(fan_pct == 0);
-	TEST_ASSERT(no_temps_read);
+	TEST_ASSERT(no_temps_read == 0);
 
 	sleep(2);
 
@@ -126,7 +126,7 @@ static int test_init_val(void)
 	TEST_ASSERT(cpu_throttled == 0);
 	TEST_ASSERT(cpu_shutdown == 0);
 	TEST_ASSERT(fan_pct == 0);
-	TEST_ASSERT(no_temps_read);
+	TEST_ASSERT(no_temps_read == 0);
 
 	return EC_SUCCESS;
 }
@@ -248,6 +248,8 @@ static int test_all_fans(void)
 	thermal_params[2].temp_fan_max = 200;
 	thermal_params[3].temp_fan_off = 300;
 	thermal_params[3].temp_fan_max = 500;
+
+	test_chipset_on();
 
 	set_temps(1, 1, 1, 1);
 	sleep(2);
