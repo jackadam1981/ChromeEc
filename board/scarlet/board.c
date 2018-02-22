@@ -161,7 +161,13 @@ int board_set_active_charge_port(int charge_port)
 		rt946x_enable_charger_boost(1);
 		break;
 	case CHARGE_PORT_NONE:
-		rt946x_enable_charger_boost(0);
+		/*
+		 * Turn off the charging path only when we are sure battery
+		 * is present. The fuel gauge (max17055) on Scarlet needs
+		 * to be powered by VBAT all the time.
+		 */
+		if (battery_is_present() == BP_YES)
+			rt946x_enable_charger_boost(0);
 		break;
 	default:
 		panic("Invalid charge port\n");
