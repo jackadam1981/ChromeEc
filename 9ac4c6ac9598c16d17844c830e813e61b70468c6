@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a252377_2b9b3ef4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-22T21:17:34Z",
+      "side": 1,
+      "message": "did you try linking this with some code shifting uint64_t which was failing to link before?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "9ac4c6ac9598c16d17844c830e813e61b70468c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d4b356e_731daafa",
+        "filename": "core/cortex-m/llsr.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-22T21:17:34Z",
+      "side": 1,
+      "message": "is the goal to keep it fixed time?\n\nchecking if (shift \u003e\u003d 32) would result in an easier to read code.\n\njust a thought for your discretion, will let Vincent approve.",
+      "revId": "9ac4c6ac9598c16d17844c830e813e61b70468c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
