@@ -612,15 +612,27 @@ static const struct fan_step fan_table1[] = {
 	{.on = 88, .off = 83, .rpm = 5200},
 	{.on = 98, .off = 91, .rpm = 5600},
 };
+static const struct fan_step fan_table2[] = {
+	{.on =  0, .off =  1, .rpm = 0},
+	{.on = 36, .off =  1, .rpm = 2200},
+	{.on = 63, .off = 56, .rpm = 2900},
+	{.on = 69, .off = 65, .rpm = 3000},
+	{.on = 75, .off = 70, .rpm = 3300},
+	{.on = 80, .off = 76, .rpm = 3600},
+	{.on = 87, .off = 81, .rpm = 3900},
+	{.on = 98, .off = 91, .rpm = 5000},
+};
 /* All fan tables must have the same number of levels */
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
 BUILD_ASSERT(ARRAY_SIZE(fan_table1) == NUM_FAN_LEVELS);
+BUILD_ASSERT(ARRAY_SIZE(fan_table2) == NUM_FAN_LEVELS);
 
 /* Default uses table0 due to its smaller active point */
 static const struct fan_step *fan_tables[] = {
-	fan_table0,	/* Kench & Default */
+	fan_table0,	/* Kench */
 	fan_table0,	/* Teemo */
 	fan_table1,	/* Sion */
+	fan_table2,	/* Wukong & Default */
 };
 
 static int get_custom_rpm(int fan, int pct, int oem_id)
@@ -669,8 +681,9 @@ int fan_percent_to_rpm(int fan, int pct)
 {
 	uint32_t oem_id;
 	if (cbi_get_oem_id(&oem_id) || oem_id >= ARRAY_SIZE(fan_tables)) {
-		CPRINTF("Fan OEM%d not supported or failed to get OEM", oem_id);
-		oem_id = 0;
+		CPRINTF("Fan OEM%d not supported or failed to get OEM\n",
+			oem_id);
+		oem_id = 3; /* see fan_tables */
 	}
 	return get_custom_rpm(fan, pct, oem_id);
 }
