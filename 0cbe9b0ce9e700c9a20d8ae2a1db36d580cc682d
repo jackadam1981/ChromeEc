@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce241245_b368cfe8",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2018-02-22T08:40:02Z",
+      "side": 1,
+      "message": "Replace I2C_PORT_KBBL with I2C_PORT_KBLIGHT",
+      "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74340bc6_2500ac79",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2018-02-22T08:40:02Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef6498e3_a49ca2b0",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2018-02-22T08:40:02Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72fedb4b_7e9a95a3",
         "filename": "driver/led/lm3592.c",
         "patchSetId": 4
@@ -19,6 +70,40 @@
         "endLine": 5,
         "endChar": 12
       },
+      "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b76cdf01_8c707305",
+        "filename": "driver/led/lm3592.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2018-02-22T08:40:02Z",
+      "side": 1,
+      "message": "Replace I2C_PORT_KBBL with I2C_PORT_KBLIGHT",
+      "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ddc2c64_1e2bf15d",
+        "filename": "driver/led/lm3592.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2018-02-22T08:40:02Z",
+      "side": 1,
+      "message": "Replace I2C_PORT_KBBL with I2C_PORT_KBLIGHT",
       "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -64,6 +149,29 @@
         "startChar": 13,
         "endLine": 5,
         "endChar": 17
+      },
+      "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0099f8b4_60e93add",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2018-02-22T08:40:02Z",
+      "side": 1,
+      "message": "Not used.",
+      "range": {
+        "startLine": 801,
+        "startChar": 8,
+        "endLine": 801,
+        "endChar": 30
       },
       "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
