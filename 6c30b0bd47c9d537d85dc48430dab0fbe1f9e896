@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce98ff68_a4df1caa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1201020
+      },
+      "writtenOn": "2018-02-22T03:32:34Z",
+      "side": 1,
+      "message": "We will modify these in next patch.",
+      "parentUuid": "58e72151_da861a95",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "6c30b0bd47c9d537d85dc48430dab0fbe1f9e896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7837986_4fb48524",
         "filename": "board/nami/board.h",
         "patchSetId": 1
