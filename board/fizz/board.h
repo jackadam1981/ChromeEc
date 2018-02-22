@@ -192,9 +192,9 @@ enum power_signal {
 };
 
 enum temp_sensor_id {
-	TEMP_SENSOR_CHARGER,	/* BD99992GW SYSTHERM1 */
-	TEMP_SENSOR_DRAM,	/* BD99992GW SYSTHERM2 */
-	TEMP_SENSOR_EMMC,	/* BD99992GW SYSTHERM3 */
+	/* We have two sensors: UCP3 and QCP4. They're located under the heat
+	 * sink side-by-side. We only need to read one. */
+	TEMP_SENSOR_HEATSINK,
 	TEMP_SENSOR_COUNT
 };
 
