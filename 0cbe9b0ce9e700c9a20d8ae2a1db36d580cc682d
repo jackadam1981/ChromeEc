@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72fedb4b_7e9a95a3",
+        "filename": "driver/led/lm3592.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-22T08:21:57Z",
+      "side": 1,
+      "message": "Please write it as capital.",
+      "range": {
+        "startLine": 5,
+        "startChar": 6,
+        "endLine": 5,
+        "endChar": 12
+      },
+      "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a7bb7b_46d2a5ea",
+        "filename": "driver/led/lm3592.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-22T08:21:57Z",
+      "side": 1,
+      "message": "unused, pls remove it.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 1
+      },
+      "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4323d4c_a89c0adb",
+        "filename": "driver/led/lm3592.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-22T08:21:57Z",
+      "side": 1,
+      "message": "LED",
+      "range": {
+        "startLine": 5,
+        "startChar": 13,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "0cbe9b0ce9e700c9a20d8ae2a1db36d580cc682d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
