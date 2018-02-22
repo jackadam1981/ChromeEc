@@ -16,6 +16,29 @@
       "revId": "fac65e668c2b02d0af419c6a48f33a44f8e4ba11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "684e1397_f94bed51",
+        "filename": "board/nami/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-22T12:28:18Z",
+      "side": 0,
+      "message": "I think we can remove this.",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 28
+      },
+      "revId": "fac65e668c2b02d0af419c6a48f33a44f8e4ba11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
