@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f2e5d5df_06d14146",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-22T21:29:11Z",
+      "side": 1,
+      "message": "this is totally fine to mention in the TEST\u003d clause that the patch has been tested/verified with other patches on top of it.",
+      "parentUuid": "ffff3e34_fb7e0e87",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 4
+      },
+      "revId": "9ac4c6ac9598c16d17844c830e813e61b70468c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d4b356e_731daafa",
         "filename": "core/cortex-m/llsr.c",
         "patchSetId": 2
