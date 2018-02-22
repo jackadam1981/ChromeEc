@@ -55,27 +55,30 @@ static void thermal_control(void)
 	int count_over[EC_TEMP_THRESH_COUNT];
 	int count_under[EC_TEMP_THRESH_COUNT];
 	int num_valid_limits[EC_TEMP_THRESH_COUNT];
-	int num_sensors_read;
-	int fmax;
-	int temp_fan_configured;
+	int num_sensors_failed = 0;
+	int fmax = 0;
+	int temp_fan_configured = 0;
 
 	/* Get ready to count things */
 	memset(count_over, 0, sizeof(count_over));
 	memset(count_under, 0, sizeof(count_under));
 	memset(num_valid_limits, 0, sizeof(num_valid_limits));
-	num_sensors_read = 0;
-	fmax = 0;
-	temp_fan_configured = 0;
 
 	/* go through all the sensors */
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
+		const struct temp_sensor_t *sensor = temp_sensors + i;
+
+		/* If the CPU is off, we don't bother cooling it. */
+		if (sensor->type == TEMP_SENSOR_TYPE_CPU &&
+				!chipset_in_state(CHIPSET_STATE_ON))
+			continue;
 
 		/* read one */
 		rv = temp_sensor_read(i, &t);
-		if (rv != EC_SUCCESS)
+		if (rv != EC_SUCCESS) {
+			num_sensors_failed++;
 			continue;
-		else
-			num_sensors_read++;
+		}
 
 		/* check all the limits */
 		for (j = 0; j < EC_TEMP_THRESH_COUNT; j++) {
@@ -107,7 +110,7 @@ static void thermal_control(void)
 		}
 	}
 
-	if (!num_sensors_read) {
+	if (num_sensors_failed == TEMP_SENSOR_COUNT) {
 		/*
 		 * Trigger a SMI event if we can't read any sensors.
 		 *
