@@ -22,6 +22,30 @@
       "revId": "798d7389d3828471d9bb4b361c346240f027a540",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c5b9dd0_792c4bfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-22T21:16:49Z",
+      "side": 1,
+      "message": "I have expanded the description. Because the link to the document allows editing, I do not want to include it on a public code review.\n\nThe name Weaver-ng is based on a similar feature of pin brute force resistance used on Android. The NG (next generation) reflects the scalability of this implementation---It can accommodate much more than the fixed number of users the Android implementation is limited to. On ChromeOS this is an issue because large numbers of users my share a device.",
+      "parentUuid": "df7cf743_2cbdf9e2",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "798d7389d3828471d9bb4b361c346240f027a540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
