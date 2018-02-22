@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d96604c2_9ff98a56",
+        "filename": "core/cortex-m/llsr.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-22T14:13:02Z",
+      "side": 1,
+      "message": "As mentioned on Hangout, this is ARMv6-M code while this directory is for cores using ARMv7-M ABI.\n\nI wrote about aeabi_llsl not long ago:\nhttps://chromium-review.googlesource.com/770924\n\nThe C version might be good enough here too.\n\nunion words {\n  uint64_t u64;\n  uint32_t w[2];\n};\nuint64_t __aeabi_llsr(uint64_t v, uint32_t shift)\n{\n    union words val;\n    union words res;\n    val.u64 \u003d v;\n    res.w[1] \u003d val.w[1] \u003e\u003e shift;\n    res.w[0] \u003d val.w[0] \u003e\u003e shift;\n    res.w[0] |\u003d val.w[1] \u003e\u003e (shift - 32);\n    res.w[0] |\u003d val.w[1] \u003c\u003c (32 - shift);\n    return res.u64;\n}\n\nelse the following assembly version should be ok:\n__aeabi_llsr:\n  lsrs    r0, r2\n  adds    r3, r1, #0\n  lsrs    r1, r2\n  mov     r12, r3\n  subs    r2, #32\n  lsrs    r3, r2\n  orrs    r0, r3\n  negs    r2, r2\n  mov     r3, r12\n  lsls    r3, r2\n  orrs    r0, r3\n  bx      lr\n\n\nI did those 2 versions a bit quickly, please re-verify them.",
+      "revId": "92bda17181e38acf5b03a31d2f3b7c0f41443f3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
