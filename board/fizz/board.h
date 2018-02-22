@@ -222,6 +222,15 @@ enum mft_channel {
 	MFT_CH_COUNT
 };
 
+enum OEM_ID {
+	OEM_KEHCN,
+	OEM_TEEMO,
+	OEM_SION,
+	OEM_WUKONG,
+	/* Number of OEM IDs */
+	OEM_COUNT
+};
+
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */
 /*
  * delay to turn on the power supply max is ~16ms.
