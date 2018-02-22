@@ -53,6 +53,7 @@
 		} \
 	} while (0)
 
+static uint8_t init_ok;
 static int fake_state_of_charge = -1;
 
 static int max17055_read(int offset, int *data)
@@ -196,7 +197,7 @@ enum battery_present battery_is_present(void)
 {
 	int status = 0;
 
-	if (max17055_read(REG_STATUS, &status))
+	if (!init_ok || max17055_read(REG_STATUS, &status))
 		return BP_NOT_SURE;
 	if (status & STATUS_BST)
 		return BP_NO;
@@ -206,10 +207,6 @@ enum battery_present battery_is_present(void)
 void battery_get_params(struct batt_params *batt)
 {
 	int reg = 0;
-	const uint32_t flags_to_check = BATT_FLAG_BAD_TEMPERATURE |
-					BATT_FLAG_BAD_STATE_OF_CHARGE |
-					BATT_FLAG_BAD_VOLTAGE |
-					BATT_FLAG_BAD_CURRENT;
 
 	/* Reset flags */
 	batt->flags = 0;
@@ -245,12 +242,14 @@ void battery_get_params(struct batt_params *batt)
 	if (battery_full_charge_capacity(&batt->full_capacity))
 		batt->flags |= BATT_FLAG_BAD_FULL_CAPACITY;
 
-	/* If any of those reads worked, the battery is responsive */
-	if ((batt->flags & flags_to_check) != flags_to_check) {
+	/*
+	 * Assuming the battery is responsive as long as
+	 * max17055 finds battery is present.
+	 */
+	batt->is_present = battery_is_present();
+
+	if (batt->is_present == BP_YES)
 		batt->flags |= BATT_FLAG_RESPONSIVE;
-		batt->is_present = BP_YES;
-	} else
-		batt->is_present = BP_NOT_SURE;
 
 	/*
 	 * Charging allowed if both desired voltage and current are nonzero
@@ -400,6 +399,7 @@ static void max17055_init(void)
 	MAX17055_READ_DEBUG(REG_CONFIG, &reg);
 	MAX17055_WRITE_DEBUG(REG_CONFIG, (reg | CONF_TSEL));
 
+	init_ok = 1;
 	CPRINTS("max17055 configuration succeeded!");
 }
 DECLARE_HOOK(HOOK_INIT, max17055_init, HOOK_PRIO_DEFAULT);
