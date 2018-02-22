@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cc1010c_7d1e3f5a",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-22T12:58:53Z",
+      "side": 0,
+      "message": "@Daisuke, I find \"fanduty\" command cannot set fan duty successfully until I modify this setting.\nI am not sure why \"TACHO_FAN_DUTY\" and \"TACHO_FAN_RPM\" are both define as 0.\nIt seems will make the fan mode always in RPM mode.\nAs my understanding, the DPTF will use the DUTY mode to control fan, right?\nDo this modification is corect? Please give me some comment. thanks~",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "cd76cde2173e7e18d54865d97beece25fa2cb14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
