@@ -157,7 +157,13 @@ const struct fan_conf fan_conf_0 = {
 	.enable_gpio = GPIO_FAN_PWR_EN,
 };
 
-const struct fan_rpm fan_rpm_0 = {
+const struct fan_rpm fan_rpm_0 = {	/* Wukong & default */
+	.rpm_min = 2200,
+	.rpm_start = 2200,
+	.rpm_max = 5600,
+};
+
+const struct fan_rpm fan_rpm_1 = {	/* others */
 	.rpm_min = 2800,
 	.rpm_start = 2800,
 	.rpm_max = 5600,
@@ -612,15 +618,27 @@ static const struct fan_step fan_table1[] = {
 	{.on = 88, .off = 83, .rpm = 5200},
 	{.on = 98, .off = 91, .rpm = 5600},
 };
+static const struct fan_step fan_table2[] = {
+	{.on =  0, .off =  1, .rpm = 0},
+	{.on = 36, .off =  1, .rpm = 2200},
+	{.on = 63, .off = 56, .rpm = 2900},
+	{.on = 69, .off = 65, .rpm = 3000},
+	{.on = 75, .off = 70, .rpm = 3300},
+	{.on = 80, .off = 76, .rpm = 3600},
+	{.on = 87, .off = 81, .rpm = 3900},
+	{.on = 98, .off = 91, .rpm = 5000},
+};
 /* All fan tables must have the same number of levels */
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
 BUILD_ASSERT(ARRAY_SIZE(fan_table1) == NUM_FAN_LEVELS);
+BUILD_ASSERT(ARRAY_SIZE(fan_table2) == NUM_FAN_LEVELS);
 
-/* Default uses table0 due to its smaller active point */
+/* Default uses table2 due to acoustic concern */
 static const struct fan_step *fan_tables[] = {
-	fan_table0,	/* Kench & Default */
-	fan_table0,	/* Teemo */
-	fan_table1,	/* Sion */
+	[OEM_KEHCN] = fan_table0,
+	[OEM_TEEMO] = fan_table0,
+	[OEM_SION] = fan_table1,
+	[OEM_WUKONG] = fan_table2,	/* Default */
 };
 
 static int get_custom_rpm(int fan, int pct, int oem_id)
@@ -667,10 +685,18 @@ static int get_custom_rpm(int fan, int pct, int oem_id)
 
 int fan_percent_to_rpm(int fan, int pct)
 {
-	uint32_t oem_id;
-	if (cbi_get_oem_id(&oem_id) || oem_id >= ARRAY_SIZE(fan_tables)) {
-		CPRINTF("Fan OEM%d not supported or failed to get OEM", oem_id);
-		oem_id = 0;
+	uint32_t oem_id = OEM_WUKONG;
+
+	if (cbi_get_oem_id(&oem_id)) {
+		CPRINTF("Failed to get OEM\n");
+	} else if (oem_id >= OEM_COUNT) {
+		CPRINTF("Fan OEM%d not supported\n", oem_id);
+		oem_id = OEM_WUKONG; /* see fan_tables */
 	}
+
+	if ((oem_id == OEM_KEHCN) || (oem_id == OEM_TEEMO) ||
+	    (oem_id == OEM_SION))
+		fans[FAN_CH_0].rpm = &fan_rpm_1;
+
 	return get_custom_rpm(fan, pct, oem_id);
 }
