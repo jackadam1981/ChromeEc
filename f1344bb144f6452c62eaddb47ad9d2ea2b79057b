@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a86e420_3152bf97",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-23T00:34:57Z",
+      "side": 1,
+      "message": "Nit: Please add a header comment for each one describing what it does, params, return.",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 3
+      },
+      "revId": "f1344bb144f6452c62eaddb47ad9d2ea2b79057b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
