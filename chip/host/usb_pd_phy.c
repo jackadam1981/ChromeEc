@@ -13,6 +13,8 @@
 
 #define PREAMBLE_OFFSET 60 /* Any number should do */
 
+static uint32_t crc_;
+
 /*
  * Maximum size of a Power Delivery packet (in bits on the wire) :
  *    16-bit header + 0..7 32-bit data objects  (+ 4b5b encoding)
@@ -145,7 +147,7 @@ int pd_test_tx_msg_verify_kcode(int port, uint8_t kcode)
 
 int pd_test_tx_msg_verify_sop(int port)
 {
-	crc32_init();
+	crc32_init(&crc_);
 	return pd_test_tx_msg_verify_kcode(port, PD_SYNC1) &&
 	       pd_test_tx_msg_verify_kcode(port, PD_SYNC1) &&
 	       pd_test_tx_msg_verify_kcode(port, PD_SYNC1) &&
@@ -164,7 +166,7 @@ int pd_test_tx_msg_verify_4b5b(int port, uint8_t b4)
 
 int pd_test_tx_msg_verify_short(int port, uint16_t val)
 {
-	crc32_hash16(val);
+	crc32_hash16(&crc_, val);
 	return pd_test_tx_msg_verify_4b5b(port, (val >> 0) & 0xF) &&
 	       pd_test_tx_msg_verify_4b5b(port, (val >> 4) & 0xF) &&
 	       pd_test_tx_msg_verify_4b5b(port, (val >> 8) & 0xF) &&
@@ -179,7 +181,7 @@ int pd_test_tx_msg_verify_word(int port, uint32_t val)
 
 int pd_test_tx_msg_verify_crc(int port)
 {
-	return pd_test_tx_msg_verify_word(port, crc32_result());
+	return pd_test_tx_msg_verify_word(port, crc32_result(&crc_));
 }
 
 

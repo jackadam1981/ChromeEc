@@ -56,9 +56,6 @@ static const uint32_t crc32_tab[] = {
 	0xb40bbe37, 0xc30c8ea1, 0x5a05df1b, 0x2d02ef8d
 };
 
-/* Accumulator for the CRC */
-static uint32_t crc_;
-
 static uint32_t crc32_hash(uint32_t crc, const void *buf, int size)
 {
 	const uint8_t *p;
@@ -73,22 +70,22 @@ static uint32_t crc32_hash(uint32_t crc, const void *buf, int size)
 	return crc;
 }
 
-void crc32_init(void)
+void crc32_init(uint32_t *crc)
 {
-	crc_ = CRC32_INITIAL;
+	*crc = CRC32_INITIAL;
 }
 
-void crc32_hash32(uint32_t val)
+void crc32_hash32(uint32_t *crc, uint32_t val)
 {
-	crc_ = crc32_hash(crc_, &val, sizeof(uint32_t));
+	*crc = crc32_hash(*crc, &val, sizeof(uint32_t));
 }
 
-void crc32_hash16(uint16_t val)
+void crc32_hash16(uint32_t *crc, uint16_t val)
 {
-	crc_ = crc32_hash(crc_, &val, sizeof(uint16_t));
+	*crc = crc32_hash(*crc, &val, sizeof(uint16_t));
 }
 
-uint32_t crc32_result(void)
+uint32_t crc32_result(uint32_t *crc)
 {
-	return crc_ ^ 0xFFFFFFFF;
+	return *crc ^ 0xFFFFFFFF;
 }

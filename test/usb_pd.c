@@ -163,18 +163,19 @@ static void simulate_rx_msg(int port, uint16_t header, int cnt,
 			    const uint32_t *data)
 {
 	int i;
+	uint32_t crc;
 
 	pd_test_rx_set_preamble(port, 1);
 	pd_test_rx_msg_append_sop(port);
 	pd_test_rx_msg_append_short(port, header);
 
-	crc32_init();
-	crc32_hash16(header);
+	crc32_init(&crc);
+	crc32_hash16(&crc, header);
 	for (i = 0; i < cnt; ++i) {
 		pd_test_rx_msg_append_word(port, data[i]);
-		crc32_hash32(data[i]);
+		crc32_hash32(&crc, data[i]);
 	}
-	pd_test_rx_msg_append_word(port, crc32_result());
+	pd_test_rx_msg_append_word(port, crc32_result(&crc));
 
 	pd_test_rx_msg_append_eop(port);
 	pd_test_rx_msg_append_last_edge(port);

@@ -10,7 +10,7 @@
 #include "clock.h"
 #include "registers.h"
 
-static inline void crc32_init(void)
+static inline void crc32_init(uint32_t *dummy)
 {
 	/* switch on CRC controller */
 	STM32_RCC_AHBENR |= 1 << 6; /* switch on CRC controller */
@@ -23,17 +23,17 @@ static inline void crc32_init(void)
 		;
 }
 
-static inline void crc32_hash32(uint32_t val)
+static inline void crc32_hash32(uint32_t *dummy, uint32_t val)
 {
 	STM32_CRC_DR = val;
 }
 
-static inline void crc32_hash16(uint16_t val)
+static inline void crc32_hash16(uint32_t *dummy, uint16_t val)
 {
 	STM32_CRC_DR16 = val;
 }
 
-static inline uint32_t crc32_result(void)
+static inline uint32_t crc32_result(uint32_t *dummy)
 {
 	return STM32_CRC_DR ^ 0xFFFFFFFF;
 }

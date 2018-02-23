@@ -296,6 +296,7 @@ int prepare_message(int port, uint16_t header, uint8_t cnt,
 		   const uint32_t *data)
 {
 	int off, i;
+	uint32_t crc;
 	/* 64-bit preamble */
 	off = pd_write_preamble(port);
 	/* Start Of Packet: 3x Sync-1 + 1x Sync-2 */
@@ -310,15 +311,15 @@ int prepare_message(int port, uint16_t header, uint8_t cnt,
 	mutex_lock(&pd_crc_lock);
 #endif
 
-	crc32_init();
-	crc32_hash16(header);
+	crc32_init(&crc);
+	crc32_hash16(&crc, header);
 	/* data payload */
 	for (i = 0; i < cnt; i++) {
 		off = encode_word(port, off, data[i]);
-		crc32_hash32(data[i]);
+		crc32_hash32(&crc, data[i]);
 	}
 	/* CRC */
-	off = encode_word(port, off, crc32_result());
+	off = encode_word(port, off, crc32_result(&crc));
 
 #ifdef CONFIG_COMMON_RUNTIME
 	mutex_unlock(&pd_crc_lock);
@@ -617,7 +618,7 @@ int pd_analyze_rx(int port, uint32_t *payload)
 	char *msg = "---";
 	uint32_t val = 0;
 	uint16_t header;
-	uint32_t pcrc, ccrc;
+	uint32_t pcrc, ccrc, crc;
 	int p, cnt;
 	uint32_t eop;
 
@@ -658,16 +659,16 @@ int pd_analyze_rx(int port, uint32_t *payload)
 	mutex_lock(&pd_crc_lock);
 #endif
 
-	crc32_init();
-	crc32_hash16(header);
+	crc32_init(&crc);
+	crc32_hash16(&crc, header);
 	cnt = PD_HEADER_CNT(header);
 
 	/* read payload data */
 	for (p = 0; p < cnt && bit > 0; p++) {
 		bit = decode_word(port, bit, payload+p);
-		crc32_hash32(payload[p]);
+		crc32_hash32(&crc, payload[p]);
 	}
-	ccrc = crc32_result();
+	ccrc = crc32_result(&crc);
 
 #ifdef CONFIG_COMMON_RUNTIME
 	mutex_unlock(&pd_crc_lock);

@@ -51,14 +51,14 @@ void app_compute_hash(uint8_t *p_buf, size_t num_bytes,
 	uint32_t *p_data;
 	int n;
 
-	crc32_init();
+	crc32_init(&crc);
 	/* Assuming here that buffer is 4 byte aligned and that num_bytes is
 	 * divisible by 4
 	 */
 	p_data = (uint32_t *)p_buf;
 	for (n = 0; n < num_bytes/4; n++)
-		crc32_hash32(*p_data++);
-	crc = crc32_result();
+		crc32_hash32(&crc, *p_data++);
+	crc = crc32_result(&crc);
 
 	for (n = 0; n < hash_bytes; n += sizeof(crc)) {
 		size_t copy_bytes = MIN(sizeof(crc), hash_bytes - n);
