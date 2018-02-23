@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4c244c8a_98bc513a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-02-23T03:43:57Z",
+      "side": 1,
+      "message": "Because they\u0027are the same.",
+      "parentUuid": "2cd7f90a_cdc9f1d5",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "92722ea1853616045edd5c3617b8e67b0682194f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "455d5f23_c8a6326f",
         "filename": "board/fizz/board.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-22T23:34:18Z",
       "side": 1,
       "message": "What are these changes for?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 20
+      },
+      "revId": "92722ea1853616045edd5c3617b8e67b0682194f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c887ae4b_54ce9c76",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-02-23T03:43:57Z",
+      "side": 1,
+      "message": "Wukong\u0027s lowest rpm is 2200.",
+      "parentUuid": "455d5f23_c8a6326f",
       "range": {
         "startLine": 156,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "98e550df_6248a67c",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-02-23T03:43:57Z",
+      "side": 1,
+      "message": "In this case, print \"Fan OEM%d not supported...\" will be redundant, change it to \nCPRINTF(\"Failed to get OEM ID, override to %d\\n\", oem_id);\n?",
+      "parentUuid": "561cda43_3f1c463a",
+      "range": {
+        "startLine": 684,
+        "startChar": 1,
+        "endLine": 684,
+        "endChar": 17
+      },
+      "revId": "92722ea1853616045edd5c3617b8e67b0682194f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ecf8031_5a671799",
         "filename": "board/fizz/board.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "92722ea1853616045edd5c3617b8e67b0682194f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7bdde3c_4904f0a9",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-02-23T03:43:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ecf8031_5a671799",
+      "range": {
+        "startLine": 686,
+        "startChar": 55,
+        "endLine": 686,
+        "endChar": 56
+      },
+      "revId": "92722ea1853616045edd5c3617b8e67b0682194f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
