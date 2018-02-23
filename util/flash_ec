@@ -46,6 +46,7 @@ die() {
 
 
 BOARDS_IT83XX=(
+	bip
 	it83xx_evb
 	reef_it8320
 )
@@ -131,6 +132,7 @@ BOARDS_NPCX_SPI=(
 BOARDS_NPCX_INT_SPI=(
 	grunt
 	meowth
+	yorp
 	zoombini
 )
 
