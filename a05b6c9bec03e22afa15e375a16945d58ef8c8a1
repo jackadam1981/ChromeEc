@@ -22,6 +22,30 @@
       "revId": "a05b6c9bec03e22afa15e375a16945d58ef8c8a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66a4b8b9_6e0262b8",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-23T21:27:15Z",
+      "side": 1,
+      "message": "If we source PPC first, then the TCPC gets confused. The 4ms is enough time for the TCPC to error out (if it were second)",
+      "parentUuid": "8647952b_faeb297e",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 6
+      },
+      "revId": "a05b6c9bec03e22afa15e375a16945d58ef8c8a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
