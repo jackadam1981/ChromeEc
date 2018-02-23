@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdf7cb68_deef78ef",
+        "filename": "extra/usb_updater/Makefile",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-02-23T18:12:46Z",
+      "side": 1,
+      "message": "can we just turn it into a unit test? build it, run and check exit code if unit testing is required?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 46
+      },
+      "revId": "0ea87280ead0576a2c0f52dee94c4dbda4a2c2e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
