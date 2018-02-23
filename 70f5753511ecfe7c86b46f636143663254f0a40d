@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a8de378_ae28718e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-23T17:58:19Z",
+      "side": 1,
+      "message": "typo: \u0027presence\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "70f5753511ecfe7c86b46f636143663254f0a40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67a107a5_84f399a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-23T17:58:19Z",
+      "side": 1,
+      "message": "typo? \u0027dumb\u0027 ? :)",
+      "range": {
+        "startLine": 9,
+        "startChar": 30,
+        "endLine": 9,
+        "endChar": 34
+      },
+      "revId": "70f5753511ecfe7c86b46f636143663254f0a40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9f47fc4_8421a9fe",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-23T17:58:19Z",
+      "side": 1,
+      "message": "Does the fuel gauge report battery presence correctly with your latest patchset?",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "70f5753511ecfe7c86b46f636143663254f0a40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
