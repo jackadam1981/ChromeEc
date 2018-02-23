@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "845d4368_8f0f851b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-23T16:30:57Z",
+      "side": 1,
+      "message": "In my opinion, EXTPOWER would be setting up AC presence or not. Any reason this priority isn\u0027t HOOK_PRIO_INIT_I2C + 1?",
+      "range": {
+        "startLine": 784,
+        "startChar": 37,
+        "endLine": 784,
+        "endChar": 60
+      },
+      "revId": "7826ec057f4371dbfcfbbccea388683f1478c01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
