@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caccf83f_7f8ec668",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-23T01:56:53Z",
+      "side": 1,
+      "message": "do you really want to skip this check, I mean it is unlikely to happen, but it\u0027s good to ignore this blob nevertheless.",
+      "revId": "39d7cc0d7046ba2507ead2c529139872c5a0f731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
