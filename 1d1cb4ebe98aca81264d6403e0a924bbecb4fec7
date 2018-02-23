@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a95f7f8_5a5b7122",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-23T20:03:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f09173e1_a4d6e083",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 13
+      },
+      "revId": "1d1cb4ebe98aca81264d6403e0a924bbecb4fec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2437e518_e6281eba",
         "filename": "extra/usb_updater/desc_parser.c",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-23T18:12:46Z",
       "side": 1,
       "message": "why do we need strlen when we already know (next_colon-line_cursor)?\nsame for \u0027hash or dump\u0027 below",
+      "range": {
+        "startLine": 82,
+        "startChar": 21,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "1d1cb4ebe98aca81264d6403e0a924bbecb4fec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "917770ca_1770e082",
+        "filename": "extra/usb_updater/desc_parser.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-23T20:03:14Z",
+      "side": 1,
+      "message": "I think strlen makes it more obvious that we are checking the length of the string, i.e.  it seems better readable to me this way.",
+      "parentUuid": "2437e518_e6281eba",
       "range": {
         "startLine": 82,
         "startChar": 21,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1247da74_ab416c7b",
+        "filename": "extra/usb_updater/desc_parser.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-23T20:03:14Z",
+      "side": 1,
+      "message": "good catch, this function is not supposed to be called with an empty string, let me make sure this is enforced at the call site.",
+      "parentUuid": "8c360428_3571cce5",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 53
+      },
+      "revId": "1d1cb4ebe98aca81264d6403e0a924bbecb4fec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0091453_707eb157",
         "filename": "extra/usb_updater/desc_parser.c",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2018-02-23T18:12:46Z",
       "side": 1,
       "message": "To minimize repeating the code can probably extract getting the next block up to the next \u0027:\u0027 into a separate function and call for range type, hash/dump, base address etc. range type and hash/dump can be unified even more.\n\nBtw, do we have any regex library we can just use instead?",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 20
+      },
+      "revId": "1d1cb4ebe98aca81264d6403e0a924bbecb4fec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f537dc17_7daf8ed3",
+        "filename": "extra/usb_updater/desc_parser.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-23T20:03:14Z",
+      "side": 1,
+      "message": "good point, did some refactoring.\n\nre: regex library - I don\u0027t know, this is C after all :)",
+      "parentUuid": "f0091453_707eb157",
       "range": {
         "startLine": 104,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c7027621_99ad28e0",
+        "filename": "extra/usb_updater/desc_parser.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-23T20:03:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "423be435_35ff9f7d",
+      "range": {
+        "startLine": 244,
+        "startChar": 9,
+        "endLine": 244,
+        "endChar": 14
+      },
+      "revId": "1d1cb4ebe98aca81264d6403e0a924bbecb4fec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0235d111_ed92b5f3",
         "filename": "extra/usb_updater/desc_parser.c",
         "patchSetId": 6
@@ -137,6 +257,30 @@
       "revId": "1d1cb4ebe98aca81264d6403e0a924bbecb4fec7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c5003a_bff37604",
+        "filename": "extra/usb_updater/desc_parser.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-23T20:03:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0235d111_ed92b5f3",
+      "range": {
+        "startLine": 328,
+        "startChar": 2,
+        "endLine": 329,
+        "endChar": 23
+      },
+      "revId": "1d1cb4ebe98aca81264d6403e0a924bbecb4fec7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
