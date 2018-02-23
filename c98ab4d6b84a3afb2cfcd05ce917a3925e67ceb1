@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cb20840f_fc143266",
+        "filename": "extra/usb_updater/gsctool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-23T18:07:28Z",
+      "side": 1,
+      "message": "I would rather not change the code using this in this patch.\n\nThis code has been like this all along, we can change this if we wanted, but it should be a different patch changing nothing but names.",
+      "parentUuid": "7d177605_03850281",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 10
+      },
+      "revId": "c98ab4d6b84a3afb2cfcd05ce917a3925e67ceb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca266516_79d7fc62",
         "filename": "extra/usb_updater/gsctool.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-23T17:50:06Z",
       "side": 1,
       "message": "Tab",
+      "range": {
+        "startLine": 61,
+        "startChar": 10,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "c98ab4d6b84a3afb2cfcd05ce917a3925e67ceb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efe7ca01_ccdf53b9",
+        "filename": "extra/usb_updater/gsctool.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-23T18:07:28Z",
+      "side": 1,
+      "message": "This is fine to have tabs before spaces for comment alignment, I edited the rest of the comments for consistency.",
+      "parentUuid": "ca266516_79d7fc62",
       "range": {
         "startLine": 61,
         "startChar": 10,
