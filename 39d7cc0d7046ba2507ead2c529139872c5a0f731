@@ -16,6 +16,24 @@
       "revId": "39d7cc0d7046ba2507ead2c529139872c5a0f731",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "291ce1b3_21b9bc41",
+        "filename": "chip/g/upgrade_fw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002815
+      },
+      "writtenOn": "2018-02-23T01:59:37Z",
+      "side": 1,
+      "message": "Since I\u0027m looking at the update_data as SignedHeader below, I first do check that the size is sufficient here. Which skipped check are you referring to?",
+      "parentUuid": "caccf83f_7f8ec668",
+      "revId": "39d7cc0d7046ba2507ead2c529139872c5a0f731",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
