@@ -226,6 +226,13 @@ int parser_get_next_range(struct addr_range **range)
 	int rv;
 
 	/*
+	 * This is used to verify consistency of the description database,
+	 * namely that all hash sections include the same numger of hash
+	 * variants.
+	 */
+	static size_t variant_count;
+
+	/*
 	 * We come here after hash descriptor database file was opened and the
 	 * current board's section has been found. Just in case check if the
 	 * file has been opened.
@@ -252,12 +259,33 @@ int parser_get_next_range(struct addr_range **range)
 	/* This must be a new descriptor section, lets parse it. */
 	rv = parse_range(next_line, entry_size, new_range);
 
-	if (!rv)
-		*range = new_range;
-	else
+	if (rv) {
 		free(new_range);
+		return rv;
+	}
 
-	return rv;
+	if (new_range->variant_count) {
+		/*
+		 * A new range was found, if this is the first hash range we
+		 * encountered, save its dimensions for future reference.
+		 *
+		 * If this is not the first one - verify that it has the same
+		 * number of hash variants as all previous hash blocks.
+		 */
+		if (!variant_count) {
+			variant_count = new_range->variant_count;
+		} else if (variant_count != new_range->variant_count) {
+			fprintf(stderr,
+				"Unexpected number of variants in section %d\n",
+				section_count_);
+			free(new_range);
+			return -EINVAL;
+		}
+	}
+
+	*range = new_range;
+	return 0;
+
 }
 
 int parser_find_board(const char *hash_file_name, const char *board_id)
