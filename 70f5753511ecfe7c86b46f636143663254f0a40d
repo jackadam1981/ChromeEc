@@ -68,6 +68,30 @@
       "revId": "70f5753511ecfe7c86b46f636143663254f0a40d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "210e8447_38258181",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-23T18:57:02Z",
+      "side": 1,
+      "message": "After max17055 is configured to measure temperature by NTC thermistor in the battery pack, I see max17055 still needs ~1 sec to find battery is absent. So the answer is yes if battery_is_present() is not called within the 1 sec window. \n\nUnfortunately I do see battery_is_present() be called a few time within this window during boot and report \u0027battery is present\u0027 even though battery is absent... \nFortunately I don\u0027t see catastrophic effect from those wrong reports of battery status.\n\nWe can add a delay in max17055_init() to wait until battery_is_present() reliable, but IMO it\u0027s not worth the increase of the boot time since \u0027booting w/o battery\u0027 is really a rare use case.",
+      "parentUuid": "e9f47fc4_8421a9fe",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "70f5753511ecfe7c86b46f636143663254f0a40d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
