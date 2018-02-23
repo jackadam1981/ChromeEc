@@ -22,6 +22,30 @@
       "revId": "7826ec057f4371dbfcfbbccea388683f1478c01b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "922c6cd1_89a7d06a",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 784,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-23T19:01:51Z",
+      "side": 1,
+      "message": "I see bd9995x_init use \u0027HOOK_PRIO_INIT_EXTPOWER\u0027. But \u0027HOOK_PRIO_INIT_I2C + 1\u0027 should work here too.",
+      "parentUuid": "845d4368_8f0f851b",
+      "range": {
+        "startLine": 784,
+        "startChar": 37,
+        "endLine": 784,
+        "endChar": 60
+      },
+      "revId": "7826ec057f4371dbfcfbbccea388683f1478c01b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
