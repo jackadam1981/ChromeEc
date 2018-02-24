@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0e9a24e4_c9331e76",
+        "filename": "chip/stm32/crc_hw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-24T00:25:43Z",
+      "side": 1,
+      "message": "I think a separate context aware API is needed.\n\nBefore it was obvious that there is only one context to use, because the inti() function did not take any parameters.\n\nNow it does, so if someone new start using this API, they won\u0027t think twice about context safety on some platforms different from others.\n\nI am not sure how that hardware would allow to keep multiple contexts, let me add a couple of guys who would know, otherwise a new API is a safer bet for now.",
+      "parentUuid": "b69e81da_9ae73dc4",
+      "revId": "092c76d2ef73fa36ca91dfd2d8ed7108a9e5fee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f874f3a4_1f8e926e",
         "filename": "test/nvmem.c",
         "patchSetId": 1
