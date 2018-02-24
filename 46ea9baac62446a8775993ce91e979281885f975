@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "404a1c9b_94231f6b",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-24T00:45:59Z",
+      "side": 1,
+      "message": "Tab instead of space?",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1074463a_fbf5a6a4",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-24T00:45:59Z",
+      "side": 1,
+      "message": "This can also be just put in the same enum as TEMP_ZONE_COUNT:\n\n{\n  ...\n  TEMP_ZONE_COUNT,\n  TEMP_OUT_OF_RANGE \u003d TEMP_ZONE_COUNT,\n};",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3edf828_46268deb",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-24T00:45:59Z",
+      "side": 1,
+      "message": "Based on the spec, shouldn\u0027t this be 200?",
+      "range": {
+        "startLine": 40,
+        "startChar": 22,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20c9024e_5b4742ca",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-24T00:45:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this still be 45?",
+      "range": {
+        "startLine": 43,
+        "startChar": 25,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3720e692_8621e99c",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-24T00:45:59Z",
+      "side": 1,
+      "message": "Is it safer to stop charging in this case?",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 53
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4ca0efa_e97857ba",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-24T00:45:59Z",
+      "side": 1,
+      "message": "Don\u0027t you need to restrict the requested_current in TEMP_ZONE_2 and TEMP_ZONE_3 to 0.7C since battery would be asking for 0.8C?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd86ae58_ae097f9b",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-24T00:45:59Z",
+      "side": 1,
+      "message": "Instead of updating curr-\u003erequested_voltage and curr-\u003erequested_current directly, I think it would be better to set local variables voltage and current in the switch case and then do:\n\ncurr-\u003erequested_voltage \u003d MIN(curr-\u003erequested_voltage, voltage);\ncurr-\u003erequested_current \u003d MIN(curr-\u003erequested_current, current);\n\nIt will ensure that we never provide more than what the battery requested.",
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
