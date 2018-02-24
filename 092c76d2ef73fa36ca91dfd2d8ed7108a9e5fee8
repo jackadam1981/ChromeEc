@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a0ae285_9448e374",
+        "filename": "chip/stm32/crc_hw.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-24T00:11:25Z",
+      "side": 1,
+      "message": "so, this is not going to support multiple contexts even though the API suggest it does?!\n\nSeems like a recipe for trouble to me, or am I missing something?",
+      "revId": "092c76d2ef73fa36ca91dfd2d8ed7108a9e5fee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f874f3a4_1f8e926e",
+        "filename": "test/nvmem.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-24T00:11:25Z",
+      "side": 1,
+      "message": "is this assignment still needed?",
+      "revId": "092c76d2ef73fa36ca91dfd2d8ed7108a9e5fee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
