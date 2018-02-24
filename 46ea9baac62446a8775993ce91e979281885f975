@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ab882976_c465347b",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-24T01:04:46Z",
+      "side": 1,
+      "message": "OK, let\u0027s move it to the same enum.",
+      "parentUuid": "1074463a_fbf5a6a4",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 25
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3edf828_46268deb",
         "filename": "board/nautilus/battery.c",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2018-02-24T00:45:59Z",
       "side": 1,
       "message": "Based on the spec, shouldn\u0027t this be 200?",
+      "range": {
+        "startLine": 40,
+        "startChar": 22,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21cd81ee_9ab54b8f",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-24T01:04:46Z",
+      "side": 1,
+      "message": "Yes, this should be fixed.",
+      "parentUuid": "d3edf828_46268deb",
       "range": {
         "startLine": 40,
         "startChar": 22,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ce4bc0af_31abde5f",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-24T01:04:46Z",
+      "side": 1,
+      "message": "Hmm..right. I was a bit confused about the difference between start_charging_max_c and charging_max_c.",
+      "parentUuid": "20c9024e_5b4742ca",
+      "range": {
+        "startLine": 43,
+        "startChar": 25,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3720e692_8621e99c",
         "filename": "board/nautilus/battery.c",
         "patchSetId": 2
@@ -105,6 +177,30 @@
       "writtenOn": "2018-02-24T00:45:59Z",
       "side": 1,
       "message": "Is it safer to stop charging in this case?",
+      "range": {
+        "startLine": 88,
+        "startChar": 29,
+        "endLine": 88,
+        "endChar": 53
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59c7fa73_cff95190",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-24T01:04:46Z",
+      "side": 1,
+      "message": "I\u0027ve considered the same thing. Not sure if stopping charging upon bad temperature reading is too conservative.",
+      "parentUuid": "3720e692_8621e99c",
       "range": {
         "startLine": 88,
         "startChar": 29,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "1d087ad4_6f8fc107",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-24T01:04:46Z",
+      "side": 1,
+      "message": "It looks like the battery always asks for 0.7C in whatever temperature.",
+      "parentUuid": "e4ca0efa_e97857ba",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 8
+      },
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd86ae58_ae097f9b",
         "filename": "board/nautilus/battery.c",
         "patchSetId": 2
@@ -151,6 +271,24 @@
       "writtenOn": "2018-02-24T00:45:59Z",
       "side": 1,
       "message": "Instead of updating curr-\u003erequested_voltage and curr-\u003erequested_current directly, I think it would be better to set local variables voltage and current in the switch case and then do:\n\ncurr-\u003erequested_voltage \u003d MIN(curr-\u003erequested_voltage, voltage);\ncurr-\u003erequested_current \u003d MIN(curr-\u003erequested_current, current);\n\nIt will ensure that we never provide more than what the battery requested.",
+      "revId": "46ea9baac62446a8775993ce91e979281885f975",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "037dfc0c_d727028c",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-24T01:04:46Z",
+      "side": 1,
+      "message": "OK, will do.",
+      "parentUuid": "fd86ae58_ae097f9b",
       "revId": "46ea9baac62446a8775993ce91e979281885f975",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
