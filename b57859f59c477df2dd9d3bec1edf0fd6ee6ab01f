@@ -22,6 +22,30 @@
       "revId": "b57859f59c477df2dd9d3bec1edf0fd6ee6ab01f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2655980_8475e7a6",
+        "filename": "extra/usb_updater/desc_parser.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-24T01:37:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1115443_d358adbb",
+      "range": {
+        "startLine": 371,
+        "startChar": 2,
+        "endLine": 372,
+        "endChar": 15
+      },
+      "revId": "b57859f59c477df2dd9d3bec1edf0fd6ee6ab01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
