@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1115443_d358adbb",
+        "filename": "extra/usb_updater/desc_parser.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2018-02-24T01:22:04Z",
+      "side": 1,
+      "message": "I meant, you shouldn\u0027t need \"if(range)\" check either. free should check for NULL and handle it correctly internally.",
+      "range": {
+        "startLine": 371,
+        "startChar": 2,
+        "endLine": 372,
+        "endChar": 15
+      },
+      "revId": "b57859f59c477df2dd9d3bec1edf0fd6ee6ab01f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
