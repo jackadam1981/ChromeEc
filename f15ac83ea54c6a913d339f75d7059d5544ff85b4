@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7184193b_2ad768c7",
+        "filename": "test/crc32.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-24T03:55:36Z",
+      "side": 1,
+      "message": "I guess we are not going to run this on MIPS or PPC workstations any time soon :P",
+      "parentUuid": "d274e92e_22cc1fa5",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "f15ac83ea54c6a913d339f75d7059d5544ff85b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c18e47ba_f791cad3",
         "filename": "test/crc32.c",
         "patchSetId": 6
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "static api does not have a crc32_hash8()",
       "parentUuid": "c18e47ba_f791cad3",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "f15ac83ea54c6a913d339f75d7059d5544ff85b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1cc2ad1_8edb1730",
+        "filename": "test/crc32.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-24T03:55:36Z",
+      "side": 1,
+      "message": "oh, that\u0027s right.",
+      "parentUuid": "dedd75c3_94e60b13",
       "range": {
         "startLine": 58,
         "startChar": 0,
