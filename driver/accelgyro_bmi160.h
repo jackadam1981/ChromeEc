@@ -463,7 +463,7 @@ struct bmi160_drv_data_t {
 	struct bmm150_private_data compass;
 #endif
 #ifdef CONFIG_BMI160_ORIENTATION_SENSOR
-	uint8_t raw_orientation;
+	uint8_t raw_orient;
 	enum motionsensor_orientation orientation;
 	enum motionsensor_orientation last_orientation;
 #endif
