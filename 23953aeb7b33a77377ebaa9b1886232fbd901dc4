@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c8cf84_3ae966ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-26T13:07:39Z",
+      "side": 1,
+      "message": "well, this is not a (proper) test as\nuint64_t __aeabi_llsr(uint64_t v, uint32_t shift) { return 666; }\nwould equally pass it.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "23953aeb7b33a77377ebaa9b1886232fbd901dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
