@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1beb33ee_07d6b8e8",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-02-26T22:21:09Z",
+      "side": 1,
+      "message": "This works if FSTAT.DNR bit !\u003d 0?  This shouldn\u0027t be in max17055_init_config?",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 53
+      },
+      "revId": "c3deceae6aefd783aa1f1686c446ff6d2f228a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
