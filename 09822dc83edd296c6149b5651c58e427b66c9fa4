@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f8a3eb05_e30e16f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-02-26T09:28:53Z",
+      "side": 1,
+      "message": "\u003e About \"lm3592 command\",\n\u003e base on last mail, Google will bring this up at Google internal meeting.\n\u003e So we basically just follow power state to control backlight on/off.\n\u003e And this part is verified.\n\ndelete the extra words...thanks.",
+      "parentUuid": "b3b3f502_69fc5ebc",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "09822dc83edd296c6149b5651c58e427b66c9fa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "859ed992_f3f1bfb6",
         "filename": "driver/lm3592.c",
         "patchSetId": 1
