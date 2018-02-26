@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e709f43c_2dff4c97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-26T19:00:56Z",
+      "side": 1,
+      "message": "The bug says LM3509. Could you fix whichever is wrong?",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "d7c695c720abd5f5196842eeba0224a8b9d8a6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f07f26b5_03106ae6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-26T19:00:56Z",
+      "side": 1,
+      "message": "We need to turn off keyboard backlight if the lid is closed as well as done for display backlight because we support the dock mode (where the system is in S0 but the lid can be closed).\n\nDoes it work? If not, please make another CL to fix it.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "d7c695c720abd5f5196842eeba0224a8b9d8a6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
