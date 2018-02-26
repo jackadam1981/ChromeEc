@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e5ec366_ee35a366",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-26T21:47:21Z",
+      "side": 1,
+      "message": "Doesn\u0027t this break all #ifdef (HAS_TASK_*) ... #endif?",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "c57c21a4087019bb036bed85eb8e76a814660621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
