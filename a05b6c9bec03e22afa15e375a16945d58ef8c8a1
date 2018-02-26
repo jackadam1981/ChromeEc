@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ccda425b_c06c9e06",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-26T17:23:22Z",
+      "side": 1,
+      "message": "I think this is a little confusing, especially the \"normal mode for USB-C\" part. What did you mean by this?",
+      "range": {
+        "startLine": 335,
+        "startChar": 48,
+        "endLine": 337,
+        "endChar": 28
+      },
+      "revId": "a05b6c9bec03e22afa15e375a16945d58ef8c8a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8647952b_faeb297e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
