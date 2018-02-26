@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fd7c492_60e834ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-26T20:51:05Z",
+      "side": 1,
+      "message": "Please file a bug and copy \u0026 paste the conversation there.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "19dff7cd1c4f1edd3c85a5f88549e44f4a246de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8ab48e7_01b6fdba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-26T20:51:05Z",
+      "side": 1,
+      "message": "Can we update the FW? If we update the FW, is this workaround no longer needed?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 63
+      },
+      "revId": "19dff7cd1c4f1edd3c85a5f88549e44f4a246de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "616535ec_de1c4ace",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-26T20:51:05Z",
+      "side": 1,
+      "message": "Since the battery is a critical component, can you actually test the code? \n\nMy understanding is that the issue is when a battery is dead, we don\u0027t supply any current even though the battery needs a little bit of power to wake up. Can you drain the battery and verify the patch does fix the issue?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "19dff7cd1c4f1edd3c85a5f88549e44f4a246de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
