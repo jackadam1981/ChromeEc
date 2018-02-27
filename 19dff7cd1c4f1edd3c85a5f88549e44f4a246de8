@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "20bd3b6d_ac60f685",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-27T01:34:55Z",
+      "side": 1,
+      "message": "We ever check this part with TI, and below is TI\u0027s reply.\nThey think this is a needed protection, and they have no plan to fix it by its FW.\n\n-\tThis is needed to protect the battery again the following scenario:\no\tShutdown the battery near CUV (around 3V)\no\tKeep the battery in storage for a long time in such a way that self-discharge will cause the battery voltage (one of the cell) dip below 1.5V\no\tAt this low voltage, the battery can not be charged since it is dangerous due to copper deposition. In fact charging such a battery might cause big protection issue (fire, etc.)\n-\tThis is the main reason why the battery when first wakeup from shutdown mode, SUV must be done to make sure that the battery is OK to charge after a long storage time, i.e no copper deposition.\n-\tWhen first checking the battery for copper deposition, charging current must be 0 so that the battery will not be able to see inadvertent raise in cell voltage due to charger, to preventing false detection, i.e battery is in copper deposition but due to charger turns on, it causes wrong readings. \n-\tIf this feature is needed then SUV can be disabled by setting the delay time to very low or 0 (need to double check)",
+      "parentUuid": "b8ab48e7_01b6fdba",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 63
+      },
+      "revId": "19dff7cd1c4f1edd3c85a5f88549e44f4a246de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "616535ec_de1c4ace",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2018-02-26T20:51:05Z",
       "side": 1,
       "message": "Since the battery is a critical component, can you actually test the code? \n\nMy understanding is that the issue is when a battery is dead, we don\u0027t supply any current even though the battery needs a little bit of power to wake up. Can you drain the battery and verify the patch does fix the issue?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "19dff7cd1c4f1edd3c85a5f88549e44f4a246de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a016f0ca_a9adab31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-27T01:34:55Z",
+      "side": 1,
+      "message": "I will use a dead battery to verify this WA.",
+      "parentUuid": "616535ec_de1c4ace",
       "range": {
         "startLine": 23,
         "startChar": 5,
