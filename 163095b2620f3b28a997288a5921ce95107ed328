@@ -22,6 +22,30 @@
       "revId": "163095b2620f3b28a997288a5921ce95107ed328",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5944298_2ebcd640",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-02-27T01:39:30Z",
+      "side": 1,
+      "message": "as we don\u0027t build MP (neither pre MP to that matter) images from this branch, I don\u0027t think it is necessary to change the prod manifest. \n\nChanges to the signing manifests in branches will be independent from ToT, not cherry-picks.",
+      "parentUuid": "1aaa00da_849ab3c8",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "163095b2620f3b28a997288a5921ce95107ed328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
