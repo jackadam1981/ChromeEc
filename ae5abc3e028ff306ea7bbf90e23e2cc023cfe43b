@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e618f62_f45417e9",
+        "filename": "board/nami/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-27T19:48:52Z",
+      "side": 1,
+      "message": "I think we need to check the lid state before calling it. If the lid is already closed and the device is waking up (i.e. dock mode), we do not want to turn on the keyboard light.",
+      "range": {
+        "startLine": 697,
+        "startChar": 1,
+        "endLine": 697,
+        "endChar": 15
+      },
+      "revId": "ae5abc3e028ff306ea7bbf90e23e2cc023cfe43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "098e9dc6_99496b8c",
+        "filename": "board/nami/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-27T19:48:52Z",
+      "side": 1,
+      "message": "Similar comment here. Did you try to open the lid while the system is in S5?",
+      "range": {
+        "startLine": 713,
+        "startChar": 2,
+        "endLine": 713,
+        "endChar": 16
+      },
+      "revId": "ae5abc3e028ff306ea7bbf90e23e2cc023cfe43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
