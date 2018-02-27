@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f29b1d38_efb54e49",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-02-27T17:38:07Z",
+      "side": 1,
+      "message": "Ah, yes this is true for Vconn swap. But I don\u0027t understand what that has to do with setting both the TCPC and PPC to source Vconn. My understanding was the \"make before break\" referred to the port partners.",
+      "range": {
+        "startLine": 335,
+        "startChar": 29,
+        "endLine": 337,
+        "endChar": 69
+      },
+      "revId": "cc8fded14b8eb0d498937ac9fc973fc777b360a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
