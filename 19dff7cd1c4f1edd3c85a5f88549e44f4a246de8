@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2d43263_38a848a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-27T09:41:20Z",
+      "side": 1,
+      "message": "I already create a issue tracker for this.\nI plan to update the bug number to \"BUG\u003d\" after I finish the verification.",
+      "parentUuid": "6fd7c492_60e834ff",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "19dff7cd1c4f1edd3c85a5f88549e44f4a246de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8ab48e7_01b6fdba",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
