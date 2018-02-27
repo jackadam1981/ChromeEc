@@ -46,6 +46,30 @@
       "revId": "c57c21a4087019bb036bed85eb8e76a814660621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ddd40d_ac31c452",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-27T05:13:50Z",
+      "side": 1,
+      "message": "I understand it now. You\u0027re adding _RW macros to the RO code. Theoretically build time premises are not guaranteed in run time because RW can be updated. Do you have any comments on that?",
+      "parentUuid": "8c92d40a_e14efea1",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "c57c21a4087019bb036bed85eb8e76a814660621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
