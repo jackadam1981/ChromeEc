@@ -22,6 +22,30 @@
       "revId": "9665818605f3e2f61dd3ada25a7bbdf5e059940a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "070038fd_6775c435",
+        "filename": "common/power_button.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-27T21:37:01Z",
+      "side": 1,
+      "message": "It requires a design review because it\u0027s adding a route to RW not described in the design doc. It would be increasing the attack surface by allowing EC-RO to do EC-EFS after PD comm is enabled (while EFS is currently done \n only right after power-on).",
+      "parentUuid": "45454b97_5fd91c3a",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 6
+      },
+      "revId": "9665818605f3e2f61dd3ada25a7bbdf5e059940a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
