@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "656b1a46_79b3120d",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2747,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-27T20:08:00Z",
+      "side": 1,
+      "message": "While this is one case interesting to solve,\nis this the proper condition ?\ne.g. when we are in PD_DRP_TOGGLE_OFF in S3 we don\u0027t really want either ?\n\nare there more cases where we want to toggle than \ndrp \u003d\u003d PD_DRP_TOGGLE_ON ?",
+      "range": {
+        "startLine": 2747,
+        "startChar": 7,
+        "endLine": 2747,
+        "endChar": 37
+      },
+      "revId": "b87a5e723ae4cf91d6ba55719e58de2fad1a5ba0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
