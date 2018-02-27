@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9069b268_2d579fcd",
+        "filename": "board/glkrvp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-27T22:21:11Z",
+      "side": 1,
+      "message": "What are your thoughts on the following snippet without a variable?\n\nif (!(curr-\u003ebatt.flags \u0026 BATT_FLAG_WANT_CHARGE) \u0026\u0026\n\t(curr-\u003ebatt.status \u0026 STATUS_FULLY_CHARGED)) {\n\tcharger_discharge_on_ac(1);\n\tcurr-\u003estate \u003d ST_DISCHARGE;\n\treturn 0;\n}",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "1bb3657889a525d7e27093e62bda91029913faa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
