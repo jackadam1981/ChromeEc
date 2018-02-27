@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b005db55_b38206c3",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-27T02:29:39Z",
+      "side": 1,
+      "message": "I should\u0027ve checked twice...",
+      "parentUuid": "ac7a9104_e7359132",
+      "range": {
+        "startLine": 90,
+        "startChar": 17,
+        "endLine": 90,
+        "endChar": 34
+      },
+      "revId": "b5b382da0e32ad27af037277db52b514165f842b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7341d806_4ea995a3",
         "filename": "board/nautilus/battery.c",
         "patchSetId": 4
