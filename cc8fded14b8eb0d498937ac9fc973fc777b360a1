@@ -22,6 +22,30 @@
       "revId": "cc8fded14b8eb0d498937ac9fc973fc777b360a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e2760f7_35299f0e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-27T17:49:12Z",
+      "side": 1,
+      "message": "The make before break does only apply to port partners, but I was just trying to point out that the TCPC shouldn\u0027t be adversely affected by getting Vconn sourced by the PPC since it is completely normal for a port partner to also source Vconn while the TCPC is still sourcing Vconn.",
+      "parentUuid": "f29b1d38_efb54e49",
+      "range": {
+        "startLine": 335,
+        "startChar": 29,
+        "endLine": 337,
+        "endChar": 69
+      },
+      "revId": "cc8fded14b8eb0d498937ac9fc973fc777b360a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
