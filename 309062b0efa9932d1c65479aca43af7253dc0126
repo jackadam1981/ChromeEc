@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2f2664f7_372c9cd4",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-27T02:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eee0249d_1dec9388",
+      "range": {
+        "startLine": 89,
+        "startChar": 13,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "309062b0efa9932d1c65479aca43af7253dc0126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b0133ae_18b09a6b",
         "filename": "board/nautilus/battery.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-27T00:57:47Z",
       "side": 1,
       "message": "this can go on the previous line.",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 24
+      },
+      "revId": "309062b0efa9932d1c65479aca43af7253dc0126",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45b3ca37_4348b15e",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-27T02:04:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b0133ae_18b09a6b",
       "range": {
         "startLine": 97,
         "startChar": 5,
