@@ -2739,10 +2739,12 @@ void pd_task(void *u)
 			/*
 			 * Attempt TCPC auto DRP toggle if it is
 			 * not already auto toggling and not try.src
+			 * and DRP state is not force sink.
 			 */
 			if (auto_toggle_supported &&
 			    !(pd[port].flags & PD_FLAGS_TCPC_DRP_TOGGLE) &&
 			    !(pd[port].flags & PD_FLAGS_TRY_SRC) &&
+			    drp_state != PD_DRP_FORCE_SINK &&
 			    (cc1 == TYPEC_CC_VOLT_OPEN &&
 			     cc2 == TYPEC_CC_VOLT_OPEN)) {
 				set_state(port, PD_STATE_DRP_AUTO_TOGGLE);
