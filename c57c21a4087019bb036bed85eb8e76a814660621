@@ -94,6 +94,30 @@
       "revId": "c57c21a4087019bb036bed85eb8e76a814660621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93dc8ef5_617c36be",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-02-27T15:25:15Z",
+      "side": 1,
+      "message": "How do you like putting EC_FEATURES_MASK_0/1 in the fmap?",
+      "parentUuid": "18e0ba35_8f486f23",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 39
+      },
+      "revId": "c57c21a4087019bb036bed85eb8e76a814660621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
