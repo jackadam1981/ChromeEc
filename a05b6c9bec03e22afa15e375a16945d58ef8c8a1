@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4780b1dc_3e46b6f9",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-02-27T17:01:39Z",
+      "side": 1,
+      "message": "I updated the comment, I was referring to the the make before break semantics of Vconn:\n\nFrom USB Power Deliver 2.7.6 V CONN Source\n\"The responsibility for sourcing V CONN can be swapped between the Source and Sink Ports in a make before break fashion to ensure that the Cable Plugs continue to be powered.\"",
+      "parentUuid": "ccda425b_c06c9e06",
+      "range": {
+        "startLine": 335,
+        "startChar": 48,
+        "endLine": 337,
+        "endChar": 28
+      },
+      "revId": "a05b6c9bec03e22afa15e375a16945d58ef8c8a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8647952b_faeb297e",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 1
