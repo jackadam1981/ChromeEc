@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e9f97cf_ab425633",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-02-27T00:26:24Z",
+      "side": 1,
+      "message": "It is not clear from the data sheet how long the read command will take.\nDoes it merely read the data registers, or does it wait the integration time to complete?",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69fc53cd_4a31e8a6",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-02-27T00:26:24Z",
+      "side": 1,
+      "message": "when rate is 0, ALS should go in suspend mode.\n\nShould PSM be change depending on the data rate: Mode 3 if rate \u003c 243mHz, Mode 0 otherwise.\n\n[it is not clear from datasheets what PM modes differences].",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0df44b2_5e255d80",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-02-27T00:26:24Z",
+      "side": 1,
+      "message": "when is drv_data-\u003eoffset updated?\n\nWe use offset for taking care of the glasss in front of the als. We use a linear function: Y \u003d a X + b, where X is the measured value, and Y the real value, a and b coefficients set depending on the glass in front of the ALS. (a, b) depends on the board.",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f77d72_c1fed222",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-02-27T00:26:24Z",
+      "side": 1,
+      "message": "comment is incorrect: From spect, 0xC0 refresh time is is 800ms, so min frequency is 1250mHz\nMinimal integration time is 25ms, max frequency is 40Hz, 40000mHz.\n\n[1/1300ms is ~700mHz, not 7000mHz]",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "716386ce_c392cef5",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-02-27T00:26:24Z",
+      "side": 1,
+      "message": "update according to comment.",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
