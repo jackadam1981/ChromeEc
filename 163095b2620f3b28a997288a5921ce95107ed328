@@ -46,6 +46,30 @@
       "revId": "163095b2620f3b28a997288a5921ce95107ed328",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3ecc766_7de1090c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-02-27T02:05:46Z",
+      "side": 1,
+      "message": "I dont think that we need to change the prodsigned manifest either. I just think the wording is confusing. MP and preMP describe the branches that an image is built from, but this really relates to how the image is signed. Changing this manifest makes sure that the dev signed test image can take over any prodsigned MP or pre-MP image.",
+      "parentUuid": "e5944298_2ebcd640",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "163095b2620f3b28a997288a5921ce95107ed328",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
