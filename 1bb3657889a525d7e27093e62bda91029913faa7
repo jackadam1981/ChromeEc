@@ -22,6 +22,30 @@
       "revId": "1bb3657889a525d7e27093e62bda91029913faa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8987282_2822c6f5",
+        "filename": "board/glkrvp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-02-27T22:26:42Z",
+      "side": 1,
+      "message": "Only issue with new snippet is that we want charger_discharge_on_ac(0) to be called too for resetting the state after the battery charge is dropped down below almost full.\n\nI can modify to below:\nif (!(curr-\u003ebatt.flags \u0026 BATT_FLAG_WANT_CHARGE) \u0026\u0026\n\t(curr-\u003ebatt.status \u0026 STATUS_FULLY_CHARGED)) {\n\tcharger_discharge_on_ac(1);\n\tcurr-\u003estate \u003d ST_DISCHARGE;\n\treturn 0;\n}\n\ncharger_discharge_on_ac(0);\n\nAgree?",
+      "parentUuid": "9069b268_2d579fcd",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "1bb3657889a525d7e27093e62bda91029913faa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
