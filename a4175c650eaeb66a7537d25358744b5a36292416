@@ -22,6 +22,30 @@
       "revId": "a4175c650eaeb66a7537d25358744b5a36292416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d477f833_5e660d0b",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-02-27T17:02:22Z",
+      "side": 1,
+      "message": "Good catch.\n\n(Probably because it was tested on a system with only one fan?)",
+      "parentUuid": "a5d3165b_866e890b",
+      "range": {
+        "startLine": 302,
+        "startChar": 3,
+        "endLine": 302,
+        "endChar": 9
+      },
+      "revId": "a4175c650eaeb66a7537d25358744b5a36292416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
