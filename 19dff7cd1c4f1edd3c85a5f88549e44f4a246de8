@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "69f4bca1_a24e9b58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-27T11:22:30Z",
+      "side": 1,
+      "message": "Bug ID: 73921750",
+      "parentUuid": "d2d43263_38a848a4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "19dff7cd1c4f1edd3c85a5f88549e44f4a246de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b8ab48e7_01b6fdba",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -117,6 +141,30 @@
       "revId": "19dff7cd1c4f1edd3c85a5f88549e44f4a246de8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8b18df_11404f5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-02-27T11:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d9c3d09_f157d1c9",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 63
+      },
+      "revId": "19dff7cd1c4f1edd3c85a5f88549e44f4a246de8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
