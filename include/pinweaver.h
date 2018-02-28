@@ -57,4 +57,11 @@ void compute_hash(const uint8_t hashes[][PW_HASH_SIZE], uint16_t num_hashes,
 		  const uint8_t child_hash[PW_HASH_SIZE],
 		  uint8_t result[PW_HASH_SIZE]);
 
+/* NV RAM log functions exported for use in test code. */
+int log_insert_leaf(struct label_t label, const uint8_t root[PW_HASH_SIZE],
+		    const uint8_t hmac[PW_HASH_SIZE]);
+int log_remove_leaf(struct label_t label, const uint8_t root[PW_HASH_SIZE]);
+int log_auth(struct label_t label, const uint8_t root[PW_HASH_SIZE], int code,
+	     struct pw_timestamp_t timestamp);
+
 #endif  /* __CROS_EC_PINWEAVER_H */
