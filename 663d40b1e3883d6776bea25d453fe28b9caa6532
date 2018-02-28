@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69b34ca4_08e0f974",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1116220
+      },
+      "writtenOn": "2018-02-28T02:11:28Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be \u00270 \u003c\u003d bat_temp_c \u003c\u003d 5\u0027 since 0 in in the permitted range?",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 21
+      },
+      "revId": "663d40b1e3883d6776bea25d453fe28b9caa6532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
