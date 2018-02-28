@@ -36,6 +36,10 @@ enum pw_error_codes_enum {
 	PW_ERR_RESET_AUTH_FAILED,
 	PW_ERR_CRYPTO_FAILURE,
 	PW_ERR_RATE_LIMIT_REACHED,
+	PW_ERR_ROOT_NOT_FOUND,
+	PW_ERR_NV_EMPTY,
+	PW_ERR_NV_LENGTH_MISMATCH,
+	PW_ERR_NV_VERSION_MISMATCH,
 };
 
 /* Represents the log2(fan out) of a tree. */
@@ -165,6 +169,8 @@ enum pw_message_type_enum {
 	PW_REMOVE_LEAF,
 	PW_TRY_AUTH,
 	PW_RESET_AUTH,
+	PW_GET_LOG,
+	PW_LOG_REPLAY,
 };
 
 struct PW_PACKED pw_message_type_t {
@@ -241,6 +247,51 @@ struct PW_PACKED pw_response_reset_auth_t {
 	struct wrapped_leaf_data_t wrapped_leaf_data;
 };
 
+struct PW_PACKED pw_request_get_log_t {
+	/* This field only be sent on success. */
+	uint8_t root[PW_HASH_SIZE];
+};
+
+struct PW_PACKED pw_request_log_replay_t {
+	/* The root hash after the desired log event.
+	 * The log entry that matches this hash contains all the necessary
+	 * data to update wrapped_leaf_data
+	 */
+	uint8_t log_root[PW_HASH_SIZE];
+	struct wrapped_leaf_data_t wrapped_leaf_data;
+	uint8_t path_hashes[][PW_HASH_SIZE];
+};
+
+struct PW_PACKED pw_response_log_replay_t {
+	struct wrapped_leaf_data_t wrapped_leaf_data;
+};
+
+struct PW_PACKED pw_get_log_entry_t {
+	/* The root hash after this operation. */
+	uint8_t root[PW_HASH_SIZE];
+	/* The label of the leaf that was operated on. */
+	struct label_t label;
+	/* The type of operation. This should be one of
+	 * PW_INSERT_LEAF,
+	 * PW_REMOVE_LEAF,
+	 * PW_TRY_AUTH.
+	 *
+	 * Successful PW_RESET_AUTH events are included
+	 */
+	struct pw_message_type_t type;
+	/* Type specific fields. */
+	union {
+		/* PW_INSERT_LEAF */
+		uint8_t leaf_hmac[PW_HASH_SIZE];
+		/* PW_REMOVE_LEAF */
+		/* PW_TRY_AUTH */
+		struct PW_PACKED {
+			struct pw_timestamp_t timestamp;
+			int return_code;
+		};
+	};
+};
+
 struct PW_PACKED pw_request_t {
 	struct pw_request_header_t header;
 	union {
@@ -256,6 +307,8 @@ struct PW_PACKED pw_request_t {
 		struct pw_request_remove_leaf_t remove_leaf;
 		struct pw_request_try_auth_t try_auth;
 		struct pw_request_reset_auth_t reset_auth;
+		struct pw_request_get_log_t get_log;
+		struct pw_request_log_replay_t log_replay;
 	} data;
 };
 
@@ -272,6 +325,11 @@ struct PW_PACKED pw_response_t {
 		struct pw_response_insert_leaf_t insert_leaf;
 		struct pw_response_try_auth_t try_auth;
 		struct pw_response_reset_auth_t reset_auth;
+		/* pw_response_get_log_t is an array of type
+		 * pw_get_log_entry_t with as many entries as are present
+		 * in the log up to the present time or will fit in the message.
+		 */
+		struct pw_response_log_replay_t log_replay;
 	} data;
 };
 
@@ -281,6 +339,8 @@ struct PW_PACKED pw_response_t {
 				struct pw_request_insert_leaf_t insert_leaf; \
 				struct pw_request_remove_leaf_t remove_leaf; \
 				struct pw_request_try_auth_t try_auth; \
-				struct pw_request_reset_auth_t reset_auth; }))
+				struct pw_request_reset_auth_t reset_auth; \
+				struct pw_request_get_log_t get_log; \
+				struct pw_request_log_replay_t log_replay; }))
 
 #endif  /* __CROS_EC_PINWEAVER_TYPES_H */

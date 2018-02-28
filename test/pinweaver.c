@@ -6,12 +6,12 @@
 #include <pinweaver.h>
 
 #include <dcrypto.h>
+#include <nvmem_vars.h>
 #include <sha256.h>
 #include <stdint.h>
 #include <string.h>
 #include <timer.h>
 #include <util.h>
-#include <pinweaver_types.h>
 
 #include "test_util.h"
 
@@ -99,11 +99,32 @@ const uint8_t ROOT_WITH_DEFAULT_HMAC[] = {
 		0x37, 0xc2, 0xf2, 0x72, 0x31, 0xdd, 0xc4, 0xaf,
 };
 
+/* This is not the actual hmac. */
+const uint8_t OTHER_HMAC[] = {
+		0xec, 0x64, 0x73, 0x39, 0xcf, 0x53, 0xb7, 0x08,
+		0x85, 0x8f, 0xb6, 0x20, 0x25, 0x98, 0x59, 0x97,
+		0x58, 0x8c, 0x7a, 0x80, 0x10, 0xb4, 0xc1, 0xc8,
+		0x8a, 0xdf, 0xe3, 0x69, 0x07, 0xd1, 0xc4, 0xdc,
+};
+
+const uint8_t ROOT_WITH_OTHER_HMAC[] = {
+		0xdf, 0xce, 0xf4, 0xba, 0x18, 0xe8, 0xd0, 0x1d,
+		0xcb, 0x3b, 0x29, 0x41, 0x44, 0x01, 0x6e, 0x72,
+		0xe3, 0x19, 0x9a, 0x44, 0x62, 0x44, 0x2a, 0xf1,
+		0xaf, 0x66, 0xb6, 0xf0, 0x61, 0x05, 0x9d, 0xc0,
+};
+
 /******************************************************************************/
 /* Config Variables and defines for Mocks.
  */
 
-uint32_t MOCK_restart_count;
+struct tuple MOCK_pw_tuple;
+struct pw_long_term_storage_t MOCK_pw_long_term_storage;
+struct pw_log_storage_t MOCK_pw_log_storage;
+int MOCK_getvar_ret = EC_SUCCESS;
+int MOCK_setvar_ret = EC_SUCCESS;
+int MOCK_writevars_ret = EC_SUCCESS;
+void *MOCK_tuple_val_ret;
 
 const uint8_t *MOCK_rand_bytes_src;
 size_t MOCK_rand_bytes_offset;
@@ -156,6 +177,14 @@ static const char *pw_error_str(int code)
 		return "PW_ERR_CRYPTO_FAILURE";
 	case PW_ERR_RATE_LIMIT_REACHED:
 		return "PW_ERR_RATE_LIMIT_REACHED";
+	case PW_ERR_ROOT_NOT_FOUND:
+		return "PW_ERR_ROOT_NOT_FOUND";
+	case PW_ERR_NV_EMPTY:
+		return "PW_ERR_NV_EMPTY";
+	case PW_ERR_NV_LENGTH_MISMATCH:
+		return "PW_ERR_NV_LENGTH_MISMATCH";
+	case PW_ERR_NV_VERSION_MISMATCH:
+		return "PW_ERR_NV_VERSION_MISMATCH";
 	default:
 		return "?";
 	}
@@ -261,10 +290,33 @@ static void compute_empty_path(uint8_t path[][PW_HASH_SIZE], uint8_t fan_out,
 	}
 }
 
+static void setup_storage(void)
+{
+	MOCK_getvar_ret = EC_SUCCESS;
+	MOCK_setvar_ret = EC_SUCCESS;
+	MOCK_writevars_ret = EC_SUCCESS;
+
+	store_merkle_tree(&EMPTY_TREE);
+
+	log_insert_leaf(DEFAULT_LEAF.pub.label, ROOT_WITH_DEFAULT_HMAC,
+			DEFAULT_HMAC);
+
+	log_auth(DEFAULT_LEAF.pub.label, ROOT_WITH_OTHER_HMAC,
+		 PW_ERR_LOWENT_AUTH_FAILED, (struct pw_timestamp_t){7, 99});
+
+	log_auth(DEFAULT_LEAF.pub.label, ROOT_WITH_DEFAULT_HMAC, EC_SUCCESS,
+		 (struct pw_timestamp_t){10, 100});
+
+	log_remove_leaf(DEFAULT_LEAF.pub.label, EMPTY_TREE.root);
+}
+
 static void setup_reset_tree_defaults(struct merkle_tree_t *merkle_tree,
 				      struct pw_request_t *request)
 {
 	memset(merkle_tree, 0, sizeof(*merkle_tree));
+	memset(&MOCK_pw_long_term_storage, 0,
+	       sizeof(MOCK_pw_long_term_storage));
+	memset(&MOCK_pw_log_storage, 0, sizeof(MOCK_pw_log_storage));
 
 	request->header.version = PW_PROTOCOL_VERSION;
 	request->header.type.v = PW_RESET_TREE;
@@ -280,6 +332,8 @@ static void setup_reset_tree_defaults(struct merkle_tree_t *merkle_tree,
 	MOCK_rand_bytes_offset = 0;
 	MOCK_rand_bytes_len = sizeof(EMPTY_TREE.hmac_key) +
 			sizeof(EMPTY_TREE.wrap_key);
+	MOCK_setvar_ret = EC_SUCCESS;
+	MOCK_writevars_ret = EC_SUCCESS;
 }
 
 static void setup_default_empty_path(uint8_t hashes[][PW_HASH_SIZE])
@@ -333,6 +387,7 @@ static void setup_insert_leaf_defaults(struct merkle_tree_t *merkle_tree,
 				       struct pw_request_t *request)
 {
 	memcpy(merkle_tree, &EMPTY_TREE, sizeof(EMPTY_TREE));
+	memset(&MOCK_pw_log_storage, 0, sizeof(MOCK_pw_log_storage));
 
 	request->header.version = PW_PROTOCOL_VERSION;
 	request->header.type.v = PW_INSERT_LEAF;
@@ -362,6 +417,8 @@ static void setup_insert_leaf_defaults(struct merkle_tree_t *merkle_tree,
 	MOCK_hash_update_cb = 0;
 	MOCK_hmac = DEFAULT_HMAC;
 	MOCK_aes_fail = 0;
+	MOCK_setvar_ret = EC_SUCCESS;
+	MOCK_writevars_ret = EC_SUCCESS;
 }
 
 static void setup_remove_leaf_defaults(struct merkle_tree_t *merkle_tree,
@@ -370,6 +427,7 @@ static void setup_remove_leaf_defaults(struct merkle_tree_t *merkle_tree,
 	memcpy(merkle_tree, &EMPTY_TREE, sizeof(EMPTY_TREE));
 	memcpy(merkle_tree->root, ROOT_WITH_DEFAULT_HMAC,
 	       sizeof(ROOT_WITH_DEFAULT_HMAC));
+	memset(&MOCK_pw_log_storage, 0, sizeof(MOCK_pw_log_storage));
 
 	request->header.version = PW_PROTOCOL_VERSION;
 	request->header.type.v = PW_REMOVE_LEAF;
@@ -381,6 +439,9 @@ static void setup_remove_leaf_defaults(struct merkle_tree_t *merkle_tree,
 	memcpy(request->data.remove_leaf.leaf_hmac, DEFAULT_HMAC,
 	       sizeof(request->data.remove_leaf.leaf_hmac));
 	setup_default_empty_path(request->data.remove_leaf.path_hashes);
+
+	MOCK_setvar_ret = EC_SUCCESS;
+	MOCK_writevars_ret = EC_SUCCESS;
 }
 
 static void setup_try_auth_defaults(const struct leaf_data_t *leaf_data,
@@ -406,6 +467,7 @@ static void setup_try_auth_defaults(const struct leaf_data_t *leaf_data,
 		/* Gets overwritten by auth_hash_update_cb. */
 		MOCK_hmac = EMPTY_HMAC;
 	}
+	memset(&MOCK_pw_log_storage, 0, sizeof(MOCK_pw_log_storage));
 
 	request->header.version = PW_PROTOCOL_VERSION;
 	request->header.type.v = PW_TRY_AUTH;
@@ -426,13 +488,15 @@ static void setup_try_auth_defaults(const struct leaf_data_t *leaf_data,
 			sizeof(leaf_data->sec));
 	setup_default_empty_path(request->data.try_auth.path_hashes);
 
-	MOCK_restart_count = 0;
+	force_restart_count(0);
 	force_time((timestamp_t){.val = 0});
 	MOCK_rand_bytes_src = DEFAULT_IV;
 	MOCK_rand_bytes_offset = 0;
 	MOCK_rand_bytes_len = sizeof(DEFAULT_IV);
 	MOCK_hash_update_cb = auth_hash_update_cb;
 	MOCK_aes_fail = 0;
+	MOCK_setvar_ret = EC_SUCCESS;
+	MOCK_writevars_ret = EC_SUCCESS;
 }
 
 static void setup_reset_auth_defaults(struct merkle_tree_t *merkle_tree,
@@ -443,6 +507,7 @@ static void setup_reset_auth_defaults(struct merkle_tree_t *merkle_tree,
 	request->data.reset_auth.wrapped_leaf_data.pub.attempt_count.v = 6;
 
 	memcpy(merkle_tree, &EMPTY_TREE, sizeof(EMPTY_TREE));
+	memset(&MOCK_pw_log_storage, 0, sizeof(MOCK_pw_log_storage));
 
 	request->header.version = PW_PROTOCOL_VERSION;
 	request->header.type.v = PW_RESET_AUTH;
@@ -470,6 +535,67 @@ static void setup_reset_auth_defaults(struct merkle_tree_t *merkle_tree,
 	MOCK_hash_update_cb = auth_hash_update_cb;
 	MOCK_hmac = EMPTY_HMAC; /* Gets overwritten by auth_hash_update_cb. */
 	MOCK_aes_fail = 0;
+	MOCK_setvar_ret = EC_SUCCESS;
+	MOCK_writevars_ret = EC_SUCCESS;
+}
+
+static void setup_get_log_defaults(struct merkle_tree_t *merkle_tree,
+				   struct pw_request_t *request)
+{
+	memcpy(merkle_tree, &EMPTY_TREE, sizeof(*merkle_tree));
+
+	request->header.version = PW_PROTOCOL_VERSION;
+	request->header.type.v = PW_GET_LOG;
+	request->header.data_length = sizeof(struct pw_request_get_log_t);
+
+	/* Chosen not to match any of the root hashes in the log. */
+	memcpy(request->data.get_log.root, OTHER_HMAC,
+	       sizeof(OTHER_HMAC));
+
+	setup_storage();
+}
+
+static void setup_log_replay_defaults(const struct leaf_data_t *leaf_data,
+				      struct merkle_tree_t *merkle_tree,
+				      struct pw_request_t *request)
+{
+	memcpy(merkle_tree, &EMPTY_TREE, sizeof(*merkle_tree));
+	if (leaf_data->pub.attempt_count.v != 6 &&
+	    leaf_data->pub.attempt_count.v != 10) {
+		memcpy(request->data.log_replay.wrapped_leaf_data.hmac,
+		       DEFAULT_HMAC,
+		       sizeof(request->data.log_replay.wrapped_leaf_data.hmac));
+
+		/* Gets overwritten by auth_hash_update_cb. */
+		MOCK_hmac = DEFAULT_HMAC;
+	} else {
+		memcpy(request->data.log_replay.wrapped_leaf_data.hmac,
+		       EMPTY_HMAC,
+		       sizeof(request->data.log_replay.wrapped_leaf_data.hmac));
+
+		/* Gets overwritten by auth_hash_update_cb. */
+		MOCK_hmac = EMPTY_HMAC;
+	}
+
+	request->header.version = PW_PROTOCOL_VERSION;
+	request->header.type.v = PW_LOG_REPLAY;
+	request->header.data_length =
+			sizeof(struct pw_request_log_replay_t) +
+			get_path_auxiliary_hash_count(&EMPTY_TREE);
+
+	memcpy(request->data.log_replay.log_root, ROOT_WITH_DEFAULT_HMAC,
+	       sizeof(ROOT_WITH_DEFAULT_HMAC));
+	memcpy(request->data.log_replay.wrapped_leaf_data.iv, DEFAULT_IV,
+	       sizeof(request->data.log_replay.wrapped_leaf_data.iv));
+	memcpy(&request->data.log_replay.wrapped_leaf_data.pub,
+	       &leaf_data->pub, sizeof(leaf_data->pub));
+	DCRYPTO_aes_ctr(request->data.log_replay.wrapped_leaf_data.cipher_text,
+			EMPTY_TREE.wrap_key, sizeof(EMPTY_TREE.wrap_key) * 8,
+			DEFAULT_IV, (const uint8_t *)&leaf_data->sec,
+			sizeof(leaf_data->sec));
+	setup_default_empty_path(request->data.log_replay.path_hashes);
+
+	setup_storage();
 }
 
 static int test_handle_short_msg(struct merkle_tree_t *merkle_tree,
@@ -502,6 +628,9 @@ static void auth_hash_update_cb(const void *data, size_t len)
 	case 6:
 		MOCK_hmac = EMPTY_HMAC;
 		break;
+	case 16:
+		MOCK_hmac = OTHER_HMAC;
+		break;
 	default:
 		MOCK_hmac = DEFAULT_HMAC;
 		break;
@@ -509,13 +638,76 @@ static void auth_hash_update_cb(const void *data, size_t len)
 }
 
 /******************************************************************************/
-/* Mock implementations of TPM, TRNG, and Dcrypto functionality.
+/* Mock implementations of nvmem_vars functionality.
  */
-
-uint32_t get_restart_count(void)
+const struct tuple *getvar(const uint8_t *key, uint8_t key_len)
 {
-	return MOCK_restart_count;
+	if (MOCK_getvar_ret != EC_SUCCESS)
+		return NULL;
+
+	MOCK_pw_tuple.flags = 0;
+	MOCK_pw_tuple.key_len = key_len;
+
+	if (key_len == (sizeof(PW_TREE_VAR) - 1) &&
+	    memcmp(key, PW_TREE_VAR, (sizeof(PW_TREE_VAR) - 1)) == 0) {
+		MOCK_pw_tuple.val_len = sizeof(MOCK_pw_long_term_storage);
+		MOCK_tuple_val_ret = &MOCK_pw_long_term_storage;
+		return &MOCK_pw_tuple;
+	} else if (key_len == (sizeof(PW_LOG_VAR0) - 1) &&
+		   memcmp(key, PW_LOG_VAR0, (sizeof(PW_LOG_VAR0) - 1)) == 0) {
+		MOCK_pw_tuple.val_len = PW_LOG_VAR0_SIZE;
+		MOCK_tuple_val_ret = &MOCK_pw_log_storage;
+		return &MOCK_pw_tuple;
+	} else if (key_len == (sizeof(PW_LOG_VAR1) - 1) &&
+		   memcmp(key, PW_LOG_VAR1, (sizeof(PW_LOG_VAR1) - 1)) == 0) {
+		MOCK_pw_tuple.val_len = PW_LOG_VAR1_SIZE;
+		MOCK_tuple_val_ret = ((uint8_t *)&MOCK_pw_log_storage) +
+				     PW_LOG_VAR0_SIZE;
+		return &MOCK_pw_tuple;
+	} else
+		return NULL;
 }
+
+const uint8_t *tuple_val(const struct tuple *tpl)
+{
+	return MOCK_tuple_val_ret;
+}
+
+int setvar(const uint8_t *key, uint8_t key_len,
+	   const uint8_t *val, uint8_t val_len)
+{
+	if (MOCK_setvar_ret != EC_SUCCESS)
+		return MOCK_setvar_ret;
+
+	if (key_len == (sizeof(PW_TREE_VAR) - 1) &&
+	    memcmp(key, PW_TREE_VAR, (sizeof(PW_TREE_VAR) - 1)) == 0) {
+		TEST_ASSERT(val_len == sizeof(MOCK_pw_long_term_storage));
+		memcpy(&MOCK_pw_long_term_storage, val, val_len);
+		return EC_SUCCESS;
+	} else if (key_len == (sizeof(PW_LOG_VAR0) - 1) &&
+		   memcmp(key, PW_LOG_VAR0, (sizeof(PW_LOG_VAR0) - 1)) == 0) {
+		TEST_ASSERT(val_len == PW_LOG_VAR0_SIZE);
+		memcpy(&MOCK_pw_log_storage, val, val_len);
+		return EC_SUCCESS;
+	} else if (key_len == (sizeof(PW_LOG_VAR1) - 1) &&
+		   memcmp(key, PW_LOG_VAR1, (sizeof(PW_LOG_VAR1) - 1)) == 0) {
+		TEST_ASSERT(val_len == PW_LOG_VAR1_SIZE);
+		memcpy(((uint8_t *)&MOCK_pw_log_storage) + PW_LOG_VAR0_SIZE,
+		       val, val_len);
+		return EC_SUCCESS;
+	} else
+		return EC_ERROR_UNKNOWN;
+}
+
+int writevars(void)
+{
+	return MOCK_writevars_ret;
+}
+
+
+/******************************************************************************/
+/* Mock implementations of TRNG functionality.
+ */
 
 void rand_bytes(void *buffer, size_t len)
 {
@@ -529,6 +721,10 @@ void rand_bytes(void *buffer, size_t len)
 	if (MOCK_rand_bytes_len == MOCK_rand_bytes_offset)
 		MOCK_rand_bytes_offset = 0;
 }
+
+/******************************************************************************/
+/* Mock implementations of Dcrypto functionality.
+ */
 
 void HASH_update(struct HASH_CTX *ctx, const void *data, size_t len)
 {
@@ -779,6 +975,24 @@ static int handle_reset_tree_height_invalid(void)
 	return EC_SUCCESS;
 }
 
+static int handle_reset_tree_nv_fail(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_reset_tree_defaults(&merkle_tree, &buf.request);
+
+	MOCK_writevars_ret = PW_ERR_NV_LENGTH_MISMATCH;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_NV_LENGTH_MISMATCH);
+	return EC_SUCCESS;
+}
+
 static int handle_reset_tree_success(void)
 {
 	struct merkle_tree_t merkle_tree;
@@ -795,6 +1009,22 @@ static int handle_reset_tree_success(void)
 
 	TEST_ASSERT_ARRAY_EQ((uint8_t *)&merkle_tree, (uint8_t *)&EMPTY_TREE,
 			     sizeof(EMPTY_TREE));
+
+	TEST_ASSERT(MOCK_pw_long_term_storage.storage_version ==
+		    PW_STORAGE_VERSION);
+	TEST_ASSERT(MOCK_pw_long_term_storage.bits_per_level.v ==
+		    EMPTY_TREE.bits_per_level.v);
+	TEST_ASSERT(MOCK_pw_long_term_storage.height.v ==
+		    EMPTY_TREE.height.v);
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_long_term_storage.hmac_key,
+			     EMPTY_TREE.hmac_key, sizeof(EMPTY_TREE.hmac_key));
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_long_term_storage.wrap_key,
+			     EMPTY_TREE.wrap_key, sizeof(EMPTY_TREE.wrap_key));
+
+	TEST_ASSERT(MOCK_pw_log_storage.storage_version == PW_STORAGE_VERSION);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].type.v == PW_RESET_TREE);
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_log_storage.entries[0].root,
+			     EMPTY_TREE.root, sizeof(EMPTY_TREE.root));
 
 	return EC_SUCCESS;
 }
@@ -928,6 +1158,24 @@ static int handle_insert_leaf_crypto_failure(void)
 	return EC_SUCCESS;
 }
 
+static int handle_insert_leaf_nv_fail(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_insert_leaf_defaults(&merkle_tree, &buf.request);
+
+	MOCK_writevars_ret = PW_ERR_NV_LENGTH_MISMATCH;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_NV_LENGTH_MISMATCH);
+	return EC_SUCCESS;
+}
+
 static int handle_insert_leaf_success(void)
 {
 	struct merkle_tree_t merkle_tree;
@@ -963,6 +1211,16 @@ static int handle_insert_leaf_success(void)
 	for (x = 0; x < sizeof(DEFAULT_LEAF.sec); ++x)
 		TEST_ASSERT(plain_text[x] == (cipher_text[x] ^
 					    MOCK_AES_XOR_BYTE(x)));
+
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].type.v == PW_INSERT_LEAF);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].label.v ==
+		    DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_log_storage.entries[0].root,
+			     ROOT_WITH_DEFAULT_HMAC,
+			     sizeof(ROOT_WITH_DEFAULT_HMAC));
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_log_storage.entries[0].leaf_hmac,
+			     DEFAULT_HMAC,
+			     sizeof(DEFAULT_HMAC));
 
 	return EC_SUCCESS;
 }
@@ -1025,6 +1283,24 @@ static int handle_remove_leaf_path_auth_failed(void)
 	return EC_SUCCESS;
 }
 
+static int handle_remove_leaf_nv_fail(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_remove_leaf_defaults(&merkle_tree, &buf.request);
+
+	MOCK_writevars_ret = PW_ERR_NV_LENGTH_MISMATCH;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_NV_LENGTH_MISMATCH);
+	return EC_SUCCESS;
+}
+
 static int handle_remove_leaf_success(void)
 {
 	struct merkle_tree_t merkle_tree;
@@ -1039,6 +1315,12 @@ static int handle_remove_leaf_success(void)
 					  &buf.response, EMPTY_TREE.root),
 		    EC_SUCCESS);
 
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].type.v ==
+		    PW_REMOVE_LEAF);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].label.v ==
+		    DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_log_storage.entries[0].root,
+			     EMPTY_TREE.root, sizeof(EMPTY_TREE.root));
 	return EC_SUCCESS;
 }
 
@@ -1150,7 +1432,7 @@ static int handle_try_auth_rate_limit_reached(void)
 	/* Test PW_BLOCK_ATTEMPTS. */
 	memcpy(&leaf_data, &DEFAULT_LEAF, sizeof(DEFAULT_LEAF));
 	leaf_data.pub.attempt_count.v = 51;
-	MOCK_restart_count = 1;
+	force_restart_count(1);
 	force_time((timestamp_t){.val = 7200llu * SECOND});
 	setup_try_auth_defaults(&leaf_data, &merkle_tree, &buf.request);
 
@@ -1173,7 +1455,7 @@ static int handle_try_auth_rate_limit_reached(void)
 	leaf_data.pub.timestamp.boot_count = 0;
 	leaf_data.pub.timestamp.timer_value = 7200llu;
 	setup_try_auth_defaults(&leaf_data, &merkle_tree, &buf.request);
-	MOCK_restart_count = 0;
+	force_restart_count(0);
 	force_time((timestamp_t){.val = (leaf_data.pub.timestamp.timer_value +
 					 3599llu) * SECOND});
 
@@ -1195,7 +1477,7 @@ static int handle_try_auth_rate_limit_reached(void)
 	leaf_data.pub.timestamp.boot_count = 0;
 	leaf_data.pub.timestamp.timer_value = 7200llu;
 	setup_try_auth_defaults(&leaf_data, &merkle_tree, &buf.request);
-	MOCK_restart_count = 1;
+	force_restart_count(1);
 	force_time((timestamp_t){.val = 3599llu * SECOND});
 
 	TEST_RET_EQ(pw_handle_request(&merkle_tree, &buf.request,
@@ -1210,6 +1492,26 @@ static int handle_try_auth_rate_limit_reached(void)
 			     sizeof(merkle_tree.root));
 	TEST_ASSERT(buf.response.data.try_auth.seconds_to_wait.v == 1);
 
+	return EC_SUCCESS;
+}
+
+static int handle_try_auth_nv_fail(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_try_auth_defaults(&DEFAULT_LEAF, &merkle_tree, &buf.request);
+	force_restart_count(0);
+	force_time((timestamp_t){.val = 65 * SECOND});
+
+	MOCK_writevars_ret = PW_ERR_NV_LENGTH_MISMATCH;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_NV_LENGTH_MISMATCH);
 	return EC_SUCCESS;
 }
 
@@ -1232,7 +1534,7 @@ static int handle_try_auth_lowent_auth_failed(void)
 				~leaf_data.sec.low_entropy_secret[
 				 sizeof(leaf_data.sec.low_entropy_secret) - 1];
 	setup_try_auth_defaults(&leaf_data, &merkle_tree, &buf.request);
-	MOCK_restart_count = 1;
+	force_restart_count(1);
 	force_time((timestamp_t){.val = (65ull * SECOND)});
 
 	TEST_RET_EQ(pw_handle_request(&merkle_tree, &buf.request,
@@ -1269,6 +1571,20 @@ static int handle_try_auth_lowent_auth_failed(void)
 	 * force_time() is called.
 	 */
 	TEST_ASSERT(pub->timestamp.timer_value - 65ull < 100);
+
+	/* Validate the log entry for a failed auth attempt. */
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].type.v == PW_TRY_AUTH);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].label.v ==
+		    DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].return_code ==
+				    PW_ERR_LOWENT_AUTH_FAILED);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].timestamp.boot_count ==
+		    pub->timestamp.boot_count);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].timestamp.timer_value ==
+		    pub->timestamp.timer_value);
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_log_storage.entries[0].root,
+			     EMPTY_TREE.root,
+			     sizeof(EMPTY_TREE.root));
 	return EC_SUCCESS;
 }
 
@@ -1288,7 +1604,7 @@ static int handle_try_auth_success(void)
 	memcpy(&leaf_data, &DEFAULT_LEAF, sizeof(leaf_data));
 	leaf_data.pub.attempt_count.v = 6;
 	setup_try_auth_defaults(&leaf_data, &merkle_tree, &buf.request);
-	MOCK_restart_count = 0;
+	force_restart_count(0);
 	force_time((timestamp_t){.val = 65 * SECOND});
 
 	TEST_RET_EQ(pw_handle_request(&merkle_tree, &buf.request,
@@ -1328,12 +1644,25 @@ static int handle_try_auth_success(void)
 			     DEFAULT_LEAF.sec.high_entropy_secret,
 			     sizeof(DEFAULT_LEAF.sec.high_entropy_secret));
 
+	/* Validate the log entry on success. */
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].type.v == PW_TRY_AUTH);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].label.v ==
+		    DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].return_code == EC_SUCCESS);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].timestamp.boot_count ==
+		    pub->timestamp.boot_count);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].timestamp.timer_value ==
+		    pub->timestamp.timer_value);
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_log_storage.entries[0].root,
+			     ROOT_WITH_DEFAULT_HMAC,
+			     sizeof(ROOT_WITH_DEFAULT_HMAC));
+
 	/* Test boot_count + 1 case. */
 	leaf_data.pub.attempt_count.v = 6;
 	leaf_data.pub.timestamp.boot_count = 0;
 	leaf_data.pub.timestamp.timer_value = 7200llu;
 	setup_try_auth_defaults(&leaf_data, &merkle_tree, &buf.request);
-	MOCK_restart_count = 1;
+	force_restart_count(1);
 	force_time((timestamp_t){.val = 65llu * SECOND});
 
 	TEST_RET_EQ(pw_handle_request(&merkle_tree, &buf.request,
@@ -1487,6 +1816,24 @@ static int handle_reset_auth_reset_auth_failed(void)
 	return EC_SUCCESS;
 }
 
+static int handle_reset_auth_nv_fail(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_reset_auth_defaults(&merkle_tree, &buf.request);
+
+	MOCK_writevars_ret = PW_ERR_NV_LENGTH_MISMATCH;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_NV_LENGTH_MISMATCH);
+	return EC_SUCCESS;
+}
+
 static int handle_reset_auth_success(void)
 {
 	struct merkle_tree_t merkle_tree;
@@ -1533,6 +1880,369 @@ static int handle_reset_auth_success(void)
 	TEST_ASSERT_ARRAY_EQ((uint8_t *)&sec, (uint8_t *)&DEFAULT_LEAF.sec,
 			     sizeof(DEFAULT_LEAF.sec));
 	TEST_ASSERT(pub->attempt_count.v == 0);
+
+	/* Validate the log entry on success. */
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].type.v == PW_TRY_AUTH);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].label.v ==
+		    DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].return_code == EC_SUCCESS);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].timestamp.boot_count ==
+		    pub->timestamp.boot_count);
+	TEST_ASSERT(MOCK_pw_log_storage.entries[0].timestamp.timer_value ==
+		    pub->timestamp.timer_value);
+	TEST_ASSERT_ARRAY_EQ(MOCK_pw_log_storage.entries[0].root,
+			     ROOT_WITH_DEFAULT_HMAC,
+			     sizeof(ROOT_WITH_DEFAULT_HMAC));
+	return EC_SUCCESS;
+}
+
+/******************************************************************************/
+/* Get log test cases.
+ */
+
+static int handle_get_log_invalid_length(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_get_log_defaults(&merkle_tree, &buf.request);
+
+	++buf.request.header.data_length;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_LENGTH_INVALID);
+	return EC_SUCCESS;
+}
+
+static int handle_get_log_nv_fail(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_get_log_defaults(&merkle_tree, &buf.request);
+
+	MOCK_getvar_ret = PW_ERR_NV_EMPTY;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_NV_EMPTY);
+	return EC_SUCCESS;
+}
+
+static int handle_get_log_success(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+	const struct pw_get_log_entry_t (*view)[PW_LOG_ENTRY_COUNT] =
+			(void *)buf.response.data.raw;
+
+	setup_get_log_defaults(&merkle_tree, &buf.request);
+
+	TEST_RET_EQ(pw_handle_request(&merkle_tree, &buf.request,
+				      &buf.response),
+		    EC_SUCCESS);
+
+	TEST_ASSERT(buf.response.header.version == PW_PROTOCOL_VERSION);
+	TEST_ASSERT(buf.response.header.data_length ==
+				    sizeof(struct pw_get_log_entry_t) * 5);
+	TEST_RET_EQ(buf.response.header.result_code, EC_SUCCESS);
+
+	TEST_ASSERT(buf.response.header.version == PW_PROTOCOL_VERSION);
+
+	TEST_ASSERT((*view)[0].type.v == PW_REMOVE_LEAF);
+	TEST_ASSERT((*view)[0].label.v == DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT_ARRAY_EQ((*view)[0].root, EMPTY_TREE.root,
+			     sizeof(EMPTY_TREE.root));
+
+	TEST_ASSERT((*view)[1].type.v == PW_TRY_AUTH);
+	TEST_ASSERT((*view)[1].label.v == DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT((*view)[1].return_code == EC_SUCCESS);
+	TEST_ASSERT((*view)[1].timestamp.boot_count == 10);
+	TEST_ASSERT((*view)[1].timestamp.timer_value == 100);
+	TEST_ASSERT_ARRAY_EQ((*view)[1].root, ROOT_WITH_DEFAULT_HMAC,
+			     sizeof(ROOT_WITH_DEFAULT_HMAC));
+
+	TEST_ASSERT((*view)[2].type.v == PW_TRY_AUTH);
+	TEST_ASSERT((*view)[2].label.v == DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT((*view)[2].return_code == PW_ERR_LOWENT_AUTH_FAILED);
+	TEST_ASSERT((*view)[2].timestamp.boot_count == 7);
+	TEST_ASSERT((*view)[2].timestamp.timer_value == 99);
+	TEST_ASSERT_ARRAY_EQ((*view)[2].root, ROOT_WITH_OTHER_HMAC,
+			     sizeof(ROOT_WITH_OTHER_HMAC));
+
+	TEST_ASSERT((*view)[3].type.v == PW_INSERT_LEAF);
+	TEST_ASSERT((*view)[3].label.v == DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT_ARRAY_EQ((*view)[3].root, ROOT_WITH_DEFAULT_HMAC,
+			     sizeof(ROOT_WITH_DEFAULT_HMAC));
+	TEST_ASSERT_ARRAY_EQ((*view)[3].leaf_hmac, DEFAULT_HMAC,
+			     sizeof(DEFAULT_HMAC));
+
+	TEST_ASSERT((*view)[4].type.v == PW_RESET_TREE);
+	TEST_ASSERT_ARRAY_EQ((*view)[4].root, EMPTY_TREE.root,
+			     sizeof(EMPTY_TREE.root));
+
+	return EC_SUCCESS;
+}
+
+/******************************************************************************/
+/* Log replay test cases.
+ */
+
+static int handle_log_replay_invalid_length(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_log_replay_defaults(&DEFAULT_LEAF, &merkle_tree, &buf.request);
+
+	++buf.request.header.data_length;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_LENGTH_INVALID);
+	return EC_SUCCESS;
+}
+
+static int handle_log_replay_nv_fail(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_log_replay_defaults(&DEFAULT_LEAF, &merkle_tree, &buf.request);
+
+	MOCK_getvar_ret = PW_ERR_NV_EMPTY;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_NV_EMPTY);
+	return EC_SUCCESS;
+}
+
+static int handle_log_replay_root_not_found(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_log_replay_defaults(&DEFAULT_LEAF, &merkle_tree, &buf.request);
+
+	memcpy(buf.request.data.log_replay.log_root, DEFAULT_HMAC,
+	       sizeof(DEFAULT_HMAC));
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_ROOT_NOT_FOUND);
+	return EC_SUCCESS;
+}
+
+static int handle_log_replay_type_invalid(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_log_replay_defaults(&DEFAULT_LEAF, &merkle_tree, &buf.request);
+
+	memcpy(buf.request.data.log_replay.log_root, EMPTY_TREE.root,
+	       sizeof(EMPTY_TREE.root));
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_TYPE_INVALID);
+	return EC_SUCCESS;
+}
+
+static int handle_log_replay_hmac_auth_failed(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+	struct leaf_data_t leaf_data = {};
+
+	memcpy(&leaf_data, &DEFAULT_LEAF, sizeof(leaf_data));
+	leaf_data.pub.attempt_count.v = 7;
+	setup_log_replay_defaults(&leaf_data, &merkle_tree, &buf.request);
+
+	memcpy(buf.request.data.log_replay.wrapped_leaf_data.hmac, EMPTY_HMAC,
+	       sizeof(EMPTY_HMAC));
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_HMAC_AUTH_FAILED);
+	return EC_SUCCESS;
+}
+
+static int handle_log_replay_crypto_failure(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+	struct leaf_data_t leaf_data = {};
+
+	memcpy(&leaf_data, &DEFAULT_LEAF, sizeof(leaf_data));
+	leaf_data.pub.attempt_count.v = 7;
+	setup_log_replay_defaults(&leaf_data, &merkle_tree, &buf.request);
+
+	MOCK_aes_fail = 1;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_CRYPTO_FAILURE);
+	return EC_SUCCESS;
+}
+
+static int handle_log_replay_label_invalid(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+	struct leaf_data_t leaf_data = {};
+
+	memcpy(&leaf_data, &DEFAULT_LEAF, sizeof(leaf_data));
+	leaf_data.pub.label.v = 0;
+	setup_log_replay_defaults(&leaf_data, &merkle_tree, &buf.request);
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_LABEL_INVALID);
+	return EC_SUCCESS;
+}
+
+static int handle_log_replay_path_auth_failed(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+
+	setup_log_replay_defaults(&DEFAULT_LEAF, &merkle_tree, &buf.request);
+
+	buf.request.data.reset_auth.path_hashes[0][0] ^= 0xff;
+
+	TEST_RET_EQ(test_handle_short_msg(&merkle_tree, &buf.request,
+					  &buf.response, merkle_tree.root),
+		    PW_ERR_PATH_AUTH_FAILED);
+	return EC_SUCCESS;
+}
+
+static int handle_log_replay_success(void)
+{
+	struct merkle_tree_t merkle_tree;
+	union {
+		struct pw_request_t request;
+		struct pw_response_t response;
+	} buf;
+	struct leaf_data_t leaf_data = {};
+	struct leaf_public_data_t *pub =
+			&buf.response.data.log_replay.wrapped_leaf_data.pub;
+	struct leaf_sensitive_data_t sec = {};
+
+	/*
+	 * Test for auth success.
+	 */
+	setup_log_replay_defaults(&DEFAULT_LEAF, &merkle_tree, &buf.request);
+
+	TEST_RET_EQ(pw_handle_request(&merkle_tree, &buf.request,
+				      &buf.response),
+		    EC_SUCCESS);
+
+	TEST_ASSERT(buf.response.header.version == PW_PROTOCOL_VERSION);
+	TEST_ASSERT(buf.response.header.data_length ==
+		    sizeof(struct pw_response_reset_auth_t));
+	TEST_RET_EQ(buf.response.header.result_code, EC_SUCCESS);
+
+	TEST_ASSERT_ARRAY_EQ(buf.response.header.root, EMPTY_TREE.root,
+			     sizeof(EMPTY_TREE.root));
+
+	TEST_ASSERT_ARRAY_EQ(
+			buf.response.data.log_replay.wrapped_leaf_data.hmac,
+			DEFAULT_HMAC, sizeof(DEFAULT_HMAC));
+	TEST_ASSERT_ARRAY_EQ(buf.response.data.log_replay.wrapped_leaf_data.iv,
+			     DEFAULT_IV, sizeof(DEFAULT_IV));
+	DCRYPTO_aes_ctr((uint8_t *)&sec, EMPTY_TREE.wrap_key,
+			sizeof(EMPTY_TREE.wrap_key) * 8, DEFAULT_IV,
+			buf.response.data.log_replay.wrapped_leaf_data
+					.cipher_text,
+			sizeof(sec));
+	TEST_ASSERT(pub->label.v == DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT_ARRAY_EQ(
+			(const uint8_t *)&pub->delay_schedule,
+			(const uint8_t *)&DEFAULT_LEAF.pub.delay_schedule,
+			sizeof(DEFAULT_LEAF.pub.delay_schedule));
+	TEST_ASSERT_ARRAY_EQ((uint8_t *)&sec, (uint8_t *)&DEFAULT_LEAF.sec,
+			     sizeof(DEFAULT_LEAF.sec));
+	TEST_ASSERT(pub->attempt_count.v == 0);
+	TEST_ASSERT(pub->timestamp.boot_count == 10);
+	TEST_ASSERT(pub->timestamp.timer_value == 100);
+
+	/*
+	 * Test for auth failed.
+	 */
+	memcpy(&leaf_data, &DEFAULT_LEAF, sizeof(leaf_data));
+	leaf_data.pub.attempt_count.v = 15;
+	setup_log_replay_defaults(&leaf_data, &merkle_tree, &buf.request);
+	memcpy(buf.request.data.log_replay.log_root, ROOT_WITH_OTHER_HMAC,
+	       sizeof(ROOT_WITH_OTHER_HMAC));
+
+	TEST_RET_EQ(pw_handle_request(&merkle_tree, &buf.request,
+				      &buf.response),
+		    EC_SUCCESS);
+
+	TEST_ASSERT(buf.response.header.version == PW_PROTOCOL_VERSION);
+	TEST_ASSERT(buf.response.header.data_length ==
+		    sizeof(struct pw_response_reset_auth_t));
+	TEST_RET_EQ(buf.response.header.result_code, EC_SUCCESS);
+
+	TEST_ASSERT_ARRAY_EQ(buf.response.header.root, EMPTY_TREE.root,
+			     sizeof(EMPTY_TREE.root));
+
+	TEST_ASSERT_ARRAY_EQ(
+			buf.response.data.log_replay.wrapped_leaf_data.hmac,
+			OTHER_HMAC, sizeof(OTHER_HMAC));
+	TEST_ASSERT_ARRAY_EQ(buf.response.data.log_replay.wrapped_leaf_data.iv,
+			     DEFAULT_IV, sizeof(DEFAULT_IV));
+	DCRYPTO_aes_ctr((uint8_t *)&sec, EMPTY_TREE.wrap_key,
+			sizeof(EMPTY_TREE.wrap_key) * 8, DEFAULT_IV,
+			buf.response.data.log_replay.wrapped_leaf_data
+					.cipher_text,
+			sizeof(sec));
+	TEST_ASSERT(pub->label.v == DEFAULT_LEAF.pub.label.v);
+	TEST_ASSERT_ARRAY_EQ(
+			(const uint8_t *)&pub->delay_schedule,
+			(const uint8_t *)&DEFAULT_LEAF.pub.delay_schedule,
+			sizeof(DEFAULT_LEAF.pub.delay_schedule));
+	TEST_ASSERT_ARRAY_EQ((uint8_t *)&sec, (uint8_t *)&DEFAULT_LEAF.sec,
+			     sizeof(DEFAULT_LEAF.sec));
+	TEST_ASSERT(pub->attempt_count.v == 16);
+	TEST_ASSERT(pub->timestamp.boot_count == 7);
+	TEST_ASSERT(pub->timestamp.timer_value == 99);
 	return EC_SUCCESS;
 }
 
@@ -1556,6 +2266,7 @@ void run_test(void)
 	RUN_TEST(handle_reset_tree_invalid_length);
 	RUN_TEST(handle_reset_tree_bits_per_level_invalid);
 	RUN_TEST(handle_reset_tree_height_invalid);
+	RUN_TEST(handle_reset_tree_nv_fail);
 	RUN_TEST(handle_reset_tree_success);
 
 	/* Test insert leaf. */
@@ -1564,12 +2275,14 @@ void run_test(void)
 	RUN_TEST(handle_insert_leaf_delay_schedule_invalid);
 	RUN_TEST(handle_insert_leaf_path_auth_failed);
 	RUN_TEST(handle_insert_leaf_crypto_failure);
+	RUN_TEST(handle_insert_leaf_nv_fail);
 	RUN_TEST(handle_insert_leaf_success);
 
 	/* Test remove leaf. */
 	RUN_TEST(handle_remove_leaf_invalid_length);
 	RUN_TEST(handle_remove_leaf_label_invalid);
 	RUN_TEST(handle_remove_leaf_path_auth_failed);
+	RUN_TEST(handle_remove_leaf_nv_fail);
 	RUN_TEST(handle_remove_leaf_success);
 
 	/* Test try auth. */
@@ -1579,6 +2292,7 @@ void run_test(void)
 	RUN_TEST(handle_try_auth_hmac_auth_failed);
 	RUN_TEST(handle_try_auth_crypto_failure);
 	RUN_TEST(handle_try_auth_rate_limit_reached);
+	RUN_TEST(handle_try_auth_nv_fail);
 	RUN_TEST(handle_try_auth_lowent_auth_failed);
 	RUN_TEST(handle_try_auth_success);
 
@@ -1589,7 +2303,24 @@ void run_test(void)
 	RUN_TEST(handle_reset_auth_hmac_auth_failed);
 	RUN_TEST(handle_reset_auth_crypto_failure);
 	RUN_TEST(handle_reset_auth_reset_auth_failed);
+	RUN_TEST(handle_reset_auth_nv_fail);
 	RUN_TEST(handle_reset_auth_success);
+
+	/* Test get log. */
+	RUN_TEST(handle_get_log_invalid_length);
+	RUN_TEST(handle_get_log_nv_fail);
+	RUN_TEST(handle_get_log_success);
+
+	/* Test log replay. */
+	RUN_TEST(handle_log_replay_invalid_length);
+	RUN_TEST(handle_log_replay_nv_fail);
+	RUN_TEST(handle_log_replay_root_not_found);
+	RUN_TEST(handle_log_replay_type_invalid);
+	RUN_TEST(handle_log_replay_hmac_auth_failed);
+	RUN_TEST(handle_log_replay_crypto_failure);
+	RUN_TEST(handle_log_replay_label_invalid);
+	RUN_TEST(handle_log_replay_path_auth_failed);
+	RUN_TEST(handle_log_replay_success);
 
 	test_print_result();
 }
