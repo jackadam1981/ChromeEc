@@ -16,6 +16,24 @@
       "revId": "5dc1107f41c76beadef70602531e80e9e0321009",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "519d3717_1e2880ae",
+        "filename": "baseboard/octopus/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-02-28T02:21:41Z",
+      "side": 1,
+      "message": "We will have to add support for compiling files from baseboard/${BASEBOARD_NAME} as well as add baseboard/${BASEBOARD_NAME}/ to the includes path. Maybe it is better to push those Makefile changes as a separate CL?",
+      "parentUuid": "2f3c1962_d0ab1a85",
+      "revId": "5dc1107f41c76beadef70602531e80e9e0321009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
