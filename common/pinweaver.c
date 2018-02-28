@@ -323,6 +323,80 @@ static int test_rate_limit(struct leaf_data_t *leaf_data,
 }
 
 /******************************************************************************/
+/* Logging implementations.
+ */
+
+static int prep_log(struct pw_log_storage_t *log)
+{
+	int ret;
+
+	ret = load_log_data(log);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	memmove(&log->entries[1], &log->entries[0],
+		sizeof(log->entries[0]) * (PW_LOG_ENTRY_COUNT - 1));
+	memset(&log->entries[0], 0, sizeof(log->entries[0]));
+	return EC_SUCCESS;
+}
+
+int log_insert_leaf(struct label_t label, const uint8_t root[PW_HASH_SIZE],
+		    const uint8_t hmac[PW_HASH_SIZE])
+{
+	int ret;
+	struct pw_log_storage_t log;
+	struct pw_get_log_entry_t *entry = log.entries;
+
+	ret = prep_log(&log);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	entry->type.v = PW_MTQ_INSERT_LEAF;
+	entry->label.v = label.v;
+	memcpy(entry->root, root, sizeof(entry->root));
+	memcpy(entry->leaf_hmac, hmac, sizeof(entry->leaf_hmac));
+
+	return store_log_data(&log);
+}
+
+int log_remove_leaf(struct label_t label, const uint8_t root[PW_HASH_SIZE])
+{
+	int ret;
+	struct pw_log_storage_t log;
+	struct pw_get_log_entry_t *entry = log.entries;
+
+	ret = prep_log(&log);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	entry->type.v = PW_MTQ_REMOVE_LEAF;
+	entry->label.v = label.v;
+	memcpy(entry->root, root, sizeof(entry->root));
+
+	return store_log_data(&log);
+}
+
+int log_auth(struct label_t label, const uint8_t root[PW_HASH_SIZE], int code,
+	     struct pw_timestamp_t timestamp)
+{
+	int ret;
+	struct pw_log_storage_t log;
+	struct pw_get_log_entry_t *entry = log.entries;
+
+	ret = prep_log(&log);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	entry->type.v = PW_MTQ_TRY_AUTH;
+	entry->label.v = label.v;
+	memcpy(entry->root, root, sizeof(entry->root));
+	entry->return_code = code;
+	memcpy(&entry->timestamp, &timestamp, sizeof(entry->timestamp));
+
+	return store_log_data(&log);
+}
+
+/******************************************************************************/
 /* Per-request-type handler implementations.
  */
 
@@ -340,8 +414,15 @@ static int pw_handle_reset_tree(struct merkle_tree_t *merkle_tree,
 	ret = create_merkle_tree(request->bits_per_level, request->height,
 				 merkle_tree);
 
-	if (ret == EC_SUCCESS)
-		memcpy(new_root, merkle_tree->root, sizeof(merkle_tree->root));
+	if (ret == EC_SUCCESS) {
+		ret = store_merkle_tree(merkle_tree);
+		if (ret == EC_SUCCESS)
+			memcpy(new_root, merkle_tree->root,
+			       sizeof(merkle_tree->root));
+		else
+			memcpy(merkle_tree->root, new_root,
+			       sizeof(merkle_tree->root));
+	}
 	return ret;
 }
 
@@ -396,6 +477,13 @@ static int pw_handle_insert_leaf(struct merkle_tree_t *merkle_tree,
 			  request->path_hashes, wrapped_leaf_data.hmac,
 			  new_root);
 
+	ret = log_insert_leaf(request->label, new_root,
+			      wrapped_leaf_data.hmac);
+	if (ret != EC_SUCCESS) {
+		memcpy(new_root, merkle_tree->root, sizeof(merkle_tree->root));
+		return ret;
+	}
+
 	memcpy(&response->wrapped_leaf_data, &wrapped_leaf_data,
 	       sizeof(wrapped_leaf_data));
 
@@ -425,6 +513,12 @@ static int pw_handle_remove_leaf(struct merkle_tree_t *merkle_tree,
 	compute_root_hash(merkle_tree, request->leaf_location,
 			  request->path_hashes, empty_hash, new_root);
 
+	ret = log_remove_leaf(request->leaf_location, new_root);
+	if (ret != EC_SUCCESS) {
+		memcpy(new_root, merkle_tree->root, sizeof(merkle_tree->root));
+		return ret;
+	}
+
 	return ret;
 }
 
@@ -434,6 +528,7 @@ static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
 			      uint8_t new_root[PW_HASH_SIZE])
 {
 	int ret = EC_SUCCESS;
+	int ret2;
 	struct attempt_count_t dummy_ac;
 	struct leaf_data_t leaf_data = {};
 	struct wrapped_leaf_data_t wrapped_leaf_data;
@@ -513,10 +608,15 @@ static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
 			  request->path_hashes, wrapped_leaf_data.hmac,
 			  new_root);
 
+	ret2 = log_auth(request->leaf_location, new_root, ret,
+		       leaf_data.pub.timestamp);
+	if (ret2 != EC_SUCCESS) {
+		memcpy(new_root, merkle_tree->root, sizeof(merkle_tree->root));
+		return ret2;
+	}
+
 	memcpy(&response->wrapped_leaf_data, &wrapped_leaf_data,
 	       sizeof(wrapped_leaf_data));
-
-	/* TODO: Write to log here to prevent a timing side channel. */
 
 	if (ret == EC_SUCCESS)
 		memcpy(&response->high_entropy_secret,
@@ -589,10 +689,130 @@ static int pw_handle_reset_auth(struct merkle_tree_t *merkle_tree,
 			  request->path_hashes, wrapped_leaf_data.hmac,
 			  new_root);
 
+	ret = log_auth(request->leaf_location, new_root,
+		       ret, leaf_data.pub.timestamp);
+	if (ret != EC_SUCCESS) {
+		memcpy(new_root, merkle_tree->root, sizeof(merkle_tree->root));
+		return ret;
+	}
+
 	memcpy(&response->wrapped_leaf_data, &wrapped_leaf_data,
 	       sizeof(wrapped_leaf_data));
 
 	return ret;
+}
+
+static int pw_handle_get_log(const struct merkle_tree_t *merkle_tree,
+			     const struct pw_request_get_log_t *request,
+			     struct pw_get_log_entry_t response[],
+			     uint16_t *log_size)
+{
+	int ret;
+	size_t x;
+	struct pw_log_storage_t log;
+
+	ret = validate_tree(merkle_tree);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = load_log_data(&log);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* Find the relevant log entry. */
+	for (x = 0; memcmp(request->root, log.entries[x].root,
+			   sizeof(request->root)); ++x) {
+		if (x >= PW_LOG_ENTRY_COUNT ||
+		    log.entries[x].type.v == PW_MT_INVALID) {
+			if (x == 0)
+				return EC_SUCCESS;
+			--x;
+			break;
+		}
+	}
+
+	/* Copy the entries in reverse order. */
+	while (1) {
+		memcpy(&response[x], &log.entries[x], sizeof(log.entries[x]));
+		*log_size += sizeof(log.entries[x]);
+		if (x == 0)
+			break;
+		--x;
+	}
+
+	return EC_SUCCESS;
+}
+
+static int pw_handle_log_replay(const struct merkle_tree_t *merkle_tree,
+				const struct pw_request_log_replay_t *request,
+				struct pw_response_log_replay_t *response)
+{
+	int ret;
+	size_t x;
+	struct pw_log_storage_t log;
+	struct wrapped_leaf_data_t wrapped_leaf_data;
+	struct leaf_data_t leaf_data;
+	uint8_t hmac[PW_HASH_SIZE];
+	uint8_t root[PW_HASH_SIZE];
+
+	ret = validate_tree(merkle_tree);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = load_log_data(&log);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	/* Find the relevant log entry. */
+	for (x = 0; memcmp(request->log_root, log.entries[x].root,
+			   sizeof(request->log_root)); ++x) {
+		if (x >= PW_LOG_ENTRY_COUNT ||
+		    log.entries[x].type.v == PW_MT_INVALID)
+			return PW_ERR_ROOT_NOT_FOUND;
+	}
+
+	/* The other message types don't need to be handled by Cr50. */
+	if (log.entries[x].type.v != PW_MTQ_TRY_AUTH)
+		return PW_ERR_TYPE_INVALID;
+
+	compute_hmac(merkle_tree, &request->wrapped_leaf_data, hmac);
+	if (safe_memcmp(hmac, request->wrapped_leaf_data.hmac, sizeof(hmac)))
+		return PW_ERR_HMAC_AUTH_FAILED;
+
+	ret = decrypt_leaf_data(merkle_tree, &request->wrapped_leaf_data,
+				&leaf_data);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	if (leaf_data.pub.label.v != log.entries[x].label.v)
+		return PW_ERR_LABEL_INVALID;
+
+	/* Update the metadata to match the log. */
+	if (log.entries[x].return_code == EC_SUCCESS)
+		leaf_data.pub.attempt_count.v = 0;
+	else
+		++leaf_data.pub.attempt_count.v;
+	leaf_data.pub.timestamp.boot_count =
+			log.entries[x].timestamp.boot_count;
+	leaf_data.pub.timestamp.timer_value =
+			log.entries[x].timestamp.timer_value;
+
+	ret = encrypt_leaf_data(merkle_tree, &leaf_data, &wrapped_leaf_data);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	compute_hmac(merkle_tree, &wrapped_leaf_data, wrapped_leaf_data.hmac);
+
+	compute_root_hash(merkle_tree, leaf_data.pub.label,
+			  request->path_hashes, wrapped_leaf_data.hmac,
+			  root);
+	if (memcmp(root, log.entries[x].root, sizeof(root)))
+		return PW_ERR_PATH_AUTH_FAILED;
+
+	memcpy(&response->wrapped_leaf_data, &wrapped_leaf_data,
+	       sizeof(wrapped_leaf_data));
+
+	return EC_SUCCESS;
 }
 
 struct merkle_tree_t pw_merkle_tree;
@@ -617,8 +837,6 @@ static enum vendor_cmd_rc pw_vendor_specific_command(enum vendor_cmd_cc code,
 
 	ret = pw_handle_request(&pw_merkle_tree, request, response);
 
-	/* TODO(allenwebb) store merkle_tree log update to flash here. */
-
 	*response_size = response->header.data_length +
 			 sizeof(response->header);
 
@@ -629,7 +847,8 @@ DECLARE_VENDOR_COMMAND(VENDOR_CC_PINWEAVER,
 
 static void pinweaver_init(void)
 {
-	/* TODO(allenwebb) load merkle_tree from flash here. */
+	pinweaver_storage_init();
+	load_merkle_tree(&pw_merkle_tree);
 }
 DECLARE_HOOK(HOOK_INIT, pinweaver_init, HOOK_PRIO_LAST);
 
@@ -784,6 +1003,35 @@ int pw_handle_request(struct merkle_tree_t *merkle_tree,
 			header.type.v = PW_MTA_RESET_AUTH;
 			header.data_length =
 					sizeof(response->data.reset_auth);
+		}
+		break;
+	case PW_MTQ_GET_LOG:
+		if (request->header.data_length !=
+		    sizeof(request->data.get_log)) {
+			ret = PW_ERR_LENGTH_INVALID;
+			break;
+		}
+		ret = pw_handle_get_log(merkle_tree,
+					&request->data.get_log,
+					(void *)&response->data,
+					&header.data_length);
+		if (ret == EC_SUCCESS)
+			header.type.v = PW_MTA_GET_LOG;
+		break;
+	case PW_MTQ_LOG_REPLAY:
+		if (request->header.data_length !=
+		    sizeof(request->data.log_replay) +
+		    get_path_auxilary_hash_count(merkle_tree)) {
+			ret = PW_ERR_LENGTH_INVALID;
+			break;
+		}
+		ret = pw_handle_log_replay(merkle_tree,
+					   &request->data.log_replay,
+					   &response->data.log_replay);
+		if (ret == EC_SUCCESS) {
+			header.type.v = PW_MTA_LOG_REPLAY;
+			header.data_length =
+					sizeof(response->data.log_replay);
 		}
 		break;
 	default:
