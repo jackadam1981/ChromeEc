@@ -22,6 +22,30 @@
       "revId": "c3deceae6aefd783aa1f1686c446ff6d2f228a95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3461d401_8d7e4da0",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-28T00:24:02Z",
+      "side": 1,
+      "message": "Yes, it works. (I read config reg after booting up and confirmed Tsel bit is set.) \u0027FSTAT.DNR bit !\u003d 0\u0027 seems to mean some output regs in max17055 are not settled yet. But writing config reg is fine.\n\nTh point of setting Config.Tsel bit early is to get a reliable battery detection result sooner.",
+      "parentUuid": "1beb33ee_07d6b8e8",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 53
+      },
+      "revId": "c3deceae6aefd783aa1f1686c446ff6d2f228a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
