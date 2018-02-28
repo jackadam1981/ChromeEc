@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b1db6b8_b6aa3c95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-28T15:15:03Z",
+      "side": 1,
+      "message": "yes it\u0027s awful too, maybe you want to do a special path for the sensor event.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "14231a1d20704dac5694b1bb491cc06a665642b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da70d23a_158c9862",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-28T15:15:03Z",
+      "side": 1,
+      "message": "nit: I thought we were using kernel coding style which says no { here ?",
+      "range": {
+        "startLine": 45,
+        "startChar": 37,
+        "endLine": 45,
+        "endChar": 38
+      },
+      "revId": "14231a1d20704dac5694b1bb491cc06a665642b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c30a93b_8413d423",
+        "filename": "common/mkbp_event.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-28T15:15:03Z",
+      "side": 1,
+      "message": "In the unlikely case, you don\u0027t know this yet: I hate people using this (actually in the past it was not even an API) as this is a slippery slope:\ne.g. now if you call this function with interrupt disabled, it will re-enable them too early (and we are unlikely to audit all the current and future indirect usage).",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 20
+      },
+      "revId": "14231a1d20704dac5694b1bb491cc06a665642b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e9c79b9_bf089a08",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-02-28T15:15:03Z",
+      "side": 1,
+      "message": "you care about the last host time whatever it was ? or the last one for the sensor stuff ?",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 45
+      },
+      "revId": "14231a1d20704dac5694b1bb491cc06a665642b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
