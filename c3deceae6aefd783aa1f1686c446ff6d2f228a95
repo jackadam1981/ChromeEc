@@ -46,6 +46,30 @@
       "revId": "c3deceae6aefd783aa1f1686c446ff6d2f228a95",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1035fb58_1b83b621",
+        "filename": "driver/battery/max17055.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-02-28T00:26:19Z",
+      "side": 1,
+      "message": "Cool, as long as REG_CONFIG isn\u0027t one of the registers that may not be settled.",
+      "parentUuid": "3461d401_8d7e4da0",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 376,
+        "endChar": 53
+      },
+      "revId": "c3deceae6aefd783aa1f1686c446ff6d2f228a95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
