@@ -46,6 +46,30 @@
       "revId": "a4175c650eaeb66a7537d25358744b5a36292416",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f400cc9_890566a9",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-02-28T02:59:58Z",
+      "side": 1,
+      "message": "Indeed. During developing this CL, I only tested one SUNUN 4-pins pwm-type fan on my side. (Sorry, I only can borrow one pwm-type fan for testing.)\n\nBack to this CL itself, I also think \u0027continue\u0027 is better. Or the other fan won\u0027t operate normally if the first fan\u0027s rpm mode is not enabled. Thanks.",
+      "parentUuid": "d477f833_5e660d0b",
+      "range": {
+        "startLine": 302,
+        "startChar": 3,
+        "endLine": 302,
+        "endChar": 9
+      },
+      "revId": "a4175c650eaeb66a7537d25358744b5a36292416",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
