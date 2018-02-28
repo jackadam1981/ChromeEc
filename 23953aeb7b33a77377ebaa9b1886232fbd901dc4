@@ -22,6 +22,30 @@
       "revId": "23953aeb7b33a77377ebaa9b1886232fbd901dc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "313324ee_31f11d85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-02-28T23:18:03Z",
+      "side": 1,
+      "message": "This is true. Currently all my unit tests run on the host. If you want me to write an actual test for this, kindly point me to where the tests are that run on Haven hardware / where is a good place for testing something like this.",
+      "parentUuid": "f0c8cf84_3ae966ff",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "23953aeb7b33a77377ebaa9b1886232fbd901dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
