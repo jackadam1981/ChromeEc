@@ -15,6 +15,7 @@
 #include "link_defs.h"
 #include "nvmem.h"
 #include "printf.h"
+#include "pinweaver.h"
 #include "signed_header.h"
 #include "sps.h"
 #include "system.h"
@@ -615,6 +616,10 @@ static void tpm_init(void)
 
 		_plat__SetNvAvail();
 	}
+
+#ifdef CONFIG_PINWEAVER
+	pinweaver_init();
+#endif
 }
 
 size_t tpm_get_burst_size(void)
