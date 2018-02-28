@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79fcca5a_cd6af5ec",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-28T00:22:08Z",
+      "side": 1,
+      "message": "Use proper comment,\n/*\n * ...\n\n fully describe function.",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "842b3bfc_4a4e73a1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-28T00:22:08Z",
+      "side": 1,
+      "message": "move this functio0n line 182, remove line 153.",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "938d5466_95871b33",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-28T00:22:08Z",
+      "side": 1,
+      "message": "remove fifo_flush variable and associated code, all data get timestamps.",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e129530_0ef979fb",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-28T00:22:08Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e68bbe8_6f1d4742",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-28T00:22:08Z",
+      "side": 1,
+      "message": "have you consider 2 BMI160 in the system :-). Instead override last_collection in motion_sensor_t, only used in forced mode.",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af8c2445_8ec563cb",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-28T00:22:08Z",
+      "side": 1,
+      "message": "same line",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cbef5c4_44aee005",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-02-28T00:22:08Z",
+      "side": 1,
+      "message": "80 columns.",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
