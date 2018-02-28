@@ -18,27 +18,26 @@
 #define STM32_HSI_CLOCK 64000000
 /*
  * PLL1 configuration:
- * CPU freq = VCO / (DIVP + 1) = HSI / DIVM * DIVN / (DIVP + 1)
- *          = 64 * 4 * 50 / (4 + 1)
- *          = 160 Mhz
+ * CPU freq = VCO / (DIVP + 1) = HSI / DIVM * DIVN / DIVP
+ *          = 64 / 4 * 50 / 6
+ *          = 133 Mhz
  */
 #if !defined(PLL1_DIVM) && !defined(PLL1_DIVN) && !defined(PLL1_DIVP)
 #define PLL1_DIVM 4
 #define PLL1_DIVN 50
-#define PLL1_DIVP 4
+#define PLL1_DIVP 6
 #endif
-#define PLL1_FREQ (STM32_HSI_CLOCK / PLL1_DIVM * PLL1_DIVN / (PLL1_DIVP+1))
+#define PLL1_FREQ (STM32_HSI_CLOCK / PLL1_DIVM * PLL1_DIVN / PLL1_DIVP)
 
 enum clock_osc {
-	OSC_INIT = 0,	/* Uninitialized */
-	OSC_HSI,	/* High-speed internal oscillator */
+	OSC_HSI = 0,	/* High-speed internal oscillator */
 	OSC_CSI,	/* Multi-speed internal oscillator: NOT IMPLEMENTED */
 	OSC_HSE,	/* High-speed external oscillator: NOT IMPLEMENTED */
 	OSC_PLL,	/* PLL */
 };
 
 static int freq = STM32_HSI_CLOCK;
-static int current_osc;
+static int current_osc = OSC_HSI;
 
 int clock_get_freq(void)
 {
@@ -118,8 +117,7 @@ static void clock_set_osc(enum clock_osc osc)
 	if (osc == current_osc)
 		return;
 
-	if (current_osc != OSC_INIT)
-		hook_notify(HOOK_PRE_FREQ_CHANGE);
+	hook_notify(HOOK_PRE_FREQ_CHANGE);
 
 	switch (osc) {
 	case OSC_HSI:
@@ -157,13 +155,8 @@ static void clock_set_osc(enum clock_osc osc)
 		break;
 	}
 
-	/* Notify modules of frequency change unless we're initializing */
-	if (current_osc != OSC_INIT) {
-		current_osc = osc;
-		hook_notify(HOOK_FREQ_CHANGE);
-	} else {
-		current_osc = osc;
-	}
+	current_osc = osc;
+	hook_notify(HOOK_FREQ_CHANGE);
 }
 
 void clock_enable_module(enum module_id module, int enable)
