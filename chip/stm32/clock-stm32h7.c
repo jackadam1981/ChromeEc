@@ -19,13 +19,15 @@
 /*
  * PLL1 configuration:
  * CPU freq = VCO / (DIVP + 1) = HSI / DIVM * DIVN / DIVP
- *          = 64 / 4 * 50 / 6
- *          = 133 Mhz
+ *          = 64 / 4 * 50 / 2
+ *          = 400 Mhz
+ * System clock = 400 Mhz
+ *  HPRE = /2  => AHB/Timer clock = 200 Mhz
  */
 #if !defined(PLL1_DIVM) && !defined(PLL1_DIVN) && !defined(PLL1_DIVP)
 #define PLL1_DIVM 4
 #define PLL1_DIVN 50
-#define PLL1_DIVP 6
+#define PLL1_DIVP 2
 #endif
 #define PLL1_FREQ (STM32_HSI_CLOCK / PLL1_DIVM * PLL1_DIVN / PLL1_DIVP)
 
@@ -139,15 +141,16 @@ static void clock_set_osc(enum clock_osc osc)
 				| STM32_RCC_PLLDIV_DIVN(PLL1_DIVN);
 		/* turn on PLL1 and wait that it's ready */
 		clock_enable_osc(OSC_PLL);
-		freq = PLL1_FREQ;
 
-		/* Adjust flash latency */
-		val = STM32_FLASH_ACR_WRHIGHFREQ_185MHZ |
+		/* Adjust flash latency: ACLK = 200 Mhz */
+		val = STM32_FLASH_ACR_WRHIGHFREQ_285MHZ |
 				(2 << STM32_FLASH_ACR_LATENCY_SHIFT);
 		STM32_FLASH_ACR(0) = val;
 		while (val != STM32_FLASH_ACR(0))
 			;
 
+		STM32_RCC_D1CFGR = 8; /* HPRE = /2 */
+		freq = PLL1_FREQ / 2;
 		/* Switch to PLL */
 		clock_switch_osc(OSC_PLL);
 		break;
