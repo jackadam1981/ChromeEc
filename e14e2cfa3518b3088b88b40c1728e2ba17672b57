@@ -22,6 +22,30 @@
       "revId": "e14e2cfa3518b3088b88b40c1728e2ba17672b57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f894cb_8925c093",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2681,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-02-28T21:30:48Z",
+      "side": 1,
+      "message": "We don\u0027t have GPIO_USB_C0_5V_EN to indicate OTG is enabled. We can probably find an unused floating GPIO pin as GPIO_USB_C0_5V_EN and turn it on when OTG is enabled. Then we don\u0027t need to introduce a new config here - the whole purpose is to work around usb_charger.c. What do you think?",
+      "parentUuid": "d7d3841b_485c3913",
+      "range": {
+        "startLine": 2676,
+        "startChar": 0,
+        "endLine": 2681,
+        "endChar": 0
+      },
+      "revId": "e14e2cfa3518b3088b88b40c1728e2ba17672b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
