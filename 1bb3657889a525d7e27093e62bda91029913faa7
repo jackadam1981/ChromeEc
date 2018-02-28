@@ -94,6 +94,30 @@
       "revId": "1bb3657889a525d7e27093e62bda91029913faa7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2135083d_9efe6c91",
+        "filename": "board/glkrvp/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-02-28T00:11:50Z",
+      "side": 1,
+      "message": "Let me add battery present check, else the battery flags may be invalid.",
+      "parentUuid": "7359cd06_d7b56a6b",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 2
+      },
+      "revId": "1bb3657889a525d7e27093e62bda91029913faa7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
