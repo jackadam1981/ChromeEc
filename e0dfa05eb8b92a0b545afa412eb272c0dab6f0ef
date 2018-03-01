@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5f7defb_5a01f70c",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-01T16:38:02Z",
+      "side": 1,
+      "message": "Isn\u0027t this wrong? With the DUT held vertically facing the user, I read -1g.",
+      "range": {
+        "startLine": 213,
+        "startChar": 17,
+        "endLine": 213,
+        "endChar": 21
+      },
+      "revId": "e0dfa05eb8b92a0b545afa412eb272c0dab6f0ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
