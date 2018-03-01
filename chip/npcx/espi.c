@@ -597,6 +597,13 @@ void espi_interrupt(void)
 }
 DECLARE_IRQ(NPCX_IRQ_ESPI, espi_interrupt, 3);
 
+static void espi_configure_hw_wire(void)
+{
+	uint32_t val = NPCX_VWEVSM(2);
+	val |= (1 << 24) | (1 << 25) | (1 << 26);
+	NPCX_VWEVSM(2) = val;
+}
+
 /*****************************************************************************/
 /* eSPI Initialization functions */
 void espi_init(void)
@@ -625,6 +632,9 @@ void espi_init(void)
 	/* Configure MIWU for eSPI VW */
 	for (i = 0; i < ARRAY_SIZE(espi_vw_int_list); i++)
 		espi_enable_vw_int(&espi_vw_int_list[i]);
+
+	/* Configure HW_WIRE for eSPI VW */
+	espi_configure_hw_wire();
 }
 
 static int command_espi(int argc, char **argv)
