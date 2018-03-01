@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e63e98a_f47fd266",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-01T06:59:22Z",
+      "side": 1,
+      "message": "see below, maybe CONFIG_USB_CHARGER?",
+      "range": {
+        "startLine": 435,
+        "startChar": 55,
+        "endLine": 435,
+        "endChar": 71
+      },
+      "revId": "313e0b074b6b56c30762b65946d59b372fa8cd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ede6d35_880cce9d",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-01T06:59:22Z",
+      "side": 1,
+      "message": "Not very familiar with this, but tcpci.c uses CONFIG_USB_CHARGER to determine whether to call usb_charger_vbus_change.",
+      "revId": "313e0b074b6b56c30762b65946d59b372fa8cd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7912202b_bc788c54",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-01T06:59:22Z",
+      "side": 1,
+      "message": "Do we really need this branch, if we never use it?",
+      "range": {
+        "startLine": 896,
+        "startChar": 0,
+        "endLine": 897,
+        "endChar": 21
+      },
+      "revId": "313e0b074b6b56c30762b65946d59b372fa8cd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
