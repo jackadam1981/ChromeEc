@@ -142,7 +142,7 @@ int charger_profile_override(struct charge_state_data *curr)
 		TEMP_ZONE_COUNT
 	} temp_zone;
 
-	static const struct {
+	static struct {
 		int temp_min; /* 0.1 deg C */
 		int temp_max; /* 0.1 deg C */
 		int desired_current; /* mA */
@@ -167,6 +167,10 @@ int charger_profile_override(struct charge_state_data *curr)
 	BUILD_ASSERT(ARRAY_SIZE(temp_zones) == BATTERY_COUNT);
 
 	static int charge_phase = 1;
+
+	/* Allow 4A charging for Simplo battery on rev5+ boards */
+	if (board_get_version() >= 5)
+		temp_zones[BATTERY_SIMPLO][TEMP_ZONE_1].desired_current = 4000;
 
 	if (batt_id >= BATTERY_COUNT)
 		batt_id = gpio_get_level(GPIO_BATT_ID);
