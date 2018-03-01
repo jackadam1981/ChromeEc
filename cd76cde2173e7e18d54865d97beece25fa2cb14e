@@ -22,6 +22,30 @@
       "revId": "cd76cde2173e7e18d54865d97beece25fa2cb14e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81b4a802_4746fd41",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-01T16:57:48Z",
+      "side": 0,
+      "message": "I believe this is a mistake. Patchset 2 looks correct. Good catch.",
+      "parentUuid": "4cc1010c_7d1e3f5a",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 20
+      },
+      "revId": "cd76cde2173e7e18d54865d97beece25fa2cb14e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
