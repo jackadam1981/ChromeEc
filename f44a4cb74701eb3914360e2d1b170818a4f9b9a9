@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5b56fc3_c818e157",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2018-03-01T01:40:23Z",
+      "side": 1,
+      "message": "Do we need the ADC for anything if the board version is unknown?",
+      "revId": "f44a4cb74701eb3914360e2d1b170818a4f9b9a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
