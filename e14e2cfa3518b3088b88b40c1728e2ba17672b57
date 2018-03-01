@@ -2,6 +2,80 @@
   "comments": [
     {
       "key": {
+        "uuid": "1356466b_f64059eb",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-01T03:48:48Z",
+      "side": 1,
+      "message": "Why not #elif here too?",
+      "revId": "e14e2cfa3518b3088b88b40c1728e2ba17672b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "307cd2ec_4423c269",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-01T03:48:48Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 393,
+        "startChar": 8,
+        "endLine": 393,
+        "endChar": 12
+      },
+      "revId": "e14e2cfa3518b3088b88b40c1728e2ba17672b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4bfe715_4c7add0b",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-01T03:48:48Z",
+      "side": 1,
+      "message": "Maybe this is a little more readable:\n\nint val;\n\nif (rt946x_read8(RT946X_REG_CHGCTRL1, \u0026val))\n   return 0;\n\nreturn !!(val \u0026 RT946X_MASK_OPA_MODE);",
+      "revId": "e14e2cfa3518b3088b88b40c1728e2ba17672b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d721c9_ab16caa4",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2678,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-01T03:48:48Z",
+      "side": 1,
+      "message": "nit: Fit to 80 chars (I guess this can fit on one line).\n\nAlso, I\u0027m not sure if this really describes what this config option does, there is no \"switching\" here.\n\nMaybe something around the lines of \"Ask charger if VBUS is enabled on a source port, instead of using GPIO\", or something around those lines",
+      "revId": "e14e2cfa3518b3088b88b40c1728e2ba17672b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7d3841b_485c3913",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -37,6 +111,30 @@
       "side": 1,
       "message": "We don\u0027t have GPIO_USB_C0_5V_EN to indicate OTG is enabled. We can probably find an unused floating GPIO pin as GPIO_USB_C0_5V_EN and turn it on when OTG is enabled. Then we don\u0027t need to introduce a new config here - the whole purpose is to work around usb_charger.c. What do you think?",
       "parentUuid": "d7d3841b_485c3913",
+      "range": {
+        "startLine": 2676,
+        "startChar": 0,
+        "endLine": 2681,
+        "endChar": 0
+      },
+      "revId": "e14e2cfa3518b3088b88b40c1728e2ba17672b57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "606af43e_8ad2b352",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2681,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-01T03:48:48Z",
+      "side": 1,
+      "message": "CONFIG_CHARGER_OTG is orthogonal to this, actually.\n\nlux uses it to provide power to base (while the USB-C ports still use the usual GPIOs), wand in the reverse direction. Here we provide power on the single USB port.\n\nSo I think it\u0027s ok to have a separate config option.",
+      "parentUuid": "76f894cb_8925c093",
       "range": {
         "startLine": 2676,
         "startChar": 0,
