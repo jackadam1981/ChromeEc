@@ -1621,9 +1621,10 @@ enum ITIM16_MODULE_T {
 #define VWEVSM_DIRTY(d)              ((d<<16) & 0x00010000)
 #define VWEVSM_PLTRST_EN(p)          ((p<<17) & 0x00020000)
 #define VWEVSM_CDRST_EN(c)           ((c<<19) & 0x00080000)
-#define VWEVSM_FIELD(i, n, v, p, c)  (VWEVSM_INX(i) | VWEVSM_INX_EN(n) | \
+#define VWEVSM_HW_WIRE(h)            ((h<<24) & 0x0F000000)
+#define VWEVSM_FIELD(i, n, v, p, c, h)  (VWEVSM_INX(i) | VWEVSM_INX_EN(n) | \
 				VWEVSM_VALID_N(v) | VWEVSM_PLTRST_EN(p) |\
-				VWEVSM_CDRST_EN(c))
+				VWEVSM_CDRST_EN(c) | VWEVSM_HW_WIRE(h))
 #define VWEVSM_IDX_GET(reg)          (((reg & 0x00007F00)>>8))
 
 /* define macro to handle SMI/SCI Virtual Wire */
