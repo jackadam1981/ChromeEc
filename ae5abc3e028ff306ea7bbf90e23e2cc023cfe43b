@@ -45,6 +45,30 @@
       "revId": "ae5abc3e028ff306ea7bbf90e23e2cc023cfe43b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e1d111a_5fd056d6",
+        "filename": "board/nami/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-01T11:26:46Z",
+      "side": 1,
+      "message": "Yes, we have been verified system in S5 then to do Lid open, it is pass.",
+      "parentUuid": "098e9dc6_99496b8c",
+      "range": {
+        "startLine": 713,
+        "startChar": 2,
+        "endLine": 713,
+        "endChar": 16
+      },
+      "revId": "ae5abc3e028ff306ea7bbf90e23e2cc023cfe43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
