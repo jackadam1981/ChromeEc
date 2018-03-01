@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e16d1e92_09552a16",
+        "filename": "board/nami/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-01T17:05:11Z",
+      "side": 1,
+      "message": "This should be TEMP_SENSOR_TYPE_CPU.",
+      "range": {
+        "startLine": 264,
+        "startChar": 20,
+        "endLine": 264,
+        "endChar": 42
+      },
+      "revId": "298b332e875469f4e00a24cd339e3fc08b5daecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
