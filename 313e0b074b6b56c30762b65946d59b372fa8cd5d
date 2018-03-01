@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "8f000b97_1b4d66af",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-03-01T20:15:13Z",
+      "side": 1,
+      "message": "If you have HAS_TASK_USB_CHG, you must have CONFIG_USB_CHARGER. So they are pretty much the same thing. But we can use CONFIG_USB_CHARGER here to align with tcpci.c.",
+      "parentUuid": "0ede6d35_880cce9d",
+      "revId": "313e0b074b6b56c30762b65946d59b372fa8cd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7912202b_bc788c54",
         "filename": "driver/tcpm/fusb302.c",
         "patchSetId": 3
@@ -53,6 +71,30 @@
       "writtenOn": "2018-03-01T06:59:22Z",
       "side": 1,
       "message": "Do we really need this branch, if we never use it?",
+      "range": {
+        "startLine": 896,
+        "startChar": 0,
+        "endLine": 897,
+        "endChar": 21
+      },
+      "revId": "313e0b074b6b56c30762b65946d59b372fa8cd5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c227e3ec_d9c3f216",
+        "filename": "driver/tcpm/fusb302.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 897,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-03-01T20:15:13Z",
+      "side": 1,
+      "message": "This is probably not related to this patch. This should\u0027ve been added when we added \u0027task_wake(PD_PORT_TO_TASK_ID(port))\u0027 in L899.\n\nIf we don\u0027t call pd_vbus_low() here, the pd flag \u0027PD_FLAGS_VBUS_NEVER_LOW\u0027 won\u0027t be cleared when it needs to be.\n\nSo this is needed even if we don\u0027t take VBUS as a charge supplier (CHARGE_SUPPLIER_VBUS).",
+      "parentUuid": "7912202b_bc788c54",
       "range": {
         "startLine": 896,
         "startChar": 0,
