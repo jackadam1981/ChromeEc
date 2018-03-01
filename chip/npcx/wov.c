@@ -81,7 +81,6 @@ struct wov_pll_ext_div_val {
 	uint8_t pll_ediv_dc; /* Required PLL external divider DC */
 };
 
-
 static const struct wov_pll_ext_div_val pll_ext_div[] = {
 	{0x2F, 0x78}, /* 12 */
 	{0x57, 0x7C}, /* 13 */
@@ -152,7 +151,6 @@ static const uint8_t wov_interupts[] = {
 	12, /* I2S_FIFO_OVRN_IE */
 	13  /* I2S_FIFO_UNDRN_IE */
 };
-
 
 struct wov_ppl_divider {
 	uint16_t pll_frame_len; /* PLL frame length. */
@@ -420,6 +418,22 @@ static enum ec_error_list wov_set_i2s_config_l(void)
 }
 
 /**
+ * wov_i2s_channel1_disable
+ *
+ * @param  disable - disabled flag, 1 means disable
+ *
+ * @return  None
+ */
+static void wov_i2s_channel1_disable(int disable)
+{
+	if (disable)
+		SET_BIT(NPCX_WOV_I2S_CNTL(1), NPCX_WOV_I2S_CNTL1_I2S_CHN1_DIS);
+	else
+		CLEAR_BIT(NPCX_WOV_I2S_CNTL(1),
+			  NPCX_WOV_I2S_CNTL1_I2S_CHN1_DIS);
+}
+
+/**
  * Sets microphone source.
  *
  *		    |	Left	|  Right	|  Mono		|  Stereo
@@ -462,6 +476,7 @@ static enum ec_error_list wov_set_mic_source_l(void)
 		apm_digital_mixer_config(APM_OUT_MIX_NORMAL_INPUT,
 					 APM_OUT_MIX_NO_INPUT);
 		apm_set_vad_input_channel(APM_IN_LEFT);
+		wov_i2s_channel1_disable(1);
 		break;
 
 	case WOV_SRC_RIGHT:
@@ -478,6 +493,7 @@ static enum ec_error_list wov_set_mic_source_l(void)
 		apm_digital_mixer_config(APM_OUT_MIX_CROSS_INPUT,
 					APM_OUT_MIX_NO_INPUT);
 		apm_set_vad_input_channel(APM_IN_RIGHT);
+		wov_i2s_channel1_disable(1);
 		break;
 
 	case WOV_SRC_MONO:
@@ -494,6 +510,7 @@ static enum ec_error_list wov_set_mic_source_l(void)
 		apm_digital_mixer_config(APM_OUT_MIX_NORMAL_INPUT,
 					APM_OUT_MIX_NORMAL_INPUT);
 		apm_set_vad_input_channel(APM_IN_AVERAGE_LEFT_RIGHT);
+		wov_i2s_channel1_disable(0);
 		break;
 
 	case WOV_SRC_STEREO:
@@ -509,7 +526,7 @@ static enum ec_error_list wov_set_mic_source_l(void)
 				0x01);
 		apm_digital_mixer_config(APM_OUT_MIX_NORMAL_INPUT,
 					 APM_OUT_MIX_NORMAL_INPUT);
-		apm_set_vad_input_channel(APM_IN_RESERVED);
+		wov_i2s_channel1_disable(0);
 		break;
 
 	default:
@@ -539,8 +556,8 @@ void wov_interrupt_handler(void)
 	 * Voice activity detected.
 	 */
 	if (APM_IS_VOICE_ACTIVITY_DETECTED) {
-		APM_CLEAR_VAD_INTERRUPT;
 		apm_vad_enable(0);
+		APM_CLEAR_VAD_INTERRUPT;
 		apm_enable_vad_interrupt(0);
 		WOV_CALLBACK(WOV_EVENT_VAD);
 	}
@@ -592,17 +609,25 @@ DECLARE_IRQ(NPCX_IRQ_WOV, wov_interrupt_handler, 3);
 static void wov_fmul2_enable(int enable)
 {
 	if (enable) {
-		/* Enable clock tuning. */
-		CLEAR_BIT(NPCX_FMUL2_FM2CTRL, NPCX_FMUL2_FM2CTRL_TUNE_DIS);
-		/* Enable clock. */
-		CLEAR_BIT(NPCX_FMUL2_FM2CTRL, NPCX_FMUL2_FM2CTRL_FMUL2_DIS);
+
+		/* If clock disabled, then enable it. */
+		if (IS_BIT_SET(NPCX_FMUL2_FM2CTRL,
+					NPCX_FMUL2_FM2CTRL_FMUL2_DIS)) {
+			/* Enable clock tuning. */
+			CLEAR_BIT(NPCX_FMUL2_FM2CTRL,
+					NPCX_FMUL2_FM2CTRL_TUNE_DIS);
+			/* Enable clock. */
+			CLEAR_BIT(NPCX_FMUL2_FM2CTRL,
+					NPCX_FMUL2_FM2CTRL_FMUL2_DIS);
+
+			udelay(WOV_FMUL2_CLK_TUNING_DELAY_TIME);
+
+			/* Disable clock tuning. */
+			SET_BIT(NPCX_FMUL2_FM2CTRL,
+				NPCX_FMUL2_FM2CTRL_TUNE_DIS);
+		}
 	} else
 		SET_BIT(NPCX_FMUL2_FM2CTRL, NPCX_FMUL2_FM2CTRL_FMUL2_DIS);
-
-	udelay(WOV_FMUL2_CLK_TUNING_DELAY_TIME);
-
-	/* Disable clock tuning. */
-	SET_BIT(NPCX_FMUL2_FM2CTRL, NPCX_FMUL2_FM2CTRL_TUNE_DIS);
 }
 
 #define WOV_FMUL2_MAX_RETRIES 0x000FFFFF
@@ -613,7 +638,6 @@ struct wov_fmul2_multiplier_setting_val {
 	uint8_t fm2ml;
 	uint8_t fm2n;
 };
-
 
 /**
  * Configure FMUL2 clock tunning.
@@ -649,12 +673,29 @@ static int wov_get_cfifo_threshold_l(void)
 		return (fifo_threshold * 2);
 }
 
+/**
+ * Gets clock source FMUL2 or PLL.
+ *
+ * @param   None.
+ *
+ *  NOTE:
+ *
+ * @return  The clock source FMUL2 (WOV_FMUL2_CLK_SRC) and
+ *                    PLL (WOV_PLL_CLK_SRC)
+ */
+static enum wov_clk_src_sel wov_get_clk_selection(void)
+{
+	if (IS_BIT_SET(NPCX_WOV_CLOCK_CNTL, NPCX_WOV_CLOCK_CNT_CLK_SEL))
+		return WOV_PLL_CLK_SRC;
+	else
+		return WOV_FMUL2_CLK_SRC;
+}
+
 /***************************************************************************
  *
  * Exported function.
  *
  **************************************************************************/
-
 
 /**
  * Set FMUL2 clock divider.
@@ -706,55 +747,50 @@ void wov_dmic_clk_config(int enable, enum wov_dmic_clk_div_sel clk_div)
 enum ec_error_list wov_set_mode(enum wov_modes wov_mode)
 {
 	enum ec_error_list ret_code;
+	enum wov_clk_src_sel prev_clock;
 
-	if ((wov_mode == WOV_MODE_I2S) || (wov_mode == WOV_MODE_RAM_AND_I2S)) {
-		wov_pll_enable(1);
-		wov_set_clk_selection(WOV_PLL_CLK_SRC);
-	} else {
-		wov_pll_enable(0);
-		wov_set_clk_selection(WOV_FMUL2_CLK_SRC);
+	/* If mode is OFF, then power down and exit. */
+	if (wov_mode == WOV_MODE_OFF) {
 		wov_stop_i2s_capture();
-	}
-
-	apm_set_mode(wov_mode);
-
-	ret_code = wov_set_mic_source_l();
-	if (ret_code != EC_SUCCESS)
-		return ret_code;
-
-	switch (wov_mode) {
-	case WOV_MODE_OFF:
+		wov_set_clk_selection(WOV_FMUL2_CLK_SRC);
 		wov_dmic_clk_config(0, WOV_DMIC_DIV_DISABLE);
 		wov_mute(1);
+		apm_set_mode(WOV_MODE_OFF);
 		wov_fmul2_enable(0);
-		break;
-	case WOV_MODE_VAD:
+		wov_conf.mode = WOV_MODE_OFF;
+		return EC_SUCCESS;
+	}
+
+	if (apm_get_adc_dmic_rate() == APM_DMIC_RATE_0_75)
+		wov_dmic_clk_config(1, WOV_DMIC_DIV_BY_4);
+	else
 		wov_dmic_clk_config(1, WOV_DMIC_DIV_DISABLE);
-		wov_fmul2_enable(1);
-		wov_mute(0);
+
+	switch (wov_mode) {
+	case WOV_MODE_VAD:
+		wov_stop_i2s_capture();
+		wov_set_clk_selection(WOV_FMUL2_CLK_SRC);
+		apm_set_mode(wov_mode);
 		break;
 	case WOV_MODE_RAM:
 		if ((wov_conf.bit_depth != 16) && (wov_conf.bit_depth != 24))
 			return EC_ERROR_INVAL;
-		wov_dmic_clk_config(1, WOV_DMIC_DIV_DISABLE);
-		wov_fmul2_enable(1);
-		wov_mute(0);
-		break;
-	case WOV_MODE_I2S:
-		wov_dmic_clk_config(1, WOV_DMIC_DIV_DISABLE);
-		wov_fmul2_enable(0);
-		wov_set_i2s_config_l();
-		wov_start_i2s_capture();
-		wov_mute(0);
+
+		wov_stop_i2s_capture();
+		wov_set_clk_selection(WOV_FMUL2_CLK_SRC);
+		apm_set_mode(wov_mode);
 		break;
 	case WOV_MODE_RAM_AND_I2S:
 		if ((wov_conf.bit_depth != 16) && (wov_conf.bit_depth != 24))
 			return EC_ERROR_INVAL;
-		wov_dmic_clk_config(1, WOV_DMIC_DIV_DISABLE);
-		wov_fmul2_enable(0);
-		wov_set_i2s_config_l();
+	case WOV_MODE_I2S:
+		prev_clock = wov_get_clk_selection();
+		if (prev_clock != WOV_PLL_CLK_SRC) {
+			wov_set_i2s_config_l();
+			wov_set_clk_selection(WOV_PLL_CLK_SRC);
+		}
+		apm_set_mode(wov_mode);
 		wov_start_i2s_capture();
-		wov_mute(0);
 		break;
 	default:
 		wov_dmic_clk_config(0, WOV_DMIC_DIV_DISABLE);
@@ -762,6 +798,12 @@ enum ec_error_list wov_set_mode(enum wov_modes wov_mode)
 		wov_mute(1);
 		return EC_ERROR_INVAL;
 	}
+
+	ret_code = wov_set_mic_source_l();
+	if (ret_code != EC_SUCCESS)
+		return ret_code;
+
+	wov_mute(0);
 
 	wov_conf.mode = wov_mode;
 
@@ -829,6 +871,16 @@ void wov_set_clk_selection(enum wov_clk_src_sel clk_src)
 {
 	int is_apm_disable;
 
+	/*
+	 * Be sure that both clocks are active, as both of them need to
+	 * be active when modify the CLK_SEL bit.
+	 */
+	if (IS_BIT_SET(NPCX_WOV_PLL_CNTL1, NPCX_WOV_PLL_CNTL1_PLL_PWDEN))
+		wov_pll_enable(1);
+
+	if (IS_BIT_SET(NPCX_FMUL2_FM2CTRL, NPCX_FMUL2_FM2CTRL_FMUL2_DIS))
+		wov_fmul2_enable(1);
+
 	is_apm_disable = IS_BIT_SET(NPCX_APM_CR_APM, NPCX_APM_CR_APM_PD);
 
 	apm_enable(0);
@@ -842,6 +894,13 @@ void wov_set_clk_selection(enum wov_clk_src_sel clk_src)
 
 	if (!is_apm_disable)
 		apm_enable(1);
+
+	/* Disable the unneeded clock. */
+	if (clk_src == WOV_PLL_CLK_SRC)
+		wov_fmul2_enable(0);
+	else
+		wov_pll_enable(0);
+
 }
 
 /**
@@ -1269,22 +1328,6 @@ enum ec_error_list wov_i2s_channel_config(uint32_t channel_num,
 }
 
 /**
- * wov_i2s_channel1_disable
- *
- * @param  disable - disabled flag, 1 means disable
- *
- * @return  None
- */
-void wov_i2s_channel1_disable(int disable)
-{
-	if (disable)
-		SET_BIT(NPCX_WOV_I2S_CNTL(1), NPCX_WOV_I2S_CNTL1_I2S_CHN1_DIS);
-	else
-		CLEAR_BIT(NPCX_WOV_I2S_CNTL(1),
-			  NPCX_WOV_I2S_CNTL1_I2S_CHN1_DIS);
-}
-
-/**
  * Sets sampling rate.
  *
  * @param   samples_per_second - Valid sample rate.
@@ -1653,17 +1696,10 @@ DECLARE_HOOK(HOOK_INIT, wov_system_init, HOOK_PRIO_DEFAULT);
 
 void wov_handle_event(enum wov_events event)
 {
-	enum wov_modes mode;
-
-	mode = wov_get_mode();
 	if (event == WOV_EVENT_DATA_READY) {
-		CPRINTS("ram data ready");
-		if (mode == WOV_MODE_RAM) {
-			wov_set_mode(WOV_MODE_OFF);
-		} else if (mode == WOV_MODE_RAM_AND_I2S) {
-			/* just capture one times on RAM*/
-			wov_stop_ram_capture();
-		}
+		CPRINTS("ram data ready and stop ram capture");
+		/* just capture one times on RAM*/
+		wov_stop_ram_capture();
 	}
 	if (event == WOV_EVENT_VAD)
 		CPRINTS("got vad");
@@ -1689,6 +1725,18 @@ static int command_wov(int argc, char **argv)
 			CPRINTS("vad sensitivity :%d",
 				wov_get_vad_sensitivity());
 			return EC_SUCCESS;
+		}
+		/* Start to capature voice data and store in RAM buffer */
+		if (strcasecmp(argv[1], "capram") == 0) {
+			if (wov_set_buffer((uint32_t *)voice_buffer,
+				sizeof(voice_buffer) / sizeof(uint32_t))
+					== EC_SUCCESS) {
+				CPRINTS("Start RAM Catpure...");
+				wov_start_ram_capture();
+				return EC_SUCCESS;
+			}
+			CPRINTS("Init fail: voice buffer size");
+			return EC_ERROR_INVAL;
 		}
 	} else if (argc == 3) {
 		if (strcasecmp(argv[1], "cfgsrc") == 0) {
@@ -1767,6 +1815,8 @@ static int command_wov(int argc, char **argv)
 				apm_set_adc_dmic_config(APM_DMIC_RATE_2_4);
 			else if (strcasecmp(argv[2], "3.0") == 0)
 				apm_set_adc_dmic_config(APM_DMIC_RATE_3_0);
+			else if (strcasecmp(argv[2], "0.75") == 0)
+				apm_set_adc_dmic_config(APM_DMIC_RATE_0_75);
 			else
 				return EC_ERROR_INVAL;
 			return EC_SUCCESS;
@@ -1778,22 +1828,11 @@ static int command_wov(int argc, char **argv)
 			} else if (strcasecmp(argv[2], "vad") == 0) {
 				wov_set_mode(WOV_MODE_VAD);
 			} else if (strcasecmp(argv[2], "ram") == 0) {
-				if (wov_set_buffer((uint32_t *)voice_buffer,
-					sizeof(voice_buffer) / sizeof(uint32_t))
-						!= EC_SUCCESS)
-					CPRINTS("Init fail: voice buf size");
 				wov_set_mode(WOV_MODE_RAM);
-				wov_start_ram_capture();
 			} else if (strcasecmp(argv[2], "i2s") == 0) {
 				wov_set_mode(WOV_MODE_I2S);
-				wov_stop_ram_capture();
 			} else if (strcasecmp(argv[2], "rami2s") == 0) {
-				if (wov_set_buffer((uint32_t *)voice_buffer,
-					sizeof(voice_buffer) / sizeof(uint32_t))
-						!= EC_SUCCESS)
-					CPRINTS("Init fail: voice buf size");
 				wov_set_mode(WOV_MODE_RAM_AND_I2S);
-				wov_start_ram_capture();
 			} else {
 				return EC_ERROR_INVAL;
 			}
@@ -1807,6 +1846,18 @@ static int command_wov(int argc, char **argv)
 			}
 			if (strcasecmp(argv[2], "disable") == 0) {
 				wov_mute(0);
+				return EC_SUCCESS;
+			}
+		}
+		if (strcasecmp(argv[1], "fmul2") == 0) {
+			if (strcasecmp(argv[2], "enable") == 0) {
+				CLEAR_BIT(NPCX_FMUL2_FM2CTRL,
+					NPCX_FMUL2_FM2CTRL_TUNE_DIS);
+				return EC_SUCCESS;
+			}
+			if (strcasecmp(argv[2], "disable") == 0) {
+				SET_BIT(NPCX_FMUL2_FM2CTRL,
+					NPCX_FMUL2_FM2CTRL_TUNE_DIS);
 				return EC_SUCCESS;
 			}
 		}
@@ -1840,6 +1891,7 @@ static int command_wov(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(wov, command_wov,
 		"init\n"
 		"mute <enable|disable>\n"
+		"capram\n"
 		"cfgsrc <mono|stereo|left|right>\n"
 		"cfgbit <16|18|20|24>\n"
 		"cfgsfs <8000|12000|16000|24000|32000|48000>\n"
@@ -1847,8 +1899,9 @@ DECLARE_CONSOLE_COMMAND(wov, command_wov,
 		"cfgfmt <i2s|right|left|pcma|pcmb|tdm>\n"
 		"cfgmod <off|vad|ram|i2s|rami2s>\n"
 		"cfgtdm [0~496 0~496 0~3]>\n"
-		"cfgdck <1.0|2.4|3.0>\n"
+		"cfgdck <1.0|2.4|3.0|0.75>\n"
 		"cfgget\n"
+		"fmul2 <enable|disable>\n"
 		"vadsens <0~31>\n"
 		"gain <0~31>",
 		"wov configuration");
