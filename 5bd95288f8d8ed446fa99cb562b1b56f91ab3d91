@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9ebb7daf_3f11b6a5",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-01T16:58:58Z",
+      "side": 1,
+      "message": "This looks wrong, too.",
+      "range": {
+        "startLine": 54,
+        "startChar": 15,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "5bd95288f8d8ed446fa99cb562b1b56f91ab3d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea1debf7_baac91c4",
         "filename": "chip/npcx/fan.c",
         "patchSetId": 2
