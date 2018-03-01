@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e0c26d24_2d38ce04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-01T22:44:01Z",
+      "side": 1,
+      "message": "The patch looks good (except TEMP_SENSOR_TYPE_CPU) but please test the affected areas thoroughly. I except at least the followings are tested:\n- AP throttling soft\n- AP throttling hard\n- Fan controlled in s3/s5 as expected (by EC)\n- Fan controlled in s0 as expected (by DPTF)",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "298b332e875469f4e00a24cd339e3fc08b5daecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e16d1e92_09552a16",
         "filename": "board/nami/board.c",
         "patchSetId": 4
