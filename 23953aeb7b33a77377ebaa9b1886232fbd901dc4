@@ -70,6 +70,30 @@
       "revId": "23953aeb7b33a77377ebaa9b1886232fbd901dc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "705a0f13_28272691",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-01T16:17:42Z",
+      "side": 1,
+      "message": "While there is no automation to run them on target, our current unittests in the test/ directory also run on the various boards:\ne.g. \nmake BOARD\u003dkevin test-pingpong\n\nAll tests are disabled for cr50 for a not-so-good reason,\nbut you can add one to test/build.mk\ntest-list-$(BOARD_CR50)\u003dllsr\nThen build it:\nmake BOARD\u003dcr50 test-llsr\nand run the resulting build/cr50/llsr/llsr.bin firmware on your board.",
+      "parentUuid": "e4bf958a_0be937d5",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "23953aeb7b33a77377ebaa9b1886232fbd901dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
