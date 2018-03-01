@@ -17,6 +17,12 @@
 /*****************************************************************************/
 /* Hardware features */
 
+/*
+ * VW signals SCI#, SMI# and RCIN# require HW_WIRE to be set to 1, so that
+ * the hardwire signal is connected to VW input of eSPI_SIF module.
+ */
+#define NPCX_VW_USE_HW_WIRE
+
 /* The optional hardware features depend on chip variant */
 #if defined(CHIP_VARIANT_NPCX7M6F) || defined(CHIP_VARIANT_NPCX7M7W) || \
 	defined(CHIP_VARIANT_NPCX7M6XB)

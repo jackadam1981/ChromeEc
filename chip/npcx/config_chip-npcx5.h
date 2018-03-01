@@ -15,6 +15,13 @@
 
 /*****************************************************************************/
 /* Hardware features */
+
+/*
+ * VW signals SCI#, SMI# and RCIN# are connected to VW input of eSPI_SIF
+ * module by default.
+ */
+#undef NPCX_VW_USE_HW_WIRE
+
 /*
  * Number of I2C controllers. Controller 0 has 2 ports, so the chip has one
  * additional port.
