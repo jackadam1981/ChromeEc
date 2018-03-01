@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "75e8acd8_a24a6b52",
+        "filename": "board/nami/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-03-01T13:49:08Z",
+      "side": 1,
+      "message": "Sorry. My previous understanding is wrong, the \"HOOK_BATTERY_SOC_CHANGE\" event will issue when battery reach to full.\nBut I find other problems when I use \" HOOK_BATTERY_SOC_CHANGE and HOOK_AC_CHANGE\" to control LED.\n1. When AC status event issue, but the battery status still not update.\nIt cause the LED cannot work as my expect.\n2. This two hood event seems cannot cover battery error condition.\n\nIf I am wrong, please correct me. thank~",
+      "parentUuid": "e3bcb282_f8db09a0",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 1
+      },
+      "revId": "33eacd07ba7e7e4b0e81d9950864e9d5d99bb462",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ccbd3bbb_418d2a5e",
         "filename": "board/nami/led.c",
         "patchSetId": 6
