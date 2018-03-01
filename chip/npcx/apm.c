@@ -81,7 +81,12 @@ static void apm_write_indirect_data(enum apm_indirect_reg_offset reg_offset,
  */
 void apm_set_adc_dmic_config_l(enum apm_dmic_rate rate)
 {
-	SET_FIELD(NPCX_APM_CR_DMIC, NPCX_APM_CR_DMIC_ADC_DMIC_RATE, rate);
+	if (rate == APM_DMIC_RATE_0_75)
+		SET_FIELD(NPCX_APM_CR_DMIC, NPCX_APM_CR_DMIC_ADC_DMIC_RATE,
+			APM_DMIC_RATE_3_0);
+	else
+		SET_FIELD(NPCX_APM_CR_DMIC, NPCX_APM_CR_DMIC_ADC_DMIC_RATE,
+			rate);
 }
 
 /**
@@ -102,6 +107,9 @@ void apm_set_vad_dmic_rate_l(enum apm_dmic_rate rate)
 
 	apm_write_indirect_data(APM_VAD_REG, APM_INDIRECT_VAD_0_REG, vad_data);
 }
+
+/*****************************************************************************/
+/* IC specific low-level driver */
 
 /**
  * Translates from ADC real value to frequency code
@@ -139,9 +147,6 @@ static enum apm_adc_frequency apm_adc_freq_val_2_code(uint32_t adc_freq_val)
 
 	return freq_code;
 }
-
-/*****************************************************************************/
-/* IC specific low-level driver */
 
 /**
  * Initiate APM module local parameters..
@@ -279,6 +284,17 @@ void apm_set_adc_dmic_config(enum apm_dmic_rate rate)
 }
 
 /**
+ * Gets the ADC DMIC rate.
+ *
+ * @param   None
+ * @return  ADC digital microphone rate code.
+ */
+enum apm_dmic_rate apm_get_adc_dmic_rate(void)
+{
+	return apm_conf.adc_dmic_rate;
+}
+
+/**
  * Configures Digital Mixer
  *
  * @param   mix_left  - Mixer left channel output selection on ADC path.
@@ -305,9 +321,9 @@ void apm_digital_mixer_config(enum apm_dig_mix mix_left,
 void apm_vad_enable(int enable)
 {
 	if (enable)
-		SET_BIT(NPCX_APM_CR_VAD, NPCX_APM_CR_VAD_VAD_EN);
+		NPCX_APM_CR_VAD = 0x80;
 	else
-		CLEAR_BIT(NPCX_APM_CR_VAD, NPCX_APM_CR_VAD_VAD_EN);
+		NPCX_APM_CR_VAD = 0x00;
 }
 
 /**
@@ -450,9 +466,9 @@ enum ec_error_list apm_adc_gain_config(enum apm_adc_gain_coupling gain_coupling,
 void apm_auto_gain_cntrl_enable(int enable)
 {
 	if (enable)
-		SET_BIT(NPCX_APM_CR_ADC_AGC, NPCX_APM_CR_ADC_AGC_ADC_AGC_EN);
+		NPCX_APM_CR_ADC_AGC = 0x80;
 	else
-		CLEAR_BIT(NPCX_APM_CR_ADC_AGC, NPCX_APM_CR_ADC_AGC_ADC_AGC_EN);
+		NPCX_APM_CR_ADC_AGC = 0x00;
 }
 
 /**
@@ -499,7 +515,7 @@ enum ec_error_list apm_adc_auto_gain_config(
 
 	gain_data = 0;
 
-	if (gain_cfg->stereo_enable)
+	if (gain_cfg->nois_gate_en)
 		SET_BIT(gain_data, NPCX_ADC_AGC_1_NG_EN);
 	else
 		CLEAR_BIT(gain_data, NPCX_ADC_AGC_1_NG_EN);
@@ -547,11 +563,11 @@ void apm_set_mode(enum wov_modes wov_mode)
 
 	switch (wov_mode) {
 	case WOV_MODE_OFF:
-		apm_vad_enable(0);
 		apm_enable_vad_interrupt(0);
 		apm_dmic_enable(0);
 		apm_adc_enable(0);
 		apm_vad_adc_wakeup_enable(0);
+		apm_vad_enable(0);
 		wov_apm_active(0);
 		break;
 
@@ -615,6 +631,4 @@ void apm_clear_vad_detected_bit(void)
 	apm_vad_enable(0);
 
 	APM_CLEAR_VAD_INTERRUPT;
-
-	apm_vad_enable(1);
 }

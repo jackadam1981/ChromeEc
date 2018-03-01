@@ -574,15 +574,6 @@ void wov_stop_i2s_capture(void);
 void wov_cfifo_read_handler(uint32_t num_elements);
 
 /**
- * WoV interrupt handler.
- *
- * @param	None
- *
- * @return	None
- */
-void wov_interrupt_handler(void);
-
-/**
  * Sets data buffer for reading from core FIFO
  *
  * @param  buff          - Pointer to the read buffer, buffer must be 32 bits
