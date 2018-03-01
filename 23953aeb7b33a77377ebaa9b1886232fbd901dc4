@@ -46,6 +46,30 @@
       "revId": "23953aeb7b33a77377ebaa9b1886232fbd901dc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4bf958a_0be937d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-01T00:31:55Z",
+      "side": 1,
+      "message": "there is no formal infrastructure to test on ARM.\n\ncreating a console command behind a compile flag is a good option.",
+      "parentUuid": "313324ee_31f11d85",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 37
+      },
+      "revId": "23953aeb7b33a77377ebaa9b1886232fbd901dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
