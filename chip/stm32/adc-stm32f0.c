@@ -284,6 +284,13 @@ int adc_read_channel(enum adc_channel ch)
 	return value * adc->factor_mul / adc->factor_div + adc->shift;
 }
 
+void adc_disable(void)
+{
+	STM32_ADC_CR |= STM32_ADC_CR_ADDIS;
+	while (STM32_ADC_CR & STM32_ADC_CR_ADDIS)
+		;
+}
+
 static void adc_init(void)
 {
 	/*
