@@ -67,9 +67,10 @@ enum apm_dmic_src {
 
 /* ADC digital microphone rate. */
 enum apm_dmic_rate {
-	APM_DMIC_RATE_3_0 = 0,   /* 3.0 -3.25 MHz (default).        */
-	APM_DMIC_RATE_2_4,       /* 2.4 -2.6 MHz.                   */
-	APM_DMIC_RATE_1_0        /* 1.0 -1.08 MHz.                  */
+	APM_DMIC_RATE_3_0 = 0,   /* 3.0 -3.25 MHz (default). */
+	APM_DMIC_RATE_2_4,       /* 2.4 -2.6 MHz.            */
+	APM_DMIC_RATE_1_0,       /* 1.0 -1.08 MHz.           */
+	APM_DMIC_RATE_0_75       /* 750 KHz.                 */
 };
 
 /* Digitla mixer output. */
@@ -229,6 +230,9 @@ struct apm_auto_gain_config {
 	enum apm_gain_values gain_min;
 };
 
+/*****************************************************************************/
+/* IC specific low-level driver */
+enum wov_modes;
 /**
  * Sets the ADC DMIC rate.
  *
@@ -246,9 +250,14 @@ void apm_set_adc_dmic_config(enum apm_dmic_rate rate);
  */
 void apm_set_vad_dmic_rate(enum apm_dmic_rate rate);
 
-/*****************************************************************************/
-/* IC specific low-level driver */
-enum wov_modes;
+/**
+ * Gets the ADC DMIC rate.
+ *
+ * @param   None
+ * @return  ADC digital microphone rate code.
+ */
+enum apm_dmic_rate apm_get_adc_dmic_rate(void);
+
 /**
  * Initiate APM module local parameters..
  *
