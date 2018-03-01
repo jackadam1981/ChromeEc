@@ -42,6 +42,9 @@ struct vwevsm_config_t {
 	uint8_t pltrst_en;  /* Enable reset by PLTRST assert */
 	uint8_t cdrst_en;   /* Enable cold reset */
 	uint8_t valid;      /* Valid VW mask */
+	uint8_t hw_wire;    /* Bits 3-0 indicate HW_WIRE 3-0 for VW index. Bits
+			     * 7-4 are unused
+			     */
 };
 
 /* Default MIWU configurations for VW events */
@@ -72,15 +75,19 @@ static const struct vwevms_config_t espi_in_list[] = {
 
 /* Default settings of VWEVSM registers (Please refer Table.43/44) */
 static const struct vwevsm_config_t espi_out_list[] = {
-	/* IDX EN ENPL ENCDR VDMASK         VW Event Bit 0 - 3 (S->M)         */
-	{0x04,  1,  0,  0, 0x0D}, /* ORST_ACK,   Reserve, WAKE#,   PME#       */
-	{0x05,  1,  0,  0, 0x0F}, /* SLV_BL_DNE, ERR_F,   ERR_NF,  SLV_BL_STS */
+	/* IDX EN ENPL ENCDR VDMASK HWWIRE  VW Event Bit 0 - 3 (S->M)         */
+	{0x04,  1,  0,  0, 0x0D, 0}, /* ORST_ACK,   Rsvd, WAKE#,   PME#       */
+	{0x05,  1,  0,  0, 0x0F, 0}, /* SLV_BL_DNE, ERR_F,ERR_NF,  SLV_BL_STS */
 #ifdef CONFIG_SCI_GPIO
-	{0x06,  1,  1,  0, 0x0C}, /* SCI#,       SMI#,    RCIN#,   HRST_ACK   */
+	{0x06,  1,  1,  0, 0x0C, 0}, /* SCI#,       SMI#, RCIN#,   HRST_ACK   */
 #else
-	{0x06,  1,  1,  0, 0x0F}, /* SCI#,       SMI#,    RCIN#,   HRST_ACK   */
+#ifdef NPCX_VW_USE_HW_WIRE
+	{0x06,  1,  1,  0, 0x0F, 7}, /* SCI#,       SMI#, RCIN#,   HRST_ACK   */
+#else
+	{0x06,  1,  1,  0, 0x0F, 0}, /* SCI#,       SMI#, RCIN#,   HRST_ACK   */
 #endif
-	{0x40,  1,  0,  0, 0x01}, /* SUS_ACK,    Reserve, Reserve, Reserve    */
+#endif
+	{0x40,  1,  0,  0, 0x01, 0}, /* SUS_ACK,    Rsvd, Rsvd,    Rsvd       */
 };
 
 /* eSPI interrupts used in MIWU */
@@ -196,7 +203,8 @@ static void espi_vw_config_out(const struct vwevsm_config_t *config)
 						config->idx_en,
 						config->valid,
 						config->pltrst_en,
-						config->cdrst_en);
+						config->cdrst_en,
+						config->hw_wire);
 				NPCX_VWEVSM(i) = val;
 				return;
 			}
