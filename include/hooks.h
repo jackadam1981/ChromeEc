@@ -35,6 +35,14 @@ enum hook_priority {
 	HOOK_PRIO_INIT_FAN = HOOK_PRIO_FIRST + 7,
 	/* PWM inits before modules which might use it (LEDs) */
 	HOOK_PRIO_INIT_PWM = HOOK_PRIO_FIRST + 8,
+	/* If projects have sku id in HW strapping then ADC is needed in order
+	 * to read value of sku id. One of use cases to leverage sku id is when
+	 * default battery type (ex: 3S or 2S) should be identified, the sku id
+	 * can be read in next level of priority (+9). Then the first caller
+	 * from charger driver (ex: bd9995x.c ) can work correctly because it's
+	 * priority is HOOK_PRIO_INIT_EXTPOWER (+10)
+	 */
+	HOOK_PRIO_INIT_ADC = HOOK_PRIO_FIRST + 8,
 	/* SPI inits before modules which might use it (sensors) */
 	HOOK_PRIO_INIT_SPI = HOOK_PRIO_FIRST + 9,
 	/* Extpower inits before modules which might use it (battery, LEDs) */
