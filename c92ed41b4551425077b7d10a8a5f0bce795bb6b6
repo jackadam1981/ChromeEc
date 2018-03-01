@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34728002_b46eb5f8",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-03-01T21:47:37Z",
+      "side": 1,
+      "message": "to make it clearer for platforms based on Dru, I think it\u0027d be better to make the table have the 4A number and only downgrade it to 3A in the case of an old revision",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 30
+      },
+      "revId": "c92ed41b4551425077b7d10a8a5f0bce795bb6b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4e9c382_01ab3b42",
+        "filename": "board/scarlet/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002022
+      },
+      "writtenOn": "2018-03-01T21:47:37Z",
+      "side": 1,
+      "message": "both temp_zone_1 and temp_zone_2 need to be updated.",
+      "range": {
+        "startLine": 173,
+        "startChar": 29,
+        "endLine": 173,
+        "endChar": 40
+      },
+      "revId": "c92ed41b4551425077b7d10a8a5f0bce795bb6b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
