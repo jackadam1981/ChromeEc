@@ -16,6 +16,24 @@
       "revId": "702828092da7bd44963e4468b2c36ef6435a8f56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c153924_ef9356d0",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3231,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-02T04:53:15Z",
+      "side": 1,
+      "message": "Yes, that would provide board the option to choose or not choose to include baseboard.h as and when required.",
+      "parentUuid": "787626f3_446c3ff7",
+      "revId": "702828092da7bd44963e4468b2c36ef6435a8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
