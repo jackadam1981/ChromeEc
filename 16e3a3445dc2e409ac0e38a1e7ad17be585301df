@@ -22,6 +22,30 @@
       "revId": "16e3a3445dc2e409ac0e38a1e7ad17be585301df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff4137ba_cf7130a0",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-02T20:03:12Z",
+      "side": 1,
+      "message": "That is an interesting way of looking at it. Yeah, since the default value of HW_WIRE is 7 for VWEVSM2, we might be able to get away without adding a hw_wire config completely. I was thinking more on the lines of being able to control the HW_WIRE as we need. (i.e. enable/disable as per out requirements). But, right now there is no such requirement and we can probably do it once we get there :). Let me push an updated patch for this.",
+      "parentUuid": "10155383_778a6b74",
+      "range": {
+        "startLine": 201,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 32
+      },
+      "revId": "16e3a3445dc2e409ac0e38a1e7ad17be585301df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
