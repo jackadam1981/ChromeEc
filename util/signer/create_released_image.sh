@@ -76,6 +76,19 @@ prepare_image() {
     : $(( count += 1 ))
   done
 
+  awk_prog='BEGIN {found=0}
+    END{if (found) { print "found" }}
+    /\x03\xae\x2d\x2c\x06\x23/ {
+      found = found + 1
+    }
+  '
+
+  for f in "${rw_a}" "${rw_b}"; do
+    if [[ "$(awk "${awk_prog}" $f)" == "found" ]]; then
+      echo "$f includes test RMA key, will not sign" >&2
+      exit 1
+    fi
+  done
   if [ "${image_type}" == "prod" ]; then
     extra_param+=' prod'
   fi
