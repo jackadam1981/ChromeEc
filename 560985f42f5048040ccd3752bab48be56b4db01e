@@ -22,6 +22,30 @@
       "revId": "560985f42f5048040ccd3752bab48be56b4db01e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a56a4fd7_1d9cfa8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-03-02T16:21:41Z",
+      "side": 1,
+      "message": "I just thought that the basic rule is to land master first then cherry-pick to any other firmware branch. Or for project specific change we should just land it to firmware branch? Thanks.",
+      "parentUuid": "ab9cdac1_bd2baa58",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "560985f42f5048040ccd3752bab48be56b4db01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
