@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b1b00226_8a556637",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-02T07:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb000714_09c53d7d",
+      "revId": "b3821996e76f9031b7833d0f6a6c495ab855e5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79749ade_7e184b07",
         "filename": "chip/stm32/clock-stm32h7.c",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "b3821996e76f9031b7833d0f6a6c495ab855e5e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "170944a9_ec8a49f7",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-02T07:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79749ade_7e184b07",
+      "revId": "b3821996e76f9031b7833d0f6a6c495ab855e5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "22f195ec_44258656",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-02T07:42:32Z",
+      "side": 1,
+      "message": "very true, it\u0027s misleading\n\nthe longer story: as doing some power measurement, I have decided to try the following: the PLL at 400Mhz is only enabled on demand for the fingerprint matching code. I have a follow-up doing this I will upload soon.\n\nI will update the commit message with a note.",
+      "parentUuid": "a7dd28d7_7986a95c",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 6
+      },
+      "revId": "b3821996e76f9031b7833d0f6a6c495ab855e5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5931753d_5a6c3a6f",
         "filename": "chip/stm32/registers.h",
         "patchSetId": 5
@@ -70,6 +130,30 @@
       "writtenOn": "2018-03-02T03:39:28Z",
       "side": 1,
       "message": "SPI45SEL",
+      "range": {
+        "startLine": 1435,
+        "startChar": 27,
+        "endLine": 1435,
+        "endChar": 35
+      },
+      "revId": "b3821996e76f9031b7833d0f6a6c495ab855e5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "885a48b2_89e7d006",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-02T07:42:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5931753d_5a6c3a6f",
       "range": {
         "startLine": 1435,
         "startChar": 27,
