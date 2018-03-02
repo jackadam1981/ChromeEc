@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c6ab9767_e0aa9ce9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-02T17:34:49Z",
+      "side": 1,
+      "message": "\u003e Fan controlled in s3/s5 as expected (by EC)\n\nCurrently, all fans are disabled in s3/s5. So, there should be no movement. I think we need to update the code so that fans can cool battery and pmic even in s3/s5.",
+      "parentUuid": "e0c26d24_2d38ce04",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 46
+      },
+      "revId": "298b332e875469f4e00a24cd339e3fc08b5daecf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e16d1e92_09552a16",
         "filename": "board/nami/board.c",
         "patchSetId": 4
