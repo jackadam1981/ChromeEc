@@ -51,6 +51,13 @@
  * (shared_mem_init done too late).
  */
 #define CONFIG_MALLOC
+/* Special memory regions to store large arrays */
+/*
+ * DISABLED due to stack underflow in algorithm
+ * #define FP_FRAME_SECTION __SECTION(ahb4)
+ */
+#define FP_TEMPLATE_SECTION __SECTION(ahb)
+
 /* we are doing slow compute */
 #undef CONFIG_WATCHDOG_PERIOD_MS
 #define CONFIG_WATCHDOG_PERIOD_MS 10000
