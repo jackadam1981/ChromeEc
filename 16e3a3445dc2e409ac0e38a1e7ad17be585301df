@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10155383_778a6b74",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-02T19:17:40Z",
+      "side": 1,
+      "message": "This is related to the overall CL comment. An alternative to the CL is do the following instead:\nval \u003d NPCX_VWEVSM(i) \u0026 0x0F00000F\nwhich keeps the default for HW_WIRE 3-0 and WIRE 3-0",
+      "range": {
+        "startLine": 201,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 32
+      },
+      "revId": "16e3a3445dc2e409ac0e38a1e7ad17be585301df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

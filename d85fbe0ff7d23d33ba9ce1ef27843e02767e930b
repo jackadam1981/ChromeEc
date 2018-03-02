@@ -70,6 +70,29 @@
       "revId": "d85fbe0ff7d23d33ba9ce1ef27843e02767e930b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8f08f6_8f858064",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-02T19:17:40Z",
+      "side": 1,
+      "message": "Should we combine this into\n#elif defined(NPCX_VW_USE_HW_WIRE)\nso we don\u0027t have to nest #ifdef",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "d85fbe0ff7d23d33ba9ce1ef27843e02767e930b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
