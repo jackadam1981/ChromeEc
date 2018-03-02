@@ -74,6 +74,15 @@ ifeq ($(CONFIG_UPTO_SHA512),y)
 CPPFLAGS += -DSHA512_SUPPORT
 endif
 
+# When building on the build farm the produced image should include the
+# production RMA server public key, when building on any other host, test
+# server key should be used.
+builder_hostname:=$(sh hostname)
+ifeq ($(findstring chromium.org,$(builder_hostname)),)
+# Building on a a dev machine
+CFLAGS += -DUSE_TEST_RMA_KEY
+endif
+
 # Make sure the context of the software sha512 implementation fits. If it ever
 # increases, a compile time assert will fire in tpm2/hash.c.
 ifeq ($(CONFIG_UPTO_SHA512),y)
