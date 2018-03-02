@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "937702ea_bf889bee",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-02T18:31:55Z",
+      "side": 1,
+      "message": "Might be handy here to note that these sections are NOT cleared at startup, since I only see that referenced in the commit message.",
+      "range": {
+        "startLine": 683,
+        "startChar": 1,
+        "endLine": 683,
+        "endChar": 3
+      },
+      "revId": "a89156c1af94c7b8057081b72b613c1ac8a60aea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
