@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab9cdac1_bd2baa58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-02T16:14:16Z",
+      "side": 1,
+      "message": "Why is this being done in master and not the coral FW branch? Is the plan to then cherry-pick to the coral FW branch? While master and Coral FW are close, not all FW branch changes where picked back to master.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "560985f42f5048040ccd3752bab48be56b4db01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
