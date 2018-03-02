@@ -117,6 +117,30 @@
       "revId": "ae5abc3e028ff306ea7bbf90e23e2cc023cfe43b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90292a0c_32eba26f",
+        "filename": "board/nami/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-02T08:03:06Z",
+      "side": 1,
+      "message": "By our design, when system in S4/S5, to do lid open will turn on system.",
+      "parentUuid": "3ad89834_87f35ebd",
+      "range": {
+        "startLine": 713,
+        "startChar": 2,
+        "endLine": 713,
+        "endChar": 16
+      },
+      "revId": "ae5abc3e028ff306ea7bbf90e23e2cc023cfe43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
