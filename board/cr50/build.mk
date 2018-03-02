@@ -74,6 +74,13 @@ ifeq ($(CONFIG_UPTO_SHA512),y)
 CPPFLAGS += -DSHA512_SUPPORT
 endif
 
+# When USE_TEST_RMA_KEY is a non-empty string, include the test RMA server
+# public key in the image.
+ifneq ($(USE_TEST_RMA_KEY),)
+# Make sure test RMA server public key is compiled in.
+CFLAGS += -DUSE_TEST_RMA_KEY
+endif
+
 # Make sure the context of the software sha512 implementation fits. If it ever
 # increases, a compile time assert will fire in tpm2/hash.c.
 ifeq ($(CONFIG_UPTO_SHA512),y)
