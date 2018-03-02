@@ -93,6 +93,30 @@
       "revId": "ae5abc3e028ff306ea7bbf90e23e2cc023cfe43b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad89834_87f35ebd",
+        "filename": "board/nami/board.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-02T06:29:14Z",
+      "side": 1,
+      "message": "I apologize for not making my points clear, even to mislead you.\nWe have test to do Lid open when system in S5 then system and lm3509 is power on and KBBL is turn on.",
+      "parentUuid": "2b3009b6_286b8401",
+      "range": {
+        "startLine": 713,
+        "startChar": 2,
+        "endLine": 713,
+        "endChar": 16
+      },
+      "revId": "ae5abc3e028ff306ea7bbf90e23e2cc023cfe43b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
