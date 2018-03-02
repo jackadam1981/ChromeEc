@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb000714_09c53d7d",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-02T03:39:28Z",
+      "side": 1,
+      "message": "Maybe add a note that this is for VOS1 level 1.15 V - 1.26 V?",
+      "revId": "b3821996e76f9031b7833d0f6a6c495ab855e5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79749ade_7e184b07",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-02T03:39:28Z",
+      "side": 1,
+      "message": "maybe add a short comment that per_ck is set to HSI by default.",
+      "revId": "b3821996e76f9031b7833d0f6a6c495ab855e5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7dd28d7_7986a95c",
+        "filename": "chip/stm32/clock-stm32h7.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-02T03:39:28Z",
+      "side": 1,
+      "message": "So, without this, we are still using the HSI 64Mhz clock, right?\n\nThen either enable this, or update the commit message to say that this commit makes it possible to run at 400Mhz?",
+      "range": {
+        "startLine": 225,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 6
+      },
+      "revId": "b3821996e76f9031b7833d0f6a6c495ab855e5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5931753d_5a6c3a6f",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1435,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-02T03:39:28Z",
+      "side": 1,
+      "message": "SPI45SEL",
+      "range": {
+        "startLine": 1435,
+        "startChar": 27,
+        "endLine": 1435,
+        "endChar": 35
+      },
+      "revId": "b3821996e76f9031b7833d0f6a6c495ab855e5e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
