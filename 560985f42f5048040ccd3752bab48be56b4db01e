@@ -46,6 +46,53 @@
       "revId": "560985f42f5048040ccd3752bab48be56b4db01e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "848a19b5_1e5ee35c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-02T16:49:21Z",
+      "side": 1,
+      "message": "I think that\u0027s a good rule, but at some point that gets hard to do because other parts of master change to much relative to when FW branch was first cut, and so at some point changes just get made to FW branch directly and fixes that apply to master can be picked back if required.",
+      "parentUuid": "a56a4fd7_1d9cfa8a",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "560985f42f5048040ccd3752bab48be56b4db01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9f30fb_82607ef5",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-02T16:49:21Z",
+      "side": 1,
+      "message": "In the Coral FW branch this value is set to HOOK_PRIO_FIRST + 13. I agree with the comment here about it needing to be 2 earlier than EXTPOWER. However, I think you should just add 1 to the values and insert ADC here rather than having a multiple entries with the same number.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "560985f42f5048040ccd3752bab48be56b4db01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
