@@ -22,6 +22,30 @@
       "revId": "c94812b63e52ac2692328faccf6372bea73c11df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3fd6f0f_457e4035",
+        "filename": "board/chell/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-03-02T17:36:11Z",
+      "side": 1,
+      "message": "I\u0027m not seeing noticeable power diff between PFM \u0026 auto so given my initial testing showed stability for PFM (even in S0) I didn\u0027t want to risk that whatever \u0027auto\u0027 does additionally might produce failures albeit at a lower frequency in S3.",
+      "parentUuid": "4a5df71a_8066ecca",
+      "range": {
+        "startLine": 289,
+        "startChar": 33,
+        "endLine": 289,
+        "endChar": 36
+      },
+      "revId": "c94812b63e52ac2692328faccf6372bea73c11df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
