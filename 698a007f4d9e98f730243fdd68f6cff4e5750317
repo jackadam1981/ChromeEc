@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c5f0315_2cbc09ad",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-02T16:14:53Z",
+      "side": 1,
+      "message": "const?",
+      "revId": "698a007f4d9e98f730243fdd68f6cff4e5750317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f58c1405_f3ca1a2d",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-02T16:14:53Z",
+      "side": 1,
+      "message": "Technically the challenge can have embedded whitespace, and we print it that way.  If someone copy/pastes it in, the length might not match.  If there are the wrong number of non-whitespace chars, base32_decode will fail.",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "698a007f4d9e98f730243fdd68f6cff4e5750317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7e28a92_0178f62a",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-02T16:14:53Z",
+      "side": 1,
+      "message": "Extra whitespace",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "698a007f4d9e98f730243fdd68f6cff4e5750317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
