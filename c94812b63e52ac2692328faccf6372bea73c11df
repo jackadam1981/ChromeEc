@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a5df71a_8066ecca",
+        "filename": "board/chell/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-03-02T02:41:29Z",
+      "side": 1,
+      "message": "Should we set it back to auto so it can turn off?  is this still keeping it on just not as much of a draw?",
+      "range": {
+        "startLine": 289,
+        "startChar": 33,
+        "endLine": 289,
+        "endChar": 36
+      },
+      "revId": "c94812b63e52ac2692328faccf6372bea73c11df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
