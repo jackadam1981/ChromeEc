@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d996e5ae_325ea4ec",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1112255
+      },
+      "writtenOn": "2018-03-02T04:12:59Z",
+      "side": 1,
+      "message": "Our battery engineer wants to set charging_max_c to 50\u0027C because of safety issue.",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "663d40b1e3883d6776bea25d453fe28b9caa6532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69b34ca4_08e0f974",
         "filename": "board/nautilus/battery.c",
         "patchSetId": 5
