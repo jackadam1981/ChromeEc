@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ee3c4d8_8208c806",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-03-02T21:45:56Z",
+      "side": 1,
+      "message": "If so, we\u0027ll change the upper bound of TEMP_ZONE_3 to 50. And when temperature hits 55C, the charging stops. Is this the behavior you want?",
+      "parentUuid": "d996e5ae_325ea4ec",
+      "range": {
+        "startLine": 44,
+        "startChar": 19,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "663d40b1e3883d6776bea25d453fe28b9caa6532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69b34ca4_08e0f974",
         "filename": "board/nautilus/battery.c",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-28T02:11:28Z",
       "side": 1,
       "message": "shouldn\u0027t this be \u00270 \u003c\u003d bat_temp_c \u003c\u003d 5\u0027 since 0 in in the permitted range?",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 21
+      },
+      "revId": "663d40b1e3883d6776bea25d453fe28b9caa6532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30db9d99_ebad3513",
+        "filename": "board/nautilus/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-03-02T21:45:56Z",
+      "side": 1,
+      "message": "OK. We can do that.",
+      "parentUuid": "69b34ca4_08e0f974",
       "range": {
         "startLine": 82,
         "startChar": 20,
