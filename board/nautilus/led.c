@@ -86,6 +86,10 @@ static void nautilus_led_set_power_battery(void)
 			set_color(((power_ticks++ % LED_TOTAL_TICKS) < LED_ON_TICKS) ?
 						  LED_RED : LED_OFF);
 		return;
+	} else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+		set_color(((power_ticks++ % LED_TOTAL_TICKS) < LED_ON_TICKS) ?
+					  LED_GREEN : LED_OFF);
+		return;
 	}
 
 	/* CHIPSET_STATE_OFF */
