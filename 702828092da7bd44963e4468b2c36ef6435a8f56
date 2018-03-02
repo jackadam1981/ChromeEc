@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "787626f3_446c3ff7",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3231,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-03-02T03:58:31Z",
+      "side": 1,
+      "message": "Couldn\u0027t and/or shouldn\u0027t we just add the include to board.h within each board/\u003cboard\u003e/board.h which employs baseboard sharing?",
+      "revId": "702828092da7bd44963e4468b2c36ef6435a8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
