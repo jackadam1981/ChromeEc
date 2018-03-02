@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e723930d_809501a0",
+        "filename": "baseboard/octopus/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-02T14:48:59Z",
+      "side": 1,
+      "message": "Do you think the leaf boards will need to modify this (e.g. if one of the USBC ports is converted to HDMI)?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 26
+      },
+      "revId": "702828092da7bd44963e4468b2c36ef6435a8f56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "787626f3_446c3ff7",
         "filename": "include/config.h",
         "patchSetId": 1
