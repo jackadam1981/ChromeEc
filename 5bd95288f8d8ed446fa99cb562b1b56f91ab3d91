@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c00907e9_d941f2fe",
+        "filename": "chip/npcx/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2018-03-02T01:22:02Z",
+      "side": 1,
+      "message": "Indeed, sorry for typo.",
+      "parentUuid": "7fb40481_5a9e0707",
+      "range": {
+        "startLine": 54,
+        "startChar": 15,
+        "endLine": 54,
+        "endChar": 19
+      },
+      "revId": "5bd95288f8d8ed446fa99cb562b1b56f91ab3d91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea1debf7_baac91c4",
         "filename": "chip/npcx/fan.c",
         "patchSetId": 2
