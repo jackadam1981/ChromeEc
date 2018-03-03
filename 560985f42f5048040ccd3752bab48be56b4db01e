@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "cb912ba3_d2db79f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-03-03T05:03:03Z",
+      "side": 1,
+      "message": "Roger that. And I will submit another CL for coral firmware branch then abandon this one.",
+      "parentUuid": "848a19b5_1e5ee35c",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "560985f42f5048040ccd3752bab48be56b4db01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c9f30fb_82607ef5",
         "filename": "include/hooks.h",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "writtenOn": "2018-03-02T16:49:21Z",
       "side": 1,
       "message": "In the Coral FW branch this value is set to HOOK_PRIO_FIRST + 13. I agree with the comment here about it needing to be 2 earlier than EXTPOWER. However, I think you should just add 1 to the values and insert ADC here rather than having a multiple entries with the same number.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 42
+      },
+      "revId": "560985f42f5048040ccd3752bab48be56b4db01e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2b31ebe_18ee51d0",
+        "filename": "include/hooks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2018-03-03T05:03:03Z",
+      "side": 1,
+      "message": "Will address this comment in the new CL in coral firmware branch.",
+      "parentUuid": "7c9f30fb_82607ef5",
       "range": {
         "startLine": 45,
         "startChar": 1,
