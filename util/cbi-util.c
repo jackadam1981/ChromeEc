@@ -35,7 +35,7 @@
 struct board_info {
 	uint16_t version;
 	uint8_t oem_id;
-	uint8_t sku_id;
+	uint16_t sku_id;
 } __attribute__((packed));
 
 /* Command line options */
@@ -257,7 +257,7 @@ static void print_help(int argc, char *argv[])
 	       "For '--create <cbi_file> [OPTIONS]', required OPTIONS are:\n"
 	       "  --board_version <uint16>    Board version\n"
 	       "  --oem_id <uint8>            OEM ID\n"
-	       "  --sku_id <uint8>            SKU ID\n"
+	       "  --sku_id <uint16>           SKU ID\n"
 	       "  --size <uint16>             Size of output file\n"
 	       "Optional OPTIONS are:\n"
 	       "  --erase_byte <uint8>        Byte used for empty space\n"
@@ -330,7 +330,7 @@ int main(int argc, char **argv)
 			break;
 		case OPT_SKU_ID:
 			val = strtoul(optarg, &e, 0);
-			if (val > UCHAR_MAX || !*optarg || (e && *e)) {
+			if (val > USHRT_MAX || !*optarg || (e && *e)) {
 				fprintf(stderr, "Invalid --sku_id\n");
 				parse_error = 1;
 			}
