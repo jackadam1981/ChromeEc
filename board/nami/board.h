@@ -55,6 +55,7 @@
 #define CONFIG_FANS 1
 #define CONFIG_THROTTLE_AP
 #define CONFIG_CHIPSET_CAN_THROTTLE
+#define DYNAMIC_FAN_STRACTURE
 
 /* EC console commands */
 #define CONFIG_CMD_ACCELS
