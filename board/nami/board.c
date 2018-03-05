@@ -417,6 +417,7 @@ static void chipset_pre_init(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 
+static void board_set_motion_sensor_count(void);
 /* Initialize board. */
 static void board_init(void)
 {
@@ -449,6 +450,9 @@ static void board_init(void)
 
 	/* Enable Gyro interrupt for BMI160 */
 	gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
+
+	/* Update motion_sensor_count  */
+	board_set_motion_sensor_count();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -626,6 +630,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.min_frequency = BMI160_GYRO_MIN_FREQ,
 		.max_frequency = BMI160_GYRO_MAX_FREQ,
 	},
+
 	[LID_ALS] = {
 		.name = "Light",
 		.active_mask = SENSOR_ACTIVE_S0,
@@ -647,8 +652,13 @@ struct motion_sensor_t motion_sensors[] = {
 			},
 		},
 	},
+	/* Due to some project w/ ALS, we will use the
+	 * motion_sensor_count to switch whether support ALS.
+	 * Please make sure the LID_ALS is the last device in
+	 * motion_sensors array.
+	 */
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */
 const struct motion_sensor_t *motion_als_sensors[] = {
@@ -694,3 +704,18 @@ static void lm3509_kblight_lid_change(void)
 		lm3509_poweroff();
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, lm3509_kblight_lid_change, HOOK_PRIO_DEFAULT);
+
+static void board_set_motion_sensor_count(void)
+{
+	/* There are two possible sensor configurations.
+	 * Vayne(Dell) is without ALS sensor
+	 * Nami is with ALS sensor
+	 * Use the oem id to different them.
+	 */
+	uint32_t oem_id;
+
+	if (cbi_get_oem_id(&oem_id) == EC_SUCCESS) {
+		if (oem_id == PROJECT_VAYNE)
+			motion_sensor_count = ARRAY_SIZE(motion_sensors) - 1;
+	}
+}
