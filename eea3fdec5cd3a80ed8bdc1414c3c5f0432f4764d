@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e706038_2a7dfb76",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-05T20:40:45Z",
+      "side": 1,
+      "message": "Just use the active voice: implement",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "eea3fdec5cd3a80ed8bdc1414c3c5f0432f4764d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5741362_c88ed138",
         "filename": "board/yorp/board.c",
         "patchSetId": 1
@@ -36,6 +59,30 @@
       "writtenOn": "2018-03-05T20:20:57Z",
       "side": 1,
       "message": "According to the power sequence sequencing sheet in the schematic, PMIC_EN shouldn\u0027t turn on until S4, but it appears that the power state machine for intel_x86.c treats S4 like S5.\n\nI initially wrote the code to wait until S5-\u003eS3 transition to enable PMIC, but that seemed too late.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "eea3fdec5cd3a80ed8bdc1414c3c5f0432f4764d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da44b9a5_09d410e1",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-05T20:40:45Z",
+      "side": 1,
+      "message": "S4 \u003d\u003d S5. There\u0027s no distinction electrically. As this function is called going from G3 -\u003e S5 it\u0027s the right place to do this.",
+      "parentUuid": "de95fc31_065264ed",
       "range": {
         "startLine": 61,
         "startChar": 1,
