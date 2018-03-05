@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e7f8898_b265f107",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-05T23:59:38Z",
+      "side": 1,
+      "message": "CONFIG_CHIPSET_RESET_HOOK?\n\nbut then you will also need a handler in board.c for reset. Do you plan to add it as a follow-up?",
+      "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b379785_97ffdf32",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-05T23:59:38Z",
+      "side": 1,
+      "message": "#undef CONFIG_PECI?",
+      "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c7bfbf5_56659338",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-05T23:59:38Z",
+      "side": 1,
+      "message": "nit: Enable",
+      "range": {
+        "startLine": 30,
+        "startChar": 21,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1de10a7d_052d34aa",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-05T23:59:38Z",
+      "side": 1,
+      "message": "CONFIG_POWER_BUTTON_X86",
+      "range": {
+        "startLine": 33,
+        "startChar": 27,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8f5adcb_a9def099",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-05T23:59:38Z",
+      "side": 1,
+      "message": "Are you planning to enable S0ix in a follow-up CL?",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 24
+      },
+      "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
