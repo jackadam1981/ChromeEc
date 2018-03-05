@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa10f8a5_854638a8",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-05T18:27:59Z",
+      "side": 1,
+      "message": "static int board_version \u003d -1;\n\nand do the gpio reading only if board_version \u003d\u003d -1? Then, you don\u0027t have to re-read the GPIOs every time board_get_version is called.",
+      "range": {
+        "startLine": 374,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 4
+      },
+      "revId": "cf429e3c6b88cedf8ea6d0f169a73a3c228429eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
