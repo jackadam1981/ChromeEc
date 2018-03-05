@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f17591e4_9509f622",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-05T20:56:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e706038_2a7dfb76",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "eea3fdec5cd3a80ed8bdc1414c3c5f0432f4764d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5741362_c88ed138",
         "filename": "board/yorp/board.c",
         "patchSetId": 1
@@ -92,6 +116,30 @@
       "revId": "eea3fdec5cd3a80ed8bdc1414c3c5f0432f4764d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4201c189_62276d00",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-05T20:56:19Z",
+      "side": 1,
+      "message": "SGTM. Thanks!",
+      "parentUuid": "da44b9a5_09d410e1",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "eea3fdec5cd3a80ed8bdc1414c3c5f0432f4764d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
