@@ -46,6 +46,30 @@
       "revId": "c94812b63e52ac2692328faccf6372bea73c11df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cafb3d6_6eeed452",
+        "filename": "board/chell/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000722
+      },
+      "writtenOn": "2018-03-05T20:16:40Z",
+      "side": 1,
+      "message": "I don\u0027t see Rohm\u0027s explicit yes to PFM in S3?  Also can we add comment\n\n* mode control     \u003d PFM  \u003d\u003d d[1:0] \u003d\u003d 01b\n\nfor future reference?  Thanks!",
+      "parentUuid": "f3fd6f0f_457e4035",
+      "range": {
+        "startLine": 289,
+        "startChar": 33,
+        "endLine": 289,
+        "endChar": 36
+      },
+      "revId": "c94812b63e52ac2692328faccf6372bea73c11df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
