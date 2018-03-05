@@ -142,7 +142,12 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /******************************************************************************/
 /* Physical fans. These are logically separate from pwm_channels. */
+#ifdef DYNAMIC_FAN_STRACTURE
+struct fan_t fans[] = {
+#else
 const struct fan_t fans[] = {
+#endif
+	/* default follow Nami componbent */
 	[FAN_CH_0] = {
 		.flags = FAN_USE_RPM_MODE,
 		.rpm_min = 2800,
@@ -430,6 +435,8 @@ DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 static void board_init(void)
 {
 	uint32_t version;
+	uint32_t sku_id;
+	int fan;
 
 	if (cbi_get_board_version(&version) == EC_SUCCESS)
 		CPRINTS("Board Version: 0x%04x", version);
@@ -458,6 +465,18 @@ static void board_init(void)
 
 	/* Enable Gyro interrupt for BMI160 */
 	gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
+
+#ifdef DYNAMIC_FAN_STRACTURE
+	if (cbi_get_sku_id(&sku_id) == EC_SUCCESS) {
+		/* change to Vayne componment */
+		if (sku_id == SKU_VAYNE1 || sku_id == SKU_VAYNE2)
+			for (fan = 0; fan < CONFIG_FANS; fan++) {
+				fans[fan].rpm_min = 2900;
+				fans[fan].rpm_start = 2900;
+				fans[fan].rpm_max = 7000;
+			}
+	}
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 

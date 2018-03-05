@@ -55,6 +55,7 @@
 #define CONFIG_FANS 1
 #define CONFIG_THROTTLE_AP
 #define CONFIG_CHIPSET_CAN_THROTTLE
+#define DYNAMIC_FAN_STRACTURE
 
 /* EC console commands */
 #define CONFIG_CMD_ACCELS
@@ -277,6 +278,11 @@ enum mft_channel {
 int board_get_version(void);
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
+
+/* Define different sku_id */
+#define SKU_NAMI	0x3A7B
+#define SKU_VAYNE1	0x3A63
+#define SKU_VAYNE2	0x3A7F
 
 #endif /* !__ASSEMBLER__ */
 
