@@ -714,13 +714,32 @@ struct motion_sensor_t motion_sensors[] = {
 	 },
 	},
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count;
 
 /* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */
 const struct motion_sensor_t *motion_als_sensors[] = {
 	&motion_sensors[LID_ALS],
 };
 BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
+
+static void get_motion_sensors_count(void)
+{
+	/* There are two possible sensor configurations. Vayne device will
+	 * not have the motion sensors of ALS, If a SKU id is used that is NAMI,
+	 * then the number of motion sensors will remain as
+	 * ARRAY_SIZE(motion_sensors)
+	 */
+		uint32_t sku_id;
+
+		if (cbi_get_sku_id(&sku_id) == EC_SUCCESS)	{
+			if (sku_id == SKU_NAMI)
+				motion_sensor_count =
+				ARRAY_SIZE(motion_sensors);
+			else
+				motion_sensor_count = 3;
+		}
+}
+DECLARE_HOOK(HOOK_INIT, get_motion_sensors_count, HOOK_PRIO_DEFAULT);
 
 /* Enable or disable input devices, based on chipset state and tablet mode */
 #ifndef TEST_BUILD
