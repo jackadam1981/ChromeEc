@@ -16,6 +16,24 @@
       "revId": "ad6d84f7e39cdeeb1df77ca2ffcc557da6d6fc0e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32dbfe75_49f18756",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-05T22:37:42Z",
+      "side": 1,
+      "message": "yes, to 0. Thanks for catching that copy paste bug.\n\nThe 2 crbugs that coral (and reef) reference don\u0027t seem like that will apply to us (since our schematic has the AND gate fixes specific in one of them).\n\nOur power on sequence diagram also have these two rail coming on in parallel so I was trying to honor that. (Also a long time ago, the code was very similar to this)",
+      "parentUuid": "049d882f_60cc9ae2",
+      "revId": "ad6d84f7e39cdeeb1df77ca2ffcc557da6d6fc0e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
