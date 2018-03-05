@@ -128,6 +128,7 @@
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_TABLET_MODE
 #define CONFIG_LID_ANGLE_INVALID_CHECK
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
 /* KB backlight driver */
 #define CONFIG_LED_DRIVER_LM3509
@@ -277,6 +278,10 @@ enum mft_channel {
 int board_get_version(void);
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
+
+#define SKU_NAMI   0x3A7B
+#define SKU_VAYNE1 0x3A63
+#define SKU_VAYNE2 0x3A7F
 
 #endif /* !__ASSEMBLER__ */
 
