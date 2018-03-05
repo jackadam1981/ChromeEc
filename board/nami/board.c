@@ -642,7 +642,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.max_frequency = OPT3001_LIGHT_MAX_FREQ,
 	},
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */
 const struct motion_sensor_t *motion_als_sensors[] = {
@@ -688,3 +688,18 @@ static void lm3509_kblight_lid_change(void)
 		lm3509_poweroff();
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, lm3509_kblight_lid_change, HOOK_PRIO_DEFAULT);
+
+static void board_set_motion_sensor_count(void)
+{
+	/* There are two possible sensor configurations.
+	 * Vayne(Dell) is without ALS sensor
+	 * Nami is with ALS sensor
+	 */
+	uint32_t oem_id;
+
+	if (cbi_get_oem_id(&oem_id) == EC_SUCCESS) {
+		if (oem_id == PROJECT_VAYNE)
+			motion_sensor_count = 3;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_set_motion_sensor_count, HOOK_PRIO_DEFAULT);
