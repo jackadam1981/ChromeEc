@@ -126,6 +126,7 @@
 #define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_TABLET_MODE
 #define CONFIG_LID_ANGLE_INVALID_CHECK
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
 /* KB backlight driver */
 #define CONFIG_LED_DRIVER_LM3509
@@ -252,6 +253,15 @@ enum mft_channel {
 	MFT_CH_0 = 0,
 	/* Number of MFT channels */
 	MFT_CH_COUNT,
+};
+
+enum oem_id {
+	OEM_ACER = 1,
+	OEM_ASUS,
+	OEM_DELL,
+	OEM_HP,
+	OEM_LENOVO,
+	OEM_WHITE_LABLE,
 };
 
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */
