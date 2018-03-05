@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5741362_c88ed138",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-05T20:20:57Z",
+      "side": 1,
+      "message": "This is different than reef [1]. Namely, I dropped the reference to the bugs and drop the waiting for 5.0V rail to come up before starting the 3.3V rail as both don\u0027t seem to apply anymore.\n\nYorp\u0027s schematics has AND gates on the SLP lines, so we shouldn\u0027t be susceptible to the sleep glitches that reef had issues with.\n\n[1] https://chromium.git.corp.google.com/chromiumos/platform/ec/+/master/board/reef/board.c#510",
+      "range": {
+        "startLine": 51,
+        "startChar": 12,
+        "endLine": 51,
+        "endChar": 28
+      },
+      "revId": "eea3fdec5cd3a80ed8bdc1414c3c5f0432f4764d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de95fc31_065264ed",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-05T20:20:57Z",
+      "side": 1,
+      "message": "According to the power sequence sequencing sheet in the schematic, PMIC_EN shouldn\u0027t turn on until S4, but it appears that the power state machine for intel_x86.c treats S4 like S5.\n\nI initially wrote the code to wait until S5-\u003eS3 transition to enable PMIC, but that seemed too late.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "eea3fdec5cd3a80ed8bdc1414c3c5f0432f4764d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
