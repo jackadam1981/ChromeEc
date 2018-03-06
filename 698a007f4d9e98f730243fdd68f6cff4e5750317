@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "8b68bdbd_98f33f52",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-06T01:49:32Z",
+      "side": 1,
+      "message": "Just don\u0027t verify the length here.\n\nIf the challenge is malformed, then base32_decode() will decode the wrong length, and we\u0027ll fail at line 121 below.",
+      "parentUuid": "2292e422_3ebf0822",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "698a007f4d9e98f730243fdd68f6cff4e5750317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7e28a92_0178f62a",
         "filename": "extra/rma_reset/rma_reset.c",
         "patchSetId": 1
