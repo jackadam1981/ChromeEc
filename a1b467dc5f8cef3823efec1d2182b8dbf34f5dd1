@@ -46,6 +46,30 @@
       "revId": "a1b467dc5f8cef3823efec1d2182b8dbf34f5dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcdcede2_8a47fae4",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-06T08:56:19Z",
+      "side": 1,
+      "message": "With BITS_PER_LEVEL_MAX \u003d\u003d 8, still looks like a stack overflow to me ( 1 \u003c\u003c 8 * 32 \u003d 8192 Bytes), albeit a controlled one.",
+      "parentUuid": "7591d814_eb7721fa",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "a1b467dc5f8cef3823efec1d2182b8dbf34f5dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
