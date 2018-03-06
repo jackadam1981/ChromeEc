@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ac83295_09121a4d",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-06T18:11:02Z",
+      "side": 1,
+      "message": "UINT8_MAX?\n\n(and similarly for UINT16_MAX and UINT32_MAX)\n\nUCHAR_MAX, USHRT_MAX, UINT_MAX aren\u0027t guaranteed to be 8/16/32 bit.",
+      "range": {
+        "startLine": 142,
+        "startChar": 14,
+        "endLine": 142,
+        "endChar": 23
+      },
+      "revId": "a3b0c533df6a2f525f65170895ca926a8aa92336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9d9ae3b_4a247583",
+        "filename": "util/cbi-util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-06T18:11:02Z",
+      "side": 1,
+      "message": "May be easier to see the size if it\u0027s phrased this way:\n\u003c\u003d 0xFFFFFFFF\n\u003c\u003d 0xFFFF\n(but ok either way)",
+      "range": {
+        "startLine": 274,
+        "startChar": 46,
+        "endLine": 275,
+        "endChar": 60
+      },
+      "revId": "a3b0c533df6a2f525f65170895ca926a8aa92336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
