@@ -252,6 +252,30 @@
     },
     {
       "key": {
+        "uuid": "c08616f7_52952b88",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-06T03:03:30Z",
+      "side": 1,
+      "message": "Yeah, in that case we don\u0027t care.\n\nIt\u0027s unlikely a wrong string would have valid CRC.\n\nAnd if it\u0027s a valid string with whitespace in the middle (XXXXX YYYYY ZZZZZ, not XXXXXYYYYYZZZZZ) and/or extra chars at the end, we\u0027ll just ignore the extra.\n\nEven in the unlikely event the whole string has valid CRCs, then the worst case is it doesn\u0027t decode to a valid challenge version, or generates an invalid response.  Either of those will generate an error either here or when the user tries the response code on the DUT.",
+      "parentUuid": "c4a40df6_4259e290",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "698a007f4d9e98f730243fdd68f6cff4e5750317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7e28a92_0178f62a",
         "filename": "extra/rma_reset/rma_reset.c",
         "patchSetId": 1
