@@ -22,6 +22,30 @@
       "revId": "4a361aa55054f351d0709600c741a2453a47b091",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "835deee1_3c5eb8da",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-06T00:16:29Z",
+      "side": 1,
+      "message": "Right, at the time we wanted to obfuscate the assistant key (which is the main change...).\n\nI\u0027ll fix that in a separate CL.",
+      "parentUuid": "63d340b0_fa214be7",
+      "range": {
+        "startLine": 198,
+        "startChar": 24,
+        "endLine": 198,
+        "endChar": 31
+      },
+      "revId": "4a361aa55054f351d0709600c741a2453a47b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
