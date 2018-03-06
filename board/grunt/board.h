@@ -22,7 +22,6 @@
 #define CONFIG_FLASH_SIZE (512 * 1024)
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
-#undef CONFIG_PECI
 /*
  * Enable 1 slot of secure temporary storage to support
  * suspend/resume with read/write memory training.

@@ -15,7 +15,6 @@
 #define NPCX_UART_MODULE2 1  /* GPIO64/65 are used as UART pins. */
 #define NPCX_TACH_SEL2    0  /* [0:GPIO40/73, 1:GPIO93/A6] as TACH */
 #define NPCX7_PWM1_SEL    0  /* GPIO C2 is not used as PWM1. */
-#undef CONFIG_PECI
 
 /* Internal SPI flash on NPCX7 */
 /* Flash is 1MB but reserve half for future use. */
@@ -25,7 +24,6 @@
 #define CONFIG_SPI_FLASH_W25Q128 /* Internal SPI flash type. */
 
 #define CONFIG_POWER_BUTTON
-#undef CONFIG_PECI
 
 #ifndef __ASSEMBLER__
 
