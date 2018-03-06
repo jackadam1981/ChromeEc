@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63d340b0_fa214be7",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-06T00:02:27Z",
+      "side": 1,
+      "message": "Unless this is actually a key with \"NEW\" on it, this isn\u0027t a very sustainable name.  It suggests the next keys we add will result in CONFIG_KEYBOARD_NEWER_KEY, followed by CONFIG_KEYBOARD_NEWEST_KEY. ;)\n\nBut, what the heck, it\u0027s already in the code.  The change to add one more board is fine.",
+      "range": {
+        "startLine": 198,
+        "startChar": 24,
+        "endLine": 198,
+        "endChar": 31
+      },
+      "revId": "4a361aa55054f351d0709600c741a2453a47b091",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
