@@ -18,6 +18,7 @@
 #define NPCX_UART_MODULE2 1  /* GPIO64/65 are used as UART pins. */
 #define NPCX_TACH_SEL2    0  /* No tach. */
 #define NPCX7_PWM1_SEL    0  /* GPIO C2 is not used as PWM1. */
+#undef CONFIG_PECI
 
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE (512 * 1024) /* It's really 1MB. */

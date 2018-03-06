@@ -3433,4 +3433,14 @@
 #define CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ \
 	CONFIG_EC_MAX_SENSOR_FREQ_DEFAULT_MILLIHZ
 #endif
+
+
+#if defined(CONFIG_PECI) && defined(CHIP_FAMILY_NPCX5)
+#error "Error with Npcx 5"
+#endif
+
+#if defined(CONFIG_PECI) && defined(CHIP_FAMILY_NPCX7)
+#error "Error with Npcx 7"
+#endif
+
 #endif  /* __CROS_EC_CONFIG_H */
