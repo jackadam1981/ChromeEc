@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "263b568d_77a7905a",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-03-06T00:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c5f0315_2cbc09ad",
+      "revId": "698a007f4d9e98f730243fdd68f6cff4e5750317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f58c1405_f3ca1a2d",
         "filename": "extra/rma_reset/rma_reset.c",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "8c7a4c02_d1754daf",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-03-06T00:30:49Z",
+      "side": 1,
+      "message": "If there is whitespace, I think the user is going to have trouble reading the challenge from cr50. cr50 adds in whitespace when it prints the challenge, so the user will need to know the format and figure out which whitespace is part of the challenge and which isn\u0027t.",
+      "parentUuid": "f58c1405_f3ca1a2d",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "698a007f4d9e98f730243fdd68f6cff4e5750317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7e28a92_0178f62a",
         "filename": "extra/rma_reset/rma_reset.c",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2018-03-02T16:14:53Z",
       "side": 1,
       "message": "Extra whitespace",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 0
+      },
+      "revId": "698a007f4d9e98f730243fdd68f6cff4e5750317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73cf8fa6_f540bef0",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2018-03-06T00:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7e28a92_0178f62a",
       "range": {
         "startLine": 137,
         "startChar": 0,
