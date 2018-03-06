@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "71810847_cc04b50d",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-06T17:11:29Z",
+      "side": 1,
+      "message": "Added CONFIG_CHIPSET_RESET_HOOK. I didn\u0027t see the reset handler I needed to add in board.c\n\nThere is a handler defined in npcx though",
+      "parentUuid": "3e7f8898_b265f107",
+      "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0b379785_97ffdf32",
         "filename": "board/yorp/board.h",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e58b51_befe5067",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-06T17:11:29Z",
+      "side": 1,
+      "message": "Looks like no one is using this. Sent out https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/951408 to remove it as an automatically defined config that everyone has to undef.",
+      "parentUuid": "0b379785_97ffdf32",
+      "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f330aa6e_a323b907",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-06T17:11:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c7bfbf5_56659338",
+      "range": {
+        "startLine": 30,
+        "startChar": 21,
+        "endLine": 30,
+        "endChar": 28
+      },
+      "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1de10a7d_052d34aa",
         "filename": "board/yorp/board.h",
         "patchSetId": 3
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "3031159f_641835d5",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-06T17:11:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1de10a7d_052d34aa",
+      "range": {
+        "startLine": 33,
+        "startChar": 27,
+        "endLine": 34,
+        "endChar": 0
+      },
+      "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8f5adcb_a9def099",
         "filename": "board/yorp/board.h",
         "patchSetId": 3
@@ -102,6 +186,30 @@
       "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad42de5e_2e75c241",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-06T17:11:29Z",
+      "side": 1,
+      "message": "I went ahead and defined it in this CL. No need for another :)",
+      "parentUuid": "a8f5adcb_a9def099",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 24
+      },
+      "revId": "72c4160e873f283027ab14bccbf4b87650e36107",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
