@@ -140,7 +140,6 @@
 #define OPT3001_I2C_ADDR OPT3001_I2C_ADDR1
 
 /* Modules we want to exclude */
-#undef CONFIG_PECI
 #undef CONFIG_CMD_HASH
 #undef CONFIG_CMD_TEMP_SENSOR
 #undef CONFIG_CMD_TIMERINFO
