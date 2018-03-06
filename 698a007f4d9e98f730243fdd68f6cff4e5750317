@@ -228,6 +228,30 @@
     },
     {
       "key": {
+        "uuid": "c4a40df6_4259e290",
+        "filename": "extra/rma_reset/rma_reset.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-06T02:07:25Z",
+      "side": 1,
+      "message": "looks like base32_decode() might return destlen_bits in case of overflow also, if CRC of the input happens to match.\n\nI guess we don\u0027t care in that case?",
+      "parentUuid": "a746d645_f785b0fb",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 55
+      },
+      "revId": "698a007f4d9e98f730243fdd68f6cff4e5750317",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7e28a92_0178f62a",
         "filename": "extra/rma_reset/rma_reset.c",
         "patchSetId": 1
