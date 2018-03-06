@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db93695e_80224e71",
+        "filename": "extra/usb_updater/verify_ro.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-06T23:03:13Z",
+      "side": 1,
+      "message": "this is where it will report error if there was an error processing a section.",
+      "revId": "c8730832056f97c955c2e51adab5f75da4a5383c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0ca3999_cd83f393",
+        "filename": "extra/usb_updater/verify_ro.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-06T23:03:13Z",
+      "side": 1,
+      "message": "this is where it will report error if no sections was found in the database.",
+      "revId": "c8730832056f97c955c2e51adab5f75da4a5383c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
