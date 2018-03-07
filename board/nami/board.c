@@ -151,9 +151,9 @@ const struct fan_conf fan_conf_0 = {
 };
 
 const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 2800,
-	.rpm_start = 3000,
-	.rpm_max = 6000,
+	.rpm_min = 2900,
+	.rpm_start = 2900,
+	.rpm_max = 7000,
 };
 
 struct fan_t fans[FAN_CH_COUNT] = {
@@ -283,12 +283,12 @@ struct ec_thermal_config thermal_params[] = {
 	 * {Twarn, Thigh, X    }, <off>
 	 * fan_off, fan_max
 	 */
-	{{C_TO_K(80), C_TO_K(85), C_TO_K(88)},
-	{C_TO_K(75), C_TO_K(80), C_TO_K(83)},
-	C_TO_K(40), C_TO_K(80)},	/* TEMP_SENSOR_I2C_F75303_REMOTE1*/
-	{{C_TO_K(75), C_TO_K(80), C_TO_K(83)},
-	{C_TO_K(70), C_TO_K(75), C_TO_K(78)},
-	C_TO_K(35), C_TO_K(75)},	/* TEMP_SENSOR_I2C_F75303_REMOTE2*/
+	{{C_TO_K(88), C_TO_K(97), C_TO_K(125)},
+	{C_TO_K(85), C_TO_K(97), C_TO_K(125)},
+	C_TO_K(45), C_TO_K(62)},	/* TEMP_SENSOR_I2C_F75303_REMOTE1*/
+	{{C_TO_K(75), C_TO_K(97), C_TO_K(125)},
+	{C_TO_K(85), C_TO_K(97), C_TO_K(125)},
+	C_TO_K(40), C_TO_K(60)},	/* TEMP_SENSOR_I2C_F75303_REMOTE2*/
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
