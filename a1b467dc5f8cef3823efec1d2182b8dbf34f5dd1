@@ -70,6 +70,30 @@
       "revId": "a1b467dc5f8cef3823efec1d2182b8dbf34f5dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e1b9f03_f1eb6fc4",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-07T00:09:15Z",
+      "side": 1,
+      "message": "I have a height check that would actually fail, so I updated BITS_PER_LEVEL_MAX to be 5 since the height check will fail for anything higher than 6, but 5 is probably good enough and the default value we will be using is 2.",
+      "parentUuid": "dcdcede2_8a47fae4",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "a1b467dc5f8cef3823efec1d2182b8dbf34f5dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
