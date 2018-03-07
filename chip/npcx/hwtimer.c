@@ -34,13 +34,14 @@ static volatile uint32_t evt_cnt_us_dbg;
 static volatile uint32_t cur_cnt_us_dbg;
 #endif
 
+/*
 #if !(DEBUG_TMR)
 #define CPUTS(...)
 #define CPRINTS(...)
-#else
+#else*/
 #define CPUTS(outstr) cputs(CC_CLOCK, outstr)
 #define CPRINTS(format, args...) cprints(CC_CLOCK, format, ## args)
-#endif
+/*#endif*/
 
 /*****************************************************************************/
 /* Internal functions */
@@ -310,3 +311,59 @@ int __hw_clock_source_init(uint32_t start_t)
 
 	return NPCX_IRQ_ITIM32;
 }
+
+#include "fan_chip.h"
+#include "gpio.h"
+
+/* MFT model select */
+enum npcx_mft_mdsel {
+	NPCX_MFT_MDSEL_1,
+	NPCX_MFT_MDSEL_2,
+	NPCX_MFT_MDSEL_3,
+	NPCX_MFT_MDSEL_4,
+	NPCX_MFT_MDSEL_5,
+	/* Number of MFT modes */
+	NPCX_MFT_MDSEL_COUNT
+};
+
+/* Capture timer stuff */
+void timer_capture_init(void)
+{
+	const int mdl = 1;
+
+	/* Hijack PWM module, for now. */
+	gpio_config_module(MODULE_PWM, 1);
+
+	CPRINTS("apb1 freq %d", clock_get_apb1_freq());
+
+	/* Enable the fan module and delay a few clocks */
+	clock_enable_peripheral(CGC_OFFSET_FAN, CGC_FAN_MASK, CGC_MODE_ALL);
+
+	/*
+	 * Prescaler 4 (using 0 causes too many overflows, and then the
+	 * timer value can't be trusted anymore.
+	 */
+	NPCX_TPRSC(mdl) =  4-1;
+
+	NPCX_TCNT1(mdl) = 0xffff;
+
+	/* Set the low power mode or not. */
+	//UPDATE_BIT(NPCX_TCKC(mdl), NPCX_TCKC_LOW_PWR, 0);
+
+	/* Set mode 2 to MFT module */
+	SET_FIELD(NPCX_TMCTRL(mdl), NPCX_TMCTRL_MDSEL_FIELD,
+		NPCX_MFT_MDSEL_2);
+	/* Set the edge polarity to falling. */
+	CLEAR_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TAEDG);
+	CLEAR_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TBEDG);
+	CLEAR_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TAEN);
+	CLEAR_BIT(NPCX_TMCTRL(mdl), NPCX_TMCTRL_TBEN);
+	/* Leave TAEN/TBEN as 0 to capture. */
+	/* Do not enable input debounce logic into TA/TB. */
+	//SET_BIT(NPCX_TCFG(mdl), NPCX_TCFG_TADBEN);
+	//SET_BIT(NPCX_TCFG(mdl), NPCX_TCFG_TBDBEN);
+
+	SET_FIELD(NPCX_TCKC(mdl), NPCX_TCKC_C1CSEL_FIELD,
+		TCKC_PRESCALE_APB1_CLK);
+}
+DECLARE_HOOK(HOOK_INIT, timer_capture_init, HOOK_PRIO_DEFAULT);
