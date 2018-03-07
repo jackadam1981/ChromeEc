@@ -198,6 +198,8 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 	.scale = 1,
 	.uscale = 0,
 	.offset = 0,
+	/* Meowth has a dark cover glass; report in mlux. */
+	.attenuation_factor = 1000,
 };
 
 struct motion_sensor_t motion_sensors[] = {
