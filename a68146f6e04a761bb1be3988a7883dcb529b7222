@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef6d4963_bd717c23",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-07T23:29:13Z",
+      "side": 1,
+      "message": "Don\u0027t you need to re-configure these for alternate functions?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "a68146f6e04a761bb1be3988a7883dcb529b7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dd132c4_405b8966",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-07T23:29:13Z",
+      "side": 1,
+      "message": "Are you planning to push follow-up patches to enable/disable this based on chipset transitions?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 83
+      },
+      "revId": "a68146f6e04a761bb1be3988a7883dcb529b7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "738887d5_21899c03",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-07T23:29:13Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be configured as an interrupt?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 72
+      },
+      "revId": "a68146f6e04a761bb1be3988a7883dcb529b7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a126ec_5705628d",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-07T23:29:13Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 72
+      },
+      "revId": "a68146f6e04a761bb1be3988a7883dcb529b7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
