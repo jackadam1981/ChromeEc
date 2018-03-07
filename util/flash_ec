@@ -873,7 +873,7 @@ function flash_npcx_jtag() {
 
 function flash_npcx_uut() {
 	TOOL_PATH="${EC_DIR}/build/${BOARD}/util:$PATH"
-	NPCX_UUT=$(PATH="${TOOL_PATH}" which Uartupdatetool)
+	NPCX_UUT=$(PATH="${TOOL_PATH}" which uartupdatetool)
 	EC_UART="$(servo_ec_uart)"
 
 	BUILD_PATH="${EC_DIR}/build/${BOARD}"
@@ -899,7 +899,7 @@ function flash_npcx_uut() {
 	info "${MCU} UART pty : ${EC_UART}"
 	claim_pty ${EC_UART}
 
-	# Remove the prefix "/dev/" because Uartupdatetool will add it.
+	# Remove the prefix "/dev/" because uartupdatetool will add it.
 	EC_UART=${EC_UART#/dev/}
 	MON_PARAMS="-port ${EC_UART} -baudrate 115200"
 
