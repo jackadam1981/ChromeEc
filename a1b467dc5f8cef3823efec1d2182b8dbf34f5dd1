@@ -118,6 +118,30 @@
       "revId": "a1b467dc5f8cef3823efec1d2182b8dbf34f5dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00677209_d07cba06",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-07T17:55:39Z",
+      "side": 1,
+      "message": "AFAIK the hardware accelerated DCRYPTO_sha256_hash requires having the data to be hashed be contiguous. I saw some code for updating the hash, but there were comments that suggested it didn\u0027t use the hardware acceleration.",
+      "parentUuid": "7387d55c_256a9842",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "a1b467dc5f8cef3823efec1d2182b8dbf34f5dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }

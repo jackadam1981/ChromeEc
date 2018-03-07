@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45cc051b_f736b91e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-07T17:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f188b0e_a9bd74c1",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3eec7af5_723151ae",
         "filename": "board/cr50/build.mk",
         "patchSetId": 27
@@ -45,6 +69,30 @@
       "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c009c8bb_b9177e94",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 27
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-07T17:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eec7af5_723151ae",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d274ca0b_0bccc61e",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 27
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-07T17:55:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7418ae38_1501cece",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 28
+      },
+      "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7c6f4c9_d8c997b3",
         "filename": "common/pinweaver.c",
         "patchSetId": 27
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "08f6d910_6be13525",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-07T17:55:39Z",
+      "side": 1,
+      "message": "I have made all the functions static except:\n1) pw_handle_request, which is really the only function that needs to be exported\n2) Some utility functions that have extra test cases. These could be removed now that I am confident the implementation is correct, but it might be better to leave them because they verify the functions behave as expected.",
+      "parentUuid": "f7c6f4c9_d8c997b3",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6601b2b_6156ee80",
         "filename": "common/pinweaver.c",
         "patchSetId": 27
@@ -114,6 +210,30 @@
       "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3f89acc_0fa7b3f0",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-07T17:55:39Z",
+      "side": 1,
+      "message": "Even if I were to use force_time() I would still need a way of mocking the boot count.",
+      "parentUuid": "e6601b2b_6156ee80",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 34
+      },
+      "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
