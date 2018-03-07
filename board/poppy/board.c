@@ -115,6 +115,13 @@ void usb1_evt(enum gpio_signal signal)
 	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
 }
 
+#ifdef BOARD_LUX
+void wfcam_vsync_interrupt(enum gpio_signal signal)
+{
+	CPRINTF("V");
+}
+#endif
+
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static void anx74xx_cable_det_handler(void)
 {
