@@ -766,6 +766,8 @@ int list_activities(const struct motion_sensor_t *s,
 #endif
 
 #ifdef CONFIG_ACCEL_INTERRUPTS
+#include "registers.h"
+
 /**
  * bmi160_interrupt - called when the sensor activates the interrupt line.
  *
@@ -774,6 +776,7 @@ int list_activities(const struct motion_sensor_t *s,
  */
 void bmi160_interrupt(enum gpio_signal signal)
 {
+	CPRINTS("bmiint %d %d", NPCX_TCRA(1), NPCX_TCNT1(1));
 	task_set_event(TASK_ID_MOTIONSENSE,
 		       CONFIG_ACCELGYRO_BMI160_INT_EVENT, 0);
 }
@@ -845,6 +848,7 @@ static int config_interrupt(const struct motion_sensor_t *s)
 
 	/* configure fifo watermark at 50% */
 	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_0,
+//			1);
 			512 / sizeof(uint32_t));
 #ifdef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
 	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_1,
