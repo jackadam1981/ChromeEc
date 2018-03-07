@@ -12,6 +12,13 @@ build-util-bin=ec_uartd iteflash
 build-util-art+=util/export_taskinfo.so
 ifeq ($(CHIP),npcx)
 build-util-bin+=ecst
+# Firmware update via UART is supported in npcx7 (or later) chips.
+ifneq ($(CHIP_FAMILY),npcx5)
+build-util-bin+=uartupdatetool
+uartupdatetool-files=main.o cmd.o opr.o l_com_port.o lib_crc.o
+uartupdatetool-objs=$(foreach c, $(uartupdatetool-files), uut/$(c))
+$(out)/util/uartupdatetool: BUILD_CFLAGS+=-Iutil/
+endif
 endif
 # Build on a limited subset of boards to save build time
 ifeq ($(BOARD),meowth_fp)
