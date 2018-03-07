@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f188b0e_a9bd74c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-07T14:33:44Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eec7af5_723151ae",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 27
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-07T14:33:44Z",
+      "side": 1,
+      "message": "this is a no-op ?\ncommon-$(CONFIG_PINWEAVER) below is already conditional on this same condition",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7418ae38_1501cece",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 27
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-07T14:33:44Z",
+      "side": 1,
+      "message": "if this is cr50-only code, why is it in common ?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 28
+      },
+      "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7c6f4c9_d8c997b3",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-07T14:33:44Z",
+      "side": 1,
+      "message": "it seems most of those functions should be declared as static.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6601b2b_6156ee80",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-07T14:33:44Z",
+      "side": 1,
+      "message": "why do you need another way of mocking time for \u0027host\u0027 ?\nisn\u0027t the regular force_time() not enough for your test ?",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 34
+      },
+      "revId": "78e5eed30187d9305ca31418ee660492fcfce4dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

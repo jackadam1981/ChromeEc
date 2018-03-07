@@ -94,6 +94,30 @@
       "revId": "a1b467dc5f8cef3823efec1d2182b8dbf34f5dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7387d55c_256a9842",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 24
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-07T14:33:44Z",
+      "side": 1,
+      "message": "Overall I still have very hard time understanding the real usefulness of these child_hashes (and buffer[] in compute_hash) large arrays on the stacks.\nLooking at the code, it seems you are only copying content in them to immediately hash it (in order) afterwards. Why are you not hashing the original content directly ?",
+      "parentUuid": "7e1b9f03_f1eb6fc4",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 30
+      },
+      "revId": "a1b467dc5f8cef3823efec1d2182b8dbf34f5dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
