@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3cc8a78_4b9fdc77",
+        "filename": "board/yorp/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-07T23:15:43Z",
+      "side": 1,
+      "message": "In general, it seems like the host_command_task has been assigned a higher priority than chipset_task in all other EC boards. Any reason why we would want to do it differently here?",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 67
+      },
+      "revId": "4f393712fdcda4f30733d919363ae7452ae58035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87e32762_2ddd43ca",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-07T23:15:43Z",
+      "side": 1,
+      "message": "nit: This might fit on the above line?",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "4f393712fdcda4f30733d919363ae7452ae58035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
