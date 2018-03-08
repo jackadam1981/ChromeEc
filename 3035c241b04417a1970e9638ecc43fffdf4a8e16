@@ -22,6 +22,29 @@
       "revId": "3035c241b04417a1970e9638ecc43fffdf4a8e16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fdda45b_e3b726d3",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-08T19:44:08Z",
+      "side": 1,
+      "message": "You should do all these only once per boot.",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 34
+      },
+      "revId": "3035c241b04417a1970e9638ecc43fffdf4a8e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
