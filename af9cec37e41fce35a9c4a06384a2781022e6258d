@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "05a7c55d_0ffd21f3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-08T23:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79fcca5a_cd6af5ec",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "842b3bfc_4a4e73a1",
         "filename": "common/motion_sense.c",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2018-02-28T00:22:08Z",
       "side": 1,
       "message": "move this functio0n line 182, remove line 153.",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77f61c8f_cc5c122b",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-08T23:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "842b3bfc_4a4e73a1",
       "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "441c0527_2a750380",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-08T23:27:51Z",
+      "side": 1,
+      "message": "Perhaps a separate CL. Fifo flushing should be a noop after my code. So it won\u0027t hurt, but it\u0027s kinda wasteful.\n\nI\u0027m afraid of breaking stuff if I remove it now.",
+      "parentUuid": "938d5466_95871b33",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e129530_0ef979fb",
         "filename": "common/motion_sense.c",
         "patchSetId": 9
@@ -64,6 +118,24 @@
       "writtenOn": "2018-02-28T00:22:08Z",
       "side": 1,
       "message": "remove",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12b9ab3a_d71e092f",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-08T23:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e129530_0ef979fb",
       "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "10185094_93175618",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-08T23:27:51Z",
+      "side": 1,
+      "message": "Similar issue on the vsync sensor.\n\nThere\u0027s no way for the bmi_interrupt function to know which motion_sensor_t it\u0027s interrupting for. Only thing bmi_interrupt knows is the gpio that caused the interrupt, and there\u0027s no mapping between gpios to motion_sensor_t.\n\nKeeping it as a global for now.",
+      "parentUuid": "8e68bbe8_6f1d4742",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af8c2445_8ec563cb",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 9
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "28c7a74d_2b4c1f45",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-08T23:27:51Z",
+      "side": 1,
+      "message": "Done, but also split off in a separate CL. See Change-Id: I726550e68447a74bbfed88b703d2f68b6967ac93",
+      "parentUuid": "af8c2445_8ec563cb",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cbef5c4_44aee005",
         "filename": "driver/accelgyro_bmi160.c",
         "patchSetId": 9
@@ -115,6 +223,24 @@
       "writtenOn": "2018-02-28T00:22:08Z",
       "side": 1,
       "message": "80 columns.",
+      "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12aa88f2_960773ff",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-08T23:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cbef5c4_44aee005",
       "revId": "af9cec37e41fce35a9c4a06384a2781022e6258d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
