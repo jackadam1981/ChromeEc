@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2eb92fec_79fd6453",
+        "filename": "board/yorp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-03-08T21:37:36Z",
+      "side": 1,
+      "message": "Where did these values come form?",
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05ba7ab8_430123c5",
+        "filename": "board/yorp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-03-08T21:37:36Z",
+      "side": 1,
+      "message": "It\u0027s not your fault, but it\u0027s amazing how much stuff gets copy-pasted in the EC codebase.",
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
