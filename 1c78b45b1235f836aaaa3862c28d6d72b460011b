@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a26ef8d0_c4325149",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T23:05:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fd25a05a_42ca9a36",
+      "range": {
+        "startLine": 86,
+        "startChar": 19,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "1c78b45b1235f836aaaa3862c28d6d72b460011b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae82dd3e_2a0304f2",
         "filename": "driver/bc12/bq24392.c",
         "patchSetId": 2
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "adef7855_11bc0de5",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T23:05:37Z",
+      "side": 1,
+      "message": "Added bound checking",
+      "parentUuid": "ae82dd3e_2a0304f2",
+      "range": {
+        "startLine": 106,
+        "startChar": 61,
+        "endLine": 106,
+        "endChar": 65
+      },
+      "revId": "1c78b45b1235f836aaaa3862c28d6d72b460011b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1a3ce51_b19c9751",
         "filename": "driver/bc12/bq24392.h",
         "patchSetId": 2
@@ -92,6 +140,30 @@
       "revId": "1c78b45b1235f836aaaa3862c28d6d72b460011b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b1ea234_c1d31bd5",
+        "filename": "driver/bc12/bq24392.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T23:05:37Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_PORT_COUNT. Add asserts in .c file",
+      "parentUuid": "f1a3ce51_b19c9751",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "1c78b45b1235f836aaaa3862c28d6d72b460011b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
