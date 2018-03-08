@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8364df19_a585930b",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T03:53:33Z",
+      "side": 1,
+      "message": "I think you should do the BASEBOARD processing (i.e. including ${BASEDIR}/build.mk) before CHIP processing. This would be useful in cases where baseboard needs to set some variable that is used by {CHIP}/build.mk",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fc16644_5149822f",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T03:53:33Z",
+      "side": 1,
+      "message": "I don\u0027t think you need call to wildcard here since there is only one option for baseboard path:\nBASEDIR:\u003dbaseboard/$(BASEBOARD)",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ba99a0_34d87091",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T03:53:33Z",
+      "side": 1,
+      "message": "Add a comment here indicating why BASEDIR is set to BDIR?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36bedeae_c42ebcc8",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T03:53:33Z",
+      "side": 1,
+      "message": "Would it be bad to do this unconditionally? Also, order wise this should be place after BOARD and before CHIP.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07761e1b_b60af419",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T03:53:33Z",
+      "side": 1,
+      "message": "baseboard",
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5911f3c_ff669143",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T03:53:33Z",
+      "side": 1,
+      "message": "Do this in the ifneq below on L106.",
+      "range": {
+        "startLine": 104,
+        "startChar": 26,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5490abe_7ad47e78",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T03:53:33Z",
+      "side": 1,
+      "message": "I think in all these -I includes, BASEDIR should be after CHIP but before BDIR.",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 23
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc21621_e88c43d8",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T03:53:33Z",
+      "side": 1,
+      "message": "This should be after BDIR and before CHIP.",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 27
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba353d5_780cd338",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T03:53:33Z",
+      "side": 1,
+      "message": "This should go before BDIR but after CHIP",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 63
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5ef823_3c561215",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T03:53:33Z",
+      "side": 1,
+      "message": "before BDIR after CHIP",
+      "range": {
+        "startLine": 231,
+        "startChar": 39,
+        "endLine": 231,
+        "endChar": 49
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
