@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "263b1687_2b0e11f9",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-03-08T08:40:32Z",
+      "side": 1,
+      "message": "We still need this, otherwise, we\u0027ll access fan_tables[\u003e3] and cause segmentation fault.",
+      "range": {
+        "startLine": 694,
+        "startChar": 2,
+        "endLine": 694,
+        "endChar": 22
+      },
+      "revId": "3035c241b04417a1970e9638ecc43fffdf4a8e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
