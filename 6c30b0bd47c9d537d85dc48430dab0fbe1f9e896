@@ -165,6 +165,30 @@
       "revId": "6c30b0bd47c9d537d85dc48430dab0fbe1f9e896",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5071043b_268b1f15",
+        "filename": "board/nami/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1108263
+      },
+      "writtenOn": "2018-03-08T07:13:39Z",
+      "side": 1,
+      "message": "Hi Daisuke, do you mean minimal wattage or max wattage for above discussion? Is there any test case could Compal to figure out the PD_OPERATING_POWER_MW? Thanks.",
+      "parentUuid": "9ce972d0_a3146e52",
+      "range": {
+        "startLine": 240,
+        "startChar": 31,
+        "endLine": 240,
+        "endChar": 36
+      },
+      "revId": "6c30b0bd47c9d537d85dc48430dab0fbe1f9e896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
