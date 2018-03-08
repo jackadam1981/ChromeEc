@@ -13,6 +13,7 @@
 #include "util.h"
 #include "task.h"
 #include "timer.h"
+#include "watchdog.h"
 
 #define TIMER_SYSJUMP_TAG 0x4d54  /* "TM" */
 
@@ -256,16 +257,25 @@ DECLARE_HOOK(HOOK_SYSJUMP, timer_sysjump, HOOK_PRIO_DEFAULT);
 static int command_wait(int argc, char **argv)
 {
 	char *e;
-	int i;
+	int remaining_ms;
 
 	if (argc < 2)
 		return EC_ERROR_PARAM_COUNT;
 
-	i = strtoi(argv[1], &e, 0);
+	remaining_ms = strtoi(argv[1], &e, 0);
 	if (*e)
 		return EC_ERROR_PARAM1;
 
-	udelay(i * 1000);
+	/*
+	 * Wait for at most ~1s before reloading the watchdog. Thhis
+	 * avoids a reset. Avoiding using decimal arithmetic to reduce
+	 * code size slightly.
+	 */
+	while (remaining_ms > 0) {
+		watchdog_reload();
+		udelay(remaining_ms & 0x3ff);
+		remaining_ms -= 0x400;
+	}
 
 	return EC_SUCCESS;
 }
