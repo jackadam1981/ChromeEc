@@ -96,6 +96,13 @@ static void uart_ec_interrupt(void)
 {
 	uint8_t uart_ier;
 
+	/*
+	 * Reset RX FIFO if framing error occurred (the stop bit in the received
+	 * character isn't valid).
+	 */
+	if (IT83XX_UART_LSR(UART_PORT) & (1 << 3))
+		IT83XX_UART_FCR(UART_PORT) |= (1 << 1);
+
 	/* clear interrupt status */
 	task_clear_pending_irq(IT83XX_IRQ_UART1);
 
