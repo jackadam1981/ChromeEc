@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "307f9dc2_323b2946",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T15:01:18Z",
+      "side": 1,
+      "message": "I do, added to this CL along with the other alternate functions",
+      "parentUuid": "ef6d4963_bd717c23",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 0
+      },
+      "revId": "a68146f6e04a761bb1be3988a7883dcb529b7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3dd132c4_405b8966",
         "filename": "board/yorp/gpio.inc",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "a68146f6e04a761bb1be3988a7883dcb529b7222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ec3995_ef22a04e",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T15:01:18Z",
+      "side": 1,
+      "message": "Yes, follow up CLs attached to b/74127309 will start fleshing out USB code. There is a little snag here in the fact that we don\u0027t have a signal to each port, but we will come up with a software hack until hardware issue is fixed (b/74254366)",
+      "parentUuid": "3dd132c4_405b8966",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 83
+      },
+      "revId": "a68146f6e04a761bb1be3988a7883dcb529b7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "de1f88fe_6a7d217a",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T15:01:18Z",
+      "side": 1,
+      "message": "Not the way the code is currently written. The chargers sends us an interrupt and then we go and query the BC 1.2 chip for its status (https://chromium.git.corp.google.com/chromiumos/platform/ec/+/68461a12/driver/bc12/bq24392.c#73)\n\nI will however need to make that driver be aware of the inverted signals we have, but that will be a follow up CL too.",
+      "parentUuid": "738887d5_21899c03",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 72
+      },
+      "revId": "a68146f6e04a761bb1be3988a7883dcb529b7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8a126ec_5705628d",
         "filename": "board/yorp/gpio.inc",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "a68146f6e04a761bb1be3988a7883dcb529b7222",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e45efcbb_1fc79782",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T15:01:18Z",
+      "side": 1,
+      "message": "Same as above",
+      "parentUuid": "a8a126ec_5705628d",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 72
+      },
+      "revId": "a68146f6e04a761bb1be3988a7883dcb529b7222",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
