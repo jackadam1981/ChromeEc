@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "983dde18_13389aa6",
+        "filename": "board/yorp/ec.tasklist",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T14:59:46Z",
+      "side": 1,
+      "message": "Just an oversight. I thought I ordered them correctly. Fixed",
+      "parentUuid": "a3cc8a78_4b9fdc77",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 67
+      },
+      "revId": "4f393712fdcda4f30733d919363ae7452ae58035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87e32762_2ddd43ca",
         "filename": "board/yorp/gpio.inc",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "4f393712fdcda4f30733d919363ae7452ae58035",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d0e6ae5_684d0184",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T14:59:46Z",
+      "side": 1,
+      "message": "It doesn\u0027t quite, but a lot of lines go over 80 for comments. Put on one line",
+      "parentUuid": "87e32762_2ddd43ca",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "4f393712fdcda4f30733d919363ae7452ae58035",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
