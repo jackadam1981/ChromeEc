@@ -22,6 +22,30 @@
       "revId": "1c6fb897362b2590588478f36cedc2047ea56f12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04195853_a9b2306e",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T23:20:33Z",
+      "side": 1,
+      "message": "yes, 0x00 doesn\u0027t even make sense :(",
+      "parentUuid": "1811eddf_9d8a930f",
+      "range": {
+        "startLine": 106,
+        "startChar": 22,
+        "endLine": 106,
+        "endChar": 26
+      },
+      "revId": "1c6fb897362b2590588478f36cedc2047ea56f12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
