@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae82dd3e_2a0304f2",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-03-08T21:07:13Z",
+      "side": 1,
+      "message": "How are we checking th bounds?",
+      "range": {
+        "startLine": 106,
+        "startChar": 61,
+        "endLine": 106,
+        "endChar": 65
+      },
+      "revId": "1c78b45b1235f836aaaa3862c28d6d72b460011b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a3ce51_b19c9751",
+        "filename": "driver/bc12/bq24392.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-03-08T21:07:13Z",
+      "side": 1,
+      "message": "What macro defines this?",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 42
+      },
+      "revId": "1c78b45b1235f836aaaa3862c28d6d72b460011b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
