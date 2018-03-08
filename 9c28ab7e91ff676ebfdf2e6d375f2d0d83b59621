@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "07638da3_af5103c3",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T23:20:43Z",
+      "side": 1,
+      "message": "Thanks for catching it!",
+      "parentUuid": "999847b2_4eb402a6",
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eb92fec_79fd6453",
         "filename": "board/yorp/usb_pd_policy.c",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "93603706_df1d63dc",
+        "filename": "board/yorp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T23:20:43Z",
+      "side": 1,
+      "message": "These values came from grunt and reef but ultimate are based on the link that Divya provided :)",
+      "parentUuid": "0313086c_dbd9c8f9",
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7d05eed_cdcaec05",
         "filename": "board/yorp/usb_pd_policy.c",
         "patchSetId": 2
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "bc57c9a1_e11afa14",
+        "filename": "board/yorp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T23:20:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c7d05eed_cdcaec05",
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05ba7ab8_430123c5",
         "filename": "board/yorp/usb_pd_policy.c",
         "patchSetId": 2
@@ -85,6 +139,24 @@
       "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19cfb447_22621b9e",
+        "filename": "board/yorp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-08T23:20:43Z",
+      "side": 1,
+      "message": "Agreed. This is one of the worst offenders I have seen. I will file a crbug to myself soon to start cleaning this up.",
+      "parentUuid": "05ba7ab8_430123c5",
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
