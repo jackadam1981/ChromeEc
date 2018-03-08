@@ -189,6 +189,30 @@
       "revId": "6c30b0bd47c9d537d85dc48430dab0fbe1f9e896",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "344d0b05_9d67fbb7",
+        "filename": "board/nami/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-08T19:27:23Z",
+      "side": 1,
+      "message": "I think it\u0027s ok to be 10W. We should get whatever the best power the adapter can offer. Type-C native power is 7.5W or 15W. So, 10W is still better than 7.5W.\n\nPD negotiation doesn\u0027t happen in EC-RO. So, this is an unlikely situation: the system is in S5, the battery is drained and the EC is in RW. That\u0027s probably why most boards set it to 15W.\n\nWe have another threshold anyway. AP/EC will refuse to boot the OS if battery is drained and the charger provides below CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW. This threshold has to be set properly: the minimum S0 power consumption of the highest SKU.",
+      "parentUuid": "5071043b_268b1f15",
+      "range": {
+        "startLine": 240,
+        "startChar": 31,
+        "endLine": 240,
+        "endChar": 36
+      },
+      "revId": "6c30b0bd47c9d537d85dc48430dab0fbe1f9e896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
