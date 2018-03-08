@@ -58,12 +58,22 @@ not_cfg = $(subst ro rw,y,$(filter-out $(1:y=ro rw),ro rw))
 # The board makefile sets $CHIP and the chip makefile sets $CORE.
 # Include those now, since they must be defined for _flag_cfg below.
 include $(BDIR)/build.mk
+# Baseboard directory
+ifneq (,$(BASEBOARD))
+BASEDIR:=baseboard/$(BASEBOARD)
+include $(BASEDIR)/build.mk
+else
+# If BASEBOARD is not defined, then assign BASEDIR to BDIR. This avoids
+# the need to have so many conditional checks wherever BASEDIR is used
+# below.
+BASEDIR:=$(BDIR)
+endif
 include chip/$(CHIP)/build.mk
-
 # Create uppercase config variants, to avoid mixed case constants.
 # Also translate '-' to '_', so 'cortex-m' turns into 'CORTEX_M'.  This must
 # be done before evaluating config.h.
 uppercase = $(shell echo $(1) | tr '[:lower:]-' '[:upper:]_')
+UC_BASEBOARD:=$(call uppercase,$(BASEBOARD))
 UC_BOARD:=$(call uppercase,$(BOARD))
 UC_CHIP:=$(call uppercase,$(CHIP))
 UC_CHIP_FAMILY:=$(call uppercase,$(CHIP_FAMILY))
@@ -72,9 +82,9 @@ UC_CORE:=$(call uppercase,$(CORE))
 UC_PROJECT:=$(call uppercase,$(PROJECT))
 
 # Transform the configuration into make variables.  This must be done after
-# the board/project/chip/core variables are defined, since some of the configs
-# are dependent on particular configurations.
-includes=include core/$(CORE)/include $(dirs) $(out) test
+# the board/baseboard/project/chip/core variables are defined, since some of
+# the configs are dependent on particular configurations.
+includes=include core/$(CORE)/include $(BASEDIR) $(dirs) $(out) test
 ifdef CTS_MODULE
 includes+=cts/$(CTS_MODULE) cts
 endif
@@ -92,6 +102,9 @@ endif
 
 _tsk_lst_flags+=-I$(BDIR) -DBOARD_$(UC_BOARD) -D_MAKEFILE \
 		-imacros $(_tsk_lst_file)
+ifneq (,$(BASEBOARD))
+_tsk_lst_flags+=-I$(BASEDIR) -DBASEBOARD_$(UC_BASEBOARD)
+endif
 
 _tsk_lst_ro:=$(shell $(CPP) -P -DSECTION_IS_RO \
 	$(_tsk_lst_flags) include/task_filter.h)
@@ -112,10 +125,10 @@ CPPFLAGS_RW+=$(foreach t,$(_tsk_cfg_rw),-D$(t)) \
 CPPFLAGS+=$(foreach t,$(_tsk_cfg),-D$(t))
 
 _flag_cfg_ro:=$(shell $(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) \
-	-I$(BDIR) -DSECTION_IS_RO include/config.h | \
+	-I$(BASEDIR) -I$(BDIR) -DSECTION_IS_RO include/config.h | \
 	grep -o "\#define CONFIG_[A-Z0-9_]*" | cut -c9- | sort)
 _flag_cfg_rw:=$(_tsk_cfg_rw) $(shell $(CPP) $(CPPFLAGS) -P -dM -Ichip/$(CHIP) \
-	-I$(BDIR) -DSECTION_IS_RW include/config.h | \
+	-I$(BASEDIR) -I$(BDIR) -DSECTION_IS_RW include/config.h | \
 	grep -o "\#define CONFIG_[A-Z0-9_]*" | cut -c9- | sort)
 
 _flag_cfg:= $(filter $(_flag_cfg_ro), $(_flag_cfg_rw))
@@ -127,8 +140,9 @@ $(foreach c,$(_tsk_cfg_ro) $(_flag_cfg_ro),$(eval $(c)=ro))
 $(foreach c,$(_tsk_cfg) $(_flag_cfg),$(eval $(c)=y))
 
 ifneq "$(CONFIG_COMMON_RUNTIME)" "y"
-	_irq_list:=$(shell $(CPP) $(CPPFLAGS) -P -Ichip/$(CHIP) -I$(BDIR) \
-		-D"ENABLE_IRQ(x)=EN_IRQ x" -imacros chip/$(CHIP)/registers.h \
+	_irq_list:=$(shell $(CPP) $(CPPFLAGS) -P -Ichip/$(CHIP) -I$(BASEDIR) \
+		-I$(BDIR) -D"ENABLE_IRQ(x)=EN_IRQ x" \
+		-imacros chip/$(CHIP)/registers.h \
 		$(BDIR)/ec.irqlist | grep "EN_IRQ .*" | cut -c8-)
 	CPPFLAGS+=$(foreach irq,$(_irq_list),\
 		    -D"irq_$(irq)_handler_optional=irq_$(irq)_handler")
@@ -136,16 +150,19 @@ endif
 
 # Compute RW firmware size and offset
 _rw_off_str:=$(shell echo "CONFIG_RW_MEM_OFF" | $(CPP) $(CPPFLAGS) -P \
-		-Ichip/$(CHIP) -I$(BDIR) -imacros include/config.h)
+		-Ichip/$(CHIP) -I$(BASEDIR) -I$(BDIR) -imacros include/config.h)
 _rw_off:=$(shell echo "$$(($(_rw_off_str)))")
 _rw_size_str:=$(shell echo "CONFIG_RW_SIZE" | $(CPP) $(CPPFLAGS) -P \
-		-Ichip/$(CHIP) -I$(BDIR) -imacros include/config.h)
+		-Ichip/$(CHIP) -I$(BASEDIR) -I$(BDIR) -imacros include/config.h)
 _rw_size:=$(shell echo "$$(($(_rw_size_str)))")
 _program_memory_base_str:=$(shell echo "CONFIG_PROGRAM_MEMORY_BASE" | \
 		$(CPP) $(CPPFLAGS) -P \
-		-Ichip/$(CHIP) -I$(BDIR) -imacros include/config.h)
+		-Ichip/$(CHIP) -I$(BDIR) -I$(BASEDIR) -imacros include/config.h)
 _program_memory_base=$(shell echo "$$(($(_program_memory_base_str)))")
 
+ifneq (,$(BASEBOARD))
+$(eval BASEBOARD_$(UC_BASEBOARD)=y)
+endif
 $(eval BOARD_$(UC_BOARD)=y)
 $(eval CHIP_$(UC_CHIP)=y)
 $(eval CHIP_VARIANT_$(UC_CHIP_VARIANT)=y)
@@ -165,6 +182,7 @@ objs_from_dir=$(call objs_from_dir_p,$(1),$(2),y)
 ifdef CTS_MODULE
 include cts/build.mk
 endif
+include $(BASEDIR)/build.mk
 include $(BDIR)/build.mk
 include chip/$(CHIP)/build.mk
 include core/$(CORE)/build.mk
@@ -190,6 +208,7 @@ define get_sources =
 # Get sources to build for this target
 all-obj-$(1)+=$(call objs_from_dir_p,core/$(CORE),core,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,chip/$(CHIP),chip,$(1))
+all-obj-$(1)+=$(call objs_from_dir_p,$(BASEDIR),baseboard,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,$(BDIR),board,$(1))
 all-obj-$(1)+=$(call objs_from_dir_p,private,private,$(1))
 ifneq ($(PDIR),)
@@ -208,7 +227,8 @@ endef
 $(eval $(call get_sources,y))
 $(eval $(call get_sources,ro))
 
-dirs=core/$(CORE) chip/$(CHIP) $(BDIR) common power test cts/common cts/$(CTS_MODULE)
+dirs=core/$(CORE) chip/$(CHIP) $(BASEDIR) $(BDIR) common power test \
+	cts/common cts/$(CTS_MODULE)
 dirs+= private $(PDIR)
 dirs+=$(shell find common -type d)
 dirs+=$(shell find driver -type d)
