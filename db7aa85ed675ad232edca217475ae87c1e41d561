@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d5c2616_8cd63c7c",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-03-08T23:34:18Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_PORT_COUNT -- why isn\u0027t the declaration of the bq24392_config array just bounded by CONFIG_USB_PD_PORT_COUNT ? There\u0027s not need for a \u0027cnt\u0027 variable. We can just declare it as that size.",
+      "revId": "db7aa85ed675ad232edca217475ae87c1e41d561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
