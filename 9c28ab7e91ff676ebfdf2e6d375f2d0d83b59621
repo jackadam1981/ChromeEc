@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "8cdaee6b_3e84b071",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T23:57:58Z",
+      "side": 1,
+      "message": "CONFIG_USB_PD_PORT_COUNT for consistency with above arrays?",
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69a19f9f_d210dd99",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T23:57:58Z",
+      "side": 1,
+      "message": "On reef (and I believe coral too) we had an issue where we couldn\u0027t just rely on present gpio especially in cases where the system was coming out of battery cutoff. I am not sure if we want to account for that right away or wait until we get devices to play around with the different scenarios. I think Scott might have more insight into this.",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 35
+      },
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f08b8a78_a0af04f1",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-08T23:57:58Z",
+      "side": 1,
+      "message": "I don\u0027t think we would want to do that early during bringup phase. It will prevent all PD communication in RO.",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 33
+      },
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "999847b2_4eb402a6",
         "filename": "board/yorp/board.h",
         "patchSetId": 2
