@@ -13,6 +13,7 @@
 #include "util.h"
 #include "task.h"
 #include "timer.h"
+#include "watchdog.h"
 
 #define TIMER_SYSJUMP_TAG 0x4d54  /* "TM" */
 
@@ -267,11 +268,18 @@ static int command_wait(int argc, char **argv)
 
 	udelay(i * 1000);
 
+	/*
+	 * Reload the watchdog so that issuing multiple small waitms commands
+	 * quicky one after the other will not cause a reset.
+	 */
+	watchdog_reload();
+
 	return EC_SUCCESS;
 }
+/* Typically a large delay (e.g. 3s) will cause a reset */
 DECLARE_CONSOLE_COMMAND(waitms, command_wait,
 			"msec",
-			"Busy-wait for msec");
+			"Busy-wait for msec (large delays will reset)");
 #endif
 
 #ifdef CONFIG_CMD_FORCETIME
