@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "999847b2_4eb402a6",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-08T22:21:41Z",
+      "side": 1,
+      "message": "nit: typo charging",
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2eb92fec_79fd6453",
         "filename": "board/yorp/usb_pd_policy.c",
         "patchSetId": 2
@@ -13,6 +30,24 @@
       "writtenOn": "2018-03-08T21:37:36Z",
       "side": 1,
       "message": "Where did these values come form?",
+      "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0313086c_dbd9c8f9",
+        "filename": "board/yorp/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1191034
+      },
+      "writtenOn": "2018-03-08T22:21:41Z",
+      "side": 1,
+      "message": "Usually these should comply with policy defined in the requirement:\nhttps://www.google.com/chromeos/partner/fe/docs/latest-requirements/chromebook.html#usb-type-c-ports \nSo for example PDO_VAR \"USB-C ports may present the 3A pullup and provide 5V at 3A\"\n\"USB-C ports should support any input voltage between 5V-20V\"",
+      "parentUuid": "2eb92fec_79fd6453",
       "revId": "9c28ab7e91ff676ebfdf2e6d375f2d0d83b59621",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
