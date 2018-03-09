@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6460cca2_45c01a18",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-09T16:08:30Z",
+      "side": 1,
+      "message": "Wouldn\u0027t this check be sufficient for invalid port? i.e. all calls above are made from within this function, so there is no way that the port value would be invalid if it went beyond this check.",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 32
+      },
+      "revId": "4430e7b2ffde65d009b5f3b4234977e12a659b83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
