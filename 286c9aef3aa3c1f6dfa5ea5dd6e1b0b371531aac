@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ee66310_228e04bf",
+        "filename": "board/zoombini/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-09T05:47:36Z",
+      "side": 1,
+      "message": "set scale at 100 and you\u0027re set.",
+      "revId": "286c9aef3aa3c1f6dfa5ea5dd6e1b0b371531aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd64fcb4_763d41ef",
+        "filename": "driver/als_opt3001.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-09T05:47:36Z",
+      "side": 1,
+      "message": "What don\u0027t use use scale and uscale instead of adding a new field?",
+      "revId": "286c9aef3aa3c1f6dfa5ea5dd6e1b0b371531aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
