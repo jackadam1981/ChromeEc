@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a0ba47e6_6907ed4c",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-03-09T08:35:57Z",
+      "side": 1,
+      "message": "We are checking with sensor vendor.\nHowever, as my understanding, we just read a register, and this register would be updated per fresh time.",
+      "parentUuid": "7e9f97cf_ab425633",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69fc53cd_4a31e8a6",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "432f6f65_b2263585",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-03-09T08:35:57Z",
+      "side": 1,
+      "message": "PSM_SD\u003d1 can shutdown the sensor.\nI will add this part into next patch.\nWe also keep asking vendor to provide more information about PSM.",
+      "parentUuid": "69fc53cd_4a31e8a6",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0df44b2_5e255d80",
         "filename": "driver/als_cm32181e.c",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2018-02-27T00:26:24Z",
       "side": 1,
       "message": "when is drv_data-\u003eoffset updated?\n\nWe use offset for taking care of the glasss in front of the als. We use a linear function: Y \u003d a X + b, where X is the measured value, and Y the real value, a and b coefficients set depending on the glass in front of the ALS. (a, b) depends on the board.",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af667900_cdfffa4b",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-03-09T08:35:57Z",
+      "side": 1,
+      "message": "There actually are three coefficient: scale, uscale, offset.\nI have no idea when we should use those three item.\nIs it like Y\u003d scale*X + b?",
+      "parentUuid": "c0df44b2_5e255d80",
       "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "55d77a03_eaf02c17",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-03-09T08:35:57Z",
+      "side": 1,
+      "message": "CM32181E\u0027s refresh time can be determined by PSM and ALS_IT.\n(Refer the TABLE 2 in spec) \nIn this case, \nwe didn\u0027t set command 0x03(PSM at bit2:1) and it default as 0x0000.\nWe just set command 0x00(ALS_IT at bit 9:6) as 0x00C0.\nThose two settings will determine the refresh time as 1300ms.\nIs this quick enough for Chromebook?\n\nYou are right, I did have a miscalculation.\nIn conclusion, \nNami default freq: 1/1300ms is ~700mHz.\nAccording to the table2,\nCM32181E\u0027s maximum freq: 1/600ms is ~1500mHz.\nCM32181E\u0027s minimum freq: 1/4800ms is ~200mHz.",
+      "parentUuid": "e5f77d72_c1fed222",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "716386ce_c392cef5",
         "filename": "driver/als_cm32181e.h",
         "patchSetId": 5
@@ -84,6 +156,24 @@
       "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49225be4_e56dc81e",
+        "filename": "driver/als_cm32181e.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-03-09T08:35:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "716386ce_c392cef5",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
