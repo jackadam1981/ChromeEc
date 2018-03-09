@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b532bcc5_b74f743e",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-09T10:25:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45d577e6_1b2ac2ee",
+      "range": {
+        "startLine": 468,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 56
+      },
+      "revId": "4f0904e74d5f57e7709f5c41c0a9af2c164c7486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8dc03b7_7ffa9de4",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-09T09:05:47Z",
       "side": 1,
       "message": "the asymmetry between OFF and SUSPEND comes from the fact that we cannot power the base in OFF mode ? something else ?",
+      "range": {
+        "startLine": 476,
+        "startChar": 6,
+        "endLine": 478,
+        "endChar": 21
+      },
+      "revId": "4f0904e74d5f57e7709f5c41c0a9af2c164c7486",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0212552e_92e43e3a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-09T10:25:23Z",
+      "side": 1,
+      "message": "Added a note about why we care in suspend.\n\nS5 is tracked in https://buganizer.corp.google.com/issues/71874971, this still needs more work.",
+      "parentUuid": "a8dc03b7_7ffa9de4",
       "range": {
         "startLine": 476,
         "startChar": 6,
