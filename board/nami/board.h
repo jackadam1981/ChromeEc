@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_USB_PD_DEBUG_LEVEL 2
+
 /*
  * Allow dangerous commands.
  * TODO: Remove this config before production.
