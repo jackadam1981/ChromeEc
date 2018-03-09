@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0cc1f655_a16914c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-03-09T07:21:38Z",
+      "side": 1,
+      "message": "issues w.r.t certain i2c slave devices?",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "b9cc21954ba36f9d303239de9516b47b38a315be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c3f27c0_3b033b90",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002369
+      },
+      "writtenOn": "2018-03-09T07:21:38Z",
+      "side": 1,
+      "message": "Doesn\u0027t the EC codebase like #CONFIG for blocking things instead of deafult functions?",
+      "revId": "b9cc21954ba36f9d303239de9516b47b38a315be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
