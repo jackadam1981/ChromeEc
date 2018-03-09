@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f0d9cb5_06206c90",
+        "filename": "board/nami/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-09T20:19:29Z",
+      "side": 1,
+      "message": "What happens if we remove all these \u00270\u0027 fields or define them as \".config \u003d {0}\"?",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 683,
+        "endChar": 4
+      },
+      "revId": "11f92dec10e1256d93563e7620817e66c11902fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
