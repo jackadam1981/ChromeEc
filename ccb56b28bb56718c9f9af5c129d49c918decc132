@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "840ee1e7_9d1021ab",
+        "filename": "include/dcrypto_mocks.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-09T18:29:07Z",
+      "side": 1,
+      "message": "I am not building cryptoc into the test binary and am using slightly different definitions of the context structs for the purpose of keeping the mocks simple.",
+      "parentUuid": "9a791e70_6615b4bf",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "ccb56b28bb56718c9f9af5c129d49c918decc132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "344294fb_21e4a8cf",
         "filename": "include/pinweaver.h",
         "patchSetId": 29
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "053ecb28_e4efdb63",
+        "filename": "include/pinweaver.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-09T18:29:07Z",
+      "side": 1,
+      "message": "Done.\nI renamed it to dcrypto.h and got rid of the #ifdef.",
+      "parentUuid": "344294fb_21e4a8cf",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "ccb56b28bb56718c9f9af5c129d49c918decc132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5470007_f313e4c4",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 29
@@ -68,6 +116,30 @@
       "revId": "ccb56b28bb56718c9f9af5c129d49c918decc132",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c91420a_4f29908b",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-09T18:29:07Z",
+      "side": 1,
+      "message": "Yeah, I wanted to keep the type checking.\nDone.",
+      "parentUuid": "a5470007_f313e4c4",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "ccb56b28bb56718c9f9af5c129d49c918decc132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
