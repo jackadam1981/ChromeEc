@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9a791e70_6615b4bf",
+        "filename": "include/dcrypto_mocks.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-09T16:12:18Z",
+      "side": 1,
+      "message": "why do these external declarations need to be repeated here, can you not include .h files from cryptoc?",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "ccb56b28bb56718c9f9af5c129d49c918decc132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "344294fb_21e4a8cf",
         "filename": "include/pinweaver.h",
         "patchSetId": 29
