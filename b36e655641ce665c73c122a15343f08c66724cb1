@@ -22,6 +22,30 @@
       "revId": "b36e655641ce665c73c122a15343f08c66724cb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b628ea_a27c8753",
+        "filename": "driver/charger/rt946x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-03-09T22:45:29Z",
+      "side": 1,
+      "message": "0 should be fine. It means AC charger is not attached or just attached but doesn\u0027t provide VBUS yet. The worst case is delayed report for VBUS rise/fall.",
+      "parentUuid": "25599ffb_da5e06af",
+      "range": {
+        "startLine": 618,
+        "startChar": 12,
+        "endLine": 618,
+        "endChar": 19
+      },
+      "revId": "b36e655641ce665c73c122a15343f08c66724cb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
