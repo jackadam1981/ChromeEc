@@ -22,6 +22,30 @@
       "revId": "f661ca8e6e89d72f4b085e5f2c7f971c247cf7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a48ca46_8a8da98f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-09T10:22:29Z",
+      "side": 1,
+      "message": "Huh, it\u0027s a bit tricky. Let me add a TODO for now.",
+      "parentUuid": "6e9c407a_efbffc30",
+      "range": {
+        "startLine": 493,
+        "startChar": 5,
+        "endLine": 494,
+        "endChar": 26
+      },
+      "revId": "f661ca8e6e89d72f4b085e5f2c7f971c247cf7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
