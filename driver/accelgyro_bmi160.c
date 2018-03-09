@@ -602,7 +602,7 @@ static int set_offset(const struct motion_sensor_t *s,
 	return ret;
 }
 
-int perform_calib(const struct motion_sensor_t *s)
+static int perform_calib(const struct motion_sensor_t *s)
 {
 	int ret, val, en_flag, status, timeout = 0, rate;
 

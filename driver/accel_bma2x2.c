@@ -119,7 +119,7 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 	/* Find index for interface pair matching the specified range. */
 	index = find_param_index(range, rnd, ranges, ARRAY_SIZE(ranges));
 
-	reg = BMA2x2_RANGE_SELECT_REG;
+	reg = BMA2x2_RANGE_SELECT_ADDR;
 	range_val = ranges[index].reg;
 
 	mutex_lock(s->mutex);
@@ -169,7 +169,7 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	index = find_param_index(rate, rnd, datarates, ARRAY_SIZE(datarates));
 
 	odr_val = datarates[index].reg;
-	reg = BMA2x2_BW_REG;
+	reg = BMA2x2_BW_SELECT_ADDR;
 
 	mutex_lock(s->mutex);
 
@@ -201,34 +201,39 @@ static int get_data_rate(const struct motion_sensor_t *s)
 static int set_offset(const struct motion_sensor_t *s, const int16_t *offset,
 		      int16_t temp)
 {
+	int i, ret;
+
 	/* temperature is ignored */
-	struct bma2x2_accel_data *data = s->drv_data;
-
-	data->offset[X] = offset[X];
-	data->offset[Y] = offset[Y];
-	data->offset[Z] = offset[Z];
-
+	/* Offset from host is in 1/1024g, 1/128g internally. */
+	for (i = X; i <= Z; i++) {
+		ret = raw_write8(s->port, s->addr,
+				 BMA2x2_OFFSET_X_AXIS_ADDR + i, offset[i] / 8);
+		if (ret)
+			return ret;
+	}
 	return EC_SUCCESS;
 }
 
 static int get_offset(const struct motion_sensor_t *s, int16_t *offset,
 		      int16_t *temp)
 {
-	struct bma2x2_accel_data *data = s->drv_data;
+	int i, val, ret;
 
-	offset[X] = data->offset[X];
-	offset[Y] = data->offset[Y];
-	offset[Z] = data->offset[Z];
+	for (i = X; i <= Z; i++) {
+		ret = raw_read8(s->port, s->addr, BMA2x2_OFFSET_X_AXIS_ADDR + i,
+				&val);
+		if (ret)
+			return ret;
+		offset[i] = (int8_t)val * 8;
+	}
 	*temp = EC_MOTION_SENSE_INVALID_CALIB_TEMP;
-
 	return EC_SUCCESS;
 }
 
 static int read(const struct motion_sensor_t *s, vector_3_t v)
 {
 	uint8_t acc[6];
-	int ret, i, range;
-	struct bma2x2_accel_data *data = s->drv_data;
+	int ret, i;
 
 	/* Read 6 bytes starting at X_AXIS_LSB. */
 	mutex_lock(s->mutex);
@@ -248,19 +253,66 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	 * acc[3] = Y_AXIS_MSB
 	 * acc[4] = Z_AXIS_LSB -> bit 7~4 for value, bit 0 for new data bit
 	 * acc[5] = Z_AXIS_MSB
-	 *
-	 * Add calibration offset before returning the data.
 	 */
 	for (i = X; i <= Z; i++)
 		v[i] = (((int8_t)acc[i * 2 + 1]) << 8) | (acc[i * 2] & 0xf0);
 	rotate(v, *s->rot_standard_ref, v);
 
-	/* apply offset in the device coordinates */
-	range = get_range(s);
-	for (i = X; i <= Z; i++)
-		v[i] += (data->offset[i] << 5) / range;
-
 	return EC_SUCCESS;
+}
+
+static int perform_calib(const struct motion_sensor_t *s)
+{
+	int ret, val, status, timeout, rate, range, i;
+
+	ret = raw_read8(s->port, s->addr, BMA2x2_OFFSET_CTRL_ADDR, &val);
+	if (ret)
+		return ret;
+	if (!(val & BMA2x2_OFFSET_CAL_READY))
+		return EC_ERROR_ACCESS_DENIED;
+
+	rate = get_data_rate(s);
+	range = get_range(s);
+	/*
+	 * Temporary set frequency to 100Hz to get enough data in a short
+	 * period of time.
+	 */
+	set_data_rate(s, 100000, 0);
+	set_range(s, 2, 0);
+
+	/* We assume the device is laying flat for calibration */
+	if (s->rot_standard_ref == NULL ||
+	    (*s->rot_standard_ref)[2][2] > INT_TO_FP(0))
+		val = BMA2x2_OFC_TARGET_PLUS_1G;
+	else
+		val = BMA2x2_OFC_TARGET_MINUS_1G;
+	val = ((BMA2x2_OFC_TARGET_0G << BMA2x2_OFC_TARGET_AXIS(X)) |
+	       (BMA2x2_OFC_TARGET_0G << BMA2x2_OFC_TARGET_AXIS(Y)) |
+	       (val << BMA2x2_OFC_TARGET_AXIS(Z)));
+	raw_write8(s->port, s->addr, BMA2x2_OFC_SETTING_ADDR, val);
+
+	for (i = X; i <= Z; i++) {
+		val = (i + 1) << BMA2x2_OFFSET_TRIGGER_OFF;
+		raw_write8(s->port, s->addr, BMA2x2_OFFSET_CTRL_ADDR, val);
+		timeout = 0;
+		do {
+			if (timeout > 400) {
+				ret = EC_RES_TIMEOUT;
+				goto end_perform_calib;
+			}
+			msleep(50);
+			ret = raw_read8(s->port, s->addr,
+					BMA2x2_OFFSET_CTRL_ADDR, &status);
+			if (ret != EC_SUCCESS)
+				goto end_perform_calib;
+			timeout += 50;
+		} while ((status & BMA2x2_OFFSET_CAL_READY) == 0);
+	}
+
+end_perform_calib:
+	set_range(s, range, 0);
+	set_data_rate(s, rate, 0);
+	return ret;
 }
 
 static int init(const struct motion_sensor_t *s)
@@ -329,5 +381,5 @@ const struct accelgyro_drv bma2x2_accel_drv = {
 	.get_data_rate = get_data_rate,
 	.set_offset = set_offset,
 	.get_offset = get_offset,
-	.perform_calib = NULL,
+	.perform_calib = perform_calib,
 };
