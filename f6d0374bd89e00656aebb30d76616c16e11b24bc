@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "462cd06c_c9f425d1",
+        "filename": "driver/als_cm32181e.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2018-03-09T08:36:57Z",
+      "side": 1,
+      "message": "Y\u003d scale*X + offset?",
+      "parentUuid": "af667900_cdfffa4b",
+      "revId": "f6d0374bd89e00656aebb30d76616c16e11b24bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5f77d72_c1fed222",
         "filename": "driver/als_cm32181e.h",
         "patchSetId": 5
