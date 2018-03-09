@@ -33,6 +33,24 @@
       "revId": "286c9aef3aa3c1f6dfa5ea5dd6e1b0b371531aac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c83f0934_80f61e75",
+        "filename": "driver/als_opt3001.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-09T05:49:42Z",
+      "side": 1,
+      "message": "Because the application of scale and uscale happen after the conversion to lux, losing some of the precision. See the read_lux function without an ALS task.",
+      "parentUuid": "dd64fcb4_763d41ef",
+      "revId": "286c9aef3aa3c1f6dfa5ea5dd6e1b0b371531aac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
