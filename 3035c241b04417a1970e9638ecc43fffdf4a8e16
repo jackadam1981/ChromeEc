@@ -45,6 +45,30 @@
       "revId": "3035c241b04417a1970e9638ecc43fffdf4a8e16",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ec22631_e792632f",
+        "filename": "board/fizz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-03-09T05:41:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fdda45b_e3b726d3",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 34
+      },
+      "revId": "3035c241b04417a1970e9638ecc43fffdf4a8e16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
