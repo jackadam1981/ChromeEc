@@ -166,7 +166,7 @@ static uint32_t tasks_ready = (1 << TASK_ID_HOOKS);
  */
 static uint32_t tasks_enabled = (1 << TASK_ID_HOOKS) | (1 << TASK_ID_IDLE);
 
-static int start_called;  /* Has task swapping started */
+int start_called;  /* Has task swapping started */
 
 /* interrupt number of sw interrupt */
 static int sw_int_num;
@@ -781,7 +781,6 @@ int task_start(void)
 #ifdef CONFIG_TASK_PROFILING
 	task_start_time = exc_end_time = get_time().val;
 #endif
-	start_called = 1;
 
 	return __task_start();
 }

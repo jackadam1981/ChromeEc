@@ -31,6 +31,9 @@
  */
 .global __switch_task
 __switch_task:
+	/* exit if we aren't yet start the task scheduling. */
+	lwi.gp  $r2, [ + start_called]
+	beqz $r2, 1f
 	/* get the (new) highest priority task pointer in r0 */
 	jal next_sched_task
 	movi55 $r3, 0
@@ -92,6 +95,7 @@ __task_start:
 	addi $sp, $r3, 4 * 18
 	/* we are ready to re-schedule */
 	swi.gp  $r4, [ + need_resched]
+	swi.gp  $r4, [ + start_called]
 
 	/* trigger scheduling to execute the task with the highest priority */
 	syscall 0
