@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63755cb6_7fceb0ed",
+        "filename": "board/pdeval-stm32f072/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-09T16:42:38Z",
+      "side": 1,
+      "message": "should have different name than above,\n\nAlso SCL and SDA GPIOS should be different pin than above, right?",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 7
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
