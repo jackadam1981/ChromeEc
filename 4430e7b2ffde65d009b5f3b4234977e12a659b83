@@ -22,6 +22,30 @@
       "revId": "4430e7b2ffde65d009b5f3b4234977e12a659b83",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bd1c9b5_70f5c8ff",
+        "filename": "driver/bc12/bq24392.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-09T16:20:25Z",
+      "side": 1,
+      "message": "I completely missed that all of these methods were static. I removed the bounds checking except here",
+      "parentUuid": "6460cca2_45c01a18",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 32
+      },
+      "revId": "4430e7b2ffde65d009b5f3b4234977e12a659b83",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
