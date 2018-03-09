@@ -75,6 +75,13 @@ enum pd_rx_errors {
 #define PDO_FIXED_VOLT(mv)  (((mv)/50) << 10) /* Voltage in 50mV units */
 #define PDO_FIXED_CURR(ma)  (((ma)/10) << 0)  /* Max current in 10mA units */
 
+#ifdef CONFIG_USB_PD_REV30
+#define SRC_PDO_FIXED_UNCHUNKED_EXT_MSG (1 << 24)
+#define SNK_PDO_FIXED_FRSWAP_DEFAULT (1 << 23)
+#define SNK_PDO_FIXED_FRSWAP_1_5_A   (2 << 23)
+#define SNK_PDO_FIXED_FRSWAP_3_0_A   (3 << 23)
+#endif
+
 #define PDO_FIXED(mv, ma, flags) (PDO_FIXED_VOLT(mv) |\
 				  PDO_FIXED_CURR(ma) | (flags))
 
@@ -107,6 +114,10 @@ enum pd_rx_errors {
 #define RDO_NO_SUSPEND             (1 << 24)
 #define RDO_FIXED_VAR_OP_CURR(ma)  ((((ma) / 10) & 0x3FF) << 10)
 #define RDO_FIXED_VAR_MAX_CURR(ma) ((((ma) / 10) & 0x3FF) << 0)
+
+#ifdef CONFIG_USB_PD_REV30
+#define RDO_UNCHUNKED_EXT_MSG      (1 << 23)
+#endif
 
 #define RDO_BATT_OP_POWER(mw)      ((((mw) / 250) & 0x3FF) << 10)
 #define RDO_BATT_MAX_POWER(mw)     ((((mw) / 250) & 0x3FF) << 10)
