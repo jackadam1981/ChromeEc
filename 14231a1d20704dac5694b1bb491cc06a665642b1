@@ -187,6 +187,29 @@
       "revId": "14231a1d20704dac5694b1bb491cc06a665642b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0171aa_9f8db286",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2018-03-09T00:10:34Z",
+      "side": 1,
+      "message": "Seems that grunt uses motion_sense without mkbp enabled, I\u0027ll need to investigate how they\u0027re sending the interrupt to the AP.",
+      "range": {
+        "startLine": 186,
+        "startChar": 24,
+        "endLine": 186,
+        "endChar": 44
+      },
+      "revId": "14231a1d20704dac5694b1bb491cc06a665642b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
