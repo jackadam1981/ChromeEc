@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "296fee6f_34187e53",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-09T19:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8364df19_a585930b",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fc16644_5149822f",
         "filename": "Makefile",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ce53bfd_e97a1c3e",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-09T19:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fc16644_5149822f",
+      "range": {
+        "startLine": 65,
+        "startChar": 11,
+        "endLine": 65,
+        "endChar": 19
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "76583e2b_f6febb77",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-09T19:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25ba99a0_34d87091",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 16
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36bedeae_c42ebcc8",
         "filename": "Makefile",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-03-08T03:53:33Z",
       "side": 1,
       "message": "Would it be bad to do this unconditionally? Also, order wise this should be place after BOARD and before CHIP.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 44
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb93fb75_2be78376",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-09T19:02:36Z",
+      "side": 1,
+      "message": "Yes, this can be unconditional, so I have removed the conditional check. As for the order, it looks to me that the order here is alphabetical and that\u0027s why I have it before board.",
+      "parentUuid": "36bedeae_c42ebcc8",
       "range": {
         "startLine": 76,
         "startChar": 0,
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "391bc5d8_21676677",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-09T19:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07761e1b_b60af419",
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5911f3c_ff669143",
         "filename": "Makefile",
         "patchSetId": 1
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "c316473d_c4caeed4",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-09T19:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5911f3c_ff669143",
+      "range": {
+        "startLine": 104,
+        "startChar": 26,
+        "endLine": 104,
+        "endChar": 39
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5490abe_7ad47e78",
         "filename": "Makefile",
         "patchSetId": 1
@@ -145,6 +283,30 @@
       "writtenOn": "2018-03-08T03:53:33Z",
       "side": 1,
       "message": "I think in all these -I includes, BASEDIR should be after CHIP but before BDIR.",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 23
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3347d9b6_22207176",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-09T19:02:36Z",
+      "side": 1,
+      "message": "I modified these are you suggested.",
+      "parentUuid": "b5490abe_7ad47e78",
       "range": {
         "startLine": 129,
         "startChar": 11,
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "b2be948f_fc80d54e",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-09T19:02:36Z",
+      "side": 1,
+      "message": "I placed it before BDIR/build.mk because it looks like this list is alphabetized.",
+      "parentUuid": "1bc21621_e88c43d8",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 27
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bba353d5_780cd338",
         "filename": "Makefile",
         "patchSetId": 1
@@ -203,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "531df0ae_8230b1f8",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-09T19:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bba353d5_780cd338",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 63
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c5ef823_3c561215",
         "filename": "Makefile",
         "patchSetId": 1
@@ -223,6 +433,30 @@
       "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee6a9b2a_88c2c8d2",
+        "filename": "Makefile",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-09T19:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c5ef823_3c561215",
+      "range": {
+        "startLine": 231,
+        "startChar": 39,
+        "endLine": 231,
+        "endChar": 49
+      },
+      "revId": "bf389dbe138bce8f0ce6d15dcec1084267737f76",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
