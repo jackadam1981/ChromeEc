@@ -21,7 +21,6 @@ struct bma2x2_accel_data {
 	int sensor_datarate;
 	/* Current resolution of accelerometer. */
 	int sensor_resolution;
-	int16_t offset[3];
 };
 
 extern const struct accelgyro_drv bma2x2_accel_drv;
