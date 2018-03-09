@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4777579d_fbb8b898",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-09T07:32:32Z",
+      "side": 1,
+      "message": "e.g. on Nautilus we have this issue where the battery device needs certain bus free time between i2c transactions and it is not even able to do clock stretching to slow down the master. More details on this bug: b/73147310. I can update the commit message to reflect this problem better.",
+      "parentUuid": "0cc1f655_a16914c2",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 16
+      },
+      "revId": "b9cc21954ba36f9d303239de9516b47b38a315be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c3f27c0_3b033b90",
         "filename": "common/i2c_master.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2018-03-09T07:21:38Z",
       "side": 1,
       "message": "Doesn\u0027t the EC codebase like #CONFIG for blocking things instead of deafult functions?",
+      "revId": "b9cc21954ba36f9d303239de9516b47b38a315be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87882c4b_6948d432",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-09T07:32:32Z",
+      "side": 1,
+      "message": "Ah yes. I can update the code if that is the general practice.",
+      "parentUuid": "1c3f27c0_3b033b90",
       "revId": "b9cc21954ba36f9d303239de9516b47b38a315be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
