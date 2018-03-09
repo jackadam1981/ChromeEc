@@ -22,6 +22,30 @@
       "revId": "193bb75d619c34776575ddd6bf58357434ce60d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a185705f_b6886da2",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 33
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-09T22:42:49Z",
+      "side": 1,
+      "message": "I have added a comment above the function and updated these comments inside the function.\n\nThe TPM command handling code uses the same buffer for receiving and sending messages so I wrote this function to facilitate that. My tests use a union for the request and response to catch cases where this would break the code. I didn\u0027t force them to be at the same memory location here though.",
+      "parentUuid": "b7377f12_87306bfd",
+      "range": {
+        "startLine": 591,
+        "startChar": 13,
+        "endLine": 591,
+        "endChar": 50
+      },
+      "revId": "193bb75d619c34776575ddd6bf58357434ce60d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
