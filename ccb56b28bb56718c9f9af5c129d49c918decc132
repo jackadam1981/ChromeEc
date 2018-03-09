@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "344294fb_21e4a8cf",
+        "filename": "include/pinweaver.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-09T16:00:21Z",
+      "side": 1,
+      "message": "might be better to move dcrypto_mocks.h in chip/host rather than include/\n(as dcrypto.h is defined in chip/g)",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "ccb56b28bb56718c9f9af5c129d49c918decc132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5470007_f313e4c4",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 29
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-09T16:00:21Z",
+      "side": 1,
+      "message": "I understand you are doing this to avoid the no-typedef rule of checkpatch\nbut it kind of defeat the purpose of having a special type (since the compiler is no longer checking anything)\nIn the kernel world, they would enforce it with something such as :\nstruct index {\n  uint8_t v;\n}",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 23
+      },
+      "revId": "ccb56b28bb56718c9f9af5c129d49c918decc132",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
