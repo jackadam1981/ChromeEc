@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6acc041e_e4e0e918",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-10T08:00:41Z",
+      "side": 1,
+      "message": "but on the flip side, if AC is really connected, we might return DISCONNECTED while the battery will re-connect immediately ?\n(wasn\u0027t this the initial goal of the check ? e.g. at factory ensuring we really disconnect)",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 46
+      },
+      "revId": "13e50faf948bd51d7bd4ed0f3a9f73cf0cee0af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
