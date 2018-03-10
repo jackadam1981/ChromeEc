@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ce6eddb_5620feef",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-10T00:41:37Z",
+      "side": 1,
+      "message": "Shall we time more accurately using timestamp_expired? It\u0027s also easier to read.",
+      "range": {
+        "startLine": 297,
+        "startChar": 2,
+        "endLine": 297,
+        "endChar": 9
+      },
+      "revId": "be1b19570dfabaaf886f9e13a4b7a9bd16321005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b455ae76_65f1804c",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-10T00:41:37Z",
+      "side": 1,
+      "message": "Is this from the datasheet?",
+      "range": {
+        "startLine": 299,
+        "startChar": 17,
+        "endLine": 299,
+        "endChar": 20
+      },
+      "revId": "be1b19570dfabaaf886f9e13a4b7a9bd16321005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
