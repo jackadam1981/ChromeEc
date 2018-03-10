@@ -778,3 +778,32 @@ int board_has_working_reset_flags(void)
 	/* All other board versions should have working reset flags */
 	return 1;
 }
+
+/*
+ * I2C callbacks to ensure bus free time for battery I2C transactions is at
+ * least 5ms.
+ */
+static timestamp_t battery_last_i2c_time;
+
+void i2c_start_xfer_notify(int port)
+{
+	unsigned time_delta_us;
+	static const unsigned time_delta_min_us = 5 * MSEC;
+
+	if (port != I2C_PORT_BATTERY)
+		return;
+
+	time_delta_us = time_since32(battery_last_i2c_time);
+	if (time_delta_us >= time_delta_min_us)
+		return;
+
+	usleep(time_delta_min_us - time_delta_us);
+}
+
+void i2c_end_xfer_notify(int port)
+{
+	if (port != I2C_PORT_BATTERY)
+		return;
+
+	battery_last_i2c_time = get_time();
+}
