@@ -22,6 +22,63 @@
       "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e606bce_0d86b82d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-10T01:01:12Z",
+      "side": 1,
+      "message": "So we have ANX74xx driver which is partly compliant with TCPCI driver. Is this new driver written for a fully compliant TCPCI driver? If so can we mention it in here.",
+      "range": {
+        "startLine": 6,
+        "startChar": 24,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd513a51_8832d1fb",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-10T01:01:12Z",
+      "side": 1,
+      "message": "Could you use tcpc_read / tcpc_write to keep it consistent?",
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7201626_685e1743",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-10T01:01:12Z",
+      "side": 1,
+      "message": "Could you replace 0x9e with macro defining the register?",
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
