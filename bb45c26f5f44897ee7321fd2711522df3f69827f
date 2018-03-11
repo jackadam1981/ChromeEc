@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "2028787f_efc23783",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-11T18:26:24Z",
+      "side": 1,
+      "message": "-D HAS_BASEBOARD?",
+      "revId": "bb45c26f5f44897ee7321fd2711522df3f69827f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0f93e05_01f27666",
         "filename": "Makefile",
         "patchSetId": 2
@@ -82,6 +99,30 @@
       "writtenOn": "2018-03-09T20:08:18Z",
       "side": 1,
       "message": "the right place for this include is likely in include/config.h\nwith the other hierarchical ones\nat https://chromium.googlesource.com/chromiumos/platform/ec/+/master/include/config.h#3253",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "bb45c26f5f44897ee7321fd2711522df3f69827f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6f117ed_b3b64357",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-11T18:26:24Z",
+      "side": 1,
+      "message": "Since baseboard is optional, may need something like\n\n#ifdef HAS_BASEBOARD\n#include \"baseboard.h\"\n#endif",
+      "parentUuid": "aa30793a_0aac150b",
       "range": {
         "startLine": 11,
         "startChar": 0,
