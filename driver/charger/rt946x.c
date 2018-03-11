@@ -399,6 +399,10 @@ static int rt946x_init_setting(void)
 	rv = rt946x_set_iprec(batt_info->precharge_current);
 	if (rv)
 		return rv;
+	/* Enable charge current termination */
+	rv = rt946x_set_bit(RT946X_REG_CHGCTRL2, RT946X_MASK_TE);
+	if (rv)
+		return rv;
 
 	return rt946x_init_irq();
 }
