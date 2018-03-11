@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3ee664d_cbc02c10",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-11T19:59:19Z",
+      "side": 1,
+      "message": "Not sure if it matters, but we may want to have a return value depending on how complex the logic that would be implemented in these.",
+      "revId": "e18cb7671b58f9d9726db05225d0591b9a203b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
