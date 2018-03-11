@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f344898d_20bcfe67",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-03-11T22:20:35Z",
+      "side": 1,
+      "message": "I see other devices sharing NPCX_I2C_PORT1 too. Is there an easy way to do this specifically for battery?",
+      "range": {
+        "startLine": 793,
+        "startChar": 0,
+        "endLine": 793,
+        "endChar": 30
+      },
+      "revId": "782633e9003e880c32026c18ef498e84fea64daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
