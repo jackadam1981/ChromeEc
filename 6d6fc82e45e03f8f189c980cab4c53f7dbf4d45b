@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b994f965_e329d33b",
+        "filename": "util/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-12T17:04:11Z",
+      "side": 1,
+      "message": "please do it as all other tools:\nuartupdatetool-objs\u003dmain.o cmd.o opr.o l_com_port.o lib_crc.o",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9f99922_c77d4383",
         "filename": "util/uut/src/include/cmd.h",
         "patchSetId": 4
@@ -48,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "414c23e8_1020afba",
+        "filename": "util/uut/src/source/l_com_port.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-12T17:04:11Z",
+      "side": 1,
+      "message": "all this code is unused since the config is hardcoded in main()",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 1
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35a20a0e_d7b65b51",
         "filename": "util/uut/src/source/l_com_port.c",
         "patchSetId": 4
@@ -91,6 +137,29 @@
       "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66f9b5c4_22cefe8a",
+        "filename": "util/uut/src/source/lib_crc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-12T17:04:11Z",
+      "side": 1,
+      "message": "you are not using most of those functions, please trim it to the CRC16 support you need",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -160,6 +229,52 @@
       "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae167a52_f5639246",
+        "filename": "util/uut/swc_defs/defs_linux.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-12T17:04:11Z",
+      "side": 1,
+      "message": "please use the EC codebase typing conventions\ne.g stdint.h and uint8_t/uin16_t/uint32_t\nrather than this custom version",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e6a98fc_828436aa",
+        "filename": "util/uut/swc_defs/defs_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-12T17:04:11Z",
+      "side": 1,
+      "message": "misc_util.h already has those definitions",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
