@@ -34,6 +34,24 @@
       "revId": "625bdec7803c853aab8f31675aec30b34893789d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95b39f51_df7a9038",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000423
+      },
+      "writtenOn": "2018-03-12T17:04:02Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/ec/+/master/common/charge_state_v2.c#1777\n\nThis function is way too overloaded and the logic is very hard to follow. Shawn filed crbug.com/782890 but it needs an owner as he moved on...",
+      "parentUuid": "d7a4c647_a5c2eee5",
+      "revId": "625bdec7803c853aab8f31675aec30b34893789d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
