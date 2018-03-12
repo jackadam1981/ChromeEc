@@ -22,6 +22,30 @@
       "revId": "ff97c8510732d154372b63375323ccceb9959b6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aa85893_4fb99646",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-12T20:52:02Z",
+      "side": 1,
+      "message": "I left them if one day we have to implement SPI support.",
+      "parentUuid": "bfd8f878_7f80784f",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 1
+      },
+      "revId": "ff97c8510732d154372b63375323ccceb9959b6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
