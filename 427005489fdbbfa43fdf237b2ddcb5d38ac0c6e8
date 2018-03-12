@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f96a16e_a383fcea",
+        "filename": "board/pdeval-stm32f072/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 0,
+      "message": "Why don\u0027t you surround it by #if CONFIG_USB_PD_PORT_COUNT \u003e\u003d 2?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 58
+      },
+      "revId": "427005489fdbbfa43fdf237b2ddcb5d38ac0c6e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}

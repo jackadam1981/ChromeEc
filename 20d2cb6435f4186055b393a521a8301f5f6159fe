@@ -48,6 +48,283 @@
     },
     {
       "key": {
+        "uuid": "6602a016_b7738bf7",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "6e606bce_0d86b82d",
+      "range": {
+        "startLine": 6,
+        "startChar": 24,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e318b655_d90b7811",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "HPD_HIGH isn\u0027t used. The polarity is straight: high-\u003e1, low-\u003e0. Can we get rid of them?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e981c894_94988e42",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Why do we need to define this?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de5bb66b_9bdcd68d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "It seems we have to call tcpc_read() to support either port.",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9dfb71a_6dd7c278",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Why SPI address?",
+      "range": {
+        "startLine": 58,
+        "startChar": 26,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c225f82_55af73ab",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Do you want to check the return value before proceeding?",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 10
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34cee2fe_36e52d68",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Same here. We need to call tcpc_write.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7245ae3d_4483bfe5",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "This makes people fighting for a dozen bytes pathetic.",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 67
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1917012c_f66755b5",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "This is unnecessary. The whole image is timestamped.",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0fe3a6f_04cf69f7",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Same comment.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 72
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "229d73b3_61c44da0",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Not informative. I would remove it.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 28
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc11edd0_d998949c",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "7447. Is the code right for 7447? I don\u0027t see POWER_STATUS used in the driver.",
+      "range": {
+        "startLine": 106,
+        "startChar": 4,
+        "endLine": 106,
+        "endChar": 8
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd513a51_8832d1fb",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -79,6 +356,397 @@
       "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66745c7f_5d7eff78",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Do we need to do writes repeatedly or we can just loop for \u0027mask\u0027?",
+      "range": {
+        "startLine": 126,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 15
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5cd8dfd_db9e51f7",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 4
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee9bd33d_6fde3519",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "We need timeout. It\u0027ll consume too many cycles to execute this loop every 10 msec.",
+      "range": {
+        "startLine": 150,
+        "startChar": 2,
+        "endLine": 150,
+        "endChar": 13
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5fca2f2_06d24e05",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 3
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b566397_065f3847",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "No need to check the return value?",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 10
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e24fb80_2af80059",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Could you give a name to this register?",
+      "range": {
+        "startLine": 168,
+        "startChar": 45,
+        "endLine": 168,
+        "endChar": 49
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "432bafda_3b542e8c",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 3
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147ded8b_81fc2281",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Why isn\u0027t TCPC_REG_COMMAND_I2CIDLE used?",
+      "range": {
+        "startLine": 241,
+        "startChar": 43,
+        "endLine": 241,
+        "endChar": 47
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62518ac_b95de8e6",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "This isn\u0027t defined if CONFIG_USB_PD_VBUS_DETECT_TCPC isn\u0027t defined.",
+      "range": {
+        "startLine": 267,
+        "startChar": 8,
+        "endLine": 267,
+        "endChar": 33
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "082f5bd6_e7aa7e3d",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "I believe we prefer \u0027int reg \u003d enable ? 0x55 : 0x44;\u0027 or you don\u0027t need \u0027reg\u0027 at all.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 13
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a693fa6_0c2a1cdf",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Why don\u0027t you rename it to port_addr (as done in the prototype) and get rid of \u0027int port \u003d i2c_addr\u0027?",
+      "range": {
+        "startLine": 345,
+        "startChar": 28,
+        "endLine": 345,
+        "endChar": 40
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "100831c1_07b81f3a",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "cable",
+      "range": {
+        "startLine": 368,
+        "startChar": 28,
+        "endLine": 368,
+        "endChar": 33
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e94c230a_98dbaffe",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "positive",
+      "range": {
+        "startLine": 369,
+        "startChar": 7,
+        "endLine": 369,
+        "endChar": 16
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cacfacc_4db2c1aa",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "We usually set val1, val2, val3 then write tcpc_write() only 3 times. It\u0027ll also allow you to handle errors without repeating too many lines.",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 2
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b8c9f3e_849f4286",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Need to handle errors?",
+      "range": {
+        "startLine": 412,
+        "startChar": 1,
+        "endLine": 412,
+        "endChar": 19
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5a50d25_baf54b57",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "Same comment here.",
+      "range": {
+        "startLine": 416,
+        "startChar": 27,
+        "endLine": 416,
+        "endChar": 39
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b41dc47_29d30732",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T23:27:40Z",
+      "side": 1,
+      "message": "nit: #endif /* CONFIG_USB_PD_TCPM_MUX */",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 6
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
