@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "07d9e826_d1da6c9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-12T20:59:22Z",
+      "side": 1,
+      "message": "\u0027nami\u0027",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "17e404ab1fbea7a7f2cc7122d4cc62833205ca95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc6ea5e6_6a6e2e94",
         "filename": "board/nami/board.c",
         "patchSetId": 2
