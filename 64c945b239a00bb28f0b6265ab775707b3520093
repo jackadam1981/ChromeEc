@@ -46,6 +46,75 @@
       "revId": "64c945b239a00bb28f0b6265ab775707b3520093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01904e96_6ac55b46",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-12T22:38:53Z",
+      "side": 1,
+      "message": "I worry the call stack is getting *very* large here.\n\nHost command or charging tasks have pretty deep call stacks anyway, and this adds yet another layer.\n\nI think if we\u0027re going to do this, we should also switch to \n\nstruct i2c_xfer_params {\n   int port;\n   int slave_addr;\n   const uint8_t *out;\n   int out_size;\n   uint8_t *in\n   int in_size;\n   int flags;\n}\n\nAnd then i2c_xfer(struct i2c_xfer_params *p);\n\nThen the notify functions can also take the same params pointer, which gives them more flexibility.\n\n(actually, we should do this anyway)",
+      "range": {
+        "startLine": 53,
+        "startChar": 37,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "64c945b239a00bb28f0b6265ab775707b3520093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b795dc5_418f0e86",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1738,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-12T22:38:53Z",
+      "side": 1,
+      "message": "BOARD_CALLBACK?",
+      "range": {
+        "startLine": 1738,
+        "startChar": 23,
+        "endLine": 1738,
+        "endChar": 31
+      },
+      "revId": "64c945b239a00bb28f0b6265ab775707b3520093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f41631d_5a0997f5",
+        "filename": "include/i2c.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-12T22:38:53Z",
+      "side": 1,
+      "message": "Board must implement this if it defines CONFIG_I2C_XFER_BOARD_CALLBACK",
+      "range": {
+        "startLine": 341,
+        "startChar": 30,
+        "endLine": 341,
+        "endChar": 31
+      },
+      "revId": "64c945b239a00bb28f0b6265ab775707b3520093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
