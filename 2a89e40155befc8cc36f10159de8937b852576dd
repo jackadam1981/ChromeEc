@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b426fd2c_ea11b4ed",
+        "filename": "driver/als_opt3001.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-12T23:03:41Z",
+      "side": 1,
+      "message": "You are changing the interface: before:\n\ncalibrated \u003d scale * ( raw + offset)\n\nnow\n\ncalibrated \u003d scale * raw + offset\n\n\nI would do:\ndata \u003d (1 \u003c\u003c (data \u003e\u003e 12)) * (data \u0026 0x0FFF)\ndata +\u003d drv_data-\u003eoffset * 100\n\ndata \u003d data * drv_data-\u003escale + data * drv_data-\u003euscale / 10000;\ndata /\u003d 100;",
+      "revId": "2a89e40155befc8cc36f10159de8937b852576dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
