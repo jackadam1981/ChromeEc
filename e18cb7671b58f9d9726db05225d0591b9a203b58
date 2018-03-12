@@ -52,6 +52,24 @@
       "revId": "e18cb7671b58f9d9726db05225d0591b9a203b58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecfa1a93_b4fa6681",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T19:39:48Z",
+      "side": 1,
+      "message": "Why don\u0027t we pass \u0027ret\u0027 to i2c_end_xfer_notify and return what it returns? That is:\n\n  ret \u003d i2c_end_xfer_notify(port, slave_addr, ret);",
+      "parentUuid": "68c96026_c40318eb",
+      "revId": "e18cb7671b58f9d9726db05225d0591b9a203b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
