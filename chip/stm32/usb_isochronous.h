@@ -58,7 +58,8 @@ struct usb_isochronous_config {
 				    ENDPOINT,				\
 				    TX_SIZE,				\
 				    TX_CALLBACK,			\
-				    SET_INTERFACE)			\
+				    SET_INTERFACE,			\
+				    NUM_EXTRA_ENDPOINTS)		\
 	BUILD_ASSERT(TX_SIZE > 0);					\
 	BUILD_ASSERT((TX_SIZE <   64 && (TX_SIZE & 0x01) == 0) ||	\
 		     (TX_SIZE < 1024 && (TX_SIZE & 0x1f) == 0));	\
@@ -96,7 +97,7 @@ struct usb_isochronous_config {
 		.bDescriptorType    = USB_DT_INTERFACE,			\
 		.bInterfaceNumber   = INTERFACE,			\
 		.bAlternateSetting  = 1,				\
-		.bNumEndpoints      = 1,				\
+		.bNumEndpoints      = 1 + NUM_EXTRA_ENDPOINTS,		\
 		.bInterfaceClass    = INTERFACE_CLASS,			\
 		.bInterfaceSubClass = INTERFACE_SUBCLASS,		\
 		.bInterfaceProtocol = INTERFACE_PROTOCOL,		\
