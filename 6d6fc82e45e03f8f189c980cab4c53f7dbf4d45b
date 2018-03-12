@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9f99922_c77d4383",
+        "filename": "util/uut/src/include/cmd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-03-12T16:44:07Z",
+      "side": 1,
+      "message": "Any reason to use the word \"Comand\" instead of \"Command\"?",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75500f11_533f8587",
+        "filename": "util/uut/src/source/cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-03-12T16:44:07Z",
+      "side": 1,
+      "message": "Better to use {} for the following \"multiple-lines\" statement.",
+      "range": {
+        "startLine": 411,
+        "startChar": 42,
+        "endLine": 411,
+        "endChar": 43
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35a20a0e_d7b65b51",
+        "filename": "util/uut/src/source/l_com_port.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-03-12T16:44:07Z",
+      "side": 1,
+      "message": "extra ,",
+      "range": {
+        "startLine": 244,
+        "startChar": 58,
+        "endLine": 244,
+        "endChar": 59
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b89ff16_e108d140",
+        "filename": "util/uut/src/source/l_com_port.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-03-12T16:44:07Z",
+      "side": 1,
+      "message": "typo: until",
+      "range": {
+        "startLine": 422,
+        "startChar": 22,
+        "endLine": 422,
+        "endChar": 28
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "257a20e3_71465ed3",
+        "filename": "util/uut/src/source/lib_crc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-03-12T16:44:07Z",
+      "side": 1,
+      "message": "Look like you don\u0027t need a cast. c is an unsigned long.",
+      "range": {
+        "startLine": 284,
+        "startChar": 7,
+        "endLine": 284,
+        "endChar": 22
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99d36939_61f6aa3a",
+        "filename": "util/uut/src/source/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-03-12T16:44:07Z",
+      "side": 1,
+      "message": "Add {} for the else clause",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 7
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cfb6b92_7296c30e",
+        "filename": "util/uut/src/source/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-03-12T16:44:07Z",
+      "side": 1,
+      "message": "typo: double",
+      "range": {
+        "startLine": 414,
+        "startChar": 20,
+        "endLine": 414,
+        "endChar": 26
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
