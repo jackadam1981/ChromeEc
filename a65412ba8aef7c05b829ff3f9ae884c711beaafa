@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "238ebc2d_70bda094",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-12T08:18:29Z",
+      "side": 1,
+      "message": "at startup, TASK_CONSOLE is not in \u0027tasks_enabled\u0027 and should not wake,\nif it is, you are past task_enable_all_tasks(), so all HOOK_INIT should have been executed.\n\nI suspect there is another bug in the chip code or tell me more of the state of the system when this is happening.",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "a65412ba8aef7c05b829ff3f9ae884c711beaafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "965ad39c_bc10cc2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-12T08:18:29Z",
+      "side": 1,
+      "message": "covering this bug by adding more code in the critical path is likely not the optimal solution",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "a65412ba8aef7c05b829ff3f9ae884c711beaafa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
