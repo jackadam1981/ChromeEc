@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62183699_58b3a341",
+        "filename": "board/nami/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T17:55:45Z",
+      "side": 1,
+      "message": "Can you get a name by looking up a table by OEM_ID?\n\n  const static char project_name[] \u003d { \"Nami\", \"Vayne\", \"Unknown\", };\n  ...\n  CPRINTS(\"Project %s\", project_name[oem_id]);",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 35
+      },
+      "revId": "81f4599e2f25de351b24d8f02d29c280ea776be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82faaefb_952be658",
+        "filename": "board/nami/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T17:55:45Z",
+      "side": 1,
+      "message": "I understand you\u0027re trying to validate sku_id by searching for the ID in the project specific SKU_ID list but what is the goal?\n\nIf it\u0027s just ending up \"project name is ...\" on ec console, I don\u0027t think it\u0027s meaningful. If it\u0027s used by some kind of test (faft, factory test, etc.), it should be done through ectool.",
+      "range": {
+        "startLine": 790,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 2
+      },
+      "revId": "81f4599e2f25de351b24d8f02d29c280ea776be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf1d87c4_91ec411a",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T17:55:45Z",
+      "side": 1,
+      "message": "Why do we have only two SKUs per project?",
+      "range": {
+        "startLine": 265,
+        "startChar": 8,
+        "endLine": 265,
+        "endChar": 34
+      },
+      "revId": "81f4599e2f25de351b24d8f02d29c280ea776be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b0ea26f_af9d062e",
+        "filename": "board/nami/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T17:55:45Z",
+      "side": 1,
+      "message": "Why do you need this declaration?",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 0
+      },
+      "revId": "81f4599e2f25de351b24d8f02d29c280ea776be0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
