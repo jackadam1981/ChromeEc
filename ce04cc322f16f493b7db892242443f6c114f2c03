@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcd89474_e3493e50",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-12T04:50:09Z",
+      "side": 1,
+      "message": "This can actually be put in a helper function so that it can be used by both i2c_*_xfer_notify. I can do that in the next patchset.",
+      "range": {
+        "startLine": 794,
+        "startChar": 1,
+        "endLine": 795,
+        "endChar": 9
+      },
+      "revId": "ce04cc322f16f493b7db892242443f6c114f2c03",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
