@@ -16,6 +16,24 @@
       "revId": "625bdec7803c853aab8f31675aec30b34893789d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7a4c647_a5c2eee5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-03-12T16:58:38Z",
+      "side": 1,
+      "message": "I can\u0027t see why this would be unique to Grunt. Hence my comment on b/72645441#8 \"But I don\u0027t understand why this wouldn\u0027t have been found before now: how could auto-power-on-with-no-battery have been working for any other board? Maybe it just hasn\u0027t been tested recently?\"",
+      "parentUuid": "5acd0810_af65f133",
+      "revId": "625bdec7803c853aab8f31675aec30b34893789d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
