@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6b5a496_5678f2e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-12T22:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07d9e826_d1da6c9e",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "17e404ab1fbea7a7f2cc7122d4cc62833205ca95",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc6ea5e6_6a6e2e94",
         "filename": "board/nami/board.c",
         "patchSetId": 2
