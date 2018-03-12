@@ -254,6 +254,22 @@ enum mft_channel {
 	MFT_CH_COUNT,
 };
 
+enum project_name {
+	PROJECT_NAMI = 0,
+	PROJECT_VAYNE,
+	/* Number of Project Name */
+	PROJECT_NAME_COUNT,
+};
+
+/* Max nuber of sku id for project */
+#define PROJECT_SKU_ID_MAX_COUNT	2
+
+/* Project sku id for Nami family */
+struct project_sku_id {
+	int project_name;	/* project name */
+	uint32_t sku_id[PROJECT_SKU_ID_MAX_COUNT];	/* sku id */
+};
+
 /* TODO(crosbug.com/p/61098): Verify the numbers below. */
 /*
  * delay to turn on the power supply max is ~16ms.
@@ -275,6 +291,7 @@ enum mft_channel {
 int board_get_version(void);
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
+int is_project(enum project_name prj_name);
 
 #endif /* !__ASSEMBLER__ */
 

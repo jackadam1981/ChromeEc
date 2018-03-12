@@ -439,6 +439,11 @@ static void board_init(void)
 	if (cbi_get_board_version(&version) == EC_SUCCESS)
 		CPRINTS("Board Version: 0x%04x", version);
 
+	if (is_project(PROJECT_NAMI))
+		CPRINTS("Project Name is Nami");
+
+	if (is_project(PROJECT_VAYNE))
+		CPRINTS("Project Name is Vayne");
 	/*
 	 * This enables pull-down on F_DIO1 (SPI MISO), and F_DIO0 (SPI MOSI),
 	 * whenever the EC is not doing SPI flash transactions. This avoids
@@ -765,3 +770,28 @@ static void lm3509_kblight_lid_change(void)
 		lm3509_poweroff();
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, lm3509_kblight_lid_change, HOOK_PRIO_DEFAULT);
+
+/* Project sku id for Nami family */
+const struct project_sku_id sku_id_table[] = {
+/* {Project_Name, {sku_id1, sku_id2}} */
+	{PROJECT_NAMI, {0x3A7B, 0} },
+	{PROJECT_VAYNE, {0x3A63, 0x3A7F} },
+};
+
+/* To check whether it is @prj_name,
+ * @param prj_name: project name
+ * Returns 1 if it is this project.
+ */
+int is_project(enum project_name prj_name)
+{
+	uint32_t sku_id;
+	int index;
+
+	if (cbi_get_sku_id(&sku_id) == EC_SUCCESS) {
+		for (index = 0; index < PROJECT_SKU_ID_MAX_COUNT; index++) {
+			if (sku_id == sku_id_table[prj_name].sku_id[index])
+				return 1;
+		}
+	}
+	return 0;
+}
