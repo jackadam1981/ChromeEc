@@ -46,6 +46,30 @@
       "revId": "13e50faf948bd51d7bd4ed0f3a9f73cf0cee0af8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f7fb51_7a4a4b74",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-12T08:00:59Z",
+      "side": 1,
+      "message": "\u003e If the battery is cutoff while AC is connected, the battery doesn\u0027t seem to be re-connected until AC is removed and then re-inserted. \n\nOk I have seen other battery packs behave differently in the past.\nThen it\u0027s likely ok.",
+      "parentUuid": "606a86ca_1402a668",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 46
+      },
+      "revId": "13e50faf948bd51d7bd4ed0f3a9f73cf0cee0af8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
