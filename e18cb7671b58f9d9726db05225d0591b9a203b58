@@ -16,6 +16,24 @@
       "revId": "e18cb7671b58f9d9726db05225d0591b9a203b58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0042db2a_918c1dd1",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-12T04:39:03Z",
+      "side": 1,
+      "message": "I thought of that, but the problem is:\n1. What do we do if i2c_start_xfer_notify returns failure? Do we return right away without actually calling chip_i2c_xfer?\n2. What do we do if i2c_end_xfer_notify returns failure? Do we consider the i2c transaction as failed? Probably not?\n\nThe thing is we have only one example of how this is going to be used right now and it just expects that the bus free time be higher than the expected threshold by the battery. So, there is no failure case there (i.e. start and end would always return success). Maybe we should add a return value if there are more users of these callbacks?",
+      "parentUuid": "f3ee664d_cbc02c10",
+      "revId": "e18cb7671b58f9d9726db05225d0591b9a203b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
