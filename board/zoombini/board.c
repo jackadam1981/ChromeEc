@@ -209,7 +209,7 @@ static struct opt3001_drv_data_t g_opt3001_data = {
 	.uscale = 0,
 	.offset = 0,
 	/* Meowth has a dark cover glass. */
-	.attenuation_factor = 100,
+	.attenuation_factor = 1000,
 };
 
 /* Base Sensor mutex */
