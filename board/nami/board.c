@@ -765,3 +765,30 @@ static void lm3509_kblight_lid_change(void)
 		lm3509_poweroff();
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, lm3509_kblight_lid_change, HOOK_PRIO_DEFAULT);
+
+/* Project sku id for Nami family */
+const struct project_sku_id sku_id_table[] = {
+/* {sku_id_count, {sku_id_1, sku_id_2} } */
+	{1, {0x3A7B} },	/* PROJECT_NAMI */
+	{2, {0x3A63, 0x3A7F} },	/* PROJECT_VAYNE */
+};
+BUILD_ASSERT(ARRAY_SIZE(sku_id_table) == PROJECT_NAME_COUNT);
+
+/* To check whether it is @prj_name,
+ * @param prj_name: project name
+ * Returns 1 if it is this project.
+ */
+int is_this_project(enum project_name prj_name)
+{
+	uint32_t sku_id;
+	int index;
+
+	if (cbi_get_sku_id(&sku_id) == EC_SUCCESS) {
+		for (index = 0; index < sku_id_table[prj_name].sku_id_count;
+		 index++) {
+			if (sku_id == sku_id_table[prj_name].sku_id[index])
+				return 1;
+		}
+	}
+	return 0;
+}
