@@ -302,6 +302,14 @@ static int try_vendor_command(struct consumer const *consumer, size_t count)
 		case UPDATE_EXTRA_CMD_TOUCHPAD_INFO: {
 			struct touchpad_info tp = { 0 };
 
+			/*
+			 * The response message must not exceed 64 bytes.
+			 * And our protocol has a 14 bytes header.
+			 * So the size of `struct touchpad_info` must be less
+			 * than or equal to 50 bytes
+			 */
+			BUILD_ASSERT(sizeof(struct touchpad_info) <= 50);
+
 			if (data_count != 0) {
 				response = EC_RES_INVALID_PARAM;
 				break;
