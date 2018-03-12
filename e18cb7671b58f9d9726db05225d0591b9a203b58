@@ -70,6 +70,24 @@
       "revId": "e18cb7671b58f9d9726db05225d0591b9a203b58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "192f2383_c3472f9b",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-12T22:27:29Z",
+      "side": 1,
+      "message": "Passing in ret and updating the return value of ret might not be correct in all cases. Even though i2c_end_xfer_notify operation succeeds, chip_i2c_xfer has failed and so it might be better to just return error from this function.\n\nAs mentioned above, I think that it would be better to address this when it is needed. Currently, we have only one use-case where the callback user doesn\u0027t care about the \"ret\" and so would always return success.",
+      "parentUuid": "ecfa1a93_b4fa6681",
+      "revId": "e18cb7671b58f9d9726db05225d0591b9a203b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }

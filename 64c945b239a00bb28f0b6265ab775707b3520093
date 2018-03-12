@@ -22,6 +22,30 @@
       "revId": "64c945b239a00bb28f0b6265ab775707b3520093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04b16e95_96475550",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-12T22:27:29Z",
+      "side": 1,
+      "message": "Problem is that the issue pointed out in 73147310 is not a chip or a driver specific issue, but an issue related to a very specific battery firmware version and hence needs to be handled at board-level.",
+      "parentUuid": "1355dbd0_4180254e",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 43
+      },
+      "revId": "64c945b239a00bb28f0b6265ab775707b3520093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
