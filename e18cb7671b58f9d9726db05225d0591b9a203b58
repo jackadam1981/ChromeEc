@@ -34,6 +34,24 @@
       "revId": "e18cb7671b58f9d9726db05225d0591b9a203b58",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68c96026_c40318eb",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-12T15:19:11Z",
+      "side": 1,
+      "message": "I\u0027d fail when the callbacks fail. Those callbacks presumably need to work. Anyway, we can address it as needed.",
+      "parentUuid": "0042db2a_918c1dd1",
+      "revId": "e18cb7671b58f9d9726db05225d0591b9a203b58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
