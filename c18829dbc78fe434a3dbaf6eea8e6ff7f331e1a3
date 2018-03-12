@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30ab5211_4df8d175",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T18:11:31Z",
+      "side": 1,
+      "message": "How does this work? Did you test the code?",
+      "range": {
+        "startLine": 68,
+        "startChar": 32,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "c18829dbc78fe434a3dbaf6eea8e6ff7f331e1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f416dc_1f4817ae",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T18:11:31Z",
+      "side": 1,
+      "message": "All lower case. Why don\u0027t you just call these hc_set_kb_light and hc_get_kb_light?",
+      "range": {
+        "startLine": 90,
+        "startChar": 7,
+        "endLine": 90,
+        "endChar": 37
+      },
+      "revId": "c18829dbc78fe434a3dbaf6eea8e6ff7f331e1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf7b5d74_91b155a6",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T18:11:31Z",
+      "side": 1,
+      "message": "You should define lm3509_read like lm3509_write.",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 60
+      },
+      "revId": "c18829dbc78fe434a3dbaf6eea8e6ff7f331e1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "919164e6_6c9daaa6",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T18:11:31Z",
+      "side": 1,
+      "message": "Why do you need add 500? Can you do it at compilation time? Actually this whole calculation should be done at compilation time.",
+      "range": {
+        "startLine": 100,
+        "startChar": 42,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "c18829dbc78fe434a3dbaf6eea8e6ff7f331e1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5f65a24_ddb920e8",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-12T18:11:31Z",
+      "side": 1,
+      "message": "You\u0027re returning success even when i2c_read8 fails.",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 22
+      },
+      "revId": "c18829dbc78fe434a3dbaf6eea8e6ff7f331e1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
