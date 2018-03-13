@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9fa51ec_4b3bf311",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-13T23:26:48Z",
+      "side": 1,
+      "message": "remove \u003d 0 fields (see cl:959502)",
+      "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2c6d211_51675cdb",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-13T23:26:48Z",
+      "side": 1,
+      "message": "Add CONFIG_ACCEL_FORCE_MODE_MASK, see cl:960940",
+      "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3535fb19_57451513",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-13T23:26:48Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
