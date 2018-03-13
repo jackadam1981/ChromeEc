@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "743dcea5_7a341a6a",
+        "filename": "util/uut/src/include/cmd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-03-13T08:39:52Z",
+      "side": 1,
+      "message": "You are correct, it is a typo and should be fixed.",
+      "parentUuid": "e9f99922_c77d4383",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75500f11_533f8587",
         "filename": "util/uut/src/source/cmd.c",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2018-03-12T16:44:07Z",
       "side": 1,
       "message": "Better to use {} for the following \"multiple-lines\" statement.",
+      "range": {
+        "startLine": 411,
+        "startChar": 42,
+        "endLine": 411,
+        "endChar": 43
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e60f40f4_f6c5b756",
+        "filename": "util/uut/src/source/cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-03-13T08:39:52Z",
+      "side": 1,
+      "message": "It is single command after the \"if\" and single command after the \"else\"\nto my opinion Google style recommended not to use \"{}\"",
+      "parentUuid": "75500f11_533f8587",
       "range": {
         "startLine": 411,
         "startChar": 42,
@@ -117,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "e3f0b0eb_1edf075a",
+        "filename": "util/uut/src/source/l_com_port.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-03-13T08:39:52Z",
+      "side": 1,
+      "message": "You are correct the \",\" should be omitted.",
+      "parentUuid": "35a20a0e_d7b65b51",
+      "range": {
+        "startLine": 244,
+        "startChar": 58,
+        "endLine": 244,
+        "endChar": 59
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b89ff16_e108d140",
         "filename": "util/uut/src/source/l_com_port.c",
         "patchSetId": 4
@@ -128,6 +200,30 @@
       "writtenOn": "2018-03-12T16:44:07Z",
       "side": 1,
       "message": "typo: until",
+      "range": {
+        "startLine": 422,
+        "startChar": 22,
+        "endLine": 422,
+        "endChar": 28
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f85e0c67_b15e57e8",
+        "filename": "util/uut/src/source/l_com_port.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-03-13T08:39:52Z",
+      "side": 1,
+      "message": "You are correct, it should be fixed",
+      "parentUuid": "8b89ff16_e108d140",
       "range": {
         "startLine": 422,
         "startChar": 22,
@@ -186,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "93e15749_35b302cd",
+        "filename": "util/uut/src/source/lib_crc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-03-13T08:39:52Z",
+      "side": 1,
+      "message": "you are correct, cast is not needed.",
+      "parentUuid": "257a20e3_71465ed3",
+      "range": {
+        "startLine": 284,
+        "startChar": 7,
+        "endLine": 284,
+        "endChar": 22
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99d36939_61f6aa3a",
         "filename": "util/uut/src/source/main.c",
         "patchSetId": 4
@@ -209,6 +329,30 @@
     },
     {
       "key": {
+        "uuid": "da061ef8_ebb63086",
+        "filename": "util/uut/src/source/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-03-13T08:39:52Z",
+      "side": 1,
+      "message": "to my opinion Google style  recommended not to use \"{}\" for a single command.",
+      "parentUuid": "99d36939_61f6aa3a",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 7
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cfb6b92_7296c30e",
         "filename": "util/uut/src/source/main.c",
         "patchSetId": 4
@@ -220,6 +364,30 @@
       "writtenOn": "2018-03-12T16:44:07Z",
       "side": 1,
       "message": "typo: double",
+      "range": {
+        "startLine": 414,
+        "startChar": 20,
+        "endLine": 414,
+        "endChar": 26
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "246e172f_63d8ccab",
+        "filename": "util/uut/src/source/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-03-13T08:39:52Z",
+      "side": 1,
+      "message": "you are correct, typo should be fixed",
+      "parentUuid": "1cfb6b92_7296c30e",
       "range": {
         "startLine": 414,
         "startChar": 20,
