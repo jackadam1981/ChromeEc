@@ -191,7 +191,17 @@ int pd_check_vconn_swap(int port)
 
 void pd_execute_data_swap(int port, int data_role)
 {
-	/* Do nothing */
+	enum gpio_signal gpio_otg_id = GPIO_USB2_OTG_ID;
+	enum gpio_signal gpio_otg_vbus = GPIO_USB2_OTG_VBUSSENSE;
+
+	if(data_role == PD_ROLE_UFP) {
+		gpio_set_level(gpio_otg_id, 1);
+		gpio_set_level(gpio_otg_vbus, 1);
+	}
+	else {
+		gpio_set_level(gpio_otg_id, 0);
+		gpio_set_level(gpio_otg_vbus, 0);
+	}
 }
 
 void pd_check_pr_role(int port, int pr_role, int flags)
