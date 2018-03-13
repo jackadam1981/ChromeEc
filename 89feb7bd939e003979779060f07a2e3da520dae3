@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40be3f1a_8f932ced",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-03-13T21:44:28Z",
+      "side": 1,
+      "message": "may be we can add GPIO_PULL_UP till we use accel interrupts",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "89feb7bd939e003979779060f07a2e3da520dae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
