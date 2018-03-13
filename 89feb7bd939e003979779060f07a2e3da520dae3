@@ -22,6 +22,30 @@
       "revId": "89feb7bd939e003979779060f07a2e3da520dae3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3086b6a3_e5380a8a",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-13T21:48:23Z",
+      "side": 1,
+      "message": "Sounds good. I will update in the next patch.",
+      "parentUuid": "40be3f1a_8f932ced",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 61
+      },
+      "revId": "89feb7bd939e003979779060f07a2e3da520dae3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
