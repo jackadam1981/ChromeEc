@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b5022df_05ddae05",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-13T23:57:42Z",
+      "side": 1,
+      "message": "static is not needed.",
+      "range": {
+        "startLine": 797,
+        "startChar": 1,
+        "endLine": 797,
+        "endChar": 7
+      },
+      "revId": "213c3d6644391fc7ca4880961b9c5e2b1fba12d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
