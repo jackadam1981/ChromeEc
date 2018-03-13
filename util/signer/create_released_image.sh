@@ -184,15 +184,30 @@ set -e
 FLAGS_HELP="usage: ${ME} [flags] <blobs>
 
 blobs are:
-  <prod RO A>.hex <prod RO B>.hex  <RW.elf> <RW_B.elf>"
+  <prod RO A>.hex <prod RO B>.hex  <RW.elf> <RW_B.elf>
+ or
+  <prod RO A>.hex <prod RO B>.hex  <dir>
+    where <dir> contains files named ec.RW.elf and ec.RW_B.elf
+"
 
 # Parse command line.
 FLAGS "$@" || exit 1
 
 eval set -- "${FLAGS_ARGV}"
-if [ "${#*}" != "4" ]; then
+if [[ ${#*} < 3 || ${#*} > 4 ]]; then
   flags_help
   exit 1
+fi
+
+prod_ro_a="${1}"
+prod_ro_b="${2}"
+
+if [[ -d "${3}" ]]; then
+  rw_a="${3}/ec.RW.elf"
+  rw_b="${3}/ec.RW_B.elf"
+else
+  rw_a="${3}"
+  rw_b="${4}"
 fi
 
 dd if=/dev/zero bs="${IMAGE_SIZE}" count=1  2>/dev/null |
@@ -201,11 +216,6 @@ if [ "$(stat -c '%s' "${RESULT_FILE}")" != "${IMAGE_SIZE}" ]; then
   echo "Failed creating ${RESULT_FILE}" >&2
   exit 1
 fi
-
-prod_ro_a="${1}"
-prod_ro_b="${2}"
-rw_a="${3}"
-rw_b="${4}"
 
 # Used by the bs script.
 export CR50_BOARD_ID="${FLAGS_cr50_board_id}"
