@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05c3cb5b_1c1718f2",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-13T23:08:47Z",
+      "side": 1,
+      "message": "I initially put these in, but in hindsight, I would actually demote to debug level and remove the \"EC\" portion of it. Since these are now spawned for many different PTYs, assuming EC is incorrect.",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 826,
+        "endChar": 91
+      },
+      "revId": "99683890920d66f34c775a781c7862181c2fe739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4772c4d4_4414bbc1",
+        "filename": "util/ec3po/console.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-13T23:08:47Z",
+      "side": 1,
+      "message": "why strip?",
+      "range": {
+        "startLine": 856,
+        "startChar": 53,
+        "endLine": 856,
+        "endChar": 58
+      },
+      "revId": "99683890920d66f34c775a781c7862181c2fe739",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
