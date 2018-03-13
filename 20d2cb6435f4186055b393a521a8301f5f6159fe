@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "92d27e86_8b0c3fc0",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T13:05:01Z",
+      "side": 1,
+      "message": "ANX7447 has two co-existence I2C slave addresses, TCPC slave address 0x52 and SPI slave address 0x62.\nThe registers of TCPC slave address are partly compliant with standard USB TCPC specification, and the registers in SPI slave address controls the other functions (ex, hpd_level, mux_switch, and so on). It can\u0027t use tcpc_read() to access SPI slave address because its slave address has been set as TCPC in the structure tcpc_config_t.\nCan I keep using i2c_read8() in this case?",
+      "parentUuid": "92da036b_d6006285",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34cee2fe_36e52d68",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -986,6 +1010,30 @@
     },
     {
       "key": {
+        "uuid": "bffddd6f_2310e32e",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T13:05:01Z",
+      "side": 1,
+      "message": "Thanks, I will surround it by CONFIG_USB_PD_VBUS_DETECT_TCPC.",
+      "parentUuid": "b62518ac_b95de8e6",
+      "range": {
+        "startLine": 267,
+        "startChar": 8,
+        "endLine": 267,
+        "endChar": 33
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "082f5bd6_e7aa7e3d",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -997,6 +1045,30 @@
       "writtenOn": "2018-03-12T23:27:40Z",
       "side": 1,
       "message": "I believe we prefer \u0027int reg \u003d enable ? 0x55 : 0x44;\u0027 or you don\u0027t need \u0027reg\u0027 at all.",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 13
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d59d0aee_626adece",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T13:05:01Z",
+      "side": 1,
+      "message": "Thanks for your suggestion, and I will refine it.",
+      "parentUuid": "082f5bd6_e7aa7e3d",
       "range": {
         "startLine": 284,
         "startChar": 0,
