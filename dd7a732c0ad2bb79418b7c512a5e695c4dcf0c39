@@ -22,6 +22,30 @@
       "revId": "dd7a732c0ad2bb79418b7c512a5e695c4dcf0c39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61c36eb8_359c7547",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-13T09:04:16Z",
+      "side": 1,
+      "message": "TBH, I\u0027m not sure if I understand it either. This happens if I try to hibernate wand, when lux is talking to it every second.\n\nI used PA2 (UART) as a wake-up pin: #define CONFIG_HIBERNATE_WAKEUP_PINS (STM32_PWR_CSR_EWUP4)\n\nThere was no watchdog, and the reset cause was \"hibernate\". But for some reason the register was not reset, and it would only get reset by doing another \"reboot\".\n\nThis looks somehow related to 2.1.1 in this errata (http://www.st.com/content/st_com/en/support/resources/resource-selector.html?querycriteria\u003dproductId\u003dSS1574$$resourceCategory\u003dtechnical_literature$$resourceType\u003derrata_sheet, STM32F071x8/xB device limitations, yes, not quite the same chip, there does not seem to be an errata for 072...), but it\u0027s not quite the same issue either...",
+      "parentUuid": "2226ab01_2a679bec",
+      "range": {
+        "startLine": 283,
+        "startChar": 24,
+        "endLine": 284,
+        "endChar": 47
+      },
+      "revId": "dd7a732c0ad2bb79418b7c512a5e695c4dcf0c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
