@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d6723a4b_c785d265",
+        "filename": "util/uut/src/source/cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-03-13T22:13:43Z",
+      "side": 1,
+      "message": "Style guide states that curly braces are not required for single-line statements. But these are multi-line statements.",
+      "parentUuid": "e60f40f4_f6c5b756",
+      "range": {
+        "startLine": 411,
+        "startChar": 42,
+        "endLine": 411,
+        "endChar": 43
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "414c23e8_1020afba",
         "filename": "util/uut/src/source/l_com_port.c",
         "patchSetId": 4
@@ -341,6 +365,30 @@
       "side": 1,
       "message": "to my opinion Google style  recommended not to use \"{}\" for a single command.",
       "parentUuid": "99d36939_61f6aa3a",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 7
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b75f4c17_824179ef",
+        "filename": "util/uut/src/source/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2018-03-13T22:13:43Z",
+      "side": 1,
+      "message": "Style guide states that if one part of an if-else statement uses curly braces, the other part must too.",
+      "parentUuid": "da061ef8_ebb63086",
       "range": {
         "startLine": 198,
         "startChar": 6,
