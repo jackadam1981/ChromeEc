@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c308bf2_a317be7e",
+        "filename": "board/elm/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-13T18:51:14Z",
+      "side": 0,
+      "message": "This field should not be set at init at all. It is set when the AP wants to use the sensor (beyond what the EC already retrieves).\nIt is always set to 0 when going into S5.",
+      "parentUuid": "d23b5355_c1e852d9",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 25
+      },
+      "revId": "37102a87fb95b58c7a1f2d08248ef8e0f6318911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e8c1a5b_ffa1a7aa",
         "filename": "board/glados/board.c",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "37102a87fb95b58c7a1f2d08248ef8e0f6318911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f53c4e9_e9606f78",
+        "filename": "board/glados/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-13T18:51:14Z",
+      "side": 0,
+      "message": "idem.",
+      "parentUuid": "3e8c1a5b_ffa1a7aa",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 542,
+        "endChar": 4
+      },
+      "revId": "37102a87fb95b58c7a1f2d08248ef8e0f6318911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "80fb62de_ba631419",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-13T18:51:14Z",
+      "side": 0,
+      "message": "idem",
+      "parentUuid": "7eb87795_3be3b28f",
+      "range": {
+        "startLine": 552,
+        "startChar": 3,
+        "endLine": 552,
+        "endChar": 32
+      },
+      "revId": "37102a87fb95b58c7a1f2d08248ef8e0f6318911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e28da62_7fe73a6d",
         "filename": "board/oak/board.c",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "37102a87fb95b58c7a1f2d08248ef8e0f6318911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "369e93fe_320d315b",
+        "filename": "board/oak/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-13T18:51:14Z",
+      "side": 0,
+      "message": "idem",
+      "parentUuid": "1e28da62_7fe73a6d",
+      "range": {
+        "startLine": 719,
+        "startChar": 0,
+        "endLine": 722,
+        "endChar": 4
+      },
+      "revId": "37102a87fb95b58c7a1f2d08248ef8e0f6318911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6e52d8fa_809d613f",
+        "filename": "board/samus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-13T18:51:14Z",
+      "side": 0,
+      "message": "Gyroscope is not used in by default, surely not by the EC.",
+      "parentUuid": "4cd1fd56_5cf1eb1d",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 5
+      },
+      "revId": "37102a87fb95b58c7a1f2d08248ef8e0f6318911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b3124a4_f5a27c61",
         "filename": "board/scarlet/board.c",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "37102a87fb95b58c7a1f2d08248ef8e0f6318911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40b0bc27_d86e572f",
+        "filename": "board/scarlet/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-13T18:51:14Z",
+      "side": 0,
+      "message": "Gyroscope is not used at all (odr \u003d 0), no need to probe it.",
+      "parentUuid": "5b3124a4_f5a27c61",
+      "range": {
+        "startLine": 436,
+        "startChar": 4,
+        "endLine": 436,
+        "endChar": 22
+      },
+      "revId": "37102a87fb95b58c7a1f2d08248ef8e0f6318911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
