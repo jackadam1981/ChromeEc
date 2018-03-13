@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d6e66bf2_5f3eafc5",
+        "filename": "board/pdeval-stm32f072/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "yes, I will fix it in the next update",
+      "parentUuid": "63755cb6_7fceb0ed",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 58,
+        "endChar": 7
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e606bce_0d86b82d",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -187,6 +211,30 @@
     },
     {
       "key": {
+        "uuid": "92da036b_d6006285",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "I will replace it by tcpc_read()",
+      "parentUuid": "de5bb66b_9bdcd68d",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34cee2fe_36e52d68",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -198,6 +246,30 @@
       "writtenOn": "2018-03-12T23:27:40Z",
       "side": 1,
       "message": "Same here. We need to call tcpc_write.",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9491b85_b48e8582",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "I will replace it by tcpc_write",
+      "parentUuid": "34cee2fe_36e52d68",
       "range": {
         "startLine": 61,
         "startChar": 1,
@@ -233,6 +305,30 @@
     },
     {
       "key": {
+        "uuid": "d1d010e0_2252b299",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "I will remove it.",
+      "parentUuid": "7245ae3d_4483bfe5",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 67
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1917012c_f66755b5",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -244,6 +340,30 @@
       "writtenOn": "2018-03-12T23:27:40Z",
       "side": 1,
       "message": "This is unnecessary. The whole image is timestamped.",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 100,
+        "endChar": 34
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94fe6e9c_8280c1b0",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "I will remove it",
+      "parentUuid": "1917012c_f66755b5",
       "range": {
         "startLine": 100,
         "startChar": 1,
@@ -279,6 +399,30 @@
     },
     {
       "key": {
+        "uuid": "8cc277fd_71513b20",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "I will remove it in the next update",
+      "parentUuid": "a0fe3a6f_04cf69f7",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 72
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "229d73b3_61c44da0",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -290,6 +434,30 @@
       "writtenOn": "2018-03-12T23:27:40Z",
       "side": 1,
       "message": "Not informative. I would remove it.",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 28
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e585b559_c91c5160",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "Sure, I will remove it",
+      "parentUuid": "229d73b3_61c44da0",
       "range": {
         "startLine": 103,
         "startChar": 1,
@@ -342,6 +510,24 @@
     },
     {
       "key": {
+        "uuid": "ef6d51bc_84d61671",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "Yes, I will fix it in the next update.",
+      "parentUuid": "dd513a51_8832d1fb",
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7201626_685e1743",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -356,6 +542,24 @@
       "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84e14f52_358e5bf0",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "Yes, I will fix it in the next update",
+      "parentUuid": "a7201626_685e1743",
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -393,6 +597,30 @@
       "writtenOn": "2018-03-12T23:27:40Z",
       "side": 1,
       "message": "Please remove.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 4
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0f41ad0_1f77861b",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "Yes, I will remove it",
+      "parentUuid": "c5cd8dfd_db9e51f7",
       "range": {
         "startLine": 144,
         "startChar": 0,
@@ -451,6 +679,30 @@
     },
     {
       "key": {
+        "uuid": "8d246e24_eb454267",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "Yes, I will remove it",
+      "parentUuid": "e5fca2f2_06d24e05",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 3
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b566397_065f3847",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -497,6 +749,30 @@
     },
     {
       "key": {
+        "uuid": "eb7131f9_37c06a02",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "Yes, it will be updated in the next update",
+      "parentUuid": "2e24fb80_2af80059",
+      "range": {
+        "startLine": 168,
+        "startChar": 45,
+        "endLine": 168,
+        "endChar": 49
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "432bafda_3b542e8c",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -520,6 +796,30 @@
     },
     {
       "key": {
+        "uuid": "0142c9c9_2ed455b8",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "Yes, I will remove it.",
+      "parentUuid": "432bafda_3b542e8c",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 3
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "147ded8b_81fc2281",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -531,6 +831,30 @@
       "writtenOn": "2018-03-12T23:27:40Z",
       "side": 1,
       "message": "Why isn\u0027t TCPC_REG_COMMAND_I2CIDLE used?",
+      "range": {
+        "startLine": 241,
+        "startChar": 43,
+        "endLine": 241,
+        "endChar": 47
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5df9e1a9_ee7f1172",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "Thanks for your suggestion. I will modify it in the next update",
+      "parentUuid": "147ded8b_81fc2281",
       "range": {
         "startLine": 241,
         "startChar": 43,
@@ -681,6 +1005,30 @@
     },
     {
       "key": {
+        "uuid": "856b17dc_ea273d2f",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "I will try to refine it.",
+      "parentUuid": "3cacfacc_4db2c1aa",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 2
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b8c9f3e_849f4286",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -738,6 +1086,30 @@
       "writtenOn": "2018-03-12T23:27:40Z",
       "side": 1,
       "message": "nit: #endif /* CONFIG_USB_PD_TCPM_MUX */",
+      "range": {
+        "startLine": 424,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 6
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e14b5da6_bd2ce998",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T06:28:38Z",
+      "side": 1,
+      "message": "I will fix it in the next update",
+      "parentUuid": "3b41dc47_29d30732",
       "range": {
         "startLine": 424,
         "startChar": 0,
