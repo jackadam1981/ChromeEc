@@ -72,8 +72,8 @@ static void board_init(void)
 	spi_configure();
 
 	/* Enable interrupt on PCH power signals */
-	gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
-	gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
+	//gpio_enable_interrupt(GPIO_PCH_SLP_S3_L);
+	//gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
 	/* enable the SPI slave interface if the PCH is up */
 	hook_call_deferred(&ap_deferred_data, 0);
 }
