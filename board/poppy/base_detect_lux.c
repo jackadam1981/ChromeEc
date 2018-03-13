@@ -196,6 +196,15 @@ void base_detect_interrupt(enum gpio_signal signal)
 	base_detect_debounce_time = time_now + BASE_DETECT_DEBOUNCE_US;
 }
 
+static void base_reset(void)
+{
+	CPRINTS("Chipset startup, resetting base.");
+	base_detect_change(BASE_UNKNOWN);
+	hook_call_deferred(&base_detect_deferred_data,
+				   BASE_DETECT_RETRY_US);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, base_reset, HOOK_PRIO_DEFAULT);
+
 static void base_init(void)
 {
 	/*
