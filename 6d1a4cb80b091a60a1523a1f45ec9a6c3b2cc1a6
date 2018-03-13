@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f0466bba_86cb8a4f",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-13T23:47:50Z",
+      "side": 1,
+      "message": "Will change.",
+      "parentUuid": "b9fa51ec_4b3bf311",
+      "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2c6d211_51675cdb",
         "filename": "board/yorp/board.h",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fc93e868_96f6cd85",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-13T23:47:50Z",
+      "side": 1,
+      "message": "Will add this.",
+      "parentUuid": "f2c6d211_51675cdb",
+      "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3535fb19_57451513",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2018-03-13T23:26:48Z",
       "side": 1,
       "message": "remove",
+      "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de35ae22_7154b4bf",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-13T23:47:50Z",
+      "side": 1,
+      "message": "Ok so have one chipset name for both variants. Will change.",
+      "parentUuid": "3535fb19_57451513",
       "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
