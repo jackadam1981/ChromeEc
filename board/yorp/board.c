@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "common.h"
+#include "driver/bc12/bq24392.h"
 #include "driver/charger/bd9995x.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -123,6 +124,11 @@ void chipset_do_shutdown(void)
 		;
 }
 
+enum adc_channel board_get_vbus_adc(int port)
+{
+	return port ? ADC_VBUS_C1 : ADC_VBUS_C0;
+}
+
 /**
  * Reset all system PD/TCPC MCUs -- currently only called from
  * handle_pending_reboot() in common/power.c just before hard
@@ -197,3 +203,17 @@ const struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 };
 const unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
+
+/* BC 1.2 chip Configuration */
+const struct bq24392_config_t bq24392_config[CONFIG_USB_PD_PORT_COUNT] = {
+	[USB_PD_PORT_ANX74XX] = {
+		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON,
+		.chg_det_pin = GPIO_USB_C0_BC12_CHG_DET_L,
+		.flags = BQ24392_FLAGS_CHG_DET_ACTIVE_LOW,
+	},
+	[USB_PD_PORT_PS8751] = {
+		.chip_enable_pin = GPIO_USB_C1_BC12_VBUS_ON,
+		.chg_det_pin = GPIO_USB_C1_BC12_CHG_DET_L,
+		.flags = BQ24392_FLAGS_CHG_DET_ACTIVE_LOW,
+	},
+};

@@ -17,6 +17,7 @@
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/bc12/bq24392.h"
 #include "driver/led/lm3630a.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx74xx.h"
@@ -200,6 +201,20 @@ const struct ppc_config_t ppc_chips[] = {
 };
 const unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+/* BC 1.2 chip Configuration */
+const struct bq24392_config_t bq24392_config[CONFIG_USB_PD_PORT_COUNT] = {
+	[USB_PD_PORT_ANX74XX] = {
+		.chip_enable_pin = GPIO_USB_C0_BC12_VBUS_ON_L,
+		.chg_det_pin = GPIO_USB_C0_BC12_CHG_DET,
+		.flags = BQ24392_FLAGS_ENABLE_ACTIVE_LOW,
+	},
+	[USB_PD_PORT_PS8751] = {
+		.chip_enable_pin = GPIO_USB_C1_BC12_VBUS_ON_L,
+		.chg_det_pin = GPIO_USB_C1_BC12_CHG_DET,
+		.flags = BQ24392_FLAGS_ENABLE_ACTIVE_LOW,
+	},
+};
+
 const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
 	GPIO_EN_USB_A0_5V,
 	GPIO_EN_USB_A1_5V,
@@ -309,9 +324,17 @@ void board_reset_pd_mcu(void)
 
 void board_tcpc_init(void)
 {
+	int count = 0;
 	int port;
 
-	/* TODO(ecgh): need to wait for disconnected battery? */
+	/* Wait for disconnected battery to wake up */
+	while (battery_hw_present() == BP_YES &&
+	       battery_is_present() == BP_NO) {
+		usleep(100 * MSEC);
+		/* Give up waiting after 1 second */
+		if (++count > 10)
+			break;
+	}
 
 	/* Only reset TCPC if not sysjump */
 	if (!system_jumped_to_this_image())
@@ -527,25 +550,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = KX022_ACCEL_MIN_FREQ,
 	 .max_frequency = KX022_ACCEL_MAX_FREQ,
 	 .config = {
-		/* AP: by default use EC settings */
-		[SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 0,
-		},
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S3] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 0,
-		},
-		/* Sensor off in S5. */
-		[SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
 		},
 	 },
 	},
@@ -566,11 +573,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
 	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
 	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
 			.odr = 10000 | ROUND_UP_FLAG,
@@ -579,12 +581,6 @@ struct motion_sensor_t motion_sensors[] = {
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S3] = {
 			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
 		 },
 	 },
 	},
@@ -604,27 +600,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = &base_standard_ref,
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
-	 .config = {
-		 /* AP: by default shutdown all sensors */
-		 [SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* EC does not need in S0 */
-		 [SENSOR_CONFIG_EC_S0] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 [SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-		 /* Sensor off in S5 */
-		 [SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
-		 },
-	 },
 	},
 };
 

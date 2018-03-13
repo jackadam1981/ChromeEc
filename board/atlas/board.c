@@ -17,11 +17,11 @@
 #include "console.h"
 #include "device_event.h"
 #include "driver/accel_kionix.h"
-#include "driver/accel_kxcj9.h"
+/* #include "driver/accel_kxcj9.h" */
 #include "driver/accelgyro_bmi160.h"
 #include "driver/als_si114x.h"
 #include "driver/charger/bd9995x.h"
-#include "driver/tcpm/anx74xx.h"
+#include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
 #include "driver/temp_sensor/bd99992gw.h"
@@ -45,7 +45,7 @@
 #include "spi.h"
 #include "switch.h"
 #include "system.h"
-#include "tablet_mode.h"
+/* #include "tablet_mode.h" */
 #include "task.h"
 #include "temp_sensor.h"
 #include "timer.h"
@@ -85,7 +85,10 @@ DECLARE_DEFERRED(enable_input_devices);
 #define LID_DEBOUNCE_US	(30 * MSEC)
 void tablet_mode_interrupt(enum gpio_signal signal)
 {
+#if 0
+%%%
 	hook_call_deferred(&enable_input_devices_data, LID_DEBOUNCE_US);
+#endif
 }
 
 /* Send event to wake AP based on trackpad input */
@@ -101,6 +104,7 @@ void dsp_interrupt(enum gpio_signal signal)
 }
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+#if 0
 static void anx74xx_c0_cable_det_handler(void)
 {
 	int cable_det = gpio_get_level(GPIO_USB_C0_CABLE_DET);
@@ -149,6 +153,7 @@ void anx74xx_cable_det_interrupt(enum gpio_signal signal)
 		hook_call_deferred(&anx74xx_c1_cable_det_handler_data,
 				   (2 * MSEC));
 }
+#endif
 #endif
 
 #include "gpio_list.h"
@@ -200,30 +205,32 @@ const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[]  = {
-	{"tcpc0",     I2C_PORT_TCPC0,    400, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
-	{"tcpc1",     I2C_PORT_TCPC1,    400, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
-	{"accelgyro", I2C_PORT_GYRO,     400, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
-	{"sensors",   I2C_PORT_LID_ACCEL, 400, GPIO_I2C2_SCL,  GPIO_I2C2_SDA},
+	{"tcpc0",     I2C_PORT_TCPC0,   1000, GPIO_I2C0_0_SCL, GPIO_I2C0_0_SDA},
+	{"tcpc1",     I2C_PORT_TCPC1,   1000, GPIO_I2C0_1_SCL, GPIO_I2C0_1_SDA},
+	{"accelgyro", I2C_PORT_GYRO,    1000, GPIO_I2C1_SCL,   GPIO_I2C1_SDA},
+	/* {"sensors",   I2C_PORT_LID_ACCEL, 400, GPIO_I2C2_SCL,  GPIO_I2C2_SDA}, */
 	{"batt",      I2C_PORT_BATTERY,  100, GPIO_I2C3_SCL,   GPIO_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
-	{I2C_PORT_TCPC0, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	{I2C_PORT_TCPC1, 0x50, &anx74xx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{I2C_PORT_TCPC0, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{I2C_PORT_TCPC1, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 	{
 		.port_addr = 0,
-		.driver = &anx74xx_tcpm_usb_mux_driver,
-		.hpd_update = &anx74xx_tcpc_update_hpd_status,
+		.driver = &tcpci_tcpm_usb_mux_driver,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		/* .board_init = &ps8751_tune_mux, */
 	},
 	{
 		.port_addr = 1,
-		.driver = &anx74xx_tcpm_usb_mux_driver,
-		.hpd_update = &anx74xx_tcpc_update_hpd_status,
+		.driver = &tcpci_tcpm_usb_mux_driver,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		/* .board_init = &ps8751_tune_mux, */
 	},
 };
 
@@ -236,51 +243,15 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
  */
 void board_set_tcpc_power_mode(int port, int mode)
 {
-	switch (port) {
-	case 0:
-		if (mode) {
-			gpio_set_level(GPIO_USB_C0_TCPC_PWR, 1);
-			msleep(ANX74XX_PWR_H_RST_H_DELAY_MS);
-			gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
-		} else {
-			gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-			msleep(ANX74XX_RST_L_PWR_L_DELAY_MS);
-			gpio_set_level(GPIO_USB_C0_TCPC_PWR, 0);
-			msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
-		}
-		break;
-	case 1:
-		if (mode) {
-			gpio_set_level(GPIO_USB_C1_TCPC_PWR, 1);
-			msleep(ANX74XX_PWR_H_RST_H_DELAY_MS);
-			gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);
-		} else {
-			gpio_set_level(GPIO_USB_C1_PD_RST_L, 0);
-			msleep(ANX74XX_RST_L_PWR_L_DELAY_MS);
-			gpio_set_level(GPIO_USB_C1_TCPC_PWR, 0);
-			msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
-		}
-		break;
-	}
 }
 
 void board_reset_pd_mcu(void)
 {
 	/* Assert reset */
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-	gpio_set_level(GPIO_USB_C1_PD_RST_L, 0);
-	msleep(ANX74XX_RST_L_PWR_L_DELAY_MS);
-	/* Disable power */
-	gpio_set_level(GPIO_USB_C0_TCPC_PWR, 0);
-	gpio_set_level(GPIO_USB_C1_TCPC_PWR, 0);
-	msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
-	/* Enable power */
-	gpio_set_level(GPIO_USB_C0_TCPC_PWR, 1);
-	gpio_set_level(GPIO_USB_C1_TCPC_PWR, 1);
-	msleep(ANX74XX_PWR_H_RST_H_DELAY_MS);
+	gpio_set_level(GPIO_USB_PD_RST_L, 0);
+	msleep(PS8XXX_RST_L_RST_H_DELAY_MS);
 	/* Deassert reset */
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
-	gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);
+	gpio_set_level(GPIO_USB_PD_RST_L, 1);
 }
 
 void board_tcpc_init(void)
@@ -296,9 +267,11 @@ void board_tcpc_init(void)
 	gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+#if 0
 	/* Enable CABLE_DET interrupt for ANX3429 wake from standby */
 	gpio_enable_interrupt(GPIO_USB_C0_CABLE_DET);
 	gpio_enable_interrupt(GPIO_USB_C1_CABLE_DET);
+#endif
 #endif
 
 	/*
@@ -427,10 +400,12 @@ static void board_pmic_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_pmic_init, HOOK_PRIO_DEFAULT);
 
+#if 0
 static void board_set_tablet_mode(void)
 {
 	tablet_set_mode(!gpio_get_level(GPIO_TABLET_MODE_L));
 }
+#endif
 
 int board_has_working_reset_flags(void)
 {
@@ -460,6 +435,7 @@ DECLARE_HOOK(HOOK_AC_CHANGE, board_update_ac_status, HOOK_PRIO_DEFAULT);
 /* Initialize board. */
 static void board_init(void)
 {
+#if 0
 	/* Enabure tablet mode is initialized */
 	board_set_tablet_mode();
 
@@ -468,6 +444,7 @@ static void board_init(void)
 
 	/* Enable charger interrupts */
 	gpio_enable_interrupt(GPIO_CHARGER_INT_L);
+#endif
 
 	/* Enable interrupts from BMI160 sensor. */
 	gpio_enable_interrupt(GPIO_ACCELGYRO3_INT_L);
@@ -574,17 +551,21 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 /* Clear pending interrupts and enable DSP for wake */
 static void dsp_wake_enable(int enable)
 {
+#if 0
 	if (enable) {
 		gpio_clear_pending_interrupt(GPIO_MIC_DSP_IRQ_1V8_L);
 		gpio_enable_interrupt(GPIO_MIC_DSP_IRQ_1V8_L);
 	} else {
 		gpio_disable_interrupt(GPIO_MIC_DSP_IRQ_1V8_L);
 	}
+#endif
 }
 
 /* Clear pending interrupts and enable trackpad for wake */
 static void trackpad_wake_enable(int enable)
 {
+/* no trackpad on EC? */
+#ifdef GPIO_TRACKPAD_INT_L
 	static int prev_enable = -1;
 
 	if (prev_enable == enable)
@@ -597,11 +578,13 @@ static void trackpad_wake_enable(int enable)
 	} else {
 		gpio_disable_interrupt(GPIO_TRACKPAD_INT_L);
 	}
+#endif
 }
 
 /* Enable or disable input devices, based upon chipset state and tablet mode */
 static void enable_input_devices(void)
 {
+#if 0
 	/* We need to turn on tablet mode for motion sense */
 	board_set_tablet_mode();
 
@@ -614,6 +597,7 @@ static void enable_input_devices(void)
 	 */
 	if (tablet_get_mode())
 		lid_angle_peripheral_enable(0);
+#endif
 }
 
 /* Enable or disable input devices, based on chipset state and tablet mode */
@@ -624,7 +608,7 @@ void lid_angle_peripheral_enable(int enable)
 	 * If the lid is in 360 position, ignore the lid angle,
 	 * which might be faulty. Disable keyboard and trackpad wake.
 	 */
-	if (tablet_get_mode() || chipset_in_state(CHIPSET_STATE_ANY_OFF))
+	if (/* tablet_get_mode() || */ chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		enable = 0;
 	keyboard_scan_enable(enable, KB_SCAN_DISABLE_LID_ANGLE);
 
@@ -638,8 +622,10 @@ void lid_angle_peripheral_enable(int enable)
 /* Called on AP S5 -> S3 transition */
 static void board_chipset_startup(void)
 {
+#ifdef GPIO_TRACKPAD_SHDN_L
 	/* Enable Trackpad */
 	gpio_set_level(GPIO_TRACKPAD_SHDN_L, 1);
+#endif
 	hook_call_deferred(&enable_input_devices_data, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup, HOOK_PRIO_DEFAULT);
@@ -650,7 +636,9 @@ static void board_chipset_shutdown(void)
 	/* Disable Trackpad and DSP wake in S5 */
 	trackpad_wake_enable(0);
 	dsp_wake_enable(0);
+#ifdef GPIO_TRACKPAD_SHDN_L
 	gpio_set_level(GPIO_TRACKPAD_SHDN_L, 0);
+#endif
 	hook_call_deferred(&enable_input_devices_data, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
@@ -664,7 +652,9 @@ static void board_chipset_suspend(void)
 		dsp_wake_enable(1);
 
 		/* Enable trackpad wake if suspended and not in tablet mode */
+#if 0
 		if (!tablet_get_mode())
+#endif
 			trackpad_wake_enable(1);
 	}
 }
@@ -756,7 +746,7 @@ static struct mutex g_base_mutex;
 /* Lid Sensor mutex */
 static struct mutex g_lid_mutex;
 
-static struct kionix_accel_data g_kxcj9_data;
+/* static struct kionix_accel_data g_kxcj9_data; */
 static struct bmi160_drv_data_t g_bmi160_data;
 
 static struct si114x_drv_data_t g_si114x_data = {
@@ -790,32 +780,6 @@ const matrix_3x3_t lid_standard_ref = {
 };
 
 struct motion_sensor_t motion_sensors[] = {
-	[LID_ACCEL] = {
-	 .name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_KXCJ9,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &kionix_accel_drv,
-	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_kxcj9_data,
-	 .port = I2C_PORT_LID_ACCEL,
-	 .addr = KXCJ9_ADDR0,
-	 .rot_standard_ref = &lid_standard_ref,
-	 .default_range = 2, /* g, enough for laptop. */
-	 .min_frequency = KXCJ9_ACCEL_MIN_FREQ,
-	 .max_frequency = KXCJ9_ACCEL_MAX_FREQ,
-	 .config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-		},
-		 /* Sensor on for lid angle detection */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-		},
-	 },
-	},
 
 	[BASE_ACCEL] = {
 	 .name = "Base Accel",
@@ -833,6 +797,11 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
 	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
 	 .config = {
+		 /* AP: by default use EC settings */
+		 [SENSOR_CONFIG_AP] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
 			.odr = TAP_ODR,
@@ -843,7 +812,7 @@ struct motion_sensor_t motion_sensors[] = {
 			.odr = TAP_ODR,
 			.ec_rate = 100 * MSEC,
 		 },
-		 /* Sensor on in S5 for battery detection */
+		 /* Sensor off in S5 */
 		 [SENSOR_CONFIG_EC_S5] = {
 			.odr = TAP_ODR,
 			.ec_rate = 100 * MSEC,
@@ -866,23 +835,28 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = NULL,
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
-	},
-
-	[BASE_MAG] = {
-	 .name = "Base Mag",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_MAG,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .port = I2C_PORT_GYRO,
-	 .addr = BMI160_ADDR0,
-	 .default_range = 1 << 11, /* 16LSB / uT, fixed */
-	 .rot_standard_ref = &mag_standard_ref,
-	 .min_frequency = BMM150_MAG_MIN_FREQ,
-	 .max_frequency = BMM150_MAG_MAX_FREQ(SPECIAL),
+	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* EC does not need in S0 */
+		 [SENSOR_CONFIG_EC_S0] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			.odr = 0,
+			.ec_rate = 0,
+		 },
+	 },
 	},
 
 	[LID_LIGHT] = {
@@ -901,9 +875,25 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = SI114X_LIGHT_MIN_FREQ,
 	 .max_frequency = SI114X_LIGHT_MAX_FREQ,
 	 .config = {
+		 /* AP: by default shutdown all sensors */
+		 [SENSOR_CONFIG_AP] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
 		 /* Run ALS sensor in S0 */
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 1000,
+			 .ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S3] = {
+			 .odr = 0,
+			 .ec_rate = 0,
+		 },
+		 /* Sensor off in S3/S5 */
+		 [SENSOR_CONFIG_EC_S5] = {
+			 .odr = 0,
+			 .ec_rate = 0,
 		 },
 	 },
 	},

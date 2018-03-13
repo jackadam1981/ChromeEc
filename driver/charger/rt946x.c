@@ -49,7 +49,7 @@ struct charger_init_setting {
 };
 
 static const struct charger_init_setting rt946x_charger_init_setting = {
-	.eoc_current = 250,
+	.eoc_current = 400,
 	.mivr = 4000,
 	.ircmp_vclamp = 32,
 	.ircmp_res = 25,
@@ -399,6 +399,10 @@ static int rt946x_init_setting(void)
 	rv = rt946x_set_iprec(batt_info->precharge_current);
 	if (rv)
 		return rv;
+	/* Enable charge current termination */
+	rv = rt946x_set_bit(RT946X_REG_CHGCTRL2, RT946X_MASK_TE);
+	if (rv)
+		return rv;
 
 	return rt946x_init_irq();
 }
@@ -615,8 +619,8 @@ int charger_discharge_on_ac(int enable)
 int charger_get_vbus_voltage(int port)
 {
 	int val;
-	int vbus_mv;
-	int retries = 40;
+	static int vbus_mv;
+	int retries = 10;
 
 	/* Set VBUS as ADC input */
 	rt946x_update_bits(RT946X_REG_CHGADC, RT946X_MASK_ADC_IN_SEL,
@@ -626,10 +630,14 @@ int charger_get_vbus_voltage(int port)
 	rt946x_set_bit(RT946X_REG_CHGADC, RT946X_MASK_ADC_START);
 
 	/*
-	 * Wait up to 200ms for the conversion to finish.
+	 * In practice, ADC conversion rarely takes more than 35ms.
+	 * However, according to the datasheet, ADC conversion may take
+	 * up to 200ms. But we can't wait for that long, otherwise
+	 * host command would time out. So here we set ADC timeout as 50ms.
+	 * If ADC times out, we just return the last read vbus_mv.
 	 *
-	 * TODO(chromium:780364): The 200ms delay might impact
-	 * charge ramp algorithm.
+	 * TODO(chromium:820335): We may handle this more gracefully with
+	 * EC_RES_IN_PROGRESS.
 	 */
 	while (--retries) {
 		rt946x_read8(RT946X_REG_CHGSTAT, &val);
@@ -637,16 +645,16 @@ int charger_get_vbus_voltage(int port)
 			break;
 		msleep(5);
 	}
-	/* ADC timeout */
-	if (!retries)
-		return -1;
 
-	/* Read measured results */
-	rt946x_read8(RT946X_REG_ADCDATAL, &vbus_mv);
-	rt946x_read8(RT946X_REG_ADCDATAH, &val);
-	vbus_mv |= (val << 8);
+	if (retries) {
+		/* Read measured results if ADC finishes in time. */
+		rt946x_read8(RT946X_REG_ADCDATAL, &vbus_mv);
+		rt946x_read8(RT946X_REG_ADCDATAH, &val);
+		vbus_mv |= (val << 8);
+		vbus_mv *= 25;
+	}
 
-	return (vbus_mv * 25);
+	return vbus_mv;
 }
 
 /* Setup sourcing current to prevent overload */

@@ -80,7 +80,7 @@ static void tcpc_alert_event(enum gpio_signal signal)
 static void vbus_discharge_handler(void)
 {
 	pd_set_vbus_discharge(0, gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
-	pd_set_vbus_discharge(1, gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L));
+	//pd_set_vbus_discharge(1, gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L));
 }
 DECLARE_DEFERRED(vbus_discharge_handler);
 
@@ -92,6 +92,7 @@ void vbus0_evt(enum gpio_signal signal)
 	hook_call_deferred(&vbus_discharge_handler_data, 0);
 }
 
+#if 0
 void vbus1_evt(enum gpio_signal signal)
 {
 	/* VBUS present GPIO is inverted */
@@ -99,6 +100,7 @@ void vbus1_evt(enum gpio_signal signal)
 	task_wake(TASK_ID_PD_C1);
 	hook_call_deferred(&vbus_discharge_handler_data, 0);
 }
+#endif
 
 void usb0_evt(enum gpio_signal signal)
 {
@@ -182,7 +184,7 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{NPCX_I2C_PORT0_0, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	{NPCX_I2C_PORT0_1, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	//{NPCX_I2C_PORT0_1, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
@@ -191,11 +193,13 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
+	/*
 	{
 		.port_addr = 1,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	}
+	*/
 };
 
 struct pi3usb9281_config pi3usb9281_chips[] = {
@@ -455,7 +459,7 @@ static void board_init(void)
 
 	/* Enable VBUS interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
-	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
+	//gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
 
 	/* Enable pericom BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
@@ -568,155 +572,92 @@ const matrix_3x3_t lid_standard_ref = {
 };
 
 struct motion_sensor_t motion_sensors[] = {
-        [BASE_ACCEL] = {
-         .name = "Base Accel",
-         .active_mask = SENSOR_ACTIVE_S0_S3,
-         .chip = MOTIONSENSE_CHIP_BMI160,
-         .type = MOTIONSENSE_TYPE_ACCEL,
-         .location = MOTIONSENSE_LOC_BASE,
-         .drv = &bmi160_drv,
-         .mutex = &g_base_mutex,
-         .drv_data = &g_bmi160_data,
-         .port = I2C_PORT_ACCEL,
-         .addr = BMI160_ADDR0,
-         .rot_standard_ref = &base_standard_ref,
-         .min_frequency = BMI160_ACCEL_MIN_FREQ,
-         .max_frequency = BMI160_ACCEL_MAX_FREQ,
-         .default_range = 2, /* g, to support tablet mode  */
-         .config = {
-                 /* AP: by default use EC settings */
-                 [SENSOR_CONFIG_AP] = {
-                         .odr = 0,
-                         .ec_rate = 0,
-                 },
-                 /* EC use accel for angle detection */
-                 [SENSOR_CONFIG_EC_S0] = {
-                         .odr = 10000 | ROUND_UP_FLAG,
-                         .ec_rate = 100 * MSEC,
-                 },
-                 /* Sensor on in S3 */
-                 [SENSOR_CONFIG_EC_S3] = {
-                         .odr = 10000 | ROUND_UP_FLAG,
-                         .ec_rate = 0,
-                 },
-                 /* Sensor off in S5 */
-                 [SENSOR_CONFIG_EC_S5] = {
-                         .odr = 0,
-                         .ec_rate = 0
-                 },
-         },
-        },
-        [BASE_GYRO] = {
-         .name = "Base Gyro",
-         .active_mask = SENSOR_ACTIVE_S0_S3,
-         .chip = MOTIONSENSE_CHIP_BMI160,
-         .type = MOTIONSENSE_TYPE_GYRO,
-         .location = MOTIONSENSE_LOC_BASE,
-         .drv = &bmi160_drv,
-         .mutex = &g_base_mutex,
-         .drv_data = &g_bmi160_data,
-         .port = I2C_PORT_ACCEL,
-         .addr = BMI160_ADDR0,
-         .default_range = 1000, /* dps */
-         .rot_standard_ref = &base_standard_ref,
-         .min_frequency = BMI160_GYRO_MIN_FREQ,
-         .max_frequency = BMI160_GYRO_MAX_FREQ,
-         .config = {
-                 /* AP: by default shutdown all sensors */
-                 [SENSOR_CONFIG_AP] = {
-                         .odr = 0,
-                         .ec_rate = 0,
-                 },
-                 /* EC does not need in S0 */
-                 [SENSOR_CONFIG_EC_S0] = {
-                         .odr = 0,
-                         .ec_rate = 0,
-                 },
-                 /* Sensor off in S3/S5 */
-                 [SENSOR_CONFIG_EC_S3] = {
-                         .odr = 0,
-                         .ec_rate = 0,
-                 },
-                 /* Sensor off in S3/S5 */
-                 [SENSOR_CONFIG_EC_S5] = {
-                         .odr = 0,
-                         .ec_rate = 0,
-                 },
-         },
-        },
-        [LID_ACCEL] = {
-         .name = "Lid Accel",
-         .active_mask = SENSOR_ACTIVE_S0_S3,
-         .chip = MOTIONSENSE_CHIP_BMA255,
-         .type = MOTIONSENSE_TYPE_ACCEL,
-         .location = MOTIONSENSE_LOC_LID,
-         .drv = &bma2x2_accel_drv,
-         .mutex = &g_lid_mutex,
-         .drv_data = &g_bma255_data,
-         .port = I2C_PORT_ACCEL,
-         .addr = BMA2x2_I2C_ADDR1,
-         .rot_standard_ref = &lid_standard_ref,
-         .min_frequency = BMA255_ACCEL_MIN_FREQ,
-         .max_frequency = BMA255_ACCEL_MAX_FREQ,
-         .default_range = 2, /* g, to support tablet mode */
-         .config = {
-                /* AP: by default use EC settings */
-                [SENSOR_CONFIG_AP] = {
-                        .odr = 0,
-                        .ec_rate = 0,
-                },
-                /* EC use accel for angle detection */
-                [SENSOR_CONFIG_EC_S0] = {
-                        .odr = 10000 | ROUND_UP_FLAG,
-                        .ec_rate = 0,
-                },
-                /* Sensor on in S3 */
-                [SENSOR_CONFIG_EC_S3] = {
-                        .odr = 10000 | ROUND_UP_FLAG,
-                        .ec_rate = 0,
-                },
-                /* Sensor off in S5 */
-                [SENSOR_CONFIG_EC_S5] = {
-                        .odr = 0,
-                        .ec_rate = 0,
-                },
-         },
-        },
+	[LID_ACCEL] = {
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMA255,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &bma2x2_accel_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &g_bma255_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = BMA2x2_I2C_ADDR1,
+		.rot_standard_ref = &lid_standard_ref,
+		.min_frequency = BMA255_ACCEL_MIN_FREQ,
+		.max_frequency = BMA255_ACCEL_MAX_FREQ,
+		.default_range = 2, /* g, to support tablet mode */
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
+			/* Sensor on in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
+		},
+	},
+	[BASE_ACCEL] = {
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = BMI160_ADDR0,
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = BMI160_ACCEL_MIN_FREQ,
+		.max_frequency = BMI160_ACCEL_MAX_FREQ,
+		.default_range = 2, /* g, to support tablet mode  */
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+			/* Sensor on in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
+		},
+	},
+	[BASE_GYRO] = {
+		.name = "Base Gyro",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = I2C_PORT_ACCEL,
+		.addr = BMI160_ADDR0,
+		.default_range = 1000, /* dps */
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = BMI160_GYRO_MIN_FREQ,
+		.max_frequency = BMI160_GYRO_MAX_FREQ,
+	},
 	[LID_ALS] = {
-	 .name = "Light",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_OPT3001,
-	 .type = MOTIONSENSE_TYPE_LIGHT,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &opt3001_drv,
-	 .drv_data = &g_opt3001_data,
-	 .port = I2C_PORT_ALS,
-	 .addr = OPT3001_I2C_ADDR,
-	 .rot_standard_ref = NULL,
-	 .default_range = 0x10000, /* scale = 1; uscale = 0 */
-	 .min_frequency = OPT3001_LIGHT_MIN_FREQ,
-	 .max_frequency = OPT3001_LIGHT_MAX_FREQ,
-	 .config = {
-		/* AP: by default shutdown all sensors */
-		[SENSOR_CONFIG_AP] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 1000,
-			.ec_rate = 0,
-		},
-		/* Sensor off in S3/S5 */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-		/* Sensor off in S3/S5 */
-		[SENSOR_CONFIG_EC_S5] = {
-			.odr = 0,
-			.ec_rate = 0,
-		},
-	 },
+		.name = "Light",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_OPT3001,
+		.type = MOTIONSENSE_TYPE_LIGHT,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &opt3001_drv,
+		.drv_data = &g_opt3001_data,
+		.port = I2C_PORT_ALS,
+		.addr = OPT3001_I2C_ADDR,
+		.rot_standard_ref = NULL,
+		.default_range = 0x10000, /* scale = 1; uscale = 0 */
+		.min_frequency = OPT3001_LIGHT_MIN_FREQ,
+		.max_frequency = OPT3001_LIGHT_MAX_FREQ,
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);

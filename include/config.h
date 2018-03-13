@@ -121,6 +121,18 @@
  */
 #undef CONFIG_ACCEL_LIS2DH_INT_EVENT
 
+/* Sync event driver */
+#undef CONFIG_SYNC
+
+/* Simulate command for sync */
+#undef CONFIG_SYNC_COMMAND
+
+/*
+ * Define the event to raise when the sync event happens.
+ * Must be within TASK_EVENT_MOTION_INTERRUPT_MASK.
+ */
+#undef CONFIG_SYNC_INT_EVENT
+
 /* Compile chip support for analog-to-digital convertor */
 #undef CONFIG_ADC
 
@@ -2854,6 +2866,11 @@
 #undef CONFIG_USB_PD_VBUS_DETECT_PPC
 #undef CONFIG_USB_PD_VBUS_DETECT_NONE
 
+/* Define if the there is a separate ADC channel for each USB-C Vbus voltage */
+#undef CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
+
+/* Define if the there is no hardware to measure Vbus voltage */
+#undef CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 
 /* Define the type-c port controller I2C base address. */
 #define CONFIG_TCPC_I2C_BASE_ADDR 0x9c
