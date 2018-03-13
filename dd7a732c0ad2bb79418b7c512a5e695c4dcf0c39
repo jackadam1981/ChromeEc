@@ -46,6 +46,30 @@
       "revId": "dd7a732c0ad2bb79418b7c512a5e695c4dcf0c39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c889b208_56563e28",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-13T09:19:14Z",
+      "side": 1,
+      "message": "The 072 has the same errata too :\nhttp://www.st.com/content/ccc/resource/technical/document/errata_sheet/3a/1b/74/36/f5/8f/4a/4d/DM00096495.pdf/files/DM00096495.pdf/jcr:content/translations/en.DM00096495.pdf",
+      "parentUuid": "61c36eb8_359c7547",
+      "range": {
+        "startLine": 283,
+        "startChar": 24,
+        "endLine": 284,
+        "endChar": 47
+      },
+      "revId": "dd7a732c0ad2bb79418b7c512a5e695c4dcf0c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
