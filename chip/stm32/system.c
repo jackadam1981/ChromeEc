@@ -279,6 +279,15 @@ void system_pre_init(void)
 	STM32_PWR_CR2 |= 1 << 9;
 #endif
 
+	/*
+	 * Clear wake-up pins, in case the previous hibernate attempt was
+	 * short-lived, and the register was not reset (having wake-up enabled
+	 * forces a pull-down to be enabled on the pin).
+	 */
+#if defined(CHIP_FAMILY_STM32F0)
+	STM32_PWR_CSR &= ~STM32_PWR_CSR_EWUP_ALL;
+#endif
+
 	/* switch on LSI */
 	STM32_RCC_CSR |= 1 << 0;
 	/* Wait for LSI to be ready */

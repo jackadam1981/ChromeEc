@@ -847,6 +847,7 @@ typedef volatile struct timer_ctlr timer_ctlr_t;
 #define STM32_PWR_CSR_EWUP6         (1 << 13) /* STM32F0xx only */
 #define STM32_PWR_CSR_EWUP7         (1 << 14) /* STM32F0xx only */
 #define STM32_PWR_CSR_EWUP8         (1 << 15) /* STM32F0xx only */
+#define STM32_PWR_CSR_EWUP_ALL      (0xff << 8)
 #endif
 
 #if defined(CHIP_FAMILY_STM32L)
