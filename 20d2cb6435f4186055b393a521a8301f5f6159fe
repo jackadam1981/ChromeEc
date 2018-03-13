@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "a58513c4_1fddf6df",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T11:21:31Z",
+      "side": 1,
+      "message": "ANX74xx and ANX7447 are two different chipsets.\nANX7447 is partly compliant with TCPCI. It does not support the registers specified as \"optional\" in the standard USB TCPC specification. For example, the standard spec uses the register 0x18 (CONFIG_STANDARD_OUTPUT Register) for MUX Control function (USB3.1, DP 4-Lanes, or USB3.1+DP 2-Lanes). Instead of supporting CONFIG-STANDARD_OUTPUT register, ANX7447 implements MUX Control function by another register sets (0x7E:0xB4 ~ 0xB6). So it needs a driver to control the setting of these registers.",
+      "parentUuid": "6602a016_b7738bf7",
+      "range": {
+        "startLine": 6,
+        "startChar": 24,
+        "endLine": 6,
+        "endChar": 26
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e318b655_d90b7811",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "75a58c78_2a072903",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T11:21:31Z",
+      "side": 1,
+      "message": "Yes, I will fix it in the next update.",
+      "parentUuid": "e318b655_d90b7811",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 17
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e981c894_94988e42",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
@@ -130,6 +178,30 @@
       "writtenOn": "2018-03-12T23:27:40Z",
       "side": 1,
       "message": "Why do we need to define this?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 2
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5e0ff9c_ead64f41",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T11:21:31Z",
+      "side": 1,
+      "message": "It follows ANX74xx driver, maybe we will need to add other components later.",
+      "parentUuid": "e981c894_94988e42",
       "range": {
         "startLine": 48,
         "startChar": 0,
@@ -228,6 +300,30 @@
         "startChar": 11,
         "endLine": 58,
         "endChar": 24
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e7d4064_041e0256",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-13T11:21:31Z",
+      "side": 1,
+      "message": "Thanks for your suggestion, I will check the returned value first.",
+      "parentUuid": "0c225f82_55af73ab",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 58,
+        "endChar": 10
       },
       "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
