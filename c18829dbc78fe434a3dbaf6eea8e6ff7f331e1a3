@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6c817b01_bfb93152",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-13T17:06:05Z",
+      "side": 1,
+      "message": "I was pointing at the negative index [i-1] at the first iteration, which you fixed in patch set 7. It should have crashed EC for invalid memory access.",
+      "parentUuid": "4b896b40_c7af4790",
+      "range": {
+        "startLine": 68,
+        "startChar": 32,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "c18829dbc78fe434a3dbaf6eea8e6ff7f331e1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2f416dc_1f4817ae",
         "filename": "driver/led/lm3509.c",
         "patchSetId": 4
@@ -178,6 +202,30 @@
       "side": 1,
       "message": "Round return vlaue to the nearest integer.",
       "parentUuid": "919164e6_6c9daaa6",
+      "range": {
+        "startLine": 100,
+        "startChar": 42,
+        "endLine": 100,
+        "endChar": 46
+      },
+      "revId": "c18829dbc78fe434a3dbaf6eea8e6ff7f331e1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33c425e6_f3110eb9",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-13T17:06:05Z",
+      "side": 1,
+      "message": "Patch set 7 still does not address my comments: \"Can you do it at compilation time? Actually this whole calculation should be done at compilation time.\"",
+      "parentUuid": "77184c40_b4e2d33a",
       "range": {
         "startLine": 100,
         "startChar": 42,

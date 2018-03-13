@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11b8395c_2c32606b",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-13T17:06:05Z",
+      "side": 1,
+      "message": "Please use ARRAY_SIZE.",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 19
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86683495_e8816008",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-13T17:06:05Z",
+      "side": 1,
+      "message": "if p-\u003epercent \u003d\u003d 0, you don\u0027t even need to enter the loop.",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baf2cec8_889b1e57",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-13T17:06:05Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "633ef4ae_9342d191",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-13T17:06:05Z",
+      "side": 1,
+      "message": "Can you just \u0027continue\u0027 here?\n\n  if (level_high \u003c p-\u003epercent * 1000)\n    continue;",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 40
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ee34932_197349c0",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-13T17:06:05Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 84,
+        "startChar": 38,
+        "endLine": 84,
+        "endChar": 39
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b362d48f_261c1b25",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-13T17:06:05Z",
+      "side": 1,
+      "message": "Please do \u0027ret \u003d lm3509_write...\u0027 and remove \u0027\u003d0\u0027 at line 67. You\u0027re not using ret anyway...",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 7
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "884d740a_27837937",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-13T17:06:05Z",
+      "side": 1,
+      "message": "Can you just return here?\n  if (ret)\n    return EC_RES_ERROR;\nWe don\u0027t need \u0027else\u0027 for success.",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 12
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
