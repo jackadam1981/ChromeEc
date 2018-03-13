@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b896b40_c7af4790",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-13T03:41:19Z",
+      "side": 1,
+      "message": "Hi Daisuke, \n   We have verified it, it\u0027s pass. Let me explain this coding,\n   when you set a level to control, need compare lm3509 brightness level is higher than you \n   set. \n   If you set 0% level, the line 70-72 will break it, level_low value does not calculate.\n   If you set 1% level, the line 75 will compare lm3509 brightness level is higher or equal \n   what you set, the value i is minimum of 3, so level_low value can be calculate.\n   Therefore we use line 70 and line 75 to prevent level_low value overflow.",
+      "parentUuid": "30ab5211_4df8d175",
+      "range": {
+        "startLine": 68,
+        "startChar": 32,
+        "endLine": 68,
+        "endChar": 35
+      },
+      "revId": "c18829dbc78fe434a3dbaf6eea8e6ff7f331e1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2f416dc_1f4817ae",
         "filename": "driver/led/lm3509.c",
         "patchSetId": 4
