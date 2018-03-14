@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20c271a1_9a747bc6",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T04:44:12Z",
+      "side": 1,
+      "message": "+80",
+      "range": {
+        "startLine": 300,
+        "startChar": 57,
+        "endLine": 300,
+        "endChar": 59
+      },
+      "revId": "0c51b03bbe1276c6c105cbab2e7a549760f4f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48f1f9eb_7d559d00",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T04:44:12Z",
+      "side": 1,
+      "message": "What happened? timestamp_expired is gone.",
+      "range": {
+        "startLine": 303,
+        "startChar": 7,
+        "endLine": 303,
+        "endChar": 20
+      },
+      "revId": "0c51b03bbe1276c6c105cbab2e7a549760f4f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
