@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7b9792e_9f689fd0",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:09:28Z",
+      "side": 1,
+      "message": "These 3 functions look very similar. Maybe just create a common function with 2 chars as parameters? (erase_flash could use these too).",
+      "revId": "2e23f694a8fa22fc8f8de2608019eaad907c2518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6966b91f_780eb951",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:09:28Z",
+      "side": 1,
+      "message": "Maybe assign this to a different variable so that you don\u0027t need to reset ret \u003d EC_ERROR_BUSY in each loop?",
+      "range": {
+        "startLine": 538,
+        "startChar": 2,
+        "endLine": 538,
+        "endChar": 5
+      },
+      "revId": "2e23f694a8fa22fc8f8de2608019eaad907c2518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f24449_6c3be266",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:09:28Z",
+      "side": 1,
+      "message": "EC_ERROR_TIMEOUT?",
+      "range": {
+        "startLine": 542,
+        "startChar": 8,
+        "endLine": 542,
+        "endChar": 21
+      },
+      "revId": "2e23f694a8fa22fc8f8de2608019eaad907c2518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89952f58_81aa8813",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:09:28Z",
+      "side": 1,
+      "message": "usleep",
+      "range": {
+        "startLine": 543,
+        "startChar": 2,
+        "endLine": 543,
+        "endChar": 8
+      },
+      "revId": "2e23f694a8fa22fc8f8de2608019eaad907c2518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f201a7e2_03c8bf54",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:09:28Z",
+      "side": 1,
+      "message": "What does \"que\" mean?",
+      "range": {
+        "startLine": 648,
+        "startChar": 2,
+        "endLine": 648,
+        "endChar": 10
+      },
+      "revId": "2e23f694a8fa22fc8f8de2608019eaad907c2518",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
