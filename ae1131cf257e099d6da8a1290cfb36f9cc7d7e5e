@@ -22,6 +22,30 @@
       "revId": "ae1131cf257e099d6da8a1290cfb36f9cc7d7e5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d987ec0_23795931",
+        "filename": "board/coral/sku.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-03-14T06:43:27Z",
+      "side": 1,
+      "message": "Right, https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/961741 is correct.",
+      "parentUuid": "b42823d3_6a5bd3b6",
+      "range": {
+        "startLine": 31,
+        "startChar": 18,
+        "endLine": 31,
+        "endChar": 28
+      },
+      "revId": "ae1131cf257e099d6da8a1290cfb36f9cc7d7e5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
