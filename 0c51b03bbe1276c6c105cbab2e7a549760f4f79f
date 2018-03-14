@@ -45,6 +45,30 @@
       "revId": "0c51b03bbe1276c6c105cbab2e7a549760f4f79f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f361747_24bad777",
+        "filename": "driver/accel_bma2x2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-14T07:29:39Z",
+      "side": 1,
+      "message": "I used the edit function, it looks like it used patch 1 as the base. Redoing the edit.",
+      "parentUuid": "48f1f9eb_7d559d00",
+      "range": {
+        "startLine": 303,
+        "startChar": 7,
+        "endLine": 303,
+        "endChar": 20
+      },
+      "revId": "0c51b03bbe1276c6c105cbab2e7a549760f4f79f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
