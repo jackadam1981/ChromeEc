@@ -1183,3 +1183,18 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
 }
+
+static void detect_PP3300_OVP(void)
+{
+	static int ovp_detect_count;
+
+	if ((gpio_get_level(GPIO_EN_PP3300) == 1) &&
+	    (gpio_get_level(GPIO_PP3300_PG) == 0))
+		ovp_detect_count++;
+	else
+		ovp_detect_count = 0;
+
+	if (ovp_detect_count == 3)
+		chipset_force_shutdown();
+}
+DECLARE_HOOK(HOOK_SECOND, detect_PP3300_OVP, HOOK_PRIO_DEFAULT);
