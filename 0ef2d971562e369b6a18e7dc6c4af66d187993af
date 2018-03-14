@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75b7ccff_2b88727b",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-03-14T22:42:19Z",
+      "side": 1,
+      "message": "we can add MOTIONSENSE_CHIP_MAX.\ni got confused with MOTIONSENSE_CHIP_GPIO earlier",
+      "range": {
+        "startLine": 2278,
+        "startChar": 1,
+        "endLine": 2278,
+        "endChar": 26
+      },
+      "revId": "0ef2d971562e369b6a18e7dc6c4af66d187993af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
