@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2c750ad7_b178893f",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-14T10:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b8395c_2c32606b",
+      "range": {
+        "startLine": 71,
+        "startChar": 17,
+        "endLine": 71,
+        "endChar": 19
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86683495_e8816008",
         "filename": "driver/led/lm3509.c",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f1abe3a_67efb576",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-14T10:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86683495_e8816008",
+      "range": {
+        "startLine": 72,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 56
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "40749f25_283b9ed5",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-14T10:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baf2cec8_889b1e57",
+      "range": {
+        "startLine": 73,
+        "startChar": 17,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "633ef4ae_9342d191",
         "filename": "driver/led/lm3509.c",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "589c77b4_02c0c56b",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-14T10:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "633ef4ae_9342d191",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 40
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "329cea8f_f991d7e8",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-14T10:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee34932_197349c0",
+      "range": {
+        "startLine": 84,
+        "startChar": 38,
+        "endLine": 84,
+        "endChar": 39
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b362d48f_261c1b25",
         "filename": "driver/led/lm3509.c",
         "patchSetId": 7
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "56985568_0618aa48",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-14T10:04:51Z",
+      "side": 1,
+      "message": "We will use ret value. If i2c write unsuccessful, return EC_RES_ERROR.",
+      "parentUuid": "b362d48f_261c1b25",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 7
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "884d740a_27837937",
         "filename": "driver/led/lm3509.c",
         "patchSetId": 7
@@ -160,6 +304,30 @@
       "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6275b01_13d7d78a",
+        "filename": "driver/led/lm3509.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2018-03-14T10:04:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "884d740a_27837937",
+      "range": {
+        "startLine": 108,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 12
+      },
+      "revId": "c9a1b3568311eeb6efeb9ac5cbe0a23ec60132df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
