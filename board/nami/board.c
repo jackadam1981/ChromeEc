@@ -435,13 +435,26 @@ static void chipset_pre_init(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, chipset_pre_init, HOOK_PRIO_DEFAULT);
 
+/* is_Vayne will used by other functions, for example, charge_state_v2.c.
+ * So, it must be global variable.
+ */
+int is_Vayne;
 /* Initialize board. */
 static void board_init(void)
 {
 	uint32_t version;
+	uint32_t oem_id;
 
 	if (cbi_get_board_version(&version) == EC_SUCCESS)
 		CPRINTS("Board Version: 0x%04x", version);
+
+	/* Base on oem_id decide is_Vayne.
+	 * is_Vayne will change PD_POWER setting
+	 */
+	if (cbi_get_oem_id(&oem_id) == EC_SUCCESS) {
+		if (oem_id == OEM_DELL)
+			is_Vayne = 1;
+	}
 
 	/*
 	 * This enables pull-down on F_DIO1 (SPI MISO), and F_DIO0 (SPI MOSI),
