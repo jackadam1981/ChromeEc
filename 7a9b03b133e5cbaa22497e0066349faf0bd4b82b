@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "292be914_fd2c56be",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:04:14Z",
+      "side": 1,
+      "message": "This should already be covered by USB_IFACE_HID_TOUCHPAD, right?",
+      "range": {
+        "startLine": 120,
+        "startChar": 8,
+        "endLine": 120,
+        "endChar": 29
+      },
+      "revId": "7a9b03b133e5cbaa22497e0066349faf0bd4b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67097b3_d15e243e",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:04:14Z",
+      "side": 1,
+      "message": "Drop the todo",
+      "revId": "7a9b03b133e5cbaa22497e0066349faf0bd4b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbb85067_0b66bc82",
+        "filename": "board/hammer/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:04:14Z",
+      "side": 1,
+      "message": "Don\u0027t enable this yet?",
+      "revId": "7a9b03b133e5cbaa22497e0066349faf0bd4b82b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
