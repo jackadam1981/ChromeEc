@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4abdaaeb_49572591",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-14T22:34:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0466bba_86cb8a4f",
+      "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2c6d211_51675cdb",
         "filename": "board/yorp/board.h",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Will add this.",
       "parentUuid": "f2c6d211_51675cdb",
+      "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcec3767_e39befe1",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-14T22:34:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc93e868_96f6cd85",
       "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -119,6 +155,24 @@
       "side": 1,
       "message": "The support for MOTIONSENSE_CHIP_LSM6DSL is not yet in. Follow the progress in CL:924406",
       "parentUuid": "de35ae22_7154b4bf",
+      "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1d660f0_c3ee00c7",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2277,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-14T22:34:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abf74997_0b463ae8",
       "revId": "6d1a4cb80b091a60a1523a1f45ec9a6c3b2cc1a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
