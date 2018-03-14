@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "0797ea17_3703e26e",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1337,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-14T08:05:59Z",
+      "side": 1,
+      "message": "Yes the !pd_data_role_initialized(port) there is really confusing.\nOverall PD_FLAGS_DR_INITIALIZED is only used at init, might be nice to find a better name.",
+      "parentUuid": "5c80652c_3626b8ba",
+      "range": {
+        "startLine": 1336,
+        "startChar": 2,
+        "endLine": 1337,
+        "endChar": 31
+      },
+      "revId": "e56ecb49e1f8bc10d61611d07e7c6f6bf39f6700",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddcf37b6_bb3e6c72",
         "filename": "common/usb_pd_protocol.c",
         "patchSetId": 7

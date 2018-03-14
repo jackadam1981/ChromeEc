@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d0943b7_97c70014",
+        "filename": "board/eve/usb_pd_policy.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-14T08:05:59Z",
+      "side": 0,
+      "message": "well it\u0027s back to life:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/961381/3/board/eve/usb_pd_policy.c#192\n\nMaybe it was not the right time to remove it, sorry for the misleading request.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 0
+      },
+      "revId": "5a747232923a2e8f636bcc2451e6332a4d67610d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
