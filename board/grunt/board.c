@@ -116,7 +116,13 @@ const struct adc_t adc_channels[] = {
 	[ADC_TEMP_SENSOR_SOC] = {
 		"SOC", NPCX_ADC_CH1, ADC_MAX_VOLT, ADC_READ_MAX+1, 0
 	},
+#if BOARD_VERSION > BOARD_VERSION_0
+	[ADC_VBUS] = {
+		"VBUS", NPCX_ADC_CH8, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0
+	},
+#endif
 };
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* Power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
@@ -222,6 +228,11 @@ const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
 
 static void board_init(void)
 {
+	if (system_get_board_version() != BOARD_VERSION) {
+		ccprints("Expected board version %d, found %d",
+			 BOARD_VERSION, system_get_board_version());
+	}
+
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
 }
