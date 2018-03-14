@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09fb960b_8de373b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "What do you think about splitting this patch into two? One for adding anx7447 driver and the other for updating pdeval-stm32f072.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f98c2073_eebdd383",
+        "filename": "board/pdeval-stm32f072/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "How does this work? Is the port detachable? Usually this number is fixed.",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4681b2d1_db0f5db1",
+        "filename": "board/pdeval-stm32f072/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "What if this is 2?",
+      "range": {
+        "startLine": 68,
+        "startChar": 27,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13bf5d08_0dcec150",
+        "filename": "board/pdeval-stm32f072/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "I think this has dependency on battery functions.",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba6ff01c_92f1a57b",
+        "filename": "board/pdeval-stm32f072/ec.tasklist",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "Can you #define TASK_LIST_COMMON for these and do\n#if ...\n#define CONFIG_TASK_LIST TASK_LIST_COMMON TASK_ALWAYS()\n#else\n#define CONFIG_TASK_LIST TASK_LIST_COMMON\n#endif",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 60
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c15927_71095583",
+        "filename": "board/pdeval-stm32f072/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "#if defined() \u0026\u0026 defined()",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd9e0b0d_fedf5577",
+        "filename": "board/pdeval-stm32f072/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "Same comment here.",
+      "range": {
+        "startLine": 49,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 49
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec68d107_ba9329fe",
+        "filename": "board/pdeval-stm32f072/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "nit: #endif /* CONFIG_USB_PD_TCPM_ANX7447 */",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 6
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85442c14_825a04c6",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "8",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48f9c1cc_f93209cd",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "Can you assign 0x30 and 0x00 here and remove line 302 through 305 and 317 through 320?",
+      "range": {
+        "startLine": 278,
+        "startChar": 5,
+        "endLine": 278,
+        "endChar": 19
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47acaf40_56098c38",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "nit: I would do ccprintf(\"..., cc \u003d %d, ...\", ...,cc_direction + 1,...). It\u0027s not really a direction.",
+      "range": {
+        "startLine": 282,
+        "startChar": 29,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c963ebe_fcde06d1",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "No error checking?",
+      "range": {
+        "startLine": 323,
+        "startChar": 1,
+        "endLine": 323,
+        "endChar": 11
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a82ade_b9aad9e5",
+        "filename": "driver/tcpm/anx7447.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T17:32:22Z",
+      "side": 1,
+      "message": "8",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
