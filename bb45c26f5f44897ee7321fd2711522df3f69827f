@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "98af1b2f_454e0fd3",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-14T21:45:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96065235_29c9aaac",
+      "range": {
+        "startLine": 87,
+        "startChar": 38,
+        "endLine": 87,
+        "endChar": 48
+      },
+      "revId": "bb45c26f5f44897ee7321fd2711522df3f69827f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b0dcb66_5813f614",
         "filename": "Makefile",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-09T20:08:18Z",
       "side": 1,
       "message": "isn\u0027t this not useless ?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "bb45c26f5f44897ee7321fd2711522df3f69827f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bab7df88_7d6d748e",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-14T21:45:49Z",
+      "side": 1,
+      "message": "I removed the conditional check.",
+      "parentUuid": "8b0dcb66_5813f614",
       "range": {
         "startLine": 105,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "c1b141af_3702bfe2",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-14T21:45:49Z",
+      "side": 1,
+      "message": "If baseboard.h is included in board.h for the boards that use it, then this flag wouldn\u0027t be needed.",
+      "parentUuid": "2028787f_efc23783",
+      "revId": "bb45c26f5f44897ee7321fd2711522df3f69827f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0f93e05_01f27666",
         "filename": "Makefile",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2018-03-09T20:08:18Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 21
+      },
+      "revId": "bb45c26f5f44897ee7321fd2711522df3f69827f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a059b5b6_10962d2c",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-14T21:45:49Z",
+      "side": 1,
+      "message": "Removed this as suggested.",
+      "parentUuid": "a0f93e05_01f27666",
       "range": {
         "startLine": 163,
         "startChar": 0,
@@ -123,6 +213,30 @@
       "side": 1,
       "message": "Since baseboard is optional, may need something like\n\n#ifdef HAS_BASEBOARD\n#include \"baseboard.h\"\n#endif",
       "parentUuid": "aa30793a_0aac150b",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 22
+      },
+      "revId": "bb45c26f5f44897ee7321fd2711522df3f69827f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "476af50a_c6e55fe3",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-14T21:45:49Z",
+      "side": 1,
+      "message": "This was the recommendation from Aaron to include baseboard.h for the boards that use it. I had a test-only CL which included where Vincent suggests. If it\u0027s included here then the Makefile doesn\u0027t need HAS_BASEBOARD. I did test with moving a section of config options to baseboard.h and it builds fine. When I move #include \"baseboard.h\" to config.h and make it conditional on a CPPFLAG I added \u0027HAS_BASEBOARD\u0027 then it had build errors with some of the config options I had moved to baseboard.h. When it\u0027s included unconditionally, then I don\u0027t see those errors.",
+      "parentUuid": "d6f117ed_b3b64357",
       "range": {
         "startLine": 11,
         "startChar": 0,
