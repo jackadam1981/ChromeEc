@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17c30f11_0900e67d",
+        "filename": "board/coral/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-14T00:55:34Z",
+      "side": 1,
+      "message": "For debouncing, wouldn\u0027t it be better to use deferred callbacks instead of putting the hook task to sleep?",
+      "range": {
+        "startLine": 1192,
+        "startChar": 2,
+        "endLine": 1193,
+        "endChar": 20
+      },
+      "revId": "6dfa29fa7db9822e4e775810179d57e5bb26da67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
