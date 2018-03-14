@@ -379,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "05be6066_a3ad1984",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1269380
+      },
+      "writtenOn": "2018-03-14T02:32:09Z",
+      "side": 1,
+      "message": "Yes, I\u0027m trying to support the multiple port setup throughout anx7447 driver.",
+      "parentUuid": "348522f9_9dc2a7a2",
+      "range": {
+        "startLine": 58,
+        "startChar": 11,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "20d2cb6435f4186055b393a521a8301f5f6159fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "34cee2fe_36e52d68",
         "filename": "driver/tcpm/anx7447.c",
         "patchSetId": 1
