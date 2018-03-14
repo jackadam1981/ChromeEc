@@ -1,0 +1,534 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3acbfab_1163bcd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "BRANCH\u003dnone",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7795792_cdb620a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Need a bit more testing (I know you did, write it up).",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e856e7a_f7f1d648",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "static\n\nAlso, the whole system info is huge, do we actually need all the fields? Or can we just copy the ones that we care about?",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bfd34e5_6a9e83d5",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Can you describe what this is?",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bff86aff_3965c46f",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Add description of function itself",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b685dfbb_63c62c91",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Add @return",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6abc2756_963739c6",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "nit: Add braces {} for this block (yes, one line only, but very long line).",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e57a983e_fac2bc41",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Why do you need to put dome switch level in system state? Can\u0027t you just keep the value locally in this function?",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fae7168_006c48dc",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "default: is usually at the end of the enumeration.",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a36cd8c8_4d6b4dfd",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Ideally, this should be recorded in the interrupt routine, to make it as precise as possible\nIf not, at the very least this should be recorded at the beginning of this function.\n\nAlso, in an ideal world, the touchpad chip itself should report timestamp in the events.",
+      "range": {
+        "startLine": 161,
+        "startChar": 21,
+        "endLine": 161,
+        "endChar": 43
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfdab67a_053c6cbb",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "I think set_touchpad_report should be called unconditionally.",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b3e313a_da2a18f6",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "nit: remove that comma (harmless, but weird)",
+      "range": {
+        "startLine": 186,
+        "startChar": 49,
+        "endLine": 186,
+        "endChar": 50
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c122f8a5_b29a8a7e",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Above, you say \"#ifdef ST_TP_DUMMY_BYTE\", which makes me think that it might not be defined at all.\n\nMight be best to say `#if (ST_TP_DUMMY_BYTE \u003d\u003d 1)` above?",
+      "range": {
+        "startLine": 193,
+        "startChar": 19,
+        "endLine": 193,
+        "endChar": 35
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9496c3e7_2ea655b0",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "just [], don\u0027t set the size. Or just uint8_t tx_buf, really.",
+      "range": {
+        "startLine": 205,
+        "startChar": 16,
+        "endLine": 205,
+        "endChar": 17
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a17e6382_f78ccc46",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "nit: spaces inside {}",
+      "range": {
+        "startLine": 205,
+        "startChar": 21,
+        "endLine": 205,
+        "endChar": 22
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7254e11a_6d6698f4",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "I\u0027m not fully sure to understand the purpose of this function. It might be better to have a single function that enables heat map (or not). And another that enables/disable SYSTEM_STATE_ACTIVE_MODE.\n\nDome switch should be on at all times anyway (is that not the default?)",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f21a57c0_74f00cbc",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Don\u0027t use assertions, really. There are very few cases where crashing the EC is the best possible thing to do.",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0d83f8d_8d23676e",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Don\u0027t you have a function for that above?",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3460da26_e53b35f5",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "nit: drop",
+      "range": {
+        "startLine": 275,
+        "startChar": 46,
+        "endLine": 275,
+        "endChar": 47
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a583414_6f9ca6dc",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "usleep so the EC can do something else in the mean time?",
+      "range": {
+        "startLine": 304,
+        "startChar": 2,
+        "endLine": 304,
+        "endChar": 8
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d696f80c_f646d5ab",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "These look absolutely horrible ,-( Can we define constants maybe? Or group the fields in mutliple sub-structs?",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6808464b_91de208f",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Right... Can you fix this first?",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14931cb7_0abb34ab",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "File a bug",
+      "range": {
+        "startLine": 490,
+        "startChar": 8,
+        "endLine": 490,
+        "endChar": 14
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3bf35f1_3233c991",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Move this function above st_tp_start_scan so that you don\u0027t need to declaration above.",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8237fe_429f54ea",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "EC_ERROR_NOT_HANDLED?",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76eba50c_4086855f",
+        "filename": "driver/touchpad_st.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a405d66c_7c2d7f5a",
+        "filename": "driver/touchpad_st.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Call it major_high maybe? Or major_lsb?",
+      "range": {
+        "startLine": 185,
+        "startChar": 10,
+        "endLine": 185,
+        "endChar": 18
+      },
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fd9e9b7_8cfb2e80",
+        "filename": "driver/touchpad_st.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T07:00:34Z",
+      "side": 1,
+      "message": "Ditto",
+      "revId": "516f69007600af09c92e3edc25b855df5c769ba8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
