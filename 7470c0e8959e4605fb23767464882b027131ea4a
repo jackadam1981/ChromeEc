@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef400536_0525e526",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-14T18:07:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99babfc7_5a956341",
+      "range": {
+        "startLine": 14,
+        "startChar": 61,
+        "endLine": 14,
+        "endChar": 70
+      },
+      "revId": "7470c0e8959e4605fb23767464882b027131ea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e525cc83_8ef573d2",
         "filename": "extra/usb_updater/verify_ro.c",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-13T22:48:48Z",
       "side": 1,
       "message": "in all hash sections for this board section.",
+      "range": {
+        "startLine": 119,
+        "startChar": 9,
+        "endLine": 119,
+        "endChar": 29
+      },
+      "revId": "7470c0e8959e4605fb23767464882b027131ea4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2782879b_f1394269",
+        "filename": "extra/usb_updater/verify_ro.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-14T18:07:47Z",
+      "side": 1,
+      "message": "edited the comment hopefully making it more accurate.",
+      "parentUuid": "e525cc83_8ef573d2",
       "range": {
         "startLine": 119,
         "startChar": 9,
