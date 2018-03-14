@@ -116,7 +116,13 @@ const struct adc_t adc_channels[] = {
 	[ADC_TEMP_SENSOR_SOC] = {
 		"SOC", NPCX_ADC_CH1, ADC_MAX_VOLT, ADC_READ_MAX+1, 0
 	},
+#if BOARD_VERSION >= 2
+	[ADC_VBUS] = {
+		"VBUS", NPCX_ADC_CH8, ADC_MAX_VOLT*10, ADC_READ_MAX+1, 0
+	},
+#endif
 };
+BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* Power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
@@ -215,13 +221,21 @@ const struct bq24392_config_t bq24392_config[CONFIG_USB_PD_PORT_COUNT] = {
 	},
 };
 
-const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT] = {
+const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_USB_A0_5V,
 	GPIO_EN_USB_A1_5V,
 };
 
 static void board_init(void)
 {
+	int version = system_get_board_version();
+
+	if (version != BOARD_VERSION
+	    && !(version == 1 && BOARD_VERSION == 0)) {
+		ccprints("Expected board version %d, found %d",
+			 BOARD_VERSION, version);
+	}
+
 	/* Enable Gyro interrupts */
 	gpio_enable_interrupt(GPIO_6AXIS_INT_L);
 }
