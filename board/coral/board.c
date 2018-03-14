@@ -1183,3 +1183,24 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
 }
+static int shutdown_system_deferr_invoked;
+static void shutdown_system_deferr(void)
+{
+	if ((gpio_get_level(GPIO_EN_PP3300) == 1) &&
+	    (gpio_get_level(GPIO_PP3300_PG) == 0))
+		chipset_force_shutdown();
+
+	shutdown_system_deferr_invoked = 0;
+}
+DECLARE_DEFERRED(shutdown_system_deferr);
+
+static void detect_PP3300_OVP(void)
+{
+	if ((gpio_get_level(GPIO_EN_PP3300) == 1) &&
+	    (gpio_get_level(GPIO_PP3300_PG) == 0) &&
+	    !shutdown_system_deferr_invoked) {
+		hook_call_deferred(&shutdown_system_deferr_data, (2 * SECOND));
+		shutdown_system_deferr_invoked = 1;
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, detect_PP3300_OVP, HOOK_PRIO_DEFAULT);
