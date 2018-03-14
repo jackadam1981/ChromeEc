@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8546507c_93bf723c",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 7689,
+      "author": {
+        "id": 1243870
+      },
+      "writtenOn": "2018-03-14T17:11:59Z",
+      "side": 1,
+      "message": "strcmp evaluates to 0 if sting is equal. Please add ` \u003d\u003d 0` to this and the next statement.",
+      "range": {
+        "startLine": 7689,
+        "startChar": 31,
+        "endLine": 7689,
+        "endChar": 32
+      },
+      "revId": "3e777c61262924f654a8435262aa78c9d7e0eb0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
