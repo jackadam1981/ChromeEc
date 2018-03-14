@@ -1907,6 +1907,7 @@ int charge_set_input_current_limit(int ma, int mv)
 	if (curr.batt.is_present != BP_YES && !system_is_locked() &&
 		!base_connected) {
 #ifdef CONFIG_USB_POWER_DELIVERY
+#ifndef CONFIG_DYNAMIC_PD_MAX_POWER_MW
 #if ((PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV != PD_MAX_CURRENT_MA)
 		/*
 		 * If battery is not present, input current is set to
@@ -1923,6 +1924,23 @@ int charge_set_input_current_limit(int ma, int mv)
 #else
 		return EC_SUCCESS;
 #endif
+#else /* CONFIG_DYNAMIC_PD_MAX_POWER_MW */
+		if ((PD_MAX_POWER_MW * 1000) / PD_MAX_VOLTAGE_MV ==
+			PD_MAX_CURRENT_MA)
+			return EC_SUCCESS;
+		/*
+		 * If battery is not present, input current is set to
+		 * PD_MAX_CURRENT_MA. If the input power set is greater than
+		 * the maximum allowed system power, system might get damaged.
+		 * Hence, limit the input current to meet maximum allowed
+		 * input system power.
+		 */
+		if (mv > 0 && mv * curr.desired_input_current >
+			PD_MAX_POWER_MW * 1000)
+			ma = (PD_MAX_POWER_MW * 1000) / mv;
+		else
+			return EC_SUCCESS;
+#endif /* CONFIG_DYNAMIC_PD_MAX_POWER_MW */
 #endif /* CONFIG_USB_POWER_DELIVERY */
 	}
 
