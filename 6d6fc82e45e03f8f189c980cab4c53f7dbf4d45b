@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "a1fd0222_30743036",
+        "filename": "util/uut/src/source/cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-03-14T11:47:22Z",
+      "side": 1,
+      "message": "OK, we\u0027ll add the braces.\nTo my opinion i didn\u0027t get any warning/error from google style tool when i activate the tool in order to check the code.",
+      "parentUuid": "d6723a4b_c785d265",
+      "range": {
+        "startLine": 411,
+        "startChar": 42,
+        "endLine": 411,
+        "endChar": 43
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "414c23e8_1020afba",
         "filename": "util/uut/src/source/l_com_port.c",
         "patchSetId": 4
@@ -389,6 +413,30 @@
       "side": 1,
       "message": "Style guide states that if one part of an if-else statement uses curly braces, the other part must too.",
       "parentUuid": "da061ef8_ebb63086",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 7
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2f62d03_6e9a384d",
+        "filename": "util/uut/src/source/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1264417
+      },
+      "writtenOn": "2018-03-14T11:47:22Z",
+      "side": 1,
+      "message": "OK, we\u0027ll add the braces.\nTo my opinion i didn\u0027t get any warning/error from google style tool when i activate the tool in order to check the code.",
+      "parentUuid": "b75f4c17_824179ef",
       "range": {
         "startLine": 198,
         "startChar": 6,
