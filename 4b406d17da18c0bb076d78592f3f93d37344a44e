@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20525dfc_8d2d0380",
+        "filename": "board/coral/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-14T17:16:18Z",
+      "side": 1,
+      "message": "Yes, this is better than holding off the hook task. However, looking at it now, I think maybe just use the one second hook and static variable, and you don\u0027t even need the deferred callback.\n\nSomething like:\n\nif ((gpio_get_level(GPIO_EN_PP3300) \u003d\u003d 1) \u0026\u0026\t\n\t    (gpio_get_level(GPIO_PP3300_PG) \u003d\u003d 0)\n    ovp_detect_count++;\nelse\n    ovp_detect_count \u003d 0;\n\nif (ovp_detect_count \u003d\u003d 3) {\n    chipset_force_shutdown();\n    ovp_detect_count \u003d 0;\n}",
+      "range": {
+        "startLine": 1199,
+        "startChar": 1,
+        "endLine": 1204,
+        "endChar": 2
+      },
+      "revId": "4b406d17da18c0bb076d78592f3f93d37344a44e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
