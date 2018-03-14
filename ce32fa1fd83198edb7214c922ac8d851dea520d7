@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "4faa3fcf_13cb6d9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-14T18:25:14Z",
+      "side": 1,
+      "message": "Please use b:73793947.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "ce32fa1fd83198edb7214c922ac8d851dea520d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f98c2073_eebdd383",
         "filename": "board/pdeval-stm32f072/board.c",
         "patchSetId": 2
