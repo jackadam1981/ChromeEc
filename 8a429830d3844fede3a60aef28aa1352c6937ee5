@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51dbdce4_aebf1ba5",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T05:48:00Z",
+      "side": 1,
+      "message": "Could these 4 be in an array?",
+      "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e45145ee_5c10be30",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T05:48:00Z",
+      "side": 1,
+      "message": "Wondering if this should be in a array, so that the code below can just be a loop.",
+      "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f568989e_a0c12047",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T05:48:00Z",
+      "side": 1,
+      "message": "Move this to a constant?",
+      "range": {
+        "startLine": 66,
+        "startChar": 24,
+        "endLine": 66,
+        "endChar": 30
+      },
+      "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfdc257a_696e0077",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T05:48:00Z",
+      "side": 1,
+      "message": "Why do you skip reserved? Does not seem too harmful to print it anyway...",
+      "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "379b5df6_d51622e8",
+        "filename": "util/unpack_ftb.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-14T05:48:00Z",
+      "side": 1,
+      "message": "Looks like sec3 must be 0? Since you\u0027re not doing anything with it below.",
+      "range": {
+        "startLine": 81,
+        "startChar": 15,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "8a429830d3844fede3a60aef28aa1352c6937ee5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
