@@ -22,7 +22,7 @@
 BUILD_ASSERT(PW_HASH_SIZE >= SHA256_DIGEST_SIZE);
 
 /* sizeof(struct leaf_data_t) % 16 should be zero */
-BUILD_ASSERT(sizeof(struct leaf_data_t) % PW_WRAP_BLOCK_SIZE == 0);
+BUILD_ASSERT(sizeof(struct leaf_sensitive_data_t) % PW_WRAP_BLOCK_SIZE == 0);
 
 /* pw_request_t.data.raw should be the largest member of the union. */
 BUILD_ASSERT(sizeof(((struct pw_request_t *)0)->data) ==
@@ -92,6 +92,8 @@ static void compute_hmac(const struct merkle_tree_t *merkle_tree,
 
 	DCRYPTO_HMAC_SHA256_init(&hmac, merkle_tree->hmac_key,
 				 sizeof(merkle_tree->hmac_key));
+	HASH_update(&hmac.hash, &wrapped_leaf_data->pub,
+		    sizeof(wrapped_leaf_data->pub));
 	HASH_update(&hmac.hash, wrapped_leaf_data->cipher_text,
 		    sizeof(wrapped_leaf_data->cipher_text));
 	memcpy(result, DCRYPTO_HMAC_final(&hmac), PW_HASH_SIZE);
@@ -177,11 +179,13 @@ static int encrypt_leaf_data(const struct merkle_tree_t *merkle_tree,
 {
 	/* Generate a random IV. */
 	rand_bytes(wrapped_leaf_data->iv, sizeof(wrapped_leaf_data->iv));
+	memcpy(&wrapped_leaf_data->pub, &leaf_data->pub,
+	       sizeof(leaf_data->pub));
 	if (DCRYPTO_aes_ctr(wrapped_leaf_data->cipher_text,
 			     merkle_tree->wrap_key,
 			     sizeof(merkle_tree->wrap_key) << 3,
-			     wrapped_leaf_data->iv, (uint8_t *)leaf_data,
-			     sizeof(*leaf_data)) != EC_SUCCESS) {
+			     wrapped_leaf_data->iv, (uint8_t *)&leaf_data->sec,
+			     sizeof(leaf_data->sec)) != EC_SUCCESS) {
 		return PW_ERR_CRYPTO_FAILURE;
 	}
 	return EC_SUCCESS;
@@ -193,11 +197,13 @@ static int decrypt_leaf_data(
 		const struct wrapped_leaf_data_t *wrapped_leaf_data,
 		struct leaf_data_t *leaf_data)
 {
-	if (DCRYPTO_aes_ctr((uint8_t *)leaf_data, merkle_tree->wrap_key,
+	memcpy(&leaf_data->pub, &wrapped_leaf_data->pub,
+	       sizeof(leaf_data->pub));
+	if (DCRYPTO_aes_ctr((uint8_t *)&leaf_data->sec, merkle_tree->wrap_key,
 			     sizeof(merkle_tree->wrap_key) << 3,
 			     wrapped_leaf_data->iv,
 			     wrapped_leaf_data->cipher_text,
-			     sizeof(*leaf_data)) != EC_SUCCESS) {
+			     sizeof(leaf_data->sec)) != EC_SUCCESS) {
 		return PW_ERR_CRYPTO_FAILURE;
 	}
 	return EC_SUCCESS;
@@ -290,20 +296,20 @@ static int test_rate_limit(struct leaf_data_t *leaf_data)
 	struct time_diff_t delay = {0};
 
 	/* This loop ends when x is one greater than the index that applies. */
-	for (x = 0; x < ARRAY_SIZE(leaf_data->idat.delay_schedule) &&
+	for (x = 0; x < ARRAY_SIZE(leaf_data->pub.delay_schedule) &&
 			/* Stop if a null entry is reached. The first part of
 			 * the delay schedule has a list of increasing
 			 * (attempt_count, time_diff) pairs with any unused
 			 * entries zeroed out at the end.
 			 */
-			leaf_data->idat.delay_schedule[x]
+			leaf_data->pub.delay_schedule[x]
 					.attempt_count.v != 0 &&
 			/* Stop once a delay schedule entry is reached whose
 			 * threshold is greater than the current number of
 			 * attempts.
 			 */
-			leaf_data->attempt_count.v >=
-			leaf_data->idat.delay_schedule[x]
+			leaf_data->pub.attempt_count.v >=
+			leaf_data->pub.delay_schedule[x]
 					.attempt_count.v; ++x) {
 	}
 
@@ -312,7 +318,7 @@ static int test_rate_limit(struct leaf_data_t *leaf_data)
 	 * entry prior to the one that was too big.
 	 */
 	if (x > 1)
-		delay = leaf_data->idat.delay_schedule[x - 1].time_diff;
+		delay = leaf_data->pub.delay_schedule[x - 1].time_diff;
 
 	if (delay.v == 0)
 		return EC_SUCCESS;
@@ -323,9 +329,9 @@ static int test_rate_limit(struct leaf_data_t *leaf_data)
 	update_timestamp(&current_time);
 
 	/* TODO(allenwebb) verify the timer starts at zero on reboot. */
-	if (leaf_data->timestamp.boot_count == current_time.boot_count)
+	if (leaf_data->pub.timestamp.boot_count == current_time.boot_count)
 		ready_time = delay.v * SECOND +
-				leaf_data->timestamp.timer_value;
+				leaf_data->pub.timestamp.timer_value;
 	else
 		ready_time = delay.v * SECOND;
 
@@ -451,23 +457,32 @@ static int pw_handle_insert_leaf(struct merkle_tree_t *merkle_tree,
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	ret = validate_label(merkle_tree, request->idat.label);
+	ret = validate_label(merkle_tree, request->label);
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	ret = validate_delay_schedule(request->idat.delay_schedule);
+	ret = validate_delay_schedule(request->delay_schedule);
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	ret = authenticate_path(merkle_tree, request->idat.label,
+	ret = authenticate_path(merkle_tree, request->label,
 				request->path_hashes, empty_hash);
 	if (ret != EC_SUCCESS)
 		return ret;
 
 	memset(&leaf_data, 0, sizeof(leaf_data));
-	leaf_data.version = PW_STORAGE_VERSION;
+	leaf_data.pub.protocol_version = PW_PROTOCOL_VERSION;
 
-	memcpy(&leaf_data.idat, &request->idat, sizeof(leaf_data.idat));
+	leaf_data.pub.label.v = request->label.v;
+	memcpy(&leaf_data.pub.delay_schedule, &request->delay_schedule,
+	       sizeof(request->delay_schedule));
+	memcpy(&leaf_data.sec.low_entropy_secret, &request->low_entropy_secret,
+	       sizeof(request->low_entropy_secret));
+	memcpy(&leaf_data.sec.high_entropy_secret,
+	       &request->high_entropy_secret,
+	       sizeof(request->high_entropy_secret));
+	memcpy(&leaf_data.sec.reset_secret, &request->reset_secret,
+	       sizeof(request->reset_secret));
 
 	ret = encrypt_leaf_data(merkle_tree, &leaf_data, &wrapped_leaf_data);
 	if (ret != EC_SUCCESS)
@@ -475,11 +490,11 @@ static int pw_handle_insert_leaf(struct merkle_tree_t *merkle_tree,
 
 	compute_hmac(merkle_tree, &wrapped_leaf_data, wrapped_leaf_data.hmac);
 
-	compute_root_hash(merkle_tree, leaf_data.idat.label,
+	compute_root_hash(merkle_tree, leaf_data.pub.label,
 			  request->path_hashes, wrapped_leaf_data.hmac,
 			  new_root);
 
-	ret = log_insert_leaf(request->idat.label, new_root,
+	ret = log_insert_leaf(request->label, new_root,
 			      wrapped_leaf_data.hmac);
 	if (ret != EC_SUCCESS) {
 		memcpy(new_root, merkle_tree->root, sizeof(merkle_tree->root));
@@ -559,7 +574,7 @@ static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	if (leaf_data.idat.label.v != request->leaf_location.v)
+	if (leaf_data.pub.label.v != request->leaf_location.v)
 		return PW_ERR_LABEL_INVALID;
 
 	ret = test_rate_limit(&leaf_data);
@@ -568,17 +583,17 @@ static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
 
 	/* ret must not be overwritten after this. */
 	if (safe_memcmp(request->low_entropy_secret,
-			leaf_data.idat.low_entropy_secret,
+			leaf_data.sec.low_entropy_secret,
 			sizeof(request->low_entropy_secret)) != 0) {
-		++leaf_data.attempt_count.v;
+		++leaf_data.pub.attempt_count.v;
 		dummy_ac.v = 0;
 		ret = PW_ERR_LOWENT_AUTH_FAILED;
 	} else {
 		++dummy_ac.v;
-		leaf_data.attempt_count.v = 0;
+		leaf_data.pub.attempt_count.v = 0;
 		ret = EC_SUCCESS;
 	}
-	update_timestamp(&leaf_data.timestamp);
+	update_timestamp(&leaf_data.pub.timestamp);
 
 	if (encrypt_leaf_data(merkle_tree, &leaf_data,
 			      &wrapped_leaf_data) != EC_SUCCESS)
@@ -586,12 +601,12 @@ static int pw_handle_try_auth(struct merkle_tree_t *merkle_tree,
 
 	compute_hmac(merkle_tree, &wrapped_leaf_data, wrapped_leaf_data.hmac);
 
-	compute_root_hash(merkle_tree, leaf_data.idat.label,
+	compute_root_hash(merkle_tree, leaf_data.pub.label,
 			  request->path_hashes, wrapped_leaf_data.hmac,
 			  new_root);
 
 	ret2 = log_auth(request->leaf_location, new_root, ret,
-		       leaf_data.timestamp);
+		       leaf_data.pub.timestamp);
 	if (ret2 != EC_SUCCESS) {
 		memcpy(new_root, merkle_tree->root, sizeof(merkle_tree->root));
 		return ret2;
@@ -636,15 +651,15 @@ static int pw_handle_reset_auth(struct merkle_tree_t *merkle_tree,
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	if (leaf_data.idat.label.v != request->leaf_location.v)
+	if (leaf_data.pub.label.v != request->leaf_location.v)
 		return PW_ERR_LABEL_INVALID;
 
 	if (safe_memcmp(request->reset_secret,
-			leaf_data.idat.reset_secret,
+			leaf_data.sec.reset_secret,
 			sizeof(request->reset_secret)) != 0)
 		return PW_ERR_RESET_AUTH_FAILED;
 
-	leaf_data.attempt_count.v = 0;
+	leaf_data.pub.attempt_count.v = 0;
 
 	ret = encrypt_leaf_data(merkle_tree, &leaf_data, &wrapped_leaf_data);
 	if (ret != EC_SUCCESS)
@@ -652,12 +667,12 @@ static int pw_handle_reset_auth(struct merkle_tree_t *merkle_tree,
 
 	compute_hmac(merkle_tree, &wrapped_leaf_data, wrapped_leaf_data.hmac);
 
-	compute_root_hash(merkle_tree, leaf_data.idat.label,
+	compute_root_hash(merkle_tree, leaf_data.pub.label,
 			  request->path_hashes, wrapped_leaf_data.hmac,
 			  new_root);
 
 	ret = log_auth(request->leaf_location, new_root,
-		       ret, leaf_data.timestamp);
+		       ret, leaf_data.pub.timestamp);
 	if (ret != EC_SUCCESS) {
 		memcpy(new_root, merkle_tree->root, sizeof(merkle_tree->root));
 		return ret;
@@ -751,16 +766,18 @@ static int pw_handle_log_replay(const struct merkle_tree_t *merkle_tree,
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	if (leaf_data.idat.label.v != log.entries[x].label.v)
+	if (leaf_data.pub.label.v != log.entries[x].label.v)
 		return PW_ERR_LABEL_INVALID;
 
 	/* Update the metadata to match the log. */
 	if (log.entries[x].return_code == EC_SUCCESS)
-		leaf_data.attempt_count.v = 0;
+		leaf_data.pub.attempt_count.v = 0;
 	else
-		++leaf_data.attempt_count.v;
-	leaf_data.timestamp.boot_count = log.entries[x].timestamp.boot_count;
-	leaf_data.timestamp.timer_value = log.entries[x].timestamp.timer_value;
+		++leaf_data.pub.attempt_count.v;
+	leaf_data.pub.timestamp.boot_count =
+			log.entries[x].timestamp.boot_count;
+	leaf_data.pub.timestamp.timer_value =
+			log.entries[x].timestamp.timer_value;
 
 	ret = encrypt_leaf_data(merkle_tree, &leaf_data, &wrapped_leaf_data);
 	if (ret != EC_SUCCESS)
@@ -768,7 +785,7 @@ static int pw_handle_log_replay(const struct merkle_tree_t *merkle_tree,
 
 	compute_hmac(merkle_tree, &wrapped_leaf_data, wrapped_leaf_data.hmac);
 
-	compute_root_hash(merkle_tree, leaf_data.idat.label,
+	compute_root_hash(merkle_tree, leaf_data.pub.label,
 			  request->path_hashes, wrapped_leaf_data.hmac,
 			  root);
 	if (memcmp(root, log.entries[x].root, sizeof(root)))
