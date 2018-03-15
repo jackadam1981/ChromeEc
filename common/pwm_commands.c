@@ -31,6 +31,10 @@ int pwm_command_set_fan_target_rpm(struct host_cmd_handler_args *args)
 	thermal_control_fan(0);
 #endif
 	pwm_set_rpm_mode(1);
+
+	/* Always enable the fan */
+	pwm_enable_fan(1);
+
 	pwm_set_fan_target_rpm(p->rpm);
 
 	return EC_RES_SUCCESS;
