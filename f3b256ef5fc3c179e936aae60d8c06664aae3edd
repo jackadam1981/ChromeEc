@@ -16,6 +16,24 @@
       "revId": "f3b256ef5fc3c179e936aae60d8c06664aae3edd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e11a4aa8_a2a1d75e",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-15T20:35:42Z",
+      "side": 1,
+      "message": "The root of the hash is already known to the CrOS side so there is no risk in someone being able to brute force it.\n\nI did go back and change to safe_memcmp for the hmac tests because we don\u0027t want that being exploited to determine the valid hmac for an attacker controlled blob, but that wouldn\u0027t help an attack too much because of the tree of hashes.",
+      "parentUuid": "f5f62f2c_b1103140",
+      "revId": "f3b256ef5fc3c179e936aae60d8c06664aae3edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
