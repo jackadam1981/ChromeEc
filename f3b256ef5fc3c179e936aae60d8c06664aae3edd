@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5f62f2c_b1103140",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1137859
+      },
+      "writtenOn": "2018-03-15T20:32:44Z",
+      "side": 1,
+      "message": "Were you going to use memcmp_safe or something similar? Is there no side channel risk here?",
+      "revId": "f3b256ef5fc3c179e936aae60d8c06664aae3edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
