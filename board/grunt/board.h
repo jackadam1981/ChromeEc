@@ -11,7 +11,7 @@
 #define BOARD_VERSION_0	0
 /* Board ID 1 doesn't need any EC changes. */
 #define BOARD_VERSION_2	2
-#define BOARD_VERSION	BOARD_VERSION_0
+#define BOARD_VERSION	BOARD_VERSION_2
 
 /* Optional features */
 #define CONFIG_HIBERNATE_PSL
