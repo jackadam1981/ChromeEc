@@ -19,6 +19,7 @@
 #include "i2c.h"
 #include "lid_switch.h"
 #include "pi3usb9281.h"
+#include "power.h"
 #include "power_button.h"
 #include "switch.h"
 #include "system.h"
@@ -141,6 +142,13 @@ const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_POWER_BUTTON_L,
 };
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
+
+/* Power signal list.  Must match order of enum power_signal. */
+/* XXX: Explain the AP_RESET_L (PMIC -> AP) signal */
+const struct power_signal_info power_signal_list[] = {
+	{GPIO_AP_RESET_L, POWER_SIGNAL_ACTIVE_HIGH, "POWER_GOOD"},
+};
+BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[] = {

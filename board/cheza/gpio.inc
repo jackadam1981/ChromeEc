@@ -23,11 +23,12 @@ GPIO_INT(VOLUME_UP_L,     PIN(1, 1), GPIO_INT_BOTH | GPIO_PULL_UP, button_interr
 GPIO_INT(WP_L,            PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)
 GPIO_INT(LID_OPEN,        PIN(D, 2), GPIO_INT_BOTH, lid_interrupt)
 GPIO_INT(AC_PRESENT,      PIN(0, 0), GPIO_INT_BOTH, extpower_interrupt)
+GPIO_INT(AP_RESET_L,      PIN(C, 1), GPIO_INT_BOTH, power_signal_interrupt)
 
 GPIO(EC_SELF_RST,         PIN(E, 0), GPIO_OUT_LOW)   /* Self-reset EC */
 GPIO(SYS_RESET_L,         PIN(0, 2), GPIO_ODR_HIGH)  /* Cold reset AP via PMIC */
-GPIO(AP_RESET_L,          PIN(C, 1), GPIO_ODR_HIGH)  /* Cold reset AP directly */
 GPIO(AP_PS_HOLD,          PIN(D, 4), GPIO_INPUT)     /* Indicate when AP triggers reset */
+GPIO(SWITCHCAP_ON_L,      PIN(D, 5), GPIO_OUT_HIGH)  /* Enable switch cap */
 
 GPIO(ENTERING_RW,         PIN(E, 1), GPIO_OUT_LOW)   /* Indicate when EC is entering RW code */
 GPIO(CCD_MODE_ODL,        PIN(E, 3), GPIO_INPUT)     /* Case Closed Debug Mode */
