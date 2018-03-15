@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f413575c_6cc78b3a",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1133034
+      },
+      "writtenOn": "2018-03-15T21:42:47Z",
+      "side": 1,
+      "message": "You might want to add something to exclude board versions that you don\u0027t care about like version 1.\n\nOr not - it\u0027s just a printf...",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 48
+      },
+      "revId": "04a36c23ed0e05fd6fe1acde3a382c52b2de9d33",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
