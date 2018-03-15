@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8029609f_512efaf1",
+        "filename": "board/coral/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-03-15T01:53:19Z",
+      "side": 1,
+      "message": "after shutdown, ovp_detect_count will be cleared in next HOOK_SECOND because EN_PP3300 is off.",
+      "range": {
+        "startLine": 1197,
+        "startChar": 1,
+        "endLine": 1198,
+        "endChar": 27
+      },
+      "revId": "88bba269f077f13345bfc748fe88c990401c6c66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
