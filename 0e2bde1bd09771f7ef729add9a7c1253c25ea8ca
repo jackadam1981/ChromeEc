@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7889b33b_56947b63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-15T16:49:52Z",
+      "side": 1,
+      "message": "nit:typo",
+      "range": {
+        "startLine": 18,
+        "startChar": 35,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "0e2bde1bd09771f7ef729add9a7c1253c25ea8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2529e73f_162257a0",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-15T16:49:52Z",
+      "side": 1,
+      "message": "while you are at it, you can define it as :\nCFLAGS_BASEBOARD\u003d-DHAS_BASEBOARD -DBASEBOARD_$(UC_BASEBOARD)",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 32
+      },
+      "revId": "0e2bde1bd09771f7ef729add9a7c1253c25ea8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45d89608_47268805",
+        "filename": "Makefile",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-15T16:49:52Z",
+      "side": 1,
+      "message": "it\u0027s implicit for Make, but at leat this makes it clear.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 17
+      },
+      "revId": "0e2bde1bd09771f7ef729add9a7c1253c25ea8ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
