@@ -22,6 +22,30 @@
       "revId": "88bba269f077f13345bfc748fe88c990401c6c66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d5e7e7a_892d5079",
+        "filename": "board/coral/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-15T02:18:11Z",
+      "side": 1,
+      "message": "Do you think that\u0027s incorrect? I was thinking that you would only need to call chipset_force_shutdown() once and ovp_detect_count would need to be reset anyway.",
+      "parentUuid": "8029609f_512efaf1",
+      "range": {
+        "startLine": 1197,
+        "startChar": 1,
+        "endLine": 1198,
+        "endChar": 27
+      },
+      "revId": "88bba269f077f13345bfc748fe88c990401c6c66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
