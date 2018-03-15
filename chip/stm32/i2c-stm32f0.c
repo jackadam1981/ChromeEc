@@ -426,55 +426,54 @@ DECLARE_IRQ(IRQ_SLAVE, i2c2_event_interrupt, 2);
 /*****************************************************************************/
 /* Interface */
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
-		  uint8_t *in, int in_bytes, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
-	int rv = EC_SUCCESS;
 	int i;
-	int xfer_start = flags & I2C_XFER_START;
-	int xfer_stop = flags & I2C_XFER_STOP;
+	int rv = EC_SUCCESS;
+	int xfer_start = p->flags & I2C_XFER_START;
+	int xfer_stop = p->flags & I2C_XFER_STOP;
 
 #if defined(CONFIG_I2C_SCL_GATE_ADDR) && defined(CONFIG_I2C_SCL_GATE_PORT)
-	if (port == CONFIG_I2C_SCL_GATE_PORT &&
-	    slave_addr == CONFIG_I2C_SCL_GATE_ADDR)
+	if (p->port == CONFIG_I2C_SCL_GATE_PORT &&
+	    p->slave_addr == CONFIG_I2C_SCL_GATE_ADDR)
 		gpio_set_level(CONFIG_I2C_SCL_GATE_GPIO, 1);
 #endif
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
+	ASSERT(p->out || !p->out_size);
+	ASSERT(p->in || !p->in_size);
 
 	/* Clear status */
 	if (xfer_start) {
-		STM32_I2C_ICR(port) = STM32_I2C_ICR_ALL;
-		STM32_I2C_CR2(port) = 0;
+		STM32_I2C_ICR(p->port) = STM32_I2C_ICR_ALL;
+		STM32_I2C_CR2(p->port) = 0;
 	}
 
-	if (out_bytes || !in_bytes) {
+	if (p->out_size || !p->in_size) {
 		/*
 		 * Configure the write transfer: if we are stopping then set
 		 * AUTOEND bit to automatically set STOP bit after NBYTES.
 		 * if we are not stopping, set RELOAD bit so that we can load
 		 * NBYTES again. if we are starting, then set START bit.
 		 */
-		STM32_I2C_CR2(port) =  ((out_bytes & 0xFF) << 16)
-			| slave_addr
-			| ((in_bytes == 0 && xfer_stop) ?
+		STM32_I2C_CR2(p->port) =  ((p->out_size & 0xFF) << 16)
+			| p->slave_addr
+			| ((p->in_size == 0 && xfer_stop) ?
 				STM32_I2C_CR2_AUTOEND : 0)
-			| ((in_bytes == 0 && !xfer_stop) ?
+			| ((p->in_size == 0 && !xfer_stop) ?
 				STM32_I2C_CR2_RELOAD : 0)
 			| (xfer_start ? STM32_I2C_CR2_START : 0);
 
-		for (i = 0; i < out_bytes; i++) {
-			rv = wait_isr(port, STM32_I2C_ISR_TXIS);
+		for (i = 0; i < p->out_size; i++) {
+			rv = wait_isr(p->port, STM32_I2C_ISR_TXIS);
 			if (rv)
 				goto xfer_exit;
 			/* Write next data byte */
-			STM32_I2C_TXDR(port) = out[i];
+			STM32_I2C_TXDR(p->port) = p->out[i];
 		}
 	}
-	if (in_bytes) {
-		if (out_bytes) { /* wait for completion of the write */
-			rv = wait_isr(port, STM32_I2C_ISR_TC);
+	if (p->in_size) {
+		if (p->out_size) { /* wait for completion of the write */
+			rv = wait_isr(p->port, STM32_I2C_ISR_TC);
 			if (rv)
 				goto xfer_exit;
 		}
@@ -485,19 +484,20 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 		 * NBYTES again. if we were just transmitting, we need to
 		 * set START bit to send (re)start and begin read transaction.
 		 */
-		STM32_I2C_CR2(port) = ((in_bytes & 0xFF) << 16)
-			| STM32_I2C_CR2_RD_WRN | slave_addr
+		STM32_I2C_CR2(p->port) = ((p->in_size & 0xFF) << 16)
+			| STM32_I2C_CR2_RD_WRN | p->slave_addr
 			| (xfer_stop ? STM32_I2C_CR2_AUTOEND : 0)
 			| (!xfer_stop ? STM32_I2C_CR2_RELOAD : 0)
-			| (out_bytes || xfer_start ? STM32_I2C_CR2_START : 0);
+			| (p->out_size || xfer_start ? STM32_I2C_CR2_START :
+			   0);
 
-		for (i = 0; i < in_bytes; i++) {
+		for (i = 0; i < p->in_size; i++) {
 			/* Wait for receive buffer not empty */
-			rv = wait_isr(port, STM32_I2C_ISR_RXNE);
+			rv = wait_isr(p->port, STM32_I2C_ISR_RXNE);
 			if (rv)
 				goto xfer_exit;
 
-			in[i] = STM32_I2C_RXDR(port);
+			p->in[i] = STM32_I2C_RXDR(p->port);
 		}
 	}
 
@@ -507,23 +507,24 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	 * the RELOAD bit and we should wait for transfer complete
 	 * reload (TCR).
 	 */
-	rv = wait_isr(port, xfer_stop ? STM32_I2C_ISR_STOP : STM32_I2C_ISR_TCR);
+	rv = wait_isr(p->port, xfer_stop ? STM32_I2C_ISR_STOP :
+		      STM32_I2C_ISR_TCR);
 	if (rv)
 		goto xfer_exit;
 
 xfer_exit:
 	/* clear status */
 	if (xfer_stop)
-		STM32_I2C_ICR(port) = STM32_I2C_ICR_ALL;
+		STM32_I2C_ICR(p->port) = STM32_I2C_ICR_ALL;
 
 	/* On error, queue a stop condition */
 	if (rv) {
 		/* queue a STOP condition */
-		STM32_I2C_CR2(port) |= STM32_I2C_CR2_STOP;
+		STM32_I2C_CR2(p->port) |= STM32_I2C_CR2_STOP;
 		/* wait for it to take effect */
 		/* Wait up to 100 us for bus idle */
 		for (i = 0; i < 10; i++) {
-			if (!(STM32_I2C_ISR(port) & STM32_I2C_ISR_BUSY))
+			if (!(STM32_I2C_ISR(p->port) & STM32_I2C_ISR_BUSY))
 				break;
 			udelay(10);
 		}
@@ -535,15 +536,15 @@ xfer_exit:
 		 */
 		udelay(10);
 		/* re-initialize the controller */
-		STM32_I2C_CR2(port) = 0;
-		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_PE;
+		STM32_I2C_CR2(p->port) = 0;
+		STM32_I2C_CR1(p->port) &= ~STM32_I2C_CR1_PE;
 		udelay(10);
-		STM32_I2C_CR1(port) |= STM32_I2C_CR1_PE;
+		STM32_I2C_CR1(p->port) |= STM32_I2C_CR1_PE;
 	}
 
 #ifdef CONFIG_I2C_SCL_GATE_ADDR
-	if (port == CONFIG_I2C_SCL_GATE_PORT &&
-	    slave_addr == CONFIG_I2C_SCL_GATE_ADDR)
+	if (p->port == CONFIG_I2C_SCL_GATE_PORT &&
+	    p->slave_addr == CONFIG_I2C_SCL_GATE_ADDR)
 		gpio_set_level(CONFIG_I2C_SCL_GATE_GPIO, 0);
 #endif
 

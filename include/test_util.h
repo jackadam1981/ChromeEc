@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "console.h"
+#include "i2c.h"
 #include "stack_trace.h"
 
 #define RUN_TEST(n) \
@@ -216,9 +217,7 @@ struct test_i2c_read_string_dev {
 
 struct test_i2c_xfer {
 	/* I2C xfer handler */
-	int (*routine)(int port, int slave_addr,
-		       const uint8_t *out, int out_size,
-		       uint8_t *in, int in_size, int flags);
+	int (*routine)(struct i2c_xfer_params *p);
 };
 
 struct test_i2c_write_dev {

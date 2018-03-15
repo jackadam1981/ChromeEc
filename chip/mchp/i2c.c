@@ -300,23 +300,22 @@ static inline void push_in_buf(uint8_t **in, uint8_t val, int skip)
 	}
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
-		int out_size, uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
 	int i;
 	int controller;
-	int send_start = flags & I2C_XFER_START;
-	int send_stop = flags & I2C_XFER_STOP;
+	int send_start = p->flags & I2C_XFER_START;
+	int send_stop = p->flags & I2C_XFER_STOP;
 	int skip = 0;
 	int bytes_to_read;
 	uint8_t reg;
 	int ret_done;
 
-	if (out_size == 0 && in_size == 0)
+	if (p->out_size == 0 && p->in_size == 0)
 		return EC_SUCCESS;
 
-	select_port(port);
-	controller = i2c_port_to_controller(port);
+	select_port(p->port);
+	controller = i2c_port_to_controller(p->port);
 
 	if (send_start &&
 	    cdata[controller].transaction_state == I2C_TRANSACTION_STOPPED)
@@ -329,16 +328,16 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
 			    (get_line_level(controller)
 			    != I2C_LINE_IDLE))) {
 		CPRINTS("MEC1701 i2c%s bad status 0x%02x, SCL=%d, SDA=%d",
-			i2c_port_names[port], reg,
+			i2c_port_names[p->port], reg,
 			get_line_level(controller) & I2C_LINE_SCL_HIGH,
 			get_line_level(controller) & I2C_LINE_SDA_HIGH);
 
 		/* Attempt to unwedge the port. */
-		i2c_unwedge(port);
+		i2c_unwedge(p->port);
 
 		/* Bus error, bus busy, or arbitration lost. Try reset. */
 		reset_controller(controller);
-		select_port(port);
+		select_port(p->port);
 
 		/*
 		 * We don't know what edges the slave saw, so sleep long enough
@@ -347,9 +346,9 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
 		usleep(1000);
 	}
 
-	if (out_size) {
+	if (p->out_size) {
 		if (send_start) {
-			MCHP_I2C_DATA(controller) = (uint8_t)slave_addr;
+			MCHP_I2C_DATA(controller) = (uint8_t)p->slave_addr;
 
 			/* Clock out the slave address, sending START bit */
 			MCHP_I2C_CTRL(controller) = CTRL_PIN | CTRL_ESO |
@@ -359,12 +358,12 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
 				I2C_TRANSACTION_OPEN;
 		}
 
-		for (i = 0; i < out_size; ++i) {
+		for (i = 0; i < p->out_size; ++i) {
 			ret_done = wait_byte_done(controller);
 			if (ret_done)
 				goto err_chip_i2c_xfer;
 
-			MCHP_I2C_DATA(controller) = out[i];
+			MCHP_I2C_DATA(controller) = p->out[i];
 		}
 		ret_done = wait_byte_done(controller);
 		if (ret_done)
@@ -374,7 +373,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
 		 * Send STOP bit if the stop flag is on, and caller
 		 * doesn't expect to receive data.
 		 */
-		if (send_stop && in_size == 0) {
+		if (send_stop && p->in_size == 0) {
 			MCHP_I2C_CTRL(controller) = CTRL_PIN | CTRL_ESO |
 						       CTRL_STO | CTRL_ACK;
 			cdata[controller].transaction_state =
@@ -382,9 +381,9 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
 		}
 	}
 
-	if (in_size) {
+	if (p->in_size) {
 		/* Resend start bit when changing direction */
-		if (out_size || send_start) {
+		if (p->out_size || send_start) {
 			/* Repeated start case */
 			if (cdata[controller].transaction_state ==
 			    I2C_TRANSACTION_OPEN)
@@ -393,7 +392,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
 							       CTRL_ACK |
 							       CTRL_ENI;
 
-			MCHP_I2C_DATA(controller) = (uint8_t)slave_addr
+			MCHP_I2C_DATA(controller) = (uint8_t)p->slave_addr
 						     | 0x01;
 
 			/* New transaction case, clock out slave address. */
@@ -410,18 +409,18 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
 
 			/* Skip over the dummy byte */
 			skip = 1;
-			in_size++;
+			p->in_size++;
 		}
 
 		/* Special flags need to be set for last two bytes */
-		bytes_to_read = send_stop ? in_size - 2 : in_size;
+		bytes_to_read = send_stop ? p->in_size - 2 : p->in_size;
 
 		for (i = 0; i < bytes_to_read; ++i) {
 			ret_done = wait_byte_done(controller);
 			if (ret_done)
 				goto err_chip_i2c_xfer;
 
-			push_in_buf(&in, MCHP_I2C_DATA(controller), skip);
+			push_in_buf(&p->in, MCHP_I2C_DATA(controller), skip);
 			skip = 0;
 		}
 		ret_done = wait_byte_done(controller);
@@ -434,7 +433,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
 			 * byte, so that the last byte is NACK'ed.
 			 */
 			MCHP_I2C_CTRL(controller) = CTRL_ESO | CTRL_ENI;
-			push_in_buf(&in, MCHP_I2C_DATA(controller), skip);
+			push_in_buf(&p->in, MCHP_I2C_DATA(controller), skip);
 			ret_done = wait_byte_done(controller);
 			if (ret_done)
 				goto err_chip_i2c_xfer;
@@ -452,8 +451,8 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out,
 			 * to do an extra dummy read (to last_addr + 1) to
 			 * issue the stop.
 			 */
-			push_in_buf(&in, MCHP_I2C_DATA(controller),
-				    in_size == 1);
+			push_in_buf(&p->in, MCHP_I2C_DATA(controller),
+				    p->in_size == 1);
 		}
 	}
 
