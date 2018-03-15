@@ -81,10 +81,12 @@ static inline int raw_read_n(const int port, const int addr, const uint8_t reg,
 		uint8_t *data_ptr, const int len)
 {
 	int rv;
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(port, addr, &reg,
+						   sizeof(reg), data_ptr, len,
+						   I2C_XFER_SINGLE);
 
 	i2c_lock(port, 1);
-	rv = i2c_xfer(port, addr, &reg, 1,
-			data_ptr, len, I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
 	i2c_lock(port, 0);
 	return rv;
 }

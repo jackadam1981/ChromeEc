@@ -115,7 +115,11 @@ static void board_init(void)
 {
 	uint8_t tmp;
 
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(0, 0, NULL, 0, &tmp,
+						   sizeof(tmp),
+						   I2C_XFER_SINGLE);
+
 	/* i2c 0 has a tendancy to get wedged. TODO(nsanders): why? */
-	i2c_xfer(0, 0, NULL, 0, &tmp, 1, I2C_XFER_SINGLE);
+	i2c_xfer(&p);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);

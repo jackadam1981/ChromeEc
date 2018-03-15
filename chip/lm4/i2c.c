@@ -165,50 +165,49 @@ int i2c_do_work(int port)
 	return 0;
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-		  uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
-	struct i2c_port_data *pd = pdata + port;
-	uint32_t reg_mcs = LM4_I2C_MCS(port);
+	struct i2c_port_data *pd = pdata + p->port;
+	uint32_t reg_mcs = LM4_I2C_MCS(p->port);
 	int events = 0;
 
-	if (out_size == 0 && in_size == 0)
+	if (p->out_size == 0 && p->in_size == 0)
 		return EC_SUCCESS;
 
 	/* Copy data to port struct */
-	pd->out = out;
-	pd->out_size = out_size;
-	pd->in = in;
-	pd->in_size = in_size;
-	pd->flags = flags;
+	pd->out = p->out;
+	pd->out_size = p->out_size;
+	pd->in = p->in;
+	pd->in_size = p->in_size;
+	pd->flags = p->flags;
 	pd->idx = 0;
 	pd->err = 0;
 
 	/* Make sure we're in a good state to start */
-	if ((flags & I2C_XFER_START) &&
+	if ((p->flags & I2C_XFER_START) &&
 	    ((reg_mcs & (LM4_I2C_MCS_CLKTO | LM4_I2C_MCS_ARBLST)) ||
-			    (i2c_get_line_levels(port) != I2C_LINE_IDLE))) {
-		uint32_t tpr = LM4_I2C_MTPR(port);
+			    (i2c_get_line_levels(p->port) != I2C_LINE_IDLE))) {
+		uint32_t tpr = LM4_I2C_MTPR(p->port);
 
 		CPRINTS("I2C%d Addr:%02X bad status 0x%02x, SCL=%d, SDA=%d",
-				port,
-				slave_addr,
-				reg_mcs,
-				i2c_get_line_levels(port) & I2C_LINE_SCL_HIGH,
-				i2c_get_line_levels(port) & I2C_LINE_SDA_HIGH);
+			p->port,
+			p->slave_addr,
+			reg_mcs,
+			i2c_get_line_levels(p->port) & I2C_LINE_SCL_HIGH,
+			i2c_get_line_levels(p->port) & I2C_LINE_SDA_HIGH);
 
 		/* Attempt to unwedge the port. */
-		i2c_unwedge(port);
+		i2c_unwedge(p->port);
 
 		/* Clock timeout or arbitration lost.  Reset port to clear. */
-		atomic_or(LM4_SYSTEM_SRI2C_ADDR, (1 << port));
+		atomic_or(LM4_SYSTEM_SRI2C_ADDR, (1 << p->port));
 		clock_wait_cycles(3);
-		atomic_clear(LM4_SYSTEM_SRI2C_ADDR, (1 << port));
+		atomic_clear(LM4_SYSTEM_SRI2C_ADDR, (1 << p->port));
 		clock_wait_cycles(3);
 
 		/* Restore settings */
-		LM4_I2C_MCR(port) = 0x10;
-		LM4_I2C_MTPR(port) = tpr;
+		LM4_I2C_MCR(p->port) = 0x10;
+		LM4_I2C_MTPR(p->port) = tpr;
 
 		/*
 		 * We don't know what edges the slave saw, so sleep long enough
@@ -218,21 +217,21 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	}
 
 	/* Set slave address for transmit */
-	LM4_I2C_MSA(port) = slave_addr & 0xff;
+	LM4_I2C_MSA(p->port) = p->slave_addr & 0xff;
 
 	/* Enable interrupts */
 	pd->task_waiting = task_get_current();
-	LM4_I2C_MICR(port) = 0x03;
-	LM4_I2C_MIMR(port) = 0x03;
+	LM4_I2C_MICR(p->port) = 0x03;
+	LM4_I2C_MIMR(p->port) = 0x03;
 
 	/* Kick the port interrupt handler to start the transfer */
-	task_trigger_irq(i2c_irqs[port]);
+	task_trigger_irq(i2c_irqs[p->port]);
 
 	/* Wait for transfer complete or timeout */
 	events = task_wait_event_mask(TASK_EVENT_I2C_IDLE, pd->timeout_us);
 
 	/* Disable interrupts */
-	LM4_I2C_MIMR(port) = 0x00;
+	LM4_I2C_MIMR(p->port) = 0x00;
 	pd->task_waiting = TASK_ID_INVALID;
 
 	/* Handle timeout */
@@ -241,7 +240,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 	if (pd->err) {
 		/* Force port back idle */
-		LM4_I2C_MCS(port) = LM4_I2C_MCS_STOP;
+		LM4_I2C_MCS(p->port) = LM4_I2C_MCS_STOP;
 		usleep(I2C_IDLE_US);
 	}
 

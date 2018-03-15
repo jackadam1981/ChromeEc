@@ -72,8 +72,11 @@ static struct cbi_header * const head = (struct cbi_header *)cbi;
 
 static int read_eeprom(uint8_t offset, uint8_t *in, int in_size)
 {
-	return i2c_xfer(I2C_PORT_EEPROM, I2C_ADDR_EEPROM,
-			&offset, 1, in, in_size, I2C_XFER_SINGLE);
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(I2C_PORT_EEPROM,
+						   I2C_ADDR_EEPROM, &offset,
+						   sizeof(offset), in, in_size,
+						   I2C_XFER_SINGLE);
+	return i2c_xfer(&p);
 }
 
 /*
@@ -197,6 +200,10 @@ static int write_board_info(void)
 	uint8_t *p = cbi;
 	int rest = head->total_size;
 
+	struct i2c_xfer_params params = I2C_XFER_PARAMS_WRITE(I2C_PORT_EEPROM,
+							      I2C_ADDR_EEPROM,
+							      buf, 0);
+
 	if (eeprom_is_write_protected()) {
 		CPRINTS("Failed to write for WP");
 		return EC_ERROR_ACCESS_DENIED;
@@ -208,8 +215,8 @@ static int write_board_info(void)
 		int rv;
 		rest -= size;
 		memcpy(&buf[1], p, size);
-		rv = i2c_xfer(I2C_PORT_EEPROM, I2C_ADDR_EEPROM, buf, size + 1,
-			      NULL, 0, I2C_XFER_SINGLE);
+		params.out_size = size + 1;
+		rv = i2c_xfer(&params);
 		if (rv) {
 			CPRINTS("Failed to write for %d", rv);
 			return rv;

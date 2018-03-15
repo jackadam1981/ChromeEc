@@ -608,18 +608,17 @@ void i2c_set_timeout(int port, uint32_t timeout)
 		timeout ? timeout : I2C_TIMEOUT_DEFAULT_US;
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-		  uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
 	volatile struct i2c_status *p_status;
-	int ctrl = i2c_port_to_controller(port);
+	int ctrl = i2c_port_to_controller(p->port);
 
 	/* Return error if i2c_port_to_controller() returned an error */
 	if (ctrl < 0)
 		return EC_ERROR_INVAL;
 
 	/* Skip unnecessary transaction */
-	if (out_size == 0 && in_size == 0)
+	if (p->out_size == 0 && p->in_size == 0)
 		return EC_SUCCESS;
 
 	p_status = i2c_stsobjs + ctrl;
@@ -628,42 +627,42 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	p_status->task_waiting = task_get_current();
 
 	/* Select port for multi-ports i2c controller */
-	i2c_select_port(port);
+	i2c_select_port(p->port);
 
 	/* Copy data to controller struct */
-	p_status->flags       = flags;
-	p_status->tx_buf      = out;
-	p_status->sz_txbuf    = out_size;
-	p_status->rx_buf      = in;
-	p_status->sz_rxbuf    = in_size;
+	p_status->flags       = p->flags;
+	p_status->tx_buf      = p->out;
+	p_status->sz_txbuf    = p->out_size;
+	p_status->rx_buf      = p->in;
+	p_status->sz_rxbuf    = p->in_size;
 #if I2C_7BITS_ADDR
 	/* Set slave address from 7-bits to 8-bits */
-	p_status->slave_addr  = (slave_addr<<1);
+	p_status->slave_addr  = (p->slave_addr<<1);
 #else
 	/* Set slave address (8-bits) */
-	p_status->slave_addr  = slave_addr;
+	p_status->slave_addr  = p->slave_addr;
 #endif
 	/* Reset index & error */
 	p_status->idx_buf     = 0;
 	p_status->err_code    = SMB_OK;
 
 	/* Make sure we're in a good state to start */
-	if ((flags & I2C_XFER_START) &&
+	if ((p->flags & I2C_XFER_START) &&
 	     /* Ignore busy bus for repeated start */
 	     p_status->oper_state != SMB_WRITE_SUSPEND &&
 	     (i2c_bus_busy(ctrl)
-	     || (i2c_get_line_levels(port) != I2C_LINE_IDLE))) {
+	     || (i2c_get_line_levels(p->port) != I2C_LINE_IDLE))) {
 		int ret;
 
 		/* Attempt to unwedge the i2c port */
-		ret = i2c_unwedge(port);
+		ret = i2c_unwedge(p->port);
 		if (ret)
 			return ret;
 		p_status->err_code = SMB_BUS_BUSY;
 		/* recover i2c controller */
 		i2c_recovery(ctrl, p_status);
 		/* Select port again for recovery */
-		i2c_select_port(port);
+		i2c_select_port(p->port);
 	}
 
 	CPUTS("\n");

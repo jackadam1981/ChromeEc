@@ -252,21 +252,21 @@ static int i2c_master_read(int port, int slave_addr, uint8_t *data, int size)
 	return EC_SUCCESS;
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
-		  uint8_t *in, int in_bytes, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
 	int rv = EC_SUCCESS;
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
+	ASSERT(p->out || !p->out_size);
+	ASSERT(p->in || !p->in_size);
 
-	if (out_bytes)
-		rv = i2c_master_write(port, slave_addr, out, out_bytes,
-				 in_bytes ? 0 : 1);
-	if (rv == EC_SUCCESS && in_bytes)
-		rv = i2c_master_read(port, slave_addr, in, in_bytes);
+	if (p->out_size)
+		rv = i2c_master_write(p->port, p->slave_addr, p->out,
+				      p->out_size, p->in_size ? 0 : 1);
+	if (rv == EC_SUCCESS && p->in_size)
+		rv = i2c_master_read(p->port, p->slave_addr, p->in,
+				     p->in_size);
 
-	handle_i2c_error(port, rv);
+	handle_i2c_error(p->port, rv);
 
 	return rv;
 }
