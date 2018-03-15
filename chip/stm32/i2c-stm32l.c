@@ -164,17 +164,16 @@ static void i2c_init_port(const struct i2c_port_t *p)
 /*****************************************************************************/
 /* Interface */
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
-		  uint8_t *in, int in_bytes, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
-	int started = (flags & I2C_XFER_START) ? 0 : 1;
+	int started = (p->flags & I2C_XFER_START) ? 0 : 1;
 	int rv = EC_SUCCESS;
 	int i;
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
+	ASSERT(p->out || !p->out_size);
+	ASSERT(p->in || !p->in_size);
 
-	dump_i2c_reg(port, "xfer start");
+	dump_i2c_reg(p->port, "xfer start");
 
 	/*
 	 * Clear status
@@ -182,29 +181,29 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	 * TODO(crosbug.com/p/29314): should check for any leftover error
 	 * status, and reset the port if present.
 	 */
-	STM32_I2C_SR1(port) = 0;
+	STM32_I2C_SR1(p->port) = 0;
 
 	/* Clear start, stop, POS, ACK bits to get us in a known state */
-	STM32_I2C_CR1(port) &= ~(STM32_I2C_CR1_START |
+	STM32_I2C_CR1(p->port) &= ~(STM32_I2C_CR1_START |
 				 STM32_I2C_CR1_STOP |
 				 STM32_I2C_CR1_POS |
 				 STM32_I2C_CR1_ACK);
 
 	/* No out bytes and no in bytes means just check for active */
-	if (out_bytes || !in_bytes) {
+	if (p->out_size || !p->in_size) {
 		if (!started) {
-			rv = send_start(port, slave_addr);
+			rv = send_start(p->port, p->slave_addr);
 			if (rv)
 				goto xfer_exit;
 		}
 
 		/* Write data, if any */
-		for (i = 0; i < out_bytes; i++) {
+		for (i = 0; i < p->out_size; i++) {
 			/* Write next data byte */
-			STM32_I2C_DR(port) = out[i];
-			dump_i2c_reg(port, "wrote data");
+			STM32_I2C_DR(p->port) = p->out[i];
+			dump_i2c_reg(p->port, "wrote data");
 
-			rv = wait_sr1(port, STM32_I2C_SR1_BTF);
+			rv = wait_sr1(p->port, STM32_I2C_SR1_BTF);
 			if (rv)
 				goto xfer_exit;
 		}
@@ -213,87 +212,87 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 		started = 0;
 
 		/* If no input bytes, queue stop condition */
-		if (!in_bytes && (flags & I2C_XFER_STOP))
-			STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
+		if (!p->in_size && (p->flags & I2C_XFER_STOP))
+			STM32_I2C_CR1(p->port) |= STM32_I2C_CR1_STOP;
 	}
 
-	if (in_bytes) {
+	if (p->in_size) {
 		/* Setup ACK/POS before sending start as per user manual */
-		if (in_bytes == 2)
-			STM32_I2C_CR1(port) |= STM32_I2C_CR1_POS;
-		else if (in_bytes != 1)
-			STM32_I2C_CR1(port) |= STM32_I2C_CR1_ACK;
+		if (p->in_size == 2)
+			STM32_I2C_CR1(p->port) |= STM32_I2C_CR1_POS;
+		else if (p->in_size != 1)
+			STM32_I2C_CR1(p->port) |= STM32_I2C_CR1_ACK;
 
 		if (!started) {
-			rv = send_start(port, slave_addr | 0x01);
+			rv = send_start(p->port, p->slave_addr | 0x01);
 			if (rv)
 				goto xfer_exit;
 		}
 
-		if (in_bytes == 1) {
+		if (p->in_size == 1) {
 			/* Set stop immediately after ADDR cleared */
-			if (flags & I2C_XFER_STOP)
-				STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
+			if (p->flags & I2C_XFER_STOP)
+				STM32_I2C_CR1(p->port) |= STM32_I2C_CR1_STOP;
 
-			rv = wait_sr1(port, STM32_I2C_SR1_RXNE);
+			rv = wait_sr1(p->port, STM32_I2C_SR1_RXNE);
 			if (rv)
 				goto xfer_exit;
 
-			in[0] = STM32_I2C_DR(port);
-		} else if (in_bytes == 2) {
+			p->in[0] = STM32_I2C_DR(p->port);
+		} else if (p->in_size == 2) {
 			/* Wait till the shift register is full */
-			rv = wait_sr1(port, STM32_I2C_SR1_BTF);
+			rv = wait_sr1(p->port, STM32_I2C_SR1_BTF);
 			if (rv)
 				goto xfer_exit;
 
-			if (flags & I2C_XFER_STOP)
-				STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
+			if (p->flags & I2C_XFER_STOP)
+				STM32_I2C_CR1(p->port) |= STM32_I2C_CR1_STOP;
 
-			in[0] = STM32_I2C_DR(port);
-			in[1] = STM32_I2C_DR(port);
+			p->in[0] = STM32_I2C_DR(p->port);
+			p->in[1] = STM32_I2C_DR(p->port);
 		} else {
 			/* Read all but last three */
-			for (i = 0; i < in_bytes - 3; i++) {
+			for (i = 0; i < p->in_size - 3; i++) {
 				/* Wait for receive buffer not empty */
-				rv = wait_sr1(port, STM32_I2C_SR1_RXNE);
+				rv = wait_sr1(p->port, STM32_I2C_SR1_RXNE);
 				if (rv)
 					goto xfer_exit;
 
-				dump_i2c_reg(port, "read data");
-				in[i] = STM32_I2C_DR(port);
-				dump_i2c_reg(port, "post read data");
+				dump_i2c_reg(p->port, "read data");
+				p->in[i] = STM32_I2C_DR(p->port);
+				dump_i2c_reg(p->port, "post read data");
 			}
 
 			/* Wait for BTF (data N-2 in DR, N-1 in shift) */
-			rv = wait_sr1(port, STM32_I2C_SR1_BTF);
+			rv = wait_sr1(p->port, STM32_I2C_SR1_BTF);
 			if (rv)
 				goto xfer_exit;
 
 			/* No more acking */
-			STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_ACK;
-			in[i++] = STM32_I2C_DR(port);
+			STM32_I2C_CR1(p->port) &= ~STM32_I2C_CR1_ACK;
+			p->in[i++] = STM32_I2C_DR(p->port);
 
 			/* Wait for BTF (data N-1 in DR, N in shift) */
-			rv = wait_sr1(port, STM32_I2C_SR1_BTF);
+			rv = wait_sr1(p->port, STM32_I2C_SR1_BTF);
 			if (rv)
 				goto xfer_exit;
 
 			/* If this is the last byte, queue stop condition */
-			if (flags & I2C_XFER_STOP)
-				STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
+			if (p->flags & I2C_XFER_STOP)
+				STM32_I2C_CR1(p->port) |= STM32_I2C_CR1_STOP;
 
 			/* Read the last two bytes */
-			in[i++] = STM32_I2C_DR(port);
-			in[i++] = STM32_I2C_DR(port);
+			p->in[i++] = STM32_I2C_DR(p->port);
+			p->in[i++] = STM32_I2C_DR(p->port);
 		}
 	}
 
  xfer_exit:
 	/* On error, queue a stop condition */
 	if (rv) {
-		flags |= I2C_XFER_STOP;
-		STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
-		dump_i2c_reg(port, "stop after error");
+		p->flags |= I2C_XFER_STOP;
+		STM32_I2C_CR1(p->port) |= STM32_I2C_CR1_STOP;
+		dump_i2c_reg(p->port, "stop after error");
 
 		/*
 		 * If failed at sending start, try resetting the port
@@ -302,12 +301,12 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 		if (rv == I2C_ERROR_FAILED_START) {
 			const struct i2c_port_t *p = i2c_ports;
 			CPRINTS("chip_i2c_xfer start error; "
-				"unwedging and resetting i2c %d", port);
+				"unwedging and resetting i2c %d", p->port);
 
-			i2c_unwedge(port);
+			i2c_unwedge(p->port);
 
 			for (i = 0; i < i2c_ports_used; i++, p++) {
-				if (p->port == port) {
+				if (p->port == p->port) {
 					i2c_init_port(p);
 					break;
 				}
@@ -316,10 +315,10 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	}
 
 	/* If a stop condition is queued, wait for it to take effect */
-	if (flags & I2C_XFER_STOP) {
+	if (p->flags & I2C_XFER_STOP) {
 		/* Wait up to 100 us for bus idle */
 		for (i = 0; i < 10; i++) {
-			if (!(STM32_I2C_SR2(port) & STM32_I2C_SR2_BUSY))
+			if (!(STM32_I2C_SR2(p->port) & STM32_I2C_SR2_BUSY))
 				break;
 			udelay(10);
 		}

@@ -279,8 +279,7 @@ static void i2c_write_read_commands(uint32_t *base, uint8_t len)
 		       DATA_CMD_READ_VAL | DATA_CMD_STOP_VAL);
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-		  uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
 	int i, is_read = 0;
 	ssize_t total_len;
@@ -288,33 +287,33 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	struct i2c_context *ctx;
 	ssize_t curr_index = 0;
 
-	if (out_size == 0 && in_size == 0)
+	if (p->out_size == 0 && p->in_size == 0)
 		return EC_SUCCESS;
 
-	if (in_size > 0)
+	if (p->in_size > 0)
 		is_read = 1;
 
-	ctx = &i2c_ctxs[port];
+	ctx = &i2c_ctxs[p->port];
 	ctx->error_flag = 0;
 
-	total_len = is_read ? (1 + in_size) : out_size;
+	total_len = is_read ? (1 + p->in_size) : p->out_size;
 
-	i2c_init_transaction(ctx, slave_addr, flags);
+	i2c_init_transaction(ctx, p->slave_addr, p->flags);
 
 	/* Write device id */
-	i2c_write_buffer(ctx->base, 1, out, &curr_index, total_len);
+	i2c_write_buffer(ctx->base, 1, p->out, &curr_index, total_len);
 
 	/* Write W data */
-	i2c_write_buffer(ctx->base, (is_read ? 0 : out_size - 1),
-			 (is_read ? NULL : out + 1),
+	i2c_write_buffer(ctx->base, (is_read ? 0 : p->out_size - 1),
+			 (is_read ? NULL : p->out + 1),
 			 &curr_index, total_len);
 
 	if (is_read) {
 		/* Write R commands */
-		i2c_write_read_commands(ctx->base, in_size);
+		i2c_write_read_commands(ctx->base, p->in_size);
 
 		/* Set rx_theshold */
-		i2c_mmio_write(ctx->base, IC_RX_TL, in_size - 1);
+		i2c_mmio_write(ctx->base, IC_RX_TL, p->in_size - 1);
 	}
 
 	/* Enable interrupts */
@@ -328,8 +327,8 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	if ((ctx->interrupts & M_TX_ABRT) == 0) {
 		if (is_read) {
 			/* read data */
-			for (i = 0; i < in_size; i++)
-				in[i] = i2c_read_byte(ctx->base,
+			for (i = 0; i < p->in_size; i++)
+				p->in[i] = i2c_read_byte(ctx->base,
 						IC_DATA_CMD, 0);
 		}
 

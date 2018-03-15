@@ -112,14 +112,17 @@ static int elan_tp_read_cmd(uint16_t reg, uint16_t *val)
 {
 	uint8_t buf[2];
 	int rv;
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(CONFIG_TOUCHPAD_I2C_PORT,
+						   CONFIG_TOUCHPAD_I2C_ADDR,
+						   buf, sizeof(buf),
+						   (uint8_t *)val, sizeof(*val),
+						   I2C_XFER_SINGLE);
 
 	buf[0] = reg;
 	buf[1] = reg >> 8;
 
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
-	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
-		      buf, sizeof(buf), (uint8_t *)val, sizeof(*val),
-		      I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
 
 	return rv;
@@ -129,6 +132,10 @@ static int elan_tp_write_cmd(uint16_t reg, uint16_t val)
 {
 	uint8_t buf[4];
 	int rv;
+	struct i2c_xfer_params p = I2C_XFER_PARAMS_WRITE(
+						CONFIG_TOUCHPAD_I2C_PORT,
+						CONFIG_TOUCHPAD_I2C_ADDR,
+						buf, sizeof(buf));
 
 	buf[0] = reg;
 	buf[1] = reg >> 8;
@@ -136,8 +143,7 @@ static int elan_tp_write_cmd(uint16_t reg, uint16_t val)
 	buf[3] = val >> 8;
 
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
-	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
-		      buf, sizeof(buf), NULL, 0, I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
 
 	return rv;
@@ -196,13 +202,16 @@ static int elan_tp_read_report(void)
 	uint8_t *finger = tp_buf+ETP_FINGER_DATA_OFFSET;
 	struct usb_hid_touchpad_report report;
 	uint16_t timestamp;
+	struct i2c_xfer_params p = I2C_XFER_PARAMS_READ(
+						CONFIG_TOUCHPAD_I2C_PORT,
+						CONFIG_TOUCHPAD_I2C_ADDR,
+						tp_buf, ETP_I2C_REPORT_LEN);
 
 	/* Compute and save timestamp early in case another interrupt comes. */
 	timestamp = irq_ts / USB_HID_TOUCHPAD_TIMESTAMP_UNIT;
 
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
-	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
-		      NULL, 0, tp_buf, ETP_I2C_REPORT_LEN, I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
 
 	if (rv) {
@@ -282,14 +291,17 @@ static void elan_tp_init(void)
 	int rv;
 	uint8_t val[2];
 	int dpi_x, dpi_y;
+	struct i2c_xfer_params p = I2C_XFER_PARAMS_READ(
+						CONFIG_TOUCHPAD_I2C_PORT,
+						CONFIG_TOUCHPAD_I2C_ADDR,
+						val, sizeof(val));
 
 	CPRINTS("%s", __func__);
 
 	elan_tp_write_cmd(ETP_I2C_STAND_CMD, ETP_I2C_RESET);
 	msleep(100);
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
-	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
-		      NULL, 0, val, sizeof(val), I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
 
 	CPRINTS("reset rv %d buf=%04x", rv, *((uint16_t *)val));
@@ -469,6 +481,11 @@ static int touchpad_update_page(const uint8_t *data)
 	uint16_t checksum = 0;
 	uint16_t rx_buf;
 	int i, rv;
+	struct i2c_xfer_params p = I2C_XFER_PARAMS_WRITE(
+						CONFIG_TOUCHPAD_I2C_PORT,
+						CONFIG_TOUCHPAD_I2C_ADDR,
+						page_store,
+						sizeof(page_store));
 
 	for (i = 0; i < FW_PAGE_SIZE; i += 2)
 		checksum += ((uint16_t)(data[i + 1]) << 8) | (data[i]);
@@ -480,9 +497,7 @@ static int touchpad_update_page(const uint8_t *data)
 	page_store[FW_PAGE_SIZE + 2 + 1] = (checksum >> 8) & 0xff;
 
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
-	rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT, CONFIG_TOUCHPAD_I2C_ADDR,
-		      page_store, sizeof(page_store), NULL, 0,
-		      I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
 	i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
 	if (rv)
 		return rv;
@@ -578,6 +593,11 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 	static uint8_t *buffer;
 	static unsigned int buffer_size;
 	unsigned int offset;
+	struct i2c_xfer_params p = {
+		.port = CONFIG_TOUCHPAD_I2C_PORT,
+		.slave_addr = CONFIG_TOUCHPAD_I2C_ADDR,
+		.flags = I2C_XFER_SINGLE,
+	};
 
 	/* Offset parameter is 1 byte. */
 	if (param_size < 1)
@@ -643,10 +663,13 @@ int touchpad_debug(const uint8_t *param, unsigned int param_size,
 		}
 
 		i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 1);
-		rv = i2c_xfer(CONFIG_TOUCHPAD_I2C_PORT,
-			      CONFIG_TOUCHPAD_I2C_ADDR,
-			      &param[offset], write_length,
-			      buffer, read_length, I2C_XFER_SINGLE);
+
+		p.out = &param[offset];
+		p.out_size = write_length;
+		p.in = buffer;
+		p.in_size = read_length;
+
+		rv = i2c_xfer(&p);
 		i2c_lock(CONFIG_TOUCHPAD_I2C_PORT, 0);
 
 		if (rv)
