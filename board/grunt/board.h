@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-#define BOARD_VERSION 0
+#define BOARD_VERSION 2
 
 /* Optional features */
 #define CONFIG_HIBERNATE_PSL
