@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eeda97fa_0424180a",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-15T18:25:53Z",
+      "side": 1,
+      "message": "This one is not configured as interrupt at this point. Will add partner bug to configure this as interrupt once FIFO functionality is available. Btw, by default register CTRL3_C(12h) interrupt is active high.",
+      "parentUuid": "75c2808a_be8b23b6",
+      "range": {
+        "startLine": 34,
+        "startChar": 36,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "0ef2d971562e369b6a18e7dc6c4af66d187993af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75b7ccff_2b88727b",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-14T22:42:19Z",
       "side": 1,
       "message": "we can add MOTIONSENSE_CHIP_MAX.\ni got confused with MOTIONSENSE_CHIP_GPIO earlier",
+      "range": {
+        "startLine": 2278,
+        "startChar": 1,
+        "endLine": 2278,
+        "endChar": 26
+      },
+      "revId": "0ef2d971562e369b6a18e7dc6c4af66d187993af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a99ca8ff_7c85345a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-15T18:25:53Z",
+      "side": 1,
+      "message": "Yeah its a good idea.",
+      "parentUuid": "75b7ccff_2b88727b",
       "range": {
         "startLine": 2278,
         "startChar": 1,
