@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ea9a448_b409578a",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3486,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-15T07:31:56Z",
+      "side": 1,
+      "message": "the whole Discover Identity is likely not an issue.\nEntering the same mode twice definitely is.",
+      "range": {
+        "startLine": 3486,
+        "startChar": 0,
+        "endLine": 3486,
+        "endChar": 62
+      },
+      "revId": "5808c5fe57aeb0bcbf933ed4f7b6db1201ed2f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dd57597_e7a15f37",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3489,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-15T07:31:56Z",
+      "side": 1,
+      "message": "While it\u0027s definitely nice to avoid entering the mode twice,\nputting a hack here is kind of fizz specific.\n\nMaybe you want to put it somewhere such as pd_dfp_enter_mode()",
+      "range": {
+        "startLine": 3487,
+        "startChar": 0,
+        "endLine": 3489,
+        "endChar": 42
+      },
+      "revId": "5808c5fe57aeb0bcbf933ed4f7b6db1201ed2f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
