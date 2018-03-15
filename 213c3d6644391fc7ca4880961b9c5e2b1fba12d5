@@ -46,6 +46,30 @@
       "revId": "213c3d6644391fc7ca4880961b9c5e2b1fba12d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d37a18fe_806dfb28",
+        "filename": "board/nautilus/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-15T18:42:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e3cfd47_e202a969",
+      "range": {
+        "startLine": 797,
+        "startChar": 1,
+        "endLine": 797,
+        "endChar": 7
+      },
+      "revId": "213c3d6644391fc7ca4880961b9c5e2b1fba12d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
