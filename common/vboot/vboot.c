@@ -193,7 +193,7 @@ void vboot_main(void)
 {
 	CPRINTS("Main");
 
-	if (system_is_in_rw() || !system_is_locked()) {
+	if (system_is_in_rw()) {
 		/*
 		 * If we're here, it means PD negotiation was attempted but
 		 * we didn't get enough power to boot AP. This happens on RW
