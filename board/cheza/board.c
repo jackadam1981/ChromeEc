@@ -20,6 +20,7 @@
 #include "i2c.h"
 #include "lid_switch.h"
 #include "pi3usb9281.h"
+#include "power.h"
 #include "power_button.h"
 #include "switch.h"
 #include "system.h"
@@ -147,6 +148,22 @@ const enum gpio_signal hibernate_wake_pins[] = {
 const int hibernate_wake_pins_used = ARRAY_SIZE(hibernate_wake_pins);
 
 const struct adc_t adc_channels[] = {};
+
+/* Power signal list. Must match order of enum power_signal. */
+/*
+ * PM845 pulls up the AP_RESET_L signal to power-on SDM845. Once SDM845 is up,
+ * it then pulls up the AP_PS_HOLD signal.
+ *
+ *      +--> GPIO_AP_RESET_L >--+
+ *   PM845                    SDM845
+ *      +--< GPIO_AP_PS_HOLD <--+
+ *
+ * We use the AP_PS_HOLD signal to indicate AP in a good state.
+ */
+const struct power_signal_info power_signal_list[] = {
+	{GPIO_AP_PS_HOLD, POWER_SIGNAL_ACTIVE_HIGH, "POWER_GOOD"},
+};
+BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[] = {
