@@ -716,6 +716,7 @@
 /* TODO: Rename below config to CONFIG_CHIPSET_RK32XX */
 #undef CONFIG_CHIPSET_ROCKCHIP  /* Rockchip rk32xx */
 #undef CONFIG_CHIPSET_SKYLAKE   /* Intel Skylake (x86) */
+#undef CONFIG_CHIPSET_SNAPDRAGON /* Qualcomm Snapdragon */
 #undef CONFIG_CHIPSET_STONEY     /* AMD Stoney (x86)*/
 
 /* Support chipset throttling */
