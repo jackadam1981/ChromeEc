@@ -115,37 +115,37 @@ struct PW_PACKED delay_schedule_entry_t {
  */
 #define PW_SECRET_SIZE 32
 
-struct PW_PACKED leaf_immutable_data_t {
+/* Unencrypted part of the leaf data. */
+struct PW_PACKED leaf_public_data_t {
+	uint32_t protocol_version;
 	struct label_t label;
 	struct delay_schedule_entry_t delay_schedule[PW_SCHED_COUNT];
-	uint8_t low_entropy_secret[PW_SECRET_SIZE];
-	uint8_t high_entropy_secret[PW_SECRET_SIZE];
-	uint8_t reset_secret[PW_SECRET_SIZE];
-};
-
-/* Leaf metadata wrapped by a key */
-struct PW_PACKED PW_ALIGN_TO_BLK leaf_data_t {
-	uint32_t version;
-	/* Immutable state. */
-	struct leaf_immutable_data_t idat;
 
 	/* State used to rate limit. */
 	struct pw_timestamp_t timestamp;
 	struct attempt_count_t attempt_count;
 };
 
-struct PW_PACKED leaf_plain_text_t {
-	struct leaf_data_t leaf_data;
+/* Encrypted part of the leaf data. */
+struct PW_PACKED PW_ALIGN_TO_BLK leaf_sensitive_data_t {
+	uint8_t low_entropy_secret[PW_SECRET_SIZE];
+	uint8_t high_entropy_secret[PW_SECRET_SIZE];
+	uint8_t reset_secret[PW_SECRET_SIZE];
 };
+
+struct PW_PACKED leaf_data_t {
+	struct leaf_public_data_t pub;
+	struct leaf_sensitive_data_t sec;
+};
+
 
 /* Represents leaf data in a form that can be exported for storage. */
 struct PW_PACKED wrapped_leaf_data_t {
-	/* This is included so the storage manager can compute updates to hash
-	 * tree.
-	 */
+	/* Covers .pub and .cipher_text. */
 	uint8_t hmac[PW_HASH_SIZE];
 	uint8_t iv[PW_WRAP_BLOCK_SIZE];
-	uint8_t cipher_text[sizeof(struct leaf_plain_text_t)];
+	struct leaf_public_data_t pub;
+	uint8_t cipher_text[sizeof(struct leaf_sensitive_data_t)];
 };
 
 /******************************************************************************/
@@ -201,7 +201,11 @@ struct PW_PACKED pw_request_reset_tree_t {
 };
 
 struct PW_PACKED pw_request_insert_leaf_t {
-	struct leaf_immutable_data_t idat;
+	struct label_t label;
+	struct delay_schedule_entry_t delay_schedule[PW_SCHED_COUNT];
+	uint8_t low_entropy_secret[PW_SECRET_SIZE];
+	uint8_t high_entropy_secret[PW_SECRET_SIZE];
+	uint8_t reset_secret[PW_SECRET_SIZE];
 	uint8_t path_hashes[][PW_HASH_SIZE];
 };
 
