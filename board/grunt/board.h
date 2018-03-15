@@ -11,7 +11,7 @@
 #define BOARD_VERSION_PROTO	0
 /* Board ID 1 (BH720 proto) doesn't need any EC changes. */
 #define BOARD_VERSION_EVT	2
-#define BOARD_VERSION		BOARD_VERSION_PROTO
+#define BOARD_VERSION		BOARD_VERSION_EVT
 
 /* Optional features */
 #define CONFIG_HIBERNATE_PSL
