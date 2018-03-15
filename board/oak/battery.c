@@ -50,6 +50,9 @@ static int cutoff(void)
 {
 	int rv;
 	uint8_t buf[3];
+	struct i2c_xfer_params p = I2C_XFER_PARAMS_WRITE(I2C_PORT_BATTERY,
+							 BATTERY_ADDR, buf,
+							 sizeof(buf));
 
 	/* Ship mode command must be sent twice to take effect */
 	buf[0] = SB_MANUFACTURER_ACCESS & 0xff;
@@ -57,10 +60,8 @@ static int cutoff(void)
 	buf[2] = PARAM_CUT_OFF_HIGH;
 
 	i2c_lock(I2C_PORT_BATTERY, 1);
-	rv = i2c_xfer(I2C_PORT_BATTERY, BATTERY_ADDR, buf, 3, NULL, 0,
-		      I2C_XFER_SINGLE);
-	rv |= i2c_xfer(I2C_PORT_BATTERY, BATTERY_ADDR, buf, 3, NULL, 0,
-		       I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
+	rv |= i2c_xfer(&p);
 	i2c_lock(I2C_PORT_BATTERY, 0);
 
 	return rv;

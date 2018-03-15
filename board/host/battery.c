@@ -14,30 +14,30 @@
 
 static uint16_t mock_smart_battery[SB_MANUFACTURER_DATA + 1];
 
-int sb_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-		uint8_t *in, int in_size, int flags)
+int sb_i2c_xfer(struct i2c_xfer_params *p)
 {
-	if (out_size == 0)
+	if (p->out_size == 0)
 		return EC_SUCCESS;
 
-	if (port != I2C_PORT_BATTERY || slave_addr != BATTERY_ADDR)
+	if (p->port != I2C_PORT_BATTERY || p->slave_addr != BATTERY_ADDR)
 		return EC_ERROR_INVAL;
-	if (out[0]  >= ARRAY_SIZE(mock_smart_battery))
+	if (p->out[0]  >= ARRAY_SIZE(mock_smart_battery))
 		return EC_ERROR_UNIMPLEMENTED;
-	if (out_size == 1) {
+	if (p->out_size == 1) {
 		/* Read */
-		if (in_size != 2)
+		if (p->in_size != 2)
 			/* We are not doing a read16, assume read string */
 			return EC_SUCCESS;
 		else
-			*(uint16_t *)in = mock_smart_battery[out[0]];
+			*(uint16_t *)p->in = mock_smart_battery[p->out[0]];
 	} else {
 		/* write */
-		if (out_size != 3)
+		if (p->out_size != 3)
 			/* We are only expecting write 16 */
 			return EC_ERROR_UNIMPLEMENTED;
 		else
-			mock_smart_battery[out[0]] = (out[2] << 8) | out[1];
+			mock_smart_battery[p->out[0]] = (p->out[2] << 8) |
+							p->out[1];
 	}
 	return EC_SUCCESS;
 }

@@ -645,60 +645,59 @@ int i2c_is_busy(int port)
 	return (IT83XX_I2C_STR(p_ch) & E_HOSTA_BB);
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-	     uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
-	struct i2c_port_data *pd = pdata + port;
+	struct i2c_port_data *pd = pdata + p->port;
 	uint32_t events = 0;
 
-	if (out_size == 0 && in_size == 0)
+	if (p->out_size == 0 && p->in_size == 0)
 		return EC_SUCCESS;
 
 	if (pd->i2ccs) {
-		if ((flags & I2C_XFER_SINGLE) == I2C_XFER_SINGLE)
-			flags &= ~I2C_XFER_START;
+		if ((p->flags & I2C_XFER_SINGLE) == I2C_XFER_SINGLE)
+			p->flags &= ~I2C_XFER_START;
 	}
 
 	/* Copy data to port struct */
-	pd->out = out;
-	pd->out_size = out_size;
-	pd->in = in;
-	pd->in_size = in_size;
-	pd->flags = flags;
+	pd->out = p->out;
+	pd->out_size = p->out_size;
+	pd->in = p->in;
+	pd->in_size = p->in_size;
+	pd->flags = p->flags;
 	pd->widx = 0;
 	pd->ridx = 0;
 	pd->err = 0;
-	pd->addr = slave_addr;
+	pd->addr = p->slave_addr;
 
 	/* Make sure we're in a good state to start */
-	if ((flags & I2C_XFER_START) && (i2c_is_busy(port)
-		|| (i2c_get_line_levels(port) != I2C_LINE_IDLE))) {
+	if ((p->flags & I2C_XFER_START) && (i2c_is_busy(p->port)
+		|| (i2c_get_line_levels(p->port) != I2C_LINE_IDLE))) {
 		/* Attempt to unwedge the port. */
-		i2c_unwedge(port);
+		i2c_unwedge(p->port);
 		/* reset i2c port */
-		i2c_reset(port, I2C_RC_NO_IDLE_FOR_START);
+		i2c_reset(p->port, I2C_RC_NO_IDLE_FOR_START);
 	}
 
 	pd->task_waiting = task_get_current();
 	if (pd->flags & I2C_XFER_START) {
 		pd->i2ccs = I2C_CH_NORMAL;
 		/* enable i2c interrupt */
-		task_clear_pending_irq(i2c_ctrl_regs[port].irq);
-		task_enable_irq(i2c_ctrl_regs[port].irq);
+		task_clear_pending_irq(i2c_ctrl_regs[p->port].irq);
+		task_enable_irq(i2c_ctrl_regs[p->port].irq);
 	}
 	/* Start transaction */
-	i2c_transaction(port);
+	i2c_transaction(p->port);
 	/* Wait for transfer complete or timeout */
 	events = task_wait_event_mask(TASK_EVENT_I2C_IDLE, pd->timeout_us);
 	/* disable i2c interrupt */
-	task_disable_irq(i2c_ctrl_regs[port].irq);
+	task_disable_irq(i2c_ctrl_regs[p->port].irq);
 	pd->task_waiting = TASK_ID_INVALID;
 
 	/* Handle timeout */
 	if (!(events & TASK_EVENT_I2C_IDLE)) {
 		pd->err = EC_ERROR_TIMEOUT;
 		/* reset i2c port */
-		i2c_reset(port, I2C_RC_TIMEOUT);
+		i2c_reset(p->port, I2C_RC_TIMEOUT);
 	}
 
 	/* reset i2c channel status */

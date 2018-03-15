@@ -390,77 +390,71 @@ static void fmpi2c_clear_regs(int port)
 /**
  * Perform an i2c transaction
  *
- * @param port		i2c port to use
- * @param slave_addr	the i2c slave addr
- * @param out		source buffer for data
- * @param out_bytes	bytes of data to write
- * @param in		destination buffer for data
- * @param in_bytes	bytes of data to read
- * @param flags		user cached I2C state
+ * @param p		Pointer to I2C xfer params
  *
  * @return		EC_SUCCESS on success.
  */
-static int chip_fmpi2c_xfer(int port, int slave_addr, const uint8_t *out,
-		     int out_bytes, uint8_t *in, int in_bytes, int flags)
+static int chip_fmpi2c_xfer(struct i2c_xfer_params *p)
 {
-	int started = (flags & I2C_XFER_START) ? 0 : 1;
+	int started = (p->flags & I2C_XFER_START) ? 0 : 1;
 	int rv = EC_SUCCESS;
 	int i;
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
+	ASSERT(p->out || !p->out_size);
+	ASSERT(p->in || !p->in_size);
 	ASSERT(!started);
 
-	if (STM32_FMPI2C_ISR(port) & FMPI2C_ISR_BUSY) {
-		CPRINTS("fmpi2c port %d busy", port);
+	if (STM32_FMPI2C_ISR(p->port) & FMPI2C_ISR_BUSY) {
+		CPRINTS("fmpi2c port %d busy", p->port);
 		return EC_ERROR_BUSY;
 	}
 
-	fmpi2c_clear_regs(port);
+	fmpi2c_clear_regs(p->port);
 
 	/* No out bytes and no in bytes means just check for active */
-	if (out_bytes || !in_bytes) {
+	if (p->out_size || !p->in_size) {
 		rv = send_fmpi2c_start(
-			port, slave_addr, out_bytes, FMPI2C_WRITE);
+			p->port, p->slave_addr, p->out_size, FMPI2C_WRITE);
 		if (rv)
 			goto xfer_exit;
 
 		/* Write data, if any */
-		for (i = 0; i < out_bytes; i++) {
-			rv = wait_fmpi2c_isr(port, FMPI2C_ISR_TXIS);
+		for (i = 0; i < p->out_size; i++) {
+			rv = wait_fmpi2c_isr(p->port, FMPI2C_ISR_TXIS);
 			if (rv)
 				goto xfer_exit;
 
 			/* Write next data byte */
-			STM32_FMPI2C_TXDR(port) = out[i];
+			STM32_FMPI2C_TXDR(p->port) = p->out[i];
 		}
 
 		/* Wait for transaction STOP. */
-		wait_fmpi2c_isr(port, FMPI2C_ISR_STOPF);
+		wait_fmpi2c_isr(p->port, FMPI2C_ISR_STOPF);
 	}
 
-	if (in_bytes) {
+	if (p->in_size) {
 		int rv_start;
-		const struct dma_option *dma = dma_rx_option + port;
+		const struct dma_option *dma = dma_rx_option + p->port;
 
-		dma_start_rx(dma, in_bytes, in);
-		i2c_dma_enable_tc_interrupt(dma->channel, port);
+		dma_start_rx(dma, p->in_size, p->in);
+		i2c_dma_enable_tc_interrupt(dma->channel, p->port);
 
 		rv_start = send_fmpi2c_start(
-				port, slave_addr, in_bytes, FMPI2C_READ);
+				p->port, p->slave_addr, p->in_size,
+				FMPI2C_READ);
 		if (rv_start)
 			goto xfer_exit;
 
-		rv = wait_fmpi2c_isr(port, FMPI2C_ISR_RXNE);
+		rv = wait_fmpi2c_isr(p->port, FMPI2C_ISR_RXNE);
 		if (rv)
 			goto xfer_exit;
-		STM32_FMPI2C_CR1(port) |= FMPI2C_CR1_RXDMAEN;
+		STM32_FMPI2C_CR1(p->port) |= FMPI2C_CR1_RXDMAEN;
 
 		if (!rv_start) {
 			rv = task_wait_event_mask(
-					TASK_EVENT_I2C_COMPLETION(port),
+					TASK_EVENT_I2C_COMPLETION(p->port),
 					DMA_TRANSFER_TIMEOUT_US);
-			if (rv & TASK_EVENT_I2C_COMPLETION(port))
+			if (rv & TASK_EVENT_I2C_COMPLETION(p->port))
 				rv = EC_SUCCESS;
 			else
 				rv = EC_ERROR_TIMEOUT;
@@ -471,9 +465,9 @@ static int chip_fmpi2c_xfer(int port, int slave_addr, const uint8_t *out,
 
 		/* Validate i2c is STOPped */
 		if (!rv)
-			rv = wait_fmpi2c_isr(port, FMPI2C_ISR_STOPF);
+			rv = wait_fmpi2c_isr(p->port, FMPI2C_ISR_STOPF);
 
-		STM32_FMPI2C_CR1(port) &= ~FMPI2C_CR1_RXDMAEN;
+		STM32_FMPI2C_CR1(p->port) &= ~FMPI2C_CR1_RXDMAEN;
 
 		if (rv_start)
 			rv = rv_start;
@@ -482,8 +476,8 @@ static int chip_fmpi2c_xfer(int port, int slave_addr, const uint8_t *out,
  xfer_exit:
 	/* On error, queue a stop condition */
 	if (rv) {
-		flags |= I2C_XFER_STOP;
-		STM32_FMPI2C_CR2(port) |= FMPI2C_CR2_STOP;
+		p->flags |= I2C_XFER_STOP;
+		STM32_FMPI2C_CR2(p->port) |= FMPI2C_CR2_STOP;
 
 		/*
 		 * If failed at sending start, try resetting the port
@@ -493,19 +487,19 @@ static int chip_fmpi2c_xfer(int port, int slave_addr, const uint8_t *out,
 			const struct i2c_port_t *p;
 
 			CPRINTS("chip_fmpi2c_xfer start error; "
-				"unwedging and resetting i2c %d", port);
+				"unwedging and resetting i2c %d", p->port);
 
-			p = find_port(port);
-			i2c_unwedge(port);
+			p = find_port(p->port);
+			i2c_unwedge(p->port);
 			i2c_init_port(p);
 		}
 	}
 
 	/* If a stop condition is queued, wait for it to take effect */
-	if (flags & I2C_XFER_STOP) {
+	if (p->flags & I2C_XFER_STOP) {
 		/* Wait up to 100 us for bus idle */
 		for (i = 0; i < 10; i++) {
-			if (!(STM32_FMPI2C_ISR(port) & FMPI2C_ISR_BUSY))
+			if (!(STM32_FMPI2C_ISR(p->port) & FMPI2C_ISR_BUSY))
 				break;
 			usleep(10);
 		}
@@ -515,9 +509,9 @@ static int chip_fmpi2c_xfer(int port, int slave_addr, const uint8_t *out,
 		 * This allows slaves on the bus to detect bus-idle before
 		 * the next start condition.
 		 */
-		STM32_FMPI2C_CR1(port) &= ~FMPI2C_CR1_PE;
+		STM32_FMPI2C_CR1(p->port) &= ~FMPI2C_CR1_PE;
 		usleep(10);
-		STM32_FMPI2C_CR1(port) |= FMPI2C_CR1_PE;
+		STM32_FMPI2C_CR1(p->port) |= FMPI2C_CR1_PE;
 	}
 
 	return rv;
@@ -551,76 +545,74 @@ static void i2c_clear_regs(int port)
  */
 
 /* Perform an i2c transaction. */
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
-		  uint8_t *in, int in_bytes, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *params)
 {
-	int started = (flags & I2C_XFER_START) ? 0 : 1;
+	int started = (params->flags & I2C_XFER_START) ? 0 : 1;
 	int rv = EC_SUCCESS;
 	int i;
-	const struct i2c_port_t *p = find_port(port);
+	const struct i2c_port_t *p = find_port(params->port);
 
-	ASSERT(out || !out_bytes);
-	ASSERT(in || !in_bytes);
+	ASSERT(params->out || !params->out_size);
+	ASSERT(params->in || !params->in_size);
 	ASSERT(!started);
 
 	if (p->port == STM32F4_FMPI2C_PORT) {
-		return chip_fmpi2c_xfer(port, slave_addr, out, out_bytes,
-			in, in_bytes, flags);
+		return chip_fmpi2c_xfer(params);
 	}
 
-	i2c_clear_regs(port);
+	i2c_clear_regs(params->port);
 
 	/* No out bytes and no in bytes means just check for active */
-	if (out_bytes || !in_bytes) {
-		rv = send_start(port, slave_addr);
+	if (params->out_size || !params->in_size) {
+		rv = send_start(params->port, params->slave_addr);
 		if (rv)
 			goto xfer_exit;
 
 		/* Write data, if any */
-		for (i = 0; i < out_bytes; i++) {
+		for (i = 0; i < params->out_size; i++) {
 			/* Write next data byte */
-			STM32_I2C_DR(port) = out[i];
+			STM32_I2C_DR(params->port) = params->out[i];
 
-			rv = wait_sr1(port, STM32_I2C_SR1_BTF);
+			rv = wait_sr1(params->port, STM32_I2C_SR1_BTF);
 			if (rv)
 				goto xfer_exit;
 		}
 
 		/* If no input bytes, queue stop condition */
-		if (!in_bytes && (flags & I2C_XFER_STOP))
-			STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
+		if (!params->in_size && (params->flags & I2C_XFER_STOP))
+			STM32_I2C_CR1(params->port) |= STM32_I2C_CR1_STOP;
 	}
 
-	if (in_bytes) {
+	if (params->in_size) {
 		int rv_start;
 
-		const struct dma_option *dma = dma_rx_option + port;
+		const struct dma_option *dma = dma_rx_option + params->port;
 
-		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_POS;
-		dma_start_rx(dma, in_bytes, in);
-		i2c_dma_enable_tc_interrupt(dma->channel, port);
+		STM32_I2C_CR1(params->port) &= ~STM32_I2C_CR1_POS;
+		dma_start_rx(dma, params->in_size, params->in);
+		i2c_dma_enable_tc_interrupt(dma->channel, params->port);
 
 		/* Setup ACK/POS before sending start as per user manual */
-		if (in_bytes == 2)
-			STM32_I2C_CR1(port) |= STM32_I2C_CR1_POS;
-		else if (in_bytes != 1)
-			STM32_I2C_CR1(port) |= STM32_I2C_CR1_ACK;
+		if (params->in_size == 2)
+			STM32_I2C_CR1(params->port) |= STM32_I2C_CR1_POS;
+		else if (params->in_size != 1)
+			STM32_I2C_CR1(params->port) |= STM32_I2C_CR1_ACK;
 
-		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_STOP;
+		STM32_I2C_CR1(params->port) &= ~STM32_I2C_CR1_STOP;
 
-		STM32_I2C_CR2(port) |= STM32_I2C_CR2_LAST;
-		STM32_I2C_CR2(port) |= STM32_I2C_CR2_DMAEN;
+		STM32_I2C_CR2(params->port) |= STM32_I2C_CR2_LAST;
+		STM32_I2C_CR2(params->port) |= STM32_I2C_CR2_DMAEN;
 
-		rv_start = send_start(port, slave_addr | 0x01);
+		rv_start = send_start(params->port, params->slave_addr | 0x01);
 
-		if ((in_bytes == 1) && (flags & I2C_XFER_STOP))
-			STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
+		if ((params->in_size == 1) && (params->flags & I2C_XFER_STOP))
+			STM32_I2C_CR1(params->port) |= STM32_I2C_CR1_STOP;
 
 		if (!rv_start) {
 			rv = task_wait_event_mask(
-				TASK_EVENT_I2C_COMPLETION(port),
+				TASK_EVENT_I2C_COMPLETION(params->port),
 				DMA_TRANSFER_TIMEOUT_US);
-			if (rv & TASK_EVENT_I2C_COMPLETION(port))
+			if (rv & TASK_EVENT_I2C_COMPLETION(params->port))
 				rv = EC_SUCCESS;
 			else
 				rv = EC_ERROR_TIMEOUT;
@@ -628,25 +620,25 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 
 		dma_disable(dma->channel);
 		dma_disable_tc_interrupt(dma->channel);
-		STM32_I2C_CR2(port) &= ~STM32_I2C_CR2_DMAEN;
+		STM32_I2C_CR2(params->port) &= ~STM32_I2C_CR2_DMAEN;
 		/* Disable ack */
-		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_ACK;
+		STM32_I2C_CR1(params->port) &= ~STM32_I2C_CR1_ACK;
 
 		if (rv_start)
 			rv = rv_start;
 
 		/* Send stop. */
-		STM32_I2C_CR1(port) &= ~STM32_I2C_CR1_ACK;
-		STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
-		STM32_I2C_CR2(port) &= ~STM32_I2C_CR2_LAST;
-		STM32_I2C_CR2(port) &= ~STM32_I2C_CR2_DMAEN;
+		STM32_I2C_CR1(params->port) &= ~STM32_I2C_CR1_ACK;
+		STM32_I2C_CR1(params->port) |= STM32_I2C_CR1_STOP;
+		STM32_I2C_CR2(params->port) &= ~STM32_I2C_CR2_LAST;
+		STM32_I2C_CR2(params->port) &= ~STM32_I2C_CR2_DMAEN;
 	}
 
  xfer_exit:
 	/* On error, queue a stop condition */
 	if (rv) {
-		flags |= I2C_XFER_STOP;
-		STM32_I2C_CR1(port) |= STM32_I2C_CR1_STOP;
+		params->flags |= I2C_XFER_STOP;
+		STM32_I2C_CR1(params->port) |= STM32_I2C_CR1_STOP;
 
 		/*
 		 * If failed at sending start, try resetting the port
@@ -656,19 +648,19 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 			const struct i2c_port_t *p;
 
 			CPRINTS("chip_i2c_xfer start error; "
-				"unwedging and resetting i2c %d", port);
+				"unwedging and resetting i2c %d", params->port);
 
-			p = find_port(port);
-			i2c_unwedge(port);
+			p = find_port(params->port);
+			i2c_unwedge(params->port);
 			i2c_init_port(p);
 		}
 	}
 
 	/* If a stop condition is queued, wait for it to take effect */
-	if (flags & I2C_XFER_STOP) {
+	if (params->flags & I2C_XFER_STOP) {
 		/* Wait up to 100 us for bus idle */
 		for (i = 0; i < 10; i++) {
-			if (!(STM32_I2C_SR2(port) & STM32_I2C_SR2_BUSY))
+			if (!(STM32_I2C_SR2(params->port) & STM32_I2C_SR2_BUSY))
 				break;
 			usleep(10);
 		}

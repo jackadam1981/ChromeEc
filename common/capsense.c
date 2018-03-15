@@ -24,9 +24,12 @@ static int capsense_read_bitmask(void)
 	int rv;
 	uint8_t val = 0;
 
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(I2C_PORT_CAPSENSE,
+						   CAPSENSE_I2C_ADDR,
+						   &val, sizeof(val));
+
 	i2c_lock(I2C_PORT_CAPSENSE, 1);
-	rv = i2c_xfer(I2C_PORT_CAPSENSE, CAPSENSE_I2C_ADDR,
-		      0, 0, &val, 1, I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
 	i2c_lock(I2C_PORT_CAPSENSE, 0);
 
 	if (rv)

@@ -349,14 +349,13 @@ static int i2cm_execute_sequence(int port, int slave_addr, const uint8_t *out,
 
 
 /* Perform an i2c transaction. */
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-		  uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
 	int rv;
 	int sequence_flags;
 	int num_out, num_in;
 
-	if (!in_size && !out_size)
+	if (!p->in_size && !p->out_size)
 		/* Nothing to do */
 		return EC_SUCCESS;
 
@@ -367,46 +366,48 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	 * the write and read must be done in separate sequences.
 	 */
 
-	while (out_size > I2CM_FW_BYTES_MAX) {
+	while (p->out_size > I2CM_FW_BYTES_MAX) {
 		/* number of bytes that can handed in 1 sequence */
-		num_out = MIN(I2CM_RW_BYTES_MAX + I2CM_FW_BYTES_MAX, out_size);
-		sequence_flags = flags;
+		num_out = MIN(I2CM_RW_BYTES_MAX + I2CM_FW_BYTES_MAX,
+			      p->out_size);
+		sequence_flags = p->flags;
 		/* If more than 1 sequence remaining, mask stop bit flag */
-		if ((out_size - num_out)  || in_size)
+		if ((p->out_size - num_out)  || p->in_size)
 			sequence_flags &= ~I2C_XFER_STOP;
 		/* Execute transaction */
-		rv = i2cm_execute_sequence(port, slave_addr, out, num_out, in,
-					   0, sequence_flags);
+		rv = i2cm_execute_sequence(p->port, p->slave_addr, p->out,
+					   num_out, p->in, 0, sequence_flags);
 		if (rv)
 			return rv;
 		/* Update counts and flags */
-		out += num_out;
-		out_size -= num_out;
-		flags &= ~sequence_flags;
+		p->out += num_out;
+		p->out_size -= num_out;
+		p->flags &= ~sequence_flags;
 	}
 
 	/* At this point out_size <= 4 */
-	while (out_size || in_size) {
-		num_in = MIN(I2CM_RW_BYTES_MAX, in_size);
-		num_out = out_size;
-		sequence_flags = flags;
+	while (p->out_size || p->in_size) {
+		num_in = MIN(I2CM_RW_BYTES_MAX, p->in_size);
+		num_out = p->out_size;
+		sequence_flags = p->flags;
 		/* If more than 1 sequence remaining, mask stop bit flag */
-		if (in_size - num_in)
+		if (p->in_size - num_in)
 			sequence_flags &= ~I2C_XFER_STOP;
 
-		rv = i2cm_execute_sequence(port, slave_addr, out, num_out, in,
-					   num_in, sequence_flags);
+		rv = i2cm_execute_sequence(p->port, p->slave_addr, p->out,
+					   num_out, p->in, num_in,
+					   sequence_flags);
 		if (rv)
 			return rv;
 
 		/* If bytes were read, copy to destination buffer */
 		if (num_in) {
-			i2cm_read_rwbytes(port, in, num_in);
-			in += num_in;
-			in_size -= num_in;
+			i2cm_read_rwbytes(p->port, p->in, num_in);
+			p->in += num_in;
+			p->in_size -= num_in;
 		}
-		out_size = 0;
-		flags &= ~sequence_flags;
+		p->out_size = 0;
+		p->flags &= ~sequence_flags;
 	}
 
 	return EC_SUCCESS;
