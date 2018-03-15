@@ -149,6 +149,24 @@
     },
     {
       "key": {
+        "uuid": "36ac4476_06729028",
+        "filename": "Makefile",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-15T16:43:34Z",
+      "side": 1,
+      "message": "Vincent helped me work out the build issues and I have introduced -DHAS_BASEBOARD to CLFAGS_DEFINE in Makefile.toolchain",
+      "parentUuid": "8787ca16_8189583d",
+      "revId": "bb45c26f5f44897ee7321fd2711522df3f69827f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0f93e05_01f27666",
         "filename": "Makefile",
         "patchSetId": 2
