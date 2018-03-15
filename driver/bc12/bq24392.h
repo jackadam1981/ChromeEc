@@ -28,4 +28,4 @@ struct bq24392_config_t {
 /*
  * Array that contains boards-specific configuration for BC 1.2 charging chips.
  */
-extern const struct bq24392_config_t bq24392_config[CONFIG_USB_PD_PORT_COUNT];
+extern struct bq24392_config_t bq24392_config[CONFIG_USB_PD_PORT_COUNT];
