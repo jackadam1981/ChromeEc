@@ -116,22 +116,31 @@ static const uint8_t i2c_addr[] = { 0x54, 0x56 };
 static inline void controller_write(int ctrl_num, uint8_t reg, uint8_t val)
 {
 	uint8_t buf[2];
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(I2C_PORT_LIGHTBAR, 0, buf,
+						   sizeof(buf), 0, 0,
+						   I2C_XFER_SINGLE);
 
 	buf[0] = reg;
 	buf[1] = val;
 	ctrl_num = ctrl_num % ARRAY_SIZE(i2c_addr);
-	i2c_xfer(I2C_PORT_LIGHTBAR, i2c_addr[ctrl_num], buf, 2, 0, 0,
-		 I2C_XFER_SINGLE);
+	p.slave_addr = i2c_addr[ctrl_num];
+	i2c_xfer(&p);
 }
 
 static inline uint8_t controller_read(int ctrl_num, uint8_t reg)
 {
 	uint8_t buf[1];
 	int rv;
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(I2C_PORT_LIGHTBAR, 0,
+						   &reg, sizeof(reg),
+						   buf, sizeof(buf),
+						   I2C_XFER_SINGLE);
+
 
 	ctrl_num = ctrl_num % ARRAY_SIZE(i2c_addr);
-	rv = i2c_xfer(I2C_PORT_LIGHTBAR, i2c_addr[ctrl_num], &reg, 1, buf, 1,
-		      I2C_XFER_SINGLE);
+
+	p.slave_addr = i2c_addr[ctrl_num];
+	rv = i2c_xfer(&p);
 	return rv ? 0 : buf[0];
 }
 

@@ -607,9 +607,15 @@ void i2c_set_timeout(int port, uint32_t timeout)
 		timeout ? timeout : I2C_TIMEOUT_DEFAULT_US;
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-		  uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
+	int port = p->port;
+	int slave_addr = p->slave_addr;
+	const uint8_t *out = p->out;
+	int out_size = p->out_size;
+	uint8_t *in = p->in;
+	int in_size = p->in_size;
+	int flags = p->flags;
 	volatile struct i2c_status *p_status;
 	int ctrl = i2c_port_to_controller(port);
 

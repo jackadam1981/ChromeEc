@@ -390,19 +390,19 @@ static void fmpi2c_clear_regs(int port)
 /**
  * Perform an i2c transaction
  *
- * @param port		i2c port to use
- * @param slave_addr	the i2c slave addr
- * @param out		source buffer for data
- * @param out_bytes	bytes of data to write
- * @param in		destination buffer for data
- * @param in_bytes	bytes of data to read
- * @param flags		user cached I2C state
+ * @param p		Pointer to I2C xfer params
  *
  * @return		EC_SUCCESS on success.
  */
-static int chip_fmpi2c_xfer(int port, int slave_addr, const uint8_t *out,
-		     int out_bytes, uint8_t *in, int in_bytes, int flags)
+static int chip_fmpi2c_xfer(struct i2c_xfer_params *p)
 {
+	int port = p->port;
+	int slave_addr = p->slave_addr;
+	const uint8_t *out = p->out;
+	int out_bytes = p->out_size;
+	uint8_t *in = p->in;
+	int in_bytes = p->in_size;
+	int flags = p->flags;
 	int started = (flags & I2C_XFER_START) ? 0 : 1;
 	int rv = EC_SUCCESS;
 	int i;
@@ -551,9 +551,15 @@ static void i2c_clear_regs(int port)
  */
 
 /* Perform an i2c transaction. */
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
-		  uint8_t *in, int in_bytes, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *params)
 {
+	int port = params->port;
+	int slave_addr = params->slave_addr;
+	const uint8_t *out = params->out;
+	int out_bytes = params->out_size;
+	uint8_t *in = params->in;
+	int in_bytes = params->in_size;
+	int flags = params->flags;
 	int started = (flags & I2C_XFER_START) ? 0 : 1;
 	int rv = EC_SUCCESS;
 	int i;
@@ -564,8 +570,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_bytes,
 	ASSERT(!started);
 
 	if (p->port == STM32F4_FMPI2C_PORT) {
-		return chip_fmpi2c_xfer(port, slave_addr, out, out_bytes,
-			in, in_bytes, flags);
+		return chip_fmpi2c_xfer(params);
 	}
 
 	i2c_clear_regs(port);

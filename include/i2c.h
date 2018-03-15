@@ -88,6 +88,35 @@ extern const int i2c_test_dev_used;
 #define I2C_XFER_STOP (1 << 1)  /* Terminate smbus session with stop bit */
 #define I2C_XFER_SINGLE (I2C_XFER_START | I2C_XFER_STOP)  /* One transaction */
 
+#define I2C_XFER_PARAMS(_port, _slave, _out, _out_size, _in, _in_size, _flags) \
+	{								\
+		.port = _port,						\
+		.slave_addr = _slave,					\
+		.out = _out,						\
+		.out_size = _out_size,					\
+		.in = _in,						\
+		.in_size = _in_size,					\
+		.flags = _flags,					\
+	}
+
+/* Data structure defining parameters for I2C xfer. */
+struct i2c_xfer_params {
+	/* Port to access */
+	int port;
+	/* Slave device address */
+	int slave_addr;
+	/* Data to send */
+	const uint8_t *out;
+	/* Number of bytes to send */
+	int out_size;
+	/* Destination buffer for received data */
+	uint8_t *in;
+	/* Number of byes to receive */
+	int in_size;
+	/* Flags -- see I2C_XFER_* above */
+	int flags;
+};
+
 /**
  * Transmit one block of raw data, then receive one block of raw data. However,
  * received data might be capped at CONFIG_I2C_CHIP_MAX_READ_SIZE if
@@ -96,17 +125,10 @@ extern const int i2c_test_dev_used;
  * This is a wrapper function for chip_i2c_xfer(), a low-level chip-dependent
  * function. It must be called between i2c_lock(port, 1) and i2c_lock(port, 0).
  *
- * @param port		Port to access
- * @param slave_addr	Slave device address
- * @param out		Data to send
- * @param out_size	Number of bytes to send
- * @param in		Destination buffer for received data
- * @param in_size	Number of bytes to receive
- * @param flags		Flags (see I2C_XFER_* above)
+ * @param p		Pointer to I2C xfer params
  * @return EC_SUCCESS, or non-zero if error.
  */
-int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-	     uint8_t *in, int in_size, int flags);
+int i2c_xfer(struct i2c_xfer_params *p);
 
 #define I2C_LINE_SCL_HIGH (1 << 0)
 #define I2C_LINE_SDA_HIGH (1 << 1)
@@ -119,17 +141,10 @@ int i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
  * This is a low-level chip-dependent function and should only be called by
  * i2c_xfer().
  *
- * @param port		Port to access
- * @param slave_addr	Slave device address
- * @param out		Data to send
- * @param out_size	Number of bytes to send
- * @param in		Destination buffer for received data
- * @param in_size	Number of bytes to receive
- * @param flags		Flags (see I2C_XFER_* above)
+ * @param p		Pointer to I2C xfer params
  * @return EC_SUCCESS, or non-zero if error.
  */
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-		  uint8_t *in, int in_size, int flags);
+int chip_i2c_xfer(struct i2c_xfer_params *p);
 
 /**
  * Return raw I/O line levels (I2C_LINE_*) for a port when port is in alternate

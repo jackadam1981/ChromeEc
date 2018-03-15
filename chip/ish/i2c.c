@@ -279,14 +279,20 @@ static void i2c_write_read_commands(uint32_t *base, uint8_t len)
 		       DATA_CMD_READ_VAL | DATA_CMD_STOP_VAL);
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-		  uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
 	int i, is_read = 0;
 	ssize_t total_len;
 	uint64_t expire_ts;
 	struct i2c_context *ctx;
 	ssize_t curr_index = 0;
+	int port = p->port;
+	int slave_addr = p->slave_addr;
+	const uint8_t *out = p->out;
+	int out_size = p->out_size;
+	uint8_t *in = p->in;
+	int in_size = p->in_size;
+	int flags = p->flags;
 
 	if (out_size == 0 && in_size == 0)
 		return EC_SUCCESS;

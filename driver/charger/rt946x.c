@@ -114,6 +114,9 @@ static int rt946x_block_write(int reg, const uint8_t *val, int len)
 {
 	int rv;
 	uint8_t buf[I2C_MAX_HOST_PACKET_SIZE];
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(I2C_PORT_CHARGER,
+						   RT946X_ADDR, buf, len + 1,
+						   NULL, 0, I2C_XFER_SINGLE);
 
 	if (len + 1 > I2C_MAX_HOST_PACKET_SIZE)
 		return EC_ERROR_INVAL;
@@ -122,8 +125,7 @@ static int rt946x_block_write(int reg, const uint8_t *val, int len)
 	memcpy(&buf[1], val, len);
 
 	i2c_lock(I2C_PORT_CHARGER, 1);
-	rv = i2c_xfer(I2C_PORT_CHARGER, RT946X_ADDR, buf, len + 1, NULL, 0,
-		      I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
 	i2c_lock(I2C_PORT_CHARGER, 0);
 	return rv;
 }

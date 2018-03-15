@@ -236,11 +236,17 @@ static inline void push_in_buf(uint8_t **in, uint8_t val, int skip)
 	}
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-		  uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
 	int i;
 	int controller;
+	int port = p->port;
+	int slave_addr = p->slave_addr;
+	const uint8_t *out = p->out;
+	int out_size = p->out_size;
+	uint8_t *in = p->in;
+	int in_size = p->in_size;
+	int flags = p->flags;
 	int send_start = flags & I2C_XFER_START;
 	int send_stop = flags & I2C_XFER_STOP;
 	int skip = 0;

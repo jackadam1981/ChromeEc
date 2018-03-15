@@ -102,10 +102,12 @@ static int raw_read_multi(const int port, int addr, uint8_t reg,
 			  uint8_t *rxdata, int rxlen)
 {
 	int rv;
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(port, addr, &reg,
+						   sizeof(reg), rxdata, rxlen,
+						   I2C_XFER_SINGLE);
 
 	i2c_lock(port, 1);
-	rv = i2c_xfer(port, addr, &reg, 1, rxdata, rxlen,
-		      I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
 	i2c_lock(port, 0);
 
 	return rv;

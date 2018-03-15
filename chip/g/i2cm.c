@@ -349,12 +349,18 @@ static int i2cm_execute_sequence(int port, int slave_addr, const uint8_t *out,
 
 
 /* Perform an i2c transaction. */
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
-		  uint8_t *in, int in_size, int flags)
+int chip_i2c_xfer(struct i2c_xfer_params *p)
 {
 	int rv;
 	int sequence_flags;
 	int num_out, num_in;
+	int port = p->port;
+	int slave_addr = p->slave_addr;
+	const uint8_t *out = p->out;
+	int out_size = p->out_size;
+	uint8_t *in = p->in;
+	int in_size = p->in_size;
+	int flags = p->flags;
 
 	if (!in_size && !out_size)
 		/* Nothing to do */

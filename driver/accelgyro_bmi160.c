@@ -232,9 +232,12 @@ static int raw_read_n(const int port, const int addr, const uint8_t reg,
 #endif
 	} else {
 #ifdef I2C_PORT_ACCEL
+		struct i2c_xfer_params p =
+			I2C_XFER_PARAMS(port, BMI160_I2C_ADDRESS(addr),
+					&reg, sizeof(reg), data_ptr, len,
+					I2C_XFER_SINGLE);
 		i2c_lock(port, 1);
-		rv = i2c_xfer(port, BMI160_I2C_ADDRESS(addr), &reg, 1,
-				data_ptr, len, I2C_XFER_SINGLE);
+		rv = i2c_xfer(&p);
 		i2c_lock(port, 0);
 #endif
 	}

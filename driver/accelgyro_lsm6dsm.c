@@ -242,6 +242,10 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 	uint8_t xyz_reg;
 	int ret, i, range, tmp = 0;
 	struct lsm6dsm_data *data = s->drv_data;
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(s->port, s->addr, &xyz_reg,
+						   sizeof(xyz_reg), raw,
+						   LSM6DSM_OUT_XYZ_SIZE,
+						   I2C_XFER_SINGLE);
 
 	ret = is_data_ready(s, &tmp);
 	if (ret != EC_SUCCESS)
@@ -262,8 +266,7 @@ static int read(const struct motion_sensor_t *s, vector_3_t v)
 
 	/* Read data bytes starting at xyz_reg */
 	i2c_lock(s->port, 1);
-	ret = i2c_xfer(s->port, s->addr, &xyz_reg, 1, raw,
-		       LSM6DSM_OUT_XYZ_SIZE, I2C_XFER_SINGLE);
+	ret = i2c_xfer(&p);
 	i2c_lock(s->port, 0);
 
 	if (ret != EC_SUCCESS) {

@@ -37,10 +37,13 @@ int st_raw_read_n(const int port, const int addr, const uint8_t reg,
 {
 	int rv = -EC_ERROR_PARAM1;
 	uint8_t reg_a = reg | 0x80;
+	struct i2c_xfer_params p = I2C_XFER_PARAMS(port, addr, &reg_a, 1,
+						   data_ptr, len,
+						   I2C_XFER_SINGLE);
 
 	/* TODO: Implement SPI interface support */
 	i2c_lock(port, 1);
-	rv = i2c_xfer(port, addr, &reg_a, 1, data_ptr, len, I2C_XFER_SINGLE);
+	rv = i2c_xfer(&p);
 	i2c_lock(port, 0);
 
 	return rv;
