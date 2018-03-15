@@ -368,4 +368,23 @@ void i2cm_init(void);
  * @return true, if passthru should be allowed on the port.
  */
 int board_allow_i2c_passthru(int port);
+
+/**
+ * Function to allow board to take any action before starting a new i2c
+ * transaction on a given port. Board must implement this if it defines
+ * CONFIG_I2C_XFER_BOARD_CALLBACK.
+ *
+ * @param p		Pointer to I2C xfer params
+ */
+void i2c_start_xfer_notify(const struct i2c_xfer_params *p);
+
+/**
+ * Function to allow board to take any action after an i2c transaction on a
+ * given port has completed. Board must implement this if it defines
+ * CONFIG_I2C_XFER_BOARD_CALLBACK.
+ *
+ * @param p		Pointer to I2C xfer params
+ */
+void i2c_end_xfer_notify(const struct i2c_xfer_params *p);
+
 #endif  /* __CROS_EC_I2C_H */
