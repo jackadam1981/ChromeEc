@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "8dc9a16e_316728a9",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-15T18:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeda97fa_0424180a",
+      "range": {
+        "startLine": 34,
+        "startChar": 36,
+        "endLine": 34,
+        "endChar": 46
+      },
+      "revId": "0ef2d971562e369b6a18e7dc6c4af66d187993af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75b7ccff_2b88727b",
         "filename": "include/ec_commands.h",
         "patchSetId": 3
@@ -93,6 +117,30 @@
       "revId": "0ef2d971562e369b6a18e7dc6c4af66d187993af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "743dfea8_839cda85",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2018-03-15T18:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a99ca8ff_7c85345a",
+      "range": {
+        "startLine": 2278,
+        "startChar": 1,
+        "endLine": 2278,
+        "endChar": 26
+      },
+      "revId": "0ef2d971562e369b6a18e7dc6c4af66d187993af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
