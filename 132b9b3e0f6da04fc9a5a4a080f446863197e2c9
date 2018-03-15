@@ -46,6 +46,30 @@
       "revId": "132b9b3e0f6da04fc9a5a4a080f446863197e2c9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2df11fbc_f5c7c580",
+        "filename": "driver/accel_kionix.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-15T18:25:15Z",
+      "side": 1,
+      "message": "Ah, okay; different perspectives I suppose. :) I think of \u0027cfg\u0027 as short for configuration. Which can either be runtime or compile time. Initially, I thought base was referring to a \"base\" sensor, hence my confusion.",
+      "parentUuid": "4418511b_632cb7ea",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 35
+      },
+      "revId": "132b9b3e0f6da04fc9a5a4a080f446863197e2c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
