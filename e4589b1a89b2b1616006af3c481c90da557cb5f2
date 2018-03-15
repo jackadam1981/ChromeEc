@@ -22,6 +22,29 @@
       "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5808139d_9f7260d1",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-15T22:36:02Z",
+      "side": 1,
+      "message": "Aren\u0027t the members of this struct placed in the stack anyway? How does it help reduce the stack depth?",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
