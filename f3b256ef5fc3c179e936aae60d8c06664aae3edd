@@ -51,6 +51,24 @@
       "revId": "f3b256ef5fc3c179e936aae60d8c06664aae3edd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b57d59a_5320863f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-15T22:48:14Z",
+      "side": 1,
+      "message": "I have added comments to explain each condition since the variable names would be too long.",
+      "parentUuid": "cb34ff21_d3bf0a33",
+      "revId": "f3b256ef5fc3c179e936aae60d8c06664aae3edd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
