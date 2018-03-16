@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "bee17157_590de7ed",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-16T08:29:23Z",
+      "side": 1,
+      "message": "Can you define that size somewhere? (I see it repeated 3 times now..)",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e8b4706_88a2951b",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-16T08:29:23Z",
+      "side": 1,
+      "message": "Maybe I\u0027m missing something, but can you modify ectool to actually print the progress?",
+      "range": {
+        "startLine": 134,
+        "startChar": 9,
+        "endLine": 134,
+        "endChar": 53
+      },
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3549b60e_4e94a8c6",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-16T08:29:23Z",
+      "side": 1,
+      "message": "real bug for real crypto? ,-P",
+      "range": {
+        "startLine": 436,
+        "startChar": 9,
+        "endLine": 436,
+        "endChar": 13
+      },
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc80237a_cd98cad4",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 4821,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-16T08:29:23Z",
+      "side": 1,
+      "message": "why not just uint8_t nonce[32] ?",
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fcf84a5_552ee83c",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-16T08:29:23Z",
+      "side": 1,
+      "message": "one",
+      "range": {
+        "startLine": 107,
+        "startChar": 41,
+        "endLine": 107,
+        "endChar": 43
+      },
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f127a3b_0d155459",
         "filename": "util/ectool.c",
         "patchSetId": 37
