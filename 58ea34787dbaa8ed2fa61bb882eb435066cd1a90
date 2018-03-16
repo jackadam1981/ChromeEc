@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f127a3b_0d155459",
+        "filename": "util/ectool.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-16T08:08:13Z",
+      "side": 1,
+      "message": "ec_outbuf is void*, right? So not cast needed?",
+      "range": {
+        "startLine": 1367,
+        "startChar": 5,
+        "endLine": 1367,
+        "endChar": 35
+      },
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
