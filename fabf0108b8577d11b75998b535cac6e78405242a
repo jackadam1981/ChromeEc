@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c8d4928_b7a5b861",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Yes this are stored on the Cr50 side.",
+      "parentUuid": "afea1709_47ec00fe",
+      "range": {
+        "startLine": 41,
+        "startChar": 30,
+        "endLine": 42,
+        "endChar": 32
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "893cafc3_007218b6",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -45,6 +69,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7143b281_cf7575c0",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "893cafc3_007218b6",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "eaecc986_d672289f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "The only reason not to would be to allow for changing the height without introducing overflow issues. I will change it anyway, since for memory and practical reasons we will probably never use anything larger than uint8_t anyway.",
+      "parentUuid": "cc7ecd29_e054fdc8",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "911b5b99_920a6e09",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -82,6 +154,30 @@
       "writtenOn": "2018-03-16T14:05:15Z",
       "side": 1,
       "message": "These should probably derived via a single seed from the key ladder using the generation counter to derive a fresh key on each TPM reset?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8602fab_f9b4312f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "+vbendeb@chromium.org my understanding is rand_bytes uses a hardware true random number generator on Haven. If this is correct, we don\u0027t have to worry about using a generation counter.",
+      "parentUuid": "911b5b99_920a6e09",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6872baf1_0925c09c",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea0ac17c_791eae92",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ccd86b36_8ec97cef",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -137,6 +257,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "379eaeec_3e7b0275",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccd86b36_8ec97cef",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 30
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "c151a3ca_77c394b0",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "I moved the zero padding from the right side of the integer to the left side and removed get_index.",
+      "parentUuid": "b45b1e48_10870afc",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 56
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea5d8e1a_27a1db8c",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -183,6 +351,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c15d7875_06aa8b7f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea5d8e1a_27a1db8c",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 178,
+        "endChar": 8
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "ebe18645_7f9a74b8",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "This violates the ec code style checker. I could use a do{}while(0); if you insist.",
+      "parentUuid": "36954dce_565e9df3",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 39
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "736e3b08_4f278d60",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "c1640d9e_45e622f4",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "This violates the ec code style checker. I could use a do{}while(0); if you insist.",
+      "parentUuid": "736e3b08_4f278d60",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 31
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12e27d20_bc0cd812",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -252,6 +492,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b4d217e_c03dcf6a",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12e27d20_bc0cd812",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 29
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -301,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "63455edd_0cddaa7e",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "I would put them in but the style checker will fail.",
+      "parentUuid": "bbf01edb_32590d60",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 64
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb1360af_73115577",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -321,6 +609,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62138c2e_03db8488",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb1360af_73115577",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 34
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +659,30 @@
     },
     {
       "key": {
+        "uuid": "dbc1d8f9_76993944",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "007b19e1_318057bc",
+      "range": {
+        "startLine": 456,
+        "startChar": 5,
+        "endLine": 456,
+        "endChar": 16
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92f56cf7_4b73939c",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -367,6 +703,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05763189_8b93f70b",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92f56cf7_4b73939c",
+      "range": {
+        "startLine": 471,
+        "startChar": 46,
+        "endLine": 471,
+        "endChar": 0
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +753,30 @@
     },
     {
       "key": {
+        "uuid": "57e154fe_755cafa6",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6347771_6991bad6",
+      "range": {
+        "startLine": 526,
+        "startChar": 5,
+        "endLine": 526,
+        "endChar": 16
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4944c066_693fc378",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -407,6 +791,24 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d448c051_6e1e46ef",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4944c066_693fc378",
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -433,6 +835,30 @@
     },
     {
       "key": {
+        "uuid": "03fc57b3_ce3ba88e",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bd2656a_c73cdb17",
+      "range": {
+        "startLine": 574,
+        "startChar": 4,
+        "endLine": 574,
+        "endChar": 19
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fab61673_1a87cf39",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -450,6 +876,24 @@
     },
     {
       "key": {
+        "uuid": "b9b4ff9a_818b452e",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fab61673_1a87cf39",
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb2800ed_711046e1",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -461,6 +905,30 @@
       "writtenOn": "2018-03-16T14:05:15Z",
       "side": 1,
       "message": "I\u0027m not sure about coding style in the EC, but I\u0027d prefer curlies at least for cases where the condition or the body is multiple lines. Remember goto fail?",
+      "range": {
+        "startLine": 591,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 51
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b42227_ad03e279",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "I normally would use curly braces even for single line statements, but it is forbidden for the EC code style.\n\nWhat do you mean by \"Remember goto fail?\" I corrected a mistake where SHA256_update should have been HASH_update.",
+      "parentUuid": "bb2800ed_711046e1",
       "range": {
         "startLine": 591,
         "startChar": 0,
@@ -496,6 +964,30 @@
     },
     {
       "key": {
+        "uuid": "0fed0ca4_358e9420",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "When Cr50 starts up, it reads it from the log and stores it in RAM. This is added in http://go/crosr/963773",
+      "parentUuid": "16bf59f9_ce43b01b",
+      "range": {
+        "startLine": 597,
+        "startChar": 40,
+        "endLine": 597,
+        "endChar": 66
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d21b7dfb_30d63d9b",
         "filename": "common/pinweaver.c",
         "patchSetId": 39
@@ -507,6 +999,30 @@
       "writtenOn": "2018-03-16T14:05:15Z",
       "side": 1,
       "message": "Any reason why we can\u0027t just send that response type for all results? Same for other message types?",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 3
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fce99adf_26b55c5f",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "I don\u0027t think I understand this question.\n\nI suppose I could have an error response type and a successful response type and let the response struct be inferred by whatever request was sent. However, the type fields describe which variant of the union is valid for the response struct.",
+      "parentUuid": "d21b7dfb_30d63d9b",
       "range": {
         "startLine": 685,
         "startChar": 0,
@@ -542,6 +1058,30 @@
     },
     {
       "key": {
+        "uuid": "e4d257d6_17e88203",
+        "filename": "include/pinweaver.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "I left the other comment unresolved so any discussion can take place there.",
+      "parentUuid": "bb3cda9f_d9c1a9c4",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a535ffe0_a43eed10",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 39
@@ -562,6 +1102,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eeddfc9_62e5a6f3",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "It gets reset on TPM reset, but that clears the tree too so it is ok.",
+      "parentUuid": "a535ffe0_a43eed10",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -588,6 +1152,30 @@
     },
     {
       "key": {
+        "uuid": "e6b15049_ab65a1d3",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "I handle everything in seconds now.",
+      "parentUuid": "cb130189_d2584aa4",
+      "range": {
+        "startLine": 86,
+        "startChar": 16,
+        "endLine": 86,
+        "endChar": 65
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea63f0fd_3e2d7b1b",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 39
@@ -608,6 +1196,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "190434c6_1d7cc0af",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea63f0fd_3e2d7b1b",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 12
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -634,6 +1246,30 @@
     },
     {
       "key": {
+        "uuid": "fe43e914_771f46d6",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "Now it is split between a leaf_public_data and leaf_sensitive_data struct.",
+      "parentUuid": "238a9134_07e30073",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c838eb40_8087d9a3",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 39
@@ -657,6 +1293,30 @@
     },
     {
       "key": {
+        "uuid": "9f1cd091_4104dd1d",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "The version field is now at the beginning of the plain text data.\nFor forward-compatibility we probably will need a message that upgrades a leaf from any previous storage version to the current version.",
+      "parentUuid": "c838eb40_8087d9a3",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 55
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bf5e0c5_232e8caa",
         "filename": "include/pinweaver_types.h",
         "patchSetId": 39
@@ -677,6 +1337,30 @@
       "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1e8202d_9eab2d8d",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1160200
+      },
+      "writtenOn": "2018-03-16T23:10:56Z",
+      "side": 1,
+      "message": "In this case it is actually the get log fields, but those come in a later CL. I will fix the comment and leave it in. This field makes the size of the response struct the same as the size of the TPM command buffer.",
+      "parentUuid": "9bf5e0c5_232e8caa",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 62
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
