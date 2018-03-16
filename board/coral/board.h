@@ -324,6 +324,13 @@ void board_tcpc_init(void);
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
 
+enum tino_chg_action {
+	TINO_BATT_CHARGE = 0,
+	TINO_BATT_DISCHARGE,
+	TINO_BATT_COUNT
+};
+void tino_set_chg_ctrl_mode(enum tino_chg_action);
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
+
