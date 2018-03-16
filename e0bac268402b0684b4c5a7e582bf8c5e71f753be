@@ -46,6 +46,30 @@
       "revId": "e0bac268402b0684b4c5a7e582bf8c5e71f753be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e4d1623_24209825",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000768
+      },
+      "writtenOn": "2018-03-16T00:13:08Z",
+      "side": 1,
+      "message": "yeah i thought the hostname idea already came up and was shot down",
+      "parentUuid": "c37a9172_b041822c",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 54
+      },
+      "revId": "e0bac268402b0684b4c5a7e582bf8c5e71f753be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
