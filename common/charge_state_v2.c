@@ -1436,3 +1436,20 @@ int charge_get_charge_state_debug(int param, uint32_t *value)
 	return EC_SUCCESS;
 }
 #endif
+
+void tino_set_chg_ctrl_mode(enum tino_chg_action action)
+{
+	if (action == TINO_BATT_DISCHARGE) {
+		manual_current = 0;
+		manual_voltage = 0;
+		charger_discharge_on_ac(1);
+		CPRINTS("TINO: battery discharge!");
+	} else if (action == TINO_BATT_CHARGE) {
+		manual_current = 750;
+		manual_voltage = -1;
+		CPRINTS("TINO: charge battery with current 750mA!");
+	} else {
+		CPRINTS("TINO: paramenter invalid in tino_set_chg_ctrl_mode!");
+	}
+
+}

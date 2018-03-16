@@ -1183,3 +1183,27 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
 }
+
+static void tino_check_temp_func(void)
+{
+	int temp;
+	int mv = adc_read_channel(NPCX_ADC_CH1);
+	int temp_threshold = 35; //temp threshold for charging control
+
+	temp = thermistor_linear_interpolate(mv, &amb_thermistor_info);
+	CPRINTS("TINO: now temp is %u", temp);
+
+	/* Trigger action = 1 when temp is higher than threshold. */
+	if (temp >= temp_threshold) {
+	/* action = 1: discharge battery with AC attached. */
+		tino_set_chg_ctrl_mode(TINO_BATT_DISCHARGE);
+	}
+	/* Trigger action = 0 when temp is lower than X-2. */
+	else if (temp < temp_threshold-2) {
+	/* action = 0: charge battery with 750mA. */
+		tino_set_chg_ctrl_mode(TINO_BATT_CHARGE);
+	} else {
+		//do nothing
+	}
+}
+DECLARE_HOOK(HOOK_TICK, tino_check_temp_func, HOOK_PRIO_DEFAULT);
