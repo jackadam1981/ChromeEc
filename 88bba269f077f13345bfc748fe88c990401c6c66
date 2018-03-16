@@ -46,6 +46,30 @@
       "revId": "88bba269f077f13345bfc748fe88c990401c6c66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f8289eb_b6479e27",
+        "filename": "board/coral/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1186994
+      },
+      "writtenOn": "2018-03-16T05:51:27Z",
+      "side": 1,
+      "message": "That\u0027s correct, we only need to call chipset_force_shutdown() once, and ovp_detect_count would be cleared after shutdown. It goes like this:\n\nt\u003d1, no OVP case \u003d\u003e GPIO_EN_PP3300\u003d1, GPIO_PP3300_PG\u003d1, ovp_detect_count\u003d 0\nt\u003d2, OVP case \u003d\u003e GPIO_EN_PP3300\u003d1, GPIO_PP3300_PG\u003d0, ovp_detect_count\u003d 1\nt\u003d3, OVP case \u003d\u003e GPIO_EN_PP3300\u003d1, GPIO_PP3300_PG\u003d0, ovp_detect_count\u003d 2\nt\u003d4, OVP case \u003d\u003e GPIO_EN_PP3300\u003d1, GPIO_PP3300_PG\u003d0, ovp_detect_count\u003d 3  \u003d\u003e force_shutdown()\nt\u003d5, shutdown \u003d\u003e GPIO_EN_PP3300\u003d0, GPIO_PP3300_PG\u003d0, ovp_detect_count\u003d 0  \u003d\u003e OVP released due to EN_PP3300 is off.",
+      "parentUuid": "1d5e7e7a_892d5079",
+      "range": {
+        "startLine": 1197,
+        "startChar": 1,
+        "endLine": 1198,
+        "endChar": 27
+      },
+      "revId": "88bba269f077f13345bfc748fe88c990401c6c66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
