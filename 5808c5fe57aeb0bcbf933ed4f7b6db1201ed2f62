@@ -45,6 +45,30 @@
       "revId": "5808c5fe57aeb0bcbf933ed4f7b6db1201ed2f62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81e20ff8_f63c12e3",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3489,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-16T01:37:40Z",
+      "side": 1,
+      "message": "pd_dfp_enter_mode isn\u0027t called for DisplayPort. I hooked svdm_enter_dp_mode in fizz/usb_pd_policy.c but it did not fix the issue.",
+      "parentUuid": "3dd57597_e7a15f37",
+      "range": {
+        "startLine": 3487,
+        "startChar": 0,
+        "endLine": 3489,
+        "endChar": 42
+      },
+      "revId": "5808c5fe57aeb0bcbf933ed4f7b6db1201ed2f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
