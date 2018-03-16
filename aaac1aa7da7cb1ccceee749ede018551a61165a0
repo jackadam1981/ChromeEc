@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8dc2c98b_75048a14",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-03-16T19:56:20Z",
+      "side": 1,
+      "message": "It might be nice for these masks to just #define them instead of a comment, but it\u0027s not that important.",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42edd175_1f9a6f01",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-03-16T19:56:20Z",
+      "side": 1,
+      "message": "Alternatively, but one character longer:\n(status \u003d\u003d enable) ? EC_SUCCESS : EC_ERROR_UNKNOWN;",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5eec25db_c8da0b27",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1115020
+      },
+      "writtenOn": "2018-03-16T19:56:20Z",
+      "side": 1,
+      "message": "\u003c\u003d device control reg to include it in the dump?",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
