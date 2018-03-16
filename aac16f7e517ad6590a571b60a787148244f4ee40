@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22d4ab20_574a85e9",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:08:46Z",
+      "side": 1,
+      "message": "update",
+      "range": {
+        "startLine": 566,
+        "startChar": 14,
+        "endLine": 566,
+        "endChar": 33
+      },
+      "revId": "aac16f7e517ad6590a571b60a787148244f4ee40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8a5bf9c_1ed35c94",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:08:46Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "range": {
+        "startLine": 569,
+        "startChar": 11,
+        "endLine": 569,
+        "endChar": 12
+      },
+      "revId": "aac16f7e517ad6590a571b60a787148244f4ee40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7da8ce0f_89fd3fd0",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:08:46Z",
+      "side": 1,
+      "message": "I had hoped we could avoid storing any global state. There are more comments on that topic in the other CL, so let\u0027s sort out the discussion there.",
+      "range": {
+        "startLine": 597,
+        "startChar": 0,
+        "endLine": 597,
+        "endChar": 56
+      },
+      "revId": "aac16f7e517ad6590a571b60a787148244f4ee40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1aeb450a_63530a26",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:08:46Z",
+      "side": 1,
+      "message": "stale naming",
+      "range": {
+        "startLine": 58,
+        "startChar": 59,
+        "endLine": 58,
+        "endChar": 68
+      },
+      "revId": "aac16f7e517ad6590a571b60a787148244f4ee40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042eb7e1_17b724b1",
+        "filename": "include/tpm_vendor_cmds.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:08:46Z",
+      "side": 1,
+      "message": "stale naming",
+      "range": {
+        "startLine": 58,
+        "startChar": 31,
+        "endLine": 58,
+        "endChar": 40
+      },
+      "revId": "aac16f7e517ad6590a571b60a787148244f4ee40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
