@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62e0f7e8_13b3b002",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T08:16:28Z",
+      "side": 1,
+      "message": "interesting results !",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 58
+      },
+      "revId": "b8e5daabf74d7f749c6716d2cb3185bc88491a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd72f00c_c353be51",
+        "filename": "board/nautilus/analyzestack.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T08:16:28Z",
+      "side": 1,
+      "message": "more than the chip, it actually depends on the core *and* whether you have CONFIG_FPU\nhere for Nautilus: Cortex-M + FPU , I suspect it\u0027s more than 64 bytes (if this is bytes ?)\nas documented in switch.S\n * this case the exception frame by default contains:\n *     r0, r1, r2, r3, r12, lr, pc, psr,\n *     s0 - s15, FPSCR, +1 word for 64-bit alignment\n * then in addition we store the following registers:\n *     r4, r5, r6, r7, r8, r9, r10, r11\n *     s16 - s31 (stored iff FP was used by the task (see EXC_RETURN[4]))",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "b8e5daabf74d7f749c6716d2cb3185bc88491a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e82c94b_e94ef96c",
+        "filename": "board/nautilus/analyzestack.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T08:16:28Z",
+      "side": 1,
+      "message": "the hierarchical .yaml file support was not implemented yet ? we will want it soon.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 4
+      },
+      "revId": "b8e5daabf74d7f749c6716d2cb3185bc88491a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c26744e_aab86b42",
+        "filename": "board/nautilus/analyzestack.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T08:16:28Z",
+      "side": 1,
+      "message": "you meant nautilus ?",
+      "range": {
+        "startLine": 165,
+        "startChar": 44,
+        "endLine": 165,
+        "endChar": 50
+      },
+      "revId": "b8e5daabf74d7f749c6716d2cb3185bc88491a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a1e3af_a918fc0d",
+        "filename": "board/nautilus/analyzestack.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T08:16:28Z",
+      "side": 1,
+      "message": "IMO what you really want to remove is actually exception_panic() (which changes stacks)\nyou don\u0027t really want your normal panic path to trigger a double fault impossible to debug.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "b8e5daabf74d7f749c6716d2cb3185bc88491a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
