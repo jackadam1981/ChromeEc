@@ -1,0 +1,682 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afea1709_47ec00fe",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Are we storing these parameters somewhere on the CR50 side? If not, the host side can probably do nasty things by creating a deep tree first, then in the next request pretending it is a shallow tree and reset an inner node hash to all zeros (via remove_leaf).",
+      "range": {
+        "startLine": 41,
+        "startChar": 30,
+        "endLine": 42,
+        "endChar": 32
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "893cafc3_007218b6",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Do you really need two buffers? Using just one should suffice since the hash updates update context state without requiring a destination buffer and you no longer need the source buffer contents when pulling out the final hash value.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7ecd29_e054fdc8",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "any good reason not to use uint8_t here?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 20
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "911b5b99_920a6e09",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "These should probably derived via a single seed from the key ladder using the generation counter to derive a fresh key on each TPM reset?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea0ac17c_791eae92",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "If you just do hashes +\u003d fan_out - 1 after an iteration, you might avoid this?",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccd86b36_8ec97cef",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Again, do you actually need separate buffers? A single buffer would probably make the code much simpler.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 30
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b45b1e48_10870afc",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "IIUC, this is just (path.v \u0026 (fan_out - 1)), plus a right-shift by bits_per_level for each iteration. That\u0027d seem much simpler than the cryptic bit twiddling in get_index as is?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 56
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea5d8e1a_27a1db8c",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 178,
+        "endChar": 8
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36954dce_565e9df3",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "int: curly braces",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 39
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "736e3b08_4f278d60",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 31
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e27d20_bc0cd812",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "I believe using just the ARRAY_SIZE loop condition with conditionals in the loop body would be more readable?",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 29
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "447a0846_60b7d994",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Putting a comment here to remind you to actually check and resolve the comment before you submit :-D",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 65
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbf01edb_32590d60",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "nit: curly braces",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 64
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb1360af_73115577",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "As discussed in the meeting, we should probably report back how much time still needs to pass.",
+      "range": {
+        "startLine": 329,
+        "startChar": 0,
+        "endLine": 330,
+        "endChar": 34
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007b19e1_318057bc",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Any reason to do a constant-time compare here? The host side knows the HMAC value anyways. If there is a reason, please add a comment to explain.",
+      "range": {
+        "startLine": 456,
+        "startChar": 5,
+        "endLine": 456,
+        "endChar": 16
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92f56cf7_4b73939c",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Please put a comment here to state that everything happening from this point on must be constant time (i.e. not depend on the credential test).",
+      "range": {
+        "startLine": 471,
+        "startChar": 46,
+        "endLine": 471,
+        "endChar": 0
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6347771_6991bad6",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "constant time comparison needed?",
+      "range": {
+        "startLine": 526,
+        "startChar": 5,
+        "endLine": 526,
+        "endChar": 16
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4944c066_693fc378",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Add comment to explain constant time requirement.",
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bd2656a_c73cdb17",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "This is not the path length, but the number of auxiliary hashes required for a path to a leaf. Rename or comment accordingly.",
+      "range": {
+        "startLine": 574,
+        "startChar": 4,
+        "endLine": 574,
+        "endChar": 19
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fab61673_1a87cf39",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Can you add a comment here explaining what this does and the assumptions about parameters? In particular, 0 \u003c\u003d location.v \u003c\u003d num_hashes, and num_hashes being one less than the fan-out? Maybe it\u0027d be clearer to actually pass the actual fan-out value?",
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb2800ed_711046e1",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure about coding style in the EC, but I\u0027d prefer curlies at least for cases where the condition or the body is multiple lines. Remember goto fail?",
+      "range": {
+        "startLine": 591,
+        "startChar": 0,
+        "endLine": 593,
+        "endChar": 51
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16bf59f9_ce43b01b",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Where do you intend to get this from in the production implementation running on Cr50?",
+      "range": {
+        "startLine": 597,
+        "startChar": 40,
+        "endLine": 597,
+        "endChar": 66
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d21b7dfb_30d63d9b",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Any reason why we can\u0027t just send that response type for all results? Same for other message types?",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 691,
+        "endChar": 3
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb3cda9f_d9c1a9c4",
+        "filename": "include/pinweaver.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "As commented elsewhere, we can probably just derive these from the key ladder instead of generating and storing them.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 22
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a535ffe0_a43eed10",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Just to double-check: This never resets to zero?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 21
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb130189_d2584aa4",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Can we specify this in a predictable unit such as seconds? It doesn\u0027t make too much sense for the host side to have to figure out the time unit used by whatever chip iteration is in the device.",
+      "range": {
+        "startLine": 86,
+        "startChar": 16,
+        "endLine": 86,
+        "endChar": 65
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea63f0fd_3e2d7b1b",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 12
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "238a9134_07e30073",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Any good reason to keep this in a separate struct?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 35
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c838eb40_8087d9a3",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "Have you thought about forward-compatibility here? If we add new fields to the leaf data, the size here will change. It may make sense for old version to at least be able to decrypt the data so they can read what they understand? To achieve that we\u0027d probably have to add a size field.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 55
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bf5e0c5_232e8caa",
+        "filename": "include/pinweaver_types.h",
+        "patchSetId": 39
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1135824
+      },
+      "writtenOn": "2018-03-16T14:05:15Z",
+      "side": 1,
+      "message": "No path_hashes in the response.",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 62
+      },
+      "revId": "fabf0108b8577d11b75998b535cac6e78405242a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
