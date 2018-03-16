@@ -1,0 +1,24 @@
+Test log:
+Case 1:
+TINO: now temp is 42
+TINO: action 1, battery discharge!
+battery
+I:         0xfe7e = -386 mA(DISCHG)
+
+chgstate
+chg.*:
+current = -396mA
+batt.*:
+requested_current = 0mA
+						          
+Case 2:
+TINO: now temp is 32
+TINO: action 0, charge battery with current 750mA!
+battery
+I:         0x0303 = 771 mA(CHG)
+
+chgstate
+chg.*:
+current = 767mA
+batt.*:
+requested_current = 750mA
