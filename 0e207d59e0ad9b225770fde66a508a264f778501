@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c367e66_e3030058",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-16T17:49:39Z",
+      "side": 1,
+      "message": "note the gyro side is not working properly yet.",
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84f1cabd_dfa94321",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2278,
+      "author": {
+        "id": 1002053
+      },
+      "writtenOn": "2018-03-16T17:49:39Z",
+      "side": 1,
+      "message": "It will conflict with the cl:924406 train.",
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
