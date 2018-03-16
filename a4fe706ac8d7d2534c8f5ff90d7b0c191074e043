@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "637a6156_852126c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-16T23:24:11Z",
+      "side": 1,
+      "message": "That\u0027s somewhat disturbing.\n\nA chroot created from a firmware branch should build that branch\u0027s targets without errors.\n\nDid you use \u0027-b\u0027 when you did repo init, or only check out the branch into an existing chroot?",
+      "range": {
+        "startLine": 15,
+        "startChar": 39,
+        "endLine": 16,
+        "endChar": 41
+      },
+      "revId": "a4fe706ac8d7d2534c8f5ff90d7b0c191074e043",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
