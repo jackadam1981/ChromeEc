@@ -71,6 +71,29 @@
     },
     {
       "key": {
+        "uuid": "6770a59e_9262a1fb",
+        "filename": "board/eve/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1104794
+      },
+      "writtenOn": "2018-03-16T17:53:56Z",
+      "side": 1,
+      "message": "nit, why did you move this line to here? Can you put it back above?",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 4
+      },
+      "revId": "09f6360cfdb244e87271cc74ced524543c48c0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5bf87dad_7c13ff70",
         "filename": "board/eve/gpio.inc",
         "patchSetId": 1
