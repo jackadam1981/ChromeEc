@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eba6fc10_d5facd6e",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-16T16:44:46Z",
+      "side": 1,
+      "message": "some comments here would be helpful.",
+      "revId": "b4adda6e0d028bac07d42de3de11db23e0440d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be283468_71ee4694",
+        "filename": "board/grunt/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-16T16:44:46Z",
+      "side": 1,
+      "message": "and here",
+      "revId": "b4adda6e0d028bac07d42de3de11db23e0440d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4da3374_b4ffd76b",
+        "filename": "driver/bc12/bq24392.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002124
+      },
+      "writtenOn": "2018-03-16T16:44:46Z",
+      "side": 1,
+      "message": "I don\u0027t think we should be affecting the other boards to accommodate grunts. const should be const.",
+      "revId": "b4adda6e0d028bac07d42de3de11db23e0440d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
