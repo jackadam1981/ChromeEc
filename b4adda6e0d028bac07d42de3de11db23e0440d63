@@ -86,6 +86,24 @@
       "revId": "b4adda6e0d028bac07d42de3de11db23e0440d63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "41fb992a_36f4b578",
+        "filename": "driver/bc12/bq24392.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2018-03-16T17:15:47Z",
+      "side": 1,
+      "message": "Agreed, so I looked at this some more, and think using the V2 pin on both V0 and V2 will be ok, luckily.",
+      "parentUuid": "e4da3374_b4ffd76b",
+      "revId": "b4adda6e0d028bac07d42de3de11db23e0440d63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
