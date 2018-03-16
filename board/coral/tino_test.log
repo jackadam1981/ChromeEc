@@ -1,0 +1,128 @@
+Test log:
+
+Case 1:
+
+[2648.733551 TINO: now temp is 40]
+[2648.748162 TINO: action 1, battery discharge!]
+battery
+  Status:    0x00c0 DCHG INIT
+  Param flags:00000003
+  Temp:      0x0baa = 298.6 K (25.5 C)
+  V:         0x30ae = 12462 mV
+  V-desired: 0x3390 = 13200 mV
+  I:         0xfe75 = -395 mA(DISCHG)
+  I-desired: 0x0c80 = 3200 mA
+  Charging:  Allowed
+  Charge:    85 %
+  Manuf:     PANASONIC
+  Device:    AP15O5L
+  Chem:      LION
+  Serial:    0x0916
+  V-design:  0x2d1e = 11550 mV
+  Mode:      0x0000
+  Abs charge:83 %
+  Remaining: 3899 mAh
+  Cap-full:  4564 mAh
+  Design:  4670 mAh
+  Time-full: 0h:0
+  Empty:   8h:22
+
+[2674.770187 TINO: now temp is 40]
+[2674.793196 TINO: action 1, battery discharge!]
+chgstate
+state = charge
+ac = 1
+batt_is_charging = 0
+chg.*:
+	voltage = 13200mV
+	current = 0mA
+	input_current = 2848mA
+	status = 0xe011
+	option = 0x6eef68
+	flags = 0x0
+batt.*:
+	temperature = 25C
+	state_of_charge = 85%
+	voltage = 12458mV
+	current = -379mA
+	desired_voltage = 13200mV
+	desired_current = 3200mA
+	flags = 0x3
+	remaining_capacity = 3896mAh
+	full_capacity = 4564mAh
+	is_present = YES
+requested_voltage = 0mV
+requested_current = 0mA
+chg_ctl_mode = 0
+manual_voltage = 0
+manual_current = 0
+user_current_limit = -1mA
+battery_seems_to_be_dead = 0
+battery_seems_to_be_disconnected = 0
+battery_was_removed = 0
+debug output = off
+
+
+Case 2:
+
+[332.983627 TINO: action 0, charge battery with current 750mA!]
+[333.183657 TINO: now temp is 26]
+
+battery
+  Status:    0x0080 INIT
+  Param flags:00000003
+  Temp:      0x0b9c = 297.2 K (24.1 C)
+  V:         0x32d3 = 13011 mV
+  V-desired: 0x3390 = 13200 mV
+  I:         0x0304 = 772 mA(CHG)
+  I-desired: 0x0500 = 1280 mA
+  Charging:  Allowed
+  Charge:    92 %
+  Manuf:     PANASONIC
+  Device:    AP15O5L
+  Chem:      LION
+  Serial:    0x0916
+  V-design:  0x2d1e = 11550 mV
+  Mode:      0x0000
+  Abs charge:90 %
+  Remaining: 4198 mAh
+  Cap-full:  4564 mAh
+  Design:  4670 mAh
+  Time-full: 2h:28
+  Empty:   0h:0
+
+[347.604837 TINO: now temp is 26]
+[347.605215 TINO: action 0, charge battery with current 750mA!]
+
+chgstate
+state = charge
+ac = 1
+batt_is_charging = 1
+chg.*:
+	voltage = 13200mV
+	current = 704mA
+	input_current = 2848mA
+	status = 0xe010
+	option = 0xaeef68
+	flags = 0x0
+batt.*:
+	temperature = 24C
+	state_of_charge = 92%
+	voltage = 13088mV
+	current = 774mA
+	desired_voltage = 13200mV
+	desired_current = 1280mA
+	flags = 0x3
+	remaining_capacity = 4218mAh
+	full_capacity = 4564mAh
+	is_present = YES
+requested_voltage = 13200mV
+requested_current = 750mA
+chg_ctl_mode = 0
+manual_voltage = -1
+manual_current = 750
+user_current_limit = -1mA
+battery_seems_to_be_dead = 0
+battery_seems_to_be_disconnected = 0
+battery_was_removed = 0
+debug output = off
