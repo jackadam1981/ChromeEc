@@ -327,3 +327,5 @@ void board_tcpc_init(void);
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
+
+extern void tino_set_chg_ctrl_mode(int action);
