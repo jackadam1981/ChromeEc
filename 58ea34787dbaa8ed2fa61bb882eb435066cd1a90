@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9cf601e_795f6ef7",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T09:23:21Z",
+      "side": 1,
+      "message": "Sure, let\u0027s put it in ec_commands.h since the host ends up uploading this value.",
+      "parentUuid": "bee17157_590de7ed",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 45
+      },
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e8b4706_88a2951b",
         "filename": "common/fpsensor.c",
         "patchSetId": 37
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-16T08:29:23Z",
       "side": 1,
       "message": "Maybe I\u0027m missing something, but can you modify ectool to actually print the progress?",
+      "range": {
+        "startLine": 134,
+        "startChar": 9,
+        "endLine": 134,
+        "endChar": 53
+      },
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d421f338_a3aee3f1",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T09:23:21Z",
+      "side": 1,
+      "message": "Maybe, it\u0027s not terribly clear but you have an enrollment \u0027session\u0027 and inside such a session, you do several enrollment \u0027captures\u0027. The progress is the percentage of the overall session, while the ectool command just drives a single capture.\nOverall this is returned as part of the MKBP events, nothing in ectool anyhow decodes the MKBP events right now (at best you can use \u0027waitevent\u0027)\nWe could add it but it\u0027s only mildly useful since somebody else (eg kernel) might be reading your events.\n\nActually when debugging the full system, the trace of the percentage above through the debugfs you did is \u0027good enough\u0027",
+      "parentUuid": "9e8b4706_88a2951b",
       "range": {
         "startLine": 134,
         "startChar": 9,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7102d289_a37d1b76",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T09:23:21Z",
+      "side": 1,
+      "message": "yes... the real bug was in ec_commands.h but I definitely forgot to update this.",
+      "parentUuid": "3549b60e_4e94a8c6",
+      "range": {
+        "startLine": 436,
+        "startChar": 9,
+        "endLine": 436,
+        "endChar": 13
+      },
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc80237a_cd98cad4",
         "filename": "include/ec_commands.h",
         "patchSetId": 37
@@ -82,6 +154,24 @@
       "writtenOn": "2018-03-16T08:29:23Z",
       "side": 1,
       "message": "why not just uint8_t nonce[32] ?",
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbb97871_fe8b703a",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 4821,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T09:23:21Z",
+      "side": 1,
+      "message": "the (future) crypto-related code likes the u32 layout, but I guess __ec_align4 guarantees the alignment and I can re-cast it later to u32.\n\nMaybe I will just add FP_CONTEXT_NONCE_WORDS and FP_CONTEXT_USER_WORDS defined as (32 / sizeof(uint32_t)) for now",
+      "parentUuid": "cc80237a_cd98cad4",
       "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "5efcc030_b7528a42",
+        "filename": "include/fpsensor.h",
+        "patchSetId": 37
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T09:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fcf84a5_552ee83c",
+      "range": {
+        "startLine": 107,
+        "startChar": 41,
+        "endLine": 107,
+        "endChar": 43
+      },
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f127a3b_0d155459",
         "filename": "util/ectool.c",
         "patchSetId": 37
@@ -122,6 +236,30 @@
       "writtenOn": "2018-03-16T08:08:13Z",
       "side": 1,
       "message": "ec_outbuf is void*, right? So not cast needed?",
+      "range": {
+        "startLine": 1367,
+        "startChar": 5,
+        "endLine": 1367,
+        "endChar": 35
+      },
+      "revId": "58ea34787dbaa8ed2fa61bb882eb435066cd1a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df826b10_af41eb6c",
+        "filename": "util/ectool.c",
+        "patchSetId": 37
+      },
+      "lineNbr": 1367,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-16T09:23:21Z",
+      "side": 1,
+      "message": "Yes, I forgot to update it after my last re-shuffling of this code.",
+      "parentUuid": "2f127a3b_0d155459",
       "range": {
         "startLine": 1367,
         "startChar": 5,
