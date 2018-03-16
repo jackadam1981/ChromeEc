@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06111218_c94c258d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-03-16T16:33:18Z",
+      "side": 1,
+      "message": "nit, mind adding the pin name to  to net name mapping here:\n\n GPIO01 (CHARGER_RST_L) ..",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "09f6360cfdb244e87271cc74ced524543c48c0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef6fa0b_005234d2",
+        "filename": "board/eve/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-03-16T16:33:18Z",
+      "side": 1,
+      "message": "nit, would be more meaningful to label no-connect IMO",
+      "range": {
+        "startLine": 59,
+        "startChar": 66,
+        "endLine": 59,
+        "endChar": 81
+      },
+      "revId": "09f6360cfdb244e87271cc74ced524543c48c0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "043258de_4c2cfbb0",
+        "filename": "board/eve/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-03-16T16:33:18Z",
+      "side": 1,
+      "message": "nit, delete 1 tab to align",
+      "range": {
+        "startLine": 59,
+        "startChar": 62,
+        "endLine": 59,
+        "endChar": 63
+      },
+      "revId": "09f6360cfdb244e87271cc74ced524543c48c0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bf87dad_7c13ff70",
+        "filename": "board/eve/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-03-16T16:33:18Z",
+      "side": 1,
+      "message": "nit, remove two tabs to align w/ comments above.",
+      "range": {
+        "startLine": 91,
+        "startChar": 61,
+        "endLine": 91,
+        "endChar": 63
+      },
+      "revId": "09f6360cfdb244e87271cc74ced524543c48c0d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
