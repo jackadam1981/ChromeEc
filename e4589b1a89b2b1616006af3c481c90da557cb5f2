@@ -49,6 +49,121 @@
     },
     {
       "key": {
+        "uuid": "dd9f9439_62ded631",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-16T23:19:05Z",
+      "side": 1,
+      "message": "Duplicating the struct as stack variables is quick, but really messy.\n\nAh, because we\u0027re altering basically all of the params below.\n\nIn which case, we\u0027re not saving much if any stack space with this.\n\nSee notes in i2c.h on proposed fix.",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 27
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dc4d51c_746b7bdf",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-16T23:19:05Z",
+      "side": 1,
+      "message": "This design pattern happens a lot.  Suggest\n\n#define I2C_XFER_PARAMS_WRITE(port, slave_addr, out, out_size) I2C_XFER_PARAMS(port, slave_addr, out, out_size, NULL, 0, I2C_XFER_SINGLE)",
+      "range": {
+        "startLine": 286,
+        "startChar": 28,
+        "endLine": 289,
+        "endChar": 26
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f05d1c22_df9157ce",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-16T23:19:05Z",
+      "side": 1,
+      "message": "Most implementations make a copy of these params and alter it.\n\nSuggest instead:\n\n/* All fields in this struct may be altered by i2c_xfer() or one of the functions it calls. */\n\nOtherwise, this change may cost stack space instead of saving it.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 54
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a72c298_06ff8edf",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-16T23:19:05Z",
+      "side": 1,
+      "message": "Either put the comment on the same line, or add space between field and next comment.",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 16
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "468a38b2_2b0ffbe8",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-16T23:19:05Z",
+      "side": 1,
+      "message": "bytes",
+      "range": {
+        "startLine": 114,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5808139d_9f7260d1",
         "filename": "include/i2c.h",
         "patchSetId": 1
@@ -84,6 +199,30 @@
       "side": 1,
       "message": "In the calling convention, we are passing in only pointer to the structure as a parameter instead of actually copying individual variables as parameters in the stack frame.",
       "parentUuid": "5808139d_9f7260d1",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c226e0b_ac11fe8c",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-16T23:19:05Z",
+      "side": 1,
+      "message": "The call stack of functions inside i2c_xfer() is several calls deep, in a way that doesn\u0027t lend itself to tail chaining.  So currently the params are all pushed onto the stack several times.",
+      "parentUuid": "0e7a6317_e56cebea",
       "range": {
         "startLine": 131,
         "startChar": 13,
