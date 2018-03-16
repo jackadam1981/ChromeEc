@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0557afe0_566fd270",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-16T23:35:11Z",
+      "side": 1,
+      "message": "I think this is never zero/NULL.",
+      "range": {
+        "startLine": 293,
+        "startChar": 6,
+        "endLine": 293,
+        "endChar": 26
+      },
+      "revId": "502beb18c3b5045fd2ee46a78798c1bdf6e745c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
