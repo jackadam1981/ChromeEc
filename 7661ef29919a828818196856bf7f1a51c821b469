@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c1009a6_ee5c840e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-03-17T18:39:28Z",
+      "side": 1,
+      "message": "Why are you using \"mode\" instead of \"sensor_mode\"? The only difference I see is potentially the bit FP_MODE_ENROLL_SESSION is removed line 204, but afaict it\u0027s not used later where you\u0027ve replaced \"sensor_mode\" with \"mode\". Am I missing something?",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 16
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945d368c_18100b4c",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-03-17T18:39:28Z",
+      "side": 1,
+      "message": "Is that FP_CAPTURE_PATTERN1?",
+      "range": {
+        "startLine": 517,
+        "startChar": 47,
+        "endLine": 517,
+        "endChar": 48
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9759a735_47e89081",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 3244,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-03-17T18:39:28Z",
+      "side": 1,
+      "message": "nit: sort alphabetically?",
+      "range": {
+        "startLine": 3237,
+        "startChar": 0,
+        "endLine": 3244,
+        "endChar": 0
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88743ae8_af116f56",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-03-17T18:39:28Z",
+      "side": 1,
+      "message": "Can you add a comment about the meaning of the various possible values for index? IIUC:\n-1 \u003d\u003e simple image\n0 \u003d\u003e raw image\n1,2,3 \u003d\u003e template",
+      "range": {
+        "startLine": 1098,
+        "startChar": 69,
+        "endLine": 1098,
+        "endChar": 74
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f56d7974_0aff2887",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-03-17T18:39:28Z",
+      "side": 1,
+      "message": "FP_FRAME_INDEX_RAW_IMAGE?",
+      "range": {
+        "startLine": 1119,
+        "startChar": 10,
+        "endLine": 1119,
+        "endChar": 11
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "199f2ec4_02b0a673",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-03-17T18:39:28Z",
+      "side": 1,
+      "message": "Can you add a sanity check that index is valid? Max is FP_MAX_FINGER_COUNT and min is 0, right?",
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "923c6841_693d76d2",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-03-17T18:39:28Z",
+      "side": 1,
+      "message": "nit: strlen(\"enroll\") would be a bit more robust against potential mistakes when counting the number of characters. But not worth fixing now",
+      "range": {
+        "startLine": 1256,
+        "startChar": 39,
+        "endLine": 1256,
+        "endChar": 40
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d775d93_d16e0cc7",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-03-17T18:39:28Z",
+      "side": 1,
+      "message": "Not relevant to this specific CL since there are other occurrences so no requirement to change it, just wondering why we\u0027re using strcasecmp and not strncasecmp which is also used in a few places?",
+      "range": {
+        "startLine": 1333,
+        "startChar": 26,
+        "endLine": 1333,
+        "endChar": 36
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92480bc9_045ac458",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1158184
+      },
+      "writtenOn": "2018-03-17T18:39:28Z",
+      "side": 1,
+      "message": "Sanitize the value range of idx and return an error/help message if invalid?",
+      "range": {
+        "startLine": 1382,
+        "startChar": 17,
+        "endLine": 1382,
+        "endChar": 18
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
