@@ -93,6 +93,30 @@
       "revId": "5808c5fe57aeb0bcbf933ed4f7b6db1201ed2f62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "749e591e_422505de",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3489,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-17T17:17:15Z",
+      "side": 1,
+      "message": "Maybe we need to update svids without clearing them. if the newly acquired svids don\u0027t match the current svids, we update only missing/additional ones.\nThen, the states for the current svids will be saved.",
+      "parentUuid": "ea4b31a4_a6b99937",
+      "range": {
+        "startLine": 3487,
+        "startChar": 0,
+        "endLine": 3489,
+        "endChar": 42
+      },
+      "revId": "5808c5fe57aeb0bcbf933ed4f7b6db1201ed2f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
