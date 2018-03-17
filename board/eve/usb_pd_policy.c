@@ -8,8 +8,8 @@
 #include "charge_manager.h"
 #include "common.h"
 #include "console.h"
-#include "driver/charger/bd9995x.h"
-#include "driver/tcpm/anx74xx.h"
+/* #include "driver/charger/bd9995x.h" */
+/* #include "driver/tcpm/anx74xx.h" */
 #include "driver/tcpm/ps8xxx.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -111,8 +111,9 @@ void typec_set_source_current_limit(int port, int rp)
 
 int pd_set_power_supply_ready(int port)
 {
-	/* Ensure we're not charging from this port */
-	bd9995x_select_input_port(port, 0);
+	/* Disable charging */
+	gpio_set_level(port ? GPIO_EN_USB_C1_CHARGE_L :
+			      GPIO_EN_USB_C0_CHARGE_L, 1);
 
 	/* Ensure we advertise the proper available current quota */
 	charge_manager_source_port(port, 1);
