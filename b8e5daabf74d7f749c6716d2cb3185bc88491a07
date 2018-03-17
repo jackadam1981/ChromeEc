@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d88d47b_d0c6a533",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-17T02:28:12Z",
+      "side": 1,
+      "message": "Yes, so we need to increase the task stack size (note that most of these paths are really unlikely, in recovery code when i2c gets stuck).",
+      "parentUuid": "54721015_216d4fd3",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "b8e5daabf74d7f749c6716d2cb3185bc88491a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62e0f7e8_13b3b002",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
