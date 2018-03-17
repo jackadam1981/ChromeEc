@@ -22,6 +22,30 @@
       "revId": "cadcc19f94cfcc69fc0608dfda053da17b621490",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b1d546_366782a2",
+        "filename": "board/wheatley/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2018-03-17T08:34:06Z",
+      "side": 1,
+      "message": "Are there concerns with having the cmd enabled on eve? It\u0027s enabled on all boards unless it\u0027s gets undef\u0027d (like here), since it\u0027ll make for more accurate power measurements when we setup our power stations. But since the board is already shipped, I can understand if we want to undef it to save space on the EC?",
+      "parentUuid": "ebd6f29d_3b0ef1ee",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 25
+      },
+      "revId": "cadcc19f94cfcc69fc0608dfda053da17b621490",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
