@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "384322bb_4e0528f6",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-17T06:56:07Z",
+      "side": 1,
+      "message": "given you are taking the values from rodata, might worth noting this works only for const arrays.",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 73
+      },
+      "revId": "cce2d306ee2934b228ac9f1678363dd134732535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "711205a5_a4f2f729",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-17T06:56:07Z",
+      "side": 1,
+      "message": "typo ? size ?",
+      "range": {
+        "startLine": 90,
+        "startChar": 46,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "cce2d306ee2934b228ac9f1678363dd134732535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a747eb19_d097997f",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-17T06:56:07Z",
+      "side": 1,
+      "message": "we could make it optional as 0 is the most common case ?\ne.g \noffset \u003d dic[\u0027offset\u0027] if \u0027offset\u0027 in dic else 0",
+      "revId": "cce2d306ee2934b228ac9f1678363dd134732535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a212fbf8_8be5134f",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-17T06:56:07Z",
+      "side": 1,
+      "message": "optimization wise, you might want to use self.symbols as the outer and just check that the symbol is in the range.",
+      "range": {
+        "startLine": 785,
+        "startChar": 6,
+        "endLine": 789,
+        "endChar": 35
+      },
+      "revId": "cce2d306ee2934b228ac9f1678363dd134732535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
