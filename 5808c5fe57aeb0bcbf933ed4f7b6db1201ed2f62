@@ -69,6 +69,30 @@
       "revId": "5808c5fe57aeb0bcbf933ed4f7b6db1201ed2f62",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea4b31a4_a6b99937",
+        "filename": "common/usb_pd_protocol.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3489,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-17T00:43:55Z",
+      "side": 1,
+      "message": "The reason checking pd_alt_mode in pd_dfp_enter_mode doesn\u0027t work is the policy engine struct is cleared every time we do CMD_DISCOVER_IDENT. It\u0027s cleared by dfp_consume_identity.\n\nSo, our options are 1. exit all the mode before CMD_DISCOVER_IDENT or 2. store entered mode list somewhere else.\n\n#1 is bad because CMD_DISCOVER_IDENT is not necessarily followed by CMD_ENTER_MODE. So we need to do #2.\n\nHowever, when policy engine struct is cleared, we cannot consume following messages (status \u0026 attention) because the struct doesn\u0027t have the necessary bits.\n\nTherefore, I feel the most reasonable solution is to avoid the situation where we run CMD_DISCOVER_IDENT unnecessarily. That\u0027s what this patch does.",
+      "parentUuid": "81e20ff8_f63c12e3",
+      "range": {
+        "startLine": 3487,
+        "startChar": 0,
+        "endLine": 3489,
+        "endChar": 42
+      },
+      "revId": "5808c5fe57aeb0bcbf933ed4f7b6db1201ed2f62",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
