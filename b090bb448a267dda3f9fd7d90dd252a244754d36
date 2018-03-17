@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d2b83b9_e2860a80",
+        "filename": "board/nami/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-03-17T03:40:14Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "11433aa2_4bcb8afe",
+      "range": {
+        "startLine": 781,
+        "startChar": 43,
+        "endLine": 781,
+        "endChar": 44
+      },
+      "revId": "b090bb448a267dda3f9fd7d90dd252a244754d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db892c94_a4e99806",
         "filename": "board/nami/board.h",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-16T15:29:05Z",
       "side": 1,
       "message": "Please use codenames. This is why we use codenames...",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 17
+      },
+      "revId": "b090bb448a267dda3f9fd7d90dd252a244754d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52c67eff_33f81847",
+        "filename": "board/nami/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1256311
+      },
+      "writtenOn": "2018-03-17T03:40:14Z",
+      "side": 1,
+      "message": "Please check patch 8 whether it is suit. \nIf you think it is not suit, please kindly let me know your comment. Thanks~",
+      "parentUuid": "db892c94_a4e99806",
       "range": {
         "startLine": 259,
         "startChar": 0,
