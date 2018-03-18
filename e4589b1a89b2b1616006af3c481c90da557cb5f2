@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "fe125f26_851a1a91",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-18T07:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd9f9439_62ded631",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 27
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dc4d51c_746b7bdf",
         "filename": "common/i2c_master.c",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "writtenOn": "2018-03-16T23:19:05Z",
       "side": 1,
       "message": "This design pattern happens a lot.  Suggest\n\n#define I2C_XFER_PARAMS_WRITE(port, slave_addr, out, out_size) I2C_XFER_PARAMS(port, slave_addr, out, out_size, NULL, 0, I2C_XFER_SINGLE)",
+      "range": {
+        "startLine": 286,
+        "startChar": 28,
+        "endLine": 289,
+        "endChar": 26
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "009c1506_3b8b4723",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-18T07:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dc4d51c_746b7bdf",
       "range": {
         "startLine": 286,
         "startChar": 28,
@@ -118,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "29fca50d_8a3665e9",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-18T07:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f05d1c22_df9157ce",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 54
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a72c298_06ff8edf",
         "filename": "include/i2c.h",
         "patchSetId": 1
@@ -141,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d24b6b37_a04c1bc0",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-18T07:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a72c298_06ff8edf",
+      "range": {
+        "startLine": 104,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 16
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "468a38b2_2b0ffbe8",
         "filename": "include/i2c.h",
         "patchSetId": 1
@@ -152,6 +248,30 @@
       "writtenOn": "2018-03-16T23:19:05Z",
       "side": 1,
       "message": "bytes",
+      "range": {
+        "startLine": 114,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 18
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "94240415_9f78183e",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-18T07:15:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "468a38b2_2b0ffbe8",
       "range": {
         "startLine": 114,
         "startChar": 14,
