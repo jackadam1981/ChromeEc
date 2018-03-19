@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "695505eb_64f8b21f",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T14:35:13Z",
+      "side": 1,
+      "message": "This bug number doesn\u0027t seem to match the comment",
+      "range": {
+        "startLine": 182,
+        "startChar": 10,
+        "endLine": 182,
+        "endChar": 18
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7645a251_04a5b113",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T14:35:13Z",
+      "side": 1,
+      "message": "I just recently saw cl:956878 go through that increases this to 4g to better support ARC++. If our sensor can support this, I like the idea of increasing our range too.",
+      "range": {
+        "startLine": 196,
+        "startChar": 3,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d79d78ce_7831a4a4",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T14:35:13Z",
+      "side": 1,
+      "message": "What is 10000? Should it be another #define?",
+      "range": {
+        "startLine": 200,
+        "startChar": 10,
+        "endLine": 200,
+        "endChar": 15
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c367e66_e3030058",
         "filename": "board/yorp/board.c",
         "patchSetId": 4
@@ -13,6 +82,75 @@
       "writtenOn": "2018-03-16T17:49:39Z",
       "side": 1,
       "message": "note the gyro side is not working properly yet.",
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d43834c_fa4bc80c",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T14:35:13Z",
+      "side": 1,
+      "message": "Can you add a quick comment to this (or in this function) saying that this callback disables keyboard when convertibles are fully open.",
+      "range": {
+        "startLine": 259,
+        "startChar": 5,
+        "endLine": 259,
+        "endChar": 32
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77148188_fb560fc8",
+        "filename": "board/yorp/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T14:35:13Z",
+      "side": 1,
+      "message": "nit: can you use tabs instead of spaces here",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 33
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65bd803a_f0a27c4f",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T14:35:13Z",
+      "side": 1,
+      "message": "According to the Nuvoton datasheet, you cannot select 1.8V and use internal pull up/down resitors\n\n\"When a GPIO pin is configured for low-voltage power supply signal levels, its internal pulling must be disabled by setting the corresponding PxPULL[y] bit to 0.\" p134 Nuvoton datasheet.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 36
+      },
       "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
