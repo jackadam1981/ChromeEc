@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c6aa8071_e29200f0",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-19T09:20:34Z",
+      "side": 1,
+      "message": "There is a concurrent access problem too: the host command might asynchronously modify it too.\nA well-behaved host is NOT supposed to do so, as it is waiting for the event triggered by its command to happen before doing something else.\nbut for random mis-behaving host, this is limiting a few weird effects when I\u0027m evaluating several time sensor_mode below.\nUsing a big fat mutex would only mildly help overall, either we lock just around a specific operation (but this is still assuming the host is well behaving wrt its sequence of operations) or we keep it for the full operation (but the host command would timeout which is not so great)",
+      "parentUuid": "9c1009a6_ee5c840e",
+      "range": {
+        "startLine": 197,
+        "startChar": 12,
+        "endLine": 197,
+        "endChar": 16
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "945d368c_18100b4c",
         "filename": "common/fpsensor.c",
         "patchSetId": 38
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-17T18:39:28Z",
       "side": 1,
       "message": "Is that FP_CAPTURE_PATTERN1?",
+      "range": {
+        "startLine": 517,
+        "startChar": 47,
+        "endLine": 517,
+        "endChar": 48
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e78d52f_a0c23918",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-19T09:20:34Z",
+      "side": 1,
+      "message": "yes, but it\u0027s not great since the capture type have evolved a few times already including having a \u00274\u0027 right now.\nI might just mask it with FP_MODE_CAPTURE_TYPE_MASK below as it is a debug command.",
+      "parentUuid": "945d368c_18100b4c",
       "range": {
         "startLine": 517,
         "startChar": 47,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6b7da779_41267d6d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 3244,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-19T09:20:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9759a735_47e89081",
+      "range": {
+        "startLine": 3237,
+        "startChar": 0,
+        "endLine": 3244,
+        "endChar": 0
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "88743ae8_af116f56",
         "filename": "util/ectool.c",
         "patchSetId": 38
@@ -91,6 +163,30 @@
       "revId": "7661ef29919a828818196856bf7f1a51c821b469",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2f5a383_54d38f81",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-19T09:20:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88743ae8_af116f56",
+      "range": {
+        "startLine": 1098,
+        "startChar": 69,
+        "endLine": 1098,
+        "endChar": 74
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "0cd1e81c_900bf0ce",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-19T09:20:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f56d7974_0aff2887",
+      "range": {
+        "startLine": 1119,
+        "startChar": 10,
+        "endLine": 1119,
+        "endChar": 11
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "199f2ec4_02b0a673",
         "filename": "util/ectool.c",
         "patchSetId": 38
@@ -134,6 +254,24 @@
     },
     {
       "key": {
+        "uuid": "382f5148_f427cc08",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-19T09:20:34Z",
+      "side": 1,
+      "message": "This is an internal function, the only one calling with a user provided parameter is cmd_fp_frame() but you cannot do the check against FP_MAX_FINGER_COUNT as it\u0027s not part of the Host-EC interface (aka ec_commands.h) and overall you cannot compile board-specific parameter in ectool, it\u0027s usually not compiled from the same branch and backward-compatible with older EC (as it is from ToT).\nwe could run a check against the dynamic value returned in the fp_info structure but ectool is a debug and test tool: without doing it, it will fail below in the EC_CMD_FP_FRAME call (EC will return EC_RES_INVALID_PARAM) and I can still test my MCU interface.",
+      "parentUuid": "199f2ec4_02b0a673",
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "923c6841_693d76d2",
         "filename": "util/ectool.c",
         "patchSetId": 38
@@ -145,6 +283,30 @@
       "writtenOn": "2018-03-17T18:39:28Z",
       "side": 1,
       "message": "nit: strlen(\"enroll\") would be a bit more robust against potential mistakes when counting the number of characters. But not worth fixing now",
+      "range": {
+        "startLine": 1256,
+        "startChar": 39,
+        "endLine": 1256,
+        "endChar": 40
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a1d3112_a2d62892",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-19T09:20:34Z",
+      "side": 1,
+      "message": "this pattern is also a (bad) way in this file to say:\n  I really want \u0027strlen(\"enroll\")\u0027 rather than the more correct \u0027strlen(\"enroll\") + 1\u0027 because I don\u0027t care about the suffix.",
+      "parentUuid": "923c6841_693d76d2",
       "range": {
         "startLine": 1256,
         "startChar": 39,
@@ -180,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "909d76d5_6e26dc83",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-19T09:20:34Z",
+      "side": 1,
+      "message": "overall the \u0027n\u0027 is useless since one argument is constant (unless we want to please some security reviewers...), we usually did put it in other places for the reason stated in the comment above: ignoring possible suffixes when checking the name.",
+      "parentUuid": "0d775d93_d16e0cc7",
+      "range": {
+        "startLine": 1333,
+        "startChar": 26,
+        "endLine": 1333,
+        "endChar": 36
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "92480bc9_045ac458",
         "filename": "util/ectool.c",
         "patchSetId": 38
@@ -191,6 +377,30 @@
       "writtenOn": "2018-03-17T18:39:28Z",
       "side": 1,
       "message": "Sanitize the value range of idx and return an error/help message if invalid?",
+      "range": {
+        "startLine": 1382,
+        "startChar": 17,
+        "endLine": 1382,
+        "endChar": 18
+      },
+      "revId": "7661ef29919a828818196856bf7f1a51c821b469",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "472e4e88_a6b33bf3",
+        "filename": "util/ectool.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-19T09:20:34Z",
+      "side": 1,
+      "message": "this command has no idea of the valid range,\nfor the same reasons as above, I think it\u0027s fine to just fail when the MCU will refuse to send us the frame.",
+      "parentUuid": "92480bc9_045ac458",
       "range": {
         "startLine": 1382,
         "startChar": 17,
