@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25ba702c_edd3e3f2",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-19T22:17:54Z",
+      "side": 1,
+      "message": "You will need that check here as well?\n\nMaybe we should:\n1. Add another config CHIPSET_APL_GLK that gets auto-defined when CONFIG_CHIPSET_APOLLOLAKE or CONFIG_CHIPSET_GEMINILAKE are defined or\n2. Define a macro CHIPSET_APL_GLK that checks the definition of both CONFIG_CHIPSET_APOLLOLAKE and CONFIG_CHIPSET_GEMINILAKE\n\nThat will ensure any future changes/fixes for one chipset automatically get fixed for the other as well unless explicitly being done for only one. Thoughts?",
+      "range": {
+        "startLine": 455,
+        "startChar": 7,
+        "endLine": 455,
+        "endChar": 32
+      },
+      "revId": "6e77abf323c97963cd88ce8566cef26a29d73fe6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
