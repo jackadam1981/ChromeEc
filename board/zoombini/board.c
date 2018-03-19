@@ -314,7 +314,6 @@ struct motion_sensor_t motion_sensors[] = {
 			/* Run ALS sensor in S0 */
 			[SENSOR_CONFIG_EC_S0] = {
 				.odr = 1000,
-				.ec_rate = 0,
 			},
 		},
 	},
