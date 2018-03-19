@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "aa229f1b_ea9c2bf6",
+        "filename": "board/nautilus/analyzestack.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-19T07:52:31Z",
+      "side": 1,
+      "message": "Right, thanks.\n\nSo, with FPU, I count:\n *     r0, r1, r2, r3, r12, lr, pc, psr,   \u003d\u003e 8\n *     s0 - s15, FPSCR, +1 word for 64-bit alignment \u003d\u003e 16 + 2\n * then in addition we store the following registers:\n *     r4, r5, r6, r7, r8, r9, r10, r11 \u003d\u003e 8\n *     s16 - s31 (stored iff FP was used by the task (see EXC_RETURN[4])) \u003d\u003e 16\n\nSo 8+16+2+8+16 \u003d 50 registers in total. So 200 bytes. But cheyuw used a default of 224... Do you know how he got the extra 24 bytes from?",
+      "parentUuid": "bd72f00c_c353be51",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 33
+      },
+      "revId": "b8e5daabf74d7f749c6716d2cb3185bc88491a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e82c94b_e94ef96c",
         "filename": "board/nautilus/analyzestack.yaml",
         "patchSetId": 1
@@ -106,6 +130,30 @@
       "writtenOn": "2018-03-16T08:16:28Z",
       "side": 1,
       "message": "the hierarchical .yaml file support was not implemented yet ? we will want it soon.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 4
+      },
+      "revId": "b8e5daabf74d7f749c6716d2cb3185bc88491a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8a7a7d_843fff11",
+        "filename": "board/nautilus/analyzestack.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-19T07:52:31Z",
+      "side": 1,
+      "message": "Yeah, we\u0027ll want that sometimes soon... Too much copy-paste...",
+      "parentUuid": "7e82c94b_e94ef96c",
       "range": {
         "startLine": 4,
         "startChar": 0,
@@ -141,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "04b0817b_450e5fee",
+        "filename": "board/nautilus/analyzestack.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-19T07:52:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c26744e_aab86b42",
+      "range": {
+        "startLine": 165,
+        "startChar": 44,
+        "endLine": 165,
+        "endChar": 50
+      },
+      "revId": "b8e5daabf74d7f749c6716d2cb3185bc88491a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61a1e3af_a918fc0d",
         "filename": "board/nautilus/analyzestack.yaml",
         "patchSetId": 1
@@ -152,6 +224,30 @@
       "writtenOn": "2018-03-16T08:16:28Z",
       "side": 1,
       "message": "IMO what you really want to remove is actually exception_panic() (which changes stacks)\nyou don\u0027t really want your normal panic path to trigger a double fault impossible to debug.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 19
+      },
+      "revId": "b8e5daabf74d7f749c6716d2cb3185bc88491a07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62ae9d41_530ea4ac",
+        "filename": "board/nautilus/analyzestack.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-19T07:52:31Z",
+      "side": 1,
+      "message": "Well, panic_assert_fail first calls panic_printf (which is the longest path on many tasks), then calls exception_panic.",
+      "parentUuid": "61a1e3af_a918fc0d",
       "range": {
         "startLine": 199,
         "startChar": 0,
