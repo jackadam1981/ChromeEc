@@ -16,6 +16,24 @@
       "revId": "83d1af7d6656a0e4c507f11867039844ac850993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49ccf131_5775a0fc",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-19T23:50:15Z",
+      "side": 1,
+      "message": "I had started out with that, but got push back on using weak functions in EC: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/956934/3/common/i2c_master.c#69",
+      "parentUuid": "e59326a0_bb885c25",
+      "revId": "83d1af7d6656a0e4c507f11867039844ac850993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
