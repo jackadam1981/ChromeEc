@@ -45,6 +45,30 @@
       "revId": "66cab38b33a67320ef88737d2237b9b0499230e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a81f9b00_4330f011",
+        "filename": "board/fizz/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-19T15:01:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b6ecaaa_15fb75e2",
+      "range": {
+        "startLine": 327,
+        "startChar": 1,
+        "endLine": 328,
+        "endChar": 43
+      },
+      "revId": "66cab38b33a67320ef88737d2237b9b0499230e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
