@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b675cc6_1a079074",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2018-03-19T21:51:59Z",
+      "side": 1,
+      "message": "wow, #* actually works here?\nthat doesn\u0027t work quite right in dash (i.e. the posix shell).\n\njust use $# or ${#}, but our style guide is lenient here:\n\n# It\u0027s ok to not quote internal integer variables.\nif (( $# \u003e 3 )); then\n   echo \"ppid\u003d${PPID}\"\nfi\n\nnote the use of (( ... )) for all things arithmetic.",
+      "range": {
+        "startLine": 197,
+        "startChar": 16,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "7d1b36b17840b46e0e58b5d8c784aa7a55e48028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
