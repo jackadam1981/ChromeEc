@@ -24,7 +24,8 @@
 #include "wireless.h"
 
 /* Chipset specific header files */
-#ifdef CONFIG_CHIPSET_APOLLOLAKE
+/* Geminilake reuses apollolake power sequencing. */
+#if defined(CONFIG_CHIPSET_APOLLOLAKE) || defined(CONFIG_CHIPSET_GEMINILAKE)
 #include "apollolake.h"
 #elif defined(CONFIG_CHIPSET_CANNONLAKE)
 #include "cannonlake.h"
