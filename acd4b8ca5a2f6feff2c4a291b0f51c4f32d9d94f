@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31278697_a51751bc",
+        "filename": "chip/stm32/i2c-stm32f4.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-19T16:23:55Z",
+      "side": 1,
+      "message": "Odd that this one uses \u0027params\u0027 instead of \u0027p\u0027",
+      "range": {
+        "startLine": 548,
+        "startChar": 42,
+        "endLine": 548,
+        "endChar": 48
+      },
+      "revId": "acd4b8ca5a2f6feff2c4a291b0f51c4f32d9d94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55cce23a_e9e48326",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-19T16:23:55Z",
+      "side": 1,
+      "message": "params.out \u003d buf can be done in the initializer for pvals.",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 25
+      },
+      "revId": "acd4b8ca5a2f6feff2c4a291b0f51c4f32d9d94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b5519fe_7dc6145b",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-19T16:23:55Z",
+      "side": 1,
+      "message": "Whups.\n\nI guess we do need to make a copy of the params in here.  Because chip_i2c_xfer() could alter out and out_size, and then this repeated call would send down different params.\n\nstruct i2c_xfer_params pcopy \u003d *p;\nret \u003d chip_i2c_xfer(\u0026pcopy);\n\nOn the plus side, that means that callers of i2c_xfer() don\u0027t need to worry about making that copy themselves when they call it repeatedly from the same struct.  That simplifies the logic for the top-level caller, which is good because that\u0027s what we\u0027d mess up later when we forgot that i2c_xfer() mutated the entire struct.\n\nOoooh, and that means that i2c_xfer can take a const struct *.  Which is how we differentiate it from the sub-functions that take a mutable struct.",
+      "range": {
+        "startLine": 98,
+        "startChar": 2,
+        "endLine": 98,
+        "endChar": 25
+      },
+      "revId": "acd4b8ca5a2f6feff2c4a291b0f51c4f32d9d94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33b967db_255a70b5",
+        "filename": "include/i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-19T16:23:55Z",
+      "side": 1,
+      "message": "See i2c_master.c\n\ni2c_xfer() won\u0027t change it because it has to make a copy anyway.  But all the sub-functions are allowed to change the copy (for filtering, pointer math, etc.)",
+      "range": {
+        "startLine": 112,
+        "startChar": 3,
+        "endLine": 113,
+        "endChar": 22
+      },
+      "revId": "acd4b8ca5a2f6feff2c4a291b0f51c4f32d9d94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6deb6db7_63b5f8dd",
+        "filename": "include/i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-19T16:23:55Z",
+      "side": 1,
+      "message": "const\n\n(since i2c_xfer() will make a copy before calling sub-funcs)",
+      "revId": "acd4b8ca5a2f6feff2c4a291b0f51c4f32d9d94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cd07b1c_4b69865a",
+        "filename": "include/i2c.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-19T16:23:55Z",
+      "side": 1,
+      "message": ".  Note that this is *not* const, so chip_i2c_xfer() may change any of it.  It\u0027s a copy of the struct passed into i2c_xfer(), not a direct pointer to it.",
+      "revId": "acd4b8ca5a2f6feff2c4a291b0f51c4f32d9d94f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    }
+  ]
+}
