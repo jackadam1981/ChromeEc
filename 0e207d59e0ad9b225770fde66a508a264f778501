@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "5f0072ba_818f81e4",
+        "filename": "board/yorp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2018-03-19T14:39:40Z",
+      "side": 1,
+      "message": "10000 mHz, 10Hz, the frequency used for polling accelerometer for lid angle calculation. If you add a define, apply it to all boards (in a different CL).",
+      "parentUuid": "d79d78ce_7831a4a4",
+      "range": {
+        "startLine": 200,
+        "startChar": 10,
+        "endLine": 200,
+        "endChar": 15
+      },
+      "revId": "0e207d59e0ad9b225770fde66a508a264f778501",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c367e66_e3030058",
         "filename": "board/yorp/board.c",
         "patchSetId": 4
