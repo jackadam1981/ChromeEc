@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "fa7744fa_31b03ab2",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "I have really liked the\nif (rv !\u003d EC_SUCCESS)\nstyle. What are your thoughts?",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f883e702_50c1d39f",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "I don\u0027t know how far we would want to take this but a inline static method (or define) for GET_MODE_FROM_STATUS(mode) would be nice.",
+      "range": {
+        "startLine": 54,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dc2c98b_75048a14",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -13,6 +59,47 @@
       "writtenOn": "2018-03-16T19:56:20Z",
       "side": 1,
       "message": "It might be nice for these masks to just #define them instead of a comment, but it\u0027s not that important.",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36849d6e_082b470b",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "+1. We could also have an inline method that does this (similar to above comment).",
+      "parentUuid": "8dc2c98b_75048a14",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae961a7_d257d2d2",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "Can we change this flag name to PPC_CFG_FLAGS_TPCP_CONTROLLED?",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 25
+      },
       "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -36,6 +123,185 @@
     },
     {
       "key": {
+        "uuid": "b5a06b34_d81360a9",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "+1 to using \u003d\u003d instead :) It is easier to reason about.",
+      "parentUuid": "42edd175_1f9a6f01",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b7451ba_1b427320",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "Can we pull this out in to a define or method, too?",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 13
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "714b09a1_e3499f5b",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 222,
+        "startChar": 28,
+        "endLine": 222,
+        "endChar": 29
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16741fc9_c5bbd5e8",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "could this cause an infinite interrupt loop if the conditions for exiting dead battery mode are in a bad state? Should we only try to exit dead battery mode ~10 times before giving up and just clearing the IRQ (and logging it of course)",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 2
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf39bbc9_c5ef84c0",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "This seems to be b/69935262 instead of a crbug",
+      "range": {
+        "startLine": 237,
+        "startChar": 11,
+        "endLine": 237,
+        "endChar": 31
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f131bf2a_ae72ec80",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 244,
+        "startChar": 28,
+        "endLine": 244,
+        "endChar": 29
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aac93313_e3c19354",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "also seems to be b/75272421",
+      "range": {
+        "startLine": 248,
+        "startChar": 10,
+        "endLine": 248,
+        "endChar": 30
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "566d09e8_99f8294f",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "should we make this one ccprints so we get one timestamp on the dump?",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 9
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5eec25db_c8da0b27",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -47,6 +313,116 @@
       "writtenOn": "2018-03-16T19:56:20Z",
       "side": 1,
       "message": "\u003c\u003d device control reg to include it in the dump?",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa869711_fc133af4",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "+1, we need \u003c\u003d",
+      "parentUuid": "5eec25db_c8da0b27",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8794898_b63cdc81",
+        "filename": "driver/ppc/nx20p3483.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "What are your thought about setting this \u003d 0 since this is an actual value specified in the datasheet (vs an enum we just use that doesn\u0027t need a specific value)",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00657634_ad72cac4",
+        "filename": "driver/ppc/nx20p3483.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "I liked the enum approach you did for mode. Should we use an enum for current limit and voltage thresholds?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 58
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "037e79ba_17dbb518",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3342,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "I hope we don\u0027t ever mix and match different PPC on the same board. If so we will need to rethink some of these config options. As of now everything looks good though.",
+      "range": {
+        "startLine": 3341,
+        "startChar": 0,
+        "endLine": 3342,
+        "endChar": 29
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc42860b_05b63099",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-19T16:03:08Z",
+      "side": 1,
+      "message": "Can you document when these flags should be used or what they mean?",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 26
+      },
       "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
