@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e59326a0_bb885c25",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-19T23:44:56Z",
+      "side": 1,
+      "message": "It might be a little bit nicer to have the functions defined anyway with __attribute__((weak));. then you would not need the config option.",
+      "revId": "83d1af7d6656a0e4c507f11867039844ac850993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
