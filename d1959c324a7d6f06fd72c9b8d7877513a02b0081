@@ -22,6 +22,30 @@
       "revId": "d1959c324a7d6f06fd72c9b8d7877513a02b0081",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15b0a0f4_4371c892",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-19T08:39:34Z",
+      "side": 1,
+      "message": "Looks fine on soraka (still 3K of shared memory available).\n\nI\u0027ll test on nautilus as well.",
+      "parentUuid": "9de13269_94de93d6",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "d1959c324a7d6f06fd72c9b8d7877513a02b0081",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
