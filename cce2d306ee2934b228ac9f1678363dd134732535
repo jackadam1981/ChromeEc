@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b21b08f4_fe958eb3",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-19T07:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "384322bb_4e0528f6",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 73
+      },
+      "revId": "cce2d306ee2934b228ac9f1678363dd134732535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "711205a5_a4f2f729",
         "filename": "extra/stack_analyzer/README.md",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "74e27bed_2e7f9f5a",
+        "filename": "extra/stack_analyzer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-19T07:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "711205a5_a4f2f729",
+      "range": {
+        "startLine": 90,
+        "startChar": 46,
+        "endLine": 90,
+        "endChar": 50
+      },
+      "revId": "cce2d306ee2934b228ac9f1678363dd134732535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a747eb19_d097997f",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 1
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "47fa53a9_5fad8f8e",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-19T07:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a747eb19_d097997f",
+      "revId": "cce2d306ee2934b228ac9f1678363dd134732535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a212fbf8_8be5134f",
         "filename": "extra/stack_analyzer/stack_analyzer.py",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2018-03-17T06:56:07Z",
       "side": 1,
       "message": "optimization wise, you might want to use self.symbols as the outer and just check that the symbol is in the range.",
+      "range": {
+        "startLine": 785,
+        "startChar": 6,
+        "endLine": 789,
+        "endChar": 35
+      },
+      "revId": "cce2d306ee2934b228ac9f1678363dd134732535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "562ec68c_9957bb42",
+        "filename": "extra/stack_analyzer/stack_analyzer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-19T07:51:20Z",
+      "side": 1,
+      "message": "Sadly, that does not really work, because the range is a list of pointers to the actual functions (which will definitely not be near each other in the code).",
+      "parentUuid": "a212fbf8_8be5134f",
       "range": {
         "startLine": 785,
         "startChar": 6,
