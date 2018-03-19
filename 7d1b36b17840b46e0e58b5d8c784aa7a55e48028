@@ -22,6 +22,30 @@
       "revId": "7d1b36b17840b46e0e58b5d8c784aa7a55e48028",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3854cb3_fbabb6c9",
+        "filename": "util/signer/create_released_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2018-03-19T23:03:56Z",
+      "side": 1,
+      "message": "ok, I made it use $#, also reshuffled to avoid using unbound variables.\n\nI think the coding style calls for using [[ .. ]] for things like this in the bash scripts, so I kept this form.",
+      "parentUuid": "6b675cc6_1a079074",
+      "range": {
+        "startLine": 197,
+        "startChar": 16,
+        "endLine": 197,
+        "endChar": 17
+      },
+      "revId": "7d1b36b17840b46e0e58b5d8c784aa7a55e48028",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
