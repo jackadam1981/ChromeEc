@@ -50,6 +50,23 @@ const struct i2c_port_t *get_i2c_port(int port)
 	return NULL;
 }
 
+static int chip_i2c_xfer_with_notify(struct i2c_xfer_params *p)
+{
+	int ret;
+
+#ifdef CONFIG_I2C_XFER_CALLBACK
+	i2c_start_xfer_notify(p);
+#endif
+
+	ret = chip_i2c_xfer(p);
+
+#ifdef CONFIG_I2C_XFER_CALLBACK
+	i2c_end_xfer_notify(p);
+#endif
+
+	return ret;
+}
+
 #ifdef CONFIG_I2C_XFER_LARGE_READ
 /*
  * Internal function that splits reading into multiple chip_i2c_xfer() calls
@@ -68,7 +85,7 @@ static int i2c_xfer_no_retry(struct i2c_xfer_params *p)
 	p->flags = out_flags;
 	p->in_size = in_chunk_size;
 
-	ret = chip_i2c_xfer(p);
+	ret = chip_i2c_xfer_with_notify(p);
 
 	p->in += in_chunk_size;
 	p->out = NULL;
@@ -79,7 +96,7 @@ static int i2c_xfer_no_retry(struct i2c_xfer_params *p)
 		in_size -= in_chunk_size;
 		p->in_size = in_chunk_size;
 		p->flags = !in_size ? (flags & I2C_XFER_STOP) : 0;
-		ret = chip_i2c_xfer(p);
+		ret = chip_i2c_xfer_with_notify(p);
 		p->in += in_chunk_size;
 	}
 	return ret;
@@ -96,7 +113,7 @@ int i2c_xfer(const struct i2c_xfer_params *p)
 #ifdef CONFIG_I2C_XFER_LARGE_READ
 		ret = i2c_xfer_no_retry(&pcopy);
 #else
-		ret = chip_i2c_xfer(&pcopy);
+		ret = chip_i2c_xfer_with_notify(&pcopy);
 #endif /* CONFIG_I2C_XFER_LARGE_READ */
 		if (ret != EC_ERROR_BUSY)
 			break;
