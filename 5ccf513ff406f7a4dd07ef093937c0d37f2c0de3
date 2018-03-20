@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a216e30c_fc56ac37",
+        "filename": "board/nami/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2018-03-20T15:20:03Z",
+      "side": 1,
+      "message": "Why do you use a number as an enum name?",
+      "range": {
+        "startLine": 259,
+        "startChar": 5,
+        "endLine": 259,
+        "endChar": 11
+      },
+      "revId": "5ccf513ff406f7a4dd07ef093937c0d37f2c0de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
