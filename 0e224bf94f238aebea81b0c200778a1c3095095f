@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c734c18_19be729d",
+        "filename": "board/mchpevb1/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2018-03-20T00:23:36Z",
+      "side": 0,
+      "message": "This one isn\u0027t initialized to 0, but I see that by default, SENSOR_CONFIG_AP shuts down all sensors.",
+      "revId": "0e224bf94f238aebea81b0c200778a1c3095095f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
