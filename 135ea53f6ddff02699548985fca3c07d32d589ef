@@ -39,6 +39,30 @@
       "revId": "135ea53f6ddff02699548985fca3c07d32d589ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b06eb7a1_38b60a83",
+        "filename": "driver/battery/max17055.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2018-03-20T22:36:31Z",
+      "side": 1,
+      "message": "It did occur to me. But I tried to match what are defined in kernel driver: https://chromium.googlesource.com/chromiumos/third_party/kernel/+/chromeos-4.4/drivers/power/sbs-battery.c#7",
+      "parentUuid": "6ae97f94_1c850a81",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "135ea53f6ddff02699548985fca3c07d32d589ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
