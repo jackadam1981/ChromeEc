@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae644da9_9ab2e616",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T01:10:13Z",
+      "side": 1,
+      "message": "Does this need to be defined to 0 in the non-private else block above?",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 47
+      },
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456f1180_34040aa2",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T01:10:13Z",
+      "side": 1,
+      "message": "This does not look new, but... Why do you need this extra variable? Can\u0027t you just use sensor_mode?",
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d20cbbbc_ed00c97e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T01:10:13Z",
+      "side": 1,
+      "message": "Or just memset(fp_template, 0, sizeof(fp_template)); ?",
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09e71c90_3fe9733f",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T01:10:13Z",
+      "side": 1,
+      "message": "Took me a while to figure out that idx cannot be \u003d\u003d 0 (here), so this can\u0027t be negative. Not sure if we want to add a comment here.",
+      "range": {
+        "startLine": 389,
+        "startChar": 24,
+        "endLine": 389,
+        "endChar": 31
+      },
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "186dde84_d910e78b",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T01:10:13Z",
+      "side": 1,
+      "message": "nit/genuine question: Is static useful here?",
+      "range": {
+        "startLine": 536,
+        "startChar": 1,
+        "endLine": 536,
+        "endChar": 7
+      },
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5d0452_1c3d43dd",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T01:10:13Z",
+      "side": 1,
+      "message": "Do we need a watchdog_reload somewhere in one of these loops?",
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
