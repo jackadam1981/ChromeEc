@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b967e75d_5b811684",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T05:54:09Z",
+      "side": 1,
+      "message": "I would say no because it\u0027s always defined in ec_commands.h (rather than being defined in the private headers)\nand if the question is: should we do it ?\nBeing able to compile without the private part is mainly just to ensure we are not breaking the codebase, no optimization of this case whatsoever",
+      "parentUuid": "ae644da9_9ab2e616",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 47
+      },
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "456f1180_34040aa2",
         "filename": "common/fpsensor.c",
         "patchSetId": 39
@@ -36,6 +60,24 @@
       "writtenOn": "2018-03-20T01:10:13Z",
       "side": 1,
       "message": "This does not look new, but... Why do you need this extra variable? Can\u0027t you just use sensor_mode?",
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5e00070_a597d0ca",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T05:54:09Z",
+      "side": 1,
+      "message": "\u0027enroll_session\u0027 is behaving as if it were \u0027previous_sensor_mode\u0027 but just with the FP_MODE_ENROLL_SESSION bit (for easier maintenance only, we could keep all the bits).\nThe idea behind it is that there is a lot of \u0027state\u0027 in the enrollment (particularly in the private algorithm library) so we need to detect when the host transition the ENROLL_SESSION bit to do inits/clean-up, so it is used to compare the previous state to the new state set by the host in sensor_mode.\nSuggestions for a better comment wording are also welcome",
+      "parentUuid": "456f1180_34040aa2",
       "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "b693fc04_ab9cda98",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T05:54:09Z",
+      "side": 1,
+      "message": "Yes updated,\nsince I changes the layout, this is now simpler.",
+      "parentUuid": "d20cbbbc_ed00c97e",
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09e71c90_3fe9733f",
         "filename": "common/fpsensor.c",
         "patchSetId": 39
@@ -70,6 +130,30 @@
       "writtenOn": "2018-03-20T01:10:13Z",
       "side": 1,
       "message": "Took me a while to figure out that idx cannot be \u003d\u003d 0 (here), so this can\u0027t be negative. Not sure if we want to add a comment here.",
+      "range": {
+        "startLine": 389,
+        "startChar": 24,
+        "endLine": 389,
+        "endChar": 31
+      },
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10cea65_39dadb62",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T05:54:09Z",
+      "side": 1,
+      "message": "Added a short comment here to avoid wasting other people time.",
+      "parentUuid": "09e71c90_3fe9733f",
       "range": {
         "startLine": 389,
         "startChar": 24,
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "8cdb2549_032aa630",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T05:54:09Z",
+      "side": 1,
+      "message": "I put the static because I don\u0027t want any of this on my stack.\nbut as I was not sure, I did this experiment and look at the assembly,\nwithout the \u0027static\u0027 our GCC does generate more codes. AFAICT, it copies on the stack 16 bytes for the 4 pointers to the 4 strings (and takes some space in the constant pool to store them too).",
+      "parentUuid": "186dde84_d910e78b",
+      "range": {
+        "startLine": 536,
+        "startChar": 1,
+        "endLine": 536,
+        "endChar": 7
+      },
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c5d0452_1c3d43dd",
         "filename": "common/fpsensor.c",
         "patchSetId": 39
@@ -116,6 +224,24 @@
       "writtenOn": "2018-03-20T01:10:13Z",
       "side": 1,
       "message": "Do we need a watchdog_reload somewhere in one of these loops?",
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94539f8d_69639aa3",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T05:54:09Z",
+      "side": 1,
+      "message": "I don\u0027t think so, you have to put and remove your finger, as a human-being I\u0027m not that fast, so it\u0027s always sleeping for at least 20ms.\n\nExperimentally, I never triggered a watchdog in these commands\n(the watchdog is quite long on this platform too)",
+      "parentUuid": "0c5d0452_1c3d43dd",
       "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
