@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e68bda00_750d5085",
+        "filename": "util/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "The uut source files are put under util/uut/source.(I might move them (and also header files) to util/uut because the util/src/source is redundant as you commented.)\nI have to assign uartupdatetool-objs \u003d util/uut/main.o util/uut/cmd.o ...., or the make will fail.\nIf I assign uartupdatetool-objs\u003dmain.o cmd.o opr.o l_com_port.o lib_crc.o, I also have to move the source files to ./util, then make can be successful.\nI am not sure if put the five source codes and also header files in util folder is a good idea or not.\nCould you please have your comment on this?",
+      "parentUuid": "b994f965_e329d33b",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 80
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9f99922_c77d4383",
         "filename": "util/uut/src/include/cmd.h",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "You are correct, it is a typo and should be fixed.",
       "parentUuid": "e9f99922_c77d4383",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a75c8b0_1a7e5020",
+        "filename": "util/uut/src/include/cmd.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "743dcea5_7a341a6a",
       "range": {
         "startLine": 34,
         "startChar": 7,
@@ -167,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "5867b173_98aaad86",
+        "filename": "util/uut/src/source/cmd.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1fd0222_30743036",
+      "range": {
+        "startLine": 411,
+        "startChar": 42,
+        "endLine": 411,
+        "endChar": 43
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "414c23e8_1020afba",
         "filename": "util/uut/src/source/l_com_port.c",
         "patchSetId": 4
@@ -178,6 +250,30 @@
       "writtenOn": "2018-03-12T17:04:11Z",
       "side": 1,
       "message": "all this code is unused since the config is hardcoded in main()",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 1
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a4e4914_cd01eefd",
+        "filename": "util/uut/src/source/l_com_port.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "These codes are used by ConfigureUart function. It coverts the UART setting which hard code in main.c to the format that the function tcsetattr() needs. It should remain.",
+      "parentUuid": "414c23e8_1020afba",
       "range": {
         "startLine": 95,
         "startChar": 0,
@@ -237,6 +333,30 @@
     },
     {
       "key": {
+        "uuid": "ec78da62_00d2b3f9",
+        "filename": "util/uut/src/source/l_com_port.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3f0b0eb_1edf075a",
+      "range": {
+        "startLine": 244,
+        "startChar": 58,
+        "endLine": 244,
+        "endChar": 59
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b89ff16_e108d140",
         "filename": "util/uut/src/source/l_com_port.c",
         "patchSetId": 4
@@ -284,6 +404,30 @@
     },
     {
       "key": {
+        "uuid": "b7576a4e_031764f9",
+        "filename": "util/uut/src/source/l_com_port.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f85e0c67_b15e57e8",
+      "range": {
+        "startLine": 422,
+        "startChar": 22,
+        "endLine": 422,
+        "endChar": 28
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66f9b5c4_22cefe8a",
         "filename": "util/uut/src/source/lib_crc.c",
         "patchSetId": 4
@@ -304,6 +448,30 @@
       "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "251a7430_fb407673",
+        "filename": "util/uut/src/source/lib_crc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66f9b5c4_22cefe8a",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 42
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -342,6 +510,30 @@
       "side": 1,
       "message": "you are correct, cast is not needed.",
       "parentUuid": "257a20e3_71465ed3",
+      "range": {
+        "startLine": 284,
+        "startChar": 7,
+        "endLine": 284,
+        "endChar": 22
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81af6903_3d56caf9",
+        "filename": "util/uut/src/source/lib_crc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "This function is unused and removed.",
+      "parentUuid": "93e15749_35b302cd",
       "range": {
         "startLine": 284,
         "startChar": 7,
@@ -449,6 +641,30 @@
     },
     {
       "key": {
+        "uuid": "d6545100_651e50f3",
+        "filename": "util/uut/src/source/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2f62d03_6e9a384d",
+      "range": {
+        "startLine": 198,
+        "startChar": 6,
+        "endLine": 198,
+        "endChar": 7
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cfb6b92_7296c30e",
         "filename": "util/uut/src/source/main.c",
         "patchSetId": 4
@@ -496,6 +712,30 @@
     },
     {
       "key": {
+        "uuid": "f83dd173_dc89bb30",
+        "filename": "util/uut/src/source/main.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "246e172f_63d8ccab",
+      "range": {
+        "startLine": 414,
+        "startChar": 20,
+        "endLine": 414,
+        "endChar": 26
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae167a52_f5639246",
         "filename": "util/uut/swc_defs/defs_linux.h",
         "patchSetId": 4
@@ -519,6 +759,30 @@
     },
     {
       "key": {
+        "uuid": "7936acee_6d9ea21b",
+        "filename": "util/uut/swc_defs/defs_linux.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae167a52_f5639246",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e6a98fc_828436aa",
         "filename": "util/uut/swc_defs/defs_utils.h",
         "patchSetId": 4
@@ -539,6 +803,30 @@
       "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07ba11c_d1ee6d68",
+        "filename": "util/uut/swc_defs/defs_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2018-03-20T05:41:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e6a98fc_828436aa",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 41
+      },
+      "revId": "6d6fc82e45e03f8f189c980cab4c53f7dbf4d45b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
