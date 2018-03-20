@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "79052778_200a02e0",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "I used this style because I feel that this version has been used much more commonly in the EC codebase and I wanted to be consistent.",
+      "parentUuid": "fa7744fa_31b03ab2",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f883e702_50c1d39f",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-19T16:03:08Z",
       "side": 1,
       "message": "I don\u0027t know how far we would want to take this but a inline static method (or define) for GET_MODE_FROM_STATUS(mode) would be nice.",
+      "range": {
+        "startLine": 54,
+        "startChar": 10,
+        "endLine": 54,
+        "endChar": 20
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e57f58b6_8b944a90",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "I added a macro for this value.",
+      "parentUuid": "f883e702_50c1d39f",
       "range": {
         "startLine": 54,
         "startChar": 10,
@@ -83,6 +131,24 @@
     },
     {
       "key": {
+        "uuid": "5c59dbb4_7d822038",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "I added a macro.",
+      "parentUuid": "36849d6e_082b470b",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ae961a7_d257d2d2",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -103,6 +169,30 @@
       "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45bba83f_3e97c653",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ae961a7_d257d2d2",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +231,24 @@
     },
     {
       "key": {
+        "uuid": "b3f90fff_fb69734d",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5a06b34_d81360a9",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b7451ba_1b427320",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -161,6 +269,30 @@
       "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "230b7ee8_885f7e60",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b7451ba_1b427320",
+      "range": {
+        "startLine": 180,
+        "startChar": 8,
+        "endLine": 180,
+        "endChar": 13
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -187,6 +319,30 @@
     },
     {
       "key": {
+        "uuid": "646c5552_5ef85163",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "714b09a1_e3499f5b",
+      "range": {
+        "startLine": 222,
+        "startChar": 28,
+        "endLine": 222,
+        "endChar": 29
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16741fc9_c5bbd5e8",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -207,6 +363,30 @@
       "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4c39800_353e1377",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this failure is likely, but I agree it\u0027s better to have some contingency. I added a count variable and when that crosses a threshold, will mask the interrupt.",
+      "parentUuid": "16741fc9_c5bbd5e8",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 2
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -233,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "b5205a43_d8578e93",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf39bbc9_c5ef84c0",
+      "range": {
+        "startLine": 237,
+        "startChar": 11,
+        "endLine": 237,
+        "endChar": 31
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f131bf2a_ae72ec80",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -253,6 +457,30 @@
       "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "543d0b52_d4c001f9",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f131bf2a_ae72ec80",
+      "range": {
+        "startLine": 244,
+        "startChar": 28,
+        "endLine": 244,
+        "endChar": 29
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     },
     {
       "key": {
@@ -279,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "9492389a_a14ca8e0",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aac93313_e3c19354",
+      "range": {
+        "startLine": 248,
+        "startChar": 10,
+        "endLine": 248,
+        "endChar": 30
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "566d09e8_99f8294f",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -290,6 +542,30 @@
       "writtenOn": "2018-03-19T16:03:08Z",
       "side": 1,
       "message": "should we make this one ccprints so we get one timestamp on the dump?",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 9
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9074e3bb_5f9e9513",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "The console channel always uses ccprintf which is why the dump commands use this style.",
+      "parentUuid": "566d09e8_99f8294f",
       "range": {
         "startLine": 281,
         "startChar": 1,
@@ -337,6 +613,24 @@
     },
     {
       "key": {
+        "uuid": "5e969ca9_8ec6db5f",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa869711_fc133af4",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8794898_b63cdc81",
         "filename": "driver/ppc/nx20p3483.h",
         "patchSetId": 1
@@ -348,6 +642,30 @@
       "writtenOn": "2018-03-19T16:03:08Z",
       "side": 1,
       "message": "What are your thought about setting this \u003d 0 since this is an actual value specified in the datasheet (vs an enum we just use that doesn\u0027t need a specific value)",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab0d8397_b90e9531",
+        "filename": "driver/ppc/nx20p3483.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "I didn\u0027t do the \u0027\u003d 0\u0027 because when I\u0027ve used that before, I\u0027ve had people add comments that I don\u0027t need to make it explicit. Based on the comment below (inconsistency), I switched these to #defines",
+      "parentUuid": "a8794898_b63cdc81",
       "range": {
         "startLine": 40,
         "startChar": 1,
@@ -383,6 +701,30 @@
     },
     {
       "key": {
+        "uuid": "b969217e_52e15029",
+        "filename": "driver/ppc/nx20p3483.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "enums would work, but after some consideration, I think the explicit #defines here provide better documentation. The shorter lists (e.g. status_mode) aren\u0027t too bad, but for ilim visually it would be hard to know if 3A is 13 without counting,",
+      "parentUuid": "00657634_ad72cac4",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 58
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "037e79ba_17dbb518",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -406,6 +748,30 @@
     },
     {
       "key": {
+        "uuid": "6e2f9851_8ad976b2",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3342,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "I did consider this case and I was going to control these options with additional flags in ppc_config_t struct. However, the config option for DETECT_VBUS_PPC already existed it follows the model for all the different VBUS detect options, and I felt it would be non-optimal to have 2 PPC options control by flags and 1 of them controlled by config options.",
+      "parentUuid": "037e79ba_17dbb518",
+      "range": {
+        "startLine": 3341,
+        "startChar": 0,
+        "endLine": 3342,
+        "endChar": 29
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc42860b_05b63099",
         "filename": "include/usbc_ppc.h",
         "patchSetId": 1
@@ -417,6 +783,30 @@
       "writtenOn": "2018-03-19T16:03:08Z",
       "side": 1,
       "message": "Can you document when these flags should be used or what they mean?",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "538a5f05_0ac02662",
+        "filename": "include/usbc_ppc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2018-03-20T00:07:22Z",
+      "side": 1,
+      "message": "I documented this flag. The other 3 I have removed because they were holdovers from when I was going to move all of the PPC options to flags (for maximum flexibility), but then changed course and forgot to delete the other flags.",
+      "parentUuid": "bc42860b_05b63099",
       "range": {
         "startLine": 112,
         "startChar": 8,
