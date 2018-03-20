@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1372fc1a_a45ab4cc",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-03-20T23:43:59Z",
+      "side": 1,
+      "message": "In skylake code both cold reset \u0026 warm reset do same GPIO toggle.\nIn apollolake we do pull down SOC power rails and by keeping track of this variable make the power state back to G3_S5 \u0026 up.",
+      "parentUuid": "f30a934e_0943ea31",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 39
+      },
+      "revId": "23598a7a24822f9ea2a67b9b114f6abbcf65a5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "093d1c22_686787ef",
         "filename": "power/intel_x86.c",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2018-02-06T22:42:55Z",
       "side": 1,
       "message": "nit: please do else { ... }.",
+      "revId": "23598a7a24822f9ea2a67b9b114f6abbcf65a5a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2290530f_96164105",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1128369
+      },
+      "writtenOn": "2018-03-20T23:43:59Z",
+      "side": 1,
+      "message": "okay",
+      "parentUuid": "093d1c22_686787ef",
       "revId": "23598a7a24822f9ea2a67b9b114f6abbcf65a5a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
