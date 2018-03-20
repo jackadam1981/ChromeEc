@@ -196,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "ea5a3ad5_23c90239",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-20T15:37:07Z",
+      "side": 1,
+      "message": "typo in comment PPC_CFG_FLAGS_GPIO_COMNTROL -\u003e PPC_CFG_FLAGS_GPIO_CONTROL",
+      "parentUuid": "45bba83f_3e97c653",
+      "range": {
+        "startLine": 119,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "42edd175_1f9a6f01",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -246,6 +270,24 @@
       "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "871820a0_e28cbe3c",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-20T15:37:07Z",
+      "side": 1,
+      "message": "The success and error need to switch places (here and below method)",
+      "parentUuid": "b3f90fff_fb69734d",
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     },
     {
       "key": {
@@ -578,6 +620,30 @@
     },
     {
       "key": {
+        "uuid": "c8500f93_79750b48",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-20T15:37:07Z",
+      "side": 1,
+      "message": "Good to know, thanks!",
+      "parentUuid": "9074e3bb_5f9e9513",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 9
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5eec25db_c8da0b27",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 1
@@ -678,6 +744,30 @@
     },
     {
       "key": {
+        "uuid": "1ed0f2e8_9c72a37d",
+        "filename": "driver/ppc/nx20p3483.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-20T15:37:07Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "ab0d8397_b90e9531",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 13
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00657634_ad72cac4",
         "filename": "driver/ppc/nx20p3483.h",
         "patchSetId": 1
@@ -760,6 +850,30 @@
       "side": 1,
       "message": "I did consider this case and I was going to control these options with additional flags in ppc_config_t struct. However, the config option for DETECT_VBUS_PPC already existed it follows the model for all the different VBUS detect options, and I felt it would be non-optimal to have 2 PPC options control by flags and 1 of them controlled by config options.",
       "parentUuid": "037e79ba_17dbb518",
+      "range": {
+        "startLine": 3341,
+        "startChar": 0,
+        "endLine": 3342,
+        "endChar": 29
+      },
+      "revId": "aaac1aa7da7cb1ccceee749ede018551a61165a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "512e806b_280dc1b0",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3342,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2018-03-20T15:37:07Z",
+      "side": 1,
+      "message": "Agreed. When/If two different PPC are populated on the same board, we can switch all of the config options to be flag based then.",
+      "parentUuid": "6e2f9851_8ad976b2",
       "range": {
         "startLine": 3341,
         "startChar": 0,
