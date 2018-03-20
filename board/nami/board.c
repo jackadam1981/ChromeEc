@@ -305,19 +305,19 @@ static void board_pmic_init(void)
 
 	/*
 	 * VCCIOCNT register setting
-	 * [6] : CSDECAYEN
+	 * [6] : CSDECAYEN -- disabled
 	 * otherbits: default
 	 */
-	err = I2C_PMIC_WRITE(TPS650X30_REG_VCCIOCNT, 0x4A);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_VCCIOCNT, 0x0A);
 	if (err)
 		goto pmic_error;
 
 	/*
 	 * VRMODECTRL:
-	 * [4] : VCCIOLPM clear
-	 * otherbits: default
+	 * [7:6] : 00b Reserved
+	 * [5:0] : 00000b Disable LPM
 	 */
-	err = I2C_PMIC_WRITE(TPS650X30_REG_VRMODECTRL, 0x2F);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_VRMODECTRL, 0x0);
 	if (err)
 		goto pmic_error;
 
@@ -365,12 +365,12 @@ static void board_pmic_init(void)
 
 	/*
 	 * Discharge control 2 register configuration
-	 * [7:6] : 01b V5ADS3 discharge resistance (V5), 100 Ohm
+	 * [7:6] : 00b V5ADS3 discharge disabled in S0ix
 	 * [5:4] : 01b V33A_DSW discharge resistance (V6), 100 Ohm
 	 * [3:2] : 01b V33PCH discharge resistance (V7), 100 Ohm
 	 * [1:0] : 01b V18A discharge resistance (V8), 100 Ohm
 	 */
-	err = I2C_PMIC_WRITE(TPS650X30_REG_DISCHCNT2, 0x55);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_DISCHCNT2, 0x15);
 	if (err)
 		goto pmic_error;
 
@@ -384,12 +384,57 @@ static void board_pmic_init(void)
 		goto pmic_error;
 
 	/*
-	 * Increase Voltage
-	 *  [7:0] : 0x2a default
-	 *  [5:4] : 10b default
-	 *  [5:4] : 01b 5.1V (0x1a)
+	 * V5ADS3CNT:
+	 * [7:6] : 00b Disable LPM
+	 * [5:4] : 10b Nominal voltage
+	 * [3:2] : 10b Auto mode
+	 * [1:0] : 10b Auto mode
 	 */
-	err = I2C_PMIC_WRITE(TPS650X30_REG_V5ADS3CNT, 0x1a);
+	err = I2C_PMIC_WRITE(TPS650X30_REG_V5ADS3CNT, 0x2a);
+	if (err)
+		goto pmic_error;
+
+	/*
+	 * V18ACNT:
+	 * [7:6] : 00b Disable LPM
+	 * [5:4] : 10b Nominal voltage
+	 * [3:2] : 10b Auto mode
+	 * [1:0] : 10b Auto mode
+	 */
+	err = I2C_PMIC_WRITE(TPS650X30_REG_V18ACNT, 0x2a);
+	if (err)
+		goto pmic_error;
+
+	/*
+	 * V1P2UCNT:
+	 * [7]   : 0b   Disable LPM
+	 * [6:4] : 011b Nominal voltage
+	 * [3:2] : 10b  Auto mode
+	 * [1:0] : 10b  Auto mode
+	 */
+	err = I2C_PMIC_WRITE(TPS650X30_REG_V1P2UCNT, 0x3a);
+	if (err)
+		goto pmic_error;
+
+	/*
+	 * V100ACNT:
+	 * [7:6] : 00b Disable LPM
+	 * [5:4] : 01b Nominal voltage
+	 * [3:2] : 10b Auto mode
+	 * [1:0] : 10b Auto mode
+	 */
+	err = I2C_PMIC_WRITE(TPS650X30_REG_V100ACNT, 0x1a);
+	if (err)
+		goto pmic_error;
+
+	/*
+	 * V085ACNT:
+	 * [7:6] : 00b Disable LPM
+	 * [5:4] : 00b 0.95V
+	 * [3:2] : 10b Auto mode
+	 * [1:0] : 10b Auto mode
+	 */
+	err = I2C_PMIC_WRITE(TPS650X30_REG_V100ACNT, 0x0a);
 	if (err)
 		goto pmic_error;
 
