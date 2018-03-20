@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed52ba54_07839138",
+        "filename": "util/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "tools should not be conditionally on board config,\njust remove this condition.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 28
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3edecfce_e5c5362d",
+        "filename": "util/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "just replace those 2 lines by :\nuartupdatetool-objs\u003duut/main.o uut/cmd.o uut/opr.o uut/l_com_port.o uut/lib_crc.o",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 67
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcf8fe8e_3bc16e94",
+        "filename": "util/uut/cmd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "nit: remove the \u0027(c)\u0027 \n(the standard header has changed years ago)\nfor the other files too.",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 17
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b60a9515_0628276e",
+        "filename": "util/uut/cmd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "to avoid conflict please use something such as _UTIL_UUT_CMD_H\nfor the other files too.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e4d74c_2285050e",
+        "filename": "util/uut/cmd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "our local naming convention is all lowercase with _\nditto for field names below and functions and variable names in prototypes.",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 18
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02c36022_bf424c04",
+        "filename": "util/uut/com_port.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "given this is running only on Linux, we can keep some sanity and use an int instead",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 75
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdc95e7_20ab95ef",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "this variable is not used (then ditto for MAX_COMPORT_DEVICES)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f3b5706_94d4fdf3",
+        "filename": "util/uut/l_com_port.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "rather than those lengthy functions, given it\u0027s hardcoded in the caller (in main) we can directly pass those values (e.g B115200 / CS8) in ComPortFields.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 0
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a06fa2_2729e336",
+        "filename": "util/uut/lib_crc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "using the tabular version but computing it every time is terrible.\nEither do the straight computation or define the table as a constant.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 46
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4c4350e_c70775bf",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "do we need multiple layer of indirection for these serial port functions ?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 1
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c7c83e_7257cfb2",
+        "filename": "util/uut/opr.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "please remove this dead code",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 23
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2d2cad9_ee57fa5f",
+        "filename": "util/uut/uut_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "please move these macros to cmd.c and remove entirely this file.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 33
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c00be215_3362fcc1",
+        "filename": "util/uut/uut_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "either use \u0027bool\u0027 type from stdbool.h or directly \u0027int\u0027\nbut please do not redefine another boolean type.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 19
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "201311ba_fd53e110",
+        "filename": "util/uut/uut_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "please use directly double in opr.c",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 19
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77747bb9_e7e084a1",
+        "filename": "util/uut/uut_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "you can remove this",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d6d8be_4f89aaf9",
+        "filename": "util/uut/uut_common.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000016
+      },
+      "writtenOn": "2018-03-20T08:44:18Z",
+      "side": 1,
+      "message": "not used, please remove it.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 0
+      },
+      "revId": "617b1cfdecf5e6de3d114e3ddd3d8968cf2b6861",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    }
+  ]
+}
