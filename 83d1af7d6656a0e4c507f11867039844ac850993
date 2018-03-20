@@ -34,6 +34,24 @@
       "revId": "83d1af7d6656a0e4c507f11867039844ac850993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79623521_ffee9875",
+        "filename": "common/i2c_master.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1000187
+      },
+      "writtenOn": "2018-03-20T01:32:15Z",
+      "side": 1,
+      "message": "Weak functions are ok *iff* there are sufficient tests to verify that the correct function was actually linked into the code.\n\nSince EC testing leaves much to be desired, weak functions are not recommended unless it will be *really* obvious if the wrong thing was linked.\n\n(I\u0027ve been bit by this way too many times where the function signature changes.  An #ifdef around a function that isn\u0027t found in the board directory fails with a compile-time error.  A weak function silently includes the do-nothing variant.)",
+      "parentUuid": "49ccf131_5775a0fc",
+      "revId": "83d1af7d6656a0e4c507f11867039844ac850993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
