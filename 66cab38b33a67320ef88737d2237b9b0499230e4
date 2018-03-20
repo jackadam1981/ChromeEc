@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa041723_a91eeabf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000256
+      },
+      "writtenOn": "2018-03-20T01:31:37Z",
+      "side": 1,
+      "message": "?",
+      "parentUuid": "74337fd6_d6dee4e4",
+      "range": {
+        "startLine": 9,
+        "startChar": 42,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "66cab38b33a67320ef88737d2237b9b0499230e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b6ecaaa_15fb75e2",
         "filename": "board/fizz/usb_pd_policy.c",
         "patchSetId": 2
