@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b4df787c_2323f8c2",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T06:15:47Z",
+      "side": 1,
+      "message": "Ack, I didn\u0027t notice where that symbol was defined. Thanks.",
+      "parentUuid": "b967e75d_5b811684",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 47
+      },
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "456f1180_34040aa2",
         "filename": "common/fpsensor.c",
         "patchSetId": 39
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "\u0027enroll_session\u0027 is behaving as if it were \u0027previous_sensor_mode\u0027 but just with the FP_MODE_ENROLL_SESSION bit (for easier maintenance only, we could keep all the bits).\nThe idea behind it is that there is a lot of \u0027state\u0027 in the enrollment (particularly in the private algorithm library) so we need to detect when the host transition the ENROLL_SESSION bit to do inits/clean-up, so it is used to compare the previous state to the new state set by the host in sensor_mode.\nSuggestions for a better comment wording are also welcome",
       "parentUuid": "456f1180_34040aa2",
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5b7f7f5_60e8892b",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T06:15:47Z",
+      "side": 1,
+      "message": "Ok, I think I get it now, thanks.",
+      "parentUuid": "d5e00070_a597d0ca",
       "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
@@ -166,6 +208,30 @@
     },
     {
       "key": {
+        "uuid": "b0215351_a67a442e",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T06:15:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b10cea65_39dadb62",
+      "range": {
+        "startLine": 389,
+        "startChar": 24,
+        "endLine": 389,
+        "endChar": 31
+      },
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "186dde84_d910e78b",
         "filename": "common/fpsensor.c",
         "patchSetId": 39
@@ -213,6 +279,30 @@
     },
     {
       "key": {
+        "uuid": "fca7f77a_89786126",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T06:15:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8cdb2549_032aa630",
+      "range": {
+        "startLine": 536,
+        "startChar": 1,
+        "endLine": 536,
+        "endChar": 7
+      },
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c5d0452_1c3d43dd",
         "filename": "common/fpsensor.c",
         "patchSetId": 39
@@ -245,6 +335,24 @@
       "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1690ae6a_86bab865",
+        "filename": "common/fpsensor.c",
+        "patchSetId": 39
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T06:15:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "94539f8d_69639aa3",
+      "revId": "5726b4b80f45e6400736e6653f6944bade91c57e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": false
     }
   ]
 }
