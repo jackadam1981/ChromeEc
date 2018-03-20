@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "010485dc_81ee2ee3",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T20:48:41Z",
+      "side": 1,
+      "message": "Aah I see.",
+      "parentUuid": "2d36408e_d9d1b585",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "98ffa1e6_a3586c10",
         "filename": "driver/ppc/nx20p3483.c",
         "patchSetId": 4
@@ -342,6 +366,30 @@
       "side": 1,
       "message": "This was what the TI driver is doing for the same function. I think it\u0027s unlikely that some registers reads would work and others would fail. So I don\u0027t think there is much value in continuing.",
       "parentUuid": "0198ceec_94792099",
+      "range": {
+        "startLine": 313,
+        "startChar": 3,
+        "endLine": 313,
+        "endChar": 13
+      },
+      "revId": "ee59b439bad5258c1e8001277206d7512d9b4acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc21fcdc_21a0d7a2",
+        "filename": "driver/ppc/nx20p3483.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T20:48:41Z",
+      "side": 1,
+      "message": "sg",
+      "parentUuid": "ed0ed840_ee387b3e",
       "range": {
         "startLine": 313,
         "startChar": 3,
