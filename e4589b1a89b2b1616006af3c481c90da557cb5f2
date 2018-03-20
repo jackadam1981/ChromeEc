@@ -376,6 +376,30 @@
       "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfc5cd40_6151798b",
+        "filename": "include/i2c.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2018-03-20T00:02:05Z",
+      "side": 1,
+      "message": "Due to LTO, most of the functions called by i2c_xfer end up being inlined:\n\nI.e. there is a single i2c_xfer function that includes all of these (soraka example):\n\n    i2c_xfer (56) [common/i2c_master.c:83] 100925f4\n        -\u003e i2c_xfer[common/i2c_master.c:92] 1009287e\n           - chip_i2c_xfer[chip/npcx/i2c.c:664]\n             - i2c_recovery[chip/npcx/i2c.c:211]\n        -\u003e i2c_xfer[common/i2c_master.c:92] 10092a00\n           - chip_i2c_xfer[chip/npcx/i2c.c:672]\n             - i2c_master_transaction[chip/npcx/i2c.c:292]\n               - i2c_recovery[chip/npcx/i2c.c:211]\n        -\u003e i2c_xfer[common/i2c_master.c:92] 10092a18\n           - chip_i2c_xfer[chip/npcx/i2c.c:672]\n             - i2c_master_transaction[chip/npcx/i2c.c:296]\n               - i2c_recovery[chip/npcx/i2c.c:211]\n\nThe functions called from that big, inlined, i2c_xfer function are:\n`armv7a-cros-linux-gnueabi-objdump -d build/soraka/RW/ec.RW.elf | grep 100925f4: -A 440 | sed -n \u0027s/.*\u003c\\([^+\\.\u003e]*\\).*/\\1/p\u0027 | sort -u`\n\ncprintf\ncputs\nget_scl_from_i2c_port\nget_sda_from_i2c_port\ngpio_config_pins\ngpio_set_flags\ngpio_set_level\ni2c_abort_data\ni2c_port_to_controller\ni2c_raw_get_scl\ni2c_raw_get_sda\ni2c_raw_set_scl\ni2c_reset\ni2c_wait_stop_completed\ntask_disable_irq\ntask_wait_event_mask\nudelay\n\nIn practice the longest branch comes from i2c_reset (because it does another call to printf)",
+      "parentUuid": "e3736387_7ee4457d",
+      "range": {
+        "startLine": 131,
+        "startChar": 13,
+        "endLine": 131,
+        "endChar": 38
+      },
+      "revId": "e4589b1a89b2b1616006af3c481c90da557cb5f2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
