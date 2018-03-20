@@ -7,6 +7,7 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+#include "anx7447.h"
 #include "board_config.h"
 #include "button.h"
 #include "charge_manager.h"
@@ -80,7 +81,7 @@ static void tcpc_alert_event(enum gpio_signal signal)
 static void vbus_discharge_handler(void)
 {
 	pd_set_vbus_discharge(0, gpio_get_level(GPIO_USB_C0_VBUS_WAKE_L));
-	//pd_set_vbus_discharge(1, gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L));
+	pd_set_vbus_discharge(1, gpio_get_level(GPIO_USB_C1_VBUS_WAKE_L));
 }
 DECLARE_DEFERRED(vbus_discharge_handler);
 
@@ -92,7 +93,6 @@ void vbus0_evt(enum gpio_signal signal)
 	hook_call_deferred(&vbus_discharge_handler_data, 0);
 }
 
-#if 0
 void vbus1_evt(enum gpio_signal signal)
 {
 	/* VBUS present GPIO is inverted */
@@ -100,7 +100,6 @@ void vbus1_evt(enum gpio_signal signal)
 	task_wake(TASK_ID_PD_C1);
 	hook_call_deferred(&vbus_discharge_handler_data, 0);
 }
-#endif
 
 void usb0_evt(enum gpio_signal signal)
 {
@@ -184,7 +183,8 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /* TCPC mux configuration */
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_COUNT] = {
 	{NPCX_I2C_PORT0_0, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
-	//{NPCX_I2C_PORT0_1, 0x16, &ps8xxx_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
+	{NPCX_I2C_PORT0_1, AN7447_TCPC1_I2C_ADDR,
+			&anx7447_tcpm_drv, TCPC_ALERT_ACTIVE_LOW},
 };
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
@@ -193,13 +193,11 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_COUNT] = {
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	},
-	/*
 	{
 		.port_addr = 1,
-		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		.driver = &anx7447_usb_mux_driver,
+		.hpd_update = &anx7447_tcpc_update_hpd_status,
 	}
-	*/
 };
 
 struct pi3usb9281_config pi3usb9281_chips[] = {
@@ -441,7 +439,7 @@ static void board_init(void)
 
 	/* Enable VBUS interrupt */
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
-	//gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
+	gpio_enable_interrupt(GPIO_USB_C1_VBUS_WAKE_L);
 
 	/* Enable pericom BC1.2 interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);
