@@ -16,6 +16,47 @@
       "revId": "1582c60679022e5986e4ece01acd6f7de14bc860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82f3e825_1695f95e",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T06:34:07Z",
+      "side": 1,
+      "message": "In S0ix, SLP_S3_L is 1 and SLP_S0_L is 0. So this logic would still work.",
+      "parentUuid": "a7b174dc_a218ebbc",
+      "revId": "1582c60679022e5986e4ece01acd6f7de14bc860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f0e844d_066b3161",
+        "filename": "board/meowth_fp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2018-03-20T06:34:07Z",
+      "side": 1,
+      "message": "S3/S0ix",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "1582c60679022e5986e4ece01acd6f7de14bc860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
+      "unresolved": true
     }
   ]
 }
